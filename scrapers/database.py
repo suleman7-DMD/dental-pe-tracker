@@ -35,11 +35,16 @@ def _ensure_db_decompressed():
     """If only the .gz file exists (e.g. Streamlit Cloud), decompress it."""
     if not os.path.exists(DB_PATH) and os.path.exists(DB_GZ_PATH):
         import gzip
-        log.info("Decompressing %s → %s", DB_GZ_PATH, DB_PATH)
-        with gzip.open(DB_GZ_PATH, "rb") as f_in:
-            with open(DB_PATH, "wb") as f_out:
-                shutil.copyfileobj(f_in, f_out)
-        log.info("Database decompressed (%d MB)", os.path.getsize(DB_PATH) // (1024 * 1024))
+        try:
+            os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
+            log.info("Decompressing %s → %s", DB_GZ_PATH, DB_PATH)
+            with gzip.open(DB_GZ_PATH, "rb") as f_in:
+                with open(DB_PATH, "wb") as f_out:
+                    shutil.copyfileobj(f_in, f_out)
+            log.info("Database decompressed (%d MB)", os.path.getsize(DB_PATH) // (1024 * 1024))
+        except Exception as e:
+            log.error("Failed to decompress database: %s", e)
+            raise
 
 
 _ensure_db_decompressed()
