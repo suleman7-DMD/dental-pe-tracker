@@ -956,127 +956,177 @@ def classify_all_doors(doors):
 
 
 def compute_buyability(door):
-    """Compute buyability score (0-100) with detailed breakdown."""
+    """Compute buyability score (0-100) with detailed breakdown and confidence rating.
+
+    Scoring philosophy: "How likely is this practice to be acquirable by PE/DSO?"
+    High scores = solo/aging owner + profitable + independent + single location.
+    Confidence (0-5 stars) = how many real data points we have (not just NPPES name).
+
+    Weight distribution (max positive ~105, max negative ~-80, base 40):
+      Retirement risk:   up to +25  (heaviest — #1 driver of dental acquisitions)
+      Practice size:     up to +15  (sweet spot = real practice, not too big)
+      Revenue:           up to +15  (PE wants $800K-$3M profitable practices)
+      Solo practitioner: up to +15  (succession problem = motivated seller)
+      Single location:   up to +10
+      Independence:      up to +10
+      Name signals:      up to +5
+      Negative signals:  down to -50 (DSO/chain/government/subsidiary)
+    """
+    # Hard disqualifiers
     if door["ownership_status"] in ("dso_affiliated", "pe_backed"):
         door["buyability_score"] = 0
-        door["buyability_breakdown"] = [("DSO/PE classified", -50, "score forced to 0")]
+        door["buyability_breakdown"] = [("disqualified", -100, f"already {door['ownership_status']}")]
+        door["buyability_confidence"] = 5  # we're confident it's NOT buyable
         return 0
 
-    score = 50
-    breakdown = [("base", 50, "starting score")]
+    score = 40  # lower base than before — earn your score
+    breakdown = [("base", 40, "starting score")]
+    data_points = 0  # count real data fields for confidence
 
-    # Year established
+    # ── Retirement risk (heaviest weight) ────────────────────────────────
     yr = door.get("year_established")
+    current_year = 2026
     if yr:
-        if yr < 1990:
-            adj, reason = 20, f"established {yr} (very mature)"
-        elif yr < 2000:
-            adj, reason = 15, f"established {yr}"
-        elif yr <= 2005:
-            adj, reason = 10, f"established {yr}"
-        elif yr <= 2010:
-            adj, reason = 5, f"established {yr}"
-        elif yr <= 2015:
-            adj, reason = 0, f"established {yr} (neutral)"
-        elif yr <= 2020:
-            adj, reason = -5, f"established {yr} (newer)"
+        data_points += 1
+        age = current_year - yr
+        if age >= 35:
+            adj, reason = 25, f"est. {yr} ({age}yr — owner likely 60+, prime retirement)"
+        elif age >= 25:
+            adj, reason = 20, f"est. {yr} ({age}yr — mature, approaching succession)"
+        elif age >= 15:
+            adj, reason = 10, f"est. {yr} ({age}yr — established)"
+        elif age >= 8:
+            adj, reason = 0, f"est. {yr} ({age}yr — mid-career, neutral)"
+        elif age >= 3:
+            adj, reason = -10, f"est. {yr} ({age}yr — newer practice)"
         else:
-            adj, reason = -10, f"established {yr} (very new)"
+            adj, reason = -15, f"est. {yr} ({age}yr — startup, not a target)"
         if adj != 0:
             score += adj
-            breakdown.append(("year_established", adj, reason))
+            breakdown.append(("retirement_risk", adj, reason))
 
-    # Employee count
+    # ── Practice size (employee count) ───────────────────────────────────
+    # Dental context: 1-2 emp = just the dentist, 3-15 = real practice
+    # (dentist + hygienists + assistants + front desk), 20+ = multi-provider/location
     emp = door.get("employee_count")
     if emp is not None:
+        data_points += 1
         if emp <= 2:
-            adj, reason = 15, f"{emp} employees (true solo)"
-        elif emp <= 4:
-            adj, reason = 12, f"{emp} employees"
-        elif emp <= 9:
-            adj, reason = 5, f"{emp} employees"
-        elif emp <= 19:
-            adj, reason = -5, f"{emp} employees"
-        elif emp <= 49:
-            adj, reason = -15, f"{emp} employees"
+            adj, reason = 10, f"{emp} emp (bare solo — may be winding down)"
+        elif emp <= 5:
+            adj, reason = 15, f"{emp} emp (small practice, ideal target)"
+        elif emp <= 15:
+            adj, reason = 10, f"{emp} emp (solid single-location practice)"
+        elif emp <= 25:
+            adj, reason = 0, f"{emp} emp (larger practice, neutral)"
+        elif emp <= 50:
+            adj, reason = -10, f"{emp} emp (likely multi-location)"
         else:
-            adj, reason = -25, f"{emp} employees (large)"
+            adj, reason = -25, f"{emp} emp (large operation)"
         score += adj
-        breakdown.append(("employee_count", adj, reason))
+        breakdown.append(("practice_size", adj, reason))
 
-    # Location type
-    lt = door.get("location_type")
-    if lt == "single":
-        score += 10
-        breakdown.append(("location_type", 10, "single location"))
-    elif lt == "branch":
-        score -= 15
-        breakdown.append(("location_type", -15, "branch"))
-    elif lt == "hq":
-        score -= 20
-        breakdown.append(("location_type", -20, "headquarters"))
-    elif lt == "subsidiary":
-        score -= 25
-        breakdown.append(("location_type", -25, "subsidiary"))
-
-    # Ownership
-    own = door.get("ownership_raw", "")
-    if "private" in own:
-        score += 5
-        breakdown.append(("ownership", 5, "private"))
-    elif "public" in own:
-        score -= 25
-        breakdown.append(("ownership", -25, "public"))
-    elif "government" in own:
-        score -= 50
-        breakdown.append(("ownership", -50, "government"))
-
-    # Classification
-    if door["ownership_status"] == "independent":
-        score += 10
-        breakdown.append(("classification", 10, "likely independent"))
-
-    # Practice name signals
-    pname = (door["practice_name"] or "").lower()
-    if re.search(r"(?:^dr\.?\s|\bdds\b|\bdmd\b)", pname):
-        score += 5
-        breakdown.append(("name_pattern", 5, "doctor name in practice"))
-    elif re.search(r"\b(?:llc|inc|corp|management|partners)\b", pname):
-        score -= 5
-        breakdown.append(("name_pattern", -5, "corporate-sounding name"))
-
-    # Provider count
-    np_ = door.get("num_providers", 0)
-    if np_ == 1:
-        score += 10
-        breakdown.append(("providers", 10, "1 provider (true solo)"))
-    elif np_ == 2:
-        score += 5
-        breakdown.append(("providers", 5, "2 providers"))
-    elif 3 <= np_ <= 4:
-        pass  # neutral
-    elif np_ >= 5:
-        score -= 10
-        breakdown.append(("providers", -10, f"{np_} providers"))
-
-    # Revenue
+    # ── Revenue sweet spot ───────────────────────────────────────────────
+    # PE targets: $800K-$3M = profitable enough to matter, small enough to not fight back
     rev = door.get("estimated_revenue")
     if rev is not None:
-        if rev < 500_000:
-            adj, reason = 5, f"revenue ${rev:,} (small)"
-        elif rev < 1_000_000:
-            adj, reason = 10, f"revenue ${rev:,} (ideal)"
-        elif rev < 2_000_000:
-            adj, reason = 5, f"revenue ${rev:,}"
+        data_points += 1
+        if rev < 300_000:
+            adj, reason = -5, f"rev ${rev:,} (struggling or part-time)"
+        elif rev < 800_000:
+            adj, reason = 5, f"rev ${rev:,} (small but viable)"
+        elif rev < 1_500_000:
+            adj, reason = 15, f"rev ${rev:,} (PE sweet spot)"
+        elif rev < 3_000_000:
+            adj, reason = 10, f"rev ${rev:,} (strong target)"
+        elif rev < 5_000_000:
+            adj, reason = 0, f"rev ${rev:,} (large — may have leverage)"
         else:
-            adj, reason = -5, f"revenue ${rev:,} (large)"
+            adj, reason = -10, f"rev ${rev:,} (very large — complex deal)"
         score += adj
         breakdown.append(("revenue", adj, reason))
 
-    # Clamp
+    # ── Solo practitioner signal ─────────────────────────────────────────
+    np_ = door.get("num_providers", 0)
+    if np_ >= 1:
+        data_points += 1
+    if np_ == 1:
+        score += 15
+        breakdown.append(("solo_provider", 15, "1 provider — succession vulnerability"))
+    elif np_ == 2:
+        score += 5
+        breakdown.append(("solo_provider", 5, "2 providers — small partnership"))
+    elif np_ >= 5:
+        score -= 10
+        breakdown.append(("solo_provider", -10, f"{np_} providers — group practice"))
+
+    # ── Location type ────────────────────────────────────────────────────
+    lt = door.get("location_type")
+    if lt:
+        data_points += 1
+    if lt == "single":
+        score += 10
+        breakdown.append(("location", 10, "single location"))
+    elif lt == "branch":
+        score -= 15
+        breakdown.append(("location", -15, "branch of larger entity"))
+    elif lt == "hq":
+        score -= 20
+        breakdown.append(("location", -20, "headquarters — already a chain"))
+    elif lt == "subsidiary":
+        score -= 30
+        breakdown.append(("location", -30, "subsidiary — corporate-owned"))
+
+    # ── Ownership type (from Data Axle) ──────────────────────────────────
+    own = (door.get("ownership_raw") or "").lower()
+    if own:
+        data_points += 1
+    if "private" in own:
+        score += 5
+        breakdown.append(("ownership_type", 5, "private"))
+    elif "public" in own:
+        score -= 30
+        breakdown.append(("ownership_type", -30, "publicly traded"))
+    elif "government" in own:
+        score -= 50
+        breakdown.append(("ownership_type", -50, "government/non-profit"))
+
+    # ── Independence classification ──────────────────────────────────────
+    status = door["ownership_status"]
+    if status == "independent":
+        score += 10
+        breakdown.append(("independence", 10, "confirmed independent"))
+    elif status == "likely_independent":
+        score += 5
+        breakdown.append(("independence", 5, "likely independent"))
+    # unknown = no adjustment (we don't know)
+
+    # ── Practice name signals (light weight) ─────────────────────────────
+    pname = (door["practice_name"] or "").lower()
+    if re.search(r"(?:^dr\.?\s|\bdds\b|\bdmd\b)", pname):
+        score += 5
+        breakdown.append(("name_signal", 5, "dentist name in practice (personal brand)"))
+    elif re.search(r"\b(?:management|partners|holdings|group)\b", pname):
+        score -= 10
+        breakdown.append(("name_signal", -10, "corporate/management entity name"))
+    elif re.search(r"\b(?:llc|inc|corp)\b", pname):
+        score -= 3
+        breakdown.append(("name_signal", -3, "corporate entity suffix"))
+
+    # ── Retirement combo bonus ───────────────────────────────────────────
+    # Solo practitioner + old practice = strongest acquisition signal in dentistry
+    if yr and (current_year - yr) >= 25 and np_ == 1:
+        score += 10
+        breakdown.append(("retirement_combo", 10, "solo + 25yr+ practice — high succession risk"))
+
+    # ── Clamp & confidence ───────────────────────────────────────────────
     score = max(0, min(100, score))
     door["buyability_score"] = score
     door["buyability_breakdown"] = breakdown
+
+    # Confidence: 0-5 based on how many real data points we have
+    # 0-1 fields = 1 star, 2 = 2 stars, 3 = 3, 4 = 4, 5+ = 5
+    door["buyability_confidence"] = min(5, max(1, data_points))
     return score
 
 
@@ -1095,6 +1145,7 @@ def ensure_data_axle_columns(engine):
         ("num_providers", "INTEGER"),
         ("location_type", "TEXT"),
         ("buyability_score", "INTEGER"),
+        ("buyability_confidence", "INTEGER"),
         ("classification_confidence", "INTEGER"),
         ("classification_reasoning", "TEXT"),
         ("data_axle_raw_name", "TEXT"),
@@ -1196,6 +1247,7 @@ def upsert_doors_to_db(session, engine, doors, batch_id, today):
                 if door["location_type"]:
                     updates["location_type"] = door["location_type"]
                 updates["buyability_score"] = door["buyability_score"]
+                updates["buyability_confidence"] = door.get("buyability_confidence", 1)
                 updates["classification_confidence"] = door["classification_confidence"]
                 updates["classification_reasoning"] = door["classification_reasoning"]
                 updates["data_axle_raw_name"] = door["practice_name"]
@@ -1251,6 +1303,7 @@ def upsert_doors_to_db(session, engine, doors, batch_id, today):
                         "num_providers": door["num_providers"],
                         "location_type": door["location_type"],
                         "buyability_score": door["buyability_score"],
+                        "buyability_confidence": door.get("buyability_confidence", 1),
                         "classification_confidence": door["classification_confidence"],
                         "classification_reasoning": door["classification_reasoning"],
                         "data_axle_raw_name": door["practice_name"],
@@ -1307,6 +1360,7 @@ def upsert_doors_to_db(session, engine, doors, batch_id, today):
                             "num_providers": door["num_providers"],
                             "location_type": door["location_type"],
                             "buyability_score": door["buyability_score"],
+                            "buyability_confidence": door.get("buyability_confidence", 1),
                             "classification_confidence": door["classification_confidence"],
                             "classification_reasoning": door["classification_reasoning"],
                             "data_axle_raw_name": door["practice_name"],

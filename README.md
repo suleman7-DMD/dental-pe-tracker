@@ -490,6 +490,38 @@ python3 scrapers/dso_classifier.py
 python3 scrapers/merge_and_score.py
 ```
 
+### How Buyability Scoring Works
+
+Every Data Axle practice gets a **buyability score (0-100)** — "how likely is this practice to be acquirable by PE/DSO?" Higher = more buyable. Each score comes with a **confidence rating (1-5 stars)** based on how many real data fields we have.
+
+**What Data Axle gives us that NPPES can't:**
+- Revenue (PE sweet spot: $800K-$3M)
+- Employee count (dental context: 5-15 = solid single-location practice)
+- Year established (30+ years = owner likely retiring = #1 acquisition driver)
+- Location type (single location vs. branch/subsidiary)
+- Ownership type (private vs. public/government)
+
+**Scoring weights (from heaviest to lightest):**
+
+| Signal | Max Points | Logic |
+|--------|-----------|-------|
+| Retirement risk | +25 | Practice 35+ years old with solo owner = prime succession target |
+| Revenue sweet spot | +15 | $800K-$1.5M revenue = profitable, small enough for PE |
+| Practice size | +15 | 3-5 employees = ideal single-location practice |
+| Solo practitioner | +15 | 1 provider = succession vulnerability |
+| Retirement combo | +10 | Solo + 25yr+ practice = strongest signal in dentistry |
+| Single location | +10 | Not already a chain |
+| Independence | +10 | Confirmed independent (not unknown) |
+| Name signal | +5 | Dentist name in practice (personal brand = solo) |
+| **Disqualifiers** | **-30 to -50** | **Subsidiary, publicly traded, government, corporate name** |
+
+**Confidence stars:**
+- ***** (5 stars): Has year, employees, revenue, location type, providers — score is reliable
+- *** (3 stars): Has some fields but missing key data — directional only
+- * (1 star): Basically just NPPES name + entity type — treat with caution
+
+**Why 87% of practices have no score:** Buyability scoring requires Data Axle data. NPPES only gives us name and address — not enough for a meaningful score. The more Data Axle exports you do, the more practices get scored.
+
 ### Reviewing the Import
 
 After importing (via either method), check the debug report:

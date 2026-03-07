@@ -788,7 +788,8 @@ def page_buyability():
         # Load practices with EITHER a VERDICT in notes OR a buyability_score
         analyzed = pd.read_sql(text(
             "SELECT practice_name, address, city, zip, ownership_status, notes, "
-            "affiliated_dso, buyability_score, year_established, employee_count "
+            "affiliated_dso, buyability_score, buyability_confidence, "
+            "year_established, employee_count, estimated_revenue "
             "FROM practices "
             "WHERE notes LIKE '%VERDICT%' OR buyability_score IS NOT NULL "
             "ORDER BY buyability_score DESC NULLS LAST, zip, practice_name"
@@ -844,10 +845,15 @@ def page_buyability():
         if zip_filter != "All ZIPs":
             filtered = filtered[filtered["zip"] == zip_filter]
 
-        display = filtered[["practice_name", "address", "city", "zip", "ownership_status",
-                            "buyability_score", "verdict"]].copy()
+        show_cols = ["practice_name", "address", "city", "zip", "ownership_status",
+                     "buyability_score", "confidence", "year_established", "employee_count", "verdict"]
+        display = filtered.copy()
         display["ownership_status"] = display["ownership_status"].apply(format_status)
-        display = clean_dataframe(display)
+        # Confidence stars (1-5 data points)
+        display["confidence"] = display["buyability_confidence"].apply(
+            lambda c: ("*" * int(c)) if pd.notna(c) and c else "?")
+        avail_cols = [c for c in show_cols if c in display.columns]
+        display = clean_dataframe(display[avail_cols])
         st.dataframe(display, hide_index=True, width="stretch")
         st.download_button("📥 Download analyzed practices", display.to_csv(index=False), "buyability_analysis.csv", "text/csv")
 
@@ -1048,8 +1054,12 @@ def _render_system_health(s):
 
     if table_exists("ada_hpi_benchmarks"):
         ada_cnt = s.query(func.count(ADAHPIBenchmark.id)).scalar() or 0
-        sources.append({"Source": "ADA HPI", "Records": ada_cnt, "Date Range": "—",
-                         "Last Updated": "—", "Status": status_dot(None) if ada_cnt == 0 else '<span class="status-dot status-green"></span>Loaded'})
+        ada_last = s.query(func.max(ADAHPIBenchmark.created_at)).scalar()
+        ada_years = s.query(func.min(ADAHPIBenchmark.data_year), func.max(ADAHPIBenchmark.data_year)).first()
+        ada_range = f"{ada_years[0]}–{ada_years[1]}" if ada_years[0] else "—"
+        sources.append({"Source": "ADA HPI", "Records": ada_cnt, "Date Range": ada_range,
+                         "Last Updated": str(ada_last)[:10] if ada_last else "—",
+                         "Status": status_dot(ada_last)})
 
     src_df = pd.DataFrame(sources)
     st.markdown(src_df.to_html(escape=False, index=False), unsafe_allow_html=True)
@@ -1057,7 +1067,14 @@ def _render_system_health(s):
     # DB size
     if os.path.exists(DB_PATH):
         db_mb = os.path.getsize(DB_PATH) / 1024 / 1024
-        st.caption(f"Database size: {db_mb:.1f} MB")
+        gz_path = DB_PATH + ".gz"
+        gz_mb = os.path.getsize(gz_path) / 1024 / 1024 if os.path.exists(gz_path) else 0
+        size_warning = ""
+        if db_mb > 400:
+            size_warning = " -- APPROACHING LIMIT: GitHub max is 100MB for .gz, consider pruning practice_changes"
+        elif db_mb > 200:
+            size_warning = " -- growing, monitor quarterly"
+        st.caption(f"Database: {db_mb:.1f} MB (compressed: {gz_mb:.1f} MB for git){size_warning}")
 
     # Data Completeness
     st.markdown(section_header("Data Completeness",
