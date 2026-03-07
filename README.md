@@ -55,7 +55,7 @@ The system pulls from 9 different data sources. Some run automatically, some nee
 | **NPPES** | Every dental practice in the US (name, address, NPI number, specialty) | Monthly | ~2 minutes | Semi-auto — cron tries first Sunday, manual backup if it fails |
 | **PitchBook** | Deal sizes, EBITDA multiples, PE sponsor details, company profiles | Quarterly | ~5 minutes | Manual — you download from pitchbook.com and drop the file in a folder |
 | **ADA HPI** | State-level DSO affiliation rates by career stage | Annually | ~2 minutes | Manual — download one Excel file from ada.org once a year |
-| **Data Axle** | Practice-level business data (revenue, employees, year established, ownership) | Quarterly | ~20 minutes | Manual — export from BU Library database |
+| **Data Axle** | Practice-level business data (revenue, employees, year established, ownership) | Quarterly | ~10 min (automated) / ~45 min (manual) | Semi-auto — Playwright script handles most clicks, you handle SSO login + CAPTCHAs |
 | **ADSO Scraper** | DSO office locations scraped from their websites | Monthly | ~1 minute | Claude Code prompt — paste and run |
 | **DSO Classifier** | Tags each practice as independent, DSO-affiliated, or PE-backed | After any data load | None | Auto — runs as part of the pipeline |
 | **Merge & Score** | Consolidation scores, opportunity scores, metro-level rollups | After any data load | None | Auto — runs as part of the pipeline |
@@ -301,9 +301,78 @@ Were any of these deals in Illinois or Massachusetts?
 
 **What it does:** Data Axle is a business database you access through BU's library. It has ground-truth data on every dental practice in your target ZIP codes — revenue, employee count, year established, ownership type, contact info. This is what powers the buyability scoring (figuring out which practices are most likely to sell) and stealth DSO detection (catching practices that look independent but are actually DSO-owned).
 
-### Step-by-Step
+**Why this data is critical:** Without Data Axle, the Market Intel and Buyability pages are running blind. NPPES tells you *where* practices are, but Data Axle tells you *how big they are*, *how old they are*, *who runs them*, and *how much revenue they generate*. That's the difference between "there's a dental office at 123 Main St" and "there's a 30-year-old solo practice with $600K revenue that's ripe for acquisition."
 
-**Step 0:** If you forgot the exact process, print the built-in instructions:
+### The Problem: Data Axle is Tedious
+
+Data Axle's export interface is deliberately painful:
+
+- You **cannot select all results at once** if there are more than 10 pages (250 results)
+- You can only select **10 pages maximum** per download batch
+- After downloading, you have to **navigate back to the homepage** and re-run your search to get the next batch
+- Every **5 page flips** triggers an annoying **CAPTCHA** you have to solve manually
+- For 28 Chicagoland ZIPs alone, that's ~900 results across ~37 pages = **4 download cycles with 7+ CAPTCHAs**
+
+Doing this manually for both Chicagoland and Boston Metro takes 45-60 minutes of tedious clicking.
+
+### Option A: Automated Export (Recommended)
+
+We built a Playwright script that handles most of the tedium. It splits your ZIPs into small batches (4 ZIPs per search = ~4 pages = fits in one download), so you never hit the 10-page limit. You only need to handle BU SSO login and the occasional CAPTCHA.
+
+**Step 1: Install Playwright** (one-time setup)
+
+```bash
+pip install playwright && python -m playwright install chromium
+```
+
+**Step 2: Dry run** (see the batch plan without launching a browser)
+
+```bash
+cd ~/dental-pe-tracker && python3 scrapers/data_axle_scraper.py --dry-run
+```
+
+This shows you exactly how the ZIPs will be split and how many searches are needed.
+
+**Step 3: Run the exporter**
+
+```bash
+python3 scrapers/data_axle_scraper.py
+```
+
+The script will:
+1. Open a browser window and navigate to BU Library
+2. **Pause for you** to log in via BU SSO and get to the Data Axle search page
+3. Automatically fill in SIC code and ZIP codes for each batch
+4. Click Search, Select All, Export, select CSV, check all field boxes
+5. **Pause for you** if it hits a CAPTCHA
+6. Download each CSV to `data/data-axle/` with batch numbering
+7. Navigate back to search and repeat for the next batch
+8. Save progress after each batch (resumable if interrupted)
+
+**Useful flags:**
+
+| Flag | What It Does |
+|------|-------------|
+| `--metro chicagoland` | Only export Chicagoland ZIPs |
+| `--metro boston` | Only export Boston Metro ZIPs |
+| `--batch-size 3` | Use 3 ZIPs per search instead of 4 (smaller batches = fewer pages) |
+| `--resume 5` | Resume from batch 5 (if interrupted) |
+| `--zips 60491,60439` | Export specific ZIPs only |
+
+**Step 4: Import the downloaded CSVs**
+
+```bash
+python3 scrapers/data_axle_importer.py --preview   # Check column mapping first
+python3 scrapers/data_axle_importer.py --auto       # Import for real
+python3 scrapers/dso_classifier.py                  # Classify new practices
+python3 scrapers/merge_and_score.py                 # Recalculate scores
+```
+
+### Option B: Manual Export (Fallback)
+
+If the Playwright script breaks (Data Axle changes their UI, etc.), here's the manual process.
+
+**Step 0:** Print the built-in instructions:
 
 ```bash
 cd ~/dental-pe-tracker && python3 scrapers/data_axle_importer.py --instructions
@@ -325,9 +394,12 @@ cd ~/dental-pe-tracker && python3 scrapers/data_axle_importer.py --instructions
 ```
 
 3. Click **View Results**
-4. Click **Select All** (or "Select All on All Pages")
-5. Click **Download/Export** — choose **CSV** format
-6. **Check every field checkbox**, especially:
+4. You'll get ~900 results across ~37 pages. Data Axle limits selection to 10 pages at a time, so:
+   - Select pages 1-10, click Download/Export, choose CSV, check all fields, download
+   - Go back to results, select pages 11-20, download again
+   - Repeat for pages 21-30, then 31-37
+   - **Expect a CAPTCHA every ~5 page flips** — just solve it and continue
+5. **Check every field checkbox** on the first export (subsequent exports remember your selection):
    - Company Name + DBA Name
    - Full Address, City, State, ZIP
    - Phone Number
@@ -339,7 +411,7 @@ cd ~/dental-pe-tracker && python3 scrapers/data_axle_importer.py --instructions
    - Number of Locations / Location Type
    - Contact First Name, Last Name, Title
    - Latitude, Longitude
-7. Download — save as something like `data_axle_chicagoland_2026_Q2.csv`
+6. Save files as `data_axle_chicagoland_2026_Q2_batch1.csv`, etc.
 
 **Step 3: Search for Boston Metro dental practices**
 
@@ -349,8 +421,6 @@ Same process as above, but change the ZIP codes to:
 02116,02115,02118,02119,02120,02215,02134,02135,02446,02445,02467,02459,02458,02453,02451,02138,02139,02140,02141,02142,02144
 ```
 
-Save as something like `data_axle_boston_2026_Q2.csv`.
-
 **Step 4: Move files to the import folder**
 
 ```bash
@@ -358,34 +428,31 @@ mv ~/Downloads/data_axle*.csv ~/dental-pe-tracker/data/data-axle/
 ls ~/dental-pe-tracker/data/data-axle/
 ```
 
-**Step 5: Preview first** (always preview before importing to catch column mapping issues)
+**Step 5: Preview, import, and score**
 
 ```bash
 cd ~/dental-pe-tracker && python3 scrapers/data_axle_importer.py --preview
-```
-
-Review the column mapping and dedup summary. If it looks right, proceed.
-
-**Step 6: Import for real**
-
-```bash
 python3 scrapers/data_axle_importer.py --auto
+python3 scrapers/dso_classifier.py
+python3 scrapers/merge_and_score.py
 ```
 
-**Step 7: Review the debug report**
+### Reviewing the Import
+
+After importing (via either method), check the debug report:
 
 ```bash
 open ~/dental-pe-tracker/data/data-axle/debug-reports/
 ```
 
-This opens Finder. Double-click the most recent HTML file to open it in your browser. Key sections to check:
+Double-click the most recent HTML file. Key sections to check:
 
 - **Section 3 (Dedup Detail)** — Were practices correctly collapsed? (e.g., "Smith DDS" and "Smith Dental" at the same address should merge)
 - **Section 5 (Stealth DSO Suspects)** — Practices that look independent but show signs of DSO ownership. Review these manually.
 - **Section 6 (Buyability Ranking)** — Your top acquisition targets, ranked by score
 - **Section 8 (Change Detection)** — If this isn't your first import, check for name changes (possible acquisitions)
 
-**Step 8:** If the debug report shows issues, open Claude Code:
+If the debug report shows issues, open Claude Code:
 
 ```
 Read the Data Axle debug report at
@@ -396,12 +463,6 @@ and tell me about any issues. Specifically:
    or missed a merge)
 3. Any practices scored as highly buyable that are actually DSO-affiliated
 Fix whatever you find and re-run with --force-reclassify.
-```
-
-**Step 9: Recalculate everything**
-
-```bash
-python3 scrapers/merge_and_score.py
 ```
 
 ### Expanding Your Search Area
