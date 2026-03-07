@@ -42,27 +42,42 @@ CUSTOM_CSS = """
     --accent-amber: #FFB300; --accent-purple: #9C27B0; --accent-cyan: #00BCD4;
     --text-primary: #E8ECF1; --text-secondary: #8892A0; --text-muted: #566070;
 }
-body, .stApp { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-.kpi-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
-  padding: 1.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.3); transition: border-color 0.2s, transform 0.2s; }
-.kpi-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
-.kpi-number { font-family: 'JetBrains Mono', monospace; font-size: 2.2rem; font-weight: 600; color: var(--text-primary); }
-.kpi-label { font-family: 'DM Sans', sans-serif; font-size: 0.85rem; color: var(--text-secondary);
+body, .stApp { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.88rem; }
+.stApp [data-testid="stSidebar"] { font-size: 0.84rem; }
+.kpi-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+  padding: 1rem 1.2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.3); transition: border-color 0.2s, transform 0.2s; }
+.kpi-card:hover { border-color: var(--border-hover); transform: translateY(-1px); }
+.kpi-number { font-family: 'JetBrains Mono', monospace; font-size: 1.7rem; font-weight: 600; color: var(--text-primary); }
+.kpi-label { font-family: 'DM Sans', sans-serif; font-size: 0.78rem; color: var(--text-secondary);
   text-transform: uppercase; letter-spacing: 0.03em; }
-.kpi-delta-up { color: var(--accent-green); font-size: 0.9rem; }
-.kpi-delta-down { color: var(--accent-red); font-size: 0.9rem; }
-.section-header { font-family: 'DM Sans'; font-weight: 600; font-size: 1.1rem; color: var(--text-secondary);
-  text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2rem; padding-bottom: 0.5rem;
+.kpi-delta-up { color: var(--accent-green); font-size: 0.8rem; }
+.kpi-delta-down { color: var(--accent-red); font-size: 0.8rem; }
+.section-header { font-family: 'DM Sans'; font-weight: 600; font-size: 0.95rem; color: var(--text-secondary);
+  text-transform: uppercase; letter-spacing: 0.05em; margin-top: 1.5rem; padding-bottom: 0.4rem;
   border-bottom: 1px solid var(--border); }
 .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
 .status-green { background: var(--accent-green); } .status-yellow { background: var(--accent-amber); }
 .status-red { background: var(--accent-red); } .status-gray { background: var(--text-muted); }
 #MainMenu {visibility: hidden;} footer {visibility: hidden;}
-.sidebar-footer { font-size: 0.75rem; color: var(--text-muted); margin-top: 2rem; text-align: center; }
+.sidebar-footer { font-size: 0.7rem; color: var(--text-muted); margin-top: 2rem; text-align: center; }
+/* Tooltip system — CSS-only popover on hover */
 .help-tip { display: inline-block; cursor: help; background: var(--bg-card); border: 1px solid var(--border);
-  border-radius: 50%; width: 20px; height: 20px; text-align: center; font-size: 0.7rem; line-height: 20px;
-  color: var(--text-secondary); margin-left: 6px; vertical-align: middle; }
+  border-radius: 50%; width: 18px; height: 18px; text-align: center; font-size: 0.65rem; line-height: 18px;
+  color: var(--text-secondary); margin-left: 6px; vertical-align: middle; position: relative; }
 .help-tip:hover { border-color: var(--accent-blue); color: var(--accent-blue); }
+.help-tip .tip-text { visibility: hidden; opacity: 0; position: absolute; z-index: 999;
+  bottom: 130%; left: 50%; transform: translateX(-50%); width: 260px;
+  background: #1A2332; border: 1px solid var(--border-hover); border-radius: 8px;
+  padding: 0.6rem 0.8rem; font-size: 0.78rem; line-height: 1.4; color: var(--text-primary);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5); transition: opacity 0.15s; pointer-events: none;
+  font-family: 'DM Sans', sans-serif; text-transform: none; letter-spacing: normal; font-weight: 400; }
+.help-tip:hover .tip-text { visibility: visible; opacity: 1; }
+/* Reduce Streamlit default padding/spacing */
+.stApp [data-testid="stVerticalBlock"] > div { gap: 0.5rem; }
+h1 { font-size: 1.6rem !important; margin-bottom: 0.5rem !important; }
+h2 { font-size: 1.2rem !important; }
+h3 { font-size: 1rem !important; }
 </style>
 """
 
@@ -85,9 +100,9 @@ US_STATES = ["AL","AK","AZ","AR","CA","CO","CT","DE","DC","FL","GA","HI","ID","I
 
 
 def help_tip(text):
-    """Inline ? icon that shows a tooltip on hover."""
-    safe = text.replace('"', '&quot;').replace("'", "&#39;")
-    return f'<span class="help-tip" title="{safe}">?</span>'
+    """Inline ? icon with a CSS popover tooltip on hover."""
+    safe = text.replace('"', '&quot;').replace("'", "&#39;").replace("<", "&lt;").replace(">", "&gt;")
+    return f'<span class="help-tip">?<span class="tip-text">{safe}</span></span>'
 
 
 def section_header(title, help_text=None):
@@ -224,7 +239,7 @@ def render_sidebar():
         deals_df = load_deals()
 
         # Date range
-        st.markdown("**Date Range**")
+        st.markdown(f'**Date Range** {help_tip("Only show deals that happened within this date window. Affects all pages.")}', unsafe_allow_html=True)
         c1, c2 = st.columns(2)
         with c1:
             st.date_input("Start", value=date(2020, 1, 1), key="filter_date_start")
@@ -232,34 +247,40 @@ def render_sidebar():
             st.date_input("End", value=date.today(), key="filter_date_end")
 
         # Deal type
+        st.markdown(f'**Deal Type** {help_tip("Buyout = PE firm buys a dental company outright. Add-on = PE-owned platform acquires another practice. Recap = refinancing/dividend. Growth = expansion capital. De Novo = brand new office opened.")}', unsafe_allow_html=True)
         all_types = ["buyout", "add-on", "recapitalization", "growth", "de_novo", "partnership", "other"]
-        st.multiselect("Deal Type", all_types, default=all_types, key="filter_deal_types")
+        st.multiselect("Deal Type", all_types, default=all_types, key="filter_deal_types", label_visibility="collapsed")
 
         # PE Sponsor
+        st.markdown(f'**PE Sponsor** {help_tip("The private equity firm funding the deal. Examples: KKR (owns Heartland Dental), Charlesbank (owns MB2). Filter to one firm to see all their dental activity.")}', unsafe_allow_html=True)
         sponsors = sorted(deals_df["pe_sponsor"].dropna().unique().tolist()) if not deals_df.empty else []
-        st.multiselect("PE Sponsor", sponsors, key="filter_sponsors")
+        st.multiselect("PE Sponsor", sponsors, key="filter_sponsors", label_visibility="collapsed")
 
         # Platform
+        st.markdown(f'**Platform** {help_tip("The dental company (DSO) making acquisitions. Examples: Heartland Dental, Aspen Dental, MB2. A platform is backed by a PE sponsor and buys individual practices.")}', unsafe_allow_html=True)
         platforms = sorted(deals_df["platform_company"].dropna().unique().tolist()) if not deals_df.empty else []
-        st.multiselect("Platform", platforms, key="filter_platforms")
+        st.multiselect("Platform", platforms, key="filter_platforms", label_visibility="collapsed")
 
         # State
+        st.markdown(f'**State** {help_tip("Filter deals by the state where the target practice is located. Select IL for Illinois or MA for Massachusetts to see activity in your markets.")}', unsafe_allow_html=True)
         states = sorted(deals_df["target_state"].dropna().unique().tolist()) if not deals_df.empty else []
-        st.multiselect("State", states, key="filter_states")
+        st.multiselect("State", states, key="filter_states", label_visibility="collapsed")
 
         # Specialty
+        st.markdown(f'**Specialty** {help_tip("The dental specialty of the target practice. General = family dentistry (most common). Oral surgery and orthodontics are the most PE-active specialties.")}', unsafe_allow_html=True)
         specs = ["general", "orthodontics", "oral_surgery", "endodontics", "periodontics", "pediatric", "prosthodontics", "multi_specialty", "other"]
-        st.multiselect("Specialty", specs, key="filter_specialties")
+        st.multiselect("Specialty", specs, key="filter_specialties", label_visibility="collapsed")
 
         # Source
-        st.multiselect("Data Source", ["pitchbook", "pesp", "gdn"], key="filter_sources")
+        st.markdown(f'**Data Source** {help_tip("Where the deal data came from. PitchBook = financial database with deal sizes. PESP = PE deal announcements. GDN = DSO deal roundups. Multiple sources improve coverage.")}', unsafe_allow_html=True)
+        st.multiselect("Data Source", ["pitchbook", "pesp", "gdn"], key="filter_sources", label_visibility="collapsed")
 
-        if st.button("🔄 Reset All Filters"):
+        def _reset_filters():
             for k in ["filter_deal_types", "filter_sponsors", "filter_platforms", "filter_states", "filter_specialties", "filter_sources"]:
                 st.session_state[k] = []
             st.session_state["filter_date_start"] = date(2020, 1, 1)
             st.session_state["filter_date_end"] = date.today()
-            st.rerun()
+        st.button("🔄 Reset All Filters", on_click=_reset_filters)
 
         st.markdown("---")
         with st.expander("❓ How to use this dashboard"):
@@ -351,7 +372,7 @@ def page_deal_flow():
                              line=dict(color="white", width=2, dash="dash"), opacity=0.6, name="6-mo avg", showlegend=True))
     fig.update_layout(barmode="stack", xaxis_title="", yaxis_title="Deals", legend_title="Deal Type",
                       margin=dict(l=0, r=0, t=10, b=0))
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     # Top Sponsors & Platforms
     col_l, col_r = st.columns(2)
@@ -366,7 +387,7 @@ def page_deal_flow():
             fig_sp.update_layout(yaxis=dict(autorange="reversed", title=""), xaxis_title="Deals",
                                  height=450, margin=dict(l=0, r=0, t=10, b=0))
             fig_sp.update_traces(textposition="outside")
-            st.plotly_chart(fig_sp, use_container_width=True)
+            st.plotly_chart(fig_sp, width="stretch")
         else:
             st.info("No PE sponsor data available.")
 
@@ -381,7 +402,7 @@ def page_deal_flow():
             fig_pl.update_layout(yaxis=dict(autorange="reversed", title=""), xaxis_title="Deals",
                                  height=450, margin=dict(l=0, r=0, t=10, b=0))
             fig_pl.update_traces(textposition="outside")
-            st.plotly_chart(fig_pl, use_container_width=True)
+            st.plotly_chart(fig_pl, width="stretch")
         else:
             st.info("No platform data available.")
 
@@ -398,7 +419,7 @@ def page_deal_flow():
                                     template=dental_dark_template)
             fig_map.update_layout(geo=dict(bgcolor="#0B0E11", lakecolor="#141922", landcolor="#141922"),
                                   margin=dict(l=0, r=0, t=10, b=0), height=400, coloraxis_colorbar_title="Deals")
-            st.plotly_chart(fig_map, use_container_width=True)
+            st.plotly_chart(fig_map, width="stretch")
 
     with col_tbl:
         st.markdown(section_header("Top States",
@@ -406,7 +427,7 @@ def page_deal_flow():
         if not state_deals.empty:
             top_states = state_deals.nlargest(15, "deals")
             st.dataframe(top_states.rename(columns={"target_state": "State", "deals": "Deals"}),
-                         hide_index=True, use_container_width=True)
+                         hide_index=True, width="stretch")
 
     # Specialty
     col_don, col_trend = st.columns(2)
@@ -420,7 +441,7 @@ def page_deal_flow():
                              template=dental_dark_template)
             fig_don.update_layout(height=350, margin=dict(l=0, r=0, t=10, b=0))
             fig_don.update_traces(textinfo="label+percent")
-            st.plotly_chart(fig_don, use_container_width=True)
+            st.plotly_chart(fig_don, width="stretch")
 
     with col_trend:
         st.markdown(section_header("Specialty Trends",
@@ -436,7 +457,7 @@ def page_deal_flow():
                              facet_col_wrap=3, template=dental_dark_template, height=350)
             fig_sq.update_layout(showlegend=False, margin=dict(l=0, r=0, t=30, b=0))
             fig_sq.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
-            st.plotly_chart(fig_sq, use_container_width=True)
+            st.plotly_chart(fig_sq, width="stretch")
 
     # Recent Deals
     st.markdown(section_header("Recent Deal Activity",
@@ -450,7 +471,7 @@ def page_deal_flow():
     display_cols = ["deal_date", "platform_company", "pe_sponsor", "target_name", "target_state",
                     "deal_type", "specialty", "deal_size_mm", "source"]
     show = clean_dataframe(recent[[c for c in display_cols if c in recent.columns]])
-    st.dataframe(show, hide_index=True, use_container_width=True)
+    st.dataframe(show, hide_index=True, width="stretch")
     st.download_button("📥 Download filtered deals", show.to_csv(index=False), "deals_export.csv", "text/csv")
 
 
@@ -525,7 +546,7 @@ def page_market_intel():
                                      barmode="group", template=dental_dark_template, title=state_name,
                                      labels={"pct_dso_affiliated": "DSO %", "career_stage": "Career Stage"})
                     fig_ada.update_layout(height=350, margin=dict(l=0, r=0, t=40, b=0))
-                    st.plotly_chart(fig_ada, use_container_width=True)
+                    st.plotly_chart(fig_ada, width="stretch")
                 else:
                     st.info(f"No ADA HPI data for {state_name}")
 
@@ -541,7 +562,7 @@ def page_market_intel():
         zt = zs[avail_cols]
         sort_col = "opportunity_score" if "opportunity_score" in zt.columns else avail_cols[0]
         zt = zt.sort_values(sort_col, ascending=False)
-        st.dataframe(zt, hide_index=True, use_container_width=True)
+        st.dataframe(zt, hide_index=True, width="stretch")
         st.download_button("📥 Download ZIP scores", zt.to_csv(index=False), "zip_scores.csv", "text/csv")
 
     # Practice detail by ZIP
@@ -600,7 +621,7 @@ def page_market_intel():
                         display_df = zip_practices[[c for c in display_cols if c in zip_practices.columns]].copy()
                         display_df["ownership_status"] = display_df["ownership_status"].apply(format_status)
                         display_df = clean_dataframe(display_df)
-                        st.dataframe(display_df, hide_index=True, use_container_width=True)
+                        st.dataframe(display_df, hide_index=True, width="stretch")
         finally:
             sess.close()
 
@@ -623,7 +644,7 @@ def page_market_intel():
             if changes.empty:
                 st.info("No practice changes detected yet in these ZIPs. Changes appear when NPPES data is refreshed monthly.")
             else:
-                st.dataframe(clean_dataframe(changes), hide_index=True, use_container_width=True)
+                st.dataframe(clean_dataframe(changes), hide_index=True, width="stretch")
         except Exception:
             st.info("No practice changes detected yet.")
         finally:
@@ -707,7 +728,7 @@ def page_buyability():
                             "buyability_score", "verdict"]].copy()
         display["ownership_status"] = display["ownership_status"].apply(format_status)
         display = clean_dataframe(display)
-        st.dataframe(display, hide_index=True, use_container_width=True)
+        st.dataframe(display, hide_index=True, width="stretch")
         st.download_button("📥 Download analyzed practices", display.to_csv(index=False), "buyability_analysis.csv", "text/csv")
 
     finally:
@@ -745,7 +766,7 @@ def page_research():
                                  color_discrete_map=DEAL_TYPE_COLORS, template=dental_dark_template,
                                  hover_data=["target_name", "target_state"])
                 fig.update_layout(height=350, yaxis_title="", margin=dict(l=0, r=0, t=10, b=0))
-                st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(fig, width="stretch")
                 # Platforms
                 plats = sp_deals.groupby("platform_company").size().reset_index(name="deals").sort_values("deals", ascending=False)
                 st.dataframe(plats.rename(columns={"platform_company": "Platform", "deals": "Deals"}), hide_index=True)
@@ -753,7 +774,7 @@ def page_research():
                 st.markdown("**Recent Activity**")
                 recent = sp_deals.sort_values("deal_date", ascending=False).head(10)
                 st.dataframe(recent[["deal_date", "platform_company", "target_name", "target_state", "deal_type"]],
-                             hide_index=True, use_container_width=True)
+                             hide_index=True, width="stretch")
 
     with tab_pl:
         platforms = sorted(deals_df["platform_company"].dropna().unique().tolist()) if not deals_df.empty else []
@@ -768,9 +789,9 @@ def page_research():
                 fig = px.scatter(pl_deals, x="deal_date", y="target_state", color="target_state",
                                  template=dental_dark_template, hover_data=["target_name", "deal_type"])
                 fig.update_layout(height=350, yaxis_title="State", margin=dict(l=0, r=0, t=10, b=0))
-                st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(fig, width="stretch")
                 st.dataframe(pl_deals[["deal_date", "target_name", "target_state", "deal_type", "specialty"]].sort_values("deal_date", ascending=False),
-                             hide_index=True, use_container_width=True)
+                             hide_index=True, width="stretch")
 
     with tab_st:
         states = sorted(deals_df["target_state"].dropna().unique().tolist()) if not deals_df.empty else []
@@ -787,14 +808,14 @@ def page_research():
                 fig = px.bar(q_data, x="quarter", y="deals", template=dental_dark_template,
                              color_discrete_sequence=["#0066FF"])
                 fig.update_layout(height=300, margin=dict(l=0, r=0, t=10, b=0))
-                st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(fig, width="stretch")
                 # Top platforms
                 top = st_deals.groupby("platform_company").size().nlargest(10).reset_index(name="deals")
                 fig2 = px.bar(top, x="deals", y="platform_company", orientation="h", template=dental_dark_template,
                               color_discrete_sequence=["#00C853"], text="deals")
                 fig2.update_layout(yaxis=dict(autorange="reversed", title=""), height=350, margin=dict(l=0, r=0, t=10, b=0))
                 fig2.update_traces(textposition="outside")
-                st.plotly_chart(fig2, use_container_width=True)
+                st.plotly_chart(fig2, width="stretch")
 
     with tab_sql:
         st.markdown(f"""**SQL Explorer** — query the database directly {help_tip(
@@ -832,7 +853,7 @@ def page_research():
                 try:
                     result = pd.read_sql(text(q), s.bind)
                     st.success(f"✅ {len(result)} rows returned")
-                    st.dataframe(result, hide_index=True, use_container_width=True)
+                    st.dataframe(result, hide_index=True, width="stretch")
                     st.download_button("📥 Download results", result.to_csv(index=False), "query_results.csv", "text/csv")
                 except Exception as e:
                     st.error(f"Query error: {e}")
