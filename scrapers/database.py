@@ -99,6 +99,21 @@ class Practice(Base):
     affiliated_pe_sponsor = Column(Text)
     notes = Column(Text)
     data_source = Column(Text)  # nppes, data_axle, manual
+    latitude = Column(Float)
+    longitude = Column(Float)
+    # Data Axle enrichment fields
+    year_established = Column(Integer)
+    employee_count = Column(Integer)
+    estimated_revenue = Column(Float)
+    num_providers = Column(Integer)
+    location_type = Column(Text)
+    buyability_score = Column(Float)
+    classification_confidence = Column(Float)
+    classification_reasoning = Column(Text)
+    data_axle_raw_name = Column(Text)
+    data_axle_import_date = Column(Date)
+    raw_record_count = Column(Integer)
+    import_batch_id = Column(Text)
     created_at = Column(DateTime, default=func.now())
     updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
 

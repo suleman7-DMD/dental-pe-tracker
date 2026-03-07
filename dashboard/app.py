@@ -644,44 +644,38 @@ def page_buyability():
 
     sess = get_session()
     try:
-        # Check if we have any analyzed practices (notes with VERDICT)
-        analyzed_count = sess.execute(text("SELECT COUNT(*) FROM practices WHERE notes LIKE '%VERDICT%'")).scalar() or 0
+        # Load practices with EITHER a VERDICT in notes OR a buyability_score
+        analyzed = pd.read_sql(text(
+            "SELECT practice_name, address, city, zip, ownership_status, notes, "
+            "affiliated_dso, buyability_score, year_established, employee_count "
+            "FROM practices "
+            "WHERE notes LIKE '%VERDICT%' OR buyability_score IS NOT NULL "
+            "ORDER BY buyability_score DESC NULLS LAST, zip, practice_name"
+        ), sess.bind)
 
-        if analyzed_count == 0:
+        if analyzed.empty:
             st.info("**No analyzed practices yet.**\n\n"
                     "Run the directory importer to load practice analysis data, or "
                     "import Data Axle records for automated scoring.\n\n"
                     "```\npython3 -m scrapers.directory_importer\n```")
             return
 
-        # Load analyzed practices
-        analyzed = pd.read_sql(text(
-            "SELECT practice_name, address, city, zip, ownership_status, notes, affiliated_dso "
-            "FROM practices WHERE notes LIKE '%VERDICT%' ORDER BY zip, practice_name"
-        ), sess.bind)
-
         # Extract verdicts from notes
         import re
-        def extract_verdict(notes):
+        def _extract(pattern, notes):
             if not notes:
                 return "—"
-            m = re.search(r'VERDICT:\s*(.+?)(?:\n|$)', notes)
+            m = re.search(pattern, notes)
             return m.group(1).strip() if m else "—"
 
-        def extract_buyability(notes):
-            if not notes:
-                return "—"
-            m = re.search(r'Buyability:\s*(.+?)(?:\n|$)', notes)
-            return m.group(1).strip() if m else "—"
-
-        analyzed["verdict"] = analyzed["notes"].apply(extract_verdict)
-        analyzed["buyability"] = analyzed["notes"].apply(extract_buyability)
+        analyzed["verdict"] = analyzed["notes"].apply(lambda n: _extract(r'VERDICT:\s*(.+?)(?:\n|$)', n))
+        analyzed["buyability_tag"] = analyzed["notes"].apply(lambda n: _extract(r'Buyability:\s*(.+?)(?:\n|$)', n))
 
         # KPIs
-        acq_targets = analyzed[analyzed["buyability"] == "acquisition_target"]
-        dead_ends = analyzed[analyzed["buyability"] == "dead_end"]
-        job_targets = analyzed[analyzed["buyability"] == "job_target"]
-        specialists = analyzed[analyzed["buyability"] == "specialist"]
+        acq_targets = analyzed[analyzed["buyability_tag"] == "acquisition_target"]
+        dead_ends = analyzed[analyzed["buyability_tag"] == "dead_end"]
+        job_targets = analyzed[analyzed["buyability_tag"] == "job_target"]
+        specialists = analyzed[analyzed["buyability_tag"] == "specialist"]
 
         c1, c2, c3, c4 = st.columns(4)
         c1.markdown(make_kpi_card("🎯", "Acquisition Targets", len(acq_targets)), unsafe_allow_html=True)
@@ -689,19 +683,28 @@ def page_buyability():
         c3.markdown(make_kpi_card("💼", "Job Targets", len(job_targets)), unsafe_allow_html=True)
         c4.markdown(make_kpi_card("🔬", "Specialists", len(specialists)), unsafe_allow_html=True)
 
-        # Filter
+        # Filters
         st.markdown(section_header("Analyzed Practices",
-            "Practices with hand-researched verdicts. Filter by category to find acquisition targets. "
-            "Green rows are buyable. Each verdict includes forensic analysis of providers, ownership signals, and dynasty patterns."
+            "Practices with hand-researched verdicts and/or buyability scores. "
+            "Filter by category and ZIP code to find acquisition targets. "
+            "Sort by score descending to see the most buyable practices first."
         ), unsafe_allow_html=True)
 
-        category = st.selectbox("Filter by category", ["All", "Acquisition Targets", "Dead Ends", "Job Targets", "Specialists"])
+        f1, f2 = st.columns(2)
+        category = f1.selectbox("Filter by category", ["All", "Acquisition Targets", "Dead Ends", "Job Targets", "Specialists"])
+        zip_options = ["All ZIPs"] + sorted(analyzed["zip"].dropna().unique().tolist())
+        zip_filter = f2.selectbox("Filter by ZIP", zip_options, key="buyability_zip")
+
         cat_map = {"Acquisition Targets": "acquisition_target", "Dead Ends": "dead_end",
                    "Job Targets": "job_target", "Specialists": "specialist"}
+        filtered = analyzed.copy()
         if category != "All":
-            analyzed = analyzed[analyzed["buyability"] == cat_map[category]]
+            filtered = filtered[filtered["buyability_tag"] == cat_map[category]]
+        if zip_filter != "All ZIPs":
+            filtered = filtered[filtered["zip"] == zip_filter]
 
-        display = analyzed[["practice_name", "address", "city", "zip", "ownership_status", "verdict"]].copy()
+        display = filtered[["practice_name", "address", "city", "zip", "ownership_status",
+                            "buyability_score", "verdict"]].copy()
         display["ownership_status"] = display["ownership_status"].apply(format_status)
         display = clean_dataframe(display)
         st.dataframe(display, hide_index=True, use_container_width=True)
