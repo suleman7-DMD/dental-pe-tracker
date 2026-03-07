@@ -1,0 +1,18 @@
+{
+  "hooks": [
+    {
+      "name": "validate-python-syntax",
+      "description": "After editing any Python file, verify it parses correctly",
+      "event": "after_write",
+      "pattern": "**/*.py",
+      "command": "python3 -c \"import ast; ast.parse(open('$FILE').read())\" 2>&1 || echo 'SYNTAX ERROR in $FILE — fix before continuing'"
+    },
+    {
+      "name": "remind-pipeline-logger",
+      "description": "When creating a new scraper file, remind to add pipeline_logger",
+      "event": "after_write",
+      "pattern": "scrapers/*_scraper.py",
+      "command": "grep -q 'pipeline_logger' '$FILE' || echo 'WARNING: New scraper is missing pipeline_logger integration. Add log_scrape_start/log_scrape_complete calls.'"
+    }
+  ]
+}

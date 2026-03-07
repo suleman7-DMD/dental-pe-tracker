@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "Bash(cd ~/dental-pe-tracker*)",
+      "Bash(python3 -c \"import ast*)",
+      "Bash(python3 scrapers/*.py --dry-run*)",
+      "Bash(python3 scrapers/*.py --preview*)",
+      "Bash(python3 scrapers/*.py --plan*)",
+      "Bash(cat ~/dental-pe-tracker/logs/*)",
+      "Bash(ls *)",
+      "Bash(grep *)",
+      "Bash(wc *)",
+      "Bash(head *)",
+      "Bash(crontab -l*)",
+      "Bash(du -sh *)",
+      "Bash(git status*)",
+      "Bash(git log*)",
+      "Bash(git diff*)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(rm data/dental_pe_tracker.db)",
+      "Bash(git push --force*)",
+      "Bash(git reset --hard*)",
+      "Bash(DROP TABLE*)",
+      "Bash(DELETE FROM practices*)"
+    ]
+  }
+}
