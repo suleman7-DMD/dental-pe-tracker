@@ -22,6 +22,7 @@ from rapidfuzz import fuzz
 sys.path.insert(0, os.path.expanduser("~/dental-pe-tracker"))
 
 from scrapers.logger_config import get_logger
+from scrapers.pipeline_logger import log_scrape_start, log_scrape_complete
 from scrapers.database import init_db, get_session, insert_deal
 
 log = get_logger("pitchbook_importer")
@@ -556,6 +557,7 @@ def _print_preview(deals):
 
 
 def run(auto=False, preview=False):
+    _t0 = log_scrape_start("pitchbook_importer")
     log.info("=" * 60)
     log.info("PitchBook Importer starting (auto=%s, preview=%s)", auto, preview)
     log.info("=" * 60)
@@ -601,6 +603,9 @@ def run(auto=False, preview=False):
         log.info("Duplicates skipped:     %d", total_duplicates)
         log.info("Errors:                 %d", total_errors)
         log.info("=" * 60)
+        log_scrape_complete("pitchbook_importer", _t0, new_records=total_imported,
+                            summary=f"PitchBook: {total_imported} deals imported, {total_duplicates} dupes, {files_processed} files",
+                            extra={"files_processed": files_processed, "duplicates": total_duplicates})
 
 
 if __name__ == "__main__":

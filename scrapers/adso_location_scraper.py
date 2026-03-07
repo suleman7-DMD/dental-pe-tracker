@@ -27,6 +27,7 @@ from scrapers.database import (
     init_db, get_session, DSOLocation, Practice, PracticeChange,
     insert_or_update_practice, log_practice_change,
 )
+from scrapers.pipeline_logger import log_scrape_start, log_scrape_complete, log_scrape_error
 
 log = get_logger("adso_location_scraper")
 
@@ -613,6 +614,7 @@ def scrape_dso(dso_entry):
 
 def run(dry_run=False, dso_name_filter=None):
     """Main entry point."""
+    _t0 = log_scrape_start("adso_scraper")
     log.info("=" * 60)
     log.info("ADSO Location Scraper starting (dry_run=%s)", dry_run)
     log.info("=" * 60)
@@ -699,6 +701,13 @@ def run(dry_run=False, dso_name_filter=None):
         log.info("New DSO affiliations detected: %d", total_new_affiliations)
     log.info("Skipped (needs browser):      %d DSOs", total_skipped)
     log.info("=" * 60)
+
+    if not dry_run:
+        log_scrape_complete("adso_scraper", _t0, new_records=total_locations,
+                            updated_records=total_new_affiliations,
+                            summary=f"ADSO: {total_locations} locations from {total_scraped} DSOs, {total_new_affiliations} new affiliations, {total_skipped} skipped (needs browser)",
+                            extra={"dsos_scraped": total_scraped, "dsos_skipped": total_skipped,
+                                   "locations_matched": total_matched})
 
     if needs_browser_list:
         print("\nDSOs requiring Playwright/browser scraping:")

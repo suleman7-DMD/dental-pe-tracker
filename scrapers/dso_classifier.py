@@ -22,6 +22,7 @@ from scrapers.database import (
     init_db, get_session, Practice, WatchedZip, DSOLocation,
     log_practice_change, table_exists,
 )
+from scrapers.pipeline_logger import log_scrape_start, log_scrape_complete, log_scrape_error
 
 log = get_logger("dso_classifier")
 
@@ -272,6 +273,7 @@ def _location_match_pass(session, practices, counts, dry_run, force, today):
 
 
 def run(zip_filter=False, force=False, dry_run=False):
+    _t0 = log_scrape_start("dso_classifier")
     log.info("=" * 60)
     log.info("DSO Classifier starting (zip_filter=%s, force=%s, dry_run=%s)",
              zip_filter, force, dry_run)
@@ -389,6 +391,11 @@ def run(zip_filter=False, force=False, dry_run=False):
     log.info("  Unknown:                 %s", f"{counts['unknown']:,}")
     if not dry_run:
         log.info("Changes saved to DB:       %s", f"{changes_made:,}")
+        log_scrape_complete("dso_classifier", _t0, new_records=changes_made,
+                            summary=f"Classifier: {changes_made} changes — PE:{counts['pe_backed']}, DSO:{counts['dso_affiliated']}, Indep:{counts['independent']}, Unk:{counts['unknown']}",
+                            extra={"pe_backed": counts["pe_backed"], "dso_affiliated": counts["dso_affiliated"],
+                                   "independent": counts["independent"], "unknown": counts["unknown"],
+                                   "location_upgrades": location_upgrades})
     log.info("Location-match upgrades:   %s", f"{location_upgrades:,}")
     log.info("=" * 60)
 

@@ -21,6 +21,7 @@ sys.path.insert(0, os.path.expanduser("~/dental-pe-tracker"))
 
 from scrapers.logger_config import get_logger
 from scrapers.database import init_db, get_session, insert_deal
+from scrapers.pipeline_logger import log_scrape_start, log_scrape_complete, log_scrape_error
 
 log = get_logger("gdn_scraper")
 
@@ -589,6 +590,7 @@ def scrape_post(url, title, fallback_date):
 
 def run(dry_run=False):
     """Main entry point."""
+    _t0 = log_scrape_start("gdn_scraper")
     log.info("=" * 60)
     log.info("GDN Scraper starting (dry_run=%s)", dry_run)
     log.info("=" * 60)
@@ -667,6 +669,9 @@ def run(dry_run=False):
     if not dry_run:
         log.info("New deals inserted:     %d", new_inserted)
         log.info("Duplicates skipped:     %d", duplicates)
+        log_scrape_complete("gdn_scraper", _t0, new_records=new_inserted,
+                            summary=f"GDN: {new_inserted} new deals, {duplicates} dupes ({pages_success} pages scraped)",
+                            extra={"duplicates": duplicates, "pages_scraped": pages_success, "pages_failed": pages_failed})
     log.info("=" * 60)
 
 

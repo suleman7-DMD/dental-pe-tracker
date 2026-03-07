@@ -27,6 +27,7 @@ from bs4 import BeautifulSoup
 sys.path.insert(0, os.path.expanduser("~/dental-pe-tracker"))
 
 from scrapers.logger_config import get_logger
+from scrapers.pipeline_logger import log_scrape_start, log_scrape_complete, log_scrape_error
 from scrapers.database import (
     init_db, get_session, Practice, PracticeChange, WatchedZip,
     insert_or_update_practice, log_practice_change,
@@ -545,6 +546,7 @@ def _save_snapshot(dental_rows, prefix):
 
 
 def run(watched_only=False, dry_run=False):
+    _t0 = log_scrape_start("nppes_downloader")
     log.info("=" * 60)
     log.info("NPPES Downloader starting (watched_only=%s, dry_run=%s)", watched_only, dry_run)
     log.info("=" * 60)
@@ -659,6 +661,12 @@ def run(watched_only=False, dry_run=False):
     if stats.get("snapshot_path"):
         log.info("Snapshot saved:         %s", stats["snapshot_path"])
     log.info("=" * 60)
+
+    new_count = stats.get("inserted", 0) or stats.get("new_practices", 0)
+    log_scrape_complete("nppes_downloader", _t0, new_records=new_count,
+                        summary=f"NPPES: {stats['dental_rows']:,} dental rows, {new_count:,} new/inserted",
+                        extra={"total_rows": stats["total_rows"], "dental_rows": stats["dental_rows"],
+                               "changes_logged": stats.get("changes_logged", 0)})
 
     session.close()
 

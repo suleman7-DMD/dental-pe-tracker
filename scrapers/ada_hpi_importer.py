@@ -19,6 +19,7 @@ import pandas as pd
 sys.path.insert(0, os.path.expanduser("~/dental-pe-tracker"))
 
 from scrapers.logger_config import get_logger
+from scrapers.pipeline_logger import log_scrape_start, log_scrape_complete
 from scrapers.database import init_db, get_session, ADAHPIBenchmark
 
 log = get_logger("ada_hpi_importer")
@@ -286,6 +287,7 @@ Then run:
 
 
 def run(preview=False):
+    _t0 = log_scrape_start("ada_hpi_importer")
     log.info("=" * 60)
     log.info("ADA HPI Importer starting (preview=%s)", preview)
     log.info("=" * 60)
@@ -327,6 +329,10 @@ def run(preview=False):
 
     log.info("Inserted: %d, Updated: %d", inserted, updated)
     print(f"\nInserted: {inserted}, Updated: {updated}")
+
+    log_scrape_complete("ada_hpi_importer", _t0, new_records=inserted,
+                        summary=f"ADA HPI: {inserted} inserted, {updated} updated from {len(xlsx_files)} files",
+                        extra={"updated": updated, "total_records": len(all_records)})
 
     # Summary for IL and MA
     print_state_summary(session, ("IL", "MA"))

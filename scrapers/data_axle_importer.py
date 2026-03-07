@@ -30,6 +30,7 @@ from rapidfuzz import fuzz, process as rfprocess
 sys.path.insert(0, os.path.expanduser("~/dental-pe-tracker"))
 
 from scrapers.logger_config import get_logger
+from scrapers.pipeline_logger import log_scrape_start, log_scrape_complete
 from scrapers.database import (
     init_db, get_session, get_engine, Practice, PracticeChange, WatchedZip,
     log_practice_change,
@@ -1827,6 +1828,7 @@ def run(preview=False, auto=False, instructions=False, zip_filter=None,
         print_instructions()
         return
 
+    _t0 = log_scrape_start("data_axle_importer")
     log.info("=" * 60)
     log.info("Data Axle Importer starting (preview=%s, auto=%s, debug=%s)",
              preview, auto, debug)
@@ -2098,6 +2100,10 @@ def run(preview=False, auto=False, instructions=False, zip_filter=None,
     log.info("Classification:      %s", classification_summary)
     log.info("Debug report:        %s", report_path)
     log.info("=" * 60)
+    log_scrape_complete("data_axle_importer", _t0, new_records=db_stats["new"],
+                        summary=f"Data Axle: {len(doors)} doors, {db_stats['new']} new, {db_stats['matched']} matched",
+                        extra={"raw_records": import_stats["raw_total"], "valid": import_stats["valid"],
+                               "doors": len(doors), "matched": db_stats["matched"]})
 
 
 def _print_preview(doors):

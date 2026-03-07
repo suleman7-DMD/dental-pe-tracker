@@ -544,17 +544,26 @@ def page_market_intel():
         total_p = int(zs["total_practices"].sum())
         pe_cnt = int(zs["pe_backed_count"].sum())
         dso_cnt = int(zs["dso_affiliated_count"].sum())
+        indep_cnt = int(zs["independent_count"].sum())
+        unk_cnt = int(zs["unknown_count"].sum())
         classified = int(zs["classified_count"].sum())
-        consol = ((pe_cnt + dso_cnt) / classified * 100) if classified > 0 else 0
-        pe_pct = (pe_cnt / classified * 100) if classified > 0 else 0
-        unk_pct = float(zs["pct_unknown"].mean()) if not zs.empty else 100
+        # Conservative: use total as denominator (unknown = independent until proven otherwise)
+        consol_total = ((pe_cnt + dso_cnt) / total_p * 100) if total_p > 0 else 0
+        pe_pct_total = (pe_cnt / total_p * 100) if total_p > 0 else 0
+        unk_pct = (unk_cnt / total_p * 100) if total_p > 0 else 100
         conf = "🟢 High" if unk_pct < 20 else ("🟡 Medium" if unk_pct <= 50 else "🔴 Low")
 
         c1, c2, c3, c4 = st.columns(4)
-        c1.markdown(make_kpi_card("🏥", "Total Practices", total_p), unsafe_allow_html=True)
-        c2.markdown(make_kpi_card("📊", f"Consolidated {conf}", f"{consol:.1f}%"), unsafe_allow_html=True)
-        c3.markdown(make_kpi_card("💰", "PE-Backed", f"{pe_pct:.1f}%"), unsafe_allow_html=True)
+        c1.markdown(make_kpi_card("🏥", "Total Practices", f"{total_p:,}"), unsafe_allow_html=True)
+        c2.markdown(make_kpi_card("📊", f"Known Consolidated {conf}", f"{consol_total:.1f}%"), unsafe_allow_html=True)
+        c3.markdown(make_kpi_card("💰", "Known PE-Backed", f"{pe_pct_total:.1f}%"), unsafe_allow_html=True)
         c4.markdown(make_kpi_card("📈", "Opportunity Score", f"{zs['opportunity_score'].mean():.0f}"), unsafe_allow_html=True)
+
+        # Transparency bar: show data classification breakdown
+        if unk_pct > 30:
+            st.caption(f"⚠️ {unk_pct:.0f}% of practices have unknown ownership ({unk_cnt:,} / {total_p:,}). "
+                       f"Classified: {classified:,} — Independent: {indep_cnt:,}, DSO: {dso_cnt:,}, PE: {pe_cnt:,}. "
+                       f"Real consolidation is likely higher. Add Data Axle exports to improve classification.")
 
     # ADA HPI Benchmarks
     ada = load_ada_hpi()
@@ -629,10 +638,10 @@ def page_market_intel():
     if not zs.empty:
         st.markdown(section_header("ZIP Code Consolidation Detail",
             "Each row = one ZIP code. Columns show how many practices are independent vs DSO vs PE-backed. "
-            "Consolidation % = (DSO + PE) / total classified. Opportunity Score = higher means more independent "
-            "practices available for acquisition. Data Confidence = how many practices we could classify."), unsafe_allow_html=True)
+            "Consolidation % = (DSO + PE) / total practices (conservative — treats unknowns as not consolidated). "
+            "Opportunity Score = higher means more independent practices. Data Confidence = how well we can classify."), unsafe_allow_html=True)
         show_cols = ["zip_code", "city", "total_practices", "independent_count", "dso_affiliated_count",
-                     "pe_backed_count", "unknown_count", "consolidation_pct", "data_confidence", "opportunity_score"]
+                     "pe_backed_count", "unknown_count", "consolidation_pct_of_total", "pct_unknown", "data_confidence", "opportunity_score"]
         avail_cols = [c for c in show_cols if c in zs.columns]
         zt = zs[avail_cols]
         sort_col = "opportunity_score" if "opportunity_score" in zt.columns else avail_cols[0]
@@ -689,13 +698,15 @@ def page_market_intel():
                 with st.expander(city_label):
                     # City-level mini KPIs
                     if city_total > 0:
-                        classified = city_indep + city_dso + city_pe
-                        consol = ((city_dso + city_pe) / classified * 100) if classified > 0 else 0
+                        city_unk = city_total - city_indep - city_dso - city_pe
+                        consol = ((city_dso + city_pe) / city_total * 100)
                         kc1, kc2, kc3, kc4 = st.columns(4)
                         kc1.metric("Total", city_total)
                         kc2.metric("Independent", city_indep)
                         kc3.metric("DSO + PE", city_dso + city_pe)
-                        kc4.metric("Consolidated", f"{consol:.0f}%")
+                        kc4.metric("Known Consolidated", f"{consol:.0f}%",
+                                   delta=f"{city_unk} unknown" if city_unk > 0 else None,
+                                   delta_color="off")
 
                     # ZIP sub-expanders within each city
                     for zc in zips_in_city:
@@ -1069,26 +1080,82 @@ def _render_system_health(s):
         st.markdown(f'<span style="color:{color};font-weight:600">{label}: {pct:.0f}%</span> ({count:,} / {total:,})', unsafe_allow_html=True)
         st.progress(min(pct / 100, 1.0))
 
-    # Log viewer
-    st.markdown(section_header("Recent Logs",
-        "Last 100 lines from the most recent log file. Warnings (yellow) and errors (red) are highlighted. "
-        "Logs are generated each time a scraper or data pipeline runs."
+    # Pipeline Activity Log (structured events)
+    st.markdown(section_header("Pipeline Activity Log",
+        "Timestamped record of every automated scraper and pipeline run. Shows what ran, what changed, and whether it succeeded. "
+        "Events are logged by each scraper in the refresh pipeline. Green = success, red = error."
     ), unsafe_allow_html=True)
-    log_files = sorted(globmod.glob(os.path.join(LOGS_DIR, "*.log")))
-    if log_files:
-        with open(log_files[-1], "r") as f:
-            lines = f.readlines()[-100:]
-        display = []
-        for line in lines:
-            if "WARNING" in line:
-                display.append("⚠️ " + line.rstrip())
-            elif "ERROR" in line:
-                display.append("❌ " + line.rstrip())
-            else:
-                display.append(line.rstrip())
-        st.code("\n".join(display), language="log")
+
+    try:
+        from scrapers.pipeline_logger import get_recent_events, get_last_run_summary
+        events = get_recent_events(limit=30)
+    except ImportError:
+        events = []
+
+    if events:
+        # Last-run summary cards
+        try:
+            last_runs = get_last_run_summary()
+        except Exception:
+            last_runs = {}
+        if last_runs:
+            cols = st.columns(min(len(last_runs), 4))
+            for i, (src, ev) in enumerate(sorted(last_runs.items())):
+                with cols[i % len(cols)]:
+                    ts = ev.get("timestamp", "")[:16].replace("T", " ")
+                    status = ev.get("status", "")
+                    emoji = "✅" if status == "success" else "❌"
+                    label = src.replace("_", " ").title()
+                    new_r = ev.get("details", {}).get("new_records", 0)
+                    dur = ev.get("details", {}).get("duration_seconds", 0)
+                    st.metric(f"{emoji} {label}", f"{new_r} new" if new_r else "No changes",
+                              f"{dur}s • {ts}")
+
+        # Event table
+        rows = []
+        for ev in reversed(events):
+            ts = ev.get("timestamp", "")[:19].replace("T", " ")
+            src = ev.get("source", "")
+            status = ev.get("status", "")
+            summary = ev.get("summary", "")
+            det = ev.get("details", {})
+            dur = det.get("duration_seconds", "")
+            new_r = det.get("new_records", "")
+            status_icon = {"success": "🟢", "error": "🔴", "info": "🔵"}.get(status, "⚪")
+            rows.append({
+                "Time": ts,
+                "Source": src,
+                "Status": status_icon,
+                "Summary": summary[:80],
+                "New": new_r,
+                "Duration": f"{dur}s" if dur else "",
+            })
+        if rows:
+            ev_df = pd.DataFrame(rows)
+            st.dataframe(ev_df, use_container_width=True, hide_index=True)
     else:
-        st.info("No logs found.")
+        st.info("No pipeline events yet. Events will appear after the first automated refresh runs.")
+
+    # Raw log viewer (expandable)
+    with st.expander("Raw Log Files (debug)", expanded=False):
+        log_files = sorted(globmod.glob(os.path.join(LOGS_DIR, "*.log")))
+        if log_files:
+            selected_log = st.selectbox("Log file", [os.path.basename(f) for f in reversed(log_files[-10:])])
+            log_path = os.path.join(LOGS_DIR, selected_log)
+            if os.path.exists(log_path):
+                with open(log_path, "r") as f:
+                    lines = f.readlines()[-100:]
+                display = []
+                for line in lines:
+                    if "WARNING" in line:
+                        display.append("⚠️ " + line.rstrip())
+                    elif "ERROR" in line:
+                        display.append("❌ " + line.rstrip())
+                    else:
+                        display.append(line.rstrip())
+                st.code("\n".join(display), language="log")
+        else:
+            st.info("No log files found.")
 
     # Manual Entry Forms
     st.markdown(section_header("Manual Data Entry",

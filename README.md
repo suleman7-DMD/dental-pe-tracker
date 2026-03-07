@@ -14,10 +14,10 @@ A data-driven intelligence dashboard that tracks private equity activity in U.S.
 3. [How to Start the Dashboard](#how-to-start-the-dashboard)
 4. [Weekly: Automated Refresh (Nothing To Do)](#weekly-automated-refresh-nothing-to-do)
 5. [Monthly: NPPES Refresh](#monthly-nppes-refresh)
-6. [Monthly: ADSO Location Scraper](#monthly-adso-location-scraper)
+6. [ADSO Location Scraper (Automated)](#adso-location-scraper-automated)
 7. [Quarterly: PitchBook Export](#quarterly-pitchbook-export)
 8. [Quarterly: Data Axle Export](#quarterly-data-axle-export)
-9. [Annually: ADA HPI Benchmark Update](#annually-ada-hpi-benchmark-update)
+9. [ADA HPI Benchmark Update (Automated)](#ada-hpi-benchmark-update-automated)
 10. [Dashboard Page Guide](#dashboard-page-guide)
 11. [Useful SQL Queries](#useful-sql-queries)
 12. [Feature Add-Ons via Claude Code](#feature-add-ons-via-claude-code)
@@ -54,9 +54,9 @@ The system pulls from 9 different data sources. Some run automatically, some nee
 | **GDN** | DSO deal roundups nationally | Weekly | None | Yes — runs via cron every Sunday |
 | **NPPES** | Every dental practice in the US (name, address, NPI number, specialty) | Monthly | ~2 minutes | Semi-auto — cron tries first Sunday, manual backup if it fails |
 | **PitchBook** | Deal sizes, EBITDA multiples, PE sponsor details, company profiles | Quarterly | ~5 minutes | Manual — you download from pitchbook.com and drop the file in a folder |
-| **ADA HPI** | State-level DSO affiliation rates by career stage | Annually | ~2 minutes | Manual — download one Excel file from ada.org once a year |
-| **Data Axle** | Practice-level business data (revenue, employees, year established, ownership) | Quarterly | ~10 min (automated) / ~45 min (manual) | Semi-auto — Playwright script handles most clicks, you handle SSO login + CAPTCHAs |
-| **ADSO Scraper** | DSO office locations scraped from their websites | Monthly | ~1 minute | Claude Code prompt — paste and run |
+| **ADA HPI** | State-level DSO affiliation rates by career stage | Annually | None | Yes — auto-downloader checks weekly, grabs new files when ADA publishes them |
+| **Data Axle** | Practice-level business data (revenue, employees, year established, ownership) | Quarterly | ~15 min (smart batch) / ~45 min (manual) | Semi-auto — smart batch exporter handles planning + file mgmt, you handle browser clicks + CAPTCHAs |
+| **ADSO Scraper** | DSO office locations scraped from their websites | Weekly | None | Yes — runs via cron every Sunday |
 | **DSO Classifier** | Tags each practice as independent, DSO-affiliated, or PE-backed | After any data load | None | Auto — runs as part of the pipeline |
 | **Merge & Score** | Consolidation scores, opportunity scores, metro-level rollups | After any data load | None | Auto — runs as part of the pipeline |
 
@@ -88,15 +88,30 @@ This starts the dashboard at [http://localhost:8051](http://localhost:8051). Use
 
 Your Mac has a cron job that runs every Sunday at 8:00 AM. It automatically:
 
-1. Scrapes **PESP** for new PE deal announcements
-2. Scrapes **GDN** for new DSO deal roundups
-3. Imports any **PitchBook** CSV/Excel files you dropped in the import folder
-4. Runs the **DSO classifier** to tag new practices
-5. Recalculates **consolidation scores** for all ZIP codes
+1. **Backs up** the database
+2. Scrapes **PESP** for new PE deal announcements
+3. Scrapes **GDN** for new DSO deal roundups
+4. Imports any **PitchBook** CSV/Excel files you dropped in the import folder
+5. Scrapes **ADSO** DSO websites for office locations
+6. Checks **ADA HPI** for new annual data files (auto-downloads when available)
+7. Runs the **DSO classifier** to tag new practices
+8. Recalculates **consolidation scores** for all ZIP codes
+9. **Compresses DB + git pushes** to auto-deploy to Streamlit Cloud
+
+Every step logs a structured event to `logs/pipeline_events.jsonl` with timestamp, duration, records processed, and a summary of what changed. View these on the **System Health** page under "Pipeline Activity Log".
 
 **You don't need to do anything.** But if you want to verify it ran:
 
 ```bash
+# Check the structured event log (recommended)
+cd ~/dental-pe-tracker && python3 -c "
+from scrapers.pipeline_logger import get_last_run_summary
+for src, ev in sorted(get_last_run_summary().items()):
+    ts = ev['timestamp'][:16]; s = ev.get('status','?')
+    print(f\"{'✅' if s=='success' else '❌'} {src:25} {ts} {ev.get('summary','')[:60]}\")
+"
+
+# Or check the raw log file
 cat ~/dental-pe-tracker/logs/refresh_$(date +%Y-%m-%d)*.log | tail -30
 ```
 
@@ -172,23 +187,13 @@ Also show any changes in my watched ZIP codes (Chicagoland and Boston Metro).
 
 ---
 
-## Monthly: ADSO Location Scraper
+## ADSO Location Scraper (Automated)
 
-**When to do this:** Same weekend as the NPPES refresh.
+**Runs automatically** every Sunday as step [5/8] of the weekly refresh pipeline. No manual action needed.
 
-**What it does:** Visits DSO websites and scrapes their "Locations" pages to find all their office addresses. Then it matches those addresses against your practice database to see which practices in your watched markets are DSO-affiliated.
+**What it does:** Visits DSO websites and scrapes their "Locations" pages to find all their office addresses. Then it matches those addresses against your practice database to see which practices in your watched markets are DSO-affiliated. Currently scrapes 7 DSOs with static HTML pages; 13 more are flagged `needs_browser` (JS-rendered).
 
-### Step-by-Step
-
-**Step 1:** Open Claude Code and paste:
-
-```
-Run the ADSO location scraper at ~/dental-pe-tracker/scrapers/adso_location_scraper.py
-to get fresh DSO office location data. Show me the summary and specifically
-any new locations found in Illinois or Massachusetts since last scrape.
-```
-
-**Step 2:** (Optional) If you want to add a new DSO to track (maybe you heard about one at a conference), paste into Claude Code:
+**To add a new DSO to track** (e.g., you hear about one at a conference), paste into Claude Code:
 
 ```
 Add [DSO NAME] to the ADSO location scraper. Their website is [URL].
@@ -303,63 +308,65 @@ Were any of these deals in Illinois or Massachusetts?
 
 **Why this data is critical:** Without Data Axle, the Market Intel and Buyability pages are running blind. NPPES tells you *where* practices are, but Data Axle tells you *how big they are*, *how old they are*, *who runs them*, and *how much revenue they generate*. That's the difference between "there's a dental office at 123 Main St" and "there's a 30-year-old solo practice with $600K revenue that's ripe for acquisition."
 
+**Current gap:** You have 852 Chicagoland records but **zero Boston Metro records**. That means 83% of watched-ZIP practices have no buyability scores. Boston is the #1 priority.
+
 ### The Problem: Data Axle is Tedious
 
 Data Axle's export interface is deliberately painful:
 
-- You **cannot select all results at once** if there are more than 10 pages (250 results)
-- You can only select **10 pages maximum** per download batch
-- After downloading, you have to **navigate back to the homepage** and re-run your search to get the next batch
-- Every **5 page flips** triggers an annoying **CAPTCHA** you have to solve manually
-- For 28 Chicagoland ZIPs alone, that's ~900 results across ~37 pages = **4 download cycles with 7+ CAPTCHAs**
+- **250 records max per download** — you can't select more than ~10 pages at once
+- After downloading, you must **go back to the homepage, re-run your search**, then navigate to where you left off
+- Every **5 page flips** triggers a **CAPTCHA** you have to solve manually
+- For all 28 Chicagoland ZIPs in one search: ~900 results, ~37 pages, **4 re-navigation cycles, 7+ CAPTCHAs, ~45 minutes**
+- Doing both metros manually = **60-90 minutes of tedious repetitive clicking**
 
-Doing this manually for both Chicagoland and Boston Metro takes 45-60 minutes of tedious clicking.
+### The Solution: Smart ZIP Batching
 
-### Option A: Automated Export (Recommended)
+Instead of dumping all ZIPs into one search and fighting the 250-record limit, we split ZIPs into small batches (4 per search). Each batch yields ~100-140 results — fits in **one download, no re-navigation, minimal CAPTCHAs**.
 
-We built a Playwright script that handles most of the tedium. It splits your ZIPs into small batches (4 ZIPs per search = ~4 pages = fits in one download), so you never hit the 10-page limit. You only need to handle BU SSO login and the occasional CAPTCHA.
+| | Manual (all ZIPs at once) | Smart Batching (4 ZIPs/search) |
+|--|---|---|
+| Chicagoland | 37 pages, 4 download cycles, ~7 CAPTCHAs, ~41 min | 7 searches, ~2 CAPTCHAs, ~14 min |
+| Boston Metro | ~21 pages, 3 download cycles, ~4 CAPTCHAs, ~27 min | 6 searches, ~2 CAPTCHAs, ~12 min |
 
-**Step 1: Install Playwright** (one-time setup)
+### Option A: Smart Batch Exporter (Recommended)
+
+An interactive terminal script that manages all the bookkeeping — you handle the browser clicks, it handles the batch planning, clipboard, file naming, progress tracking, and CSV combination.
+
+**Step 1: See the plan** (no browser needed)
 
 ```bash
-pip install playwright && python -m playwright install chromium
+cd ~/dental-pe-tracker && python3 scrapers/data_axle_exporter.py --plan --metro boston
 ```
 
-**Step 2: Dry run** (see the batch plan without launching a browser)
+**Step 2: Run the exporter**
 
 ```bash
-cd ~/dental-pe-tracker && python3 scrapers/data_axle_scraper.py --dry-run
-```
-
-This shows you exactly how the ZIPs will be split and how many searches are needed.
-
-**Step 3: Run the exporter**
-
-```bash
-python3 scrapers/data_axle_scraper.py
+python3 scrapers/data_axle_exporter.py --metro boston
 ```
 
 The script will:
-1. Open a browser window and navigate to BU Library
-2. **Pause for you** to log in via BU SSO and get to the Data Axle search page
-3. Automatically fill in SIC code and ZIP codes for each batch
-4. Click Search, Select All, Export, select CSV, check all field boxes
-5. **Pause for you** if it hits a CAPTCHA
-6. Download each CSV to `data/data-axle/` with batch numbering
-7. Navigate back to search and repeat for the next batch
-8. Save progress after each batch (resumable if interrupted)
+1. Show you the batch plan (6 batches of 4 ZIPs each for Boston)
+2. **Copy ZIP codes to your clipboard** for each batch — just Cmd+V to paste
+3. Tell you exactly what to click: paste ZIPs → View Results → Select All → Download → CSV → All Fields
+4. Wait for you to confirm the download is done
+5. **Auto-detect and rename** the downloaded CSV
+6. **Save progress** after each batch (resume if interrupted)
+7. After all batches: **auto-combine and deduplicate** all CSVs into one file
 
 **Useful flags:**
 
 | Flag | What It Does |
 |------|-------------|
-| `--metro chicagoland` | Only export Chicagoland ZIPs |
-| `--metro boston` | Only export Boston Metro ZIPs |
-| `--batch-size 3` | Use 3 ZIPs per search instead of 4 (smaller batches = fewer pages) |
+| `--metro boston` | Export Boston Metro ZIPs (your biggest gap) |
+| `--metro chicagoland` | Export Chicagoland ZIPs |
+| `--metro all` | Export both metros back-to-back |
+| `--batch-size 3` | Fewer ZIPs per search = fewer results = safer if hitting 250 limit |
 | `--resume 5` | Resume from batch 5 (if interrupted) |
-| `--zips 60491,60439` | Export specific ZIPs only |
+| `--zips 33901,33907 --label fortmyers` | Custom ZIPs for scouting new markets |
+| `--combine` | Just combine existing CSVs (no browser needed) |
 
-**Step 4: Import the downloaded CSVs**
+**Step 3: Import the downloaded CSVs**
 
 ```bash
 python3 scrapers/data_axle_importer.py --preview   # Check column mapping first
@@ -368,9 +375,55 @@ python3 scrapers/dso_classifier.py                  # Classify new practices
 python3 scrapers/merge_and_score.py                 # Recalculate scores
 ```
 
-### Option B: Manual Export (Fallback)
+### Option B: Playwright Browser Automation (Faster but Fragile)
 
-If the Playwright script breaks (Data Axle changes their UI, etc.), here's the manual process.
+If the smart batch exporter feels too manual, there are two Playwright scripts that try to automate the browser clicks directly. These are **faster when they work** but break whenever Data Axle changes their UI.
+
+```bash
+# Install Playwright (one-time)
+pip install playwright && python -m playwright install chromium
+
+# Option B1: ZIP-batch approach (auto-fills SIC + ZIPs, clicks Search/Download)
+python3 scrapers/data_axle_scraper.py --metro boston
+
+# Option B2: All-at-once approach (you do the search, script handles pagination)
+python3 scrapers/data_axle_automator.py --metro boston
+```
+
+Both still require you to handle BU SSO login and CAPTCHAs. Use these if Option A feels slow — but fall back to Option A if selectors break.
+
+### Option C: WRDS Bulk Download (No CAPTCHAs, No Pagination)
+
+BU has access to [WRDS (Wharton Research Data Services)](https://wrds-www.wharton.upenn.edu/), which hosts the same underlying InfoGroup/Data Axle business database in bulk-downloadable form. **No CAPTCHAs, no pagination, no 250-record limits.**
+
+**When to use this:** If you need a massive initial load (thousands of records) or Data Axle's web interface is being particularly hostile.
+
+**Step 1:** Go to [wrds-www.wharton.upenn.edu](https://wrds-www.wharton.upenn.edu/) and register with your BU email (takes up to 48 hours first time).
+
+**Step 2:** Navigate to Subscribers → Data Axle (Infogroup) → Business Academic → Query Form.
+
+**Step 3:** Filter by:
+- SIC Code: `802100` (WRDS uses 6-digit SIC codes)
+- State: IL, MA
+- Date range: Most recent year available
+
+**Step 4:** Select all available fields and submit. Download as CSV.
+
+**Caveats:**
+- WRDS data may lag 6-12 months behind the live Reference Solutions data
+- Field names differ slightly (you may need to adjust the importer's column mapping)
+- Registration takes up to 48 hours — plan ahead
+
+**Step 5:** Import the same way:
+```bash
+mv ~/Downloads/wrds_*.csv ~/dental-pe-tracker/data/data-axle/
+python3 scrapers/data_axle_importer.py --preview
+python3 scrapers/data_axle_importer.py --auto
+```
+
+### Option D: Manual Export (Last Resort)
+
+If all automation options fail, here's the fully manual process.
 
 **Step 0:** Print the built-in instructions:
 
@@ -482,35 +535,23 @@ next Data Axle search to cover this new area.
 
 ---
 
-## Annually: ADA HPI Benchmark Update
+## ADA HPI Benchmark Update (Automated)
 
-**When to do this:** Check in June/July when the ADA publishes new data.
+**Runs automatically** every Sunday as step [6/8] of the weekly refresh pipeline. The `ada_hpi_downloader.py` checks whether the ADA has published new XLSX files for years not yet downloaded. When a new file appears, it downloads it and runs the importer automatically.
+
+**Current data:** 2022, 2023, 2024 (2025 not yet published by ADA as of March 2026).
 
 **What it does:** The ADA Health Policy Institute publishes state-level data on what percentage of dentists are DSO-affiliated, broken down by career stage. This gives you the official "how consolidated is this state" benchmarks to compare against your practice-level data.
 
-### Step-by-Step
+**How the auto-download works:** The ADA publishes XLSX files at predictable URLs (`hpidata_dentist_practice_modalities_YYYY.xlsx`). The downloader checks content-type headers to distinguish real XLSX files from HTML error pages (the ADA returns HTTP 200 with HTML for missing years instead of a 404). When a real file is detected, it downloads it, runs the importer, and logs the event to the pipeline log.
 
-**Step 1:** Visit the ADA HPI data page:
-
-```
-ada.org/resources/research/health-policy-institute/dental-practice-research/practice-modalities-among-us-dentists
-```
-
-**Step 2:** Check if there's a new year's Excel file (e.g., "2025 Distribution of Dentists..."). If yes, download it.
-
-**Step 3:** Move it to the import folder:
+**To verify what's available:**
 
 ```bash
-mv ~/Downloads/HPIData*.xlsx ~/dental-pe-tracker/data/ada-hpi/
+cd ~/dental-pe-tracker && python3 scrapers/ada_hpi_downloader.py --dry-run
 ```
 
-**Step 4:** Run the importer:
-
-```bash
-cd ~/dental-pe-tracker && python3 scrapers/ada_hpi_importer.py
-```
-
-**Step 5:** Verify the update. Open Claude Code:
+**To check current data:** Open Claude Code:
 
 ```
 Show me the ADA HPI benchmark data for Illinois and Massachusetts for
@@ -853,8 +894,25 @@ cd ~/dental-pe-tracker && python3 scrapers/ada_hpi_importer.py
 # Run ADSO location scraper
 cd ~/dental-pe-tracker && python3 scrapers/adso_location_scraper.py
 
-# Print Data Axle export instructions
+# Data Axle: see batch plan
+cd ~/dental-pe-tracker && python3 scrapers/data_axle_exporter.py --plan --metro all
+
+# Data Axle: run smart batch exporter (Boston = biggest gap)
+cd ~/dental-pe-tracker && python3 scrapers/data_axle_exporter.py --metro boston
+
+# Data Axle: combine existing CSVs
+cd ~/dental-pe-tracker && python3 scrapers/data_axle_exporter.py --combine
+
+# Print Data Axle manual export instructions
 cd ~/dental-pe-tracker && python3 scrapers/data_axle_importer.py --instructions
+
+# View pipeline activity log (structured events from all scrapers)
+cd ~/dental-pe-tracker && python3 -c "
+from scrapers.pipeline_logger import get_recent_events
+for e in get_recent_events(limit=15):
+    ts=e['timestamp'][:19]; s=e.get('source','?'); st=e.get('status','')
+    print(f\"{'✅' if st=='success' else '❌' if st=='error' else '🔵'} {ts}  {s:25}  {e.get('summary','')[:60]}\")
+"
 
 # Check recent logs
 ls -lt ~/dental-pe-tracker/logs/ | head -5

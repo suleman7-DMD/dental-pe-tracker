@@ -29,6 +29,7 @@ from scrapers.database import (
     WatchedZip, DSOLocation, ADAHPIBenchmark,
     table_exists, backup_database, DB_PATH, BACKUP_DIR,
 )
+from scrapers.pipeline_logger import log_scrape_start, log_scrape_complete, log_scrape_error
 
 log = get_logger("merge_and_score")
 
@@ -538,6 +539,7 @@ def print_summary(session, metro_results, dedup_stats, export_stats):
 
 
 def run():
+    _t0 = log_scrape_start("merge_and_score")
     log.info("=" * 60)
     log.info("Merge and Score starting")
     log.info("=" * 60)
@@ -573,6 +575,9 @@ def run():
     print_summary(session, metro_results, dedup_stats, export_stats)
 
     session.close()
+    log_scrape_complete("merge_and_score", _t0,
+                        summary=f"Merge & Score: dedup={dedup_stats}, practices={practice_count}",
+                        extra={"dedup_stats": str(dedup_stats), "practice_count": practice_count})
     log.info("Merge and Score complete.")
 
 
