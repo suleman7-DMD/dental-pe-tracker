@@ -98,6 +98,33 @@ US_STATES = ["AL","AK","AZ","AR","CA","CO","CT","DE","DC","FL","GA","HI","ID","I
              "KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM",
              "NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"]
 
+# ZIP centroids for watched ZIPs (used for map plotting)
+ZIP_CENTROIDS = {
+    # Chicagoland
+    "60491": (41.60, -87.94), "60439": (41.67, -87.98), "60441": (41.58, -88.06),
+    "60540": (41.77, -88.15), "60564": (41.72, -88.20), "60565": (41.73, -88.17),
+    "60563": (41.76, -88.19), "60527": (41.76, -87.94), "60515": (41.80, -88.02),
+    "60516": (41.78, -88.03), "60532": (41.80, -88.08), "60559": (41.79, -87.97),
+    "60514": (41.80, -87.95), "60521": (41.80, -87.93), "60523": (41.83, -87.95),
+    "60148": (41.87, -88.01), "60440": (41.70, -88.07), "60490": (41.65, -88.12),
+    "60504": (41.74, -88.26), "60502": (41.77, -88.28), "60431": (41.52, -88.09),
+    "60435": (41.55, -88.08), "60586": (41.62, -88.22), "60585": (41.63, -88.20),
+    "60503": (41.73, -88.26), "60554": (41.76, -88.44), "60543": (41.68, -88.35),
+    "60560": (41.64, -88.44),
+    # Boston Metro
+    "02116": (42.35, -71.07), "02115": (42.34, -71.10), "02118": (42.34, -71.07),
+    "02119": (42.32, -71.08), "02120": (42.33, -71.10), "02215": (42.35, -71.10),
+    "02134": (42.35, -71.13), "02135": (42.35, -71.16), "02446": (42.34, -71.12),
+    "02445": (42.33, -71.13), "02467": (42.32, -71.16), "02459": (42.31, -71.19),
+    "02458": (42.35, -71.19), "02453": (42.38, -71.24), "02451": (42.39, -71.24),
+    "02138": (42.38, -71.13), "02139": (42.37, -71.10), "02140": (42.39, -71.13),
+    "02141": (42.37, -71.09), "02142": (42.36, -71.08), "02144": (42.40, -71.12),
+}
+METRO_CENTERS = {
+    "Chicagoland": {"lat": 41.72, "lon": -88.10, "zoom": 10},
+    "Boston Metro": {"lat": 42.35, "lon": -71.13, "zoom": 11},
+}
+
 
 def help_tip(text):
     """Inline ? icon with a CSS popover tooltip on hover."""
@@ -550,7 +577,55 @@ def page_market_intel():
                 else:
                     st.info(f"No ADA HPI data for {state_name}")
 
-    # ZIP Code Table
+    # ── Interactive Map ──────────────────────────────────────────────────
+    if not zs.empty:
+        st.markdown(section_header("Consolidation Map",
+            "Interactive map of your watched ZIP codes. Circle size = number of practices. "
+            "Color = consolidation percentage (red = highly consolidated, green = mostly independent). "
+            "Hover over any circle to see full details. Scroll to zoom, drag to pan."), unsafe_allow_html=True)
+
+        map_data = zs.copy()
+        map_data["lat"] = map_data["zip_code"].map(lambda z: ZIP_CENTROIDS.get(z, (None, None))[0])
+        map_data["lon"] = map_data["zip_code"].map(lambda z: ZIP_CENTROIDS.get(z, (None, None))[1])
+        map_data = map_data.dropna(subset=["lat", "lon"])
+
+        if not map_data.empty:
+            map_data["label"] = map_data.apply(
+                lambda r: f"{r['zip_code']} — {r['city']}<br>"
+                          f"Practices: {int(r['total_practices'])}<br>"
+                          f"Consolidation: {r['consolidation_pct']:.1f}%<br>"
+                          f"Independent: {int(r['independent_count'])} | DSO: {int(r['dso_affiliated_count'])} | PE: {int(r['pe_backed_count'])}<br>"
+                          f"Opportunity Score: {r['opportunity_score']:.0f}",
+                axis=1)
+
+            # Determine map center
+            metro_key = selected if selected in METRO_CENTERS else None
+            if metro_key:
+                center = METRO_CENTERS[metro_key]
+            else:
+                center = {"lat": map_data["lat"].mean(), "lon": map_data["lon"].mean(), "zoom": 9}
+
+            fig_map = px.scatter_mapbox(
+                map_data, lat="lat", lon="lon",
+                size="total_practices", color="consolidation_pct",
+                color_continuous_scale=["#00C853", "#FFB300", "#FF3D00"],
+                range_color=[0, 60],
+                size_max=28, zoom=center["zoom"],
+                center={"lat": center["lat"], "lon": center["lon"]},
+                hover_name="label",
+                mapbox_style="carto-darkmatter",
+            )
+            fig_map.update_layout(
+                height=500, margin=dict(l=0, r=0, t=0, b=0),
+                coloraxis_colorbar=dict(title="Consol %", ticksuffix="%"),
+                paper_bgcolor="#0B0E11",
+            )
+            fig_map.update_traces(hovertemplate="%{hovertext}<extra></extra>")
+            st.plotly_chart(fig_map, width="stretch")
+        else:
+            st.info("No ZIP coordinates available for map display.")
+
+    # ── ZIP Score Table ───────────────────────────────────────────────
     if not zs.empty:
         st.markdown(section_header("ZIP Code Consolidation Detail",
             "Each row = one ZIP code. Columns show how many practices are independent vs DSO vs PE-backed. "
@@ -565,17 +640,14 @@ def page_market_intel():
         st.dataframe(zt, hide_index=True, width="stretch")
         st.download_button("📥 Download ZIP scores", zt.to_csv(index=False), "zip_scores.csv", "text/csv")
 
-    # Practice detail by ZIP
+    # ── Practice Detail: City → ZIP Tree ──────────────────────────────
     if zip_list:
-        st.markdown(section_header("Practice Detail by ZIP",
-            "Expand any ZIP to see every dental practice there. Green = independent (potential acquisition target), "
-            "Yellow = already DSO-affiliated, Red = PE-backed. If a ZIP has analysis data (from your hand research), "
-            "you'll see a market overview with population, door counts, and corridor patterns above the table."), unsafe_allow_html=True)
+        st.markdown(section_header("Practice Detail by City",
+            "Practices grouped by city, then by ZIP code. Expand a city to see its ZIP codes, "
+            "then expand a ZIP to see every practice. Green = independent (potential acquisition target), "
+            "Yellow = DSO-affiliated, Red = PE-backed."), unsafe_allow_html=True)
 
-        # Batch-load all practices for selected ZIPs in one query
-        display_zips = sorted(zip_list)[:20]
-        if len(zip_list) > 20:
-            st.caption(f"Showing 20 of {len(zip_list)} watched ZIPs. Filter by metro area to narrow down.")
+        display_zips = sorted(zip_list)
         placeholders = ", ".join([f":z{i}" for i in range(len(display_zips))])
         params = {f"z{i}": z for i, z in enumerate(display_zips)}
         sess = get_session()
@@ -586,42 +658,79 @@ def page_market_intel():
                      f"FROM practices WHERE zip IN ({placeholders})"),
                 sess.bind, params=params)
 
-            # Load ZIP overviews if table exists
             zip_overviews = {}
             if table_exists("zip_overviews"):
                 for ov in sess.query(ZipOverview).filter(ZipOverview.zip_code.in_(display_zips)).all():
                     zip_overviews[ov.zip_code] = ov.overview_html
 
-            for zc in display_zips:
-                match = wz_filtered[wz_filtered["zip_code"] == zc]
-                city_name = match["city"].iloc[0] if len(match) > 0 else ""
-                zip_practices = all_practices[all_practices["zip"] == zc].drop(columns=["zip"])
-                # Count practices with analysis notes
-                analyzed = zip_practices["notes"].notna().sum() if "notes" in zip_practices.columns else 0
-                label = f"📍 {zc} — {city_name} ({len(zip_practices)} practices"
-                if analyzed > 0:
-                    label += f", {analyzed} analyzed"
-                label += ")"
+            # Build city → ZIP mapping from watched_zips
+            city_zips = {}
+            for _, row in wz_filtered.iterrows():
+                city = row.get("city", "Unknown") or "Unknown"
+                zc = row["zip_code"]
+                if city not in city_zips:
+                    city_zips[city] = []
+                city_zips[city].append(zc)
 
-                with st.expander(label):
-                    # Show ZIP overview if available
-                    if zc in zip_overviews:
-                        st.markdown(
-                            f'<div style="background: linear-gradient(135deg, #1a2332 0%, #0d1b2a 100%); '
-                            f'border: 1px solid #1e3a5f; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; '
-                            f'font-size: 0.85rem; color: #c8d6e5;">{zip_overviews[zc]}</div>',
-                            unsafe_allow_html=True,
-                        )
+            for city_name in sorted(city_zips.keys()):
+                zips_in_city = sorted(city_zips[city_name])
+                city_practices = all_practices[all_practices["zip"].isin(zips_in_city)]
+                city_total = len(city_practices)
 
-                    if zip_practices.empty:
-                        st.info("No practices in this ZIP.")
-                    else:
-                        display_cols = ["practice_name", "ownership_status",
-                                        "affiliated_dso", "affiliated_pe_sponsor", "entity_type"]
-                        display_df = zip_practices[[c for c in display_cols if c in zip_practices.columns]].copy()
-                        display_df["ownership_status"] = display_df["ownership_status"].apply(format_status)
-                        display_df = clean_dataframe(display_df)
-                        st.dataframe(display_df, hide_index=True, width="stretch")
+                # City-level ownership counts
+                city_indep = len(city_practices[city_practices["ownership_status"] == "independent"])
+                city_dso = len(city_practices[city_practices["ownership_status"] == "dso_affiliated"])
+                city_pe = len(city_practices[city_practices["ownership_status"] == "pe_backed"])
+
+                city_label = (f"🏙️ {city_name} — {city_total} practices across {len(zips_in_city)} ZIP"
+                              f"{'s' if len(zips_in_city) > 1 else ''}"
+                              f"  (🟢 {city_indep} | 🟡 {city_dso} | 🔴 {city_pe})")
+
+                with st.expander(city_label):
+                    # City-level mini KPIs
+                    if city_total > 0:
+                        classified = city_indep + city_dso + city_pe
+                        consol = ((city_dso + city_pe) / classified * 100) if classified > 0 else 0
+                        kc1, kc2, kc3, kc4 = st.columns(4)
+                        kc1.metric("Total", city_total)
+                        kc2.metric("Independent", city_indep)
+                        kc3.metric("DSO + PE", city_dso + city_pe)
+                        kc4.metric("Consolidated", f"{consol:.0f}%")
+
+                    # ZIP sub-expanders within each city
+                    for zc in zips_in_city:
+                        zip_practices = all_practices[all_practices["zip"] == zc].drop(columns=["zip"])
+                        analyzed = zip_practices["notes"].notna().sum() if "notes" in zip_practices.columns else 0
+
+                        # Get ZIP score if available
+                        zip_score_row = zs[zs["zip_code"] == zc] if not zs.empty else pd.DataFrame()
+                        score_tag = ""
+                        if not zip_score_row.empty:
+                            opp = zip_score_row.iloc[0].get("opportunity_score", 0)
+                            score_tag = f" | Score: {opp:.0f}"
+
+                        zip_label = f"📍 {zc} — {len(zip_practices)} practices{score_tag}"
+                        if analyzed > 0:
+                            zip_label += f" | {analyzed} analyzed"
+
+                        with st.expander(zip_label):
+                            if zc in zip_overviews:
+                                st.markdown(
+                                    f'<div style="background: linear-gradient(135deg, #1a2332 0%, #0d1b2a 100%); '
+                                    f'border: 1px solid #1e3a5f; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; '
+                                    f'font-size: 0.85rem; color: #c8d6e5;">{zip_overviews[zc]}</div>',
+                                    unsafe_allow_html=True,
+                                )
+
+                            if zip_practices.empty:
+                                st.info("No practices in this ZIP.")
+                            else:
+                                display_cols = ["practice_name", "ownership_status",
+                                                "affiliated_dso", "affiliated_pe_sponsor", "entity_type"]
+                                display_df = zip_practices[[c for c in display_cols if c in zip_practices.columns]].copy()
+                                display_df["ownership_status"] = display_df["ownership_status"].apply(format_status)
+                                display_df = clean_dataframe(display_df)
+                                st.dataframe(display_df, hide_index=True, width="stretch")
         finally:
             sess.close()
 
