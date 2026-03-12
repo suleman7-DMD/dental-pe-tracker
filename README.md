@@ -34,13 +34,14 @@ A data-driven intelligence dashboard that tracks private equity activity in U.S.
 
 This platform automatically collects data about dental practice acquisitions from multiple sources, then combines it all into an interactive dashboard. Think of it as a radar system for tracking which private equity firms are buying dental practices, where they're expanding, and which independent practices in your target neighborhoods might be next.
 
-**The 5 dashboard pages:**
+**The 6 dashboard pages:**
 
 | Page | What It Shows |
 |------|---------------|
 | **Deal Flow** | Every PE dental deal we know about — charts by year, by state, by deal type, recent activity feed |
 | **Market Intel** | Your watched ZIP codes — who owns what in Chicagoland and Boston Metro, consolidation percentages |
 | **Buyability** | Scores individual practices on how "buyable" they are — filters by ZIP and category |
+| **Job Market** | Job opportunity signals near your 3 planned living locations (West Loop, Woodridge, Bolingbrook) — practice scoring, ownership maps, DSO landscape |
 | **Research** | Deep dives — look up a specific PE sponsor, platform company, or state. Plus a SQL explorer for custom queries |
 | **System** | Data freshness checks, completeness stats, and forms to manually add deals/practices |
 
@@ -657,6 +658,7 @@ Here are common tasks and which page to use:
 |--------------|----------|---------|
 | See how consolidated my target market is | **Market Intel** | Select "Chicagoland" or "Boston Metro" and read the consolidation percentage |
 | Find buyable practices in Homer Glen | **Buyability** | Filter to ZIP 60491, sort by score descending |
+| Scope out job opportunities near where I'll live | **Job Market** | Pick West Loop, Woodridge, or Bolingbrook — see scored practices, opportunity map, DSO landscape |
 | See what Specialized Dental Partners is doing | **Research** | PE Sponsor Profile → "Quad-C Management" or Platform Profile → "Specialized Dental Partners" |
 | View all deals in Illinois this year | **Deal Flow** | Sidebar: State = IL, Date = 2026-01-01 to today |
 | Check for acquisitions in my ZIPs | **Market Intel** | Scroll to "Recent Practice Changes" section, filter to your metro |
