@@ -1407,14 +1407,20 @@ def detect_changes(session, doors, batch_id, today):
     watched_zips = {z[0] for z in watched}
 
     # Get previous DA records in watched ZIPs
-    prev_records = session.execute(
-        text("""SELECT npi, practice_name, address, zip, import_batch_id
-                FROM practices
-                WHERE data_source = 'data_axle'
-                AND import_batch_id != :batch_id
-                AND zip IN :zips"""),
-        {"batch_id": batch_id, "zips": tuple(watched_zips) if watched_zips else ("",)}
-    ).fetchall() if watched_zips else []
+    if watched_zips:
+        zip_placeholders = ", ".join(f":z{i}" for i in range(len(watched_zips)))
+        zip_params = {f"z{i}": z for i, z in enumerate(watched_zips)}
+        zip_params["batch_id"] = batch_id
+        prev_records = session.execute(
+            text(f"""SELECT npi, practice_name, address, zip, import_batch_id
+                    FROM practices
+                    WHERE data_source = 'data_axle'
+                    AND import_batch_id != :batch_id
+                    AND zip IN ({zip_placeholders})"""),
+            zip_params
+        ).fetchall()
+    else:
+        prev_records = []
 
     # Build lookup of current doors by (normalized_address, zip)
     current_keys = set()

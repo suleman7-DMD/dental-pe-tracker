@@ -65,7 +65,7 @@ import argparse
 import json
 import math
 import os
-import platform
+import shutil
 import subprocess
 import sys
 import time
@@ -78,13 +78,84 @@ except ImportError:
     pd = None
 
 # ── ZIP Code Definitions ─────────────────────────────────────────────────────
+# Coverage: 1-hour commute from West Loop Chicago, Woodridge, and Bolingbrook
 
+# Original 28 ZIPs (Naperville/DuPage/Will corridor)
 CHICAGOLAND_ZIPS = [
     "60491", "60439", "60441", "60540", "60564", "60565", "60563", "60527",
     "60515", "60516", "60532", "60559", "60514", "60521", "60523", "60148",
     "60440", "60490", "60504", "60502", "60431", "60435", "60586", "60585",
     "60503", "60554", "60543", "60560",
 ]
+
+# ── Expanded Chicagoland: 1-hr commute radius zones ─────────────────────────
+# Use --metro chi-north, chi-city, chi-south, chi-west, chi-far-west, chi-far-south
+# or --metro chi-all for the full expanded set
+
+# North Shore + North suburbs (Evanston, Skokie, Wilmette, Highland Park, etc.)
+CHI_NORTH_ZIPS = [
+    "60004", "60005", "60007", "60008", "60010", "60015", "60016", "60017",
+    "60018", "60022", "60025", "60026", "60035", "60037", "60038", "60040",
+    "60045", "60053", "60056", "60061", "60062", "60067", "60068", "60069",
+    "60070", "60074", "60076", "60077", "60089", "60090", "60091", "60093",
+    "60201", "60202", "60203", "60712", "60714",
+]
+
+# Chicago city proper (Loop, North Side, South Side, West Side)
+CHI_CITY_ZIPS = [
+    "60601", "60602", "60603", "60604", "60605", "60606", "60607", "60608",
+    "60609", "60610", "60611", "60612", "60613", "60614", "60615", "60616",
+    "60617", "60618", "60619", "60620", "60621", "60622", "60623", "60624",
+    "60625", "60626", "60628", "60629", "60630", "60631", "60632", "60633",
+    "60634", "60636", "60637", "60638", "60639", "60640", "60641", "60642",
+    "60643", "60644", "60645", "60646", "60647", "60649", "60651", "60652",
+    "60653", "60654", "60655", "60656", "60657", "60659", "60660", "60661",
+]
+
+# South suburbs (Orland Park, Tinley Park, Homewood, Lansing, etc.)
+CHI_SOUTH_ZIPS = [
+    "60406", "60409", "60411", "60412", "60415", "60418", "60419", "60422",
+    "60423", "60425", "60426", "60428", "60429", "60430", "60438", "60442",
+    "60443", "60445", "60449", "60452", "60453", "60454", "60455", "60456",
+    "60457", "60458", "60459", "60461", "60462", "60463", "60464", "60465",
+    "60466", "60467", "60468", "60469", "60471", "60472", "60473", "60475",
+    "60476", "60477", "60478", "60480", "60481", "60482", "60484", "60487",
+    "60501", "60803", "60804", "60805", "60827",
+]
+
+# Inner west suburbs (Oak Park, Berwyn, Cicero, Maywood, Elmhurst, etc.)
+CHI_WEST_ZIPS = [
+    "60101", "60103", "60104", "60106", "60107", "60108", "60126", "60130",
+    "60131", "60133", "60137", "60138", "60139", "60143", "60153", "60154",
+    "60155", "60160", "60161", "60162", "60163", "60164", "60165", "60171",
+    "60176", "60181", "60187", "60188", "60189", "60190", "60191", "60193",
+    "60194", "60195", "60301", "60302", "60304", "60305", "60402", "60501",
+    "60513", "60525", "60526", "60534", "60546", "60555", "60558", "60706",
+    "60707",
+]
+
+# Far west (Aurora, Elgin, Batavia, Geneva, St. Charles, etc.)
+CHI_FAR_WEST_ZIPS = [
+    "60110", "60118", "60119", "60120", "60121", "60122", "60123", "60124",
+    "60134", "60144", "60151", "60172", "60173", "60174", "60175", "60185",
+    "60186", "60505", "60506", "60510", "60511", "60512", "60519", "60536",
+    "60537", "60538", "60539", "60541", "60542", "60544", "60545", "60548",
+]
+
+# Far south Will County (Joliet extended, Frankfort, Manhattan, etc.)
+CHI_FAR_SOUTH_ZIPS = [
+    "60403", "60404", "60410", "60416", "60421", "60432", "60433", "60434",
+    "60436", "60446", "60447", "60448", "60450", "60451",
+]
+
+# All expanded Chicago = original + all zones
+CHI_ALL_EXPANDED = (
+    CHICAGOLAND_ZIPS + CHI_NORTH_ZIPS + CHI_CITY_ZIPS + CHI_SOUTH_ZIPS +
+    CHI_WEST_ZIPS + CHI_FAR_WEST_ZIPS + CHI_FAR_SOUTH_ZIPS
+)
+# Deduplicate while preserving order
+_seen = set()
+CHI_ALL_EXPANDED = [z for z in CHI_ALL_EXPANDED if not (z in _seen or _seen.add(z))]
 
 BOSTON_ZIPS = [
     "02116", "02115", "02118", "02119", "02120", "02215", "02134", "02135",
@@ -101,6 +172,22 @@ DEFAULT_BATCH_SIZE = 4
 
 BASE_DIR = os.path.expanduser("~/dental-pe-tracker/data/data-axle")
 STATE_FILE = os.path.join(BASE_DIR, ".exporter_progress.json")
+
+
+def get_existing_zips():
+    """Scan existing CSVs to find ZIPs that already have data."""
+    if pd is None:
+        return set()
+    existing = set()
+    for f in glob(os.path.join(BASE_DIR, "*.csv")):
+        if "combined" in os.path.basename(f).lower():
+            continue
+        try:
+            df = pd.read_csv(f, dtype=str, usecols=["ZIP Code"], low_memory=False)
+            existing.update(df["ZIP Code"].dropna().unique())
+        except Exception:
+            pass
+    return existing
 
 # ── Terminal Colors ───────────────────────────────────────────────────────────
 
@@ -165,6 +252,18 @@ def show_plan(batches, metro_label, batch_size):
     print(f"  {'Time estimate':>20} {f'~{est_captchas_unbatched * 3 + est_download_cycles * 5} min':>22}"
           f"  {f'~{len(batches) * 2} min':>20}")
     print()
+
+    # Show existing data inventory
+    existing = get_existing_zips()
+    if existing:
+        all_batch_zips = [z for b in batches for z in b]
+        already_done = [z for z in all_batch_zips if z in existing]
+        still_needed = [z for z in all_batch_zips if z not in existing]
+        info(f"Already have data: {len(already_done)} ZIPs ({','.join(sorted(already_done)[:5])}{'...' if len(already_done) > 5 else ''})")
+        info(f"Still needed:      {len(still_needed)} ZIPs")
+        if already_done and still_needed:
+            dim("TIP: Use --skip-done to skip ZIPs with existing data")
+        print()
 
     bold("BATCH DETAILS:")
     for i, batch in enumerate(batches):
@@ -233,31 +332,39 @@ def copy_to_clipboard(text):
 
 # ── CSV Combination ───────────────────────────────────────────────────────────
 
-def combine_csvs(metro_label=None):
-    """Combine all batch CSVs into a single deduplicated file."""
+def combine_csvs(metro_label=None, only_files=None):
+    """Combine batch CSVs into a single deduplicated file.
+
+    Args:
+        metro_label: Metro name for output filename.
+        only_files: If provided, combine only these specific files instead of globbing.
+    """
     if pd is None:
         err("pandas not installed. Run: pip install pandas")
         return None
 
-    # Find all CSV files in data-axle dir
-    patterns = [
-        os.path.join(BASE_DIR, "Detail*.csv"),
-        os.path.join(BASE_DIR, f"data_axle_{metro_label}*.csv") if metro_label else "",
-        os.path.join(BASE_DIR, "batch_*.csv"),
-    ]
+    if only_files:
+        # Use the exact files we downloaded this session
+        csv_files = sorted([f for f in only_files if os.path.exists(f)])
+    else:
+        # Glob for files — but only match files for THIS metro label
+        patterns = []
+        if metro_label:
+            patterns.append(os.path.join(BASE_DIR, f"data_axle_{metro_label}*.csv"))
+        # Also catch Detail*.csv but ONLY if no metro-labeled files exist
+        patterns.append(os.path.join(BASE_DIR, "Detail*.csv"))
+        patterns.append(os.path.join(BASE_DIR, "batch_*.csv"))
 
-    all_files = set()
-    for pat in patterns:
-        if pat:
+        all_files = set()
+        for pat in patterns:
             all_files.update(glob(pat))
 
-    # Exclude already-combined files and non-batch files
-    csv_files = sorted([
-        f for f in all_files
-        if os.path.basename(f) not in ("combined.csv",)
-        and "combined" not in os.path.basename(f).lower()
-        and "debug" not in f
-    ])
+        # Exclude already-combined files
+        csv_files = sorted([
+            f for f in all_files
+            if "combined" not in os.path.basename(f).lower()
+            and "debug" not in f
+        ])
 
     if not csv_files:
         err(f"No CSV files found in {BASE_DIR}")
@@ -423,8 +530,9 @@ def run_export(metro_label, batches, start_batch=0, downloaded_files=None):
             result_count = int(result_input)
             pages = math.ceil(result_count / 25)
             if result_count > 250:
-                warn(f"{result_count} results > 250 limit! Try --batch-size {len(batch)-1}")
-                warn("You'll need to download in two passes for this batch.")
+                suggested = max(1, len(batch) - 1)
+                warn(f"{result_count} results > 250 limit! Try --batch-size {suggested}")
+                warn("You'll need to download in two passes for this batch, or reduce batch size.")
             else:
                 ok(f"{result_count} results across {pages} pages — fits in one download!")
         print()
@@ -465,12 +573,13 @@ def run_export(metro_label, batches, start_batch=0, downloaded_files=None):
                 new_name = f"data_axle_{metro_label}_batch{batch_num:02d}_{datetime.now().strftime('%Y%m%d_%H%M')}{ext}"
                 dest = os.path.join(BASE_DIR, new_name)
 
-            os.rename(new_file, dest)
+            shutil.move(new_file, dest)
             downloaded_files.append(dest)
 
             # Count rows
             try:
-                row_count = sum(1 for _ in open(dest)) - 1
+                with open(dest) as fh:
+                    row_count = sum(1 for _ in fh) - 1
                 ok(f"Saved: {new_name} ({row_count} rows)")
             except Exception:
                 ok(f"Saved: {new_name}")
@@ -484,7 +593,7 @@ def run_export(metro_label, batches, start_batch=0, downloaded_files=None):
                     if os.path.exists(candidate):
                         new_name = f"data_axle_{metro_label}_batch{batch_num:02d}_{datetime.now().strftime('%Y%m%d')}.csv"
                         dest = os.path.join(BASE_DIR, new_name)
-                        os.rename(candidate, dest)
+                        shutil.move(candidate, dest)
                         downloaded_files.append(dest)
                         ok(f"Moved: {new_name}")
                         break
@@ -514,10 +623,10 @@ def run_export(metro_label, batches, start_batch=0, downloaded_files=None):
     for f in downloaded_files:
         dim(os.path.basename(f))
 
-    # Auto-combine
+    # Auto-combine — only the files from this session
     print()
     bold("Combining CSVs...")
-    combined = combine_csvs(metro_label)
+    combined = combine_csvs(metro_label, only_files=downloaded_files)
 
     # Clean up progress
     clear_progress()
@@ -552,8 +661,12 @@ EXAMPLES:
         """,
     )
     parser.add_argument(
-        "--metro", choices=["chicagoland", "boston", "all"],
-        help="Metro area to export"
+        "--metro", choices=[
+            "chicagoland", "boston", "all",
+            "chi-north", "chi-city", "chi-south", "chi-west",
+            "chi-far-west", "chi-far-south", "chi-all",
+        ],
+        help="Metro area to export (chi-* for expanded Chicago zones)"
     )
     parser.add_argument(
         "--zips", type=str, default=None,
@@ -579,6 +692,10 @@ EXAMPLES:
         "--combine", action="store_true",
         help="Just combine existing CSVs without exporting"
     )
+    parser.add_argument(
+        "--skip-done", action="store_true",
+        help="Skip ZIPs that already have data in existing CSVs"
+    )
     args = parser.parse_args()
 
     # ── Combine-only mode ─────────────────────────────────────────────────
@@ -588,24 +705,43 @@ EXAMPLES:
         return
 
     # ── Determine ZIPs ────────────────────────────────────────────────────
+    METRO_MAP = {
+        "chicagoland": ("chicagoland", CHICAGOLAND_ZIPS),
+        "boston": ("boston", BOSTON_ZIPS),
+        "all": ("all", CHICAGOLAND_ZIPS + BOSTON_ZIPS),
+        "chi-north": ("chi_north", CHI_NORTH_ZIPS),
+        "chi-city": ("chi_city", CHI_CITY_ZIPS),
+        "chi-south": ("chi_south", CHI_SOUTH_ZIPS),
+        "chi-west": ("chi_west", CHI_WEST_ZIPS),
+        "chi-far-west": ("chi_far_west", CHI_FAR_WEST_ZIPS),
+        "chi-far-south": ("chi_far_south", CHI_FAR_SOUTH_ZIPS),
+        "chi-all": ("chi_all", CHI_ALL_EXPANDED),
+    }
+
     if args.zips:
         all_zips = [z.strip() for z in args.zips.split(",") if z.strip()]
         metro_label = args.label
-    elif args.metro == "chicagoland":
-        all_zips = CHICAGOLAND_ZIPS
-        metro_label = "chicagoland"
-    elif args.metro == "boston":
-        all_zips = BOSTON_ZIPS
-        metro_label = "boston"
-    elif args.metro == "all":
-        all_zips = CHICAGOLAND_ZIPS + BOSTON_ZIPS
-        metro_label = "all"
+    elif args.metro in METRO_MAP:
+        metro_label, all_zips = METRO_MAP[args.metro]
     else:
         # Default: show help
         parser.print_help()
         print()
         bold("TIP: Start with --plan to see the batch plan, then --metro boston")
         return
+
+    # ── Skip ZIPs with existing data ──────────────────────────────────────
+    if args.skip_done:
+        existing = get_existing_zips()
+        before_count = len(all_zips)
+        skipped = [z for z in all_zips if z in existing]
+        all_zips = [z for z in all_zips if z not in existing]
+        if skipped:
+            info(f"Skipping {len(skipped)} ZIPs with existing data: {','.join(skipped)}")
+            info(f"Remaining: {len(all_zips)} of {before_count} ZIPs")
+        if not all_zips:
+            ok("All ZIPs already have data! Nothing to export.")
+            return
 
     batches = make_batches(all_zips, args.batch_size)
 
