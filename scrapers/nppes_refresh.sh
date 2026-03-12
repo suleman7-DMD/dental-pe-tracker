@@ -22,3 +22,21 @@ run_step "[2/3] Classifying..."              "$PYTHON $PROJECT/scrapers/dso_clas
 run_step "[3/3] Scoring..."                  "$PYTHON $PROJECT/scrapers/merge_and_score.py"
 
 echo "NPPES refresh complete: $(date)" | tee -a "$LOGFILE"
+
+# Compress and push DB to Streamlit Cloud (auto-deploy)
+echo "" | tee -a "$LOGFILE"
+echo "[POST] Compressing + pushing DB to cloud..." | tee -a "$LOGFILE"
+cd "$PROJECT"
+$PYTHON -c "
+import gzip, shutil
+with open('data/dental_pe_tracker.db','rb') as f:
+    with gzip.open('data/dental_pe_tracker.db.gz','wb',6) as gz:
+        shutil.copyfileobj(f, gz)
+print('  Compressed.')
+" 2>&1 | tee -a "$LOGFILE"
+
+git add data/dental_pe_tracker.db.gz && \
+  git commit -m "NPPES refresh $(date +%Y-%m-%d)" 2>&1 | tee -a "$LOGFILE" && \
+  git push 2>&1 | tee -a "$LOGFILE" && \
+  echo "  Pushed to GitHub — Streamlit Cloud will auto-deploy." | tee -a "$LOGFILE" || \
+  echo "  Git push skipped (no changes or error)." | tee -a "$LOGFILE"

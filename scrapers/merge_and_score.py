@@ -334,7 +334,7 @@ def score_watched_zips(session):
         confidence = "high" if unk_pct < 20 else ("medium" if unk_pct <= 50 else "low")
 
         # Upsert
-        existing = session.query(ZipScore).filter_by(zip_code=zc, score_date=today).first()
+        existing = session.query(ZipScore).filter_by(zip_code=zc).first()
         vals = dict(city=wz.city, state=st, metro_area=wz.metro_area,
                     total_practices=total, pe_backed_count=pe, dso_affiliated_count=dso,
                     independent_count=indep, unknown_count=unk, classified_count=classified,
@@ -345,6 +345,7 @@ def score_watched_zips(session):
         if existing:
             for k, v in vals.items():
                 setattr(existing, k, v)
+            existing.score_date = today
         else:
             session.add(ZipScore(zip_code=zc, score_date=today, **vals))
 

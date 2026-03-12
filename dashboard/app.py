@@ -111,6 +111,12 @@ ZIP_CENTROIDS = {
     "60435": (41.55, -88.08), "60586": (41.62, -88.22), "60585": (41.63, -88.20),
     "60503": (41.73, -88.26), "60554": (41.76, -88.44), "60543": (41.68, -88.35),
     "60560": (41.64, -88.44),
+    "60446": (41.65, -88.10), "60448": (41.61, -87.88), "60451": (41.51, -87.96),
+    "60464": (41.66, -87.82), "60465": (41.69, -87.79),
+    # Chi Far-South (Data Axle expansion)
+    "60403": (41.55, -88.12), "60404": (41.52, -88.20), "60410": (41.43, -88.27),
+    "60434": (41.52, -88.12), "60436": (41.53, -88.15), "60447": (41.45, -88.28),
+    "60450": (41.36, -88.42), "60432": (41.53, -88.10), "60416": (41.40, -88.28),
     # Boston Metro
     "02116": (42.35, -71.07), "02115": (42.34, -71.10), "02118": (42.34, -71.07),
     "02119": (42.32, -71.08), "02120": (42.33, -71.10), "02215": (42.35, -71.10),
@@ -215,7 +221,42 @@ def load_zip_scores():
         return pd.DataFrame()
     s = get_session()
     try:
-        return pd.read_sql(text("SELECT * FROM zip_scores"), s.bind)
+        df = pd.read_sql(text("SELECT * FROM zip_scores"), s.bind)
+        return df.drop_duplicates(subset=["zip_code"], keep="last") if not df.empty else df
+    finally:
+        s.close()
+
+def get_data_freshness():
+    """Get last import date and practice counts for the 'last updated' banner."""
+    s = get_session()
+    try:
+        total = s.execute(text("SELECT COUNT(*) FROM practices")).scalar()
+        da_count = s.execute(text("SELECT COUNT(DISTINCT import_batch_id) FROM practices WHERE import_batch_id LIKE 'DA_%'")).scalar()
+        da_practices = s.execute(text("SELECT COUNT(*) FROM practices WHERE import_batch_id LIKE 'DA_%'")).scalar()
+        # Get most recent update timestamp from the DB file itself
+        db_mtime = datetime.fromtimestamp(os.path.getmtime(DB_PATH))
+        # Get latest pipeline log timestamp
+        latest_log = None
+        log_path = os.path.join(LOGS_DIR, "pipeline_events.jsonl")
+        if os.path.exists(log_path):
+            import json
+            with open(log_path) as f:
+                lines = f.readlines()
+            for line in reversed(lines):
+                try:
+                    evt = json.loads(line.strip())
+                    if "timestamp" in evt:
+                        latest_log = evt["timestamp"][:16].replace("T", " ")
+                        break
+                except Exception:
+                    continue
+        return {
+            "total_practices": total,
+            "da_enriched": da_practices,
+            "da_batches": da_count,
+            "db_updated": db_mtime.strftime("%b %d, %Y at %I:%M %p"),
+            "last_pipeline": latest_log,
+        }
     finally:
         s.close()
 
@@ -516,6 +557,23 @@ def page_market_intel():
     "Use the metro dropdown to filter by region. Expand any ZIP to see every practice."
     )}</p>""", unsafe_allow_html=True)
 
+    # Data freshness banner
+    freshness = get_data_freshness()
+    st.markdown(
+        f'<div style="background:linear-gradient(135deg,#0a1628 0%,#0d2137 100%);border:1px solid #1a3a5c;'
+        f'border-radius:8px;padding:0.75rem 1.25rem;margin-bottom:1.25rem;display:flex;align-items:center;'
+        f'justify-content:space-between;flex-wrap:wrap;gap:0.5rem">'
+        f'<span style="color:#7eb8e0;font-size:0.82rem;font-weight:500">'
+        f'📡 <strong style="color:#e8ecf1">{freshness["total_practices"]:,}</strong> practices tracked'
+        f'&nbsp;&nbsp;·&nbsp;&nbsp;'
+        f'<strong style="color:#e8ecf1">{freshness["da_enriched"]:,}</strong> Data Axle enriched'
+        f'</span>'
+        f'<span style="color:#5a7a96;font-size:0.78rem">'
+        f'Last updated {freshness["db_updated"]}'
+        f'</span></div>',
+        unsafe_allow_html=True
+    )
+
     wz = load_watched_zips()
     if wz.empty:
         st.info("No watched ZIP codes configured. Go to System Health > Add ZIP to Watch to add some.")
@@ -589,9 +647,8 @@ def page_market_intel():
     # ── Interactive Map ──────────────────────────────────────────────────
     if not zs.empty:
         st.markdown(section_header("Consolidation Map",
-            "Interactive map of your watched ZIP codes. Circle size = number of practices. "
-            "Color = consolidation percentage (red = highly consolidated, green = mostly independent). "
-            "Hover over any circle to see full details. Scroll to zoom, drag to pan."), unsafe_allow_html=True)
+            "Each marker = one ZIP code. Size reflects practice count. Color shows consolidation level: "
+            "blue = low consolidation (opportunity), warm = higher consolidation. Hover for details."), unsafe_allow_html=True)
 
         map_data = zs.copy()
         map_data["lat"] = map_data["zip_code"].map(lambda z: ZIP_CENTROIDS.get(z, (None, None))[0])
@@ -599,13 +656,22 @@ def page_market_intel():
         map_data = map_data.dropna(subset=["lat", "lon"])
 
         if not map_data.empty:
-            map_data["label"] = map_data.apply(
-                lambda r: f"{r['zip_code']} — {r['city']}<br>"
-                          f"Practices: {int(r['total_practices'])}<br>"
-                          f"Consolidation: {r['consolidation_pct']:.1f}%<br>"
-                          f"Independent: {int(r['independent_count'])} | DSO: {int(r['dso_affiliated_count'])} | PE: {int(r['pe_backed_count'])}<br>"
-                          f"Opportunity Score: {r['opportunity_score']:.0f}",
-                axis=1)
+            # Rich hover text — PE-firm quality at-a-glance
+            map_data["hover"] = map_data.apply(
+                lambda r: (
+                    f"<b style='font-size:14px'>{r['city']}</b>"
+                    f"<span style='color:#90a4ae'> · {r['zip_code']}</span><br>"
+                    f"<span style='font-size:13px;color:#e0e0e0'>"
+                    f"{'●' * min(int(r['total_practices'] // 10), 8)} "
+                    f"<b>{int(r['total_practices'])}</b> practices</span><br>"
+                    f"<span style='font-size:12px;color:#4fc3f7'>"
+                    f"▸ {int(r['independent_count'])} independent</span><br>"
+                    f"<span style='font-size:12px;color:#ffb74d'>"
+                    f"▸ {int(r['dso_affiliated_count'])} DSO  ·  {int(r['pe_backed_count'])} PE-backed</span><br>"
+                    f"<span style='font-size:11px;color:#{'ef5350' if r['consolidation_pct'] > 35 else '66bb6a'}'>"
+                    f"{'▲' if r['consolidation_pct'] > 35 else '◆'} "
+                    f"{r['consolidation_pct']:.1f}% consolidated</span>"
+                ), axis=1)
 
             # Determine map center
             metro_key = selected if selected in METRO_CENTERS else None
@@ -614,23 +680,148 @@ def page_market_intel():
             else:
                 center = {"lat": map_data["lat"].mean(), "lon": map_data["lon"].mean(), "zoom": 9}
 
-            fig_map = px.scatter_mapbox(
-                map_data, lat="lat", lon="lon",
-                size="total_practices", color="consolidation_pct",
-                color_continuous_scale=["#00C853", "#FFB300", "#FF3D00"],
-                range_color=[0, 60],
-                size_max=28, zoom=center["zoom"],
-                center={"lat": center["lat"], "lon": center["lon"]},
-                hover_name="label",
-                mapbox_style="carto-darkmatter",
-            )
+            # Marker sizing: power-scaled with tighter range for cleaner look
+            sizes = map_data["total_practices"].apply(
+                lambda x: max(7, min(24, 5 + (x ** 0.5) * 1.3)))
+
+            fig_map = go.Figure()
+
+            # Layer 0: Area of Interest boundary polygon (Chicagoland commute zone)
+            # Covers DeKalb → Evanston/Chicago → Hammond → Kankakee → Morris → back
+            AOI_POLYGONS = {
+                "Chicagoland": {
+                    "lats": [42.08, 42.08, 42.08, 41.88, 41.55, 41.10, 41.18, 41.35, 42.08],
+                    "lons": [-88.95, -88.20, -87.60, -87.52, -87.48, -87.80, -88.60, -88.95, -88.95],
+                },
+            }
+            aoi_key = selected if selected in AOI_POLYGONS else None
+            if aoi_key:
+                aoi = AOI_POLYGONS[aoi_key]
+                # Filled polygon — light wash for "unmapped" zone
+                fig_map.add_trace(go.Scattermapbox(
+                    lat=aoi["lats"], lon=aoi["lons"],
+                    mode="lines",
+                    fill="toself",
+                    fillcolor="rgba(100,150,200,0.12)",
+                    line=dict(width=2.5, color="rgba(70,130,180,0.6)"),
+                    hoverinfo="skip", showlegend=False,
+                ))
+
+            # Layer 1: Density heatmap background — smooth radius-based saturation field
+            # Seed grid inside AOI so unmapped areas show a faint base wash
+            import numpy as np
+            grid_lats, grid_lons, grid_z = [], [], []
+            if aoi_key:
+                aoi = AOI_POLYGONS[aoi_key]
+                lat_min, lat_max = min(aoi["lats"]), max(aoi["lats"])
+                lon_min, lon_max = min(aoi["lons"]), max(aoi["lons"])
+                for glat in np.arange(lat_min + 0.05, lat_max, 0.08):
+                    for glon in np.arange(lon_min + 0.05, lon_max, 0.08):
+                        grid_lats.append(glat)
+                        grid_lons.append(glon)
+                        grid_z.append(20.0)  # Base signal — registers as faint blue wash for unmapped areas
+            # Combine real data with grid
+            heat_z = map_data["consolidation_pct"] * map_data["total_practices"].apply(lambda x: max(1, x ** 0.7))
+            all_lats = list(map_data["lat"]) + grid_lats
+            all_lons = list(map_data["lon"]) + grid_lons
+            all_z = list(heat_z) + grid_z
+            fig_map.add_trace(go.Densitymapbox(
+                lat=all_lats, lon=all_lons,
+                z=all_z,
+                radius=50,  # ~8-10 mile smooth radius
+                opacity=0.75,
+                zmin=0, zmax=max(all_z) * 0.35 if all_z else 100,  # Compress range so grid seeds register as faint wash
+                colorscale=[
+                    [0.00, "rgba(200,220,240,0.0)"],   # Transparent — no data
+                    [0.06, "rgba(100,181,246,0.3)"],   # Light blue glow
+                    [0.15, "rgba(41,182,246,0.5)"],    # Bright blue
+                    [0.28, "rgba(38,198,218,0.6)"],    # Cyan
+                    [0.40, "rgba(102,187,106,0.65)"],  # Green — opportunity
+                    [0.52, "rgba(255,235,59,0.7)"],    # Yellow — transitional
+                    [0.65, "rgba(255,152,0,0.75)"],    # Orange — elevated
+                    [0.80, "rgba(244,67,54,0.8)"],     # Red — high
+                    [1.00, "rgba(183,28,28,0.85)"],    # Deep red — saturated
+                ],
+                showscale=False,
+                hoverinfo="skip",
+            ))
+
+            # Layer 2: Main data markers on top of heatmap
+            fig_map.add_trace(go.Scattermapbox(
+                lat=map_data["lat"], lon=map_data["lon"],
+                mode="markers",
+                marker=dict(
+                    size=sizes,
+                    color=map_data["consolidation_pct"],
+                    colorscale=[
+                        [0.00, "#4FC3F7"],   # Light blue — minimal consolidation
+                        [0.15, "#26C6DA"],   # Cyan
+                        [0.30, "#66BB6A"],   # Green — opportunity
+                        [0.50, "#FDD835"],   # Yellow — transitional
+                        [0.65, "#FFB74D"],   # Amber — elevated
+                        [0.80, "#EF5350"],   # Red — high
+                        [1.00, "#AD1457"],   # Deep magenta — heavily consolidated
+                    ],
+                    cmin=0, cmax=65,
+                    opacity=0.95,
+                    colorbar=dict(
+                        title=dict(text="Consolidation %", font=dict(size=11, color="#b0bec5")),
+                        ticksuffix="%", tickfont=dict(size=10, color="#90a4ae"),
+                        tickvals=[0, 10, 20, 30, 40, 50, 60],
+                        thickness=12, len=0.45, y=0.5, x=1.01,
+                        bgcolor="rgba(10,22,40,0.85)", borderwidth=0,
+                        outlinewidth=0,
+                    ),
+                ),
+                text=map_data["hover"],
+                hovertemplate="%{text}<extra></extra>",
+                hoverinfo="text",
+            ))
+
+            # Layer 3: City labels for notable ZIPs (dark text for light map)
+            label_threshold = 25 if len(map_data) > 50 else 15
+            label_data = map_data[map_data["total_practices"] >= label_threshold].copy()
+            if not label_data.empty:
+                label_data["short_label"] = label_data.apply(
+                    lambda r: f"{r['city']} ({int(r['total_practices'])})", axis=1)
+                fig_map.add_trace(go.Scattermapbox(
+                    lat=label_data["lat"] + 0.015,
+                    lon=label_data["lon"],
+                    mode="text",
+                    text=label_data["short_label"],
+                    textfont=dict(size=9.5, color="#1a237e", family="DM Sans"),
+                    textposition="top center",
+                    hoverinfo="skip", showlegend=False,
+                ))
+
             fig_map.update_layout(
-                height=500, margin=dict(l=0, r=0, t=0, b=0),
-                coloraxis_colorbar=dict(title="Consol %", ticksuffix="%"),
-                paper_bgcolor="#0B0E11",
+                mapbox=dict(
+                    style="carto-positron",
+                    center=dict(lat=center["lat"], lon=center["lon"]),
+                    zoom=center["zoom"],
+                ),
+                height=620,
+                margin=dict(l=0, r=0, t=0, b=0),
+                paper_bgcolor="rgba(0,0,0,0)",
+                hoverlabel=dict(
+                    bgcolor="rgba(13,27,42,0.95)", bordercolor="#1a3a5c",
+                    font=dict(color="white", size=12, family="DM Sans"),
+                ),
+                showlegend=False,
             )
-            fig_map.update_traces(hovertemplate="%{hovertext}<extra></extra>")
-            st.plotly_chart(fig_map, width="stretch")
+
+            st.plotly_chart(fig_map, use_container_width=True)
+
+            # Map legend callouts
+            leg_cols = st.columns(4)
+            with leg_cols[0]:
+                st.markdown('<span style="color:#4FC3F7;font-size:13px">● Low consolidation</span>', unsafe_allow_html=True)
+            with leg_cols[1]:
+                st.markdown('<span style="color:#66BB6A;font-size:13px">● Opportunity zone</span>', unsafe_allow_html=True)
+            with leg_cols[2]:
+                st.markdown('<span style="color:#FFB74D;font-size:13px">● Elevated</span>', unsafe_allow_html=True)
+            with leg_cols[3]:
+                st.markdown('<span style="color:#EF5350;font-size:13px">● High consolidation</span>', unsafe_allow_html=True)
         else:
             st.info("No ZIP coordinates available for map display.")
 

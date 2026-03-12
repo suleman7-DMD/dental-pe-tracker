@@ -25,6 +25,7 @@ Usage:
 import argparse
 import glob
 import os
+import shutil
 import re
 import sys
 import time
@@ -469,9 +470,10 @@ def run_automated_export(metro_name=None, resume_from_page=None):
                 new_name = f"data_axle_{metro_tag}_batch{batch_idx}_pg{batch_start}-{batch_end}.csv"
                 src = os.path.join(DOWNLOAD_DIR, new_file)
                 dst = os.path.join(DOWNLOAD_DIR, new_name)
-                os.rename(src, dst)
+                shutil.move(src, dst)
                 batch_files.append(dst)
-                row_count = sum(1 for _ in open(dst)) - 1
+                with open(dst) as f:
+                    row_count = sum(1 for _ in f) - 1
                 print_status(f"Downloaded: {new_name} ({row_count} rows)", "ok")
             else:
                 # File might have gone to ~/Downloads instead
@@ -486,7 +488,7 @@ def run_automated_export(metro_name=None, resume_from_page=None):
                             metro_tag = metro_name or "export"
                             new_name = f"data_axle_{metro_tag}_batch{batch_idx}_pg{batch_start}-{batch_end}.csv"
                             dst = os.path.join(DOWNLOAD_DIR, new_name)
-                            os.rename(candidate, dst)
+                            shutil.move(candidate, dst)
                             batch_files.append(dst)
                             print_status(f"Moved and renamed: {new_name}", "ok")
                             break

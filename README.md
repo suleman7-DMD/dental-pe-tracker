@@ -18,13 +18,15 @@ A data-driven intelligence dashboard that tracks private equity activity in U.S.
 7. [Quarterly: PitchBook Export](#quarterly-pitchbook-export)
 8. [Quarterly: Data Axle Export](#quarterly-data-axle-export)
 9. [ADA HPI Benchmark Update (Automated)](#ada-hpi-benchmark-update-automated)
-10. [Dashboard Page Guide](#dashboard-page-guide)
-11. [Useful SQL Queries](#useful-sql-queries)
-12. [Feature Add-Ons via Claude Code](#feature-add-ons-via-claude-code)
-13. [Quarterly System Health Check](#quarterly-system-health-check)
-14. [Emergency: If Something Breaks](#emergency-if-something-breaks)
-15. [Annual Maintenance Calendar](#annual-maintenance-calendar)
-16. [Quick Command Cheat Sheet](#quick-command-cheat-sheet)
+10. [Pipeline Health Check](#pipeline-health-check)
+11. [Dashboard Page Guide](#dashboard-page-guide)
+12. [Useful SQL Queries](#useful-sql-queries)
+13. [Feature Add-Ons via Claude Code](#feature-add-ons-via-claude-code)
+14. [Quarterly System Health Check](#quarterly-system-health-check)
+15. [Emergency: If Something Breaks](#emergency-if-something-breaks)
+16. [Known Issues (Resolved)](#known-issues-resolved)
+17. [Annual Maintenance Calendar](#annual-maintenance-calendar)
+18. [Quick Command Cheat Sheet](#quick-command-cheat-sheet)
 
 ---
 
@@ -308,7 +310,20 @@ Were any of these deals in Illinois or Massachusetts?
 
 **Why this data is critical:** Without Data Axle, the Market Intel and Buyability pages are running blind. NPPES tells you *where* practices are, but Data Axle tells you *how big they are*, *how old they are*, *who runs them*, and *how much revenue they generate*. That's the difference between "there's a dental office at 123 Main St" and "there's a 30-year-old solo practice with $600K revenue that's ripe for acquisition."
 
-**Current gap:** You have 852 Chicagoland records but **zero Boston Metro records**. That means 83% of watched-ZIP practices have no buyability scores. Boston is the #1 priority.
+**Coverage:** The expanded 6-zone system covers **289 total ZIPs** (268 Chicagoland + 21 Boston Metro) within a 1-hour commute radius from West Loop, Woodridge, and Bolingbrook:
+
+| Zone | Flag | ZIPs | Area |
+|------|------|------|------|
+| Original Chicagoland | `--metro chicagoland` | 28 | Naperville/DuPage/Will corridor |
+| Chi North | `--metro chi-north` | 37 | Evanston, Skokie, Wilmette, Highland Park |
+| Chi City | `--metro chi-city` | 56 | Chicago city proper (Loop, North/South/West Side) |
+| Chi South | `--metro chi-south` | 53 | Orland Park, Tinley Park, Homewood, Lansing |
+| Chi West | `--metro chi-west` | 49 | Oak Park, Berwyn, Cicero, Elmhurst |
+| Chi Far West | `--metro chi-far-west` | 32 | Aurora, Elgin, Batavia, Geneva, St. Charles |
+| Chi Far South | `--metro chi-far-south` | 14 | Joliet extended, Frankfort, Manhattan |
+| **All Chicago** | **`--metro chi-all`** | **268** | **All 7 zones combined (deduped)** |
+| Boston Metro | `--metro boston` | 21 | Boston, Brookline, Newton, Cambridge, Somerville |
+| **Everything** | **`--metro all`** | **49** | **Original Chicagoland + Boston (legacy)** |
 
 ### The Problem: Data Axle is Tedious
 
@@ -358,11 +373,19 @@ The script will:
 
 | Flag | What It Does |
 |------|-------------|
-| `--metro boston` | Export Boston Metro ZIPs (your biggest gap) |
-| `--metro chicagoland` | Export Chicagoland ZIPs |
-| `--metro all` | Export both metros back-to-back |
+| `--metro boston` | Export Boston Metro ZIPs |
+| `--metro chicagoland` | Export original 28 Chicagoland ZIPs |
+| `--metro chi-all` | Export all 268 expanded Chicagoland ZIPs (all 7 zones) |
+| `--metro chi-north` | North Shore + North suburbs (37 ZIPs) |
+| `--metro chi-city` | Chicago city proper (56 ZIPs) |
+| `--metro chi-south` | South suburbs (53 ZIPs) |
+| `--metro chi-west` | Inner west suburbs (49 ZIPs) |
+| `--metro chi-far-west` | Far west — Aurora, Elgin, etc. (32 ZIPs) |
+| `--metro chi-far-south` | Far south Will County (14 ZIPs) |
+| `--metro all` | Original Chicagoland + Boston (legacy, 49 ZIPs) |
 | `--batch-size 3` | Fewer ZIPs per search = fewer results = safer if hitting 250 limit |
 | `--resume 5` | Resume from batch 5 (if interrupted) |
+| `--skip-done` | Skip ZIPs that already have data in existing CSVs |
 | `--zips 33901,33907 --label fortmyers` | Custom ZIPs for scouting new markets |
 | `--combine` | Just combine existing CSVs (no browser needed) |
 
@@ -438,6 +461,8 @@ cd ~/dental-pe-tracker && python3 scrapers/data_axle_importer.py --instructions
 - Select the **"U.S. Businesses"** database
 
 **Step 2: Search for Chicagoland dental practices**
+
+> **Note:** This covers only the original 28 ZIPs (Naperville/DuPage/Will corridor). For the full 268-ZIP expanded coverage, use the Smart Batch Exporter with `--metro chi-all`.
 
 1. Under Keyword/SIC/NAICS, enter SIC code: **8021** (this is the code for dental offices)
 2. Under Geography, select **ZIP Code**, then paste this entire line:
@@ -547,7 +572,7 @@ and tell me about any issues. Specifically:
 2. Any dedup clusters that look wrong (merged two different practices,
    or missed a merge)
 3. Any practices scored as highly buyable that are actually DSO-affiliated
-Fix whatever you find and re-run with --force-reclassify.
+Fix whatever you find and re-run with --force.
 ```
 
 ### Expanding Your Search Area
@@ -590,6 +615,30 @@ Show me the ADA HPI benchmark data for Illinois and Massachusetts for
 all available years. How has DSO affiliation changed year over year?
 What's the trend for early career dentists specifically?
 ```
+
+---
+
+## Pipeline Health Check
+
+A single command to verify that all pipeline stages are healthy — data freshness, file existence, database integrity, and scraper status.
+
+```bash
+cd ~/dental-pe-tracker && python3 pipeline_check.py
+```
+
+This checks:
+- Whether each data source has been refreshed recently
+- Database table row counts and freshness
+- Missing or stale CSV/export files
+- Cron job status
+
+To see suggested fix commands for any issues:
+
+```bash
+python3 pipeline_check.py --fix
+```
+
+> **Note:** `pipeline_check.py` is currently being built. If the script is not yet available, use the manual checks in [Quarterly System Health Check](#quarterly-system-health-check) instead.
 
 ---
 
@@ -875,6 +924,24 @@ cp ~/dental-pe-tracker/backups/$(ls -t ~/dental-pe-tracker/backups/ | head -1) \
 
 ---
 
+## Known Issues (Resolved)
+
+### Duplicate zip_scores rows inflating practice counts
+
+**Symptom:** The Market Intel page showed ~3,500 total practices in Chicagoland when the actual count was ~1,894. Consolidation percentages looked plausible but were computed over inflated denominators.
+
+**Root cause:** `merge_and_score.py` was inserting a new `zip_scores` row keyed on `(zip_code, score_date)`. Running the script on different dates created duplicate rows for the same ZIP code — one per date it was run. Dashboard queries that summed across `zip_scores` would double- or triple-count practices.
+
+**Fix:** Changed the upsert logic to filter by `zip_code` only (not `zip_code + score_date`). When an existing row is found, it updates all fields in place and sets `score_date` to today. New rows are only inserted for ZIPs that have never been scored before. This ensures exactly one row per ZIP code at all times.
+
+**Verification:** After running `python3 scrapers/merge_and_score.py`, check:
+```sql
+SELECT COUNT(*), COUNT(DISTINCT zip_code) FROM zip_scores;
+-- These two numbers should be equal
+```
+
+---
+
 ## Annual Maintenance Calendar
 
 | Month | What To Do |
@@ -899,45 +966,82 @@ cp ~/dental-pe-tracker/backups/$(ls -t ~/dental-pe-tracker/backups/ | head -1) \
 Copy-paste any of these into Terminal.
 
 ```bash
+# ── Dashboard ──────────────────────────────────────────────
 # Start the dashboard locally
 bash ~/dental-pe-tracker/start_dashboard.sh
 
+# ── Full Pipeline ──────────────────────────────────────────
 # Manual full refresh (PESP + GDN + PitchBook + classify + score)
 cd ~/dental-pe-tracker && bash scrapers/refresh.sh
 
+# ── Health Check ───────────────────────────────────────────
+# Check pipeline status (all data sources, freshness, integrity)
+cd ~/dental-pe-tracker && python3 pipeline_check.py
+
+# Show fix commands for any issues
+cd ~/dental-pe-tracker && python3 pipeline_check.py --fix
+
+# ── NPPES ──────────────────────────────────────────────────
 # NPPES monthly update
 cd ~/dental-pe-tracker && python3 scrapers/nppes_downloader.py
 
+# ── Classification & Scoring ──────────────────────────────
 # Run DSO classifier
 cd ~/dental-pe-tracker && python3 scrapers/dso_classifier.py
+
+# Run DSO classifier (force reclassify all, including already-classified)
+cd ~/dental-pe-tracker && python3 scrapers/dso_classifier.py --force
 
 # Recalculate consolidation scores
 cd ~/dental-pe-tracker && python3 scrapers/merge_and_score.py
 
+# ── PitchBook ─────────────────────────────────────────────
 # Import PitchBook files (after dropping in /data/pitchbook/raw/)
+cd ~/dental-pe-tracker && python3 scrapers/pitchbook_importer.py --preview
 cd ~/dental-pe-tracker && python3 scrapers/pitchbook_importer.py --auto
 
-# Import Data Axle files (after dropping in /data/data-axle/)
-cd ~/dental-pe-tracker && python3 scrapers/data_axle_importer.py --auto
+# ── Data Axle Export (6-zone system, 289 total ZIPs) ──────
+# See batch plan for all expanded Chicago zones (268 ZIPs)
+cd ~/dental-pe-tracker && python3 scrapers/data_axle_exporter.py --plan --metro chi-all
 
+# See batch plan for a single zone
+cd ~/dental-pe-tracker && python3 scrapers/data_axle_exporter.py --plan --metro chi-north
+
+# Export a specific zone interactively
+cd ~/dental-pe-tracker && python3 scrapers/data_axle_exporter.py --metro chi-north
+
+# Export Boston Metro (21 ZIPs)
+cd ~/dental-pe-tracker && python3 scrapers/data_axle_exporter.py --metro boston
+
+# Export original 28 Chicagoland ZIPs
+cd ~/dental-pe-tracker && python3 scrapers/data_axle_exporter.py --metro chicagoland
+
+# Skip ZIPs that already have data in existing CSVs
+cd ~/dental-pe-tracker && python3 scrapers/data_axle_exporter.py --metro chi-all --skip-done
+
+# Combine existing CSVs (no browser needed)
+cd ~/dental-pe-tracker && python3 scrapers/data_axle_exporter.py --combine
+
+# Custom ZIPs (e.g., scouting Fort Myers)
+cd ~/dental-pe-tracker && python3 scrapers/data_axle_exporter.py --zips 33901,33907,33908 --label fortmyers
+
+# ── Data Axle Import + Score (after exporting) ────────────
+cd ~/dental-pe-tracker && python3 scrapers/data_axle_importer.py --preview
+cd ~/dental-pe-tracker && python3 scrapers/data_axle_importer.py --auto
+cd ~/dental-pe-tracker && python3 scrapers/dso_classifier.py
+cd ~/dental-pe-tracker && python3 scrapers/merge_and_score.py
+
+# Print Data Axle manual export instructions
+cd ~/dental-pe-tracker && python3 scrapers/data_axle_importer.py --instructions
+
+# ── Other Importers ───────────────────────────────────────
 # Import ADA HPI files (after dropping in /data/ada-hpi/)
 cd ~/dental-pe-tracker && python3 scrapers/ada_hpi_importer.py
 
 # Run ADSO location scraper
 cd ~/dental-pe-tracker && python3 scrapers/adso_location_scraper.py
 
-# Data Axle: see batch plan
-cd ~/dental-pe-tracker && python3 scrapers/data_axle_exporter.py --plan --metro all
-
-# Data Axle: run smart batch exporter (Boston = biggest gap)
-cd ~/dental-pe-tracker && python3 scrapers/data_axle_exporter.py --metro boston
-
-# Data Axle: combine existing CSVs
-cd ~/dental-pe-tracker && python3 scrapers/data_axle_exporter.py --combine
-
-# Print Data Axle manual export instructions
-cd ~/dental-pe-tracker && python3 scrapers/data_axle_importer.py --instructions
-
+# ── Logs & Monitoring ─────────────────────────────────────
 # View pipeline activity log (structured events from all scrapers)
 cd ~/dental-pe-tracker && python3 -c "
 from scrapers.pipeline_logger import get_recent_events
@@ -950,6 +1054,7 @@ for e in get_recent_events(limit=15):
 ls -lt ~/dental-pe-tracker/logs/ | head -5
 cat ~/dental-pe-tracker/logs/$(ls -t ~/dental-pe-tracker/logs/ | head -1) | tail -30
 
+# ── Database ──────────────────────────────────────────────
 # Database backup
 cd ~/dental-pe-tracker && python3 -c "from scrapers.database import backup_database; backup_database()"
 
@@ -963,14 +1068,9 @@ print(f'Practices: {s.query(Practice).count():,}')
 s.close()
 "
 
-# Re-compress DB and push to Streamlit Cloud
-cd ~/dental-pe-tracker && python3 -c "
-import gzip, shutil
-with open('data/dental_pe_tracker.db','rb') as f:
-    with gzip.open('data/dental_pe_tracker.db.gz','wb',6) as gz:
-        shutil.copyfileobj(f, gz)
-print('Compressed.')
-"
+# ── Deploy to Streamlit Cloud ─────────────────────────────
+# Re-compress DB and push
+cd ~/dental-pe-tracker && gzip -kf data/dental_pe_tracker.db
 git add data/dental_pe_tracker.db.gz && git commit -m "DB update $(date +%Y-%m-%d)" && git push
 ```
 

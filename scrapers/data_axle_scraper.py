@@ -145,15 +145,6 @@ def load_progress(metro_label):
     return 0
 
 
-def wait_for_download(page, timeout_ms=60000):
-    """Wait for a download to start and complete."""
-    with page.expect_download(timeout=timeout_ms) as download_info:
-        pass
-    download = download_info.value
-    dest = os.path.join(DOWNLOAD_DIR, download.suggested_filename)
-    download.save_as(dest)
-    return dest
-
 
 def run_scraper(args):
     """Main scraper logic."""
@@ -355,7 +346,7 @@ def run_scraper(args):
             try:
                 csv_option = page.locator(
                     'input[value*="CSV" i], label:has-text("CSV"), '
-                    'option:has-text("CSV"), a:has-text("CSV")'
+                    'option:text("CSV"), a:text("CSV")'
                 ).first
                 if csv_option.is_visible(timeout=3000):
                     csv_option.click()
