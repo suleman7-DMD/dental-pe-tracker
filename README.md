@@ -638,7 +638,14 @@ To see suggested fix commands for any issues:
 python3 pipeline_check.py --fix
 ```
 
-> **Note:** `pipeline_check.py` is currently being built. If the script is not yet available, use the manual checks in [Quarterly System Health Check](#quarterly-system-health-check) instead.
+The output shows a status line for each step:
+- **CSV Download** — stale CSVs in ~/Downloads/ that weren't moved
+- **CSV Import** — unprocessed CSVs in data/data-axle/
+- **DB Import** — latest import timestamp vs latest CSV dates
+- **Classification** — whether classifier has run after latest import
+- **ZIP Scoring** — whether merge_and_score has run after latest import
+- **DB Compression** — whether .db.gz is current (needed for deployment)
+- **Git Push** — whether local commits have been pushed
 
 ---
 
