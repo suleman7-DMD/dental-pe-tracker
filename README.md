@@ -10,23 +10,24 @@ A data-driven intelligence dashboard that tracks private equity activity in U.S.
 ## Table of Contents
 
 1. [What This App Does](#what-this-app-does)
-2. [Your Data Sources at a Glance](#your-data-sources-at-a-glance)
-3. [How to Start the Dashboard](#how-to-start-the-dashboard)
-4. [Weekly: Automated Refresh (Nothing To Do)](#weekly-automated-refresh-nothing-to-do)
-5. [Monthly: NPPES Refresh](#monthly-nppes-refresh)
-6. [ADSO Location Scraper (Automated)](#adso-location-scraper-automated)
-7. [Quarterly: PitchBook Export](#quarterly-pitchbook-export)
-8. [Quarterly: Data Axle Export](#quarterly-data-axle-export)
-9. [ADA HPI Benchmark Update (Automated)](#ada-hpi-benchmark-update-automated)
-10. [Pipeline Health Check](#pipeline-health-check)
-11. [Dashboard Page Guide](#dashboard-page-guide)
-12. [Useful SQL Queries](#useful-sql-queries)
-13. [Feature Add-Ons via Claude Code](#feature-add-ons-via-claude-code)
-14. [Quarterly System Health Check](#quarterly-system-health-check)
-15. [Emergency: If Something Breaks](#emergency-if-something-breaks)
-16. [Known Issues (Resolved)](#known-issues-resolved)
-17. [Annual Maintenance Calendar](#annual-maintenance-calendar)
-18. [Quick Command Cheat Sheet](#quick-command-cheat-sheet)
+2. [Current Data Stats](#current-data-stats)
+3. [Your Data Sources at a Glance](#your-data-sources-at-a-glance)
+4. [How to Start the Dashboard](#how-to-start-the-dashboard)
+5. [Weekly: Automated Refresh (Nothing To Do)](#weekly-automated-refresh-nothing-to-do)
+6. [Monthly: NPPES Refresh](#monthly-nppes-refresh)
+7. [ADSO Location Scraper (Automated)](#adso-location-scraper-automated)
+8. [Quarterly: PitchBook Export](#quarterly-pitchbook-export)
+9. [Quarterly: Data Axle Export](#quarterly-data-axle-export)
+10. [ADA HPI Benchmark Update (Automated)](#ada-hpi-benchmark-update-automated)
+11. [Pipeline Health Check](#pipeline-health-check)
+12. [Dashboard Page Guide](#dashboard-page-guide)
+13. [Useful SQL Queries](#useful-sql-queries)
+14. [Feature Add-Ons via Claude Code](#feature-add-ons-via-claude-code)
+15. [Quarterly System Health Check](#quarterly-system-health-check)
+16. [Emergency: If Something Breaks](#emergency-if-something-breaks)
+17. [Known Issues (Resolved)](#known-issues-resolved)
+18. [Annual Maintenance Calendar](#annual-maintenance-calendar)
+19. [Quick Command Cheat Sheet](#quick-command-cheat-sheet)
 
 ---
 
@@ -39,11 +40,31 @@ This platform automatically collects data about dental practice acquisitions fro
 | Page | What It Shows |
 |------|---------------|
 | **Deal Flow** | Every PE dental deal we know about — charts by year, by state, by deal type, recent activity feed |
-| **Market Intel** | Your watched ZIP codes — who owns what in Chicagoland and Boston Metro, consolidation percentages |
-| **Buyability** | Scores individual practices on how "buyable" they are — filters by ZIP and category |
-| **Job Market** | Job opportunity signals near your 3 planned living locations (West Loop, Woodridge, Bolingbrook) — practice scoring, ownership maps, DSO landscape |
+| **Market Intel** | Your watched ZIP codes — who owns what in Chicagoland and Boston Metro, consolidation map, ZIP-level detail, practice changes |
+| **Buyability** | Scores individual practices on how "buyable" they are — filters by ZIP, verdict categories, confidence ratings |
+| **Job Market** | Post-graduation job hunting — practice density map (pydeck), market overview charts, searchable practice directory, opportunity signals (retirement risk, buyability, recent changes), ownership landscape, market analytics |
 | **Research** | Deep dives — look up a specific PE sponsor, platform company, or state. Plus a SQL explorer for custom queries |
-| **System** | Data freshness checks, completeness stats, and forms to manually add deals/practices |
+| **System** | Data freshness checks, completeness stats, pipeline activity log, and forms to manually add deals/practices |
+
+---
+
+## Current Data Stats
+
+| Metric | Value |
+|--------|-------|
+| Total practices tracked | 400,962 |
+| Classified independent | 362,372 |
+| DSO-affiliated | 2,848 |
+| PE-backed | 401 |
+| Unknown ownership | 35,341 |
+| Total deals | 2,512 |
+| Data Axle enriched | 2,992 (with lat/lon, revenue, employees, year established) |
+| Scored ZIPs | 290 |
+| Watched ZIPs | 290 (268 Chicagoland + 21 Boston + 1 other) |
+| Practice changes tracked | 5,129 |
+| DSO locations scraped | 408 |
+| ADA HPI benchmarks | 918 (2022-2024, by state and career stage) |
+| Database size | 145 MB (32 MB compressed) |
 
 ---
 
@@ -58,10 +79,10 @@ The system pulls from 9 different data sources. Some run automatically, some nee
 | **NPPES** | Every dental practice in the US (name, address, NPI number, specialty) | Monthly | ~2 minutes | Semi-auto — cron tries first Sunday, manual backup if it fails |
 | **PitchBook** | Deal sizes, EBITDA multiples, PE sponsor details, company profiles | Quarterly | ~5 minutes | Manual — you download from pitchbook.com and drop the file in a folder |
 | **ADA HPI** | State-level DSO affiliation rates by career stage | Annually | None | Yes — auto-downloader checks weekly, grabs new files when ADA publishes them |
-| **Data Axle** | Practice-level business data (revenue, employees, year established, ownership) | Quarterly | ~15 min (smart batch) / ~45 min (manual) | Semi-auto — smart batch exporter handles planning + file mgmt, you handle browser clicks + CAPTCHAs |
+| **Data Axle** | Practice-level business data (revenue, employees, year established, ownership, lat/lon, parent company, EIN, franchise) | Quarterly | ~15 min (smart batch) / ~45 min (manual) | Semi-auto — smart batch exporter handles planning + file mgmt, you handle browser clicks + CAPTCHAs |
 | **ADSO Scraper** | DSO office locations scraped from their websites | Weekly | None | Yes — runs via cron every Sunday |
-| **DSO Classifier** | Tags each practice as independent, DSO-affiliated, or PE-backed | After any data load | None | Auto — runs as part of the pipeline |
-| **Merge & Score** | Consolidation scores, opportunity scores, metro-level rollups | After any data load | None | Auto — runs as part of the pipeline |
+| **DSO Classifier** | Tags each practice as independent, DSO-affiliated, or PE-backed (name pattern matching + corporate linkage detection) | After any data load | None | Auto — runs as part of the pipeline |
+| **Merge & Score** | Consolidation scores, opportunity scores, metro-level rollups, auto-backfills watched ZIPs | After any data load | None | Auto — runs as part of the pipeline |
 
 **Why so many sources?** No single source has the full picture. PESP and GDN catch deal announcements but miss deal sizes. PitchBook has financials but misses smaller deals. NPPES has every practice but doesn't know who owns them. Data Axle has business details that help figure out ownership. Combining them all gives you the most complete view possible.
 
@@ -98,7 +119,7 @@ Your Mac has a cron job that runs every Sunday at 8:00 AM. It automatically:
 5. Scrapes **ADSO** DSO websites for office locations
 6. Checks **ADA HPI** for new annual data files (auto-downloads when available)
 7. Runs the **DSO classifier** to tag new practices
-8. Recalculates **consolidation scores** for all ZIP codes
+8. Recalculates **consolidation scores** for all 290 ZIP codes
 9. **Compresses DB + git pushes** to auto-deploy to Streamlit Cloud
 
 Every step logs a structured event to `logs/pipeline_events.jsonl` with timestamp, duration, records processed, and a summary of what changed. View these on the **System Health** page under "Pipeline Activity Log".
@@ -170,12 +191,12 @@ This looks at each new practice and figures out if it's independent, part of a D
 python3 scrapers/merge_and_score.py
 ```
 
-This updates consolidation percentages, opportunity scores, and metro-level stats.
+This updates consolidation percentages, opportunity scores, and metro-level stats for all 290 watched ZIPs.
 
 **Step 5:** (Optional) Push updated database to the cloud dashboard:
 
 ```bash
-python3 -c "import gzip,shutil; open_ = open('data/dental_pe_tracker.db','rb'); gz = gzip.open('data/dental_pe_tracker.db.gz','wb',6); shutil.copyfileobj(open_,gz); gz.close(); open_.close()"
+cd ~/dental-pe-tracker && gzip -kf data/dental_pe_tracker.db
 git add data/dental_pe_tracker.db.gz && git commit -m "Monthly NPPES refresh $(date +%Y-%m)" && git push
 ```
 
@@ -307,11 +328,11 @@ Were any of these deals in Illinois or Massachusetts?
 
 **When to do this:** Same weekend as PitchBook (January, April, July, October).
 
-**What it does:** Data Axle is a business database you access through BU's library. It has ground-truth data on every dental practice in your target ZIP codes — revenue, employee count, year established, ownership type, contact info. This is what powers the buyability scoring (figuring out which practices are most likely to sell) and stealth DSO detection (catching practices that look independent but are actually DSO-owned).
+**What it does:** Data Axle is a business database you access through BU's library. It has ground-truth data on every dental practice in your target ZIP codes — revenue, employee count, year established, ownership type, contact info, latitude/longitude, parent company, EIN, and franchise affiliation. This is what powers the buyability scoring, stealth DSO detection via corporate linkage, and the practice-level maps.
 
-**Why this data is critical:** Without Data Axle, the Market Intel and Buyability pages are running blind. NPPES tells you *where* practices are, but Data Axle tells you *how big they are*, *how old they are*, *who runs them*, and *how much revenue they generate*. That's the difference between "there's a dental office at 123 Main St" and "there's a 30-year-old solo practice with $600K revenue that's ripe for acquisition."
+**Why this data is critical:** Without Data Axle, the Market Intel and Buyability pages are running blind. NPPES tells you *where* practices are, but Data Axle tells you *how big they are*, *how old they are*, *who runs them*, *who their parent company is*, and *how much revenue they generate*. That's the difference between "there's a dental office at 123 Main St" and "there's a 30-year-old solo practice with $600K revenue owned by Heartland Dental's parent company that's ripe for acquisition."
 
-**Coverage:** The expanded 6-zone system covers **289 total ZIPs** (268 Chicagoland + 21 Boston Metro) within a 1-hour commute radius from West Loop, Woodridge, and Bolingbrook:
+**Coverage:** The expanded 7-zone system covers **289 total ZIPs** (268 Chicagoland + 21 Boston Metro) within a 1-hour commute radius from West Loop, Woodridge, and Bolingbrook:
 
 | Zone | Flag | ZIPs | Area |
 |------|------|------|------|
@@ -398,6 +419,22 @@ python3 scrapers/data_axle_importer.py --auto       # Import for real
 python3 scrapers/dso_classifier.py                  # Classify new practices
 python3 scrapers/merge_and_score.py                 # Recalculate scores
 ```
+
+### What the Importer Does (7-Phase Pipeline + Corporate Linkage)
+
+The Data Axle importer (`data_axle_importer.py`, 2,650 lines) processes CSVs through 7 phases:
+
+1. **Column Mapping** — Maps 383 Data Axle columns to internal fields (including lat/lon, parent company, EIN, franchise, IUSA number, website)
+2. **Record Extraction** — Pulls raw records with all mapped fields
+3. **Deduplication** — Address normalization + fuzzy name matching (rapidfuzz, ~80% threshold) to collapse duplicate records
+4. **DSO Classification** — Name pattern matching against 100+ known DSOs
+5. **Buyability Scoring** — 0-100 score with confidence rating (1-5 stars)
+6. **Corporate Linkage Detection (Pass 6)** — 4 strategies to find hidden DSO ownership:
+   - Fuzzy match parent_company against known DSOs
+   - EIN clustering (3+ practices sharing an EIN = same legal entity)
+   - IUSA parent linkage (inherit classification from parent records)
+   - Franchise field detection (e.g., "Aspen Dental" in franchise field)
+7. **HTML Debug Report** — Detailed report with dedup detail, stealth DSO suspects, buyability rankings, change detection
 
 ### Option B: Playwright Browser Automation (Faster but Fragile)
 
@@ -490,6 +527,7 @@ cd ~/dental-pe-tracker && python3 scrapers/data_axle_importer.py --instructions
    - Number of Locations / Location Type
    - Contact First Name, Last Name, Title
    - Latitude, Longitude
+   - Parent Company Name, EIN, IUSA Number, Franchise Description
 6. Save files as `data_axle_chicagoland_2026_Q2_batch1.csv`, etc.
 
 **Step 3: Search for Boston Metro dental practices**
@@ -526,6 +564,8 @@ Every Data Axle practice gets a **buyability score (0-100)** — "how likely is 
 - Year established (30+ years = owner likely retiring = #1 acquisition driver)
 - Location type (single location vs. branch/subsidiary)
 - Ownership type (private vs. public/government)
+- Parent company, EIN, franchise (corporate linkage for stealth DSO detection)
+- Latitude/longitude (parcel-level geocoding for practice-level maps)
 
 **Scoring weights (from heaviest to lightest):**
 
@@ -658,10 +698,12 @@ Here are common tasks and which page to use:
 |--------------|----------|---------|
 | See how consolidated my target market is | **Market Intel** | Select "Chicagoland" or "Boston Metro" and read the consolidation percentage |
 | Find buyable practices in Homer Glen | **Buyability** | Filter to ZIP 60491, sort by score descending |
-| Scope out job opportunities near where I'll live | **Job Market** | Pick West Loop, Woodridge, or Bolingbrook — see scored practices, opportunity map, DSO landscape |
+| Scope out job opportunities near where I'll live | **Job Market** | Pick West Loop, Woodridge, Bolingbrook, or All Chicagoland — see density map, practice directory, opportunity signals |
 | See what Specialized Dental Partners is doing | **Research** | PE Sponsor Profile → "Quad-C Management" or Platform Profile → "Specialized Dental Partners" |
 | View all deals in Illinois this year | **Deal Flow** | Sidebar: State = IL, Date = 2026-01-01 to today |
 | Check for acquisitions in my ZIPs | **Market Intel** | Scroll to "Recent Practice Changes" section, filter to your metro |
+| Find retirement-risk practices near me | **Job Market** | Opportunity Signals → Retirement Risk tab |
+| See which DSOs dominate my area | **Job Market** | Market Analytics → Competitive Landscape section |
 | Run a custom database query | **Research** | SQL Explorer tab — write your query or use a template |
 
 ---
@@ -726,6 +768,16 @@ JOIN practices p ON pc.npi = p.npi
 WHERE pc.field_changed = 'practice_name'
   AND pc.change_date > date('now', '-90 days')
 ORDER BY pc.change_date DESC
+```
+
+### Practices with corporate linkage (Data Axle enrichment)
+
+```sql
+SELECT practice_name, parent_company, ein, franchise_name, city, zip,
+       ownership_status, affiliated_dso, buyability_score
+FROM practices
+WHERE parent_company IS NOT NULL OR ein IS NOT NULL OR franchise_name IS NOT NULL
+ORDER BY parent_company, practice_name
 ```
 
 ---
@@ -807,22 +859,6 @@ Give me a side-by-side comparison of [MARKET A] vs [MARKET B]:
 - Recent acquisition activity (last 6 months)
 - ADA HPI benchmark for each state
 Which market has more opportunity for independent practice ownership?
-```
-
-### Add Google Maps to the dashboard
-
-```
-Add a new section to the Market Intel page of the dashboard that
-shows an interactive map using plotly mapbox. Plot every practice in the
-selected metro area as a dot, color-coded by ownership status:
-- Green = independent
-- Yellow = dso_affiliated
-- Red = pe_backed
-- Gray = unknown
-Size the dots by buyability_score if available (bigger = more buyable).
-On hover, show practice name, address, classification, and score.
-Use the latitude/longitude from the practices table if available,
-otherwise geocode from address.
 ```
 
 ### Add email alerts for acquisitions
@@ -943,11 +979,27 @@ cp ~/dental-pe-tracker/backups/$(ls -t ~/dental-pe-tracker/backups/ | head -1) \
 
 **Fix:** Changed the upsert logic to filter by `zip_code` only (not `zip_code + score_date`). When an existing row is found, it updates all fields in place and sets `score_date` to today. New rows are only inserted for ZIPs that have never been scored before. This ensures exactly one row per ZIP code at all times.
 
-**Verification:** After running `python3 scrapers/merge_and_score.py`, check:
-```sql
-SELECT COUNT(*), COUNT(DISTINCT zip_code) FROM zip_scores;
--- These two numbers should be equal
-```
+### Job Market KPIs showed wrong numbers (1,288 vs 13,398 practices)
+
+**Symptom:** KPI cards showed only 1,288 practices for "All Chicagoland" when the database had 13,398+.
+
+**Root cause:** KPIs were computed from `zip_scores` table which only had 42 watched ZIPs. The Job Market page now computes KPIs directly from the `practices` table for all ZIPs in the selected zone.
+
+**Fix:** Replaced all KPI computations to use `prac_df` (loaded from practices table) instead of `zs` (zip_scores). Added `ensure_chicagoland_watched()` to auto-backfill all 268 Chicagoland ZIPs into watched_zips.
+
+### DSO classifier not saving results (87.9% unknown)
+
+**Symptom:** Running the classifier produced no changes — 290k individual NPIs matched nothing.
+
+**Root cause:** The code didn't pass `entity_type` to `classify_practice()`, so individual NPIs like "JOHN SMITH" matched nothing. Additionally, `expire_on_commit=True` caused a performance trap with 352k lazy-reloading objects.
+
+**Fix:** Added entity_type passthrough. Set `expire_on_commit=False` on the session. Classification now completes in ~24 seconds.
+
+### Data Axle importing only ~25 of 383 available fields
+
+**Root cause:** The importer's field mappings were incomplete. Critical missing fields: latitude/longitude, parent company, EIN, IUSA number, franchise, website.
+
+**Fix:** Added field mappings for all critical fields. Added corresponding columns to the Practice model. Re-import matched 2,933 records to existing NPPES practices with 2,848 getting real lat/lon coordinates.
 
 ---
 
@@ -1009,7 +1061,7 @@ cd ~/dental-pe-tracker && python3 scrapers/merge_and_score.py
 cd ~/dental-pe-tracker && python3 scrapers/pitchbook_importer.py --preview
 cd ~/dental-pe-tracker && python3 scrapers/pitchbook_importer.py --auto
 
-# ── Data Axle Export (6-zone system, 289 total ZIPs) ──────
+# ── Data Axle Export (7-zone system, 289 total ZIPs) ──────
 # See batch plan for all expanded Chicago zones (268 ZIPs)
 cd ~/dental-pe-tracker && python3 scrapers/data_axle_exporter.py --plan --metro chi-all
 
