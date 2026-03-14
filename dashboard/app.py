@@ -12,6 +12,7 @@ import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
+import pydeck as pdk
 
 # Add project root to path (works locally and on Streamlit Cloud)
 _project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -104,7 +105,7 @@ ZIP_CENTROIDS = {
     "60491": (41.6, -87.96), "60439": (41.71, -87.98), "60441": (41.59, -88.05),
     "60540": (41.77, -88.14), "60564": (41.7, -88.2), "60565": (41.73, -88.13),
     "60563": (41.79, -88.17), "60527": (41.74, -87.93), "60515": (41.8, -88.01),
-    "60516": (41.76, -88.02), "60532": (41.79, -88.09), "60559": (41.77, -87.98),
+    "60516": (41.76, -88.02), "60517": (41.75, -88.05), "60532": (41.79, -88.09), "60559": (41.77, -87.98),
     "60514": (41.8, -87.96), "60521": (41.8, -87.93), "60523": (41.84, -87.96),
     "60148": (41.87, -88.02), "60440": (41.7, -88.09), "60490": (41.68, -88.14),
     "60504": (41.75, -88.25), "60502": (41.78, -88.26), "60431": (41.47, -87.94),
@@ -280,6 +281,45 @@ LIVING_LOCATIONS = {
             "60536", "60537", "60538", "60539", "60540", "60541", "60542", "60543",
             "60544", "60545", "60548", "60554", "60559", "60560", "60563", "60564",
             "60565", "60585", "60586", "60803", "60804", "60805", "60827",
+        ],
+    },
+    "All Chicagoland": {
+        "center_zip": "60605", "center_lat": 41.80, "center_lon": -87.85,
+        "commutable_zips": [  # 268 ZIPs: Union of all Chicagoland zones
+            "60004", "60005", "60007", "60008", "60010", "60015", "60016", "60017",
+            "60018", "60022", "60025", "60026", "60035", "60037", "60038", "60040",
+            "60045", "60053", "60056", "60061", "60062", "60067", "60068", "60069",
+            "60070", "60074", "60076", "60077", "60089", "60090", "60091", "60093",
+            "60101", "60103", "60104", "60106", "60107", "60108", "60110", "60118",
+            "60119", "60120", "60121", "60122", "60123", "60124", "60126", "60130",
+            "60131", "60133", "60134", "60137", "60138", "60139", "60143", "60144",
+            "60148", "60151", "60153", "60154", "60155", "60160", "60161", "60162",
+            "60163", "60164", "60165", "60171", "60172", "60173", "60174", "60175",
+            "60176", "60181", "60185", "60186", "60187", "60188", "60189", "60190",
+            "60191", "60193", "60194", "60195", "60201", "60202", "60203", "60301",
+            "60302", "60304", "60305", "60402", "60403", "60404", "60406", "60409",
+            "60410", "60411", "60412", "60415", "60416", "60418", "60419", "60421",
+            "60422", "60423", "60425", "60426", "60428", "60429", "60430", "60431",
+            "60432", "60433", "60434", "60435", "60436", "60438", "60439", "60440",
+            "60441", "60442", "60443", "60445", "60446", "60447", "60448", "60449",
+            "60450", "60451", "60452", "60453", "60454", "60455", "60456", "60457",
+            "60458", "60459", "60461", "60462", "60463", "60464", "60465", "60466",
+            "60467", "60468", "60469", "60471", "60472", "60473", "60475", "60476",
+            "60477", "60478", "60480", "60481", "60482", "60484", "60487", "60490",
+            "60491", "60501", "60502", "60503", "60504", "60505", "60506", "60510",
+            "60511", "60512", "60513", "60514", "60515", "60516", "60517", "60519",
+            "60521", "60523", "60525", "60526", "60527", "60532", "60534", "60536",
+            "60537", "60538", "60539", "60540", "60541", "60542", "60543", "60544",
+            "60545", "60546", "60548", "60554", "60555", "60558", "60559", "60560",
+            "60563", "60564", "60565", "60585", "60586", "60601", "60602", "60603",
+            "60604", "60605", "60606", "60607", "60608", "60609", "60610", "60611",
+            "60612", "60613", "60614", "60615", "60616", "60617", "60618", "60619",
+            "60620", "60621", "60622", "60623", "60624", "60625", "60626", "60628",
+            "60629", "60630", "60631", "60632", "60633", "60634", "60636", "60637",
+            "60638", "60639", "60640", "60641", "60642", "60643", "60644", "60645",
+            "60646", "60647", "60649", "60651", "60652", "60653", "60654", "60655",
+            "60656", "60657", "60659", "60660", "60661", "60706", "60707", "60712",
+            "60714", "60803", "60804", "60805", "60827",
         ],
     },
 }
@@ -789,24 +829,23 @@ def page_market_intel():
         dso_cnt = int(zs["dso_affiliated_count"].sum())
         indep_cnt = int(zs["independent_count"].sum())
         unk_cnt = int(zs["unknown_count"].sum())
-        classified = int(zs["classified_count"].sum())
-        # Conservative: use total as denominator (unknown = independent until proven otherwise)
-        consol_total = ((pe_cnt + dso_cnt) / total_p * 100) if total_p > 0 else 0
-        pe_pct_total = (pe_cnt / total_p * 100) if total_p > 0 else 0
+        # Use total as denominator — never classified_count (CLAUDE.md rule)
+        consol_pct_of_total = ((pe_cnt + dso_cnt) / total_p * 100) if total_p > 0 else 0
+        indep_pct_of_total = (indep_cnt / total_p * 100) if total_p > 0 else 0
         unk_pct = (unk_cnt / total_p * 100) if total_p > 0 else 100
-        conf = "🟢 High" if unk_pct < 20 else ("🟡 Medium" if unk_pct <= 50 else "🔴 Low")
 
         c1, c2, c3, c4 = st.columns(4)
         c1.markdown(make_kpi_card("🏥", "Total Practices", f"{total_p:,}"), unsafe_allow_html=True)
-        c2.markdown(make_kpi_card("📊", f"Known Consolidated {conf}", f"{consol_total:.1f}%"), unsafe_allow_html=True)
-        c3.markdown(make_kpi_card("💰", "Known PE-Backed", f"{pe_pct_total:.1f}%"), unsafe_allow_html=True)
-        c4.markdown(make_kpi_card("📈", "Opportunity Score", f"{zs['opportunity_score'].mean():.0f}"), unsafe_allow_html=True)
+        c2.markdown(make_kpi_card("📊", "Consolidated (of total)", f"{consol_pct_of_total:.1f}%"), unsafe_allow_html=True)
+        c3.markdown(make_kpi_card("🟢", "Independent (of total)", f"{indep_pct_of_total:.1f}%"), unsafe_allow_html=True)
+        c4.markdown(make_kpi_card("❓", "Unclassified", f"{unk_pct:.1f}%"), unsafe_allow_html=True)
 
-        # Transparency bar: show data classification breakdown
-        if unk_pct > 30:
-            st.caption(f"⚠️ {unk_pct:.0f}% of practices have unknown ownership ({unk_cnt:,} / {total_p:,}). "
-                       f"Classified: {classified:,} — Independent: {indep_cnt:,}, DSO: {dso_cnt:,}, PE: {pe_cnt:,}. "
-                       f"Real consolidation is likely higher. Add Data Axle exports to improve classification.")
+        # Transparency bar: show 3-way ownership split
+        st.caption(f"Ownership breakdown of {total_p:,} practices: "
+                   f"Consolidated {consol_pct_of_total:.1f}% (DSO: {dso_cnt:,} + PE: {pe_cnt:,}) | "
+                   f"Independent {indep_pct_of_total:.1f}% ({indep_cnt:,}) | "
+                   f"Unclassified {unk_pct:.1f}% ({unk_cnt:,}). "
+                   f"All percentages use total practices as denominator.")
 
     # ADA HPI Benchmarks
     ada = load_ada_hpi()
@@ -832,8 +871,8 @@ def page_market_intel():
     # ── Interactive Map ──────────────────────────────────────────────────
     if not zs.empty:
         st.markdown(section_header("Consolidation Map",
-            "Each marker = one ZIP code. Size reflects practice count. Color shows consolidation level: "
-            "blue = low consolidation (opportunity), warm = higher consolidation. Hover for details."), unsafe_allow_html=True)
+            "Each dot = one watched ZIP code. Size = practice count. Color = consolidation level "
+            "(green = mostly independent, red = mostly consolidated). Dark areas = no data coverage."), unsafe_allow_html=True)
 
         map_data = zs.copy()
         map_data["lat"] = map_data["zip_code"].map(lambda z: ZIP_CENTROIDS.get(z, (None, None))[0])
@@ -841,22 +880,42 @@ def page_market_intel():
         map_data = map_data.dropna(subset=["lat", "lon"])
 
         if not map_data.empty:
-            # Rich hover text — PE-firm quality at-a-glance
-            map_data["hover"] = map_data.apply(
-                lambda r: (
+            # Pick the conservative consolidation % (of total) when available
+            consol_col = "consolidation_pct_of_total" if "consolidation_pct_of_total" in map_data.columns else "consolidation_pct"
+
+            # Data confidence for opacity — high-confidence ZIPs get full opacity
+            pct_unk_col = "pct_unknown" if "pct_unknown" in map_data.columns else None
+            conf_col = "data_confidence" if "data_confidence" in map_data.columns else None
+
+            # Rich hover text
+            def _build_hover(r):
+                consol_val = r[consol_col]
+                total = int(r["total_practices"])
+                indep = int(r["independent_count"])
+                consol_count = int(r["dso_affiliated_count"]) + int(r["pe_backed_count"])
+                # Data confidence label
+                if conf_col and conf_col in r.index:
+                    conf_label = str(r[conf_col]).capitalize()
+                elif pct_unk_col and pct_unk_col in r.index:
+                    pu = r[pct_unk_col]
+                    conf_label = "High" if pu < 30 else ("Medium" if pu < 60 else "Low")
+                else:
+                    conf_label = "N/A"
+                return (
                     f"<b style='font-size:14px'>{r['city']}</b>"
                     f"<span style='color:#90a4ae'> · {r['zip_code']}</span><br>"
                     f"<span style='font-size:13px;color:#e0e0e0'>"
-                    f"{'●' * min(int(r['total_practices'] // 10), 8)} "
-                    f"<b>{int(r['total_practices'])}</b> practices</span><br>"
+                    f"<b>{total}</b> practices (deduplicated)</span><br>"
                     f"<span style='font-size:12px;color:#4fc3f7'>"
-                    f"▸ {int(r['independent_count'])} independent</span><br>"
+                    f"▸ {indep} independent</span>"
                     f"<span style='font-size:12px;color:#ffb74d'>"
-                    f"▸ {int(r['dso_affiliated_count'])} DSO  ·  {int(r['pe_backed_count'])} PE-backed</span><br>"
-                    f"<span style='font-size:11px;color:#{'ef5350' if r['consolidation_pct'] > 35 else '66bb6a'}'>"
-                    f"{'▲' if r['consolidation_pct'] > 35 else '◆'} "
-                    f"{r['consolidation_pct']:.1f}% consolidated</span>"
-                ), axis=1)
+                    f" | {consol_count} consolidated (DSO+PE)</span><br>"
+                    f"<span style='font-size:11px;color:#{'F44336' if consol_val > 20 else '4CAF50'}'>"
+                    f"Consolidation: {consol_val:.1f}% of total</span><br>"
+                    f"<span style='font-size:10px;color:#78909c'>"
+                    f"Data confidence: {conf_label}</span>"
+                )
+            map_data["hover"] = map_data.apply(_build_hover, axis=1)
 
             # Determine map center
             metro_key = selected if selected in METRO_CENTERS else None
@@ -865,94 +924,36 @@ def page_market_intel():
             else:
                 center = {"lat": map_data["lat"].mean(), "lon": map_data["lon"].mean(), "zoom": 9}
 
-            # Marker sizing: power-scaled with tighter range for cleaner look
+            # Marker sizing: sqrt-scaled with tighter range for cleaner look
             sizes = map_data["total_practices"].apply(
                 lambda x: max(7, min(24, 5 + (x ** 0.5) * 1.3)))
 
+            # Opacity: 0.9 for high-confidence ZIPs (>50% classified), 0.5 for low-confidence
+            if pct_unk_col and pct_unk_col in map_data.columns:
+                opacities = map_data[pct_unk_col].apply(lambda pu: 0.9 if pu < 50 else 0.5)
+            else:
+                opacities = 0.9
+
             fig_map = go.Figure()
 
-            # Layer 0: Area of Interest boundary polygon (Chicagoland commute zone)
-            # Covers DeKalb → Evanston/Chicago → Hammond → Kankakee → Morris → back
-            AOI_POLYGONS = {
-                "Chicagoland": {
-                    "lats": [42.08, 42.08, 42.08, 41.88, 41.55, 41.10, 41.18, 41.35, 42.08],
-                    "lons": [-88.95, -88.20, -87.60, -87.52, -87.48, -87.80, -88.60, -88.95, -88.95],
-                },
-            }
-            aoi_key = selected if selected in AOI_POLYGONS else None
-            if aoi_key:
-                aoi = AOI_POLYGONS[aoi_key]
-                # Filled polygon — light wash for "unmapped" zone
-                fig_map.add_trace(go.Scattermapbox(
-                    lat=aoi["lats"], lon=aoi["lons"],
-                    mode="lines",
-                    fill="toself",
-                    fillcolor="rgba(100,150,200,0.12)",
-                    line=dict(width=2.5, color="rgba(70,130,180,0.6)"),
-                    hoverinfo="skip", showlegend=False,
-                ))
-
-            # Layer 1: Density heatmap background — smooth radius-based saturation field
-            # Seed grid inside AOI so unmapped areas show a faint base wash
-            import numpy as np
-            grid_lats, grid_lons, grid_z = [], [], []
-            if aoi_key:
-                aoi = AOI_POLYGONS[aoi_key]
-                lat_min, lat_max = min(aoi["lats"]), max(aoi["lats"])
-                lon_min, lon_max = min(aoi["lons"]), max(aoi["lons"])
-                for glat in np.arange(lat_min + 0.05, lat_max, 0.08):
-                    for glon in np.arange(lon_min + 0.05, lon_max, 0.08):
-                        grid_lats.append(glat)
-                        grid_lons.append(glon)
-                        grid_z.append(20.0)  # Base signal — registers as faint blue wash for unmapped areas
-            # Combine real data with grid
-            heat_z = map_data["consolidation_pct"] * map_data["total_practices"].apply(lambda x: max(1, x ** 0.7))
-            all_lats = list(map_data["lat"]) + grid_lats
-            all_lons = list(map_data["lon"]) + grid_lons
-            all_z = list(heat_z) + grid_z
-            fig_map.add_trace(go.Densitymapbox(
-                lat=all_lats, lon=all_lons,
-                z=all_z,
-                radius=50,  # ~8-10 mile smooth radius
-                opacity=0.75,
-                zmin=0, zmax=max(all_z) * 0.35 if all_z else 100,  # Compress range so grid seeds register as faint wash
-                colorscale=[
-                    [0.00, "rgba(200,220,240,0.0)"],   # Transparent — no data
-                    [0.06, "rgba(100,181,246,0.3)"],   # Light blue glow
-                    [0.15, "rgba(41,182,246,0.5)"],    # Bright blue
-                    [0.28, "rgba(38,198,218,0.6)"],    # Cyan
-                    [0.40, "rgba(102,187,106,0.65)"],  # Green — opportunity
-                    [0.52, "rgba(255,235,59,0.7)"],    # Yellow — transitional
-                    [0.65, "rgba(255,152,0,0.75)"],    # Orange — elevated
-                    [0.80, "rgba(244,67,54,0.8)"],     # Red — high
-                    [1.00, "rgba(183,28,28,0.85)"],    # Deep red — saturated
-                ],
-                showscale=False,
-                hoverinfo="skip",
-            ))
-
-            # Layer 2: Main data markers on top of heatmap
+            # Scattermapbox markers — one dot per watched ZIP
             fig_map.add_trace(go.Scattermapbox(
                 lat=map_data["lat"], lon=map_data["lon"],
                 mode="markers",
                 marker=dict(
                     size=sizes,
-                    color=map_data["consolidation_pct"],
+                    color=map_data[consol_col],
                     colorscale=[
-                        [0.00, "#4FC3F7"],   # Light blue — minimal consolidation
-                        [0.15, "#26C6DA"],   # Cyan
-                        [0.30, "#66BB6A"],   # Green — opportunity
-                        [0.50, "#FDD835"],   # Yellow — transitional
-                        [0.65, "#FFB74D"],   # Amber — elevated
-                        [0.80, "#EF5350"],   # Red — high
-                        [1.00, "#AD1457"],   # Deep magenta — heavily consolidated
+                        [0.00, "#4CAF50"],   # Green — mostly independent
+                        [0.50, "#FFC107"],   # Yellow — moderate consolidation
+                        [1.00, "#F44336"],   # Red — mostly consolidated
                     ],
-                    cmin=0, cmax=65,
-                    opacity=0.95,
+                    cmin=0, cmax=30,
+                    opacity=opacities,
                     colorbar=dict(
-                        title=dict(text="Consolidation %", font=dict(size=11, color="#b0bec5")),
+                        title=dict(text="Consolidation %<br>(of total)", font=dict(size=11, color="#b0bec5")),
                         ticksuffix="%", tickfont=dict(size=10, color="#90a4ae"),
-                        tickvals=[0, 10, 20, 30, 40, 50, 60],
+                        tickvals=[0, 5, 10, 15, 20, 25, 30],
                         thickness=12, len=0.45, y=0.5, x=1.01,
                         bgcolor="rgba(10,22,40,0.85)", borderwidth=0,
                         outlinewidth=0,
@@ -963,7 +964,7 @@ def page_market_intel():
                 hoverinfo="text",
             ))
 
-            # Layer 3: City labels for notable ZIPs (dark text for light map)
+            # City labels for notable ZIPs (light text for dark map)
             label_threshold = 25 if len(map_data) > 50 else 15
             label_data = map_data[map_data["total_practices"] >= label_threshold].copy()
             if not label_data.empty:
@@ -974,14 +975,14 @@ def page_market_intel():
                     lon=label_data["lon"],
                     mode="text",
                     text=label_data["short_label"],
-                    textfont=dict(size=9.5, color="#1a237e", family="DM Sans"),
+                    textfont=dict(size=9.5, color="#b0bec5", family="DM Sans"),
                     textposition="top center",
                     hoverinfo="skip", showlegend=False,
                 ))
 
             fig_map.update_layout(
                 mapbox=dict(
-                    style="carto-positron",
+                    style="carto-darkmatter",
                     center=dict(lat=center["lat"], lon=center["lon"]),
                     zoom=center["zoom"],
                 ),
@@ -998,15 +999,13 @@ def page_market_intel():
             st.plotly_chart(fig_map, use_container_width=True)
 
             # Map legend callouts
-            leg_cols = st.columns(4)
+            leg_cols = st.columns(3)
             with leg_cols[0]:
-                st.markdown('<span style="color:#4FC3F7;font-size:13px">● Low consolidation</span>', unsafe_allow_html=True)
+                st.markdown('<span style="color:#4CAF50;font-size:13px">● Mostly Independent</span>', unsafe_allow_html=True)
             with leg_cols[1]:
-                st.markdown('<span style="color:#66BB6A;font-size:13px">● Opportunity zone</span>', unsafe_allow_html=True)
+                st.markdown('<span style="color:#F44336;font-size:13px">● Mostly Consolidated (DSO/PE)</span>', unsafe_allow_html=True)
             with leg_cols[2]:
-                st.markdown('<span style="color:#FFB74D;font-size:13px">● Elevated</span>', unsafe_allow_html=True)
-            with leg_cols[3]:
-                st.markdown('<span style="color:#EF5350;font-size:13px">● High consolidation</span>', unsafe_allow_html=True)
+                st.markdown('<span style="color:#78909c;font-size:13px">Dark areas = no data</span>', unsafe_allow_html=True)
         else:
             st.info("No ZIP coordinates available for map display.")
 
@@ -1017,7 +1016,8 @@ def page_market_intel():
             "Consolidation % = (DSO + PE) / total practices (conservative — treats unknowns as not consolidated). "
             "Opportunity Score = higher means more independent practices. Data Confidence = how well we can classify."), unsafe_allow_html=True)
         show_cols = ["zip_code", "city", "total_practices", "independent_count", "dso_affiliated_count",
-                     "pe_backed_count", "unknown_count", "consolidation_pct_of_total", "pct_unknown", "data_confidence", "opportunity_score"]
+                     "pe_backed_count", "unknown_count", "consolidation_pct_of_total", "independent_pct_of_total",
+                     "pct_unknown", "data_confidence", "opportunity_score"]
         avail_cols = [c for c in show_cols if c in zs.columns]
         zt = zs[avail_cols]
         sort_col = "opportunity_score" if "opportunity_score" in zt.columns else avail_cols[0]
@@ -1080,8 +1080,8 @@ def page_market_intel():
                         kc1.metric("Total", city_total)
                         kc2.metric("Independent", city_indep)
                         kc3.metric("DSO + PE", city_dso + city_pe)
-                        kc4.metric("Known Consolidated", f"{consol:.0f}%",
-                                   delta=f"{city_unk} unknown" if city_unk > 0 else None,
+                        kc4.metric("Consolidated (of total)", f"{consol:.0f}%",
+                                   delta=f"{city_unk} unclassified" if city_unk > 0 else None,
                                    delta_color="off")
 
                     # ZIP sub-expanders within each city
@@ -1680,232 +1680,719 @@ def page_job_market():
     loc = LIVING_LOCATIONS[selected]
     zip_list = loc["commutable_zips"]
 
-    # Load and filter zip scores to commutable ZIPs
+    prac_df = load_practices_for_zone(tuple(zip_list))
+
+    # Load zip_scores for supplementary charts (may be incomplete)
     zs = load_zip_scores()
-    if zs.empty:
-        st.info("No consolidation scores calculated yet. Run `python3 scrapers/merge_and_score.py` to calculate ZIP-level scores.")
+    if not zs.empty:
+        zs = zs[zs["zip_code"].isin(zip_list)]
+
+    if prac_df.empty:
+        st.info("No practices found for this zone.")
         return
-    zs = zs[zs["zip_code"].isin(zip_list)]
+
+    # Compute per-ZIP stats from practice data (covers ALL ZIPs, not just watched)
+    _status_col = prac_df["ownership_status"].fillna("unknown").str.strip().str.lower()
+    zip_stats = prac_df.assign(_own_status=_status_col).groupby("zip").agg(
+        total_practices=("npi", "count"),
+        independent_count=("_own_status", lambda x: x.isin(["independent", "likely_independent"]).sum()),
+        dso_affiliated_count=("_own_status", lambda x: (x == "dso_affiliated").sum()),
+        pe_backed_count=("_own_status", lambda x: (x == "pe_backed").sum()),
+        unknown_count=("_own_status", lambda x: x.isin(["unknown", ""]).sum()),
+        city=("city", "first"),
+    ).reset_index().rename(columns={"zip": "zip_code"})
+    zip_stats["consolidated_count"] = zip_stats["pe_backed_count"] + zip_stats["dso_affiliated_count"]
+    _tp = zip_stats["total_practices"].replace(0, 1)
+    zip_stats["consolidation_pct_of_total"] = (zip_stats["consolidated_count"] / _tp * 100).round(1)
 
     # ── KPI Cards ────────────────────────────────────────────────────────
-    if zs.empty:
-        st.warning(f"No scored ZIPs found for **{selected}**. Run Data Axle exports and merge_and_score.py for these ZIPs.")
+    status_col = prac_df["ownership_status"].fillna("unknown").str.strip().str.lower()
+    total_p = len(prac_df)
+    indep_cnt = int(status_col.isin(["independent", "likely_independent"]).sum())
+    pe_cnt = int((status_col == "pe_backed").sum())
+    dso_cnt = int((status_col == "dso_affiliated").sum())
+    unk_cnt = int(status_col.isin(["unknown", ""]).sum())
+    unk_pct = (unk_cnt / total_p * 100) if total_p > 0 else 100
+
+    indep_pct = f"{(indep_cnt / total_p * 100):.1f}%" if total_p > 0 else "—"
+    consol_pct = f"{((pe_cnt + dso_cnt) / total_p * 100):.1f}%" if total_p > 0 else "—"
+
+    if "buyability_score" in prac_df.columns:
+        buy_scores = pd.to_numeric(prac_df["buyability_score"], errors="coerce").dropna()
+        avg_buy = f"{buy_scores.mean():.1f}" if len(buy_scores) > 0 else "—"
     else:
-        total_p = int(zs["total_practices"].sum())
-        indep_cnt = int(zs["independent_count"].sum())
-        unk_cnt = int(zs["unknown_count"].sum())
-        unk_pct = (unk_cnt / total_p * 100) if total_p > 0 else 100
-        avg_opp = zs["opportunity_score"].mean()
-        recent_chg = int(zs["recent_changes_90d"].sum()) if "recent_changes_90d" in zs.columns else 0
+        avg_buy = "—"
 
-        c1, c2, c3, c4 = st.columns(4)
-        c1.markdown(make_kpi_card("🏥", "Total Practices", f"{total_p:,}"), unsafe_allow_html=True)
-        c2.markdown(make_kpi_card("🟢", "Known Independent", f"{indep_cnt:,}"), unsafe_allow_html=True)
-        c3.markdown(make_kpi_card("📈", "Avg Opportunity Score", f"{avg_opp:.0f}"), unsafe_allow_html=True)
-        c4.markdown(make_kpi_card("🔄", "Recent Changes (90d)", f"{recent_chg:,}"), unsafe_allow_html=True)
+    if "employee_count" in prac_df.columns:
+        emp = pd.to_numeric(prac_df["employee_count"], errors="coerce")
+        large_count = int((emp >= 10).sum())
+    else:
+        large_count = 0
 
-        if unk_pct > 30:
-            st.caption(f"⚠️ {unk_pct:.0f}% of practices have unknown ownership ({unk_cnt:,} / {total_p:,}). "
-                       f"Known independent: {indep_cnt:,}. Real independent count is likely higher. "
-                       f"Add Data Axle exports to improve classification.")
+    if "year_established" in prac_df.columns:
+        yr = pd.to_numeric(prac_df["year_established"], errors="coerce")
+        retirement_risk = int(((yr <= 1995) & status_col.isin(["independent", "likely_independent"])).sum())
+    else:
+        retirement_risk = 0
 
-    # ── Commutable Zone Map ──────────────────────────────────────────────
-    if not zs.empty:
-        st.markdown(section_header("Commutable Zone Map",
-            "Each marker = one ZIP code. Green = high opportunity (many independent practices). "
-            "Red = saturated (heavy PE/DSO presence). Size reflects practice count."), unsafe_allow_html=True)
+    c1, c2, c3, c4, c5, c6 = st.columns(6)
+    c1.markdown(make_kpi_card("🏥", "Total Practices", f"{total_p:,}"), unsafe_allow_html=True)
+    c2.markdown(make_kpi_card("🟢", "Independent %", indep_pct), unsafe_allow_html=True)
+    c3.markdown(make_kpi_card("📊", "Known Consolidated %", consol_pct), unsafe_allow_html=True)
+    c4.markdown(make_kpi_card("🎯", "Avg Buyability", avg_buy), unsafe_allow_html=True)
+    c5.markdown(make_kpi_card("👥", "10+ Staff", large_count), unsafe_allow_html=True)
+    c6.markdown(make_kpi_card("⏳", "Retirement Risk", retirement_risk), unsafe_allow_html=True)
 
-        map_data = zs.copy()
-        map_data["lat"] = map_data["zip_code"].map(lambda z: ZIP_CENTROIDS.get(z, (None, None))[0])
-        map_data["lon"] = map_data["zip_code"].map(lambda z: ZIP_CENTROIDS.get(z, (None, None))[1])
-        map_data = map_data.dropna(subset=["lat", "lon"])
+    if unk_pct > 30:
+        st.caption(f"⚠️ {unk_pct:.0f}% of practices have unknown ownership ({unk_cnt:,} / {total_p:,}). "
+                   f"Known independent: {indep_cnt:,}. Real independent count is likely higher. "
+                   f"Add Data Axle exports to improve classification.")
 
-        if not map_data.empty:
-            # Rich hover text — opportunity-focused
-            map_data["hover"] = map_data.apply(
-                lambda r: (
-                    f"<b style='font-size:14px'>{r['city']}</b>"
-                    f"<span style='color:#90a4ae'> · {r['zip_code']}</span><br>"
-                    f"<span style='font-size:13px;color:#e0e0e0'>"
-                    f"{'●' * min(int(r['total_practices'] // 10), 8)} "
-                    f"<b>{int(r['total_practices'])}</b> practices</span><br>"
-                    f"<span style='font-size:12px;color:#66bb6a'>"
-                    f"▸ {int(r['independent_count'])} independent</span><br>"
-                    f"<span style='font-size:12px;color:#ffb74d'>"
-                    f"▸ {int(r['dso_affiliated_count'])} DSO  ·  {int(r['pe_backed_count'])} PE-backed</span><br>"
-                    f"<span style='font-size:12px;color:#4fc3f7'>"
-                    f"◆ Opportunity: <b>{r['opportunity_score']:.0f}</b></span>"
-                ), axis=1)
+    # ── Practice Density Map ─────────────────────────────────────────────
+    st.markdown(section_header("Practice Density Map",
+        "Hexagonal density shows practice concentration. "
+        "Green = independent clusters. Red/orange = consolidated (DSO/PE) clusters. "
+        "Overlap = competitive markets. Toggle individual dots for detail."), unsafe_allow_html=True)
 
-            sizes = map_data["total_practices"].apply(
-                lambda x: max(7, min(24, 5 + (x ** 0.5) * 1.3)))
+    if not prac_df.empty:
+        map_df = prac_df.copy()
 
-            fig_map = go.Figure()
+        # Vectorized geocoding — use real coords where available, ZIP centroid + jitter elsewhere
+        has_coords = (
+            map_df["latitude"].notna()
+            & map_df["longitude"].notna()
+            & (map_df["latitude"] != 0)
+            & (map_df["longitude"] != 0)
+        )
+        map_df.loc[has_coords, "map_lat"] = map_df.loc[has_coords, "latitude"].astype(float)
+        map_df.loc[has_coords, "map_lon"] = map_df.loc[has_coords, "longitude"].astype(float)
 
-            # Layer 1: Density heatmap — opportunity-focused (green = high)
-            import numpy as np
-            heat_z = map_data["opportunity_score"] * map_data["total_practices"].apply(lambda x: max(1, x ** 0.7))
-            fig_map.add_trace(go.Densitymapbox(
-                lat=list(map_data["lat"]), lon=list(map_data["lon"]),
-                z=list(heat_z),
-                radius=50, opacity=0.75,
-                zmin=0, zmax=max(list(heat_z)) * 0.35 if len(heat_z) > 0 else 100,
-                colorscale=[
-                    [0.00, "rgba(200,220,240,0.0)"],
-                    [0.06, "rgba(183,28,28,0.3)"],
-                    [0.15, "rgba(244,67,54,0.5)"],
-                    [0.28, "rgba(255,152,0,0.6)"],
-                    [0.40, "rgba(255,235,59,0.65)"],
-                    [0.52, "rgba(102,187,106,0.7)"],
-                    [0.65, "rgba(38,198,218,0.7)"],
-                    [0.80, "rgba(41,182,246,0.75)"],
-                    [1.00, "rgba(46,125,50,0.85)"],
-                ],
-                showscale=False, hoverinfo="skip",
-            ))
+        needs_geo = ~has_coords
+        zip5 = map_df.loc[needs_geo, "zip"].fillna("").astype(str).str[:5]
+        zip_lat = zip5.map(lambda z: ZIP_CENTROIDS.get(z, (None, None))[0])
+        zip_lon = zip5.map(lambda z: ZIP_CENTROIDS.get(z, (None, None))[1])
+        n = needs_geo.sum()
+        if n > 0:
+            npi_hashes = map_df.loc[needs_geo, "npi"].fillna("0").astype(str).apply(
+                lambda x: hash(x) % (2**32)).values
+            jitter_lat = ((npi_hashes % 10000) / 10000.0 - 0.5) * 0.006
+            jitter_lon = (((npi_hashes // 10000) % 10000) / 10000.0 - 0.5) * 0.006
+            map_df.loc[needs_geo, "map_lat"] = zip_lat.values + jitter_lat
+            map_df.loc[needs_geo, "map_lon"] = zip_lon.values + jitter_lon
 
-            # Layer 2: Scatter markers — opportunity coloring
-            fig_map.add_trace(go.Scattermapbox(
-                lat=map_data["lat"], lon=map_data["lon"],
-                mode="markers",
-                marker=dict(
-                    size=sizes,
-                    color=map_data["opportunity_score"],
-                    colorscale=[
-                        [0.00, "#AD1457"],
-                        [0.15, "#EF5350"],
-                        [0.30, "#FFB74D"],
-                        [0.50, "#FDD835"],
-                        [0.70, "#66BB6A"],
-                        [0.85, "#26C6DA"],
-                        [1.00, "#2E7D32"],
-                    ],
-                    cmin=0, cmax=100, opacity=0.95,
-                    colorbar=dict(
-                        title=dict(text="Opportunity Score", font=dict(size=11, color="#b0bec5")),
-                        tickfont=dict(size=10, color="#90a4ae"),
-                        tickvals=[0, 20, 40, 60, 80, 100],
-                        thickness=12, len=0.45, y=0.5, x=1.01,
-                        bgcolor="rgba(10,22,40,0.85)", borderwidth=0, outlinewidth=0,
-                    ),
-                ),
-                text=map_data["hover"],
-                hovertemplate="%{text}<extra></extra>",
-                hoverinfo="text",
-            ))
+        map_df = map_df.dropna(subset=["map_lat", "map_lon"])
 
-            # Layer 3: City labels for notable ZIPs
-            label_threshold = 25 if len(map_data) > 50 else 15
-            label_data = map_data[map_data["total_practices"] >= label_threshold].copy()
-            if not label_data.empty:
-                label_data["short_label"] = label_data.apply(
-                    lambda r: f"{r['city']} ({int(r['total_practices'])})", axis=1)
-                fig_map.add_trace(go.Scattermapbox(
-                    lat=label_data["lat"] + 0.015, lon=label_data["lon"],
-                    mode="text", text=label_data["short_label"],
-                    textfont=dict(size=9.5, color="#1a237e", family="DM Sans"),
-                    textposition="top center", hoverinfo="skip", showlegend=False,
-                ))
+        if not map_df.empty:
+            ctrl_c1, ctrl_c2 = st.columns(2)
+            with ctrl_c1:
+                show_individual = st.checkbox("Show individual practices", value=False)
+            with ctrl_c2:
+                hide_unknown = st.checkbox("Hide unknown practices", value=False)
 
-            # Auto-fit zoom to data bounds
-            lat_range = map_data["lat"].max() - map_data["lat"].min()
-            lon_range = map_data["lon"].max() - map_data["lon"].min()
-            span = max(lat_range, lon_range)
-            if span > 1.0: auto_zoom = 7.5
-            elif span > 0.5: auto_zoom = 8.8
-            elif span > 0.3: auto_zoom = 9.5
-            else: auto_zoom = 10.5
-            fit_center = {
-                "lat": (map_data["lat"].max() + map_data["lat"].min()) / 2,
-                "lon": (map_data["lon"].max() + map_data["lon"].min()) / 2,
-            }
+            map_df["status_clean"] = map_df["ownership_status"].fillna("unknown").str.strip().str.lower()
+            if hide_unknown:
+                map_df = map_df[map_df["status_clean"] != "unknown"]
 
-            fig_map.update_layout(
-                mapbox=dict(style="carto-positron", center=fit_center, zoom=auto_zoom),
-                height=620, margin=dict(l=0, r=0, t=0, b=0),
-                paper_bgcolor="rgba(0,0,0,0)",
-                hoverlabel=dict(
-                    bgcolor="rgba(13,27,42,0.95)", bordercolor="#1a3a5c",
-                    font=dict(color="white", size=12, family="DM Sans"),
-                ),
-                showlegend=False,
-            )
+            if map_df.empty:
+                st.info("No practices to display after filtering.")
+            else:
+                # Split into independent and consolidated for dual density
+                indep_df = map_df[map_df["status_clean"].isin(
+                    ["independent", "likely_independent"])][["map_lat", "map_lon"]].copy()
+                consol_df = map_df[map_df["status_clean"].isin(
+                    ["dso_affiliated", "pe_backed"])][["map_lat", "map_lon"]].copy()
 
-            st.plotly_chart(fig_map, use_container_width=True)
+                layers = []
 
-            st.caption(f"Showing {len(map_data)} of {len(zip_list)} commutable ZIPs with consolidation data")
+                # Layer 1: Independent practice density (green gradient, always visible)
+                if not indep_df.empty:
+                    layers.append(pdk.Layer(
+                        "HexagonLayer",
+                        data=indep_df,
+                        get_position=["map_lon", "map_lat"],
+                        radius=1000,
+                        elevation_scale=0,
+                        extruded=False,
+                        opacity=0.5,
+                        color_range=[
+                            [200, 230, 201], [165, 214, 167], [102, 187, 106],
+                            [76, 175, 80], [56, 142, 60], [27, 94, 32],
+                        ],
+                        pickable=True,
+                        auto_highlight=True,
+                    ))
 
-            leg_cols = st.columns(4)
-            with leg_cols[0]:
-                st.markdown('<span style="color:#2E7D32;font-size:13px">● High opportunity</span>', unsafe_allow_html=True)
-            with leg_cols[1]:
-                st.markdown('<span style="color:#26C6DA;font-size:13px">● Moderate</span>', unsafe_allow_html=True)
-            with leg_cols[2]:
-                st.markdown('<span style="color:#FFB74D;font-size:13px">● Lower opportunity</span>', unsafe_allow_html=True)
-            with leg_cols[3]:
-                st.markdown('<span style="color:#EF5350;font-size:13px">● Saturated</span>', unsafe_allow_html=True)
+                # Layer 2: Consolidated practice density (red gradient, always visible)
+                if not consol_df.empty:
+                    layers.append(pdk.Layer(
+                        "HexagonLayer",
+                        data=consol_df,
+                        get_position=["map_lon", "map_lat"],
+                        radius=1000,
+                        elevation_scale=0,
+                        extruded=False,
+                        opacity=0.6,
+                        color_range=[
+                            [255, 224, 178], [255, 183, 77], [255, 152, 0],
+                            [244, 67, 54], [211, 47, 47], [183, 28, 28],
+                        ],
+                        pickable=True,
+                        auto_highlight=True,
+                    ))
+
+                # Layer 3 (optional): Individual practice dots
+                if show_individual:
+                    color_map = {
+                        "independent": [76, 175, 80, 220],
+                        "likely_independent": [76, 175, 80, 220],
+                        "dso_affiliated": [255, 183, 77, 220],
+                        "pe_backed": [244, 67, 54, 220],
+                        "unknown": [120, 144, 156, 100],
+                    }
+                    map_df["color"] = map_df["status_clean"].map(
+                        lambda s: color_map.get(s, [120, 144, 156, 100]))
+                    emp = pd.to_numeric(map_df["employee_count"], errors="coerce").fillna(1)
+                    map_df["radius"] = 40 + (emp.clip(1, 50) / 50) * 40
+
+                    map_df["tooltip_name"] = map_df["practice_name"].fillna("Unknown Practice")
+                    map_df["tooltip_address"] = map_df["address"].fillna("—")
+                    map_df["tooltip_city_zip"] = (
+                        map_df["city"].fillna("") + ", " +
+                        map_df["state"].fillna("") + " " +
+                        map_df["zip"].fillna("").astype(str).str[:5])
+                    map_df["tooltip_status"] = map_df["status_clean"].map({
+                        "independent": "Independent", "likely_independent": "Likely Independent",
+                        "dso_affiliated": "DSO Affiliated", "pe_backed": "PE-Backed",
+                        "unknown": "Unknown",
+                    }).fillna("Unknown")
+                    map_df["tooltip_dso"] = map_df["affiliated_dso"].fillna("—")
+                    map_df["tooltip_employees"] = (
+                        pd.to_numeric(map_df["employee_count"], errors="coerce")
+                        .fillna(0).astype(int).replace(0, "—").astype(str))
+                    map_df["tooltip_year"] = (
+                        pd.to_numeric(map_df["year_established"], errors="coerce")
+                        .fillna(0).astype(int).replace(0, "—").astype(str))
+
+                    render_cols = ["map_lat", "map_lon", "color", "radius",
+                                   "tooltip_name", "tooltip_address", "tooltip_city_zip",
+                                   "tooltip_status", "tooltip_dso", "tooltip_employees", "tooltip_year"]
+                    layers.append(pdk.Layer(
+                        "ScatterplotLayer",
+                        data=map_df[render_cols],
+                        get_position=["map_lon", "map_lat"],
+                        get_fill_color="color",
+                        get_radius="radius",
+                        radius_min_pixels=2,
+                        radius_max_pixels=12,
+                        pickable=True,
+                        auto_highlight=True,
+                        highlight_color=[255, 255, 255, 80],
+                    ))
+
+                view_state = pdk.ViewState(
+                    latitude=loc["center_lat"],
+                    longitude=loc["center_lon"],
+                    zoom=10, pitch=0, bearing=0,
+                )
+
+                if show_individual:
+                    tooltip = {
+                        "html": (
+                            "<div style='font-family:DM Sans,sans-serif;padding:4px 0'>"
+                            "<b style='font-size:13px;color:#e8ecf1'>{tooltip_name}</b><br/>"
+                            "<span style='font-size:11px;color:#90a4ae'>{tooltip_address}</span><br/>"
+                            "<span style='font-size:11px;color:#90a4ae'>{tooltip_city_zip}</span><br/>"
+                            "<span style='font-size:11px'>Status: <b>{tooltip_status}</b></span><br/>"
+                            "<span style='font-size:11px'>DSO: {tooltip_dso}</span><br/>"
+                            "<span style='font-size:11px'>Employees: {tooltip_employees}</span><br/>"
+                            "<span style='font-size:11px'>Established: {tooltip_year}</span>"
+                            "</div>"
+                        ),
+                        "style": {
+                            "backgroundColor": "rgba(13,27,42,0.95)",
+                            "color": "#e8ecf1",
+                            "border": "1px solid #1a3a5c",
+                            "borderRadius": "6px",
+                            "padding": "8px 12px",
+                        },
+                    }
+                else:
+                    tooltip = None
+
+                deck = pdk.Deck(
+                    layers=layers,
+                    initial_view_state=view_state,
+                    map_style=pdk.map_styles.DARK,
+                    tooltip=tooltip,
+                )
+                st.pydeck_chart(deck, use_container_width=True, height=620)
+
+                # Legend
+                st.markdown(
+                    '<div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:0.5rem;margin-bottom:0.25rem">'
+                    '<span style="font-size:13px">'
+                    '<span style="display:inline-block;width:14px;height:14px;'
+                    'background:linear-gradient(90deg,#C8E6C9,#1B5E20);border-radius:2px;'
+                    'vertical-align:middle;margin-right:4px"></span> Independent density</span>'
+                    '<span style="font-size:13px">'
+                    '<span style="display:inline-block;width:14px;height:14px;'
+                    'background:linear-gradient(90deg,#FFE0B2,#B71C1C);border-radius:2px;'
+                    'vertical-align:middle;margin-right:4px"></span> Consolidated density (DSO + PE)</span>'
+                    '<span style="font-size:13px;color:#90a4ae">Overlap = competitive market</span>'
+                    '</div>',
+                    unsafe_allow_html=True,
+                )
+
+                n_total = len(map_df)
+                n_indep = len(indep_df)
+                n_consolidated = len(consol_df)
+                n_unknown = map_df["status_clean"].eq("unknown").sum()
+                st.caption(
+                    f"Showing {n_total:,} practices "
+                    f"({n_indep:,} independent, {n_consolidated:,} consolidated, "
+                    f"{n_unknown:,} unknown)")
         else:
-            st.info("No ZIP coordinates available for map display.")
+            st.info("No geocodable practices found.")
+    else:
+        st.info("No practices found in the selected ZIPs for map display.")
 
-    # ── Opportunity Signals Table ────────────────────────────────────────
+    # ── Market Overview ──────────────────────────────────────────────────
+    if not zip_stats.empty and not prac_df.empty:
+        st.markdown(section_header("Market Overview",
+            "Visual snapshot of consolidation patterns, ownership mix, practice age, "
+            "and top DSO presence across your commutable zone."), unsafe_allow_html=True)
+
+        ov_c1, ov_c2 = st.columns(2)
+
+        with ov_c1:
+            zip_consol = zip_stats[["zip_code", "pe_backed_count", "dso_affiliated_count", "total_practices"]].copy()
+            zip_consol["consolidated"] = zip_consol["pe_backed_count"] + zip_consol["dso_affiliated_count"]
+            zip_consol["consol_pct"] = (zip_consol["consolidated"] / zip_consol["total_practices"] * 100).round(1)
+            zip_consol = zip_consol.sort_values("consol_pct", ascending=True).tail(25)
+
+            fig_consol = go.Figure(go.Bar(
+                x=zip_consol["consol_pct"],
+                y=zip_consol["zip_code"],
+                orientation="h",
+                marker=dict(
+                    color=zip_consol["consol_pct"],
+                    colorscale=[[0.0, "#4CAF50"], [0.5, "#FFC107"], [1.0, "#F44336"]],
+                    cmin=0,
+                    cmax=max(zip_consol["consol_pct"].max(), 1),
+                    showscale=False,
+                ),
+                hovertemplate="ZIP %{y}<br>Consolidation: %{x:.1f}%<extra></extra>",
+            ))
+            fig_consol.update_layout(
+                template=dental_dark_template,
+                title=dict(text="Consolidation by ZIP", font=dict(size=14)),
+                height=420,
+                margin=dict(l=60, r=20, t=40, b=30),
+                xaxis=dict(title="Known Consolidated %", range=[0, 100]),
+                yaxis=dict(title="", type="category"),
+            )
+            st.plotly_chart(fig_consol, use_container_width=True)
+
+        with ov_c2:
+            indep_total = indep_cnt
+            dso_total = dso_cnt
+            pe_total = pe_cnt
+            unk_total = unk_cnt
+            grand_total = indep_total + dso_total + pe_total + unk_total
+
+            fig_donut = go.Figure(go.Pie(
+                labels=["Independent", "DSO-Affiliated", "PE-Backed", "Unknown"],
+                values=[indep_total, dso_total, pe_total, unk_total],
+                hole=0.5,
+                marker=dict(colors=["#4CAF50", "#FFB74D", "#F44336", "#78909C"]),
+                textinfo="label+percent",
+                textfont=dict(size=11),
+                hovertemplate="%{label}<br>%{value:,} practices (%{percent})<extra></extra>",
+            ))
+            fig_donut.update_layout(
+                template=dental_dark_template,
+                title=dict(text="Ownership Breakdown", font=dict(size=14)),
+                height=420,
+                margin=dict(l=20, r=20, t=40, b=30),
+                showlegend=True,
+                legend=dict(orientation="h", yanchor="bottom", y=-0.15, xanchor="center", x=0.5),
+                annotations=[dict(
+                    text=f"<b>{grand_total:,}</b>",
+                    x=0.5, y=0.5, font=dict(size=20, color="#E8ECF1"), showarrow=False,
+                )],
+            )
+            st.plotly_chart(fig_donut, use_container_width=True)
+
+        ov_c3, ov_c4 = st.columns(2)
+
+        with ov_c3:
+            yr_col = pd.to_numeric(prac_df.get("year_established"), errors="coerce")
+            age_df = prac_df[yr_col.notna()].copy()
+            age_df["year_established"] = yr_col[yr_col.notna()].astype(int)
+
+            if not age_df.empty:
+                status_map = {
+                    "independent": "Independent", "likely_independent": "Independent",
+                    "dso_affiliated": "DSO-Affiliated", "pe_backed": "PE-Backed",
+                    "unknown": "Unknown",
+                }
+                age_df["ownership_label"] = (age_df["ownership_status"]
+                    .fillna("unknown").str.strip().str.lower()
+                    .map(status_map).fillna("Unknown"))
+
+                color_discrete = {
+                    "Independent": "#4CAF50", "DSO-Affiliated": "#FFB74D",
+                    "PE-Backed": "#F44336", "Unknown": "#78909C",
+                }
+                fig_age = px.histogram(
+                    age_df, x="year_established", color="ownership_label",
+                    color_discrete_map=color_discrete,
+                    nbins=int(max(1, (age_df["year_established"].max() - age_df["year_established"].min()) // 5)),
+                    template=dental_dark_template,
+                    labels={"year_established": "Year Established", "ownership_label": "Ownership"},
+                    category_orders={"ownership_label": ["Independent", "DSO-Affiliated", "PE-Backed", "Unknown"]},
+                )
+                fig_age.update_layout(
+                    title=dict(text="Practice Age Distribution", font=dict(size=14)),
+                    height=420,
+                    margin=dict(l=40, r=20, t=40, b=40),
+                    barmode="stack",
+                    yaxis_title="Practices",
+                    legend=dict(orientation="h", yanchor="bottom", y=-0.25, xanchor="center", x=0.5),
+                )
+                fig_age.add_vline(
+                    x=1995, line_dash="dash", line_color="#FF3D00", line_width=1.5,
+                    annotation_text="Retirement Risk Zone",
+                    annotation_position="top right",
+                    annotation_font=dict(color="#FF3D00", size=10),
+                )
+                st.plotly_chart(fig_age, use_container_width=True)
+            else:
+                st.info("No year-established data available for practice age chart.")
+
+        with ov_c4:
+            dso_practices = prac_df[
+                prac_df["affiliated_dso"].notna() & (prac_df["affiliated_dso"] != "")
+            ].copy()
+
+            if not dso_practices.empty:
+                top_dsos_chart = (dso_practices.groupby("affiliated_dso").size()
+                    .reset_index(name="count")
+                    .sort_values("count", ascending=True)
+                    .tail(15))
+
+                fig_dso = go.Figure(go.Bar(
+                    x=top_dsos_chart["count"],
+                    y=top_dsos_chart["affiliated_dso"],
+                    orientation="h",
+                    marker=dict(color="#FFB74D"),
+                    hovertemplate="%{y}<br>%{x} practices<extra></extra>",
+                ))
+                fig_dso.update_layout(
+                    template=dental_dark_template,
+                    title=dict(text="Top DSOs in Zone", font=dict(size=14)),
+                    height=420,
+                    margin=dict(l=120, r=20, t=40, b=30),
+                    xaxis=dict(title="Practices"),
+                    yaxis=dict(title="", type="category"),
+                )
+                st.plotly_chart(fig_dso, use_container_width=True)
+            else:
+                st.info("No DSO-affiliated practices found in this zone.")
+
+    # ── Practice Directory ──────────────────────────────────────────────
+    st.markdown(section_header("Practice Directory",
+        "Browse and search all practices in the commutable zone"), unsafe_allow_html=True)
+
+    if not prac_df.empty:
+        dir_df = compute_job_opportunity_score(prac_df)
+        total_practices = len(dir_df)
+        da_mask = dir_df["import_batch_id"].fillna("").str.startswith("DA_")
+        enriched_count = int(da_mask.sum())
+
+        search_term = st.text_input("🔍 Search", placeholder="Search by name, address, city, or DSO...",
+                                    label_visibility="collapsed", key="dir_search")
+        filtered = dir_df.copy()
+        if search_term:
+            term = search_term.lower()
+            match_mask = (
+                filtered["practice_name"].fillna("").str.lower().str.contains(term, na=False)
+                | filtered["doing_business_as"].fillna("").str.lower().str.contains(term, na=False)
+                | filtered["address"].fillna("").str.lower().str.contains(term, na=False)
+                | filtered["city"].fillna("").str.lower().str.contains(term, na=False)
+                | filtered["affiliated_dso"].fillna("").str.lower().str.contains(term, na=False)
+            )
+            filtered = filtered[match_mask]
+
+        fc1, fc2, fc3 = st.columns(3)
+        with fc1:
+            status_options = sorted(dir_df["ownership_status"].fillna("unknown").unique().tolist())
+            selected_statuses = st.multiselect("Ownership Status", options=status_options,
+                                               default=status_options, key="dir_status")
+        with fc2:
+            source_options = ["All", "Data Axle (Enriched)", "NPPES"]
+            selected_sources = st.multiselect("Data Source", options=source_options,
+                                              default=["All"], key="dir_source")
+        with fc3:
+            sort_options = ["Job Opp Score ↓", "Buyability ↓", "Employees ↓", "Year Est. ↑", "Name A-Z"]
+            selected_sort = st.selectbox("Sort by", options=sort_options, key="dir_sort")
+
+        if selected_statuses:
+            filtered = filtered[filtered["ownership_status"].fillna("unknown").isin(selected_statuses)]
+
+        if selected_sources and "All" not in selected_sources:
+            source_mask = pd.Series(False, index=filtered.index)
+            if "Data Axle (Enriched)" in selected_sources:
+                source_mask |= filtered["import_batch_id"].fillna("").str.startswith("DA_")
+            if "NPPES" in selected_sources:
+                source_mask |= ~filtered["import_batch_id"].fillna("").str.startswith("DA_")
+            filtered = filtered[source_mask]
+
+        sort_map = {
+            "Job Opp Score ↓": ("job_opp_score", False),
+            "Buyability ↓": ("buyability_score", False),
+            "Employees ↓": ("employee_count", False),
+            "Year Est. ↑": ("year_established", True),
+            "Name A-Z": ("practice_name", True),
+        }
+        sort_col, sort_asc = sort_map[selected_sort]
+        if sort_col in filtered.columns:
+            filtered = filtered.sort_values(sort_col, ascending=sort_asc, na_position="last")
+
+        filtered_enriched = int(filtered["import_batch_id"].fillna("").str.startswith("DA_").sum())
+        st.markdown(
+            f'<div style="color:#7eb8e0;font-size:0.85rem;margin-bottom:0.5rem">'
+            f'Showing <strong>{len(filtered):,}</strong> of <strong>{total_practices:,}</strong> practices '
+            f'| <strong>{filtered_enriched:,}</strong> enriched by Data Axle</div>',
+            unsafe_allow_html=True
+        )
+
+        filtered_display = filtered.copy()
+        filtered_display["ownership_status"] = filtered_display["ownership_status"].apply(format_status)
+
+        tab_enriched, tab_all = st.tabs(["Enriched Practices (Data Axle)", "All Practices"])
+
+        with tab_enriched:
+            enriched_cols = ["practice_name", "address", "city", "zip", "ownership_status",
+                             "affiliated_dso", "employee_count", "estimated_revenue",
+                             "year_established", "buyability_score", "job_opp_score", "website"]
+            enriched_renames = {
+                "practice_name": "Practice Name", "address": "Address", "city": "City",
+                "zip": "ZIP", "ownership_status": "Status", "affiliated_dso": "DSO",
+                "employee_count": "Employees", "estimated_revenue": "Revenue",
+                "year_established": "Year Est.", "buyability_score": "Buyability",
+                "job_opp_score": "Job Score", "website": "Website",
+            }
+            da_filtered = filtered_display[filtered_display["import_batch_id"].fillna("").str.startswith("DA_")]
+            avail_enriched = [c for c in enriched_cols if c in da_filtered.columns]
+            if da_filtered.empty:
+                st.info("No Data Axle-enriched practices match the current filters.")
+            else:
+                display_da = da_filtered[avail_enriched].rename(columns=enriched_renames).fillna("—")
+                if len(display_da) > 500:
+                    st.info(f"Showing first 500 of {len(display_da):,} enriched practices. Download CSV for full list.")
+                st.dataframe(display_da.head(500), hide_index=True, height=500, use_container_width=True)
+
+        with tab_all:
+            all_cols = ["practice_name", "city", "zip", "ownership_status", "affiliated_dso",
+                        "employee_count", "year_established", "buyability_score", "job_opp_score"]
+            all_renames = {
+                "practice_name": "Practice Name", "city": "City", "zip": "ZIP",
+                "ownership_status": "Status", "affiliated_dso": "DSO",
+                "employee_count": "Employees", "year_established": "Year Est.",
+                "buyability_score": "Buyability", "job_opp_score": "Job Score",
+            }
+            avail_all = [c for c in all_cols if c in filtered_display.columns]
+            if filtered_display.empty:
+                st.info("No practices match the current filters.")
+            else:
+                display_all = filtered_display[avail_all].rename(columns=all_renames).fillna("—")
+                if len(display_all) > 500:
+                    st.info(f"Showing first 500 of {len(display_all):,} practices. Download CSV for full list.")
+                st.dataframe(display_all.head(500), hide_index=True, height=500, use_container_width=True)
+
+        download_cols = ["practice_name", "address", "city", "zip", "ownership_status",
+                         "affiliated_dso", "employee_count", "estimated_revenue",
+                         "year_established", "buyability_score", "job_opp_score",
+                         "parent_company", "website", "data_source"]
+        download_renames = {
+            "practice_name": "Practice Name", "address": "Address", "city": "City",
+            "zip": "ZIP", "ownership_status": "Status", "affiliated_dso": "DSO",
+            "employee_count": "Employees", "estimated_revenue": "Revenue",
+            "year_established": "Year Est.", "buyability_score": "Buyability",
+            "job_opp_score": "Job Score", "parent_company": "Parent Company",
+            "website": "Website", "data_source": "Data Source",
+        }
+        dl_avail = [c for c in download_cols if c in filtered.columns]
+        dl_df = filtered[dl_avail].rename(columns=download_renames).fillna("—")
+        st.download_button(
+            "📥 Download filtered practices (CSV)",
+            dl_df.to_csv(index=False),
+            "practice_directory.csv",
+            "text/csv",
+            key="dir_download",
+        )
+    else:
+        st.info("No practices found in the selected ZIPs.")
+
+    # ── Opportunity Signals ─────────────────────────────────────────────
     st.markdown(section_header("Opportunity Signals",
         "Each practice scored 0-100: independent ownership (30), buyability (25), "
         "size (20), young practice (15), unknown status (10)."), unsafe_allow_html=True)
 
-    practices_df = load_practices_for_zone(tuple(zip_list))
-    if not practices_df.empty:
-        practices_df = compute_job_opportunity_score(practices_df)
+    if not prac_df.empty:
+        opp_df = compute_job_opportunity_score(prac_df)
+        current_year = date.today().year
 
-        da_mask = practices_df["import_batch_id"].fillna("").str.startswith("DA_")
-        enriched_df = practices_df[da_mask].copy()
-        other_df = practices_df[~da_mask].copy()
+        tab_retire, tab_buyable, tab_changes = st.tabs([
+            "🕰️ Retirement Risk", "🎯 High Buyability", "🔄 Recent Changes"
+        ])
 
-        show_cols = ["practice_name", "city", "zip", "ownership_status", "employee_count",
-                     "year_established", "buyability_score", "job_opp_score"]
-        col_renames = {
-            "practice_name": "Practice Name", "city": "City", "zip": "ZIP",
-            "ownership_status": "Status", "employee_count": "Employees",
-            "year_established": "Year Est.", "buyability_score": "Buyability",
-            "job_opp_score": "Job Opp Score",
-        }
-        avail_cols = [c for c in show_cols if c in practices_df.columns]
+        with tab_retire:
+            yr_col = pd.to_numeric(opp_df.get("year_established"), errors="coerce")
+            status_col = opp_df["ownership_status"].fillna("unknown").str.strip().str.lower()
+            retire_mask = (
+                status_col.isin(["independent", "likely_independent"])
+                & yr_col.notna()
+                & (yr_col <= current_year - 30)
+            )
+            retire_df = opp_df[retire_mask].copy()
+            retire_df["practice_age"] = current_year - pd.to_numeric(retire_df["year_established"], errors="coerce")
 
-        # Tier 1: Enriched
-        st.subheader("Enriched Practices (Data Axle)")
-        if enriched_df.empty:
-            st.info("No Data Axle-enriched practices in these ZIPs yet.")
-        else:
-            t1 = enriched_df[avail_cols].sort_values("job_opp_score", ascending=False).copy()
-            t1["ownership_status"] = t1["ownership_status"].apply(format_status)
-            st.dataframe(t1.rename(columns=col_renames).fillna("—"), hide_index=True, use_container_width=True)
+            rc1, rc2, rc3 = st.columns(3)
+            rc1.markdown(make_kpi_card("🕰️", "At-Risk Practices", len(retire_df)), unsafe_allow_html=True)
+            avg_age = retire_df["practice_age"].mean() if not retire_df.empty else 0
+            rc2.markdown(make_kpi_card("📅", "Avg Practice Age", f"{avg_age:.0f} yrs"), unsafe_allow_html=True)
+            avg_buy_r = pd.to_numeric(retire_df.get("buyability_score"), errors="coerce").mean() if not retire_df.empty else 0
+            rc3.markdown(make_kpi_card("🎯", "Avg Buyability", f"{avg_buy_r:.0f}" if pd.notna(avg_buy_r) else "—"), unsafe_allow_html=True)
 
-        # Tier 2: All other
-        st.subheader("All Other Practices")
-        if other_df.empty:
-            st.info("No other practices in these ZIPs.")
-        else:
-            t2 = other_df[avail_cols].sort_values("job_opp_score", ascending=False).head(200).copy()
-            t2["ownership_status"] = t2["ownership_status"].apply(format_status)
-            st.dataframe(t2.rename(columns=col_renames).fillna("—"), hide_index=True, use_container_width=True)
+            if retire_df.empty:
+                st.info("No independent practices with 30+ years of operation found in these ZIPs.")
+            else:
+                show_r = retire_df[["practice_name", "city", "zip", "year_established",
+                                    "practice_age", "buyability_score", "employee_count"]].copy()
+                show_r = show_r.sort_values("year_established", ascending=True).head(100)
+                show_r = show_r.rename(columns={
+                    "practice_name": "Practice Name", "city": "City", "zip": "ZIP",
+                    "year_established": "Year Est.", "practice_age": "Age",
+                    "buyability_score": "Buyability", "employee_count": "Employees",
+                })
+                st.dataframe(show_r.fillna("—"), hide_index=True, use_container_width=True)
 
-        # Download
-        combined = practices_df[avail_cols].sort_values("job_opp_score", ascending=False).copy()
-        st.download_button("📥 Download all practices with scores",
-                           combined.rename(columns=col_renames).fillna("—").to_csv(index=False),
-                           "opportunity_scores.csv", "text/csv")
+        with tab_buyable:
+            buy_scores = pd.to_numeric(opp_df.get("buyability_score"), errors="coerce")
+            high_buy_df = opp_df[buy_scores >= 60].copy()
 
-        enriched_count = len(enriched_df)
-        total = len(practices_df)
-        if total > 0:
-            st.caption(f"{enriched_count} of {total} practices have Data Axle enrichment "
-                       f"({enriched_count / total * 100:.0f}% coverage).")
+            if high_buy_df.empty:
+                st.info("No practices with buyability score >= 60 found in these ZIPs.")
+            else:
+                scatter_df = high_buy_df.copy()
+                scatter_df["buyability_score"] = pd.to_numeric(scatter_df["buyability_score"], errors="coerce")
+                scatter_df["employee_count"] = pd.to_numeric(scatter_df["employee_count"], errors="coerce")
+                scatter_df["status_clean"] = scatter_df["ownership_status"].fillna("unknown").str.strip().str.lower()
+                scatter_color_map = {
+                    "independent": "#4CAF50", "likely_independent": "#4CAF50",
+                    "dso_affiliated": "#FFB74D", "pe_backed": "#F44336", "unknown": "#78909C",
+                }
+                scatter_df["status_label"] = scatter_df["status_clean"].map({
+                    "independent": "Independent", "likely_independent": "Likely Independent",
+                    "dso_affiliated": "DSO Affiliated", "pe_backed": "PE-Backed", "unknown": "Unknown",
+                }).fillna("Unknown")
 
-        # ── Market Stats ─────────────────────────────────────────────────
+                plot_df = scatter_df.dropna(subset=["buyability_score", "employee_count"])
+                if not plot_df.empty:
+                    fig_scatter = go.Figure()
+                    for status_val, color in scatter_color_map.items():
+                        mask = plot_df["status_clean"] == status_val
+                        subset = plot_df[mask]
+                        if subset.empty:
+                            continue
+                        fig_scatter.add_trace(go.Scatter(
+                            x=subset["buyability_score"],
+                            y=subset["employee_count"],
+                            mode="markers",
+                            marker=dict(size=8, color=color, opacity=0.75),
+                            name=subset["status_label"].iloc[0],
+                            text=subset.apply(
+                                lambda r: f"<b>{r.get('practice_name', 'Unknown')}</b><br>"
+                                          f"{r.get('city', '')}<br>"
+                                          f"Buyability: {r['buyability_score']:.0f}", axis=1),
+                            hovertemplate="%{text}<extra></extra>",
+                        ))
+                    fig_scatter.update_layout(
+                        template=dental_dark_template,
+                        xaxis_title="Buyability Score",
+                        yaxis_title="Employee Count",
+                        height=420,
+                        margin=dict(l=0, r=0, t=30, b=0),
+                        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+                    )
+                    st.plotly_chart(fig_scatter, use_container_width=True)
+
+                tbl_cols = ["practice_name", "city", "zip", "ownership_status",
+                            "buyability_score", "employee_count", "estimated_revenue", "job_opp_score"]
+                avail = [c for c in tbl_cols if c in high_buy_df.columns]
+                tbl = high_buy_df[avail].sort_values("buyability_score", ascending=False).head(100).copy()
+                tbl["ownership_status"] = tbl["ownership_status"].apply(format_status)
+                tbl = tbl.rename(columns={
+                    "practice_name": "Practice Name", "city": "City", "zip": "ZIP",
+                    "ownership_status": "Status", "buyability_score": "Buyability",
+                    "employee_count": "Employees", "estimated_revenue": "Est. Revenue",
+                    "job_opp_score": "Job Score",
+                })
+                st.dataframe(tbl.fillna("—"), hide_index=True, use_container_width=True)
+
+        with tab_changes:
+            sess = get_session()
+            try:
+                placeholders = ", ".join([f":z{i}" for i in range(len(zip_list))])
+                params = {f"z{i}": z for i, z in enumerate(zip_list)}
+                cutoff = (datetime.now() - timedelta(days=180)).strftime("%Y-%m-%d")
+                params["cutoff"] = cutoff
+                changes_df = pd.read_sql(text(
+                    f"SELECT pc.change_date, pc.created_at, p.practice_name, p.city, p.zip, "
+                    f"pc.field_changed, pc.old_value, pc.new_value, pc.change_type "
+                    f"FROM practice_changes pc "
+                    f"JOIN practices p ON pc.npi = p.npi "
+                    f"WHERE p.zip IN ({placeholders}) "
+                    f"AND pc.change_date >= :cutoff "
+                    f"ORDER BY pc.change_date DESC"
+                ), sess.bind, params=params)
+
+                cc1, cc2, cc3, cc4 = st.columns(4)
+                total_chg = len(changes_df)
+                name_chg = len(changes_df[changes_df["change_type"] == "name_change"]) if not changes_df.empty else 0
+                addr_chg = len(changes_df[changes_df["change_type"] == "relocation"]) if not changes_df.empty else 0
+                own_chg = len(changes_df[changes_df["change_type"] == "acquisition"]) if not changes_df.empty else 0
+                cc1.markdown(make_kpi_card("🔄", "Total Changes", total_chg), unsafe_allow_html=True)
+                cc2.markdown(make_kpi_card("✏️", "Name Changes", name_chg), unsafe_allow_html=True)
+                cc3.markdown(make_kpi_card("📍", "Address Changes", addr_chg), unsafe_allow_html=True)
+                cc4.markdown(make_kpi_card("🔴", "Ownership Changes", own_chg), unsafe_allow_html=True)
+
+                if changes_df.empty:
+                    st.info("No practice changes detected in the last 180 days for these ZIPs.")
+                else:
+                    show_chg = changes_df[["practice_name", "change_type", "old_value",
+                                           "new_value", "change_date"]].copy()
+                    show_chg = show_chg.rename(columns={
+                        "practice_name": "Practice Name", "change_type": "Change Type",
+                        "old_value": "Old Value", "new_value": "New Value",
+                        "change_date": "Date",
+                    })
+                    st.dataframe(show_chg.fillna("—"), hide_index=True, use_container_width=True)
+            except Exception:
+                st.info("No practice changes data available yet.")
+            finally:
+                sess.close()
+    else:
+        st.info("No practices found in the selected ZIPs.")
+
+    # ── Ownership Landscape ─────────────────────────────────────────────
+    if not prac_df.empty:
         st.markdown(section_header("Ownership Landscape",
             "Breakdown of practices by ownership status and size."), unsafe_allow_html=True)
 
-        # Ownership bar chart
-        ownership_counts = practices_df["ownership_status"].fillna("unknown").value_counts().reset_index()
+        ownership_counts = prac_df["ownership_status"].fillna("unknown").value_counts().reset_index()
         ownership_counts.columns = ["status", "count"]
         status_labels = {"independent": "Independent", "dso_affiliated": "DSO Affiliated",
                          "pe_backed": "PE-Backed", "unknown": "Unknown",
@@ -1923,8 +2410,7 @@ def page_job_market():
         fig_own.update_layout(height=300, margin=dict(l=0, r=0, t=10, b=0), showlegend=False)
         st.plotly_chart(fig_own, use_container_width=True)
 
-        # Practice size distribution
-        enriched_with_emp = practices_df[practices_df["employee_count"].notna()].copy()
+        enriched_with_emp = prac_df[prac_df["employee_count"].notna()].copy()
         if not enriched_with_emp.empty:
             def _size_bucket(emp):
                 if emp <= 4: return "Solo (1-4)"
@@ -1938,58 +2424,136 @@ def page_job_market():
                             labels={"size": "Practice Size", "count": "Practices"})
             fig_sz.update_layout(height=300, margin=dict(l=0, r=0, t=10, b=0))
             st.plotly_chart(fig_sz, use_container_width=True)
-            st.caption(f"Size data available for {len(enriched_with_emp)} of {total} practices.")
 
-        # Top DSOs
-        dso_df = practices_df[practices_df["affiliated_dso"].notna() & (practices_df["affiliated_dso"] != "")]
+        dso_df = prac_df[prac_df["affiliated_dso"].notna() & (prac_df["affiliated_dso"] != "")]
         if not dso_df.empty:
             st.markdown("**Top DSOs in Zone**")
             top_dsos = (dso_df.groupby("affiliated_dso").size().reset_index(name="Practices")
                         .sort_values("Practices", ascending=False).head(10))
             st.dataframe(clean_dataframe(top_dsos), hide_index=True, use_container_width=True)
 
-        # DSO Penetration by ZIP
-        if not zs.empty and "consolidation_pct_of_total" in zs.columns:
+        if not zip_stats.empty and "consolidation_pct_of_total" in zip_stats.columns:
             st.markdown("**DSO Penetration by ZIP**")
-            pen_cols = ["zip_code", "city", "total_practices", "consolidation_pct_of_total", "opportunity_score"]
-            pen = zs[[c for c in pen_cols if c in zs.columns]].copy()
+            pen_cols = ["zip_code", "city", "total_practices", "consolidation_pct_of_total"]
+            pen = zip_stats[[c for c in pen_cols if c in zip_stats.columns]].copy()
             pen = pen.sort_values("consolidation_pct_of_total", ascending=True)
             pen = pen.rename(columns={"zip_code": "ZIP", "city": "City", "total_practices": "Practices",
-                                       "consolidation_pct_of_total": "Consolidation %", "opportunity_score": "Opportunity"})
+                                       "consolidation_pct_of_total": "Consolidation %"})
             st.dataframe(pen, hide_index=True, use_container_width=True)
-    else:
-        st.info("No practices found in the selected ZIPs.")
 
-    # ── Growth Signals Placeholder ───────────────────────────────────────
-    st.markdown(section_header("Growth Signals", "Future demographic data"), unsafe_allow_html=True)
-    st.info("This section will track new housing developments, population growth trends, "
-            "and commercial expansion to predict where patient demand is increasing. "
-            "Data sources being evaluated include Census ACS, county building permits, "
-            "and CMAP regional planning data.")
+    # ── Market Analytics ────────────────────────────────────────────────
+    if not zip_stats.empty:
+        st.markdown(section_header("Market Analytics",
+            "ZIP-level density, consolidation breakdown, and competitive landscape analysis."), unsafe_allow_html=True)
 
-    # ── Recent Ownership Changes ─────────────────────────────────────────
-    st.markdown(section_header("Recent Ownership Changes",
-        "Detected ownership changes in your commutable ZIPs — when a practice switches from "
-        "independent to DSO, gets a new name, or changes status."), unsafe_allow_html=True)
-    if zip_list:
-        sess = get_session()
-        try:
-            placeholders = ", ".join([f":z{i}" for i in range(len(zip_list))])
-            params = {f"z{i}": z for i, z in enumerate(zip_list)}
-            changes = pd.read_sql(text(
-                f"SELECT pc.change_date, p.practice_name, p.city, p.zip, pc.field_changed, "
-                f"pc.old_value, pc.new_value, pc.change_type FROM practice_changes pc "
-                f"JOIN practices p ON pc.npi = p.npi WHERE p.zip IN ({placeholders}) "
-                f"ORDER BY pc.change_date DESC LIMIT 50"
-            ), sess.bind, params=params)
-            if changes.empty:
-                st.info("No practice changes detected yet in these ZIPs.")
-            else:
-                st.dataframe(clean_dataframe(changes), hide_index=True, use_container_width=True)
-        except Exception:
-            st.info("No practice changes detected yet.")
-        finally:
-            sess.close()
+        density_data = zip_stats[["zip_code", "city", "total_practices"]].copy()
+        density_data = density_data.sort_values("total_practices", ascending=False).head(25)
+        density_data["label"] = density_data.apply(
+            lambda r: f"{r['zip_code']} ({r['city']})" if pd.notna(r.get("city")) else r["zip_code"], axis=1)
+        density_data = density_data.sort_values("total_practices", ascending=True)
+
+        fig_density = go.Figure(go.Bar(
+            x=density_data["total_practices"],
+            y=density_data["label"],
+            orientation="h",
+            marker_color="#42A5F5",
+            text=density_data["total_practices"],
+            textposition="outside",
+            textfont=dict(color="#90A4AE", size=10),
+        ))
+        fig_density.update_layout(
+            template=dental_dark_template,
+            title=dict(text="Dentist Density by ZIP — Top 25", font=dict(size=14)),
+            xaxis_title="Total Practices",
+            yaxis_title="",
+            height=max(400, len(density_data) * 22),
+            margin=dict(l=0, r=40, t=40, b=0),
+        )
+        st.plotly_chart(fig_density, use_container_width=True)
+
+        consol_data = zip_stats[["zip_code", "city", "total_practices", "independent_count",
+                          "unknown_count"]].copy()
+        consol_data["consolidated_count"] = (
+            consol_data["total_practices"]
+            - consol_data["independent_count"].fillna(0)
+            - consol_data["unknown_count"].fillna(0)
+        ).clip(lower=0)
+        consol_data = consol_data.sort_values("total_practices", ascending=False).head(25)
+        tp = consol_data["total_practices"].replace(0, 1)
+        consol_data["independent_pct"] = (consol_data["independent_count"].fillna(0) / tp * 100).round(1)
+        consol_data["consolidated_pct"] = (consol_data["consolidated_count"] / tp * 100).round(1)
+        consol_data["unknown_pct"] = (consol_data["unknown_count"].fillna(0) / tp * 100).round(1)
+        consol_data["label"] = consol_data.apply(
+            lambda r: f"{r['zip_code']} ({r['city']})" if pd.notna(r.get("city")) else r["zip_code"], axis=1)
+        consol_data = consol_data.sort_values("total_practices", ascending=True)
+
+        fig_consol_stack = go.Figure()
+        fig_consol_stack.add_trace(go.Bar(
+            y=consol_data["label"], x=consol_data["independent_pct"],
+            name="Independent", orientation="h", marker_color="#4CAF50",
+        ))
+        fig_consol_stack.add_trace(go.Bar(
+            y=consol_data["label"], x=consol_data["consolidated_pct"],
+            name="Consolidated", orientation="h", marker_color="#F44336",
+        ))
+        fig_consol_stack.add_trace(go.Bar(
+            y=consol_data["label"], x=consol_data["unknown_pct"],
+            name="Unknown", orientation="h", marker_color="#78909C",
+        ))
+        fig_consol_stack.update_layout(
+            barmode="stack",
+            template=dental_dark_template,
+            title=dict(text="Consolidation Breakdown by ZIP — Top 25", font=dict(size=14)),
+            xaxis_title="Percentage of Practices",
+            yaxis_title="",
+            height=max(400, len(consol_data) * 22),
+            margin=dict(l=0, r=20, t=40, b=0),
+            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+        )
+        st.plotly_chart(fig_consol_stack, use_container_width=True)
+
+        st.markdown("**Competitive Landscape**")
+        comp_left, comp_right = st.columns(2)
+
+        with comp_left:
+            st.markdown("**DSO Market Share**")
+            if not prac_df.empty:
+                dso_comp = prac_df[
+                    prac_df["affiliated_dso"].notna() & (prac_df["affiliated_dso"] != "")
+                ].copy()
+                if dso_comp.empty:
+                    st.info("No DSO-affiliated practices found.")
+                else:
+                    total_in_zone = len(prac_df)
+                    dso_agg = dso_comp.groupby("affiliated_dso").agg(
+                        Locations=("npi", "count"),
+                        ZIPs_Covered=("zip", "nunique"),
+                    ).reset_index()
+                    dso_agg["Market Share %"] = (dso_agg["Locations"] / total_in_zone * 100).round(1)
+                    dso_agg = dso_agg.sort_values("Locations", ascending=False).head(15)
+                    dso_agg = dso_agg.rename(columns={"affiliated_dso": "DSO Name"})
+                    st.dataframe(dso_agg, hide_index=True, use_container_width=True)
+
+        with comp_right:
+            st.markdown("**PE Sponsors Active**")
+            if not prac_df.empty:
+                pe_comp = prac_df[
+                    prac_df["affiliated_pe_sponsor"].notna() & (prac_df["affiliated_pe_sponsor"] != "")
+                ].copy()
+                if pe_comp.empty:
+                    st.info("No PE-backed practices found.")
+                else:
+                    pe_agg = pe_comp.groupby("affiliated_pe_sponsor").agg(
+                        Portfolio_DSOs=("affiliated_dso", "nunique"),
+                        Total_Locations=("npi", "count"),
+                    ).reset_index()
+                    pe_agg = pe_agg.sort_values("Total_Locations", ascending=False).head(15)
+                    pe_agg = pe_agg.rename(columns={
+                        "affiliated_pe_sponsor": "PE Sponsor",
+                        "Portfolio_DSOs": "Portfolio DSOs",
+                        "Total_Locations": "Total Locations",
+                    })
+                    st.dataframe(pe_agg, hide_index=True, use_container_width=True)
 
 
 # ═══════════════════════════════════════════════════════════════════════════

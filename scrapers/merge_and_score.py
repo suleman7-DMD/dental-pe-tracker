@@ -13,6 +13,7 @@ import csv
 import os
 import shutil
 import sys
+from collections import defaultdict
 from datetime import date, datetime, timedelta
 from urllib.parse import urlparse
 
@@ -26,7 +27,7 @@ from scrapers.logger_config import get_logger
 from scrapers.database import (
     init_db, get_engine, get_session, Base,
     Deal, Practice, PracticeChange, PESponsor, Platform,
-    WatchedZip, DSOLocation, ADAHPIBenchmark,
+    WatchedZip, DSOLocation, ADAHPIBenchmark, ZipScore,
     table_exists, backup_database, DB_PATH, BACKUP_DIR,
 )
 from scrapers.pipeline_logger import log_scrape_start, log_scrape_complete, log_scrape_error
@@ -36,36 +37,7 @@ log = get_logger("merge_and_score")
 COMBINED_DIR = os.path.expanduser("~/dental-pe-tracker/data/combined")
 
 
-# ── ZipScore Model ──────────────────────────────────────────────────────────
-
-
-class ZipScore(Base):
-    __tablename__ = "zip_scores"
-
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    zip_code = Column(Text, nullable=False)
-    city = Column(Text)
-    state = Column(Text)
-    metro_area = Column(Text)
-    total_practices = Column(Integer)
-    pe_backed_count = Column(Integer)
-    dso_affiliated_count = Column(Integer)
-    independent_count = Column(Integer)
-    unknown_count = Column(Integer)
-    classified_count = Column(Integer)
-    consolidation_pct = Column(Float)
-    consolidation_pct_of_total = Column(Float)
-    pe_penetration_pct = Column(Float)
-    pct_unknown = Column(Float)
-    recent_changes_90d = Column(Integer)
-    state_deal_count_12m = Column(Integer)
-    score_date = Column(Date)
-    opportunity_score = Column(Float)
-    data_confidence = Column(Text)
-
-    __table_args__ = (
-        UniqueConstraint("zip_code", "score_date", name="uq_zip_score_date"),
-    )
+# ZipScore model is now imported from scrapers.database
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -113,7 +85,6 @@ def deduplicate_deals(session):
                  "source_url", "notes", "raw_text"]
 
     # Group deals by normalized platform prefix for faster dedup (avoid O(n²) full scan)
-    from collections import defaultdict
     platform_groups = defaultdict(list)
     for d in all_deals:
         key = (d.platform_company or "").lower()[:4]  # first 4 chars as bucket key
@@ -191,7 +162,6 @@ def enrich_platforms_and_sponsors(session):
     stats = {"platforms_updated": 0, "sponsors_updated": 0}
 
     # Pre-load all deals with platform_company in one query (avoid N+1)
-    from collections import defaultdict
     all_deals = session.query(Deal).filter(Deal.platform_company.isnot(None)).all()
     deals_by_platform = defaultdict(list)
     for d in all_deals:
@@ -249,6 +219,151 @@ def enrich_platforms_and_sponsors(session):
 # ═══════════════════════════════════════════════════════════════════════════
 
 
+def deduplicate_practices_in_zip(session, zip_code):
+    """Deduplicate practices by address within a ZIP code.
+
+    Multiple NPIs at the same address usually represent one practice (e.g., a
+    dental school with 256 registered dentists should count as 1 entity, not 256).
+
+    Grouping rules:
+      - 50+ NPIs at one address  → 1 institutional entity (excluded from
+        consolidation calculations)
+      - 2-49 NPIs with at least one organization NPI → 1 practice, using the
+        org NPI's ownership_status
+      - Multiple individual-only NPIs at same address → each counts as 1
+        practice (e.g. solo practitioners sharing a building)
+      - Single NPI at address → 1 practice
+
+    Returns dict with deduplicated counts.
+    """
+    practices = session.query(Practice).filter(Practice.zip == zip_code).all()
+    raw_npi_count = len(practices)
+
+    if raw_npi_count == 0:
+        return {
+            "total_deduplicated": 0,
+            "pe_backed_count": 0,
+            "dso_affiliated_count": 0,
+            "independent_count": 0,
+            "unknown_count": 0,
+            "institutional_count": 0,
+            "raw_npi_count": 0,
+        }
+
+    # Group by normalized (address, city)
+    addr_groups = defaultdict(list)
+    for p in practices:
+        addr = (p.address or "").upper().strip()
+        city = (p.city or "").upper().strip()
+        key = (addr, city)
+        addr_groups[key].append(p)
+
+    # Walk each group and produce deduplicated practice entries
+    # Each entry is an ownership_status string (or "institutional")
+    deduped_statuses = []
+
+    for (addr, city), group in addr_groups.items():
+        n = len(group)
+
+        if n >= 50:
+            # Large institution (dental school, hospital dental dept, etc.)
+            deduped_statuses.append("institutional")
+
+        elif n >= 2:
+            # Check if any org NPI is present
+            org_npis = [p for p in group if p.entity_type == "organization"]
+            if org_npis:
+                # Use the org NPI's ownership_status as representative
+                # Pick the most "specific" status among org NPIs
+                # Priority: pe_backed > dso_affiliated > independent > unknown
+                status_priority = {"pe_backed": 4, "dso_affiliated": 3,
+                                   "independent": 2, "unknown": 1, None: 0}
+                best_org = max(org_npis,
+                               key=lambda p: status_priority.get(p.ownership_status, 0))
+                deduped_statuses.append(best_org.ownership_status or "unknown")
+            else:
+                # All individual NPIs — each is a separate practitioner
+                # sharing the same building (e.g. a professional office building)
+                for p in group:
+                    deduped_statuses.append(p.ownership_status or "unknown")
+
+        else:
+            # Single NPI at this address
+            deduped_statuses.append(group[0].ownership_status or "unknown")
+
+    # Tally counts
+    pe_backed_count = sum(1 for s in deduped_statuses if s == "pe_backed")
+    dso_affiliated_count = sum(1 for s in deduped_statuses if s == "dso_affiliated")
+    independent_count = sum(1 for s in deduped_statuses if s == "independent")
+    institutional_count = sum(1 for s in deduped_statuses if s == "institutional")
+    unknown_count = sum(1 for s in deduped_statuses if s in ("unknown", None))
+    total_deduplicated = len(deduped_statuses)
+
+    return {
+        "total_deduplicated": total_deduplicated,
+        "pe_backed_count": pe_backed_count,
+        "dso_affiliated_count": dso_affiliated_count,
+        "independent_count": independent_count,
+        "unknown_count": unknown_count,
+        "institutional_count": institutional_count,
+        "raw_npi_count": raw_npi_count,
+    }
+
+
+def ensure_chicagoland_watched(session):
+    """Ensure all Chicagoland ZIPs are in watched_zips (not just the original 28)."""
+    ALL_CHICAGOLAND_ZIPS = [
+        "60004", "60005", "60007", "60008", "60010", "60015", "60016", "60017",
+        "60018", "60022", "60025", "60026", "60035", "60037", "60038", "60040",
+        "60045", "60053", "60056", "60061", "60062", "60067", "60068", "60069",
+        "60070", "60074", "60076", "60077", "60089", "60090", "60091", "60093",
+        "60101", "60103", "60104", "60106", "60107", "60108", "60110", "60118",
+        "60119", "60120", "60121", "60122", "60123", "60124", "60126", "60130",
+        "60131", "60133", "60134", "60137", "60138", "60139", "60143", "60144",
+        "60148", "60151", "60153", "60154", "60155", "60160", "60161", "60162",
+        "60163", "60164", "60165", "60171", "60172", "60173", "60174", "60175",
+        "60176", "60181", "60185", "60186", "60187", "60188", "60189", "60190",
+        "60191", "60193", "60194", "60195", "60201", "60202", "60203", "60301",
+        "60302", "60304", "60305", "60402", "60403", "60404", "60406", "60409",
+        "60410", "60411", "60412", "60415", "60416", "60418", "60419", "60421",
+        "60422", "60423", "60425", "60426", "60428", "60429", "60430", "60431",
+        "60432", "60433", "60434", "60435", "60436", "60438", "60439", "60440",
+        "60441", "60442", "60443", "60445", "60446", "60447", "60448", "60449",
+        "60450", "60451", "60452", "60453", "60454", "60455", "60456", "60457",
+        "60458", "60459", "60461", "60462", "60463", "60464", "60465", "60466",
+        "60467", "60468", "60469", "60471", "60472", "60473", "60475", "60476",
+        "60477", "60478", "60480", "60481", "60482", "60484", "60487", "60490",
+        "60491", "60501", "60502", "60503", "60504", "60505", "60506", "60510",
+        "60511", "60512", "60513", "60514", "60515", "60516", "60517", "60519",
+        "60521", "60523", "60525", "60526", "60527", "60532", "60534", "60536",
+        "60537", "60538", "60539", "60540", "60541", "60542", "60543", "60544",
+        "60545", "60546", "60548", "60554", "60555", "60558", "60559", "60560",
+        "60563", "60564", "60565", "60585", "60586", "60601", "60602", "60603",
+        "60604", "60605", "60606", "60607", "60608", "60609", "60610", "60611",
+        "60612", "60613", "60614", "60615", "60616", "60617", "60618", "60619",
+        "60620", "60621", "60622", "60623", "60624", "60625", "60626", "60628",
+        "60629", "60630", "60631", "60632", "60633", "60634", "60636", "60637",
+        "60638", "60639", "60640", "60641", "60642", "60643", "60644", "60645",
+        "60646", "60647", "60649", "60651", "60652", "60653", "60654", "60655",
+        "60656", "60657", "60659", "60660", "60661", "60706", "60707", "60712",
+        "60714", "60803", "60804", "60805", "60827",
+    ]
+    existing = {w.zip_code for w in session.query(WatchedZip).filter_by(metro_area="Chicagoland").all()}
+    missing = [z for z in ALL_CHICAGOLAND_ZIPS if z not in existing]
+    if not missing:
+        return 0
+    added = 0
+    for zc in missing:
+        p = session.query(Practice.city, Practice.state).filter(Practice.zip == zc).first()
+        city = p[0].title() if p and p[0] else None
+        state = p[1] if p and p[1] else "IL"
+        session.add(WatchedZip(zip_code=zc, city=city, state=state, metro_area="Chicagoland"))
+        added += 1
+    session.commit()
+    log.info("Added %d missing Chicagoland ZIPs to watched_zips (total: %d)", added, len(ALL_CHICAGOLAND_ZIPS))
+    return added
+
+
 def score_watched_zips(session):
     Base.metadata.create_all(bind=session.get_bind())
 
@@ -290,17 +405,25 @@ def score_watched_zips(session):
                         break
             session.flush()
 
-        # Count practices
-        practices = session.query(Practice).filter(Practice.zip == zc).all()
-        total = len(practices)
-        pe = sum(1 for p in practices if p.ownership_status == "pe_backed")
-        dso = sum(1 for p in practices if p.ownership_status == "dso_affiliated")
-        indep = sum(1 for p in practices if p.ownership_status == "independent")
-        unk = sum(1 for p in practices if p.ownership_status in ("unknown", None))
-        classified = total - unk
+        # Count practices (address-deduplicated)
+        counts = deduplicate_practices_in_zip(session, zc)
+        raw = counts["raw_npi_count"]
+        total = counts["total_deduplicated"]
+        pe = counts["pe_backed_count"]
+        dso = counts["dso_affiliated_count"]
+        indep = counts["independent_count"]
+        unk = counts["unknown_count"]
+        institutional = counts["institutional_count"]
+        classified = total - unk - institutional
 
-        consol_pct = ((pe + dso) / classified * 100) if classified > 0 else 0.0
-        consol_total = ((pe + dso) / total * 100) if total > 0 else 0.0
+        dedup_ratio = raw / total if total > 0 else 1.0
+        log.info("ZIP %s: %d raw NPIs -> %d deduplicated practices (%.1fx dedup, %d institutional)",
+                 zc, raw, total, dedup_ratio, institutional)
+
+        consolidated_count = pe + dso
+        consol_pct = (consolidated_count / classified * 100) if classified > 0 else 0.0
+        consol_total = (consolidated_count / total * 100) if total > 0 else 0.0
+        indep_pct_total = (indep / total * 100) if total > 0 else 0.0
         pe_pct = (pe / classified * 100) if classified > 0 else 0.0
         unk_pct = (unk / total * 100) if total > 0 else 0.0
 
@@ -337,8 +460,12 @@ def score_watched_zips(session):
         existing = session.query(ZipScore).filter_by(zip_code=zc).first()
         vals = dict(city=wz.city, state=st, metro_area=wz.metro_area,
                     total_practices=total, pe_backed_count=pe, dso_affiliated_count=dso,
-                    independent_count=indep, unknown_count=unk, classified_count=classified,
+                    independent_count=indep, unknown_count=unk,
+                    institutional_count=institutional, raw_npi_count=raw,
+                    classified_count=classified,
                     consolidation_pct=round(consol_pct, 2), consolidation_pct_of_total=round(consol_total, 2),
+                    independent_pct_of_total=round(indep_pct_total, 2),
+                    consolidated_count=consolidated_count, unclassified_pct=round(unk_pct, 2),
                     pe_penetration_pct=round(pe_pct, 2), pct_unknown=round(unk_pct, 2),
                     recent_changes_90d=recent, state_deal_count_12m=state_deals,
                     opportunity_score=round(opp, 2), data_confidence=confidence)
@@ -391,8 +518,10 @@ def metro_rollup(session):
         unk = sum(s.unknown_count or 0 for s in scores)
         classified = total - unk
 
-        consol = ((pe + dso) / classified * 100) if classified > 0 else 0.0
-        consol_total = ((pe + dso) / total * 100) if total > 0 else 0.0
+        consolidated_count = pe + dso
+        consol = (consolidated_count / classified * 100) if classified > 0 else 0.0
+        consol_total = (consolidated_count / total * 100) if total > 0 else 0.0
+        indep_pct_total = (indep / total * 100) if total > 0 else 0.0
         unk_pct = (unk / total * 100) if total > 0 else 0.0
         confidence = "high" if unk_pct < 20 else ("medium" if unk_pct <= 50 else "low")
         avg_opp = sum(s.opportunity_score or 0 for s in scores) / len(scores) if scores else 0
@@ -441,6 +570,7 @@ def metro_rollup(session):
             "total_practices": total, "pe_backed": pe, "dso_affiliated": dso,
             "independent": indep, "unknown": unk,
             "consolidation_pct": round(consol, 1), "consolidation_pct_of_total": round(consol_total, 1),
+            "independent_pct_of_total": round(indep_pct_total, 1),
             "data_confidence": confidence, "qoq_change": qoq,
             "ada_hpi_benchmark": ada_benchmark, "top_dso": top_dso,
             "opportunity_score": round(avg_opp, 1),
@@ -511,9 +641,11 @@ def print_summary(session, metro_results, dedup_stats, export_stats):
         for m in metro_results:
             print()
             print(f"  {m['metro_area'].upper()} ({m['zip_count']} ZIPs tracked):")
+            unk_pct = (m['unknown'] / m['total_practices'] * 100) if m['total_practices'] > 0 else 0
             print(f"    Total practices:              {m['total_practices']:,}")
-            print(f"    Consolidated:                 {m['consolidation_pct']:.1f}% (confidence: {m['data_confidence']})")
-            print(f"    Conservative (incl unknown):   {m['consolidation_pct_of_total']:.1f}%")
+            print(f"    Consolidated:                 {m['consolidation_pct_of_total']:.1f}% of total practices (DSO + PE)")
+            print(f"    Independent:                  {m['independent_pct_of_total']:.1f}% of total practices")
+            print(f"    Unclassified:                 {unk_pct:.1f}%")
             ada = f"{m['ada_hpi_benchmark']:.1f}%" if m.get("ada_hpi_benchmark") is not None else "not loaded"
             print(f"    ADA HPI {m['state'] or '??'} benchmark:       {ada}")
             qoq = f"{m['qoq_change']:+.1f}%" if m.get("qoq_change") is not None else "first run"
@@ -561,6 +693,7 @@ def run():
     practice_count = session.query(Practice).count()
     if practice_count > 0:
         log.info("Part 3: Scoring watched ZIPs...")
+        ensure_chicagoland_watched(session)
         score_watched_zips(session)
 
         log.info("Part 4: Metro area rollup...")

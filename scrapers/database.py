@@ -124,6 +124,13 @@ class Practice(Base):
     data_axle_import_date = Column(Date)
     raw_record_count = Column(Integer)
     import_batch_id = Column(Text)
+    # Data Axle high-value fields
+    parent_company = Column(Text)
+    parent_iusa = Column(Text)
+    ein = Column(Text)
+    franchise_name = Column(Text)
+    iusa_number = Column(Text)
+    website = Column(Text)
     created_at = Column(DateTime, default=func.now())
     updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
 
@@ -211,6 +218,41 @@ class DSOLocation(Base):
     phone = Column(Text)
     scraped_at = Column(DateTime, default=func.now())
     source_url = Column(Text)
+
+
+class ZipScore(Base):
+    __tablename__ = "zip_scores"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    zip_code = Column(Text, nullable=False)
+    city = Column(Text)
+    state = Column(Text)
+    metro_area = Column(Text)
+    total_practices = Column(Integer)
+    pe_backed_count = Column(Integer)
+    dso_affiliated_count = Column(Integer)
+    independent_count = Column(Integer)
+    unknown_count = Column(Integer)
+    institutional_count = Column(Integer)
+    raw_npi_count = Column(Integer)
+    classified_count = Column(Integer)
+    consolidation_pct = Column(Float)
+    consolidation_pct_of_total = Column(Float)
+    independent_pct_of_total = Column(Float)      # independent_count / total_practices * 100
+    pe_penetration_pct = Column(Float)
+    pct_unknown = Column(Float)
+    recent_changes_90d = Column(Integer)
+    state_deal_count_12m = Column(Integer)
+    score_date = Column(Date)
+    opportunity_score = Column(Float)
+    data_confidence = Column(Text)
+    # New columns for address-level dedup and consolidation analysis
+    consolidated_count = Column(Integer)          # pe_backed_count + dso_affiliated_count
+    unclassified_pct = Column(Float)              # unknown_count / total_practices * 100
+
+    __table_args__ = (
+        UniqueConstraint("zip_code", "score_date", name="uq_zip_score_date"),
+    )
 
 
 class WatchedZip(Base):

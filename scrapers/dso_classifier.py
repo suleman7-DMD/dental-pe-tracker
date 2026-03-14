@@ -144,11 +144,38 @@ INDEPENDENT_PATTERNS = [
 # ── Classification Logic ───────────────────────────────────────────────────
 
 
-def classify_practice(practice_name, dba_name):
-    """Classify a practice based on its names.
+def classify_practice(practice_name, dba_name, entity_type=None,
+                      franchise_name=None, parent_company=None):
+    """Classify a practice based on its names, entity type, and corporate fields.
     Returns (status, dso_name, pe_sponsor, confidence, reason)."""
     if not practice_name and not dba_name:
         return "unknown", None, None, 0, "no name data"
+
+    # Step -1: Franchise name is the strongest signal (Data Axle field)
+    if franchise_name and franchise_name.strip():
+        fn = franchise_name.strip().lower()
+        # Skip generic specialty descriptions
+        if fn not in ("general dentistry", "orthodontics", "endodontics",
+                      "oral surgery", "periodontics", "pedodontics",
+                      "prosthodontics", "dental hygienist"):
+            sorted_dsos = sorted(KNOWN_DSOS, key=lambda x: len(x[0]), reverse=True)
+            for pattern, canonical_name, pe_sponsor in sorted_dsos:
+                if pattern in fn:
+                    status = "pe_backed" if pe_sponsor else "dso_affiliated"
+                    return status, canonical_name, pe_sponsor, 95, f"Franchise match: {franchise_name} → {canonical_name}"
+            # Franchise name doesn't match known DSOs but still indicates a chain
+            return "dso_affiliated", franchise_name.strip(), None, 90, f"Franchise name: {franchise_name}"
+
+    # Step -0.5: Parent company is a strong signal
+    if parent_company and parent_company.strip():
+        pc = parent_company.strip().lower()
+        sorted_dsos = sorted(KNOWN_DSOS, key=lambda x: len(x[0]), reverse=True)
+        for pattern, canonical_name, pe_sponsor in sorted_dsos:
+            if pattern in pc:
+                status = "pe_backed" if pe_sponsor else "dso_affiliated"
+                return status, canonical_name, pe_sponsor, 90, f"Parent company match: {parent_company} → {canonical_name}"
+        # Parent company doesn't match known DSOs but still indicates corporate ownership
+        return "dso_affiliated", parent_company.strip(), None, 85, f"Parent company: {parent_company}"
 
     names_to_check = []
     if practice_name:
@@ -157,6 +184,19 @@ def classify_practice(practice_name, dba_name):
         names_to_check.append(dba_name.lower())
 
     combined = " ".join(names_to_check)
+
+    # Step 0: Entity-type-based classification for individuals
+    # An individual NPI is almost certainly a solo practitioner UNLESS they
+    # work under a known DSO name.
+    if entity_type and entity_type.lower() == "individual":
+        # First, check if this individual works for a known DSO
+        sorted_dsos = sorted(KNOWN_DSOS, key=lambda x: len(x[0]), reverse=True)
+        for pattern, canonical_name, pe_sponsor in sorted_dsos:
+            if pattern in combined:
+                status = "pe_backed" if pe_sponsor else "dso_affiliated"
+                return status, canonical_name, pe_sponsor, 95, f"Individual NPI — matches known DSO: {canonical_name}"
+        # No DSO match → solo practitioner
+        return "independent", None, None, 85, "Individual NPI — solo practitioner"
 
     # Step 1: Check against known DSO names (sorted longest first)
     sorted_dsos = sorted(KNOWN_DSOS, key=lambda x: len(x[0]), reverse=True)
@@ -179,6 +219,21 @@ def classify_practice(practice_name, dba_name):
         # Multiple LLCs or complex corporate names
         if re.search(r'\bmanagement\b.*\b(llc|inc|corp)\b', pn):
             return "dso_affiliated", None, None, 55, "corporate structure: management entity"
+
+    # Step 4a: Organization with professional suffix → likely independent group
+    # Professional entity suffixes (PC, PLLC, etc.) indicate a dentist-owned
+    # practice entity rather than a corporate DSO structure.
+    if entity_type and entity_type.lower() == "organization":
+        _PROF_SUFFIX_RE = re.compile(
+            r'\b(dmd\s+pc|dds\s+pc|pc|pllc|pa|psc|sc|llc)\s*[.,]?\s*$',
+            re.IGNORECASE,
+        )
+        if practice_name and _PROF_SUFFIX_RE.search(practice_name):
+            # Make sure there are no management/DSO keywords
+            has_mgmt = any(kw in combined for kw in MGMT_KEYWORDS)
+            if not has_mgmt:
+                return ("independent", None, None, 65,
+                        "Organization with professional suffix, no DSO signals")
 
     # Step 4: Check for independent practice patterns
     for pat in INDEPENDENT_PATTERNS:
@@ -269,6 +324,36 @@ def _location_match_pass(session, practices, counts, dry_run, force, today):
     return upgrades
 
 
+# ── Batch DB helpers ──────────────────────────────────────────────────────
+
+
+def _flush_updates(session, pending_updates, pending_changes):
+    """Write pending classification updates to DB via raw SQL (fast).
+
+    Using raw SQL UPDATE instead of ORM attribute mutation avoids the
+    expire_on_commit penalty that makes ORM-based updates on 350k+ rows
+    take hours instead of seconds.
+    """
+    from sqlalchemy import text
+
+    for upd in pending_updates:
+        fields = {k: v for k, v in upd.items() if k != "npi"}
+        if not fields:
+            continue
+        set_clause = ", ".join(f"{k} = :{k}" for k in fields)
+        params = dict(fields)
+        params["npi"] = upd["npi"]
+        session.execute(
+            text(f"UPDATE practices SET {set_clause} WHERE npi = :npi"),
+            params,
+        )
+
+    if pending_changes:
+        session.bulk_save_objects(pending_changes)
+
+    session.commit()
+
+
 # ── Main ────────────────────────────────────────────────────────────────────
 
 
@@ -282,24 +367,38 @@ def run(zip_filter=False, force=False, dry_run=False):
     init_db()
     session = get_session()
 
-    # Build query
-    query = session.query(Practice)
+    # ── Load practices as lightweight tuples instead of ORM objects ──
+    # Loading 350k+ ORM objects into the session causes catastrophic
+    # performance: every session.commit() expires all objects (default
+    # expire_on_commit=True), and subsequent attribute access triggers
+    # individual SELECT per row, turning a 30-second job into hours.
+    from sqlalchemy import text
+
+    where_clauses = []
+    params = {}
 
     if not force:
-        # Only classify practices with unknown or null status
-        query = query.filter(
-            (Practice.ownership_status == "unknown") |
-            (Practice.ownership_status.is_(None))
+        where_clauses.append(
+            "(ownership_status = 'unknown' OR ownership_status IS NULL)"
         )
 
     if zip_filter:
         watched = session.query(WatchedZip.zip_code).all()
         watched_zips = [z[0] for z in watched]
-        query = query.filter(Practice.zip.in_(watched_zips))
+        placeholders = ", ".join(f":z{i}" for i in range(len(watched_zips)))
+        where_clauses.append(f"zip IN ({placeholders})")
+        for i, z in enumerate(watched_zips):
+            params[f"z{i}"] = z
         log.info("Filtering to %d watched ZIP codes", len(watched_zips))
 
-    practices = query.all()
-    total = len(practices)
+    where_sql = (" WHERE " + " AND ".join(where_clauses)) if where_clauses else ""
+    rows = session.execute(
+        text(f"SELECT npi, practice_name, doing_business_as, entity_type, "
+             f"ownership_status, franchise_name, parent_company"
+             f" FROM practices{where_sql}"),
+        params,
+    ).fetchall()
+    total = len(rows)
 
     if total == 0:
         print("0 practices to classify.")
@@ -315,17 +414,22 @@ def run(zip_filter=False, force=False, dry_run=False):
 
     from scrapers.database import PracticeChange
     pending_changes = []
+    pending_updates = []
+    BATCH_SIZE = 10_000
 
-    for i, practice in enumerate(practices):
-        if (i + 1) % 10_000 == 0:
+    for i, row in enumerate(rows):
+        if (i + 1) % BATCH_SIZE == 0:
             log.info("  Classified %dk / %dk...", (i + 1) // 1000, total // 1000)
-            if not dry_run:
-                session.bulk_save_objects(pending_changes)
-                session.commit()
+            if not dry_run and pending_updates:
+                _flush_updates(session, pending_updates, pending_changes)
+                pending_updates = []
                 pending_changes = []
 
+        npi, practice_name, dba_name, entity_type, old_status, franchise, parent_co = row
+
         status, dso_name, pe_sponsor, confidence, reason = classify_practice(
-            practice.practice_name, practice.doing_business_as
+            practice_name, dba_name, entity_type=entity_type,
+            franchise_name=franchise, parent_company=parent_co,
         )
 
         counts[status] += 1
@@ -333,19 +437,24 @@ def run(zip_filter=False, force=False, dry_run=False):
         if dry_run:
             continue
 
-        # Update practice
-        old_status = practice.ownership_status
-        if status != old_status:
-            practice.ownership_status = status
-            if dso_name:
-                practice.affiliated_dso = dso_name
-            if pe_sponsor:
-                practice.affiliated_pe_sponsor = pe_sponsor
+        # Build update dict for this practice
+        update = {
+            "npi": npi,
+            "classification_confidence": confidence,
+            "classification_reasoning": reason,
+        }
 
-            # Queue change log (batch insert later)
+        if status != old_status:
+            update["ownership_status"] = status
+            if dso_name:
+                update["affiliated_dso"] = dso_name
+            if pe_sponsor:
+                update["affiliated_pe_sponsor"] = pe_sponsor
+
+            # Queue change log for new acquisitions
             if old_status in ("unknown", None) and status in ("pe_backed", "dso_affiliated"):
                 pending_changes.append(PracticeChange(
-                    npi=practice.npi,
+                    npi=npi,
                     change_date=today,
                     field_changed="ownership_status",
                     old_value=old_status or "unknown",
@@ -357,19 +466,26 @@ def run(zip_filter=False, force=False, dry_run=False):
 
             changes_made += 1
 
+        pending_updates.append(update)
+
     # Flush remaining
-    if not dry_run and pending_changes:
-        session.bulk_save_objects(pending_changes)
-        session.commit()
+    if not dry_run and pending_updates:
+        _flush_updates(session, pending_updates, pending_changes)
 
     # ── Pass 2: Location-based matching against dso_locations ──
+    # Only load practices in ZIPs that have DSO locations (much smaller set)
     location_upgrades = 0
     if table_exists("dso_locations"):
         loc_count = session.query(DSOLocation).count()
         if loc_count > 0:
             log.info("Pass 2: Matching against %d DSO locations...", loc_count)
+            dso_zips = [z[0] for z in session.query(DSOLocation.zip).distinct().all() if z[0]]
+            practices_for_loc = session.query(Practice).filter(
+                Practice.zip.in_(dso_zips)
+            ).all() if (not dry_run and dso_zips) else []
+            log.info("Pass 2: %d practices in DSO-location ZIPs", len(practices_for_loc))
             location_upgrades = _location_match_pass(
-                session, practices, counts, dry_run, force, today
+                session, practices_for_loc, counts, dry_run, force, today
             )
         else:
             log.info("Pass 2: dso_locations table is empty, skipping.")

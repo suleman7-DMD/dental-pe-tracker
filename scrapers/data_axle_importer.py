@@ -170,6 +170,24 @@ FIELD_CANDIDATES = {
     "msa_code": [
         "MSA Code", "Metro Area", "Metropolitan Area",
     ],
+    "parent_company": [
+        "Parent Company Name", "Parent Company",
+    ],
+    "parent_iusa": [
+        "Parent IUSA Number", "Parent IUSA",
+    ],
+    "ein": [
+        "EIN 1", "EIN", "Employer ID Number",
+    ],
+    "franchise": [
+        "Franchise Description 1", "Franchise Description", "Franchise Name",
+    ],
+    "iusa_number": [
+        "IUSA Number", "IUSA",
+    ],
+    "website": [
+        "Website", "URL", "Web Address", "Website URL",
+    ],
 }
 
 EXPECTED_COLUMNS = [
@@ -548,14 +566,57 @@ def validate_record(row, mapping, row_num):
     # Ownership
     own_raw = str(row.get(mapping.get("ownership", ""), "") or "").lower()
 
-    # Contact name
+    # Contact name — sanitize pandas NaN artifacts ("nan", "none", "null")
     first = str(row.get(mapping.get("contact_first", ""), "") or "").strip()
     last = str(row.get(mapping.get("contact_last", ""), "") or "").strip()
+    _nan_strings = {"nan", "none", "null", "n/a", "na", ""}
+    if first.lower() in _nan_strings:
+        first = ""
+    if last.lower() in _nan_strings:
+        last = ""
     contact = f"{first} {last}".strip() if first or last else None
 
     # SIC/NAICS codes
     sic = str(row.get(mapping.get("sic_code", ""), "") or "").strip()
     naics = str(row.get(mapping.get("naics_code", ""), "") or "").strip()
+
+    # Latitude / Longitude
+    lat = None
+    lon = None
+    lat_raw = row.get(mapping.get("latitude", ""), "")
+    lon_raw = row.get(mapping.get("longitude", ""), "")
+    try:
+        if lat_raw and not pd.isna(lat_raw):
+            lat_val = float(lat_raw)
+            if -90 <= lat_val <= 90:
+                lat = lat_val
+    except (ValueError, TypeError):
+        lat = None
+    try:
+        if lon_raw and not pd.isna(lon_raw):
+            lon_val = float(lon_raw)
+            if -180 <= lon_val <= 180:
+                lon = lon_val
+    except (ValueError, TypeError):
+        lon = None
+    # Only keep coordinates if both are valid
+    if lat is None or lon is None:
+        lat = None
+        lon = None
+
+    # Data Axle high-value fields
+    def _get_str(field_key):
+        col = mapping.get(field_key, "")
+        val = row.get(col, "") if col else ""
+        s = str(val).strip() if val and not pd.isna(val) else ""
+        return s or None
+
+    parent_company = _get_str("parent_company")
+    parent_iusa = _get_str("parent_iusa")
+    ein = _get_str("ein")
+    franchise = _get_str("franchise")
+    iusa_number = _get_str("iusa_number")
+    website_val = _get_str("website")
 
     record = {
         "company_name": company,
@@ -576,6 +637,14 @@ def validate_record(row, mapping, row_num):
         "contact_name": contact,
         "contact_first": first,
         "contact_last": last,
+        "latitude": lat,
+        "longitude": lon,
+        "parent_company": parent_company,
+        "parent_iusa": parent_iusa,
+        "ein": ein,
+        "franchise": franchise,
+        "iusa_number": iusa_number,
+        "website": website_val,
         "row_num": row_num,
     }
     return True, None, record
@@ -726,6 +795,9 @@ def deduplicate_records(records, debug=False):
     # ── PASS 5: Stealth DSO detection ─────────────────────────────────────
     _detect_stealth_dso(doors, phone_doors)
 
+    # ── PASS 6: Corporate linkage detection ──────────────────────────────
+    _detect_corporate_linkage(doors, log)
+
     return doors, dedup_report
 
 
@@ -786,6 +858,23 @@ def _collapse_cluster(cluster_records):
         "ownership_raw": base.get("ownership_raw", ""),
         "providers": sorted(providers),
         "num_providers": len(providers),
+        "latitude": next((r["latitude"] for r in cluster_records
+                          if r.get("latitude") is not None), None),
+        "longitude": next((r["longitude"] for r in cluster_records
+                           if r.get("longitude") is not None), None),
+        # Data Axle high-value fields: prefer first non-None value across cluster
+        "parent_company": next((r["parent_company"] for r in cluster_records
+                                if r.get("parent_company")), None),
+        "parent_iusa": next((r["parent_iusa"] for r in cluster_records
+                             if r.get("parent_iusa")), None),
+        "ein": next((r["ein"] for r in cluster_records
+                     if r.get("ein")), None),
+        "franchise": next((r["franchise"] for r in cluster_records
+                           if r.get("franchise")), None),
+        "iusa_number": next((r["iusa_number"] for r in cluster_records
+                             if r.get("iusa_number")), None),
+        "website": next((r["website"] for r in cluster_records
+                         if r.get("website")), None),
         "raw_record_count": n,
         "raw_records": cluster_records,
         # Will be filled later
@@ -802,15 +891,35 @@ def _collapse_cluster(cluster_records):
     return door
 
 
+def _is_valid_contact_name(name_str):
+    """Check if a contact name component is real (not NaN artifact or junk)."""
+    if not name_str:
+        return False
+    if len(name_str) < 2:
+        return False
+    if name_str.lower() in {"nan", "none", "null", "n/a", "na", "unknown", "xx", "zz"}:
+        return False
+    return True
+
+
 def _detect_stealth_dso(doors, phone_doors):
     """Pass 5: Flag patterns suggesting hidden DSO affiliation."""
-    # Index doors by contact last name
-    contact_doors = defaultdict(list)
+    # Index doors by full contact name (first + last) to avoid common-surname
+    # false positives.  Fall back to last-name-only for rare surnames (< 20
+    # occurrences), but require the name to pass validity checks.
+    fullname_doors = defaultdict(set)   # "FIRST|LAST" -> set of door indices
+    lastname_doors = defaultdict(set)   # "LAST"       -> set of door indices
+
     for i, door in enumerate(doors):
         for rec in door["raw_records"]:
-            last = rec.get("contact_last", "")
-            if last and len(last) > 1:
-                contact_doors[last.upper()].append(i)
+            first = rec.get("contact_first", "") or ""
+            last = rec.get("contact_last", "") or ""
+            if not _is_valid_contact_name(last):
+                continue
+            lastname_doors[last.upper()].add(i)
+            if _is_valid_contact_name(first):
+                key = f"{first.upper()}|{last.upper()}"
+                fullname_doors[key].add(i)
 
     for i, door in enumerate(doors):
         signals = []
@@ -830,14 +939,43 @@ def _detect_stealth_dso(doors, phone_doors):
         if door["location_type"] in ("branch", "subsidiary"):
             signals.append(f"location type is '{door['location_type']}'")
 
-        # Same contact across 3+ practice names
+        # Same contact across 3+ practice names — improved to reduce false
+        # positives from common surnames and NaN artifacts.
+        # Strategy: prefer full-name (first+last) matching.  If first name is
+        # unavailable, allow last-name-only matching but cap at 19 to exclude
+        # very common surnames (Patel, Lee, Kim, Khan, etc.).
         for rec in door["raw_records"]:
-            last = rec.get("contact_last", "")
-            if last and len(last) > 1:
-                all_doors_for_contact = set(contact_doors.get(last.upper(), []))
-                if len(all_doors_for_contact) >= 3:
-                    signals.append(f"contact '{last}' appears at {len(all_doors_for_contact)} practices")
-                    break
+            first = rec.get("contact_first", "") or ""
+            last = rec.get("contact_last", "") or ""
+            if not _is_valid_contact_name(last):
+                continue
+
+            matched = False
+
+            # Prefer full name match (first + last)
+            if _is_valid_contact_name(first):
+                key = f"{first.upper()}|{last.upper()}"
+                matches = fullname_doors.get(key, set())
+                if len(matches) >= 3:
+                    signals.append(
+                        f"contact '{first} {last}' appears at "
+                        f"{len(matches)} practices"
+                    )
+                    matched = True
+
+            # Fallback: last-name-only, but only for uncommon surnames
+            # (3-19 occurrences).  20+ is almost certainly a common name.
+            if not matched:
+                last_matches = lastname_doors.get(last.upper(), set())
+                if 3 <= len(last_matches) <= 19:
+                    signals.append(
+                        f"contact '{last}' appears at "
+                        f"{len(last_matches)} practices (last name only)"
+                    )
+                    matched = True
+
+            if matched:
+                break
 
         # Shared phone with 2-4 other doors
         if door["phone"] and door["phone"] in phone_doors:
@@ -846,6 +984,181 @@ def _detect_stealth_dso(doors, phone_doors):
                 signals.append(f"shares phone with {len(shared)-1} other doors")
 
         door["stealth_dso_signals"] = signals
+
+
+def _detect_corporate_linkage(doors, logger):
+    """Pass 6: Corporate linkage detection via parent company, EIN, IUSA, and franchise fields.
+
+    Uses parent_company, ein, parent_iusa, and franchise fields to identify
+    DSO-affiliated practices that name-matching alone would miss.
+    """
+    from collections import defaultdict
+    from rapidfuzz import fuzz as _fuzz
+    from scrapers.dso_classifier import KNOWN_DSOS
+    # PE_SPONSOR_MAP is defined at module level in this file (line ~221)
+
+    summary = {
+        "parent_matches": 0, "parent_unknown": 0,
+        "ein_clusters": 0, "ein_doors_propagated": 0,
+        "iusa_links": 0, "iusa_groups": 0,
+        "franchise_matches": 0,
+    }
+
+    sorted_dsos = sorted(KNOWN_DSOS, key=lambda x: len(x[0]), reverse=True)
+
+    def _match_known_dso(text_val):
+        if not text_val:
+            return None, None
+        text_lower = text_val.lower().strip()
+        if not text_lower:
+            return None, None
+        for pattern, canonical, pe_sponsor in sorted_dsos:
+            if pattern in text_lower:
+                return canonical, pe_sponsor
+        canonical_names = list({entry[1] for entry in KNOWN_DSOS})
+        for canonical in canonical_names:
+            score = _fuzz.token_sort_ratio(text_lower, canonical.lower())
+            if score >= 80:
+                pe = None
+                for _, c, p in KNOWN_DSOS:
+                    if c == canonical:
+                        pe = p
+                        break
+                return canonical, pe
+        return None, None
+
+    # 1. Parent Company Detection
+    for door in doors:
+        parent = (door.get("parent_company") or "").strip()
+        if not parent:
+            continue
+        canonical, pe_sponsor = _match_known_dso(parent)
+        if canonical:
+            if not pe_sponsor:
+                pe_sponsor = PE_SPONSOR_MAP.get(canonical)
+            status = "pe_backed" if pe_sponsor else "dso_affiliated"
+            door["ownership_status"] = status
+            door["affiliated_dso"] = canonical
+            door["affiliated_pe_sponsor"] = pe_sponsor
+            door["classification_confidence"] = 95
+            door["classification_reasoning"] = (
+                f"Pass 6: parent_company '{parent}' matches known DSO '{canonical}'"
+            )
+            summary["parent_matches"] += 1
+        else:
+            door.setdefault("stealth_dso_signals", []).append(
+                f"corporate_parent_unknown: '{parent}'"
+            )
+            summary["parent_unknown"] += 1
+
+    # 2. EIN Clustering
+    ein_groups = defaultdict(list)
+    for i, door in enumerate(doors):
+        ein = (door.get("ein") or "").strip()
+        if ein:
+            ein_groups[ein].append(i)
+
+    for ein, indices in ein_groups.items():
+        if len(indices) < 3:
+            continue
+        summary["ein_clusters"] += 1
+        classified_status = None
+        classified_dso = None
+        classified_pe = None
+        for idx in indices:
+            d = doors[idx]
+            if d.get("ownership_status") in ("dso_affiliated", "pe_backed"):
+                classified_status = d["ownership_status"]
+                classified_dso = d.get("affiliated_dso")
+                classified_pe = d.get("affiliated_pe_sponsor")
+                break
+        for idx in indices:
+            d = doors[idx]
+            d.setdefault("stealth_dso_signals", []).append(f"ein_cluster_{len(indices)} (EIN {ein})")
+            d["_ein_corporate"] = True
+            d["_ein_door_count"] = len(indices)
+            if classified_status and d.get("ownership_status") not in ("dso_affiliated", "pe_backed"):
+                d["ownership_status"] = classified_status
+                d["affiliated_dso"] = classified_dso
+                d["affiliated_pe_sponsor"] = classified_pe
+                d["classification_confidence"] = 85
+                d["classification_reasoning"] = (
+                    f"Pass 6: EIN {ein} shared with {len(indices)} doors; "
+                    f"propagated '{classified_status}'"
+                    + (f" (DSO: {classified_dso})" if classified_dso else "")
+                )
+                summary["ein_doors_propagated"] += 1
+
+    # 3. IUSA Parent Linkage
+    iusa_index = {}
+    for i, door in enumerate(doors):
+        iusa = (door.get("iusa_number") or "").strip()
+        if iusa:
+            iusa_index[iusa] = i
+
+    for i, door in enumerate(doors):
+        parent_iusa = (door.get("parent_iusa") or "").strip()
+        if not parent_iusa:
+            continue
+        parent_idx = iusa_index.get(parent_iusa)
+        if parent_idx is not None:
+            parent_door = doors[parent_idx]
+            if parent_door.get("ownership_status") in ("dso_affiliated", "pe_backed"):
+                if door.get("ownership_status") not in ("dso_affiliated", "pe_backed"):
+                    door["ownership_status"] = parent_door["ownership_status"]
+                    door["affiliated_dso"] = parent_door.get("affiliated_dso")
+                    door["affiliated_pe_sponsor"] = parent_door.get("affiliated_pe_sponsor")
+                    door["classification_confidence"] = 85
+                    door["classification_reasoning"] = (
+                        f"Pass 6: parent_iusa {parent_iusa} links to classified parent"
+                    )
+                    summary["iusa_links"] += 1
+            door.setdefault("stealth_dso_signals", []).append(
+                f"parent_iusa links to '{parent_door.get('practice_name', '?')}'"
+            )
+
+    parent_iusa_groups = defaultdict(list)
+    for i, door in enumerate(doors):
+        piusa = (door.get("parent_iusa") or "").strip()
+        if piusa:
+            parent_iusa_groups[piusa].append(i)
+    for piusa, indices in parent_iusa_groups.items():
+        if len(indices) >= 3:
+            summary["iusa_groups"] += 1
+            for idx in indices:
+                doors[idx].setdefault("stealth_dso_signals", []).append(
+                    f"parent_iusa_group_{len(indices)} ({piusa})")
+
+    # 4. Franchise Detection
+    for door in doors:
+        franchise = (door.get("franchise") or "").strip()
+        if not franchise:
+            continue
+        canonical, pe_sponsor = _match_known_dso(franchise)
+        if canonical:
+            if not pe_sponsor:
+                pe_sponsor = PE_SPONSOR_MAP.get(canonical)
+            status = "pe_backed" if pe_sponsor else "dso_affiliated"
+            if door.get("ownership_status") not in ("dso_affiliated", "pe_backed"):
+                door["ownership_status"] = status
+                door["affiliated_dso"] = canonical
+                door["affiliated_pe_sponsor"] = pe_sponsor
+                door["classification_confidence"] = 95
+                door["classification_reasoning"] = (
+                    f"Pass 6: franchise '{franchise}' matches known DSO '{canonical}'"
+                )
+                summary["franchise_matches"] += 1
+
+    logger.info(
+        "Pass 6: %d parent company matches, %d parent unknowns, "
+        "%d EIN clusters (%d propagated), %d IUSA links (%d groups), "
+        "%d franchise matches",
+        summary["parent_matches"], summary["parent_unknown"],
+        summary["ein_clusters"], summary["ein_doors_propagated"],
+        summary["iusa_links"], summary["iusa_groups"],
+        summary["franchise_matches"],
+    )
+    return summary
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -886,6 +1199,41 @@ def classify_door(door, all_doors=None):
     for pe_name in PE_SPONSOR_NAMES:
         if pe_name.lower() in combined:
             return "pe_backed", None, pe_name, 90, f"PE sponsor name '{pe_name}' in company name"
+
+    # ── Rule 1b: Franchise name (confidence 95%) — most reliable after name ──
+    franchise = (door.get("franchise") or "").strip()
+    if franchise:
+        # Check franchise against known DSO list
+        fr_status, fr_dso, fr_pe, fr_conf, fr_reason = classify_practice(franchise, "")
+        if fr_status in ("pe_backed", "dso_affiliated"):
+            if fr_dso and not fr_pe:
+                fr_pe = PE_SPONSOR_MAP.get(fr_dso)
+                if fr_pe:
+                    fr_status = "pe_backed"
+            return fr_status, fr_dso, fr_pe, 95, f"Franchise '{franchise}' matches DSO: {fr_reason}"
+        # If franchise name doesn't match known DSO but is non-empty,
+        # it's still a franchise = corporate entity
+        return "dso_affiliated", franchise, None, 90, f"Franchise flag: '{franchise}'"
+
+    # ── Rule 1c: Parent company (confidence 90%) ─────────────────────────────
+    parent = (door.get("parent_company") or "").strip()
+    if parent:
+        # Check parent against known DSO list
+        p_status, p_dso, p_pe, p_conf, p_reason = classify_practice(parent, "")
+        if p_status in ("pe_backed", "dso_affiliated"):
+            if p_dso and not p_pe:
+                p_pe = PE_SPONSOR_MAP.get(p_dso)
+                if p_pe:
+                    p_status = "pe_backed"
+            return p_status, p_dso, p_pe, 90, f"Parent company '{parent}' matches DSO: {p_reason}"
+        # Non-empty parent company = corporate subsidiary
+        return "dso_affiliated", parent, None, 90, f"Parent company: '{parent}'"
+
+    # ── Rule 1d: EIN-based corporate detection (set in classify_all_doors) ───
+    if door.get("_ein_corporate"):
+        ein_count = door.get("_ein_door_count", 0)
+        return ("dso_affiliated", None, None, 75,
+                f"EIN {door.get('ein', '?')} shared across {ein_count} doors — corporate entity")
 
     # ── Rule 2: Stealth DSO signals (confidence 60-80%) ───────────────────
     signals = door.get("stealth_dso_signals", [])
@@ -935,7 +1283,27 @@ def classify_door(door, all_doors=None):
 
 
 def classify_all_doors(doors):
-    """Run classification on all doors."""
+    """Run classification on all doors.
+
+    Pre-computes EIN-based corporate flags before per-door classification:
+    if the same EIN appears on 3+ doors, all those doors are flagged as
+    potential corporate entities.
+    """
+    # ── Pre-pass: EIN corporate detection ─────────────────────────────────
+    ein_counts = defaultdict(list)
+    for i, door in enumerate(doors):
+        ein = door.get("ein")
+        if ein:
+            ein_counts[ein].append(i)
+
+    for ein, indices in ein_counts.items():
+        if len(indices) >= 3:
+            log.info("EIN %s appears on %d doors — flagging as corporate entity", ein, len(indices))
+            for idx in indices:
+                doors[idx]["_ein_corporate"] = True
+                doors[idx]["_ein_door_count"] = len(indices)
+
+    # ── Per-door classification ───────────────────────────────────────────
     summary = {"pe_backed": 0, "dso_affiliated": 0, "independent": 0, "unknown": 0}
     for door in doors:
         status, dso_name, pe_sponsor, conf, reasoning = classify_door(door, doors)
@@ -1152,6 +1520,12 @@ def ensure_data_axle_columns(engine):
         ("data_axle_import_date", "DATE"),
         ("raw_record_count", "INTEGER"),
         ("import_batch_id", "TEXT"),
+        ("parent_company", "TEXT"),
+        ("parent_iusa", "TEXT"),
+        ("ein", "TEXT"),
+        ("franchise_name", "TEXT"),
+        ("iusa_number", "TEXT"),
+        ("website", "TEXT"),
     ]
     with engine.connect() as conn:
         for col_name, col_type in new_cols:
@@ -1246,6 +1620,11 @@ def upsert_doors_to_db(session, engine, doors, batch_id, today):
                     updates["num_providers"] = door["num_providers"]
                 if door["location_type"]:
                     updates["location_type"] = door["location_type"]
+                # Only set lat/lon if practice doesn't already have coordinates
+                if (door.get("latitude") is not None and door.get("longitude") is not None
+                        and matched.latitude is None and matched.longitude is None):
+                    updates["latitude"] = door["latitude"]
+                    updates["longitude"] = door["longitude"]
                 updates["buyability_score"] = door["buyability_score"]
                 updates["buyability_confidence"] = door.get("buyability_confidence", 1)
                 updates["classification_confidence"] = door["classification_confidence"]
@@ -1254,6 +1633,19 @@ def upsert_doors_to_db(session, engine, doors, batch_id, today):
                 updates["data_axle_import_date"] = today.isoformat()
                 updates["raw_record_count"] = door["raw_record_count"]
                 updates["import_batch_id"] = batch_id
+                # Data Axle high-value fields
+                if door.get("parent_company"):
+                    updates["parent_company"] = door["parent_company"]
+                if door.get("parent_iusa"):
+                    updates["parent_iusa"] = door["parent_iusa"]
+                if door.get("ein"):
+                    updates["ein"] = door["ein"]
+                if door.get("franchise"):
+                    updates["franchise_name"] = door["franchise"]
+                if door.get("iusa_number"):
+                    updates["iusa_number"] = door["iusa_number"]
+                if door.get("website"):
+                    updates["website"] = door["website"]
 
                 # Update ownership if Data Axle is more specific
                 if (door["ownership_status"] in ("dso_affiliated", "pe_backed") and
@@ -1294,6 +1686,8 @@ def upsert_doors_to_db(session, engine, doors, batch_id, today):
                         "state": door["state"],
                         "zip": door["zip"],
                         "phone": door["phone"],
+                        "latitude": door.get("latitude"),
+                        "longitude": door.get("longitude"),
                         "ownership_status": door["ownership_status"],
                         "affiliated_dso": door["affiliated_dso"],
                         "affiliated_pe_sponsor": door["affiliated_pe_sponsor"],
@@ -1310,6 +1704,12 @@ def upsert_doors_to_db(session, engine, doors, batch_id, today):
                         "data_axle_import_date": today.isoformat(),
                         "raw_record_count": door["raw_record_count"],
                         "import_batch_id": batch_id,
+                        "parent_company": door.get("parent_company"),
+                        "parent_iusa": door.get("parent_iusa"),
+                        "ein": door.get("ein"),
+                        "franchise_name": door.get("franchise"),
+                        "iusa_number": door.get("iusa_number"),
+                        "website": door.get("website"),
                     }
                     set_clauses = ", ".join(f"{k} = :{k}" for k in updates)
                     updates["npi"] = npi
@@ -1327,20 +1727,26 @@ def upsert_doors_to_db(session, engine, doors, batch_id, today):
                     session.execute(
                         text("""INSERT INTO practices
                             (npi, practice_name, doing_business_as, address, city,
-                             state, zip, phone, ownership_status, affiliated_dso,
+                             state, zip, phone, latitude, longitude,
+                             ownership_status, affiliated_dso,
                              affiliated_pe_sponsor, data_source, employee_count,
                              estimated_revenue, year_established, num_providers,
                              location_type, buyability_score, classification_confidence,
                              classification_reasoning, data_axle_raw_name,
-                             data_axle_import_date, raw_record_count, import_batch_id)
+                             data_axle_import_date, raw_record_count, import_batch_id,
+                             parent_company, parent_iusa, ein, franchise_name,
+                             iusa_number, website)
                             VALUES
                             (:npi, :practice_name, :dba, :address, :city,
-                             :state, :zip, :phone, :ownership_status, :affiliated_dso,
+                             :state, :zip, :phone, :latitude, :longitude,
+                             :ownership_status, :affiliated_dso,
                              :pe_sponsor, :data_source, :employee_count,
                              :estimated_revenue, :year_established, :num_providers,
                              :location_type, :buyability_score, :classification_confidence,
                              :classification_reasoning, :data_axle_raw_name,
-                             :import_date, :raw_record_count, :import_batch_id)"""),
+                             :import_date, :raw_record_count, :import_batch_id,
+                             :parent_company, :parent_iusa, :ein, :franchise_name,
+                             :iusa_number, :website)"""),
                         {
                             "npi": npi,
                             "practice_name": door["practice_name"],
@@ -1350,6 +1756,8 @@ def upsert_doors_to_db(session, engine, doors, batch_id, today):
                             "state": door["state"],
                             "zip": door["zip"],
                             "phone": door["phone"],
+                            "latitude": door.get("latitude"),
+                            "longitude": door.get("longitude"),
                             "ownership_status": door["ownership_status"],
                             "affiliated_dso": door["affiliated_dso"],
                             "pe_sponsor": door["affiliated_pe_sponsor"],
@@ -1367,6 +1775,12 @@ def upsert_doors_to_db(session, engine, doors, batch_id, today):
                             "import_date": today.isoformat(),
                             "raw_record_count": door["raw_record_count"],
                             "import_batch_id": batch_id,
+                            "parent_company": door.get("parent_company"),
+                            "parent_iusa": door.get("parent_iusa"),
+                            "ein": door.get("ein"),
+                            "franchise_name": door.get("franchise"),
+                            "iusa_number": door.get("iusa_number"),
+                            "website": door.get("website"),
                         }
                     )
                     stats["new"] += 1
@@ -1406,10 +1820,27 @@ def detect_changes(session, doors, batch_id, today):
     watched = session.query(WatchedZip.zip_code).all()
     watched_zips = {z[0] for z in watched}
 
-    # Get previous DA records in watched ZIPs
-    if watched_zips:
-        zip_placeholders = ", ".join(f":z{i}" for i in range(len(watched_zips)))
-        zip_params = {f"z{i}": z for i, z in enumerate(watched_zips)}
+    # Determine which ZIPs are actually covered in the current batch.
+    # Only flag closures for practices in these ZIPs — practices in other
+    # watched ZIPs that weren't part of this geographic batch are NOT closed,
+    # they just weren't included in this export.
+    batch_zips = {door["zip"] for door in doors if door.get("zip")}
+    closure_zips = watched_zips & batch_zips  # only ZIPs in both sets
+
+    skipped_zips = watched_zips - batch_zips
+    if skipped_zips:
+        log.warning(
+            "Closure detection: skipping %d watched ZIPs not in current batch "
+            "(geographic coverage gap, not closures): %s",
+            len(skipped_zips),
+            ", ".join(sorted(skipped_zips)[:20])
+            + (" ..." if len(skipped_zips) > 20 else ""),
+        )
+
+    # Get previous DA records only in ZIPs covered by this batch
+    if closure_zips:
+        zip_placeholders = ", ".join(f":z{i}" for i in range(len(closure_zips)))
+        zip_params = {f"z{i}": z for i, z in enumerate(closure_zips)}
         zip_params["batch_id"] = batch_id
         prev_records = session.execute(
             text(f"""SELECT npi, practice_name, address, zip, import_batch_id
@@ -1428,7 +1859,7 @@ def detect_changes(session, doors, batch_id, today):
         if door["zip"] in watched_zips:
             current_keys.add((door["normalized_address"], door["zip"]))
 
-    # Check for closures
+    # Check for closures — only among practices whose ZIP was covered by this batch
     for row in prev_records:
         prev_npi, prev_name, prev_addr, prev_zip, prev_batch = row
         prev_norm = normalize_address(prev_addr or "")
@@ -1852,6 +2283,12 @@ Step 3: Export
     * Number of Locations or Location Type
     * Contact Name and Title
     * Latitude and Longitude (for future mapping)
+    * Parent Company Name (identifies DSO parent companies)
+    * Parent IUSA Number (links branches to parent companies)
+    * EIN / Employer ID Number (same EIN = same legal entity)
+    * Franchise Description (definitive DSO indicator)
+    * IUSA Number (unique Data Axle business ID)
+    * Website / URL (practice enrichment)
   - Download the CSV
 
 Step 4: Import

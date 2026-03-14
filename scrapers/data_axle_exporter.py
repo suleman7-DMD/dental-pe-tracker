@@ -526,13 +526,16 @@ def run_export(metro_label, batches, start_batch=0, downloaded_files=None):
         # Check result count
         print()
         result_input = input(f"    How many results? (press Enter to skip, or type number): ").strip()
+        is_overflow = False
         if result_input.isdigit():
             result_count = int(result_input)
             pages = math.ceil(result_count / 25)
             if result_count > 250:
-                suggested = max(1, len(batch) - 1)
-                warn(f"{result_count} results > 250 limit! Try --batch-size {suggested}")
-                warn("You'll need to download in two passes for this batch, or reduce batch size.")
+                is_overflow = True
+                num_downloads = math.ceil(result_count / 250)
+                warn(f"{result_count} results > 250 limit!")
+                ok(f"No worries — you'll do {num_downloads} downloads for this batch.")
+                ok(f"Download records 1-250 first, then 251-{result_count}.")
             else:
                 ok(f"{result_count} results across {pages} pages — fits in one download!")
         print()
@@ -553,54 +556,69 @@ def run_export(metro_label, batches, start_batch=0, downloaded_files=None):
             print(f"   4. Same fields as before (should be remembered)")
             print(f"   5. Click 'Download Records'")
 
-        # Snapshot the directory before download
-        before_files = set(os.listdir(BASE_DIR))
+        # Determine how many download passes for this batch
+        download_passes = (math.ceil(result_count / 250) if is_overflow else 1)
 
-        print()
-        bold("Press Enter AFTER the file has finished downloading...")
-        input("    >>> ")
+        for dl_pass in range(download_passes):
+            pass_label = f" (part {dl_pass + 1}/{download_passes})" if download_passes > 1 else ""
 
-        # Try to find the new file
-        new_file = find_new_csv(before_files)
-        if new_file:
-            # Rename with meaningful name
-            ext = os.path.splitext(new_file)[1]
-            new_name = f"data_axle_{metro_label}_batch{batch_num:02d}_{datetime.now().strftime('%Y%m%d')}{ext}"
-            dest = os.path.join(BASE_DIR, new_name)
+            if dl_pass > 0:
+                divider()
+                bold(f"OVERFLOW DOWNLOAD — part {dl_pass + 1}/{download_passes}")
+                ok(f"Download the next 250 records (or remaining) for this same batch.")
+                bold("Press Enter AFTER the file has finished downloading...")
+                input("    >>> ")
+            else:
+                # Snapshot the directory before download
+                print()
+                bold(f"Press Enter AFTER the file has finished downloading{pass_label}...")
+                input("    >>> ")
 
-            # Don't overwrite if dest exists
-            if os.path.exists(dest):
-                new_name = f"data_axle_{metro_label}_batch{batch_num:02d}_{datetime.now().strftime('%Y%m%d_%H%M')}{ext}"
+            before_files = set(os.listdir(BASE_DIR))
+
+            # Try to find the new file
+            new_file = find_new_csv(before_files)
+            if new_file:
+                # Rename with meaningful name
+                ext = os.path.splitext(new_file)[1]
+                part_suffix = f"_p{dl_pass + 1}" if download_passes > 1 else ""
+                new_name = f"data_axle_{metro_label}_batch{batch_num:02d}{part_suffix}_{datetime.now().strftime('%Y%m%d')}{ext}"
                 dest = os.path.join(BASE_DIR, new_name)
 
-            shutil.move(new_file, dest)
-            downloaded_files.append(dest)
+                # Don't overwrite if dest exists
+                if os.path.exists(dest):
+                    new_name = f"data_axle_{metro_label}_batch{batch_num:02d}{part_suffix}_{datetime.now().strftime('%Y%m%d_%H%M')}{ext}"
+                    dest = os.path.join(BASE_DIR, new_name)
 
-            # Count rows
-            try:
-                with open(dest) as fh:
-                    row_count = sum(1 for _ in fh) - 1
-                ok(f"Saved: {new_name} ({row_count} rows)")
-            except Exception:
-                ok(f"Saved: {new_name}")
-        else:
-            warn("Could not auto-detect downloaded file.")
-            print(f"    Check ~/Downloads/ for the latest Detail*.csv")
-            manual = input(f"    Enter filename (or press Enter to skip): ").strip()
-            if manual:
-                for search_dir in [os.path.expanduser("~/Downloads"), BASE_DIR]:
-                    candidate = os.path.join(search_dir, manual)
-                    if os.path.exists(candidate):
-                        new_name = f"data_axle_{metro_label}_batch{batch_num:02d}_{datetime.now().strftime('%Y%m%d')}.csv"
-                        dest = os.path.join(BASE_DIR, new_name)
-                        shutil.move(candidate, dest)
-                        downloaded_files.append(dest)
-                        ok(f"Moved: {new_name}")
-                        break
-                else:
-                    warn(f"File not found: {manual}")
+                shutil.move(new_file, dest)
+                downloaded_files.append(dest)
+
+                # Count rows
+                try:
+                    with open(dest) as fh:
+                        row_count = sum(1 for _ in fh) - 1
+                    ok(f"Saved: {new_name} ({row_count} rows)")
+                except Exception:
+                    ok(f"Saved: {new_name}")
             else:
-                warn("Skipped. You can re-export this batch later with --resume")
+                warn("Could not auto-detect downloaded file.")
+                print(f"    Check ~/Downloads/ for the latest Detail*.csv")
+                manual = input(f"    Enter filename (or press Enter to skip): ").strip()
+                if manual:
+                    for search_dir in [os.path.expanduser("~/Downloads"), BASE_DIR]:
+                        candidate = os.path.join(search_dir, manual)
+                        if os.path.exists(candidate):
+                            part_suffix = f"_p{dl_pass + 1}" if download_passes > 1 else ""
+                            new_name = f"data_axle_{metro_label}_batch{batch_num:02d}{part_suffix}_{datetime.now().strftime('%Y%m%d')}.csv"
+                            dest = os.path.join(BASE_DIR, new_name)
+                            shutil.move(candidate, dest)
+                            downloaded_files.append(dest)
+                            ok(f"Moved: {new_name}")
+                            break
+                    else:
+                        warn(f"File not found: {manual}")
+                else:
+                    warn("Skipped. You can re-export this batch later with --resume")
 
         # Save progress
         save_progress(metro_label, batch_idx + 1, downloaded_files)
