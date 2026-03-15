@@ -4,6 +4,13 @@ LOGFILE=~/dental-pe-tracker/logs/refresh_$(date +%Y-%m-%d_%H%M).log
 PROJECT=~/dental-pe-tracker
 PYTHON=/usr/local/bin/python3
 
+# Load environment variables
+if [ -f "$PROJECT/.env" ]; then
+    set -a
+    source "$PROJECT/.env"
+    set +a
+fi
+
 echo "==========================================" | tee -a "$LOGFILE"
 echo "  DENTAL PE TRACKER — FULL REFRESH"        | tee -a "$LOGFILE"
 echo "  Started: $(date)"                         | tee -a "$LOGFILE"

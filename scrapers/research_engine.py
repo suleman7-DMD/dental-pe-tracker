@@ -33,7 +33,7 @@ DEFAULT_MODEL = MODEL_HAIKU
 
 MAX_TOKENS_HAIKU = 3000
 MAX_TOKENS_SONNET = 4096
-MIN_REQUEST_INTERVAL = 15.0
+MIN_REQUEST_INTERVAL = 30.0
 DEFAULT_CACHE_TTL_DAYS = 90
 
 _last_req_time = 0.0
@@ -70,7 +70,7 @@ Return ONLY raw JSON, same structure as input but with deeper verified data.
 Add "escalation_findings" key with new discoveries."""
 
 
-CIRCUIT_BREAKER_THRESHOLD = 3  # Consecutive failures before aborting
+CIRCUIT_BREAKER_THRESHOLD = 10  # Consecutive failures before aborting
 
 
 class CircuitBreakerOpen(Exception):

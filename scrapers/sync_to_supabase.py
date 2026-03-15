@@ -18,6 +18,22 @@ import os
 import sys
 from datetime import datetime, date
 
+sys.path.insert(0, os.path.expanduser("~/dental-pe-tracker"))
+
+_env_file = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '.env')
+try:
+    from dotenv import load_dotenv
+    load_dotenv(_env_file)
+except ImportError:
+    # Fallback: manually parse .env if python-dotenv not installed
+    if os.path.isfile(_env_file):
+        with open(_env_file) as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith('#') and '=' in line:
+                    k, v = line.split('=', 1)
+                    os.environ.setdefault(k.strip(), v.strip())
+
 from sqlalchemy import create_engine, text, inspect
 from sqlalchemy.orm import sessionmaker
 

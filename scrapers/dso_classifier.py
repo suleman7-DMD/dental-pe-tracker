@@ -13,7 +13,7 @@ import argparse
 import os
 import re
 import sys
-from datetime import date
+from datetime import date, datetime
 
 sys.path.insert(0, os.path.expanduser("~/dental-pe-tracker"))
 
@@ -398,6 +398,7 @@ def _flush_updates(session, pending_updates, pending_changes):
         fields = {k: v for k, v in upd.items() if k != "npi"}
         if not fields:
             continue
+        fields["updated_at"] = datetime.now()
         set_clause = ", ".join(f"{k} = :{k}" for k in fields)
         params = dict(fields)
         params["npi"] = upd["npi"]
