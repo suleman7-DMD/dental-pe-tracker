@@ -252,7 +252,7 @@ Single-file dashboard at `dashboard/app.py` (2,583 lines, 6 pages). Still live a
 ## Automated Pipeline
 
 Cron runs every Sunday 8am (`scrapers/refresh.sh`):
-1. Backup DB → 2. PESP scraper → 3. GDN scraper → 4. PitchBook importer → 5. ADSO scraper → 6. ADA HPI downloader → 7. DSO classifier → 8. Merge & score → 9. Compress DB + git push
+1. Backup DB → 2. PESP scraper → 3. GDN scraper → 4. PitchBook importer → 5. ADSO scraper → 6. ADA HPI downloader → 7. DSO classifier → 8. Merge & score → 9. Weekly qualitative research ($5 budget cap) → 10. Sync to Supabase → Compress DB + git push
 
 Monthly NPPES refresh (first Sunday 6am): downloads federal provider data updates.
 
@@ -330,6 +330,11 @@ After pipeline runs, `scrapers/sync_to_supabase.py` pushes updated data to Supab
 | `scrapers/ada_hpi_importer.py` | 351 | Parses ADA HPI XLSX by state/career stage |
 | `scrapers/pitchbook_importer.py` | 616 | CSV/XLSX import from PitchBook deal/company search |
 | `scrapers/data_axle_exporter.py` | 805 | Interactive ZIP-batch export tool (7 Chicagoland zones + Boston) |
+| `scrapers/research_engine.py` | 400 | Core Anthropic API client (Haiku/Sonnet, web search, batch API, circuit breaker) |
+| `scrapers/intel_database.py` | 266 | CRUD for intel tables (SQLAlchemy sessions, 90-day cache TTL) |
+| `scrapers/qualitative_scout.py` | 380 | CLI: ZIP-level market research via Claude API |
+| `scrapers/practice_deep_dive.py` | 577 | CLI: Practice-level due diligence (two-pass Haiku→Sonnet) |
+| `scrapers/weekly_research.py` | 309 | Automated weekly research runner (batch API, budget caps) |
 | `scrapers/pipeline_logger.py` | 295 | Structured JSON-Lines event logger |
 | `pipeline_check.py` | 540 | Diagnostic health check tool |
 
@@ -477,6 +482,7 @@ python3 scrapers/weekly_research.py --dry-run               # Preview queue
 - Cache TTL is 90 days — don't re-research fresh data unless `--refresh` flag is passed
 - Intel tables sync via `full_replace` — safe to overwrite on each sync run
 - `research_engine.py` uses raw HTTP `requests`, NOT the `anthropic` Python SDK (fewer dependencies, faster cold starts)
+- Circuit breaker: 3 consecutive API failures → `CircuitBreakerOpen` exception aborts remaining items (prevents 290 items x 120s timeout = 9.6hr hang if Anthropic is down)
 
 ## Skills Available
 

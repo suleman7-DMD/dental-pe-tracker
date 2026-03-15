@@ -28,12 +28,13 @@ A data-driven intelligence platform that tracks private equity consolidation in 
 16. [Useful SQL Queries](#useful-sql-queries)
 17. [Entity Classification System](#entity-classification-system)
 18. [Saturation Metrics](#saturation-metrics)
-19. [Feature Add-Ons via Claude Code](#feature-add-ons-via-claude-code)
-20. [Quarterly System Health Check](#quarterly-system-health-check)
-21. [Emergency: If Something Breaks](#emergency-if-something-breaks)
-22. [Known Issues (Resolved)](#known-issues-resolved)
-23. [Annual Maintenance Calendar](#annual-maintenance-calendar)
-24. [Quick Command Cheat Sheet](#quick-command-cheat-sheet)
+19. [Qualitative Intelligence Layer](#qualitative-intelligence-layer)
+20. [Feature Add-Ons via Claude Code](#feature-add-ons-via-claude-code)
+21. [Quarterly System Health Check](#quarterly-system-health-check)
+22. [Emergency: If Something Breaks](#emergency-if-something-breaks)
+23. [Known Issues (Resolved)](#known-issues-resolved)
+24. [Annual Maintenance Calendar](#annual-maintenance-calendar)
+25. [Quick Command Cheat Sheet](#quick-command-cheat-sheet)
 
 ---
 
@@ -258,8 +259,9 @@ Your Mac has a cron job that runs every Sunday at 8:00 AM. It automatically:
 6. Checks **ADA HPI** for new annual data files (auto-downloads when available)
 7. Runs the **DSO classifier** to tag new practices
 8. Recalculates **consolidation scores** for all 290 ZIP codes
-9. **Syncs to Supabase** (feeds the Next.js dashboard)
-10. **Compresses DB + git pushes** to auto-deploy to Streamlit Cloud
+9. Runs **weekly qualitative research** — AI-powered market intel + practice due diligence via Claude API ($5/week budget cap, circuit breaker after 3 consecutive failures)
+10. **Syncs to Supabase** (feeds the Next.js dashboard)
+11. **Compresses DB + git pushes** to auto-deploy to Streamlit Cloud
 
 Every step logs a structured event to `logs/pipeline_events.jsonl` with timestamp, duration, records processed, and a summary of what changed. View these on the **System** page under "Pipeline Activity Log".
 
@@ -974,6 +976,55 @@ For each watched ZIP with Census data (279 of 290), the system computes market s
 
 ---
 
+## Qualitative Intelligence Layer
+
+AI-powered research that layers qualitative signals on top of quantitative pipeline data. Uses Claude API with web search to gather market intelligence and practice due diligence — fully integrated into the weekly pipeline.
+
+### How It Works
+
+| Tool | What It Does | Cost |
+|------|-------------|------|
+| **ZIP Scout** | Researches a ZIP code for housing, schools, retail, dental competitors, real estate, zoning, population trends, employers | ~$0.06-0.11/ZIP |
+| **Practice Deep Dive** | Due diligence on individual practices — website, Google reviews, hiring signals, technology, insurance, red/green flags, acquisition readiness | ~$0.06-0.10/practice |
+| **Two-Pass Escalation** | Haiku scans all practices, then Sonnet deep-dives on high-value targets (high/medium readiness + low confidence, or 3+ green flags) | ~$0.28/escalation |
+| **Weekly Automation** | Runs in the pipeline (step 9/10). Researches new ZIPs, refreshes stale data (>90 days), scans top unresearched practices. $5/week budget cap. | ~$12-18/month |
+
+### Safety Features
+
+- **Circuit breaker:** 3 consecutive API failures → aborts remaining items (prevents 9.6-hour hang if Anthropic is down)
+- **Budget cap:** Weekly runner stops when estimated spend exceeds limit (default $5)
+- **90-day cache:** Won't re-research fresh data unless `--refresh` flag is passed
+- **Never fabricates:** Prompts instruct "return null, never fabricate"
+- **Gated in pipeline:** Only runs if `ANTHROPIC_API_KEY` env var is set
+
+### Commands
+
+```bash
+# ZIP research
+cd ~/dental-pe-tracker && python3 scrapers/qualitative_scout.py --zip 60491
+cd ~/dental-pe-tracker && python3 scrapers/qualitative_scout.py --metro chicagoland
+cd ~/dental-pe-tracker && python3 scrapers/qualitative_scout.py --status
+cd ~/dental-pe-tracker && python3 scrapers/qualitative_scout.py --report 60491
+
+# Practice research
+cd ~/dental-pe-tracker && python3 scrapers/practice_deep_dive.py --zip 60491 --top 10 --deep
+cd ~/dental-pe-tracker && python3 scrapers/practice_deep_dive.py --npi 1234567890
+cd ~/dental-pe-tracker && python3 scrapers/practice_deep_dive.py --status
+
+# Weekly automation
+cd ~/dental-pe-tracker && python3 scrapers/weekly_research.py --budget 5
+cd ~/dental-pe-tracker && python3 scrapers/weekly_research.py --dry-run
+```
+
+### Data Tables
+
+- **`zip_qualitative_intel`** — One row per researched ZIP. Signals: housing, schools, retail, commercial, dental news, real estate, zoning, population, employers, competitors. Synthesis: demand/supply outlook, investment thesis, confidence.
+- **`practice_intel`** — One row per researched practice (by NPI). Signals: website analysis, Google reviews, hiring, technology, acquisition news, social media, insurance. Assessment: red/green flags, acquisition readiness, confidence.
+
+Both tables sync to Supabase via `full_replace` strategy.
+
+---
+
 ## Feature Add-Ons via Claude Code
 
 These are copy-paste prompts you can drop into Claude Code to extend the system. No coding knowledge needed — just paste and let Claude do the work.
@@ -1314,6 +1365,23 @@ cd ~/dental-pe-tracker && python3 scrapers/ada_hpi_importer.py
 
 # Run ADSO location scraper
 cd ~/dental-pe-tracker && python3 scrapers/adso_location_scraper.py
+
+# ── Qualitative Intelligence ──────────────────────────────
+# Research a ZIP code (market signals, dental competitors, investment thesis)
+cd ~/dental-pe-tracker && python3 scrapers/qualitative_scout.py --zip 60491
+
+# Research top 10 practices in a ZIP (due diligence, acquisition readiness)
+cd ~/dental-pe-tracker && python3 scrapers/practice_deep_dive.py --zip 60491 --top 10
+
+# Two-pass deep dive (Haiku scan → Sonnet escalation on high-value targets)
+cd ~/dental-pe-tracker && python3 scrapers/practice_deep_dive.py --zip 60491 --top 10 --deep
+
+# Check research coverage
+cd ~/dental-pe-tracker && python3 scrapers/qualitative_scout.py --status
+cd ~/dental-pe-tracker && python3 scrapers/practice_deep_dive.py --status
+
+# Weekly research dry run (see what would be researched, no API calls)
+cd ~/dental-pe-tracker && python3 scrapers/weekly_research.py --dry-run
 
 # ── Logs & Monitoring ─────────────────────────────────────
 # View pipeline activity log (structured events from all scrapers)

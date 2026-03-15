@@ -30,6 +30,10 @@ DB_PATH = os.path.join(BASE_DIR, "data", "dental_pe_tracker.db")
 DB_GZ_PATH = DB_PATH + ".gz"
 BACKUP_DIR = os.path.join(BASE_DIR, "backups")
 
+# Postgres dual-mode support: only active when both URL and USE_POSTGRES flag are set
+_POSTGRES_URL = os.environ.get("SUPABASE_DATABASE_URL") or os.environ.get("DATABASE_URL")
+_USE_POSTGRES = bool(_POSTGRES_URL) and os.environ.get("USE_POSTGRES", "").lower() in ("1", "true", "yes")
+
 
 def _ensure_db_decompressed():
     """If only the .gz file exists (e.g. Streamlit Cloud), decompress it."""
@@ -286,7 +290,7 @@ class WatchedZip(Base):
     __tablename__ = "watched_zips"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    zip_code = Column(Text, nullable=False)
+    zip_code = Column(Text, nullable=False, unique=True)
     city = Column(Text)
     state = Column(Text)
     metro_area = Column(Text)
@@ -298,35 +302,188 @@ class WatchedZip(Base):
     demographics_updated_at = Column(DateTime, nullable=True)
 
 
+class ZipQualitativeIntel(Base):
+    __tablename__ = "zip_qualitative_intel"
+
+    zip_code = Column(Text, ForeignKey("watched_zips.zip_code"), primary_key=True)
+    research_date = Column(Text, nullable=False)
+    # Housing & Development
+    housing_status = Column(Text)
+    housing_developments = Column(Text)
+    housing_summary = Column(Text)
+    # Schools
+    school_district = Column(Text)
+    school_rating = Column(Text)
+    school_source = Column(Text)
+    school_note = Column(Text)
+    # Retail & Income Signals
+    retail_premium = Column(Text)
+    retail_mass = Column(Text)
+    retail_income_signal = Column(Text)
+    # Commercial Development
+    commercial_status = Column(Text)
+    commercial_projects = Column(Text)
+    commercial_note = Column(Text)
+    # Dental-Specific News
+    dental_new_offices = Column(Text)
+    dental_dso_moves = Column(Text)
+    dental_note = Column(Text)
+    # Real Estate
+    median_home_price = Column(Integer)
+    home_price_trend = Column(Text)
+    home_price_yoy_pct = Column(Float)
+    real_estate_source = Column(Text)
+    # Zoning & Planning
+    zoning_items = Column(Text)
+    zoning_note = Column(Text)
+    # Population Signals
+    pop_growth_signals = Column(Text)
+    pop_demographics = Column(Text)
+    pop_note = Column(Text)
+    # Employment & Insurance
+    major_employers = Column(Text)
+    insurance_signal = Column(Text)
+    # Competition
+    competitor_new = Column(Text)
+    competitor_closures = Column(Text)
+    competitor_note = Column(Text)
+    # Synthesis
+    demand_outlook = Column(Text)
+    supply_outlook = Column(Text)
+    investment_thesis = Column(Text)
+    confidence = Column(Text)
+    sources = Column(Text)
+    # Metadata
+    research_method = Column(Text)
+    raw_json = Column(Text)
+    cost_usd = Column(Float)
+    model_used = Column(Text)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+
+class PracticeIntel(Base):
+    __tablename__ = "practice_intel"
+
+    npi = Column(Text, ForeignKey("practices.npi"), primary_key=True)
+    research_date = Column(Text, nullable=False)
+    # Website Analysis
+    website_url = Column(Text)
+    website_era = Column(Text)
+    website_last_update = Column(Text)
+    website_analysis = Column(Text)
+    # Services & Technology
+    services_listed = Column(Text)
+    services_high_rev = Column(Text)
+    services_note = Column(Text)
+    technology_listed = Column(Text)
+    technology_level = Column(Text)
+    # Provider Info
+    provider_count_web = Column(Integer)
+    owner_career_stage = Column(Text)
+    provider_notes = Column(Text)
+    # Google Reviews
+    google_review_count = Column(Integer)
+    google_rating = Column(Float)
+    google_recent_date = Column(Text)
+    google_velocity = Column(Text)
+    google_sentiment = Column(Text)
+    # Hiring Signals
+    hiring_active = Column(Integer, default=0)
+    hiring_positions = Column(Text)
+    hiring_source = Column(Text)
+    # Acquisition News
+    acquisition_found = Column(Integer, default=0)
+    acquisition_details = Column(Text)
+    # Social Media
+    social_facebook = Column(Text)
+    social_instagram = Column(Text)
+    social_other = Column(Text)
+    # Other Profiles
+    healthgrades_rating = Column(Float)
+    healthgrades_reviews = Column(Integer)
+    zocdoc_listed = Column(Integer, default=0)
+    # Doctor Profile
+    doctor_publications = Column(Integer, default=0)
+    doctor_speaking = Column(Integer, default=0)
+    doctor_associations = Column(Text)
+    doctor_notes = Column(Text)
+    # Insurance Signals
+    accepts_medicaid = Column(Integer)
+    ppo_heavy = Column(Integer)
+    insurance_note = Column(Text)
+    # Assessment
+    red_flags = Column(Text)
+    green_flags = Column(Text)
+    overall_assessment = Column(Text)
+    acquisition_readiness = Column(Text)
+    confidence = Column(Text)
+    sources = Column(Text)
+    # Metadata
+    research_method = Column(Text)
+    escalated = Column(Integer, default=0)
+    escalation_findings = Column(Text)
+    raw_json = Column(Text)
+    cost_usd = Column(Float)
+    model_used = Column(Text)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+
 # ── Engine / Session ────────────────────────────────────────────────────────
 
 
-def get_engine(db_path=None):
+def get_engine(db_path=None, force_postgres=False):
+    if force_postgres or (_USE_POSTGRES and db_path is None):
+        if not _POSTGRES_URL:
+            raise RuntimeError(
+                "Postgres requested but no SUPABASE_DATABASE_URL or DATABASE_URL set"
+            )
+        engine = create_engine(
+            _POSTGRES_URL,
+            pool_size=5,
+            max_overflow=10,
+            pool_timeout=30,
+            pool_recycle=1800,
+            pool_pre_ping=True,
+            echo=False,
+        )
+        return engine
     path = db_path or DB_PATH
     os.makedirs(os.path.dirname(path), exist_ok=True)
     engine = create_engine(f"sqlite:///{path}", echo=False)
     return engine
 
 
-def get_session(db_path=None) -> Session:
-    engine = get_engine(db_path)
+def get_session(db_path=None, force_postgres=False) -> Session:
+    engine = get_engine(db_path, force_postgres=force_postgres)
     SessionLocal = sessionmaker(bind=engine)
     return SessionLocal()
 
 
-def init_db(db_path=None):
+def init_db(db_path=None, force_postgres=False):
     """Create all tables, indexes, and populate watched_zips if empty."""
-    engine = get_engine(db_path)
+    engine = get_engine(db_path, force_postgres=force_postgres)
     Base.metadata.create_all(engine)
 
+    dialect = engine.dialect.name  # "sqlite" or "postgresql"
+
     with engine.connect() as conn:
-        # Partial unique index for deals dedup
-        conn.execute(__import__("sqlalchemy").text(
-            "CREATE UNIQUE INDEX IF NOT EXISTS uix_deal_no_dup "
-            "ON deals (platform_company, target_name, deal_date) "
-            "WHERE target_name IS NOT NULL"
-        ))
-        # Performance indexes
+        if dialect == "sqlite":
+            # Partial unique index for deals dedup (SQLite syntax)
+            conn.execute(__import__("sqlalchemy").text(
+                "CREATE UNIQUE INDEX IF NOT EXISTS uix_deal_no_dup "
+                "ON deals (platform_company, target_name, deal_date) "
+                "WHERE target_name IS NOT NULL"
+            ))
+        else:
+            # Postgres: CREATE INDEX IF NOT EXISTS works the same way
+            conn.execute(__import__("sqlalchemy").text(
+                "CREATE UNIQUE INDEX IF NOT EXISTS uix_deal_no_dup "
+                "ON deals (platform_company, target_name, deal_date) "
+                "WHERE target_name IS NOT NULL"
+            ))
+        # Performance indexes (syntax identical for SQLite and Postgres)
         conn.execute(__import__("sqlalchemy").text(
             "CREATE INDEX IF NOT EXISTS ix_practices_zip ON practices (zip)"
         ))
@@ -348,17 +505,37 @@ def init_db(db_path=None):
         conn.execute(__import__("sqlalchemy").text(
             "CREATE INDEX IF NOT EXISTS ix_deals_source ON deals (source)"
         ))
+        # Intel table indexes
+        conn.execute(__import__("sqlalchemy").text(
+            "CREATE INDEX IF NOT EXISTS idx_zip_intel_date ON zip_qualitative_intel(research_date)"
+        ))
+        conn.execute(__import__("sqlalchemy").text(
+            "CREATE INDEX IF NOT EXISTS idx_practice_intel_date ON practice_intel(research_date)"
+        ))
+        # Migrate existing intel tables (may lack new columns if created by old raw sqlite3 code)
+        for alter_stmt in [
+            "ALTER TABLE zip_qualitative_intel ADD COLUMN created_at TIMESTAMP",
+            "ALTER TABLE zip_qualitative_intel ADD COLUMN updated_at TIMESTAMP",
+            "ALTER TABLE practice_intel ADD COLUMN created_at TIMESTAMP",
+            "ALTER TABLE practice_intel ADD COLUMN updated_at TIMESTAMP",
+            "ALTER TABLE practice_intel ADD COLUMN escalation_findings TEXT",
+        ]:
+            try:
+                conn.execute(__import__("sqlalchemy").text(alter_stmt))
+            except Exception:
+                pass  # Column already exists
         conn.commit()
 
     # Seed watched_zips
-    session = get_session(db_path)
+    session = get_session(db_path, force_postgres=force_postgres)
     try:
         if session.query(WatchedZip).count() == 0:
             _seed_watched_zips(session)
     finally:
         session.close()
 
-    log.info("Database initialized at %s", db_path or DB_PATH)
+    target = "Postgres" if (force_postgres or (_USE_POSTGRES and db_path is None)) else (db_path or DB_PATH)
+    log.info("Database initialized at %s", target)
 
 
 def _seed_watched_zips(session: Session):
