@@ -306,16 +306,24 @@ After pipeline runs, `scrapers/sync_to_supabase.py` pushes updated data to Supab
 ### Bug fixes applied (March 2026) — do not regress
 - All KPI icons use Lucide JSX components (not strings)
 - Home page consolidatedPct includes % suffix
-- `getRetirementRiskCount` uses all 7 independent classifications globally (not just 3 solo types in watched ZIPs)
-- `getAcquisitionTargetCount` uses entity_classification with ownership_status fallback
-- Market Intel KPIs computed from entity_classification (server-side classificationCounts prop) — shows ~9.7% not 2.3%
-- ZIP Score table computes derived columns (consolidation %, independent %, unknown %, confidence, opportunity score) from existing ZipScore fields
+- `getRetirementRiskCount` filters by watched ZIPs + `year_established < 1995` + all 7 independent classifications (returns 226)
+- `getAcquisitionTargetCount` filters by watched ZIPs + `buyability_score >= 50` (returns 34)
+- `getPracticeStats` returns full `PracticeStats` with tiered corporate: `corporateHighConf` (262 = 1.9%), `corporate` (1,392 = 9.9%), `enriched` (2,992)
+- Market Intel KPIs computed from entity_classification (server-side classificationCounts prop) with tiered display
+- Job Market KPI shows tiered consolidation: "High-Confidence Corporate: 1.9%" primary, "All detected signals: 9.9%" secondary, "Industry estimate: 25-35%" subtitle
+- KpiCard component supports `subtitle` prop for tiered display
+- ZIP Score table uses `fmtPct` helper for percentage columns; confidence/opportunity_score renderers handle both cell-value and row-object patterns
 - City practice tree paginates within each ZIP chunk to avoid Supabase 1000-row limit
 - Consolidation map computes pct from corporate_share_pct * total_gp_locations
 - Opportunity signals icons are JSX components
-- DSO penetration table gets city names from watchedZips lookup
+- DSO penetration table gets city names from watchedZips lookup and corporate_share_pct from zip_scores
 - Job Market enrichment count uses `data_axle_import_date IS NOT NULL`
 - `scoring.ts` uses entity_classification with ownership_status fallback
+- `getPracticeCountsByStatus` uses entity_classification as primary with ownership_status fallback
+- SQL presets use entity_classification (not ownership_status)
+- System completeness "Ownership Classified" counts entity_classification primary + ownership_status fallback
+- `entity-classifications.ts` exports `INDEPENDENT_CLASSIFICATIONS`, `DSO_NATIONAL_TAXONOMY_LEAKS`, `DSO_REGIONAL_STRONG_SIGNAL_FILTER` constants
+- `PracticeStats` interface in both `types.ts` and `types/index.ts`; `HomeSummary` includes `enrichedCount`
 
 ## Pipeline File Quick Reference
 
