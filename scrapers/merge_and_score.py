@@ -31,6 +31,7 @@ from scrapers.database import (
     table_exists, backup_database, DB_PATH, BACKUP_DIR,
 )
 from scrapers.pipeline_logger import log_scrape_start, log_scrape_complete, log_scrape_error
+from scrapers.dso_classifier import _normalize_address_for_grouping
 
 log = get_logger("merge_and_score")
 
@@ -310,6 +311,284 @@ def deduplicate_practices_in_zip(session, zip_code):
     }
 
 
+# ── Phase 3: Saturation Metrics & Market Type Classification ──────────────
+
+# Entity classification categories for metric computation
+BUYABLE_TYPES = {'solo_established', 'solo_inactive', 'solo_high_volume'}
+CORPORATE_TYPES = {'dso_regional', 'dso_national'}
+
+
+def compute_saturation_metrics(session, zip_code, population, mhi=None, pop_growth=None):
+    """Compute ZIP-level saturation metrics using entity_classification data.
+
+    GP vs specialist separation: A location (unique normalized address) counts
+    as GP if it contains at least one practice where entity_classification is
+    NOT 'specialist' and NOT 'non_clinical'. Specialist-only locations are those
+    where ALL practices at the address are specialists.
+
+    CRITICAL: buyable_practice_ratio denominator uses GP-only locations, NOT all
+    dental locations. Specialists don't compete for the same patients.
+
+    Args:
+        session: SQLAlchemy session
+        zip_code: ZIP code string
+        population: ZIP population (int, must be > 0)
+        mhi: median household income (int or None)
+        pop_growth: population growth percentage (float or None)
+
+    Returns:
+        dict with all computed metrics and a 'warnings' list
+    """
+    practices = session.query(Practice).filter(Practice.zip == zip_code).all()
+    total_practices = len(practices)
+
+    if total_practices == 0:
+        return {
+            'total_gp_locations': 0, 'total_specialist_locations': 0,
+            'dld_gp_per_10k': 0.0, 'dld_total_per_10k': 0.0,
+            'people_per_gp_door': None,
+            'buyable_practice_count': 0, 'buyable_practice_ratio': 0.0,
+            'corporate_location_count': 0, 'corporate_share_pct': 0.0,
+            'family_practice_count': 0, 'specialist_density_flag': False,
+            'entity_classification_coverage_pct': 0.0,
+            'data_axle_enrichment_pct': 0.0,
+            'metrics_confidence': 'low', 'warnings': [],
+        }
+
+    # Group by normalized address (same normalization as entity classification)
+    addr_groups = defaultdict(list)
+    for p in practices:
+        norm_addr = _normalize_address_for_grouping(p.address)
+        city = (p.city or "").upper().strip()
+        key = (norm_addr, city)
+        addr_groups[key].append(p)
+
+    # Classify each location as GP, specialist-only, or non-clinical-only
+    gp_locations = []      # (key, [practices]) — has at least one GP
+    spec_locations = []    # (key, [practices]) — all specialist
+
+    for key, pracs_at_addr in addr_groups.items():
+        classifications = [p.entity_classification for p in pracs_at_addr]
+        non_null = [c for c in classifications if c is not None]
+
+        if not non_null:
+            # No classification data — treat as GP (conservative)
+            gp_locations.append((key, pracs_at_addr))
+            continue
+
+        all_non_clinical = all(c == 'non_clinical' for c in non_null)
+        if all_non_clinical:
+            continue  # skip non-clinical-only addresses
+
+        has_gp = any(c not in ('specialist', 'non_clinical') for c in non_null)
+        if has_gp:
+            gp_locations.append((key, pracs_at_addr))
+        else:
+            # All classified practices are specialist
+            spec_locations.append((key, pracs_at_addr))
+
+    total_gp = len(gp_locations)
+    total_spec = len(spec_locations)
+
+    log.info("ZIP %s: %d practices at %d unique addresses → %d GP locations, "
+             "%d specialist-only locations. Method: entity_classification field match.",
+             zip_code, total_practices, len(addr_groups), total_gp, total_spec)
+
+    # DLD metrics (require population)
+    pop_10k = population / 10000.0 if population and population > 0 else None
+    dld_gp = (total_gp / pop_10k) if pop_10k and total_gp > 0 else 0.0
+    dld_total = ((total_gp + total_spec) / pop_10k) if pop_10k else 0.0
+    people_per_door = (population // total_gp) if total_gp > 0 and population else None
+
+    # Buyable locations: GP locations with at least one buyable-classified practice
+    buyable_count = sum(
+        1 for _, pracs in gp_locations
+        if any(p.entity_classification in BUYABLE_TYPES for p in pracs)
+    )
+    buyable_ratio = (buyable_count / total_gp) if total_gp > 0 else 0.0
+
+    # Corporate locations: GP locations with at least one corporate-classified practice
+    corporate_count = sum(
+        1 for _, pracs in gp_locations
+        if any(p.entity_classification in CORPORATE_TYPES for p in pracs)
+    )
+    corporate_share = (corporate_count / total_gp) if total_gp > 0 else 0.0
+
+    # Family practice locations
+    family_count = sum(
+        1 for _, pracs in gp_locations
+        if any(p.entity_classification == 'family_practice' for p in pracs)
+    )
+
+    # Specialist density flag
+    spec_density_flag = total_spec > 3
+
+    # Coverage metrics
+    classified_count = sum(1 for p in practices if p.entity_classification is not None)
+    coverage_pct = (classified_count / total_practices * 100) if total_practices else 0.0
+    enriched_count = sum(1 for p in practices if p.data_axle_import_date is not None)
+    enrichment_pct = (enriched_count / total_practices * 100) if total_practices else 0.0
+
+    # Metrics confidence
+    unknown_ownership_count = sum(
+        1 for p in practices if p.ownership_status in ('unknown', None)
+    )
+    unknown_pct = (unknown_ownership_count / total_practices * 100) if total_practices else 100.0
+
+    if coverage_pct > 80 and unknown_pct < 20:
+        confidence = 'high'
+    elif coverage_pct > 50 and unknown_pct < 40:
+        confidence = 'medium'
+    else:
+        confidence = 'low'
+
+    # Data quality warnings
+    warnings = []
+
+    # Warning 1: Capacity-substitution signal
+    if people_per_door and people_per_door > 2500:
+        emp_values = [p.employee_count for p in practices
+                      if p.employee_count is not None and p.employee_count > 0]
+        if emp_values:
+            avg_emp = sum(emp_values) / len(emp_values)
+            if avg_emp > 12:
+                w = (f"Capacity substitution detected in {zip_code}: {total_gp} GP offices "
+                     f"but average {avg_emp:.0f} employees per office. "
+                     f"Few offices with large capacity — actual supply may be "
+                     f"higher than door count suggests.")
+                warnings.append(w)
+                log.warning(w)
+
+    # Warning 2: High income attracting high supply
+    if mhi and mhi > 120000 and dld_gp > 8.0:
+        w = (f"High-income high-supply in {zip_code}: ${mhi:,} MHI with "
+             f"{dld_gp:.1f}/10k dental density. Wealthy areas attract more "
+             f"providers, increasing competition despite affluence.")
+        warnings.append(w)
+        log.warning(w)
+
+    return {
+        'total_gp_locations': total_gp,
+        'total_specialist_locations': total_spec,
+        'dld_gp_per_10k': round(dld_gp, 2),
+        'dld_total_per_10k': round(dld_total, 2),
+        'people_per_gp_door': people_per_door,
+        'buyable_practice_count': buyable_count,
+        'buyable_practice_ratio': round(buyable_ratio, 4),
+        'corporate_location_count': corporate_count,
+        'corporate_share_pct': round(corporate_share, 4),
+        'family_practice_count': family_count,
+        'specialist_density_flag': spec_density_flag,
+        'entity_classification_coverage_pct': round(coverage_pct, 1),
+        'data_axle_enrichment_pct': round(enrichment_pct, 1),
+        'metrics_confidence': confidence,
+        'warnings': warnings,
+    }
+
+
+def classify_market_type(dld_gp, bhr, mhi, corporate_share, family_count,
+                         total_gp, population, metrics_confidence,
+                         population_growth_pct=None):
+    """Assign a market type label based on computed metrics.
+
+    Returns (market_type, market_type_confidence, explanation).
+
+    market_type_confidence:
+    - 'confirmed': metrics_confidence is 'high', all required inputs available
+    - 'provisional': metrics_confidence is 'medium', label assigned but may change
+    - 'insufficient_data': metrics_confidence is 'low', label NOT assigned
+
+    IMPORTANT: If metrics_confidence is 'low', market_type is set to NULL.
+    All underlying metrics are still stored — nothing is lost.
+    """
+    # Confidence gate
+    if metrics_confidence == 'low':
+        return (None, 'insufficient_data',
+                "Insufficient data quality for market classification. "
+                "Individual metrics are still stored for reference.")
+
+    mt_conf = 'confirmed' if metrics_confidence == 'high' else 'provisional'
+
+    # Rule 1: Low resident commercial hub
+    if dld_gp > 15.0 and population and population < 15000:
+        return ('low_resident_commercial', mt_conf,
+                f"Very high dental density ({dld_gp:.1f}/10k) relative to small "
+                f"residential population ({population:,}). Likely a commercial/office "
+                f"hub where demand is driven by non-residents.")
+
+    # Rule 2: High saturation corporate
+    if dld_gp > 8.0 and bhr < 0.25 and corporate_share > 0.30:
+        return ('high_saturation_corporate', mt_conf,
+                f"High dental density ({dld_gp:.1f}/10k) dominated by corporate "
+                f"chains ({corporate_share:.0%} corporate). Competitive for patients, "
+                f"limited ownership access.")
+
+    # Rule 3: Corporate dominant
+    if corporate_share > 0.50 and bhr < 0.20:
+        return ('corporate_dominant', mt_conf,
+                f"Over half of GP locations are corporate-affiliated "
+                f"({corporate_share:.0%}). Market structure favors employment "
+                f"over ownership.")
+
+    # Rule 4: Family concentrated
+    if bhr > 0.40 and total_gp > 0:
+        buyable_count = int(bhr * total_gp)
+        if buyable_count > 0 and family_count > 0.30 * buyable_count:
+            return ('family_concentrated', mt_conf,
+                    f"Many independent practices are family-operated with apparent "
+                    f"internal succession. Nominal ownership availability "
+                    f"({bhr:.0%}) overstates real opportunity.")
+
+    # Rule 5: Low density high income
+    if (dld_gp < 5.0 and bhr > 0.40 and mhi and mhi > 120000
+            and population and population > 15000):
+        return ('low_density_high_income', mt_conf,
+                f"Below-average dental supply ({dld_gp:.1f}/10k) in a high-income "
+                f"area (${mhi:,}). High share of independent practices "
+                f"({bhr:.0%} buyable).")
+
+    # Rule 6: Low density independent
+    if (5.0 <= dld_gp <= 7.0 and bhr > 0.50 and corporate_share < 0.10
+            and population and population < 30000):
+        return ('low_density_independent', mt_conf,
+                f"Moderate density ({dld_gp:.1f}/10k), predominantly independent "
+                f"practices ({bhr:.0%} buyable), low corporate presence "
+                f"({corporate_share:.0%}). Patient retention likely high.")
+
+    # Rule 7: Growing undersupplied
+    if dld_gp < 5.0 and population_growth_pct and population_growth_pct > 10:
+        return ('growing_undersupplied', mt_conf,
+                f"Below-average dental supply ({dld_gp:.1f}/10k) in a growing "
+                f"population area ({population_growth_pct:.1f}% growth). "
+                f"Supply may lag demand.")
+
+    # Rule 8: Balanced mixed (widened thresholds to reflect actual data)
+    if 4.0 <= dld_gp <= 12.0 and 0.20 <= bhr <= 0.60 and 0.05 <= corporate_share <= 0.35:
+        return ('balanced_mixed', mt_conf,
+                f"Balanced mix of independent ({bhr:.0%} buyable) and corporate "
+                f"({corporate_share:.0%}) practices at moderate density "
+                f"({dld_gp:.1f}/10k).")
+
+    # Rule 9: High density independent
+    if dld_gp > 8.0 and bhr > 0.50 and corporate_share < 0.15:
+        return ('high_density_independent', mt_conf,
+                f"High dental density ({dld_gp:.1f}/10k) but dominated by "
+                f"independent practices ({bhr:.0%} buyable, {corporate_share:.0%} "
+                f"corporate). Competition is high but ownership access is strong.")
+
+    # Rule 10: Independent suburban
+    if (4.0 <= dld_gp <= 15.0 and bhr > 0.60 and corporate_share < 0.15
+            and population and population > 15000):
+        return ('independent_suburban', mt_conf,
+                f"Predominantly independent suburban market ({bhr:.0%} buyable) "
+                f"with limited corporate presence ({corporate_share:.0%}). "
+                f"Density {dld_gp:.1f}/10k.")
+
+    # Rule 11: Default
+    return ('mixed', mt_conf,
+            "Market does not fit a clear pattern. Review individual metrics.")
+
+
 def ensure_chicagoland_watched(session):
     """Ensure all Chicagoland ZIPs are in watched_zips (not just the original 28)."""
     ALL_CHICAGOLAND_ZIPS = [
@@ -384,6 +663,9 @@ def score_watched_zips(session):
     zips_scored = 0
     total_consol = 0.0
     total_opp = 0.0
+    all_warnings = []       # Phase 3: collect data quality warnings
+    market_type_dist = defaultdict(int)  # Phase 3: market type distribution
+    confidence_dist = defaultdict(int)   # Phase 3: metrics confidence distribution
 
     for wz in watched:
         zc = wz.zip_code
@@ -456,6 +738,60 @@ def score_watched_zips(session):
 
         confidence = "high" if unk_pct < 20 else ("medium" if unk_pct <= 50 else "low")
 
+        # ── Phase 3: Saturation metrics & market type classification ──
+        sat_vals = {}
+        if wz.population and wz.population > 0:
+            sat = compute_saturation_metrics(
+                session, zc, wz.population,
+                wz.median_household_income,
+                wz.population_growth_pct,
+            )
+            mt, mt_conf, mt_explanation = classify_market_type(
+                sat['dld_gp_per_10k'], sat['buyable_practice_ratio'],
+                wz.median_household_income, sat['corporate_share_pct'],
+                sat['family_practice_count'], sat['total_gp_locations'],
+                wz.population, sat['metrics_confidence'],
+                wz.population_growth_pct,
+            )
+            sat_vals = {
+                'total_gp_locations': sat['total_gp_locations'],
+                'total_specialist_locations': sat['total_specialist_locations'],
+                'dld_gp_per_10k': sat['dld_gp_per_10k'],
+                'dld_total_per_10k': sat['dld_total_per_10k'],
+                'people_per_gp_door': sat['people_per_gp_door'],
+                'buyable_practice_count': sat['buyable_practice_count'],
+                'buyable_practice_ratio': sat['buyable_practice_ratio'],
+                'corporate_location_count': sat['corporate_location_count'],
+                'corporate_share_pct': sat['corporate_share_pct'],
+                'family_practice_count': sat['family_practice_count'],
+                'specialist_density_flag': sat['specialist_density_flag'],
+                'entity_classification_coverage_pct': sat['entity_classification_coverage_pct'],
+                'data_axle_enrichment_pct': sat['data_axle_enrichment_pct'],
+                'metrics_confidence': sat['metrics_confidence'],
+                'market_type': mt,
+                'market_type_confidence': mt_conf,
+            }
+            # Track distributions and warnings
+            market_type_dist[mt or 'NULL'] += 1
+            confidence_dist[sat['metrics_confidence']] += 1
+            all_warnings.extend(sat['warnings'])
+            if mt:
+                log.info("ZIP %s → market_type=%s (%s): %s", zc, mt, mt_conf, mt_explanation)
+        else:
+            # No population data — store what we can
+            sat = compute_saturation_metrics(session, zc, 0)
+            sat_vals = {
+                'total_gp_locations': sat['total_gp_locations'],
+                'total_specialist_locations': sat['total_specialist_locations'],
+                'entity_classification_coverage_pct': sat['entity_classification_coverage_pct'],
+                'data_axle_enrichment_pct': sat['data_axle_enrichment_pct'],
+                'metrics_confidence': 'low',
+                'market_type': None,
+                'market_type_confidence': 'insufficient_data',
+            }
+            market_type_dist['NULL'] += 1
+            confidence_dist['low'] += 1
+
         # Upsert
         existing = session.query(ZipScore).filter_by(zip_code=zc).first()
         vals = dict(city=wz.city, state=st, metro_area=wz.metro_area,
@@ -468,7 +804,8 @@ def score_watched_zips(session):
                     consolidated_count=consolidated_count, unclassified_pct=round(unk_pct, 2),
                     pe_penetration_pct=round(pe_pct, 2), pct_unknown=round(unk_pct, 2),
                     recent_changes_90d=recent, state_deal_count_12m=state_deals,
-                    opportunity_score=round(opp, 2), data_confidence=confidence)
+                    opportunity_score=round(opp, 2), data_confidence=confidence,
+                    **sat_vals)
         if existing:
             for k, v in vals.items():
                 setattr(existing, k, v)
@@ -484,6 +821,21 @@ def score_watched_zips(session):
     avg_c = round(total_consol / zips_scored, 2) if zips_scored else 0.0
     avg_o = round(total_opp / zips_scored, 2) if zips_scored else 0.0
     log.info("Scored %d ZIPs (avg consolidation=%.1f%%, avg opportunity=%.1f)", zips_scored, avg_c, avg_o)
+
+    # Phase 3 summary logging
+    log.info("── Phase 3 Saturation Summary ──")
+    log.info("Market type distribution: %s",
+             ", ".join(f"{k}={v}" for k, v in sorted(market_type_dist.items(), key=lambda x: -x[1])))
+    log.info("Metrics confidence: %s",
+             ", ".join(f"{k}={v}" for k, v in sorted(confidence_dist.items(), key=lambda x: -x[1])))
+    log.info("ZIPs with NULL market_type: %d", market_type_dist.get('NULL', 0))
+    if all_warnings:
+        log.info("Data quality warnings (%d total):", len(all_warnings))
+        for w in all_warnings:
+            log.info("  %s", w)
+    else:
+        log.info("No data quality warnings generated.")
+
     return {"zips_scored": zips_scored, "avg_consolidation": avg_c, "avg_opportunity": avg_o}
 
 

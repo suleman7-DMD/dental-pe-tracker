@@ -494,6 +494,134 @@ def load_ada_hpi():
     finally:
         s.close()
 
+def get_demographics_last_updated():
+    """Get the most recent demographics update timestamp."""
+    s = get_session()
+    try:
+        result = s.execute(text("SELECT MAX(demographics_updated_at) FROM watched_zips")).scalar()
+        if result:
+            return datetime.fromisoformat(str(result)) if isinstance(result, str) else result
+        return None
+    finally:
+        s.close()
+
+def get_last_nppes_import_date():
+    """Get the most recent NPPES import date."""
+    s = get_session()
+    try:
+        result = s.execute(text("SELECT MAX(created_at) FROM practices WHERE data_source = 'nppes'")).scalar()
+        if result:
+            return datetime.fromisoformat(str(result)) if isinstance(result, str) else result
+        return None
+    finally:
+        s.close()
+
+def get_last_data_axle_import_date():
+    """Get the most recent Data Axle import date."""
+    s = get_session()
+    try:
+        result = s.execute(text("SELECT MAX(data_axle_import_date) FROM practices WHERE data_axle_import_date IS NOT NULL")).scalar()
+        if result:
+            if isinstance(result, str):
+                try:
+                    return datetime.fromisoformat(result)
+                except ValueError:
+                    return datetime.strptime(result, "%Y-%m-%d")
+            return result
+        return None
+    finally:
+        s.close()
+
+def render_data_freshness_indicators():
+    """Render data freshness timestamps for demographics, NPPES, and Data Axle."""
+    demo_date = get_demographics_last_updated()
+    nppes_date = get_last_nppes_import_date()
+    axle_date = get_last_data_axle_import_date()
+
+    if demo_date:
+        days_old = (datetime.now() - demo_date).days
+        demo_str = demo_date.strftime('%B %d, %Y')
+        if days_old > 365:
+            st.warning(f"Demographic data last updated {demo_str} ({days_old} days ago). Consider refreshing via `python3 scrapers/census_loader.py`")
+        else:
+            demo_part = f"Demographics: {demo_str}"
+    else:
+        demo_part = "Demographics: Not loaded"
+
+    nppes_part = f"NPPES: {nppes_date.strftime('%B %d, %Y')}" if nppes_date else "NPPES: Unknown"
+    axle_part = f"Data Axle: {axle_date.strftime('%B %d, %Y')}" if axle_date else "Data Axle: Never"
+
+    st.caption(f"Data freshness — {demo_part} · {nppes_part} · {axle_part}")
+
+
+def generate_basic_observations(row):
+    """For practices without stored classification_reasoning, generate observations from available fields."""
+    observations = []
+
+    entity_type = row.get("entity_type", "")
+    if entity_type == '1':
+        observations.append("Individual provider registration — likely a solo practitioner or associate")
+    elif entity_type == '2':
+        observations.append("Organization registration — incorporated practice entity")
+
+    yr = row.get("year_established")
+    if pd.notna(yr) and yr:
+        try:
+            yr = int(float(yr))
+            age = date.today().year - yr
+            if age >= 30:
+                observations.append(f"Established {age} years ago ({yr}) — owner likely in late career")
+            elif age >= 20:
+                observations.append(f"Established {age} years ago ({yr}) — mature practice")
+            elif age <= 5:
+                observations.append(f"Established only {age} years ago ({yr}) — relatively new")
+        except (ValueError, TypeError):
+            pass
+
+    emp = row.get("employee_count")
+    if pd.notna(emp) and emp:
+        try:
+            emp = int(float(emp))
+            if emp >= 10:
+                observations.append(f"{emp} employees — large enough to likely hire associates")
+            elif emp >= 5:
+                observations.append(f"{emp} employees — moderate-sized practice")
+            else:
+                observations.append(f"{emp} employees — small practice")
+        except (ValueError, TypeError):
+            pass
+
+    rev = row.get("estimated_revenue")
+    if pd.notna(rev) and rev:
+        try:
+            rev = float(rev)
+            if rev >= 1000000:
+                observations.append(f"Estimated revenue ${rev:,.0f} — high-volume production")
+            elif rev >= 500000:
+                observations.append(f"Estimated revenue ${rev:,.0f} — solid production")
+        except (ValueError, TypeError):
+            pass
+
+    da_date = row.get("data_axle_import_date")
+    if not pd.notna(da_date) or not da_date:
+        observations.append("Limited business data — NPPES registration data only. "
+                          "Employee count, revenue, and year established not available.")
+        # Use enumeration_date as weak age proxy
+        enum_date = row.get("enumeration_date")
+        if pd.notna(enum_date) and enum_date:
+            try:
+                enum_str = str(enum_date)[:10]
+                enum_year = int(enum_str[:4])
+                if enum_year > 2015:
+                    observations.append(f"NPI registered {enum_str} — suggests a newer provider")
+                elif enum_year <= 2008:
+                    observations.append(f"NPI registered {enum_str} — early adopter, likely established practice")
+            except (ValueError, IndexError):
+                pass
+
+    return observations
+
+
 def get_filtered_deals(df):
     """Apply sidebar filters to deals DataFrame."""
     if df.empty:
@@ -798,6 +926,9 @@ def page_market_intel():
         f'</span></div>',
         unsafe_allow_html=True
     )
+
+    # Data freshness indicators (4.5)
+    render_data_freshness_indicators()
 
     wz = load_watched_zips()
     if wz.empty:
@@ -1146,6 +1277,139 @@ def page_market_intel():
         finally:
             sess.close()
 
+    # ── Saturation Analysis (Phase 4.1) ──────────────────────────────────
+    if not zs.empty:
+        st.markdown(section_header("Saturation Analysis",
+            "Cross-ZIP comparison of dental market metrics. DLD-GP/10k = GP dental offices per 10,000 residents "
+            "(national avg ~6.1). Buyable % = share of GP offices that are independently owned solos. "
+            "Corporate % = share of GP offices that are DSO/PE-affiliated. Color codes: green = favorable, "
+            "yellow = moderate, red = high competition or limited opportunity."), unsafe_allow_html=True)
+
+        # Merge zip_scores with watched_zips demographics
+        wz_demo = wz[["zip_code", "population", "median_household_income"]].copy()
+        sat_df = zs.merge(wz_demo, on="zip_code", how="left")
+
+        # Select and rename columns for display
+        sat_cols = {
+            "zip_code": "ZIP",
+            "city": "Town",
+            "population": "Pop",
+            "median_household_income": "MHI",
+            "total_gp_locations": "GP Offices",
+            "dld_gp_per_10k": "DLD-GP/10k",
+            "buyable_practice_ratio": "Buyable %",
+            "corporate_share_pct": "Corporate %",
+            "market_type": "Type",
+            "metrics_confidence": "Confidence",
+        }
+        avail_sat = [c for c in sat_cols.keys() if c in sat_df.columns]
+        sat_display = sat_df[avail_sat].copy()
+
+        # Format values
+        if "population" in sat_display.columns:
+            sat_display["population"] = sat_display["population"].apply(
+                lambda x: f"{int(x):,}" if pd.notna(x) else "—")
+        if "median_household_income" in sat_display.columns:
+            sat_display["median_household_income"] = sat_display["median_household_income"].apply(
+                lambda x: f"${int(x):,}" if pd.notna(x) else "—")
+        if "buyable_practice_ratio" in sat_display.columns:
+            sat_display["buyable_practice_ratio"] = sat_display["buyable_practice_ratio"].apply(
+                lambda x: f"{x*100:.0f}%" if pd.notna(x) else "—")
+        if "corporate_share_pct" in sat_display.columns:
+            sat_display["corporate_share_pct"] = sat_display["corporate_share_pct"].apply(
+                lambda x: f"{x*100:.0f}%" if pd.notna(x) else "—")
+        if "dld_gp_per_10k" in sat_display.columns:
+            sat_display["dld_gp_per_10k"] = sat_display["dld_gp_per_10k"].apply(
+                lambda x: f"{x:.1f}" if pd.notna(x) else "—")
+        if "metrics_confidence" in sat_display.columns:
+            sat_display["metrics_confidence"] = sat_display["metrics_confidence"].map(
+                {"high": "★★★", "medium": "★★", "low": "★"}).fillna("—")
+        if "market_type" in sat_display.columns:
+            sat_display["market_type"] = sat_display["market_type"].fillna("—").apply(
+                lambda x: x.replace("_", " ").title() if x != "—" else "—")
+
+        sat_display = sat_display.rename(columns=sat_cols)
+        sat_display = sat_display.fillna("—")
+
+        # Build color-coded HTML table
+        def _color_dld(val):
+            try:
+                v = float(val)
+                if v < 5.0: return "background:#1B5E20;color:white"
+                elif v <= 7.0: return "background:#F57F17;color:white"
+                else: return "background:#B71C1C;color:white"
+            except (ValueError, TypeError):
+                return ""
+
+        def _color_buyable(val):
+            try:
+                v = float(val.replace("%", ""))
+                if v > 50: return "background:#1B5E20;color:white"
+                elif v >= 20: return "background:#F57F17;color:white"
+                else: return "background:#B71C1C;color:white"
+            except (ValueError, TypeError, AttributeError):
+                return ""
+
+        def _color_corporate(val):
+            try:
+                v = float(val.replace("%", ""))
+                if v < 15: return "background:#1B5E20;color:white"
+                elif v <= 35: return "background:#F57F17;color:white"
+                else: return "background:#B71C1C;color:white"
+            except (ValueError, TypeError, AttributeError):
+                return ""
+
+        # Build HTML table
+        headers = list(sat_display.columns)
+        html = '<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:0.82rem;font-family:DM Sans,sans-serif">'
+        html += '<thead><tr>'
+        for h in headers:
+            html += f'<th style="padding:8px 10px;text-align:left;border-bottom:2px solid #1E2A3A;color:#8892A0;font-weight:600;white-space:nowrap">{h}</th>'
+        html += '</tr></thead><tbody>'
+
+        for _, row in sat_display.iterrows():
+            html += '<tr style="border-bottom:1px solid #1E2A3A">'
+            for col in headers:
+                val = str(row[col])
+                style = "padding:6px 10px;white-space:nowrap;"
+                if col == "DLD-GP/10k":
+                    cell_style = _color_dld(val)
+                    if cell_style:
+                        style += cell_style + ";border-radius:4px;"
+                elif col == "Buyable %":
+                    cell_style = _color_buyable(val)
+                    if cell_style:
+                        style += cell_style + ";border-radius:4px;"
+                elif col == "Corporate %":
+                    cell_style = _color_corporate(val)
+                    if cell_style:
+                        style += cell_style + ";border-radius:4px;"
+                else:
+                    style += "color:#E8ECF1;"
+                html += f'<td style="{style}">{val}</td>'
+            html += '</tr>'
+        html += '</tbody></table></div>'
+
+        st.markdown(html, unsafe_allow_html=True)
+
+        # Data completeness indicator
+        if "metrics_confidence" in zs.columns:
+            low_conf_pct = (zs["metrics_confidence"] == "low").sum() / len(zs) * 100 if len(zs) > 0 else 0
+            if low_conf_pct > 30:
+                st.info("Many ZIPs have limited data quality. Metrics marked ★ should be treated as directional only. "
+                        "Run Data Axle imports for enriched ZIPs to improve accuracy.")
+
+        # CSV download
+        csv_df = sat_df[avail_sat].copy()
+        csv_df = csv_df.rename(columns=sat_cols)
+        st.download_button("📥 Download saturation analysis", csv_df.to_csv(index=False),
+                          "saturation_analysis.csv", "text/csv", key="sat_download")
+
+        # Demographics date
+        demo_date = get_demographics_last_updated()
+        if demo_date:
+            st.caption(f"Demographics last updated: {demo_date.strftime('%B %d, %Y')}")
+
 
 # ═══════════════════════════════════════════════════════════════════════════
 # PAGE 3: BUYABILITY SCANNER
@@ -1334,10 +1598,21 @@ def page_research():
             "Monthly volume": "SELECT strftime('%Y-%m', deal_date) as month, deal_type, COUNT(*) as deals\nFROM deals GROUP BY month, deal_type ORDER BY month DESC",
             "New in state": "SELECT DISTINCT platform_company, pe_sponsor, MIN(deal_date) as first_deal, COUNT(*) as total\nFROM deals WHERE target_state='[EDIT: ST]' AND deal_date > date('now','-12 months')\nGROUP BY platform_company, pe_sponsor ORDER BY first_deal DESC",
             "Practice changes": "SELECT pc.change_date, p.practice_name, p.city, p.zip, pc.field_changed,\n  pc.old_value, pc.new_value, pc.change_type\nFROM practice_changes pc JOIN practices p ON pc.npi=p.npi\nWHERE p.zip IN (SELECT zip_code FROM watched_zips)\nORDER BY pc.change_date DESC LIMIT 50",
+            "Saturation Comparison": "SELECT wz.zip_code, wz.city, wz.population, wz.median_household_income,\n  zs.total_gp_locations, zs.total_specialist_locations,\n  zs.dld_gp_per_10k, zs.people_per_gp_door,\n  zs.buyable_practice_ratio, zs.corporate_share_pct,\n  zs.market_type, zs.metrics_confidence,\n  zs.data_axle_enrichment_pct\nFROM zip_scores zs\nJOIN watched_zips wz ON zs.zip_code = wz.zip_code\nWHERE wz.metro_area LIKE '%Chicagoland%'\nORDER BY zs.dld_gp_per_10k ASC",
+            "Family Practices": "SELECT p.zip, p.address, p.practice_name, p.provider_last_name,\n  p.entity_classification, p.classification_reasoning,\n  p.year_established, p.employee_count\nFROM practices p\nWHERE p.zip IN (SELECT zip_code FROM watched_zips)\n  AND p.entity_classification = 'family_practice'\nORDER BY p.zip, p.address",
+            "High-Vol Solos": "SELECT p.practice_name, p.address, p.city, p.zip,\n  p.year_established, p.employee_count, p.estimated_revenue,\n  p.buyability_score, p.ownership_status, p.entity_classification\nFROM practices p\nWHERE p.zip IN (SELECT zip_code FROM watched_zips)\n  AND p.entity_classification = 'solo_high_volume'\n  AND p.ownership_status IN ('independent', 'likely_independent')\nORDER BY p.estimated_revenue DESC NULLS LAST",
+            "Enrichment Coverage": "SELECT wz.zip_code, wz.city, wz.metro_area,\n  COUNT(*) as total_practices,\n  SUM(CASE WHEN p.data_axle_import_date IS NOT NULL THEN 1 ELSE 0 END) as enriched,\n  ROUND(100.0 * SUM(CASE WHEN p.data_axle_import_date IS NOT NULL THEN 1 ELSE 0 END) / COUNT(*), 1) as enrichment_pct\nFROM watched_zips wz\nLEFT JOIN practices p ON p.zip = wz.zip_code\nGROUP BY wz.zip_code\nORDER BY enrichment_pct DESC",
         }
-        btn_cols = st.columns(len(queries))
-        for i, (name, q) in enumerate(queries.items()):
+        # Display preset buttons in two rows to avoid cramping
+        row1_queries = dict(list(queries.items())[:5])
+        row2_queries = dict(list(queries.items())[5:])
+        btn_cols = st.columns(len(row1_queries))
+        for i, (name, q) in enumerate(row1_queries.items()):
             if btn_cols[i].button(name, key=f"sql_btn_{i}"):
+                st.session_state["sql_query"] = q
+        btn_cols2 = st.columns(len(row2_queries))
+        for i, (name, q) in enumerate(row2_queries.items()):
+            if btn_cols2[i].button(name, key=f"sql_btn2_{i}"):
                 st.session_state["sql_query"] = q
 
         query = st.text_area("SQL Query", value=st.session_state.get("sql_query", ""), height=150, key="sql_input")
@@ -1439,6 +1714,11 @@ def _render_system_health(s):
 
     src_df = pd.DataFrame(sources)
     st.markdown(src_df.to_html(escape=False, index=False), unsafe_allow_html=True)
+
+    # Data freshness timestamps (Phase 4.5)
+    st.markdown(section_header("Data Freshness Timestamps",
+        "When each major data source was last imported or refreshed."), unsafe_allow_html=True)
+    render_data_freshness_indicators()
 
     # DB size
     if os.path.exists(DB_PATH):
@@ -1675,6 +1955,9 @@ def page_job_market():
         unsafe_allow_html=True
     )
 
+    # Data freshness indicators (4.5)
+    render_data_freshness_indicators()
+
     # Living location selector
     selected = st.selectbox("Planned Living Area", list(LIVING_LOCATIONS.keys()))
     loc = LIVING_LOCATIONS[selected]
@@ -1705,15 +1988,24 @@ def page_job_market():
     _tp = zip_stats["total_practices"].replace(0, 1)
     zip_stats["consolidation_pct_of_total"] = (zip_stats["consolidated_count"] / _tp * 100).round(1)
 
-    # ── KPI Cards ────────────────────────────────────────────────────────
-    status_col = prac_df["ownership_status"].fillna("unknown").str.strip().str.lower()
-    total_p = len(prac_df)
-    indep_cnt = int(status_col.isin(["independent", "likely_independent"]).sum())
-    pe_cnt = int((status_col == "pe_backed").sum())
-    dso_cnt = int((status_col == "dso_affiliated").sum())
-    unk_cnt = int(status_col.isin(["unknown", ""]).sum())
-    unk_pct = (unk_cnt / total_p * 100) if total_p > 0 else 100
+    # ── KPI Cards (4.6: use zip_scores for deduplicated totals) ─────────
+    # Use zip_scores for KPIs when available (deduplicated counts)
+    if not zs.empty and "total_practices" in zs.columns:
+        total_p = int(zs["total_practices"].sum())
+        indep_cnt = int(zs["independent_count"].sum()) if "independent_count" in zs.columns else 0
+        pe_cnt = int(zs["pe_backed_count"].sum()) if "pe_backed_count" in zs.columns else 0
+        dso_cnt = int(zs["dso_affiliated_count"].sum()) if "dso_affiliated_count" in zs.columns else 0
+        unk_cnt = int(zs["unknown_count"].sum()) if "unknown_count" in zs.columns else 0
+    else:
+        # Fallback to raw counting if zip_scores unavailable
+        status_col = prac_df["ownership_status"].fillna("unknown").str.strip().str.lower()
+        total_p = len(prac_df)
+        indep_cnt = int(status_col.isin(["independent", "likely_independent"]).sum())
+        pe_cnt = int((status_col == "pe_backed").sum())
+        dso_cnt = int((status_col == "dso_affiliated").sum())
+        unk_cnt = int(status_col.isin(["unknown", ""]).sum())
 
+    unk_pct = (unk_cnt / total_p * 100) if total_p > 0 else 100
     indep_pct = f"{(indep_cnt / total_p * 100):.1f}%" if total_p > 0 else "—"
     consol_pct = f"{((pe_cnt + dso_cnt) / total_p * 100):.1f}%" if total_p > 0 else "—"
 
@@ -1730,11 +2022,13 @@ def page_job_market():
         large_count = 0
 
     if "year_established" in prac_df.columns:
+        status_col_yr = prac_df["ownership_status"].fillna("unknown").str.strip().str.lower()
         yr = pd.to_numeric(prac_df["year_established"], errors="coerce")
-        retirement_risk = int(((yr <= 1995) & status_col.isin(["independent", "likely_independent"])).sum())
+        retirement_risk = int(((yr <= 1995) & status_col_yr.isin(["independent", "likely_independent"])).sum())
     else:
         retirement_risk = 0
 
+    # Row 1: Original 6 KPIs
     c1, c2, c3, c4, c5, c6 = st.columns(6)
     c1.markdown(make_kpi_card("🏥", "Total Practices", f"{total_p:,}"), unsafe_allow_html=True)
     c2.markdown(make_kpi_card("🟢", "Independent %", indep_pct), unsafe_allow_html=True)
@@ -1742,6 +2036,32 @@ def page_job_market():
     c4.markdown(make_kpi_card("🎯", "Avg Buyability", avg_buy), unsafe_allow_html=True)
     c5.markdown(make_kpi_card("👥", "10+ Staff", large_count), unsafe_allow_html=True)
     c6.markdown(make_kpi_card("⏳", "Retirement Risk", retirement_risk), unsafe_allow_html=True)
+
+    # Row 2: 3 new KPI cards (Phase 4.3)
+    k7, k8, k9 = st.columns(3)
+    with k7:
+        if not zs.empty and "dld_gp_per_10k" in zs.columns:
+            avg_dld = zs["dld_gp_per_10k"].dropna().mean()
+            st.markdown(make_kpi_card("📍", "Avg Dental Density", f"{avg_dld:.1f}/10k"), unsafe_allow_html=True)
+            st.caption("GP offices per 10k residents. National avg ~6.1. Lower = less competition.")
+        else:
+            st.markdown(make_kpi_card("📍", "Avg Dental Density", "—"), unsafe_allow_html=True)
+    with k8:
+        if not zs.empty and "buyable_practice_ratio" in zs.columns:
+            avg_bhr = zs["buyable_practice_ratio"].dropna().mean()
+            da_enrich = zs["data_axle_enrichment_pct"].mean() if "data_axle_enrichment_pct" in zs.columns else 0
+            confidence = "★★★" if da_enrich > 50 else "★★" if da_enrich > 20 else "★"
+            st.markdown(make_kpi_card("🏪", "Buyable Practice %", f"{avg_bhr:.0%} {confidence}"), unsafe_allow_html=True)
+            st.caption("% of GP offices that are independently owned solos — potential acquisition targets.")
+        else:
+            st.markdown(make_kpi_card("🏪", "Buyable Practice %", "—"), unsafe_allow_html=True)
+    with k9:
+        if "entity_classification" in prac_df.columns:
+            high_vol_count = len(prac_df[prac_df["entity_classification"] == "solo_high_volume"])
+            st.markdown(make_kpi_card("⚡", "High-Volume Solos", high_vol_count), unsafe_allow_html=True)
+            st.caption("Solo practices with 5+ employees or $800k+ revenue. Likely need associate help.")
+        else:
+            st.markdown(make_kpi_card("⚡", "High-Volume Solos", "—"), unsafe_allow_html=True)
 
     if unk_pct > 30:
         st.caption(f"⚠️ {unk_pct:.0f}% of practices have unknown ownership ({unk_cnt:,} / {total_p:,}). "
@@ -2102,13 +2422,15 @@ def page_job_market():
 
     # ── Practice Directory ──────────────────────────────────────────────
     st.markdown(section_header("Practice Directory",
-        "Browse and search all practices in the commutable zone"), unsafe_allow_html=True)
+        "Browse and search all practices in the commutable zone. Use the dual-lens tabs to focus on "
+        "employment opportunities or ownership pipeline targets."), unsafe_allow_html=True)
 
     if not prac_df.empty:
         dir_df = compute_job_opportunity_score(prac_df)
         total_practices = len(dir_df)
         da_mask = dir_df["import_batch_id"].fillna("").str.startswith("DA_")
         enriched_count = int(da_mask.sum())
+        enrichment_pct = enriched_count / total_practices * 100 if total_practices > 0 else 0
 
         search_term = st.text_input("🔍 Search", placeholder="Search by name, address, city, or DSO...",
                                     label_visibility="collapsed", key="dir_search")
@@ -2170,7 +2492,80 @@ def page_job_market():
         filtered_display = filtered.copy()
         filtered_display["ownership_status"] = filtered_display["ownership_status"].apply(format_status)
 
-        tab_enriched, tab_all = st.tabs(["Enriched Practices (Data Axle)", "All Practices"])
+        # Dual-lens tabs (Phase 4.2) + original tabs
+        tab_employ, tab_ownership, tab_enriched, tab_all = st.tabs([
+            "💼 Employment Opportunities", "🏪 Ownership Pipeline",
+            "Enriched Practices (Data Axle)", "All Practices"
+        ])
+
+        # Data completeness note for dual-lens tabs
+        _low_enrichment_note = ("⚠️ Limited business data available for this area. "
+                                "Employee counts and revenue figures may be incomplete.") if enrichment_pct < 20 else None
+
+        with tab_employ:
+            st.markdown("Practices with high patient volume that are likely hiring associates.")
+            if _low_enrichment_note:
+                st.caption(_low_enrichment_note)
+
+            emp_mask = pd.Series(False, index=filtered.index)
+            emp_col = pd.to_numeric(filtered.get("employee_count"), errors="coerce")
+            emp_mask |= emp_col >= 10
+            if "entity_classification" in filtered.columns:
+                emp_mask |= filtered["entity_classification"].isin(["large_group", "dso_national", "dso_regional"])
+            emp_df = filtered[emp_mask].copy()
+            if "employee_count" in emp_df.columns:
+                emp_df = emp_df.sort_values("employee_count", ascending=False, na_position="last")
+
+            if emp_df.empty:
+                st.info("No practices matching employment opportunity criteria in the current filters.")
+            else:
+                emp_show_cols = ["practice_name", "address", "zip", "city", "employee_count",
+                                "entity_classification", "affiliated_dso", "job_opp_score"]
+                emp_renames = {"practice_name": "Practice Name", "address": "Address",
+                              "zip": "ZIP", "city": "City", "employee_count": "Employees",
+                              "entity_classification": "Entity Type", "affiliated_dso": "DSO",
+                              "job_opp_score": "Job Score"}
+                avail_emp = [c for c in emp_show_cols if c in emp_df.columns]
+                emp_display = emp_df[avail_emp].rename(columns=emp_renames).fillna("—")
+                if "Entity Type" in emp_display.columns:
+                    emp_display["Entity Type"] = emp_display["Entity Type"].apply(
+                        lambda x: x.replace("_", " ").title() if x != "—" else "—")
+                st.dataframe(emp_display.head(500), hide_index=True, height=500, use_container_width=True)
+                st.caption(f"{len(emp_df)} practices match employment criteria")
+
+        with tab_ownership:
+            st.markdown("Independent practices with indicators suggesting the owner may be approaching transition.")
+            if _low_enrichment_note:
+                st.caption(_low_enrichment_note)
+
+            own_mask = pd.Series(False, index=filtered.index)
+            if "entity_classification" in filtered.columns:
+                own_mask = filtered["entity_classification"].isin(
+                    ["solo_established", "solo_high_volume", "solo_inactive"])
+            own_status = filtered["ownership_status"].fillna("unknown").str.strip().str.lower()
+            own_mask &= own_status.isin(["independent", "likely_independent"])
+            own_df = filtered[own_mask].copy()
+            if "buyability_score" in own_df.columns:
+                own_df = own_df.sort_values("buyability_score", ascending=False, na_position="last")
+
+            if own_df.empty:
+                st.info("No practices matching ownership pipeline criteria in the current filters.")
+            else:
+                own_show_cols = ["practice_name", "address", "zip", "city", "year_established",
+                                "buyability_score", "metrics_confidence" if "metrics_confidence" in own_df.columns else "classification_confidence",
+                                "entity_classification"]
+                own_renames = {"practice_name": "Practice Name", "address": "Address",
+                              "zip": "ZIP", "city": "City", "year_established": "Year Est.",
+                              "buyability_score": "Buyability", "classification_confidence": "Confidence",
+                              "metrics_confidence": "Confidence",
+                              "entity_classification": "Classification"}
+                avail_own = [c for c in own_show_cols if c in own_df.columns]
+                own_display = own_df[avail_own].rename(columns=own_renames).fillna("—")
+                if "Classification" in own_display.columns:
+                    own_display["Classification"] = own_display["Classification"].apply(
+                        lambda x: x.replace("_", " ").title() if x != "—" else "—")
+                st.dataframe(own_display.head(500), hide_index=True, height=500, use_container_width=True)
+                st.caption(f"{len(own_df)} practices match ownership pipeline criteria")
 
         with tab_enriched:
             enriched_cols = ["practice_name", "address", "city", "zip", "ownership_status",
@@ -2232,6 +2627,110 @@ def page_job_market():
             "text/csv",
             key="dir_download",
         )
+
+        # ── Practice Detail View (Phase 4.4) ────────────────────────────
+        st.markdown(section_header("Practice Detail Lookup",
+            "Select a practice to view detailed intelligence including entity classification, "
+            "provider analysis, and all available enrichment data."), unsafe_allow_html=True)
+
+        # Build practice list for selectbox
+        practice_names = filtered["practice_name"].fillna("Unknown").tolist()
+        practice_labels = []
+        for _, r in filtered.head(500).iterrows():
+            name = r.get("practice_name", "Unknown") or "Unknown"
+            city = r.get("city", "") or ""
+            zp = str(r.get("zip", ""))[:5] if pd.notna(r.get("zip")) else ""
+            practice_labels.append(f"{name} — {city} {zp}")
+
+        if practice_labels:
+            selected_practice_idx = st.selectbox(
+                "Select a practice", range(len(practice_labels)),
+                format_func=lambda i: practice_labels[i],
+                key="practice_detail_select"
+            )
+
+            if selected_practice_idx is not None:
+                prow = filtered.iloc[selected_practice_idx]
+
+                with st.expander(f"📋 Detail: {prow.get('practice_name', 'Unknown')}", expanded=True):
+                    # Data source indicator
+                    has_da = pd.notna(prow.get("data_axle_import_date")) and prow.get("data_axle_import_date")
+                    enrichment_label = "Fully enriched (Data Axle + NPPES)" if has_da else "NPPES-only data"
+                    enrichment_color = "#4CAF50" if has_da else "#FFB300"
+                    st.markdown(f'<span style="background:{enrichment_color};color:white;padding:2px 8px;'
+                               f'border-radius:4px;font-size:0.78rem">{enrichment_label}</span>',
+                               unsafe_allow_html=True)
+
+                    d1, d2 = st.columns(2)
+                    with d1:
+                        st.markdown("**Basic Information**")
+                        st.markdown(f"**Name:** {prow.get('practice_name', '—')}")
+                        st.markdown(f"**Address:** {prow.get('address', '—')}")
+                        st.markdown(f"**City/ZIP:** {prow.get('city', '—')}, {prow.get('state', '—')} {str(prow.get('zip', '—'))[:5]}")
+                        st.markdown(f"**Phone:** {prow.get('phone', '—')}")
+                        st.markdown(f"**Entity Type:** {'Individual' if prow.get('entity_type') == '1' else 'Organization' if prow.get('entity_type') == '2' else '—'}")
+                        st.markdown(f"**Ownership:** {format_status(prow.get('ownership_status', 'unknown'))}")
+
+                    with d2:
+                        st.markdown("**Classification & Scoring**")
+                        ec = prow.get("entity_classification", "")
+                        ec_display = ec.replace("_", " ").title() if pd.notna(ec) and ec else "Not classified"
+                        st.markdown(f"**Entity Classification:** {ec_display}")
+                        st.markdown(f"**Buyability Score:** {prow.get('buyability_score', '—')}")
+                        if has_da:
+                            st.markdown(f"**Year Established:** {int(prow['year_established']) if pd.notna(prow.get('year_established')) else '—'}")
+                            st.markdown(f"**Employee Count:** {int(prow['employee_count']) if pd.notna(prow.get('employee_count')) else '—'}")
+                            rev = prow.get("estimated_revenue")
+                            st.markdown(f"**Est. Revenue:** ${int(rev):,}" if pd.notna(rev) and rev else "**Est. Revenue:** —")
+                            st.markdown(f"**Parent Company:** {prow.get('parent_company', '—')}")
+
+                    # Classification reasoning
+                    st.markdown("**Classification Reasoning:**")
+                    reasoning = prow.get("classification_reasoning", "")
+                    if pd.notna(reasoning) and reasoning:
+                        st.markdown(f'<div style="background:#141922;border:1px solid #1E2A3A;border-radius:6px;'
+                                   f'padding:0.75rem;font-size:0.82rem;color:#c8d6e5">{reasoning}</div>',
+                                   unsafe_allow_html=True)
+                    else:
+                        # Generate basic observations on-the-fly (4.4)
+                        observations = generate_basic_observations(prow)
+                        if observations:
+                            obs_html = "<br>".join(f"• {o}" for o in observations)
+                            st.markdown(f'<div style="background:#141922;border:1px solid #1E2A3A;border-radius:6px;'
+                                       f'padding:0.75rem;font-size:0.82rem;color:#c8d6e5">'
+                                       f'<em>Auto-generated observations (no stored reasoning):</em><br>{obs_html}</div>',
+                                       unsafe_allow_html=True)
+
+                    # Providers at same address
+                    prac_addr = prow.get("address", "")
+                    prac_zip = str(prow.get("zip", ""))[:5] if pd.notna(prow.get("zip")) else ""
+                    if prac_addr and prac_zip:
+                        same_addr = prac_df[
+                            (prac_df["address"].fillna("").str.upper() == str(prac_addr).upper()) &
+                            (prac_df["zip"].fillna("").astype(str).str[:5] == prac_zip)
+                        ]
+                        if len(same_addr) > 1:
+                            st.markdown(f"**Other providers at this address:** {len(same_addr) - 1}")
+                            last_names = same_addr["provider_last_name"].dropna().tolist() if "provider_last_name" in same_addr.columns else []
+                            if last_names:
+                                from collections import Counter
+                                name_counts = Counter(n.upper().strip() for n in last_names if n)
+                                shared = {n: c for n, c in name_counts.items()
+                                         if c >= 2 and n not in ('', 'DDS', 'DMD', 'PC', 'LTD', 'INC', 'LLC')}
+                                if shared:
+                                    shared_str = ", ".join(f"{n} ({c}x)" for n, c in shared.items())
+                                    st.markdown(f"👨‍👩‍👧‍👦 **Family indicator:** Shared last names: {shared_str}")
+
+                    # Multi-ZIP presence check
+                    prac_name = prow.get("practice_name", "")
+                    if prac_name and pd.notna(prac_name):
+                        # Check if this practice name appears in other ZIPs
+                        other_zips = prac_df[
+                            (prac_df["practice_name"].fillna("").str.upper() == prac_name.upper()) &
+                            (prac_df["zip"].fillna("").astype(str).str[:5] != prac_zip)
+                        ]["zip"].nunique()
+                        if other_zips > 0:
+                            st.markdown(f"🔗 **Multi-location:** This practice name appears in {other_zips} other ZIP(s)")
     else:
         st.info("No practices found in the selected ZIPs.")
 

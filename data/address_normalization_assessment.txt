@@ -1,0 +1,30 @@
+======================================================================
+ADDRESS NORMALIZATION ASSESSMENT — Phase 2.1
+======================================================================
+
+Method A (current): address.upper().strip()
+Method B (enhanced): expand abbreviations, strip suites, collapse spaces
+
+ZIP 60491: Method A = 23 locations, Method B = 19 locations, diff = 4 (17.4%)
+    Example: '15748 S BELL RD' → '15748 SOUTH BELL ROAD' (2 NPIs)
+    Example: '15915 S CRYSTAL CREEK DR STE B' → '15915 SOUTH CRYSTAL CREEK DRIVE' (3 NPIs)
+    Example: '14831 W 159TH ST STE 1' → '14831 WEST 159TH STREET' (3 NPIs)
+ZIP 60439: Method A = 27 locations, Method B = 23 locations, diff = 4 (14.8%)
+    Example: '811 SINGER AVE' → '811 SINGER AVENUE' (1 NPIs)
+    Example: '160-B EAST WEND ST' → '160-B EAST WEND STREET' (1 NPIs)
+    Example: '12371 DERBY RD' → '12371 DERBY ROAD' (3 NPIs)
+ZIP 60441: Method A = 14 locations, Method B = 14 locations, diff = 0 (0.0%)
+    Example: '230 E 8TH ST' → '230 EAST 8TH STREET' (6 NPIs)
+    Example: '16533 W 159TH ST' → '16533 WEST 159TH STREET' (3 NPIs)
+    Example: '856 N STATE ST' → '856 NORTH STATE STREET' (4 NPIs)
+ZIP 60440: Method A = 35 locations, Method B = 30 locations, diff = 5 (14.3%)
+    Example: '136 S BOLINGBROOK DR' → '136 SOUTH BOLINGBROOK DRIVE' (5 NPIs)
+    Example: '580 E BOUGHTON RD' → '580 EAST BOUGHTON ROAD' (1 NPIs)
+    Example: '536 W BOUGHTON RD' → '536 WEST BOUGHTON ROAD' (2 NPIs)
+ZIP 60517: Method A = 37 locations, Method B = 31 locations, diff = 6 (16.2%)
+    Example: '7105 JANES AVE' → '7105 JANES AVENUE' (2 NPIs)
+    Example: '7546 JANES AVE' → '7546 JANES AVENUE' (6 NPIs)
+    Example: '1999 75TH ST' → '1999 75TH STREET' (1 NPIs)
+
+Average difference: 12.5%
+DECISION: Average difference exceeds 5%. Enhanced normalization should be ported into merge_and_score.py.

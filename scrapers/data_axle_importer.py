@@ -1487,6 +1487,21 @@ def compute_buyability(door):
         score += 10
         breakdown.append(("retirement_combo", 10, "solo + 25yr+ practice — high succession risk"))
 
+    # ── Family practice penalty ────────────────────────────────────────
+    # Family succession makes outside acquisition difficult
+    if door.get("entity_classification") == "family_practice":
+        score -= 20
+        breakdown.append(("family_practice", -20,
+                          "Family practice detected: shared last name at address suggests internal succession"))
+
+    # ── Multi-ZIP presence penalty ─────────────────────────────────────
+    # If this practice's name or EIN appears in 3+ ZIPs, it's likely a chain
+    multi_zip_count = door.get("_multi_zip_count", 0)
+    if multi_zip_count >= 3:
+        score -= 15
+        breakdown.append(("multi_zip", -15,
+                          f"Multi-location entity: appears in {multi_zip_count} ZIP codes"))
+
     # ── Clamp & confidence ───────────────────────────────────────────────
     score = max(0, min(100, score))
     door["buyability_score"] = score

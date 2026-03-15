@@ -115,6 +115,55 @@ Every step logs structured events to `logs/pipeline_events.jsonl` via `scrapers/
 | `scrapers/pipeline_logger.py` | 295 | Structured JSON-Lines event logger |
 | `pipeline_check.py` | 540 | Diagnostic health check tool |
 
+## Entity Classification System
+
+The `entity_classification` field on practices provides granular practice-type labels beyond `ownership_status`. Classifications are assigned by the DSO classifier's Pass 3 (`classify_entity_types()` in `dso_classifier.py`), using provider count at address, last name matching, taxonomy codes, corporate signals, and Data Axle enrichment data.
+
+### All 11 Entity Classification Values
+| Value | Definition |
+|-------|-----------|
+| `solo_established` | Single-provider practice, operating 20+ years or default for single providers with limited data |
+| `solo_new` | Single-provider practice, established within last 10 years |
+| `solo_inactive` | Single-provider practice, missing phone and website — likely retired or minimal activity |
+| `solo_high_volume` | Single-provider with 5+ employees or $800k+ revenue — likely needs associate help |
+| `family_practice` | 2+ providers at same address share a last name — internal succession likely |
+| `small_group` | 2-3 providers at same address, different last names, not matching known DSO |
+| `large_group` | 4+ providers at same address, not matching known DSO brand |
+| `dso_regional` | Appears independent but shows corporate signals (parent company, shared EIN, franchise field, branch location type, generic brand + high provider count) |
+| `dso_national` | Known national/regional DSO brand (Aspen, Heartland, etc.) matched with high confidence |
+| `specialist` | Specialist practice (Ortho, Endo, Perio, OMS, Pedo) — identified by taxonomy code or practice name keywords |
+| `non_clinical` | Dental lab, supply company, billing entity, staffing service |
+
+Each classification stores its reasoning in `classification_reasoning` for auditability. First matching rule wins (priority: non_clinical > specialist > dso_national > corporate signals > family_practice > large_group > small_group > solo variants).
+
+### Saturation Metrics (in zip_scores)
+Computed by `merge_and_score.py`'s `compute_saturation_metrics()`:
+
+- **DLD (Dentist Location Density):** `dld_gp_per_10k` = GP dental offices per 10,000 residents. National avg ~6.1. Lower = less competition.
+- **Buyable Practice Ratio:** `buyable_practice_ratio` = % of GP offices classified as solo_established, solo_inactive, or solo_high_volume. Higher = more acquisition targets.
+- **Corporate Share:** `corporate_share_pct` = % of GP offices classified as dso_regional or dso_national. Higher = more consolidated market.
+- **Market Type:** `market_type` = computed classification based on combined metrics. Set to NULL when `metrics_confidence` is 'low' (data insufficient for reliable labeling).
+- **People per GP Door:** `people_per_gp_door` = population / GP locations. Higher = fewer options per resident.
+
+### Specialist Separation Methodology
+A practice is classified as `specialist` if ANY of these conditions are met:
+1. **Taxonomy code match** — NPPES taxonomy starts with specialist prefix (1223D, 1223E, 1223P, 1223S, 1223X). Excludes 1223G (General) and 122300 (General Dentist).
+2. **Practice name keyword** — Name contains: ORTHODONT, PERIODON, ENDODONT, ORAL SURG, MAXILLOFACIAL, PEDIATRIC DENT, PEDODONT, PROSTHODONT, IMPLANT CENT.
+3. A location (unique address) counts as GP if it has at least one non-specialist, non-clinical practice. Specialist-only locations are counted separately in `total_specialist_locations`.
+
+### Confidence System
+- **`metrics_confidence`** on zip_scores: 'high' (classification coverage >80% AND unknown ownership <20%), 'medium' (coverage >50% AND unknown <40%), 'low' (anything else).
+- **`market_type_confidence`**: 'confirmed' (metrics_confidence is high), 'provisional' (medium), 'insufficient_data' (low — market_type set to NULL).
+- **`classification_confidence`** on practices: 0-100 score from DSO name/pattern matching. Higher = more certain the ownership classification is correct.
+
+### Market Type Values
+Priority order (first match wins): `low_resident_commercial`, `high_saturation_corporate`, `corporate_dominant`, `family_concentrated`, `low_density_high_income`, `low_density_independent`, `growing_undersupplied`, `balanced_mixed`, `mixed` (default).
+
+### Buyability Score Modifiers (Phase 5)
+In addition to the base scoring in `compute_buyability()` (data_axle_importer.py), two ADDITIVE penalties are applied after entity classification:
+- **Family practice penalty (-20):** `entity_classification == 'family_practice'` — shared last name at address suggests internal succession.
+- **Multi-ZIP presence penalty (-15):** Same practice name or EIN appears in 3+ watched ZIPs — likely a chain entity.
+
 ## Skills Available
 
 Use `/scraper-dev` when modifying any scraper. Use `/dashboard-dev` when modifying the Streamlit app. Use `/data-axle-workflow` for Data Axle export/import tasks. Use `/debug-pipeline` when investigating scraper failures or data issues.

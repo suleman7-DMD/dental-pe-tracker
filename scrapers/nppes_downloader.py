@@ -238,12 +238,15 @@ def parse_nppes_row(row):
     entity_type = "organization" if entity_code == "2" else "individual"
 
     # For organizations, use org name; for individuals, combine first+last
+    provider_last_name = None
     if entity_type == "organization":
         practice_name = str(row.get(COL_ORG_NAME, "")).strip() or None
     else:
         first = str(row.get(COL_FIRST_NAME, "")).strip()
         last = str(row.get(COL_LAST_NAME, "")).strip()
         practice_name = f"{first} {last}".strip() or None
+        # Preserve provider last name for individuals (used for dynasty detection)
+        provider_last_name = last.upper() if last else None
 
     dba = str(row.get(COL_ORG_OTHER, "")).strip() or None
     address = str(row.get(COL_ADDRESS, "")).strip() or None
@@ -277,6 +280,7 @@ def parse_nppes_row(row):
         "last_updated": last_updated,
         "ownership_status": "unknown",
         "data_source": "nppes",
+        "provider_last_name": provider_last_name,
     }
 
 

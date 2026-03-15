@@ -131,6 +131,13 @@ class Practice(Base):
     franchise_name = Column(Text)
     iusa_number = Column(Text)
     website = Column(Text)
+    # Phase 1: Provider last name (populated from NPPES "Provider Last Name" for individuals)
+    provider_last_name = Column(Text, nullable=True)
+    # Phase 1: Entity classification (populated by dso_classifier.py second pass)
+    # Values: solo_established, solo_new, solo_inactive, solo_high_volume,
+    #         family_practice, small_group, large_group,
+    #         dso_regional, dso_national, specialist, non_clinical
+    entity_classification = Column(Text, nullable=True)
     created_at = Column(DateTime, default=func.now())
     updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
 
@@ -249,6 +256,26 @@ class ZipScore(Base):
     # New columns for address-level dedup and consolidation analysis
     consolidated_count = Column(Integer)          # pe_backed_count + dso_affiliated_count
     unclassified_pct = Column(Float)              # unknown_count / total_practices * 100
+    # Phase 1: Saturation metrics (computed by merge_and_score.py)
+    total_gp_locations = Column(Integer, nullable=True)
+    total_specialist_locations = Column(Integer, nullable=True)
+    dld_gp_per_10k = Column(Float, nullable=True)
+    dld_total_per_10k = Column(Float, nullable=True)
+    people_per_gp_door = Column(Integer, nullable=True)
+    # Ownership structure metrics
+    buyable_practice_count = Column(Integer, nullable=True)
+    buyable_practice_ratio = Column(Float, nullable=True)
+    corporate_location_count = Column(Integer, nullable=True)
+    corporate_share_pct = Column(Float, nullable=True)
+    family_practice_count = Column(Integer, nullable=True)
+    specialist_density_flag = Column(Boolean, nullable=True)
+    # Data quality
+    entity_classification_coverage_pct = Column(Float, nullable=True)
+    data_axle_enrichment_pct = Column(Float, nullable=True)
+    metrics_confidence = Column(Text, nullable=True)
+    # Market classification
+    market_type = Column(Text, nullable=True)
+    market_type_confidence = Column(Text, nullable=True)
 
     __table_args__ = (
         UniqueConstraint("zip_code", "score_date", name="uq_zip_score_date"),
@@ -264,6 +291,11 @@ class WatchedZip(Base):
     state = Column(Text)
     metro_area = Column(Text)
     notes = Column(Text)
+    # Phase 1: Demographic columns (populated by census_loader.py)
+    population = Column(Integer, nullable=True)
+    median_household_income = Column(Integer, nullable=True)
+    population_growth_pct = Column(Float, nullable=True)
+    demographics_updated_at = Column(DateTime, nullable=True)
 
 
 # ── Engine / Session ────────────────────────────────────────────────────────

@@ -1,6 +1,6 @@
 # Dental PE Consolidation Intelligence Platform
 
-A data-driven intelligence dashboard that tracks private equity activity in U.S. dentistry. It scrapes deal announcements, monitors practice ownership changes, scores markets for consolidation risk, and identifies acquisition targets — all in one place.
+A data-driven intelligence dashboard that tracks private equity activity in U.S. dentistry. It scrapes deal announcements, monitors practice ownership changes, classifies every practice into 11 entity types, computes market saturation metrics (dental location density, buyable practice ratio, corporate share), scores markets for consolidation risk, and identifies acquisition targets — all in one place.
 
 **Live Dashboard:** [suleman7-pe.streamlit.app](https://suleman7-pe.streamlit.app/)
 **Repo:** [github.com/suleman7-DMD/dental-pe-tracker](https://github.com/suleman7-DMD/dental-pe-tracker)
@@ -22,12 +22,14 @@ A data-driven intelligence dashboard that tracks private equity activity in U.S.
 11. [Pipeline Health Check](#pipeline-health-check)
 12. [Dashboard Page Guide](#dashboard-page-guide)
 13. [Useful SQL Queries](#useful-sql-queries)
-14. [Feature Add-Ons via Claude Code](#feature-add-ons-via-claude-code)
-15. [Quarterly System Health Check](#quarterly-system-health-check)
-16. [Emergency: If Something Breaks](#emergency-if-something-breaks)
-17. [Known Issues (Resolved)](#known-issues-resolved)
-18. [Annual Maintenance Calendar](#annual-maintenance-calendar)
-19. [Quick Command Cheat Sheet](#quick-command-cheat-sheet)
+14. [Entity Classification System](#entity-classification-system)
+15. [Saturation Metrics](#saturation-metrics)
+16. [Feature Add-Ons via Claude Code](#feature-add-ons-via-claude-code)
+17. [Quarterly System Health Check](#quarterly-system-health-check)
+18. [Emergency: If Something Breaks](#emergency-if-something-breaks)
+19. [Known Issues (Resolved)](#known-issues-resolved)
+20. [Annual Maintenance Calendar](#annual-maintenance-calendar)
+21. [Quick Command Cheat Sheet](#quick-command-cheat-sheet)
 
 ---
 
@@ -40,11 +42,11 @@ This platform automatically collects data about dental practice acquisitions fro
 | Page | What It Shows |
 |------|---------------|
 | **Deal Flow** | Every PE dental deal we know about — charts by year, by state, by deal type, recent activity feed |
-| **Market Intel** | Your watched ZIP codes — who owns what in Chicagoland and Boston Metro, consolidation map, ZIP-level detail, practice changes |
-| **Buyability** | Scores individual practices on how "buyable" they are — filters by ZIP, verdict categories, confidence ratings |
-| **Job Market** | Post-graduation job hunting — practice density map (pydeck), market overview charts, searchable practice directory, opportunity signals (retirement risk, buyability, recent changes), ownership landscape, market analytics |
-| **Research** | Deep dives — look up a specific PE sponsor, platform company, or state. Plus a SQL explorer for custom queries |
-| **System** | Data freshness checks, completeness stats, pipeline activity log, and forms to manually add deals/practices |
+| **Market Intel** | Your watched ZIP codes — who owns what in Chicagoland and Boston Metro, consolidation map, ZIP-level detail, practice changes, **saturation analysis table** (DLD, buyable %, corporate %, market type for every ZIP with color-coding and confidence stars) |
+| **Buyability** | Scores individual practices on how "buyable" they are — filters by ZIP, verdict categories, confidence ratings. Includes family practice (-20) and multi-ZIP (-15) penalties |
+| **Job Market** | Post-graduation job hunting — practice density map (pydeck), market overview charts, **dual-lens practice directory** (Employment Opportunities tab + Ownership Pipeline tab), 9 KPI cards (including Avg Dental Density, Buyable Practice %, High-Volume Solos), **practice detail view** with classification reasoning, opportunity signals, ownership landscape, market analytics, **data freshness display** |
+| **Research** | Deep dives — look up a specific PE sponsor, platform company, or state. SQL explorer with **9 preset queries** (including Saturation Comparison, Family Practices, High-Vol Solos, Enrichment Coverage) |
+| **System** | Data freshness checks (demographics, NPPES, Data Axle timestamps), completeness stats, pipeline activity log, and forms to manually add deals/practices |
 
 ---
 
@@ -57,11 +59,14 @@ This platform automatically collects data about dental practice acquisitions fro
 | DSO-affiliated | 2,848 |
 | PE-backed | 401 |
 | Unknown ownership | 35,341 |
+| Entity-classified (watched ZIPs) | 14,027 (100% coverage across 11 types) |
 | Total deals | 2,512 |
 | Data Axle enriched | 2,992 (with lat/lon, revenue, employees, year established) |
-| Scored ZIPs | 290 |
+| Scored ZIPs | 290 (279 with saturation metrics, 11 missing Census data) |
 | Watched ZIPs | 290 (268 Chicagoland + 21 Boston + 1 other) |
-| Practice changes tracked | 5,129 |
+| ZIPs with demographics | 279 (population + median household income from Census ACS) |
+| Practices with last name data | 289,963 (for family practice detection) |
+| Practice changes tracked | 5,196 |
 | DSO locations scraped | 408 |
 | ADA HPI benchmarks | 918 (2022-2024, by state and career stage) |
 | Database size | 145 MB (32 MB compressed) |
@@ -81,8 +86,9 @@ The system pulls from 9 different data sources. Some run automatically, some nee
 | **ADA HPI** | State-level DSO affiliation rates by career stage | Annually | None | Yes — auto-downloader checks weekly, grabs new files when ADA publishes them |
 | **Data Axle** | Practice-level business data (revenue, employees, year established, ownership, lat/lon, parent company, EIN, franchise) | Quarterly | ~15 min (smart batch) / ~45 min (manual) | Semi-auto — smart batch exporter handles planning + file mgmt, you handle browser clicks + CAPTCHAs |
 | **ADSO Scraper** | DSO office locations scraped from their websites | Weekly | None | Yes — runs via cron every Sunday |
-| **DSO Classifier** | Tags each practice as independent, DSO-affiliated, or PE-backed (name pattern matching + corporate linkage detection) | After any data load | None | Auto — runs as part of the pipeline |
-| **Merge & Score** | Consolidation scores, opportunity scores, metro-level rollups, auto-backfills watched ZIPs | After any data load | None | Auto — runs as part of the pipeline |
+| **DSO Classifier** | Pass 1: Tags ownership (independent/DSO/PE-backed). Pass 2: Location matching against DSO offices. Pass 3: Entity classification (11 types) + buyability adjustments (family practice, multi-ZIP penalties) | After any data load | None | Auto — runs as part of the pipeline |
+| **Census Loader** | ZIP-level population and median household income from Census ACS 5-year estimates | Annually | None | Manual — run `python3 scrapers/census_loader.py` |
+| **Merge & Score** | Consolidation scores, saturation metrics (DLD, buyable ratio, corporate share), market type classification, metro-level rollups, auto-backfills watched ZIPs | After any data load | None | Auto — runs as part of the pipeline |
 
 **Why so many sources?** No single source has the full picture. PESP and GDN catch deal announcements but miss deal sizes. PitchBook has financials but misses smaller deals. NPPES has every practice but doesn't know who owns them. Data Axle has business details that help figure out ownership. Combining them all gives you the most complete view possible.
 
@@ -579,6 +585,8 @@ Every Data Axle practice gets a **buyability score (0-100)** — "how likely is 
 | Single location | +10 | Not already a chain |
 | Independence | +10 | Confirmed independent (not unknown) |
 | Name signal | +5 | Dentist name in practice (personal brand = solo) |
+| **Family practice** | **-20** | **Shared last name at address suggests internal succession** |
+| **Multi-ZIP presence** | **-15** | **Same practice name or EIN in 3+ ZIPs = likely a chain** |
 | **Disqualifiers** | **-30 to -50** | **Subsidiary, publicly traded, government, corporate name** |
 
 **Confidence stars:**
@@ -697,14 +705,21 @@ Here are common tasks and which page to use:
 | I want to... | Go to... | Then... |
 |--------------|----------|---------|
 | See how consolidated my target market is | **Market Intel** | Select "Chicagoland" or "Boston Metro" and read the consolidation percentage |
+| Compare dental saturation across all my ZIPs | **Market Intel** | Scroll to "Saturation Analysis" — sortable table with DLD, buyable %, corporate %, market type |
 | Find buyable practices in Homer Glen | **Buyability** | Filter to ZIP 60491, sort by score descending |
-| Scope out job opportunities near where I'll live | **Job Market** | Pick West Loop, Woodridge, Bolingbrook, or All Chicagoland — see density map, practice directory, opportunity signals |
+| Scope out job opportunities near where I'll live | **Job Market** | Pick West Loop, Woodridge, Bolingbrook, or All Chicagoland — see density map, dual-lens directory |
+| Find practices that are hiring associates | **Job Market** | Practice Directory → "Employment Opportunities" tab — large groups and high-employee practices |
+| Find practices approaching ownership transition | **Job Market** | Practice Directory → "Ownership Pipeline" tab — established solos with high buyability |
+| See the full intelligence profile for a practice | **Job Market** | Click a practice in the directory — entity classification, reasoning, all available data fields |
 | See what Specialized Dental Partners is doing | **Research** | PE Sponsor Profile → "Quad-C Management" or Platform Profile → "Specialized Dental Partners" |
 | View all deals in Illinois this year | **Deal Flow** | Sidebar: State = IL, Date = 2026-01-01 to today |
 | Check for acquisitions in my ZIPs | **Market Intel** | Scroll to "Recent Practice Changes" section, filter to your metro |
 | Find retirement-risk practices near me | **Job Market** | Opportunity Signals → Retirement Risk tab |
 | See which DSOs dominate my area | **Job Market** | Market Analytics → Competitive Landscape section |
-| Run a custom database query | **Research** | SQL Explorer tab — write your query or use a template |
+| Find family practices with internal succession | **Research** | SQL Explorer → "Family Practices" preset |
+| Find high-volume solos that need associate help | **Research** | SQL Explorer → "High-Vol Solos" preset |
+| Check Data Axle coverage by ZIP | **Research** | SQL Explorer → "Enrichment Coverage" preset |
+| Run a custom database query | **Research** | SQL Explorer tab — write your query or use one of 9 presets |
 
 ---
 
@@ -779,6 +794,46 @@ FROM practices
 WHERE parent_company IS NOT NULL OR ein IS NOT NULL OR franchise_name IS NOT NULL
 ORDER BY parent_company, practice_name
 ```
+
+---
+
+## Entity Classification System
+
+Every practice in watched ZIPs gets an `entity_classification` — a granular label that goes beyond simple ownership status. This is assigned by the DSO classifier's Pass 3, using provider counts at each address, last name matching, taxonomy codes, corporate signals, and Data Axle enrichment data.
+
+| Classification | What It Means | Typical % |
+|---------------|---------------|-----------|
+| `solo_established` | Single-provider practice, 20+ years or default solo | ~28% |
+| `small_group` | 2-3 providers at same address, different last names | ~17% |
+| `specialist` | Ortho, Endo, Perio, OMS, Pedo — identified by taxonomy code or name | ~17% |
+| `large_group` | 4+ providers at same address, not matching known DSO | ~12% |
+| `family_practice` | 2+ providers share a last name at same address — internal succession likely | ~9% |
+| `dso_regional` | Corporate signals (parent company, shared EIN, franchise, branch type) | ~8% |
+| `solo_high_volume` | Solo with 5+ employees or $800K+ revenue — likely needs associate help | ~5% |
+| `dso_national` | Known national DSO brand (Aspen, Heartland, etc.) | ~2% |
+| `solo_inactive` | Solo missing phone and website — likely retired or minimal | ~1% |
+| `solo_new` | Solo established within last 10 years | <1% |
+| `non_clinical` | Dental lab, supply company, billing entity | <1% |
+
+Each classification includes a `classification_reasoning` field that explains exactly why it was assigned (e.g., "Family practice: 3 providers at address, shared last names: 'GROSELAK' (2x)").
+
+## Saturation Metrics
+
+For each watched ZIP with Census data (279 of 290), the system computes market saturation metrics:
+
+| Metric | Field | What It Measures |
+|--------|-------|-----------------|
+| **Dental Location Density (DLD)** | `dld_gp_per_10k` | GP dental offices per 10,000 residents. National avg ~6.1. Lower = less competition. |
+| **Buyable Practice Ratio (BHR)** | `buyable_practice_ratio` | % of GP offices that are independently-owned solos (established, inactive, or high-volume). Higher = more acquisition targets. |
+| **Corporate Share** | `corporate_share_pct` | % of GP offices that are DSO-affiliated (regional or national). Higher = more consolidated market. |
+| **People per GP Door** | `people_per_gp_door` | Population / GP locations. Higher = fewer options per resident. |
+| **Market Type** | `market_type` | Computed label based on combined metrics (e.g., `low_resident_commercial`, `high_density_independent`, `corporate_dominant`). |
+
+**GP vs Specialist separation:** A location (unique address) counts as GP if it has at least one non-specialist practice. Specialist-only locations are counted separately. This prevents orthodontists and oral surgeons from inflating the GP dental density.
+
+**Confidence system:** Each ZIP gets a `metrics_confidence` rating (high/medium/low) based on entity classification coverage and unknown ownership rate. ZIPs with low confidence have their `market_type` set to NULL — all underlying metrics are still stored.
+
+**Market types** (in priority order): `low_resident_commercial`, `high_saturation_corporate`, `corporate_dominant`, `family_concentrated`, `low_density_high_income`, `low_density_independent`, `growing_undersupplied`, `balanced_mixed`, `mixed` (default).
 
 ---
 
@@ -1047,14 +1102,24 @@ cd ~/dental-pe-tracker && python3 pipeline_check.py --fix
 cd ~/dental-pe-tracker && python3 scrapers/nppes_downloader.py
 
 # ── Classification & Scoring ──────────────────────────────
-# Run DSO classifier
-cd ~/dental-pe-tracker && python3 scrapers/dso_classifier.py
+# Run DSO classifier (Pass 1: ownership, Pass 2: location match, Pass 3: entity types)
+cd ~/dental-pe-tracker && python3 scrapers/dso_classifier.py --zip-filter
 
 # Run DSO classifier (force reclassify all, including already-classified)
-cd ~/dental-pe-tracker && python3 scrapers/dso_classifier.py --force
+cd ~/dental-pe-tracker && python3 scrapers/dso_classifier.py --zip-filter --force
 
-# Recalculate consolidation scores
+# Run entity classification only (skip ownership Pass 1 & 2)
+cd ~/dental-pe-tracker && python3 scrapers/dso_classifier.py --entity-types-only --force
+
+# Print entity classification verification report
+cd ~/dental-pe-tracker && python3 scrapers/dso_classifier.py --verify
+
+# Recalculate consolidation scores + saturation metrics
 cd ~/dental-pe-tracker && python3 scrapers/merge_and_score.py
+
+# ── Demographics ─────────────────────────────────────────
+# Load/refresh Census population + MHI data for watched ZIPs
+cd ~/dental-pe-tracker && python3 scrapers/census_loader.py
 
 # ── PitchBook ─────────────────────────────────────────────
 # Import PitchBook files (after dropping in /data/pitchbook/raw/)

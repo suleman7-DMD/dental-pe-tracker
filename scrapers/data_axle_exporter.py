@@ -527,6 +527,7 @@ def run_export(metro_label, batches, start_batch=0, downloaded_files=None):
         print()
         result_input = input(f"    How many results? (press Enter to skip, or type number): ").strip()
         is_overflow = False
+        result_count = 0
         if result_input.isdigit():
             result_count = int(result_input)
             pages = math.ceil(result_count / 25)
@@ -542,8 +543,11 @@ def run_export(metro_label, batches, start_batch=0, downloaded_files=None):
 
         # Select and download
         bold("Now in the browser:")
-        print(f"   1. Select ALL results (checkbox by 'Company Name' on each page,")
-        print(f"      or 'Select All on All Pages' if available)")
+        if is_overflow:
+            print(f"   1. Select records on pages 1-10 (first 250 records)")
+        else:
+            print(f"   1. Select ALL results (checkbox by 'Company Name' on each page,")
+            print(f"      or 'Select All on All Pages' if available)")
         print(f"   2. Click 'Download'")
         print(f"   3. Format: CSV (or Excel)")
         if batch_idx == start_batch:
@@ -562,19 +566,32 @@ def run_export(metro_label, batches, start_batch=0, downloaded_files=None):
         for dl_pass in range(download_passes):
             pass_label = f" (part {dl_pass + 1}/{download_passes})" if download_passes > 1 else ""
 
+            # Snapshot directory BEFORE download prompt so we can detect new files
+            before_files = set(os.listdir(BASE_DIR))
+
             if dl_pass > 0:
+                start_rec = dl_pass * 250 + 1
+                end_rec = min((dl_pass + 1) * 250, result_count)
+                start_page = dl_pass * 10 + 1
+                end_page = min((dl_pass + 1) * 10, math.ceil(result_count / 25))
                 divider()
                 bold(f"OVERFLOW DOWNLOAD — part {dl_pass + 1}/{download_passes}")
-                ok(f"Download the next 250 records (or remaining) for this same batch.")
+                info(f"Records {start_rec}–{end_rec} of {result_count}")
+                print()
+                bold("In the browser:")
+                print(f"   1. Deselect all currently selected records")
+                print(f"   2. Navigate to page {start_page}")
+                print(f"   3. Select records on pages {start_page}–{end_page}")
+                print(f"   4. Click 'Download' → same fields as before")
+                print()
                 bold("Press Enter AFTER the file has finished downloading...")
                 input("    >>> ")
             else:
-                # Snapshot the directory before download
                 print()
+                if download_passes > 1:
+                    info(f"Downloading part 1/{download_passes} (records 1–250 of {result_count})")
                 bold(f"Press Enter AFTER the file has finished downloading{pass_label}...")
                 input("    >>> ")
-
-            before_files = set(os.listdir(BASE_DIR))
 
             # Try to find the new file
             new_file = find_new_csv(before_files)
