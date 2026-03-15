@@ -38,15 +38,17 @@ Key tables: `deals`, `practices`, `practice_changes`, `watched_zips`, `zip_score
 - 2,992 Data Axle enriched practices (with lat/lon, revenue, employees, year established)
 - 290 scored ZIPs
 
-## Dashboard Pages (6 total)
+## Dashboard Pages (8 total, Next.js primary)
 
 | Page | What It Shows |
 |------|---------------|
+| **Home** | KPI cards, nav cards, recent deals, data freshness |
 | **Deal Flow** | Every PE dental deal — charts by year, state, deal type, recent activity feed |
 | **Market Intel** | Watched ZIPs — consolidation map, ownership breakdown, ZIP-level detail, practice changes |
 | **Buyability** | Individual practice scoring — filters by ZIP, verdict categories, confidence ratings |
-| **Job Market** | Post-graduation job hunting — practice density pydeck map, market overview, searchable directory, opportunity signals, ownership landscape, market analytics |
+| **Job Market** | Post-graduation job hunting — practice density map, market overview, searchable directory, opportunity signals, ownership landscape, market analytics |
 | **Research** | Deep dives — PE sponsor profiles, platform profiles, state analysis, SQL explorer |
+| **Intelligence** | AI qualitative research — ZIP market intel (10-signal reports), practice dossiers (readiness, confidence, flags), expandable detail panels |
 | **System** | Data freshness, pipeline logs, manual data entry forms |
 
 ### Job Market Page Structure

@@ -47,7 +47,7 @@ This platform automatically collects data about dental practice acquisitions fro
 - **Next.js Dashboard** (primary) — Modern React app at `dental-pe-nextjs/`, deployed on Vercel, reads from Supabase Postgres. This is the actively developed frontend with full entity classification support, Mapbox maps, and a "Vercel Dashboard x Bloomberg Terminal" dark theme.
 - **Streamlit Dashboard** (legacy) — Single-file Python app at `dashboard/app.py`, deployed on Streamlit Cloud, reads from local SQLite. Still functional but no longer the primary interface.
 
-**The 7 dashboard pages (Next.js):**
+**The 8 dashboard pages (Next.js):**
 
 | Page | What It Shows |
 |------|---------------|
@@ -57,6 +57,7 @@ This platform automatically collects data about dental practice acquisitions fro
 | **Buyability** | Scores individual practices on how "buyable" they are — filters by ZIP, verdict categories, confidence ratings, entity classification |
 | **Job Market** | Post-graduation job hunting — living location selector, KPI grid, practice density map (Mapbox GL), market overview charts, searchable practice directory, opportunity signals, ownership landscape, market analytics |
 | **Research** | Deep dives — PE sponsor profiles, platform profiles, state analysis, SQL explorer with preset queries |
+| **Intelligence** | AI-powered qualitative research — ZIP market intelligence (10-signal reports), practice due diligence dossiers (readiness, confidence, Google reviews, red/green flags), expandable detail panels, research coverage KPIs |
 | **System** | Data freshness indicators, source coverage, completeness bars, pipeline log viewer, manual entry forms (add deal, edit practice) |
 
 ---
@@ -858,6 +859,10 @@ Here are common tasks and which page to use:
 | Find family practices with internal succession | **Research** | SQL Explorer — "Family Practices" preset |
 | Find high-volume solos that need associate help | **Research** | SQL Explorer — "High-Vol Solos" preset |
 | Check Data Axle coverage by ZIP | **Research** | SQL Explorer — "Enrichment Coverage" preset |
+| See AI-generated market research for a ZIP | **Intelligence** | ZIP Intelligence table — click any ZIP to expand the full 10-signal report |
+| Get a due diligence dossier on a practice | **Intelligence** | Practice Dossiers table — click any row for full assessment with red/green flags |
+| Find practices rated "high readiness" by AI | **Intelligence** | Practice Dossiers table — sort by Readiness column |
+| Check AI research coverage and costs | **Intelligence** | KPI cards show ZIPs researched, coverage %, total cost |
 | Run a custom database query | **Research** | SQL Explorer tab — write your query or use presets |
 
 ---

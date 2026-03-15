@@ -73,7 +73,7 @@ Mirror of SQLite tables, synced by `scrapers/sync_to_supabase.py`. Same schema, 
 
 **Env vars:** `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `NEXT_PUBLIC_MAPBOX_TOKEN`
 
-### Pages (7 total)
+### Pages (8 total)
 
 | Route | Page | What It Shows |
 |-------|------|---------------|
@@ -83,6 +83,7 @@ Mirror of SQLite tables, synced by `scrapers/sync_to_supabase.py`. Same schema, 
 | `/buyability` | Buyability | Verdict extraction from notes field, 4 category KPIs, ZIP filter, sortable table with CSV export |
 | `/job-market` | Job Market | Living location selector (4 presets), 9 KPI cards, Mapbox practice density map (hex layers + individual dots), market overview charts (ownership donut, consolidation bar, age histogram, top DSOs), searchable directory with entity_classification filters, opportunity signals (retirement risk, high buyability scatter, recent changes), ownership landscape (entity classification bar, top DSOs, DSO penetration by ZIP with city names from watched_zips), market analytics |
 | `/research` | Research | PE sponsor profiles, DSO platform profiles, state deep dives, SQL explorer (SELECT-only, forbidden keywords) |
+| `/intelligence` | Intelligence | AI-powered qualitative research — 6 KPI cards (coverage, readiness, cost, confidence), ZIP market intelligence table with expandable 10-signal detail panels, practice dossier table with readiness/confidence badges and expandable due diligence reports |
 | `/system` | System | Data freshness indicators, source coverage, completeness bars, pipeline log viewer, manual entry forms (add deal, edit practice) |
 
 ### Data Flow Pattern
@@ -153,6 +154,10 @@ Key helpers in `src/lib/constants/entity-classifications.ts`:
 | `src/app/job-market/_components/opportunity-signals.tsx` | Retirement risk, buyability, changes |
 | `src/app/job-market/_components/ownership-landscape.tsx` | Entity classification, DSO penetration |
 | `src/app/job-market/_components/market-analytics.tsx` | Density, competitive landscape |
+| `src/app/intelligence/page.tsx` | Intelligence — server fetch for ZIP + practice intel |
+| `src/app/intelligence/_components/intelligence-shell.tsx` | Intelligence client shell — KPIs, ZIP intel table, practice dossier table, expandable detail panels |
+| `src/lib/types/intel.ts` | TypeScript interfaces (ZipQualitativeIntel, PracticeIntel, IntelStats) |
+| `src/lib/supabase/queries/intel.ts` | Intel query functions (getZipIntel, getPracticeIntel, getIntelStats) |
 | `src/app/research/_components/research-shell.tsx` | Research client shell — tabs |
 | `src/app/research/_components/sponsor-profile.tsx` | PE sponsor deep dive |
 | `src/app/research/_components/platform-profile.tsx` | DSO platform deep dive |
