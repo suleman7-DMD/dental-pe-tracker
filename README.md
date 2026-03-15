@@ -32,9 +32,10 @@ A data-driven intelligence platform that tracks private equity consolidation in 
 20. [Feature Add-Ons via Claude Code](#feature-add-ons-via-claude-code)
 21. [Quarterly System Health Check](#quarterly-system-health-check)
 22. [Emergency: If Something Breaks](#emergency-if-something-breaks)
-23. [Known Issues (Resolved)](#known-issues-resolved)
-24. [Annual Maintenance Calendar](#annual-maintenance-calendar)
-25. [Quick Command Cheat Sheet](#quick-command-cheat-sheet)
+23. [Recent Updates](#recent-updates)
+24. [Known Issues (Resolved)](#known-issues-resolved)
+25. [Annual Maintenance Calendar](#annual-maintenance-calendar)
+26. [Quick Command Cheat Sheet](#quick-command-cheat-sheet)
 
 ---
 
@@ -44,18 +45,18 @@ This platform automatically collects data about dental practice acquisitions fro
 
 **Two frontends, one data pipeline:**
 
-- **Next.js Dashboard** (primary) — Modern React app at `dental-pe-nextjs/`, deployed on Vercel, reads from Supabase Postgres. This is the actively developed frontend with full entity classification support, Mapbox maps, and a "Vercel Dashboard x Bloomberg Terminal" dark theme.
+- **Next.js Dashboard** (primary) — Modern React app at `dental-pe-nextjs/`, deployed on Vercel, reads from Supabase Postgres. This is the actively developed frontend with full entity classification support, Mapbox maps, and a warm light theme with Bloomberg-grade information density.
 - **Streamlit Dashboard** (legacy) — Single-file Python app at `dashboard/app.py`, deployed on Streamlit Cloud, reads from local SQLite. Still functional but no longer the primary interface.
 
 **The 8 dashboard pages (Next.js):**
 
 | Page | What It Shows |
 |------|---------------|
-| **Home** | Hero section, 6 nav cards with key stats, recent deals strip, data freshness bar |
-| **Deal Flow** | Every PE dental deal — KPIs, timeline chart, deal type/specialty breakdowns, top sponsors/platforms, state choropleth, searchable table |
-| **Market Intel** | Watched ZIPs — saturation table, consolidation map, ownership breakdown, ZIP scores, practice changes, ADA benchmarks, city practice tree |
+| **Home** | 6 KPI cards, two-column layout with recent deals table + activity feed, quick nav grid |
+| **Deal Flow** | 4 URL-synced tabs: Overview (KPIs, timeline), Sponsors & Platforms (charts), Geography (state choropleth), Deals Table (searchable, filterable) |
+| **Market Intel** | 3 URL-synced tabs: Overview (KPIs, consolidation map, ZIP scores), Practice Data (city practice tree, recent changes), Benchmarks (ADA data, DSO penetration by ZIP) |
 | **Buyability** | Scores individual practices on how "buyable" they are — filters by ZIP, verdict categories, confidence ratings, entity classification |
-| **Job Market** | Post-graduation job hunting — living location selector, KPI grid, practice density map (Mapbox GL), market overview charts, searchable practice directory, opportunity signals, ownership landscape, market analytics |
+| **Job Market** | 4 URL-synced tabs: Overview (location selector, KPIs, density map, market charts), Directory (searchable practice table), Opportunities (retirement risk, buyability signals, recent changes), Market Analysis (ownership landscape, saturation table, ADA benchmarks, competitive analytics) |
 | **Research** | Deep dives — PE sponsor profiles, platform profiles, state analysis, SQL explorer with preset queries |
 | **Intelligence** | AI-powered qualitative research — ZIP market intelligence (10-signal reports), practice due diligence dossiers (readiness, confidence, Google reviews, red/green flags), expandable detail panels, research coverage KPIs |
 | **System** | Data freshness indicators, source coverage, completeness bars, pipeline log viewer, manual entry forms (add deal, edit practice) |
@@ -111,13 +112,15 @@ The Next.js frontend uses `entity_classification` (11 granular types) as the PRI
 
 ### Design System
 
-"Vercel Dashboard x Bloomberg Terminal" — a dark theme with semantic color coding:
+Warm light theme (#FAFAF7 base) with goldenrod (#B8860B) accent, inspired by Synchro aesthetics with Bloomberg-grade information density:
 
+- **Background:** #FAFAF7 (base), #FFFFFF (cards), #F5F5F0 (elevated surfaces)
+- **Sidebar:** Dark charcoal (#2C2C2C) with grouped navigation (Overview / Markets / Analysis / Admin)
+- **Accent:** Goldenrod #B8860B (primary accent, links, interactive elements)
 - **Green** (#22C55E) — independent practices, opportunities, positive signals
 - **Red** (#EF4444) — corporate/PE-backed, risk indicators
 - **Amber** (#F59E0B) — DSO-affiliated, moderate signals
 - **Purple** (#A855F7) — specialist practices
-- **Blue** (#3B82F6) — primary accent, links, interactive elements
 - **Gray** (#64748B) — unknown, insufficient data
 
 ### Environment Variables
@@ -145,11 +148,12 @@ npm run lint     # ESLint
 ```
 dental-pe-nextjs/
   src/
-    app/                    Next.js App Router — 7 page routes + API routes
-      deal-flow/            PE deal tracking
-      market-intel/         ZIP consolidation analysis
+    app/                    Next.js App Router — 8 page routes + API routes
+      deal-flow/            PE deal tracking (4 tabs)
+      market-intel/         ZIP consolidation analysis (3 tabs)
       buyability/           Acquisition target scoring
-      job-market/           Career opportunity finder
+      job-market/           Career opportunity finder (4 tabs)
+      intelligence/         AI-powered qualitative research
       research/             Deep dives + SQL explorer
       system/               Pipeline health + manual entry
       api/                  Route handlers (deals, practices, sql-explorer, watched-zips)
@@ -845,7 +849,7 @@ Here are common tasks and which page to use:
 | I want to... | Go to... | Then... |
 |--------------|----------|---------|
 | See how consolidated my target market is | **Market Intel** | Select "Chicagoland" or "Boston Metro" and read the consolidation percentage |
-| Compare dental saturation across all my ZIPs | **Market Intel** | Scroll to "Saturation Analysis" — sortable table with DLD, buyable %, corporate %, market type |
+| Compare dental saturation across all my ZIPs | **Job Market** | Market Analysis tab → "Saturation Analysis" — sortable table with DLD, buyable %, corporate %, market type |
 | Find buyable practices in Homer Glen | **Buyability** | Filter to ZIP 60491, sort by score descending |
 | Scope out job opportunities near where I'll live | **Job Market** | Pick West Loop, Woodridge, Bolingbrook, or All Chicagoland — see density map, dual-lens directory |
 | Find practices that are hiring associates | **Job Market** | Practice Directory — large groups and high-employee practices |
@@ -853,9 +857,9 @@ Here are common tasks and which page to use:
 | See the full intelligence profile for a practice | **Job Market** | Click a practice in the directory — entity classification, reasoning, all available data fields |
 | See what Specialized Dental Partners is doing | **Research** | PE Sponsor Profile or Platform Profile |
 | View all deals in Illinois this year | **Deal Flow** | Filter: State = IL, Date = 2026-01-01 to today |
-| Check for acquisitions in my ZIPs | **Market Intel** | Scroll to "Recent Practice Changes" section, filter to your metro |
-| Find retirement-risk practices near me | **Job Market** | Opportunity Signals — Retirement Risk tab |
-| See which DSOs dominate my area | **Job Market** | Market Analytics — Competitive Landscape section |
+| Check for acquisitions in my ZIPs | **Market Intel** | Practice Data tab → "Recent Practice Changes" section, filter to your metro |
+| Find retirement-risk practices near me | **Job Market** | Opportunities tab → Retirement Risk section |
+| See which DSOs dominate my area | **Job Market** | Market Analysis tab → Competitive Landscape section |
 | Find family practices with internal succession | **Research** | SQL Explorer — "Family Practices" preset |
 | Find high-volume solos that need associate help | **Research** | SQL Explorer — "High-Vol Solos" preset |
 | Check Data Axle coverage by ZIP | **Research** | SQL Explorer — "Enrichment Coverage" preset |
@@ -1218,6 +1222,19 @@ Restore from the most recent backup:
 cp ~/dental-pe-tracker/backups/$(ls -t ~/dental-pe-tracker/backups/ | head -1) \
    ~/dental-pe-tracker/data/dental_pe_tracker.db
 ```
+
+---
+
+## Recent Updates
+
+### 2026-03-15: Full UI/UX Overhaul (58 files, +2,093 / -1,313 lines)
+
+- **Theme**: Migrated from dark (#0A0F1E base) to warm light (#FAFAF7 base) with goldenrod (#B8860B) accent, inspired by Synchro aesthetics
+- **Sidebar**: Dark charcoal (#2C2C2C) with grouped navigation sections (Overview / Markets / Analysis / Admin)
+- **Tab navigation**: Deal Flow (4 tabs), Market Intel (3 tabs), Job Market (4 tabs) — all URL-synced via query params for shareable deep links
+- **Module relocations**: Saturation table + ADA benchmarks moved to Job Market "Market Analysis" tab; DSO penetration table moved to Market Intel "Benchmarks" tab; Recent activity feed added to Home page
+- **Home page**: Redesigned with two-column layout (recent deals + activity feed), 6 KPI cards, quick nav grid
+- **Zero data/functionality loss**: All queries, metrics, tables, charts, maps, and CSV exports preserved through the overhaul
 
 ---
 

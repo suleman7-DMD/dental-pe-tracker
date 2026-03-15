@@ -67,7 +67,7 @@ Mirror of SQLite tables, synced by `scrapers/sync_to_supabase.py`. Same schema, 
 
 **Stack:** Next.js 16, React 19, TypeScript 5, Supabase Postgres, TanStack React Query + Table, Recharts 3, Mapbox GL, Tailwind CSS 4, shadcn UI, Lucide React
 
-**Fonts:** DM Sans (headings), Inter (body), JetBrains Mono (data values)
+**Fonts:** DM Sans (headings, 24px/700 page titles), Inter (body), JetBrains Mono (data values, 28px/700 KPIs). Data labels: 11px/500/Inter/uppercase/tracking-wider.
 
 **Deployment:** Vercel auto-deploys on push to main
 
@@ -77,11 +77,11 @@ Mirror of SQLite tables, synced by `scrapers/sync_to_supabase.py`. Same schema, 
 
 | Route | Page | What It Shows |
 |-------|------|---------------|
-| `/` | Home | 8 KPI cards (Lucide icons), 6 nav cards, recent deals table, data freshness bar |
-| `/deal-flow` | Deal Flow | KPIs with YoY deltas, deal volume timeline (stacked bar + rolling avg), sponsor/platform charts, state choropleth, specialty breakdown, searchable table with URL-synced filters |
-| `/market-intel` | Market Intel | Metro area filter, entity_classification-based KPIs (server-side computed), ADA benchmarks, Mapbox consolidation map (green/yellow/red gradient), ZIP score table with computed columns, paginated city practice tree, recent changes, saturation analysis |
+| `/` | Home | 6 KPI cards (Lucide icons), two-column layout (recent deals table + activity feed from practice_changes), data freshness bar, 2x3 quick nav grid |
+| `/deal-flow` | Deal Flow | **4 tabs: Overview \| Sponsors \| Geography \| Deals.** Persistent KPI strip above tabs. Overview: deal volume timeline + specialty charts. Sponsors: top 15 sponsors/platforms. Geography: state choropleth. Deals: full searchable table with URL-synced filters. |
+| `/market-intel` | Market Intel | **3 tabs: Consolidation \| ZIP Analysis \| Ownership.** Persistent tiered consolidation KPIs above tabs. Consolidation: DSO Penetration Table + Mapbox consolidation map. ZIP Analysis: ZIP score table + city practice tree. Ownership: 11-type entity classification breakdown + methodology notes. |
 | `/buyability` | Buyability | Verdict extraction from notes field, 4 category KPIs, ZIP filter, sortable table with CSV export |
-| `/job-market` | Job Market | Living location selector (4 presets), 9 KPI cards, Mapbox practice density map (hex layers + individual dots), market overview charts (ownership donut, consolidation bar, age histogram, top DSOs), searchable directory with entity_classification filters, opportunity signals (retirement risk, high buyability scatter, recent changes), ownership landscape (entity classification bar, top DSOs, DSO penetration by ZIP with city names from watched_zips), market analytics |
+| `/job-market` | Job Market | **4 tabs: Overview \| Map \| Directory \| Analytics.** Persistent KPI strip + Living Location Selector (4 presets) above tabs. Overview: saturation table (relocated from Market Intel) + ADA benchmarks (relocated from Market Intel) + opportunity signals. Map: hero-sized Mapbox practice density map (hex layers + individual dots). Directory: searchable practice table with detail drawer. Analytics: market overview charts, entity classification breakdown, top DSOs. |
 | `/research` | Research | PE sponsor profiles, DSO platform profiles, state deep dives, SQL explorer (SELECT-only, forbidden keywords) |
 | `/intelligence` | Intelligence | AI-powered qualitative research — 6 KPI cards (coverage, readiness, cost, confidence), ZIP market intelligence table with expandable 10-signal detail panels, practice dossier table with readiness/confidence badges and expandable due diligence reports |
 | `/system` | System | Data freshness indicators, source coverage, completeness bars, pipeline log viewer, manual entry forms (add deal, edit practice) |
@@ -110,14 +110,33 @@ Key helpers in `src/lib/constants/entity-classifications.ts`:
 - `isRetirementRisk()` — independent (by entity_classification or fallback) + 30+ years
 - `getPracticeAge()` — years since year_established
 
-### Design System
+### Design System (Warm Light Theme — updated 2026-03-15)
 
-- **Background:** #0A0F1E (deepest), #0F1629 (cards), #1A2035 (elevated)
-- **Text:** #F8FAFC (primary), #94A3B8 (secondary), #64748B (muted)
-- **Semantic colors:** Green #22C55E (independent), Red #EF4444 (corporate), Amber #F59E0B (DSO), Purple #A855F7 (specialist), Blue #3B82F6 (accent), Gray #64748B (unknown)
-- **KPI cards:** 3px accent border, 32px JetBrains Mono bold values, subtle background tinting
-- **Tables:** alternating rows #0A0F1E/#0F1629, semibold headers with border-b-2
-- **Maps:** subtle blue glow shadow
+- **Background:** #FAFAF7 (app), #FFFFFF (cards), #F7F7F4 (elevated/hover), #F5F5F0 (inset/input)
+- **Sidebar:** #2C2C2C (stays dark as intentional contrast), goldenrod #B8860B accent for active items
+- **Text:** #1A1A1A (primary), #6B6B60 (secondary), #9C9C90 (muted), #B5B5A8 (dimmed)
+- **Borders:** #E8E5DE (default), #D4D0C8 (hover)
+- **Accent:** #B8860B (goldenrod — was blue #3B82F6)
+- **Semantic colors:** Green #2D8B4E, Red #C23B3B, Amber #D4920B, Blue #2563EB, Purple #7C3AED, Teal #0D9488
+- **Status colors:** Corporate #C23B3B, Independent #2563EB, Specialist #0D9488, Group #6366F1
+- **KPI cards:** 28px JetBrains Mono bold values, goldenrod accent border
+- **Tables:** alternating rows #FFFFFF/#FAFAF7, semibold headers with border-b-2
+- **Maps:** subtle shadow on white card background
+
+### Sidebar Navigation
+
+Sidebar grouped into 4 sections (dark #2C2C2C background, goldenrod #B8860B active accent):
+- **OVERVIEW:** Dashboard (`/`)
+- **MARKETS:** Job Market, Market Intel, Buyability
+- **ANALYSIS:** Deal Flow, Research, Intelligence
+- **ADMIN:** System
+
+### Module Relocations (2026-03-15 UI Overhaul)
+
+- `saturation-table.tsx`: copied from `market-intel` to `job-market` (now rendered in Job Market Overview tab)
+- `ada-benchmarks.tsx`: copied from `market-intel` to `job-market` (now rendered in Job Market Overview tab)
+- `dso-penetration-table.tsx`: new component in `market-intel` (extracted from ownership-landscape, rendered in Consolidation tab)
+- `recent-changes`: now rendered on Home page activity feed (fetched via `getRecentChanges`)
 
 ### Next.js File Quick Reference
 
@@ -125,7 +144,7 @@ Key helpers in `src/lib/constants/entity-classifications.ts`:
 |------|-------------|
 | `src/app/layout.tsx` | Root layout — fonts, providers (Query, Sidebar, Tooltip), sidebar |
 | `src/app/page.tsx` | Home page — fetches stats, deals, freshness |
-| `src/app/globals.css` | Tailwind 4 + CSS custom properties + dark theme |
+| `src/app/globals.css` | Tailwind 4 + CSS custom properties + warm light theme |
 | `src/app/deal-flow/page.tsx` | Deal Flow — server fetch, passes to shell |
 | `src/app/deal-flow/_components/deal-flow-shell.tsx` | Deal Flow client shell — filters, charts, table |
 | `src/app/deal-flow/_components/deal-kpis.tsx` | Deal KPI cards with YoY deltas |
@@ -142,6 +161,7 @@ Key helpers in `src/lib/constants/entity-classifications.ts`:
 | `src/app/market-intel/_components/saturation-table.tsx` | Saturation metrics analysis |
 | `src/app/market-intel/_components/ada-benchmarks.tsx` | ADA HPI benchmark display |
 | `src/app/market-intel/_components/recent-changes.tsx` | Practice change log |
+| `src/app/market-intel/_components/dso-penetration-table.tsx` | DSO penetration by ZIP with city names |
 | `src/app/buyability/page.tsx` | Buyability — server fetch, passes to shell |
 | `src/app/buyability/_components/buyability-shell.tsx` | Buyability client shell |
 | `src/app/job-market/page.tsx` | Job Market — server fetch, passes to shell |
@@ -154,6 +174,8 @@ Key helpers in `src/lib/constants/entity-classifications.ts`:
 | `src/app/job-market/_components/opportunity-signals.tsx` | Retirement risk, buyability, changes |
 | `src/app/job-market/_components/ownership-landscape.tsx` | Entity classification, DSO penetration |
 | `src/app/job-market/_components/market-analytics.tsx` | Density, competitive landscape |
+| `src/app/job-market/_components/saturation-table.tsx` | Saturation metrics table (relocated from Market Intel) |
+| `src/app/job-market/_components/ada-benchmarks.tsx` | ADA HPI benchmarks display (relocated from Market Intel) |
 | `src/app/intelligence/page.tsx` | Intelligence — server fetch for ZIP + practice intel |
 | `src/app/intelligence/_components/intelligence-shell.tsx` | Intelligence client shell — KPIs, ZIP intel table, practice dossier table, expandable detail panels |
 | `src/lib/types/intel.ts` | TypeScript interfaces (ZipQualitativeIntel, PracticeIntel, IntelStats) |
@@ -219,7 +241,7 @@ Key helpers in `src/lib/constants/entity-classifications.ts`:
 | `src/components/filters/multi-select.tsx` | Multi-select dropdown |
 | `src/components/filters/date-range-picker.tsx` | Date range picker |
 | `src/components/maps/map-container.tsx` | Mapbox GL map wrapper |
-| `src/components/layout/sidebar.tsx` | Collapsible left nav (220px / 60px) |
+| `src/components/layout/sidebar.tsx` | Collapsible left nav (220px / 60px), dark #2C2C2C, 4 grouped sections |
 | `src/components/layout/sticky-section-nav.tsx` | Sticky section navigation |
 | `src/components/ui/*.tsx` | shadcn UI primitives (button, card, dialog, etc.) |
 | `src/providers/query-provider.tsx` | React Query provider (5min stale, 30min gc, 1 retry) |
@@ -324,6 +346,7 @@ After pipeline runs, `scrapers/sync_to_supabase.py` pushes updated data to Supab
 - System completeness "Ownership Classified" counts entity_classification primary + ownership_status fallback
 - `entity-classifications.ts` exports `INDEPENDENT_CLASSIFICATIONS`, `DSO_NATIONAL_TAXONOMY_LEAKS`, `DSO_REGIONAL_STRONG_SIGNAL_FILTER` constants
 - `PracticeStats` interface in both `types.ts` and `types/index.ts`; `HomeSummary` includes `enrichedCount`
+- UI overhaul (2026-03-15): dark-to-warm-light theme migration, tab navigation on Deal Flow/Market Intel/Job Market, module relocations (saturation + ADA benchmarks to Job Market, DSO penetration table extracted in Market Intel), sidebar regrouped into 4 sections, Home page restructured with activity feed — all 8 pages render with warm light theme, tabs URL-synced, build passes
 
 ## Pipeline File Quick Reference
 
