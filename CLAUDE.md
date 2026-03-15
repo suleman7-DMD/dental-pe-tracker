@@ -2,29 +2,42 @@
 
 ## What This Project Is
 
-A data pipeline + Streamlit dashboard that tracks private equity consolidation in US dentistry. It scrapes deal announcements, monitors 400k+ dental practices from federal data, classifies who owns what, and scores markets for acquisition risk. Primary metro: Chicagoland (268 expanded ZIPs across 7 sub-zones). Secondary: Boston Metro (21 ZIPs).
+A data pipeline + dual-frontend dashboard that tracks private equity consolidation in US dentistry. It scrapes deal announcements, monitors 400k+ dental practices from federal data, classifies who owns what, and scores markets for acquisition risk. Primary metro: Chicagoland (268 expanded ZIPs across 7 sub-zones). Secondary: Boston Metro (21 ZIPs).
 
-**Live app:** suleman7-pe.streamlit.app
+**Next.js app (primary):** dental-pe-nextjs.vercel.app
+**Streamlit app (legacy):** suleman7-pe.streamlit.app
 **Repo:** github.com/suleman7-DMD/dental-pe-tracker
 
 ## Architecture
 
 ```
+dental-pe-nextjs/    Next.js 16 frontend (primary) — Supabase Postgres, Vercel
+dashboard/app.py     Streamlit dashboard (legacy, 2,583 lines, single file, 6 pages)
 scrapers/            Python scrapers + importers + classifiers (the data pipeline)
-dashboard/app.py     Streamlit dashboard (2,583 lines, single file, 6 pages)
-scrapers/database.py SQLAlchemy models + helpers (SQLite)
+scrapers/database.py SQLAlchemy models + helpers (SQLite — local pipeline DB)
+scrapers/sync_to_supabase.py  Syncs SQLite → Supabase Postgres for Next.js frontend
 data/                SQLite DB (145 MB) + raw data files (CSV, XLSX)
 logs/                Pipeline event log (JSONL) + per-run log files
 pipeline_check.py    Diagnostic health check tool (540 lines)
 ```
 
-No build system. Push to `main` → Streamlit Cloud auto-deploys in ~60s.
+### Data Flow
 
-## Database (SQLite via SQLAlchemy)
+```
+Federal/Web Sources → Python Scrapers → SQLite (local) → sync_to_supabase.py → Supabase Postgres
+                                                       ↘ gzip → git push → Streamlit Cloud (legacy)
+                                                       ↘ Supabase → Next.js Server Components → Client UI
+```
 
-Key tables: `deals`, `practices`, `practice_changes`, `watched_zips`, `zip_scores`, `dso_locations`, `ada_hpi_benchmarks`
+Push to `main` auto-deploys both: Vercel (Next.js, ~30s) and Streamlit Cloud (~60s).
 
-- **practices**: 400k+ rows. Fields: npi (PK), practice_name, doing_business_as, address, city, state, zip, phone, entity_type, taxonomy_code, ownership_status, affiliated_dso, affiliated_pe_sponsor, buyability_score, classification_confidence, classification_reasoning, data_source, latitude, longitude, parent_company, ein, franchise_name, iusa_number, website, year_established, employee_count, estimated_revenue, num_providers, location_type, import_batch_id, data_axle_import_date
+## Database
+
+### SQLite (Pipeline — via SQLAlchemy)
+
+Key tables: `deals`, `practices`, `practice_changes`, `watched_zips`, `zip_scores`, `dso_locations`, `ada_hpi_benchmarks`, `zip_qualitative_intel`, `practice_intel`
+
+- **practices**: 400k+ rows. Fields: npi (PK), practice_name, doing_business_as, address, city, state, zip, phone, entity_type, taxonomy_code, ownership_status, affiliated_dso, affiliated_pe_sponsor, buyability_score, classification_confidence, classification_reasoning, data_source, latitude, longitude, parent_company, ein, franchise_name, iusa_number, website, year_established, employee_count, estimated_revenue, num_providers, location_type, import_batch_id, data_axle_import_date, entity_classification
 - **deals**: 2,500+ rows. PE dental deals from PESP, GDN, PitchBook
 - **practice_changes**: Change log for name/address/ownership changes (acquisition detection). 5,100+ rows.
 - **zip_scores**: Per-ZIP consolidation stats (290 scored ZIPs), recalculated by merge_and_score.py. One row per ZIP (deduped).
@@ -32,13 +45,190 @@ Key tables: `deals`, `practices`, `practice_changes`, `watched_zips`, `zip_score
 - **dso_locations**: 408 scraped DSO office locations from ADSO websites.
 - **ada_hpi_benchmarks**: 918 rows. State-level DSO affiliation rates by career stage (2022-2024).
 
+### Supabase Postgres (Next.js Frontend)
+
+Mirror of SQLite tables, synced by `scrapers/sync_to_supabase.py`. Same schema, same table names. The Next.js app reads directly from Supabase — it never touches SQLite.
+
+### Supabase Sync Strategies (sync_to_supabase.py)
+
+| Strategy | Tables | How It Works |
+|----------|--------|--------------|
+| `incremental_updated_at` | practices | Only rows changed since last sync |
+| `incremental_id` | deals, practice_changes | New rows only |
+| `full_replace` | zip_scores, watched_zips, dso_locations, ada_hpi_benchmarks, zip_qualitative_intel, practice_intel | Truncate + reload |
+
 ### Current Data Stats
 - 400,962 practices (362k independent, 2.8k DSO-affiliated, 401 PE-backed, 35k unknown)
 - 2,512 deals
 - 2,992 Data Axle enriched practices (with lat/lon, revenue, employees, year established)
 - 290 scored ZIPs
 
-## Dashboard Pages (6 total)
+## Next.js Frontend (Primary)
+
+**Stack:** Next.js 16, React 19, TypeScript 5, Supabase Postgres, TanStack React Query + Table, Recharts 3, Mapbox GL, Tailwind CSS 4, shadcn UI, Lucide React
+
+**Fonts:** DM Sans (headings), Inter (body), JetBrains Mono (data values)
+
+**Deployment:** Vercel auto-deploys on push to main
+
+**Env vars:** `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `NEXT_PUBLIC_MAPBOX_TOKEN`
+
+### Pages (7 total)
+
+| Route | Page | What It Shows |
+|-------|------|---------------|
+| `/` | Home | 8 KPI cards (Lucide icons), 6 nav cards, recent deals table, data freshness bar |
+| `/deal-flow` | Deal Flow | KPIs with YoY deltas, deal volume timeline (stacked bar + rolling avg), sponsor/platform charts, state choropleth, specialty breakdown, searchable table with URL-synced filters |
+| `/market-intel` | Market Intel | Metro area filter, entity_classification-based KPIs (server-side computed), ADA benchmarks, Mapbox consolidation map (green/yellow/red gradient), ZIP score table with computed columns, paginated city practice tree, recent changes, saturation analysis |
+| `/buyability` | Buyability | Verdict extraction from notes field, 4 category KPIs, ZIP filter, sortable table with CSV export |
+| `/job-market` | Job Market | Living location selector (4 presets), 9 KPI cards, Mapbox practice density map (hex layers + individual dots), market overview charts (ownership donut, consolidation bar, age histogram, top DSOs), searchable directory with entity_classification filters, opportunity signals (retirement risk, high buyability scatter, recent changes), ownership landscape (entity classification bar, top DSOs, DSO penetration by ZIP with city names from watched_zips), market analytics |
+| `/research` | Research | PE sponsor profiles, DSO platform profiles, state deep dives, SQL explorer (SELECT-only, forbidden keywords) |
+| `/system` | System | Data freshness indicators, source coverage, completeness bars, pipeline log viewer, manual entry forms (add deal, edit practice) |
+
+### Data Flow Pattern
+
+1. **Server Components** (`page.tsx`) fetch from Supabase server-side
+2. Pass data to **Client Component shells** (`'use client'`) via props
+3. Client shells handle filters, UI state, refetching via **React Query** (5min stale, 30min gc)
+4. URL params sync for shareable filter state (`useUrlFilters` hook)
+5. Supabase queries in `src/lib/supabase/queries/` organized by table
+
+### Entity Classification in Next.js (CRITICAL)
+
+The Next.js app uses `entity_classification` (11 types) as the **PRIMARY** field for all ownership analysis. `ownership_status` is ONLY used as a fallback when entity_classification is NULL.
+
+Key helpers in `src/lib/constants/entity-classifications.ts`:
+- `isIndependentClassification(ec)` — true for solo_*, family_practice, small_group, large_group
+- `isCorporateClassification(ec)` — true for dso_regional, dso_national
+- `classifyPractice(entityClassification, ownershipStatus)` — returns "independent" | "corporate" | "specialist" | "non_clinical" | "unknown"
+- `getEntityClassificationLabel(value)` — human-readable label
+
+### Scoring (src/lib/utils/scoring.ts)
+
+- `computeJobOpportunityScore()` — 0-100 score using entity_classification with ownership_status fallback. Factors: ownership (30pts), buyability (25/15pts), employees (20/10pts), year_established (15/8pts)
+- `isRetirementRisk()` — independent (by entity_classification or fallback) + 30+ years
+- `getPracticeAge()` — years since year_established
+
+### Design System
+
+- **Background:** #0A0F1E (deepest), #0F1629 (cards), #1A2035 (elevated)
+- **Text:** #F8FAFC (primary), #94A3B8 (secondary), #64748B (muted)
+- **Semantic colors:** Green #22C55E (independent), Red #EF4444 (corporate), Amber #F59E0B (DSO), Purple #A855F7 (specialist), Blue #3B82F6 (accent), Gray #64748B (unknown)
+- **KPI cards:** 3px accent border, 32px JetBrains Mono bold values, subtle background tinting
+- **Tables:** alternating rows #0A0F1E/#0F1629, semibold headers with border-b-2
+- **Maps:** subtle blue glow shadow
+
+### Next.js File Quick Reference
+
+| File | What It Does |
+|------|-------------|
+| `src/app/layout.tsx` | Root layout — fonts, providers (Query, Sidebar, Tooltip), sidebar |
+| `src/app/page.tsx` | Home page — fetches stats, deals, freshness |
+| `src/app/globals.css` | Tailwind 4 + CSS custom properties + dark theme |
+| `src/app/deal-flow/page.tsx` | Deal Flow — server fetch, passes to shell |
+| `src/app/deal-flow/_components/deal-flow-shell.tsx` | Deal Flow client shell — filters, charts, table |
+| `src/app/deal-flow/_components/deal-kpis.tsx` | Deal KPI cards with YoY deltas |
+| `src/app/deal-flow/_components/deal-volume-timeline.tsx` | Stacked bar + rolling avg chart |
+| `src/app/deal-flow/_components/sponsor-platform-charts.tsx` | Top sponsors/platforms bar charts |
+| `src/app/deal-flow/_components/state-choropleth.tsx` | US state deal density map |
+| `src/app/deal-flow/_components/specialty-charts.tsx` | Specialty breakdown charts |
+| `src/app/deal-flow/_components/deals-table.tsx` | Searchable deals table |
+| `src/app/market-intel/page.tsx` | Market Intel — server fetch with classification counts |
+| `src/app/market-intel/_components/market-intel-shell.tsx` | Market Intel client shell |
+| `src/app/market-intel/_components/consolidation-map.tsx` | Mapbox consolidation heatmap |
+| `src/app/market-intel/_components/zip-score-table.tsx` | ZIP scores with computed columns |
+| `src/app/market-intel/_components/city-practice-tree.tsx` | Paginated practice tree by city/ZIP |
+| `src/app/market-intel/_components/saturation-table.tsx` | Saturation metrics analysis |
+| `src/app/market-intel/_components/ada-benchmarks.tsx` | ADA HPI benchmark display |
+| `src/app/market-intel/_components/recent-changes.tsx` | Practice change log |
+| `src/app/buyability/page.tsx` | Buyability — server fetch, passes to shell |
+| `src/app/buyability/_components/buyability-shell.tsx` | Buyability client shell |
+| `src/app/job-market/page.tsx` | Job Market — server fetch, passes to shell |
+| `src/app/job-market/_components/job-market-shell.tsx` | Job Market client shell — all sections |
+| `src/app/job-market/_components/living-location-selector.tsx` | 4-preset location picker |
+| `src/app/job-market/_components/practice-density-map.tsx` | Mapbox hex + dot density map |
+| `src/app/job-market/_components/practice-directory.tsx` | Searchable practice table |
+| `src/app/job-market/_components/practice-detail-drawer.tsx` | Practice detail side panel |
+| `src/app/job-market/_components/market-overview-charts.tsx` | Ownership donut, consolidation, age, DSOs |
+| `src/app/job-market/_components/opportunity-signals.tsx` | Retirement risk, buyability, changes |
+| `src/app/job-market/_components/ownership-landscape.tsx` | Entity classification, DSO penetration |
+| `src/app/job-market/_components/market-analytics.tsx` | Density, competitive landscape |
+| `src/app/research/_components/research-shell.tsx` | Research client shell — tabs |
+| `src/app/research/_components/sponsor-profile.tsx` | PE sponsor deep dive |
+| `src/app/research/_components/platform-profile.tsx` | DSO platform deep dive |
+| `src/app/research/_components/state-deep-dive.tsx` | State-level analysis |
+| `src/app/research/_components/sql-explorer.tsx` | SELECT-only SQL query runner |
+| `src/app/system/_components/system-shell.tsx` | System client shell |
+| `src/app/system/_components/freshness-indicators.tsx` | Data age indicators |
+| `src/app/system/_components/data-coverage.tsx` | Source coverage stats |
+| `src/app/system/_components/completeness-bars.tsx` | Field completeness visualization |
+| `src/app/system/_components/pipeline-log-viewer.tsx` | Pipeline event log viewer |
+| `src/app/system/_components/manual-entry-forms.tsx` | Deal/practice entry forms |
+| `src/lib/types/index.ts` | TypeScript interfaces (Deal, Practice, ZipScore, WatchedZip, HomeSummary, etc.) |
+| `src/lib/types-job-market.ts` | Job Market-specific types |
+| `src/lib/supabase/client.ts` | Browser Supabase client (singleton) |
+| `src/lib/supabase/server.ts` | Server Supabase client (per-request) |
+| `src/lib/supabase/types.ts` | Supabase database type definitions |
+| `src/lib/supabase/queries/deals.ts` | Deal query functions |
+| `src/lib/supabase/queries/practices.ts` | Practice query functions |
+| `src/lib/supabase/queries/zip-scores.ts` | ZIP score query functions |
+| `src/lib/supabase/queries/watched-zips.ts` | Watched ZIP query functions |
+| `src/lib/supabase/queries/practice-changes.ts` | Practice changes query functions |
+| `src/lib/supabase/queries/ada-benchmarks.ts` | ADA benchmark query functions |
+| `src/lib/supabase/queries/benchmarks.ts` | Additional benchmark queries |
+| `src/lib/supabase/queries/changes.ts` | Change tracking queries |
+| `src/lib/supabase/queries/system.ts` | System/freshness query functions |
+| `src/lib/constants/entity-classifications.ts` | 11 entity types, helpers, classification logic |
+| `src/lib/constants/design-tokens.ts` | Color system, ownership labels/colors |
+| `src/lib/constants/colors.ts` | Entity classification color map |
+| `src/lib/constants/living-locations.ts` | Job Market location presets (4 presets, ZIP lists) |
+| `src/lib/constants/metro-centers.ts` | Metro area center coordinates |
+| `src/lib/constants/zip-centroids.ts` | ZIP code lat/lon centroids for map rendering |
+| `src/lib/constants/sql-presets.ts` | SQL explorer preset queries |
+| `src/lib/constants/deal-type-colors.ts` | Deal type color mappings |
+| `src/lib/constants/us-states.ts` | US state abbreviations/names |
+| `src/lib/utils/formatting.ts` | formatNumber, formatCurrency, formatPercent, formatDate, formatStatusLabel, computeConsolidationDisplay |
+| `src/lib/utils/scoring.ts` | computeJobOpportunityScore, isRetirementRisk, getPracticeAge |
+| `src/lib/utils/csv-export.ts` | CSV download utility |
+| `src/lib/utils/colors.ts` | Color utility functions |
+| `src/lib/hooks/use-url-filters.ts` | URL param sync for shareable filter state |
+| `src/lib/hooks/use-sidebar.ts` | Sidebar collapse state |
+| `src/lib/hooks/use-section-observer.ts` | Intersection observer for section tracking |
+| `src/components/data-display/data-table.tsx` | TanStack Table (sort, filter, paginate, CSV) |
+| `src/components/data-display/kpi-card.tsx` | KPI card (icon, label, value, delta, accent, tooltip) |
+| `src/components/data-display/data-freshness-bar.tsx` | Data freshness indicator bar |
+| `src/components/data-display/section-header.tsx` | Section header with optional action |
+| `src/components/data-display/status-badge.tsx` | Status badge component |
+| `src/components/data-display/status-dot.tsx` | Small status indicator dot |
+| `src/components/data-display/confidence-stars.tsx` | Confidence star rating display |
+| `src/components/charts/bar-chart.tsx` | Recharts bar chart wrapper |
+| `src/components/charts/stacked-bar-chart.tsx` | Recharts stacked bar chart |
+| `src/components/charts/grouped-bar-chart.tsx` | Recharts grouped bar chart |
+| `src/components/charts/area-chart.tsx` | Recharts area chart wrapper |
+| `src/components/charts/donut-chart.tsx` | Recharts donut/pie chart |
+| `src/components/charts/histogram-chart.tsx` | Recharts histogram |
+| `src/components/charts/scatter-chart.tsx` | Recharts scatter plot |
+| `src/components/charts/chart-container.tsx` | Responsive chart wrapper |
+| `src/components/filters/filter-bar.tsx` | Filter controls bar |
+| `src/components/filters/search-input.tsx` | Search input with debounce |
+| `src/components/filters/multi-select.tsx` | Multi-select dropdown |
+| `src/components/filters/date-range-picker.tsx` | Date range picker |
+| `src/components/maps/map-container.tsx` | Mapbox GL map wrapper |
+| `src/components/layout/sidebar.tsx` | Collapsible left nav (220px / 60px) |
+| `src/components/layout/sticky-section-nav.tsx` | Sticky section navigation |
+| `src/components/ui/*.tsx` | shadcn UI primitives (button, card, dialog, etc.) |
+| `src/providers/query-provider.tsx` | React Query provider (5min stale, 30min gc, 1 retry) |
+| `src/providers/sidebar-provider.tsx` | Sidebar state provider |
+| `src/app/api/deals/` | API route for deal operations |
+| `src/app/api/practices/` | API route for practice operations |
+| `src/app/api/sql-explorer/` | API route for SQL explorer (SELECT-only) |
+| `src/app/api/watched-zips/` | API route for watched ZIP operations |
+
+## Streamlit Dashboard (Legacy)
+
+Single-file dashboard at `dashboard/app.py` (2,583 lines, 6 pages). Still live at suleman7-pe.streamlit.app but no longer the primary frontend.
+
+### Pages (6 total)
 
 | Page | What It Shows |
 |------|---------------|
@@ -49,7 +239,7 @@ Key tables: `deals`, `practices`, `practice_changes`, `watched_zips`, `zip_score
 | **Research** | Deep dives — PE sponsor profiles, platform profiles, state analysis, SQL explorer |
 | **System** | Data freshness, pipeline logs, manual data entry forms |
 
-### Job Market Page Structure
+### Job Market Page Structure (Streamlit)
 - Living location selector: West Loop/South Loop (142 ZIPs), Woodridge (129 ZIPs), Bolingbrook (127 ZIPs), All Chicagoland (268 ZIPs)
 - 6 KPI cards computed from practice data (not zip_scores): Total Practices, Independent %, Consolidated %, Avg Buyability, 10+ Staff, Retirement Risk
 - Pydeck dual-density hexagon map: green = independent clusters, red/orange = consolidated clusters, individual practice dots via toggle
@@ -67,6 +257,8 @@ Cron runs every Sunday 8am (`scrapers/refresh.sh`):
 Monthly NPPES refresh (first Sunday 6am): downloads federal provider data updates.
 
 Every step logs structured events to `logs/pipeline_events.jsonl` via `scrapers/pipeline_logger.py`.
+
+After pipeline runs, `scrapers/sync_to_supabase.py` pushes updated data to Supabase Postgres for the Next.js frontend.
 
 ## Critical Rules
 
@@ -95,12 +287,38 @@ Every step logs structured events to `logs/pipeline_events.jsonl` via `scrapers/
 - App decompresses on first load via `_ensure_db_decompressed()`
 - Keep `dashboard/app.py` imports inside functions where possible (cold start speed)
 
-## File Quick Reference
+### Next.js frontend rules
+- **Entity classification is primary** — ALWAYS use `entity_classification`, with `ownership_status` as fallback only when entity_classification is NULL
+- `classifyPractice()` is the canonical helper for ownership categorization across the entire frontend
+- KPI cards must use **Lucide JSX components** for icons (not strings)
+- Supabase returns max 1000 rows per query — MUST paginate with `.range()` for large result sets
+- Consolidation % denominator is ALWAYS total practices
+- DataTable render functions must return primitives (`string | number | null`), never objects
+- Run `npm run build` in `dental-pe-nextjs/` after every change to verify TypeScript compilation
+- Server Components (`page.tsx`) do the Supabase fetch; client shells (`*-shell.tsx`) handle interactivity
+- URL params sync via `useUrlFilters` — changes to filter logic must preserve URL shareability
+
+### Bug fixes applied (March 2026) — do not regress
+- All KPI icons use Lucide JSX components (not strings)
+- Home page consolidatedPct includes % suffix
+- `getRetirementRiskCount` uses all 7 independent classifications globally (not just 3 solo types in watched ZIPs)
+- `getAcquisitionTargetCount` uses entity_classification with ownership_status fallback
+- Market Intel KPIs computed from entity_classification (server-side classificationCounts prop) — shows ~9.7% not 2.3%
+- ZIP Score table computes derived columns (consolidation %, independent %, unknown %, confidence, opportunity score) from existing ZipScore fields
+- City practice tree paginates within each ZIP chunk to avoid Supabase 1000-row limit
+- Consolidation map computes pct from corporate_share_pct * total_gp_locations
+- Opportunity signals icons are JSX components
+- DSO penetration table gets city names from watchedZips lookup
+- Job Market enrichment count uses `data_axle_import_date IS NOT NULL`
+- `scoring.ts` uses entity_classification with ownership_status fallback
+
+## Pipeline File Quick Reference
 
 | File | Lines | What It Does |
 |------|-------|-------------|
-| `dashboard/app.py` | 2,583 | Full Streamlit dashboard — 6 pages |
+| `dashboard/app.py` | 2,583 | Full Streamlit dashboard — 6 pages (legacy) |
 | `scrapers/database.py` | 542 | SQLAlchemy models, init_db(), helpers |
+| `scrapers/sync_to_supabase.py` | — | Syncs SQLite → Supabase Postgres (3 strategies) |
 | `scrapers/nppes_downloader.py` | 681 | Downloads + imports federal dental provider data |
 | `scrapers/data_axle_importer.py` | 2,650 | Imports Data Axle CSVs with 7-phase pipeline + Pass 6 corporate linkage |
 | `scrapers/merge_and_score.py` | 719 | Dedup deals, score ZIPs, ensure_chicagoland_watched() |
@@ -136,6 +354,17 @@ The `entity_classification` field on practices provides granular practice-type l
 
 Each classification stores its reasoning in `classification_reasoning` for auditability. First matching rule wins (priority: non_clinical > specialist > dso_national > corporate signals > family_practice > large_group > small_group > solo variants).
 
+### Entity Classification in Next.js vs Streamlit
+
+In the Next.js frontend, `entity_classification` is the **primary** ownership field. The helpers in `src/lib/constants/entity-classifications.ts` define the canonical groupings:
+- **Independent:** solo_established, solo_new, solo_inactive, solo_high_volume, family_practice, small_group, large_group
+- **Corporate:** dso_regional, dso_national
+- **Specialist:** specialist
+- **Non-clinical:** non_clinical
+- **Unknown:** NULL entity_classification AND ownership_status not in (dso-affiliated, pe-backed)
+
+The Streamlit app still primarily uses `ownership_status` with entity_classification as supplemental detail.
+
 ### Saturation Metrics (in zip_scores)
 Computed by `merge_and_score.py`'s `compute_saturation_metrics()`:
 
@@ -164,6 +393,91 @@ In addition to the base scoring in `compute_buyability()` (data_axle_importer.py
 - **Family practice penalty (-20):** `entity_classification == 'family_practice'` — shared last name at address suggests internal succession.
 - **Multi-ZIP presence penalty (-15):** Same practice name or EIN appears in 3+ watched ZIPs — likely a chain entity.
 
+## Qualitative Intelligence Layer
+
+AI-powered research tools that layer qualitative signals on top of quantitative pipeline data. Uses Claude API with web search to gather market intelligence and practice due diligence.
+
+### Intel Architecture
+
+```
+scrapers/research_engine.py       — Core Anthropic API client (Haiku/Sonnet, web search, batch API, prompt caching)
+scrapers/intel_database.py        — CRUD for intel tables (uses SQLAlchemy sessions from database.py)
+scrapers/qualitative_scout.py     — CLI: ZIP-level market research
+scrapers/practice_deep_dive.py    — CLI: Practice-level due diligence (two-pass Haiku→Sonnet escalation)
+scrapers/weekly_research.py       — Automated pipeline runner with budget caps
+```
+
+### Intel Database Tables
+
+**`zip_qualitative_intel`** — ZIP-level market research (one row per watched ZIP)
+- FK: `zip_code` references `watched_zips(zip_code)`
+- Signals: housing, schools, retail, commercial, dental news, real estate, zoning, population, employers, competitors
+- Synthesis: `demand_outlook`, `supply_outlook`, `investment_thesis`, `confidence`
+- Metadata: `research_date`, `research_method`, `raw_json`, `cost_usd`, `model_used`
+- Cache TTL: 90 days
+
+**`practice_intel`** — Practice-level due diligence (one row per NPI)
+- FK: `npi` references `practices(npi)`
+- Signals: website analysis, services, technology, Google reviews, hiring, acquisition news, social media, HealthGrades, ZocDoc, doctor profile, insurance
+- Assessment: `red_flags`, `green_flags`, `overall_assessment`, `acquisition_readiness`, `confidence`
+- Metadata: `research_date`, `escalated`, `escalation_findings`, `raw_json`, `cost_usd`, `model_used`
+- Cache TTL: 90 days
+
+### Intel Cost Model (March 2026 Anthropic Pricing)
+
+| Mode | Model | Cost/Target | Use Case |
+|------|-------|-------------|----------|
+| ZIP Scout | Haiku 4.5 | ~$0.04-0.06 | Market research per ZIP |
+| Practice Research | Haiku 4.5 | ~$0.08-0.12 | Due diligence per practice |
+| Two-Pass Deep | Haiku then Sonnet | ~$0.28 | Escalation for high-value targets |
+| Batch API | Haiku 4.5 | 50% discount | Weekly automated runs |
+
+Monthly at moderate scale (50 ZIPs + 100 practices): ~$12-18. Actual costs are 2-3x lower than estimates (conservative budgeting).
+
+### Two-Pass Escalation Logic
+
+1. **Pass 1 (Haiku):** All practices get a baseline scan
+2. **Escalation decision:** Triggers Sonnet deep dive if:
+   - `readiness` is high/medium AND `confidence` is not high, OR
+   - 3+ green flags detected
+   - Guard: never escalates `unlikely` or `unknown` readiness
+3. **Pass 2 (Sonnet):** Deeper web search, verified findings, nuanced assessment
+4. **Merge:** Pass 2 results merged into Pass 1 (dict union, list concat, string override)
+
+### Intel CLI Usage
+
+```bash
+# ZIP research
+python3 scrapers/qualitative_scout.py --zip 60491          # Single ZIP
+python3 scrapers/qualitative_scout.py --metro chicagoland   # All Chicagoland ZIPs
+python3 scrapers/qualitative_scout.py --status              # Coverage dashboard
+python3 scrapers/qualitative_scout.py --report 60491        # View stored report
+
+# Practice research
+python3 scrapers/practice_deep_dive.py --zip 60491 --top 10 --deep  # Top 10, two-pass
+python3 scrapers/practice_deep_dive.py --npi 1234567890             # Specific practice
+python3 scrapers/practice_deep_dive.py --status                     # Coverage dashboard
+python3 scrapers/practice_deep_dive.py --report 1234567890          # View stored dossier
+
+# Weekly automation
+python3 scrapers/weekly_research.py --budget 5              # $5 cap, batch API
+python3 scrapers/weekly_research.py --dry-run               # Preview queue
+```
+
+### Intel Environment
+
+- `ANTHROPIC_API_KEY` — Required. Set via `export ANTHROPIC_API_KEY="sk-ant-..."`
+- Cost tracking: `data/research_costs.json` (local JSON, 500-entry rolling log)
+- Sync: Both intel tables use `full_replace` strategy in `sync_to_supabase.py`
+
+### Critical Rules for Intel Layer
+
+- NEVER fabricate research data — prompts instruct "return null, never fabricate"
+- ALL scripts must use `pipeline_logger.log_scrape_start/complete()` and `logger_config.get_logger()`
+- Cache TTL is 90 days — don't re-research fresh data unless `--refresh` flag is passed
+- Intel tables sync via `full_replace` — safe to overwrite on each sync run
+- `research_engine.py` uses raw HTTP `requests`, NOT the `anthropic` Python SDK (fewer dependencies, faster cold starts)
+
 ## Skills Available
 
-Use `/scraper-dev` when modifying any scraper. Use `/dashboard-dev` when modifying the Streamlit app. Use `/data-axle-workflow` for Data Axle export/import tasks. Use `/debug-pipeline` when investigating scraper failures or data issues.
+Use `/scraper-dev` when modifying any scraper. Use `/dashboard-dev` when modifying the Streamlit app OR the Next.js frontend. Use `/data-axle-workflow` for Data Axle export/import tasks. Use `/debug-pipeline` when investigating scraper failures or data issues.

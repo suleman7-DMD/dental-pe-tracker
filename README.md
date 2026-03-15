@@ -1,8 +1,9 @@
 # Dental PE Consolidation Intelligence Platform
 
-A data-driven intelligence dashboard that tracks private equity activity in U.S. dentistry. It scrapes deal announcements, monitors practice ownership changes, classifies every practice into 11 entity types, computes market saturation metrics (dental location density, buyable practice ratio, corporate share), scores markets for consolidation risk, and identifies acquisition targets — all in one place.
+A data-driven intelligence platform that tracks private equity consolidation in U.S. dentistry. It scrapes deal announcements, monitors practice ownership changes, classifies every practice into 11 entity types, computes market saturation metrics (dental location density, buyable practice ratio, corporate share), scores markets for consolidation risk, and identifies acquisition targets — all in one place.
 
-**Live Dashboard:** [suleman7-pe.streamlit.app](https://suleman7-pe.streamlit.app/)
+**Next.js Dashboard (Primary):** [dental-pe-nextjs.vercel.app](https://dental-pe-nextjs.vercel.app/)
+**Streamlit Dashboard (Legacy):** [suleman7-pe.streamlit.app](https://suleman7-pe.streamlit.app/)
 **Repo:** [github.com/suleman7-DMD/dental-pe-tracker](https://github.com/suleman7-DMD/dental-pe-tracker)
 
 ---
@@ -11,42 +12,51 @@ A data-driven intelligence dashboard that tracks private equity activity in U.S.
 
 1. [What This App Does](#what-this-app-does)
 2. [Current Data Stats](#current-data-stats)
-3. [Your Data Sources at a Glance](#your-data-sources-at-a-glance)
-4. [How to Start the Dashboard](#how-to-start-the-dashboard)
-5. [Weekly: Automated Refresh (Nothing To Do)](#weekly-automated-refresh-nothing-to-do)
-6. [Monthly: NPPES Refresh](#monthly-nppes-refresh)
-7. [ADSO Location Scraper (Automated)](#adso-location-scraper-automated)
-8. [Quarterly: PitchBook Export](#quarterly-pitchbook-export)
-9. [Quarterly: Data Axle Export](#quarterly-data-axle-export)
-10. [ADA HPI Benchmark Update (Automated)](#ada-hpi-benchmark-update-automated)
-11. [Pipeline Health Check](#pipeline-health-check)
-12. [Dashboard Page Guide](#dashboard-page-guide)
-13. [Useful SQL Queries](#useful-sql-queries)
-14. [Entity Classification System](#entity-classification-system)
-15. [Saturation Metrics](#saturation-metrics)
-16. [Feature Add-Ons via Claude Code](#feature-add-ons-via-claude-code)
-17. [Quarterly System Health Check](#quarterly-system-health-check)
-18. [Emergency: If Something Breaks](#emergency-if-something-breaks)
-19. [Known Issues (Resolved)](#known-issues-resolved)
-20. [Annual Maintenance Calendar](#annual-maintenance-calendar)
-21. [Quick Command Cheat Sheet](#quick-command-cheat-sheet)
+3. [Next.js Frontend (Primary Dashboard)](#nextjs-frontend-primary-dashboard)
+4. [Streamlit Dashboard (Legacy)](#streamlit-dashboard-legacy)
+5. [How to Start the Dashboard](#how-to-start-the-dashboard)
+6. [Supabase Sync](#supabase-sync)
+7. [Your Data Sources at a Glance](#your-data-sources-at-a-glance)
+8. [Weekly: Automated Refresh (Nothing To Do)](#weekly-automated-refresh-nothing-to-do)
+9. [Monthly: NPPES Refresh](#monthly-nppes-refresh)
+10. [ADSO Location Scraper (Automated)](#adso-location-scraper-automated)
+11. [Quarterly: PitchBook Export](#quarterly-pitchbook-export)
+12. [Quarterly: Data Axle Export](#quarterly-data-axle-export)
+13. [ADA HPI Benchmark Update (Automated)](#ada-hpi-benchmark-update-automated)
+14. [Pipeline Health Check](#pipeline-health-check)
+15. [Dashboard Page Guide](#dashboard-page-guide)
+16. [Useful SQL Queries](#useful-sql-queries)
+17. [Entity Classification System](#entity-classification-system)
+18. [Saturation Metrics](#saturation-metrics)
+19. [Feature Add-Ons via Claude Code](#feature-add-ons-via-claude-code)
+20. [Quarterly System Health Check](#quarterly-system-health-check)
+21. [Emergency: If Something Breaks](#emergency-if-something-breaks)
+22. [Known Issues (Resolved)](#known-issues-resolved)
+23. [Annual Maintenance Calendar](#annual-maintenance-calendar)
+24. [Quick Command Cheat Sheet](#quick-command-cheat-sheet)
 
 ---
 
 ## What This App Does
 
-This platform automatically collects data about dental practice acquisitions from multiple sources, then combines it all into an interactive dashboard. Think of it as a radar system for tracking which private equity firms are buying dental practices, where they're expanding, and which independent practices in your target neighborhoods might be next.
+This platform automatically collects data about dental practice acquisitions from multiple sources, then combines it all into interactive dashboards. Think of it as a radar system for tracking which private equity firms are buying dental practices, where they're expanding, and which independent practices in your target neighborhoods might be next.
 
-**The 6 dashboard pages:**
+**Two frontends, one data pipeline:**
+
+- **Next.js Dashboard** (primary) — Modern React app at `dental-pe-nextjs/`, deployed on Vercel, reads from Supabase Postgres. This is the actively developed frontend with full entity classification support, Mapbox maps, and a "Vercel Dashboard x Bloomberg Terminal" dark theme.
+- **Streamlit Dashboard** (legacy) — Single-file Python app at `dashboard/app.py`, deployed on Streamlit Cloud, reads from local SQLite. Still functional but no longer the primary interface.
+
+**The 7 dashboard pages (Next.js):**
 
 | Page | What It Shows |
 |------|---------------|
-| **Deal Flow** | Every PE dental deal we know about — charts by year, by state, by deal type, recent activity feed |
-| **Market Intel** | Your watched ZIP codes — who owns what in Chicagoland and Boston Metro, consolidation map, ZIP-level detail, practice changes, **saturation analysis table** (DLD, buyable %, corporate %, market type for every ZIP with color-coding and confidence stars) |
-| **Buyability** | Scores individual practices on how "buyable" they are — filters by ZIP, verdict categories, confidence ratings. Includes family practice (-20) and multi-ZIP (-15) penalties |
-| **Job Market** | Post-graduation job hunting — practice density map (pydeck), market overview charts, **dual-lens practice directory** (Employment Opportunities tab + Ownership Pipeline tab), 9 KPI cards (including Avg Dental Density, Buyable Practice %, High-Volume Solos), **practice detail view** with classification reasoning, opportunity signals, ownership landscape, market analytics, **data freshness display** |
-| **Research** | Deep dives — look up a specific PE sponsor, platform company, or state. SQL explorer with **9 preset queries** (including Saturation Comparison, Family Practices, High-Vol Solos, Enrichment Coverage) |
-| **System** | Data freshness checks (demographics, NPPES, Data Axle timestamps), completeness stats, pipeline activity log, and forms to manually add deals/practices |
+| **Home** | Hero section, 6 nav cards with key stats, recent deals strip, data freshness bar |
+| **Deal Flow** | Every PE dental deal — KPIs, timeline chart, deal type/specialty breakdowns, top sponsors/platforms, state choropleth, searchable table |
+| **Market Intel** | Watched ZIPs — saturation table, consolidation map, ownership breakdown, ZIP scores, practice changes, ADA benchmarks, city practice tree |
+| **Buyability** | Scores individual practices on how "buyable" they are — filters by ZIP, verdict categories, confidence ratings, entity classification |
+| **Job Market** | Post-graduation job hunting — living location selector, KPI grid, practice density map (Mapbox GL), market overview charts, searchable practice directory, opportunity signals, ownership landscape, market analytics |
+| **Research** | Deep dives — PE sponsor profiles, platform profiles, state analysis, SQL explorer with preset queries |
+| **System** | Data freshness indicators, source coverage, completeness bars, pipeline log viewer, manual entry forms (add deal, edit practice) |
 
 ---
 
@@ -73,6 +83,148 @@ This platform automatically collects data about dental practice acquisitions fro
 
 ---
 
+## Next.js Frontend (Primary Dashboard)
+
+The primary dashboard is a Next.js application in `dental-pe-nextjs/`, deployed to Vercel. It reads from Supabase Postgres (synced from the Python pipeline's SQLite database).
+
+### Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Framework | Next.js 16 (App Router, React 19, Server Components) |
+| Language | TypeScript 5 |
+| Database | Supabase (Postgres) |
+| State Management | TanStack React Query + URL params |
+| Tables | TanStack React Table |
+| Charts | Recharts 3 |
+| Maps | Mapbox GL + react-map-gl |
+| Styling | Tailwind CSS 4 + shadcn UI |
+| Icons | Lucide React |
+| Fonts | DM Sans (headings), Inter (body), JetBrains Mono (data values) |
+| Deployment | Vercel (auto-deploy on push to `main`) |
+
+### Entity Classification Is Primary
+
+The Next.js frontend uses `entity_classification` (11 granular types) as the PRIMARY field for all ownership and consolidation analysis — not the legacy `ownership_status` field (which only has 3 values: independent, dso_affiliated, pe_backed). Helper functions in `src/lib/constants/entity-classifications.ts` provide classification logic, color mapping, and label formatting with an `ownership_status` fallback for practices missing entity data.
+
+### Design System
+
+"Vercel Dashboard x Bloomberg Terminal" — a dark theme with semantic color coding:
+
+- **Green** (#22C55E) — independent practices, opportunities, positive signals
+- **Red** (#EF4444) — corporate/PE-backed, risk indicators
+- **Amber** (#F59E0B) — DSO-affiliated, moderate signals
+- **Purple** (#A855F7) — specialist practices
+- **Blue** (#3B82F6) — primary accent, links, interactive elements
+- **Gray** (#64748B) — unknown, insufficient data
+
+### Environment Variables
+
+Create a `.env.local` file in `dental-pe-nextjs/`:
+
+```
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+NEXT_PUBLIC_MAPBOX_TOKEN=your-mapbox-token
+```
+
+### Development Commands
+
+```bash
+cd dental-pe-nextjs
+npm run dev      # Start dev server at localhost:3000
+npm run build    # TypeScript check + production build
+npm start        # Production server
+npm run lint     # ESLint
+```
+
+### Project Structure
+
+```
+dental-pe-nextjs/
+  src/
+    app/                    Next.js App Router — 7 page routes + API routes
+      deal-flow/            PE deal tracking
+      market-intel/         ZIP consolidation analysis
+      buyability/           Acquisition target scoring
+      job-market/           Career opportunity finder
+      research/             Deep dives + SQL explorer
+      system/               Pipeline health + manual entry
+      api/                  Route handlers (deals, practices, sql-explorer, watched-zips)
+    components/             Shared UI (charts, data-display, filters, layout, maps, ui)
+    lib/
+      constants/            Entity classifications, colors, design tokens, locations
+      hooks/                useSidebar, useUrlFilters, useSectionObserver
+      supabase/             Client/server setup + query functions by table
+      types/                TypeScript interfaces (Deal, Practice, ZipScore, etc.)
+      utils/                Formatting, scoring, CSV export, color helpers
+    providers/              QueryProvider (React Query), SidebarProvider
+```
+
+---
+
+## Streamlit Dashboard (Legacy)
+
+The original dashboard at `dashboard/app.py` (2,583 lines, single file, 6 pages). Still deployed on Streamlit Cloud and functional, but no longer the primary interface.
+
+- Reads from local SQLite database (`data/dental_pe_tracker.db`)
+- Auto-decompresses `.db.gz` on Streamlit Cloud via `_ensure_db_decompressed()`
+- Push to `main` auto-deploys in ~60 seconds
+
+---
+
+## How to Start the Dashboard
+
+### Option A: Use the Live URLs (Recommended)
+
+- **Next.js (Primary):** [dental-pe-nextjs.vercel.app](https://dental-pe-nextjs.vercel.app/) — reads from Supabase, always up to date after sync
+- **Streamlit (Legacy):** [suleman7-pe.streamlit.app](https://suleman7-pe.streamlit.app/) — uses a snapshot of the database from the last `git push`
+
+### Option B: Run Next.js Locally
+
+```bash
+cd ~/dental-pe-tracker/dental-pe-nextjs && npm run dev
+```
+
+Opens at [http://localhost:3000](http://localhost:3000). Requires `.env.local` with Supabase and Mapbox credentials (see [Environment Variables](#environment-variables)).
+
+### Option C: Run Streamlit Locally
+
+```bash
+bash ~/dental-pe-tracker/start_dashboard.sh
+```
+
+Opens at [http://localhost:8051](http://localhost:8051). Uses the local SQLite database directly — no cloud credentials needed.
+
+---
+
+## Supabase Sync
+
+The Python pipeline writes to a local SQLite database. To feed the Next.js frontend, data is synced to Supabase Postgres via `scrapers/sync_to_supabase.py`.
+
+```bash
+cd ~/dental-pe-tracker && python3 scrapers/sync_to_supabase.py
+```
+
+### Sync Strategies
+
+| Strategy | Tables | How It Works |
+|----------|--------|-------------|
+| `incremental_updated_at` | practices | Syncs only rows where `updated_at` is newer than last sync |
+| `incremental_id` | deals, practice_changes | Syncs rows with IDs higher than the last synced ID |
+| `full_replace` | zip_scores, watched_zips, dso_locations, ada_hpi_benchmarks, pe_sponsors, platforms, zip_qualitative_intel, practice_intel | Truncates and reloads the entire table each sync |
+
+The sync runs as step 9 of the weekly refresh pipeline (`scrapers/refresh.sh`). You can also run it manually after any data import.
+
+### Required Environment
+
+```bash
+export SUPABASE_URL=https://your-project.supabase.co
+export SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+```
+
+---
+
 ## Your Data Sources at a Glance
 
 The system pulls from 9 different data sources. Some run automatically, some need you to download a file once in a while.
@@ -94,26 +246,6 @@ The system pulls from 9 different data sources. Some run automatically, some nee
 
 ---
 
-## How to Start the Dashboard
-
-### Option A: Use the Live URL (Recommended)
-
-Just visit [suleman7-pe.streamlit.app](https://suleman7-pe.streamlit.app/) in your browser. The dashboard is always running on Streamlit Cloud. No setup needed.
-
-**Important:** The Cloud version uses a snapshot of the database from the last `git push`. To see the latest data after running scrapers locally, you need to re-compress and push the database (see [Quick Command Cheat Sheet](#quick-command-cheat-sheet)).
-
-### Option B: Run Locally
-
-Open Terminal and run:
-
-```bash
-bash ~/dental-pe-tracker/start_dashboard.sh
-```
-
-This starts the dashboard at [http://localhost:8051](http://localhost:8051). Use this when you want to see data immediately after running scrapers, without waiting for a push to GitHub.
-
----
-
 ## Weekly: Automated Refresh (Nothing To Do)
 
 Your Mac has a cron job that runs every Sunday at 8:00 AM. It automatically:
@@ -126,9 +258,10 @@ Your Mac has a cron job that runs every Sunday at 8:00 AM. It automatically:
 6. Checks **ADA HPI** for new annual data files (auto-downloads when available)
 7. Runs the **DSO classifier** to tag new practices
 8. Recalculates **consolidation scores** for all 290 ZIP codes
-9. **Compresses DB + git pushes** to auto-deploy to Streamlit Cloud
+9. **Syncs to Supabase** (feeds the Next.js dashboard)
+10. **Compresses DB + git pushes** to auto-deploy to Streamlit Cloud
 
-Every step logs a structured event to `logs/pipeline_events.jsonl` with timestamp, duration, records processed, and a summary of what changed. View these on the **System Health** page under "Pipeline Activity Log".
+Every step logs a structured event to `logs/pipeline_events.jsonl` with timestamp, duration, records processed, and a summary of what changed. View these on the **System** page under "Pipeline Activity Log".
 
 **You don't need to do anything.** But if you want to verify it ran:
 
@@ -199,10 +332,14 @@ python3 scrapers/merge_and_score.py
 
 This updates consolidation percentages, opportunity scores, and metro-level stats for all 290 watched ZIPs.
 
-**Step 5:** (Optional) Push updated database to the cloud dashboard:
+**Step 5:** (Optional) Push updated database to the cloud dashboards:
 
 ```bash
-cd ~/dental-pe-tracker && gzip -kf data/dental_pe_tracker.db
+# Sync to Supabase (Next.js dashboard)
+cd ~/dental-pe-tracker && python3 scrapers/sync_to_supabase.py
+
+# Compress and push to Streamlit Cloud (legacy)
+gzip -kf data/dental_pe_tracker.db
 git add data/dental_pe_tracker.db.gz && git commit -m "Monthly NPPES refresh $(date +%Y-%m)" && git push
 ```
 
@@ -708,18 +845,18 @@ Here are common tasks and which page to use:
 | Compare dental saturation across all my ZIPs | **Market Intel** | Scroll to "Saturation Analysis" — sortable table with DLD, buyable %, corporate %, market type |
 | Find buyable practices in Homer Glen | **Buyability** | Filter to ZIP 60491, sort by score descending |
 | Scope out job opportunities near where I'll live | **Job Market** | Pick West Loop, Woodridge, Bolingbrook, or All Chicagoland — see density map, dual-lens directory |
-| Find practices that are hiring associates | **Job Market** | Practice Directory → "Employment Opportunities" tab — large groups and high-employee practices |
-| Find practices approaching ownership transition | **Job Market** | Practice Directory → "Ownership Pipeline" tab — established solos with high buyability |
+| Find practices that are hiring associates | **Job Market** | Practice Directory — large groups and high-employee practices |
+| Find practices approaching ownership transition | **Job Market** | Practice Directory — established solos with high buyability |
 | See the full intelligence profile for a practice | **Job Market** | Click a practice in the directory — entity classification, reasoning, all available data fields |
-| See what Specialized Dental Partners is doing | **Research** | PE Sponsor Profile → "Quad-C Management" or Platform Profile → "Specialized Dental Partners" |
-| View all deals in Illinois this year | **Deal Flow** | Sidebar: State = IL, Date = 2026-01-01 to today |
+| See what Specialized Dental Partners is doing | **Research** | PE Sponsor Profile or Platform Profile |
+| View all deals in Illinois this year | **Deal Flow** | Filter: State = IL, Date = 2026-01-01 to today |
 | Check for acquisitions in my ZIPs | **Market Intel** | Scroll to "Recent Practice Changes" section, filter to your metro |
-| Find retirement-risk practices near me | **Job Market** | Opportunity Signals → Retirement Risk tab |
-| See which DSOs dominate my area | **Job Market** | Market Analytics → Competitive Landscape section |
-| Find family practices with internal succession | **Research** | SQL Explorer → "Family Practices" preset |
-| Find high-volume solos that need associate help | **Research** | SQL Explorer → "High-Vol Solos" preset |
-| Check Data Axle coverage by ZIP | **Research** | SQL Explorer → "Enrichment Coverage" preset |
-| Run a custom database query | **Research** | SQL Explorer tab — write your query or use one of 9 presets |
+| Find retirement-risk practices near me | **Job Market** | Opportunity Signals — Retirement Risk tab |
+| See which DSOs dominate my area | **Job Market** | Market Analytics — Competitive Landscape section |
+| Find family practices with internal succession | **Research** | SQL Explorer — "Family Practices" preset |
+| Find high-volume solos that need associate help | **Research** | SQL Explorer — "High-Vol Solos" preset |
+| Check Data Axle coverage by ZIP | **Research** | SQL Explorer — "Enrichment Coverage" preset |
+| Run a custom database query | **Research** | SQL Explorer tab — write your query or use presets |
 
 ---
 
@@ -984,6 +1121,10 @@ cd ~/dental-pe-tracker && bash scrapers/refresh.sh
 ### "The dashboard won't start"
 
 ```bash
+# Next.js
+cd ~/dental-pe-tracker/dental-pe-nextjs && npm run build 2>&1 | tail -30
+
+# Streamlit
 cd ~/dental-pe-tracker && streamlit run dashboard/app.py 2>&1 | head -30
 ```
 
@@ -1082,13 +1223,20 @@ cp ~/dental-pe-tracker/backups/$(ls -t ~/dental-pe-tracker/backups/ | head -1) \
 Copy-paste any of these into Terminal.
 
 ```bash
-# ── Dashboard ──────────────────────────────────────────────
-# Start the dashboard locally
+# ── Dashboards ────────────────────────────────────────────
+# Start Next.js dashboard locally (primary)
+cd ~/dental-pe-tracker/dental-pe-nextjs && npm run dev
+
+# Start Streamlit dashboard locally (legacy)
 bash ~/dental-pe-tracker/start_dashboard.sh
 
 # ── Full Pipeline ──────────────────────────────────────────
-# Manual full refresh (PESP + GDN + PitchBook + classify + score)
+# Manual full refresh (PESP + GDN + PitchBook + classify + score + sync)
 cd ~/dental-pe-tracker && bash scrapers/refresh.sh
+
+# ── Supabase Sync ─────────────────────────────────────────
+# Sync SQLite → Supabase Postgres (feeds Next.js dashboard)
+cd ~/dental-pe-tracker && python3 scrapers/sync_to_supabase.py
 
 # ── Health Check ───────────────────────────────────────────
 # Check pipeline status (all data sources, freshness, integrity)
@@ -1194,8 +1342,11 @@ print(f'Practices: {s.query(Practice).count():,}')
 s.close()
 "
 
-# ── Deploy to Streamlit Cloud ─────────────────────────────
-# Re-compress DB and push
+# ── Deploy ────────────────────────────────────────────────
+# Sync to Supabase (Next.js dashboard)
+cd ~/dental-pe-tracker && python3 scrapers/sync_to_supabase.py
+
+# Re-compress DB and push (Streamlit Cloud)
 cd ~/dental-pe-tracker && gzip -kf data/dental_pe_tracker.db
 git add data/dental_pe_tracker.db.gz && git commit -m "DB update $(date +%Y-%m-%d)" && git push
 ```
