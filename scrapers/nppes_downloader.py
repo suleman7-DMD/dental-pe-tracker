@@ -130,12 +130,11 @@ def discover_nppes_urls():
             weekly_urls.append(abs_url)
             log.info("Found weekly update: %s", abs_url)
 
-    # Use the most recent weekly update (last one on page)
-    update_url = weekly_urls[-1] if weekly_urls else None
-    if update_url:
-        log.info("Using latest weekly update: %s", update_url)
+    # Return all weekly URLs for processing (NPI-based dedup prevents duplicate records)
+    if weekly_urls:
+        log.info("Found %d weekly update files", len(weekly_urls))
 
-    return full_url, update_url
+    return full_url, weekly_urls
 
 
 def download_file(url, dest_path):
@@ -576,65 +575,109 @@ def run(watched_only=False, dry_run=False):
         log.info("Filtering to %d watched ZIP codes", len(watched_zips))
 
     # Discover NPPES URLs
-    full_url, update_url = discover_nppes_urls()
+    full_url, weekly_urls = discover_nppes_urls()
 
     if is_first_run and not full_url:
         log.error("Cannot find full NPPES file URL. Check %s manually.", NPPES_PAGE)
         session.close()
         return
 
-    if not is_first_run and not update_url:
-        log.warning("Cannot find monthly update URL. Trying full file instead.")
+    if not is_first_run and not weekly_urls:
+        log.warning("Cannot find weekly update URLs. Trying full file instead.")
         if not full_url:
             log.error("No download URLs found at all.")
             session.close()
             return
 
-    # Determine which file to download
+    # Determine which file(s) to download and process
+    stats = {"total_rows": 0, "dental_rows": 0}
+
     if is_first_run:
-        target_url = full_url
         log.info("FIRST RUN — downloading full dissemination file")
-    else:
-        target_url = update_url or full_url
-        log.info("UPDATE RUN — downloading %s", "monthly update" if update_url else "full file")
+        target_url = full_url
+        zip_filename = target_url.split("/")[-1]
+        zip_path = os.path.join(TEMP_DIR, zip_filename)
 
-    # Download
-    zip_filename = target_url.split("/")[-1]
-    zip_path = os.path.join(TEMP_DIR, zip_filename)
+        if not os.path.exists(zip_path):
+            success = download_file(target_url, zip_path)
+            if not success:
+                session.close()
+                return
+        else:
+            log.info("ZIP already exists, skipping download: %s", zip_path)
 
-    if not os.path.exists(zip_path):
-        success = download_file(target_url, zip_path)
-        if not success:
+        csv_path = extract_zip(zip_path, TEMP_DIR)
+        if not csv_path:
             session.close()
             return
-    else:
-        log.info("ZIP already exists, skipping download: %s", zip_path)
 
-    # Extract
-    csv_path = extract_zip(zip_path, TEMP_DIR)
-    if not csv_path:
-        session.close()
-        return
-
-    # Process
-    if is_first_run or target_url == full_url:
         stats = process_full_file(csv_path, session, watched_zips, dry_run)
-    else:
-        stats = process_update_file(csv_path, session, watched_zips, dry_run)
+    elif weekly_urls:
+        # Process ALL weekly files (NPI-based dedup in insert_or_update_practice prevents duplicates)
+        log.info("UPDATE RUN — processing %d weekly update files", len(weekly_urls))
+        combined_stats = {"total_rows": 0, "dental_rows": 0, "new_practices": 0,
+                          "updated_practices": 0, "changes_logged": 0, "skipped_zip": 0, "errors": 0}
+        for i, weekly_url in enumerate(weekly_urls, 1):
+            log.info("Processing weekly file %d/%d: %s", i, len(weekly_urls), weekly_url)
+            zip_filename = weekly_url.split("/")[-1]
+            zip_path = os.path.join(TEMP_DIR, zip_filename)
 
-    # Cleanup temp files
+            if not os.path.exists(zip_path):
+                success = download_file(weekly_url, zip_path)
+                if not success:
+                    log.warning("Failed to download %s, skipping", weekly_url)
+                    continue
+            else:
+                log.info("ZIP already exists, skipping download: %s", zip_path)
+
+            csv_path = extract_zip(zip_path, TEMP_DIR)
+            if not csv_path:
+                log.warning("Failed to extract %s, skipping", zip_path)
+                continue
+
+            file_stats = process_update_file(csv_path, session, watched_zips, dry_run)
+
+            # Accumulate stats
+            for key in combined_stats:
+                if key in file_stats:
+                    combined_stats[key] += file_stats[key]
+
+            # Cleanup this file's temp files
+            try:
+                os.remove(zip_path)
+            except OSError:
+                pass
+            try:
+                os.remove(csv_path)
+            except OSError:
+                pass
+
+        stats = combined_stats
+    else:
+        # Fallback to full file
+        log.info("UPDATE RUN — no weekly files, downloading full file")
+        target_url = full_url
+        zip_filename = target_url.split("/")[-1]
+        zip_path = os.path.join(TEMP_DIR, zip_filename)
+
+        if not os.path.exists(zip_path):
+            success = download_file(target_url, zip_path)
+            if not success:
+                session.close()
+                return
+        else:
+            log.info("ZIP already exists, skipping download: %s", zip_path)
+
+        csv_path = extract_zip(zip_path, TEMP_DIR)
+        if not csv_path:
+            session.close()
+            return
+
+        stats = process_full_file(csv_path, session, watched_zips, dry_run)
+
+    # Cleanup temp files (weekly branch cleans up per-file; this handles first-run and fallback)
     log.info("Cleaning up temporary files...")
-    try:
-        os.remove(zip_path)
-        log.info("  Removed: %s", zip_path)
-    except OSError:
-        pass
-    try:
-        os.remove(csv_path)
-        log.info("  Removed: %s", csv_path)
-    except OSError:
-        pass
-    # Remove any other extracted files in temp
+    # Remove any remaining extracted files in temp
     for f in os.listdir(TEMP_DIR):
         fpath = os.path.join(TEMP_DIR, f)
         if os.path.isfile(fpath):

@@ -84,8 +84,9 @@ DSO_REGISTRY = [
     {
         "name": "Specialized Dental Partners",
         "url": "https://www.specializeddental.com/partnership/",
-        "method": "html",
+        "method": "needs_browser",
         "pe_sponsor": "Quad-C Management",
+        "notes": "Previously html — now returns 404",
     },
     {
         "name": "Great Expressions",
@@ -111,10 +112,9 @@ DSO_REGISTRY = [
     {
         "name": "42 North Dental",
         "url": "https://www.42northdental.com/practices/",
-        "method": "html_subpages",
+        "method": "needs_browser",
         "pe_sponsor": None,
-        "index_url": "https://www.42northdental.com/practices/",
-        "link_pattern": r'/practices/',
+        "notes": "Previously html_subpages — now returns 404",
     },
     {
         "name": "Gentle Dental",
@@ -149,14 +149,16 @@ DSO_REGISTRY = [
     {
         "name": "Community Dental Partners",
         "url": "https://www.communitydentalpartners.com/locations/",
-        "method": "html",
+        "method": "needs_browser",
         "pe_sponsor": None,
+        "notes": "Previously html — now returns 404",
     },
     {
         "name": "Mortenson Dental Partners",
         "url": "https://www.mortensondental.com/our-offices/",
-        "method": "html",
+        "method": "needs_browser",
         "pe_sponsor": None,
+        "notes": "Previously html — now returns 404",
     },
     {
         "name": "Ideal Dental",
@@ -543,6 +545,11 @@ def match_locations_to_practices(session, locations, dso_entry, dry_run=False):
                     practice.address.lower()
                 )
                 if addr_score >= 80 and addr_score > best_score:
+                    # Validate leading street numbers match (different number = different building)
+                    p_num = re.match(r'(\d+)', practice.address or '')
+                    d_num = re.match(r'(\d+)', loc["address"] or '')
+                    if p_num and d_num and p_num.group(1) != d_num.group(1):
+                        continue  # Different street number = different building
                     best_match = practice
                     best_score = addr_score
 
@@ -654,8 +661,10 @@ def run(dry_run=False, dso_name_filter=None):
         total_scraped += 1
         total_locations += len(locations)
 
-        # Store locations in DB
+        # Store locations in DB (delete existing rows for this DSO first to prevent duplication)
         if not dry_run and locations:
+            session.query(DSOLocation).filter_by(dso_name=dso_entry["name"]).delete()
+            session.commit()
             for loc in locations:
                 dso_loc = DSOLocation(
                     dso_name=loc["dso_name"],

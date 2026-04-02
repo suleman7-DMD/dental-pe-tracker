@@ -35,7 +35,7 @@ MONTHS = [
     "july", "august", "september", "october", "november", "december",
 ]
 
-YEARS = [2022, 2023, 2024, 2025, 2026]
+YEARS = list(range(2022, date.today().year + 1))
 
 KNOWN_PLATFORMS = [
     "Heartland Dental", "MB2 Dental", "Dental365", "Specialized Dental Partners",
@@ -48,6 +48,8 @@ KNOWN_PLATFORMS = [
     "Mortenson Dental Partners", "Risas Dental", "Western Dental",
     "Dental Care Alliance", "42 North Dental", "Tend", "MAX Surgical",
     "T Management", "Silver Creek Dental Partners",
+    "Pearl Street Dental Partners", "Riccobene Associates", "Dental Whale",
+    "Shore Dental",
 ]
 
 KNOWN_PE_SPONSORS = [
@@ -59,6 +61,7 @@ KNOWN_PE_SPONSORS = [
     "RF Investment Partners", "Latticework Capital", "Resolute Capital Partners",
     "Georgia Oak Partners", "Harvest Partners", "Mid Ocean Partners",
     "Partners Group", "Blackstone", "Audax Group", "Mubadala",
+    "Quad-C", "Comvest", "SkyKnight Capital",
 ]
 
 STATE_MAP = {
@@ -158,6 +161,10 @@ def extract_dental_sections(soup):
                 # New non-dental heading ends the dental section
                 dental_section_active = False
                 continue
+
+        # Skip footnote citations like "[1] ...", "[23] ..."
+        if re.match(r'^\[\d', text):
+            continue
 
         if dental_section_active and tag in ("p", "li", "td"):
             dental_paragraphs.append(text)
@@ -284,9 +291,9 @@ def extract_pe_sponsor(text):
 
 
 def _match_known_sponsor(candidate):
-    """Check if candidate string matches or contains a known PE sponsor."""
+    """Check if candidate string matches or contains a known PE sponsor (bidirectional)."""
     for s in sorted(KNOWN_PE_SPONSORS, key=len, reverse=True):
-        if s.lower() in candidate.lower():
+        if s.lower() in candidate.lower() or candidate.lower() in s.lower():
             return s
     return None
 

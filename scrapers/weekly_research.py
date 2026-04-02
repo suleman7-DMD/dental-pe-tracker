@@ -23,8 +23,11 @@ Usage:
 import argparse
 import json
 import os
+import sys
 import sqlite3
 from datetime import datetime, timedelta
+
+sys.path.insert(0, os.path.expanduser("~/dental-pe-tracker"))
 
 from scrapers.research_engine import ResearchEngine, CostTracker, MODEL_HAIKU
 from scrapers.intel_database import (

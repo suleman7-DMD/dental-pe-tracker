@@ -703,8 +703,10 @@ def score_watched_zips(session):
                  zc, raw, total, dedup_ratio, institutional)
 
         consolidated_count = pe + dso
-        consol_pct = (consolidated_count / classified * 100) if classified > 0 else 0.0
-        consol_total = (consolidated_count / total * 100) if total > 0 else 0.0
+        # Both use total as denominator (conservative, per CLAUDE.md rules)
+        classified = total - unk - institutional
+        consol_pct = (consolidated_count / total * 100) if total > 0 else 0.0
+        consol_total = consol_pct  # same denominator now
         indep_pct_total = (indep / total * 100) if total > 0 else 0.0
         pe_pct = (pe / classified * 100) if classified > 0 else 0.0
         unk_pct = (unk / total * 100) if total > 0 else 0.0

@@ -80,7 +80,7 @@ KNOWN_DSOS = [
     ("smile partners", "Smile Partners USA", "Silver Oak Services Partners"),
     ("smilist", "The Smilist", None),
     ("parkview dental partners", "Parkview Dental Partners", "Cathay Capital"),
-    ("t management", "T Management", "Georgia Oak Partners"),
+    ("t management group", "T Management", "Georgia Oak Partners"),
     ("silver creek dental", "Silver Creek Dental Partners", None),
     ("elevate dental", "Elevate Dental", None),
     ("peak dental", "Peak Dental", None),

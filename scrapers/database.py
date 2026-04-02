@@ -603,18 +603,24 @@ def _seed_watched_zips(session: Session):
 
 def insert_deal(session: Session, **kwargs) -> bool:
     """Insert a deal. Returns True if inserted, False if duplicate."""
-    # Dedup: same platform_company + deal_date + source
+    # Dedup: same platform_company + deal_date + source + target_name
     platform = kwargs.get("platform_company")
     deal_date = kwargs.get("deal_date")
     source = kwargs.get("source")
+    target_name = kwargs.get("target_name")
     if platform and deal_date:
-        existing = session.query(Deal).filter(
+        filters = [
             Deal.platform_company == platform,
             Deal.deal_date == deal_date,
             Deal.source == source,
-        ).first()
+        ]
+        if target_name is None:
+            filters.append(Deal.target_name.is_(None))
+        else:
+            filters.append(Deal.target_name == target_name)
+        existing = session.query(Deal).filter(*filters).first()
         if existing:
-            log.warning("Duplicate deal skipped: %s on %s", platform, deal_date)
+            log.warning("Duplicate deal skipped: %s / %s on %s", platform, target_name, deal_date)
             return False
     try:
         deal = Deal(**kwargs)

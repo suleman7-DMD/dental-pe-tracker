@@ -56,6 +56,16 @@ KNOWN_PLATFORMS = [
     "OMS360", "Oral Surgery Partners", "US Endo Partners",
     "Endodontic Practice Partners", "MyOrthos",
     "Riccobene Associates", "Imagen Dental Partners",
+    "Aria Care Partners", "Beacon Oral Specialists", "BRUSH 365",
+    "Burch Dental Partners", "Choice Healthcare Services",
+    "CollectiveCare Dental", "Damira Dental Studios",
+    "EPIC4 Specialty Partners", "Guardian Dentistry Partners",
+    "Innovate 32", "J&J Dental Support Services",
+    "Magic Smiles for Kids", "Modern Micro Endodontics",
+    "Operation Dental", "Passion Dental",
+    "Premier Care Dental Management", "Specialty1 Partners",
+    "Today's Dental Network",
+    "Vitana Pediatric & Orthodontic Partners",
 ]
 
 KNOWN_PE_SPONSORS = [
@@ -106,6 +116,7 @@ INTERNATIONAL_KEYWORDS = [
     "north yorkshire", "south perth", "western australia", "queensland",
     "ontario", "british columbia", "alberta", "quebec",
     "dental care ireland", "the dental hub",
+    "toronto",
 ]
 
 # Credit/debt/ratings keywords — skip these entries
@@ -297,6 +308,9 @@ def is_international(text):
     for kw in INTERNATIONAL_KEYWORDS:
         if kw in t:
             return True
+    # Word-boundary keywords that would false-positive as substrings
+    if re.search(r'\buk\b', t):
+        return True
     return False
 
 
@@ -331,10 +345,29 @@ def is_deal_block(text):
 
 
 def extract_platform(text):
-    """Find a known platform company in the text."""
+    """Find a known platform company in the text.
+
+    First checks KNOWN_PLATFORMS list.  Falls back to a heuristic that
+    extracts the first capitalized multi-word entity at the start of a
+    text block when it is immediately followed by a deal verb.
+    """
     for p in sorted(KNOWN_PLATFORMS, key=len, reverse=True):
         if re.search(re.escape(p), text, re.IGNORECASE):
             return p
+
+    # Fallback: leading capitalized entity + deal verb
+    m = re.match(
+        r'^([A-Z][A-Za-z\'\u2019\-&\.]+(?:\s+[A-Z][A-Za-z\'\u2019\-&\.]+)+)'
+        r'\s+(?:announced|partnered|welcomed|opened|acquired|expanded|affiliated|added)\b',
+        text,
+    )
+    if m:
+        candidate = m.group(1).strip()
+        # Reject if it looks like a sentence starter rather than an entity name
+        if len(candidate.split()) <= 6 and len(candidate) <= 60:
+            log.debug("Fallback platform extracted: %s", candidate)
+            return candidate
+
     return None
 
 
@@ -381,15 +414,39 @@ def extract_target(text, platform):
     """Try to extract the target practice name."""
     # GDN patterns: "sale to [Platform]" means we want the entity before "sale to"
     # "advised [Target] in its sale"
+    # Character class for target names: includes apostrophe, smart quote, hyphen, ampersand, period
+    _N = r"A-Za-z\s\'\u2019\-&\."
+
+    # --- Inverted patterns (target before verb) — check first ---
+    inverted_patterns = [
+        rf'([A-Z][{_N}]{{3,50}}?)\s+was\s+acquired\s+by\s+',
+        rf'([A-Z][{_N}]{{3,50}}?)\s+has\s+joined\s+',
+        rf'([A-Z][{_N}]{{3,50}}?)\s+affiliated\s+with\s+',
+    ]
+    for pattern in inverted_patterns:
+        m = re.search(pattern, text)
+        if m:
+            target = m.group(1).strip().rstrip(".")
+            if platform and target.lower() == platform.lower():
+                continue
+            if target.lower() in ("the", "a", "an", "its", "their", "several", "multiple",
+                                   "two", "three", "four", "five", "dr", "new"):
+                continue
+            if any(target.lower() == p.lower() for p in KNOWN_PLATFORMS):
+                continue
+            return target
+
+    # --- Standard patterns (verb before target) ---
     for pattern in [
-        r'advised\s+([A-Z][A-Za-z\s\'\-&\.]{3,50}?)\s+(?:in its|on its|in the)',
-        r'acqui(?:red|sition of)\s+([A-Z][A-Za-z\s\'\-&\.]{3,50}?)(?:\s+in\s|\s+from\s|,|\.|;|\s+and\s|\s+to\s)',
-        r'partnership with\s+(?:Dr\.\s+[A-Za-z]+\s+[A-Za-z]+\s+and\s+(?:the\s+)?)?([A-Z][A-Za-z\s\'\-&\.]{3,50}?)(?:\s+team|\s+in\s|,|\.|;)',
-        r'affiliated with\s+([A-Z][A-Za-z\s\'\-&\.]{3,50}?)(?:\s+in\s|,|\.|;)',
-        r'addition of\s+([A-Z][A-Za-z\s\'\-&\.]{3,50}?)(?:\s+in\s|\s+to\s|,|\.|;)',
-        r'welcomed\s+([A-Z][A-Za-z\s\'\-&\.]{3,50}?)(?:\s+as\s|\s+to\s|\s+in\s|,|\.|;)',
-        r'merged with\s+([A-Z][A-Za-z\s\'\-&\.]{3,50}?)(?:\s+in\s|,|\.|;)',
-        r'sale (?:of|to)\s+(?:[A-Z][A-Za-z\s]+?\s+(?:to|by)\s+)?([A-Z][A-Za-z\s\'\-&\.]{3,50}?)(?:\.|,|;)',
+        rf'advised\s+([A-Z][{_N}]{{3,50}}?)\s+(?:in its|on its|in the)',
+        rf'acqui(?:red|sition of)\s+([A-Z][{_N}]{{3,50}}?)(?:\s+in\s|\s+from\s|,|\.|;|\s+and\s|\s+to\s)',
+        rf'acquired:\s+([A-Z][{_N}]{{3,50}}?)(?:\s+in\s|\s+from\s|,|\.|;|\s+and\s|\s+to\s)',
+        rf'partnerships?\s+with\s+(?:Dr\.\s+[A-Za-z]+\s+[A-Za-z]+\s+and\s+(?:the\s+)?)?([A-Z][{_N}]{{3,50}}?)(?:\s+team|\s+in\s|,|\.|;|\(|\s+and\s)',
+        rf'affiliated with\s+([A-Z][{_N}]{{3,50}}?)(?:\s+in\s|,|\.|;)',
+        rf'addition of\s+([A-Z][{_N}]{{3,50}}?)(?:\s+in\s|\s+to\s|,|\.|;)',
+        rf'welcomed\s+([A-Z][{_N}]{{3,50}}?)(?:\s+as\s|\s+to\s|\s+in\s|,|\.|;)',
+        rf'merged with\s+([A-Z][{_N}]{{3,50}}?)(?:\s+in\s|,|\.|;)',
+        rf'sale (?:of|to)\s+(?:[A-Z][{_N}]+?\s+(?:to|by)\s+)?([A-Z][{_N}]{{3,50}}?)(?:\.|,|;)',
     ]:
         m = re.search(pattern, text)
         if m:
@@ -576,15 +633,21 @@ def scrape_post(url, title, fallback_date):
 
     deals = []
     parse_failures = 0
+    no_entity_drops = 0
     for block in blocks:
         try:
             parsed = parse_deal_block(block, deal_date, url)
+            if is_deal_block(block) and not is_international(block) and not is_credit_news(block) and not parsed:
+                # Block looked like a deal but was dropped (no platform/sponsor/target)
+                no_entity_drops += 1
             deals.extend(parsed)
         except Exception as e:
             log.warning("PARSE ERROR: %.200s — %s", block, e)
             parse_failures += 1
 
-    log.info("Parsed %d deals from %s (parse failures: %d)", len(deals), url, parse_failures)
+    total_drops = parse_failures + no_entity_drops
+    log.info("Parsed %d deals from %s (parse failures: %d, no-entity drops: %d, total dropped: %d)",
+             len(deals), url, parse_failures, no_entity_drops, total_drops)
     return deals
 
 
