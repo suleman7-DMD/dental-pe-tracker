@@ -3,6 +3,15 @@ set -o pipefail
 LOGFILE=~/dental-pe-tracker/logs/nppes_refresh_$(date +%Y-%m-%d_%H%M).log
 PROJECT=~/dental-pe-tracker
 PYTHON=/usr/local/bin/python3
+export PYTHONPATH="$PROJECT:$PYTHONPATH"
+cd "$PROJECT"
+
+# Load environment variables
+if [ -f "$PROJECT/.env" ]; then
+    set -a
+    source "$PROJECT/.env"
+    set +a
+fi
 
 echo "NPPES Monthly Refresh — $(date)" | tee -a "$LOGFILE"
 
@@ -23,6 +32,11 @@ run_step "[3/3] Scoring..."                  "$PYTHON $PROJECT/scrapers/merge_an
 
 echo "NPPES refresh complete: $(date)" | tee -a "$LOGFILE"
 
+# Sync to Supabase (only if SUPABASE_DATABASE_URL is configured)
+if [ -n "$SUPABASE_DATABASE_URL" ]; then
+    run_step "[4/4] Syncing to Supabase..." "$PYTHON $PROJECT/scrapers/sync_to_supabase.py"
+fi
+
 # Compress and push DB to Streamlit Cloud (auto-deploy)
 echo "" | tee -a "$LOGFILE"
 echo "[POST] Compressing + pushing DB to cloud..." | tee -a "$LOGFILE"
@@ -37,6 +51,12 @@ print('  Compressed.')
 
 git add data/dental_pe_tracker.db.gz && \
   git commit -m "NPPES refresh $(date +%Y-%m-%d)" 2>&1 | tee -a "$LOGFILE" && \
-  git push 2>&1 | tee -a "$LOGFILE" && \
+  {
+    if [ -n "$GITHUB_TOKEN" ]; then
+      git -c "credential.https://github.com.helper=!f() { echo username=x-access-token; echo password=$GITHUB_TOKEN; }; f" push 2>&1 | tee -a "$LOGFILE"
+    else
+      git push 2>&1 | tee -a "$LOGFILE"
+    fi
+  } && \
   echo "  Pushed to GitHub — Streamlit Cloud will auto-deploy." | tee -a "$LOGFILE" || \
   echo "  Git push skipped (no changes or error)." | tee -a "$LOGFILE"

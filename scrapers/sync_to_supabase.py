@@ -68,10 +68,11 @@ BATCH_SIZE = 2000
 # "incremental_id"         — WHERE id > last_max_id
 # "full_replace"           — TRUNCATE + INSERT
 SYNC_CONFIG = [
-    # Practices must sync BEFORE practice_changes (FK dependency)
-    {"table": "practices",        "model": Practice,        "strategy": "incremental_updated_at", "conflict_col": "npi"},
+    # Practices: only sync rows in watched ZIPs (Chicagoland + Boston ≈ 14k rows)
+    # Full 400k stays in local SQLite. This makes sync fast and keeps Supabase lean.
+    {"table": "practices",        "model": Practice,        "strategy": "watched_zips_only", "conflict_col": "npi"},
     {"table": "deals",            "model": Deal,            "strategy": "incremental_id",         "conflict_col": "id"},
-    {"table": "practice_changes", "model": PracticeChange,  "strategy": "incremental_id",         "conflict_col": "id"},
+    {"table": "practice_changes", "model": PracticeChange,  "strategy": "incremental_id",         "conflict_col": "id", "filter_watched_zips": True},
     {"table": "zip_scores",       "model": ZipScore,        "strategy": "full_replace",           "conflict_col": None},
     {"table": "watched_zips",     "model": WatchedZip,      "strategy": "full_replace",           "conflict_col": None},
     {"table": "dso_locations",    "model": DSOLocation,     "strategy": "full_replace",           "conflict_col": None},
@@ -329,13 +330,26 @@ def _sync_incremental_id(sqlite_session, pg_engine, config):
         log.info("[%s] First sync — fetching all rows", table_name)
         rows = sqlite_session.query(model).all()
 
+    # Filter to watched ZIPs if configured (e.g., practice_changes FK depends on practices)
+    if config.get("filter_watched_zips") and rows:
+        watched = sqlite_session.query(WatchedZip.zip_code).all()
+        watched_zips = {z[0] for z in watched}
+        # Get NPIs of practices in watched ZIPs
+        watched_npis = {
+            p[0] for p in sqlite_session.query(Practice.npi)
+            .filter(Practice.zip.in_(watched_zips))
+            .all()
+        }
+        before = len(rows)
+        rows = [r for r in rows if getattr(r, "npi", None) in watched_npis]
+        log.info("[%s] Filtered to watched ZIPs: %d → %d rows", table_name, before, len(rows))
+
     if not rows:
         log.info("[%s] No new rows to sync", table_name)
         return 0
 
     log.info("[%s] Syncing %d rows", table_name, len(rows))
 
-    # For deals, use upsert; for practice_changes, use upsert too (safe for replays)
     upsert_sql = _build_upsert_sql(table_name, columns, conflict_col)
 
     with pg_engine.connect() as conn:
@@ -383,6 +397,67 @@ def _sync_full_replace(sqlite_session, pg_engine, config):
     return len(rows)
 
 
+def _sync_watched_zips_only(sqlite_session, pg_engine, config):
+    """Sync only practices in watched ZIPs (Chicagoland + Boston ≈ 14k rows).
+
+    Uses full_replace strategy scoped to watched ZIPs.
+    Full 400k stays in local SQLite — Supabase only gets the practices
+    that the frontend actually queries.
+    """
+    table_name = config["table"]
+    model = config["model"]
+    conflict_col = config["conflict_col"]
+    columns = _get_column_names(model)
+
+    # Get the list of watched ZIP codes from SQLite
+    watched = sqlite_session.query(WatchedZip.zip_code).all()
+    watched_zips = [z[0] for z in watched]
+    log.info("[%s] Filtering to %d watched ZIPs", table_name, len(watched_zips))
+
+    # Fetch only practices in watched ZIPs
+    rows = (
+        sqlite_session.query(model)
+        .filter(model.zip.in_(watched_zips))
+        .all()
+    )
+
+    if not rows:
+        log.info("[%s] No practices in watched ZIPs", table_name)
+        return 0
+
+    log.info("[%s] Syncing %d practices (watched ZIPs only) in batches of %d",
+             table_name, len(rows), BATCH_SIZE)
+
+    # Truncate and reload (clean slate ensures no stale out-of-region data)
+    with pg_engine.connect() as conn:
+        conn.execute(text(f"TRUNCATE TABLE {table_name} CASCADE"))
+        conn.commit()
+    log.info("[%s] Truncated", table_name)
+
+    upsert_sql = _build_upsert_sql(table_name, columns, conflict_col)
+    total_synced = 0
+
+    for i in range(0, len(rows), BATCH_SIZE):
+        batch = rows[i:i + BATCH_SIZE]
+        dicts = [_model_to_dict(r) for r in batch]
+        with pg_engine.connect() as conn:
+            for d in dicts:
+                conn.execute(text(upsert_sql), d)
+            conn.commit()
+        total_synced += len(batch)
+        log.info("[%s] Batch %d-%d committed (%d/%d)",
+                 table_name, i, i + len(batch), total_synced, len(rows))
+
+    _update_sync_state(
+        pg_engine, table_name,
+        rows_synced=total_synced,
+        sync_type="watched_zips_only",
+        last_sync_value=datetime.now().isoformat(),
+        notes=f"Watched ZIPs only: {total_synced} rows from {len(watched_zips)} ZIPs",
+    )
+    return total_synced
+
+
 # ---------------------------------------------------------------------------
 # Main sync orchestrator
 # ---------------------------------------------------------------------------
@@ -391,6 +466,7 @@ _STRATEGY_MAP = {
     "incremental_updated_at": _sync_incremental_updated_at,
     "incremental_id": _sync_incremental_id,
     "full_replace": _sync_full_replace,
+    "watched_zips_only": _sync_watched_zips_only,
 }
 
 

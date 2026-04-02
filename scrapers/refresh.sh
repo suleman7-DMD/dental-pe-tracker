@@ -3,6 +3,8 @@ set -o pipefail
 LOGFILE=~/dental-pe-tracker/logs/refresh_$(date +%Y-%m-%d_%H%M).log
 PROJECT=~/dental-pe-tracker
 PYTHON=/usr/local/bin/python3
+export PYTHONPATH="$PROJECT:$PYTHONPATH"
+cd "$PROJECT"
 
 # Load environment variables
 if [ -f "$PROJECT/.env" ]; then
@@ -79,7 +81,13 @@ print('  Compressed.')
 
 git add data/dental_pe_tracker.db.gz && \
   git commit -m "Auto-refresh $(date +%Y-%m-%d)" 2>&1 | tee -a "$LOGFILE" && \
-  git push 2>&1 | tee -a "$LOGFILE" && \
+  {
+    if [ -n "$GITHUB_TOKEN" ]; then
+      git -c "credential.https://github.com.helper=!f() { echo username=x-access-token; echo password=$GITHUB_TOKEN; }; f" push 2>&1 | tee -a "$LOGFILE"
+    else
+      git push 2>&1 | tee -a "$LOGFILE"
+    fi
+  } && \
   echo "  Pushed to GitHub — Streamlit Cloud will auto-deploy." | tee -a "$LOGFILE" || \
   echo "  Git push skipped (no changes or error)." | tee -a "$LOGFILE"
 
