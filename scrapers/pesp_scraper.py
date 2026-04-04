@@ -369,7 +369,7 @@ def extract_pe_sponsor(text):
 
 def _match_known_sponsor(candidate):
     """Check if candidate string contains a known PE sponsor name."""
-    if len(candidate) < 4:
+    if len(candidate.strip()) < 3:
         return None
     for s in sorted(KNOWN_PE_SPONSORS, key=len, reverse=True):
         if s.lower() in candidate.lower():
@@ -474,7 +474,7 @@ def detect_deal_type(text, platform):
     # "acquired" without known platform → could be buyout
     if re.search(r'\bacquir|\bpurchas|\bbought\b', t) and not platform:
         return "buyout"
-    return "add-on"
+    return "unknown"
 
 
 # ── Scraper Orchestration ──────────────────────────────────────────────────
@@ -536,76 +536,78 @@ def run(dry_run=False):
     # Step 2: Scrape each page
     if not dry_run:
         init_db()
-        session = get_session()
+    session = get_session() if not dry_run else None
 
     all_deals = []
     pages_success = 0
     pages_failed = 0
     failed_urls = []
 
-    for url, deal_date in valid_urls:
-        log.info("Scraping: %s", url)
-        deals = scrape_page(url, deal_date)
+    try:
+        for url, deal_date in valid_urls:
+            log.info("Scraping: %s", url)
+            deals = scrape_page(url, deal_date)
 
-        if deals is None:
-            pages_failed += 1
-            failed_urls.append(url)
+            if deals is None:
+                pages_failed += 1
+                failed_urls.append(url)
+            else:
+                pages_success += 1
+                all_deals.extend(deals)
+
+            time.sleep(RATE_LIMIT_SECS)
+
+        # Step 3: Insert or print
+        new_inserted = 0
+        duplicates = 0
+
+        if dry_run:
+            _print_dry_run_table(all_deals)
         else:
-            pages_success += 1
-            all_deals.extend(deals)
+            for deal in all_deals:
+                try:
+                    result = insert_deal(
+                        session,
+                        deal_date=deal["deal_date"],
+                        platform_company=deal["platform_company"],
+                        pe_sponsor=deal.get("pe_sponsor"),
+                        target_name=deal.get("target_name"),
+                        target_state=deal.get("target_state"),
+                        deal_type=deal.get("deal_type"),
+                        specialty=deal.get("specialty"),
+                        source=deal["source"],
+                        source_url=deal["source_url"],
+                        raw_text=deal.get("raw_text"),
+                    )
+                    if result:
+                        new_inserted += 1
+                    else:
+                        duplicates += 1
+                except Exception as e:
+                    log.error("Insert error: %s", e)
 
-        time.sleep(RATE_LIMIT_SECS)
-
-    # Step 3: Insert or print
-    new_inserted = 0
-    duplicates = 0
-
-    if dry_run:
-        _print_dry_run_table(all_deals)
-    else:
-        for deal in all_deals:
-            try:
-                result = insert_deal(
-                    session,
-                    deal_date=deal["deal_date"],
-                    platform_company=deal["platform_company"],
-                    pe_sponsor=deal.get("pe_sponsor"),
-                    target_name=deal.get("target_name"),
-                    target_state=deal.get("target_state"),
-                    deal_type=deal.get("deal_type"),
-                    specialty=deal.get("specialty"),
-                    source=deal["source"],
-                    source_url=deal["source_url"],
-                    raw_text=deal.get("raw_text"),
-                )
-                if result:
-                    new_inserted += 1
-                else:
-                    duplicates += 1
-            except Exception as e:
-                log.error("Insert error: %s", e)
-
-    # Step 4: Summary
-    log.info("")
-    log.info("=" * 60)
-    log.info("PESP SCRAPER SUMMARY")
-    log.info("=" * 60)
-    log.info("Pages found:            %d", len(valid_urls))
-    log.info("Pages scraped OK:       %d", pages_success)
-    log.info("Pages failed:           %d", pages_failed)
-    if failed_urls:
-        for u in failed_urls:
-            log.info("  FAILED: %s", u)
-    log.info("Total deal mentions:    %d", len(all_deals))
-    if not dry_run:
-        log.info("New deals inserted:     %d", new_inserted)
-        log.info("Duplicates skipped:     %d", duplicates)
-        log_scrape_complete("pesp_scraper", _t0, new_records=new_inserted,
-                            summary=f"PESP: {new_inserted} new deals, {duplicates} dupes ({pages_success} pages scraped)",
-                            extra={"duplicates": duplicates, "pages_scraped": pages_success, "pages_failed": pages_failed})
-    log.info("=" * 60)
-    if not dry_run:
-        session.close()
+        # Step 4: Summary
+        log.info("")
+        log.info("=" * 60)
+        log.info("PESP SCRAPER SUMMARY")
+        log.info("=" * 60)
+        log.info("Pages found:            %d", len(valid_urls))
+        log.info("Pages scraped OK:       %d", pages_success)
+        log.info("Pages failed:           %d", pages_failed)
+        if failed_urls:
+            for u in failed_urls:
+                log.info("  FAILED: %s", u)
+        log.info("Total deal mentions:    %d", len(all_deals))
+        if not dry_run:
+            log.info("New deals inserted:     %d", new_inserted)
+            log.info("Duplicates skipped:     %d", duplicates)
+            log_scrape_complete("pesp_scraper", _t0, new_records=new_inserted,
+                                summary=f"PESP: {new_inserted} new deals, {duplicates} dupes ({pages_success} pages scraped)",
+                                extra={"duplicates": duplicates, "pages_scraped": pages_success, "pages_failed": pages_failed})
+        log.info("=" * 60)
+    finally:
+        if session:
+            session.close()
 
 
 def _print_dry_run_table(deals):

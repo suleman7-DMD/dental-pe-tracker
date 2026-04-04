@@ -71,7 +71,7 @@ SYNC_CONFIG = [
     # Practices: only sync rows in watched ZIPs (Chicagoland + Boston ≈ 14k rows)
     # Full 400k stays in local SQLite. This makes sync fast and keeps Supabase lean.
     {"table": "practices",        "model": Practice,        "strategy": "watched_zips_only", "conflict_col": "npi"},
-    {"table": "deals",            "model": Deal,            "strategy": "incremental_id",         "conflict_col": "id"},
+    {"table": "deals",            "model": Deal,            "strategy": "incremental_updated_at", "conflict_col": "id"},
     {"table": "practice_changes", "model": PracticeChange,  "strategy": "incremental_id",         "conflict_col": "id", "filter_watched_zips": True},
     {"table": "zip_scores",       "model": ZipScore,        "strategy": "full_replace",           "conflict_col": None},
     {"table": "watched_zips",     "model": WatchedZip,      "strategy": "full_replace",           "conflict_col": None},
