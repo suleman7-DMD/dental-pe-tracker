@@ -32,9 +32,9 @@ Key tables: `deals`, `practices`, `practice_changes`, `watched_zips`, `zip_score
 - **dso_locations**: 408 scraped DSO office locations from ADSO websites.
 - **ada_hpi_benchmarks**: 918 rows. State-level DSO affiliation rates by career stage (2022-2024).
 
-### Current Data Stats
-- 400,962 practices (362k independent, 2.8k DSO-affiliated, 401 PE-backed, 35k unknown)
-- 2,512 deals
+### Current Data Stats (as of 2026-04-04)
+- 401,411 practices (400,802 dental + 609 denturist filtered at query time)
+- 2,865 deals
 - 2,992 Data Axle enriched practices (with lat/lon, revenue, employees, year established)
 - 290 scored ZIPs
 
@@ -64,11 +64,11 @@ Key tables: `deals`, `practices`, `practice_changes`, `watched_zips`, `zip_score
 ## Automated Pipeline
 
 Cron runs every Sunday 8am (`scrapers/refresh.sh`):
-1. Backup DB → 2. PESP scraper → 3. GDN scraper → 4. PitchBook importer → 5. ADSO scraper → 6. ADA HPI downloader → 7. DSO classifier → 8. Merge & score → 9. Compress DB + git push
+1. Backup DB → 2. PESP scraper → 3. GDN scraper → 4. PitchBook importer → 5. ADSO scraper → 6. ADA HPI downloader → 7. DSO classifier → 8. Merge & score → 9. Weekly research → 10. Supabase sync → Compress DB + git push
 
 Monthly NPPES refresh (first Sunday 6am): downloads federal provider data updates.
 
-Every step logs structured events to `logs/pipeline_events.jsonl` via `scrapers/pipeline_logger.py`.
+Every step logs structured events to `logs/pipeline_events.jsonl` via `scrapers/pipeline_logger.py`. The sync step auto-pushes new events to Supabase's `pipeline_events` table (dashboard System page reads this).
 
 ## Critical Rules
 
@@ -92,6 +92,7 @@ Every step logs structured events to `logs/pipeline_events.jsonl` via `scrapers/
 - **`insert_deal()` dedup is asymmetric**: Python checks 5 fields (platform, date, source, target, state) but DB unique index only covers 3 (platform, target, date). Multi-state deals silently dropped by DB constraint.
 - NPPES data uses NPI as unique key (10-digit number)
 - **NPPES taxonomy**: Only `1223` prefix = Dentist. `1224` = Denturist (NOT dental). Never include `1224`.
+- **Supabase sync CASCADE trap**: `TRUNCATE practices CASCADE` wipes `practice_changes` (FK dependency). The sync script resets `practice_changes` sync_metadata after CASCADE so incremental sync re-sends all rows. Never add new FK references to `practices` without updating this reset logic.
 - PitchBook dedup uses fuzzy matching on company name + date
 - Data Axle dedup uses address normalization + fuzzy name matching
 - Data Axle importer has Pass 6: Corporate Linkage Detection (parent company fuzzy match, EIN clustering, IUSA parent linkage, franchise field)

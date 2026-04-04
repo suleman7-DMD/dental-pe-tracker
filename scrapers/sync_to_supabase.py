@@ -446,10 +446,15 @@ def _sync_watched_zips_only(sqlite_session, pg_engine, config):
              table_name, len(rows), BATCH_SIZE)
 
     # Truncate and reload (clean slate ensures no stale out-of-region data)
+    # CASCADE wipes dependent tables (e.g., practice_changes FK → practices).
+    # Reset their sync_metadata so incremental sync re-sends all rows.
     with pg_engine.connect() as conn:
         conn.execute(text(f"TRUNCATE TABLE {table_name} CASCADE"))
+        conn.execute(text(
+            "DELETE FROM sync_metadata WHERE table_name = 'practice_changes'"
+        ))
         conn.commit()
-    log.info("[%s] Truncated", table_name)
+    log.info("[%s] Truncated (CASCADE — reset practice_changes sync state)", table_name)
 
     upsert_sql = _build_upsert_sql(table_name, columns, conflict_col)
     total_synced = 0
@@ -550,6 +555,36 @@ def run():
             summary=f"Synced {total_synced} total rows to Supabase ({len(results)} tables, {error_count} errors)",
             extra={"table_results": {k: v for k, v in results.items() if isinstance(v, int)}},
         )
+
+        # Sync pipeline_events from JSONL log → Supabase (dashboard System page reads this)
+        try:
+            import json as _json
+            from scrapers.pipeline_logger import LOG_FILE as _log_file
+            with pg_engine.connect() as conn:
+                # Get last synced timestamp
+                res = conn.execute(text("SELECT MAX(timestamp) FROM pipeline_events"))
+                last_ts = res.scalar() or "1970-01-01T00:00:00"
+                last_ts_str = str(last_ts).replace("+00:00", "").replace(" ", "T")[:19]
+                new_count = 0
+                with open(_log_file, "r") as f:
+                    for line in f:
+                        try:
+                            ev = _json.loads(line.strip())
+                            if ev.get("timestamp", "") > last_ts_str:
+                                conn.execute(text(
+                                    "INSERT INTO pipeline_events (timestamp, source, event, status, summary, details) "
+                                    "VALUES (:ts, :src, :evt, :st, :sum, :det)"
+                                ), {"ts": ev["timestamp"], "src": ev["source"], "evt": ev["event"],
+                                    "st": ev["status"], "sum": ev["summary"],
+                                    "det": _json.dumps(ev.get("details", {}))})
+                                new_count += 1
+                        except Exception:
+                            pass
+                conn.commit()
+            if new_count:
+                log.info("[pipeline_events] Synced %d new events from JSONL", new_count)
+        except Exception as e:
+            log.warning("[pipeline_events] Could not sync: %s", e)
 
     except Exception as e:
         log.error("Sync failed: %s", e, exc_info=True)
