@@ -576,15 +576,15 @@ def match_locations_to_practices(session, locations, dso_entry, dry_run=False):
             if not dry_run:
                 new_status = "pe_backed" if pe_sponsor else "dso_affiliated"
                 if old_status in ("independent", "unknown", None):
-                    # Check for existing recent change to avoid duplicates on re-runs
+                    # Check for existing identical change to avoid duplicates on re-runs
                     from scrapers.database import PracticeChange
-                    recent_dup = session.query(PracticeChange).filter(
+                    existing_dup = session.query(PracticeChange).filter(
                         PracticeChange.npi == best_match.npi,
+                        PracticeChange.change_date == date.today(),
                         PracticeChange.field_changed == "ownership_status",
                         PracticeChange.new_value == new_status,
-                        PracticeChange.change_date >= date.today() - __import__('datetime').timedelta(days=30),
                     ).first()
-                    if not recent_dup:
+                    if not existing_dup:
                         new_affiliations += 1
                         log_practice_change(
                             session,
@@ -662,85 +662,86 @@ def run(dry_run=False, dso_name_filter=None):
     total_new_affiliations = 0
     needs_browser_list = []
 
-    for dso_entry in dsos_to_scrape:
-        locations, method = scrape_dso(dso_entry)
+    try:
+        for dso_entry in dsos_to_scrape:
+            locations, method = scrape_dso(dso_entry)
 
-        if method == "needs_browser":
-            total_skipped += 1
-            needs_browser_list.append(dso_entry)
-            continue
+            if method == "needs_browser":
+                total_skipped += 1
+                needs_browser_list.append(dso_entry)
+                continue
 
-        if locations is None:
-            locations = []
+            if locations is None:
+                locations = []
 
-        total_scraped += 1
-        total_locations += len(locations)
+            total_scraped += 1
+            total_locations += len(locations)
 
-        # Store locations in DB (delete existing rows for this DSO first to prevent duplication)
-        if not dry_run and locations:
-            session.query(DSOLocation).filter_by(dso_name=dso_entry["name"]).delete()
-            for loc in locations:
-                dso_loc = DSOLocation(
-                    dso_name=loc["dso_name"],
-                    location_name=loc.get("location_name"),
-                    address=loc.get("address"),
-                    city=loc.get("city"),
-                    state=loc.get("state"),
-                    zip=loc.get("zip"),
-                    phone=loc.get("phone"),
-                    source_url=loc.get("source_url"),
-                )
-                session.add(dso_loc)
-            session.commit()
+            # Store locations in DB (delete existing rows for this DSO first to prevent duplication)
+            if not dry_run and locations:
+                session.query(DSOLocation).filter_by(dso_name=dso_entry["name"]).delete()
+                for loc in locations:
+                    dso_loc = DSOLocation(
+                        dso_name=loc["dso_name"],
+                        location_name=loc.get("location_name"),
+                        address=loc.get("address"),
+                        city=loc.get("city"),
+                        state=loc.get("state"),
+                        zip=loc.get("zip"),
+                        phone=loc.get("phone"),
+                        source_url=loc.get("source_url"),
+                    )
+                    session.add(dso_loc)
+                session.commit()
 
-        # Match against practices
-        if not dry_run and locations:
-            matched, new_aff = match_locations_to_practices(session, locations, dso_entry, dry_run)
-            total_matched += matched
-            total_new_affiliations += new_aff
-        elif dry_run and locations:
-            # Print sample in dry run
-            print(f"\n--- {dso_entry['name']} ({len(locations)} locations) ---")
-            for loc in locations[:5]:
-                print(f"  {loc.get('location_name') or '—':30}  "
-                      f"{loc.get('address') or '—':35}  "
-                      f"{loc.get('city') or '—':15}  "
-                      f"{loc.get('state') or '??':2}  "
-                      f"{loc.get('zip') or '—':5}")
-            if len(locations) > 5:
-                print(f"  ... and {len(locations) - 5} more")
+            # Match against practices
+            if not dry_run and locations:
+                matched, new_aff = match_locations_to_practices(session, locations, dso_entry, dry_run)
+                total_matched += matched
+                total_new_affiliations += new_aff
+            elif dry_run and locations:
+                # Print sample in dry run
+                print(f"\n--- {dso_entry['name']} ({len(locations)} locations) ---")
+                for loc in locations[:5]:
+                    print(f"  {loc.get('location_name') or '—':30}  "
+                          f"{loc.get('address') or '—':35}  "
+                          f"{loc.get('city') or '—':15}  "
+                          f"{loc.get('state') or '??':2}  "
+                          f"{loc.get('zip') or '—':5}")
+                if len(locations) > 5:
+                    print(f"  ... and {len(locations) - 5} more")
 
-        time.sleep(RATE_LIMIT_SECS)
+            time.sleep(RATE_LIMIT_SECS)
 
-    # Summary
-    print()
-    log.info("=" * 60)
-    log.info("ADSO LOCATION SCRAPER SUMMARY")
-    log.info("=" * 60)
-    log.info("DSOs scraped:                 %d/%d", total_scraped, len(dsos_to_scrape))
-    log.info("Locations found:              %d total", total_locations)
-    if not dry_run:
-        log.info("Matched to NPPES practices:   %d", total_matched)
-        log.info("New DSO affiliations detected: %d", total_new_affiliations)
-    log.info("Skipped (needs browser):      %d DSOs", total_skipped)
-    log.info("=" * 60)
+        # Summary
+        print()
+        log.info("=" * 60)
+        log.info("ADSO LOCATION SCRAPER SUMMARY")
+        log.info("=" * 60)
+        log.info("DSOs scraped:                 %d/%d", total_scraped, len(dsos_to_scrape))
+        log.info("Locations found:              %d total", total_locations)
+        if not dry_run:
+            log.info("Matched to NPPES practices:   %d", total_matched)
+            log.info("New DSO affiliations detected: %d", total_new_affiliations)
+        log.info("Skipped (needs browser):      %d DSOs", total_skipped)
+        log.info("=" * 60)
 
-    if not dry_run:
-        log_scrape_complete("adso_scraper", _t0, new_records=total_locations,
-                            updated_records=total_new_affiliations,
-                            summary=f"ADSO: {total_locations} locations from {total_scraped} DSOs, {total_new_affiliations} new affiliations, {total_skipped} skipped (needs browser)",
-                            extra={"dsos_scraped": total_scraped, "dsos_skipped": total_skipped,
-                                   "locations_matched": total_matched})
+        if not dry_run:
+            log_scrape_complete("adso_scraper", _t0, new_records=total_locations,
+                                updated_records=total_new_affiliations,
+                                summary=f"ADSO: {total_locations} locations from {total_scraped} DSOs, {total_new_affiliations} new affiliations, {total_skipped} skipped (needs browser)",
+                                extra={"dsos_scraped": total_scraped, "dsos_skipped": total_skipped,
+                                       "locations_matched": total_matched})
 
-    if needs_browser_list:
-        print("\nDSOs requiring Playwright/browser scraping:")
-        for d in needs_browser_list:
-            print(f"  - {d['name']:30} {d['url']}")
-            if d.get("notes"):
-                print(f"    Note: {d['notes']}")
-
-    if session:
-        session.close()
+        if needs_browser_list:
+            print("\nDSOs requiring Playwright/browser scraping:")
+            for d in needs_browser_list:
+                print(f"  - {d['name']:30} {d['url']}")
+                if d.get("notes"):
+                    print(f"    Note: {d['notes']}")
+    finally:
+        if session:
+            session.close()
 
 
 if __name__ == "__main__":

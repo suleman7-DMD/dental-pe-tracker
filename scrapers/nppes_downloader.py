@@ -224,7 +224,7 @@ def get_taxonomy_specialty(code):
     """Map taxonomy code to specialty name."""
     if not code:
         return None
-    return DENTAL_TAXONOMIES.get(code, "general" if code.startswith("12") else None)
+    return DENTAL_TAXONOMIES.get(code, "general" if code.startswith("1223") else None)
 
 
 def parse_nppes_row(row):
