@@ -191,14 +191,14 @@ def _is_roundup_link(href, text):
     """Check if a link is a DSO Deal Roundup post."""
     t = text.lower()
     h = href.lower()
+    # Exclude "top 10" year-end listicles BEFORE any title/URL matching
+    if "top-10" in h or "top 10" in t or "top-5" in h or "top 5" in t or "best-of" in h or "year-end" in h:
+        return False
     # Title-based: must contain "deal roundup" or "dso deal"
     if "deal roundup" in t or "dso deal" in t:
         return True
     # URL-based: common roundup slug patterns
     if re.search(r'dso-deal-roundup|dso-deals|dso-mergers|dso-acquisitions|dental-mergers|dental-acquisitions|dental-business|dso-dental-mergers|dso-and-dental-mergers|q[1-4]-20\d{2}', h):
-        # Exclude "top 10" year-end listicles
-        if "top-10" in h or "top 10" in t:
-            return False
         return True
     return False
 
