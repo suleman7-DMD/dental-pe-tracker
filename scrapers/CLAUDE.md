@@ -74,6 +74,9 @@ Every step logs structured events to `logs/pipeline_events.jsonl` via `scrapers/
 
 ### Don't break the pipeline
 - ALL scrapers import from `scrapers.pipeline_logger` — keep `log_scrape_start()` and `log_scrape_complete()` calls in every scraper's `run()` function
+- **`log_scrape_error` signature**: `(source, error, start_time)` — NOT `(source, start_time, error)`. Verify before adding new callers.
+- **Early returns must log**: Every `return` in a scraper's `run()` after `log_scrape_start()` MUST call `log_scrape_complete()` first, or the dashboard shows phantom "running" status.
+- **Session cleanup**: ALL scrapers must wrap DB work in `try/except/finally` — `except` calls `log_scrape_error` + re-raises, `finally` calls `session.close()`.
 - ALL scrapers import from `scrapers.logger_config` — use `get_logger("scraper_name")`
 - `database.py` auto-decompresses `.db.gz` on Streamlit Cloud — never remove that logic
 - `refresh.sh` uses `run_step()` wrapper — errors in one step don't kill the pipeline
@@ -86,11 +89,17 @@ Every step logs structured events to `logs/pipeline_events.jsonl` via `scrapers/
 
 ### Data integrity
 - `insert_or_update_practice()` and `insert_deal()` handle dedup — use them, don't raw INSERT
+- **`insert_deal()` dedup is asymmetric**: Python checks 5 fields (platform, date, source, target, state) but DB unique index only covers 3 (platform, target, date). Multi-state deals silently dropped by DB constraint.
 - NPPES data uses NPI as unique key (10-digit number)
+- **NPPES taxonomy**: Only `1223` prefix = Dentist. `1224` = Denturist (NOT dental). Never include `1224`.
 - PitchBook dedup uses fuzzy matching on company name + date
 - Data Axle dedup uses address normalization + fuzzy name matching
 - Data Axle importer has Pass 6: Corporate Linkage Detection (parent company fuzzy match, EIN clustering, IUSA parent linkage, franchise field)
 - Never delete from `practices` table — only update ownership_status
+- **`DEAL_TYPE_COLORS` in dashboard**: Must include ALL deal types. When adding new deal types in scrapers, also add to the color map AND sidebar filter list in `dashboard/app.py`.
+- **`_normalize_address_for_grouping`**: Normalizes `STE` → `SUITE`, directionals (N/S/E/W → full), street types (ST/AVE/BLVD → full). Used by `deduplicate_practices_in_zip()`.
+- **Classifier rule ordering**: `non_clinical` check runs before DSO matching. For ambiguous keywords (`MANAGEMENT GROUP/COMPANY/SERVICES`), the check skips if name also contains dental keywords (DENTAL, ORTHODONT, etc.) — lets potential DSOs fall through to matching rules. Non-ambiguous keywords (LAB, SUPPLY, BILLING) always classify as non_clinical.
+- **Location match metadata**: `classification_confidence` and `classification_reasoning` must be set for ALL location matches (PE and non-PE), not just PE-backed ones.
 
 ### Streamlit Cloud constraints
 - DB must be gzipped for git push (`data/dental_pe_tracker.db.gz`)

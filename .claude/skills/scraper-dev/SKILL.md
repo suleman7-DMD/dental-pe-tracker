@@ -86,8 +86,13 @@ python3 scrapers/FILE.py --dry-run   # most scrapers support this
 
 - [ ] `import ast` parse check passes
 - [ ] `log_scrape_start()` called at top of `run()`
-- [ ] `log_scrape_complete()` called at end with meaningful summary
+- [ ] `log_scrape_complete()` called at end AND before every early `return`
+- [ ] `log_scrape_error(source, error, start_time)` — arg order: source, error, start_time (NOT source, start_time, error)
+- [ ] DB session wrapped in `try/except/finally` — except logs error + re-raises, finally closes session
 - [ ] Uses `get_logger()` not `print()` for operational messages
 - [ ] Uses `insert_or_update_practice()` / `insert_deal()` — not raw SQL INSERT
 - [ ] Handles `requests.RequestException` with logging, doesn't crash pipeline
 - [ ] Added to refresh.sh if it should run automatically
+- [ ] NPPES taxonomy: only `1223` prefix is dental. Never use `1224` (Denturist).
+- [ ] New deal types: also add to `DEAL_TYPE_COLORS` and sidebar filter in `dashboard/app.py`
+- [ ] Run `python3 -m pytest tests/ -v` — all tests must pass
