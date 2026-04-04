@@ -47,7 +47,7 @@ KNOWN_PLATFORMS = [
     "T Management", "Silver Creek Dental Partners",
     "Smile Doctors", "Apex Dental Partners", "Pearl Street Dental Partners",
     "PepperPointe Partnerships", "Shared Practices Group", "Lumio Dental",
-    "Allied OMS", "beBright", "BeBright", "Choice Dental Group",
+    "Allied OMS", "beBright", "Choice Dental Group",
     "Blue Sea Dental", "Motor City Dental Partners", "Archway Dental Partners",
     "Vision Dental Partners", "Partnerships for Dentists",
     "Signature Dental Partners", "Haven Dental", "Sonrava Health",
@@ -267,12 +267,22 @@ def extract_deal_blocks(soup):
     blocks = []
     current_block = []
 
-    for el in content.find_all(["p", "hr", "h2", "h3", "h4", "ul", "ol", "li"]):
+    for el in content.find_all(["p", "hr", "h2", "h3", "h4", "li"]):
         if el.name == "hr":
             # Separator — flush current block
             if current_block:
                 blocks.append(" ".join(current_block))
                 current_block = []
+            continue
+
+        # Each <li> is a potential deal — treat as its own block
+        if el.name == "li":
+            text = _normalize_text(el)
+            if text and len(text) > 30:
+                if current_block:
+                    blocks.append(" ".join(current_block))
+                    current_block = []
+                current_block.append(text)
             continue
 
         text = _normalize_text(el)
@@ -352,13 +362,13 @@ def extract_platform(text):
     text block when it is immediately followed by a deal verb.
     """
     for p in sorted(KNOWN_PLATFORMS, key=len, reverse=True):
-        if re.search(re.escape(p), text, re.IGNORECASE):
+        if re.search(r'\b' + re.escape(p) + r'\b', text, re.IGNORECASE):
             return p
 
     # Fallback: leading capitalized entity + deal verb
     m = re.match(
         r'^([A-Z][A-Za-z\'\u2019\-&\.]+(?:\s+[A-Z][A-Za-z\'\u2019\-&\.]+)+)'
-        r'\s+(?:announced|partnered|welcomed|opened|acquired|expanded|affiliated|added)\b',
+        r'\s+(?:announced|partnered|welcomed|opened|acquired|expanded|affiliated|added|introduced|completed|invested|merged|joined)\b',
         text,
     )
     if m:
@@ -415,13 +425,15 @@ def extract_target(text, platform):
     # GDN patterns: "sale to [Platform]" means we want the entity before "sale to"
     # "advised [Target] in its sale"
     # Character class for target names: includes apostrophe, smart quote, hyphen, ampersand, period
-    _N = r"A-Za-z\s\'\u2019\-&\."
+    _N = r"A-Za-z0-9\s\'\u2019\-&\."
 
     # --- Inverted patterns (target before verb) — check first ---
     inverted_patterns = [
         rf'([A-Z][{_N}]{{3,50}}?)\s+was\s+acquired\s+by\s+',
         rf'([A-Z][{_N}]{{3,50}}?)\s+has\s+joined\s+',
         rf'([A-Z][{_N}]{{3,50}}?)\s+affiliated\s+with\s+',
+        rf'([A-Z][{_N}]{{3,50}}?),?\s+(?:led by|owned by|founded by).*?(?:has joined|was acquired by)\s+',
+        rf'([A-Z][{_N}]{{3,50}}?)\s+(?:in (?:her|his|their) sale)\s+',
     ]
     for pattern in inverted_patterns:
         m = re.search(pattern, text)
@@ -447,6 +459,8 @@ def extract_target(text, platform):
         rf'welcomed\s+([A-Z][{_N}]{{3,50}}?)(?:\s+as\s|\s+to\s|\s+in\s|,|\.|;)',
         rf'merged with\s+([A-Z][{_N}]{{3,50}}?)(?:\s+in\s|,|\.|;)',
         rf'sale (?:of|to)\s+(?:[A-Z][{_N}]+?\s+(?:to|by)\s+)?([A-Z][{_N}]{{3,50}}?)(?:\.|,|;)',
+        rf'partnered\s+with:?\s+([A-Z][{_N}]{{3,50}}?)(?:\s+in\s|,|\.|;|\()',
+        rf'welcomed\s+.*?:\s+([A-Z][{_N}]{{3,50}}?)(?:\s+in\s|,|\.|;|\()',
     ]:
         m = re.search(pattern, text)
         if m:
@@ -736,6 +750,8 @@ def run(dry_run=False):
                             summary=f"GDN: {new_inserted} new deals, {duplicates} dupes ({pages_success} pages scraped)",
                             extra={"duplicates": duplicates, "pages_scraped": pages_success, "pages_failed": pages_failed})
     log.info("=" * 60)
+    if not dry_run:
+        session.close()
 
 
 def _print_dry_run_table(deals):

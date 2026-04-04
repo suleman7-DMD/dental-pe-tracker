@@ -301,7 +301,7 @@ def main():
 
         print(f"\n  💰 {tracker.summary()}")
     except Exception as e:
-        log_scrape_error("weekly_research", start_time, str(e))
+        log_scrape_error("weekly_research", str(e), start_time)
         raise
 
 

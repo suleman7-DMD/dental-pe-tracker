@@ -310,7 +310,7 @@ def _sync_incremental_updated_at(sqlite_session, pg_engine, config):
 
 
 def _sync_incremental_id(sqlite_session, pg_engine, config):
-    """Sync rows where id > last synced max id."""
+    """Sync rows where id > last synced max id, plus recently updated rows."""
     table_name = config["table"]
     model = config["model"]
     conflict_col = config["conflict_col"]
@@ -326,6 +326,23 @@ def _sync_incremental_id(sqlite_session, pg_engine, config):
             .order_by(model.id.asc())
             .all()
         )
+        # Also fetch rows updated since last sync (catches edits to existing rows)
+        if hasattr(model, "updated_at") and state.get("last_sync_at"):
+            last_sync_ts = state["last_sync_at"]
+            updated_rows = (
+                sqlite_session.query(model)
+                .filter(model.updated_at > last_sync_ts)
+                .filter(model.id <= last_id)
+                .all()
+            )
+            if updated_rows:
+                log.info("[%s] Found %d updated rows (id <= %d, updated since %s)",
+                         table_name, len(updated_rows), last_id, last_sync_ts)
+                # Merge: add updated rows that aren't already in the new-id set
+                existing_ids = {r.id for r in rows}
+                for r in updated_rows:
+                    if r.id not in existing_ids:
+                        rows.append(r)
     else:
         log.info("[%s] First sync — fetching all rows", table_name)
         rows = sqlite_session.query(model).all()

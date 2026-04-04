@@ -574,6 +574,8 @@ def run(auto=False, preview=False):
     if not files:
         print("No PitchBook files to import.")
         print(f"Drop CSV or XLSX exports into: {RAW_DIR}")
+        log_scrape_complete("pitchbook_importer", _t0, new_records=0,
+                            summary="PitchBook: No files to import")
         return
 
     if not preview:

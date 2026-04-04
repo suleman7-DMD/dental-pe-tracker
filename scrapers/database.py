@@ -210,6 +210,7 @@ class ADAHPIBenchmark(Base):
     pct_large_group_10plus = Column(Float)
     source_file = Column(Text)
     created_at = Column(DateTime, default=func.now())
+    updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
 
     __table_args__ = (
         UniqueConstraint("data_year", "state", "career_stage", name="uix_ada_hpi"),
@@ -433,7 +434,13 @@ class PracticeIntel(Base):
 # ── Engine / Session ────────────────────────────────────────────────────────
 
 
+_cached_engines = {}
+
+
 def get_engine(db_path=None, force_postgres=False):
+    cache_key = (db_path, force_postgres)
+    if cache_key in _cached_engines:
+        return _cached_engines[cache_key]
     if force_postgres or (_USE_POSTGRES and db_path is None):
         if not _POSTGRES_URL:
             raise RuntimeError(
@@ -448,10 +455,12 @@ def get_engine(db_path=None, force_postgres=False):
             pool_pre_ping=True,
             echo=False,
         )
+        _cached_engines[cache_key] = engine
         return engine
     path = db_path or DB_PATH
     os.makedirs(os.path.dirname(path), exist_ok=True)
     engine = create_engine(f"sqlite:///{path}", echo=False)
+    _cached_engines[cache_key] = engine
     return engine
 
 
@@ -519,6 +528,7 @@ def init_db(db_path=None, force_postgres=False):
             "ALTER TABLE practice_intel ADD COLUMN created_at TIMESTAMP",
             "ALTER TABLE practice_intel ADD COLUMN updated_at TIMESTAMP",
             "ALTER TABLE practice_intel ADD COLUMN escalation_findings TEXT",
+            "ALTER TABLE ada_hpi_benchmarks ADD COLUMN updated_at TIMESTAMP",
         ]:
             try:
                 conn.execute(__import__("sqlalchemy").text(alter_stmt))
@@ -603,11 +613,12 @@ def _seed_watched_zips(session: Session):
 
 def insert_deal(session: Session, **kwargs) -> bool:
     """Insert a deal. Returns True if inserted, False if duplicate."""
-    # Dedup: same platform_company + deal_date + source + target_name
+    # Dedup: same platform_company + deal_date + source + target_name + target_state
     platform = kwargs.get("platform_company")
     deal_date = kwargs.get("deal_date")
     source = kwargs.get("source")
     target_name = kwargs.get("target_name")
+    target_state = kwargs.get("target_state")
     if platform and deal_date:
         filters = [
             Deal.platform_company == platform,
@@ -618,6 +629,8 @@ def insert_deal(session: Session, **kwargs) -> bool:
             filters.append(Deal.target_name.is_(None))
         else:
             filters.append(Deal.target_name == target_name)
+        if target_state:
+            filters.append(Deal.target_state == target_state)
         existing = session.query(Deal).filter(*filters).first()
         if existing:
             log.warning("Duplicate deal skipped: %s / %s on %s", platform, target_name, deal_date)
@@ -630,7 +643,7 @@ def insert_deal(session: Session, **kwargs) -> bool:
         return True
     except Exception as e:
         session.rollback()
-        if "UNIQUE constraint" in str(e):
+        if "UNIQUE constraint" in str(e) or "duplicate key" in str(e):
             log.warning("Duplicate deal skipped: %s / %s", kwargs.get("platform_company"), kwargs.get("target_name"))
             return False
         log.error("Failed to insert deal: %s", e)

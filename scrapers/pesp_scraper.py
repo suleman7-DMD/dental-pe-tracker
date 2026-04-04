@@ -38,22 +38,45 @@ MONTHS = [
 YEARS = list(range(2022, date.today().year + 1))
 
 KNOWN_PLATFORMS = [
-    "Heartland Dental", "MB2 Dental", "Dental365", "Specialized Dental Partners",
-    "U.S. Oral Surgery Management", "USOSM", "Pacific Dental Services", "PDS",
+    "Heartland Dental", "MB2 Dental", "Dental365", "Dental 365",
+    "Specialized Dental Partners", "U.S. Oral Surgery Management", "USOSM",
+    "Pacific Dental Services", "PDS Health", "PDS",
     "Aspen Dental", "Sage Dental", "Southern Orthodontic Partners",
     "Chord Specialty Dental Partners", "SALT Dental", "Salt Dental Collective",
-    "Smile Partners USA", "Parkview Dental Partners", "The Smilist",
-    "Smilist Management", "Lightwave Dental", "Great Expressions",
+    "Salt Dental Partners", "Smile Partners USA", "Parkview Dental Partners",
+    "The Smilist", "Smilist Management", "Smilist Dental",
+    "Lightwave Dental", "Great Expressions",
     "InterDent", "Affordable Care", "Benevis", "CDP", "Community Dental Partners",
     "Mortenson Dental Partners", "Risas Dental", "Western Dental",
     "Dental Care Alliance", "42 North Dental", "Tend", "MAX Surgical",
     "T Management", "Silver Creek Dental Partners",
-    "Pearl Street Dental Partners", "Riccobene Associates", "Dental Whale",
-    "Shore Dental",
+    "Smile Doctors", "Apex Dental Partners", "Pearl Street Dental Partners",
+    "PepperPointe Partnerships", "Shared Practices Group", "Lumio Dental",
+    "Allied OMS", "beBright", "Choice Dental Group",
+    "Blue Sea Dental", "Motor City Dental Partners", "Archway Dental Partners",
+    "Vision Dental Partners", "Partnerships for Dentists",
+    "Signature Dental Partners", "Haven Dental", "Sonrava Health",
+    "North American Dental Group", "NADG", "Straine Dental Management",
+    "D4C Dental Brands", "Midwest Dental", "Dental Associates Group",
+    "OMS360", "Oral Surgery Partners", "US Endo Partners",
+    "Endodontic Practice Partners", "MyOrthos",
+    "Riccobene Associates", "Imagen Dental Partners",
+    "Aria Care Partners", "Beacon Oral Specialists", "BRUSH 365",
+    "Burch Dental Partners", "Choice Healthcare Services",
+    "CollectiveCare Dental", "Damira Dental Studios",
+    "EPIC4 Specialty Partners", "Guardian Dentistry Partners",
+    "Innovate 32", "J&J Dental Support Services",
+    "Magic Smiles for Kids", "Modern Micro Endodontics",
+    "Operation Dental", "Passion Dental",
+    "Premier Care Dental Management", "Specialty1 Partners",
+    "Today's Dental Network",
+    "Vitana Pediatric & Orthodontic Partners",
+    "Dental Whale", "Shore Dental",
 ]
 
 KNOWN_PE_SPONSORS = [
-    "KKR", "Charlesbank Capital Partners", "Warburg Pincus", "Quad-C Management",
+    "KKR", "Charlesbank Capital Partners", "Charlesbank", "Warburg Pincus",
+    "Quad-C Management", "Quad-C",
     "Oak Hill Capital", "The Jordan Company", "TJC", "Linden Capital Partners",
     "Rock Mountain Capital", "Cathay Capital", "Silver Oak Services Partners",
     "New Mountain Capital", "Vistria Group", "Ares Management", "American Securities",
@@ -61,7 +84,13 @@ KNOWN_PE_SPONSORS = [
     "RF Investment Partners", "Latticework Capital", "Resolute Capital Partners",
     "Georgia Oak Partners", "Harvest Partners", "Mid Ocean Partners",
     "Partners Group", "Blackstone", "Audax Group", "Mubadala",
-    "Quad-C", "Comvest", "SkyKnight Capital",
+    "Comvest Partners", "Comvest Private Equity",
+    "Great Hill Partners", "InTandem Capital Partners", "InTandem Capital",
+    "Martis Capital", "ONCAP", "Zenyth Partners",
+    "Brightwood Capital", "SkyKnight Capital", "Talisker Partners",
+    "JLL Partners", "Sentinel Capital Partners", "Sun Capital Partners",
+    "Court Square Capital", "Alpine Investors",
+    "Kohlberg & Company", "Thomas H. Lee Partners", "THL",
 ]
 
 STATE_MAP = {
@@ -80,6 +109,45 @@ STATE_MAP = {
     "wisconsin": "WI", "wyoming": "WY", "district of columbia": "DC",
 }
 VALID_STATE_ABBREVS = set(STATE_MAP.values())
+
+# Countries/regions that signal international deals (skip these)
+INTERNATIONAL_KEYWORDS = [
+    "australia", "australian", "canada", "canadian", "dentalcorp",
+    "united kingdom", "u.k.", "uk-based", "england", "scotland", "wales",
+    "ireland", "irish", "europe", "european", "belgium", "belgian",
+    "france", "french", "germany", "german", "netherlands", "dutch",
+    "spain", "spanish", "italy", "italian", "sweden", "swedish",
+    "norway", "norwegian", "denmark", "danish", "switzerland", "swiss",
+    "brazil", "brazilian", "mexico", "mexican", "new zealand",
+    "toronto", "ontario", "british columbia", "alberta", "quebec",
+]
+
+CREDIT_KEYWORDS = [
+    "s&p global", "s&p rated", "moody's", "fitch", "credit rating",
+    "credit facility", "loan", "refinanc", "debt", "bond",
+    "leverage ratio", "ebitda multiple", "provided financing",
+    "term loan", "revolver", "capital structure",
+]
+
+
+def _is_international(text):
+    """Check if text describes an international (non-US) deal."""
+    t = text.lower()
+    for kw in INTERNATIONAL_KEYWORDS:
+        if kw in t:
+            return True
+    if re.search(r'\buk\b', t):
+        return True
+    return False
+
+
+def _is_credit_news(text):
+    """Check if text is about credit/debt/ratings, not an actual deal."""
+    t = text.lower()
+    for kw in CREDIT_KEYWORDS:
+        if kw in t:
+            return True
+    return False
 
 
 # ── URL Discovery ───────────────────────────────────────────────────────────
@@ -196,7 +264,12 @@ def split_into_deal_sentences(paragraphs):
     sentences = []
     for para in paragraphs:
         # Split on period followed by space+capital, or semicolons, or bullet-style
-        parts = re.split(r'(?<=[.;])\s+(?=[A-Z])', para)
+        # Protect known abbreviations from splitting
+        protected = para
+        for abbr in ('U.S.', 'Dr.', 'Mr.', 'Ms.', 'Jr.', 'Sr.', 'Inc.', 'Ltd.', 'Corp.', 'Co.', 'St.', 'Ave.', 'vs.'):
+            protected = protected.replace(abbr, abbr.replace('.', '\x00'))
+        parts_raw = re.split(r'(?<=[.;])\s+(?=[A-Z])', protected)
+        parts = [p.replace('\x00', '.') for p in parts_raw]
         for part in parts:
             part = part.strip()
             if len(part) > 30 and _is_deal_sentence(part):
@@ -219,6 +292,10 @@ def _is_deal_sentence(text):
 
 def parse_deal(sentence):
     """Parse a single deal sentence into structured fields. Returns list of deal dicts (one per state)."""
+    if _is_international(sentence):
+        return []
+    if _is_credit_news(sentence):
+        return []
     platform = extract_platform(sentence)
     pe_sponsor = extract_pe_sponsor(sentence)
     target = extract_target(sentence, platform)
@@ -250,7 +327,7 @@ def extract_platform(text):
     """Find a known platform company in the text."""
     # Sort by length descending so longer names match first (e.g., "Pacific Dental Services" before "PDS")
     for p in sorted(KNOWN_PLATFORMS, key=len, reverse=True):
-        if re.search(re.escape(p), text, re.IGNORECASE):
+        if re.search(r'\b' + re.escape(p) + r'\b', text, re.IGNORECASE):
             return p
     return None
 
@@ -291,9 +368,11 @@ def extract_pe_sponsor(text):
 
 
 def _match_known_sponsor(candidate):
-    """Check if candidate string matches or contains a known PE sponsor (bidirectional)."""
+    """Check if candidate string contains a known PE sponsor name."""
+    if len(candidate) < 4:
+        return None
     for s in sorted(KNOWN_PE_SPONSORS, key=len, reverse=True):
-        if s.lower() in candidate.lower() or candidate.lower() in s.lower():
+        if s.lower() in candidate.lower():
             return s
     return None
 
@@ -450,6 +529,8 @@ def run(dry_run=False):
 
     if not valid_urls:
         log.warning("No valid PESP pages found. Exiting.")
+        log_scrape_complete("pesp_scraper", _t0, new_records=0,
+                            summary="PESP: No valid pages found")
         return
 
     # Step 2: Scrape each page
@@ -523,6 +604,8 @@ def run(dry_run=False):
                             summary=f"PESP: {new_inserted} new deals, {duplicates} dupes ({pages_success} pages scraped)",
                             extra={"duplicates": duplicates, "pages_scraped": pages_success, "pages_failed": pages_failed})
     log.info("=" * 60)
+    if not dry_run:
+        session.close()
 
 
 def _print_dry_run_table(deals):

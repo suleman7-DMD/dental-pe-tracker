@@ -119,7 +119,7 @@ KNOWN_DSOS = [
 # Management/corporate keywords that suggest DSO affiliation
 MGMT_KEYWORDS = [
     "dental management",
-    "dental partners",
+    "dental partners management",
     "dental group management",
     "oral surgery management",
     "dental support",
@@ -364,6 +364,8 @@ def _location_match_pass(session, practices, counts, dry_run, force, today):
             practice.affiliated_dso = dso_name
             if pe_sponsor:
                 practice.affiliated_pe_sponsor = pe_sponsor
+                practice.classification_confidence = best_score
+                practice.classification_reasoning = f"Location-matched to {dso_name} at {best_loc.address or 'unknown addr'} (score={best_score})"
 
             if old_status not in ("pe_backed", "dso_affiliated"):
                 session.add(PracticeChange(
@@ -564,11 +566,15 @@ def _classify_single_entity(row, addr_group, shared_eins, shared_phones):
     combined = f"{name_upper} {dba_upper}"
 
     # ── Rule 1: Non-clinical ──
-    for kw in NON_CLINICAL_KEYWORDS:
-        if kw in combined:
-            return ("non_clinical",
-                    f"Non-clinical: name contains '{kw}'. "
-                    f"Name: {row.get('practice_name')}")
+    # Skip if practice is already classified as DSO-affiliated (prevents
+    # "MANAGEMENT GROUP" keyword from overriding known DSO status)
+    ownership = row.get("ownership_status")
+    if ownership not in ("pe_backed", "dso_affiliated"):
+        for kw in NON_CLINICAL_KEYWORDS:
+            if kw in combined:
+                return ("non_clinical",
+                        f"Non-clinical: name contains '{kw}'. "
+                        f"Name: {row.get('practice_name')}")
 
     # ── Rule 2: Specialist ──
     taxonomy = row.get("taxonomy_code") or ""

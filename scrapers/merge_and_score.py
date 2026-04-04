@@ -251,10 +251,10 @@ def deduplicate_practices_in_zip(session, zip_code):
             "raw_npi_count": 0,
         }
 
-    # Group by normalized (address, city)
+    # Group by normalized (address, city) using same normalization as entity classification
     addr_groups = defaultdict(list)
     for p in practices:
-        addr = (p.address or "").upper().strip()
+        addr = _normalize_address_for_grouping(p.address)
         city = (p.city or "").upper().strip()
         key = (addr, city)
         addr_groups[key].append(p)
@@ -681,9 +681,12 @@ def score_watched_zips(session):
                 for dloc in dso_loc_by_zip[zc]:
                     if not dloc.address:
                         continue
-                    if fuzz.token_sort_ratio(practice.address.lower(), dloc.address.lower()) >= 85:
+                    score = fuzz.token_sort_ratio(practice.address.lower(), dloc.address.lower())
+                    if score >= 85:
                         practice.ownership_status = "dso_affiliated"
                         practice.affiliated_dso = dloc.dso_name
+                        practice.classification_confidence = score
+                        practice.classification_reasoning = f"Inline DSO location match to {dloc.dso_name} (score={score})"
                         break
             session.flush()
 
@@ -873,8 +876,8 @@ def metro_rollup(session):
         classified = total - unk
 
         consolidated_count = pe + dso
-        consol = (consolidated_count / classified * 100) if classified > 0 else 0.0
-        consol_total = (consolidated_count / total * 100) if total > 0 else 0.0
+        consol = (consolidated_count / total * 100) if total > 0 else 0.0
+        consol_total = consol  # same denominator (total) for consistency
         indep_pct_total = (indep / total * 100) if total > 0 else 0.0
         unk_pct = (unk / total * 100) if total > 0 else 0.0
         confidence = "high" if unk_pct < 20 else ("medium" if unk_pct <= 50 else "low")
@@ -892,8 +895,7 @@ def metro_rollup(session):
             prev_total = sum(s.total_practices or 0 for s in prev_scores)
             prev_pe = sum(s.pe_backed_count or 0 for s in prev_scores)
             prev_dso = sum(s.dso_affiliated_count or 0 for s in prev_scores)
-            prev_classified = prev_total - sum(s.unknown_count or 0 for s in prev_scores)
-            prev_consol = ((prev_pe + prev_dso) / prev_classified * 100) if prev_classified > 0 else 0.0
+            prev_consol = ((prev_pe + prev_dso) / prev_total * 100) if prev_total > 0 else 0.0
             qoq = round(consol - prev_consol, 1)
         else:
             log.info("First scoring run for %s — no QoQ comparison available", metro)

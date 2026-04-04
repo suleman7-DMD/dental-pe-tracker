@@ -43,7 +43,7 @@ SNAPSHOTS_DIR = os.path.join(DATA_DIR, "snapshots")
 TEMP_DIR = os.path.join(DATA_DIR, "tmp")
 
 # Dental taxonomy codes all start with "12"
-DENTAL_TAXONOMY_PREFIX = "12"
+DENTAL_TAXONOMY_PREFIX = "1223"
 
 # Specific dental taxonomy codes for reference
 DENTAL_TAXONOMIES = {

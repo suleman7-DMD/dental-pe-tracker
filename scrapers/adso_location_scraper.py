@@ -284,7 +284,7 @@ def scrape_html_generic(dso_entry):
 
     # Strategy 3: Regex scan full page text for "City, ST ZIP" patterns
     full_text = soup.get_text(separator="\n")
-    for m in re.finditer(r'(\d+[^,\n]{5,50}),\s*([A-Za-z\s\.]+),\s*([A-Z]{2})\s+(\d{5})', full_text):
+    for m in re.finditer(r'(\d{1,5}\s+[A-Za-z][^,\n]{3,50}),\s*([A-Za-z\s\.]+),\s*([A-Z]{2})\s+(\d{5})', full_text):
         locations.append({
             "dso_name": name,
             "location_name": None,
@@ -314,7 +314,7 @@ def scrape_html_generic(dso_entry):
                 sub_resp = requests.get(sub_url, headers=HEADERS, timeout=15)
                 sub_soup = BeautifulSoup(sub_resp.text, "lxml")
                 sub_text = sub_soup.get_text(separator="\n")
-                for m in re.finditer(r'(\d+[^,\n]{5,50}),\s*([A-Za-z\s\.]+),\s*([A-Z]{2})\s+(\d{5})', sub_text):
+                for m in re.finditer(r'(\d{1,5}\s+[A-Za-z][^,\n]{3,50}),\s*([A-Za-z\s\.]+),\s*([A-Z]{2})\s+(\d{5})', sub_text):
                     locations.append({
                         "dso_name": name,
                         "location_name": None,
@@ -427,7 +427,7 @@ def scrape_html_subpages(dso_entry):
         # If no JSON-LD, regex for addresses
         if not any(l["source_url"] == sub_url for l in locations):
             text = sub_soup.get_text(separator="\n")
-            for m in re.finditer(r'(\d+[^,\n]{5,60}),\s*([A-Za-z\s\.]+),\s*([A-Z]{2})\s+(\d{5})', text):
+            for m in re.finditer(r'(\d{1,5}\s+[A-Za-z][^,\n]{3,60}),\s*([A-Za-z\s\.]+),\s*([A-Z]{2})\s+(\d{5})', text):
                 locations.append({
                     "dso_name": name,
                     "location_name": None,
@@ -560,6 +560,12 @@ def match_locations_to_practices(session, locations, dso_entry, dry_run=False):
                     practice.practice_name.lower()
                 )
                 if name_score >= 75 and name_score > best_score:
+                    # Validate street numbers match (same check as address path)
+                    if loc.get("address") and practice.address:
+                        p_num = re.match(r'(\d+)', practice.address or '')
+                        d_num = re.match(r'(\d+)', loc["address"] or '')
+                        if p_num and d_num and p_num.group(1) != d_num.group(1):
+                            continue  # Different street number = different building
                     best_match = practice
                     best_score = name_score
 
@@ -570,17 +576,26 @@ def match_locations_to_practices(session, locations, dso_entry, dry_run=False):
             if not dry_run:
                 new_status = "pe_backed" if pe_sponsor else "dso_affiliated"
                 if old_status in ("independent", "unknown", None):
-                    new_affiliations += 1
-                    log_practice_change(
-                        session,
-                        npi=best_match.npi,
-                        change_date=date.today(),
-                        field_changed="ownership_status",
-                        old_value=old_status or "unknown",
-                        new_value=new_status,
-                        change_type="acquisition",
-                        notes=f"Matched to {dso_name} location via address/name (score={best_score})",
-                    )
+                    # Check for existing recent change to avoid duplicates on re-runs
+                    from scrapers.database import PracticeChange
+                    recent_dup = session.query(PracticeChange).filter(
+                        PracticeChange.npi == best_match.npi,
+                        PracticeChange.field_changed == "ownership_status",
+                        PracticeChange.new_value == new_status,
+                        PracticeChange.change_date >= date.today() - __import__('datetime').timedelta(days=30),
+                    ).first()
+                    if not recent_dup:
+                        new_affiliations += 1
+                        log_practice_change(
+                            session,
+                            npi=best_match.npi,
+                            change_date=date.today(),
+                            field_changed="ownership_status",
+                            old_value=old_status or "unknown",
+                            new_value=new_status,
+                            change_type="acquisition",
+                            notes=f"Matched to {dso_name} location via address/name (score={best_score})",
+                        )
 
                 best_match.ownership_status = new_status
                 best_match.affiliated_dso = dso_name
@@ -664,7 +679,6 @@ def run(dry_run=False, dso_name_filter=None):
         # Store locations in DB (delete existing rows for this DSO first to prevent duplication)
         if not dry_run and locations:
             session.query(DSOLocation).filter_by(dso_name=dso_entry["name"]).delete()
-            session.commit()
             for loc in locations:
                 dso_loc = DSOLocation(
                     dso_name=loc["dso_name"],
