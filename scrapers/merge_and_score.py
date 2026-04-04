@@ -707,9 +707,7 @@ def score_watched_zips(session):
 
         consolidated_count = pe + dso
         # Both use total as denominator (conservative, per CLAUDE.md rules)
-        classified = total - unk - institutional
         consol_pct = (consolidated_count / total * 100) if total > 0 else 0.0
-        consol_total = consol_pct  # same denominator now
         indep_pct_total = (indep / total * 100) if total > 0 else 0.0
         pe_pct = (pe / classified * 100) if classified > 0 else 0.0
         unk_pct = (unk / total * 100) if total > 0 else 0.0
@@ -804,7 +802,7 @@ def score_watched_zips(session):
                     independent_count=indep, unknown_count=unk,
                     institutional_count=institutional, raw_npi_count=raw,
                     classified_count=classified,
-                    consolidation_pct=round(consol_pct, 2), consolidation_pct_of_total=round(consol_total, 2),
+                    consolidation_pct=round(consol_pct, 2), consolidation_pct_of_total=round(consol_pct, 2),
                     independent_pct_of_total=round(indep_pct_total, 2),
                     consolidated_count=consolidated_count, unclassified_pct=round(unk_pct, 2),
                     pe_penetration_pct=round(pe_pct, 2), pct_unknown=round(unk_pct, 2),
@@ -873,11 +871,9 @@ def metro_rollup(session):
         dso = sum(s.dso_affiliated_count or 0 for s in scores)
         indep = sum(s.independent_count or 0 for s in scores)
         unk = sum(s.unknown_count or 0 for s in scores)
-        classified = total - unk
 
         consolidated_count = pe + dso
         consol = (consolidated_count / total * 100) if total > 0 else 0.0
-        consol_total = consol  # same denominator (total) for consistency
         indep_pct_total = (indep / total * 100) if total > 0 else 0.0
         unk_pct = (unk / total * 100) if total > 0 else 0.0
         confidence = "high" if unk_pct < 20 else ("medium" if unk_pct <= 50 else "low")
@@ -925,7 +921,7 @@ def metro_rollup(session):
             "metro_area": metro, "state": state, "zip_count": len(scores),
             "total_practices": total, "pe_backed": pe, "dso_affiliated": dso,
             "independent": indep, "unknown": unk,
-            "consolidation_pct": round(consol, 1), "consolidation_pct_of_total": round(consol_total, 1),
+            "consolidation_pct": round(consol, 1), "consolidation_pct_of_total": round(consol, 1),
             "independent_pct_of_total": round(indep_pct_total, 1),
             "data_confidence": confidence, "qoq_change": qoq,
             "ada_hpi_benchmark": ada_benchmark, "top_dso": top_dso,

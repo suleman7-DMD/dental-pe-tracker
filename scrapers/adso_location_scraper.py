@@ -739,6 +739,9 @@ def run(dry_run=False, dso_name_filter=None):
                 print(f"  - {d['name']:30} {d['url']}")
                 if d.get("notes"):
                     print(f"    Note: {d['notes']}")
+    except Exception as e:
+        log_scrape_error("adso_scraper", str(e), _t0)
+        raise
     finally:
         if session:
             session.close()

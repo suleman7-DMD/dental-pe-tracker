@@ -356,7 +356,7 @@ Examples:
             result = engine.submit_batch(reqs)
             if "error" in result:
                 print(f"   ❌ Batch failed: {result['error']}")
-                log_scrape_error("qualitative_scout", start_time, str(result["error"]))
+                log_scrape_error("qualitative_scout", str(result["error"]), start_time)
             else:
                 print(f"   ✅ Batch submitted: {result.get('batch_id')}")
                 print(f"   Check status: python3 scrapers/qualitative_scout.py --batch-status {result.get('batch_id')}")
@@ -383,7 +383,7 @@ Examples:
         log_scrape_complete("qualitative_scout", start_time, new_records=success,
                            summary=f"Researched {success}/{len(zips_to_research)} ZIPs, cost ${total_cost:.4f}")
     except Exception as e:
-        log_scrape_error("qualitative_scout", start_time, str(e))
+        log_scrape_error("qualitative_scout", str(e), start_time)
         raise
 
 

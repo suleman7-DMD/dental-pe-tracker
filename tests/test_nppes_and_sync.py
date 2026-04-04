@@ -19,9 +19,10 @@ def test_is_dental_row_accepts_1223_prefix(make_nppes_row):
     assert is_dental_row(row) is True
 
 
-def test_is_dental_row_accepts_1224_prefix(make_nppes_row):
+def test_is_dental_row_rejects_1224_prefix(make_nppes_row):
+    """1224 = Denturist (not Dentist) — must be rejected."""
     row = make_nppes_row(taxonomy_1="1224P0301X")
-    assert is_dental_row(row) is True
+    assert is_dental_row(row) is False
 
 
 def test_is_dental_row_rejects_non_dental_12_prefix(make_nppes_row):
@@ -42,9 +43,10 @@ def test_is_dental_row_empty_row(make_nppes_row):
 # ── get_primary_taxonomy ───────────────────────────────────────────────────
 
 
-def test_get_primary_taxonomy_returns_1224(make_nppes_row):
+def test_get_primary_taxonomy_rejects_1224(make_nppes_row):
+    """1224 = Denturist — should not be returned as a dental taxonomy."""
     row = make_nppes_row(taxonomy_1="1224P0301X")
-    assert get_primary_taxonomy(row) == "1224P0301X"
+    assert get_primary_taxonomy(row) is None
 
 
 def test_get_primary_taxonomy_prefers_first_dental(make_nppes_row):
@@ -65,8 +67,9 @@ def test_get_taxonomy_specialty_fallback_1223():
     assert get_taxonomy_specialty("1223Z9999X") == "general"
 
 
-def test_get_taxonomy_specialty_fallback_1224():
-    assert get_taxonomy_specialty("1224Z9999X") == "general"
+def test_get_taxonomy_specialty_rejects_1224():
+    """1224 = Denturist — should not map to any dental specialty."""
+    assert get_taxonomy_specialty("1224Z9999X") is None
 
 
 def test_get_taxonomy_specialty_rejects_non_dental():

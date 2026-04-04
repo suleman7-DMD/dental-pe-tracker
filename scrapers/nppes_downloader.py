@@ -201,11 +201,11 @@ def extract_zip(zip_path, extract_to):
 
 
 def is_dental_row(row):
-    """Check if any taxonomy code column starts with '1223' or '1224' (dental)."""
+    """Check if any taxonomy code column starts with '1223' (dental)."""
     for i in range(1, 16):
         col = f"{TAXONOMY_COL_PREFIX}{i}"
         val = row.get(col, "")
-        if val and (str(val).startswith(DENTAL_TAXONOMY_PREFIX) or str(val).startswith("1224")):
+        if val and str(val).startswith(DENTAL_TAXONOMY_PREFIX):
             return True
     return False
 
@@ -215,7 +215,7 @@ def get_primary_taxonomy(row):
     for i in range(1, 16):
         col = f"{TAXONOMY_COL_PREFIX}{i}"
         val = row.get(col, "")
-        if val and (str(val).startswith(DENTAL_TAXONOMY_PREFIX) or str(val).startswith("1224")):
+        if val and str(val).startswith(DENTAL_TAXONOMY_PREFIX):
             return str(val).strip()
     return None
 
@@ -224,7 +224,7 @@ def get_taxonomy_specialty(code):
     """Map taxonomy code to specialty name."""
     if not code:
         return None
-    return DENTAL_TAXONOMIES.get(code, "general" if (code.startswith("1223") or code.startswith("1224")) else None)
+    return DENTAL_TAXONOMIES.get(code, "general" if code.startswith("1223") else None)
 
 
 def parse_nppes_row(row):

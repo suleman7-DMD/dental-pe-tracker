@@ -551,7 +551,7 @@ Examples:
             result = engine.submit_batch(reqs)
             if "error" in result:
                 print(f"   ❌ {result['error']}")
-                log_scrape_error("practice_deep_dive", start_time, str(result["error"]))
+                log_scrape_error("practice_deep_dive", str(result["error"]), start_time)
             else:
                 print(f"   ✅ Batch: {result.get('batch_id')}")
                 log_scrape_complete("practice_deep_dive", start_time,
@@ -579,7 +579,7 @@ Examples:
         log_scrape_complete("practice_deep_dive", start_time, new_records=success,
                            summary=f"Researched {success}/{len(practices)} practices, cost ${total_cost:.4f}")
     except Exception as e:
-        log_scrape_error("practice_deep_dive", start_time, str(e))
+        log_scrape_error("practice_deep_dive", str(e), start_time)
         raise
 
 

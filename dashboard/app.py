@@ -93,7 +93,8 @@ dental_dark_template = dict(layout=dict(
 ))
 
 DEAL_TYPE_COLORS = {"buyout": "#0066FF", "add-on": "#00C853", "recapitalization": "#FFB300",
-                    "growth": "#9C27B0", "de_novo": "#00BCD4", "partnership": "#7C4DFF", "other": "#566070"}
+                    "growth": "#9C27B0", "de_novo": "#00BCD4", "partnership": "#7C4DFF", "other": "#566070",
+                    "unknown": "#808080"}
 
 US_STATES = ["AL","AK","AZ","AR","CA","CO","CT","DE","DC","FL","GA","HI","ID","IL","IN","IA",
              "KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM",
@@ -668,7 +669,7 @@ def render_sidebar():
 
         # Deal type
         st.markdown(f'**Deal Type** {help_tip("Buyout = PE firm buys a dental company outright. Add-on = PE-owned platform acquires another practice. Recap = refinancing/dividend. Growth = expansion capital. De Novo = brand new office opened.")}', unsafe_allow_html=True)
-        all_types = ["buyout", "add-on", "recapitalization", "growth", "de_novo", "partnership", "other"]
+        all_types = ["buyout", "add-on", "recapitalization", "growth", "de_novo", "partnership", "other", "unknown"]
         st.multiselect("Deal Type", all_types, default=all_types, key="filter_deal_types", label_visibility="collapsed")
 
         # PE Sponsor

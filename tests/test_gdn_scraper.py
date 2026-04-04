@@ -116,13 +116,22 @@ def test_known_platforms_no_duplicates():
 # ── _is_roundup_link ─────────────────────────────────────────────────────────
 
 
-def test_is_roundup_link_excludes_top10():
-    """Top-10 year-end listicles should be excluded."""
+def test_is_roundup_link_excludes_pure_top10_listicle():
+    """Pure top-10 listicle (no roundup keywords) should be excluded."""
+    result = _is_roundup_link(
+        "https://example.com/top-10-dsos-to-watch-2025/",
+        "Top 10 DSOs to Watch",
+    )
+    assert result is False, "Pure top-10 listicle should be excluded"
+
+
+def test_is_roundup_link_keeps_top10_roundup():
+    """A top-10 link that IS a deal roundup should still be included."""
     result = _is_roundup_link(
         "https://example.com/dso-deal-roundup-top-10-2025/",
         "Top 10 DSO Deals",
     )
-    assert result is False, "Top-10 roundup links should be excluded"
+    assert result is True, "Top-10 deal roundup should be kept (has roundup keyword in URL)"
 
 
 def test_is_roundup_link_allows_normal_roundup():

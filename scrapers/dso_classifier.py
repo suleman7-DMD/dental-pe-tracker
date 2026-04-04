@@ -195,6 +195,7 @@ ADDR_ABBREVS = {
     r"\bBLVD\b": "BOULEVARD", r"\bRD\b": "ROAD", r"\bLN\b": "LANE",
     r"\bCT\b": "COURT", r"\bPL\b": "PLACE", r"\bCIR\b": "CIRCLE",
     r"\bHWY\b": "HIGHWAY", r"\bPKY\b": "PARKWAY", r"\bPKWY\b": "PARKWAY",
+    r"\bSTE\b": "SUITE",
     r"\bN\b": "NORTH", r"\bS\b": "SOUTH", r"\bE\b": "EAST", r"\bW\b": "WEST",
 }
 
@@ -362,10 +363,10 @@ def _location_match_pass(session, practices, counts, dry_run, force, today):
         if not dry_run:
             practice.ownership_status = new_status
             practice.affiliated_dso = dso_name
+            practice.classification_confidence = best_score
+            practice.classification_reasoning = f"Location-matched to {dso_name} at {best_loc.address or 'unknown addr'} (score={best_score})"
             if pe_sponsor:
                 practice.affiliated_pe_sponsor = pe_sponsor
-                practice.classification_confidence = best_score
-                practice.classification_reasoning = f"Location-matched to {dso_name} at {best_loc.address or 'unknown addr'} (score={best_score})"
 
             if old_status not in ("pe_backed", "dso_affiliated"):
                 session.add(PracticeChange(
@@ -567,11 +568,21 @@ def _classify_single_entity(row, addr_group, shared_eins, shared_phones):
 
     # ── Rule 1: Non-clinical ──
     # Skip if practice is already classified as DSO-affiliated (prevents
-    # "MANAGEMENT GROUP" keyword from overriding known DSO status)
+    # "MANAGEMENT GROUP" keyword from overriding known DSO status).
+    # For "MANAGEMENT GROUP" specifically, also skip when name contains dental
+    # keywords (e.g. "ABC DENTAL MANAGEMENT GROUP" is likely a DSO, not non-clinical).
+    DENTAL_PRACTICE_KEYWORDS = ("DENTAL", "DENTIST", "ORTHODONT", "ORAL",
+                                "SMILE", "TOOTH", "TEETH", "ORTHO", "PERIO",
+                                "ENDO", "PROSTH")
+    AMBIGUOUS_MGMT_KEYWORDS = ("MANAGEMENT GROUP", "MANAGEMENT COMPANY", "MANAGEMENT SERVICES")
     ownership = row.get("ownership_status")
     if ownership not in ("pe_backed", "dso_affiliated"):
         for kw in NON_CLINICAL_KEYWORDS:
             if kw in combined:
+                # "MANAGEMENT GROUP" is ambiguous — dental management groups
+                # are often DSOs. Only skip if name also has dental keywords.
+                if kw in AMBIGUOUS_MGMT_KEYWORDS and any(dk in combined for dk in DENTAL_PRACTICE_KEYWORDS):
+                    continue
                 return ("non_clinical",
                         f"Non-clinical: name contains '{kw}'. "
                         f"Name: {row.get('practice_name')}")

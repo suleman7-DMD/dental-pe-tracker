@@ -84,7 +84,7 @@ KNOWN_PE_SPONSORS = [
     "RF Investment Partners", "Latticework Capital", "Resolute Capital Partners",
     "Georgia Oak Partners", "Harvest Partners", "Mid Ocean Partners",
     "Partners Group", "Blackstone", "Audax Group", "Mubadala",
-    "Comvest Partners", "Comvest Private Equity",
+    "Comvest Partners", "Comvest Private Equity", "Comvest",
     "Great Hill Partners", "InTandem Capital Partners", "InTandem Capital",
     "Martis Capital", "ONCAP", "Zenyth Partners",
     "Brightwood Capital", "SkyKnight Capital", "Talisker Partners",
@@ -266,7 +266,7 @@ def split_into_deal_sentences(paragraphs):
         # Split on period followed by space+capital, or semicolons, or bullet-style
         # Protect known abbreviations from splitting
         protected = para
-        for abbr in ('U.S.', 'Dr.', 'Mr.', 'Ms.', 'Jr.', 'Sr.', 'Inc.', 'Ltd.', 'Corp.', 'Co.', 'St.', 'Ave.', 'vs.'):
+        for abbr in ('U.S.', 'Dr.', 'Mr.', 'Ms.', 'Jr.', 'Sr.', 'Inc.', 'Ltd.', 'Corp.', 'Co.', 'St.', 'Ave.', 'vs.', 'D.D.S.', 'D.M.D.', 'M.D.', 'Ph.D.', 'B.S.', 'M.S.', 'P.C.', 'P.A.', 'L.L.C.', 'L.P.', 'No.', 'Ft.', 'Mt.'):
             protected = protected.replace(abbr, abbr.replace('.', '\x00'))
         parts_raw = re.split(r'(?<=[.;])\s+(?=[A-Z])', protected)
         parts = [p.replace('\x00', '.') for p in parts_raw]
@@ -336,9 +336,8 @@ def extract_pe_sponsor(text):
     """Extract PE sponsor from known patterns."""
     t = text
 
-    # Pattern: "(Sponsor Name)" right after company
-    paren_match = re.search(r'\(([^)]{3,60})\)', t)
-    if paren_match:
+    # Pattern: "(Sponsor Name)" right after company — check ALL parentheticals
+    for paren_match in re.finditer(r'\(([^)]{3,60})\)', t):
         candidate = paren_match.group(1).strip()
         sponsor = _match_known_sponsor(candidate)
         if sponsor:

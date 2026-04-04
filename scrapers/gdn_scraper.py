@@ -191,8 +191,15 @@ def _is_roundup_link(href, text):
     """Check if a link is a DSO Deal Roundup post."""
     t = text.lower()
     h = href.lower()
-    # Exclude "top 10" year-end listicles BEFORE any title/URL matching
-    if "top-10" in h or "top 10" in t or "top-5" in h or "top 5" in t or "best-of" in h or "year-end" in h:
+    # Exclude "top 10" year-end listicles BEFORE any title/URL matching,
+    # BUT only if they don't also match roundup keywords (e.g.,
+    # "Top 10 DSO Deal Roundup Highlights of March 2026" IS a roundup)
+    _has_top10 = ("top-10" in h or "top 10" in t or "top-5" in h
+                  or "top 5" in t or "best-of" in h or "year-end" in h)
+    _roundup_kws = ("roundup" in t or "round-up" in t or "round up" in t
+                    or "recap" in t or "deals of" in t
+                    or "roundup" in h or "round-up" in h)
+    if _has_top10 and not _roundup_kws:
         return False
     # Title-based: must contain "deal roundup" or "dso deal"
     if "deal roundup" in t or "dso deal" in t:
@@ -266,8 +273,14 @@ def extract_deal_blocks(soup):
     # Collect all direct children (p, hr, h2, h3, etc.)
     blocks = []
     current_block = []
+    # Track elements already consumed as children of <li> to avoid duplicates
+    # (e.g., <li><p>text</p></li> — the <li> handler covers the <p> text)
+    seen_elements = set()
 
     for el in content.find_all(["p", "hr", "h2", "h3", "h4", "li"]):
+        if id(el) in seen_elements:
+            continue
+
         if el.name == "hr":
             # Separator — flush current block
             if current_block:
@@ -283,6 +296,9 @@ def extract_deal_blocks(soup):
                     blocks.append(" ".join(current_block))
                     current_block = []
                 current_block.append(text)
+            # Mark child p/h2/h3/h4 as seen so they aren't processed again
+            for child in el.find_all(["p", "h2", "h3", "h4"]):
+                seen_elements.add(id(child))
             continue
 
         text = _normalize_text(el)
@@ -433,7 +449,7 @@ def extract_target(text, platform):
         rf'([A-Z][{_N}]{{3,50}}?)\s+has\s+joined\s+',
         rf'([A-Z][{_N}]{{3,50}}?)\s+affiliated\s+with\s+',
         rf'([A-Z][{_N}]{{3,50}}?),?\s+(?:led by|owned by|founded by).*?(?:has joined|was acquired by)\s+',
-        rf'([A-Z][{_N}]{{3,50}}?)\s+(?:in (?:her|his|their) sale)\s+',
+        rf'(?:(?:Advised|Represented|Assisted|Helped|Supported)\s+)?([A-Z][{_N}]{{3,50}}?)\s+(?:in (?:her|his|their) sale)[\s.,;]',
     ]
     for pattern in inverted_patterns:
         m = re.search(pattern, text)
@@ -676,6 +692,7 @@ def run(dry_run=False):
     roundup_posts = discover_roundup_urls()
     if not roundup_posts:
         log.warning("No roundup posts found. Exiting.")
+        log_scrape_complete("gdn_scraper", _t0, new_records=0, summary="GDN: No roundup posts found")
         return
 
     # Step 2: Scrape each post

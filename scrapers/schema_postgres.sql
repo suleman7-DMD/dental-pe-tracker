@@ -206,6 +206,7 @@ CREATE TABLE IF NOT EXISTS ada_hpi_benchmarks (
     pct_large_group_10plus DOUBLE PRECISION,
     source_file            TEXT,
     created_at             TIMESTAMP DEFAULT NOW(),
+    updated_at             TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT uix_ada_hpi UNIQUE (data_year, state, career_stage)
 );

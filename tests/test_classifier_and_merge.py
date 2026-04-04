@@ -64,6 +64,8 @@ class TestClassifySingleEntity:
         row = {
             "practice_name": "DENTAL LAB SERVICES INC",
             "ownership_status": "independent",
+            "phone": "555-1234",
+            "website": "http://example.com",
         }
         result = _classify_single_entity(row, [], {}, {})
         classification = result[0]
