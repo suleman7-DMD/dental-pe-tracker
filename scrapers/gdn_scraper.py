@@ -319,6 +319,15 @@ def extract_deal_blocks(soup):
                 current_block = []
             continue
 
+        # Old GDN format (2020-2022): no <hr> separators — deals are
+        # individual <p> elements 150+ chars.  Flush the current block
+        # before starting a new substantial paragraph so each deal gets
+        # its own block instead of being merged into one giant block.
+        if (el.name == "p" and len(text) > 150
+                and current_block and len(" ".join(current_block)) > 100):
+            blocks.append(" ".join(current_block))
+            current_block = []
+
         current_block.append(text)
 
     # Flush remaining
