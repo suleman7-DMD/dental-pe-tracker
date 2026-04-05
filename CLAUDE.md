@@ -58,8 +58,8 @@ Mirror of SQLite tables, synced by `scrapers/sync_to_supabase.py`. Same schema, 
 | `full_replace` | zip_scores, watched_zips, dso_locations, ada_hpi_benchmarks, zip_qualitative_intel, practice_intel | Truncate + reload |
 
 ### Current Data Stats
-- 400,962 practices (362k independent, 2.8k DSO-affiliated, 401 PE-backed, 35k unknown)
-- 2,512 deals
+- 401,645 practices (362k independent, 2.8k DSO-affiliated, 401 PE-backed, 35k unknown)
+- 3,215 deals (3,011 GDN + 162 PESP + 42 PitchBook, coverage Oct 2020 – Mar 2026)
 - 2,992 Data Axle enriched practices (with lat/lon, revenue, employees, year established)
 - 290 scored ZIPs
 
@@ -360,7 +360,7 @@ After pipeline runs, `scrapers/sync_to_supabase.py` pushes updated data to Supab
 | `scrapers/merge_and_score.py` | 719 | Dedup deals, score ZIPs, ensure_chicagoland_watched() |
 | `scrapers/dso_classifier.py` | 547 | Name pattern matching + location matching to classify ownership |
 | `scrapers/pesp_scraper.py` | 552 | Scrapes PE deal announcements |
-| `scrapers/gdn_scraper.py` | 711 | Scrapes DSO deal roundups |
+| `scrapers/gdn_scraper.py` | 720 | Scrapes DSO deal roundups (old-format paragraph splitting for 2020-2022 posts) |
 | `scrapers/adso_location_scraper.py` | 728 | Scrapes DSO office locations from websites |
 | `scrapers/ada_hpi_downloader.py` | 237 | Auto-downloads ADA benchmark XLSX files |
 | `scrapers/ada_hpi_importer.py` | 351 | Parses ADA HPI XLSX by state/career stage |
