@@ -75,8 +75,9 @@ KNOWN_PLATFORMS = [
     "Dental Whale", "Shore Dental",
     # Additional platforms observed in PESP reports
     "Image Specialty Partners", "Mosaic Dental", "Dental Haus",
-    "DCA", "Great Orthodontics", "Pinnacle Dental Partners",
+    "DCA", "Enable Dental", "Great Orthodontics", "Pinnacle Dental Partners",
     "Harmony Dental Partners", "Ascend Dental Solutions",
+    "Ideal Dental Management Partners", "Ideal Dental",
 ]
 
 KNOWN_PE_SPONSORS = [
@@ -95,8 +96,10 @@ KNOWN_PE_SPONSORS = [
     "Brightwood Capital", "SkyKnight Capital", "Talisker Partners",
     "JLL Partners", "Sentinel Capital Partners", "Sun Capital Partners",
     "Court Square Capital", "Alpine Investors",
+    "Bardo Capital",
     "Kohlberg & Company", "Thomas H. Lee Partners", "THL",
     "Clayton, Dubilier & Rice", "CD&R",
+    "Mellon Stud Ventures",
 ]
 
 STATE_MAP = {

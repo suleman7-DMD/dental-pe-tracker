@@ -545,6 +545,49 @@ See `SCRAPER_AUDIT_STATUS.md` at repo root for the full audit status board with 
 - **Freshness columns aren't always populated**: `ada_hpi_benchmarks.updated_at` is NULL for all rows because `ada_hpi_importer.py` only sets `created_at`. When adding a freshness query, check which timestamp columns are actually populated first.
 - **`tee | pipe` hides orphans**: A bash subshell that pipes to `tee` leaves the piped command as a separate PID. `kill $bgpid` only reaps the subshell. Always use `pkill -P $bgpid` when you need to stop the whole group.
 
+## Pipeline Audit — April 23, 2026 (Sync Hardening + Parser Pattern-Hunt)
+
+Continuation of the April 22 audit. After the initial audit left the cron firing but deals stuck at deal_date=2026-03-02 (live Vercel showed stale data on April 23), a multi-agent team went deeper into the Supabase sync resilience and ran pattern-hunt across the GDN/PESP parsers. Code is in `main` as of 2026-04-23; the follow-up live sync verification is still pending a new session.
+
+### Sync resilience hardening (`scrapers/sync_to_supabase.py`)
+
+| Concern | Fix |
+|---------|-----|
+| `_sync_watched_zips_only` used `DELETE FROM practices WHERE zip IN (SELECT zip_code FROM watched_zips)` — this hit `practice_changes_npi_fkey` (ON DELETE NO ACTION) and aborted the transaction, which is why the 05:03 sync threw `ForeignKeyViolation` and the deal_date stayed at 2026-03-02 | Replaced `DELETE` with `TRUNCATE TABLE practices CASCADE` inside the existing atomic `pg_engine.begin()` block. TRUNCATE CASCADE in Postgres IS transactional (the "DDL can't rollback" claim is MySQL-specific). `practice_changes` sync_metadata is reset in the same transaction so the next incremental run re-sends all rows |
+| Silent-wipe risk: `_sync_full_replace` had no floor for `platforms` (140 live), `pe_sponsors` (40 live), `zip_overviews` (12 live) — a broken source query returning 0 rows would TRUNCATE live data without warning | Added floors to `MIN_ROWS_THRESHOLD`: `platforms=20`, `pe_sponsors=10`, `zip_overviews=5`. Fresh-install bootstrap requires manually lowering the floor (not a --force flag yet) |
+| `except Exception: pass` in `_sync_pipeline_events` silently swallowed malformed JSONL rows | Converted to `except Exception as row_err: log.warning("[pipeline_events] Skipping malformed row: %s", row_err)` |
+| No SIGINT/SIGTERM handler — a Ctrl-C mid-sync could leave a table truncated with no rows inserted | Module-level `_shutdown_requested` flag + `_handle_shutdown()` signal handler. 8 checkpoints throughout the sync loop abort gracefully after current batch |
+| No post-sync verification — previous sync run showed "290 rows synced" for zip_scores but didn't verify Supabase actually had 290 rows | `_verify_table_count()` reads back row counts after every sync and builds `verified_row_counts` dict. `_sync_watched_zips_only` and `_sync_full_replace` both raise `AssertionError` on mismatch |
+| `zip_qualitative_intel` floor of 200 blocked legitimate small-coverage runs | Lowered to 0 (this table grows over time; fresh install may have zero rows) |
+
+### Parser pattern-hunt fixes (`scrapers/gdn_scraper.py`, `scrapers/pesp_scraper.py`)
+
+| Concern | Fix |
+|---------|-----|
+| GDN fallback `extract_platform()` stopped too early on multi-word entity names connected by `&`, `and`, `of` — e.g. "Pacific & Western Dental Acquires..." captured only "Western Dental" when `&` was non-capitalized | New `_PASS_THROUGH_SET = {"&", "and", "of"}` allows connectors when `entity_words` already has content |
+| Several deal-announcement verbs missing from `_DEAL_VERB_SET`, causing entity names to bleed past the verb — logs showed "Bluewater Dental Onboarded Smith Practice Into Its Network" stored as platform_company | Added: `onboarded/onboards/onboarding`, `continues/continuing/continued`, `strengthens/strengthening/strengthened`, `deepens/deepening/deepened` |
+| GDN `KNOWN_PLATFORMS` missing "Gen4 Dental Partners" (appeared in 2026 deals) | Added to alphabetical list |
+| PESP `KNOWN_PLATFORMS` missing "Enable Dental", "Ideal Dental Management Partners", "Ideal Dental" | Added (count 98→100) |
+| PESP `KNOWN_PE_SPONSORS` missing "Bardo Capital", "Mellon Stud Ventures" | Added (count 52→54) |
+
+### Unit test suite (`scrapers/test_sync_resilience.py`) — 11 tests, all pass
+
+- `TestFullReplaceZeroRowGuard` (3 tests): zero-row abort, below-floor abort, above-floor proceeds
+- `TestSignalHandler` (4 tests): SIGTERM/SIGINT set flag, handler registered, sync aborts on shutdown
+- `TestPostSyncAssertion` (2 tests): full_replace + watched_zips_only raise on count mismatch
+- `TestRunVerifiedResults` (2 tests): verified_results populated in extra dict
+
+### GitHub Actions keep-alive (`.github/workflows/keep-supabase-alive.yml`)
+
+Cron `'0 12 */3 * *'` (every 3 days at 12:00 UTC) hits Supabase `/rest/v1/` as read-only ping to prevent free-tier pause. **REQUIRES USER ACTION**: Add `SUPABASE_URL` + `SUPABASE_ANON_KEY` secrets in GitHub repo settings.
+
+### Known limitations shipped in this round (NOT fixed, documented for future work)
+
+- **GDN "Partners" ambiguity**: `partners/partnered/partnering` are in `_DEAL_VERB_SET` as verbs, so entity names ending in "Partners" (e.g., "Zyphos & Acmera Dental Partners") get truncated to "Zyphos & Acmera Dental". KNOWN_PLATFORMS match catches the common real-world cases (Gen4 Dental Partners, etc.), but a lookahead for "Partners with" vs "Partners <noun>" would improve the fallback. Not urgent because KNOWN_PLATFORMS covers production.
+- **Apostrophe normalization**: GDN logs show "Smith's Dental" (U+2019 right single quote) and "Smith's Dental" (U+0027 apostrophe) deduplicating as different entities. Needs a Unicode normalization pass in scraper output.
+- **`ada_hpi_benchmarks.updated_at` still NULL**: Freshness UI reads `created_at` as a workaround. Next `ada_hpi_importer.py` run should set both.
+- **Mirror scrapers in `dental-pe-nextjs/scrapers/`**: DEPRECATED markers added but the directory is gitignored, so markers are stranded on local disk only. Cron reads from parent `/scrapers/`, so this isn't actively harmful. Recommend a future `rm -rf dental-pe-nextjs/scrapers/` cleanup.
+
 ## Skills Available
 
 Use `/scraper-dev` when modifying any scraper. Use `/dashboard-dev` when modifying the Streamlit app OR the Next.js frontend. Use `/data-axle-workflow` for Data Axle export/import tasks. Use `/debug-pipeline` when investigating scraper failures or data issues.

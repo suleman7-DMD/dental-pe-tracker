@@ -16,6 +16,7 @@ Env vars:
 
 import os
 import sys
+import signal
 from datetime import datetime, date
 
 sys.path.insert(0, os.path.expanduser("~/dental-pe-tracker"))
@@ -59,10 +60,50 @@ from scrapers.logger_config import get_logger
 log = get_logger("sync_to_supabase")
 
 # ---------------------------------------------------------------------------
+# Fix 3: Graceful SIGINT/SIGTERM handler
+# ---------------------------------------------------------------------------
+# launchd sends SIGTERM on timeout; the user sends SIGINT via Ctrl-C.
+# Without a handler an in-flight sync dies mid-batch, leaving Supabase tables
+# in a partial state with no rollback path. We catch both signals, set a flag,
+# and check it before each batch commit so we drain the current batch cleanly,
+# write sync_metadata, and exit non-zero rather than leaving a half-written table.
+_shutdown_requested = False
+
+
+def _handle_shutdown(signum, frame):
+    global _shutdown_requested
+    _shutdown_requested = True
+    log.warning("Received signal %s — requesting graceful shutdown after current batch", signum)
+
+
+signal.signal(signal.SIGINT, _handle_shutdown)
+signal.signal(signal.SIGTERM, _handle_shutdown)
+
+# ---------------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------------
 
 BATCH_SIZE = 2000
+
+# Fix 2: Minimum row floors for full_replace tables.
+# If SQLite returns fewer rows than this threshold the TRUNCATE is aborted.
+# Floors are based on known data sizes (conservatively set to ~50% of expected).
+# Set to 0 for tables that are allowed to be empty (pe_sponsors, platforms, etc.)
+# or that grow from zero (practice_intel at bootstrap).
+# RISK NOTE: if a legitimate reset/wipe of a table is needed (e.g., after a full
+# re-scrape that intentionally deletes records), temporarily lower the floor or
+# add a --force flag (not yet implemented).
+MIN_ROWS_THRESHOLD = {
+    "zip_scores":            200,   # 290 scored ZIPs expected
+    "watched_zips":          200,   # 290 watched ZIPs expected
+    "dso_locations":          50,   # 408 locations expected
+    "ada_hpi_benchmarks":    500,   # 918 rows expected
+    "zip_qualitative_intel":   0,   # grows over time; no floor — may be legitimately empty on a fresh install
+    "practice_intel":          1,   # allowed to grow from zero; 1 ensures some data exists
+    "platforms":              20,   # 140 live rows; floor catches catastrophic source loss. Fresh install must manually override.
+    "pe_sponsors":            10,   # 40 live rows; floor catches catastrophic source loss. Fresh install must manually override.
+    "zip_overviews":           5,   # 12 live rows; floor catches catastrophic source loss. Fresh install must manually override.
+}
 
 # Tables and their sync strategy
 # "incremental_updated_at" — WHERE updated_at > last_sync_ts
@@ -314,6 +355,12 @@ def _sync_incremental_updated_at(sqlite_session, pg_engine, config):
     # failure so we skip the dup and continue.
     total_skipped = 0
     for i in range(0, len(rows), BATCH_SIZE):
+        # Fix 3: honour shutdown request before each batch commit
+        if _shutdown_requested:
+            log.warning("[%s] Shutdown requested — stopping after %d/%d rows synced",
+                        table_name, total_synced, len(rows))
+            break
+
         batch = rows[i:i + BATCH_SIZE]
         dicts = [(r, _model_to_dict(r)) for r in batch]
         batch_synced = 0
@@ -432,8 +479,13 @@ def _sync_incremental_id(sqlite_session, pg_engine, config):
     # skip the dup and continue with the rest.
     inserted = 0
     skipped = 0
+    # Fix 3: honour shutdown request — break before each row if flagged
     with pg_engine.connect() as conn:
         for r in rows:
+            if _shutdown_requested:
+                log.warning("[%s] Shutdown requested — stopping at %d/%d rows",
+                            table_name, inserted, len(rows))
+                break
             d = _model_to_dict(r)
             sp = conn.begin_nested()
             try:
@@ -465,13 +517,36 @@ def _sync_incremental_id(sqlite_session, pg_engine, config):
 
 
 def _sync_full_replace(sqlite_session, pg_engine, config):
-    """TRUNCATE + INSERT all rows (for small reference tables)."""
+    """TRUNCATE + INSERT all rows (for small reference tables).
+
+    Fix 2: Row-count precheck before TRUNCATE prevents wipe-on-empty.
+    The TRUNCATE + INSERT run in a single connection/transaction so a
+    crash or rollback mid-insert leaves the old data intact.
+    Post-sync assertion confirms actual Supabase count matches expected.
+    """
     table_name = config["table"]
     model = config["model"]
     columns = _get_column_names(model)
 
     rows = sqlite_session.query(model).all()
+
+    # Fix 2: Guard — abort TRUNCATE if source is empty or below floor
+    floor = MIN_ROWS_THRESHOLD.get(table_name, 0)
+    if not rows:
+        log.warning("[%s] Full replace aborted — SQLite returned 0 rows (floor=%d)",
+                    table_name, floor)
+        return 0
+    if len(rows) < floor:
+        log.warning("[%s] Full replace aborted — expected at least %d rows, SQLite returned %d",
+                    table_name, floor, len(rows))
+        return 0
+
     log.info("[%s] Full replace: %d rows", table_name, len(rows))
+
+    # Fix 3: check shutdown before destructive TRUNCATE
+    if _shutdown_requested:
+        log.warning("[%s] Shutdown requested — skipping full replace", table_name)
+        return 0
 
     with pg_engine.connect() as conn:
         conn.execute(text(f"TRUNCATE TABLE {table_name} CASCADE"))
@@ -482,22 +557,54 @@ def _sync_full_replace(sqlite_session, pg_engine, config):
                 conn.execute(text(insert_sql), d)
         conn.commit()
 
+    # Fix 2: Post-sync assertion — verify Supabase actually has the rows
+    expected_count = len(rows)
+    with pg_engine.connect() as conn:
+        actual = conn.execute(text(f"SELECT COUNT(*) FROM {table_name}")).scalar()
+    if actual < expected_count * 0.95:
+        raise RuntimeError(
+            f"[{table_name}] Sync verification failed: expected {expected_count} rows, "
+            f"Supabase has {actual}"
+        )
+    if actual != expected_count:
+        log.warning("[%s] Minor count mismatch after full replace: expected %d, got %d",
+                    table_name, expected_count, actual)
+
     _update_sync_state(
         pg_engine, table_name,
-        rows_synced=len(rows),
+        rows_synced=actual,
         sync_type="full_replace",
         last_sync_value=None,
-        notes=f"Full replace: {len(rows)} rows",
+        notes=f"Full replace: {actual} rows (verified)",
     )
-    return len(rows)
+    return actual
 
 
 def _sync_watched_zips_only(sqlite_session, pg_engine, config):
-    """Sync only practices in watched ZIPs (Chicagoland + Boston ≈ 14k rows).
+    """Sync only practices in watched ZIPs (Chicagoland + Boston ~ 14k rows).
 
-    Uses full_replace strategy scoped to watched ZIPs.
-    Full 400k stays in local SQLite — Supabase only gets the practices
-    that the frontend actually queries.
+    Fix 1: Replaces the split-transaction pattern (TRUNCATE committed in one
+    connection, INSERTs in separate per-batch connections) with a single
+    atomic transaction using TRUNCATE ... CASCADE + upsert-by-NPI, all inside
+    one pg_engine.begin() block.
+
+    Why TRUNCATE CASCADE (and not DELETE):
+    - Postgres TRUNCATE is fully transactional — it can be rolled back inside
+      a BEGIN/COMMIT just like any other SQL. (Common myth that DDL isn't
+      transactional — this is a MySQL behavior, not Postgres.)
+    - The practice_changes.npi_fkey FK constraint is ON DELETE NO ACTION in
+      Supabase, so a plain `DELETE FROM practices` is blocked by any referenced
+      NPI. TRUNCATE ... CASCADE is the only reliable way to clear practices
+      without first manually wiping every FK-referencing table.
+    - CASCADE wipes practice_changes as a side-effect, matching the documented
+      "CASCADE trap" behavior: we then reset practice_changes sync_metadata so
+      the incremental sync re-sends all rows on the next dispatch.
+
+    RISK NOTE: The single-transaction approach holds an open connection for the
+    full duration of the sync (~14k rows across batches). If the Supabase pooler
+    has a short idle timeout this could raise a connection error mid-batch.
+    statement_timeout = '600s' is set locally to prevent runaway queries while
+    still allowing the full sync window. Monitor for connection timeouts on prod.
     """
     table_name = config["table"]
     model = config["model"]
@@ -517,45 +624,85 @@ def _sync_watched_zips_only(sqlite_session, pg_engine, config):
     )
 
     if not rows:
-        log.info("[%s] No practices in watched ZIPs", table_name)
+        log.warning("[%s] No practices found in watched ZIPs — aborting sync to avoid empty table",
+                    table_name)
         return 0
 
     log.info("[%s] Syncing %d practices (watched ZIPs only) in batches of %d",
              table_name, len(rows), BATCH_SIZE)
 
-    # Truncate and reload (clean slate ensures no stale out-of-region data)
-    # CASCADE wipes dependent tables (e.g., practice_changes FK → practices).
-    # Reset their sync_metadata so incremental sync re-sends all rows.
-    with pg_engine.connect() as conn:
-        conn.execute(text(f"TRUNCATE TABLE {table_name} CASCADE"))
-        conn.execute(text(
-            "DELETE FROM sync_metadata WHERE table_name = 'practice_changes'"
-        ))
-        conn.commit()
-    log.info("[%s] Truncated (CASCADE — reset practice_changes sync state)", table_name)
+    # Fix 3: check shutdown before destructive TRUNCATE
+    if _shutdown_requested:
+        log.warning("[%s] Shutdown requested — skipping watched_zips sync", table_name)
+        return 0
 
     upsert_sql = _build_upsert_sql(table_name, columns, conflict_col)
     total_synced = 0
 
-    for i in range(0, len(rows), BATCH_SIZE):
-        batch = rows[i:i + BATCH_SIZE]
-        dicts = [_model_to_dict(r) for r in batch]
-        with pg_engine.connect() as conn:
-            for d in dicts:
+    # Fix 1: Single atomic transaction.
+    # - SET LOCAL statement_timeout = '600s' guards against a runaway query
+    #   without killing the whole session (SET LOCAL is transaction-scoped).
+    # - TRUNCATE ... CASCADE wipes practices AND any FK-dependent rows
+    #   (practice_changes) in one atomic operation.
+    # - sync_metadata reset for practice_changes is included in the same txn so
+    #   it's rolled back too if the inserts fail. Incremental sync will then
+    #   re-send all practice_changes rows on the next dispatch.
+    with pg_engine.begin() as conn:
+        conn.execute(text("SET LOCAL statement_timeout = '600s'"))
+
+        # Clear existing practices. CASCADE wipes practice_changes (FK dep) too.
+        # This is the documented pattern — see scrapers/CLAUDE.md "CASCADE trap".
+        conn.execute(text(f"TRUNCATE TABLE {table_name} CASCADE"))
+        # Reset practice_changes sync state so incremental sync re-sends all rows
+        # (CASCADE wiped the Postgres rows; SQLite still has them).
+        conn.execute(text(
+            "DELETE FROM sync_metadata WHERE table_name = 'practice_changes'"
+        ))
+        log.info("[%s] TRUNCATE CASCADE — wiped practices + practice_changes, reset sync_metadata",
+                 table_name)
+
+        for i in range(0, len(rows), BATCH_SIZE):
+            # Fix 3: honour shutdown — if signal arrives mid-load, rollback entire txn
+            if _shutdown_requested:
+                log.warning("[%s] Shutdown requested mid-insert (%d/%d) — rolling back",
+                            table_name, total_synced, len(rows))
+                raise RuntimeError("Shutdown requested — transaction rolled back")
+
+            batch = rows[i:i + BATCH_SIZE]
+            for r in batch:
+                d = _model_to_dict(r)
                 conn.execute(text(upsert_sql), d)
-            conn.commit()
-        total_synced += len(batch)
-        log.info("[%s] Batch %d-%d committed (%d/%d)",
-                 table_name, i, i + len(batch), total_synced, len(rows))
+            total_synced += len(batch)
+            log.info("[%s] Inserted batch %d-%d (%d/%d)",
+                     table_name, i, i + len(batch), total_synced, len(rows))
+
+        # Transaction commits here (end of `with pg_engine.begin()` block)
+
+    log.info("[%s] Transaction committed — %d rows inserted", table_name, total_synced)
+
+    # Fix 1: Post-sync assertion
+    expected_count = len(rows)
+    with pg_engine.connect() as conn:
+        actual = conn.execute(text(
+            "SELECT COUNT(*) FROM practices WHERE zip IN (SELECT zip_code FROM watched_zips)"
+        )).scalar()
+    if actual < expected_count * 0.95:
+        raise RuntimeError(
+            f"[{table_name}] Sync verification failed: expected {expected_count} rows "
+            f"in watched ZIPs, Supabase has {actual}"
+        )
+    if actual != expected_count:
+        log.warning("[%s] Minor count mismatch: expected %d, verified %d (delta=%d)",
+                    table_name, expected_count, actual, expected_count - actual)
 
     _update_sync_state(
         pg_engine, table_name,
-        rows_synced=total_synced,
+        rows_synced=actual,
         sync_type="watched_zips_only",
         last_sync_value=datetime.now().isoformat(),
-        notes=f"Watched ZIPs only: {total_synced} rows from {len(watched_zips)} ZIPs",
+        notes=f"Watched ZIPs only: {actual} rows from {len(watched_zips)} ZIPs (verified)",
     )
-    return total_synced
+    return actual
 
 
 # ---------------------------------------------------------------------------
@@ -598,6 +745,12 @@ def run():
         for config in SYNC_CONFIG:
             table_name = config["table"]
             strategy = config["strategy"]
+
+            # Fix 3: stop dispatching new tables if shutdown was requested
+            if _shutdown_requested:
+                log.warning("Shutdown requested — skipping remaining tables")
+                break
+
             try:
                 sync_fn = _STRATEGY_MAP[strategy]
                 count = sync_fn(sqlite_session, pg_engine, config)
@@ -609,14 +762,50 @@ def run():
                 results[table_name] = f"ERROR: {e}"
                 # Continue with other tables — don't let one failure stop the sync
 
+        # Fix 4: Post-sync read-after-write verification
+        # For each table that reported an integer row count, query Supabase
+        # directly to confirm the count matches. This catches "lying success"
+        # where the INSERT loop counted rows but the transaction was silently
+        # rolled back or the wrong table was targeted.
+        # NOTE: incremental_updated_at and incremental_id tables report only
+        # the *delta* rows synced, not the total table count — mismatch against
+        # total is expected and meaningless, so we skip exact-match checks for
+        # those strategies.
+        verified_results = {}
+        try:
+            with pg_engine.connect() as conn:
+                for tbl, reported in results.items():
+                    if not isinstance(reported, int):
+                        continue
+                    try:
+                        actual = conn.execute(
+                            text(f"SELECT COUNT(*) FROM {tbl}")
+                        ).scalar()
+                        verified_results[tbl] = actual
+                        # Only flag mismatches for full-replace / watched_zips strategies
+                        # where reported == total rows in Supabase, not just the delta.
+                        cfg = next((c for c in SYNC_CONFIG if c["table"] == tbl), None)
+                        if cfg and cfg["strategy"] not in ("incremental_updated_at", "incremental_id"):
+                            if actual != reported:
+                                log.error(
+                                    "MISMATCH [%s]: sync reported %d rows but Supabase has %d",
+                                    tbl, reported, actual
+                                )
+                    except Exception as ve:
+                        log.warning("[%s] Post-sync verification query failed: %s", tbl, ve)
+        except Exception as ve:
+            log.warning("Post-sync verification pass failed: %s", ve)
+
         # Print summary
         log.info("")
         log.info("=" * 60)
         log.info("SYNC SUMMARY")
         log.info("=" * 60)
-        for table_name, result in results.items():
+        for tbl, result in results.items():
             status = f"{result} rows" if isinstance(result, int) else result
-            log.info("  %-25s %s", table_name, status)
+            verified = verified_results.get(tbl)
+            verified_str = f" (verified: {verified})" if verified is not None else ""
+            log.info("  %-25s %s%s", tbl, status, verified_str)
         log.info("")
         log.info("  TOTAL ROWS SYNCED: %d", total_synced)
         log.info("=" * 60)
@@ -626,12 +815,20 @@ def run():
         if error_count:
             log.warning("%d table(s) had sync errors", error_count)
 
+        # Report non-zero exit if shutdown was requested mid-run
+        if _shutdown_requested:
+            log.warning("Sync terminated early due to shutdown signal — partial sync only")
+            sys.exit(1)
+
         log_scrape_complete(
             "sync_to_supabase",
             start_time,
             new_records=total_synced,
             summary=f"Synced {total_synced} total rows to Supabase ({len(results)} tables, {error_count} errors)",
-            extra={"table_results": {k: v for k, v in results.items() if isinstance(v, int)}},
+            extra={
+                "table_results": {k: v for k, v in results.items() if isinstance(v, int)},
+                "verified_row_counts": verified_results,
+            },
         )
 
         # Sync pipeline_events from JSONL log → Supabase (dashboard System page reads this)
@@ -656,8 +853,8 @@ def run():
                                     "st": ev["status"], "sum": ev["summary"],
                                     "det": _json.dumps(ev.get("details", {}))})
                                 new_count += 1
-                        except Exception:
-                            pass
+                        except Exception as row_err:
+                            log.warning("[pipeline_events] Skipping malformed row: %s", row_err)
                 conn.commit()
             if new_count:
                 log.info("[pipeline_events] Synced %d new events from JSONL", new_count)

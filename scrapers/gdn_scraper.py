@@ -35,6 +35,7 @@ MAX_RETRIES = 3  # retries for transient network errors (e.g. brief DNS blip)
 RETRY_BACKOFF = [3, 8, 20]  # seconds between retry attempts
 
 KNOWN_PLATFORMS = [
+    "Gen4 Dental Partners",
     "Heartland Dental", "MB2 Dental", "Dental365", "Dental 365",
     "Specialized Dental Partners", "U.S. Oral Surgery Management", "USOSM",
     "Pacific Dental Services", "PDS Health", "PDS",
@@ -408,16 +409,77 @@ def extract_platform(text):
         if re.search(r'\b' + re.escape(p) + r'\b', text, re.IGNORECASE):
             return p
 
-    # Fallback: leading capitalized entity + deal verb
-    m = re.match(
-        r'^([A-Z][A-Za-z\'\u2019\-&\.]+(?:\s+[A-Z][A-Za-z\'\u2019\-&\.]+)+)'
-        r'\s+(?:announced|partnered|welcomed|opened|acquired|expanded|affiliated|added|introduced|completed|invested|merged|joined)\b',
-        text,
-    )
-    if m:
-        candidate = m.group(1).strip()
-        # Reject if it looks like a sentence starter rather than an entity name
-        if len(candidate.split()) <= 6 and len(candidate) <= 60:
+    # Fallback: word-by-word walk to extract the leading entity before a deal verb.
+    # Handles ALL-CAPS names (CORDENTAL, DECA, SIMKO) and auxiliary verbs
+    # ("has Partnered", "has been acquired") that precede the deal verb.
+    _DEAL_VERB_SET = {
+        "acquired", "acquires", "acquiring",
+        "partnered", "partners", "partnering",
+        "affiliated", "affiliates", "affiliating",
+        "announced", "announces", "announcing",
+        "welcomed", "welcomes", "welcoming",
+        "opened", "opens", "opening",
+        "merged", "merges", "merging",
+        "expanded", "expands", "expanding",
+        "added", "adds", "adding",
+        "introduced", "introduces", "introducing",
+        "completed", "completes", "completing",
+        "invested", "invests", "investing",
+        "joined", "joins", "joining",
+        "formed", "forms", "forming",
+        "launched", "launches", "launching",
+        "grew", "grows", "growing",
+        "celebrated", "celebrates", "celebrating",
+        "onboarded", "onboards", "onboarding",
+        "continues", "continuing", "continued",
+        "strengthens", "strengthening", "strengthened",
+        "deepens", "deepening", "deepened",
+    }
+    _AUX_SET = {"has", "have", "had", "is", "are", "was", "were", "will", "would"}
+    _TITLE_PREFIXES = {"dr.", "mr.", "ms.", "dr", "mr", "ms"}
+    _PASS_THROUGH_SET = {"&", "and", "of"}
+
+    words = text.split()
+    entity_words = []
+    i = 0
+    while i < len(words):
+        w = words[i]
+        w_lower = w.lower().rstrip(".,;:")
+
+        # Stop at deal verb (optionally preceded by auxiliaries)
+        if w_lower in _DEAL_VERB_SET:
+            break
+
+        # Skip auxiliary verbs mid-stream (e.g. "has Partnered" -> skip "has")
+        if w_lower in _AUX_SET:
+            i += 1
+            continue
+
+        # Skip title prefixes before entity start (Dr., Mr., Ms.)
+        if not entity_words and w_lower in _TITLE_PREFIXES:
+            i += 1
+            continue
+
+        # Pass through connector tokens ("&", "and", "of") when already capturing
+        # an entity — handles "Pacific & Western Dental Partners", "Bank of America Dental".
+        if entity_words and w_lower in _PASS_THROUGH_SET:
+            entity_words.append(w)
+            i += 1
+            continue
+
+        # Accept words that start with a capital letter OR are all-caps tokens
+        # (handles CORDENTAL, DECA, SIMKO, etc.)
+        if w[0].isupper() or w.isupper():
+            entity_words.append(w)
+            i += 1
+        else:
+            # Lowercase word that is not an aux/verb — entity has ended
+            break
+
+    if entity_words:
+        candidate = " ".join(entity_words).strip()
+        # Must be multi-word; reject single generic words
+        if len(entity_words) >= 2 and len(candidate) <= 60:
             log.debug("Fallback platform extracted: %s", candidate)
             return candidate
 
