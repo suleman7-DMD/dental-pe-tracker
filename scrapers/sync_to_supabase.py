@@ -53,6 +53,8 @@ from scrapers.database import (
     ZipOverview,
     ZipQualitativeIntel,
     PracticeIntel,
+    PracticeSignal,
+    ZipSignal,
 )
 from scrapers.pipeline_logger import log_scrape_start, log_scrape_complete, log_scrape_error
 from scrapers.logger_config import get_logger
@@ -103,6 +105,8 @@ MIN_ROWS_THRESHOLD = {
     "platforms":              20,   # 140 live rows; floor catches catastrophic source loss. Fresh install must manually override.
     "pe_sponsors":            10,   # 40 live rows; floor catches catastrophic source loss. Fresh install must manually override.
     "zip_overviews":           5,   # 12 live rows; floor catches catastrophic source loss. Fresh install must manually override.
+    "practice_signals":     1000,   # ~14k watched-ZIP practices expected; floor catches broken materialization.
+    "zip_signals":            50,   # 290 watched ZIPs expected; floor catches broken materialization.
 }
 
 # Tables and their sync strategy
@@ -124,6 +128,8 @@ SYNC_CONFIG = [
     {"table": "zip_overviews",    "model": ZipOverview,     "strategy": "full_replace",           "conflict_col": None},
     {"table": "zip_qualitative_intel", "model": ZipQualitativeIntel, "strategy": "full_replace", "conflict_col": None},
     {"table": "practice_intel",        "model": PracticeIntel,       "strategy": "full_replace", "conflict_col": None},
+    {"table": "practice_signals",      "model": PracticeSignal,      "strategy": "full_replace", "conflict_col": None},
+    {"table": "zip_signals",           "model": ZipSignal,           "strategy": "full_replace", "conflict_col": None},
 ]
 
 
@@ -774,12 +780,58 @@ _STRATEGY_MAP = {
 }
 
 
+def _check_script_integrity():
+    """Compare this script's on-disk sha256 to the HEAD-committed version.
+
+    Observability-only. Logs INFO on match, WARNING on drift. Never raises —
+    git unavailable or non-repo checkouts degrade to INFO "skipped". This is
+    the early-warning signal for the 2026-04-23 mirror-scraper reversion
+    class of problem: a mutated local copy of the sync script running under
+    cron without anyone noticing.
+    """
+    import hashlib
+    import subprocess
+
+    try:
+        script_path = os.path.abspath(__file__)
+        with open(script_path, "rb") as f:
+            local_hash = hashlib.sha256(f.read()).hexdigest()
+
+        repo_root = os.path.expanduser("~/dental-pe-tracker")
+        rel_path = os.path.relpath(script_path, repo_root).replace(os.sep, "/")
+
+        result = subprocess.run(
+            ["git", "show", f"HEAD:{rel_path}"],
+            cwd=repo_root,
+            capture_output=True,
+            timeout=10,
+        )
+        if result.returncode != 0:
+            err = result.stderr.decode("utf-8", errors="replace").strip()[:200]
+            log.info("sha256 integrity check skipped (git show failed): %s", err)
+            return
+
+        head_hash = hashlib.sha256(result.stdout).hexdigest()
+        if local_hash == head_hash:
+            log.info("sync_to_supabase.py matches HEAD (sha256=%s)", local_hash[:12])
+        else:
+            log.warning(
+                "sync_to_supabase.py differs from committed HEAD "
+                "(local hash: %s, head hash: %s) — investigate",
+                local_hash, head_hash,
+            )
+    except Exception as e:
+        log.info("sha256 integrity check skipped: %s", e)
+
+
 def run():
     """Run the full incremental sync from SQLite to Supabase Postgres."""
     start_time = log_scrape_start("sync_to_supabase")
     log.info("=" * 60)
     log.info("SYNC TO SUPABASE — Starting")
     log.info("=" * 60)
+
+    _check_script_integrity()
 
     try:
         pg_engine = _get_pg_engine()
