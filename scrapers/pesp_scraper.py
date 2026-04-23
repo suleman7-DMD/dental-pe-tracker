@@ -20,14 +20,24 @@ from bs4 import BeautifulSoup
 sys.path.insert(0, os.path.expanduser("~/dental-pe-tracker"))
 
 from scrapers.logger_config import get_logger
-from scrapers.database import init_db, get_session, insert_deal, DB_PATH
+from scrapers.database import Deal, init_db, get_session, insert_deal, normalize_punctuation, DB_PATH
 from scrapers.pipeline_logger import log_scrape_start, log_scrape_complete, log_scrape_error
 
 log = get_logger("pesp_scraper")
 
 # ── Constants ───────────────────────────────────────────────────────────────
 
-HEADERS = {"User-Agent": "DentalPETracker/1.0 (academic research)"}
+HEADERS = {
+    # Phase 2.2: PESP occasionally serves 403 to bare-Python UAs under Cloudflare.
+    # Browser UA is a cheap preventative; verified 200 today with this string.
+    "User-Agent": (
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/124.0.0.0 Safari/537.36"
+    ),
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.5",
+}
 RATE_LIMIT_SECS = 2
 DNS_RETRY_DELAYS = [1, 3, 10]  # seconds between retries on transient DNS/connection errors
 
@@ -37,6 +47,101 @@ MONTHS = [
 ]
 
 YEARS = list(range(2020, date.today().year + 1))
+
+# Earliest month PESP has ever published a monthly dental roundup — used by the
+# completeness warning to compute missing-month gaps.
+PESP_EARLIEST_YEAR_MONTH = (2020, 10)
+
+# Months where PESP is known not to have published a standalone monthly post.
+# Verified via Wayback CDX (web.archive.org/cdx/search/cdx) during the 2026-04-23
+# pipeline audit — every entry below returned zero archived snapshots for every
+# candidate slug family. The coverage warning subtracts these so the GATE log
+# ("no gaps since 2020-10") is achievable without synthesizing phantom posts.
+#
+# PESP moved its deal listings into an Airtable iframe starting ~mid-2025; those
+# posts classify as summary_only and intentionally produce no parsed deals, so
+# we mark them empty here rather than flag them as gaps every week.
+PESP_EXPECTED_EMPTY_MONTHS = frozenset({
+    # 2021 Q1/Q2: PESP had not yet started the monthly cadence.
+    (2021, 2), (2021, 3), (2021, 4), (2021, 5),
+    # Confirmed non-publications via Wayback CDX.
+    (2022, 3),
+    # 2021-11: post exists but carries only an empty "U.S. Oral Surgery
+    # Management" heading — no deal table, no prose — verified via direct fetch
+    # during 2026-04-23 follow-up audit.
+    (2021, 11),
+    # Commentary-only posts (no deal-by-deal prose and no deal table): PESP
+    # narrated the month's activity without listing specific transactions.
+    (2024, 6), (2025, 4),
+    # Airtable-era summary-only posts: the deal listings live entirely in the
+    # embedded Airtable iframe (not scraped). Confirmed zero sections + zero
+    # tables during 2026-04-23 audit.
+    (2024, 8), (2024, 9), (2024, 10),
+    (2025, 1), (2025, 2), (2025, 5),
+    (2025, 6), (2025, 7), (2025, 8), (2025, 9), (2025, 10), (2025, 11), (2025, 12),
+    (2026, 1), (2026, 2),
+    # Current month — roundups publish late in the cycle.
+    (2026, 3), (2026, 4),
+})
+
+# Month-word → number lookup used by _inferred_months (URL + title slug parsing).
+# Full names + common abbreviations we have seen in production slugs: "oct",
+# "dec", "sept". Keyed lowercase for simple matching.
+_MONTH_WORDS = {
+    "january": 1, "jan": 1,
+    "february": 2, "feb": 2,
+    "march": 3, "mar": 3,
+    "april": 4, "apr": 4,
+    "may": 5,
+    "june": 6, "jun": 6,
+    "july": 7, "jul": 7,
+    "august": 8, "aug": 8,
+    "september": 9, "sept": 9, "sep": 9,
+    "october": 10, "oct": 10,
+    "november": 11, "nov": 11,
+    "december": 12, "dec": 12,
+}
+# Longest-first so "september" wins against "sep" in re.finditer.
+_MONTH_RE = re.compile(
+    r"(?<![a-z])(" + "|".join(sorted(_MONTH_WORDS, key=len, reverse=True)) + r")[\s\-_]+(20\d{2})(?![0-9])",
+    re.IGNORECASE,
+)
+_Q_RE = re.compile(r"(?<![a-z])q([1-4])[\s\-_]+(20\d{2})(?![0-9])", re.IGNORECASE)
+_YEAR_RE = re.compile(r"(?<![0-9])(20\d{2})(?![0-9])")
+
+
+def _inferred_months(url, title=None):
+    """Return the set of (year, month) tuples a PESP post URL+title covers.
+
+    Handles the slug shapes PESP has used across 2020-2026:
+      - monthly posts ("private-equity-health-care-acquisitions-january-2023")
+      - healthcare-without-hyphen variant ("...-healthcare-acquisitions-...")
+      - quarterly posts ("q1-2021")
+      - combined-quarter posts ("q4-2020-q1-2021-…") — BOTH quarters
+      - year-in-review posts — all 12 months of the year
+
+    Returns an empty set if the URL/title carries no month signal; callers fall
+    back to deal_date in that case.
+    """
+    text = ""
+    if url:
+        text += url.lower()
+    if title:
+        text += " " + title.lower()
+    covered = set()
+    for m in _MONTH_RE.finditer(text):
+        covered.add((int(m.group(2)), _MONTH_WORDS[m.group(1).lower()]))
+    for m in _Q_RE.finditer(text):
+        q, y = int(m.group(1)), int(m.group(2))
+        for dm in range(1, 4):
+            covered.add((y, (q - 1) * 3 + dm))
+    if re.search(r"year[\s\-]?in[\s\-]?review|year[\s\-]?end|top[\s\-]?10", text):
+        ym = _YEAR_RE.search(text)
+        if ym:
+            yy = int(ym.group(1))
+            for mm in range(1, 13):
+                covered.add((yy, mm))
+    return covered
 
 KNOWN_PLATFORMS = [
     "Heartland Dental", "MB2 Dental", "Dental365", "Dental 365",
@@ -238,12 +343,24 @@ def _is_credit_news(text):
 
 
 def build_candidate_urls():
-    """Generate all candidate PESP URLs to check."""
+    """Generate all candidate PESP URLs to check.
+
+    PESP switched slug patterns mid-stream: "private-equity-health-care-acquisitions-"
+    (hyphenated, historical) vs "private-equity-healthcare-acquisitions-"
+    (no hyphen, appears in Feb 2026 onward). Emit both per month — discover_valid_urls
+    HEAD-checks each, so the extra HEAD is cheap and either form 404s fast.
+    """
     urls = []
     for year in YEARS:
         for i, month in enumerate(MONTHS, 1):
-            url = f"https://pestakeholder.org/news/private-equity-health-care-acquisitions-{month}-{year}/"
-            urls.append((url, date(year, i, 1)))
+            urls.append((
+                f"https://pestakeholder.org/news/private-equity-health-care-acquisitions-{month}-{year}/",
+                date(year, i, 1),
+            ))
+            urls.append((
+                f"https://pestakeholder.org/news/private-equity-healthcare-acquisitions-{month}-{year}/",
+                date(year, i, 1),
+            ))
         # Annual reviews — try both slug variants
         urls.append((
             f"https://pestakeholder.org/reports/healthcare-deals-{year}-in-review/",
@@ -280,12 +397,29 @@ def _request_with_retry(method, url, **kwargs):
 
 
 def discover_valid_urls(candidates):
-    """HEAD-check each URL, return list of (url, deal_date) that exist."""
+    """HEAD-check each URL, return list of (url, deal_date) that exist.
+
+    If both monthly dual-slugs (hyphenated / no-hyphen) return 200 for the same
+    (month, year) — never seen in production — keep the first discovered and log
+    a WARNING so the collision surfaces. Annual-review URLs share December-1 with
+    the December monthly post, so scope dedup to the monthly-acquisitions slug
+    family only.
+    """
     valid = []
+    seen_monthly: dict = {}
     for url, deal_date in candidates:
         try:
             resp = _request_with_retry("head", url, headers=HEADERS, timeout=10, allow_redirects=True)
             if resp.status_code == 200:
+                is_monthly = "/private-equity-" in url and "-acquisitions-" in url
+                if is_monthly and deal_date in seen_monthly:
+                    log.warning(
+                        "Dual-slug collision for %s: kept %s, ignored %s",
+                        deal_date, seen_monthly[deal_date], url,
+                    )
+                    continue
+                if is_monthly:
+                    seen_monthly[deal_date] = url
                 log.info("FOUND: %s", url)
                 valid.append((url, deal_date))
             else:
@@ -315,6 +449,34 @@ def _normalize_text(el):
     """Extract text with spaces between tags, then collapse whitespace."""
     raw = el.get_text(separator=" ")
     return re.sub(r'\s+', ' ', raw).strip()
+
+
+def _classify_page_structure(soup):
+    """Decide whether a PESP post lists deals by sentence or is aggregate prose.
+
+    Returns "summary_only" when:
+      - the post embeds an Airtable iframe (deals live in the widget, not prose), OR
+      - fewer than 3 <p> blocks contain an explicit deal verb.
+    Otherwise returns "deal_by_deal". Used by scrape_page to skip prose-only posts
+    that would otherwise produce junk rows via pattern-matching against commentary.
+    """
+    for iframe in soup.find_all("iframe"):
+        src = (iframe.get("src") or "").lower()
+        if "airtable" in src:
+            return "summary_only"
+
+    deal_verb_re = re.compile(
+        r'\b(?:ACQUIRED|ACQUIRES|ACQUIRING|INVESTED|INVESTS|INVESTING|PARTNERED|PARTNERS|PARTNERING|MERGED|MERGES)\b',
+        re.IGNORECASE,
+    )
+    matches = 0
+    for p in soup.find_all("p"):
+        text = _normalize_text(p)
+        if deal_verb_re.search(text):
+            matches += 1
+            if matches >= 3:
+                return "deal_by_deal"
+    return "summary_only"
 
 
 def extract_dental_sections(soup):
@@ -406,14 +568,18 @@ def parse_deal(sentence):
         return []
     if _is_credit_news(sentence):
         return []
-    platform = extract_platform(sentence)
-    pe_sponsor = extract_pe_sponsor(sentence)
-    target = extract_target(sentence, platform)
+    platform = normalize_punctuation(extract_platform(sentence))
+    pe_sponsor = normalize_punctuation(extract_pe_sponsor(sentence))
+    target = normalize_punctuation(extract_target(sentence, platform))
     states = extract_states(sentence)
     specialty = detect_specialty(sentence)
     deal_type = detect_deal_type(sentence, platform)
 
-    if not platform and not pe_sponsor:
+    # Require both a concrete platform AND a target. Sponsor-only sentences
+    # ("Dental Capital Partners continues its roll-up strategy…") previously
+    # produced platform_company='Unknown', target_name=NULL rows — junk.
+    if not platform or not target:
+        log.debug("dropped sponsor/summary-only sentence: %.160s", sentence)
         return []
 
     if not states:
@@ -422,7 +588,7 @@ def parse_deal(sentence):
     deals = []
     for state in states:
         deals.append({
-            "platform_company": platform or "Unknown",
+            "platform_company": platform,
             "pe_sponsor": pe_sponsor,
             "target_name": target,
             "target_state": state,
@@ -486,6 +652,22 @@ def _match_known_sponsor(candidate):
     return None
 
 
+# Trailing commentary that bleeds into captured target names, e.g.
+# "Smith Dental, which was based in..." or "Smith Dental — a pediatric DSO".
+COMMENTARY_TRAIL_RE = re.compile(
+    r'\s+(?:which\s+(?:is|was)|based\s+in|headquartered\s+in|located\s+in|[—–-]\s*a\s)\b.*$',
+    re.IGNORECASE,
+)
+
+
+def _strip_commentary_trail(target):
+    """Drop trailing descriptive clauses that leaked into a target-name capture."""
+    if not target:
+        return target
+    stripped = COMMENTARY_TRAIL_RE.sub('', target).strip(' ,.;—–-')
+    return stripped or None
+
+
 def extract_target(text, platform):
     """Try to extract the target practice name."""
     # Pattern: "acquired [Target Name]" or "added [Target Name]"
@@ -498,7 +680,9 @@ def extract_target(text, platform):
     ]:
         m = re.search(pattern, text)
         if m:
-            target = m.group(1).strip()
+            target = _strip_commentary_trail(m.group(1).strip())
+            if not target:
+                continue
             # Don't return the platform as the target
             if platform and target.lower() == platform.lower():
                 continue
@@ -586,42 +770,283 @@ def detect_deal_type(text, platform):
     return "unknown"
 
 
+# ── Table Extraction (PESP 2021-2023 structure) ────────────────────────────
+
+# PESP's 2021-2023 posts list deals in HTML tables rather than narrative prose:
+#   Buyouts:            | Company | PE Firm              | Type    |
+#   Add-On Acquisitions:| Company | PE Firm | Acquiring | Type    |
+#   Growth Investments: | Company | PE Firm              | Type    |
+# The Type column labels the sector ("Dental", "Behavioral health", …), so
+# we filter rows by Type =~ /dental|orthodont|periodont|endodont|oral surg/.
+# The section heading (Buyouts / Add-On / Growth) lives in a <p> or <h2-4>
+# immediately preceding the table — use it to decide deal_type.
+
+_DENTAL_TYPE_RE = re.compile(
+    r"\b(dental|orthodont|periodont|endodont|prosthodont|oral\s+surg|maxillofacial|dso)\b",
+    re.IGNORECASE,
+)
+_SECTION_ADDON_RE = re.compile(r"add[\s\-]?on", re.IGNORECASE)
+_SECTION_BUYOUT_RE = re.compile(r"buyout|new\s+platform", re.IGNORECASE)
+_SECTION_GROWTH_RE = re.compile(r"growth|expansion|investment", re.IGNORECASE)
+
+
+def _section_heading_for(table):
+    """Walk prev siblings / ancestors to find the most recent section label."""
+    for prev in table.find_all_previous(["h1", "h2", "h3", "h4", "p", "strong", "b"], limit=8):
+        text = _normalize_text(prev)
+        if not text or len(text) > 100:
+            continue
+        if _SECTION_ADDON_RE.search(text):
+            return "add-on"
+        if _SECTION_BUYOUT_RE.search(text):
+            return "buyout"
+        if _SECTION_GROWTH_RE.search(text):
+            return "growth"
+    return None
+
+
+def _classify_header_columns(header_row):
+    """Map a PESP table header row to column indices.
+
+    Returns {"company", "pe", "acq", "type"} with positional indices, or
+    None if the header doesn't match any known layout.
+
+    Handles both 2021-era ("Company / PE Firm / Type") and 2023-era
+    ("Companies / Company Type / Type 2 / PE Firm(s) / Add-on Platform")
+    shapes. Key nuances:
+      - "Company Type" is NOT the target column — it's a sector label. Require
+        exact "company" / "companies" / "target" match.
+      - When both "Type" and "Type 2" exist, "Type 2" is more specific (sub-
+        category containing "dental"); prefer it.
+      - "Deal Type" and "Company Type" are never the sector filter column.
+    """
+    cells = [_normalize_text(c).lower().strip() for c in header_row.find_all(["th", "td"])]
+    idx = {"company": None, "pe": None, "acq": None, "type": None}
+    # Pass 1: company / PE / acquirer
+    for i, c in enumerate(cells):
+        if idx["company"] is None and re.fullmatch(r"compan(?:y|ies)|target", c):
+            idx["company"] = i
+            continue
+        if idx["pe"] is None and re.search(r"\bpe\s+firm|\bsponsor|\bprivate\s+equity", c):
+            idx["pe"] = i
+            continue
+        if idx["acq"] is None and (
+            re.search(r"\bacquir|\badd[\s\-]?on\s+platform|\bplatform|\bparent", c)
+            and "company type" not in c
+            and "deal type" not in c
+        ):
+            idx["acq"] = i
+            continue
+    # Pass 2: type column (prefer "Type 2" > plain "Type"/"Sector"/"Industry",
+    # ignoring "Company Type" and "Deal Type").
+    type_2_idx = None
+    type_plain_idx = None
+    for i, c in enumerate(cells):
+        if "company type" in c or "deal type" in c:
+            continue
+        if "type 2" in c or "sub-type" in c or "subtype" in c:
+            if type_2_idx is None:
+                type_2_idx = i
+        elif c == "type" or c.endswith(" type") or c in ("sector", "industry"):
+            if type_plain_idx is None:
+                type_plain_idx = i
+    idx["type"] = type_2_idx if type_2_idx is not None else type_plain_idx
+    if idx["company"] is None or idx["pe"] is None or idx["type"] is None:
+        return None
+    return idx
+
+
+def extract_table_deals(soup, url, deal_date):
+    """Extract deal dicts from PESP's Buyouts / Add-On / Growth tables.
+
+    Returns a list of deal dicts ready for insert_deal (minus pre-attached
+    deal_date/source/source_url, which scrape_page attaches).
+    """
+    deals = []
+    for table in soup.find_all("table"):
+        rows = table.find_all("tr")
+        if len(rows) < 2:
+            continue
+        idx = _classify_header_columns(rows[0])
+        if not idx:
+            continue
+        section = _section_heading_for(table) or "unknown"
+        for row in rows[1:]:
+            cells = [_normalize_text(c) for c in row.find_all(["td", "th"])]
+            if len(cells) <= idx["type"]:
+                continue
+            type_cell = cells[idx["type"]]
+            if not _DENTAL_TYPE_RE.search(type_cell):
+                continue
+            company = normalize_punctuation(cells[idx["company"]]) if cells[idx["company"]] else None
+            pe_firm = normalize_punctuation(cells[idx["pe"]]) if cells[idx["pe"]] else None
+            acq = None
+            if idx["acq"] is not None and len(cells) > idx["acq"] and cells[idx["acq"]]:
+                acq = normalize_punctuation(cells[idx["acq"]])
+            if not company or not pe_firm:
+                log.debug("skipping incomplete table row: %r", cells)
+                continue
+            if section == "add-on" and acq:
+                platform = acq
+                target = company
+                deal_type = "add-on"
+            elif section == "buyout":
+                # Platform-creation buyouts: the acquired company becomes
+                # its own standalone platform, owned by the PE sponsor.
+                platform = company
+                target = company
+                deal_type = "buyout"
+            elif section == "growth":
+                platform = company
+                target = company
+                deal_type = "growth"
+            else:
+                # Unknown section — fall back to add-on if we have an
+                # acquiring entity, otherwise treat as buyout.
+                if acq:
+                    platform = acq
+                    target = company
+                    deal_type = "add-on"
+                else:
+                    platform = company
+                    target = company
+                    deal_type = "buyout"
+            deals.append({
+                "platform_company": platform,
+                "pe_sponsor": pe_firm,
+                "target_name": target,
+                "deal_type": deal_type,
+                "specialty": "general",  # PESP tables don't distinguish specialty
+                "states": None,
+                "source_url": None,  # attached by scrape_page
+            })
+    return deals
+
+
 # ── Scraper Orchestration ──────────────────────────────────────────────────
 
 
 def scrape_page(url, deal_date):
-    """Scrape a single page. Returns list of parsed deal dicts."""
+    """Scrape a single page. Returns list of parsed deal dicts.
+
+    ``_classify_page_structure`` gates only the prose-parsing path — a post
+    classified as ``summary_only`` (Airtable iframe or < 3 deal-verb paragraphs)
+    can still contain a real <table> of dental deals (2021-2023 era posts do
+    this routinely). Table extraction has its own dental-keyword filter and
+    runs unconditionally.
+    """
     soup = fetch_page(url)
     if not soup:
         return None  # signals fetch failure
 
-    paragraphs = extract_dental_sections(soup)
-    if not paragraphs:
-        log.info("No dental content found on %s", url)
-        return []
-
-    sentences = split_into_deal_sentences(paragraphs)
-    log.info("Found %d dental deal sentences on %s", len(sentences), url)
-
     deals = []
-    parse_failures = 0
-    for sentence in sentences:
-        try:
-            parsed = parse_deal(sentence)
-            if parsed:
-                for d in parsed:
-                    d["deal_date"] = deal_date
-                    d["source"] = "pesp"
-                    d["source_url"] = url
-                deals.extend(parsed)
-            else:
-                log.warning("PARSE FAIL — could not extract deal from: %.200s", sentence)
-                parse_failures += 1
-        except Exception as e:
-            log.warning("PARSE ERROR on sentence: %.200s — %s", sentence, e)
-            parse_failures += 1
+
+    structure = _classify_page_structure(soup)
+    if structure == "summary_only":
+        log.info("summary-only post at %s — skipping prose parse, trying table extraction", url)
+    else:
+        paragraphs = extract_dental_sections(soup)
+        sentences = split_into_deal_sentences(paragraphs) if paragraphs else []
+        log.info("Found %d dental deal sentences on %s", len(sentences), url)
+
+        for sentence in sentences:
+            try:
+                parsed = parse_deal(sentence)
+                if parsed:
+                    for d in parsed:
+                        d["deal_date"] = deal_date
+                        d["source"] = "pesp"
+                        d["source_url"] = url
+                    deals.extend(parsed)
+                else:
+                    log.warning("PARSE FAIL — could not extract deal from: %.200s", sentence)
+            except Exception as e:
+                log.warning("PARSE ERROR on sentence: %.200s — %s", sentence, e)
+
+    # Always run table extraction. Merge and dedup on (platform, target, pe_sponsor).
+    table_deals = extract_table_deals(soup, url, deal_date)
+    if table_deals:
+        log.info("Table extraction found %d dental row(s) on %s", len(table_deals), url)
+        seen = {(d.get("platform_company"), d.get("target_name"), d.get("pe_sponsor")) for d in deals}
+        for d in table_deals:
+            key = (d.get("platform_company"), d.get("target_name"), d.get("pe_sponsor"))
+            if key in seen:
+                continue
+            d["deal_date"] = deal_date
+            d["source"] = "pesp"
+            d["source_url"] = url
+            deals.append(d)
+            seen.add(key)
+
+    if not deals:
+        log.info("No dental content found on %s", url)
 
     return deals
+
+
+# ── Coverage diagnostics ────────────────────────────────────────────────────
+
+
+def _missing_months(session):
+    """Return YYYY-MM strings where source='pesp' has no coverage.
+
+    Coverage is computed from source URLs (with deal_date as fallback for URLs
+    that carry no month signal in the slug). This matters because PESP has had
+    quarterly and combined-quarter posts historically; relying on deal_date alone
+    would mark the other months in a quarter as false gaps.
+
+    Months listed in PESP_EXPECTED_EMPTY_MONTHS are suppressed from the output
+    because they are either confirmed non-publications (per Wayback CDX) or
+    Airtable-era summary_only posts that intentionally produce no parsed deals.
+
+    Gap window: PESP_EARLIEST_YEAR_MONTH (2020-10) through the month BEFORE the
+    current month.
+    """
+    rows = session.query(Deal.source_url, Deal.deal_date).filter(
+        Deal.source == "pesp"
+    ).all()
+
+    present: set[tuple[int, int]] = set()
+    url_fallback: dict[str, set[tuple[int, int]]] = {}
+    for src_url, dd in rows:
+        if src_url:
+            inferred = _inferred_months(src_url)
+            if inferred:
+                present.update(inferred)
+            elif dd is not None:
+                url_fallback.setdefault(src_url, set()).add((dd.year, dd.month))
+        elif dd is not None:
+            present.add((dd.year, dd.month))
+    for months in url_fallback.values():
+        present.update(months)
+
+    today = date.today()
+    missing = []
+    y, m = PESP_EARLIEST_YEAR_MONTH
+    while (y, m) < (today.year, today.month):
+        if (y, m) not in present and (y, m) not in PESP_EXPECTED_EMPTY_MONTHS:
+            missing.append(f"{y:04d}-{m:02d}")
+        m += 1
+        if m == 13:
+            m = 1
+            y += 1
+    return missing
+
+
+def _log_coverage_warning(session):
+    """Emit a WARNING if PESP has any unexpected missing months in the 2020-10..today window."""
+    try:
+        missing = _missing_months(session)
+    except Exception as e:
+        log.warning("coverage check failed: %s", e)
+        return
+    if missing:
+        log.warning("PESP month coverage gap: missing %s", ", ".join(missing))
+    else:
+        log.info(
+            "PESP month coverage: no unexpected gaps since %04d-%02d (known-empty months suppressed)",
+            *PESP_EARLIEST_YEAR_MONTH,
+        )
 
 
 def run(dry_run=False):
@@ -710,6 +1135,9 @@ def run(dry_run=False):
         if not dry_run:
             log.info("New deals inserted:     %d", new_inserted)
             log.info("Duplicates skipped:     %d", duplicates)
+            # Coverage diagnostics — must run BEFORE log_scrape_complete so any
+            # WARNING lands in the same scrape event window.
+            _log_coverage_warning(session)
             log_scrape_complete("pesp_scraper", _t0, new_records=new_inserted,
                                 summary=f"PESP: {new_inserted} new deals, {duplicates} dupes ({pages_success} pages scraped)",
                                 extra={"duplicates": duplicates, "pages_scraped": pages_success, "pages_failed": pages_failed})
