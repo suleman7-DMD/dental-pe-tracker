@@ -30,7 +30,9 @@ log = get_logger("gdn_scraper")
 HEADERS = {"User-Agent": "DentalPETracker/1.0 (academic research)"}
 RATE_LIMIT_SECS = 2
 CATEGORY_BASE = "https://www.groupdentistrynow.com/dso-group-blog/category/dso-news/dso-deals/"
-MAX_PAGES = 10  # safety cap
+MAX_PAGES = 12  # safety cap (7 pages as of 2026-04, extra headroom for growth)
+MAX_RETRIES = 3  # retries for transient network errors (e.g. brief DNS blip)
+RETRY_BACKOFF = [3, 8, 20]  # seconds between retry attempts
 
 KNOWN_PLATFORMS = [
     "Heartland Dental", "MB2 Dental", "Dental365", "Dental 365",
@@ -191,6 +193,10 @@ def _is_roundup_link(href, text):
     """Check if a link is a DSO Deal Roundup post."""
     t = text.lower()
     h = href.lower()
+    # Exclude category/pagination index pages — they contain "dso-deals" in the
+    # path but are not individual roundup posts.
+    if "/category/" in h or re.search(r'/page/\d+/?', h):
+        return False
     # Exclude "top 10" year-end listicles BEFORE any title/URL matching,
     # BUT only if they don't also match roundup keywords (e.g.,
     # "Top 10 DSO Deal Roundup Highlights of March 2026" IS a roundup)
@@ -245,14 +251,26 @@ def extract_deal_date_from_title(title):
 
 
 def fetch_page(url):
-    """Fetch and parse a page. Returns BeautifulSoup or None."""
-    try:
-        resp = requests.get(url, headers=HEADERS, timeout=30)
-        resp.raise_for_status()
-        return BeautifulSoup(resp.text, "lxml")
-    except requests.RequestException as e:
-        log.warning("Failed to fetch %s: %s", url, e)
-        return None
+    """Fetch and parse a page, with retries for transient network errors.
+
+    Returns BeautifulSoup on success, or None after MAX_RETRIES failures.
+    All failures are transient (DNS, timeout, connection reset) — permanent
+    404s are handled upstream via resp.status_code checks.
+    """
+    for attempt in range(MAX_RETRIES + 1):
+        try:
+            resp = requests.get(url, headers=HEADERS, timeout=(10, 30))
+            resp.raise_for_status()
+            return BeautifulSoup(resp.text, "lxml")
+        except requests.RequestException as e:
+            if attempt < MAX_RETRIES:
+                wait = RETRY_BACKOFF[attempt]
+                log.warning("Fetch attempt %d/%d failed for %s: %s — retrying in %ds",
+                            attempt + 1, MAX_RETRIES, url, e, wait)
+                time.sleep(wait)
+            else:
+                log.warning("Failed to fetch %s after %d attempts: %s", url, MAX_RETRIES + 1, e)
+    return None
 
 
 def extract_title(soup):

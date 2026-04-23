@@ -39,7 +39,14 @@ JSON_HEADERS = {
     "User-Agent": "DentalPETracker/1.0 (academic research)",
     "Accept": "application/json",
 }
-RATE_LIMIT_SECS = 3
+RATE_LIMIT_SECS = 1  # reduced from 3s — polite but not excessive between DSOs
+
+# ── Timeout / Budget Constants ──────────────────────────────────────────────
+# Tune these without touching scraper logic.
+HTTP_TIMEOUT = (10, 30)          # (connect_s, read_s) — was bare int 15/30
+MAX_SUBPAGES_PER_DSO = 30        # cap sub-page visits per DSO (was 200)
+MAX_SECONDS_PER_DSO = 300        # 5-minute wall-clock budget per DSO
+MAX_SECONDS_TOTAL = 1500         # 25-minute wall-clock budget for the whole scraper
 
 # ── DSO Registry ───────────────────────────────────────────────────────────
 # Each entry: (name, location_url, scrape_method, pe_sponsor, api_url_or_notes)
@@ -239,7 +246,7 @@ def scrape_html_generic(dso_entry):
     locations = []
 
     try:
-        resp = requests.get(url, headers=HEADERS, timeout=30)
+        resp = requests.get(url, headers=HEADERS, timeout=HTTP_TIMEOUT)
         resp.raise_for_status()
     except requests.RequestException as e:
         log.warning("[%s] Failed to fetch %s: %s", name, url, e)
@@ -311,7 +318,7 @@ def scrape_html_generic(dso_entry):
         for sub_url in loc_links[:5]:
             time.sleep(1)
             try:
-                sub_resp = requests.get(sub_url, headers=HEADERS, timeout=15)
+                sub_resp = requests.get(sub_url, headers=HEADERS, timeout=HTTP_TIMEOUT)
                 sub_soup = BeautifulSoup(sub_resp.text, "lxml")
                 sub_text = sub_soup.get_text(separator="\n")
                 for m in re.finditer(r'(\d{1,5}\s+[A-Za-z][^,\n]{3,50}),\s*([A-Za-z\s\.]+),\s*([A-Z]{2})\s+(\d{5})', sub_text):
@@ -374,15 +381,21 @@ def _extract_from_jsonld(data, dso_name, source_url):
     return locations
 
 
-def scrape_html_subpages(dso_entry):
-    """Scrape by first finding location sub-page links, then visiting each."""
+def scrape_html_subpages(dso_entry, scraper_start_time=None):
+    """Scrape by first finding location sub-page links, then visiting each.
+
+    Args:
+        dso_entry: DSO registry dict.
+        scraper_start_time: time.monotonic() from the top-level run() for the
+            whole-scraper budget check. Pass None to skip that check.
+    """
     name = dso_entry["name"]
     index_url = dso_entry.get("index_url", dso_entry["url"])
     link_pattern = dso_entry.get("link_pattern", r'/location')
     locations = []
 
     try:
-        resp = requests.get(index_url, headers=HEADERS, timeout=30)
+        resp = requests.get(index_url, headers=HEADERS, timeout=HTTP_TIMEOUT)
         resp.raise_for_status()
     except requests.RequestException as e:
         log.warning("[%s] Failed to fetch index %s: %s", name, index_url, e)
@@ -402,12 +415,34 @@ def scrape_html_subpages(dso_entry):
 
     log.info("[%s] Found %d location sub-page links", name, len(sub_urls))
 
-    # Visit each sub-page (up to 200)
-    for i, sub_url in enumerate(sorted(sub_urls)[:200]):
+    # Visit each sub-page — capped at MAX_SUBPAGES_PER_DSO (was 200)
+    dso_start = time.monotonic()
+    capped_urls = sorted(sub_urls)[:MAX_SUBPAGES_PER_DSO]
+    for i, sub_url in enumerate(capped_urls):
         if i > 0 and i % 10 == 0:
-            log.info("[%s] Scraped %d/%d sub-pages...", name, i, len(sub_urls))
+            log.info("[%s] Scraped %d/%d sub-pages...", name, i, len(capped_urls))
+
+        # Per-DSO wall-clock budget check
+        dso_elapsed = time.monotonic() - dso_start
+        if dso_elapsed > MAX_SECONDS_PER_DSO:
+            log.warning(
+                "[%s] Per-DSO budget exceeded (%.0fs > %ds) after %d/%d sub-pages — aborting this DSO",
+                name, dso_elapsed, MAX_SECONDS_PER_DSO, i, len(capped_urls),
+            )
+            break
+
+        # Whole-scraper budget check
+        if scraper_start_time is not None:
+            total_elapsed = time.monotonic() - scraper_start_time
+            if total_elapsed > MAX_SECONDS_TOTAL:
+                log.warning(
+                    "[%s] Whole-scraper budget exceeded (%.0fs > %ds) — aborting remaining sub-pages",
+                    name, total_elapsed, MAX_SECONDS_TOTAL,
+                )
+                break
+
         try:
-            sub_resp = requests.get(sub_url, headers=HEADERS, timeout=15)
+            sub_resp = requests.get(sub_url, headers=HEADERS, timeout=HTTP_TIMEOUT)
             sub_resp.raise_for_status()
         except requests.RequestException:
             continue
@@ -444,7 +479,7 @@ def scrape_html_subpages(dso_entry):
             if phone_m and locations and locations[-1]["source_url"] == sub_url:
                 locations[-1]["phone"] = phone_m.group(0)
 
-        time.sleep(1)  # polite rate limit for sub-pages
+        time.sleep(1)  # polite rate limit between sub-pages
 
     # Deduplicate by address+zip
     seen = set()
@@ -468,7 +503,7 @@ def scrape_json_api(dso_entry):
 
     locations = []
     try:
-        resp = requests.get(api_url, headers=JSON_HEADERS, timeout=30)
+        resp = requests.get(api_url, headers=JSON_HEADERS, timeout=HTTP_TIMEOUT)
         resp.raise_for_status()
         data = resp.json()
     except requests.RequestException as e:
@@ -612,7 +647,7 @@ def match_locations_to_practices(session, locations, dso_entry, dry_run=False):
 # ── Main Orchestration ──────────────────────────────────────────────────────
 
 
-def scrape_dso(dso_entry):
+def scrape_dso(dso_entry, scraper_start_time=None):
     """Scrape a single DSO. Returns (locations_list, method_used)."""
     name = dso_entry["name"]
     method = dso_entry.get("method", "html")
@@ -626,7 +661,7 @@ def scrape_dso(dso_entry):
     if method == "json_api":
         locations = scrape_json_api(dso_entry)
     elif method == "html_subpages":
-        locations = scrape_html_subpages(dso_entry)
+        locations = scrape_html_subpages(dso_entry, scraper_start_time=scraper_start_time)
     else:
         locations = scrape_html_generic(dso_entry)
 
@@ -652,6 +687,10 @@ def run(dry_run=False, dso_name_filter=None):
         if not dsos_to_scrape:
             log.error("No DSO found matching '%s'", dso_name_filter)
             print(f"Available DSOs: {', '.join(d['name'] for d in DSO_REGISTRY)}")
+            log_scrape_complete("adso_scraper", _t0, new_records=0, updated_records=0,
+                                summary="ADSO: no DSO matched filter — nothing scraped")
+            if session:
+                session.close()
             return
 
     # Stats
@@ -662,9 +701,20 @@ def run(dry_run=False, dso_name_filter=None):
     total_new_affiliations = 0
     needs_browser_list = []
 
+    scraper_start = time.monotonic()
+
     try:
         for dso_entry in dsos_to_scrape:
-            locations, method = scrape_dso(dso_entry)
+            # Whole-scraper budget: if we're already over MAX_SECONDS_TOTAL, stop now
+            total_elapsed = time.monotonic() - scraper_start
+            if total_elapsed > MAX_SECONDS_TOTAL:
+                log.warning(
+                    "Whole-scraper budget exceeded (%.0fs > %ds) — skipping remaining DSOs",
+                    total_elapsed, MAX_SECONDS_TOTAL,
+                )
+                break
+
+            locations, method = scrape_dso(dso_entry, scraper_start_time=scraper_start)
 
             if method == "needs_browser":
                 total_skipped += 1
@@ -726,23 +776,33 @@ def run(dry_run=False, dso_name_filter=None):
         log.info("Skipped (needs browser):      %d DSOs", total_skipped)
         log.info("=" * 60)
 
-        if not dry_run:
-            log_scrape_complete("adso_scraper", _t0, new_records=total_locations,
-                                updated_records=total_new_affiliations,
-                                summary=f"ADSO: {total_locations} locations from {total_scraped} DSOs, {total_new_affiliations} new affiliations, {total_skipped} skipped (needs browser)",
-                                extra={"dsos_scraped": total_scraped, "dsos_skipped": total_skipped,
-                                       "locations_matched": total_matched})
-
         if needs_browser_list:
             print("\nDSOs requiring Playwright/browser scraping:")
             for d in needs_browser_list:
                 print(f"  - {d['name']:30} {d['url']}")
                 if d.get("notes"):
                     print(f"    Note: {d['notes']}")
+
     except Exception as e:
         log_scrape_error("adso_scraper", str(e), _t0)
         raise
     finally:
+        # log_scrape_complete is in finally so it fires even on KeyboardInterrupt / OS kill
+        log_scrape_complete(
+            "adso_scraper", _t0,
+            new_records=total_locations,
+            updated_records=total_new_affiliations,
+            summary=(
+                f"ADSO: {total_locations} locations from {total_scraped} DSOs, "
+                f"{total_new_affiliations} new affiliations, "
+                f"{total_skipped} skipped (needs browser)"
+            ),
+            extra={
+                "dsos_scraped": total_scraped,
+                "dsos_skipped": total_skipped,
+                "locations_matched": total_matched,
+            },
+        )
         if session:
             session.close()
 

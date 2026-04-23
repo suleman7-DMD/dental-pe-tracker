@@ -29,6 +29,7 @@ log = get_logger("pesp_scraper")
 
 HEADERS = {"User-Agent": "DentalPETracker/1.0 (academic research)"}
 RATE_LIMIT_SECS = 2
+DNS_RETRY_DELAYS = [1, 3, 10]  # seconds between retries on transient DNS/connection errors
 
 MONTHS = [
     "january", "february", "march", "april", "may", "june",
@@ -72,6 +73,10 @@ KNOWN_PLATFORMS = [
     "Today's Dental Network",
     "Vitana Pediatric & Orthodontic Partners",
     "Dental Whale", "Shore Dental",
+    # Additional platforms observed in PESP reports
+    "Image Specialty Partners", "Mosaic Dental", "Dental Haus",
+    "DCA", "Great Orthodontics", "Pinnacle Dental Partners",
+    "Harmony Dental Partners", "Ascend Dental Solutions",
 ]
 
 KNOWN_PE_SPONSORS = [
@@ -91,6 +96,7 @@ KNOWN_PE_SPONSORS = [
     "JLL Partners", "Sentinel Capital Partners", "Sun Capital Partners",
     "Court Square Capital", "Alpine Investors",
     "Kohlberg & Company", "Thomas H. Lee Partners", "THL",
+    "Clayton, Dubilier & Rice", "CD&R",
 ]
 
 STATE_MAP = {
@@ -128,6 +134,81 @@ CREDIT_KEYWORDS = [
     "leverage ratio", "ebitda multiple", "provided financing",
     "term loan", "revolver", "capital structure",
 ]
+
+
+# Phrases that indicate aggregate industry commentary, NOT a specific deal.
+# Sentences containing these are pre-filtered BEFORE parse_deal() is called.
+COMMENTARY_PATTERNS = [
+    # Aggregate counts ("at least N dental companies", "N add-on acquisitions")
+    r"at least \d+ (?:dental|outpatient|healthcare)",
+    r"\d+ add-on acquisitions",
+    r"\d+ deals? in \w+",
+    r"\d+ (?:buyouts?|growth investments?|add-ons?)",
+    # PESP self-referential
+    r"\bpesp\b.{0,40}(?:report|document|identif|highlight|publish)",
+    r"pesp reported how",
+    r"pesp's \d{4} report",
+    # "study found", "article highlighted", "researchers note", "critics"
+    r"\bstudy found\b",
+    r"\barticle (?:highlighted|reported)\b",
+    r"\bresearchers? note\b",
+    r"\bcritics? (?:have|claim)\b",
+    r"\bexpos[eé]\b",
+    r"\balleged\b",
+    # Structural/aggregate commentary openings
+    r"^dental care (?:was|saw|has|had|is)\b",
+    r"^dental care (?:sector|industry|compan)",
+    r"^(?:last year|in \d{4})[,\s]",
+    r"^(?:seven|nine|ten|eleven|twelve|over half|more than half) of the",
+    r"^(?:home health|outpatient care sector|january also|continued expansion)",
+    r"^(?:both the dso|the dso industry|the risks? to|private equity has been|private equity firms? (?:have|dominate|spent|may))",
+    r"^even amidst\b",
+    r"^deeper dives\b",
+    r"^a (?:similar|2021|month prior)\b",
+    r"^for example,\b",
+    r"^(?:over|more than) the (?:past|last|prior)",
+    # Legislation / policy commentary
+    r"laws? and proposed legislation",
+    r"state legislative activity",
+    # Generic PE risk commentary
+    r"may come with risks",
+    r"risks? to (?:quality of|patient)\b",
+    r"profit-driven practices? in order to",
+    # Additional boilerplate seen in PESP background sections
+    r"^private.equity.owned dental companies have been found",
+    r"^private equity(?:-owned)? (?:firms? )?(?:owned|dominated)",
+    r"^because private equity firms? aim",
+    r"^as of \d{4}, private equity",
+    r"^these deals are primarily add-on acquisitions",
+    r"^such acquisitions allow",
+    r"^despite challenges in exit",
+    r"^as (?:medical|msos|dental)",
+    r"^pe firms? may believe",
+    r"^private equity grows investment",
+    r"^see our \d{4} report",
+    r"dental care accounted for the (?:second|first|third|highest)",
+    r"^the ftc (?:and|or)",
+    r"^a recent research study",
+    r"private equity firms? owned \d+ of the top \d+",
+    r"^some private equity",
+    r"pesp (?:recently|periodically|covers)",
+    # More background phrases
+    r"^according to the report",
+    r"^the study also found",
+    r"^for example, \w",
+    r"growth among dental specialties",
+    r"\ballege",
+]
+
+_COMMENTARY_RE = re.compile(
+    "(?:" + "|".join(COMMENTARY_PATTERNS) + ")",
+    re.IGNORECASE,
+)
+
+
+def _is_commentary(text):
+    """Return True if text is aggregate/background commentary, not a specific deal."""
+    return bool(_COMMENTARY_RE.search(text))
 
 
 def _is_international(text):
@@ -172,12 +253,35 @@ def build_candidate_urls():
     return urls
 
 
+def _request_with_retry(method, url, **kwargs):
+    """Wrap requests.head/get with retry logic for transient DNS/connection errors."""
+    last_exc = None
+    for attempt, delay in enumerate([0] + DNS_RETRY_DELAYS):
+        if delay:
+            log.debug("Retry %d for %s (sleeping %ds)", attempt, url, delay)
+            time.sleep(delay)
+        try:
+            fn = requests.head if method == "head" else requests.get
+            return fn(url, **kwargs)
+        except requests.exceptions.ConnectionError as e:
+            last_exc = e
+            err_str = str(e)
+            # Only retry on transient DNS / connection reset errors
+            if "NameResolutionError" in err_str or "Failed to resolve" in err_str or "ConnectionReset" in err_str:
+                log.debug("Transient connection error on attempt %d: %s", attempt + 1, err_str[:120])
+                continue
+            raise  # non-transient: propagate immediately
+        except requests.RequestException:
+            raise  # timeouts, HTTP errors etc — don't retry
+    raise last_exc  # exhausted retries
+
+
 def discover_valid_urls(candidates):
     """HEAD-check each URL, return list of (url, deal_date) that exist."""
     valid = []
     for url, deal_date in candidates:
         try:
-            resp = requests.head(url, headers=HEADERS, timeout=10, allow_redirects=True)
+            resp = _request_with_retry("head", url, headers=HEADERS, timeout=10, allow_redirects=True)
             if resp.status_code == 200:
                 log.info("FOUND: %s", url)
                 valid.append((url, deal_date))
@@ -196,7 +300,7 @@ def discover_valid_urls(candidates):
 def fetch_page(url):
     """Fetch and parse a page. Returns BeautifulSoup or None."""
     try:
-        resp = requests.get(url, headers=HEADERS, timeout=30)
+        resp = _request_with_retry("get", url, headers=HEADERS, timeout=30)
         resp.raise_for_status()
         return BeautifulSoup(resp.text, "lxml")
     except requests.RequestException as e:
@@ -283,7 +387,10 @@ def split_into_deal_sentences(paragraphs):
 
 
 def _is_deal_sentence(text):
-    """Does this sentence describe an acquisition/deal?"""
+    """Does this sentence describe a specific acquisition/deal (not aggregate commentary)?"""
+    # Pre-filter: reject known commentary patterns before expensive checks
+    if _is_commentary(text):
+        return False
     t = text.lower()
     has_verb = bool(re.search(r"\bacquir|\bmerge|\badd-on|\bbought|\bpurchas|\binvest|\bpartner|\bexpand|\bopen|\blaunch|\bgrowth|\brecap|\bbacked\b|\bowned\b|\bportfolio\b|\bplatform\b", t))
     has_entity = any(p.lower() in t for p in KNOWN_PLATFORMS) or any(s.lower() in t for s in KNOWN_PE_SPONSORS)

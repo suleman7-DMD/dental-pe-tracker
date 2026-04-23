@@ -35,6 +35,7 @@ except ImportError:
                     os.environ.setdefault(k.strip(), v.strip())
 
 from sqlalchemy import create_engine, text, inspect
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import sessionmaker
 
 from scrapers.database import (
@@ -130,11 +131,24 @@ CREATE TABLE IF NOT EXISTS sync_metadata (
 )
 """
 
+_PIPELINE_EVENTS_DDL = """
+CREATE TABLE IF NOT EXISTS pipeline_events (
+    id SERIAL PRIMARY KEY,
+    timestamp TEXT NOT NULL,
+    source TEXT NOT NULL,
+    event TEXT,
+    status TEXT,
+    summary TEXT,
+    details JSONB
+)
+"""
+
 
 def _ensure_sync_metadata(pg_engine):
-    """Create the sync_metadata table if it doesn't exist."""
+    """Create the sync_metadata and pipeline_events tables if they don't exist."""
     with pg_engine.connect() as conn:
         conn.execute(text(_SYNC_METADATA_DDL))
+        conn.execute(text(_PIPELINE_EVENTS_DDL))
         conn.commit()
 
 
@@ -282,16 +296,41 @@ def _sync_incremental_updated_at(sqlite_session, pg_engine, config):
     upsert_sql = _build_upsert_sql(table_name, columns, conflict_col)
     total_synced = 0
 
+    # Per-row savepoints: deals has a secondary partial UNIQUE INDEX
+    # (uix_deal_no_dup on platform_company+target_name+deal_date) that isn't
+    # the ON CONFLICT target. A duplicate hitting that index raises
+    # IntegrityError and, without a savepoint, aborts the whole transaction
+    # — losing every queued row in the batch. begin_nested() scopes the
+    # failure so we skip the dup and continue.
+    total_skipped = 0
     for i in range(0, len(rows), BATCH_SIZE):
         batch = rows[i:i + BATCH_SIZE]
-        dicts = [_model_to_dict(r) for r in batch]
+        dicts = [(r, _model_to_dict(r)) for r in batch]
+        batch_synced = 0
+        batch_skipped = 0
         with pg_engine.connect() as conn:
-            for d in dicts:
-                conn.execute(text(upsert_sql), d)
+            for r, d in dicts:
+                sp = conn.begin_nested()
+                try:
+                    conn.execute(text(upsert_sql), d)
+                    sp.commit()
+                    batch_synced += 1
+                except IntegrityError as e:
+                    sp.rollback()
+                    batch_skipped += 1
+                    log.warning(
+                        "[%s] id=%s skipped (IntegrityError: %s)",
+                        table_name, getattr(r, "id", "?"),
+                        str(e.orig).split("\n")[0][:200],
+                    )
             conn.commit()
-        total_synced += len(batch)
-        log.info("[%s] Batch %d-%d committed (%d/%d)",
-                 table_name, i, i + len(batch), total_synced, len(rows))
+        total_synced += batch_synced
+        total_skipped += batch_skipped
+        log.info("[%s] Batch %d-%d committed (%d synced, %d skipped; %d/%d)",
+                 table_name, i, i + len(batch), batch_synced, batch_skipped,
+                 total_synced, len(rows))
+    if total_skipped:
+        log.info("[%s] %d duplicates skipped via savepoint", table_name, total_skipped)
 
     # Track the max updated_at we synced
     max_updated_at = max(
@@ -369,21 +408,44 @@ def _sync_incremental_id(sqlite_session, pg_engine, config):
 
     upsert_sql = _build_upsert_sql(table_name, columns, conflict_col)
 
+    # Per-row savepoints: deals has a secondary partial UNIQUE INDEX
+    # (uix_deal_no_dup on platform_company+target_name+deal_date) that isn't
+    # the ON CONFLICT target. A duplicate hitting that index raises
+    # IntegrityError and, without a savepoint, aborts the whole transaction
+    # — losing every queued row. begin_nested() scopes the failure so we
+    # skip the dup and continue with the rest.
+    inserted = 0
+    skipped = 0
     with pg_engine.connect() as conn:
         for r in rows:
             d = _model_to_dict(r)
-            conn.execute(text(upsert_sql), d)
+            sp = conn.begin_nested()
+            try:
+                conn.execute(text(upsert_sql), d)
+                sp.commit()
+                inserted += 1
+            except IntegrityError as e:
+                sp.rollback()
+                skipped += 1
+                log.warning(
+                    "[%s] id=%s skipped (IntegrityError: %s)",
+                    table_name, getattr(r, "id", "?"),
+                    str(e.orig).split("\n")[0][:200],
+                )
         conn.commit()
+
+    if skipped:
+        log.info("[%s] Inserted %d, skipped %d duplicates", table_name, inserted, skipped)
 
     max_id = max(r.id for r in rows)
     _update_sync_state(
         pg_engine, table_name,
-        rows_synced=len(rows),
+        rows_synced=inserted,
         sync_type="incremental_id",
         last_sync_value=str(max_id),
-        notes=f"Synced {len(rows)} rows, max id={max_id}",
+        notes=f"Synced {inserted} rows ({skipped} dup-skipped), max id={max_id}",
     )
-    return len(rows)
+    return inserted
 
 
 def _sync_full_replace(sqlite_session, pg_engine, config):

@@ -31,31 +31,54 @@ fi
 run_step() {
     local step="$1"
     local cmd="$2"
+    local timeout_min="${3:-15}"   # default 15 minutes per step
+    local timeout_sec=$(( timeout_min * 60 ))
     echo "" | tee -a "$LOGFILE"
-    echo "$step" | tee -a "$LOGFILE"
-    if $cmd 2>&1 | tee -a "$LOGFILE"; then
-        true
-    else
-        echo "  WARNING: $step had errors (exit code: ${PIPESTATUS[0]}). Continuing." | tee -a "$LOGFILE"
+    echo "$step (timeout: ${timeout_min}m)" | tee -a "$LOGFILE"
+    # Run cmd in background so we can kill it if it hangs.
+    # set -o pipefail inside the subshell ensures cmd failure propagates through the pipe.
+    ( set -o pipefail; $cmd 2>&1 | tee -a "$LOGFILE" ) &
+    local bgpid=$!
+    local elapsed=0
+    while kill -0 $bgpid 2>/dev/null; do
+        sleep 10
+        elapsed=$(( elapsed + 10 ))
+        if [ $elapsed -ge $timeout_sec ]; then
+            echo "  TIMEOUT: $step exceeded ${timeout_min}m — killing pid $bgpid and descendants" | tee -a "$LOGFILE"
+            # kill $bgpid alone only terminates the subshell wrapper; the Python child is a
+            # separate process in the subshell's pipe and would be orphaned. pkill -P kills
+            # the subshell's children (python + tee) so the scraper actually stops.
+            pkill -TERM -P $bgpid 2>/dev/null
+            kill -TERM $bgpid 2>/dev/null
+            sleep 30
+            pkill -KILL -P $bgpid 2>/dev/null
+            kill -KILL $bgpid 2>/dev/null
+            return 124
+        fi
+    done
+    wait $bgpid
+    local exit_code=$?
+    if [ $exit_code -ne 0 ]; then
+        echo "  WARNING: $step had errors (exit code: $exit_code). Continuing." | tee -a "$LOGFILE"
     fi
 }
 
-run_step "[2/10] Scraping PESP..."                "$PYTHON $PROJECT/scrapers/pesp_scraper.py"
-run_step "[3/10] Scraping GDN..."                 "$PYTHON $PROJECT/scrapers/gdn_scraper.py"
-run_step "[4/10] Importing PitchBook CSVs..."     "$PYTHON $PROJECT/scrapers/pitchbook_importer.py --auto"
-run_step "[5/10] Scraping ADSO locations..."       "$PYTHON $PROJECT/scrapers/adso_location_scraper.py"
-run_step "[6/10] Checking ADA HPI for updates..."  "$PYTHON $PROJECT/scrapers/ada_hpi_downloader.py"
-run_step "[7/10] Classifying DSO affiliations..."  "$PYTHON $PROJECT/scrapers/dso_classifier.py"
-run_step "[8/10] Merging and scoring..."           "$PYTHON $PROJECT/scrapers/merge_and_score.py"
+run_step "[2/10] Scraping PESP..."                "$PYTHON $PROJECT/scrapers/pesp_scraper.py"              15
+run_step "[3/10] Scraping GDN..."                 "$PYTHON $PROJECT/scrapers/gdn_scraper.py"               15
+run_step "[4/10] Importing PitchBook CSVs..."     "$PYTHON $PROJECT/scrapers/pitchbook_importer.py --auto"  5
+run_step "[5/10] Scraping ADSO locations..."       "$PYTHON $PROJECT/scrapers/adso_location_scraper.py"    30
+run_step "[6/10] Checking ADA HPI for updates..."  "$PYTHON $PROJECT/scrapers/ada_hpi_downloader.py"       10
+run_step "[7/10] Classifying DSO affiliations..."  "$PYTHON $PROJECT/scrapers/dso_classifier.py"           15
+run_step "[8/10] Merging and scoring..."           "$PYTHON $PROJECT/scrapers/merge_and_score.py"          10
 
 # Weekly qualitative research (only if ANTHROPIC_API_KEY is configured)
 if [ -n "$ANTHROPIC_API_KEY" ]; then
-    run_step "[9/10] Weekly qualitative research..." "$PYTHON $PROJECT/scrapers/weekly_research.py --budget 5"
+    run_step "[9/10] Weekly qualitative research..." "$PYTHON $PROJECT/scrapers/weekly_research.py --budget 5" 15
 fi
 
 # Sync to Supabase (only if SUPABASE_DATABASE_URL is configured)
 if [ -n "$SUPABASE_DATABASE_URL" ]; then
-    run_step "[10/10] Syncing to Supabase..." "$PYTHON $PROJECT/scrapers/sync_to_supabase.py"
+    run_step "[10/10] Syncing to Supabase..." "$PYTHON $PROJECT/scrapers/sync_to_supabase.py" 30
 fi
 
 echo "" | tee -a "$LOGFILE"
