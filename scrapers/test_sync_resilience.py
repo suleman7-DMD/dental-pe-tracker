@@ -360,6 +360,249 @@ class TestRunVerifiedResults(unittest.TestCase):
 
 
 # ---------------------------------------------------------------------------
+# Test 5 — Phase 1.1: watermark reflects committed rows only, not full batch
+# ---------------------------------------------------------------------------
+
+class TestWatermarkFromCommittedOnly(unittest.TestCase):
+    """On graceful shutdown the watermark must not advance past uncommitted rows."""
+
+    def setUp(self):
+        sync_mod._shutdown_requested = False
+
+    def tearDown(self):
+        sync_mod._shutdown_requested = False
+
+    def test_watermark_from_committed_only_updated_at(self):
+        """_sync_incremental_updated_at writes watermark = max committed row's updated_at,
+        not max fetched row's updated_at, when shutdown fires mid-batch."""
+        import datetime as _dt
+        # Use BATCH_SIZE = 3 via monkeypatch so 10 rows span 4 batches
+        rows = []
+        for i in range(10):
+            r = MagicMock()
+            r.id = i + 1
+            r.updated_at = _dt.datetime(2026, 4, 23, 12, 0, i)
+            rows.append(r)
+
+        session = _make_fake_session(rows)
+        engine = _make_fake_engine(0)
+
+        # After 3 rows commit, set shutdown flag; batch 2 should not start
+        committed_counter = {"n": 0}
+
+        class _FakeConn:
+            def __init__(self):
+                self._sp = MagicMock()
+            def execute(self, *a, **kw):
+                committed_counter["n"] += 1
+                if committed_counter["n"] == 3:
+                    sync_mod._shutdown_requested = True
+                return MagicMock()
+            def begin_nested(self):
+                return self._sp
+            def commit(self):
+                pass
+            def __enter__(self):
+                return self
+            def __exit__(self, *a):
+                return False
+
+        engine.connect.return_value = _FakeConn()
+
+        captured = {}
+
+        def _capture_update(pg_engine, table_name, rows_synced, sync_type, last_sync_value=None, notes=None):
+            captured["last_sync_value"] = last_sync_value
+            captured["rows_synced"] = rows_synced
+
+        config = {"table": "deals", "model": MagicMock(), "conflict_col": "id"}
+
+        with patch.object(sync_mod, "_get_column_names", return_value=["id", "updated_at"]), \
+             patch.object(sync_mod, "_build_upsert_sql", return_value="INSERT ..."), \
+             patch.object(sync_mod, "_model_to_dict", return_value={"id": 1, "updated_at": "x"}), \
+             patch.object(sync_mod, "_update_sync_state", side_effect=_capture_update), \
+             patch.object(sync_mod, "_get_sync_state", return_value=None), \
+             patch.object(sync_mod, "BATCH_SIZE", 3):
+            sync_mod._sync_incremental_updated_at(session, engine, config)
+
+        # Third committed row has updated_at = 2026-04-23T12:00:02
+        self.assertIn("last_sync_value", captured,
+                      "watermark write should still fire when at least one row committed")
+        self.assertEqual(captured["last_sync_value"], "2026-04-23T12:00:02",
+                         "watermark must be max(committed) not max(fetched)")
+        self.assertEqual(captured["rows_synced"], 3,
+                         "should report 3 rows actually committed")
+        print("  PASS  Phase 1.1: watermark(updated_at) = max committed, not max fetched")
+
+    def test_watermark_from_committed_only_id(self):
+        """_sync_incremental_id writes watermark = max committed row's id, not
+        max fetched row's id, when shutdown fires mid-batch."""
+        rows = []
+        for i in range(10):
+            r = MagicMock()
+            r.id = i + 1
+            r.npi = "1234567890"
+            rows.append(r)
+
+        # Session returns rows only (filter_watched_zips not configured)
+        session = MagicMock()
+        q = MagicMock()
+        q.all.return_value = rows
+        q.filter.return_value = q
+        q.order_by.return_value = q
+        session.query.return_value = q
+
+        committed_counter = {"n": 0}
+
+        class _FakeConn:
+            def __init__(self):
+                self._sp = MagicMock()
+            def execute(self, *a, **kw):
+                committed_counter["n"] += 1
+                if committed_counter["n"] == 3:
+                    sync_mod._shutdown_requested = True
+                return MagicMock()
+            def begin_nested(self):
+                return self._sp
+            def commit(self):
+                pass
+            def __enter__(self):
+                return self
+            def __exit__(self, *a):
+                return False
+
+        engine = MagicMock()
+        engine.connect.return_value = _FakeConn()
+
+        captured = {}
+
+        def _capture_update(pg_engine, table_name, rows_synced, sync_type, last_sync_value=None, notes=None):
+            captured["last_sync_value"] = last_sync_value
+            captured["rows_synced"] = rows_synced
+
+        config = {"table": "practice_changes", "model": MagicMock(), "conflict_col": "id"}
+
+        with patch.object(sync_mod, "_get_column_names", return_value=["id", "npi"]), \
+             patch.object(sync_mod, "_build_upsert_sql", return_value="INSERT ..."), \
+             patch.object(sync_mod, "_model_to_dict", return_value={"id": 1, "npi": "1234567890"}), \
+             patch.object(sync_mod, "_update_sync_state", side_effect=_capture_update), \
+             patch.object(sync_mod, "_get_sync_state", return_value=None):
+            sync_mod._sync_incremental_id(session, engine, config)
+
+        self.assertIn("last_sync_value", captured,
+                      "watermark write should still fire when at least one row committed")
+        self.assertEqual(captured["last_sync_value"], "3",
+                         "watermark must be max(committed id) not max(fetched id)")
+        print("  PASS  Phase 1.1: watermark(id) = max committed, not max fetched")
+
+
+# ---------------------------------------------------------------------------
+# Test 6 — Phase 1.2: unknown IntegrityError must not be silently swallowed
+# ---------------------------------------------------------------------------
+
+class TestUnknownIntegrityErrorReraises(unittest.TestCase):
+    """Only the known partial-index duplicate is an expected skip. FK / NOT NULL
+    / other constraint violations must propagate so the batch aborts visibly."""
+
+    def setUp(self):
+        sync_mod._shutdown_requested = False
+
+    def tearDown(self):
+        sync_mod._shutdown_requested = False
+
+    def test_unknown_integrity_error_reraises(self):
+        """An IntegrityError whose constraint is NOT uix_deal_no_dup must re-raise,
+        not be logged-and-continue."""
+        r = MagicMock()
+        r.id = 1
+        r.updated_at = None
+        rows = [r]
+        session = _make_fake_session(rows)
+
+        # Build an exception that matches sqlalchemy.exc.IntegrityError shape
+        # well enough for the narrowing logic: str(e.orig) gives the constraint name.
+        def _make_ie(orig_str):
+            ie = sync_mod.IntegrityError("stmt", {}, orig_str)
+            ie.orig = orig_str  # real SQLAlchemy sets this; our stubbed Exception doesn't
+            return ie
+
+        class _FakeConn:
+            def __init__(self):
+                self._sp = MagicMock()
+            def execute(self, *a, **kw):
+                raise _make_ie("null value in column \"target_name\" violates not-null constraint")
+            def begin_nested(self):
+                return self._sp
+            def commit(self):
+                pass
+            def __enter__(self):
+                return self
+            def __exit__(self, *a):
+                return False
+
+        engine = MagicMock()
+        engine.connect.return_value = _FakeConn()
+
+        config = {"table": "deals", "model": MagicMock(), "conflict_col": "id"}
+
+        raised = False
+        with patch.object(sync_mod, "_get_column_names", return_value=["id"]), \
+             patch.object(sync_mod, "_build_upsert_sql", return_value="INSERT ..."), \
+             patch.object(sync_mod, "_model_to_dict", return_value={"id": 1}), \
+             patch.object(sync_mod, "_update_sync_state"), \
+             patch.object(sync_mod, "_get_sync_state", return_value=None):
+            try:
+                sync_mod._sync_incremental_updated_at(session, engine, config)
+            except Exception:
+                raised = True
+
+        self.assertTrue(raised,
+                        "unknown IntegrityError (NOT NULL violation) must re-raise, "
+                        "not be silently skipped")
+
+        # Also test that a uix_deal_no_dup error IS silently skipped (positive control)
+        class _FakeConnDup:
+            def __init__(self):
+                self._sp = MagicMock()
+                self._calls = 0
+            def execute(self, *a, **kw):
+                self._calls += 1
+                # First call: the upsert that raises dup. Subsequent: conn.commit etc.
+                if self._calls == 1:
+                    raise _make_ie(
+                        "duplicate key value violates unique constraint \"uix_deal_no_dup\""
+                    )
+                return MagicMock()
+            def begin_nested(self):
+                return self._sp
+            def commit(self):
+                pass
+            def __enter__(self):
+                return self
+            def __exit__(self, *a):
+                return False
+
+        engine2 = MagicMock()
+        engine2.connect.return_value = _FakeConnDup()
+        session2 = _make_fake_session(rows)
+
+        raised2 = False
+        with patch.object(sync_mod, "_get_column_names", return_value=["id"]), \
+             patch.object(sync_mod, "_build_upsert_sql", return_value="INSERT ..."), \
+             patch.object(sync_mod, "_model_to_dict", return_value={"id": 1}), \
+             patch.object(sync_mod, "_update_sync_state"), \
+             patch.object(sync_mod, "_get_sync_state", return_value=None):
+            try:
+                sync_mod._sync_incremental_updated_at(session2, engine2, config)
+            except Exception:
+                raised2 = True
+
+        self.assertFalse(raised2,
+                         "known uix_deal_no_dup IntegrityError must be silently skipped")
+        print("  PASS  Phase 1.2: NOT NULL re-raises; uix_deal_no_dup dup still silently skipped")
+
+
+# ---------------------------------------------------------------------------
 # Main runner
 # ---------------------------------------------------------------------------
 
@@ -375,6 +618,8 @@ if __name__ == "__main__":
     suite.addTests(loader.loadTestsFromTestCase(TestSignalHandler))
     suite.addTests(loader.loadTestsFromTestCase(TestPostSyncAssertion))
     suite.addTests(loader.loadTestsFromTestCase(TestRunVerifiedResults))
+    suite.addTests(loader.loadTestsFromTestCase(TestWatermarkFromCommittedOnly))
+    suite.addTests(loader.loadTestsFromTestCase(TestUnknownIntegrityErrorReraises))
 
     runner = unittest.TextTestRunner(verbosity=0, stream=open(os.devnull, "w"))
     result = runner.run(suite)

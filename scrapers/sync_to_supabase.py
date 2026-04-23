@@ -354,6 +354,11 @@ def _sync_incremental_updated_at(sqlite_session, pg_engine, config):
     # — losing every queued row in the batch. begin_nested() scopes the
     # failure so we skip the dup and continue.
     total_skipped = 0
+    # Phase 1.1: watermark must reflect rows that actually committed, not the
+    # full fetched batch. On graceful shutdown the loop breaks early — if we
+    # used max(r.updated_at for r in rows) the watermark would advance past
+    # rows we never sent, silently dropping them on the next run.
+    synced_rows: list = []
     for i in range(0, len(rows), BATCH_SIZE):
         # Fix 3: honour shutdown request before each batch commit
         if _shutdown_requested:
@@ -372,14 +377,29 @@ def _sync_incremental_updated_at(sqlite_session, pg_engine, config):
                     conn.execute(text(upsert_sql), d)
                     sp.commit()
                     batch_synced += 1
+                    synced_rows.append(r)
                 except IntegrityError as e:
                     sp.rollback()
-                    batch_skipped += 1
-                    log.warning(
-                        "[%s] id=%s skipped (IntegrityError: %s)",
-                        table_name, getattr(r, "id", "?"),
-                        str(e.orig).split("\n")[0][:200],
-                    )
+                    # Phase 1.2: narrow the exception scope. Only the known
+                    # partial unique index uix_deal_no_dup is an expected dup;
+                    # FK / NOT NULL / other constraint violations should not be
+                    # silently swallowed — they indicate a real schema or data
+                    # problem that must abort the batch visibly.
+                    err_str = str(getattr(e, "orig", e))
+                    if "uix_deal_no_dup" in err_str:
+                        batch_skipped += 1
+                        log.warning(
+                            "[%s] id=%s skipped dup (uix_deal_no_dup): %s",
+                            table_name, getattr(r, "id", "?"),
+                            err_str.split("\n")[0][:200],
+                        )
+                    else:
+                        log.error(
+                            "[%s] id=%s UNEXPECTED IntegrityError — aborting batch: %s",
+                            table_name, getattr(r, "id", "?"),
+                            err_str.split("\n")[0][:400],
+                        )
+                        raise
             conn.commit()
         total_synced += batch_synced
         total_skipped += batch_skipped
@@ -389,10 +409,20 @@ def _sync_incremental_updated_at(sqlite_session, pg_engine, config):
     if total_skipped:
         log.info("[%s] %d duplicates skipped via savepoint", table_name, total_skipped)
 
-    # Track the max updated_at we synced
-    max_updated_at = max(
-        getattr(r, "updated_at") for r in rows if getattr(r, "updated_at") is not None
-    )
+    # Phase 1.1: compute watermark from committed rows only. If shutdown fired
+    # before anything committed, skip the watermark write entirely so the next
+    # run re-fetches from the existing high-water mark.
+    if _shutdown_requested and not synced_rows:
+        log.info("[%s] No committed rows this run — leaving watermark unchanged", table_name)
+        return 0
+
+    committed_with_ts = [
+        getattr(r, "updated_at") for r in synced_rows if getattr(r, "updated_at", None) is not None
+    ]
+    if not committed_with_ts:
+        log.warning("[%s] No committed rows carry updated_at — skipping watermark update", table_name)
+        return total_synced
+    max_updated_at = max(committed_with_ts)
     last_val = max_updated_at.isoformat() if isinstance(max_updated_at, (datetime, date)) else str(max_updated_at)
 
     _update_sync_state(
@@ -479,6 +509,10 @@ def _sync_incremental_id(sqlite_session, pg_engine, config):
     # skip the dup and continue with the rest.
     inserted = 0
     skipped = 0
+    # Phase 1.1: track rows that actually committed so the watermark reflects
+    # only them, not the full fetched batch. Otherwise a graceful shutdown
+    # advances the watermark past rows we never sent.
+    synced_rows: list = []
     # Fix 3: honour shutdown request — break before each row if flagged
     with pg_engine.connect() as conn:
         for r in rows:
@@ -492,20 +526,43 @@ def _sync_incremental_id(sqlite_session, pg_engine, config):
                 conn.execute(text(upsert_sql), d)
                 sp.commit()
                 inserted += 1
+                synced_rows.append(r)
             except IntegrityError as e:
                 sp.rollback()
-                skipped += 1
-                log.warning(
-                    "[%s] id=%s skipped (IntegrityError: %s)",
-                    table_name, getattr(r, "id", "?"),
-                    str(e.orig).split("\n")[0][:200],
-                )
+                # Phase 1.2: narrow the exception scope. practice_changes only
+                # has practice_changes_pkey as an expected duplicate path; any
+                # FK / NOT NULL / other constraint violation must surface, not
+                # be silently skipped.
+                err_str = str(getattr(e, "orig", e))
+                if "practice_changes_pkey" in err_str:
+                    skipped += 1
+                    log.warning(
+                        "[%s] id=%s skipped dup (practice_changes_pkey): %s",
+                        table_name, getattr(r, "id", "?"),
+                        err_str.split("\n")[0][:200],
+                    )
+                else:
+                    log.error(
+                        "[%s] id=%s UNEXPECTED IntegrityError — aborting batch: %s",
+                        table_name, getattr(r, "id", "?"),
+                        err_str.split("\n")[0][:400],
+                    )
+                    raise
         conn.commit()
 
     if skipped:
         log.info("[%s] Inserted %d, skipped %d duplicates", table_name, inserted, skipped)
 
-    max_id = max(r.id for r in rows)
+    # Phase 1.1: derive watermark from committed rows only. If shutdown fired
+    # before anything committed, leave the watermark untouched.
+    if _shutdown_requested and not synced_rows:
+        log.info("[%s] No committed rows this run — leaving watermark unchanged", table_name)
+        return 0
+
+    if not synced_rows:
+        log.warning("[%s] No rows committed — skipping watermark update", table_name)
+        return inserted
+    max_id = max(r.id for r in synced_rows)
     _update_sync_state(
         pg_engine, table_name,
         rows_synced=inserted,
