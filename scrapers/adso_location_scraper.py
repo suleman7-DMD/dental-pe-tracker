@@ -384,6 +384,11 @@ def _extract_from_jsonld(data, dso_name, source_url):
 def scrape_html_subpages(dso_entry, scraper_start_time=None):
     """Scrape by first finding location sub-page links, then visiting each.
 
+    Returns (locations, aborted). ``aborted=True`` means a per-DSO or
+    whole-scraper wall-clock budget fired mid-scrape, so ``locations`` is a
+    partial list and the caller must NOT use it to delete-then-reinsert
+    existing rows.
+
     Args:
         dso_entry: DSO registry dict.
         scraper_start_time: time.monotonic() from the top-level run() for the
@@ -393,13 +398,14 @@ def scrape_html_subpages(dso_entry, scraper_start_time=None):
     index_url = dso_entry.get("index_url", dso_entry["url"])
     link_pattern = dso_entry.get("link_pattern", r'/location')
     locations = []
+    aborted = False
 
     try:
         resp = requests.get(index_url, headers=HEADERS, timeout=HTTP_TIMEOUT)
         resp.raise_for_status()
     except requests.RequestException as e:
         log.warning("[%s] Failed to fetch index %s: %s", name, index_url, e)
-        return locations
+        return locations, aborted
 
     soup = BeautifulSoup(resp.text, "lxml")
 
@@ -429,6 +435,7 @@ def scrape_html_subpages(dso_entry, scraper_start_time=None):
                 "[%s] Per-DSO budget exceeded (%.0fs > %ds) after %d/%d sub-pages — aborting this DSO",
                 name, dso_elapsed, MAX_SECONDS_PER_DSO, i, len(capped_urls),
             )
+            aborted = True
             break
 
         # Whole-scraper budget check
@@ -439,6 +446,7 @@ def scrape_html_subpages(dso_entry, scraper_start_time=None):
                     "[%s] Whole-scraper budget exceeded (%.0fs > %ds) — aborting remaining sub-pages",
                     name, total_elapsed, MAX_SECONDS_TOTAL,
                 )
+                aborted = True
                 break
 
         try:
@@ -490,7 +498,7 @@ def scrape_html_subpages(dso_entry, scraper_start_time=None):
             seen.add(key)
             deduped.append(loc)
 
-    return deduped
+    return deduped, aborted
 
 
 def scrape_json_api(dso_entry):
@@ -648,25 +656,32 @@ def match_locations_to_practices(session, locations, dso_entry, dry_run=False):
 
 
 def scrape_dso(dso_entry, scraper_start_time=None):
-    """Scrape a single DSO. Returns (locations_list, method_used)."""
+    """Scrape a single DSO. Returns (locations_list, method_used, aborted).
+
+    ``aborted=True`` means a per-DSO or whole-scraper wall-clock budget fired
+    mid-scrape so ``locations`` is a partial list. Callers must NOT use a
+    partial list to delete-then-reinsert — that regressed ``dso_locations``
+    from 408 to 92 on one slow-site run during the April 22 audit.
+    """
     name = dso_entry["name"]
     method = dso_entry.get("method", "html")
 
     if method == "needs_browser":
         log.info("[%s] Needs browser rendering — skipping (add Playwright later)", name)
-        return None, "needs_browser"
+        return None, "needs_browser", False
 
     log.info("[%s] Scraping via %s: %s", name, method, dso_entry["url"])
 
+    aborted = False
     if method == "json_api":
         locations = scrape_json_api(dso_entry)
     elif method == "html_subpages":
-        locations = scrape_html_subpages(dso_entry, scraper_start_time=scraper_start_time)
+        locations, aborted = scrape_html_subpages(dso_entry, scraper_start_time=scraper_start_time)
     else:
         locations = scrape_html_generic(dso_entry)
 
-    log.info("[%s] Found %d locations", name, len(locations))
-    return locations, method
+    log.info("[%s] Found %d locations%s", name, len(locations), " (ABORTED mid-scrape)" if aborted else "")
+    return locations, method, aborted
 
 
 def run(dry_run=False, dso_name_filter=None):
@@ -714,7 +729,7 @@ def run(dry_run=False, dso_name_filter=None):
                 )
                 break
 
-            locations, method = scrape_dso(dso_entry, scraper_start_time=scraper_start)
+            locations, method, aborted = scrape_dso(dso_entry, scraper_start_time=scraper_start)
 
             if method == "needs_browser":
                 total_skipped += 1
@@ -727,8 +742,10 @@ def run(dry_run=False, dso_name_filter=None):
             total_scraped += 1
             total_locations += len(locations)
 
-            # Store locations in DB (delete existing rows for this DSO first to prevent duplication)
-            if not dry_run and locations:
+            # Store locations in DB (delete existing rows for this DSO first to prevent duplication).
+            # Gate delete-then-reinsert on (non-empty AND not aborted) so a timed-out scrape
+            # can't wipe existing rows with a partial list. See scrape_dso docstring for context.
+            if not dry_run and locations and not aborted:
                 session.query(DSOLocation).filter_by(dso_name=dso_entry["name"]).delete()
                 for loc in locations:
                     dso_loc = DSOLocation(
@@ -743,6 +760,11 @@ def run(dry_run=False, dso_name_filter=None):
                     )
                     session.add(dso_loc)
                 session.commit()
+            elif not dry_run and aborted:
+                log.warning(
+                    "[%s] preserving existing rows due to timeout/abort (partial scrape returned %d locations)",
+                    dso_entry["name"], len(locations),
+                )
 
             # Match against practices
             if not dry_run and locations:

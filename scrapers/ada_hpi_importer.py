@@ -12,6 +12,7 @@ import argparse
 import os
 import re
 import sys
+from datetime import datetime
 from glob import glob
 
 import pandas as pd
@@ -201,9 +202,16 @@ def process_xlsx(filepath):
 
 
 def insert_records(session, records):
-    """Upsert records into ada_hpi_benchmarks."""
+    """Upsert records into ada_hpi_benchmarks.
+
+    Always sets ``updated_at`` explicitly on every write so the freshness UI
+    has a reliable timestamp. The SQLAlchemy ``onupdate=func.now()`` only
+    fires when SQLAlchemy sees a dirty column, which doesn't happen when the
+    importer rewrites identical values — so we force the dirty flag here.
+    """
     inserted = 0
     updated = 0
+    now = datetime.utcnow()
     for r in records:
         existing = session.query(ADAHPIBenchmark).filter_by(
             data_year=r["data_year"],
@@ -215,9 +223,10 @@ def insert_records(session, records):
                         "pct_group_practice", "pct_large_group_10plus", "source_file"):
                 if r[key] is not None:
                     setattr(existing, key, r[key])
+            existing.updated_at = now
             updated += 1
         else:
-            session.add(ADAHPIBenchmark(**r))
+            session.add(ADAHPIBenchmark(**r, created_at=now, updated_at=now))
             inserted += 1
     session.commit()
     return inserted, updated
