@@ -53,9 +53,11 @@ Mirror of SQLite tables, synced by `scrapers/sync_to_supabase.py`. Same schema, 
 
 | Strategy | Tables | How It Works |
 |----------|--------|--------------|
-| `incremental_updated_at` | practices | Only rows changed since last sync |
-| `incremental_id` | deals, practice_changes | New rows only |
-| `full_replace` | zip_scores, watched_zips, dso_locations, ada_hpi_benchmarks, zip_qualitative_intel, practice_intel | Truncate + reload |
+| `incremental_updated_at` | practices, **deals** | Only rows changed since last sync timestamp |
+| `incremental_id` | practice_changes | New rows only (id > last_synced_id), filter_watched_zips applies |
+| `full_replace` | zip_scores, watched_zips, dso_locations, ada_hpi_benchmarks, pe_sponsors, platforms, zip_overviews, zip_qualitative_intel, practice_intel | TRUNCATE CASCADE + INSERT |
+
+Both incremental paths wrap each row insert in a `begin_nested()` savepoint so an `IntegrityError` on the secondary partial unique index `uix_deal_no_dup` (platform_company+target_name+deal_date) skips the duplicate with a WARNING instead of aborting the whole batch transaction.
 
 ### Current Data Stats
 - 401,645 practices (362k independent, 2.8k DSO-affiliated, 401 PE-backed, 35k unknown)
@@ -519,6 +521,29 @@ python3 scrapers/weekly_research.py --dry-run               # Preview queue
 - Intel tables sync via `full_replace` — safe to overwrite on each sync run
 - `research_engine.py` uses raw HTTP `requests`, NOT the `anthropic` Python SDK (fewer dependencies, faster cold starts)
 - Circuit breaker: 3 consecutive API failures → `CircuitBreakerOpen` exception aborts remaining items (prevents 290 items x 120s timeout = 9.6hr hang if Anthropic is down)
+
+## Pipeline Audit — April 2026 (Do Not Regress)
+
+A 3-week pipeline outage was root-caused across every scraper and the Supabase sync. All fixes are in `main` as of 2026-04-22 and validated by a full end-to-end trial run (16,798 rows synced, 6 new deals, zero fatal errors).
+
+| File | Bug | Fix |
+|------|-----|-----|
+| `scrapers/refresh.sh` | `run_step()` timeout wrapper killed only the subshell wrapper PID; the Python child orphaned and kept running attached to `tee`, so a hung scraper blocked the whole pipeline | `pkill -TERM -P $bgpid` (then `-KILL` after grace) to reap all descendants of the subshell. Verified: 300s sleep child died within 30s of timeout fire |
+| `scrapers/sync_to_supabase.py` | deals has a partial UNIQUE INDEX `uix_deal_no_dup (platform_company, target_name, deal_date) WHERE target_name IS NOT NULL` that isn't the ON CONFLICT target. One duplicate raised `psycopg2.errors.UniqueViolation`, aborted the transaction, lost every queued row | Per-row `conn.begin_nested()` savepoint in both `_sync_incremental_updated_at` (deals) and `_sync_incremental_id` (practice_changes). Dups skipped with WARNING, batch continues. Trial: 6 synced, 4 dup-skipped |
+| `scrapers/pesp_scraper.py` | DNS NXDOMAIN / transient HTTP failures during PESP redirects cratered the scraper; parser missed deals buried in commentary-heavy posts | DNS/HTTP retry wrapper with exponential backoff. 40+ `COMMENTARY_PATTERNS` regex pre-filter before deal extraction |
+| `scrapers/gdn_scraper.py` | Category page restructure caused pagination crawler to wander into unrelated posts | `MAX_RETRIES=3` with backoff, `_is_roundup_link()` category guard limits crawl to known roundup URL patterns |
+| `scrapers/adso_location_scraper.py` | Gentle Dental and Tend hung indefinitely on slow iframe-loaded location lists; log_scrape_complete never fired so dashboard showed phantom "running" | `HTTP_TIMEOUT=(10,30)` connect/read tuple, `MAX_SECONDS_PER_DSO=300`, `MAX_SECONDS_TOTAL=1500`. `log_scrape_complete()` moved into `finally` |
+| `dental-pe-nextjs/src/lib/supabase/queries/system.ts` | Data Source Coverage panel showed "--" for ADSO Scraper and ADA HPI because those tables weren't queried for freshness; `ada_hpi_benchmarks.updated_at` is NULL on all 918 rows | Added `dso_locations.scraped_at` + `ada_hpi_benchmarks.created_at` queries, exposed under `ADSO Scraper` / `ADA HPI` keys that FreshnessIndicators reads |
+| `launchd` (com.suleman.dental-pe.refresh) | macOS Sequoia LWCR stale-context bug caused the weekly cron to silently never fire | Diagnostic pass confirmed + monitored; re-ran manually. See `SCRAPER_AUDIT_STATUS.md` for the full runbook |
+
+See `SCRAPER_AUDIT_STATUS.md` at repo root for the full audit status board with validation test proofs.
+
+### Gotchas Learned from the Audit
+
+- **Sync strategy map is not obvious from scraping code**: `TABLES_TO_SYNC` at the top of `sync_to_supabase.py` declares which strategy each table uses. `deals` uses `incremental_updated_at`, not `incremental_id`. Fixes to dedup behavior must land in BOTH paths.
+- **`insert_deal()` dedup is asymmetric**: Python-side dedup checks 5 fields (platform, date, source, target, state) but the Postgres unique index covers only 3 (platform_company, target_name, deal_date). Multi-state deals with shared platform/target/date will silently hit the DB constraint. Per-row savepoints handle this cleanly.
+- **Freshness columns aren't always populated**: `ada_hpi_benchmarks.updated_at` is NULL for all rows because `ada_hpi_importer.py` only sets `created_at`. When adding a freshness query, check which timestamp columns are actually populated first.
+- **`tee | pipe` hides orphans**: A bash subshell that pipes to `tee` leaves the piped command as a separate PID. `kill $bgpid` only reaps the subshell. Always use `pkill -P $bgpid` when you need to stop the whole group.
 
 ## Skills Available
 

@@ -2,19 +2,41 @@
 
 **Orchestrator:** @orchestrator (main Claude)
 **Started:** 2026-04-22
+**Closed:** 2026-04-22 23:05 (all fixes merged, deployed, verified)
 **Goal:** Every scraper fixed, tested, verified. User accepts only PROOF, not claims.
+
+## Final State (2026-04-22 23:05)
+
+All fixes landed on `main` across both repos. Production deploys:
+
+- **dental-pe-tracker** @ `c9d93fb` — fix(scrapers): full audit — resilience, timeouts, and sync integrity
+- **dental-pe-nextjs** @ `c7eda96` — fix(system): surface ADSO + ADA HPI freshness timestamps
+
+End-to-end trial run proof (`python scrapers/sync_to_supabase.py`, 2026-04-22 22:58):
+
+```
+[deals] Batch 0-10 committed (6 synced, 4 skipped; 6/10)
+[deals] 4 duplicates skipped via savepoint
+[deals] Done: 6 rows synced
+...
+TOTAL ROWS SYNCED: 16798
+```
+
+Before the savepoint fix, a single `uix_deal_no_dup` IntegrityError aborted the whole deals transaction — 0 rows synced, all pending deals dropped. After: 6 of 10 committed, 4 dupes cleanly skipped, no FAILED status, all 12 tables synced.
+
+Re-scrape (2026-04-22 23:04) confirmed sources are caught up: PESP 41/41 pages OK, GDN 61/61 pages OK. Latest source-published deal is 2026-03-02 (DoseSpot via PitchBook) / 2026-03-01 (GDN March 2026 roundup). April 2026 roundups not yet published by sources; scrapers will auto-ingest when GDN releases `dso-deals-april-2026`.
 
 ## Agents Deployed
 
 | @agent | Scope | Status | Test Evidence |
 |--------|-------|--------|---------------|
-| @scheduler-fixer   | launchd + refresh.sh timeouts       | DONE | LWCR bug fixed; timeout proof in log |
-| @adso-debugger     | ADSO scraper hangs                  | DONE    | 2m27s dry-run; scrape_complete logged; Apr 19 cause identified |
-| @pesp-debugger     | PESP scraper parse/DNS              | DONE    | PARSE FAIL 470→4 (99%↓); pages_failed 6→0; 3 new deals (194→197); max_date 2025-12→2026-01 |
-| @gdn-debugger      | GDN scraper failed pages            | complete | pages_failed: 8→0, all 61 scraped OK |
-| @misc-debugger     | NPPES, PitchBook, ADA HPI, DataAxle | complete | See below |
-| @sync-debugger     | sync_to_supabase, classifier, merge | DONE    | pipeline_events DDL added; system.ts queries dso_locations + ada_hpi_benchmarks |
-| @qa-reviewer       | Review all diffs, run regression    | running | in-progress — reviewing 6 files |
+| @scheduler-fixer   | launchd + refresh.sh timeouts       | DONE | LWCR bug fixed; pkill -P timeout proof: 300s sleep child died within 30s of timeout fire |
+| @adso-debugger     | ADSO scraper hangs                  | DONE | 2m27s dry-run originally; full live run 2026-04-22 completed cleanly through Gentle Dental + Tend |
+| @pesp-debugger     | PESP scraper parse/DNS              | DONE | PARSE FAIL 470→4 (99%↓); pages_failed 6→0; 2026-04-22: 41/41 pages OK |
+| @gdn-debugger      | GDN scraper failed pages            | DONE | pages_failed: 8→0; 2026-04-22: 61/61 pages OK |
+| @misc-debugger     | NPPES, PitchBook, ADA HPI, DataAxle | DONE | See below |
+| @sync-debugger     | sync_to_supabase, classifier, merge | DONE | pipeline_events DDL added; per-row savepoints verified (6 synced, 4 dup-skipped) |
+| @qa-reviewer       | Review all diffs, run regression    | DONE | All 6 files cleared for merge; trial sync validated end-to-end |
 
 ## Observed Failure State (from recon)
 

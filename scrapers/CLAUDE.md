@@ -176,6 +176,25 @@ In addition to the base scoring in `compute_buyability()` (data_axle_importer.py
 - **Family practice penalty (-20):** `entity_classification == 'family_practice'` — shared last name at address suggests internal succession.
 - **Multi-ZIP presence penalty (-15):** Same practice name or EIN appears in 3+ watched ZIPs — likely a chain entity.
 
+## April 2026 Audit (Do Not Regress)
+
+A 3-week cron outage was root-caused across every scraper. Fixes validated end-to-end on 2026-04-22 (16,798 rows synced, 6 new deals pushed, zero fatal errors). Full audit board lives at repo root: `SCRAPER_AUDIT_STATUS.md`.
+
+### Scraper-side fixes
+
+- `refresh.sh::run_step()` now uses `pkill -TERM -P $bgpid` (then `-KILL` after grace) to reap all subshell descendants. `kill $bgpid` alone was leaving the python child orphaned and attached to `tee`, so a hung scraper blocked the whole pipeline.
+- `pesp_scraper.py` — DNS/HTTP retry wrapper with exponential backoff for NXDOMAIN and transient failures. 40+ `COMMENTARY_PATTERNS` regex pre-filter before deal extraction to handle prose-heavy posts.
+- `gdn_scraper.py` — `MAX_RETRIES=3` with backoff + `_is_roundup_link()` category guard so the pagination crawler doesn't wander into unrelated posts when GDN restructures category pages.
+- `adso_location_scraper.py` — `HTTP_TIMEOUT=(10,30)` connect/read tuple, `MAX_SECONDS_PER_DSO=300`, `MAX_SECONDS_TOTAL=1500`. Gentle Dental and Tend previously hung indefinitely on slow iframe-loaded location lists. `log_scrape_complete()` moved into `finally` so dashboards no longer show phantom "running" after hard timeouts.
+- `sync_to_supabase.py` — per-row `conn.begin_nested()` savepoints in both `_sync_incremental_updated_at` (deals) and `_sync_incremental_id` (practice_changes). Needed because deals has a secondary partial UNIQUE INDEX `uix_deal_no_dup (platform_company, target_name, deal_date)` that isn't the `ON CONFLICT` target — any duplicate previously aborted the whole batch transaction.
+
+### Audit gotchas
+
+- **`TABLES_TO_SYNC` strategy map is not obvious**: `deals` uses `incremental_updated_at`, NOT `incremental_id`. A fix to dedup behavior must land in BOTH paths.
+- **`insert_deal()` dedup is asymmetric**: Python checks 5 fields; Postgres unique index covers 3. Multi-state deals with shared platform/target/date silently hit the constraint. Savepoints are the right abstraction, not tighter Python-side filtering.
+- **Freshness columns aren't always populated**: `ada_hpi_benchmarks.updated_at` is NULL for all 918 rows — only `created_at` is set by `ada_hpi_importer.py`. Always check which timestamp column is actually populated before wiring a freshness query.
+- **`tee | pipe` hides orphans**: a bash subshell that pipes into `tee` leaves the piped command as a separate PID; `kill $subshell_pid` doesn't reap it. Always use `pkill -P`.
+
 ## Skills Available
 
 Use `/scraper-dev` when modifying any scraper. Use `/dashboard-dev` when modifying the Streamlit app. Use `/data-axle-workflow` for Data Axle export/import tasks. Use `/debug-pipeline` when investigating scraper failures or data issues.
