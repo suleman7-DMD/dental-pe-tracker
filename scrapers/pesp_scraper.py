@@ -36,7 +36,7 @@ MONTHS = [
     "july", "august", "september", "october", "november", "december",
 ]
 
-YEARS = list(range(2022, date.today().year + 1))
+YEARS = list(range(2020, date.today().year + 1))
 
 KNOWN_PLATFORMS = [
     "Heartland Dental", "MB2 Dental", "Dental365", "Dental 365",

@@ -278,6 +278,16 @@ def _sync_incremental_updated_at(sqlite_session, pg_engine, config):
     if state and state["last_sync_value"]:
         last_ts = state["last_sync_value"]
         log.info("[%s] Incremental sync since %s", table_name, last_ts)
+        # SQLAlchemy stores SQLite DateTime as space-separated ISO ('YYYY-MM-DD HH:MM:SS'),
+        # but we persist the watermark via datetime.isoformat() which emits a 'T' separator.
+        # SQLite does lexicographic TEXT comparison, and 'T' > ' ', so a string-vs-string
+        # filter silently drops every row newer than the stored watermark. Parse back to
+        # datetime so SQLAlchemy's bind processor renders it in the on-disk format.
+        if isinstance(last_ts, str):
+            try:
+                last_ts = datetime.fromisoformat(last_ts)
+            except ValueError:
+                log.warning("[%s] Could not parse watermark %r, using raw string", table_name, last_ts)
         rows = (
             sqlite_session.query(model)
             .filter(model.updated_at > last_ts)
@@ -368,6 +378,12 @@ def _sync_incremental_id(sqlite_session, pg_engine, config):
         # Also fetch rows updated since last sync (catches edits to existing rows)
         if hasattr(model, "updated_at") and state.get("last_sync_at"):
             last_sync_ts = state["last_sync_at"]
+            # Same SQLite text-vs-datetime trap as _sync_incremental_updated_at.
+            if isinstance(last_sync_ts, str):
+                try:
+                    last_sync_ts = datetime.fromisoformat(last_sync_ts)
+                except ValueError:
+                    log.warning("[%s] Could not parse watermark %r", table_name, last_sync_ts)
             updated_rows = (
                 sqlite_session.query(model)
                 .filter(model.updated_at > last_sync_ts)
