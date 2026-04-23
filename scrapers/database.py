@@ -611,6 +611,28 @@ def _seed_watched_zips(session: Session):
 # ── Helper Functions ────────────────────────────────────────────────────────
 
 
+# Curly/smart punctuation that leaks in from copy-pasted web prose.
+# Normalizing at the scraper boundary keeps "Smith's Dental" (U+2019) and
+# "Smith's Dental" (U+0027) from de-duplicating as different entities.
+_PUNCT_TRANSLATIONS = str.maketrans({
+    "‘": "'",  # left single quotation mark
+    "’": "'",  # right single quotation mark
+    "‚": "'",  # single low-9 quotation mark
+    "‛": "'",  # single high-reversed-9 quotation mark
+    "“": '"',  # left double quotation mark
+    "”": '"',  # right double quotation mark
+    "„": '"',  # double low-9 quotation mark
+    "‟": '"',  # double high-reversed-9 quotation mark
+})
+
+
+def normalize_punctuation(text):
+    """Translate curly quotes/apostrophes to ASCII. Pass None through unchanged."""
+    if text is None:
+        return None
+    return text.translate(_PUNCT_TRANSLATIONS)
+
+
 def insert_deal(session: Session, **kwargs) -> bool:
     """Insert a deal. Returns True if inserted, False if duplicate."""
     # Dedup: same platform_company + deal_date + source + target_name + target_state

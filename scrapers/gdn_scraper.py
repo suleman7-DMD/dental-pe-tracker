@@ -12,7 +12,7 @@ import re
 import sys
 import os
 import time
-from datetime import date
+from datetime import date, datetime
 
 import requests
 from bs4 import BeautifulSoup
@@ -20,7 +20,7 @@ from bs4 import BeautifulSoup
 sys.path.insert(0, os.path.expanduser("~/dental-pe-tracker"))
 
 from scrapers.logger_config import get_logger
-from scrapers.database import init_db, get_session, insert_deal
+from scrapers.database import init_db, get_session, insert_deal, normalize_punctuation, Deal
 from scrapers.pipeline_logger import log_scrape_start, log_scrape_complete, log_scrape_error
 
 log = get_logger("gdn_scraper")
@@ -33,6 +33,90 @@ CATEGORY_BASE = "https://www.groupdentistrynow.com/dso-group-blog/category/dso-n
 MAX_PAGES = 12  # safety cap (7 pages as of 2026-04, extra headroom for growth)
 MAX_RETRIES = 3  # retries for transient network errors (e.g. brief DNS blip)
 RETRY_BACKOFF = [3, 8, 20]  # seconds between retry attempts
+
+# URLs we know are real roundup posts but that the category crawl misses
+# (GDN's category index occasionally drops older posts). Each entry gets a
+# HEAD check — 200 means include, non-200 means stale-skip with a warning.
+# Keep this list small and deliberate; blanket month enumeration generates
+# too many false HEADs for inconsistent slugs.
+OVERRIDE_ROUNDUP_URLS: tuple[str, ...] = (
+    # The bare "/dso-deals/" URL referenced in earlier plan docs was NOT the
+    # July-2024 roundup — it 404s today and Wayback shows no archives of that
+    # path. Confirmed via 2026-04-23 re-audit that GDN simply did not publish a
+    # standalone July 2024 roundup (category pagination walked clean). Kept the
+    # tuple here so future slug-less roundups can be pinned without editing the
+    # discovery helper.
+)
+
+# Earliest month GDN has ever published a DSO deal roundup — used by the
+# completeness warning to compute missing-month gaps.
+GDN_EARLIEST_YEAR_MONTH = (2020, 10)
+
+# Months where GDN is known not to have published a standalone roundup.
+# Verified via category pagination + live HEAD probe during the 2026-04-23
+# pipeline audit. Subtracted from the coverage warning so the GATE log ("no
+# gaps since 2020-10") is achievable without synthesizing phantom posts.
+GDN_EXPECTED_EMPTY_MONTHS = frozenset({
+    (2024, 7),  # No standalone July 2024 roundup — June and August posts both exist and contain only their own month's deals.
+})
+
+# Month-word → number lookup used by _inferred_months (URL + title slug parsing).
+# Full names + common abbreviations we have seen in production slugs: "oct",
+# "dec", "sept". Keyed lowercase for simple matching.
+_MONTH_WORDS = {
+    "january": 1, "jan": 1,
+    "february": 2, "feb": 2,
+    "march": 3, "mar": 3,
+    "april": 4, "apr": 4,
+    "may": 5,
+    "june": 6, "jun": 6,
+    "july": 7, "jul": 7,
+    "august": 8, "aug": 8,
+    "september": 9, "sept": 9, "sep": 9,
+    "october": 10, "oct": 10,
+    "november": 11, "nov": 11,
+    "december": 12, "dec": 12,
+}
+# Longest-first so "september" wins against "sep" in re.finditer.
+_MONTH_RE = re.compile(
+    r"(?<![a-z])(" + "|".join(sorted(_MONTH_WORDS, key=len, reverse=True)) + r")[\s\-_]+(20\d{2})(?![0-9])",
+    re.IGNORECASE,
+)
+_Q_RE = re.compile(r"(?<![a-z])q([1-4])[\s\-_]+(20\d{2})(?![0-9])", re.IGNORECASE)
+_YEAR_RE = re.compile(r"(?<![0-9])(20\d{2})(?![0-9])")
+
+
+def _inferred_months(url, title=None):
+    """Return the set of (year, month) tuples a roundup URL+title covers.
+
+    Handles:
+      - monthly posts ("dso-deal-roundup-january-2023", "dso-deals-oct-2025")
+      - single-quarter posts ("q1-2021")
+      - combined-quarter posts ("q4-2020-q1-2021-dso-deals…") — BOTH quarters
+      - year-in-review / top-10 posts — all 12 months of the year
+
+    Returns an empty set if the URL/title carries no month signal; callers fall
+    back to deal_date in that case.
+    """
+    text = ""
+    if url:
+        text += url.lower()
+    if title:
+        text += " " + title.lower()
+    covered = set()
+    for m in _MONTH_RE.finditer(text):
+        covered.add((int(m.group(2)), _MONTH_WORDS[m.group(1).lower()]))
+    for m in _Q_RE.finditer(text):
+        q, y = int(m.group(1)), int(m.group(2))
+        for dm in range(1, 4):
+            covered.add((y, (q - 1) * 3 + dm))
+    if re.search(r"year[\s\-]?in[\s\-]?review|year[\s\-]?end|top[\s\-]?10[\s\-]?dso", text):
+        ym = _YEAR_RE.search(text)
+        if ym:
+            yy = int(ym.group(1))
+            for mm in range(1, 13):
+                covered.add((yy, mm))
+    return covered
 
 KNOWN_PLATFORMS = [
     "Gen4 Dental Partners",
@@ -185,6 +269,32 @@ def discover_roundup_urls():
 
         page_num += 1
         time.sleep(1)
+
+    # Merge in override URLs (posts the category index drops, e.g. the bare
+    # /dso-deals/ slug for July 2024). HEAD-check each so we don't cascade
+    # bad URLs into downstream parsing.
+    existing_urls = {u for u, _ in all_posts}
+    override_added = 0
+    for override_url in OVERRIDE_ROUNDUP_URLS:
+        if override_url in existing_urls:
+            continue
+        try:
+            resp = requests.head(override_url, headers=HEADERS, timeout=15, allow_redirects=True)
+            final_url = resp.url or override_url
+            if resp.status_code == 200:
+                if final_url in existing_urls:
+                    log.debug("override redirect already covered: %s -> %s", override_url, final_url)
+                    continue
+                log.info("FOUND (override): %s", final_url)
+                all_posts.append((final_url, ""))  # title will be re-extracted from the page
+                existing_urls.add(final_url)
+                override_added += 1
+            else:
+                log.warning("override URL %s returned %d — removing from registry", override_url, resp.status_code)
+        except requests.RequestException as e:
+            log.warning("override HEAD failed for %s: %s", override_url, e)
+    if override_added:
+        log.info("override registry: +%d posts", override_added)
 
     log.info("Total roundup URLs discovered: %d", len(all_posts))
     return all_posts
@@ -412,9 +522,12 @@ def extract_platform(text):
     # Fallback: word-by-word walk to extract the leading entity before a deal verb.
     # Handles ALL-CAPS names (CORDENTAL, DECA, SIMKO) and auxiliary verbs
     # ("has Partnered", "has been acquired") that precede the deal verb.
+    # NOTE: "partners" is intentionally NOT in _DEAL_VERB_SET — it is ambiguous
+    # (noun in "Zyphos Dental Partners", verb in "BrandX partners with Y") and
+    # handled via a dedicated lookahead below.
     _DEAL_VERB_SET = {
         "acquired", "acquires", "acquiring",
-        "partnered", "partners", "partnering",
+        "partnered", "partnering",
         "affiliated", "affiliates", "affiliating",
         "announced", "announces", "announcing",
         "welcomed", "welcomes", "welcoming",
@@ -435,6 +548,7 @@ def extract_platform(text):
         "strengthens", "strengthening", "strengthened",
         "deepens", "deepening", "deepened",
     }
+    _PARTNERS_VERB_NEXT = {"with", "to", "and"}
     _AUX_SET = {"has", "have", "had", "is", "are", "was", "were", "will", "would"}
     _TITLE_PREFIXES = {"dr.", "mr.", "ms.", "dr", "mr", "ms"}
     _PASS_THROUGH_SET = {"&", "and", "of"}
@@ -445,6 +559,19 @@ def extract_platform(text):
     while i < len(words):
         w = words[i]
         w_lower = w.lower().rstrip(".,;:")
+
+        # "Partners" lookahead: verb iff next token is with/to/and, else
+        # treat as a noun and include it in the entity ("Zyphos Dental Partners").
+        if w_lower == "partners":
+            next_lower = ""
+            if i + 1 < len(words):
+                next_lower = words[i + 1].lower().rstrip(".,;:")
+            if next_lower in _PARTNERS_VERB_NEXT:
+                break  # verb sense — stop entity here
+            # noun sense — accumulate and continue
+            entity_words.append(w)
+            i += 1
+            continue
 
         # Stop at deal verb (optionally preceded by auxiliaries)
         if w_lower in _DEAL_VERB_SET:
@@ -677,6 +804,70 @@ def extract_num_locations(text):
     return None
 
 
+# ── Coverage diagnostics ────────────────────────────────────────────────────
+
+
+def _missing_months(session):
+    """Return YYYY-MM strings where source='gdn' has no coverage.
+
+    Coverage is computed from source URLs (and, as a fallback, deal_date). This
+    matters because the scraper collapses quarterly + combined-quarter posts
+    (e.g. ``q4-2020-q1-2021-dso-deals-…``) to a single deal_date, which would
+    otherwise show false gaps for the remaining months the post actually covers.
+
+    Gap window: GDN_EARLIEST_YEAR_MONTH (2020-10) through the month BEFORE the
+    current month. The current month is excluded because roundups publish late
+    in the cycle.
+    """
+    rows = session.query(Deal.source_url, Deal.deal_date).filter(
+        Deal.source == "gdn"
+    ).all()
+
+    present: set[tuple[int, int]] = set()
+    # url -> set of deal_date months we saw for it (used as fallback when slug
+    # has no month signal, e.g. "/dso-deals/").
+    url_fallback: dict[str, set[tuple[int, int]]] = {}
+    for src_url, dd in rows:
+        if src_url:
+            inferred = _inferred_months(src_url)
+            if inferred:
+                present.update(inferred)
+            elif dd is not None:
+                url_fallback.setdefault(src_url, set()).add((dd.year, dd.month))
+        elif dd is not None:
+            present.add((dd.year, dd.month))
+    for months in url_fallback.values():
+        present.update(months)
+
+    today = date.today()
+    missing = []
+    y, m = GDN_EARLIEST_YEAR_MONTH
+    while (y, m) < (today.year, today.month):
+        if (y, m) not in present and (y, m) not in GDN_EXPECTED_EMPTY_MONTHS:
+            missing.append(f"{y:04d}-{m:02d}")
+        m += 1
+        if m == 13:
+            m = 1
+            y += 1
+    return missing
+
+
+def _log_coverage_warning(session):
+    """Emit a WARNING if GDN has any unexpected missing months in the 2020-10..today window."""
+    try:
+        missing = _missing_months(session)
+    except Exception as e:
+        log.warning("coverage check failed: %s", e)
+        return
+    if missing:
+        log.warning("GDN month coverage gap: missing %s", ", ".join(missing))
+    else:
+        log.info(
+            "GDN month coverage: no unexpected gaps since %04d-%02d (known-empty months suppressed)",
+            *GDN_EARLIEST_YEAR_MONTH,
+        )
+
+
 # ── Deal Parsing ────────────────────────────────────────────────────────────
 
 
@@ -696,9 +887,9 @@ def parse_deal_block(block, deal_date, source_url):
     if not is_deal_block(block):
         return []
 
-    platform = extract_platform(block)
-    pe_sponsor = extract_pe_sponsor(block)
-    target = extract_target(block, platform)
+    platform = normalize_punctuation(extract_platform(block))
+    pe_sponsor = normalize_punctuation(extract_pe_sponsor(block))
+    target = normalize_punctuation(extract_target(block, platform))
     states = extract_states(block)
     specialty = detect_specialty(block)
     deal_type = detect_deal_type(block, platform)
@@ -853,6 +1044,7 @@ def run(dry_run=False):
         if not dry_run:
             log.info("New deals inserted:     %d", new_inserted)
             log.info("Duplicates skipped:     %d", duplicates)
+            _log_coverage_warning(session)
             log_scrape_complete("gdn_scraper", _t0, new_records=new_inserted,
                                 summary=f"GDN: {new_inserted} new deals, {duplicates} dupes ({pages_success} pages scraped)",
                                 extra={"duplicates": duplicates, "pages_scraped": pages_success, "pages_failed": pages_failed})
