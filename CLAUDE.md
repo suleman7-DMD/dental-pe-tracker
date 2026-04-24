@@ -75,11 +75,12 @@ Both incremental paths wrap each row insert in a `begin_nested()` savepoint so a
 
 **Env vars:** `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `NEXT_PUBLIC_MAPBOX_TOKEN`
 
-### Pages (9 total)
+### Pages (10 total)
 
 | Route | Page | What It Shows |
 |-------|------|---------------|
 | `/` | Home | 6 KPI cards (Lucide icons), two-column layout (recent deals table + activity feed from practice_changes), data freshness bar, 2x3 quick nav grid |
+| `/launchpad` | Launchpad | First-job finder for new dental grads. Track-weighted 0-100 scoring (Succession / Apprentice, High-Volume Ethical, DSO Associate). 20-signal catalog (mentor-rich, hiring-now, boutique solo, FFS/concierge, community DSO, family dynasty, ghost practice, DSO avoid-tier, etc.). 5 tiers (Best Fit / Strong / Maybe / Low / Avoid). 4 living-location scopes. 5-tab practice dossier (Snapshot / Compensation / Mentorship / Red Flags / Interview Prep). Curated DSO tier list with comp bands + citations. |
 | `/warroom` | **Warroom** | Chicagoland god-mode command surface. 4 modes (Sitrep / Hunt / Profile / Investigate), 8 lenses (consolidation, density, buyability, retirement, pe_exposure, saturation, whitespace, disagreement), 12 scopes (US, chicagoland, 7 subzones, 3 saved presets). Intent bar (⌘K), Living Map, ranked target list, ZIP + practice dossier drawers, pinboard tray, signal flag overlays (15 practice + 8 ZIP), keyboard shortcuts (`?`), URL-synced state. |
 | `/deal-flow` | Deal Flow | **4 tabs: Overview \| Sponsors \| Geography \| Deals.** Persistent KPI strip above tabs. Overview: deal volume timeline + specialty charts. Sponsors: top 15 sponsors/platforms. Geography: state choropleth. Deals: full searchable table with URL-synced filters. |
 | `/market-intel` | Market Intel | **3 tabs: Consolidation \| ZIP Analysis \| Ownership.** Persistent tiered consolidation KPIs above tabs. Consolidation: DSO Penetration Table + Mapbox consolidation map. ZIP Analysis: ZIP score table + city practice tree. Ownership: 11-type entity classification breakdown + methodology notes. Cross-link banner to Warroom. |
@@ -129,7 +130,7 @@ Key helpers in `src/lib/constants/entity-classifications.ts`:
 ### Sidebar Navigation
 
 Sidebar grouped into 4 sections (dark #2C2C2C background, goldenrod #B8860B active accent):
-- **OVERVIEW:** Dashboard (`/`), Warroom (`/warroom`)
+- **OVERVIEW:** Dashboard (`/`), Launchpad (`/launchpad`), Warroom (`/warroom`)
 - **MARKETS:** Job Market, Market Intel, Buyability
 - **ANALYSIS:** Deal Flow, Research, Intelligence
 - **ADMIN:** System
@@ -148,6 +149,21 @@ Sidebar grouped into 4 sections (dark #2C2C2C background, goldenrod #B8860B acti
 | `src/app/layout.tsx` | Root layout — fonts, providers (Query, Sidebar, Tooltip), sidebar |
 | `src/app/page.tsx` | Home page — fetches stats, deals, freshness |
 | `src/app/globals.css` | Tailwind 4 + CSS custom properties + warm light theme |
+| `src/app/launchpad/page.tsx` | Launchpad — `force-dynamic` Server Component calling `getLaunchpadBundle` |
+| `src/app/launchpad/_components/launchpad-shell.tsx` | Launchpad orchestrator — holds state, wires top bar, list, dossier |
+| `src/app/launchpad/_components/scope-selector.tsx` | 4-option living-location dropdown (West Loop, Woodridge, Bolingbrook, All Chicagoland) |
+| `src/app/launchpad/_components/track-switcher.tsx` | All / Succession / High-Volume / DSO track toggle |
+| `src/app/launchpad/_components/launchpad-kpi-strip.tsx` | 6 KPIs (practices, best-fit, mentor-rich, hiring, avoid, comp range) |
+| `src/app/launchpad/_components/track-list.tsx` | Ranked list grouped by tier (Best Fit / Strong / Maybe / Low / Avoid) |
+| `src/app/launchpad/_components/track-list-card.tsx` | Single ranked-practice card with score, tier badge, signals, warnings |
+| `src/app/launchpad/_components/practice-dossier.tsx` | 5-tab drawer — Snapshot / Compensation / Mentorship / Red Flags / Interview Prep |
+| `src/lib/launchpad/scope.ts` | LAUNCHPAD_SCOPES + resolveLaunchpadZipCodes (reuses LIVING_LOCATIONS) |
+| `src/lib/launchpad/signals.ts` | 20 signal IDs, LaunchpadTrack types, tier thresholds, LaunchpadBundle type contract |
+| `src/lib/launchpad/ranking.ts` | TRACK_MULTIPLIERS table, evaluateSignals, scoreForTrack, rankTargets orchestrator |
+| `src/lib/launchpad/dso-tiers.ts` | 16 hand-curated DSO entries with tiers, rationale, citations, comp bands |
+| `src/lib/hooks/use-launchpad-state.ts` | URL-synced Launchpad state (scope, track, selectedNpi, pinnedNpis) |
+| `src/lib/hooks/use-launchpad-data.ts` | React Query wrapper for LaunchpadBundle |
+| `src/lib/supabase/queries/launchpad.ts` | getLaunchpadBundle — parallel fetch + rankTargets + summary |
 | `src/app/warroom/page.tsx` | Warroom — `force-dynamic` Server Component calling `getSitrepBundle` |
 | `src/app/warroom/_components/warroom-shell.tsx` | Warroom orchestrator — holds state, wires modes, drawers, keyboard |
 | `src/app/warroom/_components/scope-selector.tsx` | 12-option scope dropdown (US / chicagoland / 7 subzones / 3 saved) |
