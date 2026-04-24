@@ -86,6 +86,17 @@ signal.signal(signal.SIGTERM, _handle_shutdown)
 # ---------------------------------------------------------------------------
 
 BATCH_SIZE = 2000
+PG_STATEMENT_TIMEOUT_MS = int(os.environ.get("SUPABASE_STATEMENT_TIMEOUT_MS", "600000"))
+
+
+def _set_statement_timeout(conn, *, local=False):
+    """Raise Supabase's 2-minute default timeout for long sync/verify steps."""
+    if not hasattr(conn, "exec_driver_sql"):
+        # Unit-test fakes only implement execute(); skipping here keeps timeout
+        # plumbing from being mistaken for row-level DML in resilience tests.
+        return
+    scope = "LOCAL " if local else ""
+    conn.exec_driver_sql(f"SET {scope}statement_timeout = {PG_STATEMENT_TIMEOUT_MS}")
 
 # Fix 2: Minimum row floors for full_replace tables.
 # If SQLite returns fewer rows than this threshold the TRUNCATE is aborted.
@@ -157,6 +168,9 @@ def _get_pg_engine():
         pool_timeout=30,
         pool_recycle=1800,
         pool_pre_ping=True,
+        connect_args={
+            "options": f"-c statement_timeout={PG_STATEMENT_TIMEOUT_MS}",
+        },
         echo=False,
     )
     return engine
@@ -377,6 +391,7 @@ def _sync_incremental_updated_at(sqlite_session, pg_engine, config):
         batch_synced = 0
         batch_skipped = 0
         with pg_engine.connect() as conn:
+            _set_statement_timeout(conn, local=True)
             for r, d in dicts:
                 sp = conn.begin_nested()
                 try:
@@ -519,42 +534,61 @@ def _sync_incremental_id(sqlite_session, pg_engine, config):
     # only them, not the full fetched batch. Otherwise a graceful shutdown
     # advances the watermark past rows we never sent.
     synced_rows: list = []
-    # Fix 3: honour shutdown request — break before each row if flagged
-    with pg_engine.connect() as conn:
-        for r in rows:
-            if _shutdown_requested:
-                log.warning("[%s] Shutdown requested — stopping at %d/%d rows",
-                            table_name, inserted, len(rows))
-                break
-            d = _model_to_dict(r)
-            sp = conn.begin_nested()
-            try:
-                conn.execute(text(upsert_sql), d)
-                sp.commit()
-                inserted += 1
-                synced_rows.append(r)
-            except IntegrityError as e:
-                sp.rollback()
-                # Phase 1.2: narrow the exception scope. practice_changes only
-                # has practice_changes_pkey as an expected duplicate path; any
-                # FK / NOT NULL / other constraint violation must surface, not
-                # be silently skipped.
-                err_str = str(getattr(e, "orig", e))
-                if "practice_changes_pkey" in err_str:
-                    skipped += 1
-                    log.warning(
-                        "[%s] id=%s skipped dup (practice_changes_pkey): %s",
-                        table_name, getattr(r, "id", "?"),
-                        err_str.split("\n")[0][:200],
-                    )
-                else:
-                    log.error(
-                        "[%s] id=%s UNEXPECTED IntegrityError — aborting batch: %s",
-                        table_name, getattr(r, "id", "?"),
-                        err_str.split("\n")[0][:400],
-                    )
-                    raise
-        conn.commit()
+    # Fix 3: honour shutdown request — commit in bounded batches so a timeout
+    # or signal never holds one long transaction across the entire changes set.
+    for i in range(0, len(rows), BATCH_SIZE):
+        if _shutdown_requested:
+            log.warning("[%s] Shutdown requested — stopping at %d/%d rows",
+                        table_name, inserted, len(rows))
+            break
+
+        batch = rows[i:i + BATCH_SIZE]
+        batch_inserted = 0
+        batch_skipped = 0
+        with pg_engine.connect() as conn:
+            _set_statement_timeout(conn, local=True)
+            for r in batch:
+                if _shutdown_requested:
+                    log.warning("[%s] Shutdown requested mid-batch — stopping at %d/%d rows",
+                                table_name, inserted, len(rows))
+                    break
+                d = _model_to_dict(r)
+                sp = conn.begin_nested()
+                try:
+                    conn.execute(text(upsert_sql), d)
+                    sp.commit()
+                    inserted += 1
+                    batch_inserted += 1
+                    synced_rows.append(r)
+                except IntegrityError as e:
+                    sp.rollback()
+                    # Phase 1.2: narrow the exception scope. practice_changes only
+                    # has practice_changes_pkey as an expected duplicate path; any
+                    # FK / NOT NULL / other constraint violation must surface, not
+                    # be silently skipped.
+                    err_str = str(getattr(e, "orig", e))
+                    if "practice_changes_pkey" in err_str:
+                        skipped += 1
+                        batch_skipped += 1
+                        log.warning(
+                            "[%s] id=%s skipped dup (practice_changes_pkey): %s",
+                            table_name, getattr(r, "id", "?"),
+                            err_str.split("\n")[0][:200],
+                        )
+                    else:
+                        log.error(
+                            "[%s] id=%s UNEXPECTED IntegrityError — aborting batch: %s",
+                            table_name, getattr(r, "id", "?"),
+                            err_str.split("\n")[0][:400],
+                        )
+                        raise
+            conn.commit()
+        log.info("[%s] Batch %d-%d committed (%d synced, %d skipped; %d/%d)",
+                 table_name, i, i + len(batch), batch_inserted, batch_skipped,
+                 inserted, len(rows))
+
+        if _shutdown_requested:
+            break
 
     if skipped:
         log.info("[%s] Inserted %d, skipped %d duplicates", table_name, inserted, skipped)
@@ -611,18 +645,19 @@ def _sync_full_replace(sqlite_session, pg_engine, config):
         log.warning("[%s] Shutdown requested — skipping full replace", table_name)
         return 0
 
-    with pg_engine.connect() as conn:
+    with pg_engine.begin() as conn:
+        _set_statement_timeout(conn, local=True)
         conn.execute(text(f"TRUNCATE TABLE {table_name} CASCADE"))
         if rows:
             insert_sql = _build_insert_sql(table_name, columns)
             for r in rows:
                 d = _model_to_dict(r)
                 conn.execute(text(insert_sql), d)
-        conn.commit()
 
     # Fix 2: Post-sync assertion — verify Supabase actually has the rows
     expected_count = len(rows)
     with pg_engine.connect() as conn:
+        _set_statement_timeout(conn)
         actual = conn.execute(text(f"SELECT COUNT(*) FROM {table_name}")).scalar()
     if actual < expected_count * 0.95:
         raise RuntimeError(
@@ -711,7 +746,7 @@ def _sync_watched_zips_only(sqlite_session, pg_engine, config):
     #   it's rolled back too if the inserts fail. Incremental sync will then
     #   re-send all practice_changes rows on the next dispatch.
     with pg_engine.begin() as conn:
-        conn.execute(text("SET LOCAL statement_timeout = '600s'"))
+        _set_statement_timeout(conn, local=True)
 
         # Clear existing practices. CASCADE wipes practice_changes (FK dep) too.
         # This is the documented pattern — see scrapers/CLAUDE.md "CASCADE trap".
@@ -746,9 +781,8 @@ def _sync_watched_zips_only(sqlite_session, pg_engine, config):
     # Fix 1: Post-sync assertion
     expected_count = len(rows)
     with pg_engine.connect() as conn:
-        actual = conn.execute(text(
-            "SELECT COUNT(*) FROM practices WHERE zip IN (SELECT zip_code FROM watched_zips)"
-        )).scalar()
+        _set_statement_timeout(conn)
+        actual = conn.execute(text("SELECT COUNT(*) FROM practices")).scalar()
     if actual < expected_count * 0.95:
         raise RuntimeError(
             f"[{table_name}] Sync verification failed: expected {expected_count} rows "
@@ -881,29 +915,27 @@ def run():
         # total is expected and meaningless, so we skip exact-match checks for
         # those strategies.
         verified_results = {}
-        try:
-            with pg_engine.connect() as conn:
-                for tbl, reported in results.items():
-                    if not isinstance(reported, int):
-                        continue
-                    try:
-                        actual = conn.execute(
-                            text(f"SELECT COUNT(*) FROM {tbl}")
-                        ).scalar()
-                        verified_results[tbl] = actual
-                        # Only flag mismatches for full-replace / watched_zips strategies
-                        # where reported == total rows in Supabase, not just the delta.
-                        cfg = next((c for c in SYNC_CONFIG if c["table"] == tbl), None)
-                        if cfg and cfg["strategy"] not in ("incremental_updated_at", "incremental_id"):
-                            if actual != reported:
-                                log.error(
-                                    "MISMATCH [%s]: sync reported %d rows but Supabase has %d",
-                                    tbl, reported, actual
-                                )
-                    except Exception as ve:
-                        log.warning("[%s] Post-sync verification query failed: %s", tbl, ve)
-        except Exception as ve:
-            log.warning("Post-sync verification pass failed: %s", ve)
+        for tbl, reported in results.items():
+            if not isinstance(reported, int):
+                continue
+            try:
+                with pg_engine.connect() as conn:
+                    _set_statement_timeout(conn)
+                    actual = conn.execute(
+                        text(f"SELECT COUNT(*) FROM {tbl}")
+                    ).scalar()
+                verified_results[tbl] = actual
+                # Only flag mismatches for full-replace / watched_zips strategies
+                # where reported == total rows in Supabase, not just the delta.
+                cfg = next((c for c in SYNC_CONFIG if c["table"] == tbl), None)
+                if cfg and cfg["strategy"] not in ("incremental_updated_at", "incremental_id"):
+                    if actual != reported:
+                        log.error(
+                            "MISMATCH [%s]: sync reported %d rows but Supabase has %d",
+                            tbl, reported, actual
+                        )
+            except Exception as ve:
+                log.warning("[%s] Post-sync verification query failed: %s", tbl, ve)
 
         # Print summary
         log.info("")

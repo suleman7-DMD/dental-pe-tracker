@@ -38,7 +38,8 @@ for stub_name in [
 db_mod = sys.modules["scrapers.database"]
 for sym in ["get_session", "Practice", "Deal", "PracticeChange", "ZipScore",
             "WatchedZip", "DSOLocation", "ADAHPIBenchmark", "PESponsor",
-            "Platform", "ZipOverview", "ZipQualitativeIntel", "PracticeIntel", "Base"]:
+            "Platform", "ZipOverview", "ZipQualitativeIntel", "PracticeIntel",
+            "PracticeSignal", "ZipSignal", "Base"]:
     setattr(db_mod, sym, MagicMock())
 
 # pipeline_logger stubs
