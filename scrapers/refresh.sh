@@ -19,7 +19,7 @@ echo "  Started: $(date)"                         | tee -a "$LOGFILE"
 echo "==========================================" | tee -a "$LOGFILE"
 
 echo "" | tee -a "$LOGFILE"
-echo "[1/10] Backing up database..." | tee -a "$LOGFILE"
+echo "[1/11] Backing up database..." | tee -a "$LOGFILE"
 if [ -f "$PROJECT/data/dental_pe_tracker.db" ]; then
     cp "$PROJECT/data/dental_pe_tracker.db" \
        "$PROJECT/backups/dental_pe_tracker_$(date +%Y-%m-%d).db"
@@ -63,22 +63,24 @@ run_step() {
     fi
 }
 
-run_step "[2/10] Scraping PESP..."                "$PYTHON $PROJECT/scrapers/pesp_scraper.py"              15
-run_step "[3/10] Scraping GDN..."                 "$PYTHON $PROJECT/scrapers/gdn_scraper.py"               15
-run_step "[4/10] Importing PitchBook CSVs..."     "$PYTHON $PROJECT/scrapers/pitchbook_importer.py --auto"  5
-run_step "[5/10] Scraping ADSO locations..."       "$PYTHON $PROJECT/scrapers/adso_location_scraper.py"    30
-run_step "[6/10] Checking ADA HPI for updates..."  "$PYTHON $PROJECT/scrapers/ada_hpi_downloader.py"       10
-run_step "[7/10] Classifying DSO affiliations..."  "$PYTHON $PROJECT/scrapers/dso_classifier.py"           15
-run_step "[8/10] Merging and scoring..."           "$PYTHON $PROJECT/scrapers/merge_and_score.py"          10
+run_step "[2/11] Scraping PESP..."                "$PYTHON $PROJECT/scrapers/pesp_scraper.py"              15
+run_step "[3/11] Scraping GDN..."                 "$PYTHON $PROJECT/scrapers/gdn_scraper.py"               15
+run_step "[4/11] Importing PitchBook CSVs..."     "$PYTHON $PROJECT/scrapers/pitchbook_importer.py --auto"  5
+run_step "[5/11] Scraping ADSO locations..."       "$PYTHON $PROJECT/scrapers/adso_location_scraper.py"    30
+run_step "[6/11] Checking ADA HPI for updates..."  "$PYTHON $PROJECT/scrapers/ada_hpi_downloader.py"       10
+run_step "[7/11] Classifying DSO affiliations..."  "$PYTHON $PROJECT/scrapers/dso_classifier.py"           15
+run_step "[8/11] Merging and scoring..."           "$PYTHON $PROJECT/scrapers/merge_and_score.py"          10
 
 # Weekly qualitative research (only if ANTHROPIC_API_KEY is configured)
 if [ -n "$ANTHROPIC_API_KEY" ]; then
-    run_step "[9/10] Weekly qualitative research..." "$PYTHON $PROJECT/scrapers/weekly_research.py --budget 5" 15
+    run_step "[9/11] Weekly qualitative research..." "$PYTHON $PROJECT/scrapers/weekly_research.py --budget 5" 15
 fi
+
+run_step "[10/11] Computing Warroom signals..." "$PYTHON $PROJECT/scrapers/compute_signals.py" 10
 
 # Sync to Supabase (only if SUPABASE_DATABASE_URL is configured)
 if [ -n "$SUPABASE_DATABASE_URL" ]; then
-    run_step "[10/10] Syncing to Supabase..." "$PYTHON $PROJECT/scrapers/sync_to_supabase.py" 30
+    run_step "[11/11] Syncing to Supabase..." "$PYTHON $PROJECT/scrapers/sync_to_supabase.py" 30
 fi
 
 echo "" | tee -a "$LOGFILE"

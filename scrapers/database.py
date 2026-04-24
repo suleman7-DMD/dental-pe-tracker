@@ -434,7 +434,7 @@ class PracticeIntel(Base):
 class PracticeSignal(Base):
     __tablename__ = "practice_signals"
 
-    npi = Column(Text, ForeignKey("practices.npi"), primary_key=True)
+    npi = Column(Text, primary_key=True)
     practice_id = Column(Integer)
     zip_code = Column(Text, nullable=False)
     practice_name = Column(Text)
@@ -489,7 +489,7 @@ class PracticeSignal(Base):
 class ZipSignal(Base):
     __tablename__ = "zip_signals"
 
-    zip_code = Column(Text, ForeignKey("watched_zips.zip_code"), primary_key=True)
+    zip_code = Column(Text, primary_key=True)
     city = Column(Text)
     state = Column(Text)
     metro_area = Column(Text)

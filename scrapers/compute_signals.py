@@ -241,8 +241,7 @@ CREATE TABLE practice_signals (
     zip_contested_zone_flag BOOLEAN DEFAULT 0,
     zip_ada_benchmark_gap_flag BOOLEAN DEFAULT 0,
     data_limitations TEXT,
-    created_at TEXT NOT NULL,
-    FOREIGN KEY(npi) REFERENCES practices(npi)
+    created_at TEXT NOT NULL
 )
 """
 
@@ -300,8 +299,7 @@ CREATE TABLE zip_signals (
     high_peer_buyability_count INTEGER DEFAULT 0,
     high_peer_retirement_count INTEGER DEFAULT 0,
     data_limitations TEXT,
-    created_at TEXT NOT NULL,
-    FOREIGN KEY(zip_code) REFERENCES watched_zips(zip_code)
+    created_at TEXT NOT NULL
 )
 """
 
@@ -660,14 +658,19 @@ def _build_deal_metrics(deals, zip_centroids, city_centroids, run_date):
     deal_count_all = defaultdict(int)
     deal_count_24mo = defaultdict(int)
     recent_deal_points = []
+    deals_with_zip = 0
+    deals_with_city = 0
 
     for deal in deals:
         deal_date = _parse_date(deal.get("deal_date"))
         target_zip = _norm_zip(deal.get("target_zip"))
         if target_zip:
+            deals_with_zip += 1
             deal_count_all[target_zip] += 1
             if deal_date and deal_date >= cutoff_24mo:
                 deal_count_24mo[target_zip] += 1
+        elif _clean_text(deal.get("target_city")):
+            deals_with_city += 1
 
         if not deal_date or deal_date < cutoff_24mo:
             continue
@@ -692,16 +695,31 @@ def _build_deal_metrics(deals, zip_centroids, city_centroids, run_date):
                 "source": source,
             })
 
-    return deal_count_all, deal_count_24mo, recent_deal_points
+    geography = {
+        "deals_with_zip": deals_with_zip,
+        "deals_with_city": deals_with_city,
+        "has_zip_activity": deals_with_zip > 0,
+        "has_catchment_points": len(recent_deal_points) > 0,
+    }
+    return deal_count_all, deal_count_24mo, recent_deal_points, geography
 
 
-def _deal_catchment_for_practices(practices, recent_deal_points):
+def _deal_catchment_for_practices(practices, recent_deal_points, deal_geography):
     by_npi = {}
+    if not deal_geography.get("has_catchment_points"):
+        reason = (
+            "Deal records lack target ZIP/city geography for last-24mo catchment; "
+            "score left null rather than treating unknown exposure as zero."
+        )
+        for practice in practices:
+            by_npi[practice.get("npi")] = (None, reason)
+        return by_npi
+
     for practice in practices:
         npi = practice.get("npi")
         point = _valid_point(practice)
         if not point:
-            by_npi[npi] = (0, "Practice coordinates unavailable; catchment count set to 0.")
+            by_npi[npi] = (None, "Practice coordinates unavailable; catchment score left null.")
             continue
         state = _clean_text(practice.get("state")).upper()
         count = 0
@@ -865,9 +883,9 @@ def _compound_demand(zip_score, zip_intel):
 
     score = 0
     parts = []
-    if dld is not None and dld > 7:
+    if dld is not None and dld < 5:
         score += 35
-        parts.append(f"dld_gp_per_10k={dld:g} > 7")
+        parts.append(f"dld_gp_per_10k={dld:g} < 5")
     if people is not None and people > 1600:
         score += 35
         parts.append(f"people_per_gp_door={people} > 1600")
@@ -893,7 +911,6 @@ def _build_mirror_pairs(zip_scores):
             "values": [
                 _as_float(score.get("dld_gp_per_10k")),
                 _pct_fraction(score.get("buyable_practice_ratio")),
-                _pct_fraction(score.get("corporate_share_pct")),
                 _as_float(score.get("people_per_gp_door")),
                 (spec / total) if total > 0 else 0.0,
             ],
@@ -938,6 +955,8 @@ def _build_mirror_pairs(zip_scores):
             if gap < 0.15:
                 continue
             sim = cosine(vectors[left["zip_code"]], vectors[right["zip_code"]])
+            if sim < 0.97:
+                continue
             candidates.append({
                 "zip_code": right["zip_code"],
                 "similarity": round(sim, 4),
@@ -1049,10 +1068,12 @@ def compute_signal_rows(conn, run_date=None):
     stealth_by_npi, stealth_clusters = _build_stealth_clusters(practices)
     micro_by_npi, micro_clusters = _build_micro_clusters(practices)
     zip_centroids, city_centroids = _build_centroids(practices)
-    deal_count_all, deal_count_24mo, recent_deal_points = _build_deal_metrics(
+    deal_count_all, deal_count_24mo, recent_deal_points, deal_geography = _build_deal_metrics(
         deals, zip_centroids, city_centroids, run_date
     )
-    deal_catchments = _deal_catchment_for_practices(practices, recent_deal_points)
+    deal_catchments = _deal_catchment_for_practices(
+        practices, recent_deal_points, deal_geography
+    )
     latest_changes = _latest_changes(changes, run_date)
 
     retirement_scores = {}
@@ -1185,12 +1206,20 @@ def compute_signal_rows(conn, run_date=None):
         mirrors = mirror_pairs.get(zip_code, [])
         top_mirror = mirrors[0] if mirrors else None
 
-        all_deals = deal_count_all.get(zip_code, 0)
-        deals_24mo = deal_count_24mo.get(zip_code, 0)
-        white_space = all_deals == 0 and (population or 0) >= WHITE_SPACE_POPULATION_THRESHOLD
+        all_deals = deal_count_all.get(zip_code, 0) if deal_geography["has_zip_activity"] else None
+        deals_24mo = deal_count_24mo.get(zip_code, 0) if deal_geography["has_zip_activity"] else None
+        white_space = (
+            deal_geography["has_zip_activity"]
+            and all_deals == 0
+            and (population or 0) >= WHITE_SPACE_POPULATION_THRESHOLD
+        )
         white_space_score = 0
         white_parts = []
-        if all_deals == 0:
+        if not deal_geography["has_zip_activity"]:
+            white_parts.append(
+                "Deal records currently lack target_zip geography; ZIP-level PE white-space cannot be asserted."
+            )
+        elif all_deals == 0:
             white_space_score += 50
             white_parts.append("0 exact target_zip deals")
         if (population or 0) >= WHITE_SPACE_POPULATION_THRESHOLD:
@@ -1215,7 +1244,11 @@ def compute_signal_rows(conn, run_date=None):
         phantom_count = sum(p["phantom_inventory_flag"] for p in practice_signals)
         micro_cluster_ids = {p["micro_cluster_id"] for p in practice_signals if p["micro_cluster_id"]}
         stealth_cluster_ids = {p["stealth_dso_cluster_id"] for p in practice_signals if p["stealth_dso_cluster_id"]}
-        catchment_values = [p["deal_catchment_24mo"] or 0 for p in practice_signals]
+        catchment_values = [
+            p["deal_catchment_24mo"]
+            for p in practice_signals
+            if p["deal_catchment_24mo"] is not None
+        ]
 
         row = {
             "zip_code": zip_code,
@@ -1243,8 +1276,8 @@ def compute_signal_rows(conn, run_date=None):
             "last_change_90d_count": sum(p["last_change_90d_flag"] for p in practice_signals),
             "deal_count_all_time": all_deals,
             "deal_count_24mo": deals_24mo,
-            "deal_catchment_sum_24mo": sum(catchment_values),
-            "deal_catchment_max_24mo": max(catchment_values) if catchment_values else 0,
+            "deal_catchment_sum_24mo": sum(catchment_values) if catchment_values else None,
+            "deal_catchment_max_24mo": max(catchment_values) if catchment_values else None,
             "compound_demand_flag": _truth(compound_flag),
             "compound_demand_score": compound_score,
             "compound_demand_reasoning": compound_reason,
