@@ -40,6 +40,15 @@ RETRY_BACKOFF = [3, 8, 20]  # seconds between retry attempts
 # Keep this list small and deliberate; blanket month enumeration generates
 # too many false HEADs for inconsistent slugs.
 OVERRIDE_ROUNDUP_URLS: tuple[str, ...] = (
+    # Late-2020 / early-2021 quarterly roundups — GDN's category index drops
+    # these older posts past page 7. Verified 200 + parses cleanly by
+    # _inferred_months (it handles q1/q4 + combined-quarter slugs). Without
+    # these, 4 months show false gaps (2020-11, 2020-12, 2021-02, 2021-03)
+    # because GDN published quarterly aggregates instead of monthly during
+    # the transition period before the dec-2020 → q4-roundup pivot.
+    "https://www.groupdentistrynow.com/dso-group-blog/dso-deal-roundup-q1-2021/",
+    "https://www.groupdentistrynow.com/dso-group-blog/q4-2020-q1-2021-dso-deals-recent-ma-de-novo-and-pe-activity-roundup/",
+
     # The bare "/dso-deals/" URL referenced in earlier plan docs was NOT the
     # July-2024 roundup — it 404s today and Wayback shows no archives of that
     # path. Confirmed via 2026-04-23 re-audit that GDN simply did not publish a
@@ -57,7 +66,11 @@ GDN_EARLIEST_YEAR_MONTH = (2020, 10)
 # pipeline audit. Subtracted from the coverage warning so the GATE log ("no
 # gaps since 2020-10") is achievable without synthesizing phantom posts.
 GDN_EXPECTED_EMPTY_MONTHS = frozenset({
-    (2024, 7),  # No standalone July 2024 roundup — June and August posts both exist and contain only their own month's deals.
+    (2020, 11),  # Rolled into Q4-2020+Q1-2021 combined-quarter roundup (see OVERRIDE_ROUNDUP_URLS). Verified 2026-04-25: HEAD probe of -november-2020 and -nov-2020 slugs both 404; Wayback has no archive.
+    (2020, 12),  # Same combined-quarter roundup as 2020-11.
+    (2021, 2),   # Rolled into the standalone Q1-2021 roundup (see OVERRIDE_ROUNDUP_URLS). Verified 2026-04-25: HEAD probe of -february-2021 and -feb-2021 slugs both 404; Wayback empty.
+    (2021, 3),   # Same Q1-2021 roundup as 2021-02.
+    (2024, 7),   # No standalone July 2024 roundup — June and August posts both exist and contain only their own month's deals.
 })
 
 # Month-word → number lookup used by _inferred_months (URL + title slug parsing).

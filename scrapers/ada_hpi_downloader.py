@@ -42,7 +42,12 @@ BASE_URL = (
 
 HEADERS = {"User-Agent": "DentalPETracker/1.0 (academic research)"}
 
-START_YEAR = 2022
+# Lowered from 2022 to 2018 on 2026-04-25 — verified via HEAD probe that ADA
+# publishes hpidata_dentist_practice_modalities_YYYY.xlsx for 2018, 2019, 2020,
+# 2021 (all 200 OK). Without this lower bound the scraper silently skipped 4
+# years of historical benchmark data. The dry-run logs each year as
+# AVAILABLE/Not available so missing years remain visible.
+START_YEAR = 2018
 
 
 def get_existing_years(data_dir):

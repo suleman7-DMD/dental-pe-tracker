@@ -399,11 +399,17 @@ def _sync_incremental_updated_at(sqlite_session, pg_engine, config):
     # — losing every queued row in the batch. begin_nested() scopes the
     # failure so we skip the dup and continue.
     total_skipped = 0
-    # Phase 1.1: watermark must reflect rows that actually committed, not the
-    # full fetched batch. On graceful shutdown the loop breaks early — if we
-    # used max(r.updated_at for r in rows) the watermark would advance past
-    # rows we never sent, silently dropping them on the next run.
+    # Watermark accounting (two lists, distinct purposes):
+    #   synced_rows    — rows that actually committed (drives the "X synced" log)
+    #   processed_rows — rows we successfully called execute() on, INCLUDING the
+    #                    expected uix_deal_no_dup skips. These are "done" — Supabase
+    #                    already holds an equivalent row, so we have to advance the
+    #                    watermark past them, otherwise the next run re-fetches the
+    #                    same window, gets the same dups, and the watermark is frozen
+    #                    forever (the failure mode that produced the 54-day-stale
+    #                    deals.last_sync_at and the misleading DATA FRESHNESS card).
     synced_rows: list = []
+    processed_rows: list = []
     for i in range(0, len(rows), BATCH_SIZE):
         # Fix 3: honour shutdown request before each batch commit
         if _shutdown_requested:
@@ -424,6 +430,7 @@ def _sync_incremental_updated_at(sqlite_session, pg_engine, config):
                     sp.commit()
                     batch_synced += 1
                     synced_rows.append(r)
+                    processed_rows.append(r)
                 except IntegrityError as e:
                     sp.rollback()
                     # Phase 1.2: narrow the exception scope. Only the known
@@ -434,6 +441,11 @@ def _sync_incremental_updated_at(sqlite_session, pg_engine, config):
                     err_str = str(getattr(e, "orig", e))
                     if "uix_deal_no_dup" in err_str:
                         batch_skipped += 1
+                        # Dup is "processed" — Supabase holds an equivalent row keyed
+                        # on (platform_company, target_name, deal_date). Advancing the
+                        # watermark past this row is the whole point: otherwise the
+                        # next sync replays the same window and the watermark stalls.
+                        processed_rows.append(r)
                         log.warning(
                             "[%s] id=%s skipped dup (uix_deal_no_dup): %s",
                             table_name, getattr(r, "id", "?"),
@@ -455,20 +467,20 @@ def _sync_incremental_updated_at(sqlite_session, pg_engine, config):
     if total_skipped:
         log.info("[%s] %d duplicates skipped via savepoint", table_name, total_skipped)
 
-    # Phase 1.1: compute watermark from committed rows only. If shutdown fired
-    # before anything committed, skip the watermark write entirely so the next
-    # run re-fetches from the existing high-water mark.
-    if _shutdown_requested and not synced_rows:
-        log.info("[%s] No committed rows this run — leaving watermark unchanged", table_name)
+    # Watermark advances past every row we actually processed (committed OR
+    # dup-skipped). On graceful shutdown that breaks the loop early, processed_rows
+    # only contains rows from completed batches — never rows beyond the break.
+    if _shutdown_requested and not processed_rows:
+        log.info("[%s] No rows processed this run — leaving watermark unchanged", table_name)
         return 0
 
-    committed_with_ts = [
-        getattr(r, "updated_at") for r in synced_rows if getattr(r, "updated_at", None) is not None
+    processed_with_ts = [
+        getattr(r, "updated_at") for r in processed_rows if getattr(r, "updated_at", None) is not None
     ]
-    if not committed_with_ts:
-        log.warning("[%s] No committed rows carry updated_at — skipping watermark update", table_name)
+    if not processed_with_ts:
+        log.warning("[%s] No processed rows carry updated_at — skipping watermark update", table_name)
         return total_synced
-    max_updated_at = max(committed_with_ts)
+    max_updated_at = max(processed_with_ts)
     last_val = max_updated_at.isoformat() if isinstance(max_updated_at, (datetime, date)) else str(max_updated_at)
 
     _update_sync_state(
@@ -870,6 +882,88 @@ _STRATEGY_MAP = {
 }
 
 
+# ---------------------------------------------------------------------------
+# Reconciliation (ghost-row cleanup)
+# ---------------------------------------------------------------------------
+# Incremental sync is INSERT/UPDATE-only and never DELETEs. Over time, manual
+# SQLite deletions, aborted historical experiments, or schema-change rewrites
+# leave "ghost" rows in Supabase that no longer exist locally. They show up
+# as a count drift (e.g. SQLite=2861 vs Supabase=2895). Recurring sync
+# shouldn't pay this scan cost on every run, so reconciliation is gated
+# behind --reconcile-deals.
+GHOST_DELETE_FLOOR = 100  # refuse to delete more than this many in one pass
+
+
+def _reconcile_deals(sqlite_session, pg_engine, dry_run=False):
+    """Find Supabase deals not present in SQLite by (platform, target, deal_date)
+    and delete them. Bounded by GHOST_DELETE_FLOOR.
+
+    Same key as the partial unique index uix_deal_no_dup so the reconciliation
+    is consistent with the dedup contract incremental sync already enforces.
+    """
+    log.info("=" * 60)
+    log.info("RECONCILE deals: SQLite is source of truth")
+    log.info("=" * 60)
+
+    sqlite_keys: set = set()
+    for d in sqlite_session.query(Deal.platform_company, Deal.target_name, Deal.deal_date).all():
+        platform, target, dd = d
+        # target_name IS NULL is excluded from the partial unique index —
+        # those rows can't be reconciled by key, so we leave them alone.
+        if target is None:
+            continue
+        sqlite_keys.add((platform, target, dd.isoformat() if dd else None))
+
+    log.info("[deals] SQLite has %d (platform, target, date) keys (target_name IS NOT NULL)", len(sqlite_keys))
+
+    with pg_engine.connect() as conn:
+        rows = conn.execute(
+            text("SELECT id, platform_company, target_name, deal_date FROM deals "
+                 "WHERE target_name IS NOT NULL")
+        ).fetchall()
+    log.info("[deals] Supabase has %d rows with target_name IS NOT NULL", len(rows))
+
+    ghosts = []
+    for row in rows:
+        # row is a Row; access by index for sqlalchemy 1.x compat
+        rid, platform, target, dd = row[0], row[1], row[2], row[3]
+        key = (platform, target, dd.isoformat() if dd else None)
+        if key not in sqlite_keys:
+            ghosts.append((rid, platform, target, dd))
+
+    if not ghosts:
+        log.info("[deals] No ghost rows — Supabase is in sync with SQLite")
+        return 0
+
+    log.warning("[deals] Found %d ghost rows in Supabase (not in SQLite)", len(ghosts))
+    for rid, platform, target, dd in ghosts[:10]:
+        log.warning("  ghost id=%s  %s | %s | %s", rid, platform, target, dd)
+    if len(ghosts) > 10:
+        log.warning("  ... and %d more", len(ghosts) - 10)
+
+    if len(ghosts) > GHOST_DELETE_FLOOR:
+        log.error(
+            "[deals] %d ghosts exceeds floor (%d) — refusing to delete. "
+            "Investigate manually before raising the floor.",
+            len(ghosts), GHOST_DELETE_FLOOR,
+        )
+        return 0
+
+    if dry_run:
+        log.info("[deals] --dry-run: would delete %d ghost rows", len(ghosts))
+        return 0
+
+    ghost_ids = [g[0] for g in ghosts]
+    with pg_engine.begin() as conn:
+        result = conn.execute(
+            text("DELETE FROM deals WHERE id = ANY(:ids)"),
+            {"ids": ghost_ids},
+        )
+        deleted = result.rowcount or 0
+    log.info("[deals] Deleted %d ghost rows from Supabase", deleted)
+    return deleted
+
+
 def _check_script_integrity():
     """Compare this script's on-disk sha256 to the HEAD-committed version.
 
@@ -1095,5 +1189,36 @@ def run():
         pg_engine.dispose()
 
 
+def _reconcile_only(dry_run=False):
+    """Standalone reconciliation entrypoint (no full sync)."""
+    _acquire_sync_lock()
+    log.info("Reconciliation-only mode (no incremental sync will run)")
+    pg_engine = _get_pg_engine()
+    sqlite_session = get_session()
+    try:
+        _reconcile_deals(sqlite_session, pg_engine, dry_run=dry_run)
+    finally:
+        sqlite_session.close()
+        pg_engine.dispose()
+
+
 if __name__ == "__main__":
-    run()
+    import argparse
+    parser = argparse.ArgumentParser(description="Sync SQLite → Supabase Postgres")
+    parser.add_argument(
+        "--reconcile-deals",
+        action="store_true",
+        help="One-shot ghost-row cleanup: delete Supabase deals not in SQLite. "
+             "Skips the regular sync entirely.",
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="With --reconcile-deals: show what would be deleted without doing it.",
+    )
+    args = parser.parse_args()
+
+    if args.reconcile_deals:
+        _reconcile_only(dry_run=args.dry_run)
+    else:
+        run()
