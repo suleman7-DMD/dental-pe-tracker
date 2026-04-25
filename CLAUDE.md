@@ -81,7 +81,7 @@ Both incremental paths wrap each row insert in a `begin_nested()` savepoint so a
 |-------|------|---------------|
 | `/` | Home | 6 KPI cards (Lucide icons), two-column layout (recent deals table + activity feed from practice_changes), data freshness bar, 2x3 quick nav grid |
 | `/launchpad` | Launchpad | First-job finder for new dental grads. Track-weighted 0-100 scoring (Succession / Apprentice, High-Volume Ethical, DSO Associate). 20-signal catalog (mentor-rich, hiring-now, boutique solo, FFS/concierge, community DSO, family dynasty, ghost practice, DSO avoid-tier, etc.). 5 tiers (Best Fit / Strong / Maybe / Low / Avoid). 4 living-location scopes. 5-tab practice dossier (Snapshot / Compensation / Mentorship / Red Flags / Interview Prep). Curated DSO tier list with comp bands + citations. |
-| `/warroom` | **Warroom** | Chicagoland god-mode command surface. 4 modes (Sitrep / Hunt / Profile / Investigate), 8 lenses (consolidation, density, buyability, retirement, pe_exposure, saturation, whitespace, disagreement), 12 scopes (US, chicagoland, 7 subzones, 3 saved presets). Intent bar (⌘K), Living Map, ranked target list, ZIP + practice dossier drawers, pinboard tray, signal flag overlays (15 practice + 8 ZIP), keyboard shortcuts (`?`), URL-synced state. |
+| `/warroom` | **Warroom** | Chicagoland command surface. 2 modes (Hunt / Investigate), 4 lenses (consolidation, density, buyability, retirement), 11 scopes (chicagoland, 7 subzones, 3 saved presets). Always-visible Sitrep KPI strip. Intent bar (⌘K), Living Map, ranked target list, ZIP + practice dossier drawers, pinboard tray, signal flag overlays (8 practice + 1 ZIP), keyboard shortcuts (`?`, `2`, `4`), URL-synced state. |
 | `/deal-flow` | Deal Flow | **4 tabs: Overview \| Sponsors \| Geography \| Deals.** Persistent KPI strip above tabs. Overview: deal volume timeline + specialty charts. Sponsors: top 15 sponsors/platforms. Geography: state choropleth. Deals: full searchable table with URL-synced filters. |
 | `/market-intel` | Market Intel | **3 tabs: Consolidation \| ZIP Analysis \| Ownership.** Persistent tiered consolidation KPIs above tabs. Consolidation: DSO Penetration Table + Mapbox consolidation map. ZIP Analysis: ZIP score table + city practice tree. Ownership: 11-type entity classification breakdown + methodology notes. Cross-link banner to Warroom. |
 | `/buyability` | Buyability | Verdict extraction from notes field, 4 category KPIs, ZIP filter, sortable table with CSV export |
@@ -166,20 +166,19 @@ Sidebar grouped into 4 sections (dark #2C2C2C background, goldenrod #B8860B acti
 | `src/lib/supabase/queries/launchpad.ts` | getLaunchpadBundle — parallel fetch + rankTargets + summary |
 | `src/app/warroom/page.tsx` | Warroom — `force-dynamic` Server Component calling `getSitrepBundle` |
 | `src/app/warroom/_components/warroom-shell.tsx` | Warroom orchestrator — holds state, wires modes, drawers, keyboard |
-| `src/app/warroom/_components/scope-selector.tsx` | 12-option scope dropdown (US / chicagoland / 7 subzones / 3 saved) |
+| `src/app/warroom/_components/scope-selector.tsx` | 11-option scope dropdown (chicagoland / 7 subzones / 3 saved) |
 | `src/app/warroom/_components/intent-bar.tsx` | ⌘K-focusable NL intent input |
-| `src/app/warroom/_components/sitrep-kpi-strip.tsx` | 6 KPIs for Sitrep mode |
+| `src/app/warroom/_components/sitrep-kpi-strip.tsx` | 6 KPIs (always-visible above Hunt + Investigate panels) |
 | `src/app/warroom/_components/living-map.tsx` | Mapbox ZIP choropleth colored by lens + signal flag overlays |
 | `src/app/warroom/_components/briefing-pane.tsx` | Scope-specific alerts + intent chip suggestions |
 | `src/app/warroom/_components/target-list.tsx` | Hunt mode ranked practice list |
 | `src/app/warroom/_components/dossier-drawer.tsx` | Practice dossier drawer |
 | `src/app/warroom/_components/zip-dossier-drawer.tsx` | ZIP dossier drawer (saturation, ownership, top practices) |
-| `src/app/warroom/_components/profile-mode-panel.tsx` | Pinned targets side-by-side compare |
 | `src/app/warroom/_components/investigate-mode-panel.tsx` | Flag co-occurrence + compound-signal targets |
 | `src/app/warroom/_components/pinboard-tray.tsx` | Bottom tray for pinned targets |
 | `src/app/warroom/_components/keyboard-shortcuts-overlay.tsx` | `?`-triggered shortcuts dialog |
 | `src/lib/warroom/mode.ts` | WARROOM_MODES + WARROOM_LENSES constants |
-| `src/lib/warroom/scope.ts` | 12 scope definitions + `normalizeWarroomDataScope()` |
+| `src/lib/warroom/scope.ts` | 11 scope definitions + `normalizeWarroomDataScope()` |
 | `src/lib/warroom/geo.ts` | Geographic helpers (subzone ZIPs, bounding boxes) |
 | `src/lib/warroom/signals.ts` | WarroomPracticeRecord + SitrepBundle types + flag constants |
 | `src/lib/warroom/data.ts` | `getSitrepBundle()` — batch-fetch by scope |

@@ -49,19 +49,49 @@ ZIP_USER = """Research ZIP {zip_code} ({city}, {state}) for dental practice inve
 Return JSON:
 {{"housing":{{"status":"active|moderate|stagnant|unknown","developments":[],"summary":""}},"schools":{{"district":"","rating":"","source":"","note":""}},"retail":{{"premium":[],"mass":[],"income_signal":""}},"commercial":{{"status":"","projects":[],"note":""}},"dental_news":{{"new_offices":[],"dso_moves":[],"note":""}},"real_estate":{{"median_price":null,"trend":"","yoy_pct":null,"source":""}},"zoning":{{"items":[],"note":""}},"population":{{"growth_signals":[],"demographics":"","note":""}},"employers":{{"major_nearby":[],"insurance_signal":""}},"competitors":{{"new_opens":[],"closures":[],"note":""}},"demand_outlook":"","supply_outlook":"","investment_thesis":"","confidence":"high|medium|low","sources":[]}}"""
 
-PRACTICE_SYSTEM = """You are conducting PE-style due diligence on a dental practice.
-Search the web for CURRENT, REAL data about this specific practice and doctor.
-If you can't find something, return null — never fabricate.
-Return ONLY raw JSON (no markdown, no explanation). Concise values only.
-Cost-sensitive — minimize output tokens."""
+PRACTICE_SYSTEM = """You are conducting PE-style due diligence on a dental practice. Output must be 100% verifiable. Every factual claim must cite the exact URL it came from.
 
-PRACTICE_USER = """Research this dental practice:
+EVIDENCE PROTOCOL — NON-NEGOTIABLE:
+
+1. EXECUTE web_search AT LEAST 2 TIMES per practice before composing the JSON.
+   Required search 1: "<practice name> <city> <state>" — locate the practice's own website to verify name, address, services, technology, providers, hiring.
+   Required search 2: "<practice name> <city> reviews" — locate Google/Healthgrades/Yelp listings to verify reviews, rating, sentiment.
+   Use up to 3 additional searches when needed: doctor's name + credentials, recent acquisition/news, social profiles.
+
+2. EVERY non-null field in every section MUST be backed by a URL recorded in that section's `_source_url` field. If you cannot cite a URL you actually read, the value MUST be null.
+
+3. NEVER infer from priors. Do NOT guess from the practice's name, doctor's last name, or address.
+   - "Smith Family Dental" does NOT imply pediatric or family services unless their website lists them.
+   - A foreign-sounding doctor name does NOT imply a language spoken unless cited.
+   - Suburban location does NOT imply affluence/insurance mix unless cited.
+
+4. Brand and technology claims (iTero, Invisalign, CEREC, Wave, 3Shape, ClearCorrect, etc.) MUST be sourced from the practice's own website or its verified social media. Generic directory listings (HealthGrades, Yelp, ZocDoc summaries) DO NOT count for tech claims.
+
+5. If a search returns nothing useful for a section, set every field in that section to null AND set `_source_url` to "no_results_found". This is the CORRECT behavior. Returning null is success; fabrication is failure.
+
+6. The `verification` block at the end is mandatory. Report exactly how many searches you executed, the queries used, your overall evidence quality (verified / partial / insufficient), and the primary source URLs you cited.
+
+OUTPUT RULES:
+- Return ONLY raw JSON. No markdown, no preamble, no explanation outside the JSON.
+- Use null liberally. Null is the correct answer when evidence is missing.
+- Prose values: 1-2 sentences max.
+- Lists: max 5 items.
+- Do not invent URLs. Only cite URLs you actually read in a search result."""
+
+PRACTICE_USER = """Research this dental practice with rigorous web verification:
 Name: {name}
 Address: {address}, {city}, {state} {zip}
 Doctor: {doctor_name}
 {extra_context}
-Return JSON:
-{{"website":{{"url":"","era":"modern|dated|template|none|unknown","last_update":"","analysis":""}},"services":{{"listed":[],"high_revenue":[],"note":""}},"technology":{{"listed":[],"level":"high|moderate|basic|unknown"}},"providers":{{"web_count":null,"owner_stage":"late|mid|early|unknown","notes":""}},"google":{{"reviews":null,"rating":null,"recent_date":"","velocity":"active|moderate|stale|unknown","sentiment":""}},"hiring":{{"active":false,"positions":[],"source":""}},"acquisition_news":{{"found":false,"details":""}},"social":{{"facebook":"active|inactive|none","instagram":"active|inactive|none","other":""}},"healthgrades":{{"rating":null,"reviews":null}},"zocdoc":{{"listed":false}},"doctor":{{"publications":false,"speaking":false,"associations":[],"notes":""}},"insurance":{{"medicaid":null,"ppo_heavy":null,"note":""}},"red_flags":[],"green_flags":[],"assessment":"","readiness":"high|medium|low|unlikely|unknown","confidence":"high|medium|low","sources":[]}}"""
+
+REQUIRED PROCESS BEFORE COMPOSING JSON:
+- Execute web_search at minimum 2 times (practice site, then reviews/listings).
+- For every field you populate, record the source URL in that section's `_source_url`.
+- For sections where searches returned nothing, set all values to null and `_source_url` to "no_results_found".
+- Fill the `verification` block honestly — it will be programmatically validated.
+
+Return JSON (every section includes `_source_url`; final `verification` block is mandatory):
+{{"website":{{"url":"","era":"modern|dated|template|none|unknown","last_update":"","analysis":"","_source_url":""}},"services":{{"listed":[],"high_revenue":[],"note":"","_source_url":""}},"technology":{{"listed":[],"level":"high|moderate|basic|unknown","_source_url":""}},"providers":{{"web_count":null,"owner_stage":"late|mid|early|unknown","notes":"","_source_url":""}},"google":{{"reviews":null,"rating":null,"recent_date":"","velocity":"active|moderate|stale|unknown","sentiment":"","_source_url":""}},"hiring":{{"active":false,"positions":[],"source":"","_source_url":""}},"acquisition_news":{{"found":false,"details":"","_source_url":""}},"social":{{"facebook":"active|inactive|none","instagram":"active|inactive|none","other":"","_source_url":""}},"healthgrades":{{"rating":null,"reviews":null,"_source_url":""}},"zocdoc":{{"listed":false,"_source_url":""}},"doctor":{{"publications":false,"speaking":false,"associations":[],"notes":"","_source_url":""}},"insurance":{{"medicaid":null,"ppo_heavy":null,"note":"","_source_url":""}},"red_flags":[],"green_flags":[],"assessment":"","readiness":"high|medium|low|unlikely|unknown","confidence":"high|medium|low","sources":[],"verification":{{"searches_executed":0,"search_queries":[],"evidence_quality":"verified|partial|insufficient","primary_sources":[]}}}}"""
 
 JOB_HUNT_SYSTEM = """You are a dental career advisor helping new DDS/DMD graduates evaluate first-job opportunities.
 Search the web for CURRENT, REAL data about this specific practice. If you can't find something, return null — never fabricate.
@@ -116,8 +146,13 @@ class ResearchEngine:
         _last_req_time = time.time()
 
     def _call_api(self, system, user_msg, model=None, max_tokens=None,
-                  max_searches=8):
-        """Single API call with web search + prompt caching."""
+                  max_searches=8, force_search=False):
+        """Single API call with web search + prompt caching.
+
+        force_search=True sets tool_choice to require at least one web_search call
+        (Anthropic's 'tool' tool_choice forces the named tool to be invoked at least once;
+        the model may still make additional searches up to max_searches).
+        """
         if self._consecutive_failures >= CIRCUIT_BREAKER_THRESHOLD:
             msg = (f"Circuit breaker open: {self._consecutive_failures} consecutive "
                    f"API failures. Aborting to prevent 290 items x 120s timeout.")
@@ -151,6 +186,8 @@ class ResearchEngine:
                        "max_uses": max_searches}],
             "messages": [{"role": "user", "content": user_msg}]
         }
+        if force_search:
+            body["tool_choice"] = {"type": "tool", "name": "web_search"}
 
         try:
             resp = req.post("https://api.anthropic.com/v1/messages",
@@ -226,7 +263,9 @@ class ResearchEngine:
             name=name, address=address, city=city, state=state,
             zip=zip_code, doctor_name=doctor_name or "Unknown",
             extra_context=extra_context or "")
-        r = self._call_api(PRACTICE_SYSTEM, msg, model=model, max_searches=4)
+        # Practice dossiers MUST cite sources — force at least 1 web_search; allow up to 5.
+        r = self._call_api(PRACTICE_SYSTEM, msg, model=model,
+                           max_searches=5, force_search=True)
         r["_type"] = "practice"
         r["_npi"] = npi
         return r
@@ -347,9 +386,14 @@ class ResearchEngine:
     # ── Batch API ────────────────────────────────────────────────────────
 
     def build_batch_requests(self, items, research_type="zip"):
-        """Build batch request list. research_type: 'zip' or 'practice'."""
+        """Build batch request list. research_type: 'zip' or 'practice'.
+
+        Practice items get tool_choice forcing web_search + max_uses=5 so the model
+        cannot answer from priors. ZIP items keep auto tool_choice (still 8 max).
+        """
         reqs = []
         for item in items:
+            force = False
             if research_type == "zip":
                 msg = ZIP_USER.format(**item)
                 sys = ZIP_SYSTEM
@@ -363,20 +407,21 @@ class ResearchEngine:
                     extra_context=item.get("extra_context", ""))
                 sys = PRACTICE_SYSTEM
                 cid = f"practice_{item['npi']}"
-                ms = 4
+                ms = 5
+                force = True
 
-            reqs.append({
-                "custom_id": cid,
-                "params": {
-                    "model": self.model,
-                    "max_tokens": self.max_tokens,
-                    "system": [{"type": "text", "text": sys,
-                               "cache_control": {"type": "ephemeral"}}],
-                    "tools": [{"type": "web_search_20250305",
-                              "name": "web_search", "max_uses": ms}],
-                    "messages": [{"role": "user", "content": msg}]
-                }
-            })
+            params = {
+                "model": self.model,
+                "max_tokens": self.max_tokens,
+                "system": [{"type": "text", "text": sys,
+                           "cache_control": {"type": "ephemeral"}}],
+                "tools": [{"type": "web_search_20250305",
+                          "name": "web_search", "max_uses": ms}],
+                "messages": [{"role": "user", "content": msg}]
+            }
+            if force:
+                params["tool_choice"] = {"type": "tool", "name": "web_search"}
+            reqs.append({"custom_id": cid, "params": params})
         return reqs
 
     def submit_batch(self, requests):

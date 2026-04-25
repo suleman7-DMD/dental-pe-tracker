@@ -110,8 +110,48 @@ def estimate_cost(queue):
     return (zip_cost + prac_cost) * 0.5
 
 
+def validate_dossier(npi: str, data: dict) -> tuple[bool, str]:
+    """Anti-hallucination gate. Reject practice dossiers that fail evidence requirements.
+
+    Returns (is_valid, reason). reason is empty on pass; populated on rejection.
+    Rules:
+      1. verification block must exist
+      2. searches_executed must be >= 1 (we forced at least 1 via tool_choice)
+      3. evidence_quality must not be 'insufficient'
+      4. If website.url is set non-null, website._source_url must also be set
+         (means: any cited website needs a citation URL)
+      5. If google.reviews or google.rating is set, google._source_url must be set
+    """
+    ver = data.get("verification") or {}
+    if not ver:
+        return False, "missing_verification_block"
+
+    searches = ver.get("searches_executed")
+    try:
+        searches_n = int(searches) if searches is not None else 0
+    except (TypeError, ValueError):
+        searches_n = 0
+    if searches_n < 1:
+        return False, f"insufficient_searches({searches_n})"
+
+    quality = (ver.get("evidence_quality") or "").lower()
+    if quality == "insufficient":
+        return False, "evidence_quality=insufficient"
+
+    web = data.get("website") or {}
+    if web.get("url") and not web.get("_source_url"):
+        return False, "website.url_without_source"
+
+    goog = data.get("google") or {}
+    if (goog.get("reviews") is not None or goog.get("rating") is not None) and not goog.get("_source_url"):
+        return False, "google.metrics_without_source"
+
+    return True, ""
+
+
 def retrieve_batch(batch_id):
-    """Retrieve completed batch results and store them."""
+    """Retrieve completed batch results and store them. Practice dossiers pass
+    through validate_dossier() — failures are quarantined, not stored."""
     engine = ResearchEngine(model=MODEL_HAIKU)
     tracker = CostTracker()
 
@@ -138,27 +178,46 @@ def retrieve_batch(batch_id):
         return
 
     stored = 0
+    failed = 0
+    rejected = 0
+    rejection_reasons = {}
     for item in results:
         cid = item.get("id", "")
         data = item.get("data", {})
         if not data or "error" in data:
             logger.warning("Batch item %s failed: %s", cid, data.get("error", "unknown"))
+            failed += 1
             continue
 
-        if cid.startswith("zip_"):
-            zip_code = cid[4:]
-            store_zip_intel(zip_code, data)
-            tracker.record("zip", 0, "batch", zip_code)
-            stored += 1
-            print(f"  ✅ ZIP {zip_code}")
-        elif cid.startswith("practice_"):
-            npi = cid[9:]
-            store_practice_intel(npi, data)
-            tracker.record("practice", 0, "batch", npi)
-            stored += 1
-            print(f"  ✅ Practice {npi}")
+        try:
+            if cid.startswith("zip_"):
+                zip_code = cid[4:]
+                store_zip_intel(zip_code, data)
+                tracker.record("zip", 0, "batch", zip_code)
+                stored += 1
+                print(f"  ✅ ZIP {zip_code}")
+            elif cid.startswith("practice_"):
+                npi = cid[9:]
+                ok, reason = validate_dossier(npi, data)
+                if not ok:
+                    rejected += 1
+                    rejection_reasons[reason] = rejection_reasons.get(reason, 0) + 1
+                    logger.warning("Quarantined practice %s: %s", npi, reason)
+                    print(f"  🚫 Practice {npi} REJECTED ({reason})")
+                    continue
+                store_practice_intel(npi, data)
+                tracker.record("practice", 0, "batch", npi)
+                stored += 1
+                print(f"  ✅ Practice {npi}")
+        except Exception as e:
+            failed += 1
+            logger.error("Skipping %s due to storage error: %s", cid, e)
+            print(f"  ⚠️  Skipped {cid}: {str(e)[:120]}")
 
-    print(f"\n  Stored {stored}/{len(results)} results.")
+    print(f"\n  Stored {stored}/{len(results)} results "
+          f"({failed} errored, {rejected} quarantined).")
+    if rejection_reasons:
+        print(f"  Rejection breakdown: {dict(rejection_reasons)}")
 
 
 def main():

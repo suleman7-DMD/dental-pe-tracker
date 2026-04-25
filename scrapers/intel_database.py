@@ -124,6 +124,7 @@ def store_practice_intel(npi: str, research_data: Dict, db_path=None):
         zd = research_data.get("zocdoc", {})
         doc = research_data.get("doctor", {})
         ins = research_data.get("insurance", {})
+        ver = research_data.get("verification", {}) or {}
 
         obj = PracticeIntel(
             npi=npi,
@@ -183,6 +184,10 @@ def store_practice_intel(npi: str, research_data: Dict, db_path=None):
             compensation_signals=_jdump(research_data.get("compensation_signals")),
             red_flags_for_grad=_jdump(research_data.get("red_flags_for_grad")),
             green_flags_for_grad=_jdump(research_data.get("green_flags_for_grad")),
+            # Anti-hallucination verification block (April 2026)
+            verification_searches=_safe_int(ver.get("searches_executed")),
+            verification_quality=ver.get("evidence_quality"),
+            verification_urls=_jdump(ver.get("primary_sources")),
         )
         session.merge(obj)
         session.commit()
