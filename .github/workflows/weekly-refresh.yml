@@ -1,0 +1,153 @@
+name: Weekly Pipeline Refresh
+# Cloud replacement for the macOS launchd weekly-refresh job.
+# The launchd com.dental-pe.weekly-refresh job has runs=0 due to macOS Sequoia
+# LWCR stale-context bug (audit §14.1 / §15 #4). This workflow runs every
+# Sunday at 08:00 UTC (approximately 03:00 CT / 04:00 ET), matching the
+# original schedule intent. Unlike the local cron, this runs in the cloud so
+# it fires even when the MacBook is closed or off.
+#
+# NOTE ON TIME ZONE: GitHub Actions cron runs in UTC. Sunday 08:00 UTC is:
+#   - 03:00 CT (summer, CDT = UTC-5)
+#   - 04:00 ET (summer, EDT = UTC-4)
+# If you prefer a different local time, adjust the cron line accordingly.
+#
+# REQUIRED GITHUB SECRETS (add at repo Settings > Secrets > Actions):
+#   SUPABASE_DATABASE_URL   — PostgreSQL connection string (from .env)
+#   ANTHROPIC_API_KEY       — For weekly qualitative research step
+#   GITHUB_TOKEN            — Auto-provided by Actions; no setup needed
+#
+# WHAT THIS WORKFLOW DOES (mirrors scrapers/refresh.sh steps 2-11):
+#   - Does NOT do the git-push DB.gz step (Streamlit Cloud is the legacy
+#     frontend; Vercel/Supabase is the primary path in CI)
+#   - DOES run sync_to_supabase.py which updates the live Vercel frontend
+#
+# See scrapers/refresh.sh for the full local pipeline with DB backup + git push.
+
+on:
+  schedule:
+    - cron: '0 8 * * 0'  # Sunday 08:00 UTC
+  workflow_dispatch:      # Manual trigger for testing
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180   # 3hr hard cap; full pipeline should run in <90m
+
+    env:
+      SUPABASE_DATABASE_URL: ${{ secrets.SUPABASE_DATABASE_URL }}
+      SUPABASE_POOLER_URL:   ${{ secrets.SUPABASE_POOLER_URL }}
+      ANTHROPIC_API_KEY:     ${{ secrets.ANTHROPIC_API_KEY }}
+      PYTHONPATH:            ${{ github.workspace }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt 2>/dev/null || pip install \
+          requests beautifulsoup4 lxml sqlalchemy psycopg2-binary \
+          anthropic python-dateutil tqdm openpyxl fuzzywuzzy python-Levenshtein \
+          2>/dev/null || true
+
+      - name: Restore SQLite DB from cache (if present)
+        id: cache-db
+        uses: actions/cache@v4
+        with:
+          path: data/dental_pe_tracker.db
+          key: dental-pe-db-${{ github.run_id }}
+          restore-keys: |
+            dental-pe-db-
+
+      - name: Decompress SQLite DB (if no cache hit)
+        if: steps.cache-db.outputs.cache-hit != 'true'
+        run: |
+          if [ -f data/dental_pe_tracker.db.gz ]; then
+            python3 -c "
+          import gzip, shutil
+          with gzip.open('data/dental_pe_tracker.db.gz','rb') as f:
+              with open('data/dental_pe_tracker.db','wb') as out:
+                  shutil.copyfileobj(f, out)
+          print('DB decompressed:', __import__('os').path.getsize('data/dental_pe_tracker.db'), 'bytes')
+          "
+          else
+            echo "No DB.gz found; fresh run will create the DB"
+          fi
+
+      - name: Scrape PESP deals
+        timeout-minutes: 20
+        run: python3 scrapers/pesp_scraper.py
+        continue-on-error: true
+
+      - name: Scrape GDN deals
+        timeout-minutes: 20
+        run: python3 scrapers/gdn_scraper.py
+        continue-on-error: true
+
+      - name: Import PitchBook CSVs (auto mode)
+        timeout-minutes: 10
+        run: python3 scrapers/pitchbook_importer.py --auto
+        continue-on-error: true
+
+      - name: Scrape ADSO locations
+        timeout-minutes: 30
+        run: python3 scrapers/adso_location_scraper.py
+        continue-on-error: true
+
+      - name: Download ADA HPI benchmarks
+        timeout-minutes: 15
+        run: python3 scrapers/ada_hpi_downloader.py
+        continue-on-error: true
+
+      - name: Classify DSO affiliations (including entity types)
+        timeout-minutes: 20
+        run: python3 scrapers/dso_classifier.py --entity-types-only
+        continue-on-error: true
+
+      - name: Merge and score ZIPs
+        timeout-minutes: 15
+        run: python3 scrapers/merge_and_score.py
+        continue-on-error: true
+
+      - name: Weekly qualitative research ($5 budget cap)
+        timeout-minutes: 20
+        if: env.ANTHROPIC_API_KEY != ''
+        run: python3 scrapers/weekly_research.py --budget 5
+        continue-on-error: true
+
+      - name: Compute Warroom signals
+        timeout-minutes: 15
+        run: python3 scrapers/compute_signals.py
+        continue-on-error: true
+
+      - name: Sync to Supabase
+        timeout-minutes: 45
+        if: env.SUPABASE_DATABASE_URL != ''
+        run: python3 scrapers/sync_to_supabase.py
+
+      - name: Print pipeline summary
+        if: always()
+        run: |
+          echo "=== Pipeline Run Summary ==="
+          python3 -c "
+          import sqlite3, os
+          if not os.path.exists('data/dental_pe_tracker.db'):
+              print('DB not found'); exit()
+          conn = sqlite3.connect('data/dental_pe_tracker.db')
+          for tbl, col in [('deals','deal_date'),('practices','npi'),('zip_scores','zip_code')]:
+              try:
+                  cnt = conn.execute(f'SELECT COUNT(*) FROM {tbl}').fetchone()[0]
+                  if col == 'deal_date':
+                      mx = conn.execute(f'SELECT MAX({col}) FROM {tbl}').fetchone()[0]
+                      print(f'{tbl}: {cnt} rows, max {col}={mx}')
+                  else:
+                      print(f'{tbl}: {cnt} rows')
+              except Exception as e:
+                  print(f'{tbl}: error ({e})')
+          conn.close()
+          " || echo "Summary query failed"
