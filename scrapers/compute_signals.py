@@ -1090,9 +1090,17 @@ def compute_signal_rows(conn, run_date=None):
 
     practice_rows = []
     signals_by_zip = defaultdict(list)
+    skipped_null_npi = 0
 
     for practice in practices:
         npi = practice.get("npi")
+        # Guard: skip rows with no NPI — they cannot satisfy the FK constraint
+        # on practice_signals.npi -> practices.npi in Supabase Postgres.
+        # Audit §14.6: NPI 1316509367 orphan blocked sync; this guard prevents
+        # future recurrence if a practice row ever lacks an NPI value.
+        if not npi:
+            skipped_null_npi += 1
+            continue
         zip_code = practice.get("zip")
         buyability = _as_float(practice.get("buyability_score"))
         stealth = stealth_by_npi.get(npi)
@@ -1193,6 +1201,9 @@ def compute_signal_rows(conn, run_date=None):
         }
         practice_rows.append(row)
         signals_by_zip[zip_code].append(row)
+
+    if skipped_null_npi:
+        log.warning("Skipped %d practice rows with null NPI (FK guard, audit §14.6)", skipped_null_npi)
 
     zip_rows = []
     for zip_code in sorted(watched):
