@@ -1,0 +1,209 @@
+name: Scheduled Re-Audit
+# Durable replacement for CronCreate session-only schedules.
+# Runs the dental-pe-tracker re-audit on 8 dates after AUDIT_REPORT_2026-04-25.md
+# (Day 1, 2, 3, 4, 5, 6, 7, then 2-week soak), executed via Claude Code CLI in
+# headless mode against the live Vercel + Supabase deployment. Read-only.
+
+on:
+  schedule:
+    # All times are UTC; ET = UTC - 4 during EDT (April-November)
+    - cron: '23 13 26 4 *'   # 2026-04-26 09:23 ET — Day 1 follow-up
+    - cron: '37 13 27 4 *'   # 2026-04-27 09:37 ET — Day 2
+    - cron: '11 13 28 4 *'   # 2026-04-28 09:11 ET — Day 3
+    - cron: '47 13 29 4 *'   # 2026-04-29 09:47 ET — Day 4
+    - cron: '19 13 30 4 *'   # 2026-04-30 09:19 ET — Day 5
+    - cron: '31 13 1 5 *'    # 2026-05-01 09:31 ET — Day 6
+    - cron: '43 13 2 5 *'    # 2026-05-02 09:43 ET — Day 7 (one-week)
+    - cron: '29 13 9 5 *'    # 2026-05-09 09:29 ET — 2-week soak / close-out
+
+  workflow_dispatch:
+    inputs:
+      simulate_date:
+        description: 'Override target date as YYYY-MM-DD (for manual smoke-test)'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  reaudit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve target date
+        id: target
+        run: |
+          set -euo pipefail
+          SIM='${{ github.event.inputs.simulate_date }}'
+          if [ -n "$SIM" ]; then
+            TARGET="$SIM"
+            echo "Manual run with simulate_date=$TARGET"
+          else
+            TARGET=$(date -u +%Y-%m-%d)
+            echo "Scheduled run on $TARGET (UTC)"
+          fi
+          echo "target_date=$TARGET" >> "$GITHUB_OUTPUT"
+
+      - name: Map date to prompt file
+        id: prompt
+        run: |
+          set -euo pipefail
+          case "${{ steps.target.outputs.target_date }}" in
+            2026-04-26) F=".github/reaudit-prompts/prompt-1.md"; D="Day 1 follow-up"   ;;
+            2026-04-27) F=".github/reaudit-prompts/prompt-2.md"; D="Day 2"             ;;
+            2026-04-28) F=".github/reaudit-prompts/prompt-3.md"; D="Day 3"             ;;
+            2026-04-29) F=".github/reaudit-prompts/prompt-4.md"; D="Day 4"             ;;
+            2026-04-30) F=".github/reaudit-prompts/prompt-5.md"; D="Day 5"             ;;
+            2026-05-01) F=".github/reaudit-prompts/prompt-6.md"; D="Day 6"             ;;
+            2026-05-02) F=".github/reaudit-prompts/prompt-7.md"; D="Day 7 / one-week"  ;;
+            2026-05-09) F=".github/reaudit-prompts/prompt-8.md"; D="2-week soak"       ;;
+            *)
+              echo "::notice::${{ steps.target.outputs.target_date }} is not a scheduled re-audit day. Exiting cleanly."
+              echo "skip=true" >> "$GITHUB_OUTPUT"
+              exit 0
+              ;;
+          esac
+          if [ ! -f "$F" ]; then
+            echo "::error::Mapped prompt file $F does not exist."
+            exit 1
+          fi
+          echo "Resolved $D -> $F"
+          echo "prompt_file=$F" >> "$GITHUB_OUTPUT"
+          echo "milestone=$D" >> "$GITHUB_OUTPUT"
+          echo "skip=false" >> "$GITHUB_OUTPUT"
+
+      - name: Verify required secrets
+        if: steps.prompt.outputs.skip != 'true'
+        run: |
+          set -e
+          MISSING=""
+          [ -z "$ANTHROPIC_API_KEY" ]   && MISSING="$MISSING ANTHROPIC_API_KEY"
+          [ -z "$SUPABASE_URL" ]        && MISSING="$MISSING SUPABASE_URL"
+          [ -z "$SUPABASE_ANON_KEY" ]   && MISSING="$MISSING SUPABASE_ANON_KEY"
+          if [ -n "$MISSING" ]; then
+            echo "::error::Missing repo secrets:$MISSING"
+            echo "Set them via: gh secret set <NAME>"
+            exit 1
+          fi
+          echo "All required secrets present."
+
+      - name: Setup Node.js
+        if: steps.prompt.outputs.skip != 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Claude Code CLI
+        if: steps.prompt.outputs.skip != 'true'
+        run: |
+          npm install -g @anthropic-ai/claude-code
+          claude --version
+
+      - name: Decompress local DB if present
+        if: steps.prompt.outputs.skip != 'true'
+        run: |
+          if [ -f data/dental_pe_tracker.db.gz ]; then
+            gunzip -k data/dental_pe_tracker.db.gz
+            ls -lh data/dental_pe_tracker.db
+          else
+            echo "No bundled SQLite DB. Re-audit will rely on Supabase REST API."
+          fi
+
+      - name: Capture pre-run git state
+        if: steps.prompt.outputs.skip != 'true'
+        run: |
+          git rev-parse HEAD > /tmp/pre_run_head.txt
+          echo "Pre-run HEAD: $(cat /tmp/pre_run_head.txt)"
+
+      - name: Run Claude Code re-audit (headless)
+        if: steps.prompt.outputs.skip != 'true'
+        env:
+          REPORT_PATH: /tmp/reaudit_${{ steps.target.outputs.target_date }}.md
+          MILESTONE: ${{ steps.prompt.outputs.milestone }}
+        run: |
+          set -o pipefail
+          PROMPT_FILE="${{ steps.prompt.outputs.prompt_file }}"
+          PROMPT_BODY=$(cat "$PROMPT_FILE")
+          # Inject runtime-resolved variables so the agent sees the right paths.
+          PROMPT_BODY="${PROMPT_BODY//\{\{TARGET_DATE\}\}/${{ steps.target.outputs.target_date }}}"
+          PROMPT_BODY="${PROMPT_BODY//\{\{MILESTONE\}\}/$MILESTONE}"
+          PROMPT_BODY="${PROMPT_BODY//\{\{REPORT_PATH\}\}/$REPORT_PATH}"
+
+          echo "::group::Prompt being sent ($(echo "$PROMPT_BODY" | wc -l) lines)"
+          echo "$PROMPT_BODY" | head -40
+          echo "..."
+          echo "::endgroup::"
+
+          set +e
+          claude -p "$PROMPT_BODY" \
+            --permission-mode bypassPermissions \
+            --max-turns 80 \
+            2>&1 | tee /tmp/claude_session.log
+          CLAUDE_RC=$?
+          set -e
+
+          echo "Claude exited with code $CLAUDE_RC"
+
+          if [ -f "$REPORT_PATH" ]; then
+            cp "$REPORT_PATH" reaudit-output.md
+            echo "Report captured: $(wc -l reaudit-output.md | awk '{print $1}') lines"
+          else
+            echo "::warning::Agent did not write $REPORT_PATH. Capturing session log instead."
+            cp /tmp/claude_session.log reaudit-output.md
+          fi
+
+      - name: Verify read-only (no commits, no working-tree changes)
+        if: steps.prompt.outputs.skip != 'true'
+        run: |
+          set -e
+          POST=$(git rev-parse HEAD)
+          PRE=$(cat /tmp/pre_run_head.txt)
+          if [ "$POST" != "$PRE" ]; then
+            echo "::error::Agent advanced HEAD ($PRE -> $POST). Re-audit must be read-only."
+            exit 1
+          fi
+          if ! git diff --quiet || ! git diff --cached --quiet; then
+            echo "::warning::Working tree dirty after re-audit (acceptable if scratch files only):"
+            git status --short
+          else
+            echo "Clean working tree — read-only contract honored."
+          fi
+
+      - name: Upload re-audit artifact
+        if: always() && steps.prompt.outputs.skip != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: reaudit-${{ steps.target.outputs.target_date }}
+          path: |
+            reaudit-output.md
+            /tmp/claude_session.log
+          retention-days: 90
+          if-no-files-found: warn
+
+      - name: Summary
+        if: always() && steps.prompt.outputs.skip != 'true'
+        run: |
+          echo "## Re-audit complete" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Date:** ${{ steps.target.outputs.target_date }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Milestone:** ${{ steps.prompt.outputs.milestone }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Prompt:** ${{ steps.prompt.outputs.prompt_file }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Artifact:** reaudit-${{ steps.target.outputs.target_date }}" >> "$GITHUB_STEP_SUMMARY"
+          if [ -f reaudit-output.md ]; then
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "### Top of report" >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+            head -40 reaudit-output.md >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          fi
