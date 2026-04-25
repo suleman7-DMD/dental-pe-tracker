@@ -1,0 +1,195 @@
+name: Auto-Fix Round
+# Monthly fix-pass. Runs ~2 days after the comprehensive audit, picks
+# up to 5 P0/P1 items from the latest AUDIT_REPORT_*.md, applies them
+# on a fresh `auto-fix/<DATE>` branch, opens a single PR. Owner reviews.
+
+on:
+  schedule:
+    - cron: '0 13 3 * *'   # 3rd of every month at 13:00 UTC (~2d after sweep)
+  workflow_dispatch:
+    inputs:
+      simulate_date:
+        description: 'Override target date as YYYY-MM-DD (for manual smoke-test)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write          # for pushing the auto-fix/<DATE> branch
+  pull-requests: write     # for opening the PR
+
+concurrency:
+  group: auto-fix
+  cancel-in-progress: false
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Resolve target date
+        id: target
+        run: |
+          set -euo pipefail
+          SIM='${{ github.event.inputs.simulate_date }}'
+          if [ -n "$SIM" ]; then
+            TARGET="$SIM"
+            echo "Manual auto-fix with simulate_date=$TARGET"
+          else
+            TARGET=$(date -u +%Y-%m-%d)
+            echo "Scheduled auto-fix on $TARGET (UTC)"
+          fi
+          echo "target_date=$TARGET" >> "$GITHUB_OUTPUT"
+
+      - name: Verify required secrets
+        run: |
+          set -e
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::error::Missing repo secret ANTHROPIC_API_KEY"
+            exit 1
+          fi
+
+      - name: Abort if a previous auto-fix PR is still open
+        run: |
+          set -euo pipefail
+          OPEN=$(gh pr list \
+            --search 'is:open in:title auto-fix' \
+            --json number,title,createdAt \
+            --limit 5)
+          COUNT=$(echo "$OPEN" | jq 'length')
+          if [ "$COUNT" -gt 0 ]; then
+            echo "::warning::An auto-fix PR is already open. Aborting cleanly."
+            echo "$OPEN" | jq -r '.[] | "  PR #\(.number): \(.title) (opened \(.createdAt))"'
+            echo "abort_open_pr=true" >> "$GITHUB_ENV"
+          else
+            echo "No open auto-fix PR — proceeding."
+            echo "abort_open_pr=false" >> "$GITHUB_ENV"
+          fi
+
+      - name: Find latest audit report
+        if: env.abort_open_pr == 'false'
+        id: audit
+        run: |
+          set -euo pipefail
+          LATEST=$(ls -1 AUDIT_REPORT_*.md 2>/dev/null | sort -r | head -1 || true)
+          if [ -z "$LATEST" ]; then
+            echo "::warning::No AUDIT_REPORT_*.md found at repo root. Aborting cleanly."
+            echo "abort_no_audit=true" >> "$GITHUB_ENV"
+            exit 0
+          fi
+          echo "Found latest audit: $LATEST"
+          echo "latest_audit=$LATEST" >> "$GITHUB_OUTPUT"
+          echo "abort_no_audit=false" >> "$GITHUB_ENV"
+
+      - name: Setup Node.js
+        if: env.abort_open_pr == 'false' && env.abort_no_audit == 'false'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: dental-pe-nextjs/package-lock.json
+
+      - name: Install Claude Code CLI
+        if: env.abort_open_pr == 'false' && env.abort_no_audit == 'false'
+        run: |
+          npm install -g @anthropic-ai/claude-code
+          claude --version
+
+      - name: Install Next.js deps (for build verification)
+        if: env.abort_open_pr == 'false' && env.abort_no_audit == 'false'
+        working-directory: dental-pe-nextjs
+        run: |
+          npm ci --no-audit --no-fund
+
+      - name: Configure git committer
+        if: env.abort_open_pr == 'false' && env.abort_no_audit == 'false'
+        run: |
+          git config user.name  'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+      - name: Capture pre-run HEAD
+        if: env.abort_open_pr == 'false' && env.abort_no_audit == 'false'
+        run: git rev-parse HEAD > /tmp/pre_run_head.txt
+
+      - name: Run auto-fix round (headless)
+        if: env.abort_open_pr == 'false' && env.abort_no_audit == 'false'
+        env:
+          LATEST_AUDIT: ${{ steps.audit.outputs.latest_audit }}
+        run: |
+          set -o pipefail
+          PROMPT_BODY=$(cat .github/audit-prompts/auto-fix.md)
+          PROMPT_BODY="${PROMPT_BODY//\{\{TARGET_DATE\}\}/${{ steps.target.outputs.target_date }}}"
+
+          echo "::group::Running auto-fix against $LATEST_AUDIT"
+          set +e
+          claude -p "$PROMPT_BODY" \
+            --permission-mode bypassPermissions \
+            --max-turns 150 \
+            2>&1 | tee /tmp/claude_session.log
+          CLAUDE_RC=$?
+          set -e
+          echo "Claude exited $CLAUDE_RC"
+          echo "::endgroup::"
+
+      - name: Capture post-run HEAD + branch state
+        if: env.abort_open_pr == 'false' && env.abort_no_audit == 'false'
+        run: |
+          set +e
+          POST_HEAD=$(git rev-parse HEAD)
+          PRE_HEAD=$(cat /tmp/pre_run_head.txt)
+          echo "Pre-run HEAD:  $PRE_HEAD"
+          echo "Post-run HEAD: $POST_HEAD"
+          if [ "$PRE_HEAD" != "$POST_HEAD" ]; then
+            echo "::error::HEAD on main moved during auto-fix run. Auto-fix is supposed to work on a branch only."
+            echo "  pre  $PRE_HEAD"
+            echo "  post $POST_HEAD"
+            # Don't fail the workflow — but flag it loudly. The push step would fail anyway since we run on a branch.
+          fi
+          # List local branches to see if auto-fix/<date> was created
+          echo "Local branches:"
+          git branch -a | head -50
+
+      - name: Force-discard any uncommitted main-tree changes
+        if: always()
+        run: |
+          # Only act on main; the auto-fix branch should already have its commits
+          if [ "$(git rev-parse --abbrev-ref HEAD)" = "main" ]; then
+            git reset --hard HEAD
+            git clean -fd -- ':!data/dental_pe_tracker.db'
+          fi
+
+      - name: Upload session artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: auto-fix-${{ steps.target.outputs.target_date }}
+          path: |
+            /tmp/claude_session.log
+            /tmp/pre_run_head.txt
+          retention-days: 90
+          if-no-files-found: warn
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Auto-Fix Round" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Date:** ${{ steps.target.outputs.target_date }}" >> "$GITHUB_STEP_SUMMARY"
+          if [ "${abort_open_pr:-false}" = "true" ]; then
+            echo "- **Status:** ⏭️ Skipped — a previous auto-fix PR is still open. Owner needs to review/merge that one first." >> "$GITHUB_STEP_SUMMARY"
+          elif [ "${abort_no_audit:-false}" = "true" ]; then
+            echo "- **Status:** ⏭️ Skipped — no AUDIT_REPORT_*.md found at repo root yet." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "- **Audit consumed:** \`${{ steps.audit.outputs.latest_audit }}\`" >> "$GITHUB_STEP_SUMMARY"
+            echo "- **PR (if any):** check [open auto-fix PRs](https://github.com/${{ github.repository }}/pulls?q=is%3Aopen+in%3Atitle+auto-fix)" >> "$GITHUB_STEP_SUMMARY"
+            echo "- **Session log:** see workflow artifact \`auto-fix-${{ steps.target.outputs.target_date }}\`" >> "$GITHUB_STEP_SUMMARY"
+          fi

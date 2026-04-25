@@ -1,0 +1,185 @@
+name: Comprehensive Audit Sweep
+# Monthly read-only audit. Runs the user's pre-debugger audit prompt
+# end-to-end against the live production stack and commits the resulting
+# AUDIT_REPORT_<DATE>.md to main. This is the input to the next auto-fix run
+# and to all subsequent weekly drift checks.
+
+on:
+  schedule:
+    - cron: '0 13 1 * *'   # 1st of every month at 13:00 UTC
+  workflow_dispatch:
+    inputs:
+      simulate_date:
+        description: 'Override target date as YYYY-MM-DD (for manual smoke-test)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write          # for committing AUDIT_REPORT_<DATE>.md to main
+
+concurrency:
+  group: audit-sweep
+  cancel-in-progress: false
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Resolve target date
+        id: target
+        run: |
+          set -euo pipefail
+          SIM='${{ github.event.inputs.simulate_date }}'
+          if [ -n "$SIM" ]; then
+            TARGET="$SIM"
+            echo "Manual sweep with simulate_date=$TARGET"
+          else
+            TARGET=$(date -u +%Y-%m-%d)
+            echo "Scheduled sweep on $TARGET (UTC)"
+          fi
+          echo "target_date=$TARGET" >> "$GITHUB_OUTPUT"
+          echo "report_filename=AUDIT_REPORT_${TARGET}.md" >> "$GITHUB_OUTPUT"
+
+      - name: Verify required secrets
+        run: |
+          set -e
+          MISSING=""
+          [ -z "$ANTHROPIC_API_KEY" ] && MISSING="$MISSING ANTHROPIC_API_KEY"
+          [ -z "$SUPABASE_URL" ]      && MISSING="$MISSING SUPABASE_URL"
+          [ -z "$SUPABASE_ANON_KEY" ] && MISSING="$MISSING SUPABASE_ANON_KEY"
+          if [ -n "$MISSING" ]; then
+            echo "::error::Missing repo secrets:$MISSING"
+            exit 1
+          fi
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Claude Code CLI
+        run: |
+          npm install -g @anthropic-ai/claude-code
+          claude --version
+
+      - name: Decompress local DB if present
+        run: |
+          if [ -f data/dental_pe_tracker.db.gz ]; then
+            gunzip -k data/dental_pe_tracker.db.gz
+            ls -lh data/dental_pe_tracker.db
+          else
+            echo "No bundled SQLite DB. Sweep will rely on Supabase REST API."
+          fi
+
+      - name: Capture pre-run HEAD
+        run: git rev-parse HEAD > /tmp/pre_run_head.txt
+
+      - name: Configure git committer
+        run: |
+          git config user.name  'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+      - name: Run comprehensive audit (headless)
+        env:
+          REPORT_PATH: /tmp/${{ steps.target.outputs.report_filename }}
+        run: |
+          set -o pipefail
+          PROMPT_BODY=$(cat .github/audit-prompts/sweep.md)
+          PROMPT_BODY="${PROMPT_BODY//\{\{TARGET_DATE\}\}/${{ steps.target.outputs.target_date }}}"
+          PROMPT_BODY="${PROMPT_BODY//\{\{REPORT_PATH\}\}/$REPORT_PATH}"
+
+          echo "::group::Running sweep ($(echo "$PROMPT_BODY" | wc -l) lines of prompt)"
+          set +e
+          claude -p "$PROMPT_BODY" \
+            --permission-mode bypassPermissions \
+            --max-turns 200 \
+            2>&1 | tee /tmp/claude_session.log
+          CLAUDE_RC=$?
+          set -e
+          echo "Claude exited $CLAUDE_RC"
+          echo "::endgroup::"
+
+          # Make sure the audit landed at the canonical repo path
+          if [ -f "$REPORT_PATH" ] && [ ! -f "${{ steps.target.outputs.report_filename }}" ]; then
+            cp "$REPORT_PATH" "${{ steps.target.outputs.report_filename }}"
+          fi
+
+      - name: Verify audit report was written
+        run: |
+          F="${{ steps.target.outputs.report_filename }}"
+          if [ ! -f "$F" ]; then
+            echo "::error::Audit did not produce $F"
+            exit 1
+          fi
+          LINES=$(wc -l < "$F")
+          if [ "$LINES" -lt 100 ]; then
+            echo "::warning::Audit report is suspiciously short ($LINES lines). Committing anyway for review."
+          fi
+          echo "Audit captured: $LINES lines"
+
+      - name: Commit audit report to main
+        run: |
+          F="${{ steps.target.outputs.report_filename }}"
+          # Only commit the audit report — do not commit any incidental file the agent might have touched.
+          git add "$F"
+          # Ensure no other unintended changes are staged
+          git diff --cached --name-only | grep -v -F "$F" | while read other; do
+            git restore --staged "$other"
+          done
+          if git diff --cached --quiet; then
+            echo "::warning::Nothing to commit (report already exists?)"
+          else
+            git commit -m "audit: comprehensive sweep ${{ steps.target.outputs.target_date }}
+
+Generated by .github/workflows/audit-sweep.yml against the live
+production stack. Read-only sweep — see report for findings.
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>"
+            git push origin main
+          fi
+
+      - name: Discard any other working-tree changes (keep main clean)
+        if: always()
+        run: |
+          git reset --hard HEAD
+          git clean -fd -- ':!data/dental_pe_tracker.db'
+
+      - name: Upload audit artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-${{ steps.target.outputs.target_date }}
+          path: |
+            ${{ steps.target.outputs.report_filename }}
+            /tmp/claude_session.log
+          retention-days: 365
+          if-no-files-found: warn
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Comprehensive Audit Sweep" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Date:** ${{ steps.target.outputs.target_date }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Report:** [\`${{ steps.target.outputs.report_filename }}\`](https://github.com/${{ github.repository }}/blob/main/${{ steps.target.outputs.report_filename }})" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Auto-fix run:** triggered separately on day-3 cron, no manual action needed" >> "$GITHUB_STEP_SUMMARY"
+          if [ -f "${{ steps.target.outputs.report_filename }}" ]; then
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "### Top of report" >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+            head -40 "${{ steps.target.outputs.report_filename }}" >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          fi

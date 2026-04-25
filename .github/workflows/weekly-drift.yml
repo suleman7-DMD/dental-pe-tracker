@@ -1,0 +1,165 @@
+name: Weekly Drift Check
+# Weekly read-only drift check. Compares current production state against
+# the most recent AUDIT_REPORT_*.md baseline + the most recent merged
+# auto-fix PR. Saves a drift artifact — does NOT commit anything.
+
+on:
+  schedule:
+    - cron: '0 13 * * 1'   # Every Monday at 13:00 UTC
+  workflow_dispatch:
+    inputs:
+      simulate_date:
+        description: 'Override target date as YYYY-MM-DD (for manual smoke-test)'
+        required: false
+        default: ''
+
+permissions:
+  contents: read           # read-only — never commits
+
+concurrency:
+  group: weekly-drift
+  cancel-in-progress: false
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve target date
+        id: target
+        run: |
+          set -euo pipefail
+          SIM='${{ github.event.inputs.simulate_date }}'
+          if [ -n "$SIM" ]; then
+            TARGET="$SIM"
+            echo "Manual drift check with simulate_date=$TARGET"
+          else
+            TARGET=$(date -u +%Y-%m-%d)
+            echo "Scheduled drift check on $TARGET (UTC)"
+          fi
+          echo "target_date=$TARGET" >> "$GITHUB_OUTPUT"
+          echo "report_filename=DRIFT_REPORT_${TARGET}.md" >> "$GITHUB_OUTPUT"
+
+      - name: Verify required secrets
+        run: |
+          set -e
+          MISSING=""
+          [ -z "$ANTHROPIC_API_KEY" ] && MISSING="$MISSING ANTHROPIC_API_KEY"
+          [ -z "$SUPABASE_URL" ]      && MISSING="$MISSING SUPABASE_URL"
+          [ -z "$SUPABASE_ANON_KEY" ] && MISSING="$MISSING SUPABASE_ANON_KEY"
+          if [ -n "$MISSING" ]; then
+            echo "::error::Missing repo secrets:$MISSING"
+            exit 1
+          fi
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Claude Code CLI
+        run: |
+          npm install -g @anthropic-ai/claude-code
+          claude --version
+
+      - name: Decompress local DB if present
+        run: |
+          if [ -f data/dental_pe_tracker.db.gz ]; then
+            gunzip -k data/dental_pe_tracker.db.gz
+            ls -lh data/dental_pe_tracker.db
+          else
+            echo "No bundled SQLite DB. Drift check will rely on Supabase REST API."
+          fi
+
+      - name: Capture pre-run HEAD
+        run: git rev-parse HEAD > /tmp/pre_run_head.txt
+
+      - name: Run drift check (headless)
+        env:
+          REPORT_PATH: /tmp/${{ steps.target.outputs.report_filename }}
+        run: |
+          set -o pipefail
+          PROMPT_BODY=$(cat .github/audit-prompts/verify-drift.md)
+          PROMPT_BODY="${PROMPT_BODY//\{\{TARGET_DATE\}\}/${{ steps.target.outputs.target_date }}}"
+          PROMPT_BODY="${PROMPT_BODY//\{\{REPORT_PATH\}\}/$REPORT_PATH}"
+
+          echo "::group::Running drift check ($(echo "$PROMPT_BODY" | wc -l) lines of prompt)"
+          set +e
+          claude -p "$PROMPT_BODY" \
+            --permission-mode bypassPermissions \
+            --max-turns 80 \
+            2>&1 | tee /tmp/claude_session.log
+          CLAUDE_RC=$?
+          set -e
+          echo "Claude exited $CLAUDE_RC"
+          echo "::endgroup::"
+
+      - name: Verify drift report was written
+        run: |
+          F="/tmp/${{ steps.target.outputs.report_filename }}"
+          if [ ! -f "$F" ]; then
+            echo "::warning::Drift check did not produce $F"
+            # Don't fail — the artifact upload will warn
+            exit 0
+          fi
+          LINES=$(wc -l < "$F")
+          echo "Drift report captured: $LINES lines"
+
+      - name: Verify HEAD didn't move (read-only contract)
+        run: |
+          set -e
+          POST_HEAD=$(git rev-parse HEAD)
+          PRE_HEAD=$(cat /tmp/pre_run_head.txt)
+          if [ "$PRE_HEAD" != "$POST_HEAD" ]; then
+            echo "::error::Drift check is supposed to be read-only, but HEAD moved!"
+            echo "  pre  $PRE_HEAD"
+            echo "  post $POST_HEAD"
+            exit 1
+          fi
+          echo "✅ Read-only contract honored (HEAD unchanged)."
+
+      - name: Discard any incidental working-tree changes
+        if: always()
+        run: |
+          git reset --hard HEAD
+          git clean -fd -- ':!data/dental_pe_tracker.db'
+
+      - name: Upload drift artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: drift-${{ steps.target.outputs.target_date }}
+          path: |
+            /tmp/${{ steps.target.outputs.report_filename }}
+            /tmp/claude_session.log
+          retention-days: 90
+          if-no-files-found: warn
+
+      - name: Summary
+        if: always()
+        run: |
+          F="/tmp/${{ steps.target.outputs.report_filename }}"
+          echo "## Weekly Drift Check" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Date:** ${{ steps.target.outputs.target_date }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Artifact:** \`drift-${{ steps.target.outputs.target_date }}\` (download from this run's Artifacts panel)" >> "$GITHUB_STEP_SUMMARY"
+          if [ -f "$F" ]; then
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "### TL;DR (top of report)" >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+            head -40 "$F" >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "- **Status:** ⚠️ No report file produced — see session log artifact for diagnostics" >> "$GITHUB_STEP_SUMMARY"
+          fi
