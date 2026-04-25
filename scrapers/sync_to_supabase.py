@@ -645,6 +645,7 @@ def _sync_full_replace(sqlite_session, pg_engine, config):
         log.warning("[%s] Shutdown requested — skipping full replace", table_name)
         return 0
 
+    skipped_integrity = 0
     with pg_engine.begin() as conn:
         _set_statement_timeout(conn, local=True)
         conn.execute(text(f"TRUNCATE TABLE {table_name} CASCADE"))
@@ -652,7 +653,21 @@ def _sync_full_replace(sqlite_session, pg_engine, config):
             insert_sql = _build_insert_sql(table_name, columns)
             for r in rows:
                 d = _model_to_dict(r)
-                conn.execute(text(insert_sql), d)
+                try:
+                    sp = conn.begin_nested()
+                    conn.execute(text(insert_sql), d)
+                    sp.commit()
+                except IntegrityError as e:
+                    sp.rollback()
+                    skipped_integrity += 1
+                    log.warning(
+                        "[%s] Skipped row (IntegrityError): %s",
+                        table_name,
+                        str(getattr(e, "orig", e))[:200],
+                    )
+    if skipped_integrity:
+        log.warning("[%s] full_replace: skipped %d rows due to integrity errors",
+                    table_name, skipped_integrity)
 
     # Fix 2: Post-sync assertion — verify Supabase actually has the rows
     expected_count = len(rows)
