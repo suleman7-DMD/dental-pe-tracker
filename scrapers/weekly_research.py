@@ -118,6 +118,8 @@ def validate_dossier(npi: str, data: dict) -> tuple[bool, str]:
       1. verification block must exist
       2. searches_executed must be >= 1 (we forced at least 1 via tool_choice)
       3. evidence_quality must not be 'insufficient'
+         NOTE: model occasionally returns 'high' outside the spec (verified|partial|insufficient).
+         We coerce 'high' -> 'partial' with a warning instead of quarantining (audit §10.5/#16).
       4. If website.url is set non-null, website._source_url must also be set
          (means: any cited website needs a citation URL)
       5. If google.reviews or google.rating is set, google._source_url must be set
@@ -135,6 +137,12 @@ def validate_dossier(npi: str, data: dict) -> tuple[bool, str]:
         return False, f"insufficient_searches({searches_n})"
 
     quality = (ver.get("evidence_quality") or "").lower()
+    if quality == "high":
+        # Enum drift: model returned "high" instead of "verified|partial|insufficient".
+        # Coerce to "partial" in-place so the dossier is stored but flagged. Audit §10.5/#16.
+        logger.warning("NPI %s: evidence_quality='high' is outside spec — coercing to 'partial'", npi)
+        ver["evidence_quality"] = "partial"
+        quality = "partial"
     if quality == "insufficient":
         return False, "evidence_quality=insufficient"
 
@@ -145,6 +153,49 @@ def validate_dossier(npi: str, data: dict) -> tuple[bool, str]:
     goog = data.get("google") or {}
     if (goog.get("reviews") is not None or goog.get("rating") is not None) and not goog.get("_source_url"):
         return False, "google.metrics_without_source"
+
+    return True, ""
+
+
+def validate_zip_dossier(zip_code: str, data: dict) -> tuple[bool, str]:
+    """Anti-hallucination gate for ZIP intel dossiers. Parallel to validate_dossier().
+
+    Returns (is_valid, reason). reason is empty on pass; populated on rejection.
+    Rules:
+      1. verification block must exist
+      2. searches_executed must be >= 1 (we force at least 1 via tool_choice)
+      3. evidence_quality must not be 'insufficient'
+         NOTE: coerces 'high' -> 'partial' with warning (same as practice path, audit §10.5/#16).
+      4. If real_estate.median_price or home_price_trend is set, real_estate._source_url must be set
+      5. If dental_news.new_offices or dso_moves is non-empty, dental_news._source_url must be set
+    """
+    ver = data.get("verification") or {}
+    if not ver:
+        return False, "missing_verification_block"
+
+    searches = ver.get("searches_executed")
+    try:
+        searches_n = int(searches) if searches is not None else 0
+    except (TypeError, ValueError):
+        searches_n = 0
+    if searches_n < 1:
+        return False, f"insufficient_searches({searches_n})"
+
+    quality = (ver.get("evidence_quality") or "").lower()
+    if quality == "high":
+        logger.warning("ZIP %s: evidence_quality='high' is outside spec — coercing to 'partial'", zip_code)
+        ver["evidence_quality"] = "partial"
+        quality = "partial"
+    if quality == "insufficient":
+        return False, "evidence_quality=insufficient"
+
+    re_data = data.get("real_estate") or {}
+    if (re_data.get("median_price") is not None or re_data.get("trend")) and not re_data.get("_source_url"):
+        return False, "real_estate.data_without_source"
+
+    dental = data.get("dental_news") or {}
+    if (dental.get("new_offices") or dental.get("dso_moves")) and not dental.get("_source_url"):
+        return False, "dental_news.data_without_source"
 
     return True, ""
 
@@ -192,6 +243,13 @@ def retrieve_batch(batch_id):
         try:
             if cid.startswith("zip_"):
                 zip_code = cid[4:]
+                ok, reason = validate_zip_dossier(zip_code, data)
+                if not ok:
+                    rejected += 1
+                    rejection_reasons[reason] = rejection_reasons.get(reason, 0) + 1
+                    logger.warning("Quarantined ZIP %s: %s", zip_code, reason)
+                    print(f"  🚫 ZIP {zip_code} REJECTED ({reason})")
+                    continue
                 store_zip_intel(zip_code, data)
                 tracker.record("zip", 0, "batch", zip_code)
                 stored += 1
@@ -292,6 +350,12 @@ def main():
                 print(f"  🔍 ZIP {z['zip_code']}...", end=" ", flush=True)
                 r = engine.research_zip(z["zip_code"], z.get("city",""), z.get("state",""))
                 if "error" not in r or "_meta" in r:
+                    # Validate before storing — same gate as batch path (audit §10.4 / §15 #5)
+                    ok, reason = validate_zip_dossier(z["zip_code"], r)
+                    if not ok:
+                        logger.warning("Sync quarantined ZIP %s: %s", z["zip_code"], reason)
+                        print(f"❌ REJECTED ({reason})")
+                        continue
                     store_zip_intel(z["zip_code"], r)
                     cost = r.get("_meta",{}).get("cost_usd", 0)
                     tracker.record("zip", cost, r.get("_meta",{}).get("model",""), z["zip_code"])
@@ -308,6 +372,12 @@ def main():
                     p["npi"], p.get("practice_name",""), p.get("address",""),
                     p.get("city",""), p.get("state",""), p.get("zip",""))
                 if "error" not in r or "_meta" in r:
+                    # Validate before storing — same gate as batch path (audit §10.4 / §15 #5)
+                    ok, reason = validate_dossier(p["npi"], r)
+                    if not ok:
+                        logger.warning("Sync quarantined practice %s: %s", p["npi"], reason)
+                        print(f"❌ REJECTED ({reason})")
+                        continue
                     store_practice_intel(p["npi"], r)
                     cost = r.get("_meta",{}).get("cost_usd", 0)
                     tracker.record("practice", cost, r.get("_meta",{}).get("model",""), p["npi"])

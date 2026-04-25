@@ -31,6 +31,7 @@ from datetime import datetime, timedelta
 sys.path.insert(0, os.path.expanduser("~/dental-pe-tracker"))
 
 from scrapers.research_engine import ResearchEngine, CostTracker, MODEL_HAIKU, MODEL_SONNET
+from scrapers.weekly_research import validate_dossier
 from scrapers.intel_database import (
     ensure_intel_tables, store_practice_intel, get_practice_intel,
     is_cache_fresh, get_db_path, DEFAULT_CACHE_TTL_DAYS
@@ -173,7 +174,14 @@ def research_single_practice(engine, tracker, practice, force=False,
     if "error" in result and "_meta" not in result:
         print(f"❌ {result['error'][:60]}")
         return result
-    
+
+    # Validate before storing — anti-hallucination gate (audit §10.2.3 / §15 #5)
+    ok, reason = validate_dossier(npi, result)
+    if not ok:
+        logger.warning("Practice %s quarantined by validation gate: %s", npi, reason)
+        print(f"❌ REJECTED ({reason})")
+        return {"error": f"validation_failed:{reason}", "_npi": npi}
+
     store_practice_intel(npi, result)
     
     cost = result.get("_meta", {}).get("cost_usd", 0)

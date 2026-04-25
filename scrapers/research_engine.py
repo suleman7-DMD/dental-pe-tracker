@@ -41,13 +41,37 @@ _last_req_time = 0.0
 # ── System Prompts (cached after first call = 90% savings) ───────────────
 
 ZIP_SYSTEM = """You are a dental market analyst. Research the given ZIP code for a dental practice buyer.
-Search the web for CURRENT, REAL data. If you can't find something, return null — never fabricate.
-Return ONLY raw JSON (no markdown, no explanation). Keep values concise — 1-2 sentences max per field.
-Lists max 5 items. This is cost-sensitive — minimize output tokens."""
+
+EVIDENCE PROTOCOL — NON-NEGOTIABLE:
+
+1. EXECUTE web_search AT LEAST 2 TIMES per ZIP before composing the JSON.
+   Required search 1: "<city> <state> <ZIP> real estate market 2025" — locate housing trends, median prices, development activity.
+   Required search 2: "<city> <state> dental practices new openings competition" — locate dental news, DSO moves, competitor activity.
+   Use up to 1 additional search for employers, schools, zoning, or population data.
+
+2. EVERY non-null field in every section MUST be backed by a URL recorded in that section's `_source_url` field. If you cannot cite a URL you actually read, the value MUST be null.
+
+3. NEVER infer from priors. Do NOT guess from ZIP code, city name, or state.
+
+4. If a search returns nothing useful for a section, set every field in that section to null AND set `_source_url` to "no_results_found". This is the CORRECT behavior.
+
+5. The `verification` block at the end is mandatory. Report exactly how many searches you executed, the queries used, your overall evidence quality (verified / partial / insufficient — NEVER use 'high', 'low', or 'medium' for evidence_quality), and the primary source URLs you cited.
+
+OUTPUT RULES:
+- Return ONLY raw JSON. No markdown, no preamble, no explanation outside the JSON.
+- Use null liberally. Null is the correct answer when evidence is missing.
+- Prose values: 1-2 sentences max. Lists: max 5 items. Minimize output tokens."""
 
 ZIP_USER = """Research ZIP {zip_code} ({city}, {state}) for dental practice investment.
-Return JSON:
-{{"housing":{{"status":"active|moderate|stagnant|unknown","developments":[],"summary":""}},"schools":{{"district":"","rating":"","source":"","note":""}},"retail":{{"premium":[],"mass":[],"income_signal":""}},"commercial":{{"status":"","projects":[],"note":""}},"dental_news":{{"new_offices":[],"dso_moves":[],"note":""}},"real_estate":{{"median_price":null,"trend":"","yoy_pct":null,"source":""}},"zoning":{{"items":[],"note":""}},"population":{{"growth_signals":[],"demographics":"","note":""}},"employers":{{"major_nearby":[],"insurance_signal":""}},"competitors":{{"new_opens":[],"closures":[],"note":""}},"demand_outlook":"","supply_outlook":"","investment_thesis":"","confidence":"high|medium|low","sources":[]}}"""
+
+REQUIRED PROCESS BEFORE COMPOSING JSON:
+- Execute web_search at minimum 2 times (real estate/market trends, then dental news/competition).
+- For every field you populate, record the source URL in that section's `_source_url`.
+- For sections where searches returned nothing, set all values to null and `_source_url` to "no_results_found".
+- Fill the `verification` block honestly — it will be programmatically validated.
+
+Return JSON (every section includes `_source_url`; final `verification` block is mandatory):
+{{"housing":{{"status":"active|moderate|stagnant|unknown","developments":[],"summary":"","_source_url":""}},"schools":{{"district":"","rating":"","source":"","note":"","_source_url":""}},"retail":{{"premium":[],"mass":[],"income_signal":"","_source_url":""}},"commercial":{{"status":"","projects":[],"note":"","_source_url":""}},"dental_news":{{"new_offices":[],"dso_moves":[],"note":"","_source_url":""}},"real_estate":{{"median_price":null,"trend":"","yoy_pct":null,"source":"","_source_url":""}},"zoning":{{"items":[],"note":"","_source_url":""}},"population":{{"growth_signals":[],"demographics":"","note":"","_source_url":""}},"employers":{{"major_nearby":[],"insurance_signal":"","_source_url":""}},"competitors":{{"new_opens":[],"closures":[],"note":"","_source_url":""}},"demand_outlook":"","supply_outlook":"","investment_thesis":"","confidence":"high|medium|low","sources":[],"verification":{{"searches_executed":0,"search_queries":[],"evidence_quality":"verified|partial|insufficient (NEVER use 'high', 'low', or 'medium')","primary_sources":[]}}}}"""
 
 PRACTICE_SYSTEM = """You are conducting PE-style due diligence on a dental practice. Output must be 100% verifiable. Every factual claim must cite the exact URL it came from.
 
@@ -91,20 +115,44 @@ REQUIRED PROCESS BEFORE COMPOSING JSON:
 - Fill the `verification` block honestly — it will be programmatically validated.
 
 Return JSON (every section includes `_source_url`; final `verification` block is mandatory):
-{{"website":{{"url":"","era":"modern|dated|template|none|unknown","last_update":"","analysis":"","_source_url":""}},"services":{{"listed":[],"high_revenue":[],"note":"","_source_url":""}},"technology":{{"listed":[],"level":"high|moderate|basic|unknown","_source_url":""}},"providers":{{"web_count":null,"owner_stage":"late|mid|early|unknown","notes":"","_source_url":""}},"google":{{"reviews":null,"rating":null,"recent_date":"","velocity":"active|moderate|stale|unknown","sentiment":"","_source_url":""}},"hiring":{{"active":false,"positions":[],"source":"","_source_url":""}},"acquisition_news":{{"found":false,"details":"","_source_url":""}},"social":{{"facebook":"active|inactive|none","instagram":"active|inactive|none","other":"","_source_url":""}},"healthgrades":{{"rating":null,"reviews":null,"_source_url":""}},"zocdoc":{{"listed":false,"_source_url":""}},"doctor":{{"publications":false,"speaking":false,"associations":[],"notes":"","_source_url":""}},"insurance":{{"medicaid":null,"ppo_heavy":null,"note":"","_source_url":""}},"red_flags":[],"green_flags":[],"assessment":"","readiness":"high|medium|low|unlikely|unknown","confidence":"high|medium|low","sources":[],"verification":{{"searches_executed":0,"search_queries":[],"evidence_quality":"verified|partial|insufficient","primary_sources":[]}}}}"""
+{{"website":{{"url":"","era":"modern|dated|template|none|unknown","last_update":"","analysis":"","_source_url":""}},"services":{{"listed":[],"high_revenue":[],"note":"","_source_url":""}},"technology":{{"listed":[],"level":"high|moderate|basic|unknown","_source_url":""}},"providers":{{"web_count":null,"owner_stage":"late|mid|early|unknown","notes":"","_source_url":""}},"google":{{"reviews":null,"rating":null,"recent_date":"","velocity":"active|moderate|stale|unknown","sentiment":"","_source_url":""}},"hiring":{{"active":false,"positions":[],"source":"","_source_url":""}},"acquisition_news":{{"found":false,"details":"","_source_url":""}},"social":{{"facebook":"active|inactive|none","instagram":"active|inactive|none","other":"","_source_url":""}},"healthgrades":{{"rating":null,"reviews":null,"_source_url":""}},"zocdoc":{{"listed":false,"_source_url":""}},"doctor":{{"publications":false,"speaking":false,"associations":[],"notes":"","_source_url":""}},"insurance":{{"medicaid":null,"ppo_heavy":null,"note":"","_source_url":""}},"red_flags":[],"green_flags":[],"assessment":"","readiness":"high|medium|low|unlikely|unknown","confidence":"high|medium|low","sources":[],"verification":{{"searches_executed":0,"search_queries":[],"evidence_quality":"verified|partial|insufficient (NEVER use 'high', 'low', or 'medium')","primary_sources":[]}}}}"""
 
 JOB_HUNT_SYSTEM = """You are a dental career advisor helping new DDS/DMD graduates evaluate first-job opportunities.
-Search the web for CURRENT, REAL data about this specific practice. If you can't find something, return null — never fabricate.
-Return ONLY raw JSON (no markdown, no explanation). Concise values only.
-Cost-sensitive — minimize output tokens."""
+
+EVIDENCE PROTOCOL — NON-NEGOTIABLE:
+
+1. EXECUTE web_search AT LEAST 2 TIMES per practice before composing the JSON.
+   Required search 1: "<practice name> <city> <state>" — locate the practice's website, providers, services, technology.
+   Required search 2: "<practice name> <city> reviews" — locate Google/Healthgrades/Yelp for reviews, rating, sentiment.
+   Use up to 2 additional searches for hiring signals, doctor background, or compensation data.
+
+2. EVERY non-null field in every section MUST be backed by a URL recorded in that section's `_source_url` field. If you cannot cite a URL you actually read, the value MUST be null.
+
+3. NEVER infer from priors. Do NOT guess from the practice's name, doctor's last name, or address.
+
+4. If a search returns nothing useful for a section, set every field in that section to null AND set `_source_url` to "no_results_found". This is the CORRECT behavior.
+
+5. The `verification` block at the end is mandatory. Report exactly how many searches you executed, the queries used, your overall evidence quality (verified / partial / insufficient — NEVER use 'high', 'low', or 'medium' for evidence_quality), and the primary source URLs you cited.
+
+OUTPUT RULES:
+- Return ONLY raw JSON. No markdown, no preamble, no explanation outside the JSON.
+- Use null liberally. Null is the correct answer when evidence is missing.
+- Concise values only. Minimize output tokens."""
 
 JOB_HUNT_PRACTICE_USER = """Evaluate this dental practice as a first-job opportunity for a new DDS/DMD graduate:
 Name: {name}
 Address: {address}, {city}, {state} {zip}
 Doctor: {doctor_name}
 {extra_context}
-Return JSON:
-{{"website":{{"url":"","era":"modern|dated|template|none|unknown","last_update":"","analysis":""}},"services":{{"listed":[],"high_revenue":[],"note":""}},"technology":{{"listed":[],"level":"high|moderate|basic|unknown"}},"providers":{{"web_count":null,"owner_stage":"late|mid|early|unknown","notes":""}},"google":{{"reviews":null,"rating":null,"recent_date":"","velocity":"active|moderate|stale|unknown","sentiment":""}},"hiring":{{"active":false,"positions":[],"source":""}},"acquisition_news":{{"found":false,"details":""}},"social":{{"facebook":"active|inactive|none","instagram":"active|inactive|none","other":""}},"healthgrades":{{"rating":null,"reviews":null}},"zocdoc":{{"listed":false}},"doctor":{{"publications":false,"speaking":false,"associations":[],"notes":""}},"insurance":{{"medicaid":null,"ppo_heavy":null,"note":""}},"red_flags":[],"green_flags":[],"assessment":"","readiness":"high|medium|low|unlikely|unknown","confidence":"high|medium|low","sources":[],"succession_intent":"active_seeking|receptive|unclear|not_considering|unknown","new_grad_friendly_score":null,"mentorship_signals":[],"associate_runway":"immediate|0-2 years|2-5 years|succession path|unclear","compensation_signals":{{"base_est_usd":null,"production_pct_est":null,"benefits_quality":"strong|standard|thin|unknown"}},"red_flags_for_grad":[],"green_flags_for_grad":[]}}"""
+
+REQUIRED PROCESS BEFORE COMPOSING JSON:
+- Execute web_search at minimum 2 times (practice site, then reviews/listings).
+- For every field you populate, record the source URL in that section's `_source_url`.
+- For sections where searches returned nothing, set all values to null and `_source_url` to "no_results_found".
+- Fill the `verification` block honestly — it will be programmatically validated.
+
+Return JSON (every section includes `_source_url`; final `verification` block is mandatory):
+{{"website":{{"url":"","era":"modern|dated|template|none|unknown","last_update":"","analysis":"","_source_url":""}},"services":{{"listed":[],"high_revenue":[],"note":"","_source_url":""}},"technology":{{"listed":[],"level":"high|moderate|basic|unknown","_source_url":""}},"providers":{{"web_count":null,"owner_stage":"late|mid|early|unknown","notes":"","_source_url":""}},"google":{{"reviews":null,"rating":null,"recent_date":"","velocity":"active|moderate|stale|unknown","sentiment":"","_source_url":""}},"hiring":{{"active":false,"positions":[],"source":"","_source_url":""}},"acquisition_news":{{"found":false,"details":"","_source_url":""}},"social":{{"facebook":"active|inactive|none","instagram":"active|inactive|none","other":"","_source_url":""}},"healthgrades":{{"rating":null,"reviews":null,"_source_url":""}},"zocdoc":{{"listed":false,"_source_url":""}},"doctor":{{"publications":false,"speaking":false,"associations":[],"notes":"","_source_url":""}},"insurance":{{"medicaid":null,"ppo_heavy":null,"note":"","_source_url":""}},"red_flags":[],"green_flags":[],"assessment":"","readiness":"high|medium|low|unlikely|unknown","confidence":"high|medium|low","sources":[],"succession_intent":"active_seeking|receptive|unclear|not_considering|unknown","new_grad_friendly_score":null,"mentorship_signals":[],"associate_runway":"immediate|0-2 years|2-5 years|succession path|unclear","compensation_signals":{{"base_est_usd":null,"production_pct_est":null,"benefits_quality":"strong|standard|thin|unknown"}},"red_flags_for_grad":[],"green_flags_for_grad":[],"verification":{{"searches_executed":0,"search_queries":[],"evidence_quality":"verified|partial|insufficient","primary_sources":[]}}}}"""
 
 
 ESCALATION_SYSTEM = """You are a senior dental PE analyst. You have initial scan results.
@@ -250,7 +298,9 @@ class ResearchEngine:
 
     def research_zip(self, zip_code, city, state, model=None):
         msg = ZIP_USER.format(zip_code=zip_code, city=city, state=state)
-        r = self._call_api(ZIP_SYSTEM, msg, model=model)
+        # ZIP research MUST cite sources — force at least 1 web_search; allow up to 3.
+        r = self._call_api(ZIP_SYSTEM, msg, model=model,
+                           max_searches=3, force_search=True)
         r["_type"] = "zip"
         r["_zip"] = zip_code
         return r
@@ -289,8 +339,9 @@ class ResearchEngine:
             name=name, address=address, city=city, state=state,
             zip=zip_code, doctor_name=doctor_name or "Unknown",
             extra_context=extra_context or "")
+        # JOB_HUNT research MUST cite sources — force at least 1 web_search; allow up to 4.
         r = self._call_api(JOB_HUNT_SYSTEM, msg, model=MODEL_HAIKU,
-                           max_tokens=1500, max_searches=4)
+                           max_tokens=1500, max_searches=4, force_search=True)
         r["_type"] = "practice_jobhunt"
         return r
 
@@ -369,7 +420,7 @@ class ResearchEngine:
                 city=item["city"], state=item["state"],
                 zip=item["zip"], doctor_name=item.get("doctor_name", "Unknown"),
                 extra_context=item.get("extra_context", ""))
-            reqs.append({
+            batch_req = {
                 "custom_id": f"jobhunt_{item['npi']}",
                 "params": {
                     "model": self.model,
@@ -378,9 +429,12 @@ class ResearchEngine:
                                "cache_control": {"type": "ephemeral"}}],
                     "tools": [{"type": "web_search_20250305",
                               "name": "web_search", "max_uses": 4}],
-                    "messages": [{"role": "user", "content": msg}]
+                    "messages": [{"role": "user", "content": msg}],
+                    # JOB_HUNT batch must force web_search same as PRACTICE path
+                    "tool_choice": {"type": "tool", "name": "web_search"},
                 }
-            })
+            }
+            reqs.append(batch_req)
         return reqs
 
     # ── Batch API ────────────────────────────────────────────────────────
@@ -398,7 +452,8 @@ class ResearchEngine:
                 msg = ZIP_USER.format(**item)
                 sys = ZIP_SYSTEM
                 cid = f"zip_{item['zip_code']}"
-                ms = 8
+                ms = 3
+                force = True  # ZIP research must cite sources just like practice path
             else:
                 msg = PRACTICE_USER.format(
                     name=item["name"], address=item["address"],
