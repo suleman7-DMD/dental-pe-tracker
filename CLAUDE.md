@@ -697,6 +697,62 @@ nohup python3 scrapers/dossier_batch/poll.py > /tmp/poll.log 2>&1 &
 python3 -c "import json; s=json.load(open('/tmp/full_batch_summary.json')); print(f\"stored={s['stored']} rejected={s['rejected']} cost=\${s['totals']['total_cost_usd']}\")"
 ```
 
+### Session Status — April 25, 2026 (continued: 2000-practice big-pool batch + Launchpad thesis rewrite)
+
+After the morning's 200-practice validation succeeded, the user requested a much bigger run + a fix to the "Thesis unavailable" / vague-thesis problem on the live Launchpad. Two parallel deliverables shipped:
+
+**(C) Big-pool batch — 2000 unresearched independents, EXCLUDING Chicago proper**
+
+User direction: exclude the hyper-saturated downtown core (West Loop, Loop, etc.) but keep adjacent independents like Cicero, Berwyn, Oak Park, Evanston. The simplest faithful filter is `zip NOT LIKE '606%'` — Chicago proper occupies the entire 60601-60699 ZIP block (56 of the 269 watched ZIPs).
+
+- New launcher: `scrapers/dossier_batch/launch_2000_excl_chi.py` (commit `ebf7054`)
+- SQL filter: `zip IN (chicagoland watched) AND zip NOT LIKE '606%' AND ownership_status IN ('independent','likely_independent','unknown') AND npi NOT IN practice_intel AND entity_classification IN (6 indep types)`
+- Pool size confirmed: **5,784 eligible practices across 213 non-606xx ZIPs**
+- Pick strategy: top **2000 by priority** (NOT top-1-per-ZIP — 213 ZIPs can't fill 2000). Priority order matches `launch.py`: solo_high_volume → solo_established → solo_inactive → family_practice → small_group → large_group → buyability_score DESC → year_established ASC
+- First-run actuals: **284 solo_high_volume + 1716 solo_established** spread across 171 ZIPs (the priority lookahead ran out of solo_inactive/family/small/large in the non-606xx pool before reaching them — those tiers are concentrated in Chicago proper)
+- Cost cap raised: $11 → **$250**. Estimate $0.080/practice (calibrated from the 200-practice run's $0.075/practice including cache_create overhead). 2000 × $0.080 = $160 expected.
+- Submitted as **`msgbatch_01A3FxKxKxemAyqDr2AcGYUq`**, status `in_progress`. Poller in background via `nohup python3 scrapers/dossier_batch/poll.py > /tmp/poll_2000.log 2>&1 &`.
+- Step 2 (after this batch validates): backfill the remaining ~3,784 non-606xx practices that didn't make the priority cut. Same script, bump `TARGET_COUNT`. Step 3 (later): the 56 Chicago-proper ZIPs if/when the user wants downtown coverage.
+
+**(B) Compound-narrative thesis rewrite — fixes "way too vague" complaint**
+
+Symptom: Launchpad practice cards showed `Thesis unavailable: Compound narrative disabled: ANTHROPIC_API_KEY is not set` when the env var was missing, AND when it WAS set the thesis was a tiny generic blurb. Root cause: the route was hardcoded to a 50-word ceiling, used Haiku 4.5 with `max_tokens=200`, and never read from `practice_intel` — so even with research available, the thesis was structurally limited to be vague.
+
+Files changed (commit `cc2115a` in `dental-pe-nextjs`):
+- `src/app/api/launchpad/compound-narrative/route.ts` — fully rewritten
+- `src/app/launchpad/_components/compound-thesis.tsx` — added inline Regenerate button + switched to `whitespace-pre-line` plain prose (was `italic` muted text)
+- `src/lib/types/intel.ts` — extended `PracticeIntel` with the 3 verification columns added 2026-04-25 (`verification_searches`, `verification_quality`, `verification_urls`)
+
+What the new route does:
+1. Server-side fetch `practice_intel` by NPI from Supabase via `getPracticeIntelByNpi()` — the route is now stateful with respect to research data
+2. Model: `claude-sonnet-4-6` (was Haiku 4.5)
+3. `max_tokens: 800` (was 200), `temperature: 0.3` (was 0.5)
+4. Target length: **200-300 words across 4-6 sentences** (was 50 words / 2-3 sentences)
+5. **Citation requirement**: every substantive claim must be backed by either a structural signal or `[source: domain]` shorthand drawn from `verification_urls`. System prompt requires ≥2 source citations when intel exists.
+6. **Prompt caching**: system prompt wrapped in `cache_control: { type: "ephemeral" }` for 90% cost savings on repeated calls within a session
+7. **Graceful fallback** when intel is missing: thesis MUST open with "Structural signals only — verified web research not yet collected for this practice." and stick to entity classification, age, providers, and active signals. Forbidden to fabricate doctor names, retirement intent, review counts, or technology lists.
+8. Verification discipline baked into system prompt: `partial`/`insufficient` evidence quality forces hedge phrases ("limited public footprint suggests…", "available evidence indicates…")
+
+User prompt structure:
+- Practice block (name, location, entity, age, providers, employees, revenue, buyability, DSO, website)
+- Active signals list
+- Track scores + requested track
+- IF intel present: overall_assessment, acquisition_readiness, confidence, evidence quality + search count, hiring/acquisition/google/owner_career_stage signals, services + technology lists, green/red flags, **list of cite-able verified URLs with `[source: domain]` shorthand instructions**
+- IF intel missing: explicit `STATUS: NOT YET COLLECTED` directive
+
+**(A) User action still required** — without `ANTHROPIC_API_KEY` in Vercel env vars, the new compound-narrative route will continue returning `503: Compound narrative disabled: ANTHROPIC_API_KEY is not set. Add it to Vercel env vars to enable.` The morning's "i just topped up" referred to Anthropic credits (used by the local 2000-practice batch); the Vercel env var is a separate manual step. **Add `ANTHROPIC_API_KEY` to Vercel project settings → Environment Variables → Production + Preview + Development**, then redeploy.
+
+**Verification commands once env var is set:**
+
+```bash
+# Should return a 200 with a thesis (not 503)
+curl -s -X POST https://dental-pe-nextjs.vercel.app/api/launchpad/compound-narrative \
+  -H "content-type: application/json" \
+  -d '{"practice":{"npi":"1234567890","name":"Test","entity_classification":"solo_established","city":"Chicago","year_established":1985,"num_providers":1},"signals":["mentor_density","ffs_concierge"],"scores":{"succession":80,"high_volume":60,"dso":40},"track":"succession"}' | jq
+```
+
+**Coexistence note (do not regress):** the parent `dental-pe-tracker` repo had concurrent uncommitted changes from a parallel agent during this session (`scrapers/compute_signals.py` FK guard for null NPIs, `scrapers/research_engine.py` ZIP_SYSTEM evidence protocol extension). Those are NOT mine — left untouched, will be committed by whoever owns them. My only parent-repo commit was `ebf7054` (the launch_2000_excl_chi.py script).
+
 ## Pipeline Audit — April 2026 (Do Not Regress)
 
 A 3-week pipeline outage was root-caused across every scraper and the Supabase sync. All fixes are in `main` as of 2026-04-22 and validated by a full end-to-end trial run (16,798 rows synced, 6 new deals, zero fatal errors).
