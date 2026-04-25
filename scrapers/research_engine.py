@@ -28,7 +28,7 @@ from scrapers.logger_config import get_logger
 logger = get_logger("research_engine")
 
 MODEL_HAIKU = "claude-haiku-4-5-20251001"
-MODEL_SONNET = "claude-sonnet-4-20250514"
+MODEL_SONNET = "claude-sonnet-4-6"
 DEFAULT_MODEL = MODEL_HAIKU
 
 MAX_TOKENS_HAIKU = 3000
@@ -62,6 +62,20 @@ Doctor: {doctor_name}
 {extra_context}
 Return JSON:
 {{"website":{{"url":"","era":"modern|dated|template|none|unknown","last_update":"","analysis":""}},"services":{{"listed":[],"high_revenue":[],"note":""}},"technology":{{"listed":[],"level":"high|moderate|basic|unknown"}},"providers":{{"web_count":null,"owner_stage":"late|mid|early|unknown","notes":""}},"google":{{"reviews":null,"rating":null,"recent_date":"","velocity":"active|moderate|stale|unknown","sentiment":""}},"hiring":{{"active":false,"positions":[],"source":""}},"acquisition_news":{{"found":false,"details":""}},"social":{{"facebook":"active|inactive|none","instagram":"active|inactive|none","other":""}},"healthgrades":{{"rating":null,"reviews":null}},"zocdoc":{{"listed":false}},"doctor":{{"publications":false,"speaking":false,"associations":[],"notes":""}},"insurance":{{"medicaid":null,"ppo_heavy":null,"note":""}},"red_flags":[],"green_flags":[],"assessment":"","readiness":"high|medium|low|unlikely|unknown","confidence":"high|medium|low","sources":[]}}"""
+
+JOB_HUNT_SYSTEM = """You are a dental career advisor helping new DDS/DMD graduates evaluate first-job opportunities.
+Search the web for CURRENT, REAL data about this specific practice. If you can't find something, return null — never fabricate.
+Return ONLY raw JSON (no markdown, no explanation). Concise values only.
+Cost-sensitive — minimize output tokens."""
+
+JOB_HUNT_PRACTICE_USER = """Evaluate this dental practice as a first-job opportunity for a new DDS/DMD graduate:
+Name: {name}
+Address: {address}, {city}, {state} {zip}
+Doctor: {doctor_name}
+{extra_context}
+Return JSON:
+{{"website":{{"url":"","era":"modern|dated|template|none|unknown","last_update":"","analysis":""}},"services":{{"listed":[],"high_revenue":[],"note":""}},"technology":{{"listed":[],"level":"high|moderate|basic|unknown"}},"providers":{{"web_count":null,"owner_stage":"late|mid|early|unknown","notes":""}},"google":{{"reviews":null,"rating":null,"recent_date":"","velocity":"active|moderate|stale|unknown","sentiment":""}},"hiring":{{"active":false,"positions":[],"source":""}},"acquisition_news":{{"found":false,"details":""}},"social":{{"facebook":"active|inactive|none","instagram":"active|inactive|none","other":""}},"healthgrades":{{"rating":null,"reviews":null}},"zocdoc":{{"listed":false}},"doctor":{{"publications":false,"speaking":false,"associations":[],"notes":""}},"insurance":{{"medicaid":null,"ppo_heavy":null,"note":""}},"red_flags":[],"green_flags":[],"assessment":"","readiness":"high|medium|low|unlikely|unknown","confidence":"high|medium|low","sources":[],"succession_intent":"active_seeking|receptive|unclear|not_considering|unknown","new_grad_friendly_score":null,"mentorship_signals":[],"associate_runway":"immediate|0-2 years|2-5 years|succession path|unclear","compensation_signals":{{"base_est_usd":null,"production_pct_est":null,"benefits_quality":"strong|standard|thin|unknown"}},"red_flags_for_grad":[],"green_flags_for_grad":[]}}"""
+
 
 ESCALATION_SYSTEM = """You are a senior dental PE analyst. You have initial scan results.
 Conduct DEEPER follow-up research on this high-priority target.
@@ -212,9 +226,33 @@ class ResearchEngine:
             name=name, address=address, city=city, state=state,
             zip=zip_code, doctor_name=doctor_name or "Unknown",
             extra_context=extra_context or "")
-        r = self._call_api(PRACTICE_SYSTEM, msg, model=model, max_searches=10)
+        r = self._call_api(PRACTICE_SYSTEM, msg, model=model, max_searches=4)
         r["_type"] = "practice"
         r["_npi"] = npi
+        return r
+
+
+    def research_practice_jobhunt(self, name: str, address: str, city: str,
+                                   state: str, zip_code: str,
+                                   doctor_name: Optional[str] = None,
+                                   extra_context: Optional[str] = None) -> Dict[str, Any]:
+        """Job-hunt focused research — returns practice intel with grad-specific signals.
+
+        Uses JOB_HUNT_SYSTEM + JOB_HUNT_PRACTICE_USER prompts tuned for new DDS/DMD
+        graduates evaluating first-job opportunities. Returns all standard PRACTICE fields
+        plus: succession_intent, new_grad_friendly_score, mentorship_signals,
+        associate_runway, compensation_signals, red_flags_for_grad, green_flags_for_grad.
+
+        NOTE: Does NOT call the API internally — use build_batch_requests_jobhunt() for
+        batch runs or call _call_api() directly for synchronous single-practice research.
+        """
+        msg = JOB_HUNT_PRACTICE_USER.format(
+            name=name, address=address, city=city, state=state,
+            zip=zip_code, doctor_name=doctor_name or "Unknown",
+            extra_context=extra_context or "")
+        r = self._call_api(JOB_HUNT_SYSTEM, msg, model=MODEL_HAIKU,
+                           max_tokens=1500, max_searches=4)
+        r["_type"] = "practice_jobhunt"
         return r
 
     # ── Two-Pass Escalation ──────────────────────────────────────────────
@@ -276,6 +314,36 @@ class ResearchEngine:
         m["_meta"] = p2.get("_meta", p1.get("_meta", {}))
         return m
 
+
+    def build_batch_requests_jobhunt(self, items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """Build batch request list using JOB_HUNT prompts (50% token discount via Batch API).
+
+        Each item must have: name, address, city, state, zip, npi.
+        Optional per-item: doctor_name, extra_context.
+
+        Returns list of batch request dicts compatible with submit_batch().
+        """
+        reqs = []
+        for item in items:
+            msg = JOB_HUNT_PRACTICE_USER.format(
+                name=item["name"], address=item["address"],
+                city=item["city"], state=item["state"],
+                zip=item["zip"], doctor_name=item.get("doctor_name", "Unknown"),
+                extra_context=item.get("extra_context", ""))
+            reqs.append({
+                "custom_id": f"jobhunt_{item['npi']}",
+                "params": {
+                    "model": self.model,
+                    "max_tokens": 1500,
+                    "system": [{"type": "text", "text": JOB_HUNT_SYSTEM,
+                               "cache_control": {"type": "ephemeral"}}],
+                    "tools": [{"type": "web_search_20250305",
+                              "name": "web_search", "max_uses": 4}],
+                    "messages": [{"role": "user", "content": msg}]
+                }
+            })
+        return reqs
+
     # ── Batch API ────────────────────────────────────────────────────────
 
     def build_batch_requests(self, items, research_type="zip"):
@@ -295,7 +363,7 @@ class ResearchEngine:
                     extra_context=item.get("extra_context", ""))
                 sys = PRACTICE_SYSTEM
                 cid = f"practice_{item['npi']}"
-                ms = 10
+                ms = 4
 
             reqs.append({
                 "custom_id": cid,

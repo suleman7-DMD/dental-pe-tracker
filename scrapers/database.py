@@ -6,6 +6,7 @@ from sqlalchemy import (
     create_engine,
     Column,
     Integer,
+    String,
     Float,
     Text,
     Boolean,
@@ -413,6 +414,14 @@ class PracticeIntel(Base):
     accepts_medicaid = Column(Integer)
     ppo_heavy = Column(Integer)
     insurance_note = Column(Text)
+    # Launchpad Phase 3 — job-hunt grad-specific fields
+    succession_intent_detected = Column(String(20), index=True)   # "active_seeking"|"receptive"|"unclear"|"not_considering"|"unknown"
+    new_grad_friendly_score = Column(Integer)                      # 0-100
+    mentorship_signals = Column(Text)                              # JSON array stringified
+    associate_runway = Column(String(32))                          # "immediate"|"0-2 years"|"2-5 years"|"succession path"|"unclear"
+    compensation_signals = Column(Text)                            # JSON object stringified
+    red_flags_for_grad = Column(Text)                              # JSON array stringified
+    green_flags_for_grad = Column(Text)                            # JSON array stringified
     # Assessment
     red_flags = Column(Text)
     green_flags = Column(Text)
