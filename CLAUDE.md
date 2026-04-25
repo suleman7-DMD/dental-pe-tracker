@@ -81,7 +81,7 @@ Both incremental paths wrap each row insert in a `begin_nested()` savepoint so a
 |-------|------|---------------|
 | `/` | Home | 6 KPI cards (Lucide icons), two-column layout (recent deals table + activity feed from practice_changes), data freshness bar, 2x3 quick nav grid |
 | `/launchpad` | Launchpad | First-job finder for new dental grads. Track-weighted 0-100 scoring (Succession / Apprentice, High-Volume Ethical, DSO Associate). 20-signal catalog (mentor-rich, hiring-now, boutique solo, FFS/concierge, community DSO, family dynasty, ghost practice, DSO avoid-tier, etc.). 5 tiers (Best Fit / Strong / Maybe / Low / Avoid). 4 living-location scopes. 5-tab practice dossier (Snapshot / Compensation / Mentorship / Red Flags / Interview Prep). Curated DSO tier list with comp bands + citations. |
-| `/warroom` | **Warroom** | Chicagoland command surface. 2 modes (Hunt / Investigate), 4 lenses (consolidation, density, buyability, retirement), 11 scopes (chicagoland, 7 subzones, 3 saved presets). Always-visible Sitrep KPI strip. Intent bar (⌘K), Living Map, ranked target list, ZIP + practice dossier drawers, pinboard tray, signal flag overlays (8 practice + 1 ZIP), keyboard shortcuts (`?`, `2`, `4`), URL-synced state. |
+| `/warroom` | **Warroom** | Chicagoland command surface. 2 modes (Hunt / Investigate), 4 lenses (consolidation, density, buyability, retirement), 11 scopes (chicagoland, 7 subzones, 3 saved presets). Always-visible Sitrep KPI strip. Intent bar (⌘K), Living Map, ranked target list, ZIP + practice dossier drawers, pinboard tray, signal flag overlays (8 practice + 1 ZIP), keyboard shortcuts (`?`, `1`=Hunt, `2`=Investigate, `R`/`P`/`V`/`[`/`]`/`Esc`), URL-synced state. |
 | `/deal-flow` | Deal Flow | **4 tabs: Overview \| Sponsors \| Geography \| Deals.** Persistent KPI strip above tabs. Overview: deal volume timeline + specialty charts. Sponsors: top 15 sponsors/platforms. Geography: state choropleth. Deals: full searchable table with URL-synced filters. |
 | `/market-intel` | Market Intel | **3 tabs: Consolidation \| ZIP Analysis \| Ownership.** Persistent tiered consolidation KPIs above tabs. Consolidation: DSO Penetration Table + Mapbox consolidation map. ZIP Analysis: ZIP score table + city practice tree. Ownership: 11-type entity classification breakdown + methodology notes. Cross-link banner to Warroom. |
 | `/buyability` | Buyability | Verdict extraction from notes field, 4 category KPIs, ZIP filter, sortable table with CSV export |
@@ -94,7 +94,7 @@ Both incremental paths wrap each row insert in a `begin_nested()` savepoint so a
 
 1. **Server Components** (`page.tsx`) fetch from Supabase server-side
 2. Pass data to **Client Component shells** (`'use client'`) via props
-3. Client shells handle filters, UI state, refetching via **React Query** (5min stale, 30min gc)
+3. Client shells handle filters, UI state, refetching via **React Query** (30min stale, 30min gc — data changes weekly; per-hook overrides exist for warroom/launchpad)
 4. URL params sync for shareable filter state (`useUrlFilters` hook)
 5. Supabase queries in `src/lib/supabase/queries/` organized by table
 
@@ -170,7 +170,7 @@ Sidebar grouped into 4 sections (dark #2C2C2C background, goldenrod #B8860B acti
 | `src/app/warroom/_components/intent-bar.tsx` | ⌘K-focusable NL intent input |
 | `src/app/warroom/_components/sitrep-kpi-strip.tsx` | 6 KPIs (always-visible above Hunt + Investigate panels) |
 | `src/app/warroom/_components/living-map.tsx` | Mapbox ZIP choropleth colored by lens + signal flag overlays |
-| `src/app/warroom/_components/briefing-pane.tsx` | Scope-specific alerts + intent chip suggestions |
+| `src/app/warroom/_components/briefing-rail.tsx` | Scope-specific alerts + intent chip suggestions |
 | `src/app/warroom/_components/target-list.tsx` | Hunt mode ranked practice list |
 | `src/app/warroom/_components/dossier-drawer.tsx` | Practice dossier drawer |
 | `src/app/warroom/_components/zip-dossier-drawer.tsx` | ZIP dossier drawer (saturation, ownership, top practices) |
@@ -287,7 +287,7 @@ Sidebar grouped into 4 sections (dark #2C2C2C background, goldenrod #B8860B acti
 | `src/components/layout/sidebar.tsx` | Collapsible left nav (220px / 60px), dark #2C2C2C, 4 grouped sections |
 | `src/components/layout/sticky-section-nav.tsx` | Sticky section navigation |
 | `src/components/ui/*.tsx` | shadcn UI primitives (button, card, dialog, etc.) |
-| `src/providers/query-provider.tsx` | React Query provider (5min stale, 30min gc, 1 retry) |
+| `src/providers/query-provider.tsx` | React Query provider (30min stale, 30min gc, 1 retry — data changes weekly) |
 | `src/providers/sidebar-provider.tsx` | Sidebar state provider |
 | `src/app/api/deals/` | API route for deal operations |
 | `src/app/api/practices/` | API route for practice operations |
@@ -649,7 +649,7 @@ The user gave a hard requirement: zero hallucination tolerance for practice doss
 
 **Known issues / debug breadcrumbs (open, not blocking):**
 
-1. **`practice_signals` FK violation in sync logs** — NPI `1316509367` (`GRACE KIM`, BOSTON, MA, zip 02115) is referenced in `practice_signals` but doesn't exist in `practices`. Pre-existing before this session; visible in `sync_tail` of `last_run_summary.json`. Fix: `DELETE FROM practice_signals WHERE npi NOT IN (SELECT npi FROM practices)` plus add the same filter to whatever produces `practice_signals` (likely `compute_signals.py` or similar derived-table builder).
+1. **`practice_signals` FK violation in sync logs (RESOLVED 2026-04-25)** — NPI `1316509367` is `GRACE KWON` in WORCESTER, MA, zip `01610` (an earlier audit note misstated this as "Grace Kim, Boston, 02115" — corrected per direct SQLite lookup). Was pre-existing in `practice_signals` but missing from `practices`. Fixed by: (a) `compute_signals.py:475-505` filters `WHERE zip IN (SELECT zip_code FROM watched_zips)`, (b) explicit `npi IS NOT NULL` guard added in commit `eb75c6c`. Verified: SQLite `practice_signals.orphan_count = 0`. Sync floor `MIN_ROWS_THRESHOLD["practice_signals"] = 1000` protects against silent wipes.
 2. **`verification_quality` enum drift** — model returned `"high"` for 10 dossiers when spec is `verified|partial|insufficient`. Validation gate accepts non-`insufficient` values, so `"high"` slipped through. Either tighten the prompt to suppress `"high"` or widen the enum/index in `database.py:427`.
 3. **`/tmp/full_batch_id.txt` is not committed** — `launch.py` writes it, `poll.py` reads it. Cross-process handoff via `/tmp` is fragile across reboots. Future: pass batch_id as CLI arg or use `data/last_batch_id.txt`.
 4. **SQLite `ALTER TABLE` is not idempotent** — running `migrate_verification_cols.py` against SQLite would fail with "duplicate column" since SQLite has no `ADD COLUMN IF NOT EXISTS`. Currently handled out-of-band; should be wrapped in try/except.

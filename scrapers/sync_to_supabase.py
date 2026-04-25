@@ -138,9 +138,14 @@ SYNC_CONFIG = [
     {"table": "platforms",        "model": Platform,        "strategy": "full_replace",           "conflict_col": None},
     {"table": "zip_overviews",    "model": ZipOverview,     "strategy": "full_replace",           "conflict_col": None},
     {"table": "zip_qualitative_intel", "model": ZipQualitativeIntel, "strategy": "full_replace", "conflict_col": None},
-    {"table": "practice_intel",        "model": PracticeIntel,       "strategy": "full_replace", "conflict_col": None},
-    {"table": "practice_signals",      "model": PracticeSignal,      "strategy": "full_replace", "conflict_col": None},
-    {"table": "zip_signals",           "model": ZipSignal,           "strategy": "full_replace", "conflict_col": None},
+    # practice_intel and practice_signals have FK → practices.npi in Supabase.
+    # TRUNCATE TABLE practices CASCADE wipes them both. They must be re-synced
+    # every run. filter_watched_zips_npi=True trims any SQLite rows whose NPI is
+    # not in Supabase practices (e.g., non-watched-ZIP rows from compute_signals)
+    # to prevent FK violations that would abort the full_replace and leave 0 rows.
+    {"table": "practice_intel",   "model": PracticeIntel,  "strategy": "full_replace", "conflict_col": None, "filter_watched_zips_npi": True},
+    {"table": "practice_signals", "model": PracticeSignal, "strategy": "full_replace", "conflict_col": None, "filter_watched_zips_npi": True},
+    {"table": "zip_signals",      "model": ZipSignal,      "strategy": "full_replace", "conflict_col": None},
 ]
 
 
@@ -159,7 +164,20 @@ def _get_pg_url():
 
 
 def _get_pg_engine():
-    """Create a SQLAlchemy engine for the Supabase Postgres database."""
+    """Create a SQLAlchemy engine for the Supabase Postgres database.
+
+    Connection hardening (added 2026-04-25 after debugging an abandoned
+    Supabase backend that held `SELECT npi FROM practices` for 16+ minutes
+    after the local Python process died, blocking every subsequent TRUNCATE):
+
+    - `idle_in_transaction_session_timeout=300000` — Postgres kills any
+      connection sitting idle inside a transaction for >5 min. Prevents a
+      crashed local sync from leaving zombie locks on practices.
+    - TCP keepalives (30s idle / 10s interval / 5 retries) — detect
+      half-closed connections within ~80s instead of the OS default 2hr,
+      so the backend gets cleaned up even if the local TCP socket vanishes
+      without a FIN packet (NAT timeouts, laptop sleep, etc.).
+    """
     url = _get_pg_url()
     engine = create_engine(
         url,
@@ -169,7 +187,14 @@ def _get_pg_engine():
         pool_recycle=1800,
         pool_pre_ping=True,
         connect_args={
-            "options": f"-c statement_timeout={PG_STATEMENT_TIMEOUT_MS}",
+            "options": (
+                f"-c statement_timeout={PG_STATEMENT_TIMEOUT_MS} "
+                f"-c idle_in_transaction_session_timeout=300000"
+            ),
+            "keepalives": 1,
+            "keepalives_idle": 30,
+            "keepalives_interval": 10,
+            "keepalives_count": 5,
         },
         echo=False,
     )
@@ -627,6 +652,31 @@ def _sync_full_replace(sqlite_session, pg_engine, config):
 
     rows = sqlite_session.query(model).all()
 
+    # Fix 5: NPI-based watched-ZIP filter for tables that reference practices.npi
+    # practice_intel and practice_signals have FK → practices.npi in Supabase.
+    # Rows whose NPI is not in Supabase practices cause FK violations that abort
+    # the full_replace and leave 0 rows after the TRUNCATE CASCADE wipe.
+    # Pre-filter them out before the TRUNCATE so the transaction can commit cleanly.
+    if config.get("filter_watched_zips_npi") and rows:
+        try:
+            with pg_engine.connect() as _conn:
+                _set_statement_timeout(_conn)
+                _npi_result = _conn.execute(text("SELECT npi FROM practices"))
+                _supabase_npis = {row[0] for row in _npi_result}
+            before_filter = len(rows)
+            rows = [r for r in rows if getattr(r, "npi", None) in _supabase_npis]
+            if len(rows) < before_filter:
+                log.warning(
+                    "[%s] filter_watched_zips_npi: dropped %d rows with NPIs not in Supabase practices (%d -> %d)",
+                    table_name, before_filter - len(rows), before_filter, len(rows),
+                )
+            else:
+                log.info("[%s] filter_watched_zips_npi: all %d NPIs in Supabase practices — no rows dropped",
+                         table_name, len(rows))
+        except Exception as _fe:
+            log.warning("[%s] filter_watched_zips_npi: could not fetch Supabase NPI set (%s) — proceeding without filter",
+                        table_name, _fe)
+
     # Fix 2: Guard — abort TRUNCATE if source is empty or below floor
     floor = MIN_ROWS_THRESHOLD.get(table_name, 0)
     if not rows:
@@ -756,7 +806,13 @@ def _sync_watched_zips_only(sqlite_session, pg_engine, config):
         conn.execute(text(
             "DELETE FROM sync_metadata WHERE table_name = 'practice_changes'"
         ))
-        log.info("[%s] TRUNCATE CASCADE — wiped practices + practice_changes, reset sync_metadata",
+        # practice_intel and practice_signals both have FK → practices.npi in Supabase,
+        # so TRUNCATE TABLE practices CASCADE also wipes them. Reset their sync_metadata
+        # so the subsequent full_replace calls know to re-insert all rows.
+        conn.execute(text(
+            "DELETE FROM sync_metadata WHERE table_name IN ('practice_intel', 'practice_signals')"
+        ))
+        log.info("[%s] TRUNCATE CASCADE — wiped practices + practice_changes + practice_intel + practice_signals, reset sync_metadata",
                  table_name)
 
         for i in range(0, len(rows), BATCH_SIZE):
@@ -858,8 +914,37 @@ def _check_script_integrity():
         log.info("sha256 integrity check skipped: %s", e)
 
 
+_SYNC_LOCK_PATH = "/tmp/dental-pe-sync.lock"
+_sync_lock_handle = None
+
+
+def _acquire_sync_lock():
+    """Prevent concurrent sync runs from racing on TRUNCATE TABLE practices CASCADE.
+
+    Two simultaneous syncs deadlock: the second's TRUNCATE waits for the
+    first's transaction to release ACCESS EXCLUSIVE, but each holds locks the
+    other needs. Postgres aborts one with `psycopg2.errors.DeadlockDetected`.
+
+    File lock is process-local (single host); for multi-host parity we'd need
+    a Postgres advisory lock, but cron + manual local runs are the only sync
+    sources today.
+    """
+    import fcntl
+    global _sync_lock_handle
+    _sync_lock_handle = open(_SYNC_LOCK_PATH, "w")
+    try:
+        fcntl.flock(_sync_lock_handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        log.error("Another sync_to_supabase.py is already running (lock=%s) — aborting",
+                  _SYNC_LOCK_PATH)
+        sys.exit(2)
+    _sync_lock_handle.write(f"pid={os.getpid()} started={datetime.now().isoformat()}\n")
+    _sync_lock_handle.flush()
+
+
 def run():
     """Run the full incremental sync from SQLite to Supabase Postgres."""
+    _acquire_sync_lock()
     start_time = log_scrape_start("sync_to_supabase")
     log.info("=" * 60)
     log.info("SYNC TO SUPABASE — Starting")
