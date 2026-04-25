@@ -2,7 +2,7 @@
 
 ## What This Project Is
 
-A data pipeline + dual-frontend dashboard that tracks private equity consolidation in US dentistry. It scrapes deal announcements, monitors 400k+ dental practices from federal data, classifies who owns what, and scores markets for acquisition risk. Primary metro: Chicagoland (268 expanded ZIPs across 7 sub-zones). Secondary: Boston Metro (21 ZIPs).
+A data pipeline + dual-frontend dashboard that tracks private equity consolidation in US dentistry. It scrapes deal announcements, monitors 402,004 dental practices from federal data, classifies who owns what, and scores markets for acquisition risk. Primary metro: Chicagoland (268 expanded ZIPs across 7 sub-zones). Secondary: Boston Metro (21 ZIPs).
 
 **Next.js app (primary):** dental-pe-nextjs.vercel.app
 **Streamlit app (legacy):** suleman7-pe.streamlit.app
@@ -37,9 +37,9 @@ Push to `main` auto-deploys both: Vercel (Next.js, ~30s) and Streamlit Cloud (~6
 
 Key tables: `deals`, `practices`, `practice_changes`, `watched_zips`, `zip_scores`, `dso_locations`, `ada_hpi_benchmarks`, `zip_qualitative_intel`, `practice_intel`
 
-- **practices**: 400k+ rows. Fields: npi (PK), practice_name, doing_business_as, address, city, state, zip, phone, entity_type, taxonomy_code, ownership_status, affiliated_dso, affiliated_pe_sponsor, buyability_score, classification_confidence, classification_reasoning, data_source, latitude, longitude, parent_company, ein, franchise_name, iusa_number, website, year_established, employee_count, estimated_revenue, num_providers, location_type, import_batch_id, data_axle_import_date, entity_classification
-- **deals**: 2,500+ rows. PE dental deals from PESP, GDN, PitchBook
-- **practice_changes**: Change log for name/address/ownership changes (acquisition detection). 5,100+ rows.
+- **practices**: 402,004 rows. Fields: npi (PK), practice_name, doing_business_as, address, city, state, zip, phone, entity_type, taxonomy_code, ownership_status, affiliated_dso, affiliated_pe_sponsor, buyability_score, classification_confidence, classification_reasoning, data_source, latitude, longitude, parent_company, ein, franchise_name, iusa_number, website, year_established, employee_count, estimated_revenue, num_providers, location_type, import_batch_id, data_axle_import_date, entity_classification
+- **deals**: 2,861 rows in SQLite, 2,895 in Supabase (+34 ghost rows pending `--reconcile-deals` cleanup, audit §15 #11). PE dental deals from PESP, GDN, PitchBook.
+- **practice_changes**: Change log for name/address/ownership changes (acquisition detection). 8,848 rows.
 - **zip_scores**: Per-ZIP consolidation stats (290 scored ZIPs), recalculated by merge_and_score.py. One row per ZIP (deduped).
 - **watched_zips**: 290 ZIPs (268 Chicagoland + 21 Boston + 1 other). Auto-backfilled by ensure_chicagoland_watched().
 - **dso_locations**: 92 scraped DSO office locations from ADSO websites.
@@ -60,8 +60,9 @@ Mirror of SQLite tables, synced by `scrapers/sync_to_supabase.py`. Same schema, 
 Both incremental paths wrap each row insert in a `begin_nested()` savepoint so an `IntegrityError` on the secondary partial unique index `uix_deal_no_dup` (platform_company+target_name+deal_date) skips the duplicate with a WARNING instead of aborting the whole batch transaction.
 
 ### Current Data Stats
-- 401,645 practices (362k independent, 2.8k DSO-affiliated, 401 PE-backed, 35k unknown)
-- 2,895 deals (2,532 GDN + 353 PESP + 10 PitchBook, coverage Oct 2020 – Mar 2026)
+- 402,004 practices globally; **`entity_classification` populated for only 14,071 (96.6% NULL globally)** — Pass 3 of `dso_classifier.py` only runs on watched-ZIP practices. Within watched ZIPs (14,053 practices), the breakdown is: solo_established 3,987 / small_group 2,449 / specialist 2,355 / large_group 1,678 / family_practice 1,243 / dso_regional 1,181 / solo_high_volume 757 / dso_national 212 / solo_inactive 172 / solo_new 20 / non_clinical 17 / NULL 44.
+- Legacy `ownership_status` field is now ~zero in SQLite — `entity_classification` is the canonical ownership signal everywhere in the Next.js frontend (see `classifyPractice()` helper).
+- 2,861 deals in SQLite / 2,895 in Supabase (+34 ghost-row drift, audit §15 #11). Mix: 2,532 GDN + 353 PESP + 10 PitchBook. Coverage: Oct 2020 – Mar 2026 (live `MAX(deal_date)=2026-03-02`; April 2026 GDN roundup not yet published as of 2026-04-25).
 - 2,992 Data Axle enriched practices (with lat/lon, revenue, employees, year established)
 - 290 scored ZIPs
 
@@ -415,6 +416,15 @@ After pipeline runs, `scrapers/sync_to_supabase.py` pushes updated data to Supab
 | `scrapers/practice_deep_dive.py` | 577 | CLI: Practice-level due diligence (two-pass Haiku→Sonnet) |
 | `scrapers/weekly_research.py` | 309 | Automated weekly research runner (batch API, budget caps) |
 | `scrapers/pipeline_logger.py` | 295 | Structured JSON-Lines event logger |
+| `scrapers/compute_signals.py` | 1,424 | Materializes per-practice + per-ZIP signal flags into `practice_signals` and `zip_signals` for Warroom + Launchpad. NPI-null guard added in `eb75c6c`; filters watched ZIPs to prevent FK violations on global-pool rows. |
+| `scrapers/cleanup_pesp_junk.py` | 80 | One-shot cleanup CLI: deletes PESP deal rows whose `target_name` matches a known commentary fragment (e.g. "based on", "according to") that escaped the COMMENTARY_PATTERNS pre-filter. Idempotent; safe to re-run. |
+| `scrapers/fast_sync_watched.py` | 200 | Fast partial sync: re-uploads ONLY the practices in `watched_zips` (~14k rows) without touching the global 402k pool. Used when a watched-ZIP-scoped change (entity_classification refresh, signal recompute) needs to land in Supabase without paying the full incremental scan cost. |
+| `scrapers/dossier_batch/launch.py` | — | Picks top-1 unresearched independent per Chicagoland watched ZIP, builds bulletproofed batch via `engine.build_batch_requests`, submits to Anthropic. Writes `batch_id` to `/tmp/full_batch_id.txt`. |
+| `scrapers/dossier_batch/launch_2000_excl_chi.py` | — | Bigger variant: top-2000 unresearched independents EXCLUDING Chicago-proper (`zip NOT LIKE '606%'`). Cost cap raised to $250. Used for the 2026-04-25 backfill batch `msgbatch_01A3FxKxKxemAyqDr2AcGYUq`. |
+| `scrapers/dossier_batch/poll.py` | — | Reads `batch_id`, polls Anthropic every 30s up to 90 min, runs `validate_dossier()` per result, stores passing dossiers via `store_practice_intel()`, runs `sync_to_supabase.py`, writes `/tmp/full_batch_summary.json`. |
+| `scrapers/dossier_batch/poll_zip_batches.py` | — | Auto-retrieval poller for the 290-ZIP re-research batches (audit §15 #7). Reads `/tmp/zip_batch_ids.json` (one or more batch IDs), polls each, validates via `validate_zip_dossier()`, stores via `store_zip_intel()`. |
+| `scrapers/dossier_batch/upsert_practice_intel.py` | — | Standalone UPSERT path: copies `practice_intel` rows from local SQLite to Supabase via `INSERT ... ON CONFLICT DO UPDATE`, skipping the TRUNCATE that `sync_to_supabase.py`'s `full_replace` strategy uses. Useful when you want to land verified dossiers in Supabase without waiting for the next full sync (or when full sync is wiping data). |
+| `scrapers/dossier_batch/migrate_verification_cols.py` | — | One-shot Supabase migration: adds `verification_searches`, `verification_quality`, `verification_urls` columns to `practice_intel` (idempotent, uses `ADD COLUMN IF NOT EXISTS`). Companion SQLite ALTER must be run separately (no IF NOT EXISTS support). |
 | `pipeline_check.py` | 540 | Diagnostic health check tool |
 
 ## Entity Classification System
