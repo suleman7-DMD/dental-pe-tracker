@@ -273,6 +273,8 @@ Examples:
     parser.add_argument("--report", metavar="ZIP", help="Display stored report for a ZIP")
     parser.add_argument("--model", choices=["haiku", "sonnet"], default="haiku",
                        help="Model to use (default: haiku — cheapest)")
+    parser.add_argument("--retrieve", metavar="BATCH_ID",
+                       help="Retrieve results from a completed ZIP batch")
     parser.add_argument("--dry-run", action="store_true", help="Show what would be researched")
     parser.add_argument("--db", help="Override database path")
     
@@ -280,7 +282,12 @@ Examples:
     
     # Ensure tables exist
     ensure_intel_tables(args.db)
-    
+
+    if args.retrieve:
+        from scrapers.weekly_research import retrieve_zip_batch
+        retrieve_zip_batch(args.retrieve, args.db)
+        return
+
     if args.status:
         show_status(args.db)
         return

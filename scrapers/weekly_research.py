@@ -278,6 +278,72 @@ def retrieve_batch(batch_id):
         print(f"  Rejection breakdown: {dict(rejection_reasons)}")
 
 
+def retrieve_zip_batch(batch_id: str, db_path=None):
+    """Retrieve completed ZIP batch results and store them through validate_zip_dossier gate."""
+    engine = ResearchEngine(model=MODEL_HAIKU)
+    tracker = CostTracker()
+
+    print(f"\n📦 Retrieving ZIP batch {batch_id}...")
+    status = engine.check_batch(batch_id)
+
+    if "error" in status:
+        print(f"  ❌ Error checking batch: {status['error']}")
+        return
+
+    proc_status = status.get("processing_status", "unknown")
+    print(f"  Status: {proc_status}")
+
+    if proc_status != "ended":
+        counts = status.get("request_counts", {})
+        print(f"  Processing: {counts.get('processing', '?')}")
+        print(f"  Succeeded: {counts.get('succeeded', '?')}")
+        print(f"  Check again later.")
+        return
+
+    results = engine.get_batch_results(batch_id)
+    if not results:
+        print("  No results returned.")
+        return
+
+    from scrapers.intel_database import store_zip_intel
+
+    stored = 0
+    failed = 0
+    rejected = 0
+    rejection_reasons = {}
+    for item in results:
+        cid = item.get("id", "")
+        data = item.get("data", {})
+        if not data or "error" in data:
+            logger.warning("Batch item %s failed: %s", cid, data.get("error", "unknown"))
+            failed += 1
+            continue
+
+        try:
+            if cid.startswith("zip_"):
+                zip_code = cid[4:]
+                ok, reason = validate_zip_dossier(zip_code, data)
+                if not ok:
+                    rejected += 1
+                    rejection_reasons[reason] = rejection_reasons.get(reason, 0) + 1
+                    logger.warning("Quarantined ZIP %s: %s", zip_code, reason)
+                    print(f"  🚫 ZIP {zip_code} REJECTED ({reason})")
+                    continue
+                store_zip_intel(zip_code, data)
+                tracker.record("zip", 0, "batch", zip_code)
+                stored += 1
+                print(f"  ✅ ZIP {zip_code}")
+        except Exception as e:
+            failed += 1
+            logger.error("Skipping %s due to storage error: %s", cid, e)
+            print(f"  ⚠️  Skipped {cid}: {str(e)[:120]}")
+
+    print(f"\n  Stored {stored}/{len(results)} results "
+          f"({failed} errored, {rejected} quarantined).")
+    if rejection_reasons:
+        print(f"  Rejection breakdown: {dict(rejection_reasons)}")
+
+
 def main():
     parser = argparse.ArgumentParser(description="Weekly qualitative research automation")
     parser.add_argument("--budget", type=float, default=DEFAULT_BUDGET,
