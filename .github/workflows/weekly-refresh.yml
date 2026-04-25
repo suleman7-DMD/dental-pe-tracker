@@ -104,7 +104,12 @@ jobs:
         run: python3 scrapers/ada_hpi_downloader.py
         continue-on-error: true
 
-      - name: Classify DSO affiliations (including entity types)
+      - name: Classify DSO affiliations (Pass 1+2 — name + location)
+        timeout-minutes: 20
+        run: python3 scrapers/dso_classifier.py
+        continue-on-error: true
+
+      - name: Classify entity types (Pass 3)
         timeout-minutes: 20
         run: python3 scrapers/dso_classifier.py --entity-types-only
         continue-on-error: true
