@@ -71,16 +71,57 @@ SOURCE_NAME = "pesp_airtable"
 # slug → Airtable embed URL. Discovered by fetching the PESP post and grepping
 # for `airtable.com/embed/`. As PESP publishes new months, append below.
 IFRAME_URL_REGISTRY: dict[str, str] = {
-    # 2025-01 — 2026-03 inclusive shared this single Airtable view; PESP
-    # updates the same base in-place rather than publishing a new view per
-    # month. Confirmed 2026-04-25 by fetching january-2025 and march-2026 posts.
+    # 14 Airtable views verified live 2026-04-25 by fetching each PESP post
+    # with Chrome UA and extracting `<iframe src="https://airtable.com/embed/...">`.
+    # All views share the same base appbXEB4PCgy1jWem; each month gets its own
+    # `sh...` view ID (PESP creates a new shared view per month rather than
+    # updating one in-place — earlier note saying otherwise was wrong).
+    #
+    # september-2025, december-2025, february-2026, march-2026 returned 404
+    # (post not yet published / no archived snapshot) and are intentionally
+    # absent. Re-probe with Chrome UA when those months publish.
+    "private-equity-health-care-acquisitions-august-2024": (
+        "https://airtable.com/embed/appbXEB4PCgy1jWem/shr5CuUhCEMUYreno?viewControls=on"
+    ),
+    "private-equity-health-care-acquisitions-september-2024": (
+        "https://airtable.com/embed/appbXEB4PCgy1jWem/shrbnlBZdDEx1ShZF?viewControls=on"
+    ),
+    "private-equity-health-care-acquisitions-october-2024": (
+        "https://airtable.com/embed/appbXEB4PCgy1jWem/shr47fUdc51ak7bJ9?viewControls=on"
+    ),
     "private-equity-health-care-acquisitions-january-2025": (
         "https://airtable.com/embed/appbXEB4PCgy1jWem/shrRZKgxTYKLvykjv?viewControls=on"
     ),
-    # Older Airtable-era posts (2024-08 onwards) used a different shared
-    # view; URLs to be backfilled as the corresponding posts are re-fetched.
-    # Leaving as TODO — these months are already documented in
-    # PESP_EXPECTED_EMPTY_MONTHS and don't block the weekly run.
+    "private-equity-health-care-acquisitions-february-2025": (
+        "https://airtable.com/embed/appbXEB4PCgy1jWem/shrqSgYvVxhVQKjL1?viewControls=on"
+    ),
+    "private-equity-health-care-acquisitions-march-2025": (
+        "https://airtable.com/embed/appbXEB4PCgy1jWem/shrU1PEgnRqO4P0jC?viewControls=on"
+    ),
+    "private-equity-health-care-acquisitions-april-2025": (
+        "https://airtable.com/embed/appbXEB4PCgy1jWem/shrh1Lrali22y13gl?viewControls=on"
+    ),
+    "private-equity-health-care-acquisitions-may-2025": (
+        "https://airtable.com/embed/appbXEB4PCgy1jWem/shr2LFc0lD9YirVXY?viewControls=on"
+    ),
+    "private-equity-health-care-acquisitions-june-2025": (
+        "https://airtable.com/embed/appbXEB4PCgy1jWem/shrXwOQ7OU513t3EU?viewControls=on"
+    ),
+    "private-equity-health-care-acquisitions-july-2025": (
+        "https://airtable.com/embed/appbXEB4PCgy1jWem/shrdtcx3ZR4TCCJhv?viewControls=on"
+    ),
+    "private-equity-health-care-acquisitions-august-2025": (
+        "https://airtable.com/embed/appbXEB4PCgy1jWem/shrqAIQfY5eDTiewv?viewControls=on"
+    ),
+    "private-equity-health-care-acquisitions-october-2025": (
+        "https://airtable.com/embed/appbXEB4PCgy1jWem/shrycSTfuHKGV3YFR?viewControls=on"
+    ),
+    "private-equity-health-care-acquisitions-november-2025": (
+        "https://airtable.com/embed/appbXEB4PCgy1jWem/shrT3oqVUFeAXKHhC?viewControls=on"
+    ),
+    "private-equity-health-care-acquisitions-january-2026": (
+        "https://airtable.com/embed/appbXEB4PCgy1jWem/shrpTfM6IjU3nbo39?viewControls=on"
+    ),
 }
 
 # ── Column mapping ──────────────────────────────────────────────────────────

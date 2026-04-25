@@ -52,15 +52,25 @@ YEARS = list(range(2020, date.today().year + 1))
 # completeness warning to compute missing-month gaps.
 PESP_EARLIEST_YEAR_MONTH = (2020, 10)
 
-# Months where PESP is known not to have published a standalone monthly post.
+# Months where PESP is known not to have published a standalone monthly post,
+# OR where the post's deal listings are inaccessible via HTML scraping.
 # Verified via Wayback CDX (web.archive.org/cdx/search/cdx) during the 2026-04-23
-# pipeline audit — every entry below returned zero archived snapshots for every
-# candidate slug family. The coverage warning subtracts these so the GATE log
+# pipeline audit. The coverage warning subtracts these so the GATE log
 # ("no gaps since 2020-10") is achievable without synthesizing phantom posts.
 #
-# PESP moved its deal listings into an Airtable iframe starting ~mid-2025; those
-# posts classify as summary_only and intentionally produce no parsed deals, so
-# we mark them empty here rather than flag them as gaps every week.
+# AIRTABLE-ERA POSTS (2024-08+, do not regress): PESP keeps the OLD-pattern
+# URLs publishing but moved deal listings into an embedded Airtable iframe.
+# Verified 2026-04-25 via direct fetch with Chrome UA: 14 of these months
+# return 200 with an `<iframe src="https://airtable.com/embed/appbXEB4PCgy1jWem/sh...">`
+# (each month has its own unique view ID). pesp_scraper detects the iframe
+# in `_classify_page_structure()` and returns "summary_only" — the dental
+# data isn't reachable from HTML pattern-matching. Recovery path is
+# `scrapers/pesp_airtable_scraper.py --csv <export>` — manual CSV export
+# from each Airtable view's ⋯ menu. As long as no CSV has been ingested for
+# a given month, that month belongs in this set so the GATE log doesn't
+# flag it as a gap. (PESP also publishes a separate non-dental
+# "private-equity-in-healthcare-pesps-...-roundup/" series that we
+# deliberately do not scrape — see build_candidate_urls docstring.)
 PESP_EXPECTED_EMPTY_MONTHS = frozenset({
     # 2021 Q1/Q2: PESP had not yet started the monthly cadence.
     (2021, 2), (2021, 3), (2021, 4), (2021, 5),
@@ -73,9 +83,9 @@ PESP_EXPECTED_EMPTY_MONTHS = frozenset({
     # Commentary-only posts (no deal-by-deal prose and no deal table): PESP
     # narrated the month's activity without listing specific transactions.
     (2024, 6), (2025, 4),
-    # Airtable-era summary-only posts: the deal listings live entirely in the
-    # embedded Airtable iframe (not scraped). Confirmed zero sections + zero
-    # tables during 2026-04-23 audit.
+    # Airtable-era summary-only posts: deal listings live in the embedded
+    # Airtable iframe (each month has its own view ID at appbXEB4PCgy1jWem).
+    # Recover via pesp_airtable_scraper.py CSV ingest.
     (2024, 8), (2024, 9), (2024, 10),
     (2025, 1), (2025, 2), (2025, 5),
     (2025, 6), (2025, 7), (2025, 8), (2025, 9), (2025, 10), (2025, 11), (2025, 12),
@@ -349,6 +359,16 @@ def build_candidate_urls():
     (hyphenated, historical) vs "private-equity-healthcare-acquisitions-"
     (no hyphen, appears in Feb 2026 onward). Emit both per month — discover_valid_urls
     HEAD-checks each, so the extra HEAD is cheap and either form 404s fast.
+
+    NOTE (2026-04-25 audit): PESP also publishes a *separate* multi-sector
+    "PESP's {Month} {Year} Roundup" series at slug
+    "private-equity-in-healthcare-pesps-{month}-{year}-roundup/". Verified
+    6 sample posts Oct 2023-Aug 2025: ZERO dental/DSO/orthodontic content —
+    broad multi-sector PE healthcare commentary (PACE, behavioral health, etc).
+    We deliberately do NOT emit that slug: it would yield 0 deals + waste
+    84 HEAD requests per run. The dental data for 2024-08+ lives in the
+    Airtable iframe embedded in the OLD-pattern URLs above — see
+    `scrapers/pesp_airtable_scraper.py` for the CSV ingest workflow.
     """
     urls = []
     for year in YEARS:
