@@ -7,3 +7,9 @@ ALTER TABLE practice_intel ADD COLUMN IF NOT EXISTS associate_runway VARCHAR(32)
 ALTER TABLE practice_intel ADD COLUMN IF NOT EXISTS compensation_signals TEXT;
 ALTER TABLE practice_intel ADD COLUMN IF NOT EXISTS red_flags_for_grad TEXT;
 ALTER TABLE practice_intel ADD COLUMN IF NOT EXISTS green_flags_for_grad TEXT;
+
+-- Anti-hallucination verification block (April 2026, commit 59e8403)
+ALTER TABLE practice_intel ADD COLUMN IF NOT EXISTS verification_searches INTEGER;
+ALTER TABLE practice_intel ADD COLUMN IF NOT EXISTS verification_quality VARCHAR(20);
+CREATE INDEX IF NOT EXISTS ix_practice_intel_verification_quality ON practice_intel(verification_quality);
+ALTER TABLE practice_intel ADD COLUMN IF NOT EXISTS verification_urls TEXT;
