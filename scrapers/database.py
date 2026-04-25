@@ -426,6 +426,7 @@ class PracticeIntel(Base):
     verification_searches = Column(Integer)                        # actual web_search count Haiku reported running
     verification_quality = Column(String(20), index=True)          # "verified" | "partial" | "insufficient"
     verification_urls = Column(Text)                               # JSON array of primary source URLs cited
+    is_verified = Column(Boolean, default=False, nullable=False)   # True iff generated with forced-search anti-hallucination protocol
     # Assessment
     red_flags = Column(Text)
     green_flags = Column(Text)

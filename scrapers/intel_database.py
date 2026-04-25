@@ -188,6 +188,7 @@ def store_practice_intel(npi: str, research_data: Dict, db_path=None):
             verification_searches=_safe_int(ver.get("searches_executed")),
             verification_quality=ver.get("evidence_quality"),
             verification_urls=_jdump(ver.get("primary_sources")),
+            is_verified=bool(ver and _safe_int(ver.get("searches_executed", 0))),
         )
         session.merge(obj)
         session.commit()
