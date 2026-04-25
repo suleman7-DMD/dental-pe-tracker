@@ -69,6 +69,11 @@ run_step "[4/11] Importing PitchBook CSVs..."     "$PYTHON $PROJECT/scrapers/pit
 run_step "[5/11] Scraping ADSO locations..."       "$PYTHON $PROJECT/scrapers/adso_location_scraper.py"    30
 run_step "[6/11] Checking ADA HPI for updates..."  "$PYTHON $PROJECT/scrapers/ada_hpi_downloader.py"       10
 run_step "[7/11] Classifying DSO affiliations..."  "$PYTHON $PROJECT/scrapers/dso_classifier.py"           15
+# Pass 3: entity type classification (watched ZIPs only) — audit §14.4 / §15 #6
+# dso_classifier.py skips Pass 3 by default (--entity-types-only flag required).
+# Running it separately ensures entity_classification is populated for all watched-ZIP
+# practices after every refresh, without altering the global Pass 1+2 run above.
+run_step "[7b/11] Entity type classification (Pass 3)..." "$PYTHON $PROJECT/scrapers/dso_classifier.py --entity-types-only"  20
 run_step "[8/11] Merging and scoring..."           "$PYTHON $PROJECT/scrapers/merge_and_score.py"          10
 
 # Weekly qualitative research (only if ANTHROPIC_API_KEY is configured)
