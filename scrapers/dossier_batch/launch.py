@@ -109,7 +109,8 @@ if "error" in result:
 batch_id = result.get("batch_id")
 print(f"\n✅ BATCH SUBMITTED: {batch_id}")
 print(f"   {result.get('count')} requests, status={result.get('status')}")
-# Persist batch_id for downstream poller
-with open("/tmp/full_batch_id.txt", "w") as f:
+# Persist batch_id for downstream poller — use data/ so it survives ephemeral /tmp
+_batch_id_path = os.path.join(ROOT, "data", "last_batch_id.txt")
+with open(_batch_id_path, "w") as f:
     f.write(batch_id)
-print(f"   batch_id saved to /tmp/full_batch_id.txt")
+print(f"   batch_id saved to {_batch_id_path}")

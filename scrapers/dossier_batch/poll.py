@@ -28,7 +28,17 @@ from scrapers.weekly_research import validate_dossier
 from scrapers.intel_database import store_practice_intel
 
 
-BATCH_ID = open("/tmp/full_batch_id.txt").read().strip()
+_BATCH_ID_PATH = os.path.join(ROOT, "data", "last_batch_id.txt")
+_BATCH_ID_LEGACY = "/tmp/full_batch_id.txt"
+if os.path.exists(_BATCH_ID_PATH):
+    BATCH_ID = open(_BATCH_ID_PATH).read().strip()
+elif os.path.exists(_BATCH_ID_LEGACY):
+    BATCH_ID = open(_BATCH_ID_LEGACY).read().strip()
+else:
+    raise FileNotFoundError(
+        f"batch_id file not found at {_BATCH_ID_PATH} or {_BATCH_ID_LEGACY}. "
+        "Run launch.py first."
+    )
 
 
 def main():
