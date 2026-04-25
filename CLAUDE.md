@@ -42,7 +42,7 @@ Key tables: `deals`, `practices`, `practice_changes`, `watched_zips`, `zip_score
 - **practice_changes**: Change log for name/address/ownership changes (acquisition detection). 5,100+ rows.
 - **zip_scores**: Per-ZIP consolidation stats (290 scored ZIPs), recalculated by merge_and_score.py. One row per ZIP (deduped).
 - **watched_zips**: 290 ZIPs (268 Chicagoland + 21 Boston + 1 other). Auto-backfilled by ensure_chicagoland_watched().
-- **dso_locations**: 408 scraped DSO office locations from ADSO websites.
+- **dso_locations**: 92 scraped DSO office locations from ADSO websites.
 - **ada_hpi_benchmarks**: 918 rows. State-level DSO affiliation rates by career stage (2022-2024).
 
 ### Supabase Postgres (Next.js Frontend)
@@ -61,7 +61,7 @@ Both incremental paths wrap each row insert in a `begin_nested()` savepoint so a
 
 ### Current Data Stats
 - 401,645 practices (362k independent, 2.8k DSO-affiliated, 401 PE-backed, 35k unknown)
-- 3,215 deals (3,011 GDN + 162 PESP + 42 PitchBook, coverage Oct 2020 – Mar 2026)
+- 2,895 deals (2,532 GDN + 353 PESP + 10 PitchBook, coverage Oct 2020 – Mar 2026)
 - 2,992 Data Axle enriched practices (with lat/lon, revenue, employees, year established)
 - 290 scored ZIPs
 
