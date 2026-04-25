@@ -18,7 +18,25 @@ Lightweight weekly check: how does the **current production state** compare to t
 
 ## 10-Check Sweep
 
-For each, record **Status** (✅/⚠️/🚨/➖), **Baseline value** (from latest audit), **Current value**, **Notes**.
+For each, record **Status** (✅/⚠️/🚨/➖), **Baseline value** (from latest audit), **Current value**, **Evidence**, **Notes**.
+
+### Evidence requirement (MANDATORY — no exceptions)
+
+Every non-`➖` status MUST be accompanied by a literal evidence line in the Notes column:
+- **HTTP claims** (route returns 200/503/etc.): include the `curl -s -o /dev/null -w "%{http_code}"` output
+- **Row count claims**: include the `content-range:` response header line from a `count=exact` REST call
+- **Date claims** (latest deal_date, latest commit, etc.): include the literal value returned by the query/command
+- **Render claims** ("page broken", "data load issue", etc.): include the literal grep-able string found in the rendered HTML
+
+If you cannot produce an evidence line for a claim, the status is `➖ Unverified` — never `🚨` or `⚠️`.
+
+**Forbidden patterns** (these triggered the 2026-04-25 fabrication regression):
+- ❌ "X routes return 503" without testing each route
+- ❌ "ANTHROPIC_API_KEY missing in Vercel" without a 401/503 response from a route that uses it
+- ❌ "consolidation table broken" without a literal HTML excerpt
+- ❌ Grouping multiple claims under one evidence line ("all 6 routes failed: <one curl>")
+
+Each claim gets its own line of proof. If you find yourself wanting to write "and X" without separate evidence for X, drop X.
 
 ### 1. Vercel page health (10 routes)
 WebFetch each: `/`, `/launchpad`, `/warroom`, `/deal-flow`, `/market-intel`, `/buyability`, `/job-market`, `/research`, `/intelligence`, `/system`. Compare HTTP status + render quality vs. baseline's "Frontend Audit" section.
@@ -99,5 +117,16 @@ Keep total length under 500 lines.
 3. **No fabrication.** If you can't answer a check, mark `➖ Skipped` with reason.
 4. **One pass.** Do not loop. Do not retry beyond what each probe naturally requires.
 5. **One output file.** Just `{{REPORT_PATH}}`.
+6. **Self-verification block (MANDATORY — at end of report):**
+   ```
+   ## Self-verification
+   - probes_executed: <count>
+   - probes_with_evidence: <count> (must equal probes_executed minus ➖ entries)
+   - claims_without_evidence: <count> (MUST be 0; if >0, list each claim and degrade its status to ➖)
+   - vercel_routes_tested: <list — every status besides ➖ requires a curl HTTP code in evidence>
+   - supabase_queries_run: <count>
+   - confidence: high | partial | insufficient
+   ```
+   If `confidence: insufficient`, prepend a 🚨 banner to TL;DR explaining what's missing.
 
 When the report is written, your job is done. Exit cleanly.

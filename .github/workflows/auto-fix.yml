@@ -95,8 +95,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: dental-pe-nextjs/package-lock.json
 
       - name: Install Claude Code CLI
         if: env.abort_open_pr == 'false' && env.abort_no_audit == 'false'
@@ -104,11 +102,11 @@ jobs:
           npm install -g @anthropic-ai/claude-code
           claude --version
 
-      - name: Install Next.js deps (for build verification)
-        if: env.abort_open_pr == 'false' && env.abort_no_audit == 'false'
-        working-directory: dental-pe-nextjs
-        run: |
-          npm ci --no-audit --no-fund
+      # Note: dental-pe-nextjs/ is gitignored at repo root and lives in a
+      # separate Vercel-deployed source. CI cannot npm-build the frontend
+      # from this checkout — auto-fix limits its scope to scrapers/, docs,
+      # and workflow files. Frontend regressions surface via the next
+      # audit-sweep WebFetch checks against the live Vercel deployment.
 
       - name: Configure git committer
         if: env.abort_open_pr == 'false' && env.abort_no_audit == 'false'
