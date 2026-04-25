@@ -14,6 +14,7 @@ Env vars:
     DATABASE_URL           — Fallback if SUPABASE_DATABASE_URL not set
 """
 
+import hashlib
 import os
 import sys
 import signal
@@ -891,77 +892,155 @@ _STRATEGY_MAP = {
 # as a count drift (e.g. SQLite=2861 vs Supabase=2895). Recurring sync
 # shouldn't pay this scan cost on every run, so reconciliation is gated
 # behind --reconcile-deals.
-GHOST_DELETE_FLOOR = 100  # refuse to delete more than this many in one pass
+GHOST_DELETE_FLOOR = 100  # refuse to delete more than this many target_name IS NOT NULL ghosts in one pass
+GHOST_DELETE_FLOOR_NULL_TARGET = 50  # tighter floor for the NULL-target fallback pass — its key is fuzzier
+
+
+def _null_target_key(source, platform, deal_date, source_url, raw_text):
+    """Composite identity for a NULL-target deal row.
+
+    target_name IS NULL means the partial unique index uix_deal_no_dup
+    doesn't cover the row, so we have no canonical dedup key to compare
+    against. Fall back to (source, platform_company, deal_date, source_url,
+    md5 of raw_text head) — captures enough source identity to detect
+    re-extracted-then-cleaned junk (PESP commentary fragments, GDN de-novo
+    openings) without false-flagging legitimate parser output. The 500-byte
+    md5 prefix keeps the key compact while still discriminating between
+    distinct paragraphs that share platform/date.
+    """
+    raw_hash = hashlib.md5((raw_text or "").encode("utf-8", "replace")[:500]).hexdigest()[:12]
+    return (source, platform, deal_date.isoformat() if deal_date else None, source_url, raw_hash)
 
 
 def _reconcile_deals(sqlite_session, pg_engine, dry_run=False):
-    """Find Supabase deals not present in SQLite by (platform, target, deal_date)
-    and delete them. Bounded by GHOST_DELETE_FLOOR.
+    """Two-pass ghost-row cleanup against the deals table.
 
-    Same key as the partial unique index uix_deal_no_dup so the reconciliation
-    is consistent with the dedup contract incremental sync already enforces.
+    Pass 1: target_name IS NOT NULL — keyed by (platform, target, deal_date),
+    same as the partial unique index uix_deal_no_dup. Bounded by
+    GHOST_DELETE_FLOOR=100.
+
+    Pass 2: target_name IS NULL — keyed by _null_target_key() because the
+    partial unique index doesn't cover NULL targets. This catches rows that
+    cleanup_pesp_junk.py / stricter is_deal_block filters removed locally
+    but that incremental sync (which never DELETEs) left in Supabase.
+    Bounded by GHOST_DELETE_FLOOR_NULL_TARGET=50.
+
+    Each pass logs its own counts and respects its own floor independently.
+    Returns total rows deleted across both passes.
     """
     log.info("=" * 60)
     log.info("RECONCILE deals: SQLite is source of truth")
     log.info("=" * 60)
 
+    deleted_total = 0
+
+    # ── Pass 1: target_name IS NOT NULL ──────────────────────────────────
     sqlite_keys: set = set()
     for d in sqlite_session.query(Deal.platform_company, Deal.target_name, Deal.deal_date).all():
         platform, target, dd = d
-        # target_name IS NULL is excluded from the partial unique index —
-        # those rows can't be reconciled by key, so we leave them alone.
         if target is None:
             continue
         sqlite_keys.add((platform, target, dd.isoformat() if dd else None))
 
-    log.info("[deals] SQLite has %d (platform, target, date) keys (target_name IS NOT NULL)", len(sqlite_keys))
+    log.info("[deals/with-target] SQLite has %d (platform, target, date) keys", len(sqlite_keys))
 
     with pg_engine.connect() as conn:
         rows = conn.execute(
             text("SELECT id, platform_company, target_name, deal_date FROM deals "
                  "WHERE target_name IS NOT NULL")
         ).fetchall()
-    log.info("[deals] Supabase has %d rows with target_name IS NOT NULL", len(rows))
+    log.info("[deals/with-target] Supabase has %d rows with target_name IS NOT NULL", len(rows))
 
     ghosts = []
     for row in rows:
-        # row is a Row; access by index for sqlalchemy 1.x compat
         rid, platform, target, dd = row[0], row[1], row[2], row[3]
         key = (platform, target, dd.isoformat() if dd else None)
         if key not in sqlite_keys:
             ghosts.append((rid, platform, target, dd))
 
     if not ghosts:
-        log.info("[deals] No ghost rows — Supabase is in sync with SQLite")
-        return 0
+        log.info("[deals/with-target] No ghost rows — Supabase is in sync with SQLite")
+    else:
+        log.warning("[deals/with-target] Found %d ghost rows in Supabase (not in SQLite)", len(ghosts))
+        for rid, platform, target, dd in ghosts[:10]:
+            log.warning("  ghost id=%s  %s | %s | %s", rid, platform, target, dd)
+        if len(ghosts) > 10:
+            log.warning("  ... and %d more", len(ghosts) - 10)
 
-    log.warning("[deals] Found %d ghost rows in Supabase (not in SQLite)", len(ghosts))
-    for rid, platform, target, dd in ghosts[:10]:
-        log.warning("  ghost id=%s  %s | %s | %s", rid, platform, target, dd)
-    if len(ghosts) > 10:
-        log.warning("  ... and %d more", len(ghosts) - 10)
+        if len(ghosts) > GHOST_DELETE_FLOOR:
+            log.error(
+                "[deals/with-target] %d ghosts exceeds floor (%d) — refusing to delete. "
+                "Investigate manually before raising the floor.",
+                len(ghosts), GHOST_DELETE_FLOOR,
+            )
+        elif dry_run:
+            log.info("[deals/with-target] --dry-run: would delete %d ghost rows", len(ghosts))
+        else:
+            ghost_ids = [g[0] for g in ghosts]
+            with pg_engine.begin() as conn:
+                result = conn.execute(
+                    text("DELETE FROM deals WHERE id = ANY(:ids)"),
+                    {"ids": ghost_ids},
+                )
+                deleted = result.rowcount or 0
+            log.info("[deals/with-target] Deleted %d ghost rows from Supabase", deleted)
+            deleted_total += deleted
 
-    if len(ghosts) > GHOST_DELETE_FLOOR:
+    # ── Pass 2: target_name IS NULL ──────────────────────────────────────
+    sqlite_null_keys: set = set()
+    for d in sqlite_session.query(
+        Deal.source, Deal.platform_company, Deal.deal_date, Deal.source_url, Deal.raw_text
+    ).filter(Deal.target_name.is_(None)).all():
+        sqlite_null_keys.add(_null_target_key(*d))
+
+    log.info("[deals/null-target] SQLite has %d unique composite keys (target_name IS NULL)", len(sqlite_null_keys))
+
+    with pg_engine.connect() as conn:
+        null_rows = conn.execute(
+            text("SELECT id, source, platform_company, deal_date, source_url, raw_text "
+                 "FROM deals WHERE target_name IS NULL")
+        ).fetchall()
+    log.info("[deals/null-target] Supabase has %d rows with target_name IS NULL", len(null_rows))
+
+    null_ghosts = []
+    for row in null_rows:
+        rid = row[0]
+        key = _null_target_key(row[1], row[2], row[3], row[4], row[5])
+        if key not in sqlite_null_keys:
+            null_ghosts.append((rid, row[1], row[2], row[3], (row[5] or "")[:80]))
+
+    if not null_ghosts:
+        log.info("[deals/null-target] No ghost rows — Supabase is in sync with SQLite")
+        return deleted_total
+
+    log.warning("[deals/null-target] Found %d ghost rows in Supabase (not in SQLite)", len(null_ghosts))
+    for rid, source, platform, dd, raw_head in null_ghosts[:10]:
+        log.warning("  ghost id=%s  src=%s  %s | %s | %r", rid, source, platform, dd, raw_head)
+    if len(null_ghosts) > 10:
+        log.warning("  ... and %d more", len(null_ghosts) - 10)
+
+    if len(null_ghosts) > GHOST_DELETE_FLOOR_NULL_TARGET:
         log.error(
-            "[deals] %d ghosts exceeds floor (%d) — refusing to delete. "
+            "[deals/null-target] %d ghosts exceeds floor (%d) — refusing to delete. "
             "Investigate manually before raising the floor.",
-            len(ghosts), GHOST_DELETE_FLOOR,
+            len(null_ghosts), GHOST_DELETE_FLOOR_NULL_TARGET,
         )
-        return 0
+        return deleted_total
 
     if dry_run:
-        log.info("[deals] --dry-run: would delete %d ghost rows", len(ghosts))
-        return 0
+        log.info("[deals/null-target] --dry-run: would delete %d ghost rows", len(null_ghosts))
+        return deleted_total
 
-    ghost_ids = [g[0] for g in ghosts]
+    null_ghost_ids = [g[0] for g in null_ghosts]
     with pg_engine.begin() as conn:
         result = conn.execute(
             text("DELETE FROM deals WHERE id = ANY(:ids)"),
-            {"ids": ghost_ids},
+            {"ids": null_ghost_ids},
         )
         deleted = result.rowcount or 0
-    log.info("[deals] Deleted %d ghost rows from Supabase", deleted)
-    return deleted
+    log.info("[deals/null-target] Deleted %d ghost rows from Supabase", deleted)
+    deleted_total += deleted
+    return deleted_total
 
 
 def _check_script_integrity():
