@@ -12,7 +12,7 @@ import re
 import sys
 import os
 import time
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 
 import requests
 from bs4 import BeautifulSoup
@@ -343,17 +343,39 @@ def _is_roundup_link(href, text):
 # ── Post Parsing ────────────────────────────────────────────────────────────
 
 
+_MONTHS_FULL = {
+    "january": 1, "february": 2, "march": 3, "april": 4,
+    "may": 5, "june": 6, "july": 7, "august": 8,
+    "september": 9, "october": 10, "november": 11, "december": 12,
+}
+
+# Used by per-deal date inference inside Q-roundup / annual posts. Includes
+# common abbreviations so blocks like "Feb. 5, 2021" or "in Sept 2025" hit.
+MONTH_NAME_TO_NUM = {
+    **_MONTHS_FULL,
+    "jan": 1, "feb": 2, "mar": 3, "apr": 4, "jun": 6, "jul": 7,
+    "aug": 8, "sep": 9, "sept": 9, "oct": 10, "nov": 11, "dec": 12,
+}
+
+# Match "<Month> <Year>" or "<Month> <Day>, <Year>" — both forms REQUIRE an
+# explicit 4-digit year. Bare-month mentions are too noisy (a Q1-2021 block
+# saying "ABC closed in March" might mean March 2018 if ABC was founded then).
+# The leading word boundary plus optional day/punctuation captures:
+#   "January 2021", "Jan 2021", "Jan. 2021", "January, 2021"
+#   "January 5, 2021", "Jan 5 2021", "January 5th, 2021"
+_BLOCK_DATE_RE = re.compile(
+    r'\b(' + "|".join(sorted(MONTH_NAME_TO_NUM.keys(), key=len, reverse=True)) +
+    r')\.?\s+(?:(\d{1,2})(?:st|nd|rd|th)?,?\s+)?(\d{4})\b',
+    re.IGNORECASE,
+)
+
+
 def extract_deal_date_from_title(title):
     """Extract month/year from a roundup post title like 'DSO Deal Roundup – October 2025'."""
-    months = {
-        "january": 1, "february": 2, "march": 3, "april": 4,
-        "may": 5, "june": 6, "july": 7, "august": 8,
-        "september": 9, "october": 10, "november": 11, "december": 12,
-    }
     t = title.lower()
 
     # Try "month year" pattern
-    for name, num in months.items():
+    for name, num in _MONTHS_FULL.items():
         m = re.search(rf'\b{name}\s+(\d{{4}})\b', t)
         if m:
             return date(int(m.group(1)), num, 1)
@@ -371,6 +393,72 @@ def extract_deal_date_from_title(title):
     if ym:
         return date(int(ym.group(1)), 1, 1)
 
+    return None
+
+
+def extract_post_date_range(title):
+    """Return (start_date, end_date) covered by a roundup post's title.
+
+    Used as a guard for per-deal date inference: a block-level "Feb 2021"
+    hint is only honored when the post itself covers Feb 2021. Without this
+    guard, back-references like "founded January 2010" or "previously
+    acquired in 2018" would silently re-date a deal to stale data.
+
+    Returns None when the title carries no derivable date signal — in that
+    case the caller stays on whatever fallback_date was supplied.
+    """
+    t = title.lower()
+
+    for name, num in _MONTHS_FULL.items():
+        m = re.search(rf'\b{name}\s+(\d{{4}})\b', t)
+        if m:
+            year = int(m.group(1))
+            start = date(year, num, 1)
+            end = (date(year, 12, 31) if num == 12
+                   else date(year, num + 1, 1) - timedelta(days=1))
+            return (start, end)
+
+    qm = re.search(r'\bq([1-4])\s+(\d{4})\b', t)
+    if qm:
+        quarter = int(qm.group(1))
+        year = int(qm.group(2))
+        first_month = (quarter - 1) * 3 + 1
+        last_month = first_month + 2
+        start = date(year, first_month, 1)
+        end = (date(year, 12, 31) if last_month == 12
+               else date(year, last_month + 1, 1) - timedelta(days=1))
+        return (start, end)
+
+    ym = re.search(r'\b(20\d{2})\b', t)
+    if ym:
+        year = int(ym.group(1))
+        return (date(year, 1, 1), date(year, 12, 31))
+
+    return None
+
+
+def infer_deal_date_from_block(block, date_range):
+    """Look for a month+year date hint inside a single deal block.
+
+    Conservative: only fires on explicit "<Month> <Year>" / "<Month> <Day>,
+    <Year>" patterns AND only accepts dates that fall inside the post's
+    title-derived window. Returns the FIRST in-window hit, collapsed to the
+    1st of that month (matches how monthly posts are dated elsewhere). None
+    when no usable hint is present, leaving the caller on the post date.
+    """
+    if not date_range:
+        return None
+    start, end = date_range
+    for match in _BLOCK_DATE_RE.finditer(block):
+        month = MONTH_NAME_TO_NUM.get(match.group(1).lower().rstrip("."))
+        if not month:
+            continue
+        try:
+            candidate = date(int(match.group(3)), month, 1)
+        except (ValueError, TypeError):
+            continue
+        if start <= candidate <= end:
+            return candidate
     return None
 
 
@@ -884,8 +972,16 @@ def _log_coverage_warning(session):
 # ── Deal Parsing ────────────────────────────────────────────────────────────
 
 
-def parse_deal_block(block, deal_date, source_url):
-    """Parse a single deal block into one or more deal dicts."""
+def parse_deal_block(block, deal_date, source_url, date_range=None):
+    """Parse a single deal block into one or more deal dicts.
+
+    When `date_range` is provided (set by scrape_post for posts whose title
+    yielded a window), each block is scanned for a month+year hint that
+    falls inside that window. A hit overrides the post-level deal_date so
+    Q-aggregate / annual posts no longer collapse every deal onto the
+    first month of the window. Monthly posts pass a single-month window,
+    so the override is a no-op there.
+    """
     # Skip international
     if is_international(block):
         log.debug("SKIP international: %.100s", block)
@@ -914,6 +1010,12 @@ def parse_deal_block(block, deal_date, source_url):
 
     if not states:
         states = [None]
+
+    inferred = infer_deal_date_from_block(block, date_range)
+    if inferred is not None and inferred != deal_date:
+        log.info("DATE INFER: %s → %s (post=%s) %.80s",
+                 deal_date, inferred, source_url, block)
+        deal_date = inferred
 
     deals = []
     for state in states:
@@ -945,11 +1047,12 @@ def scrape_post(url, title, fallback_date):
     # Get date from title (more reliable than fallback)
     page_title = extract_title(soup) or title
     deal_date = extract_deal_date_from_title(page_title) or fallback_date
+    date_range = extract_post_date_range(page_title)
     if not deal_date:
         log.warning("Could not determine date for %s, using 2020-01-01", url)
         deal_date = date(2020, 1, 1)
 
-    log.info("Post: %s  →  date=%s", page_title, deal_date)
+    log.info("Post: %s  →  date=%s range=%s", page_title, deal_date, date_range)
 
     blocks = extract_deal_blocks(soup)
     log.info("Found %d content blocks on %s", len(blocks), url)
@@ -957,20 +1060,24 @@ def scrape_post(url, title, fallback_date):
     deals = []
     parse_failures = 0
     no_entity_drops = 0
+    inferred_deals = 0
     for block in blocks:
         try:
-            parsed = parse_deal_block(block, deal_date, url)
+            parsed = parse_deal_block(block, deal_date, url, date_range=date_range)
             if is_deal_block(block) and not is_international(block) and not is_credit_news(block) and not parsed:
                 # Block looked like a deal but was dropped (no platform/sponsor/target)
                 no_entity_drops += 1
+            for d in parsed:
+                if d["deal_date"] != deal_date:
+                    inferred_deals += 1
             deals.extend(parsed)
         except Exception as e:
             log.warning("PARSE ERROR: %.200s — %s", block, e)
             parse_failures += 1
 
     total_drops = parse_failures + no_entity_drops
-    log.info("Parsed %d deals from %s (parse failures: %d, no-entity drops: %d, total dropped: %d)",
-             len(deals), url, parse_failures, no_entity_drops, total_drops)
+    log.info("Parsed %d deals from %s (parse failures: %d, no-entity drops: %d, total dropped: %d, date-inferred: %d)",
+             len(deals), url, parse_failures, no_entity_drops, total_drops, inferred_deals)
     return deals
 
 
