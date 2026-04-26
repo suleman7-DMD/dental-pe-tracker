@@ -35,15 +35,20 @@ Push to `main` auto-deploys both: Vercel (Next.js, ~30s) and Streamlit Cloud (~6
 
 ### SQLite (Pipeline — via SQLAlchemy)
 
-Key tables: `deals`, `practices`, `practice_changes`, `watched_zips`, `zip_scores`, `dso_locations`, `ada_hpi_benchmarks`, `zip_qualitative_intel`, `practice_intel`
+Key tables: `deals`, `practices`, `practice_locations`, `practice_changes`, `watched_zips`, `zip_scores`, `dso_locations`, `ada_hpi_benchmarks`, `zip_qualitative_intel`, `practice_intel`, `practice_signals`, `zip_signals`
 
-- **practices**: 402,004 rows. Fields: npi (PK), practice_name, doing_business_as, address, city, state, zip, phone, entity_type, taxonomy_code, ownership_status, affiliated_dso, affiliated_pe_sponsor, buyability_score, classification_confidence, classification_reasoning, data_source, latitude, longitude, parent_company, ein, franchise_name, iusa_number, website, year_established, employee_count, estimated_revenue, num_providers, location_type, import_batch_id, data_axle_import_date, entity_classification
+> **NPI rows vs clinic locations — read this before reading any count.** NPPES emits one row per provider (NPI-1) AND one row per organization (NPI-2) at the same physical address — so `practices` is keyed by NPI, NOT by clinic. In watched ZIPs, 14,053 NPI rows in `practices` collapse to ~5,732 deduped clinic locations in `practice_locations` (~2.7× NPI fan-out: 9,768 individual + 3,793 organization + 492 null). Every "402,004 practices" / "14,053 in watched ZIPs" callout in this doc is an **NPI-row count**, not a location count. The location-deduped denominator is `SUM(zip_scores.total_gp_locations)` for GP clinics and `practice_locations.location_id` for any address-keyed query. If a Supabase row count looks ~2.7× larger than expected, you are looking at NPI rows; that is not sync drift.
+
+- **practices**: 402,004 NPI rows globally / 14,053 NPI rows in watched ZIPs. Fields: npi (PK), practice_name, doing_business_as, address, city, state, zip, phone, entity_type, taxonomy_code, ownership_status, affiliated_dso, affiliated_pe_sponsor, buyability_score, classification_confidence, classification_reasoning, data_source, latitude, longitude, parent_company, ein, franchise_name, iusa_number, website, year_established, employee_count, estimated_revenue, num_providers, location_type, import_batch_id, data_axle_import_date, entity_classification
+- **practice_locations**: 5,732 location rows in Supabase (5,265 GP + 467 specialist/non-clinical, watched ZIPs only). Address-deduped clinic table created by the `dc18d24` ULTRA-FIX dedup pipeline. Fields: location_id (PK), normalized_address, primary_npi, org_npi, provider_npis (JSON), provider_count, is_likely_residential, entity_classification, buyability_score, affiliated_dso, etc. **All Sitrep KPIs and headline corporate %/independent% counts in the Next.js app source from this table — NOT from `practices`.** Joined back to `practices` via `practice_to_location_xref`.
 - **deals**: 2,861 rows in SQLite, 2,861 in Supabase (drift reconciled in commit `ac2140a` 2026-04-25 — Pass 2 of `_reconcile_deals` keys NULL-target rows by composite hash, deleted 25 stranded ghosts). PE dental deals from PESP, GDN, PitchBook.
 - **practice_changes**: Change log for name/address/ownership changes (acquisition detection). 8,848 rows.
-- **zip_scores**: Per-ZIP consolidation stats (290 scored ZIPs), recalculated by merge_and_score.py. One row per ZIP (deduped).
+- **zip_scores**: Per-ZIP consolidation stats (290 scored ZIPs), recalculated by merge_and_score.py. One row per ZIP (deduped). `total_gp_locations` is the location-deduped GP clinic count and is the canonical denominator for "how many clinics are in this ZIP."
 - **watched_zips**: 290 ZIPs (268 Chicagoland + 21 Boston + 1 other). Auto-backfilled by ensure_chicagoland_watched().
 - **dso_locations**: 92 scraped DSO office locations from ADSO websites.
 - **ada_hpi_benchmarks**: 918 rows. State-level DSO affiliation rates by career stage (2022-2024).
+- **practice_signals**: 14,053 NPI rows (one per watched-ZIP NPI) — materialized 8-flag overlay for Warroom Hunt mode (stealth_dso, phantom_inventory, family_dynasty, micro_cluster, retirement_combo, last_change_90d, high_peer_retirement, revenue_default). NPI-keyed because flags are about provider behavior, not clinic identity. **Live count Supabase: 14,053** (post `dc18d24`+`520c33e`).
+- **zip_signals**: 290 ZIP rows — materialized ZIP-level overlay (ada_benchmark_gap_flag, deal_catchment_24mo, etc.). One row per watched ZIP. **Live count Supabase: 0 as of 2026-04-26** (sync gap; SQLite has 290 — needs `python3 scrapers/sync_to_supabase.py --tables zip_signals` to re-run).
 
 ### Supabase Postgres (Next.js Frontend)
 
@@ -60,11 +65,18 @@ Mirror of SQLite tables, synced by `scrapers/sync_to_supabase.py`. Same schema, 
 Both incremental paths wrap each row insert in a `begin_nested()` savepoint so an `IntegrityError` on the secondary partial unique index `uix_deal_no_dup` (platform_company+target_name+deal_date) skips the duplicate with a WARNING instead of aborting the whole batch transaction.
 
 ### Current Data Stats
-- 402,004 practices globally; **`entity_classification` populated for all 14,053 in watched ZIPs (96.5% NULL globally)** — Pass 3 of `dso_classifier.py` only runs on watched-ZIP practices. Within watched ZIPs the breakdown (post-`dc18d24` 2026-04-25, classifier rewritten to count distinct providers excluding NPI-2): solo_established 3,575 / small_group 2,727 / large_group 2,456 / specialist 2,353 / family_practice 1,708 / solo_high_volume 709 / dso_national 213 / solo_inactive 170 / dso_regional 109 / solo_new 17 / non_clinical 16. NULL is now 0. **Pre-`dc18d24` baseline** (April-2026 audit `NPI_VS_PRACTICE_AUDIT.md` Appendix C): dso_regional was 1,181 (-91% drop) — `dc18d24` reclassified ~1,072 as large_group/family_practice/small_group because the old Pass 3 over-counted providers by treating NPI-1+NPI-2 at one address as multiple providers.
+
+> Counts below labeled `(NPI rows)` are NPPES provider+organization rows (~2.7× the clinic count); counts labeled `(locations)` are address-deduped from `practice_locations`. Don't compare across labels without converting first.
+
+- **402,004 (NPI rows) practices globally; 14,053 (NPI rows) in watched ZIPs / 5,732 (locations) in Supabase `practice_locations`.** `entity_classification` populated for all 14,053 watched-ZIP NPIs (96.5% NULL globally) — Pass 3 of `dso_classifier.py` only runs on watched-ZIP practices.
+- **Watched-ZIP entity_classification breakdown (NPI rows, post-`520c33e` 2026-04-26 Tier-2 phone re-promotion):** solo_established 3,575 / small_group 2,727 / large_group 2,456 / specialist 2,353 / family_practice 1,701 / solo_high_volume 709 / dso_national 222 / solo_inactive 170 / dso_regional 244 / solo_new 17 / non_clinical 16. NULL is 0. **Pre-`520c33e`:** dso_national=213, dso_regional=109. **Pre-`dc18d24` baseline** (April-2026 audit `NPI_VS_PRACTICE_AUDIT.md` Appendix C): dso_regional was 1,181 — that 1,072 reclassification was the location-dedup classifier rewrite, NOT this Tier-2 re-promotion.
+- **Total corporate (NPI rows): 466 (3.3% of 14,053)** post-`520c33e` (was 322 pre-Tier-2, 1,392 pre-`dc18d24`). At the location level (`practice_locations`), corporate share is 6.80% Chicagoland / 5.53% Boston Metro.
 - Legacy `ownership_status` field is now ~zero in SQLite — `entity_classification` is the canonical ownership signal everywhere in the Next.js frontend (see `classifyPractice()` helper).
-- 2,861 deals in SQLite / 2,861 in Supabase (drift reconciled 2026-04-25 in `ac2140a`). Mix: 2,532 GDN + 353 PESP + 10 PitchBook. Coverage: Oct 2020 – Mar 2026 (live `MAX(deal_date)=2026-03-02`; April 2026 GDN roundup not yet published as of 2026-04-25).
-- 2,992 Data Axle enriched practices (with lat/lon, revenue, employees, year established)
-- 290 scored ZIPs
+- 2,861 deals in SQLite / 2,895 in Supabase (drift reconciled 2026-04-25 in `ac2140a`; +34 ghost rows in Supabase remain, see audit §15 #11). Mix: 2,532 GDN + 353 PESP + 10 PitchBook. Coverage: Oct 2020 – Mar 2026 (live `MAX(deal_date)=2026-03-02`; April 2026 GDN roundup not yet published as of 2026-04-26).
+- 2,992 (NPI rows) Data Axle enriched practices (with lat/lon, revenue, employees, year established).
+- 290 scored ZIPs.
+- **practice_signals: 14,053 (NPI rows) in Supabase** (one row per watched-ZIP NPI) — Warroom Hunt mode signal flag overlay is live.
+- **zip_signals: 0 in Supabase / 290 in SQLite** — sync gap as of 2026-04-26 (Warroom ZIP-level overlay silent until re-sync).
 
 ## Next.js Frontend (Primary)
 

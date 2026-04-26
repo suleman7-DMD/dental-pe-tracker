@@ -169,10 +169,20 @@ DSO_REGISTRY = [
     },
     {
         "name": "Ideal Dental",
-        "url": "https://myidealdental.com/locations/",
-        "method": "needs_browser",
-        "pe_sponsor": None,
-        "notes": "JS-rendered location search",
+        "url": "https://www.myidealdental.com/",
+        "method": "sitemap_jsonld",
+        "pe_sponsor": "OMERS Private Equity",
+        "sitemap_url": "https://myidealdental.com/sitemap.xml",
+        # Office pages are bare slugs at root, e.g. /baybrook, /alpharetta.
+        # Exclude /our-dentists, /offers, /insurance, /sitemap, /dental-services,
+        # /tags, /category, careers, accessibility, etc.
+        "office_url_pattern": r"myidealdental\.com/[a-z][a-z0-9\-]+/?$",
+        "office_url_exclude": (
+            r"/(our-dentists|offers|insurance|saturday|sitemap|dental-services|"
+            r"tags|category|tag|page|careers|accessibility|services|about|contact|blog)/?$"
+        ),
+        "max_subpages": 200,
+        "notes": "Per-office pages have schema.org Dentist JSON-LD",
     },
     {
         "name": "Risas Dental",
@@ -354,7 +364,11 @@ def _extract_from_jsonld(data, dso_name, source_url):
         return locations
 
     dtype = data.get("@type", "")
-    if dtype in ("Dentist", "LocalBusiness", "MedicalBusiness", "DentalClinic", "Place"):
+    # @type can be a string OR a list (schema.org allows multi-type, e.g.,
+    # ["LocalBusiness", "Dentist"] on Ideal Dental). Normalize to a set.
+    dtypes = set(dtype) if isinstance(dtype, list) else {dtype}
+    business_types = {"Dentist", "LocalBusiness", "MedicalBusiness", "DentalClinic", "Place"}
+    if dtypes & business_types:
         addr = data.get("address", {})
         if isinstance(addr, dict):
             locations.append({
@@ -655,6 +669,96 @@ def match_locations_to_practices(session, locations, dso_entry, dry_run=False):
 # ── Main Orchestration ──────────────────────────────────────────────────────
 
 
+def scrape_sitemap_jsonld(dso_entry, scraper_start_time=None):
+    """Scrape office pages discovered via sitemap.xml, parsing JSON-LD per page.
+
+    Many DSOs ship per-office pages with schema.org Dentist/LocalBusiness
+    JSON-LD (full address + telephone + lat/lon). When the location-finder
+    is JS-rendered but per-office pages are static and indexed in the
+    sitemap, this avoids needing a browser.
+
+    Required dso_entry fields:
+        sitemap_url:         URL of root sitemap.xml
+        office_url_pattern:  regex matching office page URLs in sitemap
+        office_url_exclude:  optional regex — drop matches that hit this
+
+    Returns (locations, aborted). Honors MAX_SECONDS_PER_DSO and
+    MAX_SECONDS_TOTAL the same way scrape_html_subpages does — partial
+    results on abort are returned but the caller MUST NOT delete-then-
+    reinsert from a partial list (see audit note in scrape_dso docstring).
+    """
+    name = dso_entry["name"]
+    sitemap_url = dso_entry["sitemap_url"]
+    office_pat = dso_entry["office_url_pattern"]
+    exclude_pat = dso_entry.get("office_url_exclude")
+    locations = []
+    aborted = False
+
+    try:
+        resp = requests.get(sitemap_url, headers=HEADERS, timeout=HTTP_TIMEOUT)
+        resp.raise_for_status()
+    except requests.RequestException as e:
+        log.warning("[%s] Failed to fetch sitemap %s: %s", name, sitemap_url, e)
+        return locations, aborted
+
+    candidate_urls = set()
+    for m in re.finditer(r'<loc>([^<]+)</loc>', resp.text):
+        u = m.group(1).strip()
+        if not re.search(office_pat, u):
+            continue
+        if exclude_pat and re.search(exclude_pat, u):
+            continue
+        candidate_urls.add(u)
+
+    log.info("[%s] Sitemap yielded %d office candidate URLs", name, len(candidate_urls))
+
+    dso_start = time.monotonic()
+    cap = dso_entry.get("max_subpages", MAX_SUBPAGES_PER_DSO)
+    capped_urls = sorted(candidate_urls)[:cap]
+    if len(candidate_urls) > cap:
+        log.info("[%s] Capping at %d (registry max_subpages override)", name, cap)
+
+    for i, page_url in enumerate(capped_urls):
+        if i > 0 and i % 10 == 0:
+            log.info("[%s] Scraped %d/%d sub-pages...", name, i, len(capped_urls))
+
+        if time.monotonic() - dso_start > MAX_SECONDS_PER_DSO:
+            log.warning("[%s] Per-DSO budget exceeded after %d/%d — aborting",
+                        name, i, len(capped_urls))
+            aborted = True
+            break
+        if scraper_start_time is not None and (time.monotonic() - scraper_start_time) > MAX_SECONDS_TOTAL:
+            log.warning("[%s] Whole-scraper budget exceeded — aborting", name)
+            aborted = True
+            break
+
+        try:
+            page_resp = requests.get(page_url, headers=HEADERS, timeout=HTTP_TIMEOUT)
+            page_resp.raise_for_status()
+        except requests.RequestException:
+            continue
+
+        page_soup = BeautifulSoup(page_resp.text, "lxml")
+        for script in page_soup.find_all("script", type="application/ld+json"):
+            try:
+                data = json.loads(script.string)
+            except (json.JSONDecodeError, TypeError):
+                continue
+            locations.extend(_extract_from_jsonld(data, name, page_url))
+
+        time.sleep(1)
+
+    seen = set()
+    deduped = []
+    for loc in locations:
+        key = (loc.get("address", ""), loc.get("zip", ""))
+        if key not in seen and loc.get("address"):
+            seen.add(key)
+            deduped.append(loc)
+
+    return deduped, aborted
+
+
 def scrape_dso(dso_entry, scraper_start_time=None):
     """Scrape a single DSO. Returns (locations_list, method_used, aborted).
 
@@ -677,6 +781,8 @@ def scrape_dso(dso_entry, scraper_start_time=None):
         locations = scrape_json_api(dso_entry)
     elif method == "html_subpages":
         locations, aborted = scrape_html_subpages(dso_entry, scraper_start_time=scraper_start_time)
+    elif method == "sitemap_jsonld":
+        locations, aborted = scrape_sitemap_jsonld(dso_entry, scraper_start_time=scraper_start_time)
     else:
         locations = scrape_html_generic(dso_entry)
 
