@@ -180,6 +180,14 @@ In addition to the base scoring in `compute_buyability()` (data_axle_importer.py
 
 A 3-week cron outage was root-caused across every scraper. Fixes validated end-to-end on 2026-04-22 (16,798 rows synced, 6 new deals pushed, zero fatal errors). Full audit board lives at repo root: `SCRAPER_AUDIT_STATUS.md`.
 
+A follow-up multi-agent (A-D) re-audit on 2026-04-25→26 verified all 33 F-numbered fixes individually at the root level — see `CLAUDE.md` "Session Digest — 2026-04-26 Multi-Agent F-Fix Verification (33/33 PASS)" at repo root for the full roll-up table. Headline scraper-side outcomes from that re-audit:
+
+- **F19** — `database.normalize_punctuation()` translates 8 curly Unicode variants (U+2018, U+2019, U+201A, U+201B, U+201C, U+201D, U+201E, U+201F) → ASCII at the GDN/PESP scraper boundary. `_PUNCT_TRANSLATIONS` lives at `database.py:747-756`; called from `gdn_scraper.py:1029-1031` and `pesp_scraper.py:591-593` + `901-905` for platform / pe_sponsor / target. "Smith's Dental" (U+2019) and "Smith's Dental" (U+0027) now dedupe.
+- **F20** — `ada_hpi_importer.py` lines 226 + 229 set `updated_at = now` on both INSERT and UPDATE. Verified live: total=918, updated_at non-null=918 (was NULL on all 918 rows pre-fix).
+- **F21** — `_PARTNERS_VERB_NEXT = {"with", "to", "and"}` lookahead at `gdn_scraper.py:653`. "Zyphos Dental Partners acquired X" (noun, accumulate) and "BrandX partners with Y" (verb, stop) both parse correctly.
+- **F32** — NPPES hygienist-leak cleanup (commit `38bf64e`): removed 20,406 NPPES rows with taxonomy 124Q (hygienist), 1268 (dental assistant), 1224 (denturist) that had been leaking into `practices` despite being non-Dentist. Only the 1223 prefix is Dentist. Defensive filter in `nppes_downloader.py` + sync rejection if non-1223 prefix slips through. Live counts: global=381,598 (was 402,004), watched=13,818, non_dental_leak=0.
+- **F33** — `weekly_research.py` `DRIFT_REMAP` (lines 183-191) coerces 7 known `verification_quality` drift values: `high→partial`, `sufficient/good/complete→verified`, `low/poor/none→insufficient`. Truly off-spec values trigger `evidence_quality_unknown` quarantine. `research_engine.py` system prompts (lines 58 ZIP, 135 practice) state STRICT enum: `"evidence_quality MUST be exactly one of: 'verified', 'partial', 'insufficient'. NEVER use 'high', 'low', 'medium'..."`. JSON schema reinforces "STRICT enum, NO alternatives accepted". Eliminates the pre-fix problem where ~10 dossiers per 200-practice batch returned `"high"` and slipped past the validation gate.
+
 ### Scraper-side fixes
 
 - `refresh.sh::run_step()` now uses `pkill -TERM -P $bgpid` (then `-KILL` after grace) to reap all subshell descendants. `kill $bgpid` alone was leaving the python child orphaned and attached to `tee`, so a hung scraper blocked the whole pipeline.
