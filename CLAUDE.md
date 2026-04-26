@@ -2,7 +2,7 @@
 
 ## What This Project Is
 
-A data pipeline + dual-frontend dashboard that tracks private equity consolidation in US dentistry. It scrapes deal announcements, monitors 402,004 dental practices from federal data, classifies who owns what, and scores markets for acquisition risk. Primary metro: Chicagoland (268 expanded ZIPs across 7 sub-zones). Secondary: Boston Metro (21 ZIPs).
+A data pipeline + dual-frontend dashboard that tracks private equity consolidation in US dentistry. It scrapes deal announcements, monitors 402,004 dental practices from federal data, classifies who owns what, and scores markets for acquisition risk. Primary metro: Chicagoland (269 expanded ZIPs across 7 sub-zones). Secondary: Boston Metro (21 ZIPs). Total watched: 290 ZIPs = 269 IL + 21 MA (verified 2026-04-26 via `SELECT state, COUNT(*) FROM watched_zips`).
 
 **Next.js app (primary):** dental-pe-nextjs.vercel.app
 **Streamlit app (legacy):** suleman7-pe.streamlit.app
@@ -40,11 +40,11 @@ Key tables: `deals`, `practices`, `practice_locations`, `practice_changes`, `wat
 > **NPI rows vs clinic locations — read this before reading any count.** NPPES emits one row per provider (NPI-1) AND one row per organization (NPI-2) at the same physical address — so `practices` is keyed by NPI, NOT by clinic. In watched ZIPs, 14,053 NPI rows in `practices` collapse to ~5,732 deduped clinic locations in `practice_locations` (~2.7× NPI fan-out: 9,768 individual + 3,793 organization + 492 null). Every "402,004 practices" / "14,053 in watched ZIPs" callout in this doc is an **NPI-row count**, not a location count. The location-deduped denominator is `SUM(zip_scores.total_gp_locations)` for GP clinics and `practice_locations.location_id` for any address-keyed query. If a Supabase row count looks ~2.7× larger than expected, you are looking at NPI rows; that is not sync drift.
 
 - **practices**: 402,004 NPI rows globally / 14,053 NPI rows in watched ZIPs. Fields: npi (PK), practice_name, doing_business_as, address, city, state, zip, phone, entity_type, taxonomy_code, ownership_status, affiliated_dso, affiliated_pe_sponsor, buyability_score, classification_confidence, classification_reasoning, data_source, latitude, longitude, parent_company, ein, franchise_name, iusa_number, website, year_established, employee_count, estimated_revenue, num_providers, location_type, import_batch_id, data_axle_import_date, entity_classification
-- **practice_locations**: 5,732 location rows in Supabase (5,265 GP + 467 specialist/non-clinical, watched ZIPs only). Address-deduped clinic table created by the `dc18d24` ULTRA-FIX dedup pipeline. Fields: location_id (PK), normalized_address, primary_npi, org_npi, provider_npis (JSON), provider_count, is_likely_residential, entity_classification, buyability_score, affiliated_dso, etc. **All Sitrep KPIs and headline corporate %/independent% counts in the Next.js app source from this table — NOT from `practices`.** Joined back to `practices` via `practice_to_location_xref`.
-- **deals**: 2,861 rows in SQLite, 2,861 in Supabase (drift reconciled in commit `ac2140a` 2026-04-25 — Pass 2 of `_reconcile_deals` keys NULL-target rows by composite hash, deleted 25 stranded ghosts). PE dental deals from PESP, GDN, PitchBook.
+- **practice_locations**: 5,732 location rows in Supabase (watched ZIPs only). Of these, **4,889 are GP clinics** per `SUM(zip_scores.total_gp_locations)` (CHI 4,575 + BOS 314, post-`dc18d24` ULTRA-FIX dedup, verified 2026-04-26). The remaining ~843 rows are specialist (~630), non-clinical (~87), or org-only NPI shells (~584 in SQLite local; Supabase composition tracks zip_scores). Earlier doc revisions said "5,265 GP + 467 specialist/non-clinical" — that breakdown was the pre-dedup baseline; quote 4,889 GP / 5,732 total in current docs. Address-deduped clinic table created by the `dc18d24` ULTRA-FIX dedup pipeline. Fields: location_id (PK), normalized_address, primary_npi, org_npi, provider_npis (JSON), provider_count, is_likely_residential, entity_classification, buyability_score, affiliated_dso, etc. **All Sitrep KPIs and headline corporate %/independent% counts in the Next.js app source from this table — NOT from `practices`.** Joined back to `practices` via `practice_to_location_xref`.
+- **deals**: 2,861 rows in SQLite, 2,861 in Supabase (drift reconciled in commit `ac2140a` 2026-04-25 — Pass 2 of `_reconcile_deals()` keys NULL-target rows by composite hash, deleted 25 stranded ghosts). The `_reconcile_deals()` function lives in `scrapers/sync_to_supabase.py:924` (NOT in `merge_and_score.py`), called from the main sync entry point at `sync_to_supabase.py:1287`. PE dental deals from PESP, GDN, PitchBook.
 - **practice_changes**: Change log for name/address/ownership changes (acquisition detection). 8,848 rows.
 - **zip_scores**: Per-ZIP consolidation stats (290 scored ZIPs), recalculated by merge_and_score.py. One row per ZIP (deduped). `total_gp_locations` is the location-deduped GP clinic count and is the canonical denominator for "how many clinics are in this ZIP."
-- **watched_zips**: 290 ZIPs (268 Chicagoland + 21 Boston + 1 other). Auto-backfilled by ensure_chicagoland_watched().
+- **watched_zips**: 290 ZIPs (269 Chicagoland/IL + 21 Boston/MA). Auto-backfilled by ensure_chicagoland_watched(). The "1 other" callout in earlier docs was a stale artifact — verified 2026-04-26 the entire set is 269 IL + 21 MA, no rogue rows.
 - **dso_locations**: 92 scraped DSO office locations from ADSO websites.
 - **ada_hpi_benchmarks**: 918 rows. State-level DSO affiliation rates by career stage (2022-2024).
 - **practice_signals**: 14,053 NPI rows (one per watched-ZIP NPI) — materialized 8-flag overlay for Warroom Hunt mode (stealth_dso, phantom_inventory, family_dynasty, micro_cluster, retirement_combo, last_change_90d, high_peer_retirement, revenue_default). NPI-keyed because flags are about provider behavior, not clinic identity. **Live count Supabase: 14,053** (post `dc18d24`+`520c33e`).
@@ -88,12 +88,12 @@ Both incremental paths wrap each row insert in a `begin_nested()` savepoint so a
 
 **Env vars:** `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `NEXT_PUBLIC_MAPBOX_TOKEN`. **`ANTHROPIC_API_KEY`** required for `/api/launchpad/compound-narrative` (Sonnet thesis route) — must be set in Vercel project env vars (Production + Preview + Development), then redeploy. Without it, the route returns `503: Compound narrative disabled`.
 
-### Pages (10 total)
+### Pages (11 total)
 
 | Route | Page | What It Shows |
 |-------|------|---------------|
 | `/` | Home | 6 KPI cards (Lucide icons), two-column layout (recent deals table + activity feed from practice_changes), data freshness bar, 2x3 quick nav grid |
-| `/launchpad` | Launchpad | First-job finder for new dental grads. Track-weighted 0-100 scoring (Succession / Apprentice, High-Volume Ethical, DSO Associate). 20-signal catalog. 5 tiers (Best Fit / Strong / Maybe / Low / Avoid). 4 living-location scopes. 5-tab practice dossier. Curated DSO tier list with comp bands + citations. Compound thesis route uses Sonnet 4.6 + reads `practice_intel`. |
+| `/launchpad` | Launchpad | First-job finder for new dental grads. Track-weighted 0-100 scoring (Succession / Apprentice, High-Volume Ethical, DSO Associate). 20-signal catalog. 5 tiers (Best Fit / Strong / Maybe / Low / Avoid). 4 living-location scopes. 6-tab practice dossier (snapshot, compensation, mentorship, redflags, interview, contract). Curated DSO tier list with comp bands + citations. Compound thesis route uses Sonnet 4.6 + reads `practice_intel`. |
 | `/warroom` | **Warroom** | Chicagoland command surface. 2 modes (Hunt / Investigate), 4 lenses (consolidation, density, buyability, retirement), 11 scopes (chicagoland, 7 subzones, 3 saved presets). Always-visible Sitrep KPI strip. Intent bar (⌘K), Living Map, ranked target list, ZIP + practice dossier drawers, pinboard tray, signal flag overlays (8 practice + 1 ZIP), keyboard shortcuts (`?`, `1`=Hunt, `2`=Investigate, `R`/`P`/`V`/`[`/`]`/`Esc`), URL-synced state. |
 | `/deal-flow` | Deal Flow | **4 tabs: Overview \| Sponsors \| Geography \| Deals.** Persistent KPI strip above tabs. |
 | `/market-intel` | Market Intel | **3 tabs: Consolidation \| ZIP Analysis \| Ownership.** Persistent tiered consolidation KPIs above tabs. Cross-link banner to Warroom. |
@@ -102,6 +102,7 @@ Both incremental paths wrap each row insert in a `begin_nested()` savepoint so a
 | `/research` | Research | PE sponsor profiles, DSO platform profiles, state deep dives, SQL explorer (SELECT-only, forbidden keywords) |
 | `/intelligence` | Intelligence | AI-powered qualitative research — 6 KPI cards, ZIP market intelligence table with expandable 10-signal panels, practice dossier table with readiness/confidence badges. Cross-link banner to Warroom Investigate mode. |
 | `/system` | System | Data freshness indicators, source coverage, completeness bars, pipeline log viewer, manual entry forms |
+| `/data-breakdown` | Data Breakdown | Per-KPI provenance — every "X practices in Chicagoland" type number traces back to its source query, table, ZIP scope, and timestamp. Small bar-chart visualizations show how each KPI decomposes (e.g. corporate share by ZIP). Added 2026-04-26 to satisfy the verifiability requirement that every visible number must be auditable end-to-end. |
 
 ### Data Flow Pattern
 
@@ -141,10 +142,10 @@ Key helpers in `src/lib/constants/entity-classifications.ts`:
 
 ### Sidebar Navigation
 
-4 grouped sections (dark #2C2C2C bg, goldenrod #B8860B active accent):
+4 grouped sections (dark #2C2C2C bg, goldenrod #B8860B active accent), **11 nav items total**:
 - **OVERVIEW:** Dashboard (`/`), Launchpad (`/launchpad`), Warroom (`/warroom`)
 - **MARKETS:** Job Market, Market Intel, Buyability
-- **ANALYSIS:** Deal Flow, Research, Intelligence
+- **ANALYSIS:** Deal Flow, Research, Intelligence, **Data Breakdown** (added 2026-04-26)
 - **ADMIN:** System
 
 ### Module Relocations (2026-03-15 UI Overhaul)
@@ -158,7 +159,7 @@ Key helpers in `src/lib/constants/entity-classifications.ts`:
 Pattern: each page route is a Server Component (`page.tsx`) that fetches Supabase data and passes it to a client `*-shell.tsx` orchestrator. Sub-components live in `_components/` siblings; cross-page primitives live in `src/components/`.
 
 - **`src/app/`** — `layout.tsx` (root, fonts/providers/sidebar), `page.tsx` (Home), `globals.css` (Tailwind 4 + warm light theme)
-- **`src/app/launchpad/_components/`** — `launchpad-shell.tsx` (orchestrator), `scope-selector.tsx`, `track-switcher.tsx`, `launchpad-kpi-strip.tsx`, `track-list.tsx`, `track-list-card.tsx`, `practice-dossier.tsx` (5-tab drawer), `compound-thesis.tsx` (Sonnet thesis with Regenerate button, plain prose)
+- **`src/app/launchpad/_components/`** — `launchpad-shell.tsx` (orchestrator), `scope-selector.tsx`, `track-switcher.tsx`, `launchpad-kpi-strip.tsx`, `track-list.tsx`, `track-list-card.tsx`, `practice-dossier.tsx` (6-tab drawer: snapshot, compensation, mentorship, redflags, interview, contract), `compound-thesis.tsx` (Sonnet thesis with Regenerate button, plain prose)
 - **`src/app/warroom/_components/`** — `warroom-shell.tsx`, `scope-selector.tsx` (11 options), `intent-bar.tsx` (⌘K), `sitrep-kpi-strip.tsx`, `living-map.tsx` (Mapbox), `briefing-rail.tsx`, `target-list.tsx`, `dossier-drawer.tsx`, `zip-dossier-drawer.tsx`, `investigate-mode-panel.tsx`, `pinboard-tray.tsx`, `keyboard-shortcuts-overlay.tsx`
 - **`src/app/deal-flow/_components/`** — `deal-flow-shell.tsx`, `deal-kpis.tsx`, `deal-volume-timeline.tsx`, `sponsor-platform-charts.tsx`, `state-choropleth.tsx`, `specialty-charts.tsx`, `deals-table.tsx`
 - **`src/app/market-intel/_components/`** — `market-intel-shell.tsx`, `consolidation-map.tsx`, `zip-score-table.tsx`, `city-practice-tree.tsx` (paginates within ZIP chunks), `saturation-table.tsx`, `ada-benchmarks.tsx`, `recent-changes.tsx`, `dso-penetration-table.tsx`
@@ -263,11 +264,11 @@ After pipeline runs, `scrapers/sync_to_supabase.py` pushes updated data to Supab
 | `scrapers/sync_to_supabase.py` | — | Syncs SQLite → Supabase Postgres (3 strategies) |
 | `scrapers/nppes_downloader.py` | 681 | Downloads + imports federal dental provider data |
 | `scrapers/data_axle_importer.py` | 2,650 | Imports Data Axle CSVs with 7-phase pipeline + Pass 6 corporate linkage |
-| `scrapers/merge_and_score.py` | 719 | Dedup deals, score ZIPs, ensure_chicagoland_watched() |
-| `scrapers/dso_classifier.py` | 547 | Name pattern matching + location matching to classify ownership |
-| `scrapers/pesp_scraper.py` | 552 | Scrapes PE deal announcements |
-| `scrapers/gdn_scraper.py` | 720 | Scrapes DSO deal roundups (old-format paragraph splitting for 2020-2022 posts) |
-| `scrapers/adso_location_scraper.py` | 728 | Scrapes DSO office locations from websites |
+| `scrapers/merge_and_score.py` | 1,070 | Dedup deals, score ZIPs, ensure_chicagoland_watched(), saturation metrics |
+| `scrapers/dso_classifier.py` | 1,570 | 4-pass classifier: Pass 1 name pattern matching, Pass 2 location matching, Pass 3 entity_classification (location-deduped — uses `practice_locations`, NOT `practices` — see post-`dc18d24` rewrite), Pass 4 corporate signal escalation |
+| `scrapers/pesp_scraper.py` | 1,201 | Scrapes PE deal announcements (DNS retry wrapper + COMMENTARY_PATTERNS prefilter) |
+| `scrapers/gdn_scraper.py` | 1,210 | Scrapes DSO deal roundups (MAX_RETRIES=3, _is_roundup_link guard, _PASS_THROUGH_SET connectors, expanded _DEAL_VERB_SET) |
+| `scrapers/adso_location_scraper.py` | 968 | Scrapes DSO office locations (HTTP_TIMEOUT=(10,30), MAX_SECONDS_PER_DSO=300, log_scrape_complete in finally) |
 | `scrapers/ada_hpi_downloader.py` | 237 | Auto-downloads ADA benchmark XLSX files |
 | `scrapers/ada_hpi_importer.py` | 351 | Parses ADA HPI XLSX by state/career stage |
 | `scrapers/pitchbook_importer.py` | 616 | CSV/XLSX import from PitchBook deal/company search |

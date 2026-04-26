@@ -360,6 +360,11 @@ class ZipQualitativeIntel(Base):
     raw_json = Column(Text)
     cost_usd = Column(Float)
     model_used = Column(Text)
+    # is_synthetic: true for placeholder rows that were inserted without real Anthropic
+    # web search (research_method='claude_api_unknown' from before the bulletproofed
+    # protocol, or seed/synthetic data). The Next.js Intelligence page MUST exclude
+    # is_synthetic=true rows from any "verified intel" surface.
+    is_synthetic = Column(Integer, default=0, nullable=False, index=True)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 

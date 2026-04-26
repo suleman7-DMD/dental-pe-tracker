@@ -2,7 +2,7 @@
 
 ## What This Project Is
 
-A data pipeline + Streamlit dashboard that tracks private equity consolidation in US dentistry. It scrapes deal announcements, monitors 400k+ dental practices from federal data, classifies who owns what, and scores markets for acquisition risk. Primary metro: Chicagoland (268 expanded ZIPs across 7 sub-zones). Secondary: Boston Metro (21 ZIPs).
+A data pipeline + Streamlit dashboard that tracks private equity consolidation in US dentistry. It scrapes deal announcements, monitors 400k+ dental practices from federal data, classifies who owns what, and scores markets for acquisition risk. Primary metro: Chicagoland (269 expanded ZIPs across 7 sub-zones). Secondary: Boston Metro (21 ZIPs).
 
 **Live app:** suleman7-pe.streamlit.app
 **Repo:** github.com/suleman7-DMD/dental-pe-tracker
@@ -28,7 +28,7 @@ Key tables: `deals`, `practices`, `practice_changes`, `watched_zips`, `zip_score
 - **deals**: 2,500+ rows. PE dental deals from PESP, GDN, PitchBook
 - **practice_changes**: Change log for name/address/ownership changes (acquisition detection). 5,100+ rows.
 - **zip_scores**: Per-ZIP consolidation stats (290 scored ZIPs), recalculated by merge_and_score.py. One row per ZIP (deduped).
-- **watched_zips**: 290 ZIPs (268 Chicagoland + 21 Boston + 1 other). Auto-backfilled by ensure_chicagoland_watched().
+- **watched_zips**: 290 ZIPs (269 Chicagoland/IL + 21 Boston/MA). Auto-backfilled by ensure_chicagoland_watched(). The "1 other" callout in earlier docs was a stale artifact — see `/Users/suleman/dental-pe-tracker/CLAUDE.md` for canonical breakdown.
 - **dso_locations**: 408 scraped DSO office locations from ADSO websites.
 - **ada_hpi_benchmarks**: 918 rows. State-level DSO affiliation rates by career stage (2022-2024).
 
@@ -115,11 +115,11 @@ Every step logs structured events to `logs/pipeline_events.jsonl` via `scrapers/
 | `scrapers/database.py` | 542 | SQLAlchemy models, init_db(), helpers |
 | `scrapers/nppes_downloader.py` | 681 | Downloads + imports federal dental provider data |
 | `scrapers/data_axle_importer.py` | 2,650 | Imports Data Axle CSVs with 7-phase pipeline + Pass 6 corporate linkage |
-| `scrapers/merge_and_score.py` | 719 | Dedup deals, score ZIPs, ensure_chicagoland_watched() |
-| `scrapers/dso_classifier.py` | 547 | Name pattern matching + location matching to classify ownership |
-| `scrapers/pesp_scraper.py` | 552 | Scrapes PE deal announcements |
-| `scrapers/gdn_scraper.py` | 711 | Scrapes DSO deal roundups |
-| `scrapers/adso_location_scraper.py` | 728 | Scrapes DSO office locations from websites |
+| `scrapers/merge_and_score.py` | 1,070 | Dedup deals, score ZIPs, ensure_chicagoland_watched(), saturation metrics |
+| `scrapers/dso_classifier.py` | 1,570 | 4-pass classifier: name pattern (P1), location matching (P2), entity_classification location-deduped (P3, post-`dc18d24`), corporate signal escalation (P4) |
+| `scrapers/pesp_scraper.py` | 1,201 | Scrapes PE deal announcements (DNS retry wrapper + COMMENTARY_PATTERNS prefilter) |
+| `scrapers/gdn_scraper.py` | 1,210 | Scrapes DSO deal roundups (MAX_RETRIES=3, _is_roundup_link guard, expanded _DEAL_VERB_SET) |
+| `scrapers/adso_location_scraper.py` | 968 | Scrapes DSO office locations (HTTP_TIMEOUT=(10,30), MAX_SECONDS_PER_DSO=300) |
 | `scrapers/ada_hpi_downloader.py` | 237 | Auto-downloads ADA benchmark XLSX files |
 | `scrapers/ada_hpi_importer.py` | 351 | Parses ADA HPI XLSX by state/career stage |
 | `scrapers/pitchbook_importer.py` | 616 | CSV/XLSX import from PitchBook deal/company search |

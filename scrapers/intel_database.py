@@ -93,6 +93,10 @@ def store_zip_intel(zip_code: str, research_data: Dict, db_path=None):
             raw_json=json.dumps(research_data, default=str),
             cost_usd=meta.get("cost_usd", 0),
             model_used=meta.get("model"),
+            # Real research path — opposite of placeholder rows. The 287 rows that
+            # were inserted before bulletproofing have is_synthetic=1; everything
+            # written through this function from now on is is_synthetic=0.
+            is_synthetic=0,
         )
         session.merge(obj)
         session.commit()
