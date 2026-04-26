@@ -424,7 +424,7 @@ class PracticeIntel(Base):
     green_flags_for_grad = Column(Text)                            # JSON array stringified
     # Anti-hallucination verification (April 2026)
     verification_searches = Column(Integer)                        # actual web_search count Haiku reported running
-    verification_quality = Column(String(20), index=True)          # "verified" | "partial" | "insufficient"
+    verification_quality = Column(String(64), index=True)          # "verified" | "partial" | "insufficient" (free-form drift tolerated up to 64)
     verification_urls = Column(Text)                               # JSON array of primary source URLs cited
     # Assessment
     red_flags = Column(Text)
