@@ -438,25 +438,34 @@ def _normalize_address_for_grouping(addr):
     return a
 
 
+def _physical_location_key(zip_code, address, city):
+    """Canonical physical-location key shared by classifier + saturation metrics.
+
+    Uses `(city, street_without_suite)` — ZIP is excluded so typo'd ZIPs at the
+    same physical address don't fragment the group, and suite/unit numbers are
+    stripped so the same building shared by multiple tenants collapses to one
+    location. The `zip_code` arg is accepted (and ignored) for call-site
+    readability — see `_precompute_address_groups` and `compute_saturation_metrics`.
+    """
+    norm_addr = _normalize_address_for_grouping(address)
+    street_only = _strip_suite_for_location_key(norm_addr)
+    return ((city or "").upper().strip(), street_only)
+
+
 def _precompute_address_groups(rows):
-    """Group practice rows by (zip, normalized_address).
+    """Group practice rows by physical location.
 
-    Only counts providers as co-located (same practice) when:
-    - At least one organization NPI exists at the address, OR
-    - Multiple individual NPIs share a phone number or DBA name
-    If ALL NPIs at the address are individuals with different phones/DBAs,
-    they are likely separate practices sharing a building — each gets
-    a group size of 1 for classification purposes.
+    Counts only individual NPIs for `_effective_group_size` — organization NPIs
+    are legal wrappers, not additional providers. An address with 1 individual
+    + 1 org = 1 provider for classification purposes.
 
-    Returns: dict mapping (zip, normalized_addr, city) → [row_dicts]
+    Returns: dict mapping (city, street_without_suite) → [row_dicts]
     Also sets row["_effective_group_size"] for each row.
     """
     from collections import defaultdict
     groups = defaultdict(list)
     for r in rows:
-        addr = _normalize_address_for_grouping(r["address"])
-        city = (r["city"] or "").upper().strip()
-        key = (r["zip"], addr, city)
+        key = _physical_location_key(r["zip"], r["address"], r["city"])
         groups[key].append(r)
 
     # Determine effective group sizes.
@@ -496,35 +505,61 @@ def _precompute_shared_eins(session, zip_codes):
     return result
 
 
+def _strip_suite_for_location_key(addr):
+    """Strip suite/unit/floor markers from a normalized address.
+
+    Used by `_precompute_shared_phones` to decide whether multiple NPIs sharing
+    a phone are at one physical building (group practice — not a corporate
+    signal) or 3+ truly distinct buildings (real shared-phone corporate signal).
+    Without this strip, the same physical address gets counted as multiple
+    locations whenever NPPES rows differ on suite (`#108` vs no suite) or have
+    typo'd ZIPs — which inflates the dso_regional flag count. The Maple Park
+    1048 104TH ST case: 1 org NPI + 2 individual NPIs at the same building
+    were flagged dso_regional because (60464, "1048 104TH STREET", "NAPERVILLE")
+    /  (60564, "1048 104TH ST", "NAPERVILLE") / (60564, "1048 104TH STREET#108",
+    "NAPERVILLE") were counted as 3 distinct locations.
+    """
+    if not addr:
+        return ""
+    a = str(addr).upper()
+    for marker in (" SUITE ", " UNIT ", " APT ", " FLOOR ", " FL ", " #", "#"):
+        idx = a.find(marker)
+        if idx >= 0:
+            a = a[:idx]
+    return a.strip()
+
+
 def _precompute_shared_phones(practice_dicts):
-    """Find phones shared across 3+ DIFFERENT normalized addresses.
+    """Find phones shared across 3+ DIFFERENT physical buildings.
 
-    Same-address phone sharing is just a group practice (handled by Rules 5-7).
-    Cross-address phone sharing across different ZIPs or buildings is a true
-    corporate signal.
+    Same-building phone sharing is just a group practice (handled by Rules 5-7).
+    Cross-building phone sharing across different streets is a true corporate
+    signal (e.g. a DSO call center serving multiple clinics).
 
-    Computed in Python using normalized addresses to avoid address string
-    variations causing false "different addresses."
+    Location key is `(city, street_without_suite)` — ZIP is excluded so
+    typo'd ZIPs at the same physical address don't inflate the count, and
+    suite/unit numbers are stripped so the same building shared by multiple
+    tenants isn't counted as multiple locations.
     Returns: {phone: set_of_npis}
     """
     from collections import defaultdict
 
-    # Group by phone → set of (zip, normalized_addr)
     phone_addrs = defaultdict(lambda: {"npis": set(), "locations": set()})
     for r in practice_dicts:
         phone = r.get("phone") or ""
         if not phone or phone == "Not Available":
             continue
         norm_addr = _normalize_address_for_grouping(r["address"])
+        street_only = _strip_suite_for_location_key(norm_addr)
         city = (r["city"] or "").upper().strip()
         phone_addrs[phone]["npis"].add(r["npi"])
-        phone_addrs[phone]["locations"].add((r["zip"], norm_addr, city))
+        phone_addrs[phone]["locations"].add((city, street_only))
 
     result = {}
     for phone, data in phone_addrs.items():
         n_locations = len(data["locations"])
         n_npis = len(data["npis"])
-        # 3+ distinct locations, but not institutional (50+)
+        # 3+ distinct buildings, but not institutional (50+)
         if n_locations >= 3 and n_npis < 50:
             result[phone] = data["npis"]
     return result
@@ -721,12 +756,17 @@ def _classify_single_entity(row, addr_group, shared_eins, shared_phones):
                         f"DSO Regional: Data Axle stealth signal detected "
                         f"('{trigger}' in classification_reasoning).")
 
-    # 4g: Shared phone with 3-49 practices → dso_regional
-    if phone and phone in shared_phones:
-        peer_npis = shared_phones[phone]
-        return ("dso_regional",
-                f"DSO Regional: phone={phone} shared with "
-                f"{len(peer_npis)} practices.")
+    # 4g: Shared phone (DEMOTED 2026-04-25) — phone alone is NOT enough
+    # to classify as dso_regional. The signal is too noisy: the ~83% of
+    # dso_regional rows that fired purely on shared phone turn out to be
+    # a mix of multi-doc independents, family-owned multi-location
+    # practices, billing-service shared-numbers, and solo associations —
+    # all wrongly labeled corporate. The classifier no longer returns a
+    # classification from phone alone. The shared_phones dict is still
+    # computed and available to the caller (and to compute_signals.py),
+    # which stamps a [shared_phone_flag] note into classification_reasoning
+    # so the signal is preserved for downstream filtering / scoring.
+    # No-op here — fall through to Rules 5-8 for natural classification.
 
     # ── Rule 5: Family practice ──
     providers_at_addr = row.get("_effective_group_size", len(addr_group))
@@ -892,17 +932,30 @@ def classify_entity_types(session, zip_codes=None, force=False, dry_run=False):
                 _flush_updates(session, pending_updates, [])
                 pending_updates = []
 
-        # Find this practice's address group
-        addr_key = (
-            prac["zip"],
-            _normalize_address_for_grouping(prac["address"]),
-            (prac["city"] or "").upper().strip(),
-        )
+        # Find this practice's physical-location group
+        addr_key = _physical_location_key(prac["zip"], prac["address"], prac["city"])
         group = addr_groups.get(addr_key, [prac])
 
         classification, reasoning = _classify_single_entity(
             prac, group, shared_eins, shared_phones
         )
+
+        # Stamp shared_phone_flag into reasoning when the practice landed in
+        # a non-corporate classification but its phone is shared across 3+
+        # buildings. Preserves the signal for downstream filtering /
+        # scoring without letting the noisy phone signal drive
+        # classification on its own (see Rule 4g comment block above).
+        phone_val = prac.get("phone") or ""
+        if (
+            phone_val
+            and phone_val in shared_phones
+            and classification not in ("dso_regional", "dso_national")
+        ):
+            n_peers = len(shared_phones[phone_val])
+            reasoning = (
+                f"{reasoning} | shared_phone_flag: phone={phone_val} "
+                f"shared with {n_peers} practices across 3+ buildings"
+            )
 
         counts[classification] += 1
 

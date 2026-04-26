@@ -31,7 +31,10 @@ from scrapers.database import (
     table_exists, backup_database, DB_PATH, BACKUP_DIR,
 )
 from scrapers.pipeline_logger import log_scrape_start, log_scrape_complete, log_scrape_error
-from scrapers.dso_classifier import _normalize_address_for_grouping
+from scrapers.dso_classifier import (
+    _normalize_address_for_grouping,
+    _physical_location_key,
+)
 
 log = get_logger("merge_and_score")
 
@@ -251,12 +254,12 @@ def deduplicate_practices_in_zip(session, zip_code):
             "raw_npi_count": 0,
         }
 
-    # Group by normalized (address, city) using same normalization as entity classification
+    # Group by physical location (city, street_without_suite) — collapses
+    # Maple-Park-style same-building NPI rows that differ only on suite tag
+    # or typo'd ZIP.
     addr_groups = defaultdict(list)
     for p in practices:
-        addr = _normalize_address_for_grouping(p.address)
-        city = (p.city or "").upper().strip()
-        key = (addr, city)
+        key = _physical_location_key(p.zip, p.address, p.city)
         addr_groups[key].append(p)
 
     # Walk each group and produce deduplicated practice entries
@@ -355,12 +358,12 @@ def compute_saturation_metrics(session, zip_code, population, mhi=None, pop_grow
             'metrics_confidence': 'low', 'warnings': [],
         }
 
-    # Group by normalized address (same normalization as entity classification)
+    # Group by physical location (city, street_without_suite) — same key as
+    # the classifier's _precompute_address_groups, so saturation metrics and
+    # entity classifications agree on what counts as one location.
     addr_groups = defaultdict(list)
     for p in practices:
-        norm_addr = _normalize_address_for_grouping(p.address)
-        city = (p.city or "").upper().strip()
-        key = (norm_addr, city)
+        key = _physical_location_key(p.zip, p.address, p.city)
         addr_groups[key].append(p)
 
     # Classify each location as GP, specialist-only, or non-clinical-only

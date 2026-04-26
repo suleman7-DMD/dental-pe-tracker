@@ -915,3 +915,49 @@ def backup_database(db_path=None):
     shutil.copy2(src, dest)
     log.info("Backup created: %s", dest)
     return dest
+
+
+# ── PracticeLocation model (ULTRA-FIX dedup — Schema Architect) ─────────────
+# One row per physical address. Collapses NPI-1 individuals + NPI-2 org
+# at the same address into a single canonical location record.
+# Spec: /tmp/dedup_design.md §NEW canonical table: practice_locations
+# DO NOT modify existing models above this line.
+
+class PracticeLocation(Base):
+    __tablename__ = "practice_locations"
+
+    location_id               = Column(Text, primary_key=True)  # sha1(norm_addr|zip)[:16]
+    normalized_address        = Column(Text, nullable=False)
+    zip                       = Column(Text, nullable=False)
+    city                      = Column(Text)
+    state                     = Column(Text)
+    practice_name             = Column(Text)                    # elected (org NPI wins)
+    doing_business_as         = Column(Text)
+    primary_npi               = Column(Text)                    # canonical NPI for this location
+    org_npi                   = Column(Text)                    # NPI-2 at this address, if any
+    provider_npis             = Column(Text)                    # JSON array of all NPI-1s
+    provider_count            = Column(Integer)                 # COUNT(DISTINCT NPI-1)
+    has_org_npi               = Column(Boolean)                 # whether NPI-2 exists at address
+    is_specialist_only        = Column(Boolean)                 # all NPIs have specialist taxonomy
+    is_likely_residential     = Column(Boolean)                 # see residential detection spec
+    entity_classification     = Column(Text)                    # recomputed at location level
+    ownership_status          = Column(Text)
+    affiliated_dso            = Column(Text)
+    affiliated_pe_sponsor     = Column(Text)
+    buyability_score          = Column(Integer)
+    classification_confidence = Column(Integer)
+    classification_reasoning  = Column(Text)
+    latitude                  = Column(Float)
+    longitude                 = Column(Float)
+    year_established          = Column(Integer)                 # min over NPIs (oldest founding)
+    employee_count            = Column(Integer)                 # max over NPIs at address
+    estimated_revenue         = Column(Integer)                 # max over NPIs
+    data_axle_enriched        = Column(Boolean)                 # any NPI was data-axle-enriched
+    parent_company            = Column(Text)
+    ein                       = Column(Text)
+    website                   = Column(Text)
+    phone                     = Column(Text)
+    data_sources              = Column(Text)                    # comma-sep, e.g. "nppes,data_axle"
+    taxonomy_codes            = Column(Text)                    # JSON array of all taxonomies
+    created_at                = Column(DateTime, default=func.now())
+    updated_at                = Column(DateTime, default=func.now(), onupdate=func.now())

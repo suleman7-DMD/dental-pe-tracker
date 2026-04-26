@@ -56,6 +56,7 @@ from scrapers.database import (
     PracticeIntel,
     PracticeSignal,
     ZipSignal,
+    PracticeLocation,  # ULTRA-FIX dedup
 )
 from scrapers.pipeline_logger import log_scrape_start, log_scrape_complete, log_scrape_error
 from scrapers.logger_config import get_logger
@@ -119,6 +120,7 @@ MIN_ROWS_THRESHOLD = {
     "zip_overviews":           5,   # 12 live rows; floor catches catastrophic source loss. Fresh install must manually override.
     "practice_signals":     1000,   # ~14k watched-ZIP practices expected; floor catches broken materialization.
     "zip_signals":            50,   # 290 watched ZIPs expected; floor catches broken materialization.
+    "practice_locations":    1000,  # ~5700 locations in watched ZIPs; floor catches broken dedup run.
 }
 
 # Tables and their sync strategy
@@ -147,6 +149,9 @@ SYNC_CONFIG = [
     {"table": "practice_intel",   "model": PracticeIntel,  "strategy": "full_replace", "conflict_col": None, "filter_watched_zips_npi": True},
     {"table": "practice_signals", "model": PracticeSignal, "strategy": "full_replace", "conflict_col": None, "filter_watched_zips_npi": True},
     {"table": "zip_signals",      "model": ZipSignal,      "strategy": "full_replace", "conflict_col": None},
+    # practice_locations: additive dedup table (ULTRA-FIX dedup). full_replace is safe —
+    # re-derived from practices on every dedup run. No FK deps on other Supabase tables.
+    {"table": "practice_locations", "model": PracticeLocation, "strategy": "full_replace", "conflict_col": None},
 ]
 
 
