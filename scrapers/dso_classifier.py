@@ -540,11 +540,28 @@ def _precompute_shared_phones(practice_dicts):
     typo'd ZIPs at the same physical address don't inflate the count, and
     suite/unit numbers are stripped so the same building shared by multiple
     tenants isn't counted as multiple locations.
-    Returns: {phone: set_of_npis}
-    """
-    from collections import defaultdict
 
-    phone_addrs = defaultdict(lambda: {"npis": set(), "locations": set()})
+    Returns: {phone: {
+        "npis": set_of_npis,
+        "n_zips": int,                    # distinct ZIPs (geographic spread)
+        "n_locations": int,               # distinct buildings
+        "dominant_last_name_count": int,  # most common provider last name freq
+        "individual_npi_count": int,      # total NPI-1 (provider) rows
+    }}
+
+    Caller can use len(d["npis"]) for backwards-compatible n_peers count.
+    The richer dict supports Rule 4g (`tier-2 phone corroboration`) — see
+    `_classify_single_entity` for the re-promotion guard.
+    """
+    from collections import defaultdict, Counter
+
+    phone_state = defaultdict(lambda: {
+        "npis": set(),
+        "locations": set(),
+        "zips": set(),
+        "last_names": [],
+        "individual_count": 0,
+    })
     for r in practice_dicts:
         phone = r.get("phone") or ""
         if not phone or phone == "Not Available":
@@ -552,17 +569,65 @@ def _precompute_shared_phones(practice_dicts):
         norm_addr = _normalize_address_for_grouping(r["address"])
         street_only = _strip_suite_for_location_key(norm_addr)
         city = (r["city"] or "").upper().strip()
-        phone_addrs[phone]["npis"].add(r["npi"])
-        phone_addrs[phone]["locations"].add((city, street_only))
+        zp = (r.get("zip") or "").strip()
+        st = phone_state[phone]
+        st["npis"].add(r["npi"])
+        st["locations"].add((city, street_only))
+        if zp:
+            st["zips"].add(zp)
+        if r.get("entity_type") == "individual":
+            st["individual_count"] += 1
+            ln = (r.get("provider_last_name") or "").upper().strip()
+            if ln and ln not in ("", "DDS", "DMD", "PC", "LTD", "INC", "LLC"):
+                st["last_names"].append(ln)
 
     result = {}
-    for phone, data in phone_addrs.items():
+    for phone, data in phone_state.items():
         n_locations = len(data["locations"])
         n_npis = len(data["npis"])
         # 3+ distinct buildings, but not institutional (50+)
         if n_locations >= 3 and n_npis < 50:
-            result[phone] = data["npis"]
+            ln_counter = Counter(data["last_names"])
+            dom_count = ln_counter.most_common(1)[0][1] if ln_counter else 0
+            result[phone] = {
+                "npis": data["npis"],
+                "n_zips": len(data["zips"]),
+                "n_locations": n_locations,
+                "dominant_last_name_count": dom_count,
+                "individual_npi_count": data["individual_count"],
+            }
     return result
+
+
+# Institutional address keywords — exclude these from Rule 4g re-promotion.
+# A shared phone at a hospital / university / VA is a switchboard, not a DSO.
+INSTITUTIONAL_ADDR_KEYWORDS = (
+    "UNIVERSITY",
+    "HOSPITAL",
+    "MEDICAL CENTER",
+    "MEDICAL CTR",
+    "MED CTR",
+    "VETERANS",
+    " VA ",
+    "CHILDREN'S",
+    "CHILDRENS HOSPITAL",
+    "COLLEGE",
+    "FQHC",
+    "COMMUNITY HEALTH",
+    "HEALTH CENTER",
+    "HEALTH CTR",
+    "ACADEMY",
+    "INSTITUTE",
+)
+
+
+def _is_institutional_address(addr_str, name_str):
+    """Return True if the address or practice name signals an institutional
+    setting (hospital, university, FQHC, etc.) where shared phones are
+    switchboards, not DSO call centers.
+    """
+    haystack = f"{(addr_str or '').upper()} {(name_str or '').upper()}"
+    return any(kw in haystack for kw in INSTITUTIONAL_ADDR_KEYWORDS)
 
 
 def _check_family_signal(row, addr_group):
@@ -756,17 +821,58 @@ def _classify_single_entity(row, addr_group, shared_eins, shared_phones):
                         f"DSO Regional: Data Axle stealth signal detected "
                         f"('{trigger}' in classification_reasoning).")
 
-    # 4g: Shared phone (DEMOTED 2026-04-25) — phone alone is NOT enough
-    # to classify as dso_regional. The signal is too noisy: the ~83% of
-    # dso_regional rows that fired purely on shared phone turn out to be
-    # a mix of multi-doc independents, family-owned multi-location
-    # practices, billing-service shared-numbers, and solo associations —
-    # all wrongly labeled corporate. The classifier no longer returns a
-    # classification from phone alone. The shared_phones dict is still
-    # computed and available to the caller (and to compute_signals.py),
-    # which stamps a [shared_phone_flag] note into classification_reasoning
-    # so the signal is preserved for downstream filtering / scoring.
-    # No-op here — fall through to Rules 5-8 for natural classification.
+    # 4g: Shared phone — TIER-2 with CORROBORATION (added 2026-04-25).
+    #
+    # Phone alone is too noisy (history: 1,072 false-positive dso_regional
+    # rows in watched ZIPs). But phone PLUS hard corroboration recovers the
+    # true positives that hide in small/large/family groups today.
+    #
+    # Re-promote to dso_regional ONLY when ALL of:
+    #   • phone shared across 3+ distinct buildings (already filtered)
+    #   • phone-cluster spans 3+ distinct ZIPs   (geographic spread)
+    #   • phone-cluster has 4+ NPIs              (statistical mass)
+    #   • THIS practice's address group has 4+ providers (cluster anchor)
+    #   • dominant last name < 40% of NPI-1s     (rules out family chains)
+    #   • address/name not institutional         (rules out hospitals, FQHCs)
+    #
+    # Family chains are caught by Rule 5 below (which still wins because
+    # we only re-promote when family-name share is < 40%). Specialists are
+    # caught by Rule 2 above. Hospitals / universities are excluded here.
+    if phone and phone in shared_phones:
+        ph = shared_phones[phone]
+        n_zips = ph.get("n_zips", 0)
+        n_peers = len(ph["npis"])
+        ind_count = ph.get("individual_npi_count", 0)
+        dom_count = ph.get("dominant_last_name_count", 0)
+        family_ratio = (dom_count / ind_count) if ind_count > 0 else 1.0
+        providers_at_addr = row.get("_effective_group_size", len(addr_group))
+        addr_str = row.get("address", "")
+        name_str = row.get("practice_name", "")
+
+        # Local-family guard: if THIS address group shows internal family
+        # succession (Rule 5 would fire), don't re-promote to dso_regional.
+        # Family chains operating multiple locations are a real DSO signal
+        # at the cluster level, but at the *address* level the succession
+        # narrative dominates and `family_practice` is the more informative
+        # label.
+        local_has_family, _ = _check_family_signal(row, addr_group)
+
+        if (
+            n_zips >= 3
+            and n_peers >= 4
+            and providers_at_addr >= 4
+            and family_ratio < 0.4
+            and not local_has_family
+            and not _is_institutional_address(addr_str, name_str)
+        ):
+            return ("dso_regional",
+                    f"DSO Regional: shared phone {phone} corroborated — "
+                    f"{n_peers} NPIs across {n_zips} ZIPs / "
+                    f"{ph.get('n_locations', 0)} buildings, "
+                    f"{providers_at_addr} providers at this address, "
+                    f"family-name share {family_ratio:.0%} (<40%), "
+                    f"no local family signal, non-institutional. "
+                    f"Tier-2 phone-corroboration rule.")
 
     # ── Rule 5: Family practice ──
     providers_at_addr = row.get("_effective_group_size", len(addr_group))
@@ -951,10 +1057,14 @@ def classify_entity_types(session, zip_codes=None, force=False, dry_run=False):
             and phone_val in shared_phones
             and classification not in ("dso_regional", "dso_national")
         ):
-            n_peers = len(shared_phones[phone_val])
+            ph_data = shared_phones[phone_val]
+            n_peers = len(ph_data["npis"])
+            n_zips_ph = ph_data.get("n_zips", 0)
+            n_locs_ph = ph_data.get("n_locations", 0)
             reasoning = (
                 f"{reasoning} | shared_phone_flag: phone={phone_val} "
-                f"shared with {n_peers} practices across 3+ buildings"
+                f"shared with {n_peers} practices across {n_locs_ph} "
+                f"buildings / {n_zips_ph} ZIPs"
             )
 
         counts[classification] += 1

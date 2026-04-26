@@ -66,39 +66,52 @@ def get_column_names(model_class):
 
 
 def upsert_batch(pg_engine, table_name, columns, conflict_col, dicts):
-    """Upsert a batch of dicts into Postgres."""
+    """Upsert a batch of dicts into Postgres using execute_values (single round-trip)."""
     if not dicts:
         return
+    from psycopg2.extras import execute_values
     col_list = ", ".join(columns)
-    param_list = ", ".join(f":{c}" for c in columns)
     update_cols = [c for c in columns if c != conflict_col]
     update_set = ", ".join(f"{c} = EXCLUDED.{c}" for c in update_cols)
     sql = (
         f"INSERT INTO {table_name} ({col_list}) "
-        f"VALUES ({param_list}) "
+        f"VALUES %s "
         f"ON CONFLICT ({conflict_col}) DO UPDATE SET {update_set}"
     )
-    with pg_engine.connect() as conn:
-        for d in dicts:
-            conn.execute(text(sql), d)
-        conn.commit()
+    rows = [tuple(d.get(c) for c in columns) for d in dicts]
+    raw = pg_engine.raw_connection()
+    try:
+        cur = raw.cursor()
+        cur.execute("SET statement_timeout = 0")
+        execute_values(cur, sql, rows, page_size=100)
+        raw.commit()
+        cur.close()
+    finally:
+        raw.close()
 
 
 def full_replace(pg_engine, table_name, model, sqlite_session):
-    """Truncate + insert all rows for a small table."""
+    """Truncate + insert all rows for a small table using execute_values."""
+    from psycopg2.extras import execute_values
     columns = get_column_names(model)
     rows = sqlite_session.query(model).all()
     dicts = [model_to_dict(r) for r in rows]
 
     col_list = ", ".join(columns)
-    param_list = ", ".join(f":{c}" for c in columns)
-    insert_sql = f"INSERT INTO {table_name} ({col_list}) VALUES ({param_list})"
+    insert_sql = f"INSERT INTO {table_name} ({col_list}) VALUES %s"
+    tuples = [tuple(d.get(c) for c in columns) for d in dicts]
 
-    with pg_engine.connect() as conn:
-        conn.execute(text(f"TRUNCATE TABLE {table_name} CASCADE"))
-        for d in dicts:
-            conn.execute(text(insert_sql), d)
-        conn.commit()
+    raw = pg_engine.raw_connection()
+    try:
+        cur = raw.cursor()
+        cur.execute("SET statement_timeout = 0")
+        cur.execute(f"TRUNCATE TABLE {table_name} CASCADE")
+        if tuples:
+            execute_values(cur, insert_sql, tuples, page_size=100)
+        raw.commit()
+        cur.close()
+    finally:
+        raw.close()
 
     log.info("[%s] Full replace: %d rows", table_name, len(dicts))
     return len(dicts)

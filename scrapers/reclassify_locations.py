@@ -62,7 +62,18 @@ _KNOWN_NATIONAL_DSOS = [
     "MIDWEST DENTAL", "DENTALWORKS", "DENTISTRY FOR CHILDREN",
     "TEND DENTAL", "TEND STUDIO", "AFFORDABLE DENTURES",
     "1ST FAMILY DENTAL", "FAMILIA DENTAL",
+    "CHOICE DENTAL", "42 NORTH DENTAL", "MORTENSON DENTAL",
+    "MB2 DENTAL", "DENTAL CARE ALLIANCE", "NORTH AMERICAN DENTAL",
+    "PACIFIC DENTAL SERVICES", "SAGE DENTAL",
 ]
+
+# Affiliated_dso strings that are pure NPPES taxonomy noise — NOT real DSOs
+_AFFILIATED_DSO_TAXONOMY_LEAKS = {
+    "GENERAL DENTISTRY", "ORAL SURGERY", "ORTHODONTICS",
+    "PERIODONTICS", "ENDODONTICS", "PEDIATRIC DENTISTRY",
+    "PROSTHODONTICS", "DENTAL HYGIENE", "PEDODONTICS",
+    "ORAL AND MAXILLOFACIAL SURGERY", "DENTIST",
+}
 
 # Hard-classify as non_clinical (always)
 _NON_CLINICAL_HARD = [
@@ -226,6 +237,16 @@ def classify_one(loc, ein_zip_count, last_names_by_npi, primary_npi_extras):
     if _is_national_dso(name):
         return "dso_national", f"Known national DSO brand: {name}"
 
+    # ---- Rule 3b: dso_national via affiliated_dso (set by Pass 2 location-match) ----
+    affiliated = (loc.get("affiliated_dso") or "").upper().strip()
+    if affiliated and affiliated not in _AFFILIATED_DSO_TAXONOMY_LEAKS:
+        for brand in _KNOWN_NATIONAL_DSOS:
+            if brand in affiliated or affiliated in brand:
+                return "dso_national", f"affiliated_dso match: {loc.get('affiliated_dso')}"
+        # Affiliated_dso is set, non-leaky, but doesn't match a known national brand
+        # — treat as dso_regional (real DSO signal but not nationally branded)
+        return "dso_regional", f"affiliated_dso present (non-national): {loc.get('affiliated_dso')}"
+
     # ---- Rule 4: dso_regional (STRONG signals only) ----
     # 4a. Parent company is a real corporate parent (not a university)
     if parent and not _is_university_parent(parent):
@@ -330,7 +351,8 @@ def reclassify_all(session, dry_run=False):
         "       practice_name, doing_business_as, primary_npi, org_npi, provider_npis, "
         "       provider_count, has_org_npi, is_specialist_only, is_likely_residential, "
         "       entity_classification, parent_company, ein, employee_count, "
-        "       estimated_revenue, year_established, phone, website, taxonomy_codes "
+        "       estimated_revenue, year_established, phone, website, taxonomy_codes, "
+        "       affiliated_dso "
         "FROM practice_locations"
     )).fetchall()
     log.info("Loaded %d practice_locations rows", len(loc_rows))
@@ -341,6 +363,7 @@ def reclassify_all(session, dry_run=False):
         "provider_count", "has_org_npi", "is_specialist_only", "is_likely_residential",
         "entity_classification", "parent_company", "ein", "employee_count",
         "estimated_revenue", "year_established", "phone", "website", "taxonomy_codes",
+        "affiliated_dso",
     ]
 
     before_counts = Counter()
