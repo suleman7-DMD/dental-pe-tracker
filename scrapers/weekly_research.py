@@ -137,12 +137,31 @@ def validate_dossier(npi: str, data: dict) -> tuple[bool, str]:
         return False, f"insufficient_searches({searches_n})"
 
     quality = (ver.get("evidence_quality") or "").lower()
-    if quality == "high":
-        # Enum drift: model returned "high" instead of "verified|partial|insufficient".
-        # Coerce to "partial" in-place so the dossier is stored but flagged. Audit §10.5/#16.
-        logger.warning("NPI %s: evidence_quality='high' is outside spec — coercing to 'partial'", npi)
-        ver["evidence_quality"] = "partial"
-        quality = "partial"
+    # Enum drift remap: model occasionally returns words outside the spec
+    # ("high", "sufficient", "good", etc.) instead of verified|partial|insufficient.
+    # Coerce confidence-flavored words to canonical values so the dossier is
+    # stored (instead of quarantined) but recorded against the correct enum.
+    # Audit §10.5/#16 + F33 (2026-04-26).
+    DRIFT_REMAP = {
+        "high": "partial",         # claims confidence but didn't necessarily verify
+        "sufficient": "verified",  # "good enough" — model finished its job
+        "good": "verified",
+        "complete": "verified",
+        "low": "insufficient",     # would auto-quarantine downstream
+        "poor": "insufficient",
+        "none": "insufficient",
+    }
+    if quality in DRIFT_REMAP:
+        canonical = DRIFT_REMAP[quality]
+        logger.warning(
+            "NPI %s: evidence_quality=%r is outside spec — coercing to %r",
+            npi, quality, canonical,
+        )
+        ver["evidence_quality"] = canonical
+        quality = canonical
+    if quality and quality not in ("verified", "partial", "insufficient"):
+        # Truly unknown value — quarantine.
+        return False, f"evidence_quality_unknown({quality!r})"
     if quality == "insufficient":
         return False, "evidence_quality=insufficient"
 
