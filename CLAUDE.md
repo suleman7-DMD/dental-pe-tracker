@@ -444,7 +444,21 @@ Every practice dossier is gated through a 4-layer defense before it can land in 
 5. If a search returns nothing, set fields to null AND `_source_url` to `"no_results_found"`
 6. The terminal `verification` block is mandatory
 
-**Cost calibration:** ~$0.075/practice for full bulletproofed run (vs $0.04-0.06 baseline without `force_search`). Driver: 4-5 forced searches × $0.01 + cache_create overhead on first call. The Anthropic Messages Batch API still gives 50% token discount; web_search cost is not discounted. **For future budget math, use $0.075/practice.**
+**Cost calibration:** Use the **Anthropic console** (https://console.anthropic.com/usage), NOT `poll.py`'s `totals.total_cost_usd`, as the source of truth for actual billing. `poll.py`'s estimate is a worst-case overcount — verified 2026-04-26 against console for two batch runs:
+
+| Run | poll.py estimate | Console actual | Overcount |
+|-----|------------------|----------------|-----------|
+| 200-practice (msgbatch_017YJJ…) | $14.91 | (rolled into MTD) | — |
+| 2000-practice (msgbatch_01A3…) | $124.57 | ~$11 (MTD delta) | ~11× |
+| Combined month-to-date (2026-04-25→26) | $139.48 | **$16.33** | **~8.5×** |
+
+**Two bugs in `poll.py` cost math (`scrapers/dossier_batch/poll.py:148-160`):**
+1. `web_search_requests` from `usage.server_tool_use` overcounts ~4.5× the billed search count (console showed 1,505 Haiku searches; poll.py reported 6,744). Cause unknown — possibly counts retries or sub-queries.
+2. Full Haiku rates (`$0.50/$2.50/$0.05/$0.625` per MTok) are applied without the 50% Messages Batch API discount. Real batch rates are half: `$0.25/$1.25/$0.025/$0.3125`. Web-search unit price is also probably ~$0.0015/req in batch (not $0.01) — needs explicit confirmation from Anthropic billing.
+
+**Real cost per practice (2026-04-26 calibration):** ~$0.005-0.010/practice in batch mode with bulletproofed protocol. **For future budget math, use $0.008/practice as the planning rate** — that gives $16 for a 2000-practice run, $80 for 10k. Confirm with the console after each run; flag if real cost exceeds $0.015/practice.
+
+**Don't quote `poll.py.totals.total_cost_usd` to the user as the actual bill** — it's a worst-case estimate. Always reconcile with https://console.anthropic.com/usage before reporting cost.
 
 **Operational scripts (`scrapers/dossier_batch/`):** see Pipeline File Quick Reference table for `launch.py`, `launch_2000_excl_chi.py`, `poll.py`, `poll_zip_batches.py`, `upsert_practice_intel.py`, `migrate_verification_cols.py`. `last_run_summary.json` holds the per-NPI breakdown of the 2026-04-25 200-practice run as a regression baseline.
 

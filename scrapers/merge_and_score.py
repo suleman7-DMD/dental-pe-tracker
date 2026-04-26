@@ -28,6 +28,7 @@ from scrapers.database import (
     init_db, get_engine, get_session, Base,
     Deal, Practice, PracticeChange, PESponsor, Platform,
     WatchedZip, DSOLocation, ADAHPIBenchmark, ZipScore,
+    PracticeLocation,
     table_exists, backup_database, DB_PATH, BACKUP_DIR,
 )
 from scrapers.pipeline_logger import log_scrape_start, log_scrape_complete, log_scrape_error
@@ -322,12 +323,18 @@ CORPORATE_TYPES = {'dso_regional', 'dso_national'}
 
 
 def compute_saturation_metrics(session, zip_code, population, mhi=None, pop_growth=None):
-    """Compute ZIP-level saturation metrics using entity_classification data.
+    """Compute ZIP-level saturation metrics using practice_locations as the
+    canonical location-level source of truth.
 
-    GP vs specialist separation: A location (unique normalized address) counts
-    as GP if it contains at least one practice where entity_classification is
-    NOT 'specialist' and NOT 'non_clinical'. Specialist-only locations are those
-    where ALL practices at the address are specialists.
+    Location-level counts (corporate, buyable, family, GP, specialist) are read
+    directly from practice_locations — the table that holds one row per unique
+    normalized address with location-level entity_classification computed by
+    reclassify_locations.py. This guarantees that zip_scores aggregates agree
+    exactly with what the per-practice maps and dossiers show.
+
+    NPI-level metrics (classification coverage, Data Axle enrichment, ownership
+    confidence) still come from the practices table because they describe the
+    quality of the underlying NPPES feed, not location-level facts.
 
     CRITICAL: buyable_practice_ratio denominator uses GP-only locations, NOT all
     dental locations. Specialists don't compete for the same patients.
@@ -342,10 +349,20 @@ def compute_saturation_metrics(session, zip_code, population, mhi=None, pop_grow
     Returns:
         dict with all computed metrics and a 'warnings' list
     """
+    # NPI-level — for coverage/confidence/warnings only
     practices = session.query(Practice).filter(Practice.zip == zip_code).all()
     total_practices = len(practices)
 
-    if total_practices == 0:
+    # LOCATION-level — canonical counts read from practice_locations
+    locations = (
+        session.query(PracticeLocation)
+        .filter(PracticeLocation.zip == zip_code)
+        .filter((PracticeLocation.is_likely_residential == False) |  # noqa: E712
+                (PracticeLocation.is_likely_residential.is_(None)))
+        .all()
+    )
+
+    if total_practices == 0 and not locations:
         return {
             'total_gp_locations': 0, 'total_specialist_locations': 0,
             'dld_gp_per_10k': 0.0, 'dld_total_per_10k': 0.0,
@@ -358,44 +375,26 @@ def compute_saturation_metrics(session, zip_code, population, mhi=None, pop_grow
             'metrics_confidence': 'low', 'warnings': [],
         }
 
-    # Group by physical location (city, street_without_suite) — same key as
-    # the classifier's _precompute_address_groups, so saturation metrics and
-    # entity classifications agree on what counts as one location.
-    addr_groups = defaultdict(list)
-    for p in practices:
-        key = _physical_location_key(p.zip, p.address, p.city)
-        addr_groups[key].append(p)
-
-    # Classify each location as GP, specialist-only, or non-clinical-only
-    gp_locations = []      # (key, [practices]) — has at least one GP
-    spec_locations = []    # (key, [practices]) — all specialist
-
-    for key, pracs_at_addr in addr_groups.items():
-        classifications = [p.entity_classification for p in pracs_at_addr]
-        non_null = [c for c in classifications if c is not None]
-
-        if not non_null:
-            # No classification data — treat as GP (conservative)
-            gp_locations.append((key, pracs_at_addr))
+    # Bucket locations by entity_classification
+    gp_locations = []
+    spec_locations = []
+    for loc in locations:
+        ec = loc.entity_classification
+        if ec == 'non_clinical':
             continue
-
-        all_non_clinical = all(c == 'non_clinical' for c in non_null)
-        if all_non_clinical:
-            continue  # skip non-clinical-only addresses
-
-        has_gp = any(c not in ('specialist', 'non_clinical') for c in non_null)
-        if has_gp:
-            gp_locations.append((key, pracs_at_addr))
+        if ec == 'specialist' or loc.is_specialist_only:
+            spec_locations.append(loc)
         else:
-            # All classified practices are specialist
-            spec_locations.append((key, pracs_at_addr))
+            # Includes NULL ec (treated as GP, conservative) and all
+            # solo_*/family_practice/small_group/large_group/dso_* values.
+            gp_locations.append(loc)
 
     total_gp = len(gp_locations)
     total_spec = len(spec_locations)
 
-    log.info("ZIP %s: %d practices at %d unique addresses → %d GP locations, "
-             "%d specialist-only locations. Method: entity_classification field match.",
-             zip_code, total_practices, len(addr_groups), total_gp, total_spec)
+    log.info("ZIP %s: %d practice_locations rows (excl. residential) → %d GP, %d specialist. "
+             "Source: practice_locations.entity_classification.",
+             zip_code, len(locations), total_gp, total_spec)
 
     # DLD metrics (require population)
     pop_10k = population / 10000.0 if population and population > 0 else None
@@ -403,25 +402,16 @@ def compute_saturation_metrics(session, zip_code, population, mhi=None, pop_grow
     dld_total = ((total_gp + total_spec) / pop_10k) if pop_10k else 0.0
     people_per_door = (population // total_gp) if total_gp > 0 and population else None
 
-    # Buyable locations: GP locations with at least one buyable-classified practice
-    buyable_count = sum(
-        1 for _, pracs in gp_locations
-        if any(p.entity_classification in BUYABLE_TYPES for p in pracs)
-    )
-    buyable_ratio = (buyable_count / total_gp) if total_gp > 0 else 0.0
+    # Location-level counts on GP locations
+    corporate_count = sum(1 for loc in gp_locations
+                          if loc.entity_classification in CORPORATE_TYPES)
+    buyable_count = sum(1 for loc in gp_locations
+                        if loc.entity_classification in BUYABLE_TYPES)
+    family_count = sum(1 for loc in gp_locations
+                       if loc.entity_classification == 'family_practice')
 
-    # Corporate locations: GP locations with at least one corporate-classified practice
-    corporate_count = sum(
-        1 for _, pracs in gp_locations
-        if any(p.entity_classification in CORPORATE_TYPES for p in pracs)
-    )
     corporate_share = (corporate_count / total_gp) if total_gp > 0 else 0.0
-
-    # Family practice locations
-    family_count = sum(
-        1 for _, pracs in gp_locations
-        if any(p.entity_classification == 'family_practice' for p in pracs)
-    )
+    buyable_ratio = (buyable_count / total_gp) if total_gp > 0 else 0.0
 
     # Specialist density flag
     spec_density_flag = total_spec > 3
@@ -784,11 +774,17 @@ def score_watched_zips(session):
             if mt:
                 log.info("ZIP %s → market_type=%s (%s): %s", zc, mt, mt_conf, mt_explanation)
         else:
-            # No population data — store what we can
+            # No population data — store everything except population-derived rates
             sat = compute_saturation_metrics(session, zc, 0)
             sat_vals = {
                 'total_gp_locations': sat['total_gp_locations'],
                 'total_specialist_locations': sat['total_specialist_locations'],
+                'buyable_practice_count': sat['buyable_practice_count'],
+                'buyable_practice_ratio': sat['buyable_practice_ratio'],
+                'corporate_location_count': sat['corporate_location_count'],
+                'corporate_share_pct': sat['corporate_share_pct'],
+                'family_practice_count': sat['family_practice_count'],
+                'specialist_density_flag': sat['specialist_density_flag'],
                 'entity_classification_coverage_pct': sat['entity_classification_coverage_pct'],
                 'data_axle_enrichment_pct': sat['data_axle_enrichment_pct'],
                 'metrics_confidence': 'low',
