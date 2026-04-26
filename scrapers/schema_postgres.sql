@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS practices (
     website                  TEXT,
     provider_last_name       TEXT,
     entity_classification    TEXT,           -- solo_established, solo_new, solo_inactive, solo_high_volume,
-                                            -- family_practice, small_group, large_group,
+                                            -- org_only_npi, family_practice, small_group, large_group,
                                             -- dso_regional, dso_national, specialist, non_clinical
     created_at               TIMESTAMP DEFAULT NOW(),
     updated_at               TIMESTAMP DEFAULT NOW()

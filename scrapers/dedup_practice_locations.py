@@ -607,6 +607,8 @@ def derive_practice_locations(session, watched_only: bool = True, dry_run: bool 
                 ec = "solo_high_volume"
             elif estimated_revenue is not None and estimated_revenue >= 800000:
                 ec = "solo_high_volume"
+            elif has_org_npi and provider_count == 0:
+                ec = "org_only_npi"
             elif not phone and not website:
                 ec = "solo_inactive"
             elif year_established is not None and year_established >= 2016:

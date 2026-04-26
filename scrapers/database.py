@@ -140,7 +140,7 @@ class Practice(Base):
     provider_last_name = Column(Text, nullable=True)
     # Phase 1: Entity classification (populated by dso_classifier.py second pass)
     # Values: solo_established, solo_new, solo_inactive, solo_high_volume,
-    #         family_practice, small_group, large_group,
+    #         org_only_npi, family_practice, small_group, large_group,
     #         dso_regional, dso_national, specialist, non_clinical
     entity_classification = Column(Text, nullable=True)
     created_at = Column(DateTime, default=func.now())

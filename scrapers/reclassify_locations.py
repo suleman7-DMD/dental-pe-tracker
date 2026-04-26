@@ -18,13 +18,15 @@ Rules in priority order (first match wins):
                           ein shared with 2+ different ZIPs (chain), OR
                           franchise_name matches a real brand (not taxonomy noise), OR
                           location_type='branch' + parent_company present
-  5. family_practice — provider_count>=2 AND >=2 NPI-1s share a last name
-  6. large_group     — provider_count>=4
-  7. small_group     — provider_count in (2,3)
-  8. solo_high_volume— provider_count==1 AND (employee_count>=5 OR revenue>=800k)
-  9. solo_inactive   — provider_count<=1 AND no phone AND no website
- 10. solo_new        — provider_count==1 AND year_established>=2016
- 11. solo_established— default for provider_count==1 (or fallback)
+  5. org_only_npi    — has_org_npi AND provider_count==0 (billing/admin-only,
+                          closed practice; NOT solo_inactive — split 2026-04-26)
+  6. family_practice — provider_count>=2 AND >=2 NPI-1s share a last name
+  7. large_group     — provider_count>=4
+  8. small_group     — provider_count in (2,3)
+  9. solo_high_volume— provider_count==1 AND (employee_count>=5 OR revenue>=800k)
+ 10. solo_inactive   — provider_count<=1 AND no phone AND no website
+ 11. solo_new        — provider_count==1 AND year_established>=2016
+ 12. solo_established— default for provider_count==1 (or fallback)
 
 Usage:
     python3 scrapers/reclassify_locations.py
@@ -268,8 +270,12 @@ def classify_one(loc, ein_zip_count, last_names_by_npi, primary_npi_extras):
         return "non_clinical", f"Academic institution affiliation: {parent}"
 
     # ---- Edge case: org NPI only, no individual providers ----
+    # NOTE: separated from solo_inactive 2026-04-26. This signal means an
+    # organization NPI was filed at the address but no individual dentist
+    # works there — often a billing-only / admin-only / closed location.
+    # Distinct from solo_inactive (a real solo with no contact info).
     if has_org_npi and provider_count == 0:
-        return "solo_inactive", "Organization NPI registered but no individual providers at address"
+        return "org_only_npi", "Organization NPI registered but no individual providers at address"
 
     # ---- Rule 5: family_practice ----
     if provider_count >= 2 and _has_shared_last_name(last_names):
