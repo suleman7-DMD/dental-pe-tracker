@@ -375,14 +375,31 @@ class ResearchEngine:
         return merged
 
     def _should_escalate(self, r):
+        """Decide whether Pass-1 result merits a Sonnet Pass-2.
+
+        Escalation costs ~$0.27/practice, so the bar should clear ~10% of
+        Pass-1 dossiers in normal use. Audit (2026-04-26) found the prior
+        rule fired on 88% of dossiers because the green-flag clause didn't
+        gate on readiness — `readiness=low` with 3+ greens was escalating.
+
+        Tightened rule:
+          - Never escalate `unlikely` / `unknown` / `low` readiness.
+          - Always escalate `high`/`medium` readiness when confidence != high.
+          - For `high`/`medium` readiness with confidence=high, only escalate
+            when there are 5+ green flags AND verification quality is partial
+            or worse (i.e. there's a real reason to dig deeper).
+        """
         readiness = r.get("readiness", r.get("acquisition_readiness", "unknown"))
-        if readiness in ("unlikely", "unknown"):
-            return False  # Never escalate non-targets
+        if readiness in ("unlikely", "unknown", "low"):
+            return False
         confidence = r.get("confidence", "low")
-        greens = r.get("green_flags", [])
         if readiness in ("high", "medium") and confidence != "high":
             return True
-        if len(greens) >= 3:
+        greens = r.get("green_flags") or []
+        verification = r.get("verification") or {}
+        evidence = (verification.get("evidence_quality") or "").lower()
+        if (isinstance(greens, list) and len(greens) >= 5
+                and evidence in ("partial", "insufficient")):
             return True
         return False
 
@@ -444,6 +461,16 @@ class ResearchEngine:
 
         Practice items get tool_choice forcing web_search + max_uses=5 so the model
         cannot answer from priors. ZIP items keep auto tool_choice (still 8 max).
+
+        IMPORTANT: This path is Pass-1 ONLY. It does NOT fire the Sonnet
+        escalation in `research_practice_deep()` — the batch API doesn't support
+        the conditional Pass-1→Pass-2 chain. As a result, every dossier landed
+        via batch has `_escalated=False` and `escalated=0` in SQLite.
+
+        To fire escalation, see `scrapers/dossier_batch/escalate_eligible.py`,
+        which reads existing Pass-1 dossiers from `practice_intel`, picks rows
+        where `_should_escalate()` would return True, and submits a Sonnet
+        escalation batch as a follow-up.
         """
         reqs = []
         for item in items:

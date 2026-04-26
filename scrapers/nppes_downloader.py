@@ -42,8 +42,12 @@ DATA_DIR = os.path.expanduser("~/dental-pe-tracker/data/nppes")
 SNAPSHOTS_DIR = os.path.join(DATA_DIR, "snapshots")
 TEMP_DIR = os.path.join(DATA_DIR, "tmp")
 
-# Dental taxonomy codes all start with "12"
+# Dental taxonomy codes all start with "1223" (Dentist)
+# NOTE: 124Q* is Dental Hygienist (NOT Dentist) — must NEVER be accepted as primary
+# taxonomy. A row with 124Q* and no 1223* is a hygienist, not a dentist, and must be
+# rejected by is_dental_row(). 1224* is Denturist (also non-dental).
 DENTAL_TAXONOMY_PREFIX = "1223"
+NON_DENTAL_TAXONOMY_BLOCKLIST = ("124Q", "1224")
 
 # Specific dental taxonomy codes for reference
 DENTAL_TAXONOMIES = {
@@ -201,7 +205,12 @@ def extract_zip(zip_path, extract_to):
 
 
 def is_dental_row(row):
-    """Check if any taxonomy code column starts with '1223' (dental)."""
+    """Check if any taxonomy code column starts with '1223' (dental).
+
+    A row with ONLY 124Q (hygienist) or 1224 (denturist) codes is rejected —
+    those are non-dental allied roles. Must require at least one '1223*' Dentist
+    code to be accepted as a dental row.
+    """
     for i in range(1, 16):
         col = f"{TAXONOMY_COL_PREFIX}{i}"
         val = row.get(col, "")
@@ -211,12 +220,20 @@ def is_dental_row(row):
 
 
 def get_primary_taxonomy(row):
-    """Get the first dental taxonomy code."""
+    """Return the first 1223* code; never returns 124Q* / 1224* hygienist/denturist
+    even if they appear earlier in the slot list. is_dental_row() guards entry,
+    but this is the second line of defense — the field stored on `practices` must
+    always be a Dentist code."""
     for i in range(1, 16):
         col = f"{TAXONOMY_COL_PREFIX}{i}"
         val = row.get(col, "")
-        if val and str(val).startswith(DENTAL_TAXONOMY_PREFIX):
-            return str(val).strip()
+        if not val:
+            continue
+        v = str(val).strip()
+        if v.startswith(NON_DENTAL_TAXONOMY_BLOCKLIST):
+            continue
+        if v.startswith(DENTAL_TAXONOMY_PREFIX):
+            return v
     return None
 
 
