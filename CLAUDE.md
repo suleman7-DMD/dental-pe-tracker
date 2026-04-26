@@ -68,6 +68,28 @@ Both incremental paths wrap each row insert in a `begin_nested()` savepoint so a
 
 > Counts below labeled `(NPI rows)` are NPPES provider+organization rows (~2.7× the clinic count); counts labeled `(locations)` are address-deduped from `practice_locations`. Don't compare across labels without converting first.
 
+#### Numbers cheat-sheet — F29 (read this before quoting any count)
+
+For full reconciliation reasoning + Dentagraphics gap analysis, see `RECONCILIATION_VERDICT_2026_04_26.md` §3 (verdict) + §2 (within-unit consistency).
+
+| # | Value | Unit | Scope | Source-of-truth | Surfaces on |
+|---|------:|------|-------|-----------------|-------------|
+| 1 | **402,004** | NPI rows | global (federal) | `SELECT COUNT(*) FROM practices` | "402k practices" headline |
+| 2 | **14,053** | NPI rows | 290 watched ZIPs | `practices` join `watched_zips` | Job Market header, NPI-row KPIs |
+| 3 | **5,732** | locations | 290 watched ZIPs (raw, all classifications) | `practice_locations` join `watched_zips` | Internal only — NEVER user-facing |
+| 4 | **4,889** | GP locations | 290 watched ZIPs | `SUM(zip_scores.total_gp_locations)` post-`dc18d24` | Home, Market Intel, Job Market, Launchpad headline KPIs |
+| 5 | **4,575** | GP locations | Chicagoland (269 IL ZIPs) | watched + state=IL filter on (4) | Warroom Sitrep, Market Intel CHI breakdown |
+| 6 | **314** | GP locations | Boston Metro (21 MA ZIPs) | watched + state=MA filter on (4); 4,575+314=4,889 ✅ | Boston-scoped surfaces |
+| 7 | **4,574** | GP locations | all-IL (statewide, NOT just watched) | `practice_locations` filter to state=IL + GP filter | Dentagraphics-comparable scope |
+| 8 | **4,409** | active-GP | all-IL, drop `solo_inactive` per CLAUDE.md def (no phone+no website) | (7) minus 165 contactless solos | Honest active-GP claim |
+| 9 | **3,961** | (their unit unverifiable) | all-IL | Dentagraphics infographic page (verified F30 2026-04-26) | External benchmark — gap to (7) is **+15.5%**, gap to (8) is **+11.3%** |
+| 10 | **882** | corporate NPIs | 14,053 NPIs in watched | `entity_classification IN (dso_regional,dso_national)` | "Total corporate" NPI-row KPI = 6.28% |
+| 11 | **225** | corporate locations | 4,889 GP locs in watched | same on `practice_locations` | Headline corporate share = **4.60%** |
+
+**The single most-confused comparison:** Job Market shows ~14k "practices" (NPI rows, line 2), Warroom shows ~5,491 (location-deduped, line 4 minus a few). Both are correct under their own units. The conversion factor is structural NPPES dual-emission (NPI-1 individual + NPI-2 organization at same address) — see the §1 / §2 tables in RECONCILIATION_VERDICT_2026_04_26.md for the full proof.
+
+**The Dentagraphics gap cannot be attributed (F30 outcome, 2026-04-26).** Direct WebFetch of `dentagraphics.com/infographic/illinois` confirmed their actual IL GP count is **3,961** (corrected from earlier "3,900" estimate) and their statewide population is 12,707,929. The page lists "data courtesy of Medicaid.gov" as the only source attribution and ships an explicit "as is, with all faults, as available" disclaimer. There is no published methodology — no row-counting rule, no active-billing filter, no inclusion criteria, no snapshot date. So the +15.5% gap (our 4,574 all-IL vs their 3,961) cannot be assigned to (a) NPPES org-NPI ghosts, (b) CMS active-billing filtering, (c) date drift, or (d) FQHC handling — Dentagraphics doesn't disclose any of those. **Our number has full SQL provenance; theirs has explicit disclaimer.** Sample-overlap test was attempted but blocked by their JS-loaded marketplace (would require Selenium/Playwright). Do not claim "we match Dentagraphics" — but also do not claim "they're correct and we're wrong." Both are unfalsifiable until they publish a methodology.
+
 - **402,004 (NPI rows) practices globally; 14,053 (NPI rows) in watched ZIPs / 5,732 (locations) in Supabase `practice_locations`.** `entity_classification` populated for all 14,053 watched-ZIP NPIs (96.5% NULL globally) — Pass 3 of `dso_classifier.py` only runs on watched-ZIP practices.
 - **Watched-ZIP entity_classification breakdown (NPI rows, post-`520c33e` 2026-04-26 Tier-2 phone re-promotion):** solo_established 3,575 / small_group 2,727 / large_group 2,456 / specialist 2,353 / family_practice 1,701 / solo_high_volume 709 / dso_national 222 / solo_inactive 170 / dso_regional 244 / solo_new 17 / non_clinical 16. NULL is 0. **Pre-`520c33e`:** dso_national=213, dso_regional=109. **Pre-`dc18d24` baseline** (April-2026 audit `NPI_VS_PRACTICE_AUDIT.md` Appendix C): dso_regional was 1,181 — that 1,072 reclassification was the location-dedup classifier rewrite, NOT this Tier-2 re-promotion.
 - **Total corporate (NPI rows): 882 (6.28% of 14,053)** post-2026-04-26 NPI backfill (was 466 pre-backfill, 322 pre-Tier-2, 1,392 pre-`dc18d24`). At the location level (`practice_locations`), corporate share is **4.52% Chicagoland (207/4,575 GP locations) / 5.73% Boston Metro (18/314)** — combined **4.60% (225/4,889)**. **NPI % > location % is structural, not a bug**: a single corporate location can house 2-5 NPIs, so per-NPI counts inflate vs per-location counts. Use `practice_locations` / `zip_scores.corporate_location_count` for headline KPIs; only quote the NPI count when the unit being discussed is "individual dentists working at corporate" (Job Market scoring).
