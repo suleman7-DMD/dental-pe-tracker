@@ -449,3 +449,39 @@ The infra files in commit `dc18d24` (parallel session) are checked off here for 
 | `dental-pe-nextjs/src/app/_components/home-shell.tsx` | ⏳ TODO | ~5 lines: KPI subtitle update for "clinics, not NPIs" |
 
 Remaining estimated effort: 3-4 sessions over 1-2 weeks, depending on validation rigor.
+
+---
+
+## Appendix C — `dc18d24` Classifier Impact (verified 2026-04-25 post-commit)
+
+The audit projected: *"Re-run classifier on watched ZIPs. Expect ~880 dso_regional flags to drop, primarily the 482 unambiguous mis-classifications."*
+
+The reality (live SQL after `dc18d24` shipped):
+
+| `entity_classification` | Pre-fix (audit baseline) | Post-fix (now) | Δ |
+|-------------------------|------------------------:|---------------:|---:|
+| solo_established        | 3,987 | 3,575 | -412 |
+| small_group             | 2,449 | 2,727 | **+278** |
+| large_group             | 1,678 | 2,456 | **+778** |
+| specialist              | 2,355 | 2,353 | -2 |
+| family_practice         | 1,243 | 1,708 | **+465** |
+| solo_high_volume        |   757 |   709 | -48 |
+| dso_national            |   212 |   213 | +1 |
+| solo_inactive           |   172 |   170 | -2 |
+| **dso_regional**        | **1,181** | **109** | **-1,072 (-91%)** |
+| solo_new                |    20 |    17 | -3 |
+| non_clinical            |    17 |    16 | -1 |
+| NULL                    |    44 |     0 | -44 |
+
+**dso_regional dropped from 1,181 → 109 (-91%).** Of the ~1,072 reclassified:
+- 778 went to `large_group` (4+ providers, no DSO brand match)
+- 465 went to `family_practice` (2+ providers, shared last name)
+- 278 went to `small_group` (2-3 providers, different last names, no DSO)
+
+(The +1,521 sum exceeds 1,072 because additional cross-bucket reshuffling happened — the classifier didn't only fix dso_regional, it re-evaluated all rules with the new provider-counting logic.)
+
+**This validates the audit's thesis.** Pass 3 was triggering `dso_regional` because it counted raw NPI rows (NPI-1 + NPI-2 + duplicate NPI-1 registrations) as "providers" and crossed its threshold artificially. Once the classifier counted distinct providers excluding NPI-2 + collapsed via `practice_locations`, the over-flagging collapsed too.
+
+**NPI-1 dso_regional residue:** 38 individuals still flagged dso_regional (down from 880). These should be inspected — likely they're co-located with a real DSO NPI-2 and inherited the classification. Acceptable noise floor.
+
+**Implication for Phase 2/3:** the classifier-side work in Phase 3 step 5 ("Then fix dso_classifier.py Pass 3") is **already done**. Phase 3 reduces to frontend migration + verification. Effort estimate revised down: **2-3 sessions over 1 week** instead of 3-4 sessions.

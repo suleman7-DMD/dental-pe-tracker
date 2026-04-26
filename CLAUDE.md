@@ -38,7 +38,7 @@ Push to `main` auto-deploys both: Vercel (Next.js, ~30s) and Streamlit Cloud (~6
 Key tables: `deals`, `practices`, `practice_changes`, `watched_zips`, `zip_scores`, `dso_locations`, `ada_hpi_benchmarks`, `zip_qualitative_intel`, `practice_intel`
 
 - **practices**: 402,004 rows. Fields: npi (PK), practice_name, doing_business_as, address, city, state, zip, phone, entity_type, taxonomy_code, ownership_status, affiliated_dso, affiliated_pe_sponsor, buyability_score, classification_confidence, classification_reasoning, data_source, latitude, longitude, parent_company, ein, franchise_name, iusa_number, website, year_established, employee_count, estimated_revenue, num_providers, location_type, import_batch_id, data_axle_import_date, entity_classification
-- **deals**: 2,861 rows in SQLite, 2,895 in Supabase (+34 ghost rows pending `--reconcile-deals` cleanup, audit §15 #11). PE dental deals from PESP, GDN, PitchBook.
+- **deals**: 2,861 rows in SQLite, 2,861 in Supabase (drift reconciled in commit `ac2140a` 2026-04-25 — Pass 2 of `_reconcile_deals` keys NULL-target rows by composite hash, deleted 25 stranded ghosts). PE dental deals from PESP, GDN, PitchBook.
 - **practice_changes**: Change log for name/address/ownership changes (acquisition detection). 8,848 rows.
 - **zip_scores**: Per-ZIP consolidation stats (290 scored ZIPs), recalculated by merge_and_score.py. One row per ZIP (deduped).
 - **watched_zips**: 290 ZIPs (268 Chicagoland + 21 Boston + 1 other). Auto-backfilled by ensure_chicagoland_watched().
@@ -60,9 +60,9 @@ Mirror of SQLite tables, synced by `scrapers/sync_to_supabase.py`. Same schema, 
 Both incremental paths wrap each row insert in a `begin_nested()` savepoint so an `IntegrityError` on the secondary partial unique index `uix_deal_no_dup` (platform_company+target_name+deal_date) skips the duplicate with a WARNING instead of aborting the whole batch transaction.
 
 ### Current Data Stats
-- 402,004 practices globally; **`entity_classification` populated for only 14,071 (96.6% NULL globally)** — Pass 3 of `dso_classifier.py` only runs on watched-ZIP practices. Within watched ZIPs (14,053 practices), the breakdown is: solo_established 3,987 / small_group 2,449 / specialist 2,355 / large_group 1,678 / family_practice 1,243 / dso_regional 1,181 / solo_high_volume 757 / dso_national 212 / solo_inactive 172 / solo_new 20 / non_clinical 17 / NULL 44.
+- 402,004 practices globally; **`entity_classification` populated for all 14,053 in watched ZIPs (96.5% NULL globally)** — Pass 3 of `dso_classifier.py` only runs on watched-ZIP practices. Within watched ZIPs the breakdown (post-`dc18d24` 2026-04-25, classifier rewritten to count distinct providers excluding NPI-2): solo_established 3,575 / small_group 2,727 / large_group 2,456 / specialist 2,353 / family_practice 1,708 / solo_high_volume 709 / dso_national 213 / solo_inactive 170 / dso_regional 109 / solo_new 17 / non_clinical 16. NULL is now 0. **Pre-`dc18d24` baseline** (April-2026 audit `NPI_VS_PRACTICE_AUDIT.md` Appendix C): dso_regional was 1,181 (-91% drop) — `dc18d24` reclassified ~1,072 as large_group/family_practice/small_group because the old Pass 3 over-counted providers by treating NPI-1+NPI-2 at one address as multiple providers.
 - Legacy `ownership_status` field is now ~zero in SQLite — `entity_classification` is the canonical ownership signal everywhere in the Next.js frontend (see `classifyPractice()` helper).
-- 2,861 deals in SQLite / 2,895 in Supabase (+34 ghost-row drift, audit §15 #11). Mix: 2,532 GDN + 353 PESP + 10 PitchBook. Coverage: Oct 2020 – Mar 2026 (live `MAX(deal_date)=2026-03-02`; April 2026 GDN roundup not yet published as of 2026-04-25).
+- 2,861 deals in SQLite / 2,861 in Supabase (drift reconciled 2026-04-25 in `ac2140a`). Mix: 2,532 GDN + 353 PESP + 10 PitchBook. Coverage: Oct 2020 – Mar 2026 (live `MAX(deal_date)=2026-03-02`; April 2026 GDN roundup not yet published as of 2026-04-25).
 - 2,992 Data Axle enriched practices (with lat/lon, revenue, employees, year established)
 - 290 scored ZIPs
 
