@@ -110,6 +110,40 @@ def estimate_cost(queue):
     return (zip_cost + prac_cost) * 0.5
 
 
+_DIRECTORY_HOST_ALLOWLIST = (
+    "google.com", "google.co", "maps.google", "search.google",
+    "yelp.com", "healthgrades.com", "zocdoc.com", "ratemds.com",
+    "facebook.com", "linkedin.com", "instagram.com",
+    "bbb.org", "yellowpages.com", "manta.com", "dnb.com",
+    "doctor.webmd.com", "vitals.com",
+    "no_results_found",
+)
+
+
+def _canonical_host(url: str) -> str:
+    """Lowercase host with leading 'www.' stripped. '' on parse failure."""
+    if not url:
+        return ""
+    try:
+        from urllib.parse import urlparse
+        parsed = urlparse(url if "://" in url else f"http://{url}")
+        host = (parsed.hostname or "").lower()
+        if host.startswith("www."):
+            host = host[4:]
+        return host
+    except Exception:
+        return ""
+
+
+def _is_directory_host(host: str) -> bool:
+    """True if host is a known aggregator/search engine — legitimate cross-cite."""
+    if not host:
+        return False
+    if host == "no_results_found":
+        return True
+    return any(host == d or host.endswith("." + d) or d in host for d in _DIRECTORY_HOST_ALLOWLIST)
+
+
 def validate_dossier(npi: str, data: dict) -> tuple[bool, str]:
     """Anti-hallucination gate. Reject practice dossiers that fail evidence requirements.
 
@@ -123,6 +157,10 @@ def validate_dossier(npi: str, data: dict) -> tuple[bool, str]:
       4. If website.url is set non-null, website._source_url must also be set
          (means: any cited website needs a citation URL)
       5. If google.reviews or google.rating is set, google._source_url must be set
+      6. (H28, 2026-04-26) If website.url AND website._source_url are both set,
+         their hosts must match OR _source_url must be a known directory/search
+         host. Catches the "cited URL belongs to a different practice" class
+         of hallucination that the URL-presence check missed (Schmookler dossier).
     """
     ver = data.get("verification") or {}
     if not ver:
@@ -168,6 +206,19 @@ def validate_dossier(npi: str, data: dict) -> tuple[bool, str]:
     web = data.get("website") or {}
     if web.get("url") and not web.get("_source_url"):
         return False, "website.url_without_source"
+
+    # H28: cross-citation check — if claimed practice website AND citation URL
+    # are both populated, their hosts must match (or citation must be from a
+    # known directory). Catches dossiers that confidently cite a URL belonging
+    # to a different dentist. Schmookler-class hallucination (audit Appendix E.4).
+    claimed_url = web.get("url") or ""
+    source_url = web.get("_source_url") or ""
+    if claimed_url and source_url:
+        claimed_host = _canonical_host(claimed_url)
+        source_host = _canonical_host(source_url)
+        if claimed_host and source_host and claimed_host != source_host:
+            if not _is_directory_host(source_host):
+                return False, f"website.source_host_mismatch({claimed_host}!={source_host})"
 
     goog = data.get("google") or {}
     if (goog.get("reviews") is not None or goog.get("rating") is not None) and not goog.get("_source_url"):
