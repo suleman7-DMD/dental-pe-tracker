@@ -364,7 +364,7 @@ class ZipQualitativeIntel(Base):
     # web search (research_method='claude_api_unknown' from before the bulletproofed
     # protocol, or seed/synthetic data). The Next.js Intelligence page MUST exclude
     # is_synthetic=true rows from any "verified intel" surface.
-    is_synthetic = Column(Integer, default=0, nullable=False, index=True)
+    is_synthetic = Column(Boolean, default=False, nullable=False, index=True)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
