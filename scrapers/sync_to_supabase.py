@@ -762,6 +762,10 @@ def _sync_watched_zips_only(sqlite_session, pg_engine, config):
       Supabase, so a plain `DELETE FROM practices` is blocked by any referenced
       NPI. TRUNCATE ... CASCADE is the only reliable way to clear practices
       without first manually wiping every FK-referencing table.
+      (Verify periodically with `python3 scrapers/verify_fk_policy.py`. If the
+      FK has been altered to ON DELETE CASCADE — confdeltype='c' — this block
+      can be simplified to plain DELETE; see verify_fk_policy.py for the
+      `--apply-cascade` migration helper.)
     - CASCADE wipes practice_changes as a side-effect, matching the documented
       "CASCADE trap" behavior: we then reset practice_changes sync_metadata so
       the incremental sync re-sends all rows on the next dispatch.

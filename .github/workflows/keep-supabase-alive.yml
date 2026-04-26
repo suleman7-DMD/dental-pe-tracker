@@ -1,5 +1,8 @@
 name: Keep Supabase Alive
-# Prevents free-tier Supabase project from pausing after 7 days of inactivity
+# Prevents free-tier Supabase project from pausing after 7 days of inactivity.
+# Also doubles as a freshness alarm — fails the workflow if the most recent
+# deal in `deals` is older than 30 days OR if the Supabase REST endpoint is
+# unreachable. On failure, optionally pings the DISCORD_WEBHOOK_URL secret.
 
 on:
   schedule:
@@ -13,10 +16,53 @@ jobs:
       SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
       SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
     steps:
-      - name: Ping Supabase
+      - name: Verify secrets present
         run: |
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+          if [ -z "${SUPABASE_URL}" ] || [ -z "${SUPABASE_ANON_KEY}" ]; then
+            echo "::error::SUPABASE_URL or SUPABASE_ANON_KEY secret is missing — keep-alive cannot run."
+            echo "Add them under Settings → Secrets and variables → Actions."
+            exit 1
+          fi
+
+      - name: Ping Supabase REST endpoint
+        run: |
+          STATUS=$(curl -s -o /tmp/ping_body -w "%{http_code}" \
             "${SUPABASE_URL}/rest/v1/" \
             -H "apikey: ${SUPABASE_ANON_KEY}" \
             -H "Authorization: Bearer ${SUPABASE_ANON_KEY}")
-          echo "Supabase responded with status: ${STATUS}"
+          echo "Supabase REST responded with status: ${STATUS}"
+          if [ "${STATUS}" != "200" ]; then
+            echo "::error::Supabase /rest/v1/ returned ${STATUS} — project may be paused or credentials invalid."
+            head -c 500 /tmp/ping_body || true
+            exit 1
+          fi
+
+      - name: Check deal freshness (warn if > 30 days)
+        run: |
+          BODY=$(curl -s \
+            "${SUPABASE_URL}/rest/v1/deals?select=deal_date&order=deal_date.desc&limit=1" \
+            -H "apikey: ${SUPABASE_ANON_KEY}" \
+            -H "Authorization: Bearer ${SUPABASE_ANON_KEY}")
+          LATEST=$(echo "${BODY}" | python3 -c "import json, sys; d=json.load(sys.stdin); print(d[0]['deal_date'] if d else '')")
+          if [ -z "${LATEST}" ]; then
+            echo "::warning::No deals returned from Supabase — table may be empty."
+            exit 0
+          fi
+          AGE_DAYS=$(python3 -c "from datetime import date; from datetime import datetime as dt; d=dt.fromisoformat('${LATEST}').date(); print((date.today()-d).days)")
+          echo "Most recent deal_date: ${LATEST} (${AGE_DAYS} days ago)"
+          if [ "${AGE_DAYS}" -gt 30 ]; then
+            echo "::warning::Deals table is stale: latest deal is ${AGE_DAYS} days old (threshold: 30)."
+          fi
+
+      - name: Notify Discord on failure
+        if: failure()
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          if [ -z "${DISCORD_WEBHOOK_URL}" ]; then
+            echo "DISCORD_WEBHOOK_URL not set — skipping Discord notify (non-blocking)"
+            exit 0
+          fi
+          curl -s -H "Content-Type: application/json" -X POST \
+            -d "{\"content\":\"Supabase keep-alive workflow FAILED on ${GITHUB_REPOSITORY} run ${GITHUB_RUN_ID} — investigate at ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}\"}" \
+            "${DISCORD_WEBHOOK_URL}" || echo "Discord notify failed (non-blocking)"

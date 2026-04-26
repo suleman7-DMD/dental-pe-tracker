@@ -9,6 +9,7 @@ Usage:
 """
 
 import argparse
+import concurrent.futures
 import json
 import os
 import re
@@ -47,6 +48,30 @@ HTTP_TIMEOUT = (10, 30)          # (connect_s, read_s) — was bare int 15/30
 MAX_SUBPAGES_PER_DSO = 30        # cap sub-page visits per DSO (was 200)
 MAX_SECONDS_PER_DSO = 300        # 5-minute wall-clock budget per DSO
 MAX_SECONDS_TOTAL = 1500         # 25-minute wall-clock budget for the whole scraper
+PARSE_TIMEOUT_SECS = 60          # hard ceiling for BeautifulSoup parsing — guards
+                                 # against malformed/multi-MB iframe HTML hanging
+                                 # the parser indefinitely (audit F10, 2026-04-26)
+
+
+def _parse_html_with_timeout(html_text: str, label: str, timeout: int = PARSE_TIMEOUT_SECS) -> BeautifulSoup:
+    """Parse HTML in a worker thread with a hard wall-clock cap. Returns an empty
+    BeautifulSoup on timeout so the caller's downstream `.find_all()` etc. iterate
+    over nothing (no need for None checks at call sites). The skip event is
+    logged so we can detect repeat offenders.
+    """
+    if not html_text:
+        return BeautifulSoup("", "lxml")
+    with concurrent.futures.ThreadPoolExecutor(max_workers=1) as ex:
+        future = ex.submit(BeautifulSoup, html_text, "lxml")
+        try:
+            return future.result(timeout=timeout)
+        except concurrent.futures.TimeoutError:
+            log.warning(
+                "[%s] BeautifulSoup parse exceeded %ss timeout (HTML size=%dB) — skipping",
+                label, timeout, len(html_text),
+            )
+            future.cancel()  # advisory, BeautifulSoup is C-level so won't actually stop
+            return BeautifulSoup("", "lxml")
 
 # ── DSO Registry ───────────────────────────────────────────────────────────
 # Each entry: (name, location_url, scrape_method, pe_sponsor, api_url_or_notes)
@@ -262,7 +287,7 @@ def scrape_html_generic(dso_entry):
         log.warning("[%s] Failed to fetch %s: %s", name, url, e)
         return locations
 
-    soup = BeautifulSoup(resp.text, "lxml")
+    soup = _parse_html_with_timeout(resp.text, name)
 
     # Strategy 1: Look for structured location data (schema.org, microdata)
     for script in soup.find_all("script", type="application/ld+json"):
@@ -329,7 +354,7 @@ def scrape_html_generic(dso_entry):
             time.sleep(1)
             try:
                 sub_resp = requests.get(sub_url, headers=HEADERS, timeout=HTTP_TIMEOUT)
-                sub_soup = BeautifulSoup(sub_resp.text, "lxml")
+                sub_soup = _parse_html_with_timeout(sub_resp.text, f"{name}::{sub_url}")
                 sub_text = sub_soup.get_text(separator="\n")
                 for m in re.finditer(r'(\d{1,5}\s+[A-Za-z][^,\n]{3,50}),\s*([A-Za-z\s\.]+),\s*([A-Z]{2})\s+(\d{5})', sub_text):
                     locations.append({
@@ -421,7 +446,7 @@ def scrape_html_subpages(dso_entry, scraper_start_time=None):
         log.warning("[%s] Failed to fetch index %s: %s", name, index_url, e)
         return locations, aborted
 
-    soup = BeautifulSoup(resp.text, "lxml")
+    soup = _parse_html_with_timeout(resp.text, name)
 
     # Collect location sub-page links
     sub_urls = set()
@@ -469,7 +494,7 @@ def scrape_html_subpages(dso_entry, scraper_start_time=None):
         except requests.RequestException:
             continue
 
-        sub_soup = BeautifulSoup(sub_resp.text, "lxml")
+        sub_soup = _parse_html_with_timeout(sub_resp.text, f"{name}::{sub_url}")
 
         # Try JSON-LD first
         for script in sub_soup.find_all("script", type="application/ld+json"):
@@ -738,7 +763,7 @@ def scrape_sitemap_jsonld(dso_entry, scraper_start_time=None):
         except requests.RequestException:
             continue
 
-        page_soup = BeautifulSoup(page_resp.text, "lxml")
+        page_soup = _parse_html_with_timeout(page_resp.text, f"{name}::page::{page_url}")
         for script in page_soup.find_all("script", type="application/ld+json"):
             try:
                 data = json.loads(script.string)
