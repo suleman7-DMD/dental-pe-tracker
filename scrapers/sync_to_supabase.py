@@ -786,10 +786,27 @@ def _sync_watched_zips_only(sqlite_session, pg_engine, config):
     watched_zips = [z[0] for z in watched]
     log.info("[%s] Filtering to %d watched ZIPs", table_name, len(watched_zips))
 
-    # Fetch only practices in watched ZIPs
+    # Fetch only practices in watched ZIPs.
+    #
+    # Hygienist-leak guard (F02 / F32): exclude NPPES rows whose taxonomy_code
+    # doesn't start with "1223" (Dentist). 1224 is Denturist, 124Q is Hygienist,
+    # 1268 is Dental Assistant — none belong in dental-practice counts. The
+    # NPPES downloader's parse_nppes_row() now blocks these on import, but the
+    # SQLite DB still contains historical leaks that pre-date the blocklist.
+    # Filtering here is defensive: even if a future regression re-introduces
+    # the leak, Supabase stays clean. data_source != 'nppes' rows (Data Axle,
+    # PitchBook, etc.) pass through untouched since their taxonomy_code may be
+    # NULL or vendor-coded differently.
+    from sqlalchemy import or_, and_
     rows = (
         sqlite_session.query(model)
         .filter(model.zip.in_(watched_zips))
+        .filter(
+            or_(
+                model.data_source != "nppes",
+                model.taxonomy_code.like("1223%"),
+            )
+        )
         .all()
     )
 

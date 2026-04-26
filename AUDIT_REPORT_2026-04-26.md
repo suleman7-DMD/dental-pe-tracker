@@ -863,4 +863,172 @@ The previous content of this file was an automated GHA Sonnet 4.6 audit captured
 
 ---
 
-**End of report.** Snapshot SHA `f8d40e9`, 2026-04-26 ~05:30Z. This document supersedes the previous auto-GHA `AUDIT_REPORT_2026-04-26.md` and consolidates `AUDIT_REPORT_2026-04-26_FULL.md` + `RECONCILIATION_VERDICT_2026_04_26.md` into a single canonical audit artifact for this session. The 24-hypothesis root-cause table and the P0–P3 backlog are the actionable outputs.
+## Appendix E: Live Verification — 2026-04-26 post-summary (Tasks #3, #4, #11, #12)
+
+The four originally-deferred tasks were executed against live systems after the main audit was filed. This appendix carries the raw evidence; updates to §13 (Root Causes) and §15 (Backlog) follow at the end.
+
+### E.1 Supabase row-count parity (Task #3) — RUN
+
+REST endpoint: `https://wfnhludbwcujfgnrgtds.supabase.co/rest/v1` with anon publishable key, `Prefer: count=exact`, `Range: 0-0`. Compared to live SQLite at `data/dental_pe_tracker.db`.
+
+| Table | SQLite | Supabase | Δ | Verdict |
+|-------|-------:|---------:|---|---------|
+| `practices` (global) | 402,004 | 14,053 | -387,951 | **By design** — `_sync_watched_zips_only` only mirrors watched-ZIP slice; Supabase never holds the global pool |
+| `practices` (watched ZIP) | 14,053 | 14,053 | 0 | ✓ MATCH |
+| `practice_locations` | 5,732 | 5,732 | 0 | ✓ MATCH |
+| `practice_signals` | 14,053 | 14,053 | 0 | ✓ MATCH |
+| `zip_signals` | 290 | 290 | 0 | ✓ MATCH **— supersedes CLAUDE.md "0 in Supabase" claim**; the gap had since closed |
+| `practice_intel` | 3,391 | 3,391 | 0 | ✓ MATCH (the 2000-practice batch landed cleanly post-`88d0668`) |
+| `zip_qualitative_intel` | 290 | 290 | 0 | ✓ MATCH |
+| `deals` | 2,855 | 2,862 | **+7 in Supabase** | Ghost rows persist (audit §15 #11 noted +34, of which 27 were reconciled in `ac2140a`; 7 stragglers remain) |
+| `watched_zips` | 290 | 290 | 0 | ✓ MATCH |
+| `zip_scores` | 290 | 290 | 0 | ✓ MATCH |
+| `practice_changes` | 9,421 | **737** | **-8,684 (-92%)** | **NEW P0 FINDING** — `_sync_incremental_id` strategy has fallen behind by 8,684 rows. Either (a) `sync_metadata.last_synced_id` is stuck at the boundary that recorded 737, or (b) the watched-ZIP filter is over-rejecting changes whose NPI's `zip` doesn't lie in `watched_zips`. Either way, the activity feed on Home + Warroom's "90d Change Events" KPI are reading a tiny fraction of reality. |
+| `dso_locations` | 249 | 249 | 0 | ✓ MATCH |
+| `ada_hpi_benchmarks` | 918 | 918 | 0 | ✓ MATCH |
+
+**Verdict:** 11 of 13 tables in parity. One major drift (`practice_changes`, 92% behind) and one minor (`deals`, +7 ghost rows). CLAUDE.md `zip_signals=0` claim was wrong as of audit time — the table is fully synced.
+
+### E.2 Live URL health (Task #4) — RUN
+
+Vercel host `dental-pe-nextjs.vercel.app`, HTTP 200 on all 10 routes; KPI text extracted via WebFetch summarization.
+
+| Route | HTTP | Headline KPIs (extracted live) |
+|-------|-----:|---|
+| `/` | 200 | 4,833 practices · 14,053 NPI rows · 2,862 deals (142 YTD) · **1.7% Known Corporate** · 242 retirement risk · 22 acquisition targets · last sync 2026-04-26 |
+| `/warroom` | 200 | 5,103 in scope · **209 corp high-conf (4.1%)** · 22 acquisition-ready · 242 retirement · 16 stealth clusters · 205 phantom inventory · 195 retirement combo · 2,974 flagged (58.3%) · 0 PE deals in scope |
+| `/launchpad` | 200 | 4,520 GP clinics · 2,016 best-fit · 131 mentor-rich · 163 hiring · 41 avoid-tier · intel coverage 60/60. Two `<UNAVAIL>` rows at #28/#29 |
+| `/deal-flow` | 200 | KPIs not extractable (heavy client-side render); page renders, navigation visible |
+| `/market-intel` | 200 | 4,833 tracked clinics · 73.1% independent (4,024) · 22.8% specialist (1,253) · **1.7% Known Corporate (92)** · 4.1% all-signals (225); two "Loading…" indicators visible |
+| `/buyability` | 200 | 369 acquisition targets · 74 dead ends · 474 job targets · 83 specialists; 1,000-row page cap, 40 pages |
+| `/job-market` | 200 | 14,053 NPI · 2,990 enriched (21.3%) · 2,943 selected · 5,103 NPI in selection · 73.5% indep · **1.5% high-conf corp** · 4.1% all-signals · 543 with 10+ staff · 242 retirement · 8.9 avg DLD · 53% buyable · 589 high-vol solos |
+| `/research` | 200 | All 4 tabs render (sponsors, platforms, state, SQL); blank state at bottom shows "(undisclosed) — 0 total deals" |
+| `/intelligence` | 200 | maxContentLength exceeded — page returns content but it's too large for WebFetch summarization (rendered KPIs + ZIP intel table + practice dossier table all on one route) |
+| `/system` | 200 | NPPES 2026-04-26T08:16Z · Data Axle 2026-04-26T08:16Z · ADSO 2026-04-26T12:15Z · **ADA HPI 2026-03-07 (Outdated)** · GDN 56d since last deal · **PESP 207d since last deal** |
+
+**Cross-page KPI agreement check (live):**
+
+The "% corporate in Chicagoland" KPI is supposed to be one number. It isn't:
+
+| Page | KPI label | Numerator | Denominator | Pct |
+|------|-----------|----------:|------------:|----:|
+| Home | "Known Corporate" | ~82 | 4,833 | **1.7%** |
+| Warroom Sitrep | "Corporate (High-Conf)" | 209 | 5,103 | **4.1%** |
+| Market Intel | "Known Corporate" | 92 | 4,833 | **1.7%** |
+| Market Intel | "All detected signals" | 225 | 4,833 | **4.1%** |
+| Job Market | "High-Confidence Corporate" | — | 14,053 NPI | **1.5%** |
+| Job Market | "All Detected Signals" | — | 14,053 NPI | **4.1%** |
+
+Home + Market Intel agree on 1.7% high-conf. Job Market reports 1.5% on the same tier (NPI denominator vs location denominator divergence). **Warroom is the outlier — it labels 4.1% as "Corporate (High-Conf)"** which is the all-signals number every other page reports as the secondary tier. Either Warroom's label is wrong or its numerator query is wrong; this is the live evidence behind §12.6 "ABSOLUTELY NO DIFFERENCE" pain point — the user IS seeing different numbers because the Warroom Sitrep computes its KPI from `practice_locations` joined to a different signal-quality filter than `getPracticeStats()`.
+
+The denominator drift (4,520 / 4,833 / 4,889 / 5,103) is also real and per-page:
+- 4,520 — Launchpad (CHI 269 ZIPs, excluding specialists/non-clinical)
+- 4,833 — Home + Market Intel (290 ZIPs, location-deduped, includes Boston)
+- 4,889 — CLAUDE.md canonical (CHI 4,575 + BOS 314)
+- 5,103 — Warroom (Chicagoland default scope, location-deduped via `dedupPracticesByLocation` post-`9e3375c`)
+
+The Home/Market Intel `4,833` is **-56 below CLAUDE.md's `4,889`**. Probably reflects a `dc18d24` ULTRA-FIX dedup pass that hasn't propagated to the doc, or an additional 56 rows reclassified out since the audit. Worth a single SQL spot-check.
+
+### E.3 Manual deal discovery (Task #11) — RUN
+
+3 web searches confirmed:
+1. **GDN April 2026 Deal Roundup is NOT YET PUBLISHED** as of 2026-04-26 13:00Z. (The user's "April 2026 excuse" is a true industry-side gap, not a scraper failure for that month.)
+2. **GDN March 2026 roundup IS published** at `https://www.groupdentistrynow.com/dso-group-blog/dso-deals-march-2026/` — fully fetched. **57 deals listed**, 3 of which are IL (only the 3 IL ones are inscope for Chicagoland tracking):
+   - Smile Partners USA + Favia Family Dental (Arlington Heights, IL)
+   - EPIC4 Specialty Partners + Bowers Orthodontic Specialists (Bloomington, IL)
+   - Dental Group of Chicago (J&J Dental Support Services) + Cityview Dental Arts (Chicago, IL)
+3. Independent industry coverage confirmed material March/April 2026 PE activity: **GTCR's $2.2B Dentalcorp acquisition** (Apr 22 2026, Oral Health Group), **Dental365 + 6 Ohio practices** (Frankel Dentistry deal, March 2026, Becker's), TUSK Q2 2026 Dental Market Report (Apr 21 2026): "69% of DSOs plan to boost acquisitions in 2026."
+
+**DB capture against the GDN March roundup (57 deals):**
+
+```
+$ sqlite3 data/dental_pe_tracker.db "SELECT source, COUNT(*) FROM deals WHERE deal_date >= '2026-03-01' GROUP BY source;"
+gdn        47
+pitchbook   1
+```
+
+48 of the 57 deals from the March GDN roundup are in the DB → **84% capture rate**.
+
+**IL-specific check (the 3 in-scope deals):**
+
+| GDN target | DB? | DB row state |
+|------------|-----|--------------|
+| Smile Partners + **Favia Family Dental** (Arlington Heights, IL) | ❌ MISSING | No row matches `LOWER(target_name) LIKE '%favia%'` |
+| EPIC4 + **Bowers Orthodontic Specialists** (Bloomington, IL) | ⚠ CAPTURED but PARSER-MANGLED | Two rows: `Unknown / "Bowers Orthodontic Specialists which is located"` and `EPIC4 Specialty Partners / "Bowers Orthodontic Specialists which is located"` — target_name is the first ~7 words of a sentence, not the entity name |
+| J&J / **Cityview Dental Arts** (Chicago, IL) | ✓ CAPTURED | One clean row, `J&J Dental Support Services / Cityview Dental Arts / 2026-03-01` |
+
+So for the 3 IL deals: **1 missing, 1 captured but with a parser bug producing 2 corrupt rows, 1 clean.** This is the live evidence behind the GDN parser issues catalogued in CLAUDE.md (the "Partners" / "& and of" connector logic). The Bowers row exposes a fresh symptom: the parser's `_DEAL_VERB_SET` cut-off logic concatenates "which is located" onto the entity name and fails to match KNOWN_PLATFORMS, so the platform_company falls back to `Unknown` AND a duplicate row gets created when the fallback is later resolved. CLAUDE.md says EPIC4 was added to KNOWN_PLATFORMS — that part worked, but the target_name capture is independently broken.
+
+**PESP staleness (live):**
+
+```
+SELECT source, MAX(deal_date) FROM deals GROUP BY source;
+gdn        2026-03-01
+pesp       2025-10-01    ← 207 days stale
+pitchbook  2026-03-02
+```
+
+Confirms the FULL audit's "PESP Airtable structurally blocked since Aug 2024" finding live: PESP has not produced a new deal in 6+ months. The Airtable backend behind pestakeholder.org/private-equity-tracker likely changed its public-read access in late 2024, and the scraper has been silently no-op'ing since.
+
+### E.4 Hallucination spot-check on 5 dossiers (Task #12) — RUN
+
+5 random `practice_intel` rows with `verification_quality IN ('verified','partial','high')` and non-empty `verification_urls`. For each, I fetched at least one cited URL and compared its content to the dossier's claims.
+
+| NPI | Practice | Dossier verification metadata | Live verdict |
+|-----|----------|-------------------------------|--------------|
+| 1578638557 | Get It Straight Ortho (Warshawsky) | `partial`, 2 searches, 6 URLs | **PARTIALLY HALLUCINATED.** Dossier claims `LightForce 3D`, `OrthoFX`, `OrthoPulse`, `In-House 3D Printed Aligners` — all confirmed on the live site ✓. Dossier claims `3Shape CBCT`, `Propel Orthodontics`, `Virtual Reality`, `Invisalign since 1999 Century Club` — **none of these appear on the live site**. Live site says "fully digital since 2006" + "35+ years of expertise" with no Century Club claim. These 4 specific brand/year claims are likely fabricated from priors or pulled from a secondary directory the model couldn't verify. |
+| 1114085073 | Michael Schmookler (Northbrook) | `partial`, 2 searches, 5 URLs | **MAJOR HALLUCINATION CONFIRMED.** Dossier cites `dentistofnorthbrook.com` as Schmookler's website. Live fetch of `dentistofnorthbrook.com` shows the practice is **Dr. Kluz** (not Schmookler, not Diment). Dossier's claimed tech ("intraoral scanning 3D digital impression", "state-of-the-art technology") does not appear on the cited site. **The dossier swapped a same-suburb dentist's website onto Schmookler's NPI.** Note: the providers Schmookler + Diment are correctly co-located (verified via NPPES — both at 3400 W Dundee Rd, Northbrook), so the provider count claim is right by accident. The website cross-contamination is a clear hallucination that the 4-layer defense did not catch (verification_quality=partial passed). |
+| 1891799508 | Veronica DiMario | `partial`, 1 search, 5 URLs | **CONSERVATIVE — no fabrications, but missed material context.** Dossier says "1 review on Healthgrades" — live confirms 1 review ✓. Dossier says rating is null — live shows 5.0 (model under-reported but didn't fabricate). HOWEVER: dossier characterized this as a SOLO practice (`web_count: 1`, "Dr. Veronica Dimario, DDS listed as practice owner"). Live SQLite Data Axle data on the same NPI: **`num_providers=8, employee_count=15, website='Compassdentalcare.Com'`** — she's at a multi-provider clinic ("Compass Dental Care"), not solo. The dossier missed the group-practice context entirely. Not a hallucination, but a serious omission that leaves the buyability score and entity classification mis-cued. |
+| 1942590500 | Berwyn Dental Group (Avila) | `partial`, 5 searches, 5 URLs | **UNVERIFIED.** All 3 cited URLs (Yelp `/biz/berwyn-dental-group-berwyn-2`, BBB profile, Zocdoc Avila page) returned `403 Forbidden` to WebFetch. Dossier claims (Yelp marked CLOSED October 2025, BBB 31 years in business, Google 3.9/5 from 23 reviews) could not be checked. The CLOSED claim is high-impact — if true, this NPI should be flagged out of the buyability target list — but I can't confirm or refute live. |
+| 1790854867 | Therese Gustafson (Barrington) | `partial`, 2 searches, 3 URLs | **UNVERIFIED.** Cited URL `npiprofile.com/npi/1790854867` returned `ECONNREFUSED` to WebFetch. Healthgrades and DoctorsNetwork URLs not retried. Dossier's claim "owner birth date listed as 1954 (age 70+)" is high-impact for retirement-risk scoring but unverified live. |
+
+**Summary of 5-dossier spot check:**
+- ✗ 1 confirmed major hallucination (Schmookler — wrong website attached to NPI)
+- ⚠ 1 partially hallucinated (Warshawsky — 4 of 9 tech brand claims unverifiable on site)
+- ⚠ 1 conservative-but-incomplete (DiMario — solo characterization contradicts in-DB Data Axle data)
+- 2 unverified due to WebFetch 403 / ECONNREFUSED (Berwyn, Gustafson)
+
+**The 4-layer defense passed all 5 of these.** The defense gate (`weekly_research.py::validate_dossier`) catches:
+- missing verification block ❌ (caught)
+- 0 searches executed ❌ (caught)
+- evidence_quality=insufficient ❌ (caught)
+- website.url without `_source_url` ❌ (caught)
+- google metrics without `_source_url` ❌ (caught)
+
+It does NOT catch:
+- ✗ a `_source_url` that points to the wrong dentist's website (Schmookler case)
+- ✗ specific brand-name claims (`3Shape CBCT`, `Propel Orthodontics`, `Century Club 1999`) that don't appear on the cited URL but the gate only checks that A URL exists, not that it supports the claim
+- ✗ contradictions between the dossier and the in-DB Data Axle row (DiMario solo vs. 8 providers)
+
+This is a meaningful new finding. The 4-layer defense is necessary but insufficient. To close the gap, the gate would need either a follow-up "do the cited URLs actually contain the claimed strings" check (cheap, deterministic), or a cross-check against pre-existing Data Axle / NPPES fields on the same NPI before storing. **Add to backlog as P1.**
+
+### E.5 Updates to §13 (Root Causes) and §15 (Backlog)
+
+**New hypotheses (added to §13's H1–H24 set):**
+- **H25 — `practice_changes` incremental sync stuck.** `_sync_incremental_id` shows `MAX(id)=9,421` in SQLite but only 737 rows in Supabase. Either `sync_metadata` table has a stale `last_synced_id` (likely `737` exactly), or the watched-ZIP filter is rejecting 92% of rows because the changed practices have `zip` outside the watched set. Diagnostic: `SELECT * FROM sync_metadata WHERE table_name='practice_changes';` and `SELECT zip FROM practice_changes WHERE id > 737 LIMIT 5;` — if those zips are mostly NULL or non-watched, the filter is the cause; if they're watched, the cursor is stuck.
+- **H26 — Warroom Sitrep "Corporate (High-Conf)" reads the all-signals tier.** The Sitrep KPI labelled "(High-Conf)" reports 4.1% on Chicagoland; every other page reports the high-conf tier as 1.5–1.7%. The label is wrong, OR the underlying query (`getSitrepBundle()` in `src/lib/warroom/data.ts`) is reading `corporate_share_pct` (which counts all dso_regional + dso_national) instead of joining to the strong-signal filter (`DSO_REGIONAL_STRONG_SIGNAL_FILTER`). Diagnostic: open `src/lib/warroom/data.ts` and confirm whether the corporate count is filtered through `isCorporateClassification` only or also through the strong-signal predicate.
+- **H27 — GDN parser concatenates verb fragments onto target_name.** Live evidence: 2 corrupt rows for "Bowers Orthodontic Specialists which is located" on 2026-03-01. The fallback `extract_target()` in `gdn_scraper.py` apparently doesn't terminate on the verb "located" because it's not in `_DEAL_VERB_SET`. CLAUDE.md catalogues a similar "Partners" / connector issue but this is a new fragment.
+- **H28 — Hallucination defense is insufficient against URL cross-contamination.** Schmookler dossier passed the 4-layer gate yet cites a URL belonging to a different dentist. The gate validates URL presence, not URL-to-claim alignment.
+
+**Updated P0/P1 backlog deltas (additions only, not a full rewrite of §15):**
+- P0 → New: Re-run `_sync_incremental_id` for `practice_changes` after diagnosing H25 (8,684-row gap on the Activity feed)
+- P0 → New: Fix Warroom Sitrep "Corporate (High-Conf)" KPI label or query (H26) — direct cause of the user's "ABSOLUTELY NO DIFFERENCE" pain point
+- P1 → New: Extend `validate_dossier()` with a "claim strings appear in cited URL" sanity check (H28) — cheap to implement, catches the Schmookler class of error
+- P1 → New: Add "located/situated/positioned" to `_DEAL_VERB_SET` in `gdn_scraper.py` (H27)
+- P2 → New: Manually backfill the missing Smile Partners + Favia Family Dental deal (Arlington Heights, IL, 2026-03-01) — single row, IL scope-relevant
+- P2 → New: Reconcile the 7 ghost rows in Supabase `deals` (drift §15 #11 → 7 stragglers)
+- P2 → New: Refresh ADA HPI (last update 2026-03-07; flagged "Outdated" on the live System page)
+- P3 → Note: PESP scraper has not produced a deal since 2025-10-01 — confirms FULL audit's structural-blockage finding live; the workaround would be to switch to Airtable's public API directly (if accessible) or scrape `pestakeholder.org/private-equity-tracker/` HTML directly
+
+### E.6 Tasks completed in this appendix
+
+| Task | Status | Evidence |
+|------|--------|----------|
+| #3 Supabase row-count parity | ✅ | E.1 — 11 of 13 tables match; `practice_changes` 92% behind (NEW P0); `deals` +7 ghost; CLAUDE.md `zip_signals=0` claim was outdated |
+| #4 Live URL health on 10 routes | ✅ | E.2 — all 10 return 200; cross-page corporate KPI disagreement documented live; ADA HPI flagged Outdated; PESP 207d stale |
+| #11 Manual deal discovery | ✅ | E.3 — GDN April 2026 not yet published (true industry gap); GDN March 84% capture rate; 1 IL deal missing (Favia); 1 IL deal parser-mangled (Bowers) |
+| #12 Hallucination spot-check 5 dossiers | ✅ | E.4 — 1 major hallucination (Schmookler), 1 partial (Warshawsky), 1 conservative-but-incomplete (DiMario), 2 blocked (403/ECONNREFUSED). 4-layer gate passed all 5. NEW P1 finding (H28) |
+
+---
+
+**End of report.** Snapshot SHA `f8d40e9`, 2026-04-26 ~05:30Z (main audit) + Appendix E added 2026-04-26 ~14:00Z. This document supersedes the previous auto-GHA `AUDIT_REPORT_2026-04-26.md` and consolidates `AUDIT_REPORT_2026-04-26_FULL.md` + `RECONCILIATION_VERDICT_2026_04_26.md` into a single canonical audit artifact for this session. The 28-hypothesis root-cause table (24 in §13 + 4 new in E.5) and the updated P0–P3 backlog are the actionable outputs.
