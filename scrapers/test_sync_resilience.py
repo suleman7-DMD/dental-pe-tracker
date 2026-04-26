@@ -39,7 +39,7 @@ db_mod = sys.modules["scrapers.database"]
 for sym in ["get_session", "Practice", "Deal", "PracticeChange", "ZipScore",
             "WatchedZip", "DSOLocation", "ADAHPIBenchmark", "PESponsor",
             "Platform", "ZipOverview", "ZipQualitativeIntel", "PracticeIntel",
-            "PracticeSignal", "ZipSignal", "Base"]:
+            "PracticeSignal", "ZipSignal", "PracticeLocation", "Base"]:
     setattr(db_mod, sym, MagicMock())
 
 # pipeline_logger stubs
@@ -60,6 +60,8 @@ sa_mod = _types.ModuleType("sqlalchemy")
 sa_mod.create_engine = MagicMock()
 sa_mod.text = lambda s: s
 sa_mod.inspect = MagicMock()
+sa_mod.or_ = lambda *args: args
+sa_mod.and_ = lambda *args: args
 sa_exc = _types.ModuleType("sqlalchemy.exc")
 sa_exc.IntegrityError = Exception
 sa_orm = _types.ModuleType("sqlalchemy.orm")

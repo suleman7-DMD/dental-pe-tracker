@@ -648,6 +648,7 @@ def extract_platform(text):
         "continues", "continuing", "continued",
         "strengthens", "strengthening", "strengthened",
         "deepens", "deepening", "deepened",
+        "located", "situated", "positioned",
     }
     _PARTNERS_VERB_NEXT = {"with", "to", "and"}
     _AUX_SET = {"has", "have", "had", "is", "are", "was", "were", "will", "would"}
@@ -760,6 +761,37 @@ def extract_target(text, platform):
     # Character class for target names: includes apostrophe, smart quote, hyphen, ampersand, period
     _N = r"A-Za-z0-9\s\'\u2019\-&\."
 
+    _TARGET_STOP_WORDS = {"which", "located", "headquartered", "based", "situated",
+                          "operating", "serving", "providing", "offering", "established",
+                          "positioned", "that", "where", "while", "after", "since",
+                          "led", "owned", "founded", "managed", "run", "operated"}
+    # Auxiliaries + connectors that legitimately precede a stop word in a relative clause
+    # ("X which is located", "Y that has been operating since 1980", "Z which is led by Dr")
+    _TARGET_AUX_WORDS = {"is", "was", "are", "were", "has", "have", "had",
+                         "been", "being", "will", "would", "by", "dr", "dr.", "mr.", "ms."}
+
+    def _clean_target(raw):
+        words = raw.strip().rstrip(".").split()
+        while words:
+            last = words[-1].lower().rstrip(".,;")
+            if last in _TARGET_STOP_WORDS:
+                words.pop()
+                # Drop trailing auxiliaries that preceded the stop word
+                # (e.g. "Bowers ... which is located" → strip "located", then "is", then "which")
+                while words and words[-1].lower().rstrip(".,;") in _TARGET_AUX_WORDS:
+                    words.pop()
+                continue
+            # Also strip dangling auxiliaries even without a preceding stop word
+            # (e.g. "Heart of Texas Oral Surgery which is led by Dr" — when regex stopped at "Dr")
+            if last in _TARGET_AUX_WORDS:
+                words.pop()
+                continue
+            break
+        return " ".join(words).strip() if words else None
+
+    _GENERIC_WORDS = {"the", "a", "an", "its", "their", "several", "multiple",
+                      "two", "three", "four", "five", "dr", "new"}
+
     # --- Inverted patterns (target before verb) — check first ---
     inverted_patterns = [
         rf'([A-Z][{_N}]{{3,50}}?)\s+was\s+acquired\s+by\s+',
@@ -771,11 +803,12 @@ def extract_target(text, platform):
     for pattern in inverted_patterns:
         m = re.search(pattern, text)
         if m:
-            target = m.group(1).strip().rstrip(".")
+            target = _clean_target(m.group(1))
+            if not target:
+                continue
             if platform and target.lower() == platform.lower():
                 continue
-            if target.lower() in ("the", "a", "an", "its", "their", "several", "multiple",
-                                   "two", "three", "four", "five", "dr", "new"):
+            if target.lower() in _GENERIC_WORDS:
                 continue
             if any(target.lower() == p.lower() for p in KNOWN_PLATFORMS):
                 continue
@@ -797,15 +830,13 @@ def extract_target(text, platform):
     ]:
         m = re.search(pattern, text)
         if m:
-            target = m.group(1).strip().rstrip(".")
-            # Don't return the platform as the target
+            target = _clean_target(m.group(1))
+            if not target:
+                continue
             if platform and target.lower() == platform.lower():
                 continue
-            # Filter out generic words
-            if target.lower() in ("the", "a", "an", "its", "their", "several", "multiple",
-                                   "two", "three", "four", "five", "dr", "new"):
+            if target.lower() in _GENERIC_WORDS:
                 continue
-            # Filter out if it matches a known platform (we want the TARGET, not acquirer)
             if any(target.lower() == p.lower() for p in KNOWN_PLATFORMS):
                 continue
             return target
