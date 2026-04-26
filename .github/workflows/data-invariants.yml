@@ -1,0 +1,69 @@
+name: Data Invariants
+# F28 — Weekly check that the verification queries from
+# IMPLEMENTATION_PLAN_2026_04_26.md still hold against live Supabase.
+#
+# Runs `scripts/check_data_invariants.py` which hits Supabase via PostgREST
+# (anon key, read-only) with `count=exact` and exits non-zero if any FAIL-
+# severity invariant is violated. WARN-severity invariants surface as
+# ::warning:: lines but don't fail the job.
+#
+# The full markdown report is mirrored into $GITHUB_STEP_SUMMARY so it shows
+# up under the run's Summary tab — no need to dig into the raw log.
+
+on:
+  schedule:
+    - cron: '0 13 * * 1'  # Every Monday at 13:00 UTC (≈ Sunday 8am Central, day after the weekly pipeline cron)
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  check-invariants:
+    runs-on: ubuntu-latest
+    env:
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Verify secrets present
+        run: |
+          if [ -z "${SUPABASE_URL}" ] || [ -z "${SUPABASE_ANON_KEY}" ]; then
+            echo "::error::SUPABASE_URL or SUPABASE_ANON_KEY secret is missing — invariant check cannot run."
+            echo "Add them under Settings → Secrets and variables → Actions."
+            exit 1
+          fi
+
+      - name: Run invariant check
+        id: check
+        run: |
+          set -o pipefail
+          python3 scripts/check_data_invariants.py | tee /tmp/invariant_report.md
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Mirror report into job summary
+        if: always()
+        run: |
+          if [ -f /tmp/invariant_report.md ]; then
+            cat /tmp/invariant_report.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "## F28 invariant check — no report produced" >> "$GITHUB_STEP_SUMMARY"
+            echo "Likely the script aborted before printing. See the raw log." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Notify Discord on failure
+        if: failure()
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          if [ -z "${DISCORD_WEBHOOK_URL}" ]; then
+            echo "DISCORD_WEBHOOK_URL not set — skipping Discord notify (non-blocking)"
+            exit 0
+          fi
+          curl -s -H "Content-Type: application/json" -X POST \
+            -d "{\"content\":\"F28 data-invariant check FAILED on ${GITHUB_REPOSITORY} run ${GITHUB_RUN_ID} — investigate at ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}\"}" \
+            "${DISCORD_WEBHOOK_URL}" || echo "Discord notify failed (non-blocking)"
