@@ -1,9 +1,10 @@
 # HANDOFF_DEBUG_RESULTS.md
 
 **Date:** 2026-04-26
-**Branch:** main (uncommitted)
-**Build status:** `npm run build` passes clean (all 21 routes)
-**Test status:** `scrapers/test_sync_resilience.py` — 14/14 pass
+**Branch:** main (1 commit ahead of origin/main; new GDN parser changes uncommitted)
+**Build status:** `npm run build` passes clean (21 routes, Turbopack 16.1.6)
+**Test status:** `pytest scrapers/test_sync_resilience.py` — 14/14 pass
+**Live verify:** dev server on :3001 — 11/11 routes return HTTP 200
 
 ---
 
@@ -11,100 +12,132 @@
 
 | ID | Title | Status | Files Changed |
 |----|-------|--------|---------------|
-| P0-A | Practice display names (DBA-first) | **FIXED** | `ranking.ts`, `track-list-card.tsx`, `practice-directory.tsx`, `buyability-shell.tsx` |
-| P0-B | Cross-page corporate KPI mismatch | **ALREADY FIXED** | No changes needed — tiered display already correct in `sitrep-kpi-strip.tsx` and all pages |
-| P0-C | practice_changes Supabase sync gap | **DIAGNOSED — NEEDS MANUAL SYNC** | No code fix — requires `python3 scrapers/sync_to_supabase.py --tables practice_changes` |
-| P0-D | Intelligence getPracticeIntel pagination | **FIXED** | `intel.ts` |
-| P0-E | Job Market map EC bug | **ALREADY FIXED** | No changes needed — `classifyPractice()` already called at line 263 |
-| P0-F | Dossier verification quality gate | **ALREADY FIXED** | No changes needed — `DRIFT_REMAP` in `validate_dossier()` already coerces "high" → "partial" |
-| P0-G | Sonnet 2-pass escalation never fires | **BY DESIGN** | Batch mode is Pass-1 only; `escalate_eligible.py` exists for follow-up escalation batches |
-| P0-H | GDN parser captures fragments | **FIXED** | `gdn_scraper.py` |
-| P0-I | test_sync_resilience.py broken | **FIXED** | `test_sync_resilience.py` |
+| P0-A | Practice display names (DBA-first) | **FIXED** (prior session) | `ranking.ts`, `track-list-card.tsx`, `practice-directory.tsx`, `buyability-shell.tsx` |
+| P0-B | Cross-page corporate KPI parity | **WORKING-AS-INTENDED** | `getPracticeStats()` + `countCorporateHighConfidence()` both source from `practice_locations`; gap was stale doc |
+| P0-C | practice_changes Supabase sync gap | **NOT-A-BUG** | UX label fix shipped: "Recent Activity · Watched ZIPs" qualifier |
+| P0-D | Intelligence `getPracticeIntel` pagination | **FIXED** (prior session) | `intel.ts` — paginated while-loop `range(from, from+1000-1)` |
+| P0-E | Job Market map EC bug | **WORKING-AS-INTENDED** | `practice-density-map.tsx:263` already calls `classifyPractice(p.entity_classification, p.ownership_status)` |
+| P0-F | Dossier verification quality gate | **FIXED** | `weekly_research.py` — `DRIFT_REMAP` + H28 cross-citation host check |
+| P0-G | Sonnet 2-pass escalation | **BY-DESIGN, AWAITING USER ACTION** | `escalate_eligible.py` — 1,563/3,370 candidates eligible at $0.27 each = $422.01 (paid action) |
+| P0-H | GDN parser fragments | **FIXED (this session)** | `gdn_scraper.py` — char class +comma, cap `{3,50}`→`{3,80}`, `_clean_target()` rewrite + 1 row backfill |
+| P0-I | `test_sync_resilience.py` broken | **FIXED** (prior session) | `test_sync_resilience.py` — added PracticeLocation + sqlalchemy stubs |
+
+---
+
+## Preflight DB Snapshot (verified fresh, this session)
+
+```
+practices_global       = 381,598
+watched_practices      = 13,818  (post-F32 hygienist cleanup)
+practice_locations     =  5,732
+zip_scores_total_gp    =  4,833  (sum of zip_scores.total_gp_locations)
+practice_signals       = 13,818
+zip_signals SQLite     =    290  (sync gap to Supabase still open: 0 in Supabase)
+practice_intel         =  3,370
+deals                  =  2,854
+practice_changes       =  9,293
+watched_zips           =    290  (IL=269, MA=21)
+```
 
 ---
 
 ## Detailed Fix Evidence
 
-### P0-A: Practice Display Names (DBA-first priority)
+### P0-A: Display names (DBA-first)
 
-**Root cause:** Multiple surfaces used `practice_name ?? doing_business_as` priority, showing doctor legal names (e.g. "SMITH JOHN DDS") instead of brand/DBA names (e.g. "Bright Smiles Dental").
+Prior-session fix held up on re-verification. `src/lib/warroom/ranking.ts:412` and `:678`, `src/app/launchpad/_components/track-list-card.tsx:119-122`, `src/app/job-market/_components/practice-directory.tsx`, and `src/app/buyability/_components/buyability-shell.tsx:458` all use `doing_business_as ?? practice_name ?? '--'`. Curl of `/buyability` shows `doing_business_as` token in rendered markup; build passes.
 
-**Files edited:**
+### P0-B: Cross-page corporate parity
 
-1. **`src/lib/warroom/ranking.ts:678`** — `practiceName` field in `RankedTarget` flipped to `doing_business_as ?? practice_name`
-2. **`src/lib/warroom/ranking.ts:412`** — `buildHeadline()` same DBA-first flip
-3. **`src/app/launchpad/_components/track-list-card.tsx:119-122`** — `practiceSnapshot.name` flipped to `doing_business_as ?? practice_name`
-4. **`src/app/job-market/_components/practice-directory.tsx`** — Added `withDisplayName` useMemo that maps `display_name: p.doing_business_as ?? p.practice_name ?? '--'`; updated all 4 column arrays, sort, CSV export, and dependency arrays
-5. **`src/app/buyability/_components/buyability-shell.tsx:458`** — Table cell flipped to `p.doing_business_as ?? p.practice_name ?? '--'`
+`countCorporateHighConfidence()` at `src/lib/supabase/queries/warroom.ts:897-919` and `getPracticeStats()` both query `practice_locations` (location-deduped) for both numerator and denominator. Earlier "4.1% vs 1.5–1.7%" report was based on pre-`dc18d24` numbers when other surfaces still used NPI-row denominators. Now consistent. `sitrep-kpi-strip.tsx:66-78` shows "Corporate (High-Conf)" with "All signals: X%" amber subtitle — confirmed via curl of `/warroom`.
 
-**Verification:** `npm run build` passes. All column keys, CSV headers, and sort logic reference the DBA-first `display_name`.
+### P0-C: practice_changes sync gap
 
-### P0-B: Cross-page Corporate KPI Mismatch
+Diagnostic SQL on Supabase: `SELECT COUNT(*) FROM practice_changes` = 737. SQLite has 9,293, but only 737 fall inside watched ZIPs after `incremental_id` strategy applies `filter_watched_zips=True`. `orphan_no_practice = 0`, `max_id = 9421`. The 8,556-row "gap" is the watched-ZIP filter doing its job — the global-pool changes are intentionally not synced to Supabase. UX action shipped: `home-shell.tsx:230` now shows "Recent Activity · Watched ZIPs" qualifier so users understand the scope.
 
-**Finding:** Already correctly implemented. `sitrep-kpi-strip.tsx` shows "Corporate (High-Conf)" with all-signals amber subtitle. `countCorporateHighConfidence()` in `warroom.ts:897-919` uses dso_national + strong dso_regional (EIN/parent_company) + DSO specialists. Consistent with Home, Market Intel, Job Market, and Launchpad.
+### P0-D: Intelligence pagination
 
-### P0-C: practice_changes Supabase Sync Gap
+`getPracticeIntel()` in `src/lib/supabase/queries/intel.ts` lines 32-52 has paginated while-loop with `PAGE = 1000`. Live verification via curl `/intelligence`: 3,543 unique 10-digit NPI tokens in rendered markup, well above the 1,000-row Supabase cap. Pre-fix would have capped at ~1000.
 
-**Finding:** SQLite has 9,293 rows (max id=9,421). Supabase has ~737. The gap was caused by a CASCADE truncation during a prior `_sync_watched_zips_only` run which wiped `practice_changes` via FK dependency. The `incremental_id` strategy is correct but the sync metadata was reset.
+### P0-E: Job Market map entity_classification
 
-**Required user action:** Run `python3 scrapers/sync_to_supabase.py --tables practice_changes` to re-sync all rows. No code fix needed.
+`practice-density-map.tsx:263` calls `classifyPractice(p.entity_classification, p.ownership_status)`. `STATUS_COLORS` keyed on `independent | corporate | specialist | non_clinical | unknown` — all valid `classifyPractice()` return values. No regression on curl `/job-market`.
 
-### P0-D: Intelligence Practice Intel Pagination
+### P0-F: Verification quality gate (anti-hallucination)
 
-**Root cause:** `getPracticeIntel()` in `intel.ts` had no `.range()` pagination, silently capping at 1,000 rows.
+Prior `DRIFT_REMAP` in `validate_dossier()` at `weekly_research.py:145-153` coerces `"high"` → `"partial"`, etc. The H28 follow-up extension (committed `d4bc2a9`) adds rule 6: cross-citation host check. When both `website.url` and `website._source_url` are populated, hosts must match (case-insensitive, www-stripped) OR `_source_url` must be in `_DIRECTORY_HOST_ALLOWLIST` (google/yelp/healthgrades/zocdoc/facebook/linkedin/etc.). Catches the Schmookler-class "cited URL belongs to a different dentist" hallucination that the URL-presence check missed. New helpers `_canonical_host()` + `_is_directory_host()`. 10/10 smoke cases pass.
 
-**Fix:** Added a `while` loop with `PAGE=1000` that fetches successive `.range(from, from + PAGE - 1)` slices until a page returns fewer than 1,000 rows.
+### P0-G: Sonnet escalation
 
-### P0-E: Job Market Map EC Bug
+By design — batch mode is Pass-1 only. `build_batch_requests()` at `weekly_research.py:465-468` is documented as Pass-1 ONLY. The escalation path is `scrapers/dossier_batch/escalate_eligible.py`, which reads Pass-1 dossiers, filters by `_should_escalate()`, and submits Sonnet escalation batches. Dry run on current state: **1,563 eligible / 3,370 dossiers, est. $422.01** at Sonnet rates. Awaiting user authorization (paid action — not a code fix).
 
-**Finding:** Already fixed in current code. `practice-density-map.tsx:263` calls `classifyPractice(p.entity_classification, p.ownership_status)` and `STATUS_COLORS` is keyed on `independent`, `corporate`, `specialist`, `non_clinical`, `unknown` — all valid `classifyPractice()` return values.
+### P0-H: GDN parser fragments
 
-### P0-F: Dossier Verification Quality Gate
+**Two-tier defect:**
 
-**Finding:** Already handled. `validate_dossier()` in `weekly_research.py:145-153` has `DRIFT_REMAP` that coerces off-spec values: `"high" → "partial"`, `"verified" → "verified"` (pass-through), `"partial" → "partial"`, `"insufficient" → "insufficient"`. The gate rejects `evidence_quality == "insufficient"` at line 163.
+1. The prior fix (commit `cfdab89`) added `_TARGET_STOP_WORDS` and `_clean_target()` but left the regex character class `_N = r"A-Za-z0-9\s\'’\-&\."` (no comma) and the `{3,50}` upper bound. As a result:
+   - Long fragments (>50 chars) never matched the inverted patterns at all (`Bowers Orthodontic Specialists which is located in Austin, TX, was acquired by EPIC4` is 60+ chars before the verb).
+   - Relative clauses with embedded commas (`Premier Endodontic Group, headquartered in Houston, was acquired by ABC Partners`) couldn't be spanned because comma wasn't in the class.
 
-### P0-G: Sonnet Escalation Never Fires
+2. **Fix applied this session** (`scrapers/gdn_scraper.py:761-790`):
+   - Added `,` to `_N`: `r"A-Za-z0-9\s\'’\-&\.,"` so non-greedy matches can span clausal commas. Inline comment explains the trade-off.
+   - Raised cap `{3,50}` → `{3,80}` in all 16 patterns (sed-applied).
+   - Rewrote `_clean_target()`: scan from left, find first stop word, truncate at that index, then peel any trailing aux/stop leftovers. Replaces the prior right-to-left peel loop, which only worked when the stop word was the very last token.
 
-**Finding:** By design in batch mode. `build_batch_requests()` at line 465-468 documents: "This path is Pass-1 ONLY. It does NOT fire the Sonnet escalation." The escalation follow-up path is `scrapers/dossier_batch/escalate_eligible.py`, which reads Pass-1 dossiers from `practice_intel`, filters by `_should_escalate()`, and submits Sonnet escalation batches.
+3. **Smoke test results (6/6 pass after fix):**
+   - `Bowers Orthodontic Specialists which is located in Austin, TX, was acquired by EPIC4` → `Bowers Orthodontic Specialists` ✅
+   - `Premier Endodontic Group, headquartered in Houston, was acquired by ABC Partners` → `Premier Endodontic Group` ✅
+   - `Smith Dental was acquired by ABC Partners in 2024` → `Smith Dental` ✅ (regression check)
+   - `Bright Smiles which is located in Chicago has joined Heartland Dental` → `Bright Smiles` ✅
+   - `Dr. Jones Family Dentistry, which has been operating since 1985, was acquired by Smile Brands` → `Dr. Jones Family Dentistry` ✅
+   - `Heart of Texas Smiles led by Dr. Garcia has joined Imagen Dental Partners` → `Heart of Texas Smiles` ✅
 
-The `_should_escalate()` function itself (lines 377-404) is correctly gated: never escalates unlikely/unknown/low readiness; escalates high/medium readiness when confidence != "high"; escalates with 5+ green flags AND partial/insufficient evidence.
+4. **Historical-data backfill:** DB scan for fragment-tagged rows (`LIKE '%led by Dr%' OR '%which is%' OR '%headquartered%' OR '%located in%'`) found 1 remaining: `id=1292, target_name='Heart of Texas Smiles led by Dr', platform=Imagen Dental Partners, deal_date=2022-04-01`. Updated to `'Heart of Texas Smiles'` via direct SQL. Now 0 rows match the fragment-detection scan.
 
-### P0-H: GDN Parser Fragment Bug
+5. **Known limitation (non-blocking):** sentence-end without punctuation, e.g. `Imagen Dental Partners acquired Heart of Texas Smiles` (no terminator), still returns `None` because the standard pattern requires a terminator (`,|.|;|in|from|...`). Pre-existing parser limitation, not introduced by this fix.
 
-**Root cause:** `extract_target()` regex character class `_N` included whitespace, so phrases like "Smith Dental which is located" were captured as the target name. No stop-word termination.
+### P0-I: Test stubs
 
-**Fix:** Added `_TARGET_STOP_WORDS` set (`which`, `located`, `headquartered`, `based`, `situated`, `operating`, `serving`, `providing`, `offering`, `established`) and `_clean_target()` helper that strips trailing stop words from captured names. Applied to both inverted and standard pattern branches. Also extracted `_GENERIC_WORDS` set to reduce duplication.
-
-### P0-I: test_sync_resilience.py Broken
-
-**Root cause:** Two missing symbols in the mock stubs:
-1. `PracticeLocation` not in the `scrapers.database` mock symbol list
-2. `or_` and `and_` not on the `sqlalchemy` mock module
-
-**Fix:**
-1. Added `"PracticeLocation"` to the `for sym in [...]` list at line 39-42
-2. Added `sa_mod.or_` and `sa_mod.and_` lambda stubs at lines 62-63
-
-**Verification:** `python3 -m pytest scrapers/test_sync_resilience.py -v` — 14/14 pass (was 13/14 before, 0/14 with original PracticeLocation ImportError).
+Prior fix (commit `cfdab89`) added `PracticeLocation` to the database mock symbol list and `or_`/`and_` lambda stubs to the sqlalchemy mock module. Re-run this session: **14/14 pass in 0.52s**.
 
 ---
 
-## Build Verification
+## Build & Live Verification
 
+### Build
 ```
 $ cd dental-pe-nextjs && npm run build
 ▲ Next.js 16.1.6 (Turbopack)
-✓ Compiled successfully in 20.5s
-Running TypeScript ... ✓
-21 routes (all ƒ dynamic except /_not-found)
+✓ Compiled successfully in 23.5s
+✓ Generating static pages (6/6) in 338.3ms
+21 routes (1 static /_not-found, 20 dynamic)
 ```
 
-## Test Verification
-
+### Tests
 ```
 $ python3 -m pytest scrapers/test_sync_resilience.py -v
-14 passed in 0.56s
+14 passed in 0.52s
 ```
+
+### Live route verification (dev server :3001)
+```
+/                200  109,390 bytes
+/launchpad       200   80,050 bytes
+/warroom         200  868,811 bytes
+/deal-flow       200 1,643,851 bytes
+/market-intel    200  899,740 bytes
+/buyability      200  694,604 bytes
+/job-market      200 1,215,617 bytes
+/research        200   95,868 bytes
+/intelligence    200 40,175,331 bytes  ← pagination working (3,543 unique NPIs)
+/system          200   99,778 bytes
+/data-breakdown  200  196,211 bytes
+```
+
+Content sanity:
+- `/warroom` markup contains `Corporate (High-Conf)` and `All signals` (P0-B confirmed)
+- `/buyability` markup contains `doing_business_as` field key (P0-A confirmed)
+- `/intelligence` markup contains 3,543 unique 10-digit NPI tokens (P0-D confirmed: pagination > 1000 cap)
 
 ---
 
@@ -112,36 +145,36 @@ $ python3 -m pytest scrapers/test_sync_resilience.py -v
 
 | Item | Action | Why |
 |------|--------|-----|
-| P0-C sync gap | Run `python3 scrapers/sync_to_supabase.py --tables practice_changes` | Re-syncs 9,293 rows from SQLite to Supabase |
-| P0-G escalation | Run `python3 scrapers/dossier_batch/escalate_eligible.py` after accumulating Pass-1 dossiers | Fires Sonnet Pass-2 on eligible candidates |
-| P0-H data repair | Existing deal rows with fragment targets (e.g. "Smith Dental which is located") need manual review/cleanup in SQLite | Parser fix prevents future fragments; historical data untouched |
-| Deploy | Commit changes and push to `main` for Vercel auto-deploy | Changes are uncommitted |
-| Live verify | After deploy, verify DBA names show correctly on Warroom, Launchpad, Job Market, Buyability | Only local build verified so far |
+| P0-G escalation budget | Run `python3 scrapers/dossier_batch/escalate_eligible.py` (~$422) | 1,563 eligible Pass-1 dossiers; Sonnet Pass-2 needs paid auth |
+| `zip_signals` Supabase sync | Run `python3 scrapers/sync_to_supabase.py --tables zip_signals` | SQLite has 290 rows, Supabase has 0 (Warroom ZIP-overlay silent) |
+| Vercel `ANTHROPIC_API_KEY` | Set in Vercel project env (Production + Preview + Development), redeploy | `/api/launchpad/compound-narrative` returns 503 without it |
+| Commit + deploy | `git commit -am 'P0-H: GDN parser regex cap + comma in char class'` then `git push` | GDN parser change is uncommitted |
+| GitHub secrets for keep-alive | Add `SUPABASE_URL` + `SUPABASE_ANON_KEY` to repo secrets | `.github/workflows/keep-supabase-alive.yml` cron will 401 otherwise |
+
+---
+
+## Remaining Risks
+
+1. **GDN parser comma-in-class trade-off:** non-greedy `?` should still terminate at the first comma in standard patterns (since terminator alternatives include `,`), but if a future pattern is rewritten greedily, captures could absorb commas. The 6/6 smoke + backfill scan + historical 1-row repair gives high confidence today; revisit if a dry run pulls in wrong-target captures.
+2. **`zip_signals` 290-row sync gap is silent.** Watched ZIPs are scored locally but the ZIP-overlay flags (ada_benchmark_gap_flag, deal_catchment_24mo, etc.) read 0 in Supabase. Warroom ZIP dossiers will show no overlay until re-sync.
+3. **Sonnet escalation backlog grows weekly.** Each Pass-1-only batch adds candidates. At current rate (~50 new eligible/week) the $422 cost grows linearly until run.
+4. **practice_intel cost-tracking divergence.** `poll.py.totals.total_cost_usd` overcounts ~8.5× actual billing per the April 25 calibration. Don't quote that to the user as the bill — reconcile with https://console.anthropic.com/usage.
+5. **Live deploy not yet verified.** Local dev :3001 returned 200 on all 11 routes; Vercel auto-deploy on push has not been re-tested in this session.
 
 ---
 
 ## Page Sweep Checklist
 
-| Page | Route | Build OK | Display Name Fix Applied | Notes |
-|------|-------|----------|--------------------------|-------|
-| Home | `/` | Yes | N/A (no practice names in KPIs) | KPIs verified correct |
-| Launchpad | `/launchpad` | Yes | Yes (track-list-card.tsx) | DBA-first in card heading + practiceSnapshot |
-| Warroom | `/warroom` | Yes | Yes (ranking.ts) | DBA-first in target list + dossier + headline |
-| Deal Flow | `/deal-flow` | Yes | N/A (shows deal names, not practice names) | |
-| Market Intel | `/market-intel` | Yes | N/A (ZIP-level, no practice name display) | |
-| Buyability | `/buyability` | Yes | Yes (buyability-shell.tsx) | DBA-first in table |
-| Job Market | `/job-market` | Yes | Yes (practice-directory.tsx) | DBA-first in all 4 tab columns + CSV |
-| Intelligence | `/intelligence` | Yes | N/A (uses NPI, not display name) | Pagination fix applied |
-| Research | `/research` | Yes | N/A | |
-| System | `/system` | Yes | N/A | |
-| Data Breakdown | `/data-breakdown` | Yes | N/A | |
-
----
-
-## New Findings During Debug
-
-1. **P0-B, P0-E, P0-F were already fixed** in prior sessions — the audit caught stale state that had been resolved.
-2. **`sortPractices()` needed generic typing** — the augmented `withDisplayName` type broke the `Practice[]` parameter. Fixed with `<T extends Practice>`.
-3. **`filtered` useMemo had stale dependency** — referenced `practices` instead of `withDisplayName`. Fixed.
-4. **practice_changes sync gap** is an operational issue (sync metadata reset from CASCADE), not a code bug. The `incremental_id` strategy works correctly.
-5. **Batch escalation** is intentionally Pass-1-only with a documented follow-up path via `escalate_eligible.py`. Not a bug.
+| Page | Route | Local 200 | Display Name DBA-First | Notes |
+|------|-------|-----------|------------------------|-------|
+| Home | `/` | ✅ | N/A | Recent Activity scope qualifier "· Watched ZIPs" added |
+| Launchpad | `/launchpad` | ✅ | ✅ track-list-card | DBA-first in card heading + practiceSnapshot |
+| Warroom | `/warroom` | ✅ | ✅ ranking.ts | DBA-first in target list + dossier + headline; high-conf KPI verified |
+| Deal Flow | `/deal-flow` | ✅ | N/A | shows deal names, not practice names |
+| Market Intel | `/market-intel` | ✅ | N/A | ZIP-level only |
+| Buyability | `/buyability` | ✅ | ✅ buyability-shell | DBA-first in table |
+| Job Market | `/job-market` | ✅ | ✅ practice-directory | DBA-first in 4 tab columns + CSV; map uses entity_classification |
+| Intelligence | `/intelligence` | ✅ | N/A (NPI-keyed) | Pagination fix confirmed: 3,543 NPIs >> 1000 cap |
+| Research | `/research` | ✅ | N/A | |
+| System | `/system` | ✅ | N/A | |
+| Data Breakdown | `/data-breakdown` | ✅ | N/A | Provenance audit page |

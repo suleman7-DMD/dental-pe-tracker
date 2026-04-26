@@ -758,8 +758,10 @@ def extract_target(text, platform):
     """Try to extract the target practice name."""
     # GDN patterns: "sale to [Platform]" means we want the entity before "sale to"
     # "advised [Target] in its sale"
-    # Character class for target names: includes apostrophe, smart quote, hyphen, ampersand, period
-    _N = r"A-Za-z0-9\s\'\u2019\-&\."
+    # Character class for target names: includes apostrophe, smart quote, hyphen, ampersand, period, comma
+    # Comma is included so relative clauses ("X, headquartered in Y, was acquired by Z")
+    # can be spanned by the regex; _clean_target() then truncates at the first stop word.
+    _N = r"A-Za-z0-9\s\'\u2019\-&\.,"
 
     _TARGET_STOP_WORDS = {"which", "located", "headquartered", "based", "situated",
                           "operating", "serving", "providing", "offering", "established",
@@ -771,34 +773,31 @@ def extract_target(text, platform):
                          "been", "being", "will", "would", "by", "dr", "dr.", "mr.", "ms."}
 
     def _clean_target(raw):
-        words = raw.strip().rstrip(".").split()
-        while words:
-            last = words[-1].lower().rstrip(".,;")
-            if last in _TARGET_STOP_WORDS:
-                words.pop()
-                # Drop trailing auxiliaries that preceded the stop word
-                # (e.g. "Bowers ... which is located" → strip "located", then "is", then "which")
-                while words and words[-1].lower().rstrip(".,;") in _TARGET_AUX_WORDS:
-                    words.pop()
-                continue
-            # Also strip dangling auxiliaries even without a preceding stop word
-            # (e.g. "Heart of Texas Oral Surgery which is led by Dr" — when regex stopped at "Dr")
-            if last in _TARGET_AUX_WORDS:
-                words.pop()
-                continue
-            break
-        return " ".join(words).strip() if words else None
+        # Truncate at the first stop word (e.g. "Bowers ... which is located in Austin, TX,"
+        # → "Bowers Orthodontic Specialists"). Then strip any trailing auxiliary leftovers.
+        words = raw.strip().rstrip(".,;").split()
+        truncate_at = None
+        for i, w in enumerate(words):
+            if w.lower().rstrip(".,;") in _TARGET_STOP_WORDS:
+                truncate_at = i
+                break
+        if truncate_at is not None:
+            words = words[:truncate_at]
+        while words and words[-1].lower().rstrip(".,;") in (_TARGET_AUX_WORDS | _TARGET_STOP_WORDS):
+            words.pop()
+        cleaned = " ".join(words).strip().rstrip(".,;")
+        return cleaned if cleaned else None
 
     _GENERIC_WORDS = {"the", "a", "an", "its", "their", "several", "multiple",
                       "two", "three", "four", "five", "dr", "new"}
 
     # --- Inverted patterns (target before verb) — check first ---
     inverted_patterns = [
-        rf'([A-Z][{_N}]{{3,50}}?)\s+was\s+acquired\s+by\s+',
-        rf'([A-Z][{_N}]{{3,50}}?)\s+has\s+joined\s+',
-        rf'([A-Z][{_N}]{{3,50}}?)\s+affiliated\s+with\s+',
-        rf'([A-Z][{_N}]{{3,50}}?),?\s+(?:led by|owned by|founded by).*?(?:has joined|was acquired by)\s+',
-        rf'(?:(?:Advised|Represented|Assisted|Helped|Supported)\s+)?([A-Z][{_N}]{{3,50}}?)\s+(?:in (?:her|his|their) sale)[\s.,;]',
+        rf'([A-Z][{_N}]{{3,80}}?)\s+was\s+acquired\s+by\s+',
+        rf'([A-Z][{_N}]{{3,80}}?)\s+has\s+joined\s+',
+        rf'([A-Z][{_N}]{{3,80}}?)\s+affiliated\s+with\s+',
+        rf'([A-Z][{_N}]{{3,80}}?),?\s+(?:led by|owned by|founded by).*?(?:has joined|was acquired by)\s+',
+        rf'(?:(?:Advised|Represented|Assisted|Helped|Supported)\s+)?([A-Z][{_N}]{{3,80}}?)\s+(?:in (?:her|his|their) sale)[\s.,;]',
     ]
     for pattern in inverted_patterns:
         m = re.search(pattern, text)
@@ -816,17 +815,17 @@ def extract_target(text, platform):
 
     # --- Standard patterns (verb before target) ---
     for pattern in [
-        rf'advised\s+([A-Z][{_N}]{{3,50}}?)\s+(?:in its|on its|in the)',
-        rf'acqui(?:red|sition of)\s+([A-Z][{_N}]{{3,50}}?)(?:\s+in\s|\s+from\s|,|\.|;|\s+and\s|\s+to\s)',
-        rf'acquired:\s+([A-Z][{_N}]{{3,50}}?)(?:\s+in\s|\s+from\s|,|\.|;|\s+and\s|\s+to\s)',
-        rf'partnerships?\s+with\s+(?:Dr\.\s+[A-Za-z]+\s+[A-Za-z]+\s+and\s+(?:the\s+)?)?([A-Z][{_N}]{{3,50}}?)(?:\s+team|\s+in\s|,|\.|;|\(|\s+and\s)',
-        rf'affiliated with\s+([A-Z][{_N}]{{3,50}}?)(?:\s+in\s|,|\.|;)',
-        rf'addition of\s+([A-Z][{_N}]{{3,50}}?)(?:\s+in\s|\s+to\s|,|\.|;)',
-        rf'welcomed\s+([A-Z][{_N}]{{3,50}}?)(?:\s+as\s|\s+to\s|\s+in\s|,|\.|;)',
-        rf'merged with\s+([A-Z][{_N}]{{3,50}}?)(?:\s+in\s|,|\.|;)',
-        rf'sale (?:of|to)\s+(?:[A-Z][{_N}]+?\s+(?:to|by)\s+)?([A-Z][{_N}]{{3,50}}?)(?:\.|,|;)',
-        rf'partnered\s+with:?\s+([A-Z][{_N}]{{3,50}}?)(?:\s+in\s|,|\.|;|\()',
-        rf'welcomed\s+.*?:\s+([A-Z][{_N}]{{3,50}}?)(?:\s+in\s|,|\.|;|\()',
+        rf'advised\s+([A-Z][{_N}]{{3,80}}?)\s+(?:in its|on its|in the)',
+        rf'acqui(?:red|sition of)\s+([A-Z][{_N}]{{3,80}}?)(?:\s+in\s|\s+from\s|,|\.|;|\s+and\s|\s+to\s)',
+        rf'acquired:\s+([A-Z][{_N}]{{3,80}}?)(?:\s+in\s|\s+from\s|,|\.|;|\s+and\s|\s+to\s)',
+        rf'partnerships?\s+with\s+(?:Dr\.\s+[A-Za-z]+\s+[A-Za-z]+\s+and\s+(?:the\s+)?)?([A-Z][{_N}]{{3,80}}?)(?:\s+team|\s+in\s|,|\.|;|\(|\s+and\s)',
+        rf'affiliated with\s+([A-Z][{_N}]{{3,80}}?)(?:\s+in\s|,|\.|;)',
+        rf'addition of\s+([A-Z][{_N}]{{3,80}}?)(?:\s+in\s|\s+to\s|,|\.|;)',
+        rf'welcomed\s+([A-Z][{_N}]{{3,80}}?)(?:\s+as\s|\s+to\s|\s+in\s|,|\.|;)',
+        rf'merged with\s+([A-Z][{_N}]{{3,80}}?)(?:\s+in\s|,|\.|;)',
+        rf'sale (?:of|to)\s+(?:[A-Z][{_N}]+?\s+(?:to|by)\s+)?([A-Z][{_N}]{{3,80}}?)(?:\.|,|;)',
+        rf'partnered\s+with:?\s+([A-Z][{_N}]{{3,80}}?)(?:\s+in\s|,|\.|;|\()',
+        rf'welcomed\s+.*?:\s+([A-Z][{_N}]{{3,80}}?)(?:\s+in\s|,|\.|;|\()',
     ]:
         m = re.search(pattern, text)
         if m:
