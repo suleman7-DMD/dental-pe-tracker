@@ -289,8 +289,7 @@ def auto_ingest(slug: str | None, dry_run: bool = False) -> tuple[int, int]:  # 
 def run(args: argparse.Namespace) -> None:
     """Top-level orchestrator. Wraps the chosen mode in the standard
     ``log_scrape_start/complete/error`` pipeline-logger envelope."""
-    start = time.time()
-    log_scrape_start(SOURCE_NAME, summary=f"PESP Airtable ingester ({args.mode})")
+    start = log_scrape_start(SOURCE_NAME)
 
     try:
         if args.mode == "csv":
@@ -307,8 +306,9 @@ def run(args: argparse.Namespace) -> None:
         log_scrape_complete(
             SOURCE_NAME,
             start_time=start,
+            new_records=inserted,
             summary=f"Processed {processed} CSV rows, inserted {inserted} dental deals",
-            details={"mode": args.mode, "processed": processed, "inserted": inserted},
+            extra={"mode": args.mode, "processed": processed, "inserted": inserted},
         )
     except NotImplementedError as e:
         log_scrape_error(SOURCE_NAME, e, start)
