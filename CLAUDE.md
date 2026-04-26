@@ -282,12 +282,11 @@ After pipeline runs, `scrapers/sync_to_supabase.py` pushes updated data to Supab
 | `scrapers/compute_signals.py` | 1,424 | Materializes per-practice + per-ZIP signal flags into `practice_signals` and `zip_signals` for Warroom + Launchpad. NPI-null guard added in `eb75c6c`; filters watched ZIPs to prevent FK violations on global-pool rows. |
 | `scrapers/cleanup_pesp_junk.py` | 80 | One-shot cleanup CLI: deletes PESP deal rows whose `target_name` matches a known commentary fragment (e.g. "based on", "according to") that escaped the COMMENTARY_PATTERNS pre-filter. Idempotent; safe to re-run. |
 | `scrapers/fast_sync_watched.py` | 200 | Fast partial sync: re-uploads ONLY the practices in `watched_zips` (~14k rows) without touching the global 402k pool. Used when a watched-ZIP-scoped change (entity_classification refresh, signal recompute) needs to land in Supabase without paying the full incremental scan cost. |
-| `scrapers/dossier_batch/launch.py` | — | Picks top-1 unresearched independent per Chicagoland watched ZIP, builds bulletproofed batch via `engine.build_batch_requests`, submits to Anthropic. Writes `batch_id` to `/tmp/full_batch_id.txt`. |
-| `scrapers/dossier_batch/launch_2000_excl_chi.py` | — | Bigger variant: top-2000 unresearched independents EXCLUDING Chicago-proper (`zip NOT LIKE '606%'`). Cost cap raised to $250. Used for the 2026-04-25 backfill batch `msgbatch_01A3FxKxKxemAyqDr2AcGYUq`. |
-| `scrapers/dossier_batch/poll.py` | — | Reads `batch_id`, polls Anthropic every 30s up to 90 min, runs `validate_dossier()` per result, stores passing dossiers via `store_practice_intel()`, runs `sync_to_supabase.py`, writes `/tmp/full_batch_summary.json`. |
+| `scrapers/dossier_batch/launch.py` | — | Generic batch-research launcher. Defaults to top-1-per-ZIP across Chicagoland watched ZIPs, $11 budget. Argparse flags: `--budget`, `--cost-per-practice`, `--target-count` (top-N mode), `--metro-pattern`, `--exclude-zip-pattern`. Writes batch_id to `data/last_batch_id.json` (durable) AND `/tmp/full_batch_id.txt` (back-compat). The old `launch_2000_excl_chi.py` fork was deleted (F25, 2026-04-26) — replicate via `python3 launch.py --target-count 2000 --budget 250 --exclude-zip-pattern '606%'`. |
+| `scrapers/dossier_batch/poll.py` | — | Polls a batch every 30s up to 90 min, runs `validate_dossier()` per result, stores passing dossiers, runs `sync_to_supabase.py`, writes `/tmp/full_batch_summary.json`. Resolves batch_id in this order: `--batch-id` CLI arg → `data/last_batch_id.json` → `/tmp/full_batch_id.txt`. |
 | `scrapers/dossier_batch/poll_zip_batches.py` | — | Auto-retrieval poller for the 290-ZIP re-research batches (audit §15 #7). Reads `/tmp/zip_batch_ids.json` (one or more batch IDs), polls each, validates via `validate_zip_dossier()`, stores via `store_zip_intel()`. |
 | `scrapers/dossier_batch/upsert_practice_intel.py` | — | Standalone UPSERT path: copies `practice_intel` rows from local SQLite to Supabase via `INSERT ... ON CONFLICT DO UPDATE`, skipping the TRUNCATE that `sync_to_supabase.py`'s `full_replace` strategy uses. Useful when you want to land verified dossiers in Supabase without waiting for the next full sync (or when full sync is wiping data). |
-| `scrapers/dossier_batch/migrate_verification_cols.py` | — | One-shot Supabase migration: adds `verification_searches`, `verification_quality`, `verification_urls` columns to `practice_intel` (idempotent, uses `ADD COLUMN IF NOT EXISTS`). Companion SQLite ALTER must be run separately (no IF NOT EXISTS support). |
+| `scrapers/dossier_batch/migrate_verification_cols.py` | — | Adds `verification_searches`, `verification_quality`, `verification_urls` columns to `practice_intel` on BOTH databases. Idempotent on both: Postgres uses `ADD COLUMN IF NOT EXISTS`; SQLite introspects via `PRAGMA table_info` and skips existing columns (F24, 2026-04-26). Re-runs are safe. |
 | `pipeline_check.py` | 540 | Diagnostic health check tool |
 
 ## Entity Classification System
@@ -461,13 +460,13 @@ Every practice dossier is gated through a 4-layer defense before it can land in 
 
 **Don't quote `poll.py.totals.total_cost_usd` to the user as the actual bill** — it's a worst-case estimate. Always reconcile with https://console.anthropic.com/usage before reporting cost.
 
-**Operational scripts (`scrapers/dossier_batch/`):** see Pipeline File Quick Reference table for `launch.py`, `launch_2000_excl_chi.py`, `poll.py`, `poll_zip_batches.py`, `upsert_practice_intel.py`, `migrate_verification_cols.py`. `last_run_summary.json` holds the per-NPI breakdown of the 2026-04-25 200-practice run as a regression baseline.
+**Operational scripts (`scrapers/dossier_batch/`):** see Pipeline File Quick Reference table for `launch.py`, `poll.py`, `poll_zip_batches.py`, `upsert_practice_intel.py`, `migrate_verification_cols.py`. `last_run_summary.json` holds the per-NPI breakdown of the 2026-04-25 200-practice run as a regression baseline.
 
 **Known issues (open, not blocking):**
 1. **`verification_quality` enum drift** — model returned `"high"` for 10 dossiers when spec is `verified|partial|insufficient`. Validation gate accepts non-`insufficient` values, so `"high"` slipped through. Either tighten the prompt to suppress `"high"` or widen the enum/index in `database.py:427`.
-2. **`/tmp/full_batch_id.txt` is not committed** — `launch.py` writes it, `poll.py` reads it. Cross-process handoff via `/tmp` is fragile across reboots. Future: pass batch_id as CLI arg or use `data/last_batch_id.txt`.
-3. **SQLite `ALTER TABLE` is not idempotent** — `migrate_verification_cols.py` against SQLite would fail with "duplicate column" since SQLite has no `ADD COLUMN IF NOT EXISTS`. Wrap in try/except or run via `sqlite3` CLI.
-4. **Cost cap in `launch.py` is hardcoded $11** — trims to fit. `launch_2000_excl_chi.py` raised to $250. Bump the script if budget grows.
+2. **batch_id handoff (RESOLVED F23 2026-04-26)** — `launch.py` now writes batch_id to `data/last_batch_id.json` (durable, with full submission metadata) AND mirrors to `/tmp/full_batch_id.txt` for back-compat. `poll.py` resolves in this order: `--batch-id` CLI arg → durable JSON → legacy `/tmp` file.
+3. **SQLite migration idempotency (RESOLVED F24 2026-04-26)** — `migrate_verification_cols.py` now handles BOTH databases. Postgres uses `ADD COLUMN IF NOT EXISTS`; SQLite introspects via `PRAGMA table_info` and skips existing columns. Re-runs are safe.
+4. **`launch.py` budget configurability (RESOLVED F25 2026-04-26)** — `launch.py` now takes `--budget`, `--cost-per-practice`, `--target-count`, `--metro-pattern`, `--exclude-zip-pattern` flags. The fork `launch_2000_excl_chi.py` was deleted; replicate its behavior via `python3 launch.py --target-count 2000 --budget 250 --exclude-zip-pattern '606%'`.
 5. **`practice_signals` FK violation (RESOLVED 2026-04-25)** — NPI `1316509367` is GRACE KWON in WORCESTER, MA, zip `01610` (an earlier audit note misstated this as "Grace Kim, Boston, 02115" — corrected per direct SQLite lookup). Was pre-existing in `practice_signals` but missing from `practices`. Fixed by: (a) `compute_signals.py:475-505` filters `WHERE zip IN (SELECT zip_code FROM watched_zips)`, (b) explicit `npi IS NOT NULL` guard added in commit `eb75c6c`. Verified: `practice_signals.orphan_count = 0`. Sync floor `MIN_ROWS_THRESHOLD["practice_signals"] = 1000` protects against silent wipes.
 
 **Backfill planning (post-200-practice run):**
@@ -478,19 +477,19 @@ Every practice dossier is gated through a 4-layer defense before it can land in 
 
 **End-to-end recipe:**
 ```bash
-# 1. (one-time, if columns missing on a fresh DB)
+# 1. (one-time, if columns missing on a fresh DB) — idempotent on both DBs
 python3 scrapers/dossier_batch/migrate_verification_cols.py
-sqlite3 data/dental_pe_tracker.db \
-  "ALTER TABLE practice_intel ADD COLUMN verification_searches INTEGER;" \
-  "ALTER TABLE practice_intel ADD COLUMN verification_quality VARCHAR(20);" \
-  "ALTER TABLE practice_intel ADD COLUMN verification_urls TEXT;"
 
-# 2. submit
+# 2. submit (defaults: top-1-per-ZIP Chicagoland, $11 budget)
 python3 scrapers/dossier_batch/launch.py
-#    → writes /tmp/full_batch_id.txt
+#    → writes data/last_batch_id.json (durable) + /tmp/full_batch_id.txt (back-compat)
+# Or for a bigger pool:
+#   python3 scrapers/dossier_batch/launch.py --target-count 2000 --budget 250 --exclude-zip-pattern '606%'
 
 # 3. poll + validate + store + sync (background)
 nohup python3 scrapers/dossier_batch/poll.py > /tmp/poll.log 2>&1 &
+#    Resolves batch_id from data/last_batch_id.json automatically.
+#    Override with: nohup python3 scrapers/dossier_batch/poll.py --batch-id msgbatch_XXX > ...
 
 # 4. when /tmp/full_batch_summary.json appears, inspect it
 python3 -c "import json; s=json.load(open('/tmp/full_batch_summary.json')); print(f\"stored={s['stored']} rejected={s['rejected']} cost=\${s['totals']['total_cost_usd']}\")"
@@ -533,10 +532,10 @@ A 3-week pipeline outage was root-caused across every scraper, the Supabase sync
 Cron `'0 12 */3 * *'` (every 3 days at 12:00 UTC) hits Supabase `/rest/v1/` as read-only ping to prevent free-tier pause. **REQUIRES USER ACTION**: Add `SUPABASE_URL` + `SUPABASE_ANON_KEY` secrets in GitHub repo settings.
 
 ### Known limitations (NOT fixed, documented for future work)
-- **GDN "Partners" ambiguity**: `partners/partnered/partnering` are in `_DEAL_VERB_SET` as verbs, so entity names ending in "Partners" (e.g., "Zyphos & Acmera Dental Partners") get truncated. KNOWN_PLATFORMS catches the common cases; a lookahead for "Partners with" vs "Partners <noun>" would improve the fallback.
-- **Apostrophe normalization**: GDN logs show "Smith's Dental" (U+2019) and "Smith's Dental" (U+0027) deduplicating as different entities. Needs a Unicode normalization pass.
-- **`ada_hpi_benchmarks.updated_at` still NULL**: Freshness UI reads `created_at` as a workaround. Next `ada_hpi_importer.py` run should set both.
-- **Mirror scrapers in `dental-pe-nextjs/scrapers/`**: DEPRECATED markers added but the directory is gitignored, so markers are stranded on local disk. Cron reads from parent `/scrapers/`, so this isn't actively harmful. Recommend a future `rm -rf dental-pe-nextjs/scrapers/` cleanup.
+- **GDN "Partners" ambiguity (RESOLVED F21, commit `ae03615`)**: `extract_platform()` now uses a `_PARTNERS_VERB_NEXT = {"with", "to", "and"}` lookahead. "Partners" is treated as a noun and accumulated into the entity unless the next token is `with`/`to`/`and`, in which case it stops there as a verb. Handles "Zyphos Dental Partners acquired X" (noun) AND "BrandX partners with Y" (verb).
+- **Apostrophe normalization (RESOLVED F19, commit `ae03615`)**: `database.normalize_punctuation()` translates curly quotes and curly apostrophes (U+2018, U+2019, U+201C, U+201D, low/high variants) → ASCII at the GDN/PESP scraper boundary. "Smith's Dental" (U+2019) and "Smith's Dental" (U+0027) now dedupe as the same entity. Called from `gdn_scraper.py:999-1001` for platform/sponsor/target.
+- **`ada_hpi_benchmarks.updated_at` still NULL** (F20 verified resolved 2026-04-26): all 918 rows have `updated_at` populated by the latest importer run. Freshness UI reads it directly. Earlier doc note was stale.
+- **Mirror scrapers in `dental-pe-nextjs/scrapers/`** (F22 verified resolved): the directory does not exist; cron reads from parent `/scrapers/` only. Earlier doc note was stale.
 
 ## Skills Available
 

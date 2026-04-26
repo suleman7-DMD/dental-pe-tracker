@@ -6,7 +6,13 @@ Poll the full Chicagoland batch until done. When complete:
   4. Compute real cost from token usage
   5. Run sync_to_supabase to push to live app
   6. Write /tmp/full_batch_summary.json with full breakdown
+
+Batch-ID resolution order:
+  1. --batch-id CLI arg (most explicit)
+  2. data/last_batch_id.json (durable, written by launch.py)
+  3. /tmp/full_batch_id.txt (back-compat)
 """
+import argparse
 import json
 import os
 import subprocess
@@ -28,7 +34,25 @@ from scrapers.weekly_research import validate_dossier
 from scrapers.intel_database import store_practice_intel
 
 
-BATCH_ID = open("/tmp/full_batch_id.txt").read().strip()
+def resolve_batch_id() -> str:
+    p = argparse.ArgumentParser()
+    p.add_argument("--batch-id", type=str, default=None,
+                   help="Anthropic batch ID. Falls back to data/last_batch_id.json then /tmp/full_batch_id.txt")
+    args = p.parse_args()
+    if args.batch_id:
+        return args.batch_id
+    durable = os.path.join(ROOT, "data", "last_batch_id.json")
+    if os.path.exists(durable):
+        with open(durable) as f:
+            return json.load(f)["batch_id"]
+    legacy = "/tmp/full_batch_id.txt"
+    if os.path.exists(legacy):
+        return open(legacy).read().strip()
+    print("FATAL: no batch_id provided. Pass --batch-id or run launch.py first.", file=sys.stderr)
+    sys.exit(1)
+
+
+BATCH_ID = resolve_batch_id()
 
 
 def main():
