@@ -85,7 +85,7 @@ run_step "[10/11] Computing Warroom signals..." "$PYTHON $PROJECT/scrapers/compu
 
 # Sync to Supabase (only if SUPABASE_DATABASE_URL is configured)
 if [ -n "$SUPABASE_DATABASE_URL" ]; then
-    run_step "[11/11] Syncing to Supabase..." "$PYTHON $PROJECT/scrapers/sync_to_supabase.py" 30
+    run_step "[11/11] Syncing to Supabase..." "$PYTHON $PROJECT/scrapers/sync_to_supabase.py" 60
 fi
 
 echo "" | tee -a "$LOGFILE"
