@@ -758,10 +758,14 @@ def extract_target(text, platform):
     """Try to extract the target practice name."""
     # GDN patterns: "sale to [Platform]" means we want the entity before "sale to"
     # "advised [Target] in its sale"
-    # Character class for target names: includes apostrophe, smart quote, hyphen, ampersand, period, comma
-    # Comma is included so relative clauses ("X, headquartered in Y, was acquired by Z")
-    # can be spanned by the regex; _clean_target() then truncates at the first stop word.
-    _N = r"A-Za-z0-9\s\'\u2019\-&\.,"
+    # Character class for target names: apostrophe, smart quote, hyphen, ampersand, period.
+    # Comma intentionally EXCLUDED \u2014 including it caused the regex to slide across sentence
+    # boundaries on prose-heavy posts (e.g. "Capitol Dental Care to extend access to Oregon
+    # Health Plan members in the rural area"), capturing the entire continuation. Relative
+    # clauses with embedded commas (e.g. "Acme Dental, headquartered in Austin, was acquired
+    # by Z") will fail to capture \u2014 that's the conservative trade-off; a None target is far
+    # better than garbage prose ending up in the deal feed.
+    _N = r"A-Za-z0-9\s\'\u2019\-&\."
 
     _TARGET_STOP_WORDS = {"which", "located", "headquartered", "based", "situated",
                           "operating", "serving", "providing", "offering", "established",
@@ -793,11 +797,11 @@ def extract_target(text, platform):
 
     # --- Inverted patterns (target before verb) — check first ---
     inverted_patterns = [
-        rf'([A-Z][{_N}]{{3,80}}?)\s+was\s+acquired\s+by\s+',
-        rf'([A-Z][{_N}]{{3,80}}?)\s+has\s+joined\s+',
-        rf'([A-Z][{_N}]{{3,80}}?)\s+affiliated\s+with\s+',
-        rf'([A-Z][{_N}]{{3,80}}?),?\s+(?:led by|owned by|founded by).*?(?:has joined|was acquired by)\s+',
-        rf'(?:(?:Advised|Represented|Assisted|Helped|Supported)\s+)?([A-Z][{_N}]{{3,80}}?)\s+(?:in (?:her|his|their) sale)[\s.,;]',
+        rf'([A-Z][{_N}]{{3,50}}?)\s+was\s+acquired\s+by\s+',
+        rf'([A-Z][{_N}]{{3,50}}?)\s+has\s+joined\s+',
+        rf'([A-Z][{_N}]{{3,50}}?)\s+affiliated\s+with\s+',
+        rf'([A-Z][{_N}]{{3,50}}?),?\s+(?:led by|owned by|founded by).*?(?:has joined|was acquired by)\s+',
+        rf'(?:(?:Advised|Represented|Assisted|Helped|Supported)\s+)?([A-Z][{_N}]{{3,50}}?)\s+(?:in (?:her|his|their) sale)[\s.,;]',
     ]
     for pattern in inverted_patterns:
         m = re.search(pattern, text)
@@ -815,17 +819,17 @@ def extract_target(text, platform):
 
     # --- Standard patterns (verb before target) ---
     for pattern in [
-        rf'advised\s+([A-Z][{_N}]{{3,80}}?)\s+(?:in its|on its|in the)',
-        rf'acqui(?:red|sition of)\s+([A-Z][{_N}]{{3,80}}?)(?:\s+in\s|\s+from\s|,|\.|;|\s+and\s|\s+to\s)',
-        rf'acquired:\s+([A-Z][{_N}]{{3,80}}?)(?:\s+in\s|\s+from\s|,|\.|;|\s+and\s|\s+to\s)',
-        rf'partnerships?\s+with\s+(?:Dr\.\s+[A-Za-z]+\s+[A-Za-z]+\s+and\s+(?:the\s+)?)?([A-Z][{_N}]{{3,80}}?)(?:\s+team|\s+in\s|,|\.|;|\(|\s+and\s)',
-        rf'affiliated with\s+([A-Z][{_N}]{{3,80}}?)(?:\s+in\s|,|\.|;)',
-        rf'addition of\s+([A-Z][{_N}]{{3,80}}?)(?:\s+in\s|\s+to\s|,|\.|;)',
-        rf'welcomed\s+([A-Z][{_N}]{{3,80}}?)(?:\s+as\s|\s+to\s|\s+in\s|,|\.|;)',
-        rf'merged with\s+([A-Z][{_N}]{{3,80}}?)(?:\s+in\s|,|\.|;)',
-        rf'sale (?:of|to)\s+(?:[A-Z][{_N}]+?\s+(?:to|by)\s+)?([A-Z][{_N}]{{3,80}}?)(?:\.|,|;)',
-        rf'partnered\s+with:?\s+([A-Z][{_N}]{{3,80}}?)(?:\s+in\s|,|\.|;|\()',
-        rf'welcomed\s+.*?:\s+([A-Z][{_N}]{{3,80}}?)(?:\s+in\s|,|\.|;|\()',
+        rf'advised\s+([A-Z][{_N}]{{3,50}}?)\s+(?:in its|on its|in the)',
+        rf'acqui(?:red|sition of)\s+([A-Z][{_N}]{{3,50}}?)(?:\s+in\s|\s+from\s|,|\.|;|\s+and\s|\s+to\s)',
+        rf'acquired:\s+([A-Z][{_N}]{{3,50}}?)(?:\s+in\s|\s+from\s|,|\.|;|\s+and\s|\s+to\s)',
+        rf'partnerships?\s+with\s+(?:Dr\.\s+[A-Za-z]+\s+[A-Za-z]+\s+and\s+(?:the\s+)?)?([A-Z][{_N}]{{3,50}}?)(?:\s+team|\s+in\s|,|\.|;|\(|\s+and\s)',
+        rf'affiliated with\s+([A-Z][{_N}]{{3,50}}?)(?:\s+in\s|,|\.|;)',
+        rf'addition of\s+([A-Z][{_N}]{{3,50}}?)(?:\s+in\s|\s+to\s|,|\.|;)',
+        rf'welcomed\s+([A-Z][{_N}]{{3,50}}?)(?:\s+as\s|\s+to\s|\s+in\s|,|\.|;)',
+        rf'merged with\s+([A-Z][{_N}]{{3,50}}?)(?:\s+in\s|,|\.|;)',
+        rf'sale (?:of|to)\s+(?:[A-Z][{_N}]+?\s+(?:to|by)\s+)?([A-Z][{_N}]{{3,50}}?)(?:\.|,|;)',
+        rf'partnered\s+with:?\s+([A-Z][{_N}]{{3,50}}?)(?:\s+in\s|,|\.|;|\()',
+        rf'welcomed\s+.*?:\s+([A-Z][{_N}]{{3,50}}?)(?:\s+in\s|,|\.|;|\()',
     ]:
         m = re.search(pattern, text)
         if m:
