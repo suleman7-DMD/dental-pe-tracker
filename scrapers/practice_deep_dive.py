@@ -87,11 +87,12 @@ def get_practices_for_research(db_path=None, zip_code=None, metro=None,
     
     # Priority ordering: high-value targets first
     query = f"""
-    SELECT p.npi, p.practice_name, p.doing_business_as, p.address, p.city, 
+    SELECT p.npi, p.practice_name, p.doing_business_as, p.address, p.city,
            p.state, p.zip, p.entity_type, p.taxonomy_code,
            p.ownership_status, p.entity_classification,
            p.buyability_score, p.year_established, p.employee_count,
-           p.estimated_revenue, p.provider_last_name, p.phone, p.website
+           p.estimated_revenue, p.provider_last_name, p.phone, p.website,
+           p.data_axle_raw_name
     FROM practices p
     WHERE {where}
     ORDER BY 
@@ -134,24 +135,42 @@ def build_extra_context(practice):
         parts.append(f"Ownership: {practice['ownership_status']}")
     if practice.get("doing_business_as"):
         parts.append(f"DBA: {practice['doing_business_as']}")
+    if practice.get("data_axle_raw_name"):
+        parts.append(f"Business name (Data Axle): {practice['data_axle_raw_name']}")
     return ". ".join(parts)
 
 
-def research_single_practice(engine, tracker, practice, force=False, 
+def _best_search_name(practice):
+    """Pick the best searchable name for a practice.
+
+    Priority: doing_business_as > data_axle_raw_name > practice_name.
+    For individual NPIs, practice_name is just 'FIRSTNAME LASTNAME' from NPPES —
+    useless for Google searches. data_axle_raw_name is the actual business name.
+    """
+    dba = (practice.get("doing_business_as") or "").strip()
+    if dba:
+        return dba
+    daxle = (practice.get("data_axle_raw_name") or "").strip()
+    if daxle:
+        return daxle
+    return practice.get("practice_name", "Unknown")
+
+
+def research_single_practice(engine, tracker, practice, force=False,
                               deep=False, model=None):
     """Research one practice. Returns result dict."""
     npi = practice["npi"]
-    name = practice.get("practice_name", "Unknown")
-    
+    name = _best_search_name(practice)
+
     if not force:
         existing = get_practice_intel(npi)
         if existing and is_cache_fresh(existing.get("research_date")):
             days = (datetime.now() - datetime.fromisoformat(existing["research_date"])).days
             print(f"  ⏭  {name[:40]:40} — cached {days}d ago")
             return existing
-    
+
     print(f"  🔍 {name[:50]:50}", end=" ", flush=True)
-    
+
     doctor_name = None
     if practice.get("entity_type") == "1":
         doctor_name = practice.get("practice_name", "")
@@ -548,7 +567,7 @@ Examples:
             items = []
             for p in practices:
                 items.append({
-                    "npi": p["npi"], "name": p.get("practice_name",""),
+                    "npi": p["npi"], "name": _best_search_name(p),
                     "address": p.get("address",""), "city": p.get("city",""),
                     "state": p.get("state",""), "zip": p.get("zip",""),
                     "doctor_name": p.get("practice_name","") if p.get("entity_type")=="1" else "",

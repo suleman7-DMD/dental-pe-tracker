@@ -42,7 +42,7 @@ for raw in open(os.path.join(ROOT, ".env")):
 
 from scrapers.research_engine import ResearchEngine, MODEL_HAIKU
 from scrapers.database import DB_PATH
-from scrapers.practice_deep_dive import build_extra_context
+from scrapers.practice_deep_dive import build_extra_context, _best_search_name
 
 
 def parse_args():
@@ -68,7 +68,8 @@ def fetch_pool(metro_pattern: str, exclude_zip_pattern: str | None):
                p.state, p.zip, p.entity_type, p.taxonomy_code,
                p.ownership_status, p.entity_classification,
                p.buyability_score, p.year_established, p.employee_count,
-               p.estimated_revenue, p.provider_last_name, p.phone, p.website
+               p.estimated_revenue, p.provider_last_name, p.phone, p.website,
+               p.data_axle_raw_name
         FROM practices p
         WHERE p.zip IN (SELECT zip_code FROM watched_zips WHERE metro_area LIKE ?)
     """
@@ -179,9 +180,10 @@ def main():
 
     items = []
     for p in picks:
+        search_name = _best_search_name(p)
         items.append({
             "npi": p["npi"],
-            "name": p.get("practice_name", ""),
+            "name": search_name,
             "address": p.get("address", ""),
             "city": p.get("city", ""),
             "state": p.get("state", ""),

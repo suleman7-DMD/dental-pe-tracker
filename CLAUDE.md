@@ -236,6 +236,7 @@ Full descriptions in `CLAUDE_ARCHIVE.md` §"Pipeline File Quick Reference".
 | `scrapers/dso_classifier.py` | 4-pass: name → location → entity_classification (uses `practice_locations`) → corporate escalation |
 | `scrapers/pesp_scraper.py` | PE deals. DNS retry + COMMENTARY_PATTERNS prefilter |
 | `scrapers/gdn_scraper.py` | DSO roundups. `_is_roundup_link`, `_PASS_THROUGH_SET`, `_DEAL_VERB_SET`, `_PARTNERS_VERB_NEXT` (F21) |
+| `scrapers/beckers_scraper.py` | Becker's Dental Review individual deal articles. Runs weekly (step 3b in refresh.sh), covers deals between GDN monthly roundups. Cross-source dedup via `already_in_db()` (platform+target ±60d). Source=`beckers`. |
 | `scrapers/adso_location_scraper.py` | DSO offices. HTTP_TIMEOUT=(10,30), MAX_SECONDS_PER_DSO=300, log in `finally` |
 | `scrapers/ada_hpi_{downloader,importer}.py` | ADA benchmark XLSX |
 | `scrapers/pitchbook_importer.py` | PitchBook CSV/XLSX |

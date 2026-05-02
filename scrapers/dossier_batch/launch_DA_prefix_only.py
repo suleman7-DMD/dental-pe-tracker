@@ -30,7 +30,7 @@ for raw in open(os.path.join(ROOT, ".env")):
 import sqlite3
 from scrapers.research_engine import ResearchEngine, MODEL_HAIKU
 from scrapers.database import DB_PATH
-from scrapers.practice_deep_dive import build_extra_context
+from scrapers.practice_deep_dive import build_extra_context, _best_search_name
 
 
 COST_PER_PRACTICE = 0.008
@@ -45,7 +45,8 @@ def main():
                p.state, p.zip, p.entity_type, p.taxonomy_code,
                p.ownership_status, p.entity_classification,
                p.buyability_score, p.year_established, p.employee_count,
-               p.estimated_revenue, p.provider_last_name, p.phone, p.website
+               p.estimated_revenue, p.provider_last_name, p.phone, p.website,
+               p.data_axle_raw_name
           FROM practices p
           JOIN practice_intel pi ON pi.npi = p.npi
          WHERE p.npi LIKE 'DA_%'
@@ -70,7 +71,7 @@ def main():
     for p in rows:
         items.append({
             "npi": p["npi"],
-            "name": p["practice_name"] or "",
+            "name": _best_search_name(dict(p)),
             "address": p["address"] or "",
             "city": p["city"] or "",
             "state": p["state"] or "",

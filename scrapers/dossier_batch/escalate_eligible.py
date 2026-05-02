@@ -35,6 +35,7 @@ from scrapers.research_engine import (
     ResearchEngine, MODEL_SONNET, ESCALATION_SYSTEM, MAX_TOKENS_SONNET,
 )
 from scrapers.database import DB_PATH
+from scrapers.practice_deep_dive import _best_search_name
 
 
 # Sonnet 4.6 batch rate ≈ $1.50 input / $7.50 output per Mtok (50% batch discount)
@@ -73,7 +74,8 @@ def main():
     conn.row_factory = sqlite3.Row
     rows = conn.execute("""
         SELECT pi.npi, pi.raw_json, pi.escalated,
-               p.practice_name, p.address, p.city, p.state, p.zip
+               p.practice_name, p.doing_business_as, p.data_axle_raw_name,
+               p.address, p.city, p.state, p.zip
           FROM practice_intel pi
           JOIN practices p ON p.npi = pi.npi
          WHERE pi.escalated = 0
@@ -89,7 +91,7 @@ def main():
         if _should_escalate(data):
             candidates.append({
                 "npi": r["npi"],
-                "name": r["practice_name"] or "",
+                "name": _best_search_name(dict(r)),
                 "address": r["address"] or "",
                 "city": r["city"] or "",
                 "state": r["state"] or "",

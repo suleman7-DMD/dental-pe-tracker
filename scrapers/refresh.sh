@@ -65,6 +65,10 @@ run_step() {
 
 run_step "[2/11] Scraping PESP..."                "$PYTHON $PROJECT/scrapers/pesp_scraper.py"              15
 run_step "[3/11] Scraping GDN..."                 "$PYTHON $PROJECT/scrapers/gdn_scraper.py"               15
+# Becker's covers individual deal articles published between GDN monthly roundups.
+# Catches deals in the 4-week gap between GDN publications. Cross-source dedup
+# (already_in_db()) prevents double-inserting deals GDN later includes.
+run_step "[3b/11] Scraping Becker's Dental..."    "$PYTHON $PROJECT/scrapers/beckers_scraper.py --since $(date -v-60d +%Y-%m-%d 2>/dev/null || date --date='60 days ago' +%Y-%m-%d)"  15
 run_step "[4/11] Importing PitchBook CSVs..."     "$PYTHON $PROJECT/scrapers/pitchbook_importer.py --auto"  5
 run_step "[5/11] Scraping ADSO locations..."       "$PYTHON $PROJECT/scrapers/adso_location_scraper.py"    30
 run_step "[6/11] Checking ADA HPI for updates..."  "$PYTHON $PROJECT/scrapers/ada_hpi_downloader.py"       10

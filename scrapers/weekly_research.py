@@ -43,6 +43,17 @@ DEFAULT_BUDGET = 5.00  # Max $ per weekly run
 PRACTICE_BATCH_SIZE = 20  # Practices per week
 
 
+def _best_practice_name(practice):
+    """Pick the best searchable name: DBA > Data Axle > NPPES practice_name."""
+    dba = (practice.get("doing_business_as") or "").strip()
+    if dba:
+        return dba
+    daxle = (practice.get("data_axle_raw_name") or "").strip()
+    if daxle:
+        return daxle
+    return practice.get("practice_name", "Unknown")
+
+
 def get_research_queue(db_path=None):
     """Build the weekly research queue with cost estimates."""
     db = db_path or get_db_path()
@@ -69,7 +80,8 @@ def get_research_queue(db_path=None):
     # Unresearched high-priority practices
     new_practices = conn.execute(f"""
         SELECT p.npi, p.practice_name, p.address, p.city, p.state, p.zip,
-               p.entity_classification, p.buyability_score
+               p.entity_classification, p.buyability_score, p.data_axle_raw_name,
+               p.doing_business_as
         FROM practices p
         WHERE p.zip IN (SELECT zip_code FROM watched_zips)
           AND p.npi NOT IN (SELECT npi FROM practice_intel)
@@ -78,10 +90,11 @@ def get_research_queue(db_path=None):
         ORDER BY p.buyability_score DESC NULLS LAST
         LIMIT {PRACTICE_BATCH_SIZE}
     """).fetchall()
-    
+
     # High-readiness practices needing refresh
     stale_practices = conn.execute("""
-        SELECT pi.npi, p.practice_name, p.address, p.city, p.state, p.zip
+        SELECT pi.npi, p.practice_name, p.address, p.city, p.state, p.zip,
+               p.data_axle_raw_name, p.doing_business_as
         FROM practice_intel pi
         JOIN practices p ON pi.npi = p.npi
         WHERE pi.acquisition_readiness = 'high'
@@ -96,9 +109,11 @@ def get_research_queue(db_path=None):
         "stale_zips": [dict(zip(["zip_code","city","state"], r)) for r in stale_zips],
         "new_practices": [dict(zip(
             ["npi","practice_name","address","city","state","zip",
-             "entity_classification","buyability_score"], r)) for r in new_practices],
+             "entity_classification","buyability_score","data_axle_raw_name",
+             "doing_business_as"], r)) for r in new_practices],
         "stale_practices": [dict(zip(
-            ["npi","practice_name","address","city","state","zip"], r)) for r in stale_practices],
+            ["npi","practice_name","address","city","state","zip",
+             "data_axle_raw_name","doing_business_as"], r)) for r in stale_practices],
     }
 
 
@@ -502,10 +517,10 @@ def main():
                     print(f"❌")
 
             for p in all_pracs:
-                name = p.get("practice_name","?")[:30]
-                print(f"  🔍 {name}...", end=" ", flush=True)
+                search_name = _best_practice_name(p)
+                print(f"  🔍 {search_name[:30]}...", end=" ", flush=True)
                 r = engine.research_practice(
-                    p["npi"], p.get("practice_name",""), p.get("address",""),
+                    p["npi"], search_name, p.get("address",""),
                     p.get("city",""), p.get("state",""), p.get("zip",""))
                 if "error" not in r or "_meta" in r:
                     # Validate before storing — same gate as batch path (audit §10.4 / §15 #5)
@@ -533,7 +548,7 @@ def main():
                             for z in queue["new_zips"] + queue["stale_zips"]]
 
             all_prac_items = [{
-                "npi": p["npi"], "name": p.get("practice_name",""),
+                "npi": p["npi"], "name": _best_practice_name(p),
                 "address": p.get("address",""), "city": p.get("city",""),
                 "state": p.get("state",""), "zip": p.get("zip",""),
                 "doctor_name": "", "extra_context": ""

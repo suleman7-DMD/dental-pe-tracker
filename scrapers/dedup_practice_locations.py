@@ -149,6 +149,34 @@ def _is_non_clinical_name(name: str) -> bool:
 # Name-pattern detection (individual NPI name formats)
 # ---------------------------------------------------------------------------
 
+_TITLE_CASE_LOWER = {"a", "an", "and", "as", "at", "but", "by", "for", "in",
+                      "nor", "of", "on", "or", "so", "the", "to", "up", "yet"}
+_TITLE_CASE_UPPER = {"dds", "dmd", "llc", "pllc", "pc", "pa", "ii", "iii", "iv"}
+
+
+def _title_case_business_name(raw: str) -> str:
+    """Convert Data Axle raw names (mixed case) to clean title case.
+
+    Handles: 'Scottsdale Dental Clinic' → pass through,
+             'GLEN KULIG DDS' → 'Glen Kulig DDS',
+             'Family Dental Care' → pass through,
+             'potts james k dds' → 'Potts James K DDS'.
+    """
+    if not raw or not raw.strip():
+        return raw
+    words = raw.strip().split()
+    result = []
+    for i, w in enumerate(words):
+        wl = w.lower()
+        if wl in _TITLE_CASE_UPPER:
+            result.append(w.upper())
+        elif i > 0 and wl in _TITLE_CASE_LOWER:
+            result.append(wl)
+        else:
+            result.append(w.capitalize())
+    return " ".join(result)
+
+
 def _is_person_name(name: str) -> bool:
     """Heuristic: return True if name looks like 'FIRSTNAME LASTNAME' only (no practice keywords)."""
     if not name:
@@ -243,7 +271,8 @@ def derive_practice_locations(session, watched_only: bool = True, dry_run: bool 
         "latitude, longitude, year_established, employee_count, "
         "estimated_revenue, data_axle_import_date, parent_company, "
         "ein, franchise_name, iusa_number, website, data_source, "
-        "provider_last_name, updated_at, enumeration_date, location_type "
+        "provider_last_name, updated_at, enumeration_date, location_type, "
+        "data_axle_raw_name "
         "FROM practices"
     )
     if watched_zip_set:
@@ -267,7 +296,8 @@ def derive_practice_locations(session, watched_only: bool = True, dry_run: bool 
                           latitude, longitude, year_established, employee_count,
                           estimated_revenue, data_axle_import_date, parent_company,
                           ein, franchise_name, iusa_number, website, data_source,
-                          provider_last_name, updated_at, enumeration_date, location_type
+                          provider_last_name, updated_at, enumeration_date, location_type,
+                          data_axle_raw_name
                    FROM practices"""
             )
         ).fetchall()
@@ -287,7 +317,7 @@ def derive_practice_locations(session, watched_only: bool = True, dry_run: bool 
         "parent_company": 23, "ein": 24, "franchise_name": 25,
         "iusa_number": 26, "website": 27, "data_source": 28,
         "provider_last_name": 29, "updated_at": 30, "enumeration_date": 31,
-        "location_type": 32,
+        "location_type": 32, "data_axle_raw_name": 33,
     }
 
     def get(row, col):
@@ -443,18 +473,27 @@ def derive_practice_locations(session, watched_only: bool = True, dry_run: bool 
                     elected_name = get(biz_candidates[0], "practice_name").strip()
                     name_row = biz_candidates[0]
                 else:
-                    # Construct "{Lastname} Dental" from oldest NPI-1
-                    def _enum_key(r):
-                        v = get(r, "enumeration_date") or ""
-                        return str(v)
-                    oldest = min(ind_rows, key=_enum_key) if ind_rows else rows[0]
-                    last_name = get(oldest, "provider_last_name") or ""
-                    if not last_name:
-                        # Fall back to first word of practice_name
-                        pn = get(oldest, "practice_name") or ""
-                        last_name = pn.split()[0] if pn.split() else "Unknown"
-                    elected_name = f"{last_name.title()} Dental"
-                    name_row = oldest
+                    # Try data_axle_raw_name — the actual business name at this address
+                    daxle_candidates = [
+                        r for r in ind_rows
+                        if (get(r, "data_axle_raw_name") or "").strip()
+                    ]
+                    if daxle_candidates:
+                        elected_name = get(daxle_candidates[0], "data_axle_raw_name").strip()
+                        elected_name = _title_case_business_name(elected_name)
+                        name_row = daxle_candidates[0]
+                    else:
+                        # Last resort: construct "{Lastname} Dental" from oldest NPI-1
+                        def _enum_key(r):
+                            v = get(r, "enumeration_date") or ""
+                            return str(v)
+                        oldest = min(ind_rows, key=_enum_key) if ind_rows else rows[0]
+                        last_name = get(oldest, "provider_last_name") or ""
+                        if not last_name:
+                            pn = get(oldest, "practice_name") or ""
+                            last_name = pn.split()[0] if pn.split() else "Unknown"
+                        elected_name = f"{last_name.title()} Dental"
+                        name_row = oldest
 
             # primary_npi = oldest NPI-1
             def _enum_key2(r):

@@ -27,7 +27,7 @@ for raw in open(os.path.join(ROOT, ".env")):
 import sqlite3
 from scrapers.research_engine import ResearchEngine, MODEL_HAIKU
 from scrapers.database import DB_PATH
-from scrapers.practice_deep_dive import build_extra_context
+from scrapers.practice_deep_dive import build_extra_context, _best_search_name
 
 TARGET_COUNT = 2000
 COST_CAP_USD = 20.0
@@ -61,7 +61,8 @@ SELECT_COLS = """
     p.state, p.zip, p.entity_type, p.taxonomy_code,
     p.ownership_status, p.entity_classification,
     p.buyability_score, p.year_established, p.employee_count,
-    p.estimated_revenue, p.provider_last_name, p.phone, p.website
+    p.estimated_revenue, p.provider_last_name, p.phone, p.website,
+    p.data_axle_raw_name
 """
 
 
@@ -148,7 +149,7 @@ items = []
 for p in picks:
     items.append({
         "npi": p["npi"],
-        "name": p.get("practice_name", ""),
+        "name": _best_search_name(p),
         "address": p.get("address", ""),
         "city": p.get("city", ""),
         "state": p.get("state", ""),
