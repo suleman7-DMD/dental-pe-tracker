@@ -31,16 +31,16 @@ Key tables: `deals`, `practices`, `practice_changes`, `watched_zips`, `zip_score
 - **practice_changes**: Change log for name/address/ownership changes (acquisition detection). 5,100+ rows.
 - **zip_scores**: Per-ZIP consolidation stats (290 scored ZIPs), recalculated by merge_and_score.py. One row per ZIP (deduped).
 - **watched_zips**: 290 ZIPs (269 Chicagoland/IL + 21 Boston/MA). Auto-backfilled by ensure_chicagoland_watched(). The "1 other" callout in earlier docs was a stale artifact — see `/Users/suleman/dental-pe-tracker/CLAUDE.md` for canonical breakdown.
-- **dso_locations**: scraped DSO office locations from ADSO/DSO websites (full_replace synced). NOTE: re-seeded via `adso_location_scraper.py` 2026-05-30 to populate IL/MA (was zero IL rows).
+- **dso_locations**: scraped DSO office locations from ADSO/DSO websites (full_replace synced). **596 rows = 202 ADSO + 394 IL seed.** ADSO yields 0 IL (14/18 brands need a browser); the 2026-05-30 IL DSO seeding (`seed_il_dso_locations.py`) added 394 real IL offices from NPPES brand-mining + web-verified friendly-PC clusters + DSO public locators (idempotent `il_seed:%` source rows).
 - **ada_hpi_benchmarks**: 918 rows. State-level DSO-affiliation rates by career stage (2022-2024). Used as the per-dentist UPPER anchor for the corporate confidence band (IL 2024 = 14.6%, MA 2024 = 14.9%).
 
 ### Current Data Stats (as of 2026-05-30, post-reclassification)
 - **381,598 NPI records** (global; NOT "practices" — see UNITS note). Watched: 13,818 NPI rows → 5,657 address-deduped locations.
-- **Confirmed corporate floor = 200 / 4,970 GP locations = 4.02%** (CHI 181/4,608 = 3.93%, BOS 19/362 = 5.25%). This is an evidence FLOOR, not "the consolidation rate" — DSOs keep acquired practices' local names, so the true share is higher. Anchored above by ADA HPI (IL 14.6%, MA 14.9% of dentists DSO-affiliated, 2024).
+- **Confirmed corporate floor = 262 / 4,970 GP locations = 5.27%** (CHI 243/4,608 = 5.27%, BOS 19/362 = 5.25%). Raised from 4.02% (200) by the 2026-05-30 IL DSO seeding, which promoted 62 watched-IL GP locations at web-verified friendly-PC corporate addresses (Heartland/Dental Dreams/Smile Doctors hidden under local P.C. names) from independent → corporate (`reclassify_verified_corporate_il.py`). Still an evidence FLOOR, not "the consolidation rate" — DSOs keep more local names than name/EIN matching can see, so the true share is higher. Anchored above by ADA HPI (IL 14.6%, MA 14.9% of dentists DSO-affiliated, 2024). Durable across weekly runs (`merge_and_score.py` recomputes the floor FROM `practice_locations`, which nothing in `refresh.sh` rebuilds).
 - 2,861 deals
 - 2,992 Data Axle enriched practices (lat/lon, revenue, employees, year established)
 - 290 scored ZIPs
-- **Gating:** the reclassification (4.02% floor) is in SQLite and pushed to Supabase via `sync_to_supabase.py` 2026-05-30. The frontend confirmed-floor + ADA-band presentation lives in the Next.js repo (`consolidation-honesty.ts`).
+- **Gating + sync:** the 5.27% floor (location-level) is in SQLite and synced to Supabase via the surgical `scrapers/_sync_floor_tables_only.py` (zip_scores + practice_locations + dso_locations) 2026-05-30 — LIVE. The NPI-level `practices` flips (214 rows → 1,089/13,818 = 7.88% SQLite) are NOT yet synced; Supabase NPI-unit numbers stay 875/6.33% until the next weekly full sync. The frontend confirmed-floor + ADA-band presentation lives in the Next.js repo (`consolidation-honesty.ts`); `getCorporateBand(confirmedPct, state)` takes the floor as a runtime parameter, so the live site auto-reflects 5.27%.
 
 ## Dashboard Pages (8 total, Next.js primary)
 
