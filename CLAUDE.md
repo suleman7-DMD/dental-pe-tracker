@@ -70,7 +70,7 @@ Full reconciliation reasoning + Dentagraphics gap analysis: `RECONCILIATION_VERD
 | `practice_changes` | 8,848 | name/address/ownership change log |
 | `zip_scores` | 290 | One per watched ZIP. `total_gp_locations` = canonical clinic-count denominator |
 | `watched_zips` | 290 (269 IL + 21 MA) | Auto-backfilled by `ensure_chicagoland_watched()` |
-| `dso_locations` | 92 | Scraped DSO offices |
+| `dso_locations` | 202 | Scraped DSO offices (2026-05-30 ADSO run). Only **4 of 18** DSOs scrape without a browser (Gentle, Tend, Ideal, Risas); the 14 `needs_browser` ones — incl. Chicagoland's Aspen/Heartland/PDS — are skipped (no Playwright). Result: **0 IL, 6 in watched ZIPs (all Boston: Gentle 4 + Tend 2)**. Chicagoland DSO-office coverage is a documented gap, NOT fabricated. Does NOT feed the corporate floor (that's `zip_scores.corporate_location_count`). |
 | `ada_hpi_benchmarks` | 918 | State DSO affiliation × career stage. `updated_at` populated (F20) |
 | `practice_signals` | 13,818 NPI | Warroom Hunt 8-flag overlay (stealth_dso, phantom_inventory, family_dynasty, micro_cluster, retirement_combo, last_change_90d, high_peer_retirement, revenue_default) |
 | `zip_signals` | 290 SQLite / **0 Supabase** | Sync gap. Repair: `python3 scrapers/sync_to_supabase.py --tables zip_signals` |
@@ -243,7 +243,8 @@ Full descriptions in `CLAUDE_ARCHIVE.md` §"Pipeline File Quick Reference".
 | `scrapers/pesp_scraper.py` | PE deals. DNS retry + COMMENTARY_PATTERNS prefilter |
 | `scrapers/gdn_scraper.py` | DSO roundups. `_is_roundup_link`, `_PASS_THROUGH_SET`, `_DEAL_VERB_SET`, `_PARTNERS_VERB_NEXT` (F21) |
 | `scrapers/beckers_scraper.py` | Becker's Dental Review individual deal articles. Runs weekly (step 3b in refresh.sh), covers deals between GDN monthly roundups. Cross-source dedup via `already_in_db()` (platform+target ±60d). Source=`beckers`. |
-| `scrapers/adso_location_scraper.py` | DSO offices. HTTP_TIMEOUT=(10,30), MAX_SECONDS_PER_DSO=300, log in `finally` |
+| `scrapers/adso_location_scraper.py` | DSO offices. HTTP_TIMEOUT=(10,30), MAX_SECONDS_PER_DSO=300, log in `finally`. 14/18 DSOs are `needs_browser` (skipped w/o Playwright) — so Chicagoland's Aspen/Heartland/PDS yield 0 IL offices. `run()` is abort-safe: delete-then-reinsert gated on `locations and not aborted`, scoped per `dso_name` |
+| `scrapers/_sync_dso_locations_only.py` | One-off surgical sync: pushes ONLY `dso_locations` to Supabase (reuses `sync_to_supabase`'s engine + `_sync_full_replace`). Use after a standalone ADSO run instead of the ~40-min full sync. `python3 -m scrapers._sync_dso_locations_only` |
 | `scrapers/ada_hpi_{downloader,importer}.py` | ADA benchmark XLSX |
 | `scrapers/pitchbook_importer.py` | PitchBook CSV/XLSX |
 | `scrapers/data_axle_exporter.py` | ZIP-batch export (7 CHI zones + BOS) |
