@@ -1,0 +1,25 @@
+{
+  "_meta": {
+    "source": "background research agent a717706c (Sonnet 4.6, 98 web searches)",
+    "date": "2026-05-30",
+    "method": "NPPES org-name clustering (3+ distinct IL addresses) -> per-cluster web-search ownership verification with evidence URLs",
+    "honesty_note": "category drives use: pe_backed_dso + dso_self_funded = corporate; independent_group + unknown = NOT corporate. FQHC/nonprofit excluded upstream."
+  },
+  "clusters": [
+    {"name":"DENTAL PROFESSIONALS OF ILLINOIS, P.C.","category":"pe_backed_dso","canonical_brand":"Heartland Dental","pe_sponsor":"KKR","confidence":"high","chicagoland":true},
+    {"name":"LIFETIME DENTAL CARE OF ILLINOIS, PC","category":"pe_backed_dso","canonical_brand":"Heartland Dental","pe_sponsor":"KKR","confidence":"high","chicagoland":true},
+    {"name":"TRU DENTAL ILLINOIS, P.C.","category":"pe_backed_dso","canonical_brand":"Heartland Dental","pe_sponsor":"KKR","confidence":"high","chicagoland":true},
+    {"name":"AFFORDABLE DENTISTRY TODAY","category":"pe_backed_dso","canonical_brand":"Heartland Dental","pe_sponsor":"KKR","confidence":"high","chicagoland":false},
+    {"name":"APPLEWHITE DENTAL ILLINOIS, P.C.","category":"pe_backed_dso","canonical_brand":"AppleWhite Dental / CORDENTAL Group","pe_sponsor":"NMS Capital","confidence":"high","chicagoland":false},
+    {"name":"MYORTHOS ILLINOIS ORTHODONTICS PC","category":"pe_backed_dso","canonical_brand":"Smile Doctors","pe_sponsor":"Thomas H. Lee Partners and Linden Capital Partners","confidence":"high","chicagoland":true},
+    {"name":"ORTHODONTIC EXPERTS, LTD","category":"dso_self_funded","canonical_brand":"Orthodontic Experts","pe_sponsor":null,"confidence":"high","chicagoland":true},
+    {"name":"DENTAL EXPERTS LLC","category":"dso_self_funded","canonical_brand":"Dental Dreams","pe_sponsor":null,"confidence":"high","chicagoland":true},
+    {"name":"DENTAL 360","category":"dso_self_funded","canonical_brand":"Dental 360","pe_sponsor":null,"confidence":"medium","chicagoland":true}
+  ],
+  "independent_groups_DO_NOT_classify_corporate": [
+    "PROCARE DENTAL GROUP, P.C.","ASHTON DENTAL PC","D2 DENTAL","CROSSING DENTAL CARE PC",
+    "GRAND DENTAL ASSOCIATES, P.C.","ILLINI SMILES DENTAL CARE P.C.","THE DENTAL SPECIALISTS",
+    "ASSOCIATES IN DENTISTRY","ELMHURST DENTAL GROUP LTD","METRO KIDZ DENTAL, PC","TRANDAI DENTAL CARE"
+  ],
+  "unknown_insufficient_evidence": ["PRO DENTAL IL","MIDWEST FAMILY DENTISTRY PC"]
+}

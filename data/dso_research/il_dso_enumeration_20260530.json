@@ -1,0 +1,454 @@
+{
+  "_meta": {
+    "source": "background research agent a46f01d8 (Sonnet 4.6, 128 web searches)",
+    "date": "2026-05-30",
+    "method": "web enumeration of DSOs with Illinois presence + public location-finder URLs/locator tech",
+    "honesty_note": "approx_il_locations are ESTIMATES from Indeed/Yelp/press, NOT verified address lists. Use only to prioritize which locators to scrape for REAL addresses."
+  },
+  "dsos": [
+    {
+      "name": "Aspen Dental Management (The Aspen Group)",
+      "consumer_brand": "Aspen Dental",
+      "pe_sponsor": "American Securities, Ares Management, Leonard Green & Partners",
+      "il_presence": "confirmed",
+      "approx_il_locations": 43,
+      "location_finder_url": "https://www.aspendental.com/dentist/il/",
+      "locator_tech": "custom-json-api",
+      "locator_api_hint": "Page built on Contentful CMS; location data served via custom endpoints under aspendental.com; no Yext/Brandify fingerprint detected",
+      "evidence_urls": [
+        "https://www.aspendental.com/dentist/il/",
+        "https://www.leonardgreen.com/ares-management-leonard-green-increase-ownership-in-aspen-dental-management-inc/",
+        "https://www.prnewswire.com/news-releases/american-securities-leads-recapitalization-of-aspen-dental-300054682.html",
+        "https://www.yelp.com/biz/aspen-dental-chicago-7"
+      ]
+    },
+    {
+      "name": "Heartland Dental LLC",
+      "consumer_brand": "Heartland Dental (practices keep local brand names)",
+      "pe_sponsor": "KKR",
+      "il_presence": "confirmed",
+      "approx_il_locations": 90,
+      "location_finder_url": "https://heartland.com/find-a-dentist/",
+      "locator_tech": "unknown",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://www.indeed.com/cmp/Heartland-Dental-16f2e389/locations/IL",
+        "https://www.groupdentistrynow.com/dso-group-blog/taking-a-deeper-look-at-kkrs-majority-interest-acquisition-of-heartland-dental-the-largest-dso-in-country/",
+        "https://heartland.com/",
+        "https://www.arini.ai/blog/list-of-dsos-in-illinois"
+      ]
+    },
+    {
+      "name": "PDS Health (Pacific Dental Services)",
+      "consumer_brand": "PDS Health / practice keeps local brand name",
+      "pe_sponsor": null,
+      "il_presence": "claimed",
+      "approx_il_locations": null,
+      "location_finder_url": "https://www.pdshealth.com/search-results/",
+      "locator_tech": "unknown",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://www.ibjonline.com/2019/11/12/pacific-dental-services-opens-first-supported-dental-practice-in-illinois/",
+        "https://www.indeed.com/cmp/Pds-Health-2/locations",
+        "https://www.beckersdental.com/dso-dpms/pacific-dental-services-network-state-by-state-breakdown/"
+      ]
+    },
+    {
+      "name": "Dental Dreams LLC",
+      "consumer_brand": "Dental Dreams (also Studio Dental, Premier Dental Clinic, Bradley Dental at some IL locations)",
+      "pe_sponsor": null,
+      "il_presence": "confirmed",
+      "approx_il_locations": 18,
+      "location_finder_url": "https://www.dentaldreams.com/location_group/illinois/",
+      "locator_tech": "static-html",
+      "locator_api_hint": "WordPress + geotargetingwp plugin; locations hardcoded as HTML; no JSON API detected",
+      "evidence_urls": [
+        "https://www.dentaldreams.com/location_group/illinois/",
+        "https://www.dentaldreams.com/more-on-our-founding/",
+        "https://www.yelp.com/biz/dental-dreams-chicago-7"
+      ]
+    },
+    {
+      "name": "Familia Dental Management",
+      "consumer_brand": "Familia Dental",
+      "pe_sponsor": "Halifax Group",
+      "il_presence": "confirmed",
+      "approx_il_locations": 11,
+      "location_finder_url": "https://www.familiadental.com/locations/illinois/",
+      "locator_tech": "unknown",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://www.familiadental.com/locations/illinois/",
+        "https://thehalifaxgroup.com/halifax-partners-with-management-to-recapitalize-familia-dental/",
+        "https://monroecap.com/tombstone/familia-dental/",
+        "https://www.indeed.com/cmp/Familia-Dental/locations"
+      ]
+    },
+    {
+      "name": "Western Dental Services / Brident Dental",
+      "consumer_brand": "Western Dental & Orthodontics / Brident Dental",
+      "pe_sponsor": null,
+      "il_presence": "none",
+      "approx_il_locations": null,
+      "location_finder_url": "https://www.westerndental.com/en-us/find-a-location/",
+      "locator_tech": "unknown",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://www.westerndental.com/en-us/find-a-location/"
+      ]
+    },
+    {
+      "name": "Affordable Care LLC",
+      "consumer_brand": "Affordable Dentures & Implants",
+      "pe_sponsor": "Harvest Partners",
+      "il_presence": "confirmed",
+      "approx_il_locations": 5,
+      "location_finder_url": "https://www.affordabledentures.com/locations/il",
+      "locator_tech": "unknown",
+      "locator_api_hint": "Location data loads dynamically; specific API not identified",
+      "evidence_urls": [
+        "https://www.affordabledentures.com/locations/il",
+        "https://harvestpartners.com/portfolio/affordable-care/",
+        "https://pitchbook.com/newsletter/harvest-partners-inks-27b-deal-for-affordable-care",
+        "https://www.affordabledentures.com/locations/il/chicago"
+      ]
+    },
+    {
+      "name": "Great Expressions Dental Centers",
+      "consumer_brand": "Great Expressions Dental Centers",
+      "pe_sponsor": "Roark Capital Group",
+      "il_presence": "none",
+      "approx_il_locations": null,
+      "location_finder_url": "https://www.greatexpressions.com/find-a-location/",
+      "locator_tech": "unknown",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://www.indeed.com/cmp/Great-Expressions-Dental-Centers/locations",
+        "https://www.greatexpressions.com/roark-acquires-great-expressions-dental-centers/"
+      ]
+    },
+    {
+      "name": "Smile Brands Inc. (Midwest Dental brand)",
+      "consumer_brand": "Midwest Dental",
+      "pe_sponsor": "Gryphon Investors",
+      "il_presence": "confirmed",
+      "approx_il_locations": 19,
+      "location_finder_url": "https://midwest-dental.com/dentist-near-me/find-office/state/il/",
+      "locator_tech": "static-html",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://midwest-dental.com/dentist-near-me/find-office/state/il/",
+        "https://smilebrands.com/pressrelease/smile-brands-completes-acquisition-of-midwest-dental/",
+        "https://www.gryphon-inv.com/companies/smile-brands-inc/"
+      ]
+    },
+    {
+      "name": "Smile Brands Inc. (DecisionOne brand)",
+      "consumer_brand": "DecisionOne Dental Partners (Chicagoland-specific Smile Brands affiliate)",
+      "pe_sponsor": "Gryphon Investors",
+      "il_presence": "confirmed",
+      "approx_il_locations": 35,
+      "location_finder_url": "https://www.decisiononedental.com/",
+      "locator_tech": "unknown",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://www.decisiononedental.com/",
+        "https://smilebrands.com/smile-brands-locations/",
+        "https://www.gryphon-inv.com/companies/smile-brands-inc/"
+      ]
+    },
+    {
+      "name": "North American Dental Group (NADG)",
+      "consumer_brand": "NADG (practices keep local brand names)",
+      "pe_sponsor": "Jacobs Holding AG",
+      "il_presence": "confirmed",
+      "approx_il_locations": 1,
+      "location_finder_url": "https://nadentalgroup.com/nadg-brand-locations",
+      "locator_tech": "unknown",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://www.indeed.com/cmp/North-American-Dental-Group/locations/IL",
+        "https://www.prnewswire.com/news-releases/jacobs-holding-to-acquire-north-american-dental-group-300903831.html",
+        "https://nadentalgroup.com/nadg-brand-locations"
+      ]
+    },
+    {
+      "name": "Dental Care Alliance",
+      "consumer_brand": "Dental Care Alliance (practices keep local brand names, 150+ brand names)",
+      "pe_sponsor": "Harvest Partners / Mubadala Investment Company",
+      "il_presence": "confirmed",
+      "approx_il_locations": 5,
+      "location_finder_url": "https://www.dentalcarealliance.net/find-a-dentist-near-me/",
+      "locator_tech": "unknown",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://www.dentalcarealliance.net/dental-practice-news/dca-expands-its-midwest-footprint-with-east-village-dental-centre-of-chicago/",
+        "https://www.dentalcarealliance.net/dental-practice-news/dca-extends-a-warm-welcome-to-evanston-dental-associates/",
+        "https://harvestpartners.com/portfolio/dental-care-alliance/",
+        "https://www.mubadala.com/en/news/mubadala-acquires-dental-care-alliance",
+        "https://www.beckersdental.com/dso-dpms/dental-care-alliance-adds-chicago-practice-reaches-50-midwest-offices/"
+      ]
+    },
+    {
+      "name": "DECA Dental Group (Ideal Dental brand)",
+      "consumer_brand": "Ideal Dental",
+      "pe_sponsor": null,
+      "il_presence": "none",
+      "approx_il_locations": null,
+      "location_finder_url": "https://decadental.com/locations/",
+      "locator_tech": "static-html",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://decadental.com/locations/"
+      ]
+    },
+    {
+      "name": "MB2 Dental",
+      "consumer_brand": "MB2 Dental (practices keep local brand names)",
+      "pe_sponsor": "Charlesbank Capital Partners / Warburg Pincus",
+      "il_presence": "confirmed",
+      "approx_il_locations": 5,
+      "location_finder_url": "https://mb2dental.com/",
+      "locator_tech": "unknown",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://mb2dental.com/mb2-dental-continues-to-expand-its-illinois-footprint/",
+        "https://mb2dental.com/mb2-dental-welcomes-illinois-general-dentist-dr-gregory-randolph/",
+        "https://www.charlesbank.com/investments/mb2-dental/",
+        "https://www.kirkland.com/news/press-release/2024/11/kirkland-advises-mb2-dental-on-recapitalization-with-new-investor-warburg-pincus"
+      ]
+    },
+    {
+      "name": "Smile Doctors LLC",
+      "consumer_brand": "Smile Doctors (orthodontic DSO; practices keep local brand names)",
+      "pe_sponsor": "Thomas H. Lee Partners / Linden Capital Partners",
+      "il_presence": "confirmed",
+      "approx_il_locations": 24,
+      "location_finder_url": "https://smiledoctors.com/united-states/il/",
+      "locator_tech": "unknown",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://smiledoctors.com/united-states/il/",
+        "https://thl.com/companies/smile-doctors/",
+        "https://www.prnewswire.com/news-releases/smile-doctors-receives-strategic-investment-from-thomas-h-lee-partners-301454509.html"
+      ]
+    },
+    {
+      "name": "ProSmile (PG Dental Holdings)",
+      "consumer_brand": "ProSmile / Destiny Dental Care (acquired brand in IL)",
+      "pe_sponsor": "TriSpan LLP",
+      "il_presence": "confirmed",
+      "approx_il_locations": 5,
+      "location_finder_url": "https://destinydentalcare.com/illinois/",
+      "locator_tech": "static-html",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://www.prosmile.com/prosmile-completes-acquisition-of-destiny-dental-practices-located-in-midwest/",
+        "https://www.trispanllp.com/portfolio/pg-dental-holdings-llc/",
+        "https://destinydentalcare.com/illinois/",
+        "https://www.yelp.com/biz/destiny-dental-oak-park-oak-park"
+      ]
+    },
+    {
+      "name": "ForwardDental (Wisconsin-based DSO)",
+      "consumer_brand": "ForwardDental",
+      "pe_sponsor": null,
+      "il_presence": "none",
+      "approx_il_locations": null,
+      "location_finder_url": "https://www.forwarddental.com/",
+      "locator_tech": "unknown",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://www.forwarddental.com/"
+      ]
+    },
+    {
+      "name": "1st Family Dental",
+      "consumer_brand": "1st Family Dental",
+      "pe_sponsor": null,
+      "il_presence": "confirmed",
+      "approx_il_locations": 15,
+      "location_finder_url": "https://1stfamilydental.com/",
+      "locator_tech": "static-html",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://1stfamilydental.com/",
+        "https://www.yelp.com/biz/1st-family-dental-chicago-11",
+        "https://www.yelp.com/biz/1st-family-dental-of-logan-square-chicago-3"
+      ]
+    },
+    {
+      "name": "Webster Dental Management",
+      "consumer_brand": "Webster Dental Care",
+      "pe_sponsor": null,
+      "il_presence": "confirmed",
+      "approx_il_locations": 8,
+      "location_finder_url": "https://www.webdentalchicago.com/locations/",
+      "locator_tech": "static-html",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://www.webdentalchicago.com/locations/",
+        "https://www.yelp.com/biz/webster-dental-care-of-lakeview-chicago-2",
+        "https://www.yelp.com/biz/webster-dental-care-of-edison-park-chicago"
+      ]
+    },
+    {
+      "name": "Dentologie",
+      "consumer_brand": "Dentologie",
+      "pe_sponsor": "Flyover Capital / Beringea (VC-backed, not traditional PE buyout)",
+      "il_presence": "confirmed",
+      "approx_il_locations": 13,
+      "location_finder_url": "https://dentologie.com/our-locations/chicago",
+      "locator_tech": "static-html",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://dentologie.com/our-locations/chicago",
+        "https://www.beringea.com/news/investments/beringea-u-s-invests-in-chicago-based-dentologie-as-part-of-a-usd25-million-series-b-funding-round",
+        "https://www.yelp.com/biz/dentologie-south-loop-chicago"
+      ]
+    },
+    {
+      "name": "ProCare Dental Group",
+      "consumer_brand": "ProCare Dental Group",
+      "pe_sponsor": null,
+      "il_presence": "confirmed",
+      "approx_il_locations": 10,
+      "location_finder_url": "https://www.procaredentalgroup.com/locations/",
+      "locator_tech": "static-html",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://www.procaredentalgroup.com/",
+        "https://www.yelp.com/biz/procare-dental-groups-arlington-heights"
+      ]
+    },
+    {
+      "name": "Comfort Dental Franchise",
+      "consumer_brand": "Comfort Dental",
+      "pe_sponsor": null,
+      "il_presence": "none",
+      "approx_il_locations": null,
+      "location_finder_url": "https://comfortdental.com/",
+      "locator_tech": "static-html",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://comfortdental.com/about-us/"
+      ]
+    },
+    {
+      "name": "Grand Dental Group",
+      "consumer_brand": "Grand Dental",
+      "pe_sponsor": null,
+      "il_presence": "confirmed",
+      "approx_il_locations": 12,
+      "location_finder_url": "https://www.granddentalgroup.com/",
+      "locator_tech": "static-html",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://www.granddentalgroup.com/",
+        "https://www.granddentallockport.com/"
+      ]
+    },
+    {
+      "name": "Great Lakes Dental Partners",
+      "consumer_brand": "Great Lakes Dental Partners (practices keep local brand names)",
+      "pe_sponsor": "Shore Capital Partners",
+      "il_presence": "confirmed",
+      "approx_il_locations": 24,
+      "location_finder_url": "https://www.greatlakesdentalpartners.com/company/locations/",
+      "locator_tech": "static-html",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://www.greatlakesdentalpartners.com/company/locations/",
+        "https://www.shorecp.com/companies/great-lakes-dental-partners"
+      ]
+    },
+    {
+      "name": "Elite Dental Partners",
+      "consumer_brand": "Elite Dental Partners (practices keep local brand names, 75+ branded practices)",
+      "pe_sponsor": "Cressey & Company",
+      "il_presence": "confirmed",
+      "approx_il_locations": 15,
+      "location_finder_url": "https://www.elitedentalpartners.com/practice-directory/illinois/",
+      "locator_tech": "unknown",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://www.elitedentalpartners.com/",
+        "https://www.cresseyco.com/partnerships/elite-dental-partners",
+        "https://www.elitedentalpartners.com/practice-directory/illinois/"
+      ]
+    },
+    {
+      "name": "United Dental Partners",
+      "consumer_brand": "United Dental Partners / All Family Dental & Braces (primary consumer brand in IL)",
+      "pe_sponsor": "Calera Capital",
+      "il_presence": "confirmed",
+      "approx_il_locations": 20,
+      "location_finder_url": "https://www.uniteddentalpartners.com/locations/",
+      "locator_tech": "static-html",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://www.uniteddentalpartners.com/locations/",
+        "https://mergr.com/calera-capital-acquires-united-dental-partners",
+        "https://www.yelp.com/biz/1st-family-dental-chicago-11"
+      ]
+    },
+    {
+      "name": "Dental 360",
+      "consumer_brand": "Dental 360",
+      "pe_sponsor": null,
+      "il_presence": "confirmed",
+      "approx_il_locations": 15,
+      "location_finder_url": "https://dental360grp.com/illinois-locations/",
+      "locator_tech": "static-html",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://dental360grp.com/illinois-locations/",
+        "https://www.yelp.com/biz/dental-360-bucktown-chicago",
+        "https://www.yelp.com/biz/dental-360-berwyn-berwyn"
+      ]
+    },
+    {
+      "name": "Bright Direction Dental",
+      "consumer_brand": "Bright Direction Dental (practices keep local brand names)",
+      "pe_sponsor": null,
+      "il_presence": "confirmed",
+      "approx_il_locations": 40,
+      "location_finder_url": "https://www.brightdirectiondental.com/",
+      "locator_tech": "unknown",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://www.brightdirectiondental.com/",
+        "https://www.carecredit.com/doctor-locator/chicago-il/bright-direction-dental-corp-488kbw/"
+      ]
+    },
+    {
+      "name": "Specialized Dental Partners",
+      "consumer_brand": "Specialized Dental Partners (specialty only \u2014 Endo/Perio/OMS; practices keep local names)",
+      "pe_sponsor": "Quad-C Management",
+      "il_presence": "confirmed",
+      "approx_il_locations": 10,
+      "location_finder_url": "https://specializeddental.com/",
+      "locator_tech": "unknown",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://specializeddental.com/",
+        "https://www.quadcmanagement.com/portfolio/specialized-dental/",
+        "https://specializeddental.com/testimonials/how-us-endo-elevated-chicago-based-oakbrook-endodontics/"
+      ]
+    },
+    {
+      "name": "DecisionOne Dental Partners",
+      "consumer_brand": "DecisionOne Dental Partners",
+      "pe_sponsor": "Gryphon Investors (via Smile Brands partnership)",
+      "il_presence": "confirmed",
+      "approx_il_locations": 35,
+      "location_finder_url": "https://www.decisiononedental.com/",
+      "locator_tech": "unknown",
+      "locator_api_hint": null,
+      "evidence_urls": [
+        "https://www.decisiononedental.com/",
+        "https://smilebrands.com/smile-brands-locations/"
+      ]
+    }
+  ]
+}
