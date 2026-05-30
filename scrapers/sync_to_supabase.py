@@ -9,9 +9,13 @@ Usage:
     # or from refresh.sh:
     python scrapers/sync_to_supabase.py
 
-Env vars:
-    SUPABASE_DATABASE_URL  — Postgres connection string (pooler, port 6543)
-    DATABASE_URL           — Fallback if SUPABASE_DATABASE_URL not set
+Env vars (first one set wins — see _get_pg_url):
+    SUPABASE_POOLER_URL    — Supavisor pooler connection string (IPv4, preferred).
+                             Transaction port (6543) is auto-rewritten to the
+                             session port (5432) for this connection-holding sync.
+    SUPABASE_DATABASE_URL  — Legacy direct connection (db.<ref>.supabase.co, IPv6-
+                             only — unreliable from IPv4 networks). Fallback only.
+    DATABASE_URL           — Final fallback.
 """
 
 import hashlib
@@ -160,12 +164,37 @@ SYNC_CONFIG = [
 # ---------------------------------------------------------------------------
 
 def _get_pg_url():
-    """Get the Postgres connection URL from environment."""
-    url = os.environ.get("SUPABASE_DATABASE_URL") or os.environ.get("DATABASE_URL")
+    """Get the Postgres connection URL from environment.
+
+    Order of preference:
+      1. SUPABASE_POOLER_URL              — Supavisor connection pooler (IPv4)
+      2. SUPABASE_DATABASE_URL / DATABASE_URL — legacy direct connection
+
+    Supabase deprecated direct IPv4 access to the ``db.<ref>.supabase.co``
+    host — it now resolves to IPv6 only, which fails intermittently from
+    IPv4-only networks ("could not translate host name to address" /
+    "Operation timed out"). Those are the exact errors that silently broke
+    the weekly sync on 2026-05-17 and 2026-05-24. The pooler host
+    (``<region>.pooler.supabase.com``) is IPv4 and reliable.
+
+    This is a persistent, connection-holding bulk sync (TRUNCATE + batched
+    INSERT inside explicit transactions with savepoints), so it uses the
+    pooler's SESSION mode (port 5432) — the documented drop-in replacement
+    for the direct connection — rather than transaction mode (6543). If the
+    configured pooler URL points at the transaction port, rewrite it to 5432.
+    """
+    url = (
+        os.environ.get("SUPABASE_POOLER_URL")
+        or os.environ.get("SUPABASE_DATABASE_URL")
+        or os.environ.get("DATABASE_URL")
+    )
     if not url:
         raise RuntimeError(
-            "No Postgres URL found. Set SUPABASE_DATABASE_URL or DATABASE_URL."
+            "No Postgres URL found. Set SUPABASE_POOLER_URL, "
+            "SUPABASE_DATABASE_URL, or DATABASE_URL."
         )
+    if "pooler.supabase.com:6543" in url:
+        url = url.replace("pooler.supabase.com:6543", "pooler.supabase.com:5432")
     return url
 
 

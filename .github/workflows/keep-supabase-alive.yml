@@ -26,13 +26,19 @@ jobs:
 
       - name: Ping Supabase REST endpoint
         run: |
+          # NOTE: ping a real table, NOT the /rest/v1/ root. As of 2026 the
+          # bare root rejects anon keys with 401 "Secret API key required",
+          # which made this step (and the whole workflow) fail on every run —
+          # a false alarm that spammed failure emails. A lightweight table
+          # query both proves reachability AND counts as DB activity (the
+          # actual point of a keep-alive), and returns 200 with the anon key.
           STATUS=$(curl -s -o /tmp/ping_body -w "%{http_code}" \
-            "${SUPABASE_URL}/rest/v1/" \
+            "${SUPABASE_URL}/rest/v1/deals?select=deal_date&limit=1" \
             -H "apikey: ${SUPABASE_ANON_KEY}" \
             -H "Authorization: Bearer ${SUPABASE_ANON_KEY}")
           echo "Supabase REST responded with status: ${STATUS}"
           if [ "${STATUS}" != "200" ]; then
-            echo "::error::Supabase /rest/v1/ returned ${STATUS} — project may be paused or credentials invalid."
+            echo "::error::Supabase /rest/v1/deals returned ${STATUS} — project may be paused or credentials invalid."
             head -c 500 /tmp/ping_body || true
             exit 1
           fi

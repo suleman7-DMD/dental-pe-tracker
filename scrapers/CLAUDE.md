@@ -2,7 +2,9 @@
 
 ## What This Project Is
 
-A data pipeline + Streamlit dashboard that tracks private equity consolidation in US dentistry. It scrapes deal announcements, monitors 400k+ dental practices from federal data, classifies who owns what, and scores markets for acquisition risk. Primary metro: Chicagoland (269 expanded ZIPs across 7 sub-zones). Secondary: Boston Metro (21 ZIPs).
+A data pipeline + dual frontend (Next.js primary, Streamlit legacy) that tracks private equity consolidation in US dentistry. It scrapes deal announcements, monitors **381,598 federal dental NPI records** (NPPES, post-F32 cleanup), classifies who owns what, and scores markets for acquisition risk. Primary metro: Chicagoland (269 expanded ZIPs across 7 sub-zones). Secondary: Boston Metro (21 ZIPs).
+
+> **UNITS — read before quoting any count.** `381,598` is **NPI rows**, NOT practices. NPPES emits one row per individual provider (NPI-1) *and* one per organization (NPI-2) at the same address (~2.4× fan-out). The real US dental **practice** count is ≈137,000 (BCG 2026 / Census NAICS 621210). Never call the NPI-row count a "practice" count. Headline corporate/consolidation shares use **location-deduped GP denominators** (`zip_scores.total_gp_locations`), never NPI rows. Full reconciliation: root `CLAUDE.md` §"Numbers cheat-sheet".
 
 **Live app:** suleman7-pe.streamlit.app
 **Repo:** github.com/suleman7-DMD/dental-pe-tracker
@@ -24,19 +26,21 @@ No build system. Push to `main` → Streamlit Cloud auto-deploys in ~60s.
 
 Key tables: `deals`, `practices`, `practice_changes`, `watched_zips`, `zip_scores`, `dso_locations`, `ada_hpi_benchmarks`
 
-- **practices**: 400k+ rows. Fields: npi (PK), practice_name, doing_business_as, address, city, state, zip, phone, entity_type, taxonomy_code, ownership_status, affiliated_dso, affiliated_pe_sponsor, buyability_score, classification_confidence, classification_reasoning, data_source, latitude, longitude, parent_company, ein, franchise_name, iusa_number, website, year_established, employee_count, estimated_revenue, num_providers, location_type, import_batch_id, data_axle_import_date
+- **practices**: 381,598 NPI rows (global), 13,818 in watched ZIPs. NOT a practice count — see UNITS note above. Fields: npi (PK), practice_name, doing_business_as, address, city, state, zip, phone, entity_type, taxonomy_code, ownership_status, affiliated_dso, affiliated_pe_sponsor, buyability_score, classification_confidence, classification_reasoning, data_source, latitude, longitude, parent_company, ein, franchise_name, iusa_number, website, year_established, employee_count, estimated_revenue, num_providers, location_type, import_batch_id, data_axle_import_date
 - **deals**: 2,500+ rows. PE dental deals from PESP, GDN, PitchBook
 - **practice_changes**: Change log for name/address/ownership changes (acquisition detection). 5,100+ rows.
 - **zip_scores**: Per-ZIP consolidation stats (290 scored ZIPs), recalculated by merge_and_score.py. One row per ZIP (deduped).
 - **watched_zips**: 290 ZIPs (269 Chicagoland/IL + 21 Boston/MA). Auto-backfilled by ensure_chicagoland_watched(). The "1 other" callout in earlier docs was a stale artifact — see `/Users/suleman/dental-pe-tracker/CLAUDE.md` for canonical breakdown.
-- **dso_locations**: 408 scraped DSO office locations from ADSO websites.
-- **ada_hpi_benchmarks**: 918 rows. State-level DSO affiliation rates by career stage (2022-2024).
+- **dso_locations**: scraped DSO office locations from ADSO/DSO websites (full_replace synced). NOTE: re-seeded via `adso_location_scraper.py` 2026-05-30 to populate IL/MA (was zero IL rows).
+- **ada_hpi_benchmarks**: 918 rows. State-level DSO-affiliation rates by career stage (2022-2024). Used as the per-dentist UPPER anchor for the corporate confidence band (IL 2024 = 14.6%, MA 2024 = 14.9%).
 
-### Current Data Stats (as of 2026-04-04)
-- 401,411 practices (400,802 dental + 609 denturist filtered at query time)
-- 2,865 deals
-- 2,992 Data Axle enriched practices (with lat/lon, revenue, employees, year established)
+### Current Data Stats (as of 2026-05-30, post-reclassification)
+- **381,598 NPI records** (global; NOT "practices" — see UNITS note). Watched: 13,818 NPI rows → 5,657 address-deduped locations.
+- **Confirmed corporate floor = 200 / 4,970 GP locations = 4.02%** (CHI 181/4,608 = 3.93%, BOS 19/362 = 5.25%). This is an evidence FLOOR, not "the consolidation rate" — DSOs keep acquired practices' local names, so the true share is higher. Anchored above by ADA HPI (IL 14.6%, MA 14.9% of dentists DSO-affiliated, 2024).
+- 2,861 deals
+- 2,992 Data Axle enriched practices (lat/lon, revenue, employees, year established)
 - 290 scored ZIPs
+- **Gating:** the reclassification (4.02% floor) is in SQLite and pushed to Supabase via `sync_to_supabase.py` 2026-05-30. The frontend confirmed-floor + ADA-band presentation lives in the Next.js repo (`consolidation-honesty.ts`).
 
 ## Dashboard Pages (8 total, Next.js primary)
 
@@ -131,9 +135,12 @@ Every step logs structured events to `logs/pipeline_events.jsonl` via `scrapers/
 
 The `entity_classification` field on practices provides granular practice-type labels beyond `ownership_status`. Classifications are assigned by the DSO classifier's Pass 3 (`classify_entity_types()` in `dso_classifier.py`), using provider count at address, last name matching, taxonomy codes, corporate signals, and Data Axle enrichment data.
 
-### All 11 Entity Classification Values
+### All 12 Entity Classification Values
+> Location-level reclassification (`reclassify_locations.py`, 2026-05-30) added `org_only_npi` and recomputed every `practice_locations` row from the shared brand registry (`dso_brands.py`). `org_only_npi` is treated as **unknown** in the frontend and never counts as a deduped location, so it does not affect location-level corporate shares.
+
 | Value | Definition |
 |-------|-----------|
+| `org_only_npi` | Bare organization NPI (NPI-2) with no co-located individual provider and no other signal — a federal registration artifact, not a classifiable practice. Quarantined as unknown so it can't inflate independent counts. |
 | `solo_established` | Single-provider practice, operating 20+ years or default for single providers with limited data |
 | `solo_new` | Single-provider practice, established within last 10 years |
 | `solo_inactive` | Single-provider practice, missing phone and website — likely retired or minimal activity |

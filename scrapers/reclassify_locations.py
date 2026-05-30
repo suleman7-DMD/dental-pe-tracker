@@ -46,6 +46,7 @@ sys.path.insert(0, os.path.expanduser("~/dental-pe-tracker"))
 from sqlalchemy import text
 from scrapers.database import get_session
 from scrapers.logger_config import get_logger
+from scrapers.dso_brands import match_dso_brand, KNOWN_DSOS
 
 log = get_logger("reclassify_locations")
 
@@ -54,20 +55,10 @@ log = get_logger("reclassify_locations")
 # Name-pattern detection (mirrors dedup_practice_locations.py)
 # ---------------------------------------------------------------------------
 
-_KNOWN_NATIONAL_DSOS = [
-    "ASPEN DENTAL", "HEARTLAND DENTAL", "PACIFIC DENTAL",
-    "WESTERN DENTAL", "AMERITAS", "SMILE BRANDS", "SMILE DIRECT",
-    "AFFORDABLE CARE", "SMILEDIRECTCLUB", "BIRNER DENTAL",
-    "GREAT EXPRESSIONS", "DENTAL DREAMS", "CLEAR CHOICE",
-    "COAST DENTAL", "GENTLE DENTAL", "KOOL SMILES",
-    "MY FAMILY DENTAL", "COMFORT DENTAL", "DENTAL WORKS",
-    "MIDWEST DENTAL", "DENTALWORKS", "DENTISTRY FOR CHILDREN",
-    "TEND DENTAL", "TEND STUDIO", "AFFORDABLE DENTURES",
-    "1ST FAMILY DENTAL", "FAMILIA DENTAL",
-    "CHOICE DENTAL", "42 NORTH DENTAL", "MORTENSON DENTAL",
-    "MB2 DENTAL", "DENTAL CARE ALLIANCE", "NORTH AMERICAN DENTAL",
-    "PACIFIC DENTAL SERVICES", "SAGE DENTAL",
-]
+# Raw lowercase brand patterns from the shared registry — used by the
+# franchise-noise filter. Brand *name* matching itself goes through
+# match_dso_brand() so the NPI and location classifiers stay in lock-step.
+_KNOWN_DSO_PATTERNS = [pattern for pattern, _canonical, _pe in KNOWN_DSOS]
 
 # Affiliated_dso strings that are pure NPPES taxonomy noise — NOT real DSOs
 _AFFILIATED_DSO_TAXONOMY_LEAKS = {
@@ -120,11 +111,16 @@ def _is_non_clinical_name(name: str) -> bool:
     return False
 
 
-def _is_national_dso(name: str) -> bool:
+def _match_national_dso(name: str):
+    """Return (canonical_brand, pe_sponsor) if the practice name contains a known
+    DSO brand, else None. Backed by the shared scrapers/dso_brands registry."""
     if not name:
-        return False
-    n = name.upper()
-    return any(dso in n for dso in _KNOWN_NATIONAL_DSOS)
+        return None
+    return match_dso_brand(name)
+
+
+def _is_national_dso(name: str) -> bool:
+    return _match_national_dso(name) is not None
 
 
 def _is_university_parent(parent: str) -> bool:
@@ -133,6 +129,98 @@ def _is_university_parent(parent: str) -> bool:
         return False
     p = parent.upper()
     return any(kw in p for kw in _UNIVERSITY_PARENTS)
+
+
+def _norm_entity_name(s: str) -> str:
+    """Strip punctuation + common legal/location suffixes for self-reference test."""
+    if not s:
+        return ""
+    s = "".join(ch if ch.isalnum() or ch == " " else " " for ch in s.upper())
+    # Drop trailing legal-entity tokens that don't change identity
+    drop = {"LLC", "PC", "PLLC", "LTD", "INC", "LLP", "LP", "PA", "CO",
+            "CORP", "DDS", "DMD", "ASSOCIATES", "AND", "THE", "OF"}
+    toks = [t for t in s.split() if t not in drop]
+    return " ".join(toks).strip()
+
+
+def _is_self_referential_parent(parent: str, name: str) -> bool:
+    """True if parent_company is essentially the practice's OWN name — i.e. the
+    practice listed itself as its parent. This is a FALSE corporate signal
+    (e.g. 'Advanced Family Dental & Orthodontics' with parent 'Advanced Family
+    Dental'), NOT evidence of DSO ownership. Known DSO brands are matched before
+    this runs, so a true brand parent never reaches here."""
+    p, n = _norm_entity_name(parent), _norm_entity_name(name)
+    if not p or not n:
+        return False
+    if p in n or n in p:
+        return True
+    # Heavy token overlap (parent is a short prefix of the practice's own name)
+    ptoks, ntoks = set(p.split()), set(n.split())
+    if len(ptoks) >= 2 and ptoks.issubset(ntoks):
+        return True
+    return False
+
+
+# ---------------------------------------------------------------------------
+# Seeded DSO office-address matching (ground-truth registry)
+# ---------------------------------------------------------------------------
+
+_ADDR_ABBREV = {
+    " STREET": " ST", " AVENUE": " AVE", " BOULEVARD": " BLVD", " DRIVE": " DR",
+    " ROAD": " RD", " LANE": " LN", " COURT": " CT", " PLACE": " PL",
+    " HIGHWAY": " HWY", " PARKWAY": " PKWY", " SUITE": " STE", " NORTH ": " N ",
+    " SOUTH ": " S ", " EAST ": " E ", " WEST ": " W ",
+}
+
+
+def _norm_addr(addr: str) -> str:
+    """Light address normalization for fuzzy comparison (street number + name)."""
+    if not addr:
+        return ""
+    a = " " + addr.upper().strip() + " "
+    for long, short in _ADDR_ABBREV.items():
+        a = a.replace(long, short)
+    # keep only the leading 'number + street' segment (drop suite/unit tails)
+    a = a.split(" STE ")[0].split(" #")[0].split(" UNIT ")[0]
+    return " ".join(a.split())
+
+
+def _build_dso_location_index(session):
+    """ZIP -> list of (dso_name, normalized_address) from seeded dso_locations."""
+    index = defaultdict(list)
+    try:
+        rows = session.execute(text(
+            "SELECT dso_name, zip, address FROM dso_locations "
+            "WHERE address IS NOT NULL AND address <> '' AND zip IS NOT NULL"
+        )).fetchall()
+    except Exception as e:  # table may not exist on a fresh DB
+        log.warning("dso_locations unavailable for seeded-address match: %s", e)
+        return index
+    for dso_name, zc, addr in rows:
+        index[zc.strip()].append((dso_name, _norm_addr(addr)))
+    return index
+
+
+def _match_seeded_dso_location(zip_code, normalized_address, dso_loc_index):
+    """Return (dso_name, score) if the location's address fuzzy-matches a seeded
+    DSO office in the same ZIP (token_sort_ratio >= 88), else None."""
+    if not zip_code or not normalized_address or not dso_loc_index:
+        return None
+    candidates = dso_loc_index.get(zip_code.strip())
+    if not candidates:
+        return None
+    from rapidfuzz import fuzz
+    target = _norm_addr(normalized_address)
+    if not target:
+        return None
+    best = None
+    for dso_name, seed_addr in candidates:
+        if not seed_addr:
+            continue
+        score = fuzz.token_sort_ratio(target, seed_addr)
+        if score >= 88 and (best is None or score > best[1]):
+            best = (dso_name, score)
+    return best
 
 
 def _is_real_franchise(franchise: str) -> bool:
@@ -151,8 +239,8 @@ def _is_real_franchise(franchise: str) -> bool:
     }
     if f in _TAXONOMY_NOISE:
         return False
-    # Match against known DSO brands
-    return any(dso in f for dso in _KNOWN_NATIONAL_DSOS)
+    # Match against known DSO brands (shared registry)
+    return match_dso_brand(f) is not None
 
 
 # ---------------------------------------------------------------------------
@@ -193,7 +281,8 @@ def _has_shared_last_name(last_names: list) -> bool:
 # Main reclassification driver
 # ---------------------------------------------------------------------------
 
-def classify_one(loc, ein_zip_count, last_names_by_npi, primary_npi_extras):
+def classify_one(loc, ein_zip_count, last_names_by_npi, primary_npi_extras,
+                 dso_loc_index=None):
     """Classify a single location row. Returns (entity_classification, reasoning)."""
     name = loc["practice_name"] or ""
     parent = (loc["parent_company"] or "").strip()
@@ -213,6 +302,13 @@ def classify_one(loc, ein_zip_count, last_names_by_npi, primary_npi_extras):
     franchise = (extras.get("franchise_name") or "").strip()
     iusa = (extras.get("iusa_number") or "").strip()
     location_type = (extras.get("location_type") or "").strip()
+    num_providers = extras.get("num_providers")  # org-reported headcount fallback
+
+    # Effective provider count: NPPES NPI-1 dedup is fragile (individuals filed
+    # at slightly different addresses don't group), leaving real multi-dentist
+    # practices at provider_count==0. Fall back to the org NPI's reported
+    # num_providers so these aren't dumped into the org_only_npi junk bucket.
+    eff_pc = provider_count if provider_count else (num_providers or 0)
 
     # Get provider last names for family-practice detection
     try:
@@ -235,27 +331,67 @@ def classify_one(loc, ein_zip_count, last_names_by_npi, primary_npi_extras):
     if _is_specialist_name(name) and provider_count <= 1 and not has_org_npi:
         return "specialist", f"Specialty practice by name: {name}"
 
-    # ---- Rule 3: dso_national ----
-    if _is_national_dso(name):
-        return "dso_national", f"Known national DSO brand: {name}"
+    # ---- Rule 3: dso_national (known brand in the practice name) ----
+    brand = _match_national_dso(name) or _match_national_dso(loc.get("doing_business_as") or "")
+    if brand:
+        canonical, pe = brand
+        tag = f"{canonical}" + (f" — PE: {pe}" if pe else "")
+        return "dso_national", f"Known DSO brand in name: {tag}"
+
+    # ---- Rule 3a: seeded DSO office address (ground-truth location registry) ----
+    # Catches DSO-acquired practices that kept their local name and so never
+    # name-match. Matches the location's normalized address against curated
+    # dso_locations rows seeded for the same ZIP.
+    if dso_loc_index:
+        seeded = _match_seeded_dso_location(
+            loc.get("zip"), loc.get("normalized_address"), dso_loc_index
+        )
+        if seeded:
+            seeded_brand, score = seeded
+            hit = match_dso_brand(seeded_brand)
+            if hit:
+                canonical, pe = hit
+                tag = f"{canonical}" + (f" — PE: {pe}" if pe else "")
+                return "dso_national", f"Seeded DSO office address match: {tag} (score={score})"
+            return "dso_regional", f"Seeded DSO office address match: {seeded_brand} (score={score})"
 
     # ---- Rule 3b: dso_national via affiliated_dso (set by Pass 2 location-match) ----
     affiliated = (loc.get("affiliated_dso") or "").upper().strip()
     if affiliated and affiliated not in _AFFILIATED_DSO_TAXONOMY_LEAKS:
-        for brand in _KNOWN_NATIONAL_DSOS:
-            if brand in affiliated or affiliated in brand:
-                return "dso_national", f"affiliated_dso match: {loc.get('affiliated_dso')}"
+        hit = match_dso_brand(affiliated)
+        if hit:
+            canonical, pe = hit
+            tag = f"{canonical}" + (f" — PE: {pe}" if pe else "")
+            return "dso_national", f"affiliated_dso match: {tag}"
         # Affiliated_dso is set, non-leaky, but doesn't match a known national brand
         # — treat as dso_regional (real DSO signal but not nationally branded)
         return "dso_regional", f"affiliated_dso present (non-national): {loc.get('affiliated_dso')}"
 
     # ---- Rule 4: dso_regional (STRONG signals only) ----
-    # 4a. Parent company is a real corporate parent (not a university)
-    if parent and not _is_university_parent(parent):
+    # 4-pre. parent_company carries a KNOWN DSO brand (Data Axle Pass-6 corporate
+    # linkage often names the acquirer even when the practice kept its local
+    # name — e.g. parent='SONRAVA HEALTH' on 'Dentist in Vernon Hills LLC').
+    # Promote to dso_national, but ONLY if the parent isn't just the practice's
+    # own name echoed back (self-referential false positive).
+    if parent and not _is_self_referential_parent(parent, name):
+        phit = match_dso_brand(parent)
+        if phit:
+            canonical, pe = phit
+            tag = f"{canonical}" + (f" — PE: {pe}" if pe else "")
+            return "dso_national", f"Parent company is known DSO brand: {tag} (parent={parent})"
+
+    # 4a. Parent company is a real corporate parent (not a university,
+    #     not the practice echoing its own name back as parent)
+    if parent and not _is_university_parent(parent) and not _is_self_referential_parent(parent, name):
         return "dso_regional", f"Corporate parent: {parent}"
 
-    # 4b. EIN shared with 2+ different ZIPs (multi-location chain)
-    if ein and ein_zip_count.get(ein, 0) >= 2:
+    # 4b. EIN shared across 3+ different ZIPs (genuine multi-location chain).
+    #     Threshold raised from 2→3 (2026-05-30): a shared EIN across only TWO
+    #     ZIPs is ambiguous — often two solo dentists sharing one billing/tax
+    #     entity, not a corporate chain. Requiring 3+ ZIPs keeps the corporate
+    #     floor defensible (Family Dental Care, Brite, Elmhurst remain; solo
+    #     partnerships drop out).
+    if ein and ein_zip_count.get(ein, 0) >= 3:
         zip_count = ein_zip_count[ein]
         return "dso_regional", f"EIN {ein} present in {zip_count} different ZIPs (multi-location chain)"
 
@@ -269,42 +405,52 @@ def classify_one(loc, ein_zip_count, last_names_by_npi, primary_npi_extras):
     if parent and _is_university_parent(parent):
         return "non_clinical", f"Academic institution affiliation: {parent}"
 
-    # ---- Edge case: org NPI only, no individual providers ----
-    # NOTE: separated from solo_inactive 2026-04-26. This signal means an
-    # organization NPI was filed at the address but no individual dentist
-    # works there — often a billing-only / admin-only / closed location.
-    # Distinct from solo_inactive (a real solo with no contact info).
-    if has_org_npi and provider_count == 0:
-        return "org_only_npi", "Organization NPI registered but no individual providers at address"
+    # ---- Edge case: genuinely empty shell ----
+    # An org NPI is filed at the address but there are NO individual providers
+    # AND no org-reported headcount AND no contact info — a billing-only /
+    # admin-only / closed registration. Only THESE stay org_only_npi.
+    # (Previously this swallowed ~500 real multi-dentist practices whose NPI-1
+    #  records simply failed to group — see eff_pc fallback above.)
+    if has_org_npi and eff_pc == 0 and not phone and not website:
+        return "org_only_npi", "Org NPI only — no providers, no headcount, no contact info (admin/billing/closed)"
+    # Otherwise (contact info present, or headcount available) fall through to
+    # the size rules below; a contactable shell lands on solo_established via
+    # the contactable-shell fallback rather than being junked.
 
     # ---- Rule 5: family_practice ----
-    if provider_count >= 2 and _has_shared_last_name(last_names):
-        return "family_practice", f"{provider_count} providers, ≥2 share a last name"
+    if eff_pc >= 2 and _has_shared_last_name(last_names):
+        return "family_practice", f"{eff_pc} providers, ≥2 share a last name"
 
     # ---- Rule 6: large_group ----
-    if provider_count >= 4:
-        return "large_group", f"{provider_count} providers at one location, no DSO/family signals"
+    if eff_pc >= 4:
+        return "large_group", f"{eff_pc} providers at one location, no DSO/family signals"
 
     # ---- Rule 7: small_group ----
-    if provider_count in (2, 3):
-        return "small_group", f"{provider_count} providers at one location, no DSO/family signals"
+    if eff_pc in (2, 3):
+        return "small_group", f"{eff_pc} providers at one location, no DSO/family signals"
 
     # ---- Rule 8: solo_high_volume ----
-    if provider_count == 1:
+    if eff_pc == 1:
         if (employee_count or 0) >= 5 or (estimated_revenue or 0) >= 800_000:
             return "solo_high_volume", f"Solo provider, {employee_count or 0} employees, ${(estimated_revenue or 0):,} revenue"
 
     # ---- Rule 9: solo_inactive ----
-    if provider_count <= 1 and not phone and not website:
+    if eff_pc <= 1 and not phone and not website:
         return "solo_inactive", "Solo/empty provider, no phone or website"
 
     # ---- Rule 10: solo_new ----
-    if provider_count == 1 and year_established and year_established >= 2016:
+    if eff_pc == 1 and year_established and year_established >= 2016:
         return "solo_new", f"Solo provider, established {year_established}"
 
     # ---- Rule 11: solo_established (default) ----
-    if provider_count == 1:
+    if eff_pc == 1:
         return "solo_established", "Solo provider, default (long-running or unknown vintage)"
+
+    # ---- Fallback: contactable org shell with unknown size ----
+    # eff_pc==0 but has phone/website → a real but un-sizable practice. Count it
+    # as an independent solo (conservative) rather than invisible junk.
+    if phone or website:
+        return "solo_established", "Org NPI with contact info but no countable providers — presumed solo independent"
 
     # Final fallback (shouldn't hit)
     return "solo_established", "Default fallback"
@@ -335,20 +481,29 @@ def reclassify_all(session, dry_run=False):
     last_names_by_npi = {r[0]: r[1] for r in name_rows}
     log.info("Loaded %d NPI → last_name mappings", len(last_names_by_npi))
 
-    # 3. Build primary_npi → (franchise_name, iusa_number, location_type) map
+    # 3. Build primary_npi → (franchise_name, iusa_number, location_type,
+    #    num_providers) map. num_providers is the org-reported headcount used to
+    #    rescue org_only_npi locations whose NPI-1 records failed to group.
     log.info("Building primary_npi → corporate-signal map...")
     extras_rows = session.execute(text(
-        "SELECT npi, franchise_name, iusa_number, location_type FROM practices"
+        "SELECT npi, franchise_name, iusa_number, location_type, num_providers FROM practices"
     )).fetchall()
     primary_npi_extras = {
         r[0]: {
             "franchise_name": r[1],
             "iusa_number": r[2],
             "location_type": r[3],
+            "num_providers": r[4],
         }
         for r in extras_rows
     }
     log.info("Loaded extras for %d NPIs", len(primary_npi_extras))
+
+    # 3b. Build ZIP → [(dso_name, normalized_address)] index from seeded
+    #     dso_locations (ground-truth office registry). Lets us catch
+    #     DSO-acquired practices that kept their local name.
+    dso_loc_index = _build_dso_location_index(session)
+    log.info("Built seeded-DSO address index covering %d ZIPs", len(dso_loc_index))
 
     # 4. Fetch all locations
     log.info("Fetching all practice_locations rows...")
@@ -383,7 +538,8 @@ def reclassify_all(session, dry_run=False):
         before_counts[before_ec] += 1
 
         new_ec, reasoning = classify_one(
-            loc, ein_zip_count, last_names_by_npi, primary_npi_extras
+            loc, ein_zip_count, last_names_by_npi, primary_npi_extras,
+            dso_loc_index=dso_loc_index,
         )
         after_counts[new_ec] += 1
         transitions[(before_ec, new_ec)] += 1

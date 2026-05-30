@@ -576,19 +576,42 @@ def derive_practice_locations(session, watched_only: bool = True, dry_run: bool 
         iusa_number = next((get(r, "iusa_number") for r in rows if get(r, "iusa_number")), None)
 
         # ------ Residential detection (spec §Residential detection) ------
-        # A location is likely residential iff ALL of:
+        # A location is likely a HOME address (not a real clinic) iff ALL of:
         # 1. has_org_npi = FALSE
         # 2. provider_count <= 1
-        # 3. website is null/empty
-        # 4. employee_count is null or <= 1
-        # 5. not in dso_locations
+        # 3. no business phone        (NEW 2026-05-30)
+        # 4. website is null/empty
+        # 5. NO dental business name  (NEW 2026-05-30)
+        # 6. employee_count is null or <= 1
+        # 7. not in dso_locations
+        #
+        # The old rule (no website + no employee data) catastrophically
+        # over-flagged: Data Axle enriches only ~3k of 380k practices, so
+        # "no website + no employee_count" describes virtually every
+        # under-enriched REAL solo office. Audit (2026-05-30) found 1,633
+        # flagged locations of which 91% had a business phone and 96% had a
+        # dental business name ("Grabavoy Dental", "Green Dental", ...) on
+        # commercial streets — clearly real clinics. Excluding them shrank the
+        # GP denominator and inflated corporate share. A genuine residential
+        # NPI registration is a single person's name at a home with no phone,
+        # no website, and no business branding.
         addr_key = norm_addr + "|" + zip_code
         in_dso_locations = addr_key in dso_address_set
+
+        _name_u = (elected_name or "").upper()
+        _has_dental_name = any(kw in _name_u for kw in (
+            "DENTAL", "DENTISTRY", "ORTHODONT", "ENDODONT", "PERIODONT",
+            "PROSTHODONT", "PEDIATRIC DENT", "PEDODONT", "ORAL SURG",
+            "MAXILLOFACIAL", "SMILE", "DDS", "DMD", "ORAL HEALTH", "TOOTH",
+        ))
+        _has_business_phone = bool((phone or "").strip())
 
         is_likely_residential = (
             not has_org_npi
             and provider_count <= 1
+            and not _has_business_phone
             and not (website or "").strip()
+            and not _has_dental_name
             and (employee_count is None or employee_count <= 1)
             and not in_dso_locations
         )

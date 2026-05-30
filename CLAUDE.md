@@ -4,7 +4,9 @@
 
 ## What This Project Is
 
-A data pipeline + dual-frontend dashboard tracking PE consolidation in US dentistry. Scrapes deal announcements, monitors 381,598 dental practices from federal data (post-F32 hygienist-leak cleanup), classifies ownership, scores markets for acquisition risk. Primary metro: Chicagoland (269 expanded ZIPs). Secondary: Boston Metro (21 ZIPs). Total watched: **290 ZIPs** = 269 IL + 21 MA.
+A data pipeline + dual-frontend dashboard tracking PE consolidation in US dentistry. Scrapes deal announcements, monitors **381,598 federal dental NPI records** (post-F32 hygienist-leak cleanup) — NOT 381,598 "practices." NPPES emits one NPI per individual provider AND one per organization at the same address, so the row count is ~2.4× the true clinic count. The real US dental-practice (establishment) universe is **≈137,000** (BCG 2026 / Census NAICS 621210). Always say "NPI records," never "practices," when quoting the federal row count. Classifies ownership, scores markets for acquisition risk. Primary metro: Chicagoland (269 expanded ZIPs). Secondary: Boston Metro (21 ZIPs). Total watched: **290 ZIPs** = 269 IL + 21 MA.
+
+> **2026-05-30 data-integrity audit (Opus 4.8).** The classifier was rewritten to be **location-level + confidence-tiered** (`scrapers/reclassify_locations.py`, new `org_only_npi` class) and re-run in SQLite. Confirmed corporate share dropped from the old inflated 4.60% to a **documented floor of 4.02%** (200 corporate / 4,970 watched GP locations). The frontend now presents corporate/consolidation as a **confirmed floor + ADA-HPI per-dentist anchor band** (`src/lib/constants/consolidation-honesty.ts`) — never a single fabricated "% consolidated." All numbers in this file's cheat-sheet below reflect the post-audit SQLite reality. **NOTE: Supabase (what the live site reads) still holds the OLD classification until `sync_to_supabase.py` is run** — that sync is gated on explicit user confirmation.
 
 - **Next.js app (primary):** dental-pe-nextjs.vercel.app
 - **Streamlit app (legacy):** suleman7-pe.streamlit.app
@@ -34,7 +36,7 @@ Push to `main` auto-deploys both: Vercel (~30s) and Streamlit Cloud (~60s).
 
 ### NPI rows vs clinic locations — read before quoting any count
 
-NPPES emits one row per provider (NPI-1) AND one row per organization (NPI-2) at the same address. `practices` is keyed by NPI, NOT clinic. Watched ZIPs: **13,818 NPI rows** (post-F32; was 14,053) collapse to **5,732 deduped clinic locations** (~2.6× fan-out). "381,598 practices" / "13,818 watched" are **NPI-row counts**. Location-deduped denominator is `SUM(zip_scores.total_gp_locations)` for GP, `practice_locations.location_id` for address-keyed queries. ~2.6× Supabase row count = NPI rows, not sync drift.
+NPPES emits one row per provider (NPI-1) AND one row per organization (NPI-2) at the same address. `practices` is keyed by NPI, NOT clinic. Watched ZIPs: **13,818 NPI rows** (post-F32; was 14,053) collapse to **5,657 deduped clinic locations** (~2.4× fan-out, post-2026-05-30 reclassification; was 5,732). "381,598 practices" / "13,818 watched" are **NPI-row counts**. Location-deduped denominator is `SUM(zip_scores.total_gp_locations)` for GP, `practice_locations.location_id` for address-keyed queries. ~2.4× Supabase row count = NPI rows, not sync drift.
 
 ### Numbers cheat-sheet — F29 (read before quoting any count)
 
@@ -44,26 +46,26 @@ Full reconciliation reasoning + Dentagraphics gap analysis: `RECONCILIATION_VERD
 |---|------:|------|-------|--------|-------------------|
 | 1 | **381,598** | NPI rows | global | `COUNT(*) FROM practices` (post-F32; was 402,004) | "382k practices" headline |
 | 2 | **13,818** | NPI rows | 290 watched | `practices` ⋈ `watched_zips` (was 14,053) | Job Market header, NPI KPIs |
-| 3 | **5,732** | locations | 290 watched (all classes) | `practice_locations` ⋈ `watched_zips` | Internal only — NEVER user-facing |
-| 4 | **4,889** | GP locations | 290 watched | `SUM(zip_scores.total_gp_locations)` post-`dc18d24` | Home, Market Intel, Job Market, Launchpad headline |
-| 5 | **4,575** | GP loc | CHI (269 IL) | watched + IL filter on (4) | Warroom Sitrep, Market Intel CHI |
-| 6 | **314** | GP loc | BOS (21 MA) | watched + MA filter on (4); 4,575+314=4,889 ✅ | Boston surfaces |
-| 7 | **4,574** | GP loc | all-IL (statewide) | `practice_locations` IL+GP filter | Dentagraphics-comparable scope |
-| 8 | **4,409** | active-GP | all-IL, drop `solo_inactive` | (7) minus 165 contactless | Honest active-GP claim |
-| 9 | **3,961** | (their unit) | all-IL | Dentagraphics infographic (F30) | External benchmark — +15.5% gap to (7), +11.3% to (8) |
-| 10 | **882** | corp NPIs | 13,818 watched | `entity_classification IN (dso_regional,dso_national)` | NPI-row corporate KPI = 6.38% |
-| 11 | **225** | corp locations | 4,889 GP watched | same on `practice_locations` | Headline corporate share = **4.60%** |
+| 3 | **5,657** | locations | 290 watched (all classes) | `practice_locations` ⋈ `watched_zips` (post-2026-05-30; was 5,732) | Internal only — NEVER user-facing |
+| 4 | **4,970** | GP locations | 290 watched | `SUM(zip_scores.total_gp_locations)` (post-2026-05-30; was 4,889) | Home, Market Intel, Job Market, Launchpad headline |
+| 5 | **4,608** | GP loc | CHI (269 IL) | watched + IL filter on (4); was 4,575 | Warroom Sitrep, Market Intel CHI |
+| 6 | **362** | GP loc | BOS (21 MA) | watched + MA filter on (4); 4,608+362=4,970 ✅; was 314 | Boston surfaces |
+| 7 | **4,627** | GP loc | all-IL (practice_locations) | `practice_locations` IL+GP filter; was 4,574 | Dentagraphics-comparable scope |
+| 8 | **4,460** | active-GP | all-IL, drop `solo_inactive` | (7) minus 167 contactless; was 4,409 | Honest active-GP claim |
+| 9 | **3,961** | (their unit) | all-IL | Dentagraphics infographic (F30) | External benchmark — +16.8% gap to (7), +12.6% to (8) |
+| 10 | **875** | corp NPIs | 13,818 watched | `entity_classification IN (dso_regional,dso_national)`; was 882 | NPI-row corporate KPI = 6.33% |
+| 11 | **200** | corp locations | 4,970 GP watched | `zip_scores.corporate_location_count`; was 225 | Headline corporate share = **4.02%** (floor) |
 
-**Most-confused comparison:** Job Market ~14k "practices" (NPI rows, line 2) vs Warroom ~5,491 (locations, line 4 minus a few). Both correct under their own units. Conversion = structural NPPES dual-emission.
+**Most-confused comparison:** Job Market ~13.8k "practices" (NPI rows, line 2) vs Warroom Sitrep ~5,657 "Practices in Scope" (all-class locations, line 3). Both correct under their own units. Conversion = structural NPPES dual-emission. Headline corporate/independent KPIs use the **GP-location** denominator (line 4 = 4,970), not all-class locations and not NPI rows.
 
-**Dentagraphics gap (F30):** Their **3,961** for IL has only "data courtesy of Medicaid.gov" + "as is, with all faults" disclaimer; no methodology disclosed. The +15.5% gap (our 4,574 vs their 3,961) cannot be assigned. Our number has SQL provenance; theirs has disclaimer. Don't claim "we match Dentagraphics" or "they're correct and we're wrong."
+**Dentagraphics gap (F30):** Their **3,961** for IL has only "data courtesy of Medicaid.gov" + "as is, with all faults" disclaimer; no methodology disclosed. The +16.8% gap (our 4,627 vs their 3,961) cannot be assigned. Our number has SQL provenance; theirs has disclaimer. Don't claim "we match Dentagraphics" or "they're correct and we're wrong."
 
 ### SQLite tables
 
 | Table | Rows | Notes |
 |-------|-----:|-------|
 | `practices` | 381,598 global / 13,818 watched | PK `npi`. **`entity_classification`** is canonical ownership signal (populated for all watched NPIs) |
-| `practice_locations` | 5,732 watched (4,889 GP: CHI 4,575 + BOS 314) | Address-deduped, PK `location_id`. **All Sitrep KPIs + headline corp %/independent % source HERE — NOT `practices`.** Joined via `practice_to_location_xref` |
+| `practice_locations` | 5,657 watched (4,970 GP: CHI 4,608 + BOS 362) | Address-deduped, PK `location_id`. **All Sitrep KPIs + headline corp %/independent % source HERE — NOT `practices`.** Joined via `practice_to_location_xref`. Post-2026-05-30 reclassification (was 5,732/4,889) |
 | `deals` | 2,861 / 2,861 | 2,532 GDN + 353 PESP + 10 PitchBook. Drift reconciled `ac2140a` — Pass 2 of `_reconcile_deals()` (`sync_to_supabase.py:924`, called from `:1287`) keys NULL-target rows by composite hash. Oct 2020 – Mar 2026 |
 | `practice_changes` | 8,848 | name/address/ownership change log |
 | `zip_scores` | 290 | One per watched ZIP. `total_gp_locations` = canonical clinic-count denominator |
@@ -73,9 +75,13 @@ Full reconciliation reasoning + Dentagraphics gap analysis: `RECONCILIATION_VERD
 | `practice_signals` | 13,818 NPI | Warroom Hunt 8-flag overlay (stealth_dso, phantom_inventory, family_dynasty, micro_cluster, retirement_combo, last_change_90d, high_peer_retirement, revenue_default) |
 | `zip_signals` | 290 SQLite / **0 Supabase** | Sync gap. Repair: `python3 scrapers/sync_to_supabase.py --tables zip_signals` |
 
-**Watched-ZIP `entity_classification` breakdown (NPI rows, post-`520c33e`):** solo_established 3,575 / small_group 2,727 / large_group 2,456 / specialist 2,353 / family_practice 1,701 / solo_high_volume 709 / dso_national 222 / solo_inactive 170 / dso_regional 244 / solo_new 17 / non_clinical 16. NULL=0.
+**Watched-ZIP `entity_classification` breakdown (NPI rows, post-2026-05-30 reclassification):** small_group 2,830 / solo_established 2,657 / large_group 2,326 / specialist 1,419 / family_practice 1,334 / solo_high_volume 873 / non_clinical 742 / org_only_npi 580 / dso_regional 471 / dso_national 404 / solo_inactive 165 / solo_new 17. NULL=0. (The rewrite moved many former-specialist/clerical NPI rows into `non_clinical` and the new `org_only_npi` class; corporate NPIs = 471+404 = **875**.)
 
-**Corporate share NPI vs location is structural.** NPI rows: 882 corporate / 13,818 watched = 6.28%. Locations: 225 corporate / 4,889 GP = **4.60%** (CHI 4.52%, BOS 5.73%). One corporate location houses 2-5 NPIs. **Use `practice_locations` / `zip_scores.corporate_location_count` for headline KPIs.** Only quote NPI counts when the unit is "individual dentists working at corporate" (Job Market scoring). Legacy `ownership_status` is ~zero in SQLite — `entity_classification` (via `classifyPractice()` helper) is canonical in the Next.js frontend.
+**Location-level breakdown (`practice_locations`, watched, post-2026-05-30):** solo_established 2,468 / small_group 947 / solo_high_volume 650 / specialist 644 / large_group 334 / family_practice 205 / solo_inactive 167 / dso_national 161 / dso_regional 39 / non_clinical 23 / solo_new 19. Total = 5,657. Corporate locations = 161+39 = **200**. Independent (7 classes) = 4,790. `org_only_npi` does NOT appear at location level (org NPIs collapse into provider-keyed locations) — this is why location-level corporate/independent shares are unaffected by the 580 NPI-row org_only_npi count.
+
+**Corporate share NPI vs location is structural.** NPI rows: 875 corporate / 13,818 watched = 6.33%. Locations: 200 corporate / 4,970 GP = **4.02%** (CHI 181/4,608 = 3.93%, BOS 19/362 = 5.25%). One corporate location houses 2-5 NPIs. **Use `practice_locations` / `zip_scores.corporate_location_count` for headline KPIs.** Only quote NPI counts when the unit is "individual dentists working at corporate" (Job Market scoring). Legacy `ownership_status` is ~zero in SQLite — `entity_classification` (via `classifyPractice()` helper) is canonical in the Next.js frontend.
+
+**This 4.02% is a documented FLOOR, not the true corporate share.** It counts only locations with hard evidence (known DSO brand, corporate parent_company, or EIN shared across 3+ ZIPs). DSOs routinely keep the acquired practice's local name, which name/EIN matching cannot see — so the true share is higher. The honest upper anchor is the **ADA HPI per-dentist DSO-affiliation rate** (a different unit — people, not locations): IL 2024 = **14.6%**, MA 2024 = **14.9%**. The frontend presents both as a band (`consolidation-honesty.ts` → `getCorporateBand`/`corporateBandTooltip`/`corporateBandSubtitle`), wired into Home, Market Intel, Job Market, and Warroom Sitrep + briefing. **Never present the confirmed floor as "the consolidation rate," and never fabricate a precise "true" number between the floor and the anchor.**
 
 ### Sync strategies (`sync_to_supabase.py`)
 
@@ -260,9 +266,9 @@ Full descriptions in `CLAUDE_ARCHIVE.md` §"Pipeline File Quick Reference".
 
 ## Entity Classification System
 
-Assigned by DSO classifier Pass 3 (`classify_entity_types()` in `dso_classifier.py`) using provider count at address, last-name match, taxonomy codes, corporate signals, Data Axle data. Reasoning stored in `classification_reasoning`. Priority (first wins): non_clinical > specialist > dso_national > corporate signals > family_practice > large_group > small_group > solo variants.
+Assigned by DSO classifier Pass 3 (`classify_entity_types()` in `dso_classifier.py`) AND the 2026-05-30 rewrite `reclassify_locations.py` (location-level, confidence-tiered), using provider count at address, last-name match, taxonomy codes, corporate signals, Data Axle data. Reasoning stored in `classification_reasoning`. Priority (first wins): non_clinical > specialist > dso_national > corporate signals > family_practice > large_group > small_group > solo variants.
 
-### 11 values
+### 12 values
 
 | Value | Definition |
 |-------|-----------|
@@ -270,6 +276,7 @@ Assigned by DSO classifier Pass 3 (`classify_entity_types()` in `dso_classifier.
 | `solo_new` | Single-provider, last 10 years |
 | `solo_inactive` | Single-provider, no phone AND no website |
 | `solo_high_volume` | Single-provider, 5+ employees or $800k+ revenue |
+| `org_only_npi` | Organization NPI registered at an address where no individual providers practice — billing-only, admin-only, or closed location. **Added 2026-05-30.** Distinct from `solo_inactive` (a real solo with no contact info). NPI-row only; never appears as a deduped location. Rolls into "unknown" in `classifyPractice()` — NOT counted independent or corporate. |
 | `family_practice` | 2+ providers same address, shared last name |
 | `small_group` | 2-3 providers same address, different last names, no DSO match |
 | `large_group` | 4+ providers same address, no DSO brand match |
@@ -284,7 +291,7 @@ Assigned by DSO classifier Pass 3 (`classify_entity_types()` in `dso_classifier.
 - **Corporate:** dso_regional, dso_national
 - **Specialist:** specialist
 - **Non-clinical:** non_clinical
-- **Unknown:** entity_classification IS NULL AND ownership_status NOT IN (dso-affiliated, pe-backed)
+- **Unknown:** `org_only_npi`, OR entity_classification IS NULL AND ownership_status NOT IN (dso-affiliated, pe-backed)
 
 ### Saturation, specialist, confidence, modifiers, market types
 
