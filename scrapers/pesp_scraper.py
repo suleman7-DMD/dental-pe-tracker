@@ -11,6 +11,7 @@ import argparse
 import re
 import sys
 import os
+import signal
 import time
 from datetime import date
 
@@ -24,6 +25,25 @@ from scrapers.database import Deal, init_db, get_session, insert_deal, normalize
 from scrapers.pipeline_logger import log_scrape_start, log_scrape_complete, log_scrape_error
 
 log = get_logger("pesp_scraper")
+
+# ── Signal handling ─────────────────────────────────────────────────────────
+# refresh.sh sends SIGTERM when a step exceeds its timeout. Without a handler
+# the scraper dies mid-run leaving a dangling log_scrape_start with no
+# log_scrape_complete, which makes the System dashboard show a phantom
+# "running" status. _GracefulExit is caught in run()'s finally block so
+# log_scrape_complete is always written.
+
+class _GracefulExit(SystemExit):
+    """Raised by the SIGTERM/SIGINT handler so the finally block in run() fires."""
+
+
+def _handle_signal(signum, frame):
+    log.warning("pesp_scraper received signal %s — exiting gracefully", signum)
+    raise _GracefulExit(128 + signum)
+
+
+signal.signal(signal.SIGTERM, _handle_signal)
+signal.signal(signal.SIGINT, _handle_signal)
 
 # ── Constants ───────────────────────────────────────────────────────────────
 
@@ -1096,6 +1116,10 @@ def run(dry_run=False):
     pages_success = 0
     pages_failed = 0
     failed_urls = []
+    new_inserted = 0
+    duplicates = 0
+    _terminated = False
+    _term_exc = None
 
     try:
         for url, deal_date in valid_urls:
@@ -1112,9 +1136,6 @@ def run(dry_run=False):
             time.sleep(RATE_LIMIT_SECS)
 
         # Step 3: Insert or print
-        new_inserted = 0
-        duplicates = 0
-
         if dry_run:
             _print_dry_run_table(all_deals)
         else:
@@ -1155,16 +1176,36 @@ def run(dry_run=False):
         if not dry_run:
             log.info("New deals inserted:     %d", new_inserted)
             log.info("Duplicates skipped:     %d", duplicates)
-            # Coverage diagnostics — must run BEFORE log_scrape_complete so any
-            # WARNING lands in the same scrape event window.
-            _log_coverage_warning(session)
-            log_scrape_complete("pesp_scraper", _t0, new_records=new_inserted,
-                                summary=f"PESP: {new_inserted} new deals, {duplicates} dupes ({pages_success} pages scraped)",
-                                extra={"duplicates": duplicates, "pages_scraped": pages_success, "pages_failed": pages_failed})
         log.info("=" * 60)
+    except _GracefulExit as _exc:
+        _terminated = True
+        _term_exc = _exc
+        log.warning("pesp_scraper: terminated early — partial results will be logged")
     finally:
+        if not dry_run:
+            # Coverage diagnostics — run before log_scrape_complete so any
+            # WARNING lands in the same scrape event window. Skip on termination
+            # (session may be mid-transaction).
+            if not _terminated and session:
+                _log_coverage_warning(session)
+            status = "partial" if _terminated else "ok"
+            log_scrape_complete(
+                "pesp_scraper", _t0, new_records=new_inserted,
+                summary=(
+                    f"PESP: {new_inserted} new deals, {duplicates} dupes "
+                    f"({pages_success} pages scraped){' — TERMINATED' if _terminated else ''}"
+                ),
+                extra={
+                    "duplicates": duplicates,
+                    "pages_scraped": pages_success,
+                    "pages_failed": pages_failed,
+                    "status": status,
+                },
+            )
         if session:
             session.close()
+        if _terminated and _term_exc is not None:
+            raise _term_exc
 
 
 def _print_dry_run_table(deals):

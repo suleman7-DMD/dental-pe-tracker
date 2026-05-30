@@ -89,6 +89,11 @@ jobs:
         run: python3 scrapers/gdn_scraper.py
         continue-on-error: true
 
+      - name: Scrape Becker's Dental Review deals
+        timeout-minutes: 20
+        run: python3 scrapers/beckers_scraper.py --since $(date -d '60 days ago' +%Y-%m-%d 2>/dev/null || date -v-60d +%Y-%m-%d)
+        continue-on-error: true
+
       - name: Import PitchBook CSVs (auto mode)
         timeout-minutes: 10
         run: python3 scrapers/pitchbook_importer.py --auto
