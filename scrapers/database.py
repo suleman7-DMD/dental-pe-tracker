@@ -143,6 +143,24 @@ class Practice(Base):
     #         org_only_npi, family_practice, small_group, large_group,
     #         dso_regional, dso_national, specialist, non_clinical
     entity_classification = Column(Text, nullable=True)
+    # NPPES ownership-piercing fields (added 2026-06-07; populated by
+    # nppes_downloader.parse_nppes_row). The Authorized Official is the human who
+    # legally controls an organization NPI; the mailing address is the back-office
+    # the org routes to (often a shared MSO billing address); parent_org_lbn/tin
+    # is NPPES's own parent-organization disclosure. These feed the Phase B2
+    # officer/mailing/parent-TIN stealth-DSO clustering detector. See
+    # scrapers/migrate_ownership_cols.py (idempotent ALTER on both DBs).
+    authorized_official_last_name = Column(Text, nullable=True)
+    authorized_official_first_name = Column(Text, nullable=True)
+    authorized_official_title = Column(Text, nullable=True)
+    authorized_official_credential = Column(Text, nullable=True)  # DDS/DMD=clinician-led; MBA/CPA/blank=MSO exec signal
+    mailing_address = Column(Text, nullable=True)
+    mailing_city = Column(Text, nullable=True)
+    mailing_state = Column(Text, nullable=True)
+    mailing_zip = Column(Text, nullable=True)
+    is_org_subpart = Column(Text, nullable=True)  # Y / N / X
+    parent_org_lbn = Column(Text, nullable=True)  # Parent Organization Legal Business Name
+    parent_org_tin = Column(Text, nullable=True)  # Parent Organization TIN
     created_at = Column(DateTime, default=func.now())
     updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
 

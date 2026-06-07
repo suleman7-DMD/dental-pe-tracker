@@ -47,6 +47,10 @@ class Invariant:
     expect_max: int      # max rows allowed; 0 means "must be empty"
     severity: str        # "fail" or "warn"
     note: str = ""
+    expect_min: int = 0  # min rows REQUIRED; >0 turns this into a floor guard
+                         # (FAIL/WARN when count < expect_min). Use for the
+                         # corporate-floor regression guard, where the danger is
+                         # a count DROPPING, not growing.
 
 
 # Each invariant uses PostgREST `count=exact` via the `Prefer` header so we
@@ -109,6 +113,26 @@ INVARIANTS: list[Invariant] = [
         severity="warn",
         note="Reports actual count; flags only if dramatically off (handled in driver below).",
     ),
+    Invariant(
+        id="FLOOR",
+        description=(
+            "Confirmed corporate GP-location floor never regresses below the "
+            "2026-05-30 documented 262 (dso_regional+dso_national in "
+            "practice_locations). Guards the 62 IL friendly-PC promotions + "
+            "IL-DSO-seed against a refresh silently reverting them."
+        ),
+        path="practice_locations?entity_classification=in.(dso_regional,dso_national)&select=location_id",
+        expect_max=99999,         # no upper bound — growth is fine/expected
+        expect_min=262,           # FAIL if it ever drops below the documented floor
+        severity="fail",
+        note=(
+            "FLOOR GUARD: 262 = 192 dso_national + 70 dso_regional location-level "
+            "(2026-05-30). Empirically survived the 2026-06-01 NPPES refresh. A "
+            "DROP below 262 means a pipeline step reverted the promotions — "
+            "re-run scrapers/reclassify_verified_corporate_il.py + re-sync floor "
+            "tables. A RISE is healthy (Phase C confirmations landing)."
+        ),
+    ),
 ]
 
 
@@ -156,6 +180,14 @@ def main() -> int:
             display_count = "—"
             failures += 1
         elif inv.id in ("F06", "watched_zips") and count == 0:
+            status = "WARN" if inv.severity == "warn" else "FAIL"
+            display_count = str(count)
+            if inv.severity == "fail":
+                failures += 1
+            else:
+                warnings += 1
+        elif inv.expect_min and 0 <= count < inv.expect_min:
+            # Floor guard: a count that DROPPED below the required minimum.
             status = "WARN" if inv.severity == "warn" else "FAIL"
             display_count = str(count)
             if inv.severity == "fail":

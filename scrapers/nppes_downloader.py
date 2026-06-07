@@ -78,6 +78,23 @@ COL_ZIP = "Provider Business Practice Location Address Postal Code"
 COL_PHONE = "Provider Business Practice Location Address Telephone Number"
 COL_ENUM_DATE = "Provider Enumeration Date"
 COL_LAST_UPDATE = "Last Update Date"
+# Ownership-piercing columns (added 2026-06-07) — canonical CMS npidata_pfile
+# headers. The Authorized Official is the human who legally controls an org NPI;
+# the mailing address is the org's back-office (DSOs route many friendly-PCs to
+# one MSO billing address); the subpart flag + parent-org LBN/TIN are NPPES's own
+# corporate-structure disclosures. Populated for ALL NPIs (most individuals leave
+# the AO/parent fields blank; that's fine — row.get returns "" -> None).
+COL_AO_LAST = "Authorized Official Last Name"
+COL_AO_FIRST = "Authorized Official First Name"
+COL_AO_TITLE = "Authorized Official Title or Position"
+COL_AO_CRED = "Authorized Official Credential Text"
+COL_MAIL_ADDR = "Provider First Line Business Mailing Address"
+COL_MAIL_CITY = "Provider Business Mailing Address City Name"
+COL_MAIL_STATE = "Provider Business Mailing Address State Name"
+COL_MAIL_ZIP = "Provider Business Mailing Address Postal Code"
+COL_SUBPART = "Is Organization Subpart"
+COL_PARENT_LBN = "Parent Organization LBN"
+COL_PARENT_TIN = "Parent Organization TIN"
 # Taxonomy columns: "Healthcare Provider Taxonomy Code_1" through _15
 TAXONOMY_COL_PREFIX = "Healthcare Provider Taxonomy Code_"
 
@@ -280,6 +297,20 @@ def parse_nppes_row(row):
     enum_date = _parse_date(row.get(COL_ENUM_DATE))
     last_updated = _parse_date(row.get(COL_LAST_UPDATE))
 
+    # Ownership-piercing fields (NPPES discloses these; we used to drop them).
+    ao_last = str(row.get(COL_AO_LAST, "")).strip().upper() or None
+    ao_first = str(row.get(COL_AO_FIRST, "")).strip().upper() or None
+    ao_title = str(row.get(COL_AO_TITLE, "")).strip().upper() or None
+    ao_cred = str(row.get(COL_AO_CRED, "")).strip().upper() or None
+    mail_addr = str(row.get(COL_MAIL_ADDR, "")).strip() or None
+    mail_city = str(row.get(COL_MAIL_CITY, "")).strip() or None
+    mail_state = str(row.get(COL_MAIL_STATE, "")).strip() or None
+    raw_mail_zip = str(row.get(COL_MAIL_ZIP, "")).strip()
+    mail_zip = raw_mail_zip[:5] if raw_mail_zip and len(raw_mail_zip) >= 5 else None
+    subpart = str(row.get(COL_SUBPART, "")).strip().upper() or None
+    parent_lbn = str(row.get(COL_PARENT_LBN, "")).strip() or None
+    parent_tin = str(row.get(COL_PARENT_TIN, "")).strip() or None
+
     return {
         "npi": npi,
         "practice_name": practice_name,
@@ -297,6 +328,18 @@ def parse_nppes_row(row):
         "ownership_status": "unknown",
         "data_source": "nppes",
         "provider_last_name": provider_last_name,
+        # Ownership-piercing (Phase A 2026-06-07) — feed Phase B2 clustering.
+        "authorized_official_last_name": ao_last,
+        "authorized_official_first_name": ao_first,
+        "authorized_official_title": ao_title,
+        "authorized_official_credential": ao_cred,
+        "mailing_address": mail_addr,
+        "mailing_city": mail_city,
+        "mailing_state": mail_state,
+        "mailing_zip": mail_zip,
+        "is_org_subpart": subpart,
+        "parent_org_lbn": parent_lbn,
+        "parent_org_tin": parent_tin,
     }
 
 
@@ -735,11 +778,147 @@ def run(watched_only=False, dry_run=False):
     session.close()
 
 
+def backfill_ownership_cols(watched_only=False, reuse_existing=True):
+    """One-time surgical backfill of the 10 ownership-piercing columns.
+
+    Scans the full NPPES dissemination file and UPDATEs ONLY
+    authorized_official_*, mailing_*, is_org_subpart, parent_org_lbn/tin on NPIs
+    that already exist in `practices`. Unlike process_full_file it does NOT insert
+    new rows, refresh other fields, or log practice_changes — so it cannot churn
+    the deduped location tables or the hard-won entity_classification values.
+
+    Run order: migrate_ownership_cols.py (adds columns) -> this. Idempotent.
+    GATED: never run mid-sync — it writes to SQLite.
+    """
+    import sqlite3
+    _t0 = log_scrape_start("nppes_ownership_backfill")
+    db_path = os.path.join(os.path.dirname(DATA_DIR), "dental_pe_tracker.db")
+    log.info("=" * 60)
+    log.info("NPPES ownership backfill — DB=%s watched_only=%s", db_path, watched_only)
+    log.info("=" * 60)
+
+    conn = sqlite3.connect(db_path)
+    cols = {r[1] for r in conn.execute("PRAGMA table_info(practices)").fetchall()}
+    required = {"authorized_official_last_name", "mailing_address", "parent_org_tin"}
+    if not required.issubset(cols):
+        log.error("Ownership columns missing — run `python3 -m scrapers."
+                  "migrate_ownership_cols` first. Aborting.")
+        conn.close()
+        return
+
+    if watched_only:
+        rows = conn.execute(
+            "SELECT p.npi FROM practices p "
+            "JOIN watched_zips w ON p.zip = w.zip_code").fetchall()
+    else:
+        rows = conn.execute("SELECT npi FROM practices").fetchall()
+    existing = {r[0] for r in rows}
+    log.info("Existing NPIs to backfill: %s", f"{len(existing):,}")
+    if not existing:
+        log.error("No practices in DB — run the normal NPPES import first.")
+        conn.close()
+        return
+
+    os.makedirs(TEMP_DIR, exist_ok=True)
+    full_url, _ = discover_nppes_urls()
+    if not full_url:
+        log.error("No full NPPES file URL found at %s", NPPES_PAGE)
+        conn.close()
+        return
+    zip_path = os.path.join(TEMP_DIR, full_url.split("/")[-1])
+    if reuse_existing and os.path.exists(zip_path):
+        log.info("Reusing existing download: %s", zip_path)
+    elif not download_file(full_url, zip_path):
+        conn.close()
+        return
+    csv_path = extract_zip(zip_path, TEMP_DIR)
+    if not csv_path:
+        conn.close()
+        return
+
+    UPDATE = ("UPDATE practices SET "
+              "authorized_official_last_name=?, authorized_official_first_name=?, "
+              "authorized_official_title=?, authorized_official_credential=?, "
+              "mailing_address=?, mailing_city=?, "
+              "mailing_state=?, mailing_zip=?, is_org_subpart=?, "
+              "parent_org_lbn=?, parent_org_tin=? WHERE npi=?")
+    scanned = matched = updated = with_ao = with_parent = with_mail = 0
+    batch = []
+    start = time.time()
+    with open(csv_path, "r", encoding="utf-8", errors="replace") as f:
+        reader = csv.DictReader(f)
+        if reader.fieldnames:
+            reader.fieldnames = [n.strip() for n in reader.fieldnames]
+        for row in reader:
+            scanned += 1
+            if scanned % 500_000 == 0:
+                log.info("  scanned %.1fM rows, matched %d, updated %d (%.0f r/s)",
+                         scanned / 1_000_000, matched, updated,
+                         scanned / max(time.time() - start, 1))
+            npi = str(row.get(COL_NPI, "")).strip()
+            if npi not in existing:
+                continue
+            matched += 1
+            p = parse_nppes_row(row)
+            if not p:
+                continue
+            if p["authorized_official_last_name"]:
+                with_ao += 1
+            if p["parent_org_tin"]:
+                with_parent += 1
+            if p["mailing_address"]:
+                with_mail += 1
+            batch.append((
+                p["authorized_official_last_name"], p["authorized_official_first_name"],
+                p["authorized_official_title"], p["authorized_official_credential"],
+                p["mailing_address"], p["mailing_city"],
+                p["mailing_state"], p["mailing_zip"], p["is_org_subpart"],
+                p["parent_org_lbn"], p["parent_org_tin"], npi))
+            if len(batch) >= 5000:
+                conn.executemany(UPDATE, batch)
+                conn.commit()
+                updated += len(batch)
+                batch = []
+    if batch:
+        conn.executemany(UPDATE, batch)
+        conn.commit()
+        updated += len(batch)
+    conn.close()
+
+    for fp in (zip_path, csv_path):
+        try:
+            os.remove(fp)
+        except OSError:
+            pass
+
+    elapsed = time.time() - start
+    log.info("=" * 60)
+    log.info("Backfill complete: scanned=%s matched=%s updated=%s in %.0fs",
+             f"{scanned:,}", f"{matched:,}", f"{updated:,}", elapsed)
+    log.info("  with authorized_official=%s  parent_org_tin=%s  mailing_address=%s",
+             f"{with_ao:,}", f"{with_parent:,}", f"{with_mail:,}")
+    log.info("=" * 60)
+    log_scrape_complete(
+        "nppes_ownership_backfill", _t0, new_records=0,
+        summary=(f"Ownership backfill: {updated:,} rows updated "
+                 f"({with_ao:,} AO, {with_parent:,} parent-TIN, {with_mail:,} mailing)"),
+        extra={"scanned": scanned, "matched": matched, "updated": updated,
+               "with_ao": with_ao, "with_parent_tin": with_parent,
+               "with_mailing": with_mail})
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Download and import NPPES dental practice data")
     parser.add_argument("--watched-only", action="store_true",
                         help="Only process practices in watched ZIP codes")
     parser.add_argument("--dry-run", action="store_true",
                         help="Download and parse but don't insert into database")
+    parser.add_argument("--backfill-ownership-cols", action="store_true",
+                        help="One-time: scan full file and backfill the 10 NPPES "
+                             "ownership columns (authorized official, mailing, "
+                             "subpart, parent org) onto existing NPIs only")
     args = parser.parse_args()
-    run(watched_only=args.watched_only, dry_run=args.dry_run)
+    if args.backfill_ownership_cols:
+        backfill_ownership_cols(watched_only=args.watched_only)
+    else:
+        run(watched_only=args.watched_only, dry_run=args.dry_run)

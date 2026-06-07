@@ -28,12 +28,17 @@ After running, sync zip_scores + practice_locations + practices to Supabase for
 the live site to reflect the new floor.
 """
 import json
+import os
 import sqlite3
 
 from scrapers.seed_il_dso_locations import xref_key
 
 DB = "data/dental_pe_tracker.db"
 MERGED = "data/dso_research/il_dso_locations_merged.json"
+# Phase C web-verification output (verify_flip_candidates.py). Additive: confirmed
+# DSO friendly-PC locations that name/EIN/PSC detectors surfaced and a forced-search
+# Claude pass then CONFIRMED with source URLs. Same schema as MERGED; unioned below.
+PHASEC = "data/dso_research/il_dso_phasec_verified.json"
 
 INDEP = ("solo_established", "solo_new", "solo_inactive", "solo_high_volume",
          "family_practice", "small_group", "large_group")
@@ -73,6 +78,11 @@ def main(apply=True):
 
     # ---- derive the promote set: verified-corporate ∩ currently-independent ----
     merged = json.load(open(MERGED))
+    # Union in Phase C web-verified confirmed locations (same schema), if present.
+    if os.path.exists(PHASEC):
+        phasec = json.load(open(PHASEC))
+        print(f"  + {len(phasec)} Phase C web-verified records unioned from {PHASEC}")
+        merged = merged + phasec
     promote = {}   # location_id -> dict
     for loc in merged:
         if not loc.get("in_watched"):

@@ -1,0 +1,99 @@
+{
+  "generated_by": "detect_corporate_clusters.py (Phase B2)",
+  "state": "IL",
+  "min_cluster": 2,
+  "backfilled": true,
+  "columns_available": {
+    "parent_org_tin": true,
+    "authorized_official": true,
+    "mailing_address": true,
+    "credential": true
+  },
+  "cluster_count": 2,
+  "total_still_independent_in_clusters": 0,
+  "exec_title_npi_count": 0,
+  "clusters": [
+    {
+      "cluster_kind": "shared_ein",
+      "cluster_key": "EIN:731689410",
+      "npi_count": 3,
+      "zip_count": 3,
+      "zips": [
+        "60625",
+        "60629",
+        "60639"
+      ],
+      "class_breakdown": {
+        "dso_regional": 3
+      },
+      "still_independent": 0,
+      "already_corporate": 3,
+      "corroboration": {
+        "strength": "medium"
+      },
+      "members": [
+        {
+          "npi": "1801140470",
+          "name": "BRITE DENTAL KIMBALL, P.C.",
+          "addr": "4714 N KIMBALL AVE",
+          "city": "CHICAGO",
+          "zip": "60625",
+          "class": "dso_regional"
+        },
+        {
+          "npi": "1396917001",
+          "name": "BRITE DENTAL",
+          "addr": "6636 S PULASKI",
+          "city": "CHICAGO",
+          "zip": "60629",
+          "class": "dso_regional"
+        },
+        {
+          "npi": "1508110172",
+          "name": "BRITE DENTAL AR,ITAGE, P.C.",
+          "addr": "4343 W ARMITAGE AVE",
+          "city": "CHICAGO",
+          "zip": "60639",
+          "class": "dso_regional"
+        }
+      ]
+    },
+    {
+      "cluster_kind": "shared_ein",
+      "cluster_key": "EIN:271445093",
+      "npi_count": 2,
+      "zip_count": 2,
+      "zips": [
+        "60416",
+        "60544"
+      ],
+      "class_breakdown": {
+        "dso_regional": 2
+      },
+      "still_independent": 0,
+      "already_corporate": 2,
+      "corroboration": {
+        "strength": "medium"
+      },
+      "members": [
+        {
+          "npi": "1861607798",
+          "name": "PLAINFIELD FAMILY DENTAL CENTER",
+          "addr": "24204 W LOCKPORT ST",
+          "city": "PLAINFIELD",
+          "zip": "60544",
+          "class": "dso_regional"
+        },
+        {
+          "npi": "1821201575",
+          "name": "PULLARA FAMILY DENTAL CENTER",
+          "addr": "595 N BROADWAY ST",
+          "city": "COAL CITY",
+          "zip": "60416",
+          "class": "dso_regional"
+        }
+      ]
+    }
+  ],
+  "exec_title_npis": []
+}
