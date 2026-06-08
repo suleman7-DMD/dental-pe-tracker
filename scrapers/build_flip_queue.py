@@ -53,6 +53,15 @@ B2 = os.path.join(RES, "cluster_candidates_b2.json")
 B7 = os.path.join(RES, "psc_candidates_b7.json")
 
 CORPORATE_CLASSES = ("dso_regional", "dso_national")
+# B2 cluster kinds that count as STRUCTURAL corroboration (a real multi-office
+# operating company): shared tax ID, shared back-office mailing, parent-TIN. The
+# brand pass (da_corporate_parent) and the weak officer pass are deliberately
+# NOT here — brand identity is tracked separately, and an officer name alone is
+# too weak to corroborate. This keeps a lone signal from self-promoting.
+STRUCT_CORROB_KINDS = {
+    "da_shared_ein", "da_shared_mailing",
+    "parent_org_tin", "authorized_official", "shared_mailing", "shared_ein",
+}
 # GP-independent classes — these are the locations that sit INSIDE the published
 # GP floor denominator (zip_scores.total_gp_locations) as "independent". Flipping
 # one of these to corporate raises the GP corporate share without changing the
@@ -143,7 +152,11 @@ def main():
 
     # ---- gather evidence keyed by NPI ----
     npi_ev = defaultdict(lambda: {"sources": set(), "brand_keys": set(),
-                                  "b1": [], "b2": [], "b7": []})
+                                  "b1": [], "b2": [], "b7": [],
+                                  # rich B2/Data-Axle structural detail
+                                  "b2_kinds": set(), "b2_strong_kinds": set(),
+                                  "b2_medium_kinds": set(), "b2_brand": None,
+                                  "b2_brand_sponsor": None})
 
     for cand in b1.get("candidates", []):
         bk = cand.get("brand_key")
@@ -160,18 +173,44 @@ def main():
                 "corroboration": cand.get("corroboration"),
             })
 
+    # OFFICER clusters are corroboration-only (weak) — they never reach a
+    # promotable tier on their own, but they DO get recorded as evidence.
     for cl in b2.get("clusters", []):
-        for m in cl.get("members", []):
-            npi = m.get("npi")
+        kind = cl.get("cluster_kind")
+        corr = cl.get("corroboration") or {}
+        strength = corr.get("strength")
+        overbroad = corr.get("over_broad")
+        matched = corr.get("matched_dso")
+        sponsor = corr.get("pe_sponsor")
+        # full membership (all_npis), not the 12-row display sample
+        npis = cl.get("all_npis") or [m.get("npi") for m in cl.get("members", [])]
+        for npi in npis:
             if not npi:
                 continue
             e = npi_ev[npi]
             e["sources"].add("b2_structural")
+            e["b2_kinds"].add(kind)
+            if not overbroad:
+                if strength == "strong":
+                    e["b2_strong_kinds"].add(kind)
+                elif strength == "medium":
+                    e["b2_medium_kinds"].add(kind)
+            # Brand identity is PER-NPI. Only the da_corporate_parent pass groups
+            # NPIs each of whose OWN parent_company/da_legal_name matched a known
+            # DSO — so only that kind may set this NPI's brand. For EIN/mailing/
+            # officer clusters, `matched_dso` is just "one cluster-mate matched";
+            # propagating it would falsely tag co-located unrelated practices
+            # (e.g. UIC faculty sharing a back-office) — kept in evidence only.
+            if matched and kind == "da_corporate_parent" and not e["b2_brand"]:
+                e["b2_brand"] = matched
+                e["b2_brand_sponsor"] = sponsor
             e["b2"].append({
-                "cluster_kind": cl.get("cluster_kind"),
+                "cluster_kind": kind,
                 "cluster_key": cl.get("cluster_key"),
                 "npi_count": cl.get("npi_count"), "zip_count": cl.get("zip_count"),
-                "strength": (cl.get("corroboration") or {}).get("strength"),
+                "strength": strength, "over_broad": overbroad,
+                "matched_dso": matched,
+                "evidence_field": corr.get("evidence_field"),
             })
 
     for nm in b7.get("watched_name_matches", []):
@@ -200,7 +239,7 @@ def main():
     placeholders = ",".join("?" * len(npi_ev))
     prows = {r["npi"]: dict(r) for r in conn.execute(f"""
         SELECT npi, practice_name, doing_business_as, address, city, zip,
-               entity_classification, ein, parent_company
+               entity_classification, ein, parent_company, da_legal_name
         FROM practices WHERE npi IN ({placeholders})
     """, list(npi_ev)).fetchall()}
 
@@ -266,7 +305,7 @@ def main():
             if k and d:
                 bkeys.add(k)
 
-        # brand confirmation: strongest hit across this NPI's brand keys
+        # brand confirmation: strongest EXTERNAL (web-verified) hit across keys
         confirmed = None
         for bk in bkeys:
             c = brand_conf.get(bk)
@@ -275,25 +314,59 @@ def main():
                       {"low": 0, "medium": 1, "high": 2}.get(confirmed["confidence"], 0)):
                 confirmed = c
 
-        signal_count = len(ev["sources"])
-        brand_ok = confirmed is not None
+        # --- Data-Axle structural evidence (2026-06-07 corp-signal expansion) ---
+        # A brand can be identified two ways: web-verified externally (`confirmed`),
+        # or structurally via Data Axle's corporate tree (parent_company /
+        # da_legal_name = a known DSO). Structural CORROBORATION (that this is a
+        # real multi-office operating company) comes from shared tax ID / shared
+        # back-office mailing / parent-TIN — NOT from the brand pass itself, so a
+        # lone "parent_company says X" never self-corroborates into high.
+        da_brand = ev.get("b2_brand")
+        strong_struct = bool(ev["b2_strong_kinds"] & STRUCT_CORROB_KINDS)
+        medium_struct = bool(ev["b2_medium_kinds"] & STRUCT_CORROB_KINDS)
+        has_b1 = "b1_name_chain" in ev["sources"]
+        has_b7 = "b7_psc" in ev["sources"]
+        external_brand_strong = confirmed is not None and bool(
+            set(confirmed["sources"]) &
+            {"scoreboard", "b7_dba_reveal", "b7_shared_dba"})
+        brand_id = (confirmed is not None) or (da_brand is not None)
+        # corroborating evidence pillars beyond brand identity (weak officer
+        # clusters are deliberately excluded — they only ride along as evidence)
+        corrob_pillars = sum([strong_struct, has_b1, has_b7])
 
-        if brand_ok and (signal_count >= 2 or
-                         "b7_dba_reveal" in confirmed["sources"] or
-                         "scoreboard" in confirmed["sources"]):
+        if external_brand_strong or (brand_id and corrob_pillars >= 1):
             tier = "high"
-        elif brand_ok or signal_count >= 2:
+        elif brand_id or strong_struct:
             tier = "medium"
         else:
+            # medium_struct-only (EIN across exactly 3 offices), b1-only, b7-only,
+            # or weak-officer-only — a single inconclusive signal. Never auto-flip.
             tier = "low"
 
-        proposed_dso = confirmed["dso"] if confirmed else None
+        proposed_dso = (confirmed["dso"] if confirmed else None) or da_brand
+        proposed_sponsor = ((confirmed["pe_sponsor"] if confirmed else None)
+                            or ev.get("b2_brand_sponsor"))
         if proposed_dso and proposed_dso.upper() in NATIONAL_DSO_BRANDS:
             proposed_class = "dso_national"
-        elif brand_ok:
+        elif brand_id:
             proposed_class = "dso_national"
         else:
             proposed_class = "dso_regional"  # structural-only, lower confidence
+
+        # distinct evidence families (for ranking + transparency)
+        fam = set()
+        if has_b1:
+            fam.add("b1_name_chain")
+        if has_b7:
+            fam.add("b7_psc")
+        if external_brand_strong:
+            fam.add("brand_web_verified")
+        if da_brand:
+            fam.add("da_corporate_parent")
+        if strong_struct:
+            fam.add("da_structural_strong")
+        elif medium_struct:
+            fam.add("da_structural_medium")
 
         lid = npi_loc.get(npi)
         if not lid and prow.get("address"):
@@ -310,12 +383,15 @@ def main():
             "location_current_class": loc_class.get(lid),
             "proposed_class": proposed_class,
             "proposed_dso": proposed_dso,
-            "pe_sponsor": confirmed["pe_sponsor"] if confirmed else None,
+            "pe_sponsor": proposed_sponsor,
             "tier": tier,
-            "signal_count": signal_count,
-            "signals": sorted(ev["sources"]),
-            "brand_confirmed": brand_ok,
+            "signal_count": len(fam),
+            "signals": sorted(fam),
+            "brand_confirmed": brand_id,
+            "brand_identified_by": ("web_verified" if confirmed else
+                                    "data_axle_corporate_tree" if da_brand else None),
             "brand_confirmation_sources": sorted(confirmed["sources"]) if confirmed else [],
+            "da_structural_kinds": sorted(ev["b2_strong_kinds"] | ev["b2_medium_kinds"]),
             "brand_keys": sorted(bkeys),
             "evidence": {"b1": ev["b1"], "b2": ev["b2"], "b7": ev["b7"]},
             "verification_status": "pending",  # Phase C fills this

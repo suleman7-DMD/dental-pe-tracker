@@ -1,0 +1,811 @@
+{
+  "generated_by": "build_data_axle_verified.py (Phase 4)",
+  "note": "Verified-corporate IL GP locations surfaced by the Data-Axle-powered detector fleet (B1 name-chain + B2 EIN/parent + B7 PSC) and confirmed by free WebSearch and/or already-corporate EIN members. Every row carries documentary evidence in _evidence. Adversarially-rejected clusters listed in _rejected.",
+  "verified_location_count": 27,
+  "new_promotions": 23,
+  "already_corporate_at_building": 4,
+  "_xref_note": "new_promotions add to the location-deduped floor; already_corporate_at_building rows are detector-CORROBORATED but share an xref_key with an existing dso_* sibling row, so they're already counted \u2014 reclassify (first-wins xref) holds them out to keep the floor strictly location-deduped.",
+  "_rejected": {
+    "EIN:363676741": "Mt Prospect single-building: Pollina (pediatric, Ste 4) + Ryan (perio, Ste 9) are separate specialty practices; shared EIN is a building/Data-Axle artifact, single-ZIP, not a chain.",
+    "DAMAIL:1730 PARK ST 106 60563": "Two Rivers mgmt office; shared mailing only, 0 already-corporate corroboration; only Two Rivers Elgin confirmable of 4 members. Held for paid verification."
+  },
+  "locations": [
+    {
+      "dso_name": "Heartland Dental",
+      "address": "450 s weber rd",
+      "zip": "60446",
+      "city": "ROMEOVILLE",
+      "in_watched": true,
+      "pe_sponsor": "KKR (majority 2018) + Ontario Teachers' (minority)",
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "high",
+        "signals": [
+          "b1_name_chain",
+          "b7_psc",
+          "brand_web_verified"
+        ],
+        "da_structural_kinds": [],
+        "why": "HIGH tier brand web-verified (b1_name_chain+b7_psc+brand_web_verified)",
+        "npis": [
+          "1992235840"
+        ]
+      },
+      "_location_id": "cbde3ee6f46acad7",
+      "_was": "small_group",
+      "_xref_status": "already_corporate_at_building",
+      "_sibling_corp_class": "dso_national"
+    },
+    {
+      "dso_name": "Heartland Dental",
+      "address": "16302 s blvd pl",
+      "zip": "60586",
+      "city": "PLAINFIELD",
+      "in_watched": true,
+      "pe_sponsor": "KKR (majority 2018) + Ontario Teachers' (minority)",
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "high",
+        "signals": [
+          "b1_name_chain",
+          "b7_psc",
+          "brand_web_verified"
+        ],
+        "da_structural_kinds": [],
+        "why": "HIGH tier brand web-verified (b1_name_chain+b7_psc+brand_web_verified)",
+        "npis": [
+          "1366227241"
+        ]
+      },
+      "_location_id": "8a3addfc27e73bbf",
+      "_was": "small_group",
+      "_xref_status": "new_promotion",
+      "_sibling_corp_class": null
+    },
+    {
+      "dso_name": "Heartland Dental",
+      "address": "19509 governors hwy",
+      "zip": "60422",
+      "city": "FLOSSMOOR",
+      "in_watched": true,
+      "pe_sponsor": "KKR (majority 2018) + Ontario Teachers' (minority)",
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "high",
+        "signals": [
+          "b1_name_chain",
+          "b7_psc",
+          "brand_web_verified"
+        ],
+        "da_structural_kinds": [],
+        "why": "HIGH tier brand web-verified (b1_name_chain+b7_psc+brand_web_verified)",
+        "npis": [
+          "1912599176"
+        ]
+      },
+      "_location_id": "b626cbc919682cf4",
+      "_was": "solo_established",
+      "_xref_status": "already_corporate_at_building",
+      "_sibling_corp_class": "dso_national"
+    },
+    {
+      "dso_name": "Dental Dreams",
+      "address": "12200 s western ave",
+      "zip": "60406",
+      "city": "BLUE ISLAND",
+      "in_watched": true,
+      "pe_sponsor": "private (Dr. Sameera Hussain); no confirmed PE",
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "high",
+        "signals": [
+          "b1_name_chain",
+          "brand_web_verified"
+        ],
+        "da_structural_kinds": [],
+        "why": "HIGH tier brand web-verified (b1_name_chain+brand_web_verified)",
+        "npis": [
+          "1154592145"
+        ]
+      },
+      "_location_id": "ba2a5c26509f6aeb",
+      "_was": "solo_established",
+      "_xref_status": "already_corporate_at_building",
+      "_sibling_corp_class": "dso_national"
+    },
+    {
+      "dso_name": "Destiny Dental / ProSmile",
+      "address": "5622 w touhy ave",
+      "zip": "60714",
+      "city": "NILES",
+      "in_watched": true,
+      "pe_sponsor": "ProSmile (backer undisclosed); acquired Destiny Aug 2024",
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "high",
+        "signals": [
+          "b1_name_chain",
+          "brand_web_verified"
+        ],
+        "da_structural_kinds": [],
+        "why": "HIGH tier brand web-verified (b1_name_chain+brand_web_verified)",
+        "npis": [
+          "1861229148"
+        ]
+      },
+      "_location_id": "53da362f58dc8d20",
+      "_was": "solo_high_volume",
+      "_xref_status": "new_promotion",
+      "_sibling_corp_class": null
+    },
+    {
+      "dso_name": "Destiny Dental / ProSmile",
+      "address": "712 e 87th st",
+      "zip": "60619",
+      "city": "CHICAGO",
+      "in_watched": true,
+      "pe_sponsor": "ProSmile (backer undisclosed); acquired Destiny Aug 2024",
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "high",
+        "signals": [
+          "b1_name_chain",
+          "brand_web_verified"
+        ],
+        "da_structural_kinds": [],
+        "why": "HIGH tier brand web-verified (b1_name_chain+brand_web_verified)",
+        "npis": [
+          "1023845302"
+        ]
+      },
+      "_location_id": "55404df201ad194f",
+      "_was": "large_group",
+      "_xref_status": "new_promotion",
+      "_sibling_corp_class": null
+    },
+    {
+      "dso_name": "Destiny Dental / ProSmile",
+      "address": "2101 e 71st st",
+      "zip": "60649",
+      "city": "CHICAGO",
+      "in_watched": true,
+      "pe_sponsor": "ProSmile (backer undisclosed); acquired Destiny Aug 2024",
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "high",
+        "signals": [
+          "b1_name_chain",
+          "brand_web_verified"
+        ],
+        "da_structural_kinds": [],
+        "why": "HIGH tier brand web-verified (b1_name_chain+brand_web_verified)",
+        "npis": [
+          "1942037221"
+        ]
+      },
+      "_location_id": "1d72f604a2d31ce9",
+      "_was": "large_group",
+      "_xref_status": "new_promotion",
+      "_sibling_corp_class": null
+    },
+    {
+      "dso_name": "Destiny Dental / ProSmile",
+      "address": "17653 torrence ave",
+      "zip": "60438",
+      "city": "LANSING",
+      "in_watched": true,
+      "pe_sponsor": "ProSmile (backer undisclosed); acquired Destiny Aug 2024",
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "high",
+        "signals": [
+          "b1_name_chain",
+          "brand_web_verified"
+        ],
+        "da_structural_kinds": [],
+        "why": "HIGH tier brand web-verified (b1_name_chain+brand_web_verified)",
+        "npis": [
+          "1134956410"
+        ]
+      },
+      "_location_id": "08d34f2671858cfd",
+      "_was": "large_group",
+      "_xref_status": "new_promotion",
+      "_sibling_corp_class": null
+    },
+    {
+      "dso_name": "Destiny Dental / ProSmile",
+      "address": "1 chicago ave",
+      "zip": "60302",
+      "city": "OAK PARK",
+      "in_watched": true,
+      "pe_sponsor": "ProSmile (backer undisclosed); acquired Destiny Aug 2024",
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "high",
+        "signals": [
+          "b1_name_chain",
+          "brand_web_verified"
+        ],
+        "da_structural_kinds": [],
+        "why": "HIGH tier brand web-verified (b1_name_chain+brand_web_verified)",
+        "npis": [
+          "1710714233"
+        ]
+      },
+      "_location_id": "fd93e6934ac6c59c",
+      "_was": "large_group",
+      "_xref_status": "new_promotion",
+      "_sibling_corp_class": null
+    },
+    {
+      "dso_name": "Dental Care Alliance (DCA)",
+      "address": "202 vancina ln",
+      "zip": "60451",
+      "city": "NEW LENOX",
+      "in_watched": true,
+      "pe_sponsor": "Harvest Partners + Mubadala (50% 2022)",
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "high",
+        "signals": [
+          "brand_web_verified"
+        ],
+        "da_structural_kinds": [],
+        "why": "HIGH tier brand web-verified (brand_web_verified)",
+        "npis": [
+          "1871126227"
+        ]
+      },
+      "_location_id": "e669559ebe8a9d4a",
+      "_was": "small_group",
+      "_xref_status": "new_promotion",
+      "_sibling_corp_class": null
+    },
+    {
+      "dso_name": "Dental Dreams",
+      "address": "4310 s pulaski rd",
+      "zip": "60632",
+      "city": "CHICAGO",
+      "in_watched": true,
+      "pe_sponsor": null,
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "medium",
+        "signals": [
+          "da_corporate_parent"
+        ],
+        "da_structural_kinds": [
+          "da_corporate_parent"
+        ],
+        "why": "da_corporate_parent: own parent_company/da_legal_name matched a known DSO",
+        "npis": [
+          "1396425708",
+          "1760870430",
+          "1346682077",
+          "1073023727",
+          "1437720695",
+          "1538543871",
+          "1174956155",
+          "1114471596"
+        ]
+      },
+      "_location_id": "3e8b2ad53b9f9b4d",
+      "_was": "large_group",
+      "_xref_status": "new_promotion",
+      "_sibling_corp_class": null
+    },
+    {
+      "dso_name": "Gentle Dental",
+      "address": "640 w algonquin rd",
+      "zip": "60016",
+      "city": "DES PLAINES",
+      "in_watched": true,
+      "pe_sponsor": null,
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "medium",
+        "signals": [
+          "da_corporate_parent"
+        ],
+        "da_structural_kinds": [
+          "da_corporate_parent"
+        ],
+        "why": "da_corporate_parent: own parent_company/da_legal_name matched a known DSO",
+        "npis": [
+          "1184091274"
+        ]
+      },
+      "_location_id": "828ed870467c4528",
+      "_was": "solo_established",
+      "_xref_status": "new_promotion",
+      "_sibling_corp_class": null
+    },
+    {
+      "dso_name": "Gentle Dental",
+      "address": "2917 w 63rd st",
+      "zip": "60629",
+      "city": "CHICAGO",
+      "in_watched": true,
+      "pe_sponsor": null,
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "medium",
+        "signals": [
+          "da_corporate_parent"
+        ],
+        "da_structural_kinds": [
+          "da_corporate_parent"
+        ],
+        "why": "da_corporate_parent: own parent_company/da_legal_name matched a known DSO",
+        "npis": [
+          "1356546840"
+        ]
+      },
+      "_location_id": "b8f4172a363d99c0",
+      "_was": "solo_high_volume",
+      "_xref_status": "new_promotion",
+      "_sibling_corp_class": null
+    },
+    {
+      "dso_name": "Family Dental Care",
+      "address": "3009 e 92nd st",
+      "zip": "60617",
+      "city": "CHICAGO",
+      "in_watched": true,
+      "pe_sponsor": null,
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "medium",
+        "signals": [
+          "da_structural_strong"
+        ],
+        "da_structural_kinds": [
+          "da_shared_ein"
+        ],
+        "why": "shared EIN 363554595: web: largest privately-owned dental group in Chicago, 8 loc/50+ docs (familydentalcare.com); 16 already-corporate members at this EIN",
+        "npis": [
+          "1548483746",
+          "1578772299",
+          "1528277415",
+          "1649489451",
+          "1376850891",
+          "1053653139",
+          "1821424466",
+          "1053763888",
+          "1265924070",
+          "1356801989",
+          "1699373829",
+          "1306514773",
+          "1952188419",
+          "1578344495"
+        ]
+      },
+      "_location_id": "04d2c6018cf16dd6",
+      "_was": "family_practice",
+      "_xref_status": "new_promotion",
+      "_sibling_corp_class": null
+    },
+    {
+      "dso_name": "Family Dental Care",
+      "address": "313 river oaks dr",
+      "zip": "60409",
+      "city": "CALUMET CITY",
+      "in_watched": true,
+      "pe_sponsor": null,
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "medium",
+        "signals": [
+          "da_structural_strong"
+        ],
+        "da_structural_kinds": [
+          "da_shared_ein"
+        ],
+        "why": "shared EIN 363554595: web: largest privately-owned dental group in Chicago, 8 loc/50+ docs (familydentalcare.com); 16 already-corporate members at this EIN",
+        "npis": [
+          "1386858892",
+          "1568676088",
+          "1427268051",
+          "1093489627"
+        ]
+      },
+      "_location_id": "77b28a39cb951124",
+      "_was": "small_group",
+      "_xref_status": "new_promotion",
+      "_sibling_corp_class": null
+    },
+    {
+      "dso_name": "Family Dental Care",
+      "address": "10000 s kedzie ave",
+      "zip": "60805",
+      "city": "EVERGREEN PARK",
+      "in_watched": true,
+      "pe_sponsor": null,
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "medium",
+        "signals": [
+          "da_structural_strong"
+        ],
+        "da_structural_kinds": [
+          "da_shared_ein"
+        ],
+        "why": "shared EIN 363554595: web: largest privately-owned dental group in Chicago, 8 loc/50+ docs (familydentalcare.com); 16 already-corporate members at this EIN",
+        "npis": [
+          "1063681898"
+        ]
+      },
+      "_location_id": "827b2ed9490623cd",
+      "_was": "solo_high_volume",
+      "_xref_status": "new_promotion",
+      "_sibling_corp_class": null
+    },
+    {
+      "dso_name": "Dental 360 / Brite Dental",
+      "address": "5917 s pulaski rd",
+      "zip": "60629",
+      "city": "CHICAGO",
+      "in_watched": true,
+      "pe_sponsor": null,
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "medium",
+        "signals": [
+          "da_structural_strong"
+        ],
+        "da_structural_kinds": [
+          "da_shared_ein"
+        ],
+        "why": "shared EIN 731689410: web: Dental 360 (15 loc) + Brite Dental (multi-loc Pulaski/Belmont/Kimball); 5 already-corporate members at this EIN",
+        "npis": [
+          "1538214101",
+          "1245584853",
+          "1235651035",
+          "1740776129",
+          "1700400074",
+          "1962231209",
+          "1871388140"
+        ]
+      },
+      "_location_id": "0d76d8f9105e394d",
+      "_was": "family_practice",
+      "_xref_status": "new_promotion",
+      "_sibling_corp_class": null
+    },
+    {
+      "dso_name": "Dental 360 / Brite Dental",
+      "address": "6636 s pulaski rd",
+      "zip": "60629",
+      "city": "CHICAGO",
+      "in_watched": true,
+      "pe_sponsor": null,
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "medium",
+        "signals": [
+          "da_structural_strong"
+        ],
+        "da_structural_kinds": [
+          "da_shared_ein"
+        ],
+        "why": "shared EIN 731689410: web: Dental 360 (15 loc) + Brite Dental (multi-loc Pulaski/Belmont/Kimball); 5 already-corporate members at this EIN",
+        "npis": [
+          "1598053837",
+          "1114271681",
+          "1669201927",
+          "1114271681",
+          "1669201927"
+        ]
+      },
+      "_location_id": "a2fc3deda0b02a10",
+      "_was": "solo_established",
+      "_xref_status": "already_corporate_at_building",
+      "_sibling_corp_class": "dso_regional"
+    },
+    {
+      "dso_name": "Park Place Dental Group (multi-brand)",
+      "address": "5912 w lawrence ave",
+      "zip": "60630",
+      "city": "CHICAGO",
+      "in_watched": true,
+      "pe_sponsor": null,
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "medium",
+        "signals": [
+          "da_structural_strong"
+        ],
+        "da_structural_kinds": [
+          "da_shared_ein"
+        ],
+        "why": "shared EIN 471741822: multi-brand stealth DSO: Park Place Dental + Village Smiles + Meadow Lake Dental already corporate at this EIN; Second Street/Parker/PPD share it across 3 cities",
+        "npis": [
+          "1578697504",
+          "1366889503",
+          "1801271184"
+        ]
+      },
+      "_location_id": "3a1fb3f4223c5cd9",
+      "_was": "small_group",
+      "_xref_status": "new_promotion",
+      "_sibling_corp_class": null
+    },
+    {
+      "dso_name": "Park Place Dental Group (multi-brand)",
+      "address": "7702 w n ave",
+      "zip": "60707",
+      "city": "ELMWOOD PARK",
+      "in_watched": true,
+      "pe_sponsor": null,
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "medium",
+        "signals": [
+          "da_structural_strong"
+        ],
+        "da_structural_kinds": [
+          "da_shared_ein"
+        ],
+        "why": "shared EIN 471741822: multi-brand stealth DSO: Park Place Dental + Village Smiles + Meadow Lake Dental already corporate at this EIN; Second Street/Parker/PPD share it across 3 cities",
+        "npis": [
+          "1447690789",
+          "1285029090"
+        ]
+      },
+      "_location_id": "965f76719d0f4320",
+      "_was": "solo_high_volume",
+      "_xref_status": "new_promotion",
+      "_sibling_corp_class": null
+    },
+    {
+      "dso_name": "Park Place Dental Group (multi-brand)",
+      "address": "115 s 2nd st",
+      "zip": "60174",
+      "city": "ST CHARLES",
+      "in_watched": true,
+      "pe_sponsor": null,
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "medium",
+        "signals": [
+          "da_structural_strong"
+        ],
+        "da_structural_kinds": [
+          "da_shared_ein"
+        ],
+        "why": "shared EIN 471741822: multi-brand stealth DSO: Park Place Dental + Village Smiles + Meadow Lake Dental already corporate at this EIN; Second Street/Parker/PPD share it across 3 cities",
+        "npis": [
+          "1649203878",
+          "1225478563",
+          "1710328885"
+        ]
+      },
+      "_location_id": "fa02013edc5ed7ae",
+      "_was": "small_group",
+      "_xref_status": "new_promotion",
+      "_sibling_corp_class": null
+    },
+    {
+      "dso_name": "Precision Dental Care",
+      "address": "4614 s kedzie ave",
+      "zip": "60632",
+      "city": "CHICAGO",
+      "in_watched": true,
+      "pe_sponsor": null,
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "medium",
+        "signals": [
+          "da_structural_strong"
+        ],
+        "da_structural_kinds": [
+          "da_shared_ein"
+        ],
+        "why": "shared EIN 465833863: web: 6-location LLC chain under Dr R. Chang (Belmont/Pulaski/Ashland/Cermak/Diversey); numbered-LLC franchise pattern, shared EIN 3+ ZIPs",
+        "npis": [
+          "1215149851",
+          "1831303148",
+          "1831303148"
+        ]
+      },
+      "_location_id": "8dbe509f0a92a9d0",
+      "_was": "solo_established",
+      "_xref_status": "new_promotion",
+      "_sibling_corp_class": null
+    },
+    {
+      "dso_name": "Precision Dental Care",
+      "address": "5745 w belmont ave",
+      "zip": "60634",
+      "city": "CHICAGO",
+      "in_watched": true,
+      "pe_sponsor": null,
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "medium",
+        "signals": [
+          "b1_name_chain",
+          "da_structural_strong"
+        ],
+        "da_structural_kinds": [
+          "da_shared_ein",
+          "shared_ein"
+        ],
+        "why": "shared EIN 465833863: web: 6-location LLC chain under Dr R. Chang (Belmont/Pulaski/Ashland/Cermak/Diversey); numbered-LLC franchise pattern, shared EIN 3+ ZIPs",
+        "npis": [
+          "1376915348",
+          "1407378201",
+          "1639855547",
+          "1376915348"
+        ]
+      },
+      "_location_id": "8cb79bf55672c4f0",
+      "_was": "small_group",
+      "_xref_status": "new_promotion",
+      "_sibling_corp_class": null
+    },
+    {
+      "dso_name": "Precision Dental Care",
+      "address": "5919 w cermak rd",
+      "zip": "60804",
+      "city": "CICERO",
+      "in_watched": true,
+      "pe_sponsor": null,
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "medium",
+        "signals": [
+          "da_structural_strong"
+        ],
+        "da_structural_kinds": [
+          "da_shared_ein"
+        ],
+        "why": "shared EIN 465833863: web: 6-location LLC chain under Dr R. Chang (Belmont/Pulaski/Ashland/Cermak/Diversey); numbered-LLC franchise pattern, shared EIN 3+ ZIPs",
+        "npis": [
+          "1396816500"
+        ]
+      },
+      "_location_id": "f3959b4a9ac8e139",
+      "_was": "large_group",
+      "_xref_status": "new_promotion",
+      "_sibling_corp_class": null
+    },
+    {
+      "dso_name": "Precision Dental Care",
+      "address": "5317 w cermak rd",
+      "zip": "60804",
+      "city": "CICERO",
+      "in_watched": true,
+      "pe_sponsor": null,
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "medium",
+        "signals": [
+          "b1_name_chain",
+          "da_structural_strong"
+        ],
+        "da_structural_kinds": [
+          "da_shared_ein",
+          "shared_ein"
+        ],
+        "why": "shared EIN 465833863: web: 6-location LLC chain under Dr R. Chang (Belmont/Pulaski/Ashland/Cermak/Diversey); numbered-LLC franchise pattern, shared EIN 3+ ZIPs",
+        "npis": [
+          "1447494646",
+          "1447494646"
+        ]
+      },
+      "_location_id": "3a2acb8b4e928c23",
+      "_was": "solo_established",
+      "_xref_status": "new_promotion",
+      "_sibling_corp_class": null
+    },
+    {
+      "dso_name": "Sonrisa Family Dental (Community Dental Centers of America)",
+      "address": "3450 s archer ave",
+      "zip": "60608",
+      "city": "CHICAGO",
+      "in_watched": true,
+      "pe_sponsor": null,
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "medium",
+        "signals": [
+          "da_structural_strong"
+        ],
+        "da_structural_kinds": [
+          "da_shared_ein"
+        ],
+        "why": "shared EIN 204557390: web: Community Dental Centers of America operates 11 offices under local names incl. Sonrisa Family Dental; 2 already-corporate Sonrisa members at this EIN",
+        "npis": [
+          "1043696537"
+        ]
+      },
+      "_location_id": "a8464775598ce6d5",
+      "_was": "solo_established",
+      "_xref_status": "new_promotion",
+      "_sibling_corp_class": null
+    },
+    {
+      "dso_name": "Sonrisa Family Dental (Community Dental Centers of America)",
+      "address": "3059 w 26th st",
+      "zip": "60623",
+      "city": "CHICAGO",
+      "in_watched": true,
+      "pe_sponsor": null,
+      "_sources": [
+        "data_axle_structural_verified"
+      ],
+      "_evidence": {
+        "queue_tier": "medium",
+        "signals": [
+          "da_structural_strong"
+        ],
+        "da_structural_kinds": [
+          "da_shared_ein"
+        ],
+        "why": "shared EIN 204557390: web: Community Dental Centers of America operates 11 offices under local names incl. Sonrisa Family Dental; 2 already-corporate Sonrisa members at this EIN",
+        "npis": [
+          "1477120616",
+          "1861064917"
+        ]
+      },
+      "_location_id": "4c77253121d38b15",
+      "_was": "solo_established",
+      "_xref_status": "new_promotion",
+      "_sibling_corp_class": null
+    }
+  ]
+}

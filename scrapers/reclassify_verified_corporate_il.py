@@ -39,6 +39,13 @@ MERGED = "data/dso_research/il_dso_locations_merged.json"
 # DSO friendly-PC locations that name/EIN/PSC detectors surfaced and a forced-search
 # Claude pass then CONFIRMED with source URLs. Same schema as MERGED; unioned below.
 PHASEC = "data/dso_research/il_dso_phasec_verified.json"
+# Phase 4 Data-Axle structural-verification output (build_data_axle_verified.py).
+# Additive: GP locations the Data-Axle-powered detector fleet (B1 name-chain +
+# B2 EIN/parent/officer + B7 PSC) surfaced and FREE WebSearch / already-corporate
+# EIN-member cross-validation then confirmed. Each row's `address` is the
+# location's own practice_locations.normalized_address, so xref_key matches
+# exactly. Dict-shaped ({"locations": [...]}); unioned below.
+DATA_AXLE = "data/dso_research/il_dso_data_axle_verified.json"
 
 INDEP = ("solo_established", "solo_new", "solo_inactive", "solo_high_volume",
          "family_practice", "small_group", "large_group")
@@ -83,6 +90,14 @@ def main(apply=True):
         phasec = json.load(open(PHASEC))
         print(f"  + {len(phasec)} Phase C web-verified records unioned from {PHASEC}")
         merged = merged + phasec
+    # Union in Phase 4 Data-Axle structural-verified locations, if present. File is
+    # dict-shaped ({"locations":[...]}); each record's `address` is already the
+    # location's normalized_address so xref_key matches exactly.
+    if os.path.exists(DATA_AXLE):
+        da = json.load(open(DATA_AXLE))
+        da_locs = da.get("locations", da) if isinstance(da, dict) else da
+        print(f"  + {len(da_locs)} Data-Axle structural-verified records unioned from {DATA_AXLE}")
+        merged = merged + da_locs
     promote = {}   # location_id -> dict
     for loc in merged:
         if not loc.get("in_watched"):

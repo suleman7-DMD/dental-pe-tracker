@@ -16,6 +16,7 @@ Usage:
 import argparse
 import hashlib
 import html as html_lib
+import json
 import os
 import re
 import shutil
@@ -397,6 +398,151 @@ def parse_employee_count(row, mapping):
     return None
 
 
+# ── Corporate-signal columns (exact-match, fuzzy-free) ───────────────────────────
+# These headers are too close to existing ones ("EIN 2" vs "EIN 1", "Mailing
+# Address" vs "Address", "Executive ... 1" vs "... 2") for the fuzzy detector to
+# resolve safely, so they get a dedicated EXACT-match path. Added 2026-06-07 to
+# ingest the corporate-ownership signals the importer previously discarded.
+CORP_SIGNAL_HEADERS = {
+    "da_ein2": "EIN 2",
+    "da_ein3": "EIN 3",
+    "da_mailing_address": "Mailing Address",
+    "da_mailing_city": "Mailing City",
+    "da_mailing_state": "Mailing State",
+    "da_mailing_zip": "Mailing Zip Code",
+    "da_legal_name": "Legal Name",
+    "da_subsidiary_iusa": "Subsidiary IUSA Number",
+    "da_corporate_employees": "Corporate Employee Size Actual",
+    "da_corporate_sales": "Corporate Sales Volume Actual",
+}
+# Officer roster headers: slots 1..10 ("Executive First Name 1" etc.).
+_OFFICER_SLOTS = 10
+_DA_NAN = {"nan", "none", "null", "n/a", "na", ""}
+
+
+def _da_clean(val):
+    """Strip a Data Axle string cell; sentinel/NaN -> None."""
+    if val is None or pd.isna(val):
+        return None
+    s = str(val).strip()
+    return None if s.lower() in _DA_NAN else s
+
+
+def _da_ein(val):
+    """Normalize an EIN cell to digits; all-zero / empty sentinel -> None."""
+    s = _da_clean(val)
+    if not s:
+        return None
+    d = re.sub(r"\D", "", s)
+    if not d or set(d) == {"0"}:
+        return None
+    return d
+
+
+def _da_num(val):
+    """Parse a Data Axle integer cell; all-zero / $0 sentinel -> None."""
+    s = _da_clean(val)
+    if not s:
+        return None
+    d = re.sub(r"[^\d]", "", s)
+    if not d or set(d) == {"0"}:
+        return None
+    try:
+        return int(d)
+    except (ValueError, TypeError):
+        return None
+
+
+def detect_corp_signal_columns(csv_columns):
+    """Map canonical corp-signal fields to actual columns by EXACT header match.
+
+    Case-insensitive and whitespace-collapsed (some exports have stray double
+    spaces). Returns {canonical: actual_column_name}. Officer columns are matched
+    separately (see extract_corp_signals).
+    """
+    norm = {re.sub(r"\s+", " ", str(c)).strip().lower(): c for c in csv_columns}
+    colmap = {}
+    for canonical, header in CORP_SIGNAL_HEADERS.items():
+        key = re.sub(r"\s+", " ", header).strip().lower()
+        if key in norm:
+            colmap[canonical] = norm[key]
+    # Officer roster slots
+    officers = []
+    for i in range(1, _OFFICER_SLOTS + 1):
+        fk = f"executive first name {i}"
+        lk = f"executive last name {i}"
+        tk = f"executive title {i}"
+        if fk in norm or lk in norm:
+            officers.append((norm.get(fk), norm.get(lk), norm.get(tk)))
+    if officers:
+        colmap["_officers"] = officers
+    return colmap
+
+
+def extract_corp_signals(row, colmap):
+    """Extract corporate-signal fields from one raw row using an exact colmap.
+
+    Returns a dict of da_* fields (None where absent) plus da_officers as a JSON
+    string (or None). Sentinel values are filtered out. Shared by validate_record
+    and the standalone backfill so parsing stays identical.
+    """
+    out = {
+        "da_ein2": _da_ein(row.get(colmap.get("da_ein2"))) if colmap.get("da_ein2") else None,
+        "da_ein3": _da_ein(row.get(colmap.get("da_ein3"))) if colmap.get("da_ein3") else None,
+        "da_mailing_address": _da_clean(row.get(colmap.get("da_mailing_address"))) if colmap.get("da_mailing_address") else None,
+        "da_mailing_city": _da_clean(row.get(colmap.get("da_mailing_city"))) if colmap.get("da_mailing_city") else None,
+        "da_mailing_state": _da_clean(row.get(colmap.get("da_mailing_state"))) if colmap.get("da_mailing_state") else None,
+        "da_mailing_zip": _da_clean(row.get(colmap.get("da_mailing_zip"))) if colmap.get("da_mailing_zip") else None,
+        "da_legal_name": _da_clean(row.get(colmap.get("da_legal_name"))) if colmap.get("da_legal_name") else None,
+        "da_subsidiary_iusa": _da_ein(row.get(colmap.get("da_subsidiary_iusa"))) if colmap.get("da_subsidiary_iusa") else None,
+        "da_corporate_employees": _da_num(row.get(colmap.get("da_corporate_employees"))) if colmap.get("da_corporate_employees") else None,
+        "da_corporate_sales": _da_num(row.get(colmap.get("da_corporate_sales"))) if colmap.get("da_corporate_sales") else None,
+        "da_officers": None,
+    }
+    officers = []
+    seen = set()
+    for fk, lk, tk in colmap.get("_officers", []):
+        first = _da_clean(row.get(fk)) if fk else None
+        last = _da_clean(row.get(lk)) if lk else None
+        title = _da_clean(row.get(tk)) if tk else None
+        if not first and not last:
+            continue
+        dedupe_key = ((last or "").upper(), (first or "").upper())
+        if dedupe_key in seen:
+            continue
+        seen.add(dedupe_key)
+        officers.append({"first": first, "last": last, "title": title})
+    if officers:
+        out["da_officers"] = json.dumps(officers)
+    return out
+
+
+def merge_corp_signals(target, incoming):
+    """Merge two corp-signal dicts: first-non-None for scalars, union officers."""
+    for k, v in incoming.items():
+        if k == "da_officers":
+            continue
+        if v is not None and not target.get(k):
+            target[k] = v
+    # Officer union (dedupe by (last, first))
+    cur = []
+    seen = set()
+    for blob in (target.get("da_officers"), incoming.get("da_officers")):
+        if not blob:
+            continue
+        try:
+            for o in json.loads(blob):
+                key = ((o.get("last") or "").upper(), (o.get("first") or "").upper())
+                if key in seen:
+                    continue
+                seen.add(key)
+                cur.append(o)
+        except (ValueError, TypeError):
+            continue
+    target["da_officers"] = json.dumps(cur) if cur else None
+    return target
+
+
 def detect_columns(csv_columns):
     """Fuzzy-match CSV column headers against known variants.
 
@@ -500,7 +646,7 @@ def is_dental_practice(row, mapping):
     return False, f"not dental (SIC={sic}, NAICS={naics})"
 
 
-def validate_record(row, mapping, row_num):
+def validate_record(row, mapping, row_num, corp_colmap=None):
     """Validate a single CSV row. Returns (is_valid, reason, parsed_record)."""
     # Company name or DBA required
     company = str(row.get(mapping.get("company_name", ""), "") or "").strip()
@@ -647,6 +793,16 @@ def validate_record(row, mapping, row_num):
         "website": website_val,
         "row_num": row_num,
     }
+    # Corporate-signal fields (exact-match, fuzzy-free) — added 2026-06-07
+    corp = extract_corp_signals(row, corp_colmap) if corp_colmap else {
+        k: None for k in (
+            "da_ein2", "da_ein3", "da_mailing_address", "da_mailing_city",
+            "da_mailing_state", "da_mailing_zip", "da_legal_name",
+            "da_subsidiary_iusa", "da_corporate_employees", "da_corporate_sales",
+            "da_officers",
+        )
+    }
+    record.update(corp)
     return True, None, record
 
 
@@ -877,7 +1033,7 @@ def _collapse_cluster(cluster_records):
                          if r.get("website")), None),
         "raw_record_count": n,
         "raw_records": cluster_records,
-        # Will be filled later
+        # Will be filled later (corp signals merged below)
         "affiliated_dso": None,
         "affiliated_pe_sponsor": None,
         "ownership_status": "unknown",
@@ -888,6 +1044,18 @@ def _collapse_cluster(cluster_records):
         "phone_duplicate_review": False,
         "shared_phone_doors": 0,
     }
+    # Merge corporate-signal fields across the cluster: first-non-None scalars,
+    # officer union. Records carry da_* keys from validate_record.
+    corp = {k: None for k in (
+        "da_ein2", "da_ein3", "da_mailing_address", "da_mailing_city",
+        "da_mailing_state", "da_mailing_zip", "da_legal_name",
+        "da_subsidiary_iusa", "da_corporate_employees", "da_corporate_sales",
+        "da_officers",
+    )}
+    for rec in cluster_records:
+        incoming = {k: rec.get(k) for k in corp}
+        merge_corp_signals(corp, incoming)
+    door.update(corp)
     return door
 
 
@@ -1541,6 +1709,19 @@ def ensure_data_axle_columns(engine):
         ("franchise_name", "TEXT"),
         ("iusa_number", "TEXT"),
         ("website", "TEXT"),
+        # Corporate-signal columns (da_-prefixed so Data Axle never overwrites an
+        # NPPES-sourced field). Added 2026-06-07.
+        ("da_ein2", "TEXT"),
+        ("da_ein3", "TEXT"),
+        ("da_mailing_address", "TEXT"),
+        ("da_mailing_city", "TEXT"),
+        ("da_mailing_state", "TEXT"),
+        ("da_mailing_zip", "TEXT"),
+        ("da_legal_name", "TEXT"),
+        ("da_subsidiary_iusa", "TEXT"),
+        ("da_corporate_employees", "INTEGER"),
+        ("da_corporate_sales", "INTEGER"),
+        ("da_officers", "TEXT"),
     ]
     with engine.connect() as conn:
         for col_name, col_type in new_cols:
@@ -1661,6 +1842,14 @@ def upsert_doors_to_db(session, engine, doors, batch_id, today):
                     updates["iusa_number"] = door["iusa_number"]
                 if door.get("website"):
                     updates["website"] = door["website"]
+                # Corporate-signal fields (null-guarded enrichment)
+                for _csk in ("da_ein2", "da_ein3", "da_mailing_address",
+                             "da_mailing_city", "da_mailing_state", "da_mailing_zip",
+                             "da_legal_name", "da_subsidiary_iusa",
+                             "da_corporate_employees", "da_corporate_sales",
+                             "da_officers"):
+                    if door.get(_csk) is not None:
+                        updates[_csk] = door[_csk]
 
                 # Update ownership if Data Axle is more specific
                 if (door["ownership_status"] in ("dso_affiliated", "pe_backed") and
@@ -1725,6 +1914,17 @@ def upsert_doors_to_db(session, engine, doors, batch_id, today):
                         "franchise_name": door.get("franchise"),
                         "iusa_number": door.get("iusa_number"),
                         "website": door.get("website"),
+                        "da_ein2": door.get("da_ein2"),
+                        "da_ein3": door.get("da_ein3"),
+                        "da_mailing_address": door.get("da_mailing_address"),
+                        "da_mailing_city": door.get("da_mailing_city"),
+                        "da_mailing_state": door.get("da_mailing_state"),
+                        "da_mailing_zip": door.get("da_mailing_zip"),
+                        "da_legal_name": door.get("da_legal_name"),
+                        "da_subsidiary_iusa": door.get("da_subsidiary_iusa"),
+                        "da_corporate_employees": door.get("da_corporate_employees"),
+                        "da_corporate_sales": door.get("da_corporate_sales"),
+                        "da_officers": door.get("da_officers"),
                     }
                     set_clauses = ", ".join(f"{k} = :{k}" for k in updates)
                     updates["npi"] = npi
@@ -1750,7 +1950,11 @@ def upsert_doors_to_db(session, engine, doors, batch_id, today):
                              classification_reasoning, data_axle_raw_name,
                              data_axle_import_date, raw_record_count, import_batch_id,
                              parent_company, parent_iusa, ein, franchise_name,
-                             iusa_number, website)
+                             iusa_number, website,
+                             da_ein2, da_ein3, da_mailing_address, da_mailing_city,
+                             da_mailing_state, da_mailing_zip, da_legal_name,
+                             da_subsidiary_iusa, da_corporate_employees,
+                             da_corporate_sales, da_officers)
                             VALUES
                             (:npi, :practice_name, :dba, :address, :city,
                              :state, :zip, :phone, :latitude, :longitude,
@@ -1761,7 +1965,11 @@ def upsert_doors_to_db(session, engine, doors, batch_id, today):
                              :classification_reasoning, :data_axle_raw_name,
                              :import_date, :raw_record_count, :import_batch_id,
                              :parent_company, :parent_iusa, :ein, :franchise_name,
-                             :iusa_number, :website)"""),
+                             :iusa_number, :website,
+                             :da_ein2, :da_ein3, :da_mailing_address, :da_mailing_city,
+                             :da_mailing_state, :da_mailing_zip, :da_legal_name,
+                             :da_subsidiary_iusa, :da_corporate_employees,
+                             :da_corporate_sales, :da_officers)"""),
                         {
                             "npi": npi,
                             "practice_name": door["practice_name"],
@@ -1796,6 +2004,17 @@ def upsert_doors_to_db(session, engine, doors, batch_id, today):
                             "franchise_name": door.get("franchise"),
                             "iusa_number": door.get("iusa_number"),
                             "website": door.get("website"),
+                            "da_ein2": door.get("da_ein2"),
+                            "da_ein3": door.get("da_ein3"),
+                            "da_mailing_address": door.get("da_mailing_address"),
+                            "da_mailing_city": door.get("da_mailing_city"),
+                            "da_mailing_state": door.get("da_mailing_state"),
+                            "da_mailing_zip": door.get("da_mailing_zip"),
+                            "da_legal_name": door.get("da_legal_name"),
+                            "da_subsidiary_iusa": door.get("da_subsidiary_iusa"),
+                            "da_corporate_employees": door.get("da_corporate_employees"),
+                            "da_corporate_sales": door.get("da_corporate_sales"),
+                            "da_officers": door.get("da_officers"),
                         }
                     )
                     stats["new"] += 1
@@ -2452,6 +2671,7 @@ def run(preview=False, auto=False, instructions=False, zip_filter=None,
 
             # Detect columns
             mapping, details = detect_columns(list(df.columns))
+            corp_colmap = detect_corp_signal_columns(list(df.columns))
             all_col_details.extend(details)
 
             print(f"\n{'='*60}")
@@ -2472,7 +2692,7 @@ def run(preview=False, auto=False, instructions=False, zip_filter=None,
             for row_num, (_, row) in enumerate(df.iterrows(), start=2):
                 import_stats["raw_total"] += 1
                 try:
-                    valid, reason, record = validate_record(row, mapping, row_num)
+                    valid, reason, record = validate_record(row, mapping, row_num, corp_colmap)
                     if not valid:
                         import_stats["skipped"] += 1
                         import_stats["skip_reasons"][reason] += 1

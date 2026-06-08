@@ -117,20 +117,27 @@ INVARIANTS: list[Invariant] = [
         id="FLOOR",
         description=(
             "Confirmed corporate GP-location floor never regresses below the "
-            "2026-05-30 documented 262 (dso_regional+dso_national in "
+            "2026-06-07 documented 285 (dso_regional+dso_national in "
             "practice_locations). Guards the 62 IL friendly-PC promotions + "
-            "IL-DSO-seed against a refresh silently reverting them."
+            "IL-DSO-seed + 23 Phase-4 Data-Axle structural-verified promotions "
+            "against a refresh silently reverting them."
         ),
         path="practice_locations?entity_classification=in.(dso_regional,dso_national)&select=location_id",
         expect_max=99999,         # no upper bound — growth is fine/expected
-        expect_min=262,           # FAIL if it ever drops below the documented floor
+        expect_min=285,           # FAIL if it ever drops below the documented floor
         severity="fail",
         note=(
-            "FLOOR GUARD: 262 = 192 dso_national + 70 dso_regional location-level "
-            "(2026-05-30). Empirically survived the 2026-06-01 NPPES refresh. A "
-            "DROP below 262 means a pipeline step reverted the promotions — "
-            "re-run scrapers/reclassify_verified_corporate_il.py + re-sync floor "
-            "tables. A RISE is healthy (Phase C confirmations landing)."
+            "FLOOR GUARD: 285 = 194 dso_national + 91 dso_regional location-level "
+            "(2026-06-07; was 262 at 2026-05-30). The +23 are the Phase-4 Data-Axle "
+            "structural-verified promotions (Destiny/ProSmile, Precision, Heartland, "
+            "Family Dental Care, Park Place, Dental Dreams, Gentle, Dental 360/Brite, "
+            "Sonrisa, DCA), each evidence-backed in "
+            "data/dso_research/il_dso_data_axle_verified.json. The 262 floor "
+            "empirically survived the 2026-06-01 NPPES refresh; the 285 floor "
+            "survived a full merge_and_score recompute. A DROP below 285 means a "
+            "pipeline step reverted the promotions — re-run "
+            "scrapers/reclassify_verified_corporate_il.py + re-sync floor tables. "
+            "A RISE is healthy (further verified confirmations landing)."
         ),
     ),
 ]

@@ -161,6 +161,25 @@ class Practice(Base):
     is_org_subpart = Column(Text, nullable=True)  # Y / N / X
     parent_org_lbn = Column(Text, nullable=True)  # Parent Organization Legal Business Name
     parent_org_tin = Column(Text, nullable=True)  # Parent Organization TIN
+    # Data Axle corporate-signal fields (added 2026-06-07; populated by
+    # data_axle_importer + backfill_data_axle_corporate_signals.py). da_-prefixed
+    # so Data Axle never overwrites an NPPES-sourced field. Secondary EINs, the
+    # back-office mailing address Data Axle records, the legal entity name, the
+    # corporate-tree subsidiary IUSA, parent-scale headcount/sales, and the
+    # executive/officer roster (JSON). These power the Phase B2 EIN/mailing/officer
+    # /parent stealth-DSO clustering detector. See ensure_data_axle_columns()
+    # (idempotent ALTER on both DBs).
+    da_ein2 = Column(Text, nullable=True)
+    da_ein3 = Column(Text, nullable=True)
+    da_mailing_address = Column(Text, nullable=True)
+    da_mailing_city = Column(Text, nullable=True)
+    da_mailing_state = Column(Text, nullable=True)
+    da_mailing_zip = Column(Text, nullable=True)
+    da_legal_name = Column(Text, nullable=True)
+    da_subsidiary_iusa = Column(Text, nullable=True)
+    da_corporate_employees = Column(Integer, nullable=True)
+    da_corporate_sales = Column(Integer, nullable=True)
+    da_officers = Column(Text, nullable=True)  # JSON array of {first,last,title}
     created_at = Column(DateTime, default=func.now())
     updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
 
