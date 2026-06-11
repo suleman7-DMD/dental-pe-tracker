@@ -165,9 +165,13 @@ def main(apply=True):
     for npi, p in npis_to_flip.items():
         sp = p["sponsor"]
         own = "pe-backed" if sp else "dso-affiliated"
+        # updated_at bump is REQUIRED: raw sqlite3 bypasses the ORM's
+        # onupdate=func.now(), and a stale updated_at leaves the flip
+        # invisible to any incremental sync path + corrupts the audit trail.
         res = cur.execute("""
             UPDATE practices
-               SET entity_classification=?, ownership_status=?
+               SET entity_classification=?, ownership_status=?,
+                   updated_at=datetime('now')
              WHERE npi=? AND (entity_classification IS NULL
                    OR entity_classification IN
                    ('solo_established','solo_new','solo_inactive',

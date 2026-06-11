@@ -140,6 +140,32 @@ INVARIANTS: list[Invariant] = [
             "A RISE is healthy (further verified confirmations landing)."
         ),
     ),
+    Invariant(
+        id="FLOOR_NPI",
+        description=(
+            "Corporate NPI rows in live `practices` never regress below the "
+            "2026-06-10 synced 1,178 (670 dso_regional + 508 dso_national). "
+            "Guards against the live NPI-level classification going stale "
+            "relative to SQLite truth."
+        ),
+        path="practices?entity_classification=in.(dso_regional,dso_national)&select=npi",
+        expect_max=99999,         # no upper bound — growth is fine/expected
+        expect_min=1178,
+        severity="fail",
+        note=(
+            "NPI FLOOR GUARD: 1,178 = the 285 corporate locations' underlying "
+            "NPI rows (Supabase `practices` holds only the 13,818 watched rows). "
+            "On 2026-06-10 live was found stale at 1,089 — the Phase-4 flips in "
+            "reclassify_verified_corporate_il.py updated practices WITHOUT "
+            "bumping updated_at (raw SQL bypasses the ORM onupdate), and the "
+            "post-flip surgical syncs only pushed floor tables. Root-fixed the "
+            "same day (script now bumps updated_at; live healed surgically). "
+            "A DROP below 1,178 means either a classifier reverted NPI flips "
+            "(re-run scrapers/reclassify_verified_corporate_il.py) or a stale "
+            "practices sync — re-sync with: "
+            "python3 scrapers/sync_to_supabase.py (full weekly path)."
+        ),
+    ),
 ]
 
 
