@@ -1,0 +1,2248 @@
+{
+  "run_date": "2026-06-12",
+  "summary": "Purged Data-Axle-only unverifiable records from the GP denominator; fixed junk affiliated_dso labels; root causes fixed in data_axle_importer.py (JUNK_FRANCHISE_VALUES + parent_iusa placeholder skip) and merge_and_score.py (da_unverified excluded).",
+  "floor_before": {
+    "corp": 267,
+    "gp": 4970
+  },
+  "floor_after": {
+    "corp": 261,
+    "gp": 4811
+  },
+  "npi_corporate_before": 1126,
+  "npi_corporate_after": 1119,
+  "purged_count": 179,
+  "purged_corporate": [
+    {
+      "location_id": "75d6cfa4e2cfccb7",
+      "practice_name": "Aspen Dental",
+      "zip": "60074",
+      "normalized_address": "nan",
+      "was": "dso_national",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_8e757849b862",
+        "DA_8e757849b862"
+      ]
+    },
+    {
+      "location_id": "ae9131e5c499d67a",
+      "practice_name": "Aspen Dental",
+      "zip": "60077",
+      "normalized_address": "nan",
+      "was": "dso_national",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_e34a42f5a522",
+        "DA_e34a42f5a522"
+      ]
+    },
+    {
+      "location_id": "6b3a3d97e72ccc9b",
+      "practice_name": "Dental Works",
+      "zip": "60173",
+      "normalized_address": "15166 neo pkwy",
+      "was": "dso_national",
+      "evidence": "Dental Works (60173): address '15166 neo pkwy' is DentalWorks' Garfield Heights OH billing HQ, not an IL location; Data-Axle-only, no NPI. Five NPI-evidenced corporate locations already exist in 60173.",
+      "npis": [
+        "DA_9d46955b94a4",
+        "DA_9d46955b94a4"
+      ]
+    },
+    {
+      "location_id": "c995892b6c77ee2a",
+      "practice_name": "Affordable Dentures",
+      "zip": "60404",
+      "normalized_address": "nan",
+      "was": "dso_national",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_ddde330c7634",
+        "DA_ddde330c7634"
+      ]
+    },
+    {
+      "location_id": "d8bc7fb6a7d58c67",
+      "practice_name": "Dental Dreams",
+      "zip": "60411",
+      "normalized_address": "567 w 14th pl",
+      "was": "dso_national",
+      "evidence": "Dental Dreams (60411): duplicate of NPI-evidenced corporate location DENTAL EXPERTS, LLC at 567 w 14th st (Dental Dreams' verified friendly PC; this row is the same building, '567 w 14th pl'). Keeping the NPI-evidenced row only \u2014 the floor is strictly location-deduped.",
+      "npis": [
+        "DA_e4b6c2f07e43",
+        "DA_e4b6c2f07e43"
+      ]
+    },
+    {
+      "location_id": "e54f378d01778ebd",
+      "practice_name": "Smile First Family Dental Std",
+      "zip": "60659",
+      "normalized_address": "nan",
+      "was": "dso_national",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_9a5424775ae5",
+        "DA_9a5424775ae5"
+      ]
+    }
+  ],
+  "kept_corporate_da_only": {
+    "ae77af3bec252f8e": "Midwest Dental, Shorewood 60404 (220 channahon st) \u2014 real brand office, no duplicate",
+    "b389a8c579980410": "ClearChoice Dental Implant Center, Downers Grove 60515 (2651 warrenville rd) \u2014 real brand office",
+    "c08edf0c9ab2cced": "Aspen Dental, Oswego 60543 (2340 us hwy 34) \u2014 matches Aspen's own locator (dso_locations overlay)",
+    "01f2175555fad385": "DentalWorks Plainfield 60544 (12720 illinois route 59) \u2014 brand-in-name evidence, no duplicate"
+  },
+  "junk_labels_relabeled": 10,
+  "junk_labels_nulled": 625,
+  "review_queue_count": 131,
+  "purged": [
+    {
+      "location_id": "5a57a7cc93837cbd",
+      "practice_name": "Gray Gerald D DDS",
+      "zip": "60004",
+      "normalized_address": "1815 e avon ln",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_b21561a250ba",
+        "DA_b21561a250ba"
+      ]
+    },
+    {
+      "location_id": "9000e695f648c85c",
+      "practice_name": "Pena, Rafael F DDS",
+      "zip": "60004",
+      "normalized_address": "741 e dundee rd",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_76c10525fd0b",
+        "DA_76c10525fd0b"
+      ]
+    },
+    {
+      "location_id": "0b828ce61a408090",
+      "practice_name": "Benson, Steven H DDS",
+      "zip": "60008",
+      "normalized_address": "5005 newport dr",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_f6c93a2c5b17",
+        "DA_f6c93a2c5b17"
+      ]
+    },
+    {
+      "location_id": "edfb25be81ea932f",
+      "practice_name": "Dominguez, Virginia DDS",
+      "zip": "60008",
+      "normalized_address": "2121 euclid ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_7db55ddbacb1",
+        "DA_7db55ddbacb1"
+      ]
+    },
+    {
+      "location_id": "1e4e65ff6a96a852",
+      "practice_name": "Castritsis Peter Emanuel DDS",
+      "zip": "60010",
+      "normalized_address": "53 overbrook rd",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_ef08e991964f",
+        "DA_ef08e991964f"
+      ]
+    },
+    {
+      "location_id": "15aa461cf0bd552a",
+      "practice_name": "Grilly, Mary Ellen DDS",
+      "zip": "60010",
+      "normalized_address": "6 windsor ct",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_887e622d470c",
+        "DA_887e622d470c"
+      ]
+    },
+    {
+      "location_id": "1cd115518ce8b931",
+      "practice_name": "Heilman, Meagan R DDS",
+      "zip": "60010",
+      "normalized_address": "67 algonquin rd",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_7bfa74d85f6c",
+        "DA_7bfa74d85f6c"
+      ]
+    },
+    {
+      "location_id": "d0cf5406ee993eb5",
+      "practice_name": "Mcsweeney, William J DDS",
+      "zip": "60010",
+      "normalized_address": "351 mallard pt",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_e26d50920c21",
+        "DA_e26d50920c21"
+      ]
+    },
+    {
+      "location_id": "dbf32f7d0316f93f",
+      "practice_name": "Moltz, Alan J DDS",
+      "zip": "60010",
+      "normalized_address": "944 oak hill rd",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_6ea11d0c7bc1",
+        "DA_6ea11d0c7bc1"
+      ]
+    },
+    {
+      "location_id": "2e9300be1b1ca15e",
+      "practice_name": "Robert Francis Dutka DDS",
+      "zip": "60010",
+      "normalized_address": "1991 selkirk ct",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_2ab9d21691f0",
+        "DA_2ab9d21691f0"
+      ]
+    },
+    {
+      "location_id": "0e6a89ea91a014e1",
+      "practice_name": "Shah, Lucy P DDS",
+      "zip": "60010",
+      "normalized_address": "3rd st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_539e93029a60",
+        "DA_539e93029a60"
+      ]
+    },
+    {
+      "location_id": "04374a69810a03af",
+      "practice_name": "Wertke, Robert S Dmd",
+      "zip": "60010",
+      "normalized_address": "3147 101 lions dr",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_082833bb9e47",
+        "DA_082833bb9e47"
+      ]
+    },
+    {
+      "location_id": "db3c2497e0510c50",
+      "practice_name": "Barry L Baker DDS",
+      "zip": "60015",
+      "normalized_address": "2500 w course dr",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_1901e530c9f3",
+        "DA_1901e530c9f3"
+      ]
+    },
+    {
+      "location_id": "b07ca4ec8f2f1fc7",
+      "practice_name": "Perry Danos",
+      "zip": "60015",
+      "normalized_address": "12 broadleys ct",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_3b87fe28d014",
+        "DA_3b87fe28d014"
+      ]
+    },
+    {
+      "location_id": "01ce1882da3d925b",
+      "practice_name": "A Better Smile",
+      "zip": "60016",
+      "normalized_address": "9694 reding cir",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_d2d35be80ea3",
+        "DA_d2d35be80ea3"
+      ]
+    },
+    {
+      "location_id": "3c841aa0c7912951",
+      "practice_name": "Megan N Gray DDS",
+      "zip": "60022",
+      "normalized_address": "620 country ln",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_d36760be33eb",
+        "DA_d36760be33eb"
+      ]
+    },
+    {
+      "location_id": "ac9d8fd936661c98",
+      "practice_name": "Seymour Leo Gottlieb DDS",
+      "zip": "60022",
+      "normalized_address": "1222 fairfield rd",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_2d60762b977f",
+        "DA_2d60762b977f"
+      ]
+    },
+    {
+      "location_id": "c57df4b510b01814",
+      "practice_name": "Geoffrey Blake Morris DDS",
+      "zip": "60025",
+      "normalized_address": "2104 fir st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_e7f8d49323a3",
+        "DA_e7f8d49323a3"
+      ]
+    },
+    {
+      "location_id": "97f463c77f853042",
+      "practice_name": "Horbal Jack P DDS",
+      "zip": "60025",
+      "normalized_address": "1200 raleigh rd",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_d3a534aade4c",
+        "DA_d3a534aade4c"
+      ]
+    },
+    {
+      "location_id": "3601e3745c4d74db",
+      "practice_name": "Katwala, Priya",
+      "zip": "60025",
+      "normalized_address": "1032 ironwood ct",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_28d9c79ccfea",
+        "DA_28d9c79ccfea"
+      ]
+    },
+    {
+      "location_id": "77dd3f7f1ef7bd12",
+      "practice_name": "Cholakian Susan M DDS",
+      "zip": "60026",
+      "normalized_address": "2334 mohawk ln",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_de2ca0071ab4",
+        "DA_de2ca0071ab4"
+      ]
+    },
+    {
+      "location_id": "40d2235cc08b83ee",
+      "practice_name": "Morton Alvin Shapiro DDS",
+      "zip": "60026",
+      "normalized_address": "4102 miller dr",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_e350a6b2a558",
+        "DA_e350a6b2a558"
+      ]
+    },
+    {
+      "location_id": "13b9412a755f5696",
+      "practice_name": "Block Sanford Lee Office",
+      "zip": "60035",
+      "normalized_address": "459 red oak ln",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_8ca10bc53f0a",
+        "DA_8ca10bc53f0a"
+      ]
+    },
+    {
+      "location_id": "f5c1fc31759df65a",
+      "practice_name": "Craig Martin Savin DDS",
+      "zip": "60035",
+      "normalized_address": "20 ridge rd",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_63e20ba63c29",
+        "DA_63e20ba63c29"
+      ]
+    },
+    {
+      "location_id": "ee473b6938ed81d1",
+      "practice_name": "Lewis L Landsman DDS",
+      "zip": "60035",
+      "normalized_address": "905 villas ct",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_3159b76a1e0a",
+        "DA_3159b76a1e0a"
+      ]
+    },
+    {
+      "location_id": "5d0f8c3e301f7179",
+      "practice_name": "Dennis A Runyan DDS",
+      "zip": "60037",
+      "normalized_address": "179 boles loop",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_569bec8370f1",
+        "DA_569bec8370f1"
+      ]
+    },
+    {
+      "location_id": "973b2e29f52d2799",
+      "practice_name": "Mart L Mcclellan",
+      "zip": "60045",
+      "normalized_address": "1133 edgewood rd",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_e9f09603a0b6",
+        "DA_e9f09603a0b6"
+      ]
+    },
+    {
+      "location_id": "fe8099d98babd721",
+      "practice_name": "Shah, Brinda R DDS",
+      "zip": "60053",
+      "normalized_address": "nan",
+      "was": "solo_inactive",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_8d65f619ef94",
+        "DA_8d65f619ef94"
+      ]
+    },
+    {
+      "location_id": "6f3f2df912b73a29",
+      "practice_name": "Mccomb, Ian C DDS",
+      "zip": "60056",
+      "normalized_address": "nan",
+      "was": "solo_inactive",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_adcf5c6d381c",
+        "DA_adcf5c6d381c"
+      ]
+    },
+    {
+      "location_id": "72aa7ea652c7e88b",
+      "practice_name": "Wisun Roberta E DDS",
+      "zip": "60061",
+      "normalized_address": "1251 maidstone dr",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_a083a6bab720",
+        "DA_a083a6bab720"
+      ]
+    },
+    {
+      "location_id": "10320764de7641b3",
+      "practice_name": "Richard Joseph Witek DDS",
+      "zip": "60062",
+      "normalized_address": "2351 crystal rd",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_2a2caf10fea4",
+        "DA_2a2caf10fea4"
+      ]
+    },
+    {
+      "location_id": "efe1ff373d59ee80",
+      "practice_name": "Zmick Clifford Anthony Office",
+      "zip": "60062",
+      "normalized_address": "3648 indian wells ln",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_d15599927654",
+        "DA_d15599927654"
+      ]
+    },
+    {
+      "location_id": "e7a007ca4b4f062d",
+      "practice_name": "Albers, Theresa M DDS",
+      "zip": "60067",
+      "normalized_address": "579 n 1st bank dr",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_00532582b32c",
+        "DA_00532582b32c"
+      ]
+    },
+    {
+      "location_id": "cbb295038bae501a",
+      "practice_name": "Health Pro Physician Sc",
+      "zip": "60067",
+      "normalized_address": "nan",
+      "was": "solo_inactive",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_09498b0d6315",
+        "DA_09498b0d6315"
+      ]
+    },
+    {
+      "location_id": "75d6cfa4e2cfccb7",
+      "practice_name": "Aspen Dental",
+      "zip": "60074",
+      "normalized_address": "nan",
+      "was": "dso_national",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_8e757849b862",
+        "DA_8e757849b862"
+      ]
+    },
+    {
+      "location_id": "9f1ed9739b877d04",
+      "practice_name": "Tanaka Dental Products",
+      "zip": "60076",
+      "normalized_address": "8170 mccormick blvd",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_29d71945fbe3",
+        "DA_29d71945fbe3"
+      ]
+    },
+    {
+      "location_id": "ae9131e5c499d67a",
+      "practice_name": "Aspen Dental",
+      "zip": "60077",
+      "normalized_address": "nan",
+      "was": "dso_national",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_e34a42f5a522",
+        "DA_e34a42f5a522"
+      ]
+    },
+    {
+      "location_id": "5c05bbcf826523fb",
+      "practice_name": "Modern Art Of Dentistry",
+      "zip": "60090",
+      "normalized_address": "nan",
+      "was": "solo_established",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_e9b1ecca536b",
+        "DA_e9b1ecca536b"
+      ]
+    },
+    {
+      "location_id": "4620cc5741ed0ff8",
+      "practice_name": "Moy, Randall D DDS",
+      "zip": "60090",
+      "normalized_address": "627 longtree dr",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_c1729a4d1272",
+        "DA_c1729a4d1272"
+      ]
+    },
+    {
+      "location_id": "ce76b572a6e76c12",
+      "practice_name": "George W Brent DDS",
+      "zip": "60091",
+      "normalized_address": "458 highcrest dr",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_ebb9f90a5b3a",
+        "DA_ebb9f90a5b3a"
+      ]
+    },
+    {
+      "location_id": "87d6dd706f40bca1",
+      "practice_name": "Mireille Camille Halim DDS",
+      "zip": "60091",
+      "normalized_address": "107 green bay rd",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_27934a9c7ff5",
+        "DA_27934a9c7ff5"
+      ]
+    },
+    {
+      "location_id": "1116694de399dbc0",
+      "practice_name": "Dziedziech Agatha N DDS",
+      "zip": "60093",
+      "normalized_address": "585 happ rd",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_ff8d98782941",
+        "DA_ff8d98782941"
+      ]
+    },
+    {
+      "location_id": "c4c6cbc83e4bdda6",
+      "practice_name": "John Anthony Benedetto DDS",
+      "zip": "60093",
+      "normalized_address": "535 cherry st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_5e1c1c2796c2",
+        "DA_5e1c1c2796c2"
+      ]
+    },
+    {
+      "location_id": "2ea75bac8c91cf65",
+      "practice_name": "Yonan Kenneth P DDS",
+      "zip": "60093",
+      "normalized_address": "909 vernon ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_027e84ec5f81",
+        "DA_027e84ec5f81"
+      ]
+    },
+    {
+      "location_id": "e063f5b0c5d0b4d7",
+      "practice_name": "Prakash K Upadhyaya DDS LTD",
+      "zip": "60108",
+      "normalized_address": "7 founders pointe n",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_d56cb036c9f3",
+        "DA_d56cb036c9f3"
+      ]
+    },
+    {
+      "location_id": "d91055756398701a",
+      "practice_name": "Ramirez, Kristen L Dmd",
+      "zip": "60108",
+      "normalized_address": "bloomingdale shopping ctr",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_39b65cf2ca6b",
+        "DA_39b65cf2ca6b"
+      ]
+    },
+    {
+      "location_id": "0a70f1581e49b20f",
+      "practice_name": "Bethlynn A Saberbein DDS",
+      "zip": "60110",
+      "normalized_address": "3003 wakefield dr",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_4b99308fba60",
+        "DA_4b99308fba60"
+      ]
+    },
+    {
+      "location_id": "b63aa72e21bb9b63",
+      "practice_name": "Smiles For The People",
+      "zip": "60110",
+      "normalized_address": "2303 randall rd",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_4b487175a432",
+        "DA_4b487175a432"
+      ]
+    },
+    {
+      "location_id": "c582f545053c01f0",
+      "practice_name": "Smiles On Randall",
+      "zip": "60110",
+      "normalized_address": "nan",
+      "was": "solo_established",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_553c3435da73",
+        "DA_553c3435da73"
+      ]
+    },
+    {
+      "location_id": "5ce05b794048ac25",
+      "practice_name": "Milrand Dental Care",
+      "zip": "60123",
+      "normalized_address": "2300 n randall rd",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_e821d4a431ae",
+        "DA_e821d4a431ae"
+      ]
+    },
+    {
+      "location_id": "514ca5a2a53fab8b",
+      "practice_name": "Soderling, Bruce G DDS",
+      "zip": "60123",
+      "normalized_address": "691 e chgo st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_f7b315cf3f78",
+        "DA_f7b315cf3f78"
+      ]
+    },
+    {
+      "location_id": "6bea5a060cfa1230",
+      "practice_name": "Dale Charles Nickelsen DDS",
+      "zip": "60124",
+      "normalized_address": "10n925 leith ct",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_29f6c3fa474e",
+        "DA_29f6c3fa474e"
+      ]
+    },
+    {
+      "location_id": "462f01d9d0fea5d2",
+      "practice_name": "Montrose Fam Dental Ctr PC",
+      "zip": "60131",
+      "normalized_address": "3535 rose st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_fd6226ddf66f",
+        "DA_fd6226ddf66f"
+      ]
+    },
+    {
+      "location_id": "3ce6dcc95fad7712",
+      "practice_name": "Liesen, Lawrence J DDS",
+      "zip": "60134",
+      "normalized_address": "705 e state st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_d6c52efa0d5e",
+        "DA_d6c52efa0d5e"
+      ]
+    },
+    {
+      "location_id": "276eaab75f7275fa",
+      "practice_name": "Robert Erwin Scheck DDS",
+      "zip": "60143",
+      "normalized_address": "115 w orchard st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_aee6184e3f64",
+        "DA_aee6184e3f64"
+      ]
+    },
+    {
+      "location_id": "e6be824fd43ecb6b",
+      "practice_name": "Jain Dental",
+      "zip": "60148",
+      "normalized_address": "350 w 22nd st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_53bfd7decde7",
+        "DA_53bfd7decde7"
+      ]
+    },
+    {
+      "location_id": "dca38deee6a8fa93",
+      "practice_name": "Chung Peter Office",
+      "zip": "60172",
+      "normalized_address": "653 rosner dr",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_2880384d2361",
+        "DA_2880384d2361"
+      ]
+    },
+    {
+      "location_id": "6b3a3d97e72ccc9b",
+      "practice_name": "Dental Works",
+      "zip": "60173",
+      "normalized_address": "15166 neo pkwy",
+      "was": "dso_national",
+      "evidence": "Dental Works (60173): address '15166 neo pkwy' is DentalWorks' Garfield Heights OH billing HQ, not an IL location; Data-Axle-only, no NPI. Five NPI-evidenced corporate locations already exist in 60173.",
+      "npis": [
+        "DA_9d46955b94a4",
+        "DA_9d46955b94a4"
+      ]
+    },
+    {
+      "location_id": "9a562e97adb8aac2",
+      "practice_name": "Aurit, Shelley A DDS",
+      "zip": "60175",
+      "normalized_address": "nan",
+      "was": "solo_inactive",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_37e1b7104825",
+        "DA_37e1b7104825"
+      ]
+    },
+    {
+      "location_id": "1a1abcd5d2fd5b04",
+      "practice_name": "Traina, Barbara L DDS",
+      "zip": "60175",
+      "normalized_address": "37w755 il route 38",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_aacf232e7373",
+        "DA_aacf232e7373"
+      ]
+    },
+    {
+      "location_id": "6feb6ae708bf1264",
+      "practice_name": "Weglarz, Linda M DDS",
+      "zip": "60175",
+      "normalized_address": "3825 campton hills dr",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_c8bf4209a709",
+        "DA_c8bf4209a709"
+      ]
+    },
+    {
+      "location_id": "0c7cf2858d97c9d7",
+      "practice_name": "Zmick, Michelle N DDS",
+      "zip": "60181",
+      "normalized_address": "nan",
+      "was": "solo_inactive",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_b7f72aeeda84",
+        "DA_b7f72aeeda84"
+      ]
+    },
+    {
+      "location_id": "d7bf513c7bafce7f",
+      "practice_name": "Baranowski, Tom DDS",
+      "zip": "60187",
+      "normalized_address": "202 w willow ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_da9638e1a807",
+        "DA_da9638e1a807"
+      ]
+    },
+    {
+      "location_id": "daad99122541e9fe",
+      "practice_name": "Rebecca Hausten DDS-Rachael",
+      "zip": "60187",
+      "normalized_address": "nan",
+      "was": "solo_established",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_92480e3ec215",
+        "DA_92480e3ec215"
+      ]
+    },
+    {
+      "location_id": "795380ec2958177e",
+      "practice_name": "John Dennis Lane DDS",
+      "zip": "60193",
+      "normalized_address": "206 timbercrest dr",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_c41b1378df89",
+        "DA_c41b1378df89"
+      ]
+    },
+    {
+      "location_id": "ab7eb075eaa9aa73",
+      "practice_name": "Yajima, Kana DDS",
+      "zip": "60193",
+      "normalized_address": "126 cleveland ct",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_f5e59b62ddbd",
+        "DA_f5e59b62ddbd"
+      ]
+    },
+    {
+      "location_id": "4c3fe82ab20dedf7",
+      "practice_name": "Bob & Peg's Dental",
+      "zip": "60194",
+      "normalized_address": "nan",
+      "was": "solo_established",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_2ac8152bf0ef",
+        "DA_2ac8152bf0ef"
+      ]
+    },
+    {
+      "location_id": "0ed78798637e161b",
+      "practice_name": "James John Pawlik DDS",
+      "zip": "60195",
+      "normalized_address": "1310 valley lake dr",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_be286fe5cd82",
+        "DA_be286fe5cd82"
+      ]
+    },
+    {
+      "location_id": "ad858fb4a6ef34a4",
+      "practice_name": "Dovorany Kelsey Lynn DMD",
+      "zip": "60305",
+      "normalized_address": "7712 central ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_d20d31f2d1a3",
+        "DA_d20d31f2d1a3"
+      ]
+    },
+    {
+      "location_id": "1994cd667629e0a4",
+      "practice_name": "Stacey L Beard DDS",
+      "zip": "60305",
+      "normalized_address": "815 ashland ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_0ee2a3911246",
+        "DA_0ee2a3911246"
+      ]
+    },
+    {
+      "location_id": "916cf0d53983bc8f",
+      "practice_name": "Vincent A Simone DDS",
+      "zip": "60305",
+      "normalized_address": "1419 keystone ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_79620416221c",
+        "DA_79620416221c"
+      ]
+    },
+    {
+      "location_id": "339b71bc0c21f0ad",
+      "practice_name": "Visual Dental Arts Corp",
+      "zip": "60402",
+      "normalized_address": "1633 euclid ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_9220c47b81e5",
+        "DA_9220c47b81e5"
+      ]
+    },
+    {
+      "location_id": "c995892b6c77ee2a",
+      "practice_name": "Affordable Dentures",
+      "zip": "60404",
+      "normalized_address": "nan",
+      "was": "dso_national",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_ddde330c7634",
+        "DA_ddde330c7634"
+      ]
+    },
+    {
+      "location_id": "af9f27785fc343b4",
+      "practice_name": "Green, Paul DDS",
+      "zip": "60404",
+      "normalized_address": "earl rd",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_ac441e65a6c9",
+        "DA_ac441e65a6c9"
+      ]
+    },
+    {
+      "location_id": "424d030f5966121f",
+      "practice_name": "James Mcdonald Wilcox DDS",
+      "zip": "60404",
+      "normalized_address": "301 maple ln",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_9b7213b28379",
+        "DA_9b7213b28379"
+      ]
+    },
+    {
+      "location_id": "d8bc7fb6a7d58c67",
+      "practice_name": "Dental Dreams",
+      "zip": "60411",
+      "normalized_address": "567 w 14th pl",
+      "was": "dso_national",
+      "evidence": "Dental Dreams (60411): duplicate of NPI-evidenced corporate location DENTAL EXPERTS, LLC at 567 w 14th st (Dental Dreams' verified friendly PC; this row is the same building, '567 w 14th pl'). Keeping the NPI-evidenced row only \u2014 the floor is strictly location-deduped.",
+      "npis": [
+        "DA_e4b6c2f07e43",
+        "DA_e4b6c2f07e43"
+      ]
+    },
+    {
+      "location_id": "577a16a7a7792a6c",
+      "practice_name": "Mccants Janice DDS",
+      "zip": "60422",
+      "normalized_address": "3608 vollmer rd",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_1af8a9759d52",
+        "DA_1af8a9759d52"
+      ]
+    },
+    {
+      "location_id": "2a2b7be022a14ef5",
+      "practice_name": "RK Dental",
+      "zip": "60423",
+      "normalized_address": "725 tanglewood ln",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_141ade382d91",
+        "DA_141ade382d91"
+      ]
+    },
+    {
+      "location_id": "18981217b397bd6f",
+      "practice_name": "Thomas A Swingler DDS",
+      "zip": "60423",
+      "normalized_address": "22380 prairie trail ln",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_88732c2a8dfc",
+        "DA_88732c2a8dfc"
+      ]
+    },
+    {
+      "location_id": "a3cb67be7bccfeef",
+      "practice_name": "Harvey Dental Assoc",
+      "zip": "60426",
+      "normalized_address": "163 e 154th st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_0966978cf46a",
+        "DA_0966978cf46a"
+      ]
+    },
+    {
+      "location_id": "df2b79f6d7e14b35",
+      "practice_name": "Zumstein Chris J DDS",
+      "zip": "60430",
+      "normalized_address": "18424 cowing ct",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_76070552f918",
+        "DA_76070552f918"
+      ]
+    },
+    {
+      "location_id": "2e02ebc286ca5728",
+      "practice_name": "Cosmetic & Reconstructive Dent",
+      "zip": "60431",
+      "normalized_address": "370 houbolt rd",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_845850b894bf",
+        "DA_845850b894bf"
+      ]
+    },
+    {
+      "location_id": "3873acf9d4e01833",
+      "practice_name": "Craig, Frederick A DDS",
+      "zip": "60434",
+      "normalized_address": "rr 53",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_2019afe1c00c",
+        "DA_2019afe1c00c"
+      ]
+    },
+    {
+      "location_id": "cab2a2997eaed62b",
+      "practice_name": "Lee, Michael A DDS",
+      "zip": "60435",
+      "normalized_address": "nan",
+      "was": "solo_inactive",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_cc61808ab2f4",
+        "DA_cc61808ab2f4"
+      ]
+    },
+    {
+      "location_id": "01395574d9c86d21",
+      "practice_name": "Lucille Marie Lugowski DDS",
+      "zip": "60438",
+      "normalized_address": "3354 e 170th st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_4ced7192a953",
+        "DA_4ced7192a953"
+      ]
+    },
+    {
+      "location_id": "5a3c3805ed4a1733",
+      "practice_name": "Hove, Mary Ellen DDS",
+      "zip": "60441",
+      "normalized_address": "nan",
+      "was": "solo_inactive",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_29707ec56646",
+        "DA_29707ec56646"
+      ]
+    },
+    {
+      "location_id": "218aba1c47e71ad8",
+      "practice_name": "Irene Tan Morimoto DDS",
+      "zip": "60451",
+      "normalized_address": "500 w maple st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_ae19f92ca773",
+        "DA_ae19f92ca773"
+      ]
+    },
+    {
+      "location_id": "089a0ff5177ec7bf",
+      "practice_name": "Burger-zellinger Rudolph",
+      "zip": "60452",
+      "normalized_address": "6205 boca rio dr",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_e541824d2a56",
+        "DA_e541824d2a56"
+      ]
+    },
+    {
+      "location_id": "728e4a82718981e1",
+      "practice_name": "Toussaint, Peter J DDS",
+      "zip": "60452",
+      "normalized_address": "5550 147th st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_a35458276f64",
+        "DA_a35458276f64"
+      ]
+    },
+    {
+      "location_id": "d639050d5a969a47",
+      "practice_name": "Joseph Edward Statkus DDS",
+      "zip": "60453",
+      "normalized_address": "10001 massasoit ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_0b3e0db9e60e",
+        "DA_0b3e0db9e60e"
+      ]
+    },
+    {
+      "location_id": "d20218caa77c6b1a",
+      "practice_name": "Koludrovic, Thomas DDS",
+      "zip": "60453",
+      "normalized_address": "6700 w 95th st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_8e287522e276",
+        "DA_8e287522e276"
+      ]
+    },
+    {
+      "location_id": "1ed59fc7a00daa40",
+      "practice_name": "Ernest Lawrence Dietl Jr DDS",
+      "zip": "60466",
+      "normalized_address": "430 forest blvd",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_7694e57b0429",
+        "DA_7694e57b0429"
+      ]
+    },
+    {
+      "location_id": "608f24a43c273190",
+      "practice_name": "Ahmed, Junaid DDS",
+      "zip": "60467",
+      "normalized_address": "11030 buck horn ln",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_8e58a41b6c9d",
+        "DA_8e58a41b6c9d"
+      ]
+    },
+    {
+      "location_id": "4a055f803f1628c4",
+      "practice_name": "Beloved Community Family",
+      "zip": "60472",
+      "normalized_address": "3518 w 139th st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_0ff586ce8df6",
+        "DA_0ff586ce8df6"
+      ]
+    },
+    {
+      "location_id": "ddfc5f7b83d4da2d",
+      "practice_name": "Gbotosho, Abidemi O DDS",
+      "zip": "60472",
+      "normalized_address": "13450 s kedzie ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_48fd649b9bee",
+        "DA_48fd649b9bee"
+      ]
+    },
+    {
+      "location_id": "ae75ba98f039af57",
+      "practice_name": "Jurkash Peter M DDS",
+      "zip": "60473",
+      "normalized_address": "15475 s park ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_d52e3bb1c3b3",
+        "DA_d52e3bb1c3b3"
+      ]
+    },
+    {
+      "location_id": "1af6c66fdb56eb5f",
+      "practice_name": "One Sixty Second Street Dental",
+      "zip": "60473",
+      "normalized_address": "1022 e 162nd st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_dfb29d951065",
+        "DA_dfb29d951065"
+      ]
+    },
+    {
+      "location_id": "38c7d5ee2eb28ff9",
+      "practice_name": "Beri, Vikas Dmd",
+      "zip": "60487",
+      "normalized_address": "nan",
+      "was": "solo_inactive",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_29ed00117a52",
+        "DA_29ed00117a52"
+      ]
+    },
+    {
+      "location_id": "958f619715089011",
+      "practice_name": "Jaweesh Nisreen Office",
+      "zip": "60491",
+      "normalized_address": "13557 parkland ct",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_f72c40e7ecb4",
+        "DA_f72c40e7ecb4"
+      ]
+    },
+    {
+      "location_id": "eba51436858e9d8d",
+      "practice_name": "Topline Specialty Dental PC",
+      "zip": "60503",
+      "normalized_address": "nan",
+      "was": "solo_high_volume",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_e1bb8dbc384b",
+        "DA_e1bb8dbc384b"
+      ]
+    },
+    {
+      "location_id": "dbfb9ca9630b2bc6",
+      "practice_name": "Dupage Medical Group",
+      "zip": "60504",
+      "normalized_address": "nan",
+      "was": "solo_inactive",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_d853324d941f",
+        "DA_d853324d941f"
+      ]
+    },
+    {
+      "location_id": "e3acefc848b6e0ac",
+      "practice_name": "Young Kimberley M Office",
+      "zip": "60510",
+      "normalized_address": "38w173 tanglewood dr",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_a454c4b1824e",
+        "DA_a454c4b1824e"
+      ]
+    },
+    {
+      "location_id": "9cd8ff0703323e83",
+      "practice_name": "Dental Demo",
+      "zip": "60515",
+      "normalized_address": "3010 highland park ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_ff7c99484943",
+        "DA_ff7c99484943"
+      ]
+    },
+    {
+      "location_id": "d2fe3124a535366d",
+      "practice_name": "Patrick Michael Oflaherty DDS",
+      "zip": "60515",
+      "normalized_address": "1135 mistwood pl",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_15a80b7f61d7",
+        "DA_15a80b7f61d7"
+      ]
+    },
+    {
+      "location_id": "17971d6605d51669",
+      "practice_name": "Quick, Forrest G Dmd",
+      "zip": "60515",
+      "normalized_address": "nan",
+      "was": "solo_inactive",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_0e871f2d1ee8",
+        "DA_0e871f2d1ee8"
+      ]
+    },
+    {
+      "location_id": "739660df2bf24108",
+      "practice_name": "Oster, Molly M DDS",
+      "zip": "60516",
+      "normalized_address": "greenbriar ctr",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_de4140b44304",
+        "DA_de4140b44304"
+      ]
+    },
+    {
+      "location_id": "e3aec8b932ede1fc",
+      "practice_name": "Schneider, Ausrime DDS",
+      "zip": "60521",
+      "normalized_address": "10s640 route 63",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_c1fa0664381d",
+        "DA_c1fa0664381d"
+      ]
+    },
+    {
+      "location_id": "7ac447563cf6f8d8",
+      "practice_name": "Christensen Taylor Nicole DMD",
+      "zip": "60523",
+      "normalized_address": "18w731 ave chateaux s",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_914bdc29f238",
+        "DA_914bdc29f238"
+      ]
+    },
+    {
+      "location_id": "adfffc07c94ff2e0",
+      "practice_name": "Leung, Roman L DDS",
+      "zip": "60523",
+      "normalized_address": "80 briarwood cir",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_d09a0df809d6",
+        "DA_d09a0df809d6"
+      ]
+    },
+    {
+      "location_id": "a44c81e30b127d99",
+      "practice_name": "Ronald Edward Kozan DDS",
+      "zip": "60523",
+      "normalized_address": "23 camelot dr",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_12cfd8d0c183",
+        "DA_12cfd8d0c183"
+      ]
+    },
+    {
+      "location_id": "9d10ab28c1d5a2e5",
+      "practice_name": "Anthony F Morelli DDS",
+      "zip": "60527",
+      "normalized_address": "6710 wedgewood ln",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_430973d6dd52",
+        "DA_430973d6dd52"
+      ]
+    },
+    {
+      "location_id": "60469296bde626ba",
+      "practice_name": "Mccafferty Michael P DDS",
+      "zip": "60527",
+      "normalized_address": "6319 tremont st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_b5eef1e0c13b",
+        "DA_b5eef1e0c13b"
+      ]
+    },
+    {
+      "location_id": "4a7a0fdac4beeef3",
+      "practice_name": "Strategy Anesthesia Illinois",
+      "zip": "60527",
+      "normalized_address": "6900 s madison st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_bcae357fbead",
+        "DA_bcae357fbead"
+      ]
+    },
+    {
+      "location_id": "7b8c39e6d343b600",
+      "practice_name": "Myers Barbara E B DDS",
+      "zip": "60540",
+      "normalized_address": "8s360 college rd",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_6ca4bd11ce61",
+        "DA_6ca4bd11ce61"
+      ]
+    },
+    {
+      "location_id": "d6f60e93edeb1c02",
+      "practice_name": "Richard William Pugliese DDS",
+      "zip": "60540",
+      "normalized_address": "1152 whirlaway ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_2c2693b3d35d",
+        "DA_2c2693b3d35d"
+      ]
+    },
+    {
+      "location_id": "92f6f59e5b02a82a",
+      "practice_name": "Dentistry On Orchard",
+      "zip": "60542",
+      "normalized_address": "nan",
+      "was": "solo_established",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_ad39d99acab4",
+        "DA_ad39d99acab4"
+      ]
+    },
+    {
+      "location_id": "270a5160e0c2b16e",
+      "practice_name": "Seal, Alexandra DDS",
+      "zip": "60546",
+      "normalized_address": "7345 w 25th st premier dental",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_6c9d616555cf",
+        "DA_6c9d616555cf"
+      ]
+    },
+    {
+      "location_id": "6eddf7caba5904da",
+      "practice_name": "David Joseph Marzo DDS",
+      "zip": "60554",
+      "normalized_address": "17 windwood ct",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_cf75aa5e978c",
+        "DA_cf75aa5e978c"
+      ]
+    },
+    {
+      "location_id": "fa568f4607d494e0",
+      "practice_name": "Kandimalla, Kalpana N DDS",
+      "zip": "60554",
+      "normalized_address": "522 il-47",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_229d53a6c632",
+        "DA_229d53a6c632"
+      ]
+    },
+    {
+      "location_id": "5cf382bb8f8bc2d3",
+      "practice_name": "Daniel Carl Davidsen DDS",
+      "zip": "60555",
+      "normalized_address": "150 w butterfield rd 29",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_510fd2255341",
+        "DA_510fd2255341"
+      ]
+    },
+    {
+      "location_id": "df96f2b3fc26c47b",
+      "practice_name": "Don Kalant & Assoc",
+      "zip": "60560",
+      "normalized_address": "101 e center st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_f6f6c779f1e3",
+        "DA_f6f6c779f1e3"
+      ]
+    },
+    {
+      "location_id": "69fa58ce1fe0251a",
+      "practice_name": "Naperville Il",
+      "zip": "60564",
+      "normalized_address": "5303 velvet bent ct",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_0788c1792c97",
+        "DA_0788c1792c97"
+      ]
+    },
+    {
+      "location_id": "50272aa6123f412c",
+      "practice_name": "Anthony Joseph Guido DDS",
+      "zip": "60585",
+      "normalized_address": "22911 wigeon ct",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_80790853a627",
+        "DA_80790853a627"
+      ]
+    },
+    {
+      "location_id": "074ca2e8d577e800",
+      "practice_name": "Trysonicbrush",
+      "zip": "60601",
+      "normalized_address": "nan",
+      "was": "solo_inactive",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_c1132459ad1b",
+        "DA_c1132459ad1b"
+      ]
+    },
+    {
+      "location_id": "fd3a61982c927b3f",
+      "practice_name": "Soraghan, Sean W DDS",
+      "zip": "60602",
+      "normalized_address": "17 n wabash ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_7c5f1d5f1523",
+        "DA_7c5f1d5f1523"
+      ]
+    },
+    {
+      "location_id": "2c487378a9f9b975",
+      "practice_name": "Chicago Il",
+      "zip": "60604",
+      "normalized_address": "333 s wabash ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_b8eb91685817",
+        "DA_b8eb91685817"
+      ]
+    },
+    {
+      "location_id": "3084b6c07fc13ef7",
+      "practice_name": "Bogatinov Atanas DMD",
+      "zip": "60605",
+      "normalized_address": "1001 s state st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_4e62a370d9d2",
+        "DA_4e62a370d9d2"
+      ]
+    },
+    {
+      "location_id": "d5d92671d8a14de1",
+      "practice_name": "Baluk Gregory J DDS",
+      "zip": "60606",
+      "normalized_address": "165 n canal st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_9ca00cfb49c0",
+        "DA_9ca00cfb49c0"
+      ]
+    },
+    {
+      "location_id": "066fcf615d002649",
+      "practice_name": "Pollock, Kathleen M DDS",
+      "zip": "60607",
+      "normalized_address": "321 n loomis st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_28fda0954b37",
+        "DA_28fda0954b37"
+      ]
+    },
+    {
+      "location_id": "734abac7028c51f6",
+      "practice_name": "Sivananthan, Inthumathy DDS",
+      "zip": "60608",
+      "normalized_address": "19th st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_2868dea377f0",
+        "DA_2868dea377f0"
+      ]
+    },
+    {
+      "location_id": "3d119a2efbcfa9cf",
+      "practice_name": "Sonrisa Family Dental Corp",
+      "zip": "60608",
+      "normalized_address": "1945 s halsted st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_8f28dc0b44a3",
+        "DA_8f28dc0b44a3"
+      ]
+    },
+    {
+      "location_id": "2dc7b644ee91816f",
+      "practice_name": "Bakir, Yasmin O Dmd",
+      "zip": "60610",
+      "normalized_address": "nan",
+      "was": "solo_inactive",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_f8e4dbf3eca0",
+        "DA_f8e4dbf3eca0"
+      ]
+    },
+    {
+      "location_id": "2e7b04482acd9498",
+      "practice_name": "Gordon, Brenda J DDS",
+      "zip": "60610",
+      "normalized_address": "1540 n lake shore dr",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_00127c1edf99",
+        "DA_00127c1edf99"
+      ]
+    },
+    {
+      "location_id": "16a49daf08c93622",
+      "practice_name": "George William Knight DDS",
+      "zip": "60611",
+      "normalized_address": "260 e chestnut st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_7c8416c9178c",
+        "DA_7c8416c9178c"
+      ]
+    },
+    {
+      "location_id": "9cacfebb16e40465",
+      "practice_name": "Jones, Keon",
+      "zip": "60611",
+      "normalized_address": "401 n michigan ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_f8f65bdb205e",
+        "DA_f8f65bdb205e"
+      ]
+    },
+    {
+      "location_id": "277c1373137fb631",
+      "practice_name": "Majkowski, Mark David DDS",
+      "zip": "60611",
+      "normalized_address": "232 e walton pl",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_86119db50ec1",
+        "DA_86119db50ec1"
+      ]
+    },
+    {
+      "location_id": "6d5c401d0acc36ad",
+      "practice_name": "Rizvi, Kashif R DDS",
+      "zip": "60611",
+      "normalized_address": "600 n fairbanks ct",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_0d57f2104551",
+        "DA_0d57f2104551"
+      ]
+    },
+    {
+      "location_id": "87c14b482dca2f5e",
+      "practice_name": "Stern, Richard DDS",
+      "zip": "60611",
+      "normalized_address": "180 e pearson st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_05ba9b7cb1dd",
+        "DA_05ba9b7cb1dd"
+      ]
+    },
+    {
+      "location_id": "982203cef3c3a6ce",
+      "practice_name": "Craig, Megan N Dmd",
+      "zip": "60612",
+      "normalized_address": "1900 w jackson blvd",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_11a090fcc72b",
+        "DA_11a090fcc72b"
+      ]
+    },
+    {
+      "location_id": "38c4db58fe5b0758",
+      "practice_name": "Harris, Na-Jee Dmd",
+      "zip": "60612",
+      "normalized_address": "nan",
+      "was": "solo_inactive",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_e9c758d73ef0",
+        "DA_e9c758d73ef0"
+      ]
+    },
+    {
+      "location_id": "e0d168a3a9fae104",
+      "practice_name": "Imadomwanyi, Anita O DDS",
+      "zip": "60612",
+      "normalized_address": "2040 w randolph st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_5aff1b628057",
+        "DA_5aff1b628057"
+      ]
+    },
+    {
+      "location_id": "49000381aaf82053",
+      "practice_name": "Khan, Farhana Dmd",
+      "zip": "60612",
+      "normalized_address": "820 n damen",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_016639820698",
+        "DA_016639820698"
+      ]
+    },
+    {
+      "location_id": "156ad705f481b035",
+      "practice_name": "Rahaman, Irshad A DDS",
+      "zip": "60613",
+      "normalized_address": "3924 n southport ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_15bffd5d8286",
+        "DA_15bffd5d8286"
+      ]
+    },
+    {
+      "location_id": "e1a9bc53e08eab22",
+      "practice_name": "Carol Jean Mcneely DDS",
+      "zip": "60616",
+      "normalized_address": "322 e 18th st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_18f51138f198",
+        "DA_18f51138f198"
+      ]
+    },
+    {
+      "location_id": "cf2b87e156747bf8",
+      "practice_name": "Gibson, Hollis DDS",
+      "zip": "60616",
+      "normalized_address": "516 e 32nd st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_701e3e11b47e",
+        "DA_701e3e11b47e"
+      ]
+    },
+    {
+      "location_id": "dcf03602c1456a8b",
+      "practice_name": "Ronald Cheng DDS",
+      "zip": "60616",
+      "normalized_address": "2301 s archer ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_9abcee52c04f",
+        "DA_9abcee52c04f"
+      ]
+    },
+    {
+      "location_id": "be7b72a9dd699471",
+      "practice_name": "Dental Experts",
+      "zip": "60617",
+      "normalized_address": "nan",
+      "was": "solo_high_volume",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_50ed23460a65",
+        "DA_50ed23460a65"
+      ]
+    },
+    {
+      "location_id": "f8308e50a4196565",
+      "practice_name": "Editha R Alanguilan Reyes DMD",
+      "zip": "60618",
+      "normalized_address": "2920 n spaulding ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_60872d476f40",
+        "DA_60872d476f40"
+      ]
+    },
+    {
+      "location_id": "64ede1b4f26a7bcd",
+      "practice_name": "Maurice Julie DDS",
+      "zip": "60619",
+      "normalized_address": "nan",
+      "was": "solo_inactive",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_01075d3e6571",
+        "DA_01075d3e6571"
+      ]
+    },
+    {
+      "location_id": "5b83f6c44f3987da",
+      "practice_name": "Kristina Lydia Harris DDS",
+      "zip": "60622",
+      "normalized_address": "1624 w ontario st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_261b77df3059",
+        "DA_261b77df3059"
+      ]
+    },
+    {
+      "location_id": "5ad4d16acc9c3a0d",
+      "practice_name": "C L Knowles & Assoc",
+      "zip": "60628",
+      "normalized_address": "nan",
+      "was": "solo_inactive",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_78826846eda3",
+        "DA_78826846eda3"
+      ]
+    },
+    {
+      "location_id": "35782ea70714a1d3",
+      "practice_name": "Chicago Dental",
+      "zip": "60629",
+      "normalized_address": "nan",
+      "was": "solo_high_volume",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_2053bff49fe2",
+        "DA_2053bff49fe2"
+      ]
+    },
+    {
+      "location_id": "75bd8e5cd31c5ece",
+      "practice_name": "Kurdziel Lucy T DDS",
+      "zip": "60630",
+      "normalized_address": "4825 n mason ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_aa4b7aa45fb8",
+        "DA_aa4b7aa45fb8"
+      ]
+    },
+    {
+      "location_id": "c36eee40890cbe54",
+      "practice_name": "My Smile Of The Day",
+      "zip": "60630",
+      "normalized_address": "4626 n kelso ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_9e7fa1ca0fd6",
+        "DA_9e7fa1ca0fd6"
+      ]
+    },
+    {
+      "location_id": "4a581abe2612075f",
+      "practice_name": "Omeara P Office",
+      "zip": "60631",
+      "normalized_address": "7242 n oleander ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_bb4b466ebc33",
+        "DA_bb4b466ebc33"
+      ]
+    },
+    {
+      "location_id": "01c9c1b86ddeb863",
+      "practice_name": "Carl Stanley Venkus DDS",
+      "zip": "60632",
+      "normalized_address": "2920 w pope john paul ii dr",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_91628edfdb82",
+        "DA_91628edfdb82"
+      ]
+    },
+    {
+      "location_id": "3f31513e476bc6d4",
+      "practice_name": "J Brian Wessling DDS",
+      "zip": "60632",
+      "normalized_address": "597 e st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_041c41fe00a4",
+        "DA_041c41fe00a4"
+      ]
+    },
+    {
+      "location_id": "cec3e6768acaf635",
+      "practice_name": "Mccallum, Alexandra N DDS",
+      "zip": "60632",
+      "normalized_address": "nan",
+      "was": "solo_inactive",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_d361ec8afb04",
+        "DA_d361ec8afb04"
+      ]
+    },
+    {
+      "location_id": "c1193461855d98a5",
+      "practice_name": "Lee, Jongnok J DDS",
+      "zip": "60637",
+      "normalized_address": "5715 s kenwood ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_84c73367f5e7",
+        "DA_84c73367f5e7"
+      ]
+    },
+    {
+      "location_id": "6561253be2bbaf96",
+      "practice_name": "Chicago Il",
+      "zip": "60639",
+      "normalized_address": "2636 n monitor ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_7ce477b109cb",
+        "DA_7ce477b109cb"
+      ]
+    },
+    {
+      "location_id": "865f170271965da5",
+      "practice_name": "Precision Dental",
+      "zip": "60639",
+      "normalized_address": "nan",
+      "was": "solo_established",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_ad845b2548d8",
+        "DA_ad845b2548d8"
+      ]
+    },
+    {
+      "location_id": "d20e97550752b958",
+      "practice_name": "Kloberdanz, Courtney J DDS",
+      "zip": "60640",
+      "normalized_address": "4814 n clark st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_63fbd69facc0",
+        "DA_63fbd69facc0"
+      ]
+    },
+    {
+      "location_id": "1d46b4b70fed060b",
+      "practice_name": "Sheridan Dental",
+      "zip": "60640",
+      "normalized_address": "nan",
+      "was": "solo_inactive",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_728427b72c14",
+        "DA_728427b72c14"
+      ]
+    },
+    {
+      "location_id": "a401733880d1346b",
+      "practice_name": "Precision Dental Arts",
+      "zip": "60641",
+      "normalized_address": "4146 w wellington ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_78e17f1f017a",
+        "DA_78e17f1f017a"
+      ]
+    },
+    {
+      "location_id": "3baca1bd5ab737a6",
+      "practice_name": "Tarsitano, Joani DDS",
+      "zip": "60641",
+      "normalized_address": "4229 n kedvale ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_7609bdb5c159",
+        "DA_7609bdb5c159"
+      ]
+    },
+    {
+      "location_id": "1064901353ec088f",
+      "practice_name": "Gowru Kaanti DDS",
+      "zip": "60642",
+      "normalized_address": "1443 w augusta blvd",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_92ae9d5ca7dd",
+        "DA_92ae9d5ca7dd"
+      ]
+    },
+    {
+      "location_id": "8bf92f5151aac0be",
+      "practice_name": "Tlhomamiso Moremi DDS",
+      "zip": "60642",
+      "normalized_address": "840 w blackhawk st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_cb2d00754656",
+        "DA_cb2d00754656"
+      ]
+    },
+    {
+      "location_id": "f2e4eeb59d609c69",
+      "practice_name": "Chestand Arthur K Office",
+      "zip": "60643",
+      "normalized_address": "2335 w 103rd st",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_b4b4d19689a0",
+        "DA_b4b4d19689a0"
+      ]
+    },
+    {
+      "location_id": "834150c86fb89782",
+      "practice_name": "Vitto, Andreina C DDS",
+      "zip": "60643",
+      "normalized_address": "nan",
+      "was": "solo_inactive",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_e12a6fa5edde",
+        "DA_e12a6fa5edde"
+      ]
+    },
+    {
+      "location_id": "3c391be064f109ad",
+      "practice_name": "Scottsdale Dental Clinic",
+      "zip": "60652",
+      "normalized_address": "7905 s cicero ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_2f9e06bc25f9",
+        "DA_2f9e06bc25f9"
+      ]
+    },
+    {
+      "location_id": "a8de759506c0dcdd",
+      "practice_name": "Edward Francis Walsh DDS",
+      "zip": "60656",
+      "normalized_address": "7710 w summerdale ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_5439fc1d2a53",
+        "DA_5439fc1d2a53"
+      ]
+    },
+    {
+      "location_id": "c89dc8d39ab85750",
+      "practice_name": "Lazaro Santos Villegas DDS",
+      "zip": "60656",
+      "normalized_address": "6817 w foster ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_d04f1340eeb6",
+        "DA_d04f1340eeb6"
+      ]
+    },
+    {
+      "location_id": "051e75236e05c4c3",
+      "practice_name": "Pine Dental Care PC",
+      "zip": "60657",
+      "normalized_address": "nan",
+      "was": "solo_high_volume",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_c6a99ffa55d8",
+        "DA_c6a99ffa55d8"
+      ]
+    },
+    {
+      "location_id": "065a7fa72ae01c77",
+      "practice_name": "Khan, Rafiullah DDS",
+      "zip": "60659",
+      "normalized_address": "6350 n western ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_7e1a87cbf65f",
+        "DA_7e1a87cbf65f"
+      ]
+    },
+    {
+      "location_id": "e54f378d01778ebd",
+      "practice_name": "Smile First Family Dental Std",
+      "zip": "60659",
+      "normalized_address": "nan",
+      "was": "dso_national",
+      "evidence": "normalized_address is the literal string 'nan' (Data Axle address parse failure) \u2014 not a verifiable location row",
+      "npis": [
+        "DA_9a5424775ae5",
+        "DA_9a5424775ae5"
+      ]
+    },
+    {
+      "location_id": "7ff2d22537d9a25c",
+      "practice_name": "Pera Carlos A DDS",
+      "zip": "60660",
+      "normalized_address": "1259 w thorndale ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_f4b95d192c85",
+        "DA_f4b95d192c85"
+      ]
+    },
+    {
+      "location_id": "5f9d56133a7763af",
+      "practice_name": "Chrobak, Vickyann DDS",
+      "zip": "60707",
+      "normalized_address": "1930 n harlem ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_273b1535b7ff",
+        "DA_273b1535b7ff"
+      ]
+    },
+    {
+      "location_id": "7899bfb4a5c1471d",
+      "practice_name": "Tropical Optical",
+      "zip": "60804",
+      "normalized_address": "2250 s 49th ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_bf802d32e8d0",
+        "DA_bf802d32e8d0"
+      ]
+    },
+    {
+      "location_id": "83d1263660b7d45b",
+      "practice_name": "Bernard Joseph Hennessy DDS",
+      "zip": "60805",
+      "normalized_address": "9636 s millard ave",
+      "was": "solo_inactive",
+      "evidence": "Data-Axle-only solo_inactive: no federal NPI at address, no phone, no website \u2014 almost certainly closed/phantom (census-agent verdict)",
+      "npis": [
+        "DA_e6d81dc8da69",
+        "DA_e6d81dc8da69"
+      ]
+    }
+  ]
+}

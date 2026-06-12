@@ -1,0 +1,323 @@
+{
+ "run_date": "2026-06-12",
+ "summary": "18 false-corporate watched-IL GP locations demoted to verified independent classes; 3 reviewed locations confirmed corporate and kept. Root causes: Evenly Technologies parent_iusa=000000000 placeholder (x13), landlord/PE-name confusion (x2), bad UDP seed rows (x2), no-hard-evidence floor principle (x2 of the above, flagged needs_reverification).",
+ "floor_before": {
+  "corporate": 285,
+  "gp": 4970,
+  "pct": 5.73
+ },
+ "floor_after": {
+  "corporate": 267,
+  "gp": 4970,
+  "pct": 5.37
+ },
+ "npi_corporate_before": 1178,
+ "npi_corporate_after": 1126,
+ "demotions": [
+  {
+   "location_id": "feaa63bd7ced2c0e",
+   "name": "SUN DENTAL CARE PC",
+   "zip": "60563",
+   "address": "572 weston ridge dr",
+   "old_class": "dso_regional",
+   "old_affiliated_dso": "EVENLY ORTHODONTICS DUPONT",
+   "new_class": "solo_established",
+   "evidence": "Evenly-only linkage (parent_iusa=000000000 placeholder); Evenly is a service partner, owns no practices",
+   "needs_reverification": false,
+   "npis": [
+    "1073351110",
+    "1457744963"
+   ]
+  },
+  {
+   "location_id": "4ca83acbcd91a330",
+   "name": "OAK BROOK DENTAL CENTER INC.",
+   "zip": "60523",
+   "address": "120 oak brook center mall",
+   "old_class": "dso_regional",
+   "old_affiliated_dso": null,
+   "new_class": "small_group",
+   "evidence": "Evenly-only linkage; independent multi-doctor office at Oakbrook Center",
+   "needs_reverification": false,
+   "npis": [
+    "1174792568",
+    "1215106604",
+    "1417024464",
+    "1497933261"
+   ]
+  },
+  {
+   "location_id": "1adac605c6abd972",
+   "name": "EMAD ZAIDI, DMD PC",
+   "zip": "60490",
+   "address": "287 n weber rd",
+   "old_class": "dso_regional",
+   "old_affiliated_dso": null,
+   "new_class": "family_practice",
+   "evidence": "Evenly-only linkage; Zaidi brothers' family practice",
+   "needs_reverification": false,
+   "npis": [
+    "1124290671",
+    "1417641580",
+    "1801428263"
+   ]
+  },
+  {
+   "location_id": "58af66ee2bf4b9c6",
+   "name": "ARLINGTON HEIGHTS DENTAL GROUP LTD",
+   "zip": "60004",
+   "address": "201 n arlington heights rd",
+   "old_class": "dso_regional",
+   "old_affiliated_dso": "All Family Dental & Braces (United Dental Partners)",
+   "new_class": "large_group",
+   "evidence": "Bad UDP seed: UDP's Arlington Heights office is 1044 W Rand Rd, NOT 201 N Arlington Heights Rd; 5-provider independent group",
+   "needs_reverification": false,
+   "npis": [
+    "1013204387",
+    "1174692990",
+    "1396173480",
+    "1417961848",
+    "1447373097",
+    "1881763340"
+   ]
+  },
+  {
+   "location_id": "5ead583d8354e6e4",
+   "name": "FAVIA FAMILY DENTAL LLC",
+   "zip": "60004",
+   "address": "300 e nw hwy",
+   "old_class": "dso_regional",
+   "old_affiliated_dso": "General Dentistry",
+   "new_class": "solo_established",
+   "evidence": "Evenly-only + junk affiliated_dso='General Dentistry'; 0 co-located providers; no corporate evidence (floor principle)",
+   "needs_reverification": true,
+   "npis": [
+    "1851083182"
+   ]
+  },
+  {
+   "location_id": "e6ce96c5946ab89f",
+   "name": "Vivirito Dental",
+   "zip": "60018",
+   "address": "1475 oakton st",
+   "old_class": "dso_regional",
+   "old_affiliated_dso": "All Family Dental & Braces (United Dental Partners)",
+   "new_class": "solo_established",
+   "evidence": "Bad UDP seed: web-verified independent (Vivirito Dental, Des Plaines)",
+   "needs_reverification": false,
+   "npis": [
+    "1386656437"
+   ]
+  },
+  {
+   "location_id": "2cb946f04fa11798",
+   "name": "City Dental",
+   "zip": "60614",
+   "address": "1721 n halsted st",
+   "old_class": "dso_regional",
+   "old_affiliated_dso": "EVENLY ORTHODONTICS DUPONT",
+   "new_class": "small_group",
+   "evidence": "Evenly-only linkage",
+   "needs_reverification": false,
+   "npis": [
+    "1326160813",
+    "1790804177"
+   ]
+  },
+  {
+   "location_id": "42d1dfe2d92fb435",
+   "name": "VETERANS SQUARE DIAGNOSTICS, INC.",
+   "zip": "60630",
+   "address": "4849 n milwaukee ave",
+   "old_class": "dso_regional",
+   "old_affiliated_dso": null,
+   "new_class": "small_group",
+   "evidence": "CALERA CAPITAL is the building landlord, not the practice owner; no corporate evidence (floor principle)",
+   "needs_reverification": true,
+   "npis": [
+    "1285230425",
+    "1366788697",
+    "1619594835"
+   ]
+  },
+  {
+   "location_id": "778740224402dbd4",
+   "name": "BRIGHTON PARK DENTAL",
+   "zip": "60632",
+   "address": "4441 s kedzie ave",
+   "old_class": "dso_regional",
+   "old_affiliated_dso": null,
+   "new_class": "solo_established",
+   "evidence": "Evenly-only linkage",
+   "needs_reverification": false,
+   "npis": [
+    "1093918708",
+    "1538158142"
+   ]
+  },
+  {
+   "location_id": "d3b3b09cc6ed98dd",
+   "name": "ASIAN VILLAGE DENTAL CLINIC",
+   "zip": "60640",
+   "address": "5129 n broadway st",
+   "old_class": "dso_regional",
+   "old_affiliated_dso": null,
+   "new_class": "solo_established",
+   "evidence": "Evenly-only linkage",
+   "needs_reverification": false,
+   "npis": [
+    "1033109996",
+    "1700062700"
+   ]
+  },
+  {
+   "location_id": "bb925c602eb1ffb6",
+   "name": "Fresh Dental",
+   "zip": "60657",
+   "address": "3030 n broadway st",
+   "old_class": "dso_regional",
+   "old_affiliated_dso": "EVENLY ORTHODONTICS DUPONT",
+   "new_class": "solo_established",
+   "evidence": "Evenly-only linkage",
+   "needs_reverification": false,
+   "npis": [
+    "1588926802"
+   ]
+  },
+  {
+   "location_id": "06559964fbcc65b8",
+   "name": "176 DENTAL ASSOCIATES LTD",
+   "zip": "60108",
+   "address": "176 s bloomingdale rd",
+   "old_class": "dso_regional",
+   "old_affiliated_dso": "General Dentistry",
+   "new_class": "small_group",
+   "evidence": "Evenly-only linkage + junk affiliated_dso='General Dentistry'",
+   "needs_reverification": false,
+   "npis": [
+    "1215198098",
+    "1801057674",
+    "1992858674"
+   ]
+  },
+  {
+   "location_id": "cdcdf30342969078",
+   "name": "DENTAL HEIGHTS DDS PC",
+   "zip": "60139",
+   "address": "148 e army trail rd",
+   "old_class": "dso_regional",
+   "old_affiliated_dso": null,
+   "new_class": "family_practice",
+   "evidence": "Evenly-only linkage; 3 Bader brothers' family practice",
+   "needs_reverification": false,
+   "npis": [
+    "1063754232",
+    "1114916129",
+    "1164756979",
+    "1184392573",
+    "1912741349"
+   ]
+  },
+  {
+   "location_id": "c0d81e7b77101c7a",
+   "name": "Izzo, Karen DDS",
+   "zip": "60706",
+   "address": "4701 n cumberland ave",
+   "old_class": "dso_regional",
+   "old_affiliated_dso": "JLL PARTNERS",
+   "new_class": "small_group",
+   "evidence": "JLL PARTNERS linkage is a false positive; independent office",
+   "needs_reverification": false,
+   "npis": [
+    "1023293172",
+    "1407079890",
+    "1679824643"
+   ]
+  },
+  {
+   "location_id": "10350cbe9ba08042",
+   "name": "DRS. DELMONICO & TROCCHIO LTD",
+   "zip": "60707",
+   "address": "7310 w n ave",
+   "old_class": "dso_regional",
+   "old_affiliated_dso": null,
+   "new_class": "large_group",
+   "evidence": "Evenly-only linkage; 9-provider independent group",
+   "needs_reverification": false,
+   "npis": [
+    "1003947383",
+    "1255495081",
+    "1255826483",
+    "1326112756",
+    "1326179789",
+    "1346317955",
+    "1346506367",
+    "1619008950",
+    "1629280557",
+    "1730303520"
+   ]
+  },
+  {
+   "location_id": "4cdf3ef029ab464c",
+   "name": "Bender Dental Care",
+   "zip": "60123",
+   "address": "217 n mclean blvd",
+   "old_class": "dso_regional",
+   "old_affiliated_dso": "EVENLY ORTHODONTICS DUPONT",
+   "new_class": "solo_established",
+   "evidence": "Evenly-only linkage",
+   "needs_reverification": false,
+   "npis": [
+    "1003035692"
+   ]
+  },
+  {
+   "location_id": "83edaeef42709b35",
+   "name": "ENVISION A SMILE INCORPORATED",
+   "zip": "60174",
+   "address": "2019 dean st",
+   "old_class": "dso_regional",
+   "old_affiliated_dso": "General Dentistry",
+   "new_class": "solo_established",
+   "evidence": "Evenly-only linkage + junk affiliated_dso='General Dentistry'",
+   "needs_reverification": false,
+   "npis": [
+    "1730621566",
+    "1912735556"
+   ]
+  },
+  {
+   "location_id": "541ae39cadc867b6",
+   "name": "MA BOULE DMD PC",
+   "zip": "60545",
+   "address": "3910 turner ave",
+   "old_class": "dso_regional",
+   "old_affiliated_dso": null,
+   "new_class": "solo_established",
+   "evidence": "Evenly-only linkage",
+   "needs_reverification": false,
+   "npis": [
+    "1700043064",
+    "1730211764"
+   ]
+  }
+ ],
+ "kept_corporate": [
+  {
+   "location_id": "ce3f980988601d21",
+   "name": "WHEATLAND SLEEP SOLUTION",
+   "evidence": "UDP/Calera confirmed via app.nexhealth.com/appt/unitedentalpartners"
+  },
+  {
+   "location_id": "c6078e6641ef7f48",
+   "name": "CHICAGO DENTAL COSMETICS",
+   "evidence": "Operating as Advanced Family Dental; United Dental Partners confirmed"
+  },
+  {
+   "location_id": "cedf0257b26ccce2",
+   "name": "Oral Health Ctr (Maywood)",
+   "evidence": "Loyola Medicine / Trinity Health hospital-affiliated clinic"
+  }
+ ],
+ "_note": "reclassify_verified_corporate_il.py excludes every location_id in 'demotions' from future promotion runs \u2014 2 of these (58af66ee2bf4b9c6, e6ce96c5946ab89f) appear in the UDP seed file and would otherwise be re-promoted."
+}

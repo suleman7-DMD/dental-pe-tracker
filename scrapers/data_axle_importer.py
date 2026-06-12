@@ -1266,7 +1266,10 @@ def _detect_corporate_linkage(doors, logger):
 
     for i, door in enumerate(doors):
         parent_iusa = (door.get("parent_iusa") or "").strip()
-        if not parent_iusa:
+        # '000000000' (all zeros) is Data Axle's NO-PARENT placeholder, not a
+        # real IUSA. Trusting it linked unrelated independents into one fake
+        # parent group (the Evenly false-corporate cluster, 2026-06-12 audit).
+        if not parent_iusa or set(parent_iusa) == {"0"}:
             continue
         parent_idx = iusa_index.get(parent_iusa)
         if parent_idx is not None:
@@ -1288,7 +1291,7 @@ def _detect_corporate_linkage(doors, logger):
     parent_iusa_groups = defaultdict(list)
     for i, door in enumerate(doors):
         piusa = (door.get("parent_iusa") or "").strip()
-        if piusa:
+        if piusa and set(piusa) != {"0"}:   # skip the all-zeros placeholder
             parent_iusa_groups[piusa].append(i)
     for piusa, indices in parent_iusa_groups.items():
         if len(indices) >= 3:
@@ -1334,6 +1337,18 @@ def _detect_corporate_linkage(doors, logger):
 # ═══════════════════════════════════════════════════════════════════════════════
 
 
+# Data Axle's franchise field usually carries the practice's SPECIALTY, not a
+# franchise. These values must never produce a corporate classification or an
+# affiliated_dso label. Lower-cased for comparison.
+JUNK_FRANCHISE_VALUES = {
+    "general dentistry", "dentistry", "dentists", "dentist",
+    "orthodontics", "oral surgery", "periodontics", "endodontics",
+    "prosthodontics", "pediatric dentistry", "pedodontics",
+    "cosmetic dentistry", "implant dentistry", "family dentistry",
+    "dental labs", "dental laboratories",
+}
+
+
 def classify_door(door, all_doors=None):
     """Classify a door with confidence score and reasoning.
 
@@ -1369,7 +1384,14 @@ def classify_door(door, all_doors=None):
             return "pe_backed", None, pe_name, 90, f"PE sponsor name '{pe_name}' in company name"
 
     # ── Rule 1b: Franchise name (confidence 95%) — most reliable after name ──
+    # Data Axle stuffs the practice's SPECIALTY into the franchise field for
+    # most dentists ("General Dentistry", "Orthodontics", ...). Those are not
+    # franchises — treating them as corporate created ~288 junk
+    # affiliated_dso='General Dentistry' rows + false dso_affiliated statuses
+    # (2026-06-12 cleanup). Blocklist them before trusting the field.
     franchise = (door.get("franchise") or "").strip()
+    if franchise and franchise.lower() in JUNK_FRANCHISE_VALUES:
+        franchise = ""
     if franchise:
         # Check franchise against known DSO list
         fr_status, fr_dso, fr_pe, fr_conf, fr_reason = classify_practice(franchise, "")

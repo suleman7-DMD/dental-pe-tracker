@@ -380,7 +380,10 @@ def compute_saturation_metrics(session, zip_code, population, mhi=None, pop_grow
     spec_locations = []
     for loc in locations:
         ec = loc.entity_classification
-        if ec == 'non_clinical':
+        # da_unverified = Data-Axle-only record (no federal NPI at the address,
+        # no phone/website or junk address) — not a verifiable operating
+        # practice, so it belongs in NO denominator (2026-06-12 cleanup).
+        if ec in ('non_clinical', 'da_unverified'):
             continue
         if ec == 'specialist' or loc.is_specialist_only:
             spec_locations.append(loc)

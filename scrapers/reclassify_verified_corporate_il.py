@@ -46,6 +46,12 @@ PHASEC = "data/dso_research/il_dso_phasec_verified.json"
 # location's own practice_locations.normalized_address, so xref_key matches
 # exactly. Dict-shaped ({"locations": [...]}); unioned below.
 DATA_AXLE = "data/dso_research/il_dso_data_axle_verified.json"
+# 2026-06-12 false-corporate demotion audit (demote_false_corporate_il.py). Every
+# location_id in its `demotions` list was WEB-VERIFIED independent (Evenly
+# parent_iusa placeholder / landlord-name / bad-seed false positives) — NEVER
+# re-promote them, even when a seed file still matches their address (2 of them
+# sit in UDP seed rows whose addresses turned out to be wrong).
+DEMOTIONS = "data/dso_research/il_false_corporate_demotions_20260612.json"
 
 INDEP = ("solo_established", "solo_new", "solo_inactive", "solo_high_volume",
          "family_practice", "small_group", "large_group")
@@ -98,6 +104,11 @@ def main(apply=True):
         da_locs = da.get("locations", da) if isinstance(da, dict) else da
         print(f"  + {len(da_locs)} Data-Axle structural-verified records unioned from {DATA_AXLE}")
         merged = merged + da_locs
+    # Exclusion set: web-verified false-corporate demotions are final.
+    exclude = set()
+    if os.path.exists(DEMOTIONS):
+        exclude = {d["location_id"] for d in json.load(open(DEMOTIONS))["demotions"]}
+        print(f"  - {len(exclude)} verified false-corporate locations excluded via {DEMOTIONS}")
     promote = {}   # location_id -> dict
     for loc in merged:
         if not loc.get("in_watched"):
@@ -107,7 +118,7 @@ def main(apply=True):
         if not row or row["entity_classification"] not in INDEP:
             continue
         lid = row["location_id"]
-        if lid in promote:
+        if lid in promote or lid in exclude:
             continue
         brand = loc["dso_name"]
         promote[lid] = {
@@ -186,10 +197,13 @@ def main(apply=True):
         n = c.execute("""SELECT COUNT(*) FROM practice_locations
             WHERE substr(zip,1,5)=? AND entity_classification
             IN ('dso_regional','dso_national')""", (z,)).fetchone()[0]
+        # FRACTION scale (0-1), matching merge_and_score.compute_saturation_metrics.
+        # (A 100.0* here once wrote percent-scale rows that the next merge pass
+        # silently re-masked — keep this in fraction scale.)
         cur.execute("""UPDATE zip_scores
             SET corporate_location_count=?,
                 corporate_share_pct=CASE WHEN total_gp_locations>0
-                    THEN ROUND(100.0*?/total_gp_locations,2) ELSE 0 END
+                    THEN ROUND(1.0*?/total_gp_locations,4) ELSE 0 END
             WHERE zip_code=?""", (n, n, z))
     c.commit()
 

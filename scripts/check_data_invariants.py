@@ -117,53 +117,68 @@ INVARIANTS: list[Invariant] = [
         id="FLOOR",
         description=(
             "Confirmed corporate GP-location floor never regresses below the "
-            "2026-06-07 documented 285 (dso_regional+dso_national in "
-            "practice_locations). Guards the 62 IL friendly-PC promotions + "
-            "IL-DSO-seed + 23 Phase-4 Data-Axle structural-verified promotions "
-            "against a refresh silently reverting them."
+            "2026-06-12 documented 261 (dso_regional+dso_national in "
+            "practice_locations). Guards the verified promotions (friendly-PC, "
+            "IL-DSO-seed, Phase-4 Data-Axle) against a refresh silently "
+            "reverting them, NET of the 2026-06-12 false-corporate demotions "
+            "and Data-Axle junk purge."
         ),
         path="practice_locations?entity_classification=in.(dso_regional,dso_national)&select=location_id",
         expect_max=99999,         # no upper bound — growth is fine/expected
-        expect_min=285,           # FAIL if it ever drops below the documented floor
+        expect_min=261,           # FAIL if it ever drops below the documented floor
         severity="fail",
         note=(
-            "FLOOR GUARD: 285 = 194 dso_national + 91 dso_regional location-level "
-            "(2026-06-07; was 262 at 2026-05-30). The +23 are the Phase-4 Data-Axle "
-            "structural-verified promotions (Destiny/ProSmile, Precision, Heartland, "
-            "Family Dental Care, Park Place, Dental Dreams, Gentle, Dental 360/Brite, "
-            "Sonrisa, DCA), each evidence-backed in "
-            "data/dso_research/il_dso_data_axle_verified.json. The 262 floor "
+            "FLOOR GUARD: 261 (2026-06-12; was 285 at 2026-06-07, 262 at "
+            "2026-05-30). The -18 are the 2026-06-12 false-corporate DEMOTIONS "
+            "(Evenly parent_iusa='000000000' placeholder linkage, landlord-name "
+            "confusion, bad seed addresses; audit "
+            "data/dso_research/il_false_corporate_demotions_20260612.json — "
+            "reclassify_verified_corporate_il.py EXCLUDES those location_ids "
+            "from re-promotion). The further -6 are the 2026-06-12 Data-Axle "
+            "JUNK PURGE (cleanup_data_axle_junk.py): DA_-only corporate rows "
+            "with 'nan' addresses / duplicate-of-NPI-evidenced rows / an OH "
+            "billing-HQ address, audit "
+            "data/dso_research/da_junk_cleanup_20260612.json. The 262 floor "
             "empirically survived the 2026-06-01 NPPES refresh; the 285 floor "
-            "survived a full merge_and_score recompute. A DROP below 285 means a "
-            "pipeline step reverted the promotions — re-run "
+            "survived a full merge_and_score recompute. A DROP below 261 means "
+            "a pipeline step reverted the promotions — re-run "
             "scrapers/reclassify_verified_corporate_il.py + re-sync floor tables. "
-            "A RISE is healthy (further verified confirmations landing)."
+            "A RISE is healthy (further verified confirmations landing). A read "
+            "ABOVE 261 pre-sync just means Supabase hasn't received the "
+            "demotions/purge yet — sync floor tables."
         ),
     ),
     Invariant(
         id="FLOOR_NPI",
         description=(
             "Corporate NPI rows in live `practices` never regress below the "
-            "2026-06-10 synced 1,178 (670 dso_regional + 508 dso_national). "
+            "2026-06-12 documented 1,119 (post false-corporate demotions + "
+            "Data-Axle junk purge). "
             "Guards against the live NPI-level classification going stale "
             "relative to SQLite truth."
         ),
         path="practices?entity_classification=in.(dso_regional,dso_national)&select=npi",
         expect_max=99999,         # no upper bound — growth is fine/expected
-        expect_min=1178,
+        expect_min=1119,
         severity="fail",
         note=(
-            "NPI FLOOR GUARD: 1,178 = the 285 corporate locations' underlying "
+            "NPI FLOOR GUARD: 1,119 = the 261 corporate locations' underlying "
             "NPI rows (Supabase `practices` holds only the 13,818 watched rows). "
-            "On 2026-06-10 live was found stale at 1,089 — the Phase-4 flips in "
-            "reclassify_verified_corporate_il.py updated practices WITHOUT "
-            "bumping updated_at (raw SQL bypasses the ORM onupdate), and the "
-            "post-flip surgical syncs only pushed floor tables. Root-fixed the "
-            "same day (script now bumps updated_at; live healed surgically). "
-            "A DROP below 1,178 means either a classifier reverted NPI flips "
-            "(re-run scrapers/reclassify_verified_corporate_il.py) or a stale "
-            "practices sync — re-sync with: "
-            "python3 scrapers/sync_to_supabase.py (full weekly path)."
+            "2026-06-12: was 1,178; demote_false_corporate_il.py flipped 52 "
+            "false-corporate NPIs back to independent (audit: "
+            "data/dso_research/il_false_corporate_demotions_20260612.json) and "
+            "cleanup_data_axle_junk.py flipped 7 more DA_-synthetic corporate "
+            "rows to da_unverified (audit: "
+            "data/dso_research/da_junk_cleanup_20260612.json). "
+            "History: on 2026-06-10 live was found stale at 1,089 — the Phase-4 "
+            "flips in reclassify_verified_corporate_il.py updated practices "
+            "WITHOUT bumping updated_at (raw SQL bypasses the ORM onupdate); "
+            "root-fixed the same day. A DROP below 1,119 means either a "
+            "classifier reverted NPI flips (re-run "
+            "scrapers/reclassify_verified_corporate_il.py) or a stale practices "
+            "sync — re-sync with: python3 scrapers/sync_to_supabase.py (full "
+            "weekly path). A read ABOVE 1,119 pre-sync just means Supabase "
+            "hasn't received the demotions/purge yet."
         ),
     ),
 ]
