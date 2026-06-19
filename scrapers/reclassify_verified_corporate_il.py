@@ -27,6 +27,7 @@ GATED: raises a headline number. Run only on explicit user confirmation.
 After running, sync zip_scores + practice_locations + practices to Supabase for
 the live site to reflect the new floor.
 """
+import glob
 import json
 import os
 import sqlite3
@@ -46,12 +47,15 @@ PHASEC = "data/dso_research/il_dso_phasec_verified.json"
 # location's own practice_locations.normalized_address, so xref_key matches
 # exactly. Dict-shaped ({"locations": [...]}); unioned below.
 DATA_AXLE = "data/dso_research/il_dso_data_axle_verified.json"
-# 2026-06-12 false-corporate demotion audit (demote_false_corporate_il.py). Every
-# location_id in its `demotions` list was WEB-VERIFIED independent (Evenly
-# parent_iusa placeholder / landlord-name / bad-seed false positives) — NEVER
-# re-promote them, even when a seed file still matches their address (2 of them
-# sit in UDP seed rows whose addresses turned out to be wrong).
-DEMOTIONS = "data/dso_research/il_false_corporate_demotions_20260612.json"
+# False-corporate demotion audits (demote_false_corporate_il.py round 1,
+# demote_false_corporate_round2.py, and any future rounds). Every location_id in
+# a `demotions` list was WEB-VERIFIED independent (Evenly parent_iusa placeholder
+# / landlord-name / bad-seed / franchise-name-collision false positives) — NEVER
+# re-promote them, even when a seed file still matches their address (several
+# demoted locations sit at addresses present in UDP/cluster seed rows whose
+# attribution turned out to be wrong, e.g. Comfort Dental Care 96ef01b3b198c50b
+# and 1st Choice 6af9e37687d09b08 in round 2).
+DEMOTIONS_GLOB = "data/dso_research/il_false_corporate_demotions_*.json"
 
 INDEP = ("solo_established", "solo_new", "solo_inactive", "solo_high_volume",
          "family_practice", "small_group", "large_group")
@@ -104,11 +108,14 @@ def main(apply=True):
         da_locs = da.get("locations", da) if isinstance(da, dict) else da
         print(f"  + {len(da_locs)} Data-Axle structural-verified records unioned from {DATA_AXLE}")
         merged = merged + da_locs
-    # Exclusion set: web-verified false-corporate demotions are final.
+    # Exclusion set: web-verified false-corporate demotions are final. Union
+    # every demotion round so no future seed/verify pass can re-promote them.
     exclude = set()
-    if os.path.exists(DEMOTIONS):
-        exclude = {d["location_id"] for d in json.load(open(DEMOTIONS))["demotions"]}
-        print(f"  - {len(exclude)} verified false-corporate locations excluded via {DEMOTIONS}")
+    for path in sorted(glob.glob(DEMOTIONS_GLOB)):
+        data = json.load(open(path))
+        ids = {d["location_id"] for d in data.get("demotions", [])}
+        exclude |= ids
+        print(f"  - {len(ids)} verified false-corporate locations excluded via {path}")
     promote = {}   # location_id -> dict
     for loc in merged:
         if not loc.get("in_watched"):

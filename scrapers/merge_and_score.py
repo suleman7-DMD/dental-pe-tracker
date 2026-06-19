@@ -383,7 +383,9 @@ def compute_saturation_metrics(session, zip_code, population, mhi=None, pop_grow
         # da_unverified = Data-Axle-only record (no federal NPI at the address,
         # no phone/website or junk address) — not a verifiable operating
         # practice, so it belongs in NO denominator (2026-06-12 cleanup).
-        if ec in ('non_clinical', 'da_unverified'):
+        # duplicate_location = suite/unit/direction variant of an already
+        # counted office, proven by same ZIP + phone + house/street core.
+        if ec in ('non_clinical', 'da_unverified', 'duplicate_location'):
             continue
         if ec == 'specialist' or loc.is_specialist_only:
             spec_locations.append(loc)

@@ -1,0 +1,268 @@
+{
+ "_generated": "2026-06-12",
+ "_method": "inline web verification (WebSearch/WebFetch), audit-synthesis triage + seed-provenance cross-check",
+ "demotions": [
+  {
+   "location_id": "d44c43930b0f8d3c",
+   "name": "DR. ZORAN D. STOJANOVIC & ASSOCIATES, LTD",
+   "old": "dso_regional",
+   "new": "solo_established",
+   "reason": "40-yr independent solo practice (web-verified); GRYPHON INVESTORS attribution was Data-Axle EIN/address crosswalk contamination. Org NPI has 0 providers at address (individual NPI sits on sibling row).",
+   "evidence": "practice website + Healthgrades; no Smile Brands/Gryphon listing",
+   "npi_flips": [
+    {
+     "npi": "1881083624",
+     "to": "org_only_npi"
+    }
+   ]
+  },
+  {
+   "location_id": "f5a7ad23598f31ca",
+   "name": "CORE Dental (Sheehan)",
+   "old": "dso_regional",
+   "new": "small_group",
+   "reason": "Family-owned CORE Dental, 3 providers (Sheehan + associates); GRYPHON attribution = crosswalk contamination.",
+   "evidence": "coredentalgroup.com own site; no DSO affiliation disclosed",
+   "npi_flips": [
+    {
+     "npi": "1336316827",
+     "to": "small_group"
+    },
+    {
+     "npi": "1881949923",
+     "to": "small_group"
+    },
+    {
+     "npi": "1912152034",
+     "to": "small_group"
+    },
+    {
+     "npi": "1467575209",
+     "to": "small_group"
+    }
+   ]
+  },
+  {
+   "location_id": "e6191892a75e8dc5",
+   "name": "Barrington endodontics office (10 Executive Ct)",
+   "old": "dso_regional",
+   "new": "specialist",
+   "reason": "Occupant is an independent endodontics practice (Scalia); 'Barrington Smiles' name + GRYPHON attribution both wrong.",
+   "evidence": "endodontics practice website at this address; no DSO",
+   "npi_flips": [
+    {
+     "npi": "1285828731",
+     "to": "specialist"
+    }
+   ]
+  },
+  {
+   "location_id": "6af9e37687d09b08",
+   "name": "1ST CHOICE DENTAL",
+   "old": "dso_national",
+   "new": "small_group",
+   "reason": "Seeded as 'Choice Dental Group' \u2014 that chain does not exist (web-verified); 2-provider independent office.",
+   "evidence": "no such DSO findable; practice's own site independent",
+   "npi_flips": [
+    {
+     "npi": "1750800546",
+     "to": "small_group"
+    },
+    {
+     "npi": "1467975243",
+     "to": "small_group"
+    },
+    {
+     "npi": "1124460126",
+     "to": "small_group"
+    }
+   ]
+  },
+  {
+   "location_id": "96ef01b3b198c50b",
+   "name": "COMFORT DENTAL CARE LLC",
+   "old": "dso_national",
+   "new": "family_practice",
+   "reason": "Name-string FP: Comfort Dental franchise has ZERO IL locations; this is the Patel family's independent practice.",
+   "evidence": "comfortdental.com locator (no IL); practice site Drs. B & A Patel",
+   "npi_flips": [
+    {
+     "npi": "1467957001",
+     "to": "family_practice"
+    }
+   ]
+  },
+  {
+   "location_id": "6f43af650c0b840d",
+   "name": "CHARLES LOCKHART DDS / Midwest Dental Sleep Center",
+   "old": "dso_regional",
+   "new": "small_group",
+   "reason": "Independent sleep-dentistry clinic; 'Midwest Dental' NAME-STRING false-match to the Midwest Dental chain propagated GRYPHON.",
+   "evidence": "midwestdentalsleepcenter.com \u2014 independent, no chain affiliation",
+   "npi_flips": [
+    {
+     "npi": "1053602227",
+     "to": "small_group"
+    },
+    {
+     "npi": "1053423285",
+     "to": "small_group"
+    }
+   ]
+  },
+  {
+   "location_id": "b6c85d93ce43a853",
+   "name": "TOOTH FAIRY WORLD PC",
+   "old": "dso_regional",
+   "new": "specialist",
+   "reason": "Founder-owned pediatric practice (Dr. Vitiello, est. 1989, 2 offices); no Shore/GLDP evidence anywhere. Org NPI taxonomy 1223P0221X (pediatric) -> specialist.",
+   "evidence": "toothfairyworlddentistry.com + Yelp; GLDP locator does NOT list it",
+   "npi_flips": [
+    {
+     "npi": "1922175223",
+     "to": "specialist"
+    },
+    {
+     "npi": "1538558408",
+     "to": "specialist"
+    }
+   ]
+  }
+ ],
+ "npi_demotions": [
+  {
+   "npi": "1568533867",
+   "to": "specialist",
+   "reason": "Works at JP Orthodontics (specialist location, 60103); dso_national + 'EVENLY ORTHODONTICS DUPONT' was placeholder-linkage junk (parent_iusa='000000000')."
+  },
+  {
+   "npi": "1659468221",
+   "to": "specialist",
+   "reason": "ADA-verified board-certified pediatric dentist (Tamulis-Shea); taxonomy 122300000X is mis-entered GP."
+  }
+ ],
+ "attribution_fixes": [
+  {
+   "location_id": "1b23d9ac9894df13",
+   "dso": "Midwest Dental (Smile Brands)",
+   "sponsor": "Gryphon Investors",
+   "ec": "dso_national",
+   "note": ""
+  },
+  {
+   "location_id": "78ed9776d81fc92d",
+   "dso": "Midwest Dental (Smile Brands)",
+   "sponsor": "Gryphon Investors",
+   "ec": "dso_national",
+   "note": ""
+  },
+  {
+   "location_id": "b6f0158e932b879c",
+   "dso": "Midwest Dental (Smile Brands)",
+   "sponsor": "Gryphon Investors",
+   "ec": "dso_national",
+   "note": ""
+  },
+  {
+   "location_id": "b9e995cf85a64d91",
+   "dso": "Midwest Dental (Smile Brands)",
+   "sponsor": "Gryphon Investors",
+   "ec": "dso_national",
+   "note": "Web-verified: 1530 N Randall Rd Ste 100 is Midwest Dental's Elgin office (sharecare/midwest-dental.com); row was named after an employed associate."
+  },
+  {
+   "location_id": "c088f2d83fe13d65",
+   "dso": "Great Lakes Dental Partners",
+   "sponsor": "Shore Capital Partners",
+   "ec": "dso_regional",
+   "note": "Manus Dental acquired by GLDP 2017 (GLDP press release)."
+  },
+  {
+   "location_id": "41a086c9bd03fa91",
+   "dso": "Great Lakes Dental Partners",
+   "sponsor": "Shore Capital Partners",
+   "ec": "dso_regional",
+   "note": "GLDP-acquired Dec 2018 (press release); PERMANENTLY CLOSED April 2023 per sunrisedentalcare.com \u2014 kept per never-DELETE rule; NPPES-staleness limitation."
+  },
+  {
+   "location_id": "25d611ece46470e6",
+   "dso": "Great Lakes Dental Partners",
+   "sponsor": "Shore Capital Partners",
+   "ec": "dso_regional",
+   "note": "6258 N Lincoln Ave on GLDP's own locator page (seed web_locator:generic) \u2014 audit demotion verdict OVERRIDDEN by documentary provenance."
+  },
+  {
+   "location_id": "9550d33a7efdafdd",
+   "dso": "Great Lakes Dental Partners",
+   "sponsor": "Shore Capital Partners",
+   "ec": "dso_regional",
+   "note": "4015 Plainfield-Naperville Rd Ste 106 on GLDP's own locator page \u2014 audit 'no hard evidence' verdict OVERRIDDEN by documentary provenance."
+  },
+  {
+   "location_id": "ce91352555d1a5e7",
+   "dso": "North American Dental Group",
+   "sponsor": null,
+   "ec": "dso_regional",
+   "note": "NADG acquired Affiliated Dental Specialists 2021 (web-verified); prior NULL/Gryphon attribution wrong."
+  },
+  {
+   "location_id": "45ab58a401772b06",
+   "dso": "Aspen Dental",
+   "sponsor": null,
+   "ec": "dso_national",
+   "note": ""
+  }
+ ],
+ "name_fixes": [
+  {
+   "location_id": "be2a1cd5ebe9d302",
+   "name": "1st Family Dental of Logan Square",
+   "why": "address crosswalk wrote competitor name (Dentologie is at 1625 N Milwaukee)"
+  },
+  {
+   "location_id": "fcf40ad38b38a300",
+   "name": "Gallery Park Family & Pediatric Dentistry",
+   "why": "2501 Compass Rd is Dr. Jayna Shah's Gallery Park practice; 'Mopper Hartlieb & Assoc' is at 2601 (web-verified)."
+  }
+ ],
+ "closed_flags": [
+  {
+   "location_id": "b77c247e6be90e1e",
+   "flag": "CLOSED ~March 2026 (web-verified); real Advanced Family Dental chain location while open."
+  },
+  {
+   "location_id": "035326fadc731101",
+   "flag": "STALE: NPPES record last meaningful update 2019; address now operates as Dental Shop of Elk Grove."
+  },
+  {
+   "location_id": "3753fd053d6eb301",
+   "flag": "CLOSED (web-verified): East Side Dental Office & Lab no longer operating."
+  },
+  {
+   "location_id": "fca3ad421cdeee00",
+   "flag": "MOVED (web-verified): practice relocated to 9235 Skokie Blvd."
+  }
+ ],
+ "reviewed_no_change": [
+  {
+   "location_id": "46736b187ceba600",
+   "verdict": "keep large_group",
+   "why": "audit's website check shows 2 providers but NPPES registers 6 NPIs at the address \u2014 NPPES evidence supports large_group; both classes are independent so no KPI impact"
+  },
+  {
+   "location_id": "d9e1cbf0d6b6b005",
+   "verdict": "keep location large_group / NPI org_only_npi",
+   "why": "org NPI with 0 individual NPIs registered at address \u2014 org_only_npi is correct BY DEFINITION; practice is real, dentists register elsewhere"
+  },
+  {
+   "location_id": "4f95e6d5f0037303",
+   "verdict": "keep large_group (NO promotion)",
+   "why": "Smile Partners USA affiliation could NOT be verified (site JS-only; all directories show Dr. Jeffrey Zeller independent, est. 2014) \u2014 binding rule: no corporate flip without documentary evidence"
+  },
+  {
+   "location_id": "18d18c5b67810364",
+   "verdict": "keep specialist (building-level row)",
+   "why": "25 E Washington houses 49 specialist providers incl. one GLDP office; suite-level attribution impossible \u2014 Zager's fund-name tag cleared"
+  }
+ ]
+}
