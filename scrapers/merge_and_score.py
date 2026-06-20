@@ -224,7 +224,7 @@ def enrich_platforms_and_sponsors(session):
 # ═══════════════════════════════════════════════════════════════════════════
 
 
-def deduplicate_practices_in_zip(session, zip_code):
+def deduplicate_practices_in_zip(session, zip_code, state=None):
     """Deduplicate practices by address within a ZIP code.
 
     Multiple NPIs at the same address usually represent one practice (e.g., a
@@ -241,7 +241,10 @@ def deduplicate_practices_in_zip(session, zip_code):
 
     Returns dict with deduplicated counts.
     """
-    practices = session.query(Practice).filter(Practice.zip == zip_code).all()
+    query = session.query(Practice).filter(Practice.zip == zip_code)
+    if state:
+        query = query.filter(Practice.state == state)
+    practices = query.all()
     raw_npi_count = len(practices)
 
     if raw_npi_count == 0:
@@ -322,7 +325,7 @@ BUYABLE_TYPES = {'solo_established', 'solo_inactive', 'solo_high_volume'}
 CORPORATE_TYPES = {'dso_regional', 'dso_national'}
 
 
-def compute_saturation_metrics(session, zip_code, population, mhi=None, pop_growth=None):
+def compute_saturation_metrics(session, zip_code, population, mhi=None, pop_growth=None, state=None):
     """Compute ZIP-level saturation metrics using practice_locations as the
     canonical location-level source of truth.
 
@@ -350,7 +353,10 @@ def compute_saturation_metrics(session, zip_code, population, mhi=None, pop_grow
         dict with all computed metrics and a 'warnings' list
     """
     # NPI-level — for coverage/confidence/warnings only
-    practices = session.query(Practice).filter(Practice.zip == zip_code).all()
+    practice_query = session.query(Practice).filter(Practice.zip == zip_code)
+    if state:
+        practice_query = practice_query.filter(Practice.state == state)
+    practices = practice_query.all()
     total_practices = len(practices)
 
     # LOCATION-level — canonical counts read from practice_locations
@@ -359,8 +365,10 @@ def compute_saturation_metrics(session, zip_code, population, mhi=None, pop_grow
         .filter(PracticeLocation.zip == zip_code)
         .filter((PracticeLocation.is_likely_residential == False) |  # noqa: E712
                 (PracticeLocation.is_likely_residential.is_(None)))
-        .all()
     )
+    if state:
+        locations = locations.filter(PracticeLocation.state == state)
+    locations = locations.all()
 
     if total_practices == 0 and not locations:
         return {
@@ -670,9 +678,12 @@ def score_watched_zips(session):
 
         # Cross-reference DSO locations — upgrade unknowns before counting
         if zc in dso_loc_by_zip:
-            unknowns = session.query(Practice).filter(
+            unknowns_query = session.query(Practice).filter(
                 Practice.zip == zc, Practice.ownership_status == "unknown"
-            ).all()
+            )
+            if wz.state:
+                unknowns_query = unknowns_query.filter(Practice.state == wz.state)
+            unknowns = unknowns_query.all()
             for practice in unknowns:
                 if not practice.address:
                     continue
@@ -689,7 +700,7 @@ def score_watched_zips(session):
             session.flush()
 
         # Count practices (address-deduplicated)
-        counts = deduplicate_practices_in_zip(session, zc)
+        counts = deduplicate_practices_in_zip(session, zc, wz.state)
         raw = counts["raw_npi_count"]
         total = counts["total_deduplicated"]
         pe = counts["pe_backed_count"]
@@ -711,9 +722,12 @@ def score_watched_zips(session):
         unk_pct = (unk / total * 100) if total > 0 else 0.0
 
         # Recent changes
-        recent = session.query(func.count(PracticeChange.id)).join(
+        recent_query = session.query(func.count(PracticeChange.id)).join(
             Practice, PracticeChange.npi == Practice.npi
-        ).filter(Practice.zip == zc, PracticeChange.change_date >= ninety_ago).scalar() or 0
+        ).filter(Practice.zip == zc, PracticeChange.change_date >= ninety_ago)
+        if wz.state:
+            recent_query = recent_query.filter(Practice.state == wz.state)
+        recent = recent_query.scalar() or 0
 
         # State deals last 12 months
         st = wz.state
@@ -746,6 +760,7 @@ def score_watched_zips(session):
                 session, zc, wz.population,
                 wz.median_household_income,
                 wz.population_growth_pct,
+                wz.state,
             )
             mt, mt_conf, mt_explanation = classify_market_type(
                 sat['dld_gp_per_10k'], sat['buyable_practice_ratio'],
@@ -780,7 +795,7 @@ def score_watched_zips(session):
                 log.info("ZIP %s → market_type=%s (%s): %s", zc, mt, mt_conf, mt_explanation)
         else:
             # No population data — store everything except population-derived rates
-            sat = compute_saturation_metrics(session, zc, 0)
+            sat = compute_saturation_metrics(session, zc, 0, state=wz.state)
             sat_vals = {
                 'total_gp_locations': sat['total_gp_locations'],
                 'total_specialist_locations': sat['total_specialist_locations'],
