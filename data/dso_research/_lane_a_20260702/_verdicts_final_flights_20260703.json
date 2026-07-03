@@ -1,0 +1,450 @@
+[
+ {
+  "location_id": "ce91352555d1a5e7",
+  "verdict": "CONFIRM",
+  "notes": "Affiliated Dental Specialists at One/1 E Phillip Rd Vernon Hills 60061 is genuinely part of North American Dental Group (NADG): its own site uses NADG's booking platform and nadentalgroup.com email, NADG's careers page explicitly states 'Affiliated Dental Specialists, part of the NADG team' in Vernon Hills IL, and NADG (a PE-sponsored DSO) acquired it 2021-05-19 (GDN DSO roundup, PitchBook). The branded_dso tier holds; the DB's Gryphon parent_company was simply the wrong sponsor name, not a wrong tier.",
+  "unit": "laneA_056",
+  "workflow": "w04zw4vq6"
+ },
+ {
+  "location_id": "84559ebe91cb4e23",
+  "verdict": "CONFIRM",
+  "notes": "Great Lakes Dental Partners' own locations page lists Deerpath Dental Specialists at 10 W Phillip Rd Ste 117, Vernon Hills IL 60061 (exact-address match), Deerpath's own site references 'Chicagoland Smile Group' (GLDP's former name) in its careers URL, and affiliation dates to Dec 2016. GLDP is a genuine PE-backed DSO, not dentist-owned: it is a Shore Capital Partners portfolio company (raised $51.2M; Resolute Capital + Shore Capital investors; Becker's labels it 'private equity-backed DSO'), so no DOWNGRADE_T3 is warranted.",
+  "unit": "laneA_056",
+  "workflow": "w04zw4vq6"
+ },
+ {
+  "location_id": "fc0f1f41d3e28d20",
+  "verdict": "CONFIRM",
+  "notes": "GLDP's own locator lists '4949 Euclid Ave Ste A Palatine, IL 60067' (exact match), the 2018 partnership news release confirms Meadows Dental Care (Dr. Robert Radin) joined GLDP, and independent search confirms Great Lakes Dental Partners is a Shore Capital Partners PE portfolio company (Fund I, $112.5M). File name 'Meadows Dental Group' vs locator 'Meadows Dental Care' is a benign variant at the identical address/ZIP, not a collision. Genuine branded PE-backed DSO office.",
+  "unit": "laneA_057",
+  "workflow": "w04zw4vq6"
+ },
+ {
+  "location_id": "2625c100027ca176",
+  "verdict": "DOWNGRADE_T3",
+  "notes": "The Umbrella Dental Partners affiliation is real, not a collision: Vernon Dental Care's email domain is udentalpartners.com and 281 W Townline Rd Ste #210, Vernon Hills appears on Umbrella's own office list. However Umbrella is demonstrably dentist-owned, not PE/corporate: founders transitioned 'from a clinical mindset to a clinical and business mindset' (first acquisition 2014), listed 'privately held' with 'no funding raised yet' (LinkedIn/ZoomInfo/Tracxn), a real ~5-office IL group. So it is a dentist-owned multi-location group (T3), NOT a stealth/branded PE DSO; the stealth_dso flag is not supported at the PE-consolidation tier. Correctly left as file-untouched flag; recommend T3 group classification, not stealth_dso.",
+  "unit": "laneA_057",
+  "workflow": "w04zw4vq6"
+ },
+ {
+  "location_id": "5a40b76688681152",
+  "verdict": "CONFIRM",
+  "notes": "MB2 Dental's own site, its Facebook, and Becker's confirm Dr. Jessica Britten-Fazzio, owner of Palatine Dental Associates (4 S Northwest Hwy, Palatine IL 60074 \u2014 exact ZIP/owner match to the DB name JESSICA BRITTEN D.D.S. P.C.), joined MB2 Dental in July 2018. MB2 is unambiguously PE-backed (Charlesbank 2021, Warburg Pincus $525M recap Nov 2024, KKR, EV >$3.5B), so DOWNGRADE_T3 does not apply; the office keeps its local brand with no MB2 signage, correctly fitting stealth_dso (T4).",
+  "unit": "laneA_059",
+  "workflow": "w04zw4vq6"
+ },
+ {
+  "location_id": "6bfec1d7548e775d",
+  "verdict": "DOWNGRADE_T3",
+  "notes": "Network membership CONFIRMED: dentalstore.com's own locator lists Old Orchard Smiles at 9235 Skokie Blvd as one of 5 sister offices, and oldorchardsmiles.com/meet-the-doctors lists Dr. Richard Conen. But The Dental Store is 'family owned and operated' since 1964 by the Shulkin dentist dynasty (Dr. Glenn Shulkin, son of Dr. Neil Shulkin; Dr. Elizabeth Shulkin-Cohn DDS), with Cohn relatives in non-dentist ops roles -- no PE/corporate owner. Real multi-location network but demonstrably dentist-owned, so T3, not stealth_dso.",
+  "unit": "laneA_061",
+  "workflow": "w04zw4vq6"
+ },
+ {
+  "location_id": "53e77e1916d9bfcf",
+  "verdict": "DOWNGRADE_T3",
+  "notes": "'Dental Store North Shore is now Old Orchard Smiles' confirmed at 9235 Skokie Blvd via the network's own locator and dentalstorenorthshore.com. However the controller is a dentist family, not a DSO/PE: 'family owned and operated' since 1964, Shulkin dentist family (Dr. Glenn Shulkin son of Dr. Neil Shulkin, Dr. Elizabeth Shulkin-Cohn DDS); Joel Cohn (COO) and Barry Cohn (office manager) are non-dentist family members handling operations, no outside capital. The classifier itself found 'no PE sponsor... family-run multi-location management company.' Dentist-owned multi-location group = T3.",
+  "unit": "laneA_061",
+  "workflow": "w04zw4vq6"
+ },
+ {
+  "location_id": "9dae16bea3e38748",
+  "verdict": "DOWNGRADE_T3",
+  "notes": "Cross-brand 'Old Orchard Smiles / Toni Ellis Wolf, DDS PC' confirmed via Yelp/BBB (Dr. Wolf's practice absorbed into Old Orchard Smiles at 9235 Skokie Blvd; she was reportedly retiring 2021) and the network is real per dentalstore.com's locator. But same ownership finding applies: The Dental Store is a family/dentist-owned group (Shulkin dynasty since 1964), no PE sponsor or national DSO brand. Real dentist-owned multi-location network -> DOWNGRADE_T3, not stealth_dso.",
+  "unit": "laneA_061",
+  "workflow": "w04zw4vq6"
+ },
+ {
+  "location_id": "5761787428f6d030",
+  "verdict": "CONFIRM",
+  "notes": "The practice's own website (choosemoderndentistry.com) lists the exact unit address 1431 McHenry Rd Ste 108, Buffalo Grove IL 60089, identifies the legal entity as 'Dental Health Professionals of Illinois, P.C.', operates as 'Modern Dentistry,' and states it is part of the Orahh Care Dental Community; both that site and orahhcare.com confirm Orahh Care is 'a brand owned by Heartland Dental LLC, a dental support organization.' Heartland Dental is independently confirmed as KKR-majority-owned since 2018 (GDN/Becker's/DrBicuspid), so branded_dso + pe_backed=true is fully supported. The 'independently owned and operated' language is standard friendly-PC DSO structure, not a dentist-owned group, so no downgrade applies.",
+  "unit": "laneA_064",
+  "workflow": "w04zw4vq6"
+ },
+ {
+  "location_id": "4326d78b280875a3",
+  "verdict": "CONFIRM",
+  "notes": "A K A DENTAL's org NPI 1598937377 is registered at 4445 N Pulaski Rd, 60630 \u2014 verbatim one of the 7 clinics on udclinics.com ('N. Pulaski: 4445 North Pulaski Road Chicago, IL 60630'), so the address-to-brand link is exact, not a name collision. NPPES authorized official is MILAN RONCEVIC, title GENERAL MANAGER (LinkedIn/ZoomInfo confirm he's a non-dentist CEO who also runs 'The Chicago Tooth Fairy'), and he is absent from UDC's 6-dentist 'Our Doctors' page; UDC self-describes 7 locations + an Oak Lawn 'Corporate Office' + a Marketing/PR department, with no dentist-owner named \u2014 a textbook non-dentist-controlled stealth DSO, not a dentist-owned group.",
+  "unit": "laneA_106",
+  "workflow": "w04zw4vq6"
+ },
+ {
+  "location_id": "f84ddcb53246f65d",
+  "verdict": "DOWNGRADE_T3",
+  "notes": "Address->brand mapping is genuine: Precision Dental Care's locator lists 'N Pulaski - 4830 N. Pulaski #108, Chicago IL 60630 | 773-283-2100' (exact address + phone), corroborated independently by Yelp, Facebook (precisiondentalcarenpulaski), Practo and denTEL. Hase Zahn Inc / Dr. Simona Bareket is a stale legacy NPI (her current practice is HP Smiles Dental, Highland Park). BUT Precision Dental Care is demonstrably dentist-owned, not a corporate/PE DSO: its own Meet the Doctors page states founders Drs. Khanh Nguyen and Randy Chang opened the offices and 'Dr. Chang now owns and operates eight dental clinics,' with no management company, private equity, or corporate parent anywhere, and PitchBook shows no funding/investors (claim itself concedes pe_backed=false). A real 7-location network that is dentist-owned = T3, not a PE-consolidation DSO.",
+  "unit": "laneA_107",
+  "workflow": "w04zw4vq6"
+ },
+ {
+  "location_id": "264b213aba147441",
+  "verdict": "CONFIRM",
+  "notes": "Webster Dental Care's own locator lists the Edison Park office at 7760 W Devon Ave, Chicago IL 60631 as one of 8 branded Chicagoland offices, and the brand runs a corporate management layer ('Webster Dental Management') with a non-dentist CEO plus explicit acquisition/consolidator behavior \u2014 a genuine branded regional DSO. No name collision; URLs live and on-point; no basis for T3 downgrade.",
+  "unit": "laneA_108",
+  "workflow": "w04zw4vq6"
+ },
+ {
+  "location_id": "f9f257b93fcfb2bf",
+  "verdict": "CONFIRM",
+  "notes": "Dental Dreams' own locator brands 'Studio Dental' (4310 S Pulaski) as their office; Healthgrades names Dr. Melisa Tillner's practice 'Studio Dental LLC'; the (773) 254-3300 phone is independently confirmed shared across both the 4410 (Tillner) and 4310 (Studio Dental) listings, which multiple directories describe as one operation. Dental Dreams/KOS Services is a real multi-state DSO, so branded_dso and pe_backed=false hold. Caveat: the claim's '4310 vs 4410 transposition' rationale is factually wrong (it is a one-block address gap, not a digit transposition), but the brand attribution is corroborated independently regardless.",
+  "unit": "laneA_109",
+  "workflow": "w04zw4vq6"
+ },
+ {
+  "location_id": "90e74bec1bd2d947",
+  "verdict": "CONFIRM",
+  "notes": "Brand's own locator page places the exact address 5160 S Pulaski Ste. 102, Chicago, IL 60632 under 'All Family Dental & Braces' (multi-provider clinic; Dr. Pujan Patel DMD is one of several associate dentists, not owner). The consumer brand is controlled by United Dental Partners (Facebook page title + NexHealth booking slug 'unitedentalpartners'), a genuine PE-backed DSO acquired by Calera Capital in 2017 \u2014 corporate, not dentist-owned, so no T3 downgrade. Evidence genuinely supports the branded_dso tier.",
+  "unit": "laneA_110",
+  "workflow": "w04zw4vq6"
+ },
+ {
+  "location_id": "549f761ca8929ce5",
+  "verdict": "CONFIRM",
+  "notes": "Independently verified: WebMD confirms exact address+phone (6153 S Western Ave / (773) 863-0129) branded DENTALWORKS, corroborated by Yelp (updated Jan 2026), denteldoc, yellowpages, dentistoffices, birdeye. sonrava.com/brands lists DentalWorks as a Sonrava Health brand; Sonrava is PE-backed by New Mountain Capital. NOT a name collision or dentist-owned-independent: owner Dr. Michael Luckett has an official dentalworks.com team page and his sibling PCs are official DentalWorks IL offices (Chicago Loop = 130 S Franklin St = his 2nd registered address; Rivercrest = Crestwood) -- a classic friendly-PC DSO structure. Only weakness: the current DentalWorks IL locator (9 offices) omits this exact address, a data-freshness/omission issue, not evidence of non-affiliation.",
+  "unit": "laneA_111",
+  "workflow": "w04zw4vq6"
+ },
+ {
+  "location_id": "3c22451629d69649",
+  "verdict": "CONFIRM",
+  "notes": "Affordable Care's own national locator lists this exact address (2700 N Narragansett Ave Suite F-3, Chicago, IL 60639) as the Affordable Dentures & Implants Oak Park office, corroborated independently by Yelp and a company blog opening announcement; no name collision. Affordable Care is a documented PE-backed DSO (Harvest Partners + PSP ~$2.7B LBO in 2021 from Berkshire Partners), confirmed by DentistryIQ, PE Hub, PitchBook and Beckers. The local practice-owner dentist / P.C. structure is the standard DSO friendly-PC model, not a dentist-owned independent group, so no T3 downgrade is warranted.",
+  "unit": "laneA_115",
+  "workflow": "w04zw4vq6"
+ },
+ {
+  "location_id": "9ed079a50d548b37",
+  "verdict": "DOWNGRADE_T3",
+  "notes": "Brand tie is real: independent sources (Yelp, patientconnect365) place 4801 W Peterson Ave, Chicago 60646 under 'Webster Dental Care of Sauganash,' so this is a genuine multi-location branded network. However, Webster Dental Care is repeatedly described as 'one of the largest dentist-owned dental groups in Chicagoland' (founded 1976 by Dr. Steven Rempas, via 'Webster Dental Management'), with growth aided by M&A advisor Aptus Exchange (not a PE owner) and no PE sponsor documented \u2014 a dentist-owned network, not a PE/corporate DSO. Note the cited locator page currently lists 8 offices and does NOT include Sauganash, a minor discrepancy with the claim's '9 offices.'",
+  "unit": "laneA_122",
+  "workflow": "w04zw4vq6"
+ },
+ {
+  "location_id": "c4b5b35fa16e44e5",
+  "verdict": "CONFIRM",
+  "notes": "Dental 360's own locator page lists 3855 W North Ave, Chicago IL 60647-4640, (773) 782-8900 exactly as its 'North Ave' office; independent sources (Yelp/Waze/Practo/Healthgrades/CareCredit) confirm this address operates as Dental 360 / North Avenue Family Dentist, and Dental 360 is a 16+ IL-office multi-state branded chain. Branded-DSO tier genuinely supported (no PE sponsor needed for branded_dso).",
+  "unit": "laneA_126",
+  "workflow": "w04zw4vq6"
+ },
+ {
+  "location_id": "fc010516c3e5b18d",
+  "verdict": "DOWNGRADE_T3",
+  "notes": "A real multi-location network exists, but documentary evidence contradicts the stealth-DSO (non-dentist controller) premise: federal opinion In re Dental Profile Inc. and Dentist, 446 B.R. 885 (Bankr. N.D. Ill. 2011) names licensed IL dentist Dr. Husam Aldairi as president/sole shareholder who 'owns and operates various dental clinics in Chicago and its surrounding suburbs' through multiple corporate entities. Milan Roncevic's NPI role is 'General Manager'/authorized official (an administrative title; AO status is not beneficial ownership), and his LinkedIn/ZoomInfo 'CEO' titles do not establish lay control. So this is a dentist-owned multi-location group, not a lay-controlled stealth DSO. Caveat: court record is 2011-vintage; current ownership not independently documented, but IL P.C. law requires dentist ownership and no sale to a lay/known-DSO entity was found.",
+  "unit": "laneA_126",
+  "workflow": "w04zw4vq6"
+ },
+ {
+  "location_id": "9974718d9adbc00f",
+  "verdict": "CONFIRM",
+  "notes": "Dental 360's own locations page lists 'Logan Square: 2314 N. Milwaukee Ave Suite B' with phone (773) 697-3164, an exact address + phone match to Brite Dental at this address. Dental 360 is a genuine 20+ office branded network (IL/WI/IN); no evidence it is dentist-owned, so branded_dso stands.",
+  "unit": "laneA_127",
+  "workflow": "w04zw4vq6"
+ },
+ {
+  "location_id": "826ff5b11537f2cb",
+  "verdict": "CONFIRM",
+  "notes": "Yelp shows 'Dental Magic - CLOSED' at 2500 W North Ave; Dental 360's locations page lists 'Bucktown: 2500 W North Ave, (773) 360-1281' with the identical phone (773-360-1281) carried over from the legacy Dental Magic listing \u2014 a clear brand takeover of the same physical address.",
+  "unit": "laneA_127",
+  "workflow": "w04zw4vq6"
+ },
+ {
+  "location_id": "5f85f76407d177c8",
+  "verdict": "CONFIRM",
+  "notes": "Dentologie Bucktown is at 1625 N Milwaukee Ave and Dr. Sailesh Ramalingam is a listed dentist there. Dentologie is an investor-backed expansion brand ($25M Series B; Warburg Pincus an earlier investor; non-dentist CEO Gregg Kaplan, ex-Redbox). Claim slightly overstates that Warburg led the Series B (C&S Family Capital/Beringea led it), but branded_dso + pe_backed hold.",
+  "unit": "laneA_127",
+  "workflow": "w04zw4vq6"
+ },
+ {
+  "location_id": "1d72f604a2d31ce9",
+  "verdict": "CONFIRM",
+  "notes": "Destiny Dental Care's own site lists 2101 E 71st St, Chicago 60649 (Jeffery Plaza) operating as 'Pro Dental IL \u2013 Chad Wise P.C.' \u2014 exact match to the claimed practice/ZIP. ProSmile's Aug-2024 press release plus TriSpan's own portfolio-company PDF and PrivSource confirm ProSmile (a DSO) acquired the Destiny Midwest network and is TriSpan PE-backed, so branded_dso + pe_backed=true hold. The Chad Wise P.C. name is the standard friendly-PC DSO structure, not a dentist-owned group.",
+  "unit": "laneA_128",
+  "workflow": "w04zw4vq6"
+ },
+ {
+  "location_id": "8c22295696b634cf",
+  "verdict": "DOWNGRADE_T3",
+  "notes": "658 Roosevelt Rd is a real 2-location group (Family Dental Care / changingsmiles.net, Glen Ellyn + Campton Hills) but demonstrably dentist-owned: its own About/Meet-the-Doctors pages disclose no DSO or parent and show a founder-led partnership (Dr. Biagini founder; Jansky partner since 1996, Beck since 2002). The Elite Dental Partners attribution is contradicted \u2014 Elite's own IL office list (Antioch, Chicago, Des Plaines, Geneva, Homewood, New Lenox, Peoria, Warrenville) does NOT include Glen Ellyn or this address, and the cited Elite directory URL lists no specific practices. The Indeed link is a geo-radius query surfacing Elite jobs at nearby offices; the Houlihan Lokey/Cressey links are generic Elite corporate pages that never name this address.",
+  "unit": "laneA_178",
+  "workflow": "wtnzpeec6"
+ },
+ {
+  "location_id": "22339e62a416ed22",
+  "verdict": "CONFIRM",
+  "notes": "The brand's own Melrose Park page plus independent sources (Yelp, WebMD, YellowPages, Central Index) all place 1812 N 19th Ave, Melrose Park IL 60160 with phone (708) 498-4410 as All Family Dental & Braces, matching the claimed address/phone exactly. That brand is operated by United Dental Partners, a genuine PE-backed DSO (Calera Capital, per PitchBook/Mergr) \u2014 not a dentist-owned group, so no DOWNGRADE_T3 warranted.",
+  "unit": "laneA_182",
+  "workflow": "wtnzpeec6"
+ },
+ {
+  "location_id": "4864be0b1d4d3366",
+  "verdict": "CONFIRM",
+  "notes": "Aspen Dental's own locator page confirms the 620 W North Ave, Melrose Park IL 60160 office as an Aspen Dental branded location; the 'ABB Dental Group LLC / Dr. Ashley Brier' language is Aspen's standard friendly-PC structure. Aspen Dental Management is a well-documented PE-backed national DSO (Leonard Green & Partners, Ares Management, American Securities), confirmed via Leonard Green and Wikipedia/Becker's sources.",
+  "unit": "laneA_182",
+  "workflow": "wtnzpeec6"
+ },
+ {
+  "location_id": "b639d912fbb3b38c",
+  "verdict": "DOWNGRADE_T3",
+  "notes": "Real ~5-6 location Chicagoland network confirmed (Villa Park/144 W Roosevelt Rd, Chicago x2, Cicero, Summit, Addison) all under 'Muzaffar Mirza DDS & Associates' managed by 'Dental Management & Investments' \u2014 and the 60181 address does belong to it. But it is demonstrably dentist-owned: BBB lists Dr. Muzaffar Mirza DDS as owner/principal/manager, LLC, 31 years; 'Dental Management & Investments' is his own eponymous group's management/branding vehicle, not a third-party corporate or PE controller. No PE sponsor, no acquisition. Not a stealth DSO.",
+  "unit": "laneA_185",
+  "workflow": "wtnzpeec6"
+ },
+ {
+  "location_id": "12975f69f58b30ee",
+  "verdict": "DOWNGRADE_T3",
+  "notes": "Address confirmed: 7001 Ogden Ave IS 'Webster Dental Care of Berwyn' (Yelp + webdentalchicago.com/locations/berwyn/ + Dr. Klyber 2019 merger), so it is a real multi-location network, not a name collision. BUT Webster Dental Care is demonstrably DENTIST-OWNED with no PE/VC: founded 1976 by Dr. Steven Rempas, 'owned by two dentists, without any venture capital partners' per Crain's Chicago Business and Group Dentistry Now, and called 'one of the largest dentist-owned groups in Chicagoland.' Classifying it as a stealth_dso would wrongly inflate a PE-consolidation metric \u2014 correct tier is a dentist-owned group (T3). Note: the specific PR Newswire 'Chicago Dental Professionals' URL 404s; parallel Aptus/Webster release exists.",
+  "unit": "laneA_194",
+  "workflow": "wtnzpeec6"
+ },
+ {
+  "location_id": "315ae3407ac75822",
+  "verdict": "CONFIRM",
+  "notes": "Aspen Dental's own locator confirms an active Aspen Dental office at 4450 N Harlem Ave, Norridge, IL 60706, and independent sources (Yahoo Local 'Victor, Laith - Aspen Dental Management Inc' at that exact address; Yelp 'Aspen Dental - Norridge') show the unit's namesake, Dr. Laith Victor DDS, is the DSO-employed dentist at that branded location. Not a name collision and not dentist-owned; Aspen Dental Management Inc is a documented PE-backed national DSO, so branded_dso is correct.",
+  "unit": "laneA_201",
+  "workflow": "wtnzpeec6"
+ },
+ {
+  "location_id": "280722975dff06aa",
+  "verdict": "CONFIRM",
+  "notes": "GLDP's own locator page lists 'Oak Park Dental Group' at the exact claimed address 7034 W North Ave, Chicago IL 60707 (phone 773-889-9100 matches independent search), and Great Lakes Dental Partners is a documented Shore Capital Partners-backed DSO (PE-backed, not dentist-owned) per Shore Capital, PR Newswire, and CB Insights. Both the address-to-brand mapping and the PE sponsor are corroborated, so branded_dso + pe_backed=true holds.",
+  "unit": "laneA_202",
+  "workflow": "wtnzpeec6"
+ },
+ {
+  "location_id": "1b23d9ac9894df13",
+  "verdict": "CONFIRM",
+  "notes": "214 Dundee Ave, East Dundee IL 60118 independently confirmed as a branded Midwest Dental office (hours-locations.com, vitals.com, webmd.com, and Midwest Dental's own IL locator). Gryphon Investors' press release confirms its portfolio company Smile Brands acquired Midwest Dental on Dec 2, 2020 -- documentary PE chain, not a dentist-owned group. The one cited brand URL 404'd but the office is otherwise fully corroborated.",
+  "unit": "laneA_203",
+  "workflow": "wtnzpeec6"
+ },
+ {
+  "location_id": "66fa01b5ca6161c7",
+  "verdict": "CONFIRM",
+  "notes": "Midwest Dental's own West Dundee office page names Dr. Zoran D. Stojanovic at 712 W. Main St, West Dundee IL, matching this NPI record; corroborated by the Yelp listing 'Midwest Dental West Dundee - Zoran D Stojanovic, DDS'. Same Gryphon/Smile Brands PE chain (Dec 2020 acquisition). The brand page showed ZIP 60188 which is a page typo -- West Dundee IL is 60118. Not dentist-owned; genuine branded DSO.",
+  "unit": "laneA_203",
+  "workflow": "wtnzpeec6"
+ },
+ {
+  "location_id": "ad0a62d2220ea5dd",
+  "verdict": "CONFIRM",
+  "notes": "Elgin Dental Care's own site (431 Summit St #105) runs on Smile Brands' CMS (smilebrandscms.wpenginepowered.com), links to smilebrands.com/careers, and carries the DSO independent-contractor disclaimer; Smile Brands' locations page lists it as an affiliate. Smile Brands is a documented DSO PE-owned by Gryphon Investors (2024) \u2014 independently confirmed. No name collision with nearby Summit St practices.",
+  "unit": "laneA_204",
+  "workflow": "wtnzpeec6"
+ },
+ {
+  "location_id": "4144f39d7be2611c",
+  "verdict": "CONFIRM",
+  "notes": "DEXTER DENTAL LLC (NPI 1942462080) is at 47 Clock Tower Plaza, Elgin, phone 847-695-8780 \u2014 an exact address AND phone match to Familia Dental's Elgin locator; it is the friendly-PC operating entity (sibling 'Dexter Dental 3 LLC', Schaumburg corporate mailing address). Familia Dental Group Holdings is PE-backed by The Halifax Group (recap April 2016) \u2014 independently confirmed via Halifax, Business Wire, PitchBook, and Becker's. Publicly branded Familia Dental, so branded_dso is correct.",
+  "unit": "laneA_204",
+  "workflow": "wtnzpeec6"
+ },
+ {
+  "location_id": "6cbda89842e392d7",
+  "verdict": "CONFIRM",
+  "notes": "The cited DentalWorks Elgin page lists the exact address 1190 S Randall Rd #102, Elgin IL 60123 plus the friendly-PC entity 'Illinois Dental Providers (Elgin), P.C. (JV)'; independent search confirms Dr. Loretta Davis (practice 'Spring Hill', NPI 1609846005) is at that same address and appears on DentalWorks' own team-member page as a DentalWorks dentist. DentalWorks is a Sonrava Health brand and Sonrava is majority PE-owned by New Mountain Capital since 2012 (confirmed via New Mountain's portfolio page and multiple sources), so the branded_dso tier is genuinely supported.",
+  "unit": "laneA_205",
+  "workflow": "wtnzpeec6"
+ },
+ {
+  "location_id": "b9e995cf85a64d91",
+  "verdict": "CONFIRM",
+  "notes": "Midwest Dental's own locator page places the exact street address (1530 N Randall Rd #100, Elgin, IL 60123) under the Midwest Dental brand as an active office, corroborated independently by Yelp, CareCredit, hours.com and Central Index. Midwest Dental is a top-10 nationwide DSO (230+ offices) acquired by Smile Brands, a Gryphon Investors PE portfolio company \u2014 confirmed by Smile Brands/Gryphon press releases and Group Dentistry Now \u2014 so the branded_dso, PE-sponsored classification is genuine (not dentist-owned, not a name collision, URL live).",
+  "unit": "laneA_206",
+  "workflow": "wtnzpeec6"
+ },
+ {
+  "location_id": "037e83b66bc066ff",
+  "verdict": "CONFIRM",
+  "notes": "celebratingsmiles.com/our-doctors places Dr. Felicia Chu at 750 Fletcher Dr Ste 302, Elgin and labels the practice 'An Imagen Partner Practice' operated by Imagen Dental Partners LLC. Independent search confirms Imagen is a real ~100-practice, multi-state DSO/DPO that is explicitly doctor-led and NOT PE-backed, matching stealth_dso + pe_backed=false.",
+  "unit": "laneA_207",
+  "workflow": "wtnzpeec6"
+ },
+ {
+  "location_id": "41a086c9bd03fa91",
+  "verdict": "CONFIRM",
+  "notes": "GLDP's own locations page lists Fox Valley Dental Spa at 502 E State St, Geneva IL 60134 (the census address), and GLDP's own 2018 news release confirms Sunrise Dental Care at that exact address joined the group. GLDP is a confirmed Shore Capital Partners PE portfolio company, so branded_dso + pe_backed=true holds.",
+  "unit": "laneA_207",
+  "workflow": "wtnzpeec6"
+ },
+ {
+  "location_id": "7dce6e62eb57f08a",
+  "verdict": "CONFIRM",
+  "notes": "Smile Doctors locator confirms 1129 Randall Ct, Geneva now 'Prairie View Orthodontics - Geneva, powered by Smile Doctors'; independent search ties Dr. Dennis Lazzara's orthodontic practice to that exact address (lazzaraortho.com now = Smile Doctors Geneva), so no name collision. Smile Doctors is a THL + Linden Capital PE-backed ortho DSO, confirming branded_dso + pe_backed=true. Note: specialist (ortho) DSO, tracked separately from GP denominator.",
+  "unit": "laneA_207",
+  "workflow": "wtnzpeec6"
+ },
+ {
+  "location_id": "405a2745e7c0923b",
+  "verdict": "DOWNGRADE_T3",
+  "notes": "Webster Dental Care is a real 8-10 office Chicagoland network under 'Webster Dental Management,' but it is demonstrably dentist-owned: founded July 1976 by Dr. Steven Rempas (still Founder/President), described everywhere as family-owned for 46+ years, and a 2020 PR Newswire release casts Webster itself as a dentist-led strategic buyer. No PE sponsor exists in any source (the claim concedes this). A dentist-owned group is not PE-consolidation, so downgrade from stealth_dso to a T3 dentist-owned network. Schaumburg office at 650 E Higgins Rd, 60173 confirmed as a genuine Webster location.",
+  "unit": "laneA_209",
+  "workflow": "wtnzpeec6"
+ },
+ {
+  "location_id": "534c8e9adfa80261",
+  "verdict": "CONFIRM",
+  "notes": "Full ownership chain independently verified. Dr. Vasilios Valis's office at 1320 E American Ln, Schaumburg 60173 operates under the national DentalWorks brand (Yelp/ZocDoc/dentalworks.com team page all tie this exact address to DentalWorks). DentalWorks is a Sonrava Health brand (acquired via Mid-Atlantic Dental Partners per Sonrava/BusinessWire), and Sonrava Health (f.k.a. Western Dental) is listed as a CURRENT New Mountain Capital portfolio company on New Mountain's own page. The cited schaumburg.dentalworks.com URL was DNS-dead at fetch time but is fully corroborated by multiple independent sources; branded_dso tier stands.",
+  "unit": "laneA_209",
+  "workflow": "wtnzpeec6"
+ },
+ {
+  "location_id": "c601a38aca132f41",
+  "verdict": "REFUTE",
+  "notes": "Address/phone-churn false positive. 615 S Randall Rd Ste 110 / (630) 443-6635 is a churned suite reused by successive practices: St. Charles Lifetime Dental (Dr. Zachary Young, now CLOSED) shared this exact phone, and the single stale wellness.com 'Heartland Dental Care' listing attaches to that prior occupant, not the current one. The current occupant, Affordable Dentistry Today, PC, is an independent dentist-owned professional corporation (Dr. George Mathew, Dr. Huliyar Vikash) listed as independent across WebMD, Yelp, Opencare, Practo, Groupon with no Heartland affiliation. A lone aggregator entry sharing a reused phone/address does not establish that THIS practice is a Heartland-branded DSO office.",
+  "unit": "laneA_211",
+  "workflow": "wtnzpeec6"
+ },
+ {
+  "location_id": "45318d816d989388",
+  "verdict": "CONFIRM",
+  "notes": "Midwest Dental's own locator lists 100 S Latham St #202, Sandwich IL 60548 (exact claimed address) as an active Midwest Dental office, and Gryphon's press release confirms Midwest Dental is a DSO owned by Smile Brands, a Gryphon Investors PE portfolio company. Note: the NPI name 'Anchor Dental Center Ltd' is the prior independent occupant (now CLOSED per Yelp Dec 2025) at the same suite; Midwest Dental is the current operator, so this is a DSO takeover at the address, not a name collision or a dentist-owned group.",
+  "unit": "laneA_218",
+  "workflow": "wtnzpeec6"
+ },
+ {
+  "location_id": "a7df858bcf236d7f",
+  "verdict": "CONFIRM",
+  "notes": "350 N Clark St Suite 600 is listed on Dental Dreams' own site footer as 'Dental Dreams Corporate' HQ, and this NPI IS KOS Services LLC \u2014 the confirmed Dental Dreams management/operating entity (Indeed/Handshake/LinkedIn/news). Unambiguously the Dental Dreams corporate entity; branded_dso is correct.",
+  "unit": "laneA_130",
+  "workflow": "wohhaw4ea"
+ },
+ {
+  "location_id": "ae22984236e8c767",
+  "verdict": "CONFIRM",
+  "notes": "Dr. Sara Kim DMD is independently confirmed affiliated with Dental Dreams at 350 N Clark St Ste 600, and the source record's parent_company is KOS SERVICES (the Dental Dreams operator). Employed/affiliated Dental Dreams dentist at the corporate address, not an independent standalone PC; branded_dso supported.",
+  "unit": "laneA_130",
+  "workflow": "wohhaw4ea"
+ },
+ {
+  "location_id": "c103e466fb9c6ac5",
+  "verdict": "CONFIRM",
+  "notes": "On-file address is literally 'c/o kos services 350 n clark st', placing this NPI at the confirmed Dental Dreams corporate HQ; no independent 'Trivedi Dental' practice exists in Chicago. Dental Dreams-affiliated dentist NPI at the DSO corporate/billing address; branded_dso supported.",
+  "unit": "laneA_130",
+  "workflow": "wohhaw4ea"
+ },
+ {
+  "location_id": "5404b210ff43f176",
+  "verdict": "INSUFFICIENT",
+  "notes": "The cited URLs confirm 350 N Clark St Ste 600 is Dental Dreams' corporate HQ (dentaldreams.com/contact footer + BBB), and NPPES shows many staff-dentist NPIs enumerated at that exact suite, so the address genuinely belongs to the Dental Dreams DSO. However, the claim's provider linkage is unverifiable and appears fabricated: NPPES returns ZERO results for 'Byungjin Kang' in IL and ZERO for any 'Kang' in ZIP 60654, the NPI the claim relied on (1730596891) is actually Zia Ullah Khan in Richmond, Indiana, and the only real IL 'Kang' dental org is Kang Dentistry PLLC in Lake Zurich 60047 (different ZIP, independent). Nothing places a 'Kang Dental' entity at the Dental Dreams suite, so the branded_dso tie cannot be confirmed on this evidence.",
+  "unit": "laneA_131",
+  "workflow": "wohhaw4ea"
+ },
+ {
+  "location_id": "89d78c918000e532",
+  "verdict": "DOWNGRADE_T3",
+  "notes": "Address verified genuine (2829 N Lincoln Ave, Chicago 60657 is a real Webster Dental Care of Lakeview office under the brand, with a Webster Dental Management back-office) \u2014 not a name collision, URLs live. However the stealth_dso tier is contradicted: independent sources confirm Webster Dental Care was founded in 1976 by Dr. Steven Rempas DDS and is 'owned by two dentists, without any venture capital partners,' explicitly 'one of the largest dentist-owned dental groups in Chicagoland.' Aptus Exchange is a dental brokerage/advisory intermediary, not a PE sponsor (pe_backed=false confirmed). This is a real multi-location network but demonstrably dentist-owned, so DOWNGRADE_T3, not stealth_dso.",
+  "unit": "laneA_132",
+  "workflow": "wohhaw4ea"
+ },
+ {
+  "location_id": "be34690fc9ff202d",
+  "verdict": "DOWNGRADE_T3",
+  "notes": "The multi-location network is REAL and the address linkage is correct: bluecoraldental.com/locations/ lists 3500 N Lincoln Ave, Chicago 60657 as one of 5 offices, explicitly '(formerly Yummy Dental)' (Dr. Grace Yum's practice rebranded). But there is NO evidence of PE/DSO/management-company control despite checking all Blue Coral pages and GDN/Becker's/PE-Stakeholder deal roundups; the only 'stealth' basis is 'multi-location + no owner disclosed,' which equally fits a dentist-owned expansion. Positive doctor-led signals (founder-owner Grace Yum who owned & sold, Drs. Talati/Lin developed the Park Ridge office, ~19-dentist pediatric/ortho roster). It is also a pediatric+orthodontics SPECIALIST practice, which is excluded from the GP corporate floor anyway. Downgrading rather than confirming a corporate stealth_dso tier; residual caveat is that explicit ownership is not disclosed on any page.",
+  "unit": "laneA_134",
+  "workflow": "wohhaw4ea"
+ },
+ {
+  "location_id": "25d611ece46470e6",
+  "verdict": "CONFIRM",
+  "notes": "Great Lakes Dental Partners' own locations page lists 'Oradent Associates' at the exact address 6258 N Lincoln Ave, Chicago, IL 60659, phone (773) 478-5520 \u2014 the phone matches independent listings (Yelp/Zocdoc) for this same practice, ruling out a name collision. GLDP is independently confirmed as a Shore Capital Partners (Chicago PE firm) portfolio company / PE-backed DSO with 35+ locations (shorecp.com, Becker's, PR Newswire), not a dentist-owned group. Branded_dso tier is supported.",
+  "unit": "laneA_136",
+  "workflow": "wohhaw4ea"
+ },
+ {
+  "location_id": "ea65a2d2272eb8fd",
+  "verdict": "DOWNGRADE_T3",
+  "notes": "Brand link is real: both cited Dental 360 pages list the exact address 5961 N Lincoln Ave Ste #103, 60659 as 'Dental 360 - Lincoln and Preston,' and the 'Pulaski' in the LLC name matches the operator's affiliated entity 'Brite Dental 59 Pulaski PLLC' (no collision). However Dental 360 is a dentist-owned multi-location group, not a corporate/PE DSO: the same office operates as Brite Dental P.C. owned by Dr. Fadi Aqel DDS, and Dental 360 Bucktown LLC's principal is Dr. Mohammed Parvez DMD; a targeted search found no PE acquisition, DSO platform, or corporate parent for Dental 360 Chicago. Real branded network but demonstrably dentist-owned -> T3.",
+  "unit": "laneA_139",
+  "workflow": "wohhaw4ea"
+ },
+ {
+  "location_id": "77b28a39cb951124",
+  "verdict": "DOWNGRADE_T3",
+  "notes": "Cited evidence genuinely places 313 E. River Oaks Dr, Calumet City 60409 among 8 Family Dental Care offices (brand locator + office page both confirm the exact address; no collision, live URLs). But Family Dental Care is demonstrably dentist-owned, NOT a PE/corporate DSO: founded 1986 and still led by founder-dentist Dr. Alexander G. Alemis DDS, self-described and press-described as the 'largest PRIVATELY-owned dental group/DSO in Chicago' (Group Dentistry Now 2021; Hellenic News), managed by Alemis's own company Upstat Dental Solutions, with no documented PE sponsor. It is a real multi-location branded network but founder/family-owned, so it should not count toward PE consolidation.",
+  "unit": "laneA_141",
+  "workflow": "wohhaw4ea"
+ },
+ {
+  "location_id": "d927a7c5b87e7f7e",
+  "verdict": "CONFIRM",
+  "notes": "DentalWorks' own locator plus Yelp/BBB/Facebook/Waze confirm 4839 Cal Sag Rd, Crestwood is branded 'DentalWorks Rivercrest', and the DB name 'Luckett Michael' matches the friendly-PC entity 'Michael A. Luckett, D.M.D. & Associates (Rivercrest), Ltd. (JV)' (not a collision). DentalWorks is a confirmed Sonrava Health brand (Sonrava acquired Mid-Atlantic Dental Partners 2022; New Mountain Capital lists Sonrava as a portfolio company), so branded_dso holds. Only defect: claimed ZIP 60418 vs actual 60445, but both are Crestwood and the street+name match resolves it.",
+  "unit": "laneA_142",
+  "workflow": "wohhaw4ea"
+ },
+ {
+  "location_id": "2c50f73fa45c9fb7",
+  "verdict": "CONFIRM",
+  "notes": "Aspen Dental's own locator, Yelp, and CareCredit confirm 13442 S Cicero Ave, Crestwood is an active Aspen Dental office. Aspen Dental (ADMI) is an unambiguous national branded DSO, PE-controlled by Leonard Green & Partners and Ares Management (American Securities historically), so branded_dso is correct. Minor ZIP ambiguity (60445/60418, both Crestwood) does not affect identity; no collision or dentist-owned grounds for downgrade.",
+  "unit": "laneA_142",
+  "workflow": "wohhaw4ea"
+ },
+ {
+  "location_id": "ccd94a511fe6d32a",
+  "verdict": "CONFIRM",
+  "notes": "Aspen Dental's own locator page resolves live and places the exact claimed address (17727 Halsted Street, Homewood, IL 60430) under the Aspen Dental brand; independent Yelp/Birdeye/directory results corroborate the same brand at the same address (no name collision, live URL). Aspen (ADMI) is a nationally known PE-sponsored branded DSO; the friendly-PC 'independently owned by a licensed dentist' language is the standard DSO structure and does not warrant DOWNGRADE_T3.",
+  "unit": "laneA_146",
+  "workflow": "wohhaw4ea"
+ },
+ {
+  "location_id": "40a5a5b583d4ae40",
+  "verdict": "CONFIRM",
+  "notes": "Aspen's own locator confirms 17727 Halsted St, Homewood, IL 60430 as a branded Aspen Dental office (ZIP matches claim); Yelp/CareCredit/Birdeye independently show it active as of Feb 2026. Cited Leonard Green page confirms Ares Management + Leonard Green PE-controlled ADMI. 'SMS Dental LLC'/Dr. Sean Schafer is the standard Aspen friendly-PC entity, i.e. the classic PE-DSO structure \u2014 branded_dso is correct.",
+  "unit": "laneA_147",
+  "workflow": "wohhaw4ea"
+ },
+ {
+  "location_id": "08d34f2671858cfd",
+  "verdict": "CONFIRM",
+  "notes": "Destiny Dental Care's Lansing Square page explicitly lists 'Pro Dental IL \u2013 Chad Wise P.C.' and gives 17653 S. Torrence Ave, Lansing, IL 60438 (ZIP matches claim); independent Yelp/Yahoo results confirm Pro Dental IL-Chad Wise PC at that same address is the friendly-PC for Destiny Dental Lansing. ProSmile's own release confirms TriSpan-backed ProSmile completed its Destiny Dental acquisition in Aug 2024, so it is not dentist-owned \u2014 branded_dso is correct.",
+  "unit": "laneA_147",
+  "workflow": "wohhaw4ea"
+ },
+ {
+  "location_id": "bd4431e9f26ebdc5",
+  "verdict": "CONFIRM",
+  "notes": "CMS NPPES registry confirms NPI 1962793943 (org NPI, 'MOBILE DENTAL CARE OF ILLINOIS PC', 3716 217th St, Matteson IL 60443) has authorized official Frank Charles Camarda Jr., title 'Manager', prefix 'Mr.' (no DDS) -- the same non-dentist businessman the WI OCI exam report names as President/CEO and 18.75% trust-owner of the Camarda+Sawicz SeniorDent/SenovaCare family enterprise, which delivers dentistry via contracted dentist PCs (friendly-PC structure). This is a non-dentist-controlled multi-location mobile-dental group (corroborated by RocketReach, ZoomInfo srdent.com, and a sibling entity 'National Mobile Dental Care Inc' in Camarda's Tinley Park), matching stealth_dso; it is demonstrably NOT dentist-owned (so not DOWNGRADE_T3) and not a name collision. Minor caveat: OCI holding chart doesn't literally list this exact PC under SenovaCare, but Camarda's control is federally verified; no PE evidence, consistent with the claim.",
+  "unit": "laneA_148",
+  "workflow": "wohhaw4ea"
+ },
+ {
+  "location_id": "3b0abbde8d45b729",
+  "verdict": "CONFIRM",
+  "notes": "The brand's own locator confirms 15800 S Harlem Ave, Orland Park IL 60462 is an Affordable Dentures & Implants branded office (friendly-PC footer: 'licensed trade name of Affordable Dentures & Implants - Orland Park III, P.C.'). Affordable Care is a national PE-backed DSO (Berkshire 2015, then Harvest Partners/PSP Investments 2021, ~$2.7B EV), so branded_dso is correct; the classifier's 'IV' vs the live 'III' PC numbering is a trivial same-address entity variance, not a refutation.",
+  "unit": "laneA_157",
+  "workflow": "wohhaw4ea"
+ },
+ {
+  "location_id": "4dc898b4fd9d3b2c",
+  "verdict": "DOWNGRADE_T3",
+  "notes": "Address 13303-A S Ridgeland Ave (phone 708-371-8400) is genuinely on American Dental's atooth.com corporate locator and matches the multi-dentist Mehta/Alia/Abdeddin/Taneva group, so the branded multi-location network is real and correctly identified. However the entity is 'American Dental Associates LTD' \u2014 a dentist-owned Illinois professional corporation (est. 1996) led by owner-dentist Dr. Dhiraj Sharma (email drsharma@atooth.com, family in-house General Counsel Sagar Sharma), with zero evidence of PE backing, an MSO/management company, or a corporate parent. It is a dentist-owned group practice, not a DSO consolidation target \u2014 hence downgrade to T3, not branded_dso.",
+  "unit": "laneA_159",
+  "workflow": "wohhaw4ea"
+ },
+ {
+  "location_id": "62e7692968032804",
+  "verdict": "CONFIRM",
+  "notes": "Aspen Dental's own locator page confirms 15894 S LaGrange Rd, Orland Park, IL 60467 (ZIP matches) as an active branded office (hours, phone 708-737-5325), corroborated by Yelp/Birdeye. Aspen Dental is a well-documented national branded DSO majority-owned (~80%) by PE firms Leonard Green & Partners and Ares Management; the cited press release says 'increase equity ownership' (a 2017 recap) but independent search confirms the PE majority control, so branded_dso stands with no name collision or address mismatch.",
+  "unit": "laneA_161",
+  "workflow": "wohhaw4ea"
+ },
+ {
+  "location_id": "99b7b4ad619fddf4",
+  "verdict": "CONFIRM",
+  "notes": "Dental Dreams' own locator (both cited URLs, live) lists this exact office at 2254 S Cicero Ave, Cicero IL 60804, phone (708) 656-2222; independent directories (Practo, denTEL, CareCredit, Yahoo) place 'Dental Experts LLC'/'Dental Experts Cicero LLC' at the identical street/phone, and ZoomInfo/BBB tie 'Dental Experts, LLC' to Dental Dreams, a genuine ~74-location multi-state DSO. Address, ZIP, and phone match exactly (record's 706 area code is a one-digit typo of 708); no name collision, no dentist-owned-group downgrade warranted.",
+  "unit": "laneA_166",
+  "workflow": "wohhaw4ea"
+ },
+ {
+  "location_id": "3aebe48ff7c42bdf",
+  "verdict": "DOWNGRADE_T3",
+  "notes": "The cited locator page genuinely places 2803 W 95th St, Evergreen Park 60805 under the Family Dental Care brand (a real 8-office Chicago Southland/NW Indiana network), and the EIN 363554595 cluster is confirmed across 60453/60617/60805 \u2014 so the network is real, but it is demonstrably DENTIST-owned, not a DSO/PE platform. The brand's own site footer reads '(c)2026 Dr. Alexander G. Alemis and Family Dental Care', independent sources describe it as 'the largest privately owned dental group in Chicago' founded by Dr. Alemis in 1986 with no parent company/DSO/PE, and a sibling location at the same EIN (Oak Lawn Dental Care) is already internally flagged ownership_tier 'dentist_multi'. 'branded_dso' overstates it; correct tier is a dentist-owned multi-location group (T3).",
+  "unit": "laneA_167",
+  "workflow": "wohhaw4ea"
+ },
+ {
+  "location_id": "3d0e7f3e036f5842",
+  "verdict": "CONFIRM",
+  "notes": "All four cited URLs verify: BBB confirms 366 W Army Trail Rd #310A / (630) 686-1328 operated as 'DentalWorks in Bloomingdale' since ~2009, and sonrava.com/brands confirms DentalWorks is a Sonrava Health brand (PE-backed). The current storefront 'Dentist in Bloomingdale' sits at the identical suite+phone, hides all dentist names, inherited DentalWorks' patients, and independently displays ADSO ('Association of Dental Support Organizations') and 'Women in DSO' membership badges on its own site -- refuting the 'independent solo took over' alternative and corroborating a DSO de-brand. Caveat: DentalWorks' own listings for this address are now dead (subdomain does not resolve; /offices/illinois/bloomingdale/ 404s; Yelp flags DentalWorks 'MOVED'), so I cannot 100% exclude that a different DSO now operates it -- but it remains a corporate/DSO location, not independent, so the branded_dso tier holds.",
+  "unit": "laneA_173",
+  "workflow": "wohhaw4ea"
+ }
+]
