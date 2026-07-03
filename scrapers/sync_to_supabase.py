@@ -949,6 +949,7 @@ _STRATEGY_MAP = {
 # behind --reconcile-deals.
 GHOST_DELETE_FLOOR = 100  # refuse to delete more than this many target_name IS NOT NULL ghosts in one pass
 GHOST_DELETE_FLOOR_NULL_TARGET = 50  # tighter floor for the NULL-target fallback pass — its key is fuzzier
+DEAL_ID_GHOST_DELETE_FLOOR = 250  # explicit ID-based reconciliation guard
 
 
 def _null_target_key(source, platform, deal_date, source_url, raw_text):
@@ -1096,6 +1097,71 @@ def _reconcile_deals(sqlite_session, pg_engine, dry_run=False):
     log.info("[deals/null-target] Deleted %d ghost rows from Supabase", deleted)
     deleted_total += deleted
     return deleted_total
+
+
+def _reconcile_deals_by_id(sqlite_session, pg_engine, dry_run=False, max_delete=DEAL_ID_GHOST_DELETE_FLOOR):
+    """Delete Supabase deal rows whose primary-key id is absent from SQLite.
+
+    The older reconciliation compares composite deal keys because it predates
+    some scraper rewrites that duplicated rows under new IDs. For deliberate
+    quality cleanup, the primary key is the safest source-of-truth check:
+    if SQLite no longer has deal id X, Supabase should not show id X either.
+    """
+    log.info("=" * 60)
+    log.info("RECONCILE deals BY ID: SQLite is source of truth")
+    log.info("=" * 60)
+
+    sqlite_ids = {row[0] for row in sqlite_session.query(Deal.id).all()}
+    log.info("[deals/by-id] SQLite has %d deal ids", len(sqlite_ids))
+
+    with pg_engine.connect() as conn:
+        rows = conn.execute(
+            text("SELECT id, source, platform_company, target_name, deal_date FROM deals ORDER BY id")
+        ).fetchall()
+
+    pg_ids = {row[0] for row in rows}
+    ghosts = [row for row in rows if row[0] not in sqlite_ids]
+    missing_from_pg = sorted(sqlite_ids - pg_ids)
+
+    log.info("[deals/by-id] Supabase has %d deal ids", len(pg_ids))
+    if missing_from_pg:
+        log.warning(
+            "[deals/by-id] %d SQLite deal ids are missing from Supabase. "
+            "Run --tables deals after reconciliation if this is unexpected.",
+            len(missing_from_pg),
+        )
+        log.warning("[deals/by-id] Missing sample: %s", missing_from_pg[:20])
+
+    if not ghosts:
+        log.info("[deals/by-id] No ghost rows — Supabase is in sync with SQLite by id")
+        return 0
+
+    log.warning("[deals/by-id] Found %d Supabase ghost ids absent from SQLite", len(ghosts))
+    for rid, source, platform, target, dd in ghosts[:20]:
+        log.warning("  ghost id=%s src=%s %s | %s | %s", rid, source, platform, target, dd)
+    if len(ghosts) > 20:
+        log.warning("  ... and %d more", len(ghosts) - 20)
+
+    if len(ghosts) > max_delete:
+        log.error(
+            "[deals/by-id] %d ghosts exceeds max delete guard (%d) — refusing to delete.",
+            len(ghosts), max_delete,
+        )
+        return 0
+
+    if dry_run:
+        log.info("[deals/by-id] --dry-run: would delete %d ghost rows", len(ghosts))
+        return 0
+
+    ghost_ids = [row[0] for row in ghosts]
+    with pg_engine.begin() as conn:
+        result = conn.execute(
+            text("DELETE FROM deals WHERE id = ANY(:ids)"),
+            {"ids": ghost_ids},
+        )
+        deleted = result.rowcount or 0
+    log.info("[deals/by-id] Deleted %d ghost rows from Supabase", deleted)
+    return deleted
 
 
 def _check_script_integrity():
@@ -1328,14 +1394,17 @@ def run(tables=None):
         pg_engine.dispose()
 
 
-def _reconcile_only(dry_run=False):
+def _reconcile_only(dry_run=False, by_id=False, max_delete=DEAL_ID_GHOST_DELETE_FLOOR):
     """Standalone reconciliation entrypoint (no full sync)."""
     _acquire_sync_lock()
     log.info("Reconciliation-only mode (no incremental sync will run)")
     pg_engine = _get_pg_engine()
     sqlite_session = get_session()
     try:
-        _reconcile_deals(sqlite_session, pg_engine, dry_run=dry_run)
+        if by_id:
+            _reconcile_deals_by_id(sqlite_session, pg_engine, dry_run=dry_run, max_delete=max_delete)
+        else:
+            _reconcile_deals(sqlite_session, pg_engine, dry_run=dry_run)
     finally:
         sqlite_session.close()
         pg_engine.dispose()
@@ -1351,6 +1420,18 @@ if __name__ == "__main__":
              "Skips the regular sync entirely.",
     )
     parser.add_argument(
+        "--reconcile-deals-by-id",
+        action="store_true",
+        help="One-shot ghost-row cleanup keyed strictly by deals.id. "
+             "Use after deliberate local deal deletions.",
+    )
+    parser.add_argument(
+        "--max-deal-ghosts",
+        type=int,
+        default=DEAL_ID_GHOST_DELETE_FLOOR,
+        help="Safety guard for --reconcile-deals-by-id deletes.",
+    )
+    parser.add_argument(
         "--dry-run",
         action="store_true",
         help="With --reconcile-deals: show what would be deleted without doing it.",
@@ -1363,7 +1444,9 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    if args.reconcile_deals:
+    if args.reconcile_deals_by_id:
+        _reconcile_only(dry_run=args.dry_run, by_id=True, max_delete=args.max_deal_ghosts)
+    elif args.reconcile_deals:
         _reconcile_only(dry_run=args.dry_run)
     else:
         tables = [t.strip() for t in args.tables.split(",") if t.strip()] if args.tables else None

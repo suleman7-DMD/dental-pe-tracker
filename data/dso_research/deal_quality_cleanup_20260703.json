@@ -1,0 +1,1071 @@
+{
+  "_meta": {
+    "backup_path": "data/backups/dental_pe_tracker_pre_deal_quality_cleanup_20260703.db",
+    "generated_at": "2026-07-03T17:39:36Z",
+    "mode": "apply",
+    "policy": "Delete structurally unverifiable deal-flow rows only: rows with no source_url, placeholder platforms, or source-less/target-less PitchBook imports.",
+    "script": "scrapers/cleanup_low_quality_deals.py"
+  },
+  "after": {
+    "by_source": [
+      {
+        "blank_source_url": 0,
+        "blank_target": 9,
+        "latest_deal_date": "2026-07-02",
+        "rows": 23,
+        "source": "beckers"
+      },
+      {
+        "blank_source_url": 0,
+        "blank_target": 0,
+        "latest_deal_date": "2026-05-01",
+        "rows": 3,
+        "source": "beckers+gdn"
+      },
+      {
+        "blank_source_url": 0,
+        "blank_target": 2115,
+        "latest_deal_date": "2026-06-01",
+        "rows": 2472,
+        "source": "gdn"
+      },
+      {
+        "blank_source_url": 0,
+        "blank_target": 176,
+        "latest_deal_date": "2025-10-01",
+        "rows": 329,
+        "source": "pesp"
+      }
+    ],
+    "total_deals": 2827
+  },
+  "before": {
+    "by_source": [
+      {
+        "blank_source_url": 0,
+        "blank_target": 9,
+        "latest_deal_date": "2026-07-02",
+        "rows": 23,
+        "source": "beckers"
+      },
+      {
+        "blank_source_url": 0,
+        "blank_target": 0,
+        "latest_deal_date": "2026-05-01",
+        "rows": 3,
+        "source": "beckers+gdn"
+      },
+      {
+        "blank_source_url": 1,
+        "blank_target": 2132,
+        "latest_deal_date": "2026-06-01",
+        "rows": 2630,
+        "source": "gdn"
+      },
+      {
+        "blank_source_url": 0,
+        "blank_target": 176,
+        "latest_deal_date": "2025-10-01",
+        "rows": 329,
+        "source": "pesp"
+      },
+      {
+        "blank_source_url": 10,
+        "blank_target": 10,
+        "latest_deal_date": "2026-03-02",
+        "rows": 10,
+        "source": "pitchbook"
+      }
+    ],
+    "total_deals": 2995
+  },
+  "candidate_count": 168,
+  "candidate_ids": [
+    2515,
+    2554,
+    2516,
+    2517,
+    2518,
+    2519,
+    105,
+    106,
+    2520,
+    2521,
+    2522,
+    2523,
+    126,
+    2524,
+    168,
+    189,
+    193,
+    194,
+    201,
+    2570,
+    3238,
+    3240,
+    3242,
+    2700,
+    241,
+    2705,
+    277,
+    320,
+    325,
+    348,
+    3235,
+    376,
+    384,
+    3233,
+    425,
+    428,
+    439,
+    2595,
+    455,
+    465,
+    466,
+    468,
+    470,
+    477,
+    478,
+    485,
+    492,
+    493,
+    2726,
+    517,
+    2739,
+    540,
+    553,
+    554,
+    591,
+    592,
+    659,
+    672,
+    688,
+    689,
+    712,
+    2757,
+    721,
+    729,
+    767,
+    770,
+    772,
+    776,
+    2644,
+    4038,
+    784,
+    785,
+    802,
+    803,
+    810,
+    827,
+    858,
+    861,
+    862,
+    865,
+    870,
+    2763,
+    3219,
+    3597,
+    887,
+    928,
+    934,
+    2774,
+    936,
+    954,
+    968,
+    4043,
+    1042,
+    2784,
+    2786,
+    2787,
+    1070,
+    1086,
+    1094,
+    1095,
+    1096,
+    2792,
+    1102,
+    1119,
+    1126,
+    2806,
+    1157,
+    1169,
+    2808,
+    2810,
+    3248,
+    1218,
+    1219,
+    2817,
+    2818,
+    2819,
+    1230,
+    1250,
+    1251,
+    1253,
+    1255,
+    1256,
+    1257,
+    1281,
+    2838,
+    4053,
+    3198,
+    3204,
+    3207,
+    3185,
+    3192,
+    3158,
+    1287,
+    1288,
+    1293,
+    2865,
+    3115,
+    3093,
+    3097,
+    3099,
+    3110,
+    3060,
+    3079,
+    3081,
+    3031,
+    2993,
+    2954,
+    2955,
+    2956,
+    2958,
+    2959,
+    1322,
+    2662,
+    2663,
+    1330,
+    1346,
+    2883,
+    2931,
+    2914,
+    2925,
+    2927,
+    3950,
+    4067,
+    4068,
+    2901,
+    3960,
+    2888,
+    3970
+  ],
+  "candidate_sample": [
+    {
+      "deal_date": "2026-03-02",
+      "deal_type": "buyout",
+      "delete_reasons": [
+        "missing_source_url",
+        "pitchbook_no_source_no_target"
+      ],
+      "id": 2515,
+      "notes": "employees: 106.0",
+      "pe_sponsor": "Bain Capital Tech Opportunities (Michael Grandfield)",
+      "platform_company": "DoseSpot",
+      "source": "pitchbook",
+      "source_url": null,
+      "target_city": null,
+      "target_name": null,
+      "target_state": "MA"
+    },
+    {
+      "deal_date": "2026-03-01",
+      "deal_type": "partnership",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 2554,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-deals-march-2026/",
+      "target_city": null,
+      "target_name": "Today's Dental Network",
+      "target_state": "FL"
+    },
+    {
+      "deal_date": "2026-02-27",
+      "deal_type": "buyout",
+      "delete_reasons": [
+        "missing_source_url",
+        "pitchbook_no_source_no_target"
+      ],
+      "id": 2516,
+      "notes": "employees: 10.0",
+      "pe_sponsor": "Onex",
+      "platform_company": "TFB Advisors (Book of Business of an Advisor Team)",
+      "source": "pitchbook",
+      "source_url": null,
+      "target_city": null,
+      "target_name": null,
+      "target_state": "KS"
+    },
+    {
+      "deal_date": "2026-02-17",
+      "deal_type": "buyout",
+      "delete_reasons": [
+        "missing_source_url",
+        "pitchbook_no_source_no_target"
+      ],
+      "id": 2517,
+      "notes": null,
+      "pe_sponsor": "GarMark Partners",
+      "platform_company": "Julia Cerny, DMD",
+      "source": "pitchbook",
+      "source_url": null,
+      "target_city": null,
+      "target_name": null,
+      "target_state": "NY"
+    },
+    {
+      "deal_date": "2026-02-10",
+      "deal_type": "buyout",
+      "delete_reasons": [
+        "missing_source_url",
+        "pitchbook_no_source_no_target"
+      ],
+      "id": 2518,
+      "notes": null,
+      "pe_sponsor": "Centerbridge Partners",
+      "platform_company": "The Specialty Center for Periodontics and Dental Implants",
+      "source": "pitchbook",
+      "source_url": null,
+      "target_city": null,
+      "target_name": null,
+      "target_state": "GA"
+    },
+    {
+      "deal_date": "2026-02-02",
+      "deal_type": "buyout",
+      "delete_reasons": [
+        "missing_source_url",
+        "pitchbook_no_source_no_target"
+      ],
+      "id": 2519,
+      "notes": "employees: 17.0",
+      "pe_sponsor": "Latticework Capital Management",
+      "platform_company": "World Of Smiles Pediatric Dentistry",
+      "source": "pitchbook",
+      "source_url": null,
+      "target_city": null,
+      "target_name": null,
+      "target_state": "OR"
+    },
+    {
+      "deal_date": "2026-02-01",
+      "deal_type": "growth",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 105,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-deals-february/",
+      "target_city": null,
+      "target_name": "Sanford Dental",
+      "target_state": "AL"
+    },
+    {
+      "deal_date": "2026-02-01",
+      "deal_type": "partnership",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 106,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-deals-february/",
+      "target_city": null,
+      "target_name": "Trivette Osborne & Associates",
+      "target_state": "TN"
+    },
+    {
+      "deal_date": "2026-02-01",
+      "deal_type": "buyout",
+      "delete_reasons": [
+        "missing_source_url",
+        "pitchbook_no_source_no_target"
+      ],
+      "id": 2520,
+      "notes": null,
+      "pe_sponsor": "GarMark Partners",
+      "platform_company": "Suffolk Pediatric Dentistry & Orthodontics",
+      "source": "pitchbook",
+      "source_url": null,
+      "target_city": null,
+      "target_name": null,
+      "target_state": "NY"
+    },
+    {
+      "deal_date": "2026-01-26",
+      "deal_type": "buyout",
+      "delete_reasons": [
+        "missing_source_url",
+        "pitchbook_no_source_no_target"
+      ],
+      "id": 2521,
+      "notes": null,
+      "pe_sponsor": "Dental365 (Scott Asnis)",
+      "platform_company": "Blank Dental Group",
+      "source": "pitchbook",
+      "source_url": null,
+      "target_city": null,
+      "target_name": null,
+      "target_state": "OH"
+    },
+    {
+      "deal_date": "2026-01-12",
+      "deal_type": "buyout",
+      "delete_reasons": [
+        "missing_source_url",
+        "pitchbook_no_source_no_target"
+      ],
+      "id": 2522,
+      "notes": null,
+      "pe_sponsor": "Dental365 (Scott Asnis)",
+      "platform_company": "Laskey Dental Care",
+      "source": "pitchbook",
+      "source_url": null,
+      "target_city": null,
+      "target_name": null,
+      "target_state": "OH"
+    },
+    {
+      "deal_date": "2026-01-05",
+      "deal_type": "buyout",
+      "delete_reasons": [
+        "missing_source_url",
+        "pitchbook_no_source_no_target"
+      ],
+      "id": 2523,
+      "notes": "employees: 18.0",
+      "pe_sponsor": "Dental365 (Scott Asnis)",
+      "platform_company": "Great Smiles Family Dentistry",
+      "source": "pitchbook",
+      "source_url": null,
+      "target_city": null,
+      "target_name": null,
+      "target_state": "OH"
+    },
+    {
+      "deal_date": "2026-01-01",
+      "deal_type": "partnership",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 126,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-dental-mergers-2/",
+      "target_city": null,
+      "target_name": "Tuscarawas Oral Surgery and Implant Center",
+      "target_state": null
+    },
+    {
+      "deal_date": "2025-12-09",
+      "deal_type": "buyout",
+      "delete_reasons": [
+        "missing_source_url",
+        "pitchbook_no_source_no_target"
+      ],
+      "id": 2524,
+      "notes": "employees: 7.0",
+      "pe_sponsor": "Dandy (Cong Yu)",
+      "platform_company": "Neem",
+      "source": "pitchbook",
+      "source_url": null,
+      "target_city": null,
+      "target_name": null,
+      "target_state": "NY"
+    },
+    {
+      "deal_date": "2025-12-01",
+      "deal_type": "add-on",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 168,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-mergers-dec-2025/",
+      "target_city": null,
+      "target_name": "Deborah A",
+      "target_state": "SC"
+    },
+    {
+      "deal_date": "2025-11-01",
+      "deal_type": "add-on",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 189,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-deals-november-2025/",
+      "target_city": null,
+      "target_name": "Bear River Dental",
+      "target_state": "WY"
+    },
+    {
+      "deal_date": "2025-11-01",
+      "deal_type": "add-on",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 193,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-deals-november-2025/",
+      "target_city": null,
+      "target_name": "Squire Dental",
+      "target_state": "IL"
+    },
+    {
+      "deal_date": "2025-11-01",
+      "deal_type": "partnership",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 194,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-deals-november-2025/",
+      "target_city": null,
+      "target_name": "Bright Healthy Smiles",
+      "target_state": "AL"
+    },
+    {
+      "deal_date": "2025-11-01",
+      "deal_type": "add-on",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 201,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-deals-november-2025/",
+      "target_city": null,
+      "target_name": "Dr. George Papasikos",
+      "target_state": null
+    },
+    {
+      "deal_date": "2025-11-01",
+      "deal_type": "add-on",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 2570,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-deals-november-2025/",
+      "target_city": null,
+      "target_name": "Nate Thompson and Carlo Ronci",
+      "target_state": "IL"
+    },
+    {
+      "deal_date": "2025-11-01",
+      "deal_type": "partnership",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 3238,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-deals-november-2025/",
+      "target_city": null,
+      "target_name": "Today's Dental Network",
+      "target_state": "FL"
+    },
+    {
+      "deal_date": "2025-11-01",
+      "deal_type": "add-on",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 3240,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-deals-november-2025/",
+      "target_city": null,
+      "target_name": "Independence Dental Services",
+      "target_state": "FL"
+    },
+    {
+      "deal_date": "2025-11-01",
+      "deal_type": "add-on",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 3242,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-deals-november-2025/",
+      "target_city": null,
+      "target_name": "Carlo Ronci and Tony Reeder",
+      "target_state": "IL"
+    },
+    {
+      "deal_date": "2025-10-01",
+      "deal_type": "partnership",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 2700,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-deals-oct-2025/",
+      "target_city": null,
+      "target_name": "First Choice Dental Centers",
+      "target_state": null
+    },
+    {
+      "deal_date": "2025-09-01",
+      "deal_type": "partnership",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 241,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-deals-september-2025/",
+      "target_city": null,
+      "target_name": "The Scarsdale Dentist",
+      "target_state": "NY"
+    },
+    {
+      "deal_date": "2025-09-01",
+      "deal_type": "add-on",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 2705,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-deals-september-2025/",
+      "target_city": null,
+      "target_name": "Nemicik & Beers Family Dentistry",
+      "target_state": "OH"
+    },
+    {
+      "deal_date": "2025-07-01",
+      "deal_type": "add-on",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 277,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-deals-july-2025/",
+      "target_city": null,
+      "target_name": "Empire Dental Arts",
+      "target_state": "OH"
+    },
+    {
+      "deal_date": "2025-06-01",
+      "deal_type": "add-on",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 320,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-deals-june-2025/",
+      "target_city": null,
+      "target_name": "The Bank Dental Practice in Manchester",
+      "target_state": null
+    },
+    {
+      "deal_date": "2025-05-01",
+      "deal_type": "add-on",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 325,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-acquisitions-may-2025/",
+      "target_city": null,
+      "target_name": "Little Gators Pediatric Dentistry",
+      "target_state": "WI"
+    },
+    {
+      "deal_date": "2025-05-01",
+      "deal_type": "add-on",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 348,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-acquisitions-may-2025/",
+      "target_city": null,
+      "target_name": "Eastwood Dentalcare",
+      "target_state": null
+    },
+    {
+      "deal_date": "2025-05-01",
+      "deal_type": "partnership",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 3235,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-acquisitions-may-2025/",
+      "target_city": null,
+      "target_name": "Winter Haven Oral Surgery",
+      "target_state": "MD"
+    },
+    {
+      "deal_date": "2025-04-01",
+      "deal_type": "add-on",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 376,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dental-business/",
+      "target_city": null,
+      "target_name": "Britely Dentures & Implants",
+      "target_state": "WI"
+    },
+    {
+      "deal_date": "2025-04-01",
+      "deal_type": "add-on",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 384,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dental-business/",
+      "target_city": null,
+      "target_name": "RA Arrowsmith is a three-surgery",
+      "target_state": null
+    },
+    {
+      "deal_date": "2025-04-01",
+      "deal_type": "partnership",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 3233,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dental-business/",
+      "target_city": null,
+      "target_name": "Oral and Maxillofacial Surgery of Westfield",
+      "target_state": "NJ"
+    },
+    {
+      "deal_date": "2025-02-01",
+      "deal_type": "add-on",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 425,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-deals-2/",
+      "target_city": null,
+      "target_name": "JB Dental Lab",
+      "target_state": "AZ"
+    },
+    {
+      "deal_date": "2025-02-01",
+      "deal_type": "add-on",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 428,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-deals-2/",
+      "target_city": null,
+      "target_name": "Neptune Dental Care",
+      "target_state": "NJ"
+    },
+    {
+      "deal_date": "2025-02-01",
+      "deal_type": "partnership",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 439,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-deals-2/",
+      "target_city": null,
+      "target_name": "Engel Institute and Engel Dental Center",
+      "target_state": null
+    },
+    {
+      "deal_date": "2025-02-01",
+      "deal_type": "partnership",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 2595,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-deals-2/",
+      "target_city": null,
+      "target_name": "Engel Institute",
+      "target_state": null
+    },
+    {
+      "deal_date": "2025-01-01",
+      "deal_type": "partnership",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 455,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-acquisitions/",
+      "target_city": null,
+      "target_name": "Dr. Bob Spennato",
+      "target_state": "PA"
+    },
+    {
+      "deal_date": "2025-01-01",
+      "deal_type": "growth",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 465,
+      "notes": null,
+      "pe_sponsor": "Shore Capital Partners",
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-acquisitions/",
+      "target_city": null,
+      "target_name": "Bivens Dentistry",
+      "target_state": "TN"
+    },
+    {
+      "deal_date": "2025-01-01",
+      "deal_type": "add-on",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 466,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-acquisitions/",
+      "target_city": null,
+      "target_name": "Eastern Dental Management",
+      "target_state": "NJ"
+    },
+    {
+      "deal_date": "2025-01-01",
+      "deal_type": "growth",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 468,
+      "notes": null,
+      "pe_sponsor": "KKR",
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-acquisitions/",
+      "target_city": null,
+      "target_name": null,
+      "target_state": null
+    },
+    {
+      "deal_date": "2024-12-01",
+      "deal_type": "add-on",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 470,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dental-acquisitions/",
+      "target_city": null,
+      "target_name": "Schmitt Dental",
+      "target_state": "TN"
+    },
+    {
+      "deal_date": "2024-12-01",
+      "deal_type": "add-on",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 477,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dental-acquisitions/",
+      "target_city": null,
+      "target_name": "Smiles by Schuberth",
+      "target_state": "WI"
+    },
+    {
+      "deal_date": "2024-12-01",
+      "deal_type": "partnership",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 478,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dental-acquisitions/",
+      "target_city": null,
+      "target_name": "Dr. R",
+      "target_state": "SC"
+    },
+    {
+      "deal_date": "2024-12-01",
+      "deal_type": "partnership",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 485,
+      "notes": null,
+      "pe_sponsor": "Shore Capital Partners",
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dental-acquisitions/",
+      "target_city": null,
+      "target_name": "Rachel Johnson & Associates",
+      "target_state": "TN"
+    },
+    {
+      "deal_date": "2024-12-01",
+      "deal_type": "partnership",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 492,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dental-acquisitions/",
+      "target_city": null,
+      "target_name": "Mid-Florida Endodontics",
+      "target_state": "FL"
+    },
+    {
+      "deal_date": "2024-12-01",
+      "deal_type": "add-on",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 493,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dental-acquisitions/",
+      "target_city": null,
+      "target_name": "Platt & Common Dental Practice",
+      "target_state": null
+    },
+    {
+      "deal_date": "2024-12-01",
+      "deal_type": "add-on",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 2726,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dental-acquisitions/",
+      "target_city": null,
+      "target_name": "Castelnau Dentists in Barnes",
+      "target_state": null
+    },
+    {
+      "deal_date": "2024-11-01",
+      "deal_type": "partnership",
+      "delete_reasons": [
+        "bad_platform_placeholder"
+      ],
+      "id": 517,
+      "notes": null,
+      "pe_sponsor": null,
+      "platform_company": "Unknown",
+      "source": "gdn",
+      "source_url": "https://www.groupdentistrynow.com/dso-group-blog/dso-dental-acquisitions/",
+      "target_city": null,
+      "target_name": "Lemchen Salzer Orthodontics",
+      "target_state": "AL"
+    }
+  ],
+  "deleted_count": 168,
+  "reason_counts": {
+    "bad_platform_placeholder": 157,
+    "missing_source_url": 11,
+    "pitchbook_no_source_no_target": 10
+  }
+}
