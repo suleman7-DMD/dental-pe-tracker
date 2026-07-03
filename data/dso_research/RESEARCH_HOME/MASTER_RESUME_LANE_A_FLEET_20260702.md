@@ -207,3 +207,34 @@ with delegated gate authority ("make the best answers... then proceed"); Sonnet 
 Opus 4.8 verify; PM personally reviews all agent work; honest undetermined > guessed tier;
 detector floor untouched; MA parked; never commit .env or DB backups; commits end with
 `Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>`.
+
+---
+
+## §6 SECOND FLIGHT (2026-07-02 late, post-rate-limit reset) — CURRENT FLEET STATE
+
+Waves 1+2 (first flight) terminated on the user's session rate limit at ~85/128 units.
+**Final first-flight state: 85 result files on disk (ground truth). ALL first-flight Opus verify
+agents were rate-limit-killed → ZERO verdicts exist from the first flight.** The 25 result files
+carrying 35 unverified T4/T5 claims are being re-verified by the recovery workflow below.
+
+After the reset the PM relaunched everything in one shot (all four run concurrently):
+
+| What | Units / input | Run ID | Task ID | Script |
+|---|---|---|---|---|
+| Relaunch missing w1+w2 units | 46–64, 104, 106–128 (43 units) | `wf_a79097d5-2c2` | wfvl0wyni | v2 intel script (repo) |
+| Wave 3 | 129–173 (45 units) | `wf_facf67a9-304` | wji2buo1f | v2 intel script (repo) |
+| Wave 4 | 174–218 (45 units) | `wf_a8ac7ebd-e28` | wy93djy68 | v2 intel script (repo) |
+| Verdict recovery (Opus 4.8) | 25 result files w/ 35 T4/T5 claims | `wf_edc106cc-7cf` | w7zwnx52v | `data/dso_research/_wf_lane_a_verdict_recovery_20260702.js` (archived copy) |
+
+- Verdict-recovery agents READ each result file themselves and adversarially verify its
+  stealth_dso/branded_dso rows (CONFIRM/REFUTE/DOWNGRADE_T3/INSUFFICIENT). The workflow RETURNS
+  the verdicts (writes no files) — on completion the PM writes them into the flat combined
+  verdicts file (`_lane_a_20260702/_verdicts_wave1.json`) for the merge gate. If THIS session
+  dies after recovery completes, verdicts are in the run journal:
+  `~/.claude/projects/-Users-suleman-dental-pe-tracker/4d259360-781e-4eee-9774-4f0a41d11ff2/subagents/workflows/wf_edc106cc-7cf/journal.jsonl`.
+- The 25 files needing verdicts: units 003 004 006 012 015 018 022 023 024 025 026 029 032 033
+  035 036 039 073 080 081 085 090 096 097 102 — PLUS any T4/T5 rows in second-flight units,
+  which the v2 script verifies inline (each second-flight unit returns its own verdicts).
+- Recovery-of-the-recovery: if any of these four runs dies, the §4 procedures apply unchanged
+  (result files on disk = ground truth; relaunch only missing units with the v2 script; recover
+  verdicts from journals; fresh verify agents for any unit with T4/T5 rows and no verdict).
