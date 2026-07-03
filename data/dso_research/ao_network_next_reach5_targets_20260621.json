@@ -1,0 +1,453 @@
+{
+  "_meta": {
+    "date": "2026-06-21",
+    "status": "BUILT \u2014 NOT RUN. Held pending QA sign-off on the top-8 AO wave (per user Option-4).",
+    "wave": "ao_network reach>=5 (excludes the 8 claimed top networks)",
+    "n_clusters": 14,
+    "n_locations": 84,
+    "do_not_run_reason": "User paused AO scaling until QA finishes adversarial review of ao_network_evidence_20260621.json and the validator/fleet schema mismatch is resolved (see _schema_bridge_ao_to_consolidate_20260621.md).",
+    "standard": "corrected \u2014 AO reach is a candidate SIGNAL, not ownership proof. Same gate as the top-8 wave: ready_for_validation requires >=1 documentary corroborator; stealth/branded require documentary PE/MSO/DSO evidence; nothing is final.",
+    "runner_when_released": "scrapers/ao_network_evidence.js (swap NETWORKS to these authorized_officials)",
+    "high_priority_dso_suspects": [
+      "SAMEERA HUSSAIN",
+      "CELIA HAYES",
+      "JAY JORBIN",
+      "JASON KORKUS",
+      "RANDY CHANG"
+    ],
+    "caution": "RAJAN SHARMA cluster may be SPECIALIST-dominant (The Dental Specialists / Implant Solutions) \u2014 verify GP vs specialist before counting toward the GP denominator.",
+    "next_after_this": "reach==4 clusters (then reach 3, 2) \u2014 far larger fan-out; only after reach>=5 validates cleanly."
+  },
+  "clusters": [
+    {
+      "authorized_official": "SAMEERA HUSSAIN",
+      "network_id": "ao:HUSSAIN_SAMEERA",
+      "reach": 10,
+      "n_locations": 10,
+      "zips": [
+        "60160",
+        "60411",
+        "60436",
+        "60610",
+        "60623",
+        "60629",
+        "60639",
+        "60654",
+        "60707",
+        "60804"
+      ],
+      "sample_names": [
+        "DENTAL DREAMS, LLC",
+        "DENTAL EXPERTS, LLC",
+        "THE DENTAL CLINIC, LLC"
+      ],
+      "likely_risk_HEURISTIC": "branded_dso?",
+      "high_priority": true,
+      "why_should_be_next": "Dental Dreams / Dental Experts LLC \u2014 known IL brand; some offices already corporate. HIGH priority: confirm exact-address locator; pe_backed unknown.",
+      "location_ids": [
+        "b11b2bdcb2eb181d",
+        "c7da8303188c8187",
+        "b296a2f2d1c1dc3a",
+        "6b21e6d26dfd4d74",
+        "6739545b64130396",
+        "7495e79c66647036",
+        "dbad14745be900f5",
+        "7371ae34cf74b086",
+        "16f45e3695a10058",
+        "99b7b4ad619fddf4"
+      ]
+    },
+    {
+      "authorized_official": "SAMANTHA GONZALEZ",
+      "network_id": "ao:GONZALEZ_SAMANTHA",
+      "reach": 9,
+      "n_locations": 9,
+      "zips": [
+        "60160",
+        "60402",
+        "60459",
+        "60501",
+        "60618",
+        "60623",
+        "60625",
+        "60632",
+        "60638"
+      ],
+      "sample_names": [
+        "DENTAL TOWN",
+        "DENTAL TOWN LTD"
+      ],
+      "likely_risk_HEURISTIC": "dentist_multi?",
+      "high_priority": false,
+      "why_should_be_next": "'Dental Town' local brand across 9 ZIPs \u2014 likely dentist-owned mini-group; corroborate group site.",
+      "location_ids": [
+        "79f6f3a69bbe98da",
+        "bf3f2644333e5404",
+        "e72c6624f9e8c59a",
+        "01327f21a55f4586",
+        "3fd67cd1b53d4310",
+        "41cd19acfa7b61da",
+        "0e213c93b5b7ce01",
+        "c2a568c2fd24c088",
+        "bdee4aa5a92aa4b3"
+      ]
+    },
+    {
+      "authorized_official": "CELIA HAYES",
+      "network_id": "ao:HAYES_CELIA",
+      "reach": 7,
+      "n_locations": 7,
+      "zips": [
+        "60154",
+        "60422",
+        "60431",
+        "60447",
+        "60465",
+        "60565",
+        "60707"
+      ],
+      "sample_names": [
+        "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+        "TRU DENTAL ILLINOIS, P.C."
+      ],
+      "likely_risk_HEURISTIC": "stealth_dso?",
+      "high_priority": true,
+      "why_should_be_next": "'Dental Professionals of Illinois P.C.' + 'TRU Dental Illinois P.C.' = HEARTLAND (KKR) friendly-PC shells. HIGHEST priority \u2014 documentary Heartland tie likely.",
+      "location_ids": [
+        "07f2b7f46d119b2d",
+        "b626cbc919682cf4",
+        "88051778b8f3ce2d",
+        "4e0657b3feb68f67",
+        "7f3710eb5399a85e",
+        "d72f16fca569e0d3",
+        "21ccc26f42e3e9b6"
+      ]
+    },
+    {
+      "authorized_official": "ALAN ACIERNO",
+      "network_id": "ao:ACIERNO_ALAN",
+      "reach": 6,
+      "n_locations": 6,
+      "zips": [
+        "60007",
+        "60174",
+        "60193",
+        "60656",
+        "60707"
+      ],
+      "sample_names": [
+        "ALAN J ACIERNO, PC",
+        "HIGGINS FAMILY DENTAL",
+        "PPD NORTH AVENUE LLC",
+        "ROUTE 64 DENTAL LLC",
+        "SECOND STREET DENTAL LLC",
+        "VILLAGE SMILES LLC"
+      ],
+      "likely_risk_HEURISTIC": "dentist_multi?",
+      "high_priority": false,
+      "why_should_be_next": "Mixed LLCs (PPD/Route 64/Higgins Family) under one AO \u2014 dentist_multi unless a brand/MSO surfaces.",
+      "location_ids": [
+        "20688efaf1aef12b",
+        "fa02013edc5ed7ae",
+        "017dbd1d5d699d8f",
+        "0433baa2e8fa3841",
+        "3c8908dfbb323f5a",
+        "965f76719d0f4320"
+      ]
+    },
+    {
+      "authorized_official": "MILAD NOURAHMADI",
+      "network_id": "ao:NOURAHMADI_MILAD",
+      "reach": 6,
+      "n_locations": 6,
+      "zips": [
+        "60131",
+        "60435",
+        "60440",
+        "60546",
+        "60585",
+        "60618"
+      ],
+      "sample_names": [
+        "SHINING SMILES 4, INC",
+        "SHINING SMILES FRANKLIN PARK INC.",
+        "SHINING SMILES LLC",
+        "SHINING SMILES PLAINFIELD INC",
+        "SHINING SMILES RIVERSIDE INC.",
+        "SHINY SMILES INC"
+      ],
+      "likely_risk_HEURISTIC": "dentist_multi?",
+      "high_priority": false,
+      "why_should_be_next": "'Shining Smiles' chain (Franklin Park/Plainfield/etc.) \u2014 dentist-owned brand; confirm owner bio.",
+      "location_ids": [
+        "c2c6dd402a6e2212",
+        "4b7c5a3855dc787c",
+        "05dac6c389bb27f3",
+        "6cc48551b6889fe9",
+        "53c4c0d0487136bf",
+        "ff3364b354221f1d"
+      ]
+    },
+    {
+      "authorized_official": "CHRISTOS TSALIAGOS",
+      "network_id": "ao:TSALIAGOS_CHRISTOS",
+      "reach": 6,
+      "n_locations": 6,
+      "zips": [
+        "60435",
+        "60463",
+        "60629",
+        "60632",
+        "60639",
+        "60652"
+      ],
+      "sample_names": [
+        "BRICKYARD DENTAL CENTER",
+        "CICERO DENTAL INC",
+        "METROSMILES - ARCHER HEIGHTS DENTAL",
+        "METROSMILES - GAGE PARK DENTAL PC",
+        "METROSMILES - JOLIET DENTAL PC",
+        "THE TOOTHPATROL, P.C."
+      ],
+      "likely_risk_HEURISTIC": "dentist_multi?",
+      "high_priority": false,
+      "why_should_be_next": "'MetroSmiles'/'Brickyard Dental' local brand \u2014 dentist_multi; check for MSO.",
+      "location_ids": [
+        "2e986a1e966c77af",
+        "536c8ffeb199c73f",
+        "24ce005084ed7d47",
+        "b2445373c7020d73",
+        "3ad6677bfa655932",
+        "7f3dd48b9457f658"
+      ]
+    },
+    {
+      "authorized_official": "JAY JORBIN",
+      "network_id": "ao:JORBIN_JAY",
+      "reach": 5,
+      "n_locations": 5,
+      "zips": [
+        "60004",
+        "60110",
+        "60120",
+        "60188",
+        "60510"
+      ],
+      "sample_names": [
+        "BDD AFDS PC",
+        "BDD JHG PC",
+        "BDD OF ILLINOIS P.C."
+      ],
+      "likely_risk_HEURISTIC": "stealth_dso?",
+      "high_priority": true,
+      "why_should_be_next": "'BDD of Illinois P.C.' + per-office 'BDD ___ PC' shells = classic friendly-PC pattern; investigate MSO/management co.",
+      "location_ids": [
+        "6f68546a3690109e",
+        "1cd16336e3aea543",
+        "e679229d42267b07",
+        "a18735414efb4b38",
+        "c9473d0da714ac96"
+      ]
+    },
+    {
+      "authorized_official": "JASON KORKUS",
+      "network_id": "ao:KORKUS_JASON",
+      "reach": 5,
+      "n_locations": 5,
+      "zips": [
+        "60005",
+        "60609",
+        "60622",
+        "60623",
+        "60628"
+      ],
+      "sample_names": [
+        "SONRISA ARLINGTON HEIGHTS",
+        "SONRISA CAPITATION CCHC PROFESSIONAL CORPORATION SONRISA FAMILY DENTAL",
+        "SONRISA CAPITATION ESPERANZA PROFESSIONAL CORPORATION",
+        "SONRISA FAMILY DENTAL PC",
+        "SONRISA ROGERS PARK INC"
+      ],
+      "likely_risk_HEURISTIC": "stealth_dso?",
+      "high_priority": true,
+      "why_should_be_next": "'Sonrisa Family Dental' + 'Sonrisa Capitation ___ Professional' \u2014 Sonrisa/CDCA group, capitation entities suggest MSO; confirm sponsor.",
+      "location_ids": [
+        "1bf81b2f3eafd0d7",
+        "1354bc2b8dff1d69",
+        "72ac4f9558586c7a",
+        "4c77253121d38b15",
+        "5287843d3b6853ff"
+      ]
+    },
+    {
+      "authorized_official": "RAJAN SHARMA",
+      "network_id": "ao:SHARMA_RAJAN",
+      "reach": 5,
+      "n_locations": 5,
+      "zips": [
+        "60077",
+        "60430",
+        "60559",
+        "60610",
+        "60615"
+      ],
+      "sample_names": [
+        "IMPLANT SOLUTIONS",
+        "THE DENTAL SPECIALISTS"
+      ],
+      "likely_risk_HEURISTIC": "CAUTION_specialist",
+      "high_priority": false,
+      "why_should_be_next": "'The Dental Specialists'/'Implant Solutions' \u2014 may be SPECIALIST (excluded from GP denominator). Verify GP vs specialist before counting.",
+      "location_ids": [
+        "f9eb2799ba993759",
+        "629f47a7f77e755f",
+        "473d8c9bb2e54411",
+        "c719b2a7e68a53ee",
+        "549ce448c5b1c29d"
+      ]
+    },
+    {
+      "authorized_official": "MILAN RONCEVIC",
+      "network_id": "ao:RONCEVIC_MILAN",
+      "reach": 5,
+      "n_locations": 5,
+      "zips": [
+        "60101",
+        "60120",
+        "60630",
+        "60634",
+        "60647"
+      ],
+      "sample_names": [
+        "A K A DENTAL",
+        "AYA DENTAL",
+        "DENTAL PROFILE",
+        "DENTAL PROFILE 2",
+        "ELGIN DENTAL PROFILE LTD."
+      ],
+      "likely_risk_HEURISTIC": "dentist_multi?",
+      "high_priority": false,
+      "why_should_be_next": "'Dental Profile' 1/2 + AKA/Aya Dental \u2014 dentist-owned mini-group; corroborate.",
+      "location_ids": [
+        "86f0b24aac6e0fff",
+        "37b5b553c5de12a2",
+        "4326d78b280875a3",
+        "e45faab59b6a118f",
+        "fc010516c3e5b18d"
+      ]
+    },
+    {
+      "authorized_official": "DAVID RUBIS",
+      "network_id": "ao:RUBIS_DAVID",
+      "reach": 5,
+      "n_locations": 5,
+      "zips": [
+        "60404",
+        "60435",
+        "60441",
+        "60564",
+        "60618"
+      ],
+      "sample_names": [
+        "ADVANCED FAMILY DENTAL & CHIROPRACTIC OF LOCKPORT PC",
+        "ADVANCED FAMILY DENTAL OF SHOREWOOD, P.C.",
+        "AVID DENTAL",
+        "DENTAL ROOTS PC",
+        "MONTROSE DENTAL CLINIC PC"
+      ],
+      "likely_risk_HEURISTIC": "dentist_multi?",
+      "high_priority": false,
+      "why_should_be_next": "'Advanced Family Dental'/'Avid Dental'/'Dental Roots' \u2014 dentist_multi; confirm common owner bio.",
+      "location_ids": [
+        "0d376204167d44a6",
+        "1469c6dcde0459a7",
+        "b77c247e6be90e1e",
+        "9550d33a7efdafdd",
+        "66a084f7af99db39"
+      ]
+    },
+    {
+      "authorized_official": "PRADEEP KHURANA",
+      "network_id": "ao:KHURANA_PRADEEP",
+      "reach": 5,
+      "n_locations": 5,
+      "zips": [
+        "60439",
+        "60446",
+        "60515",
+        "60538"
+      ],
+      "sample_names": [
+        "SPARKLE DENTAL GROUP LLC",
+        "VALLEY VIEW DENTAL GROUP LLC"
+      ],
+      "likely_risk_HEURISTIC": "dentist_multi?",
+      "high_priority": false,
+      "why_should_be_next": "'Sparkle Dental Group'/'Valley View Dental Group' LLCs \u2014 dentist_multi; check management co.",
+      "location_ids": [
+        "b184f060d46970cd",
+        "2076ed18dedc788a",
+        "e493e4371bb5cb22",
+        "1fa86e6647cd57c5",
+        "a3dd5af180b6928b"
+      ]
+    },
+    {
+      "authorized_official": "PHILLIP PALELLA",
+      "network_id": "ao:PALELLA_PHILLIP",
+      "reach": 5,
+      "n_locations": 5,
+      "zips": [
+        "60622",
+        "60647",
+        "60654",
+        "60657"
+      ],
+      "sample_names": [
+        "HALO DENTAL",
+        "MODERN DENTAL OF LOGAN SQUARE LLC",
+        "MODERN DENTAL ON CLARK STREET",
+        "MODERN DENTAL ON DIVISION",
+        "MODERN DENTAL ON SHEFFIELD"
+      ],
+      "likely_risk_HEURISTIC": "dentist_multi?",
+      "high_priority": false,
+      "why_should_be_next": "'Modern Dental of Logan Square/Clark/Division' + Halo \u2014 local multi-brand; dentist_multi likely.",
+      "location_ids": [
+        "c3c1109b7a83c868",
+        "e2d778d9dd90dc47",
+        "912d93028de7af3e",
+        "bd1fa8c78168aa00",
+        "d5bc28878405a18c"
+      ]
+    },
+    {
+      "authorized_official": "RANDY CHANG",
+      "network_id": "ao:CHANG_RANDY",
+      "reach": 5,
+      "n_locations": 5,
+      "zips": [
+        "60632",
+        "60639",
+        "60645",
+        "60647",
+        "60804"
+      ],
+      "sample_names": [
+        "ADVANTAGE DENTAL CARE, LLC",
+        "PRECISION DENTAL CARE 2, LLC",
+        "PRECISION DENTAL CARE, LLC"
+      ],
+      "likely_risk_HEURISTIC": "stealth_dso?",
+      "high_priority": true,
+      "why_should_be_next": "'Precision Dental Care' 1/2 + 'Advantage Dental Care' \u2014 Precision Dental Care already has Phase-4 corporate members; possible chain/MSO. HIGH priority.",
+      "location_ids": [
+        "8dbe509f0a92a9d0",
+        "fb8282656b8e9b30",
+        "578af920960ec5d1",
+        "70bd75bfff9af4fa",
+        "3a2acb8b4e928c23"
+      ]
+    }
+  ]
+}

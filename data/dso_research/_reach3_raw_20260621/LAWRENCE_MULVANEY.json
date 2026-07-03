@@ -1,0 +1,110 @@
+{
+  "network": "LAWRENCE MULVANEY",
+  "network_id": "ao:MULVANEY_LAWRENCE",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Dr. Lawrence (Larry) Mulvaney, DDS, MBA, FICOI is the President and owner of Northwestern Dental Group (NWDG), a multi-location dental group founded in Niles, IL in 1987. He is a dentist-owner with 30+ years of experience who built a 4-7 location Chicagoland group under his own brand. No MSO, management company, PE backer, or DSO platform layer has been found. The two AO-linked watched locations are both on N Milwaukee Ave in Niles (ZIP 60714): the original LTD corporate entity and a second LLC DBA entity at a nearby address. Lorraine Mulvaney handles complaint resolution per BBB — family-operated group.",
+  "owner_operator_identity": "Dr. Lawrence (Larry) Mulvaney, DDS, MBA, FICOI — President and owner, Northwestern Dental Group LTD; 30+ years general/cosmetic/implant dentistry; DDS from University of Illinois Dental School Chicago; MBA from Keller Graduate School; FICOI (International Congress of Oral Implantologists fellow).",
+  "brand_trade_names": [
+    "Northwestern Dental Group",
+    "Northwestern Dental Implants",
+    "NWDG"
+  ],
+  "legal_entities": [
+    "Northwestern Dental Group LTD (IL corporation, est. 1987, NPI 1508080110)",
+    "NWDG Niles LLC (IL LLC, DBA Northwestern Dental Implants, NPI 1093089690)"
+  ],
+  "durable_artifacts": [
+    "Shared authorized official LAWRENCE MULVANEY on NPI 1508080110 (Northwestern Dental Group LTD, 7745 N Milwaukee Ave) and NPI 1093089690 (NWDG Niles LLC, 7886 N Milwaukee Ave), both in Niles IL 60714",
+    "BBB profile for Northwestern Dental Group LTD confirms Dr. Lawrence Mulvaney as President; business type Corporation; founded 1/1/1987; no corporate parent listed",
+    "LinkedIn profile: Larry Mulvaney, DDS, MBA, FICOI listed as President at Northwestern Dental Group",
+    "Brand abbreviation NWDG appears in the LLC entity name, linking both legal entities to the same consumer brand",
+    "Multiple NWDG locations documented (Niles, Vernon Hills, Deerfield, Gurnee, Skokie, Arlington Heights) — single-owner expansion pattern"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "Location 7230bc8117b4055b is currently classified as dso_national in the DB — this appears to be a misclassification. Northwestern Dental Group LTD is Dr. Mulvaney's own dentist-owned group, not a national DSO brand. Recommend reclassification to dso_regional or small_group pending downstream gate review. The two Milwaukee Ave addresses (~0.1 mile apart) represent the original LTD entity (7745) and a newer LLC entity (7886) operated under the same owner — not two independent businesses.",
+  "evidence_chain": "AO signal: LAWRENCE MULVANEY appears as authorized official on both NPI 1508080110 (Northwestern Dental Group LTD) and NPI 1093089690 (NWDG Niles LLC) in ZIP 60714. Documentary corroboration: (1) northwesterndentalgroup.com confirms a multi-location group brand (Niles, Vernon Hills, Deerfield, Gurnee) with Dr. Larry Mulvaney as the featured doctor; (2) LinkedIn profile for Larry Mulvaney DDS MBA FICOI titles him 'President at Northwestern Dental Group'; (3) BBB profile for Northwestern Dental Group LTD confirms Dr. Lawrence Mulvaney as President, business type Corporation, est. 1987, no corporate parent; (4) NWDG abbreviation in LLC name ties both legal entities to the same brand. No MSO/management company/PE/DSO platform layer found across three web searches and two page fetches.",
+  "future_app_notes": "NWDG has 4-7 locations across Chicagoland; only the two Niles locations appear in the current watched-IL AO cluster. Other NWDG locations (Vernon Hills ZIP 60061, Deerfield ZIP 60015, Gurnee ZIP 60085, Skokie, Arlington Heights) may be in watched ZIPs but were not surfaced in this AO cluster — worth querying the DB for NWDG/Northwestern Dental Group name matches across watched ZIPs to capture the full network footprint. The dso_national classification on 7230bc8117b4055b is likely a false positive from a name-chain or brand match; the real structure is dentist_owned_multi. Watch for any PE/MSO transaction involving NWDG given the founder's MBA and multi-location growth trajectory.",
+  "classifications": [
+    {
+      "location_id": "7230bc8117b4055b",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Lawrence Mulvaney, DDS, MBA, FICOI — President, Northwestern Dental Group LTD",
+      "network_id": "ao:MULVANEY_LAWRENCE",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2: LAWRENCE MULVANEY is authorized official on NPI 1508080110",
+          "entity_classification=dso_national in DB (likely false positive)",
+          "Name 'Northwestern Dental Group LTD' — LTD suffix is a corporate marker"
+        ],
+        "evidence": [
+          "BBB profile confirms Dr. Lawrence Mulvaney as President of Northwestern Dental Group LTD; no corporate parent; est. 1987 — northwesterndentalgroup.com + bbb.org",
+          "LinkedIn: Larry Mulvaney DDS MBA FICOI titled 'President at Northwestern Dental Group' — linkedin.com",
+          "northwesterndentalgroup.com shows multi-location group brand with Dr. Mulvaney as featured owner-doctor; no MSO/PE/DSO management layer disclosed",
+          "NWDG abbreviation in sibling LLC entity name (NWDG Niles LLC) ties both watched locations to the same dentist-owned brand"
+        ]
+      },
+      "evidence_urls": [
+        "https://northwesterndentalgroup.com/our-doctors/",
+        "https://www.bbb.org/us/il/niles/profile/dentist/northwestern-dental-group-ltd-0654-88325685",
+        "https://www.linkedin.com/in/larry-mulvaney-dds-mba-ficoi-70271987/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "LAWRENCE MULVANEY",
+        "reach": 2,
+        "zips": ["60714"],
+        "npi": "1508080110",
+        "name": "NORTHWESTERN DENTAL GROUP LTD",
+        "address": "7745 n milwaukee ave",
+        "city": "NILES",
+        "entity_classification_current": "dso_national"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "Currently classified dso_national — likely misclassification. Northwestern Dental Group LTD is Dr. Mulvaney's original dentist-owned corporate entity (est. 1987), not a national DSO brand. Address 7745 N Milwaukee Ave is ~0.1 mile from the sibling 7886 address; both are operating Niles offices under the same owner.",
+      "reasoning": "Northwestern Dental Group LTD is the original legal entity (IL corporation, est. 1987) operated by Dr. Lawrence Mulvaney, DDS, as President. BBB confirms him as president with no corporate parent. LinkedIn confirms his title as President. The multi-location website (4-7 Chicagoland offices) shows a dentist-owned expansion under a single brand, with no MSO/management company/PE layer. This is dentist_multi with high confidence. The current dso_national classification in the DB is a false positive — the 'Northwestern' in the name likely triggered a national brand match, but this is Dr. Mulvaney's own independent group, not affiliated with a national DSO chain."
+    },
+    {
+      "location_id": "ccfd235d9e0a4227",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Lawrence Mulvaney, DDS, MBA, FICOI — President, Northwestern Dental Group LTD / NWDG Niles LLC",
+      "network_id": "ao:MULVANEY_LAWRENCE",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2: LAWRENCE MULVANEY is authorized official on NPI 1093089690",
+          "Entity name NWDG Niles LLC — NWDG abbreviation matches Northwestern Dental Group brand",
+          "entity_classification=solo_established in DB (likely undercounts multi-location structure)"
+        ],
+        "evidence": [
+          "BBB profile references 'NWDG Niles LLC DBA Northwestern Dental Implants' as operating entity under Northwestern Dental Group LTD umbrella with Lawrence Mulvaney as President — bbb.org",
+          "Address 7886 N Milwaukee Ave matches Yelp and iBegin listings for 'Northwestern Dental Group - Niles' operated by same brand and owner",
+          "NWDG abbreviation in entity name directly links to Northwestern Dental Group brand and its owner Dr. Mulvaney"
+        ]
+      },
+      "evidence_urls": [
+        "https://northwesterndentalgroup.com/",
+        "https://www.bbb.org/us/il/niles/profile/dentist/northwestern-dental-group-ltd-0654-88325685",
+        "https://www.yelp.com/biz/northwestern-dental-group-niles-niles"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "LAWRENCE MULVANEY",
+        "reach": 2,
+        "zips": ["60714"],
+        "npi": "1093089690",
+        "name": "NWDG NILES LLC",
+        "address": "7886 n milwaukee ave",
+        "city": "NILES",
+        "entity_classification_current": "solo_established"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "Currently classified solo_established — this undercounts the multi-location structure. NWDG Niles LLC is Dr. Mulvaney's second Niles entity (DBA Northwestern Dental Implants) at 7886 N Milwaukee Ave, ~0.1 mile from the original 7745 address. Provider_count=0 in the DB may reflect an NPPES org-NPI-only record; the address is confirmed as an active practice location by Yelp and consumer directories.",
+      "reasoning": "NWDG Niles LLC is the second legal entity operated by Dr. Lawrence Mulvaney on N Milwaukee Ave in Niles. The NWDG abbreviation in the entity name directly ties it to the Northwestern Dental Group brand. BBB describes it as 'NWDG Niles LLC DBA Northwestern Dental Implants' under the same Mulvaney presidency. No MSO, PE, or DSO management layer found. This is dentist_multi with high confidence, part of the same owner's group. The current solo_established classification underrepresents the group structure — should be recognized as part of the NWDG dentist_multi network."
+    }
+  ]
+}

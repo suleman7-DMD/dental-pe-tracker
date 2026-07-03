@@ -5,6 +5,9 @@ data/dental_pe_tracker_*.db
 # DB backups (e.g. data/dental_pe_tracker.db.bak_audit_YYYYMMDD — 200MB+, never commit)
 *.db.bak*
 data/*.bak*
+# Pre-phase / one-off DB snapshots (e.g. dental_pe_tracker.db.pre_phase4_bak — 230MB, never commit)
+data/*_bak
+data/*.db.pre_*
 data/combined/
 data/nppes/
 data/gdn/

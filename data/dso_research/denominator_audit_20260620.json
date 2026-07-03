@@ -1,0 +1,1059 @@
+{
+  "_meta": {
+    "audit_date": "20260620",
+    "scope": "Chicagoland IL watched GP locations",
+    "read_only": true,
+    "flips": 0,
+    "purpose": "Confirm the ~4,439 IL GP denominator is clean before the ownership census."
+  },
+  "denominator": {
+    "official_sum_zip_scores_total_gp": 4439,
+    "direct_gp_location_count": 4439,
+    "match": true,
+    "per_zip_mismatches": [],
+    "per_zip_mismatch_count": 0
+  },
+  "classification_distribution_il_loc": {
+    "solo_established": 2243,
+    "small_group": 845,
+    "solo_high_volume": 631,
+    "specialist": 553,
+    "large_group": 255,
+    "family_practice": 193,
+    "da_unverified": 179,
+    "dso_national": 167,
+    "dso_regional": 82,
+    "solo_new": 19,
+    "non_clinical": 12,
+    "duplicate_location": 5,
+    "solo_inactive": 4
+  },
+  "excluded_classes": [
+    "da_unverified",
+    "duplicate_location",
+    "non_clinical",
+    "org_only_npi",
+    "specialist"
+  ],
+  "corporate_locations_legacy": 249,
+  "duplicate_candidates": {
+    "method": "same ZIP + same 10-digit phone + same street-core, >1 location_id (2026-06-19 signal)",
+    "cluster_count": 48,
+    "extra_locations_if_collapsed": 48,
+    "by_kind": {
+      "normalizer_miss": 0,
+      "suite_variant": 48
+    },
+    "note": "FLAGGED, not collapsed. normalizer_miss = strong dup (same normalized_address). suite_variant = review (could be genuinely distinct practices in one building). Collapsing would reduce the 4,439 base by at most extra_locations_if_collapsed.",
+    "clusters": [
+      {
+        "zip": "60005",
+        "phone": "8473981334",
+        "street_core": "1112 E CENTRAL",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "04e594d88035c383",
+            "name": "MACZKO AND ASSOCIATES LTD",
+            "addr": "1112 e central",
+            "class": "small_group"
+          },
+          {
+            "location_id": "fd489e75b9a8fb2d",
+            "name": "Prospect Dental",
+            "addr": "1112 e central rd",
+            "class": "solo_high_volume"
+          }
+        ]
+      },
+      {
+        "zip": "60007",
+        "phone": "8473645100",
+        "street_core": "958 ELK GROVE",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "d5804fe187ecbb46",
+            "name": "32 VILLAGE DENTAL LLC",
+            "addr": "958 elk grove town ctr",
+            "class": "solo_high_volume"
+          },
+          {
+            "location_id": "ce8b8ff3e6be7862",
+            "name": "JOHN DREW GORRELL DDS LTD",
+            "addr": "958 elk grove village town center",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60008",
+        "phone": "8473976060",
+        "street_core": "4005 1 2",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "9f75426d8a3511a3",
+            "name": "MARIETTA A BUFALINO INC",
+            "addr": "4005 1 2 algonquin rd",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "535142f00b191b60",
+            "name": "Marietta Bufalina DDS",
+            "addr": "4005 1/2 algonquin rd",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60053",
+        "phone": "8476631196",
+        "street_core": "6223 W DEMPSTER",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "e8c7b23877da7231",
+            "name": "SIMONA BALAN DDS PC",
+            "addr": "6223 w dempster",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "319370c0f6eef2b2",
+            "name": "Balan Dental",
+            "addr": "6223 w dempster st",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60056",
+        "phone": "8472597560",
+        "street_core": "200 E EVERGREEN",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "5a6589ebbf27badf",
+            "name": "Lund, Peter a DDS",
+            "addr": "200 e evergreen ave",
+            "class": "small_group"
+          },
+          {
+            "location_id": "5b3f44c0487d2d45",
+            "name": "BLOCKI AND BASHFORD DENTAL, LLC",
+            "addr": "200 e evergreen",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60068",
+        "phone": "8476927350",
+        "street_core": "35 1 2",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "d3a0e2085a1e3776",
+            "name": "Barrett Dental",
+            "addr": "35 1 2 s prospect ave",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "fe4e8aece6d7fd2e",
+            "name": "PARK RIDGE DENTISTRY PLLC",
+            "addr": "35 1/2 s prospect ave",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60107",
+        "phone": "6308377775",
+        "street_core": "1024 E SCHAUMBURG",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "6e97d5c01cc9b828",
+            "name": "Bohl Dental",
+            "addr": "1024 e schaumburg",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "3d19bf082c0cb2a3",
+            "name": "ERIC W BOHL DDS LTD",
+            "addr": "1024 e schaumburg rd",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60110",
+        "phone": "8474285040",
+        "street_core": "200 W MAIN",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "69d7f80b09971b16",
+            "name": "Matusik Dental",
+            "addr": "200 w main",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "8031f125d2413b77",
+            "name": "Stanley Joseph Matusik DDS",
+            "addr": "200 w main st",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60118",
+        "phone": "8474264431",
+        "street_core": "712 W MAIN",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "66fa01b5ca6161c7",
+            "name": "Stojanovic Dental",
+            "addr": "712 w main",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "d44c43930b0f8d3c",
+            "name": "DR. ZORAN D. STOJANOVIC & ASSOCIATES, LTD",
+            "addr": "712 w main st",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60126",
+        "phone": "6307826999",
+        "street_core": "1200 S YORK",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "32399095d00b3786",
+            "name": "Gupta Dental",
+            "addr": "1200 s york rd",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "db33ff6cf7c176a0",
+            "name": "KAVITA GUPTA PC",
+            "addr": "1200 s york st",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60172",
+        "phone": "6305399999",
+        "street_core": "350 E IRVING",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "be32c4f8df293c5d",
+            "name": "NITA PATEL DDS INC",
+            "addr": "350 e irving park rd",
+            "class": "small_group"
+          },
+          {
+            "location_id": "81fa2361967975be",
+            "name": "Patel Dental",
+            "addr": "350 e irving park",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60201",
+        "phone": "8478648151",
+        "street_core": "1560 SHERMAN AVE",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "2c1671236a9fd872",
+            "name": "Stephens Dental",
+            "addr": "1560 sherman ave suite",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "b9a649e2efffb13f",
+            "name": "STEPHENS DENTISTRY, INC.",
+            "addr": "1560 sherman ave",
+            "class": "large_group"
+          }
+        ]
+      },
+      {
+        "zip": "60302",
+        "phone": "7083861448",
+        "street_core": "418 N AUSTIN",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "a028d8f3322d42fa",
+            "name": "Mcdonald Dental",
+            "addr": "418 n austin",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "3f69c2699ad9add7",
+            "name": "AUSTIN DENTAL CENTER LLC",
+            "addr": "418 n austin blvd",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60402",
+        "phone": "7084842710",
+        "street_core": "6436 W CERMAK",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "9704f166ed868216",
+            "name": "Salerno Dental",
+            "addr": "6436 w cermak rd",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "6cb95a87f1688676",
+            "name": "Salerno Dental",
+            "addr": "6436 w cermak",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60440",
+        "phone": "6307598940",
+        "street_core": "406B W BOUGHTON",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "a56a841f0923d8aa",
+            "name": "Smith Dental",
+            "addr": "406b w boughton",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "1f6f116f4cfa533c",
+            "name": "Chung Dental",
+            "addr": "406b w boughton rd",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60521",
+        "phone": "6303235200",
+        "street_core": "101 S GARFIELD",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "ecf1040e677465de",
+            "name": "Novak Dental",
+            "addr": "101 s garfield ave",
+            "class": "small_group"
+          },
+          {
+            "location_id": "c70779c0455ae78d",
+            "name": "Brown Dental",
+            "addr": "101 s garfield",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60540",
+        "phone": "6303550100",
+        "street_core": "10 E BENTON",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "c8257a409936d67d",
+            "name": "Defilippis Dental",
+            "addr": "10 e benton",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "45ced31807d5f694",
+            "name": "Gentle Family Dentisty-nprvll",
+            "addr": "10 e benton ave",
+            "class": "small_group"
+          }
+        ]
+      },
+      {
+        "zip": "60544",
+        "phone": "8154363377",
+        "street_core": "13717 S US",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "4d6ecf57b261e109",
+            "name": "AHOYT FAMILY DENTAL",
+            "addr": "13717 s us 30",
+            "class": "small_group"
+          },
+          {
+            "location_id": "36610bdcbea1d28d",
+            "name": "Ahoyt Dental",
+            "addr": "13717 s us hwy 30",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60559",
+        "phone": "6307370791",
+        "street_core": "210 N CASS",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "c49995373f766089",
+            "name": "Mashnouk Dental",
+            "addr": "210 n cass av",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "4dd0cf70924b3541",
+            "name": "Cass Family Dental",
+            "addr": "210 n cass ave",
+            "class": "small_group"
+          }
+        ]
+      },
+      {
+        "zip": "60601",
+        "phone": "3127045511",
+        "street_core": "222 N LASALLE",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "cd50f89169d71073",
+            "name": "Zalay Dental",
+            "addr": "222 n lasalle st",
+            "class": "large_group"
+          },
+          {
+            "location_id": "556f0dcf7c131e65",
+            "name": "CHICAGO CENTER FOR ADVANCED DENTISTRY",
+            "addr": "222 n lasalle st 230b",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60604",
+        "phone": "3129392400",
+        "street_core": "111 W JACKSON",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "91f133f6ca9066c3",
+            "name": "DR. STACI SIKORA AND ASSOCIATES",
+            "addr": "111 w jackson blvd",
+            "class": "small_group"
+          },
+          {
+            "location_id": "a265228f4dd92f32",
+            "name": "Das Dental",
+            "addr": "111 w jackson",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60607",
+        "phone": "3124919494",
+        "street_core": "937 W RANDOLPH",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "0d95fa46ee30ba2a",
+            "name": "Kralj Dental",
+            "addr": "937 w randolph",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "02486752639f0214",
+            "name": "ORA DENTAL STUDIO WEST LOOP LLC",
+            "addr": "937 w randolph st",
+            "class": "small_group"
+          }
+        ]
+      },
+      {
+        "zip": "60611",
+        "phone": "3122800034",
+        "street_core": "233 E ERIE",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "febfbd0947c16124",
+            "name": "Chen, Gloria C DDS",
+            "addr": "233 e erie st #",
+            "class": "solo_high_volume"
+          },
+          {
+            "location_id": "e42b3a751f478073",
+            "name": "Goodman Dental",
+            "addr": "233 e erie",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60613",
+        "phone": "3125007080",
+        "street_core": "3901 N BROADWAY",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "997fb9c989f09b76",
+            "name": "Shah Dental",
+            "addr": "3901 n broadway chicago il 60613",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "772fe78f8b2369eb",
+            "name": "Iqbal Dental",
+            "addr": "3901 n broadway",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60614",
+        "phone": "7735282205",
+        "street_core": "2340 N CLYBOURN",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "f94fb29cc7d444cd",
+            "name": "CHICAGO DENTAL PROFESSIONALS INC",
+            "addr": "2340 n clybourn",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "ff41419130267bd9",
+            "name": "Peters, Erika",
+            "addr": "2340 n clybourn ave",
+            "class": "large_group"
+          }
+        ]
+      },
+      {
+        "zip": "60618",
+        "phone": "7735283384",
+        "street_core": "2155 W ROSCOE",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "efc9ade86574caeb",
+            "name": "PERFECT SMILE DENTAL SPA",
+            "addr": "2155 w roscoe st",
+            "class": "small_group"
+          },
+          {
+            "location_id": "d9e1cbf0d6b6b005",
+            "name": "PERFECT SMILE DENTAL SPA PARTNERSHIP",
+            "addr": "2155 w roscoe st 1n",
+            "class": "large_group"
+          }
+        ]
+      },
+      {
+        "zip": "60618",
+        "phone": "7733483309",
+        "street_core": "2057 W BELMONT",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "8993db31d061a51d",
+            "name": "SCHWARTZ & ZELIKOW DDS PC",
+            "addr": "2057 w belmont ave",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "44746d18d3eb1725",
+            "name": "Zelikow Dental",
+            "addr": "2057 w belmont",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60622",
+        "phone": "7734895700",
+        "street_core": "2033 W DIVISION",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "c3c1109b7a83c868",
+            "name": "MODERN DENTAL ON DIVISION",
+            "addr": "2033 w division",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "e2d778d9dd90dc47",
+            "name": "HALO DENTAL",
+            "addr": "2033 w division st",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60623",
+        "phone": "7735220855",
+        "street_core": "2859 S PULASKI",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "0700232b795654f3",
+            "name": "Paik Dental",
+            "addr": "2859 s pulaski rd 2nd",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "f629647606309c0a",
+            "name": "Sonrisa Urbana Family Dntstry",
+            "addr": "2859 s pulaski rd",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60628",
+        "phone": "7732334100",
+        "street_core": "9718 S HALSTED",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "c268f869c71ee79d",
+            "name": "Smith Dental",
+            "addr": "9718 s halsted",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "5287843d3b6853ff",
+            "name": "SONRISA CAPITATION CCHC PROFESSIONAL CORPORATION SONRISA FAMILY DENTAL",
+            "addr": "9718 s halsted st",
+            "class": "small_group"
+          }
+        ]
+      },
+      {
+        "zip": "60630",
+        "phone": "7737920123",
+        "street_core": "5489 N MILWAUKEE",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "c091fb525c07faea",
+            "name": "BARBARA TRUSZKOWSKI DDS LTD",
+            "addr": "5489 n milwaukee",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "770dc428d7fe6dc3",
+            "name": "Truszkowski Dental",
+            "addr": "5489 n milwaukee ave",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60631",
+        "phone": "7737635353",
+        "street_core": "7447 W TALCOTT",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "8c957ece2c079f8a",
+            "name": "RUSSELL J. CECALA, D.D.S., M.S., LTD DBA PERIOCARE",
+            "addr": "7447 w talcott ave",
+            "class": "large_group"
+          },
+          {
+            "location_id": "cec806b53740bcb1",
+            "name": "Wagner-Lelevour Dental",
+            "addr": "7447 w talcott rd",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60634",
+        "phone": "7738361000",
+        "street_core": "6051 W BELMONT",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "52a357689cfe885a",
+            "name": "Forever Dental",
+            "addr": "6051 w belmont ave",
+            "class": "small_group"
+          },
+          {
+            "location_id": "4de0861898d105e5",
+            "name": "Dang Dental",
+            "addr": "6051 w belmont",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60634",
+        "phone": "7736852135",
+        "street_core": "5738 W BELMONT",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "f5f9bcd0e66c0f55",
+            "name": "Gonzalez Dental",
+            "addr": "5738 w belmont",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "ba379b6aa4cf3678",
+            "name": "RESHMA DHAKE DDS LTD",
+            "addr": "5738 w belmont ave",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60639",
+        "phone": "7737257900",
+        "street_core": "4446 W DIVERSEY",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "24b5a6d0d7eec395",
+            "name": "DIVERSEY FAMILY DENTAL, P.C.",
+            "addr": "4446 w diversey",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "9c7f34a525b09172",
+            "name": "Roci Elvi DMD",
+            "addr": "4446 w diversey ave",
+            "class": "solo_high_volume"
+          }
+        ]
+      },
+      {
+        "zip": "60640",
+        "phone": "7735887840",
+        "street_core": "1945 W WILSON",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "ba858690c8a54e29",
+            "name": "Renieris Irene",
+            "addr": "1945 w wilson suite",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "e32ed1606301b785",
+            "name": "THE DENTAL MASTRS OF RAVENSWOOD LLC",
+            "addr": "1945 w wilson ste",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60640",
+        "phone": "7733344200",
+        "street_core": "1700 W FOSTER",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "8ac06f384aa91d46",
+            "name": "Andersonville Dental",
+            "addr": "1700 w foster ave",
+            "class": "small_group"
+          },
+          {
+            "location_id": "2d03b66c892427bf",
+            "name": "ANDERSONVILLE DENTAL",
+            "addr": "1700 w foster",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60646",
+        "phone": "7732869700",
+        "street_core": "6200 N HIAWATHA",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "dee8891f2693b4be",
+            "name": "Connolly Dental",
+            "addr": "6200 n hiawatha ave",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "2ff3e82d93b0cba6",
+            "name": "Difranco Dental",
+            "addr": "6200 n hiawatha",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60646",
+        "phone": "7736316607",
+        "street_core": "6259 N MILWAUKEE",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "9aa8e5974e12f480",
+            "name": "DEVON DENTAL CLINIC,LTD",
+            "addr": "6259 n milwaukee ave",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "9780242db74f939e",
+            "name": "Lech Dental",
+            "addr": "6259 n milwaukee",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60646",
+        "phone": "7735949115",
+        "street_core": "6420 N LEHIGH",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "a76f0c8ea1e37128",
+            "name": "Paunescu Dental",
+            "addr": "6420 n lehigh",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "ace914075d21f844",
+            "name": "LEHIGH DENTAL CARE",
+            "addr": "6420 n lehigh ave",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60647",
+        "phone": "7733844333",
+        "street_core": "3230 W N",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "6140e924f8088627",
+            "name": "ADRIA M CASADO",
+            "addr": "3230 w n ave",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "06271566fac35420",
+            "name": "Casado Dental",
+            "addr": "3230 w n ave chicago",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60647",
+        "phone": "7737175509",
+        "street_core": "2645 N MILWAUKEE",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "912d93028de7af3e",
+            "name": "MODERN DENTAL OF LOGAN SQUARE LLC",
+            "addr": "2645 n milwaukee",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "503f5abe582e326d",
+            "name": "Weiss Dental",
+            "addr": "2645 n milwaukee ave",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60655",
+        "phone": "7732337044",
+        "street_core": "10900 S KEDZIE",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "4e4444e086bb7891",
+            "name": "Aleck-furlan",
+            "addr": "10900 s kedzie ave",
+            "class": "small_group"
+          },
+          {
+            "location_id": "ba03b15976349d1b",
+            "name": "Furlan Dental",
+            "addr": "10900 s kedzie",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60657",
+        "phone": "7739756666",
+        "street_core": "1353 W CORNELIA",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "fe8ff0d0d9a98e0c",
+            "name": "Benedetto Dental",
+            "addr": "1353 w cornelia",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "e238dde64274fc92",
+            "name": "THE WRIGLEYVILLE DENTAL GROUP",
+            "addr": "1353 w cornelia ave",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60657",
+        "phone": "7732705000",
+        "street_core": "3115 N BROADWAY",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "b5845da935111fd3",
+            "name": "Chhabria Akshi DDS",
+            "addr": "3115 n broadway st",
+            "class": "small_group"
+          },
+          {
+            "location_id": "1c65b849ac086133",
+            "name": "SCOTT OVERHOLSER, DDS P.C.",
+            "addr": "3115 n broadway",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60659",
+        "phone": "7732790304",
+        "street_core": "3550 W PETERSON",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "105287030f397cc0",
+            "name": "HEALTHCARE FOR DENTAL SYSTEMS",
+            "addr": "3550 w peterson ave",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "0e2c60f1d5bcdcd3",
+            "name": "Dong Dental",
+            "addr": "3550 w peterson",
+            "class": "solo_established"
+          }
+        ]
+      },
+      {
+        "zip": "60659",
+        "phone": "7732715200",
+        "street_core": "5643 N FAIRFIELD",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "5b800ca763768406",
+            "name": "LINCOLN DENTAL FAMILY CENTER",
+            "addr": "5643 n fairfield",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "b5e3ff82a8613a83",
+            "name": "Pascale Christina DMD",
+            "addr": "5643 n fairfield ave",
+            "class": "large_group"
+          }
+        ]
+      },
+      {
+        "zip": "60714",
+        "phone": "8474708822",
+        "street_core": "8107 N MILWAUKEE",
+        "n_locations": 2,
+        "kind": "suite_variant",
+        "locations": [
+          {
+            "location_id": "5b087bad0d0e3e2b",
+            "name": "MALGORZATA PIENKOWSKI DDS LTD",
+            "addr": "8107 n milwaukee ave",
+            "class": "solo_established"
+          },
+          {
+            "location_id": "b76802b33a96ee10",
+            "name": "Pienkowska Dental",
+            "addr": "8107 n milwaukee",
+            "class": "solo_established"
+          }
+        ]
+      }
+    ]
+  }
+}

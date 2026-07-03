@@ -1,0 +1,130 @@
+{
+  "network": "DEEPAK AGARWAL",
+  "network_id": "ao:AGARWAL_DEEPAK",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Dr. Deepak Agarwal, DMD is a dentist-owner who operates a private multi-location dental group under the 'Todays Dental' brand across Joliet, Naperville (House of Smiles / AGTEL LLC), and Plainfield (Agarwal & Patel, PC) Illinois. The Becker's Dental January 2025 article and the todaysdentalofil.com website both confirm the multi-location structure with Dr. Agarwal listed as Owner/Dentist. No DSO/MSO/management-company/PE structure was found; this is a dentist-owned private group practice.",
+  "owner_operator_identity": "Dr. Deepak Agarwal, DMD — Owner/Dentist; graduated Southern Illinois University Edwardsville School of Dental Medicine 2001. Co-practitioner Dr. Raunak Patel, DMD at Joliet and Plainfield locations.",
+  "brand_trade_names": ["Todays Dental", "Todays Dental of Joliet", "House of Smiles", "House Os Smiles PC", "Agarwal & Patel PC", "AGTEL LLC"],
+  "legal_entities": ["AGTEL, LLC (EIN 362898926)", "HOUSE OS SMILES, PC (EIN 201725665)", "AGARWAL & PATEL, PC"],
+  "durable_artifacts": [
+    "AO DEEPAK AGARWAL appears on NPPES NPIs 1013773746 (AGTEL LLC, Joliet 60435), 1508037698 (House Os Smiles PC, Naperville 60563), 1548545700 (Agarwal & Patel PC, Plainfield 60586) — ao_reach=3 across 3 distinct ZIPs",
+    "todaysdentalofil.com lists all three watched locations (Joliet 181 N Hammes Ave, Plainfield 2111 S Route 59) plus Beverly under one brand 'Todays Dental'",
+    "Becker's Dental (Jan 2025) confirmed Todays Dental of Illinois opened Joliet location; lists Deepak Agarwal DMD as lead dentist",
+    "LinkedIn: Deepak Agarwal DMD listed as Owner/Dentist — Todays Dental of Joliet",
+    "Healthgrades lists Dr. Agarwal at House Os Smiles PC, 1163 E Ogden Ave, Naperville 60563"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "Beverly location (11238 S. Western Ave, Chicago IL 60643) appears on todaysdentalofil.com but is NOT in the AO cluster (no matching NPPES NPI tied to Agarwal AO in that ZIP in the DB). The 3 watched-IL GP locations in the cluster are confirmed. AGTEL LLC (the Joliet entity, EIN 362898926) operates as 'Todays Dental of Joliet' at 181 N Hammes Ave — this entity name is the legal shell; the consumer brand is Todays Dental.",
+  "evidence_chain": "AO signal: DEEPAK AGARWAL listed as authorized official on 3 NPPES NPIs across ZIPs 60435/60563/60586. Documentary corroboration: (1) todaysdentalofil.com confirms 3-location private group (Joliet, Plainfield, Beverly) under 'Todays Dental' brand, with Dr. Deepak Agarwal named as dentist; (2) LinkedIn profile confirms 'Owner/Dentist — Todays Dental of Joliet'; (3) Becker's Dental Jan 2025 article reports Todays Dental of Illinois opened Joliet location; (4) Healthgrades confirms Agarwal at House Os Smiles PC Naperville 60563. No MSO/management-company/PE entity found anywhere. This is a dentist-owned multi-office private group.",
+  "future_app_notes": "Brand name 'Todays Dental' should be tagged across all 3 watched locations. Beverly location (60643) may warrant a separate NPPES check to see if a 4th NPI record exists under Agarwal. AGTEL LLC (the legal entity for Joliet) has EIN 362898926 — could be used to find any other locations sharing that EIN. Watch for PE acquisition announcements targeting this practice given its multi-location footprint in Will/DuPage County.",
+  "classifications": [
+    {
+      "location_id": "c7ced3c202889837",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Deepak Agarwal, DMD — Owner/Dentist (Todays Dental of Joliet)",
+      "network_id": "ao:AGARWAL_DEEPAK",
+      "signal_vs_evidence": {
+        "signal": ["ao_reach=3 across ZIPs 60435/60563/60586", "large_group entity_classification (provider_count=4)", "legal entity AGTEL LLC distinct from consumer brand"],
+        "evidence": [
+          "todaysdentalofil.com lists 181 N Hammes Ave Joliet as one of three Todays Dental locations — owner Dr. Deepak Agarwal",
+          "LinkedIn: Deepak Agarwal DMD — Owner/Dentist, Todays Dental of Joliet",
+          "Becker's Dental Jan 2025: Todays Dental of Illinois opened Joliet location, led by Deepak Agarwal DMD"
+        ]
+      },
+      "evidence_urls": [
+        "https://todaysdentalofil.com/",
+        "https://www.linkedin.com/in/deepak-agarwal-dmd-0636904/",
+        "https://www.beckersdental.com/dentists/illinois-dental-practice-opens-new-location/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "DEEPAK AGARWAL",
+        "reach": 3,
+        "zips": ["60435", "60563", "60586"],
+        "location_npi": "1013773746",
+        "ein": "362898926",
+        "entity_classification": "large_group",
+        "provider_count": 4
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "AGTEL LLC at 181 N Hammes Ave Joliet 60435 is the legal shell for 'Todays Dental of Joliet.' Dr. Deepak Agarwal is documented as Owner/Dentist via LinkedIn, todaysdentalofil.com (which lists this address under the Todays Dental brand), and a Becker's Dental article. No DSO/MSO/PE structure found. Classified dentist_multi with high confidence."
+    },
+    {
+      "location_id": "62cc00137fbcad20",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Deepak Agarwal, DMD — Owner/Dentist (House of Smiles / Todays Dental)",
+      "network_id": "ao:AGARWAL_DEEPAK",
+      "signal_vs_evidence": {
+        "signal": ["ao_reach=3 across ZIPs 60435/60563/60586", "entity HOUSE OS SMILES PC at Naperville 60563", "solo_high_volume classification"],
+        "evidence": [
+          "Healthgrades lists Dr. Deepak Agarwal at House Os Smiles PC, 1163 E Ogden Ave Ste 403, Naperville IL 60563",
+          "todaysdentalofil.com confirms Agarwal is the lead dentist across the Todays Dental multi-location group",
+          "Zocdoc lists Dr. Deepak Agarwal DMD at Naperville IL practice"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.healthgrades.com/dentist/dr-deepak-agarwal-y4dsm",
+        "https://todaysdentalofil.com/",
+        "https://www.zocdoc.com/dentist/deepak-agarwal-dmd-318543"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "DEEPAK AGARWAL",
+        "reach": 3,
+        "zips": ["60435", "60563", "60586"],
+        "location_npi": "1508037698",
+        "ein": "201725665",
+        "entity_classification": "solo_high_volume",
+        "provider_count": 1
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "Practice name in NPPES is 'HOUSE OS SMILES, PC' (likely a typo for 'House of Smiles'). Healthgrades confirms Agarwal at this address. Note: todaysdentalofil.com does NOT list Naperville/Ogden Ave as a current Todays Dental location — this may be a predecessor/separate entity that predates the Todays Dental brand consolidation, or Dr. Agarwal runs it separately alongside Todays Dental. The AO link and Healthgrades address match confirm it is his practice.",
+      "reasoning": "House Os Smiles PC at 1163 E Ogden Ave Naperville 60563 is confirmed as Dr. Deepak Agarwal's practice via Healthgrades and Zocdoc. The practice may operate under its own name rather than the Todays Dental brand (todaysdentalofil.com only lists Joliet and Plainfield as Todays Dental locations, plus Beverly). Regardless, Agarwal is the AO and confirmed owner — dentist_multi classification with high confidence. No DSO/MSO/PE found."
+    },
+    {
+      "location_id": "30959ba16371e11e",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Deepak Agarwal, DMD — Owner/Dentist; Dr. Raunak Patel, DMD co-practitioner",
+      "network_id": "ao:AGARWAL_DEEPAK",
+      "signal_vs_evidence": {
+        "signal": ["ao_reach=3 across ZIPs 60435/60563/60586", "entity AGARWAL & PATEL PC at Plainfield 60586", "solo_high_volume classification", "year_established=2011"],
+        "evidence": [
+          "todaysdentalofil.com lists 2111 S. State Rt. 59 Plainfield IL 60586 as a Todays Dental location with Dr. Deepak Agarwal and Dr. Raunak Patel",
+          "Zocdoc: Dr. Deepak Agarwal DMD at Plainfield IL — Agarwal & Patel PC",
+          "Becker's Dental Jan 2025 confirmed Todays Dental of Illinois multi-location group led by Agarwal",
+          "Yelp listing 'Todays Dental' at 2111 S Route 59 Plainfield confirms the brand/address match"
+        ]
+      },
+      "evidence_urls": [
+        "https://todaysdentalofil.com/",
+        "https://www.zocdoc.com/dentist/deepak-agarwal-dmd-609100",
+        "https://www.beckersdental.com/dentists/illinois-dental-practice-opens-new-location/",
+        "https://www.yelp.com/biz/todays-dental-plainfield-2"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "DEEPAK AGARWAL",
+        "reach": 3,
+        "zips": ["60435", "60563", "60586"],
+        "location_npi": "1548545700",
+        "ein": null,
+        "entity_classification": "solo_high_volume",
+        "provider_count": 1,
+        "year_established": 2011
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "AGARWAL & PATEL, PC at 2111 S Route 59 Plainfield 60586 is confirmed as a Todays Dental location. todaysdentalofil.com lists this address under the Todays Dental brand. Yelp also shows 'Todays Dental' at this address. Dr. Agarwal (AO) and Dr. Patel are the named dentists. No DSO/MSO/PE structure found. dentist_multi, high confidence."
+    }
+  ]
+}

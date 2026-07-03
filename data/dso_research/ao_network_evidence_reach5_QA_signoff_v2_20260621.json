@@ -1,0 +1,227 @@
+{
+ "_doc": "v2 independent QA sign-off on the REWRITTEN reach5 AO-evidence file (re-emitted 2026-06-21 10:29 under the corrected taxonomy), PLUS a cross-file T3/T5 reconciliation report for the Reset/Consolidation Gate Owner. READ-ONLY. Supersedes my 06:26 sign-off (which passed under the now-obsolete too-broad rule) WITHOUT mutating it.",
+ "author_role": "independent QA / validation-gate session (New session #1)",
+ "supersedes_but_does_not_mutate": "data/dso_research/ao_network_evidence_reach5_QA_signoff_20260621.json (06:26)",
+ "source_file": "data/dso_research/ao_network_evidence_reach5_20260621.json",
+ "source_rewritten_at": "2026-06-21 10:29",
+ "constraints_honored": [
+  "READ-ONLY review; no DB / ownership_tier / LEDGER / PROGRESS writes",
+  "did NOT mutate any prior QA file or my addendum",
+  "consolidation remains FROZEN pending Gate Owner manifest + validate-only + explicit user approval",
+  "IL only / Boston parked"
+ ],
+ "PART_1_mechanics_signoff": {
+  "verdict": "PASS \u2014 the corrected taxonomy is now correctly baked in.",
+  "regate_rule_fixed": "regate_baked_in now reads 'branded_dso & pe_backed!=true & NO MSO/platform evidence -> dentist_multi; keep branded_dso when MSO/platform/management evidence exists' \u2014 exactly the fix my DSO-structure addendum called for.",
+  "rows_moved_dentist_multi_to_branded": "10 (branded_dso 7->17, dentist_multi 52->42 in tier_tally)",
+  "those_10_are": "ALL the HUSSAIN_SAMEERA / Dental Dreams network \u2014 each backed by documentary dentaldreams.com locator URLs (7 exact-address matches) + KOS Services LLC named as MSO operator + parent_company=KOS SERVICES in NPPES. pe_backed=false correctly does NOT disqualify. This is the canonical Dental Dreams/KOS case the user cited. CONFIRMED CORRECT.",
+  "contradiction_battery_corrected_standard": {
+   "ready_DSO_tier_with_no_real_url": 0,
+   "ready_dentist_multi_with_no_real_url": 0,
+   "ready_true_independent_defaulted": 0,
+   "ready_undetermined": 0,
+   "ready_DSO_tier_pe_backed_not_true_NOW_ALLOWED": 10
+  },
+  "battery_reading": "0 ready DSO-tier without a real URL, 0 ready dentist_multi without a URL, 0 defaulted true_independent, 0 ready-undetermined. The 10 ready DSO-tier rows with pe_backed!=true are now CORRECTLY allowed (all carry documentary MSO/platform/locator evidence, not AO-reach-only)."
+ },
+ "PART_2_cross_file_reconciliation": {
+  "_doc": "The corrected taxonomy exposed a T3(dentist_multi) vs T4/T5(DSO-tier) BOUNDARY disagreement between reach5 and my Fleet B/AO addenda. Live-DB entity_classification survived the wave-1 reset (only ownership_tier was cleared), so it is usable as a corroborating signal here \u2014 though it is the LEGACY axis, not canonical for ownership_tier.",
+  "overlap_location_ids_with_my_addendum": 13,
+  "agreements_both_DSO_tier": {
+   "count": 6,
+   "note": "All 6 are Dental Dreams/KOS (DENTAL EXPERTS LLC). Both files DSO-tier; only the branded-vs-stealth sub-label differs on one (headline-neutral).",
+   "rows": [
+    {
+     "location_id": "b296a2f2d1c1dc3a",
+     "name": "DENTAL EXPERTS, LLC",
+     "my_addendum_tier": "branded_dso",
+     "reach5_tier": "branded_dso",
+     "live_db_entity_classification": "dso_national",
+     "live_db_affiliated_dso": null,
+     "live_db_parent_company": "KOS SERVICES",
+     "reach5_network": "HUSSAIN_SAMEERA"
+    },
+    {
+     "location_id": "16f45e3695a10058",
+     "name": "DENTAL EXPERTS, LLC",
+     "my_addendum_tier": "stealth_dso",
+     "reach5_tier": "branded_dso",
+     "live_db_entity_classification": "dso_national",
+     "live_db_affiliated_dso": "Dental Dreams",
+     "live_db_parent_company": null,
+     "reach5_network": "HUSSAIN_SAMEERA"
+    },
+    {
+     "location_id": "6739545b64130396",
+     "name": "DENTAL EXPERTS, LLC",
+     "my_addendum_tier": "branded_dso",
+     "reach5_tier": "branded_dso",
+     "live_db_entity_classification": "dso_national",
+     "live_db_affiliated_dso": null,
+     "live_db_parent_company": "KOS SERVICES",
+     "reach5_network": "HUSSAIN_SAMEERA"
+    },
+    {
+     "location_id": "c7da8303188c8187",
+     "name": "DENTAL EXPERTS, LLC",
+     "my_addendum_tier": "branded_dso",
+     "reach5_tier": "branded_dso",
+     "live_db_entity_classification": "dso_national",
+     "live_db_affiliated_dso": null,
+     "live_db_parent_company": "KOS SERVICES",
+     "reach5_network": "HUSSAIN_SAMEERA"
+    },
+    {
+     "location_id": "dbad14745be900f5",
+     "name": "DENTAL EXPERTS, LLC",
+     "my_addendum_tier": "branded_dso",
+     "reach5_tier": "branded_dso",
+     "live_db_entity_classification": "dso_national",
+     "live_db_affiliated_dso": null,
+     "live_db_parent_company": "KOS SERVICES",
+     "reach5_network": "HUSSAIN_SAMEERA"
+    },
+    {
+     "location_id": "b11b2bdcb2eb181d",
+     "name": "DENTAL EXPERTS, LLC",
+     "my_addendum_tier": "branded_dso",
+     "reach5_tier": "branded_dso",
+     "live_db_entity_classification": "dso_national",
+     "live_db_affiliated_dso": null,
+     "live_db_parent_company": "KOS SERVICES",
+     "reach5_network": "HUSSAIN_SAMEERA"
+    }
+   ]
+  },
+  "conflicts_my_DSO_tier_vs_reach5_dentist_multi": {
+   "count": 7,
+   "rows": [
+    {
+     "location_id": "1354bc2b8dff1d69",
+     "name": "SONRISA ROGERS PARK INC",
+     "my_addendum_tier": "stealth_dso",
+     "reach5_tier": "dentist_multi",
+     "live_db_entity_classification": "solo_established",
+     "live_db_affiliated_dso": null,
+     "live_db_parent_company": null,
+     "reach5_network": "KORKUS_JASON"
+    },
+    {
+     "location_id": "86f0b24aac6e0fff",
+     "name": "DENTAL PROFILE 2",
+     "my_addendum_tier": "branded_dso",
+     "reach5_tier": "dentist_multi",
+     "live_db_entity_classification": "dso_regional",
+     "live_db_affiliated_dso": "1st Family Dental",
+     "live_db_parent_company": null,
+     "reach5_network": "RONCEVIC_MILAN"
+    },
+    {
+     "location_id": "5287843d3b6853ff",
+     "name": "SONRISA CAPITATION CCHC PROFESSIONAL CORPORATION SONRISA FAMILY DENTAL",
+     "my_addendum_tier": "stealth_dso",
+     "reach5_tier": "dentist_multi",
+     "live_db_entity_classification": "small_group",
+     "live_db_affiliated_dso": null,
+     "live_db_parent_company": null,
+     "reach5_network": "KORKUS_JASON"
+    },
+    {
+     "location_id": "4c77253121d38b15",
+     "name": "SONRISA CAPITATION ESPERANZA PROFESSIONAL CORPORATION",
+     "my_addendum_tier": "stealth_dso",
+     "reach5_tier": "dentist_multi",
+     "live_db_entity_classification": "dso_regional",
+     "live_db_affiliated_dso": "Sonrisa Family Dental (Community Dental Centers of America)",
+     "live_db_parent_company": null,
+     "reach5_network": "KORKUS_JASON"
+    },
+    {
+     "location_id": "8dbe509f0a92a9d0",
+     "name": "PRECISION DENTAL CARE, LLC",
+     "my_addendum_tier": "stealth_dso",
+     "reach5_tier": "dentist_multi",
+     "live_db_entity_classification": "dso_regional",
+     "live_db_affiliated_dso": "Precision Dental Care",
+     "live_db_parent_company": null,
+     "reach5_network": "CHANG_RANDY"
+    },
+    {
+     "location_id": "fb8282656b8e9b30",
+     "name": "PRECISION DENTAL CARE, LLC",
+     "my_addendum_tier": "stealth_dso",
+     "reach5_tier": "dentist_multi",
+     "live_db_entity_classification": "large_group",
+     "live_db_affiliated_dso": null,
+     "live_db_parent_company": null,
+     "reach5_network": "CHANG_RANDY"
+    },
+    {
+     "location_id": "bf3f2644333e5404",
+     "name": "DENTAL TOWN LTD",
+     "my_addendum_tier": "stealth_dso",
+     "reach5_tier": "dentist_multi",
+     "live_db_entity_classification": "solo_high_volume",
+     "live_db_affiliated_dso": null,
+     "live_db_parent_company": null,
+     "reach5_network": "GONZALEZ_SAMANTHA"
+    }
+   ]
+  },
+  "objective_miss_candidates_reach5_dentist_multi_but_live_db_corporate": {
+   "count": 4,
+   "note": "These reach5 ready-dentist_multi rows already carry entity_classification=dso_regional AND/OR affiliated_dso=<the brand> in the live DB. The reach5 author's own signal text even acknowledges 'entity_classification already=dso_regional' yet still assigned dentist_multi. Recommend RESTORE to DSO-tier (stealth_dso) \u2014 these are friendly-PC / capitation / numbered-LLC structures (Sonrisa Capitation Esperanza/CDCA, 1st Family 'Dental Profile 2' back-office, Precision Dental Care numbered LLCs).",
+   "rows": [
+    {
+     "location_id": "4c77253121d38b15",
+     "name": "SONRISA CAPITATION ESPERANZA PROFESSIONAL CORPORATION",
+     "reach5_network": "KORKUS_JASON",
+     "live_db_entity_classification": "dso_regional",
+     "live_db_affiliated_dso": "Sonrisa Family Dental (Community Dental Centers of America)"
+    },
+    {
+     "location_id": "86f0b24aac6e0fff",
+     "name": "DENTAL PROFILE 2",
+     "reach5_network": "RONCEVIC_MILAN",
+     "live_db_entity_classification": "dso_regional",
+     "live_db_affiliated_dso": "1st Family Dental"
+    },
+    {
+     "location_id": "8dbe509f0a92a9d0",
+     "name": "PRECISION DENTAL CARE, LLC",
+     "reach5_network": "CHANG_RANDY",
+     "live_db_entity_classification": "dso_regional",
+     "live_db_affiliated_dso": "Precision Dental Care"
+    },
+    {
+     "location_id": "3a2acb8b4e928c23",
+     "name": "PRECISION DENTAL CARE 2, LLC",
+     "reach5_network": "CHANG_RANDY",
+     "live_db_entity_classification": "dso_regional",
+     "live_db_affiliated_dso": "Precision Dental Care"
+    }
+   ]
+  },
+  "genuine_T3_T5_judgment_edges": {
+   "count": 34,
+   "by_network": {
+    "GONZALEZ_SAMANTHA": 9,
+    "NOURAHMADI_MILAD": 6,
+    "TSALIAGOS_CHRISTOS": 5,
+    "KORKUS_JASON": 4,
+    "KHURANA_PRADEEP": 2,
+    "PALELLA_PHILLIP": 5,
+    "CHANG_RANDY": 3
+   },
+   "note": "Single-founder, dentist-owned, multi-location groups operating under ONE brand with a public locator but NO external MSO/management-company and NOT flagged corporate by the legacy classifier: Dental Town (Dr. Razzak, 12 loc, 'VP of Operations' AO), MetroSmiles (Dr. Tsaliagos, 7 loc), Shining Smiles (Dr. Nourahmadi, 5 loc), plain Sonrisa Family Dental (Dr. Korkus), plain Precision (Dr. Chang), PALELLA, KHURANA. Per the LOCKED model these sit exactly on the T3/T5 line: T3 = dentist-owned multi, NO platform; T5 = established DSO brand OR platform/management structure, brand IS the NPPES name. reach5 reads them as T3; my addendum read the brand+locator as T5. BOTH are defensible. This is a POLICY call, not a data error."
+  }
+ },
+ "PART_3_implication_for_my_own_addendum": "Honest self-correction flag: my DSO-structure addendum used a blanket 'documentary locator to an established multi-location brand -> restore DSO-tier'. That is correct for true MSO/platform brands (Dental Dreams/KOS, United Dental Partners, Webster Management, Imagen, 1st Family, Sonrisa-capitation/CDCA) but may OVER-restore the single-founder owned-multi groups above (Dental Town, plain Precision, plain Sonrisa, and by extension MetroSmiles/Shining Smiles were not in my set). If the Gate Owner's T3/T5 policy is 'single-founder owned-multi with no external MSO = dentist_multi', my addendum needs a v2 demoting those specific rows back to dentist_multi. I will write that addendum v2 on request \u2014 I am NOT doing it unilaterally because (a) it is a policy call the Gate Owner owns, and (b) the user explicitly listed 'Dental Town / Dental 360 / Sonrisa / Precision' among brands to RESTORE, which points the other way. The conflict must be resolved by ONE policy, then applied consistently to BOTH files.",
+ "recommendation_to_gate_owner": [
+  "1. ACCEPT the reach5 mechanics: corrected regate is sound; the 10 Dental Dreams/KOS restorations and the clean contradiction battery are confirmed.",
+  "2. RESTORE the 4 objective-miss rows (Sonrisa Capitation Esperanza, 1st Family 'Dental Profile 2', Precision Dental Care LLC x2) from dentist_multi -> stealth_dso before manifest; they are already dso_regional+affiliated_dso in the DB.",
+  "3. SET ONE explicit T3/T5 decision test for single-founder branded multi-location groups (decisive question: is there a separate management-company/MSO/centralized-operations layer, or numbered-LLC/friendly-PC/capitation structure -> T5; pure single-owner with no such layer -> T3). Note Dental Town has a centralized 'VP of Operations' signing all NPIs, which leans T5.",
+  "4. APPLY that policy CONSISTENTLY to BOTH reach5 and my addendum, then build the canonical manifest. Tell me the policy and I will reconcile my addendum via an addendum v2 (no silent rewrite).",
+  "5. Headline impact: every conflict row is already Consolidated either way, so the Consolidated headline (T2+T3+T4+T5) is unaffected; only the DSO/PE-only headline (T4+T5) moves with this decision."
+ ]
+}

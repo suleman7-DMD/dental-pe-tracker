@@ -1,0 +1,153 @@
+{
+  "network": "INCHUN YANG",
+  "network_id": "ao:YANG_INCHUN",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Dr. Scott Inchun Yang, DDS is the founder/president/CEO of a small private multi-office dental group operating under the 'Glamour Dental Group' brand umbrella in Chicagoland. He is the authorized official on all three NPPES organization NPIs. Active confirmed locations include Glamour Dental South Chicago Heights (60411) and Metro Dental LLC in Logan Square Chicago (60647). The Des Plaines Metropolitan Dental Care (60016) is a stale/closed NPI shell — Yelp marks it CLOSED, the NPPES record has not been updated in ~18 years, and the active metropolitandentalcare.com now shows different dentists with no connection to Yang. No DSO/MSO/PE layer was found; 'Glamour Dental Group' is consistent with a dentist-owned group brand, not a third-party management platform.",
+  "owner_operator_identity": "Dr. Scott Inchun Yang, DDS — Founder and President of Glamour Dental (glamourdental.net); CEO of Metro Dental LLC (confirmed via WebMD/directory). Bilingual in English, Spanish, and Korean. Education: B.S. University of Rochester; DMD Northwestern University.",
+  "brand_trade_names": [
+    "Glamour Dental",
+    "Glamour Dental Group",
+    "Metro Dental",
+    "Metropolitan Dental Care"
+  ],
+  "legal_entities": [
+    "GLAMOUR DENTAL SOUTH CHICAGO HEIGHTS LLC (NPI org 1649697806)",
+    "METRO DENTAL LLC (NPI org 1265841480)",
+    "METROPOLITAN DENTAL CARE (NPI org 1043476856 — stale/closed)"
+  ],
+  "durable_artifacts": [
+    "Shared authorized official INCHUN YANG across NPI orgs 1043476856, 1649697806, 1265841480",
+    "glamourdental.net footer: 'a Glamour Dental Group Office' — confirms group umbrella brand",
+    "glamourdental.net About/Doctors page: Dr. Inchun Yang listed as Founder and President",
+    "WebMD/directory snippet confirms Dr. Inchun Yang as CEO of Metro Dental LLC at 2746 W Fullerton Ave Chicago 60647",
+    "Patch.com ribbon-cutting article: 'Dr. Scott Inchun Yang, D.D.S.' opened Metropolitan Dental Care at 1541 Market St Des Plaines (grand opening coverage)",
+    "npino.org NPI 1043476856: authorized official = Yang, Inchun DDS; last update ~18 years ago"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "Metropolitan Dental Care (location_id f790cf2484530188, NPI 1043476856, 1541 Market St Des Plaines 60016) is a stale/closed shell. Yelp marks this listing as CLOSED. The current metropolitandentalcare.com shows different doctors (Chami, Bawany, Kim) with no connection to Yang. NPPES org record last updated ~18 years ago. This NPI should be flagged as a closed-shell and excluded from the active GP denominator for Yang's network count.",
+  "evidence_chain": "AO signal: INCHUN YANG is the NPPES authorized official on 3 IL GP org-NPIs across ZIPs 60016, 60411, 60647. Documentary corroboration found: (1) glamourdental.net lists Dr. Inchun Yang as 'Founder and President' with footer 'a Glamour Dental Group Office' — confirming owner identity and group brand at 60411 location. (2) WebMD/dental-directory snippets confirm Dr. Yang as CEO of Metro Dental LLC at 2746 W Fullerton Ave Chicago 60647 — corroborates the 60647 location. (3) Patch.com ribbon-cutting article confirms Dr. Scott Inchun Yang opened Metropolitan Dental Care in Des Plaines — corroborates the 60016 NPI origin, but Yelp now marks that location CLOSED and current website shows different dentists, indicating the Des Plaines shell is stale. No MSO/DSO/PE management layer found; Glamour Dental Group branding is consistent with a dentist-owned private group. Verdict: dentist_multi with gate_status=ready_for_validation for the two active locations; Des Plaines is stale/closed.",
+  "future_app_notes": "1. Des Plaines NPI 1043476856 (f790cf2484530188) should be reviewed for reclassification to solo_inactive or marked stale-closed — it is a Yang-originated shell that now has different operators at the address per current website. 2. Glamour Dental Group may have additional locations beyond the two active watched-IL ones (directory snippets mention 'other locations' and a Calumet City address) — worth checking if any other watched-IL ZIPs have Yang-associated NPIs not yet in this cluster. 3. No PE or MSO evidence found; if Yang sells to a DSO platform in future, this would upgrade to stealth_dso. 4. The 'Crossroads of America Dental' Calumet City listing is an additional Yang-associated address not in this cluster — may warrant a separate check if it falls in a watched ZIP.",
+  "classifications": [
+    {
+      "location_id": "f790cf2484530188",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Scott Inchun Yang, DDS (Founder/President, Glamour Dental Group)",
+      "network_id": "ao:YANG_INCHUN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60016, 60411, 60647 — INCHUN YANG is authorized official on NPI org 1043476856",
+          "practice name 'METROPOLITAN DENTAL CARE' at 1541 Market St Des Plaines 60016",
+          "org NPI 1043476856 enumerated 2008, last updated ~18 years ago"
+        ],
+        "evidence": [
+          "Patch.com ribbon-cutting article confirms Dr. Scott Inchun Yang, DDS opened Metropolitan Dental Care at 1541 Market St Des Plaines — establishes Yang as original owner/operator",
+          "Yelp marks this location CLOSED (confirmed as of June 2026 search results)",
+          "Current metropolitandentalcare.com lists different dentists (Chami, Bawany, Kim) — no Yang connection on current site",
+          "NPPES org record (npino.org) shows no update in ~18 years — stale shell"
+        ]
+      },
+      "evidence_urls": [
+        "https://patch.com/illinois/desplaines/an--metropolitan-dental-opens-in-des-plaines",
+        "https://www.yelp.com/biz/metropolitan-dental-care-des-plaines-3",
+        "https://www.npino.org/npi/metropolitan-dental-care-1043476856.html",
+        "https://doctor.webmd.com/practice/metropolitan-dental-care-48f072d4-5856-43d7-8220-b3fba7d492b1"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "INCHUN YANG",
+        "reach": 3,
+        "zips": ["60016", "60411", "60647"],
+        "npi": "1043476856",
+        "location_name": "METROPOLITAN DENTAL CARE",
+        "address": "1541 market st, Des Plaines IL 60016"
+      },
+      "web_searched": true,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "stale_closed_note": "STALE/CLOSED SHELL — Yelp marks CLOSED as of June 2026. Current metropolitandentalcare.com shows different dentists (Chami, Bawany, Kim) with no Yang connection. NPPES NPI 1043476856 last updated ~18 years ago. This location should be excluded from the active Yang network count and reviewed for solo_inactive or stale reclassification in the DB. The AO link to Yang is confirmed historically via Patch.com grand-opening article, but the practice no longer appears to be a Yang-operated location.",
+      "reasoning": "Dr. Yang originally opened Metropolitan Dental Care in Des Plaines (~2008) as confirmed by a local Patch.com ribbon-cutting article. However, this location is now marked CLOSED on Yelp (June 2026), the NPPES org NPI has not been updated in ~18 years, and the current metropolitandentalcare.com website shows completely different dentists with no connection to Yang. This is a stale/closed NPI shell — Yang's AO status on this NPI is a historical artifact. Gate_status is 'candidate' rather than 'ready_for_validation' because while the Yang-ownership origin is corroborated, the current operational status is closed/transferred, making this a false positive for any active GP denominator classification."
+    },
+    {
+      "location_id": "61bf52de60f33476",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Scott Inchun Yang, DDS (Founder/President, Glamour Dental Group)",
+      "network_id": "ao:YANG_INCHUN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60016, 60411, 60647 — INCHUN YANG is authorized official on NPI org 1649697806",
+          "practice name 'GLAMOUR DENTAL SOUTH CHICAGO HEIGHTS LLC' at 3330 Chicago Rd South Chicago Heights 60411",
+          "entity_classification=solo_established in DB (under-classified — this is a group practice owner)"
+        ],
+        "evidence": [
+          "glamourdental.net About page: Dr. Inchun Yang listed as 'Founder and President' of Glamour Dental — directly ties named owner to this location",
+          "glamourdental.net footer: 'a Glamour Dental Group Office' — confirms group umbrella with multiple locations",
+          "glamourdental.net contact page confirms address 3320 Chicago Rd Suite A South Chicago Heights IL 60411",
+          "DentalPlans.com and multiple directory listings confirm Dr. Inchun Yang DDS at South Chicago Heights 60411 under Glamour Dental"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.glamourdental.net/",
+        "https://www.glamourdental.net/meet-our-doctors",
+        "https://www.glamourdental.net/customer-service",
+        "https://www.dentalplans.com/dentists/illinois/south-chicago-heights/60411/dr-inchun-yang-95440/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "INCHUN YANG",
+        "reach": 3,
+        "zips": ["60016", "60411", "60647"],
+        "npi": "1649697806",
+        "location_name": "GLAMOUR DENTAL SOUTH CHICAGO HEIGHTS LLC",
+        "address": "3330 chicago rd, South Chicago Heights IL 60411"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Strong documentary corroboration: glamourdental.net explicitly lists Dr. Inchun Yang as 'Founder and President' of Glamour Dental at this address, and the site footer confirms 'a Glamour Dental Group Office.' This is a dentist-owned multi-location private group — Yang personally owns and operates this office as part of his Glamour Dental Group. No MSO/DSO/PE management layer found. Current DB classification (solo_established) under-classifies this location; it belongs to a multi-office dentist-owned group and should be reclassified. Ready for validation: owner identity, group brand, and address all documented with live website evidence."
+    },
+    {
+      "location_id": "4d5aa903a1f34565",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Scott Inchun Yang, DDS (CEO, Metro Dental LLC)",
+      "network_id": "ao:YANG_INCHUN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60016, 60411, 60647 — INCHUN YANG is authorized official on NPI org 1265841480",
+          "practice name 'METRO DENTAL LLC' at 2746 W Fullerton Ave Chicago 60647 (Logan Square)",
+          "entity_classification=solo_established in DB (under-classified)",
+          "phone (501) 773-1233 — unusual 501 area code (Arkansas) may be a VOIP/data issue"
+        ],
+        "evidence": [
+          "WebMD and dental-directory search-result snippets confirm Dr. Inchun Yang as CEO of Metro Dental LLC at 2746 W Fullerton Ave Chicago IL 60647",
+          "Metro Dental described as 'Family Dental office in the Logan Square Neighborhood' providing 'Family, Cosmetic and Implant Dentistry'",
+          "Zocdoc and DentalPlans listings confirm Dr. Inchun Yang DDS at Metro Dental 2746 W Fullerton Chicago 60647",
+          "npiprofile.com NPI 1265841480 listing confirms Metro Dental LLC at this address under Yang"
+        ]
+      },
+      "evidence_urls": [
+        "https://doctor.webmd.com/practice/metro-dental-llc-b47662b3-5675-4b6a-81ee-a3dc77b3b98a-physicians/alpha/all",
+        "https://www.zocdoc.com/dentist/inchun-yang-dds-118172",
+        "https://www.dentalplans.com/dentists/illinois/chicago/60647/dr-inchun-yang-32296/",
+        "https://www.opencare.com/dentists/chicago-il/metro-dental-24630067656c/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "INCHUN YANG",
+        "reach": 3,
+        "zips": ["60016", "60411", "60647"],
+        "npi": "1265841480",
+        "location_name": "METRO DENTAL LLC",
+        "address": "2746 w fullerton ave, Chicago IL 60647"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Multiple independent directory sources (WebMD, Zocdoc, DentalPlans, OpenCare) confirm Dr. Inchun Yang as the dentist/CEO at Metro Dental LLC, 2746 W Fullerton Ave, Chicago IL 60647. The practice is described as an active general/cosmetic/implant dental office in Logan Square. This is part of Yang's private dentist-owned group (Glamour Dental Group umbrella). No DSO/MSO/PE layer found. DB currently classifies as solo_established, which under-classifies the multi-office ownership. The unusual phone area code (501 = Arkansas) is likely a VOIP number — not indicative of closure. Ready for validation: owner identity and address confirmed by multiple live directory sources."
+    }
+  ]
+}

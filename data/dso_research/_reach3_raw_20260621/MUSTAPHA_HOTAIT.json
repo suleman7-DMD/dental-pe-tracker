@@ -1,0 +1,127 @@
+{
+  "network": "MUSTAPHA HOTAIT",
+  "network_id": "ao:HOTAIT_MUSTAPHA",
+  "owner_type_verdict": "pe_mso_backed",
+  "network_summary": "Dr. Mustapha Hotait DDS is the NPPES authorized official on two GP locations in Chicagoland (Dolton ZIP 60419 and Chicago ZIP 60629), both operating under United Dental Partners (UDP), a documented DSO headquartered in Chicago with PE backing from Calera Capital. The Dolton location (registered as MUSTAPHA HOTAIT DDS PC) operates as 'All Family Dental & Braces' under UDP. The Chicago/Pulaski location (registered as CHICAGO DENTAL COSMETICS, now rebranded to Advanced Family Dental) is also confirmed under UDP. Dr. Hotait's AO status reflects UDP's doctor-led model (dentists listed as AO on their own NPI records within the platform), not independent multi-office ownership. In 2018, Advanced Family Dental (14 offices) affiliated with Great Lakes Dental Partners (Shore Capital PE). The current operator is United Dental Partners with Calera Capital backing.",
+  "owner_operator_identity": "Dr. Mustapha Hotait DDS (clinical lead / authorized official within United Dental Partners network; UDP co-founded by dentists as a doctor-led DSO platform; Calera Capital is PE backer)",
+  "brand_trade_names": [
+    "All Family Dental & Braces",
+    "Dolton Dental",
+    "Advanced Family Dental",
+    "Advanced Family Dental Associates",
+    "Chicago Dental Cosmetics",
+    "United Dental Partners"
+  ],
+  "legal_entities": [
+    "MUSTAPHA HOTAIT DDS PC (NPPES entity, Dolton NPI 1689976540)",
+    "United Dental Partners (DSO/MSO platform, Chicago IL)",
+    "Advanced Family Dental and Orthodontics PC (affiliated 2018 with Great Lakes Dental Partners)"
+  ],
+  "durable_artifacts": [
+    "AO reach: MUSTAPHA HOTAIT appears as authorized official on both NPI 1689976540 (Dolton 60419) and NPI 1235680109 (Chicago 60629)",
+    "Dolton NPI 1689976540 entity name: MUSTAPHA HOTAIT DDS PC — consumer brand: All Family Dental & Braces; UDP Facebook page confirms Dolton location (facebook.com/DoltonDentalandbraces/)",
+    "Chicago NPI 1235680109 entity name: CHICAGO DENTAL COSMETICS — rebranded to Advanced Family Dental; UDP Facebook pages: facebook.com/AdvancedFamilyDentalAsso/ and facebook.com/advancedfamilydental/ both identified as United Dental Partners",
+    "Advanced Family Dental (14 offices) affiliated with Great Lakes Dental Partners (Shore Capital PE) in June 2018 per greatlakesdentalpartners.com press release",
+    "United Dental Partners PE backer: Calera Capital (confirmed via search result citing mergr.com and PitchBook profile)",
+    "United Dental Partners locations page (uniteddentalpartners.com/locations/) covers both metros",
+    "NexHealth booking page for Advanced Family Dental routes through 'unitedentalpartners' slug: app.nexhealth.com/appt/unitedentalpartners?lid=2763"
+  ],
+  "mso_platform_pe_evidence": "United Dental Partners (UDP) is the DSO/MSO operator of both locations. UDP is headquartered in Chicago, IL, provides centralized non-clinical services (marketing, HR, billing, credentialing, IT) to affiliated practices, and is backed by Calera Capital (PE). Source: uniteddentalpartners.com/about-us/our-story/ and uniteddentalpartners.com/locations/. Additional prior PE history: Advanced Family Dental's 14-office group affiliated with Great Lakes Dental Partners (Shore Capital Partners) in June 2018 per greatlakesdentalpartners.com/news/2018/06/11/chicagoland-smile-group-doubles-in-size-with-advanced-family-dental-partnership/.",
+  "stale_closed_false_positive_notes": "Chicago Dental Cosmetics (60629) was marked CLOSED on Yelp as of June 2025, but the address 6338 S Pulaski Rd continues to operate as Advanced Family Dental under UDP (Yelp listing for Advanced Family Dental at same address updated May 2026). The NPPES entity name 'CHICAGO DENTAL COSMETICS' is a legacy registration; the operating brand has been Advanced Family Dental / UDP for years. The Dolton NPI registered as 'MUSTAPHA HOTAIT DDS PC' is the federal legal entity but operates consumer-facing as 'All Family Dental & Braces' under UDP. AO-cluster false-positive risk is LOW: Dr. Hotait is not a billing clerk but a dentist within the UDP platform whose name appears on both NPPES records as the affiliated clinical official.",
+  "evidence_chain": "AO signal: MUSTAPHA HOTAIT appears as the NPPES authorized official on NPI 1689976540 (Dolton 60419, 'MUSTAPHA HOTAIT DDS PC') and NPI 1235680109 (Chicago 60629, 'CHICAGO DENTAL COSMETICS'). Web research corroboration: (1) Search results show Dr. Hotait practices at 'All Family Dental & Braces, 1350 E Sibley Blvd Ste 302, Dolton, IL 60419' — the exact address of NPI 1689976540. (2) Multiple UDP Facebook pages confirm both addresses as United Dental Partners locations (DoltonDentalandbraces, AdvancedFamilyDentalAsso, advancedfamilydental). (3) opencare.com and zocdoc.com list Dr. Hotait at 6338 S Pulaski Rd, Chicago under 'Advanced Family Dental.' (4) NexHealth booking for Advanced Family Dental routes through uniteddentalpartners slug. (5) Great Lakes Dental Partners press release (2018) confirms Advanced Family Dental's 14-office network joined GLDP (Shore Capital PE). (6) UDP confirmed PE-backed by Calera Capital via PitchBook/mergr. Documentary tier: branded_dso, pe_backed=true.",
+  "future_app_notes": "Both locations are already in the corporate classification pipeline: location c6078e6641ef7f48 is already dso_regional with affiliated_dso 'All Family Dental & Braces (United Dental Partners)'. The Dolton location (5abb561bfd384285) is currently classified small_group — it should be reviewed for promotion to dso_national or dso_regional given the documented UDP affiliation. The AO signal here is not a new discovery of an independent multi-location dentist but rather confirmation that UDP's doctor-led structure shows member dentists as AO on their own NPI records. Downstream gate should verify: (a) whether the Dolton NPI's entity_classification can be promoted to dso_regional/dso_national given UDP evidence; (b) whether the Chicago location's 'CLOSED' Yelp signal means the NPI is stale (check phone activity — same phone (773) 767-1554 appears live on Advanced Family Dental Yelp as of May 2026). UDP brand in DB as 'All Family Dental & Braces (United Dental Partners)' — confirm affiliated_dso label is applied to Dolton location.",
+  "classifications": [
+    {
+      "location_id": "5abb561bfd384285",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "United Dental Partners (DSO platform, Calera Capital PE); Dr. Mustapha Hotait DDS as affiliated clinical dentist / AO",
+      "network_id": "ao:HOTAIT_MUSTAPHA",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2 across ZIPs 60419 and 60629 (MUSTAPHA HOTAIT as authorized official on both NPIs)",
+          "NPPES entity name 'MUSTAPHA HOTAIT DDS PC' suggests solo/PC structure",
+          "provider_count=2 at this address"
+        ],
+        "evidence": [
+          "WebMD and third-party profiles confirm Dr. Hotait practices at 'All Family Dental & Braces, 1350 E Sibley Blvd Ste 302, Dolton, IL 60419' — same address as this NPI, confirming UDP operating brand",
+          "UDP Facebook page 'United Dental Partners | Dolton IL' (facebook.com/DoltonDentalandbraces/) confirms this Dolton address is a UDP network location",
+          "United Dental Partners website (uniteddentalpartners.com) is a documented DSO providing centralized non-clinical management services across Illinois and Indiana",
+          "Calera Capital confirmed as PE backer of United Dental Partners (PitchBook/mergr)"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.facebook.com/DoltonDentalandbraces/",
+        "https://www.uniteddentalpartners.com/",
+        "https://www.uniteddentalpartners.com/locations/",
+        "https://www.uniteddentalpartners.com/about-us/our-story/",
+        "https://mergr.com/company/united-dental-partners",
+        "https://doctor.webmd.com/doctor/mustapha-hotait-7429d013-076f-479f-bdf9-ae2a2cb76e2c-overview"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "MUSTAPHA HOTAIT",
+        "reach": 2,
+        "zips": ["60419", "60629"],
+        "npi": "1689976540",
+        "entity_name": "MUSTAPHA HOTAIT DDS PC",
+        "current_entity_classification": "small_group",
+        "operating_brand": "All Family Dental & Braces (Dolton Dental) — United Dental Partners"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "NPPES entity MUSTAPHA HOTAIT DDS PC (Dolton, 60419) is documented as operating under United Dental Partners (UDP), a Chicago-based DSO with Calera Capital PE backing. Dr. Hotait's AO status reflects UDP's doctor-led model. Current classification small_group is incorrect — this location is part of a PE-backed DSO platform. Evidence is multi-source: professional profile sites confirm the UDP/All Family Dental brand at this exact address; UDP Facebook page confirms Dolton presence; UDP website is a documented DSO. Tier = branded_dso, pe_backed = true. Ready for validation to promote entity_classification from small_group to dso_regional (or dso_national if UDP qualifies for national tier in the system)."
+    },
+    {
+      "location_id": "c6078e6641ef7f48",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "United Dental Partners (DSO platform, Calera Capital PE); Dr. Mustapha Hotait DDS as affiliated clinical dentist / AO",
+      "network_id": "ao:HOTAIT_MUSTAPHA",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2 across ZIPs 60419 and 60629 (MUSTAPHA HOTAIT as authorized official on both NPIs)",
+          "entity already classified dso_regional with affiliated_dso 'All Family Dental & Braces (United Dental Partners)' in existing DB",
+          "provider_count=1"
+        ],
+        "evidence": [
+          "Yelp and patientconnect365 confirm 6338 S Pulaski Rd, Chicago 60629 is currently 'Advanced Family Dental' (rebranded from Chicago Dental Cosmetics), operating under UDP",
+          "UDP Facebook pages 'Advanced Family Dental Associates | Chicago IL' (facebook.com/advancedfamilydental/ and facebook.com/AdvancedFamilyDentalAsso/) both identified as United Dental Partners",
+          "opencare.com and zocdoc.com list Dr. Hotait at this address under 'Advanced Family Dental / Advanced Family Dental Associates'",
+          "Great Lakes Dental Partners press release (June 2018) confirms Advanced Family Dental (14-office group) joined GLDP (Shore Capital PE backer)",
+          "NexHealth booking confirms uniteddentalpartners.com as the scheduling platform for Advanced Family Dental",
+          "Yelp listing for Advanced Family Dental at 6338 S Pulaski Rd updated May 2026 — practice is active, not closed (prior Yelp entry 'Chicago Dental Cosmetics' marked closed reflects the name change, not closure)"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.facebook.com/advancedfamilydental/",
+        "https://www.facebook.com/AdvancedFamilyDentalAsso/",
+        "https://www.uniteddentalpartners.com/",
+        "https://www.uniteddentalpartners.com/locations/",
+        "https://www.greatlakesdentalpartners.com/news/2018/06/11/chicagoland-smile-group-doubles-in-size-with-advanced-family-dental-partnership/",
+        "https://app.nexhealth.com/appt/unitedentalpartners?lid=2763",
+        "https://www.yelp.com/biz/advanced-family-dental-chicago-2",
+        "https://www.yelp.com/biz/chicago-dental-cosmetics-chicago",
+        "https://mergr.com/company/united-dental-partners"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "MUSTAPHA HOTAIT",
+        "reach": 2,
+        "zips": ["60419", "60629"],
+        "npi": "1235680109",
+        "entity_name": "CHICAGO DENTAL COSMETICS",
+        "current_entity_classification": "dso_regional",
+        "affiliated_dso_in_db": "All Family Dental & Braces (United Dental Partners)",
+        "operating_brand": "Advanced Family Dental — United Dental Partners"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "NPPES entity name 'CHICAGO DENTAL COSMETICS' is a legacy name; Yelp shows this entity closed but the address 6338 S Pulaski Rd continues to operate as 'Advanced Family Dental' under UDP (Yelp updated May 2026, reviews current). NPI 1235680109 may need entity name refresh to match operating brand, but the location is active and correctly classified dso_regional in DB. The 'CLOSED' Yelp entry for Chicago Dental Cosmetics is a business-name-change artifact, not a practice closure.",
+      "reasoning": "Location already correctly classified dso_regional in DB with affiliated_dso 'All Family Dental & Braces (United Dental Partners)'. AO investigation corroborates the existing classification: Dr. Hotait is the AO on this NPI and is a dentist within the UDP network. Multiple documentary sources confirm the UDP affiliation at this address. PE backing (Calera Capital) is documented for UDP. This classification is confirmed — no change needed to entity_classification; gate serves as corroboration of existing corporate record. Tier = branded_dso (equivalent to dso_regional in DB taxonomy), pe_backed=true."
+    }
+  ]
+}

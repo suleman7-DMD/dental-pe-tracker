@@ -1,0 +1,106 @@
+{
+ "_doc": "Independent adversarial QA of the Gate Owner's MERGED manifest (Main-AO backfill + Fleet-B backfill folded in). READ-ONLY. New file; no prior QA file or manifest mutated. No DB/LEDGER/PROGRESS writes.",
+ "author_role": "independent QA / validation-gate session (New session #1)",
+ "reviewed_file": "data/dso_research/consolidation_candidate_manifest_20260621.json (merged, mtime 12:07)",
+ "companion_targets": ["_ready_to_validate_merged_20260621.json (123 rows)", "ao_network_evidence_71_20260621.json", "ownership_evidence_queue_fleet_b_backfill_20260621.json"],
+ "reviewed_at": "2026-06-21",
+ "verdict": "PASS. The merge is defensible and well-disciplined. ready_to_validate grew 65 -> 123 by promoting evidence-repaired rows, every one backed by a NON-AO documentary artifact (zero AO-reach-only rows remain in ready). Release policy for protected networks is conservative and correctly applied. Consolidation remains FROZEN. A short list of non-blocking hygiene fixes is recommended before the validate-only run.",
+
+ "counts_observed": {
+  "ready_to_validate": 123,
+  "needs_more_evidence_total": 168,
+  "evidence_gap_backfill_queue": 55,
+  "rejected": 7,
+  "conflicts": 74,
+  "taxonomy_revised": 14,
+  "duplicate_denominator_blocked_ids": 16,
+  "duplicate_denominator_blocked_currently_candidates": 0
+ },
+
+ "structural_integrity": {
+  "ready_no_duplicate_location_ids": true,
+  "ready_zero_AO_only_rows": "PASS — 0 rows in ready have empty evidence_urls AND only an ao_cluster/ao_reach artifact. The Q1 defect from the pre-merge manifest is fully closed.",
+  "original_65_preserved": "PASS — all 65 pre-merge clean rows still present in ready, 0 dropped.",
+  "validate_target_file_matches": "PASS on content — _ready_to_validate_merged_20260621.json has exactly 123 rows == ready set (symdiff 0).",
+  "duplicate_door_safety": "PASS — 0 of the 16 documented duplicate_denominator_blocked location_ids appear in ready; currently_in_candidate_set=[].",
+  "ready_tier_dist": {"dentist_multi": 55, "branded_dso": 41, "stealth_dso": 19, "institutional": 4, "true_independent": 3, "single_loc_group": 1},
+  "ready_evidence_basis_dist": {"web_verified": 59, "name_chain": 41, "locator": 18, "intel_dossier": 4, "structural": 1}
+ },
+
+ "focus_area_1_protected_network_release": {
+  "verdict": "DEFENSIBLE. 4 of 6 protected networks released into ready (41 rows); 2 correctly held wholesale.",
+  "release_policy_observed": "A network is release-eligible ONLY if network_evidence_quality=='verified', and within it only individually verified+ready rows are promoted; partial networks are held wholesale; protected_network_hold stays as a historical-provenance flag; each released row carries an explicit gate-owner release note in reasoning. This is a sound double-gate (documentary evidence AND explicit gate-owner release).",
+  "released": {
+   "SHAFI_SOHAIL": "15/17 released (dentist_multi, pe=false). 2 held (closed/brand-disconfirmed).",
+   "NITTINGER_RACHEL": "11/12 released (branded_dso, pe=true). 1 held (Plainfield closed 2026-04).",
+   "BRUNETTI_ROBERT": "8/9 released (dentist_multi, pe=false). 1 held (Cicero off current locator).",
+   "LABINOV_BORIS": "7/7 released (branded_dso, pe=true). Tier escalated stealth_dso->branded_dso — justified (established acquired brand)."
+  },
+  "held_wholesale": {
+   "SWEIS_JUBRAIL": "0/7 released — network_evidence_quality=partial + multiple stale/closed shells. Correctly held.",
+   "RAMAHA_AHMED": "0/6 released — partial + closed/unconfirmed. Correctly held."
+  },
+  "evidence_is_non_AO": "CONFIRMED. The released rows rest on durable structural artifacts, not AO reach: Labinov=shared_parent (D2 Dental IL/MI/OH share corporate mailing 137 N Oak Park Ave = L2 Management MSO; DBA 'Destiny Dental'; ProSmile/Livingstone PE acquisition). Nittinger=shared_ein (DOL EBSA M-1 MEWA filing #10741 lists 12 IL DentalWorks friendly-PCs under one welfare plan; Sonrava Health / New Mountain PE). Shafi=name_chain ('Ashton Dental PC' across 6+ Chicagoland addresses; Dr. Reem Shafi / Two Rivers Dental, ~20 locations). Brunetti=shared_website (procaredentalgroup.com/locations, 10 active IL offices; Dr. Robert Brunetti founder 1979)."
+ },
+
+ "focus_area_2_dso_vs_dentist_multi_split": {
+  "verdict": "DEFENSIBLE and correctly applies the pe-orthogonal taxonomy.",
+  "branded_dso_pe_true": "Labinov (Destiny/ProSmile) and Nittinger (DentalWorks/Sonrava) carry documented MSO/management-company + PE evidence -> branded_dso + pe_backed=true. Correct.",
+  "dentist_multi_pe_false": "Shafi (Two Rivers/Ashton) and Brunetti (ProCare) are dentist-owned multi-location groups with NO MSO/platform structure in evidence -> dentist_multi + pe_backed=false. Correct: these are Consolidated (T3) but NOT DSO/PE.",
+  "headline_rules_confirmed": "consolidated = T2+T3+T4+T5; dso_pe = T4+T5 only. So Shafi/Brunetti (23 rows) lift the Consolidated headline but NOT DSO/PE; Labinov/Nittinger (18 rows) lift both. Matches the locked 6-tier model."
+ },
+
+ "focus_area_3_stale_closed_shells": {
+  "verdict": "HANDLED CORRECTLY. Every closed / brand-disconfirmed location is held in needs_more_evidence, not in ready.",
+  "held_examples": [
+   "SHAFI Bloomingdale 142 S Gary Ave (3f2a1feba10ebd5d) -> NME (now Astra/Family Dental of Bloomingdale)",
+   "SHAFI 328 N Desplaines (97ce6e59218e0f7a) -> NME (brand not confirmed)",
+   "NITTINGER Plainfield (7542f13e98b7bd0d) -> NME (CLOSED 2026-04)",
+   "BRUNETTI Cicero (719b01502f151a50) -> NME (off current ProCare locator)",
+   "SWEIS all 7 -> NME (Barrington/Bloomingdale/Geneva/St Charles shells vacated & rebranded)",
+   "RAMAHA all 6 -> NME (Loop Dental & Spa CLOSED; Stone Park unconfirmed)"
+  ],
+  "stale_flagged_rows_that_ARE_in_ready": "3 rows, and each is in ready for an EIN/label DATA-QUALITY reason, NOT a closure: SHAFI Yorkville (ad04ebea2ff68064) — the DB 'affiliated_dso: Gentle Dental' is a FALSE POSITIVE correction (locally-named Two Rivers/Ashton office); NITTINGER Chicago Ridge (072d146be1bf9d80) and Harlem&North (2398f9e48e6578f9) — DB EIN is wrong/variant but entity name+address confirmed, and the MEWA artifact captures the CANONICAL EINs (31-1812648 Schaumburg, 20-0384209 Harlem&North). Releasing these is defensible."
+ },
+
+ "focus_area_4_network_intelligence_preserved": {
+  "verdict": "EXCELLENT. ao_network_intelligence captures ALL 6 networks INCLUDING the held ones (Sweis, Ramaha), with full owner_operator_identity, ownership_structure, and structure_evidence (NPI shells, brands, mailing/EIN structure). Held networks are NOT discarded — their structural intelligence is retained for future app use. Section also carries _provenance, _meta, networks (6), individuals (13).",
+  "example_held_preserved": "ao:SWEIS_JUBRAIL retained with brand='Advocate Dental (Sweis)', clinical_owner='Jubrail (Jay) Sweis DDS (sole owner/operator)', ownership_structure='dentist_owned_multiloc', plus the LLC/PLLC/PC shell NPIs — even though all 7 rows are held out of consolidation."
+ },
+
+ "focus_area_5_ao_only_rows": {
+  "verdict": "PASS — 0 rows in ready rest on AO reach alone. Every ready row carries a documentary URL or a non-AO durable artifact (shared_ein / shared_parent / shared_website / name_chain / web_verified / locator / intel_dossier). The ao_reach_is_signal rule is now satisfied throughout ready."
+ },
+
+ "fleet_b_backfill": {
+  "verdict": "SOUND.",
+  "classified_total": 11,
+  "routing": "9 to_ready, 1 to_conflicts (ZIEBA — former DBA Webster Dental Care, contested), 1 held_needs_more (SCHOCK — Dentologie rebrand unverified). 32 still needs_verification_remaining (43 total - 11 classified).",
+  "name_collision_catch": "047ce502ad2a0371 'HEARTLAND INTERNATIONAL HEALTH CENTER' correctly classified institutional (FQHC) NOT Heartland Dental DSO — a real false-positive trap avoided.",
+  "institutional_in_ready": "4 rows, all genuine FQHC/hospital (tap360health, Heartland International FQHC, NorthShore dentistry, Advocate Illinois Masonic), tier=institutional (T6), pe=false. Per headline_rules, institutional counts toward NEITHER Consolidated NOR DSO/PE — so these do not inflate any headline."
+ },
+
+ "conflicts_and_other_buckets": {
+  "conflicts_74": "= prior 73 + ZIEBA (Fleet B). Precision/Sonrasa boundary still held as conflicts. NOTE potential cross-reference: Nittinger's released DentalWorks rows cite Sonrava/New Mountain; confirm these specific location_ids are distinct from any Sonrava-brand rows parked in conflicts (the Nittinger rows have an independent shared_ein MEWA artifact, so they stand on their own evidence regardless).",
+  "taxonomy_revised_14": "unchanged — Dental Dreams/UDP restorations, still ⊂ ready.",
+  "rejected_7": "unchanged — all sound should_NOT_consolidate.",
+  "duplicate_denominator_blocked": "16 ids documented, 0 currently candidates — intact."
+ },
+
+ "non_blocking_fixes_recommended_before_validate": [
+  "1. STALE POINTER (fix before validate): _meta.validate_only_target parenthetical still names '_ready_to_validate_normalized_20260621.json' (the OLD 65-row file). The correct merged file is '_ready_to_validate_merged_20260621.json' (123 rows). The primary target 'buckets.ready_to_validate' is correct, but update the file reference so the validate-only run targets the 123-row file, not the stale 65-row one.",
+  "2. evidence_basis LABEL MISMATCH (data hygiene): 41 rows are tagged evidence_basis='name_chain', but their actual durable artifacts are stronger/different types — shared_ein (Nittinger), shared_parent (Labinov), shared_website (Brunetti). The artifact is stronger than the label, so not a safety issue, but the basis field should reflect the real artifact type for the app's intelligence layer and for any future EIN/parent clustering.",
+  "3. CONTRADICTORY REASONING TEXT (cosmetic): Nittinger released rows contain BOTH '...RELEASED from protected_network_hold by gate owner' (prefix) AND 'protected_network_hold STAYS true per gate rule until network explicitly released, despite verified evidence' (body). The rows ARE released/in ready; the body is stale main-AO caution. Clean up to avoid confusion.",
+  "4. protected_network_hold SEMANTICS: per _policy this flag stays true on released rows as historical provenance. Downstream consumers must NOT treat protected_network_hold=true as 'exclude from ready'. Make this explicit so a future filter does not accidentally re-exclude the 41 released rows.",
+  "5. EIN CORRECTION for app/cluster use: the DB EINs on Nittinger Chicago Ridge (311812648 belongs to Schaumburg PC) and Harlem&North (363782916 is a variant) are wrong; the MEWA artifact holds the canonical EINs. Any 'same EIN across 3+ ZIPs' clustering must use the MEWA canonical EINs, not the DB values."
+ ],
+
+ "carried_forward_flags": [
+  "Lane 3 STILL not an input: Modern Smiles Shah/Iqbal duplicate physical door (same phone (312) 500-7080, 3901 N Broadway, both single_loc_group) remains absent from the manifest. Add to duplicate_denominator_blocked when Lane 3 is folded in.",
+  "First Dental family-practice vs true_independent tier policy still open (Lane 3).",
+  "Per-URL at-validate check still owed for the dentist_multi web_verified rows (owner-vs-MSO); consolidate_census.py --validate-only is a schema/DB gate and does NOT re-judge this.",
+  "Fleet B: 32 backfill rows still needs_verification_remaining."
+ ],
+
+ "recommendation": "APPROVE the merged manifest for the validate-only step on the 123 ready rows when the user lifts the freeze, after applying fix #1 (point validate-only at the merged 123-row file). The protected-network releases are evidence-backed and conservatively gated; held networks (Sweis/Ramaha) and closed shells are correctly excluded while their intelligence is preserved. Keep conflicts (74), rejected (7), and needs_more_evidence (168) parked. No DB writes; consolidation stays FROZEN until the user explicitly authorizes."
+}

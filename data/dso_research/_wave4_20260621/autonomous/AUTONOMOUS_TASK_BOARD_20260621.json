@@ -1,0 +1,82 @@
+{
+  "_meta": {
+    "title": "Wave 4 autonomous task board",
+    "date": "2026-06-21",
+    "scope": "Chicagoland / IL only; Boston / MA parked",
+    "mode": "files-only evidence work; no DB writes; consolidation frozen"
+  },
+  "hard_locks": {
+    "no_allow_db_write": true,
+    "no_manifest_mutation": true,
+    "no_ready_file_mutation": true,
+    "no_ledger_progress_mutation": true,
+    "no_broad_ao_reach2_long_tail": true,
+    "no_fleet_b_deterministic_remining": true,
+    "db_md5_baseline": "0dec26135bb4d6ee490dc16cfe892ca6"
+  },
+  "current_phase": "normalize_existing_wave4_outputs_then_QA",
+  "tasks": [
+    {
+      "id": "GATE-001",
+      "owner": "Gate Owner",
+      "status": "ready",
+      "action": "Normalize Main AO Lane 1/AO-backfill evidence and Fleet B top-50 Phase-C evidence against the reconciled QA criteria.",
+      "inputs": [
+        "data/dso_research/_wave4_20260621/wave4_lane1_conflicts_ao_backfill_evidence_20260621.json",
+        "data/dso_research/_wave4_20260621/wave4_lane3_phasec_top50_evidence_20260621.json",
+        "data/dso_research/_wave4_20260621/wave4_criteria_reconciliation_20260621.json"
+      ],
+      "output": "data/dso_research/_wave4_20260621/wave4_gate_normalized_partition_20260621.json",
+      "notes": [
+        "No protected-network releases.",
+        "Affordable/ClearChoice held out of GP floor for now.",
+        "Fleet B overlaps with current 310 are corroborations, not additions.",
+        "Rows with closed/relocated, same-door nuance, medium confidence, AB9, or scope flags should hold unless explicitly resolved."
+      ]
+    },
+    {
+      "id": "GATE-002",
+      "owner": "Gate Owner",
+      "status": "blocked_until_GATE-001",
+      "action": "Request QA review by writing autonomous/REQUEST_QA_REVIEW_WAVE4_INITIAL_20260621.md.",
+      "input": "data/dso_research/_wave4_20260621/wave4_gate_normalized_partition_20260621.json",
+      "output": "data/dso_research/_wave4_20260621/autonomous/REQUEST_QA_REVIEW_WAVE4_INITIAL_20260621.md"
+    },
+    {
+      "id": "QA-001",
+      "owner": "QA",
+      "status": "blocked_until_REQUEST_QA_REVIEW",
+      "action": "Review written Wave 4 evidence files plus Gate normalized partition; write verdict only.",
+      "inputs": [
+        "data/dso_research/_wave4_20260621/wave4_gate_normalized_partition_20260621.json",
+        "data/dso_research/_wave4_20260621/wave4_lane1_conflicts_ao_backfill_evidence_20260621.json",
+        "data/dso_research/_wave4_20260621/wave4_lane1_conflicts_ao_backfill_evidence_20260621_qa.json",
+        "data/dso_research/_wave4_20260621/wave4_lane3_phasec_top50_evidence_20260621.json",
+        "data/dso_research/_wave4_20260621/wave4_criteria_reconciliation_20260621.json"
+      ],
+      "output": "data/dso_research/_wave4_20260621/autonomous/VERDICT_QA_WAVE4_INITIAL_20260621.json"
+    },
+    {
+      "id": "MAIN-001",
+      "owner": "Main AO",
+      "status": "ready_after_reading_protocol",
+      "action": "Work bounded Lane 2 non-AO backfill only: 13 locator_exact + 12 practice_intel rows from wave4_packet_lane2_backfill.json. No AO fan-out.",
+      "input": "data/dso_research/_wave4_20260621/wave4_packet_lane2_backfill.json",
+      "output": "data/dso_research/_wave4_20260621/wave4_lane2_non_ao_backfill25_evidence_20260621.json",
+      "limits": {
+        "max_rows": 25,
+        "allowed_lanes": ["locator_exact", "practice_intel"],
+        "no_protected_release": true,
+        "no_broad_ao_reach2": true
+      }
+    },
+    {
+      "id": "FLEETB-001",
+      "owner": "Fleet B",
+      "status": "standby",
+      "action": "Do not start ranks 51-100 unless Gate writes AUTH_FLEETB_PHASEC_51_100_20260621.md after current normalization and no systemic QA defect.",
+      "authorization_file": "data/dso_research/_wave4_20260621/autonomous/AUTH_FLEETB_PHASEC_51_100_20260621.md",
+      "potential_output": "data/dso_research/_wave4_20260621/wave4_lane3_phasec_51_100_evidence_20260621.json"
+    }
+  ]
+}

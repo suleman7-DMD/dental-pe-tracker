@@ -1,0 +1,154 @@
+{
+  "network": "CRYSTAL BARRON",
+  "network_id": "ao:BARRON_CRYSTAL",
+  "owner_type_verdict": "dso_brand",
+  "network_summary": "Crystal Barron is the Revenue Cycle Manager (billing/admin contact) for Pure Dental Spa, a Chicago-based multi-location dental brand founded and owned by Dr. Rajul Patel DDS. All three NPPES org-NPI records in this AO cluster are professional-corporation billing shells for Pure Dental Spa locations: 924 N Damen Ave (Ukrainian Village), 1755 W North Ave (Wicker Park), and 558 W Webster Ave (Lincoln Park area — mailing to Pure Dental Spa West Loop HQ at 1222 W Madison St). The brand operates 5 Chicagoland locations (Wicker Park, West Loop, Lincoln Park, Ukrainian Village, Bloomingdale). No PE or MSO backing found; Dr. Patel appears to be the independent founder-owner. The AO signal is an admin/billing-contact cluster, not an owner identity signal.",
+  "owner_operator_identity": "Dr. Rajul Patel DDS, founder and owner of Pure Dental Spa (NPI 1912163106; Loyola University Chicago undergrad, NYU College of Dentistry)",
+  "brand_trade_names": ["Pure Dental Spa", "Chicago Dental Specialists PC", "Rajul Patel Westloop PC", "Rajul Patel West Loop PC"],
+  "legal_entities": ["Chicago Dental Specialists PC (org NPI 1225997240)", "Rajul Patel Westloop PC (org NPI 1073495990)", "Rajul Patel West Loop PC (org NPI 1679455505)"],
+  "durable_artifacts": [
+    "Shared authorized official Crystal Barron (title: REVENUE CYCLE MANAGER) across NPI 1225997240, 1073495990, 1679455505",
+    "NPI 1073495990 (924 N Damen) has website field = Puredentalspa.Com in Data Axle enrichment",
+    "NPI 1225997240 (558 W Webster) mailing address = 1222 W Madison St Ste 300, Chicago IL 60607 — Pure Dental Spa West Loop HQ",
+    "NPI 1073495990 and 1679455505 share mailing address = 107 W Lake St Ste 101, Bloomingdale IL 60108 — Pure Dental Spa Bloomingdale location",
+    "Pure Dental Spa public locator lists 924 N Damen Ave (Ukrainian Village) and 1755 W North Ave (Wicker Park) as active locations matching the two Rajul Patel PC NPI addresses exactly"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "Crystal Barron is a Revenue Cycle Manager — a billing/admin contact, NOT an owner or dentist. The AO cluster is purely administrative; it points to shared revenue-cycle/billing operations across Pure Dental Spa corporate billing shells, not a hidden ownership network. The 558 W Webster address (CHICAGO DENTAL SPECIALISTS PC) may be a former or satellite Pure Dental Spa Lincoln Park location; its mailing address routes to Pure Dental Spa West Loop HQ. Pure Dental Spa's current public Lincoln Park listing is 1007 W Wellington Ave (not Webster), so 558 W Webster may be a closed/relocated shell — treat as potentially stale.",
+  "evidence_chain": "AO signal: Crystal Barron listed as authorized official (title REVENUE CYCLE MANAGER) on three org-NPI billing shells. Documentary corroboration: (1) NPI 1073495990 Data Axle enrichment carries website=Puredentalspa.Com; (2) NPI 1225997240 mailing address resolves to Pure Dental Spa West Loop at 1222 W Madison St Ste 300; (3) puredentalspa.com public locator lists 924 N Damen and 1755 W North Ave as active Pure Dental Spa locations, matching the two Rajul Patel PC NPIs exactly; (4) Dr. Rajul Patel's online profiles (Tebra, Vitals, WebMD, LinkedIn) confirm she is the founder of Pure Dental Spa with 5 Chicago-area locations. No PE or MSO backing found.",
+  "future_app_notes": "Pure Dental Spa (Dr. Rajul Patel) should be flagged as a branded multi-location practice (5 locations). All three location IDs in this cluster (372f422d96b53499, e7e7d347f2fa4da1, d3d0d75b2485f83e) should be promoted to dso_regional or dso_national to reflect Pure Dental Spa brand ownership. The 558 W Webster address warrants a stale/closed check — Pure Dental Spa's current Lincoln Park listing is 1007 W Wellington, not Webster. Crystal Barron's admin-contact status should be noted so future AO-cluster sweeps do not misidentify her as an owner. The 1007 W Wellington Ave Lincoln Park location (if it has a separate NPI) should also be checked for Pure Dental Spa brand promotion.",
+  "classifications": [
+    {
+      "location_id": "372f422d96b53499",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dr. Rajul Patel DDS (founder, Pure Dental Spa)",
+      "network_id": "ao:BARRON_CRYSTAL",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: Crystal Barron (Revenue Cycle Manager) is shared AO across NPI 1225997240, 1073495990, 1679455505",
+          "mailing_address=1222 W Madison St Ste 300, Chicago IL 60607 (Pure Dental Spa West Loop HQ)",
+          "org_only_npi: no individual providers at address"
+        ],
+        "evidence": [
+          "puredentalspa.com confirms multi-location brand with 5 Chicago-area offices including Wicker Park (1755 W North) and Ukrainian Village (924 N Damen) — same addresses as sibling NPIs in cluster",
+          "Mailing address of this NPI (1222 W Madison St Ste 300) is Pure Dental Spa's own West Loop clinic address per public locator",
+          "Dr. Rajul Patel confirmed as Pure Dental Spa founder via Tebra/WebMD/LinkedIn profiles"
+        ]
+      },
+      "evidence_urls": [
+        "https://puredentalspa.com/",
+        "https://puredentalspa.com/locations/",
+        "https://www.tebra.com/care/provider/rajul-patel-dds-1912163106",
+        "https://www.linkedin.com/in/rajul-patel-47674749/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "CRYSTAL BARRON",
+        "authorized_official_title": "REVENUE CYCLE MANAGER",
+        "reach": 3,
+        "zips": ["60614", "60622"],
+        "npi": "1225997240",
+        "practice_name": "CHICAGO DENTAL SPECIALISTS PC",
+        "address": "558 W WEBSTER AVE, CHICAGO IL 60614",
+        "mailing_address": "1222 W MADISON ST STE 300, CHICAGO IL 60607",
+        "entity_classification": "solo_high_volume",
+        "org_only_npi": true
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "558 W Webster Ave may be a former or satellite Pure Dental Spa Lincoln Park location. Pure Dental Spa's current public Lincoln Park listing is 1007 W Wellington Ave, not Webster Ave. The NPI shell remains active with a mailing address at Pure Dental Spa West Loop HQ. Validate whether this address is currently operating as a Pure Dental Spa office or has been closed/relocated.",
+      "reasoning": "This org-NPI billing shell (CHICAGO DENTAL SPECIALISTS PC) routes all mail to Pure Dental Spa's West Loop headquarters (1222 W Madison St Ste 300). Combined with sibling NPIs in the same AO cluster confirmed as Pure Dental Spa locations, and Dr. Rajul Patel's documented multi-location Pure Dental Spa brand, this is a branded_dso location with high confidence. No PE evidence found; pe_backed=false. Crystal Barron as Revenue Cycle Manager is an admin contact, not an owner — the AO signal here points to centralized billing ops, not a hidden dentist-owned group."
+    },
+    {
+      "location_id": "e7e7d347f2fa4da1",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dr. Rajul Patel DDS (founder, Pure Dental Spa)",
+      "network_id": "ao:BARRON_CRYSTAL",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: Crystal Barron (Revenue Cycle Manager) shared AO across cluster",
+          "mailing_address=107 W Lake St Ste 101, Bloomingdale IL 60108 (Pure Dental Spa Bloomingdale)",
+          "website field in Data Axle = Puredentalspa.Com",
+          "org_only_npi: no individual providers at address"
+        ],
+        "evidence": [
+          "Data Axle enrichment on this NPI carries website=Puredentalspa.Com — direct brand association in federal data",
+          "puredentalspa.com public locator lists 924 N Damen Ave, Chicago IL 60622 (Ukrainian Village) as an active Pure Dental Spa location — exact address match",
+          "Dr. Rajul Patel confirmed as Pure Dental Spa founder via Tebra/WebMD/LinkedIn profiles"
+        ]
+      },
+      "evidence_urls": [
+        "https://puredentalspa.com/locations/chicago/",
+        "https://www.yelp.com/biz/pure-dental-spa-chicago-chicago-2",
+        "https://puredentalspa.com/",
+        "https://www.tebra.com/care/provider/rajul-patel-dds-1912163106"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "CRYSTAL BARRON",
+        "authorized_official_title": "REVENUE CYCLE MANAGER",
+        "reach": 3,
+        "zips": ["60614", "60622"],
+        "npi": "1073495990",
+        "practice_name": "RAJUL PATEL WESTLOOP PC",
+        "address": "924 N DAMEN AVE, CHICAGO IL 60622",
+        "mailing_address": "107 W LAKE ST STE 101, BLOOMINGDALE IL 60108",
+        "website": "Puredentalspa.Com",
+        "ein": "200854469",
+        "entity_classification": "solo_established",
+        "org_only_npi": true
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "RAJUL PATEL WESTLOOP PC at 924 N Damen Ave is a confirmed Pure Dental Spa Ukrainian Village location. The Data Axle website field contains Puredentalspa.Com directly, and the public locator confirms 924 N Damen as an active Pure Dental Spa office. Mailing address routes to Pure Dental Spa Bloomingdale (107 W Lake St). Dr. Rajul Patel is the confirmed founder/owner. Branded multi-location DSO; no PE backing found."
+    },
+    {
+      "location_id": "d3d0d75b2485f83e",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dr. Rajul Patel DDS (founder, Pure Dental Spa)",
+      "network_id": "ao:BARRON_CRYSTAL",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: Crystal Barron (Revenue Cycle Manager) shared AO across cluster",
+          "mailing_address=107 W Lake St Ste 101, Bloomingdale IL 60108 (Pure Dental Spa Bloomingdale)",
+          "org_only_npi: no individual providers at address"
+        ],
+        "evidence": [
+          "puredentalspa.com public locator lists 1755 W North Avenue, Chicago IL 60622 (Wicker Park) as an active Pure Dental Spa location — exact address match to NPI 1679455505",
+          "Dr. Rajul Patel confirmed as Pure Dental Spa founder via Tebra/WebMD/LinkedIn profiles",
+          "Sibling NPI at 924 N Damen carries website=Puredentalspa.Com and same mailing address, confirming shared Pure Dental Spa billing infrastructure"
+        ]
+      },
+      "evidence_urls": [
+        "https://puredentalspa.com/locations/wicker-park/",
+        "https://puredentalspa.com/store-locator/wicker-park/",
+        "https://puredentalspa.com/",
+        "https://www.tebra.com/care/provider/rajul-patel-dds-1912163106"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "CRYSTAL BARRON",
+        "authorized_official_title": "REVENUE CYCLE MANAGER",
+        "reach": 3,
+        "zips": ["60614", "60622"],
+        "npi": "1679455505",
+        "practice_name": "RAJUL PATEL WEST LOOP PC",
+        "address": "1755 W NORTH AVE STE C-101, CHICAGO IL 60622",
+        "mailing_address": "107 W LAKE ST STE 101, BLOOMINGDALE IL 60108",
+        "entity_classification": "solo_established",
+        "org_only_npi": true
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "RAJUL PATEL WEST LOOP PC at 1755 W North Ave (Wicker Park) is a confirmed Pure Dental Spa Wicker Park location. The public locator at puredentalspa.com/locations/wicker-park/ lists 1755 W North Avenue as the active Wicker Park office. Mailing address routes to Pure Dental Spa Bloomingdale. Dr. Rajul Patel is the confirmed founder/owner. Branded multi-location DSO; no PE backing found."
+    }
+  ]
+}

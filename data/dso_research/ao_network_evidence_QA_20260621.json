@@ -1,0 +1,2580 @@
+{
+ "meta": {
+  "purpose": "Independent adversarial QA of the AO-network evidence file. Mirrors ownership_evidence_QA_20260621.json schema. NOT a promotion; ready_for_validation != final.",
+  "author_role": "independent QA / validation gate (new session #1). Verdicts produced INDEPENDENTLY, then cross-checked vs the main session's ao_network_evidence_20260621_qa.json.",
+  "date": "2026-06-21",
+  "inputs": {
+   "fleet_file": "data/dso_research/ao_network_evidence_20260621.json",
+   "main_session_qa_file": "data/dso_research/ao_network_evidence_20260621_qa.json",
+   "rows_reviewed": 85
+  },
+  "scope_guard": "IL/Chicagoland only. No DB writes. No LEDGER/PROGRESS mutation. entity_classification untouched. These 8 AO networks are the MAIN SESSION's evidence-gathering lane; this file is read-only QA over its output, not new evidence gathering.",
+  "two_headline_model": "Consolidated = T2 single_loc_group + T3 dentist_multi + T4 stealth_dso + T5 branded_dso. DSO/PE = T4 stealth_dso + T5 branded_dso ONLY. A dentist-owned multi-location BRAND with no PE belongs in Consolidated but NOT DSO/PE.",
+  "counts": {
+   "needs_more_evidence": 41,
+   "pass_ready_for_validator": 44
+  },
+  "tier_corrections": [
+   {
+    "location_id": "a4c2f6303bec1c06",
+    "practice_name": "1ST FAMILY DENTAL & ORTHO CENTER PC",
+    "from": "branded_dso",
+    "to": "dentist_multi"
+   },
+   {
+    "location_id": "00283d0319728697",
+    "practice_name": "1ST FAMILY DENTAL OF ELGIN",
+    "from": "branded_dso",
+    "to": "dentist_multi"
+   },
+   {
+    "location_id": "d46481314c1f830f",
+    "practice_name": "1ST FAMILY DENTAL OF ROSELLE INC.",
+    "from": "branded_dso",
+    "to": "dentist_multi"
+   },
+   {
+    "location_id": "76b01c890765d33f",
+    "practice_name": "1ST FAMILY DENTAL OF FOX VALLEY, INC.",
+    "from": "branded_dso",
+    "to": "dentist_multi"
+   },
+   {
+    "location_id": "6a7337dc1388e15d",
+    "practice_name": "1ST FAMILY DENTAL OF LA GRANGE PARK, PC",
+    "from": "branded_dso",
+    "to": "dentist_multi"
+   },
+   {
+    "location_id": "0b9debb68c723377",
+    "practice_name": "1ST FAMILY DENTAL OF BURR RIDGE, PC",
+    "from": "branded_dso",
+    "to": "dentist_multi"
+   },
+   {
+    "location_id": "0de79b98f75b7128",
+    "practice_name": "1ST FAMILY DENTAL OF CHICAGO INC",
+    "from": "branded_dso",
+    "to": "dentist_multi"
+   },
+   {
+    "location_id": "e286a73df0d2541b",
+    "practice_name": "LITTLE VILLAGE DENTAL PC",
+    "from": "branded_dso",
+    "to": "dentist_multi"
+   },
+   {
+    "location_id": "dddb5ba57c531064",
+    "practice_name": "OBEID DENTAL INC",
+    "from": "branded_dso",
+    "to": "dentist_multi"
+   },
+   {
+    "location_id": "57f43b2b4923beb3",
+    "practice_name": "1ST FAMILY DENTAL OF WEST ROSELAND PC",
+    "from": "branded_dso",
+    "to": "dentist_multi"
+   },
+   {
+    "location_id": "f4d9376d568f7c43",
+    "practice_name": "1ST FAMILY DENTAL OF PULASKI PC",
+    "from": "branded_dso",
+    "to": "dentist_multi"
+   },
+   {
+    "location_id": "e0ee6d4ff57ad085",
+    "practice_name": "DENTAL CORPORATE USA",
+    "from": "branded_dso",
+    "to": "dentist_multi"
+   },
+   {
+    "location_id": "c42bbfd07106f9f2",
+    "practice_name": "1ST FAMILY DENTAL OF LOGAN SQUARE",
+    "from": "branded_dso",
+    "to": "dentist_multi"
+   },
+   {
+    "location_id": "120e9b88cb476518",
+    "practice_name": "CLINICA DENTAL",
+    "from": "branded_dso",
+    "to": "dentist_multi"
+   },
+   {
+    "location_id": "fec14748d3270a63",
+    "practice_name": "1ST AMERICAN DENTAL",
+    "from": "branded_dso",
+    "to": "dentist_multi"
+   },
+   {
+    "location_id": "5a72d2c7fcf0262b",
+    "practice_name": "BRITE DENTAL CERMAK, P.C.",
+    "from": "branded_dso",
+    "to": "dentist_multi"
+   },
+   {
+    "location_id": "a34490266101cbd2",
+    "practice_name": "BRITE DENTAL 26 DRAKE, P.C.",
+    "from": "branded_dso",
+    "to": "dentist_multi"
+   },
+   {
+    "location_id": "64e57c66fd098eed",
+    "practice_name": "BRITE DENTAL KIMBALL, P.C.",
+    "from": "branded_dso",
+    "to": "dentist_multi"
+   },
+   {
+    "location_id": "401b88a09170a38e",
+    "practice_name": "BRITE DENTAL CLARK, P.C.",
+    "from": "branded_dso",
+    "to": "dentist_multi"
+   },
+   {
+    "location_id": "0d76d8f9105e394d",
+    "practice_name": "BRITE DENTAL 59 PULASKI, P.C",
+    "from": "branded_dso",
+    "to": "dentist_multi"
+   },
+   {
+    "location_id": "8256bfff559b0760",
+    "practice_name": "BRITE DENTAL",
+    "from": "branded_dso",
+    "to": "dentist_multi"
+   },
+   {
+    "location_id": "a2fc3deda0b02a10",
+    "practice_name": "BRITE DENTAL MARQUETTE PULASKI, P.C",
+    "from": "branded_dso",
+    "to": "dentist_multi"
+   },
+   {
+    "location_id": "e24bd9e2dcfa6932",
+    "practice_name": "BRITE DENTAL 55, P.C",
+    "from": "branded_dso",
+    "to": "dentist_multi"
+   },
+   {
+    "location_id": "88ef34deb23c8a00",
+    "practice_name": "BRITE DENTAL BELMONT, P.C.",
+    "from": "branded_dso",
+    "to": "dentist_multi"
+   },
+   {
+    "location_id": "9974718d9adbc00f",
+    "practice_name": "BRITE DENTAL MILWAUKEE, P.C.",
+    "from": "branded_dso",
+    "to": "dentist_multi"
+   }
+  ],
+  "ready_downgraded_by_qa": [
+   {
+    "location_id": "1932e4cc87a3c456",
+    "practice_name": "SMILE TOWN DENTAL",
+    "network": "ao:SHAFI_SOHAIL"
+   },
+   {
+    "location_id": "3f2a1feba10ebd5d",
+    "practice_name": "ASHTON DENTAL PC",
+    "network": "ao:SHAFI_SOHAIL"
+   },
+   {
+    "location_id": "cc396d3264541f15",
+    "practice_name": "TWO RIVERS DENTAL PC",
+    "network": "ao:SHAFI_SOHAIL"
+   },
+   {
+    "location_id": "f11458f91c91c4af",
+    "practice_name": "SMILE VIEW DENTAL",
+    "network": "ao:SHAFI_SOHAIL"
+   },
+   {
+    "location_id": "51274670f11ff36c",
+    "practice_name": "SIMPLY DENTAL",
+    "network": "ao:SHAFI_SOHAIL"
+   },
+   {
+    "location_id": "5a1771b772dff590",
+    "practice_name": "TROY DENTAL",
+    "network": "ao:SHAFI_SOHAIL"
+   },
+   {
+    "location_id": "9f132406279447c6",
+    "practice_name": "TWO RIVERS DENTAL",
+    "network": "ao:SHAFI_SOHAIL"
+   },
+   {
+    "location_id": "0d9026fed63a1df0",
+    "practice_name": "FARRELL",
+    "network": "ao:SHAFI_SOHAIL"
+   },
+   {
+    "location_id": "ab575c87c6bb7249",
+    "practice_name": "ASHTON DENTAL PC",
+    "network": "ao:SHAFI_SOHAIL"
+   },
+   {
+    "location_id": "9ee4df9470dec738",
+    "practice_name": "ASHTON DENTAL PC",
+    "network": "ao:SHAFI_SOHAIL"
+   },
+   {
+    "location_id": "ace9e319256f2d7a",
+    "practice_name": "ASHTON DENTAL PC",
+    "network": "ao:SHAFI_SOHAIL"
+   },
+   {
+    "location_id": "50eb637aaa38aa4b",
+    "practice_name": "ASHTON DENTAL PC",
+    "network": "ao:SHAFI_SOHAIL"
+   },
+   {
+    "location_id": "192eeb357d406084",
+    "practice_name": "OSWEGO DENTAL",
+    "network": "ao:SHAFI_SOHAIL"
+   },
+   {
+    "location_id": "ad04ebea2ff68064",
+    "practice_name": "GENTLE DENTAL GROUP",
+    "network": "ao:SHAFI_SOHAIL"
+   },
+   {
+    "location_id": "bb0b258dbdee424c",
+    "practice_name": "OGDEN VALLEY DENTAL",
+    "network": "ao:SHAFI_SOHAIL"
+   },
+   {
+    "location_id": "41e9efc177c3226c",
+    "practice_name": "ASHTON DENTAL PC",
+    "network": "ao:SHAFI_SOHAIL"
+   },
+   {
+    "location_id": "97ce6e59218e0f7a",
+    "practice_name": "ASHTON DENTAL PC",
+    "network": "ao:SHAFI_SOHAIL"
+   },
+   {
+    "location_id": "dddb5ba57c531064",
+    "practice_name": "OBEID DENTAL INC",
+    "network": "ao:BELKIC_VESNA"
+   },
+   {
+    "location_id": "e10809c55b2d7955",
+    "practice_name": "ILLINOIS DENTAL PROVIDERS (ARLINGTON HEIGHTS), LTD.",
+    "network": "ao:NITTINGER_RACHEL"
+   },
+   {
+    "location_id": "5ffc5f3c0a7b3102",
+    "practice_name": "DR. ZASSO & ASSOCIATES (SKOKIE), LTD.",
+    "network": "ao:NITTINGER_RACHEL"
+   },
+   {
+    "location_id": "2398f9e48e6578f9",
+    "practice_name": "ILLINOIS DENTAL PROVIDERS (HARLEM & NORTH), LTD.",
+    "network": "ao:NITTINGER_RACHEL"
+   },
+   {
+    "location_id": "1370e6f75164c141",
+    "practice_name": "ILLINOIS DENTAL PROVIDERS (GLEN ELLYN), LTD",
+    "network": "ao:NITTINGER_RACHEL"
+   },
+   {
+    "location_id": "f849d9ecf776fd7d",
+    "practice_name": "ILLINOIS DENTAL PROVIDRS (SCHAUMBURG), P.C.",
+    "network": "ao:NITTINGER_RACHEL"
+   },
+   {
+    "location_id": "effac443b4839358",
+    "practice_name": "MECKLER DENTAL PROVIDERS (RIVER OAKS), LTD.",
+    "network": "ao:NITTINGER_RACHEL"
+   },
+   {
+    "location_id": "072d146be1bf9d80",
+    "practice_name": "DR. RAINA & ASSOCITATES (CHICAGO RIDGE), LTD",
+    "network": "ao:NITTINGER_RACHEL"
+   },
+   {
+    "location_id": "056d1f180dcb8c9a",
+    "practice_name": "ILLINOIS DENTAL PROVIDERS (TINLEY PARK), LTD.",
+    "network": "ao:NITTINGER_RACHEL"
+   },
+   {
+    "location_id": "4396df02b95d7ad2",
+    "practice_name": "GEORGE J. TRAKAKIS D.D.S. & ASSOCIATES (FOX VALLEY), LTD.",
+    "network": "ao:NITTINGER_RACHEL"
+   },
+   {
+    "location_id": "7542f13e98b7bd0d",
+    "practice_name": "ILLINOIS DENTAL PROVIDERS, P. C.",
+    "network": "ao:NITTINGER_RACHEL"
+   },
+   {
+    "location_id": "8e92e63bee0c1cb7",
+    "practice_name": "ILLINOIS DENTAL PROVIDERS (CHICAGO LOOP), LTD",
+    "network": "ao:NITTINGER_RACHEL"
+   },
+   {
+    "location_id": "902006615166d38e",
+    "practice_name": "DCP OF ILLINOIS (IRVING PARK), LTD.",
+    "network": "ao:NITTINGER_RACHEL"
+   },
+   {
+    "location_id": "fec14748d3270a63",
+    "practice_name": "1ST AMERICAN DENTAL",
+    "network": "ao:AQEL_FADI"
+   },
+   {
+    "location_id": "06103ae3a6ed4ab0",
+    "practice_name": "ADVOCATE DENTAL ST CHARLES, LLC",
+    "network": "ao:SWEIS_JUBRAIL"
+   }
+  ],
+  "dso_pe_headline_rows_reclassified_to_dentist_multi": [
+   "a4c2f6303bec1c06",
+   "00283d0319728697",
+   "d46481314c1f830f",
+   "76b01c890765d33f",
+   "6a7337dc1388e15d",
+   "0b9debb68c723377",
+   "0de79b98f75b7128",
+   "e286a73df0d2541b",
+   "dddb5ba57c531064",
+   "57f43b2b4923beb3",
+   "f4d9376d568f7c43",
+   "e0ee6d4ff57ad085",
+   "c42bbfd07106f9f2",
+   "120e9b88cb476518",
+   "fec14748d3270a63",
+   "5a72d2c7fcf0262b",
+   "a34490266101cbd2",
+   "64e57c66fd098eed",
+   "401b88a09170a38e",
+   "0d76d8f9105e394d",
+   "8256bfff559b0760",
+   "a2fc3deda0b02a10",
+   "e24bd9e2dcfa6932",
+   "88ef34deb23c8a00",
+   "9974718d9adbc00f"
+  ],
+  "key_systematic_findings": [
+   {
+    "rank": 1,
+    "id": "branded_dso_pe_false_drift",
+    "finding": "BELKIC (1st Family Dental, ~12 rows) and AQEL (Brite Dental, ~11 rows) are dentist-OWNED multi-location brands (BBB/locator-confirmed owners Abboud / Fadi Aqel, NO PE) but are tagged branded_dso (T5 = DSO/PE headline). Correct tier is dentist_multi (T3 = Consolidated, not DSO/PE).",
+    "headline_impact": "If consolidated as-is, the DSO/PE headline is over-counted by ~23 locations. They REMAIN in the Consolidated headline. Directly confirms the user's 'branded_dso with pe_backed=false may be taxonomy drift' hypothesis.",
+    "action": "Validator must consolidate these under corrected_tier=dentist_multi, NOT the fleet's branded_dso."
+   },
+   {
+    "rank": 2,
+    "id": "nittinger_pe_true_on_credentialing_AO",
+    "finding": "NITTINGER (12 rows) is pe_backed=true (Sonrava/New Mountain) on the strength of a CREDENTIALING-manager AO + a STATE-level (not per-address) DentalWorks locator; one row self-admits no address URL. pe=true forces all 12 into the DSO/PE headline.",
+    "headline_impact": "Highest-risk inflation of the DSO/PE headline. If the Sonrava mapping is wrong for the eponymous '& Associates' rows, several flip to dentist_multi pe=false (OUT of DSO/PE).",
+    "action": "Hold all 12 as needs_more_evidence; require per-address DentalWorks/Sonrava locator proof. I DISAGREE with the main session's addr_exact_confirmed=True here (locator is state-level)."
+   },
+   {
+    "rank": 3,
+    "id": "shafi_office_manager_AO_plus_junk_mailing",
+    "finding": "SHAFI (17 rows) reach is built on an OFFICE-MANAGER AO (Sohail Shafi, not owner) + the shared mailing 1730 Park St #106 Naperville \u2014 the SAME DAMAIL cluster the 2026-06-12 audit flagged as shared-mailing-only junk. Names are heterogeneous (12 names/17 rows). main-session left addr_exact=False yet fleet gate=ready_for_validation.",
+    "headline_impact": "Right axis (dentist_multi => Consolidated, not DSO/PE) so no DSO/PE risk, but a Consolidated-count over-reach risk. Downgraded all 17 to needs_more_evidence.",
+    "action": "Require per-address owner (not 'lead dentist') confirmation. 'Gentle Dental Group' must be removed from any national Gentle Dental DSO count regardless."
+   },
+   {
+    "rank": 4,
+    "id": "sweis_associate_not_owner_and_advocate_brand",
+    "finding": "SWEIS 'Palatine Dental' is an associate-not-owner row (owner Dr. George Skoog) \u2014 fleet caught it (candidate/low). I additionally flag the 'Advocate Dental' (Geneva/St Charles) rows: 'Advocate Dental' may be Skoog's brand, not Sweis's \u2014 fleet is inconsistent (Geneva candidate, St Charles ready).",
+    "headline_impact": "Consolidated-count attribution risk (wrong owner network), not a DSO/PE risk.",
+    "action": "Do not consolidate Palatine as Sweis. Downgrade Advocate Dental St Charles to needs_more_evidence; verify the Advocate brand owner."
+   },
+   {
+    "rank": 5,
+    "id": "aqel_dental360_pe_open_question",
+    "finding": "AQEL/Brite Dental Cermak carries a 'Dental 360' affiliated_dso tag (Dental 360 is a known DSO). Fleet assumes co-brand; if it is actually an MSO relationship, the whole Brite network flips to stealth_dso pe=true (genuine DSO/PE).",
+    "headline_impact": "Could move ~11 rows from Consolidated-only INTO the DSO/PE headline \u2014 opposite direction of finding #1. Net AQEL effect on DSO/PE is therefore uncertain until the Dental360 relationship is settled.",
+    "action": "Verify Brite<->Dental360. Default tier dentist_multi (BBB owner Fadi Aqel) pending proof."
+   }
+  ],
+  "trustworthy_networks_pass": {
+   "BRUNETTI": "ProCare Dental Group P.C. x9 \u2014 clean dentist_multi (Consolidated, not DSO/PE). PASS.",
+   "LABINOV": "D2 Dental/Destiny Dental x7 \u2014 GOLD-STANDARD stealth_dso pe=true (exact documentary PE chain). PASS, correctly in DSO/PE.",
+   "RAMAHA_core": "Amazing/Universal Dental brand core x4 \u2014 dentist_multi PASS; 2 outliers (Stone Park, Loop Dental & Spa) correctly held candidate."
+  },
+  "correctly_held_undetermined": [
+   {
+    "location_id": "13b38618b4b921be",
+    "practice_name": "FIRST DENTAL IMAGE INC."
+   },
+   {
+    "location_id": "c1526a81500dbd53",
+    "practice_name": "ARMITAGE PROFESSIONAL SERVICES"
+   }
+  ],
+  "agreements_with_main_session": [
+   "SWEIS Palatine associate-not-owner (both flag it).",
+   "LABINOV stealth_dso pe=true is genuine.",
+   "BELKIC FIRST DENTAL IMAGE INC + ARMITAGE PROFESSIONAL SERVICES correctly undetermined.",
+   "RAMAHA Stone Park / Loop Dental & Spa correctly candidate.",
+   "BRUNETTI dentist_multi clean."
+  ],
+  "disagreements_with_main_session": [
+   "SHAFI: main session left all 17 gate=ready_for_validation with addr_exact=False; I downgrade all 17 to needs_more_evidence (office-manager AO + known-junk mailing).",
+   "NITTINGER: main session set addr_exact_confirmed=True for all 12; I rate them structural_correlated (locator is STATE-level, one row self-admits no address URL) and hold all 12.",
+   "BELKIC + AQEL: main session kept tier=branded_dso; I correct to dentist_multi (dentist-owned, no PE) so they do not inflate the DSO/PE headline.",
+   "SWEIS Advocate Dental St Charles: main session gate=ready; I downgrade (Advocate brand owner ambiguous)."
+  ],
+  "denominator_dedup_watch": [
+   "LABINOV: 7x identical legal name 'D2 Dental at Oak Street P.C.' \u2014 confirm distinct addresses.",
+   "BELKIC/AQEL: repeated brand names across rows \u2014 confirm each location_id is a distinct address, not NPI-fanout.",
+   "BRUNETTI: 9x 'ProCare Dental Group P.C.' \u2014 confirm 9 distinct addresses."
+  ]
+ },
+ "network_summaries": [
+  {
+   "network": "SOHAIL SHAFI",
+   "network_id": "ao:SHAFI_SOHAIL",
+   "verdict": "dentist_owned_multi",
+   "summary": "Sohail Shafi is the NPPES authorized official (Office Manager) for 17 Chicagoland GP locations across 16 ZIPs. The actual owner/CEO is Dr. Reem Shafi, DMD, who publicly describes herself as \"Owner and CEO of Two Rivers Dental \u2014 20 locations in Chicago and one in California\" (Illinois Tech Elevate bio). Sohail Shafi's LinkedIn lists him as \"Office Manager \u2013 Two Rivers Dental,\" confirming his administrative role as AO rather than the clinical owner. The group operates under at least seven local brand names (Two Rivers Dental, Ashton Dental PC, Simply Dental, Troy Dental, Hanover Dental, Smile Town Dental, Oswego Dental, Ogden Valley Dental) with a shared mailing address at 1730 Park St #106, Naperville IL 60563. All branded-practice staff pages carry the boilerplate \"All professionals at Two Rivers Dental maintain the highest levels of accreditation,\" confirming a single organizational identity. The \"Gentle Dental Group\" in Yorkville (location ad04ebea2ff68064) is a local brand name within this group \u2014 Dr. Reem Shafi is listed on its staff page and it shares the group mailing address \u2014 it is NOT the national Gentle Dental DSO; the existing dso_national classification appears to be a false positive. No private equity, MSO, or DSO-management evidence was found; this is a dentist-owned private multi-location group.",
+   "n": 17
+  },
+  {
+   "network": "VESNA BELKIC",
+   "network_id": "ao:BELKIC_VESNA",
+   "verdict": "dso_brand",
+   "summary": "1st Family Dental is a dentist-founded, multi-location dental brand operating since 1996 across 15 Chicagoland watched-IL GP locations. The network operates under a unified public brand (1stfamilydental.com) listing all locations with shared leadership. Dr. Ghassan Abboud (President, Prosthodontist) leads the group. Vesna Belkic appears on NPPES records as General Manager / COO \u2014 an administrative officer signing NPI authorizations across the network, not the ownership principal. No PE backer, MSO, or DSO management company has been found in any source. The practice presents as dentist-led and privately held. Two locations (FIRST DENTAL IMAGE INC. and ARMITAGE PROFESSIONAL SERVICES) carry solo_established classifications with no 1st Family branding, making them structurally ambiguous within the cluster \u2014 they may be managed under the same umbrella or represent a stale/erroneous AO association.",
+   "n": 15
+  },
+  {
+   "network": "RACHEL NITTINGER",
+   "network_id": "ao:NITTINGER_RACHEL",
+   "verdict": "pe_mso_backed",
+   "summary": "Rachel Nittinger is a credentialing manager (Manager Credentialing) for Sonrava Health \u2014 a PE-backed DSO majority-owned by New Mountain Capital since 2012. She is NOT a dentist-owner; she is a corporate administrative officer whose name appears as authorized official across 12 Illinois professional-corporation NPIs that Sonrava uses as friendly-PC shells to operate DentalWorks offices in Chicagoland. The entity names (\"ILLINOIS DENTAL PROVIDERS [location], LTD.\", \"MECKLER DENTAL PROVIDERS\", \"DCP OF ILLINOIS\", etc.) are friendly PCs for the DentalWorks brand. Direct address matches confirmed via DentalWorks public locator (1320 American Ln Schaumburg, 4066 N Milwaukee Ave Irving Park, 130 S Franklin St Chicago Loop). Sonrava Health/DentalWorks is a national DSO with 580+ offices in 20+ states. 10 of 12 locations are already classified dso_national in the pipeline; 2 solo_established outliers (Arlington Heights, Plainfield) share the identical \"ILLINOIS DENTAL PROVIDERS\" naming pattern and same AO and are effectively the same network.",
+   "n": 12
+  },
+  {
+   "network": "FADI AQEL",
+   "network_id": "ao:AQEL_FADI",
+   "verdict": "dso_brand",
+   "summary": "Fadi Aqel, DDS is the owner/principal of Brite Dental, P.C., a dentist-owned multi-location group operating 12 Chicago-area offices under the public brand \"Brite Dental\" (britedental.org). The BBB profile names him Owner; no PE, MSO, or management-services company appears in any source. Several NPPES records carry the affiliated_dso label \"Dental 360\" \u2014 Yelp and the Brite Dental website confirm \"Dental 360\" is a co-brand or trade name used at some locations (notably 6720 N Clark St) within the same owner network. Two locations use distinct trade names (Clinica Dental, 1st American Dental) but the britedental.org office list includes the identical addresses, confirming they are part of the Brite Dental group. AO reach of 12 across 9 ZIPs is fully explained by a single dentist-owner running a branded multi-location practice; no stealth-DSO or PE evidence found.",
+   "n": 12
+  },
+  {
+   "network": "ROBERT BRUNETTI",
+   "network_id": "ao:BRUNETTI_ROBERT",
+   "verdict": "dentist_owned_multi",
+   "summary": "ProCare Dental Group P.C. is a dentist-founded, family-owned multi-location dental group built by Dr. Robert Brunetti (DDS Loyola, MBA Kellogg/Northwestern), who serves as President and CEO. The practice began as a single office in 1979 and has grown to 10 Chicagoland locations. All 9 watched-IL locations share the registered legal name \"PROCARE DENTAL GROUP, P.C.\" The official website (procaredentalgroup.com) confirms the multi-location footprint and describes a family-owned group. No private equity, MSO, DSO management contract, or external investor evidence was found in any source. AO reach of 9 ZIPs is explained by Brunetti being the founding owner/officer across all entities, not a management intermediary. This is a classic dentist_multi: owner-operated private group, no PE backing.",
+   "n": 9
+  },
+  {
+   "network": "JUBRAIL SWEIS",
+   "network_id": "ao:SWEIS_JUBRAIL",
+   "verdict": "dentist_owned_multi",
+   "summary": "Jubrail Sweis (a.k.a. Jay Sweis), DDS, is a licensed general dentist who graduated from University of Illinois Chicago College of Dentistry with over 10 years of practice. He appears as authorized official across 7 Chicagoland GP locations spanning 7 ZIP codes. His own professional corporation is \"Jay Sweis DDS PC\" which operates under multiple local brand names including \"Advocate Dental\" (Geneva, St. Charles), \"Excellence Dental of Barrington,\" \"Bloomingdale Dental,\" \"Manhattan Dental,\" and \"Jay Sweis D.D.S P.C\" (Chicago/60639). He is also listed as an associate dentist at Advocate Dental of Palatine (Dr. George Skoog, founder), meaning his AO appearance on the Palatine Dental NPI (60067) likely reflects his associate/credentialing role there rather than ownership. Everyone's Family Dental (St. Charles and other IL cities) is connected to Sweis per multiple NPI aggregators. No PE, MSO, management agreement, or national DSO brand affiliation was found anywhere in the web record. This is a dentist-owned multi-location private group operating under various local trade names \u2014 classic dentist_multi structure. gate_status is candidate because, while his personal bio on ZocDoc and NPI aggregators confirms he operates multiple locations and owns Jay Sweis DDS PC, no single group website shows all locations together under one brand with documentary ownership attribution sufficient for ready_for_validation under the corroboration bar. Additionally, the Palatine location may reflect associate status, not ownership.",
+   "n": 7
+  },
+  {
+   "network": "BORIS LABINOV",
+   "network_id": "ao:LABINOV_BORIS",
+   "verdict": "pe_mso_backed",
+   "summary": "All 7 locations share the legal entity name \"D2 DENTAL AT OAK STREET, P.C.\" \u2014 the friendly-PC operating wrapper for Destiny Dental, a Midwest DSO co-founded in 2010 by Boris Labinov (CFO) and Jim Lucci (President) under L2 Management, backed at founding by Dixon Midland Company (Chicago-based PE). Boris Labinov is a DSO executive/co-founder, not a solo practitioner. Destiny Dental was acquired by ProSmile Holdings LLC on August 30, 2024; ProSmile is backed by TriSpan, a middle-market PE firm. This is a confirmed stealth-DSO / friendly-PC network: the practices operate under the \"D2 Dental at Oak Street, P.C.\" professional-corporation name across 7 Chicagoland ZIPs while being managed by L2 Management and, post-2024, folded into the PE-backed ProSmile platform. All 7 locations should be reclassified from solo_established to dso_national (ProSmile/Destiny Dental) or dso_regional pending confirmation of which specific addresses map to the current Destiny/ProSmile footprint.",
+   "n": 7
+  },
+  {
+   "network": "AHMED RAMAHA",
+   "network_id": "ao:RAMAHA_AHMED",
+   "verdict": "dentist_owned_multi",
+   "summary": "Dr. Ahmed Ramaha, DDS (University of Illinois at Chicago, 2002\u20132006) is the Founder and CEO of Universal Dental Clinics, a dentist-owned multi-location Chicagoland group operating under the public brand udclinics.com. The official website lists 8 locations, of which at least 4 directly match NPPES cluster addresses (Elgin 229 National St, Orland Park 8752 W 159th St, Orland Park 10 Orland Square Dr, and a Burbank/Oak Lawn corporate office at 9618 Southwest Hwy corresponding to the Central Amazing Dental entity at 5501 W 79th St). Two cluster locations \u2014 STONE PARK DENTAL INC (1550 N Mannheim Rd, 60165) and LOOP DENTAL & SPA (1605 S Michigan Ave, 60616) \u2014 appear in the NPPES record but not on the current website, suggesting they may be older, closed, or rebranded offices still federally registered under Ramaha as AO. Legal entity names vary (\"Amazing Dental LLC,\" \"Universal Dental,\" \"Stone Park Dental Inc.\") but all share one AO and the public group brand. No private equity, MSO, or DSO management evidence was found in any source. This is a dentist-owned private group, not PE-backed.",
+   "n": 6
+  }
+ ],
+ "rows": [
+  {
+   "location_id": "1932e4cc87a3c456",
+   "network": "SOHAIL SHAFI",
+   "network_id": "ao:SHAFI_SOHAIL",
+   "practice_name": "SMILE TOWN DENTAL",
+   "current_entity_classification": "solo_established",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 3,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "weak",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated(if-confirmed)",
+   "qa_reasons": [
+    "AO 'Sohail Shafi' is the OFFICE MANAGER, not an owner-dentist \u2014 shared-AO reach is a SHARED-ADMIN signal, not proof of common ownership.",
+    "Network's shared mailing 1730 Park St #106 Naperville IL 60563 is the SAME DAMAIL address the 2026-06-12 Data-Axle audit flagged as shared-mailing-only junk (held, NOT flipped). Reach built on it is contaminated.",
+    "main-session addr_exact_confirmed=False yet fleet gate=ready_for_validation \u2014 inconsistent; addr_exact=False + contaminated AO => candidate, not ready.",
+    "Ownership of all ~20 by Reem Shafi rests on a SINGLE reused IIT-Elevate bio ('20 locations'); name set is heterogeneous (Ashton x7, Smile Town, Troy, Oswego, Ogden Valley, Farrell, Simply, Smile View, Gentle Dental Group) \u2014 needs per-address owner confirmation.",
+    "Evidence is bio+mailing+AO only, no per-location ownership artifact."
+   ]
+  },
+  {
+   "location_id": "3f2a1feba10ebd5d",
+   "network": "SOHAIL SHAFI",
+   "network_id": "ao:SHAFI_SOHAIL",
+   "practice_name": "ASHTON DENTAL PC",
+   "current_entity_classification": "solo_high_volume",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 3,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "weak",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated(if-confirmed)",
+   "qa_reasons": [
+    "AO 'Sohail Shafi' is the OFFICE MANAGER, not an owner-dentist \u2014 shared-AO reach is a SHARED-ADMIN signal, not proof of common ownership.",
+    "Network's shared mailing 1730 Park St #106 Naperville IL 60563 is the SAME DAMAIL address the 2026-06-12 Data-Axle audit flagged as shared-mailing-only junk (held, NOT flipped). Reach built on it is contaminated.",
+    "main-session addr_exact_confirmed=False yet fleet gate=ready_for_validation \u2014 inconsistent; addr_exact=False + contaminated AO => candidate, not ready.",
+    "Ownership of all ~20 by Reem Shafi rests on a SINGLE reused IIT-Elevate bio ('20 locations'); name set is heterogeneous (Ashton x7, Smile Town, Troy, Oswego, Ogden Valley, Farrell, Simply, Smile View, Gentle Dental Group) \u2014 needs per-address owner confirmation.",
+    "Evidence is bio+mailing+AO only, no per-location ownership artifact."
+   ]
+  },
+  {
+   "location_id": "cc396d3264541f15",
+   "network": "SOHAIL SHAFI",
+   "network_id": "ao:SHAFI_SOHAIL",
+   "practice_name": "TWO RIVERS DENTAL PC",
+   "current_entity_classification": "small_group",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 3,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "weak",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated(if-confirmed)",
+   "qa_reasons": [
+    "AO 'Sohail Shafi' is the OFFICE MANAGER, not an owner-dentist \u2014 shared-AO reach is a SHARED-ADMIN signal, not proof of common ownership.",
+    "Network's shared mailing 1730 Park St #106 Naperville IL 60563 is the SAME DAMAIL address the 2026-06-12 Data-Axle audit flagged as shared-mailing-only junk (held, NOT flipped). Reach built on it is contaminated.",
+    "main-session addr_exact_confirmed=False yet fleet gate=ready_for_validation \u2014 inconsistent; addr_exact=False + contaminated AO => candidate, not ready.",
+    "Ownership of all ~20 by Reem Shafi rests on a SINGLE reused IIT-Elevate bio ('20 locations'); name set is heterogeneous (Ashton x7, Smile Town, Troy, Oswego, Ogden Valley, Farrell, Simply, Smile View, Gentle Dental Group) \u2014 needs per-address owner confirmation.",
+    "Evidence is bio+mailing+AO only, no per-location ownership artifact."
+   ]
+  },
+  {
+   "location_id": "f11458f91c91c4af",
+   "network": "SOHAIL SHAFI",
+   "network_id": "ao:SHAFI_SOHAIL",
+   "practice_name": "SMILE VIEW DENTAL",
+   "current_entity_classification": "small_group",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "weak",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated(if-confirmed)",
+   "qa_reasons": [
+    "AO 'Sohail Shafi' is the OFFICE MANAGER, not an owner-dentist \u2014 shared-AO reach is a SHARED-ADMIN signal, not proof of common ownership.",
+    "Network's shared mailing 1730 Park St #106 Naperville IL 60563 is the SAME DAMAIL address the 2026-06-12 Data-Axle audit flagged as shared-mailing-only junk (held, NOT flipped). Reach built on it is contaminated.",
+    "main-session addr_exact_confirmed=False yet fleet gate=ready_for_validation \u2014 inconsistent; addr_exact=False + contaminated AO => candidate, not ready.",
+    "Ownership of all ~20 by Reem Shafi rests on a SINGLE reused IIT-Elevate bio ('20 locations'); name set is heterogeneous (Ashton x7, Smile Town, Troy, Oswego, Ogden Valley, Farrell, Simply, Smile View, Gentle Dental Group) \u2014 needs per-address owner confirmation.",
+    "Evidence is bio+mailing+AO only, no per-location ownership artifact."
+   ]
+  },
+  {
+   "location_id": "51274670f11ff36c",
+   "network": "SOHAIL SHAFI",
+   "network_id": "ao:SHAFI_SOHAIL",
+   "practice_name": "SIMPLY DENTAL",
+   "current_entity_classification": "small_group",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "weak",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated(if-confirmed)",
+   "qa_reasons": [
+    "AO 'Sohail Shafi' is the OFFICE MANAGER, not an owner-dentist \u2014 shared-AO reach is a SHARED-ADMIN signal, not proof of common ownership.",
+    "Network's shared mailing 1730 Park St #106 Naperville IL 60563 is the SAME DAMAIL address the 2026-06-12 Data-Axle audit flagged as shared-mailing-only junk (held, NOT flipped). Reach built on it is contaminated.",
+    "main-session addr_exact_confirmed=False yet fleet gate=ready_for_validation \u2014 inconsistent; addr_exact=False + contaminated AO => candidate, not ready.",
+    "Ownership of all ~20 by Reem Shafi rests on a SINGLE reused IIT-Elevate bio ('20 locations'); name set is heterogeneous (Ashton x7, Smile Town, Troy, Oswego, Ogden Valley, Farrell, Simply, Smile View, Gentle Dental Group) \u2014 needs per-address owner confirmation.",
+    "Evidence is bio+mailing+AO only, no per-location ownership artifact."
+   ]
+  },
+  {
+   "location_id": "5a1771b772dff590",
+   "network": "SOHAIL SHAFI",
+   "network_id": "ao:SHAFI_SOHAIL",
+   "practice_name": "TROY DENTAL",
+   "current_entity_classification": "solo_high_volume",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "weak",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated(if-confirmed)",
+   "qa_reasons": [
+    "AO 'Sohail Shafi' is the OFFICE MANAGER, not an owner-dentist \u2014 shared-AO reach is a SHARED-ADMIN signal, not proof of common ownership.",
+    "Network's shared mailing 1730 Park St #106 Naperville IL 60563 is the SAME DAMAIL address the 2026-06-12 Data-Axle audit flagged as shared-mailing-only junk (held, NOT flipped). Reach built on it is contaminated.",
+    "main-session addr_exact_confirmed=False yet fleet gate=ready_for_validation \u2014 inconsistent; addr_exact=False + contaminated AO => candidate, not ready.",
+    "Ownership of all ~20 by Reem Shafi rests on a SINGLE reused IIT-Elevate bio ('20 locations'); name set is heterogeneous (Ashton x7, Smile Town, Troy, Oswego, Ogden Valley, Farrell, Simply, Smile View, Gentle Dental Group) \u2014 needs per-address owner confirmation.",
+    "Evidence is bio+mailing+AO only, no per-location ownership artifact."
+   ]
+  },
+  {
+   "location_id": "9f132406279447c6",
+   "network": "SOHAIL SHAFI",
+   "network_id": "ao:SHAFI_SOHAIL",
+   "practice_name": "TWO RIVERS DENTAL",
+   "current_entity_classification": "family_practice",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 3,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "weak",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated(if-confirmed)",
+   "qa_reasons": [
+    "AO 'Sohail Shafi' is the OFFICE MANAGER, not an owner-dentist \u2014 shared-AO reach is a SHARED-ADMIN signal, not proof of common ownership.",
+    "Network's shared mailing 1730 Park St #106 Naperville IL 60563 is the SAME DAMAIL address the 2026-06-12 Data-Axle audit flagged as shared-mailing-only junk (held, NOT flipped). Reach built on it is contaminated.",
+    "main-session addr_exact_confirmed=False yet fleet gate=ready_for_validation \u2014 inconsistent; addr_exact=False + contaminated AO => candidate, not ready.",
+    "Ownership of all ~20 by Reem Shafi rests on a SINGLE reused IIT-Elevate bio ('20 locations'); name set is heterogeneous (Ashton x7, Smile Town, Troy, Oswego, Ogden Valley, Farrell, Simply, Smile View, Gentle Dental Group) \u2014 needs per-address owner confirmation.",
+    "Evidence is bio+mailing+AO only, no per-location ownership artifact."
+   ]
+  },
+  {
+   "location_id": "0d9026fed63a1df0",
+   "network": "SOHAIL SHAFI",
+   "network_id": "ao:SHAFI_SOHAIL",
+   "practice_name": "FARRELL",
+   "current_entity_classification": "small_group",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "medium",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "weak",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated(if-confirmed)",
+   "qa_reasons": [
+    "AO 'Sohail Shafi' is the OFFICE MANAGER, not an owner-dentist \u2014 shared-AO reach is a SHARED-ADMIN signal, not proof of common ownership.",
+    "Network's shared mailing 1730 Park St #106 Naperville IL 60563 is the SAME DAMAIL address the 2026-06-12 Data-Axle audit flagged as shared-mailing-only junk (held, NOT flipped). Reach built on it is contaminated.",
+    "main-session addr_exact_confirmed=False yet fleet gate=ready_for_validation \u2014 inconsistent; addr_exact=False + contaminated AO => candidate, not ready.",
+    "Ownership of all ~20 by Reem Shafi rests on a SINGLE reused IIT-Elevate bio ('20 locations'); name set is heterogeneous (Ashton x7, Smile Town, Troy, Oswego, Ogden Valley, Farrell, Simply, Smile View, Gentle Dental Group) \u2014 needs per-address owner confirmation.",
+    "Evidence is bio+mailing+AO only, no per-location ownership artifact."
+   ]
+  },
+  {
+   "location_id": "ab575c87c6bb7249",
+   "network": "SOHAIL SHAFI",
+   "network_id": "ao:SHAFI_SOHAIL",
+   "practice_name": "ASHTON DENTAL PC",
+   "current_entity_classification": "small_group",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "weak",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated(if-confirmed)",
+   "qa_reasons": [
+    "AO 'Sohail Shafi' is the OFFICE MANAGER, not an owner-dentist \u2014 shared-AO reach is a SHARED-ADMIN signal, not proof of common ownership.",
+    "Network's shared mailing 1730 Park St #106 Naperville IL 60563 is the SAME DAMAIL address the 2026-06-12 Data-Axle audit flagged as shared-mailing-only junk (held, NOT flipped). Reach built on it is contaminated.",
+    "main-session addr_exact_confirmed=False yet fleet gate=ready_for_validation \u2014 inconsistent; addr_exact=False + contaminated AO => candidate, not ready.",
+    "Ownership of all ~20 by Reem Shafi rests on a SINGLE reused IIT-Elevate bio ('20 locations'); name set is heterogeneous (Ashton x7, Smile Town, Troy, Oswego, Ogden Valley, Farrell, Simply, Smile View, Gentle Dental Group) \u2014 needs per-address owner confirmation.",
+    "Evidence is bio+mailing+AO only, no per-location ownership artifact."
+   ]
+  },
+  {
+   "location_id": "9ee4df9470dec738",
+   "network": "SOHAIL SHAFI",
+   "network_id": "ao:SHAFI_SOHAIL",
+   "practice_name": "ASHTON DENTAL PC",
+   "current_entity_classification": "solo_established",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "weak",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated(if-confirmed)",
+   "qa_reasons": [
+    "AO 'Sohail Shafi' is the OFFICE MANAGER, not an owner-dentist \u2014 shared-AO reach is a SHARED-ADMIN signal, not proof of common ownership.",
+    "Network's shared mailing 1730 Park St #106 Naperville IL 60563 is the SAME DAMAIL address the 2026-06-12 Data-Axle audit flagged as shared-mailing-only junk (held, NOT flipped). Reach built on it is contaminated.",
+    "main-session addr_exact_confirmed=False yet fleet gate=ready_for_validation \u2014 inconsistent; addr_exact=False + contaminated AO => candidate, not ready.",
+    "Ownership of all ~20 by Reem Shafi rests on a SINGLE reused IIT-Elevate bio ('20 locations'); name set is heterogeneous (Ashton x7, Smile Town, Troy, Oswego, Ogden Valley, Farrell, Simply, Smile View, Gentle Dental Group) \u2014 needs per-address owner confirmation.",
+    "Evidence is bio+mailing+AO only, no per-location ownership artifact."
+   ]
+  },
+  {
+   "location_id": "ace9e319256f2d7a",
+   "network": "SOHAIL SHAFI",
+   "network_id": "ao:SHAFI_SOHAIL",
+   "practice_name": "ASHTON DENTAL PC",
+   "current_entity_classification": "large_group",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "weak",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated(if-confirmed)",
+   "qa_reasons": [
+    "AO 'Sohail Shafi' is the OFFICE MANAGER, not an owner-dentist \u2014 shared-AO reach is a SHARED-ADMIN signal, not proof of common ownership.",
+    "Network's shared mailing 1730 Park St #106 Naperville IL 60563 is the SAME DAMAIL address the 2026-06-12 Data-Axle audit flagged as shared-mailing-only junk (held, NOT flipped). Reach built on it is contaminated.",
+    "main-session addr_exact_confirmed=False yet fleet gate=ready_for_validation \u2014 inconsistent; addr_exact=False + contaminated AO => candidate, not ready.",
+    "Ownership of all ~20 by Reem Shafi rests on a SINGLE reused IIT-Elevate bio ('20 locations'); name set is heterogeneous (Ashton x7, Smile Town, Troy, Oswego, Ogden Valley, Farrell, Simply, Smile View, Gentle Dental Group) \u2014 needs per-address owner confirmation.",
+    "Evidence is bio+mailing+AO only, no per-location ownership artifact."
+   ]
+  },
+  {
+   "location_id": "50eb637aaa38aa4b",
+   "network": "SOHAIL SHAFI",
+   "network_id": "ao:SHAFI_SOHAIL",
+   "practice_name": "ASHTON DENTAL PC",
+   "current_entity_classification": "solo_high_volume",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "weak",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated(if-confirmed)",
+   "qa_reasons": [
+    "AO 'Sohail Shafi' is the OFFICE MANAGER, not an owner-dentist \u2014 shared-AO reach is a SHARED-ADMIN signal, not proof of common ownership.",
+    "Network's shared mailing 1730 Park St #106 Naperville IL 60563 is the SAME DAMAIL address the 2026-06-12 Data-Axle audit flagged as shared-mailing-only junk (held, NOT flipped). Reach built on it is contaminated.",
+    "main-session addr_exact_confirmed=False yet fleet gate=ready_for_validation \u2014 inconsistent; addr_exact=False + contaminated AO => candidate, not ready.",
+    "Ownership of all ~20 by Reem Shafi rests on a SINGLE reused IIT-Elevate bio ('20 locations'); name set is heterogeneous (Ashton x7, Smile Town, Troy, Oswego, Ogden Valley, Farrell, Simply, Smile View, Gentle Dental Group) \u2014 needs per-address owner confirmation.",
+    "Evidence is bio+mailing+AO only, no per-location ownership artifact."
+   ]
+  },
+  {
+   "location_id": "192eeb357d406084",
+   "network": "SOHAIL SHAFI",
+   "network_id": "ao:SHAFI_SOHAIL",
+   "practice_name": "OSWEGO DENTAL",
+   "current_entity_classification": "solo_high_volume",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "weak",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated(if-confirmed)",
+   "qa_reasons": [
+    "AO 'Sohail Shafi' is the OFFICE MANAGER, not an owner-dentist \u2014 shared-AO reach is a SHARED-ADMIN signal, not proof of common ownership.",
+    "Network's shared mailing 1730 Park St #106 Naperville IL 60563 is the SAME DAMAIL address the 2026-06-12 Data-Axle audit flagged as shared-mailing-only junk (held, NOT flipped). Reach built on it is contaminated.",
+    "main-session addr_exact_confirmed=False yet fleet gate=ready_for_validation \u2014 inconsistent; addr_exact=False + contaminated AO => candidate, not ready.",
+    "Ownership of all ~20 by Reem Shafi rests on a SINGLE reused IIT-Elevate bio ('20 locations'); name set is heterogeneous (Ashton x7, Smile Town, Troy, Oswego, Ogden Valley, Farrell, Simply, Smile View, Gentle Dental Group) \u2014 needs per-address owner confirmation.",
+    "Evidence is bio+mailing+AO only, no per-location ownership artifact."
+   ]
+  },
+  {
+   "location_id": "ad04ebea2ff68064",
+   "network": "SOHAIL SHAFI",
+   "network_id": "ao:SHAFI_SOHAIL",
+   "practice_name": "GENTLE DENTAL GROUP",
+   "current_entity_classification": "dso_national",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "weak",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated(if-confirmed)",
+   "qa_reasons": [
+    "AO 'Sohail Shafi' is the OFFICE MANAGER, not an owner-dentist \u2014 shared-AO reach is a SHARED-ADMIN signal, not proof of common ownership.",
+    "Network's shared mailing 1730 Park St #106 Naperville IL 60563 is the SAME DAMAIL address the 2026-06-12 Data-Axle audit flagged as shared-mailing-only junk (held, NOT flipped). Reach built on it is contaminated.",
+    "main-session addr_exact_confirmed=False yet fleet gate=ready_for_validation \u2014 inconsistent; addr_exact=False + contaminated AO => candidate, not ready.",
+    "Ownership of all ~20 by Reem Shafi rests on a SINGLE reused IIT-Elevate bio ('20 locations'); name set is heterogeneous (Ashton x7, Smile Town, Troy, Oswego, Ogden Valley, Farrell, Simply, Smile View, Gentle Dental Group) \u2014 needs per-address owner confirmation.",
+    "Evidence is bio+mailing+AO only, no per-location ownership artifact.",
+    "USER-FLAGGED: correctly identifies the existing dso_national/national-Gentle-Dental label as a false positive \u2014 this MUST be removed from any national Gentle Dental DSO count. Reassignment to local Two Rivers is directionally right but ownership-by-Shafi is unconfirmed."
+   ]
+  },
+  {
+   "location_id": "bb0b258dbdee424c",
+   "network": "SOHAIL SHAFI",
+   "network_id": "ao:SHAFI_SOHAIL",
+   "practice_name": "OGDEN VALLEY DENTAL",
+   "current_entity_classification": "small_group",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "weak",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated(if-confirmed)",
+   "qa_reasons": [
+    "AO 'Sohail Shafi' is the OFFICE MANAGER, not an owner-dentist \u2014 shared-AO reach is a SHARED-ADMIN signal, not proof of common ownership.",
+    "Network's shared mailing 1730 Park St #106 Naperville IL 60563 is the SAME DAMAIL address the 2026-06-12 Data-Axle audit flagged as shared-mailing-only junk (held, NOT flipped). Reach built on it is contaminated.",
+    "main-session addr_exact_confirmed=False yet fleet gate=ready_for_validation \u2014 inconsistent; addr_exact=False + contaminated AO => candidate, not ready.",
+    "Ownership of all ~20 by Reem Shafi rests on a SINGLE reused IIT-Elevate bio ('20 locations'); name set is heterogeneous (Ashton x7, Smile Town, Troy, Oswego, Ogden Valley, Farrell, Simply, Smile View, Gentle Dental Group) \u2014 needs per-address owner confirmation.",
+    "Evidence is bio+mailing+AO only, no per-location ownership artifact."
+   ]
+  },
+  {
+   "location_id": "41e9efc177c3226c",
+   "network": "SOHAIL SHAFI",
+   "network_id": "ao:SHAFI_SOHAIL",
+   "practice_name": "ASHTON DENTAL PC",
+   "current_entity_classification": "solo_established",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "weak",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated(if-confirmed)",
+   "qa_reasons": [
+    "AO 'Sohail Shafi' is the OFFICE MANAGER, not an owner-dentist \u2014 shared-AO reach is a SHARED-ADMIN signal, not proof of common ownership.",
+    "Network's shared mailing 1730 Park St #106 Naperville IL 60563 is the SAME DAMAIL address the 2026-06-12 Data-Axle audit flagged as shared-mailing-only junk (held, NOT flipped). Reach built on it is contaminated.",
+    "main-session addr_exact_confirmed=False yet fleet gate=ready_for_validation \u2014 inconsistent; addr_exact=False + contaminated AO => candidate, not ready.",
+    "Ownership of all ~20 by Reem Shafi rests on a SINGLE reused IIT-Elevate bio ('20 locations'); name set is heterogeneous (Ashton x7, Smile Town, Troy, Oswego, Ogden Valley, Farrell, Simply, Smile View, Gentle Dental Group) \u2014 needs per-address owner confirmation.",
+    "Evidence is bio+mailing+AO only, no per-location ownership artifact."
+   ]
+  },
+  {
+   "location_id": "97ce6e59218e0f7a",
+   "network": "SOHAIL SHAFI",
+   "network_id": "ao:SHAFI_SOHAIL",
+   "practice_name": "ASHTON DENTAL PC",
+   "current_entity_classification": "solo_established",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "weak",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated(if-confirmed)",
+   "qa_reasons": [
+    "AO 'Sohail Shafi' is the OFFICE MANAGER, not an owner-dentist \u2014 shared-AO reach is a SHARED-ADMIN signal, not proof of common ownership.",
+    "Network's shared mailing 1730 Park St #106 Naperville IL 60563 is the SAME DAMAIL address the 2026-06-12 Data-Axle audit flagged as shared-mailing-only junk (held, NOT flipped). Reach built on it is contaminated.",
+    "main-session addr_exact_confirmed=False yet fleet gate=ready_for_validation \u2014 inconsistent; addr_exact=False + contaminated AO => candidate, not ready.",
+    "Ownership of all ~20 by Reem Shafi rests on a SINGLE reused IIT-Elevate bio ('20 locations'); name set is heterogeneous (Ashton x7, Smile Town, Troy, Oswego, Ogden Valley, Farrell, Simply, Smile View, Gentle Dental Group) \u2014 needs per-address owner confirmation.",
+    "Evidence is bio+mailing+AO only, no per-location ownership artifact."
+   ]
+  },
+  {
+   "location_id": "a4c2f6303bec1c06",
+   "network": "VESNA BELKIC",
+   "network_id": "ao:BELKIC_VESNA",
+   "practice_name": "1ST FAMILY DENTAL & ORTHO CENTER PC",
+   "current_entity_classification": "dso_regional",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 3,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": "dentist_multi",
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "USER-FLAGGED TIER DRIFT: fleet tier=branded_dso (T5 -> counts in DSO/PE headline) but 1st Family Dental is DENTIST-FOUNDED/owned (Dr. Ghassan Abboud, President, since 1996) with NO PE/MSO evidence (pe_backed=false).",
+    "Per locked rule 'dentist_multi should not be labeled corporate/PE' and 'no PE => not DSO/PE headline', the correct tier is dentist_multi (T3 = Consolidated, NOT DSO/PE). Leaving it branded_dso over-counts the DSO/PE headline.",
+    "Evidence itself is STRONG: 1stfamilydental.com locator + parent_company='1ST FAMILY DENTAL' on NPPES + shared phone (773) 728-5333 across branches."
+   ]
+  },
+  {
+   "location_id": "13b38618b4b921be",
+   "network": "VESNA BELKIC",
+   "network_id": "ao:BELKIC_VESNA",
+   "practice_name": "FIRST DENTAL IMAGE INC.",
+   "current_entity_classification": "solo_established",
+   "fleet_tier": "undetermined",
+   "fleet_pe_backed": null,
+   "fleet_gate": "undetermined",
+   "fleet_confidence": "low",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 0,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "none",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "neither(undetermined)",
+   "qa_reasons": [
+    "'First Dental Image Inc' suggests a dental imaging/radiology entity \u2014 likely non_clinical/ancillary, not a GP location.",
+    "Correctly held undetermined (0 evidence URLs). Do NOT consolidate; confirm non_clinical vs unrelated before any inclusion in denominator."
+   ]
+  },
+  {
+   "location_id": "00283d0319728697",
+   "network": "VESNA BELKIC",
+   "network_id": "ao:BELKIC_VESNA",
+   "practice_name": "1ST FAMILY DENTAL OF ELGIN",
+   "current_entity_classification": "dso_national",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": "dentist_multi",
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "USER-FLAGGED TIER DRIFT: fleet tier=branded_dso (T5 -> counts in DSO/PE headline) but 1st Family Dental is DENTIST-FOUNDED/owned (Dr. Ghassan Abboud, President, since 1996) with NO PE/MSO evidence (pe_backed=false).",
+    "Per locked rule 'dentist_multi should not be labeled corporate/PE' and 'no PE => not DSO/PE headline', the correct tier is dentist_multi (T3 = Consolidated, NOT DSO/PE). Leaving it branded_dso over-counts the DSO/PE headline.",
+    "Evidence itself is STRONG: 1stfamilydental.com locator + parent_company='1ST FAMILY DENTAL' on NPPES + shared phone (773) 728-5333 across branches."
+   ]
+  },
+  {
+   "location_id": "d46481314c1f830f",
+   "network": "VESNA BELKIC",
+   "network_id": "ao:BELKIC_VESNA",
+   "practice_name": "1ST FAMILY DENTAL OF ROSELLE INC.",
+   "current_entity_classification": "dso_national",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": "dentist_multi",
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "USER-FLAGGED TIER DRIFT: fleet tier=branded_dso (T5 -> counts in DSO/PE headline) but 1st Family Dental is DENTIST-FOUNDED/owned (Dr. Ghassan Abboud, President, since 1996) with NO PE/MSO evidence (pe_backed=false).",
+    "Per locked rule 'dentist_multi should not be labeled corporate/PE' and 'no PE => not DSO/PE headline', the correct tier is dentist_multi (T3 = Consolidated, NOT DSO/PE). Leaving it branded_dso over-counts the DSO/PE headline.",
+    "Evidence itself is STRONG: 1stfamilydental.com locator + parent_company='1ST FAMILY DENTAL' on NPPES + shared phone (773) 728-5333 across branches."
+   ]
+  },
+  {
+   "location_id": "76b01c890765d33f",
+   "network": "VESNA BELKIC",
+   "network_id": "ao:BELKIC_VESNA",
+   "practice_name": "1ST FAMILY DENTAL OF FOX VALLEY, INC.",
+   "current_entity_classification": "dso_regional",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": "dentist_multi",
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "USER-FLAGGED TIER DRIFT: fleet tier=branded_dso (T5 -> counts in DSO/PE headline) but 1st Family Dental is DENTIST-FOUNDED/owned (Dr. Ghassan Abboud, President, since 1996) with NO PE/MSO evidence (pe_backed=false).",
+    "Per locked rule 'dentist_multi should not be labeled corporate/PE' and 'no PE => not DSO/PE headline', the correct tier is dentist_multi (T3 = Consolidated, NOT DSO/PE). Leaving it branded_dso over-counts the DSO/PE headline.",
+    "Evidence itself is STRONG: 1stfamilydental.com locator + parent_company='1ST FAMILY DENTAL' on NPPES + shared phone (773) 728-5333 across branches."
+   ]
+  },
+  {
+   "location_id": "6a7337dc1388e15d",
+   "network": "VESNA BELKIC",
+   "network_id": "ao:BELKIC_VESNA",
+   "practice_name": "1ST FAMILY DENTAL OF LA GRANGE PARK, PC",
+   "current_entity_classification": "dso_national",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": "dentist_multi",
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "USER-FLAGGED TIER DRIFT: fleet tier=branded_dso (T5 -> counts in DSO/PE headline) but 1st Family Dental is DENTIST-FOUNDED/owned (Dr. Ghassan Abboud, President, since 1996) with NO PE/MSO evidence (pe_backed=false).",
+    "Per locked rule 'dentist_multi should not be labeled corporate/PE' and 'no PE => not DSO/PE headline', the correct tier is dentist_multi (T3 = Consolidated, NOT DSO/PE). Leaving it branded_dso over-counts the DSO/PE headline.",
+    "Evidence itself is STRONG: 1stfamilydental.com locator + parent_company='1ST FAMILY DENTAL' on NPPES + shared phone (773) 728-5333 across branches."
+   ]
+  },
+  {
+   "location_id": "0b9debb68c723377",
+   "network": "VESNA BELKIC",
+   "network_id": "ao:BELKIC_VESNA",
+   "practice_name": "1ST FAMILY DENTAL OF BURR RIDGE, PC",
+   "current_entity_classification": "dso_national",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": "dentist_multi",
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "USER-FLAGGED TIER DRIFT: fleet tier=branded_dso (T5 -> counts in DSO/PE headline) but 1st Family Dental is DENTIST-FOUNDED/owned (Dr. Ghassan Abboud, President, since 1996) with NO PE/MSO evidence (pe_backed=false).",
+    "Per locked rule 'dentist_multi should not be labeled corporate/PE' and 'no PE => not DSO/PE headline', the correct tier is dentist_multi (T3 = Consolidated, NOT DSO/PE). Leaving it branded_dso over-counts the DSO/PE headline.",
+    "Evidence itself is STRONG: 1stfamilydental.com locator + parent_company='1ST FAMILY DENTAL' on NPPES + shared phone (773) 728-5333 across branches."
+   ]
+  },
+  {
+   "location_id": "0de79b98f75b7128",
+   "network": "VESNA BELKIC",
+   "network_id": "ao:BELKIC_VESNA",
+   "practice_name": "1ST FAMILY DENTAL OF CHICAGO INC",
+   "current_entity_classification": "dso_national",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": "dentist_multi",
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "USER-FLAGGED TIER DRIFT: fleet tier=branded_dso (T5 -> counts in DSO/PE headline) but 1st Family Dental is DENTIST-FOUNDED/owned (Dr. Ghassan Abboud, President, since 1996) with NO PE/MSO evidence (pe_backed=false).",
+    "Per locked rule 'dentist_multi should not be labeled corporate/PE' and 'no PE => not DSO/PE headline', the correct tier is dentist_multi (T3 = Consolidated, NOT DSO/PE). Leaving it branded_dso over-counts the DSO/PE headline.",
+    "Evidence itself is STRONG: 1stfamilydental.com locator + parent_company='1ST FAMILY DENTAL' on NPPES + shared phone (773) 728-5333 across branches."
+   ]
+  },
+  {
+   "location_id": "e286a73df0d2541b",
+   "network": "VESNA BELKIC",
+   "network_id": "ao:BELKIC_VESNA",
+   "practice_name": "LITTLE VILLAGE DENTAL PC",
+   "current_entity_classification": "dso_regional",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": "dentist_multi",
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "USER-FLAGGED TIER DRIFT: fleet tier=branded_dso (T5 -> counts in DSO/PE headline) but 1st Family Dental is DENTIST-FOUNDED/owned (Dr. Ghassan Abboud, President, since 1996) with NO PE/MSO evidence (pe_backed=false).",
+    "Per locked rule 'dentist_multi should not be labeled corporate/PE' and 'no PE => not DSO/PE headline', the correct tier is dentist_multi (T3 = Consolidated, NOT DSO/PE). Leaving it branded_dso over-counts the DSO/PE headline.",
+    "Evidence itself is STRONG: 1stfamilydental.com locator + parent_company='1ST FAMILY DENTAL' on NPPES + shared phone (773) 728-5333 across branches.",
+    "Outlier NAME (Little Village Dental PC) but locator lists it + shared phone => corroborated as a 1st Family friendly-name location."
+   ]
+  },
+  {
+   "location_id": "dddb5ba57c531064",
+   "network": "VESNA BELKIC",
+   "network_id": "ao:BELKIC_VESNA",
+   "practice_name": "OBEID DENTAL INC",
+   "current_entity_classification": "dso_regional",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "medium",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": "dentist_multi",
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "USER-FLAGGED TIER DRIFT: fleet tier=branded_dso (T5 -> counts in DSO/PE headline) but 1st Family Dental is DENTIST-FOUNDED/owned (Dr. Ghassan Abboud, President, since 1996) with NO PE/MSO evidence (pe_backed=false).",
+    "Per locked rule 'dentist_multi should not be labeled corporate/PE' and 'no PE => not DSO/PE headline', the correct tier is dentist_multi (T3 = Consolidated, NOT DSO/PE). Leaving it branded_dso over-counts the DSO/PE headline.",
+    "Evidence itself is STRONG: 1stfamilydental.com locator + parent_company='1ST FAMILY DENTAL' on NPPES + shared phone (773) 728-5333 across branches.",
+    "Outlier NAME (Obeid Dental Inc) \u2014 NOT a '1st Family' brand name; evidence for THIS row's locator/address match not independently confirmed in my read. Verify on 1stfamilydental.com locator before consolidating."
+   ]
+  },
+  {
+   "location_id": "57f43b2b4923beb3",
+   "network": "VESNA BELKIC",
+   "network_id": "ao:BELKIC_VESNA",
+   "practice_name": "1ST FAMILY DENTAL OF WEST ROSELAND PC",
+   "current_entity_classification": "dso_national",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": "dentist_multi",
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "USER-FLAGGED TIER DRIFT: fleet tier=branded_dso (T5 -> counts in DSO/PE headline) but 1st Family Dental is DENTIST-FOUNDED/owned (Dr. Ghassan Abboud, President, since 1996) with NO PE/MSO evidence (pe_backed=false).",
+    "Per locked rule 'dentist_multi should not be labeled corporate/PE' and 'no PE => not DSO/PE headline', the correct tier is dentist_multi (T3 = Consolidated, NOT DSO/PE). Leaving it branded_dso over-counts the DSO/PE headline.",
+    "Evidence itself is STRONG: 1stfamilydental.com locator + parent_company='1ST FAMILY DENTAL' on NPPES + shared phone (773) 728-5333 across branches."
+   ]
+  },
+  {
+   "location_id": "f4d9376d568f7c43",
+   "network": "VESNA BELKIC",
+   "network_id": "ao:BELKIC_VESNA",
+   "practice_name": "1ST FAMILY DENTAL OF PULASKI PC",
+   "current_entity_classification": "dso_regional",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": "dentist_multi",
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "USER-FLAGGED TIER DRIFT: fleet tier=branded_dso (T5 -> counts in DSO/PE headline) but 1st Family Dental is DENTIST-FOUNDED/owned (Dr. Ghassan Abboud, President, since 1996) with NO PE/MSO evidence (pe_backed=false).",
+    "Per locked rule 'dentist_multi should not be labeled corporate/PE' and 'no PE => not DSO/PE headline', the correct tier is dentist_multi (T3 = Consolidated, NOT DSO/PE). Leaving it branded_dso over-counts the DSO/PE headline.",
+    "Evidence itself is STRONG: 1stfamilydental.com locator + parent_company='1ST FAMILY DENTAL' on NPPES + shared phone (773) 728-5333 across branches."
+   ]
+  },
+  {
+   "location_id": "e0ee6d4ff57ad085",
+   "network": "VESNA BELKIC",
+   "network_id": "ao:BELKIC_VESNA",
+   "practice_name": "DENTAL CORPORATE USA",
+   "current_entity_classification": "dso_national",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": "dentist_multi",
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "USER-FLAGGED TIER DRIFT: fleet tier=branded_dso (T5 -> counts in DSO/PE headline) but 1st Family Dental is DENTIST-FOUNDED/owned (Dr. Ghassan Abboud, President, since 1996) with NO PE/MSO evidence (pe_backed=false).",
+    "Per locked rule 'dentist_multi should not be labeled corporate/PE' and 'no PE => not DSO/PE headline', the correct tier is dentist_multi (T3 = Consolidated, NOT DSO/PE). Leaving it branded_dso over-counts the DSO/PE headline.",
+    "Evidence itself is STRONG: 1stfamilydental.com locator + parent_company='1ST FAMILY DENTAL' on NPPES + shared phone (773) 728-5333 across branches.",
+    "Outlier NAME (Dental Corporate USA) but EXACT-address match on 1stfamilydental.com/locations/andersonville/ (5333 N Clark) + parent_company => confirmed 1st Family Andersonville; name is the legal/holding entity. Strong."
+   ]
+  },
+  {
+   "location_id": "c42bbfd07106f9f2",
+   "network": "VESNA BELKIC",
+   "network_id": "ao:BELKIC_VESNA",
+   "practice_name": "1ST FAMILY DENTAL OF LOGAN SQUARE",
+   "current_entity_classification": "dso_national",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 1,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": "dentist_multi",
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "USER-FLAGGED TIER DRIFT: fleet tier=branded_dso (T5 -> counts in DSO/PE headline) but 1st Family Dental is DENTIST-FOUNDED/owned (Dr. Ghassan Abboud, President, since 1996) with NO PE/MSO evidence (pe_backed=false).",
+    "Per locked rule 'dentist_multi should not be labeled corporate/PE' and 'no PE => not DSO/PE headline', the correct tier is dentist_multi (T3 = Consolidated, NOT DSO/PE). Leaving it branded_dso over-counts the DSO/PE headline.",
+    "Evidence itself is STRONG: 1stfamilydental.com locator + parent_company='1ST FAMILY DENTAL' on NPPES + shared phone (773) 728-5333 across branches."
+   ]
+  },
+  {
+   "location_id": "c1526a81500dbd53",
+   "network": "VESNA BELKIC",
+   "network_id": "ao:BELKIC_VESNA",
+   "practice_name": "ARMITAGE PROFESSIONAL SERVICES",
+   "current_entity_classification": "solo_established",
+   "fleet_tier": "undetermined",
+   "fleet_pe_backed": null,
+   "fleet_gate": "undetermined",
+   "fleet_confidence": "low",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 0,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "none",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "neither(undetermined)",
+   "qa_reasons": [
+    "'Armitage Professional Services' name pattern suggests an MSO/admin/holding entity (professional services), likely non_clinical \u2014 not a clinical practice.",
+    "Correctly held undetermined (0 evidence URLs). Do NOT consolidate; confirm non_clinical vs unrelated before any inclusion in denominator."
+   ]
+  },
+  {
+   "location_id": "e10809c55b2d7955",
+   "network": "RACHEL NITTINGER",
+   "network_id": "ao:NITTINGER_RACHEL",
+   "practice_name": "ILLINOIS DENTAL PROVIDERS (ARLINGTON HEIGHTS), LTD.",
+   "current_entity_classification": "solo_established",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": true,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 3,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "DSO_PE(if-confirmed)",
+   "qa_reasons": [
+    "HIGHEST-RISK network: AO 'Rachel Nittinger' is a CREDENTIALING manager (corporate admin), the WEAKEST ownership signal here \u2014 credentialing roles attach to many entities and do not prove these specific NPIs are Sonrava-owned.",
+    "pe_backed=true puts all 12 rows in the DSO/PE headline (T4+T5). That claim rests on a brand mapping (Illinois Dental Providers/DentalWorks -> Sonrava Health/New Mountain Capital) that is reused at the STATE level (dentalworks.com/offices/illinois/), NOT proven per address.",
+    "main-session marked addr_exact_confirmed=True, but the locator URL is a reused STATE page, not a per-address deep link => I DISAGREE: this is structural_correlated, not exact_documentary.",
+    "If Sonrava is confirmed per address, correct tier is stealth_dso (friendly-PC under local name), NOT branded_dso (the brand is not the NPPES name). Either way, do not consolidate into DSO/PE until per-address MSO/locator proof."
+   ]
+  },
+  {
+   "location_id": "5ffc5f3c0a7b3102",
+   "network": "RACHEL NITTINGER",
+   "network_id": "ao:NITTINGER_RACHEL",
+   "practice_name": "DR. ZASSO & ASSOCIATES (SKOKIE), LTD.",
+   "current_entity_classification": "dso_national",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": true,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 3,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "DSO_PE(if-confirmed)",
+   "qa_reasons": [
+    "HIGHEST-RISK network: AO 'Rachel Nittinger' is a CREDENTIALING manager (corporate admin), the WEAKEST ownership signal here \u2014 credentialing roles attach to many entities and do not prove these specific NPIs are Sonrava-owned.",
+    "pe_backed=true puts all 12 rows in the DSO/PE headline (T4+T5). That claim rests on a brand mapping (Illinois Dental Providers/DentalWorks -> Sonrava Health/New Mountain Capital) that is reused at the STATE level (dentalworks.com/offices/illinois/), NOT proven per address.",
+    "main-session marked addr_exact_confirmed=True, but the locator URL is a reused STATE page, not a per-address deep link => I DISAGREE: this is structural_correlated, not exact_documentary.",
+    "Eponymous '& Associates'/surname name \u2014 could be an ACQUIRED practice kept under the founder name (consistent with Sonrava friendly-PC) OR an independent dentist-owned '& Associates' group that merely uses a shared credentialing service. If NOT Sonrava, correct tier is dentist_multi pe=false (OUT of DSO/PE). Verify per address.",
+    "If Sonrava is confirmed per address, correct tier is stealth_dso (friendly-PC under local name), NOT branded_dso (the brand is not the NPPES name). Either way, do not consolidate into DSO/PE until per-address MSO/locator proof."
+   ]
+  },
+  {
+   "location_id": "2398f9e48e6578f9",
+   "network": "RACHEL NITTINGER",
+   "network_id": "ao:NITTINGER_RACHEL",
+   "practice_name": "ILLINOIS DENTAL PROVIDERS (HARLEM & NORTH), LTD.",
+   "current_entity_classification": "dso_national",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": true,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 3,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "DSO_PE(if-confirmed)",
+   "qa_reasons": [
+    "HIGHEST-RISK network: AO 'Rachel Nittinger' is a CREDENTIALING manager (corporate admin), the WEAKEST ownership signal here \u2014 credentialing roles attach to many entities and do not prove these specific NPIs are Sonrava-owned.",
+    "pe_backed=true puts all 12 rows in the DSO/PE headline (T4+T5). That claim rests on a brand mapping (Illinois Dental Providers/DentalWorks -> Sonrava Health/New Mountain Capital) that is reused at the STATE level (dentalworks.com/offices/illinois/), NOT proven per address.",
+    "main-session marked addr_exact_confirmed=True, but the locator URL is a reused STATE page, not a per-address deep link => I DISAGREE: this is structural_correlated, not exact_documentary.",
+    "If Sonrava is confirmed per address, correct tier is stealth_dso (friendly-PC under local name), NOT branded_dso (the brand is not the NPPES name). Either way, do not consolidate into DSO/PE until per-address MSO/locator proof."
+   ]
+  },
+  {
+   "location_id": "1370e6f75164c141",
+   "network": "RACHEL NITTINGER",
+   "network_id": "ao:NITTINGER_RACHEL",
+   "practice_name": "ILLINOIS DENTAL PROVIDERS (GLEN ELLYN), LTD",
+   "current_entity_classification": "dso_national",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": true,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 3,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "DSO_PE(if-confirmed)",
+   "qa_reasons": [
+    "HIGHEST-RISK network: AO 'Rachel Nittinger' is a CREDENTIALING manager (corporate admin), the WEAKEST ownership signal here \u2014 credentialing roles attach to many entities and do not prove these specific NPIs are Sonrava-owned.",
+    "pe_backed=true puts all 12 rows in the DSO/PE headline (T4+T5). That claim rests on a brand mapping (Illinois Dental Providers/DentalWorks -> Sonrava Health/New Mountain Capital) that is reused at the STATE level (dentalworks.com/offices/illinois/), NOT proven per address.",
+    "main-session marked addr_exact_confirmed=True, but the locator URL is a reused STATE page, not a per-address deep link => I DISAGREE: this is structural_correlated, not exact_documentary.",
+    "If Sonrava is confirmed per address, correct tier is stealth_dso (friendly-PC under local name), NOT branded_dso (the brand is not the NPPES name). Either way, do not consolidate into DSO/PE until per-address MSO/locator proof."
+   ]
+  },
+  {
+   "location_id": "f849d9ecf776fd7d",
+   "network": "RACHEL NITTINGER",
+   "network_id": "ao:NITTINGER_RACHEL",
+   "practice_name": "ILLINOIS DENTAL PROVIDRS (SCHAUMBURG), P.C.",
+   "current_entity_classification": "dso_national",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": true,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 3,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "DSO_PE(if-confirmed)",
+   "qa_reasons": [
+    "HIGHEST-RISK network: AO 'Rachel Nittinger' is a CREDENTIALING manager (corporate admin), the WEAKEST ownership signal here \u2014 credentialing roles attach to many entities and do not prove these specific NPIs are Sonrava-owned.",
+    "pe_backed=true puts all 12 rows in the DSO/PE headline (T4+T5). That claim rests on a brand mapping (Illinois Dental Providers/DentalWorks -> Sonrava Health/New Mountain Capital) that is reused at the STATE level (dentalworks.com/offices/illinois/), NOT proven per address.",
+    "main-session marked addr_exact_confirmed=True, but the locator URL is a reused STATE page, not a per-address deep link => I DISAGREE: this is structural_correlated, not exact_documentary.",
+    "If Sonrava is confirmed per address, correct tier is stealth_dso (friendly-PC under local name), NOT branded_dso (the brand is not the NPPES name). Either way, do not consolidate into DSO/PE until per-address MSO/locator proof."
+   ]
+  },
+  {
+   "location_id": "effac443b4839358",
+   "network": "RACHEL NITTINGER",
+   "network_id": "ao:NITTINGER_RACHEL",
+   "practice_name": "MECKLER DENTAL PROVIDERS (RIVER OAKS), LTD.",
+   "current_entity_classification": "dso_national",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": true,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 3,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "DSO_PE(if-confirmed)",
+   "qa_reasons": [
+    "HIGHEST-RISK network: AO 'Rachel Nittinger' is a CREDENTIALING manager (corporate admin), the WEAKEST ownership signal here \u2014 credentialing roles attach to many entities and do not prove these specific NPIs are Sonrava-owned.",
+    "pe_backed=true puts all 12 rows in the DSO/PE headline (T4+T5). That claim rests on a brand mapping (Illinois Dental Providers/DentalWorks -> Sonrava Health/New Mountain Capital) that is reused at the STATE level (dentalworks.com/offices/illinois/), NOT proven per address.",
+    "main-session marked addr_exact_confirmed=True, but the locator URL is a reused STATE page, not a per-address deep link => I DISAGREE: this is structural_correlated, not exact_documentary.",
+    "Eponymous '& Associates'/surname name \u2014 could be an ACQUIRED practice kept under the founder name (consistent with Sonrava friendly-PC) OR an independent dentist-owned '& Associates' group that merely uses a shared credentialing service. If NOT Sonrava, correct tier is dentist_multi pe=false (OUT of DSO/PE). Verify per address.",
+    "If Sonrava is confirmed per address, correct tier is stealth_dso (friendly-PC under local name), NOT branded_dso (the brand is not the NPPES name). Either way, do not consolidate into DSO/PE until per-address MSO/locator proof."
+   ]
+  },
+  {
+   "location_id": "072d146be1bf9d80",
+   "network": "RACHEL NITTINGER",
+   "network_id": "ao:NITTINGER_RACHEL",
+   "practice_name": "DR. RAINA & ASSOCITATES (CHICAGO RIDGE), LTD",
+   "current_entity_classification": "dso_national",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": true,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 3,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "DSO_PE(if-confirmed)",
+   "qa_reasons": [
+    "HIGHEST-RISK network: AO 'Rachel Nittinger' is a CREDENTIALING manager (corporate admin), the WEAKEST ownership signal here \u2014 credentialing roles attach to many entities and do not prove these specific NPIs are Sonrava-owned.",
+    "pe_backed=true puts all 12 rows in the DSO/PE headline (T4+T5). That claim rests on a brand mapping (Illinois Dental Providers/DentalWorks -> Sonrava Health/New Mountain Capital) that is reused at the STATE level (dentalworks.com/offices/illinois/), NOT proven per address.",
+    "main-session marked addr_exact_confirmed=True, but the locator URL is a reused STATE page, not a per-address deep link => I DISAGREE: this is structural_correlated, not exact_documentary.",
+    "Eponymous '& Associates'/surname name \u2014 could be an ACQUIRED practice kept under the founder name (consistent with Sonrava friendly-PC) OR an independent dentist-owned '& Associates' group that merely uses a shared credentialing service. If NOT Sonrava, correct tier is dentist_multi pe=false (OUT of DSO/PE). Verify per address.",
+    "If Sonrava is confirmed per address, correct tier is stealth_dso (friendly-PC under local name), NOT branded_dso (the brand is not the NPPES name). Either way, do not consolidate into DSO/PE until per-address MSO/locator proof."
+   ]
+  },
+  {
+   "location_id": "056d1f180dcb8c9a",
+   "network": "RACHEL NITTINGER",
+   "network_id": "ao:NITTINGER_RACHEL",
+   "practice_name": "ILLINOIS DENTAL PROVIDERS (TINLEY PARK), LTD.",
+   "current_entity_classification": "dso_national",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": true,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 3,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "DSO_PE(if-confirmed)",
+   "qa_reasons": [
+    "HIGHEST-RISK network: AO 'Rachel Nittinger' is a CREDENTIALING manager (corporate admin), the WEAKEST ownership signal here \u2014 credentialing roles attach to many entities and do not prove these specific NPIs are Sonrava-owned.",
+    "pe_backed=true puts all 12 rows in the DSO/PE headline (T4+T5). That claim rests on a brand mapping (Illinois Dental Providers/DentalWorks -> Sonrava Health/New Mountain Capital) that is reused at the STATE level (dentalworks.com/offices/illinois/), NOT proven per address.",
+    "main-session marked addr_exact_confirmed=True, but the locator URL is a reused STATE page, not a per-address deep link => I DISAGREE: this is structural_correlated, not exact_documentary.",
+    "If Sonrava is confirmed per address, correct tier is stealth_dso (friendly-PC under local name), NOT branded_dso (the brand is not the NPPES name). Either way, do not consolidate into DSO/PE until per-address MSO/locator proof."
+   ]
+  },
+  {
+   "location_id": "4396df02b95d7ad2",
+   "network": "RACHEL NITTINGER",
+   "network_id": "ao:NITTINGER_RACHEL",
+   "practice_name": "GEORGE J. TRAKAKIS D.D.S. & ASSOCIATES (FOX VALLEY), LTD.",
+   "current_entity_classification": "dso_national",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": true,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 3,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "DSO_PE(if-confirmed)",
+   "qa_reasons": [
+    "HIGHEST-RISK network: AO 'Rachel Nittinger' is a CREDENTIALING manager (corporate admin), the WEAKEST ownership signal here \u2014 credentialing roles attach to many entities and do not prove these specific NPIs are Sonrava-owned.",
+    "pe_backed=true puts all 12 rows in the DSO/PE headline (T4+T5). That claim rests on a brand mapping (Illinois Dental Providers/DentalWorks -> Sonrava Health/New Mountain Capital) that is reused at the STATE level (dentalworks.com/offices/illinois/), NOT proven per address.",
+    "main-session marked addr_exact_confirmed=True, but the locator URL is a reused STATE page, not a per-address deep link => I DISAGREE: this is structural_correlated, not exact_documentary.",
+    "Eponymous '& Associates'/surname name \u2014 could be an ACQUIRED practice kept under the founder name (consistent with Sonrava friendly-PC) OR an independent dentist-owned '& Associates' group that merely uses a shared credentialing service. If NOT Sonrava, correct tier is dentist_multi pe=false (OUT of DSO/PE). Verify per address.",
+    "If Sonrava is confirmed per address, correct tier is stealth_dso (friendly-PC under local name), NOT branded_dso (the brand is not the NPPES name). Either way, do not consolidate into DSO/PE until per-address MSO/locator proof."
+   ]
+  },
+  {
+   "location_id": "7542f13e98b7bd0d",
+   "network": "RACHEL NITTINGER",
+   "network_id": "ao:NITTINGER_RACHEL",
+   "practice_name": "ILLINOIS DENTAL PROVIDERS, P. C.",
+   "current_entity_classification": "solo_established",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": true,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 3,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "weak",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "DSO_PE(if-confirmed)",
+   "qa_reasons": [
+    "HIGHEST-RISK network: AO 'Rachel Nittinger' is a CREDENTIALING manager (corporate admin), the WEAKEST ownership signal here \u2014 credentialing roles attach to many entities and do not prove these specific NPIs are Sonrava-owned.",
+    "pe_backed=true puts all 12 rows in the DSO/PE headline (T4+T5). That claim rests on a brand mapping (Illinois Dental Providers/DentalWorks -> Sonrava Health/New Mountain Capital) that is reused at the STATE level (dentalworks.com/offices/illinois/), NOT proven per address.",
+    "main-session marked addr_exact_confirmed=True, but the locator URL is a reused STATE page, not a per-address deep link => I DISAGREE: this is structural_correlated, not exact_documentary.",
+    "USER-FLAGGED outlier: this row's OWN reasoning concedes 'lack of a direct address-match URL' and rests on naming+phone(972 area code)+AO => structural inference only. Weakest row in the network.",
+    "If Sonrava is confirmed per address, correct tier is stealth_dso (friendly-PC under local name), NOT branded_dso (the brand is not the NPPES name). Either way, do not consolidate into DSO/PE until per-address MSO/locator proof."
+   ]
+  },
+  {
+   "location_id": "8e92e63bee0c1cb7",
+   "network": "RACHEL NITTINGER",
+   "network_id": "ao:NITTINGER_RACHEL",
+   "practice_name": "ILLINOIS DENTAL PROVIDERS (CHICAGO LOOP), LTD",
+   "current_entity_classification": "dso_national",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": true,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 3,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "DSO_PE(if-confirmed)",
+   "qa_reasons": [
+    "HIGHEST-RISK network: AO 'Rachel Nittinger' is a CREDENTIALING manager (corporate admin), the WEAKEST ownership signal here \u2014 credentialing roles attach to many entities and do not prove these specific NPIs are Sonrava-owned.",
+    "pe_backed=true puts all 12 rows in the DSO/PE headline (T4+T5). That claim rests on a brand mapping (Illinois Dental Providers/DentalWorks -> Sonrava Health/New Mountain Capital) that is reused at the STATE level (dentalworks.com/offices/illinois/), NOT proven per address.",
+    "main-session marked addr_exact_confirmed=True, but the locator URL is a reused STATE page, not a per-address deep link => I DISAGREE: this is structural_correlated, not exact_documentary.",
+    "If Sonrava is confirmed per address, correct tier is stealth_dso (friendly-PC under local name), NOT branded_dso (the brand is not the NPPES name). Either way, do not consolidate into DSO/PE until per-address MSO/locator proof."
+   ]
+  },
+  {
+   "location_id": "902006615166d38e",
+   "network": "RACHEL NITTINGER",
+   "network_id": "ao:NITTINGER_RACHEL",
+   "practice_name": "DCP OF ILLINOIS (IRVING PARK), LTD.",
+   "current_entity_classification": "dso_national",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": true,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 3,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "DSO_PE(if-confirmed)",
+   "qa_reasons": [
+    "HIGHEST-RISK network: AO 'Rachel Nittinger' is a CREDENTIALING manager (corporate admin), the WEAKEST ownership signal here \u2014 credentialing roles attach to many entities and do not prove these specific NPIs are Sonrava-owned.",
+    "pe_backed=true puts all 12 rows in the DSO/PE headline (T4+T5). That claim rests on a brand mapping (Illinois Dental Providers/DentalWorks -> Sonrava Health/New Mountain Capital) that is reused at the STATE level (dentalworks.com/offices/illinois/), NOT proven per address.",
+    "main-session marked addr_exact_confirmed=True, but the locator URL is a reused STATE page, not a per-address deep link => I DISAGREE: this is structural_correlated, not exact_documentary.",
+    "If Sonrava is confirmed per address, correct tier is stealth_dso (friendly-PC under local name), NOT branded_dso (the brand is not the NPPES name). Either way, do not consolidate into DSO/PE until per-address MSO/locator proof."
+   ]
+  },
+  {
+   "location_id": "120e9b88cb476518",
+   "network": "FADI AQEL",
+   "network_id": "ao:AQEL_FADI",
+   "practice_name": "CLINICA DENTAL",
+   "current_entity_classification": "solo_high_volume",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": "dentist_multi",
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "USER-FLAGGED TIER DRIFT: fleet tier=branded_dso (T5 -> DSO/PE headline) but Brite Dental is DENTIST-OWNED (BBB: Fadi Aqel DDS, Owner) with NO PE/MSO evidence (pe_backed=false).",
+    "Correct tier per locked rule is dentist_multi (T3 = Consolidated, NOT DSO/PE). Leaving it branded_dso over-counts the DSO/PE headline.",
+    "Evidence is STRONG: britedental.org locator (several exact-address) + BBB owner confirmation.",
+    "Outlier NAME (Clinica Dental) but britedental.org/our-offices lists 6301 W Cermak Berwyn as 'Brite Dental Berwyn' => corroborated. Consolidate as dentist_multi."
+   ]
+  },
+  {
+   "location_id": "fec14748d3270a63",
+   "network": "FADI AQEL",
+   "network_id": "ao:AQEL_FADI",
+   "practice_name": "1ST AMERICAN DENTAL",
+   "current_entity_classification": "solo_established",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "medium",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 2,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": "dentist_multi",
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "USER-FLAGGED TIER DRIFT: fleet tier=branded_dso (T5 -> DSO/PE headline) but Brite Dental is DENTIST-OWNED (BBB: Fadi Aqel DDS, Owner) with NO PE/MSO evidence (pe_backed=false).",
+    "Correct tier per locked rule is dentist_multi (T3 = Consolidated, NOT DSO/PE). Leaving it branded_dso over-counts the DSO/PE headline.",
+    "Evidence is STRONG: britedental.org locator (several exact-address) + BBB owner confirmation.",
+    "Outlier NAME (1st American Dental) \u2014 NOT a 'Brite' brand name; its specific locator/address match not independently confirmed in my read. Verify on britedental.org before consolidating."
+   ]
+  },
+  {
+   "location_id": "5a72d2c7fcf0262b",
+   "network": "FADI AQEL",
+   "network_id": "ao:AQEL_FADI",
+   "practice_name": "BRITE DENTAL CERMAK, P.C.",
+   "current_entity_classification": "dso_regional",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": "dentist_multi",
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "USER-FLAGGED TIER DRIFT: fleet tier=branded_dso (T5 -> DSO/PE headline) but Brite Dental is DENTIST-OWNED (BBB: Fadi Aqel DDS, Owner) with NO PE/MSO evidence (pe_backed=false).",
+    "Correct tier per locked rule is dentist_multi (T3 = Consolidated, NOT DSO/PE). Leaving it branded_dso over-counts the DSO/PE headline.",
+    "Evidence is STRONG: britedental.org locator (several exact-address) + BBB owner confirmation.",
+    "PE FLAG: this row's evidence notes a 'Dental 360' affiliated_dso tag (Dental 360 is a known DSO). VERIFY Brite<->Dental360 is a co-brand, NOT a PE/MSO relationship. If MSO-backed, the whole Brite network flips to stealth_dso pe=true (genuine DSO/PE). BBB 'Fadi Aqel Owner' currently supports dentist-owned."
+   ]
+  },
+  {
+   "location_id": "a34490266101cbd2",
+   "network": "FADI AQEL",
+   "network_id": "ao:AQEL_FADI",
+   "practice_name": "BRITE DENTAL 26 DRAKE, P.C.",
+   "current_entity_classification": "dso_regional",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": "dentist_multi",
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "USER-FLAGGED TIER DRIFT: fleet tier=branded_dso (T5 -> DSO/PE headline) but Brite Dental is DENTIST-OWNED (BBB: Fadi Aqel DDS, Owner) with NO PE/MSO evidence (pe_backed=false).",
+    "Correct tier per locked rule is dentist_multi (T3 = Consolidated, NOT DSO/PE). Leaving it branded_dso over-counts the DSO/PE headline.",
+    "Evidence is STRONG: britedental.org locator (several exact-address) + BBB owner confirmation."
+   ]
+  },
+  {
+   "location_id": "64e57c66fd098eed",
+   "network": "FADI AQEL",
+   "network_id": "ao:AQEL_FADI",
+   "practice_name": "BRITE DENTAL KIMBALL, P.C.",
+   "current_entity_classification": "dso_regional",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": "dentist_multi",
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "USER-FLAGGED TIER DRIFT: fleet tier=branded_dso (T5 -> DSO/PE headline) but Brite Dental is DENTIST-OWNED (BBB: Fadi Aqel DDS, Owner) with NO PE/MSO evidence (pe_backed=false).",
+    "Correct tier per locked rule is dentist_multi (T3 = Consolidated, NOT DSO/PE). Leaving it branded_dso over-counts the DSO/PE headline.",
+    "Evidence is STRONG: britedental.org locator (several exact-address) + BBB owner confirmation."
+   ]
+  },
+  {
+   "location_id": "401b88a09170a38e",
+   "network": "FADI AQEL",
+   "network_id": "ao:AQEL_FADI",
+   "practice_name": "BRITE DENTAL CLARK, P.C.",
+   "current_entity_classification": "dso_regional",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 3,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": "dentist_multi",
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "USER-FLAGGED TIER DRIFT: fleet tier=branded_dso (T5 -> DSO/PE headline) but Brite Dental is DENTIST-OWNED (BBB: Fadi Aqel DDS, Owner) with NO PE/MSO evidence (pe_backed=false).",
+    "Correct tier per locked rule is dentist_multi (T3 = Consolidated, NOT DSO/PE). Leaving it branded_dso over-counts the DSO/PE headline.",
+    "Evidence is STRONG: britedental.org locator (several exact-address) + BBB owner confirmation."
+   ]
+  },
+  {
+   "location_id": "0d76d8f9105e394d",
+   "network": "FADI AQEL",
+   "network_id": "ao:AQEL_FADI",
+   "practice_name": "BRITE DENTAL 59 PULASKI, P.C",
+   "current_entity_classification": "dso_regional",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": "dentist_multi",
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "USER-FLAGGED TIER DRIFT: fleet tier=branded_dso (T5 -> DSO/PE headline) but Brite Dental is DENTIST-OWNED (BBB: Fadi Aqel DDS, Owner) with NO PE/MSO evidence (pe_backed=false).",
+    "Correct tier per locked rule is dentist_multi (T3 = Consolidated, NOT DSO/PE). Leaving it branded_dso over-counts the DSO/PE headline.",
+    "Evidence is STRONG: britedental.org locator (several exact-address) + BBB owner confirmation."
+   ]
+  },
+  {
+   "location_id": "8256bfff559b0760",
+   "network": "FADI AQEL",
+   "network_id": "ao:AQEL_FADI",
+   "practice_name": "BRITE DENTAL",
+   "current_entity_classification": "dso_regional",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": "dentist_multi",
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "USER-FLAGGED TIER DRIFT: fleet tier=branded_dso (T5 -> DSO/PE headline) but Brite Dental is DENTIST-OWNED (BBB: Fadi Aqel DDS, Owner) with NO PE/MSO evidence (pe_backed=false).",
+    "Correct tier per locked rule is dentist_multi (T3 = Consolidated, NOT DSO/PE). Leaving it branded_dso over-counts the DSO/PE headline.",
+    "Evidence is STRONG: britedental.org locator (several exact-address) + BBB owner confirmation."
+   ]
+  },
+  {
+   "location_id": "a2fc3deda0b02a10",
+   "network": "FADI AQEL",
+   "network_id": "ao:AQEL_FADI",
+   "practice_name": "BRITE DENTAL MARQUETTE PULASKI, P.C",
+   "current_entity_classification": "solo_established",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": "dentist_multi",
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "USER-FLAGGED TIER DRIFT: fleet tier=branded_dso (T5 -> DSO/PE headline) but Brite Dental is DENTIST-OWNED (BBB: Fadi Aqel DDS, Owner) with NO PE/MSO evidence (pe_backed=false).",
+    "Correct tier per locked rule is dentist_multi (T3 = Consolidated, NOT DSO/PE). Leaving it branded_dso over-counts the DSO/PE headline.",
+    "Evidence is STRONG: britedental.org locator (several exact-address) + BBB owner confirmation."
+   ]
+  },
+  {
+   "location_id": "e24bd9e2dcfa6932",
+   "network": "FADI AQEL",
+   "network_id": "ao:AQEL_FADI",
+   "practice_name": "BRITE DENTAL 55, P.C",
+   "current_entity_classification": "dso_regional",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": "dentist_multi",
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "USER-FLAGGED TIER DRIFT: fleet tier=branded_dso (T5 -> DSO/PE headline) but Brite Dental is DENTIST-OWNED (BBB: Fadi Aqel DDS, Owner) with NO PE/MSO evidence (pe_backed=false).",
+    "Correct tier per locked rule is dentist_multi (T3 = Consolidated, NOT DSO/PE). Leaving it branded_dso over-counts the DSO/PE headline.",
+    "Evidence is STRONG: britedental.org locator (several exact-address) + BBB owner confirmation."
+   ]
+  },
+  {
+   "location_id": "88ef34deb23c8a00",
+   "network": "FADI AQEL",
+   "network_id": "ao:AQEL_FADI",
+   "practice_name": "BRITE DENTAL BELMONT, P.C.",
+   "current_entity_classification": "dso_regional",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": "dentist_multi",
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "USER-FLAGGED TIER DRIFT: fleet tier=branded_dso (T5 -> DSO/PE headline) but Brite Dental is DENTIST-OWNED (BBB: Fadi Aqel DDS, Owner) with NO PE/MSO evidence (pe_backed=false).",
+    "Correct tier per locked rule is dentist_multi (T3 = Consolidated, NOT DSO/PE). Leaving it branded_dso over-counts the DSO/PE headline.",
+    "Evidence is STRONG: britedental.org locator (several exact-address) + BBB owner confirmation."
+   ]
+  },
+  {
+   "location_id": "9974718d9adbc00f",
+   "network": "FADI AQEL",
+   "network_id": "ao:AQEL_FADI",
+   "practice_name": "BRITE DENTAL MILWAUKEE, P.C.",
+   "current_entity_classification": "dso_regional",
+   "fleet_tier": "branded_dso",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": "dentist_multi",
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "USER-FLAGGED TIER DRIFT: fleet tier=branded_dso (T5 -> DSO/PE headline) but Brite Dental is DENTIST-OWNED (BBB: Fadi Aqel DDS, Owner) with NO PE/MSO evidence (pe_backed=false).",
+    "Correct tier per locked rule is dentist_multi (T3 = Consolidated, NOT DSO/PE). Leaving it branded_dso over-counts the DSO/PE headline.",
+    "Evidence is STRONG: britedental.org locator (several exact-address) + BBB owner confirmation."
+   ]
+  },
+  {
+   "location_id": "4133452316726b0d",
+   "network": "ROBERT BRUNETTI",
+   "network_id": "ao:BRUNETTI_ROBERT",
+   "practice_name": "PROCARE DENTAL GROUP, P.C.",
+   "current_entity_classification": "large_group",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "Clean dentist-owned multi: all 9 rows are the SAME name 'ProCare Dental Group P.C.' (name homogeneity) + shared AO Dr. Robert Brunetti + dentist-founded since 1979. No PE.",
+    "dentist_multi pe=false is the CORRECT axis (Consolidated, NOT DSO/PE). Agree with fleet.",
+    "Denominator note: confirm 9 distinct ADDRESSES (not NPI-fanout at fewer addresses) before counting toward the Consolidated denominator."
+   ]
+  },
+  {
+   "location_id": "5592bc247431d45a",
+   "network": "ROBERT BRUNETTI",
+   "network_id": "ao:BRUNETTI_ROBERT",
+   "practice_name": "PROCARE DENTAL GROUP, P.C.",
+   "current_entity_classification": "solo_high_volume",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "Clean dentist-owned multi: all 9 rows are the SAME name 'ProCare Dental Group P.C.' (name homogeneity) + shared AO Dr. Robert Brunetti + dentist-founded since 1979. No PE.",
+    "dentist_multi pe=false is the CORRECT axis (Consolidated, NOT DSO/PE). Agree with fleet.",
+    "Denominator note: confirm 9 distinct ADDRESSES (not NPI-fanout at fewer addresses) before counting toward the Consolidated denominator."
+   ]
+  },
+  {
+   "location_id": "d56f7d708eb28b77",
+   "network": "ROBERT BRUNETTI",
+   "network_id": "ao:BRUNETTI_ROBERT",
+   "practice_name": "PROCARE DENTAL GROUP, P.C.",
+   "current_entity_classification": "small_group",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "Clean dentist-owned multi: all 9 rows are the SAME name 'ProCare Dental Group P.C.' (name homogeneity) + shared AO Dr. Robert Brunetti + dentist-founded since 1979. No PE.",
+    "dentist_multi pe=false is the CORRECT axis (Consolidated, NOT DSO/PE). Agree with fleet.",
+    "Denominator note: confirm 9 distinct ADDRESSES (not NPI-fanout at fewer addresses) before counting toward the Consolidated denominator."
+   ]
+  },
+  {
+   "location_id": "2d248ca267e60284",
+   "network": "ROBERT BRUNETTI",
+   "network_id": "ao:BRUNETTI_ROBERT",
+   "practice_name": "PROCARE DENTAL GROUP, P.C.",
+   "current_entity_classification": "small_group",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "Clean dentist-owned multi: all 9 rows are the SAME name 'ProCare Dental Group P.C.' (name homogeneity) + shared AO Dr. Robert Brunetti + dentist-founded since 1979. No PE.",
+    "dentist_multi pe=false is the CORRECT axis (Consolidated, NOT DSO/PE). Agree with fleet.",
+    "Denominator note: confirm 9 distinct ADDRESSES (not NPI-fanout at fewer addresses) before counting toward the Consolidated denominator."
+   ]
+  },
+  {
+   "location_id": "bab0f0317a7ae69b",
+   "network": "ROBERT BRUNETTI",
+   "network_id": "ao:BRUNETTI_ROBERT",
+   "practice_name": "PROCARE DENTAL GROUP, P.C.",
+   "current_entity_classification": "large_group",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "Clean dentist-owned multi: all 9 rows are the SAME name 'ProCare Dental Group P.C.' (name homogeneity) + shared AO Dr. Robert Brunetti + dentist-founded since 1979. No PE.",
+    "dentist_multi pe=false is the CORRECT axis (Consolidated, NOT DSO/PE). Agree with fleet.",
+    "Denominator note: confirm 9 distinct ADDRESSES (not NPI-fanout at fewer addresses) before counting toward the Consolidated denominator."
+   ]
+  },
+  {
+   "location_id": "9abd864bb17f0358",
+   "network": "ROBERT BRUNETTI",
+   "network_id": "ao:BRUNETTI_ROBERT",
+   "practice_name": "PROCARE DENTAL GROUP, P.C.",
+   "current_entity_classification": "large_group",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "Clean dentist-owned multi: all 9 rows are the SAME name 'ProCare Dental Group P.C.' (name homogeneity) + shared AO Dr. Robert Brunetti + dentist-founded since 1979. No PE.",
+    "dentist_multi pe=false is the CORRECT axis (Consolidated, NOT DSO/PE). Agree with fleet.",
+    "Denominator note: confirm 9 distinct ADDRESSES (not NPI-fanout at fewer addresses) before counting toward the Consolidated denominator."
+   ]
+  },
+  {
+   "location_id": "fa6464c8c22f9bd9",
+   "network": "ROBERT BRUNETTI",
+   "network_id": "ao:BRUNETTI_ROBERT",
+   "practice_name": "PROCARE DENTAL GROUP, P.C.",
+   "current_entity_classification": "small_group",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 3,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "Clean dentist-owned multi: all 9 rows are the SAME name 'ProCare Dental Group P.C.' (name homogeneity) + shared AO Dr. Robert Brunetti + dentist-founded since 1979. No PE.",
+    "dentist_multi pe=false is the CORRECT axis (Consolidated, NOT DSO/PE). Agree with fleet.",
+    "Denominator note: confirm 9 distinct ADDRESSES (not NPI-fanout at fewer addresses) before counting toward the Consolidated denominator."
+   ]
+  },
+  {
+   "location_id": "7f65db0e6a313bb3",
+   "network": "ROBERT BRUNETTI",
+   "network_id": "ao:BRUNETTI_ROBERT",
+   "practice_name": "PROCARE DENTAL GROUP, P.C.",
+   "current_entity_classification": "small_group",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 3,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "Clean dentist-owned multi: all 9 rows are the SAME name 'ProCare Dental Group P.C.' (name homogeneity) + shared AO Dr. Robert Brunetti + dentist-founded since 1979. No PE.",
+    "dentist_multi pe=false is the CORRECT axis (Consolidated, NOT DSO/PE). Agree with fleet.",
+    "Denominator note: confirm 9 distinct ADDRESSES (not NPI-fanout at fewer addresses) before counting toward the Consolidated denominator."
+   ]
+  },
+  {
+   "location_id": "719b01502f151a50",
+   "network": "ROBERT BRUNETTI",
+   "network_id": "ao:BRUNETTI_ROBERT",
+   "practice_name": "PROCARE DENTAL GROUP P.C.",
+   "current_entity_classification": "solo_established",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "medium",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "Clean dentist-owned multi: all 9 rows are the SAME name 'ProCare Dental Group P.C.' (name homogeneity) + shared AO Dr. Robert Brunetti + dentist-founded since 1979. No PE.",
+    "dentist_multi pe=false is the CORRECT axis (Consolidated, NOT DSO/PE). Agree with fleet.",
+    "Denominator note: confirm 9 distinct ADDRESSES (not NPI-fanout at fewer addresses) before counting toward the Consolidated denominator."
+   ]
+  },
+  {
+   "location_id": "5da23e850203188a",
+   "network": "JUBRAIL SWEIS",
+   "network_id": "ao:SWEIS_JUBRAIL",
+   "practice_name": "EXCELLENCE DENTAL OF BARRINGTON, PLLC",
+   "current_entity_classification": "small_group",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "candidate",
+   "fleet_confidence": "medium",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "weak",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated(if-confirmed)",
+   "qa_reasons": [
+    "Heterogeneous local name (Excellence/Bloomingdale/Manhattan Dental) linked to Sweis only by shared AO + reused owner bio; addr_exact=False. Fleet correctly set gate=candidate.",
+    "dentist_multi pe=false is the right axis (Consolidated, not DSO/PE) IF Sweis ownership is confirmed per address. Needs per-location owner confirmation."
+   ]
+  },
+  {
+   "location_id": "b41468a8c802391f",
+   "network": "JUBRAIL SWEIS",
+   "network_id": "ao:SWEIS_JUBRAIL",
+   "practice_name": "PALATINE DENTAL",
+   "current_entity_classification": "solo_high_volume",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "candidate",
+   "fleet_confidence": "low",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "contradictory",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "neither(undetermined)",
+   "qa_reasons": [
+    "USER-FLAGGED + fleet self-caught: evidence ACTIVELY shows Jubrail Sweis is an ASSOCIATE at Advocate Dental of Palatine; founder/OWNER is Dr. George Skoog. AO listing is a credentialing artifact, not ownership.",
+    "Do NOT consolidate as Sweis-owned. Remove from Sweis network OR mark undetermined unless this NPI is confirmed to be Jay Sweis DDS PC billing at the address.",
+    "Fleet correctly set gate=candidate/confidence=low. I AGREE and strengthen: contradictory evidence => do not consolidate."
+   ]
+  },
+  {
+   "location_id": "0f917daa7d21b189",
+   "network": "JUBRAIL SWEIS",
+   "network_id": "ao:SWEIS_JUBRAIL",
+   "practice_name": "BLOOMINGDALE DENTAL, PLLC",
+   "current_entity_classification": "small_group",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "candidate",
+   "fleet_confidence": "medium",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "weak",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated(if-confirmed)",
+   "qa_reasons": [
+    "Heterogeneous local name (Excellence/Bloomingdale/Manhattan Dental) linked to Sweis only by shared AO + reused owner bio; addr_exact=False. Fleet correctly set gate=candidate.",
+    "dentist_multi pe=false is the right axis (Consolidated, not DSO/PE) IF Sweis ownership is confirmed per address. Needs per-location owner confirmation."
+   ]
+  },
+  {
+   "location_id": "ffe0a2b736d88ee3",
+   "network": "JUBRAIL SWEIS",
+   "network_id": "ao:SWEIS_JUBRAIL",
+   "practice_name": "ADVOCATE DENTAL GENEVA, LLC",
+   "current_entity_classification": "small_group",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "candidate",
+   "fleet_confidence": "medium",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "weak",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated(if-confirmed)",
+   "qa_reasons": [
+    "NETWORK-CONTAMINATION RISK: 'Advocate Dental' (Geneva/St Charles) may be Dr. George SKOOG's brand (he owns Advocate Dental of Palatine where Sweis is an associate), NOT Sweis's. Fleet is inconsistent (Geneva=candidate, St Charles=ready).",
+    "Downgrade to needs_more_evidence: verify whether the 'Advocate Dental' brand is Skoog's or Sweis's. If Skoog's, remove from Sweis network (still likely Consolidated under Skoog, but a DIFFERENT owner)."
+   ]
+  },
+  {
+   "location_id": "06103ae3a6ed4ab0",
+   "network": "JUBRAIL SWEIS",
+   "network_id": "ao:SWEIS_JUBRAIL",
+   "practice_name": "ADVOCATE DENTAL ST CHARLES, LLC",
+   "current_entity_classification": "family_practice",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 3,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "weak",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated(if-confirmed)",
+   "qa_reasons": [
+    "NETWORK-CONTAMINATION RISK: 'Advocate Dental' (Geneva/St Charles) may be Dr. George SKOOG's brand (he owns Advocate Dental of Palatine where Sweis is an associate), NOT Sweis's. Fleet is inconsistent (Geneva=candidate, St Charles=ready).",
+    "Downgrade to needs_more_evidence: verify whether the 'Advocate Dental' brand is Skoog's or Sweis's. If Skoog's, remove from Sweis network (still likely Consolidated under Skoog, but a DIFFERENT owner)."
+   ]
+  },
+  {
+   "location_id": "e16ff3a9b55a8492",
+   "network": "JUBRAIL SWEIS",
+   "network_id": "ao:SWEIS_JUBRAIL",
+   "practice_name": "MANHATTAN DENTAL LLC",
+   "current_entity_classification": "solo_established",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "candidate",
+   "fleet_confidence": "low",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 1,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "weak",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated(if-confirmed)",
+   "qa_reasons": [
+    "Heterogeneous local name (Excellence/Bloomingdale/Manhattan Dental) linked to Sweis only by shared AO + reused owner bio; addr_exact=False. Fleet correctly set gate=candidate.",
+    "dentist_multi pe=false is the right axis (Consolidated, not DSO/PE) IF Sweis ownership is confirmed per address. Needs per-location owner confirmation."
+   ]
+  },
+  {
+   "location_id": "5e92660ad5b32980",
+   "network": "JUBRAIL SWEIS",
+   "network_id": "ao:SWEIS_JUBRAIL",
+   "practice_name": "JAY SWEIS D.D.S P.C",
+   "current_entity_classification": "solo_established",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "Eponymous 'Jay Sweis D.D.S. P.C.' = the dentist's own professional corporation \u2014 genuinely his. dentist_multi pe=false correct axis (Consolidated, not DSO/PE).",
+    "Anchor row for the network; the OTHER Sweis rows hang off this owner identity and need per-location confirmation."
+   ]
+  },
+  {
+   "location_id": "c2c46e94895cda83",
+   "network": "BORIS LABINOV",
+   "network_id": "ao:LABINOV_BORIS",
+   "practice_name": "D2 DENTAL AT OAK STREET, P.C.",
+   "current_entity_classification": "solo_established",
+   "fleet_tier": "stealth_dso",
+   "fleet_pe_backed": true,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 4,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": true,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "DSO_PE",
+   "qa_reasons": [
+    "GENUINE stealth_dso pe=true. Exact documentary chain: D2 Dental at Oak Street P.C. = friendly-PC for Destiny Dental (L2 Management DSO, Boris Labinov co-founder, Dixon Midland PE founding backer); ProSmile (TriSpan PE) acquired Destiny 2024-08-30.",
+    "Evidence: Livingstone Partners deal announcement + ProSmile acquisition press release + destinydentalcare.com/illinois + providerwire NPI match. This is the model of a correct DSO/PE classification.",
+    "stealth_dso (T4) -> correctly in DSO/PE headline. AGREE with fleet.",
+    "Denominator note: all 7 rows share the legal name 'D2 Dental at Oak Street P.C.' \u2014 reasoning cites distinct addresses (Blue Island, Berwyn) so they ARE distinct locations; confirm all 7 location_ids are distinct addresses before counting."
+   ]
+  },
+  {
+   "location_id": "d616036cc2145cf4",
+   "network": "BORIS LABINOV",
+   "network_id": "ao:LABINOV_BORIS",
+   "practice_name": "D2 DENTAL AT OAK STREET, P.C.",
+   "current_entity_classification": "solo_established",
+   "fleet_tier": "stealth_dso",
+   "fleet_pe_backed": true,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 4,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": true,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "DSO_PE",
+   "qa_reasons": [
+    "GENUINE stealth_dso pe=true. Exact documentary chain: D2 Dental at Oak Street P.C. = friendly-PC for Destiny Dental (L2 Management DSO, Boris Labinov co-founder, Dixon Midland PE founding backer); ProSmile (TriSpan PE) acquired Destiny 2024-08-30.",
+    "Evidence: Livingstone Partners deal announcement + ProSmile acquisition press release + destinydentalcare.com/illinois + providerwire NPI match. This is the model of a correct DSO/PE classification.",
+    "stealth_dso (T4) -> correctly in DSO/PE headline. AGREE with fleet.",
+    "Denominator note: all 7 rows share the legal name 'D2 Dental at Oak Street P.C.' \u2014 reasoning cites distinct addresses (Blue Island, Berwyn) so they ARE distinct locations; confirm all 7 location_ids are distinct addresses before counting."
+   ]
+  },
+  {
+   "location_id": "3f1051899da7b50d",
+   "network": "BORIS LABINOV",
+   "network_id": "ao:LABINOV_BORIS",
+   "practice_name": "D2 DENTAL AT OAK STREET, P.C.",
+   "current_entity_classification": "solo_established",
+   "fleet_tier": "stealth_dso",
+   "fleet_pe_backed": true,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 3,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": true,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "DSO_PE",
+   "qa_reasons": [
+    "GENUINE stealth_dso pe=true. Exact documentary chain: D2 Dental at Oak Street P.C. = friendly-PC for Destiny Dental (L2 Management DSO, Boris Labinov co-founder, Dixon Midland PE founding backer); ProSmile (TriSpan PE) acquired Destiny 2024-08-30.",
+    "Evidence: Livingstone Partners deal announcement + ProSmile acquisition press release + destinydentalcare.com/illinois + providerwire NPI match. This is the model of a correct DSO/PE classification.",
+    "stealth_dso (T4) -> correctly in DSO/PE headline. AGREE with fleet.",
+    "Denominator note: all 7 rows share the legal name 'D2 Dental at Oak Street P.C.' \u2014 reasoning cites distinct addresses (Blue Island, Berwyn) so they ARE distinct locations; confirm all 7 location_ids are distinct addresses before counting."
+   ]
+  },
+  {
+   "location_id": "d318648e80a552ff",
+   "network": "BORIS LABINOV",
+   "network_id": "ao:LABINOV_BORIS",
+   "practice_name": "D2 DENTAL AT OAK STREET, P.C.",
+   "current_entity_classification": "solo_established",
+   "fleet_tier": "stealth_dso",
+   "fleet_pe_backed": true,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 3,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": true,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "DSO_PE",
+   "qa_reasons": [
+    "GENUINE stealth_dso pe=true. Exact documentary chain: D2 Dental at Oak Street P.C. = friendly-PC for Destiny Dental (L2 Management DSO, Boris Labinov co-founder, Dixon Midland PE founding backer); ProSmile (TriSpan PE) acquired Destiny 2024-08-30.",
+    "Evidence: Livingstone Partners deal announcement + ProSmile acquisition press release + destinydentalcare.com/illinois + providerwire NPI match. This is the model of a correct DSO/PE classification.",
+    "stealth_dso (T4) -> correctly in DSO/PE headline. AGREE with fleet.",
+    "Denominator note: all 7 rows share the legal name 'D2 Dental at Oak Street P.C.' \u2014 reasoning cites distinct addresses (Blue Island, Berwyn) so they ARE distinct locations; confirm all 7 location_ids are distinct addresses before counting."
+   ]
+  },
+  {
+   "location_id": "9eb34e1dcb9933f8",
+   "network": "BORIS LABINOV",
+   "network_id": "ao:LABINOV_BORIS",
+   "practice_name": "D2 DENTAL AT OAK STREET, P.C.",
+   "current_entity_classification": "solo_established",
+   "fleet_tier": "stealth_dso",
+   "fleet_pe_backed": true,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 3,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": true,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "DSO_PE",
+   "qa_reasons": [
+    "GENUINE stealth_dso pe=true. Exact documentary chain: D2 Dental at Oak Street P.C. = friendly-PC for Destiny Dental (L2 Management DSO, Boris Labinov co-founder, Dixon Midland PE founding backer); ProSmile (TriSpan PE) acquired Destiny 2024-08-30.",
+    "Evidence: Livingstone Partners deal announcement + ProSmile acquisition press release + destinydentalcare.com/illinois + providerwire NPI match. This is the model of a correct DSO/PE classification.",
+    "stealth_dso (T4) -> correctly in DSO/PE headline. AGREE with fleet.",
+    "Denominator note: all 7 rows share the legal name 'D2 Dental at Oak Street P.C.' \u2014 reasoning cites distinct addresses (Blue Island, Berwyn) so they ARE distinct locations; confirm all 7 location_ids are distinct addresses before counting."
+   ]
+  },
+  {
+   "location_id": "ef079f1cfd53d7f0",
+   "network": "BORIS LABINOV",
+   "network_id": "ao:LABINOV_BORIS",
+   "practice_name": "D2 DENTAL AT OAK STREET, P.C.",
+   "current_entity_classification": "solo_established",
+   "fleet_tier": "stealth_dso",
+   "fleet_pe_backed": true,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 4,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": true,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "DSO_PE",
+   "qa_reasons": [
+    "GENUINE stealth_dso pe=true. Exact documentary chain: D2 Dental at Oak Street P.C. = friendly-PC for Destiny Dental (L2 Management DSO, Boris Labinov co-founder, Dixon Midland PE founding backer); ProSmile (TriSpan PE) acquired Destiny 2024-08-30.",
+    "Evidence: Livingstone Partners deal announcement + ProSmile acquisition press release + destinydentalcare.com/illinois + providerwire NPI match. This is the model of a correct DSO/PE classification.",
+    "stealth_dso (T4) -> correctly in DSO/PE headline. AGREE with fleet.",
+    "Denominator note: all 7 rows share the legal name 'D2 Dental at Oak Street P.C.' \u2014 reasoning cites distinct addresses (Blue Island, Berwyn) so they ARE distinct locations; confirm all 7 location_ids are distinct addresses before counting."
+   ]
+  },
+  {
+   "location_id": "e4fb4be6a4efee52",
+   "network": "BORIS LABINOV",
+   "network_id": "ao:LABINOV_BORIS",
+   "practice_name": "D2 DENTAL AT OAK STREET, P.C.",
+   "current_entity_classification": "solo_established",
+   "fleet_tier": "stealth_dso",
+   "fleet_pe_backed": true,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": false,
+   "n_evidence_urls": 3,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": true,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "DSO_PE",
+   "qa_reasons": [
+    "GENUINE stealth_dso pe=true. Exact documentary chain: D2 Dental at Oak Street P.C. = friendly-PC for Destiny Dental (L2 Management DSO, Boris Labinov co-founder, Dixon Midland PE founding backer); ProSmile (TriSpan PE) acquired Destiny 2024-08-30.",
+    "Evidence: Livingstone Partners deal announcement + ProSmile acquisition press release + destinydentalcare.com/illinois + providerwire NPI match. This is the model of a correct DSO/PE classification.",
+    "stealth_dso (T4) -> correctly in DSO/PE headline. AGREE with fleet.",
+    "Denominator note: all 7 rows share the legal name 'D2 Dental at Oak Street P.C.' \u2014 reasoning cites distinct addresses (Blue Island, Berwyn) so they ARE distinct locations; confirm all 7 location_ids are distinct addresses before counting."
+   ]
+  },
+  {
+   "location_id": "019f06d7def19049",
+   "network": "AHMED RAMAHA",
+   "network_id": "ao:RAMAHA_AHMED",
+   "practice_name": "ELGIN AMAZING DENTAL LLC",
+   "current_entity_classification": "solo_established",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "Brand core ('X Amazing Dental' / 'Universal Dental', udclinics.com), dentist-owned Dr. Ahmed Ramaha, addr_exact_confirmed=True, no PE.",
+    "dentist_multi pe=false correct axis (Consolidated, NOT DSO/PE). Agree with fleet."
+   ]
+  },
+  {
+   "location_id": "9d4cd058e4525078",
+   "network": "AHMED RAMAHA",
+   "network_id": "ao:RAMAHA_AHMED",
+   "practice_name": "STONE PARK DENTAL INC",
+   "current_entity_classification": "solo_established",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "candidate",
+   "fleet_confidence": "medium",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 2,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated(if-confirmed)",
+   "qa_reasons": [
+    "Outlier NAME (Stone Park Dental / Loop Dental & Spa) vs the network's 'Amazing Dental'/'Universal Dental' brand core. Fleet correctly set gate=candidate.",
+    "Verify Ahmed Ramaha ownership of this specific address before consolidating; dentist_multi pe=false is the right axis if confirmed."
+   ]
+  },
+  {
+   "location_id": "19c344d4755fd990",
+   "network": "AHMED RAMAHA",
+   "network_id": "ao:RAMAHA_AHMED",
+   "practice_name": "CENTRAL AMAZING DENTAL LLC",
+   "current_entity_classification": "large_group",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "medium",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "Brand core ('X Amazing Dental' / 'Universal Dental', udclinics.com), dentist-owned Dr. Ahmed Ramaha, addr_exact_confirmed=True, no PE.",
+    "dentist_multi pe=false correct axis (Consolidated, NOT DSO/PE). Agree with fleet."
+   ]
+  },
+  {
+   "location_id": "b4b2a9ed748734fb",
+   "network": "AHMED RAMAHA",
+   "network_id": "ao:RAMAHA_AHMED",
+   "practice_name": "ORLAND PARK AMAZING DENTAL",
+   "current_entity_classification": "large_group",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 3,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "Brand core ('X Amazing Dental' / 'Universal Dental', udclinics.com), dentist-owned Dr. Ahmed Ramaha, addr_exact_confirmed=True, no PE.",
+    "dentist_multi pe=false correct axis (Consolidated, NOT DSO/PE). Agree with fleet."
+   ]
+  },
+  {
+   "location_id": "10a173a568a7cd9f",
+   "network": "AHMED RAMAHA",
+   "network_id": "ao:RAMAHA_AHMED",
+   "practice_name": "ORLAND SQUARE UNIVERSAL DENTAL LLC",
+   "current_entity_classification": "large_group",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "ready_for_validation",
+   "fleet_confidence": "high",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 2,
+   "qa_status": "pass_ready_for_validator",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": false,
+   "evidence_quality": "exact_documentary",
+   "safe_to_consolidate": true,
+   "headline_bucket_after_qa": "Consolidated",
+   "qa_reasons": [
+    "Brand core ('X Amazing Dental' / 'Universal Dental', udclinics.com), dentist-owned Dr. Ahmed Ramaha, addr_exact_confirmed=True, no PE.",
+    "dentist_multi pe=false correct axis (Consolidated, NOT DSO/PE). Agree with fleet."
+   ]
+  },
+  {
+   "location_id": "93287e7e58ead8af",
+   "network": "AHMED RAMAHA",
+   "network_id": "ao:RAMAHA_AHMED",
+   "practice_name": "LOOP DENTAL & SPA",
+   "current_entity_classification": "solo_established",
+   "fleet_tier": "dentist_multi",
+   "fleet_pe_backed": false,
+   "fleet_gate": "candidate",
+   "fleet_confidence": "medium",
+   "main_session_addr_exact_confirmed": true,
+   "n_evidence_urls": 2,
+   "qa_status": "needs_more_evidence",
+   "corrected_tier_if_obvious": null,
+   "corrected_pe_if_obvious": null,
+   "evidence_quality": "structural_correlated",
+   "safe_to_consolidate": false,
+   "headline_bucket_after_qa": "Consolidated(if-confirmed)",
+   "qa_reasons": [
+    "Outlier NAME (Stone Park Dental / Loop Dental & Spa) vs the network's 'Amazing Dental'/'Universal Dental' brand core. Fleet correctly set gate=candidate.",
+    "Verify Ahmed Ramaha ownership of this specific address before consolidating; dentist_multi pe=false is the right axis if confirmed."
+   ]
+  }
+ ]
+}

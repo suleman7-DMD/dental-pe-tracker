@@ -1,0 +1,692 @@
+{
+  "_doc": "READ-ONLY row-level reconciliation of the 48-vs-87 IL-GP duplicate conflict. FLAGS ONLY, no DB writes. The two source artifacts used different keys; this unifies them into one connected-component collapse set.",
+  "il_gp_rows_considered": 4439,
+  "method_A_zip_phone_streetcore": {
+    "clusters": 48,
+    "excess_rows_if_collapsed": 48
+  },
+  "method_B_sameaddr_shared_phone_or_ein": {
+    "clusters": 48,
+    "excess_rows_if_collapsed": 48,
+    "multitenant_clusters_kept": 43
+  },
+  "reconciled_union": {
+    "clusters": 48,
+    "excess_rows_if_collapsed": 48,
+    "note": "Connected components across BOTH methods. Collapsing would reduce the 4,439 IL GP denominator by at most excess_rows_if_collapsed (~1-2%). This is a minor refinement; the census numerator remains the main driver."
+  },
+  "clusters": [
+    {
+      "location_ids": [
+        "36610bdcbea1d28d",
+        "4d6ecf57b261e109"
+      ],
+      "names": [
+        "Ahoyt Dental",
+        "AHOYT FAMILY DENTAL"
+      ],
+      "classes": [
+        "solo_established",
+        "small_group"
+      ]
+    },
+    {
+      "location_ids": [
+        "02486752639f0214",
+        "0d95fa46ee30ba2a"
+      ],
+      "names": [
+        "ORA DENTAL STUDIO WEST LOOP LLC",
+        "Kralj Dental"
+      ],
+      "classes": [
+        "small_group",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "2d03b66c892427bf",
+        "8ac06f384aa91d46"
+      ],
+      "names": [
+        "ANDERSONVILLE DENTAL",
+        "Andersonville Dental"
+      ],
+      "classes": [
+        "solo_established",
+        "small_group"
+      ]
+    },
+    {
+      "location_ids": [
+        "69d7f80b09971b16",
+        "8031f125d2413b77"
+      ],
+      "names": [
+        "Matusik Dental",
+        "Stanley Joseph Matusik DDS"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "6cb95a87f1688676",
+        "9704f166ed868216"
+      ],
+      "names": [
+        "Salerno Dental",
+        "Salerno Dental"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "5b087bad0d0e3e2b",
+        "b76802b33a96ee10"
+      ],
+      "names": [
+        "MALGORZATA PIENKOWSKI DDS LTD",
+        "Pienkowska Dental"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "0e2c60f1d5bcdcd3",
+        "105287030f397cc0"
+      ],
+      "names": [
+        "Dong Dental",
+        "HEALTHCARE FOR DENTAL SYSTEMS"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "4de0861898d105e5",
+        "52a357689cfe885a"
+      ],
+      "names": [
+        "Dang Dental",
+        "Forever Dental"
+      ],
+      "classes": [
+        "solo_established",
+        "small_group"
+      ]
+    },
+    {
+      "location_ids": [
+        "91f133f6ca9066c3",
+        "a265228f4dd92f32"
+      ],
+      "names": [
+        "DR. STACI SIKORA AND ASSOCIATES",
+        "Das Dental"
+      ],
+      "classes": [
+        "small_group",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "5287843d3b6853ff",
+        "c268f869c71ee79d"
+      ],
+      "names": [
+        "SONRISA CAPITATION CCHC PROFESSIONAL CORPORATION SONRISA FAMILY DENTAL",
+        "Smith Dental"
+      ],
+      "classes": [
+        "small_group",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "4dd0cf70924b3541",
+        "c49995373f766089"
+      ],
+      "names": [
+        "Cass Family Dental",
+        "Mashnouk Dental"
+      ],
+      "classes": [
+        "small_group",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "535142f00b191b60",
+        "9f75426d8a3511a3"
+      ],
+      "names": [
+        "Marietta Bufalina DDS",
+        "MARIETTA A BUFALINO INC"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "3f69c2699ad9add7",
+        "a028d8f3322d42fa"
+      ],
+      "names": [
+        "AUSTIN DENTAL CENTER LLC",
+        "Mcdonald Dental"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "04e594d88035c383",
+        "fd489e75b9a8fb2d"
+      ],
+      "names": [
+        "MACZKO AND ASSOCIATES LTD",
+        "Prospect Dental"
+      ],
+      "classes": [
+        "small_group",
+        "solo_high_volume"
+      ]
+    },
+    {
+      "location_ids": [
+        "1c65b849ac086133",
+        "b5845da935111fd3"
+      ],
+      "names": [
+        "SCOTT OVERHOLSER, DDS P.C.",
+        "Chhabria Akshi DDS"
+      ],
+      "classes": [
+        "solo_established",
+        "small_group"
+      ]
+    },
+    {
+      "location_ids": [
+        "06271566fac35420",
+        "6140e924f8088627"
+      ],
+      "names": [
+        "Casado Dental",
+        "ADRIA M CASADO"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "3d19bf082c0cb2a3",
+        "6e97d5c01cc9b828"
+      ],
+      "names": [
+        "ERIC W BOHL DDS LTD",
+        "Bohl Dental"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "2c1671236a9fd872",
+        "b9a649e2efffb13f"
+      ],
+      "names": [
+        "Stephens Dental",
+        "STEPHENS DENTISTRY, INC."
+      ],
+      "classes": [
+        "solo_established",
+        "large_group"
+      ]
+    },
+    {
+      "location_ids": [
+        "8c957ece2c079f8a",
+        "cec806b53740bcb1"
+      ],
+      "names": [
+        "RUSSELL J. CECALA, D.D.S., M.S., LTD DBA PERIOCARE",
+        "Wagner-Lelevour Dental"
+      ],
+      "classes": [
+        "large_group",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "24b5a6d0d7eec395",
+        "9c7f34a525b09172"
+      ],
+      "names": [
+        "DIVERSEY FAMILY DENTAL, P.C.",
+        "Roci Elvi DMD"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_high_volume"
+      ]
+    },
+    {
+      "location_ids": [
+        "5b800ca763768406",
+        "b5e3ff82a8613a83"
+      ],
+      "names": [
+        "LINCOLN DENTAL FAMILY CENTER",
+        "Pascale Christina DMD"
+      ],
+      "classes": [
+        "solo_established",
+        "large_group"
+      ]
+    },
+    {
+      "location_ids": [
+        "e42b3a751f478073",
+        "febfbd0947c16124"
+      ],
+      "names": [
+        "Goodman Dental",
+        "Chen, Gloria C DDS"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_high_volume"
+      ]
+    },
+    {
+      "location_ids": [
+        "44746d18d3eb1725",
+        "8993db31d061a51d"
+      ],
+      "names": [
+        "Zelikow Dental",
+        "SCHWARTZ & ZELIKOW DDS PC"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "2ff3e82d93b0cba6",
+        "dee8891f2693b4be"
+      ],
+      "names": [
+        "Difranco Dental",
+        "Connolly Dental"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "5a6589ebbf27badf",
+        "5b3f44c0487d2d45"
+      ],
+      "names": [
+        "Lund, Peter a DDS",
+        "BLOCKI AND BASHFORD DENTAL, LLC"
+      ],
+      "classes": [
+        "small_group",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "d9e1cbf0d6b6b005",
+        "efc9ade86574caeb"
+      ],
+      "names": [
+        "PERFECT SMILE DENTAL SPA PARTNERSHIP",
+        "PERFECT SMILE DENTAL SPA"
+      ],
+      "classes": [
+        "large_group",
+        "small_group"
+      ]
+    },
+    {
+      "location_ids": [
+        "319370c0f6eef2b2",
+        "e8c7b23877da7231"
+      ],
+      "names": [
+        "Balan Dental",
+        "SIMONA BALAN DDS PC"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "ba379b6aa4cf3678",
+        "f5f9bcd0e66c0f55"
+      ],
+      "names": [
+        "RESHMA DHAKE DDS LTD",
+        "Gonzalez Dental"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "a76f0c8ea1e37128",
+        "ace914075d21f844"
+      ],
+      "names": [
+        "Paunescu Dental",
+        "LEHIGH DENTAL CARE"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "e238dde64274fc92",
+        "fe8ff0d0d9a98e0c"
+      ],
+      "names": [
+        "THE WRIGLEYVILLE DENTAL GROUP",
+        "Benedetto Dental"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "9780242db74f939e",
+        "9aa8e5974e12f480"
+      ],
+      "names": [
+        "Lech Dental",
+        "DEVON DENTAL CLINIC,LTD"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "32399095d00b3786",
+        "db33ff6cf7c176a0"
+      ],
+      "names": [
+        "Gupta Dental",
+        "KAVITA GUPTA PC"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "d3a0e2085a1e3776",
+        "fe4e8aece6d7fd2e"
+      ],
+      "names": [
+        "Barrett Dental",
+        "PARK RIDGE DENTISTRY PLLC"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "66fa01b5ca6161c7",
+        "d44c43930b0f8d3c"
+      ],
+      "names": [
+        "Stojanovic Dental",
+        "DR. ZORAN D. STOJANOVIC & ASSOCIATES, LTD"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "0700232b795654f3",
+        "f629647606309c0a"
+      ],
+      "names": [
+        "Paik Dental",
+        "Sonrisa Urbana Family Dntstry"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "ba858690c8a54e29",
+        "e32ed1606301b785"
+      ],
+      "names": [
+        "Renieris Irene",
+        "THE DENTAL MASTRS OF RAVENSWOOD LLC"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "503f5abe582e326d",
+        "912d93028de7af3e"
+      ],
+      "names": [
+        "Weiss Dental",
+        "MODERN DENTAL OF LOGAN SQUARE LLC"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "f94fb29cc7d444cd",
+        "ff41419130267bd9"
+      ],
+      "names": [
+        "CHICAGO DENTAL PROFESSIONALS INC",
+        "Peters, Erika"
+      ],
+      "classes": [
+        "solo_established",
+        "large_group"
+      ]
+    },
+    {
+      "location_ids": [
+        "81fa2361967975be",
+        "be32c4f8df293c5d"
+      ],
+      "names": [
+        "Patel Dental",
+        "NITA PATEL DDS INC"
+      ],
+      "classes": [
+        "solo_established",
+        "small_group"
+      ]
+    },
+    {
+      "location_ids": [
+        "556f0dcf7c131e65",
+        "cd50f89169d71073"
+      ],
+      "names": [
+        "CHICAGO CENTER FOR ADVANCED DENTISTRY",
+        "Zalay Dental"
+      ],
+      "classes": [
+        "solo_established",
+        "large_group"
+      ]
+    },
+    {
+      "location_ids": [
+        "1f6f116f4cfa533c",
+        "a56a841f0923d8aa"
+      ],
+      "names": [
+        "Chung Dental",
+        "Smith Dental"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "45ced31807d5f694",
+        "c8257a409936d67d"
+      ],
+      "names": [
+        "Gentle Family Dentisty-nprvll",
+        "Defilippis Dental"
+      ],
+      "classes": [
+        "small_group",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "770dc428d7fe6dc3",
+        "c091fb525c07faea"
+      ],
+      "names": [
+        "Truszkowski Dental",
+        "BARBARA TRUSZKOWSKI DDS LTD"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "772fe78f8b2369eb",
+        "997fb9c989f09b76"
+      ],
+      "names": [
+        "Iqbal Dental",
+        "Shah Dental"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "c70779c0455ae78d",
+        "ecf1040e677465de"
+      ],
+      "names": [
+        "Brown Dental",
+        "Novak Dental"
+      ],
+      "classes": [
+        "solo_established",
+        "small_group"
+      ]
+    },
+    {
+      "location_ids": [
+        "c3c1109b7a83c868",
+        "e2d778d9dd90dc47"
+      ],
+      "names": [
+        "MODERN DENTAL ON DIVISION",
+        "HALO DENTAL"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "4e4444e086bb7891",
+        "ba03b15976349d1b"
+      ],
+      "names": [
+        "Aleck-furlan",
+        "Furlan Dental"
+      ],
+      "classes": [
+        "small_group",
+        "solo_established"
+      ]
+    },
+    {
+      "location_ids": [
+        "ce8b8ff3e6be7862",
+        "d5804fe187ecbb46"
+      ],
+      "names": [
+        "JOHN DREW GORRELL DDS LTD",
+        "32 VILLAGE DENTAL LLC"
+      ],
+      "classes": [
+        "solo_established",
+        "solo_high_volume"
+      ]
+    }
+  ]
+}

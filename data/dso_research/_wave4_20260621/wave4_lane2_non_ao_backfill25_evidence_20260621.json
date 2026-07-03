@@ -1,0 +1,1326 @@
+{
+  "_meta": {
+    "artifact_type": "Wave 4 Lane 2 non-AO backfill evidence (MAIN-001)",
+    "owner": "Main AO (autonomous bounded evidence mode)",
+    "date": "2026-06-21",
+    "scope": "Chicagoland / Illinois ONLY. Boston / Massachusetts parked (0 MA rows).",
+    "input_packet": "data/dso_research/_wave4_20260621/wave4_packet_lane2_backfill.json",
+    "lanes_worked": [
+      "locator_exact (13)",
+      "practice_intel (12)"
+    ],
+    "row_count": 25,
+    "gate_ceiling": "ready_for_validation (never final)",
+    "disposition_vocab": "MAIN_AO allowed set (ready_for_validation / hold_* / rejected / refuted); each row also carries disposition_protocol_equivalent mapping to the coordination-protocol output-contract vocab (merge_eligible_new / corroborates_existing_ready / hold_* / refuted)",
+    "notes": [
+      "DSO=STRUCTURE enforced: T4/T5 only with a documented MSO/management-company/platform/established DSO brand. pe_backed is orthogonal (pe_backed=false is never a downgrade reason).",
+      "true_independent (T1) promotions carry EARNED positive owner-operated evidence (named sole-owner dentist + own practice/website) \u2014 never defaulted.",
+      "AH3: all evidence URLs were transcribed in Wave 4 (this session). DB artifacts (db_affiliated_dso) are whitelisted-durable and are corroborated by freshly-transcribed Wave-4 structural URLs.",
+      "Two Heartland NAME COLLISIONS resolved as institutional FQHC/nonprofit (Heartland International Health Center = Tapestry 360 FQHC; Heartland Health Outreach = Heartland Alliance) \u2014 explicitly NOT Heartland Dental."
+    ]
+  },
+  "non_mutation_attestation": {
+    "db_writes": "NONE",
+    "manifest_edits": "NONE",
+    "ledger_progress_edits": "NONE",
+    "ownership_tier_entity_classification_ownership_status_edits": "NONE",
+    "db_md5_now": "0dec26135bb4d6ee490dc16cfe892ca6",
+    "db_md5_baseline": "0dec26135bb4d6ee490dc16cfe892ca6",
+    "db_md5_match": true,
+    "canonical_manifest_mtimes_readonly": {
+      "data/dso_research/consolidation_candidate_manifest_20260621.json": 1782072689.8336756,
+      "data/dso_research/_ready_to_validate_wave3_fixed_20260621.json": 1782072689.724477
+    }
+  },
+  "scope_attestation": {
+    "il_only": true,
+    "ma_rows": 0,
+    "ao_fanout_generated": false,
+    "broad_ao_reach2": false,
+    "protected_network_releases": 0
+  },
+  "disposition_rollup": {
+    "ready_for_validation": 15,
+    "hold_needs_more_evidence": 2,
+    "refuted": 3,
+    "hold_operating_status_or_same_door": 2,
+    "hold_scope_specialist": 3
+  },
+  "proposed_tier_rollup": {
+    "branded_dso": 13,
+    "branded_dso?": 1,
+    "true_independent": 2,
+    "stealth_dso (PROPOSED \u2014 REFUTED)": 2,
+    "dso_national via 'Western Dental' (PROPOSED \u2014 REFUTED)": 1,
+    "dso_national via 'Midwest Dental' (HELD \u2014 unverified)": 1,
+    "stealth_dso (PROPOSED \u2014 held on same-door ambiguity)": 1,
+    "true_independent (PROPOSED \u2014 held on operating status)": 1,
+    "institutional": 3
+  },
+  "rows": [
+    {
+      "location_id": "46c4e7116d0046a8",
+      "source_lane": "locator_exact",
+      "candidate_types": [
+        "heartland_friendly_pc",
+        "dpi_pc"
+      ],
+      "network": "Heartland Dental / Dental Professionals of Illinois, P.C.",
+      "proposed_tier": "branded_dso",
+      "pe_backed": true,
+      "pe_sponsor": "KKR (Heartland Dental)",
+      "durable_evidence": [
+        "db_affiliated_dso='Heartland Dental' [whitelisted DB artifact: practice's own SQLite affiliated_dso, not a name-field guess]",
+        "org-NPI legal business name = 'Dental Professionals of Illinois, P.C.' (NPI 1134624307) \u2014 Heartland's federally-registered IL friendly professional corporation",
+        "legacy entity_classification=dso_national (already corporate in legacy floor)"
+      ],
+      "evidence_urls": [
+        "https://heartland.com/  (Heartland Dental: 'World-Class Dental Support Organization', 3,000+ affiliated doctors / 1,750+ locations; HQ 903 Keller Drive, Effingham, IL 62401)",
+        "https://business.effinghamcountychamber.com/list/member/heartland-dental-249  (Heartland Dental, Effingham IL)",
+        "WebSearch 2026-06-21: 'Dental Professionals Of Illinois, P.C. is based in Effingham, Illinois' (same town as Heartland HQ) \u2014 Heartland's IL friendly-PC"
+      ],
+      "evidence_source": "db_affiliated_dso (whitelisted) + org-NPI legal name (federal registration) + Wave-4 transcribed Heartland structural URLs",
+      "operating_status_check": "operating; org NPI 1134624307 active at 590 bankview dr, FRANKFORT 60423",
+      "same_door_check": "distinct Heartland-supported address; no same-door duplicate among the 25-row packet",
+      "protected_network_status": "not_protected (Heartland is not on the protected-network list)",
+      "dso_structure_rationale": "DSO=STRUCTURE satisfied: Heartland Dental is an established national DSO/MSO; the org NPI registers under Heartland's IL friendly-PC 'Dental Professionals of Illinois, P.C.' (Effingham, IL = Heartland HQ town). Brand operates under local office names (Heartland's standard model). pe_backed=true (KKR).",
+      "disposition": "ready_for_validation",
+      "disposition_protocol_equivalent": "corroborates_existing_ready (already dso_national in legacy entity_classification)",
+      "searches_executed": 1,
+      "search_queries": [
+        "\"Dental Professionals of Illinois\" Heartland Dental Effingham supported office Naperville Oswego Countryside"
+      ],
+      "preserved_db_facts": {
+        "entity_classification": "dso_national",
+        "affiliated_dso": "Heartland Dental",
+        "parent_company": null,
+        "ein": null,
+        "provider_count": 1,
+        "website": "Docdomina.Com",
+        "taxonomy_codes": "[\"122300000X\", \"1223G0001X\"]",
+        "year_established": 1989,
+        "data_axle_enriched": 1,
+        "normalized_address": "590 bankview dr",
+        "org_npi": "1134624307",
+        "primary_npi": "1134624307"
+      },
+      "city": "FRANKFORT",
+      "zip": "60423",
+      "state": "IL",
+      "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+      "legacy_floor_status": "already_corporate(entity_classification=dso_national)"
+    },
+    {
+      "location_id": "629e6c24236f7dc1",
+      "source_lane": "locator_exact",
+      "candidate_types": [
+        "heartland_friendly_pc",
+        "dpi_pc"
+      ],
+      "network": "Heartland Dental / Dental Professionals of Illinois, P.C.",
+      "proposed_tier": "branded_dso",
+      "pe_backed": true,
+      "pe_sponsor": "KKR (Heartland Dental)",
+      "durable_evidence": [
+        "db_affiliated_dso='Heartland Dental' [whitelisted DB artifact: practice's own SQLite affiliated_dso, not a name-field guess]",
+        "org-NPI legal business name = 'Dental Professionals of Illinois, P.C.' (NPI 1902269079) \u2014 Heartland's federally-registered IL friendly professional corporation",
+        "legacy entity_classification=dso_national (already corporate in legacy floor)",
+        "practice phone (217) 540-5100 = Heartland Dental central-IL/Effingham (217) area \u2014 corroborates Heartland support"
+      ],
+      "evidence_urls": [
+        "https://heartland.com/  (Heartland Dental: 'World-Class Dental Support Organization', 3,000+ affiliated doctors / 1,750+ locations; HQ 903 Keller Drive, Effingham, IL 62401)",
+        "https://business.effinghamcountychamber.com/list/member/heartland-dental-249  (Heartland Dental, Effingham IL)",
+        "WebSearch 2026-06-21: 'Dental Professionals Of Illinois, P.C. is based in Effingham, Illinois' (same town as Heartland HQ) \u2014 Heartland's IL friendly-PC"
+      ],
+      "evidence_source": "db_affiliated_dso (whitelisted) + org-NPI legal name (federal registration) + Wave-4 transcribed Heartland structural URLs",
+      "operating_status_check": "operating; org NPI 1902269079 active at 16620 w 159th st, LOCKPORT 60441",
+      "same_door_check": "distinct Heartland-supported address; no same-door duplicate among the 25-row packet",
+      "protected_network_status": "not_protected (Heartland is not on the protected-network list)",
+      "dso_structure_rationale": "DSO=STRUCTURE satisfied: Heartland Dental is an established national DSO/MSO; the org NPI registers under Heartland's IL friendly-PC 'Dental Professionals of Illinois, P.C.' (Effingham, IL = Heartland HQ town). Brand operates under local office names (Heartland's standard model). pe_backed=true (KKR).",
+      "disposition": "ready_for_validation",
+      "disposition_protocol_equivalent": "corroborates_existing_ready (already dso_national in legacy entity_classification)",
+      "searches_executed": 1,
+      "search_queries": [
+        "\"Dental Professionals of Illinois\" Heartland Dental Effingham supported office Naperville Oswego Countryside"
+      ],
+      "preserved_db_facts": {
+        "entity_classification": "dso_national",
+        "affiliated_dso": "Heartland Dental",
+        "parent_company": null,
+        "ein": null,
+        "provider_count": 2,
+        "website": "Porterdentalcenter.Com",
+        "taxonomy_codes": "[\"122300000X\", \"1223G0001X\"]",
+        "year_established": null,
+        "data_axle_enriched": 1,
+        "normalized_address": "16620 w 159th st",
+        "org_npi": "1902269079",
+        "primary_npi": "1902269079"
+      },
+      "city": "LOCKPORT",
+      "zip": "60441",
+      "state": "IL",
+      "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, PC",
+      "legacy_floor_status": "already_corporate(entity_classification=dso_national)"
+    },
+    {
+      "location_id": "cbde3ee6f46acad7",
+      "source_lane": "locator_exact",
+      "candidate_types": [
+        "heartland_friendly_pc",
+        "dpi_pc"
+      ],
+      "network": "Heartland Dental / Dental Professionals of Illinois, P.C.",
+      "proposed_tier": "branded_dso",
+      "pe_backed": true,
+      "pe_sponsor": "KKR (Heartland Dental)",
+      "durable_evidence": [
+        "db_affiliated_dso='Heartland Dental' [whitelisted DB artifact: practice's own SQLite affiliated_dso, not a name-field guess]",
+        "org-NPI legal business name = 'Dental Professionals of Illinois, P.C.' (NPI 1992235840) \u2014 Heartland's federally-registered IL friendly professional corporation",
+        "legacy entity_classification=dso_national (already corporate in legacy floor)"
+      ],
+      "evidence_urls": [
+        "https://heartland.com/  (Heartland Dental: 'World-Class Dental Support Organization', 3,000+ affiliated doctors / 1,750+ locations; HQ 903 Keller Drive, Effingham, IL 62401)",
+        "https://business.effinghamcountychamber.com/list/member/heartland-dental-249  (Heartland Dental, Effingham IL)",
+        "WebSearch 2026-06-21: 'Dental Professionals Of Illinois, P.C. is based in Effingham, Illinois' (same town as Heartland HQ) \u2014 Heartland's IL friendly-PC"
+      ],
+      "evidence_source": "db_affiliated_dso (whitelisted) + org-NPI legal name (federal registration) + Wave-4 transcribed Heartland structural URLs",
+      "operating_status_check": "operating; org NPI 1992235840 active at 450 s weber rd, ROMEOVILLE 60446",
+      "same_door_check": "distinct Heartland-supported address; no same-door duplicate among the 25-row packet",
+      "protected_network_status": "not_protected (Heartland is not on the protected-network list)",
+      "dso_structure_rationale": "DSO=STRUCTURE satisfied: Heartland Dental is an established national DSO/MSO; the org NPI registers under Heartland's IL friendly-PC 'Dental Professionals of Illinois, P.C.' (Effingham, IL = Heartland HQ town). Brand operates under local office names (Heartland's standard model). pe_backed=true (KKR).",
+      "disposition": "ready_for_validation",
+      "disposition_protocol_equivalent": "corroborates_existing_ready (already dso_national in legacy entity_classification)",
+      "searches_executed": 1,
+      "search_queries": [
+        "\"Dental Professionals of Illinois\" Heartland Dental Effingham supported office Naperville Oswego Countryside"
+      ],
+      "preserved_db_facts": {
+        "entity_classification": "dso_national",
+        "affiliated_dso": "Heartland Dental",
+        "parent_company": null,
+        "ein": null,
+        "provider_count": 2,
+        "website": null,
+        "taxonomy_codes": "[\"122300000X\", \"1223G0001X\"]",
+        "year_established": 2011,
+        "data_axle_enriched": 1,
+        "normalized_address": "450 s weber rd",
+        "org_npi": "1992235840",
+        "primary_npi": "1992235840"
+      },
+      "city": "ROMEOVILLE",
+      "zip": "60446",
+      "state": "IL",
+      "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C",
+      "legacy_floor_status": "already_corporate(entity_classification=dso_national)"
+    },
+    {
+      "location_id": "093fbea9e8c840df",
+      "source_lane": "locator_exact",
+      "candidate_types": [
+        "heartland_friendly_pc",
+        "dpi_pc"
+      ],
+      "network": "Heartland Dental / Dental Professionals of Illinois, P.C.",
+      "proposed_tier": "branded_dso",
+      "pe_backed": true,
+      "pe_sponsor": "KKR (Heartland Dental)",
+      "durable_evidence": [
+        "db_affiliated_dso='Heartland Dental' [whitelisted DB artifact: practice's own SQLite affiliated_dso, not a name-field guess]",
+        "org-NPI legal business name = 'Dental Professionals of Illinois, P.C.' (NPI 1043609167) \u2014 Heartland's federally-registered IL friendly professional corporation",
+        "legacy entity_classification=dso_national (already corporate in legacy floor)"
+      ],
+      "evidence_urls": [
+        "https://heartland.com/  (Heartland Dental: 'World-Class Dental Support Organization', 3,000+ affiliated doctors / 1,750+ locations; HQ 903 Keller Drive, Effingham, IL 62401)",
+        "https://business.effinghamcountychamber.com/list/member/heartland-dental-249  (Heartland Dental, Effingham IL)",
+        "WebSearch 2026-06-21: 'Dental Professionals Of Illinois, P.C. is based in Effingham, Illinois' (same town as Heartland HQ) \u2014 Heartland's IL friendly-PC"
+      ],
+      "evidence_source": "db_affiliated_dso (whitelisted) + org-NPI legal name (federal registration) + Wave-4 transcribed Heartland structural URLs",
+      "operating_status_check": "operating; org NPI 1043609167 active at 9990 w 190th st, MOKENA 60448",
+      "same_door_check": "distinct Heartland-supported address; no same-door duplicate among the 25-row packet",
+      "protected_network_status": "not_protected (Heartland is not on the protected-network list)",
+      "dso_structure_rationale": "DSO=STRUCTURE satisfied: Heartland Dental is an established national DSO/MSO; the org NPI registers under Heartland's IL friendly-PC 'Dental Professionals of Illinois, P.C.' (Effingham, IL = Heartland HQ town). Brand operates under local office names (Heartland's standard model). pe_backed=true (KKR).",
+      "disposition": "ready_for_validation",
+      "disposition_protocol_equivalent": "corroborates_existing_ready (already dso_national in legacy entity_classification)",
+      "searches_executed": 1,
+      "search_queries": [
+        "\"Dental Professionals of Illinois\" Heartland Dental Effingham supported office Naperville Oswego Countryside"
+      ],
+      "preserved_db_facts": {
+        "entity_classification": "dso_national",
+        "affiliated_dso": "Heartland Dental",
+        "parent_company": null,
+        "ein": null,
+        "provider_count": 1,
+        "website": "Drjarvie.Com",
+        "taxonomy_codes": "[\"1223G0001X\"]",
+        "year_established": null,
+        "data_axle_enriched": 1,
+        "normalized_address": "9990 w 190th st",
+        "org_npi": "1043609167",
+        "primary_npi": "1043609167"
+      },
+      "city": "MOKENA",
+      "zip": "60448",
+      "state": "IL",
+      "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+      "legacy_floor_status": "already_corporate(entity_classification=dso_national)"
+    },
+    {
+      "location_id": "6dba925c21c398ce",
+      "source_lane": "locator_exact",
+      "candidate_types": [
+        "heartland_friendly_pc",
+        "dpi_pc"
+      ],
+      "network": "Heartland Dental / Dental Professionals of Illinois, P.C.",
+      "proposed_tier": "branded_dso",
+      "pe_backed": true,
+      "pe_sponsor": "KKR (Heartland Dental)",
+      "durable_evidence": [
+        "db_affiliated_dso='Heartland Dental' [whitelisted DB artifact: practice's own SQLite affiliated_dso, not a name-field guess]",
+        "org-NPI legal business name = 'Dental Professionals of Illinois, P.C.' (NPI 1306240437) \u2014 Heartland's federally-registered IL friendly professional corporation",
+        "legacy entity_classification=dso_national (already corporate in legacy floor)"
+      ],
+      "evidence_urls": [
+        "https://heartland.com/  (Heartland Dental: 'World-Class Dental Support Organization', 3,000+ affiliated doctors / 1,750+ locations; HQ 903 Keller Drive, Effingham, IL 62401)",
+        "https://business.effinghamcountychamber.com/list/member/heartland-dental-249  (Heartland Dental, Effingham IL)",
+        "WebSearch 2026-06-21: 'Dental Professionals Of Illinois, P.C. is based in Effingham, Illinois' (same town as Heartland HQ) \u2014 Heartland's IL friendly-PC"
+      ],
+      "evidence_source": "db_affiliated_dso (whitelisted) + org-NPI legal name (federal registration) + Wave-4 transcribed Heartland structural URLs",
+      "operating_status_check": "operating; org NPI 1306240437 active at 1010 w us route 6, MORRIS 60450",
+      "same_door_check": "distinct Heartland-supported address; no same-door duplicate among the 25-row packet",
+      "protected_network_status": "not_protected (Heartland is not on the protected-network list)",
+      "dso_structure_rationale": "DSO=STRUCTURE satisfied: Heartland Dental is an established national DSO/MSO; the org NPI registers under Heartland's IL friendly-PC 'Dental Professionals of Illinois, P.C.' (Effingham, IL = Heartland HQ town). Brand operates under local office names (Heartland's standard model). pe_backed=true (KKR).",
+      "disposition": "ready_for_validation",
+      "disposition_protocol_equivalent": "corroborates_existing_ready (already dso_national in legacy entity_classification)",
+      "searches_executed": 1,
+      "search_queries": [
+        "\"Dental Professionals of Illinois\" Heartland Dental Effingham supported office Naperville Oswego Countryside"
+      ],
+      "preserved_db_facts": {
+        "entity_classification": "dso_national",
+        "affiliated_dso": "Heartland Dental",
+        "parent_company": null,
+        "ein": null,
+        "provider_count": 4,
+        "website": "Greatbraces.Com",
+        "taxonomy_codes": "[\"122300000X\", \"1223G0001X\"]",
+        "year_established": 1969,
+        "data_axle_enriched": 1,
+        "normalized_address": "1010 w us route 6",
+        "org_npi": "1306240437",
+        "primary_npi": "1306240437"
+      },
+      "city": "MORRIS",
+      "zip": "60450",
+      "state": "IL",
+      "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+      "legacy_floor_status": "already_corporate(entity_classification=dso_national)"
+    },
+    {
+      "location_id": "1237e7c94d53bab9",
+      "source_lane": "locator_exact",
+      "candidate_types": [
+        "heartland_friendly_pc",
+        "dpi_pc"
+      ],
+      "network": "Heartland Dental / Dental Professionals of Illinois, P.C.",
+      "proposed_tier": "branded_dso",
+      "pe_backed": true,
+      "pe_sponsor": "KKR (Heartland Dental)",
+      "durable_evidence": [
+        "db_affiliated_dso='Heartland Dental' [whitelisted DB artifact: practice's own SQLite affiliated_dso, not a name-field guess]",
+        "org-NPI legal business name = 'Dental Professionals of Illinois, P.C.' (NPI 1598427189) \u2014 Heartland's federally-registered IL friendly professional corporation",
+        "legacy entity_classification=dso_national (already corporate in legacy floor)"
+      ],
+      "evidence_urls": [
+        "https://heartland.com/  (Heartland Dental: 'World-Class Dental Support Organization', 3,000+ affiliated doctors / 1,750+ locations; HQ 903 Keller Drive, Effingham, IL 62401)",
+        "https://business.effinghamcountychamber.com/list/member/heartland-dental-249  (Heartland Dental, Effingham IL)",
+        "WebSearch 2026-06-21: 'Dental Professionals Of Illinois, P.C. is based in Effingham, Illinois' (same town as Heartland HQ) \u2014 Heartland's IL friendly-PC"
+      ],
+      "evidence_source": "db_affiliated_dso (whitelisted) + org-NPI legal name (federal registration) + Wave-4 transcribed Heartland structural URLs",
+      "operating_status_check": "operating; org NPI 1598427189 active at 6335 joliet rd, COUNTRYSIDE 60525",
+      "same_door_check": "distinct Heartland-supported address; no same-door duplicate among the 25-row packet",
+      "protected_network_status": "not_protected (Heartland is not on the protected-network list)",
+      "dso_structure_rationale": "DSO=STRUCTURE satisfied: Heartland Dental is an established national DSO/MSO; the org NPI registers under Heartland's IL friendly-PC 'Dental Professionals of Illinois, P.C.' (Effingham, IL = Heartland HQ town). Brand operates under local office names (Heartland's standard model). pe_backed=true (KKR).",
+      "disposition": "ready_for_validation",
+      "disposition_protocol_equivalent": "corroborates_existing_ready (already dso_national in legacy entity_classification)",
+      "searches_executed": 1,
+      "search_queries": [
+        "\"Dental Professionals of Illinois\" Heartland Dental Effingham supported office Naperville Oswego Countryside"
+      ],
+      "preserved_db_facts": {
+        "entity_classification": "dso_national",
+        "affiliated_dso": "Heartland Dental",
+        "parent_company": null,
+        "ein": null,
+        "provider_count": 2,
+        "website": "Countrysidedental.Com",
+        "taxonomy_codes": "[\"1223G0001X\"]",
+        "year_established": null,
+        "data_axle_enriched": 1,
+        "normalized_address": "6335 joliet rd",
+        "org_npi": "1598427189",
+        "primary_npi": "1598427189"
+      },
+      "city": "COUNTRYSIDE",
+      "zip": "60525",
+      "state": "IL",
+      "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C",
+      "legacy_floor_status": "already_corporate(entity_classification=dso_national)"
+    },
+    {
+      "location_id": "589308e9a6bcacf7",
+      "source_lane": "locator_exact",
+      "candidate_types": [
+        "heartland_friendly_pc",
+        "dpi_pc"
+      ],
+      "network": "Heartland Dental / Dental Professionals of Illinois, P.C.",
+      "proposed_tier": "branded_dso",
+      "pe_backed": true,
+      "pe_sponsor": "KKR (Heartland Dental)",
+      "durable_evidence": [
+        "db_affiliated_dso='Heartland Dental' [whitelisted DB artifact: practice's own SQLite affiliated_dso, not a name-field guess]",
+        "org-NPI legal business name = 'Dental Professionals of Illinois, P.C.' (NPI 1609053206) \u2014 Heartland's federally-registered IL friendly professional corporation",
+        "legacy entity_classification=dso_national (already corporate in legacy floor)"
+      ],
+      "evidence_urls": [
+        "https://heartland.com/  (Heartland Dental: 'World-Class Dental Support Organization', 3,000+ affiliated doctors / 1,750+ locations; HQ 903 Keller Drive, Effingham, IL 62401)",
+        "https://business.effinghamcountychamber.com/list/member/heartland-dental-249  (Heartland Dental, Effingham IL)",
+        "WebSearch 2026-06-21: 'Dental Professionals Of Illinois, P.C. is based in Effingham, Illinois' (same town as Heartland HQ) \u2014 Heartland's IL friendly-PC"
+      ],
+      "evidence_source": "db_affiliated_dso (whitelisted) + org-NPI legal name (federal registration) + Wave-4 transcribed Heartland structural URLs",
+      "operating_status_check": "operating; org NPI 1609053206 active at 100 hansen blvd, NORTH AURORA 60542",
+      "same_door_check": "distinct Heartland-supported address; no same-door duplicate among the 25-row packet",
+      "protected_network_status": "not_protected (Heartland is not on the protected-network list)",
+      "dso_structure_rationale": "DSO=STRUCTURE satisfied: Heartland Dental is an established national DSO/MSO; the org NPI registers under Heartland's IL friendly-PC 'Dental Professionals of Illinois, P.C.' (Effingham, IL = Heartland HQ town). Brand operates under local office names (Heartland's standard model). pe_backed=true (KKR).",
+      "disposition": "ready_for_validation",
+      "disposition_protocol_equivalent": "corroborates_existing_ready (already dso_national in legacy entity_classification)",
+      "searches_executed": 1,
+      "search_queries": [
+        "\"Dental Professionals of Illinois\" Heartland Dental Effingham supported office Naperville Oswego Countryside"
+      ],
+      "preserved_db_facts": {
+        "entity_classification": "dso_national",
+        "affiliated_dso": "Heartland Dental",
+        "parent_company": null,
+        "ein": null,
+        "provider_count": 1,
+        "website": "Northauroralifetimedentistry.Com",
+        "taxonomy_codes": "[\"1223G0001X\"]",
+        "year_established": null,
+        "data_axle_enriched": 1,
+        "normalized_address": "100 hansen blvd",
+        "org_npi": "1609053206",
+        "primary_npi": "1609053206"
+      },
+      "city": "NORTH AURORA",
+      "zip": "60542",
+      "state": "IL",
+      "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+      "legacy_floor_status": "already_corporate(entity_classification=dso_national)"
+    },
+    {
+      "location_id": "be7ff941b871d3db",
+      "source_lane": "locator_exact",
+      "candidate_types": [
+        "heartland_friendly_pc",
+        "dpi_pc"
+      ],
+      "network": "Heartland Dental / Dental Professionals of Illinois, P.C.",
+      "proposed_tier": "branded_dso",
+      "pe_backed": true,
+      "pe_sponsor": "KKR (Heartland Dental)",
+      "durable_evidence": [
+        "db_affiliated_dso='Heartland Dental' [whitelisted DB artifact: practice's own SQLite affiliated_dso, not a name-field guess]",
+        "org-NPI legal business name = 'Dental Professionals of Illinois, P.C.' (NPI 1346651577) \u2014 Heartland's federally-registered IL friendly professional corporation",
+        "legacy entity_classification=dso_national (already corporate in legacy floor)"
+      ],
+      "evidence_urls": [
+        "https://heartland.com/  (Heartland Dental: 'World-Class Dental Support Organization', 3,000+ affiliated doctors / 1,750+ locations; HQ 903 Keller Drive, Effingham, IL 62401)",
+        "https://business.effinghamcountychamber.com/list/member/heartland-dental-249  (Heartland Dental, Effingham IL)",
+        "WebSearch 2026-06-21: 'Dental Professionals Of Illinois, P.C. is based in Effingham, Illinois' (same town as Heartland HQ) \u2014 Heartland's IL friendly-PC"
+      ],
+      "evidence_source": "db_affiliated_dso (whitelisted) + org-NPI legal name (federal registration) + Wave-4 transcribed Heartland structural URLs",
+      "operating_status_check": "operating; org NPI 1346651577 active at 1490 douglas rd, OSWEGO 60543",
+      "same_door_check": "distinct Heartland-supported address; no same-door duplicate among the 25-row packet",
+      "protected_network_status": "not_protected (Heartland is not on the protected-network list)",
+      "dso_structure_rationale": "DSO=STRUCTURE satisfied: Heartland Dental is an established national DSO/MSO; the org NPI registers under Heartland's IL friendly-PC 'Dental Professionals of Illinois, P.C.' (Effingham, IL = Heartland HQ town). Brand operates under local office names (Heartland's standard model). pe_backed=true (KKR).",
+      "disposition": "ready_for_validation",
+      "disposition_protocol_equivalent": "corroborates_existing_ready (already dso_national in legacy entity_classification)",
+      "searches_executed": 1,
+      "search_queries": [
+        "\"Dental Professionals of Illinois\" Heartland Dental Effingham supported office Naperville Oswego Countryside"
+      ],
+      "preserved_db_facts": {
+        "entity_classification": "dso_national",
+        "affiliated_dso": "Heartland Dental",
+        "parent_company": null,
+        "ein": null,
+        "provider_count": 2,
+        "website": "Oswegocommonsfamilydental.Com",
+        "taxonomy_codes": "[\"122300000X\", \"1223G0001X\"]",
+        "year_established": null,
+        "data_axle_enriched": 1,
+        "normalized_address": "1490 douglas rd",
+        "org_npi": "1346651577",
+        "primary_npi": "1346651577"
+      },
+      "city": "OSWEGO",
+      "zip": "60543",
+      "state": "IL",
+      "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+      "legacy_floor_status": "already_corporate(entity_classification=dso_national)"
+    },
+    {
+      "location_id": "b5941b7e437e95f1",
+      "source_lane": "locator_exact",
+      "candidate_types": [
+        "heartland_friendly_pc",
+        "dpi_pc"
+      ],
+      "network": "Heartland Dental / Dental Professionals of Illinois, P.C.",
+      "proposed_tier": "branded_dso",
+      "pe_backed": true,
+      "pe_sponsor": "KKR (Heartland Dental)",
+      "durable_evidence": [
+        "db_affiliated_dso='Heartland Dental' [whitelisted DB artifact: practice's own SQLite affiliated_dso, not a name-field guess]",
+        "org-NPI legal business name = 'Dental Professionals of Illinois, P.C.' (NPI 1669092177) \u2014 Heartland's federally-registered IL friendly professional corporation",
+        "legacy entity_classification=dso_national (already corporate in legacy floor)"
+      ],
+      "evidence_urls": [
+        "https://heartland.com/  (Heartland Dental: 'World-Class Dental Support Organization', 3,000+ affiliated doctors / 1,750+ locations; HQ 903 Keller Drive, Effingham, IL 62401)",
+        "https://business.effinghamcountychamber.com/list/member/heartland-dental-249  (Heartland Dental, Effingham IL)",
+        "WebSearch 2026-06-21: 'Dental Professionals Of Illinois, P.C. is based in Effingham, Illinois' (same town as Heartland HQ) \u2014 Heartland's IL friendly-PC"
+      ],
+      "evidence_source": "db_affiliated_dso (whitelisted) + org-NPI legal name (federal registration) + Wave-4 transcribed Heartland structural URLs",
+      "operating_status_check": "operating; org NPI 1669092177 active at 3419 orchard rd, OSWEGO 60543",
+      "same_door_check": "distinct Heartland-supported address; no same-door duplicate among the 25-row packet",
+      "protected_network_status": "not_protected (Heartland is not on the protected-network list)",
+      "dso_structure_rationale": "DSO=STRUCTURE satisfied: Heartland Dental is an established national DSO/MSO; the org NPI registers under Heartland's IL friendly-PC 'Dental Professionals of Illinois, P.C.' (Effingham, IL = Heartland HQ town). Brand operates under local office names (Heartland's standard model). pe_backed=true (KKR).",
+      "disposition": "ready_for_validation",
+      "disposition_protocol_equivalent": "corroborates_existing_ready (already dso_national in legacy entity_classification)",
+      "searches_executed": 1,
+      "search_queries": [
+        "\"Dental Professionals of Illinois\" Heartland Dental Effingham supported office Naperville Oswego Countryside"
+      ],
+      "preserved_db_facts": {
+        "entity_classification": "dso_national",
+        "affiliated_dso": "Heartland Dental",
+        "parent_company": null,
+        "ein": null,
+        "provider_count": 4,
+        "website": "Stationsidedentalcare.Com",
+        "taxonomy_codes": "[\"122300000X\", \"1223G0001X\"]",
+        "year_established": null,
+        "data_axle_enriched": 1,
+        "normalized_address": "3419 orchard rd",
+        "org_npi": "1669092177",
+        "primary_npi": "1669092177"
+      },
+      "city": "OSWEGO",
+      "zip": "60543",
+      "state": "IL",
+      "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+      "legacy_floor_status": "already_corporate(entity_classification=dso_national)"
+    },
+    {
+      "location_id": "1b931a8e9c2675a9",
+      "source_lane": "locator_exact",
+      "candidate_types": [
+        "heartland_friendly_pc",
+        "dpi_pc"
+      ],
+      "network": "Heartland Dental / Dental Professionals of Illinois, P.C.",
+      "proposed_tier": "branded_dso",
+      "pe_backed": true,
+      "pe_sponsor": "KKR (Heartland Dental)",
+      "durable_evidence": [
+        "db_affiliated_dso='Heartland Dental' [whitelisted DB artifact: practice's own SQLite affiliated_dso, not a name-field guess]",
+        "org-NPI legal business name = 'Dental Professionals of Illinois, P.C.' (NPI 1003316035) \u2014 Heartland's federally-registered IL friendly professional corporation",
+        "legacy entity_classification=dso_national (already corporate in legacy floor)",
+        "EXACT-ADDRESS Wave-4 confirmation: Heartland supports the office at 309 W Ogden Ave, Naperville 60563"
+      ],
+      "evidence_urls": [
+        "WebSearch 2026-06-21 EXACT-ADDRESS MATCH: 'Heartland Dental supports Premier Dental Center, a supported practice located at 309 West Ogden Avenue in Naperville, IL 60563' \u2014 confirms this exact door is Heartland-supported",
+        "https://heartland.com/  (Heartland Dental: 'World-Class Dental Support Organization', 3,000+ affiliated doctors / 1,750+ locations; HQ 903 Keller Drive, Effingham, IL 62401)",
+        "https://business.effinghamcountychamber.com/list/member/heartland-dental-249  (Heartland Dental, Effingham IL)",
+        "WebSearch 2026-06-21: 'Dental Professionals Of Illinois, P.C. is based in Effingham, Illinois' (same town as Heartland HQ) \u2014 Heartland's IL friendly-PC"
+      ],
+      "evidence_source": "db_affiliated_dso (whitelisted) + org-NPI legal name (federal registration) + Wave-4 transcribed Heartland structural URLs",
+      "operating_status_check": "operating; org NPI 1003316035 active at 309 w ogden ave, NAPERVILLE 60563",
+      "same_door_check": "distinct Heartland-supported address; no same-door duplicate among the 25-row packet",
+      "protected_network_status": "not_protected (Heartland is not on the protected-network list)",
+      "dso_structure_rationale": "DSO=STRUCTURE satisfied: Heartland Dental is an established national DSO/MSO; the org NPI registers under Heartland's IL friendly-PC 'Dental Professionals of Illinois, P.C.' (Effingham, IL = Heartland HQ town). Brand operates under local office names (Heartland's standard model). pe_backed=true (KKR).",
+      "disposition": "ready_for_validation",
+      "disposition_protocol_equivalent": "corroborates_existing_ready (already dso_national in legacy entity_classification)",
+      "searches_executed": 2,
+      "search_queries": [
+        "\"Dental Professionals of Illinois\" Heartland Dental Effingham supported office Naperville Oswego Countryside",
+        "(exact-address confirmation captured in the Heartland/Effingham search result naming 309 W Ogden Ave Naperville)"
+      ],
+      "preserved_db_facts": {
+        "entity_classification": "dso_national",
+        "affiliated_dso": "Heartland Dental",
+        "parent_company": null,
+        "ein": null,
+        "provider_count": 2,
+        "website": "Dentistnapervilleil.Com",
+        "taxonomy_codes": "[\"122300000X\", \"1223G0001X\"]",
+        "year_established": null,
+        "data_axle_enriched": 1,
+        "normalized_address": "309 w ogden ave",
+        "org_npi": "1003316035",
+        "primary_npi": "1003316035"
+      },
+      "city": "NAPERVILLE",
+      "zip": "60563",
+      "state": "IL",
+      "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+      "legacy_floor_status": "already_corporate(entity_classification=dso_national)"
+    },
+    {
+      "location_id": "d4d827860b4132cb",
+      "source_lane": "locator_exact",
+      "candidate_types": [
+        "dpi_pc",
+        "name_collision"
+      ],
+      "network": "Dental Professionals of Illinois, P.C. (org legal name) \u2014 collision with possible Sweis 'Bloomingdale Dental'",
+      "proposed_tier": "branded_dso?",
+      "pe_backed": null,
+      "durable_evidence": [
+        "org-NPI legal name = 'Dental Professionals of Illinois, P.C.' (Heartland friendly-PC) \u2014 points to Heartland",
+        "BUT db affiliated_dso = NULL (no DB Heartland tag), EIN 362736573 (not cross-validated), website bloomingdaledental.com"
+      ],
+      "evidence_urls": [],
+      "missing_evidence_type": "resolve_door_identity_at_290_springfield_dr (Heartland DPI-PC vs SWEIS-protected 'Bloomingdale Dental')",
+      "evidence_source": "ambiguous: org legal name says Heartland; brand 'Bloomingdale Dental' collides with protected SWEIS network",
+      "operating_status_check": "operating; org NPI 1346997020, 7 providers, year_established 2024 (recent org NPI)",
+      "same_door_check": "NEEDS RESOLUTION \u2014 brand 'Bloomingdale Dental' may collide/same-door with SWEIS-protected network",
+      "protected_network_status": "PROTECTED-NETWORK ADJACENCY FLAG \u2014 possible SWEIS collision; do not release without explicit decision",
+      "disposition": "hold_needs_more_evidence",
+      "hold_reason": "HB5 (pe/dso name collision unresolved) + protected-network (SWEIS) adjacency \u2014 org legal name suggests Heartland DPI-PC but brand 'Bloomingdale Dental' collides with the protected SWEIS network; affiliated_dso is NULL so no DB Heartland artifact to break the tie. Hold per HB5 + conservative protected-network default.",
+      "disposition_protocol_equivalent": "hold_needs_more_evidence",
+      "searches_executed": 1,
+      "search_queries": [
+        "\"Dental Professionals of Illinois\" Heartland Dental Effingham supported office Naperville Oswego Countryside"
+      ],
+      "preserved_db_facts": {
+        "entity_classification": "dso_regional",
+        "affiliated_dso": null,
+        "parent_company": null,
+        "ein": "362736573",
+        "provider_count": 7,
+        "website": "Bloomingdaledental.Com",
+        "taxonomy_codes": "[\"122300000X\", \"1223G0001X\", \"1223S0112X\", \"1223E0200X\", \"1223P0300X\"]",
+        "year_established": 2024,
+        "data_axle_enriched": 1,
+        "normalized_address": "290 springfield dr",
+        "org_npi": "1346997020",
+        "primary_npi": "1346997020"
+      },
+      "city": "BLOOMINGDALE",
+      "zip": "60108",
+      "state": "IL",
+      "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+      "legacy_floor_status": "already_corporate(entity_classification=dso_regional)"
+    },
+    {
+      "location_id": "e669559ebe8a9d4a",
+      "source_lane": "locator_exact",
+      "candidate_types": [
+        "dca_affiliated",
+        "de_novo_partnership"
+      ],
+      "network": "Dental Care Alliance (DCA)",
+      "proposed_tier": "branded_dso",
+      "pe_backed": true,
+      "pe_sponsor": "Dental Care Alliance (PE-backed; Harvest Partners / Mubadala)",
+      "durable_evidence": [
+        "db_affiliated_dso='Dental Care Alliance (DCA)' [whitelisted DB artifact]",
+        "DCA press release names THIS EXACT practice + address: 'Forever Family Dental of New Lenox, IL', 202 Vancina Ln, New Lenox 60451, de novo partnership opened 2020-09-08, led by Dr. Courtney Botica",
+        "legacy entity_classification=dso_regional (already corporate)"
+      ],
+      "evidence_urls": [
+        "https://www.dentalcarealliance.net/dental-practice-news/forever-family-dental-of-new-lenox-il-celebrates-opening/  (DCA press release; exact address 202 Vancina Ln; Dr. Courtney Botica)",
+        "https://www.dentalcarealliance.net/dental-practice-news/dental-care-alliance-opens-de-novo-partnership-practice-in-new-lenox-il/  (DCA de novo partnership announcement, New Lenox IL)"
+      ],
+      "evidence_source": "db_affiliated_dso (whitelisted) + Wave-4 DCA press release naming the exact street address",
+      "operating_status_check": "operating; opened 2020-09-08 per DCA; org NPI 1871126227, 2 providers",
+      "same_door_check": "single DCA door at 202 Vancina Ln; no same-door duplicate",
+      "protected_network_status": "not_protected",
+      "dso_structure_rationale": "DSO=STRUCTURE satisfied: Dental Care Alliance is an established multi-branded DSO (325+ affiliated practices, 20 states, HQ Sarasota FL); DCA's own press release names this exact New Lenox location as a DCA de novo partnership practice. pe_backed=true (DCA is PE-backed).",
+      "disposition": "ready_for_validation",
+      "disposition_protocol_equivalent": "corroborates_existing_ready (already dso_regional in legacy)",
+      "searches_executed": 1,
+      "search_queries": [
+        "Dental Care Alliance DCA \"New Lenox\" Illinois \"Forever Family Dental\" locator office"
+      ],
+      "preserved_db_facts": {
+        "entity_classification": "dso_regional",
+        "affiliated_dso": "Dental Care Alliance (DCA)",
+        "parent_company": null,
+        "ein": null,
+        "provider_count": 2,
+        "website": "Familydentistnewlenox.Com",
+        "taxonomy_codes": "[\"122300000X\", \"1223G0001X\"]",
+        "year_established": null,
+        "data_axle_enriched": 1,
+        "normalized_address": "202 vancina ln",
+        "org_npi": "1871126227",
+        "primary_npi": "1871126227"
+      },
+      "city": "NEW LENOX",
+      "zip": "60451",
+      "state": "IL",
+      "practice_name": "FOREVER FAMILY DENTAL OF NEW LENOX",
+      "legacy_floor_status": "already_corporate(entity_classification=dso_regional)"
+    },
+    {
+      "location_id": "5cd692a50e5c32b7",
+      "source_lane": "locator_exact",
+      "candidate_types": [
+        "dentologie_branded_office",
+        "db_mislabel_solo_correction"
+      ],
+      "network": "Dentologie (Chicago DSO)",
+      "proposed_tier": "branded_dso",
+      "pe_backed": false,
+      "pe_sponsor": "(PE-growth model discussed publicly by founder; specific sponsor NOT named in Wave 4 \u2014 pe_backed left false conservatively; DSO tier stands on structure regardless per pe_backed-orthogonal rule)",
+      "durable_evidence": [
+        "Dentologie's OWN locator lists River North at this exact address: 444 N Orleans St, Chicago 60654",
+        "CareCredit + Healthgrades place Dr. Eric Schock at 'Dentologie - River North', 444 N Orleans",
+        "Dentologie = 13 branded Chicago neighborhood offices; founder Oussama Founas, DDS (Becker's Dental+DSO Review podcast on PE-growth)"
+      ],
+      "evidence_urls": [
+        "https://dentologie.com/locations/chicago  (Dentologie: '13 Neighborhood Offices', incl. River North 444 N Orleans)",
+        "https://www.carecredit.com/doctor-locator/chicago-il/dentologie-river-north-832jhb/  (Dentologie - River North, Dr. Eric Schock, 444 N Orleans)",
+        "https://www.healthgrades.com/dentist/dr-eric-schock-u3yrs6p  (Dr. Eric Schock at Dentologie River North)",
+        "Becker's Dental+DSO Review podcast: Oussama Founas, DDS (Dentologie founder) on deploying private-equity dollars to grow"
+      ],
+      "evidence_source": "Wave-4 exact-address match on Dentologie's own locator + corroborating directories naming the dentist at the Dentologie brand",
+      "operating_status_check": "operating; Dentologie River North active at 444 N Orleans 60654 (primary NPI 1881482297, Dr. Eric Schock)",
+      "same_door_check": "this row IS the Dentologie River North office (DB mislabeled it 'Schock Dental' solo_established); Gate to confirm no separate 'Dentologie River North' location_id duplicate in the broader floor",
+      "protected_network_status": "not_protected",
+      "dso_structure_rationale": "DSO=STRUCTURE satisfied: Dentologie is an established Chicago DSO (13 branded locations; named founder Oussama Founas DDS; positioned on Becker's Dental+DSO Review). The office at 444 N Orleans operates AS 'Dentologie - River North' per Dentologie's own locator. Corrects DB mislabel (solo_established). pe_backed=false conservatively (no named sponsor confirmed in Wave 4; pe_backed is orthogonal and never a downgrade reason).",
+      "disposition": "ready_for_validation",
+      "disposition_protocol_equivalent": "merge_eligible_new (DB had solo_established; NOT in legacy corporate floor \u2014 net-new DSO door)",
+      "searches_executed": 2,
+      "search_queries": [
+        "\"Schock Dental\" 444 N Orleans Chicago dentist Dr Schock",
+        "Dentologie Chicago dental ownership private equity DSO management company investors founders"
+      ],
+      "preserved_db_facts": {
+        "entity_classification": "solo_established",
+        "affiliated_dso": null,
+        "parent_company": null,
+        "ein": null,
+        "provider_count": 1,
+        "website": null,
+        "taxonomy_codes": "[\"1223G0001X\"]",
+        "year_established": null,
+        "data_axle_enriched": 0,
+        "normalized_address": "444 n orleans st",
+        "org_npi": null,
+        "primary_npi": "1881482297"
+      },
+      "city": "CHICAGO",
+      "zip": "60654",
+      "state": "IL",
+      "practice_name": "Schock Dental",
+      "legacy_floor_status": "not_in_legacy_corporate_floor(entity_classification=solo_established)"
+    },
+    {
+      "location_id": "2bf590b5092f1e8e",
+      "source_lane": "practice_intel",
+      "candidate_types": [
+        "aspen_oral_care_center",
+        "tag_occ"
+      ],
+      "network": "Aspen Dental (TAG Oral Care Center)",
+      "proposed_tier": "branded_dso",
+      "pe_backed": true,
+      "pe_sponsor": "Aspen Dental Management Inc. (ADMI; PE-backed \u2014 Ares Management / Leonard Green)",
+      "durable_evidence": [
+        "db_affiliated_dso='Aspen Dental' [whitelisted DB artifact]",
+        "Aspen's OWN locator lists this EXACT address: 1040 W Randolph St, Chicago 60607",
+        "'OCC' in 'OCC JUDGE PC' = Aspen's 'Oral Care Center' (TAG Oral Care Center at 1040 W Randolph); practice phone (315) 454-6000 = Aspen HQ area (East Syracuse, NY)",
+        "legacy entity_classification=dso_national (already corporate)"
+      ],
+      "evidence_urls": [
+        "https://www.aspendental.com/dentist/il/chicago/1040-w-randolph-st/  (Aspen Dental exact address 1040 W Randolph St)",
+        "https://www.aspendental.com/about/tag-oral-care-center/  (TAG Oral Care Center \u2014 Aspen-operated, 1040 W Randolph)",
+        "https://www.yelp.com/biz/tag-oral-care-center-chicago  (TAG Oral Care Center, 1040 W Randolph St)"
+      ],
+      "evidence_source": "db_affiliated_dso (whitelisted) + Wave-4 exact-address match on Aspen's own locator + Aspen TAG OCC naming + (315) Aspen-HQ phone",
+      "operating_status_check": "operating; Aspen/TAG Oral Care Center active at 1040 W Randolph 60607",
+      "same_door_check": "single Aspen/TAG door; 'OCC JUDGE PC' is Aspen's PC entity at this address (no independent duplicate)",
+      "protected_network_status": "not_protected",
+      "dso_structure_rationale": "DSO=STRUCTURE satisfied: Aspen Dental (ADMI) is an established national DSO; its own locator lists 1040 W Randolph; 'OCC JUDGE PC' resolves to Aspen's 'Oral Care Center' (TAG OCC); (315) phone = Aspen Syracuse HQ. pe_backed=true.",
+      "disposition": "ready_for_validation",
+      "disposition_protocol_equivalent": "corroborates_existing_ready (already dso_national in legacy)",
+      "searches_executed": 1,
+      "search_queries": [
+        "\"OCC Judge\" OR \"Judge PC\" 1040 W Randolph Chicago Aspen Dental office"
+      ],
+      "preserved_db_facts": {
+        "entity_classification": "dso_national",
+        "affiliated_dso": "Aspen Dental",
+        "parent_company": null,
+        "ein": null,
+        "provider_count": 1,
+        "website": null,
+        "taxonomy_codes": "[\"122300000X\", \"1223G0001X\"]",
+        "year_established": null,
+        "data_axle_enriched": 1,
+        "normalized_address": "1040 w randolph st",
+        "org_npi": "1538802467",
+        "primary_npi": "1538802467"
+      },
+      "city": "CHICAGO",
+      "zip": "60607",
+      "state": "IL",
+      "practice_name": "OCC JUDGE PC",
+      "legacy_floor_status": "already_corporate(entity_classification=dso_national)"
+    },
+    {
+      "location_id": "b7499322a2416c5d",
+      "source_lane": "practice_intel",
+      "candidate_types": [
+        "owner_operated_solo"
+      ],
+      "network": null,
+      "proposed_tier": "true_independent",
+      "pe_backed": false,
+      "durable_evidence": [
+        "POSITIVE owner-operated evidence: Dr. Paulina Jova, DDS is the named sole owner/operator ('Crown Dental Center: Paulina Jova DDS'), solo since 2009",
+        "no DSO/MSO/parent/EIN signal; legacy entity_classification=solo_established"
+      ],
+      "evidence_urls": [
+        "https://www.healthgrades.com/dentist/dr-paulina-jova-3ggg7  (Dr. Paulina Jova DDS, Chicago)",
+        "https://www.practo.com/chicago/hospital/crown-dental-center-paulina-jova-dds-andersonville  ('Crown Dental Center: Paulina Jova DDS', 5154 N Clark, Andersonville)",
+        "https://npiprofile.com/npi/1457592545  (Dr. Paulina Ana Jova DDS, NPI active since 2009)"
+      ],
+      "evidence_source": "Wave-4 web search: named sole-owner dentist with own practice brand (earned positive T1 evidence \u2014 NOT a default-to-independent)",
+      "operating_status_check": "operating; Dr. Paulina Jova active at 5154 N Clark 60640 (NPI since 2009)",
+      "same_door_check": "single solo door; no co-location with a DSO",
+      "protected_network_status": "not_protected",
+      "disposition": "ready_for_validation",
+      "disposition_protocol_equivalent": "merge_eligible_new (true_independent confirmation; not a corporate add)",
+      "searches_executed": 1,
+      "search_queries": [
+        "\"Jova Dental\" 5154 N Clark Chicago Andersonville dentist owner"
+      ],
+      "preserved_db_facts": {
+        "entity_classification": "solo_established",
+        "affiliated_dso": null,
+        "parent_company": null,
+        "ein": null,
+        "provider_count": 1,
+        "website": null,
+        "taxonomy_codes": "[\"1223G0001X\"]",
+        "year_established": null,
+        "data_axle_enriched": 0,
+        "normalized_address": "5154 n clark st",
+        "org_npi": null,
+        "primary_npi": "1457592545"
+      },
+      "city": "CHICAGO",
+      "zip": "60640",
+      "state": "IL",
+      "practice_name": "Jova Dental",
+      "legacy_floor_status": "not_in_legacy_corporate_floor(entity_classification=solo_established)"
+    },
+    {
+      "location_id": "0a318ab399f418de",
+      "source_lane": "practice_intel",
+      "candidate_types": [
+        "owner_operated_solo"
+      ],
+      "network": null,
+      "proposed_tier": "true_independent",
+      "pe_backed": false,
+      "durable_evidence": [
+        "POSITIVE owner-operated evidence: Dr. Rosa Bellido-Griffin, DMD is 'the sole owner of the medical practice', boutique solo general practice, own website",
+        "no DSO/MSO/parent/EIN signal; legacy entity_classification=solo_established"
+      ],
+      "evidence_urls": [
+        "https://www.healthgrades.com/dentist/dr-rosa-bellido-griffin-yw5nm  (Dr. Rosa Bellido-Griffin DMD, 4446 N Western)",
+        "https://drrosabgdental.weebly.com/background--credentials.html  (Dr. Rosa Bellido-Griffin \u2014 own practice website)",
+        "https://findadentist.ada.org/il/cook/chicago/general-practice/dr-rosa-d-bellido-griffin-4103834  (ADA Find-a-Dentist, Chicago 60625)"
+      ],
+      "evidence_source": "Wave-4 web search: named sole-owner dentist with own boutique practice + own website (earned positive T1 evidence)",
+      "operating_status_check": "operating; Dr. Rosa Bellido-Griffin active at 4446 N Western 60625",
+      "same_door_check": "single solo door; no co-location with a DSO",
+      "protected_network_status": "not_protected",
+      "disposition": "ready_for_validation",
+      "disposition_protocol_equivalent": "merge_eligible_new (true_independent confirmation; not a corporate add)",
+      "searches_executed": 1,
+      "search_queries": [
+        "\"Bellido-Griffin\" dental 4446 N Western Chicago dentist owner"
+      ],
+      "preserved_db_facts": {
+        "entity_classification": "solo_established",
+        "affiliated_dso": null,
+        "parent_company": null,
+        "ein": null,
+        "provider_count": 1,
+        "website": null,
+        "taxonomy_codes": "[\"122300000X\"]",
+        "year_established": null,
+        "data_axle_enriched": 0,
+        "normalized_address": "4446 n western ave",
+        "org_npi": null,
+        "primary_npi": "1649484353"
+      },
+      "city": "CHICAGO",
+      "zip": "60625",
+      "state": "IL",
+      "practice_name": "Bellido-Griffin Dental",
+      "legacy_floor_status": "not_in_legacy_corporate_floor(entity_classification=solo_established)"
+    },
+    {
+      "location_id": "9068c4de3bbdb4b4",
+      "source_lane": "practice_intel",
+      "candidate_types": [
+        "false_positive_stealth_dso",
+        "owner_operated_solo"
+      ],
+      "network": null,
+      "proposed_tier": "stealth_dso (PROPOSED \u2014 REFUTED)",
+      "pe_backed": false,
+      "durable_evidence": [
+        "Dr. George Warga, DDS \u2014 30+ year solo private practice ('Winnetka Dental Arts'); L.D. Pankey Institute lead faculty; no MSO/management company/parent",
+        "legacy entity_classification=solo_established; no affiliated_dso/parent/EIN signal"
+      ],
+      "evidence_urls": [
+        "https://www.winnetkadentalarts.com/dentists/george-warga/  (Dr. George Warga, 30+ yr solo, Winnetka)",
+        "https://pankey.org/faculty/dr-warga-george/  (Pankey Institute faculty)"
+      ],
+      "evidence_source": "Wave-4 web search refutes the stealth_dso proposal: single owner-operated solo, no DSO structure",
+      "operating_status_check": "operating; Dr. George Warga active, accepting new patients, 465 Chestnut St area Winnetka 60093",
+      "same_door_check": "single solo door",
+      "protected_network_status": "not_protected",
+      "dso_structure_rationale": "DSO=STRUCTURE FAILS: no MSO/management company/platform/established DSO brand. The stealth_dso proposal is a false positive (brand/name signal only). Owner-operated solo (T1-eligible on the Warga evidence; Gate may reclassify to true_independent).",
+      "disposition": "refuted",
+      "disposition_protocol_equivalent": "refuted",
+      "searches_executed": 1,
+      "search_queries": [
+        "\"Warga Dental\" Winnetka Illinois dentist owner Dr Warga independent practice"
+      ],
+      "preserved_db_facts": {
+        "entity_classification": "solo_established",
+        "affiliated_dso": null,
+        "parent_company": null,
+        "ein": null,
+        "provider_count": 1,
+        "website": null,
+        "taxonomy_codes": "[\"122300000X\"]",
+        "year_established": null,
+        "data_axle_enriched": 0,
+        "normalized_address": "465 chestnut st",
+        "org_npi": null,
+        "primary_npi": "1770829434"
+      },
+      "city": "WINNETKA",
+      "zip": "60093",
+      "state": "IL",
+      "practice_name": "Warga Dental",
+      "legacy_floor_status": "not_in_legacy_corporate_floor(entity_classification=solo_established)"
+    },
+    {
+      "location_id": "7b61d1c9b5e65057",
+      "source_lane": "practice_intel",
+      "candidate_types": [
+        "false_positive_stealth_dso",
+        "owner_operated_solo"
+      ],
+      "network": null,
+      "proposed_tier": "stealth_dso (PROPOSED \u2014 REFUTED)",
+      "pe_backed": false,
+      "durable_evidence": [
+        "Dr. Garfield Batchelor, DDS \u2014 sole owner ('Batchelor Dental'), practicing Mount Greenwood since 1999; Meharry faculty; no MSO/parent",
+        "legacy entity_classification=solo_high_volume; no affiliated_dso/parent/EIN signal"
+      ],
+      "evidence_urls": [
+        "https://www.batchelordental.com/about/meet-the-doctor/  (Dr. Garfield Batchelor, sole owner since 1999)",
+        "https://www.batchelordental.com/  (Batchelor Dental \u2014 owner's own website, 3500 W 111th St)"
+      ],
+      "evidence_source": "Wave-4 web search refutes the stealth_dso proposal: single owner-operated solo since 1999, no DSO structure",
+      "operating_status_check": "operating; Dr. Garfield Batchelor active at 3500 W 111th St 60655",
+      "same_door_check": "single solo door (own brand 'Batchelor Dental')",
+      "protected_network_status": "not_protected",
+      "dso_structure_rationale": "DSO=STRUCTURE FAILS: no MSO/platform/established DSO brand. stealth_dso proposal is a false positive. Owner-operated solo since 1999 (T1-eligible on the Batchelor evidence).",
+      "disposition": "refuted",
+      "disposition_protocol_equivalent": "refuted",
+      "searches_executed": 1,
+      "search_queries": [
+        "Batchelor Dental OR \"Greenwood Family Dentistry\" 3500 W 111th Chicago 60655 dentist owner"
+      ],
+      "preserved_db_facts": {
+        "entity_classification": "solo_high_volume",
+        "affiliated_dso": null,
+        "parent_company": null,
+        "ein": null,
+        "provider_count": 1,
+        "website": "Batchelordental.Com",
+        "taxonomy_codes": "[\"1223G0001X\"]",
+        "year_established": null,
+        "data_axle_enriched": 1,
+        "normalized_address": "3500 w 111th st",
+        "org_npi": "1841595212",
+        "primary_npi": "1841595212"
+      },
+      "city": "CHICAGO",
+      "zip": "60655",
+      "state": "IL",
+      "practice_name": "GREENWOOD FAMILY DENTISTRY, P.C.",
+      "legacy_floor_status": "not_in_legacy_corporate_floor(entity_classification=solo_high_volume)"
+    },
+    {
+      "location_id": "598cc9dae498795b",
+      "source_lane": "practice_intel",
+      "candidate_types": [
+        "false_positive_substring_western_dental",
+        "academic_hospital_affiliated"
+      ],
+      "network": "Western Dental (PROPOSED tag \u2014 REFUTED) / Northwestern Medicine (actual)",
+      "proposed_tier": "dso_national via 'Western Dental' (PROPOSED \u2014 REFUTED)",
+      "pe_backed": false,
+      "durable_evidence": [
+        "db affiliated_dso='Western Dental' is a pure SUBSTRING false-positive of 'NORTHwestern' \u2014 Western Dental (Sonrava) does NOT operate this practice",
+        "Actual entity: Northwestern Dental Center, P.C. at 201 E Huron (Galter Pavilion), Northwestern Medicine campus; Dr. Peter Hurst (Chair), incorporated 2001; academic/hospital-affiliated"
+      ],
+      "evidence_urls": [
+        "https://northwesterndental.com/  (Northwestern Dental Center, P.C.)",
+        "https://www.bbb.org/us/il/chicago/profile/dentist/northwestern-dental-center-pc-0654-88134213  (Northwestern Dental Center, P.C., incorporated 2001, Dr. Peter Hurst chairman)",
+        "https://www.nm.org/locations/northwestern-medicine-dental-care  (Northwestern Medicine Dental/Oral Health Center, 201 E Huron)"
+      ],
+      "evidence_source": "Wave-4 web search refutes the 'Western Dental' DSO tag (substring artifact); entity is Northwestern Medicine-affiliated academic P.C.",
+      "operating_status_check": "operating; 201 E Huron St (Galter Pavilion) Chicago 60611, 10 providers",
+      "same_door_check": "single academic/hospital door; not a Western Dental/Sonrava location",
+      "protected_network_status": "not_protected",
+      "dso_structure_rationale": "The proposed corporate basis (Western Dental DSO) is REFUTED \u2014 it is a substring false-positive of 'NORTHwestern'. The entity is institutional/academic (Northwestern Medicine-affiliated), NOT a Western Dental/Sonrava door. Held out of GP corporate floor; Gate may consider an institutional/academic classification.",
+      "disposition": "refuted",
+      "disposition_protocol_equivalent": "refuted",
+      "proposed_reclassification": "institutional/academic (Northwestern Medicine) \u2014 held out of GP corporate floor",
+      "searches_executed": 1,
+      "search_queries": [
+        "\"Northwestern Dental Center\" 201 E Huron Chicago dentist ownership group"
+      ],
+      "preserved_db_facts": {
+        "entity_classification": "dso_national",
+        "affiliated_dso": "Western Dental",
+        "parent_company": null,
+        "ein": "363944088",
+        "provider_count": 10,
+        "website": "Northwesterndental.Com",
+        "taxonomy_codes": "[\"1223S0112X\", \"122300000X\", \"1223G0001X\"]",
+        "year_established": null,
+        "data_axle_enriched": 1,
+        "normalized_address": "201 e huron st",
+        "org_npi": "1427105139",
+        "primary_npi": "1427105139"
+      },
+      "city": "CHICAGO",
+      "zip": "60611",
+      "state": "IL",
+      "practice_name": "NORTHWESTERN DENTAL CENTER",
+      "legacy_floor_status": "already_corporate(entity_classification=dso_national)"
+    },
+    {
+      "location_id": "d2e5c43e4975ddb4",
+      "source_lane": "practice_intel",
+      "candidate_types": [
+        "name_collision",
+        "brand_word_only"
+      ],
+      "network": "Midwest Dental (DSO) \u2014 collision with generic 'Midwest Dental Group' name",
+      "proposed_tier": "dso_national via 'Midwest Dental' (HELD \u2014 unverified)",
+      "pe_backed": null,
+      "durable_evidence": [
+        "db affiliated_dso='Midwest Dental' appears to be a NAME-FIELD guess from the generic practice name 'Midwest Dental Group' (AH4)",
+        "Midwest Dental (the DSO, Smile Brands) IL locator does NOT list 2720 W 15th St 60608 \u2014 no exact-address match (HB6)"
+      ],
+      "evidence_urls": [],
+      "missing_evidence_type": "exact_address_match_on_midwest_dental_locator (2720 W 15th St 60608)",
+      "evidence_source": "Wave-4 web search found no exact-address match on the Midwest Dental DSO locator; affiliated_dso is a probable name-field collision",
+      "operating_status_check": "operating; org NPI 1710145065, 2 providers, no website, not DA-enriched",
+      "same_door_check": "no DSO co-location confirmed",
+      "protected_network_status": "not_protected",
+      "disposition": "hold_needs_more_evidence",
+      "hold_reason": "HB6 (brand word as only DSO evidence) + AH4 (no name-field promotion): 'Midwest Dental Group' generic name does not match the Midwest Dental DSO's own locator at this address. Do not promote on the name; do not refute (could be an unlisted office). Hold for exact-address locator/EIN evidence.",
+      "disposition_protocol_equivalent": "hold_needs_more_evidence",
+      "searches_executed": 1,
+      "search_queries": [
+        "\"Midwest Dental Group\" 2720 W 15th Street Chicago 60608 dentist owner"
+      ],
+      "preserved_db_facts": {
+        "entity_classification": "dso_national",
+        "affiliated_dso": "Midwest Dental",
+        "parent_company": null,
+        "ein": null,
+        "provider_count": 2,
+        "website": null,
+        "taxonomy_codes": "[\"122300000X\"]",
+        "year_established": null,
+        "data_axle_enriched": 0,
+        "normalized_address": "2720 w 15th st",
+        "org_npi": "1710145065",
+        "primary_npi": "1710145065"
+      },
+      "city": "CHICAGO",
+      "zip": "60608",
+      "state": "IL",
+      "practice_name": "MIDWEST DENTAL GROUP",
+      "legacy_floor_status": "already_corporate(entity_classification=dso_national)"
+    },
+    {
+      "location_id": "5404b210ff43f176",
+      "source_lane": "practice_intel",
+      "candidate_types": [
+        "same_door_dso_colocation"
+      ],
+      "network": "Dental Dreams (Dental Experts LLC) \u2014 co-located at same suite",
+      "proposed_tier": "stealth_dso (PROPOSED \u2014 held on same-door ambiguity)",
+      "pe_backed": null,
+      "durable_evidence": [
+        "350 N Clark St SUITE 600 is a Dental Dreams DSO office (Dental Dreams listed at 350 N Clark St Ste 600, Chicago 60654; dentists Marouf/Razzaq/Urda)",
+        "Dr. Byungjin Kang, DMD ('Kang Dental') practices at 350 N Clark St Suite 600 \u2014 SAME suite as Dental Dreams",
+        "Dental Dreams = 'Dental Experts LLC' (known IL DSO)"
+      ],
+      "evidence_urls": [
+        "https://www.dentaldreams.com/contact/  (Dental Dreams \u2014 IL DSO)",
+        "WebSearch 2026-06-21: 'Dental Dreams is located at 350 North Clark Street Suite 600, Chicago, IL 60654' (same suite as Dr. Byungjin Kang)",
+        "https://www.healthgrades.com/dentist/dr-byungjin-kang-um357m  (Dr. Byungjin Kang DMD, 350 N Clark St Suite 600)"
+      ],
+      "evidence_source": "Wave-4 web search: Dr. Kang co-located at the Dental Dreams DSO suite",
+      "operating_status_check": "operating; 350 N Clark St Ste 600 (Dental Dreams suite)",
+      "same_door_check": "SAME-DOOR AMBIGUITY \u2014 'Kang Dental' shares 350 N Clark Ste 600 with a Dental Dreams DSO office. Either (a) a Dental Dreams door (corroborates corporate) or (b) a same-door duplicate of an already-counted Dental Dreams location. Needs Gate resolution.",
+      "protected_network_status": "not_protected",
+      "dso_structure_rationale": "Dental Dreams (Dental Experts LLC) is a known IL DSO at this exact suite. But same-door/duplicate risk prevents a clean disposition: cannot confirm 'Kang Dental' is a distinct corporate door vs a duplicate of an already-counted Dental Dreams row.",
+      "disposition": "hold_operating_status_or_same_door",
+      "hold_reason": "Same-door ambiguity at 350 N Clark St Suite 600 (shared with Dental Dreams DSO). Per the conservative same-door default, hold rather than promote or refute until Gate confirms whether this is a distinct corporate door or a duplicate.",
+      "disposition_protocol_equivalent": "hold_operating_status_or_same_door",
+      "searches_executed": 1,
+      "search_queries": [
+        "\"Kang Dental\" 350 N Clark Chicago dentist owner independent"
+      ],
+      "preserved_db_facts": {
+        "entity_classification": "solo_established",
+        "affiliated_dso": null,
+        "parent_company": null,
+        "ein": null,
+        "provider_count": 1,
+        "website": null,
+        "taxonomy_codes": "[\"122300000X\"]",
+        "year_established": null,
+        "data_axle_enriched": 0,
+        "normalized_address": "350 n clark st/",
+        "org_npi": null,
+        "primary_npi": "1902549322"
+      },
+      "city": "CHICAGO",
+      "zip": "60654",
+      "state": "IL",
+      "practice_name": "Kang Dental",
+      "legacy_floor_status": "not_in_legacy_corporate_floor(entity_classification=solo_established)"
+    },
+    {
+      "location_id": "499c18e0f7c7ad12",
+      "source_lane": "practice_intel",
+      "candidate_types": [
+        "operating_status_unverified",
+        "address_zip_anomaly"
+      ],
+      "network": null,
+      "proposed_tier": "true_independent (PROPOSED \u2014 held on operating status)",
+      "pe_backed": false,
+      "durable_evidence": [
+        "named solo dentist ('Lillian Obucina DDS PC') \u2014 a positive independence signal, BUT provider_count=0 (no active provider linked at the location)",
+        "address/zip anomaly: normalized_address '111 N Wabash' (downtown Chicago Loop) but DB zip=60202 (Evanston) \u2014 inconsistent"
+      ],
+      "evidence_urls": [],
+      "missing_evidence_type": "active_operating_status_and_correct_address_zip (prov_count=0; Loop address vs 60202 Evanston zip)",
+      "evidence_source": "DB facts: provider_count=0 + address/zip mismatch \u2014 cannot confirm an active operating door",
+      "operating_status_check": "UNVERIFIED \u2014 provider_count=0; address (111 N Wabash, Loop) inconsistent with zip 60202 (Evanston). Cannot confirm active operating location.",
+      "same_door_check": "n/a until operating status confirmed",
+      "protected_network_status": "not_protected",
+      "disposition": "hold_operating_status_or_same_door",
+      "hold_reason": "Per the 'never default true_independent' + AH5/operating-status rules: provider_count=0 and an address/zip anomaly (Loop street vs Evanston zip) mean operating status is unverified. Hold rather than promote to true_independent.",
+      "disposition_protocol_equivalent": "hold_operating_status_or_same_door",
+      "searches_executed": 0,
+      "search_queries": [],
+      "preserved_db_facts": {
+        "entity_classification": "solo_established",
+        "affiliated_dso": null,
+        "parent_company": null,
+        "ein": null,
+        "provider_count": 0,
+        "website": null,
+        "taxonomy_codes": "[\"122300000X\"]",
+        "year_established": null,
+        "data_axle_enriched": 0,
+        "normalized_address": "111 n wabash",
+        "org_npi": "1427597368",
+        "primary_npi": "1427597368"
+      },
+      "city": "CHICAGO",
+      "zip": "60202",
+      "state": "IL",
+      "practice_name": "LILLIAN OBUCINA DDS PC",
+      "legacy_floor_status": "not_in_legacy_corporate_floor(entity_classification=solo_established)"
+    },
+    {
+      "location_id": "144d631a4c4dce2b",
+      "source_lane": "practice_intel",
+      "candidate_types": [
+        "institutional_fqhc"
+      ],
+      "network": "Infant Welfare Society of Chicago (FQHC Look-Alike)",
+      "proposed_tier": "institutional",
+      "pe_backed": false,
+      "durable_evidence": [
+        "Infant Welfare Society of Chicago / Angel Harvey Family Health Center = FQHC Look-Alike; dental services at 3600 W Fullerton 60647 (NPI 1801217062 matches)"
+      ],
+      "evidence_urls": [
+        "https://iwsfamilyhealth.org/services/dental-3/  (IWS Family Health \u2014 dental services, FQHC Look-Alike)"
+      ],
+      "evidence_source": "Wave-4 web search: confirmed FQHC Look-Alike (community health, not GP-corporate)",
+      "operating_status_check": "operating; FQHC dental clinic, 3 providers",
+      "same_door_check": "single institutional door",
+      "protected_network_status": "not_protected",
+      "dso_structure_rationale": "Institutional (T6): FQHC Look-Alike / nonprofit community health center, not a DSO and not GP-corporate. Held out of the GP corporate floor per the institutional/scope default.",
+      "disposition": "hold_scope_specialist",
+      "hold_reason": "Institutional FQHC (non-GP-corporate scope) \u2014 confirmed T6 institutional; held out of the GP corporate floor pending scope policy.",
+      "disposition_protocol_equivalent": "hold_scope_specialist",
+      "searches_executed": 1,
+      "search_queries": [
+        "Infant Welfare Society of Chicago dental FQHC 3600 W Fullerton"
+      ],
+      "preserved_db_facts": {
+        "entity_classification": "small_group",
+        "affiliated_dso": null,
+        "parent_company": null,
+        "ein": null,
+        "provider_count": 3,
+        "website": null,
+        "taxonomy_codes": "[\"1223P0221X\", \"122300000X\"]",
+        "year_established": null,
+        "data_axle_enriched": 0,
+        "normalized_address": "3600 w fullerton ave",
+        "org_npi": "1801217062",
+        "primary_npi": "1801217062"
+      },
+      "city": "CHICAGO",
+      "zip": "60647",
+      "state": "IL",
+      "practice_name": "INFANT WELFARE SOCIETY OF CHICAGO",
+      "legacy_floor_status": "not_in_legacy_corporate_floor(entity_classification=small_group)"
+    },
+    {
+      "location_id": "d803fcfe4618e8a3",
+      "source_lane": "practice_intel",
+      "candidate_types": [
+        "institutional_fqhc",
+        "heartland_NAME_COLLISION"
+      ],
+      "network": "Heartland International Health Center (FQHC) \u2014 NAME COLLISION, NOT Heartland Dental",
+      "proposed_tier": "institutional",
+      "pe_backed": false,
+      "durable_evidence": [
+        "Heartland International Health Center, 845 W Wilson Ave 60640 = Federally Qualified Health Center (formerly Heartland Health Centers; now Tapestry 360 Health), NPI 1790942084 matches",
+        "CRITICAL NAME COLLISION: 'Heartland' here = Heartland Health/Alliance FQHC family, NOT Heartland Dental (the DSO). Do NOT promote as Heartland Dental."
+      ],
+      "evidence_urls": [
+        "WebSearch 2026-06-21: Heartland International Health Center = FQHC (Tapestry 360 Health, formerly Heartland Health Centers), 845 W Wilson Ave",
+        "https://tapestry360health.org/  (Tapestry 360 Health, formerly Heartland Health Centers \u2014 FQHC)"
+      ],
+      "evidence_source": "Wave-4 web search: confirmed FQHC; resolves the 'Heartland' name collision (FQHC, not the DSO)",
+      "operating_status_check": "operating; FQHC, 2 providers, 845 W Wilson Ave 60640",
+      "same_door_check": "single institutional door",
+      "protected_network_status": "not_protected",
+      "dso_structure_rationale": "Institutional (T6): FQHC community health center. NAME-COLLISION GUARD: 'Heartland' = Heartland Health Centers/Tapestry 360 FQHC, NOT Heartland Dental DSO. Held out of GP corporate floor; explicitly NOT a DSO promotion.",
+      "disposition": "hold_scope_specialist",
+      "hold_reason": "Institutional FQHC + Heartland NAME COLLISION \u2014 confirmed T6 institutional (NOT Heartland Dental). Held out of GP corporate floor; flag so no agent promotes it as the DSO.",
+      "disposition_protocol_equivalent": "hold_scope_specialist",
+      "searches_executed": 1,
+      "search_queries": [
+        "Heartland International Health Center 845 W Wilson Chicago FQHC"
+      ],
+      "preserved_db_facts": {
+        "entity_classification": "small_group",
+        "affiliated_dso": null,
+        "parent_company": null,
+        "ein": null,
+        "provider_count": 2,
+        "website": null,
+        "taxonomy_codes": "[\"122300000X\", \"1223G0001X\"]",
+        "year_established": null,
+        "data_axle_enriched": 1,
+        "normalized_address": "845 w wilson ave",
+        "org_npi": "1790942084",
+        "primary_npi": "1790942084"
+      },
+      "city": "CHICAGO",
+      "zip": "60640",
+      "state": "IL",
+      "practice_name": "HEARTLAND INTERNATIONAL HEALTH CENTER",
+      "legacy_floor_status": "not_in_legacy_corporate_floor(entity_classification=small_group)"
+    },
+    {
+      "location_id": "e957561c107de91a",
+      "source_lane": "practice_intel",
+      "candidate_types": [
+        "institutional_nonprofit",
+        "heartland_NAME_COLLISION"
+      ],
+      "network": "Heartland Alliance Health (Heartland Center for Oral Health - Englewood) \u2014 NAME COLLISION, NOT Heartland Dental",
+      "proposed_tier": "institutional",
+      "pe_backed": false,
+      "durable_evidence": [
+        "Heartland Health Outreach, 641 W 63rd St 60621 = Heartland Alliance Health nonprofit ('Heartland Center for Oral Health - Englewood'), sliding-scale/Medicaid dental",
+        "CRITICAL NAME COLLISION: 'Heartland' = Heartland Alliance (nonprofit), NOT Heartland Dental (the DSO). Do NOT promote as Heartland Dental."
+      ],
+      "evidence_urls": [
+        "WebSearch 2026-06-21: Heartland Alliance Health 'Heartland Center for Oral Health - Englewood', 641 W 63rd St 60621 (nonprofit/FQHC-type dental)",
+        "https://www.heartlandalliancehealth.org/  (Heartland Alliance Health \u2014 nonprofit)"
+      ],
+      "evidence_source": "Wave-4 web search: confirmed Heartland Alliance nonprofit; resolves the 'Heartland' name collision (nonprofit, not the DSO)",
+      "operating_status_check": "operating; nonprofit oral-health center, 6 providers, 641 W 63rd St 60621",
+      "same_door_check": "single institutional door",
+      "protected_network_status": "not_protected",
+      "dso_structure_rationale": "Institutional (T6): Heartland Alliance Health nonprofit community oral-health center. NAME-COLLISION GUARD: 'Heartland' = Heartland Alliance, NOT Heartland Dental DSO. Held out of GP corporate floor; explicitly NOT a DSO promotion.",
+      "disposition": "hold_scope_specialist",
+      "hold_reason": "Institutional nonprofit + Heartland NAME COLLISION \u2014 confirmed T6 institutional (NOT Heartland Dental). Held out of GP corporate floor; flag so no agent promotes it as the DSO.",
+      "disposition_protocol_equivalent": "hold_scope_specialist",
+      "searches_executed": 1,
+      "search_queries": [
+        "Heartland Health Outreach 641 W 63rd Chicago Heartland Alliance oral health"
+      ],
+      "preserved_db_facts": {
+        "entity_classification": "large_group",
+        "affiliated_dso": null,
+        "parent_company": null,
+        "ein": null,
+        "provider_count": 6,
+        "website": null,
+        "taxonomy_codes": "[\"122300000X\", \"1223G0001X\"]",
+        "year_established": null,
+        "data_axle_enriched": 1,
+        "normalized_address": "641 w 63rd st",
+        "org_npi": "1720245491",
+        "primary_npi": "1720245491"
+      },
+      "city": "CHICAGO",
+      "zip": "60621",
+      "state": "IL",
+      "practice_name": "HEARTLAND HEALTH OUTREACH",
+      "legacy_floor_status": "not_in_legacy_corporate_floor(entity_classification=large_group)"
+    }
+  ]
+}

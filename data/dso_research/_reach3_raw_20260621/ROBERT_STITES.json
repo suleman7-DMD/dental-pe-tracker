@@ -1,0 +1,154 @@
+{
+  "network": "ROBERT STITES",
+  "network_id": "ao:STITES_ROBERT",
+  "owner_type_verdict": "dso_brand",
+  "network_summary": "Robert Stites is NOT an owner or dentist — he is the Contracting, Credentialing & Payor Strategies specialist at DecisionOne Dental Partners (DSO HQ Itasca IL), founded by brothers Dr. AJ Acierno (CEO) and Dr. Mike Acierno (CMO). Stites appears as NPPES authorized official on affiliated practice NPIs because he manages credentialing for the network. DecisionOne Dental Partners self-describes as a DSO, operates 35+ locations across IL and WI, and is affiliated/partnered with Smile Brands (a PE-backed DSO, currently backed by New Mountain Capital, previously Gryphon Investors). The footer of decisiononedental.com references Smile Brands' Code of Conduct confirming operational integration. SOUTH PARK ORTHO PLLC (401 W Talcott, Park Ridge) is an orthodontic specialist practice (DiFranco Orthodontics / South Park Orthodontics, owned by Dr. Paul DiFranco) — excluded from GP denominator as specialist network. PARK RIDGE DENTISTRY PLLC (35.5 S Prospect, Park Ridge) and JEFFERSON PARK FAMILY DENTAL LLC (4452 N Central, Chicago 60630) are GP practices operating under the DecisionOne DSO umbrella.",
+  "owner_operator_identity": "Dr. AJ Acierno (CEO) and Dr. Michael Acierno (CMO/President), co-founders of DecisionOne Dental Partners; Robert Stites is credentialing/contracting staff, not an owner.",
+  "brand_trade_names": [
+    "DecisionOne Dental Partners",
+    "Park Ridge Dentistry",
+    "Jefferson Park Family Dental",
+    "Jefferson Park Dental Studio"
+  ],
+  "legal_entities": [
+    "Park Ridge Dentistry PLLC",
+    "Jefferson Park Family Dental LLC",
+    "South Park Ortho PLLC",
+    "DecisionOne Dental Partners (HQ: 300 Park Blvd #175, Itasca IL 60143)"
+  ],
+  "durable_artifacts": [
+    "Shared NPPES authorized official 'ROBERT STITES' across 3 NPIs (1396319711, 1366195869, 1417528589) spanning ZIPs 60068 and 60630",
+    "Robert Stites listed on decisiononedental.com/support-team as 'Contracting, Credentialing & Payor Strategies' — AO role explained by credentialing function, not ownership",
+    "decisiononedental.com confirms Park Ridge location at 35.5 S Prospect Ave, matching PARK RIDGE DENTISTRY PLLC exactly",
+    "decisiononedental.com confirms Chicago Jefferson Park location, matching JEFFERSON PARK FAMILY DENTAL LLC at 4452 N Central Ave",
+    "DecisionOne Dental Partners footer references Smile Brands Code of Conduct — operational integration with PE-backed Smile Brands (New Mountain Capital)"
+  ],
+  "mso_platform_pe_evidence": "DecisionOne Dental Partners is a self-described DSO (decisiononedental.com: 'combining clinical autonomy of private practice with cost efficiencies inherent in a DSO'). The website footer references Smile Brands' Code of Conduct confirming affiliation. Smile Brands is PE-backed (Gryphon Investors acquisition documented at gryphon-inv.com/news/gryphon-investors-acquires-smile-brands/, current backer reported as New Mountain Capital per drbicuspid.com 2026). DecisionOne HQ: 300 Park Blvd #175, Itasca IL 60143. Source: https://www.decisiononedental.com/ and https://www.decisiononedental.com/support-team",
+  "stale_closed_false_positive_notes": "Robert Stites is a CREDENTIALING ADMINISTRATOR at DecisionOne Dental Partners, not an independent dentist-owner. The AO cluster is a FALSE POSITIVE for dentist_multi — it is actually a DSO-network signal. SOUTH PARK ORTHO PLLC is a specialist (orthodontic) practice operated by Dr. Paul DiFranco under the DiFranco Orthodontics / South Park Orthodontics brand — it should NOT be in the GP denominator regardless of DSO affiliation. JEFFERSON PARK FAMILY DENTAL LLC at 4452 N Central Ave 60630 now appears to operate as 'Jefferson Park Dental Studio' (confirmed by Yelp and practice website dentistinjeffersonpark.com) — may be a name change post-affiliation or a successor tenant; address match is confirmed.",
+  "evidence_chain": "AO signal: NPPES shows 'ROBERT STITES' as authorized official on 3 NPIs across ZIPs 60068 and 60630 (reach=3). Web search identified Robert Stites on LinkedIn as affiliated with DecisionOne Dental Partners and on ZoomInfo with email domain @decisiononedental.com as 'Insurance Coordinator at Acierno Dental.' Fetching decisiononedental.com/support-team confirmed 'Rob Stites' is listed under 'Contracting, Credentialing & Payor Strategies' — a non-ownership administrative role explaining his NPPES AO presence. Fetching decisiononedental.com confirmed DecisionOne is a DSO with 35+ IL/WI locations, including explicit mentions of Park Ridge (2 locations, one at 35.5 S Prospect Ave) and Chicago Jefferson Park — matching 2 of the 3 AO-cluster addresses exactly. The site footer references Smile Brands Code of Conduct confirming DSO platform affiliation. Smile Brands is PE-backed (Gryphon/New Mountain Capital). SOUTH PARK ORTHO PLLC confirmed as orthodontic specialist via Yelp/DiFranco Orthodontics listings — specialist exclusion applied.",
+  "future_app_notes": "DecisionOne Dental Partners operates 35+ IL/WI locations — a systematic sweep of all Chicagoland watched-IL ZIPs against the DecisionOne location list (decisiononedental.com or Glassdoor/Indeed location pages) would likely surface additional GP practices currently classified independent. The DecisionOne-Smile Brands relationship should be documented in the pe_sponsors / platforms table. Any other NPIs with Robert Stites as authorized official in the DB are almost certainly additional DecisionOne affiliates. The JEFFERSON PARK FAMILY DENTAL LLC → Jefferson Park Dental Studio name change should be investigated to confirm it's the same operating entity (same owner, same DecisionOne affiliation) rather than a new operator at that address.",
+  "classifications": [
+    {
+      "location_id": "bbadc20262b004f9",
+      "candidate_tier": "undetermined",
+      "pe_backed": null,
+      "owner_identity": "Dr. Paul DiFranco DDS — Owner of South Park Orthodontics / DiFranco Orthodontics",
+      "network_id": null,
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: ROBERT STITES listed as NPPES authorized official, same as DecisionOne GP practices",
+          "EIN 363643751 on SOUTH PARK ORTHO PLLC NPI 1396319711"
+        ],
+        "evidence": [
+          "Yelp, Healthgrades, and DiFranco Orthodontics website confirm 401 W Talcott Rd Park Ridge IL is an orthodontic specialist practice (DiFranco Orthodontics / South Park Orthodontics), not a GP",
+          "LinkedIn profile confirms Paul DiFranco as Owner of South Park Orthodontics",
+          "Practice name 'SOUTH PARK ORTHO PLLC' indicates specialist (orthodontics)"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.yelp.com/biz/paul-difranco-dds-difranco-orthodontics-park-ridge",
+        "https://difranco-ortho.com/",
+        "https://www.linkedin.com/in/paul-difranco-661a637/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "ROBERT STITES",
+        "reach": 3,
+        "zips": ["60068", "60630"],
+        "location_name": "SOUTH PARK ORTHO PLLC",
+        "address": "401 w talcott rd, PARK RIDGE 60068",
+        "npi": "1396319711",
+        "ein": "363643751"
+      },
+      "web_searched": true,
+      "gate_status": "undetermined",
+      "confidence": "high",
+      "stale_closed_note": "SPECIALIST EXCLUSION: This is an orthodontic specialist practice (DiFranco Orthodontics). Exclude from GP denominator. The NPPES AO (Robert Stites) is a DecisionOne credentialing admin — his presence on this NPI may mean DiFranco is a DecisionOne-affiliated specialist, or Stites handled credentialing for this practice for other reasons. Either way, this location does NOT belong in the GP corporate classification pool.",
+      "reasoning": "SOUTH PARK ORTHO PLLC at 401 W Talcott Rd, Park Ridge IL 60068 is confirmed as an orthodontic specialist practice operating under the DiFranco Orthodontics / South Park Orthodontics brand, owned by Dr. Paul DiFranco. Practice name contains 'ORTHO' and external sources confirm orthodontic specialty. Per specialist exclusion rule: candidate_tier=undetermined, gate_status=undetermined. This location should NOT be counted in the GP denominator regardless of ownership structure."
+    },
+    {
+      "location_id": "fe4e8aece6d7fd2e",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Dr. AJ Acierno (CEO) and Dr. Michael Acierno (CMO) — DecisionOne Dental Partners co-founders; affiliated with Smile Brands (PE-backed by New Mountain Capital / formerly Gryphon Investors)",
+      "network_id": "decisionone_dental_partners",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: ROBERT STITES as NPPES authorized official",
+          "Rob Stites confirmed on decisiononedental.com/support-team as 'Contracting, Credentialing & Payor Strategies'"
+        ],
+        "evidence": [
+          "decisiononedental.com explicitly lists a Park Ridge location at 35.5 S Prospect Ave — exact address match for PARK RIDGE DENTISTRY PLLC (NPI 1366195869)",
+          "DecisionOne Dental Partners self-describes as a DSO on its website",
+          "DecisionOne footer references Smile Brands Code of Conduct confirming operational integration with PE-backed DSO platform",
+          "Yelp/Birdeye confirm Park Ridge Dentistry operates at 35.5 S Prospect Ave under Dr. Kevin F. Barrett DDS as clinical lead"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.decisiononedental.com/",
+        "https://www.decisiononedental.com/support-team",
+        "https://www.decisiononedental.com/more-about-d1",
+        "https://www.yelp.com/biz/kevin-f-barrett-dds-park-ridge-dentistry-park-ridge-6",
+        "https://www.parkridgedentistry.com/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "ROBERT STITES",
+        "reach": 3,
+        "zips": ["60068", "60630"],
+        "location_name": "PARK RIDGE DENTISTRY PLLC",
+        "address": "35 1/2 s prospect ave, PARK RIDGE 60068",
+        "npi": "1366195869",
+        "ein": null
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "PARK RIDGE DENTISTRY PLLC at 35.5 S Prospect Ave, Park Ridge IL 60068 is confirmed as a DecisionOne Dental Partners affiliate. The DSO's own website (decisiononedental.com) explicitly lists a Park Ridge location at this exact address. Robert Stites' role as NPPES authorized official is explained by his credentialing/contracting function at DecisionOne — he is NOT an owner. DecisionOne is a self-described DSO with 35+ locations, operationally integrated with Smile Brands (PE-backed). This meets the branded_dso threshold: DSO brand with MSO/management layer documented by the DSO's own website. pe_backed=true based on Smile Brands affiliation (New Mountain Capital / formerly Gryphon Investors). Clinical operator is Dr. Kevin F. Barrett DDS."
+    },
+    {
+      "location_id": "b1e3b67adc113238",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Dr. AJ Acierno (CEO) and Dr. Michael Acierno (CMO) — DecisionOne Dental Partners co-founders; affiliated with Smile Brands (PE-backed by New Mountain Capital / formerly Gryphon Investors)",
+      "network_id": "decisionone_dental_partners",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: ROBERT STITES as NPPES authorized official",
+          "Rob Stites confirmed on decisiononedental.com/support-team as 'Contracting, Credentialing & Payor Strategies'"
+        ],
+        "evidence": [
+          "decisiononedental.com lists Chicago Jefferson Park as one of DecisionOne's locations — matching JEFFERSON PARK FAMILY DENTAL LLC at 4452 N Central Ave Chicago 60630",
+          "DecisionOne Dental Partners self-describes as a DSO on its website",
+          "DecisionOne footer references Smile Brands Code of Conduct confirming operational integration with PE-backed DSO platform",
+          "Yelp confirms 4452 N Central Ave Chicago IL 60630 is currently operating as Jefferson Park Dental Studio (likely renamed post-affiliation), same phone 773-777-4800",
+          "CareCredit listing confirms Jefferson Park Family Dental LLC at this address"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.decisiononedental.com/",
+        "https://www.decisiononedental.com/support-team",
+        "https://www.decisiononedental.com/more-about-d1",
+        "https://www.yelp.com/biz/jefferson-park-dental-studio-chicago",
+        "https://www.dentistinjeffersonpark.com/",
+        "https://www.carecredit.com/doctor-locator/chicago-il/jefferson-park-family-dental-llc-273dhs/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "ROBERT STITES",
+        "reach": 3,
+        "zips": ["60068", "60630"],
+        "location_name": "JEFFERSON PARK FAMILY DENTAL LLC",
+        "address": "4452 n central ave, CHICAGO 60630",
+        "npi": "1417528589",
+        "ein": null
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "Practice appears to operate under the consumer-facing name 'Jefferson Park Dental Studio' (confirmed at dentistinjeffersonpark.com and Yelp) rather than the NPPES legal name 'Jefferson Park Family Dental LLC.' Same address and phone; likely a DBA/brand rename under DecisionOne affiliation. Not closed — actively operating.",
+      "reasoning": "JEFFERSON PARK FAMILY DENTAL LLC at 4452 N Central Ave, Chicago IL 60630 is confirmed as a DecisionOne Dental Partners affiliate. DecisionOne's website lists a Chicago Jefferson Park location matching this address. Robert Stites is the DSO's credentialing administrator, explaining his NPPES authorized official role. The practice now operates publicly as 'Jefferson Park Dental Studio.' DecisionOne is a self-described DSO with 35+ locations, operationally integrated with Smile Brands (PE-backed). This meets branded_dso with PE backing. pe_backed=true based on Smile Brands affiliation (New Mountain Capital / formerly Gryphon Investors)."
+    }
+  ]
+}

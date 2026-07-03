@@ -1,0 +1,2727 @@
+{
+  "_meta": {
+    "file": "ao_backfill_evidence_71_20260621.json",
+    "title": "Chicagoland AO-network consolidation intelligence \u2014 who is consolidating, and how we know",
+    "produced_by": "Lane-1 Main \u2014 targeted AO_network evidence backfill",
+    "date": "2026-06-21",
+    "scope": "Exactly the 71 AO_network-lane rows of consolidation_candidate_manifest_20260621.json: 13 original individual rows + 58 protected-network rows across 6 networks.",
+    "row_math": {
+      "total": 71,
+      "protected_58_hold": 58,
+      "original_13": 13,
+      "networks": 6,
+      "per_network": {
+        "ao:SHAFI_SOHAIL": 17,
+        "ao:NITTINGER_RACHEL": 12,
+        "ao:BRUNETTI_ROBERT": 9,
+        "ao:SWEIS_JUBRAIL": 7,
+        "ao:LABINOV_BORIS": 7,
+        "ao:RAMAHA_AHMED": 6
+      }
+    },
+    "consolidation_picture": {
+      "branded_dso_pe_backed": [
+        "ao:NITTINGER_RACHEL (DentalWorks/Sonrava \u2014 New Mountain Capital)",
+        "ao:LABINOV_BORIS (Destiny Dental/L2 Management \u2014 ProSmile/TriSpan)"
+      ],
+      "dentist_owned_multiloc_no_pe": [
+        "ao:SHAFI_SOHAIL (Two Rivers/Ashton \u2014 Shafi family, ~20 loc)",
+        "ao:BRUNETTI_ROBERT (Procare \u2014 Brunetti family, 10 loc)",
+        "ao:SWEIS_JUBRAIL (Advocate/Everyone's Family \u2014 Sweis)",
+        "ao:RAMAHA_AHMED (Universal Dental \u2014 Ramaha)"
+      ],
+      "takeaway": "Of the 6 AO-network clusters, 2 are genuine PE-backed branded DSOs (19 watched locations) and 4 are dentist/family-owned multi-location groups with NO MSO/PE layer (39 watched locations). AO reach correctly surfaced all 6 as consolidation candidates; documentary corroboration then split them into 'real corporate' vs 'dentist-entrepreneur multi-branding'."
+    },
+    "rules_applied": [
+      "protected_network_hold=true PRESERVED on all 58 protected rows regardless of evidence strength, until the network is EXPLICITLY released by the Gate Owner.",
+      "AO reach alone is NOT proof \u2014 each advancing row carries a real documentary URL and/or a durable non-AO artifact (name_chain, shared_ein, shared_parent, shared_website, DOL EBSA M-1).",
+      "Rows with no documentary URL and no durable non-AO artifact -> gate_status=undetermined, evidence_quality=insufficient.",
+      "pe_backed is orthogonal \u2014 set true ONLY on documentary PE; it does NOT determine tier.",
+      "No DB writes. No consolidation. IL/Chicagoland only. All verdicts ready_for_validation MAX \u2014 never 'final'."
+    ],
+    "raw_batch_dir": "data/dso_research/_ao_backfill_raw_20260621/",
+    "gate_status_ladder": "ready_for_validation | candidate | undetermined",
+    "handoff": "Gate Owner merges/revalidates into the next manifest. The 58 protected rows stay protected_network_hold=true until each network is explicitly released.",
+    "cross_session_audit": {
+      "description": "The 13 original individual rows were investigated by TWO independent agent passes (per-assigned-batch: cicero1/cicero2/south-4/north-3, AND a comprehensive ind_south second pass over all 13). This block records where they agreed vs diverged. Conservative / primary-source verdicts were KEPT in the deliverable; the dissenting second opinion is preserved verbatim at _ao_backfill_raw_20260621/ind_south_full13_secondpass.json and per-row under individuals[].cross_session_corroboration.",
+      "corroborated_count": 9,
+      "tier_divergences": [
+        "MONIL P SHAH DMD PC",
+        "IMAGE DENTAL LLC",
+        "Braam Dental"
+      ],
+      "evidence_quality_divergences": [
+        "THE DENTAL MASTRS OF RAVENSWOOD LLC"
+      ],
+      "gate_attention": [
+        "Image Dental (Dental Town Chicago, 12 offices/one brand): tier dispute dentist_multi vs branded_dso - gate re-judgment, treat consistently with MetroSmiles.",
+        "Monil Shah: own website says 'our one office' (kept true_independent); second pass found possible Riverdale 2nd office (unconfirmed) - verify before any flip.",
+        "Braam Dental: watched 60640 row is an FQHC affiliation, NOT a chain office (kept undetermined); real Braam private office is at 60659, out of watched scope.",
+        "Dental Masters Ravenswood: tier agreed (dentist_multi, verified); confirm possible relocation to Lincoln Park for the watched 60640 row."
+      ]
+    }
+  },
+  "networks": {
+    "ao:SHAFI_SOHAIL": {
+      "network_id": "ao:SHAFI_SOHAIL",
+      "ao_name": "Sohail S Shafi (Manager, Ashton Dental PC)",
+      "brand": "Gentle Dental Group (Shafi) / Two Rivers Dental / Ashton Dental PC",
+      "owner_operator_identity": {
+        "clinical_owner": "Dr. Reem Shafi, DMD (Owner/CEO, Two Rivers Dental)",
+        "authorized_official": "Sohail S Shafi (Manager, Ashton Dental PC)",
+        "family_operator": "Shafi family (Dr. Shamil Shafi operates 'The Dentistrie' at the 60661 address)"
+      },
+      "ownership_structure": "dentist_owned_multiloc",
+      "structure_evidence": "Dr. Reem Shafi DMD is Owner/CEO of 'Two Rivers Dental' \u2014 dentist-owned multi-location group, ~20 locations across IL and CA. Every member office carries an identical 'Dr. Reem Shafi \u2014 CEO, Two Rivers Dental' bio page. Legal operating shell is 'Ashton Dental PC' (AO Sohail S Shafi, Manager) across at least 6 confirmed NPIs (Homer Glen, Chicago 60623, Naperville x2, Elgin, Aurora), all sharing mailing 1730 Park St Ste 106 Naperville 60563. NPI 1629614698 lists DBA 'Integra Dental' and 'Ogden Dental'. Smile Town Dental (Addison) is a sub-part of Ashton Dental PC in NPPES. No PE/MSO/DSO management company found \u2014 Dr. Shafi self-describes as direct owner-operator.",
+      "evidence_tier": "dentist_multi",
+      "tier_rationale": "Verified dentist-owned multi-location group operated by Dr. Reem Shafi DMD (CEO, Two Rivers Dental), ~20 IL/CA locations per university career-portal videos and per-practice website bio pages. Durable non-AO artifact = 'Ashton Dental PC' P.C. name-chain across 6+ Chicagoland NPIs, all AO Sohail S Shafi (Manager), mailing 1730 Park St #106 Naperville. 15+ local brand names under one owner = textbook dentist-owned multi-branding. No PE/MSO/DSO management company. BBB confirms Two Rivers Dental P.C. as professional corporation, Dr. Shafi President. DB 'affiliated_dso: Gentle Dental' on Yorkville is a false positive to clear.",
+      "pe_backed": false,
+      "pe_evidence": null,
+      "mso_platform": null,
+      "durable_non_ao_artifact": {
+        "type": "name_chain",
+        "detail": "Multiple federal NPI records share legal entity name 'Ashton Dental PC' across 6+ distinct Chicagoland addresses (Homer Glen 1588055941, Chicago 60623 1215699632, Naperville 60540 1174124945, Naperville 1629614698, Elgin, Aurora). NPI 1629614698 lists DBA 'Integra Dental'/'Ogden Dental'. All share mailing 1730 Park St Ste 106 Naperville 60563 and AO Sohail S Shafi (Manager, 630-842-3705). Smile Town Dental Addison is a sub-part of Ashton Dental PC. P.C. name-chain + shared mailing + shared AO = durable non-AO artifact.",
+        "source_url": "https://opennpi.com/provider/1629614698"
+      },
+      "evidence_chain": "AO signal: Sohail S Shafi (Manager) is the authorized official across 6+ 'Ashton Dental PC' federal NPIs spanning distinct Chicagoland ZIPs. Documentary corroboration: each member office carries an identical 'Dr. Reem Shafi \u2014 CEO, Two Rivers Dental' bio page; Illinois Tech career-portal video names Reem Shafi as Owner/CEO of Two Rivers Dental (~20 IL/CA locations); BBB lists Two Rivers Dental P.C. as a professional corporation, Dr. Shafi President; the 'Ashton Dental PC' legal-name chain shares mailing 1730 Park St Ste 106 Naperville + AO Sohail S Shafi. Conclusion: dentist-owned multi-brand group (Shafi family), NOT a DSO/MSO/PE platform.",
+      "key_documentary_urls": [
+        "https://www.mysimplydental.com/reem-shafi-dmd/",
+        "https://www.myestrelladental.com/reem-shafi-dmd/",
+        "https://www.mysmileviewdental.com/reem-shafi-dmd/",
+        "https://www.tworiversdental.com/reem-shafi-dmd/",
+        "https://www.ogdendental.com/reem-shafi-dmd/",
+        "https://www.mygentledentalgroup.com/reem-shafi-dmd/",
+        "https://opennpi.com/provider/1629614698",
+        "https://dentistsok.com/dental-clinic/ashton-dental-pc-chicago-il/",
+        "https://elevate.iit.edu/videos/reem-shafi-owner-and-ceo-two-rivers-dental/",
+        "https://www.bbb.org/us/il/bolingbrook/profile/dentist/two-rivers-dental-orthodontics-0654-88093135"
+      ],
+      "member_count": 17,
+      "members": [
+        {
+          "location_id": "1932e4cc87a3c456",
+          "practice_name": "SMILE TOWN DENTAL",
+          "zip": "60101",
+          "city": "ADDISON",
+          "address": "42 W Lake St Addison 60101",
+          "confirmed_at_brand": true,
+          "member_url": "https://www.smiletowndental.com/reem-shafi-dmd/",
+          "note": "42 W Lake St Addison 60101. Sub-part of Ashton Dental PC per NPPES."
+        },
+        {
+          "location_id": "3f2a1feba10ebd5d",
+          "practice_name": "ASHTON DENTAL PC",
+          "zip": "60108",
+          "city": "BLOOMINGDALE",
+          "address": "142 S Gary Ave Bloomingdale 60108",
+          "confirmed_at_brand": false,
+          "member_url": null,
+          "note": "142 S Gary Ave Bloomingdale 60108. Current occupant appears 'Astra Dental'/'Family Dental Care of Bloomingdale'; no documentary confirmation of Reem Shafi/Two Rivers at this address. May be historical/relocated."
+        },
+        {
+          "location_id": "cc396d3264541f15",
+          "practice_name": "TWO RIVERS DENTAL PC",
+          "zip": "60120",
+          "city": "ELGIN",
+          "address": "247 Dundee Ave Elgin 60120",
+          "confirmed_at_brand": true,
+          "member_url": "https://www.myestrelladental.com/reem-shafi-dmd/",
+          "note": "247 Dundee Ave Elgin 60120."
+        },
+        {
+          "location_id": "f11458f91c91c4af",
+          "practice_name": "SMILE VIEW DENTAL",
+          "zip": "60185",
+          "city": "WEST CHICAGO",
+          "address": "956 N Neltnor Blvd West Chicago 60185",
+          "confirmed_at_brand": true,
+          "member_url": "https://www.mysmileviewdental.com/reem-shafi-dmd/",
+          "note": "956 N Neltnor Blvd West Chicago 60185."
+        },
+        {
+          "location_id": "51274670f11ff36c",
+          "practice_name": "SIMPLY DENTAL",
+          "zip": "60188",
+          "city": "CAROL STREAM",
+          "address": "341 E Geneva Rd Carol Stream 60188",
+          "confirmed_at_brand": true,
+          "member_url": "https://www.mysimplydental.com/reem-shafi-dmd/",
+          "note": "341 E Geneva Rd Carol Stream 60188."
+        },
+        {
+          "location_id": "5a1771b772dff590",
+          "practice_name": "TROY DENTAL",
+          "zip": "60404",
+          "city": "SHOREWOOD",
+          "address": "964 Brook Forest Ave Shorewood 60404",
+          "confirmed_at_brand": true,
+          "member_url": "https://www.mytroydental.com/contact/",
+          "note": "964 Brook Forest Ave Shorewood 60404. Dr. Reem Shafi in staff."
+        },
+        {
+          "location_id": "9f132406279447c6",
+          "practice_name": "TWO RIVERS DENTAL",
+          "zip": "60440",
+          "city": "BOLINGBROOK",
+          "address": "1196 W Boughton Rd Bolingbrook 60440",
+          "confirmed_at_brand": true,
+          "member_url": "https://www.tworiversdental.com/reem-shafi-dmd/",
+          "note": "1196 W Boughton Rd Bolingbrook 60440. Flagship."
+        },
+        {
+          "location_id": "0d9026fed63a1df0",
+          "practice_name": "FARRELL",
+          "zip": "60441",
+          "city": "LOCKPORT",
+          "address": "16533 W 159th St Lockport 60441",
+          "confirmed_at_brand": true,
+          "member_url": "https://www.farrelldental.com/",
+          "note": "16533 W 159th St Lockport 60441. Features Dr. Reem Shafi; shared Dr. Peterson staff."
+        },
+        {
+          "location_id": "ab575c87c6bb7249",
+          "practice_name": "ASHTON DENTAL PC",
+          "zip": "60491",
+          "city": "HOMER GLEN",
+          "address": "14403 S Bell Rd Homer Glen 60491",
+          "confirmed_at_brand": true,
+          "member_url": "https://www.myecodental.com/reem-shafi-dmd/",
+          "note": "14403 S Bell Rd Homer Glen 60491. NPPES NPI 1588055941 confirms Ashton Dental PC."
+        },
+        {
+          "location_id": "9ee4df9470dec738",
+          "practice_name": "ASHTON DENTAL PC",
+          "zip": "60504",
+          "city": "AURORA",
+          "address": "1137 E Eola Rd Aurora 60504",
+          "confirmed_at_brand": true,
+          "member_url": "https://www.ashton-dental.com/reem-shafi-dmd/",
+          "note": "1137 E Eola Rd Aurora 60504 (site lists 1137 N Eola Rd Ste 109 Aurora 60502 \u2014 minor variant)."
+        },
+        {
+          "location_id": "ace9e319256f2d7a",
+          "practice_name": "ASHTON DENTAL PC",
+          "zip": "60540",
+          "city": "NAPERVILLE",
+          "address": "1767 W Ogden Ave Naperville 60540",
+          "confirmed_at_brand": true,
+          "member_url": "https://www.ogdendental.com/reem-shafi-dmd/",
+          "note": "1767 W Ogden Ave Naperville 60540. Federal NPI 1629614698 DBA 'Ogden Dental'."
+        },
+        {
+          "location_id": "50eb637aaa38aa4b",
+          "practice_name": "ASHTON DENTAL PC",
+          "zip": "60540",
+          "city": "NAPERVILLE",
+          "address": "1212 S Naper Blvd Naperville 60540",
+          "confirmed_at_brand": true,
+          "member_url": "https://www.myprosmiles.com/",
+          "note": "1212 S Naper Blvd Naperville 60540. NPI 1174124945 Ashton Dental PC, Sohail S Shafi Manager."
+        },
+        {
+          "location_id": "192eeb357d406084",
+          "practice_name": "OSWEGO DENTAL",
+          "zip": "60543",
+          "city": "OSWEGO",
+          "address": "2484 Route 30 Oswego 60543",
+          "confirmed_at_brand": true,
+          "member_url": "https://www.myoswegodental.com/reem-shafi-dmd/",
+          "note": "2484 Route 30 Oswego 60543."
+        },
+        {
+          "location_id": "ad04ebea2ff68064",
+          "practice_name": "GENTLE DENTAL GROUP",
+          "zip": "60560",
+          "city": "YORKVILLE",
+          "address": "608 E Veterans Pkwy Yorkville 60560",
+          "confirmed_at_brand": true,
+          "member_url": "https://www.mygentledentalgroup.com/reem-shafi-dmd/",
+          "note": "608 E Veterans Pkwy Yorkville 60560. DB 'affiliated_dso: Gentle Dental' is FALSE POSITIVE \u2014 locally-named Two Rivers/Ashton office, NOT national Gentle Dental/InterDent."
+        },
+        {
+          "location_id": "bb0b258dbdee424c",
+          "practice_name": "OGDEN VALLEY DENTAL",
+          "zip": "60563",
+          "city": "NAPERVILLE",
+          "address": "1224 W Ogden Ave Naperville 60563",
+          "confirmed_at_brand": true,
+          "member_url": "https://www.ogdenvalleydental.com/reem-shafi-dmd/",
+          "note": "1224 W Ogden Ave Naperville 60563."
+        },
+        {
+          "location_id": "41e9efc177c3226c",
+          "practice_name": "ASHTON DENTAL PC",
+          "zip": "60623",
+          "city": "CHICAGO",
+          "address": "3752 W 16th St Chicago 60623",
+          "confirmed_at_brand": true,
+          "member_url": "https://dentistsok.com/dental-clinic/ashton-dental-pc-chicago-il/",
+          "note": "3752 W 16th St Chicago 60623. NPI 1215699632, Sohail S Shafi Manager, mailing 1730 Park St #106. Yelp lists as 'Integra Dental'."
+        },
+        {
+          "location_id": "97ce6e59218e0f7a",
+          "practice_name": "ASHTON DENTAL PC",
+          "zip": "60661",
+          "city": "CHICAGO",
+          "address": "328 N Desplaines St Chicago 60661",
+          "confirmed_at_brand": false,
+          "member_url": "https://www.thedentistrie.com/",
+          "note": "328 N Desplaines St Chicago 60661. Current occupant 'The Dentistrie' (Dr. Shamil Shafi, family member). Family connection likely but a Reem Shafi/Two Rivers brand page was not confirmed for this address."
+        }
+      ],
+      "stale_closed_false_positive_notes": [
+        "Bloomingdale 142 S Gary Ave (3f2a1feba10ebd5d): current occupant appears 'Astra Dental'/'Family Dental Care of Bloomingdale' \u2014 confirmed_at_brand=false, may be historical/relocated.",
+        "328 N Desplaines Chicago 60661 (97ce6e59218e0f7a): current occupant 'The Dentistrie' (Dr. Shamil Shafi, family) \u2014 confirmed_at_brand=false; family connection likely but Reem Shafi/Two Rivers brand page not confirmed.",
+        "DB 'affiliated_dso: Gentle Dental' on Yorkville (ad04ebea2ff68064) is a FALSE POSITIVE \u2014 locally-named Two Rivers/Ashton office, NOT national Gentle Dental/InterDent."
+      ],
+      "network_gate_status": "ready_for_validation",
+      "evidence_quality": "verified",
+      "protected_network_hold": true
+    },
+    "ao:NITTINGER_RACHEL": {
+      "network_id": "ao:NITTINGER_RACHEL",
+      "ao_name": "Rachel Nittinger",
+      "brand": "DCP of Illinois / DentalWorks",
+      "owner_operator_identity": {
+        "authorized_official": "Rachel Nittinger",
+        "brand_operator": "DentalWorks (Sonrava Health)",
+        "pe_owner": "New Mountain Capital (majority owner of Sonrava Health since Nov 2012)"
+      },
+      "ownership_structure": "dso_brand",
+      "structure_evidence": null,
+      "evidence_tier": "branded_dso",
+      "tier_rationale": "protected_network_hold STAYS true per gate rule until network explicitly released, despite verified evidence",
+      "pe_backed": true,
+      "pe_evidence": "New Mountain Capital majority PE owner of Sonrava Health (parent of DentalWorks) since Nov 2012; newmountaincapital.com portfolio page current.",
+      "mso_platform": "DentalWorks / Sonrava Health (national DSO brand)",
+      "durable_non_ao_artifact": {
+        "type": "shared_ein",
+        "detail": "DOL EBSA M-1 MEWA filing index 10741 lists 12 IL DentalWorks friendly-PC entities each with individual EINs under one shared multi-employer welfare plan (IDP Schaumburg PC 31-1812648, IDP Harlem&North 20-0384209, IDP Tinley Park 20-0384271, IDP Chicago Loop 20-0384384, IDP Glen Ellyn 47-5281166, IDP Arlington Heights 81-3317392, IDP Plainfield 81-3188535, DCP Irving Park 90-0133177, Dr Zasso Skokie 47-4658472, Meckler River Oaks 20-0384161, Trakakis Fox Valley 20-0415450, Dr Raina Chicago Ridge 20-0384226).",
+        "source_url": "https://www.askebsa.dol.gov/mewaview/view/index/10741"
+      },
+      "evidence_chain": "AO signal: shared AO (Rachel Nittinger) across 12 IL friendly-PC entities. Documentary corroboration: DOL EBSA M-1 MEWA filing index 10741 binds all 12 IL DentalWorks friendly-PC entities (each its own EIN) into one shared multi-employer welfare plan; DentalWorks IL office locator lists the same offices; Sonrava Health (DentalWorks parent) brands page + New Mountain Capital portfolio page establish PE ownership. Conclusion: branded DSO (DentalWorks / Sonrava Health), PE-backed by New Mountain Capital.",
+      "key_documentary_urls": [
+        "https://www.newmountaincapital.com/portfolio/sonrava-health/",
+        "https://www.sonrava.com/brands",
+        "https://www.dentalworks.com/offices/illinois/",
+        "https://www.dentalworks.com/offices/illinois/irving-park/",
+        "https://www.dentalworks.com/offices/illinois/chicago-loop/",
+        "https://www.dentalworks.com/offices/illinois/schaumburg/",
+        "https://www.dentalworks.com/offices/illinois/skokie/",
+        "https://www.dentalworks.com/offices/illinois/tinley-park/",
+        "https://www.askebsa.dol.gov/mewaview/view/index/10741"
+      ],
+      "member_count": 12,
+      "members": [
+        {
+          "location_id": "e10809c55b2d7955",
+          "practice_name": "ILLINOIS DENTAL PROVIDERS (ARLINGTON HEIGHTS), LTD.",
+          "zip": "60004",
+          "city": "ARLINGTON HEIGHTS",
+          "address": null,
+          "confirmed_at_brand": true,
+          "member_url": null,
+          "note": "Confirmed via DentalWorks IL locator + DOL EBSA M-1 MEWA index 10741 entity name."
+        },
+        {
+          "location_id": "5ffc5f3c0a7b3102",
+          "practice_name": "DR. ZASSO & ASSOCIATES (SKOKIE), LTD.",
+          "zip": "60077",
+          "city": "SKOKIE",
+          "address": null,
+          "confirmed_at_brand": true,
+          "member_url": null,
+          "note": "Confirmed via DentalWorks IL locator + DOL EBSA M-1 MEWA index 10741 entity name."
+        },
+        {
+          "location_id": "2398f9e48e6578f9",
+          "practice_name": "ILLINOIS DENTAL PROVIDERS (HARLEM & NORTH), LTD.",
+          "zip": "60130",
+          "city": "FOREST PARK",
+          "address": null,
+          "confirmed_at_brand": true,
+          "member_url": null,
+          "note": "DB EIN 363782916 is a variant; DOL canonical 20-0384209. Confirmed entity."
+        },
+        {
+          "location_id": "1370e6f75164c141",
+          "practice_name": "ILLINOIS DENTAL PROVIDERS (GLEN ELLYN), LTD",
+          "zip": "60137",
+          "city": "GLEN ELLYN",
+          "address": null,
+          "confirmed_at_brand": true,
+          "member_url": null,
+          "note": "Confirmed via DentalWorks IL locator + DOL EBSA M-1 MEWA index 10741 entity name."
+        },
+        {
+          "location_id": "f849d9ecf776fd7d",
+          "practice_name": "ILLINOIS DENTAL PROVIDRS (SCHAUMBURG), P.C.",
+          "zip": "60173",
+          "city": "SCHAUMBURG",
+          "address": null,
+          "confirmed_at_brand": true,
+          "member_url": null,
+          "note": "Confirmed via DentalWorks IL locator + DOL EBSA M-1 MEWA index 10741 entity name."
+        },
+        {
+          "location_id": "effac443b4839358",
+          "practice_name": "MECKLER DENTAL PROVIDERS (RIVER OAKS), LTD.",
+          "zip": "60409",
+          "city": "CALUMET CITY",
+          "address": null,
+          "confirmed_at_brand": true,
+          "member_url": null,
+          "note": "Confirmed via DentalWorks IL locator + DOL EBSA M-1 MEWA index 10741 entity name."
+        },
+        {
+          "location_id": "072d146be1bf9d80",
+          "practice_name": "DR. RAINA & ASSOCITATES (CHICAGO RIDGE), LTD",
+          "zip": "60415",
+          "city": "CHICAGO RIDGE",
+          "address": null,
+          "confirmed_at_brand": true,
+          "member_url": null,
+          "note": "DB EIN 311812648 actually belongs to Schaumburg PC per DOL M-1; entity name+address still confirmed."
+        },
+        {
+          "location_id": "056d1f180dcb8c9a",
+          "practice_name": "ILLINOIS DENTAL PROVIDERS (TINLEY PARK), LTD.",
+          "zip": "60477",
+          "city": "TINLEY PARK",
+          "address": null,
+          "confirmed_at_brand": true,
+          "member_url": null,
+          "note": "Confirmed via DentalWorks IL locator + DOL EBSA M-1 MEWA index 10741 entity name."
+        },
+        {
+          "location_id": "4396df02b95d7ad2",
+          "practice_name": "GEORGE J. TRAKAKIS D.D.S. & ASSOCIATES (FOX VALLEY), LTD.",
+          "zip": "60504",
+          "city": "AURORA",
+          "address": null,
+          "confirmed_at_brand": true,
+          "member_url": null,
+          "note": "Confirmed via DentalWorks IL locator + DOL EBSA M-1 MEWA index 10741 entity name."
+        },
+        {
+          "location_id": "7542f13e98b7bd0d",
+          "practice_name": "ILLINOIS DENTAL PROVIDERS, P. C.",
+          "zip": "60585",
+          "city": "PLAINFIELD",
+          "address": null,
+          "confirmed_at_brand": false,
+          "member_url": null,
+          "note": "Confirmed via DOL M-1 + DentalWorks locator, but may be CLOSED as of 2026-04 per Yelp (Plainfield)."
+        },
+        {
+          "location_id": "8e92e63bee0c1cb7",
+          "practice_name": "ILLINOIS DENTAL PROVIDERS (CHICAGO LOOP), LTD",
+          "zip": "60606",
+          "city": "CHICAGO",
+          "address": null,
+          "confirmed_at_brand": true,
+          "member_url": null,
+          "note": "Confirmed via DentalWorks IL locator + DOL EBSA M-1 MEWA index 10741 entity name."
+        },
+        {
+          "location_id": "902006615166d38e",
+          "practice_name": "DCP OF ILLINOIS (IRVING PARK), LTD.",
+          "zip": "60641",
+          "city": "CHICAGO",
+          "address": null,
+          "confirmed_at_brand": true,
+          "member_url": null,
+          "note": "Confirmed via DentalWorks IL locator + DOL EBSA M-1 MEWA index 10741 entity name."
+        }
+      ],
+      "stale_closed_false_positive_notes": [
+        "Plainfield (7542f13e98b7bd0d): may be CLOSED as of 2026-04 per Yelp.",
+        "Chicago Ridge (072d146be1bf9d80) DB EIN 311812648 actually belongs to Schaumburg PC per DOL; entity name+address still confirmed",
+        "Harlem&North (2398f9e48e6578f9) DB EIN 363782916 is a variant; DOL canonical 20-0384209"
+      ],
+      "network_gate_status": "ready_for_validation",
+      "evidence_quality": "verified",
+      "protected_network_hold": true
+    },
+    "ao:BRUNETTI_ROBERT": {
+      "network_id": "ao:BRUNETTI_ROBERT",
+      "ao_name": null,
+      "brand": "Procare Dental Group",
+      "owner_operator_identity": {
+        "clinical_owner": "Robert G. Brunetti, DDS MBA (Founder/President, est. 1979; P.C. 1993)",
+        "executive_team": "Cheryl Crowley DDS (CEO), Michael Albano (COO)",
+        "family_operator": "Brunetti family \u2014 'family-owned' per own website"
+      },
+      "ownership_structure": "dentist_owned_multiloc",
+      "structure_evidence": "Robert G. Brunetti DDS MBA founded the group in 1979, incorporated as Procare Dental Group, P.C. in 1993; President/CEO. BBB Arlington Heights profile lists internal executive team (Cheryl Crowley DDS CEO, Michael Albano COO), no external management company or PE. Website self-describes 'family-owned.' 10 active locations each operate under a distinct local DBA (Premier Dental Associates \u2013 Arlington Heights, Associates in Dentistry \u2013 Park Ridge, Central DuPage Dental Group \u2013 Wheaton, Grand Dentistry \u2013 Gurnee, Lakeside Dentistry \u2013 Evanston, Naperbrook Dentistry \u2013 Naperville, River North Dental Group \u2013 Chicago, Village Square Dentistry \u2013 Lake Zurich, Lakehills Dentistry \u2013 Crystal Lake, Boone Creek Dentistry \u2013 McHenry) unified under Procare PC on procaredentalgroup.com/locations. No PE/MSO/DSO platform found in any registry, PitchBook, or search.",
+      "evidence_tier": "dentist_multi",
+      "tier_rationale": "Genuine dentist-owned multi-location group founded by Robert G. Brunetti DDS MBA (1979, P.C. 1993), 10 active IL locations each under a distinct local DBA \u2014 classic stealth multi-location structure among dentist-owned groups, NOT a DSO/MSO/PE platform. Website, UIC profile, BBB principals, and NPPES records consistently identify Brunetti as founder/CEO, no external management or PE. Lakeside/Lincoln Park/River North brands confirmed Procare DBAs via NPPES legal name. Cicero (719b01502f151a50) not on current site \u2014 only member marked confirmed_at_brand=false.",
+      "pe_backed": false,
+      "pe_evidence": "No PE funding/investors/platform affiliations found. PitchBook stub (354092-41) lists no investors. Website says family-owned. Not in GDN/PESP/Becker's/PitchBook deal databases.",
+      "mso_platform": null,
+      "durable_non_ao_artifact": {
+        "type": "shared_website",
+        "detail": "All 10 active locations on procaredentalgroup.com/locations with individual local DBA brand names cross-referencing the Procare umbrella. Multiple EINs (363122551 Arlington Heights, 363825258 Elgin, 452609649 Chicago/Ontario) consistent with multi-entity PC structure under single dentist ownership \u2014 durable name-chain artifact independent of the AO.",
+        "source_url": "https://www.procaredentalgroup.com/locations/"
+      },
+      "evidence_chain": "AO signal: Robert G. Brunetti DDS MBA is AO/CEO across 'Procare Dental Group P.C.' NPIs. Documentary corroboration: procaredentalgroup.com/locations lists 10 offices each under a distinct local DBA (Premier Dental Associates, Lakeside Dentistry, River North Dental Group, etc.); UIC faculty profile + BBB principals confirm Brunetti founder/CEO with internal exec team (Cheryl Crowley DDS CEO, Michael Albano COO) and no external management company; NPPES legal name 'Procare Dental Group P.C.' ties the local DBAs to one PC. Conclusion: dentist-owned multi-location group (Brunetti family), no MSO/PE.",
+      "key_documentary_urls": [
+        "https://www.procaredentalgroup.com/locations/",
+        "https://dentistry.uic.edu/profiles/robert-brunetti/",
+        "https://www.bbb.org/us/il/arlington-heights/profile/dentist/procare-dental-group-pc-arlington-hts-0654-5000527",
+        "https://www.procaredentalgroup.com/",
+        "https://opennpi.com/provider/1841357084",
+        "https://opennpi.com/provider/1528246212",
+        "https://opennpi.com/provider/1578620712"
+      ],
+      "member_count": 9,
+      "members": [
+        {
+          "location_id": "719b01502f151a50",
+          "practice_name": "PROCARE DENTAL GROUP P.C.",
+          "zip": "60804",
+          "city": "CICERO",
+          "address": "5950 W Park Ave, Cicero 60804",
+          "confirmed_at_brand": false,
+          "member_url": null,
+          "note": "5950 W Park Ave, Cicero 60804 \u2014 NOT on current procaredentalgroup.com/locations (10 current locations exclude Cicero). May be closed/retired. Cannot confirm active membership."
+        },
+        {
+          "location_id": "4133452316726b0d",
+          "practice_name": "PROCARE DENTAL GROUP, P.C.",
+          "zip": "60005",
+          "city": "ARLINGTON HEIGHTS",
+          "address": "605 E Algonquin Rd, Arlington Heights 60005",
+          "confirmed_at_brand": true,
+          "member_url": "https://www.procaredentalgroup.com/locations/",
+          "note": "605 E Algonquin Rd, Arlington Heights 60005 \u2014 'Premier Dental Associates'. HQ, EIN 363122551, Brunetti President per BBB."
+        },
+        {
+          "location_id": "5592bc247431d45a",
+          "practice_name": "PROCARE DENTAL GROUP, P.C.",
+          "zip": "60068",
+          "city": "PARK RIDGE",
+          "address": "1057 N NW Hwy, Park Ridge 60068",
+          "confirmed_at_brand": true,
+          "member_url": "https://www.procaredentalgroup.com/locations/",
+          "note": "1057 N NW Hwy, Park Ridge 60068 \u2014 'Associates in Dentistry'."
+        },
+        {
+          "location_id": "d56f7d708eb28b77",
+          "practice_name": "PROCARE DENTAL GROUP, P.C.",
+          "zip": "60120",
+          "city": "ELGIN",
+          "address": "115 S Grove Ave, Elgin 60120",
+          "confirmed_at_brand": true,
+          "member_url": "https://www.yelp.com/biz/procare-dental-groups-pc-elgin",
+          "note": "115 S Grove Ave, Elgin 60120 \u2014 EIN 363825258. Not on current 10-location site; Yelp shows 'PROCARE DENTAL GROUPS PC' active as of April 2026."
+        },
+        {
+          "location_id": "2d248ca267e60284",
+          "practice_name": "PROCARE DENTAL GROUP, P.C.",
+          "zip": "60187",
+          "city": "WHEATON",
+          "address": "7 Blanchard Cir, Wheaton 60187",
+          "confirmed_at_brand": true,
+          "member_url": "https://www.procaredentalgroup.com/locations/",
+          "note": "7 Blanchard Cir, Wheaton 60187 \u2014 'Central DuPage Dental Group'."
+        },
+        {
+          "location_id": "bab0f0317a7ae69b",
+          "practice_name": "PROCARE DENTAL GROUP, P.C.",
+          "zip": "60201",
+          "city": "EVANSTON",
+          "address": "820 Davis St, Evanston 60201",
+          "confirmed_at_brand": true,
+          "member_url": "https://opennpi.com/provider/1841357084",
+          "note": "820 Davis St, Evanston 60201 \u2014 'Lakeside Dentistry'; NPI 1841357084 Procare Dental Group P.C., AO Brunetti CEO."
+        },
+        {
+          "location_id": "9abd864bb17f0358",
+          "practice_name": "PROCARE DENTAL GROUP, P.C.",
+          "zip": "60564",
+          "city": "NAPERVILLE",
+          "address": "1304 Macom Dr, Naperville 60564",
+          "confirmed_at_brand": true,
+          "member_url": "https://www.procaredentalgroup.com/locations/",
+          "note": "1304 Macom Dr, Naperville 60564 \u2014 'Naperbrook Dentistry'."
+        },
+        {
+          "location_id": "fa6464c8c22f9bd9",
+          "practice_name": "PROCARE DENTAL GROUP, P.C.",
+          "zip": "60614",
+          "city": "CHICAGO",
+          "address": "2266 N Lincoln Ave, Chicago 60614",
+          "confirmed_at_brand": true,
+          "member_url": "https://opennpi.com/provider/1578620712",
+          "note": "2266 N Lincoln Ave, Chicago 60614 \u2014 NPI 1578620712 'Lincoln Park Dentistry' DBA under Procare. Not on current site; confirmed by NPPES legal name."
+        },
+        {
+          "location_id": "7f65db0e6a313bb3",
+          "practice_name": "PROCARE DENTAL GROUP, P.C.",
+          "zip": "60654",
+          "city": "CHICAGO",
+          "address": "434 W Ontario St, Chicago 60654",
+          "confirmed_at_brand": true,
+          "member_url": "https://opennpi.com/provider/1528246212",
+          "note": "434 W Ontario St, Chicago 60654 \u2014 'River North Dental Group', NPI 1528246212, AO Brunetti CEO, EIN 452609649. On current locations page."
+        }
+      ],
+      "stale_closed_false_positive_notes": [
+        "Cicero 5950 W Park Ave (719b01502f151a50): NOT on current procaredentalgroup.com/locations (10 current offices exclude Cicero) \u2014 confirmed_at_brand=false, may be closed/retired."
+      ],
+      "network_gate_status": "ready_for_validation",
+      "evidence_quality": "verified",
+      "protected_network_hold": true
+    },
+    "ao:SWEIS_JUBRAIL": {
+      "network_id": "ao:SWEIS_JUBRAIL",
+      "ao_name": "Jubrail Sweis, DDS",
+      "brand": "Advocate Dental (Sweis)",
+      "owner_operator_identity": {
+        "clinical_owner": "Jubrail (Jay) Sweis, DDS (sole owner/operator across all shells)",
+        "authorized_official": "Jubrail Sweis, DDS"
+      },
+      "ownership_structure": "dentist_owned_multiloc",
+      "structure_evidence": "Jubrail (Jay) Sweis DDS is sole AO/owner across LLC/PLLC/PC shells per NPPES: Jay Sweis D.D.S P.C. (NPI 1558704577, Chicago 60639), Jay Sweis DDS PC / Everyone's Family Dental (NPI 1386077741, Utica), Everyone's Family Dental St. Charles LLC (NPI 1235557109), Advocate Dental Group LLC (NPI 1710579958, Crystal Lake). IEMA facility record for Everyone's Family Dental Danville names Jubrail Sweis DDS as administrator. No management company/MSO/DSO/PE in any source. 'Advocate Dental' and 'Everyone's Family Dental' are Sweis's own DBAs (name-chain). Several task addresses now show different operating practices (Geneva, St. Charles, Bloomingdale, Barrington) \u2014 likely closed/vacated/subleased shells.",
+      "evidence_tier": "dentist_multi",
+      "tier_rationale": "Jubrail (Jay) Sweis DDS is sole owner-operator across LLC/PLLC/PC shells per NPPES + IEMA \u2014 no management company/MSO/DSO/PE found. Dentist-owned multi-location group under varied brands (Advocate Dental, Everyone's Family Dental, Jay Sweis DDS PC, Manhattan Dental Care). Evidence partial: several of the seven task addresses now show different operating practices (closed/vacated/subleased shells); only Palatine, Manhattan, and the Chicago PC are confirmed actively under Sweis. No PE.",
+      "pe_backed": false,
+      "pe_evidence": "No PE evidence in any NPPES record, facility filing, news search, or web presence.",
+      "mso_platform": null,
+      "durable_non_ao_artifact": {
+        "type": "name_chain",
+        "detail": "Multiple LLC/PLLC/PC shells (Jay Sweis D.D.S P.C., Advocate Dental Group LLC, Advocate Dental Geneva LLC, Advocate Dental St Charles LLC, Everyone's Family Dental St. Charles LLC, Bloomingdale Dental PLLC, Manhattan Dental LLC) all with AO Jubrail Sweis DDS sharing mailing 727 Ridgeview Dr McHenry or phone 773-844-5283. 'Everyone's Family Dental' has a public multi-location website confirming the same operator across 8 locations with no disclosed management layer.",
+        "source_url": "https://npino.com/dental-clinic/1558704577-jay-sweis-d.d.s-p.c/"
+      },
+      "evidence_chain": "AO signal: Jubrail (Jay) Sweis DDS is sole AO across LLC/PLLC/PC shells (Advocate Dental, Everyone's Family Dental, Jay Sweis DDS PC, Manhattan Dental). Documentary corroboration: NPPES records share AO Sweis + mailing 727 Ridgeview Dr McHenry / phone 773-844-5283; Illinois IEMA facility filing names Sweis as administrator; everyonesfamilydental.com lists 8 IL/WI locations with no management layer. Conclusion: dentist-owned multi-location group, no MSO/PE. CAVEAT: several shells (Barrington, Bloomingdale, Geneva, St Charles) now show DIFFERENT operating practices \u2014 likely closed/vacated/subleased.",
+      "key_documentary_urls": [
+        "https://npino.com/dental-clinic/1558704577-jay-sweis-d.d.s-p.c/",
+        "https://opennpi.com/provider/1386077741",
+        "https://www.npino.org/npi/everyone-s-family-dental-st-charles-llc-1235557109.html",
+        "https://opennpi.com/provider/1710579958",
+        "https://public.iema.state.il.us/RadHealthFacilitySearch/Facility?facilityId=9018938",
+        "https://www.everyonesfamilydental.com/contact/",
+        "https://www.advocatedentalpalatine.com/about-us/meet-the-team/"
+      ],
+      "member_count": 7,
+      "members": [
+        {
+          "location_id": "5da23e850203188a",
+          "practice_name": "EXCELLENCE DENTAL OF BARRINGTON, PLLC",
+          "zip": "60010",
+          "city": "BARRINGTON",
+          "address": "1531 S Grove Ave Barrington 60010",
+          "confirmed_at_brand": false,
+          "member_url": null,
+          "note": "1531 S Grove Ave Barrington 60010 currently occupied by Barrington Grove Dental (Passehl/Sekulich) \u2014 no Sweis branding. PLLC shell may be closed/vacated."
+        },
+        {
+          "location_id": "b41468a8c802391f",
+          "practice_name": "PALATINE DENTAL",
+          "zip": "60067",
+          "city": "PALATINE",
+          "address": "Confirmed: advocatedentalpalatine.com lists Dr. Jubrail (Jay) Sweis DDS at 232 E NW Hwy Palatine 60067",
+          "confirmed_at_brand": true,
+          "member_url": "https://www.advocatedentalpalatine.com/about-us/meet-the-team/",
+          "note": "Confirmed: advocatedentalpalatine.com lists Dr. Jubrail (Jay) Sweis DDS at 232 E NW Hwy Palatine 60067. Active."
+        },
+        {
+          "location_id": "0f917daa7d21b189",
+          "practice_name": "BLOOMINGDALE DENTAL, PLLC",
+          "zip": "60108",
+          "city": "BLOOMINGDALE",
+          "address": "156 E Lake St Bloomingdale 60108",
+          "confirmed_at_brand": false,
+          "member_url": "https://npidb.org/organizations/dental_health/general-practice_1223g0001x/1831072214.aspx",
+          "note": "156 E Lake St Bloomingdale 60108 now operating as 'Blooming Smiles Dental Studio' (Dr. Gabriela Duraes). PLLC shell may be inactive/sublease."
+        },
+        {
+          "location_id": "ffe0a2b736d88ee3",
+          "practice_name": "ADVOCATE DENTAL GENEVA, LLC",
+          "zip": "60134",
+          "city": "GENEVA",
+          "address": "112 N 4th St Geneva 60134",
+          "confirmed_at_brand": false,
+          "member_url": null,
+          "note": "112 N 4th St Geneva 60134 \u2014 brushandrestore.com (Dr. Alli Wolski). Advocate Dental Geneva LLC shell has Sweis AO but no active Sweis operation confirmed."
+        },
+        {
+          "location_id": "06103ae3a6ed4ab0",
+          "practice_name": "ADVOCATE DENTAL ST CHARLES, LLC",
+          "zip": "60174",
+          "city": "ST CHARLES",
+          "address": "804 S 3rd St St Charles 60174",
+          "confirmed_at_brand": false,
+          "member_url": null,
+          "note": "804 S 3rd St St Charles 60174 now Bespoke Dental Co./Steven J Baginski DDS. Sweis operates Everyone's Family Dental at a different St. Charles address. Shell may be closed/vacated."
+        },
+        {
+          "location_id": "e16ff3a9b55a8492",
+          "practice_name": "MANHATTAN DENTAL LLC",
+          "zip": "60442",
+          "city": "MANHATTAN",
+          "address": "175 S State St Manhattan 60442",
+          "confirmed_at_brand": true,
+          "member_url": "https://www.manhattandentalcare.org/",
+          "note": "175 S State St Manhattan 60442 \u2014 manhattandentalcare.org active. Sweis listed on dentalplans.com at Manhattan 60442. EIN 262416337. Confirmed Sweis-linked."
+        },
+        {
+          "location_id": "5e92660ad5b32980",
+          "practice_name": "JAY SWEIS D.D.S P.C",
+          "zip": "60639",
+          "city": "CHICAGO",
+          "address": "NPI 1558704577 \u2014 2715 N Central Ave Suite A Chicago 60639",
+          "confirmed_at_brand": true,
+          "member_url": "https://npino.com/dental-clinic/1558704577-jay-sweis-d.d.s-p.c/",
+          "note": "NPI 1558704577 \u2014 2715 N Central Ave Suite A Chicago 60639. AO Dr. Jubrail Sweis DDS. Confirmed."
+        }
+      ],
+      "stale_closed_false_positive_notes": [
+        "Barrington 1531 S Grove Ave (5da23e850203188a): now Barrington Grove Dental (Passehl/Sekulich) \u2014 PLLC shell closed/vacated.",
+        "Bloomingdale 156 E Lake St (0f917daa7d21b189): now 'Blooming Smiles Dental Studio' (Dr. Gabriela Duraes) \u2014 PLLC shell inactive/sublease.",
+        "Geneva 112 N 4th St (ffe0a2b736d88ee3): now brushandrestore.com (Dr. Alli Wolski) \u2014 no active Sweis operation confirmed.",
+        "St Charles 804 S 3rd St (06103ae3a6ed4ab0): now Bespoke Dental Co./Steven J Baginski DDS \u2014 shell closed/vacated; Sweis operates Everyone's Family Dental at a different St Charles address."
+      ],
+      "network_gate_status": "ready_for_validation",
+      "evidence_quality": "partial",
+      "protected_network_hold": true
+    },
+    "ao:LABINOV_BORIS": {
+      "network_id": "ao:LABINOV_BORIS",
+      "ao_name": "Boris Labinov (NON-dentist; CFO of L2 Management since 2018)",
+      "brand": "D2 Dental at Oak Street",
+      "owner_operator_identity": {
+        "authorized_official": "Boris Labinov (NON-dentist; CFO of L2 Management since 2018)",
+        "brand_operator": "Destiny Dental (managed by L2 Management; co-founders Jim Lucci & Boris Labinov)",
+        "pe_owner": "ProSmile Holdings LLC (TriSpan PE) \u2014 acquired Destiny Dental Sept 4 2024; original PE Dixon Midland Company (2010)"
+      },
+      "ownership_structure": "mso_management_company",
+      "structure_evidence": "D2 Dental at Oak Street P.C. is a single friendly-PC shell used as the licensed entity across 7+ IL addresses. NPI 1821301102 (D2 Dental of Illinois, P.C.) lists DBA 'Destiny Dental' and mailing address 137 N Oak Park Ave, Suite 200, Oak Park, IL \u2014 corporate HQ of L2 Management, the DSO that manages Destiny Dental. Boris Labinov is CFO of L2 Management (non-dentist), co-founder of Destiny Dental with Jim Lucci. D2 Dental of Michigan and Ohio also use 137 N Oak Park Ave. Avesis lists 'D2 Dental of Illinois' and 'D2 Dental of Lansing' as Destiny Dental network providers. Textbook friendly-PC/MSO: single P.C. name across all IL offices + non-dentist CFO as AO + management company (L2 Management) at shared Oak Park HQ.",
+      "evidence_tier": "branded_dso",
+      "tier_rationale": "D2 Dental at Oak Street P.C. is the IL friendly-PC shell for Destiny Dental, a DSO managed by L2 Management (HQ 137 N Oak Park Ave). Confirmed by OpenNPI DBA 'Destiny Dental' on NPI 1821301102 and shared corporate mailing across D2 entities in IL/MI/OH. Boris Labinov is CFO of L2 Management (non-dentist), AO across all 7 P.C. locations = MSO agent structure. PE doubly documented: Dixon Midland (2010 founding) and ProSmile/TriSpan (Sept 2024 acquisition). 3 of 7 members NPI-confirmed; all 7 confirmed via shared P.C. + AO + corporate mailing.",
+      "pe_backed": true,
+      "pe_evidence": "Dixon Midland Company (Chicago PE) co-founded/funded Destiny Dental in 2010. Destiny Dental acquired by ProSmile Holdings LLC on September 4, 2024. ProSmile backed by TriSpan (PE, NY/London). Sources: ProSmile press release, Livingstone Partners tombstone, TriSpan press release, Private Equity Info profile.",
+      "mso_platform": "L2 Management (MSO, HQ 137 N Oak Park Ave Suite 200, Oak Park IL) operating the 'Destiny Dental' brand",
+      "durable_non_ao_artifact": {
+        "type": "shared_parent",
+        "detail": "NPI 1821301102 (D2 Dental of Illinois P.C.) has DBA 'Destiny Dental' and mailing 137 N Oak Park Ave Suite 200 Oak Park IL (L2 Management office). D2 Dental of Michigan (NPI 1821420043) and Ohio (NPI 1831520428) also list 137 N Oak Park Ave. Shared corporate mailing across all D2 Dental entities in multiple states \u2014 independent of and more durable than the AO artifact.",
+        "source_url": "https://opennpi.com/provider/1821301102"
+      },
+      "evidence_chain": "AO signal: Boris Labinov (NON-dentist) is AO across 7 'D2 Dental at Oak Street P.C.' NPIs. Documentary corroboration: OpenNPI shows NPI 1821301102 = 'D2 Dental of Illinois P.C.' DBA 'Destiny Dental', mailing 137 N Oak Park Ave Suite 200 Oak Park (L2 Management HQ); D2 Dental of Michigan & Ohio share that mailing; Labinov is documented CFO of L2 Management; ProSmile press release + Livingstone tombstone + Private Equity Info confirm Destiny Dental founded 2010 with Dixon Midland (PE) and acquired by ProSmile (TriSpan PE) Sept 4 2024. Conclusion: branded DSO (Destiny Dental) via friendly-PC/MSO (L2 Management), PE-backed (ProSmile/TriSpan).",
+      "key_documentary_urls": [
+        "https://opennpi.com/provider/1821301102",
+        "https://www.prosmile.com/prosmile-completes-acquisition-of-destiny-dental-practices-located-in-midwest/",
+        "https://livingstonepartners.com/en-us/transactions/destiny-dental-has-been-acquired-by-prosmile",
+        "https://businessprofiles.com/details/destiny-dental-of-lansing/IL-67890876/boris-labinov",
+        "https://privateequityinfo.com/directory/private-equity-portfolio-company/destiny-dental",
+        "https://avesissymplr.veriben.net/location-search/8035827-d2-dental-of-illinois-chicago-il?healthPlanCompany=CookCounty"
+      ],
+      "member_count": 7,
+      "members": [
+        {
+          "location_id": "c2c46e94895cda83",
+          "practice_name": "D2 DENTAL AT OAK STREET, P.C.",
+          "zip": "60402",
+          "city": "BERWYN",
+          "address": "7000 Cermak Rd, Berwyn 60402",
+          "confirmed_at_brand": true,
+          "member_url": null,
+          "note": "7000 Cermak Rd, Berwyn 60402. Tied via P.C. name + AO + shared Oak Park mailing; no individual locator URL."
+        },
+        {
+          "location_id": "d616036cc2145cf4",
+          "practice_name": "D2 DENTAL AT OAK STREET, P.C.",
+          "zip": "60406",
+          "city": "BLUE ISLAND",
+          "address": "3046 W 127th St, Blue Island 60406",
+          "confirmed_at_brand": true,
+          "member_url": "https://providerwire.com/general-practice-dentistry/illinois/blue-island/d-2-dental-at-oak-street-pc-1639587025",
+          "note": "3046 W 127th St, Blue Island 60406. NPI 1639587025, Boris Labinov AO."
+        },
+        {
+          "location_id": "3f1051899da7b50d",
+          "practice_name": "D2 DENTAL AT OAK STREET, P.C.",
+          "zip": "60609",
+          "city": "CHICAGO",
+          "address": "4318 S State St, Chicago 60609",
+          "confirmed_at_brand": true,
+          "member_url": "https://opennpi.com/provider/1821301102",
+          "note": "4318 S State St, Chicago 60609. NPI 1821301102 D2 Dental of Illinois P.C. DBA Destiny Dental, mailing 137 N Oak Park Ave."
+        },
+        {
+          "location_id": "d318648e80a552ff",
+          "practice_name": "D2 DENTAL AT OAK STREET, P.C.",
+          "zip": "60617",
+          "city": "CHICAGO",
+          "address": "1715 E 95th St, Chicago 60617",
+          "confirmed_at_brand": true,
+          "member_url": null,
+          "note": "1715 E 95th St, Chicago 60617. Tied via shared P.C. shell + AO; no individual locator URL."
+        },
+        {
+          "location_id": "9eb34e1dcb9933f8",
+          "practice_name": "D2 DENTAL AT OAK STREET, P.C.",
+          "zip": "60641",
+          "city": "CHICAGO",
+          "address": "4848 W Irving Park Rd, Chicago 60641",
+          "confirmed_at_brand": true,
+          "member_url": "https://www.hipaaspace.com/medical_billing/coding/national_provider_identifier/codes/npi_1194137208.aspx",
+          "note": "4848 W Irving Park Rd, Chicago 60641. NPI 1194137208."
+        },
+        {
+          "location_id": "ef079f1cfd53d7f0",
+          "practice_name": "D2 DENTAL AT OAK STREET, P.C.",
+          "zip": "60652",
+          "city": "CHICAGO",
+          "address": "3348 W 87th St, Chicago 60652",
+          "confirmed_at_brand": true,
+          "member_url": null,
+          "note": "3348 W 87th St, Chicago 60652. Tied via P.C. shell + Destiny Dental brand; no individual locator URL."
+        },
+        {
+          "location_id": "e4fb4be6a4efee52",
+          "practice_name": "D2 DENTAL AT OAK STREET, P.C.",
+          "zip": "60660",
+          "city": "CHICAGO",
+          "address": "1541 W Devon Ave, Chicago 60660",
+          "confirmed_at_brand": true,
+          "member_url": null,
+          "note": "1541 W Devon Ave, Chicago 60660. Tied via shared P.C. shell + AO; no individual locator URL."
+        }
+      ],
+      "stale_closed_false_positive_notes": [
+        "4 of 7 members confirmed via shared P.C. shell + AO + corporate mailing only (no individual locator URL): Berwyn 60402, Chicago 60617, Chicago 60652, Chicago 60660."
+      ],
+      "network_gate_status": "ready_for_validation",
+      "evidence_quality": "verified",
+      "protected_network_hold": true
+    },
+    "ao:RAMAHA_AHMED": {
+      "network_id": "ao:RAMAHA_AHMED",
+      "ao_name": "Ahmed Ramaha",
+      "brand": "Amazing Dental / Universal Dental (Ramaha)",
+      "owner_operator_identity": {
+        "clinical_owner": "Dr. Ahmed Ramaha, DDS MS (Principal Owner/CEO, Universal Dental Clinics)",
+        "authorized_official": "Ahmed Ramaha"
+      },
+      "ownership_structure": "dentist_owned_multiloc",
+      "structure_evidence": "Dr. Ahmed Ramaha (DDS, MS) documented as Principal Owner on BBB profiles for Universal Dental of Orland Park and Universal Dental of Burbank (Oak Lawn corporate). BBB Burbank profile lists all sibling locations as related businesses under Ramaha. No management company, MSO, DSO platform, or PE backer in any source. Only in-house back-office (marketing/accounting/billing) at Oak Lawn corporate \u2014 consistent with dentist-owned multi-loc, not MSO interposition.",
+      "evidence_tier": "dentist_multi",
+      "tier_rationale": "Ahmed Ramaha is the documented sole owner/founder/CEO of Universal Dental Clinics (udclinics.com), dentist-owned multi-loc with in-house back-office but no MSO/DSO platform. 'Amazing Dental' LLC shells are separately-incorporated sites under the same network (name-chain). 5 of 6 confirmed via shared website / BBB cross-reference; Stone Park and Loop Dental & Spa lack a direct brand locator URL. Evidence partial. protected_network_hold REMAINS true.",
+      "pe_backed": false,
+      "pe_evidence": "No PE/external investor found (BBB, LinkedIn, RocketReach, VisualVisitor, web search).",
+      "mso_platform": null,
+      "durable_non_ao_artifact": {
+        "type": "shared_website",
+        "detail": "Five of six member offices share udclinics.com and toll-free 888-411-8648. udclinics.com /our-location/ lists Elgin, Orland Park x2, Oak Lawn corporate. BBB Burbank profile cross-references all siblings under Ramaha.",
+        "source_url": "https://udclinics.com/our-location/"
+      },
+      "evidence_chain": "AO signal: Dr. Ahmed Ramaha is AO/owner across 'Amazing Dental' LLC shells operating as 'Universal Dental Clinics'. Documentary corroboration: BBB profiles name Ramaha Principal Owner and list sibling Universal Dental offices as related businesses; udclinics.com locator + shared toll-free 888-411-8648 tie 5 of 6 offices; LinkedIn lists Ramaha as CEO with no platform/DSO. Conclusion: dentist-owned multi-location group (in-house back office only), no MSO/PE. CAVEAT: Stone Park + Loop Dental & Spa lack a brand-locator URL (AO/NPI signal only); Universal Dental @1605 S Michigan shows CLOSED on Yelp Jan 2026.",
+      "key_documentary_urls": [
+        "https://www.bbb.org/us/il/oak-lawn/profile/dental-services/universal-dental-of-burbank-0654-90029782",
+        "https://www.bbb.org/us/il/orland-park/profile/dentist/universal-dental-of-orland-park-0654-88347265",
+        "https://udclinics.com/our-location/",
+        "https://www.linkedin.com/in/ahmed-ramaha-bb6b65321/"
+      ],
+      "member_count": 6,
+      "members": [
+        {
+          "location_id": "019f06d7def19049",
+          "practice_name": "ELGIN AMAZING DENTAL LLC",
+          "zip": "60120",
+          "city": "ELGIN",
+          "address": "229 National St Elgin 60120",
+          "confirmed_at_brand": true,
+          "member_url": "https://udclinics.com/our-location/",
+          "note": "229 National St Elgin 60120 verbatim on udclinics.com; BBB lists 'Universal Dental of Elgin' as related business under Ramaha"
+        },
+        {
+          "location_id": "9d4cd058e4525078",
+          "practice_name": "STONE PARK DENTAL INC",
+          "zip": "60165",
+          "city": "STONE PARK",
+          "address": null,
+          "confirmed_at_brand": false,
+          "member_url": "https://www.dentalplans.com/dentists/illinois/stone-park/60165/dr-ahmed-ramaha-83814/",
+          "note": "Ramaha listed practicing at 1550 N Mannheim Rd Stone Park; address NOT on udclinics.com locator and NOT a BBB related business \u2014 brand tie not documentary-confirmed"
+        },
+        {
+          "location_id": "19c344d4755fd990",
+          "practice_name": "CENTRAL AMAZING DENTAL LLC",
+          "zip": "60459",
+          "city": "BURBANK",
+          "address": "5501 W 79th St Burbank 60459",
+          "confirmed_at_brand": true,
+          "member_url": "https://www.bbb.org/us/il/oak-lawn/profile/dental-services/universal-dental-of-burbank-0654-90029782",
+          "note": "5501 W 79th St Burbank 60459; BBB 'Universal Dental of Burbank' = same Ramaha entity; NPPES legal name 'Central Amazing Dental LLC' operates as Universal Dental"
+        },
+        {
+          "location_id": "b4b2a9ed748734fb",
+          "practice_name": "ORLAND PARK AMAZING DENTAL",
+          "zip": "60462",
+          "city": "ORLAND PARK",
+          "address": "8752 W 159th St Ste 8 Orland Park 60462",
+          "confirmed_at_brand": true,
+          "member_url": "https://www.bbb.org/us/il/orland-park/profile/dentist/universal-dental-of-orland-park-0654-88347265",
+          "note": "8752 W 159th St Ste 8 Orland Park 60462 \u2014 exact match on udclinics.com and BBB (Ramaha Principal Owner)"
+        },
+        {
+          "location_id": "10a173a568a7cd9f",
+          "practice_name": "ORLAND SQUARE UNIVERSAL DENTAL LLC",
+          "zip": "60462",
+          "city": "ORLAND PARK",
+          "address": "10 Orland Square Dr Orland Park 60462",
+          "confirmed_at_brand": true,
+          "member_url": "https://udclinics.com/our-location/",
+          "note": "10 Orland Square Dr Orland Park 60462 verbatim on udclinics.com; BBB lists 'Universal Dental Of Orland Square' as related business"
+        },
+        {
+          "location_id": "93287e7e58ead8af",
+          "practice_name": "LOOP DENTAL & SPA",
+          "zip": "60616",
+          "city": "CHICAGO",
+          "address": "1605 S Michigan Ave Chicago 60616",
+          "confirmed_at_brand": false,
+          "member_url": "https://www.yelp.com/biz/universal-dental-chicago-7",
+          "note": "1605 S Michigan Ave Chicago 60616; Yelp shows Universal Dental CLOSED (Jan 2026) with 'Loop Dental And Spa' co-listed same address. Rebrand artifact; no direct documentary URL naming Ramaha as owner of 'Loop Dental & Spa' \u2014 AO inference only"
+        }
+      ],
+      "stale_closed_false_positive_notes": [
+        "Loop Dental & Spa (93287e7e58ead8af) Universal Dental at 1605 S Michigan Ave shows CLOSED on Yelp as of Jan 2026 \u2014 possible stale location.",
+        "Stone Park Dental Inc (9d4cd058e4525078) and Loop Dental & Spa lack documentary brand confirmation \u2014 AO/NPI signal only."
+      ],
+      "network_gate_status": "ready_for_validation",
+      "evidence_quality": "partial",
+      "protected_network_hold": true
+    }
+  },
+  "individuals": [
+    {
+      "location_id": "d9fb0c9f226a66f3",
+      "practice_name": "Romo Dental III",
+      "zip": "60804",
+      "city": "CICERO",
+      "is_multilocation": true,
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "documentary_urls": [
+        {
+          "url": "https://www.romodentalchicago.com/",
+          "shows": "Romo Dental lists three locations: West Lawn (6857 S Pulaski Rd 60629), Brighton Park (4148 S Archer Ave 60632), Cicero (5934 W 35th St 60804) \u2014 all under Romo Dental brand, Dr. Genaro Romo"
+        }
+      ],
+      "durable_non_ao_artifact": {
+        "type": "name_chain",
+        "detail": "'Romo Dental' across three distinct ZIPs (60629, 60632, 60804) on the practice's own website under Dr. Genaro Romo DDS.",
+        "source_url": "https://www.romodentalchicago.com/"
+      },
+      "evidence_quality": "verified",
+      "gate_status": "ready_for_validation",
+      "reasoning": "romodentalchicago.com lists three locations across distinct ZIPs under Dr. Genaro Romo \u2014 dentist-owned multi-location. DB website hint 'oralkarenetwork2.com' reflects a co-located but separate practice (Oral Kare Network, George Zehak, 5907 W 35th St) \u2014 Romo Dental III is at 5934 W 35th St, different entity. No PE/DSO platform.",
+      "cross_session_corroboration": {
+        "second_pass": "ind_south_full13_secondpass",
+        "second_pass_verdict": {
+          "evidence_tier": "dentist_multi",
+          "evidence_quality": "verified",
+          "gate_status": "ready_for_validation"
+        },
+        "primary_verdict": {
+          "evidence_tier": "dentist_multi",
+          "evidence_quality": "verified",
+          "gate_status": "ready_for_validation"
+        },
+        "agreement": "corroborated",
+        "note": "Independent second pass reached the same ownership tier. Tier and pe_backed match."
+      }
+    },
+    {
+      "location_id": "f3959b4a9ac8e139",
+      "practice_name": "SILVA DENTAL CENTER LTD",
+      "zip": "60804",
+      "city": "CICERO",
+      "is_multilocation": false,
+      "evidence_tier": "single_loc_group",
+      "pe_backed": false,
+      "documentary_urls": [
+        {
+          "url": "https://www.silvadentalcenterltd.com/",
+          "shows": "Single location at 5919 W Cermak Rd Cicero 60804, multi-specialty team (7 providers); no second location"
+        },
+        {
+          "url": "https://www.healthgrades.com/group-directory/il-illinois/cicero/silva-dental-center-x2ws8x",
+          "shows": "Healthgrades: 'Silva Dental Center is a Practice with 1 Location' at 5919 W Cermak Rd Cicero"
+        },
+        {
+          "url": "https://www.centraldentalassociates.com/",
+          "shows": "centraldentalassociates.com (the DB website hint) belongs to a DIFFERENT practice: Central Dental Associates 5539 W Cermak Rd, Dr. Monil Shah \u2014 states 'our one office', no mention of Silva"
+        }
+      ],
+      "durable_non_ao_artifact": {
+        "type": "none",
+        "detail": "No multi-location artifact. DB dso_regional appears to derive from website hint centraldentalassociates.com misattributed to this entity \u2014 that domain belongs to a separate practice (Dr. Monil Shah). Silva Dental Center is a single-location multi-dentist group under Dr. Berta M. Silva.",
+        "source_url": ""
+      },
+      "evidence_quality": "verified",
+      "gate_status": "undetermined",
+      "reasoning": "Single-location multi-specialty group (7 providers, one address) under Dr. Berta M. Silva \u2014 no second location on its own website, Healthgrades, Yelp, or WebMD. DB website hint resolves to a different practice. Existing dso_regional appears to be a false positive from website misattribution; flag for gate-owner DB-side correction (no DB write from this lane).",
+      "cross_session_corroboration": {
+        "second_pass": "ind_south_full13_secondpass",
+        "second_pass_verdict": {
+          "evidence_tier": "single_loc_group",
+          "evidence_quality": "verified",
+          "gate_status": "ready_for_validation"
+        },
+        "primary_verdict": {
+          "evidence_tier": "single_loc_group",
+          "evidence_quality": "verified",
+          "gate_status": "undetermined"
+        },
+        "agreement": "corroborated",
+        "note": "Independent second pass reached the same ownership tier. Minor gate-label difference: deliverable flags the DB dso_regional as a false positive needing gate correction."
+      }
+    },
+    {
+      "location_id": "28fab093c7a6a0d9",
+      "practice_name": "MONIL P SHAH DMD PC",
+      "zip": "60804",
+      "city": "CICERO",
+      "is_multilocation": false,
+      "evidence_tier": "true_independent",
+      "pe_backed": false,
+      "documentary_urls": [
+        {
+          "url": "https://www.centraldentalassociates.com/",
+          "shows": "Central Dental Associates (Dr. Monil Shah) states 'our one office', lists only 5539 W Cermak Rd Cicero 60804"
+        },
+        {
+          "url": "https://npino.com/dental-clinic/1033479126-crest-dental-llc/",
+          "shows": "Crest Dental LLC at 1354 W Army Trail Rd Carol Stream \u2014 AO Dr. Ami K Shah (not Monil Shah); surname-only collision"
+        }
+      ],
+      "durable_non_ao_artifact": {
+        "type": "none",
+        "detail": "DB cluster-mate 'Crest Dental Care PC, Carol Stream' has AO Dr. Ami K Shah per NPPES \u2014 different person. No shared EIN/website/registered-agent/locator linking the Cicero Monil Shah practice to another location.",
+        "source_url": "https://npino.com/dental-clinic/1033479126-crest-dental-llc/"
+      },
+      "evidence_quality": "verified",
+      "gate_status": "undetermined",
+      "reasoning": "Dr. Monil P Shah operates a single location (Central Dental Associates, 5539 W Cermak Rd Cicero) per his own website and directories. AO cluster-mate (Crest Dental Care PC, Carol Stream) has a different AO (Dr. Ami K Shah) \u2014 false-positive 'Shah' surname collision, not shared ownership. No multi-location documentary evidence; recommend independent classification.",
+      "cross_session_corroboration": {
+        "second_pass": "ind_south_full13_secondpass",
+        "second_pass_verdict": {
+          "evidence_tier": "dentist_multi",
+          "evidence_quality": "partial",
+          "gate_status": "candidate"
+        },
+        "primary_verdict": {
+          "evidence_tier": "true_independent",
+          "evidence_quality": "verified",
+          "gate_status": "undetermined"
+        },
+        "agreement": "divergent_tier",
+        "resolution_kept": "true_independent / undetermined (KEPT)",
+        "rationale": "Primary source (centraldentalassociates.com) states 'our one office'; outweighs the Vitals aggregate that suggests a Riverdale second office. AO cluster-mate Crest Dental has a DIFFERENT AO (Dr. Ami K Shah) = 'Shah' surname collision, not shared ownership.",
+        "gate_recommendation": "Verify the claimed Riverdale IL office with a street-address documentary URL BEFORE any multi-location flip; if confirmed, promote true_independent -> dentist_multi."
+      }
+    },
+    {
+      "location_id": "addadba0d25e3812",
+      "practice_name": "IMAGE DENTAL LLC",
+      "zip": "60804",
+      "city": "CICERO",
+      "is_multilocation": true,
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "documentary_urls": [
+        {
+          "url": "https://dentaltownchicago.com/dentist/cicero/",
+          "shows": "States 'Image Dental in Cicero is part of the Dental Town Chicago family. Our twelve dental offices work with families throughout the Chicago area' \u2014 names Dr. Sinan Razzak as Founder and President"
+        },
+        {
+          "url": "https://dentaltownchicago.com/",
+          "shows": "Lists all 12 Dental Town Chicago offices including Cicero (3020 S Cicero Ave), Bedford Park (7250 S Cicero Ave Ste F), Oakbrook Terrace (17W679 Roosevelt Rd) \u2014 the exact three AO cluster-mate addresses"
+        },
+        {
+          "url": "https://dentaltownchicago.com/doctor/dr-sinan-razzak/",
+          "shows": "Dr. Sinan Razzak profile confirming Founder/President role across the 12-office network including Image Dental LLC and Bedford Dental LLC"
+        }
+      ],
+      "durable_non_ao_artifact": {
+        "type": "shared_website",
+        "detail": "dentaltownchicago.com lists all 12 offices under Dr. Sinan Razzak as Founder/President; Cicero page names 'Image Dental in Cicero' as part of the family; Bedford Park and Oakbrook Terrace match AO cluster-mate addresses.",
+        "source_url": "https://dentaltownchicago.com/"
+      },
+      "evidence_quality": "verified",
+      "gate_status": "ready_for_validation",
+      "reasoning": "Public-facing 12-office group website explicitly names Image Dental as part of the Dental Town Chicago family under Dr. Sinan Razzak (Founder/President); cluster-mate addresses corroborate. No PE/DSO/MSO platform structure found \u2014 dentist-owned multi-location (dentist_multi).",
+      "cross_session_corroboration": {
+        "second_pass": "ind_south_full13_secondpass",
+        "second_pass_verdict": {
+          "evidence_tier": "branded_dso",
+          "evidence_quality": "verified",
+          "gate_status": "ready_for_validation"
+        },
+        "primary_verdict": {
+          "evidence_tier": "dentist_multi",
+          "evidence_quality": "verified",
+          "gate_status": "ready_for_validation"
+        },
+        "agreement": "divergent_tier",
+        "resolution_kept": "dentist_multi (KEPT, FLAGGED for gate re-judgment)",
+        "rationale": "Dispute is Dental Town Chicago (12 offices, ONE unified brand, Dr. Sinan Razzak founder). First pass weighted 'no MSO/management layer' -> dentist_multi; second pass weighted 'established brand at 12-office scale' -> branded_dso. Under the corrected taxonomy a single established brand at scale (even non-PE, dentist-owned) leans branded_dso; both MetroSmiles (already flagged) and this row sit in the same gray zone.",
+        "gate_recommendation": "Re-test branded_dso vs dentist_multi for Dental Town Chicago (12 offices, one brand). No MSO/PE layer documented either way; pe_backed stays false. Recommend treating consistently with MetroSmiles."
+      }
+    },
+    {
+      "location_id": "fb2614131429927d",
+      "practice_name": "PERFECT DENTAL SMILE, LTD",
+      "zip": "60804",
+      "city": "CICERO",
+      "is_multilocation": true,
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "documentary_urls": [
+        {
+          "url": "https://perfectdentalsmiles.com/",
+          "shows": "Lists three locations: 2545 W Peterson Ave Chicago, 6017 W Cermak Rd Cicero, 4611 N Western Ave Chicago \u2014 confirming Cicero + Peterson Ave same brand"
+        },
+        {
+          "url": "https://perfectdentalsmiles.com/meet-our-ceo/",
+          "shows": "Identifies Dr. Bushra Alazzawi DDS as founder/CEO/owner operating all three Perfect Dental Smile locations"
+        },
+        {
+          "url": "https://www.yelp.com/biz/perfect-dental-smile-cicero-2",
+          "shows": "Yelp listing at 6017 W Cermak Rd, Cicero IL 60804 \u2014 same brand, active reviews through May 2026"
+        }
+      ],
+      "durable_non_ao_artifact": {
+        "type": "name_chain",
+        "detail": "perfectdentalsmiles.com is the shared website for all three Perfect Dental Smile offices; Cicero (6017 W Cermak Rd) and Chicago Peterson Ave (2545 W Peterson Ave) appear together under Dr. Bushra Alazzawi as CEO/founder \u2014 documentary name-chain confirmation.",
+        "source_url": "https://perfectdentalsmiles.com/"
+      },
+      "evidence_quality": "verified",
+      "gate_status": "ready_for_validation",
+      "reasoning": "Practice's own website lists 3 locations including Cicero and Peterson Ave as a single branded group; CEO page names Dr. Bushra Alazzawi as founder/owner \u2014 confirms the name-chain and multi-location ownership beyond AO. No PE/DSO/MSO; dentist_multi.",
+      "cross_session_corroboration": {
+        "second_pass": "ind_south_full13_secondpass",
+        "second_pass_verdict": {
+          "evidence_tier": "dentist_multi",
+          "evidence_quality": "verified",
+          "gate_status": "ready_for_validation"
+        },
+        "primary_verdict": {
+          "evidence_tier": "dentist_multi",
+          "evidence_quality": "verified",
+          "gate_status": "ready_for_validation"
+        },
+        "agreement": "corroborated",
+        "note": "Independent second pass reached the same ownership tier. Tier and pe_backed match."
+      }
+    },
+    {
+      "location_id": "2ab7cdb707db8803",
+      "practice_name": "METROSMILES - CICERO DENTAL PC",
+      "zip": "60804",
+      "city": "CICERO",
+      "is_multilocation": true,
+      "evidence_tier": "branded_dso",
+      "pe_backed": false,
+      "documentary_urls": [
+        {
+          "url": "https://metrosmilesdental.com/locations/",
+          "shows": "MetroSmiles Dental site lists 7 locations including Dolton 808 E Sibley Blvd (matches AO cluster-mate 'South Holland Dental PC') and Berwyn/Cicero 4842 W Cermak Rd Cicero IL 60804"
+        },
+        {
+          "url": "https://metrosmilesdental.com/location/metrosmiles-dolton/",
+          "shows": "MetroSmiles Dolton at 808 E Sibley Blvd, Dolton IL 60419 \u2014 exact address match to cluster-mate 'South Holland Dental PC'"
+        },
+        {
+          "url": "https://metrosmilesdental.com/location/metrosmiles-pilsen/",
+          "shows": "MetroSmiles Pilsen at 2507 W Cermak Rd Chicago \u2014 aligns with 'Pilsen Dental Group' cluster-mate"
+        },
+        {
+          "url": "https://doctor.webmd.com/practice/metrosmiles-cicero-dental-pc-gp-b76bd818-edad-4668-a1ba-8fc8f4264e9c-overview",
+          "shows": "WebMD listing for 'Metrosmiles - Cicero Dental PC' at 4842 W Cermak Rd Cicero IL with Dr. Chris Tsaliagos confirmed affiliated"
+        }
+      ],
+      "durable_non_ao_artifact": {
+        "type": "shared_website",
+        "detail": "metrosmilesdental.com is the network website listing 7 locations under one brand; Cicero (4842 W Cermak Rd) and Dolton (808 E Sibley Blvd, exact match to cluster-mate 'South Holland Dental PC') both on roster; Pilsen aligns with 'Pilsen Dental Group' cluster-mate.",
+        "source_url": "https://metrosmilesdental.com/locations/"
+      },
+      "evidence_quality": "verified",
+      "gate_status": "ready_for_validation",
+      "reasoning": "7-location branded network with consistent brand identity across locally-named friendly PCs (Cicero + Dolton exact-match to cluster-mate; Pilsen aligns) \u2014 characteristic of branded_dso rather than simple dentist_multi. No PE backer found. NOTE: gate may re-test branded_dso vs dentist_multi \u2014 no separate MSO/management layer was documented, only the multi-loc brand + friendly-PC naming; flagged for gate judgment.",
+      "cross_session_corroboration": {
+        "second_pass": "ind_south_full13_secondpass",
+        "second_pass_verdict": {
+          "evidence_tier": "branded_dso",
+          "evidence_quality": "verified",
+          "gate_status": "ready_for_validation"
+        },
+        "primary_verdict": {
+          "evidence_tier": "branded_dso",
+          "evidence_quality": "verified",
+          "gate_status": "ready_for_validation"
+        },
+        "agreement": "corroborated",
+        "note": "Independent second pass reached the same ownership tier. Tier and pe_backed match."
+      }
+    },
+    {
+      "location_id": "bb6d4fb9d7b95ca4",
+      "practice_name": "COMPASS DENTAL, P.C.",
+      "zip": "60640",
+      "city": "CHICAGO",
+      "is_multilocation": true,
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "documentary_urls": [
+        {
+          "url": "https://opennpi.com/provider/1144693748",
+          "shows": "COMPASS DENTAL OF LINCOLN SQUARE NPI 1144693748 \u2014 AO Dr. Brandon R Prusa, title OWNER DDS, 2334 W Lawrence Ave Ste 215 Chicago 60625"
+        },
+        {
+          "url": "https://local.yahoo.com/info-234224083-prusa-brandon-r-compass-dental-at-lincoln-square-chicago/",
+          "shows": "Prusa Brandon R listed as dentist at Compass Dental at Lincoln Square \u2014 same individual across Lakeview and Lincoln Square"
+        },
+        {
+          "url": "https://www.beckershospitalreview.com/uncategorized/dr-brandon-prusa-dentist-at-compass-dental/",
+          "shows": "Dr. Brandon Prusa identified as dentist at Compass Dental \u2014 same brand across locations"
+        }
+      ],
+      "durable_non_ao_artifact": {
+        "type": "name_chain",
+        "detail": "Compass Dental brand at 4+ Chicago-area addresses under Dr. Brandon Prusa as owner/AO: 4413 N Clark St 60640 (Uptown/Clark), 2334 W Lawrence Ave 60625 (Lincoln Square, NPI 1144693748 owner=Prusa), 415 W Belmont Ave 60657 (Lakeview), plus Rogers Park and Deerfield on compassdentalcare.com \u2014 same brand across 3+ distinct ZIPs, Prusa AO/owner on at least one NPI.",
+        "source_url": "https://opennpi.com/provider/1144693748"
+      },
+      "evidence_quality": "partial",
+      "gate_status": "candidate",
+      "reasoning": "Dr. Brandon Prusa DDS confirmed Owner/AO of COMPASS DENTAL OF LINCOLN SQUARE (NPI 1144693748). Compass Dental brand spans 4+ Chicago-area locations per practice website + a Clark St/60640 listing under the same brand. Evidence partial: the 60640 Clark St NPI record itself was not directly accessible to confirm Prusa as AO at that specific entity, but the name-chain across 3+ ZIPs under one owner is well-attested. No PE/MSO signals.",
+      "cross_session_corroboration": {
+        "second_pass": "ind_south_full13_secondpass",
+        "second_pass_verdict": {
+          "evidence_tier": "dentist_multi",
+          "evidence_quality": "partial",
+          "gate_status": "candidate"
+        },
+        "primary_verdict": {
+          "evidence_tier": "dentist_multi",
+          "evidence_quality": "partial",
+          "gate_status": "candidate"
+        },
+        "agreement": "corroborated",
+        "note": "Independent second pass reached the same ownership tier. Tier and pe_backed match."
+      }
+    },
+    {
+      "location_id": "0884ff9f2ce7934f",
+      "practice_name": "Braam Dental",
+      "zip": "60640",
+      "city": "CHICAGO",
+      "is_multilocation": false,
+      "evidence_tier": "true_independent",
+      "pe_backed": false,
+      "documentary_urls": [
+        {
+          "url": "https://npino.com/dental-clinic/1043781321-braam-dental/",
+          "shows": "BRAAM DENTAL NPI 1043781321 \u2014 AO Lee Braam DMD, entity SINGLE SPECIALTY GROUP, 3334 W Peterson Ave Chicago 60659"
+        },
+        {
+          "url": "https://findadentist.ada.org/dentists/dr-lee-s-braam-chicago-0038V00002yjo2ZQAQ-a1C8V00000kYXy8UAG",
+          "shows": "ADA listing: Dr. Lee S Braam at 1015 W Lawrence Ave Chicago 60640 \u2014 individual NPI-1 tied to Heartland Health Outreach (nonprofit FQHC), not a second private Braam Dental office"
+        }
+      ],
+      "durable_non_ao_artifact": {
+        "type": "none",
+        "detail": "No name-chain, shared EIN, parent/MSO, or locator evidence found. Braam Dental's sole private NPI-2 is at 3334 W Peterson Ave 60659. The 60640 address (1015 W Lawrence Ave) is Heartland Health Outreach, a nonprofit FQHC where Dr. Braam practices separately \u2014 not a second private office.",
+        "source_url": "https://npino.com/dental-clinic/1043781321-braam-dental/"
+      },
+      "evidence_quality": "insufficient",
+      "gate_status": "undetermined",
+      "reasoning": "Braam Dental is a solo-owner single-location private practice at 3334 W Peterson Ave 60659 under Dr. Lee Braam DMD. The 60640 location_id reflects his individual NPI-1 linked to Heartland Health Outreach (nonprofit FQHC, 1015 W Lawrence Ave) where he provides community dentistry \u2014 not a second private office. No durable multi-location artifact at the 60640 watched address, no DSO/MSO/PE signals anywhere. Gate_status undetermined: the 60640 row carries no documentary multi-location/corporate artifact (NPI-1\u2194NPI-2 dedup ambiguity); evidence_quality insufficient for advancing the watched 60640 row to a corporate/group tier.",
+      "cross_session_corroboration": {
+        "second_pass": "ind_south_full13_secondpass",
+        "second_pass_verdict": {
+          "evidence_tier": "dentist_multi",
+          "evidence_quality": "partial",
+          "gate_status": "candidate"
+        },
+        "primary_verdict": {
+          "evidence_tier": "true_independent",
+          "evidence_quality": "insufficient",
+          "gate_status": "undetermined"
+        },
+        "agreement": "divergent_tier",
+        "resolution_kept": "true_independent / undetermined / insufficient (KEPT)",
+        "rationale": "Both passes agree a real Braam Dental PRIVATE office exists, but it is at 3334 W Peterson Ave 60659 (NON-watched ZIP). The WATCHED 60640 location_id is Dr. Lee Braam's NPI-1 at Heartland Health Outreach (nonprofit FQHC, 1015 W Lawrence Ave) where he provides community dentistry - NOT a second private office. The watched row therefore carries no multi-location/corporate artifact.",
+        "gate_recommendation": "Keep undetermined for the watched 60640 row (FQHC affiliation, not a chain office). The genuine Braam Dental private practice at 60659 is out of watched scope."
+      }
+    },
+    {
+      "location_id": "e32ed1606301b785",
+      "practice_name": "THE DENTAL MASTRS OF RAVENSWOOD LLC",
+      "zip": "60640",
+      "city": "CHICAGO",
+      "is_multilocation": true,
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "documentary_urls": [
+        {
+          "url": "https://opennpi.com/provider/1295200921",
+          "shows": "THE DENTAL MASTERS OF BELMONT LLC NPI 1295200921 \u2014 AO Dr. Eric Nics Bloom title MANAGER DDS; Parent Organization THE DENTAL MASTERS LLC; 5236 W Belmont Ave Chicago 60641"
+        },
+        {
+          "url": "https://thedentalmasters.org/locations/",
+          "shows": "The Dental Masters locations page listing Belmont (5236 W Belmont 60641) and Lincoln Park (2704 N Halsted 60614) under same domain as Ravenswood"
+        },
+        {
+          "url": "https://thedentalmasters.org/ravenswood-office/dr-irene-renieris-dds/",
+          "shows": "The Dental Masters Ravenswood office page confirming 1945 W Wilson Ave Chicago 60640 as a location under the same brand/domain"
+        },
+        {
+          "url": "https://www.yelp.com/biz/dental-masters-ravenswood-chicago",
+          "shows": "DENTAL MASTERS - RAVENSWOOD at 1945 W Wilson Chicago 60640 \u2014 same brand as Dental Masters of Belmont and Dental Masters Lincoln Park"
+        }
+      ],
+      "durable_non_ao_artifact": {
+        "type": "name_chain",
+        "detail": "Three distinct addresses under 'The Dental Masters / Dental Masters of [neighborhood]' brand: Ravenswood 1945 W Wilson 60640, Belmont 5236 W Belmont 60641, Lincoln Park 2704 N Halsted 60614. THE DENTAL MASTERS OF BELMONT LLC NPI 1295200921 has Parent Organization THE DENTAL MASTERS LLC and AO Dr. Eric Nics Bloom DDS (Manager). All three share domain thedentalmasters.org; NPI data names Eric Bloom as Partner at the Ravenswood entity.",
+        "source_url": "https://opennpi.com/provider/1295200921"
+      },
+      "evidence_quality": "verified",
+      "gate_status": "ready_for_validation",
+      "reasoning": "The Dental Masters of Ravenswood LLC (1945 W Wilson, 60640) is one of three locations under The Dental Masters brand sharing domain thedentalmasters.org. THE DENTAL MASTERS OF BELMONT LLC (NPI 1295200921) has Parent Organization THE DENTAL MASTERS LLC and lists Dr. Eric Nics Bloom DDS as Manager \u2014 directly corroborating the NPI data naming Eric Bloom as Partner at Ravenswood. Dentist-owned 3-location group under a shared parent LLC, no PE/MSO signals.",
+      "cross_session_corroboration": {
+        "second_pass": "ind_south_full13_secondpass",
+        "second_pass_verdict": {
+          "evidence_tier": "dentist_multi",
+          "evidence_quality": "partial",
+          "gate_status": "candidate"
+        },
+        "primary_verdict": {
+          "evidence_tier": "dentist_multi",
+          "evidence_quality": "verified",
+          "gate_status": "ready_for_validation"
+        },
+        "agreement": "divergent_evidence_quality",
+        "resolution_kept": "dentist_multi / verified (KEPT)",
+        "rationale": "Tier conclusion agrees (dentist-owned multi-loc, no PE). The parent-org artifact (Parent Organization THE DENTAL MASTERS LLC on NPI 1295200921) + brand name-chain across 3 addresses is a durable non-AO artifact -> verified. Second pass flags a freshness caveat: the watched Ravenswood location may have relocated to Lincoln Park (2704 N Halsted) and AO Eric Bloom is not on the current site (current dentists Drs. Kinka and Hoy).",
+        "gate_recommendation": "Confirm current operating status/address of the watched Ravenswood 60640 row (possible relocation to Lincoln Park). Ownership conclusion (dentist-owned multi-loc, no PE) unchanged."
+      }
+    },
+    {
+      "location_id": "0c8f995db2124f57",
+      "practice_name": "TEETH MATTER ON KEDZIE P.C.",
+      "zip": "60629",
+      "city": "CHICAGO",
+      "is_multilocation": true,
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "documentary_urls": [
+        {
+          "url": "https://www.yelp.com/biz/salih-dental-kedzie-chicago",
+          "shows": "Salih Dental Kedzie at 6235 S Kedzie Ave Chicago 60629 \u2014 same address as Teeth Matter on Kedzie P.C., Dr. Mohammed Salih"
+        },
+        {
+          "url": "https://www.yelp.com/biz/salih-dental-center-chicago",
+          "shows": "Salih Dental Center at 4408 W Lawrence Ave Chicago 60630 \u2014 same owner Dr. Mohammed Salih"
+        },
+        {
+          "url": "https://www.dentalplans.com/dentists/illinois/chicago/60629/dr-mohammed-salih-56304/",
+          "shows": "Dr. Mohammed K. Salih listed at two offices: 6235 S Kedzie Ave (60629) and 4408 W Lawrence Ave (60630)"
+        }
+      ],
+      "durable_non_ao_artifact": {
+        "type": "name_chain",
+        "detail": "Three addresses under 'Salih / Teeth Matter' brand, all Dr. Mohammed Salih: Teeth Matter on Kedzie (6235 S Kedzie 60629), Teeth Matter on Lawrence / Salih Dental Center (4408 W Lawrence 60630), Salih Dental Center (1726 W 18th St 60608). Same dentist across two ZIPs via provider directory cross-listing.",
+        "source_url": "https://www.dentalplans.com/dentists/illinois/chicago/60629/dr-mohammed-salih-56304/"
+      },
+      "evidence_quality": "partial",
+      "gate_status": "candidate",
+      "reasoning": "Dr. Mohammed Salih confirmed at minimum two locations (Kedzie 60629, Lawrence 60630) via directories and Yelp \u2014 dentist-owned multi-location. 'Teeth Matter' P.C. names on NPPES correspond to 'Salih Dental' consumer names at same addresses. No website/shared-locator/SOS filing retrieved for the 'Teeth Matter' brand specifically; third cluster-mate (18th St) not independently confirmed \u2014 evidence partial.",
+      "cross_session_corroboration": {
+        "second_pass": "ind_south_full13_secondpass",
+        "second_pass_verdict": {
+          "evidence_tier": "dentist_multi",
+          "evidence_quality": "partial",
+          "gate_status": "candidate"
+        },
+        "primary_verdict": {
+          "evidence_tier": "dentist_multi",
+          "evidence_quality": "partial",
+          "gate_status": "candidate"
+        },
+        "agreement": "corroborated",
+        "note": "Independent second pass reached the same ownership tier. Tier and pe_backed match."
+      }
+    },
+    {
+      "location_id": "9c588fbf68114847",
+      "practice_name": "PULASKI SMILING DENTAL P.C.",
+      "zip": "60629",
+      "city": "CHICAGO",
+      "is_multilocation": true,
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "documentary_urls": [
+        {
+          "url": "https://npino.com/dental-clinic/1346806577-pulaski-smiling-dental-p.c./",
+          "shows": "Pulaski Smiling Dental P.C. NPI 1346806577, AO Jianjun Hao (Owner), 5540 S Pulaski Rd Fl 1 Chicago 60629"
+        },
+        {
+          "url": "https://opennpi.com/provider/1447816616",
+          "shows": "Southwest Smiling Dental P.C. NPI 1447816616, AO Jianjun Hao (Owner), 11141 S Kedzie Ave Chicago 60655 \u2014 distinct address, same owner"
+        },
+        {
+          "url": "https://npiprofile.com/npi/1063030427",
+          "shows": "Pacific Smiling Dental P.C. NPI 1063030427, AO Dr. Jianjun Hao (President), 4370 E New York St Aurora 60504 \u2014 third address, same owner"
+        },
+        {
+          "url": "https://smilingdentalgroup.com/about-us/",
+          "shows": "Smiling Dental Group website identifying the Aurora location and Dr. Jianjun Hao as founder/key practitioner"
+        }
+      ],
+      "durable_non_ao_artifact": {
+        "type": "name_chain",
+        "detail": "Four 'Smiling Dental' P.C. entities at distinct addresses, all AO Jianjun Hao in NPPES: Pulaski (5540 S Pulaski 60629), Southwest (11141 S Kedzie 60655), Pacific (4370 E New York Aurora 60504), Smiling Dental International (Chicago). smilingdentalgroup.com is the umbrella brand.",
+        "source_url": "https://opennpi.com/provider/1447816616"
+      },
+      "evidence_quality": "verified",
+      "gate_status": "ready_for_validation",
+      "reasoning": "NPPES confirms Jianjun Hao as AO/owner across 4+ 'Smiling Dental' P.C. entities at 4 addresses (Chicago 60629/60655/60608, Aurora 60504) \u2014 dentist-owned multi-location chain. smilingdentalgroup.com is the public umbrella. No PE/MSO/DSO management layer found.",
+      "cross_session_corroboration": {
+        "second_pass": "ind_south_full13_secondpass",
+        "second_pass_verdict": {
+          "evidence_tier": "dentist_multi",
+          "evidence_quality": "verified",
+          "gate_status": "ready_for_validation"
+        },
+        "primary_verdict": {
+          "evidence_tier": "dentist_multi",
+          "evidence_quality": "verified",
+          "gate_status": "ready_for_validation"
+        },
+        "agreement": "corroborated",
+        "note": "Independent second pass reached the same ownership tier. Tier and pe_backed match."
+      }
+    },
+    {
+      "location_id": "27297b90116fc899",
+      "practice_name": "Molis Dental",
+      "zip": "60527",
+      "city": "BURR RIDGE",
+      "is_multilocation": true,
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "documentary_urls": [
+        {
+          "url": "https://molisdental.com/locations/",
+          "shows": "Molis Dental locations page listing both Burr Ridge and South Holland offices"
+        },
+        {
+          "url": "https://www.yelp.com/biz/molis-dental-south-holland-south-holland",
+          "shows": "Molis Dental South Holland at 16240 Louis Ave South Holland 60473 \u2014 second confirmed location"
+        },
+        {
+          "url": "https://molisdental.com/molis-dental-burr-ridge-il/",
+          "shows": "Molis Dental Burr Ridge primary location at 16 W 375 83rd St Burr Ridge 60527"
+        }
+      ],
+      "durable_non_ao_artifact": {
+        "type": "shared_website",
+        "detail": "molisdental.com lists two locations under Molis Dental: Burr Ridge (16 W 375 83rd St 60527) and South Holland (16240 Louis Ave 60473), Dr. Ryan Molis DDS eponymous owner.",
+        "source_url": "https://molisdental.com/locations/"
+      },
+      "evidence_quality": "verified",
+      "gate_status": "ready_for_validation",
+      "reasoning": "Two-location dentist-owned group under Dr. Ryan Molis DDS (Burr Ridge 60527 watched + South Holland 60473), confirmed by the practice's own locations page and Yelp. No PE/DSO platform \u2014 self-funded dentist-entrepreneur multi-location.",
+      "cross_session_corroboration": {
+        "second_pass": "ind_south_full13_secondpass",
+        "second_pass_verdict": {
+          "evidence_tier": "dentist_multi",
+          "evidence_quality": "verified",
+          "gate_status": "ready_for_validation"
+        },
+        "primary_verdict": {
+          "evidence_tier": "dentist_multi",
+          "evidence_quality": "verified",
+          "gate_status": "ready_for_validation"
+        },
+        "agreement": "corroborated",
+        "note": "Independent second pass reached the same ownership tier. Tier and pe_backed match."
+      }
+    },
+    {
+      "location_id": "b71f5fd4d273eca4",
+      "practice_name": "OAK PARK DENTAL STUDIO",
+      "zip": "60304",
+      "city": "OAK PARK",
+      "is_multilocation": false,
+      "evidence_tier": "single_loc_group",
+      "pe_backed": false,
+      "documentary_urls": [
+        {
+          "url": "https://www.oakparkdentist.com/meet-us",
+          "shows": "Three providers at one location: Dr. Chelsea Jones (owner/GP), Dr. Caroline Jermanus (periodontist), Dr. Joe Lepkowski (GP) at 6630 Roosevelt Rd Oak Park 60304"
+        },
+        {
+          "url": "https://www.oakparkdentist.com/",
+          "shows": "Single location, no additional offices, copyright 'by Chelsea Jones' confirming individual ownership"
+        }
+      ],
+      "durable_non_ao_artifact": {
+        "type": "shared_website",
+        "detail": "oakparkdentist.com presents a single-address practice (6630 Roosevelt Rd Oak Park 60304) with multiple dentists; copyright 'by Chelsea Jones' names the owner. No second address or DSO affiliation.",
+        "source_url": "https://www.oakparkdentist.com/meet-us"
+      },
+      "evidence_quality": "verified",
+      "gate_status": "ready_for_validation",
+      "reasoning": "Single-location, multi-dentist practice owned by Dr. Chelsea Jones (with Dr. Joseph Lepkowski + a periodontist) \u2014 confirms proposed single_loc_group. No second location, DSO, or PE backing.",
+      "cross_session_corroboration": {
+        "second_pass": "ind_south_full13_secondpass",
+        "second_pass_verdict": {
+          "evidence_tier": "single_loc_group",
+          "evidence_quality": "verified",
+          "gate_status": "ready_for_validation"
+        },
+        "primary_verdict": {
+          "evidence_tier": "single_loc_group",
+          "evidence_quality": "verified",
+          "gate_status": "ready_for_validation"
+        },
+        "agreement": "corroborated",
+        "note": "Independent second pass reached the same ownership tier. Tier and pe_backed match."
+      }
+    }
+  ],
+  "rows": [
+    {
+      "location_id": "d9fb0c9f226a66f3",
+      "practice_name": "Romo Dental III",
+      "zip": "60804",
+      "city": "CICERO",
+      "backfill_lane": "AO_network",
+      "network_id": null,
+      "protected_network_hold": false,
+      "row_class": "original_13",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation"
+    },
+    {
+      "location_id": "719b01502f151a50",
+      "practice_name": "PROCARE DENTAL GROUP P.C.",
+      "zip": "60804",
+      "city": "CICERO",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:BRUNETTI_ROBERT",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": false,
+      "evidence_quality": "partial",
+      "row_gate_status": "candidate",
+      "address": "5950 W Park Ave, Cicero 60804",
+      "member_url": null,
+      "note": "5950 W Park Ave, Cicero 60804 \u2014 NOT on current procaredentalgroup.com/locations (10 current locations exclude Cicero). May be closed/retired. Cannot confirm active membership."
+    },
+    {
+      "location_id": "f3959b4a9ac8e139",
+      "practice_name": "SILVA DENTAL CENTER LTD",
+      "zip": "60804",
+      "city": "CICERO",
+      "backfill_lane": "AO_network",
+      "network_id": null,
+      "protected_network_hold": false,
+      "row_class": "original_13",
+      "evidence_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_quality": "verified",
+      "row_gate_status": "undetermined"
+    },
+    {
+      "location_id": "28fab093c7a6a0d9",
+      "practice_name": "MONIL P SHAH DMD PC",
+      "zip": "60804",
+      "city": "CICERO",
+      "backfill_lane": "AO_network",
+      "network_id": null,
+      "protected_network_hold": false,
+      "row_class": "original_13",
+      "evidence_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_quality": "verified",
+      "row_gate_status": "undetermined"
+    },
+    {
+      "location_id": "addadba0d25e3812",
+      "practice_name": "IMAGE DENTAL LLC",
+      "zip": "60804",
+      "city": "CICERO",
+      "backfill_lane": "AO_network",
+      "network_id": null,
+      "protected_network_hold": false,
+      "row_class": "original_13",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation"
+    },
+    {
+      "location_id": "fb2614131429927d",
+      "practice_name": "PERFECT DENTAL SMILE, LTD",
+      "zip": "60804",
+      "city": "CICERO",
+      "backfill_lane": "AO_network",
+      "network_id": null,
+      "protected_network_hold": false,
+      "row_class": "original_13",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation"
+    },
+    {
+      "location_id": "2ab7cdb707db8803",
+      "practice_name": "METROSMILES - CICERO DENTAL PC",
+      "zip": "60804",
+      "city": "CICERO",
+      "backfill_lane": "AO_network",
+      "network_id": null,
+      "protected_network_hold": false,
+      "row_class": "original_13",
+      "evidence_tier": "branded_dso",
+      "pe_backed": false,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation"
+    },
+    {
+      "location_id": "bb6d4fb9d7b95ca4",
+      "practice_name": "COMPASS DENTAL, P.C.",
+      "zip": "60640",
+      "city": "CHICAGO",
+      "backfill_lane": "AO_network",
+      "network_id": null,
+      "protected_network_hold": false,
+      "row_class": "original_13",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_quality": "partial",
+      "row_gate_status": "candidate"
+    },
+    {
+      "location_id": "0884ff9f2ce7934f",
+      "practice_name": "Braam Dental",
+      "zip": "60640",
+      "city": "CHICAGO",
+      "backfill_lane": "AO_network",
+      "network_id": null,
+      "protected_network_hold": false,
+      "row_class": "original_13",
+      "evidence_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_quality": "insufficient",
+      "row_gate_status": "undetermined"
+    },
+    {
+      "location_id": "e32ed1606301b785",
+      "practice_name": "THE DENTAL MASTRS OF RAVENSWOOD LLC",
+      "zip": "60640",
+      "city": "CHICAGO",
+      "backfill_lane": "AO_network",
+      "network_id": null,
+      "protected_network_hold": false,
+      "row_class": "original_13",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation"
+    },
+    {
+      "location_id": "0c8f995db2124f57",
+      "practice_name": "TEETH MATTER ON KEDZIE P.C.",
+      "zip": "60629",
+      "city": "CHICAGO",
+      "backfill_lane": "AO_network",
+      "network_id": null,
+      "protected_network_hold": false,
+      "row_class": "original_13",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_quality": "partial",
+      "row_gate_status": "candidate"
+    },
+    {
+      "location_id": "9c588fbf68114847",
+      "practice_name": "PULASKI SMILING DENTAL P.C.",
+      "zip": "60629",
+      "city": "CHICAGO",
+      "backfill_lane": "AO_network",
+      "network_id": null,
+      "protected_network_hold": false,
+      "row_class": "original_13",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation"
+    },
+    {
+      "location_id": "1932e4cc87a3c456",
+      "practice_name": "SMILE TOWN DENTAL",
+      "zip": "60101",
+      "city": "ADDISON",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:SHAFI_SOHAIL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "42 W Lake St Addison 60101",
+      "member_url": "https://www.smiletowndental.com/reem-shafi-dmd/",
+      "note": "42 W Lake St Addison 60101. Sub-part of Ashton Dental PC per NPPES."
+    },
+    {
+      "location_id": "3f2a1feba10ebd5d",
+      "practice_name": "ASHTON DENTAL PC",
+      "zip": "60108",
+      "city": "BLOOMINGDALE",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:SHAFI_SOHAIL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": false,
+      "evidence_quality": "partial",
+      "row_gate_status": "candidate",
+      "address": "142 S Gary Ave Bloomingdale 60108",
+      "member_url": null,
+      "note": "142 S Gary Ave Bloomingdale 60108. Current occupant appears 'Astra Dental'/'Family Dental Care of Bloomingdale'; no documentary confirmation of Reem Shafi/Two Rivers at this address. May be historical/relocated."
+    },
+    {
+      "location_id": "cc396d3264541f15",
+      "practice_name": "TWO RIVERS DENTAL PC",
+      "zip": "60120",
+      "city": "ELGIN",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:SHAFI_SOHAIL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "247 Dundee Ave Elgin 60120",
+      "member_url": "https://www.myestrelladental.com/reem-shafi-dmd/",
+      "note": "247 Dundee Ave Elgin 60120."
+    },
+    {
+      "location_id": "f11458f91c91c4af",
+      "practice_name": "SMILE VIEW DENTAL",
+      "zip": "60185",
+      "city": "WEST CHICAGO",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:SHAFI_SOHAIL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "956 N Neltnor Blvd West Chicago 60185",
+      "member_url": "https://www.mysmileviewdental.com/reem-shafi-dmd/",
+      "note": "956 N Neltnor Blvd West Chicago 60185."
+    },
+    {
+      "location_id": "51274670f11ff36c",
+      "practice_name": "SIMPLY DENTAL",
+      "zip": "60188",
+      "city": "CAROL STREAM",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:SHAFI_SOHAIL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "341 E Geneva Rd Carol Stream 60188",
+      "member_url": "https://www.mysimplydental.com/reem-shafi-dmd/",
+      "note": "341 E Geneva Rd Carol Stream 60188."
+    },
+    {
+      "location_id": "5a1771b772dff590",
+      "practice_name": "TROY DENTAL",
+      "zip": "60404",
+      "city": "SHOREWOOD",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:SHAFI_SOHAIL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "964 Brook Forest Ave Shorewood 60404",
+      "member_url": "https://www.mytroydental.com/contact/",
+      "note": "964 Brook Forest Ave Shorewood 60404. Dr. Reem Shafi in staff."
+    },
+    {
+      "location_id": "9f132406279447c6",
+      "practice_name": "TWO RIVERS DENTAL",
+      "zip": "60440",
+      "city": "BOLINGBROOK",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:SHAFI_SOHAIL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "1196 W Boughton Rd Bolingbrook 60440",
+      "member_url": "https://www.tworiversdental.com/reem-shafi-dmd/",
+      "note": "1196 W Boughton Rd Bolingbrook 60440. Flagship."
+    },
+    {
+      "location_id": "0d9026fed63a1df0",
+      "practice_name": "FARRELL",
+      "zip": "60441",
+      "city": "LOCKPORT",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:SHAFI_SOHAIL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "16533 W 159th St Lockport 60441",
+      "member_url": "https://www.farrelldental.com/",
+      "note": "16533 W 159th St Lockport 60441. Features Dr. Reem Shafi; shared Dr. Peterson staff."
+    },
+    {
+      "location_id": "ab575c87c6bb7249",
+      "practice_name": "ASHTON DENTAL PC",
+      "zip": "60491",
+      "city": "HOMER GLEN",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:SHAFI_SOHAIL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "14403 S Bell Rd Homer Glen 60491",
+      "member_url": "https://www.myecodental.com/reem-shafi-dmd/",
+      "note": "14403 S Bell Rd Homer Glen 60491. NPPES NPI 1588055941 confirms Ashton Dental PC."
+    },
+    {
+      "location_id": "9ee4df9470dec738",
+      "practice_name": "ASHTON DENTAL PC",
+      "zip": "60504",
+      "city": "AURORA",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:SHAFI_SOHAIL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "1137 E Eola Rd Aurora 60504",
+      "member_url": "https://www.ashton-dental.com/reem-shafi-dmd/",
+      "note": "1137 E Eola Rd Aurora 60504 (site lists 1137 N Eola Rd Ste 109 Aurora 60502 \u2014 minor variant)."
+    },
+    {
+      "location_id": "ace9e319256f2d7a",
+      "practice_name": "ASHTON DENTAL PC",
+      "zip": "60540",
+      "city": "NAPERVILLE",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:SHAFI_SOHAIL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "1767 W Ogden Ave Naperville 60540",
+      "member_url": "https://www.ogdendental.com/reem-shafi-dmd/",
+      "note": "1767 W Ogden Ave Naperville 60540. Federal NPI 1629614698 DBA 'Ogden Dental'."
+    },
+    {
+      "location_id": "50eb637aaa38aa4b",
+      "practice_name": "ASHTON DENTAL PC",
+      "zip": "60540",
+      "city": "NAPERVILLE",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:SHAFI_SOHAIL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "1212 S Naper Blvd Naperville 60540",
+      "member_url": "https://www.myprosmiles.com/",
+      "note": "1212 S Naper Blvd Naperville 60540. NPI 1174124945 Ashton Dental PC, Sohail S Shafi Manager."
+    },
+    {
+      "location_id": "192eeb357d406084",
+      "practice_name": "OSWEGO DENTAL",
+      "zip": "60543",
+      "city": "OSWEGO",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:SHAFI_SOHAIL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "2484 Route 30 Oswego 60543",
+      "member_url": "https://www.myoswegodental.com/reem-shafi-dmd/",
+      "note": "2484 Route 30 Oswego 60543."
+    },
+    {
+      "location_id": "ad04ebea2ff68064",
+      "practice_name": "GENTLE DENTAL GROUP",
+      "zip": "60560",
+      "city": "YORKVILLE",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:SHAFI_SOHAIL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "608 E Veterans Pkwy Yorkville 60560",
+      "member_url": "https://www.mygentledentalgroup.com/reem-shafi-dmd/",
+      "note": "608 E Veterans Pkwy Yorkville 60560. DB 'affiliated_dso: Gentle Dental' is FALSE POSITIVE \u2014 locally-named Two Rivers/Ashton office, NOT national Gentle Dental/InterDent."
+    },
+    {
+      "location_id": "bb0b258dbdee424c",
+      "practice_name": "OGDEN VALLEY DENTAL",
+      "zip": "60563",
+      "city": "NAPERVILLE",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:SHAFI_SOHAIL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "1224 W Ogden Ave Naperville 60563",
+      "member_url": "https://www.ogdenvalleydental.com/reem-shafi-dmd/",
+      "note": "1224 W Ogden Ave Naperville 60563."
+    },
+    {
+      "location_id": "41e9efc177c3226c",
+      "practice_name": "ASHTON DENTAL PC",
+      "zip": "60623",
+      "city": "CHICAGO",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:SHAFI_SOHAIL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "3752 W 16th St Chicago 60623",
+      "member_url": "https://dentistsok.com/dental-clinic/ashton-dental-pc-chicago-il/",
+      "note": "3752 W 16th St Chicago 60623. NPI 1215699632, Sohail S Shafi Manager, mailing 1730 Park St #106. Yelp lists as 'Integra Dental'."
+    },
+    {
+      "location_id": "97ce6e59218e0f7a",
+      "practice_name": "ASHTON DENTAL PC",
+      "zip": "60661",
+      "city": "CHICAGO",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:SHAFI_SOHAIL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": false,
+      "evidence_quality": "partial",
+      "row_gate_status": "candidate",
+      "address": "328 N Desplaines St Chicago 60661",
+      "member_url": "https://www.thedentistrie.com/",
+      "note": "328 N Desplaines St Chicago 60661. Current occupant 'The Dentistrie' (Dr. Shamil Shafi, family member). Family connection likely but a Reem Shafi/Two Rivers brand page was not confirmed for this address."
+    },
+    {
+      "location_id": "e10809c55b2d7955",
+      "practice_name": "ILLINOIS DENTAL PROVIDERS (ARLINGTON HEIGHTS), LTD.",
+      "zip": "60004",
+      "city": "ARLINGTON HEIGHTS",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:NITTINGER_RACHEL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "branded_dso",
+      "pe_backed": true,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": null,
+      "member_url": null,
+      "note": "Confirmed via DentalWorks IL locator + DOL EBSA M-1 MEWA index 10741 entity name."
+    },
+    {
+      "location_id": "5ffc5f3c0a7b3102",
+      "practice_name": "DR. ZASSO & ASSOCIATES (SKOKIE), LTD.",
+      "zip": "60077",
+      "city": "SKOKIE",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:NITTINGER_RACHEL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "branded_dso",
+      "pe_backed": true,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": null,
+      "member_url": null,
+      "note": "Confirmed via DentalWorks IL locator + DOL EBSA M-1 MEWA index 10741 entity name."
+    },
+    {
+      "location_id": "2398f9e48e6578f9",
+      "practice_name": "ILLINOIS DENTAL PROVIDERS (HARLEM & NORTH), LTD.",
+      "zip": "60130",
+      "city": "FOREST PARK",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:NITTINGER_RACHEL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "branded_dso",
+      "pe_backed": true,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": null,
+      "member_url": null,
+      "note": "DB EIN 363782916 is a variant; DOL canonical 20-0384209. Confirmed entity."
+    },
+    {
+      "location_id": "1370e6f75164c141",
+      "practice_name": "ILLINOIS DENTAL PROVIDERS (GLEN ELLYN), LTD",
+      "zip": "60137",
+      "city": "GLEN ELLYN",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:NITTINGER_RACHEL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "branded_dso",
+      "pe_backed": true,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": null,
+      "member_url": null,
+      "note": "Confirmed via DentalWorks IL locator + DOL EBSA M-1 MEWA index 10741 entity name."
+    },
+    {
+      "location_id": "f849d9ecf776fd7d",
+      "practice_name": "ILLINOIS DENTAL PROVIDRS (SCHAUMBURG), P.C.",
+      "zip": "60173",
+      "city": "SCHAUMBURG",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:NITTINGER_RACHEL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "branded_dso",
+      "pe_backed": true,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": null,
+      "member_url": null,
+      "note": "Confirmed via DentalWorks IL locator + DOL EBSA M-1 MEWA index 10741 entity name."
+    },
+    {
+      "location_id": "effac443b4839358",
+      "practice_name": "MECKLER DENTAL PROVIDERS (RIVER OAKS), LTD.",
+      "zip": "60409",
+      "city": "CALUMET CITY",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:NITTINGER_RACHEL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "branded_dso",
+      "pe_backed": true,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": null,
+      "member_url": null,
+      "note": "Confirmed via DentalWorks IL locator + DOL EBSA M-1 MEWA index 10741 entity name."
+    },
+    {
+      "location_id": "072d146be1bf9d80",
+      "practice_name": "DR. RAINA & ASSOCITATES (CHICAGO RIDGE), LTD",
+      "zip": "60415",
+      "city": "CHICAGO RIDGE",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:NITTINGER_RACHEL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "branded_dso",
+      "pe_backed": true,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": null,
+      "member_url": null,
+      "note": "DB EIN 311812648 actually belongs to Schaumburg PC per DOL M-1; entity name+address still confirmed."
+    },
+    {
+      "location_id": "056d1f180dcb8c9a",
+      "practice_name": "ILLINOIS DENTAL PROVIDERS (TINLEY PARK), LTD.",
+      "zip": "60477",
+      "city": "TINLEY PARK",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:NITTINGER_RACHEL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "branded_dso",
+      "pe_backed": true,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": null,
+      "member_url": null,
+      "note": "Confirmed via DentalWorks IL locator + DOL EBSA M-1 MEWA index 10741 entity name."
+    },
+    {
+      "location_id": "4396df02b95d7ad2",
+      "practice_name": "GEORGE J. TRAKAKIS D.D.S. & ASSOCIATES (FOX VALLEY), LTD.",
+      "zip": "60504",
+      "city": "AURORA",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:NITTINGER_RACHEL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "branded_dso",
+      "pe_backed": true,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": null,
+      "member_url": null,
+      "note": "Confirmed via DentalWorks IL locator + DOL EBSA M-1 MEWA index 10741 entity name."
+    },
+    {
+      "location_id": "7542f13e98b7bd0d",
+      "practice_name": "ILLINOIS DENTAL PROVIDERS, P. C.",
+      "zip": "60585",
+      "city": "PLAINFIELD",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:NITTINGER_RACHEL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "branded_dso",
+      "pe_backed": true,
+      "confirmed_at_brand": false,
+      "evidence_quality": "partial",
+      "row_gate_status": "candidate",
+      "address": null,
+      "member_url": null,
+      "note": "Confirmed via DOL M-1 + DentalWorks locator, but may be CLOSED as of 2026-04 per Yelp (Plainfield)."
+    },
+    {
+      "location_id": "8e92e63bee0c1cb7",
+      "practice_name": "ILLINOIS DENTAL PROVIDERS (CHICAGO LOOP), LTD",
+      "zip": "60606",
+      "city": "CHICAGO",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:NITTINGER_RACHEL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "branded_dso",
+      "pe_backed": true,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": null,
+      "member_url": null,
+      "note": "Confirmed via DentalWorks IL locator + DOL EBSA M-1 MEWA index 10741 entity name."
+    },
+    {
+      "location_id": "902006615166d38e",
+      "practice_name": "DCP OF ILLINOIS (IRVING PARK), LTD.",
+      "zip": "60641",
+      "city": "CHICAGO",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:NITTINGER_RACHEL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "branded_dso",
+      "pe_backed": true,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": null,
+      "member_url": null,
+      "note": "Confirmed via DentalWorks IL locator + DOL EBSA M-1 MEWA index 10741 entity name."
+    },
+    {
+      "location_id": "4133452316726b0d",
+      "practice_name": "PROCARE DENTAL GROUP, P.C.",
+      "zip": "60005",
+      "city": "ARLINGTON HEIGHTS",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:BRUNETTI_ROBERT",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "605 E Algonquin Rd, Arlington Heights 60005",
+      "member_url": "https://www.procaredentalgroup.com/locations/",
+      "note": "605 E Algonquin Rd, Arlington Heights 60005 \u2014 'Premier Dental Associates'. HQ, EIN 363122551, Brunetti President per BBB."
+    },
+    {
+      "location_id": "5592bc247431d45a",
+      "practice_name": "PROCARE DENTAL GROUP, P.C.",
+      "zip": "60068",
+      "city": "PARK RIDGE",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:BRUNETTI_ROBERT",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "1057 N NW Hwy, Park Ridge 60068",
+      "member_url": "https://www.procaredentalgroup.com/locations/",
+      "note": "1057 N NW Hwy, Park Ridge 60068 \u2014 'Associates in Dentistry'."
+    },
+    {
+      "location_id": "d56f7d708eb28b77",
+      "practice_name": "PROCARE DENTAL GROUP, P.C.",
+      "zip": "60120",
+      "city": "ELGIN",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:BRUNETTI_ROBERT",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "115 S Grove Ave, Elgin 60120",
+      "member_url": "https://www.yelp.com/biz/procare-dental-groups-pc-elgin",
+      "note": "115 S Grove Ave, Elgin 60120 \u2014 EIN 363825258. Not on current 10-location site; Yelp shows 'PROCARE DENTAL GROUPS PC' active as of April 2026."
+    },
+    {
+      "location_id": "2d248ca267e60284",
+      "practice_name": "PROCARE DENTAL GROUP, P.C.",
+      "zip": "60187",
+      "city": "WHEATON",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:BRUNETTI_ROBERT",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "7 Blanchard Cir, Wheaton 60187",
+      "member_url": "https://www.procaredentalgroup.com/locations/",
+      "note": "7 Blanchard Cir, Wheaton 60187 \u2014 'Central DuPage Dental Group'."
+    },
+    {
+      "location_id": "bab0f0317a7ae69b",
+      "practice_name": "PROCARE DENTAL GROUP, P.C.",
+      "zip": "60201",
+      "city": "EVANSTON",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:BRUNETTI_ROBERT",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "820 Davis St, Evanston 60201",
+      "member_url": "https://opennpi.com/provider/1841357084",
+      "note": "820 Davis St, Evanston 60201 \u2014 'Lakeside Dentistry'; NPI 1841357084 Procare Dental Group P.C., AO Brunetti CEO."
+    },
+    {
+      "location_id": "9abd864bb17f0358",
+      "practice_name": "PROCARE DENTAL GROUP, P.C.",
+      "zip": "60564",
+      "city": "NAPERVILLE",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:BRUNETTI_ROBERT",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "1304 Macom Dr, Naperville 60564",
+      "member_url": "https://www.procaredentalgroup.com/locations/",
+      "note": "1304 Macom Dr, Naperville 60564 \u2014 'Naperbrook Dentistry'."
+    },
+    {
+      "location_id": "fa6464c8c22f9bd9",
+      "practice_name": "PROCARE DENTAL GROUP, P.C.",
+      "zip": "60614",
+      "city": "CHICAGO",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:BRUNETTI_ROBERT",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "2266 N Lincoln Ave, Chicago 60614",
+      "member_url": "https://opennpi.com/provider/1578620712",
+      "note": "2266 N Lincoln Ave, Chicago 60614 \u2014 NPI 1578620712 'Lincoln Park Dentistry' DBA under Procare. Not on current site; confirmed by NPPES legal name."
+    },
+    {
+      "location_id": "7f65db0e6a313bb3",
+      "practice_name": "PROCARE DENTAL GROUP, P.C.",
+      "zip": "60654",
+      "city": "CHICAGO",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:BRUNETTI_ROBERT",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "434 W Ontario St, Chicago 60654",
+      "member_url": "https://opennpi.com/provider/1528246212",
+      "note": "434 W Ontario St, Chicago 60654 \u2014 'River North Dental Group', NPI 1528246212, AO Brunetti CEO, EIN 452609649. On current locations page."
+    },
+    {
+      "location_id": "5da23e850203188a",
+      "practice_name": "EXCELLENCE DENTAL OF BARRINGTON, PLLC",
+      "zip": "60010",
+      "city": "BARRINGTON",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:SWEIS_JUBRAIL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": false,
+      "evidence_quality": "partial",
+      "row_gate_status": "candidate",
+      "address": "1531 S Grove Ave Barrington 60010",
+      "member_url": null,
+      "note": "1531 S Grove Ave Barrington 60010 currently occupied by Barrington Grove Dental (Passehl/Sekulich) \u2014 no Sweis branding. PLLC shell may be closed/vacated."
+    },
+    {
+      "location_id": "b41468a8c802391f",
+      "practice_name": "PALATINE DENTAL",
+      "zip": "60067",
+      "city": "PALATINE",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:SWEIS_JUBRAIL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "partial",
+      "row_gate_status": "ready_for_validation",
+      "address": "Confirmed: advocatedentalpalatine.com lists Dr. Jubrail (Jay) Sweis DDS at 232 E NW Hwy Palatine 60067",
+      "member_url": "https://www.advocatedentalpalatine.com/about-us/meet-the-team/",
+      "note": "Confirmed: advocatedentalpalatine.com lists Dr. Jubrail (Jay) Sweis DDS at 232 E NW Hwy Palatine 60067. Active."
+    },
+    {
+      "location_id": "0f917daa7d21b189",
+      "practice_name": "BLOOMINGDALE DENTAL, PLLC",
+      "zip": "60108",
+      "city": "BLOOMINGDALE",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:SWEIS_JUBRAIL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": false,
+      "evidence_quality": "partial",
+      "row_gate_status": "candidate",
+      "address": "156 E Lake St Bloomingdale 60108",
+      "member_url": "https://npidb.org/organizations/dental_health/general-practice_1223g0001x/1831072214.aspx",
+      "note": "156 E Lake St Bloomingdale 60108 now operating as 'Blooming Smiles Dental Studio' (Dr. Gabriela Duraes). PLLC shell may be inactive/sublease."
+    },
+    {
+      "location_id": "ffe0a2b736d88ee3",
+      "practice_name": "ADVOCATE DENTAL GENEVA, LLC",
+      "zip": "60134",
+      "city": "GENEVA",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:SWEIS_JUBRAIL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": false,
+      "evidence_quality": "partial",
+      "row_gate_status": "candidate",
+      "address": "112 N 4th St Geneva 60134",
+      "member_url": null,
+      "note": "112 N 4th St Geneva 60134 \u2014 brushandrestore.com (Dr. Alli Wolski). Advocate Dental Geneva LLC shell has Sweis AO but no active Sweis operation confirmed."
+    },
+    {
+      "location_id": "06103ae3a6ed4ab0",
+      "practice_name": "ADVOCATE DENTAL ST CHARLES, LLC",
+      "zip": "60174",
+      "city": "ST CHARLES",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:SWEIS_JUBRAIL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": false,
+      "evidence_quality": "partial",
+      "row_gate_status": "candidate",
+      "address": "804 S 3rd St St Charles 60174",
+      "member_url": null,
+      "note": "804 S 3rd St St Charles 60174 now Bespoke Dental Co./Steven J Baginski DDS. Sweis operates Everyone's Family Dental at a different St. Charles address. Shell may be closed/vacated."
+    },
+    {
+      "location_id": "e16ff3a9b55a8492",
+      "practice_name": "MANHATTAN DENTAL LLC",
+      "zip": "60442",
+      "city": "MANHATTAN",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:SWEIS_JUBRAIL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "partial",
+      "row_gate_status": "ready_for_validation",
+      "address": "175 S State St Manhattan 60442",
+      "member_url": "https://www.manhattandentalcare.org/",
+      "note": "175 S State St Manhattan 60442 \u2014 manhattandentalcare.org active. Sweis listed on dentalplans.com at Manhattan 60442. EIN 262416337. Confirmed Sweis-linked."
+    },
+    {
+      "location_id": "5e92660ad5b32980",
+      "practice_name": "JAY SWEIS D.D.S P.C",
+      "zip": "60639",
+      "city": "CHICAGO",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:SWEIS_JUBRAIL",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "partial",
+      "row_gate_status": "ready_for_validation",
+      "address": "NPI 1558704577 \u2014 2715 N Central Ave Suite A Chicago 60639",
+      "member_url": "https://npino.com/dental-clinic/1558704577-jay-sweis-d.d.s-p.c/",
+      "note": "NPI 1558704577 \u2014 2715 N Central Ave Suite A Chicago 60639. AO Dr. Jubrail Sweis DDS. Confirmed."
+    },
+    {
+      "location_id": "c2c46e94895cda83",
+      "practice_name": "D2 DENTAL AT OAK STREET, P.C.",
+      "zip": "60402",
+      "city": "BERWYN",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:LABINOV_BORIS",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "branded_dso",
+      "pe_backed": true,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "7000 Cermak Rd, Berwyn 60402",
+      "member_url": null,
+      "note": "7000 Cermak Rd, Berwyn 60402. Tied via P.C. name + AO + shared Oak Park mailing; no individual locator URL."
+    },
+    {
+      "location_id": "d616036cc2145cf4",
+      "practice_name": "D2 DENTAL AT OAK STREET, P.C.",
+      "zip": "60406",
+      "city": "BLUE ISLAND",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:LABINOV_BORIS",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "branded_dso",
+      "pe_backed": true,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "3046 W 127th St, Blue Island 60406",
+      "member_url": "https://providerwire.com/general-practice-dentistry/illinois/blue-island/d-2-dental-at-oak-street-pc-1639587025",
+      "note": "3046 W 127th St, Blue Island 60406. NPI 1639587025, Boris Labinov AO."
+    },
+    {
+      "location_id": "3f1051899da7b50d",
+      "practice_name": "D2 DENTAL AT OAK STREET, P.C.",
+      "zip": "60609",
+      "city": "CHICAGO",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:LABINOV_BORIS",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "branded_dso",
+      "pe_backed": true,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "4318 S State St, Chicago 60609",
+      "member_url": "https://opennpi.com/provider/1821301102",
+      "note": "4318 S State St, Chicago 60609. NPI 1821301102 D2 Dental of Illinois P.C. DBA Destiny Dental, mailing 137 N Oak Park Ave."
+    },
+    {
+      "location_id": "d318648e80a552ff",
+      "practice_name": "D2 DENTAL AT OAK STREET, P.C.",
+      "zip": "60617",
+      "city": "CHICAGO",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:LABINOV_BORIS",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "branded_dso",
+      "pe_backed": true,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "1715 E 95th St, Chicago 60617",
+      "member_url": null,
+      "note": "1715 E 95th St, Chicago 60617. Tied via shared P.C. shell + AO; no individual locator URL."
+    },
+    {
+      "location_id": "9eb34e1dcb9933f8",
+      "practice_name": "D2 DENTAL AT OAK STREET, P.C.",
+      "zip": "60641",
+      "city": "CHICAGO",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:LABINOV_BORIS",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "branded_dso",
+      "pe_backed": true,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "4848 W Irving Park Rd, Chicago 60641",
+      "member_url": "https://www.hipaaspace.com/medical_billing/coding/national_provider_identifier/codes/npi_1194137208.aspx",
+      "note": "4848 W Irving Park Rd, Chicago 60641. NPI 1194137208."
+    },
+    {
+      "location_id": "ef079f1cfd53d7f0",
+      "practice_name": "D2 DENTAL AT OAK STREET, P.C.",
+      "zip": "60652",
+      "city": "CHICAGO",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:LABINOV_BORIS",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "branded_dso",
+      "pe_backed": true,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "3348 W 87th St, Chicago 60652",
+      "member_url": null,
+      "note": "3348 W 87th St, Chicago 60652. Tied via P.C. shell + Destiny Dental brand; no individual locator URL."
+    },
+    {
+      "location_id": "e4fb4be6a4efee52",
+      "practice_name": "D2 DENTAL AT OAK STREET, P.C.",
+      "zip": "60660",
+      "city": "CHICAGO",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:LABINOV_BORIS",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "branded_dso",
+      "pe_backed": true,
+      "confirmed_at_brand": true,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation",
+      "address": "1541 W Devon Ave, Chicago 60660",
+      "member_url": null,
+      "note": "1541 W Devon Ave, Chicago 60660. Tied via shared P.C. shell + AO; no individual locator URL."
+    },
+    {
+      "location_id": "019f06d7def19049",
+      "practice_name": "ELGIN AMAZING DENTAL LLC",
+      "zip": "60120",
+      "city": "ELGIN",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:RAMAHA_AHMED",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "partial",
+      "row_gate_status": "ready_for_validation",
+      "address": "229 National St Elgin 60120",
+      "member_url": "https://udclinics.com/our-location/",
+      "note": "229 National St Elgin 60120 verbatim on udclinics.com; BBB lists 'Universal Dental of Elgin' as related business under Ramaha"
+    },
+    {
+      "location_id": "9d4cd058e4525078",
+      "practice_name": "STONE PARK DENTAL INC",
+      "zip": "60165",
+      "city": "STONE PARK",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:RAMAHA_AHMED",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": false,
+      "evidence_quality": "partial",
+      "row_gate_status": "candidate",
+      "address": null,
+      "member_url": "https://www.dentalplans.com/dentists/illinois/stone-park/60165/dr-ahmed-ramaha-83814/",
+      "note": "Ramaha listed practicing at 1550 N Mannheim Rd Stone Park; address NOT on udclinics.com locator and NOT a BBB related business \u2014 brand tie not documentary-confirmed"
+    },
+    {
+      "location_id": "19c344d4755fd990",
+      "practice_name": "CENTRAL AMAZING DENTAL LLC",
+      "zip": "60459",
+      "city": "BURBANK",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:RAMAHA_AHMED",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "partial",
+      "row_gate_status": "ready_for_validation",
+      "address": "5501 W 79th St Burbank 60459",
+      "member_url": "https://www.bbb.org/us/il/oak-lawn/profile/dental-services/universal-dental-of-burbank-0654-90029782",
+      "note": "5501 W 79th St Burbank 60459; BBB 'Universal Dental of Burbank' = same Ramaha entity; NPPES legal name 'Central Amazing Dental LLC' operates as Universal Dental"
+    },
+    {
+      "location_id": "b4b2a9ed748734fb",
+      "practice_name": "ORLAND PARK AMAZING DENTAL",
+      "zip": "60462",
+      "city": "ORLAND PARK",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:RAMAHA_AHMED",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "partial",
+      "row_gate_status": "ready_for_validation",
+      "address": "8752 W 159th St Ste 8 Orland Park 60462",
+      "member_url": "https://www.bbb.org/us/il/orland-park/profile/dentist/universal-dental-of-orland-park-0654-88347265",
+      "note": "8752 W 159th St Ste 8 Orland Park 60462 \u2014 exact match on udclinics.com and BBB (Ramaha Principal Owner)"
+    },
+    {
+      "location_id": "10a173a568a7cd9f",
+      "practice_name": "ORLAND SQUARE UNIVERSAL DENTAL LLC",
+      "zip": "60462",
+      "city": "ORLAND PARK",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:RAMAHA_AHMED",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": true,
+      "evidence_quality": "partial",
+      "row_gate_status": "ready_for_validation",
+      "address": "10 Orland Square Dr Orland Park 60462",
+      "member_url": "https://udclinics.com/our-location/",
+      "note": "10 Orland Square Dr Orland Park 60462 verbatim on udclinics.com; BBB lists 'Universal Dental Of Orland Square' as related business"
+    },
+    {
+      "location_id": "93287e7e58ead8af",
+      "practice_name": "LOOP DENTAL & SPA",
+      "zip": "60616",
+      "city": "CHICAGO",
+      "backfill_lane": "AO_network",
+      "network_id": "ao:RAMAHA_AHMED",
+      "protected_network_hold": true,
+      "row_class": "protected_58",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "confirmed_at_brand": false,
+      "evidence_quality": "partial",
+      "row_gate_status": "candidate",
+      "address": "1605 S Michigan Ave Chicago 60616",
+      "member_url": "https://www.yelp.com/biz/universal-dental-chicago-7",
+      "note": "1605 S Michigan Ave Chicago 60616; Yelp shows Universal Dental CLOSED (Jan 2026) with 'Loop Dental And Spa' co-listed same address. Rebrand artifact; no direct documentary URL naming Ramaha as owner of 'Loop Dental & Spa' \u2014 AO inference only"
+    },
+    {
+      "location_id": "27297b90116fc899",
+      "practice_name": "Molis Dental",
+      "zip": "60527",
+      "city": "BURR RIDGE",
+      "backfill_lane": "AO_network",
+      "network_id": null,
+      "protected_network_hold": false,
+      "row_class": "original_13",
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation"
+    },
+    {
+      "location_id": "b71f5fd4d273eca4",
+      "practice_name": "OAK PARK DENTAL STUDIO",
+      "zip": "60304",
+      "city": "OAK PARK",
+      "backfill_lane": "AO_network",
+      "network_id": null,
+      "protected_network_hold": false,
+      "row_class": "original_13",
+      "evidence_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_quality": "verified",
+      "row_gate_status": "ready_for_validation"
+    }
+  ]
+}

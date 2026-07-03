@@ -1,0 +1,122 @@
+{
+  "network": "KENDRA WALKER",
+  "network_id": "ao:WALKER_KENDRA",
+  "owner_type_verdict": "pe_mso_backed",
+  "network_summary": "Both locations are DENTAL PROFESSIONALS OF ILLINOIS, PC/P.C. — the well-documented Heartland Dental friendly-PC entity used throughout Illinois. Kendra Walker is the authorized official on the NPPES registrations for both offices. The consumer-facing trade names are Porter Dental Center (Lockport) and a Heartland Dental-branded Romeoville office. Heartland Dental is a national DSO (1,750+ supported offices, 39 states) majority-owned by KKR since 2018, with Ontario Teachers' Pension Plan retaining a minority stake. Both locations are already classified dso_national in the database. This is a branded_dso / pe_mso_backed network — no independent dentist ownership structure.",
+  "owner_operator_identity": "Heartland Dental LLC (DSO platform, KKR majority-owned); Kendra Walker is the NPPES authorized official for the friendly-PC legal entity, not an independent owner-dentist.",
+  "brand_trade_names": [
+    "Heartland Dental",
+    "Porter Dental Center",
+    "Dental Professionals of Illinois, PC",
+    "Orahh Care"
+  ],
+  "legal_entities": [
+    "DENTAL PROFESSIONALS OF ILLINOIS, PC",
+    "DENTAL PROFESSIONALS OF ILLINOIS, P.C",
+    "Heartland Dental LLC"
+  ],
+  "durable_artifacts": [
+    "Both NPIs (1902269079 and 1992235840) registered under 'DENTAL PROFESSIONALS OF ILLINOIS, PC/P.C.' — the standard Heartland Dental Illinois friendly-PC shell",
+    "Shared authorized official KENDRA WALKER across both NPIs spanning ZIPs 60441 and 60446",
+    "Heartland Dental jobs portal lists 16620 W 159th St Lockport IL (location 629e6c24236f7dc1) as an active Heartland-supported office",
+    "Superpages listing confirms 'Heartland Dental 450 S Weber Rd, Romeoville, IL 60446' (location cbde3ee6f46acad7)",
+    "Both locations already carry entity_classification=dso_national and affiliated_dso=Heartland Dental in the database"
+  ],
+  "mso_platform_pe_evidence": "Heartland Dental is the nation's largest DSO (1,750+ supported offices). KKR acquired majority ownership of Heartland Dental (documented: https://www.groupdentistrynow.com/dso-group-blog/taking-a-deeper-look-at-kkrs-majority-interest-acquisition-of-heartland-dental-the-largest-dso-in-country/). Ontario Teachers' Pension Plan retains minority stake. The friendly-PC structure ('Dental Professionals of Illinois, PC') is Heartland Dental's standard Illinois legal vehicle for regulatory compliance while MSO/management services are provided by Heartland Dental LLC.",
+  "stale_closed_false_positive_notes": "No stale or closed indicators found. Both offices show active Heartland Dental job listings and web presence as of 2026. The phone number on NPI 1902269079 (217-540-5100) is Heartland Dental's Effingham HQ main line — typical for org-level NPI registrations; the consumer-facing number for the Lockport office is (815) 552-2360 per Yelp/HealthGrades. Not a false positive.",
+  "evidence_chain": "AO signal: KENDRA WALKER listed as authorized official on two org-NPIs both registered as 'DENTAL PROFESSIONALS OF ILLINOIS, PC/P.C.' across ZIPs 60441 (Lockport) and 60446 (Romeoville). Documentary corroboration: (1) Heartland Dental jobs portal confirms 16620 W 159th St Lockport as a Heartland-supported office (jobs.heartland.com). (2) Superpages listing explicitly names '450 S Weber Rd Romeoville' as a Heartland Dental location. (3) Porter Dental Center (consumer brand at Lockport address) has Orahh Care affiliation — Orahh Care is a Heartland Dental brand per web results. (4) PE/MSO: KKR majority ownership of Heartland Dental documented by GroupDentistryNow and DrBicuspid. Both NPIs were already database-classified dso_national/Heartland Dental prior to this investigation, consistent with all findings.",
+  "future_app_notes": "No further validation needed for branded_dso/pe_backed status — Heartland Dental is a well-established national DSO with KKR backing. The Kendra Walker AO connection simply reflects Heartland's standard practice of registering a shared administrative contact on friendly-PC NPIs. If the downstream gate wants to confirm the Romeoville consumer brand name (the search returned 'Romeoville Smiles Dentistry' but also direct 'Heartland Dental' labeling), check the Heartland Dental office locator at heartland.com. Watch: the Lockport NPI phone (217-540-5100) is the HQ main line, not the local number — this is expected for Heartland org registrations and is not a flag.",
+  "classifications": [
+    {
+      "location_id": "629e6c24236f7dc1",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Heartland Dental LLC (KKR majority-owned); Kendra Walker is NPPES authorized official for the friendly-PC entity",
+      "network_id": "ao:WALKER_KENDRA",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2 across ZIPs 60441 and 60446 under shared AO KENDRA WALKER",
+          "org_npi=1902269079 registered as 'DENTAL PROFESSIONALS OF ILLINOIS, PC' — known Heartland friendly-PC legal name",
+          "entity_classification=dso_national in database with affiliated_dso=Heartland Dental"
+        ],
+        "evidence": [
+          "Heartland Dental jobs portal lists 16620 W 159th St Lockport IL as an active supported office (jobs.heartland.com/job/19240/dental-front-office-business-assistant-business-assistant-us-il-lockport-16620-w-159th-st-819/)",
+          "Porter Dental Center at this address is Orahh Care-affiliated; Orahh Care is a Heartland Dental brand (porterdentalcenter.com/orahh-care)",
+          "KKR majority ownership of Heartland Dental documented (groupdentistrynow.com, drbicuspid.com)",
+          "Yelp and HealthGrades confirm active practice at 16620 W 159th St Lockport IL"
+        ]
+      },
+      "evidence_urls": [
+        "https://jobs.heartland.com/job/19240/dental-front-office-business-assistant-business-assistant-us-il-lockport-16620-w-159th-st-819/",
+        "https://porterdentalcenter.com/orahh-care",
+        "https://www.yelp.com/biz/porter-dental-center-lockport",
+        "https://www.groupdentistrynow.com/dso-group-blog/taking-a-deeper-look-at-kkrs-majority-interest-acquisition-of-heartland-dental-the-largest-dso-in-country/",
+        "https://heartland.com/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "KENDRA WALKER",
+        "reach": 2,
+        "zips": ["60441", "60446"],
+        "npi": "1902269079",
+        "name": "DENTAL PROFESSIONALS OF ILLINOIS, PC",
+        "address": "16620 w 159th st",
+        "city": "LOCKPORT",
+        "zip": "60441",
+        "entity_classification": "dso_national",
+        "affiliated_dso": "Heartland Dental",
+        "provider_count": 2
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "Active Heartland Dental office with current job listings. HQ phone (217-540-5100) on NPI is expected for org registrations — local number is (815) 552-2360.",
+      "reasoning": "This is the Lockport Porter Dental Center location. The NPI is registered under 'DENTAL PROFESSIONALS OF ILLINOIS, PC' — the standard Heartland Dental Illinois friendly-PC shell. Heartland Dental jobs portal explicitly lists this address (16620 W 159th St, Lockport IL) as an active Heartland-supported office. The consumer brand Porter Dental Center is listed under Orahh Care, a Heartland Dental platform brand. KKR is the majority PE owner of Heartland Dental. Tier branded_dso, pe_backed=true, confidence=high. Already correctly classified as dso_national in the database."
+    },
+    {
+      "location_id": "cbde3ee6f46acad7",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Heartland Dental LLC (KKR majority-owned); Kendra Walker is NPPES authorized official for the friendly-PC entity",
+      "network_id": "ao:WALKER_KENDRA",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2 across ZIPs 60441 and 60446 under shared AO KENDRA WALKER",
+          "org_npi=1992235840 registered as 'DENTAL PROFESSIONALS OF ILLINOIS, P.C' — known Heartland friendly-PC legal name",
+          "entity_classification=dso_national in database with affiliated_dso=Heartland Dental"
+        ],
+        "evidence": [
+          "Superpages listing explicitly names 'Heartland Dental 450 S Weber Rd, Romeoville, IL 60446' confirming this is a Heartland Dental branded location (superpages.com/romeoville-il/bpp/heartland-dental-554789746)",
+          "KKR majority ownership of Heartland Dental documented (groupdentistrynow.com, drbicuspid.com)",
+          "Heartland Dental office locator at heartland.com covers all supported offices including IL"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.superpages.com/romeoville-il/bpp/heartland-dental-554789746",
+        "https://heartland.com/",
+        "https://www.groupdentistrynow.com/dso-group-blog/taking-a-deeper-look-at-kkrs-majority-interest-acquisition-of-heartland-dental-the-largest-dso-in-country/",
+        "https://www.drbicuspid.com/dental-business/dso/article/15374110/private-equity-firm-to-acquire-heartland-dental"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "KENDRA WALKER",
+        "reach": 2,
+        "zips": ["60441", "60446"],
+        "npi": "1992235840",
+        "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C",
+        "address": "450 s weber rd",
+        "city": "ROMEOVILLE",
+        "zip": "60446",
+        "entity_classification": "dso_national",
+        "affiliated_dso": "Heartland Dental",
+        "provider_count": 2,
+        "year_established": 2011
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "Superpages listing confirms active Heartland Dental presence at 450 S Weber Rd Romeoville. Established 2011 per NPPES.",
+      "reasoning": "This is the Romeoville Heartland Dental location. The NPI is registered under 'DENTAL PROFESSIONALS OF ILLINOIS, P.C.' — the standard Heartland Dental Illinois friendly-PC shell. Superpages explicitly lists 'Heartland Dental' at this exact address. KKR is the majority PE owner of Heartland Dental. Tier branded_dso, pe_backed=true, confidence=high. Already correctly classified as dso_national in the database. The consumer-facing brand name at this address may be 'Romeoville Smiles Dentistry' per one search result, but the Heartland Dental branded label in Superpages is the authoritative confirmation."
+    }
+  ]
+}

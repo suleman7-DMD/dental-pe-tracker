@@ -1,0 +1,623 @@
+[
+  {
+    "location_id": "de4d440182979bd4",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.bbb.org/us/il/chicago/profile/dentist/pedersen-dental-group-ltd-0654-90019216",
+      "https://www.pedersendentistry.com",
+      "https://www.linkedin.com/in/fonda-r-pedersen-dds-07418724/"
+    ],
+    "evidence_artifacts": [
+      "NPPES AO=FONDA PEDERSEN npi=1841547270 org=PEDERSEN DENTAL GROUP LTD zip=60631",
+      "Intel: Owner Dr. Fonda R. Pedersen, DDS confirmed; Dr. Maura Parker listed as associate dentist, not owner"
+    ],
+    "confidence": "medium",
+    "reasoning": "Intel dossier (verified quality) confirms Dr. Fonda Pedersen as owner/operator of Pedersen Dental Group Ltd at 6044 N Avondale Ave, Chicago 60631, with a second associate dentist (Dr. Parker). BBB and LinkedIn corroborate ownership. However, the 'Group Ltd' structure and multiple-provider footprint prevent classifying as true_independent without a positive sole-ownership web page; proposed tier is true_independent if the group is wholly owned by Dr. Pedersen with no partners.",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Fonda R. Pedersen, DDS",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "BBB + LinkedIn confirm Dr. Pedersen as owner; associate dentist present"},
+    "exact_address_match": false,
+    "practice_name": "PEDERSEN DENTAL GROUP LTD.",
+    "address": "6044 N Avondale Ave",
+    "city": "CHICAGO",
+    "zip": "60631",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "5341bee3458afb6d",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.healthgrades.com/dentist/dr-lloyd-camp-35lhf",
+      "https://www.sharecare.com/doctor/dr-lloyd-e-camp",
+      "https://doctor.webmd.com/doctor/lloyd-camp-19a1613f-1257-4817-8792-a147987f9ab4-overview"
+    ],
+    "evidence_artifacts": [
+      "NPPES npi=1992803084 name=LLOYD CAMP zip=60631",
+      "Intel (partial): Dr. Camp operates within Mobile Dental Care of Illinois, a multi-provider group with 6+ dentists; classified as associate, not independent owner"
+    ],
+    "confidence": "low",
+    "reasoning": "The intel dossier (partial quality) indicates Dr. Camp practices within Mobile Dental Care of Illinois, a multi-provider group, contradicting the solo_established classification; no independent practice brand, website, or ownership evidence was found. Without confirmation of whether Dr. Camp owns or is an associate at this location, classification cannot proceed beyond needs_verification.",
+    "proposed_tier": "undetermined",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": null,
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Intel flags Dr. Camp as associate within Mobile Dental Care of Illinois group"},
+    "exact_address_match": false,
+    "practice_name": "Camp Dental",
+    "address": null,
+    "city": "CHICAGO",
+    "zip": "60631",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "ed168680fe0ca268",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.yelp.com/biz/premiere-family-dental-chicago",
+      "https://www.burbanksmiles.com/appointment-request/",
+      "https://www.hipaaspace.com/medical_billing/coding/national_provider_identifier/codes/npi_1558256727.aspx"
+    ],
+    "evidence_artifacts": [
+      "NPPES npi=1558256727 legal=SAMIS FAMILY DENTISTRY LLC AO=CRISTINA GALLEGOS zip=60632",
+      "Intel (partial): Legal entity SAMIS FAMILY DENTISTRY LLC operating as PREMIERE FAMILY DENTAL; multi-location presence (Burbank + Chicago); no named dentist/owner disclosed"
+    ],
+    "confidence": "low",
+    "reasoning": "The legal entity SAMIS FAMILY DENTISTRY LLC (AO: Cristina Gallegos) operates publicly as Premiere Family Dental with a multi-location footprint (Burbank + Chicago); intel dossier notes significant opacity — no named dentist owner, no website, reliance on Yelp references 'Elmosa doctors.' The multi-location structure and legal-entity/brand mismatch prevent classification without further ownership verification.",
+    "proposed_tier": "dentist_multi",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": null,
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Legal entity vs. operating brand mismatch; multi-location Burbank + Chicago; no owner identity"},
+    "exact_address_match": false,
+    "practice_name": "SAMIS FAMILY DENTISTRY LLC",
+    "address": null,
+    "city": "CHICAGO",
+    "zip": "60632",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "becda92a3f79b1b1",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.dentalplans.com/dentists/illinois/chicago/60632/dr-paul-valasek-31377/",
+      "https://www.healthgrades.com/dentist/dr-paul-valasek-378pc",
+      "https://www.yelp.com/biz/valasek-paul-s-dds-chicago"
+    ],
+    "evidence_artifacts": [
+      "NPPES npi=1760521264 name=PAUL VALASEK zip=60632",
+      "Intel (partial): Dr. Paul Valasek confirmed at 2643 W 51st St; four operational locations found across directories — possible multi-location solo or dentist_multi"
+    ],
+    "confidence": "low",
+    "reasoning": "Intel dossier (partial quality) confirms Dr. Paul Valasek, DDS at 2643 W 51st St, Chicago 60632 but documents four operational locations in directories, which cannot be reconciled with a solo classification; no dedicated website or evidence of ownership structure was found to distinguish sole proprietor from multi-location group. Verification of all four locations and ownership title is needed.",
+    "proposed_tier": "dentist_multi",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Paul Valasek, DDS",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Four listed locations; no website; multi-location footprint unverified"},
+    "exact_address_match": false,
+    "practice_name": "Valasek Dental",
+    "address": "2643 W 51st St",
+    "city": "CHICAGO",
+    "zip": "60632",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "402558cd9290b243",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.dentalplans.com/dentists/illinois/huntley/60142/dr-mira-iskandar-8382/",
+      "https://www.vitals.com/dentists/Dr_Mira_Iskandar",
+      "https://findadentist.ada.org/dentists/dr-mira-m-iskandar-chicago-0038V00002yj9LDQAY-a1C8V00000lWg2iUAC"
+    ],
+    "evidence_artifacts": [
+      "NPPES npi=1851496533 name=MIRA ISKANDAR zip=60632",
+      "Intel (partial): Multiple locations (Chicago Dental Comfort Ltd, Huntley Bay Hill Dental Ltd, Mundelein, Waukegan) with Dr. Iskandar listed as manager at Bay Hill; unclear ownership vs. employee status"
+    ],
+    "confidence": "low",
+    "reasoning": "Intel identifies Dr. Mira Iskandar operating under two distinct legal entities (Dental Comfort Ltd in Chicago, Bay Hill Dental Ltd in Huntley) across multiple ZIP codes, suggesting a dentist_multi structure, but her role at each location (owner vs. manager vs. associate) is unresolved; ADA membership and DDS credentials are confirmed, but the multi-entity structure requires ownership verification before any tier can be classified.",
+    "proposed_tier": "dentist_multi",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Mira M. Iskandar, DDS",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Two distinct legal entities across 4 ZIP codes; ownership vs. employee role unclear"},
+    "exact_address_match": false,
+    "practice_name": "Iskandar Dental",
+    "address": null,
+    "city": "CHICAGO",
+    "zip": "60632",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "7c9b04064be64365",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.lakepointtowerdental.com/",
+      "https://www.sharecare.com/doctor/dr-young-m-choi-4",
+      "https://www.hipaaspace.com/Medical_Billing/Coding/NPI/Codes/NPI_1598808131.aspx"
+    ],
+    "evidence_artifacts": [
+      "NPPES npi=1598808131 name=YOUNG CHOI zip=60640 NPI registered 2007",
+      "Intel (partial): Dr. Choi (periodontist) practices within group settings — Lake Point Tower Dental and Implant Endo Inc — not as solo owner at 849 W Lakeside; address mismatch with verified practice at 505 N Lake Shore Dr"
+    ],
+    "confidence": "low",
+    "reasoning": "The intel dossier documents a critical address mismatch (849 W Lakeside 60640 vs. verified 505 N Lake Shore Dr) and confirms Dr. Choi operates as a periodontist within group practice settings (Lake Point Tower Dental, Implant Endo Inc), not as an independent owner at the registered address; classification at this location cannot proceed without address reconciliation.",
+    "proposed_tier": "undetermined",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Young Mi Choi, DMD, MS (Periodontics)",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Address mismatch; Dr. Choi is a specialist associate at group practices, not solo owner"},
+    "exact_address_match": false,
+    "practice_name": "Choi Dental",
+    "address": "849 W Lakeside",
+    "city": "CHICAGO",
+    "zip": "60640",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21",
+    "qa_flag": "Address in NPPES (849 W Lakeside 60640) does not match any verified active practice location for Dr. Choi; may be stale/closed NPI registration"
+  },
+  {
+    "location_id": "72e306dbd1e512b2",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.opencare.com/dentists/chicago-il/dr-george-frayn-24630637046d/",
+      "https://www.healthgrades.com/group-directory/il-illinois/chicago/precision-dental-arts-x66db4",
+      "https://doctor.webmd.com/doctor/george-frayn-2b821b7a-2be6-4483-9b29-e997516714d2-overview"
+    ],
+    "evidence_artifacts": [
+      "NPPES npi=1952403743 name=GEORGE FRAYN zip=60641",
+      "Intel (partial): Healthgrades lists 3 providers at 3014 N Pulaski; also listed as 'Precision Dental Arts' group; most Frayn reviews reference separate Forever Dental location at 5738 W Belmont"
+    ],
+    "confidence": "low",
+    "reasoning": "The intel dossier (partial quality) notes Healthgrades lists 3 providers at 3014 N Pulaski (contradicting solo classification) and references a separate Forever Dental location at 5738 W Belmont for Dr. Frayn; without a positive web confirmation of sole ownership at 3014 N Pulaski the solo classification cannot be earned, and the multi-provider listing raises the possibility of a group or dentist_multi structure.",
+    "proposed_tier": "dentist_multi",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. George Frayn, DDS (FAGD)",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "3 providers at address per Healthgrades; Forever Dental second location; no practice website"},
+    "exact_address_match": false,
+    "practice_name": "Frayn Dental",
+    "address": "3014 N Pulaski",
+    "city": "CHICAGO",
+    "zip": "60641",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "213d8285856873eb",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.dentalsalon.com",
+      "https://www.yelp.com/biz/dental-salon-chicago",
+      "https://www.bbb.org/us/il/chicago/profile/dentist/dental-salon-0654-88012269",
+      "https://www.perioimplantchicago.com/"
+    ],
+    "evidence_artifacts": [
+      "NPPES 11 NPIs at 939 W North Ave Suite 700 zip=60642 including Peter Cabrera EIN=363480468 and Bahareh Sabzehei; entity_classification=dso_national in DB",
+      "Intel (multiple dossiers): Dental Salon is multi-provider group practice founded 2003 by Dr. Mark Morris, described as 'family-owned' on Yelp, two locations (Chicago + Schaumburg), 44 physicians per WebMD. Perio Implant Chicago is independent specialist practice at same suite. entity_classification dso_national appears incorrect — no DSO/national brand structure documented."
+    ],
+    "confidence": "medium",
+    "reasoning": "The intel dossiers and web sources consistently describe Dental Salon as a dentist-founded, multi-provider group practice (est. 2003 by Dr. Mark Morris, 2 locations) with family-owned characterization — no MSO/platform/PE structure was found; the DB's entity_classification of dso_national appears to be a false positive from the multi-provider, multi-location pattern. Perio Implant Chicago (Dr. Cabrera/Sabzehei specialist practice) also shares this suite. The location's true tier is likely single_loc_group or dentist_multi for Dental Salon, but ownership verification of Dr. Morris's structure is needed to confirm no management company.",
+    "proposed_tier": "single_loc_group",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Mark Morris (founder, Dental Salon)",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "entity_classification=dso_national appears erroneous; Dental Salon = dentist-founded group, family-owned per Yelp; Perio Implant Chicago is co-located specialist"},
+    "exact_address_match": false,
+    "practice_name": "Dental Salon",
+    "address": "939 W North Ave Suite 700",
+    "city": "CHICAGO",
+    "zip": "60642",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21",
+    "qa_flag": "entity_classification=dso_national in DB but all intel points to dentist-founded family-owned group (Dental Salon, Dr. Mark Morris); dso_national classification appears to be a false positive requiring demotion review. Also co-located with Perio Implant Chicago specialist practice."
+  },
+  {
+    "location_id": "e64f61b4c1abe9c4",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.yelp.com/biz/toussaint-peter-j-dds-chicago",
+      "https://www.medicarelist.com/dentist/dr-peter-james-toussaint-dds-chicago-il/",
+      "https://www.healthgrades.com/dentist/dr-peter-toussaint-259tm",
+      "https://www.caredash.com/doctors/peter-toussaint-dds-chicago-il"
+    ],
+    "evidence_artifacts": [
+      "NPPES npi=1699838268 name=PETER TOUSSAINT zip=60643",
+      "Intel (partial): Ownership structure described as 'stable and independent'; no acquisition or investment news; solo-owned general dentistry practice per assessment; address inconsistency (Chicago 10835 S Western vs Oak Forest 5550 147th St)"
+    ],
+    "confidence": "medium",
+    "reasoning": "The intel dossier describes this as a 'solo-owned general dentistry practice' with 'stable and independent' ownership structure and no acquisition or DSO activity, which is consistent with true_independent; however, an address discrepancy between Chicago and Oak Forest is unresolved, and the dossier quality is only partial — a positive, source-cited web confirmation of Dr. Toussaint as sole owner at the Chicago address is needed to earn classified status.",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Peter James Toussaint, DDS",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Intel confirms independent ownership; address discrepancy Chicago vs Oak Forest unresolved"},
+    "exact_address_match": false,
+    "practice_name": "Toussaint Dental",
+    "address": "10835 S Western Ave",
+    "city": "CHICAGO",
+    "zip": "60643",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "d35d84f2a59b07aa",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.dentalworks.com/team-member/raveena-shah/",
+      "https://reviews.birdeye.com/todays-dental-of-beverly-165615739681324",
+      "https://npiprofile.com/npi/1962022095",
+      "https://www.healthgrades.com/dentist/dr-raveena-shah-1qfksxen75"
+    ],
+    "evidence_artifacts": [
+      "NPPES npi=1962022095 name=RAVEENA SHAH zip=60643",
+      "Intel (partial): Address 11238 S Western Ave is Today's Dental of Beverly (multi-provider group); Dr. Shah is associate at DentalWorks and Today's Dental — not independent owner at this address"
+    ],
+    "confidence": "low",
+    "reasoning": "The intel dossier (partial quality) confirms the address is occupied by Today's Dental of Beverly, a multi-provider group, and that Dr. Shah (2020 DDS graduate) appears as an associate at multiple group practices (DentalWorks, Today's Dental) rather than as an independent owner; the solo_established and independent classifications cannot be supported at this address.",
+    "proposed_tier": "undetermined",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": null,
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Address is Today's Dental of Beverly (group practice); Dr. Shah is an associate dentist, not owner"},
+    "exact_address_match": false,
+    "practice_name": "Shah Dental",
+    "address": "11238 S Western Ave",
+    "city": "CHICAGO",
+    "zip": "60643",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21",
+    "qa_flag": "NPI registered to Dr. Raveena Shah but address is Today's Dental of Beverly (group practice); actual practice ownership at this location belongs to a different entity"
+  },
+  {
+    "location_id": "6eed05898a66b034",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.facebook.com/DentistInChicago/",
+      "https://www.yelp.com/biz/pearl-dental-care-chicago",
+      "https://www.healthgrades.com/dentist/dr-steven-pearl-22hjm",
+      "https://doctor.webmd.com/doctor/steven-pearl-436c5460-c986-4a80-855c-04aedefbb1d4-overview"
+    ],
+    "evidence_artifacts": [
+      "NPPES npi=1639285307 name=STEVEN PEARL zip=60645",
+      "Intel (verified): Practice permanently closed; Dr. Pearl announced retirement on Facebook: 'I have retired and Pearl Dental Care is no longer in operation'; address discrepancy (7104 N Western Ave vs verified 2727 W Touhy Ave)"
+    ],
+    "confidence": "high",
+    "reasoning": "The intel dossier (verified quality) confirms Pearl Dental Care is permanently closed — Dr. Pearl announced retirement on Facebook and no current operations exist; this location should be flagged as stale/closed and excluded from active acquisition analysis.",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Steven Pearl (retired)",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Practice confirmed closed; retirement announced on Facebook; address mismatch in NPPES"},
+    "exact_address_match": false,
+    "practice_name": "Pearl Dental",
+    "address": "7104 N Western Ave",
+    "city": "CHICAGO",
+    "zip": "60645",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21",
+    "stale_or_closed": "CLOSED — Dr. Pearl announced retirement on Facebook: 'Pearl Dental Care is no longer in operation.' Practice inactive. Address in NPPES (7104 N Western Ave) does not match last verified address (2727 W Touhy Ave)."
+  },
+  {
+    "location_id": "63ac085f930602bc",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.bondds.com/index.html",
+      "https://www.zocdoc.com/dentist/irena-hyvel-dds-65499",
+      "https://npiprofile.com/npi/1750521993",
+      "https://www.ratemds.com/doctor-ratings/3144637/Dr-Irena+M.-Hyvel-Chicago-IL.html/"
+    ],
+    "evidence_artifacts": [
+      "NPPES npi=1750521993 name=IRENA HYVEL zip=60645 IL license 019027880",
+      "Intel (partial): Solo practice operated by Dr. Hyvel confirmed; multi-location presence noted (Chicago and St. Charles); NPI record stale (last updated 2009); practice address listed at residential apartment"
+    ],
+    "confidence": "medium",
+    "reasoning": "The intel dossier describes this as a solo practice operated by Dr. Irena Hyvel with her own website (bondds.com) and multilingual solo clinical involvement, which is consistent with true_independent; however, the partial dossier quality, stale NPI record (2009), residential address flag, and mention of multi-location presence (Chicago + St. Charles) prevent a classified determination without current address and ownership verification.",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Irena Michelle Hyvel, DDS",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Solo practice, owner-operated per intel; NPI stale 2009; residential address flagged; multi-location Chicago + St. Charles"},
+    "exact_address_match": false,
+    "practice_name": "Hyvel Dental",
+    "address": null,
+    "city": "CHICAGO",
+    "zip": "60645",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "2ff3e82d93b0cba6",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.drlindadifranco.com/",
+      "https://www.aedit.com/provider/linda-difranco-17469",
+      "https://www.opencare.com/dentists/glenview-il/dr-linda-difranco-dmd/"
+    ],
+    "evidence_artifacts": [
+      "NPPES npi=1609913888 name=LINDA DIFRANCO zip=60646",
+      "Intel (partial): CRITICAL address mismatch — registered at 6200 N Hiawatha Chicago IL 60646 but verified practice location is 1730 Dewes Street, Glenview IL 60025 per practice website and aedit.com; Opencare suggests co-practice with Dr. Thomas Bordignon"
+    ],
+    "confidence": "low",
+    "reasoning": "The intel dossier (partial quality) documents a critical address mismatch — the NPI address (6200 N Hiawatha, Chicago 60646) does not match any verified practice location, with the actual office confirmed at 1730 Dewes Street, Glenview 60025; furthermore, Opencare lists an affiliation with Dr. Thomas Bordignon suggesting possible partnership. Classification at the registered Chicago address cannot proceed.",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Linda DiFranco, DMD",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "NPPES address does not match verified practice location (Glenview not Chicago)"},
+    "exact_address_match": false,
+    "practice_name": "Difranco Dental",
+    "address": "6200 N Hiawatha",
+    "city": "CHICAGO",
+    "zip": "60646",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21",
+    "qa_flag": "NPPES address (6200 N Hiawatha Chicago 60646) does not match verified practice location (1730 Dewes St, Glenview 60025 per drlindadifranco.com); this watched-ZIP record may be a stale NPPES address"
+  },
+  {
+    "location_id": "7fb7235b6bcebd57",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.innovativeorthocenters.com/dr-manal-ibrahim/",
+      "https://www.healthgrades.com/dentist/dr-manal-ibrahim-xynbqvl",
+      "https://findadentist.ada.org/il/cook/chicago/orthodontics-and-dentofacial-orthopedics/dr-manal-ibrahim-lavacca-2729931"
+    ],
+    "evidence_artifacts": [
+      "NPPES npi=1801312087 name=MANAL IBRAHIM zip=60646 (taxonomy: orthodontics)",
+      "Intel (partial): Dr. Ibrahim is a board-certified orthodontist who founded Innovative Orthodontic Centers in 2007 (multi-location); registered address 6228 N Keystone shows minimal activity; Innovative Ortho Centers has official website at innovativeorthocenters.com"
+    ],
+    "confidence": "medium",
+    "reasoning": "Dr. Manal Ibrahim is a board-certified orthodontist who founded Innovative Orthodontic Centers in 2007, a multi-location orthodontic group confirmed at innovativeorthocenters.com, making this a dentist_multi structure at best; however, the registered address at 6228 N Keystone Chicago 60646 shows minimal activity and likely does not match her active practice locations, preventing exact-address classification.",
+    "proposed_tier": "dentist_multi",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Manal Ibrahim (founder, Innovative Orthodontic Centers)",
+    "network_id": "brand:innovative-orthodontic-centers",
+    "signal": {"type": "practice_intel", "details": "Multi-location orthodontic group founded 2007; registered NPI address 6228 N Keystone shows minimal activity"},
+    "exact_address_match": false,
+    "practice_name": "Ibrahim Dental",
+    "address": "6228 N Keystone",
+    "city": "CHICAGO",
+    "zip": "60646",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21",
+    "qa_flag": "Specialist (orthodontist) with confirmed multi-location practice; NPPES address 6228 N Keystone may not be an active practice site"
+  },
+  {
+    "location_id": "2aecb1daf32bb92e",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://implant500.com/",
+      "https://www.healthgrades.com/dentist/dr-richard-guerra-xkkf9",
+      "https://npino.com/dentist/1871753012-dr.-richard-guerra",
+      "https://www.findatopdoc.com/doctor/229767-Richard-Guerra-dentist-Chicago-IL-60646"
+    ],
+    "evidence_artifacts": [
+      "NPPES npi=1871753012 name=RICHARD GUERRA zip=60646",
+      "Intel (partial): Dr. Richard Guerra, DDS confirmed as principal owner/practitioner at implant500.com; 9,500+ implants placed; two addresses found (5318 W Devon Ave primary vs 5447 N Harlem Ave secondary); second doctor 'Dr. Mike' referenced in reviews"
+    ],
+    "confidence": "medium",
+    "reasoning": "The intel dossier (partial quality) confirms Dr. Richard Guerra as principal owner/practitioner with his own practice website (implant500.com) and strong independent positioning (no DSO language, no acquisition news), but multiple addresses and a second referenced provider ('Dr. Mike') suggest a possible dentist_multi or small-group structure that needs address reconciliation and partnership clarification before classifying as true_independent.",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Richard Guerra, DDS",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Dr. Guerra confirmed as owner; practice website implant500.com; two addresses; second provider 'Dr. Mike' mentioned in reviews"},
+    "exact_address_match": false,
+    "practice_name": "Guerra Dental",
+    "address": "5318 W Devon Ave",
+    "city": "CHICAGO",
+    "zip": "60646",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "8a5c9c3c78fbde2f",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.mcnicholasdental.com",
+      "https://www.yelp.com/biz/mcnicholas-dental-chicago-3",
+      "https://www.healthgrades.com/dentist/dr-robert-mcnicholas-xtdhg",
+      "https://todaysbestdentists.com/dentist/robert-a-mcnicholas/"
+    ],
+    "evidence_artifacts": [
+      "NPPES npi=1891908893 name=ROBERT MCNICHOLAS EIN=363517643 zip=60655",
+      "Intel (verified): McNicholas Dental — 60+ year history (est. 1955), second-generation owner Dr. Robert McNicholas since 1982, family-owned per acquisition assessment, no acquisition activity, no DSO or PE language anywhere"
+    ],
+    "confidence": "medium",
+    "reasoning": "The intel dossier (verified quality) confirms McNicholas Dental as a 60+ year family-owned solo practice with Dr. Robert McNicholas as second-generation owner since 1982, no acquisition or DSO activity found, and strong patient retention over decades; this is consistent with true_independent, but the practice_name in the shard ('Timeless Smiles Dental') does not match the verified entity ('McNicholas Dental'), creating a name discrepancy that warrants QA before classifying.",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Robert McNicholas (2nd-generation, since 1982)",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Practice name mismatch: shard='Timeless Smiles Dental' vs. verified='McNicholas Dental'; second-generation family-owned confirmed independent"},
+    "exact_address_match": false,
+    "practice_name": "Timeless Smiles Dental",
+    "address": null,
+    "city": "CHICAGO",
+    "zip": "60655",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21",
+    "qa_flag": "Practice name in shard ('Timeless Smiles Dental') does not match verified NPI entity ('McNicholas Dental' per mcnicholasdental.com, BBB, Yelp); likely a rebranding or data entry error. Intel strongly supports true_independent for McNicholas Dental."
+  },
+  {
+    "location_id": "e41734b8b8a41b9f",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.higginsfamilydental.com/",
+      "https://reviews.birdeye.com/higgins-family-dental-165622411179498",
+      "https://www.healthgrades.com/dentist/dr-mahmoud-mona-4scbmza757",
+      "https://atooth.com/meet-our-doctors/dr-mahmoud-mona/"
+    ],
+    "evidence_artifacts": [
+      "NPPES npi=1932748977 name=MAHMOUD MONA zip=60656",
+      "Intel (verified): Address is occupied by Higgins Family Dental LLC — multi-provider group practice with 4.9/5 rating on Birdeye (1,071 reviews); Dr. Mona is an independent contractor endodontist, not the practice owner"
+    ],
+    "confidence": "medium",
+    "reasoning": "The intel dossier (verified quality) confirms the location is Higgins Family Dental LLC, a multi-provider group practice with its own website and brand, while Dr. Mona (whose NPI is registered here) is an independent contractor specialist (endodontist), not the owner; the true controlling entity is Higgins Family Dental but its ownership structure (dentist-owned vs. DSO) requires verification.",
+    "proposed_tier": "single_loc_group",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": null,
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Higgins Family Dental LLC is the operating entity; Dr. Mona is independent contractor specialist"},
+    "exact_address_match": false,
+    "practice_name": "Mona Dental",
+    "address": null,
+    "city": "CHICAGO",
+    "zip": "60656",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21",
+    "qa_flag": "NPI registered to Dr. Mahmoud Mona (endodontist) but address is Higgins Family Dental LLC (group practice); Dr. Mona is independent contractor. The group's ownership structure (dentist-owned vs DSO) is unresolved."
+  },
+  {
+    "location_id": "2c4dd8f3aef53c8d",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.smilemoredental.com/",
+      "https://www.npino.org/npi/smile-more-dentistry-pllc-1770211344.html",
+      "https://www.yelp.com/biz/smile-more-dental-lombard",
+      "https://www.medicarelist.com/dental-clinic/smile-more-dentistry-pllc-chicago-il/"
+    ],
+    "evidence_artifacts": [
+      "NPPES npi=1770211344 org=SMILE MORE DENTISTRY PLLC AO=MALIHA KHAN zip=60660",
+      "Intel (partial): Website smilemoredental.com shows three named dentists and multi-location operation; classified originally as solo_inactive but is actually active multi-provider, multi-location group; no single named owner identified"
+    ],
+    "confidence": "medium",
+    "reasoning": "The intel dossier (partial quality) confirms Smile More Dentistry PLLC is an active multi-provider group with three credentialed dentists at its Chicago and Lombard locations, per the official website smilemoredental.com; the authorized official is Maliha Khan but no single named dentist-owner is identified, leaving the ownership structure (dentist_multi vs. small group) unresolved without further investigation.",
+    "proposed_tier": "dentist_multi",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": null,
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Official website confirms multi-provider, multi-location PLLC; 3 named dentists; AO=Maliha Khan"},
+    "exact_address_match": false,
+    "practice_name": "SMILE MORE DENTISTRY PLLC",
+    "address": null,
+    "city": "CHICAGO",
+    "zip": "60660",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "0006f31358ea5c12",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.healthgrades.com/dentist/dr-andok-barseghyan-xylj3b2",
+      "https://www.sharecare.com/doctor/dr-andok-barseghyan",
+      "https://www.aae.org/patients/directory/people/andok-barseghyan/",
+      "https://www.familydentalcare.com/andok-barseghyan/"
+    ],
+    "evidence_artifacts": [
+      "NPPES npi=1588089890 name=ANDOK BARSEGHYAN zip=60661 (taxonomy: endodontics)",
+      "Intel (partial): Address 555 W Madison APT 1402 does not match verified practice (Renovo Endodontics, 845 N Michigan Ave per Sharecare/Vitals); also listed at 10142 S Western and 1301 Pyott Rd Lake in the Hills — multi-location specialist"
+    ],
+    "confidence": "low",
+    "reasoning": "The intel dossier (partial quality) documents a critical address mismatch — 555 W Madison APT 1402 (a residential apartment) does not correspond to any verified active practice location for Dr. Barseghyan, a board-certified endodontist whose primary practice is Renovo Endodontics at 845 N Michigan Ave; classification at the registered address cannot proceed.",
+    "proposed_tier": "undetermined",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Andok Barseghyan, DDS (endodontist)",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Registered address is residential apartment (APT 1402); verified practice is Renovo Endodontics at 845 N Michigan Ave"},
+    "exact_address_match": false,
+    "practice_name": "Barseghyan Dental",
+    "address": "555 W Madison APT 1402",
+    "city": "CHICAGO",
+    "zip": "60661",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21",
+    "qa_flag": "NPPES registered address is a residential apartment (555 W Madison APT 1402 Chicago 60661); verified active practice is Renovo Endodontics at 845 N Michigan Ave. This NPPES record may be stale or a billing-only registration."
+  },
+  {
+    "location_id": "0a61c94fd7605fa1",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "http://www.brendichdental.com/",
+      "https://www.bbb.org/us/il/evergreen-pk/profile/dentist/john-brendich-dds-0654-88071357",
+      "https://www.healthgrades.com/dentist/dr-john-brendich-375hw",
+      "https://providers.sharecare.com/doctor/dr-john-a-brendich"
+    ],
+    "evidence_artifacts": [
+      "NPPES npi=1790843928 name=JOHN BRENDICH EIN=363680866 franchise_name=Periodontics zip=60805",
+      "Intel (partial): BBB confirms sole proprietorship, established 1992, Evergreen Park; 34 years in practice; Dr. Brendich is credentialed with professional memberships; Medicaid accepting. Practice name in shard is 'Corso Anne M' — MISMATCH with NPPES entity JOHN BRENDICH."
+    ],
+    "confidence": "medium",
+    "reasoning": "The intel dossier (partial quality) and BBB record confirm John Brendich DDS as a sole proprietor since 1992, Evergreen Park — structurally consistent with true_independent; however, a significant data error exists: the shard practice_name is 'Corso Anne M' while all NPI and intel data point to John Brendich DDS — this name mismatch must be resolved before classifying.",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. John Brendich, DDS (sole proprietor since 1992)",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "BBB confirms sole proprietorship est. 1992; shard practice_name 'Corso Anne M' conflicts with NPPES entity JOHN BRENDICH"},
+    "exact_address_match": false,
+    "practice_name": "Corso Anne M",
+    "address": null,
+    "city": "EVERGREEN PARK",
+    "zip": "60805",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21",
+    "qa_flag": "CRITICAL: Shard practice_name 'Corso Anne M' does not match NPI 1790843928 entity 'JOHN BRENDICH' or Brendich Dental (BBB-confirmed sole proprietorship). This appears to be a data linkage error — 'Corso Anne M' may be a different location incorrectly mapped to this NPI."
+  }
+]

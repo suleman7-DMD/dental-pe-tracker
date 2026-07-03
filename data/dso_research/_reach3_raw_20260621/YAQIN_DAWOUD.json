@@ -1,0 +1,119 @@
+{
+  "network": "YAQIN DAWOUD",
+  "network_id": "ao:DAWOUD_YAQIN",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Dr. Yaqin Dawoud (DDS) is a Chicago-area dentist who personally owns and operates 2-3 small offices on Chicago's South Side and the inner western suburb of Berwyn. He is listed as DDS/Owner on the NPPES record for Stony Island Dental PC (NPI 1427527365) and as the founder/owner on the Berwyn Dental Clinic consumer website. A third NPI (Chicago Star Dental PC, NPI 1164378600, 3641 E 108th St) is associated via AO reach but has no consumer web presence — the address co-locates with a medical center and may be a dormant or vacated shell. No DSO, MSO, management company, or PE sponsor evidence found across three web searches and two website fetches. This is a dentist's own private multi-office group with no platform layer.",
+  "owner_operator_identity": "Dr. Yaqin Dawoud, DDS — founder and owner, confirmed by NPPES AO credential 'DDS/Owner' on Stony Island Dental PC (NPI 1427527365) and by the Berwyn Dental Clinic website biography.",
+  "brand_trade_names": [
+    "Berwyn Dental Clinic",
+    "Stony Island Dental PC",
+    "Chicago Star Dental PC"
+  ],
+  "legal_entities": [
+    "Stony Island Dental PC (NPI 1427527365)",
+    "Chicago Star Dental PC (NPI 1164378600)",
+    "Berwyn Dental Clinic (NPI 1316675176)"
+  ],
+  "durable_artifacts": [
+    "NPPES AO = Yaqin Dawoud DDS/Owner on NPI 1427527365 (Stony Island Dental PC)",
+    "NPPES AO = Yaqin Dawoud on NPI 1316675176 (Berwyn Dental Clinic) and NPI 1164378600 (Chicago Star Dental PC) — ao_reach=3 across ZIPs 60402 and 60617",
+    "Berwyn Dental Clinic website (berwyndentalclinic.com/about-us/) identifies Dr. Yaqeen Dawoud as founder (est. 2011)",
+    "Phone numbers 708-351-4582 (Stony Island) and 708-351-4562 (Chicago Star) share prefix — consistent with same operator",
+    "All three NPIs are organizational (NPI-2) with no named parent organization in NPPES"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "Chicago Star Dental PC (NPI 1164378600, 3641 E 108th St, ZIP 60617) has no consumer web presence. A Yelp/web search for the address returns Mohana Medical Center (a family-medicine clinic), not a dental practice. The phone (708) 351-4562 differs from Stony Island Dental's (708) 351-4582 by one digit — may be a typo or a forwarding number. This location may be dormant, closed, or never consumer-active. Downstream gate should attempt a live phone verification before counting it in the corporate denominator.",
+  "evidence_chain": "AO signal: NPPES lists Yaqin Dawoud as authorized official on 3 org-NPIs spanning ZIP 60402 (Berwyn) and ZIP 60617 (Chicago South Side), ao_reach=3. Documentary corroboration: (1) berwyndentalclinic.com/about-us/ identifies Dr. Yaqeen Dawoud as founder and sole owner since 2011 — single-location website, no DSO/MSO/management-company language; (2) opennpi.com/provider/1427527365 confirms NPPES credential 'DDS/Owner' for Yaqin Dawoud at Stony Island Dental PC. No MSO, PE sponsor, management-services entity, or DSO platform found in any source. The pattern is a dentist personally holding the authorized-official role at each of his own entities — classic dentist_multi structure.",
+  "future_app_notes": "1. Chicago Star Dental PC (3641 E 108th St) may be closed/dormant — recommend phone verification before counting. 2. Raya Dawoud (DMD) appears at Dental Town Chicago (a separate DSO-structured group with founder Dr. Sinan Razzak) — possible family member but operating in a different network; do NOT conflate with Yaqin Dawoud's independent group. 3. If Berwyn Dental Clinic or Stony Island Dental ever lists a second address on its website, that would be a corroborating multi-location signal worth re-checking. 4. No EIN found for any of the three NPIs in the source data — EIN lookup could further confirm the common-owner structure.",
+  "classifications": [
+    {
+      "location_id": "1800132e7ff2e68c",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Yaqin Dawoud, DDS — founder/owner confirmed by practice website (berwyndentalclinic.com/about-us/)",
+      "network_id": "ao:DAWOUD_YAQIN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60402 and 60617",
+          "org_npi=1316675176 with Yaqin Dawoud as AO"
+        ],
+        "evidence": [
+          "berwyndentalclinic.com/about-us/ — Dr. Yaqeen Dawoud identified as founder and owner, clinic established 2011, single-location independent practice, no DSO/MSO/management-company language"
+        ]
+      },
+      "evidence_urls": [
+        "https://berwyndentalclinic.com/about-us/",
+        "https://berwyndentalclinic.com/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "YAQIN DAWOUD",
+        "reach": 3,
+        "zips": ["60402", "60617"]
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Berwyn Dental Clinic at 6436 Cermak Rd, Berwyn IL 60402 has an active consumer website that explicitly names Dr. Yaqeen Dawoud (variant spelling of Yaqin) as founder and sole owner since 2011. No DSO, MSO, management company, or PE sponsor is mentioned. The NPPES AO is the owner dentist himself. Gate is ready_for_validation: the practice website is a documentary corroborator tying the named owner to this location."
+    },
+    {
+      "location_id": "72da42bbc0e81546",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Yaqin Dawoud, DDS — confirmed as DDS/Owner in NPPES for NPI 1427527365 (Stony Island Dental PC)",
+      "network_id": "ao:DAWOUD_YAQIN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60402 and 60617",
+          "org_npi=1427527365 with Yaqin Dawoud as AO credential DDS/Owner"
+        ],
+        "evidence": [
+          "opennpi.com/provider/1427527365 — NPPES credential field reads 'DDS/Owner' for authorized official Yaqin Dawoud at Stony Island Dental PC, 1600 E 93rd St, Chicago IL 60617"
+        ]
+      },
+      "evidence_urls": [
+        "https://opennpi.com/provider/1427527365",
+        "https://www.healthgrades.com/group-directory/il-illinois/chicago/stony-island-dental-x7j8tq"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "YAQIN DAWOUD",
+        "reach": 3,
+        "zips": ["60402", "60617"]
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Stony Island Dental PC at 1600 E 93rd St, Chicago IL 60617 (provider_count=3, small_group class) has its owner confirmed via NPPES credential 'DDS/Owner' for Yaqin Dawoud. This is a federally-filed ownership claim. Healthgrades lists the group practice as active. No DSO/MSO/PE affiliation found. Gate is ready_for_validation: NPPES credential DDS/Owner plus Healthgrades active listing corroborate dentist_multi."
+    },
+    {
+      "location_id": "00336cbe03e4f9dc",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Yaqin Dawoud, DDS — AO on NPPES NPI 1164378600 (Chicago Star Dental PC); same owner as Stony Island Dental PC per shared AO identity and near-identical phone prefix",
+      "network_id": "ao:DAWOUD_YAQIN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60402 and 60617",
+          "org_npi=1164378600 with Yaqin Dawoud as AO",
+          "phone (708) 351-4562 shares prefix with Stony Island Dental (708) 351-4582"
+        ],
+        "evidence": []
+      },
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "YAQIN DAWOUD",
+        "reach": 3,
+        "zips": ["60402", "60617"]
+      },
+      "web_searched": true,
+      "gate_status": "candidate",
+      "confidence": "low",
+      "stale_closed_note": "Chicago Star Dental PC (3641 E 108th St, Chicago IL 60617) has no consumer web presence. A search for this address returns Mohana Medical Center (a family-medicine clinic) — not a dental practice. The NPI may represent a dormant, closed, or never-consumer-active entity. Phone verification recommended before counting this location in any denominator.",
+      "reasoning": "Chicago Star Dental PC at 3641 E 108th St, Chicago IL 60617 appears in NPPES with Yaqin Dawoud as AO, and the shared phone prefix with Stony Island Dental suggests the same operator. However, no consumer website, Yelp listing, or Healthgrades entry was found for this specific practice at this address — the address is associated with a medical center in web results. Given the absence of documentary corroboration for this location specifically, gate_status is 'candidate' and confidence is low. The owner identity (Yaqin Dawoud) is plausible based on the AO signal and phone proximity, but the location's operational status is unverified."
+    }
+  ]
+}

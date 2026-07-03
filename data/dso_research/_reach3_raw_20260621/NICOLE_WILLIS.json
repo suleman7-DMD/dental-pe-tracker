@@ -1,0 +1,138 @@
+{
+  "network": "NICOLE WILLIS",
+  "network_id": "ao:WILLIS_NICOLE",
+  "owner_type_verdict": "institutional",
+  "network_summary": "Tapestry 360 Health is a Federally Qualified Health Center (FQHC) operating multiple community health center sites across Chicago's north side. Nicole Willis is the CEO (not a dentist-owner) and serves as the NPPES Authorized Official for the organization. The three dental-service locations in this cluster are FQHC dental sites funded under HRSA Section 330. This is a government-funded community health organization, not a private dental group or DSO.",
+  "owner_operator_identity": "Nicole Willis, MBA — Chief Executive Officer of Tapestry 360 Health (institutional administrator, not a dentist-owner)",
+  "brand_trade_names": [
+    "Tapestry 360 Health",
+    "Heartland International Health Center"
+  ],
+  "legal_entities": [
+    "Tapestry 360 Health (formerly Heartland International Health Center)"
+  ],
+  "durable_artifacts": [
+    "All three NPIs share the name 'TAPESTRY 360 HEALTH' across three distinct Chicago ZIPs (60625, 60640, 60660)",
+    "Nicole Willis listed as NPPES Authorized Official on all three org NPIs",
+    "FQHC taxonomy confirmed: NPI 1871763375 coded as 261QF0400X (FQHC) at npidb.org",
+    "HRSA Section 330 federal funding confirmed via HRSA/BPHC records and openNPI",
+    "EIN 36-3843377 confirmed on GuideStar profile for Tapestry 360 Health"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "AO-cluster false positive for GP-ownership purposes: Nicole Willis is the institutional CEO of a multi-site FQHC, not a private dental practice owner. These are FQHC dental sites, not independent or DSO-operated GP offices. All three locations should be excluded from the private GP ownership denominator and classified as institutional.",
+  "evidence_chain": "AO signal: Nicole Willis appears as NPPES Authorized Official on 3 org NPIs across ZIPs 60625, 60640, 60660, all registered under the name 'TAPESTRY 360 HEALTH'. Documentary corroboration: (1) tap360health.org confirms Tapestry 360 Health is a multi-site FQHC offering dental, medical, and behavioral health services on Chicago's north side; (2) tap360health.org/staff/nicole-willis/ confirms Nicole Willis is CEO of Tapestry 360 Health; (3) openNPI (provider/1790090876) and npidb.org (NPI 1871763375) confirm FQHC taxonomy code 261QF0400X; (4) HRSA Section 330 federal funding confirmed. No PE, DSO, or MSO involvement of any kind.",
+  "future_app_notes": "All three Tapestry 360 Health dental locations should be flagged institutional and excluded from the GP private-practice ownership denominator. The entity_classification on these locations is currently 'solo_established' which is incorrect — they should be 'non_clinical' or a new 'institutional' class. The organization's EIN (36-3843377) can be used to identify any additional Tapestry 360 Health NPIs that may have slipped into the denominator. Formerly operated as Heartland International Health Center — watch for any legacy NPIs under that name.",
+  "classifications": [
+    {
+      "location_id": "b560878900657961",
+      "candidate_tier": "institutional",
+      "pe_backed": false,
+      "owner_identity": "Nicole Willis, MBA — CEO, Tapestry 360 Health (FQHC)",
+      "network_id": "ao:WILLIS_NICOLE",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60625, 60640, 60660",
+          "shared org name 'TAPESTRY 360 HEALTH' across all three NPIs"
+        ],
+        "evidence": [
+          "tap360health.org confirms multi-site FQHC with dental services at north Chicago locations",
+          "Nicole Willis confirmed as CEO at tap360health.org/staff/nicole-willis/",
+          "FQHC taxonomy 261QF0400X confirmed via openNPI and npidb.org",
+          "HRSA Section 330 federal funding confirmed"
+        ]
+      },
+      "evidence_urls": [
+        "https://tap360health.org/about-us/",
+        "https://tap360health.org/staff/nicole-willis/",
+        "https://opennpi.com/provider/1790090876",
+        "https://npidb.org/organizations/ambulatory_health_care/federally-qualified-health-center-fqhc_261qf0400x/1871763375.aspx",
+        "https://tap360health.org/medical-specialties/dental-care/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "NICOLE WILLIS",
+        "reach": 3,
+        "zips": ["60625", "60640", "60660"]
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "3244 W Ainslie St, Chicago 60625 is one of Tapestry 360 Health's FQHC dental service sites. The organization is a federally-funded FQHC (HRSA Section 330), not a private dental group. Nicole Willis is the institutional CEO. Current entity_classification 'solo_established' is incorrect; this should be reclassified institutional/non_clinical and excluded from the private GP ownership denominator."
+    },
+    {
+      "location_id": "a31ca3008c75ab1f",
+      "candidate_tier": "institutional",
+      "pe_backed": false,
+      "owner_identity": "Nicole Willis, MBA — CEO, Tapestry 360 Health (FQHC)",
+      "network_id": "ao:WILLIS_NICOLE",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60625, 60640, 60660",
+          "shared org name 'TAPESTRY 360 HEALTH' across all three NPIs"
+        ],
+        "evidence": [
+          "tap360health.org confirms multi-site FQHC with dental services at north Chicago locations including Wilson Ave",
+          "Nicole Willis confirmed as CEO at tap360health.org/staff/nicole-willis/",
+          "FQHC taxonomy 261QF0400X confirmed via openNPI (provider/1790090876 at 845 W Wilson Ave is an adjacent Tapestry 360 NPI in same ZIP)",
+          "HRSA Section 330 federal funding confirmed"
+        ]
+      },
+      "evidence_urls": [
+        "https://tap360health.org/about-us/",
+        "https://tap360health.org/staff/nicole-willis/",
+        "https://opennpi.com/provider/1790090876",
+        "https://npidb.org/organizations/ambulatory_health_care/federally-qualified-health-center-fqhc_261qf0400x/1871763375.aspx",
+        "https://tap360health.org/medical-specialties/dental-care/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "NICOLE WILLIS",
+        "reach": 3,
+        "zips": ["60625", "60640", "60660"]
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "Note: openNPI lists a Tapestry 360 Health dental NPI at 845 W Wilson Ave (60640) vs. this cluster record at 900 W Wilson Ave (60640) — these may represent two NPI registrations for the same or adjacent Wilson Ave site. Downstream validation should confirm the active address.",
+      "reasoning": "900 W Wilson Ave, Chicago 60640 is a Tapestry 360 Health FQHC site in the Uptown/Ravenswood neighborhood. The organization is a federally-funded FQHC, not a private dental group. Current entity_classification 'solo_established' is incorrect. Should be reclassified institutional/non_clinical and excluded from the private GP ownership denominator."
+    },
+    {
+      "location_id": "cda97d8759efad7a",
+      "candidate_tier": "institutional",
+      "pe_backed": false,
+      "owner_identity": "Nicole Willis, MBA — CEO, Tapestry 360 Health (FQHC)",
+      "network_id": "ao:WILLIS_NICOLE",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60625, 60640, 60660",
+          "shared org name 'TAPESTRY 360 HEALTH' across all three NPIs"
+        ],
+        "evidence": [
+          "tap360health.org confirms multi-site FQHC with dental services across north Chicago",
+          "Nicole Willis confirmed as CEO at tap360health.org/staff/nicole-willis/",
+          "FQHC taxonomy 261QF0400X confirmed via openNPI and npidb.org",
+          "HRSA Section 330 federal funding confirmed"
+        ]
+      },
+      "evidence_urls": [
+        "https://tap360health.org/about-us/",
+        "https://tap360health.org/staff/nicole-willis/",
+        "https://opennpi.com/provider/1790090876",
+        "https://npidb.org/organizations/ambulatory_health_care/federally-qualified-health-center-fqhc_261qf0400x/1871763375.aspx",
+        "https://tap360health.org/medical-specialties/dental-care/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "NICOLE WILLIS",
+        "reach": 3,
+        "zips": ["60625", "60640", "60660"]
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "5900 N Glenwood Ave, Chicago 60660 (Edgewater neighborhood) is a Tapestry 360 Health FQHC site. The organization is a federally-funded FQHC, not a private dental group. Current entity_classification 'solo_established' is incorrect. Should be reclassified institutional/non_clinical and excluded from the private GP ownership denominator."
+    }
+  ]
+}

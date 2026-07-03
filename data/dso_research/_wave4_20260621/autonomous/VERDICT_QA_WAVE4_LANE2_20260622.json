@@ -1,0 +1,215 @@
+{
+  "_meta": {
+    "artifact_type": "Independent adversarial QA verdict — Wave 4 LANE 2 (MAIN-001 non-AO backfill, 25 rows)",
+    "role": "Independent QA. Review-only. This is a NEW verdict file; it does NOT overwrite VERDICT_QA_WAVE4_INITIAL_20260621.json.",
+    "date": "2026-06-22",
+    "author": "QA session (review-only)",
+    "scope": "Chicagoland / Illinois only. Boston / MA parked.",
+    "predecessor_verdict": {
+      "file": "autonomous/VERDICT_QA_WAVE4_INITIAL_20260621.json",
+      "verdict": "PASS_WITH_HOLDS",
+      "systemic_defect_found": false,
+      "note": "Lane 2 was written by Main AO (MAIN-001) AFTER the initial verdict and is NOT covered by it; this is its independent QA pass."
+    },
+    "subject_under_review": "data/dso_research/_wave4_20260621/wave4_gate_normalized_lane2_partition_20260622.json (Gate-Owner normalized Lane-2 partition, 25 rows)",
+    "evidence_sources_read": [
+      "data/dso_research/_wave4_20260621/wave4_lane2_non_ao_backfill25_evidence_20260621.json (MAIN-001, 25 rows, read in full)",
+      "data/dso_research/_wave4_20260621/wave4_lane2_non_ao_backfill25_evidence_20260621_qa.json (paired self-QA, 16/16 bool guards)",
+      "data/dso_research/_wave4_20260621/wave4_gate_normalized_lane2_partition_20260622.json (read in full, 25 rows, all buckets)",
+      "data/dso_research/_wave4_20260621/autonomous/REQUEST_QA_REVIEW_WAVE4_LANE2_20260622.md",
+      "data/dso_research/_ready_to_validate_wave3_fixed_20260621.json (310 ready file, READ-ONLY cross-check, NOT mutated)",
+      "data/dso_research/_wave4_20260621/wave4_gate_normalized_partition_20260621.json (initial partition, READ-ONLY, no-double-count cross-check)"
+    ],
+    "enforced_bar": "wave4_criteria_reconciliation_20260621.json (AB1-AB12 + HB1-HB10 + AH1-AH7 + 12-step decision tree + union of both gate-owner checklists, stricter-wins).",
+    "gate_ceiling": "ready_for_validation (NEVER final). Consolidation remains FROZEN.",
+    "constraints_observed_by_this_QA_pass": "NO DB writes. NO --allow-db-write. NO manifest mutation. NO ready-file mutation. NO LEDGER/PROGRESS/ownership_tier/entity_classification/ownership_status edits. NO prior-QA edits. This pass wrote exactly ONE new file: this verdict. (Read-only SQLite queries were used for the freeze attestation + the Dentologie same-door duplicate scan; no writes issued.)"
+  },
+
+  "verdict": "PASS_WITH_HOLDS",
+  "must_fix_count": 0,
+  "must_fix_location_ids": [],
+  "systemic_defect_found": false,
+  "net_new_corporate_floor_claim_correct_and_not_overstated": true,
+
+  "headline": "The Gate's Lane-2 normalized partition correctly applies the net stricter-wins bar on all 25 rows. The +1 net-new corporate floor claim (Dentologie/Schock ONLY) is independently verified and NOT overstated. 0 MUST_FIX. 3 carry-forward holds (all user/Gate decisions, none a Gate normalization defect). Freeze intact; consolidation NOT authorized.",
+
+  "bucket_reconciliation_independent": {
+    "input_rows": 25,
+    "total_partitioned_rows": 25,
+    "balanced": true,
+    "bucket_counts": {
+      "merge_eligible_new_corporate": 1,
+      "corroborates_existing_corporate_no_lift": 12,
+      "true_independent_confirmation": 2,
+      "hold_needs_more_evidence": 2,
+      "hold_operating_status_or_same_door": 2,
+      "hold_scope_specialist": 3,
+      "refuted": 3
+    },
+    "distinct_location_ids": 25,
+    "duplicate_location_ids": [],
+    "ready_for_validation_total": 15,
+    "ready_for_validation_expected": 15,
+    "ready_match": true,
+    "agent_disposition_rollup_independent": {
+      "ready_for_validation": 15,
+      "hold_needs_more_evidence": 2,
+      "hold_operating_status_or_same_door": 2,
+      "hold_scope_specialist": 3,
+      "refuted": 3
+    },
+    "matches_main_ao_self_qa_rollup": true,
+    "matches_gate_partition_rollup": true
+  },
+
+  "current_310_overlap_audit_independent": {
+    "method": "Loaded the 310 ready file (key 'classifications', 310 distinct location_ids) and intersected with all 25 Lane-2 location_ids.",
+    "ready_file_rows": 310,
+    "ready_file_distinct_location_ids": 310,
+    "lane2_in_310_overlap": [],
+    "lane2_in_310_overlap_count": 0,
+    "gate_in_current_310_ready_flags_true": [],
+    "gate_flags_match_independent_overlap": true,
+    "conclusion": "0 overlap with the 310. No Lane-2 row is double-counted against the current census ready set. Gate's per-row in_current_310_ready=false flags match my independent computation exactly."
+  },
+
+  "no_double_count_vs_initial_verdict": {
+    "method": "Collected every location_id in the initial partition (wave4_gate_normalized_partition_20260621.json) and intersected with the 25 Lane-2 location_ids.",
+    "initial_partition_distinct_location_ids": 145,
+    "lane2_location_ids": 25,
+    "overlap": [],
+    "overlap_count": 0,
+    "conclusion": "Lane 2 (MAIN-001 non-AO backfill) shares ZERO location_ids with the initial PASS_WITH_HOLDS partition (Lane-1 conflicts + AO-backfill + Lane-3 Phase-C top-50). Confirmed: Lane 2 was NOT part of the initial verdict and is not re-reviewing or re-counting any initial-partition row."
+  },
+
+  "census_readiness_vs_legacy_floor_separation": {
+    "ownership_census_readiness": {
+      "ready_for_validation_total": 15,
+      "composition": "1 merge_eligible_new_corporate (branded_dso T5) + 12 corroborates_existing_corporate_no_lift (branded_dso T5) + 2 true_independent_confirmation (T1).",
+      "note": "These are proposed census tiers at the ready_for_validation ceiling. NONE are merged; no ownership_tier is set in the DB (verified 0/0 NOT NULL)."
+    },
+    "legacy_corporate_floor_impact": {
+      "net_new_corporate_floor_lift": "+1 (Dentologie / Schock 5cd692a50e5c32b7 ONLY)",
+      "corroborations_adding_zero": 12,
+      "corroborations_detail": "10 Heartland 'Dental Professionals of Illinois, P.C.' friendly-PC offices + 1 DCA New Lenox (e669559ebe8a9d4a) + 1 Aspen TAG OCC (2bf590b5092f1e8e) are ALREADY dso_national/dso_regional in legacy entity_classification -> they corroborate, they do NOT lift the floor.",
+      "true_independent_not_corporate": 2,
+      "legacy_corporate_false_positive_suspects_flagged_NOT_mutated": {
+        "count": 3,
+        "ids": ["598cc9dae498795b", "d2e5c43e4975ddb4", "d4d827860b4132cb"],
+        "detail": "Northwestern Dental Center (598cc9dae498795b, REFUTED — 'NORTHwestern' substring false-positive of affiliated_dso='Western Dental'); Midwest Dental Group (d2e5c43e4975ddb4, HELD — name-field collision, no exact-address locator match); Bloomingdale Dental (d4d827860b4132cb, HELD — SWEIS adjacency + affiliated_dso NULL). All three are CURRENTLY corporate in legacy entity_classification (1 dso_regional + 2 dso_national).",
+        "effect_if_acted_on": "Would REMOVE up to 3 from the legacy corporate floor (a DOWNWARD correction), NOT add. NOT mutated under the freeze — surfaced for user/Gate decision only.",
+        "qa_position": "Correctly frozen. These are pre-existing legacy rows this Wave-4 evidence calls into question; under the no-mutation rule + gate ceiling, nothing is changed. Carried forward as QA-L2-HOLD-2."
+      },
+      "honest_statement_verified": "Lane 2 contributes at most +1 net-new corporate door (Dentologie). The other 12 ready rows corroborate already-corporate status (+0). Two ready rows are true_independent (not corporate). Separately, 3 already-corporate legacy rows are now questioned (downward) but NOT mutated. This matches the Gate's floor_impact_summary; the +1 claim is correct and not overstated."
+    }
+  },
+
+  "specific_checks_requested": [
+    {
+      "check": "1. Confirm Lane 2 was not part of the initial PASS_WITH_HOLDS verdict.",
+      "result": "PASS",
+      "evidence": "Initial partition contains 145 distinct location_ids; Lane-2 contains 25; intersection = 0. The initial REQUEST even listed REQUEST_MAIN_AO_LANE2_BACKFILL25 as a FUTURE Gate action. Lane 2 is genuinely new and not double-counted."
+    },
+    {
+      "check": "2. Separate ownership-census readiness from legacy corporate-floor impact.",
+      "result": "PASS",
+      "evidence": "Census readiness = 15 ready_for_validation (1 net-new corporate + 12 corroborations + 2 true_independent). Legacy corporate-floor LIFT = +1 ONLY (Dentologie). 12 corroborations add 0 (already dso_national/dso_regional). 2 true_independent add 0 (not corporate). Separately, 3 legacy-corporate rows are now questioned downward (not mutated). The two concepts are correctly and explicitly kept distinct in the partition; the +1 floor claim is not overstated."
+    },
+    {
+      "check": "3. Verify Heartland/Dental Professionals rows are real Heartland friendly-PC evidence, not weak name-chain only.",
+      "result": "PASS (with QA-L2-HOLD-1 carry-forward note)",
+      "evidence": "All 10 ready DPI-PC rows rest on (a) db_affiliated_dso='Heartland Dental' (WHITELISTED DB structural artifact — the practice's own SQLite affiliated_dso field, NOT a name-field guess; AB3-durable), PLUS (b) org-NPI legal business name literally = 'Dental Professionals of Illinois, P.C.' (Heartland's federally-registered IL friendly professional corporation, based in Effingham IL = Heartland HQ town), PLUS (c) legacy entity_classification=dso_national. This 3-signal convergence is substantially MORE than a name-chain. Naperville (1b931a8e9c2675a9) additionally carries a per-door EXACT-ADDRESS Wave-4 confirmation (309 W Ogden = Heartland-supported Premier Dental Center). Discrimination is demonstrated: the Bloomingdale DPI-PC row (d4d827860b4132cb) carries the SAME org legal name BUT affiliated_dso=NULL + SWEIS brand collision, and was correctly HELD, not lumped in. So the rule is applied, not rubber-stamped.",
+      "qa_caveat": "9 of the 10 (all but Naperville) lack a per-door exact-address DSO-locator match; they rest on the whitelisted db_affiliated_dso artifact + org-NPI legal name. This is sufficient for what they ARE — no-lift CORROBORATIONS of rows already dso_national in the legacy floor (floor_impact=+0). It would NOT be sufficient if any were ever reclassified as NET-NEW census promotions, which would require door-exact evidence per AB2. Carried forward as QA-L2-HOLD-1; not a defect in this partition."
+    },
+    {
+      "check": "4. Confirm Heartland International Health Center and Heartland Health Outreach are FQHC/nonprofit name collisions, not Heartland Dental.",
+      "result": "PASS",
+      "evidence": "Heartland International Health Center (d803fcfe4618e8a3, 845 W Wilson 60640) = Tapestry 360 Health, formerly Heartland Health Centers — an FQHC (URL: tapestry360health.org). Heartland Health Outreach (e957561c107de91a, 641 W 63rd St 60621) = Heartland Alliance Health nonprofit, 'Heartland Center for Oral Health - Englewood' (URL: heartlandalliancehealth.org). BOTH are held as institutional T6 (hold_scope_specialist), explicitly flagged NAME-COLLISION = NOT Heartland Dental, and are NOT promoted as the DSO. Name-collision guard correctly enforced."
+    },
+    {
+      "check": "5. Verify Schock Dental -> Dentologie as a net-new branded_dso candidate, with DSO=STRUCTURE and pe_backed kept conservative unless a named sponsor is cited.",
+      "result": "PASS (Gate's flagged same-door duplicate-check CLOSED by QA read-only scan)",
+      "evidence": "5cd692a50e5c32b7 — legacy entity_classification=solo_established (DB mislabel), in_310=false -> genuinely net-new (+1). DSO=STRUCTURE satisfied & rationale POPULATED: Dentologie is an established Chicago DSO (13 branded neighborhood offices, named founder Oussama Founas DDS, Becker's Dental+DSO Review), and its OWN locator lists River North at the EXACT address 444 N Orleans St (AB2 door-exact met). pe_backed=FALSE kept CONSERVATIVE: founder discussed deploying PE dollars publicly, but NO named sponsor is cited in Wave 4 -> pe_backed stays false (and pe_backed is orthogonal, never a downgrade reason). EXACTLY per instruction.",
+      "qa_duplicate_scan": "QA ran a read-only practice_locations scan: '444 n orleans st' returns exactly ONE row (the target itself), and ZERO rows named '%dentologie%' exist anywhere in practice_locations. There is NO separate 'Dentologie River North' location_id in the broader floor. The Gate's flagged same-door duplicate concern is CLOSED — the +1 is a clean, distinct, non-duplicate corporate door."
+    },
+    {
+      "check": "6. Verify Jova and Bellido-Griffin true_independent are earned, not defaulted.",
+      "result": "PASS",
+      "evidence": "Jova (b7499322a2416c5d): POSITIVE owner evidence — Dr. Paulina Jova DDS named sole owner ('Crown Dental Center: Paulina Jova DDS'), solo since 2009; 3 corroborating URLs (Healthgrades, Practo naming the practice, npiprofile NPI active since 2009). Bellido-Griffin (0a318ab399f418de): POSITIVE owner evidence — Dr. Rosa Bellido-Griffin DMD explicitly 'sole owner of the medical practice', own website (drrosabgdental.weebly.com), ADA Find-a-Dentist listing. Both carry named-sole-owner + own-practice/website evidence — EARNED T1, NOT default-to-independent. Both correctly floor_impact=no_lift (true_independent, not corporate)."
+    },
+    {
+      "check": "7. Verify Kang and Obucina holds remain holds.",
+      "result": "PASS",
+      "evidence": "Kang (5404b210ff43f176): hold_operating_status_or_same_door — shares 350 N Clark St Suite 600 with a Dental Dreams DSO office; same-door ambiguity (distinct corporate door vs duplicate of an already-counted Dental Dreams row) -> HELD, not promoted, not refuted. Obucina (499c18e0f7c7ad12): hold_operating_status_or_same_door — provider_count=0 + address/zip anomaly (111 N Wabash Loop street vs zip 60202 Evanston); operating status unverified -> HELD, correctly NOT defaulted to true_independent (per the 'never default true_independent' + AH5 rules). Both remain holds."
+    },
+    {
+      "check": "8. Verify no protected-network release and no MA rows.",
+      "result": "PASS",
+      "evidence": "Protected-surname scan across all 25 rows: exactly ONE row flagged — Bloomingdale Dental (d4d827860b4132cb, SWEIS) — and it is HELD (hold_needs_more_evidence), NOT released; 0 protected rows promoted to ready. protected_network_releases=0. State scan: all 25 rows state=IL; 0 MA rows. Confirmed."
+    }
+  ],
+
+  "holds_carry_forward": [
+    {
+      "id": "QA-L2-HOLD-1",
+      "type": "evidence_sufficiency_note (not a defect; no action required unless reclassified)",
+      "location_ids": ["46c4e7116d0046a8","629e6c24236f7dc1","cbde3ee6f46acad7","093fbea9e8c840df","6dba925c21c398ce","1237e7c94d53bab9","589308e9a6bcacf7","be7ff941b871d3db","b5941b7e437e95f1"],
+      "summary": "9 of the 10 Heartland/DPI-PC ready rows (all but Naperville 1b931a8e9c2675a9) lack a per-door exact-address DSO-locator match; they rest on the whitelisted db_affiliated_dso='Heartland Dental' artifact + org-NPI legal name = 'Dental Professionals of Illinois, P.C.'. Sufficient AS no-lift corroborations of rows already dso_national; would require door-exact evidence (AB2) only if ever reclassified as net-new census promotions.",
+      "action": "None now. If a future wave promotes any as NET-NEW (not corroboration), require a door-exact Heartland-supported-office match for that door."
+    },
+    {
+      "id": "QA-L2-HOLD-2",
+      "type": "legacy_corporate_false_positive_suspects (user/Gate decision; frozen, not mutated)",
+      "location_ids": ["598cc9dae498795b","d2e5c43e4975ddb4","d4d827860b4132cb"],
+      "summary": "3 rows CURRENTLY corporate in legacy entity_classification are now questioned by Wave-4 evidence: Northwestern Dental Center (REFUTED — 'NORTHwestern' substring false-positive of 'Western Dental'; actually Northwestern Medicine academic P.C.); Midwest Dental Group (HELD — name-field collision, no exact-address locator match); Bloomingdale Dental (HELD — SWEIS adjacency + affiliated_dso NULL). If acted on, these would LOWER the legacy corporate floor by up to 3.",
+      "action": "User/Gate decision whether to demote later. NOTHING mutated under the freeze. QA confirms they are correctly flagged-not-mutated."
+    },
+    {
+      "id": "QA-L2-HOLD-3",
+      "type": "scope_policy (user decision — institutional T6 out of GP floor)",
+      "location_ids": ["144d631a4c4dce2b","d803fcfe4618e8a3","e957561c107de91a"],
+      "summary": "3 institutional T6 rows (Infant Welfare Society FQHC; Heartland International Health Center FQHC; Heartland Health Outreach nonprofit) held out of the GP corporate floor (hold_scope_specialist). Two are Heartland NAME-COLLISIONS correctly resolved as NOT Heartland Dental. Consistent with user default #2 (specialist/institutional scope = user decision).",
+      "action": "User confirms institutional/FQHC rows stay out of the GP-corporate floor. No mutation."
+    }
+  ],
+
+  "bar_application_spot_audit": {
+    "AB2_exact_address": "Dentologie (own-locator door-exact), DCA New Lenox (press release names 202 Vancina Ln), Aspen TAG OCC (own locator 1040 W Randolph), Heartland Naperville (309 W Ogden exact). PASS.",
+    "AB3_durable_artifact": "All ready rows cite transcribed on-disk URLs and/or whitelisted DB artifacts (db_affiliated_dso). Two operating-status/same-door holds (Kang, Obucina) and the FQHC holds carry URLs or DB facts; Obucina hold uses DB facts (provider_count=0, address/zip anomaly) — acceptable for a HOLD. PASS.",
+    "AB4_DSO_eq_STRUCTURE": "All T5 branded_dso rows carry a populated dso_structure_rationale (Heartland MSO+friendly-PC; DCA multi-branded DSO; Aspen/ADMI national DSO; Dentologie 13-office branded platform). PASS.",
+    "AB5_pe_orthogonal": "pe_backed recorded as a separate field; never used to drive or downgrade a tier. Dentologie pe_backed=false does NOT prevent the branded_dso (T5) call. PASS.",
+    "AB7_closed_nonclinical": "Obucina held on operating status (provider_count=0 / address anomaly); institutional/FQHC rows held out of the GP floor. PASS.",
+    "AB9_protected_network": "Only SWEIS adjacency (Bloomingdale) present; HELD, not released; 0 releases. PASS.",
+    "AH4_no_name_field_promotion": "Midwest Dental Group HELD precisely because affiliated_dso='Midwest Dental' is a probable name-field guess with no exact-address locator match — not promoted. PASS.",
+    "AH5_operating_status": "Obucina + Kang held on operating-status/same-door; not defaulted. PASS.",
+    "HB5_HB6_collision_brandword": "Bloomingdale (HB5 pe/dso name collision) + Midwest (HB6 brand-word-only) both HELD. PASS.",
+    "substring_false_positive_guard": "Northwestern 'Western Dental' substring REFUTED correctly (it is 'NORTHwestern' Medicine academic, not Sonrava/Western Dental). PASS.",
+    "true_independent_earned": "Jova + Bellido-Griffin carry named-owner positive evidence; never defaulted. PASS.",
+    "sidecar_preservation": "Every row carries a preserved_sidecar with the original entity_classification/affiliated_dso/EIN/provider_count/address. PASS."
+  },
+
+  "zero_write_proof": {
+    "db_md5_now": "0dec26135bb4d6ee490dc16cfe892ca6",
+    "db_md5_expected": "0dec26135bb4d6ee490dc16cfe892ca6",
+    "db_md5_match": true,
+    "practice_locations_ownership_tier_not_null": 0,
+    "practices_ownership_tier_not_null": 0,
+    "ledger_lines": 1,
+    "progress_reviewed_via_protocol": 0,
+    "progress_undetermined_unreviewed": 4439,
+    "files_written_by_this_qa_pass": ["data/dso_research/_wave4_20260621/autonomous/VERDICT_QA_WAVE4_LANE2_20260622.json"],
+    "manifest_mutated": false,
+    "ready_file_mutated": false,
+    "prior_qa_mutated": false,
+    "verdict": "FROZEN — intact. DB, manifest, 310 ready file, LEDGER, PROGRESS, and all tier/classification columns unchanged. Re-verified read-only before AND consistent after writing this verdict (the verdict lives under data/dso_research/, not the DB)."
+  },
+
+  "consolidate_authorization": "NOT AUTHORIZED — consolidation remains FROZEN until the user types the explicit consolidation phrase. This verdict does not request or perform consolidation.",
+
+  "downstream_permitted_for_gate": {
+    "no_systemic_defect_in_lane2": true,
+    "gate_may": "prepare an evidence-only addendum CANDIDATE file for Lane 2 (15 ready rows: +1 net-new corporate, 12 corroborations, 2 true_independent), clearly tagged ready_for_validation (NOT final).",
+    "gate_must_not": "merge anything into the canonical manifest, build a new ready file, set any ownership_tier, or alter entity_classification/the legacy floor — absent explicit later user approval.",
+    "open_user_decisions_surfaced": ["QA-L2-HOLD-2 (whether to demote the 3 legacy-corporate false-positive suspects)", "QA-L2-HOLD-3 (institutional/FQHC scope policy)"]
+  }
+}

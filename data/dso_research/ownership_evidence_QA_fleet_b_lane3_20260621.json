@@ -1,0 +1,92 @@
+{
+ "_doc": "Independent adversarial QA review of Fleet B Lane 3 (zero-corp ZIP sweep, wave 2). READ-ONLY. No DB/LEDGER/PROGRESS writes; no mutation of prior QA files (this is a NEW file). New-session QA role = review-only validation gate.",
+ "author_role": "independent QA / validation-gate session (New session #1)",
+ "reviewed_file": "data/dso_research/ownership_evidence_queue_fleet_b_lane3_20260621.json",
+ "reviewed_validation_txt": "data/dso_research/ownership_evidence_queue_fleet_b_lane3_validation_20260621.txt",
+ "reviewed_at": "2026-06-21",
+ "constraints_honored": ["no DB writes", "no LEDGER/PROGRESS mutation", "no entity_classification change", "IL only / Boston parked", "prior QA files NOT mutated", "validate-only only"],
+ "UPSTREAM_FREEZE": "Consolidation REMAINS FROZEN. These verdicts pre-stage eligibility only; nothing may be written to ownership_tier/LEDGER/PROGRESS until the Gate Owner finishes the canonical manifest + validate-only pass and the user explicitly approves consolidation.",
+
+ "verdict": "PASS — clean gate. 0 structural/definitional corrections required to the 11 classified rows. 2 advisory findings for the Gate Owner (1 denominator-integrity MUST-FIX, 1 tier-precision non-blocking). The conservative gate held all 13 QA-flagged rows at needs_verification.",
+
+ "scope_reconciliation": {
+  "user_brief_said": "11 classified rows, 13 QA flags",
+  "file_actually_contains": "184 classifications[] (= 11 status='classified' + 173 status='needs_verification'), 10 rejected[], 0 held[], 0 conflicts[]",
+  "resolution": "No discrepancy. '11 classified rows' = the 11 rows with status='classified' (_meta.by_status_classifications.classified=11). '13 QA flags' = the 13-entry _meta._qa_flags array. The 184 is the full promotable+held classification array; only the 11 are promoted-classified, the other 173 are honestly held at needs_verification.",
+  "by_tier_classified": {"true_independent": 9, "single_loc_group": 2}
+ },
+
+ "validation_txt_status": {
+  "earlier_state": "At ~10:52 the validation .txt was a Python traceback — consolidate_census.py was mis-invoked with '--validate-only' passed as the positional results_path argument, producing FileNotFoundError at load_rows(). Lane 3 was NOT validated at that point.",
+  "current_state": "RE-RUN AND FIXED. The .txt now reads: 'Loaded 184 classification rows ... Validation OK ... validate-only complete; no DB/ledger/progress writes.' Lane 3 has now passed the schema/DB validate-only gate.",
+  "caveat": "validate-only is a SCHEMA/DB gate, not an evidence re-judge. Evidence sufficiency is this QA file's job, not the validator's."
+ },
+
+ "mechanical_gates": {
+  "DA_synthetics": {"result": "PASS", "rejected_count": 10, "all_DA_prefixed": true, "DA_tokens_in_classifications": 0, "note": "All 10 rejected[] are DA_-prefixed synthetic NPIs with no federal NPI; zero leaked into classifications[]."},
+  "specialist_ortho_leakage": {"result": "PASS", "specialist_name_keyword_hits_in_classifications": 0, "live_db_ec_specialist_among_184": 0, "note": "The 2 specialist-network QA flags (ALEXANDER KATSNELSON DMD PC 838ebcf62653e56e; NEIL M. WARSHAWSKY DDS MS PC f41b71ce9309dca1 — Warshawsky is a known Chicago orthodontist) are flagged on AO/brand-network specialty, both HELD at needs_verification, neither promoted. Correctly out of the GP denominator."},
+  "closed_inactive": {"result": "PASS", "count_flagged": 9, "all_held_needs_verification": true, "none_in_classified": true, "ids": ["8d4888cbacbe451c OPTIMAL DENTAL LOMBARD", "4c06a6884d4cd2f8 Hawkins Dental", "9f190d3471ffbea8 SMILE BRIGHT", "bfb636fca3dd87f0 Lam Dental", "723a187321dc5fda PRAIRE SHORES", "efc5e269adf24060 LAKESIDE", "dd3ad4eef673ebba Anthony M Contino DDS"]},
+  "true_independent_not_defaulted": {"result": "PASS", "classified_TI": 9, "all_cite_verified_intel_dossier": true, "all_exact_address_match_true": true, "classified_rows_missing_evidence": 0, "proposed_TI_held_at_needs_verification": 96, "note": "Critical: 96 proposed true_independent are HELD at needs_verification (NOT promoted). The gate does NOT silent-default to true_independent — honoring the standing 'true independent is earned with evidence' rule. Only the 9 with verified-quality intel dossiers + official-website + ADA/Healthgrades/ZocDoc corroboration were promoted."},
+  "evidence_basis_distribution": {"classified": {"intel_dossier": 11}, "needs_verification": {"intel_dossier": 47, "structural": 49, "ao_cluster": 17, "ein_cluster": 1, "none": 59}}
+ },
+
+ "the_11_classified_audited": {
+  "true_independent_9": [
+   {"name": "VISHAL GANDHI DDS LLC (Westgate Smiles)", "lid": "ad627fe0bc2671b8", "zip": "60103", "verdict": "ENDORSE", "why": "2 verified dossiers (NPI 1194183400, 1891027280) confirm Dr. Gandhi solo owner; Healthgrades+Alignable cited; no DSO/PE; AO reach=GANDHI single."},
+   {"name": "LAUREN A WEITZ DDS", "lid": "e94b3732bfa44019", "zip": "60103", "verdict": "ENDORSE", "why": "Verified dossier; laurenweitzdds.com official; AO=WEITZ owner/president; EIN single-ZIP, no corporate members."},
+   {"name": "Westbrook Dental Ctr (Slomski)", "lid": "1f7da1cafae16ea0", "zip": "60181", "verdict": "ENDORSE", "why": "Dr. Stephen Slomski sole owner since 1984; EIN 202040344 single-ZIP; ADA corroborates; one location."},
+   {"name": "DENTAL CARE OF OAKBROOK (Abdullai)", "lid": "2a890cc775ce26a6", "zip": "60181", "verdict": "ENDORSE", "why": "2 verified dossiers; Dr. Kimet Abdullai sole owner since 2004; AO reach=1; EIN single-ZIP."},
+   {"name": "Francis Carla DDS", "lid": "1799d3db75c07c03", "zip": "60181", "verdict": "ENDORSE", "why": "Dr. Carla Francis sole owner since 1998; website+ADA; EIN 364200169 single-ZIP."},
+   {"name": "JASPREET DHINGRA-BAJAJ (Bright Dental Smiles)", "lid": "6749644c6cb3d2f4", "zip": "60181", "verdict": "ENDORSE", "why": "2 verified dossiers; sole founder-owner; AO reach=1; website+ADA."},
+   {"name": "MICHAEL C GRIFFIN (Northalsted Dental Spa)", "lid": "61b02bf815f57d24", "zip": "60613", "verdict": "ENDORSE", "why": "2 verified dossiers (acq_found=0); solo since 2005; official website."},
+   {"name": "Robbins Dental (Alan Robbins)", "lid": "9c2f4fbdad03fbcd", "zip": "60613", "verdict": "ENDORSE", "why": "Verified dossier (acq_found=0); sole owner; official website."},
+   {"name": "First Dental (Feng family)", "lid": "81ccc151ecbbd6ff", "zip": "60613", "verdict": "ENDORSE_AS_INDEPENDENT_BUT_TIER_IMPRECISE", "why": "See finding_2. Verified dossier confirms dentist-owned single-location independent (acq_found=0), so headline-neutral; BUT its own reasoning + live entity_classification say family_practice (3 Feng providers, shared EIN 363094406), which does not fit T1's strict 'one dentist owns ONE location.'"}
+  ],
+  "single_loc_group_2": [
+   {"name": "Shah Dental (Modern Smiles)", "lid": "997fb9c989f09b76", "zip": "60613", "verdict": "ENDORSE_TIER_BUT_SEE_finding_1", "why": "Dr. Rita Shah co-founder of Modern Smiles, 2 unrelated dentists one location, dentist-owned, no DSO/MSO — correct T2 concept."},
+   {"name": "Iqbal Dental (Modern Smiles)", "lid": "772fe78f8b2369eb", "zip": "60613", "verdict": "ENDORSE_TIER_BUT_SEE_finding_1", "why": "Dr. Siddra Iqbal, the OTHER co-founder of the SAME Modern Smiles practice — same phone, same building. Correct T2 concept but a DUPLICATE LOCATION of the Shah row (see finding_1)."}
+  ]
+ },
+
+ "findings": [
+  {
+   "id": "finding_1",
+   "severity": "MUST-FIX before consolidation (denominator integrity)",
+   "type": "duplicate_location_double_count",
+   "title": "Modern Smiles is one physical practice represented as TWO location rows, both classified single_loc_group",
+   "rows": ["997fb9c989f09b76 (Shah Dental)", "772fe78f8b2369eb (Iqbal Dental)"],
+   "db_facts": {
+    "shah_normalized_address": "3901 n broadway chicago il 60613",
+    "iqbal_normalized_address": "3901 n broadway",
+    "same_phone": "(312) 500-7080 (identical)",
+    "same_zip": "60613",
+    "dedup_miss_cause": "normalized_address STRINGS differ (one has city/state/zip appended, the other does not), so the address-dedup did not collapse them — but identical phone + identical street + the dossier ('co-founded by Dr. Rita Shah and Dr. Siddra Iqbal') prove ONE physical door."
+   },
+   "impact": "If BOTH rows are consolidated as single_loc_group, Modern Smiles is counted as 2 GP locations and adds +1 to the Consolidated (T2) headline for a single physical practice. Correct disposition: ONE single_loc_group door (collapse the pair; the two NPIs are co-owners of one group, not two practices).",
+   "classification_is_correct": "The TIER (single_loc_group) is right — 2 unrelated co-founders, one location, dentist-owned, no DSO/MSO. Only the row count is wrong.",
+   "recommendation": "Gate Owner: collapse 997fb9c989f09b76 + 772fe78f8b2369eb to a single physical door before counting. Do NOT drop the classification; merge the rows. Consider a normalized_address normalization pass (strip trailing city/state/zip) to catch sibling dedup misses in other ZIPs."
+  },
+  {
+   "id": "finding_2",
+   "severity": "non-blocking (tier precision, headline-neutral)",
+   "type": "true_independent_vs_family_practice_tier_gap",
+   "title": "First Dental classified true_independent but is a 3-provider family practice",
+   "row": "81ccc151ecbbd6ff (First Dental, 4108 N Sheridan Rd, 60613)",
+   "db_facts": {"entity_classification": "family_practice", "provider_npis": ["1396232138", "1265732416", "1326119876"], "shared_ein": "363094406", "single_location": true},
+   "tier_model_gap": "The 6-tier ownership_tier model has no dedicated family-practice tier. T1 true_independent = 'one dentist owns ONE location'; T2 single_loc_group = '2+ UNRELATED dentists' (family is explicitly excluded). A single-location family group fits neither cleanly.",
+   "impact": "Headline-NEUTRAL: family_practice is independent (not Consolidated and not DSO/PE) under any reasonable mapping, so the Consolidated and DSO/PE-only headlines are unaffected. Only the granular tier label is imprecise.",
+   "recommendation": "Gate Owner: set one policy for how family practices map onto the 6 tiers (e.g., a family flag under the independent umbrella, or fold into T1 with a related-providers note). Until then, First Dental's independent status is correct; only its true_independent SUB-label is debatable."
+  }
+ ],
+
+ "gate_conservatism_endorsed": "The gate's discipline is correct and worth preserving: only 9 of 105 proposed true_independent (9 classified + 96 held) were promoted, all on verified-quality intel dossiers with exact_address_match; all 13 _qa_flags (9 closed + 2 specialist + 1 reconcile-with-main + 1 institutional-vs-stealth + 1 db-anomaly + 1 invalidated-signal) were held at needs_verification or excluded, none reaching the classified set; all DA synthetics rejected. This is the opposite of the wave-1 over-promotion that required 59 corrections.",
+
+ "cross_file_notes": {
+  "RENOVATIO_DENTAL_INC": "QA flag reconcile_with_main (d96e2b15e57ec2c6): AO Nguyen links to 'Precision Dental Care' chain. Main's reach5 wave adjudicated Precision Dental Care as dentist-owned multi, no PE -> dentist_multi, NOT stealth_dso. Held at needs_verification — correct. BUT note: my reach5 v2 sign-off (PART_2) recorded that 2 Precision Dental Care LLC rows are dso_regional + carry affiliated_dso in the LIVE DB — an OBJECTIVE T3/T5 boundary conflict still open for the Gate Owner. Renovatio inherits that unresolved boundary; keep held until the Gate Owner sets one Precision Dental Care policy.",
+  "PRIMEHEALTH_OF_ILLINOIS": "QA flag institutional_vs_stealth (4ec51b1b, not in classifications[]): 5-state multi-specialty org (dental+podiatry+optometry+audiology), PrimeHealth Group LLC parent. Concur it may be T6 institutional rather than stealth_dso — Gate Owner judgment. Correctly not promoted.",
+  "John_Katsis_DDS": "QA flag db_data_anomaly (d027da6419b302cd): NPPES NPI 1962707620 maps to RALPH DERANGO not Katsis — a DB label error for the reset/Gate Owner, not an ownership finding. Concur; out of QA scope.",
+  "Albert_Mategrano_Bartlett": "QA flag invalidated_signal (lid null): the '9 locations' intel came from bartlettdentalcareil.com registered to a DIFFERENT NPI (Sandra Song) — cross-contamination, multi-location signal INVALIDATED. Concur, do not promote."
+ },
+
+ "recommendation": "Accept the Lane 3 gate as PASS. Promote nothing yet (freeze stands). Before consolidation, the Gate Owner must (1) collapse the Modern Smiles duplicate pair to one single_loc_group door [finding_1], and (2) set a family-practice tier-mapping policy covering First Dental [finding_2]. Keep all 173 needs_verification + 10 rejected parked. The DO_NOT_MUTATE_WAVE1 boundary is respected — this is a separate Lane-3 queue and the wave-1 QA files are untouched."
+}

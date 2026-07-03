@@ -1,0 +1,126 @@
+{
+  "network": "IVANA BUENO",
+  "network_id": "ao:BUENO_IVANA",
+  "owner_type_verdict": "dso_brand",
+  "network_summary": "Dental 360 is a branded multi-location DSO network operating 28+ locations across Illinois, Wisconsin, and Indiana under the 'Dental 360' brand and several local trade names (Irving Park Family Dentist, Family Dental Group, Lawndale Dental Center, etc.). Both cluster locations — 3435 W Irving Park Rd (ZIP 60618) and 3855 W North Ave (ZIP 60647) — are explicitly listed on the official Dental 360 network website (dental360usa.com, dental360grp.com). Ivana Bueno is the Director of Operations, a management/administrative role; she is the authorized official on federal NPPES filings for these offices in that capacity, not as a solo owner-dentist. No private equity sponsor, MSO/management-services entity, or PE-platform layer was documented in public sources.",
+  "owner_operator_identity": "Ivana Bueno, Director of Operations, Dental 360 Group (headquartered 3435 W Irving Park Rd, Chicago, IL 60618)",
+  "brand_trade_names": [
+    "Dental 360",
+    "Dental 360 Group",
+    "Irving Park Family Dentist",
+    "Family Dental Group INC",
+    "Lawndale Dental Center",
+    "Wisconsin Dental Center",
+    "Marion Family Dental",
+    "Mitchell Street Dental",
+    "Village Dental",
+    "Sussex Family Dental"
+  ],
+  "legal_entities": [
+    "DENTAL 360 & ASSOCIATES LLC (NPI 1063223048, 3435 W Irving Park Rd, Chicago IL 60618)",
+    "FAMILY DENTAL GROUP, INC. (NPI 1538330758, EIN 201771535, 3855 W North Ave, Chicago IL 60647)"
+  ],
+  "durable_artifacts": [
+    "Shared authorized official IVANA BUENO across NPI 1063223048 (ZIP 60618) and NPI 1538330758 (ZIP 60647)",
+    "Both addresses appear on dental360usa.com official locations page as Dental 360 network offices",
+    "Both addresses appear on dental360grp.com/locations/ as Dental 360 network offices",
+    "Dental 360 Group HQ listed as 3435 W Irving Park Rd Chicago IL (same as cluster location 8c6cbd8b8b3e4877)",
+    "Ivana Bueno identified as Director of Operations for Dental 360 Group (Visual Visitor company profile)",
+    "Yahoo Local listings: bueno-ivana-dental-360-kenosha-kenosha and bueno-ivana-dental-360-oak-creek-llc — confirms her administrative AO role extends to multi-state Dental 360 offices"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "Ivana Bueno is Director of Operations (administrative/management role), NOT a solo owner-dentist. The AO signal here reflects a corporate officer filing on behalf of the Dental 360 branded DSO network — this is not a dentist-owned multi-office private group. No PE sponsor or MSO layer documented; classify pe_backed=false.",
+  "evidence_chain": "AO signal: IVANA BUENO appears as authorized official on two distinct IL GP location NPIs across ZIP 60618 and 60647. Documentary corroboration: (1) dental360grp.com/locations/ explicitly lists both addresses — 3435 W Irving Park Rd and 3855 W North Ave — as Dental 360 network locations; (2) dental360usa.com/locations/ confirms same; (3) Visual Visitor company profile identifies Ivana Bueno as 'Director of Operations' for Dental 360 Group, headquartered at 3435 W Irving Park Rd; (4) Yahoo Local listings for Ivana Bueno show AO role extended to Dental 360 Kenosha and Dental 360 Oak Creek LLC — confirming her multi-location administrative role across the network. No PE backer or MSO/management-services entity found in three web searches.",
+  "future_app_notes": "Dental 360 is a large regional DSO brand (~28-30 locations across IL/WI/IN) with many Chicago locations operating under local trade names (Irving Park Family Dentist, Family Dental Group, Lawndale Dental Center, etc.). Other Dental 360 locations in watched Chicagoland ZIPs that do NOT share the IVANA BUENO AO but operate under the Dental 360 brand should be reviewed and promoted to dso_regional/dso_national as brand-match promotions. The two cluster locations are already classified dso_regional — consistent with branded_dso verdict. Watch for future PE/platform announcement; as of 2026-06-21 no PE backer found. The HQ entity is DENTAL 360 & ASSOCIATES LLC.",
+  "classifications": [
+    {
+      "location_id": "8c6cbd8b8b3e4877",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dental 360 Group / DENTAL 360 & ASSOCIATES LLC; Ivana Bueno, Director of Operations",
+      "network_id": "ao:BUENO_IVANA",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2: IVANA BUENO is authorized official on NPI 1063223048 across ZIP 60618",
+          "entity_classification=dso_regional (existing DB assignment)",
+          "affiliated_dso=Dental 360 (existing DB label)",
+          "provider_count=13 (large multi-provider site consistent with DSO)"
+        ],
+        "evidence": [
+          "3435 W Irving Park Rd explicitly listed as 'Irving Park Family Dentist' on dental360grp.com/locations/ and dental360usa.com/locations/ — a Dental 360 network location page",
+          "This address is also the Dental 360 Group headquarters per Visual Visitor company profile",
+          "Dental 360 operates 28+ locations across IL/WI/IN under unified brand — multi-state DSO network structure confirmed"
+        ]
+      },
+      "evidence_urls": [
+        "https://dental360grp.com/locations/",
+        "https://dental360usa.com/locations/",
+        "https://www.visualvisitor.com/companies/371862/dental_360_group"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "IVANA BUENO",
+        "reach": 2,
+        "zips": ["60618", "60647"],
+        "npi": "1063223048",
+        "name": "DENTAL 360 & ASSOCIATES LLC",
+        "address": "3435 w irving park rd",
+        "city": "CHICAGO",
+        "zip": "60618",
+        "ein": null,
+        "entity_classification": "dso_regional",
+        "affiliated_dso": "Dental 360"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Location is the HQ address of Dental 360 Group and explicitly listed on both Dental 360 network websites. Existing dso_regional classification is consistent with branded_dso verdict. Ivana Bueno's AO role is Director of Operations (management), not an owner-dentist. 13-provider count confirms active DSO-scale operation. No PE backer found; pe_backed=false. ready_for_validation because both official brand websites corroborate the address as a Dental 360 network location."
+    },
+    {
+      "location_id": "c4b5b35fa16e44e5",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dental 360 Group / FAMILY DENTAL GROUP, INC.; Ivana Bueno, Director of Operations",
+      "network_id": "ao:BUENO_IVANA",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2: IVANA BUENO is authorized official on NPI 1538330758 across ZIP 60647",
+          "entity_classification=dso_regional (existing DB assignment)",
+          "affiliated_dso=Dental 360 (existing DB label)",
+          "ein=201771535",
+          "provider_count=4"
+        ],
+        "evidence": [
+          "3855 W North Ave (60647) explicitly listed as 'Family Dental Group INC' on dental360grp.com/locations/ and dental360usa.com/locations/ — a Dental 360 network location page",
+          "Waze listing confirms 'Dental 360 - North Ave Family Dentist' at 3855 W North Ave — brand match",
+          "Dental 360 operates 28+ locations across IL/WI/IN under unified brand — multi-state DSO network structure confirmed"
+        ]
+      },
+      "evidence_urls": [
+        "https://dental360grp.com/locations/",
+        "https://dental360usa.com/locations/dental-360-north-ave/",
+        "https://www.waze.com/live-map/directions/us/il/chicago/dental-360-north-ave-family-dentist?to=place.ChIJPfZvszvND4gR-i5BqbW9qxo"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "IVANA BUENO",
+        "reach": 2,
+        "zips": ["60618", "60647"],
+        "npi": "1538330758",
+        "name": "FAMILY DENTAL GROUP, INC.",
+        "address": "3855 w n ave",
+        "city": "CHICAGO",
+        "zip": "60647",
+        "ein": "201771535",
+        "entity_classification": "dso_regional",
+        "affiliated_dso": "Dental 360"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Location operates under the local trade name 'Family Dental Group INC' but is explicitly listed on both Dental 360 official network websites as a Dental 360 network location. Waze also shows 'Dental 360 - North Ave Family Dentist' at this address. Existing dso_regional classification is consistent with branded_dso verdict. Ivana Bueno's AO role is Director of Operations (management), not an owner-dentist. EIN 201771535 is a durable legal identity for this entity. No PE backer found; pe_backed=false. ready_for_validation because both official brand websites corroborate the address as a Dental 360 network location."
+    }
+  ]
+}

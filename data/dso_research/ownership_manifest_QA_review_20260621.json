@@ -1,0 +1,101 @@
+{
+ "_doc": "Independent adversarial QA review of the FINAL Gate Owner consolidation candidate manifest. READ-ONLY. New file (no prior QA file mutated). No DB/LEDGER/PROGRESS writes. Answers the two main questions: (1) are the 123 ready_to_validate rows safe for later consolidation, (2) is the 56-row backfill queue correctly routed.",
+ "author_role": "independent QA / validation-gate session (New session #1)",
+ "reviewed_files": [
+  "data/dso_research/consolidation_candidate_manifest_20260621.json",
+  "data/dso_research/_ready_to_validate_normalized_20260621.json",
+  "data/dso_research/ownership_taxonomy_DSO_structure_gate_review_20260621.json"
+ ],
+ "reviewed_at": "2026-06-21",
+ "constraints_honored": ["no DB writes", "no LEDGER/PROGRESS mutation", "no entity_classification change", "IL only / Boston parked", "prior QA files NOT mutated", "validate-only discipline", "consolidation remains FROZEN"],
+ "UPSTREAM_FREEZE": "Consolidation REMAINS FROZEN per the manifest's own _meta. This review pre-stages eligibility only; nothing is written until the user explicitly says 'consolidate approved manifest'.",
+
+ "headline_verdict": "CONDITIONAL PASS with one MUST-FIX. The bucket machinery, partition integrity, conflict-holding, taxonomy restorations, and 56-row backfill routing are all sound. BUT the 123 ready_to_validate bucket is NOT uniformly safe: exactly 58 of 123 (47.2%) must be demoted before any consolidation. The other 65 are candidate-safe.",
+
+ "count_reconciliation": {
+  "ready_to_validate": 123,
+  "needs_more_evidence_total": 169,
+  "of_which_gate_disposition": 113,
+  "of_which_from_ready_demotion_(==backfill)": 56,
+  "rejected": 7,
+  "conflicts": 73,
+  "taxonomy_revised": "14 (index that re-points at 14 ready rows; ready ∩ tax = 14 by design)",
+  "duplicate_denominator_blocked": "16 location_ids / 8 pairs, 0 currently in candidate set",
+  "evidence_gap_backfill_queue": "56 (== the from_ready_demotion subset of needs_more_evidence, double-listed by design)",
+  "all_user_stated_counts_match": true,
+  "partition_integrity": "CLEAN — the only cross-bucket location_id overlap is ready∩taxonomy_revised=14 (by-design overlay) and backfill⊂needs_more_evidence (by-design). No row is double-disposed across ready/nme/conflicts/rejected."
+ },
+
+ "Q1_are_the_123_ready_rows_safe": {
+  "answer": "NO as a whole — split 65 SAFE / 58 NOT-SAFE.",
+  "safe_65": {
+   "definition": "not a protected network AND carries >=1 real documentary URL",
+   "tier_distribution": {"branded_dso": 21, "stealth_dso": 19, "dentist_multi": 24, "true_independent": 1},
+   "evidence_basis": {"web_verified": 45, "locator": 17, "intel_dossier": 2, "structural": 1},
+   "locator_only_DSO_rows_checked": "PASS — all 17 locator/structural DSO-tier rows are legitimate established-brand + documentary-MSO: Dental Dreams (KOS Services / Dental Experts LLC named as the IL friendly-PC/MSO, founder Sameera Hussain, dentaldreams.com per-address locator pages) and All Family Dental & Braces / United Dental Partners (dentalandbraces.com per-location pages). These satisfy canonical_rules.locator_is_not_mso because the rule explicitly admits 'operates under an established national/regional DSO brand' WITH documentary MSO evidence — both present here. These are exactly the corrected-taxonomy restorations from my DSO-structure addendum; the Gate Owner applied the pe_backed-orthogonal rule correctly.",
+   "residual_per_row_item": "The 24 dentist_multi web_verified rows still require, at validate time, the standing dentist-owner-vs-MSO confirmation on the cited URL (a URL that turns out to show an MSO operator would re-route to T4/T5). This is a per-URL verification item, not a structural defect — consistent with my reach5 v2 sign-off caveat.",
+   "disposition": "Candidate-safe. May proceed to consolidate_census.py --validate-only when the user approves consolidation."
+  },
+  "not_safe_58": {
+   "definition": "EVERY zero-documentary-URL ready row is ALSO a protected-network row — the two sets are identical (58 = 58).",
+   "by_network_and_tier": {
+    "NITTINGER_RACHEL": {"count": 12, "tier": "branded_dso"},
+    "LABINOV_BORIS": {"count": 7, "tier": "stealth_dso"},
+    "SHAFI_SOHAIL": {"count": 17, "tier": "dentist_multi"},
+    "BRUNETTI_ROBERT": {"count": 9, "tier": "dentist_multi"},
+    "SWEIS_JUBRAIL": {"count": 7, "tier": "dentist_multi"},
+    "RAMAHA_AHMED": {"count": 6, "tier": "dentist_multi"}
+   },
+   "reason_A_evidence_self_contradiction": "All 58 carry evidence_urls=[] and a single evidence_artifact of the form 'ao_cluster:ao:<NAME>'. They were admitted to ready via the bucket definition's 'OR durable artifact on disk' clause. BUT the manifest's OWN canonical_rules.ao_reach_is_signal states AO reach is 'a discovery signal, not ownership proof,' and an authorized official can be a manager/spouse/attorney/DSO officer. So an ao_cluster artifact is precisely the artifact the rules say is INSUFFICIENT to assign these tiers. The ready bucket admitted on the letter of the definition while violating the evidence rules. This is the core defect.",
+   "reason_B_governance_violation": "All 58 belong to the 6 standing PROTECTED networks (Brunetti, Labinov, Nittinger, Ramaha, Shafi, Sweis — plus Belkic/Aqel not present here). The standing user rule: 'Do not target Shafi, Belkic, Nittinger, Aqel, Brunetti, Sweis, Labinov, or Ramaha unless the main session finishes and releases those networks.' No release is on record — the reach5 QA explicitly recorded these earlier-wave networks were NOT reprocessed/released. They must not sit in a consolidation-ready state.",
+   "highest_risk_subset": "The 19 DSO-tier rows (Nittinger 12 branded_dso + Labinov 7 stealth_dso) are the most dangerous: branded_dso/stealth_dso move BOTH headlines (Consolidated AND DSO/PE), yet these are assigned on AO-reach alone with no brand/MSO URL. branded_dso requires the brand to BE the NPPES name or an established DSO brand; stealth_dso requires documentary MSO/management evidence — AO-reach can supply neither.",
+   "lower_risk_subset": "The 39 dentist_multi rows (Shafi 17, Brunetti 9, Sweis 7, Ramaha 6) move only the Consolidated headline (not DSO/PE). Some carry decent corroborating signal (name homogeneity — e.g. Brunetti = 9× 'ProCare Dental Group P.C.', dentist-founded 1979), but still no documentary URL and still protected — so still not ready.",
+   "consistency_proof_the_gate_already_uses_this_rule": "The Gate Owner ALREADY rejected 7 rows for exactly this defect ('dentist_multi on ao_reach ALONE', 'branded_dso with no URL') AND demoted 25 DSO-tier rows (19 branded + 6 stealth) to the backfill queue for 'no documentary URL or durable artifact'. The identical rule, applied uniformly, demotes the 58. The current inconsistency: a DSO row with NO artifact -> backfill, but a DSO row with an ao_cluster artifact -> ready, even though ao_cluster is declared 'not ownership proof.'",
+   "disposition": "MUST-FIX before consolidation: move all 58 to needs_more_evidence, lane=AO_network, missing_evidence_type='documentary multi-location/MSO/owner URL', and add a protected_network_hold=true tag. Do NOT consolidate any protected-network row until the main session releases the network."
+  },
+  "bottom_line": "If the user approves consolidation today, ONLY the 65 clean rows are safe to push through validate-only. The 58 protected AO-reach-only rows would, if consolidated, (a) inflate the Consolidated headline by up to 58 locations and the DSO/PE headline by up to 19 locations on signal-not-proof evidence, and (b) breach the standing do-not-release rule. Hold them."
+ },
+
+ "Q2_is_the_56_row_backfill_correctly_routed": {
+  "answer": "YES — routing is correct and internally consistent.",
+  "lanes": {"locator_exact": 22, "practice_intel": 21, "AO_network": 13, "sum": 56},
+  "gap_to_lane_mapping": {
+   "locator_exact_gap (22)": "'fleet asserted web_verified+exact_address_match but the URL string is not transcribed in any on-disk evidence file' -> locator_exact lane (22). EXACT match. This is a strong no-fabrication catch: the fleet CLAIMED a verified URL it never recorded, so the Gate Owner demoted rather than trusted it.",
+   "AO_network_gap (13)": "'AO-network cluster artifact or documentary multi-location URL' -> AO_network lane (13). EXACT match.",
+   "practice_intel_lane (21)": "= institutional documentary (9) + owner-operated documentary URL (2) + practice_intel dossier w/ source URL (10) = 21. Coherent."
+  },
+  "demoted_from_tier": {"branded_dso": 19, "dentist_multi": 15, "institutional": 10, "stealth_dso": 6, "true_independent": 5, "single_loc_group": 1},
+  "protected_rows_in_backfill": 0,
+  "minor_recommendation": "When the 58 protected AO-only ready rows are demoted (Q1 fix), they belong in this same AO_network lane (their gap is identical to the 13 already there) plus a protected_network_hold tag. Institutional rows (9-10) might route more naturally to a registry lane than practice_intel, but practice_intel can capture FQHC/hospital/university registry URLs, so this is acceptable as-is.",
+  "verdict": "No correction needed to the 56-row routing itself."
+ },
+
+ "other_buckets_audited": {
+  "conflicts_73": "SOUND. Cross-source tier disagreements correctly HELD, not unilaterally resolved. The preserved boundary is honored: Precision (8 rows) and Sonrisa (5 rows) and 1st Family Dental contests are IN conflicts (e.g. DENTAL PROFILE / 1st Family Dental: ownership_QA=dentist_multi vs reach5=undetermined), NOT in ready. This directly preserves my flagged Precision/Sonrisa/non-PE-DSO boundary.",
+  "dental_dreams_boundary": "CORRECTLY RESOLVED, not held: Dental Dreams has 0 conflicts because it carries documentary MSO evidence (KOS Services / Dental Experts LLC) and was resolved to branded_dso via taxonomy_revised. The asymmetry is correct — Dental Dreams has documentary MSO -> resolve; Precision/Sonrisa lack it -> hold as conflict.",
+  "taxonomy_revised_14": "All 14 are the Dental Dreams / UDP corrected-taxonomy restorations now in ready (verified legitimate above). MINOR DOC GAP: the taxonomy_revised INDEX entries have name/network/to all null — the index records only location_id, not the from->to tier or brand. Cosmetic (the real tier+reasoning live in the ready bucket); recommend the Gate Owner populate the 'to' field for auditability.",
+  "rejected_7": "ALL SOUND should_NOT_consolidate: dentist_multi on ao_reach+directory only; dentist_multi on ao_reach ALONE; stealth_dso on affiliated_dso field with no exact-address URL; branded_dso with no URL + pe-flag inconsistent; branded_dso on individual-name NPI w/ possible NPI error; single_loc_group that is actually a FAMILY practice (Gasior siblings); stealth_dso via co-location trap. Note: these rejection criteria are the SAME ones that should have demoted the 58 (see Q1 consistency_proof).",
+  "duplicate_denominator_blocked_16": "SOUND mechanism. 8 HIGH duplicate-door pairs with conflicting tiers on the same physical door (e.g. Barrett Dental / Park Ridge Dentistry = stealth_dso vs dentist_multi @ (847) 692-7350). 0 currently in the candidate set (their tiers came from the now-reset wave-1 census). Correctly flagged as a denominator hazard for any future wave.",
+  "denominator_caveat": "SOUND — sourced from my evidence_denominator_review: 73 building components, 67 collapse_safe + 6 collapse_partial, defensible excess 75 rows -> denominator 4,364 (-1.69% max impact). 'verify' rows correctly excluded from the excess."
+ },
+
+ "preserved_flags_status": {
+  "modern_smiles_shah_iqbal_duplicate": "NOT in this manifest at all (neither in ready nor in duplicate_denominator_blocked). Root cause: Lane 3 (ownership_evidence_queue_fleet_b_lane3_20260621.json) is NOT in the manifest's inputs[] list. When Lane 3 is folded into a future manifest, Shah (997fb9c989f09b76) + Iqbal (772fe78f8b2369eb) MUST be added to duplicate_denominator_blocked (same phone (312) 500-7080, same building 3901 N Broadway, one physical door, both single_loc_group).",
+  "first_dental_family_vs_true_independent": "NOT in this manifest (Lane 3 not ingested). The family-vs-TI tier-mapping policy is still open; note the manifest's rejected_7 already contains a parallel case (Gasior siblings family practice mislabeled single_loc_group -> rejected), so the Gate Owner IS applying family-practice discipline elsewhere.",
+  "precision_sonrisa_dental_dreams_boundary": "HONORED. Precision + Sonrisa held in conflicts (not resolved); Dental Dreams resolved to branded_dso on documentary MSO. Exactly the disposition I recommended."
+ },
+
+ "coverage_gap_noted": "Lane 3 is absent from the manifest inputs[], so the 11 Lane-3 classified rows (9 true_independent + 2 single_loc_group / Modern Smiles) and their QA findings are NOT represented here. This is not an error in THIS manifest (it builds only from its listed inputs with a no-research attestation), but the Gate Owner should fold Lane 3 in before declaring IL coverage complete.",
+
+ "recommendation": {
+  "before_any_consolidation": [
+   "1. MUST-FIX: demote the 58 protected AO-reach-only rows from ready_to_validate to needs_more_evidence (lane=AO_network, protected_network_hold=true). This drops ready from 123 to 65.",
+   "2. Consolidate ONLY the 65 clean rows through validate-only when the user approves, applying the per-URL dentist-owner-vs-MSO confirmation to the 24 dentist_multi web_verified rows at validate time.",
+   "3. Keep conflicts (73), rejected (7), and the full backfill/needs_more_evidence (169) parked.",
+   "4. Fold Lane 3 into a future manifest pass; add Modern Smiles Shah/Iqbal to duplicate_denominator_blocked and resolve the First Dental family-practice tier policy.",
+   "5. Cosmetic: populate the taxonomy_revised 'to' field for audit trail."
+  ],
+  "net_safe_count_today": "65 of 123 ready rows are consolidation-safe; 58 are not.",
+  "the_56_row_backfill": "correctly routed; no change required."
+ }
+}

@@ -1,0 +1,146 @@
+{
+  "network": "MOHAMMAD MOEIN AZIMI",
+  "network_id": "ao:AZIMI_MOHAMMAD MOEIN",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Dr. Mohammad Moein Azimi (DDS, UIC College of Dentistry 2018) is the licensed dentist-owner of a private three-location dental group in Chicagoland. He operates under the legal entity 'Align Dental Group Chicago Corp' across two Chicago locations (Taylor St / West Loop and Addison St / Avondale) and under '4 Rivers Dental Ltd' at the Northbrook location. Consumer-facing brands include 'Elston Dental' (3235 W Addison), 'Smart Dental' / 'Willow Festival Dental' (840 Willow Rd Northbrook), and 'Align Dental Group Chicago Corp' itself (1259 W Taylor). No MSO, management company, DSO platform, or PE backer was found. This is a dentist-owned multi-office private group with no separate management/MSO layer.",
+  "owner_operator_identity": "Dr. Mohammad Moein Azimi, DDS — Doctorate of Dental Medicine, University of Illinois at Chicago College of Dentistry (2018, high honors). Owner-operator across all three locations. Member ADA and Illinois State Dental Society.",
+  "brand_trade_names": [
+    "Align Dental Group Chicago Corp",
+    "Elston Dental",
+    "Smart Dental",
+    "Willow Festival Dental",
+    "4 Rivers Dental Ltd"
+  ],
+  "legal_entities": [
+    "Align Dental Group Chicago Corp",
+    "4 Rivers Dental Ltd"
+  ],
+  "durable_artifacts": [
+    "AO reach=3: MOHAMMAD MOEIN AZIMI appears as authorized official on NPIs 1962197285 (Taylor St), 1346079951 (Addison St), and 1467337964 (Northbrook) across ZIPs 60607, 60618, 60062",
+    "smartdentalnow.com features Dr. Moein Azimi as dentist at 840 Willow Rd, Northbrook — same address as 4 Rivers Dental Ltd NPI 1467337964",
+    "elstondental.com features Dr. Moein Azimi as dentist/owner at 3235 W Addison St Suite 6, Chicago 60618 — same address as Align Dental Group Chicago Corp NPI 1346079951",
+    "aligndentalgroup.com (Florida-based unrelated practice) — NOT the same entity as Align Dental Group Chicago Corp",
+    "DentalPlans.com directory lists Dr. Mohammadmoein Z Azimi at both Chicago 60618 and Waukegan 60085 locations"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "4 Rivers Dental Ltd (NPI 1467337964, provider_count=0, year_established=2010) is the NPPES entity but the consumer-facing practice at 840 Willow Rd now operates as 'Smart Dental' (formerly 'Willow Festival Dental'). The NPPES legal name is stale/legacy but the address is verified active. No location appears closed.",
+  "evidence_chain": "Federal AO signal: MOHAMMAD MOEIN AZIMI appears as authorized official on 3 NPIs across 3 ZIPs (60062, 60607, 60618). Documentary corroboration: (1) elstondental.com confirms Dr. Moein Azimi as dentist-owner at 3235 W Addison St Suite 6, Chicago 60618 — matching Align Dental Group Chicago Corp NPI 1346079951. (2) smartdentalnow.com confirms Dr. Moein Azimi as dentist at 840 Willow Rd Suite H, Northbrook 60062 — matching 4 Rivers Dental Ltd NPI 1467337964. (3) Yahoo Local and OpenNPI confirm Azimi Mohammad Moein is the provider at 1259 W Taylor St, Chicago 60607 — NPI 1962197285. No MSO/management company/DSO platform/PE backer found across three web searches. Dr. Azimi is the sole licensed dentist-owner operating a private multi-location group under multiple consumer brands.",
+  "future_app_notes": "Monitor for network expansion — DentalPlans.com snippet referenced '27 other locations' which could not be verified (403 Forbidden). If confirmed, this network may be larger than the 3 watched-IL ZIPs covered by this AO cluster. Additional NPI registrations under Dr. Azimi's credential number should be checked. Watch for any MSO/management company entity that could upgrade tier to branded_dso. The Waukegan location (60085) was referenced in DentalPlans but is not in the current AO cluster — check if a Waukegan NPI is registered under Azimi AO.",
+  "classifications": [
+    {
+      "location_id": "23c2e520e66d12bf",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Mohammad Moein Azimi, DDS — dentist-owner; UIC 2018",
+      "network_id": "ao:AZIMI_MOHAMMAD MOEIN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: MOHAMMAD MOEIN AZIMI as authorized official on NPI 1467337964 (4 Rivers Dental Ltd, 840 Willow Rd, Northbrook 60062)",
+          "NPPES legal name '4 Rivers Dental Ltd' — corporate-sounding entity name",
+          "provider_count=0 in pipeline (sparse NPPES data at this address)"
+        ],
+        "evidence": [
+          "smartdentalnow.com (Smart Dental at 840 Willow Rd Suite H, Northbrook 60062) confirms Dr. Moein Azimi as the dentist and practice owner at exactly this address",
+          "Yelp listing for 'Smart Dental' at 840 Willow Rd, Northbrook — formerly 'Willow Festival Dental' — confirms active general dentistry practice under Dr. Azimi's ownership"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.smartdentalnow.com/dr-moein-azimi/",
+        "https://www.smartdentalnow.com/",
+        "https://www.yelp.com/biz/smart-dental-northbrook-2"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "MOHAMMAD MOEIN AZIMI",
+        "reach": 3,
+        "zips": ["60062", "60607", "60618"],
+        "npi": "1467337964",
+        "entity_name": "4 RIVERS DENTAL LTD",
+        "address": "840 willow rd",
+        "city": "NORTHBROOK",
+        "zip": "60062"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "NPPES legal entity name '4 Rivers Dental Ltd' is a legacy/stale name. Consumer-facing practice at this address currently operates as 'Smart Dental' (also previously 'Willow Festival Dental'). Address and practice are confirmed active as of 2026.",
+      "reasoning": "AO reach signal plus documentary corroboration: smartdentalnow.com and Yelp confirm Dr. Moein Azimi as dentist-owner at exactly 840 Willow Rd, Northbrook 60062. No MSO/management company/DSO/PE structure found. This is a dentist personally owning and operating this office as part of his private multi-location group. gate_status=ready_for_validation because owner identity is confirmed by the practice's own website at the exact address."
+    },
+    {
+      "location_id": "586d985f24e195cc",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Mohammad Moein Azimi, DDS — dentist-owner; UIC 2018",
+      "network_id": "ao:AZIMI_MOHAMMAD MOEIN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: MOHAMMAD MOEIN AZIMI as authorized official on NPI 1962197285 (Align Dental Group Chicago Corp, 1259 W Taylor St, Chicago 60607)",
+          "Legal entity name 'Align Dental Group Chicago Corp' shared with the Addison St location"
+        ],
+        "evidence": [
+          "OpenNPI (opennpi.com/provider/1962197285) confirms ALIGN DENTAL GROUP CHICAGO CORP at 1259 W Taylor St, Chicago IL 60607-4708 with Azimi Mohammad Moein as the provider",
+          "Yahoo Local listing confirms Azimi Mohammad Moein at Align Dental Group Chicago Corp, Taylor St location with phone (312) 226-1537"
+        ]
+      },
+      "evidence_urls": [
+        "https://opennpi.com/provider/1962197285",
+        "https://local.yahoo.com/info-237372157-azimi-mohammad-moein-align-dental-group-chicago-corp-chicago/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "MOHAMMAD MOEIN AZIMI",
+        "reach": 3,
+        "zips": ["60062", "60607", "60618"],
+        "npi": "1962197285",
+        "entity_name": "ALIGN DENTAL GROUP CHICAGO CORP",
+        "address": "1259 w taylor st",
+        "city": "CHICAGO",
+        "zip": "60607"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "AO reach signal plus documentary corroboration: OpenNPI and Yahoo Local confirm Azimi Mohammad Moein as the provider/AO at 1259 W Taylor St, Chicago 60607 under Align Dental Group Chicago Corp. The same corporate entity name ('Align Dental Group Chicago Corp') is registered on the Addison St NPI, confirming shared ownership under one dentist-owner. No MSO/management company/DSO/PE structure found. Dentist-multi with the same owner across both Chicago locations."
+    },
+    {
+      "location_id": "bc531ccb7cce9c72",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Mohammad Moein Azimi, DDS — dentist-owner; UIC 2018",
+      "network_id": "ao:AZIMI_MOHAMMAD MOEIN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: MOHAMMAD MOEIN AZIMI as authorized official on NPI 1346079951 (Align Dental Group Chicago Corp, 3235 W Addison St, Chicago 60618)",
+          "Legal entity name 'Align Dental Group Chicago Corp' shared with the Taylor St location",
+          "entity_classification=solo_high_volume (pipeline)"
+        ],
+        "evidence": [
+          "elstondental.com confirms Dr. Moein Azimi as dentist-owner at 3235 W. Addison St., Suite 6, Chicago IL 60618 — exactly the address of NPI 1346079951",
+          "NPI profile at npiprofile.com/npi/1346079951 confirms ALIGN DENTAL GROUP CHICAGO CORP at this address"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.elstondental.com/dr-moein-azimi/",
+        "https://www.elstondental.com/",
+        "https://npiprofile.com/npi/1346079951"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "MOHAMMAD MOEIN AZIMI",
+        "reach": 3,
+        "zips": ["60062", "60607", "60618"],
+        "npi": "1346079951",
+        "entity_name": "ALIGN DENTAL GROUP CHICAGO CORP",
+        "address": "3235 w addison st",
+        "city": "CHICAGO",
+        "zip": "60618"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "AO reach signal plus strong documentary corroboration: elstondental.com (the consumer-facing brand at this address) explicitly names Dr. Moein Azimi as the dentist-owner at 3235 W. Addison St., Suite 6, Chicago 60618. NPI profile confirms the same legal entity 'Align Dental Group Chicago Corp.' No MSO/management company/DSO/PE structure found. Consumer brand 'Elston Dental' is the DBA at this location; legal entity is Align Dental Group Chicago Corp. Dentist-multi: dentist personally owns and operates this as part of his private group."
+    }
+  ]
+}

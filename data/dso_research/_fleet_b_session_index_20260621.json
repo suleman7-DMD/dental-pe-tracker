@@ -1,0 +1,79 @@
+{
+ "_meta": {
+  "session": "Fleet B (evidence-only, parallel/non-colliding)",
+  "date": "2026-06-21",
+  "role": "Documentary-evidence gathering into candidate/evidence files ONLY. ZERO DB writes. validate-only ONLY. Never writes ownership_tier/entity_classification/LEDGER/PROGRESS. Highest status = ready_for_validation.",
+  "scope": "IL/Chicagoland ONLY (MA parked).",
+  "totals": {
+   "queue_rows_this_session_new_lanes": 720,
+   "classified": 26
+  }
+ },
+ "deliverables_by_lane": [
+  {
+   "lane": "local_clusters",
+   "description": "Local Brand / EIN / Intel Cluster Discovery (same-EIN friendly-PC, parent_company\u2192known-DSO w/ office-own consumer-brand corroboration, dentist-owned EIN multi)",
+   "queue_file": "ownership_evidence_queue_fleet_b_local_clusters_20260621.json",
+   "validation_file": "ownership_evidence_queue_fleet_b_local_clusters_validation_20260621.txt",
+   "validator": "Validation OK, exit 0 (validate-only)",
+   "rows": 637,
+   "by_status": {
+    "needs_verification": 618,
+    "classified": 19
+   },
+   "classified_by_tier": {
+    "branded_dso": 6,
+    "dentist_multi": 13
+   }
+  },
+  {
+   "lane": "website_clusters",
+   "description": "Shared website-DOMAIN consolidator discovery (brand site / health-system site / custom multi-ZIP group, name-cohesion gated)",
+   "queue_file": "ownership_evidence_queue_fleet_b_website_clusters_20260621.json",
+   "validation_file": "ownership_evidence_queue_fleet_b_website_clusters_validation_20260621.txt",
+   "validator": "Validation OK, exit 0 (validate-only)",
+   "rows": 79,
+   "by_status": {
+    "needs_verification": 74,
+    "classified": 5
+   },
+   "classified_by_tier": {
+    "branded_dso": 3,
+    "dentist_multi": 2
+   }
+  },
+  {
+   "lane": "structural_residue",
+   "description": "Phone-cluster residue (final structural sweep)",
+   "queue_file": "ownership_evidence_queue_fleet_b_structural_residue_20260621.json",
+   "validation_file": "ownership_evidence_queue_fleet_b_structural_residue_validation_20260621.txt",
+   "validator": "Validation OK, exit 0 (validate-only)",
+   "rows": 4,
+   "by_status": {
+    "classified": 2,
+    "needs_verification": 2
+   },
+   "classified_by_tier": {
+    "dentist_multi": 2
+   }
+  }
+ ],
+ "candidate_discovery_files": [
+  "local_consolidator_cluster_candidates_20260621.json",
+  "website_consolidator_candidates_20260621.json (101 shared domains, dispositioned)"
+ ],
+ "qa_handoff_files": [
+  "ownership_evidence_queue_fleet_b_local_clusters_qa_flags_20260621.json",
+  "ownership_evidence_queue_fleet_b_website_clusters_qa_flags_20260621.json"
+ ],
+ "EXHAUSTED_lanes_do_not_re_mine": {
+  "affiliated_dso_chain": "All 186 members already claimed by sibling queues (5 DA). Zero new yield.",
+  "da_officers_corporate_officers": "0 officers span >=3 distinct unclaimed offices across 977 offices-with-officers. da_officers is per-office staff, NOT a chain/MSO signal.",
+  "doing_business_as_chains": "Only value present is the '<UNAVAIL>' placeholder (266 locs). No real DBA brand carried in the column.",
+  "phone_clusters": "Only 2 shared-phone clusters across >=2 ZIP in the entire unclaimed untiered IL GP universe (Habbal=classified dentist_multi; Riverwest/Dental Practice Development=held MSO lead). Both captured in structural_residue. Vein empty."
+ },
+ "highest_value_remaining_work": {
+  "blocked_on_web_verification": "Hundreds of held needs_verification leads across all Fleet B queues require a web_search per candidate (friendly-PC brand-domain-no-name-cohesion, institutional-listing leads, novel-group held members, parent_company\u2192DSO uncorroborated leads, PE-parent held leads e.g. Gryphon/Shore). These are QA/Main/Phase-C territory (Anthropic API), NOT deterministic DB lanes.",
+  "note": "The deterministic, DB-only evidence veins for hidden local consolidators are MINED OUT for this session."
+ }
+}

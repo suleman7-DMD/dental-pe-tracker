@@ -1,0 +1,148 @@
+{
+  "_meta": {
+    "artifact_type": "Ownership resolution — Archer Dentistry Chicago, location_id 8d81d4516f493d1e",
+    "authored_by": "gate-lane3 agent (same session that produced the Gate partition and self-QA — NOT the PM)",
+    "date": "2026-07-02",
+    "status": "PM review required before this row moves out of holds",
+    "gate_ceiling": "ready_for_validation (NEVER final). Consolidation remains FROZEN.",
+    "db_mutation": false,
+    "existing_files_mutated": false,
+    "prior_hold_source": "VERDICT_QA_WAVE4_LANE3_51_100_20260702.json — MUST_FIX triggered by Mohammed listed as Business Administrator (not dentist/owner) on archerdentistrychicago.com"
+  },
+  "subject": {
+    "location_id": "8d81d4516f493d1e",
+    "practice_name_db": "CHICAGO DENTISTRY LLC (DBA Archer Dentistry Chicago)",
+    "address": "654 E 47th St",
+    "city": "Chicago",
+    "zip": "60653",
+    "state": "IL"
+  },
+  "investigation_paths_completed": {
+    "nppes_org_npi_lookup": "DONE — NPI 1356045264 fetched directly via npiregistry.cms.hhs.gov API",
+    "nppes_address_scan": "DONE — all NPIs at 654 E 47th St Chicago IL 60653 fetched",
+    "nppes_network_scan": "DONE — archerdentistry.com Naperville address (1568 W Ogden Ave Ste 108) confirmed matches NPPES mailing address for Chicago Dentistry LLC",
+    "idfpr_license_lookup": "PARTIAL — IDFPR website blocked direct API access; NPPES credential field and all public web sources show no dental credential for Mohammed",
+    "illinois_sos_filing": "BLOCKED — apps.ilsos.gov returned HTTP 403; opencorporates.com behind CAPTCHA; IL SOS member/manager data not obtained",
+    "website_team_pages": "DONE — archerdentistrychicago.com, archerdentistry.com, archerdentistrynaperville.com, archerdentistryhickory.com reviewed",
+    "secondary_web_evidence": "DONE — multiple dental directory, Yelp, WebMD, ADA FindADentist sources reviewed for Bader family and Mohammed"
+  },
+  "entity_findings": {
+    "legal_entity": "CHICAGO DENTISTRY LLC",
+    "dba": "Archer Dentistry Chicago",
+    "nppes_npi": "1356045264",
+    "nppes_entity_type": "NPI-2 (organization)",
+    "nppes_enumeration_date": "2023-03-27",
+    "nppes_mailing_address": "1568 W Ogden Ave Ste 108, Naperville, IL 60540",
+    "nppes_practice_address": "654 E 47th St, Chicago, IL 60653",
+    "nppes_taxonomy": "193400000X — Multiple Single Specialty Group (confirms multi-location structure at time of registration)",
+    "nppes_taxonomy_secondary": "1223G0001X — General Practice",
+    "nppes_authorized_official_name": "Hamza Mohammed",
+    "nppes_authorized_official_title": "Administrator",
+    "nppes_authorized_official_credential": "NONE — no DDS, DMD, MD, or any credential listed",
+    "nppes_parent_org": "None listed",
+    "evidence_url_nppes": "https://npiregistry.cms.hhs.gov/provider-view/1356045264"
+  },
+  "owner_identity_findings": {
+    "name": "Hamza Mohammed",
+    "role_on_nppes": "Administrator",
+    "role_on_archerdentistrychicago_com": "Business Administrator",
+    "dental_credential": "NONE confirmed in any source (NPPES, archerdentistrychicago.com team page, web search, IDFPR search)",
+    "is_licensed_dentist": false,
+    "confidence": "HIGH — no dental credential found across NPPES, two website variants, and targeted searches. The NPPES AO field explicitly carries no credential suffix. If Mohammed held a dental license, it would appear as a suffix (DDS/DMD) on the NPPES authorized official block.",
+    "il_sos_member_data": "NOT OBTAINED — IL SOS website blocked via HTTP 403. Cannot confirm from official filings whether Mohammed is the sole member, managing member, or one of multiple members. However, NPPES AO designation combined with the no-credential finding is sufficient to conclude he is not a licensed dentist.",
+    "evidence_urls": [
+      "https://npiregistry.cms.hhs.gov/provider-view/1356045264",
+      "https://archerdentistrychicago.com/about-archer-dentistry/",
+      "https://archerdentistrychicago.com/team/hamza-mohammed/"
+    ]
+  },
+  "clinical_layer_findings": {
+    "co_registered_entities_at_654_E_47th_St": [
+      {
+        "npi": "1639616030",
+        "name": "DR ALAMDAR H BADER DDS PC",
+        "type": "NPI-2 (org)",
+        "authorized_official": "Alamdar Bader, DDS",
+        "taxonomy": "122300000X — Dentist",
+        "note": "Dentist-owned professional corporation at same address"
+      },
+      {
+        "npi": "1891233672",
+        "name": "DR ZISHAN BADER DDS SC",
+        "type": "NPI-2 (org)",
+        "authorized_official": "Zishan Bader, DDS",
+        "taxonomy": "122300000X — Dentist",
+        "note": "Dentist-owned professional corporation at same address"
+      },
+      {
+        "npi": "1417128026",
+        "name": "SATNAM DENTAL CARE SC",
+        "type": "NPI-2 (org)",
+        "authorized_official": "Nishtha Viniak, DDS",
+        "taxonomy": "1223G0001X — General Practice",
+        "note": "Third dentist-owned professional corporation at same address"
+      },
+      {
+        "npi": "1801877089",
+        "name": "Alamdar H Bader",
+        "type": "NPI-1 (individual)",
+        "credential": "Dentist (122300000X)",
+        "note": "Individual dentist NPI for Dr. Alamdar Bader at same address"
+      },
+      {
+        "npi": "1184826174",
+        "name": "Nishtha Viniak",
+        "type": "NPI-1 (individual)",
+        "credential": "Dentist (122300000X)",
+        "note": "Individual dentist NPI at same address"
+      }
+    ],
+    "bader_family_background": "Drs. Alamdar, Shafeeq, and Zishan Bader are licensed dentists who founded Dental Heights (Glendale Heights IL, 2013, family-owned). Their professional corporations (DR ALAMDAR H BADER DDS PC, DR ZISHAN BADER DDS SC) are separately registered at 654 E 47th St alongside the Chicago Dentistry LLC / Archer Dentistry entity. No documented link between the Bader family dentists and ownership of Chicago Dentistry LLC has been found.",
+    "bader_family_evidence_url": "https://www.dentalheights.com/about/",
+    "inference": "The co-registration of three dentist-owned professional corporations at the same address as Chicago Dentistry LLC / Archer Dentistry Chicago strongly suggests a PC-MSO arrangement: the Bader DDS PCs (and Satnam Dental Care SC) operate as the licensed clinical entities while Chicago Dentistry LLC / Archer Dentistry functions as the business/management layer. This is the standard Illinois corporate-practice-of-dentistry compliance structure for non-dentist-managed dental networks."
+  },
+  "network_structure_findings": {
+    "locations_per_archerdentistry_com": [
+      "Chicago-Brighton Park (3924 S Archer Ave, Chicago IL 60632)",
+      "Chicago-Booker Area (654 E 47th St, Chicago IL 60653) — CANDIDATE LOCATION",
+      "Naperville-Illinois (1568 W Ogden Ave Ste 108, Naperville IL 60540)",
+      "Hickory Hills-Illinois",
+      "Munster-Indiana (out of scope)"
+    ],
+    "naperville_admin_hq": "1568 W Ogden Ave Ste 108, Naperville IL 60540 — confirmed as both the NPPES mailing address for Chicago Dentistry LLC and the listed address on archerdentistry.com/naperville-illinois/",
+    "in_scope_il_locations": 4,
+    "out_of_scope_locations": 1,
+    "evidence_url_network": "https://archerdentistry.com/naperville-illinois/",
+    "evidence_url_booker": "https://archerdentistry.com/chicago-booker-area/"
+  },
+  "proposed_disposition": {
+    "proposed_tier": "T4 stealth_dso",
+    "confidence": "MODERATE",
+    "reasoning": "Chicago Dentistry LLC / Archer Dentistry operates a 5-location (4 IL, 1 IN) dental network under local-branded practice names. The NPPES authorized official is Hamza Mohammed, titled 'Administrator' with no dental credential. Multiple dentist-owned professional corporations are co-registered at the candidate address (654 E 47th St), consistent with Illinois corporate practice of dentistry compliance via PC-MSO arrangement. Under the PM's stated decision rule ('If the controlling member is a non-dentist e.g., an administrator or outside investor with multiple locations, that pattern is T4 stealth_dso'), this row warrants T4 classification. The MSO structure is inferred from the PC co-registration pattern — no explicit MSO agreement or MSO corporate entity has been found in public records. Confidence is MODERATE rather than HIGH because: (1) the IL SOS member/manager data for Chicago Dentistry LLC was not obtained (website blocked); (2) Mohammed's controlling-member status is inferred from NPPES AO designation, not confirmed from the articles of organization; (3) the formal MSO documentation is inferred from structural indicators rather than a documentary artifact.",
+    "pm_decision_required": "Whether the structural PC-MSO inference (three dentist professional corporations co-registered at the same address as a non-dentist-managed multi-location LLC) is sufficient to meet the T4 'documented MSO/platform' bar — OR whether IL SOS member data is required before releasing from hold.",
+    "alternative_if_pm_applies_strict_documentary_bar": "stay-held in hold_needs_more_evidence. Resolution path: IL SOS Cyber Drive lookup for 'Chicago Dentistry LLC' members/managers; or IDFPR dental-office license search at 654 E 47th St.",
+    "not_T3_rationale": "T3 requires dentist-owned. Mohammed is confirmed non-dentist. No dentist has been identified as the owner or controlling member of Chicago Dentistry LLC. The Bader DDS PCs are separately owned clinical entities, not the owner-dentist of Chicago Dentistry LLC itself.",
+    "not_T5_rationale": "Archer Dentistry is a local brand (4 IL locations, unnamed in national DSO databases). No known DSO acquirer or national platform affiliation found. No PE sponsor documented."
+  },
+  "per_claim_evidence_urls": {
+    "chicago_dentistry_llc_nppes_npi_1356045264": "https://npiregistry.cms.hhs.gov/provider-view/1356045264",
+    "mohammed_administrator_title_website": "https://archerdentistrychicago.com/about-archer-dentistry/",
+    "mohammed_team_page": "https://archerdentistrychicago.com/team/hamza-mohammed/",
+    "booker_area_location_own_locator": "https://archerdentistry.com/chicago-booker-area/",
+    "naperville_location_confirms_hq_address": "https://archerdentistry.com/naperville-illinois/",
+    "naperville_network_lists_5_locations": "https://archerdentistry.com/naperville-illinois/",
+    "alamdar_bader_dds_pc_npi_1639616030": "https://npiregistry.cms.hhs.gov/provider-view/1639616030",
+    "zishan_bader_dds_sc_npi_1891233672": "https://npiregistry.cms.hhs.gov/provider-view/1891233672",
+    "satnam_dental_care_sc_npi_1417128026": "https://npiregistry.cms.hhs.gov/provider-view/1417128026",
+    "bader_family_dental_heights_founders": "https://www.dentalheights.com/about/",
+    "archer_dentistry_hickory_hills_chennadi": "https://archerdentistryhickory.com/team/dr-suman-chennadi-dmd/",
+    "archer_dentistry_naperville_chennadi": "https://archerdentistrynaperville.com/team/dr-suman-chennadi-dmd/",
+    "shafeeq_bader_archer_dentistry_kedzie_reference": "https://www.dentalplans.com/dentists/illinois/chicago/60632/dr-shafeeq-bader-336921/"
+  },
+  "open_gaps": [
+    "IL SOS articles of organization for Chicago Dentistry LLC (members/managers) — blocked during investigation",
+    "Formal MSO agreement or entity documentation (not expected to be public but would conclusively establish T4 structure)",
+    "IDFPR dental-office license at 654 E 47th St (would show which licensed entity is the registered dental office)",
+    "Confirmation of which dentist entity (Bader PC, Satnam Dental, or other) is the contracted clinical counterpart to Chicago Dentistry LLC at each Archer location"
+  ]
+}

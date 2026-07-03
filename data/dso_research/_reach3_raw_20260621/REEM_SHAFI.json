@@ -1,0 +1,142 @@
+{
+  "network": "REEM SHAFI",
+  "network_id": "ao:SHAFI_REEM",
+  "owner_type_verdict": "dso_brand",
+  "network_summary": "Dr. Reem Shafi, DDS/DMD is the founder, owner, and CEO of Two Rivers Dental, a dentist-owned branded DSO with 20+ Chicagoland locations operating under distinct local trade names (Hanover Dental, Baker Hill Dental, Simply Dental, Two Rivers Dental, Absolute Dental, etc.). 140+ employees, 30+ dentists. No PE or MSO/management-company layer found — entirely dentist-owned. NPPES confirms Reem Shafi as OWNER (AO title) on all three NPI organizations in this cluster.",
+  "owner_operator_identity": "Dr. Reem S. Shafi, DDS/DMD — founder, owner, and CEO of Two Rivers Dental; Temple University Kornberg School of Dentistry 1998; opened first Chicago practice 2004; inducted Temple Fox School of Business League for Entrepreneurial Women Hall of Fame 2013",
+  "brand_trade_names": [
+    "Two Rivers Dental",
+    "Hanover Dental",
+    "Baker Hill Dental",
+    "Simply Dental",
+    "Absolute Dental",
+    "Integra Dental"
+  ],
+  "legal_entities": [
+    "HANOVER DENTAL PC (NPI 1811228166)",
+    "BAKER HILL DENTAL PC (NPI 1720319072)",
+    "ABSOLUTE DENTAL PC (NPI 1558692806)"
+  ],
+  "durable_artifacts": [
+    "NPPES AO=REEM SHAFI title=OWNER across all 3 org NPIs (1811228166, 1720319072, 1558692806)",
+    "myhanoverdental.com/reem-shafi-dmd/ — Dr. Shafi listed as owner/CEO of Two Rivers Dental",
+    "bakerhilldental.com/reem-shafi-dmd/ — Dr. Shafi listed as owner/CEO of Two Rivers Dental",
+    "mysimplydental.com/staff/ — Two Rivers Dental network language used on Simply Dental staff page",
+    "Illinois Tech Elevate interview: 'Reem Shafi, Owner and CEO, Two Rivers Dental — 20 locations Chicago and 1 California' (elevate.iit.edu)"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "Absolute Dental PC (60467) website features Dr. Jasmeen Singh and Dr. Chris Park as the operating dentists; Reem Shafi does not appear on yourabsolutedental.com. Her NPPES AO title is OWNER, suggesting she owns the PC entity but may have stepped back from clinical operations at this location. The NPPES AO-owner link is real but the consumer-facing brand is run by different clinicians.",
+  "evidence_chain": "AO signal: REEM SHAFI appears as NPPES authorized official (title=OWNER) on 3 distinct GP org-NPIs across 3 IL ZIPs (60133, 60137, 60467). Documentary corroboration: (1) bakerhilldental.com and myhanoverdental.com both carry a 'Dr. Reem Shafi, DMD' bio page identifying her as CEO of Two Rivers Dental; (2) mysimplydental.com staff page contains the text 'All professionals at Two Rivers Dental maintain the highest levels of accreditation' while branded Simply Dental — confirming the common Two Rivers platform; (3) Illinois Tech Elevate interview independently confirms 'Owner and CEO, Two Rivers Dental, 20 locations Chicago + 1 California, 140 employees, 30 dentists.' All three locations in this AO cluster are independently branded PCs with Reem Shafi as NPPES OWNER, confirmed as part of the Two Rivers Dental multi-location family dentistry brand.",
+  "future_app_notes": "Prior-session backfill71 SHAFI x17 reference likely refers to a larger set of Shafi/Two Rivers Dental NPIs across more ZIPs — this cluster's 3 locations are a subset. The full Two Rivers network reportedly has 20+ IL locations; only 3 of those appear in the reach=3 AO cluster file here, suggesting many other Shafi PCs exist in the watched-IL dataset under different AO registrations or individual NPIs. Recommend: (1) query all practice_locations where NPPES AO contains 'SHAFI' to find the full Two Rivers footprint; (2) check whether Two Rivers Dental or any of its PCs have taken on growth capital or an MSO partner as the network scales past 20 locations (no evidence found as of 2026-06-21 but worth monitoring); (3) verify whether Absolute Dental PC (60467) should be reclassified now that a different clinical team is operating it — the NPPES OWNER record may lag behind a partial divestiture or partnership.",
+  "classifications": [
+    {
+      "location_id": "ba663f30996016ce",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dr. Reem S. Shafi, DDS/DMD — owner and CEO, Two Rivers Dental",
+      "network_id": "ao:SHAFI_REEM",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across 3 ZIPs (60133, 60137, 60467)",
+          "NPPES AO title=OWNER for org-NPI 1811228166"
+        ],
+        "evidence": [
+          "myhanoverdental.com/reem-shafi-dmd/ — Dr. Shafi bio identifies her as owner/CEO of Two Rivers Dental at this Hanover Park location",
+          "Illinois Tech Elevate interview confirms Two Rivers Dental is a 20-location branded DSO under Shafi ownership (elevate.iit.edu/videos/reem-shafi-owner-and-ceo-two-rivers-dental/)",
+          "bakerhilldental.com/reem-shafi-dmd/ corroborates the same Two Rivers Dental brand ownership"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.myhanoverdental.com/reem-shafi-dmd/",
+        "https://elevate.iit.edu/videos/reem-shafi-owner-and-ceo-two-rivers-dental/",
+        "https://www.bakerhilldental.com/reem-shafi-dmd/",
+        "https://opennpi.com/provider/1811228166"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "REEM SHAFI",
+        "ao_title": "OWNER",
+        "npi": "1811228166",
+        "reach": 3,
+        "zips": ["60133", "60137", "60467"]
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "HANOVER DENTAL PC at 7640 Barrington Rd, Hanover Park IL 60133. NPPES confirms Reem Shafi as OWNER. The practice website myhanoverdental.com explicitly carries a 'Dr. Reem Shafi, DMD' owner bio identifying her as CEO of Two Rivers Dental, a confirmed 20-location Illinois branded DSO. No PE or MSO layer found — dentist-owned branded_dso with pe_backed=false. Ready for validation: documentary evidence (owner bio + Elevate interview + multi-location brand) meets the corroboration bar."
+    },
+    {
+      "location_id": "fc658bf62642d908",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dr. Reem S. Shafi, DDS/DMD — owner and CEO, Two Rivers Dental",
+      "network_id": "ao:SHAFI_REEM",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across 3 ZIPs (60133, 60137, 60467)",
+          "NPPES AO title=OWNER for org-NPI 1720319072"
+        ],
+        "evidence": [
+          "bakerhilldental.com/reem-shafi-dmd/ — Dr. Shafi bio explicitly identifies her as owner/CEO of Two Rivers Dental at this Glen Ellyn location",
+          "Illinois Tech Elevate interview confirms Two Rivers Dental is a 20-location branded DSO under Shafi ownership",
+          "myhanoverdental.com/reem-shafi-dmd/ corroborates the same Two Rivers Dental brand ownership"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.bakerhilldental.com/reem-shafi-dmd/",
+        "https://elevate.iit.edu/videos/reem-shafi-owner-and-ceo-two-rivers-dental/",
+        "https://www.myhanoverdental.com/reem-shafi-dmd/",
+        "https://opennpi.com/provider/1720319072"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "REEM SHAFI",
+        "ao_title": "OWNER",
+        "npi": "1720319072",
+        "reach": 3,
+        "zips": ["60133", "60137", "60467"]
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "BAKER HILL DENTAL PC at 904 Roosevelt Rd, Glen Ellyn IL 60137. NPPES confirms Reem Shafi as OWNER. bakerhilldental.com explicitly carries the Dr. Reem Shafi owner bio identifying her as CEO of Two Rivers Dental. Yelp and OpenNPI both confirm the address/practice. 4-provider large_group already classified. Two Rivers Dental is a confirmed 20-location IL branded DSO. No PE or MSO layer found. Ready for validation: documentary evidence meets the corroboration bar."
+    },
+    {
+      "location_id": "6da55130228a9c54",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dr. Reem S. Shafi, DDS/DMD — NPPES OWNER of Absolute Dental PC; clinical operations appear to be run by Dr. Jasmeen Singh and Dr. Chris Park",
+      "network_id": "ao:SHAFI_REEM",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across 3 ZIPs (60133, 60137, 60467)",
+          "NPPES AO title=OWNER for org-NPI 1558692806 (D&B also lists Reem Shafi as key principal)"
+        ],
+        "evidence": [
+          "opennpi.com/provider/1558692806 confirms REEM SHAFI listed as Authorized Official with title OWNER and credential DDS for ABSOLUTE DENTAL PC",
+          "D&B business directory lists Reem Shafi as a key principal of Absolute Dental PC at 18014 Wolf Rd Orland Park IL 60467 (dnb.com profile)"
+        ]
+      },
+      "evidence_urls": [
+        "https://opennpi.com/provider/1558692806",
+        "https://www.dnb.com/business-directory/company-profiles.absolute_dental_pc.89d0b6d6dc1354ab1d0ad53681edc04f.html",
+        "https://www.yourabsolutedental.com/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "REEM SHAFI",
+        "ao_title": "OWNER",
+        "npi": "1558692806",
+        "reach": 3,
+        "zips": ["60133", "60137", "60467"]
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "medium",
+      "stale_closed_note": "Consumer-facing website yourabsolutedental.com features Dr. Jasmeen Singh and Dr. Chris Park as the operating dentists with no mention of Reem Shafi or Two Rivers Dental. Shafi's OWNER title on NPPES (enumerated 2010) may reflect original PC registration that was later operated under an associate-dentist model, or a possible partial transfer of clinical control. Validate whether this location is still actively part of the Two Rivers network or whether it was effectively divested while the PC entity remains in Shafi's name.",
+      "reasoning": "ABSOLUTE DENTAL PC at 18014 Wolf Rd, Orland Park IL 60467. NPPES unambiguously lists REEM SHAFI as OWNER (not just admin contact) for this org-NPI. D&B also lists her as key principal. The practice consumer website does not mention Shafi or Two Rivers Dental, and the operating dentists are Dr. Jasmeen Singh and Dr. Chris Park. The NPPES ownership registration is real but may be stale or reflect a PC-shell arrangement where Shafi retains legal ownership while associates run the clinic. Classified branded_dso (part of the Two Rivers Dental network) with medium confidence due to the consumer-website disconnect. Downstream validator should check whether Shafi's role here is active ownership or a legacy NPPES record."
+    }
+  ]
+}

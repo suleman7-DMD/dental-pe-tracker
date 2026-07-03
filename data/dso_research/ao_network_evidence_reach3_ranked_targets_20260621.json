@@ -1,0 +1,3296 @@
+{
+  "_meta": {
+    "artifact": "AO Wave 3 ranked target list (pre-investigation)",
+    "wave": "hidden_local_consolidator_discovery_wave3",
+    "generated": "2026-06-21",
+    "scope": "Chicagoland watched-IL GP only (MA/Boston parked)",
+    "method": "reach=3 (all eligible) + reach=2 strong-signal only (dso_*/affiliated_dso/parent_company/shared-EIN), ranked by priority criteria",
+    "source": "data/dso_research/ownership_evidence_targets_20260621.json ao_clusters",
+    "excluded_already_done_AOs": [
+      "ABHISHEK NAGARAJ",
+      "AHMED RAMAHA",
+      "ALAN ACIERNO",
+      "AO:BRUNETTI_ROBERT",
+      "AO:LABINOV_BORIS",
+      "AO:NITTINGER_RACHEL",
+      "AO:RAMAHA_AHMED",
+      "AO:SHAFI_SOHAIL",
+      "AO:SWEIS_JUBRAIL",
+      "AROON PAL",
+      "BELINDA HUERTA",
+      "BORIS LABINOV",
+      "CELIA HAYES",
+      "CHRISTOS TSALIAGOS",
+      "DAVID RUBIS",
+      "DIMITRI HARALAMPOPOULOS",
+      "FADI AQEL",
+      "JASON KORKUS",
+      "JAY JORBIN",
+      "JUBRAIL SWEIS",
+      "KHALIL TAKLA",
+      "LAWRENCE GROH",
+      "LINDSAY BEARDEN",
+      "MILAD NOURAHMADI",
+      "MILAN RONCEVIC",
+      "MOHAMED WAHEED",
+      "NATHAN HOFFMAN",
+      "OSCAR GONZALEZ",
+      "PHIL KURAL",
+      "PHILLIP PALELLA",
+      "PRADEEP KHURANA",
+      "RACHEL NITTINGER",
+      "RAJAN SHARMA",
+      "RANDY CHANG",
+      "ROBERT BRUNETTI",
+      "ROSHAN PARIKH",
+      "SAMANTHA GONZALEZ",
+      "SAMEERA HUSSAIN",
+      "SOHAIL SHAFI",
+      "STEVE NAPIER",
+      "STEVEN REMPAS",
+      "VESNA BELKIC"
+    ],
+    "excluded_variant_dups": {
+      "CHRIS TSALIAGOS": "CHRISTOS TSALIAGOS (MetroSmiles, reach5 done)",
+      "STEVE REMPAS": "STEVEN REMPAS (Webster Dental, reach4 done)"
+    },
+    "excluded_specialist_or_landmine": {
+      "RICK BRAR": "Evenly Orthodontics (specialist + Evenly 000000000 placeholder landmine)",
+      "OLIVER VAN": "Evenly Orthodontics (specialist + Evenly placeholder landmine)"
+    },
+    "n_targets": 51,
+    "n_reach3": 36,
+    "n_reach2_strong": 15,
+    "no_db_write": true,
+    "gate_ceiling": "ready_for_validation"
+  },
+  "targets": [
+    {
+      "reach": 3,
+      "score": 13,
+      "ranking_reasons": [
+        "overlaps dso_* classification hint",
+        "affiliated_dso=Heartland Dental",
+        "same brand \"PROFESSIONALS ILLINOIS P C\" x3 across 3 ZIPs",
+        "legal ['PC']",
+        "PC-shell name pattern"
+      ],
+      "authorized_official": "HILLARY THULL",
+      "network_id": "ao:THULL_HILLARY",
+      "zips": [
+        "60108",
+        "60302",
+        "60525"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "d4d827860b4132cb",
+          "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+          "dba": "<UNAVAIL>",
+          "address": "290 springfield dr",
+          "city": "BLOOMINGDALE",
+          "zip": "60108",
+          "ein": "362736573",
+          "primary_npi": "1346997020",
+          "org_npi": "1346997020",
+          "entity_classification": "dso_regional",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 7,
+          "year_established": 2024
+        },
+        {
+          "location_id": "64a25dd567a92ae3",
+          "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+          "dba": null,
+          "address": "1113 chicago ave",
+          "city": "OAK PARK",
+          "zip": "60302",
+          "ein": null,
+          "primary_npi": "1376254920",
+          "org_npi": "1376254920",
+          "entity_classification": "dso_national",
+          "affiliated_dso": "Heartland Dental",
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": 2019
+        },
+        {
+          "location_id": "1237e7c94d53bab9",
+          "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C",
+          "dba": null,
+          "address": "6335 joliet rd",
+          "city": "COUNTRYSIDE",
+          "zip": "60525",
+          "ein": null,
+          "primary_npi": "1598427189",
+          "org_npi": "1598427189",
+          "entity_classification": "dso_national",
+          "affiliated_dso": "Heartland Dental",
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": null
+        }
+      ],
+      "rank": 1
+    },
+    {
+      "reach": 3,
+      "score": 13,
+      "ranking_reasons": [
+        "overlaps dso_* classification hint",
+        "affiliated_dso=Destiny Dental / ProSmile",
+        "same brand \"PRO IL CHAD WISE\" x3 across 3 ZIPs",
+        "legal ['PC']",
+        "PC-shell name pattern"
+      ],
+      "authorized_official": "SIMONE WILSON-ADELEKE",
+      "network_id": "ao:WILSON-ADELEKE_SIMONE",
+      "zips": [
+        "60302",
+        "60438",
+        "60649"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "fd93e6934ac6c59c",
+          "name": "PRO DENTAL IL - CHAD WISE PC",
+          "dba": null,
+          "address": "1 chicago ave",
+          "city": "OAK PARK",
+          "zip": "60302",
+          "ein": null,
+          "primary_npi": "1710714233",
+          "org_npi": "1710714233",
+          "entity_classification": "dso_regional",
+          "affiliated_dso": "Destiny Dental / ProSmile",
+          "parent_company": null,
+          "provider_count": 5,
+          "year_established": 2019
+        },
+        {
+          "location_id": "08d34f2671858cfd",
+          "name": "PRO DENTAL IL - CHAD WISE PC",
+          "dba": null,
+          "address": "17653 torrence ave",
+          "city": "LANSING",
+          "zip": "60438",
+          "ein": null,
+          "primary_npi": "1134956410",
+          "org_npi": "1134956410",
+          "entity_classification": "dso_regional",
+          "affiliated_dso": "Destiny Dental / ProSmile",
+          "parent_company": null,
+          "provider_count": 4,
+          "year_established": null
+        },
+        {
+          "location_id": "1d72f604a2d31ce9",
+          "name": "PRO DENTAL IL - CHAD WISE PC",
+          "dba": null,
+          "address": "2101 e 71st st",
+          "city": "CHICAGO",
+          "zip": "60649",
+          "ein": null,
+          "primary_npi": "1942037221",
+          "org_npi": "1942037221",
+          "entity_classification": "dso_regional",
+          "affiliated_dso": "Destiny Dental / ProSmile",
+          "parent_company": null,
+          "provider_count": 8,
+          "year_established": null
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "reach": 3,
+      "score": 12,
+      "ranking_reasons": [
+        "overlaps dso_* classification hint",
+        "affiliated_dso=Familia Dental",
+        "parent_company=1ST FAMILY DENTAL",
+        "legal ['LLC']"
+      ],
+      "authorized_official": "KOUSHAN AZAD",
+      "network_id": "ao:AZAD_KOUSHAN",
+      "zips": [
+        "60090",
+        "60101",
+        "60120"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "58a87486cd2546e5",
+          "name": "FAMILIA DENTAL WHEELING 3 LLC",
+          "dba": "<UNAVAIL>",
+          "address": "542 w dundee rd",
+          "city": "WHEELING",
+          "zip": "60090",
+          "ein": "264357802",
+          "primary_npi": "1144587882",
+          "org_npi": "1144587882",
+          "entity_classification": "dso_national",
+          "affiliated_dso": "Familia Dental",
+          "parent_company": null,
+          "provider_count": 4,
+          "year_established": 2008
+        },
+        {
+          "location_id": "4f7949f6c3928fb1",
+          "name": "FAMILIA DENTAL 3 LLC",
+          "dba": "<UNAVAIL>",
+          "address": "200 w lake st",
+          "city": "ADDISON",
+          "zip": "60101",
+          "ein": "462786405",
+          "primary_npi": "1699049221",
+          "org_npi": "1699049221",
+          "entity_classification": "dso_national",
+          "affiliated_dso": "Familia Dental",
+          "parent_company": "1ST FAMILY DENTAL",
+          "provider_count": 11,
+          "year_established": 2008
+        },
+        {
+          "location_id": "b62beb82551b076f",
+          "name": "DEXTER DENTAL 3 LLC",
+          "dba": "<UNAVAIL>",
+          "address": "47 clock tower plz",
+          "city": "ELGIN",
+          "zip": "60120",
+          "ein": null,
+          "primary_npi": "1871850511",
+          "org_npi": "1871850511",
+          "entity_classification": "dso_national",
+          "affiliated_dso": "Familia Dental",
+          "parent_company": null,
+          "provider_count": 7,
+          "year_established": 2008
+        }
+      ],
+      "rank": 3
+    },
+    {
+      "reach": 3,
+      "score": 11,
+      "ranking_reasons": [
+        "overlaps dso_* classification hint",
+        "affiliated_dso=All Family Dental & Braces (United Dental Partners)",
+        "brand \"PEDIATRIC AND\" x2",
+        "legal ['PC']",
+        "PC-shell name pattern"
+      ],
+      "authorized_official": "SCOTT GOLDMAN",
+      "network_id": "ao:GOLDMAN_SCOTT",
+      "zips": [
+        "60004",
+        "60123",
+        "60453"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "8bb56d655fd949a6",
+          "name": "PEDIATRIC AND FAMILY DENTISTRY PC",
+          "dba": null,
+          "address": "15 s dryden pl",
+          "city": "ARLINGTON HTS",
+          "zip": "60004",
+          "ein": "320033531",
+          "primary_npi": "1043597305",
+          "org_npi": "1043597305",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        },
+        {
+          "location_id": "a543f3ba7ef53451",
+          "name": "PEDIATRIC AND FAMILY DENTAL PC",
+          "dba": null,
+          "address": "2050 larkin ave",
+          "city": "ELGIN",
+          "zip": "60123",
+          "ein": null,
+          "primary_npi": "1265717276",
+          "org_npi": "1265717276",
+          "entity_classification": "dso_regional",
+          "affiliated_dso": "All Family Dental & Braces (United Dental Partners)",
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        },
+        {
+          "location_id": "c508a07b0bc2dfdd",
+          "name": "METRO KIDZ DENTAL, PC",
+          "dba": null,
+          "address": "4710 w 95th st",
+          "city": "OAK LAWN",
+          "zip": "60453",
+          "ein": null,
+          "primary_npi": "1447673777",
+          "org_npi": "1447673777",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        }
+      ],
+      "rank": 4
+    },
+    {
+      "reach": 3,
+      "score": 11,
+      "ranking_reasons": [
+        "overlaps dso_* classification hint",
+        "affiliated_dso=Affordable Care",
+        "multiple legal-entity types ['PC', 'PLLC']",
+        "PC-shell name pattern"
+      ],
+      "authorized_official": "BEN MEHTA",
+      "network_id": "ao:MEHTA_BEN",
+      "zips": [
+        "60004",
+        "60515",
+        "60542"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "199841c7ee233c17",
+          "name": "AFFORDABLE DENTURES & IMPLANTS - ILLINOIS, PLLC",
+          "dba": null,
+          "address": "922 w dundee rd",
+          "city": "ARLINGTON HEIGHTS",
+          "zip": "60004",
+          "ein": null,
+          "primary_npi": "1912671918",
+          "org_npi": "1912671918",
+          "entity_classification": "dso_national",
+          "affiliated_dso": "Affordable Care",
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        },
+        {
+          "location_id": "bd77120df3018393",
+          "name": "AFFORDABLE DENTURES & IMPLANTS - DOWNERS GROVE, P.C.",
+          "dba": null,
+          "address": "1300 butterfield rd",
+          "city": "DOWNERS GROVE",
+          "zip": "60515",
+          "ein": null,
+          "primary_npi": "1740978055",
+          "org_npi": "1740978055",
+          "entity_classification": "dso_national",
+          "affiliated_dso": "Affordable Care",
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        },
+        {
+          "location_id": "23db306c0cb65354",
+          "name": "AFFORDABLE DENTURES & IMPLANTS - AURORA, IL II, P.C.",
+          "dba": null,
+          "address": "106 hansen blvd",
+          "city": "NORTH AURORA",
+          "zip": "60542",
+          "ein": null,
+          "primary_npi": "1386229540",
+          "org_npi": "1386229540",
+          "entity_classification": "dso_national",
+          "affiliated_dso": "Affordable Care",
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        }
+      ],
+      "rank": 5
+    },
+    {
+      "reach": 3,
+      "score": 10,
+      "ranking_reasons": [
+        "overlaps dso_* classification hint",
+        "affiliated_dso=Dental 360",
+        "legal ['LLC']"
+      ],
+      "authorized_official": "SYED REHMAN",
+      "network_id": "ao:REHMAN_SYED",
+      "zips": [
+        "60172",
+        "60402",
+        "60458"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "584a26fe5c176d8a",
+          "name": "MIRUS ORAL HEALTH & ESTHETIC, LLC",
+          "dba": "<UNAVAIL>",
+          "address": "1530 lake st",
+          "city": "ROSELLE",
+          "zip": "60172",
+          "ein": null,
+          "primary_npi": "1033518154",
+          "org_npi": "1033518154",
+          "entity_classification": "large_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 5,
+          "year_established": null
+        },
+        {
+          "location_id": "3e7a3d11d88cb223",
+          "name": "DENTAL 360 BERWYN LLC",
+          "dba": null,
+          "address": "7039 roosevelt rd",
+          "city": "BERWYN",
+          "zip": "60402",
+          "ein": null,
+          "primary_npi": "1447801741",
+          "org_npi": "1447801741",
+          "entity_classification": "dso_regional",
+          "affiliated_dso": "Dental 360",
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        },
+        {
+          "location_id": "93a707b4f1ce35c2",
+          "name": "DENTAL CARE CENTER JUSTICE LLC",
+          "dba": null,
+          "address": "8021 w 79th st",
+          "city": "JUSTICE",
+          "zip": "60458",
+          "ein": null,
+          "primary_npi": "1578160990",
+          "org_npi": "1578160990",
+          "entity_classification": "small_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 3,
+          "year_established": null
+        }
+      ],
+      "rank": 6
+    },
+    {
+      "reach": 3,
+      "score": 10,
+      "ranking_reasons": [
+        "overlaps dso_* classification hint",
+        "affiliated_dso=Dental 360",
+        "legal ['INC']"
+      ],
+      "authorized_official": "SAWSAN ASFOUR",
+      "network_id": "ao:ASFOUR_SAWSAN",
+      "zips": [
+        "60467",
+        "60647",
+        "60714"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "f2ca9e5a94ae6841",
+          "name": "ASFOUR DENTAL INC",
+          "dba": "<UNAVAIL>",
+          "address": "11315 w 143rd st",
+          "city": "ORLAND PARK",
+          "zip": "60467",
+          "ein": "204568435",
+          "primary_npi": "1295988202",
+          "org_npi": "1295988202",
+          "entity_classification": "small_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": null
+        },
+        {
+          "location_id": "826ff5b11537f2cb",
+          "name": "DENTAL MAGIC NORTH AVE, INC",
+          "dba": "<UNAVAIL>",
+          "address": "2500 w n ave",
+          "city": "CHICAGO",
+          "zip": "60647",
+          "ein": null,
+          "primary_npi": "1104274109",
+          "org_npi": "1104274109",
+          "entity_classification": "dso_regional",
+          "affiliated_dso": "Dental 360",
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": null
+        },
+        {
+          "location_id": "53da362f58dc8d20",
+          "name": "DENTAL MAGIC TOUHY, INC",
+          "dba": "<UNAVAIL>",
+          "address": "5622 w touhy ave",
+          "city": "NILES",
+          "zip": "60714",
+          "ein": "900814718",
+          "primary_npi": "1659729655",
+          "org_npi": "1659729655",
+          "entity_classification": "dso_regional",
+          "affiliated_dso": "Destiny Dental / ProSmile",
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        }
+      ],
+      "rank": 7
+    },
+    {
+      "reach": 3,
+      "score": 9,
+      "ranking_reasons": [
+        "overlaps dso_* classification hint",
+        "affiliated_dso=Destiny Dental / ProSmile",
+        "legal ['PC']",
+        "PC-shell name pattern"
+      ],
+      "authorized_official": "JIANJUN HAO",
+      "network_id": "ao:HAO_JIANJUN",
+      "zips": [
+        "60504",
+        "60619",
+        "60629"
+      ],
+      "n_new_locations": 2,
+      "linked_prior_work": "Smiling Dental Group \u2014 backfill71 individual (Pulaski, dentist_multi); DB affiliated_dso hint may be mislabel",
+      "locations": [
+        {
+          "location_id": "eea9dfd84c8272cc",
+          "name": "PACIFIC SMILING DENTAL P.C.",
+          "dba": null,
+          "address": "4370 e new york st",
+          "city": "AURORA",
+          "zip": "60504",
+          "ein": null,
+          "primary_npi": "1063030427",
+          "org_npi": "1063030427",
+          "entity_classification": "solo_high_volume",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": 2019
+        },
+        {
+          "location_id": "55404df201ad194f",
+          "name": "SMILING DENTAL INTERNATIONAL P.C.",
+          "dba": "<UNAVAIL>",
+          "address": "712 e 87th st",
+          "city": "CHICAGO",
+          "zip": "60619",
+          "ein": null,
+          "primary_npi": "1487232872",
+          "org_npi": "1487232872",
+          "entity_classification": "dso_regional",
+          "affiliated_dso": "Destiny Dental / ProSmile",
+          "parent_company": null,
+          "provider_count": 8,
+          "year_established": null
+        },
+        {
+          "location_id": "9c588fbf68114847",
+          "name": "PULASKI SMILING DENTAL P.C.",
+          "dba": null,
+          "address": "5540 s pulaski rd",
+          "city": "CHICAGO",
+          "zip": "60629",
+          "ein": null,
+          "primary_npi": "1346806577",
+          "org_npi": "1346806577",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        }
+      ],
+      "rank": 8
+    },
+    {
+      "reach": 3,
+      "score": 7,
+      "ranking_reasons": [
+        "same brand \"RESHMA DHAKE\" x3 across 3 ZIPs",
+        "legal ['LTD']"
+      ],
+      "authorized_official": "RESHMA DHAKE",
+      "network_id": "ao:DHAKE_RESHMA",
+      "zips": [
+        "60402",
+        "60632",
+        "60634"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "0476ac933c798a82",
+          "name": "RESHMA DHAKE DDS LTD",
+          "dba": null,
+          "address": "2550 oak park ave",
+          "city": "BERWYN",
+          "zip": "60402",
+          "ein": null,
+          "primary_npi": "1255205167",
+          "org_npi": "1255205167",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        },
+        {
+          "location_id": "8bc47a97b88b769e",
+          "name": "RESHMA DHAKE DDS LTD",
+          "dba": "<UNAVAIL>",
+          "address": "4450 s archer ave",
+          "city": "CHICAGO",
+          "zip": "60632",
+          "ein": null,
+          "primary_npi": "1548433063",
+          "org_npi": "1548433063",
+          "entity_classification": "small_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": null
+        },
+        {
+          "location_id": "ba379b6aa4cf3678",
+          "name": "RESHMA DHAKE DDS LTD",
+          "dba": "<UNAVAIL>",
+          "address": "5738 w belmont ave",
+          "city": "CHICAGO",
+          "zip": "60634",
+          "ein": null,
+          "primary_npi": "1902202930",
+          "org_npi": "1902202930",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        }
+      ],
+      "rank": 9
+    },
+    {
+      "reach": 3,
+      "score": 7,
+      "ranking_reasons": [
+        "same brand \"DR IMTIAZ AHMED\" x3 across 3 ZIPs",
+        "legal ['PC']",
+        "PC-shell name pattern"
+      ],
+      "authorized_official": "MOHAMMED SAYEED",
+      "network_id": "ao:SAYEED_MOHAMMED",
+      "zips": [
+        "60626",
+        "60644",
+        "60660"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "b90f1518bb37c1b6",
+          "name": "DR. IMTIAZ AHMED, PC",
+          "dba": "<UNAVAIL>",
+          "address": "732 s pulaski rd",
+          "city": "CHICAGO",
+          "zip": "60626",
+          "ein": "481308193",
+          "primary_npi": "1891970356",
+          "org_npi": "1891970356",
+          "entity_classification": "solo_high_volume",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        },
+        {
+          "location_id": "0e022d96f6c24a6b",
+          "name": "DR.IMTIAZ AHMED,PC",
+          "dba": "<UNAVAIL>",
+          "address": "4807 w madison st",
+          "city": "CHICAGO",
+          "zip": "60644",
+          "ein": null,
+          "primary_npi": "1225202617",
+          "org_npi": "1225202617",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        },
+        {
+          "location_id": "7de57003f6e54f01",
+          "name": "DR.IMTIAZ AHMED, PC",
+          "dba": "<UNAVAIL>",
+          "address": "1768 w devon ave",
+          "city": "CHICAGO",
+          "zip": "60660",
+          "ein": null,
+          "primary_npi": "1588838981",
+          "org_npi": "1588838981",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        }
+      ],
+      "rank": 10
+    },
+    {
+      "reach": 3,
+      "score": 6,
+      "ranking_reasons": [
+        "same brand \"TRANDAI CARE\" x3 across 3 ZIPs"
+      ],
+      "authorized_official": "LINH TRAN",
+      "network_id": "ao:TRAN_LINH",
+      "zips": [
+        "60018",
+        "60640",
+        "60659"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "f94e36541d97c545",
+          "name": "TRANDAI DENTAL CARE",
+          "dba": "<UNAVAIL>",
+          "address": "1625 e oakton st",
+          "city": "DES PLAINES",
+          "zip": "60018",
+          "ein": null,
+          "primary_npi": "1659542330",
+          "org_npi": "1659542330",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        },
+        {
+          "location_id": "e09e821b9be822e8",
+          "name": "TRANDAI DENTAL CARE",
+          "dba": "<UNAVAIL>",
+          "address": "5449 n broadway st",
+          "city": "CHICAGO",
+          "zip": "60640",
+          "ein": null,
+          "primary_npi": "1902063043",
+          "org_npi": "1902063043",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        },
+        {
+          "location_id": "579f7df9b11fb8bb",
+          "name": "TRANDAI DENTAL CARE",
+          "dba": null,
+          "address": "3044 w peterson ave",
+          "city": "CHICAGO",
+          "zip": "60659",
+          "ein": null,
+          "primary_npi": "1275204208",
+          "org_npi": "1275204208",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        }
+      ],
+      "rank": 11
+    },
+    {
+      "reach": 3,
+      "score": 6,
+      "ranking_reasons": [
+        "legal ['PC']",
+        "shared EIN across locations",
+        "PC-shell name pattern"
+      ],
+      "authorized_official": "FARIDEH DAFTARY",
+      "network_id": "ao:DAFTARY_FARIDEH",
+      "zips": [
+        "60605",
+        "60657"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "896a675012d64d8b",
+          "name": "ART OF MODERN DENTISTRY PEDIATRICS P.C",
+          "dba": null,
+          "address": "1510 s wabash ave",
+          "city": "CHICAGO",
+          "zip": "60605",
+          "ein": null,
+          "primary_npi": "1194130013",
+          "org_npi": "1194130013",
+          "entity_classification": "large_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": 2008
+        },
+        {
+          "location_id": "a405bb323547de34",
+          "name": "ART OF MODERN DENTISTRY",
+          "dba": null,
+          "address": "1339 smichigan ave",
+          "city": "CHICAGO",
+          "zip": "60605",
+          "ein": "203047745",
+          "primary_npi": "1881128874",
+          "org_npi": "1881128874",
+          "entity_classification": "solo_high_volume",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": 2005
+        },
+        {
+          "location_id": "94ad8d50efb75b1a",
+          "name": "ART OF MODERN DENTISTRY, P.C",
+          "dba": null,
+          "address": "3056 n southport ave",
+          "city": "CHICAGO",
+          "zip": "60657",
+          "ein": "203047745",
+          "primary_npi": "1194259705",
+          "org_npi": "1194259705",
+          "entity_classification": "solo_high_volume",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        }
+      ],
+      "rank": 12
+    },
+    {
+      "reach": 3,
+      "score": 6,
+      "ranking_reasons": [
+        "same brand \"TAPESTRY 360 HEALTH\" x3 across 3 ZIPs"
+      ],
+      "authorized_official": "NICOLE WILLIS",
+      "network_id": "ao:WILLIS_NICOLE",
+      "zips": [
+        "60625",
+        "60640",
+        "60660"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "b560878900657961",
+          "name": "TAPESTRY 360 HEALTH",
+          "dba": "<UNAVAIL>",
+          "address": "3244 w ainslie st",
+          "city": "CHICAGO",
+          "zip": "60625",
+          "ein": null,
+          "primary_npi": "1154640274",
+          "org_npi": "1154640274",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        },
+        {
+          "location_id": "a31ca3008c75ab1f",
+          "name": "TAPESTRY 360 HEALTH",
+          "dba": "<UNAVAIL>",
+          "address": "900 w wilson ave",
+          "city": "CHICAGO",
+          "zip": "60640",
+          "ein": null,
+          "primary_npi": "1932417615",
+          "org_npi": "1932417615",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        },
+        {
+          "location_id": "cda97d8759efad7a",
+          "name": "TAPESTRY 360 HEALTH",
+          "dba": "<UNAVAIL>",
+          "address": "5900 n glenwood ave",
+          "city": "CHICAGO",
+          "zip": "60660",
+          "ein": null,
+          "primary_npi": "1932366408",
+          "org_npi": "1932366408",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        }
+      ],
+      "rank": 13
+    },
+    {
+      "reach": 3,
+      "score": 5,
+      "ranking_reasons": [
+        "brand \"ALIGN CHICAGO CORP\" x2",
+        "legal ['LTD']"
+      ],
+      "authorized_official": "MOHAMMAD MOEIN AZIMI",
+      "network_id": "ao:AZIMI_MOHAMMAD MOEIN",
+      "zips": [
+        "60062",
+        "60607",
+        "60618"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "23c2e520e66d12bf",
+          "name": "4 RIVERS DENTAL LTD",
+          "dba": null,
+          "address": "840 willow rd",
+          "city": "NORTHBROOK",
+          "zip": "60062",
+          "ein": null,
+          "primary_npi": "1467337964",
+          "org_npi": "1467337964",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": 2010
+        },
+        {
+          "location_id": "586d985f24e195cc",
+          "name": "ALIGN DENTAL GROUP CHICAGO CORP",
+          "dba": "<UNAVAIL>",
+          "address": "1259 w taylor st",
+          "city": "CHICAGO",
+          "zip": "60607",
+          "ein": null,
+          "primary_npi": "1962197285",
+          "org_npi": "1962197285",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        },
+        {
+          "location_id": "bc531ccb7cce9c72",
+          "name": "ALIGN DENTAL GROUP CHICAGO CORP",
+          "dba": "<UNAVAIL>",
+          "address": "3235 w addison st",
+          "city": "CHICAGO",
+          "zip": "60618",
+          "ein": null,
+          "primary_npi": "1346079951",
+          "org_npi": "1346079951",
+          "entity_classification": "solo_high_volume",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        }
+      ],
+      "rank": 14
+    },
+    {
+      "reach": 3,
+      "score": 5,
+      "ranking_reasons": [
+        "multiple legal-entity types ['LLC', 'PLLC']"
+      ],
+      "authorized_official": "ROBERT STITES",
+      "network_id": "ao:STITES_ROBERT",
+      "zips": [
+        "60068",
+        "60630"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "bbadc20262b004f9",
+          "name": "SOUTH PARK ORTHO PLLC",
+          "dba": null,
+          "address": "401 w talcott rd",
+          "city": "PARK RIDGE",
+          "zip": "60068",
+          "ein": "363643751",
+          "primary_npi": "1396319711",
+          "org_npi": "1396319711",
+          "entity_classification": "small_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": 1983
+        },
+        {
+          "location_id": "fe4e8aece6d7fd2e",
+          "name": "PARK RIDGE DENTISTRY PLLC",
+          "dba": null,
+          "address": "35 1/2 s prospect ave",
+          "city": "PARK RIDGE",
+          "zip": "60068",
+          "ein": null,
+          "primary_npi": "1366195869",
+          "org_npi": "1366195869",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        },
+        {
+          "location_id": "b1e3b67adc113238",
+          "name": "JEFFERSON PARK FAMILY DENTAL LLC",
+          "dba": null,
+          "address": "4452 n central ave",
+          "city": "CHICAGO",
+          "zip": "60630",
+          "ein": null,
+          "primary_npi": "1417528589",
+          "org_npi": "1417528589",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        }
+      ],
+      "rank": 15
+    },
+    {
+      "reach": 3,
+      "score": 5,
+      "ranking_reasons": [
+        "multiple legal-entity types ['INC', 'LLC', 'PC']",
+        "PC-shell name pattern"
+      ],
+      "authorized_official": "BELLA ZARITSKY",
+      "network_id": "ao:ZARITSKY_BELLA",
+      "zips": [
+        "60091",
+        "60201",
+        "60606"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "191ed257cb01e8d6",
+          "name": "JIM LIMPERIS, DMD INC.",
+          "dba": null,
+          "address": "3612 lake ave",
+          "city": "WILMETTE",
+          "zip": "60091",
+          "ein": null,
+          "primary_npi": "1871314286",
+          "org_npi": "1871314286",
+          "entity_classification": "solo_high_volume",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        },
+        {
+          "location_id": "3c31ccb9884440d6",
+          "name": "WINNING SMILE DENTAL GROUP, LLC",
+          "dba": "<UNAVAIL>",
+          "address": "2500 ridge ave",
+          "city": "EVANSTON",
+          "zip": "60201",
+          "ein": null,
+          "primary_npi": "1851125405",
+          "org_npi": "1851125405",
+          "entity_classification": "small_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": null
+        },
+        {
+          "location_id": "2d167c1a9f408e72",
+          "name": "DANIELLE DEARMOND, DDS PC",
+          "dba": null,
+          "address": "150 n wacker dr",
+          "city": "CHICAGO",
+          "zip": "60606",
+          "ein": "710995825",
+          "primary_npi": "1265253678",
+          "org_npi": "1265253678",
+          "entity_classification": "solo_high_volume",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": 2011
+        }
+      ],
+      "rank": 16
+    },
+    {
+      "reach": 3,
+      "score": 5,
+      "ranking_reasons": [
+        "multiple legal-entity types ['LLC', 'LTD']"
+      ],
+      "authorized_official": "SUNITA SAHU",
+      "network_id": "ao:SAHU_SUNITA",
+      "zips": [
+        "60101",
+        "60618",
+        "60623"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "1580c5634d44138a",
+          "name": "ESHA DENTAL LLC",
+          "dba": null,
+          "address": "1409 w lake st",
+          "city": "ADDISON",
+          "zip": "60101",
+          "ein": null,
+          "primary_npi": "1194358960",
+          "org_npi": "1194358960",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        },
+        {
+          "location_id": "cc00cb07c8069fa8",
+          "name": "ER DENTAL CARE LTD",
+          "dba": "<UNAVAIL>",
+          "address": "3205 w irving park rd",
+          "city": "CHICAGO",
+          "zip": "60618",
+          "ein": null,
+          "primary_npi": "1538333604",
+          "org_npi": "1538333604",
+          "entity_classification": "small_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 3,
+          "year_established": null
+        },
+        {
+          "location_id": "f62241c4286271dd",
+          "name": "DENTAL WISH LTD",
+          "dba": null,
+          "address": "4101 w 26th st",
+          "city": "CHICAGO",
+          "zip": "60623",
+          "ein": null,
+          "primary_npi": "1760794176",
+          "org_npi": "1760794176",
+          "entity_classification": "small_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": null
+        }
+      ],
+      "rank": 17
+    },
+    {
+      "reach": 3,
+      "score": 5,
+      "ranking_reasons": [
+        "brand \"HOPE P C\" x2",
+        "legal ['PC']",
+        "PC-shell name pattern"
+      ],
+      "authorized_official": "VESNA SUTTER",
+      "network_id": "ao:SUTTER_VESNA",
+      "zips": [
+        "60154",
+        "60506",
+        "60707"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "639be6bb4a731c53",
+          "name": "HOPE DENTAL P.C.",
+          "dba": null,
+          "address": "10215 w roosevelt rd",
+          "city": "WESTCHESTER",
+          "zip": "60154",
+          "ein": null,
+          "primary_npi": "1417338468",
+          "org_npi": "1417338468",
+          "entity_classification": "small_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": null
+        },
+        {
+          "location_id": "3fad6182ba54feb4",
+          "name": "HOPE DENTAL P.C.",
+          "dba": "<UNAVAIL>",
+          "address": "2418 w indian trl",
+          "city": "AURORA",
+          "zip": "60506",
+          "ein": "363251969",
+          "primary_npi": "1588123079",
+          "org_npi": "1588123079",
+          "entity_classification": "small_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": null
+        },
+        {
+          "location_id": "1a478dc49e0d3c7f",
+          "name": "NORTH AVE. DENTAL PARTNERS P.C.",
+          "dba": null,
+          "address": "7020 w n ave",
+          "city": "CHICAGO",
+          "zip": "60707",
+          "ein": null,
+          "primary_npi": "1942653324",
+          "org_npi": "1942653324",
+          "entity_classification": "small_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": null
+        }
+      ],
+      "rank": 18
+    },
+    {
+      "reach": 3,
+      "score": 5,
+      "ranking_reasons": [
+        "multiple legal-entity types ['LLC', 'LTD']"
+      ],
+      "authorized_official": "MUZAFFAR MIRZA",
+      "network_id": "ao:MIRZA_MUZAFFAR",
+      "zips": [
+        "60181",
+        "60501",
+        "60632"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "5e75e392efad4086",
+          "name": "DENTAL CARE CENTER LTD",
+          "dba": null,
+          "address": "144 w roosevelt rd",
+          "city": "VILLA PARK",
+          "zip": "60181",
+          "ein": "363422565",
+          "primary_npi": "1952560674",
+          "org_npi": "1952560674",
+          "entity_classification": "large_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 4,
+          "year_established": null
+        },
+        {
+          "location_id": "cf07fea5b982491a",
+          "name": "SUMMIT DENTAL CENTER LLC",
+          "dba": null,
+          "address": "7557 w 63rd st",
+          "city": "SUMMIT",
+          "zip": "60501",
+          "ein": null,
+          "primary_npi": "1285240531",
+          "org_npi": "1285240531",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        },
+        {
+          "location_id": "10b39d292b63398c",
+          "name": "KEDZIE 47 DENTAL LLC",
+          "dba": "<UNAVAIL>",
+          "address": "4721 s kedzie ave",
+          "city": "CHICAGO",
+          "zip": "60632",
+          "ein": null,
+          "primary_npi": "1144839424",
+          "org_npi": "1144839424",
+          "entity_classification": "small_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": null
+        }
+      ],
+      "rank": 19
+    },
+    {
+      "reach": 3,
+      "score": 5,
+      "ranking_reasons": [
+        "multiple legal-entity types ['LLC', 'PC']",
+        "PC-shell name pattern"
+      ],
+      "authorized_official": "DEEPAK AGARWAL",
+      "network_id": "ao:AGARWAL_DEEPAK",
+      "zips": [
+        "60435",
+        "60563",
+        "60586"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "c7ced3c202889837",
+          "name": "AGTEL, LLC",
+          "dba": null,
+          "address": "181 n hammes ave",
+          "city": "JOLIET",
+          "zip": "60435",
+          "ein": "362898926",
+          "primary_npi": "1013773746",
+          "org_npi": "1013773746",
+          "entity_classification": "large_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 4,
+          "year_established": 2005
+        },
+        {
+          "location_id": "62cc00137fbcad20",
+          "name": "HOUSE OS SMILES, PC",
+          "dba": "<UNAVAIL>",
+          "address": "1163 e ogden ave",
+          "city": "NAPERVILLE",
+          "zip": "60563",
+          "ein": "201725665",
+          "primary_npi": "1508037698",
+          "org_npi": "1508037698",
+          "entity_classification": "solo_high_volume",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        },
+        {
+          "location_id": "30959ba16371e11e",
+          "name": "AGARWAL & PATEL, PC",
+          "dba": "<UNAVAIL>",
+          "address": "2111 s route 59",
+          "city": "PLAINFIELD",
+          "zip": "60586",
+          "ein": null,
+          "primary_npi": "1548545700",
+          "org_npi": "1548545700",
+          "entity_classification": "solo_high_volume",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": 2011
+        }
+      ],
+      "rank": 20
+    },
+    {
+      "reach": 3,
+      "score": 5,
+      "ranking_reasons": [
+        "multiple legal-entity types ['LLC', 'PC']",
+        "PC-shell name pattern"
+      ],
+      "authorized_official": "SAQIB MOHAJIR",
+      "network_id": "ao:MOHAJIR_SAQIB",
+      "zips": [
+        "60467",
+        "60477",
+        "60803"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "f6c6290c16d20224",
+          "name": "PINEWOOD DENTAL, PC",
+          "dba": null,
+          "address": "11979 w 143rd st",
+          "city": "ORLAND PARK",
+          "zip": "60467",
+          "ein": null,
+          "primary_npi": "1699946913",
+          "org_npi": "1699946913",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        },
+        {
+          "location_id": "822d3012aedf32b9",
+          "name": "OPTIMAL DENTAL ASSOCIATES, LLC",
+          "dba": null,
+          "address": "15916 harlem ave",
+          "city": "TINLEY PARK",
+          "zip": "60477",
+          "ein": null,
+          "primary_npi": "1912357278",
+          "org_npi": "1912357278",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        },
+        {
+          "location_id": "eb8567fb91ebcdfd",
+          "name": "SAQIB H. MOHAJIR, D.M.D.",
+          "dba": "<UNAVAIL>",
+          "address": "11808 s pulaski rd",
+          "city": "ALSIP",
+          "zip": "60803",
+          "ein": "363395437",
+          "primary_npi": "1427228311",
+          "org_npi": "1427228311",
+          "entity_classification": "small_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": null
+        }
+      ],
+      "rank": 21
+    },
+    {
+      "reach": 3,
+      "score": 4,
+      "ranking_reasons": [
+        "legal ['PC']",
+        "PC-shell name pattern"
+      ],
+      "authorized_official": "AMJAD MAHAIRI",
+      "network_id": "ao:MAHAIRI_AMJAD",
+      "zips": [
+        "60005",
+        "60074",
+        "60120"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "fff89ee2312c7249",
+          "name": "NEW FAMILY DENTAL",
+          "dba": "<UNAVAIL>",
+          "address": "1768 w algonqun rd",
+          "city": "ARLINGTON HEIGHTS",
+          "zip": "60005",
+          "ein": null,
+          "primary_npi": "1477062701",
+          "org_npi": "1477062701",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        },
+        {
+          "location_id": "1704bb618f1d6608",
+          "name": "MAYA DENTAL P.C.",
+          "dba": null,
+          "address": "1329 n rand rd",
+          "city": "PALATINE",
+          "zip": "60074",
+          "ein": null,
+          "primary_npi": "1043544976",
+          "org_npi": "1043544976",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        },
+        {
+          "location_id": "34fe6f62907684ce",
+          "name": "MAHAIRI DENTAL CENTER",
+          "dba": null,
+          "address": "15 n geneva st",
+          "city": "ELGIN",
+          "zip": "60120",
+          "ein": "680510039",
+          "primary_npi": "1043475809",
+          "org_npi": "1043475809",
+          "entity_classification": "family_practice",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 3,
+          "year_established": 1995
+        }
+      ],
+      "rank": 22
+    },
+    {
+      "reach": 3,
+      "score": 4,
+      "ranking_reasons": [
+        "legal ['LLC']"
+      ],
+      "authorized_official": "INCHUN YANG",
+      "network_id": "ao:YANG_INCHUN",
+      "zips": [
+        "60016",
+        "60411",
+        "60647"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "f790cf2484530188",
+          "name": "METROPOLITAN DENTAL CARE",
+          "dba": null,
+          "address": "1541 market st",
+          "city": "DES PLAINES",
+          "zip": "60016",
+          "ein": null,
+          "primary_npi": "1043476856",
+          "org_npi": "1043476856",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        },
+        {
+          "location_id": "61bf52de60f33476",
+          "name": "GLAMOUR DENTAL SOUTH CHICAGO HEIGHTS LLC",
+          "dba": null,
+          "address": "3330 chicago rd",
+          "city": "SOUTH CHICAGO HEIGHTS",
+          "zip": "60411",
+          "ein": null,
+          "primary_npi": "1649697806",
+          "org_npi": "1649697806",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        },
+        {
+          "location_id": "4d5aa903a1f34565",
+          "name": "METRO DENTAL LLC",
+          "dba": "<UNAVAIL>",
+          "address": "2746 w fullerton ave",
+          "city": "CHICAGO",
+          "zip": "60647",
+          "ein": null,
+          "primary_npi": "1265841480",
+          "org_npi": "1265841480",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        }
+      ],
+      "rank": 23
+    },
+    {
+      "reach": 3,
+      "score": 4,
+      "ranking_reasons": [
+        "legal ['PC']",
+        "PC-shell name pattern"
+      ],
+      "authorized_official": "REEM SHAFI",
+      "network_id": "ao:SHAFI_REEM",
+      "zips": [
+        "60133",
+        "60137",
+        "60467"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": "possible SHAFI family network (backfill71 SHAFI x17)",
+      "locations": [
+        {
+          "location_id": "ba663f30996016ce",
+          "name": "HANOVER DENTAL PC",
+          "dba": null,
+          "address": "7640 barrington rd",
+          "city": "HANOVER PARK",
+          "zip": "60133",
+          "ein": null,
+          "primary_npi": "1811228166",
+          "org_npi": "1811228166",
+          "entity_classification": "solo_high_volume",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        },
+        {
+          "location_id": "fc658bf62642d908",
+          "name": "BAKER HILL DENTAL PC",
+          "dba": null,
+          "address": "904 roosevelt rd",
+          "city": "GLEN ELLYN",
+          "zip": "60137",
+          "ein": null,
+          "primary_npi": "1720319072",
+          "org_npi": "1720319072",
+          "entity_classification": "large_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 4,
+          "year_established": null
+        },
+        {
+          "location_id": "6da55130228a9c54",
+          "name": "ABSOLUTE DENTAL PC",
+          "dba": null,
+          "address": "18014 wolf rd",
+          "city": "ORLAND PARK",
+          "zip": "60467",
+          "ein": null,
+          "primary_npi": "1558692806",
+          "org_npi": "1558692806",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": 2008
+        }
+      ],
+      "rank": 24
+    },
+    {
+      "reach": 3,
+      "score": 4,
+      "ranking_reasons": [
+        "brand \"TEUSCHER\" x2"
+      ],
+      "authorized_official": "MICHAEL TEUSCHER",
+      "network_id": "ao:TEUSCHER_MICHAEL",
+      "zips": [
+        "60175"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "9f8a9a9f167eaf7a",
+          "name": "TEUSCHER DENTAL",
+          "dba": null,
+          "address": "40w320 lafox rd",
+          "city": "ST CHARLES",
+          "zip": "60175",
+          "ein": "364408411",
+          "primary_npi": "1053896183",
+          "org_npi": "1053896183",
+          "entity_classification": "small_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": 1987
+        },
+        {
+          "location_id": "0706e53bbd0c88c4",
+          "name": "TEUSCHER DENTAL GROUP",
+          "dba": "<UNAVAIL>",
+          "address": "40 w 320 lafox rd",
+          "city": "ST. CHARLES",
+          "zip": "60175",
+          "ein": null,
+          "primary_npi": "1225196173",
+          "org_npi": "1225196173",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        },
+        {
+          "location_id": "da5dc08600236616",
+          "name": "TEUSCHER LEGACY DENTAL",
+          "dba": null,
+          "address": "40w131 campton crossings dr",
+          "city": "ST CHARLES",
+          "zip": "60175",
+          "ein": null,
+          "primary_npi": "1326871047",
+          "org_npi": "1326871047",
+          "entity_classification": "family_practice",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 4,
+          "year_established": null
+        }
+      ],
+      "rank": 25
+    },
+    {
+      "reach": 3,
+      "score": 4,
+      "ranking_reasons": [
+        "legal ['LTD']"
+      ],
+      "authorized_official": "JOSEPH FORNAL",
+      "network_id": "ao:FORNAL_JOSEPH",
+      "zips": [
+        "60185",
+        "60505",
+        "60639"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "0f7d4a1287a5e26d",
+          "name": "WEST CHICAGO DENTAL CARE, LTD",
+          "dba": null,
+          "address": "166 w washington st",
+          "city": "WEST CHICAGO",
+          "zip": "60185",
+          "ein": "202073978",
+          "primary_npi": "1750591723",
+          "org_npi": "1750591723",
+          "entity_classification": "small_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": 2002
+        },
+        {
+          "location_id": "80319c2b8ee5d471",
+          "name": "AURORA DENTAL CARE, LTD",
+          "dba": null,
+          "address": "195 eastern ave",
+          "city": "AURORA",
+          "zip": "60505",
+          "ein": "208234765",
+          "primary_npi": "1780855676",
+          "org_npi": "1780855676",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": 2024
+        },
+        {
+          "location_id": "df683defe87c2c23",
+          "name": "FULLERTON FAMILY DENTISTRY, LTD",
+          "dba": null,
+          "address": "4725 w fullerton ave",
+          "city": "CHICAGO",
+          "zip": "60639",
+          "ein": null,
+          "primary_npi": "1649480138",
+          "org_npi": "1649480138",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        }
+      ],
+      "rank": 26
+    },
+    {
+      "reach": 3,
+      "score": 4,
+      "ranking_reasons": [
+        "legal ['PC']",
+        "PC-shell name pattern"
+      ],
+      "authorized_official": "YAQIN DAWOUD",
+      "network_id": "ao:DAWOUD_YAQIN",
+      "zips": [
+        "60402",
+        "60617"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "1800132e7ff2e68c",
+          "name": "BERWYN DENTAL CLINIC",
+          "dba": "<UNAVAIL>",
+          "address": "6436 cermak rd",
+          "city": "BERWYN",
+          "zip": "60402",
+          "ein": null,
+          "primary_npi": "1316675176",
+          "org_npi": "1316675176",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": 2022
+        },
+        {
+          "location_id": "72da42bbc0e81546",
+          "name": "STONY ISLAND DENTAL PC",
+          "dba": null,
+          "address": "1600 e 93rd st",
+          "city": "CHICAGO",
+          "zip": "60617",
+          "ein": null,
+          "primary_npi": "1427527365",
+          "org_npi": "1427527365",
+          "entity_classification": "small_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 3,
+          "year_established": null
+        },
+        {
+          "location_id": "00336cbe03e4f9dc",
+          "name": "CHICAGO STAR DENTAL PC",
+          "dba": null,
+          "address": "3641 e 108th st",
+          "city": "CHICAGO",
+          "zip": "60617",
+          "ein": null,
+          "primary_npi": "1164378600",
+          "org_npi": "1164378600",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        }
+      ],
+      "rank": 27
+    },
+    {
+      "reach": 3,
+      "score": 4,
+      "ranking_reasons": [
+        "legal ['PC']",
+        "PC-shell name pattern"
+      ],
+      "authorized_official": "YOSIF JABIR",
+      "network_id": "ao:JABIR_YOSIF",
+      "zips": [
+        "60431",
+        "60515",
+        "60544"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "60c66fb50f3e8028",
+          "name": "BROOKFOREST DENTAL GROUP, P.C.",
+          "dba": null,
+          "address": "850 brookforest dr",
+          "city": "SHOREWOOD",
+          "zip": "60431",
+          "ein": null,
+          "primary_npi": "1194903591",
+          "org_npi": "1194903591",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        },
+        {
+          "location_id": "1e61d24da0b499d3",
+          "name": "YOSIF JABIR DDS PC",
+          "dba": null,
+          "address": "1121 warren ave",
+          "city": "DOWNERS GROVE",
+          "zip": "60515",
+          "ein": null,
+          "primary_npi": "1912680158",
+          "org_npi": "1912680158",
+          "entity_classification": "small_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": null
+        },
+        {
+          "location_id": "1c029e0c3ee82b25",
+          "name": "PINNACLE DENTAL GROUP",
+          "dba": null,
+          "address": "13530 s route 59",
+          "city": "PLAINFIELD",
+          "zip": "60544",
+          "ein": "800072608",
+          "primary_npi": "1174665616",
+          "org_npi": "1174665616",
+          "entity_classification": "small_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": null
+        }
+      ],
+      "rank": 28
+    },
+    {
+      "reach": 3,
+      "score": 4,
+      "ranking_reasons": [
+        "legal ['LLC']"
+      ],
+      "authorized_official": "ZUZANA VITKOVA",
+      "network_id": "ao:VITKOVA_ZUZANA",
+      "zips": [
+        "60523",
+        "60540",
+        "60611"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "d5660f2db5e9f8bf",
+          "name": "ACDI GLENVIEW,LLC.",
+          "dba": null,
+          "address": "2000 spring rd",
+          "city": "OAK BROOK",
+          "zip": "60523",
+          "ein": null,
+          "primary_npi": "1356578140",
+          "org_npi": "1356578140",
+          "entity_classification": "small_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": null
+        },
+        {
+          "location_id": "2b12cf9aa3afed8a",
+          "name": "ACDI - NAPERVILLE, LLC.",
+          "dba": null,
+          "address": "1288 rickert dr",
+          "city": "NAPERVILLE",
+          "zip": "60540",
+          "ein": null,
+          "primary_npi": "1780850131",
+          "org_npi": "1780850131",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        },
+        {
+          "location_id": "c1b5ff174b70e947",
+          "name": "ACDI CHICAGO LLC",
+          "dba": null,
+          "address": "625 n michigan ave",
+          "city": "CHICAGO",
+          "zip": "60611",
+          "ein": null,
+          "primary_npi": "1235305681",
+          "org_npi": "1235305681",
+          "entity_classification": "family_practice",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 3,
+          "year_established": null
+        }
+      ],
+      "rank": 29
+    },
+    {
+      "reach": 3,
+      "score": 4,
+      "ranking_reasons": [
+        "legal ['INC']"
+      ],
+      "authorized_official": "JONATHAN VILLANUEVA",
+      "network_id": "ao:VILLANUEVA_JONATHAN",
+      "zips": [
+        "60526",
+        "60546",
+        "60563"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "752766db5831e4a7",
+          "name": "LAGRANGE DENTAL MANAGEMENT",
+          "dba": null,
+          "address": "342 sherwood rd",
+          "city": "LA GRANGE PARK",
+          "zip": "60526",
+          "ein": null,
+          "primary_npi": "1013151901",
+          "org_npi": "1013151901",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        },
+        {
+          "location_id": "c025489014bc9c1d",
+          "name": "RIVERSIDE DENTAL MANAGEMENT, INC",
+          "dba": "<UNAVAIL>",
+          "address": "7716 w 26th st",
+          "city": "NORTH RIVERSIDE",
+          "zip": "60546",
+          "ein": null,
+          "primary_npi": "1356556146",
+          "org_npi": "1356556146",
+          "entity_classification": "small_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": null
+        },
+        {
+          "location_id": "77357c36224272c8",
+          "name": "DENTAL DESIGN GROUP, INC",
+          "dba": "<UNAVAIL>",
+          "address": "1000 e ogden ave",
+          "city": "NAPERVILLE",
+          "zip": "60563",
+          "ein": null,
+          "primary_npi": "1790998748",
+          "org_npi": "1790998748",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        }
+      ],
+      "rank": 30
+    },
+    {
+      "reach": 3,
+      "score": 4,
+      "ranking_reasons": [
+        "legal ['PC']",
+        "PC-shell name pattern"
+      ],
+      "authorized_official": "CRYSTAL BARRON",
+      "network_id": "ao:BARRON_CRYSTAL",
+      "zips": [
+        "60614",
+        "60622"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "372f422d96b53499",
+          "name": "CHICAGO DENTAL SPECIALISTS PC",
+          "dba": null,
+          "address": "558 w webster ave",
+          "city": "CHICAGO",
+          "zip": "60614",
+          "ein": null,
+          "primary_npi": "1225997240",
+          "org_npi": "1225997240",
+          "entity_classification": "solo_high_volume",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        },
+        {
+          "location_id": "e7e7d347f2fa4da1",
+          "name": "RAJUL PATEL WESTLOOP PC",
+          "dba": null,
+          "address": "924 n damen ave",
+          "city": "CHICAGO",
+          "zip": "60622",
+          "ein": "200854469",
+          "primary_npi": "1073495990",
+          "org_npi": "1073495990",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": 2022
+        },
+        {
+          "location_id": "d3d0d75b2485f83e",
+          "name": "RAJUL PATEL WEST LOOP PC",
+          "dba": "<UNAVAIL>",
+          "address": "1755 w n ave",
+          "city": "CHICAGO",
+          "zip": "60622",
+          "ein": null,
+          "primary_npi": "1679455505",
+          "org_npi": "1679455505",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": 2003
+        }
+      ],
+      "rank": 31
+    },
+    {
+      "reach": 3,
+      "score": 4,
+      "ranking_reasons": [
+        "legal ['LTD']"
+      ],
+      "authorized_official": "WILLIAM LI",
+      "network_id": "ao:LI_WILLIAM",
+      "zips": [
+        "60616",
+        "60622",
+        "60657"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "6a1f034a027ef384",
+          "name": "ALL FAMILY DENTAL",
+          "dba": null,
+          "address": "222 w 26th st",
+          "city": "CHICAGO",
+          "zip": "60616",
+          "ein": null,
+          "primary_npi": "1902924889",
+          "org_npi": "1902924889",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        },
+        {
+          "location_id": "589e5a66560936f7",
+          "name": "DAMEN NORTH DENTAL GROUP LTD",
+          "dba": null,
+          "address": "1725 w n ave",
+          "city": "CHICAGO",
+          "zip": "60622",
+          "ein": null,
+          "primary_npi": "1083623201",
+          "org_npi": "1083623201",
+          "entity_classification": "large_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 4,
+          "year_established": 2024
+        },
+        {
+          "location_id": "926aa7def45531a2",
+          "name": "ORAL KARE LTD",
+          "dba": null,
+          "address": "3247 n ashland ave",
+          "city": "CHICAGO",
+          "zip": "60657",
+          "ein": "452044878",
+          "primary_npi": "1689683344",
+          "org_npi": "1689683344",
+          "entity_classification": "large_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 4,
+          "year_established": null
+        }
+      ],
+      "rank": 32
+    },
+    {
+      "reach": 3,
+      "score": 3,
+      "ranking_reasons": [],
+      "authorized_official": "ANNA PELAK",
+      "network_id": "ao:PELAK_ANNA",
+      "zips": [
+        "60067",
+        "60107"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "36f2d7b78f905184",
+          "name": "ANNA PELAK & ASSOC",
+          "dba": null,
+          "address": "647 1st bank dr",
+          "city": "PALATINE",
+          "zip": "60067",
+          "ein": null,
+          "primary_npi": "1457574568",
+          "org_npi": "1457574568",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        },
+        {
+          "location_id": "1cb279f97b785d5f",
+          "name": "TOTALIDLLC",
+          "dba": null,
+          "address": "647 n 1st bank dr",
+          "city": "PALATINE",
+          "zip": "60067",
+          "ein": null,
+          "primary_npi": "1629941299",
+          "org_npi": "1629941299",
+          "entity_classification": "small_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": null
+        },
+        {
+          "location_id": "1fdb47efedda3307",
+          "name": "ARTOFASMILE",
+          "dba": null,
+          "address": "1296 sutton rd",
+          "city": "STREAMWOOD",
+          "zip": "60107",
+          "ein": "363271260",
+          "primary_npi": "1235004334",
+          "org_npi": "1235004334",
+          "entity_classification": "small_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        }
+      ],
+      "rank": 33
+    },
+    {
+      "reach": 3,
+      "score": 3,
+      "ranking_reasons": [
+        "legal ['LLC']"
+      ],
+      "authorized_official": "SINAN RAZZAK",
+      "network_id": "ao:RAZZAK_SINAN",
+      "zips": [
+        "60181",
+        "60629",
+        "60804"
+      ],
+      "n_new_locations": 2,
+      "linked_prior_work": "Image Dental / Dental Town Chicago \u2014 backfill71 second pass (branded_dso, 12 offices)",
+      "locations": [
+        {
+          "location_id": "7f3381012360be57",
+          "name": "DENTAL TOWN",
+          "dba": null,
+          "address": "17w679 roosevelt rd",
+          "city": "OAKBROOK TERRACE",
+          "zip": "60181",
+          "ein": null,
+          "primary_npi": "1891116356",
+          "org_npi": "1891116356",
+          "entity_classification": "large_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 5,
+          "year_established": null
+        },
+        {
+          "location_id": "c0cbfce56b1ea134",
+          "name": "BEDFORD DENTAL LLC",
+          "dba": null,
+          "address": "7250 s cicero ave",
+          "city": "CHICAGO",
+          "zip": "60629",
+          "ein": null,
+          "primary_npi": "1871845131",
+          "org_npi": "1871845131",
+          "entity_classification": "large_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 7,
+          "year_established": null
+        },
+        {
+          "location_id": "addadba0d25e3812",
+          "name": "IMAGE DENTAL LLC",
+          "dba": null,
+          "address": "3020 s cicero ave",
+          "city": "CICERO",
+          "zip": "60804",
+          "ein": null,
+          "primary_npi": "1063789584",
+          "org_npi": "1063789584",
+          "entity_classification": "large_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 5,
+          "year_established": null
+        }
+      ],
+      "rank": 34
+    },
+    {
+      "reach": 3,
+      "score": 3,
+      "ranking_reasons": [
+        "legal ['PC']",
+        "PC-shell name pattern"
+      ],
+      "authorized_official": "MOHAMMED SALIH",
+      "network_id": "ao:SALIH_MOHAMMED",
+      "zips": [
+        "60608",
+        "60629",
+        "60630"
+      ],
+      "n_new_locations": 2,
+      "linked_prior_work": "Teeth Matter/Salih Dental \u2014 backfill71 individual (dentist_multi)",
+      "locations": [
+        {
+          "location_id": "b7e5a55e0eb96cdd",
+          "name": "SALIH DENTAL CENTER",
+          "dba": "<UNAVAIL>",
+          "address": "1726 w 18th st",
+          "city": "CHICAGO",
+          "zip": "60608",
+          "ein": "471237454",
+          "primary_npi": "1437326188",
+          "org_npi": "1437326188",
+          "entity_classification": "large_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 4,
+          "year_established": 1984
+        },
+        {
+          "location_id": "0c8f995db2124f57",
+          "name": "TEETH MATTER ON KEDZIE P.C.",
+          "dba": null,
+          "address": "6235 s kedzie ave",
+          "city": "CHICAGO",
+          "zip": "60629",
+          "ein": null,
+          "primary_npi": "1902370489",
+          "org_npi": "1902370489",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        },
+        {
+          "location_id": "4a6b1b5f5db95d3e",
+          "name": "TEETH MATTER ON LAWRENCE P.C.",
+          "dba": null,
+          "address": "4408 w lawrence ave",
+          "city": "CHICAGO",
+          "zip": "60630",
+          "ein": null,
+          "primary_npi": "1710450952",
+          "org_npi": "1710450952",
+          "entity_classification": "family_practice",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": null
+        }
+      ],
+      "rank": 35
+    },
+    {
+      "reach": 3,
+      "score": 3,
+      "ranking_reasons": [],
+      "authorized_official": "ANITA SHAHIN",
+      "network_id": "ao:SHAHIN_ANITA",
+      "zips": [
+        "60639",
+        "60640"
+      ],
+      "n_new_locations": 3,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "ef4a87d4b6af32fb",
+          "name": "ARMITAGE DENHAL",
+          "dba": null,
+          "address": "4235 w armitage ave",
+          "city": "CHICAGO",
+          "zip": "60639",
+          "ein": null,
+          "primary_npi": "1629173430",
+          "org_npi": "1629173430",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        },
+        {
+          "location_id": "e3417503589aa7fd",
+          "name": "LARAMIE DENTAL",
+          "dba": null,
+          "address": "2556 n laramie",
+          "city": "CHICAGO",
+          "zip": "60639",
+          "ein": null,
+          "primary_npi": "1275737207",
+          "org_npi": "1275737207",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        },
+        {
+          "location_id": "2d03b66c892427bf",
+          "name": "ANDERSONVILLE DENTAL",
+          "dba": null,
+          "address": "1700 w foster",
+          "city": "CHICAGO",
+          "zip": "60640",
+          "ein": null,
+          "primary_npi": "1811093248",
+          "org_npi": "1811093248",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        }
+      ],
+      "rank": 36
+    },
+    {
+      "reach": 2,
+      "score": 11,
+      "ranking_reasons": [
+        "overlaps dso_* classification hint",
+        "affiliated_dso=Western Dental",
+        "parent_company=SONRAVA HEALTH",
+        "legal ['LLC']"
+      ],
+      "authorized_official": "SUNIL EAMANI",
+      "network_id": "ao:EAMANI_SUNIL",
+      "zips": [
+        "60061",
+        "60108"
+      ],
+      "n_new_locations": 2,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "393a79a74b719b48",
+          "name": "DENTIST IN VERNON HILLS LLC",
+          "dba": "<UNAVAIL>",
+          "address": "555 e townline rd",
+          "city": "VERNON HILLS",
+          "zip": "60061",
+          "ein": null,
+          "primary_npi": "1366268716",
+          "org_npi": "1366268716",
+          "entity_classification": "dso_national",
+          "affiliated_dso": "Western Dental",
+          "parent_company": "SONRAVA HEALTH",
+          "provider_count": 0,
+          "year_established": null
+        },
+        {
+          "location_id": "3d0e7f3e036f5842",
+          "name": "DENTIST IN BLOOMINGDALE LLC",
+          "dba": "<UNAVAIL>",
+          "address": "366 w army trail rd",
+          "city": "BLOOMINGDALE",
+          "zip": "60108",
+          "ein": null,
+          "primary_npi": "1093539363",
+          "org_npi": "1093539363",
+          "entity_classification": "dso_national",
+          "affiliated_dso": "Western Dental (Sonrava Health)",
+          "parent_company": "SONRAVA HEALTH",
+          "provider_count": 1,
+          "year_established": null
+        }
+      ],
+      "rank": 37
+    },
+    {
+      "reach": 2,
+      "score": 11,
+      "ranking_reasons": [
+        "overlaps dso_* classification hint",
+        "affiliated_dso=Aspen Dental",
+        "parent_company=ADMI CORP",
+        "legal ['PLLC']"
+      ],
+      "authorized_official": "CHRISTINE BARBER",
+      "network_id": "ao:BARBER_CHRISTINE",
+      "zips": [
+        "60077",
+        "60618"
+      ],
+      "n_new_locations": 2,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "44917ecf8c1cf019",
+          "name": "MENA DENTAL PLLC",
+          "dba": null,
+          "address": "5225 touhy ave",
+          "city": "SKOKIE",
+          "zip": "60077",
+          "ein": null,
+          "primary_npi": "1689460834",
+          "org_npi": "1689460834",
+          "entity_classification": "dso_national",
+          "affiliated_dso": null,
+          "parent_company": "ADMI CORP",
+          "provider_count": 7,
+          "year_established": null
+        },
+        {
+          "location_id": "6c629fcb565ea0be",
+          "name": "DELGADO DMD PLLC",
+          "dba": null,
+          "address": "3201 n western ave",
+          "city": "CHICAGO",
+          "zip": "60618",
+          "ein": null,
+          "primary_npi": "1659170637",
+          "org_npi": "1659170637",
+          "entity_classification": "dso_national",
+          "affiliated_dso": "Aspen Dental",
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": null
+        }
+      ],
+      "rank": 38
+    },
+    {
+      "reach": 2,
+      "score": 11,
+      "ranking_reasons": [
+        "overlaps dso_* classification hint",
+        "affiliated_dso=1st Family Dental",
+        "parent_company=1ST FAMILY DENTAL",
+        "legal ['PC']",
+        "PC-shell name pattern"
+      ],
+      "authorized_official": "KAMAL VIBHAKAR",
+      "network_id": "ao:VIBHAKAR_KAMAL",
+      "zips": [
+        "60534",
+        "60623"
+      ],
+      "n_new_locations": 2,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "f7f325330403a6d7",
+          "name": "VIBHAKAR AND VIBHAKAR D.D.S.P.C.",
+          "dba": "<UNAVAIL>",
+          "address": "3902 harlem ave",
+          "city": "LYONS",
+          "zip": "60534",
+          "ein": "363263266",
+          "primary_npi": "1619161411",
+          "org_npi": "1619161411",
+          "entity_classification": "family_practice",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 3,
+          "year_established": null
+        },
+        {
+          "location_id": "6f685dcd203ff3d2",
+          "name": "AMERIDENT ASSOCIATES",
+          "dba": "<UNAVAIL>",
+          "address": "4008 w 26th st",
+          "city": "CHICAGO",
+          "zip": "60623",
+          "ein": "800132836",
+          "primary_npi": "1356535496",
+          "org_npi": "1356535496",
+          "entity_classification": "dso_regional",
+          "affiliated_dso": "1st Family Dental",
+          "parent_company": "1ST FAMILY DENTAL",
+          "provider_count": 1,
+          "year_established": 2024
+        }
+      ],
+      "rank": 39
+    },
+    {
+      "reach": 2,
+      "score": 10,
+      "ranking_reasons": [
+        "overlaps dso_* classification hint",
+        "affiliated_dso=Gentle Dental",
+        "multiple legal-entity types ['LLC', 'PC']",
+        "PC-shell name pattern"
+      ],
+      "authorized_official": "RICHARD CONEN",
+      "network_id": "ao:CONEN_RICHARD",
+      "zips": [
+        "60077",
+        "60651"
+      ],
+      "n_new_locations": 2,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "ec5372dd650d17d8",
+          "name": "RICHARD S. CONEN D.D.S.,LLC",
+          "dba": null,
+          "address": "4905 old orchard center",
+          "city": "SKOKIE",
+          "zip": "60077",
+          "ein": null,
+          "primary_npi": "1831464585",
+          "org_npi": "1831464585",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        },
+        {
+          "location_id": "7d1d789828351ecf",
+          "name": "GENTLE DENTAL CARE P.C.",
+          "dba": null,
+          "address": "5137 w chicago ave",
+          "city": "CHICAGO",
+          "zip": "60651",
+          "ein": null,
+          "primary_npi": "1598895989",
+          "org_npi": "1598895989",
+          "entity_classification": "dso_national",
+          "affiliated_dso": "Gentle Dental",
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": null
+        }
+      ],
+      "rank": 40
+    },
+    {
+      "reach": 2,
+      "score": 10,
+      "ranking_reasons": [
+        "overlaps dso_* classification hint",
+        "affiliated_dso=Heartland Dental",
+        "brand \"PROFESSIONALS ILLINOIS P C\" x2",
+        "legal ['PC']",
+        "PC-shell name pattern"
+      ],
+      "authorized_official": "CASSANDRA PETERSEN",
+      "network_id": "ao:PETERSEN_CASSANDRA",
+      "zips": [
+        "60423",
+        "60563"
+      ],
+      "n_new_locations": 2,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "46c4e7116d0046a8",
+          "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+          "dba": "<UNAVAIL>",
+          "address": "590 bankview dr",
+          "city": "FRANKFORT",
+          "zip": "60423",
+          "ein": null,
+          "primary_npi": "1134624307",
+          "org_npi": "1134624307",
+          "entity_classification": "dso_national",
+          "affiliated_dso": "Heartland Dental",
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": 1989
+        },
+        {
+          "location_id": "1b931a8e9c2675a9",
+          "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+          "dba": "<UNAVAIL>",
+          "address": "309 w ogden ave",
+          "city": "NAPERVILLE",
+          "zip": "60563",
+          "ein": null,
+          "primary_npi": "1003316035",
+          "org_npi": "1003316035",
+          "entity_classification": "dso_national",
+          "affiliated_dso": "Heartland Dental",
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": null
+        }
+      ],
+      "rank": 41
+    },
+    {
+      "reach": 2,
+      "score": 10,
+      "ranking_reasons": [
+        "overlaps dso_* classification hint",
+        "affiliated_dso=Heartland Dental",
+        "brand \"PROFESSIONALS ILLINOIS P C\" x2",
+        "legal ['PC']",
+        "PC-shell name pattern"
+      ],
+      "authorized_official": "KIM WILSON",
+      "network_id": "ao:WILSON_KIM",
+      "zips": [
+        "60448",
+        "60450"
+      ],
+      "n_new_locations": 2,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "093fbea9e8c840df",
+          "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+          "dba": "<UNAVAIL>",
+          "address": "9990 w 190th st",
+          "city": "MOKENA",
+          "zip": "60448",
+          "ein": null,
+          "primary_npi": "1043609167",
+          "org_npi": "1043609167",
+          "entity_classification": "dso_national",
+          "affiliated_dso": "Heartland Dental",
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        },
+        {
+          "location_id": "6dba925c21c398ce",
+          "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+          "dba": "<UNAVAIL>",
+          "address": "1010 w us route 6",
+          "city": "MORRIS",
+          "zip": "60450",
+          "ein": null,
+          "primary_npi": "1306240437",
+          "org_npi": "1306240437",
+          "entity_classification": "dso_national",
+          "affiliated_dso": "Heartland Dental",
+          "parent_company": null,
+          "provider_count": 4,
+          "year_established": 1969
+        }
+      ],
+      "rank": 42
+    },
+    {
+      "reach": 2,
+      "score": 10,
+      "ranking_reasons": [
+        "overlaps dso_* classification hint",
+        "affiliated_dso=Dental 360",
+        "multiple legal-entity types ['INC', 'LLC']"
+      ],
+      "authorized_official": "IVANA BUENO",
+      "network_id": "ao:BUENO_IVANA",
+      "zips": [
+        "60618",
+        "60647"
+      ],
+      "n_new_locations": 2,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "8c6cbd8b8b3e4877",
+          "name": "DENTAL 360 & ASSOCIATES LLC",
+          "dba": null,
+          "address": "3435 w irving park rd",
+          "city": "CHICAGO",
+          "zip": "60618",
+          "ein": null,
+          "primary_npi": "1063223048",
+          "org_npi": "1063223048",
+          "entity_classification": "dso_regional",
+          "affiliated_dso": "Dental 360",
+          "parent_company": null,
+          "provider_count": 13,
+          "year_established": null
+        },
+        {
+          "location_id": "c4b5b35fa16e44e5",
+          "name": "FAMILY DENTAL GROUP, INC.",
+          "dba": null,
+          "address": "3855 w n ave",
+          "city": "CHICAGO",
+          "zip": "60647",
+          "ein": "201771535",
+          "primary_npi": "1538330758",
+          "org_npi": "1538330758",
+          "entity_classification": "dso_regional",
+          "affiliated_dso": "Dental 360",
+          "parent_company": null,
+          "provider_count": 4,
+          "year_established": null
+        }
+      ],
+      "rank": 43
+    },
+    {
+      "reach": 2,
+      "score": 9,
+      "ranking_reasons": [
+        "overlaps dso_* classification hint",
+        "affiliated_dso=Western Dental",
+        "legal ['PC']",
+        "PC-shell name pattern"
+      ],
+      "authorized_official": "BEHZAD SANEI",
+      "network_id": "ao:SANEI_BEHZAD",
+      "zips": [
+        "60053",
+        "60647"
+      ],
+      "n_new_locations": 2,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "d9578cb377feda64",
+          "name": "ADVANCED DENTISTRY AT MORTON GROVE",
+          "dba": null,
+          "address": "5821 dempster st",
+          "city": "MORTON GROVE",
+          "zip": "60053",
+          "ein": null,
+          "primary_npi": "1184866329",
+          "org_npi": "1184866329",
+          "entity_classification": "large_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 4,
+          "year_established": null
+        },
+        {
+          "location_id": "e50dfc828412c437",
+          "name": "SANEI CENTER PC",
+          "dba": null,
+          "address": "2604 w n ave",
+          "city": "CHICAGO",
+          "zip": "60647",
+          "ein": null,
+          "primary_npi": "1952659005",
+          "org_npi": "1952659005",
+          "entity_classification": "dso_national",
+          "affiliated_dso": "Western Dental",
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        }
+      ],
+      "rank": 44
+    },
+    {
+      "reach": 2,
+      "score": 9,
+      "ranking_reasons": [
+        "overlaps dso_* classification hint",
+        "affiliated_dso=All Family Dental & Braces (United Dental Partners)",
+        "legal ['PC']",
+        "PC-shell name pattern"
+      ],
+      "authorized_official": "MUSTAPHA HOTAIT",
+      "network_id": "ao:HOTAIT_MUSTAPHA",
+      "zips": [
+        "60419",
+        "60629"
+      ],
+      "n_new_locations": 2,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "5abb561bfd384285",
+          "name": "MUSTAPHA HOTAIT DDS PC",
+          "dba": "<UNAVAIL>",
+          "address": "1350 e sibley blvd",
+          "city": "DOLTON",
+          "zip": "60419",
+          "ein": null,
+          "primary_npi": "1689976540",
+          "org_npi": "1689976540",
+          "entity_classification": "small_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": null
+        },
+        {
+          "location_id": "c6078e6641ef7f48",
+          "name": "CHICAGO DENTAL COSMETICS",
+          "dba": "<UNAVAIL>",
+          "address": "6338 s pulaski rd",
+          "city": "CHICAGO",
+          "zip": "60629",
+          "ein": null,
+          "primary_npi": "1235680109",
+          "org_npi": "1235680109",
+          "entity_classification": "dso_regional",
+          "affiliated_dso": "All Family Dental & Braces (United Dental Partners)",
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        }
+      ],
+      "rank": 45
+    },
+    {
+      "reach": 2,
+      "score": 9,
+      "ranking_reasons": [
+        "overlaps dso_* classification hint",
+        "affiliated_dso=Heartland Dental",
+        "legal ['PC']",
+        "PC-shell name pattern"
+      ],
+      "authorized_official": "KENDRA WALKER",
+      "network_id": "ao:WALKER_KENDRA",
+      "zips": [
+        "60441",
+        "60446"
+      ],
+      "n_new_locations": 2,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "629e6c24236f7dc1",
+          "name": "DENTAL PROFESSIONALS OF ILLINOIS, PC",
+          "dba": "<UNAVAIL>",
+          "address": "16620 w 159th st",
+          "city": "LOCKPORT",
+          "zip": "60441",
+          "ein": null,
+          "primary_npi": "1902269079",
+          "org_npi": "1902269079",
+          "entity_classification": "dso_national",
+          "affiliated_dso": "Heartland Dental",
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": null
+        },
+        {
+          "location_id": "cbde3ee6f46acad7",
+          "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C",
+          "dba": "<UNAVAIL>",
+          "address": "450 s weber rd",
+          "city": "ROMEOVILLE",
+          "zip": "60446",
+          "ein": null,
+          "primary_npi": "1992235840",
+          "org_npi": "1992235840",
+          "entity_classification": "dso_national",
+          "affiliated_dso": "Heartland Dental",
+          "parent_company": null,
+          "provider_count": 2,
+          "year_established": 2011
+        }
+      ],
+      "rank": 46
+    },
+    {
+      "reach": 2,
+      "score": 8,
+      "ranking_reasons": [
+        "overlaps dso_* classification hint",
+        "affiliated_dso=Family Dental Care"
+      ],
+      "authorized_official": "HARRY VARVARESSOS",
+      "network_id": "ao:VARVARESSOS_HARRY",
+      "zips": [
+        "60409",
+        "60805"
+      ],
+      "n_new_locations": 2,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "77b28a39cb951124",
+          "name": "FAMILY DENTAL CARE OF CALUMET CITY",
+          "dba": null,
+          "address": "313 river oaks dr",
+          "city": "CALUMET CITY",
+          "zip": "60409",
+          "ein": "300108441",
+          "primary_npi": "1427268051",
+          "org_npi": "1427268051",
+          "entity_classification": "dso_regional",
+          "affiliated_dso": "Family Dental Care",
+          "parent_company": null,
+          "provider_count": 3,
+          "year_established": null
+        },
+        {
+          "location_id": "3aebe48ff7c42bdf",
+          "name": "FAMILY DENTAL CARE OF EVERGREEN PARK",
+          "dba": null,
+          "address": "2803 w 95th st",
+          "city": "EVERGREEN PARK",
+          "zip": "60805",
+          "ein": "363554595",
+          "primary_npi": "1083824643",
+          "org_npi": "1083824643",
+          "entity_classification": "dso_regional",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 3,
+          "year_established": 1986
+        }
+      ],
+      "rank": 47
+    },
+    {
+      "reach": 2,
+      "score": 8,
+      "ranking_reasons": [
+        "overlaps dso_* classification hint",
+        "affiliated_dso=Comfort Dental"
+      ],
+      "authorized_official": "LAWRENCE WHITE",
+      "network_id": "ao:WHITE_LAWRENCE",
+      "zips": [
+        "60608",
+        "60615"
+      ],
+      "n_new_locations": 2,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "8182bfe53b8a50bb",
+          "name": "COMFORT TEETH PILSEN",
+          "dba": null,
+          "address": "1253 w 18th st",
+          "city": "CHICAGO",
+          "zip": "60608",
+          "ein": null,
+          "primary_npi": "1295415677",
+          "org_npi": "1295415677",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        },
+        {
+          "location_id": "659a2d2d736f5059",
+          "name": "COMFORT DENTAL STUDIO",
+          "dba": null,
+          "address": "1370 e 53rd st",
+          "city": "CHICAGO",
+          "zip": "60615",
+          "ein": null,
+          "primary_npi": "1407531627",
+          "org_npi": "1407531627",
+          "entity_classification": "dso_national",
+          "affiliated_dso": "Comfort Dental",
+          "parent_company": null,
+          "provider_count": 3,
+          "year_established": 1989
+        }
+      ],
+      "rank": 48
+    },
+    {
+      "reach": 2,
+      "score": 7,
+      "ranking_reasons": [
+        "overlaps dso_* classification hint",
+        "multiple legal-entity types ['LLC', 'LTD']"
+      ],
+      "authorized_official": "LAWRENCE MULVANEY",
+      "network_id": "ao:MULVANEY_LAWRENCE",
+      "zips": [
+        "60714"
+      ],
+      "n_new_locations": 2,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "7230bc8117b4055b",
+          "name": "NORTHWESTERN DENTAL GROUP LTD",
+          "dba": null,
+          "address": "7745 n milwaukee ave",
+          "city": "NILES",
+          "zip": "60714",
+          "ein": null,
+          "primary_npi": "1508080110",
+          "org_npi": "1508080110",
+          "entity_classification": "dso_national",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        },
+        {
+          "location_id": "ccfd235d9e0a4227",
+          "name": "NWDG NILES LLC",
+          "dba": null,
+          "address": "7886 n milwaukee ave",
+          "city": "NILES",
+          "zip": "60714",
+          "ein": null,
+          "primary_npi": "1093089690",
+          "org_npi": "1093089690",
+          "entity_classification": "solo_established",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        }
+      ],
+      "rank": 49
+    },
+    {
+      "reach": 2,
+      "score": 6,
+      "ranking_reasons": [
+        "overlaps dso_* classification hint",
+        "legal ['LTD']"
+      ],
+      "authorized_official": "MANISSA LAMPMAN",
+      "network_id": "ao:LAMPMAN_MANISSA",
+      "zips": [
+        "60025",
+        "60646"
+      ],
+      "n_new_locations": 2,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "351f97bfcef8aead",
+          "name": "WEBSTER DENTAL CARE GLENVIEW, LTD",
+          "dba": "<UNAVAIL>",
+          "address": "1775 glenview rd",
+          "city": "GLENVIEW",
+          "zip": "60025",
+          "ein": "362781929",
+          "primary_npi": "1619431871",
+          "org_npi": "1619431871",
+          "entity_classification": "dso_national",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 12,
+          "year_established": 1946
+        },
+        {
+          "location_id": "9ed079a50d548b37",
+          "name": "WEBSTER DENTAL CARE SAUGANASH, LTD",
+          "dba": "<UNAVAIL>",
+          "address": "4801 w peterson ave",
+          "city": "CHICAGO",
+          "zip": "60646",
+          "ein": null,
+          "primary_npi": "1639658917",
+          "org_npi": "1639658917",
+          "entity_classification": "dso_national",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 21,
+          "year_established": 2006
+        }
+      ],
+      "rank": 50
+    },
+    {
+      "reach": 2,
+      "score": 4,
+      "ranking_reasons": [
+        "shared EIN across locations"
+      ],
+      "authorized_official": "PETER PULLARA",
+      "network_id": "ao:PULLARA_PETER",
+      "zips": [
+        "60416",
+        "60544"
+      ],
+      "n_new_locations": 2,
+      "linked_prior_work": null,
+      "locations": [
+        {
+          "location_id": "f32172ada670178a",
+          "name": "BROADWAY FAMILY DENTAL CENTER",
+          "dba": "<UNAVAIL>",
+          "address": "595 n broadway st",
+          "city": "COAL CITY",
+          "zip": "60416",
+          "ein": "271445093",
+          "primary_npi": "1922378900",
+          "org_npi": "1922378900",
+          "entity_classification": "solo_high_volume",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 1,
+          "year_established": null
+        },
+        {
+          "location_id": "67a9f4133ccaa70c",
+          "name": "PLAINFIELD FAMILY DENTAL CENTER",
+          "dba": null,
+          "address": "24204 w lockport st",
+          "city": "PLAINFIELD",
+          "zip": "60544",
+          "ein": "271445093",
+          "primary_npi": "1861607798",
+          "org_npi": "1861607798",
+          "entity_classification": "small_group",
+          "affiliated_dso": null,
+          "parent_company": null,
+          "provider_count": 0,
+          "year_established": null
+        }
+      ],
+      "rank": 51
+    }
+  ]
+}

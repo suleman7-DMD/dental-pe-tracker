@@ -1,0 +1,1364 @@
+{
+ "_meta": {
+  "session": "fleet-b-backfill-2026-06-21",
+  "source_manifest": "consolidation_candidate_manifest_20260621.json",
+  "lanes": "locator_exact (22) + practice_intel (21) = 43; AO_network lane untouched (Main's)",
+  "rule": "transcribe/verify missing documentary URL or durable artifact per location; no inferred name_chain/AO rescue; uncertain -> needs_verification; candidate evidence only, NOT final truth; ZERO DB writes",
+  "counts": {
+   "total": 43,
+   "by_status": {
+    "classified": 11,
+    "needs_verification": 32
+   },
+   "by_tier": {
+    "institutional": 4,
+    "true_independent": 2,
+    "dentist_multi": 3,
+    "proposed:institutional": 3,
+    "proposed:true_independent": 3,
+    "proposed:branded_dso": 23,
+    "proposed:stealth_dso": 3,
+    "branded_dso": 2
+   }
+  },
+  "_qa_flags": [
+   {
+    "location_id": "047ce502ad2a0371",
+    "practice_name": "HEARTLAND INTERNATIONAL HEALTH CENTER",
+    "flag": "Same EIN as Tapestry 360 (merged FQHCs); 'Heartland' here = Heartland International Health Center nonprofit, NOT Heartland Dental DSO."
+   },
+   {
+    "location_id": "899d05f409fe0dd6",
+    "practice_name": "SMILE LEAGUE DENTAL",
+    "flag": "Verified dossier noted a recent owner-to-owner transition (no DSO involvement found) \u2014 verify no MSO."
+   },
+   {
+    "location_id": "2eccce6b14d310cd",
+    "practice_name": "ZIEBA DENTISTRY HIGHLAND PARK,LTD",
+    "flag": "Former DBA 'Webster Dental Care' per dossier \u2014 verify no residual Webster MSO structure."
+   },
+   {
+    "location_id": "d803fcfe4618e8a3",
+    "practice_name": "HEARTLAND INTERNATIONAL HEALTH CENTER",
+    "flag": "'Heartland' = Heartland International Health Center FQHC, NOT Heartland Dental."
+   },
+   {
+    "location_id": "e957561c107de91a",
+    "practice_name": "HEARTLAND HEALTH OUTREACH",
+    "flag": "BRAND-SUBSTRING TRAP \u2014 Heartland Alliance nonprofit, NOT Heartland Dental DSO."
+   },
+   {
+    "location_id": "499c18e0f7c7ad12",
+    "practice_name": "LILLIAN OBUCINA DDS PC",
+    "flag": "DB address '111 N Wabash' (Chicago Loop) vs ZIP 60202 (Evanston) mismatch \u2014 resolve before tiering."
+   },
+   {
+    "location_id": "d2e5c43e4975ddb4",
+    "practice_name": "MIDWEST DENTAL GROUP",
+    "flag": "MANIFEST MIS-BUCKET \u2014 manifest proposed_tier=institutional; this is a DSO brand, re-propose branded_dso."
+   },
+   {
+    "location_id": "2bf590b5092f1e8e",
+    "practice_name": "OCC JUDGE PC",
+    "flag": "MANIFEST MIS-BUCKET \u2014 manifest proposed_tier=institutional; this is Aspen DSO, re-propose branded_dso, pe_backed=true."
+   },
+   {
+    "location_id": "598cc9dae498795b",
+    "practice_name": "NORTHWESTERN DENTAL CENTER",
+    "flag": "MANIFEST MIS-BUCKET + SUBSTRING RISK \u2014 verify whether truly Western Dental/Sonrava or an independent/NU-affiliated practice mislabeled."
+   },
+   {
+    "location_id": "9068c4de3bbdb4b4",
+    "practice_name": "Warga Dental",
+    "flag": "Address discrepancy (DB 465 Chestnut St vs Winnetka Dental Arts) \u2014 verify exact location; PE sponsor Shore Capital is platform-level."
+   },
+   {
+    "location_id": "7b61d1c9b5e65057",
+    "practice_name": "GREENWOOD FAMILY DENTISTRY, P.C.",
+    "flag": "CROSS-STATE CONTAMINATION \u2014 batchelordental.com (Chicago) vs greenwoodfamilydental.com (Indiana); verify which entity owns the 60655 site."
+   },
+   {
+    "location_id": "5404b210ff43f176",
+    "practice_name": "Kang Dental",
+    "flag": "HQ CO-LOCATION AMBIGUITY \u2014 verify Kang Dental is a Dental Dreams office vs an unrelated tenant at the HQ building."
+   },
+   {
+    "location_id": "34235da38acd2bfd",
+    "practice_name": "Dentalworks",
+    "flag": "pe_backed via Sonrava Health (New Mountain Capital platform) \u2014 sponsor is platform-level."
+   },
+   {
+    "location_id": "5cd692a50e5c32b7",
+    "practice_name": "Schock Dental",
+    "flag": "DB practice_name 'Schock Dental' vs resolved 'Dentologie River North' \u2014 name discrepancy, verify Schock\u2192Dentologie acquisition/rebrand."
+   },
+   {
+    "location_id": "e669559ebe8a9d4a",
+    "practice_name": "FOREVER FAMILY DENTAL OF NEW LENOX",
+    "flag": "DCA is a DSO/management company; pe sponsor platform-level."
+   },
+   {
+    "location_id": "cbde3ee6f46acad7",
+    "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C",
+    "flag": "Already audited-promoted to dso_national=Heartland on 2026-06-19 (il_verified_locator_promotions_20260619.json); ownership_tier was reset to NULL so it re-appears in backfill. NB the '450 N Weber' Great Lakes Dental Partners hit is a direction false-match (this is 450 S Weber) \u2014 exclude."
+   }
+  ]
+ },
+ "classifications": [
+  {
+   "location_id": "a31ca3008c75ab1f",
+   "assigned_tier": "institutional",
+   "status": "classified",
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://tap360health.org/",
+    "https://www.charitynavigator.org/ein/363843377"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "reasoning": "Federally-funded community health center: tap360health.org + Charity Navigator EIN 36-3843377 confirm a nonprofit safety-net org, not a DSO.",
+   "proposed_tier": "institutional",
+   "disposition": "ready",
+   "pe_backed": false,
+   "owner_identity": "Tapestry 360 Health (FQHC)",
+   "network_id": null,
+   "signal": {
+    "type": "other",
+    "details": "institutional_match"
+   },
+   "exact_address_match": false,
+   "practice_name": "TAPESTRY 360 HEALTH",
+   "address": "900 w wilson ave",
+   "city": null,
+   "zip": "60640",
+   "lane": "practice_intel",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "047ce502ad2a0371",
+   "assigned_tier": "institutional",
+   "status": "classified",
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.guidestar.org/profile/36-3843377",
+    "https://npino.com/dental-clinic/1215258116-heartland-health-center---clark/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "reasoning": "Heartland International Health Center FQHC dental site at 4740 N Clark: GuideStar EIN 36-3843377 + npino dental-clinic listing \u2014 a community health center, not Heartland Dental.",
+   "proposed_tier": "institutional",
+   "disposition": "ready",
+   "pe_backed": false,
+   "owner_identity": "Heartland International Health Center (FQHC)",
+   "network_id": null,
+   "signal": {
+    "type": "other",
+    "details": "institutional_match"
+   },
+   "exact_address_match": false,
+   "practice_name": "HEARTLAND INTERNATIONAL HEALTH CENTER",
+   "address": "4740 n clark st",
+   "city": null,
+   "zip": "60640",
+   "lane": "practice_intel",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "dd7e21c547e01ae8",
+   "assigned_tier": "institutional",
+   "status": "classified",
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.northshore.org/dentistry",
+    "https://programs.adea.org/PASS/programs/evanston-hospital-general-practice-residency"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "reasoning": "Hospital-based dental center: northshore.org/dentistry + ADEA Evanston Hospital general-practice residency; parent_org_lbn=ENDEAVOR HEALTH \u2014 academic hospital, not a DSO.",
+   "proposed_tier": "institutional",
+   "disposition": "ready",
+   "pe_backed": false,
+   "owner_identity": "NorthShore/Endeavor Health (Evanston Hospital)",
+   "network_id": null,
+   "signal": {
+    "type": "other",
+    "details": "intel_dossier"
+   },
+   "exact_address_match": false,
+   "practice_name": "EVANSTON HOSPITAL DENTAL CENTER",
+   "address": "26650 ridge ave",
+   "city": null,
+   "zip": "60201",
+   "lane": "practice_intel",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "2ec73146fbeb2f8c",
+   "assigned_tier": "institutional",
+   "status": "classified",
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://powersandsons.com/2025/01/21/advocate-illinois-masonic-medical-center-dental-clinic-now-open/",
+    "https://doctors.advocatehealth.com/i-james-d-benz-chicago-dentistry-general"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "reasoning": "Advocate Illinois Masonic Medical Center dental clinic at 913 W Wellington (powersandsons.com opening announcement + doctors.advocatehealth.com provider page) \u2014 hospital system clinic.",
+   "proposed_tier": "institutional",
+   "disposition": "ready",
+   "pe_backed": false,
+   "owner_identity": "Advocate Health (Illinois Masonic dental clinic)",
+   "network_id": null,
+   "signal": {
+    "type": "other",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "Benz Dental",
+   "address": "913 w wellington",
+   "city": null,
+   "zip": "60657",
+   "lane": "practice_intel",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "bdc26d3a17c9da40",
+   "assigned_tier": "true_independent",
+   "status": "classified",
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.chicagodentaltouch.com/",
+    "https://www.healthgrades.com/dentist/dr-sylvia-guerrero-x5ltk"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "reasoning": "Single owner-dentist Dr. Sylvia Guerrero at one location (Dental Touch, chicagodentaltouch.com); verified dossier found no DSO/MSO/parent \u2014 positively earned independent.",
+   "proposed_tier": "true_independent",
+   "disposition": "ready",
+   "pe_backed": false,
+   "owner_identity": "Dr. Sylvia Guerrero",
+   "network_id": null,
+   "signal": {
+    "type": "other",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "Guerrero Dental",
+   "address": "2618 w peterson",
+   "city": null,
+   "zip": "60659",
+   "lane": "practice_intel",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "899d05f409fe0dd6",
+   "assigned_tier": "true_independent",
+   "status": "classified",
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://smileleaguedental.com",
+    "https://www.bbb.org/us/il/joliet/profile/dentist/smile-league-dental-0654-90025826"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "reasoning": "Owner-operated single-location practice (smileleaguedental.com, Dr. Oluyemi) with its own BBB profile and no DSO/MSO signal.",
+   "proposed_tier": "true_independent",
+   "disposition": "ready",
+   "pe_backed": false,
+   "owner_identity": "Dr. Morolayo Oluyemi",
+   "network_id": null,
+   "signal": {
+    "type": "other",
+    "details": "intel_dossier"
+   },
+   "exact_address_match": false,
+   "practice_name": "SMILE LEAGUE DENTAL",
+   "address": "3587 hennepin dr",
+   "city": null,
+   "zip": "60431",
+   "lane": "practice_intel",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "2eccce6b14d310cd",
+   "assigned_tier": "dentist_multi",
+   "status": "classified",
+   "evidence_basis": "intel_dossier",
+   "evidence_urls": [
+    "https://www.nsdentist.com",
+    "https://www.yelp.com/biz/north-suburban-dental-of-highland-park-highland-park"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "reasoning": "Dentist-owned North Suburban Dental operating 3 IL locations (nsdentist.com); verified dossier shows owner-operated with NO MSO/management company \u2014 dentist_multi, not DSO.",
+   "proposed_tier": "dentist_multi",
+   "disposition": "ready",
+   "pe_backed": false,
+   "owner_identity": "Dr. Zieba (North Suburban Dental)",
+   "network_id": "brand:north_suburban_dental",
+   "signal": {
+    "type": "practice_intel",
+    "details": "intel_dossier"
+   },
+   "exact_address_match": false,
+   "practice_name": "ZIEBA DENTISTRY HIGHLAND PARK,LTD",
+   "address": "2685 waukegan ave",
+   "city": null,
+   "zip": "60035",
+   "lane": "practice_intel",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "0476ac933c798a82",
+   "assigned_tier": "dentist_multi",
+   "status": "classified",
+   "evidence_basis": "intel_dossier",
+   "evidence_urls": [
+    "https://forever-dental.com/sell-your-chicago-area-dental-practice/",
+    "https://dentistschicago.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "reasoning": "Dentist-owned Forever Dental multi-location group (forever-dental.com); Dr. Dhake's own 'sell your Chicago-area practice' page documents owner-driven acquisition, no MSO/PE platform.",
+   "proposed_tier": "dentist_multi",
+   "disposition": "ready",
+   "pe_backed": false,
+   "owner_identity": "Dr. Reshma Dhake (Forever Dental)",
+   "network_id": "brand:forever_dental",
+   "signal": {
+    "type": "practice_intel",
+    "details": "intel_dossier"
+   },
+   "exact_address_match": false,
+   "practice_name": "RESHMA DHAKE DDS LTD",
+   "address": "2550 oak park ave",
+   "city": null,
+   "zip": "60402",
+   "lane": "practice_intel",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "ba379b6aa4cf3678",
+   "assigned_tier": "dentist_multi",
+   "status": "classified",
+   "evidence_basis": "intel_dossier",
+   "evidence_urls": [
+    "https://www.forever-dental.com",
+    "https://forever-dental.com/sell-your-chicago-area-dental-practice/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "reasoning": "Second Forever Dental location (5738 W Belmont) under the same dentist-owner Dr. Dhake (forever-dental.com) \u2014 dentist-owned multi-location, no MSO.",
+   "proposed_tier": "dentist_multi",
+   "disposition": "ready",
+   "pe_backed": false,
+   "owner_identity": "Dr. Reshma Dhake (Forever Dental)",
+   "network_id": "brand:forever_dental",
+   "signal": {
+    "type": "practice_intel",
+    "details": "intel_dossier"
+   },
+   "exact_address_match": false,
+   "practice_name": "RESHMA DHAKE DDS LTD",
+   "address": "5738 w belmont ave",
+   "city": null,
+   "zip": "60634",
+   "lane": "practice_intel",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "144d631a4c4dce2b",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "reasoning": "Name 'Infant Welfare Society of Chicago' strongly implies a nonprofit safety-net clinic, but no on-disk dossier/URL confirms institutional status \u2014 needs web verification.",
+   "proposed_tier": "institutional",
+   "disposition": "needs_verification",
+   "pe_backed": false,
+   "owner_identity": "Infant Welfare Society of Chicago",
+   "network_id": null,
+   "signal": {
+    "type": "other",
+    "details": "institutional_match"
+   },
+   "exact_address_match": false,
+   "practice_name": "INFANT WELFARE SOCIETY OF CHICAGO",
+   "address": "3600 w fullerton ave",
+   "city": null,
+   "zip": "60647",
+   "lane": "practice_intel",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "d803fcfe4618e8a3",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "reasoning": "Heartland International Health Center at 845 W Wilson \u2014 same FQHC org as the verified 4740 N Clark site (EIN 36-3843377), but this address has no on-disk dossier URL; needs its own institutional source.",
+   "proposed_tier": "institutional",
+   "disposition": "needs_verification",
+   "pe_backed": false,
+   "owner_identity": "Heartland International Health Center (FQHC)",
+   "network_id": null,
+   "signal": {
+    "type": "other",
+    "details": "institutional_match"
+   },
+   "exact_address_match": false,
+   "practice_name": "HEARTLAND INTERNATIONAL HEALTH CENTER",
+   "address": "845 w wilson ave",
+   "city": null,
+   "zip": "60640",
+   "lane": "practice_intel",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "e957561c107de91a",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "reasoning": "'Heartland Health Outreach' is the health arm of Heartland Alliance (nonprofit safety-net), not Heartland Dental; no on-disk URL \u2014 needs an institutional source.",
+   "proposed_tier": "institutional",
+   "disposition": "needs_verification",
+   "pe_backed": false,
+   "owner_identity": "Heartland Health Outreach (Heartland Alliance)",
+   "network_id": null,
+   "signal": {
+    "type": "other",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "HEARTLAND HEALTH OUTREACH",
+   "address": "641 w 63rd st",
+   "city": null,
+   "zip": "60621",
+   "lane": "practice_intel",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "b7499322a2416c5d",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "intel_dossier",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-paulina-jova-3ggg7"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "reasoning": "Named solo owner Dr. Paulina Jova (Crown Dental Center) with no DSO signal, but dossier is partial \u2014 true_independent lead pending a positive owner-confirmation source.",
+   "proposed_tier": "true_independent",
+   "disposition": "needs_verification",
+   "pe_backed": false,
+   "owner_identity": "Dr. Paulina Jova",
+   "network_id": null,
+   "signal": {
+    "type": "practice_intel",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "Jova Dental",
+   "address": "5154 n clark st",
+   "city": null,
+   "zip": "60640",
+   "lane": "practice_intel",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "499c18e0f7c7ad12",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "intel_dossier",
+   "evidence_urls": [
+    "https://www.bbb.org/us/il/chicago/profile/dentist/lillian-obucina-dds-pc-0654-88501480"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "reasoning": "Solo Dr. Lillian Obucina DDS PC, no DSO signal, but an address/ZIP anomaly blocks classification.",
+   "proposed_tier": "true_independent",
+   "disposition": "needs_verification",
+   "pe_backed": false,
+   "owner_identity": "Dr. Lillian Obucina",
+   "network_id": null,
+   "signal": {
+    "type": "practice_intel",
+    "details": "intel_dossier"
+   },
+   "exact_address_match": false,
+   "practice_name": "LILLIAN OBUCINA DDS PC",
+   "address": "111 n wabash",
+   "city": null,
+   "zip": "60202",
+   "lane": "practice_intel",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "0a318ab399f418de",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "intel_dossier",
+   "evidence_urls": [
+    "https://findadentist.ada.org/il/cook/chicago/general-practice/dr-rosa-d-bellido-griffin-4103834",
+    "https://drrosabgdental.weebly.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "reasoning": "Named solo owner Dr. Rosa Bellido-Griffin with her own site (weebly) and ADA listing, no DSO \u2014 strong true_independent lead but dossier is partial; verify owner-occupancy.",
+   "proposed_tier": "true_independent",
+   "disposition": "needs_verification",
+   "pe_backed": false,
+   "owner_identity": "Dr. Rosa Bellido-Griffin",
+   "network_id": null,
+   "signal": {
+    "type": "practice_intel",
+    "details": "intel_dossier"
+   },
+   "exact_address_match": false,
+   "practice_name": "Bellido-Griffin Dental",
+   "address": "4446 n western ave",
+   "city": null,
+   "zip": "60625",
+   "lane": "practice_intel",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "d2e5c43e4975ddb4",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "structural",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "practice_locations.affiliated_dso='Midwest Dental'; entity_classification=dso_national (2720 W 15th St, 60608)"
+   ],
+   "confidence": "medium",
+   "reasoning": "affiliated_dso='Midwest Dental' + ec=dso_national point to the Midwest Dental DSO brand, but affiliated_dso alone isn't final \u2014 needs a Midwest Dental locator URL at this exact address.",
+   "proposed_tier": "branded_dso",
+   "disposition": "needs_verification",
+   "pe_backed": false,
+   "owner_identity": null,
+   "network_id": "brand:midwest_dental",
+   "signal": {
+    "type": "affiliated_dso",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "MIDWEST DENTAL GROUP",
+   "address": "2720 w 15th st",
+   "city": null,
+   "zip": "60608",
+   "lane": "practice_intel",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "2bf590b5092f1e8e",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "structural",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "practice_locations.affiliated_dso='Aspen Dental'; entity_classification=dso_national (1040 W Randolph, 60607); prior audit: parent ADMI Corp / Aspen Dental Mgmt, PE Leonard Green"
+   ],
+   "confidence": "medium",
+   "reasoning": "affiliated_dso='Aspen Dental' + ec=dso_national indicate an Aspen-managed friendly-PC (ADMI Corp, Leonard Green), but needs an Aspen locator URL at exact address to classify.",
+   "proposed_tier": "branded_dso",
+   "disposition": "needs_verification",
+   "pe_backed": true,
+   "owner_identity": null,
+   "network_id": "brand:aspen_dental",
+   "signal": {
+    "type": "affiliated_dso",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "OCC JUDGE PC",
+   "address": "1040 w randolph st",
+   "city": null,
+   "zip": "60607",
+   "lane": "practice_intel",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "598cc9dae498795b",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "structural",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "practice_locations.affiliated_dso='Western Dental' (POSSIBLE 'Northwestern'-contains-'western' substring false-match); website northwesterndental.com; 201 E Huron, Streeterville 60611"
+   ],
+   "confidence": "low",
+   "reasoning": "affiliated_dso='Western Dental' may be a substring false-positive on 'Northwestern Dental Center' (own site northwesterndental.com, beside Northwestern Memorial) \u2014 cannot tier until the Western Dental tie is confirmed or rejected.",
+   "proposed_tier": "branded_dso",
+   "disposition": "needs_verification",
+   "pe_backed": false,
+   "owner_identity": null,
+   "network_id": null,
+   "signal": {
+    "type": "affiliated_dso",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "NORTHWESTERN DENTAL CENTER",
+   "address": "201 e huron st",
+   "city": null,
+   "zip": "60611",
+   "lane": "practice_intel",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "9068c4de3bbdb4b4",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "intel_dossier",
+   "evidence_urls": [
+    "https://www.greatlakesdentalpartners.com/news/2019/10/30/chicagoland-smile-group-continues-growth-with-winnetka-dental-arts-partnership/",
+    "https://www.winnetkadentalarts.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "reasoning": "Verified dossier ties Dr. Warga / Winnetka Dental Arts to Great Lakes Dental Partners (Chicagoland Smile Group, Shore Capital) via GLDP's own partnership press release \u2014 strong stealth_dso lead, but a DB address discrepancy (465 Chestnut St) needs reconciliation before classifying.",
+   "proposed_tier": "stealth_dso",
+   "disposition": "needs_verification",
+   "pe_backed": true,
+   "owner_identity": "Dr. George Warga (Winnetka Dental Arts)",
+   "network_id": "brand:great_lakes_dental_partners",
+   "signal": {
+    "type": "practice_intel",
+    "details": "intel_dossier"
+   },
+   "exact_address_match": false,
+   "practice_name": "Warga Dental",
+   "address": "465 chestnut st",
+   "city": null,
+   "zip": "60093",
+   "lane": "practice_intel",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "7b61d1c9b5e65057",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "structural",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "practice_locations.website=batchelordental.com; greenwoodfamilydental.com is Indiana-focused (cross-state contamination risk); Heartland/Orahh Care lead in prose unconfirmed"
+   ],
+   "confidence": "low",
+   "reasoning": "Greenwood Family Dentistry (Dr. Batchelor, 3500 W 111th) shows a possible Heartland/Orahh Care lead in prose, but greenwoodfamilydental.com is Indiana-focused \u2014 IN/Chicago practice confusion blocks any tier.",
+   "proposed_tier": "stealth_dso",
+   "disposition": "needs_verification",
+   "pe_backed": false,
+   "owner_identity": "Dr. Garfield Batchelor",
+   "network_id": null,
+   "signal": {
+    "type": "affiliated_dso",
+    "details": "intel_dossier"
+   },
+   "exact_address_match": false,
+   "practice_name": "GREENWOOD FAMILY DENTISTRY, P.C.",
+   "address": "3500 w 111th st",
+   "city": null,
+   "zip": "60655",
+   "lane": "practice_intel",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "5404b210ff43f176",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "structural",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "practice_intel: 350 N Clark St Ste 600 = Dental Dreams LLC corporate HQ (zoominfo.com/c/dental-dreams-llc + dentaldreams.com)"
+   ],
+   "confidence": "low",
+   "reasoning": "Kang Dental shares 350 N Clark Ste 600 with Dental Dreams LLC corporate HQ, but HQ co-location is not proof this NPI is a Dental Dreams clinic \u2014 needs confirmation the practice operates under Dental Dreams.",
+   "proposed_tier": "branded_dso",
+   "disposition": "needs_verification",
+   "pe_backed": false,
+   "owner_identity": "Kang Dental",
+   "network_id": "brand:dental_dreams",
+   "signal": {
+    "type": "affiliated_dso",
+    "details": "intel_dossier"
+   },
+   "exact_address_match": false,
+   "practice_name": "Kang Dental",
+   "address": "350 n clark st/",
+   "city": null,
+   "zip": "60654",
+   "lane": "practice_intel",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "34235da38acd2bfd",
+   "assigned_tier": "branded_dso",
+   "status": "classified",
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://orlandsquare.dentalworks.com"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "reasoning": "DentalWorks Orland Square brand location (orlandsquare.dentalworks.com) with practice_locations.parent_company=SONRAVA HEALTH + affiliated_dso=Western Dental \u2014 established DSO/platform brand.",
+   "proposed_tier": "branded_dso",
+   "disposition": "ready",
+   "pe_backed": true,
+   "owner_identity": "DentalWorks (Sonrava Health / Western Dental)",
+   "network_id": "brand:dentalworks_sonrava",
+   "signal": {
+    "type": "locator",
+    "details": "web_verified"
+   },
+   "exact_address_match": true,
+   "practice_name": "Dentalworks",
+   "address": "2 orland sq dr",
+   "city": null,
+   "zip": "60462",
+   "lane": "locator_exact",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "5cd692a50e5c32b7",
+   "assigned_tier": "branded_dso",
+   "status": "classified",
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://dentologie.com/our-locations/chicago/river-north",
+    "https://www.chicagobusiness.com/health-care/dentologie-dentist-office-expands-chicago-seattle"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "reasoning": "NPI resolves to Dentologie River North per official locator dentologie.com/our-locations/chicago/river-north; Crain's documents the DSO/multi-location model and CB Insights/PitchBook show institutional funding \u2014 branded_dso platform.",
+   "proposed_tier": "branded_dso",
+   "disposition": "ready",
+   "pe_backed": true,
+   "owner_identity": "Dentologie (River North)",
+   "network_id": "brand:dentologie",
+   "signal": {
+    "type": "locator",
+    "details": "web_verified"
+   },
+   "exact_address_match": true,
+   "practice_name": "Schock Dental",
+   "address": "444 n orleans st",
+   "city": null,
+   "zip": "60654",
+   "lane": "locator_exact",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "e669559ebe8a9d4a",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "structural",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "practice_locations.affiliated_dso='Dental Care Alliance (DCA)'; entity_classification=dso_regional; local brand 'Forever Family Dental of New Lenox'/familydentistnewlenox.com (202 Vancina Ln, 60451)"
+   ],
+   "confidence": "medium",
+   "reasoning": "'Forever Family Dental of New Lenox' (familydentistnewlenox.com) carries affiliated_dso='Dental Care Alliance (DCA)' + ec=dso_regional \u2014 a DCA-managed friendly-practice lead, but affiliated_dso alone isn't final; needs a DCA source URL.",
+   "proposed_tier": "stealth_dso",
+   "disposition": "needs_verification",
+   "pe_backed": true,
+   "owner_identity": null,
+   "network_id": "brand:dental_care_alliance",
+   "signal": {
+    "type": "affiliated_dso",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "FOREVER FAMILY DENTAL OF NEW LENOX",
+   "address": "202 vancina ln",
+   "city": null,
+   "zip": "60451",
+   "lane": "locator_exact",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "d4d827860b4132cb",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "structural",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "NPPES org legal name 'DENTAL PROFESSIONALS OF ILLINOIS PC' web-verified as Heartland Dental friendly-PC (sponsor KKR) in il_cluster_ownership_verified_20260530.json; practice_locations.affiliated_dso='Heartland Dental'; dso_locations has exact street+ZIP match to Heartland Dental (source_url il_seed:nppes_cluster); practice website Bloomingdaledental.Com"
+   ],
+   "confidence": "medium",
+   "reasoning": "Heartland Dental friendly-PC ('Dental Professionals of Illinois PC') at 290 springfield dr, 60108; legal-name->Heartland mapping is web-verified and dso_locations matches this street+ZIP, but no per-location Heartland official locator URL is on disk \u2014 strengthened branded_dso lead held as needs_verification per the no-name-chain-rescue rule.",
+   "proposed_tier": "branded_dso",
+   "disposition": "needs_verification",
+   "pe_backed": true,
+   "owner_identity": null,
+   "network_id": "brand:heartland_dental",
+   "signal": {
+    "type": "affiliated_dso",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+   "address": "290 springfield dr",
+   "city": null,
+   "zip": "60108",
+   "lane": "locator_exact",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "4afceaeeaa164e94",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "structural",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "NPPES org legal name 'DENTAL PROFESSIONALS OF ILLINOIS PC' web-verified as Heartland Dental friendly-PC (sponsor KKR) in il_cluster_ownership_verified_20260530.json; practice_locations.affiliated_dso='Heartland Dental'; dso_locations has exact street+ZIP match to Heartland Dental (source_url il_seed:nppes_cluster); practice website Briarwoodparkdentalcare.Com"
+   ],
+   "confidence": "medium",
+   "reasoning": "Heartland Dental friendly-PC ('Dental Professionals of Illinois PC') at 95 s waukegan rd, 60015; legal-name->Heartland mapping is web-verified and dso_locations matches this street+ZIP, but no per-location Heartland official locator URL is on disk \u2014 strengthened branded_dso lead held as needs_verification per the no-name-chain-rescue rule.",
+   "proposed_tier": "branded_dso",
+   "disposition": "needs_verification",
+   "pe_backed": true,
+   "owner_identity": null,
+   "network_id": "brand:heartland_dental",
+   "signal": {
+    "type": "affiliated_dso",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+   "address": "95 s waukegan rd",
+   "city": null,
+   "zip": "60015",
+   "lane": "locator_exact",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "bdc1c2d27954f752",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "structural",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "NPPES org legal name 'DENTAL PROFESSIONALS OF ILLINOIS PC' web-verified as Heartland Dental friendly-PC (sponsor KKR) in il_cluster_ownership_verified_20260530.json; practice_locations.affiliated_dso='Heartland Dental'; dso_locations has exact street+ZIP match to Heartland Dental (source_url il_seed:nppes_cluster); practice website Junctiondentalcareil.Com"
+   ],
+   "confidence": "medium",
+   "reasoning": "Heartland Dental friendly-PC ('Dental Professionals of Illinois PC') at 1000 n neltnor blvd, 60185; legal-name->Heartland mapping is web-verified and dso_locations matches this street+ZIP, but no per-location Heartland official locator URL is on disk \u2014 strengthened branded_dso lead held as needs_verification per the no-name-chain-rescue rule.",
+   "proposed_tier": "branded_dso",
+   "disposition": "needs_verification",
+   "pe_backed": true,
+   "owner_identity": null,
+   "network_id": "brand:heartland_dental",
+   "signal": {
+    "type": "affiliated_dso",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+   "address": "1000 n neltnor blvd",
+   "city": null,
+   "zip": "60185",
+   "lane": "locator_exact",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "bf7a26c4684ee32a",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "structural",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "NPPES org legal name 'DENTAL PROFESSIONALS OF ILLINOIS PC' web-verified as Heartland Dental friendly-PC (sponsor KKR) in il_cluster_ownership_verified_20260530.json; practice_locations.affiliated_dso='Heartland Dental'; dso_locations has exact street+ZIP match to Heartland Dental (source_url il_seed:nppes_cluster); practice website Advanceddentistryschaumburg.Com"
+   ],
+   "confidence": "medium",
+   "reasoning": "Heartland Dental friendly-PC ('Dental Professionals of Illinois PC') at 140 s roselle rd, 60193; legal-name->Heartland mapping is web-verified and dso_locations matches this street+ZIP, but no per-location Heartland official locator URL is on disk \u2014 strengthened branded_dso lead held as needs_verification per the no-name-chain-rescue rule.",
+   "proposed_tier": "branded_dso",
+   "disposition": "needs_verification",
+   "pe_backed": true,
+   "owner_identity": null,
+   "network_id": "brand:heartland_dental",
+   "signal": {
+    "type": "affiliated_dso",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+   "address": "140 s roselle rd",
+   "city": null,
+   "zip": "60193",
+   "lane": "locator_exact",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "46c4e7116d0046a8",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "structural",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "NPPES org legal name 'DENTAL PROFESSIONALS OF ILLINOIS PC' web-verified as Heartland Dental friendly-PC (sponsor KKR) in il_cluster_ownership_verified_20260530.json; practice_locations.affiliated_dso='Heartland Dental'; dso_locations has exact street+ZIP match to Heartland Dental (source_url il_seed:nppes_cluster); practice website Docdomina.Com"
+   ],
+   "confidence": "medium",
+   "reasoning": "Heartland Dental friendly-PC ('Dental Professionals of Illinois PC') at 590 bankview dr, 60423; legal-name->Heartland mapping is web-verified and dso_locations matches this street+ZIP, but no per-location Heartland official locator URL is on disk \u2014 strengthened branded_dso lead held as needs_verification per the no-name-chain-rescue rule.",
+   "proposed_tier": "branded_dso",
+   "disposition": "needs_verification",
+   "pe_backed": true,
+   "owner_identity": null,
+   "network_id": "brand:heartland_dental",
+   "signal": {
+    "type": "affiliated_dso",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+   "address": "590 bankview dr",
+   "city": null,
+   "zip": "60423",
+   "lane": "locator_exact",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "a0b36b77759aefe3",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "structural",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "NPPES org legal name 'DENTAL PROFESSIONALS OF ILLINOIS PC' web-verified as Heartland Dental friendly-PC (sponsor KKR) in il_cluster_ownership_verified_20260530.json; practice_locations.affiliated_dso='Heartland Dental'; dso_locations has exact street+ZIP match to Heartland Dental (source_url il_seed:nppes_cluster); practice website Innovativeorthocenters.Com"
+   ],
+   "confidence": "medium",
+   "reasoning": "Heartland Dental friendly-PC ('Dental Professionals of Illinois PC') at 1526 il route 59, 60431; legal-name->Heartland mapping is web-verified and dso_locations matches this street+ZIP, but no per-location Heartland official locator URL is on disk \u2014 strengthened branded_dso lead held as needs_verification per the no-name-chain-rescue rule.",
+   "proposed_tier": "branded_dso",
+   "disposition": "needs_verification",
+   "pe_backed": true,
+   "owner_identity": null,
+   "network_id": "brand:heartland_dental",
+   "signal": {
+    "type": "affiliated_dso",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C",
+   "address": "1526 il route 59",
+   "city": null,
+   "zip": "60431",
+   "lane": "locator_exact",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "f2bf548446e774e6",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "structural",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "NPPES org legal name 'DENTAL PROFESSIONALS OF ILLINOIS PC' web-verified as Heartland Dental friendly-PC (sponsor KKR) in il_cluster_ownership_verified_20260530.json; practice_locations.affiliated_dso='Heartland Dental'; dso_locations has exact street+ZIP match to Heartland Dental (source_url il_seed:nppes_cluster)"
+   ],
+   "confidence": "medium",
+   "reasoning": "Heartland Dental friendly-PC ('Dental Professionals of Illinois PC') at 692 essington rd, 60435; legal-name->Heartland mapping is web-verified and dso_locations matches this street+ZIP, but no per-location Heartland official locator URL is on disk \u2014 strengthened branded_dso lead held as needs_verification per the no-name-chain-rescue rule.",
+   "proposed_tier": "branded_dso",
+   "disposition": "needs_verification",
+   "pe_backed": true,
+   "owner_identity": null,
+   "network_id": "brand:heartland_dental",
+   "signal": {
+    "type": "affiliated_dso",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+   "address": "692 essington rd",
+   "city": null,
+   "zip": "60435",
+   "lane": "locator_exact",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "629e6c24236f7dc1",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "structural",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "NPPES org legal name 'DENTAL PROFESSIONALS OF ILLINOIS PC' web-verified as Heartland Dental friendly-PC (sponsor KKR) in il_cluster_ownership_verified_20260530.json; practice_locations.affiliated_dso='Heartland Dental'; dso_locations has exact street+ZIP match to Heartland Dental (source_url il_seed:nppes_cluster); practice website Porterdentalcenter.Com"
+   ],
+   "confidence": "medium",
+   "reasoning": "Heartland Dental friendly-PC ('Dental Professionals of Illinois PC') at 16620 w 159th st, 60441; legal-name->Heartland mapping is web-verified and dso_locations matches this street+ZIP, but no per-location Heartland official locator URL is on disk \u2014 strengthened branded_dso lead held as needs_verification per the no-name-chain-rescue rule.",
+   "proposed_tier": "branded_dso",
+   "disposition": "needs_verification",
+   "pe_backed": true,
+   "owner_identity": null,
+   "network_id": "brand:heartland_dental",
+   "signal": {
+    "type": "affiliated_dso",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, PC",
+   "address": "16620 w 159th st",
+   "city": null,
+   "zip": "60441",
+   "lane": "locator_exact",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "cbde3ee6f46acad7",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "structural",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "NPPES org legal name 'DENTAL PROFESSIONALS OF ILLINOIS PC' web-verified as Heartland Dental friendly-PC (sponsor KKR) in il_cluster_ownership_verified_20260530.json; practice_locations.affiliated_dso='Heartland Dental'; dso_locations has exact street+ZIP match to Heartland Dental (source_url il_seed:nppes_cluster)"
+   ],
+   "confidence": "medium",
+   "reasoning": "Heartland Dental friendly-PC ('Dental Professionals of Illinois PC') at 450 s weber rd, 60446; legal-name->Heartland mapping is web-verified and dso_locations matches this street+ZIP, but no per-location Heartland official locator URL is on disk \u2014 strengthened branded_dso lead held as needs_verification per the no-name-chain-rescue rule.",
+   "proposed_tier": "branded_dso",
+   "disposition": "needs_verification",
+   "pe_backed": true,
+   "owner_identity": null,
+   "network_id": "brand:heartland_dental",
+   "signal": {
+    "type": "affiliated_dso",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C",
+   "address": "450 s weber rd",
+   "city": null,
+   "zip": "60446",
+   "lane": "locator_exact",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "093fbea9e8c840df",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "structural",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "NPPES org legal name 'DENTAL PROFESSIONALS OF ILLINOIS PC' web-verified as Heartland Dental friendly-PC (sponsor KKR) in il_cluster_ownership_verified_20260530.json; practice_locations.affiliated_dso='Heartland Dental'; dso_locations has exact street+ZIP match to Heartland Dental (source_url il_seed:nppes_cluster); practice website Drjarvie.Com"
+   ],
+   "confidence": "medium",
+   "reasoning": "Heartland Dental friendly-PC ('Dental Professionals of Illinois PC') at 9990 w 190th st, 60448; legal-name->Heartland mapping is web-verified and dso_locations matches this street+ZIP, but no per-location Heartland official locator URL is on disk \u2014 strengthened branded_dso lead held as needs_verification per the no-name-chain-rescue rule.",
+   "proposed_tier": "branded_dso",
+   "disposition": "needs_verification",
+   "pe_backed": true,
+   "owner_identity": null,
+   "network_id": "brand:heartland_dental",
+   "signal": {
+    "type": "affiliated_dso",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+   "address": "9990 w 190th st",
+   "city": null,
+   "zip": "60448",
+   "lane": "locator_exact",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "6dba925c21c398ce",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "structural",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "NPPES org legal name 'DENTAL PROFESSIONALS OF ILLINOIS PC' web-verified as Heartland Dental friendly-PC (sponsor KKR) in il_cluster_ownership_verified_20260530.json; practice_locations.affiliated_dso='Heartland Dental'; dso_locations has exact street+ZIP match to Heartland Dental (source_url il_seed:nppes_cluster); practice website Greatbraces.Com"
+   ],
+   "confidence": "medium",
+   "reasoning": "Heartland Dental friendly-PC ('Dental Professionals of Illinois PC') at 1010 w us route 6, 60450; legal-name->Heartland mapping is web-verified and dso_locations matches this street+ZIP, but no per-location Heartland official locator URL is on disk \u2014 strengthened branded_dso lead held as needs_verification per the no-name-chain-rescue rule.",
+   "proposed_tier": "branded_dso",
+   "disposition": "needs_verification",
+   "pe_backed": true,
+   "owner_identity": null,
+   "network_id": "brand:heartland_dental",
+   "signal": {
+    "type": "affiliated_dso",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+   "address": "1010 w us route 6",
+   "city": null,
+   "zip": "60450",
+   "lane": "locator_exact",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "fff9fbbb819f006a",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "structural",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "NPPES org legal name 'DENTAL PROFESSIONALS OF ILLINOIS PC' web-verified as Heartland Dental friendly-PC (sponsor KKR) in il_cluster_ownership_verified_20260530.json; practice_locations.affiliated_dso='Heartland Dental'; dso_locations has exact street+ZIP match to Heartland Dental (source_url il_seed:nppes_cluster); practice website Hickorycreekfamilydentistry.Com"
+   ],
+   "confidence": "medium",
+   "reasoning": "Heartland Dental friendly-PC ('Dental Professionals of Illinois PC') at 561 e lincoln hwy, 60451; legal-name->Heartland mapping is web-verified and dso_locations matches this street+ZIP, but no per-location Heartland official locator URL is on disk \u2014 strengthened branded_dso lead held as needs_verification per the no-name-chain-rescue rule.",
+   "proposed_tier": "branded_dso",
+   "disposition": "needs_verification",
+   "pe_backed": true,
+   "owner_identity": null,
+   "network_id": "brand:heartland_dental",
+   "signal": {
+    "type": "affiliated_dso",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C",
+   "address": "561 e lincoln hwy",
+   "city": null,
+   "zip": "60451",
+   "lane": "locator_exact",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "90aa8ae6b599ba7d",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "structural",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "NPPES org legal name 'DENTAL PROFESSIONALS OF ILLINOIS PC' web-verified as Heartland Dental friendly-PC (sponsor KKR) in il_cluster_ownership_verified_20260530.json; practice_locations.affiliated_dso='Heartland Dental'; dso_locations has exact street+ZIP match to Heartland Dental (source_url il_seed:nppes_cluster); practice website Familydentalorlandpark.Com"
+   ],
+   "confidence": "medium",
+   "reasoning": "Heartland Dental friendly-PC ('Dental Professionals of Illinois PC') at 11041 w 179th st, 60467; legal-name->Heartland mapping is web-verified and dso_locations matches this street+ZIP, but no per-location Heartland official locator URL is on disk \u2014 strengthened branded_dso lead held as needs_verification per the no-name-chain-rescue rule.",
+   "proposed_tier": "branded_dso",
+   "disposition": "needs_verification",
+   "pe_backed": true,
+   "owner_identity": null,
+   "network_id": "brand:heartland_dental",
+   "signal": {
+    "type": "affiliated_dso",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+   "address": "11041 w 179th st",
+   "city": null,
+   "zip": "60467",
+   "lane": "locator_exact",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "1237e7c94d53bab9",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "structural",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "NPPES org legal name 'DENTAL PROFESSIONALS OF ILLINOIS PC' web-verified as Heartland Dental friendly-PC (sponsor KKR) in il_cluster_ownership_verified_20260530.json; practice_locations.affiliated_dso='Heartland Dental'; dso_locations has exact street+ZIP match to Heartland Dental (source_url il_seed:nppes_cluster); practice website Countrysidedental.Com"
+   ],
+   "confidence": "medium",
+   "reasoning": "Heartland Dental friendly-PC ('Dental Professionals of Illinois PC') at 6335 joliet rd, 60525; legal-name->Heartland mapping is web-verified and dso_locations matches this street+ZIP, but no per-location Heartland official locator URL is on disk \u2014 strengthened branded_dso lead held as needs_verification per the no-name-chain-rescue rule.",
+   "proposed_tier": "branded_dso",
+   "disposition": "needs_verification",
+   "pe_backed": true,
+   "owner_identity": null,
+   "network_id": "brand:heartland_dental",
+   "signal": {
+    "type": "affiliated_dso",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C",
+   "address": "6335 joliet rd",
+   "city": null,
+   "zip": "60525",
+   "lane": "locator_exact",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "589308e9a6bcacf7",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "structural",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "NPPES org legal name 'DENTAL PROFESSIONALS OF ILLINOIS PC' web-verified as Heartland Dental friendly-PC (sponsor KKR) in il_cluster_ownership_verified_20260530.json; practice_locations.affiliated_dso='Heartland Dental'; dso_locations has exact street+ZIP match to Heartland Dental (source_url il_seed:nppes_cluster); practice website Northauroralifetimedentistry.Com"
+   ],
+   "confidence": "medium",
+   "reasoning": "Heartland Dental friendly-PC ('Dental Professionals of Illinois PC') at 100 hansen blvd, 60542; legal-name->Heartland mapping is web-verified and dso_locations matches this street+ZIP, but no per-location Heartland official locator URL is on disk \u2014 strengthened branded_dso lead held as needs_verification per the no-name-chain-rescue rule.",
+   "proposed_tier": "branded_dso",
+   "disposition": "needs_verification",
+   "pe_backed": true,
+   "owner_identity": null,
+   "network_id": "brand:heartland_dental",
+   "signal": {
+    "type": "affiliated_dso",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+   "address": "100 hansen blvd",
+   "city": null,
+   "zip": "60542",
+   "lane": "locator_exact",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "be7ff941b871d3db",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "structural",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "NPPES org legal name 'DENTAL PROFESSIONALS OF ILLINOIS PC' web-verified as Heartland Dental friendly-PC (sponsor KKR) in il_cluster_ownership_verified_20260530.json; practice_locations.affiliated_dso='Heartland Dental'; dso_locations has exact street+ZIP match to Heartland Dental (source_url il_seed:nppes_cluster); practice website Oswegocommonsfamilydental.Com"
+   ],
+   "confidence": "medium",
+   "reasoning": "Heartland Dental friendly-PC ('Dental Professionals of Illinois PC') at 1490 douglas rd, 60543; legal-name->Heartland mapping is web-verified and dso_locations matches this street+ZIP, but no per-location Heartland official locator URL is on disk \u2014 strengthened branded_dso lead held as needs_verification per the no-name-chain-rescue rule.",
+   "proposed_tier": "branded_dso",
+   "disposition": "needs_verification",
+   "pe_backed": true,
+   "owner_identity": null,
+   "network_id": "brand:heartland_dental",
+   "signal": {
+    "type": "affiliated_dso",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+   "address": "1490 douglas rd",
+   "city": null,
+   "zip": "60543",
+   "lane": "locator_exact",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "b5941b7e437e95f1",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "structural",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "NPPES org legal name 'DENTAL PROFESSIONALS OF ILLINOIS PC' web-verified as Heartland Dental friendly-PC (sponsor KKR) in il_cluster_ownership_verified_20260530.json; practice_locations.affiliated_dso='Heartland Dental'; dso_locations has exact street+ZIP match to Heartland Dental (source_url il_seed:nppes_cluster); practice website Stationsidedentalcare.Com"
+   ],
+   "confidence": "medium",
+   "reasoning": "Heartland Dental friendly-PC ('Dental Professionals of Illinois PC') at 3419 orchard rd, 60543; legal-name->Heartland mapping is web-verified and dso_locations matches this street+ZIP, but no per-location Heartland official locator URL is on disk \u2014 strengthened branded_dso lead held as needs_verification per the no-name-chain-rescue rule.",
+   "proposed_tier": "branded_dso",
+   "disposition": "needs_verification",
+   "pe_backed": true,
+   "owner_identity": null,
+   "network_id": "brand:heartland_dental",
+   "signal": {
+    "type": "affiliated_dso",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+   "address": "3419 orchard rd",
+   "city": null,
+   "zip": "60543",
+   "lane": "locator_exact",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "1b931a8e9c2675a9",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "structural",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "NPPES org legal name 'DENTAL PROFESSIONALS OF ILLINOIS PC' web-verified as Heartland Dental friendly-PC (sponsor KKR) in il_cluster_ownership_verified_20260530.json; practice_locations.affiliated_dso='Heartland Dental'; dso_locations has exact street+ZIP match to Heartland Dental (source_url il_seed:nppes_cluster); practice website Dentistnapervilleil.Com"
+   ],
+   "confidence": "medium",
+   "reasoning": "Heartland Dental friendly-PC ('Dental Professionals of Illinois PC') at 309 w ogden ave, 60563; legal-name->Heartland mapping is web-verified and dso_locations matches this street+ZIP, but no per-location Heartland official locator URL is on disk \u2014 strengthened branded_dso lead held as needs_verification per the no-name-chain-rescue rule.",
+   "proposed_tier": "branded_dso",
+   "disposition": "needs_verification",
+   "pe_backed": true,
+   "owner_identity": null,
+   "network_id": "brand:heartland_dental",
+   "signal": {
+    "type": "affiliated_dso",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+   "address": "309 w ogden ave",
+   "city": null,
+   "zip": "60563",
+   "lane": "locator_exact",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "8a3addfc27e73bbf",
+   "assigned_tier": "undetermined",
+   "status": "needs_verification",
+   "evidence_basis": "structural",
+   "evidence_urls": [
+    "https://www.dnb.com/business-directory/company-profiles.dental_professionals_of_illinois_pc.3af220e3b67d0419180bf6b2aa2c6449.html"
+   ],
+   "evidence_artifacts": [
+    "NPPES org legal name 'DENTAL PROFESSIONALS OF ILLINOIS PC' web-verified as Heartland Dental friendly-PC (sponsor KKR) in il_cluster_ownership_verified_20260530.json; practice_locations.affiliated_dso='Heartland Dental'; dso_locations has exact street+ZIP match to Heartland Dental (source_url il_seed:nppes_cluster); practice website Boulevardplacedentalcare.Com; D&B lists 'Dental Professionals of Illinois PC' (Effingham HQ, 331 employees, $17.51M revenue) \u2014 corporate-structure artifact; actual tenant Boulevard Place Dental Care"
+   ],
+   "confidence": "medium",
+   "reasoning": "Heartland Dental friendly-PC ('Dental Professionals of Illinois PC') at 16302 s blvd pl, 60586; legal-name->Heartland mapping is web-verified and dso_locations matches this street+ZIP, but no per-location Heartland official locator URL is on disk \u2014 strengthened branded_dso lead held as needs_verification per the no-name-chain-rescue rule.",
+   "proposed_tier": "branded_dso",
+   "disposition": "needs_verification",
+   "pe_backed": true,
+   "owner_identity": null,
+   "network_id": "brand:heartland_dental",
+   "signal": {
+    "type": "affiliated_dso",
+    "details": "web_verified"
+   },
+   "exact_address_match": false,
+   "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+   "address": "16302 s blvd pl",
+   "city": null,
+   "zip": "60586",
+   "lane": "locator_exact",
+   "agent": "fleet_b",
+   "reviewed_at": "2026-06-21"
+  }
+ ]
+}

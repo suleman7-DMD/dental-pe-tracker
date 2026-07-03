@@ -1,0 +1,174 @@
+{
+  "network": "MOHAMED WAHEED",
+  "network_id": "ao:WAHEED_MOHAMED",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Dr. Mohamed Waheed, DDS is the sole dentist-owner of a personal multi-office dental group in Chicagoland. He operates under two distinct brands: Grand Smiles PLLC (a pediatric-focused group with 4 IL locations: Bensenville, Chicago/West Town, Palos Heights, Rockford) and Elite Dentistry PC (general/cosmetic dentistry, Glendale Heights; separate brand also in Addison and Palatine). DHCCLTD (Bolingbrook) is an org_only_npi shell with 0 providers — a billing/admin entity, not an operating clinic. No MSO, management company, DSO affiliation, or PE backing was found. This is a straightforward dentist-owned multi-location private group.",
+  "owner_operator_identity": "Dr. Mohamed Waheed, DDS — listed as PRESIDENT on Elite Dentistry PC (NPI 1598163305), OWNER on Grand Smiles 3 PLLC (NPI 1598645962), and DENTIST on DHCCLTD (NPI 1174916233) and Grand Smiles 2 (NPI 1376321554). Website: grandsmiles.org (Grand Smiles PLLC), elitedentistryaddison.com (Elite Dentistry).",
+  "brand_trade_names": [
+    "Grand Smiles",
+    "Grand Smiles 2",
+    "Grand Smiles 3 PLLC",
+    "Grand Smiles 4, PLLC",
+    "Elite Dentistry",
+    "Elite Dentistry PC"
+  ],
+  "legal_entities": [
+    "Grand Smiles PLLC",
+    "Grand Smiles 3 PLLC",
+    "Elite Dentistry PC",
+    "DHCCLTD"
+  ],
+  "durable_artifacts": [
+    "AO reach=4 across ZIPs 60139, 60463, 60490, 60622 (WAHEED, MOHAMED on all 4 org NPIs)",
+    "Grand Smiles PLLC confirmed multi-location brand on grandsmiles.org (Bensenville, Chicago, Palos Heights, Rockford)",
+    "Dr. Waheed listed as 'Our Doctor' across grandsmiles.org and elitedentistryaddison.com",
+    "NPPES AO title=PRESIDENT on Elite Dentistry PC (1598163305); OWNER on Grand Smiles 3 PLLC (1598645962)",
+    "DHCCLTD NPI 1174916233 has entity_classification=org_only_npi and 0 providers — billing/admin shell",
+    "Miswak Dentistry (DA-tagged website for Grand Smiles 2) is a separate practice at 852 N Western Ave with different owner Dr. Tariq Riyal — data artifact, not linked"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "DHCCLTD (location_id 9547fa276406987c, NPI 1174916233, 319 N Weber Rd, Bolingbrook 60490) has 0 providers and entity_classification=org_only_npi in practices table. Likely a billing/admin-only shell entity, not an operating GP clinic. Should be flagged as org_only_npi / stale shell and excluded from GP denominator.",
+  "evidence_chain": "AO signal: Mohamed Waheed appears as authorized official on 4 org-NPIs across 4 Chicagoland ZIPs (60139, 60463, 60490, 60622). Documentary corroboration: (1) grandsmiles.org is a live public website for Grand Smiles PLLC showing Dr. Waheed as sole doctor/owner across Bensenville, Chicago, Palos Heights, and Rockford offices — confirming multi-location ownership; (2) elitedentistryaddison.com confirms Dr. Waheed as dentist-owner of Elite Dentistry (separate brand, general/cosmetic dentistry); (3) NPPES AO titles confirm direct ownership (PRESIDENT, OWNER). No MSO/management company/PE structure found on either brand's website or in NPPES records. DHCCLTD has 0 providers and is already classified org_only_npi — confirmed shell. Miswak Dentistry website (DA-tagged for Grand Smiles 2 NPI) belongs to a different practice (different owner, different address) — data-quality note.",
+  "future_app_notes": "Grand Smiles PLLC has 4 locations but only 3 are in watched Chicagoland ZIPs (Rockford 61104 is out-of-scope). Elite Dentistry appears under multiple entity names and addresses (Addison 516 W Lake St per website vs Glendale Heights 24 Dennison Dr per NPPES; also Palatine 60074). These may be relocations or separate registrations. If Elite Dentistry Addison (elitedentistryaddison.com, 516 W Lake St, Addison IL 60101) has its own NPI in a watched ZIP, it should be checked. The Grand Smiles brand is pediatric-focused (ages 0-18 per website) but uses general taxonomy codes (1223G0001X, 122300000X) rather than pediatric specialty (1223P0221X) — not specialist-only by taxonomy, so counts in GP denominator. Confirm whether any Grand Smiles or Elite Dentistry locations remain unmatched in practice_locations.",
+  "classifications": [
+    {
+      "location_id": "f7ddd38705db92eb",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Mohamed Waheed, DDS (PRESIDENT, Elite Dentistry PC, NPI 1598163305)",
+      "network_id": "ao:WAHEED_MOHAMED",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4: WAHEED, MOHAMED is AO on NPI 1598163305 (Elite Dentistry PC, Glendale Heights 60139)",
+          "AO title=PRESIDENT on this NPI"
+        ],
+        "evidence": [
+          "grandsmiles.org lists Dr. Mohamed Waheed as 'Our Doctor' across all Grand Smiles locations",
+          "elitedentistryaddison.com lists Dr. Mohamed Waheed as dentist-owner of Elite Dentistry brand",
+          "NPPES AO credential=D.D.S, title=PRESIDENT confirms dentist ownership of this PC"
+        ]
+      },
+      "evidence_urls": [
+        "https://grandsmiles.org/staff/mohamed-waheed-dds/",
+        "https://elitedentistryaddison.com/staff/mohamed-waheed-dds/",
+        "https://www.elitedentistryaddison.com/our-doctor"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "WAHEED, MOHAMED",
+        "reach": 4,
+        "zips": ["60139", "60463", "60490", "60622"],
+        "npi": "1598163305",
+        "ao_title": "PRESIDENT",
+        "ao_credential": "D.D.S"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "Address 24 Dennison Dr, Glendale Heights is registered in NPPES but Dr. Waheed's active practice appears to operate as Elite Dentistry in Addison (516 W Lake St per website). This Glendale Heights address may be a prior/relocated office. Verify whether this is currently active.",
+      "reasoning": "Dr. Mohamed Waheed is listed as PRESIDENT of Elite Dentistry PC (NPI 1598163305) in NPPES. His personal websites (grandsmiles.org, elitedentistryaddison.com) confirm he is the sole dentist-owner of multiple offices in Chicagoland. No MSO, DSO, or PE structure found. This is a dentist-owned multi-location private group. Tier = dentist_multi. NOTE: The NPPES address (24 Dennison Dr, Glendale Heights) differs from the website address for Elite Dentistry (516 W Lake St, Addison) — this may be a stale/relocated registration."
+    },
+    {
+      "location_id": "ccbf55dea3486b47",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Mohamed Waheed, DDS (OWNER, Grand Smiles 3 PLLC, NPI 1598645962)",
+      "network_id": "ao:WAHEED_MOHAMED",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4: WAHEED, MOHAMED is AO on NPI 1598645962 (Grand Smiles 3 PLLC, Palos Heights 60463)",
+          "AO title=OWNER on this NPI"
+        ],
+        "evidence": [
+          "grandsmiles.org/locations/palos-heights-office/ confirms this location at 12201 S Harlem Ave, Palos Heights IL 60463 as part of Grand Smiles PLLC under Dr. Waheed",
+          "NPPES AO title=OWNER, credential=DDS confirms dentist direct ownership"
+        ]
+      },
+      "evidence_urls": [
+        "https://grandsmiles.org/locations/palos-heights-office/",
+        "https://grandsmiles.org/staff/mohamed-waheed-dds/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "WAHEED, MOHAMED",
+        "reach": 4,
+        "zips": ["60139", "60463", "60490", "60622"],
+        "npi": "1598645962",
+        "ao_title": "OWNER",
+        "ao_credential": "DDS"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Grand Smiles 3 PLLC at 12201 S Harlem Ave, Palos Heights is confirmed as part of Dr. Waheed's Grand Smiles PLLC network on the official grandsmiles.org website. NPPES lists Waheed as OWNER with DDS credential. No MSO/DSO/PE found. Tier = dentist_multi."
+    },
+    {
+      "location_id": "9547fa276406987c",
+      "candidate_tier": "undetermined",
+      "pe_backed": false,
+      "owner_identity": "Dr. Mohamed Waheed, DDS (listed as DENTIST on DHCCLTD NPI 1174916233)",
+      "network_id": "ao:WAHEED_MOHAMED",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4: WAHEED, MOHAMED is AO on NPI 1174916233 (DHCCLTD, 319 N Weber Rd, Bolingbrook 60490)",
+          "AO title=DENTIST (not OWNER or PRESIDENT)",
+          "entity_classification=org_only_npi in practices table; provider_count=0 in practice_locations"
+        ],
+        "evidence": []
+      },
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "WAHEED, MOHAMED",
+        "reach": 4,
+        "zips": ["60139", "60463", "60490", "60622"],
+        "npi": "1174916233",
+        "ao_title": "DENTIST",
+        "ao_credential": null
+      },
+      "web_searched": true,
+      "gate_status": "undetermined",
+      "confidence": "low",
+      "stale_closed_note": "DHCCLTD NPI 1174916233 has 0 providers and is already classified org_only_npi in the practices table. No operating dental clinic was found at 319 N Weber Rd, Bolingbrook 60490 under this name. Likely a billing/admin/management shell entity registered under Dr. Waheed. No web presence found. This location should be excluded from the GP denominator and flagged as a non-operating shell.",
+      "reasoning": "DHCCLTD is classified org_only_npi (0 providers, no phone activity, no web presence). No operating clinic corroborated. The AO title is 'DENTIST' rather than OWNER/PRESIDENT, suggesting this may be a registration artifact or admin entity. Cannot determine if this is an operating GP location. Tier = undetermined; excluded from GP count."
+    },
+    {
+      "location_id": "85291b90c6828b0e",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Mohamed Waheed, DDS (DENTIST on Grand Smiles 2, NPI 1376321554)",
+      "network_id": "ao:WAHEED_MOHAMED",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4: WAHEED, MOHAMED is AO on NPI 1376321554 (Grand Smiles 2, 2333 W Chicago Ave, Chicago 60622)",
+          "AO title=DENTIST, credential=DDS",
+          "DA legal name=MISWAK DENTISTRY PC (data-quality artifact — different practice)"
+        ],
+        "evidence": [
+          "grandsmiles.org lists 2333 W Chicago Ave, Chicago IL 60622 as one of the Grand Smiles office locations under Dr. Waheed",
+          "Practice name 'Grand Smiles 2' in NPPES matches the Grand Smiles PLLC brand network confirmed on grandsmiles.org"
+        ]
+      },
+      "evidence_urls": [
+        "https://grandsmiles.org/",
+        "https://grandsmiles.org/staff/mohamed-waheed-dds/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "WAHEED, MOHAMED",
+        "reach": 4,
+        "zips": ["60139", "60463", "60490", "60622"],
+        "npi": "1376321554",
+        "ao_title": "DENTIST",
+        "ao_credential": "DDS",
+        "da_legal_name_note": "DA tagged this NPI with da_legal_name=MISWAK DENTISTRY PC — Miswak Dentistry is a separate unrelated practice at 852 N Western Ave, Chicago under Dr. Tariq Riyal. This is a Data Axle data-quality artifact; the NPPES registration under Grand Smiles 2 is correct."
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "medium",
+      "stale_closed_note": "DA legal name field shows MISWAK DENTISTRY PC — verified to be a separate practice (Dr. Tariq Riyal, 852 N Western Ave). The DA enrichment for this NPI is a data-quality error. Recommend clearing da_legal_name on NPI 1376321554.",
+      "reasoning": "Grand Smiles 2 at 2333 W Chicago Ave, Chicago 60622 is corroborated as part of Dr. Waheed's Grand Smiles PLLC network on grandsmiles.org. The Data Axle da_legal_name=MISWAK DENTISTRY PC is a data artifact — Miswak Dentistry is an unrelated practice with a different owner at a different address. No MSO/DSO/PE structure found. Confidence medium (not high) because AO title is DENTIST rather than OWNER/PRESIDENT, and the DA contamination reduces data quality on this row; however the NPPES name and grandsmiles.org corroboration are strong."
+    }
+  ]
+}

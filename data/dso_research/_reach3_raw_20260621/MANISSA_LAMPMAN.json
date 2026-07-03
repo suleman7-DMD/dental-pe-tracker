@@ -1,0 +1,132 @@
+{
+  "network": "MANISSA LAMPMAN",
+  "network_id": "ao:LAMPMAN_MANISSA",
+  "owner_type_verdict": "dso_brand",
+  "network_summary": "Webster Dental Care is a documented, multi-location dental service organization (DSO) founded in 1976 by Dr. Steven Rempas, operating 12+ locations across Chicagoland under the consumer brand 'Webster Dental Care' and supported by a management company entity (Webster Dental Management / websterdentalmanagement.com). The organization is dentist-owned (two dentists, per public reporting) with no private equity backing found. MANISSA LAMPMAN appears as the authorized official on NPPES records for two Webster Dental Care locations (Glenview LTD and Sauganash LTD) and is most likely an administrative, credentialing, or operations officer for the DSO — not the owner. The Glenview location (60025) does not appear on the current Webster Dental Care website and may be closed or relocated; the Sauganash location (60646) is confirmed active on webdentalchicago.com.",
+  "owner_operator_identity": "Dr. Steven Rempas DDS, Founder & President, Webster Dental Care (founded 1976); Michael Errin Rios, CEO (as of 2020). MANISSA LAMPMAN is the NPPES authorized official — likely an administrative/credentialing contact, not the beneficial owner.",
+  "brand_trade_names": [
+    "Webster Dental Care",
+    "Webster Dental Care Glenview, Ltd",
+    "Webster Dental Care Sauganash, Ltd",
+    "Webster Dental Care of Sauganash"
+  ],
+  "legal_entities": [
+    "Webster Dental Care Glenview, Ltd",
+    "Webster Dental Care Sauganash, Ltd",
+    "Webster Dental Management (management company, websterdentalmanagement.com)"
+  ],
+  "durable_artifacts": [
+    "Shared authorized official MANISSA LAMPMAN on NPI 1619431871 (Glenview) and NPI 1639658917 (Sauganash)",
+    "Both NPPES entities named under the 'Webster Dental Care' brand umbrella",
+    "EIN 362781929 on Glenview LTD NPI 1619431871",
+    "Webster Dental Management management company footprint confirmed at websterdentalmanagement.com (footer link + Careers listings)",
+    "PR Newswire press release (2020) explicitly describes Webster Dental Care as 'an industry leading dental service organization with over 12 locations'"
+  ],
+  "mso_platform_pe_evidence": "Webster Dental Management is the management/MSO entity operating behind the Webster Dental Care consumer brand. The management company is referenced in the footer of webdentalchicago.com with a link to the leadership team at websterdentalmanagement.com. PR Newswire press release (https://www.prnewswire.com/news-releases/webster-dental-care-announces-new-interim-chief-executive-officer-301139244.html) describes Webster Dental Care as 'an industry leading dental service organization' with a CEO (Michael Errin Rios) appointed in 2020, separate from founder/president Dr. Steven Rempas — confirming a DSO/management-company layer. No PE backing found; public reporting (Crain's Chicago Business, 2018; GDN 2018) explicitly states the DSO is 'owned by two dentists, without any venture capital partners.'",
+  "stale_closed_false_positive_notes": "The Glenview location (WEBSTER DENTAL CARE GLENVIEW, LTD, 1775 Glenview Rd, ZIP 60025, NPI 1619431871) does NOT appear on the current webdentalchicago.com locations page (which lists 8 active locations as of 2026). Established per NPPES as 1946 (likely the predecessor practice date). May be a closed or relocated legacy location. Stale/closed status should be verified. The Sauganash location (4801 W Peterson Ave, ZIP 60646) IS confirmed active on the website.",
+  "evidence_chain": "AO signal: MANISSA LAMPMAN is the NPPES authorized official on 2 watched IL GP location-NPIs across 2 ZIPs (60025 Glenview, 60646 Chicago/Sauganash), both named 'WEBSTER DENTAL CARE [Location], LTD'. Documentary corroboration: (1) webdentalchicago.com confirms Webster Dental Care as a multi-location Chicagoland dental group operating under a unified brand; (2) the site footer links to websterdentalmanagement.com confirming an MSO/management-company layer; (3) PR Newswire (2020) explicitly describes Webster Dental Care as 'an industry leading dental service organization with over 12 locations' with a separately appointed CEO; (4) Crain's Chicago Business (2018) and GDN (2018) profile Dr. Steven Rempas as founder/owner expanding a dentist-owned DSO. No PE backing. Tier: branded_dso with pe_backed=false.",
+  "future_app_notes": "1. Verify whether the Glenview LTD location (60025) is still active — it is absent from the current website; may warrant a stale/closed flag or duplicate_location review. 2. Confirm Manissa Lampman's exact role (administrative director, credentialing officer, or practice administrator) — she is not the DSO founder/owner. 3. Webster Dental Care has 12+ locations; only 2 are in the watched-IL universe here — other Webster locations (Lakeview 60657, Edison Park 60631, Portage Park 60641, Skokie 60077, etc.) may have separate NPPES NPIs that are already classified corporate or could be classified on next sweep. 4. The DSO is explicitly non-PE, dentist-owned — flag pe_backed=false durably.",
+  "classifications": [
+    {
+      "location_id": "351f97bfcef8aead",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dr. Steven Rempas DDS (Founder/President, Webster Dental Care DSO); Webster Dental Management (MSO layer)",
+      "network_id": "ao:LAMPMAN_MANISSA",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2 across ZIPs 60025 and 60646 — MANISSA LAMPMAN is NPPES authorized official on both NPIs",
+          "entity name 'WEBSTER DENTAL CARE GLENVIEW, LTD' matches the Webster Dental Care multi-location brand",
+          "provider_count=12 — high provider count consistent with DSO office",
+          "year_established=1946 — legacy predecessor date common in acquired/absorbed DSO offices"
+        ],
+        "evidence": [
+          "webdentalchicago.com confirms Webster Dental Care operates as a Chicagoland multi-location dental group under a unified brand with management company layer (Webster Dental Management)",
+          "PR Newswire (2020) explicitly describes Webster Dental Care as 'an industry leading dental service organization with over 12 locations' — https://www.prnewswire.com/news-releases/webster-dental-care-announces-new-interim-chief-executive-officer-301139244.html",
+          "Crain's Chicago Business (2018) and GDN (2018) profile Dr. Steven Rempas as founder of the Webster Dental Care DSO (dentist-owned, no PE)",
+          "NOTE: The Glenview location (1775 Glenview Rd, 60025) does NOT appear on the current webdentalchicago.com locations list — may be closed/relocated"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.webdentalchicago.com/locations/",
+        "https://www.prnewswire.com/news-releases/webster-dental-care-announces-new-interim-chief-executive-officer-301139244.html",
+        "https://www.chicagobusiness.com/article/20180727/ISSUE01/180729934/dental-service-organizations-consolidate-dental-industry-in-chicago",
+        "https://www.groupdentistrynow.com/dso-group-blog/group-dentistry-nows-emerging-dental-groups-to-watch-in-2018/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "MANISSA LAMPMAN",
+        "reach": 2,
+        "zips": ["60025", "60646"],
+        "npi": "1619431871",
+        "location_name": "WEBSTER DENTAL CARE GLENVIEW, LTD",
+        "address": "1775 glenview rd",
+        "city": "GLENVIEW",
+        "zip": "60025",
+        "ein": "362781929",
+        "provider_count": 12,
+        "year_established": 1946,
+        "entity_classification": "dso_national"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "GLENVIEW LOCATION POSSIBLY CLOSED/RELOCATED: Webster Dental Care Glenview, Ltd (1775 Glenview Rd, 60025) does not appear on the current webdentalchicago.com locations page (8 active locations listed as of 2026, none in Glenview). Established date of 1946 may reflect the predecessor practice absorbed into the Webster network. Recommend verifying current operational status before counting in the corporate-floor denominator.",
+      "reasoning": "Both NPPES NPIs in this AO cluster belong to 'WEBSTER DENTAL CARE [Location], LTD' entities that are part of the documented Webster Dental Care DSO, founded by Dr. Steven Rempas and supported by Webster Dental Management (an MSO/management company). The brand has been explicitly described as 'an industry leading dental service organization' (PR Newswire 2020) with 12+ locations and a separately appointed CEO — confirming a DSO/management-company structure that exceeds a simple dentist-owned multi-office group. No PE backing found; dentist-owned. Tier = branded_dso, pe_backed=false. The Glenview location is absent from the current website and may be closed."
+    },
+    {
+      "location_id": "9ed079a50d548b37",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dr. Steven Rempas DDS (Founder/President, Webster Dental Care DSO); Webster Dental Management (MSO layer)",
+      "network_id": "ao:LAMPMAN_MANISSA",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2 across ZIPs 60025 and 60646 — MANISSA LAMPMAN is NPPES authorized official on both NPIs",
+          "entity name 'WEBSTER DENTAL CARE SAUGANASH, LTD' matches the Webster Dental Care multi-location brand",
+          "provider_count=21 — very high provider count consistent with a DSO hub office",
+          "year_established=2006"
+        ],
+        "evidence": [
+          "webdentalchicago.com/locations/sauganash/ confirms this location is active under the Webster Dental Care brand — https://www.webdentalchicago.com/locations/sauganash/",
+          "Yelp listing confirms 'Webster Dental Care of Sauganash' at 4801 W Peterson Ave, Chicago IL 60646 — https://www.yelp.com/biz/webster-dental-care-of-sauganash-chicago",
+          "PR Newswire (2020) explicitly describes Webster Dental Care as 'an industry leading dental service organization with over 12 locations' — https://www.prnewswire.com/news-releases/webster-dental-care-announces-new-interim-chief-executive-officer-301139244.html",
+          "Webster Dental Management management company layer confirmed at websterdentalmanagement.com (footer link with leadership team page)"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.webdentalchicago.com/locations/sauganash/",
+        "https://www.yelp.com/biz/webster-dental-care-of-sauganash-chicago",
+        "https://www.prnewswire.com/news-releases/webster-dental-care-announces-new-interim-chief-executive-officer-301139244.html",
+        "https://www.chicagobusiness.com/article/20180727/ISSUE01/180729934/dental-service-organizations-consolidate-dental-industry-in-chicago"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "MANISSA LAMPMAN",
+        "reach": 2,
+        "zips": ["60025", "60646"],
+        "npi": "1639658917",
+        "location_name": "WEBSTER DENTAL CARE SAUGANASH, LTD",
+        "address": "4801 w peterson ave",
+        "city": "CHICAGO",
+        "zip": "60646",
+        "ein": null,
+        "provider_count": 21,
+        "year_established": 2006,
+        "entity_classification": "dso_national"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Webster Dental Care of Sauganash (4801 W Peterson Ave, Chicago IL 60646) is confirmed active on the official webdentalchicago.com website and corroborated by Yelp, PatientConnect365, and WebMD listings. It is part of the documented Webster Dental Care DSO network — a branded DSO founded in 1976 by Dr. Steven Rempas with a management company (Webster Dental Management) and 12+ locations. Provider count of 21 is consistent with a large DSO hub location. No PE backing found; dentist-owned. Tier = branded_dso, pe_backed=false."
+    }
+  ],
+  "durable_artifacts_list": [
+    "Shared authorized official MANISSA LAMPMAN on NPI 1619431871 (Glenview) and NPI 1639658917 (Sauganash)",
+    "Both NPPES entities named under the 'Webster Dental Care [Location], LTD' brand umbrella",
+    "EIN 362781929 on Glenview LTD NPI 1619431871",
+    "Webster Dental Management management company at websterdentalmanagement.com confirmed in site footer",
+    "PR Newswire 2020 press release: 'industry leading dental service organization with over 12 locations'"
+  ]
+}

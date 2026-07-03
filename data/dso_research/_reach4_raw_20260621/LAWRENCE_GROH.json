@@ -1,0 +1,176 @@
+{
+  "network": "LAWRENCE GROH",
+  "network_id": "ao:GROH_LAWRENCE",
+  "owner_type_verdict": "dso_brand",
+  "network_summary": "Elmhurst Dental Group, Ltd. is a multi-location dental group founded in 1974 by four Elmhurst dentists. It now operates 9 locations across Illinois and Wisconsin under the 'Partners in Care' management umbrella (est. 1990), with Colleen Yaccino serving as a non-dentist Managing Partner and CEO. Dr. Lawrence P. Groh (DDS) is listed as Owner/President and a co-owner of Partners in Care, practicing primarily at the Elmhurst and St. Charles offices. The group uses distinct consumer-facing trade names per location (Addison Dental, St. Charles Dental, etc.) under the Elmhurst Dental Group, Ltd. legal entity. No PE backer identified — clinician co-owned with a lay CEO management layer. Classified as branded_dso: centralized management entity (Partners in Care), non-dentist CEO, multi-location platform with distinct branded sub-practices, consistent with a dentist-founded DSO structure.",
+  "owner_operator_identity": "Dr. Lawrence P. Groh, DDS — Owner/President, Elmhurst Dental Group, Ltd.; co-owner of Partners in Care management entity. Founded alongside Dr. Smith (also owner/partner). Non-dentist CEO Colleen Yaccino serves as Managing Partner.",
+  "brand_trade_names": [
+    "Elmhurst Dental Group",
+    "Elmhurst Dental",
+    "Addison Dental",
+    "St. Charles Dental",
+    "Bartlett Dental Care",
+    "Bloomingdale Dental",
+    "West Dundee Dental",
+    "Partners in Care"
+  ],
+  "legal_entities": [
+    "ELMHURST DENTAL GROUP, LTD (EIN 362736573)",
+    "Partners in Care (management entity, est. 1990)"
+  ],
+  "durable_artifacts": [
+    "Shared EIN 362736573 across Addison (60101) and Elmhurst (60126) locations",
+    "Same legal name 'ELMHURST DENTAL GROUP, LTD' across all 4 watched IL NPI records",
+    "NPPES authorized official LAWRENCE GROH on all 4 NPI records (reach=4, ZIPs 60101/60126/60175/60506)",
+    "Confirmed Owner/President role: elmhurstdental.com/partners-in-care/",
+    "Non-dentist Managing Partner/CEO (Colleen Yaccino) in centralized 'Partners in Care' management entity since 1990",
+    "9-location multi-state group (IL + WI) with distinct branded sub-practice trade names"
+  ],
+  "mso_platform_pe_evidence": "Partners in Care (est. 1990) functions as the management entity of Elmhurst Dental Group, Ltd., with a non-dentist CEO/Managing Partner (Colleen Yaccino). This constitutes a centralized management layer above the clinical practices. No PE backer identified. Source: https://elmhurstdental.com/partners-in-care/",
+  "stale_closed_false_positive_notes": "All 4 watched IL locations appear to be active operating offices confirmed on the group's public website and NPI records. The Addison location (1201 W Army Trail Blvd) is listed as 'Addison Dental' on the group's locator. Aurora location (345 Sullivan Rd) confirmed as an active member of the Elmhurst Dental network.",
+  "evidence_chain": "AO signal: LAWRENCE GROH appears as authorized official on 4 distinct IL NPI records (ZIPs 60101, 60126, 60175, 60506), all registered under 'ELMHURST DENTAL GROUP, LTD' with shared EIN 362736573. Documentary corroboration: (1) elmhurstdental.com/partners-in-care/ confirms Dr. Groh as co-owner of 'Partners in Care' management entity, Owner/President role, practicing at Elmhurst and St. Charles offices; (2) group website (elmhurstdental.com) shows 9-location platform across IL and WI with branded sub-practice names; (3) RocketReach and e-physician.info confirm Dr. Groh as Owner/President at the Aurora NPI address; (4) Shared EIN across at least 2 watched ZIPs. No PE backing found; structure is dentist co-owned with a non-dentist CEO management layer.",
+  "future_app_notes": "Verify whether the Aurora (60506) location at 345 Sullivan Rd is still active — it does not appear in the 9-location list on the website (which lists Addison, Bartlett, Beloit, Bloomingdale, Elmhurst, Lake Geneva, Milton, St. Charles, West Dundee). Could be a closed or renamed office. The Addison location (60101) is listed as 'Addison Dental' on the group site. Confirm 'Partners in Care' is not registered as a formal MSO/LLC separately from Elmhurst Dental Group, Ltd. (check IL SOS). Yaccino's exact title and whether she holds equity should be verified for precise DSO-vs-dentist-multi classification.",
+  "classifications": [
+    {
+      "location_id": "dc09d390c733b900",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dr. Lawrence P. Groh, DDS — Owner/President, Elmhurst Dental Group, Ltd.",
+      "network_id": "ao:GROH_LAWRENCE",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across ZIPs 60101/60126/60175/60506",
+          "shared_ein=362736573 with location_id 55644c4a32cd4100 (Elmhurst)",
+          "entity_classification=dso_regional (pre-existing)"
+        ],
+        "evidence": [
+          "elmhurstdental.com confirms Addison Dental is one of 9 locations in the Elmhurst Dental Group / Partners in Care platform",
+          "NPPES name 'ELMHURST DENTAL GROUP, LTD' matches all 4 cluster members",
+          "Dr. Groh confirmed as Owner/President on elmhurstdental.com/partners-in-care/"
+        ]
+      },
+      "evidence_urls": [
+        "https://elmhurstdental.com/partners-in-care/",
+        "https://elmhurstdental.com/dt_team/lawrence-p-groh-dds/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "LAWRENCE GROH",
+        "reach": 4,
+        "zips": ["60101", "60126", "60175", "60506"]
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Location at 1201 W Army Trail Blvd, Addison (ZIP 60101) is the 'Addison Dental' branch of Elmhurst Dental Group, Ltd. Confirmed active on the group website. Shared EIN 362736573 with the flagship Elmhurst location. Dr. Groh confirmed as Owner/President with AO reach across all 4 watched IL locations. Partners in Care management entity (est. 1990, non-dentist CEO) provides the MSO-style layer that elevates this above dentist_multi. Classified branded_dso, pe_backed=false."
+    },
+    {
+      "location_id": "55644c4a32cd4100",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dr. Lawrence P. Groh, DDS — Owner/President, Elmhurst Dental Group, Ltd.",
+      "network_id": "ao:GROH_LAWRENCE",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across ZIPs 60101/60126/60175/60506",
+          "shared_ein=362736573 with location_id dc09d390c733b900 (Addison)",
+          "entity_classification=dso_regional (pre-existing)",
+          "provider_count=7 (flagship, largest office)"
+        ],
+        "evidence": [
+          "333 W 1st St, Elmhurst is the flagship location of Elmhurst Dental Group, confirmed at elmhurstdental.com",
+          "Dr. Groh listed as owner/practitioner at the Elmhurst office on elmhurstdental.com/partners-in-care/",
+          "Phone 630-833-5110 matches the group's main contact number on elmhurstdental.com/contact-us/"
+        ]
+      },
+      "evidence_urls": [
+        "https://elmhurstdental.com/partners-in-care/",
+        "https://elmhurstdental.com/contact-us/",
+        "https://elmhurstdental.com/dt_team/lawrence-p-groh-dds/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "LAWRENCE GROH",
+        "reach": 4,
+        "zips": ["60101", "60126", "60175", "60506"]
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Flagship location of Elmhurst Dental Group, Ltd. at 333 W 1st St, Elmhurst (ZIP 60126). Highest provider count (7) in the cluster. Phone matches group's primary number. Dr. Groh is documented as practicing here. Group website, shared EIN, and Partners in Care management entity all confirmed. branded_dso, pe_backed=false."
+    },
+    {
+      "location_id": "b839d55b755fc4cb",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dr. Lawrence P. Groh, DDS — Owner/President, Elmhurst Dental Group, Ltd.",
+      "network_id": "ao:GROH_LAWRENCE",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across ZIPs 60101/60126/60175/60506",
+          "NPPES name: 'ELMHURST DENTAL GROUP, LTD. DBA ST. CHARLES DENTAL'",
+          "entity_classification=small_group (pre-existing, likely under-classified)"
+        ],
+        "evidence": [
+          "NPPES record explicitly carries the DBA 'ST. CHARLES DENTAL', linking it to the Elmhurst Dental Group platform",
+          "elmhurstdental.com lists 'St. Charles Dental' as one of 9 locations in the group",
+          "st-charlesdental.com domain redirects/associates with Elmhurst Dental brand",
+          "Dr. Groh confirmed as owner/practitioner at the St. Charles office on elmhurstdental.com/partners-in-care/"
+        ]
+      },
+      "evidence_urls": [
+        "https://elmhurstdental.com/partners-in-care/",
+        "https://st-charlesdental.com/project/elmhurst-dental/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "LAWRENCE GROH",
+        "reach": 4,
+        "zips": ["60101", "60126", "60175", "60506"]
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "2455 Dean St, St. Charles (ZIP 60175) is the 'St. Charles Dental' branch of Elmhurst Dental Group, Ltd. — confirmed by the NPPES DBA field itself and by the group website. Dr. Groh is explicitly listed as practicing here on the Partners in Care page. entity_classification was small_group — this should be promoted to dso_regional or dso_national consistent with the rest of the network. branded_dso, pe_backed=false."
+    },
+    {
+      "location_id": "caed29dace2d9e21",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dr. Lawrence P. Groh, DDS — Owner/President, Elmhurst Dental Group, Ltd.",
+      "network_id": "ao:GROH_LAWRENCE",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across ZIPs 60101/60126/60175/60506",
+          "NPPES name: 'ELMHURST DENTAL GROUP, LTD'",
+          "entity_classification=small_group (pre-existing)",
+          "provider_count=3"
+        ],
+        "evidence": [
+          "RocketReach and e-physician.info confirm Dr. Groh as Owner/President at 345 Sullivan Rd, Aurora, IL 60506",
+          "NPPES name 'ELMHURST DENTAL GROUP, LTD' matches the corporate entity across all cluster members",
+          "Group website (elmhurstdental.com) does not list Aurora separately — possible legacy/closed/renamed location; warrants active-status verification"
+        ]
+      },
+      "evidence_urls": [
+        "https://elmhurstdental.com/partners-in-care/",
+        "https://www.e-physician.info/NPI-1316312879-IL",
+        "https://rocketreach.co/elmhurst-dental-group-profile_b47b2388fc39ec43"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "LAWRENCE GROH",
+        "reach": 4,
+        "zips": ["60101", "60126", "60175", "60506"]
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "medium",
+      "stale_closed_note": "The Aurora location (345 Sullivan Rd, ZIP 60506) does not appear in the current 9-location list on elmhurstdental.com (which lists Addison, Bartlett, Beloit, Bloomingdale, Elmhurst, Lake Geneva, Milton, St. Charles, West Dundee). It may be a closed or legacy office. Validate active status before promoting to corporate floor.",
+      "reasoning": "345 Sullivan Rd, Aurora (ZIP 60506) shares the ELMHURST DENTAL GROUP, LTD name and NPPES AO with the other 3 cluster locations. Dr. Groh confirmed as Owner/President at this address by third-party sources. However, the current group website does not list an Aurora location among its 9 active offices — this may be a closed or legacy branch. Confidence reduced to medium pending active-status confirmation. If confirmed active: branded_dso, pe_backed=false. If closed: stale_closed note should gate it out of the floor."
+    }
+  ]
+}

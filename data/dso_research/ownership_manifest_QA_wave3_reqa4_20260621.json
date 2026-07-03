@@ -1,0 +1,230 @@
+{
+  "_meta": {
+    "qa_pass": "RE-QA #4 — Wave 3 manifest (post QA-MUST-FIX demotion + Wave 3 merge), pre-consolidation gate",
+    "author": "QA / validation-gate session (independent adversarial, REVIEW-ONLY)",
+    "date": "2026-06-21",
+    "role": "independent adversarial QA / consolidation gate; REVIEW-ONLY; no DB writes; no --allow-db-write; no mutation of the manifest, LEDGER, PROGRESS, ownership_tier, or any prior QA file",
+    "canonical_object_reviewed": "data/dso_research/consolidation_candidate_manifest_20260621.json",
+    "manifest_mtime_at_review": 1782070417,
+    "scope_guard": "Chicagoland/IL only. Boston/MA parked — not investigated. Headline math FROM the census ledger with coverage; NOT anchored to ADA 14.6% or the legacy 5% entity_classification floor.",
+    "tier_model_locked": "T1 true_independent (earned, never defaulted) / T2 single_loc_group / T3 dentist_multi / T4 stealth_dso / T5 branded_dso / T6 institutional / undetermined; pe_backed = orthogonal boolean. Consolidated = T2+T3+T4+T5. DSO/PE = T4+T5 only.",
+    "prior_qa_files_NOT_mutated": [
+      "ownership_manifest_QA_reach4_lane1b_merge_20260621.json",
+      "ownership_manifest_QA_merged_20260621.json",
+      "ownership_manifest_QA_revision_signoff_20260621.json",
+      "ownership_manifest_QA_addendum_refined_criteria_20260621.json",
+      "ownership_evidence_QA_fleet_b_lane3_20260621.json",
+      "ownership_manifest_QA_remerge_demotion_20260621.json"
+    ],
+    "request_source": "_QA_REVIEW_REQUEST_gate_manifest_20260621.md + the user's two RE-QA #4 messages (7 focus areas; subject-door-vs-sibling separation; SHAFI_REEM explicit-release requirement)."
+  },
+
+  "overall_verdict": "PASS WITH MUST-FIX",
+  "headline": "The Wave 3 merge is structurally sound: counts reconcile exactly, 0 core-bucket collisions, all sidecars survived, the 4 prior MUST-FIX rows stayed demoted, the 87 reach3 promotions clear the AO-reach-only test, the regate field convention is applied correctly, the 22 Fleet B promotions are artifact-backed, and held protected networks did not leak. BUT three classes of issue must be cleared before --allow-db-write: (A) 4 additional subject-door closed/relocated rows still in ready; (B) the ao:SHAFI_REEM 3 rows entered ready through the generic reach3 gate without an explicit protected-network release; (C) one duplicate_denominator_blocked hazard ID (ff41419130267bd9) entered ready with a now-stale 'currently_in_candidate_set: []' claim and an unreconciled same-door tier conflict.",
+
+  "focus_results": {
+    "focus_1_mustfix_and_operating_status_sweep": {
+      "verdict": "PASS (prior 4 hold) + MUST-FIX (4 new subject-door rows)",
+      "prior_4_mustfix_still_demoted": {
+        "result": "PASS",
+        "location_ids": ["1fa86e6647cd57c5", "b184f060d46970cd", "d5bc28878405a18c", "e493e4371bb5cb22"],
+        "detail": "All 4 confirmed OUT of ready_to_validate and IN needs_more_evidence; each retains preserved_ready_row + backfill_lane='operating_status_unverified' per qa_mustfix_actions (ready 210->206). No regression."
+      },
+      "new_subject_door_closed_or_relocated_in_ready": {
+        "result": "MUST-FIX",
+        "principle": "These are the exact same defect class as the prior 4: the row's OWN subject door (the counted watched-ZIP location) is self-flagged closed/relocated. consolidate_census.py --validate-only is a schema/DB-state gate only — it cannot detect an inactive door. They must be demoted to needs_more_evidence with preserved_ready_row + backfill_lane='operating_status_unverified', identical treatment to the prior 4.",
+        "rows": [
+          {
+            "location_id": "f6c6290c16d20224",
+            "name": "Pinewood Dental PC",
+            "address": "11979 W 143rd St, Orland Park 60467",
+            "tier_in_ready": "dentist_multi",
+            "network_id": "ao:MOHAJIR_SAQIB",
+            "subject_door_risk": "RELOCATED to Lemont 60439; row itself states 'NPPES Orland Park address is stale'. The counted 60467 door appears vacated.",
+            "action": "demote ready_to_validate -> needs_more_evidence; preserve row; backfill_lane='operating_status_unverified'"
+          },
+          {
+            "location_id": "822d3012aedf32b9",
+            "name": "Optimal Dental Associates LLC",
+            "address": "Tinley Park 60477",
+            "tier_in_ready": "dentist_multi",
+            "network_id": "ao:MOHAJIR_SAQIB",
+            "confidence": "medium",
+            "subject_door_risk": "Row's own reasoning: 'Yelp shows the practice as closed.' Subject door, not a sibling.",
+            "action": "demote ready_to_validate -> needs_more_evidence; preserve row; backfill_lane='operating_status_unverified'"
+          },
+          {
+            "location_id": "77357c36224272c8",
+            "name": "Dental Design Group Inc (Smile Designers)",
+            "address": "1000 E Ogden Ave, Naperville",
+            "tier_in_ready": "dentist_multi",
+            "network_id": "ao:VILLANUEVA",
+            "confidence": "medium",
+            "subject_door_risk": "Row + artifact: 'shown CLOSED on Yelp ... Da Vinci Dental now at same address.' Subject door is closed and replaced by a different operator.",
+            "action": "demote ready_to_validate -> needs_more_evidence; preserve row; backfill_lane='operating_status_unverified'",
+            "cross_check": "Internally consistent with the Villanueva siblings 752766db5831e4a7 / c025489014bc9c1d, which cite THIS Naperville door as the closed one — demoting 77357c keeps the network's operating doors in ready while removing the closed door."
+          },
+          {
+            "location_id": "7d1d789828351ecf",
+            "name": "Gentle Dental Care P.C.",
+            "address": "5137 W Chicago Ave, Chicago 60651",
+            "tier_in_ready": "dentist_multi",
+            "network_id": "ao:CONEN_RICHARD",
+            "confidence": "high",
+            "subject_door_risk": "Row self-flags: 'Yelp marks this location CLOSED ... a stale/closed shell in the GP denominator.' Despite confidence=high on ownership, the door itself is self-reported closed.",
+            "action": "demote ready_to_validate -> needs_more_evidence; preserve row; backfill_lane='operating_status_unverified'",
+            "cross_check": "Internally consistent with the Conen sibling ec5372dd650d17d8 (Skokie, ACTIVE), which cites THIS Chicago door as the closed one — demoting 7d1d keeps the operating Skokie door in ready."
+          }
+        ]
+      },
+      "sibling_or_legacy_closed_notes_explicitly_adjudicated_KEEP_in_ready": {
+        "result": "PASS — closure refers to a DIFFERENT (sibling/legacy) location used as network evidence; the subject door is operating. These correctly remain ready.",
+        "rows": [
+          {"location_id": "905560816bb84bdb", "network": "Takla", "note": "Closed door = Lombard 60148 sister. Subject operating."},
+          {"location_id": "ae0468bb76425429", "network": "Takla / Brown Archer", "note": "Closed door = Lombard sister. Subject operating."},
+          {"location_id": "778740224402dbd4", "network": "Pal / Brighton Park", "note": "Closed door = Berwyn sister (Webster-adjacent; that contested set is held in conflicts). Subject operating."},
+          {"location_id": "93feb90c5548b37a", "network": "Pal / PALDENTAL", "note": "Closed door = Berwyn sister. Subject operating."},
+          {"location_id": "f9477a050bdd75b1", "network": "Pal / Lawndale (branded_dso Dental 360)", "note": "Closed door = Berwyn sister. Subject operating."},
+          {"location_id": "752766db5831e4a7", "network": "Villanueva / LaGrange Dental Management", "note": "Closed door = Naperville Smile Designers (=77357c, being demoted). Subject LaGrange not closed. SECONDARY NON-BLOCKING NOTE: subject is a '...Management Inc' entity — whether it is an operating clinical door vs a management shell is a separate open question for backfill, NOT a closure."},
+          {"location_id": "c025489014bc9c1d", "network": "Villanueva / Riverside Dental Management", "note": "Closed door = Naperville Smile Designers. Subject North Riverside not closed. Same management-entity secondary note as above."},
+          {"location_id": "ec5372dd650d17d8", "network": "Conen / Old Orchard Smiles (Skokie)", "note": "ACTIVE (website live, Yelp updated May 2026). Closed door = Chicago sister (=7d1d, being demoted). SECONDARY NON-BLOCKING NOTE: if the Chicago door is gone, Conen is effectively single-location at Skokie — tier could be true_independent rather than dentist_multi; minor tier review for backfill, not a closure of the subject."},
+          {"location_id": "572c7926d5ac41d3", "network": "Krizek (Geneva)", "note": "Closed = Kevin Fee legacy NPI at the shared EIN, not the subject. Krizek operating. Subject fine."}
+        ]
+      }
+    },
+
+    "focus_2_reach3_durable_evidence_beyond_AO_reach": {
+      "verdict": "PASS",
+      "checked": "All 87 reach3 ready promotions (dentist_multi 61 / branded_dso 24 / institutional 2; pe_backed 11).",
+      "test_applied": "A row passes ONLY if it carries a durable artifact beyond AO co-occurrence reach: a shared real EIN, a documented DSO/PE/MSO parent or legal-entity, a verifiable locator/website URL, the row's own db_affiliated_dso/db_parent_company, OR a non-restated durable network narrative (brand + shared legal entity). AO reach alone = discovery signal, NOT proof.",
+      "result": "0 of 87 rest on AO-reach-only, even under the strict test. Confirmed exemplar artifacts: Heartland ('Dental Professionals of Illinois P.C.' + shared EIN 362736573), Familia Dental (shared legal names), Affordable Care ('Affordable Dentures & Implants' variants), Destiny/ProSmile. evidence_basis mapping honored (stealth_dso->structural; branded/dentist/single_loc->name_chain; institutional/true_independent->web_verified); all branded/dentist/stealth ready rows carry non-empty evidence_artifacts.",
+      "note": "AO reach correctly treated throughout as a SIGNAL, never as the sole basis."
+    },
+
+    "focus_3_reach3_regate_field_convention": {
+      "verdict": "PASS",
+      "convention": "reach3 regate_audit uses candidate_tier / gate_status as THE CORRECTED VALUES directly (NOT final_tier/final_gate as reach4 does). The gate honored these as overrides.",
+      "spot_checks": [
+        {"location_id": "6da55130228a9c54", "name": "REEM SHAFI", "regate": "branded_dso -> dentist_multi (no MSO/management/platform/DSO-brand evidence)", "applied_in_manifest_as": "dentist_multi", "result": "CORRECT — candidate_tier read as the corrected value. (See focus_6 for the orthogonal SHAFI_REEM release defect — that is a network-release-policy issue, not a regate-convention issue.)"},
+        {"location_id": "c0cbfce56b1ea134", "name": "SINAN RAZZAK", "regate": "branded_dso -> dentist_multi", "applied_in_manifest_as": "dentist_multi", "result": "CORRECT"}
+      ],
+      "guard_check": "ao_network_evidence_reach3_ranked_qa.json validation_guards PASS:true, networks_ok 51/51, ready_for_validation_uncorroborated [], gate_ceiling_violations_final_leak []; gate_ceiling = 'ready_for_validation' (never 'final')."
+    },
+
+    "focus_4_fleet_b_wave3_artifact_backing": {
+      "verdict": "PASS (substantive) with one denominator-hazard MUST-FIX surfaced (see focus_6 / item C)",
+      "promotions": "22 = local_clusters 15 + website_clusters 5 + structural_residue 2 (of 19/5/2 concrete-tier classified; 4 local dups; 618+74+2 needs_verification correctly held as sidecar LEADS).",
+      "backing_confirmed": {
+        "local_clusters_15": "Each on parent_company == a known DSO (e.g. ADMI/Aspen, SONRAVA/Western Dental) OR a shared real EIN cluster — NOT brand-substring. Example: ein-015 (EIN 362686478) spans 2 ZIPs (ff41419130267bd9 + 5c5fb8dccc842460), legal 'GENERAL DENTISTRY', no DSO/MSO -> correctly dentist_multi.",
+        "website_clusters_5": "2 dentist_multi (own-domain backed); 3 branded_dso (Dental Dreams, Family Dental Care, Destiny/ProSmile [row d300597c91e8d789, domain destinydentalcare.com]) where the office's OWN listed website domain == the known-DSO brand's corporate site + matching name token. This is stronger than a substring match (it is the door's own domain resolving to the brand corporate site). pe_backed set only where the brand is documented PE-backed (ProSmile). MINOR DATA-QUALITY NOTE (non-blocking): d300597c91e8d789 name token is garbled 'DENTINY' vs 'DESTINY' — the domain carries the real signal, classification stands.",
+        "structural_residue_2": "Both HABBAL (Walid Habbal DDS) — 2 Palos-area offices (60441, 60463), shared phone 708-361-8117, EIN 471340456 -> dentist_multi. Two distinct doors, one dentist; correctly T3 (dentist-owned multi), NOT a DSO tier. shared-surname+shared-phone across 2 ZIPs is acceptable for a dentist_multi (non-DSO) verdict; the 'brand-substring/co-location' concern applies to DSO-tier promotions, which this is not."
+      },
+      "qa_flag_honoring": "PASS — Pieta 1db785090b4b1093 (da_synthetic_npi) correctly held in backfill, NOT ready. website_clusters + structural_residue carried no qa_flags."
+    },
+
+    "focus_5_dedup_overlap_counts": {
+      "verdict": "PASS (exact)",
+      "counts_reconciled": {
+        "ready_to_validate": 315,
+        "needs_more_evidence": 162,
+        "conflicts": 74,
+        "rejected": 7,
+        "core_universe_distinct_locations": 558,
+        "core_bucket_collisions": 0
+      },
+      "detail": "ready 315 distinct location_ids (0 duplicates); core buckets mutually exclusive (ready / needs_more / rejected / conflicts) — 0 collisions. 558 distinct core-universe locations. The 3 known overlaps_with_prior_waves (9c588fbf68114847 JIANJUN HAO, addadba0d25e3812 SINAN RAZZAK, 0c8f995db2124f57 MOHAMMED SALIH) were caught in the 33 reach3 dups. Ready tier mix: dentist_multi 151 / branded_dso 96 / true_independent 30 / stealth_dso 21 / institutional 10 / single_loc_group 7. Basis mix: name_chain 169 / web_verified 81 / intel_dossier 25 / locator 19 / ein_cluster 11 / structural 7 / ao_cluster 3.",
+      "caveat": "location_id-level dedup is exact (0 collisions). It does NOT catch same-PHYSICAL-door duplicates that carry different location_ids — see focus_6 item C (ff41419130267bd9 vs f94fb29cc7d444cd share phone (773) 528-2205)."
+    },
+
+    "focus_6_sidecars_and_held_networks": {
+      "verdict": "PASS (sidecars + held networks) + MUST-FIX (ao:SHAFI_REEM release) + MUST-FIX (duplicate_denominator_blocked reconcile)",
+      "sidecars_survived": {
+        "result": "PASS",
+        "ao_network_intelligence_wave1_networks": 6,
+        "ao_network_intelligence_wave2_reach4_networks": 14,
+        "ao_network_intelligence_wave3_reach3_networks": 51,
+        "ao_individuals": 13,
+        "fleet_b_lane1B_sidecar_rows": 320,
+        "fleet_b_wave3_total_rows": 720,
+        "fleet_b_wave3_breakdown": {"local_clusters": 637, "website_clusters": 79, "structural_residue": 4},
+        "detail": "All Wave 1 / Wave 2 / Wave 3 strategic-network and Fleet B lead sidecars preserved verbatim; 694 needs_verification Fleet B rows retained as future-app LEADS, not promoted."
+      },
+      "held_protected_networks_did_not_leak": {
+        "result": "PASS",
+        "SWEIS_in_ready": 0,
+        "RAMAHA_in_ready": 0,
+        "AQEL_in_ready": "0 (Brite Dental / Fadi Aqel held in conflicts as CONTESTED)",
+        "BELKIC_in_ready": 0,
+        "detail": "Held networks (Sweis, Ramaha, Aqel, Belkic) did not enter ready. Webster Dental contested set (19 rows incl. WEBSTER DENTAL CARE CICERO/EVANSTON/SCHAUMBURG/NORTH SUBURBAN, Berwyn Family Dental, Klyber Dental, Brite/Aqel) correctly held in conflicts pending main-session adjudication."
+      },
+      "released_protected_networks_documented": {
+        "result": "PASS",
+        "detail": "ao_network_release_decisions records explicit, policy-gated releases: SHAFI_SOHAIL (15 rows in ready), BRUNETTI_ROBERT (8), LABINOV_BORIS (7), NITTINGER_RACHEL (released, 0 currently in ready). Policy: release only when network-level evidence_quality=='verified'. SWEIS_JUBRAIL and RAMAHA_AHMED correctly held."
+      },
+      "shafi_reem_release_defect": {
+        "result": "MUST-FIX",
+        "location_ids": ["ba663f30996016ce", "fc658bf62642d908", "6da55130228a9c54"],
+        "identity": "Two Rivers Dental — Dr. Reem Shafi; a dentist-owned network operating ~20+ Chicagoland locations under distinct local trade names (Hanover / Baker Hill / Simply / Two Rivers / Absolute). Surname SHAFI is on the protected-network do-not-release-without-main-session-release list.",
+        "tiers_in_ready": "ba663f30996016ce + fc658bf62642d908 = branded_dso; 6da55130228a9c54 = dentist_multi (regated).",
+        "defect": "These 3 rows entered ready through the GENERIC reach3 per-row gate. ao:SHAFI_REEM is NOT a key in ao_network_release_decisions.decisions and is NOT in released_networks (only ao:SHAFI_SOHAIL is). It therefore bypassed the protected-network release policy as an implicit protected-surname release — exactly what the user prohibited.",
+        "secondary_note": "Tier inconsistency: the network is described as a branded DSO under local trade names (-> branded_dso, T5), yet 6da55130228a9c54 was regated to dentist_multi for 'no MSO/management/platform/DSO-brand evidence'. A ~20-location single-owner network under multiple distinct trade names is itself a brand/management structure; the dentist_multi regate may understate it. Resolve tier alongside the release decision (do NOT use pe_backed=false to justify the branded_dso->dentist_multi downgrade).",
+        "required_resolution": "EITHER (a) the Gate Owner adds an explicit ao:SHAFI_REEM release decision to ao_network_release_decisions with network-level evidence_quality and a release rationale (treating it as the Reem Shafi / Two Rivers arm of the SHAFI family already released under SHAFI_SOHAIL), OR (b) a clear documented note that ao:SHAFI_REEM is covered by the prior Shafi/Two Rivers release logic. Until one exists, hold the 3 rows out of ready (needs_more_evidence). It must NOT remain an implicit protected-surname/network release."
+      },
+      "duplicate_denominator_blocked_reconcile": {
+        "result": "MUST-FIX",
+        "primary_id": "ff41419130267bd9",
+        "detail": "ff41419130267bd9 (Peters, Erika; Fleet B ein-015, EIN 362686478) is one of the 16 location_ids in buckets.duplicate_denominator_blocked. It is now in ready (dentist_multi, confidence medium), but duplicate_denominator_blocked.currently_in_candidate_set is still [] — that claim is now STALE. It shares phone (773) 528-2205 (the SAME physical door) with f94fb29cc7d444cd (CHICAGO DENTAL PROFESSIONALS INC), whose ddb tier is true_independent and which is in NO live bucket. The same physical door therefore carries a conflicting consolidation verdict (independent vs consolidated) that has not been reconciled.",
+        "why_focus_5_did_not_catch_it": "location_id-level dedup is exact (0 collisions), but ff41419130267bd9 and f94fb29cc7d444cd are DIFFERENT location_ids at the SAME phone/door (2340 N Clybourn Ave, 773-528-2205) — a same-door duplicate that id-dedup cannot see.",
+        "gate_owner_confirmation": "Gate Owner confirmed 2026-06-21 that ff41419130267bd9 is a real current ready-row leak from duplicate_denominator_blocked and prescribed the gate action below. The DDB note explicitly requires future waves to resolve these addresses BEFORE consolidating; this wave did not.",
+        "required_resolution": "DEMOTE ff41419130267bd9 ready_to_validate -> needs_more_evidence; preserve the original row under preserved_ready_row; backfill_lane='duplicate_door_tier_conflict'; AND update duplicate_denominator_blocked.currently_in_candidate_set to reflect the leak/fix (was stale []). When the door is later reconciled, confirm which row is canonical (Peters dentist_multi vs CHICAGO DENTAL PROFESSIONALS INC true_independent) so the door is counted once with one tier.",
+        "other_15_ddb_ids": "Confirmed NOT in any live bucket — no leak from the remaining 15."
+      }
+    }
+  },
+
+  "must_fix_ids_exact": {
+    "A_operating_status_demotions": {
+      "action": "demote ready_to_validate -> needs_more_evidence; keep preserved_ready_row + backfill_lane='operating_status_unverified' (identical to the prior 4)",
+      "location_ids": ["f6c6290c16d20224", "822d3012aedf32b9", "77357c36224272c8", "7d1d789828351ecf"]
+    },
+    "B_shafi_reem_release": {
+      "action": "add explicit ao:SHAFI_REEM release/adjudication to ao_network_release_decisions OR a documented 'covered by prior Shafi/Two Rivers release' note; else hold the 3 rows out of ready. Resolve tier (branded_dso vs dentist_multi) at the same time; do not downgrade on pe_backed=false alone.",
+      "location_ids": ["ba663f30996016ce", "fc658bf62642d908", "6da55130228a9c54"]
+    },
+    "C_duplicate_door_tier_conflict": {
+      "action": "DEMOTE ready_to_validate -> needs_more_evidence; preserve original row under preserved_ready_row; backfill_lane='duplicate_door_tier_conflict'; AND update duplicate_denominator_blocked.currently_in_candidate_set to reflect the leak/fix (was stale []). Gate-Owner-confirmed 2026-06-21 as a real ready-row leak.",
+      "primary_id": "ff41419130267bd9",
+      "primary_detail": "Peters, Erika / 2340 N Clybourn Ave / phone 773-528-2205 / currently ready as dentist_multi (Fleet B ein-015, EIN 362686478).",
+      "same_door_twin": "f94fb29cc7d444cd",
+      "twin_detail": "CHICAGO DENTAL PROFESSIONALS INC / 2340 N Clybourn / same phone 773-528-2205 / prior true_independent — conflicting same-door verdict; in NO live bucket.",
+      "rationale": "DDB note requires resolving these addresses before consolidating; the door currently carries both consolidated (dentist_multi) and independent (true_independent) verdicts. Hold until reconciled."
+    }
+  },
+
+  "pass_summary": {
+    "focus_2_reach3_durable_evidence": "PASS — 0/87 AO-reach-only",
+    "focus_3_regate_convention": "PASS",
+    "focus_4_fleet_b_artifact_backing": "PASS (substantive); 1 duplicate-door leak surfaced -> item C (Gate-Owner-confirmed)",
+    "focus_5_dedup_counts": "PASS exact at location_id level (315/162/74/7; 558 distinct; 0 collisions) — BUT one same-physical-door duplicate (ff41419130267bd9 vs f94fb29cc7d444cd) escapes id-dedup -> item C",
+    "focus_6_sidecars": "PASS (wave1 6 / wave2_reach4 14 / wave3_reach3 51 / fleet_b_wave3 720 preserved)",
+    "focus_6_held_networks_no_leak": "PASS (Sweis/Ramaha/Aqel/Belkic 0 in ready; Webster set held in conflicts)",
+    "focus_1_prior_4_mustfix": "PASS (all 4 still demoted)",
+    "focus_1_new_subject_door_rows": "MUST-FIX (4) -> item A",
+    "focus_6_shafi_reem": "MUST-FIX (3) -> item B",
+    "focus_6_duplicate_door_tier_conflict": "MUST-FIX (1, Gate-Owner-confirmed) -> item C"
+  },
+
+  "post_fix_projection": {
+    "note": "Illustrative only — the Gate Owner owns the mutation. A (4) and C (1) are demotions; B (3) is a demotion ONLY if not released. C is now a confirmed demotion (not a net-zero reconcile).",
+    "ready_after_A_and_C_demote_B_released": 310,
+    "ready_after_A_and_C_demote_B_held": 307,
+    "breakdown": "315 - 4 (A) - 1 (C) = 310 if SHAFI_REEM released by explicit Gate Owner decision; minus a further 3 (B) = 307 if SHAFI_REEM held."
+  },
+
+  "consolidate_authorization": {
+    "status": "NOT AUTHORIZED",
+    "reason": "consolidate_census.py --allow-db-write is NOT authorized until the user explicitly says 'consolidate approved manifest'. consolidation_status remains FROZEN. This RE-QA pass is review-only and clears the schema/structure of the Wave 3 merge subject to the 3 MUST-FIX classes above; it is not a consolidate trigger.",
+    "recommended_path": "Per the Gate Owner's decision menu: take path (b) — apply MUST-FIX A (demote 4), resolve MUST-FIX B (explicit SHAFI_REEM release decision or hold), reconcile MUST-FIX C (ddb same-door), re-run --validate-only, then return for sign-off. The 74 conflicts (incl. Webster set) and 87 backfill remain available to work but are NOT blockers to the 315-row gate beyond the 3 MUST-FIX items.",
+    "validator_note": "Structural pre-flight command is: python3 scrapers/consolidate_census.py <ready_file> --session <id> --validate-only (NEVER --allow-db-write). It gates SCHEMA/DB-state only; it does NOT re-judge evidence or operating status — which is precisely why MUST-FIX A (closed-door) cannot be caught by the validator and must be handled at the gate."
+  }
+}

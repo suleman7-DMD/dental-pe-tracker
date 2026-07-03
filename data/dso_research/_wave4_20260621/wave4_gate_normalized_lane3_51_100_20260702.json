@@ -1,0 +1,697 @@
+{
+  "_meta": {
+    "artifact_type": "Wave 4 Gate-Owner normalized partition — Lane 3 Phase-C ranks 51-100 (50 rows)",
+    "role": "Gate Owner — coordinator/normalizer ONLY. Files-only. ZERO mutation of DB/manifest/ready/LEDGER/PROGRESS/ownership_tier/entity_classification/ownership_status. No --allow-db-write.",
+    "generated_by": "opus-4.8 gate-lane3 under Fable PM",
+    "date": "2026-07-02",
+    "gate_ceiling": "ready_for_validation (NEVER final). Consolidation remains FROZEN.",
+    "consolidate_authorization": "NOT AUTHORIZED — frozen until user types the explicit consolidation phrase.",
+    "source_file": "data/dso_research/_wave4_20260621/wave4_lane3_phasec_51_100_evidence_20260622.json",
+    "inputs": {
+      "evidence": "wave4_lane3_phasec_51_100_evidence_20260622.json (Fleet B ranks 51-100, 50 rows)",
+      "self_qa_sibling": "wave4_lane3_phasec_51_100_evidence_20260622_qa.json",
+      "schema_reference_1": "wave4_gate_normalized_partition_20260621.json (GATE-001, QA-PASSED)",
+      "schema_reference_2": "wave4_gate_normalized_lane2_partition_20260622.json (Lane 2, QA-PASSED)",
+      "ready_file_readonly": "_ready_to_validate_wave3_fixed_20260621.json (310 rows; NOT mutated)",
+      "pm_handoff": "data/dso_research/RESEARCH_HOME/PROJECT_MANAGER_HANDOFF_20260702.md",
+      "tier_table_source": "PM_HANDOFF §3 T1-T6 tier table + evidence bar"
+    },
+    "policy_rulings_applied": {
+      "T3_dentist_multi_merge_eligible": "RATIFIED 2026-07-02. Dentist-owned multi-location (no MSO) counts as consolidated. Evidence bar: own-brand/owner-named locator + multi-location confirmed + no MSO found. Not DSO/PE headline.",
+      "affordable_dentures_clearChoice": "POLICY-HELD pending GP-scope written rule. Bucket: hold_scope_policy. Zero such rows in this 50-row band.",
+      "protected_networks": "SHAFI (ranks 60, 61, 82), NITTINGER (rank 52) mandatory hold_protected_network. BELKIC/AQEL/BRUNETTI/SWEIS/LABINOV/RAMAHA not present in this band.",
+      "scope_specialist": "Periodontist (rank 56 Ryan perio), institutional academic (rank 62 Loyola/Trinity Health), endodontist (rank 99 Neil Singh) → hold_scope_specialist."
+    },
+    "rebuckets_vs_raw_evidence_file": [
+      {
+        "rank": 54,
+        "location_id": "c5769cc8b2bc5319",
+        "raw_disposition": "rejected",
+        "gate_disposition": "merge_eligible_new",
+        "reason": "Raw file rejected solely because 'T3 dentist_multi does not meet the corporate floor' (per assembly notes: 'mirrors r54 United Dental Centers, rejected on the same basis' as rank 83). Under ratified T3 policy (2026-07-02), dentist-owned multi-location IS merge-eligible. Evidence fully satisfies the T3 bar: exact-address own-locator confirmed (udcchicago.com lists 3540 E 118th St), named owner (Dr. David Fried / Dr. Kenneth Fried), 4-location family-owned group (1 IL + 3 IN), no MSO. Re-bucketed to merge_eligible_new T3.",
+        "annotation": "t3_policy_ratified_20260702"
+      },
+      {
+        "rank": 83,
+        "location_id": "8d81d4516f493d1e",
+        "raw_disposition": "hold_needs_more_evidence",
+        "gate_disposition": "merge_eligible_new",
+        "reason": "Raw file downgraded from agent's merge_eligible_new to hold solely because T3 policy was undecided at time of assembly (assembly_adjustment: 'T3 dentist-owned multi-site does not meet [floor]; stricter-wins per AUTH → hold_needs_more_evidence; exact-address artifact preserved so Gate can promote if it rules single-LLC dentist multi-site groups count'). Gate now promotes under ratified T3 policy (2026-07-02). Evidence satisfies T3 bar at high confidence: exact-address own-locator confirmed (archerdentistry.com/chicago-booker-area/ lists '654 E 47th St, Chicago, IL 60653'), named owner (Dr. Hamza Mohammed on team page), 5-location group (4 IL + 1 IN), Chicago Dentistry LLC DBA Archer Dentistry Chicago, no MSO/PE found. The assembly explicitly preserved the artifact for this Gate decision.",
+        "annotation": "t3_policy_ratified_20260702"
+      },
+      {
+        "rank": 88,
+        "location_id": "262af10fbc0f17f8",
+        "raw_disposition": "hold_needs_more_evidence",
+        "gate_disposition": "merge_eligible_new",
+        "reason": "Raw file held because 'T3 not T4/T5/T6' and 'Hold pending assessment of whether T3 warrants a corporate reclassification.' Under ratified T3 policy (2026-07-02), T3 IS merge-eligible. Evidence satisfies T3 bar: exact-address own-locator confirmed (dentalgroupofchicago.com/contact/ lists '1556 S. Michigan Ave, Suite 200, Chicago, IL 60605' with matching phone), named sole owner (Dr. Alexander Reznikov DDS, founder), 2-location group (South Loop + Cityview Dental Arts, Bucktown, both confirmed on own website and LinkedIn), no MSO/PE. Agent confidence was HIGH.",
+        "annotation": "t3_policy_ratified_20260702"
+      }
+    ],
+    "freeze_attestation_readonly": {
+      "note": "June 21-22 artifacts cite db_md5 0dec26135bb4d6ee490dc16cfe892ca6 as the then-current hash. PM_HANDOFF_20260702 confirms current local md5 = e2a89a02900d0366fad6d9ee06d23422 (NPPES refresh occurred between sessions). Census-specific freeze still holds: ownership columns empty, LEDGER untouched, PROGRESS reset. This Gate artifact makes no DB writes.",
+      "LEDGER_lines": 1,
+      "PROGRESS_undetermined_unreviewed": 4439,
+      "ownership_tier_notnull_practice_locations": 0,
+      "ownership_tier_notnull_practices": 0,
+      "verdict": "FROZEN — intact"
+    }
+  },
+  "reconciliation": {
+    "rows_in": 50,
+    "rows_placed": 50,
+    "balanced": true,
+    "distinct_location_ids": 50,
+    "duplicate_location_ids": [],
+    "bucket_counts": {
+      "merge_eligible_new": 5,
+      "hold_protected_network": 4,
+      "hold_scope_specialist": 3,
+      "hold_needs_more_evidence": 14,
+      "rejected": 24
+    },
+    "cross_checks": {
+      "zero_overlap_310_ready": true,
+      "zero_overlap_prior_partition_merge_eligible": true,
+      "all_merge_eligible_have_https_url": true,
+      "overlap_with_310_detail": "python3 check confirmed 0/50 location_ids appear in _ready_to_validate_wave3_fixed_20260621.json (310 rows)",
+      "overlap_prior_partitions_detail": "None of the 5 merge_eligible_new location_ids appear in wave4_gate_normalized_partition_20260621.json (19 eligible) or wave4_gate_normalized_lane2_partition_20260622.json (1 eligible)"
+    },
+    "rank_to_bucket_index": {
+      "51": "rejected",
+      "52": "hold_protected_network",
+      "53": "hold_needs_more_evidence",
+      "54": "merge_eligible_new",
+      "55": "hold_needs_more_evidence",
+      "56": "hold_scope_specialist",
+      "57": "rejected",
+      "58": "hold_needs_more_evidence",
+      "59": "hold_needs_more_evidence",
+      "60": "hold_protected_network",
+      "61": "hold_protected_network",
+      "62": "hold_scope_specialist",
+      "63": "hold_needs_more_evidence",
+      "64": "rejected",
+      "65": "rejected",
+      "66": "rejected",
+      "67": "rejected",
+      "68": "hold_needs_more_evidence",
+      "69": "hold_needs_more_evidence",
+      "70": "rejected",
+      "71": "rejected",
+      "72": "rejected",
+      "73": "rejected",
+      "74": "hold_needs_more_evidence",
+      "75": "rejected",
+      "76": "rejected",
+      "77": "rejected",
+      "78": "hold_needs_more_evidence",
+      "79": "merge_eligible_new",
+      "80": "hold_needs_more_evidence",
+      "81": "hold_needs_more_evidence",
+      "82": "hold_protected_network",
+      "83": "merge_eligible_new",
+      "84": "hold_needs_more_evidence",
+      "85": "rejected",
+      "86": "rejected",
+      "87": "hold_needs_more_evidence",
+      "88": "merge_eligible_new",
+      "89": "rejected",
+      "90": "hold_needs_more_evidence",
+      "91": "rejected",
+      "92": "rejected",
+      "93": "rejected",
+      "94": "rejected",
+      "95": "rejected",
+      "96": "rejected",
+      "97": "rejected",
+      "98": "rejected",
+      "99": "hold_scope_specialist",
+      "100": "merge_eligible_new"
+    },
+    "floor_impact_note": "5 merge_eligible_new total: 2 are T5 branded_dso (ranks 79, 100) and count as DSO/PE; 3 are T3 dentist_multi (ranks 54, 83, 88) and count as Consolidated but NOT DSO/PE headline. All 5 are net-new (not in the 310 ready file, not in prior partition merge_eligible). Conditional on QA acceptance."
+  },
+  "buckets": {
+    "merge_eligible_new": [
+      {
+        "location_id": "c5769cc8b2bc5319",
+        "rank": 54,
+        "practice_name": "UNITED DENTAL CENTERS, LTD",
+        "address": "3540 e 118th st",
+        "city": "CHICAGO",
+        "zip": "60617",
+        "state": "IL",
+        "source_lane": "lane3_phasec_51_100",
+        "candidate_types": ["brand_chain", "intel_keyword"],
+        "proposed_tier": "dentist_multi (T3)",
+        "gate_tier_status": "endorsed_under_t3_policy_ratified_20260702",
+        "pe_backed": false,
+        "in_current_310": false,
+        "operating_status_check": "Active — Yelp April 2026 update, walk-ins Mon-Fri 10am-6pm. Own website active.",
+        "same_door_check": "Single GP door at 3540 E 118th St Chicago IL 60617. No same-door ambiguity.",
+        "protected_network_status": "not_protected (Fried is not a protected surname)",
+        "disposition": "merge_eligible_new",
+        "rebucket_from": "rejected",
+        "rebucket_reason": "Raw rejected solely because T3 did not count for corporate floor. Assembly notes for rank 83 explicitly mirror: 'mirrors r54 United Dental Centers, rejected on the same basis.' Under ratified T3 policy, T3 dentist-owned multi-location IS merge-eligible. Evidence fully satisfies T3 bar.",
+        "annotation": "t3_policy_ratified_20260702",
+        "hold_reason": null,
+        "dso_structure_rationale": "Dentist-owned 4-location family group (Dr. Kenneth Fried founder, Dr. David Fried current lead). Own website udcchicago.com explicitly states 'family owned and locally operated — not driven by profits or quotas.' 4 locations: Chicago IL + Whiting IN + Hammond IN + Merrillville IN. No MSO, no PE, no DSO structure. T3 counts as Consolidated under ratified policy; NOT DSO/PE headline.",
+        "evidence": {
+          "durable_evidence": "udcchicago.com own website lists '3540 E. 118th St, Chicago, IL 60617' as the Chicago location with phone (773) 646-6262 matching DB exactly",
+          "evidence_urls": [
+            "https://www.udcchicago.com/",
+            "https://www.udcchicago.com/about-us.html",
+            "https://www.yelp.com/biz/united-dental-centers-of-chicago-chicago",
+            "https://www.udcchicago.com/contact.html"
+          ],
+          "searches_executed": 3,
+          "owner": "Fried family (Dr. Kenneth Fried founder, Dr. David Fried current). Family-owned and independently operated per own website.",
+          "location_count": "4 (1 IL in-scope, 3 IN out-of-scope)",
+          "mso_pe_check": "None found. Own website disclaims profit-driven structure."
+        }
+      },
+      {
+        "location_id": "e4604698cb78a23a",
+        "rank": 79,
+        "practice_name": "Grove Dental",
+        "address": "160 e boughton rd",
+        "city": "BOLINGBROOK",
+        "zip": "60440",
+        "state": "IL",
+        "source_lane": "lane3_phasec_51_100",
+        "candidate_types": ["brand_chain", "phone_cluster"],
+        "proposed_tier": "branded_dso (T5)",
+        "gate_tier_status": "endorsed",
+        "pe_backed": true,
+        "pe_sponsor_cited": "Abry Partners (via North American Dental Group acquisition, April 2019; NADG subsequently acquired by Jacobs Holding)",
+        "in_current_310": false,
+        "operating_status_check": "Active — own locator lists Bolingbrook at 160 E Boughton Rd, phone (630) 759-8940 confirmed active",
+        "same_door_check": "Own locator lists 160 E Boughton Road as the Bolingbrook office. DB address matches exactly. No same-door ambiguity.",
+        "protected_network_status": "not_protected",
+        "disposition": "merge_eligible_new",
+        "rebucket_from": null,
+        "rebucket_reason": null,
+        "annotation": null,
+        "hold_reason": null,
+        "dso_structure_rationale": "DSO=STRUCTURE satisfied: Grove Dental Associates P.C. acquired by North American Dental Group (NADG, Abry Partners PE-backed) in April 2019 per MergerLinks and PitchBook. NADG subsequently acquired by Jacobs Holding. Grove Dental retained its brand name post-acquisition. 4 Chicagoland locations, 30+ dentists. pe_backed=true (Abry Partners / Jacobs Holding documented).",
+        "evidence": {
+          "durable_evidence": "grovedental.com own locator lists '160 E. Boughton Road, Bolingbrook, IL 60440' with phone (630) 759-8940 — exact DB match",
+          "evidence_urls": [
+            "https://www.grovedental.com/",
+            "https://www.grovedental.com/dentist-bolingbrook",
+            "https://www.grovedental.com/about-us",
+            "https://www.yelp.com/biz/grove-dental-associates-bolingbrook",
+            "https://pitchbook.com/profiles/company/343099-63",
+            "https://app.mergerlinks.com/transactions/2019-04-03-grove-dental-associates/dealmakers"
+          ],
+          "searches_executed": 7,
+          "pe_acquisition_source": "MergerLinks (April 2019 Grove Dental → NADG/Abry Partners) + PitchBook"
+        }
+      },
+      {
+        "location_id": "8d81d4516f493d1e",
+        "rank": 83,
+        "practice_name": "CHICAGO DENTISTRY LLC (DBA ARCHER DENTISTRY CHICAGO)",
+        "address": "654 e 47th st",
+        "city": "CHICAGO",
+        "zip": "60653",
+        "state": "IL",
+        "source_lane": "lane3_phasec_51_100",
+        "candidate_types": ["ao_cluster", "brand_chain"],
+        "proposed_tier": "dentist_multi (T3)",
+        "gate_tier_status": "endorsed_under_t3_policy_ratified_20260702",
+        "pe_backed": false,
+        "in_current_310": false,
+        "operating_status_check": "Active — archerdentistry.com lists this address; co-located with ACCESS Booker FQHC but Archer Dentistry own locator lists it independently",
+        "same_door_check": "654 E 47th St is co-located with ACCESS Booker Family Health Center (FQHC). Archer Dentistry own locator (archerdentistry.com/chicago-booker-area/) lists this as an independent Archer branch, not an FQHC-employed slot. No same-door duplication concern for ownership classification.",
+        "protected_network_status": "not_protected (Mohammed, Araghi, Uhland, Patel are not protected surnames)",
+        "disposition": "merge_eligible_new",
+        "rebucket_from": "hold_needs_more_evidence",
+        "rebucket_reason": "Raw assembly downgraded agent's merge_eligible_new to hold SOLELY because T3 policy was undecided. Assembly explicitly preserved the exact-address artifact and said 'Gate can promote if it rules single-LLC dentist multi-site groups count.' T3 policy ratified 2026-07-02. Evidence satisfies T3 bar at high confidence: exact-address own-locator confirmed, named owner, 5 locations, no MSO.",
+        "annotation": "t3_policy_ratified_20260702",
+        "hold_reason": null,
+        "fqhc_colocation_note": "QA must confirm archerdentistry.com locator lists 654 E 47th St independently from ACCESS Booker FQHC operations, confirming Archer is the operating dental entity (not FQHC staff). Agent confirmed Archer own locator lists this address as 'Chicago-Booker Area' branch.",
+        "scope_note": "5 locations: Chicago-Brighton Park (3924 S Archer Ave), Chicago-Booker Area (654 E 47th St), Naperville IL, Hickory Hills IL, Munster IN. Count only IL locations for GP floor. Indiana location is out-of-scope.",
+        "dso_structure_rationale": "Dentist-owned multi-location group: Chicago Dentistry LLC DBA Archer Dentistry Chicago. Dr. Hamza Mohammed confirmed as practitioner/owner (team page). 5 locations (4 IL + 1 IN). No external MSO, DSO platform, or PE sponsor found in public records. T3 counts as Consolidated under ratified policy; NOT DSO/PE headline.",
+        "evidence": {
+          "durable_evidence": "archerdentistry.com/chicago-booker-area/ lists '654 E 47th St, Chicago, IL 60653, USA' with phone (773) 624-5800 — exact DB match. Legal entity 'Chicago Dentistry LLC DBA Archer Dentistry Chicago' confirmed via web search artifact (momentumplans.com/store/chicago-dentistry-llc-dba-archer-dentistry-chicago/).",
+          "evidence_urls": [
+            "https://archerdentistry.com/chicago-booker-area/",
+            "https://archerdentistrychi.com/team/hamza-mohammed/",
+            "https://www.carecredit.com/doctor-locator/chicago-il/archer-dentistry-chicago-664gvd/",
+            "https://npiregistry.cms.hhs.gov/provider-view/1356045264",
+            "https://www.practo.com/chicago/hospital/archer-dentistry-chicago-47th-st-grand-boulevard/dentist-ps-8"
+          ],
+          "searches_executed": 4,
+          "owner": "Dr. Hamza Mohammed (listed on archerdentistrychi.com team page)",
+          "location_count": "5 (4 IL in-scope: Brighton Park, Booker Area, Naperville, Hickory Hills; 1 IN out-of-scope: Munster)",
+          "mso_pe_check": "None found. Agent confirmed 'No PE sponsor, MSO, or national DSO affiliation found in public records.'"
+        }
+      },
+      {
+        "location_id": "262af10fbc0f17f8",
+        "rank": 88,
+        "practice_name": "DENTAL GROUP OF CHICAGO, INC",
+        "address": "1556 s michigan ave",
+        "city": "CHICAGO",
+        "zip": "60605",
+        "state": "IL",
+        "source_lane": "lane3_phasec_51_100",
+        "candidate_types": ["brand_chain"],
+        "proposed_tier": "dentist_multi (T3)",
+        "gate_tier_status": "endorsed_under_t3_policy_ratified_20260702",
+        "pe_backed": false,
+        "in_current_310": false,
+        "operating_status_check": "Active — Yelp updated June 2026, patientconnect365 confirms Suite 200 at 1556 S Michigan Ave",
+        "same_door_check": "Suite 200 at 1556 S Michigan Ave. Confirmed active. No same-door ambiguity.",
+        "protected_network_status": "not_protected (Reznikov is not a protected surname)",
+        "disposition": "merge_eligible_new",
+        "rebucket_from": "hold_needs_more_evidence",
+        "rebucket_reason": "Raw file held because 'T3 not T4/T5/T6' and 'Hold pending assessment of whether T3 warrants a corporate reclassification.' This is exactly the T3 policy question now ratified. Evidence satisfies T3 bar: exact-address own-locator confirmed, named sole owner Dr. Reznikov, 2-location group, no MSO. Agent confidence HIGH.",
+        "annotation": "t3_policy_ratified_20260702",
+        "hold_reason": null,
+        "dso_structure_rationale": "Dentist-owned 2-location group: Dental Group of Chicago (South Loop, 1556 S Michigan Ave Suite 200) + Cityview Dental Arts (Bucktown, 2232 W Armitage Ave). Founder Dr. Alexander Reznikov DDS confirmed as sole owner (own website, LinkedIn). No external MSO, DSO platform, or PE sponsor. T3 counts as Consolidated under ratified policy; NOT DSO/PE headline.",
+        "evidence": {
+          "durable_evidence": "dentalgroupofchicago.com own website lists '1556 S. Michigan Ave, Suite 200, Chicago, IL 60605' as South Loop location with phone (312) 588-0043 — exact DB match. Second location Cityview Dental Arts at 2232 W Armitage Ave Chicago IL 60647 confirmed on own website and Dr. Reznikov's LinkedIn.",
+          "evidence_urls": [
+            "https://dentalgroupofchicago.com/",
+            "https://dentalgroupofchicago.com/contact/",
+            "https://dentalgroupofchicago.com/our-office/",
+            "https://www.yelp.com/biz/dental-group-of-chicago-chicago?start=40",
+            "https://www.linkedin.com/in/alexander-reznikov-673b5010",
+            "https://www.zocdoc.com/dentist/alexander-reznikov-dds-175416"
+          ],
+          "searches_executed": 3,
+          "owner": "Dr. Alexander Reznikov, DDS (founder/sole owner per own website)",
+          "location_count": "2 (both IL in-scope: South Loop 60605 + Bucktown 60647)",
+          "mso_pe_check": "None found. Agent confirmed 'No external MSO, DSO platform, or PE sponsor identified.'"
+        }
+      },
+      {
+        "location_id": "6c31d482e9a63431",
+        "rank": 100,
+        "practice_name": "Advanced Family Dental",
+        "address": "150 Brook Forest Ave",
+        "city": "Shorewood",
+        "zip": "60404",
+        "state": "IL",
+        "source_lane": "lane3_phasec_51_100",
+        "candidate_types": ["brand_chain"],
+        "proposed_tier": "branded_dso (T5)",
+        "gate_tier_status": "endorsed",
+        "pe_backed": true,
+        "pe_sponsor_cited": "Shore Capital Partners (via Great Lakes Dental Partners portfolio)",
+        "in_current_310": false,
+        "operating_status_check": "Active — Yelp 26 reviews, own website advancedfamilydental.com/locations/shorewood/ confirms address",
+        "same_door_check": "150 Brookforest Ave is a standalone dental office in Shorewood. No same-door tenancy concerns.",
+        "protected_network_status": "not_protected",
+        "disposition": "merge_eligible_new",
+        "rebucket_from": null,
+        "rebucket_reason": null,
+        "annotation": null,
+        "hold_reason": null,
+        "dso_structure_rationale": "DSO=STRUCTURE satisfied: Great Lakes Dental Partners (GLDP) is a confirmed DSO with 40+ Chicagoland partner locations, described as 'The Midwest's Premier Dental Support Organization.' GLDP own locations page explicitly lists Shorewood at 150 Brookforest Ave. GLDP PE-backed by Shore Capital Partners (shorecp.com confirmed). Advanced Family Dental & Orthodontics PC affiliated with GLDP in June 2018 per GLDP press release. pe_backed=true (Shore Capital Partners documented).",
+        "evidence": {
+          "durable_evidence": "GLDP own locator greatlakesdentalpartners.com/company/locations/ explicitly lists 'Advanced Family Dental & Orthodontics' Shorewood at '150 Brookforest Ave, Shorewood, IL 60404'. Advanced Family Dental own website advancedfamilydental.com/locations/shorewood/ confirms same address.",
+          "evidence_urls": [
+            "https://www.advancedfamilydental.com/locations/shorewood/",
+            "https://www.greatlakesdentalpartners.com/company/locations/",
+            "https://www.greatlakesdentalpartners.com/news/2018/06/11/chicagoland-smile-group-doubles-in-size-with-advanced-family-dental-partnership/",
+            "https://www.shorecp.com/companies/great-lakes-dental-partners",
+            "https://www.shorecp.com/news/shore-capital-partners-announced-an-investment-in-great-lakes-dental-partners",
+            "https://www.yelp.com/biz/advanced-family-dental-and-orthodontics-shorewood"
+          ],
+          "searches_executed": 4,
+          "pe_acquisition_source": "GLDP press release June 2018 (greatlakesdentalpartners.com/news/) + shorecp.com/companies/great-lakes-dental-partners"
+        }
+      }
+    ],
+    "hold_protected_network": [
+      {
+        "location_id": "e50dfc828412c437",
+        "rank": 52,
+        "practice_name": "SANEI CENTER PC",
+        "address": "2604 w n ave",
+        "city": "CHICAGO",
+        "zip": "60647",
+        "protected_lock": "NITTINGER",
+        "disposition": "hold_protected_network",
+        "hold_reason": "Pre-flagged _pre_flag_protected_network=NITTINGER. Mandatory hold regardless of evidence. Research confirmed Dr. Behzad Sanei at this address operating as Northwestern Dental Clinic Ltd with multiple locations, but NITTINGER flag overrides all chain evidence.",
+        "qa_flags": ["pre_flag_protected_network_NITTINGER", "mandatory_hold_no_release"]
+      },
+      {
+        "location_id": "dff2693b4fb03dd6",
+        "rank": 60,
+        "practice_name": "Gentle Dental Smile",
+        "address": "5537 county farm rd",
+        "city": "HANOVER PARK",
+        "zip": "60133",
+        "protected_lock": "SHAFI",
+        "disposition": "hold_protected_network",
+        "hold_reason": "Pre-flagged _pre_flag_protected_network=SHAFI. Sohail Shafi in owner_identity. TWO RIVERS DENTAL PC in legal entities is a known Shafi-network entity. Mandatory hold regardless of surface evidence (Dr. Ami Shah is named owner on website).",
+        "qa_flags": ["MANDATORY_pre_flag_protected_network_SHAFI", "TWO_RIVERS_DENTAL_PC_shafi_entity"]
+      },
+      {
+        "location_id": "c761b821046ed157",
+        "rank": 61,
+        "practice_name": "Gentle Dental Care Brookfield",
+        "address": "9026 31st st",
+        "city": "BROOKFIELD",
+        "zip": "60513",
+        "protected_lock": "SHAFI",
+        "disposition": "hold_protected_network",
+        "hold_reason": "Pre-flagged _pre_flag_protected_network=SHAFI. Sohail Shafi in owner_identity. Additionally, address may now be occupied by Forte Dentistry (Gentle Dental may have closed or relocated) — but protected hold is mandatory regardless of operating-status concern.",
+        "qa_flags": ["MANDATORY_pre_flag_protected_network_SHAFI", "operating_status_concern_address_may_be_forte_dentistry"]
+      },
+      {
+        "location_id": "895ecae72eb372df",
+        "rank": 82,
+        "practice_name": "Ashton Dental",
+        "address": "1137 n eola rd",
+        "city": "AURORA",
+        "zip": "60502",
+        "protected_lock": "SHAFI",
+        "disposition": "hold_protected_network",
+        "hold_reason": "Pre-flagged _pre_flag_protected_network=SHAFI. Dr. Reem Shafi (SHAFI surname) confirmed as owner/practitioner at this address per Yelp/web. Mandatory hold.",
+        "qa_flags": ["MANDATORY_pre_flag_protected_network_SHAFI", "reem_shafi_confirmed_at_address"]
+      }
+    ],
+    "hold_scope_specialist": [
+      {
+        "location_id": "4e5d4d3e6b5b153a",
+        "rank": 56,
+        "practice_name": "Robert J Ryan DDS PC",
+        "address": "25301 w cuba rd",
+        "city": "Barrington",
+        "zip": "60010",
+        "disposition": "hold_scope_specialist",
+        "hold_reason": "Dr. Robert J Ryan is a periodontist (Prospect Periodontal and Implant Center, ryanperio.com). Periodontics is a specialty excluded from the GP consolidation denominator. Additionally, the NPPES Barrington address may be a prior/satellite registration; live practice is at Mt. Prospect.",
+        "qa_flags": ["periodontist_out_of_gp_scope", "address_may_be_inactive_registration"]
+      },
+      {
+        "location_id": "cedf0257b26ccce2",
+        "rank": 62,
+        "practice_name": "Oral Health Ctr",
+        "address": "2160 s 1st ave",
+        "city": "MAYWOOD",
+        "zip": "60153",
+        "disposition": "hold_scope_specialist",
+        "hold_reason": "Loyola University Medical Center Oral Health Center, operated by Loyola Medicine (Trinity Health system). Exact address confirmed via loyolamedicine.org. 53 NPPES providers = university teaching clinic + maxillofacial surgery department. T6_institutional — hospital-owned academic clinic, out of scope for PE floor denominator. Note: DB classifies as dso_regional with db_affiliated_dso=TRINITY HEALTH; this reflects the health-system parent, not a dental DSO structure.",
+        "qa_flags": ["T6_institutional_confirmed", "trinity_health_hospital_system_not_DSO"]
+      },
+      {
+        "location_id": "bea95e6f7396b49d",
+        "rank": 99,
+        "practice_name": "Singh Dental",
+        "address": "7712 W N Ave",
+        "city": "Elmwood Park",
+        "zip": "60707",
+        "disposition": "hold_scope_specialist",
+        "hold_reason": "Dr. Neil Singh is an endodontist (root canal specialist). Confirmed via medicarelist.com and doctorsnetwork.com. Specialist scope — excluded from GP denominator regardless of any chain ownership.",
+        "qa_flags": ["specialist_endodontist_out_of_gp_scope"]
+      }
+    ],
+    "hold_needs_more_evidence": [
+      {
+        "location_id": "dafed24beb7ecc74",
+        "rank": 53,
+        "practice_name": "UNITED DENTAL GROUP PLLC",
+        "address": "50 marion ln",
+        "city": "STREAMWOOD",
+        "zip": "60107",
+        "disposition": "hold_needs_more_evidence",
+        "hold_reason": "Brand-chain signal 'UNITED' spanning 3 ZIPs is a weak brand-name signal. Confirmed occupant at 50 Marion Ln is Dr. Munir Gomaa (who practices under 'My Galleria Dental' in Mundelein, not United Dental Group). No documentary URL links these locations under common ownership or MSO. Possible coincidental brand-name match.",
+        "qa_flags": ["brand_name_only_no_artifact", "fried_gomaa_link_unverified"]
+      },
+      {
+        "location_id": "d1ec8b09e0a87323",
+        "rank": 55,
+        "practice_name": "Dentalworks",
+        "address": "9215 skokie blvd",
+        "city": "SKOKIE",
+        "zip": "60077",
+        "disposition": "hold_needs_more_evidence",
+        "hold_reason": "DentalWorks/Sonrava Health DSO brand confirmed (T5 candidate). However, the DentalWorks own locator lists Skokie office at 9312 Skokie Blvd — the DB record has 9215 Skokie Blvd. Street number mismatch (9215 vs 9312) cannot be resolved without confirmation that these are the same door. All available sources (dentalworks.com, Yelp, BBB) confirm 9312, not 9215. Hold pending address reconciliation.",
+        "qa_flags": ["address_number_mismatch_9215_vs_9312", "dso_brand_confirmed_sonrava_dentalworks", "pe_backing_confirmed_new_mountain_capital"]
+      },
+      {
+        "location_id": "1d7f183a8cd41c41",
+        "rank": 58,
+        "practice_name": "HAMILTON LAKES DENTISTRY GROUP, PLLC",
+        "address": "500 park blvd",
+        "city": "ITASCA",
+        "zip": "60143",
+        "disposition": "hold_needs_more_evidence",
+        "hold_reason": "Shared EIN 432052561 with rank 59 (Acierno Dental, the DecisionOne DSO founders' practice) and geographic proximity to DecisionOne HQ (300 Park Blvd vs 500 Park Blvd, same business park) are suggestive of a T4 stealth-DSO relationship. However, no OWN DecisionOne affiliate locator page was found listing 500 Park Blvd Itasca as a DecisionOne affiliated practice. Hamilton Lakes website and Dr. Conti's bio contain zero DSO/DecisionOne disclosure. EIN on landmine blocklist. Cannot reach merge_eligible_new without own-locator artifact.",
+        "qa_flags": ["EIN_432052561_shared_with_decisionone_founders", "no_own_decisionone_locator_for_500_park_blvd", "EIN_on_landmine_blocklist"]
+      },
+      {
+        "location_id": "f2a0c9109d3fbbce",
+        "rank": 59,
+        "practice_name": "Acierno Dental",
+        "address": "1699 e woodfield rd",
+        "city": "SCHAUMBURG",
+        "zip": "60173",
+        "disposition": "hold_needs_more_evidence",
+        "hold_reason": "Acierno Dental is the founding practice of DecisionOne Dental Partners DSO co-founders (Dr. AJ Acierno CEO). Strong circumstantial evidence (shared EIN 432052561, DecisionOne Dental Plan icon on Acierno website, same geographic cluster). However, no OWN DecisionOne affiliate locator was found explicitly listing 1699 E Woodfield Rd as a formal DecisionOne affiliate. EIN on landmine blocklist. Cannot reach merge_eligible_new without own-locator artifact.",
+        "qa_flags": ["dr_aj_acierno_confirmed_CEO_decisionone", "EIN_432052561_on_landmine_blocklist", "no_own_decisionone_locator_for_woodfield_rd"]
+      },
+      {
+        "location_id": "ab7f0dea9951c4c3",
+        "rank": 63,
+        "practice_name": "WESTGROVE DENTAL CENTER",
+        "address": "519 n cass ave",
+        "city": "WESTMONT",
+        "zip": "60559",
+        "disposition": "hold_needs_more_evidence",
+        "hold_reason": "DB affiliated_dso 'Dental Salon' brand has zero web corroboration — no OWN locator page or brand website lists this address under that name. Westgrove Dental website redirects to Chawla Orthodontics (Suite 401, same building), suggesting possible common management but no DSO structure confirmed. The 'Dental Salon' label appears to be a false or stale DB artifact.",
+        "qa_flags": ["dental_salon_brand_unverified_no_web_evidence", "website_redirects_to_chawla_ortho", "no_DSO_structure_confirmed"]
+      },
+      {
+        "location_id": "fe19edb1f0014470",
+        "rank": 68,
+        "practice_name": "Patel Dental",
+        "address": "217 sunbury dr",
+        "city": "SAINT CHARLES",
+        "zip": "60175",
+        "disposition": "hold_needs_more_evidence",
+        "hold_reason": "Zero web presence for any dental practice at 217 Sunbury Dr, Saint Charles IL. DB phone (189) 074-5905 is malformed (not a valid US number). Operating status unknown. Cannot confirm active practice or chain affiliation. Hold for manual verification.",
+        "qa_flags": ["malformed_phone_number_in_db", "zero_web_presence", "operating_status_unknown"]
+      },
+      {
+        "location_id": "d2e4b594fa3fddf0",
+        "rank": 69,
+        "practice_name": "Patel Dental",
+        "address": "1507 w jefferson st",
+        "city": "JOLIET",
+        "zip": "60435",
+        "disposition": "hold_needs_more_evidence",
+        "hold_reason": "Yelp (Feb 2026) marks 'AT DENTAL' at 1507 W Jefferson St as CLOSED. 'Patel Dental' DBA not confirmed at this address by any current listing. Operating status closed or relocated. Hold rather than reject because 'Amerident Dental Center' at the '1507 1/2' unit variant may represent continuation, and the family_practice classification (2 providers) warrants verification before final disposition.",
+        "qa_flags": ["yelp_marks_at_dental_closed_feb_2026", "dba_mismatch", "closed_or_relocated_status"]
+      },
+      {
+        "location_id": "10f81b1377794d76",
+        "rank": 74,
+        "practice_name": "Patel Dental",
+        "address": "4642 s damen ave",
+        "city": "CHICAGO",
+        "zip": "60609",
+        "disposition": "hold_needs_more_evidence",
+        "hold_reason": "Operating brand at this address is 'Studio Dental PC' (Dr. Hetal Patel), not 'Patel Dental.' 'Patel Dental' in DB is an NPPES surname artifact. Dr. Hetal Patel does operate 3-4 locations (Studio Dental PC / HBP Dental PC across 4642 S Damen, West Chicago, Erie St Chicago, Lisle) — T3 structure is present. However: (1) no own-locator found listing 4642 S Damen explicitly as a Studio Dental branch; (2) the census candidate would need to be raised under 'Studio Dental PC' not 'Patel Dental.' Note for future: a new candidate under 'Studio Dental PC / HBP Dental PC' could be raised for T3 tracking.",
+        "qa_flags": ["DB_NAME_IS_PROVIDER_SURNAME_NOT_BRAND", "studio_dental_t3_but_no_own_locator_for_this_address", "raise_new_candidate_studio_dental"]
+      },
+      {
+        "location_id": "a56a841f0923d8aa",
+        "rank": 78,
+        "practice_name": "Smith Dental",
+        "address": "406b w boughton",
+        "city": "BOLINGBROOK",
+        "zip": "60440",
+        "disposition": "hold_needs_more_evidence",
+        "hold_reason": "Phone (630) 759-8940 links to Grove Dental (rank 79, confirmed NADG/PE-backed). Confirmed occupant at 406B W Boughton is Dr. Raymond Muehling DDS (oral surgeon) who also appears at Grove Dental's 160 E Boughton address. 'Smith Dental' DB name is likely a stale NPPES artifact. No own-locator listing 406B W Boughton as part of the Grove/NADG network. Hold for NPPES NPI audit and reconciliation with rank 79 Grove Dental.",
+        "qa_flags": ["phone_shared_with_grove_dental_nadg", "muehling_is_actual_occupant", "db_name_may_be_nppes_artifact"]
+      },
+      {
+        "location_id": "2991ce479c805e15",
+        "rank": 80,
+        "practice_name": "ADAMS FAMILY DENTAL",
+        "address": "5600 w 87th st",
+        "city": "BURBANK",
+        "zip": "60459",
+        "disposition": "hold_needs_more_evidence",
+        "hold_reason": "Owner Dr. Sammy Elmosa confirmed at this address. Phone cluster signal (708) 952-0000 suggests a second Elmosa location (Premiere Family Dental in Oak Lawn area). T3 dentist_multi structure plausible but no own-locator listing multiple Adams/Elmosa GP addresses under a unified brand was found. DB website (Othmanorthodontics.com) is a co-tenant orthodontic specialist, not the GP owner. Hold pending own-locator identification for second Elmosa location.",
+        "qa_flags": ["phone_cluster_partner_location_unidentified", "db_website_is_co_tenant_orthodontist", "elmosa_multi_loc_not_own_locator_confirmed"]
+      },
+      {
+        "location_id": "5d8caf7fea99b08c",
+        "rank": 81,
+        "practice_name": "DENTAL GROUP OF NAPERVILLE, P.C.",
+        "address": "1012 95th st",
+        "city": "NAPERVILLE",
+        "zip": "60564",
+        "disposition": "hold_needs_more_evidence",
+        "hold_reason": "Address 1012 95th St Suite 5, Naperville is occupied by 'Right Choice Dental Care' (Dr. Pinal Patel), not 'Dental Group of Naperville P.C.' DB shows 0 providers — may be a shell/billing NPI. Right Choice Dental is a 3-location independent group but the entity name does not map cleanly to the DB record. Cannot confirm merge_eligible_new without clear ownership linkage artifact.",
+        "qa_flags": ["entity_name_mismatch", "zero_providers_billing_shell_npi", "right_choice_dental_independent_t3_candidate_if_confirmed"]
+      },
+      {
+        "location_id": "1d1dd47a095f2a3c",
+        "rank": 84,
+        "practice_name": "Ahmed Dental",
+        "address": "32 saint germain pl",
+        "city": "ST CHARLES",
+        "zip": "60175",
+        "disposition": "hold_needs_more_evidence",
+        "hold_reason": "Dr. Ahsan Ahmed confirmed at this address but no 'Ahmed Dental' own-locator found. Vitals reports Dr. Ahmed at up to 8 locations — if a unified locator can be found listing 32 Saint Germain Pl, this could be T3 dentist_multi. 'Ahmed' and 'Parveen Ahmed' (rank 85) are different individuals — no chain link confirmed. Hold for own-locator investigation.",
+        "qa_flags": ["SURNAME_COMMON", "multi_loc_hint_8_locations_per_vitals", "no_own_locator_found"]
+      },
+      {
+        "location_id": "d5bc3bf5857f56a4",
+        "rank": 87,
+        "practice_name": "Chicago Dental",
+        "address": "5111 academy dr",
+        "city": "Lisle",
+        "zip": "60532",
+        "disposition": "hold_needs_more_evidence",
+        "hold_reason": "No web presence found for any dental practice at 5111 Academy Dr, Lisle. DB website Cds.Org is the Chicago Dental Society (professional association), not a dental practice. Operating status unknown. Generic geographic brand name. Hold for address verification.",
+        "qa_flags": ["website_hint_is_wrong_entity_dental_society", "generic_geographic_brand_name", "address_unverifiable_online"]
+      },
+      {
+        "location_id": "2292e39949e40482",
+        "rank": 90,
+        "practice_name": "Hussain Dental",
+        "address": "7455 kenneth ave",
+        "city": "SKOKIE",
+        "zip": "60076",
+        "disposition": "hold_needs_more_evidence",
+        "hold_reason": "No web presence for 'Hussain Dental' at 7455 Kenneth Ave, Skokie. Active multi-location Hussain dentist in Skokie is Dr. Shahvar Hussain of Vista Dental (3602 W Touhy Ave — different address). Cannot confirm or reject without IDFPR registry or physical verification.",
+        "qa_flags": ["address_not_confirmed_via_web", "vista_dental_hussain_at_different_skokie_address"]
+      }
+    ],
+    "rejected": [
+      {
+        "location_id": "000edca935b84b40", "rank": 51, "practice_name": "Patel Dental", "city": "SCHAUMBURG", "zip": "60193",
+        "disposition": "rejected", "proposed_tier": "T1_true_independent",
+        "rejection_reason": "Resolved to 'VIP Dentists — Dr. Vinay Patel DDS,' solo independent since 1991. 'Patel' is a dentist surname, not a DSO brand — coincidental surname match across unrelated practices.",
+        "key_urls": ["https://www.yelp.com/biz/vip-dentists-vinay-patel-dds-schaumburg-2", "http://www.vipdentists.net/"]
+      },
+      {
+        "location_id": "1db785090b4b1093", "rank": 57, "practice_name": "Pieta, Anna Dmd", "city": "EVANSTON", "zip": "60201",
+        "disposition": "rejected", "proposed_tier": "T6_institutional",
+        "rejection_reason": "2650 Ridge Ave Evanston is NorthShore University HealthSystem's Evanston Hospital campus. Dr. Pieta practices in the hospital dental clinic — T6 institutional, out of scope.",
+        "key_urls": ["https://www.northshore.org/dentistry"]
+      },
+      {
+        "location_id": "79699d37d4b4c43b", "rank": 64, "practice_name": "Matesi, Christopher DDS", "city": "CHICAGO", "zip": "60604",
+        "disposition": "rejected", "proposed_tier": "non_clinical_org_npi",
+        "rejection_reason": "141 W Jackson Blvd Suite 210 is Elite Dental Partners LLC corporate HQ (non-clinical). Dr. Matesi practices clinically at a different address (111 W Jackson). Org NPI for billing entity, not a patient-facing GP location.",
+        "key_urls": ["https://www.elitedentalpartners.com/contact-us/", "https://www.cresseyco.com/partnerships/elite-dental-partners"]
+      },
+      {
+        "location_id": "2ec00407fa94401c", "rank": 65, "practice_name": "Patel Dental", "city": "PROSPECT HEIGHTS", "zip": "60070",
+        "disposition": "rejected", "rejection_reason": "Dr. Preshita Patel, solo established, LinkedIn: 'Associate Dentist - Private Practice.' Surname coincidence.",
+        "key_urls": ["https://www.doctor.com/Preshita-Patel"]
+      },
+      {
+        "location_id": "f342b2447ac0ef20", "rank": 66, "practice_name": "Patel Dental", "city": "PALATINE", "zip": "60074",
+        "disposition": "rejected", "rejection_reason": "Dr. Hiren Patel, solo practitioner. Surname coincidence.",
+        "key_urls": ["https://doctor.webmd.com/doctor/hiren-patel-d3e5e026-6ac0-469b-bd5d-2879f5c4606f-overview"]
+      },
+      {
+        "location_id": "76e51eaca195a41d", "rank": 67, "practice_name": "Patel Dental", "city": "FRANKLIN PARK", "zip": "60131",
+        "disposition": "rejected", "rejection_reason": "Patel Family Dentistry at 9663 Franklin Ave is a confirmed single-location small group under Dr. Smita Patel. No multi-location chain. Distinct DBA from other Patel batch members.",
+        "key_urls": ["https://patelfamilydentist.com/contact/"]
+      },
+      {
+        "location_id": "aa71dced81c01725", "rank": 70, "practice_name": "Patel Dental", "city": "TINLEY PARK", "zip": "60487",
+        "disposition": "rejected", "rejection_reason": "Dr. Parth/Palak Patel at 18175 Goesel Dr. Possible link to Patel Family Dental (Orland Park) but no own-locator confirmed for 18175 Goesel Dr. Chain candidate cannot be confirmed without exact-address own-locator. Surname coincidence; solo/small-group independent.",
+        "key_urls": ["https://patelorlanddental.com/"]
+      },
+      {
+        "location_id": "79820eec34c75071", "rank": 71, "practice_name": "Patel Dental", "city": "OAK BROOK", "zip": "60523",
+        "disposition": "rejected", "rejection_reason": "2 Oakbrook Center is an active DentalWorks/Sonrava Health DSO location. 'Patel Dental' is a data artifact — Dr. Amitkumar Patel is an associate at DentalWorks. Phone (201) 920-6233 is NJ area code, inconsistent with Oak Brook. Already corporate via DentalWorks pathway. No new promotion.",
+        "key_urls": ["https://www.dentalworks.com/team-member/amitkumar-patel/"]
+      },
+      {
+        "location_id": "5a5c1128b6592556", "rank": 72, "practice_name": "Patel Dental", "city": "PLAINFIELD", "zip": "60586",
+        "disposition": "rejected", "rejection_reason": "2111 S Route 59 Plainfield is 'Today's Dental of Plainfield' (Dr. Deepak Agarwal, 3-location owner group). 'Patel Dental' in DB is an NPPES artifact (Dr. Raunak Patel is an associate, not owner). Note: Today's Dental T3 structure is real, but the DB record (solo-associate NPI, provider_count=1) is not a clean vehicle for T3 promotion — the operating entity NPI should be raised as a separate candidate. Rejected on both grounds: NPPES name artifact and ambiguous DB record.",
+        "key_urls": ["https://todaysdentalofil.com/"]
+      },
+      {
+        "location_id": "0b858ae62242579a", "rank": 73, "practice_name": "Patel Dental", "city": "CHICAGO", "zip": "60607",
+        "disposition": "rejected", "rejection_reason": "Dr. Samir Patel solo independent at 939 W Madison St. Surname coincidence. Area code (217) inconsistent with Chicago 60607.",
+        "key_urls": ["https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60607/invite-samir-patel-dmd-16947"]
+      },
+      {
+        "location_id": "05126f9fe2f10564", "rank": 75, "practice_name": "Patel Dental", "city": "CHICAGO", "zip": "60609",
+        "disposition": "rejected", "rejection_reason": "DB address field is 'ganger family dentistry of chicago' — a practice name, not a street address. Corrupt/invalid address record. Phone (773) 247-5554 belongs to Ganger Family Dentistry (1858 W 35th St), a completely different independent practice with no Patel association. DB record should be flagged for cleanup.",
+        "key_urls": ["https://www.gangerfamilydentistry.com/"]
+      },
+      {
+        "location_id": "c3d3b80e7c83e643", "rank": 76, "practice_name": "Patel Dental", "city": "CHICAGO", "zip": "60636",
+        "disposition": "rejected", "rejection_reason": "Dr. Jigisha Patel DDS Inc, solo practice at 1608 W 69th St. Area code (847) inconsistent with Chicago 60636. Surname coincidence.",
+        "key_urls": ["https://npiprofile.com/npi/1669645016"]
+      },
+      {
+        "location_id": "ff53483bd86236a9", "rank": 77, "practice_name": "Patel Dental", "city": "CHICAGO", "zip": "60647",
+        "disposition": "rejected", "rejection_reason": "Dr. Naranbhai P. Patel DDS, solo practice at 3426 W Armitage Ave. Confirmed single-location by multiple directories. Surname coincidence.",
+        "key_urls": ["https://www.yelp.com/biz/patel-n-p-dds-chicago"]
+      },
+      {
+        "location_id": "8e82aa542ebe0e55", "rank": 85, "practice_name": "Ahmed Dental", "city": "HOFFMAN ESTATES", "zip": "60194",
+        "disposition": "rejected", "rejection_reason": "Dr. Parveen Ahmed at 1000 Grand Canyon Pkwy Suite 209 — different individual from Dr. Ahsan Ahmed (rank 84). 'Ahmed' is a common surname. 1000 Grand Canyon Pkwy is a multi-tenant building with 4+ independent dental practices. Surname coincidence.",
+        "key_urls": ["https://doctor.webmd.com/doctor/parveen-ahmed-7b862c83-989e-47fc-b7f0-57ce9770ef74-overview"]
+      },
+      {
+        "location_id": "3a29ef2b56dbf3a4", "rank": 86, "practice_name": "Ahmed Dental", "city": "CHICAGO", "zip": "60605",
+        "disposition": "rejected", "rejection_reason": "Dr. Zoya Ahmed, solo independent at 820 S Michigan Ave. The 5-ZIP 'AHMED' brand-chain signal is a common-surname coincidence. No shared locator or legal entity.",
+        "key_urls": ["https://www.healthgrades.com/dentist/dr-zoya-ahmed-u32349v"]
+      },
+      {
+        "location_id": "0754c1b31e27537e", "rank": 89, "practice_name": "CHICAGO DENTAL CARE INC", "city": "CHICAGO", "zip": "60626",
+        "disposition": "rejected", "rejection_reason": "Dr. Hossein Araghi DMD, solo independent at 7122 N Clark St. 'Chicago Dental Care' is a DBA for his solo practice. The brand-092 network clustering 'CHICAGO' practices reflects a generic geographic term used by unrelated independent providers.",
+        "key_urls": ["https://www.yelp.com/biz/chicago-dental-care-chicago"]
+      },
+      {
+        "location_id": "921961e587c8ee15", "rank": 91, "practice_name": "Hussain Dental", "city": "CICERO", "zip": "60804",
+        "disposition": "rejected", "rejection_reason": "5533 W Cermak Rd is 'Cermak Dental Center' — 'Hussain Dental' is an NPPES artifact (Dr. Uzma Hussain is an associate dentist across multiple DSO locations, not a chain owner). Surname coincidence.",
+        "key_urls": ["https://www.superpages.com/cicero-il/bpp/cermak-dental-center-460245017"]
+      },
+      {
+        "location_id": "6842efba2c7ced6a", "rank": 92, "practice_name": "Adams Dental", "city": "NORTHFIELD", "zip": "60093",
+        "disposition": "rejected", "rejection_reason": "Dr. Thomas Adams PC, single-location cosmetic/implant practice. Owner_identity 'Sammy Elmosa' is contradicted by all evidence. Surname coincidence across 4 ZIPs.",
+        "key_urls": ["https://www.yelp.com/biz/thomas-adams-ficd-northfield"]
+      },
+      {
+        "location_id": "32a6165e9eaf9231", "rank": 93, "practice_name": "Sharma Dental", "city": "BLOOMINGDALE", "zip": "60108",
+        "disposition": "rejected", "rejection_reason": "144 Ring Neck Ln Bloomingdale is a residential single-family home (Redfin/Zillow confirmed). Dr. Dalvina Sharma's clinical office is at 'Blooming Smiles Dental Studio' at 156 E Lake St. NPPES home/mailing address — not a clinical location.",
+        "key_urls": ["https://www.redfin.com/IL/Bloomingdale/144-Ring-Neck-Ln-60108/home/18188885"]
+      },
+      {
+        "location_id": "464aa774d5c0a9aa", "rank": 94, "practice_name": "Sharma Dental", "city": "ELGIN", "zip": "60124",
+        "disposition": "rejected", "rejection_reason": "344 Shadow Hill Dr Elgin is Dr. Dalvina Sharma's NPPES mailing/registration address (residential street pattern). Clinical offices are in Bloomingdale and Melrose Park. Not a clinical location. Dalvina Sharma and Nishu Sharma (rank 95) are distinct individuals — no chain link.",
+        "key_urls": ["https://doctor.webmd.com/doctor/dalvina-sharma-e24da300-a40f-4117-925a-47ed592d08dd-overview"]
+      },
+      {
+        "location_id": "9bb1395f99eeb82f", "rank": 95, "practice_name": "Sharma Dental", "city": "HANOVER PARK", "zip": "60133",
+        "disposition": "rejected", "rejection_reason": "719 Weymouth Cir Hanover Park is a residential/mailing NPPES address. Dr. Nishu Sharma's clinical practice is Hanover Park Dental Clinic at 1098 E Lake St. She is an associate dentist, not a chain owner. No 'Sharma Dental' chain structure exists.",
+        "key_urls": ["https://www.hanoverparkdentalcare.com/dentist-in-hanover-park.html"]
+      },
+      {
+        "location_id": "27a8481dddeb5059", "rank": 96, "practice_name": "Singh Dental", "city": "Glendale Heights", "zip": "60139",
+        "disposition": "rejected", "rejection_reason": "Dr. Gundeep Singh solo at 1812 Churchill Ln. No own-locator linking to other 'Singh Dental' locations. Surname coincidence — 4 different Singh dentists across 4 ZIPs.",
+        "key_urls": ["https://www.opencare.com/dentists/glendale-heights-il/"]
+      },
+      {
+        "location_id": "b1dceda037f642e5", "rank": 97, "practice_name": "Singh Dental", "city": "Justice", "zip": "60458",
+        "disposition": "rejected", "rejection_reason": "Dr. Ramneek Singh DMD, solo at 7958 S 84th Ct Justice. Different individual from other Singh leads. Surname coincidence.",
+        "key_urls": ["https://www.edscare.com/dr-ramneek-singh"]
+      },
+      {
+        "location_id": "74416954fc3b4d1e", "rank": 98, "practice_name": "Singh Dental", "city": "Chicago", "zip": "60657",
+        "disposition": "rejected", "proposed_tier": "T6_institutional",
+        "rejection_reason": "913 W Wellington Ave is Advocate Dental Center / Advocate Medical Group Dentistry (Advocate Health and Hospitals Corporation, confirmed via NPI registry NPI 1588109151 and Advocate's own website). 13 providers = hospital dental department. 'Singh Dental' DB name is a data error. T6 institutional — out of scope.",
+        "key_urls": ["https://www.advocatehealth.com/locations/advocate-medical-group-dentistry-chicago-60657", "https://opennpi.com/provider/1588109151"]
+      }
+    ]
+  }
+}

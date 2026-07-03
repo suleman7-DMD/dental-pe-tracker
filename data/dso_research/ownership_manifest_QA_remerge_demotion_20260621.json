@@ -1,0 +1,90 @@
+{
+  "_meta": {
+    "qa_pass": "re-merge demotion verification (8-point checklist)",
+    "author": "QA validation-gate session (review-only, New session #1)",
+    "date": "2026-06-21",
+    "role": "independent adversarial QA / validation-gate; REVIEW-ONLY; no DB writes; no mutation of prior QA files",
+    "canonical_object_reviewed": "data/dso_research/consolidation_candidate_manifest_20260621.json",
+    "manifest_mtime_at_review": 1782070049,
+    "prior_qa_files_NOT_mutated": [
+      "ownership_manifest_QA_reach4_lane1b_merge_20260621.json",
+      "ownership_manifest_QA_merged_20260621.json",
+      "ownership_manifest_QA_revision_signoff_20260621.json",
+      "ownership_manifest_QA_addendum_refined_criteria_20260621.json",
+      "ownership_evidence_QA_fleet_b_lane3_20260621.json"
+    ],
+    "context": "This re-merge is the Gate Owner's response to my prior MUST-FIX-BEFORE-CONSOLIDATE (demote 4 closed/operating-status-unverified rows). qa_mustfix_actions.pass == 'pre-wave3 QA MUST-FIX' — it is the demotion ONLY; no Wave 3 wave and no new Fleet B wave landed in this re-merge."
+  },
+  "delta_observed": {
+    "ready_to_validate": {"before": 210, "after": 206, "delta": -4},
+    "needs_more_evidence": {"before": 158, "after": 162, "delta": 4},
+    "ready_tier_dentist_multi": {"before": 80, "after": 76, "delta": -4},
+    "interpretation": "Pure 4-row demotion ready->needs_more_evidence. 206 + 4 = 210. No other adds/removes/retiers."
+  },
+  "checklist_results": {
+    "1_four_closed_unverified_rows_demoted": {
+      "verdict": "PASS",
+      "location_ids": ["1fa86e6647cd57c5", "b184f060d46970cd", "d5bc28878405a18c", "e493e4371bb5cb22"],
+      "detail": "All 4 rows now ready=False / needs_more_evidence=True. dentist_multi tier preserved as intelligence (not deleted). Documented in manifest.qa_mustfix_actions with reason: self-flag as candidate / closed / operating-status-unverified; active-door operating status is NOT verifiable by consolidate_census.py --validate-only (schema/DB-state gate only). Held pending an operating-status corroborator. Note: e493e4371bb5cb22=Khurana, d5bc28878405a18c=Palella."
+    },
+    "2_ready_count_reflects_demotion": {
+      "verdict": "PASS",
+      "detail": "ready_to_validate = 206 distinct location_ids, 0 duplicates. Partition clean across buckets. 206 (ready) + 4 (demoted) = 210 (prior ready). No spurious additions masked the demotion."
+    },
+    "3_wave3_overlaps_deduped": {
+      "verdict": "N/A",
+      "detail": "qa_mustfix_actions.pass == 'pre-wave3 QA MUST-FIX'. No Wave 3 overlap merge has landed in this re-merge. This check goes live when the Gate Owner produces the actual Wave 3 merge."
+    },
+    "4_fleet_b_overlaps_deduped": {
+      "verdict": "N/A",
+      "detail": "No NEW Fleet B wave landed in this re-merge (the existing fleet_b_lane1B_dispositions / reach4_network_release_decisions are carried forward unchanged from the prior merge, already QA'd PASS in ownership_manifest_QA_reach4_lane1b_merge_20260621.json). This check goes live when a new Fleet B wave is merged."
+    },
+    "5_no_ao_reach_only_row_in_ready": {
+      "verdict": "PASS",
+      "detail": "0 rows in ready_to_validate rest on AO-reach as their sole basis. AO reach remains a discovery signal, not proof of consolidation; ready rows carry an independent evidence_basis (web_verified / locator / structural / intel_dossier / corroborated name_chain with artifacts)."
+    },
+    "6_no_brand_substring_only_in_dso_tier": {
+      "verdict": "PASS",
+      "dso_tier_ready_rows": 85,
+      "detail": "0 DSO-tier (branded_dso/stealth_dso) ready rows rest on a brand substring match alone. DSO-tier placement is backed by structure/MSO/management-co/parent/EIN/locator evidence per the Gate Owner's dso_is_structure_not_pe + locator_is_not_mso rules."
+    },
+    "7_network_intelligence_sidecars_survived": {
+      "verdict": "PASS",
+      "detail": "All future-app intelligence sidecars survived the re-merge intact.",
+      "evidence": {
+        "ao_network_intelligence.keys": ["_provenance", "_meta", "networks", "individuals", "wave2_reach4"],
+        "wave1_networks": 6,
+        "wave1_network_ids": ["ao:SHAFI_SOHAIL", "ao:NITTINGER_RACHEL", "ao:BRUNETTI_ROBERT", "ao:SWEIS_JUBRAIL", "ao:LABINOV_BORIS", "ao:RAMAHA_AHMED"],
+        "wave2_reach4_networks": 14,
+        "ao_individuals": 13,
+        "reach4_network_release_decisions.summary": {"reach4_rows": 56, "released_ready": 43, "backfill": 7, "held_in_conflicts": 5, "dup_already_ready": 1},
+        "fleet_b_lane1B_dispositions": {"classified_total": 61, "released_ready": 44, "to_backfill": 16, "needs_verification_preserved_in_sidecar": 258},
+        "fleet_b_lane1B_present": true,
+        "fleet_b_backfill_dispositions_present": true,
+        "ao_network_release_decisions_present": true,
+        "duplicate_denominator_blocked_present": true
+      },
+      "protected_network_leak_check": {
+        "SWEIS_rows_in_ready": 0,
+        "RAMAHA_rows_in_ready": 0,
+        "note": "Held protected networks (Sweis, Ramaha) did NOT leak into ready_to_validate. Honors do-not-release-without-main-session-release rule."
+      }
+    },
+    "8_closed_stale_org_only_specialist_held_or_excluded": {
+      "verdict": "PASS",
+      "detail": "0 self-referential closed/operating-status-unverified rows remain in ready (the 4 are now in needs_more_evidence). 0 excluded-type tiers present in ready (no org_only / specialist / da_unverified leakage into the consolidated tiers). 8 institutional rows intact and correctly tiered (T6)."
+    }
+  },
+  "overall_verdict": "PASS",
+  "summary": "The Gate Owner applied my MUST-FIX exactly: a pure 4-row demotion (ready 210->206), documented in qa_mustfix_actions, dentist_multi tier preserved as intelligence. Checks 1, 2, 5, 6, 7, 8 PASS. Checks 3 & 4 are N/A for this re-merge (it is the pre-wave3 demotion only; no Wave 3 / new Fleet B wave landed). All network-intelligence sidecars survived and held protected networks did not leak. No new evidence was re-judged (operating status is out-of-scope for consolidate_census.py --validate-only).",
+  "consolidate_authorization": {
+    "status": "NOT AUTHORIZED",
+    "reason": "consolidate_census.py --allow-db-write is NOT authorized until the user explicitly says 'consolidate approved manifest'. consolidation_status remains FROZEN. This QA pass clears the schema/DB-state demotion only; it is not a consolidate trigger.",
+    "schema_db_state_validator_note": "If/when a structural pre-flight is wanted, the correct command is: python3 scrapers/consolidate_census.py --validate-only  (NEVER --allow-db-write). That validator gates SCHEMA/DB-state only; it does NOT re-judge evidence or operating status."
+  },
+  "open_items_for_future_qa": [
+    "When the actual Wave 3 overlap merge lands: run checks 3 (Wave 3 dedup) live.",
+    "When a NEW Fleet B wave merges: run check 4 (Fleet B dedup) live.",
+    "The 4 demoted rows remain in needs_more_evidence pending an operating-status corroborator (active-door verification) before they can re-enter ready."
+  ]
+}

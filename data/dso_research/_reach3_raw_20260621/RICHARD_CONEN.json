@@ -1,0 +1,102 @@
+{
+  "network": "RICHARD CONEN",
+  "network_id": "ao:CONEN_RICHARD",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Dr. Richard S. Conen DDS is a solo dentist who has practiced cosmetic/general dentistry in Skokie, IL since 1988. He is the owner-operator of the Skokie location (Richard S. Conen D.D.S., LLC / Old Orchard Smiles) and was confirmed 'President' of Gentle Dental Care P.C. at 5137 W Chicago Ave, Chicago — a second location that he owned and operated. The Chicago location (Gentle Dental Care PC) is listed as CLOSED per Yelp (updated October 2025). No DSO brand, MSO, management company, or PE backer identified. This is a dentist-owned two-location private group, one of which is stale/closed.",
+  "owner_operator_identity": "Dr. Richard S. Conen DDS, founder and president; practicing since 1988 in Skokie, IL",
+  "brand_trade_names": [
+    "Richard S. Conen DDS & Associates",
+    "Old Orchard Smiles",
+    "Gentle Dental Care P.C."
+  ],
+  "legal_entities": [
+    "RICHARD S. CONEN D.D.S., LLC",
+    "GENTLE DENTAL CARE P.C."
+  ],
+  "durable_artifacts": [
+    "NPPES AO: Richard S. Conen listed as authorized official on NPI 1831464585 (Skokie) and NPI 1598895989 (Chicago)",
+    "NPPES NPI 1598895989: org name 'GENTLE DENTAL CARE P.C.', Richard S. Conen as President (per npino.com)",
+    "BBB profile for '5137 W Chicago Ave, Chicago IL 60651' lists business as 'Richard S. Conen, DDS and Associates' with DBA 'Gentle Dental Care, P.C.'",
+    "richardsconendds.com: single Skokie office (Old Orchard Smiles / 9235 Skokie Blvd), no mention of Chicago location — consistent with Chicago office being closed"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "Location 7d1d789828351ecf (Gentle Dental Care P.C., 5137 W Chicago Ave, Chicago 60651) is listed as CLOSED per Yelp (last updated October 2025). This location should be flagged as stale/closed in the GP denominator review. The AO cluster itself is real (Richard Conen is confirmed president/owner of both entities), but the Chicago office appears to be an inactive location.",
+  "evidence_chain": "AO signal: Richard Conen appears as authorized official on two NPPES records in different ZIPs (60077 Skokie, 60651 Chicago). Documentary corroboration: (1) npino.com confirms Richard S. Conen as 'President' of Gentle Dental Care P.C. (NPI 1598895989); (2) BBB profile for 5137 W Chicago Ave lists the entity as 'Richard S. Conen, DDS and Associates' / DBA 'Gentle Dental Care P.C.'; (3) richardsconendds.com shows Dr. Conen's active Skokie practice (Old Orchard Smiles). No MSO, management company, DSO brand, or PE backer found. Yelp flags the Chicago location as CLOSED (Oct 2025).",
+  "future_app_notes": "Chicago location (Gentle Dental Care PC, 60651) should be reviewed for stale/closed status — Yelp marks it closed as of October 2025. If confirmed closed, it should be removed from the active GP denominator. The Skokie location is active. No PE or DSO evidence; do not promote to stealth_dso without documentary MSO/management evidence.",
+  "classifications": [
+    {
+      "location_id": "ec5372dd650d17d8",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Richard S. Conen DDS, owner-operator since 1988",
+      "network_id": "ao:CONEN_RICHARD",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2 across 2 ZIPs (60077, 60651)",
+          "NPPES entity name matches owner surname: RICHARD S. CONEN D.D.S., LLC"
+        ],
+        "evidence": [
+          "richardsconendds.com: Dr. Conen's own practice website lists Old Orchard Smiles, Skokie IL — active practice",
+          "npino.com: Richard S. Conen listed as President of Gentle Dental Care P.C. (NPI 1598895989), confirming he owns/controls both entities",
+          "BBB listing: 5137 W Chicago Ave, Chicago listed under 'Richard S. Conen, DDS and Associates' DBA 'Gentle Dental Care P.C.'"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.richardsconendds.com/",
+        "https://npino.com/dental-clinic/1598895989-gentle-dental-care-p.c./",
+        "https://www.bbb.org/us/il/chicago/profile/orthodontist/richard-s-conen-dds-and-associates-0654-90012817"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "RICHARD CONEN",
+        "reach": 2,
+        "zips": ["60077", "60651"],
+        "npi": "1831464585",
+        "entity_name": "RICHARD S. CONEN D.D.S.,LLC",
+        "address": "4905 old orchard center, SKOKIE, IL 60077"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "This is Dr. Richard Conen's own eponymous LLC at 4905 Old Orchard Center, Skokie. Active practice (Old Orchard Smiles). Website is live, Yelp updated May 2026. Owner-identity is certain from NPPES entity name and public website. Part of a dentist-owned two-location group with no DSO/MSO/PE involvement. ready_for_validation because documentary evidence (own website + NPPES entity name) confirms active owner-operator."
+    },
+    {
+      "location_id": "7d1d789828351ecf",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Richard S. Conen DDS, President of Gentle Dental Care P.C.",
+      "network_id": "ao:CONEN_RICHARD",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2: Richard Conen is AO on this org NPI 1598895989 in ZIP 60651",
+          "entity_classification=dso_national, affiliated_dso=Gentle Dental (likely a name-collision false positive — 'Gentle Dental Care P.C.' is a local trade name, not the Gentle Dental DSO chain)"
+        ],
+        "evidence": [
+          "npino.com: Richard S. Conen confirmed as President of Gentle Dental Care P.C. (NPI 1598895989)",
+          "BBB: 5137 W Chicago Ave listed as Richard S. Conen DDS and Associates / Gentle Dental Care P.C. — independent local practice",
+          "Yelp: GENTLE DENTAL CARE PC at 5137 W Chicago Ave listed as CLOSED (updated October 2025)"
+        ]
+      },
+      "evidence_urls": [
+        "https://npino.com/dental-clinic/1598895989-gentle-dental-care-p.c./",
+        "https://www.bbb.org/us/il/chicago/profile/orthodontist/richard-s-conen-dds-and-associates-0654-90012817",
+        "https://www.yelp.com/biz/gentle-dental-care-pc-chicago"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "RICHARD CONEN",
+        "reach": 2,
+        "zips": ["60077", "60651"],
+        "npi": "1598895989",
+        "entity_name": "GENTLE DENTAL CARE P.C.",
+        "address": "5137 w chicago ave, CHICAGO, IL 60651"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "CLOSED per Yelp (updated October 2025). This location appears to be an inactive/closed office. Recommend flagging for removal from active GP denominator after field confirmation. The entity_classification=dso_national / affiliated_dso='Gentle Dental' appears to be a name-collision false positive: 'Gentle Dental Care P.C.' is Dr. Conen's locally-named independent practice, not the national Gentle Dental DSO chain. Should be reclassified.",
+      "reasoning": "Dr. Richard Conen is confirmed as President of Gentle Dental Care P.C. by NPPES/npino.com. BBB confirms the 5137 W Chicago Ave address under his name. However, Yelp marks this location CLOSED (October 2025 update), making this a stale/closed shell in the GP denominator. Additionally, the current entity_classification=dso_national with affiliated_dso='Gentle Dental' is almost certainly a name-match false positive — 'Gentle Dental Care P.C.' is a local trade name used by Dr. Conen for his Chicago office; it is not the Gentle Dental national DSO chain (which has PE backing and its own brand). This location should be reviewed for demotion from dso_national to solo_established or solo_inactive (closed), and removed from the corporate count."
+    }
+  ]
+}

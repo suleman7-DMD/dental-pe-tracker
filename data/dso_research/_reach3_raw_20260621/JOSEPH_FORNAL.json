@@ -1,0 +1,136 @@
+{
+  "network": "JOSEPH FORNAL",
+  "network_id": "ao:FORNAL_JOSEPH",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Dr. Joseph Fornal, DDS, FAGD (UIC 1989) and his partner Dr. Ivone Arellano Beron, DDS, MS co-own and operate a three-location private dental group in Chicagoland: Fullerton Family Dentistry (Chicago 60639), Aurora Dental Care (Aurora 60505), and West Chicago Dental Care (West Chicago 60185). The group website myfirstdentalvisit.com explicitly describes both doctors as 'partners who expanded from their original Chicago location to serve the DuPage and Kane County areas.' No MSO, management-services entity, DSO brand, or PE sponsor was identified. This is a classic two-dentist private multi-office group.",
+  "owner_operator_identity": "Dr. Joseph Fornal, DDS, FAGD (authorized official, general dentist, UIC College of Dentistry 1989, FAGD, member ADA/ISDS/CDS/AGD); co-partner Dr. Ivone Arellano Beron, DDS, MS (pediatric-trained but practices in a family/general context at these locations)",
+  "brand_trade_names": [
+    "West Chicago Dental Care",
+    "Aurora Dental Care",
+    "Aurora and West Chicago Dental Care",
+    "Fullerton Family Dentistry"
+  ],
+  "legal_entities": [
+    "WEST CHICAGO DENTAL CARE, LTD (EIN 202073978, NPI 1750591723)",
+    "AURORA DENTAL CARE, LTD (EIN 208234765, NPI 1780855676)",
+    "FULLERTON FAMILY DENTISTRY, LTD (NPI 1649480138)"
+  ],
+  "durable_artifacts": [
+    "Shared authorized official JOSEPH FORNAL across all three NPPES organization NPIs (1750591723, 1780855676, 1649480138)",
+    "Group website myfirstdentalvisit.com lists all three locations under one practice network with both Fornal and Arellano Beron as partners",
+    "WebMD practice listing 'Aurora and West Chicago Dental Care' groups both doctors at 166 W Washington St West Chicago",
+    "Yahoo Local lists practice as 'Fornal, Joseph - Aurora and West Chicago Dental Care'",
+    "Northwestern Medicine provider profile lists Dr. Fornal at 'West Chicago Dental Care'",
+    "Three distinct LTD legal entities registered across three ZIPs (60185, 60505, 60639)"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "Aurora Dental Care, LTD (location_id 80319c2b8ee5d471, NPI 1780855676) shows year_established=2024 and provider_count=0 in NPPES — this is a recently registered LTD entity with no individual providers yet listed. It may be a new satellite shell or a restructured entity; the practice may not yet be fully operational as a standalone location. Recommend verifying whether 195 Eastern Ave Aurora IL 60505 is an active clinic.",
+  "evidence_chain": "AO signal: JOSEPH FORNAL appears as authorized official on three NPPES organization NPIs (reach=3) across ZIPs 60185, 60505, 60639. Documentary corroboration: (1) myfirstdentalvisit.com/meet-the-team explicitly identifies Dr. Joseph Fornal DDS FAGD and Dr. Ivone Arellano Beron DDS MS as partners who founded Fullerton Family Dentistry in Chicago then expanded to open Aurora Dental Care (195 Eastern Ave, Aurora 60505) and West Chicago Dental Care (166 W Washington St, West Chicago 60185); (2) WebMD practice listing groups both doctors under 'Aurora and West Chicago Dental Care'; (3) Northwestern Medicine provider profile lists Fornal at West Chicago Dental Care; (4) ADA Find-a-Dentist, Healthgrades, Yahoo Local, and Yelp all corroborate Fornal at the West Chicago address. No DSO brand, MSO, management-services agreement, or PE sponsor found in any source.",
+  "future_app_notes": "Verify whether Aurora Dental Care LTD (60505) is an active operating clinic — NPPES shows 0 providers and year_established=2024, suggesting it may be a new or paper entity. If confirmed active, this is a clean dentist_multi ready_for_validation. Dr. Arellano Beron has pediatric specialty training but the network practices as family/general — no specialist-exclusion applies. Watch for any future MSO formation if the group continues to expand.",
+  "classifications": [
+    {
+      "location_id": "0f7d4a1287a5e26d",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Joseph Fornal, DDS, FAGD (partner/authorized official); Dr. Ivone Arellano Beron, DDS, MS (partner)",
+      "network_id": "ao:FORNAL_JOSEPH",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60185/60505/60639",
+          "entity_classification=small_group (2 providers)",
+          "year_established=2002",
+          "LTD legal entity WEST CHICAGO DENTAL CARE LTD EIN 202073978"
+        ],
+        "evidence": [
+          "myfirstdentalvisit.com/meet-the-team lists this address (166 W Washington St West Chicago 60185) as one of three partner locations under Fornal+Arellano Beron private group",
+          "Northwestern Medicine provider directory lists Dr. Fornal at 'West Chicago Dental Care' at this address",
+          "Yahoo Local and Yelp confirm Fornal at 166 W Washington St West Chicago"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.myfirstdentalvisit.com/meet-the-team/",
+        "https://www.nm.org/doctors/1245244300/joseph-j-fornal-dds",
+        "https://local.yahoo.com/info-146862070-Fornal-Joseph---Aurora-and-West-Chicago-Dental-Care/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "JOSEPH FORNAL",
+        "reach": 3,
+        "zips": ["60185", "60505", "60639"]
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "West Chicago Dental Care LTD at 166 W Washington St West Chicago 60185 is the primary/original DuPage-area office of the Fornal-Arellano Beron two-dentist private group. NPPES shows 2 providers and year_established=2002. The group website explicitly places this address in the network. No MSO/PE found; this is a private dentist-owned multi-office practice. gate_status=ready_for_validation because documentary corroboration (group website + provider directory) is present."
+    },
+    {
+      "location_id": "80319c2b8ee5d471",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Joseph Fornal, DDS, FAGD (partner/authorized official); Dr. Ivone Arellano Beron, DDS, MS (partner)",
+      "network_id": "ao:FORNAL_JOSEPH",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60185/60505/60639",
+          "entity_classification=solo_established (0 providers, year_established=2024)",
+          "LTD legal entity AURORA DENTAL CARE LTD EIN 208234765",
+          "provider_count=0 — possible new/shell entity"
+        ],
+        "evidence": [
+          "myfirstdentalvisit.com/meet-the-team explicitly names 'Aurora Dental Care, 195 Eastern Ave., Aurora, Illinois 60505' as one of the three partner locations under the Fornal+Arellano Beron group",
+          "WebMD practice listing 'Aurora and West Chicago Dental Care' groups both Fornal and Arellano Beron under this network"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.myfirstdentalvisit.com/meet-the-team/",
+        "https://doctor.webmd.com/practice/aurora-and-west-chicago-dental-care-d42252c5-0975-4047-878f-41caf545bbac"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "JOSEPH FORNAL",
+        "reach": 3,
+        "zips": ["60185", "60505", "60639"]
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "medium",
+      "stale_closed_note": "NPPES shows provider_count=0 and year_established=2024 for AURORA DENTAL CARE LTD (NPI 1780855676). This may be a newly registered entity or a satellite not yet fully staffed in NPPES. The group website confirms the 195 Eastern Ave Aurora 60505 address as an active practice location, but the zero-provider NPPES record warrants physical/operational verification before counting in the denominator.",
+      "reasoning": "Aurora Dental Care LTD is part of the same Fornal-Arellano Beron private group, corroborated by the group website naming this exact address. However, NPPES shows 0 providers and year_established=2024 — the entity may be newly registered or operationally thin. Confidence=medium (tier is clear; operational status needs verification). gate_status=ready_for_validation because documentary group-website corroboration is present, but downstream gate should verify physical activity before promoting to corpus."
+    },
+    {
+      "location_id": "df683defe87c2c23",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Joseph Fornal, DDS, FAGD (authorized official/secretary); Dr. Ivone Arellano Beron, DDS, MS (partner)",
+      "network_id": "ao:FORNAL_JOSEPH",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60185/60505/60639",
+          "entity_classification=solo_established (1 provider)",
+          "LTD legal entity FULLERTON FAMILY DENTISTRY LTD NPI 1649480138",
+          "address 4725 W Fullerton Ave Chicago 60639"
+        ],
+        "evidence": [
+          "myfirstdentalvisit.com/meet-the-team identifies Fullerton Family Dentistry in Chicago as the original/founding location of the Fornal+Arellano Beron group before expansion to DuPage/Kane County",
+          "NPI profile sources and Yahoo Local corroborate Joseph Fornal as secretary/official of Fullerton Family Dentistry LTD"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.myfirstdentalvisit.com/meet-the-team/",
+        "https://local.yahoo.com/info-146862070-Fornal-Joseph---Aurora-and-West-Chicago-Dental-Care/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "JOSEPH FORNAL",
+        "reach": 3,
+        "zips": ["60185", "60505", "60639"]
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Fullerton Family Dentistry LTD at 4725 W Fullerton Ave Chicago 60639 is the founding/original location of the Fornal-Arellano Beron private group, per the group website narrative. Joseph Fornal is listed as secretary/authorized official on the NPPES record. The group website corroborates this as a real operating practice in the same network. No MSO/PE found. gate_status=ready_for_validation."
+    }
+  ]
+}

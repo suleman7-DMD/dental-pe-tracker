@@ -1,0 +1,263 @@
+{
+  "_meta": {
+    "artifact_type": "Wave 4 Gate-Owner ROLLUP / STATUS ledger — files-only, status-only",
+    "role": "Gate Owner — coordination/normalization only. This is a STATUS/ROLLUP artifact. It summarizes already-written QA-passed partitions + addenda. It does NOT merge, does NOT build a new ready file, and does NOT mutate the DB/manifest/310-ready/LEDGER/PROGRESS/ownership_tier/entity_classification/ownership_status.",
+    "date": "2026-06-22",
+    "scope": "Chicagoland / Illinois only. Boston / MA parked (0 MA rows in any Wave-4 partition).",
+    "gate_ceiling": "ready_for_validation (NEVER final).",
+    "consolidate_authorization": "NOT AUTHORIZED — consolidation remains FROZEN until the user types the explicit consolidation trigger phrase. This rollup neither requests nor performs consolidation.",
+    "mode": "status_rollup_only_no_mutation",
+    "inputs_read": [
+      "data/dso_research/_wave4_20260621/autonomous/VERDICT_QA_WAVE4_INITIAL_20260621.json (initial PASS_WITH_HOLDS verdict)",
+      "data/dso_research/_wave4_20260621/wave4_gate_normalized_partition_20260621.json (initial 9-bucket partition)",
+      "data/dso_research/_wave4_20260621/autonomous/VERDICT_QA_WAVE4_LANE2_20260622.json (Lane-2 PASS_WITH_HOLDS verdict)",
+      "data/dso_research/_wave4_20260621/wave4_gate_normalized_lane2_partition_20260622.json (Lane-2 normalized partition)",
+      "data/dso_research/_wave4_20260621/wave4_hold1_labinov_operating_status_rescan_20260622.json (LABINOV AB7 re-scan addendum)",
+      "data/dso_research/_wave4_20260621/autonomous/AUTH_FLEETB_PHASEC_51_100_20260621.md (Fleet B 51-100 authorization)"
+    ],
+    "interpretation_guardrail": "Two distinct accounting units are kept separate throughout: (a) OWNERSHIP-CENSUS readiness = rows at the ready_for_validation ceiling under the new 6-tier reset (none merged; ownership_tier still 0/0 NOT NULL); (b) LEGACY CORPORATE-FLOOR impact = change to the existing entity_classification dso_* count. Do NOT conflate them. The only concrete legacy-floor LIFT from all of Wave 4 to date is +1 (Dentologie)."
+  },
+
+  "section_1_initial_partition": {
+    "title": "Initial Wave 4 QA-passed partition (Lane-1 conflicts 96 + Lane-3 Phase-C top-50 = 146 placements, 145 distinct)",
+    "qa_verdict_file": "autonomous/VERDICT_QA_WAVE4_INITIAL_20260621.json",
+    "qa_verdict": "PASS_WITH_HOLDS",
+    "systemic_defect_found": false,
+    "net_new_merge_eligible_candidates": 19,
+    "net_new_composition": {
+      "dentist_multi_T3": 17,
+      "branded_dso_T5": 2,
+      "detail": "DentalTown 9 (T3 dentist_multi) + Precision 8 (T3 dentist_multi) + rank-35 (T5 branded_dso) + rank-41 (T5 branded_dso). All 19 absent from the current 310 ready file (verified by QA — 0 of 19 in 310).",
+      "note_T3_not_corporate": "T3 dentist_multi = dentist-owned multi-location, no MSO — CONSOLIDATED but NOT DSO/PE. T3 does NOT lift the legacy corporate (dso_*) floor. Only the 2 T5 net-new rows are corporate-class census candidates; they remain at ready_for_validation (not merged, not added to the legacy floor)."
+    },
+    "other_buckets": {
+      "corroborates_existing_ready": 3,
+      "qa_attention_current_ready": 3,
+      "hold_protected_network": 46,
+      "hold_scope_specialist": 7,
+      "hold_operating_status_or_same_door": 5,
+      "hold_needs_more_evidence": 43,
+      "rejected": 14,
+      "refuted": 6
+    },
+    "initial_qa_carry_forward_holds": {
+      "QA-HOLD-1": {
+        "subject": "fd93e6934ac6c59c — AB7 operating-status (stale_closed flag) + the ao:LABINOV_BORIS member network",
+        "status": "RESOLVED by the LABINOV addendum (see section_3). fd93 confirmed OPEN -> keep_ready; the 7 D2 shell rows -> hold_operating_status. blocks_wave4_acceptance=false.",
+        "blocks_wave4_acceptance": false
+      },
+      "QA-HOLD-2": {
+        "subject": "Affordable scope — location_ids bd77120df3018393 + 199841c7ee233c17 (qa_attention_current_ready; in 310, flagged-not-counted)",
+        "status": "OPEN — user GP-scope decision required (Affordable Dentures & Implants in/out of GP corporate floor). Carried to section_4 open policy holds.",
+        "blocks_wave4_acceptance": false
+      },
+      "QA-HOLD-3": {
+        "subject": "T5 dso_structure_rationale field null at top level — location_ids d44c43930b0f8d3c + 2bbd52b88750a5a8",
+        "status": "OPEN — data-quality hold: populate dso_structure_rationale from evidence before either is treated as an addendum candidate. Carried to section_4.",
+        "blocks_wave4_acceptance": false
+      }
+    }
+  },
+
+  "section_2_lane2_partition": {
+    "title": "Lane 2 QA-passed partition (Main AO non-AO backfill, 25 rows — locator_exact 13 + practice_intel 12)",
+    "qa_verdict_file": "autonomous/VERDICT_QA_WAVE4_LANE2_20260622.json",
+    "qa_verdict": "PASS_WITH_HOLDS",
+    "must_fix_count": 0,
+    "systemic_defect_found": false,
+    "net_new_corporate_floor_claim_correct_and_not_overstated": true,
+    "normalized_partition_file": "wave4_gate_normalized_lane2_partition_20260622.json",
+    "bucket_counts": {
+      "merge_eligible_new_corporate": 1,
+      "corroborates_existing_corporate_no_lift": 12,
+      "true_independent_confirmation": 2,
+      "hold_needs_more_evidence": 2,
+      "hold_operating_status_or_same_door": 2,
+      "hold_scope_specialist": 3,
+      "refuted": 3
+    },
+    "balanced_25_of_25": true,
+    "in_310_overlap": 0,
+    "overlap_with_initial_partition": 0,
+    "net_new_corporate": {
+      "count": 1,
+      "location_id": "5cd692a50e5c32b7",
+      "name": "Schock Dental -> Dentologie River North",
+      "address": "444 N Orleans St, Chicago, IL 60654",
+      "tier": "branded_dso (T5)",
+      "pe_backed": false,
+      "pe_backed_note": "Conservative: no named sponsor cited in Wave 4 (founder discussed PE publicly but none named); pe_backed is orthogonal and never a downgrade reason. DSO=STRUCTURE satisfied on the 13-office branded platform + own-locator door-exact match.",
+      "legacy_entity_classification_was": "solo_established (DB mislabel) -> genuinely net-new corporate door (+1).",
+      "qa_duplicate_scan": "CLOSED — QA read-only practice_locations scan found exactly ONE row at '444 n orleans st' (the target) and ZERO '%dentologie%' rows. No separate Dentologie River North location_id exists. Clean, distinct, non-duplicate."
+    },
+    "corroborations_no_floor_lift": {
+      "count": 12,
+      "detail": "10 Heartland 'Dental Professionals of Illinois, P.C.' friendly-PC offices + 1 DCA New Lenox (e669559ebe8a9d4a) + 1 Aspen TAG OCC (2bf590b5092f1e8e). ALL already dso_national/dso_regional in legacy entity_classification -> corroborate, add ZERO to the floor.",
+      "qa_evidence_note": "QA-L2-HOLD-1: 9 of the 10 Heartland rows (all but Naperville 1b931a8e9c2675a9, which has a door-exact match) rest on the whitelisted db_affiliated_dso='Heartland Dental' artifact + org-NPI legal name. Sufficient AS corroborations; door-exact evidence (AB2) would be required only if any were ever reclassified as net-new census promotions."
+    },
+    "true_independent_confirmations": {
+      "count": 2,
+      "location_ids": ["b7499322a2416c5d", "0a318ab399f418de"],
+      "names": ["Jova Dental (Dr. Paulina Jova DDS, solo since 2009)", "Bellido-Griffin Dental (Dr. Rosa Bellido-Griffin DMD, sole owner)"],
+      "tier": "true_independent (T1)",
+      "note": "EARNED T1 on named-sole-owner + own-practice/website evidence (QA-verified, not defaulted). NOT corporate adds — floor impact 0."
+    },
+    "holds": {
+      "hold_needs_more_evidence": [
+        {"location_id": "d4d827860b4132cb", "name": "Bloomingdale Dental (DPI-PC legal name; brand collides with protected SWEIS; affiliated_dso NULL)", "reason": "HB5 collision + SWEIS protected-network adjacency -> HELD, NOT released."},
+        {"location_id": "d2e5c43e4975ddb4", "name": "Midwest Dental Group", "reason": "HB6/AH4 name-field collision; no exact-address locator match -> HELD."}
+      ],
+      "hold_operating_status_or_same_door": [
+        {"location_id": "5404b210ff43f176", "name": "Kang Dental", "reason": "shares 350 N Clark St Ste 600 with a Dental Dreams DSO office -> same-door ambiguity HELD."},
+        {"location_id": "499c18e0f7c7ad12", "name": "Lillian Obucina DDS PC", "reason": "provider_count=0 + address/zip anomaly (111 N Wabash vs zip 60202 Evanston); never default true_independent -> HELD."}
+      ],
+      "hold_scope_specialist": [
+        {"location_id": "144d631a4c4dce2b", "name": "Infant Welfare Society of Chicago (FQHC)", "reason": "institutional T6 out of GP floor."},
+        {"location_id": "d803fcfe4618e8a3", "name": "Heartland International Health Center (Tapestry 360 FQHC)", "reason": "institutional T6; Heartland NAME-COLLISION — NOT Heartland Dental."},
+        {"location_id": "e957561c107de91a", "name": "Heartland Health Outreach (Heartland Alliance nonprofit)", "reason": "institutional T6; Heartland NAME-COLLISION — NOT Heartland Dental."}
+      ]
+    },
+    "refutations": {
+      "count": 3,
+      "rows": [
+        {"location_id": "9068c4de3bbdb4b4", "name": "Warga Dental (Winnetka)", "reason": "stealth_dso PROPOSED -> REFUTED. Dr. George Warga 30+yr Pankey-faculty solo, no MSO -> T1-eligible."},
+        {"location_id": "7b61d1c9b5e65057", "name": "Greenwood Family Dentistry / Batchelor Dental", "reason": "stealth_dso PROPOSED -> REFUTED. Dr. Garfield Batchelor solo since 1999."},
+        {"location_id": "598cc9dae498795b", "name": "Northwestern Dental Center", "reason": "'Western Dental' tag is a SUBSTRING false-positive of 'NORTHwestern'. Actual = Northwestern Medicine academic P.C. Currently dso_national in legacy floor -> a legacy FALSE-POSITIVE (see section_4 legacy_false_positive_suspects)."}
+      ]
+    },
+    "lane2_qa_carry_forward_holds": {
+      "QA-L2-HOLD-1": "9 Heartland/DPI-PC rows = corroboration-grade evidence; door-exact required only if reclassified net-new. No action now.",
+      "QA-L2-HOLD-2": "3 legacy-corporate FALSE-POSITIVE SUSPECTS (598cc9dae498795b refuted; d2e5c43e4975ddb4 + d4d827860b4132cb held). Would LOWER the floor by up to 3 if acted on. FROZEN, not mutated — user/Gate decision.",
+      "QA-L2-HOLD-3": "3 institutional T6 / FQHC rows held out of GP floor — user scope decision."
+    }
+  },
+
+  "section_3_labinov_addendum": {
+    "title": "QA-HOLD-1 LABINOV / Destiny Dental operating-status (AB7) re-scan addendum",
+    "addendum_file": "wave4_hold1_labinov_operating_status_rescan_20260622.json",
+    "author_role": "Main AO (bounded evidence work); advisory for the Gate, does NOT change the 310 or the manifest.",
+    "resolves": "QA-HOLD-1 (from the initial verdict).",
+    "target": {
+      "location_id": "fd93e6934ac6c59c",
+      "name_db": "PRO DENTAL IL - CHAD WISE PC",
+      "brand": "Destiny Dental — Oak Park (1 Chicago Ave, Oak Park, IL 60302)",
+      "disposition": "keep_ready",
+      "ab7_finding": "CONFIRMED OPEN — the Wave-4 Lane-3 'closed_or_relocated' flag is a FALSE POSITIVE, refuted by a fresh transcribed source (the office's own active page with exact address + phone match), the brand locator (Oak Park is a current marketed door), and Yelp 'Updated February 2026 - 39 Reviews'.",
+      "stays_in_310": true,
+      "ab9_release_unchanged": true
+    },
+    "network_identity_correction": {
+      "issue": "QA verdict tagged fd93 'AB9_LABINOV_protected', implying ao:LABINOV_BORIS membership — a labeling imprecision.",
+      "correction": "In the 310, fd93 carries network_id = ao:WILSON-ADELEKE_SIMONE (a SIBLING Destiny/ProSmile friendly-PC network), NOT the literal ao:LABINOV_BORIS member set. Both are friendly-PC wrappers on the same Destiny brand (L2 Management, PE-backed by ProSmile Holdings / TriSpan). Target is LABINOV-related via the shared platform, not by literal AO membership.",
+      "consequence": "No network-release decision touched; target's pe_backed=true / branded_dso tier unchanged."
+    },
+    "labinov_member_rows": {
+      "name_db": "D2 Dental at Oak Street, P.C.",
+      "network_id": "ao:LABINOV_BORIS",
+      "count": 7,
+      "disposition": "hold_operating_status (all 7)",
+      "location_ids": ["c2c46e94895cda83", "d616036cc2145cf4", "3f1051899da7b50d", "d318648e80a552ff", "9eb34e1dcb9933f8", "ef079f1cfd53d7f0", "e4fb4be6a4efee52"],
+      "rationale": "All 7 D2 shell addresses have provider_count=0, no website, are absent from the Destiny brand locator, and have NO active patient-facing page — yet NO transcribed closure source exists either. Conservative AB7 posture = hold_operating_status (NOT reject_closed, NOT keep_ready). They remain AB9-released in the 310 but should be withheld from any eventual VALIDATED operating floor until a current open-door source or a documented closure is obtained.",
+      "ab9_release_stands": true,
+      "removed_from_310": false
+    },
+    "courtesy_sibling": {
+      "location_id": "d300597c91e8d789",
+      "name": "Destiny Dental — Lansing (domain:destinydentalcare.com; NOT in LABINOV scope; advisory only)",
+      "disposition": "keep_ready",
+      "note": "Operating Destiny Lansing door confirmed via matching phone (708) 418-8899 + brand. Address nuance flagged: DB records 16739 Torrence Ave; Destiny currently markets 17653 Torrence Ave (same town/phone/brand) — likely a within-Lansing relocation nuance."
+    },
+    "blocks_wave4_acceptance": false
+  },
+
+  "section_4_open_policy_holds": {
+    "title": "Open policy / decision holds carried across Wave 4 (none block Wave-4 acceptance; all FROZEN — no mutation)",
+    "affordable_clearchoice_scope": {
+      "status": "OPEN — user decision",
+      "affordable": "Affordable Dentures & Implants — initial QA-HOLD-2 location_ids bd77120df3018393 + 199841c7ee233c17 (qa_attention_current_ready; in 310, flagged-not-counted). User GP-scope decision required (in/out of GP corporate floor).",
+      "clearchoice": "ClearChoice — standing scope-hold (held out of the GP floor) reaffirmed in the Fleet B 51-100 AUTH. No release.",
+      "policy": "Both remain scope-held until the user rules on GP-scope inclusion."
+    },
+    "institutional_fqhc_scope": {
+      "status": "OPEN — user decision (default #2: specialist/institutional scope is a user decision)",
+      "lane2_rows": ["144d631a4c4dce2b (Infant Welfare Society FQHC)", "d803fcfe4618e8a3 (Heartland Intl / Tapestry 360 FQHC)", "e957561c107de91a (Heartland Health Outreach nonprofit)"],
+      "initial_partition_rows": "Sonrisa / CDCA FQHC doors held in the initial partition's hold_scope_specialist (7) — Gate override of an agent 'ready', QA-endorsed.",
+      "policy": "Institutional T6 / FQHC held out of the GP corporate floor pending user confirmation. Two Lane-2 rows are Heartland NAME-COLLISIONS correctly resolved as NOT Heartland Dental."
+    },
+    "protected_network_holds": {
+      "status": "HELD — no release (AB9 requires explicit user decision + network_evidence_quality='verified', not granted)",
+      "surnames": ["LABINOV", "AQEL", "BELKIC", "SWEIS", "RAMAHA", "SHAFI", "NITTINGER", "BRUNETTI"],
+      "initial_partition_hold_protected_count": 46,
+      "lane2_adjacency": "Bloomingdale Dental (d4d827860b4132cb) flagged SWEIS adjacency -> HELD (hold_needs_more_evidence), 0 releases.",
+      "labinov_note": "ao:LABINOV_BORIS is AB9-RELEASED in the 310 (7/7, pre-existing manifest decision); the addendum does NOT re-release or revoke — it only supplies AB7 operating-status (7 D2 shells -> hold_operating_status)."
+    },
+    "operating_status_holds": {
+      "status": "HELD — AB7 evidence-status (not closure assertions)",
+      "labinov_d2_shells": 7,
+      "lane2_rows": ["5404b210ff43f176 (Kang — same-door w/ Dental Dreams)", "499c18e0f7c7ad12 (Obucina — provider_count=0 + address anomaly)"],
+      "initial_partition_hold_ops_samedoor_count": 5,
+      "policy": "Withhold from any eventual VALIDATED operating floor until a current open-door source or documented closure exists. None removed from the 310."
+    },
+    "legacy_corporate_false_positive_suspects": {
+      "status": "FROZEN — flagged, NOT mutated (QA-L2-HOLD-2). User/Gate decision whether to demote later.",
+      "location_ids": ["598cc9dae498795b", "d2e5c43e4975ddb4", "d4d827860b4132cb"],
+      "effect_if_acted_on": "Would LOWER the legacy corporate floor by up to 3 (a DOWNWARD correction). Northwestern refuted (academic); Midwest + Bloomingdale held. Nothing changed under the freeze."
+    },
+    "data_quality_hold": {
+      "status": "OPEN (initial QA-HOLD-3)",
+      "location_ids": ["d44c43930b0f8d3c", "2bbd52b88750a5a8"],
+      "issue": "T5 dso_structure_rationale null at top level — populate from evidence before either is treated as an addendum candidate."
+    }
+  },
+
+  "section_5_fleetb_51_100_status": {
+    "title": "Fleet B Phase-C ranks 51-100",
+    "auth_file": "autonomous/AUTH_FLEETB_PHASEC_51_100_20260621.md",
+    "auth_written": true,
+    "auth_basis": "Initial QA found no systemic Phase-C defect in the top-50 (VERDICT_QA_WAVE4_INITIAL_20260621.json, systemic_defect_found=false).",
+    "status": "AUTHORIZED — output PENDING (Fleet B has not yet returned a wave4_*phasec* evidence file for ranks 51-100).",
+    "constraints": [
+      "files-only; ranks 51-100 ONLY; exclude ranks 1-50",
+      "exclude the current 310 ready rows unless explicitly corroborating",
+      "no deterministic re-mining (each lead must earn its own transcribed durable artifact)",
+      "no DB / manifest / ready / LEDGER / PROGRESS writes; no ownership_tier / entity_classification / ownership_status changes",
+      "Affordable / ClearChoice remain scope-held; protected networks held",
+      "output requires FRESH independent QA before acceptance"
+    ],
+    "next_gate_action_when_returned": "Normalize into a new wave4_gate_normalized_* partition, then request a fresh QA verdict BEFORE any manifest merge. No merge until QA PASS + explicit user consolidation authorization."
+  },
+
+  "aggregate_rollup": {
+    "ownership_census_ready_for_validation_to_date": {
+      "initial_partition_net_new_merge_eligible": 19,
+      "lane2_net_new": 3,
+      "lane2_net_new_composition": "1 net-new corporate (Dentologie T5) + 2 true_independent (T1)",
+      "lane2_corroborations_not_net_new": 12,
+      "total_net_new_census_candidates": 22,
+      "total_net_new_note": "22 = 19 (initial) + 3 (Lane-2 net-new). All at the ready_for_validation ceiling. NONE merged; ownership_tier still 0/0 NOT NULL. The 12 Lane-2 corroborations are NOT counted as net-new.",
+      "fleetb_51_100": "pending — not yet counted"
+    },
+    "legacy_corporate_floor_impact_to_date": {
+      "concrete_lift": "+1 (Dentologie / Schock 5cd692a50e5c32b7 ONLY)",
+      "do_not_overstate": "The 12 Lane-2 corroborations add 0. The 2 Lane-2 true_independent rows add 0. The 17 initial T3 dentist_multi rows are consolidated-but-not-DSO and do NOT lift the dso_* floor; the 2 initial T5 rows are corporate-class census candidates at ready_for_validation, not yet added to the legacy floor.",
+      "downward_suspects_frozen": "3 legacy-corporate false-positive suspects (Northwestern refuted; Midwest + Bloomingdale held) could LOWER the floor by up to 3 if acted on — NOT mutated.",
+      "nothing_merged": "No change to the live legacy floor (261/4,811 = 5.43%) has been made; all Wave-4 outputs sit at ready_for_validation."
+    },
+    "wave4_acceptance_status": "Both QA'd partitions = PASS_WITH_HOLDS, 0 systemic defects, 0 MUST_FIX. All holds are user/Gate decisions or AB7/scope evidence-status notes; none block Wave-4 acceptance. Lane-2 + initial partitions share 0 location_ids (no double-count). Awaiting: (1) Fleet B 51-100 output + fresh QA; (2) explicit user consolidation authorization."
+  },
+
+  "freeze_attestation_readonly": {
+    "db_md5": "0dec26135bb4d6ee490dc16cfe892ca6",
+    "db_md5_expected": "0dec26135bb4d6ee490dc16cfe892ca6",
+    "db_md5_match": true,
+    "LEDGER_lines": 1,
+    "PROGRESS_undetermined_unreviewed": 4439,
+    "practice_locations_ownership_tier_not_null": 0,
+    "practices_ownership_tier_not_null": 0,
+    "files_written_by_this_rollup": ["data/dso_research/_wave4_20260621/wave4_gate_rollup_status_20260622.json"],
+    "manifest_mutated": false,
+    "ready_file_mutated": false,
+    "db_mutated": false,
+    "verdict": "FROZEN — intact. This rollup is status-only; nothing merged, no new ready file, no DB/manifest/LEDGER/PROGRESS/tier/classification change."
+  }
+}

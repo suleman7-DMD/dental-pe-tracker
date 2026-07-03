@@ -1,0 +1,198 @@
+{
+  "network": "PHIL KURAL",
+  "network_id": "ao:KURAL_PHIL",
+  "owner_type_verdict": "dso_brand",
+  "network_summary": "All four locations are confirmed Dental Dreams offices operated under KOS Services LLC, a documented DSO management company (MSO) that is the administrative backbone of the Dental Dreams branded DSO. Phil Kural is an authorized official across all four NPPES records. The entire cluster is a Dental Dreams / KOS Services branded-DSO network. KOS Services LLC was founded in 2001, runs 77+ dental clinics across 11 states, and is headquartered in Chicago, IL 60654. No private-equity sponsor has been publicly documented for KOS Services / Dental Dreams; the company appears to be founder-operated (Dr. Sameera Hussain / Khurram Hussain family). pe_backed=false.",
+  "owner_operator_identity": "KOS Services LLC (MSO/management company); Dental Dreams (brand); Dr. Sameera Hussain (founder); Khurram Hussain (CEO); Phil Kural listed as NPPES Authorized Official across all four locations",
+  "brand_trade_names": [
+    "Dental Dreams",
+    "Premier Dental Clinic",
+    "Studio Dental",
+    "KOS Services"
+  ],
+  "legal_entities": [
+    "KOS Services LLC",
+    "PREMIER DENTAL CLINIC, LLC (NPI 1386815744)",
+    "PREMIER DENTAL CLINC, LLC (NPI 1811168800)",
+    "STUDIO DENTAL, LLC (NPI 1629249610)",
+    "STUDIO DENTAL, LLC (NPI 1174956155)"
+  ],
+  "durable_artifacts": [
+    "AO PHIL KURAL appears on all 4 NPIs: 1386815744, 1811168800, 1629249610, 1174956155",
+    "KOS Services LLC named as parent_company on EIN 200901668 (North Riverside) and EIN 200901797 (Damen Ave Chicago)",
+    "All 4 addresses confirmed on dentaldreams.com official locator (see evidence_urls)",
+    "Indeed employer profile lists 'KOS Services, LLC - Dental Dreams - Chicago, IL' as single employer entity"
+  ],
+  "mso_platform_pe_evidence": "KOS Services LLC is the documented MSO/management company behind the Dental Dreams DSO brand. Source: https://www.indeed.com/cmp/Kos-Services,-LLC---Dental-Dreams---Chicago,-Il and https://www.dentaldreams.com/careers/ (careers listed under KOS Services). KOS Services manages 77+ dental clinics across 11 states. No private-equity sponsor has been publicly documented.",
+  "stale_closed_false_positive_notes": null,
+  "evidence_chain": "AO signal: PHIL KURAL appears as NPPES Authorized Official on 4 distinct GP locations across 4 Chicagoland ZIPs (60506, 60546, 60609, 60632). Two locations carry parent_company='KOS SERVICES' and affiliated_dso='KOS SERVICES' in NPPES data. Documentary corroboration: (1) dentaldreams.com official location finder lists all 4 addresses — 'Premier Dental Clinic - N Lake St, Aurora' (https://www.dentaldreams.com/location/premier-dental-clinic-n-lake-st-aurora/), 'Premier Dental Clinic - West 25th St, North Riverside' (https://www.dentaldreams.com/location/premier-dental-clinic-west-25th-st-north-riverside/), 'Studio Dental - South Damen Ave, Chicago' (https://www.dentaldreams.com/location/studio-dental-south-damen-ave-chicago/), 'Studio Dental - South Pulaski Rd, Chicago' (https://www.dentaldreams.com/location/studio-dental-south-pulaski-rd-chicago/). (2) KOS Services LLC is publicly documented as the management/MSO entity for Dental Dreams (Indeed, Handshake, Built In Chicago). (3) Dental Dreams was founded in Aurora, IL in 2001 and now operates 77+ clinics in 11 states. Verdict: branded_dso, pe_backed=false (no PE sponsor found).",
+  "future_app_notes": "These 4 locations should all be classified dso_national with affiliated_dso='Dental Dreams' and parent_company='KOS Services LLC'. The Aurora location (60506) currently has entity_classification='large_group' and no affiliated_dso — it should be promoted to dso_national. The 60632 location already has affiliated_dso='Dental Dreams'. The 60546 and 60609 locations have affiliated_dso='KOS SERVICES' — update affiliated_dso label to 'Dental Dreams (KOS Services)' for consistency. EINs 200901668 and 200901797 are both KOS Services EINs and can anchor future cluster detection.",
+  "classifications": [
+    {
+      "location_id": "b0d3f1a6e49372e0",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "KOS Services LLC / Dental Dreams; NPPES AO: Phil Kural",
+      "network_id": "ao:KURAL_PHIL",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across ZIPs 60506, 60546, 60609, 60632",
+          "entity_classification=large_group (currently unclassified as DSO in DB)",
+          "7 providers at address"
+        ],
+        "evidence": [
+          "Address 1264B N Lake St Aurora 60506 confirmed on dentaldreams.com official locator: 'Premier Dental Clinic - N Lake St, Aurora'",
+          "KOS Services LLC documented as MSO/management company for Dental Dreams brand (Indeed employer profile, Handshake, Built In Chicago)"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.dentaldreams.com/location/premier-dental-clinic-n-lake-st-aurora/",
+        "https://www.indeed.com/cmp/Kos-Services,-LLC---Dental-Dreams---Chicago,-Il",
+        "https://app.joinhandshake.com/employers/kos-services-dental-dreams-262860"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "PHIL KURAL",
+        "reach": 4,
+        "zips": ["60506", "60546", "60609", "60632"],
+        "location_name": "PREMIER DENTAL CLINIC, LLC",
+        "primary_npi": "1386815744",
+        "entity_classification": "large_group",
+        "affiliated_dso": null,
+        "ein": null
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Address 1264B N Lake St Aurora IL 60506 appears as 'Premier Dental Clinic - N Lake St, Aurora' on the official dentaldreams.com location finder. KOS Services LLC is the documented management/MSO entity for Dental Dreams. Phil Kural is the NPPES AO across this entire 4-location cluster. Current DB classification 'large_group' is incorrect — this is a branded_dso (Dental Dreams) location and should be promoted to dso_national. pe_backed=false (no PE sponsor documented for KOS Services / Dental Dreams)."
+    },
+    {
+      "location_id": "1d3025db88039962",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "KOS Services LLC / Dental Dreams; NPPES AO: Phil Kural",
+      "network_id": "ao:KURAL_PHIL",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across ZIPs 60506, 60546, 60609, 60632",
+          "parent_company='KOS SERVICES' in NPPES",
+          "affiliated_dso='KOS SERVICES' in NPPES",
+          "EIN 200901668",
+          "10 providers at address"
+        ],
+        "evidence": [
+          "Address 7345 W 25th St North Riverside 60546 confirmed on dentaldreams.com official locator: 'Premier Dental Clinic - West 25th St, North Riverside'",
+          "KOS Services LLC documented as MSO/management company for Dental Dreams brand (Indeed employer profile listing 'KOS Services, LLC - Dental Dreams - Chicago, IL')",
+          "Dental Dreams Glassdoor job posting for Dentist in North Riverside, IL confirms Dental Dreams operates this location"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.dentaldreams.com/location/premier-dental-clinic-west-25th-st-north-riverside/",
+        "https://www.indeed.com/cmp/Kos-Services,-LLC---Dental-Dreams---Chicago,-Il",
+        "https://www.glassdoor.com/job-listing/dentist-dental-dreams-JV_IC1158069_KO0,7_KE8,21.htm?jl=1009815554225"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "PHIL KURAL",
+        "reach": 4,
+        "zips": ["60506", "60546", "60609", "60632"],
+        "location_name": "PREMIER DENTAL CLINC, LLC",
+        "primary_npi": "1811168800",
+        "entity_classification": "dso_national",
+        "affiliated_dso": "KOS SERVICES",
+        "parent_company": "KOS SERVICES",
+        "ein": "200901668"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Address 7345 W 25th St North Riverside IL 60546 appears on dentaldreams.com official locator as 'Premier Dental Clinic - West 25th St, North Riverside'. NPPES already shows parent_company='KOS SERVICES'. KOS Services LLC is the documented MSO for the Dental Dreams branded DSO. Currently classified dso_national (correct) but affiliated_dso label should be updated from 'KOS SERVICES' to 'Dental Dreams (KOS Services)'. pe_backed=false."
+    },
+    {
+      "location_id": "474a65cc8751d692",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "KOS Services LLC / Dental Dreams; NPPES AO: Phil Kural",
+      "network_id": "ao:KURAL_PHIL",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across ZIPs 60506, 60546, 60609, 60632",
+          "parent_company='KOS SERVICES' in NPPES",
+          "affiliated_dso='KOS SERVICES' in NPPES",
+          "EIN 200901797",
+          "14 providers at address"
+        ],
+        "evidence": [
+          "Address 4516 S Damen Ave Chicago 60609 confirmed on dentaldreams.com official locator: 'Studio Dental - South Damen Ave, Chicago'",
+          "KOS Services LLC documented as MSO/management company for Dental Dreams brand",
+          "Yelp listing for 'Studio Dental' at 4516 S Damen Ave Chicago confirms operating dental practice (Updated June 2026, 15 reviews)"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.dentaldreams.com/location/studio-dental-south-damen-ave-chicago/",
+        "https://www.indeed.com/cmp/Kos-Services,-LLC---Dental-Dreams---Chicago,-Il",
+        "https://www.yelp.com/biz/studio-dental-chicago"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "PHIL KURAL",
+        "reach": 4,
+        "zips": ["60506", "60546", "60609", "60632"],
+        "location_name": "STUDIO DENTAL, LLC",
+        "primary_npi": "1629249610",
+        "entity_classification": "dso_national",
+        "affiliated_dso": "KOS SERVICES",
+        "parent_company": "KOS SERVICES",
+        "ein": "200901797"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Address 4516 S Damen Ave Chicago IL 60609 appears on dentaldreams.com official locator as 'Studio Dental - South Damen Ave, Chicago'. NPPES shows parent_company='KOS SERVICES'. Studio Dental is a trade name used by Dental Dreams / KOS Services for Chicago locations. Currently classified dso_national (correct); affiliated_dso label should be updated from 'KOS SERVICES' to 'Dental Dreams (KOS Services)'. pe_backed=false."
+    },
+    {
+      "location_id": "3e8b2ad53b9f9b4d",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "KOS Services LLC / Dental Dreams; NPPES AO: Phil Kural",
+      "network_id": "ao:KURAL_PHIL",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across ZIPs 60506, 60546, 60609, 60632",
+          "affiliated_dso='Dental Dreams' already in NPPES/DB",
+          "7 providers at address"
+        ],
+        "evidence": [
+          "Address 4310 S Pulaski Rd Chicago 60632 confirmed on dentaldreams.com official locator: 'Studio Dental - South Pulaski Rd, Chicago'",
+          "KOS Services LLC documented as MSO/management company for Dental Dreams brand",
+          "Yelp listing for 'Studio Dental' at 4310 S Pulaski Rd Chicago (Updated March 2026, 25 reviews) confirms active operating practice"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.dentaldreams.com/location/studio-dental-south-pulaski-rd-chicago/",
+        "https://www.indeed.com/cmp/Kos-Services,-LLC---Dental-Dreams---Chicago,-Il",
+        "https://www.yelp.com/biz/studio-dental-chicago-2"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "PHIL KURAL",
+        "reach": 4,
+        "zips": ["60506", "60546", "60609", "60632"],
+        "location_name": "STUDIO DENTAL, LLC",
+        "primary_npi": "1174956155",
+        "entity_classification": "dso_national",
+        "affiliated_dso": "Dental Dreams",
+        "parent_company": null,
+        "ein": null
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Address 4310 S Pulaski Rd Chicago IL 60632 appears on dentaldreams.com official locator as 'Studio Dental - South Pulaski Rd, Chicago'. Already correctly affiliated_dso='Dental Dreams' in DB. Studio Dental is a Dental Dreams consumer brand. KOS Services LLC is the MSO. Currently classified dso_national (correct). pe_backed=false (no PE sponsor documented)."
+    }
+  ]
+}

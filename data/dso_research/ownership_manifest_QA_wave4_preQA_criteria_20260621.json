@@ -1,0 +1,352 @@
+{
+  "_meta": {
+    "artifact_type": "PRE-QA ACCEPTANCE CRITERIA — authoritative gate for Wave 4 evidence merge-eligibility",
+    "author": "independent adversarial QA / consolidation-gate reviewer",
+    "date": "2026-06-21",
+    "role": "REVIEW-ONLY. No DB writes. No --allow-db-write. No mutation of the manifest, ready file, LEDGER, PROGRESS, ownership_tier, entity_classification, ownership_status, or any prior QA file.",
+    "status": "pre-QA criteria — authoritative gate for Wave 4 evidence merge-eligibility",
+    "purpose": "Define the acceptance bar the Gate Owner enforces BEFORE merging any Wave 4 output (Lanes 1/2/3) into the canonical manifest (consolidation_candidate_manifest_20260621.json) and ultimately into a _ready_to_validate set. A Wave 4 row is merge-eligible ONLY if it passes EVERY applicable gate below. Default disposition for any failing or ambiguous row is needs_more_evidence / undetermined — NEVER ready, NEVER true_independent.",
+    "predecessor_verdict": "ownership_manifest_QA_wave3_reqa5_20260621.json (RE-QA #5: PASS — no outstanding MUST-FIX, ready=310, consolidation FROZEN)",
+    "companion_file": "ownership_manifest_QA_wave4_pre_criteria_20260621.json (same QA session, earlier draft — this file supersedes it as the AUTHORITATIVE gate spec for Wave 4)",
+    "canonical_objects": {
+      "manifest_reviewed_for_baseline": "data/dso_research/consolidation_candidate_manifest_20260621.json",
+      "manifest_mtime_at_authoring": 1782072689,
+      "current_validator_native_ready_file": "data/dso_research/_ready_to_validate_wave3_fixed_20260621.json",
+      "ready_row_count_baseline": 310,
+      "consolidation_frozen_invariants": {
+        "PL_tier_nonnull": 0,
+        "PROGRESS_undetermined_unreviewed": 4439,
+        "LEDGER_lines": 1,
+        "db_md5_baseline": "0dec26135bb4d6ee490dc26cfe892ca6"
+      },
+      "consolidate_script": "scrapers/consolidate_census.py",
+      "ledger": "data/dso_research/RESEARCH_HOME/LEDGER.jsonl",
+      "progress": "data/dso_research/RESEARCH_HOME/PROGRESS.json"
+    },
+    "prior_qa_files_NOT_mutated": [
+      "ownership_manifest_QA_wave3_reqa5_20260621.json",
+      "ownership_manifest_QA_wave3_reqa4_20260621.json",
+      "ownership_manifest_QA_remerge_demotion_20260621.json",
+      "ownership_manifest_QA_reach4_lane1b_merge_20260621.json",
+      "ownership_manifest_QA_merged_20260621.json",
+      "ownership_manifest_QA_revision_signoff_20260621.json",
+      "ownership_manifest_QA_addendum_refined_criteria_20260621.json",
+      "ownership_evidence_QA_fleet_b_lane3_20260621.json",
+      "ownership_taxonomy_DSO_structure_gate_review_20260621.json",
+      "ownership_manifest_QA_wave4_pre_criteria_20260621.json"
+    ],
+    "non_mutation_attestation": "Producing this file performed ZERO writes to the manifest, ready file, LEDGER, PROGRESS, ownership_tier, entity_classification, ownership_status, the DB, or any prior QA file. New file only."
+  },
+
+  "tier_model_locked": {
+    "T1_true_independent": "One dentist, ONE location. EARNED with positive owner-operated evidence — NEVER defaulted from absence of DSO signal.",
+    "T2_single_loc_group": "2+ UNRELATED dentists, one location, dentist-owned group practice.",
+    "T3_dentist_multi": "Dentist-owned multi-location group, NO separate DSO/MSO/management-company/platform. Named dentist-owner required.",
+    "T4_stealth_dso": "Local / friendly-PC brand backed or managed by a DSO/MSO/PE platform. Structural entity REQUIRED.",
+    "T5_branded_dso": "DSO/platform/management-company STRUCTURE, OR an established DSO brand (even if family-owned / non-PE). Structural entity REQUIRED.",
+    "T6_institutional": "FQHC / hospital / university / government / Federally Qualified Health Center.",
+    "undetermined": "Ambiguous or evidence-insufficient — held for verification. This is the DEFAULT for any row that fails any gate.",
+    "pe_backed": "ORTHOGONAL boolean. pe_backed is NEITHER necessary NOR sufficient for any tier. Set true ONLY from documented MSO/PE evidence. pe_backed=false NEVER justifies downgrading a DSO tier. pe_backed=true on a dentist-owned group does NOT make it DSO/PE.",
+    "headline_rules": {
+      "consolidated": "T2 + T3 + T4 + T5",
+      "dso_pe": "T4 + T5 ONLY — dentist_multi (T3) is Consolidated but NOT DSO/PE",
+      "true_independent_T1_excluded_from_consolidated": "T1 counts independent; positive evidence required to earn this classification"
+    }
+  },
+
+  "dso_structure_rule_canonical": {
+    "rule": "A practice is DSO/PE (T4/T5) ONLY when there is a management-company / MSO / platform STRUCTURE, or it operates under an established national/regional DSO brand. PE backing is NEITHER necessary NOR sufficient.",
+    "locator_is_a_signal_not_proof": "A brand website with a /locations page, a shared brand name, a shared phone number, a friendly-PC naming pattern, or an authorized-official (AO) cluster is a DISCOVERY SIGNAL — not proof of DSO structure. By itself, a locator is equally consistent with a dentist-owned multi-location group (T3). To assign T4/T5, a structural entity must be documented.",
+    "ao_reach_is_signal_not_ownership": "AO co-occurrence reach across ZIPs is a discovery signal, not an ownership proof. A named non-clinical CEO or VP as AO hints at management structure but is NOT corroborated by an MSO unless the MSO itself is documented. A named dentist-owner as AO with no MSO points to dentist_multi.",
+    "ein_cluster_is_signal_not_structure": "A shared real EIN across 3+ locations is a durable discovery signal that may corroborate a structural claim. It does NOT BY ITSELF prove a DSO structure — a dentist-owned multi-location group may share an EIN. EIN clustering upgrades the signal tier but still requires a named structural entity for T4/T5.",
+    "admin_ao_is_not_mso": "A VP of Operations / admin officer / office manager named as AO does not equal an MSO. Documented examples: Samantha Gonzalez (VP, Dental Town/Razzak) = admin AO, NOT an MSO. Milan Roncevic (non-clinical CEO, 1st Family) = possible structure signal but NOT confirmed MSO without documentation.",
+    "precedent_cases": [
+      {"case": "KOS Services LLC / Dental Dreams", "outcome": "T5 branded_dso — real MSO (KOS Services LLC) documented; established multi-state brand. Correct application of orthogonality: DSO tier holds even though pe_backed=false."},
+      {"case": "SHAFI_REEM (Two Rivers)", "outcome": "T3 dentist_multi — named dentist-owner network (~20 offices, distinct trade names); no separate MSO/platform documented. DSO=STRUCTURE rule applied; pe_backed=false not the downgrade reason."},
+      {"case": "Fadi Aqel / Brite Dental", "outcome": "Lean T3 dentist_multi — named DDS owner, no MSO; addendum branded_dso call rests on brand locator alone. Held as conflict pending Wave 4."},
+      {"case": "Webster Dental / Great Lakes Dental Partners", "outcome": "CONTESTED — reach5 names Great Lakes Dental Partners (a real PE/MSO platform); ownership_QA reads owner-operated. Held as conflict."},
+      {"case": "Dr. Randy Chang / Precision Dental Care", "outcome": "Lean T3 dentist_multi — named DDS owner; no MSO; addendum stealth_dso rests on locator alone."}
+    ]
+  },
+
+  "mandatory_fields_per_merge_eligible_row": {
+    "always_required": [
+      "location_id",
+      "practice_name",
+      "city",
+      "zip",
+      "state (must be IL — MA auto-fails)",
+      "lane (lane1 / lane2 / lane3)",
+      "verdict (confirmed_consolidated | confirmed_independent | refuted | still_insufficient)",
+      "assigned_tier (T1-T6 label, or 'undetermined' if still_insufficient)",
+      "pe_backed (boolean — false is acceptable; must cite document if true)",
+      "evidence_quality (verified | partial | insufficient)",
+      "reasoning (1-3 sentences citing the evidence URLs — no assertion without citation)",
+      "searches_executed (integer count of actual web/search calls performed)",
+      "search_queries (list of query strings actually run)",
+      "preserved (verbatim original sidecar metadata: owner_identity / family_surnames / brands / legal_entities / evidence_chain / stale_closed — never flattened)"
+    ],
+    "required_for_verified_evidence_quality": [
+      "evidence_urls (list, ≥1 durable documentary URL — see durable_evidence_whitelist below)",
+      "DSO_structure_entity (for T4/T5 only: named management-co / MSO / platform / established-brand)"
+    ],
+    "required_for_partial_evidence_quality": [
+      "evidence_urls (≥1 URL, even if indirect)",
+      "partial_gap_description (what specific evidence is still missing)"
+    ],
+    "required_for_still_insufficient": [
+      "evidence_urls: [] (empty list — never null; the absence is informative)",
+      "missing_evidence_type (specific artifact needed for promotion)"
+    ],
+    "forbidden_fields_in_any_output": [
+      "synthetic NPI / DA_-prefixed 'NPI' promoted as a real location",
+      "parent_iusa=000000000 cited as a real parent",
+      "an asserted 'web_verified' or 'exact_address_match' with no transcribed URL on disk",
+      "AO reach as the sole evidence_url or reasoning anchor"
+    ]
+  },
+
+  "durable_evidence_whitelist": {
+    "counts_as_durable": [
+      "DSO/MSO/PE/management-company named in a cited URL (locator page, SEC filing, press release, state corp registry, FQHC/hospital/university page, org-taxonomy DB artifact)",
+      "Shared real EIN across 3+ locations (EIN value transcribed, not asserted; cross-validated by ≥1 already-corporate member at that EIN)",
+      "DSO's own locator page listing THIS EXACT normalized street address + ZIP (URL string transcribed; not merely the brand domain)",
+      "State corp / IDFPR registry article of organization naming an MSO / management company",
+      "Practice's own db_affiliated_dso / db_parent_company / org-taxonomy DB artifact (from the SQLite record — not from a name-field guess)",
+      "Practice_intel dossier with a recorded source URL naming the structural entity",
+      "SEC / press release naming the PE sponsor and the specific IL locations in scope"
+    ],
+    "does_NOT_count_as_durable": [
+      "Shared AO reach alone (AO co-occurrence is a signal, not proof)",
+      "Brand substring / name token in the practice name alone",
+      "Co-location or same-building address alone",
+      "An asserted 'web_verified' or 'exact_address_match' with no URL string on disk",
+      "DA_-prefixed synthetic NPI / da_synthetic_npi flag",
+      "A fleet confidence label with no underlying artifact",
+      "A referral directory (Zocdoc, Healthgrades, Vitals) listing the brand",
+      "A marketing template or shared-hosting domain inference",
+      "parent_iusa=000000000 (Evenly Technologies placeholder — documented false-positive; produces demotions, NEVER promotions)",
+      "A name-field string in Data Axle (da_legal_name / da_parent_company) without a corroborating structural URL",
+      "An AO surname alone (even a non-clinical one)"
+    ]
+  },
+
+  "verdict_definitions": {
+    "confirmed_consolidated": {
+      "meaning": "The practice is owned/managed by a multi-location consolidated entity (T2/T3/T4/T5).",
+      "minimum_bar": "evidence_quality=verified AND ≥1 durable documentary URL AND assigned_tier is one of T2/T3/T4/T5 AND tier is consistent with DSO=STRUCTURE rule (T4/T5 require a named structural entity; T3 requires a named dentist-owner with no MSO).",
+      "partial_bar": "evidence_quality=partial: eligible for needs_more_evidence with preserved_ready_row=true; NOT eligible for ready_to_validate. A partial row stays in needs_more_evidence until it earns verified quality."
+    },
+    "confirmed_independent": {
+      "meaning": "The practice is independently owned (T1 or T2 single-location independent).",
+      "minimum_bar": "T1 requires POSITIVE owner-operated evidence (site naming owner-dentist, single-location confirmation). T2 independent is rarely asserted — requires explicit multi-dentist single-location independent confirmation. Neither tier is earned by absence of DSO signal alone.",
+      "partial_bar": "Absence of DSO signal alone => undetermined, NOT confirmed_independent."
+    },
+    "refuted": {
+      "meaning": "A prior wave's claimed affiliation or tier is disproven by new Wave 4 evidence.",
+      "minimum_bar": "Refutation requires durable evidence DIRECTLY contradicting the prior claim (e.g., a locator that does NOT list the address; a state registry showing a different owner; practice site naming a different entity). Refuted rows are demoted to needs_more_evidence or rejected — never to ready.",
+      "use_case": "Primarily for Fleet B brand-substring leads where the brand's own locator does not list the exact address ('refuted_brand_not_at_address')."
+    },
+    "still_insufficient": {
+      "meaning": "Wave 4 research found no durable artifact; the row's evidence gap persists.",
+      "action": "Row stays in needs_more_evidence (or conflicts if a conflict row); evidence_urls: []; missing_evidence_type named. Never promoted to ready.",
+      "anti_hallucination": "If search returns nothing, record still_insufficient — NEVER fabricate an ownership inference from a null result."
+    }
+  },
+
+  "tier_assignment_rules": {
+    "T4_T5_DSO_PE_requires": [
+      "Named structural entity: a management company / MSO / platform / established DSO brand (not just a brand word or locator)",
+      "Source URL that names both the structural entity AND connects it to this IL location (exact address match OR the location is listed under the brand on the DSO's own locator)",
+      "evidence_quality = verified (partial is NOT sufficient for a DSO promotion)",
+      "pe_backed boolean explicitly set with cited document if true; false is acceptable but must not be the tier justification"
+    ],
+    "T3_dentist_multi_requires": [
+      "Named dentist-owner (DDS / DMD credential, AO or practice owner)",
+      "Evidence of ≥2 locations under the same owner",
+      "No separate MSO / management company / platform documented",
+      "Consistent across at least one signed pass (ownership_QA, ao_QA, or reach5)"
+    ],
+    "T2_single_loc_group_requires": [
+      "≥2 unrelated dentists confirmed at a single location",
+      "No DSO/MSO structure documented",
+      "evidence_quality ≥ partial"
+    ],
+    "T1_true_independent_requires": [
+      "POSITIVE evidence: practice site or registry naming the owner-dentist as sole practitioner",
+      "Confirmation of single-location (no second IL location under the same owner/EIN)",
+      "evidence_quality = verified",
+      "Not a closed / deceased-owner / relocated door (those go to operating_status_unverified, NOT T1)"
+    ],
+    "T6_institutional_requires": [
+      "FQHC / RHC / hospital / university / government / FQHCLookalike designation confirmed by an official registry URL (HRSA, state Medicaid, university site)",
+      "evidence_quality = verified"
+    ],
+    "cross_network_consistency_rule": "All rows in the SAME network must resolve to the SAME assigned_tier. Mixed-tier within a network is a defect (precedent: SHAFI_REEM mixed branded_dso/dentist_multi was a RE-QA #4 MUST-FIX). Network-level adjudication must produce ONE canonical tier for ALL rows before any row is merge-eligible."
+  },
+
+  "hard_blocks_auto_reject_from_merge": {
+    "HB1_operating_status_unverified": {
+      "description": "Subject door is closed, relocated, or stale-shell per ANY evidence in the row's reasoning or any cited artifact.",
+      "action": "Demote to needs_more_evidence; backfill_lane='operating_status_unverified'; preserved_ready_row=true. The row is EXCLUDED from the GP denominator. NOT counted true_independent.",
+      "pattern_keywords_that_trigger_scan": ["closed", "Yelp shows closed", "permanently closed", "relocated", "no longer at this address", "now at", "stale shell", "defunct", "deceased owner", "estate of", "Dr. X passed", "Marinucci", "Krafcisin"]
+    },
+    "HB2_duplicate_door_tier_conflict": {
+      "description": "The location_id or its normalized address+phone matches another live-bucket row carrying a DIFFERENT assigned_tier.",
+      "action": "Demote to needs_more_evidence; backfill_lane='duplicate_door_tier_conflict'; update duplicate_denominator_blocked.currently_in_candidate_set. Reconcile to ONE canonical row + ONE tier before re-promotion.",
+      "known_pairs_to_check": "9 pairs in duplicate_denominator_blocked; precedent ff41419130267bd9/f94fb29cc7d444cd (same-phone leak caught in RE-QA #4)."
+    },
+    "HB3_protected_network_no_explicit_release": {
+      "description": "Protected surnames/networks: SHAFI, BELKIC, NITTINGER, AQEL, BRUNETTI, SWEIS, LABINOV, RAMAHA. Any row in these networks requires an EXPLICIT per-network release decision in ao_network_release_decisions.decisions (or reach3/reach4 equivalent) with network_evidence_quality='verified' AND decision='release_eligible', OR a documented 'covered_by_prior_release'.",
+      "action": "Pull from ready; hold until verified release exists. A generic per-row evidence gate does NOT constitute a release.",
+      "note": "17 protected_network_hold rows in the Lane 2 backfill queue are blocked by this rule. The Webster set (Brite/Aqel overlap) also triggers HB3 via AQEL surname."
+    },
+    "HB4_webster_contested_held": {
+      "description": "The Webster Dental contested set (17 conflict rows spanning 'Webster Dental', 'Webster Dental Care (contested)', and associated location_ids including Cicero/Evanston/Schaumburg/North Suburban/Berwyn/Klyber variants) stays HELD in conflicts.",
+      "action": "No Webster row may move to ready without a documented MAIN-SESSION whole-network adjudication artifact. Row-by-row promotion is forbidden for this set.",
+      "note": "Brite/Aqel rows partially overlap with Webster in the conflict bucket; treat both the AQEL protected-network rule (HB3) and the Webster held-set rule (HB4) as independently required."
+    },
+    "HB5_pe_dso_name_collision_unresolved": {
+      "description": "A row's practice name or entity name partially matches a known DSO brand (e.g., 'DENTAL TOWN', 'BRITE DENTAL', 'PRECISION DENTAL CARE') AND no Wave 4 evidence resolves whether the brand connection is real or a false-positive collision.",
+      "action": "Hold in conflicts or needs_more_evidence until Wave 4 research explicitly refutes the collision (locator does not list the address) OR confirms it (locator lists the exact address with a named structural entity).",
+      "anti_pattern": "Never promote on the name collision alone; never refute on the name collision alone."
+    },
+    "HB6_brand_word_no_ownership_confirmation": {
+      "description": "The ONLY DSO evidence for a row is a shared brand word in the practice name — no locator listing the exact address, no EIN cluster, no structural entity.",
+      "action": "Hold in needs_more_evidence; backfill_lane='locator_exact'; record missing_evidence_type='exact_address_match_on_brand_locator'.",
+      "note": "This is the specific failure mode that caused 13 locator_exact rows to be demoted in Wave 3. The Lane 2 backfill queue re-promotes them ONLY when the URL string is transcribed on disk."
+    },
+    "HB7_ma_row": {
+      "description": "Any row with state='MA' or a MA ZIP code.",
+      "action": "Auto-fail; excluded from every gate output. Boston/MA is PARKED. No MA rows in any Wave 4 output."
+    },
+    "HB8_da_synthetic_npi": {
+      "description": "Rows with DA_-prefixed synthetic NPI or da_synthetic_npi=true.",
+      "action": "Route to rejected or backfill. Never promotable to ready_to_validate."
+    },
+    "HB9_parent_iusa_placeholder": {
+      "description": "parent_iusa='000000000' (Evenly Technologies placeholder, not a real parent). Documented false-positive that caused 13 demotions in the 2026-06-12 adversarial audit.",
+      "action": "Never cite as a structural entity. If a row's ONLY parent evidence is parent_iusa=000000000, treat as no structural evidence and hold in needs_more_evidence."
+    },
+    "HB10_fleet_b_lead_not_phase_c_verified": {
+      "description": "Fleet B needs_verification leads (694 rows) are sidecar-only and assigned_tier=undetermined by default. A lead is NOT merge-eligible solely because it appears in the 158 'hard-signal' subset.",
+      "action": "A Fleet B lead becomes merge-eligible ONLY after Phase-C web verification yields a durable artifact per the evidence whitelist AND clears HB1-HB9 and AB1-AB12.",
+      "note": "The 158 hard-signal subset is the recommended starting pool — each row still passes the full bar individually. da_synthetic_npi rows in Fleet B are NEVER promotable regardless of Phase-C results."
+    }
+  },
+
+  "anti_hallucination_rules": {
+    "AH1_no_inference_from_null": "Empty search or zero results => still_insufficient + evidence_urls: []. NEVER infer ownership from a null result.",
+    "AH2_every_structural_claim_needs_a_url": "Every non-null T4/T5 structural entity claim must have a cited URL. If the structural entity is described but no URL is transcribed on disk, the claim fails.",
+    "AH3_no_retrospective_assertion": "Wave 4 agents may not retroactively assert 'web_verified=true' for a prior wave's output that lacked a transcribed URL. The transcription must happen in Wave 4 itself.",
+    "AH4_no_name_field_promotion": "A name field from Data Axle (da_legal_name, da_parent_company) is a hint for search direction, not proof. Promotion on a name field alone without a corroborating structural URL is forbidden.",
+    "AH5_closed_door_is_not_independent": "Discovering that a practice is closed does NOT make it true_independent. Route to operating_status_unverified (HB1).",
+    "AH6_no_anchor_math": "Consolidation % is computed FROM the census ledger with coverage at consolidation time. Never anchor to ADA 14.6%, '30% metro estimate', or the legacy 5.43% entity_classification floor.",
+    "AH7_final_labels_are_not_truth": "Any output field named final_ready / final_* from a lane agent is ready_for_validation, NOT final truth. Gate Owner re-reviews independently."
+  },
+
+  "per_lane_checklist": {
+    "lane1_conflicts_74": {
+      "lane_description": "74 contested rows across 6 networks where signed passes disagreed on tier (DSO vs dentist_multi). Wave 4 must adjudicate WHOLE-NETWORK with a single tier backed by structure evidence.",
+      "checklist": [
+        "L1-1. For EACH network (1st Family Dental, Webster Dental, Brite Dental/Fadi Aqel, Dental Town/Razzak, Precision Dental Care, orphan set), produce ONE adjudicated tier with a STRUCTURE-based rationale (DSO=STRUCTURE rule, HB3/HB4).",
+        "L1-2. If the adjudication lands DSO (T4/T5): name the structural entity (MSO/management-co/platform) and transcribe its URL. A locator listing the exact address is necessary but not sufficient — the locator must also reveal a structural entity.",
+        "L1-3. If the adjudication lands dentist_multi (T3): name the dentist-owner (DDS/DMD credential) and the evidence that no separate MSO exists.",
+        "L1-4. All rows in the SAME network must carry the SAME assigned_tier. Any mixed-tier submission is a defect (MUST-FIX precedent: SHAFI_REEM RE-QA #4).",
+        "L1-5. AQEL / Brite Dental: protected surname (HB3). Even if the network adjudicates dentist_multi, the explicit ao_network_release_decisions entry is required. Overlap with Webster (HB4): Brite/Aqel rows that appear in the Webster contested set are additionally blocked by HB4.",
+        "L1-6. BELKIC / 1st Family Dental: protected surname (HB3). Explicit release required.",
+        "L1-7. Webster set (all 17 rows, both 'Webster Dental' and 'Webster Dental Care (contested)' labels): whole-network adjudication ONLY; no partial/per-row Webster promotion (HB4).",
+        "L1-8. Orphan rows (5 rows with no gate_network): each must be independently adjudicated with its own network identity confirmed first, then cleared through HB1-HB10.",
+        "L1-9. For every promoted row: scan reasoning for HB1 closure keywords; check HB2 duplicate-door against duplicate_denominator_blocked and same-address/phone live-bucket rows.",
+        "L1-10. Evidence output file must carry all mandatory fields (see mandatory_fields_per_merge_eligible_row); every row must preserve its original conflict sidecar metadata verbatim."
+      ]
+    },
+    "lane2_backfill_87": {
+      "lane_description": "87 rows demoted from ready in prior waves for a NAMED missing_evidence_type. Re-promotable ONLY when that specific gap is filled by a real on-disk artifact.",
+      "checklist": [
+        "L2-1. Identify the specific missing_evidence_type for EACH row (some have it named; 40 null-lane rows need it named first as a prerequisite).",
+        "L2-2. locator_exact sublane (13 rows): the exact failure mode is 'asserted exact_address_match with no transcribed URL'. Re-promotion requires the URL string of the DSO locator page that lists this normalized street address + ZIP transcribed in the evidence file.",
+        "L2-3. AO_network sublane (22 rows): re-promotion requires an artifact BEYOND AO reach — a shared real EIN, a named structural entity, or a verifiable per-location URL. Reach-only => still holds in needs_more_evidence/AO_network.",
+        "L2-4. practice_intel sublane (12 rows): re-promotion requires a practice_intel dossier entry with a recorded source URL naming the structural entity or confirming independence with positive evidence.",
+        "L2-5. Null-lane 40 rows: first, name the evidence type; then apply the relevant sublane checklist (L2-2, L2-3, or L2-4). These rows remain in needs_more_evidence until the evidence type is identified AND satisfied.",
+        "L2-6. Protected_network_hold (17 rows — currently 17 rows flagged in the backfill queue): HB3 applies. None of these 17 may surface in ready without an explicit verified release decision regardless of whether the missing_evidence_type is otherwise satisfied.",
+        "L2-7. Partial evidence (evidence_quality=partial) is NOT sufficient for re-promotion to ready. It qualifies for needs_more_evidence with an updated backfill_lane — not a ready promotion.",
+        "L2-8. Every re-promoted row passes HB1-HB10 and the evidence whitelist. Verified-only promotions to ready."
+      ]
+    },
+    "lane3_hardleads_158": {
+      "lane_description": "158 hard-signal Fleet B leads (parent_company_chain / affiliated_dso_chain / brand_chain / EIN / dso_regional_review) from the 694 needs_verification pool, targeted for Phase-C web verification.",
+      "checklist": [
+        "L3-1. Reconcile the 158 list first: confirm each 'hard-signal' lead's corroborating artifact (EIN value / brand-locator entry / URL string) is actually transcribed on disk in the sidecar. Of the 694 needs_verification total, only 115 currently carry ANY on-disk URL/brand/EIN field. Any lead claimed 'hard-signal' without a transcribed artifact is reclassified to the general needs_verification pool for now.",
+        "L3-2. Phase-C verification for each reconciled hard-signal lead MUST: (a) record the actual search/source URL, (b) name the exact normalized street address as it appears on the source, (c) yield a durable artifact per the evidence whitelist, (d) achieve evidence_quality=verified for a T4/T5 tier claim.",
+        "L3-3. Sublane A (18 rows, parent_company_chain): the parent company must be a real named entity with a structural URL. parent_iusa=000000000 is auto-rejected (HB9).",
+        "L3-4. Sublane B (46 rows, affiliated_dso_chain / brand_chain): brand_chain leads are the highest-risk for the brand-word-no-ownership-confirmation hard block (HB6). For each, the brand's own locator must list the exact address; otherwise, verdict=refuted_brand_not_at_address or still_insufficient.",
+        "L3-5. Sublane C (94 rows, EIN / dso_regional_review): EIN cluster must have ≥3 locations at the same EIN with ≥1 already-corporate corroborating member. The EIN value must be transcribed. EIN clustering alone assigns at most evidence_quality=partial; a structural URL is needed for verified.",
+        "L3-6. da_synthetic_npi rows in Fleet B: auto-routed to rejected. Never promotable (HB8).",
+        "L3-7. For each promoted row: HB1 closure scan, HB2 duplicate-door scan, HB3/HB4 protected-network and Webster checks, HB5 brand-collision check.",
+        "L3-8. Log the batch size and rows evaluated. Do not silently truncate. Do not run as a mass classification wave — each row is individually reviewed.",
+        "L3-9. Non-promoted leads remain in fleet_b_wave3 sidecar as needs_verification; their sidecar metadata must be preserved verbatim (counts only grow: local_clusters 637 / website_clusters 79 / structural_residue 4)."
+      ]
+    }
+  },
+
+  "merge_eligibility_decision_tree": {
+    "step1_scope": "Is the row IL? If MA or out-of-scope: AUTO-FAIL → discard / out-of-scope note.",
+    "step2_da_synthetic": "Is the location_id DA_-prefixed or da_synthetic_npi=true? If yes: AUTO-FAIL → rejected / backfill.",
+    "step3_operating_status": "Does the row's reasoning or any cited artifact mention closure, relocation, deceased owner, or stale shell? If yes: DEMOTE → needs_more_evidence, backfill_lane='operating_status_unverified', preserved_ready_row=true.",
+    "step4_duplicate_door": "Does the location_id appear in duplicate_denominator_blocked, OR does the normalized address+phone match another live-bucket row with a different assigned_tier? If yes: DEMOTE → needs_more_evidence, backfill_lane='duplicate_door_tier_conflict'.",
+    "step5_protected_network": "Is the row's network/surname in (SHAFI, BELKIC, NITTINGER, AQEL, BRUNETTI, SWEIS, LABINOV, RAMAHA)? If yes: Is there an explicit verified release decision in ao_network_release_decisions? If NO release: HOLD → needs_more_evidence, protected_network_hold=true.",
+    "step6_webster_set": "Is the row a Webster Dental / Webster Dental Care (contested) row? If yes: Is there a documented MAIN-SESSION whole-network adjudication artifact? If no: HOLD → conflicts.",
+    "step7_evidence_quality": "Is evidence_quality=verified? If partial: → needs_more_evidence (may carry a preserved_ready_row flag). If insufficient: → still_insufficient, needs_more_evidence.",
+    "step8_durable_artifact": "Does the row carry ≥1 durable documentary URL from the whitelist (on disk, URL string transcribed, names the exact address or structural entity)? If no: HOLD → needs_more_evidence, backfill_lane named.",
+    "step9_tier_check": "Is the assigned_tier T4 or T5? If yes: Is the structural entity (management-co / MSO / platform / established-brand) named AND supported by a cited URL? If no structural entity: RECLASSIFY to T3 dentist_multi or undetermined.",
+    "step10_network_consistency": "Does the row belong to a network with multiple conflict rows? If yes: Is the assigned_tier consistent with ALL other rows in that network? If mixed: DEFECT → the whole network stays in conflicts until resolved uniformly.",
+    "step11_true_independent_earned": "If assigned_tier=T1: Is there POSITIVE owner-operated evidence (not merely absence of DSO signal)? If no positive evidence: RECLASSIFY to undetermined.",
+    "step12_sidecar_preservation": "Does the output preserve all original sidecar metadata verbatim (owner_identity / family_surnames / brands / legal_entities / evidence_chain / stale_closed)? If flattened or dropped: DEFECT → reject the output file.",
+    "final_gate_if_all_steps_pass": "MERGE-ELIGIBLE → ready_to_validate at the assigned_tier with the documented evidence.",
+    "default_on_any_failure": "needs_more_evidence (with named backfill_lane and missing_evidence_type) or undetermined. NEVER promote a failing row. NEVER default to true_independent."
+  },
+
+  "acceptance_bar_summary_12_rules": [
+    {"id": "AB1", "label": "No AO-only promotions", "rule": "Every promoted row carries a durable artifact BEYOND shared AO reach."},
+    {"id": "AB2", "label": "No brand-substring-only promotions", "rule": "branded_dso/stealth_dso requires the DSO's own locator (or equivalent) to list THIS EXACT normalized address + ZIP."},
+    {"id": "AB3", "label": "Durable documentary corroboration required and ON-DISK", "rule": "Cited artifact exists on disk (URL string transcribed). Open and confirm before merge."},
+    {"id": "AB4", "label": "DSO tier requires STRUCTURE", "rule": "T4/T5 must cite a named structural entity (management-co / MSO / platform / established-brand). Locator alone is insufficient."},
+    {"id": "AB5", "label": "pe_backed is orthogonal", "rule": "pe_backed=true requires a cited document. pe_backed=false NEVER justifies downgrading a DSO tier — structure rationale required instead."},
+    {"id": "AB6", "label": "true_independent must be EARNED", "rule": "T1 requires positive owner-operated evidence. Absence of DSO signal => undetermined, not T1. Closed/deceased-owner => operating_status_unverified."},
+    {"id": "AB7", "label": "Subject-door closure scan", "rule": "Scan every new ready row's reasoning for closure/relocation keywords. Subject-door closure => demote to operating_status_unverified."},
+    {"id": "AB8", "label": "Duplicate-door same-address/phone scan", "rule": "Any address+phone match with a different-tier live-bucket row => duplicate_door_tier_conflict demotion."},
+    {"id": "AB9", "label": "Protected-network explicit release", "rule": "SHAFI/BELKIC/NITTINGER/AQEL/BRUNETTI/SWEIS/LABINOV/RAMAHA rows require verified release in ao_network_release_decisions. Generic per-row gate is NOT a release."},
+    {"id": "AB10", "label": "Webster contested set held", "rule": "17 Webster rows stay in conflicts until a documented main-session whole-network adjudication artifact exists."},
+    {"id": "AB11", "label": "Sidecar / network intelligence preserved", "rule": "Baseline sidecar counts may only GROW. ao wave1=6 / wave2_reach4=14 / wave3_reach3=51 / individuals=13; fleet_b_wave3=720. All release-decision / disposition / qa_mustfix / landmine blocks intact."},
+    {"id": "AB12", "label": "Fleet B leads stay leads unless Phase-C verified", "rule": "694 needs_verification leads are sidecar-only and undetermined. A lead is merge-eligible ONLY after Phase-C produces a transcribed durable artifact. da_synthetic rows never promotable."}
+  ],
+
+  "gate_owner_pre_merge_checklist": [
+    "GO-1. Read the canonical manifest fresh as source of truth (do not trust agent summaries). Confirm manifest_mtime has not changed from baseline (1782072689).",
+    "GO-2. Verify consolidation frozen: PL_tier_nonnull=0, LEDGER=1 line, PROGRESS undetermined_unreviewed=4439. If any invariant changed, STOP and surface the mutation.",
+    "GO-3. Bucket partition: ready / needs_more_evidence / conflicts / rejected mutually exclusive → 0 collisions; distinct-location total reconciles; record new counts vs baseline (ready=310 pre-Wave4).",
+    "GO-4. Validator-native file parity: _ready_to_validate_wave3_fixed_20260621.json (310) is the baseline; newest fixed file count AND id-set must == manifest.buckets.ready_to_validate (0 drift).",
+    "GO-5. For every NEW ready row: run AB7 closure scan, AB8 duplicate-door scan, AB9 protected-network check, AB10 Webster check.",
+    "GO-6. For every NEW ready row: confirm AB1/AB2/AB3 durable-evidence; open and confirm each cited artifact URL exists on disk or is a transcribed string.",
+    "GO-7. For every NEW T4/T5 row: confirm AB4 structural entity named; confirm AB5 pe_backed orthogonal.",
+    "GO-8. For every NEW T1 row: confirm AB6 positive owner-operated evidence; confirm NOT a closed/deceased-owner door.",
+    "GO-9. AB11 sidecar check: ao wave1=6 / wave2_reach4=14 / wave3_reach3=51 / individuals=13 (counts may only grow); fleet_b_wave3=720 (counts may only grow); all release-decision / disposition / qa_mustfix / landmine blocks present.",
+    "GO-10. AB12 Fleet B discipline: da_synthetic rows in rejected; needs_verification sidecar count intact; only Phase-C durable-artifact-backed rows promoted.",
+    "GO-11. Network consistency: for each multi-row network, verify ALL rows carry the SAME assigned_tier. Mixed-tier is a MUST-FIX.",
+    "GO-12. Run consolidate_census.py --validate-only on the newest fixed ready file; snapshot BEFORE/AFTER DB md5, LEDGER line-count, PROGRESS undetermined_unreviewed; confirm ZERO CHANGE vs baseline (db.md5=0dec26135bb4d6ee490dc16cfe892ca6, LEDGER=1, PROGRESS undetermined=4439).",
+    "GO-13. Write a fresh ownership_manifest_QA_wave4_*_20260621.json verdict with exact MUST-FIX location_ids if any gate fails; state gate authorization (NOT authorized until the user's explicit 'consolidate approved manifest')."
+  ],
+
+  "zero_db_write_discipline": {
+    "rule": "No DB writes at any point in Wave 4 evidence gathering, Gate Owner normalization, or QA review. --allow-db-write is NOT passed to consolidate_census.py. The DB file md5 (0dec26135bb4d6ee490dc26cfe892ca6) must be identical before and after every Wave 4 operation.",
+    "verification_method": "md5 snapshot of data/dental_pe_tracker.db BEFORE and AFTER each lane agent run and each Gate Owner normalization pass; LEDGER line-count; PROGRESS undetermined_unreviewed count.",
+    "consolidate_authorization": "consolidate_census.py --allow-db-write runs ONLY when the user explicitly says 'consolidate approved manifest'. No Wave 4 gate action, however complete, authorizes consolidation."
+  },
+
+  "consolidate_authorization": {
+    "status": "NOT AUTHORIZED",
+    "gate_state": "FROZEN. These are pre-merge acceptance criteria; no Wave 4 output has been reviewed or merged yet. Consolidation remains frozen at the RE-QA #5 310-row baseline.",
+    "reason": "consolidate_census.py --allow-db-write runs ONLY when the user explicitly says 'consolidate approved manifest'. No Wave 4 output may be merged to ready until it passes every acceptance bar above and a fresh QA verdict records PASS."
+  }
+}

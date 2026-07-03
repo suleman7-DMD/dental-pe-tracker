@@ -1,0 +1,680 @@
+{
+  "_meta": {
+    "artifact": "AO Wave 3 QA",
+    "generated": "2026-06-21",
+    "paired_deliverable": "ao_network_evidence_reach3_ranked_20260621.json",
+    "no_db_write": true,
+    "gate_ceiling": "ready_for_validation"
+  },
+  "validation_guards": {
+    "networks_ok": 51,
+    "networks_total": 51,
+    "n_locations": 138,
+    "orphan_location_ids_not_in_targets": [],
+    "within_wave_network_collisions": [],
+    "ready_for_validation_uncorroborated": [],
+    "gate_ceiling_violations_final_leak": [],
+    "overlaps_with_prior_waves": [
+      {
+        "location_id": "9c588fbf68114847",
+        "network": "JIANJUN HAO"
+      },
+      {
+        "location_id": "addadba0d25e3812",
+        "network": "SINAN RAZZAK"
+      },
+      {
+        "location_id": "0c8f995db2124f57",
+        "network": "MOHAMMED SALIH"
+      }
+    ],
+    "PASS": true
+  },
+  "tallies": {
+    "tier_tally": {
+      "branded_dso": 47,
+      "undetermined": 6,
+      "dentist_multi": 82,
+      "institutional": 3
+    },
+    "gate_tally": {
+      "ready_for_validation": 120,
+      "undetermined": 6,
+      "candidate": 12
+    },
+    "verdict_tally": {
+      "pe_mso_backed": 7,
+      "unresolved": 2,
+      "dentist_owned_multi": 29,
+      "institutional": 1,
+      "dso_brand": 12
+    },
+    "n_ready_for_validation": 120,
+    "reach_split": {
+      "reach3": 36,
+      "reach2_strong": 15
+    }
+  },
+  "regate_audit": [
+    {
+      "location_id": "6da55130228a9c54",
+      "network": "REEM SHAFI",
+      "candidate_tier": "dentist_multi",
+      "gate_status": "ready_for_validation",
+      "regate_note": "branded_dso->dentist_multi: no MSO/management/platform/DSO-brand evidence found (dentist-owned multi only)"
+    },
+    {
+      "location_id": "c0cbfce56b1ea134",
+      "network": "SINAN RAZZAK",
+      "candidate_tier": "dentist_multi",
+      "gate_status": "ready_for_validation",
+      "regate_note": "branded_dso->dentist_multi: no MSO/management/platform/DSO-brand evidence found (dentist-owned multi only)"
+    }
+  ],
+  "regate_review_needed": [],
+  "candidates_unresolved": [
+    {
+      "location_id": "8bb56d655fd949a6",
+      "network": "SCOTT GOLDMAN",
+      "name": "PEDIATRIC AND FAMILY DENTISTRY PC",
+      "candidate_tier": "undetermined",
+      "gate_status": "undetermined",
+      "reasoning": "SPECIALIST EXCLUSION: taxonomy 1223P0221X (Pediatric Dentistry) = specialist per project rules (1223P prefix excludes from GP census). Pediatric and Family Dentistry PC at 15 S Dryden Pl, Arlington Heights is a pediatric-only practice owned by Dr. Scott Goldman DDS. Must be excluded from GP denominator census. Candidate tier set to undetermined per specialist exclusion rule."
+    },
+    {
+      "location_id": "a543f3ba7ef53451",
+      "network": "SCOTT GOLDMAN",
+      "name": "PEDIATRIC AND FAMILY DENTAL PC",
+      "candidate_tier": "undetermined",
+      "gate_status": "undetermined",
+      "reasoning": "SPECIALIST EXCLUSION: taxonomy 1223P0221X (Pediatric Dentistry) = specialist per project rules. Pediatric and Family Dental PC at 2050 Larkin Ave, Elgin is a pediatric-only practice. Already classified dso_regional / All Family Dental (UDP) \u2014 the Goldman AO may reflect a contracted clinician role. Both specialist exclusion and existing DSO classification mean this remains outside GP-owner census."
+    },
+    {
+      "location_id": "c508a07b0bc2dfdd",
+      "network": "SCOTT GOLDMAN",
+      "name": "METRO KIDZ DENTAL, PC",
+      "candidate_tier": "undetermined",
+      "gate_status": "undetermined",
+      "reasoning": "SPECIALIST EXCLUSION: taxonomy 1223P0221X (Pediatric Dentistry) = specialist per project rules. Metro Kidz Dental PC at 4710 W 95th St Oak Lawn is a pediatric-only practice. org_only_npi classification indicates no individual providers at address \u2014 possibly closed or admin shell. Goldman is listed as PRESIDENT. Exclude from GP denominator census entirely."
+    },
+    {
+      "location_id": "93a707b4f1ce35c2",
+      "network": "SYED REHMAN",
+      "name": "DENTAL CARE CENTER JUSTICE LLC",
+      "candidate_tier": "dentist_multi",
+      "gate_status": "candidate",
+      "reasoning": "Syed Rehman is listed as authorized official on DENTAL CARE CENTER JUSTICE LLC (NPI 1578160990). The practice operates at 8021 W 79th St Justice IL 60458 (active operation confirmed by justicedentalcenter.com and Yelp). The AO pattern is consistent with his confirmed President/owner role at MIRUS ORAL HEALTH \u2014 both are LLC dental practices with him as AO across different ZIPs. However, no documentary source explicitly states he is the owner of the Justice LLC (the website names no owner and no SOS filing was checked). Gate_status=candidate pending Illinois SOS filing confirmation of Rehman as organizer/member of DENTAL CARE CENTER JUSTICE LLC. If confirmed, upgrades to ready_for_validation as part of the Rehman dentist_multi cluster."
+    },
+    {
+      "location_id": "826ff5b11537f2cb",
+      "network": "SAWSAN ASFOUR",
+      "name": "DENTAL MAGIC NORTH AVE, INC",
+      "candidate_tier": "dentist_multi",
+      "gate_status": "candidate",
+      "reasoning": "DENTAL MAGIC NORTH AVE, INC is one of two 'Dental Magic' branded entities under Sawsan Asfour's AO record, consistent with a dentist-founded private multi-location group. No MSO/PE evidence found. However this location is confirmed CLOSED on Yelp (2026), making it a stale shell. gate_status=candidate (not ready_for_validation): the AO link is structural signal and Yelp confirms the brand at this address, but direct documentary ownership evidence for this specific location was not found, and the closed status reduces confidence. The affiliated_dso='Dental 360' pre-label is a likely false positive and warrants a demotion review."
+    },
+    {
+      "location_id": "53da362f58dc8d20",
+      "network": "SAWSAN ASFOUR",
+      "name": "DENTAL MAGIC TOUHY, INC",
+      "candidate_tier": "dentist_multi",
+      "gate_status": "candidate",
+      "reasoning": "DENTAL MAGIC TOUHY, INC is one of two 'Dental Magic' branded entities under Sawsan Asfour's AO record, consistent with a dentist-founded private multi-location group. No MSO/PE evidence found. However this location is confirmed CLOSED on Yelp (2026), making it a stale shell. gate_status=candidate (not ready_for_validation): the AO link is structural signal and Yelp confirms the brand at this address, but direct documentary ownership evidence for this specific location was not found, and the closed status reduces confidence. The affiliated_dso='Destiny Dental/ProSmile' pre-label is a likely false positive and warrants a demotion review."
+    },
+    {
+      "location_id": "896a675012d64d8b",
+      "network": "FARIDEH DAFTARY",
+      "name": "ART OF MODERN DENTISTRY PEDIATRICS P.C",
+      "candidate_tier": "undetermined",
+      "gate_status": "undetermined",
+      "reasoning": "Pediatric-specialist-only satellite at 1510 S Wabash Ave, Chicago 60605. The NPPES entity name 'ART OF MODERN DENTISTRY PEDIATRICS P.C' and multiple web sources confirm this is a pediatric-only specialist office, not a general-practice location. Per census rules (GP-only), this location must be excluded from GP ownership tiers and the corporate floor denominator. candidate_tier=undetermined with gate_status=undetermined to signal specialist exclusion. The owner is almost certainly Dr. Daftary (same AO, same brand), but the GP classification does not apply here."
+    },
+    {
+      "location_id": "bbadc20262b004f9",
+      "network": "ROBERT STITES",
+      "name": "SOUTH PARK ORTHO PLLC",
+      "candidate_tier": "undetermined",
+      "gate_status": "undetermined",
+      "reasoning": "SOUTH PARK ORTHO PLLC at 401 W Talcott Rd, Park Ridge IL 60068 is confirmed as an orthodontic specialist practice operating under the DiFranco Orthodontics / South Park Orthodontics brand, owned by Dr. Paul DiFranco. Practice legal name contains ORTHO and external sources confirm orthodontic specialty exclusively. Per specialist exclusion rule (ortho network \u2014 exclude from GP denominator): candidate_tier=undetermined, gate_status=undetermined. This location must not be counted in GP corporate classification pool."
+    },
+    {
+      "location_id": "f62241c4286271dd",
+      "network": "SUNITA SAHU",
+      "name": "DENTAL WISH LTD",
+      "candidate_tier": "dentist_multi",
+      "gate_status": "candidate",
+      "reasoning": "DENTAL WISH LTD (NPI 1760794176) at 4101 W 26th St, Chicago IL 60623. Dr. Sunita Sahu is listed as authorized official on the NPPES NPI record (registered 2010) and appears in provider directories at this address. However, multiple other named dentists (Eric Andersen, Ashley Seide, Ronald Winn, Ian Hoffman) are listed at this practice, and no dedicated practice website or Secretary of State filing was found that clearly names Dr. Sahu as owner vs. associate at this specific entity. The AO designation on a multi-provider older Ltd entity may reflect a credentialing/admin role. Classified as candidate rather than ready_for_validation pending ownership confirmation. Structural picture remains dentist_multi: no DSO/MSO/PE evidence whatsoever."
+    },
+    {
+      "location_id": "639be6bb4a731c53",
+      "network": "VESNA SUTTER",
+      "name": "HOPE DENTAL P.C.",
+      "candidate_tier": "dentist_multi",
+      "gate_status": "candidate",
+      "reasoning": "AO reach establishes Dr. Vesna Sutter DDS as the shared authorized official, and her confirmed multi-office dentist-owner role (President of North Ave. Dental Partners P.C.) makes dentist_multi the most plausible tier for the Hope Dental P.C. locations. However, no documentary source directly names Dr. Sutter as the current owner of this specific location's operating entity, and the address now appears to host a different practice under a different dentist. Gate stays candidate \u2014 needs physical address verification and confirmation that Hope Dental P.C. is still active and Sutter-operated at this address."
+    },
+    {
+      "location_id": "3fad6182ba54feb4",
+      "network": "VESNA SUTTER",
+      "name": "HOPE DENTAL P.C.",
+      "candidate_tier": "dentist_multi",
+      "gate_status": "candidate",
+      "reasoning": "AO reach and shared Hope Dental P.C. corporate name across Westchester and Aurora locations establish a two-location dentist-operated group. Dr. Sutter's confirmed role as President/dentist at a third location (North Ave. Dental Partners P.C.) corroborates her multi-office owner identity. No documentary source ties Hope Dental Aurora specifically to an MSO or DSO management layer \u2014 dentist_multi is the correct tier. Gate is candidate rather than ready_for_validation because no direct corroborating URL (group website, bio, shared filing) explicitly names Sutter as owner of this Aurora location specifically."
+    },
+    {
+      "location_id": "eb8567fb91ebcdfd",
+      "network": "SAQIB MOHAJIR",
+      "name": "SAQIB H. MOHAJIR, D.M.D.",
+      "candidate_tier": "dentist_multi",
+      "gate_status": "candidate",
+      "reasoning": "The NPPES org name 'SAQIB H. MOHAJIR D.M.D.' with Saqib as his own authorized official, operating as a sub-part under parent 'MOHAMED K.H. MOHAJIR D.D.S.' at the same Alsip address, indicates this is a family co-practice billing entity \u2014 not an independently owned third office. The AO reach signal of 3 is inflated by 1 due to this family sub-part structure. Classification held as dentist_multi (it is part of the broader Mohajir family multi-dentist practice) but gate_status=candidate with low confidence because this specific location_id is a family co-location sub-part, not an independent Saqib-owned clinic. Downstream gate should assess whether this location should be merged with the Mohamed Mohajir family cluster or flagged as an AO-cluster false positive and excluded from the Saqib network count."
+    },
+    {
+      "location_id": "f790cf2484530188",
+      "network": "INCHUN YANG",
+      "name": "METROPOLITAN DENTAL CARE",
+      "candidate_tier": "dentist_multi",
+      "gate_status": "candidate",
+      "reasoning": "Dr. Yang originally opened Metropolitan Dental Care in Des Plaines (~2008) as confirmed by a Patch.com ribbon-cutting article. However, this location is now marked CLOSED on Yelp (June 2026), the NPPES org NPI has not been updated in ~18 years, and the current metropolitandentalcare.com shows completely different dentists with no connection to Yang. This is a stale/closed NPI shell \u2014 Yang's AO status is a historical artifact. Gate_status is 'candidate' rather than 'ready_for_validation' because while the Yang-ownership origin is corroborated, the current operational status is closed/transferred, making this a stale false positive for active GP denominator classification."
+    },
+    {
+      "location_id": "00336cbe03e4f9dc",
+      "network": "YAQIN DAWOUD",
+      "name": "CHICAGO STAR DENTAL PC",
+      "candidate_tier": "dentist_multi",
+      "gate_status": "candidate",
+      "reasoning": "Chicago Star Dental PC at 3641 E 108th St, Chicago IL 60617 appears in NPPES with Yaqin Dawoud as AO, and the shared phone prefix with Stony Island Dental suggests the same operator. However, no consumer website, Yelp listing, or Healthgrades entry was found for this specific practice at this address \u2014 the address is associated with a medical center in web results. Given the absence of documentary corroboration for this location specifically, gate_status is 'candidate' and confidence is low. The owner identity (Yaqin Dawoud) is plausible based on the AO signal and phone proximity, but the location's operational status is unverified."
+    },
+    {
+      "location_id": "2b12cf9aa3afed8a",
+      "network": "ZUZANA VITKOVA",
+      "name": "ACDI - NAPERVILLE, LLC.",
+      "candidate_tier": "dentist_multi",
+      "gate_status": "candidate",
+      "reasoning": "ACDI-NAPERVILLE LLC shares the ACDI brand and Zuzana Vitkova CFO signal with the confirmed ACDI multi-location network. However, the NPI record is from 2008/2009 and provider_count=0, suggesting this Naperville entity was never actively staffed or was closed early. The brand+AO chain corroborates the network identity (dentist_multi), but the specific location's operational status is too uncertain for ready_for_validation. gate_status=candidate pending validator confirmation that 1288 Rickert Dr is or was an operating ACDI dental office."
+    },
+    {
+      "location_id": "6a1f034a027ef384",
+      "network": "WILLIAM LI",
+      "name": "ALL FAMILY DENTAL",
+      "candidate_tier": "dentist_multi",
+      "gate_status": "candidate",
+      "reasoning": "NPPES lists WILLIAM LI, DDS as OWNER on this org NPI. However, no individual providers are currently associated with this address (provider_count=0 in practice_locations, org_only_npi in the practices table). The location counts in the 60616 GP denominator via the practice_locations solo_established classification, but it may be dormant or a legacy billing entity. DA officer corroboration exists only for the Oral Kare location, not this address directly. dentist_multi is the correct tier (same owner, same network), but gate_status=candidate because this specific location's active-practice status is uncertain and no documentary evidence directly corroborates the 60616 address as currently operating under Li's ownership."
+    },
+    {
+      "location_id": "f7f325330403a6d7",
+      "network": "KAMAL VIBHAKAR",
+      "name": "VIBHAKAR AND VIBHAKAR D.D.S.P.C.",
+      "candidate_tier": "dentist_multi",
+      "gate_status": "candidate",
+      "reasoning": "Active family dental practice confirmed at 3902 Harlem Ave Lyons (Alldent Dental Center). Dr. Kamal Vibhakar and Dr. Charu Vibhakar (family pair) operate as a professional corporation at a single address for 40+ years. The AO cluster reach=2 arises because Kamal Vibhakar is also AO on the Amerident Associates NPI (60623), but that second location is closed \u2014 this is not a true multi-office expansion. dentist_multi is the best structural tier given two named dentists under one family PC, but gate_status=candidate because the AO cluster reach is a false positive (Location 2 is closed/stale). Standalone, this is a single-location family practice correctly classified as family_practice; it should NOT be promoted to corporate. No MSO/DSO structure found."
+    },
+    {
+      "location_id": "6f685dcd203ff3d2",
+      "network": "KAMAL VIBHAKAR",
+      "name": "AMERIDENT ASSOCIATES",
+      "candidate_tier": "undetermined",
+      "gate_status": "undetermined",
+      "reasoning": "This location is an AO-cluster false positive. The Amerident Associates NPI at 4008 W 26th St Chicago is marked CLOSED on Yelp (March 2026). The NPPES parent_company='1ST FAMILY DENTAL' conflicts with the verified 1st Family Dental Little Village address (4049 W 26th St \u2014 a different building one block away, per 1stfamilydental.com/locations/little-village/). Kamal Vibhakar's AO status here appears to be a stale artifact: he historically operated 'Amerident Dental Center' as his own brand (1991 newspaper records confirm Vibhakar at Harlem Ave Lyons with the Amerident name). The practice at 60623 appears closed; the 1st Family Dental affiliation in NPPES is an unverified parent_company field on a likely-closed record. Cannot assign dentist_multi (no evidence of active second Vibhakar office at this address) or branded_dso (address mismatch with known 1st Family Dental, practice closed). Setting undetermined/gate_status=undetermined pending active-status confirmation. This record should NOT be counted in the IL GP corporate denominator until closure and ownership are confirmed."
+    }
+  ],
+  "specialist_or_undetermined_flags": [
+    {
+      "location_id": "8bb56d655fd949a6",
+      "network": "SCOTT GOLDMAN",
+      "name": "PEDIATRIC AND FAMILY DENTISTRY PC",
+      "reasoning": "SPECIALIST EXCLUSION: taxonomy 1223P0221X (Pediatric Dentistry) = specialist per project rules (1223P prefix excludes from GP census). Pediatric and Family Dentistry PC at 15 S Dryden Pl, Arlington Heights is a pediatric-only practice owned by Dr. Scott Goldman DDS. Must be excluded from GP denominator census. Candidate tier set to undetermined per specialist exclusion rule."
+    },
+    {
+      "location_id": "a543f3ba7ef53451",
+      "network": "SCOTT GOLDMAN",
+      "name": "PEDIATRIC AND FAMILY DENTAL PC",
+      "reasoning": "SPECIALIST EXCLUSION: taxonomy 1223P0221X (Pediatric Dentistry) = specialist per project rules. Pediatric and Family Dental PC at 2050 Larkin Ave, Elgin is a pediatric-only practice. Already classified dso_regional / All Family Dental (UDP) \u2014 the Goldman AO may reflect a contracted clinician role. Both specialist exclusion and existing DSO classification mean this remains outside GP-owner census."
+    },
+    {
+      "location_id": "c508a07b0bc2dfdd",
+      "network": "SCOTT GOLDMAN",
+      "name": "METRO KIDZ DENTAL, PC",
+      "reasoning": "SPECIALIST EXCLUSION: taxonomy 1223P0221X (Pediatric Dentistry) = specialist per project rules. Metro Kidz Dental PC at 4710 W 95th St Oak Lawn is a pediatric-only practice. org_only_npi classification indicates no individual providers at address \u2014 possibly closed or admin shell. Goldman is listed as PRESIDENT. Exclude from GP denominator census entirely."
+    },
+    {
+      "location_id": "896a675012d64d8b",
+      "network": "FARIDEH DAFTARY",
+      "name": "ART OF MODERN DENTISTRY PEDIATRICS P.C",
+      "reasoning": "Pediatric-specialist-only satellite at 1510 S Wabash Ave, Chicago 60605. The NPPES entity name 'ART OF MODERN DENTISTRY PEDIATRICS P.C' and multiple web sources confirm this is a pediatric-only specialist office, not a general-practice location. Per census rules (GP-only), this location must be excluded from GP ownership tiers and the corporate floor denominator. candidate_tier=undetermined with gate_status=undetermined to signal specialist exclusion. The owner is almost certainly Dr. Daftary (same AO, same brand), but the GP classification does not apply here."
+    },
+    {
+      "location_id": "bbadc20262b004f9",
+      "network": "ROBERT STITES",
+      "name": "SOUTH PARK ORTHO PLLC",
+      "reasoning": "SOUTH PARK ORTHO PLLC at 401 W Talcott Rd, Park Ridge IL 60068 is confirmed as an orthodontic specialist practice operating under the DiFranco Orthodontics / South Park Orthodontics brand, owned by Dr. Paul DiFranco. Practice legal name contains ORTHO and external sources confirm orthodontic specialty exclusively. Per specialist exclusion rule (ortho network \u2014 exclude from GP denominator): candidate_tier=undetermined, gate_status=undetermined. This location must not be counted in GP corporate classification pool."
+    }
+  ],
+  "already_corporate_in_db": [
+    {
+      "location_id": "d4d827860b4132cb",
+      "network": "HILLARY THULL",
+      "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+      "current_db_entity_classification": "dso_regional",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "64a25dd567a92ae3",
+      "network": "HILLARY THULL",
+      "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "1237e7c94d53bab9",
+      "network": "HILLARY THULL",
+      "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "fd93e6934ac6c59c",
+      "network": "SIMONE WILSON-ADELEKE",
+      "name": "PRO DENTAL IL - CHAD WISE PC",
+      "current_db_entity_classification": "dso_regional",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "08d34f2671858cfd",
+      "network": "SIMONE WILSON-ADELEKE",
+      "name": "PRO DENTAL IL - CHAD WISE PC",
+      "current_db_entity_classification": "dso_regional",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "1d72f604a2d31ce9",
+      "network": "SIMONE WILSON-ADELEKE",
+      "name": "PRO DENTAL IL - CHAD WISE PC",
+      "current_db_entity_classification": "dso_regional",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "58a87486cd2546e5",
+      "network": "KOUSHAN AZAD",
+      "name": "FAMILIA DENTAL WHEELING 3 LLC",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "4f7949f6c3928fb1",
+      "network": "KOUSHAN AZAD",
+      "name": "FAMILIA DENTAL 3 LLC",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "b62beb82551b076f",
+      "network": "KOUSHAN AZAD",
+      "name": "DEXTER DENTAL 3 LLC",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "a543f3ba7ef53451",
+      "network": "SCOTT GOLDMAN",
+      "name": "PEDIATRIC AND FAMILY DENTAL PC",
+      "current_db_entity_classification": "dso_regional",
+      "candidate_tier": "undetermined"
+    },
+    {
+      "location_id": "199841c7ee233c17",
+      "network": "BEN MEHTA",
+      "name": "AFFORDABLE DENTURES & IMPLANTS - ILLINOIS, PLLC",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "bd77120df3018393",
+      "network": "BEN MEHTA",
+      "name": "AFFORDABLE DENTURES & IMPLANTS - DOWNERS GROVE, P.C.",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "23db306c0cb65354",
+      "network": "BEN MEHTA",
+      "name": "AFFORDABLE DENTURES & IMPLANTS - AURORA, IL II, P.C.",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "3e7a3d11d88cb223",
+      "network": "SYED REHMAN",
+      "name": "DENTAL 360 BERWYN LLC",
+      "current_db_entity_classification": "dso_regional",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "826ff5b11537f2cb",
+      "network": "SAWSAN ASFOUR",
+      "name": "DENTAL MAGIC NORTH AVE, INC",
+      "current_db_entity_classification": "dso_regional",
+      "candidate_tier": "dentist_multi"
+    },
+    {
+      "location_id": "53da362f58dc8d20",
+      "network": "SAWSAN ASFOUR",
+      "name": "DENTAL MAGIC TOUHY, INC",
+      "current_db_entity_classification": "dso_regional",
+      "candidate_tier": "dentist_multi"
+    },
+    {
+      "location_id": "55404df201ad194f",
+      "network": "JIANJUN HAO",
+      "name": "SMILING DENTAL INTERNATIONAL P.C.",
+      "current_db_entity_classification": "dso_regional",
+      "candidate_tier": "dentist_multi"
+    },
+    {
+      "location_id": "393a79a74b719b48",
+      "network": "SUNIL EAMANI",
+      "name": "DENTIST IN VERNON HILLS LLC",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "3d0e7f3e036f5842",
+      "network": "SUNIL EAMANI",
+      "name": "DENTIST IN BLOOMINGDALE LLC",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "44917ecf8c1cf019",
+      "network": "CHRISTINE BARBER",
+      "name": "MENA DENTAL PLLC",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "6c629fcb565ea0be",
+      "network": "CHRISTINE BARBER",
+      "name": "DELGADO DMD PLLC",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "6f685dcd203ff3d2",
+      "network": "KAMAL VIBHAKAR",
+      "name": "AMERIDENT ASSOCIATES",
+      "current_db_entity_classification": "dso_regional",
+      "candidate_tier": "undetermined"
+    },
+    {
+      "location_id": "7d1d789828351ecf",
+      "network": "RICHARD CONEN",
+      "name": "GENTLE DENTAL CARE P.C.",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "dentist_multi"
+    },
+    {
+      "location_id": "46c4e7116d0046a8",
+      "network": "CASSANDRA PETERSEN",
+      "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "1b931a8e9c2675a9",
+      "network": "CASSANDRA PETERSEN",
+      "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "093fbea9e8c840df",
+      "network": "KIM WILSON",
+      "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "6dba925c21c398ce",
+      "network": "KIM WILSON",
+      "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "8c6cbd8b8b3e4877",
+      "network": "IVANA BUENO",
+      "name": "DENTAL 360 & ASSOCIATES LLC",
+      "current_db_entity_classification": "dso_regional",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "c4b5b35fa16e44e5",
+      "network": "IVANA BUENO",
+      "name": "FAMILY DENTAL GROUP, INC.",
+      "current_db_entity_classification": "dso_regional",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "e50dfc828412c437",
+      "network": "BEHZAD SANEI",
+      "name": "SANEI CENTER PC",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "dentist_multi"
+    },
+    {
+      "location_id": "c6078e6641ef7f48",
+      "network": "MUSTAPHA HOTAIT",
+      "name": "CHICAGO DENTAL COSMETICS",
+      "current_db_entity_classification": "dso_regional",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "629e6c24236f7dc1",
+      "network": "KENDRA WALKER",
+      "name": "DENTAL PROFESSIONALS OF ILLINOIS, PC",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "cbde3ee6f46acad7",
+      "network": "KENDRA WALKER",
+      "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "77b28a39cb951124",
+      "network": "HARRY VARVARESSOS",
+      "name": "FAMILY DENTAL CARE OF CALUMET CITY",
+      "current_db_entity_classification": "dso_regional",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "3aebe48ff7c42bdf",
+      "network": "HARRY VARVARESSOS",
+      "name": "FAMILY DENTAL CARE OF EVERGREEN PARK",
+      "current_db_entity_classification": "dso_regional",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "659a2d2d736f5059",
+      "network": "LAWRENCE WHITE",
+      "name": "COMFORT DENTAL STUDIO",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "dentist_multi"
+    },
+    {
+      "location_id": "7230bc8117b4055b",
+      "network": "LAWRENCE MULVANEY",
+      "name": "NORTHWESTERN DENTAL GROUP LTD",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "dentist_multi"
+    },
+    {
+      "location_id": "351f97bfcef8aead",
+      "network": "MANISSA LAMPMAN",
+      "name": "WEBSTER DENTAL CARE GLENVIEW, LTD",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "location_id": "9ed079a50d548b37",
+      "network": "MANISSA LAMPMAN",
+      "name": "WEBSTER DENTAL CARE SAUGANASH, LTD",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    }
+  ],
+  "new_intelligence_summary": [
+    {
+      "authorized_official": "ROBERT STITES",
+      "rank": 15,
+      "recommended_tier_modal": "branded_dso",
+      "mso_platform_pe_evidence": "DecisionOne Dental Partners is a self-described DSO (decisiononedental.com: \"combining clinical autonomy of private practice with cost efficiencies inherent in a DSO\"), 35+ locations IL/WI. The website footer references Smile Brands' Code of Conduct confirming affiliation/operational integration. Smile Brands is PE-backed: Gryphon Investors acquisition documented at https://www.gryphon-inv.com/news/gryphon-investors-acquires-smile-brands/ and https://smilebrands.com/pressrelease/gryphon-investors-acquires-smile-brands/; current backer reported as New Mountain Capital per https://www.drbicuspid.com/dental-business/dso/article/15372465/private-equity-firm-acquires-dso-smile-brands. DecisionOne team page: https://www.decisiononedental.com/support-team",
+      "brand_trade_names": [
+        "DecisionOne Dental Partners",
+        "Park Ridge Dentistry",
+        "Jefferson Park Family Dental",
+        "Jefferson Park Dental Studio"
+      ],
+      "note": "evidence points to DSO/MSO structure but no location currently corporate in DB \u2014 candidate hidden consolidator"
+    },
+    {
+      "authorized_official": "BELLA ZARITSKY",
+      "rank": 16,
+      "recommended_tier_modal": "branded_dso",
+      "mso_platform_pe_evidence": "Imagen Dental Partners LLC operates as a Dental Partnership Organization (DPO) providing centralized management services (HR, IT, finance, marketing, compliance, revenue cycle management) to partner practices \u2014 confirmed at https://www.imagendentalpartners.com/partner-services/ and https://www.imagendentalpartners.com/about-us/. All three practices in this cluster display 'An Imagen Partner Practice' with '\u00a9 Imagen\u00ae Dental Partners LLC' in footers. No private equity sponsor identified; Imagen explicitly states 'doctor-led, not private equity-owned' at https://www.imagendentalpartners.com/about-us/. Management-company layer is documented and real; pe_backed=false.",
+      "brand_trade_names": [
+        "Wilmette Family Dental",
+        "Winning Smile Dental Group",
+        "Cityscape Dental",
+        "Imagen Dental Partners",
+        "Imagen DPO"
+      ],
+      "note": "evidence points to DSO/MSO structure but no location currently corporate in DB \u2014 candidate hidden consolidator"
+    },
+    {
+      "authorized_official": "VESNA SUTTER",
+      "rank": 18,
+      "recommended_tier_modal": "dentist_multi",
+      "mso_platform_pe_evidence": "Tru Family Dental (the brand now at the same phone/address corridor as North Ave. Dental Partners P.C.) was acquired by Heartland Dental on December 21, 2020. Heartland Dental is majority owned by KKR, a global private equity firm. Sources: https://blog.heartland.com/heartland-dental-grows-national-network-of-supported-offices-with-acquisition-of-tru-family-dental and https://www.groupdentistrynow.com/dso-group-blog/tru-family-dentals-23-offices-join-heartland-dental/",
+      "brand_trade_names": [
+        "Hope Dental P.C.",
+        "North Ave. Dental Partners P.C.",
+        "Tru Family Dental"
+      ],
+      "note": "evidence points to DSO/MSO structure but no location currently corporate in DB \u2014 candidate hidden consolidator"
+    },
+    {
+      "authorized_official": "MUZAFFAR MIRZA",
+      "rank": 19,
+      "recommended_tier_modal": "branded_dso",
+      "mso_platform_pe_evidence": "Dental Management & Investments (140 Roosevelt Rd, Villa Park IL 60181, phone 630-501-0064) is described on mirzadental.com as managing the Mirza Dental group offices. This is the founder's own management entity \u2014 no external PE sponsor, DSO platform, or management-services agreement with a third party found. See: https://www.mirzadental.com/dental-management-investments",
+      "brand_trade_names": [
+        "Mirza Dental",
+        "Muzaffar Mirza DDS & Associates",
+        "Dental Care Center",
+        "Kedzie 47 Dental",
+        "Summit Dental Smiles",
+        "Addison Smiles",
+        "Cicero Dental Center",
+        "Taylor Dental Center"
+      ],
+      "note": "evidence points to DSO/MSO structure but no location currently corporate in DB \u2014 candidate hidden consolidator"
+    },
+    {
+      "authorized_official": "REEM SHAFI",
+      "rank": 24,
+      "recommended_tier_modal": "branded_dso",
+      "mso_platform_pe_evidence": null,
+      "brand_trade_names": [
+        "Two Rivers Dental",
+        "Hanover Dental",
+        "Baker Hill Dental",
+        "Simply Dental",
+        "Absolute Dental",
+        "Integra Dental"
+      ],
+      "note": "evidence points to DSO/MSO structure but no location currently corporate in DB \u2014 candidate hidden consolidator"
+    },
+    {
+      "authorized_official": "CRYSTAL BARRON",
+      "rank": 31,
+      "recommended_tier_modal": "branded_dso",
+      "mso_platform_pe_evidence": null,
+      "brand_trade_names": [
+        "Pure Dental Spa",
+        "Chicago Dental Specialists PC",
+        "Rajul Patel Westloop PC",
+        "Rajul Patel West Loop PC"
+      ],
+      "note": "evidence points to DSO/MSO structure but no location currently corporate in DB \u2014 candidate hidden consolidator"
+    },
+    {
+      "authorized_official": "SINAN RAZZAK",
+      "rank": 34,
+      "recommended_tier_modal": "branded_dso",
+      "mso_platform_pe_evidence": null,
+      "brand_trade_names": [
+        "Dental Town Chicago",
+        "Image Dental",
+        "Bedford Dental",
+        "Dental Town"
+      ],
+      "note": "evidence points to DSO/MSO structure but no location currently corporate in DB \u2014 candidate hidden consolidator"
+    }
+  ],
+  "per_network_oneliner": [
+    "#1 r3 HILLARY THULL: pe_mso_backed / modal=branded_dso / MSO+PE: Heartland Dental LLC is a national DSO providing management and administrative s",
+    "#2 r3 SIMONE WILSON-ADELEKE: pe_mso_backed / modal=branded_dso / MSO+PE: ProSmile Holdings LLC is a PE-backed national DSO (TriSpan, NYC/London PE firm).",
+    "#3 r3 KOUSHAN AZAD: pe_mso_backed / modal=branded_dso / MSO+PE: The Halifax Group (Washington DC PE firm) recapitalized Familia Dental Group Hol",
+    "#4 r3 SCOTT GOLDMAN: unresolved / modal=undetermined / MSO+PE: SALT Dental Collective lead (not confirmed): Scott Goldman is listed as Clinical",
+    "#5 r3 BEN MEHTA: pe_mso_backed / modal=branded_dso / MSO+PE: Affordable Care LLC is the DSO/MSO platform entity behind the Affordable Denture",
+    "#6 r3 SYED REHMAN: dentist_owned_multi / modal=dentist_multi",
+    "#7 r3 SAWSAN ASFOUR: dentist_owned_multi / modal=dentist_multi",
+    "#8 r3 JIANJUN HAO: dentist_owned_multi / modal=dentist_multi",
+    "#9 r3 RESHMA DHAKE: dentist_owned_multi / modal=dentist_multi",
+    "#10 r3 MOHAMMED SAYEED: dentist_owned_multi / modal=dentist_multi",
+    "#11 r3 LINH TRAN: dentist_owned_multi / modal=dentist_multi",
+    "#12 r3 FARIDEH DAFTARY: dentist_owned_multi / modal=dentist_multi",
+    "#13 r3 NICOLE WILLIS: institutional / modal=institutional",
+    "#14 r3 MOHAMMAD MOEIN AZIMI: dentist_owned_multi / modal=dentist_multi",
+    "#15 r3 ROBERT STITES: dso_brand / modal=branded_dso / MSO+PE: DecisionOne Dental Partners is a self-described DSO (decisiononedental.com: \"com",
+    "#16 r3 BELLA ZARITSKY: dso_brand / modal=branded_dso / MSO+PE: Imagen Dental Partners LLC operates as a Dental Partnership Organization (DPO) p",
+    "#17 r3 SUNITA SAHU: dentist_owned_multi / modal=dentist_multi",
+    "#18 r3 VESNA SUTTER: unresolved / modal=dentist_multi / MSO+PE: Tru Family Dental (the brand now at the same phone/address corridor as North Ave",
+    "#19 r3 MUZAFFAR MIRZA: dso_brand / modal=branded_dso / MSO+PE: Dental Management & Investments (140 Roosevelt Rd, Villa Park IL 60181, phone 63",
+    "#20 r3 DEEPAK AGARWAL: dentist_owned_multi / modal=dentist_multi",
+    "#21 r3 SAQIB MOHAJIR: dentist_owned_multi / modal=dentist_multi",
+    "#22 r3 AMJAD MAHAIRI: dentist_owned_multi / modal=dentist_multi",
+    "#23 r3 INCHUN YANG: dentist_owned_multi / modal=dentist_multi",
+    "#24 r3 REEM SHAFI: dso_brand / modal=branded_dso",
+    "#25 r3 MICHAEL TEUSCHER: dentist_owned_multi / modal=dentist_multi",
+    "#26 r3 JOSEPH FORNAL: dentist_owned_multi / modal=dentist_multi",
+    "#27 r3 YAQIN DAWOUD: dentist_owned_multi / modal=dentist_multi",
+    "#28 r3 YOSIF JABIR: dentist_owned_multi / modal=dentist_multi",
+    "#29 r3 ZUZANA VITKOVA: dentist_owned_multi / modal=dentist_multi",
+    "#30 r3 JONATHAN VILLANUEVA: dentist_owned_multi / modal=dentist_multi",
+    "#31 r3 CRYSTAL BARRON: dso_brand / modal=branded_dso",
+    "#32 r3 WILLIAM LI: dentist_owned_multi / modal=dentist_multi",
+    "#33 r3 ANNA PELAK: dentist_owned_multi / modal=dentist_multi",
+    "#34 r3 SINAN RAZZAK: dso_brand / modal=branded_dso",
+    "#35 r3 MOHAMMED SALIH: dentist_owned_multi / modal=dentist_multi",
+    "#36 r3 ANITA SHAHIN: dentist_owned_multi / modal=dentist_multi",
+    "#37 r2 SUNIL EAMANI: dso_brand / modal=branded_dso / MSO+PE: Sonrava Health is the parent platform operating DentalWorks (~600 offices, 21 st",
+    "#38 r2 CHRISTINE BARBER: dso_brand / modal=branded_dso / MSO+PE: ADMI CORP = Aspen Dental Management, Inc., the national DSO management/MSO platf",
+    "#39 r2 KAMAL VIBHAKAR: dentist_owned_multi / modal=dentist_multi",
+    "#40 r2 RICHARD CONEN: dentist_owned_multi / modal=dentist_multi",
+    "#41 r2 CASSANDRA PETERSEN: dso_brand / modal=branded_dso / MSO+PE: Heartland Dental LLC is a national DSO platform, KKR (PE) majority investor sinc",
+    "#42 r2 KIM WILSON: pe_mso_backed / modal=branded_dso / MSO+PE: Heartland Dental LLC is a national DSO platform backed by KKR (PE). Confirmed vi",
+    "#43 r2 IVANA BUENO: dso_brand / modal=branded_dso",
+    "#44 r2 BEHZAD SANEI: dentist_owned_multi / modal=dentist_multi",
+    "#45 r2 MUSTAPHA HOTAIT: pe_mso_backed / modal=branded_dso / MSO+PE: United Dental Partners (UDP) is the DSO/MSO operator of both locations. UDP is h",
+    "#46 r2 KENDRA WALKER: pe_mso_backed / modal=branded_dso / MSO+PE: Heartland Dental is the nation's largest DSO (1,750+ supported offices). KKR acq",
+    "#47 r2 HARRY VARVARESSOS: dso_brand / modal=branded_dso / MSO+PE: Upstat Dental Solutions LTD is the management company (MSO layer) operating the ",
+    "#48 r2 LAWRENCE WHITE: dentist_owned_multi / modal=dentist_multi",
+    "#49 r2 LAWRENCE MULVANEY: dentist_owned_multi / modal=dentist_multi",
+    "#50 r2 MANISSA LAMPMAN: dso_brand / modal=branded_dso / MSO+PE: Webster Dental Management is the management/MSO entity operating behind the Webs",
+    "#51 r2 PETER PULLARA: dentist_owned_multi / modal=dentist_multi"
+  ]
+}

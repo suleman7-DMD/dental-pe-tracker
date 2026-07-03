@@ -1,0 +1,57 @@
+{
+  "_batch": "ind_north",
+  "_lane": "AO_network",
+  "_row_class": "original_13",
+  "_protected_network_hold": false,
+  "_note": "Original-13 individual rows, north-side Chicago 60640. Evidence-only suffices to advance (no protected hold). Braam Dental: the 60640 location_id reflects Dr. Lee Braam's NPI-1 at Heartland Health Outreach (nonprofit FQHC, 1015 W Lawrence Ave); his sole private NPI-2 Braam Dental is at 3334 W Peterson Ave 60659 — no second private office, no DSO/PE. No durable multi-location artifact at 60640 → undetermined.",
+  "results": [
+    {
+      "location_id": "bb6d4fb9d7b95ca4",
+      "practice_name": "Compass Dental, P.C.",
+      "is_multilocation": true,
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "documentary_urls": [
+        {"url": "https://opennpi.com/provider/1144693748", "shows": "COMPASS DENTAL OF LINCOLN SQUARE NPI 1144693748 — AO Dr. Brandon R Prusa, title OWNER DDS, 2334 W Lawrence Ave Ste 215 Chicago 60625"},
+        {"url": "https://local.yahoo.com/info-234224083-prusa-brandon-r-compass-dental-at-lincoln-square-chicago/", "shows": "Prusa Brandon R listed as dentist at Compass Dental at Lincoln Square — same individual across Lakeview and Lincoln Square"},
+        {"url": "https://www.beckershospitalreview.com/uncategorized/dr-brandon-prusa-dentist-at-compass-dental/", "shows": "Dr. Brandon Prusa identified as dentist at Compass Dental — same brand across locations"}
+      ],
+      "durable_non_ao_artifact": {"type": "name_chain", "detail": "Compass Dental brand at 4+ Chicago-area addresses under Dr. Brandon Prusa as owner/AO: 4413 N Clark St 60640 (Uptown/Clark), 2334 W Lawrence Ave 60625 (Lincoln Square, NPI 1144693748 owner=Prusa), 415 W Belmont Ave 60657 (Lakeview), plus Rogers Park and Deerfield on compassdentalcare.com — same brand across 3+ distinct ZIPs, Prusa AO/owner on at least one NPI.", "source_url": "https://opennpi.com/provider/1144693748"},
+      "evidence_quality": "partial",
+      "gate_status": "candidate",
+      "reasoning": "Dr. Brandon Prusa DDS confirmed Owner/AO of COMPASS DENTAL OF LINCOLN SQUARE (NPI 1144693748). Compass Dental brand spans 4+ Chicago-area locations per practice website + a Clark St/60640 listing under the same brand. Evidence partial: the 60640 Clark St NPI record itself was not directly accessible to confirm Prusa as AO at that specific entity, but the name-chain across 3+ ZIPs under one owner is well-attested. No PE/MSO signals."
+    },
+    {
+      "location_id": "0884ff9f2ce7934f",
+      "practice_name": "Braam Dental",
+      "is_multilocation": false,
+      "evidence_tier": "true_independent",
+      "pe_backed": false,
+      "documentary_urls": [
+        {"url": "https://npino.com/dental-clinic/1043781321-braam-dental/", "shows": "BRAAM DENTAL NPI 1043781321 — AO Lee Braam DMD, entity SINGLE SPECIALTY GROUP, 3334 W Peterson Ave Chicago 60659"},
+        {"url": "https://findadentist.ada.org/dentists/dr-lee-s-braam-chicago-0038V00002yjo2ZQAQ-a1C8V00000kYXy8UAG", "shows": "ADA listing: Dr. Lee S Braam at 1015 W Lawrence Ave Chicago 60640 — individual NPI-1 tied to Heartland Health Outreach (nonprofit FQHC), not a second private Braam Dental office"}
+      ],
+      "durable_non_ao_artifact": {"type": "none", "detail": "No name-chain, shared EIN, parent/MSO, or locator evidence found. Braam Dental's sole private NPI-2 is at 3334 W Peterson Ave 60659. The 60640 address (1015 W Lawrence Ave) is Heartland Health Outreach, a nonprofit FQHC where Dr. Braam practices separately — not a second private office.", "source_url": "https://npino.com/dental-clinic/1043781321-braam-dental/"},
+      "evidence_quality": "insufficient",
+      "gate_status": "undetermined",
+      "reasoning": "Braam Dental is a solo-owner single-location private practice at 3334 W Peterson Ave 60659 under Dr. Lee Braam DMD. The 60640 location_id reflects his individual NPI-1 linked to Heartland Health Outreach (nonprofit FQHC, 1015 W Lawrence Ave) where he provides community dentistry — not a second private office. No durable multi-location artifact at the 60640 watched address, no DSO/MSO/PE signals anywhere. Gate_status undetermined: the 60640 row carries no documentary multi-location/corporate artifact (NPI-1↔NPI-2 dedup ambiguity); evidence_quality insufficient for advancing the watched 60640 row to a corporate/group tier."
+    },
+    {
+      "location_id": "e32ed1606301b785",
+      "practice_name": "The Dental Masters of Ravenswood LLC",
+      "is_multilocation": true,
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "documentary_urls": [
+        {"url": "https://opennpi.com/provider/1295200921", "shows": "THE DENTAL MASTERS OF BELMONT LLC NPI 1295200921 — AO Dr. Eric Nics Bloom title MANAGER DDS; Parent Organization THE DENTAL MASTERS LLC; 5236 W Belmont Ave Chicago 60641"},
+        {"url": "https://thedentalmasters.org/locations/", "shows": "The Dental Masters locations page listing Belmont (5236 W Belmont 60641) and Lincoln Park (2704 N Halsted 60614) under same domain as Ravenswood"},
+        {"url": "https://thedentalmasters.org/ravenswood-office/dr-irene-renieris-dds/", "shows": "The Dental Masters Ravenswood office page confirming 1945 W Wilson Ave Chicago 60640 as a location under the same brand/domain"},
+        {"url": "https://www.yelp.com/biz/dental-masters-ravenswood-chicago", "shows": "DENTAL MASTERS - RAVENSWOOD at 1945 W Wilson Chicago 60640 — same brand as Dental Masters of Belmont and Dental Masters Lincoln Park"}
+      ],
+      "durable_non_ao_artifact": {"type": "name_chain", "detail": "Three distinct addresses under 'The Dental Masters / Dental Masters of [neighborhood]' brand: Ravenswood 1945 W Wilson 60640, Belmont 5236 W Belmont 60641, Lincoln Park 2704 N Halsted 60614. THE DENTAL MASTERS OF BELMONT LLC NPI 1295200921 has Parent Organization THE DENTAL MASTERS LLC and AO Dr. Eric Nics Bloom DDS (Manager). All three share domain thedentalmasters.org; NPI data names Eric Bloom as Partner at the Ravenswood entity.", "source_url": "https://opennpi.com/provider/1295200921"},
+      "evidence_quality": "verified",
+      "gate_status": "ready_for_validation",
+      "reasoning": "The Dental Masters of Ravenswood LLC (1945 W Wilson, 60640) is one of three locations under The Dental Masters brand sharing domain thedentalmasters.org. THE DENTAL MASTERS OF BELMONT LLC (NPI 1295200921) has Parent Organization THE DENTAL MASTERS LLC and lists Dr. Eric Nics Bloom DDS as Manager — directly corroborating the NPI data naming Eric Bloom as Partner at Ravenswood. Dentist-owned 3-location group under a shared parent LLC, no PE/MSO signals."
+    }
+  ]
+}

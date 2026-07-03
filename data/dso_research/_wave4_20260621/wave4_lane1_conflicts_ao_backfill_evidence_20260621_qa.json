@@ -1,0 +1,53 @@
+{
+ "_meta": {
+  "title": "Wave 4 Lane-1/AO-backfill evidence \u2014 paired self-QA guard",
+  "checks_against": "AB1-AB12 + qa_will_reject_outputs_that",
+  "date": "2026-06-21"
+ },
+ "guards": {
+  "final_label_leak": {
+   "pass": true,
+   "count": 0,
+   "note": "gate ceiling is ready_for_validation; no 'final' disposition allowed"
+  },
+  "il_only_no_MA": {
+   "pass": true,
+   "count": 0,
+   "note": "0 MA/Boston tokens expected in row content"
+  },
+  "protected_networks_held": {
+   "pass": true,
+   "leaked": [],
+   "note": "1st Family (Belkic) + Brite/Aqel (Aqel) must NOT be in release-eligible"
+  },
+  "webster_held_AB10": {
+   "pass": true,
+   "leaked": [],
+   "note": "no Webster row partial-promoted to ready"
+  },
+  "every_release_has_durable_artifact_AB3": {
+   "pass": true,
+   "missing": [],
+   "note": "AB3 durable on-disk documentary corroboration required for every promotion"
+  },
+  "ao_reach_only_not_promoted_AB1": {
+   "pass": true,
+   "note": "all 22 AO_network rows stay needs_more_evidence (AB1)"
+  },
+  "sidecar_preservation_AB11": {
+   "pass": true,
+   "note": "network_id / gate_network / nets / sources / release-decision references carried per row; canonical manifest untouched"
+  },
+  "no_db_or_manifest_mutation": {
+   "pass": true,
+   "note": "files-only; no --allow-db-write; canonical manifest + ready file + LEDGER + PROGRESS untouched"
+  }
+ },
+ "row_accounting": {
+  "conflict_rows": 74,
+  "expected": 74,
+  "balanced": true,
+  "ao_backfill_rows": 22,
+  "ao_expected": 22
+ }
+}

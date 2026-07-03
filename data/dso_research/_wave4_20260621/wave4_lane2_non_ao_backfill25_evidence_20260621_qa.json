@@ -1,0 +1,46 @@
+{
+  "_meta": {
+    "artifact_type": "Self-QA for Wave 4 Lane 2 non-AO backfill (25 rows)",
+    "date": "2026-06-21",
+    "target_file": "wave4_lane2_non_ao_backfill25_evidence_20260621.json"
+  },
+  "guards": {
+    "row_count_is_25": true,
+    "all_required_fields_present": true,
+    "no_duplicate_location_ids": true,
+    "il_only_no_MA_in_rows": true,
+    "no_final_disposition": true,
+    "all_dispositions_in_allowed_set": true,
+    "every_ready_row_has_transcribed_artifact": true,
+    "every_ready_dso_has_structure_rationale": true,
+    "true_independent_rows_have_positive_owner_evidence": true,
+    "true_independent_count_is_2": true,
+    "heartland_name_collisions_held_not_promoted_as_dso": true,
+    "heartland_name_collision_count_is_2": true,
+    "no_protected_network_released": true,
+    "hold_rows_without_url_use_empty_list_not_null": true,
+    "every_row_has_provenance_counts": true,
+    "db_md5_unchanged": true,
+    "disposition_rollup": {
+      "ready_for_validation": 15,
+      "hold_needs_more_evidence": 2,
+      "refuted": 3,
+      "hold_operating_status_or_same_door": 2,
+      "hold_scope_specialist": 3
+    },
+    "proposed_tier_rollup": {
+      "branded_dso": 13,
+      "branded_dso?": 1,
+      "true_independent": 2,
+      "stealth_dso (PROPOSED \u2014 REFUTED)": 2,
+      "dso_national via 'Western Dental' (PROPOSED \u2014 REFUTED)": 1,
+      "dso_national via 'Midwest Dental' (HELD \u2014 unverified)": 1,
+      "stealth_dso (PROPOSED \u2014 held on same-door ambiguity)": 1,
+      "true_independent (PROPOSED \u2014 held on operating status)": 1,
+      "institutional": 3
+    }
+  },
+  "bool_guards_total": 16,
+  "bool_guards_passed": 16,
+  "all_bool_guards_pass": true
+}

@@ -1,0 +1,179 @@
+{
+  "_meta": {
+    "file": "ownership_taxonomy_DSO_structure_gate_review_20260621.json",
+    "author": "Opus 4.8 — RESET + CONSOLIDATION GATE OWNER (4th session)",
+    "date": "2026-06-21",
+    "role": "Phase 6 of the reset/gate operation. Canonical taxonomy review written from EXISTING evidence only — no new research, no agents, no web search.",
+    "relationship_to_qa_addendum": "This is the SEPARATE gate-owner review the user authorized as an alternative to blindly overwriting QA's ownership_taxonomy_DSO_structure_addendum_20260621.json. It ADOPTS the addendum's core rule (pe_backed is orthogonal to DSO structure) but DOES NOT adopt the addendum's blanket restoration of locator-only brands to DSO tiers. Where the addendum and the AO/ownership QA passes disagree on a network's equivalence class, this review routes the network to `conflicts` rather than unilaterally promoting it to DSO.",
+    "scope": "IL only. MA parked. Read-only with respect to the DB — nothing here writes ownership_tier. Feeds consolidation_candidate_manifest_20260621.json."
+  },
+
+  "canonical_rule": {
+    "headline_definitions": {
+      "consolidated": "T2 single_loc_group + T3 dentist_multi + T4 stealth_dso + T5 branded_dso",
+      "dso_pe": "T4 stealth_dso + T5 branded_dso ONLY",
+      "note": "dentist_multi (T3) counts as Consolidated but NOT as DSO/PE. So the dentist_multi-vs-DSO contest only moves the DSO/PE headline, never the Consolidated headline."
+    },
+    "dso_is_structure_not_pe": "A practice is DSO (T4/T5) when there is a management-company / MSO / platform STRUCTURE, or it operates under an established national/regional DSO brand. PE backing is NEITHER necessary NOR sufficient: pe_backed is a separate orthogonal boolean. A non-PE management company is still a DSO; a PE fund that merely lends to a dentist-owned group is not.",
+    "locator_is_not_mso": "A brand website with a /locations page (a 'locator'), a shared brand name, or a friendly-PC naming pattern is a SIGNAL, not proof of DSO structure. By itself it is equally consistent with a dentist-owned multi-location group (T3 dentist_multi). To assign T4/T5 we require documentary MSO / management-company / platform / established-DSO-brand / PE-sponsor evidence — NOT a locator alone.",
+    "ao_reach_is_signal": "Authorized-official reach across many ZIPs is a discovery signal, not ownership proof. A named non-clinical CEO as AO (e.g. a VP of Operations) does not by itself make the network a DSO; a named dentist-owner-AO with no MSO points to dentist_multi.",
+    "consequence": "Where the ONLY DSO evidence is a locator/brand name and a separate signed pass identifies a named dentist-owner with no MSO, the network is CONTESTED (route to conflicts). Where a real MSO/management-company/PE-platform/established-DSO-brand is documented, DSO tier holds even if pe_backed=false."
+  },
+
+  "divergence_from_qa_addendum": {
+    "addendum_position": "QA's addendum restored ~80 rows to branded_dso/stealth_dso and states '0 rows survive as dentist_multi', largely on the basis that each brand has a documentary locator.",
+    "gate_position": "A locator is not an MSO. The addendum's locator-based DSO restoration directly contradicts the reach5/ao_QA/ownership_QA passes, which found NAMED DENTIST-OWNERS and explicit 'no MSO' for several of the same brands (Webster, Precision, 1st Family, Brite, Dental Town, Sonrisa-Korkus). The gate does NOT resolve these contradictions unilaterally — it routes the contested networks to `conflicts` with a recommendation, and only canonically RESOLVES the one network where every signed pass agrees and a real MSO is documented: Dental Dreams / KOS Services LLC.",
+    "measured_contradiction": "80 location_ids carry a DSO class in one signed file and a dentist_multi/independent class in another (per-location detection); the dominant pattern is addendum=DSO vs ao_QA/ownership_QA/reach5=dentist_multi."
+  },
+
+  "eight_network_audit": [
+    {
+      "network": "Dental Dreams / KOS Services",
+      "aliases": ["SAMEERA HUSSAIN", "dental_dreams", "dental-dreams"],
+      "name_stems": ["DENTAL DREAMS", "DENTAL EXPERTS"],
+      "old_qa_tier": "branded_dso / stealth_dso (split)",
+      "revised_tier": "branded_dso",
+      "pe_backed": false,
+      "dso_structure_evidence": true,
+      "evidence": "reach5 verdict=dso_brand; legal entity DENTAL EXPERTS LLC / DENTAL DREAMS; founder/president Sameera Hussain operating through KOS Services LLC (a real management-services organization). BOTH the addendum and the AO passes agree this is a DSO brand.",
+      "disposition": "eligible_dso",
+      "taxonomy_revised": true,
+      "reasoning": "Real MSO (KOS Services LLC) + established multi-state DSO brand. DSO tier holds under the structure rule even though pe_backed=false. This is the flagship correct application of the orthogonality rule."
+    },
+    {
+      "network": "Webster Dental",
+      "aliases": ["DAVID RUBIS", "webster_dental", "Webster Dental Care"],
+      "name_stems": ["WEBSTER DENTAL"],
+      "old_qa_tier": "branded_dso / stealth_dso (addendum) ; dentist_multi (ownership_QA)",
+      "revised_tier": "CONTESTED",
+      "pe_backed": "disputed",
+      "dso_structure_evidence": "disputed",
+      "evidence": "reach5 (DAVID RUBIS) verdict=pe_mso_backed, names 'Great Lakes Dental Partners' (a real PE-backed DSO platform) and David Rubis as President → DSO. ownership_QA (3bc304a7819a234f) corrected to dentist_multi on webdentalchicago.com group site. Two signed passes reach opposite equivalence classes.",
+      "disposition": "conflict",
+      "gate_recommendation": "reach5's Great Lakes Dental Partners citation is the stronger structural signal (a named PE/MSO platform), which under the rule would make Webster DSO; but ownership_QA's owner-operated reading conflicts. Resolve before validating. Do NOT validate this network in either direction yet."
+    },
+    {
+      "network": "1st Family Dental",
+      "aliases": ["VESNA BELKIC", "BELKIC_VESNA", "MILAN RONCEVIC", "1st-family-dental", "1st_family_dental"],
+      "name_stems": ["1ST FAMILY DENTAL"],
+      "old_qa_tier": "branded_dso / stealth_dso (addendum, ownership_QA locator) ; dentist_multi / unresolved (ao_QA BELKIC, reach5 RONCEVIC)",
+      "revised_tier": "CONTESTED",
+      "pe_backed": "disputed",
+      "dso_structure_evidence": "disputed",
+      "evidence": "addendum branded_dso on 1stfamilydental.com locator; ao_QA (VESNA BELKIC) corrected to dentist_multi across 13 rows; reach5 (MILAN RONCEVIC) verdict=unresolved — owner candidates are 'Dr. Ghassan Abboud, PC' vs 'MILAN RONCEVIC (non-clinical CEO; no DDS)'. A non-clinical CEO as AO is a DSO-structure signal but is not corroborated by an MSO.",
+      "disposition": "conflict",
+      "gate_recommendation": "Genuinely unresolved. The non-clinical-CEO signal (Roncevic) hints at a management structure but no MSO/PE document corroborates it; ao_QA reads named dentist practices as dentist_multi. Route to conflicts; needs documentary MSO/owner confirmation."
+    },
+    {
+      "network": "Family Dental Care",
+      "aliases": ["family-dental-care-pc"],
+      "name_stems": ["FAMILY DENTAL CARE"],
+      "old_qa_tier": "branded_dso (addendum, 5 rows)",
+      "revised_tier": "needs_more_evidence",
+      "pe_backed": false,
+      "dso_structure_evidence": false,
+      "evidence": "Appears ONLY in the addendum, restored to branded_dso on a familydentalcare.com locator. No signed pass identifies an MSO/management company, and no signed pass offers a dentist_multi counter either.",
+      "disposition": "needs_more_evidence",
+      "reasoning": "Locator-only DSO claim with no MSO documentation. Under the rule a locator is not sufficient for T4/T5. Not contested (no counter-source), but does not meet the DSO bar — hold for MSO/owner evidence."
+    },
+    {
+      "network": "Brite Dental (Fadi Aqel)",
+      "aliases": ["FADI AQEL", "AQEL_FADI"],
+      "name_stems": ["BRITE DENTAL"],
+      "old_qa_tier": "branded_dso (addendum, 10 rows) ; dentist_multi (ao_QA, 12 rows)",
+      "revised_tier": "CONTESTED",
+      "pe_backed": false,
+      "dso_structure_evidence": "disputed",
+      "evidence": "ao_QA (FADI AQEL) corrected 12 BRITE DENTAL rows to dentist_multi (owner Fadi Aqel DDS, no PE/MSO). addendum restored the same brand to branded_dso on its brand/locator.",
+      "disposition": "conflict",
+      "gate_recommendation": "Lean dentist_multi — named dentist-owner (Fadi Aqel DDS), no MSO documented; the addendum's branded call rests on the brand name. Resolve before validating."
+    },
+    {
+      "network": "Dental Town (Razzak)",
+      "aliases": ["SAMANTHA GONZALEZ", "dental_town_chicago"],
+      "name_stems": ["DENTAL TOWN"],
+      "old_qa_tier": "stealth_dso (addendum) ; dentist_multi (reach5 GONZALEZ, 9 rows)",
+      "revised_tier": "CONTESTED",
+      "pe_backed": false,
+      "dso_structure_evidence": "disputed",
+      "evidence": "reach5 (SAMANTHA GONZALEZ) verdict=dentist_owned_multi — founder Dr. Sinan Razzak DDS; Samantha Gonzalez is VP of Operations (an admin AO, not an owner). addendum restored to stealth_dso.",
+      "disposition": "conflict",
+      "gate_recommendation": "Lean dentist_multi — named dentist-founder (Razzak), admin AO does not equal MSO. Resolve before validating."
+    },
+    {
+      "network": "Dental 360",
+      "aliases": ["dental-360"],
+      "name_stems": ["DENTAL 360"],
+      "old_qa_tier": "branded_dso / stealth_dso (addendum + ownership_QA, both DSO)",
+      "revised_tier": "needs_more_evidence",
+      "pe_backed": false,
+      "dso_structure_evidence": false,
+      "evidence": "Both addendum and ownership_QA (c4b5b35fa16e44e5) call it DSO, but the cited basis is its OWN locator (dental360grp.com) plus three LLCs — a group brand, not a documented management company or PE platform. No source offers a dentist_multi counter, but none documents an MSO either.",
+      "disposition": "needs_more_evidence",
+      "reasoning": "Agreed-DSO across passes BUT only on own-locator+LLCs. Under the structure rule a self-operated group brand with multiple LLCs and no MSO is at least as consistent with dentist_multi as with DSO. Hold for MSO/management-company confirmation rather than validate as DSO. (Conservative for a floor: withhold rather than over-claim DSO.)"
+    },
+    {
+      "network": "Precision Dental Care",
+      "aliases": ["RANDY CHANG", "precision-dental-care-chicago"],
+      "name_stems": ["PRECISION DENTAL CARE"],
+      "old_qa_tier": "stealth_dso (addendum, 5 rows) ; dentist_multi (reach5 + ownership_QA)",
+      "revised_tier": "CONTESTED",
+      "pe_backed": false,
+      "dso_structure_evidence": "disputed",
+      "evidence": "reach5 (RANDY CHANG) verdict=dentist_owned_multi (Dr. Randy Chang DDS); ownership_QA corrected two PRECISION DENTAL CARE rows to dentist_multi (NPPES legal name carries the brand, no MSO). addendum restored to stealth_dso on the brand/locator.",
+      "disposition": "conflict",
+      "gate_recommendation": "Lean dentist_multi — named dentist-owner (Dr. Randy Chang), no MSO; addendum's stealth call rests on the locator. Resolve before validating."
+    }
+  ],
+
+  "additional_dso_networks_eligible": {
+    "_comment": "Networks where a signed QA pass marked rows DSO + safe_to_consolidate=true AND a real MSO / PE platform / established DSO brand is documented in the evidence, AND no signed pass offers a dentist_multi/independent counter. These flow to ready_to_validate at their QA tier.",
+    "networks": [
+      {"network": "Heartland friendly-PC", "aliases": ["CELIA HAYES"], "name_stems": ["TRU DENTAL", "DENTAL PROFESSIONALS OF ILLINOIS"], "tier": "branded_dso", "evidence": "reach5 verdict=pe_mso_backed; Heartland Dental (KKR-backed national DSO) operating friendly-PCs."},
+      {"network": "DecisionOne Dental", "aliases": ["ALAN ACIERNO"], "name_stems": ["DECISIONONE", "DECISION ONE"], "tier": "stealth_dso", "evidence": "reach5 verdict=pe_mso_backed; Alan Acierno DDS, DecisionOne Dental — Smile Brands / Gryphon PE platform."},
+      {"network": "Bright Direction Dental", "aliases": ["JAY JORBIN"], "name_stems": ["BRIGHT DIRECTION"], "tier": "stealth_dso", "evidence": "reach5 verdict=pe_mso_backed; Bright Direction Dental (BDD) — PE-backed platform."},
+      {"network": "DCP of Illinois", "aliases": ["RACHEL NITTINGER"], "name_stems": ["DCP OF ILLINOIS"], "tier": "branded_dso", "evidence": "ao_QA branded_dso, safe_to_consolidate=true; multi-office 'Dr. X & Associates' management pattern under DCP of Illinois."},
+      {"network": "D2 Dental", "aliases": ["BORIS LABINOV"], "name_stems": ["D2 DENTAL"], "tier": "stealth_dso", "evidence": "ao_QA stealth_dso, safe_to_consolidate=true."},
+      {"network": "All Family Dental (United Dental Partners)", "aliases": ["all_family_dental_udp"], "name_stems": ["ALL FAMILY DENTAL"], "tier": "stealth_dso", "evidence": "addendum stealth_dso; All Family Dental & Braces operated by United Dental Partners (a DSO platform)."},
+      {"network": "Imagen Dental Partners", "aliases": ["Imagen Dental Partners"], "name_stems": ["IMAGEN DENTAL"], "tier": "stealth_dso", "evidence": "addendum stealth_dso; Imagen Dental Partners is a DSO platform."}
+    ]
+  },
+
+  "dentist_multi_networks_eligible": {
+    "_comment": "Networks a signed QA pass marked dentist_multi + safe_to_consolidate=true with a NAMED dentist-owner and NO MSO, and no signed pass offers a DSO counter. Flow to ready_to_validate as dentist_multi (counts Consolidated, NOT DSO/PE).",
+    "networks": [
+      {"network": "Tsaliagos", "aliases": ["CHRISTOS TSALIAGOS"], "tier": "dentist_multi"},
+      {"network": "Nourahmadi", "aliases": ["MILAD NOURAHMADI"], "tier": "dentist_multi"},
+      {"network": "Palella", "aliases": ["PHILLIP PALELLA"], "tier": "dentist_multi"},
+      {"network": "Khurana", "aliases": ["PRADEEP KHURANA"], "tier": "dentist_multi"},
+      {"network": "Amazing Dental (Ramaha)", "aliases": ["AHMED RAMAHA"], "name_stems": ["AMAZING DENTAL"], "tier": "dentist_multi"},
+      {"network": "Advocate Dental (Sweis)", "aliases": ["JUBRAIL SWEIS"], "name_stems": ["ADVOCATE DENTAL"], "tier": "dentist_multi"},
+      {"network": "Procare Dental Group (Brunetti)", "aliases": ["ROBERT BRUNETTI"], "name_stems": ["PROCARE DENTAL"], "tier": "dentist_multi"},
+      {"network": "Gentle Dental Group (Shafi)", "aliases": ["SOHAIL SHAFI"], "name_stems": ["ASHTON DENTAL"], "tier": "dentist_multi"}
+    ]
+  },
+
+  "needs_more_evidence_networks": {
+    "_comment": "Undetermined / single-weak-signal / endodontist-specialist / locator-only-DSO with no MSO. Held, not validated.",
+    "networks": [
+      {"network": "Rajan Sharma (endodontist)", "aliases": ["RAJAN SHARMA"], "reason": "reach5 verdict=unresolved; owner is an endodontist (likely specialist — excluded if entity_classification=specialist)."},
+      {"network": "Dentologie", "aliases": ["dentologie"], "reason": "single addendum row; no MSO named in this corpus."},
+      {"network": "Ashland Dental Wellness", "aliases": ["ashland_dental_wellness"], "reason": "single addendum row; weak signal."},
+      {"network": "Smile Obsession", "aliases": ["smile-obsession"], "reason": "single addendum row; weak signal."}
+    ]
+  },
+
+  "special_location_overrides": {
+    "true_independent_positively_earned": [
+      {"location_id": "71399b136dc5205a", "tier": "true_independent", "reason": "ownership_QA POSITIVE owner-operated evidence — sonrisadental.net names Dr. Phil (Debossu). NOTE brand collision: this 'Sonrisa Dental' is DISTINCT from 'Sonrisa Family'/Korkus (sonrisa-cdca), which is a contested dentist_multi network. Do not merge by the 'SONRISA' stem."}
+    ]
+  },
+
+  "gate_disposition_summary": {
+    "eligible_dso_networks": ["Dental Dreams/KOS (branded_dso, taxonomy_revised)", "Heartland-FPC", "DecisionOne", "Bright Direction", "DCP of Illinois", "D2 Dental", "All Family/UDP", "Imagen"],
+    "eligible_dentist_multi_networks": ["Tsaliagos", "Nourahmadi", "Palella", "Khurana", "Amazing", "Advocate", "Procare", "Gentle/Shafi"],
+    "conflict_networks": ["Webster", "1st Family", "Brite/Aqel", "Dental Town/Razzak", "Precision Dental Care"],
+    "needs_more_evidence_networks": ["Family Dental Care (locator-only)", "Dental 360 (own-locator+LLCs, no MSO)", "Rajan Sharma (specialist)", "Dentologie", "Ashland Dental Wellness", "Smile Obsession"],
+    "rule_for_unlisted_rows": "Defer to the row's QA pass: safe_to_consolidate=true with a consolidation/independent tier → eligible at that tier; undetermined / needs_more_evidence / safe=false → needs_more_evidence; cross-pass equivalence-class disagreement at the same location_id → conflicts. Apply locator-only-DSO demotion (DSO basis is only a 'locator' with no MSO/PE/established-brand keyword) → needs_more_evidence."
+  }
+}

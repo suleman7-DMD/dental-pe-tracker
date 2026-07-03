@@ -1,0 +1,118 @@
+{
+  "network": "KAMAL VIBHAKAR",
+  "network_id": "ao:VIBHAKAR_KAMAL",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Dr. Kamal Vibhakar (and Dr. Charu Vibhakar) are a dentist family practicing for 40+ years at 3902 Harlem Ave, Lyons IL under the DBA 'Alldent Dental Center' (legal entity: Vibhakar and Vibhakar D.D.S.P.C.). The second NPPES record in this AO cluster — Amerident Associates at 4008 W 26th St Chicago (ZIP 60623) — is marked CLOSED on Yelp (March 2026 update) and carries parent_company='1ST FAMILY DENTAL' with year_established=2024, a conflicting data picture. The actual 1st Family Dental Little Village location is at 4049 W 26th St (a different address). The Amerident Associates NPI appears to be a stale/closed record where Kamal Vibhakar remained as AO from a prior Vibhakar-operated Amerident satellite; the 1st Family Dental parent_company label in NPPES may reflect a brief affiliation or DSO classifier artifact. The AO cluster should NOT be read as Vibhakar co-owning a live 1st Family Dental branch. Location 2 should be flagged stale/closed. The Lyons Alldent location is an active single-family practice (two Vibhakar dentists, one address) — not a true multi-office expansion.",
+  "owner_operator_identity": "Dr. Kamal M. Vibhakar DDS (authorized official, 40+ years practice) and Dr. Charu Vibhakar DDS (co-practitioner, same address); family-owned professional corporation.",
+  "brand_trade_names": [
+    "Alldent Dental Center",
+    "Vibhakar and Vibhakar D.D.S.P.C.",
+    "Amerident Dental Center",
+    "Amerident Associates"
+  ],
+  "legal_entities": [
+    "Vibhakar and Vibhakar D.D.S.P.C. (EIN 363263266, NPI 1619161411)"
+  ],
+  "durable_artifacts": [
+    "Shared NPPES authorized_official KAMAL VIBHAKAR across NPI 1619161411 (Lyons) and NPI 1356535496 (Chicago)",
+    "Vibhakar and Vibhakar D.D.S.P.C. EIN 363263266 at 3902 Harlem Ave Lyons",
+    "Alldent Dental Center DBA confirmed active at 3902 Harlem Ave Lyons (Yelp updated March 2026, phone 708-442-1900 matches NPPES)",
+    "Amerident Associates NPI 1356535496 at 4008 W 26th St Chicago marked CLOSED on Yelp (March 2026)",
+    "1st Family Dental Little Village at 4049 W 26th St (NOT 4008) — different address from Amerident, confirming address mismatch",
+    "Historical newspaper ad (1991, Newspapers.com) shows Amerident Dental Center operated by Kamal and Charu Vibhakar at Harlem Ave Lyons — original Amerident was a Vibhakar practice, NOT 1st Family Dental"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "Location 2 (Amerident Associates, 60623) is an AO-cluster false positive. Yelp lists it as CLOSED (March 2026). The NPPES record has parent_company='1ST FAMILY DENTAL' and year_established=2024, but the actual 1st Family Dental Little Village office is at 4049 W 26th St — not 4008 W 26th St. The Amerident Associates NPI record appears to be a stale artifact: Kamal Vibhakar historically operated 'Amerident Dental Center' (a Vibhakar practice per 1991 newspaper records) and remained as AO on this NPPES record even as the practice closed or changed hands. The 1st Family Dental classification in practice_locations may be a DSO classifier false positive driven by the NPPES parent_company field on a closed/stale record. This location should NOT be counted in the active GP denominator if confirmed closed.",
+  "evidence_chain": "AO signal: KAMAL VIBHAKAR appears as authorized_official on NPI 1619161411 (Vibhakar and Vibhakar D.D.S.P.C., Lyons 60534) and NPI 1356535496 (Amerident Associates, Chicago 60623). Documentary corroboration for Location 1: web directories (Yelp March 2026, Nextdoor, YellowPages) confirm Alldent Dental Center at 3902 Harlem Ave Lyons is active, operated by Dr. Kamal Vibhakar and Dr. Charu Vibhakar, phone matches NPPES. For Location 2: Yelp shows Amerident Dental Center at 4008 W 26th St Chicago as CLOSED (March 2026 update). The NPPES record's parent_company='1ST FAMILY DENTAL' conflicts with the verified 1st Family Dental Little Village address (4049 W 26th St, one block away). Historical records (1991 newspaper) confirm Vibhakar previously operated an 'Amerident Dental Center' at Harlem Ave Lyons — the Amerident name is a Vibhakar brand, not 1st Family Dental. Conclusion: the AO cluster joins an active Vibhakar family practice (Location 1) with a stale/closed NPPES record (Location 2) where Vibhakar's AO status is a legacy artifact from prior operation; the 1st Family Dental parent_company label is likely a DSO-classifier false positive on a closed record.",
+  "future_app_notes": "Location 2 (Amerident Associates, location_id 6f685dcd203ff3d2, ZIP 60623) should be validated for active status — confirm closure. If confirmed closed, demote to solo_inactive or mark as stale and exclude from GP denominator. The current entity_classification='dso_regional' with affiliated_dso='1st Family Dental' is likely a false positive driven by the NPPES parent_company field on a closed/legacy record. The Alldent Dental Center at 3902 Harlem Ave (location_id f7f325330403a6d7) is correctly classified as family_practice (two Vibhakar dentists, one address, 40+ year family PC). No MSO/DSO structure found — this is a dentist family practice, not a multi-office DSO.",
+  "classifications": [
+    {
+      "location_id": "f7f325330403a6d7",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Kamal M. Vibhakar DDS and Dr. Charu Vibhakar DDS (family professional corporation)",
+      "network_id": "ao:VIBHAKAR_KAMAL",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2 — KAMAL VIBHAKAR is authorized_official on 2 NPPES records across ZIPs 60534 and 60623",
+          "entity_classification=family_practice (NPPES: 3 providers at address)",
+          "EIN 363263266 unique to this location"
+        ],
+        "evidence": [
+          "Yelp (March 2026) confirms Alldent Dental Center at 3902 Harlem Ave Lyons IL is active, operated by Dr. Kamal Vibhakar and Dr. Charu Vibhakar, phone (708) 442-1900 matches NPPES",
+          "alldentdentalcenters.com 'Our Practice' page names Drs. Charu and Kamal Vibhakar as the practitioners, 30+ years serving the Chicago area",
+          "Legal entity name 'Vibhakar and Vibhakar D.D.S.P.C.' on NPPES NPI 1619161411 confirms family professional corporation structure — no MSO/management company layer"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.yelp.com/biz/alldent-dental-center-lyons",
+        "https://www.alldentdentalcenters.com/our-practice",
+        "https://www.doctorsnetwork.com/doctors/dentists/lyons-il-60534/invite-kamal-vibhakar-dds-12436",
+        "https://www.doctorsnetwork.com/doctors/dentists/lyons-il-60534/invite-charu-vibhakar-dds-15609"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "KAMAL VIBHAKAR",
+        "reach": 2,
+        "zips": ["60534", "60623"],
+        "npi": "1619161411",
+        "location_name": "VIBHAKAR AND VIBHAKAR D.D.S.P.C.",
+        "address": "3902 harlem ave, LYONS IL 60534",
+        "ein": "363263266",
+        "entity_classification": "family_practice",
+        "provider_count": 3
+      },
+      "web_searched": true,
+      "gate_status": "candidate",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Active family dental practice confirmed. Dr. Kamal Vibhakar and Dr. Charu Vibhakar (family, likely husband-wife or father-daughter pair) operate as a professional corporation at a single address for 40+ years. The AO cluster reach=2 arises because Kamal Vibhakar is also AO on the Amerident Associates NPI (60623), but that second location is closed — this is not a true multi-office expansion. Classification as dentist_multi is the best structural fit given two named dentists under one family PC, but gate_status=candidate because the AO cluster reach is a false positive (Location 2 is closed/stale). Standalone, this is a single-location family practice correctly classified as family_practice; it should NOT be promoted to corporate."
+    },
+    {
+      "location_id": "6f685dcd203ff3d2",
+      "candidate_tier": "undetermined",
+      "pe_backed": null,
+      "owner_identity": null,
+      "network_id": "ao:VIBHAKAR_KAMAL",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2 — KAMAL VIBHAKAR authorized_official on this NPI (1356535496) and NPI 1619161411 (Lyons 60534)",
+          "NPPES parent_company='1ST FAMILY DENTAL' — DSO classifier flagged as dso_regional",
+          "year_established=2024 in NPPES record",
+          "EIN 800132836 distinct from Vibhakar Lyons EIN"
+        ],
+        "evidence": [
+          "Yelp (March 2026) marks Amerident Dental Center at 4008 W 26th St Chicago as CLOSED — practice appears non-operating",
+          "1st Family Dental's actual Little Village location is at 4049 W 26th St (per 1stfamilydental.com/locations/little-village/) — different address from 4008 W 26th St, indicating address mismatch",
+          "Historical records (1991 Newspapers.com ad) show Vibhakar operated 'Amerident Dental Center' at Harlem Ave Lyons — Amerident is a legacy Vibhakar brand name, not a 1st Family Dental brand"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.yelp.com/biz/amerident-dental-center-chicago",
+        "https://1stfamilydental.com/locations/little-village/",
+        "https://1stfamilydental.com/locations/",
+        "https://npidb.org/organizations/dental_health/general-practice_1223g0001x/1356535496.aspx"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "KAMAL VIBHAKAR",
+        "reach": 2,
+        "zips": ["60534", "60623"],
+        "npi": "1356535496",
+        "location_name": "AMERIDENT ASSOCIATES",
+        "address": "4008 w 26th st, CHICAGO IL 60623",
+        "ein": "800132836",
+        "entity_classification": "dso_regional",
+        "affiliated_dso": "1st Family Dental",
+        "parent_company": "1ST FAMILY DENTAL",
+        "year_established": 2024,
+        "provider_count": 1
+      },
+      "web_searched": true,
+      "gate_status": "undetermined",
+      "confidence": "low",
+      "stale_closed_note": "LIKELY CLOSED/STALE: Yelp marks Amerident Dental Center at 4008 W 26th St Chicago as CLOSED (updated March 2026). The NPPES parent_company='1ST FAMILY DENTAL' does not match verified 1st Family Dental address (4049 W 26th St, not 4008). The AO link to Kamal Vibhakar appears to be a legacy artifact from his prior operation of the Amerident brand. This record should be validated for active status; if confirmed closed, demote to solo_inactive and exclude from GP denominator. The current dso_regional / 1st Family Dental classification is likely a false positive.",
+      "reasoning": "This location is an AO-cluster false positive. The Amerident Associates NPI at 4008 W 26th St Chicago is marked CLOSED on Yelp (March 2026). The NPPES record's parent_company='1ST FAMILY DENTAL' conflicts with the verified 1st Family Dental Little Village address (4049 W 26th St — one block away, a different building). Kamal Vibhakar's AO status here appears to be a stale artifact: he historically operated 'Amerident Dental Center' as his own brand (1991 newspaper records show Vibhakar at Harlem Ave Lyons with the Amerident name). The practice at 60623 appears closed; its current ownership/operator is unclear. Cannot assign dentist_multi (no evidence of active second Vibhakar location) or branded_dso (address mismatch with known 1st Family Dental). Setting undetermined/gate_status=undetermined pending active-status confirmation. This record should NOT be counted in the IL GP corporate denominator until the closure and ownership are confirmed."
+    }
+  ]
+}

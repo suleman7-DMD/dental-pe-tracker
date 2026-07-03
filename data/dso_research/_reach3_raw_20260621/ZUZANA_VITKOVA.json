@@ -1,0 +1,147 @@
+{
+  "network": "ZUZANA VITKOVA",
+  "network_id": "ao:VITKOVA_ZUZANA",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Three ACDI LLCs (ACDI GLENVIEW LLC, ACDI-NAPERVILLE LLC, ACDI CHICAGO LLC) operating under the brand 'A Center for Dental Implants' across Oak Brook/Glenview (60523), Naperville (60540), and Chicago (60611). Founded by Dr. James D'Alise who owned ACDI from 2005 until July 2018 when his IL dental license was revoked; he was convicted in 2021 of 7 counts of unlicensed practice of dentistry (People v. D'Alise, 2022 IL App (2d) 210541). Zuzana Vitkova is CFO across all three NPI records. No MSO, DSO platform, or PE backer found. Private group practice under a shared brand and financial officer. NPI records last updated August 2009 — high stale probability; at least the old Oak Brook address (1301 W 22nd St) confirmed closed; a Glenview location at 2501 Compass Rd (the ACDI GLENVIEW LLC mailing address) appears active as of April 2026 per Yelp.",
+  "owner_operator_identity": "Dr. James V. D'Alise DDS (founder, majority owner 2005-2018+, license revoked July 2018, convicted 2021); Zuzana Vitkova, Chief Financial Officer (NPPES AO on all three entities)",
+  "brand_trade_names": ["A Center for Dental Implants", "ACDI"],
+  "legal_entities": ["ACDI GLENVIEW,LLC.", "ACDI - NAPERVILLE, LLC.", "ACDI CHICAGO LLC"],
+  "durable_artifacts": [
+    "NPPES AO 'Zuzana Vitkova, Chief Financial Officer' on NPI 1356578140, 1780850131, and 1235305681 — identical title and name across three distinct ZIPs (60523, 60540, 60611)",
+    "Name chain 'ACDI' prefix across all three legal entities: ACDI GLENVIEW LLC, ACDI-NAPERVILLE LLC, ACDI CHICAGO LLC",
+    "Official brand website acenterfordentalimplants.com confirmed in search results; mailing address for ACDI GLENVIEW LLC is 2501 Compass Rd Ste 130 Glenview IL 60268 per NPPES API",
+    "All three NPIs share taxonomy 1223G0001X (General Dentistry) and NPPES status = Active",
+    "People v. D'Alise, 2022 IL App (2d) 210541: court confirms D'Alise was 'majority owner of ACDI' from 2005 to July 2018 and remained majority owner post-revocation as office manager"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "CRITICAL STALENESS FLAG: All three NPI records were last updated August 2009 per NPPES. Dr. D'Alise's license was revoked 2018 and he was criminally convicted 2021 — the original Oak Brook 1301 W 22nd St address is confirmed closed per ABC7 (Nov 2019). The NPPES location address for ACDI GLENVIEW LLC is 2000 Spring Rd Ste 600 Oak Brook (a different address from 1301 W 22nd St); the Glenview mailing address (2501 Compass Rd) appears in an April 2026 Yelp update suggesting possible continued operation there. The Naperville location (provider_count=0) and Chicago location (last updated 2009) are high-probability stale shells. The downstream validator should verify whether any ACDI location is currently operating under a licensed dentist before counting any of these as active corporate GP locations.",
+  "evidence_chain": "AO signal: NPPES shows Zuzana Vitkova as CFO on 3 distinct NPI-2 orgs across ZIPs 60523, 60540, 60611, all with 'ACDI' prefix in the legal entity name. Documentary corroboration: (1) Official brand website acenterfordentalimplants.com confirmed via multiple search results linking the brand 'A Center for Dental Implants' to these LLC entities; (2) Court case People v. D'Alise (2022 IL App 2d 210541) confirms ACDI is a real private dental group owned by Dr. James D'Alise; (3) Yelp listing updated April 2026 for 'A Center for Dental Implants' at 2501 Compass Rd Glenview (= ACDI GLENVIEW LLC mailing address). No MSO, PE, or management-services layer found — this is a dentist-founded private multi-location group. Significant staleness concern: NPI records last updated 2009; founder's license revoked 2018; confirmed location closure reported 2019.",
+  "future_app_notes": "1. Verify whether any ACDI location is currently operating under a new/replacement licensed dentist — the Glenview Yelp (April 2026) is the best current signal. 2. The website acenterfordentalimplants.com was connection-refused during this investigation (June 2026) — check again; if still down, treat network as stale/closed. 3. D'Alise was convicted and sentenced 2021 — check IDFPR for any current licensed dentist operating under ACDI. 4. Zuzana Vitkova's LinkedIn shows 'Project Manager at Razny Jewelers' — not a dental professional, consistent with administrative CFO role. 5. If any ACDI location is verified currently operating, it would be dentist_multi (no DSO/PE layer). If all locations confirmed closed, reclassify entire network as stale/closed false positive.",
+  "classifications": [
+    {
+      "location_id": "d5660f2db5e9f8bf",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. James V. D'Alise DDS (founder/majority owner); Zuzana Vitkova CFO",
+      "network_id": "ao:VITKOVA_ZUZANA",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60523/60540/60611: Zuzana Vitkova as CFO on NPI 1356578140 (ACDI GLENVIEW LLC), 1780850131 (ACDI-NAPERVILLE LLC), 1235305681 (ACDI CHICAGO LLC)",
+          "name_chain: 'ACDI' prefix shared across all three legal entities",
+          "shared_brand: all operate under 'A Center for Dental Implants'"
+        ],
+        "evidence": [
+          "NPPES API for NPI 1356578140 confirms 'ACDI GLENVIEW,LLC.' with AO Zuzana Vitkova 'fanacial officer' (typo for financial officer), mailing 2501 Compass Rd Ste 130 Glenview IL, practice location 2000 Spring Rd Ste 600 Oak Brook IL 60523",
+          "Official brand website acenterfordentalimplants.com confirmed via Yelp, Manta, CitySquares, and ABC7 news article linking this exact brand to ACDI Oak Brook LLC entities",
+          "People v. D'Alise, 2022 IL App (2d) 210541 confirms Dr. James D'Alise was 'majority owner of ACDI' operating as a private group under the 'A Center for Dental Implants' brand — no MSO or management company layer described"
+        ]
+      },
+      "evidence_urls": [
+        "https://npiregistry.cms.hhs.gov/api/?number=1356578140&version=2.1",
+        "https://acenterfordentalimplants.com/about-us/",
+        "https://ilcourtsaudio.blob.core.windows.net/antilles-resources/resources/3f89573b-ed06-4ac7-b1b8-8522494fbba6/People%20v.%20D%E2%80%99Alise,%202022%20IL%20App%20(2d)%20210541.pdf",
+        "https://abc7chicago.com/dental-implants-care-james-dalise-oak-brook/5656464/",
+        "https://www.yelp.com/biz/a-center-for-dental-implants-glenview"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "ZUZANA VITKOVA",
+        "title": "Chief Financial Officer",
+        "reach": 3,
+        "zips": ["60523", "60540", "60611"],
+        "npi": "1356578140",
+        "entity_name": "ACDI GLENVIEW,LLC.",
+        "practice_address": "2000 Spring Rd Ste 600, Oak Brook, IL 60523",
+        "mailing_address": "2501 Compass Rd Ste 130, Glenview, IL 60268"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "STALENESS WARNING: NPI last updated August 2009. The original ACDI Oak Brook location at 1301 W 22nd St is confirmed closed (ABC7, Nov 2019 post-D'Alise revocation). The current NPPES location address is 2000 Spring Rd Ste 600 Oak Brook — validator should verify whether this suite is an operating dental office or a relocated/shell address. The Glenview mailing address (2501 Compass Rd) had a Yelp update in April 2026.",
+      "reasoning": "ACDI GLENVIEW LLC is one of three entities in the ACDI private dental group, all sharing brand 'A Center for Dental Implants,' all with Zuzana Vitkova as CFO/AO. The brand is documented by court records and public business listings. No PE or MSO layer found — founder Dr. D'Alise operated as a private majority-owner dentist. dentist_multi is the correct tier. gate_status=ready_for_validation because the brand+multi-location+named owner documentary chain is established. However, operationally this location may be stale or relocated — validator must confirm physical activity at 2000 Spring Rd Oak Brook."
+    },
+    {
+      "location_id": "2b12cf9aa3afed8a",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. James V. D'Alise DDS (founder/majority owner); Zuzana Vitkova CFO",
+      "network_id": "ao:VITKOVA_ZUZANA",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: Zuzana Vitkova CFO on NPI 1780850131 (ACDI-NAPERVILLE LLC)",
+          "name_chain: 'ACDI' prefix",
+          "shared_brand: 'A Center for Dental Implants'",
+          "provider_count=0 in local DB — possible shell/stale registration"
+        ],
+        "evidence": [
+          "NPPES API for NPI 1780850131 confirms 'ACDI - NAPERVILLE, LLC.' with AO Zuzana Vitkova, Chief Financial Officer, at 1288 Rickert Dr Ste 200 Naperville IL 60540",
+          "Same brand/network corroboration as ACDI GLENVIEW LLC above — court record and brand website apply across the network"
+        ]
+      },
+      "evidence_urls": [
+        "https://npiregistry.cms.hhs.gov/api/?number=1780850131&version=2.1",
+        "https://acenterfordentalimplants.com/about-us/",
+        "https://ilcourtsaudio.blob.core.windows.net/antilles-resources/resources/3f89573b-ed06-4ac7-b1b8-8522494fbba6/People%20v.%20D%E2%80%99Alise,%202022%20IL%20App%20(2d)%20210541.pdf",
+        "https://abc7chicago.com/dental-implants-care-james-dalise-oak-brook/5656464/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "ZUZANA VITKOVA",
+        "title": "Chief Financial Officer",
+        "reach": 3,
+        "zips": ["60523", "60540", "60611"],
+        "npi": "1780850131",
+        "entity_name": "ACDI - NAPERVILLE, LLC.",
+        "practice_address": "1288 Rickert Dr Ste 200, Naperville, IL 60540"
+      },
+      "web_searched": true,
+      "gate_status": "candidate",
+      "confidence": "low",
+      "stale_closed_note": "HIGH STALE/CLOSED PROBABILITY: NPI last updated August 2009. provider_count=0 in local DB. No web presence found for an ACDI Naperville location. The brand's known active location is Glenview (2501 Compass Rd, Yelp April 2026). Naperville is very likely a shell/dormant registration. Validator should check whether 1288 Rickert Dr Ste 200 Naperville is an active dental office before counting this location.",
+      "reasoning": "ACDI-NAPERVILLE LLC shares the ACDI brand and Zuzana Vitkova CFO signal with the confirmed ACDI multi-location network. However, the NPI record is from 2008/2009 and provider_count=0, suggesting this Naperville entity was never actively staffed or was closed early. The brand+AO chain corroborates the network identity (dentist_multi), but the specific location's operational status is too uncertain for ready_for_validation. gate_status=candidate pending validator confirmation that 1288 Rickert Dr is or was an operating ACDI dental office."
+    },
+    {
+      "location_id": "c1b5ff174b70e947",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. James V. D'Alise DDS (founder/majority owner); Zuzana Vitkova CFO",
+      "network_id": "ao:VITKOVA_ZUZANA",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: Zuzana Vitkova CFO on NPI 1235305681 (ACDI CHICAGO LLC)",
+          "name_chain: 'ACDI' prefix",
+          "shared_brand: 'A Center for Dental Implants'",
+          "provider_count=3 in local DB — entity_classification=family_practice (possible 2-3 dentists working at Chicago location)"
+        ],
+        "evidence": [
+          "NPPES API for NPI 1235305681 confirms 'ACDI CHICAGO LLC' with AO Zuzana Vitkova, Chief Financial Officer, at 625 N Michigan Ave Ste 1710 Chicago IL 60611",
+          "D&B business directory lists ACDI Chicago LLC at 625 N Michigan Ave #401 Chicago IL (slight address discrepancy in suite number vs. NPPES), founded 2010, Zuzana Vitkova as contact",
+          "Yelp listing exists for 'A CENTER FOR DENTAL IMPLANTS' Chicago, listed as Periodontists — note specialist categorization",
+          "Court record and brand website apply across the network"
+        ]
+      },
+      "evidence_urls": [
+        "https://npiregistry.cms.hhs.gov/api/?number=1235305681&version=2.1",
+        "https://www.dandb.com/businessdirectory/acdichicagollc-chicago-il-2708836.html",
+        "https://www.yelp.com/biz/a-center-for-dental-implants-chicago-2",
+        "https://acenterfordentalimplants.com/about-us/",
+        "https://ilcourtsaudio.blob.core.windows.net/antilles-resources/resources/3f89573b-ed06-4ac7-b1b8-8522494fbba6/People%20v.%20D%E2%80%99Alise,%202022%20IL%20App%20(2d)%20210541.pdf"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "ZUZANA VITKOVA",
+        "title": "Chief Financial Officer",
+        "reach": 3,
+        "zips": ["60523", "60540", "60611"],
+        "npi": "1235305681",
+        "entity_name": "ACDI CHICAGO LLC",
+        "practice_address": "625 N Michigan Ave Ste 1710, Chicago, IL 60611"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "medium",
+      "stale_closed_note": "STALENESS WARNING: NPI last updated August 2009. The court record states D'Alise practiced in the 'south loop and central loop area of Chicago' from 1990-2012, consistent with a Chicago location. However, the ABC7 article (Nov 2019) says the Oak Brook practice was closed — the Chicago location status post-2018 revocation is unknown. The Yelp listing categorizes it as 'Periodontists' (a specialist category) — if the Chicago location was implant/periodontal specialist-focused rather than GP, it may not belong in the GP denominator. Validator should confirm: (1) whether 625 N Michigan Ave Ste 1710 is an operating dental office; (2) whether it is GP or specialist.",
+      "reasoning": "ACDI CHICAGO LLC is a confirmed member of the ACDI multi-location network by AO identity (Zuzana Vitkova CFO), legal entity name chain, and brand. The D&B listing and Yelp listing independently confirm a Chicago presence. provider_count=3 in the local DB suggests non-trivial historical activity. dentist_multi tier is correct. gate_status=ready_for_validation because the brand+owner+multi-location documentary chain is clear. Confidence medium (not high) because: (1) the NPI is very stale (2009); (2) the Yelp listing categorizes this location as 'Periodontists' — which would make it a specialist location excluded from GP denominator; (3) operational status post-2018 is unknown."
+    }
+  ]
+}

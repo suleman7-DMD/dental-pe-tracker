@@ -1,0 +1,100 @@
+{
+  "network": "CHRISTINE BARBER",
+  "network_id": "ao:BARBER_CHRISTINE",
+  "owner_type_verdict": "dso_brand",
+  "network_summary": "Both locations are Aspen Dental offices operating under the Aspen Dental friendly-PC model. MENA DENTAL PLLC (Skokie, ZIP 60077) lists ADMI CORP (Aspen Dental Management, Inc.) as parent_company in NPPES. DELGADO DMD PLLC (Chicago Roscoe Village, ZIP 60618) is listed as affiliated_dso=Aspen Dental in NPPES and confirmed on the Aspen Dental public locator. Christine Barber is a corporate authorized official at ADMI who appears on multiple friendly-PC PLLCs across the Aspen network — she is not a dentist-owner. ADMI is PE-backed by Ares Management, Leonard Green & Partners, and American Securities. Both offices are confirmed on the Aspen Dental public locator (aspendental.com). This is a textbook branded_dso cluster with pe_backed=true.",
+  "owner_operator_identity": "ADMI Corp (Aspen Dental Management, Inc.) — corporate MSO/management entity; Christine Barber is an ADMI corporate authorized official/admin, not a dentist-owner. Practice-level owners: Dr. Roda Mena (Skokie), Dr. Roxanna Delgado Rodriguez (Chicago).",
+  "brand_trade_names": ["Aspen Dental"],
+  "legal_entities": ["MENA DENTAL PLLC", "DELGADO DMD PLLC", "ADMI CORP", "Aspen Dental Management, Inc."],
+  "durable_artifacts": [
+    "NPPES NPI 1689460834 (MENA DENTAL PLLC, 5225 Touhy Ave Skokie IL 60077) lists parent_company=ADMI CORP",
+    "NPPES NPI 1659170637 (DELGADO DMD PLLC, 3201 N Western Ave Chicago IL 60618) lists affiliated_dso=Aspen Dental",
+    "Shared authorized official CHRISTINE BARBER on both NPI records — corporate ADMI officer, not dentist-owner",
+    "aspendental.com locator confirms 5225 W Touhy Ave Skokie IL 60077 as active Aspen Dental office (Dr. Roda Mena, owner)",
+    "aspendental.com locator confirms 3201 N Western Ave Chicago IL 60618 as active Aspen Dental office (Dr. Roxanna Delgado Rodriguez, owner)"
+  ],
+  "mso_platform_pe_evidence": "ADMI CORP = Aspen Dental Management, Inc., the national DSO management/MSO platform behind the Aspen Dental brand. PE-backed by Ares Management, L.P. and Leonard Green & Partners, L.P. (increased equity 2017, in partnership with American Securities, LLC). Source: https://www.leonardgreen.com/ares-management-leonard-green-increase-ownership-in-aspen-dental-management-inc/",
+  "stale_closed_false_positive_notes": "Christine Barber AO cluster is a corporate admin artifact — ADMI places a corporate officer as NPPES authorized official on many friendly-PC PLLCs nationwide. The two PLLCs are separately registered but both are active Aspen Dental offices confirmed on the public locator. No false positive: both offices are genuinely corporate Aspen Dental.",
+  "evidence_chain": "AO signal: Christine Barber appears as authorized official on NPI 1689460834 (MENA DENTAL PLLC, Skokie) and NPI 1659170637 (DELGADO DMD PLLC, Chicago), two distinct watched-IL GP locations across ZIPs 60077 and 60618. NPPES itself provides the first documentary link: MENA DENTAL PLLC lists parent_company=ADMI CORP; DELGADO DMD PLLC lists affiliated_dso=Aspen Dental. Web search confirmed ADMI CORP = Aspen Dental Management, Inc., the national DSO MSO. aspendental.com locator pages confirm both addresses as active Aspen Dental offices. PE backing confirmed via Leonard Green & Partners press release (Ares + Leonard Green + American Securities). Documentary corroboration is strong: NPPES parent_company + locator URL + PE filing.",
+  "future_app_notes": "ADMI-managed Aspen Dental friendly-PCs use a pattern of listing a corporate officer (not the dentist-owner) as the NPPES authorized official — this is how Christine Barber appears across two PLLCs. When sweeping for other Aspen Dental PLLCs in the IL dataset, check for other ADMI corporate AO names as a signal. These two locations should already be classified dso_national=Aspen Dental in the IL GP denominator; verify entity_classification in practice_locations.",
+  "classifications": [
+    {
+      "location_id": "44917ecf8c1cf019",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "ADMI Corp (Aspen Dental Management, Inc.) / Dr. Roda Mena (practice-level owner of record)",
+      "network_id": "ao:BARBER_CHRISTINE",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2 across ZIPs 60077, 60618 — shared authorized official CHRISTINE BARBER on NPPES",
+          "NPPES parent_company=ADMI CORP on NPI 1689460834",
+          "entity_classification already=dso_national in practice_locations"
+        ],
+        "evidence": [
+          "aspendental.com/dentist/il/skokie/5225-w-touhy-ave/ confirms active Aspen Dental office at 5225 W Touhy Ave Skokie IL 60077 with Dr. Roda Mena listed as owner",
+          "ADMI CORP = Aspen Dental Management Inc, confirmed national DSO MSO — PE-backed by Ares Management and Leonard Green & Partners per leonardgreen.com press release"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.aspendental.com/dentist/il/skokie/5225-w-touhy-ave/",
+        "https://www.aspendental.com/providers/roda-mena/1699419481/",
+        "https://www.leonardgreen.com/ares-management-leonard-green-increase-ownership-in-aspen-dental-management-inc/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "CHRISTINE BARBER",
+        "reach": 2,
+        "zips": ["60077", "60618"],
+        "npi": "1689460834",
+        "name": "MENA DENTAL PLLC",
+        "parent_company": "ADMI CORP",
+        "entity_classification": "dso_national",
+        "affiliated_dso": null
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "MENA DENTAL PLLC at 5225 Touhy Ave Skokie IL 60077 is an Aspen Dental friendly-PC. NPPES records parent_company=ADMI CORP (Aspen Dental Management, Inc.) directly on the NPI. The Aspen Dental public locator confirms an active office at this address under Dr. Roda Mena as owner. ADMI is PE-backed (Ares Management + Leonard Green & Partners + American Securities). Christine Barber is a corporate ADMI officer appearing as AO — not a dentist-owner. entity_classification is already dso_national. This is branded_dso, pe_backed=true, ready_for_validation with multiple documentary corroborators (NPPES parent_company + locator URL + PE filing)."
+    },
+    {
+      "location_id": "6c629fcb565ea0be",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "ADMI Corp (Aspen Dental Management, Inc.) / Dr. Roxanna Delgado Rodriguez (practice-level owner of record)",
+      "network_id": "ao:BARBER_CHRISTINE",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2 across ZIPs 60077, 60618 — shared authorized official CHRISTINE BARBER on NPPES",
+          "NPPES affiliated_dso=Aspen Dental on NPI 1659170637",
+          "entity_classification already=dso_national in practice_locations"
+        ],
+        "evidence": [
+          "aspendental.com/dentist/il/chicago/3201-n-western-ave/ confirms active Aspen Dental office (Roscoe Village) at 3201 N Western Ave Chicago IL 60618 with Dr. Roxanna Delgado Rodriguez listed as owner under DELGADO DMD PLLC",
+          "ADMI CORP = Aspen Dental Management Inc, confirmed national DSO MSO — PE-backed by Ares Management and Leonard Green & Partners per leonardgreen.com press release"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.aspendental.com/dentist/il/chicago/3201-n-western-ave/",
+        "https://www.aspendental.com/providers/roxanna-delgado-rodriguez/1740639095/",
+        "https://www.leonardgreen.com/ares-management-leonard-green-increase-ownership-in-aspen-dental-management-inc/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "CHRISTINE BARBER",
+        "reach": 2,
+        "zips": ["60077", "60618"],
+        "npi": "1659170637",
+        "name": "DELGADO DMD PLLC",
+        "parent_company": null,
+        "entity_classification": "dso_national",
+        "affiliated_dso": "Aspen Dental"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "DELGADO DMD PLLC at 3201 N Western Ave Chicago IL 60618 is an Aspen Dental office in Roscoe Village. NPPES records affiliated_dso=Aspen Dental directly on the NPI. The Aspen Dental public locator confirms an active office at this address under Dr. Roxanna Delgado Rodriguez as owner. ADMI is PE-backed (Ares Management + Leonard Green & Partners + American Securities). Christine Barber is a corporate ADMI officer appearing as AO — not a dentist-owner. entity_classification is already dso_national. This is branded_dso, pe_backed=true, ready_for_validation with multiple documentary corroborators (NPPES affiliated_dso + locator URL + PE filing)."
+    }
+  ]
+}

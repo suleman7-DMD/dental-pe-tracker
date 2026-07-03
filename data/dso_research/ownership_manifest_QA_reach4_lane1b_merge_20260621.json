@@ -1,0 +1,84 @@
+{
+ "_doc": "Independent QA of the Gate Owner's merged consolidation candidate manifest AFTER it folded in Main AO reach=4 + Fleet B Lane1B + the prior 12:07 merged manifest. READ-ONLY. New file; no prior QA file, manifest, DB, LEDGER, or PROGRESS mutated. Autonomous-work-mode review against the user's 7 focus areas.",
+ "author_role": "independent QA / validation-gate session (New session #1)",
+ "reviewed_object": "consolidation_candidate_manifest_20260621.json (reach4+Lane1B merge, mtime ~13:13) — ready_to_validate = 210 rows",
+ "reviewed_at": "2026-06-21",
+ "inputs_folded_since_prior_QA": {
+  "reach4": "ao_network_evidence_reach4_20260621.json + _qa.json — sidecar 14 networks (wave2_reach4); summary reach4_rows 56 -> released_ready 43, backfill 7, held_in_conflicts 5, dup 1",
+  "lane1B": "ownership_evidence_queue_fleet_b_lane1B_20260621.json (+qa_flags +validation.txt) — classified 61 -> released_ready 44, to_backfill 16, dup 1; needs_verification_preserved_in_sidecar 258",
+  "prior": "consolidation_candidate_manifest_20260621.json (12:07, ready=123) — fully preserved"
+ },
+
+ "verdict": "PASS WITH ONE MUST-FIX-BEFORE-CONSOLIDATE. The merge is structurally sound, fully reconciled, and the gate enforced every safety rule on the new volume. One defect: 4 self-flagged 'candidate'/possibly-closed rows sit in ready_to_validate and should be demoted to needs_more_evidence before any consolidate step (the schema-only validator will not catch them). Everything else is clean. Freeze remains in force; --allow-db-write NOT authorized.",
+
+ "ready_growth_reconciliation": {
+  "prior_ready": 123,
+  "now_ready": 210,
+  "delta": 87,
+  "accounted": "reach4 released_ready 43 + Lane1B released_ready 44 = 87 (EXACT). reach4 summary self-reconciles 43+7+5+1=56; Lane1B 44+16+1=61.",
+  "partition_integrity": "210 ready rows, 210 distinct location_ids, 0 duplicate ids. ready ∩ needs_more_evidence = 0, ready ∩ conflicts = 0, ready ∩ rejected = 0."
+ },
+
+ "tier_and_headline_tallies_from_ready": {
+  "tier_counts": {"true_independent": 30, "single_loc_group": 7, "dentist_multi": 80, "stealth_dso": 21, "branded_dso": 64, "institutional": 8},
+  "consolidated_T2_T3_T4_T5": 172,
+  "dso_pe_T4_T5": 85,
+  "pe_backed_true": 49,
+  "note": "Tallies are over the READY bucket only (validate-candidate set), NOT a final consolidation %. Coverage is partial; the headline % must be computed FROM the full census ledger with coverage at consolidate time, never from ready alone and never anchored to ADA/5%-floor."
+ },
+
+ "focus_area_findings": {
+  "1_new_ready_rows_documentary_backed": {
+   "pass": true,
+   "evidence": "true_independent (30): basis web_verified 11 / intel_dossier 19; 0 rows with no URL AND no artifact => 0 silent-defaults (all owner-operated single-location verifications). name_chain-basis (82): 100% carry a documentary URL (0 with no URL); 39 of them are DSO-tier and 0 are weak. DSO-tier (85): 0 rows lacking both a URL and a strong structural artifact. The +87 growth is fully traceable to reach4 (43) + Lane1B (44) released rows, each with gate=ready_for_validation provenance."
+  },
+  "2_no_ao_reach_only_in_ready": {
+   "pass": true,
+   "evidence": "0 ready rows with empty evidence_urls AND no strong artifact. The 3 ao_cluster-BASIS rows (Kim family 2 locs, Anna Pelak sole-prop 2 locs, Sunita Sahu 3 locs) each carry 1-2 web URLs + intel dossier + BBB — multi-source, not ao-reach-only; the basis LABEL understates the real evidence. Proof the gate works: Lane1B 'Kalpana Shah' was routed to BACKFILL with note 'ao_cluster AO-reach-only, no website/BBB/intel corroborator' — i.e. a true ao-reach-only row was correctly kept OUT of ready."
+  },
+  "3_no_brand_substring_only_in_DSO_tier": {
+   "pass": true,
+   "evidence": "All 85 DSO-tier ready rows (branded_dso 64 + stealth_dso 21) carry a documentary URL and/or strong structural artifact. 0 rest on a bare brand-name substring."
+  },
+  "4_dentist_family_separated_from_MSO_DSO_PE": {
+   "pass": true,
+   "evidence": "reach4 verdicts are exemplary and honor the taxonomy correction: HUERTA_BELINDA verdict=pe_mso_backed -> branded_dso pe=true; GROH_LAWRENCE verdict=dso_brand -> branded_dso pe=FALSE and correctly NOT downgraded to dentist_multi (established brand). dentist_multi rows carry explicit 'No MSO/PE/management company' findings (Takla/Pal/Nourahmadi). The needs_more_evidence bucket actively HOLDS DSO-tier candidates that rest only on a locator/own-site ('DSO tier rests on a locator/own-site with no MSO/PE/established-brand evidence — canonical rule: locator != MSO'). Separation between dentist/family consolidators (T2/T3) and MSO/DSO/PE (T4/T5) is intact."
+  },
+  "5_stale_closed_orgonly_specialist_held_or_excluded": {
+   "pass": false,
+   "must_fix": true,
+   "institutional_correct": "8 institutional rows all legitimately FQHC/hospital/nonprofit: Alivio FQHC, Will County CHC FQHC, Lawndale Christian FQHC, IMAN 501(c)(3), NorthShore hospital dentistry, Advocate Illinois Masonic, TAP360 community health. CRITICAL PASS: 'Heartland International Health Center FQHC' correctly routed to institutional, NOT confused with Heartland Dental.",
+   "specialist_in_ready": "0 excluded-type tiers (specialist/org_only/da_unverified/non_clinical/solo_inactive) in ready. The Shafi 'Two Rivers Dental Orthodontics' brand-string rows remain GP-tier dentist_multi (taxonomy_code=None) — GP-vs-ortho scope still owed at validate (carried from addendum).",
+   "DEFECT_closed_or_unverified_doors_in_ready": {
+    "count": 4,
+    "rows": [
+     {"location_id": "1fa86e6647cd57c5", "net": "ao:KHURANA_PRADEEP", "tier": "dentist_multi", "why": "62b Ogden Ave Downers Grove not on vvdental.com locations; phone shared with Montgomery office; reasoning: 'may be a satellite, closed, or billing-only location variant ... physical operating status of this address is unverified. gate_status=candidate pending address-level verification.'"},
+     {"location_id": "b184f060d46970cd", "net": "ao:KHURANA_PRADEEP", "tier": "dentist_multi", "why": "reasoning: 'confidence is low. gate_status=candidate — requires direct address verification.'"},
+     {"location_id": "e493e4371bb5cb22", "net": "ao:KHURANA_PRADEEP", "tier": "dentist_multi", "why": "reasoning: 'personal ownership is unverified. gate_status=candidate — requires direct verification.'"},
+     {"location_id": "d5bc28878405a18c", "net": "ao:PALELLA_PHILLIP", "tier": "dentist_multi", "why": "Modern Dental on Sheffield, 1007 W Wellington — 'Yelp marks this location as CLOSED ... may be a former location that no longer operates ... confirm current operating status before counting this NPI toward the active GP denominator.'"}
+    ],
+    "problem": "All 4 carry the gate owner's OWN 'gate_status=candidate' / 'unverified' / 'may be closed' markers — distinct from the legitimate reach4 rows that carry 'gate=ready_for_validation'. Yet all 4 sit in ready_to_validate (each occurs exactly once in the manifest; none is cross-listed in denominator_caveat). ready_to_validate feeds consolidate_census.py --validate-only, which is a SCHEMA/DB gate and does NOT re-judge operating status or address existence (standing rule). So a closed/billing-only/unverified door could be consolidated into the active GP denominator. Their dentist_multi STRUCTURE is defensible (Valley View / Khurana and Palella/Modern Dental are real dentist-owned groups — keep as network intelligence); only the door-level inclusion in the active denominator is wrong.",
+    "fix": "Demote these 4 from ready_to_validate to needs_more_evidence with missing_evidence_type='operating_status_or_address_unverified' (Khurana x3) and 'operating_status_closed_per_yelp' (Palella x1). Preserve the network intelligence. Net effect: ready 210 -> 206; consolidated/dso tallies adjust by -4 dentist_multi. Denominator impact is ~0.09% (4/4364), so NON-BLOCKING to merge quality but MUST be done before --allow-db-write since the validator will not catch it.",
+    "also_correct_6_of_8": "The other 6 'CLOSED'-language ready rows are CORRECT: the closed reference is to a sibling/legacy location in the shared network artifact list, while the row's own door is active (4 Takla/Pal flagship doors). The Krizek true_independent row even explicitly EXCLUDES the closed Kevin Fee legacy NPI at the same EIN — good handling."
+   }
+  },
+  "6_conflicts_and_nme_preserved_honestly": {
+   "pass": true,
+   "evidence": "Conflicts (74): every row carries `reason` + per-pass `sources` map showing the actual disagreement, e.g. '1st Family Dental is CONTESTED across signed passes (DSO vs dentist_multi)' with sources {ownership_QA: branded_dso, ao_QA: dentist_multi, addendum: branded_dso}. PROTECTED network BELKIC_VESNA (1st Family Dental of Logan Square) is held HERE as contested, NOT released — correct double-gating. needs_more_evidence (158): every row carries `reason` + `missing_evidence_type` + `final_tier`/`why_demoted`; the locator!=MSO rule is actively holding DSO-tier candidates out ('DSO tier rests on a locator/own-site with no MSO/PE/established-brand evidence'). [Self-correction: an earlier field-name probe (`reasoning`) wrongly suggested these were blank; the detail lives under `reason`+`sources`. Both buckets are richly, honestly preserved.]"
+  },
+  "7_network_intelligence_preserved": {
+   "pass": true,
+   "evidence": "ao_network_intelligence retains wave1 networks (SHAFI, NITTINGER, BRUNETTI, SWEIS, LABINOV, RAMAHA — including the two HELD networks Sweis & Ramaha with owner/structure/evidence), individuals, AND a new wave2_reach4 block (14 networks + rows + qa). reach4_network_release_decisions records per-network policy and the 56-row rollup. Lane1B preserved 258 needs_verification rows in a sidecar. duplicate_denominator_blocked retained (16 ids / 8 HIGH duplicate-door pairs, 0 currently in candidate set). Future-app intelligence (owner/AO, legal entity, brands, locations, EINs, evidence_chain, URLs, stale/closed notes) is intact."
+  }
+ },
+
+ "carried_forward_unchanged": [
+  "_meta.validate_only_target parenthetical STILL names _ready_to_validate_normalized_20260621.json (old 65-row file). The live target is now the 210-row ready bucket (_ready_to_validate_merged / wave2). Cosmetic pointer staleness; bucket reference resolves correctly. Recommend updating the parenthetical before consolidate to avoid the validator being pointed at the wrong file.",
+  "Lane 3 still not folded in: Modern Smiles Shah (997fb9c989f09b76) + Iqbal (772fe78f8b2369eb) are BOTH ABSENT from ready (no double-count introduced), but the one-physical-door pair (phone (312) 500-7080, 3901 N Broadway) is still not registered in duplicate_denominator_blocked. Add when Lane 3 enters a manifest. First Dental 81ccc151ecbbd6ff family-vs-true_independent still open.",
+  "Per-URL owner-vs-MSO confirmation owed at validate for dentist_multi web_verified rows (a cited owner-bio URL that actually re-routes to an MSO operator flips to T4/T5).",
+  "Shafi/Two Rivers GP-vs-ortho scope: confirm each Ashton/Two Rivers door is GP at validate (taxonomy_code=None on those rows); any ortho-only door leaves the GP denominator.",
+  "evidence_basis labels continue to UNDERSELL real artifacts (ao_cluster/name_chain labels on rows that actually carry web URLs + shared_ein/shared_parent + intel). Non-blocking; recommend relabeling for the future-app evidence display."
+ ],
+
+ "recommendation": "APPROVE the reach4+Lane1B merge as the canonical object, with ONE pre-consolidate MUST-FIX: demote the 4 self-flagged candidate/closed doors (1fa86e6647cd57c5, b184f060d46970cd, e493e4371bb5cb22, d5bc28878405a18c) from ready_to_validate to needs_more_evidence. The gate handled the +87 new rows correctly across all 7 focus areas — AO-reach-only rows backfilled, brand-substring kept out of DSO tier, established-brand pe=false rows correctly NOT downgraded, protected+contested rows held in conflicts, network intelligence preserved. Keep freeze; --allow-db-write remains unauthorized until the user says 'consolidate approved manifest'."
+}

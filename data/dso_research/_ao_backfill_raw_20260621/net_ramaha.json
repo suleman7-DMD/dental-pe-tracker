@@ -1,0 +1,53 @@
+{
+  "_batch": "net_ramaha",
+  "_lane": "AO_network",
+  "_row_class": "protected_58",
+  "_protected_network_hold": true,
+  "_note": "PROTECTED network ao:RAMAHA_AHMED. protected_network_hold=true PRESERVED per gate rule regardless of evidence strength, until the protected network is explicitly released.",
+  "network_id": "ao:RAMAHA_AHMED",
+  "brand": "Amazing Dental / Universal Dental (Ramaha)",
+  "is_real_multilocation": true,
+  "ownership_structure": "dentist_owned_multiloc",
+  "structure_evidence": "Dr. Ahmed Ramaha (DDS, MS) documented as Principal Owner on BBB profiles for Universal Dental of Orland Park and Universal Dental of Burbank (Oak Lawn corporate). BBB Burbank profile lists all sibling locations as related businesses under Ramaha. No management company, MSO, DSO platform, or PE backer in any source. Only in-house back-office (marketing/accounting/billing) at Oak Lawn corporate — consistent with dentist-owned multi-loc, not MSO interposition.",
+  "evidence_tier": "dentist_multi",
+  "pe_backed": false,
+  "pe_evidence": "No PE/external investor found (BBB, LinkedIn, RocketReach, VisualVisitor, web search).",
+  "documentary_urls": [
+    {
+      "url": "https://www.bbb.org/us/il/oak-lawn/profile/dental-services/universal-dental-of-burbank-0654-90029782",
+      "shows": "Ahmed Ramaha Principal Owner; BBB lists all sibling Universal Dental locations as related businesses under one owner; udclinics.com confirmed"
+    },
+    {
+      "url": "https://www.bbb.org/us/il/orland-park/profile/dentist/universal-dental-of-orland-park-0654-88347265",
+      "shows": "Ahmed Ramaha Owner; LLC established Oct 12 2012; alt names 'Universal Dental Clinics' / 'Universal Dental LLC'"
+    },
+    {
+      "url": "https://udclinics.com/our-location/",
+      "shows": "7 clinic locations including 229 National St Elgin, 8752 W 159th St Orland Park, 10 Orland Square Dr Orland Park, 9618 Southwest Hwy Oak Lawn corporate, 1634 E 53rd St Hyde Park, South Holland — all under udclinics.com brand"
+    },
+    {
+      "url": "https://www.linkedin.com/in/ahmed-ramaha-bb6b65321/",
+      "shows": "Ahmed Ramaha CEO, Universal Dental Clinics — sole named executive, no platform/DSO/PE affiliation"
+    }
+  ],
+  "durable_non_ao_artifact": {
+    "type": "shared_website",
+    "detail": "Five of six member offices share udclinics.com and toll-free 888-411-8648. udclinics.com /our-location/ lists Elgin, Orland Park x2, Oak Lawn corporate. BBB Burbank profile cross-references all siblings under Ramaha.",
+    "source_url": "https://udclinics.com/our-location/"
+  },
+  "members": [
+    {"location_id": "019f06d7def19049", "practice_name": "ELGIN AMAZING DENTAL LLC", "confirmed_at_brand": true, "member_url": "https://udclinics.com/our-location/", "note": "229 National St Elgin 60120 verbatim on udclinics.com; BBB lists 'Universal Dental of Elgin' as related business under Ramaha"},
+    {"location_id": "9d4cd058e4525078", "practice_name": "STONE PARK DENTAL INC", "confirmed_at_brand": false, "member_url": "https://www.dentalplans.com/dentists/illinois/stone-park/60165/dr-ahmed-ramaha-83814/", "note": "Ramaha listed practicing at 1550 N Mannheim Rd Stone Park; address NOT on udclinics.com locator and NOT a BBB related business — brand tie not documentary-confirmed"},
+    {"location_id": "19c344d4755fd990", "practice_name": "CENTRAL AMAZING DENTAL LLC", "confirmed_at_brand": true, "member_url": "https://www.bbb.org/us/il/oak-lawn/profile/dental-services/universal-dental-of-burbank-0654-90029782", "note": "5501 W 79th St Burbank 60459; BBB 'Universal Dental of Burbank' = same Ramaha entity; NPPES legal name 'Central Amazing Dental LLC' operates as Universal Dental"},
+    {"location_id": "b4b2a9ed748734fb", "practice_name": "ORLAND PARK AMAZING DENTAL", "confirmed_at_brand": true, "member_url": "https://www.bbb.org/us/il/orland-park/profile/dentist/universal-dental-of-orland-park-0654-88347265", "note": "8752 W 159th St Ste 8 Orland Park 60462 — exact match on udclinics.com and BBB (Ramaha Principal Owner)"},
+    {"location_id": "10a173a568a7cd9f", "practice_name": "ORLAND SQUARE UNIVERSAL DENTAL LLC", "confirmed_at_brand": true, "member_url": "https://udclinics.com/our-location/", "note": "10 Orland Square Dr Orland Park 60462 verbatim on udclinics.com; BBB lists 'Universal Dental Of Orland Square' as related business"},
+    {"location_id": "93287e7e58ead8af", "practice_name": "LOOP DENTAL & SPA", "confirmed_at_brand": false, "member_url": "https://www.yelp.com/biz/universal-dental-chicago-7", "note": "1605 S Michigan Ave Chicago 60616; Yelp shows Universal Dental CLOSED (Jan 2026) with 'Loop Dental And Spa' co-listed same address. Rebrand artifact; no direct documentary URL naming Ramaha as owner of 'Loop Dental & Spa' — AO inference only"}
+  ],
+  "evidence_quality": "partial",
+  "gate_status": "ready_for_validation",
+  "reasoning": "Ahmed Ramaha is the documented sole owner/founder/CEO of Universal Dental Clinics (udclinics.com), dentist-owned multi-loc with in-house back-office but no MSO/DSO platform. 'Amazing Dental' LLC shells are separately-incorporated sites under the same network (name-chain). 5 of 6 confirmed via shared website / BBB cross-reference; Stone Park and Loop Dental & Spa lack a direct brand locator URL. Evidence partial. protected_network_hold REMAINS true.",
+  "_db_data_quality_flags_for_gate_owner": [
+    "Loop Dental & Spa (93287e7e58ead8af) Universal Dental at 1605 S Michigan Ave shows CLOSED on Yelp as of Jan 2026 — possible stale location.",
+    "Stone Park Dental Inc (9d4cd058e4525078) and Loop Dental & Spa lack documentary brand confirmation — AO/NPI signal only."
+  ]
+}

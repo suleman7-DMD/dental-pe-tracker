@@ -1,0 +1,984 @@
+{
+ "_meta": {
+  "lane": "lane1B_wave2",
+  "session": "fleet-b-lane1B-2026-06-21",
+  "generated": "2026-06-21",
+  "source_queue": "ownership_evidence_queue_fleet_b_lane1B_20260621.json",
+  "total_rows_reviewed": 320,
+  "classified": 61,
+  "needs_verification": 258,
+  "qa_flag_count": 132,
+  "flag_categories": {
+   "maybe_specialist": 15,
+   "identity_mismatch": 31,
+   "address_or_stale": 48,
+   "ein_cluster": 10,
+   "other_agent_flag": 24,
+   "closed": 4
+  },
+  "held_stealth_branded_leads": 22,
+  "note": "Fleet B handoff. Evidence-only. No DB writes. Held stealth/branded leads need a documentary URL or durable artifact before they may be classified."
+ },
+ "flags_by_category": {
+  "maybe_specialist": [
+   {
+    "location_id": "8d00e319b53d2f50",
+    "practice_name": "Lakemoor Dental of Elk Grove",
+    "flag": "agent:NPI holder (Dr. Witik) is not the practice owner; actual operator is Lakemoor Dental & Orthodontics DSO \u2014 this location likely miscounted as independent in denominator; verify against https://www.lakemoordental.com/ locator"
+   },
+   {
+    "location_id": "918685bb4bbc6870",
+    "practice_name": "Witkowski Dental",
+    "flag": "agent:Practice name 'Witkowski Dental' is misleading; actual entity is Vertex Endodontics (multi-location endodontic group); NPI holder is employee specialist, not owner; entity_classification=solo_established is incorrect"
+   },
+   {
+    "location_id": "0ff49a89af7aa396",
+    "practice_name": "Punnoose Hanna DDS",
+    "flag": "agent:Location name 'Punnoose Hanna DDS' doesn't match NPI holder 'MARILYN HATZ'; practice is TMD specialist embedded in Illinois Sports Medicine org \u2014 may not be a standalone GP practice; verify address and ownership"
+   },
+   {
+    "location_id": "4a9d59a822641a07",
+    "practice_name": "Happy Tooth",
+    "flag": "agent:Severe data integrity issue: location is Cameo Dental Specialists (5+ locations, 60+ staff), not 'Happy Tooth' solo \u2014 verify NPI assignment and current operator; may be a specialist (oral surgery) rather than GP"
+   },
+   {
+    "location_id": "d504f0c7141d4eb8",
+    "practice_name": "Suvagia Mira",
+    "flag": "agent:Dr. Suvagia concurrently employed at Orthodontic Experts (multi-state chain) Kedzie location as of Sept 2024; verify whether Itasca practice is truly independent or an Orthodontic Experts satellite"
+   },
+   {
+    "location_id": "cd89dae179ea05d7",
+    "practice_name": "Dillon Dental",
+    "flag": "agent:Confirmed periodontist (specialist) per intel dossier; entity_classification=solo_established may be GP mis-classification; verify if this should be in specialist bucket"
+   },
+   {
+    "location_id": "d6e824e1fd7e002d",
+    "practice_name": "Maali Dental",
+    "flag": "agent:Endodontist (specialist) with 5 IL locations; entity_classification=solo_established is almost certainly wrong; verify if this is a specialist bucket and whether other Maali locations appear in watched ZIPs"
+   },
+   {
+    "location_id": "905560816bb84bdb",
+    "practice_name": "KHALIL TAKLA DDS & ASSOCIATES PC",
+    "flag": "agent:affiliated_dso=Orthodontic Experts may be practice brand not external DSO; clarify MSO/management-company structure before classifying"
+   },
+   {
+    "location_id": "d7cddb19b1df0908",
+    "practice_name": "So-well Dental Assoc",
+    "flag": "agent:CONFLICT: affiliated_dso='Orthodontic Experts' in DB record vs intel claiming independent solo practice; Orthodontic Experts is a real IL DSO \u2014 verify if Dr. Sowell's practice was acquired or if the field is a data error"
+   },
+   {
+    "location_id": "75c7965901339cb2",
+    "practice_name": "Tadros Dental",
+    "flag": "agent:CRITICAL: No practice confirmed at stated Wheaton address; Dr. Tadros appears to be an associate at group practices (Plainfield Dental Care, Naperville Dental Specialists, Bliss Dental) \u2014 possible stale/incorrect NPPES address; consider suppression or remapping"
+   },
+   {
+    "location_id": "10815a00a3b408b6",
+    "practice_name": "ELITE DENTAL SPECIALISTS",
+    "flag": "agent:Entity classified as family_practice but is a specialty-only (endodontics/periodontics) multi-location group \u2014 should be reclassified specialist and excluded from GP denominator"
+   },
+   {
+    "location_id": "213d8285856873eb",
+    "practice_name": "Dental Salon",
+    "flag": "agent:entity_classification=dso_national in DB but all intel points to dentist-founded family-owned group (Dental Salon, Dr. Mark Morris); dso_national classification appears to be a false positive requiring demotion review. Also co-located with Perio Implant Chicago specialist practice."
+   },
+   {
+    "location_id": "7fb7235b6bcebd57",
+    "practice_name": "Ibrahim Dental",
+    "flag": "agent:Specialist (orthodontist) with confirmed multi-location practice; NPPES address 6228 N Keystone may not be an active practice site"
+   },
+   {
+    "location_id": "e41734b8b8a41b9f",
+    "practice_name": "Mona Dental",
+    "flag": "agent:NPI registered to Dr. Mahmoud Mona (endodontist) but address is Higgins Family Dental LLC (group practice); Dr. Mona is independent contractor. The group's ownership structure (dentist-owned vs DSO) is unresolved."
+   },
+   {
+    "location_id": "0006f31358ea5c12",
+    "practice_name": "Barseghyan Dental",
+    "flag": "agent:NPPES registered address is a residential apartment (555 W Madison APT 1402 Chicago 60661); verified active practice is Renovo Endodontics at 845 N Michigan Ave. This NPPES record may be stale or a billing-only registration."
+   }
+  ],
+  "identity_mismatch": [
+   {
+    "location_id": "56f575faaf682c79",
+    "practice_name": "Hart Dental",
+    "flag": "agent:NPI holder name (PAULINA WISNIEWSKA) doesn't match practice name (Hart Dental); feed_vq=insufficient; no URLs; needs fresh web verification"
+   },
+   {
+    "location_id": "f790cf2484530188",
+    "practice_name": "METROPOLITAN DENTAL CARE",
+    "flag": "agent:AO=INCHUN YANG at 4 separate practice names across 4 ZIPs is a strong dentist_multi or possible stealth_dso lead; intel credits a different owner (Dr. Maatouk) \u2014 contradiction needs resolution; brand 'NORTHWESTERN DENTURE CLINIC' and 'GLAMOUR DENTAL SOUTH CHICAGO HEIGHTS' suggest distinct businesses, not a simple group practice"
+   },
+   {
+    "location_id": "c524291483614a39",
+    "practice_name": "Levitan Dental",
+    "flag": "agent:Address likely stale \u2014 NPPES data conflicts with web evidence; verify current occupant of Dempster address"
+   },
+   {
+    "location_id": "038af74da5a2998d",
+    "practice_name": "Leonidas Joseph Ragas DDS",
+    "flag": "agent:Name mismatch: location_id practice_name is 'Leonidas Joseph Ragas DDS' but NPI 1427219328 is registered to JODY WELLER \u2014 verify which provider/entity currently occupies this address"
+   },
+   {
+    "location_id": "160bb1d601ce2d59",
+    "practice_name": "ELMHURST DENTAL GROUP LTD",
+    "flag": "agent:DB entity_classification=solo_established conflicts with intel evidence of multi-location DSO group affiliation \u2014 recommend reclassification to branded_dso or dso_regional"
+   },
+   {
+    "location_id": "35cbbce74d2ff7c5",
+    "practice_name": "PRO DENTAL CARE LTD",
+    "flag": "agent:Intel notes 5+ locations but AO reach=2 in DB \u2014 confirm whether additional locations appear in DB under Rick Brar AO or different entity names"
+   },
+   {
+    "location_id": "b8ca0e808c66f21a",
+    "practice_name": "METRO DENTAL ASSOCIATES",
+    "flag": "agent:Healthgrades lists 7 provider names (Deshpande, Arafat, Diab, Patel, Azzo, H. Patel) at this address; verify whether these are associates/tenants at a group practice or cross-listed from another practice"
+   },
+   {
+    "location_id": "3a13ee2f47329b5c",
+    "practice_name": "CREST DENTAL CARE PC",
+    "flag": "agent:CONFLICT: Intel dossier names Dr. Ramya Shetty as owner but NPPES AO is MONIL SHAH with 3-location reach including 'SALEM & SHAH DENTAL GROUP, PLLC' (60827); verify whether Monil Shah is a DSO/MSO operator or co-owner, and whether Crest Dental is truly independent"
+   },
+   {
+    "location_id": "00ee56807ac7b230",
+    "practice_name": "HEATHER YOON DDS, PC",
+    "flag": "agent:Multiple practice name variants (Hae Yoon DDS, Heather Yoon DDS PC, Premier Dental Care Illinois) and multi-location claims; verify whether this is a solo practice or has multiple locations under a management structure"
+   },
+   {
+    "location_id": "bcae04016db042c4",
+    "practice_name": "TOM L. BARANOWSKI, D.D.S.",
+    "flag": "agent:Three NPIs at one address including Jimmy Fung (different surname from owner); no practice website; multiple location listings (Wheaton, Chicago) on DentalPlans add confusion; verify active practice structure"
+   },
+   {
+    "location_id": "6831c65dc7623f42",
+    "practice_name": "DR CHAIKEN & ASSOC. DENTIST, LTD",
+    "flag": "agent:AO=IRWIN CHAIKEN but intel identifies Dr. Paul Chaiken as operator; da_legal_name=CHICAGO ORAL MEDICINE INC; northdentalprofessionals.com may confirm multi-location dentist_multi if verified"
+   },
+   {
+    "location_id": "8b535d213a3866f6",
+    "practice_name": "R.A. BERQUIST, D.D.S., P.C.",
+    "flag": "agent:Two DSO signals conflict: DB says Heartland/KKR but intel says DecisionOne Dental Partners (July 2020 press release URL). DecisionOne may operate under Heartland umbrella or these are successive affiliations \u2014 verify which brand currently operates this location"
+   },
+   {
+    "location_id": "7f9652e856208b6a",
+    "practice_name": "ESAM JUMANI D.D.S.,P.C.",
+    "flag": "agent:Second address under AO=ESAM JUMANI is 'VDC CICERO CORP' (3320 S Cicero Ave, 60804) \u2014 'VDC' corporate entity name and 4-location structure may indicate MSO/platform vs pure dentist_multi; resolve before promoting"
+   },
+   {
+    "location_id": "49e9ec574b150df0",
+    "practice_name": "Akawi, Dana",
+    "flag": "agent:Practice name 'Akawi, Dana' does not match confirmed practice 'Mill Creek Dental' at this address \u2014 data integrity issue; NPI 1558562108 is Dr. Vincent Greci not Dana Akawi"
+   },
+   {
+    "location_id": "b632173e632be3c1",
+    "practice_name": "Darling & O Brien",
+    "flag": "agent:Practice name 'Darling & O Brien' mismatches NPI holder JASON CRESCENZO; multi-location structure under 2+ brands warrants franchise/DSO vs dentist_multi clarification"
+   },
+   {
+    "location_id": "da5ce47411a41bf4",
+    "practice_name": "Fagan & Lazzarotto",
+    "flag": "agent:Practice name 'Fagan & Lazzarotto' does not match NPI holder TOOBA AJMAL \u2014 possible stale location record or wrong NPI linkage"
+   },
+   {
+    "location_id": "2107d40f445f0f18",
+    "practice_name": "ERIKA L KROUTH DDS PC",
+    "flag": "agent:Intel dossier says 'independent / no acquisition news' but DB shows affiliated_dso=Heartland Dental on 2 NPIs \u2014 confirm via Heartland locator at 1016 Douglas Rd Oswego IL 60543; Heartland supported-doctor model uses private brand names"
+   },
+   {
+    "location_id": "192e712ab8a73cfe",
+    "practice_name": "Smigielski James DDS",
+    "flag": "agent:Practice name mismatch: location labeled 'Smigielski James DDS' but NPPES NPI 1457479065 = GILBERT LAFEMINA; needs data reconciliation"
+   },
+   {
+    "location_id": "8144a7dfceedc631",
+    "practice_name": "YORKVILLE DENTAL",
+    "flag": "agent:Intel says operates as 'Yorkville Smiles / Total Dentistry' \u2014 brand name differs from NPPES name; may be dentist_multi with 3 IL locations or branded_dso pending MSO check"
+   },
+   {
+    "location_id": "62cc00137fbcad20",
+    "practice_name": "HOUSE OS SMILES, PC",
+    "flag": "agent:AGTEL LLC at 181 N HAMMES AVE (ZIP 60435) has ambiguous name \u2014 could be a management/billing entity for this group; check if dentist_multi vs stealth_dso structure"
+   },
+   {
+    "location_id": "03bb2bf2ff66a46b",
+    "practice_name": "Grand Dental-naperville",
+    "flag": "agent:Intel suggests Grand Dental Group DSO structure but verification insufficient; Grand Dental Group brand should be checked across IL addresses for name_chain signal"
+   },
+   {
+    "location_id": "641bc89abd72395b",
+    "practice_name": "Sukovic Dental",
+    "flag": "agent:Ownership conflict: NPI under Sukovic but AllBiz names Pavlovic family as operator; second NPI 1508089129 (Pavlovic) also at same address \u2014 may be a sublease or sold practice with stale NPI"
+   },
+   {
+    "location_id": "b1e3b67adc113238",
+    "practice_name": "JEFFERSON PARK FAMILY DENTAL LLC",
+    "flag": "agent:AO Robert Stites holds 7 multi-specialty PLLCs across 5 ZIPs; intel describes 'Jefferson Park Dental Studio' under Dr. Linora Nissan (not Stites) \u2014 AO may be attorney/registered agent not clinical owner; high priority for identity verification"
+   },
+   {
+    "location_id": "2a0f79dfea3eab7e",
+    "practice_name": "Adebayo Dental",
+    "flag": "agent:Practice name 'Adebayo Dental' is the provider NPI but actual entity at this address is 'We Smile Dental'; classification should be re-attributed to the group practice entity"
+   },
+   {
+    "location_id": "fdc795fb30d9cfe8",
+    "practice_name": "Grace Lee Ltd",
+    "flag": "agent:Location filed as 'Grace Lee Ltd' but intel identifies the address as 'Smile Obsession Lakeview'; significant entity-name mismatch \u2014 may be a mislinked NPI or ownership transition"
+   },
+   {
+    "location_id": "1f97f472fec4c75c",
+    "practice_name": "Sumeet Beri DDS P C",
+    "flag": "agent:Practice_name 'Sumeet Beri DDS P C' does not match NPI owner 'MICHAEL CHENG' (NPI 1952656746) \u2014 either a data error, stale practice name, or practice succession; resolve before classifying"
+   },
+   {
+    "location_id": "f28cc39f9352a95b",
+    "practice_name": "ARTISTIC DENTAL CENTRE",
+    "flag": "agent:AO in NPPES is ALBERT GRUBER but intel names Dr. Nse Ekpenyong as owner \u2014 identity mismatch needs resolution"
+   },
+   {
+    "location_id": "706c0c72846820f4",
+    "practice_name": "Hwang Stella Hye Youn DMD",
+    "flag": "agent:practice_name='Hwang Stella Hye Youn DMD' in shard but NPI 1851070072=CAROLINE CWIEK and all intel references 'Downtown Dental and Implants of Oswego Inc' \u2014 possible wrong shard row or address collision"
+   },
+   {
+    "location_id": "358f255157adb8f6",
+    "practice_name": "Farkas Dental",
+    "flag": "agent:practice_name='Farkas Dental' in shard but NPIs (1598800096=JEANNIE MOSKIN, 1619286911=KIMBERLY CHAN) and all intel reference Moskin Dental Associates \u2014 likely wrong location_name in shard or address collision"
+   },
+   {
+    "location_id": "8a5c9c3c78fbde2f",
+    "practice_name": "Timeless Smiles Dental",
+    "flag": "agent:Practice name in shard ('Timeless Smiles Dental') does not match verified NPI entity ('McNicholas Dental' per mcnicholasdental.com, BBB, Yelp); likely a rebranding or data entry error. Intel strongly supports true_independent for McNicholas Dental."
+   },
+   {
+    "location_id": "0a61c94fd7605fa1",
+    "practice_name": "Corso Anne M",
+    "flag": "agent:CRITICAL: Shard practice_name 'Corso Anne M' does not match NPI 1790843928 entity 'JOHN BRENDICH' or Brendich Dental (BBB-confirmed sole proprietorship). This appears to be a data linkage error \u2014 'Corso Anne M' may be a different location incorrectly mapped to this NPI."
+   }
+  ],
+  "address_or_stale": [
+   {
+    "location_id": "e777ba77ca40b160",
+    "practice_name": "Gale Dental",
+    "flag": "agent:Address mismatch \u2014 intel confirms relocation to Lincolnwood; this Des Plaines entry may be a stale/moved practice"
+   },
+   {
+    "location_id": "25b6923882c79b74",
+    "practice_name": "JEFFREY WINTERICH DENTAL GROUP",
+    "flag": "agent:HIGH PRIORITY: 'Dental Experts LLC' appearing in the multi-entity roster is the known Dental Dreams friendly-PC brand in IL; if confirmed, this location is stealth_dso (Dental Dreams) rather than an independent dentist_multi; needs exact web verification of Dental Experts LLC = Dental Dreams link at this address"
+   },
+   {
+    "location_id": "5aef78a352982333",
+    "practice_name": "Green Dental",
+    "flag": "agent:Address mismatch: watched entry shows 1801 Glenview Rd but verified address is 1001 Waukegan Rd \u2014 same ZIP but different address; practice is 2-doctor family partnership, not solo"
+   },
+   {
+    "location_id": "93aac5767437ad29",
+    "practice_name": "Kolin Jennifer Ann DDS",
+    "flag": "agent:NPI uses PO Box address; actual practice location is North Suburban Dental at 2685 Waukegan Ave Highland Park; independent classification is incorrect \u2014 likely a branded_dso location"
+   },
+   {
+    "location_id": "319370c0f6eef2b2",
+    "practice_name": "Balan Dental",
+    "flag": "agent:Address mismatch: watched record shows 6223 W Dempster but verified address is 5901 DEMPSTER ST STE 201; also dentist_multi candidate (Grayslake + East Peoria satellites) \u2014 verify current address and ownership structure"
+   },
+   {
+    "location_id": "df5f1ecea9862dc4",
+    "practice_name": "SMILES LLC",
+    "flag": "agent:Intel notes alternate NPPES addresses (St. Charles, Downers Grove) suggesting possible multi-location practice \u2014 may be dentist_multi"
+   },
+   {
+    "location_id": "f9891ace8eab230b",
+    "practice_name": "Stasiulis Dental",
+    "flag": "agent:NPPES address (Bensenville) appears stale; verify current address and whether multi-location website indicates dentist_multi"
+   },
+   {
+    "location_id": "51c89e328fc04ffa",
+    "practice_name": "Mcdonald Dental",
+    "flag": "agent:Address mismatch: shard ZIP 60137 (Glen Ellyn) vs primary website at Winfield 1N121 County Farm Rd; may be satellite or stale directory listing"
+   },
+   {
+    "location_id": "6c00cb64092ff0c8",
+    "practice_name": "Haider Dental",
+    "flag": "agent:NPI address 1550 Jill Ct is a residential property per Redfin; likely home-office or stale NPI registration; consider whether this location should be classified as non_clinical or inactive"
+   },
+   {
+    "location_id": "a728cc6ee61045f0",
+    "practice_name": "Becirspahic Dental",
+    "flag": "agent:Address mismatch: primary practice at 990 Grand Canyon Pkwy Hoffman Estates 60169; shard ZIP 60173 may be stale or secondary listing"
+   },
+   {
+    "location_id": "b40d64a96c642c40",
+    "practice_name": "SMILES4U",
+    "flag": "agent:Second NPI at address (1811003981, THOMAS MAUROVICH) appears to be a separate co-tenant practice, not part of SMILES4U ownership; verify building address for suite disambiguation"
+   },
+   {
+    "location_id": "c88855231e72cced",
+    "practice_name": "BLISS DENTAL LLC",
+    "flag": "agent:Shared address with Everyone's Family Dental (multi-location group, Dr. Daniel Brady NPI 1326161126); could be co-tenancy or structural link; verify suite-level separation and whether Bliss Dental has any MSO/management relationship with Everyone's Family Dental"
+   },
+   {
+    "location_id": "6f4ad04b3965aecb",
+    "practice_name": "Albazzaz Dental",
+    "flag": "agent:Consider whether this NPI row should be reclassified as non_clinical or inactive; 39W600 Oak Shadows Ln may be home address with no operating dental practice"
+   },
+   {
+    "location_id": "68e435baa0cf7662",
+    "practice_name": "Lozoff Dental",
+    "flag": "agent:Address mismatch: NPI at 515 Sheridan vs ProCare Dental Group Evanston at 820 Davis St; verify whether 515 Sheridan is an active ProCare location or whether this NPI should be linked to 820 Davis St location"
+   },
+   {
+    "location_id": "104164e8aa15f369",
+    "practice_name": "Cook Dental",
+    "flag": "agent:Likely stale/phantom NPI entry: residential address, Ohio-only license, DSO-employed in Ohio; flag for denominator review"
+   },
+   {
+    "location_id": "c8c3342d49c09bfe",
+    "practice_name": "Choi Dental",
+    "flag": "agent:Address may be stale (2 vs 4405 Fox Valley Center); verify current street address for exact match"
+   },
+   {
+    "location_id": "569cc043ad24d127",
+    "practice_name": "AURORA DENTRIX, P.C.",
+    "flag": "agent:2410 Larchmont Ln address may be obsolete per dossier \u2014 verified locations are 57 E Downer Pl, 111 Oak St, 2124 Ogden Ave; classify once address is confirmed or consolidated"
+   },
+   {
+    "location_id": "ac614cf1f0d5d197",
+    "practice_name": "Kendall Pointe Dental",
+    "flag": "agent:NPI 1225445281 (Lauren Hubbard) is stale for this address \u2014 she relocated to MN in 2019; Hubbard NPI should be removed from this location_id"
+   },
+   {
+    "location_id": "760085ecc06c02de",
+    "practice_name": "ANTHONY G. MILAZZO, DDS, PC",
+    "flag": "agent:Intel dossier says independent but ALL 3 NPIs carry Smile Doctors/THL Partners affiliation; verify via Smile Doctors locator at this Oswego address; Smile Doctors supported-doctor model uses private brand 'Oswego Dental Group'"
+   },
+   {
+    "location_id": "5bd3e470172ef607",
+    "practice_name": "Reddick Dental",
+    "flag": "agent:Possible stale/inactive location: Dr. Reddick's primary practice moved to WI (Blue Door Dental, Pillar Health) by July 2025; consider marking stale or removing from active denominator pending phone verification"
+   },
+   {
+    "location_id": "aea55847a5b76d19",
+    "practice_name": "SHUBA BINDRA DDS PC",
+    "flag": "agent:NPPES address is residential apartment \u2014 likely a billing/admin address not a clinical office; consider marking as non-operational for census denominator"
+   },
+   {
+    "location_id": "7fd33e225d5773c3",
+    "practice_name": "Abbas Dental",
+    "flag": "agent:NPPES address is residential apartment; actual practice location appears to be Dental Group of Bloomingdale (3600 W Roosevelt Rd 60624) \u2014 consider location record as stale/misrouted"
+   },
+   {
+    "location_id": "dfe1f90fc3ee0c32",
+    "practice_name": "PILSEN DENTAL GROUP",
+    "flag": "agent:AO TSALIAGOS at 3 IL watched addresses + Vitals says 11 total locations \u2014 may be dentist_multi or stealth_dso; if a management company (MetroSmiles brand) is backed by PE/MSO this flips to branded_dso; check MetroSmiles corporate structure"
+   },
+   {
+    "location_id": "f73a742cd6fa2a89",
+    "practice_name": "Ramirez Dental",
+    "flag": "agent:Address discrepancy: Sharecare lists 3443 S Halsted (60608) vs provided 60609 ZIP; confirm correct address before counting in denominator"
+   },
+   {
+    "location_id": "1e19d6d04a8cb0af",
+    "practice_name": "DALIA MAROUF DMD PC",
+    "flag": "agent:NPPES address (ZIP 60610) does not match actual operating practice Sauganash Smiles at 6019 N Cicero Ave (ZIP 60646); this location_id may need to be re-assigned to ZIP 60646 in the denominator"
+   },
+   {
+    "location_id": "a9d7a9c34203c478",
+    "practice_name": "Awais, Rafia",
+    "flag": "agent:Dr. Awais listed in Pearly White Dental, Ashton Dental, Astra Dental networks \u2014 check if any of these are DSOs that manage this address; if so, may flip to stealth_dso"
+   },
+   {
+    "location_id": "98db2cb259ca26a1",
+    "practice_name": "PABLO O TORRES DDS MS LTD",
+    "flag": "agent:NPPES address is a tire dealership \u2014 likely stale/wrong address; actual practice may be at 671 N State St (ZIP 60654) per business filing; consider location_id as misrouted"
+   },
+   {
+    "location_id": "dd58654dd52be250",
+    "practice_name": "DIMARIO DENTAL SERVICES",
+    "flag": "agent:7 NPIs at single address including multiple unrelated dentists (Nick family at Lincoln Square Dental Spa per intel, DiMario at Smile America Partners); may be a shared-space/subleased building not a unified practice"
+   },
+   {
+    "location_id": "01b5267fcedf344e",
+    "practice_name": "Simic Dental",
+    "flag": "agent:affiliated_dso='1st Family Dental' in NPPES but intel shows provider is employed at a medical urgent care center at this address, not an independent dental practice; may be a misattribution or location-in-building scenario"
+   },
+   {
+    "location_id": "cec806b53740bcb1",
+    "practice_name": "Wagner-Lelevour Dental",
+    "flag": "agent:NPI address mismatch: Dr. Wagner is associate at Oakbrook Terrace; practice at this address may be owned by Dr. Kimet Abdullai per intel; requires re-attribution"
+   },
+   {
+    "location_id": "549f761ca8929ce5",
+    "practice_name": "MICHAEL A. LUCKETT, DMD & ASSOCIATES (WESTERN",
+    "flag": "agent:NPPES parent_org_lbn='DENTALONE PARTNERS, INC' + DentalWorks web listing = strong branded_dso signal; needs locator URL for exact address to classify"
+   },
+   {
+    "location_id": "173ffa7cc8c3e198",
+    "practice_name": "AL MUFTI INC",
+    "flag": "agent:affiliated_dso='Dental 360' + dso_regional classification + 18-location footprint = strong branded_dso signal; needs exact Dental 360 locator URL for this address to classify"
+   },
+   {
+    "location_id": "66f36f878152532c",
+    "practice_name": "CONTOS SMILE CENTER, LTD.",
+    "flag": "agent:AO Peter Contos reaches 3 addresses including Evanston 60202 (Preferred Dental Group / Preferred Dentistry Associates); may be multi-location family group rather than single-location \u2014 verify whether Evanston addresses are active"
+   },
+   {
+    "location_id": "3b8b3bba6e944ffb",
+    "practice_name": "FRATMISHIN J. ALEXANDER",
+    "flag": "agent:Two practices at same address 6428 N California Ave 60645: CONTOS SMILE CENTER (location_id 66f36f878152532c) and FRATMISHIN J. ALEXANDER \u2014 verify whether this is same building with separate suites or a data address collision"
+   },
+   {
+    "location_id": "cd23edab0d244bc3",
+    "practice_name": "Patel Dental",
+    "flag": "agent:Address discrepancy: NPI record shows 520 N Kingsbury St; verified practice location is 509 N LaSalle Dr (~0.5 mi apart) \u2014 confirm location_id maps to correct address"
+   },
+   {
+    "location_id": "74069cde8e066629",
+    "practice_name": "Svjetlica Dental",
+    "flag": "agent:NPI address is residential apartment; practice may be entirely mislocated; UNA DENT affiliation (Hinsdale) requires DSO-structure verification"
+   },
+   {
+    "location_id": "866724ba45558ef8",
+    "practice_name": "Dhaliwal Dental",
+    "flag": "agent:NPI address is residential apartment in 60657; stale 2018 record; Destiny Dental affiliation signal unconfirmed \u2014 may need reject if no active dental office at this address"
+   },
+   {
+    "location_id": "1c74f9736d5ad26c",
+    "practice_name": "Costello Dental",
+    "flag": "agent:Address discrepancy: this record uses 1640 N Arlington Heights Rd; intel confirms primary address is 1510 N Arlington Heights Rd \u2014 may be a secondary address or data error"
+   },
+   {
+    "location_id": "17583d8157582402",
+    "practice_name": "Olomi Jamil DMD",
+    "flag": "agent:Practice filed as 'Olomi Jamil DMD' but NPI record is for MY YANG and the address operates as 'Crossings Dental Kushner/Becker' \u2014 triple entity mismatch requiring data audit"
+   },
+   {
+    "location_id": "8ba89f468029d822",
+    "practice_name": "Jensen Jeanette",
+    "flag": "agent:4 independent solo practitioners at one address may be building co-tenants, not a group practice \u2014 entity_classification=large_group may be an address-aggregation artifact; each sub-practice needs independent location record review"
+   },
+   {
+    "location_id": "30632127f2023ec2",
+    "practice_name": "Sean Cullinan",
+    "flag": "agent:Address discrepancy: this record uses 2640 Golf Rd; intel confirms practice is at 908 Waukegan Rd Glenview \u2014 may be data error or stale address"
+   },
+   {
+    "location_id": "2120fa74932e6183",
+    "practice_name": "YEOH KOH DDS LTD",
+    "flag": "agent:Address 10104 Grand Ave Franklin Park now associated with DONATELLI NORA DDS per Yelp July 2025 \u2014 possible practice succession; NPI 1760766638 stale since 2011; verify if Yeoh Koh still operates at this address"
+   },
+   {
+    "location_id": "eac057c7cf0c8fd6",
+    "practice_name": "ANTHONY BIANCO, DMD P.C.",
+    "flag": "agent:CRITICAL: NPI registered at 1002 Waverly Rd Glen Ellyn 60137 but verified active practice is Hi-Fidelity Dental at 624 N York St Elmhurst \u2014 likely stale NPPES address; location_id may need remapping or suppression"
+   },
+   {
+    "location_id": "b81151f69d0cd408",
+    "practice_name": "Shay Dental",
+    "flag": "agent:Yelp Roselle listing shows Dr. Yevgen Tkachuk DDS (not Dr. Shay) \u2014 possible practice succession or stale data import; primary Shay practice is in Pekin IL per intel"
+   },
+   {
+    "location_id": "dbd3c6139bdccd59",
+    "practice_name": "Sabaa Dental",
+    "flag": "agent:Submitted address is a residential condo (360 E South Water St APT 3505); Dr. Abu Sabaa is an associate at Midwest Family Dental 2843 W Irving Park Rd \u2014 recommend reject/purge this location row"
+   },
+   {
+    "location_id": "ca08c64d28b049bc",
+    "practice_name": "UNIVERSITY ASSOCIATES IN DENTISTRY, LTD.",
+    "flag": "agent:Address discrepancy: user provided 680 N LaSalle but verified sources cite 222 N LaSalle ST Suite 230 \u2014 confirm correct address before any DB action"
+   },
+   {
+    "location_id": "d35d84f2a59b07aa",
+    "practice_name": "Shah Dental",
+    "flag": "agent:NPI registered to Dr. Raveena Shah but address is Today's Dental of Beverly (group practice); actual practice ownership at this location belongs to a different entity"
+   },
+   {
+    "location_id": "2ff3e82d93b0cba6",
+    "practice_name": "Difranco Dental",
+    "flag": "agent:NPPES address (6200 N Hiawatha Chicago 60646) does not match verified practice location (1730 Dewes St, Glenview 60025 per drlindadifranco.com); this watched-ZIP record may be a stale NPPES address"
+   }
+  ],
+  "ein_cluster": [
+   {
+    "location_id": "fa3605a904d22685",
+    "practice_name": "Jacob Gregory S DDS",
+    "flag": "agent:Multiple distinct practice brands (Center for Dental Healing + North Glen Dentistry) sharing an address \u2014 may be shared building; EIN 201758207 belongs to Alla Aver entity only; structure is ambiguous"
+   },
+   {
+    "location_id": "873e0f29fd879a5e",
+    "practice_name": "SAMUEL SKURIE, D.D.S., LTD.",
+    "flag": "agent:HIGH PRIORITY: 8 NPIs sharing EIN 362921559 (Lloyd Sigman DDS Ltd) at Highland Park; intel confirms Glow Dental consolidation event (Dr. Campin absorbed multiple practices); if Glow Dental operates here as a platform/DSO this is stealth_dso; needs locator URL or legal structure verification for Glow Dental at this address"
+   },
+   {
+    "location_id": "83679992fc49585c",
+    "practice_name": "Pearson a Tereau DDS",
+    "flag": "agent:Severe NPI staleness: 4 legacy Rizman-EIN NPIs still active but current occupant is Wilmette Dental (Dr. Madrigal, 4th gen owner since 2022) per verified intel"
+   },
+   {
+    "location_id": "aacbfff769e61d6a",
+    "practice_name": "RIVERVIEW DENTAL CARE LTD",
+    "flag": "agent:Intel reports Dr. Thakkar manages 17 locations; if confirmed, may qualify as stealth_dso or branded_dso depending on MSO/platform structure; run EIN 061670134 cluster check across watched ZIPs"
+   },
+   {
+    "location_id": "6fc789bca79bd0a2",
+    "practice_name": "MEERA NARSIMHAN DDS INC",
+    "flag": "agent:8-location portfolio may qualify as stealth_dso if a management services entity or centralized platform exists; run EIN 203858715 across all watched ZIPs to find other locations; verify whether any MSO/management company structure exists"
+   },
+   {
+    "location_id": "465a788bbd8f31a3",
+    "practice_name": "Popp Benjamin DMD",
+    "flag": "agent:Practice name 'Popp Benjamin DMD' does not match NPIs BANSI PATEL or DALIA CEPELE \u2014 possible stale/wrong NPI linkage; two NPIs share EIN at address"
+   },
+   {
+    "location_id": "680c7be53496d7cb",
+    "practice_name": "YORK TOWNE DENTAL",
+    "flag": "agent:NPI 1841447398 (DILPREET GREWAL) intel says actual entity is Valley View Dental at 320 E Veterans Pkwy \u2014 different address from York Towne Dental; may be a misrouted NPI in this location cluster; EIN 204420265 shared across all 6 NPIs warrants reconciliation"
+   },
+   {
+    "location_id": "02617ab9ed30155b",
+    "practice_name": "EVER DENTAL STUDIO",
+    "flag": "agent:CRITICAL: EIN 322684113 shared by 52 NPIs at 30 N Michigan Ave Chicago 60602 \u2014 all independent practices sharing one EIN. This is likely a shared-building billing entity or dental suite management company, NOT a DSO. Requires lookup of EIN 322684113 entity type. All 52 NPIs at this address share this EIN. Individual practices appear to be genuinely independent (verified intel for multiple). Do NOT flag these as corporate without identifying the EIN holder."
+   },
+   {
+    "location_id": "bb3f79d399b5fcd4",
+    "practice_name": "HEALTHY SMILES, INC.",
+    "flag": "agent:Two NPIs with different EINs both named HEALTHY SMILES INC; AO on main NPI is JENNIFER STEINERT not Dr. Platt \u2014 verify if Steinert is a practice manager/admin and Platt is the owner-dentist, or if there is a management entity"
+   },
+   {
+    "location_id": "4488419015da1fda",
+    "practice_name": "WILLIAM L. BACON, D.D.S., LTD.",
+    "flag": "agent:EIN 201333211 shared between WILLIAM L BACON DDS LTD (NPI 1629477062) and MICHAEL COSMOS (NPI 1508494808) which intel describes as a separate 'Cosmos Modern Dental Elmhurst' practice \u2014 possible EIN data error or shared entity structure requiring investigation"
+   }
+  ],
+  "other_agent_flag": [
+   {
+    "location_id": "fcf40ad38b38a300",
+    "practice_name": "Gallery Park Family & Pediatric Dentistry",
+    "flag": "agent:NPI holder (JAYNA SHAH) is associate dentist, not the owner; actual owner is Dr. Drew Gripentrog; two-location practice in Glenview \u2014 correct NPI/location mapping needed"
+   },
+   {
+    "location_id": "9dae16bea3e38748",
+    "practice_name": "TONI ELLIS WOLF, DDS, PC",
+    "flag": "agent:Intel mentions Buffalo Grove location not captured in AO cross-location data; retirement signals may indicate pending succession"
+   },
+   {
+    "location_id": "6661bf73e19bc9e9",
+    "practice_name": "Khalid, Carl M DDS",
+    "flag": "agent:High probability of closure: space listed for lease, provider ~82 years old, zero online reviews"
+   },
+   {
+    "location_id": "eef55937bdcc645a",
+    "practice_name": "Giannopoulds Dental",
+    "flag": "agent:ZIP discrepancy in intel: intel sources cite 60131 (Franklin Park postal area) vs shard ZIP 60137 (Glen Ellyn); verify correct ZIP assignment for this location"
+   },
+   {
+    "location_id": "863d09a4f2929d18",
+    "practice_name": "PRISTINE DENTAL P C",
+    "flag": "agent:HIGH PRIORITY: AO links this practice to 'PALATINE SONRISA DENTAL P.C.' (60074); Sonrisa/CDCA is a confirmed DSO in this census; check Sonrisa/CDCA locator for 159 N Neltnor Blvd West Chicago to confirm stealth_dso classification"
+   },
+   {
+    "location_id": "3b057d860bfd1283",
+    "practice_name": "Amarante, Andre DDS",
+    "flag": "agent:Intel flags CareDash affiliation with Valley View Dental Naperville as possible DSO/network relationship; verify whether Way Dental (waydental.com) has any MSO tie to Valley View Dental"
+   },
+   {
+    "location_id": "9e31721171338454",
+    "practice_name": "J.V. DISCIPIO, D.D.S. & ASSOC., LTD.",
+    "flag": "agent:NOTE: location 7fd34b5d164a7773 (Discipio Dental, same ZIP, same discipiodds.com website) appears to be the individual-NPI duplicate of this org-NPI location \u2014 QA should confirm deduplication status"
+   },
+   {
+    "location_id": "7fd34b5d164a7773",
+    "practice_name": "Discipio Dental",
+    "flag": "agent:Possible duplicate of location 9e31721171338454 (J.V. Discipio org-NPI); same discipiodds.com website, same family, same ZIP \u2014 QA should check whether these are two deduped locations or one practice with individual+org NPIs"
+   },
+   {
+    "location_id": "96894394ac4bff01",
+    "practice_name": "UNITED DENTAL CENTERS",
+    "flag": "agent:Intel uses 'parent organization' language for United Dental Centers + 'multi-state presence' \u2014 check udcchicago.com for MSO/management company structure vs pure dentist_multi before classifying"
+   },
+   {
+    "location_id": "88f95e945cd318b2",
+    "practice_name": "MYNT DENTAL BOLINGBROOK LLC",
+    "flag": "agent:13+ location network across IL/IN/WI marketed as dentist-owned; at 13+ locations some states may treat this as a DSO/MSO structure \u2014 verify whether Mynt Dental uses a management services organization layer; also note feed_vq=insufficient for primary NPI"
+   },
+   {
+    "location_id": "2f8d835646ba94a3",
+    "practice_name": "Zale Sharma Ruginis-Dental",
+    "flag": "agent:No NPI data whatsoever \u2014 practice_locations row with no linked NPI records; verify this is a valid GP location before including in denominator"
+   },
+   {
+    "location_id": "01e11d28e1399b9b",
+    "practice_name": "Mill Pond Dental",
+    "flag": "agent:No NPI data in DB at all (npis=[], db_practices_ownership=[]) \u2014 like Zale Sharma Ruginis, verify this is a valid census row with a real NPI before including in GP denominator"
+   },
+   {
+    "location_id": "042ca43d00498b4b",
+    "practice_name": "Goswami, Antara",
+    "flag": "agent:Location NPI belongs to associate Dr. Goswami, actual owner is Dr. Anil Agarwal; possible NPI deduplication issue \u2014 tier assignment should be to the practice (single_loc_group) not the individual associate"
+   },
+   {
+    "location_id": "41186c3d5fe054ca",
+    "practice_name": "STONEHILL DENTAL PC",
+    "flag": "agent:60 Main St and 60C S Main St are likely adjacent suites or same building \u2014 clarify whether these are distinct locations or one co-located group; Dr. Mohan's LinkedIn confirms ownership of both brands"
+   },
+   {
+    "location_id": "0afd3cbdbde8c1a5",
+    "practice_name": "HY LINE DENTAL",
+    "flag": "agent:Email domain 'dentalsmilesgroup.org' may be a parent MSO \u2014 search Dental Smiles Group Illinois for corporate structure; could flip to stealth_dso or branded_dso"
+   },
+   {
+    "location_id": "81f29e6e9c1aabdb",
+    "practice_name": "Trublu Dentistry",
+    "flag": "agent:Dr. Russo joined United Dental Centers 2023 \u2014 verify if UDC is a DSO/MSO that acquired or manages this location; if so, tier may flip to stealth_dso or branded_dso"
+   },
+   {
+    "location_id": "a05bebb920cab943",
+    "practice_name": "C.E.WATSON D.D.S. LTD.",
+    "flag": "agent:Practice website is 'Watson and Watson Dental' \u2014 may indicate a two-provider family practice (single_loc_group) rather than true_independent solo"
+   },
+   {
+    "location_id": "750c730e65831053",
+    "practice_name": "SKYLINE SMILES OF ROSCOE VILLAGE LLC",
+    "flag": "agent:51-200 employees and multi-location LLC structure \u2014 verify if Skyline Smiles has a management company or MSO backing; at this scale may qualify as branded_dso even if founder-owned"
+   },
+   {
+    "location_id": "7de5e6d4c7296a51",
+    "practice_name": "Bartholomew, Wayne L DDS",
+    "flag": "agent:6+ co-providers on Healthgrades for a solo-classified practice; possible shared building with other practitioners or DSO-managed space; needs investigation"
+   },
+   {
+    "location_id": "82a3842e651936c2",
+    "practice_name": "Lakeview Smiles-bucktown",
+    "flag": "agent:affiliated_dso='1st Family Dental' on provider NPI (Dr. Wadhwa) should NOT be attributed to the practice entity; practice is owned by Dr. Grace Lee's independent multi-loc group per verified intel; the 1st Family Dental affiliation may be a prior association of Dr. Wadhwa, not the owning entity"
+   },
+   {
+    "location_id": "3a832f8d48c2b340",
+    "practice_name": "Yousef Dental",
+    "flag": "agent:Location filed under 'Yousef Dental' but actual owner is Dr. Trupti Desai; Dr. Yousef is an associate \u2014 NPI may be incorrectly linked to this location as its primary entry"
+   },
+   {
+    "location_id": "160a9235fe3dccf9",
+    "practice_name": "Theodoropoulos Dental",
+    "flag": "agent:Strong contradiction: DB affiliated_dso=Great Lakes Dental Partners vs. verified intel describing solo independent \u2014 one of these signals is wrong; priority resolution item"
+   },
+   {
+    "location_id": "226108300115f657",
+    "practice_name": "Thakkar Dental",
+    "flag": "agent:20+ location operation for a single dentist is unusual \u2014 could indicate DSO/MSO structure or data aggregation artifact; needs targeted research on Purvi Thakkar's ownership/employment structure"
+   },
+   {
+    "location_id": "898b41c1491cbd59",
+    "practice_name": "SUMMIT DENTAL CARE LTD",
+    "flag": "agent:Facebook page is 'Dr. Bansal' but NPPES AO is 'Pritam Dang' \u2014 need to confirm whether these are the same person and confirm dentist-ownership"
+   }
+  ],
+  "closed": [
+   {
+    "location_id": "0ffcb13f7b559c83",
+    "practice_name": "Goldberg Dental",
+    "flag": "agent:Practice may be closed or closing \u2014 verify current operating status before any classification"
+   },
+   {
+    "location_id": "bca301b92b2ede41",
+    "practice_name": "CHICAGO METRO DENTAL SERVICES, PLLC",
+    "flag": "agent:Location is permanently closed per October 2025 intel; consider whether this row should remain in the active GP denominator or be reclassified as non_clinical/inactive"
+   },
+   {
+    "location_id": "f3409b88989e3345",
+    "practice_name": "Furmanek Dental",
+    "flag": "agent:This address is confirmed closed/demolished \u2014 location record should be flagged for removal or marked stale; ongoing classification is moot"
+   },
+   {
+    "location_id": "7c9b04064be64365",
+    "practice_name": "Choi Dental",
+    "flag": "agent:Address in NPPES (849 W Lakeside 60640) does not match any verified active practice location for Dr. Choi; may be stale/closed NPI registration"
+   }
+  ]
+ },
+ "held_stealth_branded_leads": [
+  {
+   "location_id": "8d00e319b53d2f50",
+   "practice_name": "Lakemoor Dental of Elk Grove",
+   "zip": "60007",
+   "proposed_tier_raw": "branded_dso",
+   "owner_identity": null,
+   "brands": [],
+   "legal_entities": [],
+   "network_id": "brand:Lakemoor Dental & Orthodontics",
+   "why_it_matters": null,
+   "reasoning": "The intel dossier strongly indicates the operating entity at 717 Meacham Rd is Lakemoor Dental & Orthodontics (a multi-location DSO with 7+ offices), not Dr. Caroline Witik as an independent owner; Dr. Witik is an associate at a different practice; however, no exact official Lakemoor Dental locator URL confirming this specific address was found, so branded_dso needs an exact locator to be classified.",
+   "next_step": "find locator/web URL or durable artifact to confirm DSO/MSO structure"
+  },
+  {
+   "location_id": "918685bb4bbc6870",
+   "practice_name": "Witkowski Dental",
+   "zip": "60010",
+   "proposed_tier_raw": "branded_dso",
+   "owner_identity": null,
+   "brands": [],
+   "legal_entities": [],
+   "network_id": "brand:Vertex Endodontics",
+   "why_it_matters": null,
+   "reasoning": "The operating entity is Vertex Endodontics, a multi-location endodontic group; Dr. Witkowski is an employed specialist (endodontist), not the practice owner; this is a specialist location, not a GP, but the DSO structure of Vertex Endodontics (multi-location endodontic group) warrants further classification \u2014 needs a locator URL match to determine branded_dso vs. dentist_multi.",
+   "next_step": "find locator/web URL or durable artifact to confirm DSO/MSO structure"
+  },
+  {
+   "location_id": "25b6923882c79b74",
+   "practice_name": "JEFFREY WINTERICH DENTAL GROUP",
+   "zip": "60016",
+   "proposed_tier_raw": "stealth_dso",
+   "owner_identity": "Dr. Jeffrey Winterich, DMD",
+   "brands": [],
+   "legal_entities": [],
+   "network_id": "brand:JT Family Dental / possible Dental Dreams/Dental Experts LLC tie",
+   "why_it_matters": null,
+   "reasoning": "The intel dossier reveals 17 IL locations under multiple legal entities including 'Dental Experts LLC' \u2014 a known Dental Dreams friendly-PC brand \u2014 alongside Dr. Winterich's own brands; this raises a strong stealth_dso hypothesis where Dr. Winterich may be operating under or in conjunction with a DSO management structure, but the exact ownership role (owner of all vs. employed by some) is unconfirmed without a locator URL or Dental Experts LLC linkage document.",
+   "next_step": "find locator/web URL or durable artifact to confirm DSO/MSO structure"
+  },
+  {
+   "location_id": "873e0f29fd879a5e",
+   "practice_name": "SAMUEL SKURIE, D.D.S., LTD.",
+   "zip": "60035",
+   "proposed_tier_raw": "stealth_dso",
+   "owner_identity": null,
+   "brands": [],
+   "legal_entities": [],
+   "network_id": "brand:Glow Dental / Lloyd Sigman DDS Ltd (EIN 362921559)",
+   "why_it_matters": null,
+   "reasoning": "This is a highly complex multi-NPI EIN cluster (8 NPIs sharing EIN 362921559 under the Lloyd Sigman DDS Ltd legal entity) with evidence of a Glow Dental consolidation event (multi-location, multi-practice merger) and a practice succession; the EIN cluster spans what appear to be distinct independent practices (Altman, Wasserman, Skurie, Robb Orthodontics) sharing an old legal entity, suggesting a shared-building / former-group scenario rather than a single DSO; verification is needed to determine if Glow Dental operates here as a platform company.",
+   "next_step": "find locator/web URL or durable artifact to confirm DSO/MSO structure"
+  },
+  {
+   "location_id": "93aac5767437ad29",
+   "practice_name": "Kolin Jennifer Ann DDS",
+   "zip": "60035",
+   "proposed_tier_raw": "branded_dso",
+   "owner_identity": null,
+   "brands": [],
+   "legal_entities": [],
+   "network_id": "brand:North Suburban Dental",
+   "why_it_matters": null,
+   "reasoning": "The intel dossier explicitly confirms Dr. Kolin is an employee of North Suburban Dental (a multi-location group in Highland Park, Northbrook, and Mundelein), not an independent owner; however, no exact locator URL for North Suburban Dental at this specific address was found to classify as branded_dso; the PO Box address registered to the NPI further complicates the address match.",
+   "next_step": "find locator/web URL or durable artifact to confirm DSO/MSO structure"
+  },
+  {
+   "location_id": "863d09a4f2929d18",
+   "practice_name": "PRISTINE DENTAL P C",
+   "zip": "60185",
+   "proposed_tier_raw": "stealth_dso",
+   "owner_identity": "Moeen Ikram (AO)",
+   "brands": [],
+   "legal_entities": [],
+   "network_id": "ao:IKRAM_MOEEN",
+   "why_it_matters": null,
+   "reasoning": "AO MOEEN IKRAM is the authorized official at both Pristine Dental (60185) and Palatine Sonrisa Dental P.C. (60074); Sonrisa is a confirmed DSO brand in this census (per CLAUDE.md), making the AO's link to a Sonrisa entity a strong lead that Pristine Dental may be a stealth_dso under the Sonrisa/CDCA platform \u2014 but an exact Sonrisa locator URL for the Pristine Dental address is needed to classify.",
+   "next_step": "find locator/web URL or durable artifact to confirm DSO/MSO structure"
+  },
+  {
+   "location_id": "03bb2bf2ff66a46b",
+   "practice_name": "Grand Dental-naperville",
+   "zip": "60564",
+   "proposed_tier_raw": "stealth_dso",
+   "owner_identity": "Dr. Timothy Crombie, DDS",
+   "brands": [],
+   "legal_entities": [],
+   "network_id": "Grand Dental Group",
+   "why_it_matters": null,
+   "reasoning": "Intel describes a possible DSO-style roll-up ('Grand Dental Group') but verification quality is insufficient and no URLs, locator pages, or structural evidence were confirmed; the 'Grand Dental-naperville' location name itself signals multi-location brand but no durable artifact exists.",
+   "next_step": "find locator/web URL or durable artifact to confirm DSO/MSO structure"
+  },
+  {
+   "location_id": "0afd3cbdbde8c1a5",
+   "practice_name": "HY LINE DENTAL",
+   "zip": "60564",
+   "proposed_tier_raw": "stealth_dso",
+   "owner_identity": "Dr. Ali Khan (founder per LinkedIn)",
+   "brands": [],
+   "legal_entities": [],
+   "network_id": "dentalsmilesgroup",
+   "why_it_matters": null,
+   "reasoning": "Intel confirms a multi-doctor group practice (5+ dentists) with shared email domain 'dentalsmilesgroup.org' suggesting a parent organization, but no named DSO/MSO was definitively identified and no official locator or platform-company filing was found; the 'dentalsmilesgroup.org' domain is a strong stealth_dso lead pending further web verification.",
+   "next_step": "find locator/web URL or durable artifact to confirm DSO/MSO structure"
+  },
+  {
+   "location_id": "d7cddb19b1df0908",
+   "practice_name": "So-well Dental Assoc",
+   "zip": "60610",
+   "proposed_tier_raw": "stealth_dso",
+   "owner_identity": "Dr. Zenobia L. Sowell, DDS",
+   "brands": [],
+   "legal_entities": [],
+   "network_id": "Orthodontic Experts",
+   "why_it_matters": null,
+   "reasoning": "The NPPES/DA record shows affiliated_dso='Orthodontic Experts' which is a real DSO operating in Illinois, creating a conflict with the intel assessment that names Dr. Sowell as independent solo owner; per the rules, affiliated_dso alone is not proof, but this is a material lead that requires verification \u2014 the DSO affiliation label may be stale or an error, or the practice may be a stealth_dso.",
+   "next_step": "find locator/web URL or durable artifact to confirm DSO/MSO structure"
+  },
+  {
+   "location_id": "01b5267fcedf344e",
+   "practice_name": "Simic Dental",
+   "zip": "60625",
+   "proposed_tier_raw": "stealth_dso",
+   "owner_identity": null,
+   "brands": [],
+   "legal_entities": [],
+   "network_id": null,
+   "why_it_matters": null,
+   "reasoning": "The NPPES record carries affiliated_dso='1st Family Dental' which is a candidate signal for stealth_dso or branded_dso, but the intel dossier clarifies that Dr. Simic operates primarily as an employee/associate at Northwest Medical and Urgent Care Center at this address with no independent practice website; per hard rules, affiliated_dso field alone is not final and 1st Family Dental is not confirmed via an official locator URL matching this exact address \u2014 needs_verification until a locator page or web-verified DSO source is obtained.",
+   "next_step": "find locator/web URL or durable artifact to confirm DSO/MSO structure"
+  },
+  {
+   "location_id": "b1e3b67adc113238",
+   "practice_name": "JEFFERSON PARK FAMILY DENTAL LLC",
+   "zip": "60630",
+   "proposed_tier_raw": "stealth_dso",
+   "owner_identity": "Robert Stites (AO; identity not confirmed as dentist-owner vs. management-company officer)",
+   "brands": [],
+   "legal_entities": [],
+   "network_id": "ao:STITES_ROBERT",
+   "why_it_matters": null,
+   "reasoning": "AO Robert Stites appears as authorized official at 7 distinct watched-IL addresses spanning 5 ZIPs across specialties including endodontics, orthodontics, and general dentistry; the multi-specialty multi-ZIP PLLC structure under one AO is a strong signal for a management-services or DSO platform rather than a simple dentist-owned group, yet no web URL confirming DSO/MSO structure or owner-dentist identity was found in the feed \u2014 high priority for web verification to distinguish dentist_multi from stealth_dso/branded_dso.",
+   "next_step": "find locator/web URL or durable artifact to confirm DSO/MSO structure"
+  },
+  {
+   "location_id": "549f761ca8929ce5",
+   "practice_name": "MICHAEL A. LUCKETT, DMD & ASSOCIATES (WESTERN",
+   "zip": "60636",
+   "proposed_tier_raw": "branded_dso",
+   "owner_identity": "Dr. Michael A. Luckett, DMD (operating under DentalWorks/DentalOne Partners)",
+   "brands": [],
+   "legal_entities": [],
+   "network_id": "DentalWorks / DentalOne Partners",
+   "why_it_matters": null,
+   "reasoning": "NPPES parent_org_lbn='DENTALONE PARTNERS, INC' is a strong structural signal for a DSO/platform relationship, and the intel dossier confirms DentalWorks association at this address; DentalWorks is a known DSO brand; however the evidence_basis cannot be 'locator' without an exact DentalWorks locator URL for this specific address, and the intel verification quality is 'partial' \u2014 classify as needs_verification with proposed_tier branded_dso pending a DentalWorks locator page confirming 6153 S Western Ave.",
+   "next_step": "find locator/web URL or durable artifact to confirm DSO/MSO structure"
+  },
+  {
+   "location_id": "173ffa7cc8c3e198",
+   "practice_name": "AL MUFTI INC",
+   "zip": "60639",
+   "proposed_tier_raw": "branded_dso",
+   "owner_identity": "Dr. Fahad Al Mufti (AO); Dental 360 affiliation",
+   "brands": [],
+   "legal_entities": [],
+   "network_id": "Dental 360",
+   "why_it_matters": null,
+   "reasoning": "NPPES carries affiliated_dso='Dental 360' and the existing entity_classification=dso_regional, with 18+ Chicago-area locations; Dental 360 is a known regional DSO brand; however per hard rules affiliated_dso field alone is not final classification evidence, and no exact official Dental 360 locator URL for this specific address (4343 W Armitage Ave) was found in the feed \u2014 needs a Dental 360 locator or web-verified source matching this exact address before branded_dso can be classified.",
+   "next_step": "find locator/web URL or durable artifact to confirm DSO/MSO structure"
+  },
+  {
+   "location_id": "503f5abe582e326d",
+   "practice_name": "Weiss Dental",
+   "zip": "60647",
+   "proposed_tier_raw": "stealth_dso",
+   "owner_identity": "Richard Weiss DDS",
+   "brands": [],
+   "legal_entities": [],
+   "network_id": null,
+   "why_it_matters": null,
+   "reasoning": "DB flags `affiliated_dso='1st Family Dental'` (a DSO chain) contradicting the intel dossier's 'independently owned' finding; LoopNet suggests possible closure at this address; both conflicts require documentary resolution before classification.",
+   "next_step": "find locator/web URL or durable artifact to confirm DSO/MSO structure"
+  },
+  {
+   "location_id": "30321d57a6f0cbc1",
+   "practice_name": "Adebayo Dental",
+   "zip": "60649",
+   "proposed_tier_raw": "branded_dso",
+   "owner_identity": null,
+   "brands": [],
+   "legal_entities": [],
+   "network_id": "Sonrisa Family Dental",
+   "why_it_matters": null,
+   "reasoning": "Intel dossier places Dr. Adebayo on Sonrisa Family Dental's official team page (a 15-location DSO), suggesting employment/affiliation rather than independent ownership at this NPI address; however, no Sonrisa locator page confirms this specific street address as a Sonrisa office.",
+   "next_step": "find locator/web URL or durable artifact to confirm DSO/MSO structure"
+  },
+  {
+   "location_id": "74069cde8e066629",
+   "practice_name": "Svjetlica Dental",
+   "zip": "60656",
+   "proposed_tier_raw": "stealth_dso",
+   "owner_identity": null,
+   "brands": [],
+   "legal_entities": [],
+   "network_id": "UNA DENT (Hinsdale IL)",
+   "why_it_matters": null,
+   "reasoning": "Intel dossier reveals the NPI address is a residential apartment unit, not a dental office, and links Dr. Svjetlica to UNA DENT (a Hinsdale-based multi-location entity); UNA DENT requires further research to determine if it is a DSO/MSO structure.",
+   "next_step": "find locator/web URL or durable artifact to confirm DSO/MSO structure"
+  },
+  {
+   "location_id": "6713dee8fc503ccc",
+   "practice_name": "Lincoln Dental Care",
+   "zip": "60657",
+   "proposed_tier_raw": "branded_dso",
+   "owner_identity": null,
+   "brands": [],
+   "legal_entities": [],
+   "network_id": "Smile Doctors / Thomas H. Lee Partners",
+   "why_it_matters": null,
+   "reasoning": "DB carries both `affiliated_dso='Smile Doctors'` and `affiliated_pe_sponsor='Thomas H. Lee Partners'` \u2014 a PE-backed DSO pairing \u2014 but no intel dossier URL or exact Smile Doctors locator confirms this specific Chicago address; classification requires a Smile Doctors official locator match.",
+   "next_step": "find locator/web URL or durable artifact to confirm DSO/MSO structure"
+  },
+  {
+   "location_id": "fdc795fb30d9cfe8",
+   "practice_name": "Grace Lee Ltd",
+   "zip": "60657",
+   "proposed_tier_raw": "branded_dso",
+   "owner_identity": null,
+   "brands": [],
+   "legal_entities": [],
+   "network_id": "Smile Obsession / Sonrisa Family Dental",
+   "why_it_matters": null,
+   "reasoning": "Intel dossier identifies 851 W Belmont as 'Smile Obsession Lakeview' (not a Jones solo) and places Dr. Jones in Sonrisa Family Dental / Lakeview Smiles multi-location networks, but no Smile Obsession or Sonrisa locator URL confirms this exact address as a branded DSO office.",
+   "next_step": "find locator/web URL or durable artifact to confirm DSO/MSO structure"
+  },
+  {
+   "location_id": "866724ba45558ef8",
+   "practice_name": "Dhaliwal Dental",
+   "zip": "60657",
+   "proposed_tier_raw": "branded_dso",
+   "owner_identity": null,
+   "brands": [],
+   "legal_entities": [],
+   "network_id": "Destiny Dental (candidate)",
+   "why_it_matters": null,
+   "reasoning": "Intel dossier flags the NPI address as a residential apartment (not a dental office) and notes conflicting records linking Dr. Dhaliwal to Destiny Dental (a 40+ location chain); the apartment address and stale NPI data prevent confident classification in either direction.",
+   "next_step": "find locator/web URL or durable artifact to confirm DSO/MSO structure"
+  },
+  {
+   "location_id": "160a9235fe3dccf9",
+   "practice_name": "Theodoropoulos Dental",
+   "zip": "60659",
+   "proposed_tier_raw": "stealth_dso",
+   "owner_identity": "Constantine Theodoropoulos DDS",
+   "brands": [],
+   "legal_entities": [],
+   "network_id": "Great Lakes Dental Partners (DB signal only)",
+   "why_it_matters": null,
+   "reasoning": "DB carries `affiliated_dso='Great Lakes Dental Partners'` but the intel dossier (verified quality) describes a purely solo independent practice with no corporate signals; the contradiction requires a Great Lakes Dental Partners locator URL confirming this exact address before any DSO tier applies.",
+   "next_step": "find locator/web URL or durable artifact to confirm DSO/MSO structure"
+  },
+  {
+   "location_id": "de06d517c90c2069",
+   "practice_name": "Hussain Dental",
+   "zip": "60659",
+   "proposed_tier_raw": "branded_dso",
+   "owner_identity": null,
+   "brands": [],
+   "legal_entities": [],
+   "network_id": "Great Lakes Dental Partners (DB signal)",
+   "why_it_matters": null,
+   "reasoning": "DB carries `affiliated_dso='Great Lakes Dental Partners'` and the intel dossier flags 6+ location appearances consistent with DSO affiliation; however, no Great Lakes Dental Partners locator URL confirming this specific address allows classification.",
+   "next_step": "find locator/web URL or durable artifact to confirm DSO/MSO structure"
+  },
+  {
+   "location_id": "0dcc04c8a1189321",
+   "practice_name": "Muthuramaswami Dental",
+   "zip": "60104",
+   "proposed_tier_raw": "stealth_dso",
+   "owner_identity": "Dr. Sethurama Muthuramaswami (listed provider; actual ownership structure unclear)",
+   "brands": [],
+   "legal_entities": [],
+   "network_id": "brand:American Family Dental Care PC",
+   "why_it_matters": null,
+   "reasoning": "Intel dossier (partial) explicitly flags 'American Family Dental Care P.C.' operating 6+ locations across IL and NJ \u2014 this is a multi-state multi-location chain operating under a generic friendly-PC name, which is a stealth_dso pattern; however the dossier is partial quality with no direct URL confirming DSO/MSO management structure, so stealth_dso cannot be classified without further verification.",
+   "next_step": "find locator/web URL or durable artifact to confirm DSO/MSO structure"
+  }
+ ]
+}

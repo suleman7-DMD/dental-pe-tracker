@@ -1,0 +1,146 @@
+{
+  "network": "SAWSAN ASFOUR",
+  "network_id": "ao:ASFOUR_SAWSAN",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Dr. Sawsan Asfour DDS (University of Illinois 1996) is a dentist-owner who opened her first office in Orland Park in 2006 and a second in Worth, IL in 2012 under the brand 'Orland Advanced Dentistry' / 'Orland Advanced Orthodontics'. She also appears as authorized official on two 'Dental Magic' incorporated entities in Chicago (60647) and Niles (60714) — a distinct consumer brand from her Orland Park practice, sharing a single phone number (773-360-1281). Both Dental Magic locations are listed as CLOSED on Yelp as of early 2026. No MSO, management-services agreement, PE sponsor, or DSO platform layer was found for any of the three entities. The pre-existing database affiliated_dso labels ('Dental 360', 'Destiny Dental / ProSmile') appear to be classifier artifacts — no web evidence connects those brand names to these practices.",
+  "owner_operator_identity": "Dr. Sawsan Asfour DDS, founder/owner — University of Illinois College of Dentistry 1996; opened Orland Park office 2006, Worth IL office 2012; confirmed by practice website bio",
+  "brand_trade_names": [
+    "Asfour Dental",
+    "Orland Advanced Dentistry",
+    "Orland Advanced Orthodontics",
+    "Dental Magic",
+    "Dental Magic North Ave",
+    "Dental Magic Touhy"
+  ],
+  "legal_entities": [
+    "ASFOUR DENTAL INC (EIN 204568435, NPI 1295988202)",
+    "DENTAL MAGIC NORTH AVE, INC (NPI 1104274109)",
+    "DENTAL MAGIC TOUHY, INC (EIN 900814718, NPI 1659729655)"
+  ],
+  "durable_artifacts": [
+    "AO SAWSAN ASFOUR appears on all three NPIs: 1295988202 (Orland Park), 1104274109 (Chicago 60647), 1659729655 (Niles 60714)",
+    "Dental Magic North Ave and Dental Magic Touhy share phone number 773-360-1281",
+    "Asfour Dental Inc EIN 204568435 (Orland Park); Dental Magic Touhy EIN 900814718 (Niles)",
+    "Dr. Asfour's bio at orlandortho.com confirms 11315 W 143rd St Orland Park as her base"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "Two of the three locations (Dental Magic North Ave, Chicago 60647 and Dental Magic Touhy, Niles 60714) are listed as CLOSED on Yelp as of February/March 2026. These should be treated as stale/closed shells for denominator purposes. The Orland Park location (Asfour Dental Inc) appears active. The database pre-labels of 'Dental 360' and 'Destiny Dental/ProSmile' as affiliated_dso are likely classifier false positives — no web evidence supports those brand associations.",
+  "evidence_chain": "AO signal: SAWSAN ASFOUR listed as authorized official on 3 distinct NPI org records across ZIPs 60467, 60647, 60714. Documentary corroboration: (1) orlandortho.com confirms Dr. Sawsan Asfour DDS as founder/owner at 11315 W 143rd St Orland Park, opened 2006 — matching Asfour Dental Inc NPPES address exactly. (2) Web directories (Yelp, PatientConnect365) confirm 'Dental Magic' is a consumer-facing brand at both the Chicago (2500 W North Ave) and Niles (5622 W Touhy Ave) addresses, sharing phone 773-360-1281 — a single-owner multi-location signal. (3) Both Dental Magic locations confirmed CLOSED on Yelp (updated 2026). (4) No MSO, management company, PE sponsor, or DSO platform layer found across three searches. The structure is a dentist-founded private multi-location group — dentist_multi, dentist-owned, no PE/DSO.",
+  "future_app_notes": "1. DENTAL MAGIC NORTH AVE (60647) and DENTAL MAGIC TOUHY (60714): both appear CLOSED per Yelp 2026 — recommend flagging entity_classification for review as stale/closed and excluding from active GP denominator. 2. The pre-existing affiliated_dso labels ('Dental 360' on 826ff5b11537f2cb, 'Destiny Dental/ProSmile' on 53da362f58dc8d20) should be investigated for false-positive promotion — no web evidence found linking these Dental Magic practices to those DSO brands. 3. ASFOUR DENTAL INC (60467) appears active and independently owned — no change needed to current small_group classification. 4. If this network's two closed Dental Magic locations were previously promoted to dso_regional based on those affiliated_dso labels, they may be candidates for demotion.",
+  "classifications": [
+    {
+      "location_id": "f2ca9e5a94ae6841",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Sawsan Asfour DDS, founder/owner — confirmed by orlandortho.com bio",
+      "network_id": "ao:ASFOUR_SAWSAN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60467, 60647, 60714 — SAWSAN ASFOUR is authorized official on all three NPI org records",
+          "entity_name=ASFOUR DENTAL INC matches owner surname"
+        ],
+        "evidence": [
+          "orlandortho.com bio confirms Dr. Sawsan Asfour DDS opened Orland Park office in 2006; practice website lists 11315 W 143rd St Orland Park IL 60467 — exact NPPES address match",
+          "No MSO, management company, PE sponsor, or DSO platform found"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.orlandortho.com/meet-doctor/",
+        "https://www.vitals.com/dentists/Dr_Sawsan_Asfour"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "SAWSAN ASFOUR",
+        "reach": 3,
+        "zips": ["60467", "60647", "60714"],
+        "this_location": "ASFOUR DENTAL INC, 11315 w 143rd st, Orland Park, 60467",
+        "npi": "1295988202",
+        "ein": "204568435",
+        "entity_classification": "small_group"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "ASFOUR DENTAL INC at 11315 W 143rd St Orland Park matches the confirmed address of Dr. Sawsan Asfour's owner-operated practice per her own practice website (orlandortho.com). She is the founder (opened 2006) and dentist-owner. No MSO/management company/PE layer found. This is an active, dentist-owned location in a private multi-location group. gate_status=ready_for_validation because the owner bio + address match constitute documentary corroboration."
+    },
+    {
+      "location_id": "826ff5b11537f2cb",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Sawsan Asfour DDS (AO on NPI; same person as Asfour Dental Inc owner)",
+      "network_id": "ao:ASFOUR_SAWSAN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 — SAWSAN ASFOUR is authorized official on NPI 1104274109",
+          "Shares phone 773-360-1281 with DENTAL MAGIC TOUHY INC (same network)",
+          "Pre-existing db label affiliated_dso='Dental 360' — NOT corroborated by web evidence"
+        ],
+        "evidence": [
+          "PatientConnect365 and Yelp confirm 'Dental Magic' as the consumer brand at 2500 W North Ave, Chicago IL 60647",
+          "Yelp listing updated March 2026 shows status CLOSED",
+          "No MSO, DSO management layer, or PE sponsor found for this location or the Dental Magic brand"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.yelp.com/biz/dental-magic-chicago-2",
+        "https://www.patientconnect365.com/Dentists/Illinois/Chicago/60647/Dental_Magic"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "SAWSAN ASFOUR",
+        "reach": 3,
+        "zips": ["60467", "60647", "60714"],
+        "this_location": "DENTAL MAGIC NORTH AVE, INC, 2500 w n ave, Chicago, 60647",
+        "npi": "1104274109",
+        "ein": null,
+        "entity_classification": "dso_regional",
+        "affiliated_dso_db_label": "Dental 360 (UNVERIFIED — likely false positive)"
+      },
+      "web_searched": true,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "stale_closed_note": "CLOSED per Yelp (updated March 2026). This location appears to be a vacated shell. Should be excluded from active GP denominator. The current entity_classification=dso_regional with affiliated_dso='Dental 360' is likely a classifier false positive — no web evidence connects Dental Magic North Ave to the Dental 360 brand.",
+      "reasoning": "DENTAL MAGIC NORTH AVE, INC is one of two 'Dental Magic' branded entities under Sawsan Asfour's AO record, forming a dentist-founded private multi-location group with no MSO/PE evidence. However, this location is confirmed CLOSED on Yelp (2026), making it a stale shell. gate_status=candidate (not ready_for_validation) because: (a) the location is closed, reducing confidence in any classification; (b) the AO link to Asfour is structural signal but the only direct documentary corroboration is the Yelp listing confirming the Dental Magic brand at this address, which does not prove Asfour's ownership — just the business name. The affiliated_dso='Dental 360' pre-label should be investigated as a potential false positive demotion candidate."
+    },
+    {
+      "location_id": "53da362f58dc8d20",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Sawsan Asfour DDS (AO on NPI; same person as Asfour Dental Inc owner)",
+      "network_id": "ao:ASFOUR_SAWSAN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 — SAWSAN ASFOUR is authorized official on NPI 1659729655",
+          "Shares phone 773-360-1281 with DENTAL MAGIC NORTH AVE INC (same network)",
+          "Pre-existing db label affiliated_dso='Destiny Dental / ProSmile' — NOT corroborated by web evidence"
+        ],
+        "evidence": [
+          "Yelp and PatientConnect365 confirm 'Dental Magic' / 'Dental Magic of Niles' as consumer brand at 5622 W Touhy Ave, Niles IL 60714",
+          "Yelp listing updated February 2026 shows status CLOSED",
+          "No MSO, DSO management layer, or PE sponsor found for this location or the Dental Magic brand"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.yelp.com/biz/dental-magic-niles",
+        "https://www.patientconnect365.com/Dentists/Illinois/Niles/60714/Dental_Magic_of_Niles"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "SAWSAN ASFOUR",
+        "reach": 3,
+        "zips": ["60467", "60647", "60714"],
+        "this_location": "DENTAL MAGIC TOUHY, INC, 5622 w touhy ave, Niles, 60714",
+        "npi": "1659729655",
+        "ein": "900814718",
+        "entity_classification": "dso_regional",
+        "affiliated_dso_db_label": "Destiny Dental / ProSmile (UNVERIFIED — likely false positive)"
+      },
+      "web_searched": true,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "stale_closed_note": "CLOSED per Yelp (updated February 2026). This location appears to be a vacated shell. Should be excluded from active GP denominator. The current entity_classification=dso_regional with affiliated_dso='Destiny Dental/ProSmile' is likely a classifier false positive — no web evidence connects Dental Magic Touhy to the Destiny Dental or ProSmile brands.",
+      "reasoning": "DENTAL MAGIC TOUHY, INC is one of two 'Dental Magic' branded entities under Sawsan Asfour's AO record, forming a dentist-founded private multi-location group with no MSO/PE evidence. However, this location is confirmed CLOSED on Yelp (2026), making it a stale shell. gate_status=candidate (not ready_for_validation) because: (a) the location is closed; (b) the AO link is structural signal, and Yelp confirms the brand at this address, but does not constitute direct ownership documentation. The affiliated_dso='Destiny Dental/ProSmile' pre-label should be investigated as a potential false positive demotion candidate — these are distinct DSO brands with no documented connection to Dental Magic."
+    }
+  ]
+}

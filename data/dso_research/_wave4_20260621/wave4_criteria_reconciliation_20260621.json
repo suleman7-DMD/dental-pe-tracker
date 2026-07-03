@@ -1,0 +1,47 @@
+{
+  "_meta": {
+    "artifact_type": "Gate-Owner reconciliation of the two Wave 4 pre-QA criteria files (stricter-wins)",
+    "author": "reset-consolidation-gate session (Gate Owner, coordination only)",
+    "date": "2026-06-21",
+    "role": "REVIEW-ONLY. New file only. ZERO writes to either QA file, the manifest, ready file, LEDGER, PROGRESS, ownership_tier, entity_classification, ownership_status, or the DB.",
+    "instruction_basis": "User: 'If your internal QA_preQA_criteria agent later returns a second criteria file, compare it against the actual QA file above and enforce the stricter rule in any conflict. Do not overwrite prior QA files.'"
+  },
+  "files_compared": {
+    "authoritative_per_user": {
+      "path": "data/dso_research/ownership_manifest_QA_wave4_pre_criteria_20260621.json",
+      "status": "AUTHORITATIVE gate of record (user-designated). NOT overwritten.",
+      "structure": ["tier_model_locked", "wave4_inputs", "global_hard_rules_in_force", "acceptance_bar (AB1-AB12 w/ merge_test)", "per_input_merge_gates", "output_contract_for_main_ao_and_fleet_b", "enforceable_gate_owner_checklist (14)", "merge_eligibility_decision_rule", "consolidate_authorization"]
+    },
+    "secondary_cross_check": {
+      "path": "data/dso_research/ownership_manifest_QA_wave4_preQA_criteria_20260621.json",
+      "status": "SECONDARY cross-check (distinct filename; the file itself claims to 'supersede' but the USER designation governs: it is a cross-check). NOT overwritten.",
+      "structure": ["tier_model_locked", "dso_structure_rule_canonical", "mandatory_fields_per_merge_eligible_row", "durable_evidence_whitelist", "verdict_definitions", "tier_assignment_rules", "hard_blocks_auto_reject (HB1-HB10)", "anti_hallucination_rules (AH1-AH7)", "per_lane_checklist (L1/L2/L3)", "merge_eligibility_decision_tree (12 steps)", "acceptance_bar_summary_12_rules", "gate_owner_pre_merge_checklist (GO-1..GO-13)"]
+    }
+  },
+  "overall_finding": "NO SUBSTANTIVE CONTRADICTION. Both files lock the same tier model (DSO=STRUCTURE, pe_backed orthogonal), the same AB1-AB12, the same protected-network set, the same Webster held-set, the same Fleet-B leads-stay-leads rule, and the same FROZEN consolidation posture. The secondary file is a strictly more GRANULAR elaboration of the authoritative bar. Enforced rule = the UNION of both, with stricter-wins on any conflict. The authoritative pre_criteria file remains the named gate of record.",
+  "conflicts_found_and_resolved": [
+    {
+      "id": "C1_db_md5_typo",
+      "where": "secondary preQA file _meta.consolidation_frozen_invariants.db_md5_baseline = '0dec26135bb4d6ee490dc26cfe892ca6' (dc26) and zero_db_write_discipline.rule repeats dc26; BUT its own GO-12 says dc16.",
+      "authoritative_value": "0dec26135bb4d6ee490dc16cfe892ca6 (dc16) — matches RE-QA #5 zero_db_writes block and pre_criteria.",
+      "resolution": "EMPIRICAL. Current data/dental_pe_tracker.db md5 computed live = 0dec26135bb4d6ee490dc16cfe892ca6 (dc16). The secondary file's dc26 is a transcription typo (2 of 3 occurrences). ENFORCED BASELINE md5 = 0dec26135bb4d6ee490dc16cfe892ca6. Neither QA file edited; the typo is recorded here only.",
+      "freeze_check_at_reconciliation": {"db_md5": "0dec26135bb4d6ee490dc16cfe892ca6", "LEDGER_lines": 1, "PROGRESS.tier_tally.undetermined_unreviewed": 4439, "verdict": "FROZEN — intact"}
+    }
+  ],
+  "stricter_elements_adopted_from_secondary_union": [
+    {"id": "HB5_pe_dso_name_collision_unresolved", "effect": "A practice-name/brand collision with no Wave-4 resolution HOLDS in conflicts/needs_more_evidence — never promote NOR refute on the name collision alone."},
+    {"id": "HB6_brand_word_no_ownership_confirmation", "effect": "Brand word in the name as the ONLY DSO evidence => needs_more_evidence, backfill_lane='locator_exact', missing_evidence_type='exact_address_match_on_brand_locator'. (This is exactly the Wave-3 13-row demotion failure mode.)"},
+    {"id": "HB10_fleet_b_lead_not_phase_c_verified", "effect": "A Fleet B lead is NOT merge-eligible merely for being in the 158 hard-signal subset; it needs a Phase-C transcribed durable artifact AND HB1-HB9 + AB1-AB12."},
+    {"id": "AH3_no_retrospective_assertion", "effect": "Wave-4 agents may NOT retroactively assert web_verified=true for a prior wave's output that lacked a transcribed URL. The URL transcription must occur in Wave 4 itself. (Tightens AB3.)"},
+    {"id": "mandatory_provenance_fields", "effect": "Every merge-eligible row must carry searches_executed (int) + search_queries (list) actually run, plus 'preserved' verbatim sidecar metadata. Promotion without provenance counts is rejected."},
+    {"id": "still_insufficient_format", "effect": "still_insufficient rows must carry evidence_urls: [] (empty list, never null) + a named missing_evidence_type."},
+    {"id": "L3-1_158_reconciliation_quantified", "effect": "Only 115/694 needs_verification leads carry ANY on-disk URL/brand/EIN. Any lead claimed 'hard-signal' WITHOUT a transcribed artifact is reclassified to the general needs_verification pool. (Corroborates this session's own AB12 reconciliation: 0/158 carry a transcribed URL today.)"},
+    {"id": "12_step_decision_tree", "effect": "Adopt the secondary's merge_eligibility_decision_tree (step1 scope -> step12 sidecar) as the operative per-row normalization order, since it is a superset of the authoritative merge_eligibility_decision_rule."}
+  ],
+  "authoritative_only_elements_retained": [
+    "enforceable_gate_owner_checklist (14 items) from pre_criteria is retained in addition to the secondary's GO-1..GO-13 (union of both checklists applies).",
+    "per_input_merge_gates and output_contract_for_main_ao_and_fleet_b from pre_criteria remain binding on returned Lane 1/2/3 files."
+  ],
+  "net_enforced_bar": "AB1-AB12 (authoritative merge_test wording) + HB1-HB10 + AH1-AH7 + the 12-step decision tree + the union of both gate-owner checklists. Default disposition for any failing/ambiguous row = needs_more_evidence (named backfill_lane / missing_evidence_type) or undetermined. NEVER ready, NEVER defaulted true_independent, NO partial credit. Enforced baseline DB md5 = 0dec26135bb4d6ee490dc16cfe892ca6.",
+  "consolidate_authorization": {"status": "NOT AUTHORIZED", "note": "FROZEN until the user's explicit 'consolidate approved manifest'. This reconciliation merges nothing and authorizes nothing."}
+}

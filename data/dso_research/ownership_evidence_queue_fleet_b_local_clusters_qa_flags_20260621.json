@@ -1,0 +1,2427 @@
+{
+ "_meta": {
+  "lane": "local_clusters",
+  "session": "fleet-b-local-clusters-2026-06-21",
+  "generated": "2026-06-21",
+  "namespace": "fleet_b (NOT QA's ownership_evidence_QA_*)",
+  "db_writes": "NONE \u2014 validate-only handoff",
+  "source_queue": "ownership_evidence_queue_fleet_b_local_clusters_20260621.json",
+  "source_candidates": "local_consolidator_cluster_candidates_20260621.json",
+  "queue_by_status": {
+   "needs_verification": 618,
+   "classified": 19
+  },
+  "queue_classified_by_tier": {
+   "branded_dso": 6,
+   "dentist_multi": 13
+  },
+  "landmine_blocklist": {
+   "ein": [
+    "322684113",
+    "363676741",
+    "432052561"
+   ],
+   "parent_substr": [
+    "EVENLY"
+   ]
+  },
+  "held_lead_counts": {
+   "pe_parent": 5,
+   "dso_parent_brand_uncorroborated": 4,
+   "top_novel_surfaced": 60,
+   "total_held": 618
+  },
+  "held_candidate_type_histogram": {
+   "intel_keyword": 228,
+   "ao_cluster": 151,
+   "phone_cluster": 126,
+   "brand_chain": 104,
+   "affiliated_dso_chain": 35,
+   "parent_company_chain": 22,
+   "dso_regional_review": 11,
+   "ein_cluster": 4
+  },
+  "note": "Highest-value HELD hidden-consolidator leads for the next verification wave. None are final. PE-parent and brand-uncorroborated DSO-parent rows were deliberately NOT classified (Data-Axle parent_company alone produced the 2026-06-12 Evenly false-positive); they are the strongest verify-next leads. Brand substring is a LEAD, never proof."
+ },
+ "demotion_qa_flags": [
+  {
+   "location_id": "1db785090b4b1093",
+   "practice_name": "Pieta, Anna Dmd",
+   "flag": "classify_demoted:da_synthetic_npi",
+   "would_be_tier": "dentist_multi"
+  }
+ ],
+ "held_pe_parent_leads": [
+  {
+   "location_id": "ce91352555d1a5e7",
+   "practice_name": "AFFILIATED DENTAL SPECIALISTS LTD",
+   "zip": "60061",
+   "city": "VERNON HILLS",
+   "current_entity_classification": "dso_regional",
+   "candidate_types": [
+    "dso_regional_review",
+    "parent_company_chain"
+   ],
+   "owner_identity": [
+    "James Orbon",
+    "John Schmidt",
+    "Najla Al-Rayyan",
+    "Timothy Sheehan",
+    "Zoran Stojanovic"
+   ],
+   "family_surnames": [
+    "Orbon",
+    "Sheehan",
+    "Stojanovic"
+   ],
+   "brands": [
+    "North American Dental Group"
+   ],
+   "legal_entities": [
+    "GRYPHON INVESTORS",
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [
+    "parent_company=GRYPHON INVESTORS(PE)",
+    "chain_zips=10"
+   ],
+   "cluster_score": 85.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 10,
+   "n_locations": 11,
+   "why_it_matters": "parent_company='GRYPHON INVESTORS' is a known PE sponsor across 10 ZIPs \u2014 strong hidden-platform LEAD, but a PE parent_company on an independent-named office is the exact signal the 2026-06-12 audit demoted (landlord/PE-name confusion). HELD.",
+   "missing_evidence": [
+    "confirm 'GRYPHON INVESTORS' actually owns/backs the operating practice via locator/SEC/press, not a Data-Axle name collision"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "d44c43930b0f8d3c",
+   "practice_name": "DR. ZORAN D. STOJANOVIC & ASSOCIATES, LTD",
+   "zip": "60118",
+   "city": "WEST DUNDEE",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "parent_company_chain"
+   ],
+   "owner_identity": [
+    "James Orbon",
+    "John Schmidt",
+    "Najla Al-Rayyan",
+    "Timothy Sheehan",
+    "Zoran Stojanovic"
+   ],
+   "family_surnames": [
+    "Orbon",
+    "Sheehan",
+    "Stojanovic"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "GRYPHON INVESTORS",
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [
+    "parent_company=GRYPHON INVESTORS(PE)",
+    "chain_zips=10"
+   ],
+   "cluster_score": 85.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 10,
+   "n_locations": 11,
+   "why_it_matters": "parent_company='GRYPHON INVESTORS' is a known PE sponsor across 10 ZIPs \u2014 strong hidden-platform LEAD, but a PE parent_company on an independent-named office is the exact signal the 2026-06-12 audit demoted (landlord/PE-name confusion). HELD.",
+   "missing_evidence": [
+    "confirm 'GRYPHON INVESTORS' actually owns/backs the operating practice via locator/SEC/press, not a Data-Axle name collision"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "f5a7ad23598f31ca",
+   "practice_name": "TIMOTHY W. SHEEHAN,LTD.",
+   "zip": "60174",
+   "city": "ST CHARLES",
+   "current_entity_classification": "small_group",
+   "candidate_types": [
+    "parent_company_chain"
+   ],
+   "owner_identity": [
+    "James Orbon",
+    "John Schmidt",
+    "Najla Al-Rayyan",
+    "Timothy Sheehan",
+    "Zoran Stojanovic"
+   ],
+   "family_surnames": [
+    "Orbon",
+    "Sheehan",
+    "Stojanovic"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "GRYPHON INVESTORS",
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [
+    "parent_company=GRYPHON INVESTORS(PE)",
+    "chain_zips=10"
+   ],
+   "cluster_score": 85.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 10,
+   "n_locations": 11,
+   "why_it_matters": "parent_company='GRYPHON INVESTORS' is a known PE sponsor across 10 ZIPs \u2014 strong hidden-platform LEAD, but a PE parent_company on an independent-named office is the exact signal the 2026-06-12 audit demoted (landlord/PE-name confusion). HELD.",
+   "missing_evidence": [
+    "confirm 'GRYPHON INVESTORS' actually owns/backs the operating practice via locator/SEC/press, not a Data-Axle name collision"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "6f43af650c0b840d",
+   "practice_name": "CHARLES LOCKHART DDS",
+   "zip": "60611",
+   "city": "CHICAGO",
+   "current_entity_classification": "small_group",
+   "candidate_types": [
+    "parent_company_chain"
+   ],
+   "owner_identity": [
+    "James Orbon",
+    "John Schmidt",
+    "Najla Al-Rayyan",
+    "Timothy Sheehan",
+    "Zoran Stojanovic"
+   ],
+   "family_surnames": [
+    "Orbon",
+    "Sheehan",
+    "Stojanovic"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "GRYPHON INVESTORS",
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [
+    "parent_company=GRYPHON INVESTORS(PE)",
+    "chain_zips=10"
+   ],
+   "cluster_score": 85.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 10,
+   "n_locations": 11,
+   "why_it_matters": "parent_company='GRYPHON INVESTORS' is a known PE sponsor across 10 ZIPs \u2014 strong hidden-platform LEAD, but a PE parent_company on an independent-named office is the exact signal the 2026-06-12 audit demoted (landlord/PE-name confusion). HELD.",
+   "missing_evidence": [
+    "confirm 'GRYPHON INVESTORS' actually owns/backs the operating practice via locator/SEC/press, not a Data-Axle name collision"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "544fce1bec289d3d",
+   "practice_name": ".COLLEGE DRIVE DENTAL ASSOCIATES, LTD",
+   "zip": "60463",
+   "city": "PALOS HEIGHTS",
+   "current_entity_classification": "dso_regional",
+   "candidate_types": [
+    "dso_regional_review",
+    "parent_company_chain"
+   ],
+   "owner_identity": [
+    "David Rubis",
+    "Joseph Uhrich",
+    "Larry Hoffman"
+   ],
+   "family_surnames": [
+    "Hoffman",
+    "Rubis",
+    "Uhrich"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "General Dentistry",
+    "SHORE CAPITAL PARTNERS LLC"
+   ],
+   "evidence_artifacts": [
+    "parent_company=SHORE CAPITAL PARTNERS LLC(PE)",
+    "chain_zips=5"
+   ],
+   "cluster_score": 45.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 5,
+   "n_locations": 5,
+   "why_it_matters": "parent_company='SHORE CAPITAL PARTNERS LLC' is a known PE sponsor across 5 ZIPs \u2014 strong hidden-platform LEAD, but a PE parent_company on an independent-named office is the exact signal the 2026-06-12 audit demoted (landlord/PE-name confusion). HELD.",
+   "missing_evidence": [
+    "confirm 'SHORE CAPITAL PARTNERS LLC' actually owns/backs the operating practice via locator/SEC/press, not a Data-Axle name collision"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  }
+ ],
+ "held_dso_parent_brand_uncorroborated_leads": [
+  {
+   "location_id": "fca68628fa6d431c",
+   "practice_name": "Chen Emily DDS",
+   "zip": "60173",
+   "city": "SCHAUMBURG",
+   "current_entity_classification": "dso_national",
+   "candidate_types": [
+    "affiliated_dso_chain",
+    "brand_chain",
+    "parent_company_chain"
+   ],
+   "owner_identity": [
+    "Christine Barber",
+    "Heather Kraushaar",
+    "Sean Schafer",
+    "Yong Chang"
+   ],
+   "family_surnames": [
+    "Barber",
+    "Chang",
+    "Kraushaar",
+    "Schafer"
+   ],
+   "brands": [
+    "ADMI CORP"
+   ],
+   "legal_entities": [
+    "ADMI CORP",
+    "Aspen Dental",
+    "General Dentistry",
+    "MITHILA SHARMA DDS PLLC",
+    "SB FAMILY DENTAL LLC",
+    "SMS DENTAL LLC"
+   ],
+   "evidence_artifacts": [
+    "parent_company=ADMI CORP(brand_uncorroborated)",
+    "chain_zips=19"
+   ],
+   "cluster_score": 58.0,
+   "novel_vs_known_dso": false,
+   "n_zips": 19,
+   "n_locations": 20,
+   "why_it_matters": "parent_company='ADMI CORP' (would be DSO 'Aspen Dental (ADMI)') but NO consumer-brand string ('ASPEN') on the office's own name or NPI fields \u2014 only the holding-company name echoes parent_company, the SAME Data-Axle linkage that produced the Evenly false-positive. HIGH-VALUE lead, HELD.",
+   "missing_evidence": [
+    "confirm office operates under 'Aspen Dental (ADMI)' via locator/web \u2014 parent name alone insufficient"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "336b69ba6a3ac455",
+   "practice_name": "YONG CHANG DDS PC.",
+   "zip": "60618",
+   "city": "CHICAGO",
+   "current_entity_classification": "dso_national",
+   "candidate_types": [
+    "affiliated_dso_chain",
+    "parent_company_chain"
+   ],
+   "owner_identity": [
+    "Christine Barber",
+    "Heather Kraushaar",
+    "Sean Schafer",
+    "Yong Chang"
+   ],
+   "family_surnames": [
+    "Barber",
+    "Chang",
+    "Kraushaar",
+    "Schafer"
+   ],
+   "brands": [
+    "ADMI CORP"
+   ],
+   "legal_entities": [
+    "ADMI CORP",
+    "Aspen Dental",
+    "General Dentistry",
+    "MITHILA SHARMA DDS PLLC",
+    "SMS DENTAL LLC"
+   ],
+   "evidence_artifacts": [
+    "parent_company=ADMI CORP(brand_uncorroborated)",
+    "chain_zips=19"
+   ],
+   "cluster_score": 58.0,
+   "novel_vs_known_dso": false,
+   "n_zips": 19,
+   "n_locations": 20,
+   "why_it_matters": "parent_company='ADMI CORP' (would be DSO 'Aspen Dental (ADMI)') but NO consumer-brand string ('ASPEN') on the office's own name or NPI fields \u2014 only the holding-company name echoes parent_company, the SAME Data-Axle linkage that produced the Evenly false-positive. HIGH-VALUE lead, HELD.",
+   "missing_evidence": [
+    "confirm office operates under 'Aspen Dental (ADMI)' via locator/web \u2014 parent name alone insufficient"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "23bc585758c9558a",
+   "practice_name": "Semenza, Angelo",
+   "zip": "60632",
+   "city": "CHICAGO",
+   "current_entity_classification": "dso_national",
+   "candidate_types": [
+    "affiliated_dso_chain",
+    "parent_company_chain"
+   ],
+   "owner_identity": [
+    "Phil Kural",
+    "Sameera Hussain",
+    "Troy Kluck"
+   ],
+   "family_surnames": [
+    "Hussain",
+    "Kural"
+   ],
+   "brands": [
+    "KOS SERVICES"
+   ],
+   "legal_entities": [
+    "DENTAL DREAMS LLC",
+    "GREATER CHICAGO DENTAL ASSOC PC",
+    "General Dentistry",
+    "KOS SERVICES"
+   ],
+   "evidence_artifacts": [
+    "parent_company=KOS SERVICES(brand_uncorroborated)",
+    "chain_zips=12"
+   ],
+   "cluster_score": 36.0,
+   "novel_vs_known_dso": false,
+   "n_zips": 12,
+   "n_locations": 12,
+   "why_it_matters": "parent_company='KOS SERVICES' (would be DSO 'Dental Dreams (KOS Services MSO)') but NO consumer-brand string ('DENTAL DREAMS/DREAMS') on the office's own name or NPI fields \u2014 only the holding-company name echoes parent_company, the SAME Data-Axle linkage that produced the Evenly false-positive. HIGH-VALUE lead, HELD.",
+   "missing_evidence": [
+    "confirm office operates under 'Dental Dreams (KOS Services MSO)' via locator/web \u2014 parent name alone insufficient"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "ae22984236e8c767",
+   "practice_name": "Kim Sara DMD",
+   "zip": "60654",
+   "city": "CHICAGO",
+   "current_entity_classification": "dso_national",
+   "candidate_types": [
+    "affiliated_dso_chain",
+    "parent_company_chain"
+   ],
+   "owner_identity": [
+    "Phil Kural",
+    "Sameera Hussain",
+    "Troy Kluck"
+   ],
+   "family_surnames": [
+    "Hussain",
+    "Kural"
+   ],
+   "brands": [
+    "KOS SERVICES"
+   ],
+   "legal_entities": [
+    "DENTAL DREAMS LLC",
+    "GREATER CHICAGO DENTAL ASSOC PC",
+    "General Dentistry",
+    "KOS SERVICES"
+   ],
+   "evidence_artifacts": [
+    "parent_company=KOS SERVICES(brand_uncorroborated)",
+    "chain_zips=12"
+   ],
+   "cluster_score": 36.0,
+   "novel_vs_known_dso": false,
+   "n_zips": 12,
+   "n_locations": 12,
+   "why_it_matters": "parent_company='KOS SERVICES' (would be DSO 'Dental Dreams (KOS Services MSO)') but NO consumer-brand string ('DENTAL DREAMS/DREAMS') on the office's own name or NPI fields \u2014 only the holding-company name echoes parent_company, the SAME Data-Axle linkage that produced the Evenly false-positive. HIGH-VALUE lead, HELD.",
+   "missing_evidence": [
+    "confirm office operates under 'Dental Dreams (KOS Services MSO)' via locator/web \u2014 parent name alone insufficient"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  }
+ ],
+ "top_novel_held_leads": [
+  {
+   "location_id": "2870e1613ba5f0c2",
+   "practice_name": "Rasool Saara DMD",
+   "zip": "60201",
+   "city": "EVANSTON",
+   "current_entity_classification": "small_group",
+   "candidate_types": [
+    "phone_cluster"
+   ],
+   "owner_identity": [
+    "Alexandra Sales"
+   ],
+   "family_surnames": [
+    "Sales"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 56.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 9,
+   "n_locations": 10,
+   "why_it_matters": "Lead via ['phone_cluster'] (top: phone_cluster '3128466752', 9 ZIP / 10 loc). phone_cluster spanning 9 ZIP(s), 10 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 4 member(s) already in {'wave1'}. ",
+   "missing_evidence": [
+    "documentary URL or durable artifact confirming ownership structure"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "3ec3e5c611e518e7",
+   "practice_name": "Desai Ujali DMD",
+   "zip": "60614",
+   "city": "CHICAGO",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "phone_cluster"
+   ],
+   "owner_identity": [
+    "Alexandra Sales"
+   ],
+   "family_surnames": [
+    "Sales"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 56.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 9,
+   "n_locations": 10,
+   "why_it_matters": "Lead via ['phone_cluster'] (top: phone_cluster '3128466752', 9 ZIP / 10 loc). phone_cluster spanning 9 ZIP(s), 10 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 4 member(s) already in {'wave1'}. ",
+   "missing_evidence": [
+    "documentary URL or durable artifact confirming ownership structure"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "5f85f76407d177c8",
+   "practice_name": "Ramalingam Dental",
+   "zip": "60647",
+   "city": "CHICAGO",
+   "current_entity_classification": "large_group",
+   "candidate_types": [
+    "phone_cluster"
+   ],
+   "owner_identity": [
+    "Alexandra Sales"
+   ],
+   "family_surnames": [
+    "Sales"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 56.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 9,
+   "n_locations": 10,
+   "why_it_matters": "Lead via ['phone_cluster'] (top: phone_cluster '3128466752', 9 ZIP / 10 loc). phone_cluster spanning 9 ZIP(s), 10 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 4 member(s) already in {'wave1'}. ",
+   "missing_evidence": [
+    "documentary URL or durable artifact confirming ownership structure"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "776c5f72a94f91a8",
+   "practice_name": "Mueller Jane DMD",
+   "zip": "60611",
+   "city": "CHICAGO",
+   "current_entity_classification": "small_group",
+   "candidate_types": [
+    "phone_cluster"
+   ],
+   "owner_identity": [
+    "Alexandra Sales"
+   ],
+   "family_surnames": [
+    "Sales"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 56.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 9,
+   "n_locations": 10,
+   "why_it_matters": "Lead via ['phone_cluster'] (top: phone_cluster '3128466752', 9 ZIP / 10 loc). phone_cluster spanning 9 ZIP(s), 10 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 4 member(s) already in {'wave1'}. ",
+   "missing_evidence": [
+    "documentary URL or durable artifact confirming ownership structure"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "887ec97162de3481",
+   "practice_name": "Monks Allison DMD",
+   "zip": "60657",
+   "city": "CHICAGO",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "phone_cluster"
+   ],
+   "owner_identity": [
+    "Alexandra Sales"
+   ],
+   "family_surnames": [
+    "Sales"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 56.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 9,
+   "n_locations": 10,
+   "why_it_matters": "Lead via ['phone_cluster'] (top: phone_cluster '3128466752', 9 ZIP / 10 loc). phone_cluster spanning 9 ZIP(s), 10 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 4 member(s) already in {'wave1'}. ",
+   "missing_evidence": [
+    "documentary URL or durable artifact confirming ownership structure"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "dd51cb95b974f2ad",
+   "practice_name": "Gandhi, Lisa",
+   "zip": "60610",
+   "city": "CHICAGO",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "phone_cluster"
+   ],
+   "owner_identity": [
+    "Alexandra Sales"
+   ],
+   "family_surnames": [
+    "Sales"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 56.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 9,
+   "n_locations": 10,
+   "why_it_matters": "Lead via ['phone_cluster'] (top: phone_cluster '3128466752', 9 ZIP / 10 loc). phone_cluster spanning 9 ZIP(s), 10 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 4 member(s) already in {'wave1'}. ",
+   "missing_evidence": [
+    "documentary URL or durable artifact confirming ownership structure"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "64a25dd567a92ae3",
+   "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+   "zip": "60302",
+   "city": "OAK PARK",
+   "current_entity_classification": "dso_national",
+   "candidate_types": [
+    "affiliated_dso_chain",
+    "ao_cluster",
+    "brand_chain"
+   ],
+   "owner_identity": [
+    "Belinda Huerta",
+    "Cassandra Petersen",
+    "Celia Hayes",
+    "Hillary Thull",
+    "Lindsay Bearden"
+   ],
+   "family_surnames": [
+    "Bearden",
+    "Hayes",
+    "Huerta",
+    "Petersen",
+    "Thull"
+   ],
+   "brands": [
+    "Heartland Dental"
+   ],
+   "legal_entities": [
+    "AFFORDABLE DENTISTRY TODAY, PC",
+    "DENTAL PROFESSIONALS OF ILLINOIS",
+    "DENTAL PROFESSIONALS OF ILLINOIS, P.C",
+    "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+    "DENTAL PROFESSIONALS OF ILLINOIS, PC",
+    "DR REYNOLDS COSMETIC DENTAL CTR PC"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 47.4,
+   "novel_vs_known_dso": false,
+   "n_zips": 25,
+   "n_locations": 29,
+   "why_it_matters": "Lead via ['affiliated_dso_chain', 'ao_cluster', 'brand_chain'] (top: affiliated_dso_chain 'Heartland Dental', 25 ZIP / 29 loc). affiliated_dso_chain spanning 25 ZIP(s), 29 location(s). Suspected branded_dso (conf medium). Known brand hint: heartland. 27 member(s) already in {'wave1', 'main_reach5'}. ",
+   "missing_evidence": [
+    "confirm same ownership vs. coincidental same brand words; website/locator",
+    "confirm single owner vs. coincidental same-name; corporate-structure doc"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "b721ad68889ce64d",
+   "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C",
+   "zip": "60540",
+   "city": "NAPERVILLE",
+   "current_entity_classification": "dso_national",
+   "candidate_types": [
+    "affiliated_dso_chain"
+   ],
+   "owner_identity": [
+    "Belinda Huerta",
+    "Cassandra Petersen",
+    "Celia Hayes",
+    "Hillary Thull",
+    "Lindsay Bearden"
+   ],
+   "family_surnames": [
+    "Bearden",
+    "Hayes",
+    "Huerta",
+    "Petersen",
+    "Thull"
+   ],
+   "brands": [
+    "Heartland Dental"
+   ],
+   "legal_entities": [
+    "AFFORDABLE DENTISTRY TODAY, PC",
+    "DENTAL PROFESSIONALS OF ILLINOIS",
+    "DENTAL PROFESSIONALS OF ILLINOIS, P.C",
+    "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+    "DENTAL PROFESSIONALS OF ILLINOIS, PC",
+    "DR REYNOLDS COSMETIC DENTAL CTR PC"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 47.4,
+   "novel_vs_known_dso": false,
+   "n_zips": 25,
+   "n_locations": 29,
+   "why_it_matters": "Lead via ['affiliated_dso_chain'] (top: affiliated_dso_chain 'Heartland Dental', 25 ZIP / 29 loc). affiliated_dso_chain spanning 25 ZIP(s), 29 location(s). Suspected branded_dso (conf medium). Known brand hint: heartland. 27 member(s) already in {'wave1', 'main_reach5'}. ",
+   "missing_evidence": [
+    "documentary URL or durable artifact confirming ownership structure"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "5ead583d8354e6e4",
+   "practice_name": "FAVIA FAMILY DENTAL LLC",
+   "zip": "60004",
+   "city": "ARLINGTON HEIGHTS",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "parent_company_chain"
+   ],
+   "owner_identity": [
+    "Emad Zaidi",
+    "Joseph Favia",
+    "Joseph Matustik",
+    "Rick Brar",
+    "Zishan Bader"
+   ],
+   "family_surnames": [
+    "Bader",
+    "Favia",
+    "Matustik"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "DENTAL HEIGHTS DDS PC",
+    "EVENLY ORTHODONTICS DUPONT",
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 43.0,
+   "novel_vs_known_dso": false,
+   "n_zips": 14,
+   "n_locations": 15,
+   "why_it_matters": "parent_company on landmine blocklist (Evenly placeholder / specialist).",
+   "missing_evidence": [
+    "confirm real operating parent vs. placeholder parent_iusa=000000000"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "06559964fbcc65b8",
+   "practice_name": "176 DENTAL ASSOCIATES LTD",
+   "zip": "60108",
+   "city": "BLOOMINGDALE",
+   "current_entity_classification": "small_group",
+   "candidate_types": [
+    "parent_company_chain"
+   ],
+   "owner_identity": [
+    "Emad Zaidi",
+    "Joseph Favia",
+    "Joseph Matustik",
+    "Rick Brar",
+    "Zishan Bader"
+   ],
+   "family_surnames": [
+    "Bader",
+    "Favia",
+    "Matustik"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "DENTAL HEIGHTS DDS PC",
+    "EVENLY ORTHODONTICS DUPONT",
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 43.0,
+   "novel_vs_known_dso": false,
+   "n_zips": 14,
+   "n_locations": 15,
+   "why_it_matters": "parent_company on landmine blocklist (Evenly placeholder / specialist).",
+   "missing_evidence": [
+    "confirm real operating parent vs. placeholder parent_iusa=000000000"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "4cdf3ef029ab464c",
+   "practice_name": "Bender Dental Care",
+   "zip": "60123",
+   "city": "ELGIN",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "parent_company_chain"
+   ],
+   "owner_identity": [
+    "Emad Zaidi",
+    "Joseph Favia",
+    "Joseph Matustik",
+    "Rick Brar",
+    "Zishan Bader"
+   ],
+   "family_surnames": [
+    "Bader",
+    "Favia",
+    "Matustik"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "DENTAL HEIGHTS DDS PC",
+    "EVENLY ORTHODONTICS DUPONT",
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 43.0,
+   "novel_vs_known_dso": false,
+   "n_zips": 14,
+   "n_locations": 15,
+   "why_it_matters": "parent_company on landmine blocklist (Evenly placeholder / specialist).",
+   "missing_evidence": [
+    "confirm real operating parent vs. placeholder parent_iusa=000000000"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "cdcdf30342969078",
+   "practice_name": "DENTAL HEIGHTS DDS PC",
+   "zip": "60139",
+   "city": "GLENDALE HEIGHTS",
+   "current_entity_classification": "family_practice",
+   "candidate_types": [
+    "parent_company_chain"
+   ],
+   "owner_identity": [
+    "Emad Zaidi",
+    "Joseph Favia",
+    "Joseph Matustik",
+    "Rick Brar",
+    "Zishan Bader"
+   ],
+   "family_surnames": [
+    "Bader",
+    "Favia",
+    "Matustik"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "DENTAL HEIGHTS DDS PC",
+    "EVENLY ORTHODONTICS DUPONT",
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 43.0,
+   "novel_vs_known_dso": false,
+   "n_zips": 14,
+   "n_locations": 15,
+   "why_it_matters": "parent_company on landmine blocklist (Evenly placeholder / specialist).",
+   "missing_evidence": [
+    "confirm real operating parent vs. placeholder parent_iusa=000000000"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "83edaeef42709b35",
+   "practice_name": "ENVISION A SMILE INCORPORATED",
+   "zip": "60174",
+   "city": "ST CHARLES",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "parent_company_chain"
+   ],
+   "owner_identity": [
+    "Emad Zaidi",
+    "Joseph Favia",
+    "Joseph Matustik",
+    "Rick Brar",
+    "Zishan Bader"
+   ],
+   "family_surnames": [
+    "Bader",
+    "Favia",
+    "Matustik"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "DENTAL HEIGHTS DDS PC",
+    "EVENLY ORTHODONTICS DUPONT",
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 43.0,
+   "novel_vs_known_dso": false,
+   "n_zips": 14,
+   "n_locations": 15,
+   "why_it_matters": "parent_company on landmine blocklist (Evenly placeholder / specialist).",
+   "missing_evidence": [
+    "confirm real operating parent vs. placeholder parent_iusa=000000000"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "1adac605c6abd972",
+   "practice_name": "EMAD ZAIDI, DMD PC",
+   "zip": "60490",
+   "city": "BOLINGBROOK",
+   "current_entity_classification": "family_practice",
+   "candidate_types": [
+    "parent_company_chain"
+   ],
+   "owner_identity": [
+    "Emad Zaidi",
+    "Joseph Favia",
+    "Joseph Matustik",
+    "Rick Brar",
+    "Zishan Bader"
+   ],
+   "family_surnames": [
+    "Bader",
+    "Favia",
+    "Matustik"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "DENTAL HEIGHTS DDS PC",
+    "EVENLY ORTHODONTICS DUPONT",
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 43.0,
+   "novel_vs_known_dso": false,
+   "n_zips": 14,
+   "n_locations": 15,
+   "why_it_matters": "parent_company on landmine blocklist (Evenly placeholder / specialist).",
+   "missing_evidence": [
+    "confirm real operating parent vs. placeholder parent_iusa=000000000"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "4ca83acbcd91a330",
+   "practice_name": "OAK BROOK DENTAL CENTER INC.",
+   "zip": "60523",
+   "city": "OAK BROOK",
+   "current_entity_classification": "small_group",
+   "candidate_types": [
+    "parent_company_chain"
+   ],
+   "owner_identity": [
+    "Emad Zaidi",
+    "Joseph Favia",
+    "Joseph Matustik",
+    "Rick Brar",
+    "Zishan Bader"
+   ],
+   "family_surnames": [
+    "Bader",
+    "Favia",
+    "Matustik"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "DENTAL HEIGHTS DDS PC",
+    "EVENLY ORTHODONTICS DUPONT",
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 43.0,
+   "novel_vs_known_dso": false,
+   "n_zips": 14,
+   "n_locations": 15,
+   "why_it_matters": "parent_company on landmine blocklist (Evenly placeholder / specialist).",
+   "missing_evidence": [
+    "confirm real operating parent vs. placeholder parent_iusa=000000000"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "541ae39cadc867b6",
+   "practice_name": "MA BOULE DMD PC",
+   "zip": "60545",
+   "city": "PLANO",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "parent_company_chain"
+   ],
+   "owner_identity": [
+    "Emad Zaidi",
+    "Joseph Favia",
+    "Joseph Matustik",
+    "Rick Brar",
+    "Zishan Bader"
+   ],
+   "family_surnames": [
+    "Bader",
+    "Favia",
+    "Matustik"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "DENTAL HEIGHTS DDS PC",
+    "EVENLY ORTHODONTICS DUPONT",
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 43.0,
+   "novel_vs_known_dso": false,
+   "n_zips": 14,
+   "n_locations": 15,
+   "why_it_matters": "parent_company on landmine blocklist (Evenly placeholder / specialist).",
+   "missing_evidence": [
+    "confirm real operating parent vs. placeholder parent_iusa=000000000"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "feaa63bd7ced2c0e",
+   "practice_name": "SUN DENTAL CARE PC",
+   "zip": "60563",
+   "city": "NAPERVILLE",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "parent_company_chain"
+   ],
+   "owner_identity": [
+    "Emad Zaidi",
+    "Joseph Favia",
+    "Joseph Matustik",
+    "Rick Brar",
+    "Zishan Bader"
+   ],
+   "family_surnames": [
+    "Bader",
+    "Favia",
+    "Matustik"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "DENTAL HEIGHTS DDS PC",
+    "EVENLY ORTHODONTICS DUPONT",
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 43.0,
+   "novel_vs_known_dso": false,
+   "n_zips": 14,
+   "n_locations": 15,
+   "why_it_matters": "parent_company on landmine blocklist (Evenly placeholder / specialist).",
+   "missing_evidence": [
+    "confirm real operating parent vs. placeholder parent_iusa=000000000"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "2cb946f04fa11798",
+   "practice_name": "City Dental",
+   "zip": "60614",
+   "city": "CHICAGO",
+   "current_entity_classification": "small_group",
+   "candidate_types": [
+    "parent_company_chain"
+   ],
+   "owner_identity": [
+    "Emad Zaidi",
+    "Joseph Favia",
+    "Joseph Matustik",
+    "Rick Brar",
+    "Zishan Bader"
+   ],
+   "family_surnames": [
+    "Bader",
+    "Favia",
+    "Matustik"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "DENTAL HEIGHTS DDS PC",
+    "EVENLY ORTHODONTICS DUPONT",
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 43.0,
+   "novel_vs_known_dso": false,
+   "n_zips": 14,
+   "n_locations": 15,
+   "why_it_matters": "parent_company on landmine blocklist (Evenly placeholder / specialist).",
+   "missing_evidence": [
+    "confirm real operating parent vs. placeholder parent_iusa=000000000"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "d3b3b09cc6ed98dd",
+   "practice_name": "ASIAN VILLAGE DENTAL CLINIC",
+   "zip": "60640",
+   "city": "CHICAGO",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "parent_company_chain"
+   ],
+   "owner_identity": [
+    "Emad Zaidi",
+    "Joseph Favia",
+    "Joseph Matustik",
+    "Rick Brar",
+    "Zishan Bader"
+   ],
+   "family_surnames": [
+    "Bader",
+    "Favia",
+    "Matustik"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "DENTAL HEIGHTS DDS PC",
+    "EVENLY ORTHODONTICS DUPONT",
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 43.0,
+   "novel_vs_known_dso": false,
+   "n_zips": 14,
+   "n_locations": 15,
+   "why_it_matters": "parent_company on landmine blocklist (Evenly placeholder / specialist).",
+   "missing_evidence": [
+    "confirm real operating parent vs. placeholder parent_iusa=000000000"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "bb925c602eb1ffb6",
+   "practice_name": "Fresh Dental",
+   "zip": "60657",
+   "city": "CHICAGO",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "parent_company_chain"
+   ],
+   "owner_identity": [
+    "Emad Zaidi",
+    "Joseph Favia",
+    "Joseph Matustik",
+    "Rick Brar",
+    "Zishan Bader"
+   ],
+   "family_surnames": [
+    "Bader",
+    "Favia",
+    "Matustik"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "DENTAL HEIGHTS DDS PC",
+    "EVENLY ORTHODONTICS DUPONT",
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 43.0,
+   "novel_vs_known_dso": false,
+   "n_zips": 14,
+   "n_locations": 15,
+   "why_it_matters": "parent_company on landmine blocklist (Evenly placeholder / specialist).",
+   "missing_evidence": [
+    "confirm real operating parent vs. placeholder parent_iusa=000000000"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "10350cbe9ba08042",
+   "practice_name": "DRS. DELMONICO & TROCCHIO LTD",
+   "zip": "60707",
+   "city": "ELMWOOD PARK",
+   "current_entity_classification": "large_group",
+   "candidate_types": [
+    "parent_company_chain"
+   ],
+   "owner_identity": [
+    "Emad Zaidi",
+    "Joseph Favia",
+    "Joseph Matustik",
+    "Rick Brar",
+    "Zishan Bader"
+   ],
+   "family_surnames": [
+    "Bader",
+    "Favia",
+    "Matustik"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "DENTAL HEIGHTS DDS PC",
+    "EVENLY ORTHODONTICS DUPONT",
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 43.0,
+   "novel_vs_known_dso": false,
+   "n_zips": 14,
+   "n_locations": 15,
+   "why_it_matters": "parent_company on landmine blocklist (Evenly placeholder / specialist).",
+   "missing_evidence": [
+    "confirm real operating parent vs. placeholder parent_iusa=000000000"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "2ec00407fa94401c",
+   "practice_name": "Patel Dental",
+   "zip": "60070",
+   "city": "PROSPECT HEIGHTS",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "brand_chain"
+   ],
+   "owner_identity": null,
+   "family_surnames": null,
+   "brands": null,
+   "legal_entities": null,
+   "evidence_artifacts": [],
+   "cluster_score": 24.5,
+   "novel_vs_known_dso": true,
+   "n_zips": 16,
+   "n_locations": 17,
+   "why_it_matters": "Lead via ['brand_chain'] (top: brand_chain 'PATEL', 16 ZIP / 17 loc). brand_chain spanning 16 ZIP(s), 17 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 3 member(s) already in {'wave1', 'lane1B'}. ",
+   "missing_evidence": [
+    "confirm same ownership vs. coincidental same brand words; website/locator",
+    "legal entity / parent confirmation"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "f342b2447ac0ef20",
+   "practice_name": "Patel Dental",
+   "zip": "60074",
+   "city": "PALATINE",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "brand_chain"
+   ],
+   "owner_identity": null,
+   "family_surnames": null,
+   "brands": null,
+   "legal_entities": null,
+   "evidence_artifacts": [],
+   "cluster_score": 24.5,
+   "novel_vs_known_dso": true,
+   "n_zips": 16,
+   "n_locations": 17,
+   "why_it_matters": "Lead via ['brand_chain'] (top: brand_chain 'PATEL', 16 ZIP / 17 loc). brand_chain spanning 16 ZIP(s), 17 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 3 member(s) already in {'wave1', 'lane1B'}. ",
+   "missing_evidence": [
+    "confirm same ownership vs. coincidental same brand words; website/locator",
+    "legal entity / parent confirmation"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "76e51eaca195a41d",
+   "practice_name": "Patel Dental",
+   "zip": "60131",
+   "city": "FRANKLIN PARK",
+   "current_entity_classification": "small_group",
+   "candidate_types": [
+    "brand_chain"
+   ],
+   "owner_identity": null,
+   "family_surnames": null,
+   "brands": null,
+   "legal_entities": null,
+   "evidence_artifacts": [],
+   "cluster_score": 24.5,
+   "novel_vs_known_dso": true,
+   "n_zips": 16,
+   "n_locations": 17,
+   "why_it_matters": "Lead via ['brand_chain'] (top: brand_chain 'PATEL', 16 ZIP / 17 loc). brand_chain spanning 16 ZIP(s), 17 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 3 member(s) already in {'wave1', 'lane1B'}. ",
+   "missing_evidence": [
+    "confirm same ownership vs. coincidental same brand words; website/locator",
+    "legal entity / parent confirmation"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "fe19edb1f0014470",
+   "practice_name": "Patel Dental",
+   "zip": "60175",
+   "city": "SAINT CHARLES",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "brand_chain"
+   ],
+   "owner_identity": null,
+   "family_surnames": null,
+   "brands": null,
+   "legal_entities": null,
+   "evidence_artifacts": [],
+   "cluster_score": 24.5,
+   "novel_vs_known_dso": true,
+   "n_zips": 16,
+   "n_locations": 17,
+   "why_it_matters": "Lead via ['brand_chain'] (top: brand_chain 'PATEL', 16 ZIP / 17 loc). brand_chain spanning 16 ZIP(s), 17 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 3 member(s) already in {'wave1', 'lane1B'}. ",
+   "missing_evidence": [
+    "confirm same ownership vs. coincidental same brand words; website/locator",
+    "legal entity / parent confirmation"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "000edca935b84b40",
+   "practice_name": "Patel Dental",
+   "zip": "60193",
+   "city": "SCHAUMBURG",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "brand_chain"
+   ],
+   "owner_identity": null,
+   "family_surnames": null,
+   "brands": null,
+   "legal_entities": null,
+   "evidence_artifacts": [],
+   "cluster_score": 24.5,
+   "novel_vs_known_dso": true,
+   "n_zips": 16,
+   "n_locations": 17,
+   "why_it_matters": "Lead via ['brand_chain'] (top: brand_chain 'PATEL', 16 ZIP / 17 loc). brand_chain spanning 16 ZIP(s), 17 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 3 member(s) already in {'wave1', 'lane1B'}. ",
+   "missing_evidence": [
+    "confirm same ownership vs. coincidental same brand words; website/locator",
+    "legal entity / parent confirmation"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "d2e4b594fa3fddf0",
+   "practice_name": "Patel Dental",
+   "zip": "60435",
+   "city": "JOLIET",
+   "current_entity_classification": "family_practice",
+   "candidate_types": [
+    "brand_chain"
+   ],
+   "owner_identity": null,
+   "family_surnames": null,
+   "brands": null,
+   "legal_entities": null,
+   "evidence_artifacts": [],
+   "cluster_score": 24.5,
+   "novel_vs_known_dso": true,
+   "n_zips": 16,
+   "n_locations": 17,
+   "why_it_matters": "Lead via ['brand_chain'] (top: brand_chain 'PATEL', 16 ZIP / 17 loc). brand_chain spanning 16 ZIP(s), 17 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 3 member(s) already in {'wave1', 'lane1B'}. ",
+   "missing_evidence": [
+    "confirm same ownership vs. coincidental same brand words; website/locator",
+    "legal entity / parent confirmation"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "aa71dced81c01725",
+   "practice_name": "Patel Dental",
+   "zip": "60487",
+   "city": "TINLEY PARK",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "brand_chain"
+   ],
+   "owner_identity": null,
+   "family_surnames": null,
+   "brands": null,
+   "legal_entities": null,
+   "evidence_artifacts": [],
+   "cluster_score": 24.5,
+   "novel_vs_known_dso": true,
+   "n_zips": 16,
+   "n_locations": 17,
+   "why_it_matters": "Lead via ['brand_chain'] (top: brand_chain 'PATEL', 16 ZIP / 17 loc). brand_chain spanning 16 ZIP(s), 17 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 3 member(s) already in {'wave1', 'lane1B'}. ",
+   "missing_evidence": [
+    "confirm same ownership vs. coincidental same brand words; website/locator",
+    "legal entity / parent confirmation"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "79820eec34c75071",
+   "practice_name": "Patel Dental",
+   "zip": "60523",
+   "city": "OAK BROOK",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "brand_chain",
+    "phone_cluster"
+   ],
+   "owner_identity": [
+    "Amitkumar Patel"
+   ],
+   "family_surnames": [
+    "Patel"
+   ],
+   "brands": null,
+   "legal_entities": null,
+   "evidence_artifacts": [],
+   "cluster_score": 24.5,
+   "novel_vs_known_dso": true,
+   "n_zips": 16,
+   "n_locations": 17,
+   "why_it_matters": "Lead via ['brand_chain', 'phone_cluster'] (top: brand_chain 'PATEL', 16 ZIP / 17 loc). brand_chain spanning 16 ZIP(s), 17 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 3 member(s) already in {'wave1', 'lane1B'}. ",
+   "missing_evidence": [
+    "confirm same ownership vs. coincidental same brand words; website/locator",
+    "legal entity / parent confirmation"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "5a5c1128b6592556",
+   "practice_name": "Patel Dental",
+   "zip": "60586",
+   "city": "PLAINFIELD",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "brand_chain"
+   ],
+   "owner_identity": null,
+   "family_surnames": null,
+   "brands": null,
+   "legal_entities": null,
+   "evidence_artifacts": [],
+   "cluster_score": 24.5,
+   "novel_vs_known_dso": true,
+   "n_zips": 16,
+   "n_locations": 17,
+   "why_it_matters": "Lead via ['brand_chain'] (top: brand_chain 'PATEL', 16 ZIP / 17 loc). brand_chain spanning 16 ZIP(s), 17 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 3 member(s) already in {'wave1', 'lane1B'}. ",
+   "missing_evidence": [
+    "confirm same ownership vs. coincidental same brand words; website/locator",
+    "legal entity / parent confirmation"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "0b858ae62242579a",
+   "practice_name": "Patel Dental",
+   "zip": "60607",
+   "city": "CHICAGO",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "brand_chain"
+   ],
+   "owner_identity": null,
+   "family_surnames": null,
+   "brands": null,
+   "legal_entities": null,
+   "evidence_artifacts": [],
+   "cluster_score": 24.5,
+   "novel_vs_known_dso": true,
+   "n_zips": 16,
+   "n_locations": 17,
+   "why_it_matters": "Lead via ['brand_chain'] (top: brand_chain 'PATEL', 16 ZIP / 17 loc). brand_chain spanning 16 ZIP(s), 17 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 3 member(s) already in {'wave1', 'lane1B'}. ",
+   "missing_evidence": [
+    "confirm same ownership vs. coincidental same brand words; website/locator",
+    "legal entity / parent confirmation"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "10f81b1377794d76",
+   "practice_name": "Patel Dental",
+   "zip": "60609",
+   "city": "CHICAGO",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "brand_chain"
+   ],
+   "owner_identity": null,
+   "family_surnames": null,
+   "brands": null,
+   "legal_entities": null,
+   "evidence_artifacts": [],
+   "cluster_score": 24.5,
+   "novel_vs_known_dso": true,
+   "n_zips": 16,
+   "n_locations": 17,
+   "why_it_matters": "Lead via ['brand_chain'] (top: brand_chain 'PATEL', 16 ZIP / 17 loc). brand_chain spanning 16 ZIP(s), 17 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 3 member(s) already in {'wave1', 'lane1B'}. ",
+   "missing_evidence": [
+    "confirm same ownership vs. coincidental same brand words; website/locator",
+    "legal entity / parent confirmation"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "05126f9fe2f10564",
+   "practice_name": "Patel Dental",
+   "zip": "60609",
+   "city": "CHICAGO",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "brand_chain"
+   ],
+   "owner_identity": null,
+   "family_surnames": null,
+   "brands": null,
+   "legal_entities": null,
+   "evidence_artifacts": [],
+   "cluster_score": 24.5,
+   "novel_vs_known_dso": true,
+   "n_zips": 16,
+   "n_locations": 17,
+   "why_it_matters": "Lead via ['brand_chain'] (top: brand_chain 'PATEL', 16 ZIP / 17 loc). brand_chain spanning 16 ZIP(s), 17 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 3 member(s) already in {'wave1', 'lane1B'}. ",
+   "missing_evidence": [
+    "confirm same ownership vs. coincidental same brand words; website/locator",
+    "legal entity / parent confirmation"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "c3d3b80e7c83e643",
+   "practice_name": "Patel Dental",
+   "zip": "60636",
+   "city": "CHICAGO",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "brand_chain",
+    "intel_keyword"
+   ],
+   "owner_identity": null,
+   "family_surnames": null,
+   "brands": null,
+   "legal_entities": null,
+   "evidence_artifacts": [],
+   "cluster_score": 24.5,
+   "novel_vs_known_dso": true,
+   "n_zips": 16,
+   "n_locations": 17,
+   "why_it_matters": "Lead via ['brand_chain', 'intel_keyword'] (top: brand_chain 'PATEL', 16 ZIP / 17 loc). brand_chain spanning 16 ZIP(s), 17 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 3 member(s) already in {'wave1', 'lane1B'}. ",
+   "missing_evidence": [
+    "confirm same ownership vs. coincidental same brand words; website/locator",
+    "legal entity / parent confirmation"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "ff53483bd86236a9",
+   "practice_name": "Patel Dental",
+   "zip": "60647",
+   "city": "CHICAGO",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "brand_chain"
+   ],
+   "owner_identity": null,
+   "family_surnames": null,
+   "brands": null,
+   "legal_entities": null,
+   "evidence_artifacts": [],
+   "cluster_score": 24.5,
+   "novel_vs_known_dso": true,
+   "n_zips": 16,
+   "n_locations": 17,
+   "why_it_matters": "Lead via ['brand_chain'] (top: brand_chain 'PATEL', 16 ZIP / 17 loc). brand_chain spanning 16 ZIP(s), 17 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 3 member(s) already in {'wave1', 'lane1B'}. ",
+   "missing_evidence": [
+    "confirm same ownership vs. coincidental same brand words; website/locator",
+    "legal entity / parent confirmation"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "4b5fab0c0946e153",
+   "practice_name": "SOUTH HOLLAND DENTAL PC",
+   "zip": "60419",
+   "city": "DOLTON",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "ao_cluster",
+    "phone_cluster"
+   ],
+   "owner_identity": [
+    "Chris Tsaliagos",
+    "Christos Tsaliagos",
+    "Scott Goldman"
+   ],
+   "family_surnames": [
+    "Goldman",
+    "Tsaliagos"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "METROSMILES - CICERO DENTAL,  P.C",
+    "PILSEN DENTAL GROUP PRO CORP"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 21.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 8,
+   "n_locations": 5,
+   "why_it_matters": "Lead via ['ao_cluster', 'phone_cluster'] (top: ao_cluster 'scott goldman', 8 ZIP / 5 loc). ao_cluster spanning 8 ZIP(s), 5 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 2 member(s) already in {'wave1', 'main_reach5'}. ",
+   "missing_evidence": [
+    "confirm single owner vs. coincidental same-name; corporate-structure doc"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "8bb56d655fd949a6",
+   "practice_name": "PEDIATRIC AND FAMILY DENTISTRY PC",
+   "zip": "60004",
+   "city": "ARLINGTON HTS",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "ao_cluster"
+   ],
+   "owner_identity": [
+    "Chris Tsaliagos",
+    "Christos Tsaliagos",
+    "Scott Goldman"
+   ],
+   "family_surnames": [
+    "Goldman",
+    "Tsaliagos"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "METROSMILES - CICERO DENTAL,  P.C"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 21.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 8,
+   "n_locations": 5,
+   "why_it_matters": "Lead via ['ao_cluster'] (top: ao_cluster 'scott goldman', 8 ZIP / 5 loc). ao_cluster spanning 8 ZIP(s), 5 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 2 member(s) already in {'wave1', 'main_reach5'}. ",
+   "missing_evidence": [
+    "confirm single owner vs. coincidental same-name; corporate-structure doc"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "c508a07b0bc2dfdd",
+   "practice_name": "METRO KIDZ DENTAL, PC",
+   "zip": "60453",
+   "city": "OAK LAWN",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "ao_cluster"
+   ],
+   "owner_identity": [
+    "Chris Tsaliagos",
+    "Christos Tsaliagos",
+    "Scott Goldman"
+   ],
+   "family_surnames": [
+    "Goldman",
+    "Tsaliagos"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "METROSMILES - CICERO DENTAL,  P.C",
+    "PILSEN DENTAL GROUP PRO CORP"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 21.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 8,
+   "n_locations": 5,
+   "why_it_matters": "Lead via ['ao_cluster'] (top: ao_cluster 'scott goldman', 8 ZIP / 5 loc). ao_cluster spanning 8 ZIP(s), 5 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 2 member(s) already in {'wave1', 'main_reach5'}. ",
+   "missing_evidence": [
+    "confirm single owner vs. coincidental same-name; corporate-structure doc"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "0771cbce90062c40",
+   "practice_name": "REYNOLDS-INCARDONA LTD.",
+   "zip": "60302",
+   "city": "OAK PARK",
+   "current_entity_classification": "large_group",
+   "candidate_types": [
+    "ao_cluster"
+   ],
+   "owner_identity": [
+    "Elliot Abt",
+    "Harry Reynolds",
+    "Robert Stites",
+    "Sahand Zomorrodian",
+    "Thomas Seretis"
+   ],
+   "family_surnames": [
+    "Stites"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "General Dentistry",
+    "JEFFERSON PARK FAMILY DENTAL LLC",
+    "PARK RIDGE DENTISTRY PLLC",
+    "PARK RIDGE ORTHODONTICS PLLC"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 20.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 6,
+   "n_locations": 8,
+   "why_it_matters": "Lead via ['ao_cluster'] (top: ao_cluster 'robert stites', 6 ZIP / 8 loc). ao_cluster spanning 6 ZIP(s), 8 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 1 member(s) already in {'lane1B'}. ",
+   "missing_evidence": [
+    "confirm single owner vs. coincidental same-name; corporate-structure doc"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "1b59113b5c11226a",
+   "practice_name": "WILLIS ABT DENTAL PRACTICE",
+   "zip": "60076",
+   "city": "SKOKIE",
+   "current_entity_classification": "large_group",
+   "candidate_types": [
+    "ao_cluster"
+   ],
+   "owner_identity": [
+    "Elliot Abt",
+    "Harry Reynolds",
+    "Robert Stites",
+    "Sahand Zomorrodian",
+    "Thomas Seretis"
+   ],
+   "family_surnames": [
+    "Stites"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "General Dentistry",
+    "JEFFERSON PARK FAMILY DENTAL LLC",
+    "PARK RIDGE DENTISTRY PLLC",
+    "PARK RIDGE ORTHODONTICS PLLC"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 20.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 6,
+   "n_locations": 8,
+   "why_it_matters": "Lead via ['ao_cluster'] (top: ao_cluster 'robert stites', 6 ZIP / 8 loc). ao_cluster spanning 6 ZIP(s), 8 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 1 member(s) already in {'lane1B'}. ",
+   "missing_evidence": [
+    "confirm single owner vs. coincidental same-name; corporate-structure doc"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "543f3230f070c5d3",
+   "practice_name": "SMILE PRO STUDIO",
+   "zip": "60173",
+   "city": "SCHAUMBURG",
+   "current_entity_classification": "dso_national",
+   "candidate_types": [
+    "affiliated_dso_chain",
+    "ao_cluster"
+   ],
+   "owner_identity": [
+    "Elliot Abt",
+    "Harry Reynolds",
+    "Robert Stites",
+    "Sahand Zomorrodian",
+    "Thomas Seretis"
+   ],
+   "family_surnames": [
+    "Stites",
+    "Zomorrodian"
+   ],
+   "brands": [
+    "Choice Dental Group"
+   ],
+   "legal_entities": [
+    "FAMILY CHOICE DENTAL INC",
+    "General Dentistry",
+    "JEFFERSON PARK FAMILY DENTAL LLC",
+    "Oral Surgery",
+    "PARK RIDGE DENTISTRY PLLC",
+    "PARK RIDGE ORTHODONTICS PLLC"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 20.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 6,
+   "n_locations": 8,
+   "why_it_matters": "Lead via ['affiliated_dso_chain', 'ao_cluster'] (top: ao_cluster 'robert stites', 6 ZIP / 8 loc). ao_cluster spanning 6 ZIP(s), 8 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 1 member(s) already in {'lane1B'}. ",
+   "missing_evidence": [
+    "confirm single owner vs. coincidental same-name; corporate-structure doc"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "b9494af097511297",
+   "practice_name": "CHARLES GOODSITE AND THOMAS SERETIS LTD.",
+   "zip": "60193",
+   "city": "SCHAUMBURG",
+   "current_entity_classification": "small_group",
+   "candidate_types": [
+    "ao_cluster"
+   ],
+   "owner_identity": [
+    "Elliot Abt",
+    "Harry Reynolds",
+    "Robert Stites",
+    "Sahand Zomorrodian",
+    "Thomas Seretis"
+   ],
+   "family_surnames": [
+    "Stites"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "General Dentistry",
+    "JEFFERSON PARK FAMILY DENTAL LLC",
+    "PARK RIDGE DENTISTRY PLLC",
+    "PARK RIDGE ORTHODONTICS PLLC"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 20.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 6,
+   "n_locations": 8,
+   "why_it_matters": "Lead via ['ao_cluster'] (top: ao_cluster 'robert stites', 6 ZIP / 8 loc). ao_cluster spanning 6 ZIP(s), 8 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 1 member(s) already in {'lane1B'}. ",
+   "missing_evidence": [
+    "confirm single owner vs. coincidental same-name; corporate-structure doc"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "bbadc20262b004f9",
+   "practice_name": "SOUTH PARK ORTHO PLLC",
+   "zip": "60068",
+   "city": "PARK RIDGE",
+   "current_entity_classification": "small_group",
+   "candidate_types": [
+    "ao_cluster"
+   ],
+   "owner_identity": [
+    "Elliot Abt",
+    "Harry Reynolds",
+    "Robert Stites",
+    "Sahand Zomorrodian",
+    "Thomas Seretis"
+   ],
+   "family_surnames": [
+    "Stites"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "General Dentistry",
+    "JEFFERSON PARK FAMILY DENTAL LLC",
+    "PARK RIDGE DENTISTRY PLLC",
+    "PARK RIDGE ORTHODONTICS PLLC"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 20.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 6,
+   "n_locations": 8,
+   "why_it_matters": "Lead via ['ao_cluster'] (top: ao_cluster 'robert stites', 6 ZIP / 8 loc). ao_cluster spanning 6 ZIP(s), 8 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 1 member(s) already in {'lane1B'}. ",
+   "missing_evidence": [
+    "confirm single owner vs. coincidental same-name; corporate-structure doc"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "d3a0e2085a1e3776",
+   "practice_name": "Barrett Dental",
+   "zip": "60068",
+   "city": "PARK RIDGE",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "ao_cluster",
+    "intel_keyword"
+   ],
+   "owner_identity": [
+    "Elliot Abt",
+    "Harry Reynolds",
+    "Robert Stites",
+    "Sahand Zomorrodian",
+    "Thomas Seretis"
+   ],
+   "family_surnames": [
+    "Stites"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "General Dentistry",
+    "JEFFERSON PARK FAMILY DENTAL LLC",
+    "PARK RIDGE DENTISTRY PLLC",
+    "PARK RIDGE ORTHODONTICS PLLC"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 20.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 6,
+   "n_locations": 8,
+   "why_it_matters": "Lead via ['ao_cluster', 'intel_keyword'] (top: ao_cluster 'robert stites', 6 ZIP / 8 loc). ao_cluster spanning 6 ZIP(s), 8 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 1 member(s) already in {'lane1B'}. ",
+   "missing_evidence": [
+    "confirm single owner vs. coincidental same-name; corporate-structure doc",
+    "legal entity / parent confirmation"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "fe4e8aece6d7fd2e",
+   "practice_name": "PARK RIDGE DENTISTRY PLLC",
+   "zip": "60068",
+   "city": "PARK RIDGE",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "ao_cluster",
+    "intel_keyword"
+   ],
+   "owner_identity": [
+    "Elliot Abt",
+    "Harry Reynolds",
+    "Robert Stites",
+    "Sahand Zomorrodian",
+    "Thomas Seretis"
+   ],
+   "family_surnames": [
+    "Stites"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "General Dentistry",
+    "JEFFERSON PARK FAMILY DENTAL LLC",
+    "PARK RIDGE DENTISTRY PLLC",
+    "PARK RIDGE ORTHODONTICS PLLC"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 20.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 6,
+   "n_locations": 8,
+   "why_it_matters": "Lead via ['ao_cluster', 'intel_keyword'] (top: ao_cluster 'robert stites', 6 ZIP / 8 loc). ao_cluster spanning 6 ZIP(s), 8 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 1 member(s) already in {'lane1B'}. ",
+   "missing_evidence": [
+    "confirm single owner vs. coincidental same-name; corporate-structure doc"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "c4b5b35fa16e44e5",
+   "practice_name": "FAMILY DENTAL GROUP, INC.",
+   "zip": "60647",
+   "city": "CHICAGO",
+   "current_entity_classification": "dso_regional",
+   "candidate_types": [
+    "affiliated_dso_chain",
+    "dso_regional_review"
+   ],
+   "owner_identity": [
+    "Aroon Pal",
+    "Fadi Aqel",
+    "Ivana Bueno",
+    "Sawsan Asfour",
+    "Syed Rehman"
+   ],
+   "family_surnames": [
+    "Aqel",
+    "Bueno"
+   ],
+   "brands": [
+    "Dental 360"
+   ],
+   "legal_entities": [
+    "DENTAL 360-BUCKTOWN LLC",
+    "General Dentistry",
+    "IRVING PARK FAMILY DENTIST"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 19.8,
+   "novel_vs_known_dso": false,
+   "n_zips": 10,
+   "n_locations": 13,
+   "why_it_matters": "Lead via ['affiliated_dso_chain', 'dso_regional_review'] (top: affiliated_dso_chain 'Dental 360', 10 ZIP / 13 loc). affiliated_dso_chain spanning 10 ZIP(s), 13 location(s). Suspected branded_dso (conf medium). Known brand hint: dental 360. 12 member(s) already in {'wave1', 'main_ao'}. ",
+   "missing_evidence": [
+    "documentary URL or durable artifact confirming ownership structure"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "e50dfc828412c437",
+   "practice_name": "SANEI CENTER PC",
+   "zip": "60647",
+   "city": "CHICAGO",
+   "current_entity_classification": "dso_national",
+   "candidate_types": [
+    "affiliated_dso_chain"
+   ],
+   "owner_identity": [
+    "Peter Hurst",
+    "Rachel Nittinger",
+    "Samantha Cho",
+    "Simona Katona",
+    "Sunil Eamani"
+   ],
+   "family_surnames": [
+    "Cho",
+    "Eamani",
+    "Nittinger"
+   ],
+   "brands": [
+    "Western Dental"
+   ],
+   "legal_entities": [
+    "DENTALONE PARTNERS, INC",
+    "General Dentistry",
+    "NO",
+    "Prosthodontics",
+    "SONRAVA HEALTH"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 18.6,
+   "novel_vs_known_dso": false,
+   "n_zips": 10,
+   "n_locations": 11,
+   "why_it_matters": "Lead via ['affiliated_dso_chain'] (top: affiliated_dso_chain 'Western Dental', 10 ZIP / 11 loc). affiliated_dso_chain spanning 10 ZIP(s), 11 location(s). Suspected branded_dso (conf medium). Known brand hint: western dental. 10 member(s) already in {'wave1', 'main_ao'}. ",
+   "missing_evidence": [
+    "documentary URL or durable artifact confirming ownership structure"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "addadba0d25e3812",
+   "practice_name": "IMAGE DENTAL LLC",
+   "zip": "60804",
+   "city": "CICERO",
+   "current_entity_classification": "large_group",
+   "candidate_types": [
+    "ao_cluster",
+    "brand_chain",
+    "phone_cluster"
+   ],
+   "owner_identity": [
+    "Samantha Gonzalez",
+    "Sinan Razzak",
+    "Terri Cruz"
+   ],
+   "family_surnames": [
+    "Cruz",
+    "Gonzalez",
+    "Razzak"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "DENTAL TOWN LTD",
+    "General Dentistry",
+    "IMAGE DENTAL LLC"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 18.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 6,
+   "n_locations": 6,
+   "why_it_matters": "Lead via ['ao_cluster', 'brand_chain', 'phone_cluster'] (top: ao_cluster 'sinan razzak', 6 ZIP / 6 loc). ao_cluster spanning 6 ZIP(s), 6 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 4 member(s) already in {'lane3', 'main_reach5'}. ",
+   "missing_evidence": [
+    "confirm same ownership vs. coincidental same brand words; website/locator",
+    "confirm single owner vs. coincidental same-name; corporate-structure doc"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "c0cbfce56b1ea134",
+   "practice_name": "BEDFORD DENTAL LLC",
+   "zip": "60629",
+   "city": "CHICAGO",
+   "current_entity_classification": "large_group",
+   "candidate_types": [
+    "ao_cluster"
+   ],
+   "owner_identity": [
+    "Samantha Gonzalez",
+    "Sinan Razzak"
+   ],
+   "family_surnames": [
+    "Gonzalez",
+    "Razzak"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "DENTAL TOWN LTD",
+    "General Dentistry",
+    "IMAGE DENTAL LLC"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 18.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 6,
+   "n_locations": 6,
+   "why_it_matters": "Lead via ['ao_cluster'] (top: ao_cluster 'sinan razzak', 6 ZIP / 6 loc). ao_cluster spanning 6 ZIP(s), 6 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 4 member(s) already in {'lane3', 'main_reach5'}. ",
+   "missing_evidence": [
+    "confirm single owner vs. coincidental same-name; corporate-structure doc"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "173a37daf787f2c3",
+   "practice_name": "AZAL DENTAL CONSULTING INC.",
+   "zip": "60630",
+   "city": "CHICAGO",
+   "current_entity_classification": "small_group",
+   "candidate_types": [
+    "phone_cluster"
+   ],
+   "owner_identity": [
+    "Shahvar Hussain"
+   ],
+   "family_surnames": [
+    "Hussain"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "ADMI CORP",
+    "AZAL DENTAL CONSULTING INC",
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 18.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 3,
+   "n_locations": 3,
+   "why_it_matters": "Lead via ['phone_cluster'] (top: phone_cluster '3126078382', 3 ZIP / 3 loc). phone_cluster spanning 3 ZIP(s), 3 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 1 member(s) already in {'wave1'}. ",
+   "missing_evidence": [
+    "documentary URL or durable artifact confirming ownership structure"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "251eec8b280d1213",
+   "practice_name": "VISTA DENTAL OF SKOKIE PC",
+   "zip": "60076",
+   "city": "SKOKIE",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "phone_cluster"
+   ],
+   "owner_identity": [
+    "Shahvar Hussain"
+   ],
+   "family_surnames": [
+    "Hussain"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "ADMI CORP",
+    "AZAL DENTAL CONSULTING INC",
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 18.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 3,
+   "n_locations": 3,
+   "why_it_matters": "Lead via ['phone_cluster'] (top: phone_cluster '3126078382', 3 ZIP / 3 loc). phone_cluster spanning 3 ZIP(s), 3 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 1 member(s) already in {'wave1'}. ",
+   "missing_evidence": [
+    "documentary URL or durable artifact confirming ownership structure"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "8f706d83e1aa4a82",
+   "practice_name": "Franklin Dental",
+   "zip": "60432",
+   "city": "CREST HILL",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "phone_cluster"
+   ],
+   "owner_identity": [
+    "David Rubis"
+   ],
+   "family_surnames": [
+    "Rubis"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "General Dentistry",
+    "SHORE CAPITAL PARTNERS LLC"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 18.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 3,
+   "n_locations": 3,
+   "why_it_matters": "Lead via ['phone_cluster'] (top: phone_cluster '8157411700', 3 ZIP / 3 loc). phone_cluster spanning 3 ZIP(s), 3 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 1 member(s) already in {'wave1'}. ",
+   "missing_evidence": [
+    "documentary URL or durable artifact confirming ownership structure"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "b48ae5cb321e110a",
+   "practice_name": "Rubis Dental",
+   "zip": "60435",
+   "city": "CREST HILL",
+   "current_entity_classification": "family_practice",
+   "candidate_types": [
+    "phone_cluster"
+   ],
+   "owner_identity": [
+    "David Rubis"
+   ],
+   "family_surnames": [
+    "Rubis"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "General Dentistry",
+    "SHORE CAPITAL PARTNERS LLC"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 18.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 3,
+   "n_locations": 3,
+   "why_it_matters": "Lead via ['phone_cluster'] (top: phone_cluster '8157411700', 3 ZIP / 3 loc). phone_cluster spanning 3 ZIP(s), 3 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 1 member(s) already in {'wave1'}. ",
+   "missing_evidence": [
+    "documentary URL or durable artifact confirming ownership structure"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "b6ae53d52fe1a869",
+   "practice_name": "JAI VAIBHAV LAKSHMI SERVICE CORPORATION",
+   "zip": "60540",
+   "city": "NAPERVILLE",
+   "current_entity_classification": "small_group",
+   "candidate_types": [
+    "ao_cluster",
+    "phone_cluster"
+   ],
+   "owner_identity": [
+    "Milad Nourahmadi",
+    "Prabha Singh"
+   ],
+   "family_surnames": [
+    "Nourahmadi"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "DR LAYER DDS PC",
+    "General Dentistry",
+    "Orthodontics",
+    "SHINING SMILES 3 INC"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 18.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 3,
+   "n_locations": 3,
+   "why_it_matters": "Lead via ['ao_cluster', 'phone_cluster'] (top: phone_cluster '6309724010', 3 ZIP / 3 loc). phone_cluster spanning 3 ZIP(s), 3 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 2 member(s) already in {'main_reach5'}. ",
+   "missing_evidence": [
+    "confirm single owner vs. coincidental same-name; corporate-structure doc"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "441653c1a91b9e34",
+   "practice_name": "Ligas, Erik John DDS",
+   "zip": "60617",
+   "city": "CHICAGO",
+   "current_entity_classification": "family_practice",
+   "candidate_types": [
+    "intel_keyword",
+    "phone_cluster"
+   ],
+   "owner_identity": null,
+   "family_surnames": null,
+   "brands": null,
+   "legal_entities": [
+    "CHICAGO FAMILY HEALTH CTR FOUNDATION",
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 18.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 3,
+   "n_locations": 3,
+   "why_it_matters": "Lead via ['intel_keyword', 'phone_cluster'] (top: phone_cluster '7737685000', 3 ZIP / 3 loc). phone_cluster spanning 3 ZIP(s), 3 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 1 member(s) already in {'wave1'}. ",
+   "missing_evidence": [
+    "documentary URL or durable artifact confirming ownership structure"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "aea18f90408a4527",
+   "practice_name": "Jaramillo Mikyaila Marie",
+   "zip": "60628",
+   "city": "CHICAGO",
+   "current_entity_classification": "large_group",
+   "candidate_types": [
+    "phone_cluster"
+   ],
+   "owner_identity": null,
+   "family_surnames": null,
+   "brands": null,
+   "legal_entities": [
+    "CHICAGO FAMILY HEALTH CTR FOUNDATION",
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 18.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 3,
+   "n_locations": 3,
+   "why_it_matters": "Lead via ['phone_cluster'] (top: phone_cluster '7737685000', 3 ZIP / 3 loc). phone_cluster spanning 3 ZIP(s), 3 location(s). Suspected dentist_multi (conf low). No known-DSO brand match \u2014 potential HIDDEN local consolidator. 1 member(s) already in {'wave1'}. ",
+   "missing_evidence": [
+    "documentary URL or durable artifact confirming ownership structure"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "4e5d4d3e6b5b153a",
+   "practice_name": "Robert J Ryan DDS PC",
+   "zip": "60010",
+   "city": "Barrington",
+   "current_entity_classification": "solo_established",
+   "candidate_types": [
+    "ein_cluster"
+   ],
+   "owner_identity": [
+    "Joseph Schwartz"
+   ],
+   "family_surnames": [
+    "Schwartz"
+   ],
+   "brands": null,
+   "legal_entities": null,
+   "evidence_artifacts": [],
+   "cluster_score": 18.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 2,
+   "n_locations": 2,
+   "why_it_matters": "EIN on landmine blocklist (prior-rejected / Main-claimed / shared-building).",
+   "missing_evidence": [
+    "independent ownership verification \u2014 EIN flagged as non-chain/ambiguous"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "1db785090b4b1093",
+   "practice_name": "Pieta, Anna Dmd",
+   "zip": "60201",
+   "city": "EVANSTON",
+   "current_entity_classification": "large_group",
+   "candidate_types": [
+    "ein_cluster"
+   ],
+   "owner_identity": [
+    "Jeffrey Beuttell"
+   ],
+   "family_surnames": [
+    "Beuttell"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [
+    "shared_EIN=363393039",
+    "members=2",
+    "zips=2",
+    "legal=GENERAL DENTISTRY"
+   ],
+   "cluster_score": 18.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 2,
+   "n_locations": 2,
+   "why_it_matters": "Shared real EIN 363393039 across 2 ZIP(s) with no DSO/MSO/platform signal \u2014 dentist-owned multi-location group.",
+   "missing_evidence": [
+    "confirm common ownership vs. shared-billing arrangement; check for hidden MSO"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "1d7f183a8cd41c41",
+   "practice_name": "HAMILTON LAKES DENTISTRY GROUP, PLLC",
+   "zip": "60143",
+   "city": "ITASCA",
+   "current_entity_classification": "small_group",
+   "candidate_types": [
+    "ein_cluster"
+   ],
+   "owner_identity": [
+    "Kathryn Conti"
+   ],
+   "family_surnames": [
+    "Conti"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 18.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 2,
+   "n_locations": 2,
+   "why_it_matters": "EIN on landmine blocklist (prior-rejected / Main-claimed / shared-building).",
+   "missing_evidence": [
+    "independent ownership verification \u2014 EIN flagged as non-chain/ambiguous"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  },
+  {
+   "location_id": "f2a0c9109d3fbbce",
+   "practice_name": "Acierno Dental",
+   "zip": "60173",
+   "city": "SCHAUMBURG",
+   "current_entity_classification": "solo_high_volume",
+   "candidate_types": [
+    "ein_cluster"
+   ],
+   "owner_identity": [
+    "Kathryn Conti"
+   ],
+   "family_surnames": [
+    "Conti"
+   ],
+   "brands": null,
+   "legal_entities": [
+    "General Dentistry"
+   ],
+   "evidence_artifacts": [],
+   "cluster_score": 18.0,
+   "novel_vs_known_dso": true,
+   "n_zips": 2,
+   "n_locations": 2,
+   "why_it_matters": "EIN on landmine blocklist (prior-rejected / Main-claimed / shared-building).",
+   "missing_evidence": [
+    "independent ownership verification \u2014 EIN flagged as non-chain/ambiguous"
+   ],
+   "suggested_next_step": "web/locator verify operator + brand; confirm DSO/MSO vs dentist-owned"
+  }
+ ]
+}

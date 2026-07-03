@@ -1,0 +1,141 @@
+{
+  "network": "SUNITA SAHU",
+  "network_id": "ao:SAHU_SUNITA",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Dr. Sunita Sahu, DDS (UIC 2005) is a Chicago-area dentist who owns and operates at least three GP dental offices under separate legal-entity trade names: Esha Dental LLC (Addison, 60101), ER Dental Care Ltd / Complete Dental Care (Chicago, 60618), and Dental Wish Ltd (Chicago, 60623). She is the named principal on the Esha Dental BBB record and the featured doctor on completedentalcarechicago.com. No MSO, management company, DSO platform, or PE sponsor has been identified. This is a dentist-owned private multi-office group.",
+  "owner_operator_identity": "Dr. Sunita Sahu, DDS — UIC College of Dentistry graduate 2005, named LLC principal of Esha Dental LLC (BBB record), featured doctor at Complete Dental Care / ER Dental Care Ltd (completedentalcarechicago.com), and listed provider at Dental Wish Ltd.",
+  "brand_trade_names": [
+    "Esha Dental",
+    "Complete Dental Care",
+    "ER Dental Care",
+    "Dental Wish"
+  ],
+  "legal_entities": [
+    "ESHA DENTAL LLC",
+    "ER DENTAL CARE LTD",
+    "DENTAL WISH LTD"
+  ],
+  "durable_artifacts": [
+    "AO reach=3 across ZIPs 60101, 60618, 60623 — SUNITA SAHU as authorized official on NPI records 1194358960, 1538333604, 1760794176",
+    "BBB record confirms Dr. Sunita Sahu DDS as principal of Esha Dental LLC, 1409 W Lake St, Addison IL 60101 (bbb.org/us/il/addison/profile/dentist/esha-dental-llc-0654-1000095347)",
+    "completedentalcarechicago.com lists Dr. Sunita Sahu as the owner/doctor at 3205 W Irving Park Rd, Chicago IL 60618",
+    "Provider directories (CareCredit, vitadox, WebMD/Vitals) list Dr. Sunita Sahu among providers at Dental Wish Ltd, 4101 W 26th St, Chicago IL 60623"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "The eshadental.com website pages are titled 'Dentex' in metadata — this appears to be the name of a website template/CMS vendor (Dentex dental website platform), NOT a DSO or MSO. No DSO management layer found. Note also that Dental Wish Ltd lists additional associate dentists (Eric Andersen, Ashley Seide, Ronald Winn, Ian Hoffman) suggesting Dr. Sahu may be one of several owners/operators at that location, though she is still listed as an authorized official on its NPI.",
+  "evidence_chain": "Federal AO signal: SUNITA SAHU appears as authorized official on three separately-addressed GP NPI org records across ZIPs 60101 (ESHA DENTAL LLC), 60618 (ER DENTAL CARE LTD), 60623 (DENTAL WISH LTD). Documentary corroboration: (1) BBB business profile for Esha Dental LLC explicitly names Dr. Sunita Sahu DDS as principal and confirms the Addison LLC; (2) completedentalcarechicago.com is the consumer-facing website for 3205 W Irving Park Rd and features Dr. Sunita Sahu as the named doctor; (3) multiple provider directories (LocalMed, vitadox, CareCredit, WebMD) cross-list Dr. Sunita Sahu at the Dental Wish Ltd address. No management-company entity, MSO, DSO platform, or PE sponsor was found in three targeted web searches. Structure is dentist-owned multi-office private group.",
+  "future_app_notes": "Confirm Dr. Sahu's ownership role at Dental Wish Ltd more precisely — she may be an associate rather than owner at that location, given additional named dentists there. The Dental Wish Ltd NPI (1760794176) registered 2010, predating Esha Dental (2019/2020), so she may have joined Dental Wish later. If a follow-up search locates an Illinois Articles of Organization or operating agreement for Dental Wish Ltd naming Sahu as owner, that would solidify the ready_for_validation status for location f62241c4286271dd.",
+  "classifications": [
+    {
+      "location_id": "1580c5634d44138a",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Sunita Sahu, DDS — named principal of Esha Dental LLC per BBB record",
+      "network_id": "ao:SAHU_SUNITA",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: SUNITA SAHU listed as authorized official on NPI 1194358960 (ESHA DENTAL LLC)",
+          "org_npi = primary_npi (LLC org record)"
+        ],
+        "evidence": [
+          "BBB Business Profile for Esha Dental LLC, 1409 W Lake St, Addison IL — confirms Dr. Sunita Sahu DDS as principal/manager (bbb.org/us/il/addison/profile/dentist/esha-dental-llc-0654-1000095347)",
+          "Esha Dental official website eshadental.com lists the practice at 1409 W Lake St, Addison IL — Dr. Sahu named as the dentist",
+          "LocalMed provider listing confirms Dr. Sunita Sahu DDS at Esha Dental, Addison IL (localmed.com/providers/dr-sunita-sahu-dds/)"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.bbb.org/us/il/addison/profile/dentist/esha-dental-llc-0654-1000095347",
+        "https://www.eshadental.com/",
+        "https://www.localmed.com/providers/dr-sunita-sahu-dds/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "SUNITA SAHU",
+        "reach": 3,
+        "zips": ["60101", "60618", "60623"],
+        "npi": "1194358960",
+        "entity_name": "ESHA DENTAL LLC"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "ESHA DENTAL LLC (NPI 1194358960) at 1409 W Lake St, Addison IL 60101 is a real, active GP dental practice. BBB record directly names Dr. Sunita Sahu DDS as the principal of the LLC. Own website (eshadental.com) is live and lists services and the Addison address. This location has strong documentary corroboration of dentist-owner identity. No MSO/DSO/PE evidence found."
+    },
+    {
+      "location_id": "cc00cb07c8069fa8",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Sunita Sahu, DDS — featured doctor on practice website completedentalcarechicago.com",
+      "network_id": "ao:SAHU_SUNITA",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: SUNITA SAHU listed as authorized official on NPI 1538333604 (ER DENTAL CARE LTD)",
+          "entity_classification=small_group, provider_count=3",
+          "org_npi = primary_npi (Ltd org record)"
+        ],
+        "evidence": [
+          "completedentalcarechicago.com is the consumer-facing website for 3205 W Irving Park Rd, Chicago IL 60618, with Dr. Sunita Sahu named as the doctor/owner (completedentalcarechicago.com/doctor-helen/ lists her bio)",
+          "Yelp listing confirms 'Complete Dental Care' at 3205 W Irving Park Rd, Chicago IL 60618, phone (773) 267-2671 — matching the NPI record for ER Dental Care Ltd",
+          "Dr. Sahu's individual provider directory (sunitasahu.dr-leonardo.com) lists 3205 W Irving Park Rd as her primary practice location"
+        ]
+      },
+      "evidence_urls": [
+        "https://completedentalcarechicago.com/doctor-helen/",
+        "https://completedentalcarechicago.com/about-us/",
+        "https://www.yelp.com/biz/complete-dental-care-chicago",
+        "https://sunitasahu.dr-leonardo.com/locations.html"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "SUNITA SAHU",
+        "reach": 3,
+        "zips": ["60101", "60618", "60623"],
+        "npi": "1538333604",
+        "entity_name": "ER DENTAL CARE LTD"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "NPPES entity name is 'ER DENTAL CARE LTD' but the consumer brand is 'Complete Dental Care' at this address. No stale/closed indication — Yelp reviews updated June 2026 and practice appears active.",
+      "reasoning": "ER DENTAL CARE LTD (NPI 1538333604) at 3205 W Irving Park Rd, Chicago IL 60618 operates publicly as 'Complete Dental Care.' Dr. Sunita Sahu DDS is the named practitioner on the practice website (completedentalcarechicago.com) and in provider directories. Yelp (43 reviews, updated June 2026) confirms the practice is active. This is the most established of Dr. Sahu's locations given her 20+ year career tenure at this address. No DSO/MSO/PE affiliation found."
+    },
+    {
+      "location_id": "f62241c4286271dd",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Sunita Sahu, DDS — listed as provider; ownership role at this specific entity less clear than at other two",
+      "network_id": "ao:SAHU_SUNITA",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: SUNITA SAHU listed as authorized official on NPI 1760794176 (DENTAL WISH LTD)",
+          "entity_classification=small_group, provider_count=2",
+          "org_npi = primary_npi (Ltd org record)"
+        ],
+        "evidence": [
+          "Multiple provider directories (CareCredit, vitadox, WebMD/Vitals, NPI profile) list Dr. Sunita Sahu among providers at Dental Wish Ltd, 4101 W 26th St, Chicago IL 60623",
+          "NPI record (NPI 1760794176) registered 2010 shows SUNITA SAHU as authorized official — consistent with ownership/administrative role"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.carecredit.com/doctor-locator/chicago-il/dental-wish-ltd-psf943/",
+        "https://www.vitadox.com/practice/south-lawndale-chicago-il-60623/dental-wish-ltd/54LrGiudM2XrcxkE53TbBF",
+        "https://doctor.webmd.com/practice/dental-wish-1a075503-f6f6-4959-b30f-291ac1d9a03a",
+        "https://npiprofile.com/npi/1760794176"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "SUNITA SAHU",
+        "reach": 3,
+        "zips": ["60101", "60618", "60623"],
+        "npi": "1760794176",
+        "entity_name": "DENTAL WISH LTD"
+      },
+      "web_searched": true,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "stale_closed_note": null,
+      "reasoning": "DENTAL WISH LTD (NPI 1760794176) at 4101 W 26th St, Chicago IL 60623. Dr. Sunita Sahu is listed as authorized official on the NPPES NPI record (registered 2010) and appears in provider directories at this address. However, multiple other named dentists (Eric Andersen, Ashley Seide, Ronald Winn, Ian Hoffman) are listed at this practice, and no dedicated website or BBB/Secretary of State filing was found that clearly names Dr. Sahu as owner vs. associate. The AO designation on an older multi-provider Ltd entity may reflect a credentialing/admin role rather than sole ownership. Classifying candidate (not ready_for_validation) pending confirmation of her ownership stake at this specific entity. Structural picture remains dentist_multi: no DSO/MSO/PE evidence whatsoever."
+    }
+  ]
+}

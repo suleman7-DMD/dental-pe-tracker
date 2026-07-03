@@ -1,0 +1,110 @@
+{
+  "network": "BEHZAD SANEI",
+  "network_id": "ao:SANEI_BEHZAD",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Dr. Behzad Sanei DMD is the owner/president of two GP dental offices in the Chicago metro: Advanced Dentistry at Morton Grove (suburban multi-specialty group, 4 providers, 5821 Dempster St, 60053) and Northwestern Dental Clinic / Sanei Center PC (6-provider group practice, 2604 W North Ave, Chicago 60647). No MSO, management company, DSO platform, or PE backer found. The AO cluster reflects genuine dentist-owned multi-office ownership. CRITICAL: the DB classification of location e50dfc828412c437 as dso_national/Western Dental is a classifier false positive — the name match fired on 'North & Western' in the consumer brand, not a real Western Dental DSO address. This location should be demoted to independent (large_group).",
+  "owner_operator_identity": "Dr. Behzad Sanei DMD, President/Owner — UIC BS Biology, Temple University Kornberg School of Dentistry DMD; 12+ years in private practice; previously worked in Bucktown before founding/joining Advanced Dentistry in 2019 as owner.",
+  "brand_trade_names": [
+    "Advanced Dentistry at Morton Grove",
+    "Northwestern Dental Clinic",
+    "North & Western Dental Clinic",
+    "Sanei Center PC"
+  ],
+  "legal_entities": [
+    "Sanei Center PC (NPI 1952659005, IL license 019.028529, enumerated 2012-08-21)",
+    "Advanced Dentistry at Morton Grove (NPI 1184866329, EIN 263228910)"
+  ],
+  "durable_artifacts": [
+    "Shared authorized official BEHZAD SANEI (PRESIDENT/DMD) across NPIs 1184866329 and 1952659005",
+    "EIN 263228910 on NPI 1184866329 (Advanced Dentistry at Morton Grove) — Sanei sole owner",
+    "Sanei Center PC president Behzad Sanei confirmed in NPPES and opennpi.com",
+    "myadvanceddentistry.com bio confirms Sanei as owner of Morton Grove practice",
+    "Consumer brand at 2604 W North Ave is 'Northwestern Dental Clinic' / 'North & Western Dental Clinic' — NOT Western Dental DSO"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "Location e50dfc828412c437 (Sanei Center PC, 60647) is currently misclassified as dso_national/Western Dental in the DB. The DSO classifier fired on 'North & Western Dental Clinic' at that address and matched it to 'Western Dental' — a false positive. The practice is independently owned by Dr. Behzad Sanei (president of Sanei Center PC). Recommend demotion to large_group/independent. provider_count=0 on this org NPI likely because it is the billing/org NPI for the Northwestern Dental Clinic group practice (6 individual NPIs at that address per OpenCare listing).",
+  "evidence_chain": "AO signal: BEHZAD SANEI appears as PRESIDENT on both NPI 1184866329 (Advanced Dentistry at Morton Grove, 60053) and NPI 1952659005 (Sanei Center PC, 60647), reach=2. Documentary corroboration: (1) myadvanceddentistry.com/about-us/meet-dr-behzad-sanei-dmd/ confirms Sanei as owner of Advanced Dentistry at Morton Grove, a single-location multi-specialty group practice. (2) opennpi.com/provider/1952659005 confirms Sanei as President of Sanei Center PC at 2604 W North Ave. (3) Multiple consumer directories (OpenCare, Yelp, YellowPages) confirm the consumer-facing name at 2604 W North Ave is 'Northwestern Dental Clinic' / 'North & Western Dental Clinic' — a multi-dentist independent group, NOT affiliated with the Western Dental DSO chain. No MSO, management company, PE-backing, or DSO platform found across 3 web searches.",
+  "future_app_notes": "1. Demote e50dfc828412c437 from dso_national/Western Dental to large_group/independent — document the false-positive in il_false_corporate_demotions evidence file. 2. The two Sanei locations are a small dentist-owned multi-office group; if the denominator ever tracks dentist_multi networks, this qualifies. 3. If Northwestern Dental Clinic expands or a management layer is added, revisit for stealth_dso upgrade. 4. Sanei previously worked in Bucktown (ZIP 60647) before 2019 when he joined/founded Advanced Dentistry — the Northwestern Dental Clinic at 60647 may be the predecessor or a co-owned second office.",
+  "classifications": [
+    {
+      "location_id": "d9578cb377feda64",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Behzad Sanei DMD, Owner/President",
+      "network_id": "ao:SANEI_BEHZAD",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2: BEHZAD SANEI PRESIDENT on NPI 1184866329 across ZIP 60053",
+          "EIN 263228910 on this NPI (sole-entity signal)",
+          "4 providers at location — classified large_group in DB"
+        ],
+        "evidence": [
+          "myadvanceddentistry.com/about-us/meet-dr-behzad-sanei-dmd/ confirms Dr. Sanei as Owner and practitioner at Advanced Dentistry at Morton Grove, single-location multi-specialty practice; no DSO/MSO mention",
+          "NPPES AO = Behzad Sanei (PRESIDENT/DMD) — consistent with owner-operator"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.myadvanceddentistry.com/about-us/meet-dr-behzad-sanei-dmd/",
+        "https://opennpi.com/provider/1184866329"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "BEHZAD SANEI",
+        "ao_title": "PRESIDENT",
+        "reach": 2,
+        "zips": ["60053", "60647"],
+        "npi": "1184866329",
+        "ein": "263228910",
+        "current_db_classification": "large_group"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Advanced Dentistry at Morton Grove is an independently owned multi-specialty group practice. Dr. Behzad Sanei is confirmed as owner on the practice website. NPPES AO = PRESIDENT/DMD. EIN 263228910 is a single entity. No MSO, management company, or PE backer found. Current DB classification large_group is correct for the independent classification; dentist_multi is the network-level ownership tier. This location is a genuine part of a dentist-owned two-office group and does NOT need reclassification in the corporate direction."
+    },
+    {
+      "location_id": "e50dfc828412c437",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Behzad Sanei DMD, President of Sanei Center PC",
+      "network_id": "ao:SANEI_BEHZAD",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2: BEHZAD SANEI PRESIDENT on NPI 1952659005 across ZIP 60647",
+          "Org NPI enumerated 2012 — older entity than the Morton Grove location"
+        ],
+        "evidence": [
+          "opennpi.com/provider/1952659005 confirms Sanei as President of Sanei Center PC at 2604 W North Ave, Chicago IL 60647 — no DSO affiliation disclosed",
+          "Consumer directories (Yelp, YellowPages, Waze, OpenCare) confirm the consumer-facing brand at 2604 W North Ave is 'Northwestern Dental Clinic' / 'North & Western Dental Clinic' — a multi-dentist independent group practice, NOT a Western Dental DSO office",
+          "Multiple dental directories list Dr. Behzad Sanei and 5 other dentists at this address — consistent with independently owned multi-provider group",
+          "No Western Dental locator listing, no Sonrava/New Mountain Capital filing, no management contract found for this address"
+        ]
+      },
+      "evidence_urls": [
+        "https://opennpi.com/provider/1952659005",
+        "https://www.opencare.com/dentists/chicago-il/northwestern-dental-clinc-ltd-24630615445c/",
+        "https://www.yellowpages.com/chicago-il/mip/northwestern-dental-clinic-ltd-3895195",
+        "https://www.yelp.com/biz/northwestern-dental-clinic-chicago"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "BEHZAD SANEI",
+        "ao_title": "PRESIDENT",
+        "reach": 2,
+        "zips": ["60053", "60647"],
+        "npi": "1952659005",
+        "ein": null,
+        "current_db_classification": "dso_national",
+        "current_affiliated_dso": "Western Dental",
+        "current_classification_reasoning": "Location-matched to Western Dental at 2604 W NORTH AVE (score=100.0)",
+        "false_positive_flag": true
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "CLASSIFIER FALSE POSITIVE: Current DB classification dso_national/Western Dental is incorrect. The practice at 2604 W North Ave is 'Northwestern Dental Clinic' / 'North & Western Dental Clinic' — the DSO classifier matched 'Western Dental' from the substring 'Western' in the consumer name, not a real Western Dental DSO address. This location should be DEMOTED to large_group/independent. Recommend adding to the il_false_corporate_demotions evidence file.",
+      "reasoning": "Sanei Center PC at 2604 W North Ave Chicago 60647 is an independently owned multi-provider dental group practice known to consumers as 'Northwestern Dental Clinic' or 'North & Western Dental Clinic'. Dr. Behzad Sanei is the President per NPPES. No Western Dental DSO connection exists — the dso_national/Western Dental classification is a false positive from a substring name match. Multiple web sources confirm this as an independent practice with 6 dentists. This location is the second office in Sanei's dentist-owned two-office group and should be reclassified to large_group/independent, not kept as dso_national. The net effect of that correction is that the GP corporate floor should DECREASE by 1 location (removing a false positive from the denominator)."
+    }
+  ]
+}

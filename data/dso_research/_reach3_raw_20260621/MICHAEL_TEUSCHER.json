@@ -1,0 +1,158 @@
+{
+  "network": "MICHAEL TEUSCHER",
+  "network_id": "ao:TEUSCHER_MICHAEL",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Dr. Michael Teuscher, DDS is a founder-dentist with 30+ years in St. Charles, IL who built a family multi-generational dental practice. Three of his sons — Riley, Brayden, and Jameson Teuscher — are licensed DMDs practicing at the same group. The network operates under two active addresses: the original 40W320 Lafox Rd office (carrying two NPPES registrations — 'Teuscher Dental' NPI 1053896183 est. 1987 and 'Teuscher Dental Group' NPI 1225196173 — that normalize to the same building) and a second office at 40W131 Campton Crossings Dr operating as 'Teuscher Legacy Dental.' No DSO/MSO/PE structure found; the practice website explicitly presents itself as a family-owned group. The AO cluster reach=3 represents a father-and-sons private group, NOT a DSO or MSO-backed platform.",
+  "owner_operator_identity": "Dr. Michael Teuscher, DDS (founder, 30+ years); sons Dr. Riley Teuscher DMD, Dr. Brayden Teuscher DMD, Dr. Jameson Teuscher DMD",
+  "brand_trade_names": [
+    "Teuscher Dental",
+    "Teuscher Dental Group",
+    "Teuscher Legacy Dental"
+  ],
+  "legal_entities": [],
+  "durable_artifacts": [
+    "EIN 364408411 on NPI 1053896183 (Teuscher Dental, 40W320 Lafox Rd)",
+    "Shared phone (630) 762-0000 across all three NPPES registrations",
+    "Name-chain: 'Teuscher Dental' / 'Teuscher Dental Group' / 'Teuscher Legacy Dental' — all within ZIP 60175",
+    "NPPES AO MICHAEL TEUSCHER on reach=3 NPIs",
+    "teuscherdental.com about page documents four Teuscher-family dentists at 40W131 Campton Crossings Dr"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "Location 0706e53bbd0c88c4 ('Teuscher Dental Group', 40 W 320 Lafox Rd, NPI 1225196173, 0 providers) normalizes to the same physical address as location 9f8a9a9f167eaf7a ('Teuscher Dental', 40W320 Lafox Rd, NPI 1053896183, est. 1987, 2 providers). This is a same-building duplicate registration — two NPIs for the same office. The downstream gate should treat one of these as a duplicate_location candidate and not double-count the Lafox Rd building in the GP denominator.",
+  "evidence_chain": "AO signal: MICHAEL TEUSCHER appears as authorized official on three NPPES registrations (NPIs 1053896183, 1225196173, 1326871047), all in ZIP 60175 St. Charles IL, all sharing phone (630) 762-0000 and the 'Teuscher' family brand name. Documentary corroboration: (1) teuscherdental.com/about-us confirms Dr. Michael Teuscher DDS is the founder with 30+ years, and three sons (Riley, Brayden, Jameson) are practicing DMDs at the same group — an explicitly family-owned succession practice with no DSO/MSO/PE disclosure. (2) Yelp and directory listings confirm 'Teuscher Legacy Dental' at 40W131 Campton Crossings Dr as the active branded storefront. (3) Third-party directories (Vitadox, Vitals, Healthgrades, WebMD) list Dr. Michael Teuscher at 40W320 Lafox Rd under 'Teuscher Dental'/'Teuscher Dental Group.' Conclusion: this is a dentist-founded, family-operated two-address private group with no management-company layer — dentist_multi, pe_backed=false.",
+  "future_app_notes": "The Lafox Rd addresses (NPIs 1053896183 + 1225196173) should be reviewed as a potential duplicate_location pair — both normalize to 40W320 Lafox Rd with the same phone. If the practice relocated fully to Campton Crossings Dr, the Lafox Rd NPI 1053896183 (est. 1987, entity_classification=small_group) may be the legacy shell and NPI 1225196173 (solo_established, 0 providers) the org-billing NPI. Recommend a duplicate_location flag audit on this pair before any further denominator math. The Campton Crossings location (1326871047, family_practice, 4 providers) appears to be the active multi-dentist office.",
+  "classifications": [
+    {
+      "location_id": "9f8a9a9f167eaf7a",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Michael Teuscher, DDS (founder); Dr. Riley, Brayden, and Jameson Teuscher DMD (sons)",
+      "network_id": "ao:TEUSCHER_MICHAEL",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 (MICHAEL TEUSCHER AO on NPI 1053896183, 1225196173, 1326871047)",
+          "name_chain: 'Teuscher Dental' / 'Teuscher Dental Group' / 'Teuscher Legacy Dental' within ZIP 60175",
+          "shared_phone: (630) 762-0000 across all three locations",
+          "EIN 364408411 on this NPI"
+        ],
+        "evidence": [
+          "teuscherdental.com/about-us: documents Dr. Michael Teuscher DDS as founder with 30+ years; three dentist sons (Riley, Brayden, Jameson Teuscher) active at the practice — explicitly family-owned, no DSO/MSO disclosed",
+          "Healthgrades/WebMD list Dr. Michael Teuscher DDS at 40W320 Lafox Rd (this address) under 'Teuscher Dental Group'",
+          "Yelp listing for 'MICHAEL J TEUSCHER, DDS - TEUSCHER LEGACY DENTAL' points to this Lafox Rd address confirming same-dentist group"
+        ]
+      },
+      "evidence_urls": [
+        "https://teuscherdental.com/about-us",
+        "https://www.healthgrades.com/dentist/dr-michael-teuscher-x3r3v",
+        "https://doctor.webmd.com/doctor/michael-teuscher-a5f7a155-ca65-4349-be1a-31d8618add04-overview"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "MICHAEL TEUSCHER",
+        "reach": 3,
+        "zips": ["60175"],
+        "npi": "1053896183",
+        "ein": "364408411",
+        "name": "TEUSCHER DENTAL",
+        "address": "40w320 lafox rd",
+        "city": "ST CHARLES",
+        "year_established": 1987,
+        "provider_count": 2,
+        "entity_classification": "small_group"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "Possible legacy/relocated address — the active brand website (teuscherdental.com) lists 40W131 Campton Crossings Dr as the current location. This Lafox Rd NPI (est. 1987) may be the original office; status (active vs. closed) should be field-verified. Also shares normalized address with NPI 1225196173 ('Teuscher Dental Group', 0 providers) — likely same-building duplicate registration.",
+      "reasoning": "TEUSCHER DENTAL at 40W320 Lafox Rd is the original founding office of Dr. Michael Teuscher DDS (est. 1987, 2 providers, EIN 364408411). Web evidence confirms Dr. Michael Teuscher as founder-owner of a family dental group with no DSO/MSO/PE layer — dentist_multi is the correct tier. gate_status=ready_for_validation because the practice website, Healthgrades, and WebMD all corroborate the same owner identity across the two addresses. Pe_backed=false: no PE sponsor or management company found. Stale note: the brand's active website now markets the Campton Crossings address as primary; Lafox Rd may be a secondary or legacy location."
+    },
+    {
+      "location_id": "0706e53bbd0c88c4",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Michael Teuscher, DDS (founder); Dr. Riley, Brayden, and Jameson Teuscher DMD (sons)",
+      "network_id": "ao:TEUSCHER_MICHAEL",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 (MICHAEL TEUSCHER AO on NPI 1053896183, 1225196173, 1326871047)",
+          "name_chain: 'Teuscher Dental Group' — same ZIP 60175 and same phone as sibling NPIs",
+          "shared_phone: (630) 762-0000",
+          "Normalized address (40 W 320 Lafox Rd) matches NPI 1053896183 (40w320 lafox rd) — same building"
+        ],
+        "evidence": [
+          "teuscherdental.com/about-us: same family ownership as NPI 1053896183 — no separate entity, same group",
+          "Yahoo Local / BusinessYab listings show 'Teuscher Dental Group' at 40W320 Lafox Rd as part of the same practice group under Dr. Michael Teuscher"
+        ]
+      },
+      "evidence_urls": [
+        "https://teuscherdental.com/about-us",
+        "https://local.yahoo.com/info-182548421-michael-j-teuscher-dds-teuscher-dental-group-st-charles",
+        "https://www.businessyab.com/explore/united_states/illinois/kane_county/campton_township/st_charles/la_fox_road/40w320/teuscher_legacy_dental.html"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "MICHAEL TEUSCHER",
+        "reach": 3,
+        "zips": ["60175"],
+        "npi": "1225196173",
+        "ein": null,
+        "name": "TEUSCHER DENTAL GROUP",
+        "address": "40 w 320 lafox rd",
+        "city": "ST. CHARLES",
+        "year_established": null,
+        "provider_count": 0,
+        "entity_classification": "solo_established"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "STRONG DUPLICATE FLAG: This NPI (1225196173, 'Teuscher Dental Group', 0 providers, no EIN) normalizes to the exact same address as NPI 1053896183 ('Teuscher Dental', 40W320 Lafox Rd, EIN 364408411, est. 1987, 2 providers). Zero provider count and no EIN suggest this is the organization/billing NPI registered at the same office as the individual NPI — a same-building duplicate registration. Should be reviewed for duplicate_location reclassification. Do NOT count this address twice in the GP denominator.",
+      "reasoning": "TEUSCHER DENTAL GROUP at 40 W 320 Lafox Rd normalizes to the same physical building as TEUSCHER DENTAL (NPI 1053896183). With 0 providers and no EIN, this is almost certainly the group/organization NPI for the same office. Ownership tier is dentist_multi (same Dr. Michael Teuscher family group, corroborated by practice website). gate_status=ready_for_validation because ownership is document-corroborated. Primary concern flagged in stale_closed_note: downstream gate should determine if this is a duplicate_location of 9f8a9a9f167eaf7a and remove it from the GP denominator to avoid double-counting."
+    },
+    {
+      "location_id": "da5dc08600236616",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Michael Teuscher, DDS (founder); Dr. Riley, Brayden, and Jameson Teuscher DMD (sons)",
+      "network_id": "ao:TEUSCHER_MICHAEL",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 (MICHAEL TEUSCHER AO on NPI 1053896183, 1225196173, 1326871047)",
+          "name_chain: 'Teuscher Legacy Dental' — same ZIP 60175 and phone as sibling NPIs",
+          "shared_phone: (630) 762-0000",
+          "entity_classification=family_practice, provider_count=4 — consistent with multi-dentist family group"
+        ],
+        "evidence": [
+          "teuscherdental.com is the active public website for this location (40W131 Campton Crossings Dr) — it names Dr. Michael Teuscher DDS (founder, 30+ years) and sons Riley, Brayden, Jameson Teuscher DMD as the practicing dentists; no DSO/MSO/PE disclosed",
+          "Yelp listing 'TEUSCHER LEGACY DENTAL - Updated June 2026' at 40w131 Campton Crossings Dr confirms this is the active primary location",
+          "WebMD practice profile confirms 40W131 Campton Crossings Dr, St. Charles IL 60175 as 'Teuscher Legacy Dental'"
+        ]
+      },
+      "evidence_urls": [
+        "https://teuscherdental.com/about-us",
+        "https://teuscherdental.com/",
+        "https://www.yelp.com/biz/teuscher-legacy-dental-st-charles",
+        "https://doctor.webmd.com/practice/teuscher-legacy-dental-323587e2-1616-4a51-b7d5-84ae05beb5d8"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "MICHAEL TEUSCHER",
+        "reach": 3,
+        "zips": ["60175"],
+        "npi": "1326871047",
+        "ein": null,
+        "name": "TEUSCHER LEGACY DENTAL",
+        "address": "40w131 campton crossings dr",
+        "city": "ST CHARLES",
+        "year_established": null,
+        "provider_count": 4,
+        "entity_classification": "family_practice"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "TEUSCHER LEGACY DENTAL at 40W131 Campton Crossings Dr is the active primary office of the Teuscher family dental group (per updated Yelp June 2026 + active practice website). Dr. Michael Teuscher DDS is the named founder; three of his sons are the associate/partner dentists. provider_count=4 matches the four Teuscher family dentists listed on the website. No MSO, DSO brand, PE sponsor, or management company found. dentist_multi is the correct tier; gate_status=ready_for_validation due to strong website+directory corroboration of owner identity and multi-location family structure. entity_classification=family_practice is consistent. This is the most active and least-ambiguous of the three NPIs in this cluster."
+    }
+  ]
+}

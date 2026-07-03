@@ -1,0 +1,121 @@
+{
+  "network": "SUNIL EAMANI",
+  "network_id": "ao:EAMANI_SUNIL",
+  "owner_type_verdict": "dso_brand",
+  "network_summary": "Sunil Eamani is the NPPES-listed MANAGER (not owner/dentist) of two generic LLCs — Dentist in Vernon Hills LLC and Dentist in Bloomingdale LLC — that operate as DentalWorks-branded offices under Sonrava Health, a national DSO platform (~600 locations, 21 states). The AO signal here reflects a Sonrava corporate manager role, not personal dentist ownership. Both locations were enumerated in late 2024 under identical LLC naming patterns and share a South Carolina phone number (803) 830-6881, consistent with Sonrava's centralized credentialing/NPI-registration operations. The Bloomingdale location is flagged as potentially moved/closed per Yelp as of May 2026.",
+  "owner_operator_identity": "Sonrava Health (corporate parent); Sunil Eamani is listed as MANAGER of both LLCs — a Sonrava corporate/admin officer, not the beneficial owner or practicing dentist.",
+  "brand_trade_names": ["DentalWorks", "DentalWorks Vernon Hills", "DentalWorks Bloomingdale", "Western Dental (Sonrava Health)", "Sonrava Health"],
+  "legal_entities": ["DENTIST IN VERNON HILLS LLC", "DENTIST IN BLOOMINGDALE LLC", "Sonrava Health", "DCP of Illinois (Vernon Hills) Ltd.", "DCP of Illinois (Bloomingdale) Ltd."],
+  "durable_artifacts": [
+    "Both LLCs share AO Sunil Eamani (title: MANAGER) in NPPES federal records",
+    "parent_company = SONRAVA HEALTH on both practice_locations rows",
+    "website = Dentalworks.com on both Data-Axle-enriched rows",
+    "Shared corporate phone (803) 830-6881 — South Carolina registrant consistent with Sonrava HQ/credentialing ops",
+    "LLC naming pattern 'Dentist in [City] LLC' is documented Sonrava/DentalWorks friendly-PC shell structure in Illinois",
+    "Groupon listing: 'DentalWorks Vernon Hills / DCP of Illinois' — confirms DCP of Illinois PC overlay",
+    "Both enumerated 2024-11 to 2024-12 — new Sonrava IL expansion wave",
+    "Yelp: DentalWorks Bloomingdale (366 W Army Trail Rd) listed as MOVED as of May 2026"
+  ],
+  "mso_platform_pe_evidence": "Sonrava Health is the parent platform operating DentalWorks (~600 offices, 21 states). Formerly backed by New Mountain Capital (PE); Sonrava rebranded from Western Dental parent entity. See https://www.sonrava.com/aboutsonrava and https://www.sonrava.com/brands. DentalWorks is one of Sonrava's core consumer brands alongside Western Dental & Orthodontics, Brident Dental, Perfect Teeth. The Vernon Hills address (555 E Townline Rd #4) and Bloomingdale address (366 W Army Trail Rd 310A) appear on DentalWorks locator and directory listings confirming the brand affiliation.",
+  "stale_closed_false_positive_notes": "Sunil Eamani is NOT a dentist-owner — he is a Sonrava corporate MANAGER used to enumerate new-location LLCs in NPPES. The AO cluster is a Sonrava admin artifact, not a dentist multi-office private group. Bloomingdale location (3d0e7f3e036f5842) flagged as potentially moved/closed per Yelp May 2026 — validate address currency before any outreach.",
+  "evidence_chain": "AO signal: Sunil Eamani listed as MANAGER on two Illinois organization-type NPIs (1366268716 Vernon Hills 60061, 1093539363 Bloomingdale 60108) enumerated 2024-11/12. Both LLCs have parent_company=SONRAVA HEALTH in Data-Axle enrichment. Both have website=Dentalworks.com. Yelp and BBB directory listings confirm DentalWorks brand at 555 E Townline Rd Vernon Hills and 366 W Army Trail Rd Bloomingdale. Groupon listing names DCP of Illinois as the operating entity behind DentalWorks Vernon Hills. Sonrava.com confirms DentalWorks as a Sonrava brand operating ~600 offices nationally. No individual dentist-owner or independent group found — Eamani is a Sonrava admin/manager. Classification: branded_dso, pe_backed=true (Sonrava / formerly New Mountain Capital). Both locations already correctly classified dso_national in practice_locations.",
+  "future_app_notes": "1. Verify Bloomingdale address currency — Yelp flags it MOVED; if vacated, mark stale_closed. 2. Confirm DentalWorks Vernon Hills still operating at 555 E Townline Rd Suite 4. 3. Sonrava/DentalWorks friendly-PC pattern ('Dentist in [City] LLC') may yield additional IL offices on future NPPES enumerations — watch for new LLCs with same AO. 4. DCP of Illinois entity family (Vernon Hills Ltd, Bloomingdale Ltd) may have additional EIN/registered-agent filings through IL Secretary of State worth pulling. 5. pe_backed confirmed Sonrava (formerly New Mountain Capital) — update if Sonrava changes PE sponsor.",
+  "classifications": [
+    {
+      "location_id": "393a79a74b719b48",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Sonrava Health (DentalWorks brand); Sunil Eamani = Sonrava corporate MANAGER (NPPES AO)",
+      "network_id": "ao:EAMANI_SUNIL",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2 across 2 ZIPs (60061, 60108); AO title=MANAGER",
+          "LLC name pattern: 'Dentist in Vernon Hills LLC' — generic Sonrava shell naming",
+          "Enumeration date: 2024-12-02 — new Sonrava IL expansion wave",
+          "Shared corporate phone (803) 830-6881 with Bloomingdale sibling"
+        ],
+        "evidence": [
+          "parent_company=SONRAVA HEALTH in Data-Axle enrichment",
+          "website=Dentalworks.com in Data-Axle enrichment",
+          "Yelp listing: DentalWorks Vernon Hills at 555 E Townline Rd, Vernon Hills IL (https://www.yelp.com/biz/dentalworks-vernon-hills-vernon-hills)",
+          "BBB listing: DentalWorks of Vernon Hills at this address (https://www.bbb.org/us/il/vernon-hills/profile/dentist/dentalworks-of-vernon-hills-0654-88376539)",
+          "Groupon: 'DentalWorks Vernon Hills / DCP of Illinois' confirming friendly-PC overlay",
+          "Sonrava.com confirms DentalWorks as a Sonrava brand (~600 offices, 21 states) (https://www.sonrava.com/brands)"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.yelp.com/biz/dentalworks-vernon-hills-vernon-hills",
+        "https://www.bbb.org/us/il/vernon-hills/profile/dentist/dentalworks-of-vernon-hills-0654-88376539",
+        "https://www.sonrava.com/brands",
+        "https://www.sonrava.com/aboutsonrava"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "SUNIL EAMANI",
+        "title": "MANAGER",
+        "reach": 2,
+        "zips": ["60061", "60108"],
+        "npi": "1366268716",
+        "practice_name": "DENTIST IN VERNON HILLS LLC",
+        "address": "555 E TOWNLINE RD STE 4",
+        "city": "VERNON HILLS",
+        "current_entity_classification": "dso_national",
+        "parent_company": "SONRAVA HEALTH",
+        "website": "Dentalworks.com",
+        "enumeration_date": "2024-12-02"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "DENTIST IN VERNON HILLS LLC at 555 E Townline Rd Suite 4, Vernon Hills IL 60061 is a Sonrava Health / DentalWorks-branded office operating under a generic friendly-PC LLC shell. Yelp, BBB, and Groupon all confirm DentalWorks branding at this address. Sonrava is a national DSO platform with ~600 offices; DentalWorks is one of its consumer brands. Sunil Eamani's MANAGER title and the LLC's 2024 enumeration date are consistent with Sonrava corporate officers used to register new-location NPIs. The location is already correctly classified dso_national with parent_company=SONRAVA HEALTH. pe_backed=true: Sonrava was formerly backed by New Mountain Capital (PE). branded_dso is the correct tier — this is an established national DSO brand with a documented MSO/platform structure, not a dentist-owned multi-office group."
+    },
+    {
+      "location_id": "3d0e7f3e036f5842",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Sonrava Health (DentalWorks brand); Sunil Eamani = Sonrava corporate MANAGER (NPPES AO)",
+      "network_id": "ao:EAMANI_SUNIL",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2 across 2 ZIPs (60061, 60108); AO title=MANAGER",
+          "LLC name pattern: 'Dentist in Bloomingdale LLC' — generic Sonrava shell naming",
+          "Enumeration date: 2024-11-13 — new Sonrava IL expansion wave",
+          "Shared corporate phone (803) 830-6881 with Vernon Hills sibling"
+        ],
+        "evidence": [
+          "parent_company=SONRAVA HEALTH in Data-Axle enrichment",
+          "website=Dentalworks.com in Data-Axle enrichment",
+          "Yelp listing: DentalWorks Bloomingdale at 366 W Army Trail Rd, Bloomingdale IL — flagged as MOVED as of May 2026 (https://m.yelp.com/biz/dentalworks-bloomingdale-bloomingdale-3)",
+          "Sonrava.com confirms DentalWorks as a Sonrava brand (~600 offices, 21 states) (https://www.sonrava.com/brands)",
+          "First-search Sonrava result confirms 'DCP of Illinois (Bloomingdale), Ltd. operates a DentalWorks location at 366 W. Army Trail Rd. Suite 310A, Bloomingdale, IL 60108'"
+        ]
+      },
+      "evidence_urls": [
+        "https://m.yelp.com/biz/dentalworks-bloomingdale-bloomingdale-3",
+        "https://www.sonrava.com/brands",
+        "https://www.sonrava.com/aboutsonrava"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "SUNIL EAMANI",
+        "title": "MANAGER",
+        "reach": 2,
+        "zips": ["60061", "60108"],
+        "npi": "1093539363",
+        "practice_name": "DENTIST IN BLOOMINGDALE LLC",
+        "address": "366 W ARMY TRAIL RD STE 310A",
+        "city": "BLOOMINGDALE",
+        "current_entity_classification": "dso_regional",
+        "parent_company": "SONRAVA HEALTH",
+        "website": "Dentalworks.com",
+        "enumeration_date": "2024-11-13"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "Yelp flags this location as MOVED as of May 2026 — the address 366 W Army Trail Rd Bloomingdale IL 60108 may be vacated or relocated. Validate address currency before any outreach or floor counting. If confirmed closed/moved, reclassify as stale/closed and remove from active corporate denominator if not replaced by a new Sonrava address in the same ZIP.",
+      "reasoning": "DENTIST IN BLOOMINGDALE LLC at 366 W Army Trail Rd Suite 310A, Bloomingdale IL 60108 is a Sonrava Health / DentalWorks-branded office operating under a generic friendly-PC LLC shell. Data-Axle enrichment confirms parent_company=SONRAVA HEALTH and website=Dentalworks.com. Yelp confirms DentalWorks branding at this address but flags the location as MOVED as of May 2026 — stale/closed status should be validated. The DCP of Illinois (Bloomingdale) Ltd. entity name was documented in a Sonrava M-1 filing, confirming the friendly-PC overlay. Sunil Eamani's MANAGER title and the LLC's 2024 enumeration date are consistent with Sonrava corporate officers used to register new-location NPIs. pe_backed=true: Sonrava was formerly backed by New Mountain Capital. branded_dso is the correct tier — this is an established national DSO brand with documented MSO/platform structure. Note: current DB entity_classification is dso_regional for the NPI row vs dso_national at location level — the location-level classification (dso_national) is correct per the CLAUDE.md hierarchy."
+    }
+  ]
+}

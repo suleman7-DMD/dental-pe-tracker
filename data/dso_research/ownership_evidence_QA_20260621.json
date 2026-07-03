@@ -1,0 +1,1236 @@
+{
+  "meta": {
+    "report": "ownership_evidence_QA",
+    "date": "2026-06-21",
+    "author": "New Session #1 \u2014 adversarial QA / validation gate (Opus 4.8)",
+    "input_file": "data/dso_research/census_evidence_candidates_validation_20260621.json",
+    "rows_reviewed": 72,
+    "scope": "Chicagoland/IL only; MA parked.",
+    "role": "Independent adversarial gatekeeper. 'final_ready' from the fleet is treated as ready_for_validation, never final truth. No DB/LEDGER/PROGRESS/ownership_tier writes from this session.",
+    "validator_handshake": {
+      "command_run": "python3 scrapers/consolidate_census.py <candidate_file> --session qa-2026-06-21 --validate-only",
+      "result": "EXIT 1 \u2014 199 errors, ALL schema-mismatch (NOT evidence-quality).",
+      "root_cause": "The fleet candidate schema (gate_status, evidence_basis values structural_only/affiliated_dso_field/institutional_match/ao_reach/provider_surnames) does NOT match the validator's required fields (status) or VALID_BASES (locator/web_verified/ein_cluster/ao_cluster/name_chain/intel_dossier/structural/none). The validator chokes on field names before it can assess any evidence.",
+      "consequence": "The validator CANNOT currently gate this file. A translation shim (fleet vocab -> validator vocab) or a fleet-runner change is REQUIRED before ANY row is consolidated. Evidence-quality gating in this report was therefore performed MANUALLY against the user's gates.",
+      "mapping_needed": {
+        "gate_status->status": {
+          "final_ready": "classified",
+          "candidate": "needs_verification",
+          "undetermined": "undetermined (status=needs_verification)"
+        },
+        "evidence_basis->evidence_basis(VALID)": {
+          "structural_only": "structural",
+          "affiliated_dso_field": "web_verified or ein_cluster (depending on artifact)",
+          "institutional_match": "intel_dossier/web_verified",
+          "ao_reach": "ao_cluster",
+          "provider_surnames": "structural",
+          "locator": "locator",
+          "web_verified": "web_verified"
+        },
+        "note": "ARTIFACT_BASES require evidence_artifacts; URL_BASES require evidence_urls. Many fleet rows carry neither in the validator's expected field names."
+      }
+    },
+    "counts": {
+      "pass_ready_for_validator": 35,
+      "needs_more_evidence": 36,
+      "reject": 1
+    },
+    "final_ready_downgraded_count": 6,
+    "final_ready_downgraded_location_ids": [
+      "4d5aa903a1f34565",
+      "c50218cf868c55f8",
+      "e50dfc828412c437",
+      "99b7b4ad619fddf4",
+      "2bbd52b88750a5a8",
+      "2061979d9dc56775"
+    ],
+    "tier_corrections_on_passing_rows": [
+      {
+        "location_id": "3bc304a7819a234f",
+        "row_num": 22,
+        "fleet_tier": "branded_dso",
+        "corrected_tier": "dentist_multi"
+      },
+      {
+        "location_id": "f3959b4a9ac8e139",
+        "row_num": 23,
+        "fleet_tier": "stealth_dso",
+        "corrected_tier": "dentist_multi"
+      },
+      {
+        "location_id": "3a2acb8b4e928c23",
+        "row_num": 32,
+        "fleet_tier": "stealth_dso",
+        "corrected_tier": "dentist_multi"
+      },
+      {
+        "location_id": "7495e79c66647036",
+        "row_num": 71,
+        "fleet_tier": "branded_dso",
+        "corrected_tier": "stealth_dso"
+      },
+      {
+        "location_id": "2061979d9dc56775",
+        "row_num": 72,
+        "fleet_tier": "single_loc_group",
+        "corrected_tier": "family_practice"
+      },
+      {
+        "location_id": "1f895d2ecd0fdaef",
+        "row_num": 55,
+        "fleet_tier": "single_loc_group",
+        "corrected_tier": "family_practice"
+      }
+    ]
+  },
+  "systematic_findings": [
+    "HANDSHAKE BLOCKER: validator rejects the whole file on schema (199 errors). Reconcile vocab before consolidating anything.",
+    "AO-REACH-ALONE: #13 (Hoffman) and #33 (Mohammed) rest solely on ao_reach with no multi-location OWNERSHIP corroboration; #11 (Yang) corroborated only by directory listings. Per user rule these are candidate-grade, not final.",
+    "DENTIST-OWNED GROUPS MIS-TAGGED AS DSO (inflates the DSO/PE-only headline): #22 Webster (->dentist_multi), #23 & #32 Precision/Randy Chang (->dentist_multi); #12 1st Family, #54 Secure carry pe_backed=false with no MSO/PE proof (T3-vs-T5 ambiguous).",
+    "FAMILY PRACTICES MIS-TAGGED AS single_loc_group (inflates the Consolidated headline): #72 Gasior (siblings) and #55 Rendon (father+son) are DB ec=family_practice; same surname != '2+ unrelated dentists'. The 6-tier model lacks a family bucket \u2014 escalate.",
+    "PE_BACKED INCONSISTENCY on Dental Dreams rows (#29, #34, #71): pe_backed=false despite naming a capital sponsor; reconcile the flag.",
+    "BRAND-NAME COLLISION RISK: #9 'Sonrisa Dental' (Debossu) vs the CDCA-affiliated 'Sonrisa' DSO in project history \u2014 DB shows no affiliation; low risk but negative-confirm before final.",
+    "DATA-QUALITY / GEOGRAPHY: #7 Lee Dental city=ORLAND PARK but zip=60647 (likely mis-ZIP'd, denominator scope); #62 practice_name literally 'Chicago Il' (placeholder); #42 evidence URL (Wilson) does not match DB address (Clark St)."
+  ],
+  "should_NOT_consolidate_despite_final_ready_label": [
+    {
+      "row_num": 11,
+      "location_id": "4d5aa903a1f34565",
+      "reason": "dentist_multi on ao_reach + directory listings only \u2014 multi-loc ownership not documented."
+    },
+    {
+      "row_num": 13,
+      "location_id": "c50218cf868c55f8",
+      "reason": "dentist_multi on ao_reach ALONE (ADA listing only confirms the person exists)."
+    },
+    {
+      "row_num": 17,
+      "location_id": "e50dfc828412c437",
+      "reason": "stealth_dso on affiliated_dso field with no exact-address URL + atypical Western Dental IL geography."
+    },
+    {
+      "row_num": 29,
+      "location_id": "99b7b4ad619fddf4",
+      "reason": "branded_dso with no URL/exact-address doc + pe flag inconsistency."
+    },
+    {
+      "row_num": 34,
+      "location_id": "2bbd52b88750a5a8",
+      "reason": "branded_dso on an individual-name NPI, no locator, possible NPI fan-out/duplicate of an org-NPI Dental Dreams location."
+    },
+    {
+      "row_num": 72,
+      "location_id": "2061979d9dc56775",
+      "reason": "labeled single_loc_group but is a FAMILY practice (Gasior siblings) \u2014 must not count as consolidated."
+    },
+    {
+      "row_num": 35,
+      "location_id": "dc3d6faeeb510821",
+      "reason": "(was already candidate) stealth_dso via co-location trap; DB affiliated_dso=None \u2014 reject."
+    }
+  ],
+  "consolidate_under_CORRECTED_tier_not_fleet_tier": [
+    {
+      "location_id": "3bc304a7819a234f",
+      "row_num": 22,
+      "fleet_tier": "branded_dso",
+      "corrected_tier": "dentist_multi"
+    },
+    {
+      "location_id": "f3959b4a9ac8e139",
+      "row_num": 23,
+      "fleet_tier": "stealth_dso",
+      "corrected_tier": "dentist_multi"
+    },
+    {
+      "location_id": "3a2acb8b4e928c23",
+      "row_num": 32,
+      "fleet_tier": "stealth_dso",
+      "corrected_tier": "dentist_multi"
+    },
+    {
+      "location_id": "7495e79c66647036",
+      "row_num": 71,
+      "fleet_tier": "branded_dso",
+      "corrected_tier": "stealth_dso"
+    },
+    {
+      "location_id": "2061979d9dc56775",
+      "row_num": 72,
+      "fleet_tier": "single_loc_group",
+      "corrected_tier": "family_practice"
+    },
+    {
+      "location_id": "1f895d2ecd0fdaef",
+      "row_num": 55,
+      "fleet_tier": "single_loc_group",
+      "corrected_tier": "family_practice"
+    }
+  ],
+  "coordination_flags_main_session_AO_networks": [
+    {
+      "row_num": 12,
+      "location_id": "c42bbfd07106f9f2",
+      "network": "Belkic (1st Family Dental)"
+    },
+    {
+      "row_num": 21,
+      "location_id": "719b01502f151a50",
+      "network": "Brunetti (ProCare)"
+    },
+    {
+      "row_num": 66,
+      "location_id": "0d76d8f9105e394d",
+      "network": "Aqel (Brite Dental)"
+    },
+    {
+      "row_num": 67,
+      "location_id": "8256bfff559b0760",
+      "network": "Aqel (Brite Dental)"
+    }
+  ],
+  "rows": [
+    {
+      "row_num": 2,
+      "location_id": "c4b5b35fa16e44e5",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "branded_dso",
+      "fleet_evidence_basis": "affiliated_dso_field",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "exact_documentary",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "Own DSO locator (dental360grp.com/locations/dental-360-north-ave) + DB-corroboratable affiliated_dso='Dental 360'; exact-address documentary.",
+        "pe_backed=false plausible (no PE sponsor on record for Dental 360)."
+      ]
+    },
+    {
+      "row_num": 3,
+      "location_id": "144d631a4c4dce2b",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "institutional",
+      "fleet_evidence_basis": "institutional_match",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "exact_documentary",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "Org's own site (iwsfamilyhealth.org) + opennpi NPI confirmation; FQHC Look-Alike. Institutional bucket correct (neither consolidated nor independent)."
+      ]
+    },
+    {
+      "row_num": 5,
+      "location_id": "fc010516c3e5b18d",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "dentist_multi",
+      "fleet_evidence_basis": "ao_reach",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_correlated",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "ao_reach=5 across 5 distinct watched ZIPs is a durable federal control artifact; LinkedIn confirms Roncevic as CEO of 'Dental Profile' = NPPES-artifact + web support.",
+        "CAUTION: web corroboration is LinkedIn-only (self-reported); a group website listing the locations would be stronger. Acceptable for dentist_multi."
+      ]
+    },
+    {
+      "row_num": 9,
+      "location_id": "71399b136dc5205a",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "true_independent",
+      "fleet_evidence_basis": "web_verified",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_correlated",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "POSITIVE owner-operated evidence: own site sonrisadental.net names Dr. Philip Debossu as owner since 1990, solo, single location; DB affiliated_dso=None.",
+        "RESIDUAL CAUTION (brand-name collision): name 'Sonrisa Dental' collides with the CDCA-affiliated 'Sonrisa' DSO referenced in project history (Phase-4 'Sonrisa/CDCA'). DB shows no affiliation here; low risk but recommend a negative-confirm before final."
+      ]
+    },
+    {
+      "row_num": 11,
+      "location_id": "4d5aa903a1f34565",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "dentist_multi",
+      "fleet_evidence_basis": "ao_reach",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_correlated",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "DOWNGRADE from final_ready: ao_reach=3 is a federal artifact, but the only URLs (zocdoc, dentalplans) are directory profiles that list the dentist \u2014 they do NOT document that he OWNS the 3 locations or that 'Metro Dental LLC' controls them.",
+        "Per user rule, AO reach needs corroboration of multi-location OWNERSHIP; directory listings are insufficient."
+      ]
+    },
+    {
+      "row_num": 12,
+      "location_id": "c42bbfd07106f9f2",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "branded_dso",
+      "fleet_evidence_basis": "locator",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "exact_documentary",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "Own locator (1stfamilydental.com/locations/logan-square) exact-address; brand confirmed.",
+        "COORD: AO Vesna Belkic (reach=15) is a MAIN-SESSION-CLAIMED AO network \u2014 coordinate to avoid double-processing.",
+        "TIER NOTE: pe_backed=false unverified; if 1st Family Dental is dentist-owned (Belkic) with no MSO/PE, the DSO/PE sub-classification (T5) is questionable vs dentist_multi (T3) \u2014 consolidated either way."
+      ]
+    },
+    {
+      "row_num": 13,
+      "location_id": "c50218cf868c55f8",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "dentist_multi",
+      "fleet_evidence_basis": "ao_reach",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "DOWNGRADE from final_ready (ao_reach ALONE): the only URL (ADA findadentist) merely confirms Hoffman is a licensed dentist at ONE address; the two-location claim rests solely on ao_reach=2 with no ownership corroboration."
+      ]
+    },
+    {
+      "row_num": 15,
+      "location_id": "b18493944a3e66c9",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "branded_dso",
+      "fleet_evidence_basis": "locator",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "exact_documentary",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "Own DSO locator (smile2impress.com/.../chicago-wicker-park) exact-address + PE investor page (carecapitalpartners.com: CareCapital, Series A $50M) -> pe_backed=true correct. Impress/Smile2Impress is a real PE-backed DSO.",
+        "SCOPE NOTE: NPPES taxonomy is 1223G0001X (General Practice), so the row is in-scope for the GP census even though Impress is a clear-aligner/ortho-leaning brand; revisit if a future taxonomy pass reclasses it specialist."
+      ]
+    },
+    {
+      "row_num": 17,
+      "location_id": "e50dfc828412c437",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "stealth_dso",
+      "fleet_evidence_basis": "affiliated_dso_field",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_correlated",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "DOWNGRADE: rests on DB affiliated_dso='Western Dental' with NO exact-address URL. Brand (Western Dental/Sonrava, New Mountain Capital) is real and PE-backed IF the label is correct.",
+        "GEOGRAPHY ANOMALY: Western Dental's IL footprint is atypical; confirm a locator/address doc that 'Sanei Center PC' is a Western Dental site before final (guard against a stale affiliated_dso label)."
+      ]
+    },
+    {
+      "row_num": 19,
+      "location_id": "d9fb0c9f226a66f3",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "dentist_multi",
+      "fleet_evidence_basis": "web_verified",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "exact_documentary",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "Own group site romodentalchicago.com names Genaro Romo as owner of 3 Romo Dental locations incl. this Cicero site ('Romo Dental III'); brand + owner + locations documented."
+      ]
+    },
+    {
+      "row_num": 21,
+      "location_id": "719b01502f151a50",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "dentist_multi",
+      "fleet_evidence_basis": "web_verified",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "exact_documentary",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "Own group site procaredentalgroup.com + LinkedIn CEO; AO reach=9 corroborates scale.",
+        "COORD: Brunetti is a MAIN-SESSION-CLAIMED AO network \u2014 coordinate before consolidation."
+      ]
+    },
+    {
+      "row_num": 22,
+      "location_id": "3bc304a7819a234f",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "branded_dso",
+      "fleet_evidence_basis": "web_verified",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": "dentist_multi",
+      "evidence_quality": "exact_documentary",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "TIER CORRECTION: own group site webdentalchicago.com shows Webster Dental Care was founded by Dr. Steven Rempas (1976) with NO PE backing \u2192 dentist_multi (T3), NOT branded_dso (T5). Labeling it branded_dso inflates the DSO/PE headline.",
+        "Consolidated bucket is correct either way; consolidate under the corrected tier."
+      ]
+    },
+    {
+      "row_num": 23,
+      "location_id": "f3959b4a9ac8e139",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "stealth_dso",
+      "fleet_evidence_basis": "affiliated_dso_field",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": "dentist_multi",
+      "evidence_quality": "structural_correlated",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "LINK is DB-corroborated: affiliated_dso='Precision Dental Care' ties SILVA DENTAL CENTER LTD to the Precision network.",
+        "TIER CORRECTION: Precision Dental Care is Randy-Chang dentist-owned with NO documented MSO/PE \u2192 a dentist group's friendly-PC = dentist_multi (T3), not stealth_dso (T4). Reclass to stealth only if an MSO/management-company layer is documented.",
+        "Consolidated bucket correct; an exact-address locator would strengthen."
+      ]
+    },
+    {
+      "row_num": 24,
+      "location_id": "28fab093c7a6a0d9",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "dentist_multi",
+      "fleet_evidence_basis": "web_verified",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_correlated",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "Own group site centraldentalassociates.com (this address) + a 2nd location + AO reach=2."
+      ]
+    },
+    {
+      "row_num": 29,
+      "location_id": "99b7b4ad619fddf4",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "branded_dso",
+      "fleet_evidence_basis": "affiliated_dso_field",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_correlated",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "DOWNGRADE: affiliated_dso='Dental Dreams' (real DSO) + AO Sameera Hussain reach=10, BUT ws=false, NO url, NO exact-address documentary.",
+        "PE FLAG INCONSISTENCY: pe_backed=false contradicts the reasoning naming KSL Capital/CDCA as sponsor \u2014 reconcile the pe flag and add an exact-address Dental Dreams locator before final."
+      ]
+    },
+    {
+      "row_num": 30,
+      "location_id": "addadba0d25e3812",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "dentist_multi",
+      "fleet_evidence_basis": "web_verified",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "exact_documentary",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "Own group site dentaltownchicago.com lists the Cicero location + names founder Dr. Sinan Razzak; AO reach=3."
+      ]
+    },
+    {
+      "row_num": 31,
+      "location_id": "fb2614131429927d",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "dentist_multi",
+      "fleet_evidence_basis": "web_verified",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "exact_documentary",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "Own group site (perfectdentalsmiles.com/meet-our-ceo) names founder Bushra Al Azzawi + 2 locations; AO reach=2."
+      ]
+    },
+    {
+      "row_num": 32,
+      "location_id": "3a2acb8b4e928c23",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "stealth_dso",
+      "fleet_evidence_basis": "affiliated_dso_field",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": "dentist_multi",
+      "evidence_quality": "structural_correlated",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "NPPES name IS 'PRECISION DENTAL CARE 2, LLC' \u2014 the brand is IN the legal name, so this is NOT a hidden/local 'stealth' name.",
+        "TIER CORRECTION: Randy-Chang dentist-owned, no documented PE/MSO \u2192 dentist_multi (T3), not stealth_dso. DB affiliated_dso='Precision Dental Care' + AO reach=5 corroborate the network membership.",
+        "Consolidated bucket correct; consolidate under corrected tier."
+      ]
+    },
+    {
+      "row_num": 34,
+      "location_id": "2bbd52b88750a5a8",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "branded_dso",
+      "fleet_evidence_basis": "affiliated_dso_field",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_correlated",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "DB affiliated_dso='Dental Dreams' present (artifact) BUT practice_name='Kim, Sumin' is an INDIVIDUAL provider name; no exact-address locator URL.",
+        "PE FLAG INCONSISTENCY: pe_backed=false vs Dental Dreams sponsor.",
+        "DENOMINATOR CROSS-FLAG: agent reasoning calls this the individual-NPI companion to a Dental Dreams org-NPI location \u2014 confirm it is a distinct operating clinic, not an NPI fan-out/duplicate, before counting it as a separate consolidated location."
+      ]
+    },
+    {
+      "row_num": 36,
+      "location_id": "2ab7cdb707db8803",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "dentist_multi",
+      "fleet_evidence_basis": "web_verified",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "exact_documentary",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "Own group site metrosmilesdental.com/locations names president Chris Tsaliagos; AO reach=3. Dentist-owned mini-group \u2192 dentist_multi correct (no PE)."
+      ]
+    },
+    {
+      "row_num": 37,
+      "location_id": "d803fcfe4618e8a3",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "institutional",
+      "fleet_evidence_basis": "institutional_match",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "exact_documentary",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "DB name 'HEARTLAND INTERNATIONAL HEALTH CENTER' at 845 W Wilson; carelistings FQHC directory + hahealth.org confirm. Correctly separates the FQHC from the unrelated 'Heartland Dental' DSO (brand_hint false positive caught)."
+      ]
+    },
+    {
+      "row_num": 41,
+      "location_id": "b7499322a2416c5d",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "true_independent",
+      "fleet_evidence_basis": "web_verified",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_correlated",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "Eponymous practice 'Jova Dental' = Dr. Paulina Jova (positive owner-operated signal), single location; Yelp + npiprofile corroborate.",
+        "Corroboration is directory-level (not the practice's own site); acceptable for a low-risk eponymous solo."
+      ]
+    },
+    {
+      "row_num": 42,
+      "location_id": "047ce502ad2a0371",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "institutional",
+      "fleet_evidence_basis": "institutional_match",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_correlated",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "Institution is real (Heartland International Health Center / Tapestry 360 FQHC) \u2014 institutional tier correct.",
+        "EVIDENCE-ADDRESS MISMATCH: DB address is 4740 N CLARK ST, but the agent's carelistings evidence URL is for a 'Wilson' Heartland site \u2014 tighten the source URL to the Clark St location.",
+        "DENOMINATOR NOTE: distinct address from #37 (845 W Wilson) and #44 (900 W Wilson) \u2014 keep separate (Heartland runs multiple sites)."
+      ]
+    },
+    {
+      "row_num": 44,
+      "location_id": "a31ca3008c75ab1f",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "institutional",
+      "fleet_evidence_basis": "institutional_match",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "exact_documentary",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "Own org site tap360health.org/medical-specialties/dental-care + opennpi; address-consistent (900 W Wilson Ave). Institutional/FQHC correct."
+      ]
+    },
+    {
+      "row_num": 47,
+      "location_id": "bb6d4fb9d7b95ca4",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "dentist_multi",
+      "fleet_evidence_basis": "ao_reach",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "exact_documentary",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "Own group site compassdentalcare.com/locations + EIN 311827050 spanning 2 watched locations + AO; dentist-owned (Brandon Prusa) multi-location."
+      ]
+    },
+    {
+      "row_num": 51,
+      "location_id": "0884ff9f2ce7934f",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "dentist_multi",
+      "fleet_evidence_basis": "web_verified",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "exact_documentary",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "Own site braamdental.com (eponymous) lists 2 locations + AO reach=2 + ADA directory. Dentist-owned multi-location."
+      ]
+    },
+    {
+      "row_num": 53,
+      "location_id": "e32ed1606301b785",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "dentist_multi",
+      "fleet_evidence_basis": "ao_reach",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "exact_documentary",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "Own group site thedentalmasters.org/locations (Ravenswood + Belmont) + AO reach=2."
+      ]
+    },
+    {
+      "row_num": 54,
+      "location_id": "49d9c36c9fe9abb8",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "branded_dso",
+      "fleet_evidence_basis": "web_verified",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "exact_documentary",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "Own locator secure-dental.com/locations/foster-ave (exact address) + corporate who-we-are; 11-office multi-state group.",
+        "TIER AMBIGUITY: dentist-cofounded (Jafri/Liu), pe_backed=false. If no PE/MSO it sits on the dentist_multi/branded_dso boundary; structurally operates as a DSO so branded_dso is defensible. Verify MSO/PE before counting in the DSO/PE-only headline."
+      ]
+    },
+    {
+      "row_num": 58,
+      "location_id": "0c8f995db2124f57",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "dentist_multi",
+      "fleet_evidence_basis": "ao_reach",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_correlated",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "AO=Mohammed Salih links 3 watched-IL locations across 3 ZIPs (federal artifact) + 2 Yelp listings show eponymous 'Salih Dental' brand at 2 locations. Yelp is not the practice's own site but eponymous brand + AO reach is solid."
+      ]
+    },
+    {
+      "row_num": 59,
+      "location_id": "9c588fbf68114847",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "dentist_multi",
+      "fleet_evidence_basis": "ao_reach",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "exact_documentary",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "Own group site smilingdentalgroup.com/about-us + LinkedIn founder Dr. Jianjun Hao + AO reach=3."
+      ]
+    },
+    {
+      "row_num": 60,
+      "location_id": "c6078e6641ef7f48",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "stealth_dso",
+      "fleet_evidence_basis": "affiliated_dso_field",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_correlated",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "DB affiliated_dso='All Family Dental & Braces (United Dental Partners)' = a real MSO (UDP, corporate per project history) + UDP locator; trades under a local name \u2192 stealth structure correct.",
+        "LOCAL-NAME INCONSISTENCY in evidence: 'Chicago Dental Cosmetics' (reasoning) vs Yelp 'Advanced Family Dental' \u2014 confirm the UDP locator lists THIS exact address.",
+        "pe_backed flag for a UDP/MSO row should be reviewed."
+      ]
+    },
+    {
+      "row_num": 66,
+      "location_id": "0d76d8f9105e394d",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "dentist_multi",
+      "fleet_evidence_basis": "ao_reach",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "exact_documentary",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "Own group site britedental.org/our-offices + a specific location page; AO=Fadi Aqel links 12 watched locations across 9 ZIPs.",
+        "COORD: Aqel is a MAIN-SESSION-CLAIMED AO network \u2014 coordinate before consolidation."
+      ]
+    },
+    {
+      "row_num": 67,
+      "location_id": "8256bfff559b0760",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "dentist_multi",
+      "fleet_evidence_basis": "ao_reach",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "exact_documentary",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "Own group site britedental.org/our-offices + EIN 731689410 across 3 watched ZIPs; same Aqel/Brite network as #66.",
+        "COORD: Aqel main-session-claimed AO network."
+      ]
+    },
+    {
+      "row_num": 71,
+      "location_id": "7495e79c66647036",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "branded_dso",
+      "fleet_evidence_basis": "affiliated_dso_field",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": "stealth_dso",
+      "evidence_quality": "exact_documentary",
+      "safe_to_consolidate": true,
+      "qa_reasons": [
+        "Own locator dentaldreams.com/location/...west-63rd-st matches DB address (3210 w 63rd) + DB affiliated_dso='Dental Dreams' \u2014 exact-address documentary.",
+        "TIER CORRECTION (minor): NPPES name 'THE DENTAL CLINIC, LLC' is a friendly-PC local name \u2192 strictly stealth_dso (T4) rather than branded_dso (T5). Both are DSO/PE so the headline split is unaffected.",
+        "PE FLAG: pe_backed=false contradicts Dental Dreams \u2014 set consistently."
+      ]
+    },
+    {
+      "row_num": 72,
+      "location_id": "2061979d9dc56775",
+      "fleet_gate_status": "final_ready",
+      "fleet_assigned_tier": "single_loc_group",
+      "fleet_evidence_basis": "provider_surnames",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": "family_practice",
+      "evidence_quality": "exact_documentary",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "FACTS well-verified (3 Gasior siblings, 3rd-generation 'Gasior Dental', single address; DB ec=family_practice) \u2014 evidence quality is high but the TIER is wrong.",
+        "single_loc_group requires '2+ UNRELATED dentists'; siblings = a FAMILY practice, the classic independent. Labeling it single_loc_group wrongly counts it toward the Consolidated headline.",
+        "MODEL GAP: the 6-tier model has no family bucket \u2014 escalate: family practices should map to independent (true_independent-equivalent), NOT single_loc_group. Do NOT consolidate as-is."
+      ]
+    },
+    {
+      "row_num": 1,
+      "location_id": "a5714245bc2fae33",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "single_loc_group",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "5 providers under single AO (Fischman) but structural_only: no surname list shown to confirm 2+ UNRELATED dentists (could be a family or a single-owner group), no URL.",
+        "Confirm distinct surnames + ownership structure before assigning single_loc_group."
+      ]
+    },
+    {
+      "row_num": 4,
+      "location_id": "7e94b892a5388c62",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "single_loc_group",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "2 providers, no AO, no URL; agent itself notes 'could be a solo with one associate' \u2014 ambiguous T1/T2. Needs ownership confirmation."
+      ]
+    },
+    {
+      "row_num": 6,
+      "location_id": "be46a645a5533cf3",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "single_loc_group",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "2 providers, AO Kenneth Chae reach=1, no URL. Structural best-fit but no partnership documentation."
+      ]
+    },
+    {
+      "row_num": 7,
+      "location_id": "7eaffe2b99d33968",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "true_independent",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "weak",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "Solo, no URL \u2014 true_independent not positively earned.",
+        "DENOMINATOR/GEOGRAPHY FLAG: DB shows city=ORLAND PARK but zip=60647 (Logan Square). Orland Park ZIPs are 60462/60467 \u2014 this row is likely mis-ZIP'd and may not belong in the 60647 watched scope. Escalate to denominator review."
+      ]
+    },
+    {
+      "row_num": 8,
+      "location_id": "48395fa30fb6bf6b",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "true_independent",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "Solo NPI-1, single location, no org NPI/EIN, no URL. No positive owner-operated artifact \u2014 stays candidate."
+      ]
+    },
+    {
+      "row_num": 10,
+      "location_id": "33bc890d9aed9341",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "true_independent",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "Single-provider org NPI, AO Elseweifi reach=1, no URL. Consistent with independent but unconfirmed (could be friendly-PC)."
+      ]
+    },
+    {
+      "row_num": 14,
+      "location_id": "c01fc292b2a4aed8",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "true_independent",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "Single-provider org NPI, EIN confined to one ZIP, no AO, no URL. Structural only."
+      ]
+    },
+    {
+      "row_num": 16,
+      "location_id": "6bce9a480d76c1f6",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "true_independent",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "Eponymous solo (Fatah) is a positive-ish signal but there is no web artifact; structural only."
+      ]
+    },
+    {
+      "row_num": 18,
+      "location_id": "c469658e9024307c",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "true_independent",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "Eponymous solo NPI, single location, no EIN/URL. Structural only."
+      ]
+    },
+    {
+      "row_num": 25,
+      "location_id": "5cd49db66c4ee020",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "true_independent",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "AO Liqing Zhang reach=1, solo, no URL. Structural only."
+      ]
+    },
+    {
+      "row_num": 26,
+      "location_id": "6eeaf4643d34c9a4",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "true_independent",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "Solo high-volume, no AO, no URL. Structural only."
+      ]
+    },
+    {
+      "row_num": 27,
+      "location_id": "921961e587c8ee15",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "single_loc_group",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "2 providers, reach=1, no AO, no URL (ec=small_group). Structural only \u2014 confirm unrelated surnames."
+      ]
+    },
+    {
+      "row_num": 28,
+      "location_id": "fbb43bb2a136f734",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "true_independent",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "Solo established, no EIN/brand/AO, no URL. Structural only."
+      ]
+    },
+    {
+      "row_num": 33,
+      "location_id": "3d6d77fc02cdd7f6",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "dentist_multi",
+      "fleet_evidence_basis": "ao_reach",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "ao_reach=2 (federal) but ws returned no confirmation page and no URL \u2014 ao_reach ALONE = candidate per user rule. Correctly held; needs web/ownership corroboration."
+      ]
+    },
+    {
+      "row_num": 35,
+      "location_id": "dc3d6faeeb510821",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "stealth_dso",
+      "fleet_evidence_basis": "web_verified",
+      "qa_status": "reject",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "weak",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "REJECT \u2014 CO-LOCATION TRAP: SBY DDS PC (5315 W Cermak) inferred as Precision only via adjacency to PRECISION DENTAL CARE 2 LLC (5317 W Cermak) + an associate's LinkedIn. DB shows affiliated_dso=None for this row \u2014 no documentary link.",
+        "If ever confirmed as Precision, it would be dentist_multi (dentist-owned), not stealth_dso."
+      ]
+    },
+    {
+      "row_num": 38,
+      "location_id": "8e5ba23753681cd3",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "true_independent",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "Eponymous PC (Jennifer Phi), AO reach=1 \u2014 positive-ish but no web artifact. Note: fleet conf=high is overstated for a structural_only basis."
+      ]
+    },
+    {
+      "row_num": 39,
+      "location_id": "c769b00959fcdaf7",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "true_independent",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "Eponymous PC (Patricia Crisostomo), reach=1, no web artifact. Structural only (fleet conf=high overstated)."
+      ]
+    },
+    {
+      "row_num": 40,
+      "location_id": "3cee5bbb3560fda2",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "true_independent",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "Solo dentist since 1974, EIN one ZIP, no AO, no URL. Structural only (fleet conf=high overstated)."
+      ]
+    },
+    {
+      "row_num": 45,
+      "location_id": "68ee57cb85d0f037",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "single_loc_group",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "Eponymous PC (Kapil Kella), 2 providers, AO reach=1, no URL. Could be solo+associate vs group \u2014 confirm."
+      ]
+    },
+    {
+      "row_num": 46,
+      "location_id": "d97911df002def64",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "true_independent",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "Eponymous PC (Mital Spatz), reach=1, no web artifact. Structural only (fleet conf=high overstated)."
+      ]
+    },
+    {
+      "row_num": 52,
+      "location_id": "9df9c9dcb4c5f555",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "true_independent",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "Eponymous PC (Gary Monson), AO reach=1, no EIN/URL. Structural only (fleet conf=high overstated)."
+      ]
+    },
+    {
+      "row_num": 55,
+      "location_id": "1f895d2ecd0fdaef",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "single_loc_group",
+      "fleet_evidence_basis": "provider_surnames",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": "family_practice",
+      "evidence_quality": "structural_correlated",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "DB ec=family_practice; the two providers share surname RENDON (father+son) \u2014 fails single_loc_group's 'unrelated dentists' test (same issue as #72).",
+        "Web also hints Dr. Rendon at OTHER IL locations \u2192 possible dentist_multi. Resolve family-vs-multi; not single_loc_group; do NOT count as consolidated unless multi-location ownership is proven."
+      ]
+    },
+    {
+      "row_num": 56,
+      "location_id": "774c59537eeee1c1",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "true_independent",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "Solo, no AO, EIN reach=0, no intel owner name, no URL. Structural only."
+      ]
+    },
+    {
+      "row_num": 57,
+      "location_id": "2cb2cc7ecd4bc6ca",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "true_independent",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "AO Tom Chan reach=1; intel says solo since 2003 with 'no DSO language' \u2014 but per user rule 'no DSO language' is INSUFFICIENT; needs a positive owner-operated artifact."
+      ]
+    },
+    {
+      "row_num": 61,
+      "location_id": "c8bcc4fb6201343a",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "single_loc_group",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "AO Junaid Ahmed reach=1, 2 providers, eponymous. No partnership URL or second-surname confirmation."
+      ]
+    },
+    {
+      "row_num": 63,
+      "location_id": "b4ca7a72e2641e47",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "single_loc_group",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "AO Jack Litz reach=1, 2 providers, eponymous. No partnership URL or second-surname confirmation."
+      ]
+    },
+    {
+      "row_num": 64,
+      "location_id": "9c0581940572feb0",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "true_independent",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "AO Daniel Kozicki reach=1, solo, eponymous; intel says solo with 'no corporate signals' \u2014 insufficient (absence-of-evidence). Needs positive artifact."
+      ]
+    },
+    {
+      "row_num": 65,
+      "location_id": "e002cdc63dfe02d2",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "dentist_multi",
+      "fleet_evidence_basis": "web_verified",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_correlated",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "Directories (carecredit/dentalplans) suggest Dr. Lina Poskus at 3+ suburban IL locations, BUT AO is null in DB \u2014 no federal multi-location artifact. Corroborate the network/ownership before promoting."
+      ]
+    },
+    {
+      "row_num": 68,
+      "location_id": "e86d6e38d85a9aef",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "true_independent",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "Surname-based name, 1 provider, reach=1, EIN reach=0, no AO/URL. Structural only."
+      ]
+    },
+    {
+      "row_num": 69,
+      "location_id": "226533cfa8898ef7",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "single_loc_group",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "3 providers, no AO, surname-based name, no URL. Structural only \u2014 confirm unrelated surnames."
+      ]
+    },
+    {
+      "row_num": 70,
+      "location_id": "0a54ab2bda7a5e9b",
+      "fleet_gate_status": "candidate",
+      "fleet_assigned_tier": "single_loc_group",
+      "fleet_evidence_basis": "structural_only",
+      "qa_status": "needs_more_evidence",
+      "corrected_tier_if_obvious": null,
+      "evidence_quality": "structural_only",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "2 providers, no AO, surname-based name, no URL. Structural only \u2014 confirm unrelated surnames."
+      ]
+    },
+    {
+      "row_num": 20,
+      "location_id": "47b29ee7e72213bb",
+      "fleet_gate_status": "undetermined",
+      "fleet_assigned_tier": "undetermined",
+      "fleet_evidence_basis": "(varies)",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": "undetermined",
+      "evidence_quality": "structural_correlated",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "Honest undetermined is correct: name 'Location II' + BBB/Facebook confirm an Oral Kare Network Loc 1/Loc 2 structure (likely multi-location group/DSO), but AO Marleen Severino reach=1 contradicts and ownership principal is unconfirmed.",
+        "FLAG as a multi-location lead for follow-up (network resolution)."
+      ]
+    },
+    {
+      "row_num": 43,
+      "location_id": "2498bbc43d47198a",
+      "fleet_gate_status": "undetermined",
+      "fleet_assigned_tier": "undetermined",
+      "fleet_evidence_basis": "(varies)",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": "undetermined",
+      "evidence_quality": "weak",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "No AO/EIN, provider_count=1, generic 'Levy Dental' with no confirmable owner \u2014 honest undetermined; needs web verification."
+      ]
+    },
+    {
+      "row_num": 48,
+      "location_id": "bd13f919ca53afbc",
+      "fleet_gate_status": "undetermined",
+      "fleet_assigned_tier": "undetermined",
+      "fleet_evidence_basis": "(varies)",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": "undetermined",
+      "evidence_quality": "weak",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "No AO/EIN, provider_count=1, generic 'Wellness Dental Care' \u2014 honest undetermined; needs web verification."
+      ]
+    },
+    {
+      "row_num": 49,
+      "location_id": "56e77b1a53f5ef7b",
+      "fleet_gate_status": "undetermined",
+      "fleet_assigned_tier": "undetermined",
+      "fleet_evidence_basis": "(varies)",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": "undetermined",
+      "evidence_quality": "weak",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "No AO/EIN, provider_count=1, distinctive 'Juniper Dentistry' but no named dentist in federal data \u2014 honest undetermined."
+      ]
+    },
+    {
+      "row_num": 50,
+      "location_id": "06b1a8eaf2654e4d",
+      "fleet_gate_status": "undetermined",
+      "fleet_assigned_tier": "undetermined",
+      "fleet_evidence_basis": "(varies)",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": "undetermined",
+      "evidence_quality": "weak",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "No AO/EIN, provider_count=1, 'Solomon Dental' has no confirmable owner from federal data \u2014 honest undetermined."
+      ]
+    },
+    {
+      "row_num": 62,
+      "location_id": "b73f749e8824d845",
+      "fleet_gate_status": "undetermined",
+      "fleet_assigned_tier": "undetermined",
+      "fleet_evidence_basis": "(varies)",
+      "qa_status": "pass_ready_for_validator",
+      "corrected_tier_if_obvious": "undetermined",
+      "evidence_quality": "none",
+      "safe_to_consolidate": false,
+      "qa_reasons": [
+        "DATA-QUALITY FLAG: DB practice_name is literally 'Chicago Il' (placeholder/junk) on a real NPI (1912087487, 4020 w 59th st). Keep undetermined; needs practice-name resolution before any tiering."
+      ]
+    }
+  ]
+}

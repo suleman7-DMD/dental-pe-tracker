@@ -1,0 +1,194 @@
+{
+  "network": "BELINDA HUERTA",
+  "network_id": "ao:HUERTA_BELINDA",
+  "owner_type_verdict": "pe_mso_backed",
+  "network_summary": "All 4 locations are Illinois offices of 'Dental Professionals of Illinois, P.C.' (DPIL), the well-documented Heartland Dental friendly-PC used in Illinois to comply with the state's Corporate Practice of Dentistry (CPOM) prohibition. Heartland Dental is the largest DSO in the US, majority-owned by KKR since 2018. Belinda Huerta is listed as 'CREDENTIALING COORDINATOR' on all 4 NPPES records — she is a Heartland Dental administrative/credentialing staff member, NOT a dentist-owner. The AO cluster is an administrative artifact of centralized Heartland NPPES credentialing, not an independent owner's multi-location footprint. All 4 locations are already classified dso_national/Heartland Dental/KKR in the project database.",
+  "owner_operator_identity": "Heartland Dental LLC (DSO platform/MSO), majority-owned by KKR since April 2018; Ontario Teachers' Pension Plan minority partner. Belinda Huerta is the credentialing coordinator who signed NPPES filings — not the beneficial owner.",
+  "brand_trade_names": [
+    "Dental Professionals of Illinois, P.C.",
+    "Heartland Dental"
+  ],
+  "legal_entities": [
+    "Dental Professionals of Illinois, P.C. (Illinois PC — Heartland friendly-PC, CPOM-compliant shell)",
+    "Heartland Dental LLC (DSO/MSO platform, Effingham IL)"
+  ],
+  "durable_artifacts": [
+    "All 4 NPIs registered under 'DENTAL PROFESSIONALS OF ILLINOIS, P.C.' — Heartland Dental's documented Illinois friendly-PC name used across its IL footprint",
+    "Authorized official BELINDA HUERTA title = 'CREDENTIALING COORDINATOR' across all 4 NPIs — administrative/credentialing role, not owner",
+    "All 4 practice_locations rows carry affiliated_dso='Heartland Dental' and affiliated_pe_sponsor='KKR' in project DB",
+    "AO cluster spans 4 distinct Chicagoland ZIPs: 60015, 60185, 60431, 60586 — consistent with Heartland's centralized IL credentialing operation",
+    "entity_classification = dso_national on all 4 location rows (already confirmed corporate)"
+  ],
+  "mso_platform_pe_evidence": "KKR acquired majority interest in Heartland Dental LLC in April 2018 (confirmed: https://www.globenewswire.com/news-release/2018/04/30/1490372/0/en/Heartland-Dental-and-KKR-Finalize-Majority-Interest-Deal.html). Heartland Dental is the nation's largest DSO with 1,900+ offices in 39 states, providing non-clinical management services to supported dental PCs including 'Dental Professionals of Illinois, P.C.' under a Management Services Agreement. DSO profile: https://heartland.com/about-us/",
+  "stale_closed_false_positive_notes": "IMPORTANT FALSE-POSITIVE FLAG: Belinda Huerta is NOT a beneficial owner or dentist. She is a 'CREDENTIALING COORDINATOR' — a Heartland Dental administrative employee responsible for filing/maintaining NPPES records for the Heartland-managed DPIL locations. The AO cluster is a credentialing artifact, not an ownership network. The real operator is Heartland Dental LLC (KKR-backed). This cluster should NOT be treated as a dentist_multi or independent owner network in any downstream analysis.",
+  "evidence_chain": "AO signal: BELINDA HUERTA listed as authorized official on 4 NPPES org-NPI records (NPIs 1013632801, 1902688500, 1851971642, 1366227241) across 4 Chicagoland ZIPs, all under the legal name 'Dental Professionals of Illinois, P.C.' -> Federal record check: authorized_official_title = 'CREDENTIALING COORDINATOR' on all 4 practices rows -> Documentary corroboration: 'Dental Professionals of Illinois, P.C.' is Heartland Dental's documented Illinois CPOM-compliant friendly-PC (confirmed by project DB affiliated_dso + affiliated_pe_sponsor fields, D&B profile, and UIC DSCC directory listing) -> PE evidence: KKR majority acquisition of Heartland Dental LLC finalized April 2018 (GlobeNewswire press release) -> Conclusion: these are already-classified dso_national Heartland Dental locations; the AO is a credentialing staff artifact, not an owner signal.",
+  "future_app_notes": "No further investigation needed — all 4 locations are confirmed Heartland Dental / KKR, already classified dso_national in the DB. Downstream gate should note that Belinda Huerta AO clusters across any other IL ZIPs should be auto-resolved as Heartland Dental credentialing artifacts without additional research. If new DPIL NPIs appear with Huerta as AO, classify dso_national/Heartland automatically.",
+  "classifications": [
+    {
+      "location_id": "4afceaeeaa164e94",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Heartland Dental LLC (KKR-backed DSO); Belinda Huerta = credentialing coordinator (administrative, not owner)",
+      "network_id": "heartland_dental",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across 4 ZIPs under credentialing coordinator Belinda Huerta",
+          "legal entity name 'Dental Professionals of Illinois, P.C.' shared across all 4 NPIs",
+          "entity_classification=dso_national in project DB"
+        ],
+        "evidence": [
+          "Practice name 'Dental Professionals of Illinois, P.C.' is Heartland Dental's documented Illinois friendly-PC (confirmed by project DB, D&B profile at dnb.com, UIC DSCC directory)",
+          "authorized_official_title='CREDENTIALING COORDINATOR' on NPPES record — administrative role, not ownership",
+          "KKR majority acquisition of Heartland Dental LLC confirmed April 2018 (GlobeNewswire)",
+          "Heartland Dental about-us confirms DSO management services model for 1,900+ offices (heartland.com/about-us/)"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.globenewswire.com/news-release/2018/04/30/1490372/0/en/Heartland-Dental-and-KKR-Finalize-Majority-Interest-Deal.html",
+        "https://heartland.com/about-us/",
+        "https://www.dnb.com/business-directory/company-profiles.dental_professionals_of_illinois_pc.3af220e3b67d0419180bf6b2aa2c6449.html",
+        "https://dscc.uic.edu/locations/dental-professionals-of-illinois-pc/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "BELINDA HUERTA",
+        "authorized_official_title": "CREDENTIALING COORDINATOR",
+        "reach": 4,
+        "zips": ["60015", "60185", "60431", "60586"],
+        "npi": "1013632801",
+        "current_db_classification": "dso_national",
+        "current_affiliated_dso": "Heartland Dental",
+        "current_affiliated_pe_sponsor": "KKR"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Already confirmed dso_national/Heartland Dental in project DB. 'Dental Professionals of Illinois, P.C.' is Heartland's Illinois CPOM-compliant friendly-PC. Belinda Huerta is a credentialing coordinator, not an owner. PE evidence: KKR majority stake since April 2018. No reclassification needed — this is a confirmation row. The AO cluster is purely a credentialing artifact."
+    },
+    {
+      "location_id": "bdc1c2d27954f752",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Heartland Dental LLC (KKR-backed DSO); Belinda Huerta = credentialing coordinator (administrative, not owner)",
+      "network_id": "heartland_dental",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across 4 ZIPs under credentialing coordinator Belinda Huerta",
+          "legal entity name 'Dental Professionals of Illinois, P.C.' shared across all 4 NPIs",
+          "entity_classification=dso_national in project DB"
+        ],
+        "evidence": [
+          "Practice name 'Dental Professionals of Illinois, P.C.' is Heartland Dental's documented Illinois friendly-PC",
+          "authorized_official_title='CREDENTIALING COORDINATOR' on NPPES record — administrative role",
+          "KKR majority acquisition of Heartland Dental LLC confirmed April 2018 (GlobeNewswire)",
+          "Heartland Dental about-us confirms DSO model (heartland.com/about-us/)"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.globenewswire.com/news-release/2018/04/30/1490372/0/en/Heartland-Dental-and-KKR-Finalize-Majority-Interest-Deal.html",
+        "https://heartland.com/about-us/",
+        "https://www.dnb.com/business-directory/company-profiles.dental_professionals_of_illinois_pc.3af220e3b67d0419180bf6b2aa2c6449.html"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "BELINDA HUERTA",
+        "authorized_official_title": "CREDENTIALING COORDINATOR",
+        "reach": 4,
+        "zips": ["60015", "60185", "60431", "60586"],
+        "npi": "1902688500",
+        "current_db_classification": "dso_national",
+        "current_affiliated_dso": "Heartland Dental",
+        "current_affiliated_pe_sponsor": "KKR"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Already confirmed dso_national/Heartland Dental in project DB. West Chicago office opened 2023. Same DPIL friendly-PC structure, same credentialing coordinator AO. No reclassification needed."
+    },
+    {
+      "location_id": "a0b36b77759aefe3",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Heartland Dental LLC (KKR-backed DSO); Belinda Huerta = credentialing coordinator (administrative, not owner)",
+      "network_id": "heartland_dental",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across 4 ZIPs under credentialing coordinator Belinda Huerta",
+          "legal entity name 'Dental Professionals of Illinois, P.C.' shared across all 4 NPIs",
+          "entity_classification=dso_national in project DB"
+        ],
+        "evidence": [
+          "Practice name 'Dental Professionals of Illinois, P.C.' is Heartland Dental's documented Illinois friendly-PC",
+          "authorized_official_title='CREDENTIALING COORDINATOR' on NPPES record",
+          "KKR majority acquisition of Heartland Dental LLC confirmed April 2018",
+          "Heartland Dental DSO management services model confirmed (heartland.com)"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.globenewswire.com/news-release/2018/04/30/1490372/0/en/Heartland-Dental-and-KKR-Finalize-Majority-Interest-Deal.html",
+        "https://heartland.com/about-us/",
+        "https://www.dnb.com/business-directory/company-profiles.dental_professionals_of_illinois_pc.3af220e3b67d0419180bf6b2aa2c6449.html"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "BELINDA HUERTA",
+        "authorized_official_title": "CREDENTIALING COORDINATOR",
+        "reach": 4,
+        "zips": ["60015", "60185", "60431", "60586"],
+        "npi": "1851971642",
+        "current_db_classification": "dso_national",
+        "current_affiliated_dso": "Heartland Dental",
+        "current_affiliated_pe_sponsor": "KKR"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Already confirmed dso_national/Heartland Dental in project DB. Joliet office on IL Route 59. Same DPIL friendly-PC structure. DBA listed as '<UNAVAIL>' — consistent with Heartland offices operating under local or DPIL branding. No reclassification needed."
+    },
+    {
+      "location_id": "8a3addfc27e73bbf",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Heartland Dental LLC (KKR-backed DSO); Belinda Huerta = credentialing coordinator (administrative, not owner)",
+      "network_id": "heartland_dental",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across 4 ZIPs under credentialing coordinator Belinda Huerta",
+          "legal entity name 'Dental Professionals of Illinois, P.C.' shared across all 4 NPIs",
+          "entity_classification=dso_national in project DB"
+        ],
+        "evidence": [
+          "Practice name 'Dental Professionals of Illinois, P.C.' is Heartland Dental's documented Illinois friendly-PC",
+          "authorized_official_title='CREDENTIALING COORDINATOR' on NPPES record",
+          "KKR majority acquisition of Heartland Dental LLC confirmed April 2018",
+          "Heartland Dental DSO management services model confirmed (heartland.com)"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.globenewswire.com/news-release/2018/04/30/1490372/0/en/Heartland-Dental-and-KKR-Finalize-Majority-Interest-Deal.html",
+        "https://heartland.com/about-us/",
+        "https://www.dnb.com/business-directory/company-profiles.dental_professionals_of_illinois_pc.3af220e3b67d0419180bf6b2aa2c6449.html"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "BELINDA HUERTA",
+        "authorized_official_title": "CREDENTIALING COORDINATOR",
+        "reach": 4,
+        "zips": ["60015", "60185", "60431", "60586"],
+        "npi": "1366227241",
+        "current_db_classification": "dso_national",
+        "current_affiliated_dso": "Heartland Dental",
+        "current_affiliated_pe_sponsor": "KKR (majority 2018) + Ontario Teachers' (minority)",
+        "current_affiliated_pe_sponsor_raw": "KKR (majority 2018) + Ontario Teachers' (minority)"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Already confirmed dso_national/Heartland Dental in project DB. Plainfield office (Suite 102) opened 2023. Same DPIL friendly-PC structure. DB shows full PE sponsor detail: 'KKR (majority 2018) + Ontario Teachers' (minority)'. No reclassification needed."
+    }
+  ]
+}

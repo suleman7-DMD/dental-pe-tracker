@@ -1,0 +1,220 @@
+{
+  "_meta": {
+    "title": "QA verdict — Wave 4 initial review (Gate-normalized partition)",
+    "role": "independent adversarial QA / validation gate",
+    "date": "2026-06-21",
+    "task_ref": "QA-001 (board); triggered by REQUEST_QA_REVIEW_WAVE4_INITIAL_20260621.md",
+    "scope": "Chicagoland / Illinois only. Boston / Massachusetts parked.",
+    "mode": "review-only; no DB writes; consolidation FROZEN; gate ceiling = ready_for_validation",
+    "artifact_under_review": "data/dso_research/_wave4_20260621/wave4_gate_normalized_partition_20260621.json",
+    "evidence_files_reviewed": [
+      "data/dso_research/_wave4_20260621/wave4_lane1_conflicts_ao_backfill_evidence_20260621.json",
+      "data/dso_research/_wave4_20260621/wave4_lane1_conflicts_ao_backfill_evidence_20260621_qa.json",
+      "data/dso_research/_wave4_20260621/wave4_lane3_phasec_top50_evidence_20260621.json"
+    ],
+    "bar_applied": [
+      "ownership_manifest_QA_wave4_pre_criteria_20260621.json (AB1-AB12, authoritative)",
+      "ownership_manifest_QA_wave4_preQA_criteria_20260621.json (secondary stricter cross-check)",
+      "wave4_criteria_reconciliation_20260621.json (net stricter-wins: AB1-12 + HB1-10 + AH1-7 + 12-step tree)"
+    ],
+    "cross_check_readonly": "data/dso_research/_ready_to_validate_wave3_fixed_20260621.json (310 rows; NOT mutated)",
+    "manifest_consulted_readonly": "data/dso_research/consolidation_candidate_manifest_20260621.json (LABINOV release basis, AB9)"
+  },
+
+  "verdict": "PASS_WITH_HOLDS",
+  "verdict_rationale": "The Gate-normalized partition is internally consistent, reconciles exactly (146 placements = 146 partitioned, 145 distinct + 1 intentional cross-lane duplicate), and every disposition is sound under the net stricter-wins bar. All 19 net-new merge_eligible rows are genuinely absent from the current 310 and each carries durable, transcribed on-disk documentary evidence: the 17 dentist_multi (T3) rows on their own-brand locators with named owner + no MSO (correctly NOT DSO/PE), and the 2 branded_dso (T5) rows on DSO-OWN exact-address locators with established brand + MSO/platform structure and correctly-orthogonal pe_backed. The 3 corroborates rows are genuinely in the 310 at a matching tier (add nothing). The 3 qa_attention rows are correctly flagged-not-counted. No systemic Phase-C defect was found. PASS_WITH_HOLDS (not PASS) because three carry-forward holds attach to pre-existing 310 rows and one documentation gap attaches to the two T5 rows; none is a MUST_FIX because nothing in the Wave-4 net-new set is wrong on merit and consolidation stays frozen (ceiling = ready_for_validation; nothing merges).",
+
+  "must_fix_location_ids": [],
+  "must_fix_count": 0,
+  "must_fix_note": "No MUST_FIX. No Main AO / Fleet B re-do is required to accept this partition. The holds below are validation-step conditions on already-existing rows + a documentation tidy-up, not corrections to Wave-4 net-new placements.",
+
+  "systemic_defect_found": false,
+  "systemic_defect_note": "No systemic Phase-C defect. Lane-3 evidence rows reviewed carry transcribed source URLs; the two T5 promotions rest on the DSO's OWN exact-address locator (gold-standard AB2/AB3); the Gate correctly OVERRODE the one agent 'ready' that failed AB3/AH3 (Sonrisa/CDCA FQHC). Per the autonomous protocol step 7, this finding does NOT block the Gate from writing AUTH_FLEETB_PHASEC_51_100 — but that remains the Gate's call, and Fleet B output would itself require a fresh QA pass.",
+
+  "bucket_count_reconciliation": {
+    "inputs": "Lane-1 96 (74 conflict + 22 AO-backfill) + Lane-3 50 = 146 placements",
+    "partitioned_rows": 146,
+    "balanced": true,
+    "distinct_location_ids": 145,
+    "intentional_cross_lane_duplicate": {
+      "location_id": "f3959b4a9ac8e139",
+      "practice_name": "SILVA DENTAL CENTER LTD (60804)",
+      "appears_in": ["hold_needs_more_evidence (Lane-1 AO-backfill)", "hold_needs_more_evidence (Lane-3 r16)"],
+      "both_dispositions": "needs_more_evidence",
+      "verdict": "ACCEPTED — both touches land in the same hold bucket; 2 rows, 1 distinct location; flagged in partition _meta; no count effect."
+    },
+    "buckets": {
+      "merge_eligible_new": {"count": 19, "expected": 19, "match": true},
+      "corroborates_existing_ready": {"count": 3, "expected": 3, "match": true},
+      "qa_attention_current_ready": {"count": 3, "expected": 3, "match": true},
+      "hold_protected_network": {"count": 46, "expected": 46, "match": true},
+      "hold_scope_specialist": {"count": 7, "expected": 7, "match": true},
+      "hold_operating_status_or_same_door": {"count": 5, "expected": 5, "match": true},
+      "hold_needs_more_evidence": {"count": 43, "expected": 43, "match": true},
+      "rejected": {"count": 14, "expected": 14, "match": true},
+      "refuted": {"count": 6, "expected": 6, "match": true},
+      "total": {"count": 146, "expected": 146, "match": true}
+    }
+  },
+
+  "current_ready_overlap_audit": {
+    "method": "Loaded all 310 location_ids from _ready_to_validate_wave3_fixed_20260621.json (key 'classifications', 310 distinct). Set-membership checked for every floor-touching bucket. READ-ONLY; file not mutated.",
+    "ready_file_distinct_location_ids": 310,
+    "merge_eligible_new_absent_from_310": {
+      "requirement": "ALL 19 must be ABSENT (genuinely net-new)",
+      "result": "PASS — 0 in-310 violations; all 19 absent",
+      "net_new_breakdown": {
+        "dentist_multi_T3": 17,
+        "branded_dso_T5": 2,
+        "headline_effect": "T3 counts as Consolidated (T2+T3+T4+T5) but NOT DSO/PE (T4+T5 only); only the 2 T5 rows would move the dso_pe headline if/when validated"
+      }
+    },
+    "corroborates_present_in_310": {
+      "requirement": "ALL 3 must be PRESENT in 310 and tier-compatible",
+      "result": "PASS",
+      "rows": [
+        {"location_id": "64a25dd567a92ae3", "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.", "in_310": true, "wave4_tier": "branded_dso", "tier_310": "branded_dso", "aligned": true},
+        {"location_id": "b62beb82551b076f", "name": "DEXTER DENTAL 3 LLC", "in_310": true, "wave4_tier": "branded_dso", "tier_310": "branded_dso", "aligned": true},
+        {"location_id": "58a87486cd2546e5", "name": "FAMILIA DENTAL WHEELING 3 LLC", "in_310": true, "wave4_tier": "branded_dso", "tier_310": "branded_dso", "aligned": true}
+      ],
+      "note": "Corroborations only — add zero to any count. Correct per user default #3 (Fleet B overlaps are corroborations, not additions)."
+    },
+    "qa_attention_present_in_310": {
+      "requirement": "ALL 3 must be PRESENT in 310 and correctly flagged-not-counted",
+      "result": "PASS — all present, correctly flagged",
+      "rows": [
+        {"location_id": "fd93e6934ac6c59c", "name": "PRO DENTAL IL - CHAD WISE PC", "in_310": true, "tier_310": "branded_dso", "pe_backed_310": true, "evidence_basis_310": "name_chain", "flags": ["AB9_LABINOV_protected", "operating_status=closed_or_relocated"], "hold_carried_forward": "QA-HOLD-1"},
+        {"location_id": "bd77120df3018393", "name": "AFFORDABLE DENTURES & IMPLANTS - DOWNERS GROVE, P.C.", "in_310": true, "tier_310": "branded_dso", "pe_backed_310": true, "evidence_basis_310": "name_chain", "flags": ["specialist_scope_Affordable"], "hold_carried_forward": "QA-HOLD-2"},
+        {"location_id": "199841c7ee233c17", "name": "AFFORDABLE DENTURES & IMPLANTS - ILLINOIS, PLLC", "in_310": true, "tier_310": "branded_dso", "pe_backed_310": true, "evidence_basis_310": "name_chain", "flags": ["specialist_scope_Affordable"], "hold_carried_forward": "QA-HOLD-2"}
+      ]
+    }
+  },
+
+  "net_new_merit_review": {
+    "verdict": "ALL 19 ACCEPTED on merit at ready_for_validation (NOT merged)",
+    "dentist_multi_T3_17_rows": {
+      "networks": ["Dental Town (Razzak) x9", "Precision Dental Care / Advantage Dental Care (Chang) x8"],
+      "durable_artifact": "own-brand per-location locators transcribed in Wave-4 harvest: https://dentaltownchicago.com/locations/ and https://precisiondentalchicago.com/our-locations (evidence.durable_evidence + evidence.evidence_source on each row; network-level key_evidence_urls in Lane-1 network_adjudications; evidence_quality=verified)",
+      "tier_rationale": "Named dentist-owner operating multiple offices under a common brand; NO MSO / management-company / external platform => DSO=STRUCTURE NOT satisfied => dentist_multi (T3), consolidated but NOT DSO/PE. pe_backed=false.",
+      "ab_checks": {"AB1_beyond_AO": "PASS (own-brand locator, not AO-only)", "AB2_exact_address": "PASS (per-location locator)", "AB3_durable_transcribed": "PASS", "AB4_dso_structure": "PASS (correctly NOT escalated to T4/T5)", "AB5_pe_orthogonal": "PASS (pe_backed=false, not driving tier)"},
+      "gate_tier_status": "endorsed",
+      "verdict": "ACCEPTED"
+    },
+    "branded_dso_T5_2_rows": [
+      {
+        "location_id": "d44c43930b0f8d3c",
+        "name": "DR. ZORAN D. STOJANOVIC & ASSOCIATES, LTD",
+        "city_zip": "WEST DUNDEE 60118",
+        "brand": "Midwest Dental (Smile Brands platform; Gryphon Investors PE)",
+        "pe_backed": true,
+        "exact_address_match": "CONFIRMED — Midwest Dental OWN locator midwest-dental.com/dental-office/west-dundee/ lists 712 W. Main Street, West Dundee (transcribed)",
+        "structure": "Established DSO brand + Smile Brands platform; acquisition corroborated by Gryphon + Smile Brands + PRNewswire + GDN press releases",
+        "ab_checks": {"AB1": "PASS", "AB2": "PASS (DSO-own exact-address locator)", "AB3": "PASS", "AB4_dso_structure": "PASS", "AB5_pe_orthogonal": "PASS (pe_backed recorded, tier rests on brand+platform)"},
+        "verdict": "ACCEPTED"
+      },
+      {
+        "location_id": "2bbd52b88750a5a8",
+        "name": "Kim, Sumin (Dental Dreams South Cicero Ave)",
+        "city_zip": "CICERO 60804",
+        "brand": "Dental Dreams (KOS Services LLC MSO)",
+        "pe_backed": false,
+        "exact_address_match": "CONFIRMED — Dental Dreams OWN locator dentaldreams.com/location/dental-dreams-south-cicero-ave-cicero/ lists 2254 South Cicero Avenue, Cicero IL 60804 (transcribed)",
+        "structure": "Established DSO brand + KOS Services LLC operating MSO; pe_backed=false correctly orthogonal (tier rests on brand+MSO structure, NOT PE)",
+        "ab_checks": {"AB1": "PASS", "AB2": "PASS (DSO-own exact-address locator)", "AB3": "PASS", "AB4_dso_structure": "PASS", "AB5_pe_orthogonal": "PASS — confirms pe_backed=false does NOT block T5 when DSO=STRUCTURE independently met"},
+        "watch_item": "60804 Cicero is a dense ZIP (also home to the cross-lane dup f3959b4a9ac8e139 and the closed Webster Cicero door); same_door_check=no_same_door_conflict_reported. Accepted; light same-door confirmation advised at validation.",
+        "verdict": "ACCEPTED"
+      }
+    ]
+  },
+
+  "hold_reject_refute_review": {
+    "verdict": "ALL dispositions ACCEPTED — correct handling, no count effect",
+    "sonrisa_cdca_fqhc_override": {
+      "location_ids": ["6179a9d5365bda56", "a8464775598ce6d5", "4c77253121d38b15", "5287843d3b6853ff"],
+      "gate_action": "OVERRODE agent ready_for_validation (stealth_dso T4) -> hold_needs_more_evidence",
+      "qa_determination": "OVERRIDE ENDORSED. Durable artifact was a management-company domain (cdcoa.org) + described-not-transcribed IL-SOS friendly-PC names + 'Becker's coverage' with NO URL => fails AB3/AH3. Plus an unresolved FQHC (T6 institutional) vs stealth_dso (T4) scope question the agent itself punted. Stricter-wins hold is correct."
+    },
+    "sonrisa_admin_hq": {"location_id": "1354bc2b8dff1d69", "disposition": "rejected", "qa_determination": "ENDORSED — non-clinical org/admin door excluded from GP floor (AB7); entity is real, this is a scope exclusion not a membership refutation."},
+    "webster_AB10_contested": {
+      "summary": "16 Lane-1 rows: 9 active Webster Dental + 1 Webster Dental Care (ZIEBA, 2eccce6b14d310cd) -> hold_protected_network (annotated AB10_webster_contested); 1 CLOSED Cicero door (3bc304a7819a234f) -> hold_operating_status_or_same_door (AB7); 6 nonmembers -> refuted.",
+      "qa_determination": "ENDORSED — Webster held pending a documented whole-network adjudication artifact (none present). Closed door correctly routed to operating-status hold. Verified placements: 2eccce6b14d310cd in hold_protected_network, 3bc304a7819a234f in hold_operating_status_or_same_door."
+    },
+    "protected_double_holds": {
+      "summary": "1st Family 23 (BELKIC), Brite/Aqel 12 (AQEL, also AB10), Lane-3 r15 c4b5b35fa16e44e5 (AQEL/Dental 360). 17 of 22 AO-backfill carry a protected surname (SWEIS x7, RAMAHA x6, SHAFI x2, NITTINGER x1, BRUNETTI x1) on top of the AB1 AO-reach-only hold (double_hold_protected).",
+      "qa_determination": "ENDORSED — no protected-network releases (user default #1). c4b5b35fa16e44e5 verified in hold_protected_network."
+    },
+    "ao_backfill_22": {
+      "disposition": "all 22 -> hold_needs_more_evidence",
+      "qa_determination": "ENDORSED — AO reach co-occurrence only; no durable documentary artifact at the subject door (AB1). Verified: 22/22 in hold_needs_more_evidence."
+    },
+    "scope_holds_7": {"location_ids_pattern": "Affordable r21/r42/r43/r45/r48 + ClearChoice r47/r49", "disposition": "hold_scope_specialist", "qa_determination": "ENDORSED — user default #2 (Affordable/ClearChoice held out of GP floor); agent's original disposition preserved as sidecar."},
+    "same_door_operating_holds": {"note": "Lane-3 r05/r10/r11/r44 (+ Webster closed = 5) -> hold_operating_status_or_same_door; r50 medium-confidence Heartland jobs-posting (not a patient locator) -> hold_needs_more_evidence. ENDORSED."},
+    "lane1_self_qa": {"result": "all 8 guards PASS (final_label_leak, il_only_no_MA, protected_networks_held, webster_held_AB10, every_release_has_durable_artifact_AB3, ao_reach_only_not_promoted_AB1, sidecar_preservation_AB11, no_db_or_manifest_mutation); row_accounting 74+22 balanced. Independently consistent with partition.", "qa_determination": "ACCEPTED"}
+  },
+
+  "holds_carried_forward": [
+    {
+      "id": "QA-HOLD-1",
+      "location_id": "fd93e6934ac6c59c",
+      "name": "PRO DENTAL IL - CHAD WISE PC",
+      "issue": "AB7 closure unresolved. The Wave-4 Lane-3 agent reported operating_status=closed_or_relocated, but no fresh closure re-scan with a transcribed source was provided.",
+      "ab9_finding": "AB9 SATISFIED for 310 PRESENCE — the canonical manifest explicitly released ao:LABINOV_BORIS (ao_network_release_decisions.decisions['ao:LABINOV_BORIS']: decision=release_eligible, rows_total=7, rows_released=7, network_evidence_quality=verified, tier=branded_dso, pe_backed=true). So this row is NOT an unauthorized protected-network promotion. HOWEVER the manifest's own stale_closed_notes flags 4 of 7 LABINOV members as confirmed via shared P.C. shell + AO + corporate mailing only (no individual locator URL): Berwyn 60402, Chicago 60617, Chicago 60652, Chicago 60660.",
+      "recommendation": "Before this row remains in any eventual VALIDATED floor, the Gate should obtain an operating-status re-scan with a transcribed source. If confirmed closed/relocated, exclude (AB7) even though the network is released. This is a Wave-3 carryover condition, NOT a Wave-4 merge blocker. QA cannot mutate the 310.",
+      "blocks_wave4_acceptance": false
+    },
+    {
+      "id": "QA-HOLD-2",
+      "location_ids": ["bd77120df3018393", "199841c7ee233c17"],
+      "name": "AFFORDABLE DENTURES & IMPLANTS (Downers Grove P.C.; Illinois PLLC)",
+      "issue": "Specialist/tooth-replacement scope rows already present in the 310 as branded_dso via name_chain. Per user default #2, Affordable is held out of the GP floor as a scope question.",
+      "recommendation": "Requires a USER GP-scope policy decision (specialist vs GP-floor inclusion). Conservative default while user is away = hold out of GP floor. The Gate correctly flagged for QA rather than silently retaining. Wave-3 carryover; NOT a Wave-4 merge blocker.",
+      "blocks_wave4_acceptance": false,
+      "user_decision_required": true
+    },
+    {
+      "id": "QA-HOLD-3",
+      "location_ids": ["d44c43930b0f8d3c", "2bbd52b88750a5a8"],
+      "name": "T5 branded_dso net-new (Midwest Dental West Dundee; Dental Dreams Cicero)",
+      "issue": "DOCUMENTATION/normalization only: the top-level dso_structure_rationale field is null on both rows; the actual DSO=STRUCTURE rationale + exact-address proof lives in evidence.exact_address_match and evidence.parent_mso_platform_evidence. The output contract names dso_structure_rationale as the required field for any T4/T5.",
+      "recommendation": "Before the Gate builds any evidence-only addendum-candidate file, promote evidence.exact_address_match + evidence.parent_mso_platform_evidence into the top-level dso_structure_rationale field so the merge-ready row satisfies the output contract literally. Substance is fully present and verified; this is tidy-up, not a merit defect.",
+      "blocks_wave4_acceptance": false
+    }
+  ],
+
+  "zero_write_proof": {
+    "captured_at": "verdict authoring, 2026-06-21",
+    "db_md5": "0dec26135bb4d6ee490dc16cfe892ca6",
+    "db_md5_baseline": "0dec26135bb4d6ee490dc16cfe892ca6",
+    "db_md5_match": true,
+    "ownership_tier_not_null": {"practice_locations": 0, "practices": 0, "expected": 0, "match": true},
+    "ledger_lines": {"value": 1, "expected": 1, "match": true},
+    "progress": {
+      "reviewed_via_protocol": 0,
+      "remaining": 4439,
+      "coverage_pct": 0.0,
+      "tier_tally_undetermined_unreviewed": 4439,
+      "tier_tally_all_other_tiers": 0,
+      "headline_consolidated_pct": null,
+      "headline_dso_pe_pct": null,
+      "expected_reviewed": 0,
+      "expected_undetermined_unreviewed": 4439,
+      "match": true
+    },
+    "ready_file_310": "unchanged (read-only cross-check)",
+    "manifest": "unchanged (read-only AB9 consultation)",
+    "files_written_this_session": ["data/dso_research/_wave4_20260621/autonomous/VERDICT_QA_WAVE4_INITIAL_20260621.json (this file)"],
+    "attestation": "FROZEN — intact. No DB write, no manifest mutation, no ready-file mutation, no LEDGER/PROGRESS mutation, no tier/classification-column write, no prior-QA edit. consolidate_census.py --allow-db-write NOT run."
+  },
+
+  "consolidate_authorization": {
+    "status": "NOT AUTHORIZED",
+    "gate_ceiling": "ready_for_validation",
+    "note": "This PASS_WITH_HOLDS accepts the Gate-normalized partition for review purposes only. It does NOT authorize merging into the canonical manifest, does NOT authorize ownership_tier writes, and does NOT authorize consolidation. Per protocol: on PASS/PASS_WITH_HOLDS the Gate MAY prepare an evidence-only addendum-candidate file but MUST NOT merge it into the canonical manifest absent explicit later user approval."
+  },
+
+  "downstream_unblocked_for_gate": {
+    "REQUEST_MAIN_AO_LANE2_BACKFILL25": "Gate may write (13 locator_exact + 12 practice_intel, no AO fan-out) — independent of this verdict.",
+    "AUTH_FLEETB_PHASEC_51_100": "PERMITTED by QA — no systemic Phase-C defect found. Remains the Gate's decision; any ranks 51-100 output requires a fresh QA pass before acceptance.",
+    "addendum_candidate_file": "Gate may prepare an evidence-only addendum-candidate of the 19 net-new (17 T3 + 2 T5) at ready_for_validation, applying QA-HOLD-3 (populate dso_structure_rationale on the 2 T5 rows). No merge."
+  }
+}

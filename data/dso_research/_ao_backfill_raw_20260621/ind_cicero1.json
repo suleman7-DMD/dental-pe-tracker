@@ -1,0 +1,54 @@
+{
+  "_batch": "ind_cicero1",
+  "_lane": "AO_network",
+  "_row_class": "original_13",
+  "_protected_network_hold": false,
+  "_note": "Original-13 individual rows. Evidence-only suffices to advance (no protected hold).",
+  "results": [
+    {
+      "location_id": "d9fb0c9f226a66f3",
+      "practice_name": "Romo Dental III",
+      "is_multilocation": true,
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "documentary_urls": [
+        {"url": "https://www.romodentalchicago.com/", "shows": "Romo Dental lists three locations: West Lawn (6857 S Pulaski Rd 60629), Brighton Park (4148 S Archer Ave 60632), Cicero (5934 W 35th St 60804) — all under Romo Dental brand, Dr. Genaro Romo"}
+      ],
+      "durable_non_ao_artifact": {"type": "name_chain", "detail": "'Romo Dental' across three distinct ZIPs (60629, 60632, 60804) on the practice's own website under Dr. Genaro Romo DDS.", "source_url": "https://www.romodentalchicago.com/"},
+      "evidence_quality": "verified",
+      "gate_status": "ready_for_validation",
+      "reasoning": "romodentalchicago.com lists three locations across distinct ZIPs under Dr. Genaro Romo — dentist-owned multi-location. DB website hint 'oralkarenetwork2.com' reflects a co-located but separate practice (Oral Kare Network, George Zehak, 5907 W 35th St) — Romo Dental III is at 5934 W 35th St, different entity. No PE/DSO platform."
+    },
+    {
+      "location_id": "f3959b4a9ac8e139",
+      "practice_name": "Silva Dental Center Ltd",
+      "is_multilocation": false,
+      "evidence_tier": "single_loc_group",
+      "pe_backed": false,
+      "documentary_urls": [
+        {"url": "https://www.silvadentalcenterltd.com/", "shows": "Single location at 5919 W Cermak Rd Cicero 60804, multi-specialty team (7 providers); no second location"},
+        {"url": "https://www.healthgrades.com/group-directory/il-illinois/cicero/silva-dental-center-x2ws8x", "shows": "Healthgrades: 'Silva Dental Center is a Practice with 1 Location' at 5919 W Cermak Rd Cicero"},
+        {"url": "https://www.centraldentalassociates.com/", "shows": "centraldentalassociates.com (the DB website hint) belongs to a DIFFERENT practice: Central Dental Associates 5539 W Cermak Rd, Dr. Monil Shah — states 'our one office', no mention of Silva"}
+      ],
+      "durable_non_ao_artifact": {"type": "none", "detail": "No multi-location artifact. DB dso_regional appears to derive from website hint centraldentalassociates.com misattributed to this entity — that domain belongs to a separate practice (Dr. Monil Shah). Silva Dental Center is a single-location multi-dentist group under Dr. Berta M. Silva.", "source_url": ""},
+      "evidence_quality": "verified",
+      "gate_status": "undetermined",
+      "reasoning": "Single-location multi-specialty group (7 providers, one address) under Dr. Berta M. Silva — no second location on its own website, Healthgrades, Yelp, or WebMD. DB website hint resolves to a different practice. Existing dso_regional appears to be a false positive from website misattribution; flag for gate-owner DB-side correction (no DB write from this lane)."
+    },
+    {
+      "location_id": "28fab093c7a6a0d9",
+      "practice_name": "Monil P Shah DMD PC",
+      "is_multilocation": false,
+      "evidence_tier": "true_independent",
+      "pe_backed": false,
+      "documentary_urls": [
+        {"url": "https://www.centraldentalassociates.com/", "shows": "Central Dental Associates (Dr. Monil Shah) states 'our one office', lists only 5539 W Cermak Rd Cicero 60804"},
+        {"url": "https://npino.com/dental-clinic/1033479126-crest-dental-llc/", "shows": "Crest Dental LLC at 1354 W Army Trail Rd Carol Stream — AO Dr. Ami K Shah (not Monil Shah); surname-only collision"}
+      ],
+      "durable_non_ao_artifact": {"type": "none", "detail": "DB cluster-mate 'Crest Dental Care PC, Carol Stream' has AO Dr. Ami K Shah per NPPES — different person. No shared EIN/website/registered-agent/locator linking the Cicero Monil Shah practice to another location.", "source_url": "https://npino.com/dental-clinic/1033479126-crest-dental-llc/"},
+      "evidence_quality": "verified",
+      "gate_status": "undetermined",
+      "reasoning": "Dr. Monil P Shah operates a single location (Central Dental Associates, 5539 W Cermak Rd Cicero) per his own website and directories. AO cluster-mate (Crest Dental Care PC, Carol Stream) has a different AO (Dr. Ami K Shah) — false-positive 'Shah' surname collision, not shared ownership. No multi-location documentary evidence; recommend independent classification."
+    }
+  ]
+}

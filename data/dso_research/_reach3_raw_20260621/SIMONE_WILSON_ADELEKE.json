@@ -1,0 +1,154 @@
+{
+  "network": "SIMONE WILSON-ADELEKE",
+  "network_id": "ao:WILSON-ADELEKE_SIMONE",
+  "owner_type_verdict": "pe_mso_backed",
+  "network_summary": "Three Illinois GP locations operating as 'PRO DENTAL IL - CHAD WISE PC' — a friendly professional corporation (Illinois-licensed PC wrapper) for the Destiny Dental DSO platform. All 3 NPIs share Simone Wilson-Adeleke as the NPPES Authorized Official, who is a corporate credentialing/admin officer for the DSO network, NOT the dentist-owner. Destiny Dental was acquired by ProSmile Holdings LLC (a TriSpan PE-backed national DSO) in August 2024. The NPPES mailing address for these NPIs resolves to ProSmile's New Jersey corporate HQ (10 Woodbridge Center Dr Ste 520, Woodbridge, NJ). All 3 locations are correctly classified as dso_regional in the database with affiliated_dso='Destiny Dental / ProSmile'. The AO-cluster signal is a corporate credentialing footprint, not a dentist multi-office owner signal.",
+  "owner_operator_identity": "ProSmile Holdings LLC (DSO platform, PE-backed by TriSpan); underlying professional corporation: Pro Dental IL - Chad Wise PC; original Destiny Dental founders: Jim Lucci and Boris Labinov (pre-acquisition). Simone Wilson-Adeleke is the NPPES authorized official (likely a corporate credentialing or compliance officer), not the dentist-owner.",
+  "brand_trade_names": [
+    "Destiny Dental",
+    "Destiny Dental Care",
+    "Pro Dental IL",
+    "ProSmile"
+  ],
+  "legal_entities": [
+    "Pro Dental IL - Chad Wise PC (Illinois professional corporation, NPPES org entity)",
+    "ProSmile Holdings LLC (acquiring DSO)",
+    "Destiny Dental (prior brand/operating entity)"
+  ],
+  "durable_artifacts": [
+    "NPI 1710714233 (Oak Park 60302): AO=SIMONE WILSON-ADELEKE, mailing 10 Woodbridge Center Dr Ste 520 Woodbridge NJ = ProSmile HQ",
+    "NPI 1134956410 (Lansing 60438): AO=SIMONE WILSON-ADELEKE, entity_classification=dso_regional",
+    "NPI 1942037221 (Chicago 60649): AO=SIMONE WILSON-ADELEKE, entity_classification=dso_regional",
+    "All 3 NPIs share org name 'PRO DENTAL IL - CHAD WISE PC' — friendly-PC wrapper across 3 ZIPs",
+    "affiliated_dso='Destiny Dental / ProSmile' on all 3 location rows in practice_locations"
+  ],
+  "mso_platform_pe_evidence": "ProSmile Holdings LLC is a PE-backed national DSO (TriSpan, NYC/London PE firm). ProSmile completed acquisition of Destiny Dental practices in Midwest in August 2024. Sources: https://www.prosmile.com/prosmile-completes-acquisition-of-destiny-dental-practices-located-in-midwest/ and https://www.trispanllp.com/portfolio/pg-dental-holdings-llc/",
+  "stale_closed_false_positive_notes": "SIMONE WILSON-ADELEKE is NOT a dentist-owner. She is a corporate AO/credentialing officer for the ProSmile/Destiny Dental DSO network. The AO reach here is a DSO administrative footprint, not a dentist multi-office ownership signal. This cluster should NOT be promoted as dentist_multi.",
+  "evidence_chain": "AO signal: SIMONE WILSON-ADELEKE appears as NPPES Authorized Official on 3 NPIs across ZIP codes 60302 (Oak Park), 60438 (Lansing), 60649 (Chicago SE), all under org name 'PRO DENTAL IL - CHAD WISE PC'. -> Documentary corroboration: (1) NPI 1710714233 NPPES mailing address is 10 Woodbridge Center Dr Ste 520 Woodbridge NJ — ProSmile's corporate HQ, confirming DSO centralization. (2) ProSmile press release (prosmile.com, Sept 2024) documents acquisition of Destiny Dental Midwest practices including 5 Illinois locations. (3) TriSpan (PE firm) portfolio page confirms ProSmile is a TriSpan-backed DSO. (4) Destiny Dental Care website (destinydentalcare.com/illinois/) and locator pages list Oak Park and Chicago offices under the Destiny Dental brand. All 3 locations are already correctly classified dso_regional in the database.",
+  "future_app_notes": "These 3 locations are already correctly classified as dso_regional / Destiny Dental / ProSmile. No reclassification needed. Future: (1) If ProSmile rebrands these offices away from the 'Destiny Dental' trade name, update affiliated_dso to 'ProSmile'. (2) Watch for additional IL ProSmile/Destiny Dental offices that may not yet be captured. (3) Note that 'Chad Wise' in the PC name is the Illinois-licensed dentist whose PC license fronts the DSO — a standard Illinois friendly-PC structure; Chad Wise is NOT the owner/operator of the DSO.",
+  "classifications": [
+    {
+      "location_id": "fd93e6934ac6c59c",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "ProSmile Holdings LLC (TriSpan PE-backed DSO); operating as Pro Dental IL - Chad Wise PC (friendly PC wrapper); Destiny Dental brand",
+      "network_id": "ao:WILSON-ADELEKE_SIMONE",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across 3 ZIPs (60302, 60438, 60649)",
+          "org_name='PRO DENTAL IL - CHAD WISE PC' repeated across all 3 NPIs",
+          "entity_classification=dso_regional already in DB",
+          "affiliated_dso='Destiny Dental / ProSmile' in DB"
+        ],
+        "evidence": [
+          "NPPES mailing address for this NPI is 10 Woodbridge Center Dr Ste 520 Woodbridge NJ — ProSmile's corporate HQ (NPI registry record)",
+          "ProSmile press release (Sept 2024) documents acquisition of Destiny Dental Midwest practices including 5 IL offices: https://www.prosmile.com/prosmile-completes-acquisition-of-destiny-dental-practices-located-in-midwest/",
+          "TriSpan portfolio page confirms ProSmile is PE-backed: https://www.trispanllp.com/portfolio/pg-dental-holdings-llc/",
+          "Destiny Dental Care locator lists Oak Park office under the Destiny Dental brand: https://destinydentalcare.com/oak-park/"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.prosmile.com/prosmile-completes-acquisition-of-destiny-dental-practices-located-in-midwest/",
+        "https://www.trispanllp.com/portfolio/pg-dental-holdings-llc/",
+        "https://destinydentalcare.com/oak-park/",
+        "https://npiregistry.cms.hhs.gov/provider-view/1710714233"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "SIMONE WILSON-ADELEKE",
+        "reach": 3,
+        "zips": ["60302", "60438", "60649"],
+        "npi": "1710714233",
+        "location_name": "PRO DENTAL IL - CHAD WISE PC",
+        "address": "1 chicago ave, OAK PARK, IL 60302"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "This Oak Park location (1 Chicago Ave, 60302, 5 providers) is already correctly classified dso_regional with affiliated_dso='Destiny Dental / ProSmile'. The entity is a Destiny Dental office operating under the 'Pro Dental IL - Chad Wise PC' Illinois friendly-PC wrapper, acquired by ProSmile (TriSpan PE) in August 2024. NPPES mailing address resolves to ProSmile NJ HQ. Classification is branded_dso, pe_backed=true. AO Simone Wilson-Adeleke is a DSO corporate credentialing officer, not the dentist-owner."
+    },
+    {
+      "location_id": "08d34f2671858cfd",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "ProSmile Holdings LLC (TriSpan PE-backed DSO); operating as Pro Dental IL - Chad Wise PC (friendly PC wrapper); Destiny Dental brand",
+      "network_id": "ao:WILSON-ADELEKE_SIMONE",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across 3 ZIPs (60302, 60438, 60649)",
+          "org_name='PRO DENTAL IL - CHAD WISE PC' repeated across all 3 NPIs",
+          "entity_classification=dso_regional already in DB",
+          "affiliated_dso='Destiny Dental / ProSmile' in DB"
+        ],
+        "evidence": [
+          "ProSmile press release (Sept 2024) documents acquisition of Destiny Dental Midwest practices including 5 IL offices: https://www.prosmile.com/prosmile-completes-acquisition-of-destiny-dental-practices-located-in-midwest/",
+          "TriSpan portfolio page confirms ProSmile is PE-backed: https://www.trispanllp.com/portfolio/pg-dental-holdings-llc/",
+          "Destiny Dental Care Illinois locator page lists Lansing-area offices: https://destinydentalcare.com/illinois/",
+          "NPI registry confirms NPPES AO = SIMONE WILSON-ADELEKE, same as Oak Park and Chicago SE offices"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.prosmile.com/prosmile-completes-acquisition-of-destiny-dental-practices-located-in-midwest/",
+        "https://www.trispanllp.com/portfolio/pg-dental-holdings-llc/",
+        "https://destinydentalcare.com/illinois/",
+        "https://npiregistry.cms.hhs.gov/provider-view/1134956410"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "SIMONE WILSON-ADELEKE",
+        "reach": 3,
+        "zips": ["60302", "60438", "60649"],
+        "npi": "1134956410",
+        "location_name": "PRO DENTAL IL - CHAD WISE PC",
+        "address": "17653 torrence ave, LANSING, IL 60438"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Lansing location (17653 Torrence Ave, 60438, 4 providers) is already correctly classified dso_regional / Destiny Dental / ProSmile. Same friendly-PC wrapper 'Pro Dental IL - Chad Wise PC' and same AO (Simone Wilson-Adeleke) as the other two cluster members. ProSmile (TriSpan PE) acquired Destiny Dental Midwest in August 2024. Classification is branded_dso, pe_backed=true."
+    },
+    {
+      "location_id": "1d72f604a2d31ce9",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "ProSmile Holdings LLC (TriSpan PE-backed DSO); operating as Pro Dental IL - Chad Wise PC (friendly PC wrapper); Destiny Dental brand",
+      "network_id": "ao:WILSON-ADELEKE_SIMONE",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across 3 ZIPs (60302, 60438, 60649)",
+          "org_name='PRO DENTAL IL - CHAD WISE PC' repeated across all 3 NPIs",
+          "entity_classification=dso_regional already in DB",
+          "affiliated_dso='Destiny Dental / ProSmile' in DB"
+        ],
+        "evidence": [
+          "ProSmile press release (Sept 2024) documents acquisition of Destiny Dental Midwest practices including 5 IL offices (Chicago SE 71st St is one of the known Destiny Dental Chicago offices): https://www.prosmile.com/prosmile-completes-acquisition-of-destiny-dental-practices-located-in-midwest/",
+          "TriSpan portfolio page confirms ProSmile is PE-backed: https://www.trispanllp.com/portfolio/pg-dental-holdings-llc/",
+          "Destiny Dental Care Illinois locator page lists Chicago offices: https://destinydentalcare.com/illinois/",
+          "NPI registry confirms NPPES AO = SIMONE WILSON-ADELEKE, same as Oak Park and Lansing offices; highest provider count (8) consistent with flagship DSO office"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.prosmile.com/prosmile-completes-acquisition-of-destiny-dental-practices-located-in-midwest/",
+        "https://www.trispanllp.com/portfolio/pg-dental-holdings-llc/",
+        "https://destinydentalcare.com/illinois/",
+        "https://npiregistry.cms.hhs.gov/provider-view/1942037221"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "SIMONE WILSON-ADELEKE",
+        "reach": 3,
+        "zips": ["60302", "60438", "60649"],
+        "npi": "1942037221",
+        "location_name": "PRO DENTAL IL - CHAD WISE PC",
+        "address": "2101 e 71st st, CHICAGO, IL 60649"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Chicago SE location (2101 E 71st St, 60649, 8 providers — the largest of the 3) is already correctly classified dso_regional / Destiny Dental / ProSmile. Same friendly-PC wrapper and same AO as the other two. ProSmile (TriSpan PE) acquired Destiny Dental Midwest in August 2024. Classification is branded_dso, pe_backed=true. The high provider count (8) is consistent with a flagship Destiny Dental community-care office."
+    }
+  ]
+}

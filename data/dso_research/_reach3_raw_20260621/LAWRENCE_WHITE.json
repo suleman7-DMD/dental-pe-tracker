@@ -1,0 +1,112 @@
+{
+  "network": "LAWRENCE WHITE",
+  "network_id": "ao:WHITE_LAWRENCE",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Dr. Lawrence A. White DDS is a Chicago south-side dentist who personally owns and operates two GP dental offices under his independent brand 'Comfort Dental Studio' — Hyde Park (1370 E 53rd St, 60615, opened 1989) and Pilsen (1253 W 18th St, 60608, opened ~1992). No DSO, MSO, management company, or PE affiliation exists. The NPPES dso_national / affiliated_dso='Comfort Dental' tag on the Hyde Park location is a classifier false-positive: 'Comfort Dental Studio' is Dr. White's own private brand, unrelated to the Colorado-headquartered Comfort Dental franchise chain. Both offices share the same phone number (773-731-3300) and website (comfortteeth.com). Dr. White's bio cites ADA, ISDS, and Chicago Dental Society leadership roles consistent with an independent dentist-owner. Associates (Dr. Steven Steiner, Dr. Gunmeet Maini) work in the practice but Dr. White is the founder/owner.",
+  "owner_operator_identity": "Dr. Lawrence A. White DDS, founder and owner; opened first office 1992 near childhood home on Chicago south side; ADA/ISDS/Chicago Dental Society member/leader",
+  "brand_trade_names": [
+    "Comfort Dental Studio",
+    "Comfort Teeth Pilsen"
+  ],
+  "legal_entities": [],
+  "durable_artifacts": [
+    "Both locations share identical phone number 773-731-3300",
+    "Both locations share website comfortteeth.com under 'Comfort Dental Studio' brand",
+    "comfortteeth.com/dr-lawrence-white/ bio confirms Hyde Park (60615) and Pilsen (60608) offices",
+    "LinkedIn profile: Lawrence White - Owner, Comfort Dental Studio - Hyde Park, Pilsen"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "Location 659a2d2d736f5059 (1370 E 53rd St, 60615) carries entity_classification='dso_national' and affiliated_dso='Comfort Dental' — this is a CLASSIFIER FALSE POSITIVE. 'Comfort Dental Studio' is Dr. White's independent private brand; it is not affiliated with the Colorado-headquartered Comfort Dental franchise/DSO. Should be demoted to solo_established or small_group (3 providers). Location 8182bfe53b8a50bb (1253 W 18th St, 60608) is correctly classified solo_established.",
+  "evidence_chain": "AO signal: LAWRENCE WHITE appears as authorized official on both NPI 1295415677 (Comfort Teeth Pilsen, 60608) and NPI 1407531627 (Comfort Dental Studio Hyde Park, 60615), reach=2 across 2 ZIPs. Both share phone 773-731-3300. -> Documentary corroboration: (1) comfortteeth.com explicitly lists both Chicago addresses under the 'Comfort Dental Studio' brand operated by Dr. Lawrence A. White DDS. (2) LinkedIn profile confirms 'Lawrence White - Owner, Comfort Dental Studio - Hyde Park, Pilsen.' (3) Dr. White's bio states he opened his first practice in 1992 near his childhood home on Chicago's south side. (4) No DSO, MSO, management company, or PE affiliation found anywhere on the website or in any search result. (5) 'Comfort Dental' DSO affiliation tag confirmed false-positive: national Comfort Dental franchise has no Chicago presence at this address per search.",
+  "future_app_notes": "1) Recommend demoting location 659a2d2d736f5059 from dso_national/affiliated_dso='Comfort Dental' to small_group — it is Dr. White's private Hyde Park office with 3 providers. 2) This network is a clean dentist_multi confirmation; no further validation needed for tier. 3) Watch for any future DSO acquisition if Dr. White approaches retirement (practice founded 1989, ~35+ years). 4) The shared phone and brand across two ZIPs make this a strong positive signal for the dentist_multi tier but the evidence is conclusive enough for ready_for_validation.",
+  "classifications": [
+    {
+      "location_id": "8182bfe53b8a50bb",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Lawrence A. White DDS",
+      "network_id": "ao:WHITE_LAWRENCE",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2 across ZIPs 60608 and 60615",
+          "shared phone 773-731-3300 with Hyde Park office"
+        ],
+        "evidence": [
+          "comfortteeth.com lists 1253 W 18th St (Pilsen) as second office under Comfort Dental Studio brand owned by Dr. Lawrence A. White DDS",
+          "LinkedIn: Lawrence White - Owner, Comfort Dental Studio - Hyde Park, Pilsen"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.comfortteeth.com/dr-lawrence-white/",
+        "https://www.comfortteeth.com/",
+        "https://www.linkedin.com/in/lawrence-white-55069436/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "LAWRENCE WHITE",
+        "reach": 2,
+        "zips": ["60608", "60615"],
+        "npi": "1295415677",
+        "name": "COMFORT TEETH PILSEN",
+        "address": "1253 w 18th st",
+        "city": "CHICAGO",
+        "zip": "60608",
+        "entity_classification": "solo_established",
+        "affiliated_dso": null,
+        "provider_count": 1
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "COMFORT TEETH PILSEN at 1253 W 18th St (ZIP 60608) is the Pilsen branch of Dr. Lawrence A. White's two-office independent dental group. comfortteeth.com and LinkedIn both confirm Dr. White as owner of both Hyde Park and Pilsen offices under the 'Comfort Dental Studio' brand. No DSO, MSO, management company, or PE affiliation found. Current entity_classification=solo_established is slightly mis-set (it is part of a two-office owner group, not a solo) but the GP classification is otherwise correct — it should be dentist_multi / small_group. Tier: dentist_multi. pe_backed: false."
+    },
+    {
+      "location_id": "659a2d2d736f5059",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Lawrence A. White DDS",
+      "network_id": "ao:WHITE_LAWRENCE",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2 across ZIPs 60608 and 60615",
+          "shared phone 773-731-3300 with Pilsen office",
+          "entity_classification=dso_national with affiliated_dso='Comfort Dental' — CLASSIFIER FALSE POSITIVE"
+        ],
+        "evidence": [
+          "comfortteeth.com confirms 1370 E 53rd St as primary/Hyde Park office of Comfort Dental Studio owned by Dr. Lawrence A. White DDS since 1989",
+          "No connection to Comfort Dental franchise/DSO chain found in any search",
+          "Dr. White bio and LinkedIn confirm independent private-practice ownership",
+          "LinkedIn: Lawrence White - Owner, Comfort Dental Studio - Hyde Park, Pilsen"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.comfortteeth.com/dr-lawrence-white/",
+        "https://www.comfortteeth.com/",
+        "https://www.linkedin.com/in/lawrence-white-55069436/",
+        "https://www.yelp.com/biz/comfort-dental-studio-chicago"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "LAWRENCE WHITE",
+        "reach": 2,
+        "zips": ["60608", "60615"],
+        "npi": "1407531627",
+        "name": "COMFORT DENTAL STUDIO",
+        "address": "1370 e 53rd st",
+        "city": "CHICAGO",
+        "zip": "60615",
+        "entity_classification": "dso_national",
+        "affiliated_dso": "Comfort Dental",
+        "parent_company": null,
+        "provider_count": 3,
+        "year_established": 1989
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "entity_classification=dso_national and affiliated_dso='Comfort Dental' are CONFIRMED FALSE POSITIVES. 'Comfort Dental Studio' is Dr. White's independent private brand since 1989; it is not the Colorado Comfort Dental DSO franchise. Recommend demotion to small_group or dentist_multi class and clearing of affiliated_dso field.",
+      "reasoning": "COMFORT DENTAL STUDIO at 1370 E 53rd St (Hyde Park, ZIP 60615) is the primary office of Dr. Lawrence A. White's independent two-office dental group, open since 1989. The NPPES dso_national / affiliated_dso='Comfort Dental' tag is a classifier name-fragment false positive — the Colorado-headquartered Comfort Dental franchise has no presence at this address. comfortteeth.com and LinkedIn conclusively confirm Dr. White as sole owner under his own private brand. No DSO/MSO/PE affiliation whatsoever. Tier: dentist_multi. pe_backed: false. This location should be REMOVED from corporate counts and demoted from dso_national."
+    }
+  ]
+}

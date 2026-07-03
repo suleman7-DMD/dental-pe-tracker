@@ -1,0 +1,228 @@
+{
+  "network": "STEVEN REMPAS",
+  "network_id": "ao:REMPAS_STEVEN",
+  "owner_type_verdict": "dso_brand",
+  "network_summary": "Webster Dental Care is a Chicago-area multi-location dental group founded in 1976 by Dr. Steven Rempas DDS. As of 2018-2020 it operated 11-12 locations across Chicagoland. A separate management entity — Webster Dental Management — is documented via the official website (webdentalchicago.com footer links to websterdentalmanagement.com/about/) and appears as parent_company in NPPES records for two of the four cluster locations. The organization has recruited an external CEO (Michael Errin Rios, 2020), has a formal management/MSO layer, and describes itself as 'an industry leading dental service organization.' No PE backing was found in any source; as of 2018 it was explicitly 'owned by two dentists, without any venture capital partners.' The Cicero location (ZIP 60804) is marked CLOSED on Yelp as of May 2026.",
+  "owner_operator_identity": "Dr. Steven Rempas DDS, Founder & President; Dr. Mark Zieba DDS, Partner & Director of Professional Development (2018); Michael Errin Rios, CEO (appointed 2020)",
+  "brand_trade_names": [
+    "Webster Dental Care",
+    "Webster Dental Care Evanston",
+    "Webster Dental Care Edison Park",
+    "Webster Dental Care of Lakeview",
+    "Webster Dental Care of Cicero"
+  ],
+  "legal_entities": [
+    "WEBSTER DENTAL CARE EVANSTON, LTD (NPI 1952817298, EIN 362956231)",
+    "WEBSTER DENTAL CARE EDISON PARK, LTD (NPI 1083079339)",
+    "WEBSTER DENTAL CARE OF LAKEVIEW, LTD (NPI 1326258484, EIN 363058363)",
+    "WEBSTER DENTAL CARE OF CICERO (NPI 1659451813)",
+    "WEBSTER DENTAL MANAGEMENT (management/MSO entity, websterdentalmanagement.com)"
+  ],
+  "durable_artifacts": [
+    "NPPES authorized_official STEVEN REMPAS spans 4 distinct watched-IL GP locations across ZIPs 60201, 60631, 60657, 60804",
+    "parent_company='WEBSTER DENTAL MANAGEMENT' on NPI 1952817298 (Evanston) and NPI 1083079339 (Edison Park)",
+    "affiliated_dso='WEBSTER DENTAL MANAGEMENT' on NPI 1083079339 (Edison Park)",
+    "shared brand name 'Webster Dental Care' across all 4 locations",
+    "EIN 362956231 on Evanston location; EIN 363058363 on Lakeview location",
+    "Official website webdentalchicago.com links to management company at websterdentalmanagement.com"
+  ],
+  "mso_platform_pe_evidence": "Webster Dental Management is a documented management/MSO entity: the official practice website webdentalchicago.com lists a separate leadership team page at websterdentalmanagement.com/about/. NPPES records list 'WEBSTER DENTAL MANAGEMENT' as parent_company on two cluster locations. The organization appointed an external CEO (Michael Errin Rios) in 2020, describing WDC as 'an industry leading dental service organization.' No PE sponsor identified; as of 2018 Group Dentistry Now documented it as 'owned by two dentists, without any venture capital partners.' MSO/management layer confirmed; PE=false. Source: https://www.prnewswire.com/news-releases/webster-dental-care-announces-new-interim-chief-executive-officer-301139244.html and https://www.webdentalchicago.com/ and https://www.groupdentistrynow.com/dso-group-blog/group-dentistry-nows-emerging-dental-groups-to-watch-in-2018/",
+  "stale_closed_false_positive_notes": "Cicero location (location_id 3bc304a7819a234f, 6130 W Cermak Rd, ZIP 60804) is marked CLOSED on Yelp as of May 2026 (https://www.yelp.com/biz/webster-dental-care-of-cicero-cicero). This location has no EIN and no parent_company in NPPES; it may be a shell/closed NPI that should be flagged stale. All other three locations (Evanston, Edison Park, Lakeview) appear actively operating as of 2026.",
+  "evidence_chain": "AO signal: STEVEN REMPAS appears as authorized_official on 4 Chicagoland GP locations under the 'Webster Dental Care' brand across ZIPs 60201/60631/60657/60804. Documentary corroboration: (1) NPPES records list 'WEBSTER DENTAL MANAGEMENT' as parent_company on two locations, establishing a management-entity layer; (2) the official website webdentalchicago.com links to websterdentalmanagement.com as a separate leadership/management site; (3) a 2020 PR Newswire press release describes WDC as 'an industry leading dental service organization' and announced an external CEO appointment, confirming centralized DSO governance; (4) a 2019 PR Newswire release confirms WDC as a strategic buyer for Chicagoland practices, describing 'over 12 locations' and a growth platform; (5) a 2018 Group Dentistry Now profile confirms Steven Rempas as founder/dentist-owner with no PE partners. Conclusion: branded_dso with pe_backed=false — a dentist-founded, management-company-backed DSO brand with confirmed MSO layer.",
+  "future_app_notes": "Webster Dental Management entity should be verified via Illinois Secretary of State search (websterdentalmanagement.com TLS cert was invalid at time of research — site may need re-check). Cicero location (3bc304a7819a234f) should be validated as closed/stale and potentially reclassified to solo_inactive or removed from active denominators. Webster Dental Care has 8-12 total locations per public sources — the 4 in our watched-IL ZIPs are only a subset; other WDC locations (Berwyn, Hoffman Estates, La Grange Park, Portage Park, Skokie) may be in non-watched ZIPs. If the Cicero NPI is confirmed closed, stale_closed_note should be applied. Future confirmation: check if websterdentalmanagement.com resolves (TLS issue in 2026-06) and pull their leadership/management services page as primary DSO-structure evidence.",
+  "classifications": [
+    {
+      "location_id": "917453ec644f8a6a",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dr. Steven Rempas DDS, Founder & President; Webster Dental Management (management entity)",
+      "network_id": "ao:REMPAS_STEVEN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across ZIPs 60201/60631/60657/60804 under STEVEN REMPAS",
+          "parent_company='WEBSTER DENTAL MANAGEMENT' in NPPES",
+          "entity_classification=dso_national in DB",
+          "provider_count=11 (multi-provider corporate office)"
+        ],
+        "evidence": [
+          "NPPES parent_company='WEBSTER DENTAL MANAGEMENT' directly on this NPI (1952817298)",
+          "Official website webdentalchicago.com lists Evanston at 500 Davis St as an active Webster Dental Care location",
+          "2020 PR Newswire: WDC described as 'an industry leading dental service organization' — https://www.prnewswire.com/news-releases/webster-dental-care-announces-new-interim-chief-executive-officer-301139244.html",
+          "2018 Group Dentistry Now: Webster Dental Care confirmed as dentist-owned (no PE) multi-location brand, founded by Dr. Rempas — https://www.groupdentistrynow.com/dso-group-blog/group-dentistry-nows-emerging-dental-groups-to-watch-in-2018/",
+          "webdentalchicago.com footer links to websterdentalmanagement.com as management company — https://www.webdentalchicago.com/"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.prnewswire.com/news-releases/webster-dental-care-announces-new-interim-chief-executive-officer-301139244.html",
+        "https://www.webdentalchicago.com/locations/",
+        "https://www.webdentalchicago.com/",
+        "https://www.groupdentistrynow.com/dso-group-blog/group-dentistry-nows-emerging-dental-groups-to-watch-in-2018/",
+        "https://www.prnewswire.com/news-releases/aptus-exchange-llc-announces-webster-dental-care-as-a-strategic-buyer-for-dental-practices-in-the-chicagoland-market-300985971.html"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "STEVEN REMPAS",
+        "reach": 4,
+        "zips": ["60201", "60631", "60657", "60804"],
+        "this_location": {
+          "name": "WEBSTER DENTAL CARE EVANSTON, LTD",
+          "address": "500 davis st",
+          "city": "EVANSTON",
+          "zip": "60201",
+          "ein": "362956231",
+          "parent_company": "WEBSTER DENTAL MANAGEMENT",
+          "provider_count": 11
+        }
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "WEBSTER DENTAL CARE EVANSTON, LTD at 500 Davis St is an active Webster Dental Care location per the official locator page. NPPES parent_company='WEBSTER DENTAL MANAGEMENT' directly on this record. The organization is a documented branded DSO with management company layer (Webster Dental Management), no PE backing, founded by dentist-owner Dr. Steven Rempas. Multiple documentary sources confirm the DSO brand and management structure. gate_status=ready_for_validation because we have: (1) NPPES parent_company naming the MSO, (2) official multi-location website confirming brand, (3) press releases confirming DSO self-description and external CEO governance."
+    },
+    {
+      "location_id": "264b213aba147441",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dr. Steven Rempas DDS, Founder & President; Webster Dental Management (management entity)",
+      "network_id": "ao:REMPAS_STEVEN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across ZIPs 60201/60631/60657/60804 under STEVEN REMPAS",
+          "parent_company='WEBSTER DENTAL MANAGEMENT' in NPPES",
+          "affiliated_dso='WEBSTER DENTAL MANAGEMENT' in NPPES",
+          "entity_classification=dso_national in DB",
+          "provider_count=2"
+        ],
+        "evidence": [
+          "NPPES parent_company AND affiliated_dso both set to 'WEBSTER DENTAL MANAGEMENT' on this NPI (1083079339)",
+          "Official website webdentalchicago.com lists Edison Park location at 7760 W Devon Ave as an active Webster Dental Care location",
+          "2020 PR Newswire: WDC described as 'an industry leading dental service organization' — https://www.prnewswire.com/news-releases/webster-dental-care-announces-new-interim-chief-executive-officer-301139244.html",
+          "2018 Group Dentistry Now: Webster Dental Care confirmed as dentist-owned (no PE) multi-location brand — https://www.groupdentistrynow.com/dso-group-blog/group-dentistry-nows-emerging-dental-groups-to-watch-in-2018/"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.prnewswire.com/news-releases/webster-dental-care-announces-new-interim-chief-executive-officer-301139244.html",
+        "https://www.webdentalchicago.com/locations/",
+        "https://www.webdentalchicago.com/",
+        "https://www.groupdentistrynow.com/dso-group-blog/group-dentistry-nows-emerging-dental-groups-to-watch-in-2018/",
+        "https://www.prnewswire.com/news-releases/aptus-exchange-llc-announces-webster-dental-care-as-a-strategic-buyer-for-dental-practices-in-the-chicagoland-market-300985971.html"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "STEVEN REMPAS",
+        "reach": 4,
+        "zips": ["60201", "60631", "60657", "60804"],
+        "this_location": {
+          "name": "WEBSTER DENTAL CARE EDISON PARK, LTD",
+          "address": "7760 w devon ave",
+          "city": "CHICAGO",
+          "zip": "60631",
+          "ein": null,
+          "parent_company": "WEBSTER DENTAL MANAGEMENT",
+          "affiliated_dso": "WEBSTER DENTAL MANAGEMENT",
+          "provider_count": 2
+        }
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "WEBSTER DENTAL CARE EDISON PARK, LTD at 7760 W Devon Ave has both parent_company and affiliated_dso set to WEBSTER DENTAL MANAGEMENT in NPPES — the strongest possible federal signal for management-entity backing. The official WDC website lists Edison Park as an active location. Branded DSO with management company layer confirmed. No PE. gate_status=ready_for_validation."
+    },
+    {
+      "location_id": "89d78c918000e532",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dr. Steven Rempas DDS, Founder & President; Webster Dental Management (management entity)",
+      "network_id": "ao:REMPAS_STEVEN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across ZIPs 60201/60631/60657/60804 under STEVEN REMPAS",
+          "parent_company='WEBSTER DENTAL MANAGEMENT' in NPPES",
+          "entity_classification=dso_national in DB",
+          "provider_count=6"
+        ],
+        "evidence": [
+          "NPPES parent_company='WEBSTER DENTAL MANAGEMENT' on this NPI (1326258484)",
+          "Official website webdentalchicago.com lists Lakeview location at 2829 N Lincoln Ave as an active Webster Dental Care location",
+          "Yelp: 200+ reviews for Webster Dental Care of Lakeview at 2829 N Lincoln Ave, Chicago — https://www.yelp.com/biz/webster-dental-care-of-lakeview-chicago-2",
+          "BBB profile: Webster Dental Care of Lakeview confirmed active — https://www.bbb.org/us/il/chicago/profile/dentist/webster-dental-care-of-lakeview-0654-12012313",
+          "2018 Group Dentistry Now: Webster Dental Care confirmed as dentist-owned brand with multiple Chicago locations — https://www.groupdentistrynow.com/dso-group-blog/group-dentistry-nows-emerging-dental-groups-to-watch-in-2018/"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.prnewswire.com/news-releases/webster-dental-care-announces-new-interim-chief-executive-officer-301139244.html",
+        "https://www.webdentalchicago.com/locations/",
+        "https://www.yelp.com/biz/webster-dental-care-of-lakeview-chicago-2",
+        "https://www.bbb.org/us/il/chicago/profile/dentist/webster-dental-care-of-lakeview-0654-12012313",
+        "https://www.groupdentistrynow.com/dso-group-blog/group-dentistry-nows-emerging-dental-groups-to-watch-in-2018/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "STEVEN REMPAS",
+        "reach": 4,
+        "zips": ["60201", "60631", "60657", "60804"],
+        "this_location": {
+          "name": "WEBSTER DENTAL CARE OF LAKEVIEW, LTD",
+          "address": "2829 n lincoln ave",
+          "city": "CHICAGO",
+          "zip": "60657",
+          "ein": "363058363",
+          "parent_company": "WEBSTER DENTAL MANAGEMENT",
+          "provider_count": 6
+        }
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "WEBSTER DENTAL CARE OF LAKEVIEW, LTD at 2829 N Lincoln Ave is a well-documented active location with 200+ Yelp reviews and BBB profile. NPPES parent_company='WEBSTER DENTAL MANAGEMENT'. Branded DSO with management company confirmed. No PE. gate_status=ready_for_validation."
+    },
+    {
+      "location_id": "3bc304a7819a234f",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dr. Steven Rempas DDS, Founder & President; Webster Dental Management (management entity)",
+      "network_id": "ao:REMPAS_STEVEN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across ZIPs 60201/60631/60657/60804 under STEVEN REMPAS",
+          "no EIN, no parent_company in NPPES for this specific location",
+          "entity_classification=dso_national in DB",
+          "provider_count=2"
+        ],
+        "evidence": [
+          "Yelp confirms this is a Webster Dental Care branded location at 6130 W Cermak Rd, Cicero — same brand as the 3 corroborated locations — https://www.yelp.com/biz/webster-dental-care-of-cicero-cicero",
+          "Yelp status: CLOSED as of May 2026 — stale/closed NPI likely",
+          "Network corroboration: same AO (Steven Rempas) and same brand as 3 other confirmed Webster Dental Care locations"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.yelp.com/biz/webster-dental-care-of-cicero-cicero",
+        "https://www.webdentalchicago.com/locations/",
+        "https://www.prnewswire.com/news-releases/webster-dental-care-announces-new-interim-chief-executive-officer-301139244.html"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "STEVEN REMPAS",
+        "reach": 4,
+        "zips": ["60201", "60631", "60657", "60804"],
+        "this_location": {
+          "name": "WEBSTER DENTAL CARE OF CICERO",
+          "address": "6130 w cermak rd",
+          "city": "CICERO",
+          "zip": "60804",
+          "ein": null,
+          "parent_company": null,
+          "provider_count": 2
+        }
+      },
+      "web_searched": true,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "stale_closed_note": "CLOSED per Yelp as of May 2026 (https://www.yelp.com/biz/webster-dental-care-of-cicero-cicero). This location is not listed on the current webdentalchicago.com/locations/ page (which lists 8 active locations). The Cicero NPI (1659451813) likely represents a now-closed Webster Dental Care office. The corporate ownership classification is correct historically, but this location should be assessed as stale/closed for current denominator purposes.",
+      "reasoning": "WEBSTER DENTAL CARE OF CICERO at 6130 W Cermak Rd is confirmed as a Webster Dental Care branded location (same brand/AO as 3 corroborated locations) but is CLOSED per Yelp as of May 2026 and not listed on the active locations page. Classifying as branded_dso (same network) but gate_status=candidate because (1) this specific location lacks NPPES parent_company corroboration, (2) it is likely closed/stale and may not belong in the active GP denominator. The downstream gate should validate closure and consider reclassification to solo_inactive or removal from the active denominator."
+    }
+  ]
+}

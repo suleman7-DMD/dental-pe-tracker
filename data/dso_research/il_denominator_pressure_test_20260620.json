@@ -1,0 +1,552 @@
+{
+  "_doc": "Chicagoland IL GP denominator pressure-test (2026-06-20). READ-ONLY analysis, NO DB writes.",
+  "conclusion": "The IL GP denominator (~4,440) is SOUND. The 5.58% floor is a NUMERATOR (detector-coverage) problem, NOT denominator inflation.",
+  "findings": {
+    "prov0_independent_rows": 558,
+    "prov0_are_real_nppes_org_practices": 558,
+    "prov0_verdict": "primary_npi==org_npi, all real 10-digit NPIs present in practices, all data_sources=nppes. provider_count=0 is a NPI-1->org-address LINKAGE GAP (e.g. Lemont Family Dental Ltd, Homer-Lockport Dental Associates Inc), NOT empty shells. KEEP in denominator.",
+    "true_duplicate_excess_rows": 87,
+    "true_dup_clusters": 79,
+    "true_dup_verdict": "Only same-address rows that SHARE phone/EIN are genuine duplicates. These ~87 excess rows (~2% of denominator) are the ONLY legitimate denominator correction. Already-handled duplicate_location cleanup covers some.",
+    "multitenant_clusters_kept": 103,
+    "multitenant_verdict": "103 same-address clusters (218 rows) have NO shared owner-id = distinct practices in one medical building (e.g. 64 Old Orchard Skokie). KEEP all."
+  },
+  "true_dup_clusters_detail": [
+    {
+      "addr_core": "6223 DEMPSTER",
+      "city": "MORTON GROVE",
+      "n_rows": 3,
+      "names": [
+        "SIMONA BALAN DDS PC",
+        "Balan Dental",
+        "MY FAMILY DENTAL CARE, P.C."
+      ],
+      "location_ids": [
+        "e8c7b23877da7231",
+        "319370c0f6eef2b2",
+        "444a7e5aef77b98d"
+      ]
+    },
+    {
+      "addr_core": "323 RAILROAD",
+      "city": "BARTLETT",
+      "n_rows": 3,
+      "names": [
+        "Ascher Dental",
+        "Guerra Dental",
+        "Bartlett Smiles"
+      ],
+      "location_ids": [
+        "dbf40fe610f9eb4f",
+        "932a833bec165f4d",
+        "1cb7ec6e7f656835"
+      ]
+    },
+    {
+      "addr_core": "6436 CERMAK",
+      "city": "BERWYN",
+      "n_rows": 3,
+      "names": [
+        "Salerno Dental",
+        "Salerno Dental",
+        "BERWYN DENTAL CLINIC"
+      ],
+      "location_ids": [
+        "9704f166ed868216",
+        "6cb95a87f1688676",
+        "1800132e7ff2e68c"
+      ]
+    },
+    {
+      "addr_core": "6056 159TH",
+      "city": "OAK FOREST",
+      "n_rows": 3,
+      "names": [
+        "Halikias Dental",
+        "SHEILA M. VACENDAK, DDS, PC",
+        "OAK FAMILY DENTAL"
+      ],
+      "location_ids": [
+        "89f740688dc5eaf6",
+        "45c3ff989564e69c",
+        "a0e606c50529ba3c"
+      ]
+    },
+    {
+      "addr_core": "1137 EOLA",
+      "city": "AURORA",
+      "n_rows": 3,
+      "names": [
+        "Ashton Dental",
+        "Shafi Dental",
+        "ASHTON DENTAL PC"
+      ],
+      "location_ids": [
+        "895ecae72eb372df",
+        "1df260dc64a9a060",
+        "9ee4df9470dec738"
+      ]
+    },
+    {
+      "addr_core": "101 GARFIELD",
+      "city": "HINSDALE",
+      "n_rows": 3,
+      "names": [
+        "Novak Dental",
+        "Brown Dental",
+        "Hinsdale Dental"
+      ],
+      "location_ids": [
+        "ecf1040e677465de",
+        "c70779c0455ae78d",
+        "ef8e3f1324ee786c"
+      ]
+    },
+    {
+      "addr_core": "233 ERIE",
+      "city": "CHICAGO",
+      "n_rows": 3,
+      "names": [
+        "MAGNIFICENT MILE FAMILY DENTAL",
+        "Chen, Gloria C DDS",
+        "Goodman Dental"
+      ],
+      "location_ids": [
+        "dd291f40c15cf483",
+        "febfbd0947c16124",
+        "e42b3a751f478073"
+      ]
+    },
+    {
+      "addr_core": "1945 WILSON",
+      "city": "CHICAGO",
+      "n_rows": 3,
+      "names": [
+        "Renieris Irene",
+        "RADKHAN LELAND DENTAL, INC.",
+        "THE DENTAL MASTRS OF RAVENSWOOD LLC"
+      ],
+      "location_ids": [
+        "ba858690c8a54e29",
+        "a9866b66967e31ee",
+        "e32ed1606301b785"
+      ]
+    },
+    {
+      "addr_core": "1307 RAND",
+      "city": "ARLINGTON HEIGHTS",
+      "n_rows": 2,
+      "names": [
+        "Omni Dental",
+        "ASSOCIATES FOR GENERAL DENTISTRY, LTD"
+      ],
+      "location_ids": [
+        "e43db6cc2675d3be",
+        "a7cf17e5819d78f2"
+      ]
+    },
+    {
+      "addr_core": "958 ELK GROVE",
+      "city": "ELK GROVE VILLAGE",
+      "n_rows": 2,
+      "names": [
+        "32 VILLAGE DENTAL LLC",
+        "JOHN DREW GORRELL DDS LTD"
+      ],
+      "location_ids": [
+        "d5804fe187ecbb46",
+        "ce8b8ff3e6be7862"
+      ]
+    },
+    {
+      "addr_core": "4005 ALGONQUIN",
+      "city": "ROLLING MEADOWS",
+      "n_rows": 2,
+      "names": [
+        "MARIETTA A BUFALINO INC",
+        "Marietta Bufalina DDS"
+      ],
+      "location_ids": [
+        "9f75426d8a3511a3",
+        "535142f00b191b60"
+      ]
+    },
+    {
+      "addr_core": "125 TOWNLINE",
+      "city": "VERNON HILLS",
+      "n_rows": 2,
+      "names": [
+        "Bagdade Dental",
+        "Vernon Dental Care"
+      ],
+      "location_ids": [
+        "75f8dc18adfaf020",
+        "2625c100027ca176"
+      ]
+    },
+    {
+      "addr_core": "647 1ST BANK",
+      "city": "PALATINE",
+      "n_rows": 2,
+      "names": [
+        "ANNA PELAK & ASSOC",
+        "TOTALIDLLC"
+      ],
+      "location_ids": [
+        "36f2d7b78f905184",
+        "1cb279f97b785d5f"
+      ]
+    },
+    {
+      "addr_core": "1600 DEMPSTER",
+      "city": "PARK RIDGE",
+      "n_rows": 2,
+      "names": [
+        "ISMILECARE,P.C.",
+        "CELESTE L MEDYNSKYJ, DDS LTD"
+      ],
+      "location_ids": [
+        "415ff4857bd586d0",
+        "6a0646383e33d1ce"
+      ]
+    },
+    {
+      "addr_core": "35 PROSPECT",
+      "city": "PARK RIDGE",
+      "n_rows": 2,
+      "names": [
+        "Barrett Dental",
+        "PARK RIDGE DENTISTRY PLLC"
+      ],
+      "location_ids": [
+        "d3a0e2085a1e3776",
+        "fe4e8aece6d7fd2e"
+      ]
+    },
+    {
+      "addr_core": "412 TALCOTT",
+      "city": "PARK RIDGE",
+      "n_rows": 2,
+      "names": [
+        "Kompanowski Dental",
+        "Kompanowski Dental"
+      ],
+      "location_ids": [
+        "80cab1abd729dd22",
+        "38e2cf6ca3730e38"
+      ]
+    },
+    {
+      "addr_core": "472 HALF DAY",
+      "city": "BUFFALO GROVE",
+      "n_rows": 2,
+      "names": [
+        "SUPERIOR DENTAL, LTD.",
+        "NATALYA NAGORNAYA DDS PC"
+      ],
+      "location_ids": [
+        "822ec77539aefeca",
+        "cb7c876492fbd595"
+      ]
+    },
+    {
+      "addr_core": "4 WESTBROOK CORPORATE",
+      "city": "WESTCHESTER",
+      "n_rows": 2,
+      "names": [
+        "WESTCHESTER FAMILY DENTAL LTD",
+        "SAMEET THAKRAR DDS PC"
+      ],
+      "location_ids": [
+        "67b1c90f3875a7c1",
+        "d9e35a86e7c7b726"
+      ]
+    },
+    {
+      "addr_core": "1024 SCHAUMBURG",
+      "city": "STREAMWOOD",
+      "n_rows": 2,
+      "names": [
+        "Bohl Dental",
+        "ERIC W BOHL DDS LTD"
+      ],
+      "location_ids": [
+        "6e97d5c01cc9b828",
+        "3d19bf082c0cb2a3"
+      ]
+    },
+    {
+      "addr_core": "200 MAIN",
+      "city": "CARPENTERSVILLE",
+      "n_rows": 2,
+      "names": [
+        "Matusik Dental",
+        "Stanley Joseph Matusik DDS"
+      ],
+      "location_ids": [
+        "69d7f80b09971b16",
+        "8031f125d2413b77"
+      ]
+    },
+    {
+      "addr_core": "712 MAIN",
+      "city": "WEST DUNDEE",
+      "n_rows": 2,
+      "names": [
+        "Stojanovic Dental",
+        "DR. ZORAN D. STOJANOVIC & ASSOCIATES, LTD"
+      ],
+      "location_ids": [
+        "66fa01b5ca6161c7",
+        "d44c43930b0f8d3c"
+      ]
+    },
+    {
+      "addr_core": "1200 YORK",
+      "city": "ELMHURST",
+      "n_rows": 2,
+      "names": [
+        "Gupta Dental",
+        "KAVITA GUPTA PC"
+      ],
+      "location_ids": [
+        "32399095d00b3786",
+        "db33ff6cf7c176a0"
+      ]
+    },
+    {
+      "addr_core": "10020 GRAND",
+      "city": "FRANKLIN PARK",
+      "n_rows": 2,
+      "names": [
+        "GRAND DENTAL ASSOCIATES P.C.",
+        "Napier Dental"
+      ],
+      "location_ids": [
+        "bc975ef1860f394e",
+        "72b44a0858116792"
+      ]
+    },
+    {
+      "addr_core": "8383 BELMONT",
+      "city": "RIVER GROVE",
+      "n_rows": 2,
+      "names": [
+        "River Grove Dental Assoc",
+        "Soderquist Dental"
+      ],
+      "location_ids": [
+        "9fc42ed896e3742a",
+        "6ed893b75daf9df0"
+      ]
+    },
+    {
+      "addr_core": "350 IRVING PARK",
+      "city": "ROSELLE",
+      "n_rows": 2,
+      "names": [
+        "NITA PATEL DDS INC",
+        "Patel Dental"
+      ],
+      "location_ids": [
+        "be32c4f8df293c5d",
+        "81fa2361967975be"
+      ]
+    },
+    {
+      "addr_core": "108 WAKEMAN",
+      "city": "WHEATON",
+      "n_rows": 2,
+      "names": [
+        "Abbott Dental",
+        "Gramse Dental"
+      ],
+      "location_ids": [
+        "222c582c62402c01",
+        "ddf22f3a418c1983"
+      ]
+    },
+    {
+      "addr_core": "1560 SHERMAN",
+      "city": "EVANSTON",
+      "n_rows": 2,
+      "names": [
+        "Stephens Dental",
+        "STEPHENS DENTISTRY, INC."
+      ],
+      "location_ids": [
+        "2c1671236a9fd872",
+        "b9a649e2efffb13f"
+      ]
+    },
+    {
+      "addr_core": "2611 BROADWAY",
+      "city": "EVANSTON",
+      "n_rows": 2,
+      "names": [
+        "Marinic Dental",
+        "DENTAL HEALTH CARE LTD"
+      ],
+      "location_ids": [
+        "d4759b3c9107b6b7",
+        "24a93d43bec1d7b5"
+      ]
+    },
+    {
+      "addr_core": "6943",
+      "city": "OAK PARK",
+      "n_rows": 2,
+      "names": [
+        "JAMES E. SCAPILLATO D.D.S., P.C.",
+        "Scapillato James"
+      ],
+      "location_ids": [
+        "f67237fdcff7ef05",
+        "32c3017ee54f2212"
+      ]
+    },
+    {
+      "addr_core": "418 AUSTIN",
+      "city": "OAK PARK",
+      "n_rows": 2,
+      "names": [
+        "Mcdonald Dental",
+        "AUSTIN DENTAL CENTER LLC"
+      ],
+      "location_ids": [
+        "a028d8f3322d42fa",
+        "3f69c2699ad9add7"
+      ]
+    },
+    {
+      "addr_core": "7120 ROOSEVELT",
+      "city": "OAK PARK",
+      "n_rows": 2,
+      "names": [
+        "Esposito Dental",
+        "Zaim Sheema DMD"
+      ],
+      "location_ids": [
+        "b62e1423824fc6fa",
+        "c76feca7c33d6006"
+      ]
+    },
+    {
+      "addr_core": "7700 MADISON",
+      "city": "RIVER FOREST",
+      "n_rows": 2,
+      "names": [
+        "JOHN G HARTMANN DDS PC",
+        "RIVER FOREST DENTAL STUDIO"
+      ],
+      "location_ids": [
+        "3c812d6a848fe775",
+        "e89c88377e2b1441"
+      ]
+    },
+    {
+      "addr_core": "7765",
+      "city": "RIVER FOREST",
+      "n_rows": 2,
+      "names": [
+        "Sun Star Dental",
+        "Walsh Dental"
+      ],
+      "location_ids": [
+        "dce576d253c68d56",
+        "a0c2cefa1028f60e"
+      ]
+    },
+    {
+      "addr_core": "2911 HARLEM",
+      "city": "BERWYN",
+      "n_rows": 2,
+      "names": [
+        "HARLEM DENTAL LTD.",
+        "Leonard Dental"
+      ],
+      "location_ids": [
+        "18e3357f1daf99a8",
+        "749bf15d6b8517e5"
+      ]
+    },
+    {
+      "addr_core": "6737 STANLEY",
+      "city": "BERWYN",
+      "n_rows": 2,
+      "names": [
+        "J.V. DISCIPIO, D.D.S. & ASSOC., LTD.",
+        "Discipio Dental"
+      ],
+      "location_ids": [
+        "9e31721171338454",
+        "7fd34b5d164a7773"
+      ]
+    },
+    {
+      "addr_core": "607 JEFFERSON",
+      "city": "SHOREWOOD",
+      "n_rows": 2,
+      "names": [
+        "SHOREWOOD FAMILY DENTAL CARE LLP",
+        "Vicioso Dental"
+      ],
+      "location_ids": [
+        "98cfdd5c475f12b5",
+        "6c0af37000e89b19"
+      ]
+    },
+    {
+      "addr_core": "2241 THEODORE",
+      "city": "CREST HILL",
+      "n_rows": 2,
+      "names": [
+        "Franklin Dental",
+        "Rubis Dental"
+      ],
+      "location_ids": [
+        "8f706d83e1aa4a82",
+        "b48ae5cb321e110a"
+      ]
+    },
+    {
+      "addr_core": "1507 JEFFERSON",
+      "city": "JOLIET",
+      "n_rows": 2,
+      "names": [
+        "Patel Dental",
+        "PATEL&PATEL D.D.S LTD"
+      ],
+      "location_ids": [
+        "d2e4b594fa3fddf0",
+        "bb129134df9c3009"
+      ]
+    },
+    {
+      "addr_core": "12612 HARLEM",
+      "city": "PALOS HEIGHTS",
+      "n_rows": 2,
+      "names": [
+        "Habbal Dental",
+        "WALID HABBAL DDS PC"
+      ],
+      "location_ids": [
+        "2349c2b380472fb1",
+        "9bbed9ef6597e7a6"
+      ]
+    },
+    {
+      "addr_core": "123 MONDAMIN",
+      "city": "MINOOKA",
+      "n_rows": 2,
+      "names": [
+        "Homb, Kurt M DDS",
+        "KURT M. HOMB, D.D.S., P.C."
+      ],
+      "location_ids": [
+        "56c2178c3f738cd3",
+        "d8ba87390ab50be3"
+      ]
+    }
+  ]
+}

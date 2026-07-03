@@ -1,0 +1,142 @@
+{
+  "network": "AMJAD MAHAIRI",
+  "network_id": "ao:MAHAIRI_AMJAD",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Dr. Amjad Mahairi DDS/DMD is a solo dentist-owner who operates three Chicagoland GP practices — Mahairi Dental Center (Elgin, founded 1996), New Family Dental (Arlington Heights), and Maya Dental P.C. (Palatine) — entirely under his own name and personal professional corporation(s), with no documented MSO/management-company/DSO-platform/PE layer.",
+  "owner_operator_identity": "Dr. Amjad Mahairi DDS/DMD, founder and owner across all three locations",
+  "brand_trade_names": [
+    "Mahairi Dental Center",
+    "New Family Dental",
+    "Maya Dental P.C."
+  ],
+  "legal_entities": [
+    "MAYA DENTAL P.C. (primary NPI 1043544976, Palatine)",
+    "MAHAIRI DENTAL CENTER (primary NPI 1043475809, EIN 680510039, Elgin)"
+  ],
+  "durable_artifacts": [
+    "NPPES authorized_official AMJAD MAHAIRI appears on NPI 1477062701 (New Family Dental, ZIP 60005), NPI 1043544976 (Maya Dental P.C., ZIP 60074), and NPI 1043475809 (Mahairi Dental Center, ZIP 60120) — ao_reach=3 across 3 ZIPs",
+    "Dr. Mahairi bio page at https://www.newfamilydental.com/dr-amjad-mahairi/ places him as the doctor at New Family Dental in Arlington Heights",
+    "dentalplans.com profile lists Dr. Amjad Mahairi at both Elgin and Arlington Heights locations",
+    "Shared surname between doctor and flagship practice ('MAHAIRI DENTAL CENTER') confirms owner-named single-operator group",
+    "EIN 680510039 on NPI 1043475809 (Mahairi Dental Center, Elgin)"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": null,
+  "evidence_chain": "AO signal: AMJAD MAHAIRI is the registered authorized official on 3 distinct GP-location NPIs across ZIPs 60005, 60074, 60120. Documentary corroboration: (1) https://www.newfamilydental.com/dr-amjad-mahairi/ — his personal bio page on the New Family Dental site (Arlington Heights) confirms he is the dentist-owner there; (2) https://www.dentalplans.com/dentists/illinois/arlington-heights/60005/dr-amjad-mahairi-115180/ and the companion Elgin profile confirm both locations under the same individual; (3) the flagship Mahairi Dental Center website https://www.dentalcenterelgin.com/ shows the eponymous owner-operated practice in Elgin since 1996. No MSO, management-services agreement, DSO platform, or PE sponsor found in any search.",
+  "future_app_notes": "Maya Dental P.C. (Palatine, 60074) had no dedicated website found — worth checking whether that location is still active or has been absorbed into the New Family Dental brand. A fourth Palatine address (1177 E Dundee Rd) appeared in search snippets; confirm whether that is a second Palatine office or a relocation of Maya Dental P.C. If a fourth NPI surfaces for that address with the same AO, update reach to 4.",
+  "classifications": [
+    {
+      "location_id": "fff89ee2312c7249",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Amjad Mahairi DDS/DMD",
+      "network_id": "ao:MAHAIRI_AMJAD",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: AMJAD MAHAIRI is AO on NPI 1477062701 (this location) + NPI 1043544976 (Palatine) + NPI 1043475809 (Elgin)",
+          "entity_classification=solo_established (current DB label)"
+        ],
+        "evidence": [
+          "https://www.newfamilydental.com/dr-amjad-mahairi/ — Dr. Mahairi's personal bio page on the New Family Dental website (1768 W Algonquin Rd, Arlington Heights) confirms he is the dentist and owner at this location",
+          "https://www.dentalplans.com/dentists/illinois/arlington-heights/60005/dr-amjad-mahairi-115180/ — DentalPlans profile lists Dr. Amjad Mahairi at this exact address"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.newfamilydental.com/dr-amjad-mahairi/",
+        "https://www.newfamilydental.com/",
+        "https://www.dentalplans.com/dentists/illinois/arlington-heights/60005/dr-amjad-mahairi-115180/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "AMJAD MAHAIRI",
+        "reach": 3,
+        "zips": ["60005", "60074", "60120"],
+        "npi": "1477062701",
+        "ein": null,
+        "entity_classification_current": "solo_established"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "New Family Dental (1768 W Algonquin Rd, Arlington Heights, 60005) is one of Dr. Amjad Mahairi's personally-owned GP offices. His bio page on the practice website (newfamilydental.com/dr-amjad-mahairi/) is unambiguous documentary corroboration that he is the owner-dentist at this address. No MSO or PE layer found. Current DB label solo_established understates — should be promoted to dentist_multi network."
+    },
+    {
+      "location_id": "1704bb618f1d6608",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Amjad Mahairi DDS/DMD",
+      "network_id": "ao:MAHAIRI_AMJAD",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: AMJAD MAHAIRI is AO on NPI 1043544976 (this location) + NPI 1477062701 (Arlington Heights) + NPI 1043475809 (Elgin)",
+          "legal entity name MAYA DENTAL P.C. (professional corporation) with no external brand",
+          "entity_classification=solo_established (current DB label)"
+        ],
+        "evidence": [
+          "https://www.dentalplans.com/dentists/illinois/arlington-heights/60005/dr-amjad-mahairi-115180/ — DentalPlans profile for Dr. Mahairi cross-references multiple Palatine and Elgin addresses alongside Arlington Heights, placing him as the owner across all sites",
+          "Search snippets from dentalcenter.com, WebMD, and Healthgrades consistently name Dr. Amjad Mahairi as the operator of the Palatine office at 1329 N Rand Rd"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.dentalplans.com/dentists/illinois/arlington-heights/60005/dr-amjad-mahairi-115180/",
+        "https://www.dentalplans.com/dentists/illinois/elgin/60120/dr-amjad-mahairi-14491",
+        "https://doctor.webmd.com/doctor/amjad-mahairi-bcb1c0a5-0198-453e-93f7-f066eec46b72-overview"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "AMJAD MAHAIRI",
+        "reach": 3,
+        "zips": ["60005", "60074", "60120"],
+        "npi": "1043544976",
+        "ein": null,
+        "entity_classification_current": "solo_established"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "medium",
+      "stale_closed_note": "No dedicated website found for Maya Dental P.C. at 1329 N Rand Rd Palatine. A second Palatine address (1177 E Dundee Rd) appeared in search snippets under Dr. Mahairi — confirm whether this is a relocation or a distinct fourth office. If the 1329 N Rand Rd location has closed/relocated, this row may need stale marking.",
+      "reasoning": "Maya Dental P.C. is the professional corporation through which Dr. Amjad Mahairi practices at 1329 N Rand Rd, Palatine (ZIP 60074). NPPES AO link is confirmed by multiple provider-directory profiles that list Dr. Mahairi at a Palatine address. No dedicated website found for this specific office (lower confidence than the Arlington Heights location), but the AO signal + directory corroboration is sufficient for ready_for_validation with medium confidence. Current DB label solo_established understates — network membership confirmed."
+    },
+    {
+      "location_id": "34fe6f62907684ce",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Amjad Mahairi DDS/DMD",
+      "network_id": "ao:MAHAIRI_AMJAD",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: AMJAD MAHAIRI is AO on NPI 1043475809 (this location, flagship) + NPI 1477062701 (Arlington Heights) + NPI 1043544976 (Palatine)",
+          "EIN 680510039 on this NPI",
+          "entity_classification=family_practice (current DB label — 3 providers at address, shared surname)"
+        ],
+        "evidence": [
+          "https://www.dentalcenterelgin.com/ — official website for Mahairi Dental Center at 15 N Geneva St, Elgin, IL 60120; eponymously named, serving the community since 1996",
+          "https://www.dentalcenterelgin.com/about-us/ — About Us page confirms Dr. Amjad Mahairi as the owner-dentist of the Elgin flagship",
+          "https://www.healthgrades.com/dentist/dr-amjad-mahairi-y339y — Healthgrades profile with 14 reviews at this address",
+          "https://www.bbb.org/us/il/elgin/profile/dental-services/mahairi-dental-center-0654-1000038655 — BBB profile for Mahairi Dental Center confirming Elgin location"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.dentalcenterelgin.com/",
+        "https://www.dentalcenterelgin.com/about-us/",
+        "https://www.healthgrades.com/dentist/dr-amjad-mahairi-y339y",
+        "https://www.bbb.org/us/il/elgin/profile/dental-services/mahairi-dental-center-0654-1000038655"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "AMJAD MAHAIRI",
+        "reach": 3,
+        "zips": ["60005", "60074", "60120"],
+        "npi": "1043475809",
+        "ein": "680510039",
+        "entity_classification_current": "family_practice"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Mahairi Dental Center (15 N Geneva St, Elgin, ZIP 60120) is the founding, eponymous flagship of Dr. Amjad Mahairi's private group, operating since 1996. Multiple documentary sources (official website, BBB, Healthgrades) confirm Dr. Mahairi as owner-dentist. Current DB label family_practice reflects 3 co-located providers sharing the MAHAIRI surname — consistent with a dentist-owner working alongside family associates, not a DSO or management company. No MSO or PE evidence found."
+    }
+  ]
+}

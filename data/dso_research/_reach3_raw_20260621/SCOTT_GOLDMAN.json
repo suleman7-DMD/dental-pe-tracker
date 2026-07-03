@@ -1,0 +1,149 @@
+{
+  "network": "SCOTT GOLDMAN",
+  "network_id": "ao:GOLDMAN_SCOTT",
+  "owner_type_verdict": "unresolved",
+  "network_summary": "SPECIALIST EXCLUSION — all 3 locations in Scott Goldman's AO cluster carry pediatric dentistry taxonomy (1223P0221X). Scott Goldman DDS is a licensed Illinois pediatric dentist who has owned/operated pediatric-only practices in Chicagoland (Arlington Heights, Elgin, Oak Lawn). He is also associated with SALT Dental Collective as a Clinical Director (a pediatric DSO platform), but his Illinois AO-linked NPIs all represent pediatric specialty practices, not GP practices. This network must be excluded from the GP denominator census entirely.",
+  "owner_operator_identity": "Dr. Scott D. Goldman, DDS, pediatric dentist — owner (Arlington Heights NPI title: OWNER), president (Oak Lawn NPI title: PRESIDENT). Licensed in Illinois, trained at University of Illinois College of Dentistry with pediatric specialty certificate.",
+  "brand_trade_names": [
+    "Pediatric and Family Dentistry PC",
+    "Pediatric and Family Dental PC",
+    "Metro Kidz Dental, PC",
+    "Scott D Goldman DDS PC"
+  ],
+  "legal_entities": [
+    "Pediatric and Family Dentistry PC (EIN 320033531, NPI 1043597305, 15 S Dryden Pl, Arlington Heights IL 60004)",
+    "Pediatric and Family Dental PC (NPI 1265717276, 2050 Larkin Ave, Elgin IL 60123)",
+    "Metro Kidz Dental, PC (NPI 1447673777, 4710 W 95th St, Oak Lawn IL 60453)"
+  ],
+  "durable_artifacts": [
+    "Shared AO: GOLDMAN, SCOTT — title OWNER on NPI 1043597305 and 1265717276; PRESIDENT on NPI 1447673777",
+    "All three NPIs share taxonomy 1223P0221X (Pediatric Dentistry / Pedodontics) — specialist-only network",
+    "EIN 320033531 on NPI 1043597305 (Arlington Heights); no EIN on Elgin or Oak Lawn NPIs",
+    "Elgin NPI 1265717276 already classified dso_regional with affiliated_dso: All Family Dental & Braces (United Dental Partners)",
+    "Oak Lawn NPI 1447673777 classified org_only_npi — organization NPI with 0 individual providers at address"
+  ],
+  "mso_platform_pe_evidence": "SALT Dental Collective: Scott Goldman is listed as Clinical Director at SALT Dental Collective (saltdentalpartners.com, LinkedIn). SALT Dental Partners is a pediatric DSO platform. However this connection describes a professional role, not direct PE/MSO ownership of the three IL NPIs listed. No documentary evidence found that the three IL PCs are under a SALT management agreement or PE ownership structure. SALT is therefore an open investigative lead, not confirmed ownership evidence for this cluster.",
+  "stale_closed_false_positive_notes": "NPI 1447673777 (Metro Kidz Dental, Oak Lawn) is classified org_only_npi — organization NPI registered but 0 individual providers at address; may be a closed or shell location. The phone number on the JSON cluster (709-499-0900) differs from the NPPES record (708-499-0500), suggesting possible data entry error in source. NPI 1265717276 (Elgin) already carries dso_regional / All Family Dental & Braces — the AO-cluster grouping under Goldman may reflect his role as a contracted/affiliated dentist at a UDP-managed location rather than independent ownership.",
+  "evidence_chain": "AO signal: SCOTT GOLDMAN appears as authorized official on 3 IL pediatric NPIs across 3 ZIPs (60004 Arlington Heights, 60123 Elgin, 60453 Oak Lawn). Web corroboration: LinkedIn confirms Scott Goldman DDS is a pediatric dentist in Illinois with multiple private practices, and also a Clinical Director at SALT Dental Collective (pediatric DSO). DentalPlans.com and CareCredit listings confirm his pediatric-only practice scope. All three NPIs carry taxonomy 1223P0221X (Pediatric Dentistry). SPECIALIST EXCLUSION TRIGGERED: pediatric dentistry = specialist per project taxonomy rules (1223P prefix). This network is excluded from GP denominator census.",
+  "future_app_notes": "If SALT Dental Collective expands investigation later: verify whether any of Goldman's IL PCs signed a management services agreement with SALT Dental Partners. The Elgin location (NPI 1265717276) is already flagged dso_regional / All Family Dental — that classification should be reviewed separately for accuracy (is this actually a UDP/All Family location, or was it misclassified?). Oak Lawn Metro Kidz Dental org_only_npi may be a closed location. All three locations are pediatric-only and should remain outside GP census regardless of ownership resolution.",
+  "classifications": [
+    {
+      "location_id": "8bb56d655fd949a6",
+      "candidate_tier": "undetermined",
+      "pe_backed": null,
+      "owner_identity": "Dr. Scott D. Goldman, DDS (OWNER per NPPES)",
+      "network_id": "ao:GOLDMAN_SCOTT",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60004, 60123, 60453",
+          "AO title: OWNER on NPI 1043597305",
+          "taxonomy_code=1223P0221X (Pediatric Dentistry)"
+        ],
+        "evidence": [
+          "DentalPlans.com and LinkedIn confirm Scott Goldman DDS is a pediatric dentist in Illinois with private pediatric practices",
+          "All locations carry pediatric-only taxonomy — specialist network, excluded from GP denominator"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.linkedin.com/in/scottgoldmandds/",
+        "https://www.dentalplans.com/dentists/illinois/arlington-heights/60004/dr-scott-goldman-14474/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "SCOTT GOLDMAN",
+        "reach": 3,
+        "zips": ["60004", "60123", "60453"],
+        "title_on_this_npi": "OWNER",
+        "taxonomy": "1223P0221X",
+        "taxonomy_description": "pediatric",
+        "ein": "320033531",
+        "entity_classification_current": "solo_established"
+      },
+      "web_searched": true,
+      "gate_status": "undetermined",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "SPECIALIST EXCLUSION: taxonomy 1223P0221X (Pediatric Dentistry) = specialist per project rules (1223P prefix). Pediatric and Family Dentistry PC at 15 S Dryden Pl, Arlington Heights is a pediatric-only practice owned by Dr. Scott Goldman DDS. Must be excluded from GP denominator census. Owner is confirmed as a licensed pediatric dentist, not a GP. Candidate tier set to undetermined per specialist exclusion rule — do NOT count in GP ownership tiers."
+    },
+    {
+      "location_id": "a543f3ba7ef53451",
+      "candidate_tier": "undetermined",
+      "pe_backed": null,
+      "owner_identity": "Dr. Scott D. Goldman, DDS (OWNER per NPPES); possibly contracted/affiliated dentist at a UDP-managed location",
+      "network_id": "ao:GOLDMAN_SCOTT",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60004, 60123, 60453",
+          "AO title: OWNER on NPI 1265717276",
+          "taxonomy_code=1223P0221X (Pediatric Dentistry)",
+          "entity_classification=dso_regional, affiliated_dso=All Family Dental & Braces (United Dental Partners)"
+        ],
+        "evidence": [
+          "CareCredit listing confirms Scott D Goldman DDS PC at 2050 Larkin Ave, Elgin as a pediatric practice",
+          "All locations carry pediatric-only taxonomy — specialist network, excluded from GP denominator"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.carecredit.com/doctor-locator/elgin-il/scott-d-goldman-dds-pc-tfk739/",
+        "https://www.linkedin.com/in/scottgoldmandds/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "SCOTT GOLDMAN",
+        "reach": 3,
+        "zips": ["60004", "60123", "60453"],
+        "title_on_this_npi": "OWNER",
+        "taxonomy": "1223P0221X",
+        "taxonomy_description": "pediatric",
+        "ein": null,
+        "entity_classification_current": "dso_regional",
+        "affiliated_dso_current": "All Family Dental & Braces (United Dental Partners)"
+      },
+      "web_searched": true,
+      "gate_status": "undetermined",
+      "confidence": "high",
+      "stale_closed_note": "Currently classified dso_regional / All Family Dental & Braces (United Dental Partners) — if this is accurate, Goldman's AO listing may reflect his role as a contracted clinician at a UDP-managed pediatric location rather than owner. The AO-cluster signal may be a false-owner signal here. Review the UDP/All Family affiliation for this location independently.",
+      "reasoning": "SPECIALIST EXCLUSION: taxonomy 1223P0221X (Pediatric Dentistry) = specialist per project rules. Pediatric and Family Dental PC at 2050 Larkin Ave, Elgin is a pediatric-only practice. Additionally this location already carries dso_regional / All Family Dental & Braces (UDP) classification — the Goldman AO listing may reflect a contracted clinician role rather than an independent owner of this location. Both the specialist exclusion and the existing dso classification mean this should remain outside the GP-owner census. No GP denominator impact."
+    },
+    {
+      "location_id": "c508a07b0bc2dfdd",
+      "candidate_tier": "undetermined",
+      "pe_backed": null,
+      "owner_identity": "Dr. Scott D. Goldman, DDS (PRESIDENT per NPPES)",
+      "network_id": "ao:GOLDMAN_SCOTT",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60004, 60123, 60453",
+          "AO title: PRESIDENT on NPI 1447673777",
+          "taxonomy_code=1223P0221X (Pediatric Dentistry)",
+          "entity_classification=org_only_npi (0 individual providers at address)"
+        ],
+        "evidence": [
+          "Vitadox and labdraw.com confirm Metro Kidz Dental PC at 4710 W 95th St, Oak Lawn as pediatric dentistry",
+          "NPI profile confirms SCOTT GOLDMAN DDS as authorized official / President",
+          "All locations carry pediatric-only taxonomy — specialist network, excluded from GP denominator"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.vitadox.com/practice/oak-lawn-il-60453/metro-kidz-dental-pc/M5mPXBqqUZA43wXP8qRPi3",
+        "https://npiprofile.com/npi/1447673777"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "SCOTT GOLDMAN",
+        "reach": 3,
+        "zips": ["60004", "60123", "60453"],
+        "title_on_this_npi": "PRESIDENT",
+        "taxonomy": "1223P0221X",
+        "taxonomy_description": "pediatric",
+        "ein": null,
+        "entity_classification_current": "org_only_npi"
+      },
+      "web_searched": true,
+      "gate_status": "undetermined",
+      "confidence": "high",
+      "stale_closed_note": "org_only_npi classification (0 individual providers at address) suggests this may be a closed or shell location. Phone discrepancy: JSON cluster shows 709-499-0900 vs NPPES 708-499-0500 — likely a data entry error. May be stale/inactive.",
+      "reasoning": "SPECIALIST EXCLUSION: taxonomy 1223P0221X (Pediatric Dentistry) = specialist per project rules. Metro Kidz Dental PC at 4710 W 95th St, Oak Lawn is a pediatric-only practice. Current entity_classification is org_only_npi (organization NPI, no individual providers at address — may be closed or admin-only). Goldman listed as PRESIDENT. Exclude from GP denominator census entirely. Possible stale location."
+    }
+  ]
+}

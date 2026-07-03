@@ -1,0 +1,35 @@
+{
+  "network_id": "ao:NITTINGER_RACHEL",
+  "brand": "DCP of Illinois / DentalWorks",
+  "is_real_multilocation": true,
+  "ownership_structure": "dso_brand",
+  "evidence_tier": "branded_dso",
+  "pe_backed": true,
+  "pe_evidence": "New Mountain Capital majority PE owner of Sonrava Health (parent of DentalWorks) since Nov 2012; newmountaincapital.com portfolio page current.",
+  "durable_non_ao_artifact": {
+    "type": "shared_ein",
+    "detail": "DOL EBSA M-1 MEWA filing index 10741 lists 12 IL DentalWorks friendly-PC entities each with individual EINs under one shared multi-employer welfare plan (IDP Schaumburg PC 31-1812648, IDP Harlem&North 20-0384209, IDP Tinley Park 20-0384271, IDP Chicago Loop 20-0384384, IDP Glen Ellyn 47-5281166, IDP Arlington Heights 81-3317392, IDP Plainfield 81-3188535, DCP Irving Park 90-0133177, Dr Zasso Skokie 47-4658472, Meckler River Oaks 20-0384161, Trakakis Fox Valley 20-0415450, Dr Raina Chicago Ridge 20-0384226).",
+    "source_url": "https://www.askebsa.dol.gov/mewaview/view/index/10741"
+  },
+  "key_documentary_urls": [
+    "https://www.newmountaincapital.com/portfolio/sonrava-health/",
+    "https://www.sonrava.com/brands",
+    "https://www.dentalworks.com/offices/illinois/",
+    "https://www.dentalworks.com/offices/illinois/irving-park/",
+    "https://www.dentalworks.com/offices/illinois/chicago-loop/",
+    "https://www.dentalworks.com/offices/illinois/schaumburg/",
+    "https://www.dentalworks.com/offices/illinois/skokie/",
+    "https://www.dentalworks.com/offices/illinois/tinley-park/",
+    "https://www.askebsa.dol.gov/mewaview/view/index/10741"
+  ],
+  "members_confirmed": 12,
+  "members_confirmed_at_brand": "all 12 confirmed via DentalWorks locator + DOL M-1 entity names; Plainfield (7542f13e98b7bd0d) confirmed but may be CLOSED as of 2026-04 per Yelp",
+  "db_data_quality_flags": [
+    "Chicago Ridge (072d146be1bf9d80) DB EIN 311812648 actually belongs to Schaumburg PC per DOL; entity name+address still confirmed",
+    "Harlem&North (2398f9e48e6578f9) DB EIN 363782916 is a variant; DOL canonical 20-0384209"
+  ],
+  "evidence_quality": "verified",
+  "gate_status": "ready_for_validation",
+  "protected_network_hold": true,
+  "_note": "protected_network_hold STAYS true per gate rule until network explicitly released, despite verified evidence"
+}

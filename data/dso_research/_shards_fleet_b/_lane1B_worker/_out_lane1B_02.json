@@ -1,0 +1,850 @@
+[
+  {
+    "location_id": "a92a98ea0faf335f",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "structural",
+    "evidence_urls": [],
+    "evidence_artifacts": [
+      "NPPES: 2 NPI records at address (SAM BASSALI NPI 1609963347, JAMES FRETT NPI 1912080391); shared facility with multiple practitioners; no partnership web page found"
+    ],
+    "confidence": "low",
+    "reasoning": "Two distinct dentists (Bassali and Frett) appear at the same address per NPPES, and the intel dossier notes 'shared facility with other practitioners,' but no partnership web page or formal group structure was found to confirm single_loc_group; without a URL confirming co-ownership at this address the tier cannot be classified.",
+    "proposed_tier": "single_loc_group",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": null,
+    "network_id": null,
+    "signal": {"type": "affiliated_dso", "details": "Two distinct provider NPIs at same address; intel notes shared facility"},
+    "exact_address_match": false,
+    "practice_name": "Sam B Bassali P C",
+    "address": null,
+    "city": "MOUNT PROSPECT",
+    "zip": "60056",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "cab5406432e76a18",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.yelp.com/biz/adamczyk-raymond-dr-mount-prospect",
+      "https://www.findatopdoc.com/doctor/3373673-Raymond-Adamczyk-dentist-Mount-Prospect-IL-60056"
+    ],
+    "evidence_artifacts": [
+      "feed_explicit_snippets: 'Solo practice owned by Dr. Raymond Adamczyk; wife assists with administrative/clinical support based on patient review.'"
+    ],
+    "confidence": "medium",
+    "reasoning": "The intel snippet explicitly identifies Dr. Raymond Adamczyk as the sole owner and sole clinical provider, corroborated by the NPPES record showing a single NPI (1689733800) under his name and Yelp reviews confirming family-operated structure; however the intel verification_quality is only 'partial' so this falls short of classified.",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Raymond Adamczyk, DDS",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Intel snippet explicitly names sole owner-operator"},
+    "exact_address_match": false,
+    "practice_name": "Adamczyk Dental",
+    "address": null,
+    "city": "MOUNT PROSPECT",
+    "zip": "60056",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "04a1845fa9391382",
+    "assigned_tier": "true_independent",
+    "status": "classified",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.smilesolutionsdentalcenter.com/",
+      "https://www.bbb.org/us/il/mount-prospect/profile/orthodontist/smile-solutions-dental-center-kana-yajima-dds-0654-88032202",
+      "https://www.yelp.com/biz/smile-solutions-dental-center-mount-prospect"
+    ],
+    "evidence_artifacts": [
+      "intel_dossier NPI 1720126303: 'Practice remains independently owned by Dr. Kana Yajima'; BBB confirms 21 years in business; AO cross-location reach=2 but both addresses are within same ZIP 60056 (suite variants of same building complex — 200 W Northwest Hwy STE 100 and 411 W. Walnut St.)",
+      "NPPES AO=KANA YAJIMA npis=[1548880289,1720126303] reach=2 zips=[60056,60056]"
+    ],
+    "confidence": "high",
+    "reasoning": "Both intel dossiers (VQ=verified for both NPIs) independently state 'independently owned by Dr. Kana Yajima' with no acquisition or DSO activity; the official practice website smilesolutionsdentalcenter.com and BBB listing corroborate solo ownership; the AO reach of 2 covers only ZIP 60056 (two address variants of the same practice), not multiple distinct locations.",
+    "proposed_tier": "true_independent",
+    "disposition": "ready",
+    "pe_backed": false,
+    "owner_identity": "Dr. Kana Yajima, DDS",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Dual verified intel dossiers confirm independent ownership; practice website confirms solo owner"},
+    "exact_address_match": true,
+    "practice_name": "KANA YAJIMA DDS",
+    "address": "200 W NORTHWEST HWY STE 100",
+    "city": "MOUNT PROSPECT",
+    "zip": "60056",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "8a18dc337a0069b1",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.beataczechuradental.com/",
+      "https://www.yelp.com/biz/beata-czechura-dmd-palatine"
+    ],
+    "evidence_artifacts": [
+      "feed_explicit_snippets: 'Solo practice owned by Dr. Beata Czechura. DMD from Southern Illinois University (2006).'",
+      "NPPES AO=BEATA CZECHURA NPI 1164694261; also NPI 1356344352 TIMOTHY ALTMAN at same location (separate EIN 260380122)"
+    ],
+    "confidence": "medium",
+    "reasoning": "The intel snippet confirms Dr. Czechura as sole owner and the AO on NPI 1164694261 is BEATA CZECHURA; however NPI 1356344352 (TIMOTHY ALTMAN) also appears at this location under a different EIN (260380122) and is not explained in the intel dossier, making true solo-owner classification uncertain; intel VQ is only 'partial.'",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Beata Czechura, DMD",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Intel snippet names sole owner; second NPI (Altman) at same address unexplained"},
+    "exact_address_match": false,
+    "practice_name": "BEATA CZECHURA D.M.D., P.C.",
+    "address": null,
+    "city": "PALATINE",
+    "zip": "60067",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "f71a6ad8ce43518b",
+    "assigned_tier": "true_independent",
+    "status": "classified",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://clocktowerdentistry.com/",
+      "https://voyagechicago.com/interview/meet-dr-samer-abdallah-clock-tower-dentistry-chicagoland-palatine-nw-suburbs/",
+      "https://reviews.birdeye.com/clock-tower-dentistry-165631932886964"
+    ],
+    "evidence_artifacts": [
+      "Intel dossier NPI 1396297800 (VQ=verified): 'Strong, well-established independent solo practice operating under DBA Clock Tower Dentistry. Owner-operator model.' Acquisition_details: 'No acquisition or merger activity detected.'",
+      "Voyage Chicago media profile (2017) confirms Dr. Abdallah as founder/owner."
+    ],
+    "confidence": "high",
+    "reasoning": "The intel dossier (VQ=verified) explicitly states 'independent solo practice' with 'owner-operator model' and cites the official practice website clocktowerdentistry.com; the Voyage Chicago founder interview independently corroborates sole ownership; no DSO signals, no AO cross-location reach, no acquisition activity detected.",
+    "proposed_tier": "true_independent",
+    "disposition": "ready",
+    "pe_backed": false,
+    "owner_identity": "Dr. Samer Abdallah, DDS",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "VQ=verified intel + founder media profile confirm solo owner-operator"},
+    "exact_address_match": true,
+    "practice_name": "SAMER ABDALLAH DDS, PC",
+    "address": null,
+    "city": "PALATINE",
+    "zip": "60067",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "36f2d7b78f905184",
+    "assigned_tier": "dentist_multi",
+    "status": "classified",
+    "evidence_basis": "ao_cluster",
+    "evidence_urls": [
+      "https://www.bbb.org/us/il/palatine/profile/cosmetic-dentistry/anna-m-pelak-dds-assoc-0654-88017232",
+      "https://www.totaldentistry.org/"
+    ],
+    "evidence_artifacts": [
+      "NPPES AO=ANNA PELAK reach=4 addresses: [1296 SUTTON RD ZIP 60107 name=ARTOFASMILE], [647 1ST BANK DR ZIP 60067 name=ANNA PELAK & ASSOC], [647 N 1ST BANK DR ZIP 60067 name=TOTAL DENTISTRY], [647 N 1ST BANK DR ZIP 60067 name=TOTALIDLLC]",
+      "Intel dossier NPI 1457574568: 'Practice operates two locations... operationally centered on owner... sole proprietorship confirmed per BBB.' BBB: 32 years in business, sole proprietorship."
+    ],
+    "confidence": "medium",
+    "reasoning": "AO Anna Pelak has confirmed reach across distinct ZIPs (60067 and 60107) under her own name plus branded aliases (ARTOFASMILE, TOTAL DENTISTRY); the intel dossier explicitly confirms 'sole proprietorship' and 'two locations' with operations 'centered on owner'; the BBB confirms business structure; no DSO/MSO or PE evidence found.",
+    "proposed_tier": "dentist_multi",
+    "disposition": "ready",
+    "pe_backed": false,
+    "owner_identity": "Dr. Anna Pelak, DDS",
+    "network_id": "ao:PELAK_ANNA",
+    "signal": {"type": "ao_cluster", "details": "AO reach=4 across two ZIP codes; intel confirms sole proprietorship multi-location structure"},
+    "exact_address_match": true,
+    "practice_name": "ANNA PELAK & ASSOC",
+    "address": "647 1ST BANK DR",
+    "city": "PALATINE",
+    "zip": "60067",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "bb49f2052f464b9a",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.sevaoralhealth.com/",
+      "https://www.sevaoralhealth.com/about-us/meet-our-team/"
+    ],
+    "evidence_artifacts": [
+      "Intel dossier NPI 1568266294: 'Practice remains independent and privately owned by Patel family.' Two-provider team (Dr. Satyam + Dr. Shivani Patel). SEVA HEALTH PLLC AO=SATYAM PATEL."
+    ],
+    "confidence": "medium",
+    "reasoning": "The intel dossier (VQ=partial) confirms 'privately owned by Patel family' with no DSO entanglement; the two providers are a married couple (Drs. Satyam and Shivani Patel); the official website corroborates dual-provider ownership; however the partial VQ prevents 'classified' status for single_loc_group.",
+    "proposed_tier": "single_loc_group",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Satyam Patel and Dr. Shivani Patel (husband-wife)",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Intel confirms family-owned dual-provider practice with no DSO ties"},
+    "exact_address_match": false,
+    "practice_name": "SEVA HEALTH PLLC",
+    "address": null,
+    "city": "PALATINE",
+    "zip": "60067",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "589071c5ba7b19da",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.yelp.com/biz/albers-theresa-dds-palatine"
+    ],
+    "evidence_artifacts": [
+      "Intel green_flags snippet: 'Established independent practice with solo ownership; no DSO involvement.' NPPES: single NPI 1134291446 THERESA ALBERS; no AO cross-location reach; no website found."
+    ],
+    "confidence": "low",
+    "reasoning": "Intel dossier (VQ=partial) states 'solo ownership; no DSO involvement' in green_flags, but no practice website was found and verification quality is partial; without a durable URL from the practice itself or a source explicitly naming Theresa Albers as owner-operator at this address, the tier cannot be classified.",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Theresa Albers, DDS",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Intel green_flags states solo independent ownership; no DSO involvement"},
+    "exact_address_match": false,
+    "practice_name": "Albers Dental",
+    "address": null,
+    "city": "PALATINE",
+    "zip": "60076",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "c524291483614a39",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "none",
+    "evidence_urls": [],
+    "evidence_artifacts": [
+      "Intel dossier NPI 1750580403 (VQ=partial): CRITICAL — 'Dr. Levitan practices as an associate at Leading Edge Dental Center (4355 Howard St.) owned by Dr. Michael A. Goone. The Dempster address appears to be an outdated/secondary location.'"
+    ],
+    "confidence": "low",
+    "reasoning": "The intel dossier flags a critical ownership mismatch: the NPPES address (Dempster St.) appears stale or inactive, and web evidence places Dr. Levitan as an associate at a practice owned by Dr. Goone at a different address; the entity classification of the current address occupant cannot be determined from available evidence.",
+    "proposed_tier": "undetermined",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": null,
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Intel critical flag: address may be stale; Dr. Levitan appears to be an associate not owner"},
+    "exact_address_match": false,
+    "practice_name": "Levitan Dental",
+    "address": null,
+    "city": "SKOKIE",
+    "zip": "60076",
+    "stale_or_closed": "Dempster address likely stale/inactive; Dr. Levitan reported as associate at Leading Edge Dental (4355 Howard St., owned by Dr. Goone)",
+    "qa_flag": "Address likely stale — NPPES data conflicts with web evidence; verify current occupant of Dempster address",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "6eb696b1d1bab03f",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.caryadamsdds.com/",
+      "https://www.yelp.com/biz/cary-a-adams-dds-skokie"
+    ],
+    "evidence_artifacts": [
+      "Intel dossier NPI 1295958171 (VQ=partial): 'Solo, established general and cosmetic dental practice... 30+ year tenure.' Feed snippet: 'Solo practice owned by Dr. Cary A. Adams, DDS.' Practice website caryadamsdds.com exists."
+    ],
+    "confidence": "medium",
+    "reasoning": "Both the intel dossier and the feed snippet identify Dr. Cary Adams as sole owner with 30+ years in practice, and the practice maintains its own website (caryadamsdds.com); however intel VQ is only 'partial' with very low online review count, preventing a confident classified status.",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Cary A. Adams, DDS",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Intel + feed snippet confirm solo owner; practice website exists"},
+    "exact_address_match": false,
+    "practice_name": "Adams Dental",
+    "address": null,
+    "city": "SKOKIE",
+    "zip": "60077",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "9dae16bea3e38748",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.oldorchardsmiles.com/"
+    ],
+    "evidence_artifacts": [
+      "Intel dossier NPI 1821190869: 'Organizational structure appears to be group practice (Old Orchard Smiles with multiple providers), not solo.' Intel NPI 1447352489: 'multiple specialists on staff... practice operates multiple locations (Skokie and Buffalo Grove).' AO TONI WOLF reach=2 — both addresses in ZIP 60077 (likely same building variants).",
+      "NPPES AO=TONI WOLF npis=[1447352489,1821190869] reach=2 zips=[60077,60077]"
+    ],
+    "confidence": "medium",
+    "reasoning": "Intel dossiers describe a multi-provider group practice (Old Orchard Smiles) with specialists and two locations (Skokie + Buffalo Grove), suggesting single_loc_group or dentist_multi, but the AO reach of 2 covers only ZIP 60077 address variants; the Buffalo Grove location is mentioned in prose but not confirmed in the AO cross-location data, preventing a dentist_multi classification; intel VQ is partial.",
+    "proposed_tier": "single_loc_group",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Toni Ellis Wolf, DDS (retiring)",
+    "network_id": "ao:WOLF_TONI",
+    "signal": {"type": "practice_intel", "details": "Intel indicates multi-provider group practice; owner retirement noted"},
+    "exact_address_match": false,
+    "practice_name": "TONI ELLIS WOLF, DDS, PC",
+    "address": null,
+    "city": "SKOKIE",
+    "zip": "60077",
+    "qa_flag": "Intel mentions Buffalo Grove location not captured in AO cross-location data; retirement signals may indicate pending succession",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "3a856e88e373abf6",
+    "assigned_tier": "true_independent",
+    "status": "classified",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://smilesofskokie.com/hours-map/",
+      "https://www.linkedin.com/in/smilesofskokie/",
+      "https://www.healthgrades.com/dentist/dr-david-mcwhinnie-xm53d"
+    ],
+    "evidence_artifacts": [
+      "Intel green_flags snippet: 'Solo owner with full control; no DSO affiliation.' Acquisition_details: 'No acquisition, merger, or recent news found. Independent solo practice remains under Dr. McWhinnie ownership.' Single NPI 1447444609 DAVID MCWHINNIE at this address."
+    ],
+    "confidence": "medium",
+    "reasoning": "The intel dossier (VQ=partial) explicitly states 'Solo owner with full control; no DSO affiliation' and 'Independent solo practice remains under Dr. McWhinnie's ownership'; the practice website (smilesofskokie.com) and LinkedIn owner profile corroborate sole ownership; no AO cross-location reach and no acquisition signals detected.",
+    "proposed_tier": "true_independent",
+    "disposition": "ready",
+    "pe_backed": false,
+    "owner_identity": "Dr. David McWhinnie, DDS",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Intel explicitly confirms solo owner with no DSO affiliation; practice website corroborates"},
+    "exact_address_match": true,
+    "practice_name": "Smiles of Skokie",
+    "address": null,
+    "city": "SKOKIE",
+    "zip": "60077",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "df37beac7e8a315c",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.shimmeringteeth.com"
+    ],
+    "evidence_artifacts": [
+      "Intel snippet: 'Solo practice owned by Dr. Steven Krauss.' Feed snippet: 'Solo practice owned by Dr. Steven Krauss, DDS.' NPPES: single NPI 1659816155 VILLAGE CROSSING DENTISTRY LTD, AO=STEVEN KRAUSS. No AO cross-location reach."
+    ],
+    "confidence": "medium",
+    "reasoning": "Feed snippet and intel dossier consistently identify Dr. Steven Krauss as sole owner since 1995 with low staff turnover; however intel VQ is only 'partial' and the practice website (shimmeringteeth.com) was not independently crawled to confirm ownership language, preventing a classified status.",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Steven Krauss, DDS",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Feed snippet and intel both name Dr. Krauss as sole owner; practice website exists"},
+    "exact_address_match": false,
+    "practice_name": "VILLAGE CROSSING DENTISTRY LTD",
+    "address": null,
+    "city": "SKOKIE",
+    "zip": "60077",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "c84d9b197c90df29",
+    "assigned_tier": "true_independent",
+    "status": "classified",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://sakuradentalcare.com",
+      "https://npiprofile.com/npi/1245930395"
+    ],
+    "evidence_artifacts": [
+      "Intel dossier NPI 1245930395 (VQ=verified): 'Practice operates as Sakura Dental, a modern solo dentistry entity owned by Dr. William M Black, DMD (NPI 1245930395, established March 2023).' Acquisition_details: 'No acquisition or major news events located.' NPPES AO=WILLIAM BLACK, single NPI at address."
+    ],
+    "confidence": "high",
+    "reasoning": "The intel dossier (VQ=verified) explicitly names Dr. William M. Black, DMD as the solo owner of Sakura Dental operating at this address; the official practice website (sakuradentalcare.com) is cited in the dossier; no AO cross-location reach and no acquisition or DSO signals detected.",
+    "proposed_tier": "true_independent",
+    "disposition": "ready",
+    "pe_backed": false,
+    "owner_identity": "Dr. William M. Black, DMD",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "VQ=verified intel explicitly names solo owner; practice website corroborates"},
+    "exact_address_match": true,
+    "practice_name": "WILLIAM BLACK DMD, P.C.",
+    "address": null,
+    "city": "WILMETTE",
+    "zip": "60091",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "0ffcb13f7b559c83",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.yellowpages.com/wilmette-il/mip/eugene-goldberg-m-dds-3992409",
+      "https://www.bbb.org/us/il/wilmette/profile/dentist/eugene-m-goldberg-dds-0654-88247878"
+    ],
+    "evidence_artifacts": [
+      "Feed snippet: 'Solo practice owned by Eugene Martin Goldberg, DDS. Business started in 1986 per BBB.' Intel: 'Yellow Pages listing shows closing soon status as of October 2025 — critical verification needed on operating status.'"
+    ],
+    "confidence": "low",
+    "reasoning": "The intel dossier identifies Dr. Eugene Goldberg as the solo owner since 1986, but flags a critical 'closing soon' status (October 2025) on Yellow Pages; operating status is uncertain and must be verified before any tier can be confirmed.",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Eugene Martin Goldberg, DDS",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Intel identifies solo owner since 1986 but flags closing soon status Oct 2025"},
+    "exact_address_match": false,
+    "practice_name": "Goldberg Dental",
+    "address": null,
+    "city": "WILMETTE",
+    "zip": "60091",
+    "stale_or_closed": "Yellow Pages 'closing soon' as of October 2025; operating status unverified",
+    "qa_flag": "Practice may be closed or closing — verify current operating status before any classification",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "83679992fc49585c",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "structural",
+    "evidence_urls": [
+      "https://wilmettedental.com/",
+      "https://www.prnewswire.com/news-releases/wilmette-dentist-dr-robert-madrigal-provides-unique-experience-for-each-patient-301462235.html"
+    ],
+    "evidence_artifacts": [
+      "NPPES: 4 NPIs (Rizman, Lipschultz, Montrose, Reyes) share EIN 362750089 and da_legal_name=KEITH H RIZMAN DDS LTD at 929 Ridge Rd.",
+      "Intel NPI 1841363397 (VQ=verified): CRITICAL — 'The practice at 929 Ridge Road is Wilmette Dental owned by Dr. Robert Madrigal' as of 2022. Dr. Loveline Reyes appears only in legacy directories.",
+      "PR Newswire confirms 4th-generation ownership transition to Dr. Madrigal."
+    ],
+    "confidence": "low",
+    "reasoning": "The NPPES data shows 4 providers under the Rizman EIN at 929 Ridge Rd, but the verified intel dossier identifies the current occupant as 'Wilmette Dental' owned by Dr. Robert Madrigal (4th generation, taken over 2022); the Rizman/Reyes/Lipschultz/Montrose NPI records appear stale, and the current operator classification cannot be determined from the embedded evidence alone.",
+    "proposed_tier": "single_loc_group",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Robert Madrigal, DDS (current per 2022 press release)",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Intel confirms operator mismatch; current operator is Wilmette Dental/Madrigal, not Rizman/Reyes NPIs"},
+    "exact_address_match": false,
+    "practice_name": "Pearson a Tereau DDS",
+    "address": "929 RIDGE RD",
+    "city": "WILMETTE",
+    "zip": "60091",
+    "qa_flag": "Severe NPI staleness: 4 legacy Rizman-EIN NPIs still active but current occupant is Wilmette Dental (Dr. Madrigal, 4th gen owner since 2022) per verified intel",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "e9cc16f6df08e874",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://patch.com/illinois/wilmette/esteemed-dentist-celebrates-35-year-practice-first-year-new-wilmette-location",
+      "https://www.healthgrades.com/dentist/dr-kenneth-milin-36c3l"
+    ],
+    "evidence_artifacts": [
+      "Intel dossier NPI 1871540633 (VQ=partial): 'Solo established practice... Partnership with Dr. Bacalar (post-2017) indicates growth trajectory.' Feed location name 'Kenneth N. Milin DDS and Associates.' Multiple sources list both Wilmette (411 Linden Ave) and Winnetka (732 Elm St) locations."
+    ],
+    "confidence": "medium",
+    "reasoning": "Intel notes a partnership with Dr. Bacalar post-2017 and the Yelp listing names 'Kenneth N. Milin DDS and Associates,' suggesting a small group or dentist_multi structure with two locations; however no AO cross-location data was provided and the intel VQ is partial, preventing confident classification.",
+    "proposed_tier": "single_loc_group",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Kenneth Milin, DDS",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Intel notes partnership with Bacalar post-2017; two locations mentioned"},
+    "exact_address_match": false,
+    "practice_name": "Milin Dental",
+    "address": null,
+    "city": "WINNETKA",
+    "zip": "60093",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "df5f1ecea9862dc4",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.smilesdental-addison.com/"
+    ],
+    "evidence_artifacts": [
+      "Intel dossier NPI 1184999450 (VQ=partial): 'SMILES Dental... owned by Dr. Ahsan Ahmed.' AO=AHSAN AHMED on NPI 1184999450. Feed snippet: 'owned by Dr. Ahsan Ahmed (DDS 1999, UIC).' Intel red_flag: 'some NPI records show alternate addresses (St. Charles, Downers Grove, other locations), suggesting possible multi-location presence.'"
+    ],
+    "confidence": "medium",
+    "reasoning": "The intel dossier identifies Dr. Ahsan Ahmed as the owner and the AO matches; however the intel red_flags note alternate addresses at other cities (St. Charles, Downers Grove) suggesting possible multi-location presence, which could make this dentist_multi; the partial VQ and unresolved multi-location signal prevent classified status.",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Ahsan Ahmed, DDS",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Intel names Dr. Ahmed as owner; possible multi-location signal in alternate NPPES addresses"},
+    "exact_address_match": false,
+    "practice_name": "SMILES LLC",
+    "address": null,
+    "city": "ADDISON",
+    "zip": "60101",
+    "qa_flag": "Intel notes alternate NPPES addresses (St. Charles, Downers Grove) suggesting possible multi-location practice — may be dentist_multi",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "1580c5634d44138a",
+    "assigned_tier": "dentist_multi",
+    "status": "classified",
+    "evidence_basis": "ao_cluster",
+    "evidence_urls": [
+      "https://www.eshadental.com/"
+    ],
+    "evidence_artifacts": [
+      "NPPES AO=SUNITA SAHU reach=3: [1409 W LAKE ST ZIP 60101 name=ESHA DENTAL LLC], [3205 W IRVING PARK RD ZIP 60618 name=ER DENTAL CARE LTD], [4101 W 26TH ST ZIP 60623 name=DENTAL WISH LTD]",
+      "Intel doctor_notes: 'Also holds second practice location at 3205 W Irving Park Rd, Chicago, IL.' Official website eshadental.com confirmed. ESHA DENTAL LLC AO=SUNITA SAHU on NPI 1194358960."
+    ],
+    "confidence": "medium",
+    "reasoning": "AO Sunita Sahu has confirmed NPPES reach across 3 distinct ZIP codes (60101, 60618, 60623) under three distinct practice names; the intel dossier independently corroborates a second practice location at 3205 W Irving Park Rd (Chicago), and the official website is verified; no DSO/MSO or management company structure is mentioned — this is a dentist-owned multi-location group.",
+    "proposed_tier": "dentist_multi",
+    "disposition": "ready",
+    "pe_backed": false,
+    "owner_identity": "Dr. Sunita Sahu, DDS",
+    "network_id": "ao:SAHU_SUNITA",
+    "signal": {"type": "ao_cluster", "details": "AO reach=3 across 3 ZIPs (60101, 60618, 60623); intel corroborates multi-location ownership"},
+    "exact_address_match": true,
+    "practice_name": "ESHA DENTAL LLC",
+    "address": "1409 W LAKE ST",
+    "city": "ADDISON",
+    "zip": "60101",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "f9891ace8eab230b",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.markstasiulisdds.net/",
+      "https://www.markstasiulisdds.net/our-locations"
+    ],
+    "evidence_artifacts": [
+      "Feed snippet: 'Solo practice owned by Dr. Mark L Stasiulis, DDS. Wife works at front desk. Established 1981.' Practice website has /our-locations page suggesting multiple locations. Intel: 'Address mismatch: provided address (17 Lincoln St, Bensenville) is outdated/inactive; current location is Elmhurst.'"
+    ],
+    "confidence": "low",
+    "reasoning": "The intel dossier flags the provided Bensenville address as outdated/inactive with the current practice in Elmhurst; the practice website's /our-locations page hints at multiple locations but this is not confirmed; both the address staleness and the possible multi-location structure prevent confident classification.",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Mark L. Stasiulis, DDS",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Feed identifies solo owner; address mismatch and possible multi-loc website signal"},
+    "exact_address_match": false,
+    "practice_name": "Stasiulis Dental",
+    "address": null,
+    "city": "BENSENVILLE",
+    "zip": "60106",
+    "stale_or_closed": "Bensenville address (17 Lincoln St) is outdated/inactive; current location is Elmhurst per intel",
+    "qa_flag": "NPPES address (Bensenville) appears stale; verify current address and whether multi-location website indicates dentist_multi",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "6661bf73e19bc9e9",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "none",
+    "evidence_urls": [],
+    "evidence_artifacts": [
+      "Intel dossier NPI 1245395946 (VQ=partial): 'Possible vacant space: LoopNet listing shows 201 E Army Trail Rd available for lease (Feb 2026).' Provider birth year 1943 (age 82). No website. Zero online reviews despite years of operation. Address conflict in directories.",
+      "LoopNet listing: https://www.loopnet.com/Listing/201-E-Army-Trail-Rd-Bloomingdale-IL/17467141/"
+    ],
+    "confidence": "low",
+    "reasoning": "Multiple red flags indicate the practice may no longer be operating: the practice address appears on LoopNet as available for lease (February 2026), the provider is estimated to be ~82 years old, there are zero online reviews, and directory address conflicts exist; classification requires verification of current operating status.",
+    "proposed_tier": "undetermined",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Carl Khalid, DDS",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Intel flags possible vacant space (LoopNet lease), age 82, zero reviews"},
+    "exact_address_match": false,
+    "practice_name": "Khalid, Carl M DDS",
+    "address": null,
+    "city": "BLOOMINGDALE",
+    "zip": "60108",
+    "stale_or_closed": "Practice address available for lease on LoopNet (Feb 2026); possible closure",
+    "qa_flag": "High probability of closure: space listed for lease, provider ~82 years old, zero online reviews",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "038af74da5a2998d",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "structural",
+    "evidence_urls": [
+      "https://www.healthgrades.com/dentist/dr-jody-weller-y2ysy",
+      "https://npiprofile.com/npi/1427219328"
+    ],
+    "evidence_artifacts": [
+      "NPPES: NPI 1427219328 practice_name=JODY WELLER; location practice_name='Leonidas Joseph Ragas DDS' — name mismatch between location record and NPI record.",
+      "Intel dossier is entirely about JODY WELLER's solo practice (VQ=partial): 'Solo general dentistry practice with strong clinical reputation.' No intel about Leonidas Ragas."
+    ],
+    "confidence": "low",
+    "reasoning": "The location record name 'Leonidas Joseph Ragas DDS' does not match the NPI record (JODY WELLER), creating a data integrity issue; the intel dossier covers Dr. Jody Weller as a solo practitioner but it is unclear whether Ragas is a predecessor, a different provider at the same address, or a data error; this cannot be classified without verification.",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": null,
+    "network_id": null,
+    "signal": {"type": "structural", "details": "Location name (Ragas) does not match NPI practice_name (Weller); intel covers Weller only"},
+    "exact_address_match": false,
+    "practice_name": "Leonidas Joseph Ragas DDS",
+    "address": null,
+    "city": "BLOOMINGDALE",
+    "zip": "60108",
+    "qa_flag": "Name mismatch: location_id practice_name is 'Leonidas Joseph Ragas DDS' but NPI 1427219328 is registered to JODY WELLER — verify which provider/entity currently occupies this address",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "69d7f80b09971b16",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "structural",
+    "evidence_urls": [],
+    "evidence_artifacts": [
+      "Intel dossier NPI 1386746345 (VQ=partial): 'Solo general dentistry practice with minimal digital footprint.' Feed snippet: 'Solo practice owned by Dr. Stanley Joseph Matusik. No associates or partner dentists identified.' NPPES: single NPI 1386746345 STANLEY MATUSIK; NPI last updated 2006."
+    ],
+    "confidence": "low",
+    "reasoning": "The intel dossier and feed snippet confirm a solo practice owned by Dr. Matusik, but the intel VQ is partial, the NPI has not been updated in 20 years, there is no practice website, and no independent durable URL confirms sole ownership at this address; the tier is probable true_independent but cannot be classified.",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Stanley Joseph Matusik, DDS",
+    "network_id": null,
+    "signal": {"type": "structural", "details": "Single NPI under Dr. Matusik; feed snippet confirms solo; no website or independent URL"},
+    "exact_address_match": false,
+    "practice_name": "Matusik Dental",
+    "address": null,
+    "city": "CARPENTERSVILLE",
+    "zip": "60110",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "2dbf31c33d22477c",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "structural",
+    "evidence_urls": [],
+    "evidence_artifacts": [
+      "Intel dossier NPI 1174600654 (VQ=partial): 'Solo, established general dentistry practice owned and operated by Dr. Bruce Sakiewicz. No acquisition, merger, or DSO affiliation identified.' Single NPI 1174600654 BRUCE SAKIEWICZ; no AO cross-location reach; no practice website."
+    ],
+    "confidence": "low",
+    "reasoning": "Intel dossier explicitly states 'solo, established... owned and operated by Dr. Bruce Sakiewicz' with no DSO affiliation, but VQ is only partial and no practice website or source URL confirms ownership at this specific address; classified status requires a durable URL or artifact.",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Bruce Sakiewicz, DDS",
+    "network_id": null,
+    "signal": {"type": "structural", "details": "Single NPI; intel states solo owner-operator; no website found"},
+    "exact_address_match": false,
+    "practice_name": "Sakiewicz Dental",
+    "address": null,
+    "city": "WEST DUNDEE",
+    "zip": "60118",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "160bb1d601ce2d59",
+    "assigned_tier": "branded_dso",
+    "status": "classified",
+    "evidence_basis": "web_verified",
+    "evidence_urls": [
+      "https://westdundeedental.com/partners-in-care/",
+      "https://elmhurstdental.com/partners-in-care/",
+      "https://westdundeedental.com/",
+      "https://www.linkedin.com/company/elmhurst-dental-group"
+    ],
+    "evidence_artifacts": [
+      "Intel dossier NPI 1811408453 (VQ=partial): 'West Dundee Dental Care is a satellite location of Elmhurst Dental Group (Partners In Care network), not a solo practice. 9-10 locations and 51-200 employees. Elmhurst Dental founded 1974.'",
+      "Feed red_flags: 'part of multi-location DSO with 9-10 locations and 51-200 employees.'",
+      "NPPES: entity_classification currently solo_established — MISMATCH with intel evidence."
+    ],
+    "confidence": "medium",
+    "reasoning": "The intel dossier (VQ=partial) clearly identifies this as a satellite of the Elmhurst Dental Group 'Partners In Care' network; the 'Partners In Care' affiliation page exists on both westdundeedental.com and elmhurstdental.com, and the LinkedIn profile confirms the corporate structure; Elmhurst Dental is a 50-year-old multi-location group (9-10 locations, 51-200 employees) constituting a branded DSO/group structure regardless of PE backing.",
+    "proposed_tier": "branded_dso",
+    "disposition": "ready",
+    "pe_backed": false,
+    "owner_identity": null,
+    "network_id": "brand:ELMHURST_DENTAL_GROUP",
+    "signal": {"type": "affiliated_dso", "details": "Intel and official website confirm Elmhurst Dental Group Partners In Care affiliation"},
+    "exact_address_match": true,
+    "practice_name": "ELMHURST DENTAL GROUP LTD",
+    "address": "602 W MAIN ST",
+    "city": "WEST DUNDEE",
+    "zip": "60118",
+    "qa_flag": "DB entity_classification=solo_established conflicts with intel evidence of multi-location DSO group affiliation — recommend reclassification to branded_dso or dso_regional",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "7f9769092b6cf827",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://bowesdentalcare.com/"
+    ],
+    "evidence_artifacts": [
+      "Feed snippet: 'Solo practice owned by Dr. Santhi Yenna, DDS. She has 16+ years of experience.' Intel dossier NPI 1013087642 (VQ=partial): 'Stable, well-regarded solo general/cosmetic dental practice.' Acquisition_details: 'No evidence of recent major acquisitions, transitions, or operational changes.' Single NPI 1013087642 SANTHI YENNA; no AO cross-location reach."
+    ],
+    "confidence": "medium",
+    "reasoning": "Feed snippet and intel dossier consistently describe a solo practice owned by Dr. Santhi Yenna operating as Bowes Dental Care; the practice website bowesdentalcare.com is confirmed; no DSO, AO cross-location, or acquisition signals detected; however partial VQ prevents classified status.",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Santhi Yenna, DDS",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Feed and intel consistently name solo owner; practice website exists"},
+    "exact_address_match": false,
+    "practice_name": "Yenna Dental",
+    "address": null,
+    "city": "ELGIN",
+    "zip": "60123",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "1bc51db12b76e122",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "none",
+    "evidence_urls": [],
+    "evidence_artifacts": [
+      "Intel dossier NPI 1124172465 (VQ=insufficient): 'Well-established, highly-rated independent general dentistry practice... No PE involvement detected.' No feed URLs. EIN 202106116 on NPPES. Family legacy practice: father practiced 40+ years same location."
+    ],
+    "confidence": "low",
+    "reasoning": "The intel dossier describes an independent practice with no PE involvement, but VQ is 'insufficient' and no feed URLs were provided; the practice name 'Peacock Dental' under Dr. Jon Nickelsen cannot be classified with insufficient verification quality.",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Jon Nickelsen, DDS (family legacy)",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Intel describes independent practice; VQ insufficient; no feed URLs"},
+    "exact_address_match": false,
+    "practice_name": "Peacock Dental",
+    "address": null,
+    "city": "ELGIN",
+    "zip": "60123",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "35cbbce74d2ff7c5",
+    "assigned_tier": "dentist_multi",
+    "status": "classified",
+    "evidence_basis": "ao_cluster",
+    "evidence_urls": [
+      "https://brardentistry.com/about-us/",
+      "https://www.healthgrades.com/dentist/dr-rick-brar-xbdbv"
+    ],
+    "evidence_artifacts": [
+      "NPPES AO=RICK BRAR reach=2: [300 S RANDALL RD ZIP 60123 name=PRO DENTAL CARE LTD], [2019 DEAN ST ZIP 60174 name=ENVISION A SMILE INCORPORATED]",
+      "Intel dossier NPI 1285848648 (VQ=partial): 'Practice operates 5+ locations under multiple brand names (Brar Dentistry, Pro Dental Care, Envision A Smile).' No separate DSO/MSO/management-company structure identified; 'No PE involvement detected.'"
+    ],
+    "confidence": "medium",
+    "reasoning": "AO Rick Brar has confirmed NPPES reach across at least 2 distinct ZIPs (60123 and 60174) under distinct brand names; the intel dossier corroborates multiple locations/brands under Dr. Brar's ownership (Brar Dentistry, Pro Dental Care, Envision A Smile) with no separate DSO/MSO platform identified; this is a dentist-owned multi-location group, not a corporate DSO structure.",
+    "proposed_tier": "dentist_multi",
+    "disposition": "ready",
+    "pe_backed": false,
+    "owner_identity": "Dr. Rick Brar, DMD",
+    "network_id": "ao:BRAR_RICK",
+    "signal": {"type": "ao_cluster", "details": "AO reach=2 across 2 ZIPs; intel confirms 5+ location multi-brand practice under Dr. Brar's ownership"},
+    "exact_address_match": true,
+    "practice_name": "PRO DENTAL CARE LTD",
+    "address": "300 S RANDALL RD",
+    "city": "ELGIN",
+    "zip": "60123",
+    "qa_flag": "Intel notes 5+ locations but AO reach=2 in DB — confirm whether additional locations appear in DB under Rick Brar AO or different entity names",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "deb268d0cde347f2",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "intel_dossier",
+    "evidence_urls": [
+      "https://www.healthgrades.com/dentist/dr-david-lefelstein-2p79x",
+      "https://www.yelp.com/biz/david-lefelstein-dds-elgin"
+    ],
+    "evidence_artifacts": [
+      "Intel dossier NPI 1760494504 (VQ=partial): 'Independently-owned general dental practice... Practice appears to remain independently owned.' Acquisition_details: 'No acquisition news, private equity involvement, or recent M&A activity found.' Single NPI 1760494504 DAVID LEFELSTEIN; no AO cross-location reach; no practice website."
+    ],
+    "confidence": "medium",
+    "reasoning": "Intel dossier (VQ=partial) explicitly states the practice is 'independently owned' with no PE or acquisition activity, and multiple long-term patient reviews corroborate stable solo ownership; however partial VQ and the lack of a practice website prevent classified status.",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. David M. Lefelstein, DDS",
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Intel states independently owned; no DSO/PE signals; no practice website to confirm"},
+    "exact_address_match": false,
+    "practice_name": "Lefelstein Dental",
+    "address": null,
+    "city": "ELGIN",
+    "zip": "60123",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "4a9d59a822641a07",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "none",
+    "evidence_urls": [],
+    "evidence_artifacts": [
+      "Intel dossier NPI 1043674021 (VQ=insufficient): 'DATA INTEGRITY ISSUE: The address provided does NOT match a solo Andrew Sugar practice. This is Cameo Dental Specialists, a multi-location group practice. Dr. Sugar is one oral surgeon provider. 60+ staff members, 5+ locations.'",
+      "NPI 1043674021 practice_name=ANDREW SUGAR EIN=363741358; location practice_name='Happy Tooth' — significant name mismatch."
+    ],
+    "confidence": "low",
+    "reasoning": "The intel dossier (VQ=insufficient) identifies a fundamental data integrity issue: the address is occupied by Cameo Dental Specialists (a multi-location oral surgery/dental group with 60+ staff and 5+ locations), not a 'Happy Tooth' solo practice; the true ownership structure of Cameo Dental Specialists (whether dentist_multi or branded_dso) cannot be determined from insufficient evidence alone.",
+    "proposed_tier": "undetermined",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": null,
+    "network_id": null,
+    "signal": {"type": "practice_intel", "details": "Intel critical: address occupied by Cameo Dental Specialists (multi-location group), not solo practice"},
+    "exact_address_match": false,
+    "practice_name": "Happy Tooth",
+    "address": null,
+    "city": "ELMHURST",
+    "zip": "60126",
+    "stale_or_closed": "Location practice_name 'Happy Tooth' and NPPES name 'ANDREW SUGAR' do not reflect current operator (Cameo Dental Specialists) per intel",
+    "qa_flag": "Severe data integrity issue: location is Cameo Dental Specialists (5+ locations, 60+ staff), not 'Happy Tooth' solo — verify NPI assignment and current operator; may be a specialist (oral surgery) rather than GP",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  }
+]

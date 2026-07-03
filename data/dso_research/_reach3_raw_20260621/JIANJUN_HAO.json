@@ -1,0 +1,150 @@
+{
+  "network": "JIANJUN HAO",
+  "network_id": "ao:HAO_JIANJUN",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Dr. Jianjun Hao, DDS MS PhD, is an orthodontist and dentist who personally owns and operates three professional corporations under the 'Smiling Dental' brand family in Chicagoland: Pacific Smiling Dental P.C. (Aurora 60504, primary/flagship), Smiling Dental International P.C. (Chicago 60619), and Pulaski Smiling Dental P.C. (Chicago 60629). He is listed as PRESIDENT or OWNER on all three NPPES records. No MSO, management company, DSO platform, or PE sponsor has been found. The 'Destiny Dental / ProSmile' label previously applied to the 87th St location (55404df201ad194f) appears to be a mislabel from the 2026-05-30 seeding — no public source connects that practice to Destiny Dental or ProSmile; the authorized official, legal entity name, and website all point to Dr. Hao's own private group. This is a dentist-owned multi-office private group with no third-party management layer.",
+  "owner_operator_identity": "Dr. Jianjun Hao, DDS MS PhD, Diplomate American Board of Orthodontics, Founder/President/Owner; former Clinical Assistant Professor at UConn Health Center; trained at UIC College of Dentistry",
+  "brand_trade_names": [
+    "Pacific Smiling Dental & Orthodontics",
+    "Smiling Dental International",
+    "Pulaski Smiling Dental",
+    "Smiling Dental Group"
+  ],
+  "legal_entities": [
+    "PACIFIC SMILING DENTAL P.C. (NPI 1063030427, Aurora IL 60504)",
+    "SMILING DENTAL INTERNATIONAL P.C. (NPI 1487232872, Chicago IL 60619)",
+    "PULASKI SMILING DENTAL P.C. (NPI 1346806577, Chicago IL 60629)"
+  ],
+  "durable_artifacts": [
+    "NPPES AO: JIANJUN HAO appears as authorized official on all three NPI-2 org records (1063030427, 1487232872, 1346806577), title PRESIDENT or OWNER",
+    "smilingdentalgroup.com shows Pacific Smiling Dental & Orthodontics at 4370 E New York St Aurora IL 60504 — Dr. Hao's primary site",
+    "npino.com confirms Pulaski Smiling Dental P.C. AO = JIANJUN HAO, title OWNER, mailing 836 S Miller St Chicago IL",
+    "npino.com confirms Smiling Dental International P.C. AO = JIANJUN HAO, title PRESIDENT, mailing 833 W 15th Pl Unit 612 Chicago IL 60608",
+    "pacificsmilingdental.com (redirects, was Dr. Hao's Aurora site — now defunct domain)",
+    "LinkedIn: Hao Jianjun listed as Founder at Smiling Dental International P.C.",
+    "AAO locator: Dr. Jianjun Hao listed as orthodontist in Chicago and Palatine",
+    "Orland Advanced Dentistry lists Dr. Hao as orthodontist associate (contractor role, not owner)"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "CRITICAL: Location 55404df201ad194f (SMILING DENTAL INTERNATIONAL P.C., 712 E 87th St Chicago 60619) currently carries entity_classification='dso_regional' and affiliated_dso='Destiny Dental / ProSmile' from the 2026-05-30 IL DSO seeding. No web evidence corroborates a Destiny Dental or ProSmile connection — this appears to be a false classification. The NPPES record names Dr. Jianjun Hao as PRESIDENT and the legal entity is Dr. Hao's own PC. Downstream gate should review and likely revert this location to independent (large_group or small_group) and clear the Destiny/ProSmile affiliation label.",
+  "evidence_chain": "AO signal: JIANJUN HAO appears as authorized official (PRESIDENT/OWNER) on 3 org-NPIs across ZIPs 60504, 60619, 60629. Documentary corroboration: (1) smilingdentalgroup.com is Dr. Hao's public-facing multi-office brand website listing the Aurora practice; (2) npino.com records confirm his AO title and role as OWNER/PRESIDENT on all three NPIs; (3) LinkedIn identifies him as Founder of Smiling Dental International P.C.; (4) All three legal-entity names share 'Smiling Dental' branding plus 'P.C.' suffix. No MSO, management-company, or PE-platform document found. The Destiny/ProSmile DB label on the 87th St location is a prior-session seeding artifact with no corroborating web evidence.",
+  "future_app_notes": "1. The 87th St location (55404df) carries a dso_regional / Destiny Dental / ProSmile classification that appears FALSE. Downstream gate should revert it to independent (large_group or dso_regional based on provider_count=8) and clear affiliated_dso — unless new evidence emerges linking it to Destiny/ProSmile operationally. 2. This is the 'Smiling Dental Group — Pulaski backfill71 individual' network from a prior session; the present 3-location cluster is consistent with that linkage. 3. Dr. Hao also works as an orthodontist contractor at Orland Advanced Dentistry, Des Plaines, and Hoffman Estates offices — these are NOT his owned practices, just contracted orthodontic days; do not count them in his ownership network. 4. The Aurora practice (eea9dfd) is currently solo_high_volume (provider_count=1 per NPPES) despite the Smiling Dental Group website suggesting it is a multi-provider office; this may reflect that additional providers are on individual NPI-1 records not captured at the org level. 5. If provider_count at 712 E 87th (60619) truly = 8, this is a substantial clinic for a private dentist-owner — worth a follow-up NPPES deep dive to confirm none of the 8 providers are linked to Destiny Dental's actual TIN/EIN.",
+  "classifications": [
+    {
+      "location_id": "eea9dfd84c8272cc",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Jianjun Hao DDS MS PhD, Founder/President, NPPES AO confirmed",
+      "network_id": "ao:HAO_JIANJUN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60504/60619/60629 — JIANJUN HAO listed as PRESIDENT on NPI 1063030427",
+          "Legal entity 'PACIFIC SMILING DENTAL P.C.' shares Smiling Dental brand family with two other Hao-owned PCs"
+        ],
+        "evidence": [
+          "smilingdentalgroup.com lists 4370 E New York St Aurora IL 60504 as Dr. Hao's flagship practice — confirms he owns/operates this location",
+          "npino.com record for NPI 1063030427 confirms AO = JIANJUN HAO, title PRESIDENT",
+          "LinkedIn: Hao Jianjun listed as Founder at Smiling Dental International P.C. — same owner identity across the brand family"
+        ]
+      },
+      "evidence_urls": [
+        "https://smilingdentalgroup.com/about-us/",
+        "https://smilingdentalgroup.com/contact_us/",
+        "https://npino.com/dental-clinic/1063030427-pacific-smiling-dental-p.c./",
+        "https://www.linkedin.com/in/hao-jianjun-1b987681/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "JIANJUN HAO",
+        "ao_title": "PRESIDENT",
+        "reach": 3,
+        "zips": ["60504", "60619", "60629"],
+        "npi": "1063030427",
+        "entity_classification_db": "solo_high_volume",
+        "affiliated_dso_db": null
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Dr. Jianjun Hao is the NPPES-confirmed PRESIDENT and founder of this practice. The Smiling Dental Group website (smilingdentalgroup.com) lists this Aurora address as the practice's primary/flagship office. No MSO, management company, or PE backing found. This is Dr. Hao's personally-owned private PC — dentist_multi with high confidence. Current DB classification is solo_high_volume (provider_count=1 on org NPI), which may undercount actual providers."
+    },
+    {
+      "location_id": "55404df201ad194f",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Jianjun Hao DDS MS PhD, President, NPPES AO confirmed",
+      "network_id": "ao:HAO_JIANJUN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60504/60619/60629 — JIANJUN HAO listed as PRESIDENT on NPI 1487232872",
+          "Legal entity 'SMILING DENTAL INTERNATIONAL P.C.' shares Smiling Dental brand with the two other Hao-owned PCs",
+          "DB entity_classification=dso_regional with affiliated_dso='Destiny Dental / ProSmile' — a prior seeding signal, NOT verified"
+        ],
+        "evidence": [
+          "npino.com record for NPI 1487232872 confirms AO = JIANJUN HAO, title PRESIDENT, mailing 833 W 15th Pl Unit 612 Chicago IL 60608",
+          "LinkedIn: Hao Jianjun listed as Founder at Smiling Dental International P.C. — directly naming this legal entity",
+          "No web source connects this practice to Destiny Dental or ProSmile; ProSmile/Destiny acquisition press releases do not name 712 E 87th St or 'Smiling Dental International'"
+        ]
+      },
+      "evidence_urls": [
+        "https://npino.com/dental-clinic/1487232872-smiling-dental-international-p.c./",
+        "https://www.linkedin.com/in/hao-jianjun-1b987681/",
+        "https://www.prosmile.com/prosmile-completes-acquisition-of-destiny-dental-practices-located-in-midwest/",
+        "https://livingstonepartners.com/en-us/transactions/destiny-dental-has-been-acquired-by-prosmile"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "JIANJUN HAO",
+        "ao_title": "PRESIDENT",
+        "reach": 3,
+        "zips": ["60504", "60619", "60629"],
+        "npi": "1487232872",
+        "entity_classification_db": "dso_regional",
+        "affiliated_dso_db": "Destiny Dental / ProSmile",
+        "classification_reasoning_db": "IL DSO seeding 2026-05-30: verified-corporate (Destiny Dental / ProSmile/ProSmile (backer undisclosed); acquired Destiny Aug 2024) via data_axle_structural_verified; was large_group"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "DB shows dso_regional / Destiny Dental / ProSmile — THIS IS LIKELY A MISLABEL. Dr. Jianjun Hao is the NPPES PRESIDENT; LinkedIn names him as Founder of this exact legal entity; no Destiny or ProSmile web presence references this address or entity name. The 2026-05-30 seeding classification should be reviewed and likely reverted. If provider_count=8 reflects actual Destiny employees operating here under Dr. Hao's AO umbrella, additional field verification is needed — but current public evidence points to private Hao ownership.",
+      "reasoning": "Despite the current DB dso_regional / Destiny Dental / ProSmile classification from the 2026-05-30 seeding, all NPPES and public evidence points to Dr. Jianjun Hao as the sole owner and operator. LinkedIn directly names him as Founder of SMILING DENTAL INTERNATIONAL P.C. The ProSmile/Destiny acquisition press materials do not reference this address, and no web source corroborates a Destiny/ProSmile operational presence here. Classified dentist_multi consistent with the other two Hao PCs. Gate should investigate whether provider_count=8 reflects a staffed Hao clinic vs. a possible Destiny sub-lease."
+    },
+    {
+      "location_id": "9c588fbf68114847",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Jianjun Hao DDS MS PhD, Owner, NPPES AO confirmed",
+      "network_id": "ao:HAO_JIANJUN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60504/60619/60629 — JIANJUN HAO listed as OWNER on NPI 1346806577",
+          "Legal entity 'PULASKI SMILING DENTAL P.C.' shares Smiling Dental brand with two other Hao-owned PCs"
+        ],
+        "evidence": [
+          "npino.com record for NPI 1346806577 confirms AO = JIANJUN HAO, title OWNER explicitly",
+          "Mailing address for Pulaski Smiling Dental is 836 S Miller St Chicago IL — a residential-style mailing consistent with a dentist-owner's personal mailing"
+        ]
+      },
+      "evidence_urls": [
+        "https://npino.com/dental-clinic/1346806577-pulaski-smiling-dental-p.c./",
+        "https://www.linkedin.com/in/hao-jianjun-1b987681/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "JIANJUN HAO",
+        "ao_title": "OWNER",
+        "reach": 3,
+        "zips": ["60504", "60619", "60629"],
+        "npi": "1346806577",
+        "entity_classification_db": "solo_established",
+        "affiliated_dso_db": null
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "NPPES title is explicitly 'OWNER' — the strongest AO-title corroborator. 'Pulaski Smiling Dental P.C.' is the third leg of Dr. Hao's Smiling Dental brand family. No MSO or PE evidence found. Prior session note tagged this as 'backfill71 individual (Pulaski, dentist_multi)' — consistent with present findings. Current DB classification solo_established (provider_count=1) is plausible for a satellite location staffed by Dr. Hao personally on visit days."
+    }
+  ]
+}

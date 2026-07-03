@@ -1,0 +1,134 @@
+{
+  "network": "MOHAMMED SAYEED",
+  "network_id": "ao:SAYEED_MOHAMMED",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Dr. Mohammed S. Sayeed DDS (BDS India 1996, DDS UIC 2002) is the operating dentist-owner of three Chicago GP locations all branded as 'Hana Dental Center'. The NPPES legal entity on all three is 'DR. IMTIAZ AHMED, PC' — a professional corporation under which Sayeed practices; Imtiaz Ahmed appears to be a legacy/historical PC name (prior owner or original registrant). Sayeed is the authorized official across all three NPIs and is personally listed on dental directories as the provider at these addresses. No MSO, management company, DSO affiliation, or private equity backing was found. This is a private dentist-owned multi-location group with no separate platform/management layer.",
+  "owner_operator_identity": "Dr. Mohammed S. Sayeed DDS BDS — practicing dentist-owner; AO on all three NPIs; listed on Hana Dental Center and Infinite Smiles Bolingbrook as the treating dentist",
+  "brand_trade_names": ["Hana Dental Center"],
+  "legal_entities": ["DR. IMTIAZ AHMED, PC (EIN 481308193 on loc b90f1518bb37c1b6)"],
+  "durable_artifacts": [
+    "NPPES AO MOHAMMED SAYEED across 3 NPIs in ZIPs 60626, 60644, 60660",
+    "EIN 481308193 on location b90f1518bb37c1b6 (732 S Pulaski, ZIP 60626)",
+    "Hana Dental Center brand website lists all three Chicago addresses: 620/732 S Pulaski Rd, 4807 W Madison St, 1768 W Devon Ave",
+    "Yahoo Local lists business as 'Sayeed Mohammed S - Hana Dental Center' at 620 S Pulaski Rd (773) 533-5353 — same phone as NPPES record",
+    "Infinite Smiles Bolingbrook (263 S Bolingbrook Dr) also lists Dr. Mohammed Sayeed DDS BDS as the sole provider — a 4th location outside watched IL ZIPs"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "Address discrepancy: NPPES lists 732 S Pulaski Rd (ZIP 60626) while Hana Dental Center website and Yahoo Local list 620 S Pulaski Rd (ZIP 60624); phone (773) 533-5353 matches both. Likely a suite/address renumbering or the practice spans both addresses on the same block. The ZIP 60626 in NPPES vs 60624 on the website is a minor discrepancy — same phone confirms same office. Downstream validator should confirm current operating address. MOHAMMED SAYEED as AO is the dentist-owner himself, not a billing/admin contact — no false-positive concern on the AO clustering.",
+  "evidence_chain": "AO signal: MOHAMMED SAYEED is the NPPES authorized official across 3 org NPIs (1891970356, 1225202617, 1588838981) all filed under 'DR. IMTIAZ AHMED, PC' in Chicago ZIPs 60626/60644/60660. Documentary corroboration: (1) hanadentalcenter.com explicitly lists all three street addresses (Pulaski, Madison, Devon) as Hana Dental Center branches; (2) Yahoo Local entry 'Sayeed Mohammed S - Hana Dental Center' at the Pulaski address with matching phone (773) 533-5353; (3) Infinitesmilesbolingbrook.com bio confirms Mohammed Sayeed DDS BDS is an actively practicing dentist (DDS UIC 2002), consistent with him being the dentist-owner rather than an admin/billing AO. No MSO, management layer, or PE backing found in three targeted web searches.",
+  "future_app_notes": "1. Confirm whether 'DR. IMTIAZ AHMED' is a prior owner who sold/retired and left the PC name unchanged, or a nominal PC registrant. IDFPR PC registry search for EIN 481308193 or 'Imtiaz Ahmed' would resolve this. 2. The Bolingbrook (Infinite Smiles, ZIP 60440) and any Oak Brook Terrace locations (dentalplans.com lists a Mohammed Sayeed in 60181) are outside watched IL ZIPs but may represent additional Sayeed offices worth monitoring. 3. If the NPPES address is ever corrected from 60626 to 60624, the location_id b90f1518bb37c1b6 may be affected by dedup logic.",
+  "classifications": [
+    {
+      "location_id": "b90f1518bb37c1b6",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Mohammed S. Sayeed DDS BDS",
+      "network_id": "ao:SAYEED_MOHAMMED",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: MOHAMMED SAYEED is NPPES AO on NPI 1891970356 (732 S Pulaski Rd, 60626) and 2 other watched-IL NPIs",
+          "legal_entity: DR. IMTIAZ AHMED, PC (EIN 481308193)",
+          "entity_classification=solo_high_volume in current DB"
+        ],
+        "evidence": [
+          "hanadentalcenter.com lists '620 S Pulaski Rd, Chicago, IL 60624' as Branch 1 with phone 773-533-5353 — same phone as this NPPES record",
+          "Yahoo Local: 'Sayeed Mohammed S - Hana Dental Center' at 620 S Pulaski Rd, phone (773) 533-5353",
+          "infinitesmilesbolingbrook.com bio confirms Dr. Mohammed Sayeed DDS BDS is the practicing dentist-owner, not an administrative contact"
+        ]
+      },
+      "evidence_urls": [
+        "https://hanadentalcenter.com/",
+        "https://www.hanadentalcenter.com/contact-us.html",
+        "https://local.yahoo.com/info-49891641-sayeed-mohammed-s-dds-hana-dental-center-chicago",
+        "https://infinitesmilesbolingbrook.com/doctor/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "MOHAMMED SAYEED",
+        "reach": 3,
+        "zips": ["60626", "60644", "60660"],
+        "npi": "1891970356",
+        "ein": "481308193",
+        "legal_name": "DR. IMTIAZ AHMED, PC"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "Minor address discrepancy: NPPES has 732 S Pulaski Rd ZIP 60626; Hana Dental Center website/Yahoo Local show 620 S Pulaski Rd ZIP 60624. Phone (773) 533-5353 matches both — confirms same practice. Validator should confirm current street number and ZIP to ensure dedup integrity.",
+      "reasoning": "NPPES AO MOHAMMED SAYEED is Dr. Mohammed S. Sayeed DDS BDS himself — an actively practicing dentist (DDS UIC 2002, 24 years experience) who is the operator of the Hana Dental Center brand across three Chicago locations. The consumer brand 'Hana Dental Center' at this Pulaski address is documented on the practice's own website listing all three branches. No DSO/MSO/PE layer found. Classified dentist_multi (private multi-office dentist group, no management/platform structure). Ready for validation: the Hana Dental Center website + Yahoo Local listing constitute documentary corroboration of multi-location owner identity tying the AO to the brand across addresses."
+    },
+    {
+      "location_id": "0e022d96f6c24a6b",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Mohammed S. Sayeed DDS BDS",
+      "network_id": "ao:SAYEED_MOHAMMED",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: MOHAMMED SAYEED is NPPES AO on NPI 1225202617 (4807 W Madison St, 60644) and 2 other watched-IL NPIs",
+          "legal_entity: DR.IMTIAZ AHMED,PC (no EIN on this NPI record)",
+          "entity_classification=solo_established in current DB"
+        ],
+        "evidence": [
+          "hanadentalcenter.com contact page lists '4807 W Madison Rd, Chicago, IL 60644' as Branch 2 with phone 773-287-7575",
+          "Hana Dental Center is Dr. Mohammed Sayeed's documented 3-location brand (Pulaski/Madison/Devon)"
+        ]
+      },
+      "evidence_urls": [
+        "https://hanadentalcenter.com/",
+        "https://www.hanadentalcenter.com/contact-us.html"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "MOHAMMED SAYEED",
+        "reach": 3,
+        "zips": ["60626", "60644", "60660"],
+        "npi": "1225202617",
+        "ein": null,
+        "legal_name": "DR.IMTIAZ AHMED,PC"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "The 4807 W Madison St, Chicago 60644 address is explicitly listed on the Hana Dental Center website as Branch 2. Combined with the AO identity (Mohammed Sayeed = the dentist-owner), this is well-corroborated as part of Sayeed's dentist_multi private group. No DSO/MSO/PE evidence found."
+    },
+    {
+      "location_id": "7de57003f6e54f01",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Mohammed S. Sayeed DDS BDS",
+      "network_id": "ao:SAYEED_MOHAMMED",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: MOHAMMED SAYEED is NPPES AO on NPI 1588838981 (1768 W Devon Ave, 60660) and 2 other watched-IL NPIs",
+          "legal_entity: DR.IMTIAZ AHMED, PC (no EIN on this NPI record)",
+          "entity_classification=solo_established in current DB"
+        ],
+        "evidence": [
+          "hanadentalcenter.com contact page lists '1768 W Devon Ave, Chicago, IL 60660' as Branch 3 with phone 773-465-5070 — exact match to NPPES record",
+          "Yelp listing 'Hana Dental Center' at 1768 W Devon Ave Chicago 60660 confirms active consumer-facing presence at this address"
+        ]
+      },
+      "evidence_urls": [
+        "https://hanadentalcenter.com/",
+        "https://www.hanadentalcenter.com/contact-us.html",
+        "https://www.yelp.com/biz/hana-dental-center-chicago-3"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "MOHAMMED SAYEED",
+        "reach": 3,
+        "zips": ["60626", "60644", "60660"],
+        "npi": "1588838981",
+        "ein": null,
+        "legal_name": "DR.IMTIAZ AHMED, PC"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "The 1768 W Devon Ave, Chicago 60660 address is an exact match to Branch 3 on the Hana Dental Center website and confirmed by a Yelp listing. The Devon Ave location is the clearest address match (no discrepancy) across all three records. Classified dentist_multi: Dr. Sayeed's private 3-office group with no DSO/MSO/PE layer."
+    }
+  ]
+}

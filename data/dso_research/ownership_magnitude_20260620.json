@@ -1,0 +1,524 @@
+{
+  "_meta": {
+    "generated": "2026-06-20",
+    "scope": "Illinois (IL) watched-ZIP General-Practice (GP) locations only",
+    "base": 4440,
+    "current_floor_corporate": 249,
+    "current_floor_pct": "5.61%",
+    "note": "GP excludes specialist, non_clinical, org_only_npi, da_unverified, duplicate_location. Massachusetts parked, not included.",
+    "hazard_mitigations": [
+      "No transitive union-find chaining across anchor types",
+      "EIN clustering: excluded placeholders 000000000, 111111111, 999999999 and EINs <9 digits",
+      "Auth_official clustering: excluded common surnames (PATEL,SHAH,SINGH,KUMAR,AHMED,KHAN,CHEN,KIM,LEE,PARK,NGUYEN,TRAN,PHAN,SMITH,JOHNSON)",
+      "EIN and auth_official clusters reported independently; max-of-two used only for summary, never merged transitively"
+    ]
+  },
+
+  "task1_column_inventory": {
+    "note": "Coverage over 4,440 IL GP NPIs (via primary_npi or org_npi from practice_locations)",
+    "practices_columns": {
+      "ein": {
+        "coverage_pct": 27.0,
+        "n": 1197,
+        "note": "All 1,197 are real EINs (placeholders already excluded). 000000000 placeholder appeared in parent_iusa, not ein."
+      },
+      "parent_iusa": {
+        "coverage_pct_any": 33.6,
+        "n_any": 1494,
+        "coverage_pct_real": 0.5,
+        "n_real": 23,
+        "note": "1,471 of 1,494 are placeholder '000000000' (Evenly Technologies junk). Only 23 are real parent IUSA values."
+      },
+      "parent_company": {
+        "coverage_pct": 2.2,
+        "n": 97
+      },
+      "parent_org_lbn": {
+        "coverage_pct": 3.0,
+        "n": 132
+      },
+      "parent_org_tin": {
+        "coverage_pct": 3.0,
+        "n": 132
+      },
+      "affiliated_dso": {
+        "coverage_pct": 7.7,
+        "n": 344,
+        "note": "202 at location level (practice_locations); 344 at NPI level across same IL GP NPIs"
+      },
+      "affiliated_pe_sponsor": {
+        "coverage_pct": 2.8,
+        "n": 125
+      },
+      "authorized_official_last_name": {
+        "coverage_pct": 49.2,
+        "n": 2185
+      },
+      "authorized_official_first_name": {
+        "coverage_pct": 49.2,
+        "n": 2185
+      },
+      "authorized_official_title": {
+        "coverage_pct": 49.2,
+        "n": 2185
+      },
+      "da_ein2": {
+        "coverage_pct": 5.8,
+        "n": 257
+      },
+      "da_ein3": {
+        "coverage_pct": 1.6,
+        "n": 72
+      },
+      "da_legal_name": {
+        "coverage_pct": 9.8,
+        "n": 436
+      },
+      "da_mailing_address": {
+        "coverage_pct": 5.0,
+        "n": 224
+      },
+      "da_officers": {
+        "coverage_pct": 45.3,
+        "n": 2010,
+        "note": "Non-empty and non-'[]'"
+      },
+      "da_corporate_employees": {
+        "coverage_pct": 0.0,
+        "n": 1,
+        "note": "Essentially empty — Data Axle corporate employee rollup not populated"
+      },
+      "da_corporate_sales": {
+        "coverage_pct": 0.0,
+        "n": 1,
+        "note": "Essentially empty"
+      },
+      "franchise_name": {
+        "coverage_pct": 28.4,
+        "n": 1260,
+        "note": "Includes many benign values — not all franchises are DSO-like"
+      },
+      "iusa_number": {
+        "coverage_pct": 33.6,
+        "n": 1494,
+        "note": "Mostly the Evenly placeholder set — unreliable anchor"
+      },
+      "mailing_address": {
+        "coverage_pct": 94.4,
+        "n": 4191,
+        "note": "Nearly universal, but shared mailing alone known to be too noisy for clustering (documented hazard)"
+      },
+      "is_org_subpart": {
+        "coverage_pct": 3.0,
+        "n": 132
+      },
+      "da_subsidiary_iusa": {
+        "coverage_pct": 1.0,
+        "n": 44
+      },
+      "provider_last_name": {
+        "coverage_pct": 45.3,
+        "n": 2013
+      }
+    },
+    "practice_locations_columns": {
+      "ein": {
+        "coverage_pct": 28.4,
+        "n": 1261
+      },
+      "parent_company": {
+        "coverage_pct": 2.4,
+        "n": 106
+      },
+      "affiliated_dso": {
+        "coverage_pct": 4.5,
+        "n": 202
+      },
+      "affiliated_pe_sponsor": {
+        "coverage_pct": 1.9,
+        "n": 85
+      },
+      "provider_npis": {
+        "coverage_pct": 86.7,
+        "n": 3849
+      },
+      "data_axle_enriched": {
+        "coverage_pct": 54.8,
+        "n": 2432
+      }
+    },
+    "most_useful_anchors": [
+      "ein (practice_locations): 28.4% coverage, real clusters meaningful",
+      "authorized_official (last+first_initial) via practices join: 49.2% coverage, excludes common surnames",
+      "affiliated_dso (practice_locations): 4.5% coverage, confirms brand assignment",
+      "entity_classification: 100% coverage, current canonical signal"
+    ],
+    "weak_anchors_avoid": [
+      "parent_iusa: 98.5% of values are placeholder 000000000",
+      "mailing_address alone: known to weld unrelated practices via shared registered-agent address",
+      "da_corporate_employees / da_corporate_sales: near-zero coverage"
+    ]
+  },
+
+  "task2_owner_clustering": {
+    "ein_clusters": {
+      "method": "EIN from practice_locations; exclude NULL, empty, <9 digits, placeholders 000000000/111111111/999999999; group by EIN; count DISTINCT location_ids",
+      "total_locations_with_real_ein": 1261,
+      "pct_of_4440": "28.4%",
+      "clusters_with_2plus_locs": 32,
+      "total_locs_in_multi_loc_clusters": 68,
+      "cluster_size_distribution": {
+        "1": {"clusters": 1193, "total_locs": 1193},
+        "2": {"clusters": 28, "total_locs": 56},
+        "3": {"clusters": 4, "total_locs": 12}
+      },
+      "notable_multi_loc_ein_clusters": [
+        {"ein": "731689410", "locs": 3, "classes": "dso_regional", "names": "BRITE DENTAL group"},
+        {"ein": "363554595", "locs": 3, "classes": "dso_regional", "names": "FAMILY DENTAL CARE"},
+        {"ein": "362736573", "locs": 3, "classes": "dso_regional", "names": "ELMHURST DENTAL GROUP / Dental Professionals of IL"},
+        {"ein": "200901797", "locs": 3, "classes": "dso_national", "names": "DENTAL EXPERTS / STUDIO DENTAL"},
+        {"ein": "471741822", "locs": 2, "classes": "large_group,solo_high_volume", "names": "J.H. CHEUNG / VILLAGE SMILES - independent-classified"},
+        {"ein": "432052561", "locs": 2, "classes": "small_group,solo_high_volume", "names": "HAMILTON LAKES / Acierno Dental - independent-classified"},
+        {"ein": "364271023", "locs": 2, "classes": "solo_high_volume", "names": "DYNASTY DENTAL - independent-classified"},
+        {"ein": "203047745", "locs": 2, "classes": "solo_high_volume", "names": "ART OF MODERN DENTISTRY - independent-classified"}
+      ]
+    },
+    "auth_official_clusters": {
+      "method": "authorized_official_last_name + SUBSTR(first_name,1,1) from practices joined to IL GP location_ids via primary_npi/org_npi; exclude common surnames",
+      "excluded_surnames": ["PATEL","SHAH","SINGH","KUMAR","AHMED","KHAN","CHEN","KIM","LEE","PARK","NGUYEN","TRAN","PHAN","SMITH","JOHNSON"],
+      "total_locs_with_valid_anchor": 2042,
+      "pct_of_4440": "46.0%",
+      "cluster_size_distribution": {
+        "1": {"clusters": 1431, "total_locs": 1431},
+        "2": {"clusters": 133, "total_locs": 266},
+        "3": {"clusters": 37, "total_locs": 111},
+        "4": {"clusters": 12, "total_locs": 48},
+        "5": {"clusters": 9, "total_locs": 45},
+        "6": {"clusters": 3, "total_locs": 18},
+        "7": {"clusters": 4, "total_locs": 28},
+        "9": {"clusters": 3, "total_locs": 27},
+        "12": {"clusters": 3, "total_locs": 36},
+        "15": {"clusters": 1, "total_locs": 15},
+        "17": {"clusters": 1, "total_locs": 17}
+      },
+      "large_clusters_4plus": [
+        {
+          "owner_key": "SHAFI|S", "title": "MANAGER", "locs": 17,
+          "classes": "mix including dso_national", "dso": "Gentle Dental",
+          "names": "OGDEN VALLEY DENTAL, TWO RIVERS DENTAL, ASHTON DENTAL, OSWEGO DENTAL, TROY DENTAL, SMILE TOWN DENTAL, GENTLE DENTAL GROUP, SIMPLY DENTAL, SMILE VIEW DENTAL",
+          "tier_assessment": "T3/T4 — affiliated_dso=Gentle Dental, already partially classified; some locations remain independent-classified"
+        },
+        {
+          "owner_key": "NITTINGER|R", "title": "MANAGER CREDENTIALING", "locs": 12,
+          "classes": "dso_national,solo_established", "dso": "Western Dental (Sonrava Health)",
+          "names": "ILLINOIS DENTAL PROVIDERS (multiple), DR. RAINA, MECKLER DENTAL PROVIDERS, DR. ZASSO & ASSOC",
+          "tier_assessment": "T3/T4 — friendly-PC shell PCs under Western Dental brand; some solo_established remain unflipped"
+        },
+        {
+          "owner_key": "AQEL|F", "title": "PRESIDENT", "locs": 9,
+          "classes": "dso_regional,solo_established", "dso": "Dental 360 / Brite Dental",
+          "names": "BRITE DENTAL (multiple locations)",
+          "tier_assessment": "T3/T4 — Brite Dental is Dental 360 operating brand; some solo_established remain"
+        },
+        {
+          "owner_key": "HUSSAIN|S", "title": "OWNER/DENTIST", "locs": 9,
+          "classes": "dso_national", "dso": "Dental Dreams",
+          "names": "DENTAL EXPERTS LLC, DENTAL DREAMS LLC",
+          "tier_assessment": "T4 — already fully classified corporate"
+        },
+        {
+          "owner_key": "TSALIAGOS|C", "title": "PRESIDENT", "locs": 8,
+          "classes": "solo_established,large_group,solo_high_volume", "dso": "none",
+          "names": "METROSMILES (Cicero, Archer Heights, Joliet, Gage Park), BRICKYARD DENTAL, TOOTHPATROL, SOUTH SIDE DENTAL",
+          "tier_assessment": "T2 or T3 AMBIGUOUS — 8 locations under METROSMILES local brand. Could be dentist-owned multi-site T2, or PE/MSO-backed T3. Requires web verification."
+        },
+        {
+          "owner_key": "BELKIC|V", "title": "GENERAL MANAGER / COO", "locs": 12,
+          "classes": "dso_regional,dso_national,solo_established", "dso": "1st Family Dental",
+          "names": "1ST FAMILY DENTAL (multiple), DENTAL CORPORATE USA, ARMITAGE PROFESSIONAL SERVICES, LITTLE VILLAGE DENTAL",
+          "tier_assessment": "T3/T4 — 1st Family Dental regional chain; some solo_established remain unflipped"
+        },
+        {
+          "owner_key": "BRUNETTI|R", "title": "C.E.O.", "locs": 7,
+          "classes": "large_group,small_group,solo_established", "dso": "none",
+          "names": "PROCARE DENTAL GROUP P.C.",
+          "tier_assessment": "STRONG T3 SIGNAL — CEO title + multi-loc under group brand, all independent-classified. Priority web-verify candidate."
+        },
+        {
+          "owner_key": "GONZALEZ|S", "title": "VP OF OPERATIONS", "locs": 7,
+          "classes": "small_group,solo_high_volume,solo_established", "dso": "none",
+          "names": "DENTAL TOWN LTD",
+          "tier_assessment": "STRONG T3 SIGNAL — VP Operations title + 7 locations. Priority web-verify candidate."
+        },
+        {
+          "owner_key": "HAYES|C", "title": "CREDENTIALING COORDINATOR", "locs": 7,
+          "classes": "dso_national", "dso": "Heartland Dental",
+          "names": "TRU DENTAL ILLINOIS P.C., DENTAL PROFESSIONALS OF ILLINOIS P.C.",
+          "tier_assessment": "T4 — already fully classified corporate"
+        },
+        {
+          "owner_key": "LABINOV|B", "title": "AGENT", "locs": 7,
+          "classes": "solo_established (all 7)", "dso": "none",
+          "names": "D2 DENTAL AT OAK STREET P.C.",
+          "tier_assessment": "T2 or T3 AMBIGUOUS — AGENT title likely a registered agent / attorney; 7 solo_established under one legal entity suggests multi-site dentist group. Web-verify needed."
+        },
+        {
+          "owner_key": "JORBIN|J", "title": "CFO", "locs": 5,
+          "classes": "solo_high_volume,small_group,solo_established,large_group", "dso": "none",
+          "names": "BDD JHG PC, BDD OF ILLINOIS P.C., BDD AFDS PC",
+          "tier_assessment": "STRONG T3 SIGNAL — CFO title on a BDD-branded chain. PE/MSO-backed likely. Priority web-verify."
+        },
+        {
+          "owner_key": "PALELLA|P", "title": "OWNER", "locs": 5,
+          "classes": "solo_established (all 5)", "dso": "none",
+          "names": "MODERN DENTAL ON DIVISION, MODERN DENTAL ON SHEFFIELD, MODERN DENTAL ON CLARK STREET, HALO DENTAL, MODERN DENTAL OF LOGAN SQUARE",
+          "tier_assessment": "T2 likely — MODERN DENTAL branded multi-location. Owner title suggests dentist-owned chain. Could be T3 if PE-affiliated. Low priority."
+        },
+        {
+          "owner_key": "GONZALEZ|O", "title": "DIRECTOR OF OPERATIONS", "locs": 4,
+          "classes": "small_group,large_group", "dso": "none",
+          "names": "PRAIRIE DENTAL PARTNERS LLC, ALL PERFECT SMILES OF BEVERLY PC, PRAIRIE DENTAL OF OAK PARK LLC, ALL PERFECT SMILES OF ELMHURST PC",
+          "tier_assessment": "STRONG T3 SIGNAL — Director of Operations title + partner-brand naming. Web-verify needed."
+        }
+      ]
+    }
+  },
+
+  "task3_location_count_distribution": {
+    "note": "Owner cluster size = max(EIN cluster size, auth_official cluster size) per location. No transitive chaining.",
+    "by_best_anchor_cluster_size": {
+      "no_anchor": {
+        "locs": 1846, "pct": "41.6%",
+        "note": "No real EIN and no non-excluded auth_official found for these locations. Cannot cluster-classify."
+      },
+      "sz1_solo": {
+        "locs": 1936, "pct": "43.6%",
+        "note": "Owner signal found but this location is the only one under that anchor. Candidate T1."
+      },
+      "sz2": {
+        "locs": 309, "pct": "7.0%",
+        "note": "2-location owner cluster. Candidate T2 (dentist mini-chain). Some may be T3 if PE-backed."
+      },
+      "sz3": {
+        "locs": 115, "pct": "2.6%",
+        "note": "3-location owner cluster. T2 or T3 ambiguous without web verify."
+      },
+      "sz4": {
+        "locs": 48, "pct": "1.1%",
+        "note": "4-location owner cluster. Likely T2 or T3."
+      },
+      "sz5plus": {
+        "locs": 186, "pct": "4.2%",
+        "note": "5+ location owner cluster. Mix of already-classified T4 (e.g., Heartland, Dental Dreams) and unclassified T3 candidates."
+      }
+    },
+    "single_location_candidate_t1": {
+      "anchor_confirmed_solo": 1936,
+      "no_anchor_solo": 1846,
+      "total_candidate_t1": 3782,
+      "pct_of_4440": "85.2%",
+      "caveat": "Candidate only — 1,846 have no anchor data at all, and some of the 1,936 anchor-confirmed solos may be misclassified friendly-PC. True T1 count requires web verification."
+    },
+    "multi_location_non_corporate": {
+      "locs_in_2plus_cluster_currently_independent": 527,
+      "pct_of_4440": "11.9%",
+      "note": "These are already-classified independent locs that share an owner anchor with 2+ other IL GP locations. Candidates for T2 or T3."
+    }
+  },
+
+  "task4_branded_dso_coverage": {
+    "current_classified_corporate": {
+      "dso_national": 167,
+      "dso_regional": 82,
+      "total": 249,
+      "pct": "5.61%"
+    },
+    "dso_locations_il_coverage": {
+      "total_il_dso_location_rows": 388,
+      "by_brand": {
+        "Heartland Dental": 105,
+        "Aspen Dental": 46,
+        "Great Lakes Dental Partners": 28,
+        "Orthodontic Experts": 23,
+        "Midwest Dental": 22,
+        "1st Family Dental": 20,
+        "Smile Doctors": 19,
+        "Dental 360": 17,
+        "Affordable Care": 16,
+        "Familia Dental": 15,
+        "Dental Dreams": 15,
+        "Webster Dental Management": 11,
+        "Affordable Dentures & Implants": 10,
+        "All Family Dental & Braces (United Dental Partners)": 7,
+        "Webster Dental Care": 6,
+        "Access Dental": 6,
+        "Western Dental": 5,
+        "AppleWhite / CORDENTAL Group": 5,
+        "Comfort Dental": 4,
+        "Elite Dental Partners": 2
+      }
+    },
+    "matching_beyond_current_corporate": {
+      "non_corporate_matching_dso_location_by_zip_and_exact_phone": 9,
+      "non_corporate_in_same_zip_as_any_il_dso_location": 2384,
+      "note": "ZIP-alone match is too broad (2384). Exact ZIP+phone match = 9 real candidates. Fuzzy phone = 146 (unreliable). The 9 exact ZIP+phone matches are the most actionable."
+    },
+    "confident_t4_assessment": {
+      "confirmed_by_data": 249,
+      "pct": "5.61%",
+      "note": "Current entity_classification=dso_national (167) + dso_regional (82). Additional 9 exact ZIP+phone matches to dso_locations are candidates for reclassification."
+    }
+  },
+
+  "task5_group_at_single_location": {
+    "total_multi_provider_il_gp": 1364,
+    "pct_of_4440": "30.7%",
+    "by_classification": {
+      "small_group_different_surname": {
+        "total_small_group": 845,
+        "with_2plus_providers": 808,
+        "note": "2-3 providers, different surnames. Mostly T1 independent groups, some T2."
+      },
+      "large_group_different_surname": {
+        "total_large_group": 255,
+        "with_2plus_providers": 234,
+        "note": "4+ providers, different surnames. Higher T2/T3 likelihood, especially those with corporate-function officer titles."
+      },
+      "family_practice_shared_surname": {
+        "total_family_practice": 193,
+        "with_2plus_providers": 192,
+        "note": "Shared-surname multi-provider. Strong T2 signal — family-owned dentist practices. Unlikely PE-backed."
+      },
+      "dso_already_multi_provider": {
+        "dso_national_2plus": 87,
+        "dso_regional_2plus": 43,
+        "total": 130
+      }
+    },
+    "provider_count_distribution_multi_provider": {
+      "2 providers": 697,
+      "3 providers": 313,
+      "4 providers": 148,
+      "5 providers": 66,
+      "6+ providers": 140,
+      "note": "Large practices (10+ providers): 39 locations. These are strong large-group T2 or T3 candidates."
+    }
+  },
+
+  "task6_deterministic_ceiling": {
+    "confidently_assignable": {
+      "T4_branded_dso": {
+        "count": 249,
+        "confidence": "HIGH",
+        "basis": "entity_classification=dso_national/dso_regional with brand evidence"
+      },
+      "T1_solo_no_cluster": {
+        "count_estimate": 2009,
+        "confidence": "MEDIUM-HIGH",
+        "basis": "solo_established/new/inactive minus those in 2+ anchor clusters (~2,244+19+4 - 235 clustered = ~2,032). Some may be misclassified T3.",
+        "caveat": "1,846 additional have no anchor at all — cannot confirm or deny multi-location ownership"
+      },
+      "T2_family_groups": {
+        "count": 193,
+        "confidence": "MEDIUM",
+        "basis": "family_practice classification = shared-surname multi-provider. Very unlikely PE-backed. Dentist-owned T2."
+      }
+    },
+    "ambiguous_requiring_web_verification": {
+      "large_group": {
+        "count": 255,
+        "note": "Could be dentist-owned T2 OR PE-backed T3. CEO/VP of Operations titles on 9 of these are strong T3 signals."
+      },
+      "small_group_in_owner_cluster": {
+        "count_estimate": 128,
+        "note": "Small groups that appear in 2+ auth_official or EIN clusters — T2 or T3"
+      },
+      "solo_established_in_owner_cluster": {
+        "count_estimate": 235,
+        "note": "Solo-classified but same owner has 2+ locations — friendly-PC T3 candidate or genuine T2 mini-chain"
+      },
+      "solo_high_volume_in_owner_cluster": {
+        "count_estimate": 82,
+        "note": "Similar ambiguity"
+      },
+      "total_ambiguous": 700
+    },
+    "confidence_ceiling": {
+      "pct_confidently_assignable_from_data_alone": "84.2%",
+      "pct_requiring_web_verify": "15.8%",
+      "note": "~700 locations need web verification to distinguish T2 dentist-chain from T3 stealth-DSO"
+    },
+    "priority_t3_candidates_for_web_verify": [
+      {"cluster": "BRUNETTI|R CEO", "locs": 7, "brand": "PROCARE DENTAL GROUP", "signal": "CEO title, multi-loc"},
+      {"cluster": "GONZALEZ|S VP OPERATIONS", "locs": 7, "brand": "DENTAL TOWN", "signal": "VP Ops title, multi-loc"},
+      {"cluster": "JORBIN|J CFO", "locs": 5, "brand": "BDD chain", "signal": "CFO title, BDD initials suggest PE platform"},
+      {"cluster": "GONZALEZ|O DIR OPERATIONS", "locs": 4, "brand": "PRAIRIE DENTAL PARTNERS", "signal": "Dir Ops title"},
+      {"cluster": "TSALIAGOS|C PRESIDENT", "locs": 8, "brand": "METROSMILES", "signal": "8-loc local chain, ambiguous"},
+      {"cluster": "LABINOV|B AGENT", "locs": 7, "brand": "D2 DENTAL", "signal": "Agent role, 7 solo_established"}
+    ],
+    "independent_locs_with_corporate_title_signal": {
+      "count": 65,
+      "titles_flagged": ["CEO","CFO","VP OF OPERATIONS","GENERAL MANAGER","CREDENTIALING COORDINATOR","VICE PRESIDENT","DIRECTOR OF OPERATIONS","MANAGER CREDENTIALING","REVENUE CYCLE MANAGER"],
+      "note": "65 currently independent-classified IL GP locs where the authorized_official has a corporate-function title. Strong T3 screening signal."
+    }
+  },
+
+  "task7_headline_magnitude": {
+    "dso_pe_penetration_T3_T4": {
+      "confirmed_floor": {
+        "count": 249,
+        "pct": "5.61%",
+        "description": "Current branded/known DSO (dso_national + dso_regional). Hard-evidence floor."
+      },
+      "with_top_unflipped_stealth_candidates": {
+        "count_estimate": 305,
+        "pct_estimate": "6.9%",
+        "description": "Adding the ~56 highest-confidence T3 candidates from large clusters with CEO/CFO/VP titles (BRUNETTI, GONZALEZ/S, JORBIN, GONZALEZ/O, TSALIAGOS, LABINOV) + 9 ZIP+phone DSO-location matches."
+      },
+      "realistic_upper_bound": {
+        "count_estimate": 350,
+        "pct_estimate": "7.9%",
+        "description": "If all 65 independent locs with corporate-function titles are T3, plus confirmed floor."
+      },
+      "note": "True T3+T4 is likely 6-9% of IL GP locations. The ADA HPI per-dentist anchor of 14.6% is a DIFFERENT unit (per dentist, not per location). The gap between 5.61% location-floor and 14.6% per-dentist rate is partially density-driven (corporate offices employ 2x dentists) and partially from undetected T3."
+    },
+    "consolidated_T2_T3_T4": {
+      "floor_T4_only": {
+        "count": 249,
+        "pct": "5.61%"
+      },
+      "low_estimate_T4_plus_family_groups": {
+        "count": 442,
+        "pct": "9.95%",
+        "description": "T4 confirmed (249) + family_practice T2 (193). Conservative — excludes large/small groups."
+      },
+      "mid_estimate_T4_plus_family_plus_multi_loc_independent": {
+        "count_estimate": 776,
+        "pct_estimate": "17.5%",
+        "description": "T4 (249) + family (193) + large_group (255) + independent in 2+ EIN cluster (42) + approximate clustered solos. This assumes most large_groups are T2."
+      },
+      "high_estimate_T4_plus_family_plus_all_groups": {
+        "count_estimate": 825,
+        "pct_estimate": "18.6%",
+        "description": "T4 + family + large_group + clustered small_group (128). Upper bound if most multi-provider non-corporate groups are T2."
+      },
+      "note": "Consolidated range depends on whether large_group and small_group are T2 (dentist-owned) or T1 (independent multi-provider). Most are T2 by intent — a dental group of 4+ dentists at one location is typically not a solo-independent. True consolidated % is likely 10-19%."
+    },
+    "single_sentence_summary": "IL Chicagoland branded/PE-backed DSO penetration (T3+T4) = 5.61% confirmed floor, likely 7-9% with stealth undetected; full consolidated (T2+T3+T4, including dentist-owned multi-location groups) = 10-19% range depending on how large_group and family_practice are assigned.",
+    "biggest_unknown": "The 1,846 IL GP locations with NO owner anchor (no real EIN, no usable authorized_official) represent 41.6% of the market — impossible to cluster-classify without additional web verification or Data Axle enrichment."
+  },
+
+  "summary_counts": {
+    "base_il_gp_locations": 4440,
+    "confirmed_T4_branded_dso": 249,
+    "confirmed_T2_family_groups": 193,
+    "candidate_T1_solo_with_anchor": 1936,
+    "candidate_T1_no_anchor": 1846,
+    "ambiguous_T2_or_T3": 700,
+    "independent_with_corporate_title_signal": 65,
+    "independent_in_multi_loc_ein_cluster": 42,
+    "independent_in_multi_loc_auth_cluster": 527,
+    "dso_locations_il_seed_rows": 388,
+    "exact_zip_phone_match_non_corporate": 9
+  }
+}

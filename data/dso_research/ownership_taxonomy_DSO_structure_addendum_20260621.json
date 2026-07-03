@@ -1,0 +1,1438 @@
+{
+ "_doc": "Addendum to my prior ownership-tier QA. Corrects the too-broad rule 'branded_dso/stealth_dso + pe_backed!=true -> dentist_multi'. Per the user's taxonomy correction, pe_backed (PE/financial sponsor) is ORTHOGONAL to DSO status (organizational/MSO/platform structure). This file re-reviews EVERY row I downgraded from branded_dso or stealth_dso to dentist_multi and restores the DSO tier wherever MSO/management-company/centralized-DSO-platform/established-DSO-brand/friendly-PC evidence exists, even when pe_backed=false. Local-name shells supported ONLY by AO-reach/structural correlation (no documentary brand/locator match) are routed to undetermined (needs_more_evidence), never left as dentist_multi.",
+ "author_role": "independent QA / validation-gate session (New session #1)",
+ "written_for": "Reset + Consolidation Gate Owner (4th session) \u2014 staged evidence, no DB writes",
+ "constraints_honored": [
+  "EVIDENCE FILE ONLY \u2014 no DB writes, no ownership_tier writes, no LEDGER/PROGRESS mutation",
+  "prior QA files NOT mutated (addendum only)",
+  "consolidation remains FROZEN until the wave-1 349-row reset is confirmed complete",
+  "did NOT use 'ownership_tier IS NULL' as remaining-work state",
+  "IL only / Boston parked"
+ ],
+ "supersedes_in_these_files": {
+  "ownership_evidence_QA_fleet_b_20260621.json": "the 59 qa_status=corrected (->dentist_multi) rows",
+  "ownership_evidence_QA_20260621.json": "the 25 corrected_tier_if_obvious=dentist_multi (branded/stealth) rows (BELKIC x13 + AQEL x12)"
+ },
+ "refined_rule": {
+  "pe_backed": "orthogonal boolean badge; NEVER by itself a reason to set or unset a DSO tier",
+  "branded_dso": "DSO/platform/management-company structure OR established DSO brand IS the NPPES name; even if family-owned / non-PE",
+  "stealth_dso": "local/friendly-PC name backed or managed by a DSO/MSO/PE platform",
+  "dentist_multi": "dentist-owned multi-location with NO separate DSO/MSO/platform structure (Consolidated, not DSO)",
+  "restore_if": "documentary MSO / management-company / centralized-DSO-platform / established-brand / locator / friendly-PC evidence present",
+  "needs_more_evidence_if": "only AO-reach / structural correlation (no documentary brand/locator match) \u2014 AO reach is a candidate signal, not ownership proof",
+  "keep_QA_correction_if": "evidence shows dentist-owned multi-location with NO platform/MSO (none found in this set)"
+ },
+ "summary": {
+  "rows_reviewed": 84,
+  "fleet_b_corrected_reviewed": 59,
+  "ao_corrected_reviewed": 25,
+  "action_counts": {
+   "restore_DSO_tier": 80,
+   "needs_more_evidence": 4
+  },
+  "revised_tier_counts": {
+   "branded_dso": 49,
+   "stealth_dso": 31,
+   "undetermined": 4
+  },
+  "headline_effect": "All restore_DSO_tier rows move OUT of dentist_multi (Consolidated, not DSO) and BACK INTO branded_dso/stealth_dso (Consolidated AND DSO/PE). They were already Consolidated either way, so the Consolidated headline (T2+T3+T4+T5) is unchanged; the DSO/PE-only headline (T4+T5) GROWS by the restored count. needs_more_evidence rows leave dentist_multi for undetermined -> they drop OUT of both headlines until verified.",
+  "keep_QA_correction": 0,
+  "note": "0 rows survive as dentist_multi: every downgrade I made was to an established multi-location DSO brand / friendly-PC / MSO platform, confirming the prior rule was systematically too broad. The only rows not restored are 4 local-name AO shells held for documentary verification."
+ },
+ "liveness_caveats": [
+  {
+   "network": "ashland_dental_wellness",
+   "note": "Restored branded_dso (Wolff Dental acquisition 2022). Source dossier also notes a Homewood-location closure \u2014 gate owner should confirm this specific address is still operating before consolidating; tier is correct if live."
+  }
+ ],
+ "open_followup_not_acted": "The Wave-2 reach5 sign-off (ao_network_evidence_reach5_QA_signoff_20260621.json) recorded '0 corrections' but its regate baked in the SAME too-broad branded+pe!=true->dentist_multi rule. Its 52 dentist_multi candidate rows may likewise need DSO-structure re-review. NOT acted on here (separate file, separate wave); surfaced for the gate owner.",
+ "rows": [
+  {
+   "location_id": "6179a9d5365bda56",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "sonrisa-cdca",
+   "practice_name": "Sonrisa Family Dental",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://sonrisafamilydental.com/locations/"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the 'sonrisa-cdca' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "a8464775598ce6d5",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "sonrisa-cdca",
+   "practice_name": "Kamal, Saba S DDS",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://sonrisafamilydental.com/locations/"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'sonrisa-cdca' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "1354bc2b8dff1d69",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "sonrisa-cdca",
+   "practice_name": "SONRISA ROGERS PARK INC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://cdcoa.org/about-us/our-office/"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary web_verified evidence to the 'sonrisa-cdca' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. NPPES name carries the brand token -> sub-label is more accurately branded_dso; headline-neutral.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "4c77253121d38b15",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "sonrisa-cdca",
+   "practice_name": "SONRISA CAPITATION ESPERANZA PROFESSIONAL CORPORATION",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://sonrisafamilydental.com/locations/"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'sonrisa-cdca' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. NPPES name carries the brand token -> sub-label is more accurately branded_dso; headline-neutral.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "5287843d3b6853ff",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "sonrisa-cdca",
+   "practice_name": "SONRISA CAPITATION CCHC PROFESSIONAL CORPORATION SONRISA FAMILY DENTAL",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://sonrisafamilydental.com/locations/"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'sonrisa-cdca' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. NPPES name carries the brand token -> sub-label is more accurately branded_dso; headline-neutral.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "86f0b24aac6e0fff",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "1st-family-dental",
+   "practice_name": "DENTAL PROFILE 2",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/addison/",
+    "https://www.yelp.com/biz/1st-family-dental-of-addison-addison"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the '1st-family-dental' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. NPPES name is a local/provider name, not the brand token -> sub-label is more accurately stealth_dso; headline-neutral (both T4/T5 count in Consolidated AND DSO/PE).",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "35d7239a6e507cba",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "1st-family-dental",
+   "practice_name": "Fakhouri Michael Sam DMD",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/",
+    "https://www.yelp.com/biz/1st-family-dental-of-addison-addison"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the '1st-family-dental' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. NPPES name is a local/provider name, not the brand token -> sub-label is more accurately stealth_dso; headline-neutral (both T4/T5 count in Consolidated AND DSO/PE).",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "be2a1cd5ebe9d302",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "1st-family-dental",
+   "practice_name": "1st Family Dental of Logan Square",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/logan-square/",
+    "https://www.yelp.com/biz/1st-family-dental-of-logan-square-chicago-3"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the '1st-family-dental' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "30ffe0bf981ce460",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "dentologie",
+   "practice_name": "ALEXANDRA SALES DMD PLLC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/dentologie-south-loop-chicago",
+    "https://dentologie.com/locations/chicago"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'dentologie' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "a543f3ba7ef53451",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "all_family_dental_udp",
+   "practice_name": "PEDIATRIC AND FAMILY DENTAL PC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.dentalandbraces.com/location/elgin-larkin-ave/"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'all_family_dental_udp' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "bad6e872762a243e",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "all_family_dental_udp",
+   "practice_name": "ALL KIDS DENTAL CENTER, LLC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.dentalandbraces.com/location/melrose-park/"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'all_family_dental_udp' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "e7adb34b51e9204f",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "all_family_dental_udp",
+   "practice_name": "Harb, Ingrid",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.dentalandbraces.com/location/berwyn/"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'all_family_dental_udp' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "607f4d5f66822036",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "all_family_dental_udp",
+   "practice_name": "Dentalworks",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.dentalandbraces.com/location/aurora/"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'all_family_dental_udp' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "ce3f980988601d21",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "all_family_dental_udp",
+   "practice_name": "WHEATLAND SLEEP SOLUTION",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.wheatlanddental.com/contact/",
+    "https://app.nexhealth.com/appt/unitedentalpartners?lid=2762"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'all_family_dental_udp' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "ac1fda16ba43aa1d",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "all_family_dental_udp",
+   "practice_name": "Alghazali Dental",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.dentalandbraces.com/location/little-village/"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'all_family_dental_udp' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "adbbaa6a89a0a404",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "all_family_dental_udp",
+   "practice_name": "Soliman Dental",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.dentalandbraces.com/location/belmont-cragin/"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'all_family_dental_udp' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "ef7718d320aa5539",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "webster_dental",
+   "practice_name": "WEBSTER DENTAL CARE NORTH SUBURBAN LTD",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.webdentalchicago.com/locations/skokie/"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the 'webster_dental' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "405a2745e7c0923b",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "webster_dental",
+   "practice_name": "WEBSTER DENTAL CARE SCHAUMBURG, LTD",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.webdentalchicago.com/locations/schaumburg/"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the 'webster_dental' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "917453ec644f8a6a",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "",
+   "practice_name": "WEBSTER DENTAL CARE EVANSTON, LTD",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the '' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "3c41e9f7f44640fa",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "webster_dental",
+   "practice_name": "Klyber Dental",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.webdentalchicago.com/locations/berwyn/",
+    "https://www.drklyberdentist.com/"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary web_verified evidence to the 'webster_dental' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "12975f69f58b30ee",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "webster_dental",
+   "practice_name": "BERWYN FAMILY DENTAL",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.webdentalchicago.com/locations/berwyn/"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the 'webster_dental' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. NPPES name is a local/provider name, not the brand token -> sub-label is more accurately stealth_dso; headline-neutral (both T4/T5 count in Consolidated AND DSO/PE).",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "d4f1bdbda7e997f6",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "webster_dental",
+   "practice_name": "WEBSTER DENTAL CARE",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.webdentalchicago.com/locations/la-grange-park/"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the 'webster_dental' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "264b213aba147441",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "webster_dental",
+   "practice_name": "WEBSTER DENTAL CARE EDISON PARK, LTD",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.webdentalchicago.com/locations/edison-park/"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the 'webster_dental' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "9ed079a50d548b37",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "webster_dental",
+   "practice_name": "WEBSTER DENTAL CARE SAUGANASH, LTD",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.webdentalchicago.com/locations/sauganash/"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the 'webster_dental' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "89d78c918000e532",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "webster_dental",
+   "practice_name": "WEBSTER DENTAL CARE OF LAKEVIEW, LTD",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.webdentalchicago.com/locations/lakeview/"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the 'webster_dental' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "b11b2bdcb2eb181d",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "dental_dreams",
+   "practice_name": "DENTAL EXPERTS, LLC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.dentaldreams.com/location_group/illinois/"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the 'dental_dreams' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "c7da8303188c8187",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "dental_dreams",
+   "practice_name": "DENTAL EXPERTS, LLC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.dentaldreams.com/location_group/illinois/"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the 'dental_dreams' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "b296a2f2d1c1dc3a",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "dental_dreams",
+   "practice_name": "DENTAL EXPERTS, LLC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.dentaldreams.com/location_group/illinois/"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the 'dental_dreams' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "2c80b6b05acc5852",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "dental_dreams",
+   "practice_name": "DENTAL EXPERTS LLC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.dentaldreams.com/location_group/illinois/"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the 'dental_dreams' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "6739545b64130396",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "dental_dreams",
+   "practice_name": "DENTAL EXPERTS, LLC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.dentaldreams.com/location_group/illinois/"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the 'dental_dreams' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "dbad14745be900f5",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "dental_dreams",
+   "practice_name": "DENTAL EXPERTS, LLC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.dentaldreams.com/location_group/illinois/"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the 'dental_dreams' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "77b28a39cb951124",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "family-dental-care-pc",
+   "practice_name": "FAMILY DENTAL CARE OF CALUMET CITY",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.familydentalcare.com/our-locations/",
+    "https://www.familydentalcare.com/calumet-city-office/"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the 'family-dental-care-pc' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "81f617f1b013446f",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "family-dental-care-pc",
+   "practice_name": "Family Dental Care",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.familydentalcare.com/our-locations/",
+    "https://www.familydentalcare.com/crestwood-office/"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the 'family-dental-care-pc' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "04d2c6018cf16dd6",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "family-dental-care-pc",
+   "practice_name": "FAMILY DENTAL CARE",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.familydentalcare.com/our-locations/",
+    "https://www.familydentalcare.com/south-chicago-office/"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the 'family-dental-care-pc' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "d79463b4e3511c5d",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "family-dental-care-pc",
+   "practice_name": "FAMILY DENTAL CARE",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.familydentalcare.com/our-locations/",
+    "https://www.familydentalcare.com/eastside-chicago-office/"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the 'family-dental-care-pc' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "3aebe48ff7c42bdf",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "family-dental-care-pc",
+   "practice_name": "FAMILY DENTAL CARE OF EVERGREEN PARK",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.familydentalcare.com/our-locations/",
+    "https://www.familydentalcare.com/evergreen-park-office/"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the 'family-dental-care-pc' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "c16633cbf8cd9ced",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "dental-dreams",
+   "practice_name": "Dental Dreams",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.dentaldreams.com/location/dental-dreams-south-western-ave-blue-island/"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the 'dental-dreams' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "b1a4fd11bfeae943",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "dental-dreams",
+   "practice_name": "Suresh Dental",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.dentaldreams.com/location/premier-dental-clinic-n-lake-st-aurora/"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'dental-dreams' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "3e8b2ad53b9f9b4d",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "dental-dreams",
+   "practice_name": "STUDIO DENTAL, LLC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.dentaldreams.com/location/studio-dental-south-pulaski-rd-chicago/"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'dental-dreams' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "16f45e3695a10058",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "dental-dreams",
+   "practice_name": "DENTAL EXPERTS, LLC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.dentaldreams.com/location/dental-dreams-west-fullerton-ave-chicago/"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'dental-dreams' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. NPPES name carries the brand token -> sub-label is more accurately branded_dso; headline-neutral.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "6df39a2b864479a2",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "precision-dental-care-chicago",
+   "practice_name": "PRECISION DENTAL CARE 3, LLC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://precisiondentalchicago.com/our-locations/"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'precision-dental-care-chicago' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. NPPES name carries the brand token -> sub-label is more accurately branded_dso; headline-neutral.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "b461d0651f2db9b5",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "precision-dental-care-chicago",
+   "practice_name": "PRECISION DENTAL CARE 4 LLC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://precisiondentalchicago.com/our-locations/"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'precision-dental-care-chicago' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. NPPES name carries the brand token -> sub-label is more accurately branded_dso; headline-neutral.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "8dbe509f0a92a9d0",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "precision-dental-care-chicago",
+   "practice_name": "PRECISION DENTAL CARE, LLC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://precisiondentalchicago.com/our-locations/"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'precision-dental-care-chicago' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. NPPES name carries the brand token -> sub-label is more accurately branded_dso; headline-neutral.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "8cb79bf55672c4f0",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "precision-dental-care-chicago",
+   "practice_name": "PRECISION DENTAL CARE 5 LLC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://precisiondentalchicago.com/our-locations/"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'precision-dental-care-chicago' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. NPPES name carries the brand token -> sub-label is more accurately branded_dso; headline-neutral.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "fb8282656b8e9b30",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "precision-dental-care-chicago",
+   "practice_name": "PRECISION DENTAL CARE, LLC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://precisiondentalchicago.com/our-locations/"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'precision-dental-care-chicago' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. NPPES name carries the brand token -> sub-label is more accurately branded_dso; headline-neutral.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "fdadc941d3a84cc1",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "dental-360",
+   "practice_name": "Balaney Dental",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://dental360grp.com/locations/"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'dental-360' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "3e7a3d11d88cb223",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "dental-360",
+   "practice_name": "DENTAL 360 BERWYN LLC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://dental360grp.com/locations/"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the 'dental-360' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "8c6cbd8b8b3e4877",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "dental-360",
+   "practice_name": "DENTAL 360 & ASSOCIATES LLC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://dental360grp.com/locations/",
+    "https://dental360grp.com/locations/irving-park-family-dentist/"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the 'dental-360' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "f9477a050bdd75b1",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "dental-360",
+   "practice_name": "LAWNDALE DENTAL, P.C.",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://dental360grp.com/locations/"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'dental-360' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "826ff5b11537f2cb",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "dental-360",
+   "practice_name": "DENTAL MAGIC NORTH AVE, INC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://dental360grp.com/locations/"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'dental-360' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "ea65a2d2272eb8fd",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "dental-360",
+   "practice_name": "DENTAL 360 PULASKI 67 LLC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://dental360grp.com/locations/",
+    "https://dental360grp.com/chicago-locations/"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the 'dental-360' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "1235b8bbd036a88e",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "1st_family_dental",
+   "practice_name": "Bakir Dental",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://1stfamilydental.com/team/dr-yasmin-bakir/",
+    "https://www.dentalplans.com/dentists/illinois/chicago/60625/dr-yasmin-bakir-72017/"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary web_verified evidence to the '1st_family_dental' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "e4ba8b1f5f8f1cc9",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "dental_dreams",
+   "practice_name": "Eluri Dental",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "intel_dossier",
+   "evidence_urls": [
+    "https://www.dentaldreams.com/ (Dental Dreams corporate, confirms 350 N Clark headquarters)",
+    "https://www.bbb.org/us/il/chicago/profile/dentist/dental-dreams-0654-88346719 (BBB profile of Dental Dreams at 350 N Clark)",
+    "https://www.linkedin.com/company/dental-dreams-llc (confirms DSO structure and founders: Sameera/Khurram Hussain, NOT Dr. Eluri)"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary intel_dossier evidence to the 'dental_dreams' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "3ea1ab3ebe2ff655",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "dentologie",
+   "practice_name": "Rizvi, Farwa",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "intel_dossier",
+   "evidence_urls": [
+    "https://dentologie.com/our-locations/chicago/west-loop"
+   ],
+   "reasoning": "Fleet B classified this branded_dso on documentary intel_dossier evidence to the 'dentologie' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. NPPES name is a local/provider name, not the brand token -> sub-label is more accurately stealth_dso; headline-neutral (both T4/T5 count in Consolidated AND DSO/PE).",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "42e373292fc0d981",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "smile-obsession",
+   "practice_name": "Galvan Mireya DMD",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "intel_dossier",
+   "evidence_urls": [
+    "https://smileobsession.com/dentist-near-me/tinley-park/",
+    "https://www.chamberofcommerce.com/business-directory/illinois/tinley-park/dentist/2024505753-smile-obsession-dental"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary intel_dossier evidence to the 'smile-obsession' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "2548a3c05ae9e453",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "Webster Dental Care",
+   "practice_name": "Misleh Morad Kamal DMD",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "intel_dossier",
+   "evidence_urls": [
+    "https://www.webdentalchicago.com/our_doctors/dr-morad-misleh/",
+    "https://www.healthgrades.com/group-directory/il-illinois/la-grange-park/webster-dental-care-of-lagrange-park-x3b6mq"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary intel_dossier evidence to the 'Webster Dental Care' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "c3d4dd42c6f49243",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "Imagen Dental Partners",
+   "practice_name": "IMPRESSIVE SMILES",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "intel_dossier",
+   "evidence_urls": [
+    "https://www.imagendentalpartners.com/who-we-are/dr-meena-barsoum-dmd/",
+    "https://impressivesmilesdental.com/"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary intel_dossier evidence to the 'Imagen Dental Partners' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. NPPES name carries the brand token -> sub-label is more accurately branded_dso; headline-neutral.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "bf3f2644333e5404",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "dental_town_chicago",
+   "practice_name": "DENTAL TOWN LTD",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "intel_dossier",
+   "evidence_urls": [
+    "https://dentaltownchicago.com/dentist/berwyn/ (official practice website, verified address, provider bios, services)"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary intel_dossier evidence to the 'dental_town_chicago' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. NPPES name carries the brand token -> sub-label is more accurately branded_dso; headline-neutral.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "59bdf715b4a949a8",
+   "source_qa_file": "ownership_evidence_QA_fleet_b_20260621.json",
+   "network": "ashland_dental_wellness",
+   "practice_name": "Wolff Dental",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "stealth_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "intel_dossier",
+   "evidence_urls": [
+    "https://www.wolffdental.com/duane-wolff-d-d-s.html (acquisition announcement)"
+   ],
+   "reasoning": "Fleet B classified this stealth_dso on documentary intel_dossier evidence to the 'ashland_dental_wellness' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing.",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "a4c2f6303bec1c06",
+   "source_qa_file": "ao_network_evidence_QA_20260621.json",
+   "network": "BELKIC_VESNA",
+   "practice_name": "1ST FAMILY DENTAL & ORTHO CENTER PC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "name_is_brand+locator",
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/",
+    "https://1stfamilydental.com/dentists/",
+    "https://www.bbb.org/us/il/chicago/profile/dentist/1st-family-dental-west-roseland-0654-88106763"
+   ],
+   "reasoning": "NPPES name '1ST FAMILY DENTAL & ORTHO CENTER PC' carries the established DSO brand token and the network is anchored by a documentary brand/locator URL. Brand='BELKIC_VESNA'. My prior QA downgraded it to dentist_multi only because pe_backed!=true; under the corrected taxonomy a friendly-PC operating under an established DSO brand is branded_dso/stealth_dso regardless of PE. The name itself is the brand, so the DSO tier is restored on documentary evidence (not on AO reach).",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "00283d0319728697",
+   "source_qa_file": "ao_network_evidence_QA_20260621.json",
+   "network": "BELKIC_VESNA",
+   "practice_name": "1ST FAMILY DENTAL OF ELGIN",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "name_is_brand+locator",
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/",
+    "https://1stfamilydental.com/dentists/"
+   ],
+   "reasoning": "NPPES name '1ST FAMILY DENTAL OF ELGIN' carries the established DSO brand token and the network is anchored by a documentary brand/locator URL. Brand='BELKIC_VESNA'. My prior QA downgraded it to dentist_multi only because pe_backed!=true; under the corrected taxonomy a friendly-PC operating under an established DSO brand is branded_dso/stealth_dso regardless of PE. The name itself is the brand, so the DSO tier is restored on documentary evidence (not on AO reach).",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "d46481314c1f830f",
+   "source_qa_file": "ao_network_evidence_QA_20260621.json",
+   "network": "BELKIC_VESNA",
+   "practice_name": "1ST FAMILY DENTAL OF ROSELLE INC.",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "name_is_brand+locator",
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/",
+    "https://1stfamilydental.com/dentists/"
+   ],
+   "reasoning": "NPPES name '1ST FAMILY DENTAL OF ROSELLE INC.' carries the established DSO brand token and the network is anchored by a documentary brand/locator URL. Brand='BELKIC_VESNA'. My prior QA downgraded it to dentist_multi only because pe_backed!=true; under the corrected taxonomy a friendly-PC operating under an established DSO brand is branded_dso/stealth_dso regardless of PE. The name itself is the brand, so the DSO tier is restored on documentary evidence (not on AO reach).",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "76b01c890765d33f",
+   "source_qa_file": "ao_network_evidence_QA_20260621.json",
+   "network": "BELKIC_VESNA",
+   "practice_name": "1ST FAMILY DENTAL OF FOX VALLEY, INC.",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "name_is_brand+locator",
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/",
+    "https://local.yahoo.com/info-182617378-belkic-vesna-1st-family-dental-of-fox-valley-aurora/"
+   ],
+   "reasoning": "NPPES name '1ST FAMILY DENTAL OF FOX VALLEY, INC.' carries the established DSO brand token and the network is anchored by a documentary brand/locator URL. Brand='BELKIC_VESNA'. My prior QA downgraded it to dentist_multi only because pe_backed!=true; under the corrected taxonomy a friendly-PC operating under an established DSO brand is branded_dso/stealth_dso regardless of PE. The name itself is the brand, so the DSO tier is restored on documentary evidence (not on AO reach).",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "6a7337dc1388e15d",
+   "source_qa_file": "ao_network_evidence_QA_20260621.json",
+   "network": "BELKIC_VESNA",
+   "practice_name": "1ST FAMILY DENTAL OF LA GRANGE PARK, PC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "name_is_brand+locator",
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/",
+    "https://1stfamilydental.com/dentists/"
+   ],
+   "reasoning": "NPPES name '1ST FAMILY DENTAL OF LA GRANGE PARK, PC' carries the established DSO brand token and the network is anchored by a documentary brand/locator URL. Brand='BELKIC_VESNA'. My prior QA downgraded it to dentist_multi only because pe_backed!=true; under the corrected taxonomy a friendly-PC operating under an established DSO brand is branded_dso/stealth_dso regardless of PE. The name itself is the brand, so the DSO tier is restored on documentary evidence (not on AO reach).",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "0b9debb68c723377",
+   "source_qa_file": "ao_network_evidence_QA_20260621.json",
+   "network": "BELKIC_VESNA",
+   "practice_name": "1ST FAMILY DENTAL OF BURR RIDGE, PC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "name_is_brand+locator",
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/",
+    "https://1stfamilydental.com/dentists/"
+   ],
+   "reasoning": "NPPES name '1ST FAMILY DENTAL OF BURR RIDGE, PC' carries the established DSO brand token and the network is anchored by a documentary brand/locator URL. Brand='BELKIC_VESNA'. My prior QA downgraded it to dentist_multi only because pe_backed!=true; under the corrected taxonomy a friendly-PC operating under an established DSO brand is branded_dso/stealth_dso regardless of PE. The name itself is the brand, so the DSO tier is restored on documentary evidence (not on AO reach).",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "0de79b98f75b7128",
+   "source_qa_file": "ao_network_evidence_QA_20260621.json",
+   "network": "BELKIC_VESNA",
+   "practice_name": "1ST FAMILY DENTAL OF CHICAGO INC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "name_is_brand+locator",
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/chicago/",
+    "https://1stfamilydental.com/dentists/"
+   ],
+   "reasoning": "NPPES name '1ST FAMILY DENTAL OF CHICAGO INC' carries the established DSO brand token and the network is anchored by a documentary brand/locator URL. Brand='BELKIC_VESNA'. My prior QA downgraded it to dentist_multi only because pe_backed!=true; under the corrected taxonomy a friendly-PC operating under an established DSO brand is branded_dso/stealth_dso regardless of PE. The name itself is the brand, so the DSO tier is restored on documentary evidence (not on AO reach).",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "e286a73df0d2541b",
+   "source_qa_file": "ao_network_evidence_QA_20260621.json",
+   "network": "BELKIC_VESNA",
+   "practice_name": "LITTLE VILLAGE DENTAL PC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "undetermined",
+   "pe_backed": false,
+   "dso_structure_evidence": false,
+   "evidence_basis": "ao_reach+structural_correlated",
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/",
+    "https://1stfamilydental.com/dentists/"
+   ],
+   "reasoning": "NPPES name 'LITTLE VILLAGE DENTAL PC' is a local/generic name that does NOT carry the brand token, and the evidence quality is 'structural_correlated' (structural correlation + shared authorized official within the 'BELKIC_VESNA' network), NOT a documentary locator/brand match. Per the standing rule AO reach is a candidate signal, not ownership proof: it is likely a friendly-PC shell under this network's DSO but cannot be restored to a DSO tier without a documentary locator/address cross-check. Do NOT leave it as dentist_multi either (that asserts dentist-owned-no-platform, which is unproven) -> undetermined pending verification.",
+   "action": "needs_more_evidence"
+  },
+  {
+   "location_id": "dddb5ba57c531064",
+   "source_qa_file": "ao_network_evidence_QA_20260621.json",
+   "network": "BELKIC_VESNA",
+   "practice_name": "OBEID DENTAL INC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "undetermined",
+   "pe_backed": false,
+   "dso_structure_evidence": false,
+   "evidence_basis": "ao_reach+structural_correlated",
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/",
+    "https://www.bbb.org/us/il/chicago/profile/dentist/1st-family-dental-of-albany-park-0654-88260776"
+   ],
+   "reasoning": "NPPES name 'OBEID DENTAL INC' is a local/generic name that does NOT carry the brand token, and the evidence quality is 'structural_correlated' (structural correlation + shared authorized official within the 'BELKIC_VESNA' network), NOT a documentary locator/brand match. Per the standing rule AO reach is a candidate signal, not ownership proof: it is likely a friendly-PC shell under this network's DSO but cannot be restored to a DSO tier without a documentary locator/address cross-check. Do NOT leave it as dentist_multi either (that asserts dentist-owned-no-platform, which is unproven) -> undetermined pending verification.",
+   "action": "needs_more_evidence"
+  },
+  {
+   "location_id": "57f43b2b4923beb3",
+   "source_qa_file": "ao_network_evidence_QA_20260621.json",
+   "network": "BELKIC_VESNA",
+   "practice_name": "1ST FAMILY DENTAL OF WEST ROSELAND PC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "name_is_brand+locator",
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/",
+    "https://www.bbb.org/us/il/chicago/profile/dentist/1st-family-dental-west-roseland-0654-88106763"
+   ],
+   "reasoning": "NPPES name '1ST FAMILY DENTAL OF WEST ROSELAND PC' carries the established DSO brand token and the network is anchored by a documentary brand/locator URL. Brand='BELKIC_VESNA'. My prior QA downgraded it to dentist_multi only because pe_backed!=true; under the corrected taxonomy a friendly-PC operating under an established DSO brand is branded_dso/stealth_dso regardless of PE. The name itself is the brand, so the DSO tier is restored on documentary evidence (not on AO reach).",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "f4d9376d568f7c43",
+   "source_qa_file": "ao_network_evidence_QA_20260621.json",
+   "network": "BELKIC_VESNA",
+   "practice_name": "1ST FAMILY DENTAL OF PULASKI PC",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "name_is_brand+locator",
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/",
+    "https://npiprofile.com/npi/1104364769"
+   ],
+   "reasoning": "NPPES name '1ST FAMILY DENTAL OF PULASKI PC' carries the established DSO brand token and the network is anchored by a documentary brand/locator URL. Brand='BELKIC_VESNA'. My prior QA downgraded it to dentist_multi only because pe_backed!=true; under the corrected taxonomy a friendly-PC operating under an established DSO brand is branded_dso/stealth_dso regardless of PE. The name itself is the brand, so the DSO tier is restored on documentary evidence (not on AO reach).",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "e0ee6d4ff57ad085",
+   "source_qa_file": "ao_network_evidence_QA_20260621.json",
+   "network": "BELKIC_VESNA",
+   "practice_name": "DENTAL CORPORATE USA",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "name_is_brand+locator",
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/andersonville/",
+    "https://1stfamilydental.com/locations/"
+   ],
+   "reasoning": "NPPES name 'DENTAL CORPORATE USA' carries the established DSO brand token and the network is anchored by a documentary brand/locator URL. Brand='BELKIC_VESNA'. My prior QA downgraded it to dentist_multi only because pe_backed!=true; under the corrected taxonomy a friendly-PC operating under an established DSO brand is branded_dso/stealth_dso regardless of PE. The name itself is the brand, so the DSO tier is restored on documentary evidence (not on AO reach).",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "c42bbfd07106f9f2",
+   "source_qa_file": "ao_network_evidence_QA_20260621.json",
+   "network": "BELKIC_VESNA",
+   "practice_name": "1ST FAMILY DENTAL OF LOGAN SQUARE",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "name_is_brand+locator",
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/"
+   ],
+   "reasoning": "NPPES name '1ST FAMILY DENTAL OF LOGAN SQUARE' carries the established DSO brand token and the network is anchored by a documentary brand/locator URL. Brand='BELKIC_VESNA'. My prior QA downgraded it to dentist_multi only because pe_backed!=true; under the corrected taxonomy a friendly-PC operating under an established DSO brand is branded_dso/stealth_dso regardless of PE. The name itself is the brand, so the DSO tier is restored on documentary evidence (not on AO reach).",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "120e9b88cb476518",
+   "source_qa_file": "ao_network_evidence_QA_20260621.json",
+   "network": "AQEL_FADI",
+   "practice_name": "CLINICA DENTAL",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "undetermined",
+   "pe_backed": false,
+   "dso_structure_evidence": false,
+   "evidence_basis": "ao_reach+structural_correlated",
+   "evidence_urls": [
+    "https://www.britedental.org/our-offices",
+    "https://www.bbb.org/us/il/chicago/profile/dental-services/brite-dental-pc-0654-90024834"
+   ],
+   "reasoning": "NPPES name 'CLINICA DENTAL' is a local/generic name that does NOT carry the brand token, and the evidence quality is 'structural_correlated' (structural correlation + shared authorized official within the 'AQEL_FADI' network), NOT a documentary locator/brand match. Per the standing rule AO reach is a candidate signal, not ownership proof: it is likely a friendly-PC shell under this network's DSO but cannot be restored to a DSO tier without a documentary locator/address cross-check. Do NOT leave it as dentist_multi either (that asserts dentist-owned-no-platform, which is unproven) -> undetermined pending verification.",
+   "action": "needs_more_evidence"
+  },
+  {
+   "location_id": "fec14748d3270a63",
+   "source_qa_file": "ao_network_evidence_QA_20260621.json",
+   "network": "AQEL_FADI",
+   "practice_name": "1ST AMERICAN DENTAL",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "undetermined",
+   "pe_backed": false,
+   "dso_structure_evidence": false,
+   "evidence_basis": "ao_reach+structural_correlated",
+   "evidence_urls": [
+    "https://www.britedental.org/our-offices",
+    "https://www.bbb.org/us/il/chicago/profile/dental-services/brite-dental-pc-0654-90024834"
+   ],
+   "reasoning": "NPPES name '1ST AMERICAN DENTAL' is a local/generic name that does NOT carry the brand token, and the evidence quality is 'structural_correlated' (structural correlation + shared authorized official within the 'AQEL_FADI' network), NOT a documentary locator/brand match. Per the standing rule AO reach is a candidate signal, not ownership proof: it is likely a friendly-PC shell under this network's DSO but cannot be restored to a DSO tier without a documentary locator/address cross-check. Do NOT leave it as dentist_multi either (that asserts dentist-owned-no-platform, which is unproven) -> undetermined pending verification.",
+   "action": "needs_more_evidence"
+  },
+  {
+   "location_id": "5a72d2c7fcf0262b",
+   "source_qa_file": "ao_network_evidence_QA_20260621.json",
+   "network": "AQEL_FADI",
+   "practice_name": "BRITE DENTAL CERMAK, P.C.",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "name_is_brand+locator",
+   "evidence_urls": [
+    "https://www.britedental.org/brite-dental-cermak",
+    "https://www.bbb.org/us/il/chicago/profile/dental-services/brite-dental-pc-0654-90024834"
+   ],
+   "reasoning": "NPPES name 'BRITE DENTAL CERMAK, P.C.' carries the established DSO brand token and the network is anchored by a documentary brand/locator URL. Brand='AQEL_FADI'. My prior QA downgraded it to dentist_multi only because pe_backed!=true; under the corrected taxonomy a friendly-PC operating under an established DSO brand is branded_dso/stealth_dso regardless of PE. The name itself is the brand, so the DSO tier is restored on documentary evidence (not on AO reach).",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "a34490266101cbd2",
+   "source_qa_file": "ao_network_evidence_QA_20260621.json",
+   "network": "AQEL_FADI",
+   "practice_name": "BRITE DENTAL 26 DRAKE, P.C.",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "name_is_brand+locator",
+   "evidence_urls": [
+    "https://www.britedental.org/our-offices",
+    "https://www.bbb.org/us/il/chicago/profile/dental-services/brite-dental-pc-0654-90024834"
+   ],
+   "reasoning": "NPPES name 'BRITE DENTAL 26 DRAKE, P.C.' carries the established DSO brand token and the network is anchored by a documentary brand/locator URL. Brand='AQEL_FADI'. My prior QA downgraded it to dentist_multi only because pe_backed!=true; under the corrected taxonomy a friendly-PC operating under an established DSO brand is branded_dso/stealth_dso regardless of PE. The name itself is the brand, so the DSO tier is restored on documentary evidence (not on AO reach).",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "64e57c66fd098eed",
+   "source_qa_file": "ao_network_evidence_QA_20260621.json",
+   "network": "AQEL_FADI",
+   "practice_name": "BRITE DENTAL KIMBALL, P.C.",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "name_is_brand+locator",
+   "evidence_urls": [
+    "https://www.britedental.org/our-offices",
+    "https://www.bbb.org/us/il/chicago/profile/dental-services/brite-dental-pc-0654-90024834"
+   ],
+   "reasoning": "NPPES name 'BRITE DENTAL KIMBALL, P.C.' carries the established DSO brand token and the network is anchored by a documentary brand/locator URL. Brand='AQEL_FADI'. My prior QA downgraded it to dentist_multi only because pe_backed!=true; under the corrected taxonomy a friendly-PC operating under an established DSO brand is branded_dso/stealth_dso regardless of PE. The name itself is the brand, so the DSO tier is restored on documentary evidence (not on AO reach).",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "401b88a09170a38e",
+   "source_qa_file": "ao_network_evidence_QA_20260621.json",
+   "network": "AQEL_FADI",
+   "practice_name": "BRITE DENTAL CLARK, P.C.",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "name_is_brand+locator",
+   "evidence_urls": [
+    "https://www.britedental.org/brite-dental-clark",
+    "https://www.yelp.com/biz/dental-360-chicago-2",
+    "https://www.bbb.org/us/il/chicago/profile/dental-services/brite-dental-pc-0654-90024834"
+   ],
+   "reasoning": "NPPES name 'BRITE DENTAL CLARK, P.C.' carries the established DSO brand token and the network is anchored by a documentary brand/locator URL. Brand='AQEL_FADI'. My prior QA downgraded it to dentist_multi only because pe_backed!=true; under the corrected taxonomy a friendly-PC operating under an established DSO brand is branded_dso/stealth_dso regardless of PE. The name itself is the brand, so the DSO tier is restored on documentary evidence (not on AO reach).",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "0d76d8f9105e394d",
+   "source_qa_file": "ao_network_evidence_QA_20260621.json",
+   "network": "AQEL_FADI",
+   "practice_name": "BRITE DENTAL 59 PULASKI, P.C",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "name_is_brand+locator",
+   "evidence_urls": [
+    "https://www.britedental.org/our-offices",
+    "https://www.bbb.org/us/il/chicago/profile/dental-services/brite-dental-pc-0654-90024834"
+   ],
+   "reasoning": "NPPES name 'BRITE DENTAL 59 PULASKI, P.C' carries the established DSO brand token and the network is anchored by a documentary brand/locator URL. Brand='AQEL_FADI'. My prior QA downgraded it to dentist_multi only because pe_backed!=true; under the corrected taxonomy a friendly-PC operating under an established DSO brand is branded_dso/stealth_dso regardless of PE. The name itself is the brand, so the DSO tier is restored on documentary evidence (not on AO reach).",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "8256bfff559b0760",
+   "source_qa_file": "ao_network_evidence_QA_20260621.json",
+   "network": "AQEL_FADI",
+   "practice_name": "BRITE DENTAL",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "name_is_brand+locator",
+   "evidence_urls": [
+    "https://www.britedental.org/our-offices",
+    "https://www.bbb.org/us/il/chicago/profile/dental-services/brite-dental-pc-0654-90024834"
+   ],
+   "reasoning": "NPPES name 'BRITE DENTAL' carries the established DSO brand token and the network is anchored by a documentary brand/locator URL. Brand='AQEL_FADI'. My prior QA downgraded it to dentist_multi only because pe_backed!=true; under the corrected taxonomy a friendly-PC operating under an established DSO brand is branded_dso/stealth_dso regardless of PE. The name itself is the brand, so the DSO tier is restored on documentary evidence (not on AO reach).",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "a2fc3deda0b02a10",
+   "source_qa_file": "ao_network_evidence_QA_20260621.json",
+   "network": "AQEL_FADI",
+   "practice_name": "BRITE DENTAL MARQUETTE PULASKI, P.C",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "name_is_brand+locator",
+   "evidence_urls": [
+    "https://www.britedental.org/our-offices",
+    "https://www.bbb.org/us/il/chicago/profile/dental-services/brite-dental-pc-0654-90024834"
+   ],
+   "reasoning": "NPPES name 'BRITE DENTAL MARQUETTE PULASKI, P.C' carries the established DSO brand token and the network is anchored by a documentary brand/locator URL. Brand='AQEL_FADI'. My prior QA downgraded it to dentist_multi only because pe_backed!=true; under the corrected taxonomy a friendly-PC operating under an established DSO brand is branded_dso/stealth_dso regardless of PE. The name itself is the brand, so the DSO tier is restored on documentary evidence (not on AO reach).",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "e24bd9e2dcfa6932",
+   "source_qa_file": "ao_network_evidence_QA_20260621.json",
+   "network": "AQEL_FADI",
+   "practice_name": "BRITE DENTAL 55, P.C",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "name_is_brand+locator",
+   "evidence_urls": [
+    "https://www.britedental.org/our-offices",
+    "https://www.bbb.org/us/il/chicago/profile/dental-services/brite-dental-pc-0654-90024834"
+   ],
+   "reasoning": "NPPES name 'BRITE DENTAL 55, P.C' carries the established DSO brand token and the network is anchored by a documentary brand/locator URL. Brand='AQEL_FADI'. My prior QA downgraded it to dentist_multi only because pe_backed!=true; under the corrected taxonomy a friendly-PC operating under an established DSO brand is branded_dso/stealth_dso regardless of PE. The name itself is the brand, so the DSO tier is restored on documentary evidence (not on AO reach).",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "88ef34deb23c8a00",
+   "source_qa_file": "ao_network_evidence_QA_20260621.json",
+   "network": "AQEL_FADI",
+   "practice_name": "BRITE DENTAL BELMONT, P.C.",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "name_is_brand+locator",
+   "evidence_urls": [
+    "https://www.britedental.org/our-offices",
+    "https://www.bbb.org/us/il/chicago/profile/dental-services/brite-dental-pc-0654-90024834"
+   ],
+   "reasoning": "NPPES name 'BRITE DENTAL BELMONT, P.C.' carries the established DSO brand token and the network is anchored by a documentary brand/locator URL. Brand='AQEL_FADI'. My prior QA downgraded it to dentist_multi only because pe_backed!=true; under the corrected taxonomy a friendly-PC operating under an established DSO brand is branded_dso/stealth_dso regardless of PE. The name itself is the brand, so the DSO tier is restored on documentary evidence (not on AO reach).",
+   "action": "restore_DSO_tier"
+  },
+  {
+   "location_id": "9974718d9adbc00f",
+   "source_qa_file": "ao_network_evidence_QA_20260621.json",
+   "network": "AQEL_FADI",
+   "practice_name": "BRITE DENTAL MILWAUKEE, P.C.",
+   "current_QA_tier": "dentist_multi",
+   "revised_tier": "branded_dso",
+   "pe_backed": false,
+   "dso_structure_evidence": true,
+   "evidence_basis": "name_is_brand+locator",
+   "evidence_urls": [
+    "https://www.britedental.org/our-offices",
+    "https://www.bbb.org/us/il/chicago/profile/dental-services/brite-dental-pc-0654-90024834"
+   ],
+   "reasoning": "NPPES name 'BRITE DENTAL MILWAUKEE, P.C.' carries the established DSO brand token and the network is anchored by a documentary brand/locator URL. Brand='AQEL_FADI'. My prior QA downgraded it to dentist_multi only because pe_backed!=true; under the corrected taxonomy a friendly-PC operating under an established DSO brand is branded_dso/stealth_dso regardless of PE. The name itself is the brand, so the DSO tier is restored on documentary evidence (not on AO reach).",
+   "action": "restore_DSO_tier"
+  }
+ ]
+}

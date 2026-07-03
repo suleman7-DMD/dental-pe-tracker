@@ -1,0 +1,1706 @@
+{
+  "_meta": {
+    "wave": "validation",
+    "date": "2026-06-21",
+    "source": "census_evidence_fleet.js",
+    "batches": [
+      "60647-2",
+      "60804-1",
+      "60640-2",
+      "60629-1"
+    ],
+    "n": 72,
+    "gate_tally": {
+      "candidate": 31,
+      "final_ready": 35,
+      "undetermined": 6
+    },
+    "tier_tally": {
+      "single_loc_group": 11,
+      "branded_dso": 8,
+      "institutional": 4,
+      "dentist_multi": 18,
+      "true_independent": 20,
+      "stealth_dso": 5,
+      "undetermined": 6
+    },
+    "basis_tally": {
+      "structural_only": 31,
+      "affiliated_dso_field": 8,
+      "institutional_match": 4,
+      "ao_reach": 10,
+      "web_verified": 14,
+      "locator": 2,
+      "provider_surnames": 2,
+      "none": 1
+    },
+    "note": "CANDIDATE evidence only. final_ready rows carry a durable artifact (URL or db_artifact). Feeds Codex evidence gate; NOT consolidated to ownership_tier here."
+  },
+  "classifications": [
+    {
+      "location_id": "a5714245bc2fae33",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "owner_identity": "Steven Fischman",
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "provider_surnames",
+        "note": "org NPI with 5 providers at single address, AO=STEVEN FISCHMAN, owner_reach=1, EIN shared only within same ZIP \u2014 no chain signal",
+        "address": "3939 w fullerton ave, Chicago IL 60647",
+        "provider_count": 5
+      },
+      "web_searched": true,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "reasoning": "Large_group org NPI with 5 providers and single AO (Steven Fischman) at one location; EIN shared only within same ZIP, no multi-ZIP chain or PE/DSO signal found; structural basis only so gate remains candidate."
+    },
+    {
+      "location_id": "c4b5b35fa16e44e5",
+      "assigned_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dental 360",
+      "network_id": "brand:Dental360",
+      "evidence_basis": "affiliated_dso_field",
+      "evidence_urls": [
+        "https://dental360grp.com/locations/dental-360-north-ave/"
+      ],
+      "db_artifact": {
+        "type": "affiliated_dso_field",
+        "value": "Dental 360",
+        "address": "3855 W North Ave, Chicago IL 60647",
+        "npi": "1538330758"
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "affiliated_dso field='Dental 360' and web confirms Dental 360 - North Ave Family Dentist locator page at this exact address; no PE sponsor on record so pe_backed=false."
+    },
+    {
+      "location_id": "144d631a4c4dce2b",
+      "assigned_tier": "institutional",
+      "pe_backed": false,
+      "owner_identity": "Infant Welfare Society of Chicago (FQHC Look-Alike)",
+      "network_id": null,
+      "evidence_basis": "institutional_match",
+      "evidence_urls": [
+        "https://iwsfamilyhealth.org/",
+        "https://opennpi.com/provider/1801217062"
+      ],
+      "db_artifact": {
+        "type": "institutional_match",
+        "signal": "FQHC Look-Alike / community health center; member of IPHCA and NACHC",
+        "address": "3600 W Fullerton Ave, Chicago IL 60647",
+        "npi": "1801217062"
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "Name matches known nonprofit community health organization; web confirms FQHC Look-Alike status at this exact address with dental services listed on iwsfamilyhealth.org."
+    },
+    {
+      "location_id": "7e94b892a5388c62",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "owner_identity": null,
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "provider_surnames",
+        "note": "individual NPI (no org_npi) with provider_count=2, no AO, no EIN, no brand/PE signals",
+        "address": "2303 w n ave, Chicago IL 60647"
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "low",
+      "reasoning": "Two providers at single address with no org NPI, no AO identified, and no PE/DSO signals; classified single_loc_group on structural provider count but could be a solo with one associate \u2014 no URL to confirm ownership structure."
+    },
+    {
+      "location_id": "fc010516c3e5b18d",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Milan Roncevic",
+      "network_id": "ao:RONCEVIC_MILAN",
+      "evidence_basis": "ao_reach",
+      "evidence_urls": [
+        "https://www.linkedin.com/in/milan-roncevic-303a3810/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "MILAN RONCEVIC",
+        "npis": [
+          "1558532861"
+        ],
+        "reach": 5,
+        "zips": [
+          "60101",
+          "60120",
+          "60630",
+          "60634",
+          "60647"
+        ]
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "AO=MILAN RONCEVIC has owner_reach_locations=5 across 5 distinct ZIPs (federal artifact); LinkedIn confirms Roncevic as CEO of Dental Profile in Chicago; no PE tie found \u2014 dentist-owned mini-chain."
+    },
+    {
+      "location_id": "be46a645a5533cf3",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "owner_identity": "Kenneth Chae",
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "provider_surnames",
+        "note": "org NPI, AO=KENNETH CHAE, provider_count=2 at single address, owner_reach=1, no EIN, no DSO/PE signals",
+        "address": "3300 W Armitage Ave, Chicago IL 60647"
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "reasoning": "Org NPI with 2 providers at a single location under AO Kenneth Chae; owner_reach=1 confirms no multi-location reach; structural basis only without a partnership URL."
+    },
+    {
+      "location_id": "7eaffe2b99d33968",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "owner_identity": null,
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "provider_surnames",
+        "note": "individual NPI, provider_count=1, owner_reach=1, no EIN, no brand/PE signals; address anomaly \u2014 listed as Orland Park (60462 area) but filed under ZIP 60647",
+        "address": "10730 w 165th st, Orland Park"
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "low",
+      "reasoning": "Solo provider at single location with no DSO/PE signals; address appears to be an Orland Park address mis-filed under ZIP 60647, which adds uncertainty \u2014 structural only, no web URL confirming named owner."
+    },
+    {
+      "location_id": "48395fa30fb6bf6b",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "owner_identity": null,
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "provider_surnames",
+        "note": "individual NPI (no org_npi), provider_count=1, owner_reach=1, no EIN, no brand/PE signals",
+        "address": "2605 N Milwaukee Ave, Chicago IL 60647"
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "reasoning": "Solo NPI-1 individual at single location with no org NPI, no EIN, and no DSO/PE signals; structural profile consistent with true_independent but no web URL confirming named sole owner."
+    },
+    {
+      "location_id": "71399b136dc5205a",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "owner_identity": "Philip Debossu",
+      "network_id": null,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://sonrisadental.net/chicago-dentist-on-armitage/",
+        "https://www.yelp.com/biz/philip-debossu-dds-sonrisa-dental-chicago"
+      ],
+      "db_artifact": null,
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "Web confirms Dr. Philip Debossu, DDS as the named owner-dentist at 3069 W Armitage since 1990 with no DSO/MSO/parent-company language on the practice website; sole provider at single location."
+    },
+    {
+      "location_id": "33bc890d9aed9341",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "owner_identity": "Yasser Elseweifi",
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "provider_surnames",
+        "note": "org NPI, AO=YASSER ELSEWEIFI, provider_count=1, owner_reach=1, no EIN, no brand/PE signals",
+        "address": "2002 N Damen Ave, Chicago IL 60647"
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "reasoning": "Single-provider org NPI with AO=Yasser Elseweifi at one location; no multi-loc reach, EIN, or DSO signal; structural profile consistent with true_independent but no web URL to confirm the AO is the owner-dentist with no MSO backing."
+    },
+    {
+      "location_id": "4d5aa903a1f34565",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Inchun Yang",
+      "network_id": "ao:YANG_INCHUN",
+      "evidence_basis": "ao_reach",
+      "evidence_urls": [
+        "https://www.zocdoc.com/dentist/inchun-yang-dds-118172",
+        "https://www.dentalplans.com/dentists/illinois/chicago/60647/dr-inchun-yang-32296/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "INCHUN YANG",
+        "npis": [
+          "1265841480"
+        ],
+        "reach": 3,
+        "zips": [
+          "60016",
+          "60411",
+          "60647"
+        ]
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "AO=INCHUN YANG has owner_reach_locations=3 across ZIPs 60016, 60411, and 60647; web confirms Dr. Inchun Yang operates Metro Dental LLC with multiple Chicago-area locations; no PE/MSO tie found."
+    },
+    {
+      "location_id": "c42bbfd07106f9f2",
+      "assigned_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "1st Family Dental",
+      "network_id": "brand:1stFamilyDental",
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "https://1stfamilydental.com/locations/logan-square/",
+        "https://1stfamilydental.com/locations/"
+      ],
+      "db_artifact": {
+        "type": "affiliated_dso_field",
+        "value": "1st Family Dental",
+        "note": "brand_hint confirmed; DSO locator page lists Logan Square / Milwaukee Ave location; 15-location Illinois chain; no PE sponsor confirmed so pe_backed=false",
+        "address": "2551 N Milwaukee Ave, Chicago IL 60647",
+        "npi": "1629252762"
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "brand_hint='1st Family Dental' confirmed by DSO's own locator page at 1stfamilydental.com listing Logan Square/Milwaukee Ave; AO Vesna Belkic has owner_reach_locations=15 across 14 ZIPs; no PE sponsor identified so pe_backed=false."
+    },
+    {
+      "location_id": "c50218cf868c55f8",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Ian Hoffman",
+      "network_id": "ao:HOFFMAN_IAN",
+      "evidence_basis": "ao_reach",
+      "evidence_urls": [
+        "https://findadentist.ada.org/dentists/dr-ian-william-hoffman-chicago-0038V00002yjb78QAA-a1C8V00000lXx76UAC"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "IAN HOFFMAN",
+        "npis": [
+          "1649442344"
+        ],
+        "reach": 2,
+        "zips": [
+          "60622",
+          "60647"
+        ]
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "AO=IAN HOFFMAN has owner_reach_locations=2 across ZIPs 60622 and 60647; web confirms Dr. Ian William Hoffman is a licensed dentist in Chicago with practice address in 60622; no PE/MSO tie found \u2014 two-location dentist-owned practice."
+    },
+    {
+      "location_id": "c01fc292b2a4aed8",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "owner_identity": null,
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "provider_surnames",
+        "note": "org NPI, no AO, provider_count=1, EIN=262876421 with reach=1 (same ZIP only), no brand/PE signals",
+        "address": "1651 N Western Ave, Chicago IL 60647",
+        "ein": "262876421"
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "reasoning": "Single-provider org NPI with EIN confined to one location in one ZIP and no DSO/PE signals; structural profile consistent with true_independent but no AO identified and no web URL to confirm sole ownership."
+    },
+    {
+      "location_id": "b18493944a3e66c9",
+      "assigned_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Impress (Smile2Impress / Uniform Teeth)",
+      "network_id": "brand:Impress",
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "https://smile2impress.com/us/orthodontic-clinics/chicago-wicker-park",
+        "https://www.carecapitalpartners.com/Impress_Uniform_Teeth.html"
+      ],
+      "db_artifact": {
+        "type": "affiliated_dso_field",
+        "note": "Impress is a PE-backed international orthodontic DSO (founded Barcelona 2019, CareCapital-backed, merged with Uniform Teeth); Chicago Wicker Park/Damen Ave location confirmed on DSO locator",
+        "address": "2101 N Damen Ave, Chicago IL 60647",
+        "npi": "1124284187"
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "Web confirms Impress is a PE-backed international DSO (CareCapital investor, Series A $50M) with locator page for Chicago Wicker Park / Damen Ave location; brand name is the DSO brand, pe_backed=true."
+    },
+    {
+      "location_id": "6bce9a480d76c1f6",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "owner_identity": "Maria Fatah",
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "provider_surnames",
+        "note": "individual NPI (no org_npi), provider_count=1, EIN=362783882 reach=1 (same ZIP), no brand/PE signals; practice named after individual dentist (Fatah)",
+        "address": "2009 W N Ave, Chicago IL 60647",
+        "ein": "362783882"
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "reasoning": "Solo individual NPI with practice named after the dentist (Fatah), single-ZIP EIN, no DSO/PE signals; structural profile strongly suggests true_independent but no web URL to confirm sole ownership without MSO backing."
+    },
+    {
+      "location_id": "e50dfc828412c437",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": true,
+      "owner_identity": "Western Dental (Sonrava Health) / New Mountain Capital",
+      "network_id": "brand:WesternDental",
+      "evidence_basis": "affiliated_dso_field",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "affiliated_dso_field",
+        "value": "Western Dental",
+        "note": "affiliated_dso='Western Dental'; brand_hint confirms Western Dental (Sonrava Health), PE sponsor=New Mountain Capital; practice operates under local name 'Sanei Center PC' / 'Northwestern Dental Clinic'",
+        "address": "2604 W N Ave, Chicago IL 60647",
+        "npi": "1952659005",
+        "pe_sponsor": "New Mountain Capital"
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "affiliated_dso field='Western Dental' (a PE-backed DSO under Sonrava Health, sponsor=New Mountain Capital); practice operates under local name 'Sanei Center PC' making this a stealth/friendly-PC structure; the populated affiliated_dso field is the durable artifact."
+    },
+    {
+      "location_id": "c469658e9024307c",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "owner_identity": null,
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "provider_surnames",
+        "note": "individual NPI (no org_npi), provider_count=1, owner_reach=1, no EIN, no brand/PE signals; practice name 'Bock Dental' suggests individual owner-dentist",
+        "address": "2232 W Armitage Ave, Chicago IL 60647"
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "reasoning": "Solo individual NPI with surname-named practice, single location, no EIN or DSO/PE signals; consistent with true_independent but no web URL confirming the named owner-dentist has no MSO backing."
+    },
+    {
+      "location_id": "d9fb0c9f226a66f3",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Genaro Romo DDS",
+      "network_id": "Romo Dental",
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.romodentalchicago.com/",
+        "https://local.yahoo.com/info-238829701-romo-genaro-romo-dental-iii-cicero/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "GENARO ROMO",
+        "npis": [
+          "1457351629"
+        ],
+        "reach": 3,
+        "zips": [
+          "60804",
+          "60629",
+          "60632"
+        ]
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "Web confirms Genaro Romo DDS owns three Romo Dental locations (West Lawn, Brighton Park, Cicero) \u2014 this 'Romo Dental III' is his third site; no PE/MSO signals found."
+    },
+    {
+      "location_id": "47b29ee7e72213bb",
+      "assigned_tier": "undetermined",
+      "pe_backed": null,
+      "owner_identity": null,
+      "network_id": null,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.bbb.org/us/il/cicero/profile/dentist/oral-kare-network-loc-2-ltd-0654-88136503",
+        "https://www.facebook.com/OralKareNetwork2/"
+      ],
+      "db_artifact": null,
+      "web_searched": true,
+      "gate_status": "undetermined",
+      "confidence": "low",
+      "reasoning": "Name 'Location II' signals a multi-location network but AO Marleen Severino has reach=1 in the DB; no EIN; web search confirms a Loc 1 / Loc 2 network but ownership structure and whether Severino is the principal owner could not be established, so tier cannot be settled without further digging."
+    },
+    {
+      "location_id": "719b01502f151a50",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Robert Brunetti DDS (CEO, ProCare Dental Group)",
+      "network_id": "ao:BRUNETTI_ROBERT",
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.procaredentalgroup.com/",
+        "https://www.linkedin.com/in/robert-brunetti-7abb2889"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "ROBERT BRUNETTI",
+        "npis": [
+          "1750409306"
+        ],
+        "reach": 9,
+        "zips": [
+          "60005",
+          "60068",
+          "60120",
+          "60187",
+          "60201",
+          "60564",
+          "60614",
+          "60654",
+          "60804"
+        ]
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "Dr. Robert Brunetti is CEO of ProCare Dental Group P.C. which operates 10 Chicagoland locations since 1979; AO reach=9 ZIPs in the DB corroborates scale; no PE/MSO ownership confirmed."
+    },
+    {
+      "location_id": "3bc304a7819a234f",
+      "assigned_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Steven Rempas DDS (founder)",
+      "network_id": "Webster Dental Care",
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.webdentalchicago.com/",
+        "https://www.yelp.com/biz/webster-dental-care-of-portage-park-chicago-7"
+      ],
+      "db_artifact": {
+        "type": "affiliated_dso_field",
+        "value": "Webster Dental",
+        "brand_hint": "Webster Dental"
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "Webster Dental Care is a confirmed branded multi-location group (9-10 offices) founded by Dr. Steven Rempas in 1976; this Cicero location carries the Webster Dental Care brand; no PE backing found."
+    },
+    {
+      "location_id": "f3959b4a9ac8e139",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": false,
+      "owner_identity": "Randy Chang DDS (Precision Dental Care network)",
+      "network_id": "Precision Dental Care",
+      "evidence_basis": "affiliated_dso_field",
+      "evidence_urls": [
+        "https://precisiondentalchicago.com/about-us/",
+        "https://precisiondentalchicago.com/"
+      ],
+      "db_artifact": {
+        "type": "affiliated_dso_field",
+        "value": "Precision Dental Care",
+        "local_name": "Silva Dental Center Ltd",
+        "ein": "465833863"
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "DB affiliated_dso='Precision Dental Care' and web confirms Dr. Randy Chang owns 8+ Precision Dental Care clinics in Chicagoland; this location operates under the local name 'Silva Dental Center Ltd' \u2014 a classic stealth/friendly-PC structure; no PE backing found."
+    },
+    {
+      "location_id": "28fab093c7a6a0d9",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Monil P Shah DMD",
+      "network_id": "ao:SHAH_MONIL",
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.centraldentalassociates.com/",
+        "https://www.healthgrades.com/dentist/dr-monil-shah-y4xdh"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "MONIL SHAH",
+        "npis": [
+          "1568712123"
+        ],
+        "reach": 2,
+        "zips": [
+          "60188",
+          "60804"
+        ]
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "Dr. Monil Shah is confirmed owner of Central Dental Associates (this address at 5539 W Cermak, Cicero) plus a second location; AO reach=2 ZIPs in DB corroborates; no PE/MSO signals."
+    },
+    {
+      "location_id": "5cd49db66c4ee020",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "owner_identity": "Liqing Zhang DDS",
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "provider_surnames",
+        "authorized_official": "LIQING ZHANG",
+        "reach": 1,
+        "zips": [
+          "60804"
+        ],
+        "ein_reach": 0
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "reasoning": "Single provider, AO reach=1, no EIN reach, no brand/DSO/PE signals; structural signals point to solo independent but no web URL confirms the owner-dentist identity, so gate_status stays candidate."
+    },
+    {
+      "location_id": "6eeaf4643d34c9a4",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "owner_identity": null,
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "provider_surnames",
+        "authorized_official": null,
+        "reach": 1,
+        "zips": [
+          "60804"
+        ],
+        "ein_reach": 0
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "low",
+      "reasoning": "Solo high-volume, reach=1, no EIN/brand/PE signals, no AO on record; structural solo-independent indicators but no web confirmation and no named owner available, so cannot be final_ready."
+    },
+    {
+      "location_id": "921961e587c8ee15",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "owner_identity": null,
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "provider_surnames",
+        "provider_count": 2,
+        "address": "5533 w cermak rd, Cicero 60804",
+        "reach": 1
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "low",
+      "reasoning": "Two providers at single address, reach=1, no brand/EIN/PE signals, entity_classification=small_group; structurally fits single_loc_group but no AO data and no web confirmation of the ownership structure."
+    },
+    {
+      "location_id": "fbb43bb2a136f734",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "owner_identity": null,
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "provider_surnames",
+        "authorized_official": null,
+        "reach": 1,
+        "zips": [
+          "60804"
+        ],
+        "ein_reach": 0
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "low",
+      "reasoning": "Solo established, reach=1, no EIN/brand/PE/AO signals; structurally solo-independent but no named owner and no web URL to confirm, so candidate only."
+    },
+    {
+      "location_id": "99b7b4ad619fddf4",
+      "assigned_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dental Dreams (KSL Capital/CDCA)",
+      "network_id": "Dental Dreams",
+      "evidence_basis": "affiliated_dso_field",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "affiliated_dso_field",
+        "value": "Dental Dreams",
+        "legal_entity": "Dental Experts LLC",
+        "ao_reach_locations": 10,
+        "ao_reach_zips": [
+          "60160",
+          "60411",
+          "60436",
+          "60610",
+          "60623",
+          "60629",
+          "60639",
+          "60654",
+          "60707",
+          "60804"
+        ]
+      },
+      "web_searched": false,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "DB affiliated_dso='Dental Dreams'; Dental Dreams is a well-documented national DSO brand (operated as 'Dental Experts LLC' in Illinois \u2014 a known Dental Dreams friendly-PC); AO Sameera Hussain reach=10 watched-IL locations confirms scale; pe_backed=false per brand's current private ownership."
+    },
+    {
+      "location_id": "addadba0d25e3812",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Sinan Razzak DMD (Dental Town Chicago)",
+      "network_id": "ao:RAZZAK_SINAN",
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://dentaltownchicago.com/dentist/cicero/",
+        "https://dentaltownchicago.com/doctor/dr-sinan-razzak/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "SINAN RAZZAK",
+        "npis": [
+          "1063789584"
+        ],
+        "reach": 3,
+        "zips": [
+          "60181",
+          "60629",
+          "60804"
+        ]
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "Web confirms Dr. Sinan Razzak is Founder/President of Dental Town Chicago with Image Dental (Cicero), Dental Town Belmont, and Dental Town Oakbrook; AO reach=3 ZIPs in DB corroborates; no PE/MSO backing found."
+    },
+    {
+      "location_id": "fb2614131429927d",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Bushra Al Azzawi DDS",
+      "network_id": "ao:ALAZZAWI_BUSHRA",
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://perfectdentalsmiles.com/meet-our-ceo/",
+        "https://www.yelp.com/biz/perfect-dental-smile-cicero-2"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "BUSHRA AL AZZAWI",
+        "npis": [
+          "1194976282"
+        ],
+        "reach": 2,
+        "zips": [
+          "60659",
+          "60804"
+        ]
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "Web confirms Dr. Bushra Al Azzawi is founder/owner of Perfect Dental Smile with two locations \u2014 Chicago (60659, W Peterson Ave) and this Cicero location (6017 W Cermak); AO reach=2 ZIPs corroborates; no PE signals."
+    },
+    {
+      "location_id": "3a2acb8b4e928c23",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": false,
+      "owner_identity": "Randy Chang DDS (Precision Dental Care network)",
+      "network_id": "Precision Dental Care",
+      "evidence_basis": "affiliated_dso_field",
+      "evidence_urls": [
+        "https://precisiondentalchicago.com/about-us/",
+        "https://precisiondentalchicago.com/"
+      ],
+      "db_artifact": {
+        "type": "affiliated_dso_field",
+        "value": "Precision Dental Care",
+        "ao": "RANDY CHANG",
+        "ao_reach_zips": [
+          "60632",
+          "60639",
+          "60645",
+          "60647",
+          "60804"
+        ],
+        "ao_reach_locations": 5
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "DB affiliated_dso='Precision Dental Care'; AO Randy Chang confirmed as owner of 8 Precision Dental Care clinics across Chicago; this entity 'Precision Dental Care 2 LLC' is part of that network; AO reach=5 ZIPs; no PE backing found \u2014 owner-dentist-run stealth structure."
+    },
+    {
+      "location_id": "3d6d77fc02cdd7f6",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Hamza Mohammed DDS",
+      "network_id": "ao:MOHAMMED_HAMZA",
+      "evidence_basis": "ao_reach",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "HAMZA MOHAMMED",
+        "npis": [
+          "1447767546"
+        ],
+        "reach": 2,
+        "zips": [
+          "60653",
+          "60804"
+        ]
+      },
+      "web_searched": true,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "reasoning": "AO Hamza Mohammed has reach=2 across ZIPs 60653 and 60804 \u2014 durable federal signal of a 2-location owner-dentist; no PE tie found; web search did not return a direct confirmation page for Dr. Hamza Mohammed at this practice, so gate stays candidate."
+    },
+    {
+      "location_id": "2bbd52b88750a5a8",
+      "assigned_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dental Dreams (CDCA)",
+      "network_id": "Dental Dreams",
+      "evidence_basis": "affiliated_dso_field",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "affiliated_dso_field",
+        "value": "Dental Dreams",
+        "ein": "453199860",
+        "provider_count": 7,
+        "address": "2254 s cicero ave, Cicero 60804"
+      },
+      "web_searched": false,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "DB affiliated_dso='Dental Dreams'; this NPI (individual provider Kim Sumin) at 2254 S Cicero Ave is the individual-NPI companion to the org-NPI Dental Experts LLC at 2240 S Cicero Ave (same Dental Dreams location); affiliated_dso field is definitive; pe_backed=false per Dental Dreams current private ownership."
+    },
+    {
+      "location_id": "dc3d6faeeb510821",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": false,
+      "owner_identity": "Randy Chang DDS (Precision Dental Care network)",
+      "network_id": "Precision Dental Care",
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.linkedin.com/in/bilal-yusaf-b7abb319",
+        "https://precisiondentalchicago.com/"
+      ],
+      "db_artifact": {
+        "type": "affiliated_dso_field",
+        "value": "Precision Dental Care (inferred)",
+        "note": "5315 W Cermak Rd is adjacent to Precision Dental Care 2 LLC at 5317 W Cermak Rd; LinkedIn confirms Bilal Yusaf is a Precision Dental Care Chicago associate",
+        "ao": "SYED BILAL YUSAF",
+        "ao_reach_zips": [
+          "60423",
+          "60804"
+        ]
+      },
+      "web_searched": true,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "reasoning": "SBY DDS PC at 5315 W Cermak is one address away from Precision Dental Care 2 LLC at 5317 W Cermak; LinkedIn shows Bilal Yusaf as a Precision Dental Care Chicago associate; the co-location and AO LinkedIn affiliation strongly suggest this is a Precision Dental Care satellite, but no direct affiliated_dso field is populated in the DB, so gate stays candidate."
+    },
+    {
+      "location_id": "2ab7cdb707db8803",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Chris Tsaliagos DDS (MetroSmiles Dental)",
+      "network_id": "ao:TSALIAGOS_CHRIS",
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://metrosmilesdental.com/locations/",
+        "https://metrosmilesdental.com/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "CHRIS TSALIAGOS",
+        "npis": [
+          "1124438957"
+        ],
+        "reach": 3,
+        "zips": [
+          "60419",
+          "60608",
+          "60804"
+        ],
+        "ein": "465530483"
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "Web confirms Chris Tsaliagos is President of MetroSmiles Dental, a 7+ location multi-specialty group across Chicagoland; AO reach=3 watched ZIPs in DB; no PE/MSO backing found \u2014 dentist-owned mini-DSO."
+    },
+    {
+      "location_id": "d803fcfe4618e8a3",
+      "assigned_tier": "institutional",
+      "pe_backed": false,
+      "owner_identity": "Tapestry 360 Health (formerly Heartland International Health Center) \u2014 FQHC",
+      "network_id": "fqhc:heartland-international-health-center",
+      "evidence_basis": "institutional_match",
+      "evidence_urls": [
+        "https://carelistings.com/federally-qualified-health-centers/chicago-il/heartland-international-health-center/5ace881193efd2372f97bfea",
+        "https://hahealth.org/"
+      ],
+      "db_artifact": {
+        "type": "institutional_match",
+        "signal": "Name 'Heartland International Health Center' confirmed as FQHC (Federally Qualified Health Center) via CareListings and Tapestry 360 Health / Heartland Alliance Health network; institutional_hint=true; brand_hint 'Heartland Dental' is a false match \u2014 this is a community health center not KKR-backed Heartland Dental"
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "Name confirmed as FQHC via CareListings directory and Heartland Alliance Health network; brand_hint 'Heartland Dental/KKR' is a false positive \u2014 this is a safety-net community health center, and institutional_hint=true corroborates."
+    },
+    {
+      "location_id": "8e5ba23753681cd3",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "owner_identity": "Jennifer Phi DDS",
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "provider_surnames",
+        "surnames": [
+          "PHI"
+        ],
+        "address": "4945 n broadway st, chicago il 60640",
+        "ao": "JENNIFER PHI",
+        "owner_reach_locations": 1
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "high",
+      "reasoning": "PC entity named after sole dentist-owner Jennifer Phi, AO=JENNIFER PHI, reach=1 location, no EIN chain, no brand/DSO signal; structural_only cannot rule out a friendly-PC so gate_status=candidate."
+    },
+    {
+      "location_id": "c769b00959fcdaf7",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "owner_identity": "Patricia Crisostomo DMD",
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "provider_surnames",
+        "surnames": [
+          "CRISOSTOMO"
+        ],
+        "address": "1732 w lawrence ave, chicago il 60640",
+        "ao": "PATRICIA CRISOSTOMO",
+        "owner_reach_locations": 1
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "high",
+      "reasoning": "PC entity named after sole dentist-owner Patricia Crisostomo, AO=PATRICIA CRISOSTOMO, reach=1, no EIN chain, no brand signal; structural_only basis means gate=candidate despite low stealth-DSO probability."
+    },
+    {
+      "location_id": "3cee5bbb3560fda2",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "owner_identity": "Lawrence E. Feldman DDS",
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "provider_surnames",
+        "surnames": [
+          "FELDMAN"
+        ],
+        "address": "5549 n broadway st, chicago il 60640",
+        "ein": "362803571",
+        "ein_reach_locations": 1,
+        "ein_reach_zips": [
+          "60640"
+        ],
+        "year_established": 1974
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "high",
+      "reasoning": "Individual NPI solo dentist, established 1974, EIN confined to single location in 60640, no AO, no DSO/brand signal; structural_only basis means gate=candidate."
+    },
+    {
+      "location_id": "b7499322a2416c5d",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "owner_identity": "Paulina Jova DDS",
+      "network_id": null,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/paulina-jova-dds-chicago",
+        "https://npiprofile.com/npi/1457592545"
+      ],
+      "db_artifact": {
+        "type": "provider_surnames",
+        "surnames": [
+          "JOVA"
+        ],
+        "address": "5154 n clark st, chicago il 60640",
+        "owner_reach_locations": 1
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "Web confirms 'Jova Dental' = Dr. Paulina Jova DDS solo practice at 5154 N Clark, named after the owner with no DSO/chain affiliation mentioned; single location, single named dentist, web-verified owner identity."
+    },
+    {
+      "location_id": "047ce502ad2a0371",
+      "assigned_tier": "institutional",
+      "pe_backed": false,
+      "owner_identity": "Tapestry 360 Health (formerly Heartland International Health Center) \u2014 FQHC",
+      "network_id": "fqhc:heartland-international-health-center",
+      "evidence_basis": "institutional_match",
+      "evidence_urls": [
+        "https://carelistings.com/federally-qualified-health-centers/chicago-il/heartland-health-center---wilson/5ace881293efd2372f97bffa",
+        "https://hahealth.org/"
+      ],
+      "db_artifact": {
+        "type": "institutional_match",
+        "signal": "Name 'Heartland International Health Center' at 4740 N Clark confirmed as FQHC location; same AO (GWENN RAUSCH) as 845 W Wilson location, same organization, institutional_hint=true; brand_hint 'Heartland Dental/KKR' is false match"
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "Same FQHC organization as d803fcfe4618e8a3 \u2014 Heartland International Health Center / Tapestry 360 Health confirmed federally qualified health center, AO=GWENN RAUSCH matches, institutional_hint=true; not Heartland Dental DSO."
+    },
+    {
+      "location_id": "2498bbc43d47198a",
+      "assigned_tier": "undetermined",
+      "pe_backed": null,
+      "owner_identity": null,
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": null,
+      "web_searched": false,
+      "gate_status": "undetermined",
+      "confidence": "low",
+      "reasoning": "No AO, no EIN, provider_count=1, no brand/DSO signal, generic name 'Levy Dental' without a confirmable owner surname; insufficient structural signals to assign a tier without web verification."
+    },
+    {
+      "location_id": "a31ca3008c75ab1f",
+      "assigned_tier": "institutional",
+      "pe_backed": false,
+      "owner_identity": "Tapestry 360 Health \u2014 FQHC (formerly Heartland International Health Center / Heartland Alliance Health)",
+      "network_id": "fqhc:tapestry-360-health",
+      "evidence_basis": "institutional_match",
+      "evidence_urls": [
+        "https://tap360health.org/medical-specialties/dental-care/",
+        "https://opennpi.com/provider/1932417615"
+      ],
+      "db_artifact": {
+        "type": "institutional_match",
+        "signal": "Name 'TAPESTRY 360 HEALTH' confirmed FQHC on opennpi.com and tap360health.org; serves 28,000 patients across 16 locations on Chicago north side; dental care offered under HRSA Section 330 FQHC designation; AO=NICOLE WILLIS, owner_reach across 60625/60640/60660"
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "Tapestry 360 Health confirmed FQHC with dental services at 900 W Wilson Ave; name, NPI, and FQHC designation all web-verified; pe_backed=false by definition for federally-funded community health center."
+    },
+    {
+      "location_id": "68ee57cb85d0f037",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "owner_identity": "Kapil Kella DDS",
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "provider_surnames",
+        "surnames": [
+          "KELLA"
+        ],
+        "address": "5505 n clark st, chicago il 60640",
+        "provider_count": 2,
+        "ao": "KAPIL KELLA",
+        "owner_reach_locations": 1
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "reasoning": "PC named after Kapil Kella with 2 providers at one location and AO=KAPIL KELLA with reach=1; structural signals indicate single-location group practice under dentist-owner; no partnership URL to elevate to final_ready."
+    },
+    {
+      "location_id": "d97911df002def64",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "owner_identity": "Mital Spatz DDS",
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "provider_surnames",
+        "surnames": [
+          "SPATZ"
+        ],
+        "address": "1474 w foster ave, chicago il 60640",
+        "ao": "MITAL SPATZ",
+        "owner_reach_locations": 1
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "high",
+      "reasoning": "PC named after dentist-owner Mital Spatz, AO=MITAL SPATZ, reach=1, no EIN chain, no brand/DSO signal; structural_only basis requires candidate gate."
+    },
+    {
+      "location_id": "bb6d4fb9d7b95ca4",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Brandon Prusa DDS",
+      "network_id": "ao:PRUSA_BRANDON",
+      "evidence_basis": "ao_reach",
+      "evidence_urls": [
+        "https://www.compassdentalcare.com/locations",
+        "https://local.yahoo.com/info-234224083-prusa-brandon-r-compass-dental-at-lincoln-square-chicago/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "BRANDON PRUSA",
+        "npis": [
+          "1104174374"
+        ],
+        "reach": 2,
+        "zips": [
+          "60640"
+        ],
+        "ein": "311827050",
+        "ein_reach_locations": 2,
+        "note": "Compass Dental PC at 4413 N Clark (60640/Uptown) is one of multiple Chicago locations; web confirms Compass Dental at Lakeview (Belmont Ave) and Lincoln Square (Lawrence Ave) under Dr. Brandon Prusa; EIN shared across 2 locations in same ZIP"
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "EIN 311827050 spans 2 watched locations in 60640, and web confirms Dr. Brandon Prusa runs multiple Compass Dental offices (Uptown, Lakeview, Lincoln Square) in Chicago with no PE/DSO affiliation mentioned; dentist-owner multi-location practice, no PE tie found."
+    },
+    {
+      "location_id": "bd13f919ca53afbc",
+      "assigned_tier": "undetermined",
+      "pe_backed": null,
+      "owner_identity": null,
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": null,
+      "web_searched": false,
+      "gate_status": "undetermined",
+      "confidence": "low",
+      "reasoning": "No AO, no EIN, provider_count=1, generic name 'Wellness Dental Care' with no identifying owner information; cannot assign tier without web verification of the owner behind this entity."
+    },
+    {
+      "location_id": "56e77b1a53f5ef7b",
+      "assigned_tier": "undetermined",
+      "pe_backed": null,
+      "owner_identity": null,
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": null,
+      "web_searched": false,
+      "gate_status": "undetermined",
+      "confidence": "low",
+      "reasoning": "No AO, no EIN, provider_count=1, name 'Juniper Dentistry' is distinctive but not tied to a named dentist in federal data; insufficient structural signals to assign tier without web verification."
+    },
+    {
+      "location_id": "06b1a8eaf2654e4d",
+      "assigned_tier": "undetermined",
+      "pe_backed": null,
+      "owner_identity": null,
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": null,
+      "web_searched": false,
+      "gate_status": "undetermined",
+      "confidence": "low",
+      "reasoning": "No AO, no EIN, provider_count=1, name 'Solomon Dental' does not have a confirmable owner identity from federal data alone; insufficient to assign tier without web verification."
+    },
+    {
+      "location_id": "0884ff9f2ce7934f",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Lee Braam DMD",
+      "network_id": "ao:BRAAM_LEE",
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://braamdental.com/office-details",
+        "https://findadentist.ada.org/dentists/dr-lee-s-braam-chicago-0038V00002yjo2ZQAQ-a1C8V00000kYXy8UAG"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "LEE BRAAM",
+        "npis": [
+          "1275914939"
+        ],
+        "reach": 2,
+        "zips": [
+          "60640"
+        ],
+        "note": "Braam Dental at 1015 W Lawrence Ave (60640) is one of two locations; second location at 3334 W Peterson Ave confirmed on website and ADA directory; Dr. Lee Braam is sole owner per multiple directories"
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "Web confirms Dr. Lee Braam DMD runs two Braam Dental locations (1015 W Lawrence Ave and 3334 W Peterson Ave) as owner-dentist with no PE/DSO affiliation; ADA directory and practice website corroborate multi-location independent ownership."
+    },
+    {
+      "location_id": "9df9c9dcb4c5f555",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "owner_identity": "Gary L. Monson DDS",
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "provider_surnames",
+        "surnames": [
+          "MONSON"
+        ],
+        "address": "5358 n broadway st, chicago il 60640",
+        "ao": "GARY MONSON",
+        "owner_reach_locations": 1
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "high",
+      "reasoning": "PC named after dentist-owner Gary Monson, AO=GARY MONSON, reach=1 location, no EIN data, no brand/DSO signal; structural_only basis per rules means gate=candidate."
+    },
+    {
+      "location_id": "e32ed1606301b785",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Eric Bloom (The Dental Masters)",
+      "network_id": "ao:BLOOM_ERIC",
+      "evidence_basis": "ao_reach",
+      "evidence_urls": [
+        "https://thedentalmasters.org/locations/",
+        "https://www.yelp.com/biz/dental-masters-of-belmont-chicago"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "ERIC BLOOM",
+        "npis": [
+          "1588196083"
+        ],
+        "reach": 2,
+        "zips": [
+          "60640",
+          "60641"
+        ],
+        "note": "The Dental Mastrs of Ravenswood LLC at 1945 W Wilson (60640) is one of at least two Dental Masters locations; Belmont location confirmed at 5236 W Belmont Ave (ZIP 60641); AO=ERIC BLOOM spans both ZIPs"
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "AO Eric Bloom has owner_reach=2 across 60640+60641; web confirms The Dental Masters operates Ravenswood (1945 W Wilson) and Belmont (5236 W Belmont) offices; no PE/DSO affiliation found; qualifies as dentist_multi on ao_reach artifact."
+    },
+    {
+      "location_id": "49d9c36c9fe9abb8",
+      "assigned_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Secure Dental (Dr. Nazish Jafri / Dr. Noel Liu, co-founders)",
+      "network_id": "dso:secure-dental",
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://secure-dental.com/locations/foster-ave/",
+        "https://securedentalgroup.com/who-we-are/",
+        "https://secure-dental.com/meet-our-doctors/"
+      ],
+      "db_artifact": {
+        "type": "affiliated_dso_field",
+        "value": "Secure Dental",
+        "note": "Secure Dental X PLLC NPI 1245893189 at 1828 W Foster Ave confirmed as Secure Dental DSO location; AO=NAZISH JAFRI confirmed as CEO/co-founder of Secure Dental with 11 offices in 4 states; foster-ave location listed on secure-dental.com locator; no known PE backer \u2014 dentist-founded and dentist-run DSO"
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "Secure Dental locator confirms 1828 W Foster Ave as a Secure Dental office; Dr. Nazish Jafri (AO) is confirmed co-founder/CEO of Secure Dental, an 11-office DSO operating in 4 states; branded_dso is correct; pe_backed=false as no PE sponsor identified \u2014 dentist-owned DSO."
+    },
+    {
+      "location_id": "1f895d2ecd0fdaef",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "owner_identity": "Victor Rendon / Victor Rendon Jr.",
+      "network_id": null,
+      "evidence_basis": "provider_surnames",
+      "evidence_urls": [
+        "https://doctor.webmd.com/doctor/victor-rendon-jr-fcf360ca-027a-424f-88c6-532ce671ea18-overview"
+      ],
+      "db_artifact": {
+        "type": "provider_surnames",
+        "surnames": [
+          "Rendon"
+        ],
+        "address": "3354 W 63rd St, Chicago IL 60629",
+        "provider_count": 2,
+        "note": "Victor Rendon Sr + Victor Rendon Jr confirmed at same address; family-named single-location dentist practice, no DSO/PE signals"
+      },
+      "web_searched": true,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "reasoning": "Two providers share the surname Rendon (father + son per intel dossier) at one location; entity_classification=family_practice, owner_reach=1, no DSO/EIN/PE signals; gates to candidate because web results show Dr. Rendon at other IL locations outside watched ZIPs but AO is null in federal records so dentist_multi cannot be confirmed federally."
+    },
+    {
+      "location_id": "774c59537eeee1c1",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "owner_identity": null,
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "structural",
+        "provider_count": 1,
+        "owner_reach_locations": 1,
+        "ein_reach_locations": 0,
+        "affiliated_dso": null,
+        "parent_company": null,
+        "brand_hint": null
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "low",
+      "reasoning": "Solo provider, no AO on record, EIN reach=0, no brand/DSO/PE signals; no intel dossier owner name to web-confirm; structural-only true_independent cannot be final_ready per tier rules."
+    },
+    {
+      "location_id": "2cb2cc7ecd4bc6ca",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "owner_identity": "Tom Chan",
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "structural",
+        "authorized_official": "TOM CHAN",
+        "provider_count": 1,
+        "owner_reach_locations": 1,
+        "ein_reach_locations": 0,
+        "affiliated_dso": null,
+        "parent_company": null,
+        "brand_hint": null
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "reasoning": "AO=TOM CHAN, owner_reach=1, solo provider, no DSO/EIN/PE signals; intel confirms Dr. Tom Chan as solo practitioner since 2003 with no DSO language; structural-only basis keeps gate_status=candidate per tier rules without a confirming web URL at this address."
+    },
+    {
+      "location_id": "0c8f995db2124f57",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Mohammed Salih",
+      "network_id": "ao:SALIH_MOHAMMED",
+      "evidence_basis": "ao_reach",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/salih-dental-kedzie-chicago",
+        "https://www.yelp.com/biz/salih-dental-center-chicago"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "MOHAMMED SALIH",
+        "npis": [
+          "1902370489"
+        ],
+        "reach": 3,
+        "zips": [
+          "60608",
+          "60629",
+          "60630"
+        ],
+        "note": "AO MOHAMMED SALIH spans 3 watched-IL GP locations across 3 ZIPs; web confirms Salih Dental Kedzie at 6235 S Kedzie (60629) and Salih Dental Center at 4408 W Lawrence Ave (60630)"
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "Federal AO MOHAMMED SALIH links 3 watched-IL GP locations across 3 distinct ZIPs; web confirms at least two Salih Dental branded locations under the same owner; no PE/MSO signals; dentist_multi final_ready on ao_reach artifact."
+    },
+    {
+      "location_id": "9c588fbf68114847",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Jianjun Hao",
+      "network_id": "ao:HAO_JIANJUN",
+      "evidence_basis": "ao_reach",
+      "evidence_urls": [
+        "https://smilingdentalgroup.com/about-us/",
+        "https://www.linkedin.com/in/hao-jianjun-1b987681/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "JIANJUN HAO",
+        "npis": [
+          "1346806577"
+        ],
+        "reach": 3,
+        "zips": [
+          "60504",
+          "60619",
+          "60629"
+        ],
+        "note": "AO JIANJUN HAO spans 3 watched-IL GP locations across 3 ZIPs; web confirms founder of Smiling Dental International P.C. / Smiling Dental Group with 11+ locations across IL and IN"
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "Federal AO JIANJUN HAO links 3 watched-IL GP locations across 3 distinct ZIPs; web confirms Dr. Hao as founder of multi-location Smiling Dental Group with no PE backing found; dentist_multi final_ready on ao_reach artifact."
+    },
+    {
+      "location_id": "c6078e6641ef7f48",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": false,
+      "owner_identity": "United Dental Partners (Mustapha Hotait, AO)",
+      "network_id": null,
+      "evidence_basis": "affiliated_dso_field",
+      "evidence_urls": [
+        "https://www.uniteddentalpartners.com/locations/",
+        "https://www.yelp.com/biz/advanced-family-dental-chicago-2"
+      ],
+      "db_artifact": {
+        "type": "affiliated_dso_field",
+        "value": "All Family Dental & Braces (United Dental Partners)",
+        "address": "6338 S Pulaski Rd, Chicago IL 60629",
+        "note": "Practice operates under local name 'Chicago Dental Cosmetics' but affiliated_dso field confirms United Dental Partners MSO; web confirms UDP locator lists this address as 'Advanced Family Dental'"
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "Populated affiliated_dso field = 'All Family Dental & Braces (United Dental Partners)' is direct structural evidence of MSO backing; practice trades as local name 'Chicago Dental Cosmetics' not the UDP brand; web confirms UDP lists 6338 S Pulaski in their locations; pe_backed=false as no PE sponsor confirmed for UDP."
+    },
+    {
+      "location_id": "c8bcc4fb6201343a",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "owner_identity": "Junaid Ahmed",
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "structural",
+        "authorized_official": "JUNAID AHMED",
+        "provider_count": 2,
+        "owner_reach_locations": 1,
+        "ein_reach_locations": 0,
+        "affiliated_dso": null,
+        "parent_company": null,
+        "note": "Named after the dentist-owner; 2 providers at one location; AO reach=1"
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "reasoning": "AO=JUNAID AHMED with owner_reach=1, 2 providers at single location, practice named after the owner-dentist; no DSO/EIN/PE signals; single_loc_group is the structural best-fit; candidate because no partnership URL or second-surname confirmation."
+    },
+    {
+      "location_id": "b73f749e8824d845",
+      "assigned_tier": "undetermined",
+      "pe_backed": null,
+      "owner_identity": null,
+      "network_id": null,
+      "evidence_basis": "none",
+      "evidence_urls": [],
+      "db_artifact": null,
+      "web_searched": false,
+      "gate_status": "undetermined",
+      "confidence": "low",
+      "reasoning": "Practice name is 'Chicago Il' \u2014 a non-descriptive city/state string, no AO, no EIN, no phone, no DSO signals, no intel dossier; cannot determine ownership tier from available data."
+    },
+    {
+      "location_id": "b4ca7a72e2641e47",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "owner_identity": "Jack Litz",
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "structural",
+        "authorized_official": "JACK LITZ",
+        "provider_count": 2,
+        "owner_reach_locations": 1,
+        "ein_reach_locations": 0,
+        "affiliated_dso": null,
+        "parent_company": null,
+        "note": "Practice named after the owner-dentist Jack Litz; 2 providers, single location, AO reach=1"
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "reasoning": "AO=JACK LITZ, owner_reach=1, 2 providers at single location, practice named after the owner; no DSO/EIN/PE signals; single_loc_group structural best-fit; candidate lacking partnership URL or second-surname confirmation."
+    },
+    {
+      "location_id": "9c0581940572feb0",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "owner_identity": "Daniel Kozicki",
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "structural",
+        "authorized_official": "DANIEL KOZICKI",
+        "provider_count": 1,
+        "owner_reach_locations": 1,
+        "ein_reach_locations": 0,
+        "affiliated_dso": null,
+        "parent_company": null
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "reasoning": "AO=DANIEL KOZICKI, owner_reach=1, solo provider, practice named after the owner-dentist; no DSO/EIN/PE signals; intel confirms solo practice under Dr. Kozicki with no corporate signals; structural-only keeps gate_status=candidate."
+    },
+    {
+      "location_id": "e002cdc63dfe02d2",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Lina Poskus / Vic Poskus",
+      "network_id": null,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.carecredit.com/doctor-locator/chicago-il/lina-poskus-dds-family-dental-care-566rvw/",
+        "https://www.dentalplans.com/dentists/illinois/brookfield/60513/dr-lina-poskus-68203/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": null,
+        "note": "Federal AO null; web evidence shows Poskus Dental / New Smile Center operating at 4635 W 63rd Chicago PLUS Brookfield IL, Willowbrook IL, Palos Heights IL \u2014 at least 3-4 locations under Lina/Vic Poskus ownership"
+      },
+      "web_searched": true,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "reasoning": "Web confirms Dr. Lina Poskus operates at this address and 3+ suburban IL locations (Brookfield, Willowbrook, Palos Heights); intel dossier corroborates multi-location group; no PE signals found; candidate (not final_ready) because AO is null in federal records so cannot cite the durable federal ao_reach artifact \u2014 web evidence alone supports dentist_multi but the tier bar requires federal AO link for final_ready."
+    },
+    {
+      "location_id": "0d76d8f9105e394d",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Fadi Aqel",
+      "network_id": "ao:AQEL_FADI",
+      "evidence_basis": "ao_reach",
+      "evidence_urls": [
+        "https://www.britedental.org/our-offices",
+        "https://www.britedental.org/brite-dental-59-pulaski"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "FADI AQEL",
+        "npis": [
+          "1245584853"
+        ],
+        "reach": 12,
+        "zips": [
+          "60402",
+          "60608",
+          "60623",
+          "60625",
+          "60626",
+          "60629",
+          "60632",
+          "60641",
+          "60647"
+        ],
+        "note": "AO FADI AQEL spans 12 watched-IL GP locations across 9 ZIPs; web confirms Dr. Fadi Aqel as owner of Brite Dental multi-location group; no PE backing found; affiliated_dso='Dental 360/Brite Dental' is a dentist-owned local chain, not a PE-backed national DSO"
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "Federal AO FADI AQEL links 12 watched-IL GP locations across 9 ZIPs; web confirms Dr. Fadi Aqel as named owner of Brite Dental with multiple Chicagoland offices; no PE/MSO sponsor identified; dentist_multi final_ready on ao_reach artifact."
+    },
+    {
+      "location_id": "8256bfff559b0760",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Fadi Aqel",
+      "network_id": "ao:AQEL_FADI",
+      "evidence_basis": "ao_reach",
+      "evidence_urls": [
+        "https://www.britedental.org/our-offices"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "FADI AQEL",
+        "npis": [
+          "1396917001"
+        ],
+        "reach": 12,
+        "zips": [
+          "60402",
+          "60608",
+          "60623",
+          "60625",
+          "60626",
+          "60629",
+          "60632",
+          "60641",
+          "60647"
+        ],
+        "ein": "731689410",
+        "ein_reach_locations": 3,
+        "ein_reach_zips": [
+          "60625",
+          "60629",
+          "60639"
+        ],
+        "note": "Same AO FADI AQEL as BRITE DENTAL 59 PULASKI; EIN 731689410 spans 3 watched ZIPs providing additional structural corroboration"
+      },
+      "web_searched": false,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "Same AO=FADI AQEL as location 0d76d8f9105e394d (Brite Dental group); EIN 731689410 spans 3 watched ZIPs adding EIN-cluster corroboration; dentist_multi final_ready on ao_reach artifact \u2014 same web confirmation applies."
+    },
+    {
+      "location_id": "e86d6e38d85a9aef",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "owner_identity": null,
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "structural",
+        "provider_count": 1,
+        "owner_reach_locations": 1,
+        "ein_reach_locations": 0,
+        "affiliated_dso": null,
+        "parent_company": null,
+        "brand_hint": null,
+        "note": "Practice name 'Adeleke Dental' is a surname-based name suggesting solo owner-dentist; solo provider, no AO, no EIN, no DSO signals"
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "low",
+      "reasoning": "Surname-based practice name with 1 provider, owner_reach=1, EIN reach=0, no brand/DSO/PE signals; structural-only classification; no AO to confirm single-owner identity; candidate per tier rules."
+    },
+    {
+      "location_id": "226533cfa8898ef7",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "owner_identity": null,
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "structural",
+        "provider_count": 3,
+        "owner_reach_locations": 1,
+        "ein_reach_locations": 0,
+        "affiliated_dso": null,
+        "parent_company": null,
+        "note": "Practice named 'Gleason Dental' \u2014 surname suggests dentist-owned; 3 providers at single location, no AO recorded, no EIN reach, family_practice classification"
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "low",
+      "reasoning": "3 providers at single location under a surname-based practice name with no AO on record; no DSO/EIN/PE signals; single_loc_group structural best-fit; candidate because no AO identity to confirm and no partnership URL."
+    },
+    {
+      "location_id": "0a54ab2bda7a5e9b",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "owner_identity": null,
+      "network_id": null,
+      "evidence_basis": "structural_only",
+      "evidence_urls": [],
+      "db_artifact": {
+        "type": "structural",
+        "provider_count": 2,
+        "owner_reach_locations": 1,
+        "ein_reach_locations": 0,
+        "affiliated_dso": null,
+        "parent_company": null,
+        "note": "Practice named 'Benard Dental' \u2014 surname suggests dentist-owned; 2 providers at single location, no AO, no EIN reach, small_group classification"
+      },
+      "web_searched": false,
+      "gate_status": "candidate",
+      "confidence": "low",
+      "reasoning": "2 providers at single location under a surname-based name with no AO on record; no DSO/EIN/PE signals; single_loc_group structural best-fit; candidate because no AO identity to confirm and no partnership URL."
+    },
+    {
+      "location_id": "7495e79c66647036",
+      "assigned_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dental Dreams",
+      "network_id": null,
+      "evidence_basis": "affiliated_dso_field",
+      "evidence_urls": [
+        "https://www.dentaldreams.com/location/dental-clinic-west-63rd-st-chicago/",
+        "https://www.yelp.com/biz/dental-dreams-chicago-10"
+      ],
+      "db_artifact": {
+        "type": "affiliated_dso_field",
+        "value": "Dental Dreams",
+        "address": "3210 W 63rd St, Chicago IL 60629",
+        "phone": "(773) 776-8300",
+        "note": "affiliated_dso='Dental Dreams'; Dental Dreams locator page confirms this exact address and phone; AO SAMEERA HUSSAIN ties to 10 watched-IL locations as the management officer"
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "Populated affiliated_dso='Dental Dreams' and Dental Dreams official locator (dentaldreams.com) confirms this address and phone as an active Dental Dreams office; the practice trades as 'THE DENTAL CLINIC, LLC' which is a friendly-PC shell but the brand is confirmed externally; pe_backed=false as no confirmed PE sponsor found for Dental Dreams in ctx."
+    },
+    {
+      "location_id": "2061979d9dc56775",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "owner_identity": "Frank Gasior / Annette Gasior / Justine Gasior",
+      "network_id": null,
+      "evidence_basis": "provider_surnames",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/gasior-frank-s-dds-chicago",
+        "https://www.yelp.com/biz/annette-l-gasior-d-d-s-chicago"
+      ],
+      "db_artifact": {
+        "type": "provider_surnames",
+        "surnames": [
+          "Gasior"
+        ],
+        "address": "6820 S Pulaski Rd, Chicago IL 60629",
+        "provider_count": 3,
+        "note": "Web confirms Frank Gasior DDS, Annette Gasior DDS, and Justine Gasior DDS all practicing at this address; intel dossier confirms '3rd generation family practice, all dentists are siblings'; owner_reach=1 in watched ZIPs"
+      },
+      "web_searched": true,
+      "gate_status": "final_ready",
+      "confidence": "high",
+      "reasoning": "Web and intel dossier confirm 3 Gasior siblings (Frank, Annette, Justine) operating a 3rd-generation family dentistry practice at this single address; all same surname, no DSO/PE signals, owner_reach=1; single_loc_group final_ready on provider_surnames artifact confirmed by web."
+    }
+  ]
+}

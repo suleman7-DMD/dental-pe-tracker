@@ -1,0 +1,147 @@
+{
+  "network": "SAQIB MOHAJIR",
+  "network_id": "ao:MOHAJIR_SAQIB",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Dr. Saqib H. Mohajir, DMD (Case Western Reserve 2005) is a dentist-owner who appears on 3 NPPES organization records across 3 Chicagoland ZIPs as authorized official. Documentary investigation shows: (1) Pinewood Dental PC (60467, Orland Park) has relocated to 1150 State Street, Lemont IL 60439 — NPPES address is stale; Saqib is founder/president. (2) Optimal Dental Associates LLC (60477, Tinley Park) is marked CLOSED on Yelp as of October 2025; Saqib is listed as owner/AO. (3) The Alsip entry (60803) is Saqib's individual NPI practice name 'SAQIB H. MOHAJIR, D.M.D.' operating as a sub-part under parent 'MOHAMED K.H. MOHAJIR D.D.S.' at the same address — this is the family practice co-location with his father Mohamed Mohajir DDS, NOT an independent third office. No DSO brand, MSO layer, management company, or PE sponsor was found across any of the three locations.",
+  "owner_operator_identity": "Dr. Saqib H. Mohajir, DMD — dentist-owner, graduated Case Western Reserve University School of Dental Medicine 2005, Mastership status with the American Dental Implant Association, founder of Pinewood Dental",
+  "brand_trade_names": [
+    "Pinewood Dental",
+    "Optimal Dental Associates",
+    "Saqib H. Mohajir, D.M.D."
+  ],
+  "legal_entities": [
+    "Pinewood Dental, PC",
+    "Optimal Dental Associates, LLC"
+  ],
+  "durable_artifacts": [
+    "AO reach=3: SAQIB MOHAJIR listed as authorized official on NPI 1699946913 (Pinewood Dental PC, 60467), NPI 1912357278 (Optimal Dental Associates LLC, 60477), NPI 1427228311 (Saqib H. Mohajir DMD, 60803)",
+    "Pinewood Dental PC NPI 1699946913 NPPES address 11979 W 143rd St Orland Park 60467 — practice has relocated to 1150 State Street Lemont IL 60439 per live website",
+    "Optimal Dental Associates LLC NPI 1912357278 at 15916 Harlem Ave Tinley Park 60477 — Yelp shows CLOSED as of October 2025",
+    "Alsip NPI 1427228311 'SAQIB H. MOHAJIR D.M.D.' is a sub-part of parent organization 'MOHAMED K.H. MOHAJIR D.D.S.' at same address 11808 S Pulaski Rd — family co-practice, not independent office",
+    "No EIN shared across locations; no MSO/DSO/PE entity found"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "Two of three network locations have operational issues: (1) Pinewood Dental PC NPPES address (Orland Park 60467) is stale — practice relocated to Lemont 60439, outside the watched-IL GP denominator for Chicagoland if Lemont is not in a watched ZIP. (2) Optimal Dental Associates LLC (Tinley Park 60477) appears closed per Yelp October 2025. (3) The Alsip location (60803) is a potential AO false-positive: Saqib Mohajir's individual NPI sub-part at his father Mohamed Mohajir's practice address — the AO role may reflect family co-practice, not a separately owned office.",
+  "evidence_chain": "AO signal: SAQIB MOHAJIR appears as authorized official on 3 NPPES organization NPIs across ZIPs 60467/60477/60803. Documentary corroboration: (a) Pinewood Dental website (pinewooddental.com) confirms Dr. Saqib Mohajir as founder/lead dentist — single location now at Lemont IL, no DSO/MSO mentioned; (b) Yelp listing for Optimal Dental (15916 Harlem Ave Tinley Park) marked CLOSED October 2025; (c) npino.com NPPES mirror confirms Saqib Mohajir as president/AO of Pinewood Dental PC and owner/AO of Optimal Dental Associates LLC; (d) dentistsok.com confirms Alsip NPI 1427228311 is a sub-part of 'Mohamed K.H. Mohajir D.D.S.' at same address — family practice co-location. No management company, DSO platform, MSO, or PE sponsor found in any source.",
+  "future_app_notes": "1. Confirm whether ZIP 60467 (Orland Park) remains a watched ZIP even though Pinewood Dental has physically relocated to Lemont (60439) — if 60439 is not a watched ZIP, the NPPES Orland Park record is a stale shell. 2. Validate closure of Optimal Dental Associates LLC in Tinley Park 60477 — if confirmed closed, consider marking location eb... as solo_inactive or stale. 3. The Alsip co-location (NPI 1427228311 sub-part under Mohamed Mohajir) should be reviewed as a possible AO false positive — the AO reach count of 3 may effectively be 2 genuine independent offices (Pinewood + Optimal) plus 1 family co-practice. 4. Mohamed K.H. Mohajir DDS (NPI 1891810529) and Mx Dental Associates PC at 11808 S Pulaski Rd Alsip are a separate family cluster worth its own AO check.",
+  "classifications": [
+    {
+      "location_id": "f6c6290c16d20224",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Saqib H. Mohajir, DMD — founder and president, Pinewood Dental PC",
+      "network_id": "ao:MOHAJIR_SAQIB",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: SAQIB MOHAJIR is authorized official across 3 NPPES org NPIs in 3 ZIPs",
+          "entity_classification=solo_established (1 provider count in NPPES)"
+        ],
+        "evidence": [
+          "pinewooddental.com lists Dr. Saqib Mohajir as founder/lead dentist with Mastership in dental implants — no DSO/MSO/management company mentioned",
+          "npino.com NPPES mirror confirms Saqib Mohajir as president of Pinewood Dental PC NPI 1699946913",
+          "Practice relocated from 11979 W 143rd St Orland Park to 1150 State Street Lemont IL 60439 per live website — NPPES address is stale"
+        ]
+      },
+      "evidence_urls": [
+        "https://pinewooddental.com/meet-the-doctors/",
+        "https://npino.com/dental-clinic/1699946913-pinewood-dental,-pc/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "SAQIB MOHAJIR",
+        "reach": 3,
+        "zips": ["60467", "60477", "60803"],
+        "npi": "1699946913",
+        "name": "PINEWOOD DENTAL, PC",
+        "address": "11979 w 143rd st",
+        "city": "ORLAND PARK",
+        "zip": "60467"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "NPPES address 11979 W 143rd St Orland Park 60467 is stale — practice has physically relocated to 1150 State Street Lemont IL 60439 per live website. If 60439 is not in a watched ZIP, this NPPES record is a stale shell that should not count toward the watched-IL GP denominator.",
+      "reasoning": "Saqib Mohajir is confirmed as founder/president of Pinewood Dental PC by both the practice website and the NPPES record. The website shows the practice at a Lemont address, not the NPPES Orland Park address. No DSO/MSO/PE evidence found. Classification is dentist_multi (dentist-owned multi-office private group) corroborated by the official practice website, meeting the ready_for_validation bar. Stale address needs downstream validation."
+    },
+    {
+      "location_id": "822d3012aedf32b9",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Saqib H. Mohajir, DMD — listed owner of Optimal Dental Associates LLC",
+      "network_id": "ao:MOHAJIR_SAQIB",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: SAQIB MOHAJIR is authorized official across 3 NPPES org NPIs in 3 ZIPs",
+          "entity_classification=solo_established (0 provider count in NPPES — may be closed/stale)"
+        ],
+        "evidence": [
+          "npino.com NPPES mirror confirms Saqib Mohajir as owner/AO of Optimal Dental Associates LLC NPI 1912357278 at 15916 Harlem Ave Tinley Park",
+          "Yelp listing for Optimal Dental at 15916 Harlem Ave Tinley Park marked CLOSED as of October 2025",
+          "Yahoo Local lists practice as 'Mohajir Saqib — Optimal Dental Care' confirming dentist-owner identity"
+        ]
+      },
+      "evidence_urls": [
+        "https://npino.com/dental-clinic/1912357278-optimal-dental-associates,-llc/",
+        "https://www.yelp.com/biz/optimal-dental-tinley-park",
+        "https://local.yahoo.com/info-17316202-mohajir-saqib-optimal-dental-care-tinley-park/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "SAQIB MOHAJIR",
+        "reach": 3,
+        "zips": ["60467", "60477", "60803"],
+        "npi": "1912357278",
+        "name": "OPTIMAL DENTAL ASSOCIATES, LLC",
+        "address": "15916 harlem ave",
+        "city": "TINLEY PARK",
+        "zip": "60477"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "medium",
+      "stale_closed_note": "Yelp shows Optimal Dental at 15916 Harlem Ave Tinley Park 60477 CLOSED as of October 2025. NPPES record has 0 provider count and was last updated June 2016. This location is likely a closed shell — recommend marking solo_inactive or flagging as stale_closed in the database.",
+      "reasoning": "Saqib Mohajir is confirmed as owner/AO by NPPES mirror and Yahoo Local. However Yelp (updated October 2025) shows the practice as closed. This was a real dentist-owned office in the same network as Pinewood Dental — no DSO/MSO/PE structure. Classification is dentist_multi at medium confidence given the apparent closure. The gate_status is ready_for_validation on the ownership type, but a stale_closed check is needed before any denominator promotion."
+    },
+    {
+      "location_id": "eb8567fb91ebcdfd",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Saqib H. Mohajir, DMD — practicing at family practice co-location with father Mohamed K.H. Mohajir DDS",
+      "network_id": "ao:MOHAJIR_SAQIB",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: SAQIB MOHAJIR is authorized official across 3 NPPES org NPIs in 3 ZIPs",
+          "entity_classification=small_group (2 providers at address)",
+          "ein=363395437 present on this NPI",
+          "NPPES name 'SAQIB H. MOHAJIR, D.M.D.' — individual dentist name as org NPI"
+        ],
+        "evidence": [
+          "dentistsok.com confirms NPI 1427228311 'SAQIB H. MOHAJIR D.M.D.' is a sub-part under parent 'MOHAMED K.H. MOHAJIR D.D.S.' at same address 11808 S Pulaski Rd Alsip — family co-practice, not independently owned",
+          "Mohamed K.H. Mohajir DDS and Mx Dental Associates PC also operate at 11808 S Pulaski Rd per dentistsok.com",
+          "WebMD and Doctors Network list Mohamed Mohajir DDS as separate provider at same address"
+        ]
+      },
+      "evidence_urls": [
+        "https://dentistsok.com/dental-clinic/saqib-h-mohajir-dmd-alsip-il/",
+        "https://www.doctorsnetwork.com/doctors/dentists/alsip-il-60803/invite-mohamed-mohajir-dds-13883",
+        "https://doctor.webmd.com/doctor/mohamed-mohajir-657cc6bd-43fa-4d0a-9d19-415b700867c5-overview"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "SAQIB MOHAJIR",
+        "reach": 3,
+        "zips": ["60467", "60477", "60803"],
+        "npi": "1427228311",
+        "name": "SAQIB H. MOHAJIR, D.M.D.",
+        "address": "11808 s pulaski rd",
+        "city": "ALSIP",
+        "zip": "60803"
+      },
+      "web_searched": true,
+      "gate_status": "candidate",
+      "confidence": "low",
+      "stale_closed_note": "This NPPES entry (NPI 1427228311) is Saqib Mohajir's individual practitioner org-NPI at his father Mohamed Mohajir's family practice address (11808 S Pulaski Rd, Alsip). The AO reach signal here is a likely false positive — Saqib is not independently owning/operating a third practice, but is a dentist sub-part under his father's organization. The 'small_group' classification (2 providers) reflects the father+son co-practice, not a separately owned Saqib Mohajir office. Not a standalone dentist_multi node.",
+      "reasoning": "The NPPES name 'SAQIB H. MOHAJIR, D.M.D.' with Saqib as his own authorized official, operating as a sub-part under parent 'MOHAMED K.H. MOHAJIR D.D.S.' at the same address, indicates this is a family co-practice billing entity — not an independently owned third office. The AO reach inflates the count by 1. Classification held as dentist_multi (it is part of the broader Mohajir family multi-dentist practice) but gate_status=candidate with low confidence because the ownership relationship here is a family co-location sub-part, not an independent Saqib-owned clinic. Downstream gate should investigate whether this location_id should be merged with the Mohamed Mohajir family cluster or flagged as an AO-cluster false positive."
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "network": "HILLARY THULL",
+  "network_id": "ao:THULL_HILLARY",
+  "owner_type_verdict": "pe_mso_backed",
+  "network_summary": "Three Chicagoland GP locations all registered in NPPES under the legal name 'DENTAL PROFESSIONALS OF ILLINOIS, P.C.' (or close variant) — the documented friendly-PC wrapper used by Heartland Dental LLC across its Illinois-supported offices. Hillary Thull is the NPPES Authorized Official, consistent with a Heartland corporate credentialing/administrative staff role rather than a dentist owner. Two locations (Oak Park, Countryside) already carry dso_national / Heartland Dental classification in the DB. The Countryside Dental Group website (countrysidedental.com) explicitly discloses 'supported by Heartland Dental LLC' and 'Orahh Care Dental Community is a brand owned by Heartland Dental LLC' and 'dental practice operates as Dental Professionals of Illinois, P.C.' The Oak Park location (Lifetime Smiles Dental) is confirmed Heartland/Orahh Care on whoownsmydentists.com. The Bloomingdale location (Flex Dental) shares the same NPPES legal entity and EIN (362736573, a known Heartland friendly-PC EIN), and while no explicit Heartland web disclosure was surfaced for that brand, the legal entity identity and AO match place it firmly within the same structure. Heartland Dental is PE-backed (KKR / Ontario Teachers' Pension Plan). This is a branded_dso cluster, not a dentist-owned multi.",
+  "owner_operator_identity": "Heartland Dental LLC (DSO/MSO operator); Hillary Thull is the NPPES Authorized Official — consistent with a Heartland corporate credentialing or administrative coordinator role, not the dentist owner. Consumer brands: Flex Dental (Bloomingdale), Lifetime Smiles Dental (Oak Park), Countryside Dental Group (Countryside). All operate as Dental Professionals of Illinois, P.C.",
+  "brand_trade_names": [
+    "Dental Professionals of Illinois, P.C.",
+    "Flex Dental",
+    "Lifetime Smiles Dental",
+    "Countryside Dental Group",
+    "Orahh Care Dental Community"
+  ],
+  "legal_entities": [
+    "DENTAL PROFESSIONALS OF ILLINOIS, P.C. (EIN 362736573)"
+  ],
+  "durable_artifacts": [
+    "Shared NPPES organization name 'DENTAL PROFESSIONALS OF ILLINOIS, P.C.' across all 3 locations (NPI 1346997020, 1376254920, 1598427189)",
+    "Shared EIN 362736573 on Bloomingdale NPI 1346997020 — known Heartland friendly-PC EIN",
+    "Hillary Thull listed as NPPES Authorized Official on all 3 NPIs across 3 ZIPs (60108, 60302, 60525)",
+    "Countryside Dental Group (6335 Joliet Rd) website footer: 'supported by Heartland Dental LLC' and 'Orahh Care Dental Community is a brand owned by Heartland Dental LLC'",
+    "whoownsmydentists.com entry for Lifetime Smiles Dental (1113 Chicago Ave, Oak Park) confirms Heartland Dental DSO affiliation",
+    "DB already classifies Oak Park and Countryside as dso_national / affiliated_dso: Heartland Dental"
+  ],
+  "mso_platform_pe_evidence": "Heartland Dental LLC is a national DSO providing management and administrative support services to Dental Professionals of Illinois, P.C. offices. Documentary disclosure at countrysidedental.com: 'This office is supported by Heartland Dental LLC, a dental support organization that provides administrative and business support services.' Orahh Care is confirmed as a brand owned by Heartland Dental LLC. Heartland Dental is PE-backed by KKR (majority investor) and Ontario Teachers' Pension Plan. See: https://countrysidedental.com/ and https://whoownsmydentists.com/location/lifetime-smiles-dental-oak-park-il",
+  "stale_closed_false_positive_notes": "Hillary Thull's AO role across these three NPIs is consistent with a Heartland corporate administrative/credentialing staff function — NOT a dentist owner running a private multi-office group. The AO reach is structural to Heartland's operating model (one AO per batch of supported PCs), not a personal ownership signal. All three locations are operating as of 2026 (Yelp/web presence confirmed for Countryside and Flex Dental). No stale/closed concerns identified.",
+  "evidence_chain": "AO signal: Hillary Thull listed as NPPES Authorized Official on 3 NPPES org NPIs (1346997020 Bloomingdale, 1376254920 Oak Park, 1598427189 Countryside) across 3 ZIPs, all registered as 'DENTAL PROFESSIONALS OF ILLINOIS, P.C.' — a name-chain signal and known Heartland friendly-PC brand. Documentary corroboration: (1) countrysidedental.com website footer explicitly states 'supported by Heartland Dental LLC' and 'Orahh Care Dental Community is a brand owned by Heartland Dental LLC' and 'dental practice operates as Dental Professionals of Illinois, P.C.'; (2) whoownsmydentists.com page for Lifetime Smiles Dental Oak Park confirms Heartland Dental DSO affiliation; (3) DB classification already correctly marks Oak Park and Countryside as dso_national / Heartland Dental; (4) Bloomingdale shares the legal entity name and EIN with the established Heartland cluster.",
+  "future_app_notes": "The Bloomingdale location (Flex Dental, NPI 1346997020) should be promoted to dso_national / affiliated_dso: Heartland Dental to match the other two. It is currently classified dso_regional (weaker signal) but the evidence is equivalent. The EIN 362736573 should be added to the known Heartland EIN list. Consider whether Hillary Thull appears as AO on additional IL Heartland-supported NPIs beyond these 3 — if so, the reach is under-counted. The Orahh Care brand should be tracked as a Heartland consumer brand alongside Lifetime Smiles, Countryside Dental Group, and Flex Dental.",
+  "classifications": [
+    {
+      "location_id": "d4d827860b4132cb",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Heartland Dental LLC (DSO/MSO operator); consumer brand: Flex Dental; legal entity: Dental Professionals of Illinois, P.C.",
+      "network_id": "ao:THULL_HILLARY",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across 3 ZIPs (60108, 60302, 60525) — Hillary Thull as NPPES Authorized Official",
+          "NPPES org name 'DENTAL PROFESSIONALS OF ILLINOIS, P.C.' — name-chain across all 3 locations",
+          "EIN 362736573 — known Heartland friendly-PC EIN",
+          "Provider count 7 at a single address (indicates multi-dentist corporate office)"
+        ],
+        "evidence": [
+          "Countryside Dental Group website (6335 Joliet Rd, same DPIL legal entity) explicitly states 'supported by Heartland Dental LLC' and 'Orahh Care Dental Community is a brand owned by Heartland Dental LLC' — same legal entity, same AO cluster (countrysidedental.com)",
+          "Oak Park (1113 Chicago Ave, same DPIL legal entity) confirmed Heartland DSO on whoownsmydentists.com as Lifetime Smiles Dental / Heartland",
+          "DB already classifies both sibling locations as dso_national / affiliated_dso: Heartland Dental — corroborating the same PC structure",
+          "Flex Dental brand website (flexdental.net) at 290 Springfield Dr confirmed as Bloomingdale consumer-facing brand at the same NPPES address"
+        ]
+      },
+      "evidence_urls": [
+        "https://countrysidedental.com/",
+        "https://whoownsmydentists.com/location/lifetime-smiles-dental-oak-park-il",
+        "https://www.flexdental.net/",
+        "https://www.yelp.com/biz/flex-dental-bloomingdale"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "HILLARY THULL",
+        "reach": 3,
+        "zips": ["60108", "60302", "60525"],
+        "location_npi": "1346997020",
+        "location_ein": "362736573",
+        "current_entity_classification": "dso_regional",
+        "affiliated_dso_current": null,
+        "note": "Currently dso_regional — should be promoted to dso_national / Heartland Dental to match sibling locations under same PC"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Bloomingdale location (290 Springfield Dr, 60108) operates as 'Flex Dental' under the legal entity 'DENTAL PROFESSIONALS OF ILLINOIS, P.C.' (EIN 362736573). Same NPPES org name and AO (Hillary Thull) as the two Heartland-confirmed sibling locations in Oak Park and Countryside. The Countryside sibling's own website explicitly names Heartland Dental LLC as the supporting DSO and Dental Professionals of Illinois, P.C. as the operating entity. Currently classified dso_regional in the DB — should be promoted to dso_national / affiliated_dso: Heartland Dental to match the documented structure. pe_backed=true (Heartland is PE-backed by KKR)."
+    },
+    {
+      "location_id": "64a25dd567a92ae3",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Heartland Dental LLC (DSO/MSO operator); consumer brand: Lifetime Smiles Dental; legal entity: Dental Professionals of Illinois, P.C.",
+      "network_id": "ao:THULL_HILLARY",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across 3 ZIPs — Hillary Thull as NPPES Authorized Official",
+          "NPPES org name 'DENTAL PROFESSIONALS OF ILLINOIS, P.C.' — name-chain",
+          "DB already classifies as dso_national / Heartland Dental"
+        ],
+        "evidence": [
+          "whoownsmydentists.com page for Lifetime Smiles Dental, 1113 Chicago Ave, Oak Park IL confirms Heartland Dental DSO affiliation",
+          "Search results confirm Lifetime Smiles Dental operates under Orahh Care Dental Community brand owned by Heartland Dental LLC at 1113 Chicago Ave Oak Park",
+          "Legal entity 'Dental Professionals of Illinois, P.C.' shared across all 3 AO cluster locations — confirmed Heartland friendly-PC wrapper via Countryside sibling website"
+        ]
+      },
+      "evidence_urls": [
+        "https://whoownsmydentists.com/location/lifetime-smiles-dental-oak-park-il",
+        "https://lifetimesmilesoakpark.com/orahh-care",
+        "https://countrysidedental.com/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "HILLARY THULL",
+        "reach": 3,
+        "zips": ["60108", "60302", "60525"],
+        "location_npi": "1376254920",
+        "location_ein": null,
+        "current_entity_classification": "dso_national",
+        "affiliated_dso_current": "Heartland Dental",
+        "note": "Already correctly classified dso_national / Heartland Dental — corroboration confirms"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Oak Park location (1113 Chicago Ave, 60302) is already correctly classified dso_national / Heartland Dental in the DB. Consumer brand 'Lifetime Smiles Dental' operating under Orahh Care Dental Community (a Heartland Dental LLC brand). whoownsmydentists.com and search results confirm Heartland DSO affiliation. Legal entity is Dental Professionals of Illinois, P.C. — the Heartland Illinois friendly-PC. No reclassification needed; this row corroborates the network. pe_backed=true (Heartland is PE-backed by KKR)."
+    },
+    {
+      "location_id": "1237e7c94d53bab9",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Heartland Dental LLC (DSO/MSO operator); consumer brand: Countryside Dental Group; legal entity: Dental Professionals of Illinois, P.C.",
+      "network_id": "ao:THULL_HILLARY",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across 3 ZIPs — Hillary Thull as NPPES Authorized Official",
+          "NPPES org name 'DENTAL PROFESSIONALS OF ILLINOIS, P.C.' — name-chain",
+          "DB already classifies as dso_national / Heartland Dental"
+        ],
+        "evidence": [
+          "countrysidedental.com website explicitly states: 'This office is supported by Heartland Dental LLC, a dental support organization that provides administrative and business support services'",
+          "countrysidedental.com: 'Orahh Care Dental Community is a brand owned by Heartland Dental LLC'",
+          "countrysidedental.com: 'The dental practice operates as Dental Professionals of Illinois, P.C.'",
+          "Yelp listing confirms address: 6335 Joliet Rd, Countryside, IL 60525 and phone (708) 352-1830 — matches NPPES"
+        ]
+      },
+      "evidence_urls": [
+        "https://countrysidedental.com/",
+        "https://www.yelp.com/biz/countryside-dental-group-countryside-2",
+        "https://doctor.webmd.com/practice/countryside-dental-group-pc-2ba2904e-ae23-4eaf-99f6-c38f67679137"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "HILLARY THULL",
+        "reach": 3,
+        "zips": ["60108", "60302", "60525"],
+        "location_npi": "1598427189",
+        "location_ein": null,
+        "current_entity_classification": "dso_national",
+        "affiliated_dso_current": "Heartland Dental",
+        "note": "Already correctly classified dso_national / Heartland Dental — strongest direct documentary evidence in this cluster"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Countryside location (6335 Joliet Rd, 60525) is already correctly classified dso_national / Heartland Dental in the DB. The practice's own website (countrysidedental.com) provides the strongest documentary evidence in this cluster: explicit Heartland Dental LLC management services disclosure, Orahh Care brand ownership disclosure, and legal entity identification as Dental Professionals of Illinois, P.C. This is the anchor corroborator that confirms the entire Hillary Thull AO cluster as a Heartland Dental network. pe_backed=true (Heartland is PE-backed by KKR)."
+    }
+  ]
+}

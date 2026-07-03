@@ -1,0 +1,36 @@
+{
+ "_doc": "Independent adversarial QA sign-off for the Wave-2 reach5 AO-network evidence file. READ-ONLY. This is the independent evidence-sufficiency gate (New session #1), separate from the main session's own _qa companion. Sign-off, not rubber-stamp: every contradiction test below was re-run from the raw file.",
+ "author_role": "independent QA / validation-gate session (New session #1)",
+ "source_file": "data/dso_research/ao_network_evidence_reach5_20260621.json",
+ "source_written_at": "2026-06-21 06:21",
+ "main_session_self_qa_companion": "data/dso_research/ao_network_evidence_reach5_20260621_qa.json (06:22) — NOT relied upon; independent re-derivation below",
+ "constraints_honored": ["no DB writes", "no LEDGER/PROGRESS mutation", "no entity_classification change", "IL only / Boston parked", "validate-only ONLY for consolidate_census.py"],
+ "UPSTREAM_FREEZE": "CONSOLIDATION REMAINS FROZEN. The file itself states consolidation=HELD (wave-1 reset not confirmed): practice_locations/practices still carry 349 live ownership_tier rows, LEDGER=350, PROGRESS=349 (all must read 0). These verdicts pre-stage eligibility; nothing may be written to the DB until the reset clears.",
+ "verdict": "PASS — clean. 0 structural/definitional corrections required.",
+ "why_clean": "This wave baked in the QA standard up front (_meta.standard='corrected_2026-06-21'; regate_baked_in lists the branded_dso->dentist_multi pe-rule, stealth-no-url downgrade, not-corroborated->candidate, and specialist->undetermined rules). 11 rows were auto-regated branded_dso->dentist_multi before emission. Contrast Fleet B, which emitted raw and needed 59 corrections + 19 holds.",
+ "independent_contradiction_tests": {
+   "rows_total": 84,
+   "gate_tally": {"ready_for_validation": 70, "candidate": 9, "undetermined": 5},
+   "candidate_tier_tally": {"dentist_multi": 52, "stealth_dso": 16, "branded_dso": 7, "undetermined": 9},
+   "ready_stealth_dso_pe_backed_not_true": 0,
+   "ready_branded_dso_pe_backed_not_true": 0,
+   "ready_dso_tier_with_no_url_and_no_artifact": 0,
+   "ready_dso_tier_AO_REACH_ONLY_no_real_url_or_entity": 0,
+   "ready_dso_tier_with_real_url_or_non_ao_reach_artifact": "22 of 22",
+   "ready_dentist_multi_with_url": "48 of 48 (all also carry an ao_cluster/ao_reach artifact)",
+   "ready_true_independent_defaulted": 0,
+   "specialist_networks_excluded_from_GP": "yes — Sharma endo + dental-specialist/implant networks routed to undetermined, correctly out of the GP denominator",
+   "networks_count": 14
+ },
+ "network_exclusion_check": {
+   "protected_set": ["SHAFI","BELKIC","NITTINGER","AQEL","BRUNETTI","SWEIS","LABINOV","RAMAHA"],
+   "networks_in_this_file": ["ACIERNO_ALAN","CHANG_RANDY","GONZALEZ_SAMANTHA","HAYES_CELIA","HUSSAIN_SAMEERA","JORBIN_JAY","KHURANA_PRADEEP","KORKUS_JASON","NOURAHMADI_MILAD","PALELLA_PHILLIP","RONCEVIC_MILAN","RUBIS_DAVID","SHARMA_RAJAN","TSALIAGOS_CHRISTOS"],
+   "overlap_with_protected_set": "none — this wave is a fresh reach>=5 batch; the protected/earlier-wave networks were not reprocessed (the regate rule is merely NAMED 'QA Belkic/Aqel rule')."
+ },
+ "residual_caveats_non_blocking": [
+   "AO-REACH IS NOT OWNERSHIP PROOF (standing user rule). db_artifact.type='ao_reach' on all 84 rows means the structural signal is 'same authorized official across N ZIPs'. An authorized official can be a practice manager, spouse, attorney, or a DSO/MSO regional officer signing for many friendly-PCs — NOT necessarily the dentist-owner. For the 48 ready dentist_multi rows the accompanying evidence_url must, at validation time, confirm SAME-DENTIST-OWNER control (T3) rather than merely common AO; a URL that shows a DSO/MSO operator would re-route the row to T4/T5, and a URL that only confirms existence would drop it to candidate. The wave carries a URL on every ready row, so this is a per-row verification item, not a structural defect.",
+   "ALL ready rows are ready_for_validation, NOT final. Per the standing rule, consolidate_census.py is a schema/DB gate and does not re-judge evidence; this sign-off plus per-URL confirmation is the evidence authority before any DB write.",
+   "9 candidate + 5 undetermined are correctly NOT eligible (brand-token/address mismatch, or specialist-network exclusions) — no QA objection; leave parked."
+ ],
+ "recommendation": "Accept the 70 ready_for_validation rows as consolidation-ELIGIBLE once the freeze lifts, subject to the per-URL dentist-owner-vs-MSO confirmation on the 48 dentist_multi at validation time. No tier corrections needed. Keep the 14 candidate/undetermined parked."
+}

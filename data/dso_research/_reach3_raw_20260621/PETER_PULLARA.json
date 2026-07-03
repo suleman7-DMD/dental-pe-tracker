@@ -1,0 +1,99 @@
+{
+  "network": "PETER PULLARA",
+  "network_id": "ao:PULLARA_PETER",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Dr. Peter J. Pullara Jr., DDS (Marquette 1988) owns and operates two private family dental offices in suburban Chicagoland: Broadway Family Dental Center in Coal City (ZIP 60416) and Plainfield Family Dental Center in Plainfield (ZIP 60544). Both locations share EIN 271445093 and carry Dr. Pullara's name in BBB/third-party profiles. No MSO, DSO platform, management company, or PE backer was found. This is a classic dentist-owned two-office private group.",
+  "owner_operator_identity": "Dr. Peter J. Pullara Jr., DDS — Marquette University DDS 1988; practicing since 1988 in Will/Grundy County IL area",
+  "brand_trade_names": [
+    "Broadway Family Dental Center",
+    "Plainfield Family Dental Center"
+  ],
+  "legal_entities": [],
+  "durable_artifacts": [
+    "Shared EIN 271445093 across both location_ids (f32172ada670178a and 67a9f4133ccaa70c)",
+    "NPPES authorized official PETER PULLARA on both NPI 1922378900 (Coal City) and NPI 1861607798 (Plainfield)",
+    "BBB profile titled 'Plainfield Family Dental Cntr./Dr. Pullara Jr' — business started 1 Jan 1990, A+ rating",
+    "Third-party profiles (Healthgrades, WebMD, Vitals, DentalPlans) list Dr. Peter J. Pullara at both Coal City and Plainfield offices",
+    "Separate consumer websites broadwayfamilydentalus.com and plainfieldfamilydentalus.com both in 'Family Dental Center' brand family under Dr. Pullara"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": null,
+  "evidence_chain": "AO signal: NPPES authorized official PETER PULLARA appears on both NPI 1922378900 (Broadway Family Dental Center, Coal City 60416) and NPI 1861607798 (Plainfield Family Dental Center, Plainfield 60544) — reach=2, both share EIN 271445093. Documentary corroboration: (1) BBB profile 'Plainfield Family Dental Cntr./Dr. Pullara Jr' directly ties the doctor's name to Plainfield practice (bbb.org URL); (2) broadwayfamilydentalus.com staff page lists Dr. Peter J. Pullara Jr. DDS as lead dentist at Coal City; (3) plainfieldfamilydentalus.com is the consumer website for the Plainfield location; (4) Healthgrades, WebMD, and Vitals provider profiles list Dr. Pullara as practicing at both Coal City and Plainfield addresses; (5) no MSO, management company, PE backer, or DSO platform reference found in any source.",
+  "future_app_notes": "No outstanding open questions — dentist-multi is well-corroborated. If a third location (Seneca IL) surfaces in a future NPPES pull under the same AO, re-evaluate still as dentist_multi unless a management layer appears. EIN 271445093 can be used as a durable cluster key.",
+  "classifications": [
+    {
+      "location_id": "f32172ada670178a",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Peter J. Pullara Jr., DDS",
+      "network_id": "ao:PULLARA_PETER",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2: PETER PULLARA is authorized official on NPI 1922378900 (this location) and NPI 1861607798 (Plainfield)",
+          "shared_ein=271445093 with Plainfield Family Dental Center"
+        ],
+        "evidence": [
+          "broadwayfamilydentalus.com staff page lists Dr. Peter J. Pullara Jr. DDS as lead dentist at 595 N Broadway St, Coal City IL 60416",
+          "Third-party profiles (Healthgrades, WebMD, Vitals, DentalPlans) confirm Dr. Pullara practices at this Coal City address",
+          "BBB 'Plainfield Family Dental Cntr./Dr. Pullara Jr' profile corroborates same owner across both locations (bbb.org)"
+        ]
+      },
+      "evidence_urls": [
+        "https://broadwayfamilydentalus.com/staff/",
+        "https://www.healthgrades.com/dentist/dr-peter-pullara-25h3b",
+        "https://www.bbb.org/us/il/plainfield/profile/dentist/plainfield-family-dental-cntrdr-pullara-jr-0654-38003562",
+        "https://doctor.webmd.com/doctor/peter-pullara-bdea9460-bfef-455b-9f23-7c1c4c994c38-overview"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "PETER PULLARA",
+        "reach": 2,
+        "zips": ["60416", "60544"],
+        "location_npi": "1922378900",
+        "ein": "271445093"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Broadway Family Dental Center at 595 N Broadway St, Coal City IL 60416 is one of two private offices operated by Dr. Peter J. Pullara Jr. DDS. AO reach (PETER PULLARA on both NPIs) plus shared EIN 271445093 identify the cluster; the practice website (broadwayfamilydentalus.com) and multiple third-party provider profiles confirm Dr. Pullara as the lead dentist here. BBB ties the same owner to the Plainfield location. No DSO/MSO/PE structure found. Classified dentist_multi with high confidence."
+    },
+    {
+      "location_id": "67a9f4133ccaa70c",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Peter J. Pullara Jr., DDS",
+      "network_id": "ao:PULLARA_PETER",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2: PETER PULLARA is authorized official on NPI 1861607798 (this location) and NPI 1922378900 (Coal City)",
+          "shared_ein=271445093 with Broadway Family Dental Center"
+        ],
+        "evidence": [
+          "BBB profile 'Plainfield Family Dental Cntr./Dr. Pullara Jr' (bbb.org) directly names Dr. Pullara Jr. in the business title; business started 1 Jan 1990, A+ rating — at 24204 Lockport St, Plainfield IL 60544",
+          "plainfieldfamilydentalus.com is the dedicated consumer website for this location",
+          "Third-party profiles (Healthgrades, WebMD, Vitals) list Dr. Peter J. Pullara Jr. as the primary dentist at Plainfield 60544"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.bbb.org/us/il/plainfield/profile/dentist/plainfield-family-dental-cntrdr-pullara-jr-0654-38003562",
+        "https://plainfieldfamilydentalus.com/",
+        "https://www.healthgrades.com/dentist/dr-peter-pullara-25h3b",
+        "https://doctor.webmd.com/doctor/peter-pullara-jr-59aeefc2-73cb-4977-a3a3-146698d5020d-overview"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "PETER PULLARA",
+        "reach": 2,
+        "zips": ["60416", "60544"],
+        "location_npi": "1861607798",
+        "ein": "271445093"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Plainfield Family Dental Center at 24204 W Lockport St, Plainfield IL 60544 is one of two private offices operated by Dr. Peter J. Pullara Jr. DDS. The BBB profile title 'Plainfield Family Dental Cntr./Dr. Pullara Jr' is a direct owner-name tie. AO reach and shared EIN 271445093 link this to Broadway Family Dental Center (Coal City). Consumer website plainfieldfamilydentalus.com is active. Multiple provider directory listings confirm the same doctor at both addresses. No DSO/MSO/PE structure found. Classified dentist_multi with high confidence."
+    }
+  ]
+}

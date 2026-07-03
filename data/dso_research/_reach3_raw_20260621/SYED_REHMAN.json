@@ -1,0 +1,128 @@
+{
+  "network": "SYED REHMAN",
+  "network_id": "ao:REHMAN_SYED",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Syed Rehman DDS is confirmed President/owner of MIRUS ORAL HEALTH & ESTHETIC LLC (DBA Cornerstone Dentistry) in Roselle and appears as authorized official on DENTAL CARE CENTER JUSTICE LLC in Justice — two separate personally-owned GP locations constituting a small dentist-owned multi-office private group. The third AO cluster member, DENTAL 360 BERWYN LLC, is part of the separately-managed Dental 360 DSO brand (19 IL locations, corporate HQ 3435 W Irving Park Rd Chicago); Rehman's AO role there is an administrative/signing-officer artifact, not ownership of the Dental 360 network — this is a false-positive linkage. No MSO, management-services entity, PE backer, or DSO platform was found tying the two Rehman-owned locations together beyond his personal ownership.",
+  "owner_operator_identity": "Syed Rehman DDS, President/owner per NPPES NPI 1033518154 (MIRUS ORAL HEALTH & ESTHETIC LLC)",
+  "brand_trade_names": ["Mirus Oral Health & Esthetic", "Cornerstone Dentistry", "Justice Dental Center", "Dental Care Center Justice"],
+  "legal_entities": ["MIRUS ORAL HEALTH & ESTHETIC, LLC", "DENTAL CARE CENTER JUSTICE LLC"],
+  "durable_artifacts": [
+    "NPPES NPI 1033518154: authorized_official=Syed Rehman, title=President/owner, credential=DDS, practice=MIRUS ORAL HEALTH & ESTHETIC LLC, 1530 Lake St Roselle IL 60172",
+    "NPPES NPI 1578160990: authorized_official=Syed Rehman, practice=DENTAL CARE CENTER JUSTICE LLC, 8021 W 79th St Justice IL 60458",
+    "NPPES NPI 1447801741: authorized_official=Syed Rehman, practice=DENTAL 360 BERWYN LLC — Dental 360 branded DSO (19 IL locations), corporate HQ 3435 W Irving Park Rd Chicago — AO is administrative artifact NOT personal ownership",
+    "Cornerstone Dentistry DBA confirmed at 1530 Lake St Roselle IL 60172 (same phone 630-529-0900 as MIRUS ORAL HEALTH NPPES record)"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "DENTAL 360 BERWYN LLC (location_id 3e7a3d11d88cb223) is a false-positive in this AO cluster: it belongs to the Dental 360 branded DSO (dental360grp.com, 19 IL locations, central management at 3435 W Irving Park Rd Chicago), not to Syed Rehman's personal ownership group. Rehman appears as AO on the LLC filing — likely as a signing dentist or credentialing contact for that entity — but does not own or operate the Dental 360 brand. This location's existing dso_regional classification should be retained and it should NOT be counted as part of Rehman's dentist_multi network.",
+  "evidence_chain": "AO signal: SYED REHMAN appears as authorized_official on 3 IL GP NPIs across ZIPs 60172, 60402, 60458. Documentary corroboration: (1) npino.com for NPI 1033518154 confirms Syed Rehman title=President/owner for MIRUS ORAL HEALTH & ESTHETIC LLC (Cornerstone Dentistry), 1530 Lake St Roselle — direct ownership documented. (2) NPI 1578160990 (DENTAL CARE CENTER JUSTICE LLC, Justice) lists Syed Rehman as authorized official; justicedentalcenter.com confirms operation at 8021 W 79th St Justice IL with no discernible separate management entity — consistent with personal ownership. (3) NPI 1447801741 (DENTAL 360 BERWYN LLC): dental360grp.com confirms Dental 360 is a branded DSO with 19 IL locations and a central corporate HQ in Chicago — this entity's AO listing of Rehman is an LLC-signing artifact, not evidence he owns or manages the Dental 360 brand. No MSO, management company, or PE backer found for any Rehman-owned entity.",
+  "future_app_notes": "To fully confirm dentist_multi for Mirus+Justice: Illinois Secretary of State business filings for MIRUS ORAL HEALTH & ESTHETIC LLC and DENTAL CARE CENTER JUSTICE LLC would show registered agent / organizer — if same (Syed Rehman or a shared attorney/agent), that is strong corroboration. A single-page website for Justice Dental Center (justicedentalcenter.com) exists but lists no dentist name — contacting to confirm Rehman is the owner would close the loop. Watch whether Dental 360 Berwyn's AO changes in future NPPES updates (would resolve whether Rehman was a founding/credentialing contact who has since departed). No PE/MSO search needed for the Rehman-personal group unless future filings reveal a management company.",
+  "classifications": [
+    {
+      "location_id": "584a26fe5c176d8a",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Syed Rehman DDS, President/owner (confirmed NPPES NPI 1033518154)",
+      "network_id": "ao:REHMAN_SYED",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60172, 60402, 60458",
+          "large_group entity_classification (5 providers at address)",
+          "LLC legal form (MIRUS ORAL HEALTH & ESTHETIC, LLC)"
+        ],
+        "evidence": [
+          "NPPES NPI 1033518154 lists Syed Rehman as authorized_official with title President/owner and credential DDS — confirmed at npino.com",
+          "DBA Cornerstone Dentistry confirmed at same address 1530 Lake St Roselle IL 60172, same phone 630-529-0900 (cornerstonecosmeticdentistry.com, practo.com listing)"
+        ]
+      },
+      "evidence_urls": [
+        "https://npino.com/dental-clinic/1033518154-cornerstone-dentistry/",
+        "https://cornerstonecosmeticdentistry.com/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "SYED REHMAN",
+        "reach": 3,
+        "zips": ["60172", "60402", "60458"],
+        "npi": "1033518154",
+        "ao_title_in_nppes": "President/owner",
+        "credential": "DDS"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "NPPES NPI 1033518154 explicitly names Syed Rehman as President/owner of MIRUS ORAL HEALTH & ESTHETIC LLC (DBA Cornerstone Dentistry) at 1530 Lake St Roselle IL 60172. This is documentary corroboration of personal ownership — not merely an AO-reach signal. No MSO or management company found. Five providers at address (large_group). This qualifies as dentist_multi: ready_for_validation."
+    },
+    {
+      "location_id": "3e7a3d11d88cb223",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dental 360 Group (corporate entity, HQ 3435 W Irving Park Rd Chicago IL 60618; Syed Rehman is AO on the Berwyn LLC filing only — not the brand owner)",
+      "network_id": "ao:REHMAN_SYED",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 (Syed Rehman on this NPI)",
+          "entity already classified dso_regional in DB",
+          "affiliated_dso=Dental 360 in DB"
+        ],
+        "evidence": [
+          "dental360grp.com confirms Dental 360 is a branded DSO with 19 Illinois locations and a central corporate office at 3435 W Irving Park Rd Chicago IL 60618",
+          "Dental 360 Berwyn listed on dental360grp.com/illinois-locations/ as one of 19 branded locations — brand management is centralized, not Syed Rehman personally",
+          "Dental 360 brand website (dental360grp.com/locations/dental-360-berwyn/) lists Berwyn location under the Dental 360 corporate umbrella"
+        ]
+      },
+      "evidence_urls": [
+        "https://dental360grp.com/illinois-locations/",
+        "https://dental360grp.com/locations/dental-360-berwyn/",
+        "https://dental360grp.com/about-us/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "SYED REHMAN",
+        "reach": 3,
+        "zips": ["60172", "60402", "60458"],
+        "npi": "1447801741",
+        "note": "AO on DENTAL 360 BERWYN LLC — likely signing/credentialing artifact; does not represent ownership of the Dental 360 DSO brand"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "FALSE POSITIVE for Rehman dentist_multi network: this location belongs to the Dental 360 branded DSO (19 IL locations, central HQ Chicago). Syed Rehman's AO role on the LLC is an administrative/credentialing artifact, not personal brand ownership. Retain existing dso_regional classification. Do NOT reassign to Rehman's personal ownership group.",
+      "reasoning": "DENTAL 360 BERWYN LLC is part of the Dental 360 branded DSO confirmed by dental360grp.com (19 IL locations, corporate HQ 3435 W Irving Park Rd Chicago). The existing dso_regional classification in the DB is correct. Syed Rehman appearing as AO on the LLC NPI filing is an administrative artifact — he may have been a founding or credentialing contact for this entity but does not own the Dental 360 brand. This location should remain classified branded_dso (Dental 360), not merged into the Rehman dentist_multi cluster. No PE backer documented for Dental 360."
+    },
+    {
+      "location_id": "93a707b4f1ce35c2",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Syed Rehman DDS (authorized official per NPPES NPI 1578160990; consistent with personal ownership pattern at MIRUS ORAL HEALTH)",
+      "network_id": "ao:REHMAN_SYED",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 (Syed Rehman on this NPI)",
+          "small_group entity_classification (3 providers at address)",
+          "LLC legal form (DENTAL CARE CENTER JUSTICE LLC)"
+        ],
+        "evidence": [
+          "justicedentalcenter.com confirms active dental practice at 8021 W 79th St Justice IL 60458 with same phone 708-458-7766 — consistent with operating office",
+          "NPPES NPI 1578160990 lists DENTAL CARE CENTER JUSTICE LLC at this address with Syed Rehman as authorized official — pattern consistent with personal ownership confirmed at MIRUS ORAL HEALTH (NPI 1033518154)"
+        ]
+      },
+      "evidence_urls": [
+        "https://justicedentalcenter.com/",
+        "https://www.yelp.com/biz/justice-dental-center-justice"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "SYED REHMAN",
+        "reach": 3,
+        "zips": ["60172", "60402", "60458"],
+        "npi": "1578160990"
+      },
+      "web_searched": true,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "stale_closed_note": null,
+      "reasoning": "Syed Rehman is listed as authorized official on DENTAL CARE CENTER JUSTICE LLC (NPI 1578160990). The practice operates at 8021 W 79th St Justice IL 60458 (confirmed by justicedentalcenter.com). The AO pattern is consistent with his confirmed President/owner role at MIRUS ORAL HEALTH — both are LLC dental practices with him as AO. However, no documentary source explicitly states he is the owner of the Justice LLC (as opposed to a signatory or manager). Gate_status=candidate pending Illinois SOS filing confirmation of Rehman as organizer/member of DENTAL CARE CENTER JUSTICE LLC. Downgraded from ready_for_validation because the Justice website names no owner and no second documentary source ties Rehman to personal ownership of this specific entity."
+    }
+  ]
+}

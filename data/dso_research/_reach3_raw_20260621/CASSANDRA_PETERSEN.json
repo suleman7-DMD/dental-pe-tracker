@@ -1,0 +1,129 @@
+{
+  "network": "CASSANDRA PETERSEN",
+  "network_id": "ao:PETERSEN_CASSANDRA",
+  "owner_type_verdict": "dso_brand",
+  "network_summary": "Two Chicagoland GP locations operating under the Heartland Dental national DSO platform, using the Illinois friendly-PC wrapper 'Dental Professionals of Illinois, P.C.' Both are already classified dso_national/Heartland Dental. AO Cassandra Petersen is a Patterson Dental Customer Integration Coordinator — an administrative/credentialing contact, not a dental owner. The AO co-appearance is a false-positive network signal; the real network is Heartland Dental (KKR-backed PE since 2018). Consumer brands: Complete Dental of Frankfort (Frankfort) and Premier Dental Center (Naperville).",
+  "owner_operator_identity": "Heartland Dental LLC (DSO platform, KKR PE-backed). Cassandra Petersen is a Patterson Dental admin/credentialing contact appearing as NPPES authorized official — not a dental owner.",
+  "brand_trade_names": [
+    "Dental Professionals of Illinois, P.C.",
+    "Complete Dental of Frankfort",
+    "Premier Dental Center",
+    "Heartland Dental"
+  ],
+  "legal_entities": [
+    "Dental Professionals of Illinois, P.C.",
+    "Heartland Dental LLC"
+  ],
+  "durable_artifacts": [
+    "Both NPIs (1134624307 and 1003316035) registered under entity name 'DENTAL PROFESSIONALS OF ILLINOIS, P.C.' — Heartland Dental's documented Illinois friendly-PC wrapper",
+    "Shared authorized official CASSANDRA PETERSEN across both NPIs (reach=2, ZIPs 60423 and 60563)",
+    "Patterson Dental Customer Integration Coordinator LinkedIn profile matches AO name — admin/credentialing contact, not owner",
+    "Both locations phone-verified at consumer-facing brands: 815-469-3373 (Complete Dental of Frankfort) and 630-355-3339 (Premier Dental Center)",
+    "Both DB rows already carry entity_classification=dso_national, affiliated_dso=Heartland Dental"
+  ],
+  "mso_platform_pe_evidence": "Heartland Dental LLC is a national DSO platform, KKR (PE) majority investor since 2018. Official site: https://heartland.com/about-us/. 'Dental Professionals of Illinois, P.C.' is Heartland's documented Illinois friendly-PC per CLAUDE.md and NPPES brand-mining evidence from 2026-05-30.",
+  "stale_closed_false_positive_notes": "AO cluster is a BILLING/ADMIN FALSE POSITIVE: Cassandra Petersen is a Customer Integration Coordinator at Patterson Dental (dental supplier), not a dental owner or officer. Her appearance as shared AO on two Heartland-affiliated NPIs reflects Patterson Dental's credentialing/administrative role, not personal multi-office ownership. The real network is Heartland Dental — both locations are already correctly classified dso_national.",
+  "evidence_chain": "AO signal: CASSANDRA PETERSEN listed as authorized official on two NPPES org-NPIs (1134624307 Frankfort 60423, 1003316035 Naperville 60563), both under 'DENTAL PROFESSIONALS OF ILLINOIS, P.C.' → Web search found LinkedIn profile for Cassandra Petersen as 'Customer Integration Coordinator' at Patterson Dental (dental supply company, Mattoon IL), confirming she is an admin/credentialing contact, not a dental owner → Both addresses confirmed to serve Heartland Dental-supported consumer-brand offices (Complete Dental of Frankfort, Premier Dental Center) → Heartland Dental corporate DSO platform, KKR PE-backed since 2018, confirmed at heartland.com → Both DB rows already correctly classified dso_national/Heartland Dental.",
+  "future_app_notes": "No reclassification needed — both are already dso_national/Heartland Dental. Flag for AO false-positive suppression: Patterson Dental admin contacts (like Cassandra Petersen) frequently appear as NPPES authorized officials across Heartland-supported practices; future AO-cluster scans should consider suppressing Patterson Dental employee AO co-appearances as non-owner. The consumer brands (Complete Dental of Frankfort, Premier Dental Center) could be added to the brand_trade_names index for Heartland Dental if that table is maintained.",
+  "classifications": [
+    {
+      "location_id": "46c4e7116d0046a8",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Heartland Dental LLC (KKR PE-backed DSO platform); local operating name Complete Dental of Frankfort; friendly-PC wrapper Dental Professionals of Illinois, P.C.",
+      "network_id": "branded_dso:heartland_dental",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2 via CASSANDRA PETERSEN across ZIPs 60423+60563",
+          "entity_name=DENTAL PROFESSIONALS OF ILLINOIS P.C. (Heartland friendly-PC wrapper)",
+          "entity_classification=dso_national in DB",
+          "affiliated_dso=Heartland Dental in DB"
+        ],
+        "evidence": [
+          "590 Bankview Dr Frankfort IL 60423 confirmed as Complete Dental of Frankfort at 815-469-3373 per PatientConnect365 and Yelp listings",
+          "Heartland Dental official site confirms DSO platform with 1750+ offices in 39 states: https://heartland.com/",
+          "Cassandra Petersen identified as Patterson Dental Customer Integration Coordinator (admin/credentialing AO, not owner): https://www.linkedin.com/in/cassandranpetersen/",
+          "Dental Professionals of Illinois P.C. documented as Heartland's Illinois friendly-PC wrapper per CLAUDE.md 2026-05-30 NPPES brand-mining"
+        ]
+      },
+      "evidence_urls": [
+        "https://heartland.com/about-us/",
+        "https://heartland.com/",
+        "https://www.patientconnect365.com/Dentists/Illinois/FRANKFORT/60423/Complete_Dental_of_Frankfort",
+        "https://www.linkedin.com/in/cassandranpetersen/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "CASSANDRA PETERSEN",
+        "reach": 2,
+        "zips": ["60423", "60563"],
+        "primary_npi": "1134624307",
+        "org_npi": "1134624307",
+        "entity_classification": "dso_national",
+        "affiliated_dso": "Heartland Dental",
+        "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+        "address": "590 bankview dr",
+        "city": "FRANKFORT",
+        "zip": "60423",
+        "phone": "(815) 469-3373",
+        "provider_count": 1,
+        "year_established": 1989
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Already classified dso_national/Heartland Dental in DB. Consumer-facing brand Complete Dental of Frankfort confirmed at 590 Bankview Dr via PatientConnect365 and Yelp. Heartland Dental is a KKR-backed national DSO managing 1750+ locations via the Dental Professionals of Illinois P.C. friendly-PC structure in IL. AO Cassandra Petersen is a Patterson Dental admin contact, not an owner — AO co-appearance is an admin false positive. No reclassification needed; corroboration confirms existing dso_national/Heartland classification."
+    },
+    {
+      "location_id": "1b931a8e9c2675a9",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Heartland Dental LLC (KKR PE-backed DSO platform); local operating name Premier Dental Center; friendly-PC wrapper Dental Professionals of Illinois, P.C.",
+      "network_id": "branded_dso:heartland_dental",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2 via CASSANDRA PETERSEN across ZIPs 60423+60563",
+          "entity_name=DENTAL PROFESSIONALS OF ILLINOIS P.C. (Heartland friendly-PC wrapper)",
+          "entity_classification=dso_national in DB",
+          "affiliated_dso=Heartland Dental in DB"
+        ],
+        "evidence": [
+          "309 W Ogden Ave Naperville IL 60563 confirmed as Premier Dental Center at 630-355-3339 per iBegin directory and Healthgrades listing",
+          "Heartland Dental official site confirms DSO platform with 1750+ offices in 39 states: https://heartland.com/",
+          "Cassandra Petersen identified as Patterson Dental Customer Integration Coordinator (admin/credentialing AO, not owner): https://www.linkedin.com/in/cassandranpetersen/",
+          "Dental Professionals of Illinois P.C. documented as Heartland's Illinois friendly-PC wrapper per CLAUDE.md 2026-05-30 NPPES brand-mining"
+        ]
+      },
+      "evidence_urls": [
+        "https://heartland.com/about-us/",
+        "https://heartland.com/",
+        "https://www.ibegin.com/directory/us/illinois/naperville/premier-dental-center-309-west-ogden-ave/",
+        "https://www.healthgrades.com/group-directory/il-illinois/naperville/premier-dental-center-u324nr5",
+        "https://www.linkedin.com/in/cassandranpetersen/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "CASSANDRA PETERSEN",
+        "reach": 2,
+        "zips": ["60423", "60563"],
+        "primary_npi": "1003316035",
+        "org_npi": "1003316035",
+        "entity_classification": "dso_national",
+        "affiliated_dso": "Heartland Dental",
+        "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+        "address": "309 w ogden ave",
+        "city": "NAPERVILLE",
+        "zip": "60563",
+        "phone": "(630) 355-3339",
+        "provider_count": 2,
+        "year_established": null
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Already classified dso_national/Heartland Dental in DB. Consumer-facing brand Premier Dental Center confirmed at 309 W Ogden Ave Naperville via iBegin and Healthgrades. Heartland Dental is a KKR-backed national DSO managing 1750+ locations via the Dental Professionals of Illinois P.C. friendly-PC structure in IL. AO Cassandra Petersen is a Patterson Dental admin contact, not an owner — AO co-appearance is an admin false positive. No reclassification needed; corroboration confirms existing dso_national/Heartland classification."
+    }
+  ]
+}

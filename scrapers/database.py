@@ -180,6 +180,18 @@ class Practice(Base):
     da_corporate_employees = Column(Integer, nullable=True)
     da_corporate_sales = Column(Integer, nullable=True)
     da_officers = Column(Text, nullable=True)  # JSON array of {first,last,title}
+    # Hand-verified ownership census (added to ORM 2026-07-02; physical columns
+    # created by migrate_ownership_tier_cols.py on BOTH DBs). A separate axis from
+    # entity_classification: written ONLY by scrapers/consolidate_census.py.
+    # sync_to_supabase serializes ORM-mapped columns — if these are unmapped,
+    # sync silently strips census data. Tiers: true_independent, single_loc_group,
+    # dentist_multi, stealth_dso, branded_dso, institutional, undetermined.
+    ownership_tier = Column(Text, nullable=True)
+    pe_backed = Column(Boolean, nullable=True)
+    ownership_evidence_basis = Column(Text, nullable=True)
+    ownership_evidence_urls = Column(Text, nullable=True)
+    ownership_confidence = Column(String(10), nullable=True)
+    network_id = Column(Text, nullable=True)
     created_at = Column(DateTime, default=func.now())
     updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
 
@@ -1001,5 +1013,14 @@ class PracticeLocation(Base):
     phone                     = Column(Text)
     data_sources              = Column(Text)                    # comma-sep, e.g. "nppes,data_axle"
     taxonomy_codes            = Column(Text)                    # JSON array of all taxonomies
+    # Hand-verified ownership census (ORM mapping added 2026-07-02; physical
+    # columns from migrate_ownership_tier_cols.py). Written ONLY by
+    # scrapers/consolidate_census.py; must stay ORM-mapped or sync strips them.
+    ownership_tier            = Column(Text, nullable=True)
+    pe_backed                 = Column(Boolean, nullable=True)
+    ownership_evidence_basis  = Column(Text, nullable=True)
+    ownership_evidence_urls   = Column(Text, nullable=True)
+    ownership_confidence      = Column(String(10), nullable=True)
+    network_id                = Column(Text, nullable=True)
     created_at                = Column(DateTime, default=func.now())
     updated_at                = Column(DateTime, default=func.now(), onupdate=func.now())

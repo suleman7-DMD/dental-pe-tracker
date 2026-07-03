@@ -1,0 +1,189 @@
+{
+  "network": "ROSHAN PARIKH",
+  "network_id": "ao:PARIKH_ROSHAN",
+  "owner_type_verdict": "pe_mso_backed",
+  "network_summary": "Dr. Roshan 'Dr. Ro' Parikh DDS MBA is the founder of Great Lakes Dental Partners (GLDP), a Shore Capital Partners PE-backed DSO recapitalized in 2015. He built the organization from a single 2008 Chicago practice to 35+ locations, 100+ dentists, $60M+ annual revenue. His original friendly-PC vehicle was 'CSG' (Chicagoland Smile Group). Three of the four AO-cluster locations appear on the GLDP public locator at confirmed addresses: Carillon Family Dental (Romeoville 60446), Fairview Dental Group (Westmont 60559). The fourth location — Palos Heights Dental Group at 12130 S Harlem Ave (60463) — is not on the GLDP locator (GLDP shows a different Palos Heights address at 7550 W College Dr) but Dr. Parikh is listed as practicing dentist there by DentalPlans. CSG Dental IV PC (1 E Wacker Dr, 60601) is the corporate admin/holding shell with 0 clinical providers; it is the NPPES-registered management address for the DSO, not a patient-facing clinic.",
+  "owner_operator_identity": "Dr. Roshan Parikh DDS MBA ('Dr. Ro'), founder of Great Lakes Dental Partners; PE recapitalization with Shore Capital Partners in 2015",
+  "brand_trade_names": [
+    "Great Lakes Dental Partners",
+    "Carillon Family Dental",
+    "Fairview Dental Group",
+    "Palos Heights Dental Group",
+    "CSG Dental",
+    "Chicagoland Smile Group",
+    "DSO Strategy"
+  ],
+  "legal_entities": [
+    "CARILLON FAMILY DENTAL GROUP, PC (NPI 1467861856)",
+    "PALOS HEIGHTS DENTAL GROUP, P.C. (NPI 1275945594)",
+    "FAIRVIEW DENTAL CARE GROUP P.C. (NPI 1356707764, EIN 363607708)",
+    "CSG DENTAL IV, P.C. (NPI 1619335932)",
+    "Great Lakes Dental Partners (DSO platform entity)",
+    "Shore Capital Partners (PE backer)",
+    "DSO Strategy, LLC (Parikh consulting firm, founded 2019)"
+  ],
+  "durable_artifacts": [
+    "Roshan Parikh listed as authorized official (AO) on all 4 NPIs across 4 distinct IL ZIPs (60446, 60463, 60559, 60601)",
+    "Carillon Family Dental 450 N Weber Rd Romeoville 60446 confirmed on Great Lakes Dental Partners public locator: https://www.greatlakesdentalpartners.com/company/locations/",
+    "Fairview Dental Group 6317 Fairview Ave Westmont 60559 confirmed on Great Lakes Dental Partners public locator: https://www.greatlakesdentalpartners.com/company/locations/",
+    "Shore Capital Partners lists Great Lakes Dental Partners as portfolio company: https://www.shorecp.com/companies/great-lakes-dental-partners",
+    "Dr. Parikh's own site confirms PE recapitalization 2015 and GLDP founding: https://www.roshanparikh.com/about",
+    "EIN 363607708 on Fairview Dental Care Group PC (60559)",
+    "NPPES entity classification already dso_regional on Fairview (60559) and dso_national on Carillon (60446)"
+  ],
+  "mso_platform_pe_evidence": "Great Lakes Dental Partners is backed by Shore Capital Partners (PE recapitalization executed 2015 by Dr. Roshan Parikh). Shore Capital portfolio page: https://www.shorecp.com/companies/great-lakes-dental-partners. GLDP leadership page: https://www.greatlakesdentalpartners.com/company/leadership/. Dr. Parikh's bio confirms the PE recapitalization: https://www.roshanparikh.com/about. DSO platform structure confirmed (management services / DSO support organization providing services to 35+ partner locations per Shore Capital description).",
+  "stale_closed_false_positive_notes": "CSG Dental IV PC at 1 E Wacker Dr Chicago (60601) has 0 clinical providers in NPPES — this is the corporate admin/holding address for the DSO management entity, not a patient-facing GP location. It should be flagged as a potential non-clinical shell for the downstream gate. The Palos Heights Dental Group at 12130 S Harlem Ave (60463) is not confirmed on the GLDP locator (GLDP shows 7550 W College Dr for Palos Heights); this may be an earlier separately-held Parikh practice or a practice that was acquired/exited — warrants address-level confirmation against GLDP records.",
+  "evidence_chain": "AO signal: Roshan Parikh appears as NPPES authorized official on 4 GP organization NPIs across ZIPs 60446/60463/60559/60601. Documentary corroboration: (1) roshanparikh.com/about confirms Dr. Parikh founded Great Lakes Dental Partners, executed PE recapitalization with Shore Capital in 2015, grew to 35+ locations; (2) GLDP public locator (greatlakesdentalpartners.com/company/locations) lists Carillon Family Dental at 450 N Weber Rd Romeoville 60446 (exact address match) and Fairview Dental Group at 6317 Fairview Ave Westmont 60559 (exact address match); (3) Shore Capital portfolio page confirms GLDP as PE-backed portfolio company; (4) 'CSG Dental' = Chicagoland Smile Group, Parikh's original friendly-PC naming convention, with CSG Dental IV at the 1 E Wacker corporate address being the management entity. Result: branded_dso tier with pe_backed=true is fully supported by multiple documentary sources.",
+  "future_app_notes": "1. Confirm whether CSG Dental IV at 1 E Wacker should be excluded from GP denominator as a non-clinical corporate shell (0 providers). 2. Palos Heights Dental Group (12130 S Harlem, 60463) — verify whether this address is a former GLDP location, an early Parikh practice predating the DSO, or a currently-active GLDP partner not yet on the public locator. 3. GLDP locator shows 'College Drive Dental Associates' at 7550 W College Dr Palos Heights as the current GLDP Palos Heights location — check whether location_id 4f102207d0880e37 should be reconciled against that NPI. 4. Watch for GLDP's continued IL expansion — Shore Capital-backed platforms typically add 4-8 locations per year. 5. EIN 363607708 on Fairview Dental Care Group could be used to find other Parikh-linked entities sharing this EIN.",
+  "classifications": [
+    {
+      "location_id": "a9890af776776cb4",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Dr. Roshan Parikh DDS MBA, founder of Great Lakes Dental Partners (Shore Capital PE-backed)",
+      "network_id": "ao:PARIKH_ROSHAN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across ZIPs 60446/60463/60559/60601",
+          "entity_classification=dso_national (already classified Heartland Dental by classifier)",
+          "NPPES authorized official: ROSHAN PARIKH"
+        ],
+        "evidence": [
+          "Carillon Family Dental 450 N Weber Rd Romeoville 60446 confirmed on Great Lakes Dental Partners public locator: https://www.greatlakesdentalpartners.com/company/locations/",
+          "GLDP is PE-backed by Shore Capital Partners (recapitalization 2015): https://www.shorecp.com/companies/great-lakes-dental-partners",
+          "Dr. Parikh biography confirms founding and PE recapitalization: https://www.roshanparikh.com/about"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.greatlakesdentalpartners.com/company/locations/",
+        "https://www.shorecp.com/companies/great-lakes-dental-partners",
+        "https://www.roshanparikh.com/about"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "ROSHAN PARIKH",
+        "reach": 4,
+        "zips": ["60446", "60463", "60559", "60601"]
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Carillon Family Dental at 450 N Weber Rd Romeoville 60446 is confirmed on the Great Lakes Dental Partners public locator at the exact address. GLDP is founded by Dr. Roshan Parikh and is PE-backed by Shore Capital Partners (2015 recapitalization). The NPPES classifier had already flagged this as dso_national (Heartland Dental), but the AO evidence points to it being a GLDP-managed friendly-PC location rather than a Heartland-operated location — the 'Heartland' classification may be based on a brand name match. GLDP is the confirmed DSO platform here."
+    },
+    {
+      "location_id": "4f102207d0880e37",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Dr. Roshan Parikh DDS MBA, founder of Great Lakes Dental Partners (Shore Capital PE-backed)",
+      "network_id": "ao:PARIKH_ROSHAN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across ZIPs 60446/60463/60559/60601",
+          "entity_classification=solo_established (current classifier — likely understated)",
+          "NPPES authorized official: ROSHAN PARIKH",
+          "Dr. Parikh listed as practicing dentist at 12130 S Harlem Ave Palos Heights per DentalPlans"
+        ],
+        "evidence": [
+          "Dr. Roshan Parikh confirmed as dentist at Palos Heights, IL (DentalPlans listing for 60463): https://www.dentalplans.com/dentists/illinois/palos-heights/60463/dr-roshan-parikh-239301/",
+          "GLDP is PE-backed by Shore Capital Partners (recapitalization 2015): https://www.shorecp.com/companies/great-lakes-dental-partners",
+          "Dr. Parikh biography confirms GLDP founding and PE recapitalization: https://www.roshanparikh.com/about"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.dentalplans.com/dentists/illinois/palos-heights/60463/dr-roshan-parikh-239301/",
+        "https://www.greatlakesdentalpartners.com/company/locations/",
+        "https://www.shorecp.com/companies/great-lakes-dental-partners",
+        "https://www.roshanparikh.com/about"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "ROSHAN PARIKH",
+        "reach": 4,
+        "zips": ["60446", "60463", "60559", "60601"]
+      },
+      "web_searched": true,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "stale_closed_note": "Address 12130 S Harlem Ave Palos Heights 60463 does NOT appear on the GLDP public locator (GLDP shows 7550 W College Dr Palos Heights as their current Palos Heights location). This may be a former location, an early Parikh practice predating the DSO, or a practice not yet migrated to the public locator. Downstream gate should confirm whether this is a currently active GLDP partner at this address.",
+      "reasoning": "Roshan Parikh is confirmed as the authorized official and practicing dentist at this Palos Heights address, and he is the founder of the PE-backed GLDP DSO. However, this specific address (12130 S Harlem Ave) does not appear on the GLDP public locator — a different Palos Heights address (7550 W College Dr) is shown as the GLDP partner there. The connection to GLDP is structurally very likely given the AO identity and Parikh's known DSO ownership, but address-level locator confirmation is missing. Gate status is candidate pending that confirmation."
+    },
+    {
+      "location_id": "fff7d58945e09936",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Dr. Roshan Parikh DDS MBA, founder of Great Lakes Dental Partners (Shore Capital PE-backed)",
+      "network_id": "ao:PARIKH_ROSHAN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across ZIPs 60446/60463/60559/60601",
+          "entity_classification=dso_regional (already classified Great Lakes Dental Partners by classifier)",
+          "EIN 363607708",
+          "year_established=1987",
+          "NPPES authorized official: ROSHAN PARIKH"
+        ],
+        "evidence": [
+          "Fairview Dental Group 6317 Fairview Ave Ste 6 Westmont 60559 confirmed on Great Lakes Dental Partners public locator at exact address: https://www.greatlakesdentalpartners.com/company/locations/",
+          "GLDP is PE-backed by Shore Capital Partners (recapitalization 2015): https://www.shorecp.com/companies/great-lakes-dental-partners",
+          "Dr. Parikh biography confirms GLDP founding and PE recapitalization: https://www.roshanparikh.com/about",
+          "Fairview Dental Care website confirms GLDP affiliation: https://www.fairviewdentalcare.com/"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.greatlakesdentalpartners.com/company/locations/",
+        "https://www.shorecp.com/companies/great-lakes-dental-partners",
+        "https://www.roshanparikh.com/about",
+        "https://www.fairviewdentalcare.com/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "ROSHAN PARIKH",
+        "reach": 4,
+        "zips": ["60446", "60463", "60559", "60601"]
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Fairview Dental Group at 6317 Fairview Ave Westmont 60559 is confirmed on the Great Lakes Dental Partners public locator at exact address. GLDP is founded by Dr. Roshan Parikh and is PE-backed by Shore Capital Partners. The NPPES classifier had already correctly flagged this as dso_regional with affiliated_dso=Great Lakes Dental Partners. Strong double confirmation: AO identity + GLDP locator match."
+    },
+    {
+      "location_id": "eb68bac52463172c",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Dr. Roshan Parikh DDS MBA, founder of Great Lakes Dental Partners (Shore Capital PE-backed); CSG Dental = Chicagoland Smile Group, original friendly-PC vehicle",
+      "network_id": "ao:PARIKH_ROSHAN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across ZIPs 60446/60463/60559/60601",
+          "entity_classification=solo_established (current classifier — almost certainly incorrect for this entity)",
+          "provider_count=0 (no clinical providers at this address)",
+          "NPPES authorized official: ROSHAN PARIKH",
+          "1 E Wacker Dr Chicago is a commercial office tower — known corporate admin address for GLDP"
+        ],
+        "evidence": [
+          "CSG Dental II (same CSG family) at 1 E Wacker Dr Suite 400 Chicago confirmed in NPPES records as Roshan Parikh's entity: https://npiprofile.com/npi/1174980015",
+          "Search results confirm CSG = Chicagoland Smile Group, Parikh's founding vehicle",
+          "Dr. Parikh biography confirms GLDP founding and corporate structure: https://www.roshanparikh.com/about",
+          "GLDP is PE-backed by Shore Capital Partners: https://www.shorecp.com/companies/great-lakes-dental-partners"
+        ]
+      },
+      "evidence_urls": [
+        "https://npiprofile.com/npi/1174980015",
+        "https://www.roshanparikh.com/about",
+        "https://www.shorecp.com/companies/great-lakes-dental-partners"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "ROSHAN PARIKH",
+        "reach": 4,
+        "zips": ["60446", "60463", "60559", "60601"]
+      },
+      "web_searched": true,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "stale_closed_note": "CSG Dental IV PC at 1 E Wacker Dr Chicago 60601 has 0 clinical providers in NPPES. This is the corporate/admin address for the GLDP DSO management entity — it is not a patient-facing clinical practice. Downstream gate should evaluate whether this location should be excluded from the GP denominator as a non-clinical corporate shell (similar to da_unverified or org_only_npi treatment). It should NOT be counted as a GP clinical location.",
+      "reasoning": "CSG Dental IV PC at 1 E Wacker Dr (a commercial office tower) with 0 providers is the corporate/administrative entity for Roshan Parikh's GLDP management structure. 'CSG' (Chicagoland Smile Group) was his founding friendly-PC vehicle. The address and zero-provider count make clear this is an admin/billing/management entity, not a clinical GP practice. While it is definitively part of the GLDP branded_dso network (owner identity confirmed), it should be flagged as a potential non-clinical shell for the denominator gate."
+    }
+  ]
+}

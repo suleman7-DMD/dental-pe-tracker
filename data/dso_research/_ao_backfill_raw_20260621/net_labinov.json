@@ -1,0 +1,42 @@
+{
+  "_batch": "net_labinov",
+  "_lane": "AO_network",
+  "_row_class": "protected_58",
+  "_protected_network_hold": true,
+  "_note": "PROTECTED network ao:LABINOV_BORIS. protected_network_hold=true PRESERVED regardless of evidence strength, until explicitly released.",
+  "result": {
+    "network_id": "ao:LABINOV_BORIS",
+    "brand": "D2 Dental at Oak Street",
+    "is_real_multilocation": true,
+    "ownership_structure": "mso_management_company",
+    "structure_evidence": "D2 Dental at Oak Street P.C. is a single friendly-PC shell used as the licensed entity across 7+ IL addresses. NPI 1821301102 (D2 Dental of Illinois, P.C.) lists DBA 'Destiny Dental' and mailing address 137 N Oak Park Ave, Suite 200, Oak Park, IL — corporate HQ of L2 Management, the DSO that manages Destiny Dental. Boris Labinov is CFO of L2 Management (non-dentist), co-founder of Destiny Dental with Jim Lucci. D2 Dental of Michigan and Ohio also use 137 N Oak Park Ave. Avesis lists 'D2 Dental of Illinois' and 'D2 Dental of Lansing' as Destiny Dental network providers. Textbook friendly-PC/MSO: single P.C. name across all IL offices + non-dentist CFO as AO + management company (L2 Management) at shared Oak Park HQ.",
+    "evidence_tier": "branded_dso",
+    "pe_backed": true,
+    "pe_evidence": "Dixon Midland Company (Chicago PE) co-founded/funded Destiny Dental in 2010. Destiny Dental acquired by ProSmile Holdings LLC on September 4, 2024. ProSmile backed by TriSpan (PE, NY/London). Sources: ProSmile press release, Livingstone Partners tombstone, TriSpan press release, Private Equity Info profile.",
+    "documentary_urls": [
+      {"url": "https://opennpi.com/provider/1821301102", "shows": "NPI 1821301102: D2 Dental of Illinois P.C. DBA 'Destiny Dental', mailing 137 N Oak Park Ave Suite 200 Oak Park IL (L2 Management HQ)"},
+      {"url": "https://www.prosmile.com/prosmile-completes-acquisition-of-destiny-dental-practices-located-in-midwest/", "shows": "ProSmile acquired Destiny Dental Sept 2024, MI/IL/IN/WI. Jim Lucci = Co-Founder/President of L2 Management (DSO supporting Destiny Dental)"},
+      {"url": "https://livingstonepartners.com/en-us/transactions/destiny-dental-has-been-acquired-by-prosmile", "shows": "Destiny Dental founded 2010 by Jim Lucci and Boris Labinov with Dixon Midland Company (PE). L2 Management is the DSO entity supporting practices."},
+      {"url": "https://businessprofiles.com/details/destiny-dental-of-lansing/IL-67890876/boris-labinov", "shows": "Boris Labinov registered agent for Destiny Dental of Lansing IL; CFO of L2 Management since 2018"},
+      {"url": "https://privateequityinfo.com/directory/private-equity-portfolio-company/destiny-dental", "shows": "Destiny Dental PE portfolio profile: Dixon Midland Company as PE backer, acquired by ProSmile 2024"},
+      {"url": "https://avesissymplr.veriben.net/location-search/8035827-d2-dental-of-illinois-chicago-il?healthPlanCompany=CookCounty", "shows": "Avesis network lists 'D2 Dental of Illinois' under Destiny Dental provider network"}
+    ],
+    "durable_non_ao_artifact": {
+      "type": "shared_parent",
+      "detail": "NPI 1821301102 (D2 Dental of Illinois P.C.) has DBA 'Destiny Dental' and mailing 137 N Oak Park Ave Suite 200 Oak Park IL (L2 Management office). D2 Dental of Michigan (NPI 1821420043) and Ohio (NPI 1831520428) also list 137 N Oak Park Ave. Shared corporate mailing across all D2 Dental entities in multiple states — independent of and more durable than the AO artifact.",
+      "source_url": "https://opennpi.com/provider/1821301102"
+    },
+    "members": [
+      {"location_id": "c2c46e94895cda83", "practice_name": "D2 DENTAL AT OAK STREET PC", "confirmed_at_brand": true, "member_url": null, "note": "7000 Cermak Rd, Berwyn 60402. Tied via P.C. name + AO + shared Oak Park mailing; no individual locator URL."},
+      {"location_id": "d616036cc2145cf4", "practice_name": "D2 DENTAL AT OAK STREET PC", "confirmed_at_brand": true, "member_url": "https://providerwire.com/general-practice-dentistry/illinois/blue-island/d-2-dental-at-oak-street-pc-1639587025", "note": "3046 W 127th St, Blue Island 60406. NPI 1639587025, Boris Labinov AO."},
+      {"location_id": "3f1051899da7b50d", "practice_name": "D2 DENTAL AT OAK STREET PC", "confirmed_at_brand": true, "member_url": "https://opennpi.com/provider/1821301102", "note": "4318 S State St, Chicago 60609. NPI 1821301102 D2 Dental of Illinois P.C. DBA Destiny Dental, mailing 137 N Oak Park Ave."},
+      {"location_id": "d318648e80a552ff", "practice_name": "D2 DENTAL AT OAK STREET PC", "confirmed_at_brand": true, "member_url": null, "note": "1715 E 95th St, Chicago 60617. Tied via shared P.C. shell + AO; no individual locator URL."},
+      {"location_id": "9eb34e1dcb9933f8", "practice_name": "D2 DENTAL AT OAK STREET PC", "confirmed_at_brand": true, "member_url": "https://www.hipaaspace.com/medical_billing/coding/national_provider_identifier/codes/npi_1194137208.aspx", "note": "4848 W Irving Park Rd, Chicago 60641. NPI 1194137208."},
+      {"location_id": "ef079f1cfd53d7f0", "practice_name": "D2 DENTAL AT OAK STREET PC", "confirmed_at_brand": true, "member_url": null, "note": "3348 W 87th St, Chicago 60652. Tied via P.C. shell + Destiny Dental brand; no individual locator URL."},
+      {"location_id": "e4fb4be6a4efee52", "practice_name": "D2 DENTAL AT OAK STREET PC", "confirmed_at_brand": true, "member_url": null, "note": "1541 W Devon Ave, Chicago 60660. Tied via shared P.C. shell + AO; no individual locator URL."}
+    ],
+    "evidence_quality": "verified",
+    "gate_status": "ready_for_validation",
+    "reasoning": "D2 Dental at Oak Street P.C. is the IL friendly-PC shell for Destiny Dental, a DSO managed by L2 Management (HQ 137 N Oak Park Ave). Confirmed by OpenNPI DBA 'Destiny Dental' on NPI 1821301102 and shared corporate mailing across D2 entities in IL/MI/OH. Boris Labinov is CFO of L2 Management (non-dentist), AO across all 7 P.C. locations = MSO agent structure. PE doubly documented: Dixon Midland (2010 founding) and ProSmile/TriSpan (Sept 2024 acquisition). 3 of 7 members NPI-confirmed; all 7 confirmed via shared P.C. + AO + corporate mailing."
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "_batch": "ind_cicero2",
+  "_lane": "AO_network",
+  "_row_class": "original_13",
+  "_protected_network_hold": false,
+  "_note": "Original-13 individual rows. Evidence-only suffices to advance per gate rule (no protected hold).",
+  "results": [
+    {
+      "location_id": "addadba0d25e3812",
+      "practice_name": "Image Dental LLC",
+      "is_multilocation": true,
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "documentary_urls": [
+        {
+          "url": "https://dentaltownchicago.com/dentist/cicero/",
+          "shows": "States 'Image Dental in Cicero is part of the Dental Town Chicago family. Our twelve dental offices work with families throughout the Chicago area' — names Dr. Sinan Razzak as Founder and President"
+        },
+        {
+          "url": "https://dentaltownchicago.com/",
+          "shows": "Lists all 12 Dental Town Chicago offices including Cicero (3020 S Cicero Ave), Bedford Park (7250 S Cicero Ave Ste F), Oakbrook Terrace (17W679 Roosevelt Rd) — the exact three AO cluster-mate addresses"
+        },
+        {
+          "url": "https://dentaltownchicago.com/doctor/dr-sinan-razzak/",
+          "shows": "Dr. Sinan Razzak profile confirming Founder/President role across the 12-office network including Image Dental LLC and Bedford Dental LLC"
+        }
+      ],
+      "durable_non_ao_artifact": {
+        "type": "shared_website",
+        "detail": "dentaltownchicago.com lists all 12 offices under Dr. Sinan Razzak as Founder/President; Cicero page names 'Image Dental in Cicero' as part of the family; Bedford Park and Oakbrook Terrace match AO cluster-mate addresses.",
+        "source_url": "https://dentaltownchicago.com/"
+      },
+      "evidence_quality": "verified",
+      "gate_status": "ready_for_validation",
+      "reasoning": "Public-facing 12-office group website explicitly names Image Dental as part of the Dental Town Chicago family under Dr. Sinan Razzak (Founder/President); cluster-mate addresses corroborate. No PE/DSO/MSO platform structure found — dentist-owned multi-location (dentist_multi)."
+    },
+    {
+      "location_id": "fb2614131429927d",
+      "practice_name": "Perfect Dental Smile, Ltd",
+      "is_multilocation": true,
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "documentary_urls": [
+        {
+          "url": "https://perfectdentalsmiles.com/",
+          "shows": "Lists three locations: 2545 W Peterson Ave Chicago, 6017 W Cermak Rd Cicero, 4611 N Western Ave Chicago — confirming Cicero + Peterson Ave same brand"
+        },
+        {
+          "url": "https://perfectdentalsmiles.com/meet-our-ceo/",
+          "shows": "Identifies Dr. Bushra Alazzawi DDS as founder/CEO/owner operating all three Perfect Dental Smile locations"
+        },
+        {
+          "url": "https://www.yelp.com/biz/perfect-dental-smile-cicero-2",
+          "shows": "Yelp listing at 6017 W Cermak Rd, Cicero IL 60804 — same brand, active reviews through May 2026"
+        }
+      ],
+      "durable_non_ao_artifact": {
+        "type": "name_chain",
+        "detail": "perfectdentalsmiles.com is the shared website for all three Perfect Dental Smile offices; Cicero (6017 W Cermak Rd) and Chicago Peterson Ave (2545 W Peterson Ave) appear together under Dr. Bushra Alazzawi as CEO/founder — documentary name-chain confirmation.",
+        "source_url": "https://perfectdentalsmiles.com/"
+      },
+      "evidence_quality": "verified",
+      "gate_status": "ready_for_validation",
+      "reasoning": "Practice's own website lists 3 locations including Cicero and Peterson Ave as a single branded group; CEO page names Dr. Bushra Alazzawi as founder/owner — confirms the name-chain and multi-location ownership beyond AO. No PE/DSO/MSO; dentist_multi."
+    },
+    {
+      "location_id": "2ab7cdb707db8803",
+      "practice_name": "MetroSmiles - Cicero Dental PC",
+      "is_multilocation": true,
+      "evidence_tier": "branded_dso",
+      "pe_backed": false,
+      "documentary_urls": [
+        {
+          "url": "https://metrosmilesdental.com/locations/",
+          "shows": "MetroSmiles Dental site lists 7 locations including Dolton 808 E Sibley Blvd (matches AO cluster-mate 'South Holland Dental PC') and Berwyn/Cicero 4842 W Cermak Rd Cicero IL 60804"
+        },
+        {
+          "url": "https://metrosmilesdental.com/location/metrosmiles-dolton/",
+          "shows": "MetroSmiles Dolton at 808 E Sibley Blvd, Dolton IL 60419 — exact address match to cluster-mate 'South Holland Dental PC'"
+        },
+        {
+          "url": "https://metrosmilesdental.com/location/metrosmiles-pilsen/",
+          "shows": "MetroSmiles Pilsen at 2507 W Cermak Rd Chicago — aligns with 'Pilsen Dental Group' cluster-mate"
+        },
+        {
+          "url": "https://doctor.webmd.com/practice/metrosmiles-cicero-dental-pc-gp-b76bd818-edad-4668-a1ba-8fc8f4264e9c-overview",
+          "shows": "WebMD listing for 'Metrosmiles - Cicero Dental PC' at 4842 W Cermak Rd Cicero IL with Dr. Chris Tsaliagos confirmed affiliated"
+        }
+      ],
+      "durable_non_ao_artifact": {
+        "type": "shared_website",
+        "detail": "metrosmilesdental.com is the network website listing 7 locations under one brand; Cicero (4842 W Cermak Rd) and Dolton (808 E Sibley Blvd, exact match to cluster-mate 'South Holland Dental PC') both on roster; Pilsen aligns with 'Pilsen Dental Group' cluster-mate.",
+        "source_url": "https://metrosmilesdental.com/locations/"
+      },
+      "evidence_quality": "verified",
+      "gate_status": "ready_for_validation",
+      "reasoning": "7-location branded network with consistent brand identity across locally-named friendly PCs (Cicero + Dolton exact-match to cluster-mate; Pilsen aligns) — characteristic of branded_dso rather than simple dentist_multi. No PE backer found. NOTE: gate may re-test branded_dso vs dentist_multi — no separate MSO/management layer was documented, only the multi-loc brand + friendly-PC naming; flagged for gate judgment."
+    }
+  ]
+}

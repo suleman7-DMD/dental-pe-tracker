@@ -1,0 +1,549 @@
+{
+  "_meta": {
+    "wave": "hidden_local_consolidator_discovery_wave2_main_AO_reach4",
+    "standard": "corrected_2026-06-21",
+    "emits": "ready_for_validation_max",
+    "gate_ceiling": "ready_for_validation (NEVER final)",
+    "lane": "Main AO (Lane 1) \u2014 evidence-only, NO DB writes, NO consolidation",
+    "scope": "Chicagoland / watched-IL GP ONLY (Boston/MA parked)",
+    "source_script": "scrapers/ao_network_evidence.js",
+    "targets_file": "data/dso_research/ownership_evidence_targets_20260621.json",
+    "raw_dir": "data/dso_research/_reach4_raw_20260621/",
+    "generated": "2026-06-21",
+    "user_go": "GO: Launch Hidden Local Consolidator Discovery Wave 2 \u2014 Main AO lane. Use the staged reach=4 AO batch in scrapers/ao_network_evidence.js. ... explicitly cleared as evidence-only work. Do NOT run broad reach 2-3 yet. Do NOT write DB. Do NOT consolidate.",
+    "taxonomy_note": "DSO tiers decided by MSO/management/platform/DSO-brand STRUCTURE, not by private equity. pe_backed is a SEPARATE flag; pe_backed=false does NOT downgrade a DSO. Specialist-dominant networks excluded from the GP census (undetermined).",
+    "networks": 14,
+    "locations": 56,
+    "verdict_tally": {
+      "pe_mso_backed": 3,
+      "dso_brand": 5,
+      "dentist_owned_multi": 6
+    },
+    "tier_tally": {
+      "branded_dso": 28,
+      "dentist_multi": 23,
+      "stealth_dso": 4,
+      "undetermined": 1
+    },
+    "gate_tally": {
+      "ready_for_validation": 48,
+      "candidate": 7,
+      "undetermined": 1
+    },
+    "n_ready_for_validation": 48,
+    "no_db_write": true,
+    "no_consolidation": true,
+    "reach_2_3_not_run": true,
+    "file_role": "QA / validation companion to ao_network_evidence_reach4_20260621.json"
+  },
+  "validation": {
+    "n_networks": {
+      "value": 14,
+      "expected": 14,
+      "pass": true
+    },
+    "n_locations": {
+      "value": 56,
+      "expected": 56,
+      "pass": true
+    },
+    "all_location_ids_resolve_in_targets": {
+      "pass": true,
+      "orphans": []
+    },
+    "gate_ceiling_no_final": {
+      "pass": true
+    },
+    "ready_for_validation_corroboration": {
+      "n_ready_for_validation": 48,
+      "all_have_url_and_evidence": true,
+      "failures": []
+    },
+    "cross_network_location_collisions": {}
+  },
+  "tallies": {
+    "verdict": {
+      "pe_mso_backed": 3,
+      "dso_brand": 5,
+      "dentist_owned_multi": 6
+    },
+    "tier": {
+      "branded_dso": 28,
+      "dentist_multi": 23,
+      "stealth_dso": 4,
+      "undetermined": 1
+    },
+    "gate": {
+      "ready_for_validation": 48,
+      "candidate": 7,
+      "undetermined": 1
+    }
+  },
+  "regate_audit": [
+    {
+      "network": "LAWRENCE GROH",
+      "location_id": "55644c4a32cd4100",
+      "name": "ELMHURST DENTAL GROUP LTD",
+      "final_tier": "dentist_multi",
+      "final_gate": "ready_for_validation",
+      "regate_note": "branded_dso->dentist_multi: no MSO/management/platform/DSO-brand evidence found (dentist-owned multi only)"
+    },
+    {
+      "network": "LAWRENCE GROH",
+      "location_id": "caed29dace2d9e21",
+      "name": "ELMHURST DENTAL GROUP, LTD",
+      "final_tier": "dentist_multi",
+      "final_gate": "ready_for_validation",
+      "regate_note": "branded_dso->dentist_multi: no MSO/management/platform/DSO-brand evidence found (dentist-owned multi only)"
+    },
+    {
+      "network": "STEVE NAPIER",
+      "location_id": "a851519b74e82aa8",
+      "name": "GRAND DENTAL ASSOCIATES, P.C.",
+      "final_tier": "dentist_multi",
+      "final_gate": "ready_for_validation",
+      "regate_note": "branded_dso->dentist_multi: no MSO/management/platform/DSO-brand evidence found (dentist-owned multi only)"
+    },
+    {
+      "network": "STEVE NAPIER",
+      "location_id": "09b95d92587571f6",
+      "name": "GRAND DENTAL ASSOCIATES, P.C.",
+      "final_tier": "dentist_multi",
+      "final_gate": "ready_for_validation",
+      "regate_note": "branded_dso->dentist_multi: no MSO/management/platform/DSO-brand evidence found (dentist-owned multi only)"
+    },
+    {
+      "network": "STEVE NAPIER",
+      "location_id": "550dd1126a3e2247",
+      "name": "GRAND DENTAL ASSOCIATES, P.C.",
+      "final_tier": "dentist_multi",
+      "final_gate": "ready_for_validation",
+      "regate_note": "branded_dso->dentist_multi: no MSO/management/platform/DSO-brand evidence found (dentist-owned multi only)"
+    },
+    {
+      "network": "STEVEN REMPAS",
+      "location_id": "3bc304a7819a234f",
+      "name": "WEBSTER DENTAL CARE OF CICERO",
+      "final_tier": "dentist_multi",
+      "final_gate": "candidate",
+      "regate_note": "branded_dso->dentist_multi: no MSO/management/platform/DSO-brand evidence found (dentist-owned multi only)"
+    }
+  ],
+  "regate_review_needed": [
+    {
+      "network": "LAWRENCE GROH",
+      "location_id": "55644c4a32cd4100",
+      "name": "ELMHURST DENTAL GROUP LTD",
+      "auto_regated_to": "dentist_multi",
+      "reason_flagged": "network-level mso_platform_pe_evidence is documented but per-row text lacked platform keywords, so the row-scoped re-gate downgraded it. Gate Owner should reconcile to branded_dso.",
+      "network_mso_platform_pe_evidence": "Partners in Care (est. 1990) functions as the management entity of Elmhurst Dental Group, Ltd., with a non-dentist CEO/Managing Partner (Colleen Yaccino). This constitutes a centralized management layer above the clinical practices. No PE backer identified. Source: https://elmhurstdental.com/partners-in-care/"
+    },
+    {
+      "network": "LAWRENCE GROH",
+      "location_id": "caed29dace2d9e21",
+      "name": "ELMHURST DENTAL GROUP, LTD",
+      "auto_regated_to": "dentist_multi",
+      "reason_flagged": "network-level mso_platform_pe_evidence is documented but per-row text lacked platform keywords, so the row-scoped re-gate downgraded it. Gate Owner should reconcile to branded_dso.",
+      "network_mso_platform_pe_evidence": "Partners in Care (est. 1990) functions as the management entity of Elmhurst Dental Group, Ltd., with a non-dentist CEO/Managing Partner (Colleen Yaccino). This constitutes a centralized management layer above the clinical practices. No PE backer identified. Source: https://elmhurstdental.com/partners-in-care/"
+    },
+    {
+      "network": "STEVEN REMPAS",
+      "location_id": "3bc304a7819a234f",
+      "name": "WEBSTER DENTAL CARE OF CICERO",
+      "auto_regated_to": "dentist_multi",
+      "reason_flagged": "network-level mso_platform_pe_evidence is documented but per-row text lacked platform keywords, so the row-scoped re-gate downgraded it. Gate Owner should reconcile to branded_dso.",
+      "network_mso_platform_pe_evidence": "Webster Dental Management is a documented management/MSO entity: the official practice website webdentalchicago.com lists a separate leadership team page at websterdentalmanagement.com/about/. NPPES records list 'WEBSTER DENTAL MANAGEMENT' as parent_company on two cluster locations. The organization appointed an external CEO (Michael Errin Rios) in 2020, describing WDC as 'an industry leading dental service organization.' No PE sponsor identified; as of 2018 Group Dentistry Now documented it as 'owned by two dentists, without any venture capital partners.' MSO/management layer confirmed; PE=false. Sources: https://www.prnewswire.com/news-releases/webster-dental-care-announces-new-interim-chief-executive-officer-301139244.html and https://www.webdentalchicago.com/ and https://www.groupdentistrynow.com/dso-group-blog/group-dentistry-nows-emerging-dental-groups-to-watch-in-2018/"
+    }
+  ],
+  "candidates_unresolved": [
+    {
+      "network": "OSCAR GONZALEZ",
+      "location_id": "072dc7c20b5c2575",
+      "name": "ALL PERFECT SMILES OF ELMHURST PC",
+      "candidate_tier": "stealth_dso",
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "missing": "no documentary corroborator yet",
+      "reasoning": "All Perfect Smiles of Elmhurst PC shares the 'All Perfect Smiles'/'Perfect Smiles' consumer brand and the same AO (Oscar Geovanni Gonzalez DDS MBA, Director of Operations) with the Beverly location. BBB corroborates this is a multi-location group under Dr. Lena Halikias as President. The PC entity structure with a Director of Operations is consistent with a DSO/MSO managed group. No documentary MSO/PE filing was found for the All Perfect Smiles sub-group, so pe_backed=null and gate_status=candidate. Candidate_tier is stealth_dso rather than dentist_multi because the 'Director of Operations' AO title (not an owner-dentist title) and the PC entity structure with multiple offices and an apparent management layer suggest a management-services arrangement \u2014 but MSO documentary proof is absent."
+    },
+    {
+      "network": "OSCAR GONZALEZ",
+      "location_id": "ed76f164091c7729",
+      "name": "ALL PERFECT SMILES OF BEVERLY PC",
+      "candidate_tier": "stealth_dso",
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "missing": "no documentary corroborator yet",
+      "reasoning": "All Perfect Smiles of Beverly PC is the apparent anchor location for the 'All Perfect Smiles'/'Perfect Smiles' consumer brand group. The group website (allperfectsmiles.com) is active with 8 doctors listed, confirming a corporate multi-provider structure. The AO is Oscar Gonzalez in an administrative/operations director capacity. The PC entity structure with a Director of Operations and multiple branded locations is consistent with stealth_dso \u2014 but the missing element is a documentary management-company URL or PE filing specifically for the All Perfect Smiles sub-group. Dr. Lena Halikias appears as President per BBB, which may indicate a dentist-owned model with a management layer, but this is not confirmed from a management-services filing. pe_backed=null (no PE evidence found). gate_status=candidate because the MSO/management-services layer is inferred from structure, not documented with a URL."
+    },
+    {
+      "network": "MOHAMED WAHEED",
+      "location_id": "9547fa276406987c",
+      "name": "DHCCLTD",
+      "candidate_tier": "undetermined",
+      "gate_status": "undetermined",
+      "confidence": "low",
+      "missing": "owner type unresolved (see reasoning / specialist exclusion)",
+      "reasoning": "DHCCLTD is classified org_only_npi with 0 providers \u2014 confirmed billing/admin shell. No operating clinic corroborated at this address. The AO title is DENTIST rather than OWNER/PRESIDENT. No web presence for DHCCLTD found. Cannot confirm as an operating GP location. Tier = undetermined; exclude from GP denominator."
+    },
+    {
+      "network": "KHALIL TAKLA",
+      "location_id": "73704d8b6eeeac1b",
+      "name": "BRIGHT DENTAL CARE",
+      "candidate_tier": "dentist_multi",
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "missing": "no documentary corroborator yet",
+      "reasoning": "KHALIL TAKLA is the AO on this Lombard NPI. Documentary evidence confirms Bright Dental Care PC (dba Smile Dental Care) is Dr. Khalil Takla's entity, making this dentist_multi. However, Yelp reports this location CLOSED, so gate_status stays candidate pending active-status verification. No MSO or PE evidence found."
+    },
+    {
+      "network": "KHALIL TAKLA",
+      "location_id": "b75d0372b61e450a",
+      "name": "7011 W ARCHER AVE",
+      "candidate_tier": "dentist_multi",
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "missing": "no documentary corroborator yet",
+      "reasoning": "AO identity (KHALIL TAKLA) and a DentalPlans listing confirm Dr. Takla at this 60638 Chicago address, making network membership clear \u2014 dentist_multi is the correct tier. However, the bare-address NPPES org name, shared phone with the 60632 location, and absence of a distinct brand name raise a possible duplicate/stale-listing concern. Gate_status is candidate pending physical verification that 7011 W Archer Ave is a genuinely separate operating office and not a satellite or relocated listing of the 60632 Brown Archer Dental office."
+    },
+    {
+      "network": "STEVEN REMPAS",
+      "location_id": "3bc304a7819a234f",
+      "name": "WEBSTER DENTAL CARE OF CICERO",
+      "candidate_tier": "dentist_multi",
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "missing": "no documentary corroborator yet",
+      "reasoning": "WEBSTER DENTAL CARE OF CICERO at 6130 W Cermak Rd is a confirmed Webster Dental Care branded location (same brand/AO as 3 corroborated locations) but is CLOSED per Yelp as of May 2026 and is not listed on the active webdentalchicago.com/locations/ page. Classified as branded_dso (same network) but gate_status=candidate because (1) this specific location lacks NPPES parent_company corroboration, (2) it is likely closed/stale and should not remain in the active GP denominator. The downstream gate should validate closure and consider reclassification to solo_inactive or removal from the active denominator."
+    },
+    {
+      "network": "ROSHAN PARIKH",
+      "location_id": "4f102207d0880e37",
+      "name": "PALOS HEIGHTS DENTAL GROUP, P.C.",
+      "candidate_tier": "branded_dso",
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "missing": "no documentary corroborator yet",
+      "reasoning": "Roshan Parikh is confirmed as authorized official and practicing dentist at this Palos Heights address, and he is the founder of the PE-backed GLDP DSO. However, 12130 S Harlem Ave does not appear on the GLDP public locator \u2014 a different Palos Heights address (7550 W College Dr) is shown there. Connection to GLDP is structurally very likely given the AO identity, but address-level locator confirmation is missing. Gate status: candidate pending that confirmation."
+    },
+    {
+      "network": "ROSHAN PARIKH",
+      "location_id": "eb68bac52463172c",
+      "name": "CSG DENTAL IV, P.C.",
+      "candidate_tier": "branded_dso",
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "missing": "no documentary corroborator yet",
+      "reasoning": "CSG Dental IV PC at 1 E Wacker Dr (a commercial office tower, Suite 400) with 0 providers is the corporate/administrative entity for Roshan Parikh's GLDP management structure. 'CSG' (Chicagoland Smile Group) was his original friendly-PC vehicle. The zero-provider count and office tower address make clear this is a management/billing/admin entity, not a clinical GP practice. It is definitively part of the GLDP branded_dso network (owner identity confirmed), but should be flagged as a probable non-clinical shell for denominator purposes. Gate status: candidate because no public-facing patient website exists for this entity at this address."
+    }
+  ],
+  "specialist_or_undetermined_flags": [
+    {
+      "network": "MOHAMED WAHEED",
+      "location_id": "9547fa276406987c",
+      "name": "DHCCLTD",
+      "reasoning": "DHCCLTD is classified org_only_npi with 0 providers \u2014 confirmed billing/admin shell. No operating clinic corroborated at this address. The AO title is DENTIST rather than OWNER/PRESIDENT. No web presence for DHCCLTD found. Cannot confirm as an operating GP location. Tier = undetermined; exclude from GP denominator."
+    }
+  ],
+  "already_corporate_in_db": [
+    {
+      "network": "BELINDA HUERTA",
+      "location_id": "4afceaeeaa164e94",
+      "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "network": "BELINDA HUERTA",
+      "location_id": "bdc1c2d27954f752",
+      "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "network": "BELINDA HUERTA",
+      "location_id": "a0b36b77759aefe3",
+      "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "network": "BELINDA HUERTA",
+      "location_id": "8a3addfc27e73bbf",
+      "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "network": "LAWRENCE GROH",
+      "location_id": "dc09d390c733b900",
+      "name": "ELMHURST DENTAL GROUP, LTD",
+      "current_db_entity_classification": "dso_regional",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "network": "LAWRENCE GROH",
+      "location_id": "55644c4a32cd4100",
+      "name": "ELMHURST DENTAL GROUP LTD",
+      "current_db_entity_classification": "dso_regional",
+      "candidate_tier": "dentist_multi"
+    },
+    {
+      "network": "LINDSAY BEARDEN",
+      "location_id": "bf7a26c4684ee32a",
+      "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "network": "LINDSAY BEARDEN",
+      "location_id": "f2bf548446e774e6",
+      "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "network": "LINDSAY BEARDEN",
+      "location_id": "fff9fbbb819f006a",
+      "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "network": "LINDSAY BEARDEN",
+      "location_id": "90aa8ae6b599ba7d",
+      "name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "network": "STEVEN REMPAS",
+      "location_id": "917453ec644f8a6a",
+      "name": "WEBSTER DENTAL CARE EVANSTON, LTD",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "network": "STEVEN REMPAS",
+      "location_id": "264b213aba147441",
+      "name": "WEBSTER DENTAL CARE EDISON PARK, LTD",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "network": "STEVEN REMPAS",
+      "location_id": "89d78c918000e532",
+      "name": "WEBSTER DENTAL CARE OF LAKEVIEW, LTD",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "network": "STEVEN REMPAS",
+      "location_id": "3bc304a7819a234f",
+      "name": "WEBSTER DENTAL CARE OF CICERO",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "dentist_multi"
+    },
+    {
+      "network": "AROON PAL",
+      "location_id": "f9477a050bdd75b1",
+      "name": "LAWNDALE DENTAL, P.C.",
+      "current_db_entity_classification": "dso_regional",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "network": "AROON PAL",
+      "location_id": "12975f69f58b30ee",
+      "name": "BERWYN FAMILY DENTAL",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "network": "ROSHAN PARIKH",
+      "location_id": "a9890af776776cb4",
+      "name": "CARILLON FAMILY DENTAL GROUP, PC",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "network": "ROSHAN PARIKH",
+      "location_id": "fff7d58945e09936",
+      "name": "FAIRVIEW DENTAL CARE GROUP P.C.",
+      "current_db_entity_classification": "dso_regional",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "network": "PHIL KURAL",
+      "location_id": "1d3025db88039962",
+      "name": "PREMIER DENTAL CLINC, LLC",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "network": "PHIL KURAL",
+      "location_id": "474a65cc8751d692",
+      "name": "STUDIO DENTAL, LLC",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    },
+    {
+      "network": "PHIL KURAL",
+      "location_id": "3e8b2ad53b9f9b4d",
+      "name": "STUDIO DENTAL, LLC",
+      "current_db_entity_classification": "dso_national",
+      "candidate_tier": "branded_dso"
+    }
+  ],
+  "new_intelligence_summary": {
+    "locations_already_dso_in_db": 21,
+    "locations_not_yet_dso_in_db": 35,
+    "note": "Evidence-only. NO DB writes performed. \"not yet dso in db\" rows are candidate intelligence for the Gate Owner, NOT promotions."
+  },
+  "per_network_oneliner": [
+    {
+      "network": "BELINDA HUERTA",
+      "verdict": "pe_mso_backed",
+      "recommended_tier": "branded_dso",
+      "tier_distribution": {
+        "branded_dso": 4
+      },
+      "has_mso_evidence": true,
+      "stale_fp_note": true
+    },
+    {
+      "network": "LAWRENCE GROH",
+      "verdict": "dso_brand",
+      "recommended_tier": "branded_dso",
+      "tier_distribution": {
+        "branded_dso": 2,
+        "dentist_multi": 2
+      },
+      "has_mso_evidence": true,
+      "stale_fp_note": true
+    },
+    {
+      "network": "OSCAR GONZALEZ",
+      "verdict": "pe_mso_backed",
+      "recommended_tier": "stealth_dso",
+      "tier_distribution": {
+        "stealth_dso": 4
+      },
+      "has_mso_evidence": true,
+      "stale_fp_note": true
+    },
+    {
+      "network": "STEVE NAPIER",
+      "verdict": "dentist_owned_multi",
+      "recommended_tier": "dentist_multi",
+      "tier_distribution": {
+        "branded_dso": 1,
+        "dentist_multi": 3
+      },
+      "has_mso_evidence": false,
+      "stale_fp_note": false
+    },
+    {
+      "network": "MOHAMED WAHEED",
+      "verdict": "dentist_owned_multi",
+      "recommended_tier": "dentist_multi",
+      "tier_distribution": {
+        "dentist_multi": 3,
+        "undetermined": 1
+      },
+      "has_mso_evidence": false,
+      "stale_fp_note": true
+    },
+    {
+      "network": "KHALIL TAKLA",
+      "verdict": "dentist_owned_multi",
+      "recommended_tier": "dentist_multi",
+      "tier_distribution": {
+        "dentist_multi": 4
+      },
+      "has_mso_evidence": false,
+      "stale_fp_note": true
+    },
+    {
+      "network": "LINDSAY BEARDEN",
+      "verdict": "dso_brand",
+      "recommended_tier": "branded_dso",
+      "tier_distribution": {
+        "branded_dso": 4
+      },
+      "has_mso_evidence": true,
+      "stale_fp_note": true
+    },
+    {
+      "network": "STEVEN REMPAS",
+      "verdict": "dso_brand",
+      "recommended_tier": "branded_dso",
+      "tier_distribution": {
+        "branded_dso": 3,
+        "dentist_multi": 1
+      },
+      "has_mso_evidence": true,
+      "stale_fp_note": true
+    },
+    {
+      "network": "AROON PAL",
+      "verdict": "dentist_owned_multi",
+      "recommended_tier": "dentist_multi",
+      "tier_distribution": {
+        "dentist_multi": 2,
+        "branded_dso": 2
+      },
+      "has_mso_evidence": false,
+      "stale_fp_note": true
+    },
+    {
+      "network": "ABHISHEK NAGARAJ",
+      "verdict": "dso_brand",
+      "recommended_tier": "branded_dso",
+      "tier_distribution": {
+        "branded_dso": 4
+      },
+      "has_mso_evidence": true,
+      "stale_fp_note": true
+    },
+    {
+      "network": "DIMITRI HARALAMPOPOULOS",
+      "verdict": "dentist_owned_multi",
+      "recommended_tier": "dentist_multi",
+      "tier_distribution": {
+        "dentist_multi": 4
+      },
+      "has_mso_evidence": false,
+      "stale_fp_note": true
+    },
+    {
+      "network": "ROSHAN PARIKH",
+      "verdict": "pe_mso_backed",
+      "recommended_tier": "branded_dso",
+      "tier_distribution": {
+        "branded_dso": 4
+      },
+      "has_mso_evidence": true,
+      "stale_fp_note": true
+    },
+    {
+      "network": "PHIL KURAL",
+      "verdict": "dso_brand",
+      "recommended_tier": "branded_dso",
+      "tier_distribution": {
+        "branded_dso": 4
+      },
+      "has_mso_evidence": true,
+      "stale_fp_note": false
+    },
+    {
+      "network": "NATHAN HOFFMAN",
+      "verdict": "dentist_owned_multi",
+      "recommended_tier": "dentist_multi",
+      "tier_distribution": {
+        "dentist_multi": 4
+      },
+      "has_mso_evidence": false,
+      "stale_fp_note": true
+    }
+  ]
+}

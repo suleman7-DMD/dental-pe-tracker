@@ -1,0 +1,155 @@
+{
+  "network": "KOUSHAN AZAD",
+  "network_id": "ao:AZAD_KOUSHAN",
+  "owner_type_verdict": "pe_mso_backed",
+  "network_summary": "Familia Dental is a well-documented, PE-backed DSO founded in 2008 by Dr. Koushan H. Azad and headquartered in suburban Chicago (Schaumburg, IL). The Halifax Group recapitalized the company in April 2016, providing PE backing. All three watched-IL locations (Wheeling, Addison, Elgin) operate under the Familia Dental brand and are NPPES-registered as Familia Dental [#] LLC or Dexter Dental 3 LLC, all with Koushan Azad as authorized official. Parent_company on the Addison NPI reads '1ST FAMILY DENTAL', the legacy trade name before brand consolidation. The AO-reach signal here is fully corroborated: Azad is the DSO's founder/CEO, not merely a billing contact. All three locations are already classified dso_national in the DB, which is correct.",
+  "owner_operator_identity": "Dr. Koushan H. Azad DDS, founder and CEO of Familia Dental; PE sponsor The Halifax Group (recapitalized April 2016)",
+  "brand_trade_names": [
+    "Familia Dental",
+    "1st Family Dental",
+    "Dexter Dental"
+  ],
+  "legal_entities": [
+    "Familia Dental Group Holdings LLC",
+    "Familia Dental Wheeling 3 LLC (EIN 264357802)",
+    "Familia Dental 3 LLC (EIN 462786405)",
+    "Dexter Dental 3 LLC"
+  ],
+  "durable_artifacts": [
+    "NPPES AO 'KOUSHAN AZAD' shared across 3 distinct watched-IL NPIs (1144587882, 1699049221, 1871850511) in 3 ZIPs (60090, 60101, 60120)",
+    "All three NPPES legal names contain 'Familia Dental' or 'Dexter Dental' — known Familia Dental trade name",
+    "parent_company='1ST FAMILY DENTAL' on NPI 1699049221 (Addison) — legacy brand confirming network membership",
+    "Familia Dental official locator at familiadental.com lists Wheeling (542 W Dundee Rd) as an active branch",
+    "The Halifax Group recapitalization press release (April 2016) names Dr. Koushan H. Azad as CEO/Founder"
+  ],
+  "mso_platform_pe_evidence": "The Halifax Group (Washington DC PE firm) recapitalized Familia Dental Group Holdings LLC in April 2016. Press release: https://www.businesswire.com/news/home/20160413005439/en/Halifax-Partners-Management-Recapitalize-Familia-Dental and https://thehalifaxgroup.com/halifax-partners-with-management-to-recapitalize-familia-dental/. Familia Dental described as a 31-location suburban Chicago-headquartered DSO serving underserved populations across IL, IN, WI, NM, TX.",
+  "stale_closed_false_positive_notes": "No stale/closed flags. All three IL offices appear to be active on the Familia Dental locator and Yelp (Wheeling updated June 2026). The Dexter Dental 3 LLC legal name (Elgin location) is a registered Familia Dental trade name, not a separate group — no false-positive risk.",
+  "evidence_chain": "AO signal: KOUSHAN AZAD appears as authorized official on 3 NPPES org NPIs across 3 Chicagoland ZIPs, all bearing 'Familia Dental' or 'Dexter Dental' in their legal names. Documentary corroboration: (1) The Halifax Group recapitalization press release (April 2016) on BusinessWire and thehalifaxgroup.com names Dr. Koushan H. Azad as CEO/Founder of Familia Dental Group Holdings LLC with 31 locations; (2) familiadental.com official locator confirms the Wheeling (542 W Dundee Rd ZIP 60090) branch is active under the Familia Dental brand; (3) parent_company field on NPI 1699049221 reads '1ST FAMILY DENTAL' — the network's legacy brand. All three NPPES entities resolve to the same DSO. The DB entity_classification of dso_national is already correct for all three locations.",
+  "future_app_notes": "Familia Dental is an established PE-backed DSO with known Halifax Group PE backing from 2016 — research any subsequent ownership change (e.g., second PE recapitalization or sponsor change post-2020). The Dexter Dental brand name at the Elgin location could confuse classifiers into treating it as a separate group; ensure any future brand-chain detector links 'Dexter Dental' to Familia Dental explicitly. parent_company on Addison NPI reads '1ST FAMILY DENTAL' (legacy); a data-cleaning pass could normalize this to 'Familia Dental' for consistency. All three IL locations are already dso_national — no promotion needed; verify the Elgin 'Dexter Dental 3 LLC' entry retains its dso_national tag through future NPPES refreshes.",
+  "classifications": [
+    {
+      "location_id": "58a87486cd2546e5",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Dr. Koushan H. Azad DDS (founder/CEO); The Halifax Group (PE sponsor, 2016)",
+      "network_id": "ao:AZAD_KOUSHAN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: KOUSHAN AZAD is AO on NPI 1144587882 (Wheeling ZIP 60090)",
+          "NPPES legal name 'FAMILIA DENTAL WHEELING 3 LLC' — Familia Dental brand",
+          "entity_classification=dso_national already in DB"
+        ],
+        "evidence": [
+          "Familia Dental official locator (familiadental.com/locations/illinois/wheeling/) confirms 542 W Dundee Rd, Wheeling IL 60090 as an active Familia Dental branch",
+          "Yelp listing for 542 W Dundee Rd Wheeling updated June 2026 — location active",
+          "Halifax Group / BusinessWire press release (April 2016) names Dr. Koushan H. Azad as CEO/Founder of Familia Dental Group Holdings LLC — PE recapitalization documented"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.familiadental.com/locations/illinois/wheeling/",
+        "https://m.yelp.com/biz/familia-dental-wheeling",
+        "https://www.businesswire.com/news/home/20160413005439/en/Halifax-Partners-Management-Recapitalize-Familia-Dental",
+        "https://thehalifaxgroup.com/halifax-partners-with-management-to-recapitalize-familia-dental/",
+        "https://www.groupdentistrynow.com/dso-group-blog/famila-dental-management-halifax-group-partner-for-recapitalization/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "KOUSHAN AZAD",
+        "reach": 3,
+        "zips": ["60090", "60101", "60120"],
+        "npi": "1144587882",
+        "ein": "264357802",
+        "entity_classification": "dso_national",
+        "affiliated_dso": "Familia Dental"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Familia Dental Wheeling 3 LLC at 542 W Dundee Rd, Wheeling IL 60090 is an active Familia Dental branch confirmed on the DSO's official locator and Yelp (June 2026). The Familia Dental brand is documented as a PE-backed DSO (Halifax Group recapitalization April 2016). Dr. Koushan H. Azad is the documented founder/CEO, making his AO appearance on this NPI the expected owner-level signal. Classified branded_dso / pe_backed=true. DB classification dso_national is already correct."
+    },
+    {
+      "location_id": "4f7949f6c3928fb1",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Dr. Koushan H. Azad DDS (founder/CEO); The Halifax Group (PE sponsor, 2016)",
+      "network_id": "ao:AZAD_KOUSHAN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: KOUSHAN AZAD is AO on NPI 1699049221 (Addison ZIP 60101)",
+          "NPPES legal name 'FAMILIA DENTAL 3 LLC' — Familia Dental brand",
+          "parent_company='1ST FAMILY DENTAL' on NPPES record",
+          "entity_classification=dso_national already in DB"
+        ],
+        "evidence": [
+          "Halifax Group / BusinessWire press release (April 2016) names Dr. Koushan H. Azad as CEO/Founder of Familia Dental Group Holdings LLC — PE recapitalization documented",
+          "parent_company field on NPI 1699049221 reads '1ST FAMILY DENTAL' — legacy Familia Dental brand name corroborating DSO network membership",
+          "Familia Dental official website (familiadental.com) and GDN article confirm multi-state DSO structure under Azad"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.businesswire.com/news/home/20160413005439/en/Halifax-Partners-Management-Recapitalize-Familia-Dental",
+        "https://thehalifaxgroup.com/halifax-partners-with-management-to-recapitalize-familia-dental/",
+        "https://www.groupdentistrynow.com/dso-group-blog/famila-dental-management-halifax-group-partner-for-recapitalization/",
+        "https://www.familiadental.com/for-patients/our-story/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "KOUSHAN AZAD",
+        "reach": 3,
+        "zips": ["60090", "60101", "60120"],
+        "npi": "1699049221",
+        "ein": "462786405",
+        "entity_classification": "dso_national",
+        "affiliated_dso": "Familia Dental",
+        "parent_company": "1ST FAMILY DENTAL"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Familia Dental 3 LLC at 200 W Lake St, Addison IL 60101 is a Familia Dental branch (NPPES legal name + parent_company='1ST FAMILY DENTAL' confirming legacy brand). The Halifax Group PE recapitalization (2016) is documented via BusinessWire and thehalifaxgroup.com. Dr. Koushan H. Azad as AO is the DSO founder/CEO — owner-level signal. Provider count of 11 is consistent with a high-volume corporate DSO location. Classified branded_dso / pe_backed=true. DB classification dso_national is already correct."
+    },
+    {
+      "location_id": "b62beb82551b076f",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Dr. Koushan H. Azad DDS (founder/CEO); The Halifax Group (PE sponsor, 2016)",
+      "network_id": "ao:AZAD_KOUSHAN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: KOUSHAN AZAD is AO on NPI 1871850511 (Elgin ZIP 60120)",
+          "NPPES legal name 'DEXTER DENTAL 3 LLC' — Familia Dental trade name",
+          "entity_classification=dso_national already in DB",
+          "affiliated_dso='Familia Dental' in DB"
+        ],
+        "evidence": [
+          "Halifax Group / BusinessWire press release (April 2016) names Dr. Koushan H. Azad as CEO/Founder of Familia Dental Group Holdings LLC — PE recapitalization documented",
+          "GDN article confirms Familia Dental operates under multiple trade names including 'Dexter Dental' in Elgin market",
+          "Familia Dental official website (familiadental.com) confirms multi-location IL DSO structure under Azad's ownership"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.businesswire.com/news/home/20160413005439/en/Halifax-Partners-Management-Recapitalize-Familia-Dental",
+        "https://thehalifaxgroup.com/halifax-partners-with-management-to-recapitalize-familia-dental/",
+        "https://www.groupdentistrynow.com/dso-group-blog/famila-dental-management-halifax-group-partner-for-recapitalization/",
+        "https://www.familiadental.com/for-patients/our-story/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "KOUSHAN AZAD",
+        "reach": 3,
+        "zips": ["60090", "60101", "60120"],
+        "npi": "1871850511",
+        "ein": null,
+        "entity_classification": "dso_national",
+        "affiliated_dso": "Familia Dental"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "NPPES legal name is 'DEXTER DENTAL 3 LLC' — a Familia Dental trade name for this market. The DB affiliated_dso='Familia Dental' is already correct. Note: future NPPES refreshes should preserve dso_national; the 'Dexter Dental' name variant should not cause the classifier to drop this to independent.",
+      "reasoning": "Dexter Dental 3 LLC at 47 Clock Tower Plz, Elgin IL 60120 is a Familia Dental location operating under the 'Dexter Dental' trade name — a known brand variant used by Familia Dental in the Elgin market. The DB affiliated_dso='Familia Dental' flag confirms the network connection. Dr. Koushan H. Azad as AO is the DSO founder/CEO, documented via Halifax Group PE recapitalization press release. Provider count 7 is consistent with a corporate DSO branch. Classified branded_dso / pe_backed=true. DB classification dso_national is already correct. The Dexter Dental name should be preserved in brand_trade_names so future classifiers do not miss this location."
+    }
+  ]
+}

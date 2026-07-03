@@ -1,0 +1,167 @@
+{
+  "network": "MOHAMMED SALIH",
+  "network_id": "ao:SALIH_MOHAMMED",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Dr. Mohammed K. Salih, DDS (title 'OWNER' on NPPES) operates 3 Chicago GP dental offices under the 'Salih Dental' / 'Salih Dental Group' consumer brand across ZIPs 60608, 60629, and 60630. The umbrella legal entity is SALIH DENTAL GROUP P.C. (NPI 1487160149, enumerated 2017-12-18, at 4408 W Lawrence Ave), with WALEED M SALIH (Manager) as the AO — indicating a family-run group. No DSO/MSO/management-company or PE layer found. The two 'Teeth Matter' P.C. entities are NPPES-registered professional corporations; the consumer brand is uniformly 'Salih Dental.' The 'Orthodontic Experts' affiliated_dso tag on NPI 1437326188 is a classifier false-positive (different practice at 2235 W Cermak, ~0.5 mi away).",
+  "owner_operator_identity": "Dr. Mohammed K. Salih, DDS — owner (NPPES title 'OWNER', credential 'D.D.S.'); Waleed M. Salih (Manager, SALIH DENTAL GROUP P.C. NPI 1487160149) — likely family co-operator",
+  "brand_trade_names": [
+    "Salih Dental",
+    "Salih Dental Center",
+    "Salih Dental Group",
+    "Salih Dental Kedzie",
+    "Teeth Matter on Kedzie P.C.",
+    "Teeth Matter on Lawrence P.C."
+  ],
+  "legal_entities": [
+    "SALIH DENTAL CENTER (NPI 1437326188, EIN 471237454, 1726 W 18th St Chicago IL 60608)",
+    "TEETH MATTER ON KEDZIE P.C. (NPI 1902370489, 6235 S Kedzie Ave Ste 201 Chicago IL 60629)",
+    "TEETH MATTER ON LAWRENCE P.C. (NPI 1710450952, 4408 W Lawrence Ave Ste 201 Chicago IL 60630)",
+    "SALIH DENTAL GROUP P.C. (NPI 1487160149, umbrella entity, 4408 W Lawrence Ave Chicago IL 60630, enumerated 2017-12-18)"
+  ],
+  "durable_artifacts": [
+    "NPPES AO MOHAMMED SALIH (title=OWNER, credential=D.D.S.) on NPIs 1437326188, 1902370489, 1710450952",
+    "Umbrella entity SALIH DENTAL GROUP P.C. NPI 1487160149 at 4408 W Lawrence Ave (AO: WALEED M SALIH, Manager)",
+    "EIN 471237454 on NPI 1437326188 (Salih Dental Center, 18th St)",
+    "Shared mailing address pattern: each P.C. mails to its own location address (no shared mailing flagging a management co)",
+    "Instagram @salihdentalgroup confirms multi-location consumer brand"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "NPI 1437326188 carries ownership_status=dso_affiliated and affiliated_dso='Orthodontic Experts' — this is a classifier false-positive. Orthodontic Experts Chicago operates at 2235 W Cermak Rd (ZIP 60608), ~0.5 miles from Salih Dental Center at 1726 W 18th St. No actual affiliation found. This tag should be cleared. Additionally, website field 'Dentalsunshinechicago.Com' on NPI 1437326188 belongs to a different unrelated practice (Dr. Nasrin Azim at 1609 W 18th St) — data error in NPPES, not Salih's website.",
+  "evidence_chain": "AO signal: MOHAMMED SALIH appears as authorized official across 3 distinct watched-IL GP location NPIs (1437326188, 1902370489, 1710450952) spanning ZIPs 60608/60629/60630. NPPES title='OWNER', credential='D.D.S.' on the 18th St NPI establishes dentist-owner identity. Documentary corroboration: (1) SALIH DENTAL GROUP P.C. (NPI 1487160149) is a registered multi-specialty group entity at the Lawrence Ave address, enumerated 2017, confirming the network has a formal umbrella legal structure; (2) Consumer-facing directories (Yelp, Healthgrades, WebMD, dentistoffices.com) all list these locations as 'Salih Dental' / 'Salih Dental Kedzie' / 'Salih Dental Center'; (3) Instagram @salihdentalgroup confirms a unified brand across locations. No MSO, management-company, DSO platform, or PE sponsor found in any source. Verdict: dentist_multi, pe_backed=false, ready_for_validation.",
+  "future_app_notes": "Prior-session linkage flag: this cluster was noted as 'Teeth Matter/Salih Dental — backfill71 individual (dentist_multi)' — classification is consistent with that prior assignment. The umbrella entity SALIH DENTAL GROUP P.C. (NPI 1487160149) is NOT in the current cluster (it is a fourth NPI at the Lawrence Ave address and may warrant its own location_id check — confirm it is not double-counted as a separate location). Waleed M. Salih (Manager) on the group P.C. should be cross-checked against other watched-IL NPIs to see if he is an AO on any additional locations not yet captured. The EIN 471237454 on the 18th St location should be verified against other watched-IL practices for any EIN-cluster signal. Clear the false-positive affiliated_dso='Orthodontic Experts' tag on NPI 1437326188 in a future classifier pass.",
+  "classifications": [
+    {
+      "location_id": "b7e5a55e0eb96cdd",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Mohammed K. Salih, DDS (OWNER, D.D.S.)",
+      "network_id": "ao:SALIH_MOHAMMED",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60608/60629/60630 — MOHAMMED SALIH is AO on all 3 NPIs",
+          "NPPES title='OWNER', credential='D.D.S.' on this NPI (1437326188)",
+          "EIN 471237454 present — single-location EIN, no multi-ZIP cluster signal"
+        ],
+        "evidence": [
+          "SALIH DENTAL GROUP P.C. (NPI 1487160149) is umbrella entity at sister Lawrence Ave location — confirms formal multi-location group structure under Salih family",
+          "Yelp listing 'Salih Dental Center' at 4408 W Lawrence Ave (updated March 2026) and 'Salih Dental Kedzie' at 6235 S Kedzie Ave confirm unified consumer brand",
+          "Instagram @salihdentalgroup confirms multi-location branding",
+          "Healthgrades lists Dr. Mohammed Salih, DDS at the Lawrence Ave location"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.yelp.com/biz/salih-dental-center-chicago",
+        "https://www.yelp.com/biz/salih-dental-kedzie-chicago",
+        "https://www.instagram.com/salihdentalgroup/",
+        "https://www.healthgrades.com/dentist/dr-mohammed-salih-373nq",
+        "https://npino.com/dental-clinic/1487160149-salih-dental-group-p.c./",
+        "https://www.medicarelist.com/dental-clinic/salih-dental-center-pc-chicago-il/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "MOHAMMED SALIH",
+        "ao_title": "OWNER",
+        "ao_credential": "D.D.S.",
+        "reach": 3,
+        "zips": ["60608", "60629", "60630"],
+        "npi": "1437326188",
+        "practice_name": "SALIH DENTAL CENTER",
+        "ein": "471237454",
+        "false_positive_flag": "ownership_status=dso_affiliated + affiliated_dso='Orthodontic Experts' on this NPI is a classifier error — different practice at 2235 W Cermak"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "Practice established 1984, still active per Yelp (updated March 2026). Note: website field 'Dentalsunshinechicago.Com' in NPPES is a data error — belongs to a different practice at 1609 W 18th St.",
+      "reasoning": "Mohammed Salih, DDS holds title 'OWNER' on this NPI. The Salih Dental Center at 1726 W 18th St (Pilsen/Lower West Side) is the founding location (est. 1984). The umbrella SALIH DENTAL GROUP P.C. and multiple consumer-facing directories confirm this is a dentist-owned multi-location private practice with no DSO/MSO layer. The affiliated_dso='Orthodontic Experts' classifier tag is a false positive to be cleared."
+    },
+    {
+      "location_id": "0c8f995db2124f57",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Mohammed K. Salih, DDS",
+      "network_id": "ao:SALIH_MOHAMMED",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60608/60629/60630 — MOHAMMED SALIH is AO on all 3 NPIs",
+          "NPPES title='DENTIST', credential='DDS' on this NPI (1902370489)",
+          "Entity registered as 'TEETH MATTER ON KEDZIE P.C.' — separate P.C. for this location"
+        ],
+        "evidence": [
+          "SALIH DENTAL GROUP P.C. (NPI 1487160149) is umbrella entity confirming Salih family group structure",
+          "Yelp listing 'Salih Dental Kedzie' at 6235 S Kedzie Ave, Chicago IL (updated January 2026) — consumer-facing brand confirms same Salih Dental network",
+          "dentistoffices.com lists 'Salih Dental Kedzie' at this address",
+          "Instagram @salihdentalgroup confirms multi-location unified brand"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.yelp.com/biz/salih-dental-kedzie-chicago",
+        "https://dentistoffices.com/dentist-office/690018/chicago-il/salih-dental-kedzie/",
+        "https://www.instagram.com/salihdentalgroup/",
+        "https://npino.com/dental-clinic/1487160149-salih-dental-group-p.c./"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "MOHAMMED SALIH",
+        "ao_title": "DENTIST",
+        "ao_credential": "DDS",
+        "reach": 3,
+        "zips": ["60608", "60629", "60630"],
+        "npi": "1902370489",
+        "practice_name": "TEETH MATTER ON KEDZIE P.C.",
+        "ein": null
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "The NPPES entity 'TEETH MATTER ON KEDZIE P.C.' is the Pilsen/South Side outpost of the Salih Dental network. Consumer-facing it operates as 'Salih Dental Kedzie' (per Yelp, updated January 2026). Mohammed Salih is the AO/dentist. No DSO, MSO, or PE layer found."
+    },
+    {
+      "location_id": "4a6b1b5f5db95d3e",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Mohammed K. Salih, DDS",
+      "network_id": "ao:SALIH_MOHAMMED",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60608/60629/60630 — MOHAMMED SALIH is AO on all 3 NPIs",
+          "NPPES title='DENTIST', credential='DDS' on this NPI (1710450952)",
+          "Entity registered as 'TEETH MATTER ON LAWRENCE P.C.' — separate P.C. for this location",
+          "entity_classification=family_practice in DB (2 providers, consistent with Salih family group)"
+        ],
+        "evidence": [
+          "SALIH DENTAL GROUP P.C. (NPI 1487160149) is registered at the same address — 4408 W Lawrence Ave Ste 201 Chicago IL 60630 — as the umbrella group entity (enumerated 2017-12-18)",
+          "Yelp listing 'Salih Dental Center' at 4408 W Lawrence Ave (updated March 2026) and WebMD listing confirm this as the flagship Salih Dental location",
+          "Healthgrades lists Dr. Mohammed Salih, DDS at this address",
+          "practo.com lists 'Salih Dental Lawrence, Mayfair, Chicago' at this address"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.yelp.com/biz/salih-dental-center-chicago",
+        "https://www.healthgrades.com/dentist/dr-mohammed-salih-373nq",
+        "https://doctor.webmd.com/practice/salih-dental-center-a74538ba-1c3b-4d6f-aaf3-f571e972fc10",
+        "https://www.practo.com/chicago/hospital/salih-dental-lawrence-mayfair/dentist-ps-8",
+        "https://npino.com/dental-clinic/1487160149-salih-dental-group-p.c./",
+        "https://www.medicarelist.com/dental-clinic/salih-dental-group-pc-chicago-il/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "MOHAMMED SALIH",
+        "ao_title": "DENTIST",
+        "ao_credential": "DDS",
+        "reach": 3,
+        "zips": ["60608", "60629", "60630"],
+        "npi": "1710450952",
+        "practice_name": "TEETH MATTER ON LAWRENCE P.C.",
+        "ein": null,
+        "note": "Mailing address 1658 N Milwaukee Ave Ste 395 Chicago IL 60647 — registered agent or attorney mailing address, not a practice location"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "NPPES shows two addresses for this NPI: practice location 4408 W Lawrence Ave Ste 201 (confirmed active by Yelp March 2026) and mailing address 1658 N Milwaukee Ave Ste 395 Chicago IL 60647 — the Milwaukee Ave address appears to be a registered agent or attorney mail drop (60647 = Bucktown/Wicker Park, not a dental office area), not a third clinical location.",
+      "reasoning": "The NPPES entity 'TEETH MATTER ON LAWRENCE P.C.' co-locates with SALIH DENTAL GROUP P.C. at 4408 W Lawrence Ave — this is the Lawrence Ave flagship of the Salih Dental network. The umbrella P.C. being registered at the same address is strong structural corroboration that Dr. Mohammed Salih runs this as a coherent multi-location private practice. No DSO, MSO, or PE layer found. The mailing address at 1658 N Milwaukee Ave (Bucktown) is likely a registered agent or attorney address, not a fourth clinical site."
+    }
+  ]
+}

@@ -1,0 +1,293 @@
+{
+  "_meta": {
+    "title": "Wave 4 QA-HOLD-1 — LABINOV / Destiny Dental operating-status (AB7) re-scan addendum",
+    "date": "2026-06-22",
+    "session": "Wave 4 evidence-closure (continued)",
+    "author_role": "Main AO (bounded evidence work)",
+    "scope": "Chicagoland / IL only; Boston / MA parked",
+    "mode": "files-only evidence addendum; no DB writes; no manifest mutation; no 310 mutation; consolidation frozen",
+    "purpose": "Resolve QA-HOLD-1 from VERDICT_QA_WAVE4_INITIAL_20260621.json: the AB7 operating-status carry-forward for location_id fd93e6934ac6c59c plus the ao:LABINOV_BORIS member network referenced in the manifest stale_closed_notes. Provide a fresh, in-session, transcribed operating-status re-scan. This addendum is advisory for the gate owner; it does NOT change the 310 and does NOT change the manifest.",
+    "gate_ceiling": "ready_for_validation (never final)",
+    "ab_rules_applied": {
+      "AB7": "Before a row remains in any eventual VALIDATED floor, obtain an operating-status re-scan with a transcribed source; if confirmed closed/relocated, exclude even if the network is released.",
+      "AB9": "Network release authorization. ao:LABINOV_BORIS is AB9-satisfied (release_eligible, 7/7 released) per the canonical manifest. This addendum does NOT alter that release; it only supplies the AB7 operating-status evidence QA found missing.",
+      "AH3": "No retrospective assertion — every URL below was fetched/transcribed in THIS session (2026-06-22)."
+    },
+    "inputs_read_only": [
+      "data/dso_research/_wave4_20260621/autonomous/VERDICT_QA_WAVE4_INITIAL_20260621.json",
+      "data/dso_research/consolidation_candidate_manifest_20260621.json",
+      "data/dso_research/_ready_to_validate_wave3_fixed_20260621.json",
+      "data/dental_pe_tracker.db (read-only SELECTs)"
+    ]
+  },
+
+  "qa_hold_resolved": "QA-HOLD-1",
+
+  "network_identity_correction": {
+    "issue": "The QA verdict tagged target fd93e6934ac6c59c with flag 'AB9_LABINOV_protected', implying membership in ao:LABINOV_BORIS. That is a labeling imprecision.",
+    "finding": "In the 310 ready file (_ready_to_validate_wave3_fixed_20260621.json), fd93e6934ac6c59c carries network_id = 'ao:WILSON-ADELEKE_SIMONE' — a SIBLING Destiny Dental / ProSmile friendly-PC network ('PRO DENTAL IL - CHAD WISE PC', AO = Simone Wilson-Adeleke), NOT the literal ao:LABINOV_BORIS member set ('D2 DENTAL AT OAK STREET, P.C.', AO = Boris Labinov).",
+    "relationship": "Both ao:WILSON-ADELEKE_SIMONE and ao:LABINOV_BORIS are friendly-PC wrappers on the SAME Destiny Dental brand, operated by L2 Management, PE-backed by ProSmile Holdings LLC (TriSpan). The target is LABINOV-RELATED through the shared Destiny/ProSmile platform, not by literal AO membership.",
+    "consequence": "No network release decision is touched. The target's pe_backed=true / branded_dso tier is unchanged. This addendum only supplies the AB7 operating-status evidence."
+  },
+
+  "summary": {
+    "rows_inspected": 9,
+    "target_disposition": "keep_ready",
+    "labinov_member_dispositions": {
+      "hold_operating_status": 7,
+      "reject_closed": 0,
+      "keep_ready": 0
+    },
+    "courtesy_sibling_disposition": "keep_ready (1, domain:destinydentalcare.com — not in LABINOV scope, advisory only)",
+    "headline": "TARGET fd93e6934ac6c59c (Destiny Dental — Oak Park, 1 Chicago Ave 60302) is CONFIRMED OPEN. The Wave-4 Lane-3 'operating_status=closed_or_relocated' flag is a FALSE POSITIVE, refuted by a fresh transcribed source (the office's own active page) + the brand locator + Yelp 'Updated February 2026 - 39 Reviews'. The 7 ao:LABINOV_BORIS 'D2 Dental at Oak Street, P.C.' friendly-PC addresses (all provider_count=0) could NOT be confirmed as currently-open patient doors AND no transcribed closure source exists — conservative AB7 disposition is hold_operating_status (NOT reject_closed, NOT keep_ready).",
+    "important_caveat": "hold_operating_status is an AB7 evidence-status note, not a closure assertion. None of the 7 D2 addresses has a transcribed closed/relocated source; they simply lack a current open-door confirmation (absent from the brand locator, no active patient-facing page, provider_count=0 in the federal data). The conservative posture is to withhold them from a VALIDATED operating floor pending a current open-door confirmation or a documented closure — exactly the AB7 ceiling. This addendum does NOT remove them from the 310 (AB9 release stands)."
+  },
+
+  "rows": [
+    {
+      "row_class": "TARGET (QA-HOLD-1 subject)",
+      "location_id": "fd93e6934ac6c59c",
+      "practice_name_db": "PRO DENTAL IL - CHAD WISE PC",
+      "brand_name": "Destiny Dental — Oak Park",
+      "address": "1 Chicago Ave, Oak Park, IL 60302",
+      "db_facts": {
+        "normalized_address": "1 chicago ave",
+        "city_zip": "OAK PARK 60302",
+        "entity_classification": "dso_regional",
+        "affiliated_dso": "Destiny Dental / ProSmile",
+        "provider_count": 5,
+        "phone": "(708) 948-7744",
+        "year_established": 2019,
+        "data_axle_enriched": 1,
+        "primary_npi": "1710714233"
+      },
+      "current_310_membership": "yes — buckets.ready_to_validate + classifications row; assigned_tier=branded_dso, pe_backed=true, evidence_basis=name_chain",
+      "network_id": "ao:WILSON-ADELEKE_SIMONE (sibling Destiny/ProSmile friendly-PC; QA verdict mislabeled it ao:LABINOV_BORIS — see network_identity_correction)",
+      "source_urls_searched_this_session": [
+        "https://destinydentalcare.com/oak-park/",
+        "https://destinydentalcare.com/locations/",
+        "https://www.yelp.com/biz/destiny-dental-oak-park (search snippet)"
+      ],
+      "source_quotes": [
+        "destinydentalcare.com/oak-park/ (fetched 2026-06-22): full address verbatim ' 1 Chicago Ave. Oak Park, IL 60302 '; phone '708.948.7744'; active offer '$80 NEW PATIENT OFFER EXAM, FULL SERIES X-RAYS'; functional 'Request an Appointment'. Closure/relocation/coming-soon text: NONE FOUND.",
+        "destinydentalcare.com/locations/ (fetched 2026-06-22): Illinois current offices listed = 'Chicago – 87th Street', 'Chicago – 71st Street', 'Lansing', 'Niles', 'Oak Park' — Oak Park is a CURRENT marketed door.",
+        "Yelp (search 2026-06-22): 'DESTINY DENTAL - OAK PARK - Updated February 2026 - 39 Reviews - 1 Chicago Ave, Oak Park' with Mon–Sat hours."
+      ],
+      "operating_conclusion": "active / open",
+      "exact_address_match": "YES — brand page '1 Chicago Ave. Oak Park, IL 60302' + phone '708.948.7744' exactly match DB normalized_address '1 chicago ave', OAK PARK 60302, phone (708) 948-7744.",
+      "ab7_verdict": "Closure flag REFUTED with fresh transcribed evidence (the office's own active page, dated brand+Yelp presence).",
+      "recommendation": "keep_ready"
+    },
+
+    {
+      "row_class": "ao:LABINOV_BORIS member (manifest stale_closed_notes-flagged)",
+      "location_id": "c2c46e94895cda83",
+      "practice_name_db": "D2 Dental at Oak Street, P.C.",
+      "address": "7000 Cermak Rd, Berwyn, IL 60402",
+      "db_facts": { "entity_classification": "solo_established", "affiliated_dso": null, "provider_count": 0, "website": null, "year_established": null, "data_axle_enriched": 0, "npi": "1669884771", "phone": "(708) 484-8090" },
+      "current_310_membership": "yes — ao:LABINOV_BORIS released member (7/7 released, AB9-satisfied)",
+      "network_id": "ao:LABINOV_BORIS",
+      "source_urls_searched_this_session": [
+        "https://destinydentalcare.com/locations/ (brand locator — no Berwyn / 7000 Cermak door)",
+        "Web search '\"7000 Cermak\" Berwyn dental' — surrounding Cermak Rd offices surfaced (Metropolitan 7034, Berwyn Dental Center 6718, Dental Town 7106); NOTHING at 7000 Cermak"
+      ],
+      "source_quotes": [
+        "destinydentalcare.com/locations/ (2026-06-22): Illinois doors = 87th St, 71st St, Lansing, Niles, Oak Park. Berwyn / 7000 Cermak is NOT a current Destiny door.",
+        "No active patient-facing page found for a dental office at 7000 Cermak Rd; federal provider_count=0; no website."
+      ],
+      "operating_conclusion": "indeterminate — not confirmed open; no transcribed closure source either",
+      "exact_address_match": "no current open-door match (registry/AO-shell address only)",
+      "ab7_verdict": "No current open-door confirmation; no transcribed closure proof. Manifest itself notes 'confirmed via shared P.C. shell + AO + corporate mailing only (no individual locator URL).'",
+      "recommendation": "hold_operating_status"
+    },
+    {
+      "row_class": "ao:LABINOV_BORIS member (3-of-7 registry-listed)",
+      "location_id": "d616036cc2145cf4",
+      "practice_name_db": "D2 Dental at Oak Street, P.C.",
+      "address": "3046 W 127th St, Blue Island, IL 60406",
+      "db_facts": { "entity_classification": "solo_established", "affiliated_dso": null, "provider_count": 0, "website": null, "year_established": null, "data_axle_enriched": 0, "npi": "1639587025", "phone": "(312) 888-4306" },
+      "current_310_membership": "yes — ao:LABINOV_BORIS released member",
+      "network_id": "ao:LABINOV_BORIS",
+      "source_urls_searched_this_session": [
+        "https://npino.com/dental-clinic/ (NPI 1639587025 mirror)",
+        "https://destinydentalcare.com/locations/ (no Blue Island door)",
+        "Web search '\"3046 W 127th\" Blue Island dental'"
+      ],
+      "source_quotes": [
+        "npino.com (2026-06-22): '3046 West 127th Street in Blue Island, IL 60406 is D2 Dental at Oak Street, P.C., a general practice dental clinic with phone number 312-888-4306' — REGISTRY listing (NPI mirror), not an operating-door confirmation.",
+        "destinydentalcare.com/locations/: Blue Island is NOT among the 5 current IL Destiny doors.",
+        "federal provider_count=0; no website."
+      ],
+      "operating_conclusion": "indeterminate — registry-listed address only; not confirmed as a current open patient door; no closure source",
+      "exact_address_match": "registry address match only; no current open-door confirmation",
+      "ab7_verdict": "Registry presence ≠ operating door. No transcribed open-status; no transcribed closure.",
+      "recommendation": "hold_operating_status"
+    },
+    {
+      "row_class": "ao:LABINOV_BORIS member (3-of-7 registry-listed)",
+      "location_id": "3f1051899da7b50d",
+      "practice_name_db": "D2 Dental at Oak Street, P.C.",
+      "address": "4318 S State St, Chicago, IL 60609",
+      "db_facts": { "entity_classification": "solo_established", "affiliated_dso": null, "provider_count": 0, "website": null, "year_established": null, "data_axle_enriched": 0, "npi": "1013329127", "phone": "(773) 285-9304" },
+      "current_310_membership": "yes — ao:LABINOV_BORIS released member",
+      "network_id": "ao:LABINOV_BORIS",
+      "source_urls_searched_this_session": [
+        "https://destinydentalcare.com/locations/ (no 4318 S State door)",
+        "Web search '\"4318 S State\" Chicago dental' — no dental office surfaced at the exact address"
+      ],
+      "source_quotes": [
+        "Web search (2026-06-22): no dental practice surfaced at the exact address 4318 S State St; results were unrelated Chicago/Loop/South-Side offices.",
+        "destinydentalcare.com/locations/: not a current Destiny door; federal provider_count=0."
+      ],
+      "operating_conclusion": "indeterminate — no current open-door confirmation; no closure source",
+      "exact_address_match": "no current open-door match",
+      "ab7_verdict": "No open-status confirmation; no transcribed closure.",
+      "recommendation": "hold_operating_status"
+    },
+    {
+      "row_class": "ao:LABINOV_BORIS member (manifest stale_closed_notes-flagged)",
+      "location_id": "d318648e80a552ff",
+      "practice_name_db": "D2 Dental at Oak Street, P.C.",
+      "address": "1715 E 95th St, Chicago, IL 60617",
+      "db_facts": { "entity_classification": "solo_established", "affiliated_dso": null, "provider_count": 0, "website": null, "year_established": null, "data_axle_enriched": 0, "npi": "1588076699", "phone": "(773) 768-4437" },
+      "current_310_membership": "yes — ao:LABINOV_BORIS released member",
+      "network_id": "ao:LABINOV_BORIS",
+      "source_urls_searched_this_session": [
+        "https://destinydentalcare.com/locations/ (no 95th St door; Destiny's South-Side door is 71st St / Jeffery Plaza, not 95th)"
+      ],
+      "source_quotes": [
+        "destinydentalcare.com/locations/ (2026-06-22): Destiny's nearest South-Side current door is 'Chicago – 71st Street' (2101 E 71st St 60649), NOT 1715 E 95th St. 95th St is NOT a current Destiny door.",
+        "federal provider_count=0; no website. Manifest flags this as confirmed via shell+AO+mailing only."
+      ],
+      "operating_conclusion": "indeterminate — not a current open door; no transcribed closure source",
+      "exact_address_match": "no current open-door match",
+      "ab7_verdict": "No open-status confirmation; no transcribed closure.",
+      "recommendation": "hold_operating_status"
+    },
+    {
+      "row_class": "ao:LABINOV_BORIS member (3-of-7 registry-listed)",
+      "location_id": "9eb34e1dcb9933f8",
+      "practice_name_db": "D2 Dental at Oak Street, P.C.",
+      "address": "4848 W Irving Park Rd, Chicago, IL 60641",
+      "db_facts": { "entity_classification": "solo_established", "affiliated_dso": null, "provider_count": 0, "website": null, "year_established": null, "data_axle_enriched": 0, "npi": "1194137208", "phone": "(773) 724-6200" },
+      "current_310_membership": "yes — ao:LABINOV_BORIS released member",
+      "network_id": "ao:LABINOV_BORIS",
+      "source_urls_searched_this_session": [
+        "https://destinydentalcare.com/locations/ (no Irving Park door)",
+        "Web search '\"4848 W Irving Park\" Chicago dental' — nearest is Webster Dental Care of Portage Park at 4949 W Irving Park Rd (a DIFFERENT address/operator)"
+      ],
+      "source_quotes": [
+        "Web search (2026-06-22): no dental office at the exact 4848 W Irving Park Rd; the nearby active office is 'Webster Dental Care of Portage Park, 4949 W Irving Park Rd' — a different address and operator.",
+        "destinydentalcare.com/locations/: Irving Park is not a current Destiny door; federal provider_count=0."
+      ],
+      "operating_conclusion": "indeterminate — no current open-door confirmation at the exact address; no closure source",
+      "exact_address_match": "no current open-door match (nearby 4949 is a different operator)",
+      "ab7_verdict": "No open-status confirmation; no transcribed closure.",
+      "recommendation": "hold_operating_status"
+    },
+    {
+      "row_class": "ao:LABINOV_BORIS member (manifest stale_closed_notes-flagged)",
+      "location_id": "ef079f1cfd53d7f0",
+      "practice_name_db": "D2 Dental at Oak Street, P.C.",
+      "address": "3348 W 87th St, Chicago, IL 60652",
+      "db_facts": { "entity_classification": "solo_established", "affiliated_dso": null, "provider_count": 0, "website": null, "year_established": null, "data_axle_enriched": 0, "npi": "1538571591", "phone": "(773) 776-4471" },
+      "current_310_membership": "yes — ao:LABINOV_BORIS released member",
+      "network_id": "ao:LABINOV_BORIS",
+      "source_urls_searched_this_session": [
+        "https://destinydentalcare.com/locations/ (Destiny '87th Street' door is 712 E 87th St 60619, NOT 3348 W 87th St 60652)",
+        "https://destinydentalcare.com/chatham-village-square/ (712 East 87th St)"
+      ],
+      "source_quotes": [
+        "destinydentalcare.com/locations/ + /chatham-village-square/ (2026-06-22): Destiny's current '87th Street' door is at '712 East 87th St, Chicago, IL 60619' (Chatham Village Square). The D2 address 3348 W 87th St 60652 is a DIFFERENT address (West vs East 87th) and a DIFFERENT ZIP — it is NOT the open Destiny 87th-St office.",
+        "federal provider_count=0; no website. Manifest flags this via shell+AO+mailing only."
+      ],
+      "operating_conclusion": "indeterminate — distinct from the open 712 E 87th St door; not confirmed open; no transcribed closure source",
+      "exact_address_match": "no — easily confused with the open 712 E 87th St 60619 door, but a different address/ZIP",
+      "ab7_verdict": "Do NOT credit the open Chatham (712 E 87th St) door to this 3348 W 87th St shell. No open-status confirmation at the exact address; no transcribed closure.",
+      "recommendation": "hold_operating_status"
+    },
+    {
+      "row_class": "ao:LABINOV_BORIS member (manifest stale_closed_notes-flagged)",
+      "location_id": "e4fb4be6a4efee52",
+      "practice_name_db": "D2 Dental at Oak Street, P.C.",
+      "address": "1541 W Devon Ave, Chicago, IL 60660",
+      "db_facts": { "entity_classification": "solo_established", "affiliated_dso": null, "provider_count": 0, "website": null, "year_established": null, "data_axle_enriched": 0, "npi": "1740692854", "phone": "(773) 250-5222" },
+      "current_310_membership": "yes — ao:LABINOV_BORIS released member",
+      "network_id": "ao:LABINOV_BORIS",
+      "source_urls_searched_this_session": [
+        "https://destinydentalcare.com/locations/ (no Devon Ave door; nearest north-side Destiny door is Niles)"
+      ],
+      "source_quotes": [
+        "destinydentalcare.com/locations/ (2026-06-22): Destiny's nearest north-side door is 'Niles', NOT 1541 W Devon Ave. Devon Ave is not a current Destiny door.",
+        "federal provider_count=0; no website. Manifest flags this via shell+AO+mailing only."
+      ],
+      "operating_conclusion": "indeterminate — not a current open door; no transcribed closure source",
+      "exact_address_match": "no current open-door match",
+      "ab7_verdict": "No open-status confirmation; no transcribed closure.",
+      "recommendation": "hold_operating_status"
+    },
+
+    {
+      "row_class": "COURTESY — Destiny-brand sibling (domain network, NOT in LABINOV scope, advisory only)",
+      "location_id": "d300597c91e8d789",
+      "practice_name_db": "Dentiny Dental (sic — 'Destiny' brand)",
+      "address": "16739 Torrence Ave, Lansing, IL 60438",
+      "db_facts": { "entity_classification": "small_group", "provider_count": 2, "website": "Destinydentalcare.Com", "data_axle_enriched": 1, "npi": "1710370283", "phone": "(708) 418-8899" },
+      "current_310_membership": "yes — network_id=domain:destinydentalcare.com, assigned_tier=branded_dso, pe_backed=true, evidence_basis=web_verified",
+      "network_id": "domain:destinydentalcare.com (NOT an AO network; not part of QA-HOLD-1; included as a courtesy because it is Destiny-brand-adjacent and shares the brand domain)",
+      "source_urls_searched_this_session": [
+        "https://www.yelp.com/biz/destiny-dental-lansing-lansing-2 (search snippet)",
+        "BBB + Foursquare + YellowPages (search snippets)"
+      ],
+      "source_quotes": [
+        "Yelp (2026-06-22): 'DESTINY DENTAL - LANSING - Updated February 2026 - 29 Reviews - 17653 Torrence Ave, Lansing, Illinois - General Dentistry' phone '(708) 418-8899'.",
+        "Foursquare: 'Destiny Dental - 16739 Torrence Ave'; BBB: 'Destiny Dental Care for Kids & Adults' Lansing. The DB row's phone (708) 418-8899 EXACTLY matches the live Destiny Lansing Yelp door."
+      ],
+      "operating_conclusion": "active / open Destiny Lansing presence (phone + brand match), with an address nuance",
+      "exact_address_match": "partial — DB records 16739 Torrence Ave; Destiny currently markets the Lansing door at 17653 Torrence Ave (same town, same phone (708) 418-8899, same brand). Likely a within-Lansing address/relocation nuance, but the operating Destiny Lansing door is confirmed.",
+      "ab7_verdict": "Operating Destiny Lansing door confirmed via matching phone + brand. Flag the 16739-vs-17653 address nuance for the gate owner.",
+      "recommendation": "keep_ready"
+    }
+  ],
+
+  "advisory_for_gate_owner": {
+    "no_310_change_made": true,
+    "interpretation": "QA-HOLD-1's specific subject (fd93e6934ac6c59c) is RESOLVED in favor of keep_ready — the closed_or_relocated flag is a false positive and AB7 is satisfied with a fresh transcribed open-status source. The 7 ao:LABINOV_BORIS D2 shell addresses remain AB9-released in the 310 but are AB7-unconfirmed for operating status; they should be held out of any eventual VALIDATED operating floor until a current open-door source or a documented closure is obtained. This is consistent with the manifest's own stale_closed_notes and with blocks_wave4_acceptance=false (these holds do not block Wave-4 acceptance).",
+    "what_this_addendum_does_not_do": [
+      "Does not edit the 310 ready file.",
+      "Does not edit the canonical manifest or its ao_network_release_decisions.",
+      "Does not assert reject_closed on any LABINOV row (no transcribed closure source exists).",
+      "Does not expand AO reach or generate any new AO fan-out.",
+      "Does not touch Boston/MA."
+    ]
+  },
+
+  "attestations": {
+    "non_mutation": {
+      "db_md5_at_authoring": "0dec26135bb4d6ee490dc16cfe892ca6",
+      "db_md5_baseline": "0dec26135bb4d6ee490dc16cfe892ca6",
+      "db_md5_match": true,
+      "no_db_writes": true,
+      "no_allow_db_write_flag_used": true,
+      "no_manifest_mutation": true,
+      "no_310_ready_file_mutation": true,
+      "no_ledger_or_progress_mutation": true,
+      "no_ownership_tier_or_entity_classification_or_ownership_status_change": true
+    },
+    "scope": {
+      "il_only": true,
+      "boston_ma_parked_untouched": true,
+      "no_ao_reach_expansion": true,
+      "no_new_ao_fanout": true,
+      "no_protected_network_release_decision": true,
+      "bounded_to_labinov_operating_status_only": true,
+      "gate_ceiling_respected": "ready_for_validation (never final)"
+    },
+    "evidence_integrity": {
+      "AH3_in_session_transcription": true,
+      "transcription_date": "2026-06-22",
+      "registry_listings_not_treated_as_operating_proof": true,
+      "absence_from_brand_locator_treated_as_hold_not_closure": true
+    }
+  }
+}

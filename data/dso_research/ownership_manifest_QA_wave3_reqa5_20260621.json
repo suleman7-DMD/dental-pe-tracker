@@ -1,0 +1,144 @@
+{
+  "_meta": {
+    "qa_pass": "RE-QA #5 — focused confirmation that the Gate Owner applied the RE-QA #4 MUST-FIX (A/B/C) before consolidation",
+    "author": "QA / validation-gate session (independent adversarial, REVIEW-ONLY)",
+    "date": "2026-06-21",
+    "role": "independent adversarial QA / consolidation gate; REVIEW-ONLY; no DB writes; no --allow-db-write; no mutation of the manifest, LEDGER, PROGRESS, ownership_tier, or any prior QA file",
+    "canonical_object_reviewed": "data/dso_research/consolidation_candidate_manifest_20260621.json",
+    "manifest_mtime_at_review": 1782072689,
+    "validator_native_ready_file": "data/dso_research/_ready_to_validate_wave3_fixed_20260621.json",
+    "scope": "Focused per Gate Owner instruction: confirm A/C demotions, B explicit SHAFI_REEM adjudication, new ready count 310 or 307, validate-only pass, zero DB writes, sidecars preserved. No re-judging of evidence beyond these items.",
+    "predecessor_verdict": "ownership_manifest_QA_wave3_reqa4_20260621.json (PASS WITH MUST-FIX A/B/C)",
+    "prior_qa_files_NOT_mutated": [
+      "ownership_manifest_QA_reach4_lane1b_merge_20260621.json",
+      "ownership_manifest_QA_merged_20260621.json",
+      "ownership_manifest_QA_revision_signoff_20260621.json",
+      "ownership_manifest_QA_addendum_refined_criteria_20260621.json",
+      "ownership_evidence_QA_fleet_b_lane3_20260621.json",
+      "ownership_manifest_QA_remerge_demotion_20260621.json",
+      "ownership_manifest_QA_wave3_reqa4_20260621.json"
+    ]
+  },
+
+  "overall_verdict": "PASS — all RE-QA #4 MUST-FIX applied; consolidation gate is clear pending the user's explicit 'consolidate approved manifest'",
+
+  "checklist_results": {
+    "A_operating_status_demotions": {
+      "verdict": "PASS",
+      "expected": "4 subject-door closed/relocated rows out of ready, in needs_more_evidence, preserved_ready_row + backfill_lane='operating_status_unverified'",
+      "observed": [
+        {"location_id": "f6c6290c16d20224", "bucket": "needs_more_evidence", "backfill_lane": "operating_status_unverified", "preserved_ready_row": true},
+        {"location_id": "822d3012aedf32b9", "bucket": "needs_more_evidence", "backfill_lane": "operating_status_unverified", "preserved_ready_row": true},
+        {"location_id": "77357c36224272c8", "bucket": "needs_more_evidence", "backfill_lane": "operating_status_unverified", "preserved_ready_row": true},
+        {"location_id": "7d1d789828351ecf", "bucket": "needs_more_evidence", "backfill_lane": "operating_status_unverified", "preserved_ready_row": true}
+      ]
+    },
+    "C_duplicate_door_tier_conflict": {
+      "verdict": "PASS",
+      "expected": "ff41419130267bd9 demoted to needs_more_evidence, preserved_ready_row + backfill_lane='duplicate_door_tier_conflict', AND duplicate_denominator_blocked.currently_in_candidate_set updated (no longer stale [])",
+      "observed": {
+        "location_id": "ff41419130267bd9",
+        "bucket": "needs_more_evidence",
+        "backfill_lane": "duplicate_door_tier_conflict",
+        "preserved_ready_row": true,
+        "ddb_currently_in_candidate_set": "now contains the ff41419130267bd9 record with status 'LEAK FOUND + FIXED 2026-06-21 — demoted ready_to_validate -> needs_more_evidence; twin f94fb29cc7d444cd in NO live bucket; candidate set clean after fix; record retained as denominator-hazard provenance.'"
+      }
+    },
+    "B_shafi_reem_explicit_adjudication": {
+      "verdict": "PASS",
+      "expected": "Explicit ao:SHAFI_REEM release decision OR documented 'covered by prior Shafi/Two Rivers release'; no implicit protected-surname release; tier consistency resolved without using pe_backed=false as the downgrade reason",
+      "observed": {
+        "ao_network_release_decisions.decisions['ao:SHAFI_REEM']": {
+          "network_evidence_quality": "verified",
+          "decision": "release_eligible",
+          "rows_total": 3,
+          "rows_released": 3,
+          "tier": "dentist_multi",
+          "pe_backed": false,
+          "covered_by_prior_release": "ao:SHAFI_SOHAIL (wave1, network_evidence_quality=verified)",
+          "tier_corrections": "ba663f30996016ce branded_dso->dentist_multi; fc658bf62642d908 branded_dso->dentist_multi",
+          "downgrade_basis": "Explicitly DSO=STRUCTURE rule (no documented MSO/management-company/platform) + consistency with prior verified Two Rivers release; explicitly NOT a pe_backed=false downgrade — honors RE-QA #4 caveat."
+        },
+        "ready_rows_now_uniform": "ba663f30996016ce / fc658bf62642d908 / 6da55130228a9c54 all = dentist_multi, pe_backed false. Mixed-tier inconsistency from RE-QA #4 is resolved.",
+        "kept_in_ready": true
+      },
+      "residual_observation_non_blocking": "Tier judgment-call note from RE-QA #4 stands but is satisfied: a ~20-office single-owner network under distinct local trade names could be read as a brand/management structure (branded_dso). The Gate Owner chose dentist_multi on the locked DSO=STRUCTURE rule (T3 = dentist-owned multi, no separate DSO/MSO/platform), now internally consistent across all 3 rows AND consistent with the prior verified ao:SHAFI_SOHAIL release and the reach3 regate_audit. This is a defensible, documented, evidence-consistent call — not a defect. Headline effect: 2 rows moved from dso_pe (T4+T5) into dentist_multi (T3, consolidated-not-DSO); see headline_effect below."
+    },
+    "new_ready_count": {
+      "verdict": "PASS",
+      "expected": "310 (SHAFI_REEM released) or 307 (held)",
+      "observed": 310,
+      "branch": "SHAFI_REEM RELEASED (310). Arithmetic: 315 - 4 (A) - 1 (C) = 310; SHAFI_REEM 3 rows retained via explicit release.",
+      "validator_native_file_matches_manifest": "TRUE — _ready_to_validate_wave3_fixed_20260621.json (310) == manifest buckets.ready_to_validate (310) exactly; 0 in-file-not-manifest, 0 in-manifest-not-file. NOTE: the older _ready_to_validate_wave3_20260621.json (315, stale) still exists for audit but is SUPERSEDED — the validate-only run consumed the _fixed file."
+    },
+    "validate_only_pass": {
+      "verdict": "PASS",
+      "command": "python3 scrapers/consolidate_census.py data/dso_research/_ready_to_validate_wave3_fixed_20260621.json --session gate_owner_wave3_reqa4_20260621 --validate-only",
+      "output": "Loaded 310 classification rows ... Validation OK ... validate-only complete; no DB/ledger/progress writes.",
+      "note": "Schema/DB-state gate only; does not re-judge evidence or operating status. --allow-db-write NOT passed."
+    },
+    "zero_db_writes": {
+      "verdict": "PASS",
+      "method": "DB file md5 + key state markers snapshotted BEFORE and AFTER the validate-only run.",
+      "db_md5_before": "0dec26135bb4d6ee490dc16cfe892ca6",
+      "db_md5_after": "0dec26135bb4d6ee490dc16cfe892ca6",
+      "db_md5_identical": true,
+      "PL_tier_nonnull_before": 0,
+      "PL_tier_nonnull_after": 0,
+      "LEDGER_lines_before": 1,
+      "LEDGER_lines_after": 1,
+      "PROGRESS_tier_tally": {"branded_dso": 0, "dentist_multi": 0, "institutional": 0, "single_loc_group": 0, "stealth_dso": 0, "true_independent": 0, "undetermined": 0},
+      "PROGRESS_undetermined_unreviewed": 4439,
+      "PROGRESS_unchanged": true
+    },
+    "sidecars_preserved": {
+      "verdict": "PASS",
+      "ao_wave1_networks": 6,
+      "ao_wave2_reach4_networks": 14,
+      "ao_wave3_reach3_networks": 51,
+      "ao_individuals": 13,
+      "fleet_b_wave3_total_rows": 720,
+      "fleet_b_wave3_breakdown": {"local_clusters": 637, "website_clusters": 79, "structural_residue": 4}
+    },
+    "held_networks_no_leak": {
+      "verdict": "PASS",
+      "SWEIS_in_ready": 0,
+      "RAMAHA_in_ready": 0,
+      "AQEL_in_ready": 0,
+      "BELKIC_in_ready": 0,
+      "webster_set_in_conflicts": "76 references retained in conflicts (contested set held)"
+    },
+    "bucket_integrity": {
+      "verdict": "PASS",
+      "ready": 310,
+      "needs_more_evidence": 167,
+      "conflicts": 74,
+      "rejected": 7,
+      "core_universe_distinct_locations": 558,
+      "collisions": 0
+    }
+  },
+
+  "ready_tier_mix_310": {
+    "dentist_multi": 148,
+    "branded_dso": 94,
+    "true_independent": 30,
+    "stealth_dso": 21,
+    "institutional": 10,
+    "single_loc_group": 7,
+    "reconciliation": "vs pre-fix wave3 (dentist_multi 151 / branded_dso 96): -4 dentist_multi (A demotions) -1 dentist_multi (C demotion) +2 dentist_multi & -2 branded_dso (SHAFI_REEM tier corrections) = dentist_multi 148, branded_dso 94. Other tiers unchanged. Sum = 310."
+  },
+
+  "headline_effect": {
+    "note": "Headline math is computed FROM the census ledger with coverage at consolidation time — NOT anchored to ADA 14.6% or the legacy 5% floor. These candidate-set tallies are pre-consolidation and informational only.",
+    "consolidated_T2_T3_T4_T5_in_ready": 270,
+    "dso_pe_T4_T5_in_ready": 115,
+    "dso_pe_change_from_shafi_reem": "117 -> 115 (the 2 corrected branded_dso rows moved to dentist_multi/T3; they remain consolidated, just not DSO/PE)."
+  },
+
+  "consolidate_authorization": {
+    "status": "NOT AUTHORIZED",
+    "reason": "consolidate_census.py --allow-db-write remains NOT authorized until the user explicitly says 'consolidate approved manifest'. consolidation_status remains FROZEN.",
+    "gate_state": "CLEAR — all RE-QA #4 MUST-FIX (A demotions, B explicit SHAFI_REEM release, C duplicate-door demotion + ddb update) are applied and verified; the 310-row validator-native file passes --validate-only with zero DB writes; sidecars and held networks intact. No outstanding QA MUST-FIX. Awaiting only the user's explicit consolidate trigger."
+  }
+}

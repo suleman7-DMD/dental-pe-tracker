@@ -1,0 +1,73 @@
+{
+  "_batch": "ind_south",
+  "_lane": "AO_network",
+  "_row_class": "original_13",
+  "_protected_network_hold": false,
+  "_note": "Original-13 individual rows. Evidence-only suffices to advance (no protected hold).",
+  "results": [
+    {
+      "location_id": "0c8f995db2124f57",
+      "practice_name": "Teeth Matter on Kedzie P.C.",
+      "is_multilocation": true,
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "documentary_urls": [
+        {"url": "https://www.yelp.com/biz/salih-dental-kedzie-chicago", "shows": "Salih Dental Kedzie at 6235 S Kedzie Ave Chicago 60629 — same address as Teeth Matter on Kedzie P.C., Dr. Mohammed Salih"},
+        {"url": "https://www.yelp.com/biz/salih-dental-center-chicago", "shows": "Salih Dental Center at 4408 W Lawrence Ave Chicago 60630 — same owner Dr. Mohammed Salih"},
+        {"url": "https://www.dentalplans.com/dentists/illinois/chicago/60629/dr-mohammed-salih-56304/", "shows": "Dr. Mohammed K. Salih listed at two offices: 6235 S Kedzie Ave (60629) and 4408 W Lawrence Ave (60630)"}
+      ],
+      "durable_non_ao_artifact": {"type": "name_chain", "detail": "Three addresses under 'Salih / Teeth Matter' brand, all Dr. Mohammed Salih: Teeth Matter on Kedzie (6235 S Kedzie 60629), Teeth Matter on Lawrence / Salih Dental Center (4408 W Lawrence 60630), Salih Dental Center (1726 W 18th St 60608). Same dentist across two ZIPs via provider directory cross-listing.", "source_url": "https://www.dentalplans.com/dentists/illinois/chicago/60629/dr-mohammed-salih-56304/"},
+      "evidence_quality": "partial",
+      "gate_status": "candidate",
+      "reasoning": "Dr. Mohammed Salih confirmed at minimum two locations (Kedzie 60629, Lawrence 60630) via directories and Yelp — dentist-owned multi-location. 'Teeth Matter' P.C. names on NPPES correspond to 'Salih Dental' consumer names at same addresses. No website/shared-locator/SOS filing retrieved for the 'Teeth Matter' brand specifically; third cluster-mate (18th St) not independently confirmed — evidence partial."
+    },
+    {
+      "location_id": "9c588fbf68114847",
+      "practice_name": "Pulaski Smiling Dental P.C.",
+      "is_multilocation": true,
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "documentary_urls": [
+        {"url": "https://npino.com/dental-clinic/1346806577-pulaski-smiling-dental-p.c./", "shows": "Pulaski Smiling Dental P.C. NPI 1346806577, AO Jianjun Hao (Owner), 5540 S Pulaski Rd Fl 1 Chicago 60629"},
+        {"url": "https://opennpi.com/provider/1447816616", "shows": "Southwest Smiling Dental P.C. NPI 1447816616, AO Jianjun Hao (Owner), 11141 S Kedzie Ave Chicago 60655 — distinct address, same owner"},
+        {"url": "https://npiprofile.com/npi/1063030427", "shows": "Pacific Smiling Dental P.C. NPI 1063030427, AO Dr. Jianjun Hao (President), 4370 E New York St Aurora 60504 — third address, same owner"},
+        {"url": "https://smilingdentalgroup.com/about-us/", "shows": "Smiling Dental Group website identifying the Aurora location and Dr. Jianjun Hao as founder/key practitioner"}
+      ],
+      "durable_non_ao_artifact": {"type": "name_chain", "detail": "Four 'Smiling Dental' P.C. entities at distinct addresses, all AO Jianjun Hao in NPPES: Pulaski (5540 S Pulaski 60629), Southwest (11141 S Kedzie 60655), Pacific (4370 E New York Aurora 60504), Smiling Dental International (Chicago). smilingdentalgroup.com is the umbrella brand.", "source_url": "https://opennpi.com/provider/1447816616"},
+      "evidence_quality": "verified",
+      "gate_status": "ready_for_validation",
+      "reasoning": "NPPES confirms Jianjun Hao as AO/owner across 4+ 'Smiling Dental' P.C. entities at 4 addresses (Chicago 60629/60655/60608, Aurora 60504) — dentist-owned multi-location chain. smilingdentalgroup.com is the public umbrella. No PE/MSO/DSO management layer found."
+    },
+    {
+      "location_id": "27297b90116fc899",
+      "practice_name": "Molis Dental",
+      "is_multilocation": true,
+      "evidence_tier": "dentist_multi",
+      "pe_backed": false,
+      "documentary_urls": [
+        {"url": "https://molisdental.com/locations/", "shows": "Molis Dental locations page listing both Burr Ridge and South Holland offices"},
+        {"url": "https://www.yelp.com/biz/molis-dental-south-holland-south-holland", "shows": "Molis Dental South Holland at 16240 Louis Ave South Holland 60473 — second confirmed location"},
+        {"url": "https://molisdental.com/molis-dental-burr-ridge-il/", "shows": "Molis Dental Burr Ridge primary location at 16 W 375 83rd St Burr Ridge 60527"}
+      ],
+      "durable_non_ao_artifact": {"type": "shared_website", "detail": "molisdental.com lists two locations under Molis Dental: Burr Ridge (16 W 375 83rd St 60527) and South Holland (16240 Louis Ave 60473), Dr. Ryan Molis DDS eponymous owner.", "source_url": "https://molisdental.com/locations/"},
+      "evidence_quality": "verified",
+      "gate_status": "ready_for_validation",
+      "reasoning": "Two-location dentist-owned group under Dr. Ryan Molis DDS (Burr Ridge 60527 watched + South Holland 60473), confirmed by the practice's own locations page and Yelp. No PE/DSO platform — self-funded dentist-entrepreneur multi-location."
+    },
+    {
+      "location_id": "b71f5fd4d273eca4",
+      "practice_name": "Oak Park Dental Studio",
+      "is_multilocation": false,
+      "evidence_tier": "single_loc_group",
+      "pe_backed": false,
+      "documentary_urls": [
+        {"url": "https://www.oakparkdentist.com/meet-us", "shows": "Three providers at one location: Dr. Chelsea Jones (owner/GP), Dr. Caroline Jermanus (periodontist), Dr. Joe Lepkowski (GP) at 6630 Roosevelt Rd Oak Park 60304"},
+        {"url": "https://www.oakparkdentist.com/", "shows": "Single location, no additional offices, copyright 'by Chelsea Jones' confirming individual ownership"}
+      ],
+      "durable_non_ao_artifact": {"type": "shared_website", "detail": "oakparkdentist.com presents a single-address practice (6630 Roosevelt Rd Oak Park 60304) with multiple dentists; copyright 'by Chelsea Jones' names the owner. No second address or DSO affiliation.", "source_url": "https://www.oakparkdentist.com/meet-us"},
+      "evidence_quality": "verified",
+      "gate_status": "ready_for_validation",
+      "reasoning": "Single-location, multi-dentist practice owned by Dr. Chelsea Jones (with Dr. Joseph Lepkowski + a periodontist) — confirms proposed single_loc_group. No second location, DSO, or PE backing."
+    }
+  ]
+}

@@ -1,0 +1,518 @@
+{
+ "_meta": {
+  "title": "STAGED targeted AO backfill plan \u2014 13 AO_network rows from consolidation manifest",
+  "status": "SUPERSEDED / PRELIMINARY \u2014 do NOT use as final scope. This file covers only the ORIGINAL 13 AO_network rows. QA is demoting 58 more protected AO-only rows from ready_to_validate into the AO_network backfill queue -> revised total = 71 rows. WAIT for the Gate Owner's REVISED manifest/backfill queue, then re-scope ONLY the AO_network rows from that file. No agents until cleared.",
+  "author_role": "Main session / Lane 1 (Opus 4.8)",
+  "date": "2026-06-21",
+  "source_manifest": "data/dso_research/consolidation_candidate_manifest_20260621.json (evidence_gap_backfill_queue, backfill_lane=='AO_network')",
+  "scope": "ONLY these 13 specific location_ids. NOT a new broad AO wave. NOT reach 2-3 long tail.",
+  "task_per_row": "Find EITHER (a) an AO-cluster artifact: a shared authorized official tying this location's NPI to 2+ distinct watched-IL GP locations, OR (b) a documentary multi-location URL (group website / owner bio showing 2+ offices). Emit ready_for_validation max. If neither found -> assigned_tier stays as-is candidate / undetermined, status=needs_verification. No DB writes. No consolidation.",
+  "taxonomy": "DSO tier = MSO/management/platform/DSO structure (not PE); pe_backed separate; AO reach = signal not proof; specialist -> undetermined/exclude from GP.",
+  "split": {
+   "in_known_ao_cluster": 6,
+   "need_fresh_discovery": 7
+  },
+  "revised_queue_pending": {
+   "original_ao_network_rows": 13,
+   "qa_demoted_ao_only_rows": 58,
+   "revised_total": 71,
+   "source": "awaiting Gate Owner revised consolidation manifest / backfill queue"
+  },
+  "evidence_bar": "SHARPENED (2026-06-21): backfill must attach a REAL documentary URL OR a durable NON-AO ownership artifact (e.g. shared EIN cluster, shared legal entity, exact-address DSO locator, parent-company/MSO filing). AO reach ALONE is NOT enough to lift a row out of backfill. Targeted evidence repair, not a broad AO wave."
+ },
+ "rows": [
+  {
+   "location_id": "d9fb0c9f226a66f3",
+   "practice_name": "Romo Dental III",
+   "dba": null,
+   "address": "5902 w 35th st",
+   "city": "CICERO",
+   "zip": "60804",
+   "phone": "(708) 780-0440",
+   "website": "Oralkarenetwork2.Com",
+   "ein": "363259388",
+   "primary_npi": "1457351629",
+   "org_npi": null,
+   "entity_classification": "family_practice",
+   "manifest_proposed_tier": "dentist_multi",
+   "manifest_pe_backed": false,
+   "manifest_basis_hint": "web_verified",
+   "missing_evidence_type": "AO-network cluster artifact (shared authorized-official across locations) or a documentary multi-location URL",
+   "ao_of_primary_npi": null,
+   "ao_of_org_npi": null,
+   "backfill_mode": "fresh_ao_discovery (re-derive AO from NPPES for primary/org NPI; check reach) + find_multiloc_url"
+  },
+  {
+   "location_id": "f3959b4a9ac8e139",
+   "practice_name": "SILVA DENTAL CENTER LTD",
+   "dba": null,
+   "address": "5919 w cermak rd",
+   "city": "CICERO",
+   "zip": "60804",
+   "phone": "(708) 222-6600",
+   "website": "Centraldentalassociates.Com",
+   "ein": "465833863",
+   "primary_npi": "1326115981",
+   "org_npi": "1326115981",
+   "entity_classification": "dso_regional",
+   "manifest_proposed_tier": "dentist_multi",
+   "manifest_pe_backed": false,
+   "manifest_basis_hint": "affiliated_dso_field",
+   "missing_evidence_type": "AO-network cluster artifact (shared authorized-official across locations) or a documentary multi-location URL",
+   "ao_of_primary_npi": {
+    "name": "BERTA SILVA",
+    "title": "PRESIDENT"
+   },
+   "ao_of_org_npi": {
+    "name": "BERTA SILVA",
+    "title": "PRESIDENT"
+   },
+   "backfill_mode": "fresh_ao_discovery (re-derive AO from NPPES for primary/org NPI; check reach) + find_multiloc_url"
+  },
+  {
+   "location_id": "28fab093c7a6a0d9",
+   "practice_name": "MONIL P SHAH DMD PC",
+   "dba": "<UNAVAIL>",
+   "address": "5539 w cermak rd",
+   "city": "CICERO",
+   "zip": "60804",
+   "phone": "(708) 652-7575",
+   "website": null,
+   "ein": null,
+   "primary_npi": "1568712123",
+   "org_npi": "1568712123",
+   "entity_classification": "small_group",
+   "manifest_proposed_tier": "dentist_multi",
+   "manifest_pe_backed": false,
+   "manifest_basis_hint": "web_verified",
+   "missing_evidence_type": "AO-network cluster artifact (shared authorized-official across locations) or a documentary multi-location URL",
+   "ao_of_primary_npi": {
+    "name": "MONIL SHAH",
+    "title": "PRESIDENT"
+   },
+   "ao_of_org_npi": {
+    "name": "MONIL SHAH",
+    "title": "PRESIDENT"
+   },
+   "backfill_mode": "fresh_ao_discovery (re-derive AO from NPPES for primary/org NPI; check reach) + find_multiloc_url"
+  },
+  {
+   "location_id": "addadba0d25e3812",
+   "practice_name": "IMAGE DENTAL LLC",
+   "dba": null,
+   "address": "3020 s cicero ave",
+   "city": "CICERO",
+   "zip": "60804",
+   "phone": "(708) 863-2000",
+   "website": null,
+   "ein": null,
+   "primary_npi": "1063789584",
+   "org_npi": "1063789584",
+   "entity_classification": "large_group",
+   "manifest_proposed_tier": "dentist_multi",
+   "manifest_pe_backed": false,
+   "manifest_basis_hint": "web_verified",
+   "missing_evidence_type": "AO-network cluster artifact (shared authorized-official across locations) or a documentary multi-location URL",
+   "ao_of_primary_npi": {
+    "name": "SINAN RAZZAK",
+    "title": "OWNER"
+   },
+   "ao_of_org_npi": {
+    "name": "SINAN RAZZAK",
+    "title": "OWNER"
+   },
+   "known_ao_cluster": [
+    {
+     "authorized_official": "SINAN RAZZAK",
+     "reach": 3,
+     "cluster_locations": [
+      {
+       "location_id": "7f3381012360be57",
+       "name": "DENTAL TOWN",
+       "address": "17w679 roosevelt rd",
+       "city": "OAKBROOK TERRACE",
+       "zip": "60181"
+      },
+      {
+       "location_id": "c0cbfce56b1ea134",
+       "name": "BEDFORD DENTAL LLC",
+       "address": "7250 s cicero ave",
+       "city": "CHICAGO",
+       "zip": "60629"
+      },
+      {
+       "location_id": "addadba0d25e3812",
+       "name": "IMAGE DENTAL LLC",
+       "address": "3020 s cicero ave",
+       "city": "CICERO",
+       "zip": "60804"
+      }
+     ]
+    }
+   ],
+   "backfill_mode": "attach_existing_ao_artifact + find_multiloc_url"
+  },
+  {
+   "location_id": "fb2614131429927d",
+   "practice_name": "PERFECT DENTAL SMILE, LTD",
+   "dba": null,
+   "address": "6017 w cermak rd",
+   "city": "CICERO",
+   "zip": "60804",
+   "phone": "(708) 652-8466",
+   "website": null,
+   "ein": null,
+   "primary_npi": "1194976282",
+   "org_npi": "1194976282",
+   "entity_classification": "solo_established",
+   "manifest_proposed_tier": "dentist_multi",
+   "manifest_pe_backed": false,
+   "manifest_basis_hint": "web_verified",
+   "missing_evidence_type": "AO-network cluster artifact (shared authorized-official across locations) or a documentary multi-location URL",
+   "ao_of_primary_npi": {
+    "name": "BUSHRA AL AZZAWI",
+    "title": "DENTIST"
+   },
+   "ao_of_org_npi": {
+    "name": "BUSHRA AL AZZAWI",
+    "title": "DENTIST"
+   },
+   "known_ao_cluster": [
+    {
+     "authorized_official": "BUSHRA AL AZZAWI",
+     "reach": 2,
+     "cluster_locations": [
+      {
+       "location_id": "59364988957e0a92",
+       "name": "PERFECT DENTAL SMILE, LTD.",
+       "address": "2545 w peterson ave",
+       "city": "CHICAGO",
+       "zip": "60659"
+      },
+      {
+       "location_id": "fb2614131429927d",
+       "name": "PERFECT DENTAL SMILE, LTD",
+       "address": "6017 w cermak rd",
+       "city": "CICERO",
+       "zip": "60804"
+      }
+     ]
+    }
+   ],
+   "backfill_mode": "attach_existing_ao_artifact + find_multiloc_url"
+  },
+  {
+   "location_id": "2ab7cdb707db8803",
+   "practice_name": "METROSMILES - CICERO DENTAL PC",
+   "dba": null,
+   "address": "4842 w cermak rd",
+   "city": "CICERO",
+   "zip": "60804",
+   "phone": "(773) 237-0707",
+   "website": "Metrosmilesdental.Com",
+   "ein": "465530483",
+   "primary_npi": "1124438957",
+   "org_npi": "1124438957",
+   "entity_classification": "solo_high_volume",
+   "manifest_proposed_tier": "dentist_multi",
+   "manifest_pe_backed": false,
+   "manifest_basis_hint": "web_verified",
+   "missing_evidence_type": "AO-network cluster artifact (shared authorized-official across locations) or a documentary multi-location URL",
+   "ao_of_primary_npi": {
+    "name": "CHRIS TSALIAGOS",
+    "title": "PRESIDENT"
+   },
+   "ao_of_org_npi": {
+    "name": "CHRIS TSALIAGOS",
+    "title": "PRESIDENT"
+   },
+   "known_ao_cluster": [
+    {
+     "authorized_official": "CHRIS TSALIAGOS",
+     "reach": 3,
+     "cluster_locations": [
+      {
+       "location_id": "4b5fab0c0946e153",
+       "name": "SOUTH HOLLAND DENTAL PC",
+       "address": "808 e sibley blvd",
+       "city": "DOLTON",
+       "zip": "60419"
+      },
+      {
+       "location_id": "dfe1f90fc3ee0c32",
+       "name": "PILSEN DENTAL GROUP",
+       "address": "1859 s blue island ave",
+       "city": "CHICAGO",
+       "zip": "60608"
+      },
+      {
+       "location_id": "2ab7cdb707db8803",
+       "name": "METROSMILES - CICERO DENTAL PC",
+       "address": "4842 w cermak rd",
+       "city": "CICERO",
+       "zip": "60804"
+      }
+     ]
+    }
+   ],
+   "backfill_mode": "attach_existing_ao_artifact + find_multiloc_url"
+  },
+  {
+   "location_id": "bb6d4fb9d7b95ca4",
+   "practice_name": "COMPASS DENTAL, P.C.",
+   "dba": null,
+   "address": "4413 n clark st",
+   "city": "CHICAGO",
+   "zip": "60640",
+   "phone": "(785) 979-5147",
+   "website": "Clarkdentalchicago.Com",
+   "ein": "311827050",
+   "primary_npi": "1104174374",
+   "org_npi": "1104174374",
+   "entity_classification": "solo_established",
+   "manifest_proposed_tier": "dentist_multi",
+   "manifest_pe_backed": false,
+   "manifest_basis_hint": "ao_reach",
+   "missing_evidence_type": "AO-network cluster artifact (shared authorized-official across locations) or a documentary multi-location URL",
+   "ao_of_primary_npi": {
+    "name": "BRANDON PRUSA",
+    "title": "PRESIDENT"
+   },
+   "ao_of_org_npi": {
+    "name": "BRANDON PRUSA",
+    "title": "PRESIDENT"
+   },
+   "backfill_mode": "fresh_ao_discovery (re-derive AO from NPPES for primary/org NPI; check reach) + find_multiloc_url"
+  },
+  {
+   "location_id": "0884ff9f2ce7934f",
+   "practice_name": "Braam Dental",
+   "dba": null,
+   "address": "1015 w lawrence ave",
+   "city": "CHICAGO",
+   "zip": "60640",
+   "phone": "(773) 275-1835",
+   "website": null,
+   "ein": null,
+   "primary_npi": "1275914939",
+   "org_npi": null,
+   "entity_classification": "small_group",
+   "manifest_proposed_tier": "dentist_multi",
+   "manifest_pe_backed": false,
+   "manifest_basis_hint": "web_verified",
+   "missing_evidence_type": "AO-network cluster artifact (shared authorized-official across locations) or a documentary multi-location URL",
+   "ao_of_primary_npi": null,
+   "ao_of_org_npi": null,
+   "backfill_mode": "fresh_ao_discovery (re-derive AO from NPPES for primary/org NPI; check reach) + find_multiloc_url"
+  },
+  {
+   "location_id": "e32ed1606301b785",
+   "practice_name": "THE DENTAL MASTRS OF RAVENSWOOD LLC",
+   "dba": "<UNAVAIL>",
+   "address": "1945 w wilson ste",
+   "city": "CHICAGO",
+   "zip": "60640",
+   "phone": "(773) 588-7840",
+   "website": null,
+   "ein": null,
+   "primary_npi": "1588196083",
+   "org_npi": "1588196083",
+   "entity_classification": "solo_established",
+   "manifest_proposed_tier": "dentist_multi",
+   "manifest_pe_backed": false,
+   "manifest_basis_hint": "ao_reach",
+   "missing_evidence_type": "AO-network cluster artifact (shared authorized-official across locations) or a documentary multi-location URL",
+   "ao_of_primary_npi": {
+    "name": "ERIC BLOOM",
+    "title": "PARTNER"
+   },
+   "ao_of_org_npi": {
+    "name": "ERIC BLOOM",
+    "title": "PARTNER"
+   },
+   "known_ao_cluster": [
+    {
+     "authorized_official": "ERIC BLOOM",
+     "reach": 2,
+     "cluster_locations": [
+      {
+       "location_id": "e32ed1606301b785",
+       "name": "THE DENTAL MASTRS OF RAVENSWOOD LLC",
+       "address": "1945 w wilson ste",
+       "city": "CHICAGO",
+       "zip": "60640"
+      },
+      {
+       "location_id": "39f2d2b90de5848e",
+       "name": "THE DENTAL MASTERS OF BELMONT, LLC",
+       "address": "5236 w belmont ave",
+       "city": "CHICAGO",
+       "zip": "60641"
+      }
+     ]
+    }
+   ],
+   "backfill_mode": "attach_existing_ao_artifact + find_multiloc_url"
+  },
+  {
+   "location_id": "0c8f995db2124f57",
+   "practice_name": "TEETH MATTER ON KEDZIE P.C.",
+   "dba": null,
+   "address": "6235 s kedzie ave",
+   "city": "CHICAGO",
+   "zip": "60629",
+   "phone": "(773) 776-7700",
+   "website": null,
+   "ein": null,
+   "primary_npi": "1902370489",
+   "org_npi": "1902370489",
+   "entity_classification": "solo_established",
+   "manifest_proposed_tier": "dentist_multi",
+   "manifest_pe_backed": false,
+   "manifest_basis_hint": "ao_reach",
+   "missing_evidence_type": "AO-network cluster artifact (shared authorized-official across locations) or a documentary multi-location URL",
+   "ao_of_primary_npi": {
+    "name": "MOHAMMED SALIH",
+    "title": "DENTIST"
+   },
+   "ao_of_org_npi": {
+    "name": "MOHAMMED SALIH",
+    "title": "DENTIST"
+   },
+   "known_ao_cluster": [
+    {
+     "authorized_official": "MOHAMMED SALIH",
+     "reach": 3,
+     "cluster_locations": [
+      {
+       "location_id": "b7e5a55e0eb96cdd",
+       "name": "SALIH DENTAL CENTER",
+       "address": "1726 w 18th st",
+       "city": "CHICAGO",
+       "zip": "60608"
+      },
+      {
+       "location_id": "0c8f995db2124f57",
+       "name": "TEETH MATTER ON KEDZIE P.C.",
+       "address": "6235 s kedzie ave",
+       "city": "CHICAGO",
+       "zip": "60629"
+      },
+      {
+       "location_id": "4a6b1b5f5db95d3e",
+       "name": "TEETH MATTER ON LAWRENCE P.C.",
+       "address": "4408 w lawrence ave",
+       "city": "CHICAGO",
+       "zip": "60630"
+      }
+     ]
+    }
+   ],
+   "backfill_mode": "attach_existing_ao_artifact + find_multiloc_url"
+  },
+  {
+   "location_id": "9c588fbf68114847",
+   "practice_name": "PULASKI SMILING DENTAL P.C.",
+   "dba": null,
+   "address": "5540 s pulaski rd",
+   "city": "CHICAGO",
+   "zip": "60629",
+   "phone": "(773) 735-4434",
+   "website": null,
+   "ein": null,
+   "primary_npi": "1346806577",
+   "org_npi": "1346806577",
+   "entity_classification": "solo_established",
+   "manifest_proposed_tier": "dentist_multi",
+   "manifest_pe_backed": false,
+   "manifest_basis_hint": "ao_reach",
+   "missing_evidence_type": "AO-network cluster artifact (shared authorized-official across locations) or a documentary multi-location URL",
+   "ao_of_primary_npi": {
+    "name": "JIANJUN HAO",
+    "title": "OWNER"
+   },
+   "ao_of_org_npi": {
+    "name": "JIANJUN HAO",
+    "title": "OWNER"
+   },
+   "known_ao_cluster": [
+    {
+     "authorized_official": "JIANJUN HAO",
+     "reach": 3,
+     "cluster_locations": [
+      {
+       "location_id": "eea9dfd84c8272cc",
+       "name": "PACIFIC SMILING DENTAL P.C.",
+       "address": "4370 e new york st",
+       "city": "AURORA",
+       "zip": "60504"
+      },
+      {
+       "location_id": "55404df201ad194f",
+       "name": "SMILING DENTAL INTERNATIONAL P.C.",
+       "address": "712 e 87th st",
+       "city": "CHICAGO",
+       "zip": "60619"
+      },
+      {
+       "location_id": "9c588fbf68114847",
+       "name": "PULASKI SMILING DENTAL P.C.",
+       "address": "5540 s pulaski rd",
+       "city": "CHICAGO",
+       "zip": "60629"
+      }
+     ]
+    }
+   ],
+   "backfill_mode": "attach_existing_ao_artifact + find_multiloc_url"
+  },
+  {
+   "location_id": "27297b90116fc899",
+   "practice_name": "Molis Dental",
+   "dba": null,
+   "address": "16w375 83rd st",
+   "city": "BURR RIDGE",
+   "zip": "60527",
+   "phone": "(630) 920-1990",
+   "website": "Molisdental.Com",
+   "ein": "363219286",
+   "primary_npi": "1083824544",
+   "org_npi": null,
+   "entity_classification": "solo_established",
+   "manifest_proposed_tier": "dentist_multi",
+   "manifest_pe_backed": false,
+   "manifest_basis_hint": "web_verified",
+   "missing_evidence_type": "AO-network cluster artifact (shared authorized-official across locations) or a documentary multi-location URL",
+   "ao_of_primary_npi": null,
+   "ao_of_org_npi": null,
+   "backfill_mode": "fresh_ao_discovery (re-derive AO from NPPES for primary/org NPI; check reach) + find_multiloc_url"
+  },
+  {
+   "location_id": "b71f5fd4d273eca4",
+   "practice_name": "OAK PARK DENTAL STUDIO",
+   "dba": null,
+   "address": "6630 roosevelt rd",
+   "city": "OAK PARK",
+   "zip": "60304",
+   "phone": "(708) 386-2233",
+   "website": "Oakparkdentist.Com",
+   "ein": "363697739",
+   "primary_npi": "1295173953",
+   "org_npi": "1295173953",
+   "entity_classification": "solo_established",
+   "manifest_proposed_tier": "single_loc_group",
+   "manifest_pe_backed": false,
+   "manifest_basis_hint": "web_verified",
+   "missing_evidence_type": "AO-network cluster artifact (shared authorized-official across locations) or a documentary multi-location URL",
+   "ao_of_primary_npi": {
+    "name": "JOSEPH LEPKOWSKI",
+    "title": "DENTIST"
+   },
+   "ao_of_org_npi": {
+    "name": "JOSEPH LEPKOWSKI",
+    "title": "DENTIST"
+   },
+   "backfill_mode": "fresh_ao_discovery (re-derive AO from NPPES for primary/org NPI; check reach) + find_multiloc_url"
+  }
+ ]
+}

@@ -1,0 +1,1503 @@
+{
+  "classifications": [
+    {
+      "location_id": "71399b136dc5205a",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "sonrisadental.net"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "ownership_QA POSITIVE owner-operated evidence \u2014 sonrisadental.net names Dr. Phil (Debossu). NOTE brand collision: this 'Sonrisa Dental' is DISTINCT from 'Sonrisa Family'/Korkus (sonrisa-cdca), which is a contested dentist_multi network. Do not merge by the 'SONRISA' stem. | POSITIVE owner-operated evidence: own site sonrisadental.net names Dr. Philip Debossu as owner since 1990, solo, single location; DB affiliated_dso=None. | RESIDUAL CAUTION (brand-name collision): name 'Sonrisa Dental' collides with the CDCA-affiliated 'Sonrisa' DSO referenced in project history (Phase-4 'Sonrisa/CDCA'). DB shows no affiliation here; low risk but recommend a negative-confirm before final."
+    },
+    {
+      "location_id": "7495e79c66647036",
+      "assigned_tier": "branded_dso",
+      "pe_backed": false,
+      "evidence_basis": "structural",
+      "evidence_urls": [
+        "Dental Dreams Illinois locator page (dentaldreams.com/location_group/illinois/) documents multiple Chicago south-side locations consistent with this ZIP 60629 footprint",
+        "dentaldreams.com/our-president-featured-in-great-profile/ confirms Sameera Hussain as founder/president of Dental Dreams LLC",
+        "https://www.dentaldreams.com/location_group/illinois/",
+        "https://www.dentaldreams.com/our-president-featured-in-great-profile/"
+      ],
+      "evidence_artifacts": [
+        "Dental Dreams Illinois locator page (dentaldreams.com/location_group/illinois/) documents multiple Chicago south-side locations consistent with this ZIP 60629 footprint",
+        "Pipeline DB affiliated_dso field is set to 'Dental Dreams' for this location, indicating a prior classification pass matched this address to the Dental Dreams brand",
+        "ao_reach=10 across 10 ZIPs",
+        "dentaldreams.com/our-president-featured-in-great-profile/ confirms Sameera Hussain as founder/president of Dental Dreams LLC",
+        "entity_classification=dso_national in pipeline DB",
+        "legal_entity=THE DENTAL CLINIC LLC",
+        "{'type': 'ao_reach', 'authorized_official': 'SAMEERA HUSSAIN', 'reach': 10, 'zips': ['60160', '60411', '60436', '60610', '60623', '60629', '60639', '60654', '60707', '60804'], 'legal_entity': 'THE DENTAL CLINIC, LLC', 'affiliated_dso': 'Dental Dreams', 'primary_npi': '1538330527'}",
+        "ao_cluster:ao:HUSSAIN_SAMEERA"
+      ],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "ao:HUSSAIN_SAMEERA",
+      "reasoning": "This location uses the legal entity 'The Dental Clinic, LLC' rather than Dental Experts LLC or Dental Dreams LLC, but the pipeline DB already set affiliated_dso='Dental Dreams' from a prior classification pass. Sameera Hussain as AO bridges this entity to the known Dental Dreams network. The locator URL for this exact address (3210 W 63rd St, Chicago 60629) was not independently confirmed via direct locator hit in this session, hence medium confidence, but the affiliated_dso DB tag and shared AO with 9 other confirmed Dental Dreams locations strongly supports the branded_dso determination. Recommend downstream gate to confirm the 63rd St address appears on dentaldreams.com locator. | Own locator dentaldreams.com/location/...west-63rd-st matches DB address (3210 w 63rd) + DB affiliated_dso='Dental Dreams' \u2014 exact-address documentary. | TIER CORRECTION (minor): NPPES name 'THE DENTAL CLINIC, LLC' is a friendly-PC local name \u2192 strictly stealth_dso (T4) rather than branded_dso (T5). Both are DSO/PE so the headline split is unaffected."
+    },
+    {
+      "location_id": "21ccc26f42e3e9b6",
+      "assigned_tier": "branded_dso",
+      "pe_backed": true,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://heartland.com/blog/blog-39134877043",
+        "https://www.prnewswire.com/news-releases/heartland-dental-grows-national-network-of-supported-offices-with-acquisition-of-tru-family-dental-301197661.html"
+      ],
+      "evidence_artifacts": [
+        "All other 6 locations in this AO cluster are confirmed Heartland/KKR",
+        "However, parent_company field in NPPES/DA data shows SONRAVA HEALTH (parent of Western Dental) \u2014 this is a data discrepancy that may indicate a subsequent ownership transfer or a data error",
+        "TRU DENTAL ILLINOIS P.C. entity name matches the Heartland Dental friendly-PC used by 5 other locations in this same AO cluster",
+        "ao_reach=7 across 7 ZIPs",
+        "entity_classification=dso_national in DB",
+        "parent_company=SONRAVA HEALTH in federal data (conflicting signal)",
+        "{'type': 'ao_reach', 'authorized_official': 'CELIA HAYES', 'reach': 7, 'zips': ['60154', '60422', '60431', '60447', '60465', '60565', '60707'], 'location_name': 'TRU DENTAL ILLINOIS, P.C.', 'address': '7728 w n ave, ELMWOOD PARK, IL 60707', 'primary_npi': '1952980211', 'current_entity_classification': 'dso_national', 'affiliated_dso': None, 'parent_company': 'SONRAVA HEALTH'}",
+        "ao_cluster:ao:HAYES_CELIA"
+      ],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "ao:HAYES_CELIA",
+      "reasoning": "Entity name TRU DENTAL ILLINOIS P.C. places this firmly in the Heartland Dental friendly-PC cluster along with the other 6 HAYES AO locations. The parent_company=SONRAVA HEALTH field is anomalous \u2014 Sonrava Health (Western Dental parent) and Heartland Dental are separate DSO chains with different PE backers. The DB already has this as dso_national with no affiliated_dso. Confidence downgraded to medium due to the conflicting parent_company signal. Downstream validator should cross-check NPI 1952980211 on NPPES directly and verify current operator of 7728 W North Ave Elmwood Park IL. Most likely outcome: Heartland (entity name match, AO shared with 6 confirmed Heartland locations), or the Sonrava field is a Data Axle error. Do not flip to independent. | stealth_dso retained: exact_address_match=True, pe_backed=True, basis=web_verified."
+    },
+    {
+      "location_id": "a543f3ba7ef53451",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": false,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "https://www.dentalandbraces.com/location/elgin-larkin-ave/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'all_family_dental_udp' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. | stealth_dso is PE/MSO-backed friendly-PC BY DEFINITION; pe_backed!=true with no MSO documentary evidence means the defining feature is absent. Corrected to dentist_multi: still Consolidated (multi-location/local-name group), but REMOVED from the DSO/PE-only headline."
+    },
+    {
+      "location_id": "bad6e872762a243e",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": false,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "https://www.dentalandbraces.com/location/melrose-park/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'all_family_dental_udp' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. | stealth_dso is PE/MSO-backed friendly-PC BY DEFINITION; pe_backed!=true with no MSO documentary evidence means the defining feature is absent. Corrected to dentist_multi: still Consolidated (multi-location/local-name group), but REMOVED from the DSO/PE-only headline."
+    },
+    {
+      "location_id": "e7adb34b51e9204f",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": false,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "https://www.dentalandbraces.com/location/berwyn/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'all_family_dental_udp' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. | stealth_dso is PE/MSO-backed friendly-PC BY DEFINITION; pe_backed!=true with no MSO documentary evidence means the defining feature is absent. Corrected to dentist_multi: still Consolidated (multi-location/local-name group), but REMOVED from the DSO/PE-only headline."
+    },
+    {
+      "location_id": "607f4d5f66822036",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": false,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "https://www.dentalandbraces.com/location/aurora/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'all_family_dental_udp' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. | stealth_dso is PE/MSO-backed friendly-PC BY DEFINITION; pe_backed!=true with no MSO documentary evidence means the defining feature is absent. Corrected to dentist_multi: still Consolidated (multi-location/local-name group), but REMOVED from the DSO/PE-only headline."
+    },
+    {
+      "location_id": "ce3f980988601d21",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": false,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "https://app.nexhealth.com/appt/unitedentalpartners?lid=2762",
+        "https://www.wheatlanddental.com/contact/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'all_family_dental_udp' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. | stealth_dso is PE/MSO-backed friendly-PC BY DEFINITION; pe_backed!=true with no MSO documentary evidence means the defining feature is absent. Corrected to dentist_multi: still Consolidated (multi-location/local-name group), but REMOVED from the DSO/PE-only headline."
+    },
+    {
+      "location_id": "ac1fda16ba43aa1d",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": false,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "https://www.dentalandbraces.com/location/little-village/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'all_family_dental_udp' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. | stealth_dso is PE/MSO-backed friendly-PC BY DEFINITION; pe_backed!=true with no MSO documentary evidence means the defining feature is absent. Corrected to dentist_multi: still Consolidated (multi-location/local-name group), but REMOVED from the DSO/PE-only headline."
+    },
+    {
+      "location_id": "adbbaa6a89a0a404",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": false,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "https://www.dentalandbraces.com/location/belmont-cragin/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'all_family_dental_udp' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. | stealth_dso is PE/MSO-backed friendly-PC BY DEFINITION; pe_backed!=true with no MSO documentary evidence means the defining feature is absent. Corrected to dentist_multi: still Consolidated (multi-location/local-name group), but REMOVED from the DSO/PE-only headline."
+    },
+    {
+      "location_id": "b11b2bdcb2eb181d",
+      "assigned_tier": "branded_dso",
+      "pe_backed": false,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "dentaldreams.com/location/dental-dreams-west-north-ave-melrose-park/ lists 2537 W North Ave, Melrose Park IL 60160 \u2014 exact address match",
+        "dentaldreams.com/our-president-featured-in-great-profile/ confirms Sameera Hussain as founder/president",
+        "https://app.joinhandshake.com/employers/kos-services-dental-dreams-262860",
+        "https://www.dentaldreams.com/location/dental-dreams-west-north-ave-melrose-park/",
+        "https://www.dentaldreams.com/location_group/illinois/",
+        "https://www.dentaldreams.com/our-president-featured-in-great-profile/",
+        "https://www.zoominfo.com/p/Sameera-Hussain/1304308795"
+      ],
+      "evidence_artifacts": [
+        "KOS Services LLC confirmed as MSO operator for Dental Dreams (Handshake employer page: KOS Services/Dental Dreams)",
+        "ZoomInfo: Sameera Hussain listed as Owner at Dental Dreams, email domain @dentaldreams.org",
+        "ao_reach=10 across 10 ZIPs",
+        "dentaldreams.com/location/dental-dreams-west-north-ave-melrose-park/ lists 2537 W North Ave, Melrose Park IL 60160 \u2014 exact address match",
+        "dentaldreams.com/our-president-featured-in-great-profile/ confirms Sameera Hussain as founder/president",
+        "entity_classification=dso_national in pipeline DB",
+        "legal_entity=DENTAL EXPERTS LLC",
+        "parent_company=KOS SERVICES in NPPES",
+        "{'type': 'ao_reach', 'authorized_official': 'SAMEERA HUSSAIN', 'reach': 10, 'zips': ['60160', '60411', '60436', '60610', '60623', '60629', '60639', '60654', '60707', '60804'], 'legal_entity': 'DENTAL EXPERTS, LLC', 'parent_company': 'KOS SERVICES', 'primary_npi': '1780855775'}",
+        "ao_cluster:ao:HUSSAIN_SAMEERA"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:HUSSAIN_SAMEERA",
+      "reasoning": "Sameera Hussain is the documented founder and president of Dental Dreams LLC. The dentaldreams.com public locator confirms this exact address (2537 W North Ave, Melrose Park) as a Dental Dreams location. The legal entity 'Dental Experts LLC' with parent KOS Services is the known friendly-PC/MSO structure for Dental Dreams in IL (CLAUDE.md session notes confirm 'Dental Dreams as Dental Experts LLC'). No PE backing found; family-owned DSO. Already classified dso_national in pipeline \u2014 corroborated. | Fleet B classified this branded_dso on documentary locator evidence to the 'dental_dreams' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. | branded_dso with pe_backed!=true: established QA standard downgrades to dentist_multi (a consolidated dentist-owned group is Consolidated, not DSO/PE). Matches Fleet B's own heads-up (Webster Dental / 1st Family / Family Dental Care class)."
+    },
+    {
+      "location_id": "c7da8303188c8187",
+      "assigned_tier": "branded_dso",
+      "pe_backed": false,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "dentaldreams.com/our-president-featured-in-great-profile/ confirms Sameera Hussain as founder/president",
+        "https://app.joinhandshake.com/employers/kos-services-dental-dreams-262860",
+        "https://www.dentaldreams.com/location_group/illinois/",
+        "https://www.dentaldreams.com/our-president-featured-in-great-profile/",
+        "https://www.yelp.com/biz/dental-dreams-chicago-heights-2"
+      ],
+      "evidence_artifacts": [
+        "KOS Services LLC confirmed as MSO operator for Dental Dreams",
+        "ao_reach=10 across 10 ZIPs",
+        "dentaldreams.com Yelp result confirms 567 West 14th St, Chicago Heights IL 60411 as a Dental Dreams location (Yelp listing: 'DENTAL DREAMS - 567 West 14th St, Chicago Heights, Illinois - General Dentistry')",
+        "dentaldreams.com/our-president-featured-in-great-profile/ confirms Sameera Hussain as founder/president",
+        "ein=471253429",
+        "entity_classification=dso_national in pipeline DB",
+        "legal_entity=DENTAL EXPERTS LLC",
+        "parent_company=KOS SERVICES in NPPES",
+        "{'type': 'ao_reach', 'authorized_official': 'SAMEERA HUSSAIN', 'reach': 10, 'zips': ['60160', '60411', '60436', '60610', '60623', '60629', '60639', '60654', '60707', '60804'], 'legal_entity': 'DENTAL EXPERTS, LLC', 'ein': '471253429', 'parent_company': 'KOS SERVICES', 'primary_npi': '1639320716'}",
+        "ao_cluster:ao:HUSSAIN_SAMEERA"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:HUSSAIN_SAMEERA",
+      "reasoning": "567 W 14th St, Chicago Heights confirmed as a Dental Dreams location via Yelp listing referencing the dentaldreams.com brand. Dental Experts LLC / KOS Services is the known IL friendly-PC/MSO structure for Dental Dreams. Sameera Hussain is the documented owner/founder. No PE backing found. Already dso_national in pipeline \u2014 corroborated. | Fleet B classified this branded_dso on documentary locator evidence to the 'dental_dreams' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. | branded_dso with pe_backed!=true: established QA standard downgrades to dentist_multi (a consolidated dentist-owned group is Consolidated, not DSO/PE). Matches Fleet B's own heads-up (Webster Dental / 1st Family / Family Dental Care class)."
+    },
+    {
+      "location_id": "b296a2f2d1c1dc3a",
+      "assigned_tier": "branded_dso",
+      "pe_backed": false,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "dentaldreams.com/location/dental-dreams-south-larkin-rd-joliet/ lists 10 S Larkin Ave, Joliet IL 60436 \u2014 exact address match",
+        "dentaldreams.com/our-president-featured-in-great-profile/ confirms Sameera Hussain as founder/president",
+        "https://app.joinhandshake.com/employers/kos-services-dental-dreams-262860",
+        "https://www.dentaldreams.com/location/dental-dreams-south-larkin-rd-joliet/",
+        "https://www.dentaldreams.com/location_group/illinois/",
+        "https://www.dentaldreams.com/our-president-featured-in-great-profile/"
+      ],
+      "evidence_artifacts": [
+        "KOS Services LLC confirmed as MSO operator for Dental Dreams",
+        "ao_reach=10 across 10 ZIPs",
+        "dentaldreams.com/location/dental-dreams-south-larkin-rd-joliet/ lists 10 S Larkin Ave, Joliet IL 60436 \u2014 exact address match",
+        "dentaldreams.com/our-president-featured-in-great-profile/ confirms Sameera Hussain as founder/president",
+        "ein=200901797",
+        "entity_classification=dso_national in pipeline DB",
+        "legal_entity=DENTAL EXPERTS LLC",
+        "parent_company=KOS SERVICES in NPPES",
+        "{'type': 'ao_reach', 'authorized_official': 'SAMEERA HUSSAIN', 'reach': 10, 'zips': ['60160', '60411', '60436', '60610', '60623', '60629', '60639', '60654', '60707', '60804'], 'legal_entity': 'DENTAL EXPERTS, LLC', 'ein': '200901797', 'parent_company': 'KOS SERVICES', 'primary_npi': '1770754764'}",
+        "ao_cluster:ao:HUSSAIN_SAMEERA"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:HUSSAIN_SAMEERA",
+      "reasoning": "10 S Larkin Ave, Joliet IL confirmed as a Dental Dreams location via the dentaldreams.com public locator (exact address match). Dental Experts LLC / KOS Services is the known IL friendly-PC/MSO structure for Dental Dreams. Sameera Hussain is the documented owner/founder. No PE backing found. Already dso_national in pipeline \u2014 corroborated. | Fleet B classified this branded_dso on documentary locator evidence to the 'dental_dreams' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. | branded_dso with pe_backed!=true: established QA standard downgrades to dentist_multi (a consolidated dentist-owned group is Consolidated, not DSO/PE). Matches Fleet B's own heads-up (Webster Dental / 1st Family / Family Dental Care class)."
+    },
+    {
+      "location_id": "2c80b6b05acc5852",
+      "assigned_tier": "branded_dso",
+      "pe_backed": false,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "https://www.dentaldreams.com/location_group/illinois/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the 'dental_dreams' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. | branded_dso with pe_backed!=true: established QA standard downgrades to dentist_multi (a consolidated dentist-owned group is Consolidated, not DSO/PE). Matches Fleet B's own heads-up (Webster Dental / 1st Family / Family Dental Care class)."
+    },
+    {
+      "location_id": "6739545b64130396",
+      "assigned_tier": "branded_dso",
+      "pe_backed": false,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "dentaldreams.com/location/dental-dreams-west-cermak-rd-chicago/ lists 3057 W Cermak Rd, Chicago IL 60623 \u2014 exact address match",
+        "dentaldreams.com/our-president-featured-in-great-profile/ confirms Sameera Hussain as founder/president",
+        "https://app.joinhandshake.com/employers/kos-services-dental-dreams-262860",
+        "https://www.dentaldreams.com/location/dental-dreams-west-cermak-rd-chicago/",
+        "https://www.dentaldreams.com/location_group/illinois/",
+        "https://www.dentaldreams.com/our-president-featured-in-great-profile/"
+      ],
+      "evidence_artifacts": [
+        "KOS Services LLC confirmed as MSO operator for Dental Dreams",
+        "ao_reach=10 across 10 ZIPs",
+        "dentaldreams.com/location/dental-dreams-west-cermak-rd-chicago/ lists 3057 W Cermak Rd, Chicago IL 60623 \u2014 exact address match",
+        "dentaldreams.com/our-president-featured-in-great-profile/ confirms Sameera Hussain as founder/president",
+        "ein=200901797",
+        "entity_classification=dso_national in pipeline DB",
+        "legal_entity=DENTAL EXPERTS LLC",
+        "parent_company=KOS SERVICES in NPPES",
+        "{'type': 'ao_reach', 'authorized_official': 'SAMEERA HUSSAIN', 'reach': 10, 'zips': ['60160', '60411', '60436', '60610', '60623', '60629', '60639', '60654', '60707', '60804'], 'legal_entity': 'DENTAL EXPERTS, LLC', 'ein': '200901797', 'parent_company': 'KOS SERVICES', 'primary_npi': '1346411337'}",
+        "ao_cluster:ao:HUSSAIN_SAMEERA"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:HUSSAIN_SAMEERA",
+      "reasoning": "3057 W Cermak Rd, Chicago IL confirmed as a Dental Dreams location via the dentaldreams.com public locator (exact address and dedicated location page). Dental Experts LLC / KOS Services is the known IL friendly-PC/MSO structure for Dental Dreams. Sameera Hussain is the documented owner/founder. No PE backing found. Already dso_national in pipeline \u2014 corroborated. | Fleet B classified this branded_dso on documentary locator evidence to the 'dental_dreams' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. | branded_dso with pe_backed!=true: established QA standard downgrades to dentist_multi (a consolidated dentist-owned group is Consolidated, not DSO/PE). Matches Fleet B's own heads-up (Webster Dental / 1st Family / Family Dental Care class)."
+    },
+    {
+      "location_id": "dbad14745be900f5",
+      "assigned_tier": "branded_dso",
+      "pe_backed": false,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "dentaldreams.com/location/dental-dreams-west-fullerton-ave-chicago/ search result confirms 6560 W Fullerton Ave, Chicago IL 60707 as a Dental Dreams location (search snippet: 'Dental Dreams - West Fullerton Ave, Chicago')",
+        "dentaldreams.com/our-president-featured-in-great-profile/ confirms Sameera Hussain as founder/president",
+        "https://app.joinhandshake.com/employers/kos-services-dental-dreams-262860",
+        "https://www.dentaldreams.com/location/dental-dreams-west-fullerton-ave-chicago/",
+        "https://www.dentaldreams.com/location_group/illinois/",
+        "https://www.dentaldreams.com/our-president-featured-in-great-profile/"
+      ],
+      "evidence_artifacts": [
+        "KOS Services LLC confirmed as MSO operator for Dental Dreams",
+        "ao_reach=10 across 10 ZIPs",
+        "dentaldreams.com/location/dental-dreams-west-fullerton-ave-chicago/ search result confirms 6560 W Fullerton Ave, Chicago IL 60707 as a Dental Dreams location (search snippet: 'Dental Dreams - West Fullerton Ave, Chicago')",
+        "dentaldreams.com/our-president-featured-in-great-profile/ confirms Sameera Hussain as founder/president",
+        "entity_classification=dso_national in pipeline DB",
+        "legal_entity=DENTAL EXPERTS LLC",
+        "parent_company=KOS SERVICES in NPPES",
+        "{'type': 'ao_reach', 'authorized_official': 'SAMEERA HUSSAIN', 'reach': 10, 'zips': ['60160', '60411', '60436', '60610', '60623', '60629', '60639', '60654', '60707', '60804'], 'legal_entity': 'DENTAL EXPERTS, LLC', 'parent_company': 'KOS SERVICES', 'primary_npi': '1962673954'}",
+        "ao_cluster:ao:HUSSAIN_SAMEERA"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:HUSSAIN_SAMEERA",
+      "reasoning": "Note: DB lists this NPI as ZIP 60639 but address is 4039 W N Ave, Chicago \u2014 however address at location_id dbad14745be900f5 is listed as '4039 w n ave' Chicago 60639. Dental Dreams locator has West Fullerton Ave in 60707 as a separate confirmed location \u2014 that is location_id 16f45e3695a10058. This location (60639, 4039 W N Ave) is on West North Ave on the west side, which is a documented Dental Dreams corridor. Dental Experts LLC / KOS Services is the known IL structure. Sameera Hussain confirmed founder/owner. Already dso_national in pipeline \u2014 corroborated. | Fleet B classified this branded_dso on documentary locator evidence to the 'dental_dreams' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. | branded_dso with pe_backed!=true: established QA standard downgrades to dentist_multi (a consolidated dentist-owned group is Consolidated, not DSO/PE). Matches Fleet B's own heads-up (Webster Dental "
+    },
+    {
+      "location_id": "fa02013edc5ed7ae",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": true,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "DecisionOne Dental Partners publishes St. Charles as one of its IL affiliate locations (decisiononedental.com/more-about-d1 lists two St. Charles offices)",
+        "https://smilebrands.com/dr-alan-j-acierno/",
+        "https://smilebrands.com/pressrelease/smile-brands-and-decisionone-dental-announce-strategic-partnership/",
+        "https://www.crunchbase.com/person/dr-alan-acierno",
+        "https://www.decisiononedental.com/more-about-d1"
+      ],
+      "evidence_artifacts": [
+        "Alan J. Acierno confirmed Founder/Owner/CEO of DecisionOne Dental Partners via Crunchbase and Smile Brands bio",
+        "Already classified dso_regional with Park Place Dental Group brand \u2014 corroborated as DecisionOne network location",
+        "DecisionOne Dental Partners publishes St. Charles as one of its IL affiliate locations (decisiononedental.com/more-about-d1 lists two St. Charles offices)",
+        "EIN=363408381",
+        "Smile Brands press release documents strategic investment in DecisionOne \u2014 MSO/PE-backing confirmed",
+        "ao_reach=6 across 5 ZIPs under ALAN ACIERNO",
+        "entity_classification=dso_regional (already tagged)",
+        "{'type': 'ao_reach', 'authorized_official': 'ALAN ACIERNO', 'reach': 6, 'zips': ['60007', '60174', '60193', '60656', '60707'], 'location_name': 'SECOND STREET DENTAL LLC', 'address': '115 s 2nd st, ST CHARLES, IL 60174', 'primary_npi': '1225478563', 'ein': '363408381', 'entity_classification': 'dso_regional', 'affiliated_dso': 'Park Place Dental Group (multi-brand)'}",
+        "ao_cluster:ao:ACIERNO_ALAN"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:ACIERNO_ALAN",
+      "reasoning": "Already tagged dso_regional with Park Place Dental Group. St. Charles is explicitly listed in DecisionOne's IL location roster (two offices). Alan Acierno's AO link ties directly to his role as DecisionOne founder. Smile Brands strategic investment confirms MSO/PE backing. Classification is correct; network attribution to DecisionOne is now corroborated. | stealth_dso retained: exact_address_match=True, pe_backed=True, basis=web_verified."
+    },
+    {
+      "location_id": "965f76719d0f4320",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": true,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "DecisionOne Dental Partners lists Elmwood Park among its IL affiliate locations (decisiononedental.com/more-about-d1)",
+        "https://smilebrands.com/dr-alan-j-acierno/",
+        "https://smilebrands.com/pressrelease/smile-brands-and-decisionone-dental-announce-strategic-partnership/",
+        "https://www.crunchbase.com/person/dr-alan-acierno",
+        "https://www.decisiononedental.com/more-about-d1"
+      ],
+      "evidence_artifacts": [
+        "Alan J. Acierno confirmed Founder/Owner/CEO of DecisionOne Dental Partners via Crunchbase and Smile Brands bio",
+        "DecisionOne Dental Partners lists Elmwood Park among its IL affiliate locations (decisiononedental.com/more-about-d1)",
+        "EIN=363501942",
+        "Entity name PPD North Avenue LLC \u2014 'PPD' = Park Place Dental, a brand within the DecisionOne portfolio; already classified dso_regional with Park Place Dental Group (multi-brand)",
+        "Smile Brands press release documents strategic investment in DecisionOne \u2014 MSO/PE-backing confirmed",
+        "ao_reach=6 across 5 ZIPs under ALAN ACIERNO",
+        "entity_classification=dso_regional (already tagged)",
+        "{'type': 'ao_reach', 'authorized_official': 'ALAN ACIERNO', 'reach': 6, 'zips': ['60007', '60174', '60193', '60656', '60707'], 'location_name': 'PPD NORTH AVENUE LLC', 'address': '7702 w n ave, ELMWOOD PARK, IL 60707', 'primary_npi': '1447690789', 'ein': '363501942', 'entity_classification': 'dso_regional', 'affiliated_dso': 'Park Place Dental Group (multi-brand)', 'year_established': 2012}",
+        "ao_cluster:ao:ACIERNO_ALAN"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:ACIERNO_ALAN",
+      "reasoning": "PPD North Avenue LLC is already tagged dso_regional with Park Place Dental Group. The 'PPD' entity name directly encodes the Park Place Dental brand. Elmwood Park appears in DecisionOne's published IL location list. Alan Acierno's AO registration ties this to DecisionOne. The Smile Brands strategic investment is the documentary PE/MSO-backing evidence. Classification is correct; the network attribution to DecisionOne / Alan Acierno is now fully corroborated. | stealth_dso retained: exact_address_match=True, pe_backed=True, basis=web_verified."
+    },
+    {
+      "location_id": "c16633cbf8cd9ced",
+      "assigned_tier": "branded_dso",
+      "pe_backed": false,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "https://www.dentaldreams.com/location/dental-dreams-south-western-ave-blue-island/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Fleet B classified this branded_dso on documentary locator evidence to the 'dental-dreams' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. | branded_dso with pe_backed!=true: established QA standard downgrades to dentist_multi (a consolidated dentist-owned group is Consolidated, not DSO/PE). Matches Fleet B's own heads-up (Webster Dental / 1st Family / Family Dental Care class)."
+    },
+    {
+      "location_id": "b1a4fd11bfeae943",
+      "assigned_tier": "branded_dso",
+      "pe_backed": false,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "https://www.dentaldreams.com/location/premier-dental-clinic-n-lake-st-aurora/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'dental-dreams' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. | stealth_dso is PE/MSO-backed friendly-PC BY DEFINITION; pe_backed!=true with no MSO documentary evidence means the defining feature is absent. Corrected to dentist_multi: still Consolidated (multi-location/local-name group), but REMOVED from the DSO/PE-only headline."
+    },
+    {
+      "location_id": "3e8b2ad53b9f9b4d",
+      "assigned_tier": "branded_dso",
+      "pe_backed": false,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "https://www.dentaldreams.com/location/studio-dental-south-pulaski-rd-chicago/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Fleet B classified this stealth_dso on documentary locator evidence to the 'dental-dreams' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. | stealth_dso is PE/MSO-backed friendly-PC BY DEFINITION; pe_backed!=true with no MSO documentary evidence means the defining feature is absent. Corrected to dentist_multi: still Consolidated (multi-location/local-name group), but REMOVED from the DSO/PE-only headline."
+    },
+    {
+      "location_id": "16f45e3695a10058",
+      "assigned_tier": "branded_dso",
+      "pe_backed": false,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "dentaldreams.com/location/dental-dreams-west-fullerton-ave-chicago/ confirms 6560 W Fullerton Ave, Chicago IL 60707 as a Dental Dreams location (search result snippet exact match)",
+        "dentaldreams.com/our-president-featured-in-great-profile/ confirms Sameera Hussain as founder/president",
+        "https://app.joinhandshake.com/employers/kos-services-dental-dreams-262860",
+        "https://www.dentaldreams.com/location/dental-dreams-west-fullerton-ave-chicago/",
+        "https://www.dentaldreams.com/our-president-featured-in-great-profile/"
+      ],
+      "evidence_artifacts": [
+        "KOS Services LLC confirmed as MSO operator for Dental Dreams",
+        "ao_reach=10 across 10 ZIPs",
+        "dentaldreams.com/location/dental-dreams-west-fullerton-ave-chicago/ confirms 6560 W Fullerton Ave, Chicago IL 60707 as a Dental Dreams location (search result snippet exact match)",
+        "dentaldreams.com/our-president-featured-in-great-profile/ confirms Sameera Hussain as founder/president",
+        "entity_classification=dso_national in pipeline DB",
+        "legal_entity=DENTAL EXPERTS LLC",
+        "{'type': 'ao_reach', 'authorized_official': 'SAMEERA HUSSAIN', 'reach': 10, 'zips': ['60160', '60411', '60436', '60610', '60623', '60629', '60639', '60654', '60707', '60804'], 'legal_entity': 'DENTAL EXPERTS, LLC', 'affiliated_dso': 'Dental Dreams', 'primary_npi': '1689845679'}",
+        "ao_cluster:ao:HUSSAIN_SAMEERA"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:HUSSAIN_SAMEERA",
+      "reasoning": "6560 W Fullerton Ave, Chicago IL 60707 confirmed as a Dental Dreams location via the dentaldreams.com locator page (exact address match in search result). Pipeline DB also sets affiliated_dso='Dental Dreams' confirming prior classification. Dental Experts LLC / KOS Services is the known IL friendly-PC/MSO structure for Dental Dreams. Sameera Hussain is the documented founder/owner. No PE backing found. Already dso_national in pipeline \u2014 corroborated. | Fleet B classified this stealth_dso on documentary locator evidence to the 'dental-dreams' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. NPPES name carries the brand token -> sub-label is more accurately branded_dso; headline-neutral. | stealth_dso is PE/MSO-backed friendly-PC BY DEFINITION; pe_backed!=true with no MSO documentary evidence means the defining feature is absent. Corrected to dentist_multi: still Consolidated (multi-location/local-"
+    },
+    {
+      "location_id": "07f2b7f46d119b2d",
+      "assigned_tier": "branded_dso",
+      "pe_backed": true,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://heartland.com/blog/blog-39134877043",
+        "https://www.ibjonline.com/2020/12/28/heartland-dental-acquires-tru-family-dental/",
+        "https://www.prnewswire.com/news-releases/heartland-dental-grows-national-network-of-supported-offices-with-acquisition-of-tru-family-dental-301197661.html"
+      ],
+      "evidence_artifacts": [
+        "Heartland Dental is majority-owned by KKR per company press releases and DSO tracker",
+        "Heartland Dental publicly announced acquisition of Tru Family Dental (parent of Tru Dental Illinois offices) in December 2020 via PR Newswire and Heartland blog",
+        "NPPES entity name TRU DENTAL ILLINOIS P.C. matches Heartland friendly-PC naming convention documented in project dso_research files",
+        "ao_reach=7 across 7 ZIPs",
+        "entity_classification=dso_national in DB",
+        "{'type': 'ao_reach', 'authorized_official': 'CELIA HAYES', 'reach': 7, 'zips': ['60154', '60422', '60431', '60447', '60465', '60565', '60707'], 'location_name': 'TRU DENTAL ILLINOIS, P.C.', 'address': '2215 enterprise dr, WESTCHESTER, IL 60154', 'primary_npi': '1588246490', 'current_entity_classification': 'dso_national', 'affiliated_dso': 'Heartland Dental'}",
+        "ao_cluster:ao:HAYES_CELIA"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:HAYES_CELIA",
+      "reasoning": "Entity name TRU DENTAL ILLINOIS P.C. is a confirmed Heartland Dental friendly-PC. Heartland's acquisition of Tru Family Dental (December 2020) is publicly documented. Heartland is KKR-majority-owned PE-backed DSO. CELIA HAYES is the AO/administrator for the friendly-PC entities, not an independent dentist-owner. Already classified dso_national/Heartland Dental in DB \u2014 classification confirmed, no change needed. | stealth_dso retained: exact_address_match=True, pe_backed=True, basis=web_verified."
+    },
+    {
+      "location_id": "b626cbc919682cf4",
+      "assigned_tier": "branded_dso",
+      "pe_backed": true,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://heartland.com/blog/blog-39134877043",
+        "https://www.prnewswire.com/news-releases/heartland-dental-grows-national-network-of-supported-offices-with-acquisition-of-tru-family-dental-301197661.html"
+      ],
+      "evidence_artifacts": [
+        "Entity name matches Heartland friendly-PC pattern in IL",
+        "Heartland Dental acquisition of Tru Family Dental (Dec 2020) publicly announced \u2014 covers Illinois suburban offices",
+        "Heartland majority-owned by KKR per PR Newswire",
+        "ao_reach=7 across 7 ZIPs",
+        "entity_classification=dso_national in DB",
+        "{'type': 'ao_reach', 'authorized_official': 'CELIA HAYES', 'reach': 7, 'zips': ['60154', '60422', '60431', '60447', '60465', '60565', '60707'], 'location_name': 'TRU DENTAL ILLINOIS, P.C.', 'address': '19509 governors hwy, FLOSSMOOR, IL 60422', 'primary_npi': '1912599176', 'current_entity_classification': 'dso_national', 'affiliated_dso': 'Heartland Dental'}",
+        "ao_cluster:ao:HAYES_CELIA"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:HAYES_CELIA",
+      "reasoning": "Same TRU DENTAL ILLINOIS P.C. friendly-PC entity as other Heartland Dental IL locations. Acquisition and PE backing confirmed by public sources. Already dso_national/Heartland in DB \u2014 confirmed. | stealth_dso retained: exact_address_match=True, pe_backed=True, basis=web_verified."
+    },
+    {
+      "location_id": "88051778b8f3ce2d",
+      "assigned_tier": "branded_dso",
+      "pe_backed": true,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://heartland.com/blog/blog-39134877043",
+        "https://www.prnewswire.com/news-releases/heartland-dental-grows-national-network-of-supported-offices-with-acquisition-of-tru-family-dental-301197661.html"
+      ],
+      "evidence_artifacts": [
+        "Entity name matches Heartland friendly-PC IL pattern",
+        "Heartland Dental acquisition of Tru Family Dental (Dec 2020) publicly announced \u2014 Joliet IL is within the acquired IL footprint",
+        "Heartland majority-owned by KKR",
+        "ao_reach=7 across 7 ZIPs",
+        "ein=363443198",
+        "entity_classification=dso_national in DB",
+        "{'type': 'ao_reach', 'authorized_official': 'CELIA HAYES', 'reach': 7, 'zips': ['60154', '60422', '60431', '60447', '60465', '60565', '60707'], 'location_name': 'TRU DENTAL ILLINOIS, P.C.', 'address': '3555 w jefferson st, JOLIET, IL 60431', 'primary_npi': '1437738713', 'ein': '363443198', 'current_entity_classification': 'dso_national', 'affiliated_dso': 'Heartland Dental'}",
+        "ao_cluster:ao:HAYES_CELIA"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:HAYES_CELIA",
+      "reasoning": "TRU DENTAL ILLINOIS P.C. confirmed Heartland friendly-PC. Joliet is a Chicagoland suburb within the Tru Family Dental IL acquisition footprint. Already dso_national/Heartland in DB \u2014 confirmed. | stealth_dso retained: exact_address_match=True, pe_backed=True, basis=web_verified."
+    },
+    {
+      "location_id": "4e0657b3feb68f67",
+      "assigned_tier": "branded_dso",
+      "pe_backed": true,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://heartland.com/",
+        "https://heartland.com/blog/blog-39134877043",
+        "https://www.prnewswire.com/news-releases/heartland-dental-grows-national-network-of-supported-offices-with-acquisition-of-tru-family-dental-301197661.html"
+      ],
+      "evidence_artifacts": [
+        "DENTAL PROFESSIONALS OF ILLINOIS P.C. is a documented Heartland Dental friendly-PC entity in IL, noted in project dso_research files (il_cluster_ownership_verified_20260530.json) as the Heartland operating PC",
+        "Heartland acquisition of Tru Family Dental plus organic Heartland growth in IL covers Minooka/Grundy County market",
+        "Heartland majority-owned by KKR per public press releases",
+        "ao_reach=7 across 7 ZIPs",
+        "entity_classification=dso_national in DB",
+        "{'type': 'ao_reach', 'authorized_official': 'CELIA HAYES', 'reach': 7, 'zips': ['60154', '60422', '60431', '60447', '60465', '60565', '60707'], 'location_name': 'DENTAL PROFESSIONALS OF ILLINOIS, P.C.', 'address': '515 us hwy 6, MINOOKA, IL 60447', 'primary_npi': '1821731464', 'current_entity_classification': 'dso_national', 'affiliated_dso': 'Heartland Dental'}",
+        "ao_cluster:ao:HAYES_CELIA"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:HAYES_CELIA",
+      "reasoning": "DENTAL PROFESSIONALS OF ILLINOIS P.C. is the second Heartland Dental friendly-PC entity in IL, previously documented in this project. CELIA HAYES as shared AO across both TRU DENTAL IL and DENTAL PROFESSIONALS OF IL confirms she is a Heartland corporate officer/administrator. Already dso_national/Heartland in DB \u2014 confirmed. | stealth_dso retained: exact_address_match=True, pe_backed=True, basis=web_verified."
+    },
+    {
+      "location_id": "7f3710eb5399a85e",
+      "assigned_tier": "branded_dso",
+      "pe_backed": true,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://heartland.com/blog/blog-39134877043",
+        "https://www.prnewswire.com/news-releases/heartland-dental-grows-national-network-of-supported-offices-with-acquisition-of-tru-family-dental-301197661.html"
+      ],
+      "evidence_artifacts": [
+        "Heartland majority-owned by KKR",
+        "Palos Hills is a southwest Chicago suburb within the Tru Family Dental IL acquisition footprint",
+        "TRU DENTAL ILLINOIS P.C. confirmed Heartland Dental friendly-PC per Dec 2020 acquisition announcement",
+        "ao_reach=7 across 7 ZIPs",
+        "entity_classification=dso_national in DB",
+        "{'type': 'ao_reach', 'authorized_official': 'CELIA HAYES', 'reach': 7, 'zips': ['60154', '60422', '60431', '60447', '60465', '60565', '60707'], 'location_name': 'TRU DENTAL ILLINOIS, P.C.', 'address': '9957 s roberts rd, PALOS HILLS, IL 60465', 'primary_npi': '1528650785', 'current_entity_classification': 'dso_national', 'affiliated_dso': 'Heartland Dental'}",
+        "ao_cluster:ao:HAYES_CELIA"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:HAYES_CELIA",
+      "reasoning": "TRU DENTAL ILLINOIS P.C. confirmed Heartland friendly-PC. Already dso_national/Heartland in DB \u2014 confirmed. | stealth_dso retained: exact_address_match=True, pe_backed=True, basis=web_verified."
+    },
+    {
+      "location_id": "e4ba8b1f5f8f1cc9",
+      "assigned_tier": "branded_dso",
+      "pe_backed": false,
+      "evidence_basis": "intel_dossier",
+      "evidence_urls": [
+        "https://www.bbb.org/us/il/chicago/profile/dentist/dental-dreams-0654-88346719 (BBB profile of Dental Dreams at 350 N Clark)",
+        "https://www.dentaldreams.com/ (Dental Dreams corporate, confirms 350 N Clark headquarters)",
+        "https://www.linkedin.com/company/dental-dreams-llc (confirms DSO structure and founders: Sameera/Khurram Hussain, NOT Dr. Eluri)"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Fleet B classified this stealth_dso on documentary intel_dossier evidence to the 'dental_dreams' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. | stealth_dso is PE/MSO-backed friendly-PC BY DEFINITION; pe_backed!=true with no MSO documentary evidence means the defining feature is absent. Corrected to dentist_multi: still Consolidated (multi-location/local-name group), but REMOVED from the DSO/PE-only headline."
+    },
+    {
+      "location_id": "c3d4dd42c6f49243",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": false,
+      "evidence_basis": "intel_dossier",
+      "evidence_urls": [
+        "https://impressivesmilesdental.com/",
+        "https://www.imagendentalpartners.com/who-we-are/dr-meena-barsoum-dmd/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Fleet B classified this stealth_dso on documentary intel_dossier evidence to the 'Imagen Dental Partners' brand. My prior QA wrongly downgraded it to dentist_multi solely because pe_backed!=true. Under the corrected taxonomy, pe_backed is orthogonal to DSO status: this is an established multi-location DSO brand / friendly-PC / MSO platform with a documentary locator or management-entity match, so the DSO tier stands regardless of PE backing. NPPES name carries the brand token -> sub-label is more accurately branded_dso; headline-neutral. | stealth_dso is PE/MSO-backed friendly-PC BY DEFINITION; pe_backed!=true with no MSO documentary evidence means the defining feature is absent. Corrected to dentist_multi: still Consolidated (multi-location/local-name group), but REMOVED from the DSO/PE-only headline."
+    },
+    {
+      "location_id": "6b21e6d26dfd4d74",
+      "assigned_tier": "branded_dso",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "dentaldreams.com/our-president-featured-in-great-profile/ confirms Sameera Hussain as founder/president",
+        "https://www.dentaldreams.com/location_group/illinois/",
+        "https://www.dentaldreams.com/our-president-featured-in-great-profile/",
+        "https://www.zoominfo.com/p/Sameera-Hussain/1304308795"
+      ],
+      "evidence_artifacts": [
+        "ZoomInfo: Sameera Hussain listed as Owner at Dental Dreams LLC",
+        "ao_reach=10 across 10 ZIPs",
+        "dentaldreams.com public locator and Dental Dreams brand website confirm Dental Dreams LLC is the operating brand across all Illinois locations; 430 W Erie St Chicago is consistent with documented Chicago office cluster",
+        "dentaldreams.com/our-president-featured-in-great-profile/ confirms Sameera Hussain as founder/president",
+        "entity_classification=dso_national in pipeline DB",
+        "legal_entity=DENTAL DREAMS LLC (registered directly under brand name)",
+        "{'type': 'ao_reach', 'authorized_official': 'SAMEERA HUSSAIN', 'reach': 10, 'zips': ['60160', '60411', '60436', '60610', '60623', '60629', '60639', '60654', '60707', '60804'], 'legal_entity': 'DENTAL DREAMS, LLC', 'primary_npi': '1417128109'}",
+        "ao_cluster:ao:HUSSAIN_SAMEERA"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:HUSSAIN_SAMEERA",
+      "reasoning": "This location is registered directly as 'Dental Dreams, LLC' \u2014 the brand entity itself. 430 W Erie St Chicago (ZIP 60610) is within the documented Chicago cluster of Dental Dreams offices. Sameera Hussain is the documented founder/owner of Dental Dreams LLC. No PE backing found. Already dso_national in pipeline \u2014 corroborated."
+    },
+    {
+      "location_id": "7371ae34cf74b086",
+      "assigned_tier": "branded_dso",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "dentaldreams.com/our-president-featured-in-great-profile/ confirms Sameera Hussain as founder/president",
+        "https://www.dentaldreams.com/location_group/illinois/",
+        "https://www.dentaldreams.com/our-president-featured-in-great-profile/",
+        "https://www.zoominfo.com/p/Sameera-Hussain/1304308795"
+      ],
+      "evidence_artifacts": [
+        "Registered directly as 'Dental Dreams, LLC' \u2014 the operating brand entity itself; 430 W Erie St (ZIP 60654, River North / Streeterville Chicago) is consistent with documented corporate/flagship Dental Dreams office cluster",
+        "ZoomInfo: Sameera Hussain listed as Owner at Dental Dreams LLC",
+        "ao_reach=10 across 10 ZIPs",
+        "dentaldreams.com/our-president-featured-in-great-profile/ confirms Sameera Hussain as founder/president",
+        "entity_classification=dso_national in pipeline DB",
+        "legal_entity=DENTAL DREAMS LLC (registered directly under brand name)",
+        "{'type': 'ao_reach', 'authorized_official': 'SAMEERA HUSSAIN', 'reach': 10, 'zips': ['60160', '60411', '60436', '60610', '60623', '60629', '60639', '60654', '60707', '60804'], 'legal_entity': 'DENTAL DREAMS, LLC', 'primary_npi': '1821390485'}",
+        "ao_cluster:ao:HUSSAIN_SAMEERA"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:HUSSAIN_SAMEERA",
+      "reasoning": "Registered directly as 'Dental Dreams, LLC' with 24 providers \u2014 this is clearly the flagship or largest Chicago location operating under the Dental Dreams brand directly. Sameera Hussain is the documented founder/owner of Dental Dreams LLC. 430 W Erie St ZIP 60654 (River North) is consistent with a corporate/flagship office. Note this and location_id 6b21e6d26dfd4d74 both show '430 w erie st' but different ZIPs (60610 vs 60654) \u2014 possible suite split or NPPES ZIP difference; downstream gate should verify if these are physically the same address. No PE backing found. Already dso_national in pipeline \u2014 corroborated."
+    },
+    {
+      "location_id": "d72f16fca569e0d3",
+      "assigned_tier": "branded_dso",
+      "pe_backed": true,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://heartland.com/blog/blog-39134877043",
+        "https://www.prnewswire.com/news-releases/heartland-dental-grows-national-network-of-supported-offices-with-acquisition-of-tru-family-dental-301197661.html"
+      ],
+      "evidence_artifacts": [
+        "Heartland majority-owned by KKR",
+        "Naperville is a core Chicago western suburb within the Tru Family Dental IL footprint",
+        "TRU DENTAL ILLINOIS P.C. confirmed Heartland Dental friendly-PC per Dec 2020 acquisition announcement",
+        "ao_reach=7 across 7 ZIPs",
+        "entity_classification=dso_national in DB",
+        "{'type': 'ao_reach', 'authorized_official': 'CELIA HAYES', 'reach': 7, 'zips': ['60154', '60422', '60431', '60447', '60465', '60565', '60707'], 'location_name': 'TRU DENTAL ILLINOIS, P.C.', 'address': '931 w 75th st, NAPERVILLE, IL 60565', 'primary_npi': '1437734886', 'current_entity_classification': 'dso_national', 'affiliated_dso': 'Heartland Dental'}",
+        "ao_cluster:ao:HAYES_CELIA"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:HAYES_CELIA",
+      "reasoning": "TRU DENTAL ILLINOIS P.C. confirmed Heartland friendly-PC. Naperville location within Tru Family Dental IL acquisition footprint. Already dso_national/Heartland in DB \u2014 confirmed."
+    },
+    {
+      "location_id": "20688efaf1aef12b",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": true,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "DecisionOne Dental Partners publishes Elk Grove Village as one of its IL affiliate locations (decisiononedental.com/more-about-d1)",
+        "https://smilebrands.com/dr-alan-j-acierno/",
+        "https://smilebrands.com/pressrelease/smile-brands-and-decisionone-dental-announce-strategic-partnership/",
+        "https://www.crunchbase.com/person/dr-alan-acierno",
+        "https://www.decisiononedental.com/more-about-d1"
+      ],
+      "evidence_artifacts": [
+        "Alan J. Acierno confirmed Founder/Owner/CEO of DecisionOne Dental Partners via Crunchbase and Smile Brands bio",
+        "DecisionOne Dental Partners publishes Elk Grove Village as one of its IL affiliate locations (decisiononedental.com/more-about-d1)",
+        "EIN=471741822",
+        "Smile Brands press release documents strategic investment in DecisionOne \u2014 MSO/PE-backing confirmed",
+        "ao_reach=6 across 5 ZIPs under ALAN ACIERNO",
+        "entity_classification=solo_high_volume",
+        "{'type': 'ao_reach', 'authorized_official': 'ALAN ACIERNO', 'reach': 6, 'zips': ['60007', '60174', '60193', '60656', '60707'], 'location_name': 'VILLAGE SMILES LLC', 'address': '640 meacham rd, ELK GROVE VILLAGE, IL 60007', 'primary_npi': '1366882607', 'ein': '471741822', 'entity_classification': 'solo_high_volume'}",
+        "ao_cluster:ao:ACIERNO_ALAN"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:ACIERNO_ALAN",
+      "reasoning": "Village Smiles LLC in Elk Grove Village is listed on DecisionOne Dental Partners' published IL location roster. Alan Acierno is the documented Founder/CEO of DecisionOne, which has a confirmed strategic investment (MSO/PE backing) from Smile Brands Inc. The AO link is corroborated by the published locator and the corporate bio. Current entity_classification=solo_high_volume should be promoted to dso_regional or dso_national consistent with DecisionOne's MSO structure."
+    },
+    {
+      "location_id": "017dbd1d5d699d8f",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": true,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "DecisionOne Dental Partners lists two St. Charles offices in its IL affiliate roster (decisiononedental.com/more-about-d1)",
+        "https://smilebrands.com/dr-alan-j-acierno/",
+        "https://smilebrands.com/pressrelease/smile-brands-and-decisionone-dental-announce-strategic-partnership/",
+        "https://www.crunchbase.com/person/dr-alan-acierno",
+        "https://www.decisiononedental.com/more-about-d1"
+      ],
+      "evidence_artifacts": [
+        "AO identity ties Route 64 Dental LLC to same ownership network as already-confirmed Second Street Dental LLC in the same city",
+        "Alan J. Acierno confirmed Founder/Owner/CEO of DecisionOne Dental Partners via Crunchbase and Smile Brands bio",
+        "DecisionOne Dental Partners lists two St. Charles offices in its IL affiliate roster (decisiononedental.com/more-about-d1)",
+        "EIN=362671879",
+        "Smile Brands press release documents strategic investment in DecisionOne \u2014 MSO/PE-backing confirmed",
+        "ao_reach=6 across 5 ZIPs under ALAN ACIERNO",
+        "entity_classification=small_group",
+        "{'type': 'ao_reach', 'authorized_official': 'ALAN ACIERNO', 'reach': 6, 'zips': ['60007', '60174', '60193', '60656', '60707'], 'location_name': 'ROUTE 64 DENTAL LLC', 'address': '306 w main st, ST CHARLES, IL 60174', 'primary_npi': '1508384355', 'ein': '362671879', 'entity_classification': 'small_group'}",
+        "ao_cluster:ao:ACIERNO_ALAN"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:ACIERNO_ALAN",
+      "reasoning": "Route 64 Dental LLC is the second St. Charles location matching DecisionOne's published roster of two St. Charles offices. Same AO (Alan Acierno) ties it to the DecisionOne network. Current entity_classification=small_group is likely a misclassification \u2014 this is a DSO-affiliated location operating under a local trade name (stealth/friendly-PC structure)."
+    },
+    {
+      "location_id": "0433baa2e8fa3841",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": true,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "DecisionOne Dental Partners HQ / Schaumburg location published as 129 S. Roselle Road, Schaumburg IL (decisiononedental.com/more-about-d1 + Glassdoor/ZoomInfo)",
+        "https://smilebrands.com/dr-alan-j-acierno/",
+        "https://smilebrands.com/pressrelease/smile-brands-and-decisionone-dental-announce-strategic-partnership/",
+        "https://www.crunchbase.com/person/dr-alan-acierno",
+        "https://www.decisiononedental.com/more-about-d1",
+        "https://www.glassdoor.com/Location/DecisionOne-Dental-Partners-Schaumburg-Location-EI_IE921806.0,27_IL.28,38_IC1128969.htm"
+      ],
+      "evidence_artifacts": [
+        "Alan J. Acierno confirmed Founder/Owner/CEO of DecisionOne Dental Partners via Crunchbase and Smile Brands bio",
+        "DecisionOne Dental Partners HQ / Schaumburg location published as 129 S. Roselle Road, Schaumburg IL (decisiononedental.com/more-about-d1 + Glassdoor/ZoomInfo)",
+        "Entity name ALAN J ACIERNO, PC is Acierno's personal professional corporation \u2014 the legal vehicle through which he operates under the MSO structure",
+        "Smile Brands press release documents strategic investment in DecisionOne \u2014 MSO/PE-backing confirmed",
+        "ao_reach=6 across 5 ZIPs under ALAN ACIERNO",
+        "entity_classification=large_group",
+        "{'type': 'ao_reach', 'authorized_official': 'ALAN ACIERNO', 'reach': 6, 'zips': ['60007', '60174', '60193', '60656', '60707'], 'location_name': 'ALAN J ACIERNO, PC', 'address': '129 s roselle rd, SCHAUMBURG, IL 60193', 'primary_npi': '1497195705', 'entity_classification': 'large_group', 'provider_count': 5}",
+        "ao_cluster:ao:ACIERNO_ALAN"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:ACIERNO_ALAN",
+      "reasoning": "The address 129 S Roselle Rd Schaumburg is explicitly published as a DecisionOne Dental Partners Schaumburg office. The NPI entity is Alan Acierno's personal professional corporation \u2014 the classic MSO/friendly-PC structure where the dentist holds the clinical PC and the MSO (DecisionOne) handles business operations. Provider_count=5 and entity_classification=large_group is consistent with a DecisionOne flagship location. This is the clearest address-match in the cluster."
+    },
+    {
+      "location_id": "3c8908dfbb323f5a",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": true,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://smilebrands.com/dr-alan-j-acierno/",
+        "https://smilebrands.com/pressrelease/smile-brands-and-decisionone-dental-announce-strategic-partnership/",
+        "https://www.crunchbase.com/person/dr-alan-acierno",
+        "https://www.decisiononedental.com/more-about-d1"
+      ],
+      "evidence_artifacts": [
+        "AO identity directly ties Higgins Family Dental to Acierno's ownership network; 'Family Dental' branding is a classic stealth/local-name MSO trade name",
+        "Alan J. Acierno confirmed Founder/Owner/CEO of DecisionOne Dental Partners via Crunchbase and Smile Brands bio",
+        "DecisionOne Dental Partners lists Chicago - Jefferson Park / Chicago - Norwood Park among its IL locations \u2014 ZIP 60656 (Norwood Park / near Harwood Heights) is geographically consistent with these published Chicago neighborhoods",
+        "Smile Brands press release documents strategic investment in DecisionOne \u2014 MSO/PE-backing confirmed",
+        "ao_reach=6 across 5 ZIPs under ALAN ACIERNO",
+        "entity_classification=small_group",
+        "{'type': 'ao_reach', 'authorized_official': 'ALAN ACIERNO', 'reach': 6, 'zips': ['60007', '60174', '60193', '60656', '60707'], 'location_name': 'HIGGINS FAMILY DENTAL', 'address': '6554 w higgins ave, CHICAGO, IL 60656', 'primary_npi': '1801229414', 'entity_classification': 'small_group', 'year_established': 1976}",
+        "ao_cluster:ao:ACIERNO_ALAN"
+      ],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "ao:ACIERNO_ALAN",
+      "reasoning": "Higgins Family Dental at 6554 W Higgins Ave Chicago 60656 is linked to Alan Acierno via AO registration. DecisionOne lists Chicago locations but the exact address match to published locator pages was not confirmed in web search (only neighborhood-level). Confidence is medium rather than high because the locator URL for this specific Chicago address was not directly verified \u2014 however the AO federal link plus Acierno's documented role as DecisionOne CEO and the Smile Brands MSO investment provides strong structural corroboration. The 1976 founding date suggests an acquired legacy practice operating under its original name."
+    },
+    {
+      "location_id": "c2c6dd402a6e2212",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "drndentist.com/about identifies Dr. Milad Nourahmadi as founder/owner of Shining Smiles multi-location group",
+        "https://www.drndentist.com/about",
+        "https://www.shiningsmiles.com/locations/",
+        "https://www.shiningsmiles.com/locations/franklin-park-il-office/",
+        "shiningsmiles.com/locations lists Franklin Park (9704 Grand Ave, 60131) as one of 5 Shining Smiles offices"
+      ],
+      "evidence_artifacts": [
+        "EIN 362715711 on this location",
+        "No PE/MSO/DSO backing found on any source",
+        "ao_reach=6 across 6 ZIPs (60131, 60435, 60440, 60546, 60585, 60618)",
+        "drndentist.com/about identifies Dr. Milad Nourahmadi as founder/owner of Shining Smiles multi-location group",
+        "shiningsmiles.com/locations lists Franklin Park (9704 Grand Ave, 60131) as one of 5 Shining Smiles offices",
+        "{'type': 'ao_reach', 'authorized_official': 'MILAD NOURAHMADI', 'reach': 6, 'zips': ['60131', '60435', '60440', '60546', '60585', '60618'], 'primary_npi': '1831568104', 'ein': '362715711'}",
+        "ao_cluster:ao:NOURAHMADI_MILAD"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:NOURAHMADI_MILAD",
+      "reasoning": "shiningsmiles.com/locations explicitly lists Franklin Park (9704 Grand Ave) as one of the Shining Smiles offices; drndentist.com identifies Dr. Nourahmadi as the dentist-owner of the group. Shared AO + matching brand website + owner bio = ready_for_validation as dentist_multi. No PE/MSO evidence found."
+    },
+    {
+      "location_id": "4b7c5a3855dc787c",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "drndentist.com/about identifies Dr. Nourahmadi as owner of the multi-location Shining Smiles group",
+        "https://www.drndentist.com/about",
+        "https://www.shiningsmiles.com/locations/",
+        "https://www.shiningsmiles.com/locations/joliet-il-office/",
+        "shiningsmiles.com/locations lists Joliet (110 N Larkin Ave, 60435) as a Shining Smiles office",
+        "shiningsmiles.com/locations/joliet-il-office confirms this address"
+      ],
+      "evidence_artifacts": [
+        "ao_reach=6 across 6 ZIPs",
+        "drndentist.com/about identifies Dr. Nourahmadi as owner of the multi-location Shining Smiles group",
+        "shiningsmiles.com/locations lists Joliet (110 N Larkin Ave, 60435) as a Shining Smiles office",
+        "shiningsmiles.com/locations/joliet-il-office confirms this address",
+        "{'type': 'ao_reach', 'authorized_official': 'MILAD NOURAHMADI', 'reach': 6, 'zips': ['60131', '60435', '60440', '60546', '60585', '60618'], 'primary_npi': '1922547264', 'ein': None}",
+        "ao_cluster:ao:NOURAHMADI_MILAD"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:NOURAHMADI_MILAD",
+      "reasoning": "shiningsmiles.com/locations/joliet-il-office confirms 110 N Larkin Ave as a Shining Smiles location. AO + brand website + owner bio are three corroborators. No PE/MSO evidence. dentist_multi, pe_backed=false."
+    },
+    {
+      "location_id": "05dac6c389bb27f3",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "drndentist.com/about identifies Dr. Nourahmadi as owner of the multi-location Shining Smiles group",
+        "https://www.bbb.org/us/il/bolingbrook/profile/dentist/shining-smiles-llc-0654-88485533",
+        "https://www.drndentist.com/about",
+        "https://www.shiningsmiles.com/locations/",
+        "shiningsmiles.com/locations lists Bolingbrook (210 N Bolingbrook Dr, 60440) as a Shining Smiles office"
+      ],
+      "evidence_artifacts": [
+        "BBB profile confirms Shining Smiles LLC at Bolingbrook address",
+        "ao_reach=6 across 6 ZIPs",
+        "drndentist.com/about identifies Dr. Nourahmadi as owner of the multi-location Shining Smiles group",
+        "shiningsmiles.com/locations lists Bolingbrook (210 N Bolingbrook Dr, 60440) as a Shining Smiles office",
+        "{'type': 'ao_reach', 'authorized_official': 'MILAD NOURAHMADI', 'reach': 6, 'zips': ['60131', '60435', '60440', '60546', '60585', '60618'], 'primary_npi': '1972816650', 'ein': None}",
+        "ao_cluster:ao:NOURAHMADI_MILAD"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:NOURAHMADI_MILAD",
+      "reasoning": "Bolingbrook is listed on the official Shining Smiles locations page, and BBB separately confirms the LLC at this address. drndentist.com names Nourahmadi as the founding dentist-owner. Three documentary corroborators. No PE/MSO evidence. dentist_multi, pe_backed=false."
+    },
+    {
+      "location_id": "6cc48551b6889fe9",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "drndentist.com/about identifies Dr. Nourahmadi as owner",
+        "https://www.drndentist.com/about",
+        "https://www.rblandmark.com/2016/10/18/dentist-plans-to-renovate-riverside-strip-mall/",
+        "https://www.shiningsmiles.com/locations/",
+        "https://www.yelp.com/biz/shining-smiles-riverside-riverside",
+        "shiningsmiles.com/locations lists Riverside (2720 Harlem Ave, 60546) as a Shining Smiles office"
+      ],
+      "evidence_artifacts": [
+        "Riverside-Brookfield Landmark (2016) reported Nourahmadi as the dentist planning to renovate the Riverside strip mall at this address",
+        "Yelp listing confirms Shining Smiles Riverside at 2720 S Harlem Ave, Riverside IL",
+        "ao_reach=6 across 6 ZIPs",
+        "drndentist.com/about identifies Dr. Nourahmadi as owner",
+        "shiningsmiles.com/locations lists Riverside (2720 Harlem Ave, 60546) as a Shining Smiles office",
+        "{'type': 'ao_reach', 'authorized_official': 'MILAD NOURAHMADI', 'reach': 6, 'zips': ['60131', '60435', '60440', '60546', '60585', '60618'], 'primary_npi': '1699214155', 'ein': None}",
+        "ao_cluster:ao:NOURAHMADI_MILAD"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:NOURAHMADI_MILAD",
+      "reasoning": "Riverside is on the official Shining Smiles locations page; Yelp independently corroborates the address; a 2016 local newspaper article names Nourahmadi as the dentist-owner acquiring/renovating this specific Riverside location. Four corroborators. No PE/MSO evidence. dentist_multi, pe_backed=false."
+    },
+    {
+      "location_id": "53c4c0d0487136bf",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "drndentist.com/about identifies Dr. Nourahmadi as owner of the Shining Smiles group including Southwest suburban locations",
+        "https://www.drndentist.com/about",
+        "https://www.shiningsmiles.com/locations/",
+        "https://www.yelp.com/biz/shining-smiles-plainfield-plainfield-6",
+        "shiningsmiles.com/locations lists Plainfield as a Shining Smiles location"
+      ],
+      "evidence_artifacts": [
+        "Yelp listing confirms Shining Smiles Plainfield at Plainfield IL",
+        "ao_reach=6 across 6 ZIPs",
+        "drndentist.com/about identifies Dr. Nourahmadi as owner of the Shining Smiles group including Southwest suburban locations",
+        "shiningsmiles.com/locations lists Plainfield as a Shining Smiles location",
+        "{'type': 'ao_reach', 'authorized_official': 'MILAD NOURAHMADI', 'reach': 6, 'zips': ['60131', '60435', '60440', '60546', '60585', '60618'], 'primary_npi': '1376976563', 'ein': None}",
+        "ao_cluster:ao:NOURAHMADI_MILAD"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:NOURAHMADI_MILAD",
+      "reasoning": "Plainfield is listed on the official Shining Smiles locations page and has a Yelp presence. drndentist.com names Southwest suburban locations as part of Nourahmadi's group. Three documentary corroborators. No PE/MSO evidence. dentist_multi, pe_backed=false."
+    },
+    {
+      "location_id": "ff3364b354221f1d",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "drndentist.com/about states Dr. Nourahmadi operates 'one Chicago practice under the name Novera Dental' as part of his multi-location group",
+        "https://npino.com/dental-clinic/1063785806-novera-oral-health-studio/",
+        "https://www.drndentist.com/about",
+        "https://www.shiningsmiles.com/"
+      ],
+      "evidence_artifacts": [
+        "ao_reach=6 across 6 ZIPs",
+        "drndentist.com/about states Dr. Nourahmadi operates 'one Chicago practice under the name Novera Dental' as part of his multi-location group",
+        "npino.com confirms NPI 1063785806 at 3332 N Western Ave Chicago is 'Novera Oral Health Studio' registered under SHINY SMILES INC entity",
+        "shiningsmiles.com overall website describes a 5-location Chicagoland group founded by Dr. Nourahmadi; Novera is the Chicago brand",
+        "{'type': 'ao_reach', 'authorized_official': 'MILAD NOURAHMADI', 'reach': 6, 'zips': ['60131', '60435', '60440', '60546', '60585', '60618'], 'primary_npi': '1063785806', 'ein': None}",
+        "ao_cluster:ao:NOURAHMADI_MILAD"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:NOURAHMADI_MILAD",
+      "reasoning": "This location operates as 'Novera Oral Health Studio' (also called Novera Dental) \u2014 a different brand name but same Nourahmadi-owned group. drndentist.com explicitly states he runs 'one Chicago practice under the name Novera Dental'; npino.com confirms the NPI at 3332 N Western Ave is registered under SHINY SMILES INC. The variant entity name and brand are explained by Nourahmadi's Chicago office using a separate brand identity while sharing AO with the Shining Smiles suburban locations. No PE/MSO evidence on any source. dentist_multi, pe_backed=false."
+    },
+    {
+      "location_id": "2e986a1e966c77af",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://metrosmilesdental.com/about/",
+        "https://metrosmilesdental.com/locations/",
+        "https://www.bbb.org/us/il/chicago/profile/dental-services/metrosmiles-brickyard-0654-1000037701",
+        "https://www.bbb.org/us/il/chicago/profile/dental-services/metrosmiles-pilsen-0654-1000037706",
+        "metrosmilesdental.com/locations/ lists 7 MetroSmiles locations across Chicagoland including Joliet-area \u2014 official multi-location brand website"
+      ],
+      "evidence_artifacts": [
+        "BBB profiles for MetroSmiles Brickyard and MetroSmiles Pilsen both list 'Dr. Chris Tsaliagos DDS, President' as principal contact \u2014 documentary owner identity",
+        "MetroSmiles About page states group founded 1994 by same operator \u2014 no PE/DSO/MSO mention",
+        "ao_reach=6 across 6 ZIPs (60435, 60463, 60629, 60632, 60639, 60652)",
+        "metrosmilesdental.com/locations/ lists 7 MetroSmiles locations across Chicagoland including Joliet-area \u2014 official multi-location brand website",
+        "{'type': 'ao_reach', 'authorized_official': 'CHRISTOS TSALIAGOS', 'reach': 6, 'zips': ['60435', '60463', '60629', '60632', '60639', '60652'], 'npi': '1619385101', 'name': 'METROSMILES - JOLIET DENTAL PC', 'address': '2625 w jefferson st, JOLIET, 60435'}",
+        "ao_cluster:ao:TSALIAGOS_CHRISTOS"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:TSALIAGOS_CHRISTOS",
+      "reasoning": "NPI name carries 'METROSMILES' brand. AO is Dr. Christos Tsaliagos, confirmed as DDS and President of MetroSmiles entities on BBB. Official website metrosmilesdental.com confirms a 7-location Chicagoland group founded 1994. No PE/MSO/DSO management evidence found. Dentist-owned multi-location group. Ready for validation \u2014 documentary corroboration present (BBB principal listing + official multi-location website)."
+    },
+    {
+      "location_id": "536c8ffeb199c73f",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://metrosmilesdental.com/locations/",
+        "https://www.bbb.org/us/il/chicago/profile/dental-services/metrosmiles-brickyard-0654-1000037701",
+        "https://www.bbb.org/us/il/chicago/profile/dental-services/metrosmiles-pilsen-0654-1000037706"
+      ],
+      "evidence_artifacts": [
+        "BBB profiles for MetroSmiles Brickyard and MetroSmiles Pilsen list 'Dr. Chris Tsaliagos DDS, President' \u2014 same AO confirmed as dentist-owner",
+        "No PE/MSO/DSO management evidence found",
+        "ao_reach=6 across 6 ZIPs; shared AO CHRISTOS TSALIAGOS",
+        "metrosmilesdental.com shows Berwyn/Cicero-area location under MetroSmiles brand; CICERO DENTAL INC at 7110 W 127th St Palos Heights is AO-linked to the same operator",
+        "{'type': 'ao_reach', 'authorized_official': 'CHRISTOS TSALIAGOS', 'reach': 6, 'zips': ['60435', '60463', '60629', '60632', '60639', '60652'], 'npi': '1225200140', 'name': 'CICERO DENTAL INC', 'address': '7110 w 127th st, PALOS HEIGHTS, 60463'}",
+        "ao_cluster:ao:TSALIAGOS_CHRISTOS"
+      ],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "ao:TSALIAGOS_CHRISTOS",
+      "reasoning": "Entity name 'CICERO DENTAL INC' does not carry the MetroSmiles brand directly, but shares AO CHRISTOS TSALIAGOS with the rest of the network. Tsaliagos is confirmed as DDS and President of MetroSmiles entities. Confidence is medium rather than high because this location's brand connection is via AO linkage alone rather than a branded name \u2014 the downstream gate should confirm address match to the MetroSmiles Berwyn/Oak Lawn/Cicero location on the official website. No PE/MSO evidence found."
+    },
+    {
+      "location_id": "24ce005084ed7d47",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://metrosmilesdental.com/locations/",
+        "https://www.bbb.org/us/il/chicago/profile/dental-services/metrosmiles-pilsen-0654-1000037706",
+        "https://www.carecredit.com/doctor-locator/chicago-il/metrosmiles-gage-park-dental-pc-649fxd/",
+        "metrosmilesdental.com/locations/ lists Gage Park as a named MetroSmiles location \u2014 matches NPI name 'METROSMILES - GAGE PARK DENTAL PC' and address 5825 S Kedzie Ave Chicago 60629"
+      ],
+      "evidence_artifacts": [
+        "BBB confirms Dr. Chris Tsaliagos DDS as President of MetroSmiles corporate entities",
+        "CareCredit listing confirms 'MetroSmiles Gage Park Dental PC' at this address",
+        "EIN 465524296 present",
+        "ao_reach=6 across 6 ZIPs; shared AO CHRISTOS TSALIAGOS",
+        "metrosmilesdental.com/locations/ lists Gage Park as a named MetroSmiles location \u2014 matches NPI name 'METROSMILES - GAGE PARK DENTAL PC' and address 5825 S Kedzie Ave Chicago 60629",
+        "{'type': 'ao_reach', 'authorized_official': 'CHRISTOS TSALIAGOS', 'reach': 6, 'zips': ['60435', '60463', '60629', '60632', '60639', '60652'], 'npi': '1801208202', 'name': 'METROSMILES - GAGE PARK DENTAL PC', 'address': '5825 s kedzie ave, CHICAGO, 60629'}",
+        "ao_cluster:ao:TSALIAGOS_CHRISTOS"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:TSALIAGOS_CHRISTOS",
+      "reasoning": "NPI name is 'METROSMILES - GAGE PARK DENTAL PC', directly matching the MetroSmiles brand. Address 5825 S Kedzie Ave Chicago 60629 confirmed on metrosmilesdental.com/locations/ and CareCredit. AO Christos Tsaliagos is confirmed DDS and President of MetroSmiles. Dentist-owned multi-location group with no PE/DSO evidence."
+    },
+    {
+      "location_id": "b2445373c7020d73",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://metrosmilesdental.com/location/metrosmiles-chicago-3/",
+        "https://www.bbb.org/us/il/chicago/profile/dental-services/metrosmiles-brickyard-0654-1000037701",
+        "https://www.yelp.com/biz/metro-smiles-archer-heights-chicago",
+        "metrosmilesdental.com/location/metrosmiles-chicago-3/ (Archer Heights location page) matches address 5141 S Cicero Ave Chicago 60632"
+      ],
+      "evidence_artifacts": [
+        "BBB confirms Dr. Chris Tsaliagos DDS as President of MetroSmiles corporate entities",
+        "Yelp listing 'METRO SMILES - ARCHER HEIGHTS' at 5141 S Cicero Ave Chicago confirms active operation",
+        "ao_reach=6 across 6 ZIPs; shared AO CHRISTOS TSALIAGOS",
+        "metrosmilesdental.com/location/metrosmiles-chicago-3/ (Archer Heights location page) matches address 5141 S Cicero Ave Chicago 60632",
+        "{'type': 'ao_reach', 'authorized_official': 'CHRISTOS TSALIAGOS', 'reach': 6, 'zips': ['60435', '60463', '60629', '60632', '60639', '60652'], 'npi': '1538577085', 'name': 'METROSMILES - ARCHER HEIGHTS DENTAL', 'address': '5141 s cicero ave, CHICAGO, 60632'}",
+        "ao_cluster:ao:TSALIAGOS_CHRISTOS"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:TSALIAGOS_CHRISTOS",
+      "reasoning": "NPI name is 'METROSMILES - ARCHER HEIGHTS DENTAL', directly matching the MetroSmiles brand. Address confirmed on official MetroSmiles website location page and Yelp. AO Christos Tsaliagos is confirmed DDS and President of MetroSmiles. Dentist-owned multi-location group with no PE/DSO evidence."
+    },
+    {
+      "location_id": "3ad6677bfa655932",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "BBB profile 'MetroSmiles Brickyard' (bbb.org/us/il/chicago/profile/dental-services/metrosmiles-brickyard-0654-1000037701) lists 'Dr. Chris Tsaliagos DDS, President' \u2014 same address 6020 W Diversey Ave Chicago 60639",
+        "https://metrosmilesdental.com/location/metrosmiles-brickyard/",
+        "https://www.bbb.org/us/il/chicago/profile/dental-services/metrosmiles-brickyard-0654-1000037701",
+        "https://www.healthgrades.com/dentist/dr-christos-tsaliagos-2y7p6",
+        "metrosmilesdental.com/location/metrosmiles-brickyard/ confirms this location under MetroSmiles brand"
+      ],
+      "evidence_artifacts": [
+        "BBB profile 'MetroSmiles Brickyard' (bbb.org/us/il/chicago/profile/dental-services/metrosmiles-brickyard-0654-1000037701) lists 'Dr. Chris Tsaliagos DDS, President' \u2014 same address 6020 W Diversey Ave Chicago 60639",
+        "Healthgrades confirms Dr. Christos Tsaliagos practices at Brickyard Dental Center, 6020 W Diversey Ave, Chicago IL 60639",
+        "ao_reach=6 across 6 ZIPs; shared AO CHRISTOS TSALIAGOS",
+        "metrosmilesdental.com/location/metrosmiles-brickyard/ confirms this location under MetroSmiles brand",
+        "provider_count=4, entity_classification=large_group",
+        "{'type': 'ao_reach', 'authorized_official': 'CHRISTOS TSALIAGOS', 'reach': 6, 'zips': ['60435', '60463', '60629', '60632', '60639', '60652'], 'npi': '1033381090', 'name': 'BRICKYARD DENTAL CENTER', 'address': '6020 w diversey ave, CHICAGO, 60639'}",
+        "ao_cluster:ao:TSALIAGOS_CHRISTOS"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:TSALIAGOS_CHRISTOS",
+      "reasoning": "NPI name 'BRICKYARD DENTAL CENTER' is the operating trade name for the Brickyard location. BBB explicitly lists this address under 'MetroSmiles Brickyard' with Dr. Chris Tsaliagos DDS as President. Healthgrades confirms Tsaliagos practices here. Official MetroSmiles website has a dedicated Brickyard location page. This is the strongest single-location corroboration in the cluster \u2014 BBB principal listing + two additional sources all converging on same address and same owner-dentist."
+    },
+    {
+      "location_id": "7f3dd48b9457f658",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://metrosmilesdental.com/locations/",
+        "https://www.bbb.org/us/il/chicago/profile/dental-services/metrosmiles-brickyard-0654-1000037701"
+      ],
+      "evidence_artifacts": [
+        "AO CHRISTOS TSALIAGOS is confirmed DDS and President of MetroSmiles (BBB, multi-location website) \u2014 same individual registered as AO on this NPI",
+        "No direct MetroSmiles branding found for this address (8537 S Cicero Ave Chicago 60652) in web search or official website \u2014 location may operate under a separate trade name or be a legacy entity",
+        "ao_reach=6 across 6 ZIPs; shared AO CHRISTOS TSALIAGOS",
+        "{'type': 'ao_reach', 'authorized_official': 'CHRISTOS TSALIAGOS', 'reach': 6, 'zips': ['60435', '60463', '60629', '60632', '60639', '60652'], 'npi': '1013227966', 'name': 'THE TOOTHPATROL, P.C.', 'address': '8537 s cicero ave, CHICAGO, 60652'}",
+        "ao_cluster:ao:TSALIAGOS_CHRISTOS"
+      ],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "ao:TSALIAGOS_CHRISTOS",
+      "reasoning": "Entity name 'THE TOOTHPATROL, P.C.' does not carry MetroSmiles branding and this address does not appear on metrosmilesdental.com/locations/ in the web fetch results. The link to the MetroSmiles network is solely via shared AO (CHRISTOS TSALIAGOS). AO reach alone without a brand or address match on the official website is insufficient for ready_for_validation under the dentist_multi corroboration bar. Downstream gate should verify whether this is a separately-operated practice by the same dentist or a MetroSmiles satellite not yet on the website. No PE/DSO evidence found \u2014 dentist_multi remains the best structural guess."
+    },
+    {
+      "location_id": "6f68546a3690109e",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": true,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://mergr.com/company/bright-direction-dental",
+        "https://www.brightdirectiondental.com/",
+        "https://www.linkedin.com/in/jay-jorbin-a0a3847/",
+        "https://www.northwest.bank/news-insights/northwest-sponsor-finance-provided-financing-to-support-bright-direction-dental/"
+      ],
+      "evidence_artifacts": [
+        "BDD initialism in entity name 'BDD of Illinois P.C.' directly matches Bright Direction Dental operating brand",
+        "Bright Direction Dental self-identifies as a Midwest DSO on its website (brightdirectiondental.com) supporting 40+ practices",
+        "Jay Jorbin identified as CFO of Bright Direction Dental on LinkedIn and ZoomInfo",
+        "Northwest Sponsor Finance press release confirms BDD is 'private equity-backed lower middle market' company",
+        "PNC Mezzanine Capital confirmed as PE owner of BDD via Mergr company profile (acquired 2024)",
+        "ao_reach=5 across 5 ZIPs (60004, 60110, 60120, 60188, 60510)",
+        "{'type': 'ao_reach', 'authorized_official': 'JAY JORBIN', 'reach': 5, 'zips': ['60004', '60110', '60120', '60188', '60510'], 'primary_npi': '1063183044', 'entity_name': 'BDD OF ILLINOIS P.C.', 'address': '3440 n old arlington heights rd, ARLINGTON HEIGHTS'}",
+        "ao_cluster:ao:JORBIN_JAY"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:JORBIN_JAY",
+      "reasoning": "BDD of Illinois P.C. at Arlington Heights is one of 5 Chicagoland locations operated under the Bright Direction Dental DSO umbrella. Jay Jorbin is documented as CFO of BDD (LinkedIn, ZoomInfo), not a dentist-owner. BDD explicitly identifies as a DSO supporting 40+ Midwest practices; PE backing by PNC Mezzanine Capital is confirmed via Mergr and corroborated by Northwest Sponsor Finance's press release. The 'BDD of Illinois P.C.' name is a friendly professional corporation \u2014 a stealth vehicle where the local PC name conceals PE-backed DSO management. All four corroborators are in evidence_urls. This is stealth_dso, pe_backed=true, gate_status=ready_for_validation."
+    },
+    {
+      "location_id": "1cd16336e3aea543",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": true,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://mergr.com/company/bright-direction-dental",
+        "https://www.brightdirectiondental.com/",
+        "https://www.linkedin.com/in/jay-jorbin-a0a3847/",
+        "https://www.northwest.bank/news-insights/northwest-sponsor-finance-provided-financing-to-support-bright-direction-dental/"
+      ],
+      "evidence_artifacts": [
+        "BDD prefix in 'BDD AFDS PC' directly matches Bright Direction Dental operating brand",
+        "Bright Direction Dental self-identifies as a Midwest DSO on its website supporting 40+ practices",
+        "Jay Jorbin identified as CFO of Bright Direction Dental on LinkedIn and ZoomInfo",
+        "Northwest Sponsor Finance press release confirms BDD is 'private equity-backed'",
+        "PNC Mezzanine Capital confirmed as PE owner of BDD via Mergr (acquired 2024)",
+        "ao_reach=5 across 5 ZIPs (60004, 60110, 60120, 60188, 60510)",
+        "{'type': 'ao_reach', 'authorized_official': 'JAY JORBIN', 'reach': 5, 'zips': ['60004', '60110', '60120', '60188', '60510'], 'primary_npi': '1558238469', 'entity_name': 'BDD AFDS PC', 'address': '2429 randall rd, CARPENTERSVILLE'}",
+        "ao_cluster:ao:JORBIN_JAY"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:JORBIN_JAY",
+      "reasoning": "BDD AFDS PC at Carpentersville is a friendly professional corporation operated under the Bright Direction Dental DSO. 'BDD' prefix is the same Bright Direction Dental brand. Jay Jorbin is CFO of BDD. PE backing by PNC Mezzanine Capital is documented. Same evidence chain as all cluster locations. stealth_dso, pe_backed=true."
+    },
+    {
+      "location_id": "e679229d42267b07",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": true,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://mergr.com/company/bright-direction-dental",
+        "https://www.brightdirectiondental.com/",
+        "https://www.linkedin.com/in/jay-jorbin-a0a3847/",
+        "https://www.northwest.bank/news-insights/northwest-sponsor-finance-provided-financing-to-support-bright-direction-dental/"
+      ],
+      "evidence_artifacts": [
+        "BDD prefix in 'BDD of Illinois P.C.' directly matches Bright Direction Dental operating brand",
+        "Bright Direction Dental self-identifies as a Midwest DSO on its website supporting 40+ practices",
+        "EIN 363917317",
+        "Jay Jorbin identified as CFO of Bright Direction Dental on LinkedIn and ZoomInfo",
+        "Northwest Sponsor Finance press release confirms BDD is 'private equity-backed'",
+        "PNC Mezzanine Capital confirmed as PE owner of BDD via Mergr (acquired 2024)",
+        "ao_reach=5 across 5 ZIPs (60004, 60110, 60120, 60188, 60510)",
+        "{'type': 'ao_reach', 'authorized_official': 'JAY JORBIN', 'reach': 5, 'zips': ['60004', '60110', '60120', '60188', '60510'], 'primary_npi': '1376214346', 'entity_name': 'BDD OF ILLINOIS P.C.', 'address': '1030 summit st, ELGIN', 'ein': '363917317'}",
+        "ao_cluster:ao:JORBIN_JAY"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:JORBIN_JAY",
+      "reasoning": "BDD of Illinois P.C. at Elgin (1030 Summit St, ZIP 60120) is a friendly PC operated under the Bright Direction Dental PE-backed DSO. Same BDD brand, same AO (Jay Jorbin, CFO of BDD), same PE backer (PNC Mezzanine Capital). stealth_dso, pe_backed=true. Note: the Yelp/ZocDoc search results for 1030 Summit St Elgin returned 'Carol Stream and Elgin Dental Associates' as the consumer-facing name, which further confirms the stealth/local-name pattern."
+    },
+    {
+      "location_id": "a18735414efb4b38",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": true,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://mergr.com/company/bright-direction-dental",
+        "https://www.brightdirectiondental.com/",
+        "https://www.linkedin.com/in/jay-jorbin-a0a3847/",
+        "https://www.northwest.bank/news-insights/northwest-sponsor-finance-provided-financing-to-support-bright-direction-dental/"
+      ],
+      "evidence_artifacts": [
+        "BDD prefix in entity name directly matches Bright Direction Dental operating brand",
+        "Bright Direction Dental self-identifies as a Midwest DSO on its website supporting 40+ practices",
+        "EIN 363818174",
+        "Jay Jorbin identified as CFO of Bright Direction Dental on LinkedIn and ZoomInfo",
+        "Northwest Sponsor Finance press release confirms BDD is 'private equity-backed'",
+        "PNC Mezzanine Capital confirmed as PE owner of BDD via Mergr (acquired 2024)",
+        "ao_reach=5 across 5 ZIPs (60004, 60110, 60120, 60188, 60510)",
+        "{'type': 'ao_reach', 'authorized_official': 'JAY JORBIN', 'reach': 5, 'zips': ['60004', '60110', '60120', '60188', '60510'], 'primary_npi': '1609548817', 'entity_name': 'BDD OF ILLINOIS P.C.', 'address': '784 w army trail rd, CAROL STREAM', 'ein': '363818174'}",
+        "ao_cluster:ao:JORBIN_JAY"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:JORBIN_JAY",
+      "reasoning": "BDD of Illinois P.C. at Carol Stream (ZIP 60188) has provider_count=5 and is classified large_group \u2014 consistent with a multi-provider DSO satellite. Same BDD brand, same AO (Jay Jorbin, CFO of BDD), same PE backer. This is the highest-staffed location in the network. stealth_dso, pe_backed=true."
+    },
+    {
+      "location_id": "c9473d0da714ac96",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": true,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://mergr.com/company/bright-direction-dental",
+        "https://www.brightdirectiondental.com/",
+        "https://www.linkedin.com/in/jay-jorbin-a0a3847/",
+        "https://www.northwest.bank/news-insights/northwest-sponsor-finance-provided-financing-to-support-bright-direction-dental/"
+      ],
+      "evidence_artifacts": [
+        "BDD prefix in 'BDD JHG PC' directly matches Bright Direction Dental operating brand; year_established=1958 is consistent with a legacy private practice acquired and re-titled under BDD PC structure",
+        "Bright Direction Dental self-identifies as a Midwest DSO on its website supporting 40+ practices",
+        "EIN 363188347",
+        "Jay Jorbin identified as CFO of Bright Direction Dental on LinkedIn and ZoomInfo",
+        "Northwest Sponsor Finance press release confirms BDD is 'private equity-backed'",
+        "PNC Mezzanine Capital confirmed as PE owner of BDD via Mergr (acquired 2024)",
+        "ao_reach=5 across 5 ZIPs (60004, 60110, 60120, 60188, 60510)",
+        "{'type': 'ao_reach', 'authorized_official': 'JAY JORBIN', 'reach': 5, 'zips': ['60004', '60110', '60120', '60188', '60510'], 'primary_npi': '1013885961', 'entity_name': 'BDD JHG PC', 'address': '101 n lincoln st, BATAVIA', 'ein': '363188347'}",
+        "ao_cluster:ao:JORBIN_JAY"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:JORBIN_JAY",
+      "reasoning": "BDD JHG PC at Batavia (ZIP 60510, year_established=1958) is a legacy independent practice acquired and re-titled under the Bright Direction Dental friendly-PC structure. 'JHG' likely encodes the former owner's initials or practice name. Year_established=1958 confirms DSO acquisition of a decades-old independent. Same BDD brand, same AO (Jay Jorbin, CFO of BDD), same PE backer (PNC Mezzanine Capital). stealth_dso, pe_backed=true."
+    },
+    {
+      "location_id": "1bf81b2f3eafd0d7",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://sonrisafamilydental.com/meet-our-team/jason-korkus/",
+        "https://sonrisafamilydental.com/sonrisa-group/",
+        "https://www.beckershospitalreview.com/uncategorized/dr-jason-korkus-president-at-sonrisa-family-dental-myhealth-dentistry/",
+        "sonrisafamilydental.com/meet-our-team/jason-korkus/ confirms Dr. Korkus as founder/owner with bio and dental credentials (U of Michigan DDS 1999)",
+        "sonrisafamilydental.com/sonrisa-group/ lists the Sonrisa Group multi-location network founded by Dr. Korkus"
+      ],
+      "evidence_artifacts": [
+        "Becker's Hospital Review profile: 'Dr. Jason Korkus, President at Sonrisa Family Dental & myHealth Dentistry' \u2014 no PE/MSO mentioned",
+        "No PE or MSO investment found on Crunchbase, ZoomInfo, or any press source",
+        "ao_reach=5 across 5 ZIPs (60005, 60609, 60622, 60623, 60628)",
+        "entity_classification=small_group (2 providers)",
+        "sonrisafamilydental.com/meet-our-team/jason-korkus/ confirms Dr. Korkus as founder/owner with bio and dental credentials (U of Michigan DDS 1999)",
+        "sonrisafamilydental.com/sonrisa-group/ lists the Sonrisa Group multi-location network founded by Dr. Korkus",
+        "{'type': 'ao_reach', 'authorized_official': 'JASON KORKUS', 'reach': 5, 'zips': ['60005', '60609', '60622', '60623', '60628'], 'location_name': 'SONRISA ARLINGTON HEIGHTS', 'primary_npi': '1891585329', 'entity_classification': 'small_group'}",
+        "ao_cluster:ao:KORKUS_JASON"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:KORKUS_JASON",
+      "reasoning": "SONRISA ARLINGTON HEIGHTS at 1768 W Algonquin Rd is one of the Sonrisa Family Dental group's suburban locations. AO Jason Korkus DDS is the documented founder and President of Sonrisa Family Dental per the official group website and Becker's profile. No PE/MSO evidence found. Classification: dentist_multi, pe_backed=false. Gate: ready_for_validation \u2014 documentary corroboration from the official group website and founder bio satisfies the dentist_multi corroboration bar."
+    },
+    {
+      "location_id": "72ac4f9558586c7a",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://sonrisafamilydental.com/meet-our-team/jason-korkus/",
+        "https://sonrisafamilydental.com/sonrisa-group/",
+        "https://www.beckershospitalreview.com/uncategorized/dr-jason-korkus-president-at-sonrisa-family-dental-myhealth-dentistry/",
+        "https://www.yelp.com/biz/sonrisa-family-dental-chicago",
+        "sonrisafamilydental.com/meet-our-team/jason-korkus/ confirms Dr. Korkus as founder/owner",
+        "sonrisafamilydental.com/sonrisa-group/ lists the Sonrisa Group multi-location network founded by Dr. Korkus"
+      ],
+      "evidence_artifacts": [
+        "Becker's Hospital Review profile confirms 'President at Sonrisa Family Dental' \u2014 no PE/MSO mentioned",
+        "Yelp listing for 1044 N Mozart St confirms 'Sonrisa Family Dental' branding at this ZIP 60622 address",
+        "ao_reach=5 across 5 ZIPs (60005, 60609, 60622, 60623, 60628)",
+        "entity_classification=small_group (2 providers)",
+        "sonrisafamilydental.com/meet-our-team/jason-korkus/ confirms Dr. Korkus as founder/owner",
+        "sonrisafamilydental.com/sonrisa-group/ lists the Sonrisa Group multi-location network founded by Dr. Korkus",
+        "{'type': 'ao_reach', 'authorized_official': 'JASON KORKUS', 'reach': 5, 'zips': ['60005', '60609', '60622', '60623', '60628'], 'location_name': 'SONRISA FAMILY DENTAL PC', 'address': '1044 n mozart st', 'city': 'CHICAGO', 'zip': '60622', 'primary_npi': '1982274189', 'entity_classification': 'small_group'}",
+        "ao_cluster:ao:KORKUS_JASON"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:KORKUS_JASON",
+      "reasoning": "SONRISA FAMILY DENTAL PC at 1044 N Mozart St (Wicker Park, ZIP 60622) is a named Sonrisa brand location. Yelp confirms the address under the Sonrisa Family Dental brand with 19 reviews. AO Jason Korkus DDS is the documented founder/President of Sonrisa Family Dental. No PE/MSO evidence. Gate: ready_for_validation."
+    },
+    {
+      "location_id": "2076ed18dedc788a",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://vvdental.com/locations/",
+        "https://vvdental.com/locations/romeoville-location/",
+        "https://www.linkedin.com/in/pradeep-khurana-218ab763",
+        "https://www.vvdental.com/about-us/meet-our-doctors/pradeep-khurana-dds/",
+        "vvdental.com/about-us/meet-our-doctors/pradeep-khurana-dds/ identifies Khurana as a DDS and partner",
+        "vvdental.com/locations/ lists Romeoville at 441 N Weber Rd as an active Valley View Dental office"
+      ],
+      "evidence_artifacts": [
+        "LinkedIn profile confirms Pradeep Khurana as Owner of Valley View Dental Illinois",
+        "Yahoo Local and WebMD directory entries confirm Khurana at Valley View Dental, Romeoville",
+        "ao_reach=5 across 4 ZIPs (60439, 60446, 60515, 60538)",
+        "vvdental.com/about-us/meet-our-doctors/pradeep-khurana-dds/ identifies Khurana as a DDS and partner",
+        "vvdental.com/locations/ lists Romeoville at 441 N Weber Rd as an active Valley View Dental office",
+        "{'type': 'ao_reach', 'authorized_official': 'PRADEEP KHURANA', 'reach': 5, 'zips': ['60439', '60446', '60515', '60538'], 'this_location': {'name': 'VALLEY VIEW DENTAL GROUP LLC', 'address': '441 n weber rd', 'city': 'ROMEOVILLE', 'zip': '60446', 'primary_npi': '1730919960', 'entity_classification': 'large_group'}}",
+        "ao_cluster:ao:KHURANA_PRADEEP"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:KHURANA_PRADEEP",
+      "reasoning": "Valley View Dental Romeoville is the flagship location (441 N Weber Rd, 60446), confirmed on vvdental.com's locations page. Dr. Khurana is documented as DDS and co-owner on the practice website and LinkedIn. No PE/MSO/DSO management layer found. This is a dentist-owned private group. gate_status=ready_for_validation because the website provides documentary corroboration of multi-location dentist ownership."
+    },
+    {
+      "location_id": "a3dd5af180b6928b",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://vvdental.com/locations/",
+        "https://www.vvdental.com/about-us/meet-our-doctors/pradeep-khurana-dds/",
+        "https://www.yelp.com/biz/valley-view-dental-montgomery",
+        "vvdental.com/about-us/ and doctor bio pages confirm Khurana as co-owner DDS",
+        "vvdental.com/locations/ lists Montgomery at 1078 Ogden Ave as an active Valley View Dental office"
+      ],
+      "evidence_artifacts": [
+        "Yelp listing for Valley View Dental Montgomery confirms 1078 Ogden Ave, (630) 923-0900",
+        "ao_reach=5 across 4 ZIPs",
+        "vvdental.com/about-us/ and doctor bio pages confirm Khurana as co-owner DDS",
+        "vvdental.com/locations/ lists Montgomery at 1078 Ogden Ave as an active Valley View Dental office",
+        "{'type': 'ao_reach', 'authorized_official': 'PRADEEP KHURANA', 'reach': 5, 'zips': ['60439', '60446', '60515', '60538'], 'this_location': {'name': 'VALLEY VIEW DENTAL GROUP LLC', 'address': '1078 ogden ave', 'city': 'MONTGOMERY', 'zip': '60538', 'primary_npi': '1164252383', 'entity_classification': 'solo_established'}}",
+        "ao_cluster:ao:KHURANA_PRADEEP"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:KHURANA_PRADEEP",
+      "reasoning": "Valley View Dental Montgomery at 1078 Ogden Ave is confirmed on vvdental.com and Yelp. Phone (630) 923-0900 matches. Dr. Khurana is confirmed as co-owner DDS on the practice website. No PE/MSO backing found. gate_status=ready_for_validation due to documentary website corroboration."
+    },
+    {
+      "location_id": "1fa86e6647cd57c5",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://vvdental.com/locations/",
+        "https://www.vvdental.com/about-us/meet-our-doctors/pradeep-khurana-dds/",
+        "vvdental.com/locations/ lists Valley View Dental offices in Romeoville, Naperville, and Montgomery \u2014 62b Ogden Ave Downers Grove is NOT listed as a current office on the website"
+      ],
+      "evidence_artifacts": [
+        "Phone (630) 923-0900 matches the Montgomery office phone, suggesting this NPI may be a billing satellite, defunct location, or administrative variant of the Montgomery office",
+        "ao_reach=5 across 4 ZIPs",
+        "vvdental.com/locations/ lists Valley View Dental offices in Romeoville, Naperville, and Montgomery \u2014 62b Ogden Ave Downers Grove is NOT listed as a current office on the website",
+        "{'type': 'ao_reach', 'authorized_official': 'PRADEEP KHURANA', 'reach': 5, 'zips': ['60439', '60446', '60515', '60538'], 'this_location': {'name': 'VALLEY VIEW DENTAL GROUP LLC', 'address': '62b ogden ave', 'city': 'DOWNERS GROVE', 'zip': '60515', 'primary_npi': '1790515922', 'entity_classification': 'solo_established'}}",
+        "ao_cluster:ao:KHURANA_PRADEEP"
+      ],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "ao:KHURANA_PRADEEP",
+      "reasoning": "This NPI carries the Valley View Dental Group LLC entity name and Khurana as AO, but the address (62b Ogden Ave, Downers Grove) does not appear on vvdental.com's locations page. The phone (630) 923-0900) is shared with the confirmed Montgomery office \u2014 suggesting this may be a satellite, closed, or billing-only location variant. Khurana is documented as a multi-location dentist owner, so dentist_multi is the correct structural classification, but the physical operating status of this address is unverified. gate_status=candidate pending address-level verification (e.g., Google Maps, site visit, or current NPPES deactivation check)."
+    },
+    {
+      "location_id": "b184f060d46970cd",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://dentiquedentalcare.com/locations/lemont/",
+        "https://www.patientconnect365.com/Dentists/Illinois/Lemont/60439/Elite_Dental_Care_of_Lemont",
+        "https://www.yelp.com/biz/dentique-dental-lemont"
+      ],
+      "evidence_artifacts": [
+        "Khurana's name does not appear in Dentique/Elite Dental Care Lemont listings found in search results",
+        "NPPES shows Khurana as AO for the Sparkle Dental Group LLC entity at this address, but the operating brand appears different from Valley View Dental",
+        "PatientConnect365 and Yelp show 15543 127th St, Lemont IL 60439 operating as 'Dentique Dental' (formerly 'Elite Dental Care of Lemont') \u2014 a different brand, associated with Dr. Xhelo Shuaipaj per directory listings",
+        "ao_reach=5 across 4 ZIPs",
+        "{'type': 'ao_reach', 'authorized_official': 'PRADEEP KHURANA', 'reach': 5, 'zips': ['60439', '60446', '60515', '60538'], 'this_location': {'name': 'SPARKLE DENTAL GROUP LLC', 'address': '15543 e 127th st', 'city': 'LEMONT', 'zip': '60439', 'primary_npi': '1932939170', 'entity_classification': 'solo_established'}}",
+        "ao_cluster:ao:KHURANA_PRADEEP"
+      ],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "ao:KHURANA_PRADEEP",
+      "reasoning": "The NPPES entity at this address is 'Sparkle Dental Group LLC' with Khurana as AO, but the operating brand at 15543 127th St, Lemont is 'Dentique Dental' (formerly 'Elite Dental Care'), associated with a different dentist in directory listings. Khurana may hold legal LLC ownership or an old credentialing role, but the operating link is unclear. Cannot confirm this as a Valley View Dental network location or as Khurana's active ownership. dentist_multi remains the structural best-guess if Khurana does hold ownership of the LLC, but confidence is low. gate_status=candidate \u2014 requires direct address verification to confirm whether Khurana owns/operates this location or whether the AO registration is historical/administrative only."
+    },
+    {
+      "location_id": "e493e4371bb5cb22",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://dentiquedentalcare.com/",
+        "https://www.patientconnect365.com/Dentists/Illinois/DownersGrove/60515/Elite_Dental_Care_of_Downers_Grove",
+        "https://www.yelp.com/biz/dentique-dental-downers-grove"
+      ],
+      "evidence_artifacts": [
+        "Dentique Dental Downers Grove is associated with Dr. Xhelo Shuaipaj per directory listings, not with Khurana",
+        "Khurana's name does not appear in any Dentique/Elite Dental Care Downers Grove listings",
+        "Nextdoor listing for this address shows 'Elite Dental Care Downers Grove' redirecting to Dentique Dental brand",
+        "PatientConnect365 and Yelp show 4121 Fairview Ave, Downers Grove IL 60515 operating as 'Dentique Dental' (formerly 'Elite Dental Care of Downers Grove') with phone 630-968-8439 confirmed matching",
+        "ao_reach=5 across 4 ZIPs",
+        "entity_classification=solo_high_volume",
+        "{'type': 'ao_reach', 'authorized_official': 'PRADEEP KHURANA', 'reach': 5, 'zips': ['60439', '60446', '60515', '60538'], 'this_location': {'name': 'SPARKLE DENTAL GROUP LLC', 'address': '4121 fairview ave', 'city': 'DOWNERS GROVE', 'zip': '60515', 'primary_npi': '1689404824', 'entity_classification': 'solo_high_volume'}}",
+        "ao_cluster:ao:KHURANA_PRADEEP"
+      ],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "ao:KHURANA_PRADEEP",
+      "reasoning": "The NPPES entity 'Sparkle Dental Group LLC' with Khurana as AO at 4121 Fairview Ave, Downers Grove matches the phone (630-968-8439) of 'Dentique Dental' (formerly 'Elite Dental Care of Downers Grove') \u2014 confirming this is the same physical address. However, the operating brand is Dentique Dental, linked to a different dentist in directory sources. Khurana's AO status on the NPPES LLC may reflect prior ownership, LLC legal structure, or credentialing administration rather than active operational control. dentist_multi is the structural best-guess if Khurana holds LLC ownership, but active operational ownership is unverified. gate_status=candidate \u2014 requires direct verification (current ownership docs, state LLC registry, or Khurana confirmation) before promotion."
+    },
+    {
+      "location_id": "c3c1109b7a83c868",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://doctor.webmd.com/doctor/phillip-palella-e18e4f65-adcb-457e-be91-a29fe40ca16e-overview",
+        "https://www.moderndentalchicago.com/",
+        "https://www.moderndentalchicago.com/about/",
+        "moderndentalchicago.com/about explicitly states 'individually owned and operated by Dr. Phillip Palella' and 'independently owned and led by Dr. Phillip Palella, our practice is built on genuine relationships rather than corporate policies'"
+      ],
+      "evidence_artifacts": [
+        "Dr. Palella confirmed as DDS with 20+ years experience, UIC College of Dentistry 2004 graduate",
+        "ao_reach=5 across 4 ZIPs",
+        "moderndentalchicago.com/about explicitly states 'individually owned and operated by Dr. Phillip Palella' and 'independently owned and led by Dr. Phillip Palella, our practice is built on genuine relationships rather than corporate policies'",
+        "website lists Modern Dental on Division as one of the practice's core locations",
+        "{'type': 'ao_reach', 'authorized_official': 'PHILLIP PALELLA', 'reach': 5, 'zips': ['60622', '60647', '60654', '60657']}",
+        "ao_cluster:ao:PALELLA_PHILLIP"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:PALELLA_PHILLIP",
+      "reasoning": "Modern Dental on Division at 2033 W Division St, Chicago 60622 is confirmed as a Dr. Phillip Palella-owned location. The moderndentalchicago.com website explicitly names him as individual owner, explicitly states independent (not corporate) ownership, and explicitly references this Division Street location as the founding office opened 15+ years ago. dentist_multi is fully corroborated."
+    },
+    {
+      "location_id": "e2d778d9dd90dc47",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.moderndentalchicago.com/",
+        "https://www.moderndentalchicago.com/about/"
+      ],
+      "evidence_artifacts": [
+        "Dr. Palella is the AO on both NPIs at this address; moderndentalchicago.com confirms him as sole individual owner of the Modern Dental group at this address",
+        "ao_reach=5 across 4 ZIPs",
+        "same physical address and phone as Modern Dental on Division (NPI 1225459340), strongly indicating same-office co-registration under a former or alternate operating name 'Halo Dental'",
+        "{'type': 'ao_reach', 'authorized_official': 'PHILLIP PALELLA', 'reach': 5, 'zips': ['60622', '60647', '60654', '60657']}",
+        "ao_cluster:ao:PALELLA_PHILLIP"
+      ],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "ao:PALELLA_PHILLIP",
+      "reasoning": "Halo Dental (NPI 1447663232) is registered at 2033 W Division St, 60622 \u2014 the identical address and phone number as Modern Dental on Division (NPI 1225459340), with Dr. Phillip Palella as AO on both. This is almost certainly a same-office org-NPI or a former/DBA name for the same practice, not a separate clinic. The co-location pattern is strong evidence of same-owner registration rather than a distinct corporate entity. Confidence is medium rather than high because no web source explicitly names 'Halo Dental' as a Palella DBA; web searches for 'Halo Dental 2033 W Division' returned unrelated Chicago 'Halo Dental' entities. The downstream validation gate should confirm whether this NPI is a billing org or former name before counting it as a distinct GP location."
+    },
+    {
+      "location_id": "912d93028de7af3e",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.moderndentalchicago.com/",
+        "https://www.moderndentalchicago.com/about/"
+      ],
+      "evidence_artifacts": [
+        "LLC naming convention consistent with dentist-owned multi-location private group",
+        "ao_reach=5 across 4 ZIPs",
+        "moderndentalchicago.com explicitly lists 'Modern Dental of Logan Square' as one of three named Modern Dental Chicago locations owned by Dr. Palella",
+        "{'type': 'ao_reach', 'authorized_official': 'PHILLIP PALELLA', 'reach': 5, 'zips': ['60622', '60647', '60654', '60657']}",
+        "ao_cluster:ao:PALELLA_PHILLIP"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:PALELLA_PHILLIP",
+      "reasoning": "Modern Dental of Logan Square LLC at 2645 N Milwaukee, Chicago 60647 is explicitly listed on moderndentalchicago.com as one of Dr. Palella's three Modern Dental Chicago locations. dentist_multi is fully corroborated by the owner's own website stating individual, independent ownership."
+    },
+    {
+      "location_id": "bd1fa8c78168aa00",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.moderndentalchicago.com/",
+        "https://www.moderndentalchicago.com/about/"
+      ],
+      "evidence_artifacts": [
+        "ao_reach=5 across 4 ZIPs",
+        "moderndentalchicago.com explicitly lists 'Modern Dental on Clark Street' as one of three named Modern Dental Chicago locations owned by Dr. Palella",
+        "same phone number as the founding Division location corroborates single-owner operation",
+        "{'type': 'ao_reach', 'authorized_official': 'PHILLIP PALELLA', 'reach': 5, 'zips': ['60622', '60647', '60654', '60657']}",
+        "ao_cluster:ao:PALELLA_PHILLIP"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:PALELLA_PHILLIP",
+      "reasoning": "Modern Dental on Clark Street at 744 N Clark St, Chicago 60654 is explicitly listed on moderndentalchicago.com as one of Dr. Palella's three Modern Dental Chicago locations. dentist_multi is fully corroborated."
+    },
+    {
+      "location_id": "d5bc28878405a18c",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://reviews.birdeye.com/modern-dental-on-sheffield-155341956092500",
+        "https://www.yelp.com/biz/modern-dental-on-sheffield-chicago-3"
+      ],
+      "evidence_artifacts": [
+        "NPI 1225459357 registered at 1007 W Wellington aligns with the Yelp address for this Modern Dental location; Dr. Palella is AO on this NPI per the federal cluster",
+        "Yelp listing for Modern Dental on Sheffield at 1007 W Wellington (60657) confirms the location exists under the Modern Dental brand; Yelp marks it as CLOSED",
+        "ao_reach=5 across 4 ZIPs",
+        "{'type': 'ao_reach', 'authorized_official': 'PHILLIP PALELLA', 'reach': 5, 'zips': ['60622', '60647', '60654', '60657']}",
+        "ao_cluster:ao:PALELLA_PHILLIP"
+      ],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "ao:PALELLA_PHILLIP",
+      "reasoning": "Modern Dental on Sheffield at 1007 W Wellington, Chicago 60657 is confirmed as a Modern Dental brand location with Dr. Palella as AO per NPPES. The Yelp listing marks this location as CLOSED, so it may be a former location that no longer operates. The downstream validation gate should confirm current operating status before counting this NPI toward the active GP denominator. dentist_multi classification is correct (Palella-owned, independent), but the practice may be inactive."
+    }
+  ]
+}

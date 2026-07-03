@@ -1,0 +1,878 @@
+[
+  {
+    "location_id": "1feacfd70c3cc8aa",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "structural",
+    "evidence_urls": [],
+    "evidence_artifacts": [
+      "NPPES org NPI 1740203694, name ARBOR HILLS DENTAL CARE, entity_classification=dso_national, affiliated_dso=Western Dental — but Western Dental (Sonrava) locator covers only AZ/CA, no IL offices listed at westerndental.com/en-us/find-a-location/. Web search confirms Arbor Hills owned by Drs. Theodore & Samantha Cho (independent husband-wife practice). No NPPES parent_company field populated."
+    ],
+    "confidence": "low",
+    "reasoning": "NPPES affiliated_dso=Western Dental is a false-positive classifier hit: Western Dental (Sonrava) does not operate in Illinois; Arbor Hills Dental Care at 175 N Milwaukee Ave Vernon Hills is independently owned by the Cho family with no DSO evidence found.",
+    "proposed_tier": "single_loc_group",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Theodore Cho / Dr. Samantha Cho",
+    "network_id": null,
+    "signal": {"type": "affiliated_dso", "details": "affiliated_dso=Western Dental matched fragment but Western Dental has no IL offices; independent ownership confirmed by web search"},
+    "exact_address_match": false,
+    "practice_name": "ARBOR HILLS DENTAL CARE",
+    "address": "175 n milwaukee ave",
+    "city": "VERNON HILLS",
+    "zip": "60061",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "393a79a74b719b48",
+    "assigned_tier": "stealth_dso",
+    "status": "classified",
+    "evidence_basis": "web_verified",
+    "evidence_urls": [
+      "https://www.dentalworks.com/offices/illinois/",
+      "https://www.sonrava.com/news/sonrava-health-completesacquisition-of-mid-atlantic-dental-partners"
+    ],
+    "evidence_artifacts": [
+      "NPPES parent_company=SONRAVA HEALTH on org NPI 1366268716; DentalWorks is a confirmed Sonrava Health brand operating ~600 offices across 21 states; friendly-PC name 'DENTIST IN VERNON HILLS LLC' conceals brand affiliation"
+    ],
+    "confidence": "medium",
+    "reasoning": "NPPES parent_company field is populated as SONRAVA HEALTH and DentalWorks is a confirmed Sonrava-operated brand in IL, but 555 E Townline Rd Vernon Hills 60061 does not appear on the DentalWorks IL locator page (9 offices listed); classified medium-confidence stealth_dso based on NPPES parent_company=SONRAVA HEALTH which is a durable federal structural signal.",
+    "proposed_tier": "stealth_dso",
+    "disposition": "ready",
+    "pe_backed": true,
+    "owner_identity": null,
+    "network_id": "brand:sonrava-dentalworks",
+    "signal": {"type": "affiliated_dso", "details": "parent_company=SONRAVA HEALTH in NPPES; friendly-PC LLC name; entity_classification=dso_national"},
+    "exact_address_match": false,
+    "practice_name": "DENTIST IN VERNON HILLS LLC",
+    "address": "555 e townline rd",
+    "city": "VERNON HILLS",
+    "zip": "60061",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "72d0b167e1beb9c9",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "none",
+    "evidence_urls": [],
+    "evidence_artifacts": [
+      "NPPES individual NPI 1407974215, name Sarrafi Atosa DMD, entity_classification=dso_national, affiliated_dso=Western Dental — Western Dental has no IL offices per official locator. Dr. Sarrafi practiced at Old Orchard Dental Group 9631 Gross Point Rd Skokie (now closed); she now operates Smiles of Buffalo Grove independently. No Sonrava/Western Dental parent_company field populated."
+    ],
+    "confidence": "low",
+    "reasoning": "Western Dental (Sonrava) does not operate in Illinois; Dr. Sarrafi is independently operating at Smiles of Buffalo Grove; Old Orchard Dental Group at 9631 Gross Point Rd is confirmed closed with no DSO affiliation found.",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Atosa Sarrafi DMD",
+    "network_id": null,
+    "signal": {"type": "affiliated_dso", "details": "dso_national classification hit on Western Dental fragment; practice is closed and owner operates independently elsewhere"},
+    "exact_address_match": false,
+    "practice_name": "Sarrafi, Atosa DMD",
+    "address": "9631 gross point rd",
+    "city": "SKOKIE",
+    "zip": "60076",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "3d0e7f3e036f5842",
+    "assigned_tier": "stealth_dso",
+    "status": "classified",
+    "evidence_basis": "web_verified",
+    "evidence_urls": [
+      "https://www.dentalworks.com/offices/illinois/",
+      "https://www.sonrava.com/news/sonrava-health-completesacquisition-of-mid-atlantic-dental-partners"
+    ],
+    "evidence_artifacts": [
+      "NPPES parent_company=SONRAVA HEALTH on org NPI 1093539363; DentalWorks is a confirmed Sonrava Health brand; friendly-PC name 'DENTIST IN BLOOMINGDALE LLC' conceals brand. 366 W Army Trail Rd Bloomingdale 60108 not on current DentalWorks IL locator but NPPES Sonrava parent is a durable federal signal."
+    ],
+    "confidence": "medium",
+    "reasoning": "NPPES parent_company=SONRAVA HEALTH is a direct federal ownership signal; DentalWorks/Sonrava confirmed as a PE-backed DSO (New Mountain Capital); friendly-PC LLC name structure is consistent with Sonrava's stealth-DSO pattern in IL.",
+    "proposed_tier": "stealth_dso",
+    "disposition": "ready",
+    "pe_backed": true,
+    "owner_identity": null,
+    "network_id": "brand:sonrava-dentalworks",
+    "signal": {"type": "affiliated_dso", "details": "parent_company=SONRAVA HEALTH in NPPES; LLC friendly-PC name; entity_classification=dso_national"},
+    "exact_address_match": false,
+    "practice_name": "DENTIST IN BLOOMINGDALE LLC",
+    "address": "366 w army trail rd",
+    "city": "BLOOMINGDALE",
+    "zip": "60108",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "6cbda89842e392d7",
+    "assigned_tier": "stealth_dso",
+    "status": "classified",
+    "evidence_basis": "locator",
+    "evidence_urls": [
+      "https://elgin.dentalworks.com/loretta-davis",
+      "https://www.dentalworks.com/offices/illinois/"
+    ],
+    "evidence_artifacts": [
+      "DentalWorks Elgin listed at 1190 S Randall Rd #102 Elgin IL 60123 on official dentalworks.com/offices/illinois/ — exact street+ZIP match. Dr. Loretta Davis confirmed as DentalWorks Elgin dentist at that address. NPPES parent_company=SONRAVA HEALTH. DentalWorks is Sonrava Health brand (PE-backed New Mountain Capital)."
+    ],
+    "confidence": "high",
+    "reasoning": "DentalWorks official IL locator confirms 1190 S Randall Rd Elgin IL 60123 as DentalWorks Elgin; Dr. Loretta C. Davis is the listed dentist at that DentalWorks office; NPPES parent_company=SONRAVA HEALTH corroborates; Sonrava is New Mountain Capital PE-backed.",
+    "proposed_tier": "stealth_dso",
+    "disposition": "ready",
+    "pe_backed": true,
+    "owner_identity": "Dr. Loretta C. Davis DDS (employed)",
+    "network_id": "brand:sonrava-dentalworks",
+    "signal": {"type": "locator", "details": "DentalWorks official locator exact address match + NPPES parent_company=SONRAVA HEALTH"},
+    "exact_address_match": true,
+    "practice_name": "LORETTA C. DAVIS, D.D.S. & ASSOCIATES (SPRING HILL), LTD.",
+    "address": "1190 s randall rd",
+    "city": "ELGIN",
+    "zip": "60123",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "d927a7c5b87e7f7e",
+    "assigned_tier": "stealth_dso",
+    "status": "classified",
+    "evidence_basis": "locator",
+    "evidence_urls": [
+      "https://www.dentalworks.com/offices/illinois/",
+      "https://local.yahoo.com/info-226113717-Luckett,-Michael---Dentalworks-Rivercrest"
+    ],
+    "evidence_artifacts": [
+      "DentalWorks Rivercrest listed at 4839 Cal Sag Rd #310 Crestwood IL on official dentalworks.com/offices/illinois/. Dr. Michael Luckett confirmed as DentalWorks Rivercrest dentist. NPPES parent_company=SONRAVA HEALTH. ZIP on locator=60445 vs NPPES 60418 (same building, ZIP boundary artifact). DentalWorks is Sonrava Health brand (PE-backed New Mountain Capital)."
+    ],
+    "confidence": "high",
+    "reasoning": "DentalWorks official IL locator confirms 4839 Cal Sag Rd Crestwood as DentalWorks Rivercrest; Dr. Michael Luckett confirmed as DentalWorks Rivercrest dentist per Yahoo Local; NPPES parent_company=SONRAVA HEALTH; minor ZIP discrepancy (60445 vs 60418) is a boundary artifact for the same address.",
+    "proposed_tier": "stealth_dso",
+    "disposition": "ready",
+    "pe_backed": true,
+    "owner_identity": "Dr. Michael Luckett DMD (employed)",
+    "network_id": "brand:sonrava-dentalworks",
+    "signal": {"type": "locator", "details": "DentalWorks official locator exact street match + NPPES parent_company=SONRAVA HEALTH + Yahoo confirms DentalWorks Rivercrest"},
+    "exact_address_match": true,
+    "practice_name": "Luckett Michael",
+    "address": "4839 cal sag rd",
+    "city": "CRESTWOOD",
+    "zip": "60418",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "34235da38acd2bfd",
+    "assigned_tier": "stealth_dso",
+    "status": "classified",
+    "evidence_basis": "web_verified",
+    "evidence_urls": [
+      "https://orlandsquare.dentalworks.com/",
+      "https://www.yelp.com/biz/dentalworks-orland-park"
+    ],
+    "evidence_artifacts": [
+      "DentalWorks Orland Square at 2 Orland Square Dr Orland Park IL 60462 confirmed via dentalworks.com subdomain orlandsquare.dentalworks.com and Yelp. NPPES parent_company=SONRAVA HEALTH. DentalWorks is Sonrava Health multi-state brand (PE-backed New Mountain Capital). Location not on current dentalworks.com/offices/illinois/ page but dedicated subdomain confirms active presence."
+    ],
+    "confidence": "high",
+    "reasoning": "Dedicated DentalWorks subdomain orlandsquare.dentalworks.com and Yelp both confirm DentalWorks at 2 Orland Square Dr Orland Park 60462 at (708) 403-5468 matching NPPES phone; NPPES parent_company=SONRAVA HEALTH; DentalWorks is Sonrava's IL brand.",
+    "proposed_tier": "stealth_dso",
+    "disposition": "ready",
+    "pe_backed": true,
+    "owner_identity": null,
+    "network_id": "brand:sonrava-dentalworks",
+    "signal": {"type": "locator", "details": "DentalWorks subdomain exact address+ZIP match; NPPES parent_company=SONRAVA HEALTH"},
+    "exact_address_match": true,
+    "practice_name": "Dentalworks",
+    "address": "2 orland sq dr",
+    "city": "ORLAND PARK",
+    "zip": "60462",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "01f2175555fad385",
+    "assigned_tier": "undetermined",
+    "status": "undetermined",
+    "evidence_basis": "none",
+    "evidence_urls": [],
+    "evidence_artifacts": [
+      "primary_npi=DA_943e0bf56fd4 — Data-Axle synthetic record, no federal NPI. entity_classification=dso_national in NPPES is inapplicable."
+    ],
+    "confidence": "low",
+    "reasoning": "DA_-prefixed primary_npi confirms this is a Data-Axle synthetic record with no federal NPI; per census rules, DA_ records cannot be classified.",
+    "proposed_tier": "undetermined",
+    "disposition": "reject",
+    "pe_backed": false,
+    "owner_identity": null,
+    "network_id": null,
+    "signal": {"type": "other", "details": "DA_ synthetic NPI — no federal record exists at this address"},
+    "exact_address_match": false,
+    "practice_name": "Dentalworks Plainfield",
+    "address": "12720 illinois route 59",
+    "city": "Plainfield",
+    "zip": "60544",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "598cc9dae498795b",
+    "assigned_tier": "institutional",
+    "status": "classified",
+    "evidence_basis": "web_verified",
+    "evidence_urls": [
+      "https://northwesterndental.com/",
+      "https://www.nm.org/locations/northwestern-medicine-dental-care"
+    ],
+    "evidence_artifacts": [
+      "Northwestern Dental Center PC at 201 E Huron St Galter 2-246 Chicago IL 60611 is affiliated with Northwestern Memorial Hospital / Northwestern Medicine. BBB confirms practice started 4/1/2001. Northwestern Medicine is the parent health system (#1 hospital in IL). NPPES affiliated_dso=Western Dental is a classifier false-positive (name fragment 'western' matching from 'Northwestern')."
+    ],
+    "confidence": "high",
+    "reasoning": "Northwestern Dental Center at 201 E Huron St Chicago is a hospital-affiliated dental clinic within Northwestern Memorial Hospital / Northwestern Medicine health system; this is an institutional (hospital/health-system) classification, NOT a commercial DSO; affiliated_dso=Western Dental is a classifier error from the name fragment.",
+    "proposed_tier": "institutional",
+    "disposition": "ready",
+    "pe_backed": false,
+    "owner_identity": "Northwestern Medicine / Northwestern Memorial Hospital",
+    "network_id": "brand:northwestern-medicine",
+    "signal": {"type": "website", "details": "Hospital-affiliated dental center inside Northwestern Memorial; Northwestern Medicine official site confirms location"},
+    "exact_address_match": true,
+    "practice_name": "NORTHWESTERN DENTAL CENTER",
+    "address": "201 e huron st",
+    "city": "CHICAGO",
+    "zip": "60611",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "3af1e2ccc1b5eb23",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "none",
+    "evidence_urls": [],
+    "evidence_artifacts": [
+      "NPPES name WESTERN DENTAL GROUP PC at 3935 N Western Ave Chicago 60618 — named after Western Avenue (the street), not the CA/AZ Western Dental chain. Western Dental (Sonrava) has no IL offices. Web search shows this is a local periodontist/general group at that address with no Sonrava connection. No parent_company field populated."
+    ],
+    "confidence": "low",
+    "reasoning": "WESTERN DENTAL GROUP PC is named after Western Avenue in Chicago, not the CA/AZ Western Dental chain; affiliated_dso=Western Dental is a classifier false-positive; no Sonrava parent_company in NPPES; this appears to be an independent or small-group practice requiring positive ownership verification.",
+    "proposed_tier": "single_loc_group",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": null,
+    "network_id": null,
+    "signal": {"type": "affiliated_dso", "details": "Name contains 'Western Dental' matching fragment but refers to Western Ave location; no IL presence for Sonrava/Western Dental"},
+    "exact_address_match": false,
+    "practice_name": "WESTERN DENTAL GROUP PC",
+    "address": "3935 n western ave",
+    "city": "CHICAGO",
+    "zip": "60618",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "7230bc8117b4055b",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "structural",
+    "evidence_urls": [],
+    "evidence_artifacts": [
+      "NPPES org NPI 1508080110, name NORTHWESTERN DENTAL GROUP LTD, 7745 N Milwaukee Ave Niles IL 60714. No affiliated_dso populated. entity_classification=dso_national based on Western Dental fragment match — but Northwestern Dental Group is an independent IL group owned by Dr. Lawrence Mulvaney (President/founder, structured as NWDG Niles LLC DBA). Operates multiple IL locations (Niles, Vernon Hills, Skokie, Gurnee, Arlington Heights, Deerfield). No PE/DSO affiliation found."
+    ],
+    "confidence": "low",
+    "reasoning": "Northwestern Dental Group Ltd is an independent dentist-owned multi-location group (Dr. Lawrence Mulvaney, founder); the dso_national classification is a false-positive from name fragment matching; it may qualify as dentist_multi but requires AO cluster verification across its locations.",
+    "proposed_tier": "dentist_multi",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Lawrence Mulvaney (President/Founder)",
+    "network_id": null,
+    "signal": {"type": "affiliated_dso", "details": "dso_national false-positive; Northwestern Dental Group is independent dentist-owned multi-location practice"},
+    "exact_address_match": false,
+    "practice_name": "NORTHWESTERN DENTAL GROUP LTD",
+    "address": "7745 n milwaukee ave",
+    "city": "NILES",
+    "zip": "60714",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "979777a4db94b853",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "none",
+    "evidence_urls": [],
+    "evidence_artifacts": [
+      "NPPES individual NPI 1063605186, Jacek Wolniak, 7042 N Milwaukee Ave Niles IL 60714. affiliated_dso=Western Dental (classifier fragment match). Yelp shows WOLNIAK DMD - CLOSED at this address. Dr. Jacek W. Wolniak IL dental license listed as inactive. No Sonrava/Western Dental connection found. Western Dental has no IL offices."
+    ],
+    "confidence": "low",
+    "reasoning": "Practice is confirmed closed (Yelp) and Dr. Wolniak's IL dental license is inactive; Western Dental affiliated_dso is a classifier error; the location is a closed independent solo/group practice with no DSO affiliation.",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Jacek W. Wolniak DMD",
+    "network_id": null,
+    "signal": {"type": "affiliated_dso", "details": "Western Dental fragment false-positive; practice confirmed closed on Yelp; IL license inactive"},
+    "exact_address_match": false,
+    "practice_name": "Jacek Wolniak",
+    "address": "7042 n milwaukee ave",
+    "city": "NILES",
+    "zip": "60714",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "84559ebe91cb4e23",
+    "assigned_tier": "stealth_dso",
+    "status": "classified",
+    "evidence_basis": "locator",
+    "evidence_urls": [
+      "https://www.greatlakesdentalpartners.com/company/locations/"
+    ],
+    "evidence_artifacts": [
+      "GLDP official locations page lists 'Deerpath Dental Specialists, 10 W Phillip Rd Ste 117, Vernon Hills IL 60061' — exact street+ZIP match. Shore Capital Partners confirmed as PE backer per shorecp.com/companies/great-lakes-dental-partners."
+    ],
+    "confidence": "high",
+    "reasoning": "Great Lakes Dental Partners official locator page lists Deerpath Dental Specialists at 10 W Phillip Rd Vernon Hills IL 60061, confirming exact address+ZIP match; GLDP is Shore Capital-backed DSO; classified stealth_dso (local specialist name operated under GLDP MSO).",
+    "proposed_tier": "stealth_dso",
+    "disposition": "ready",
+    "pe_backed": true,
+    "owner_identity": null,
+    "network_id": "brand:great-lakes-dental-partners",
+    "signal": {"type": "locator", "details": "GLDP official locator exact address+ZIP match"},
+    "exact_address_match": true,
+    "practice_name": "DEERPATH DENTAL SPECIALIST",
+    "address": "10 w phillip rd",
+    "city": "VERNON HILLS",
+    "zip": "60061",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "fc0f1f41d3e28d20",
+    "assigned_tier": "stealth_dso",
+    "status": "classified",
+    "evidence_basis": "locator",
+    "evidence_urls": [
+      "https://www.greatlakesdentalpartners.com/company/locations/"
+    ],
+    "evidence_artifacts": [
+      "GLDP official locations page lists 'Meadows Dental Care, 4949 Euclid Ave Ste A, Palatine IL 60067' — exact street+ZIP match. EIN 363307051 in NPPES. Shore Capital Partners PE backer confirmed."
+    ],
+    "confidence": "high",
+    "reasoning": "GLDP official locator confirms Meadows Dental Care at 4949 Euclid Ave Palatine IL 60067; exact address+ZIP match; local name under GLDP MSO (Shore Capital PE-backed).",
+    "proposed_tier": "stealth_dso",
+    "disposition": "ready",
+    "pe_backed": true,
+    "owner_identity": null,
+    "network_id": "brand:great-lakes-dental-partners",
+    "signal": {"type": "locator", "details": "GLDP official locator exact address+ZIP match"},
+    "exact_address_match": true,
+    "practice_name": "MEADOWS DENTAL GROUP",
+    "address": "4949 euclid ave",
+    "city": "PALATINE",
+    "zip": "60067",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "41a086c9bd03fa91",
+    "assigned_tier": "stealth_dso",
+    "status": "classified",
+    "evidence_basis": "locator",
+    "evidence_urls": [
+      "https://www.greatlakesdentalpartners.com/company/locations/",
+      "https://www.greatlakesdentalpartners.com/news/2018/12/13/sunrise-dental-care-joins-chicagoland-smile-group/"
+    ],
+    "evidence_artifacts": [
+      "GLDP official locations page lists 'Fox Valley Dental Spa, 502 E State Street Geneva IL 60134' — exact street+ZIP match. GLDP press release 2018-12-13 confirms 'Sunrise Dental Care Joins Great Lakes Dental Partners' at 502 E State St Geneva. NPPES parent_company=SHORE CAPITAL PARTNERS LLC. Practice closed April 28, 2023 but was GLDP-operated until closure."
+    ],
+    "confidence": "high",
+    "reasoning": "GLDP official locator lists Fox Valley Dental Spa at 502 E State St Geneva IL 60134 (exact match); GLDP press release confirms Sunrise Dental Care joined GLDP in 2018; NPPES parent_company=SHORE CAPITAL PARTNERS LLC; classified stealth_dso despite current closure status (was corporate at time of classification).",
+    "proposed_tier": "stealth_dso",
+    "disposition": "ready",
+    "pe_backed": true,
+    "owner_identity": "Dr. Vesna Sutter (prior owner, sold to GLDP 2018)",
+    "network_id": "brand:great-lakes-dental-partners",
+    "signal": {"type": "locator", "details": "GLDP locator exact match + press release confirms acquisition + NPPES parent_company=SHORE CAPITAL PARTNERS LLC"},
+    "exact_address_match": true,
+    "practice_name": "Sunrise Dental Care",
+    "address": "502 e state st",
+    "city": "GENEVA",
+    "zip": "60134",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "0d376204167d44a6",
+    "assigned_tier": "stealth_dso",
+    "status": "classified",
+    "evidence_basis": "locator",
+    "evidence_urls": [
+      "https://www.greatlakesdentalpartners.com/company/locations/"
+    ],
+    "evidence_artifacts": [
+      "GLDP official locations page lists 'Advanced Family Dental & Orthodontics of Shorewood, 150 Brookforest Ave Shorewood IL 60404' — street core matches (150 N Brook Forest Dr vs 150 Brookforest Ave, same address). ZIP 60404 exact match. Shore Capital PE backer confirmed."
+    ],
+    "confidence": "high",
+    "reasoning": "GLDP official locator confirms Advanced Family Dental at 150 Brookforest Ave Shorewood IL 60404, matching NPPES 150 N Brook Forest Dr Shorewood 60404 (same address, minor street formatting variant); Shore Capital PE-backed DSO.",
+    "proposed_tier": "stealth_dso",
+    "disposition": "ready",
+    "pe_backed": true,
+    "owner_identity": null,
+    "network_id": "brand:great-lakes-dental-partners",
+    "signal": {"type": "locator", "details": "GLDP official locator address+ZIP match (minor street abbreviation variant)"},
+    "exact_address_match": true,
+    "practice_name": "ADVANCED FAMILY DENTAL OF SHOREWOOD, P.C.",
+    "address": "150 n brook forest dr",
+    "city": "SHOREWOOD",
+    "zip": "60404",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "fff7d58945e09936",
+    "assigned_tier": "stealth_dso",
+    "status": "classified",
+    "evidence_basis": "locator",
+    "evidence_urls": [
+      "https://www.greatlakesdentalpartners.com/company/locations/"
+    ],
+    "evidence_artifacts": [
+      "GLDP official locations page lists 'Fairview Dental Group, 6317 Fairview Ave Ste 6 Westmont IL 60559' — exact street+ZIP match. EIN 363607708 in NPPES. Shore Capital PE backer confirmed."
+    ],
+    "confidence": "high",
+    "reasoning": "GLDP official locator confirms Fairview Dental Group at 6317 Fairview Ave Westmont IL 60559; exact street+ZIP match; local name under GLDP MSO.",
+    "proposed_tier": "stealth_dso",
+    "disposition": "ready",
+    "pe_backed": true,
+    "owner_identity": null,
+    "network_id": "brand:great-lakes-dental-partners",
+    "signal": {"type": "locator", "details": "GLDP official locator exact address+ZIP match"},
+    "exact_address_match": true,
+    "practice_name": "FAIRVIEW DENTAL CARE GROUP P.C.",
+    "address": "6317 fairview ave",
+    "city": "WESTMONT",
+    "zip": "60559",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "9550d33a7efdafdd",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "structural",
+    "evidence_urls": [],
+    "evidence_artifacts": [
+      "NPPES org NPI 1164836912, name DENTAL ROOTS PC, 4015 Plainfield Naperville Rd Naperville IL 60564. affiliated_dso=Great Lakes Dental Partners in NPPES. GLDP official locations page does NOT list this address. Web search confirms Dental Roots PC at this address is an independent practice owned by Kushal Rathi with no GLDP mention. NPPES parent_company=SHORE CAPITAL PARTNERS LLC — this field may be stale/erroneous for this location."
+    ],
+    "confidence": "low",
+    "reasoning": "Dental Roots PC at 4015 Plainfield-Naperville Rd Naperville 60564 does not appear on the GLDP official locations page; independent web sources confirm owner Kushal Rathi with no DSO affiliation; NPPES parent_company=SHORE CAPITAL PARTNERS LLC may be a stale or data-entry error requiring verification.",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Kushal Rathi (owner per web sources)",
+    "network_id": null,
+    "signal": {"type": "affiliated_dso", "details": "NPPES affiliated_dso=GLDP but not on GLDP locator; independent owner identified via web"},
+    "exact_address_match": false,
+    "practice_name": "DENTAL ROOTS PC",
+    "address": "4015 plainfield naperville rd",
+    "city": "NAPERVILLE",
+    "zip": "60564",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "4460256bd7d20775",
+    "assigned_tier": "stealth_dso",
+    "status": "classified",
+    "evidence_basis": "locator",
+    "evidence_urls": [
+      "https://www.greatlakesdentalpartners.com/company/locations/",
+      "https://www.greatlakesdentalpartners.com/news/2017/05/08/chicagoland-smile-group-announces-partnership-manus-dental/"
+    ],
+    "evidence_artifacts": [
+      "GLDP official locations page lists 'Downtown Dental River North, 676 N Michigan Ave #3500 Chicago IL 60611' — exact street+ZIP match. GLDP press release 2017-05-08 confirms 'Great Lakes Dental Partners Announces Partnership with Manus Dental' including the Michigan Avenue office. Shore Capital PE backer confirmed per shorecp.com."
+    ],
+    "confidence": "high",
+    "reasoning": "GLDP official locator confirms 676 N Michigan Ave Chicago IL 60611 as Downtown Dental River North (formerly Manus Northwestern Oral Health Center); GLDP press release confirms the Manus Dental partnership in 2017; Shore Capital PE-backed; local institutional name conceals DSO ownership.",
+    "proposed_tier": "stealth_dso",
+    "disposition": "ready",
+    "pe_backed": true,
+    "owner_identity": null,
+    "network_id": "brand:great-lakes-dental-partners",
+    "signal": {"type": "locator", "details": "GLDP locator exact match + press release confirms Manus Dental acquisition by GLDP"},
+    "exact_address_match": true,
+    "practice_name": "MANUS NORTHWESTERN ORAL HEALTH CENTER",
+    "address": "676 n michigan ave",
+    "city": "CHICAGO",
+    "zip": "60611",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "c088f2d83fe13d65",
+    "assigned_tier": "stealth_dso",
+    "status": "classified",
+    "evidence_basis": "locator",
+    "evidence_urls": [
+      "https://www.greatlakesdentalpartners.com/company/locations/",
+      "https://www.greatlakesdentalpartners.com/news/2017/05/08/chicagoland-smile-group-announces-partnership-manus-dental/"
+    ],
+    "evidence_artifacts": [
+      "GLDP official locations page lists 'Downtown Dental River North, 676 N Michigan Ave #3500 Chicago IL 60611' — same address as this location (676 No Michigan Ave is same as 676 N Michigan Ave). NPPES parent_company=SHORE CAPITAL PARTNERS LLC. GLDP press release confirms Manus Dental partnership at Michigan Ave. This NPI (1225252687) is the individual-provider counterpart at the same building."
+    ],
+    "confidence": "high",
+    "reasoning": "Same address as location_id 4460256bd7d20775; GLDP locator confirms 676 N Michigan Ave Chicago 60611; NPPES parent_company=SHORE CAPITAL PARTNERS LLC; this is the individual-NPI record co-located at the GLDP/Manus Dental site.",
+    "proposed_tier": "stealth_dso",
+    "disposition": "ready",
+    "pe_backed": true,
+    "owner_identity": null,
+    "network_id": "brand:great-lakes-dental-partners",
+    "signal": {"type": "locator", "details": "Same 676 N Michigan Ave address confirmed on GLDP locator; NPPES parent_company=SHORE CAPITAL PARTNERS LLC"},
+    "exact_address_match": true,
+    "practice_name": "Manus Dental",
+    "address": "676 no michigan ave",
+    "city": "CHICAGO",
+    "zip": "60611",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "9ff39651d697af30",
+    "assigned_tier": "stealth_dso",
+    "status": "classified",
+    "evidence_basis": "locator",
+    "evidence_urls": [
+      "https://www.greatlakesdentalpartners.com/company/locations/"
+    ],
+    "evidence_artifacts": [
+      "GLDP official locations page lists 'Beverly Smiles Family Dental Care, 2307 W. 95th Street Chicago IL 60643' — exact street+ZIP match for this NPI at 2307 W 95th St Chicago 60643. Shore Capital PE backer confirmed."
+    ],
+    "confidence": "high",
+    "reasoning": "GLDP official locator confirms Beverly Smiles Family Dental Care at 2307 W 95th St Chicago 60643, matching NPPES address for Corie R Rowe DDS; local dentist name operating under GLDP MSO; Shore Capital PE-backed.",
+    "proposed_tier": "stealth_dso",
+    "disposition": "ready",
+    "pe_backed": true,
+    "owner_identity": "Dr. Corie R. Rowe DDS (employed)",
+    "network_id": "brand:great-lakes-dental-partners",
+    "signal": {"type": "locator", "details": "GLDP official locator exact address+ZIP match"},
+    "exact_address_match": true,
+    "practice_name": "Corie R Rowe DDS",
+    "address": "2307 w 95th st",
+    "city": "CHICAGO",
+    "zip": "60643",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "25d611ece46470e6",
+    "assigned_tier": "stealth_dso",
+    "status": "classified",
+    "evidence_basis": "locator",
+    "evidence_urls": [
+      "https://www.greatlakesdentalpartners.com/company/locations/"
+    ],
+    "evidence_artifacts": [
+      "GLDP official locations page lists 'Oradent Associates, 6258 N Lincoln Ave Chicago IL 60659' — exact street+ZIP match. NPPES parent_company=SHORE CAPITAL PARTNERS LLC. EIN 363107176. Shore Capital PE backer confirmed."
+    ],
+    "confidence": "high",
+    "reasoning": "GLDP official locator confirms Oradent Associates at 6258 N Lincoln Ave Chicago IL 60659; exact street+ZIP match; NPPES parent_company=SHORE CAPITAL PARTNERS LLC corroborates; local name under GLDP MSO.",
+    "proposed_tier": "stealth_dso",
+    "disposition": "ready",
+    "pe_backed": true,
+    "owner_identity": null,
+    "network_id": "brand:great-lakes-dental-partners",
+    "signal": {"type": "locator", "details": "GLDP official locator exact address+ZIP match; NPPES parent_company=SHORE CAPITAL PARTNERS LLC"},
+    "exact_address_match": true,
+    "practice_name": "ORADENT ASSOCIATES, LTD.",
+    "address": "6258 n lincoln ave",
+    "city": "CHICAGO",
+    "zip": "60659",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "280722975dff06aa",
+    "assigned_tier": "stealth_dso",
+    "status": "classified",
+    "evidence_basis": "locator",
+    "evidence_urls": [
+      "https://www.greatlakesdentalpartners.com/company/locations/"
+    ],
+    "evidence_artifacts": [
+      "GLDP official locations page lists 'Oak Park Dental Group, 7034 W North Ave Chicago IL 60707' — exact street+ZIP match. Shore Capital PE backer confirmed."
+    ],
+    "confidence": "high",
+    "reasoning": "GLDP official locator confirms Oak Park Dental Group at 7034 W North Ave Chicago IL 60707; exact street+ZIP match; local branded name operating under GLDP MSO; Shore Capital PE-backed.",
+    "proposed_tier": "stealth_dso",
+    "disposition": "ready",
+    "pe_backed": true,
+    "owner_identity": null,
+    "network_id": "brand:great-lakes-dental-partners",
+    "signal": {"type": "locator", "details": "GLDP official locator exact address+ZIP match"},
+    "exact_address_match": true,
+    "practice_name": "OAK PARK DENTAL GROUP",
+    "address": "7034 w n ave",
+    "city": "CHICAGO",
+    "zip": "60707",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "f63ae93c1c7477e9",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "none",
+    "evidence_urls": [],
+    "evidence_artifacts": [
+      "NPPES org NPI 1902075179, name PRECISION DENTAL LTD, 6725 Stanley Ave Berwyn IL 60402. entity_classification=family_practice, no affiliated_dso. Brand hint matched 'precision dental' fragment. Web search confirms this is an INDEPENDENT practice owned by Dr. Scott Rysz DDS and Dr. Thomas Rysz DDS, in business 38+ years. Has its own website mypdltd.com. NOT listed on precisiondentalchicago.com locator. DIFFERENT legal entity from Precision Dental Care LLC chain."
+    ],
+    "confidence": "high",
+    "reasoning": "Precision Dental Ltd at 6725 Stanley Ave Berwyn is a long-established independent family practice owned by the Rysz family (Drs. Scott & Thomas Rysz) with its own website; it is NOT on the Precision Dental Care chain's locator; the brand_hint match on 'precision dental' is a name-fragment false alarm.",
+    "proposed_tier": "single_loc_group",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Scott Rysz DDS / Dr. Thomas Rysz DDS",
+    "network_id": null,
+    "signal": {"type": "other", "details": "Name fragment match only; confirmed independent Rysz family practice not on Precision Dental Care chain locator"},
+    "exact_address_match": false,
+    "practice_name": "PRECISION DENTAL, LTD.",
+    "address": "6725 stanley ave",
+    "city": "BERWYN",
+    "zip": "60402",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "6df39a2b864479a2",
+    "assigned_tier": "stealth_dso",
+    "status": "classified",
+    "evidence_basis": "locator",
+    "evidence_urls": [
+      "https://precisiondentalchicago.com/our-locations/"
+    ],
+    "evidence_artifacts": [
+      "Precision Dental Care official locator (precisiondentalchicago.com) lists '4317 S. Ashland Chicago IL 60609' — exact street+ZIP match for this location. NPPES name PRECISION DENTAL CARE 3 LLC. No PE sponsor identified; Precision Dental Care is a local multi-location chain (7 IL locations)."
+    ],
+    "confidence": "high",
+    "reasoning": "Precision Dental Care official locator confirms 4317 S Ashland Ave Chicago IL 60609 as one of their 7 IL locations; NPPES name explicitly includes 'PRECISION DENTAL CARE 3'; classified stealth_dso (multi-location chain under local branding); no identified PE sponsor so pe_backed=false.",
+    "proposed_tier": "stealth_dso",
+    "disposition": "ready",
+    "pe_backed": false,
+    "owner_identity": null,
+    "network_id": "brand:precision-dental-care-chicago",
+    "signal": {"type": "locator", "details": "Precision Dental Care official locator exact street+ZIP match"},
+    "exact_address_match": true,
+    "practice_name": "PRECISION DENTAL CARE 3, LLC",
+    "address": "4317 s ashland ave",
+    "city": "CHICAGO",
+    "zip": "60609",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "b461d0651f2db9b5",
+    "assigned_tier": "stealth_dso",
+    "status": "classified",
+    "evidence_basis": "locator",
+    "evidence_urls": [
+      "https://precisiondentalchicago.com/our-locations/"
+    ],
+    "evidence_artifacts": [
+      "Precision Dental Care official locator lists '6930 S. Pulaski Chicago IL 60629' — exact street+ZIP match. NPPES name PRECISION DENTAL CARE 4 LLC confirms this is a numbered entity in the same chain."
+    ],
+    "confidence": "high",
+    "reasoning": "Precision Dental Care official locator confirms 6930 S Pulaski Rd Chicago IL 60629; NPPES name PRECISION DENTAL CARE 4 LLC explicitly identifies chain membership; stealth_dso (local-named multi-location chain); no identified PE sponsor.",
+    "proposed_tier": "stealth_dso",
+    "disposition": "ready",
+    "pe_backed": false,
+    "owner_identity": null,
+    "network_id": "brand:precision-dental-care-chicago",
+    "signal": {"type": "locator", "details": "Precision Dental Care official locator exact street+ZIP match"},
+    "exact_address_match": true,
+    "practice_name": "PRECISION DENTAL CARE 4 LLC",
+    "address": "6930 s pulaski rd",
+    "city": "CHICAGO",
+    "zip": "60629",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "8dbe509f0a92a9d0",
+    "assigned_tier": "stealth_dso",
+    "status": "classified",
+    "evidence_basis": "locator",
+    "evidence_urls": [
+      "https://precisiondentalchicago.com/our-locations/"
+    ],
+    "evidence_artifacts": [
+      "Precision Dental Care official locator lists '4614 S. Kedzie Chicago IL 60632' — exact street+ZIP match. NPPES name PRECISION DENTAL CARE LLC and already classified dso_regional."
+    ],
+    "confidence": "high",
+    "reasoning": "Precision Dental Care official locator confirms 4614 S Kedzie Ave Chicago IL 60632; exact match; classified dso_regional in NPPES already; stealth_dso (local multi-location chain); no identified PE sponsor.",
+    "proposed_tier": "stealth_dso",
+    "disposition": "ready",
+    "pe_backed": false,
+    "owner_identity": null,
+    "network_id": "brand:precision-dental-care-chicago",
+    "signal": {"type": "locator", "details": "Precision Dental Care official locator exact street+ZIP match"},
+    "exact_address_match": true,
+    "practice_name": "PRECISION DENTAL CARE, LLC",
+    "address": "4614 s kedzie ave",
+    "city": "CHICAGO",
+    "zip": "60632",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "8cb79bf55672c4f0",
+    "assigned_tier": "stealth_dso",
+    "status": "classified",
+    "evidence_basis": "locator",
+    "evidence_urls": [
+      "https://precisiondentalchicago.com/our-locations/"
+    ],
+    "evidence_artifacts": [
+      "Precision Dental Care official locator lists '5745 W. Belmont Ave Chicago IL 60634' — exact street+ZIP match. NPPES name PRECISION DENTAL CARE 5 LLC confirms numbered chain entity."
+    ],
+    "confidence": "high",
+    "reasoning": "Precision Dental Care official locator confirms 5745 W Belmont Ave Chicago IL 60634; NPPES name PRECISION DENTAL CARE 5 LLC; exact locator+ZIP match; stealth_dso multi-location chain; no identified PE sponsor.",
+    "proposed_tier": "stealth_dso",
+    "disposition": "ready",
+    "pe_backed": false,
+    "owner_identity": null,
+    "network_id": "brand:precision-dental-care-chicago",
+    "signal": {"type": "locator", "details": "Precision Dental Care official locator exact street+ZIP match"},
+    "exact_address_match": true,
+    "practice_name": "PRECISION DENTAL CARE 5 LLC",
+    "address": "5745 w belmont ave",
+    "city": "CHICAGO",
+    "zip": "60634",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "fb8282656b8e9b30",
+    "assigned_tier": "stealth_dso",
+    "status": "classified",
+    "evidence_basis": "locator",
+    "evidence_urls": [
+      "https://precisiondentalchicago.com/our-locations/"
+    ],
+    "evidence_artifacts": [
+      "Precision Dental Care official locator lists '4641 W. Diversey Chicago IL 60639' — exact street+ZIP match. NPPES name PRECISION DENTAL CARE LLC; Yelp confirms this address as Precision Dental Care. Despite large_group classification in NPPES (no affiliated_dso), the chain locator confirms DSO affiliation."
+    ],
+    "confidence": "high",
+    "reasoning": "Precision Dental Care official locator at precisiondentalchicago.com confirms 4641 W Diversey Ave Chicago IL 60639; Yelp also confirms; despite NPPES large_group classification with no affiliated_dso, the official multi-location chain locator provides sufficient evidence for stealth_dso classification.",
+    "proposed_tier": "stealth_dso",
+    "disposition": "ready",
+    "pe_backed": false,
+    "owner_identity": null,
+    "network_id": "brand:precision-dental-care-chicago",
+    "signal": {"type": "locator", "details": "Precision Dental Care official locator exact street+ZIP match"},
+    "exact_address_match": true,
+    "practice_name": "PRECISION DENTAL CARE, LLC",
+    "address": "4641 w diversey ave",
+    "city": "CHICAGO",
+    "zip": "60639",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "85a220a7d7130993",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "none",
+    "evidence_urls": [],
+    "evidence_artifacts": [
+      "NPPES org NPI 1891048237, name BRITE BITE DENTAL PC, 444 Lee St Des Plaines IL 60016. entity_classification=family_practice, no affiliated_dso, no parent_company. Brand hint matched 'brite' fragment. Web search confirms Brite Bite Dental is an independent family-owned practice (40+ years) owned by Dr. Mark Levy and Dr. Elliott Levy. Has own website britebitedental.com. NOT on britedental.org locator. DIFFERENT entity from the Brite Dental Chicago chain."
+    ],
+    "confidence": "high",
+    "reasoning": "Brite Bite Dental PC at 444 Lee St Des Plaines is confirmed independent (Dr. Mark Levy family ownership, 40+ years, own website); it is a distinct entity from Brite Dental (britedental.org Chicago chain); the brand_hint 'brite' fragment match is a false alarm.",
+    "proposed_tier": "single_loc_group",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": "Dr. Mark Levy DDS / Dr. Elliott Levy DDS",
+    "network_id": null,
+    "signal": {"type": "other", "details": "Name fragment 'brite' match only; confirmed independent Levy family practice with own website; not on Brite Dental chain locator"},
+    "exact_address_match": false,
+    "practice_name": "BRITE BITE DENTAL, PC",
+    "address": "444 lee st",
+    "city": "DES PLAINES",
+    "zip": "60016",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "c1e83da137223dc0",
+    "assigned_tier": "undetermined",
+    "status": "undetermined",
+    "evidence_basis": "none",
+    "evidence_urls": [],
+    "evidence_artifacts": [
+      "primary_npi=DA_29f17da74d1a — Data-Axle synthetic record with no federal NPI. entity_classification=solo_high_volume but no phone, no verified address. Cannot be classified."
+    ],
+    "confidence": "low",
+    "reasoning": "DA_-prefixed primary_npi confirms Data-Axle synthetic record; no federal NPI exists; per census rules this record must be rejected.",
+    "proposed_tier": "undetermined",
+    "disposition": "reject",
+    "pe_backed": false,
+    "owner_identity": null,
+    "network_id": null,
+    "signal": {"type": "other", "details": "DA_ synthetic NPI — no federal record exists at this address"},
+    "exact_address_match": false,
+    "practice_name": "Brite Smiles",
+    "address": "1583 lee st",
+    "city": "Des Plaines",
+    "zip": "60018",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "563fb56f6f4f84d7",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "none",
+    "evidence_urls": [],
+    "evidence_artifacts": [
+      "NPPES org NPI 1093025223, name ALL BRITE DENTAL SC, 1858 W 35th St Chicago IL 60609. entity_classification=small_group, no affiliated_dso, no parent_company. Brand hint 'brite' fragment. Yelp confirms ALL BRITE DENTAL SC at 1858 W 35th St Chicago — status CLOSED as of April 2026. Not on britedental.org locator. Different legal entity ('All Brite' vs 'Brite Dental'). EIN 201232310 in NPPES."
+    ],
+    "confidence": "low",
+    "reasoning": "All Brite Dental SC at 1858 W 35th St is confirmed closed; it is a distinct legal entity from the Brite Dental (britedental.org) chain; no DSO affiliation found; the 'brite' fragment match is a false alarm; needs positive ownership verification to earn true_independent.",
+    "proposed_tier": "true_independent",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": null,
+    "network_id": null,
+    "signal": {"type": "other", "details": "Name fragment 'brite' only; confirmed closed; not on Brite Dental chain locator; distinct SC entity"},
+    "exact_address_match": false,
+    "practice_name": "ALL BRITE DENTAL S.C.",
+    "address": "1858 w 35th st",
+    "city": "CHICAGO",
+    "zip": "60609",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  },
+  {
+    "location_id": "461291ffcb90a9dc",
+    "assigned_tier": "undetermined",
+    "status": "needs_verification",
+    "evidence_basis": "none",
+    "evidence_urls": [],
+    "evidence_artifacts": [
+      "NPPES individual NPI 1538298674, name Brite Dental, 6051 N Lincoln Ave Chicago IL 60659. entity_classification=solo_high_volume, no affiliated_dso, no parent_company. britedental.org locator lists 5961 N Lincoln Ave Chicago IL 60659 (different house number). EIN 362715458. The closest Brite Dental locator entry is 5961 N Lincoln (Lincoln and Preston), not 6051 N Lincoln — address mismatch of ~1 block."
+    ],
+    "confidence": "low",
+    "reasoning": "NPPES name is 'Brite Dental' but the official britedental.org locator lists 5961 N Lincoln Ave (not 6051 N Lincoln Ave); the house number discrepancy prevents confirming an exact-address locator match; this may be the same practice with a data entry error or a different practice, requiring on-the-ground verification.",
+    "proposed_tier": "stealth_dso",
+    "disposition": "needs_verification",
+    "pe_backed": false,
+    "owner_identity": null,
+    "network_id": null,
+    "signal": {"type": "locator", "details": "Brite Dental brand name in NPPES but locator address 5961 vs NPPES 6051 N Lincoln — house number mismatch; cannot confirm exact-address match"},
+    "exact_address_match": false,
+    "practice_name": "Brite Dental",
+    "address": "6051 n lincoln ave",
+    "city": "CHICAGO",
+    "zip": "60659",
+    "agent": "fleet_b",
+    "reviewed_at": "2026-06-21"
+  }
+]

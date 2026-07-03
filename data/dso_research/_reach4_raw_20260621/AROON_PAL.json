@@ -1,0 +1,210 @@
+{
+  "network": "AROON PAL",
+  "network_id": "ao:PAL_AROON",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Dr. Aroon Pal, DMD (SIU School of Dental Medicine 1991) is a licensed general dentist and the named authorized official across 4 Chicagoland GP locations in 4 ZIPs (60402, 60451, 60624, 60632). His personal ownership is clearly documented at two locations: Brighton Park Dental (4441 S Kedzie, Chicago 60632) where he and wife Richa Pal are confirmed owners, and PALDENTAL GROUP, PC / Lifetime Family Dental (1890 Silver Cross Blvd, New Lenox 60451) where he is the owner-operator. These two constitute a private dentist-owned multi-location group with no documentary MSO/PE layer. The other two AO-cluster locations are already-classified DSO entities: Lawndale Dental, P.C. (60624) is the friendly-PC wrapper for Dental 360 (a 15+ location Illinois DSO brand with its own management company); Berwyn Family Dental (60402) was a now-closed practice at 7001 Ogden Ave that converted to Webster Dental Care of Berwyn (Webster Dental Management, a multi-location DSO). Pal's AO role on those two locations is consistent with his being the licensed dentist/PC-holder serving as the state-law compliance AO for the DSO management entities — not the DSO owner himself. Each location is classified independently below.",
+  "owner_operator_identity": "Dr. Aroon Pal, DMD and Richa Pal (co-owner); SIU School of Dental Medicine 1991; 30+ years general dentistry; primary private practice Brighton Park Dental, Chicago IL 60632",
+  "brand_trade_names": [
+    "Brighton Park Dental",
+    "Lifetime Family Dental",
+    "PALDENTAL GROUP",
+    "Lawndale Dental",
+    "Berwyn Family Dental"
+  ],
+  "legal_entities": [
+    "PALDENTAL GROUP, PC (EIN 453653226)",
+    "LAWNDALE DENTAL, P.C. (NPI 1144203605)",
+    "BERWYN FAMILY DENTAL (NPI 1952505091 — listed as entity_classification dso_national under WEBSTER DENTAL MANAGEMENT)"
+  ],
+  "durable_artifacts": [
+    "Shared authorized official AROON PAL across 4 NPIs in 4 distinct ZIPs (60402, 60451, 60624, 60632)",
+    "PALDENTAL GROUP, PC EIN 453653226 — professional corporation; New Lenox 60451",
+    "Brighton Park Dental website (brightonparkdental.com) names Aroon and Richa Pal as owners at 4441 S Kedzie Ave, Chicago 60632",
+    "Lifetime Family Dental (lifetimefamilydentist.com) names Dr. Aroon Pal as founder/owner at 1890 Silver Cross Blvd, New Lenox 60451 — same address as PALDENTAL GROUP PC",
+    "Lawndale Dental, P.C. address 3600 W Roosevelt is the Dental 360 - Lawndale Dental Center per dental360grp.com and dental360usa.com locators",
+    "Berwyn Family Dental Center at 7001 Ogden Ave Berwyn is listed as CLOSED on Yelp; same address is now Webster Dental Care of Berwyn per webdentalchicago.com/locations/berwyn/"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "Two of the four AO-cluster locations are NOT Pal's private practice: (1) Berwyn Family Dental (60402) is a stale/closed entity — the address at 7001 Ogden Ave Berwyn is now operated as Webster Dental Care of Berwyn (Webster Dental Management DSO); Pal's AO role is as prior licensed PC-holder or billing contact, not current owner of Webster. (2) Lawndale Dental, P.C. (60624) at 3600 W Roosevelt is operating as a Dental 360 branded location; Pal is AO as the friendly-PC licensed dentist, not the DSO management owner. The EVENLY ORTHODONTICS DUPONT parent_company tag on Brighton Park Dental (60632) is a known false-positive (Evenly Technologies placeholder EIN per 2026-06-12 demotions) — Brighton Park Dental is independently owned by Pal.",
+  "evidence_chain": "AO signal: AROON PAL listed as authorized official on 4 NPI org records across ZIPs 60402, 60451, 60624, 60632. Documentary corroboration: (1) brightonparkdental.com About Us confirms 'Aroon and Richa Pal — Owner' at 4441 S Kedzie Ave, Chicago 60632 (Brighton Park Dental); (2) lifetimefamilydentist.com confirms Dr. Aroon Pal as founder/owner at 1890 Silver Cross Blvd New Lenox 60451 (PALDENTAL GROUP PC / Lifetime Family Dental). These two are a private dentist_multi group. For the DSO locations: dental360grp.com/locations/lawndale-dental-center/ and dental360usa.com confirm 3600 W Roosevelt is a Dental 360 managed location (Lawndale Dental Center) — Pal is the friendly-PC AO; and webdentalchicago.com/locations/berwyn/ confirms 7001 Ogden Ave is now Webster Dental Care of Berwyn (Webster Dental Management) while Yelp marks Berwyn Family Dental Center at same address as CLOSED.",
+  "future_app_notes": "Downstream gate should split this AO cluster: Brighton Park Dental (60632) and PALDENTAL GROUP/Lifetime Family Dental (60451) are Pal's private dentist_multi — promote both to ready_for_validation if not already corporate. Lawndale Dental PC (60624) is already entity_classification=dso_regional/Dental 360 — Pal is AO as friendly-PC holder only, not the DSO owner; do not reclassify this as dentist_multi. Berwyn Family Dental (60402) is already entity_classification=dso_national/Webster Dental Management and the consumer location is now Webster Dental Care of Berwyn; Berwyn Family Dental NPI may be a stale/closed shell — flag for stale review. The EVENLY parent_company tag on Brighton Park 60632 should already be removed per 2026-06-12 demotions audit.",
+  "classifications": [
+    {
+      "location_id": "778740224402dbd4",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Aroon Pal, DMD and Richa Pal (co-owners) — confirmed on practice website and LinkedIn",
+      "network_id": "ao:PAL_AROON",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across 4 ZIPs (AROON PAL as authorized official on org NPI 1093918708)",
+          "entity_classification=solo_established (current DB classification)",
+          "parent_company=EVENLY ORTHODONTICS DUPONT (known Evenly Technologies false-positive placeholder per 2026-06-12 demotions)"
+        ],
+        "evidence": [
+          "Brighton Park Dental website (brightonparkdental.com/about-us/) names Aroon and Richa Pal as owners at 4441 S Kedzie Ave, Chicago IL 60632",
+          "LinkedIn profile 'aroon and Richa Pal — Owner — Brighton Park Dental' at same address",
+          "Doctor profile on WebMD and Healthgrades confirms Dr. Aroon Pal DMD at 4441 S Kedzie Ave Chicago IL 60632 (ZIP 60632)"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.brightonparkdental.com/about-us/",
+        "https://www.linkedin.com/in/aroon-and-richa-pal-6ba1b96/",
+        "https://www.healthgrades.com/dentist/dr-aroon-pal-yxf9c"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "AROON PAL",
+        "reach": 4,
+        "zips": ["60402", "60451", "60624", "60632"],
+        "this_location": {
+          "name": "BRIGHTON PARK DENTAL",
+          "address": "4441 s kedzie ave",
+          "city": "CHICAGO",
+          "zip": "60632",
+          "npi": "1093918708",
+          "ein": "363163183",
+          "parent_company": "EVENLY ORTHODONTICS DUPONT",
+          "entity_classification": "solo_established"
+        }
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "The parent_company=EVENLY ORTHODONTICS DUPONT is a known Evenly Technologies false-positive placeholder per the 2026-06-12 demotions audit — not a real parent. This is Pal's owner-operated private practice.",
+      "reasoning": "Brighton Park Dental at 4441 S Kedzie Ave Chicago 60632 is confirmed as owned by Dr. Aroon Pal and Richa Pal per the practice website and LinkedIn. Aroon Pal is the authorized official on the NPPES org NPI. No MSO/PE/management company layer found; this is a privately operated dentist-owned office. The EVENLY parent_company tag is a known false-positive. Classified dentist_multi, gate_status ready_for_validation based on confirmed owner documentation."
+    },
+    {
+      "location_id": "93feb90c5548b37a",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Aroon Pal, DMD — confirmed founder/owner of Lifetime Family Dental operating as PALDENTAL GROUP, PC",
+      "network_id": "ao:PAL_AROON",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across 4 ZIPs (AROON PAL as authorized official on org NPI 1487911624)",
+          "entity_classification=solo_high_volume (current DB classification)",
+          "EIN 453653226 (PALDENTAL GROUP, PC)"
+        ],
+        "evidence": [
+          "Lifetime Family Dental website (lifetimefamilydentist.com) confirms Dr. Aroon Pal as founder/owner at 1890 Silver Cross Blvd, New Lenox IL 60451 — same address as PALDENTAL GROUP PC NPI 1487911624",
+          "NPPES shows PALDENTAL GROUP, PC at 1890 Silver Cross Blvd New Lenox 60451 with Aroon Pal as authorized official"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.lifetimefamilydentist.com/",
+        "https://npiprofile.com/npi/1487911624"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "AROON PAL",
+        "reach": 4,
+        "zips": ["60402", "60451", "60624", "60632"],
+        "this_location": {
+          "name": "PALDENTAL GROUP, PC",
+          "address": "1890 silver cross blvd",
+          "city": "NEW LENOX",
+          "zip": "60451",
+          "npi": "1487911624",
+          "ein": "453653226",
+          "parent_company": null,
+          "entity_classification": "solo_high_volume"
+        }
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "PALDENTAL GROUP, PC at 1890 Silver Cross Blvd New Lenox 60451 operates as 'Lifetime Family Dental' per the practice website, with Dr. Aroon Pal named as founder/owner. This is Pal's second confirmed private practice location. No management company or PE layer found; Pal is the licensed PC-holder and operational owner. Classified dentist_multi, gate_status ready_for_validation."
+    },
+    {
+      "location_id": "f9477a050bdd75b1",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dental 360 DSO management entity — Aroon Pal is licensed PC-holder/authorized official only, not the DSO owner",
+      "network_id": "ao:PAL_AROON",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across 4 ZIPs (AROON PAL as authorized official on org NPI 1144203605)",
+          "entity_classification=dso_regional, affiliated_dso=Dental 360 (current DB classification)"
+        ],
+        "evidence": [
+          "Dental 360 official locator (dental360grp.com/locations/lawndale-dental-center/) lists 3600 W Roosevelt Rd Chicago IL 60624 as 'Dental 360 - Lawndale Dental Center'",
+          "Dental 360 Illinois locations page (dental360usa.com/illinois-locations/) confirms this as a Dental 360 branded location",
+          "Pal's AO role is consistent with Illinois friendly-PC requirement — the legal PC entity (Lawndale Dental PC) holds the license while Dental 360's management company operates the practice"
+        ]
+      },
+      "evidence_urls": [
+        "https://dental360grp.com/locations/lawndale-dental-center/",
+        "https://dental360usa.com/illinois-locations/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "AROON PAL",
+        "reach": 4,
+        "zips": ["60402", "60451", "60624", "60632"],
+        "this_location": {
+          "name": "LAWNDALE DENTAL, P.C.",
+          "address": "3600 w roosevelt rd",
+          "city": "CHICAGO",
+          "zip": "60624",
+          "npi": "1144203605",
+          "ein": null,
+          "affiliated_dso": "Dental 360",
+          "parent_company": null,
+          "entity_classification": "dso_regional"
+        }
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "Aroon Pal's AO role on this NPI is as the licensed professional-corporation holder serving as the state-law compliance AO for Dental 360's management entity — NOT as the DSO owner/operator. This location is NOT part of Pal's private dentist_multi group. It belongs to the Dental 360 DSO network.",
+      "reasoning": "Lawndale Dental, P.C. at 3600 W Roosevelt Rd Chicago 60624 is a Dental 360 branded and operated location per the DSO's own public locator. Dental 360 is an established DSO brand with 15+ Illinois locations and its own management company. Pal appears as AO on the NPI as the Illinois-licensed dentist/PC-holder in the friendly-PC structure; the DSO management layer is Dental 360. Classified branded_dso (already correctly tagged dso_regional/Dental 360 in DB); this location does not belong to Pal's private dentist_multi network."
+    },
+    {
+      "location_id": "12975f69f58b30ee",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Webster Dental Management DSO — Aroon Pal was authorized official of prior Berwyn Family Dental entity; current operator is Webster Dental Care (Webster Dental Management)",
+      "network_id": "ao:PAL_AROON",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across 4 ZIPs (AROON PAL as authorized official on org NPI 1952505091)",
+          "entity_classification=dso_national, parent_company=WEBSTER DENTAL MANAGEMENT, affiliated_dso=WEBSTER DENTAL MANAGEMENT (current DB classification)"
+        ],
+        "evidence": [
+          "Webster Dental Care of Berwyn locator page (webdentalchicago.com/locations/berwyn/) confirms Webster Dental Care operates at 7001 Ogden Ave, Berwyn IL 60402 — same address as BERWYN FAMILY DENTAL NPI 1952505091",
+          "Yelp listing for 'Berwyn Family Dental Center' at 7001 Ogden Ave Berwyn is marked CLOSED (Yelp June 2025); same address now lists as Webster Dental Care of Berwyn",
+          "Webster Dental Care is a multi-location DSO founded 1976 by Dr. Steve Rempas, now with 12+ Chicagoland locations and its own DSO management structure"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.webdentalchicago.com/locations/berwyn/",
+        "https://www.yelp.com/biz/berwyn-family-dental-center-berwyn",
+        "https://www.yelp.com/biz/webster-dental-care-of-berwyn-berwyn"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "AROON PAL",
+        "reach": 4,
+        "zips": ["60402", "60451", "60624", "60632"],
+        "this_location": {
+          "name": "BERWYN FAMILY DENTAL",
+          "address": "7001 ogden ave",
+          "city": "BERWYN",
+          "zip": "60402",
+          "npi": "1952505091",
+          "ein": null,
+          "affiliated_dso": "WEBSTER DENTAL MANAGEMENT",
+          "parent_company": "WEBSTER DENTAL MANAGEMENT",
+          "entity_classification": "dso_national"
+        }
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "BERWYN FAMILY DENTAL NPI 1952505091 at 7001 Ogden Ave Berwyn is a stale/closed entity — the consumer-facing location is now Webster Dental Care of Berwyn per webdentalchicago.com and Yelp marks Berwyn Family Dental Center CLOSED. Pal's AO role here was as the prior licensed PC-holder or practice manager for the Webster-operated location; this entity may be a stale NPI shell. Flag for stale/closed NPI review. This location is NOT part of Pal's private dentist_multi group.",
+      "reasoning": "Berwyn Family Dental at 7001 Ogden Ave Berwyn 60402 is already correctly classified dso_national/Webster Dental Management in the DB. The consumer-facing operation is Webster Dental Care of Berwyn. Pal's AO role is as prior licensed PC-holder for the Webster-managed location; he is not the DSO owner. The Berwyn Family Dental NPI entity appears to be a closed/converted shell (Yelp: CLOSED). Classified branded_dso (Webster Dental Management DSO); this location does not belong to Pal's dentist_multi private group and the NPI may be stale."
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "network": "ANITA SHAHIN",
+  "network_id": "ao:SHAHIN_ANITA",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Dr. Anita Shahin DDS (Howard University Dental School 1997) is the individual dentist-owner of at least three Chicago GP offices operating under distinct local trade names: Andersonville Dental (1700 W Foster Ave, 60640), Armitage Denhal/Armitage Dental (4235 W Armitage Ave, 60639), and Laramie Dental (2556 N Laramie Ave, 60639). No MSO, management-company, DSO brand, PE sponsor, or external platform layer was found. The Andersonville Dental website explicitly states 'Dr. Anita Shahin is the proud owner' and she is an ADA/ISDS/CDS member in solo-practitioner standing. This is a classic dentist-owned multi-office private group.",
+  "owner_operator_identity": "Dr. Anita Shahin DDS; Howard University Dental School graduate 1997; licensed Illinois; ADA/ISDS/CDS member; explicit owner of Andersonville Dental per practice website; appears on NPPES as authorized official for all three NPIs.",
+  "brand_trade_names": [
+    "Andersonville Dental",
+    "Armitage Denhal",
+    "Laramie Dental"
+  ],
+  "legal_entities": [],
+  "durable_artifacts": [
+    "NPPES authorized_official='ANITA SHAHIN' on NPI 1811093248 (Andersonville Dental, 60640), NPI 1629173430 (Armitage Denhal, 60639), NPI 1275737207 (Laramie Dental, 60639)",
+    "andersonvilledental.com states 'Dr. Anita Shahin, proud owner of Andersonville Dental which opened in 1998'",
+    "Healthgrades lists Dr. Anita Shahin at both Andersonville Dental (1700 W Foster, 60640) and Armitage Denhal (4235 W Armitage, 60639)",
+    "Multiple physician directories (WebMD, DentalInsider, dentalplans.com) associate Dr. Shahin with Laramie Dental at 2556 N Laramie Ave, 60639",
+    "Reach spans 2 ZIPs: 60639 (2 offices) and 60640 (1 office)"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": null,
+  "evidence_chain": "AO signal: ANITA SHAHIN appears as authorized official on 3 distinct NPPES org NPIs across 2 Chicagoland ZIPs (60639 x2, 60640 x1). Documentary corroboration: andersonvilledental.com/site/chicago-dentist-60640/ explicitly names Dr. Anita Shahin as 'the proud owner' of Andersonville Dental, established 1998. Healthgrades confirms Dr. Shahin practicing at both Andersonville Dental and Armitage Denhal. Multiple directories associate Dr. Shahin with Laramie Dental at the 60639 address. No MSO, management company, DSO brand, or PE sponsor was found in any source. The evidence converges on a single dentist personally owning all three offices under distinct local trade names.",
+  "future_app_notes": "Watch for any emerging DSO/MSO affiliation — the pattern of 3 offices across 2 ZIPs under distinct trade names without a branded umbrella is consistent with a dentist quietly building a private group. If any future NPPES update shows a parent_organization or if a management-company entity appears in IL Secretary of State filings under Shahin's name, upgrade to branded_dso. The 'Armitage Denhal' name variant (vs 'Armitage Dental') may be a NPPES data-entry typo — worth flagging for the classifier. No PE or MSO found; confidence high.",
+  "classifications": [
+    {
+      "location_id": "ef4a87d4b6af32fb",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Anita Shahin DDS",
+      "network_id": "ao:SHAHIN_ANITA",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: ANITA SHAHIN is authorized official on NPI 1629173430 (org NPI, Armitage Denhal) and 2 other NPIs in the same cluster",
+          "entity_classification=solo_established (current DB label — appears under-classified given multi-office AO evidence)"
+        ],
+        "evidence": [
+          "Healthgrades lists Dr. Anita Shahin as the practitioner at Armitage Denhal, 4235 W Armitage Ave, Chicago IL 60639 (https://www.healthgrades.com/dentist/dr-anita-shahin-yhpfh)",
+          "andersonvilledental.com names Dr. Shahin as individual owner of the broader practice group, established 1998 (https://www.andersonvilledental.com/site/chicago-dentist-60640/)"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.healthgrades.com/dentist/dr-anita-shahin-yhpfh",
+        "https://www.andersonvilledental.com/site/chicago-dentist-60640/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "ANITA SHAHIN",
+        "reach": 3,
+        "zips": ["60639", "60640"],
+        "primary_npi": "1629173430",
+        "org_npi": "1629173430",
+        "location_name": "ARMITAGE DENHAL",
+        "address": "4235 w armitage ave",
+        "city": "CHICAGO",
+        "zip": "60639"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "Name variant 'ARMITAGE DENHAL' (vs 'Armitage Dental') is likely a NPPES transcription error — same address and phone confirm this is the correct location.",
+      "reasoning": "Dr. Anita Shahin appears as the authorized official on this org NPI. Her website explicitly identifies her as the individual owner of her dental practice group; Healthgrades confirms her as the listed dentist at this address. No MSO/DSO/management-company structure found. dentist_multi is the correct tier: a solo dentist personally owning multiple offices under distinct local trade names."
+    },
+    {
+      "location_id": "e3417503589aa7fd",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Anita Shahin DDS",
+      "network_id": "ao:SHAHIN_ANITA",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: ANITA SHAHIN is authorized official on NPI 1275737207 (org NPI, Laramie Dental) and 2 other NPIs in the same cluster",
+          "entity_classification=solo_established (current DB label — appears under-classified given multi-office AO evidence)"
+        ],
+        "evidence": [
+          "Multiple physician directories (WebMD, DentalInsider, dentalplans.com) associate Dr. Anita Shahin with Laramie Dental at 2556 N Laramie Ave, Chicago IL 60639",
+          "andersonvilledental.com names Dr. Shahin as individual owner; DentalInsider second-confirms Shahin at this address (https://www.dentalinsider.com/chicago/dentist/dr-anita-shahin-dds-54460)"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.dentalinsider.com/chicago/dentist/dr-anita-shahin-dds-54460",
+        "https://www.andersonvilledental.com/site/chicago-dentist-60640/",
+        "https://doctor.webmd.com/practice/laramie-dental-8118b5ea-49a8-463f-a0f1-15843dcfe914"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "ANITA SHAHIN",
+        "reach": 3,
+        "zips": ["60639", "60640"],
+        "primary_npi": "1275737207",
+        "org_npi": "1275737207",
+        "location_name": "LARAMIE DENTAL",
+        "address": "2556 n laramie",
+        "city": "CHICAGO",
+        "zip": "60639"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Dr. Anita Shahin is the authorized official on this org NPI for Laramie Dental. Multiple independent physician directories consistently associate her with this address and practice name. Her own website confirms her as the individual owner of her multi-office group. No MSO/DSO/PE structure detected. dentist_multi is correct."
+    },
+    {
+      "location_id": "2d03b66c892427bf",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Anita Shahin DDS",
+      "network_id": "ao:SHAHIN_ANITA",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: ANITA SHAHIN is authorized official on NPI 1811093248 (org NPI, Andersonville Dental) and 2 other NPIs in the same cluster",
+          "entity_classification=solo_established (current DB label — under-classified; this is the owner's flagship practice)"
+        ],
+        "evidence": [
+          "andersonvilledental.com explicitly states 'Dr. Anita Shahin is the proud owner of Andersonville Dental which opened in 1998' (https://www.andersonvilledental.com/site/chicago-dentist-60640/)",
+          "Healthgrades lists Dr. Anita Shahin practicing at Andersonville Dental, 1700 W Foster Ave, Chicago IL 60640 (https://www.healthgrades.com/dentist/dr-anita-shahin-yhpfh)",
+          "Yelp listing for Andersonville Dental at this address with 112 reviews confirms active operation as of May 2026 (https://www.yelp.com/biz/andersonville-dental-chicago)"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.andersonvilledental.com/site/chicago-dentist-60640/",
+        "https://www.healthgrades.com/dentist/dr-anita-shahin-yhpfh",
+        "https://www.yelp.com/biz/andersonville-dental-chicago"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "ANITA SHAHIN",
+        "reach": 3,
+        "zips": ["60639", "60640"],
+        "primary_npi": "1811093248",
+        "org_npi": "1811093248",
+        "location_name": "ANDERSONVILLE DENTAL",
+        "address": "1700 w foster",
+        "city": "CHICAGO",
+        "zip": "60640"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "This is the flagship location. The practice website (andersonvilledental.com) unambiguously identifies Dr. Anita Shahin as the individual owner, established 1998. Yelp shows 112 reviews and was updated May 2026 confirming active operation. ADA/ISDS/CDS membership and solo-practitioner profile preclude any MSO/DSO structure. dentist_multi is the correct tier."
+    }
+  ]
+}

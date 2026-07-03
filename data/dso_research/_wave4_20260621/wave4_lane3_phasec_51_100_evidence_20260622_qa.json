@@ -1,0 +1,141 @@
+{
+  "_meta": {
+    "role": "Fleet B self-QA",
+    "reviews": "wave4_lane3_phasec_51_100_evidence_20260622.json",
+    "band": "ranks_51_100",
+    "date_utc": "2026-06-22",
+    "status": "SELF-QA ONLY \u2014 not a substitute for the required fresh independent Gate normalization + QA pass",
+    "verdict": "INTERNALLY_CONSISTENT_PASS (advisory)"
+  },
+  "checks": [
+    {
+      "check": "row_count==50",
+      "result": true,
+      "detail": "50 rows"
+    },
+    {
+      "check": "all dispositions in the 8-protocol set",
+      "result": true,
+      "detail": {
+        "rejected": 25,
+        "hold_protected_network": 4,
+        "hold_needs_more_evidence": 16,
+        "hold_scope_specialist": 3,
+        "merge_eligible_new": 2
+      }
+    },
+    {
+      "check": "protected ranks 52/60/61/82 locked hold_protected_network",
+      "result": true,
+      "detail": "NITTINGER r52; SHAFI r60,r61,r82"
+    },
+    {
+      "check": "no protected surname released into a non-hold disposition",
+      "result": true,
+      "detail": "surname scan over practice_name/owner_identity/family_surnames vs 8 protected networks: 0 releases"
+    },
+    {
+      "check": "merge_eligible_new rows each have confirmed exact-address own-locator URL + DSO/PE structure",
+      "result": true,
+      "detail": [
+        {
+          "rank": 79,
+          "name": "Grove Dental",
+          "tier": "T5_branded_dso",
+          "pe_backed": true,
+          "pe_sponsor": "Abry Partners (via North American Dental Group acquisition, April 2019; NADG subsequently acquired by Jacobs Holding)",
+          "locator": [
+            "https://www.grovedental.com/",
+            "https://www.grovedental.com/dentist-bolingbrook",
+            "https://www.grovedental.com/about-us",
+            "https://www.grovedental.com/home-ppc"
+          ]
+        },
+        {
+          "rank": 100,
+          "name": "Advanced Family Dental",
+          "tier": "T5_branded_dso",
+          "pe_backed": true,
+          "pe_sponsor": "Shore Capital Partners (via Great Lakes Dental Partners portfolio)",
+          "locator": [
+            "https://www.advancedfamilydental.com/locations/shorewood/",
+            "https://www.greatlakesdentalpartners.com/company/locations/",
+            "https://www.greatlakesdentalpartners.com/news/2018/06/11/chicagoland-smile-group-doubles-in-size-with-advanced-family-dental-partnership/"
+          ]
+        }
+      ]
+    },
+    {
+      "check": "no overlap with ranks 1-50 (top50 worklist)",
+      "result": true,
+      "detail": "0 overlaps"
+    },
+    {
+      "check": "no overlap with the 310 ready rows",
+      "result": true,
+      "detail": "0 overlaps"
+    },
+    {
+      "check": "Affordable/ClearChoice not promoted into GP floor",
+      "result": true,
+      "detail": "0 in band; none promoted"
+    },
+    {
+      "check": "no deterministic re-mining \u2014 every ready/merge row carries a transcribed durable URL",
+      "result": true,
+      "detail": "merge rows backed by own-locator URLs transcribed in-file; holds/rejects carry search_queries + evidence_urls"
+    },
+    {
+      "check": "assembly adjustment documented (stricter-wins)",
+      "result": true,
+      "detail": "r83 Chicago Dentistry LLC/Archer Dentistry: agent merge_eligible_new -> hold_needs_more_evidence (T3 dentist-multi, no MSO/PE; mirrors r54). Agent verdict + exact-address artifact preserved for Gate."
+    },
+    {
+      "check": "no DB / manifest / ready-file / LEDGER / PROGRESS / ownership_tier / entity_classification / ownership_status writes",
+      "result": true,
+      "detail": "files-only: wrote evidence + self-QA + worklist staging + /tmp batch I/O only"
+    },
+    {
+      "check": "freeze invariant verified read-only before write",
+      "result": true,
+      "detail": {
+        "db_md5": "0dec26135bb4d6ee490dc16cfe892ca6",
+        "db_md5_match": true,
+        "ledger_lines": 1,
+        "progress_undetermined_unreviewed": 4439,
+        "ownership_tier_notnull_practice_locations": 0,
+        "ownership_tier_notnull_practices": 0,
+        "verified_read_only_before_write": true
+      }
+    }
+  ],
+  "known_limitations": [
+    "r55 DentalWorks Skokie held: confirmed Sonrava/DSO brand but DB 9215 Skokie Blvd vs locator 9312 Skokie Blvd \u2014 exact-address NOT confirmed, correctly NOT promoted (hold_needs_more_evidence).",
+    "r79 Grove Dental and r100 Advanced Family Dental: PE-backing (NADG/Abry; GLDP/Shore Capital) corroborated partly via deal databases (PitchBook/MergerLinks) and the platform locator; the FLOOR-RELEVANT proof is the own-locator exact-address match, which is present and transcribed. Deal-DB links are context, not the address artifact.",
+    "r62 Loyola Oral Health Center classed T6_institutional and bucketed hold_scope_specialist (no dedicated institutional disposition exists in the 8) \u2014 Gate may prefer a distinct institutional label; either way it is scoped OUT of the GP floor.",
+    "r83 downgraded to hold pending Gate policy on whether single-LLC dentist-owned multi-site groups (T3) count toward the corporate floor.",
+    "This is Fleet B self-review only; acceptance requires the AUTH-mandated fresh independent QA + Gate normalization."
+  ],
+  "summary": {
+    "final_disposition_counts": {
+      "rejected": 25,
+      "hold_protected_network": 4,
+      "hold_needs_more_evidence": 16,
+      "hold_scope_specialist": 3,
+      "merge_eligible_new": 2
+    },
+    "net_new_floor_candidates(merge_eligible_new)": [
+      {
+        "rank": 79,
+        "name": "Grove Dental",
+        "platform": "Abry Partners (via North American Dental Group acquisition, April 2019; NADG subsequently acquired by Jacobs Holding)"
+      },
+      {
+        "rank": 100,
+        "name": "Advanced Family Dental",
+        "platform": "Shore Capital Partners (via Great Lakes Dental Partners portfolio)"
+      }
+    ],
+    "all_checks_pass": true
+  }
+}

@@ -1,0 +1,185 @@
+{
+  "network": "KHALIL TAKLA",
+  "network_id": "ao:TAKLA_KHALIL",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Dr. Khalil (Kyle) Takla DDS, President of Bright Dental Care PC, owns and operates a private multi-office dental group across 4 watched Chicagoland ZIPs. The corporate legal entity is Bright Dental Care PC, doing business as Smile Dental Care, Orland Dental Care, and Khalil Takla DDS & Associates PC. No MSO, management company, or PE sponsor has been identified. The Lombard location (837 Westmore-Meyers Rd, Smile Dental Care / Bright Dental Care) is reported closed on Yelp. This is a dentist-owned private multi-office group with no DSO/MSO platform layer.",
+  "owner_operator_identity": "Dr. Khalil (Kyle) Takla DDS, President of Bright Dental Care PC; Loyola University School of Dentistry 1999",
+  "brand_trade_names": [
+    "Bright Dental Care",
+    "Smile Dental Care",
+    "Orland Dental Care",
+    "Khalil Takla DDS & Associates PC",
+    "Brown Archer Dental PC"
+  ],
+  "legal_entities": [
+    "Bright Dental Care PC (dba Smile Dental Care, Orland Dental Care)",
+    "Khalil Takla DDS & Associates PC",
+    "Brown Archer Dental PC"
+  ],
+  "durable_artifacts": [
+    "AO reach=4 across ZIPs 60148, 60462, 60632, 60638 — KHALIL TAKLA on all 4 NPPES org NPIs",
+    "BBB profile: Orland Dental Care, principal Dr. Khalil (Kyle) Takla DDS President; alternate legal name Khalil Takla DDS & Associates PC",
+    "Cook County court record: Bright Dental Care PC dba Smile Dental Care, Orland Dental Care, and Dr. Khalil Takla — named defendant",
+    "Vitals/WebMD/DentalPlans: Dr. Khalil Takla listed at Orland Park, Lombard, Chicago 60632, Chicago 60638 addresses matching all 4 cluster locations",
+    "Yelp: Smile Dental Care at 837 Westmore-Meyers Rd Lombard IL — reported CLOSED"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "Lombard location (location_id 73704d8b6eeeac1b, Bright Dental Care, 837 Westmore-Meyers Rd 60148) reported CLOSED on Yelp as of June 2025. Verify before counting in active corporate floor. The 60638 location (7011 W Archer Ave) shares the same phone as 60632 (4893 S Archer Ave, (773) 788-9090) — may be a second/satellite Archer Ave office under Brown Archer Dental PC or could be a stale/relocated listing; same-phone warrants duplicate check.",
+  "evidence_chain": "AO signal: KHALIL TAKLA is the authorized official on 4 NPPES org NPIs across ZIPs 60148/60462/60632/60638. Documentary corroboration: (1) BBB profile for Orland Dental Care lists Dr. Khalil (Kyle) Takla DDS as President with alternate legal name Khalil Takla DDS & Associates PC (https://www.bbb.org/us/il/orland-park/profile/dentist/orland-dental-care-0654-88021874); (2) Cook County court record names Bright Dental Care PC dba Smile Dental Care, Orland Dental Care, and Dr. Khalil Takla as defendant — confirming the multi-location PC structure (https://cookcountyrecord.com/stories/511779507-dentist-claims-bright-dental-care-classified-him-as-independent-contractor-shorted-him-pay); (3) provider directories (Vitals, WebMD, DentalPlans, ZocDoc) confirm Dr. Khalil Takla practices at all 4 addresses. No MSO, management company, PE sponsor, or DSO platform layer found anywhere.",
+  "future_app_notes": "1. Lombard 60148 (Bright Dental Care / Smile Dental Care) — Yelp says CLOSED; verify before including in active corporate floor. 2. The two Archer Ave Chicago locations (60632 at 4893 S Archer Ave and 60638 at 7011 W Archer Ave) share phone (773) 788-9090 — check if one is a duplicate/satellite or if they are genuinely separate offices. 3. No PE/MSO evidence found; if PE or management services agreement surfaces in the future, upgrade to stealth_dso. 4. Orland Park (60462, Khalil Takla DDS & Associates PC) is the flagship with a year_established=2005 and large_group classification — likely the hub of the network.",
+  "classifications": [
+    {
+      "location_id": "73704d8b6eeeac1b",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Khalil (Kyle) Takla DDS, President of Bright Dental Care PC",
+      "network_id": "ao:TAKLA_KHALIL",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across 4 ZIPs; KHALIL TAKLA is AO on NPI 1801068457 (org NPI) at 837 Westmore-Meyers Rd Lombard 60148",
+          "entity_classification=solo_established in current DB"
+        ],
+        "evidence": [
+          "Bright Dental Care PC dba Smile Dental Care named in Cook County court complaint — Khalil Takla is president/defendant (cookcountyrecord.com / legalnewsline.com)",
+          "Yelp lists Smile Dental Care at 837 S Westmore-Meyers Rd Lombard as CLOSED",
+          "Provider directories (Vitals, WebMD, DentalPlans) confirm Dr. Khalil Takla practiced at this Lombard address"
+        ]
+      },
+      "evidence_urls": [
+        "https://cookcountyrecord.com/stories/511779507-dentist-claims-bright-dental-care-classified-him-as-independent-contractor-shorted-him-pay",
+        "https://www.bbb.org/us/il/orland-park/profile/dentist/orland-dental-care-0654-88021874",
+        "https://www.yelp.com/biz/smile-dental-care-lombard-4"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "KHALIL TAKLA",
+        "reach": 4,
+        "zips": ["60148", "60462", "60632", "60638"],
+        "location_npi": "1801068457",
+        "location_name": "BRIGHT DENTAL CARE",
+        "address": "837 westmore meyers rd, LOMBARD 60148"
+      },
+      "web_searched": true,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "stale_closed_note": "Yelp reports Smile Dental Care at 837 S Westmore-Meyers Rd Lombard as CLOSED (as of June 2025). This location should be verified for active status before inclusion in the active corporate floor. May be a vacated shell.",
+      "reasoning": "KHALIL TAKLA is the AO on this Lombard NPI. Documentary evidence confirms Bright Dental Care PC (dba Smile Dental Care) is Dr. Khalil Takla's entity, making this dentist_multi. However, Yelp reports this location CLOSED, so gate_status stays candidate pending active-status verification. No MSO/PE evidence found."
+    },
+    {
+      "location_id": "905560816bb84bdb",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Khalil (Kyle) Takla DDS, President of Bright Dental Care PC",
+      "network_id": "ao:TAKLA_KHALIL",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across 4 ZIPs; KHALIL TAKLA is AO on NPI 1669643342 (org NPI) at 14360 S La Grange Rd Orland Park 60462",
+          "entity_classification=large_group; year_established=2005; NPPES name = KHALIL TAKLA DDS & ASSOCIATES PC"
+        ],
+        "evidence": [
+          "BBB profile: Orland Dental Care at 14360 LaGrange Rd Orland Park — principal Dr. Khalil (Kyle) Takla DDS, President; alternate legal name Khalil Takla DDS & Associates PC (bbb.org)",
+          "orlanddentalcare.com official website lists Dr. Kyle Takla as dentist at this address",
+          "Cook County court record: Bright Dental Care PC dba Orland Dental Care — Khalil Takla defendant/president",
+          "ZocDoc, DentalPlans, Vitals, WebMD all confirm Dr. Khalil Takla at 14360 S La Grange Rd, Orland Park IL 60462"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.bbb.org/us/il/orland-park/profile/dentist/orland-dental-care-0654-88021874",
+        "https://www.orlanddentalcare.com/",
+        "https://cookcountyrecord.com/stories/511779507-dentist-claims-bright-dental-care-classified-him-as-independent-contractor-shorted-him-pay",
+        "https://www.zocdoc.com/dentist/khalil-takla-dds-64890",
+        "https://doctor.webmd.com/doctor/khalil-takla-f0c28484-7e51-4e14-bffe-dc009613724f-overview"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "KHALIL TAKLA",
+        "reach": 4,
+        "zips": ["60148", "60462", "60632", "60638"],
+        "location_npi": "1669643342",
+        "location_name": "KHALIL TAKLA DDS & ASSOCIATES PC",
+        "address": "14360 s la grange rd, ORLAND PARK 60462"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "This is the flagship location. BBB confirms Dr. Khalil (Kyle) Takla DDS as President with Orland Dental Care / Khalil Takla DDS & Associates PC as business names. The orlanddentalcare.com website exists and names Kyle Takla as the dentist. The Cook County court complaint directly names Bright Dental Care PC dba Orland Dental Care with Takla as defendant. Multiple provider directories confirm his presence at this address. No MSO/PE layer found — this is a private dentist-owned group. All corroboration bars met for ready_for_validation as dentist_multi."
+    },
+    {
+      "location_id": "ae0468bb76425429",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Khalil (Kyle) Takla DDS, President of Bright Dental Care PC",
+      "network_id": "ao:TAKLA_KHALIL",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across 4 ZIPs; KHALIL TAKLA is AO on NPI 1982121042 (org NPI) at 4893 S Archer Ave Chicago 60632",
+          "entity_classification=solo_established; NPPES name = BROWN ARCHER DENTAL PC"
+        ],
+        "evidence": [
+          "Cook County court record: Bright Dental Care PC dba Smile Dental Care / Orland Dental Care — Khalil Takla president/defendant; Bright Dental Care is the umbrella PC for the Archer Ave offices",
+          "Provider directories (Vitals, WebMD, DentalPlans, ZocDoc) list Dr. Khalil Takla at 4893/4889 S Archer Ave Chicago 60632",
+          "BBB profile for Orland Dental Care cites affiliated Smile Dental Care locations in Chicago, linking the Archer Ave offices to Takla"
+        ]
+      },
+      "evidence_urls": [
+        "https://cookcountyrecord.com/stories/511779507-dentist-claims-bright-dental-care-classified-him-as-independent-contractor-shorted-him-pay",
+        "https://www.bbb.org/us/il/orland-park/profile/dentist/orland-dental-care-0654-88021874",
+        "https://doctor.webmd.com/doctor/khalil-kyle-takla-fcf95369-4deb-49ca-9c5f-38c22c59551c-overview",
+        "https://www.zocdoc.com/dentist/khalil-takla-dds-632643"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "KHALIL TAKLA",
+        "reach": 4,
+        "zips": ["60148", "60462", "60632", "60638"],
+        "location_npi": "1982121042",
+        "location_name": "BROWN ARCHER DENTAL PC",
+        "address": "4893 s archer ave, CHICAGO 60632"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Brown Archer Dental PC at 4893 S Archer Ave Chicago 60632 is a PC registered under KHALIL TAKLA as AO. Provider directories confirm Dr. Khalil Takla at this Chicago address. BBB references Smile Dental Care locations in Chicago as affiliated with Dr. Takla/Orland Dental Care. The Cook County court record establishes Bright Dental Care PC as the umbrella entity. The NPPES entity name 'Brown Archer Dental PC' is a local trade name for a Takla-owned office (Archer Ave address). No MSO/PE found — dentist_multi, ready_for_validation."
+    },
+    {
+      "location_id": "b75d0372b61e450a",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Khalil (Kyle) Takla DDS, President of Bright Dental Care PC",
+      "network_id": "ao:TAKLA_KHALIL",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=4 across 4 ZIPs; KHALIL TAKLA is AO on NPI 1750686820 (org NPI) at 7011 W Archer Ave Chicago 60638",
+          "entity_classification=solo_established; NPPES name = 7011 W ARCHER AVE (bare address used as org name)",
+          "Shares phone (773) 788-9090 with 60632 location (4893 S Archer Ave) — possible duplicate/satellite concern"
+        ],
+        "evidence": [
+          "Provider directories (DentalPlans, DentalPlans.com Chicago 60638 listing) confirm Dr. Khalil Takla at this 60638 Chicago address",
+          "BBB profile references affiliated Smile Dental Care/Takla network in Chicago",
+          "AO identity (KHALIL TAKLA) and shared phone with 60632 location tie this to the same Takla network"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.dentalplans.com/dentists/illinois/chicago/60638/dr-khalil-takla-59629/",
+        "https://www.bbb.org/us/il/orland-park/profile/dentist/orland-dental-care-0654-88021874",
+        "https://cookcountyrecord.com/stories/511779507-dentist-claims-bright-dental-care-classified-him-as-independent-contractor-shorted-him-pay"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "KHALIL TAKLA",
+        "reach": 4,
+        "zips": ["60148", "60462", "60632", "60638"],
+        "location_npi": "1750686820",
+        "location_name": "7011 W ARCHER AVE",
+        "address": "7011 w archer ave, CHICAGO 60638"
+      },
+      "web_searched": true,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "stale_closed_note": "NPPES entity name is the bare address '7011 W ARCHER AVE' — unusual; may be a placeholder or stale registration. Shares phone (773) 788-9090 with the 60632 location at 4893 S Archer Ave. Validate as genuinely separate active office before counting in corporate floor; possible duplicate_location candidate.",
+      "reasoning": "AO identity (KHALIL TAKLA) and a DentalPlans listing confirm Dr. Takla at this 60638 address. Network membership is clear. However, the bare-address NPPES org name, shared phone with the 60632 location, and absence of a distinct brand name raise a possible duplicate/stale-listing concern. Tier is dentist_multi (same network), but gate_status is candidate pending physical verification that 7011 W Archer Ave is a genuinely separate operating office and not a satellite or relocated listing of the 60632 office."
+    }
+  ]
+}

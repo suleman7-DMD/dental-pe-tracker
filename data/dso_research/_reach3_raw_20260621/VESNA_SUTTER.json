@@ -1,0 +1,160 @@
+{
+  "network": "VESNA SUTTER",
+  "network_id": "ao:SUTTER_VESNA",
+  "owner_type_verdict": "unresolved",
+  "network_summary": "Dr. Vesna Sutter DDS (Loyola University School of Dentistry, 1986; 35+ years experience) is the NPPES Authorized Official / President across three Chicagoland GP locations under two trade names: Hope Dental P.C. (Westchester ZIP 60154 and Aurora ZIP 60506) and North Ave. Dental Partners P.C. (Chicago ZIP 60707). The North Ave. location shares the same phone number (773) 745-8300 as Tru Family Dental Elmwood Park (7728 W North Ave), a DSO chain that was acquired by Heartland Dental (KKR-backed) in December 2020 — and provider directories list Dr. Sutter as practicing at Tru Family Dental. This strongly suggests the North Ave. Dental Partners P.C. NPI maps to what is now a Heartland Dental supported office (branded_dso, pe_backed=true). The two Hope Dental P.C. locations appear to be a separate multi-office group under the same AO; the Westchester address (10215 W Roosevelt Rd) is now operated as Westchester Family Dental Care by a different dentist (Dr. Kevin Wallace), suggesting Hope Dental P.C. may have departed or rebranded. Network verdict is unresolved because the locations split across two structural scenarios (Heartland DSO vs. personal dentist-multi group) and no single documentary source ties all three under one current legal entity.",
+  "owner_operator_identity": "Dr. Vesna S. Sutter DDS, President/dentist; Loyola University School of Dentistry 1986; 35+ years experience; speaks Serbian; continuing education in orthodontics, TMJ, cosmetic dentistry, sleep disorder dentistry.",
+  "brand_trade_names": [
+    "Hope Dental P.C.",
+    "North Ave. Dental Partners P.C.",
+    "Tru Family Dental"
+  ],
+  "legal_entities": [
+    "Hope Dental P.C.",
+    "North Ave. Dental Partners P.C."
+  ],
+  "durable_artifacts": [
+    "NPPES AO Vesna Sutter shared across 3 NPIs: 1417338468 (Hope Dental Westchester), 1588123079 (Hope Dental Aurora), 1942653324 (North Ave. Dental Partners Chicago)",
+    "Hope Dental P.C. EIN 363251969 on Aurora NPI 1588123079",
+    "North Ave. Dental Partners P.C. NPI 1942653324 phone (773) 745-8300 matches Tru Family Dental Elmwood Park at 7728 W North Ave",
+    "Hope Dental Westchester NPI 1417338468 mailing address: 26 Wychwood Ln, South Barrington IL 60010",
+    "Tru Family Dental acquired by Heartland Dental (KKR) December 21, 2020 — 23 offices including Illinois"
+  ],
+  "mso_platform_pe_evidence": "Tru Family Dental (the brand now at the same phone/address corridor as North Ave. Dental Partners P.C.) was acquired by Heartland Dental on December 21, 2020. Heartland Dental is majority owned by KKR, a global private equity firm. Sources: https://blog.heartland.com/heartland-dental-grows-national-network-of-supported-offices-with-acquisition-of-tru-family-dental and https://www.groupdentistrynow.com/dso-group-blog/tru-family-dentals-23-offices-join-heartland-dental/",
+  "stale_closed_false_positive_notes": "The Westchester Hope Dental P.C. address (10215 W Roosevelt Rd) now hosts Westchester Family Dental Care under Dr. Kevin Wallace — Dr. Sutter may no longer be associated with this location; the NPI may be stale/relocated. The North Ave. Dental Partners P.C. NPI (7020 W N Ave) and Tru Family Dental Elmwood Park (7728 W N Ave) are on the same corridor with the same phone — these may be the same practice at a slightly different street number, or a relocation; the NPPES NPI at 7020 may be stale if the practice moved to 7728.",
+  "evidence_chain": "AO signal: Vesna Sutter appears as authorized official on NPIs 1417338468, 1588123079, and 1942653324 across ZIPs 60154, 60506, and 60707 (ao_reach=3). Documentary corroboration: (1) NPI profile confirms Dr. Sutter as President/dentist of North Ave. Dental Partners P.C. (NPI 1942653324). (2) Multiple provider directories (Healthgrades, WebMD, VitaDox, Medical News Today) confirm Dr. Sutter as the dentist at Tru Family Dental Elmwood Park, 7728 W North Ave, with phone (773) 745-8300 — the same phone as the NPI at 7020 W N Ave. (3) Tru Family Dental was acquired by Heartland Dental (KKR-PE-backed) December 2020, documented by press releases and dental trade coverage. (4) Hope Dental P.C. Westchester address now hosts Westchester Family Dental Care (Dr. Kevin Wallace) suggesting a possible departure by Sutter or rebrand. Corroboration gap: no documentary source explicitly ties the Hope Dental P.C. locations to Tru Family Dental / Heartland — the connection is circumstantial via shared AO identity only for those two locations.",
+  "future_app_notes": "Priority validation: (1) Confirm whether North Ave. Dental Partners P.C. NPI 1942653324 (7020 W N Ave) is the same physical office as Tru Family Dental Elmwood Park (7728 W N Ave) — a street visit or Google Maps check would resolve this. If confirmed same office, reclassify location_id 1a478dc49e0d3c7f as branded_dso / Heartland / pe_backed=true. (2) Check whether Hope Dental P.C. locations (Westchester + Aurora) are also now Tru Family Dental / Heartland supported offices or remain independent under a different dentist. (3) The mailing address for NPI 1417338468 (26 Wychwood Ln, South Barrington IL 60010) may be Dr. Sutter's personal address — useful for owner identity confirmation. (4) Check Illinois IDFPR for Hope Dental P.C. (EIN 363251969) filings to confirm corporate structure.",
+  "classifications": [
+    {
+      "location_id": "639be6bb4a731c53",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": null,
+      "owner_identity": "Dr. Vesna S. Sutter DDS (NPPES Authorized Official; President/dentist per NPI 1942653324)",
+      "network_id": "ao:SUTTER_VESNA",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60154/60506/60707 — Vesna Sutter as AO on all three NPIs",
+          "Same corporate name Hope Dental P.C. across Westchester and Aurora locations"
+        ],
+        "evidence": [
+          "NPI profile confirms Dr. Sutter as President/dentist of North Ave. Dental Partners P.C. (separate location), establishing her as a dentist-owner operating multiple offices",
+          "Westchester address 10215 W Roosevelt Rd now hosts Westchester Family Dental Care (Dr. Kevin Wallace) — Hope Dental P.C. NPI may be stale/departed"
+        ]
+      },
+      "evidence_urls": [
+        "https://npiprofile.com/npi/1417338468",
+        "https://npino.com/dental-clinic/1417338468-meadows-dental-partners-pc/",
+        "https://hopedentalcare.wixsite.com/westchester"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "VESNA SUTTER",
+        "reach": 3,
+        "zips": ["60154", "60506", "60707"],
+        "npi": "1417338468",
+        "name": "HOPE DENTAL P.C.",
+        "address": "10215 w roosevelt rd",
+        "city": "WESTCHESTER",
+        "zip": "60154",
+        "phone": "(708) 344-7785",
+        "ein": null,
+        "entity_classification": "small_group",
+        "provider_count": 2
+      },
+      "web_searched": true,
+      "gate_status": "candidate",
+      "confidence": "low",
+      "stale_closed_note": "The 10215 W Roosevelt Rd Westchester address now appears to host Westchester Family Dental Care under Dr. Kevin Wallace, not Dr. Sutter. The Hope Dental P.C. NPI at this address may be stale, relocated, or sold. Needs on-the-ground verification before any classification change.",
+      "reasoning": "AO reach establishes Dr. Vesna Sutter DDS as the shared authorized official, and her confirmed multi-office dentist-owner role (President of North Ave. Dental Partners P.C.) makes dentist_multi the most plausible tier for the Hope Dental P.C. locations. However, no documentary source directly names Dr. Sutter as owner of this specific location's current operating entity, and the address now appears to host a different practice under a different dentist. Gate stays candidate — needs physical address verification and confirmation that Hope Dental P.C. is still active and Sutter-operated at this address."
+    },
+    {
+      "location_id": "3fad6182ba54feb4",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": null,
+      "owner_identity": "Dr. Vesna S. Sutter DDS (NPPES Authorized Official; President/dentist per NPI 1942653324)",
+      "network_id": "ao:SUTTER_VESNA",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60154/60506/60707 — Vesna Sutter as AO on all three NPIs",
+          "Same corporate name Hope Dental P.C. across Westchester and Aurora locations",
+          "EIN 363251969 on Aurora NPI 1588123079"
+        ],
+        "evidence": [
+          "NPI profile confirms Dr. Sutter as President/dentist of North Ave. Dental Partners P.C. (a third location), establishing her as a dentist-owner operating multiple offices",
+          "Hope Dental P.C. Aurora NPI 1588123079 confirmed active at 2418 W Indian Trl, Aurora"
+        ]
+      },
+      "evidence_urls": [
+        "https://npino.com/dental-clinic/1588123079-hope-dental-p.c./",
+        "https://npiprofile.com/npi/1942653324"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "VESNA SUTTER",
+        "reach": 3,
+        "zips": ["60154", "60506", "60707"],
+        "npi": "1588123079",
+        "name": "HOPE DENTAL P.C.",
+        "address": "2418 w indian trl",
+        "city": "AURORA",
+        "zip": "60506",
+        "phone": "(630) 907-2180",
+        "ein": "363251969",
+        "entity_classification": "small_group",
+        "provider_count": 2
+      },
+      "web_searched": true,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "stale_closed_note": null,
+      "reasoning": "AO reach and shared Hope Dental P.C. corporate name across Westchester and Aurora locations establish a two-location dentist-operated group. Dr. Sutter's confirmed role as President/dentist at a third location (North Ave. Dental Partners P.C.) corroborates her multi-office owner identity. No documentary source ties Hope Dental Aurora specifically to an MSO or DSO management layer — dentist_multi is the correct tier. Gate is candidate rather than ready_for_validation because no direct corroborating URL (group website, bio, shared filing) explicitly names Sutter as owner of this Aurora location specifically."
+    },
+    {
+      "location_id": "1a478dc49e0d3c7f",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Dr. Vesna S. Sutter DDS (President/dentist per NPI 1942653324); operating under Tru Family Dental brand (Heartland Dental supported since Dec 2020; Heartland majority-owned by KKR)",
+      "network_id": "ao:SUTTER_VESNA",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 — Vesna Sutter as AO on NPI 1942653324",
+          "NPI 1942653324 at 7020 W N Ave Chicago 60707 phone (773) 745-8300"
+        ],
+        "evidence": [
+          "NPI profile confirms Dr. Sutter as President/dentist of North Ave. Dental Partners P.C. at 7020 W N Ave (https://npiprofile.com/npi/1942653324)",
+          "Multiple provider directories (Healthgrades, WebMD, MedicalNewsToday, VitaDox) list Dr. Sutter as practicing at Tru Family Dental Elmwood Park, 7728 W North Ave, phone (773) 745-8300 — same phone as NPI 1942653324",
+          "Tru Family Dental acquired by Heartland Dental (KKR-backed PE DSO) December 21, 2020 (https://blog.heartland.com/heartland-dental-grows-national-network-of-supported-offices-with-acquisition-of-tru-family-dental)",
+          "Group Dentistry Now and Becker's Dental Review confirm 23-office Tru Family Dental acquisition by Heartland Dental"
+        ]
+      },
+      "evidence_urls": [
+        "https://npiprofile.com/npi/1942653324",
+        "https://www.healthgrades.com/dentist/dr-vesna-sutter-3d8m5",
+        "https://blog.heartland.com/heartland-dental-grows-national-network-of-supported-offices-with-acquisition-of-tru-family-dental",
+        "https://www.groupdentistrynow.com/dso-group-blog/tru-family-dentals-23-offices-join-heartland-dental/",
+        "https://www.beckersdental.com/dso-dpms/heartland-dental-acquires-tru-family-dental-s-23-practices/",
+        "https://tfdelmwoodpark.com/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "VESNA SUTTER",
+        "reach": 3,
+        "zips": ["60154", "60506", "60707"],
+        "npi": "1942653324",
+        "name": "NORTH AVE. DENTAL PARTNERS P.C.",
+        "address": "7020 w n ave",
+        "city": "CHICAGO",
+        "zip": "60707",
+        "phone": "(773) 745-8300",
+        "ein": null,
+        "entity_classification": "small_group",
+        "provider_count": 2
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "medium",
+      "stale_closed_note": "The NPPES address for NPI 1942653324 is 7020 W N Ave Chicago; Tru Family Dental Elmwood Park is at 7728 W North Ave Elmwood Park — same phone, same corridor, but slightly different street numbers and ZIP boundary (60707 covers both sides). These may be the same practice with an address update or a very nearby relocation. Validation should confirm current operating address before finalizing Heartland classification.",
+      "reasoning": "The shared phone number (773) 745-8300 between North Ave. Dental Partners P.C. (NPI 1942653324, 7020 W N Ave, Chicago) and Tru Family Dental Elmwood Park (7728 W North Ave, Elmwood Park) is a strong operational identity signal, corroborated by multiple provider directories listing Dr. Sutter at Tru Family Dental. Tru Family Dental is documented as a Heartland Dental-supported brand (acquired December 2020, KKR-backed PE). This makes this location a branded_dso (Heartland/Tru Family) with pe_backed=true. The NPPES AO name (North Ave. Dental Partners P.C.) is likely the legal entity that predates the Tru Family Dental brand association or MSA. Gate is ready_for_validation rather than confirmed because the slight address discrepancy (7020 vs 7728) warrants a physical verification before a hard DB promotion."
+    }
+  ]
+}

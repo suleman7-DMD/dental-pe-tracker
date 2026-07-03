@@ -1,0 +1,115 @@
+{
+  "network": "HARRY VARVARESSOS",
+  "network_id": "ao:VARVARESSOS_HARRY",
+  "owner_type_verdict": "dso_brand",
+  "network_summary": "Family Dental Care PC is an 8-location privately owned dental group founded in 1986 by Dr. Alexander G. Alemis, serving the Chicago Southland and NW Indiana. Harry Varvaressos is the Executive Director (non-dentist administrator) of the Calumet City and Evergreen Park locations — he is an AO for administrative/operational purposes, not the owner. The owner-operator is Dr. Alemis. The group operates under a management company layer (Upstat Dental Solutions LTD), which is the MSO/management-services entity. No PE backing found; explicitly self-describes as 'the largest, privately owned dental group in Chicago.'",
+  "owner_operator_identity": "Dr. Alexander G. Alemis DDS FAGD, founder and CEO of Family Dental Care PC since 1986; Harry Varvaressos is Executive Director (administrator), not the owner.",
+  "brand_trade_names": [
+    "Family Dental Care",
+    "Family Dental Care PC",
+    "Family Dental Care of Calumet City",
+    "Family Dental Care of Evergreen Park"
+  ],
+  "legal_entities": [
+    "Family Dental Care PC (EIN 363554595, 363170189, 300108441 across locations)",
+    "Upstat Dental Solutions LTD (management company / MSO, 3009 E 92nd St, Chicago IL — PPP loan recipient)"
+  ],
+  "durable_artifacts": [
+    "EIN 363554595 shared across Evergreen Park (NPI 1083824643) and East Side Chicago (NPI 1902016520) locations",
+    "EIN 300108441 on Calumet City (NPI 1427268051)",
+    "EIN 363170189 on flagship South Chicago (NPI 1578772299, AO=Alex Alemis Owner)",
+    "Harry Varvaressos listed as 'Executive Director' (NPPES authorized official) on both watched-IL GP locations",
+    "Upstat Dental Solutions LTD confirmed as management/MSO entity at 3009 E 92nd St, Chicago (SBA PPP record)",
+    "Family Dental Care website (familydentalcare.com) shows 8 locations including exact addresses for Calumet City and Evergreen Park"
+  ],
+  "mso_platform_pe_evidence": "Upstat Dental Solutions LTD is the management company (MSO layer) that operates the Family Dental Care Group according to familydentalcare.com/alexander-alemis/ and search results. SBA PPP record at federalpay.org/paycheck-protection-program/upstat-dental-solutions-ltd-chicago-il confirms the entity. Family Dental Care explicitly self-describes as 'the largest, privately owned dental group in Chicago' — no PE sponsor found. pe_backed=false.",
+  "stale_closed_false_positive_notes": "Harry Varvaressos is an Executive Director / administrator, not the owner of this network. His AO reach (Calumet City + Evergreen Park) is an administrative cluster signal, not an ownership signal. The true owner is Dr. Alexander Alemis. The network is a real branded DSO (Family Dental Care, 8 locations, MSO layer) — classification should be branded_dso, not dentist_multi.",
+  "evidence_chain": "AO signal: HARRY VARVARESSOS listed as 'EX DIRECTOR' / 'EXEC DIRECTOR' on NPPES for NPI 1427268051 (Calumet City, ZIP 60409) and NPI 1083824643 (Evergreen Park, ZIP 60805). Documentary corroboration: (1) familydentalcare.com lists both addresses as active Family Dental Care locations in an 8-location network; (2) familydentalcare.com/alexander-alemis/ identifies Dr. Alex Alemis as founder/CEO and names Upstat Dental Solutions as the management company; (3) SBA PPP record confirms Upstat Dental Solutions LTD as a legal entity at 3009 E 92nd St Chicago; (4) NPPES records show Dr. Alex Alemis listed as 'OWNER' on the flagship 3009 E 92nd St NPI (1578772299), same network. No PE sponsor found; self-described as privately owned.",
+  "future_app_notes": "1. Two other Family Dental Care locations (South Chicago 60617, East Side Chicago 60617) are in watched ZIPs but may not be in this AO cluster — the AO cluster captured only Varvaressos's two ZIPs. Confirm whether those locations are classified corporate. 2. Upstat Dental Solutions LTD should be logged as the MSO entity for this network. 3. EIN 363554595 is shared across East Side and Evergreen Park — worth checking if any other locations share this EIN. 4. Harry Varvaressos also appears on East Side Chicago NPI 1902016520 (slightly different spelling 'VARVARESSO') — this may be a third location tied to him administratively.",
+  "classifications": [
+    {
+      "location_id": "77b28a39cb951124",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dr. Alexander G. Alemis DDS (founder/CEO, Family Dental Care PC); Harry Varvaressos is Executive Director (administrator)",
+      "network_id": "ao:VARVARESSOS_HARRY",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2 across ZIPs 60409 and 60805",
+          "authorized_official HARRY VARVARESSOS titled 'EX DIRECTOR' on NPPES NPI 1427268051",
+          "entity_classification=dso_regional in pipeline DB",
+          "affiliated_dso='Family Dental Care' in pipeline DB",
+          "EIN 300108441"
+        ],
+        "evidence": [
+          "familydentalcare.com/calumet-city-office/ confirms 313 E. River Oaks Dr, Calumet City IL 60409 as an active Family Dental Care location",
+          "familydentalcare.com confirms Family Dental Care PC is an 8-location network founded 1986 by Dr. Alexander G. Alemis",
+          "familydentalcare.com/alexander-alemis/ names Upstat Dental Solutions as the management company (MSO layer)",
+          "SBA PPP record confirms Upstat Dental Solutions LTD as a legal entity (federalpay.org)"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.familydentalcare.com/calumet-city-office/",
+        "https://www.familydentalcare.com/our-locations/",
+        "https://www.familydentalcare.com/alexander-alemis/",
+        "https://www.federalpay.org/paycheck-protection-program/upstat-dental-solutions-ltd-chicago-il"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "HARRY VARVARESSOS",
+        "title": "EX DIRECTOR",
+        "reach": 2,
+        "zips": ["60409", "60805"],
+        "npi": "1427268051",
+        "ein": "300108441"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Family Dental Care of Calumet City (313 River Oaks Dr, Calumet City IL 60409) is confirmed as one of 8 active locations in the Family Dental Care PC network, founded and owned by Dr. Alexander G. Alemis with Upstat Dental Solutions LTD as the management-services entity. Harry Varvaressos is the Executive Director (administrator), not the owner. The presence of a named MSO/management company (Upstat Dental Solutions) operating an 8-location branded dental group meets the branded_dso threshold. pe_backed=false: the network explicitly self-describes as 'the largest, privately owned dental group in Chicago' and no PE sponsor is found in any source."
+    },
+    {
+      "location_id": "3aebe48ff7c42bdf",
+      "candidate_tier": "branded_dso",
+      "pe_backed": false,
+      "owner_identity": "Dr. Alexander G. Alemis DDS (founder/CEO, Family Dental Care PC); Harry Varvaressos is Executive Director (administrator)",
+      "network_id": "ao:VARVARESSOS_HARRY",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2 across ZIPs 60409 and 60805",
+          "authorized_official HARRY VARVARESSOS titled 'EXEC DIRECTOR' on NPPES NPI 1083824643",
+          "entity_classification=dso_regional in pipeline DB",
+          "year_established=1986",
+          "EIN 363554595 (also on East Side Chicago NPI 1902016520)"
+        ],
+        "evidence": [
+          "familydentalcare.com/evergreen-park-office/ confirms 2803 West 95th St, Evergreen Park IL 60805 as an active Family Dental Care location",
+          "familydentalcare.com confirms Family Dental Care PC is an 8-location network founded 1986 by Dr. Alexander G. Alemis",
+          "familydentalcare.com/alexander-alemis/ names Upstat Dental Solutions as the management company (MSO layer)",
+          "EIN 363554595 shared with East Side Chicago Family Dental Care NPI (1902016520), further confirming same legal entity"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.familydentalcare.com/evergreen-park-office/",
+        "https://www.familydentalcare.com/our-locations/",
+        "https://www.familydentalcare.com/alexander-alemis/",
+        "https://www.federalpay.org/paycheck-protection-program/upstat-dental-solutions-ltd-chicago-il"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "HARRY VARVARESSOS",
+        "title": "EXEC DIRECTOR",
+        "reach": 2,
+        "zips": ["60409", "60805"],
+        "npi": "1083824643",
+        "ein": "363554595"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Family Dental Care of Evergreen Park (2803 W 95th St, Evergreen Park IL 60805) is confirmed as one of 8 active locations in the Family Dental Care PC network, founded and owned by Dr. Alexander G. Alemis with Upstat Dental Solutions LTD as the management-services entity. EIN 363554595 is shared with the East Side Chicago Family Dental Care location, further confirming same legal entity. Harry Varvaressos is the Executive Director (administrator), not the owner. branded_dso classification is warranted due to the named brand across 8 locations and documented MSO/management company layer. pe_backed=false: privately owned, no PE sponsor found."
+    }
+  ]
+}

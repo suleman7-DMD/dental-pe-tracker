@@ -1,0 +1,4041 @@
+{
+ "_doc": "Adversarial QA reconciliation of the IL-GP denominator duplicate conflict (48 exact-audit vs 87/79 pressure-test). READ-ONLY, NO DB writes. Unit = physical door = building x distinct phone; phone-subgrouping lets a dup PAIR collapse while a co-tenant on a different phone is KEPT.",
+ "author_role": "independent QA / validation-gate session (New session #1)",
+ "constraints_honored": [
+  "no DB writes",
+  "no LEDGER/PROGRESS mutation",
+  "no entity_classification change",
+  "IL only / Boston parked"
+ ],
+ "inputs": {
+  "audit_48": "data/dso_research/denominator_audit_20260620.json",
+  "pressure_87": "data/dso_research/il_denominator_pressure_test_20260620.json",
+  "reconciliation_48": "data/dso_research/denominator_reconciliation_20260621.json"
+ },
+ "il_gp_denominator": 4439,
+ "method": "union-find buildings across all 3 source cluster lists; within each building sub-group rows by door key (phone>owner-NPI>EIN>surname); excess=rows-distinct_doors; same phone across different house numbers is NOT collapsed (multi-office group kept).",
+ "verdict_legend": {
+  "collapse_safe": "all rows share one door (phone/owner) at one house number -> single physical GP location; collapse corrects the overcount.",
+  "collapse_partial": "multitenant building containing a genuine dup subgroup; collapse ONLY that subgroup, KEEP the other distinct-phone doors.",
+  "keep_multitenant": "distinct doors, no dup subgroup -> separate practices in one building; collapsing would ERASE a real independent. DO NOT collapse.",
+  "verify": "same phone spans different house numbers (possible multi-office dentist_multi group) -> confirm before any collapse; counted as 0 excess here."
+ },
+ "summary": {
+  "total_building_components": 73,
+  "verdict_counts": {
+   "collapse_safe": 67,
+   "collapse_partial": 6
+  },
+  "defensible_excess_rows": 75,
+  "denominator_after_defensible_collapse": 4364,
+  "max_pct_denominator_impact": 1.69,
+  "note": "defensible_excess counts ONLY collapse_safe + collapse_partial dup-subgroups confirmed by shared door identity. 'verify' rows excluded from the excess until confirmed."
+ },
+ "reconciliation_of_48_vs_87": "The 48 audit clusters require shared PHONE+streetcore (strict, all 2-row). The pressure-test 87-excess/79-cluster set loosens to address+phone-OR-EIN and adds 3-row buildings, but its own conclusion already KEEPS 103 multitenant clusters. Re-deriving from DB door identity, the defensible collapse is 75 rows (~1.69%): MOST of the audit's 48 are confirmed, a handful of 3-row pressure-test buildings are multitenant (collapse only the dup subgroup), and same-phone/different-building pairs are held as possible multi-office groups. Neither raw 48 nor raw 87 is correct as a blind collapse.",
+ "clusters": [
+  {
+   "location_ids": [
+    "319370c0f6eef2b2",
+    "444a7e5aef77b98d",
+    "e8c7b23877da7231"
+   ],
+   "sources": [
+    "audit",
+    "pressure",
+    "recon"
+   ],
+   "names": [
+    "Balan Dental",
+    "MY FAMILY DENTAL CARE, P.C.",
+    "SIMONA BALAN DDS PC"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null,
+    null
+   ],
+   "phones": [
+    "(224) 534-7123",
+    "(847) 663-1196"
+   ],
+   "distinct_phones": 2,
+   "surnames": [
+    "BALAN",
+    "MY",
+    "SIMONA"
+   ],
+   "house_numbers": [
+    "6223"
+   ],
+   "n_physical_doors": 2,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(847) 663-1196"
+     ],
+     "location_ids": [
+      "319370c0f6eef2b2",
+      "e8c7b23877da7231"
+     ]
+    },
+    {
+     "door_key": [
+      "phone",
+      "(224) 534-7123"
+     ],
+     "location_ids": [
+      "444a7e5aef77b98d"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_partial",
+   "verdict_basis": "multitenant_building_collapse_dup_subgroup_keep_other_doors",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "c70779c0455ae78d",
+    "ecf1040e677465de",
+    "ef8e3f1324ee786c"
+   ],
+   "sources": [
+    "audit",
+    "pressure",
+    "recon"
+   ],
+   "names": [
+    "Brown Dental",
+    "Novak Dental",
+    "Hinsdale Dental"
+   ],
+   "classes": [
+    "solo_established",
+    "small_group",
+    "small_group"
+   ],
+   "ownership_tier": [
+    null,
+    null,
+    null
+   ],
+   "phones": [
+    "(630) 323-5200",
+    "(636) 323-5200"
+   ],
+   "distinct_phones": 2,
+   "surnames": [
+    "BROWN",
+    "HINSDALE",
+    "NOVAK"
+   ],
+   "house_numbers": [
+    "101"
+   ],
+   "n_physical_doors": 2,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(630) 323-5200"
+     ],
+     "location_ids": [
+      "c70779c0455ae78d",
+      "ecf1040e677465de"
+     ]
+    },
+    {
+     "door_key": [
+      "phone",
+      "(636) 323-5200"
+     ],
+     "location_ids": [
+      "ef8e3f1324ee786c"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_partial",
+   "verdict_basis": "multitenant_building_collapse_dup_subgroup_keep_other_doors",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "dd291f40c15cf483",
+    "e42b3a751f478073",
+    "febfbd0947c16124"
+   ],
+   "sources": [
+    "audit",
+    "pressure",
+    "recon"
+   ],
+   "names": [
+    "MAGNIFICENT MILE FAMILY DENTAL",
+    "Goodman Dental",
+    "Chen, Gloria C DDS"
+   ],
+   "classes": [
+    "small_group",
+    "solo_established",
+    "solo_high_volume"
+   ],
+   "ownership_tier": [
+    null,
+    null,
+    null
+   ],
+   "phones": [
+    "(312) 280-0034",
+    "(312) 587-0200"
+   ],
+   "distinct_phones": 2,
+   "surnames": [
+    "CHEN",
+    "GOODMAN",
+    "MAGNIFICENT"
+   ],
+   "house_numbers": [
+    "233"
+   ],
+   "n_physical_doors": 2,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(312) 587-0200"
+     ],
+     "location_ids": [
+      "dd291f40c15cf483"
+     ]
+    },
+    {
+     "door_key": [
+      "phone",
+      "(312) 280-0034"
+     ],
+     "location_ids": [
+      "e42b3a751f478073",
+      "febfbd0947c16124"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_partial",
+   "verdict_basis": "multitenant_building_collapse_dup_subgroup_keep_other_doors",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "a9866b66967e31ee",
+    "ba858690c8a54e29",
+    "e32ed1606301b785"
+   ],
+   "sources": [
+    "audit",
+    "pressure",
+    "recon"
+   ],
+   "names": [
+    "RADKHAN LELAND DENTAL, INC.",
+    "Renieris Irene",
+    "THE DENTAL MASTRS OF RAVENSWOOD LLC"
+   ],
+   "classes": [
+    "large_group",
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null,
+    null
+   ],
+   "phones": [
+    "(773) 561-4508",
+    "(773) 588-7840"
+   ],
+   "distinct_phones": 2,
+   "surnames": [
+    "MASTRS",
+    "RADKHAN",
+    "RENIERIS"
+   ],
+   "house_numbers": [
+    "1945"
+   ],
+   "n_physical_doors": 2,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(773) 561-4508"
+     ],
+     "location_ids": [
+      "a9866b66967e31ee"
+     ]
+    },
+    {
+     "door_key": [
+      "phone",
+      "(773) 588-7840"
+     ],
+     "location_ids": [
+      "ba858690c8a54e29",
+      "e32ed1606301b785"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_partial",
+   "verdict_basis": "multitenant_building_collapse_dup_subgroup_keep_other_doors",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "45c3ff989564e69c",
+    "89f740688dc5eaf6",
+    "a0e606c50529ba3c"
+   ],
+   "sources": [
+    "pressure"
+   ],
+   "names": [
+    "SHEILA M. VACENDAK, DDS, PC",
+    "Halikias Dental",
+    "OAK FAMILY DENTAL"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null,
+    null
+   ],
+   "phones": [
+    "(708) 687-6100",
+    "(708) 925-0223"
+   ],
+   "distinct_phones": 2,
+   "surnames": [
+    "HALIKIAS",
+    "OAK",
+    "SHEILA"
+   ],
+   "house_numbers": [
+    "6056"
+   ],
+   "n_physical_doors": 2,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(708) 687-6100"
+     ],
+     "location_ids": [
+      "45c3ff989564e69c",
+      "89f740688dc5eaf6"
+     ]
+    },
+    {
+     "door_key": [
+      "phone",
+      "(708) 925-0223"
+     ],
+     "location_ids": [
+      "a0e606c50529ba3c"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_partial",
+   "verdict_basis": "multitenant_building_collapse_dup_subgroup_keep_other_doors",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "1df260dc64a9a060",
+    "895ecae72eb372df",
+    "9ee4df9470dec738"
+   ],
+   "sources": [
+    "pressure"
+   ],
+   "names": [
+    "Shafi Dental",
+    "Ashton Dental",
+    "ASHTON DENTAL PC"
+   ],
+   "classes": [
+    "solo_established",
+    "small_group",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null,
+    null
+   ],
+   "phones": [
+    "(630) 898-2688",
+    "(630) 999-9637"
+   ],
+   "distinct_phones": 2,
+   "surnames": [
+    "ASHTON",
+    "SHAFI"
+   ],
+   "house_numbers": [
+    "1137"
+   ],
+   "n_physical_doors": 2,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(630) 898-2688"
+     ],
+     "location_ids": [
+      "1df260dc64a9a060",
+      "9ee4df9470dec738"
+     ]
+    },
+    {
+     "door_key": [
+      "phone",
+      "(630) 999-9637"
+     ],
+     "location_ids": [
+      "895ecae72eb372df"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_partial",
+   "verdict_basis": "multitenant_building_collapse_dup_subgroup_keep_other_doors",
+   "excess_rows_if_collapsed": 1,
+   "ao_or_tier_overlap_flag": "SHAFI_AO_network (1137 Eola Aurora) \u2014 denominator collapse here must be coordinated with the AO ownership census so the same physical Ashton office is not double-counted across numerator(AO) and denominator(dup)"
+  },
+  {
+   "location_ids": [
+    "2d03b66c892427bf",
+    "8ac06f384aa91d46"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "ANDERSONVILLE DENTAL",
+    "Andersonville Dental"
+   ],
+   "classes": [
+    "solo_established",
+    "small_group"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(773) 334-4200"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "ANDERSONVILLE"
+   ],
+   "house_numbers": [
+    "1700"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(773) 334-4200"
+     ],
+     "location_ids": [
+      "2d03b66c892427bf",
+      "8ac06f384aa91d46"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "a7cf17e5819d78f2",
+    "e43db6cc2675d3be"
+   ],
+   "sources": [
+    "pressure"
+   ],
+   "names": [
+    "ASSOCIATES FOR GENERAL DENTISTRY, LTD",
+    "Omni Dental"
+   ],
+   "classes": [
+    "large_group",
+    "small_group"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(847) 392-4422"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "FOR",
+    "OMNI"
+   ],
+   "house_numbers": [
+    "1307"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(847) 392-4422"
+     ],
+     "location_ids": [
+      "a7cf17e5819d78f2",
+      "e43db6cc2675d3be"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "3f69c2699ad9add7",
+    "a028d8f3322d42fa"
+   ],
+   "sources": [
+    "audit",
+    "pressure",
+    "recon"
+   ],
+   "names": [
+    "AUSTIN DENTAL CENTER LLC",
+    "Mcdonald Dental"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    "true_independent",
+    "true_independent"
+   ],
+   "phones": [
+    "(708) 386-1448"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "AUSTIN",
+    "MCDONALD"
+   ],
+   "house_numbers": [
+    "418"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(708) 386-1448"
+     ],
+     "location_ids": [
+      "3f69c2699ad9add7",
+      "a028d8f3322d42fa"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1,
+   "ao_or_tier_overlap_flag": "already has ownership_tier set: ['true_independent', 'true_independent']"
+  },
+  {
+   "location_ids": [
+    "222c582c62402c01",
+    "ddf22f3a418c1983"
+   ],
+   "sources": [
+    "pressure"
+   ],
+   "names": [
+    "Abbott Dental",
+    "Gramse Dental"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    "undetermined",
+    "true_independent"
+   ],
+   "phones": [
+    "(630) 668-5251"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "ABBOTT",
+    "GRAMSE"
+   ],
+   "house_numbers": [
+    "108"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(630) 668-5251"
+     ],
+     "location_ids": [
+      "222c582c62402c01",
+      "ddf22f3a418c1983"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1,
+   "ao_or_tier_overlap_flag": "already has ownership_tier set: ['undetermined', 'true_independent']"
+  },
+  {
+   "location_ids": [
+    "36610bdcbea1d28d",
+    "4d6ecf57b261e109"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "Ahoyt Dental",
+    "AHOYT FAMILY DENTAL"
+   ],
+   "classes": [
+    "solo_established",
+    "small_group"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(815) 436-3377"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "AHOYT"
+   ],
+   "house_numbers": [
+    "13717"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(815) 436-3377"
+     ],
+     "location_ids": [
+      "36610bdcbea1d28d",
+      "4d6ecf57b261e109"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "4e4444e086bb7891",
+    "ba03b15976349d1b"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "Aleck-furlan",
+    "Furlan Dental"
+   ],
+   "classes": [
+    "small_group",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(773) 233-7044"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "ALECK-FURLAN",
+    "FURLAN"
+   ],
+   "house_numbers": [
+    "10900"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(773) 233-7044"
+     ],
+     "location_ids": [
+      "4e4444e086bb7891",
+      "ba03b15976349d1b"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "1800132e7ff2e68c",
+    "6cb95a87f1688676",
+    "9704f166ed868216"
+   ],
+   "sources": [
+    "audit",
+    "pressure",
+    "recon"
+   ],
+   "names": [
+    "BERWYN DENTAL CLINIC",
+    "Salerno Dental",
+    "Salerno Dental"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null,
+    null
+   ],
+   "phones": [
+    "(708) 484-2710"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "BERWYN",
+    "SALERNO"
+   ],
+   "house_numbers": [
+    "6436"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(708) 484-2710"
+     ],
+     "location_ids": [
+      "1800132e7ff2e68c",
+      "6cb95a87f1688676",
+      "9704f166ed868216"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 2
+  },
+  {
+   "location_ids": [
+    "d3a0e2085a1e3776",
+    "fe4e8aece6d7fd2e"
+   ],
+   "sources": [
+    "audit",
+    "pressure",
+    "recon"
+   ],
+   "names": [
+    "Barrett Dental",
+    "PARK RIDGE DENTISTRY PLLC"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    "stealth_dso",
+    "dentist_multi"
+   ],
+   "phones": [
+    "(847) 692-7350"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "BARRETT",
+    "PARK"
+   ],
+   "house_numbers": [
+    "35"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(847) 692-7350"
+     ],
+     "location_ids": [
+      "d3a0e2085a1e3776",
+      "fe4e8aece6d7fd2e"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1,
+   "ao_or_tier_overlap_flag": "already has ownership_tier set: ['stealth_dso', 'dentist_multi']"
+  },
+  {
+   "location_ids": [
+    "1cb7ec6e7f656835",
+    "932a833bec165f4d",
+    "dbf40fe610f9eb4f"
+   ],
+   "sources": [
+    "pressure"
+   ],
+   "names": [
+    "Bartlett Smiles",
+    "Guerra Dental",
+    "Ascher Dental"
+   ],
+   "classes": [
+    "solo_high_volume",
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null,
+    null
+   ],
+   "phones": [
+    "(630) 830-6010"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "ASCHER",
+    "BARTLETT",
+    "GUERRA"
+   ],
+   "house_numbers": [
+    "323"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(630) 830-6010"
+     ],
+     "location_ids": [
+      "1cb7ec6e7f656835",
+      "932a833bec165f4d",
+      "dbf40fe610f9eb4f"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 2
+  },
+  {
+   "location_ids": [
+    "556f0dcf7c131e65",
+    "cd50f89169d71073"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "CHICAGO CENTER FOR ADVANCED DENTISTRY",
+    "Zalay Dental"
+   ],
+   "classes": [
+    "solo_established",
+    "large_group"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(312) 704-5511"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "CHICAGO",
+    "ZALAY"
+   ],
+   "house_numbers": [
+    "222"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(312) 704-5511"
+     ],
+     "location_ids": [
+      "556f0dcf7c131e65",
+      "cd50f89169d71073"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "f94fb29cc7d444cd",
+    "ff41419130267bd9"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "CHICAGO DENTAL PROFESSIONALS INC",
+    "Peters, Erika"
+   ],
+   "classes": [
+    "solo_established",
+    "large_group"
+   ],
+   "ownership_tier": [
+    "true_independent",
+    "dentist_multi"
+   ],
+   "phones": [
+    "(773) 528-2205"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "CHICAGO",
+    "PETERS"
+   ],
+   "house_numbers": [
+    "2340"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(773) 528-2205"
+     ],
+     "location_ids": [
+      "f94fb29cc7d444cd",
+      "ff41419130267bd9"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1,
+   "ao_or_tier_overlap_flag": "already has ownership_tier set: ['true_independent', 'dentist_multi']"
+  },
+  {
+   "location_ids": [
+    "06271566fac35420",
+    "6140e924f8088627"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "Casado Dental",
+    "ADRIA M CASADO"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(773) 384-4333"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "ADRIA",
+    "CASADO"
+   ],
+   "house_numbers": [
+    "3230"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(773) 384-4333"
+     ],
+     "location_ids": [
+      "06271566fac35420",
+      "6140e924f8088627"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "4dd0cf70924b3541",
+    "c49995373f766089"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "Cass Family Dental",
+    "Mashnouk Dental"
+   ],
+   "classes": [
+    "small_group",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(630) 737-0791"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "CASS",
+    "MASHNOUK"
+   ],
+   "house_numbers": [
+    "210"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(630) 737-0791"
+     ],
+     "location_ids": [
+      "4dd0cf70924b3541",
+      "c49995373f766089"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "1f6f116f4cfa533c",
+    "a56a841f0923d8aa"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "Chung Dental",
+    "Smith Dental"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(630) 759-8940"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "CHUNG",
+    "SMITH"
+   ],
+   "house_numbers": [
+    "406"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(630) 759-8940"
+     ],
+     "location_ids": [
+      "1f6f116f4cfa533c",
+      "a56a841f0923d8aa"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "24a93d43bec1d7b5",
+    "d4759b3c9107b6b7"
+   ],
+   "sources": [
+    "pressure"
+   ],
+   "names": [
+    "DENTAL HEALTH CARE LTD",
+    "Marinic Dental"
+   ],
+   "classes": [
+    "small_group",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(847) 475-8700"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "HEALTH",
+    "MARINIC"
+   ],
+   "house_numbers": [
+    "2611"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(847) 475-8700"
+     ],
+     "location_ids": [
+      "24a93d43bec1d7b5",
+      "d4759b3c9107b6b7"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "24b5a6d0d7eec395",
+    "9c7f34a525b09172"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "DIVERSEY FAMILY DENTAL, P.C.",
+    "Roci Elvi DMD"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_high_volume"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(773) 725-7900"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "DIVERSEY",
+    "ROCI"
+   ],
+   "house_numbers": [
+    "4446"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(773) 725-7900"
+     ],
+     "location_ids": [
+      "24b5a6d0d7eec395",
+      "9c7f34a525b09172"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "91f133f6ca9066c3",
+    "a265228f4dd92f32"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "DR. STACI SIKORA AND ASSOCIATES",
+    "Das Dental"
+   ],
+   "classes": [
+    "small_group",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(312) 939-2400"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "DAS",
+    "STACI"
+   ],
+   "house_numbers": [
+    "111"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(312) 939-2400"
+     ],
+     "location_ids": [
+      "91f133f6ca9066c3",
+      "a265228f4dd92f32"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "4de0861898d105e5",
+    "52a357689cfe885a"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "Dang Dental",
+    "Forever Dental"
+   ],
+   "classes": [
+    "solo_established",
+    "small_group"
+   ],
+   "ownership_tier": [
+    "undetermined",
+    "single_loc_group"
+   ],
+   "phones": [
+    "(773) 836-1000"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "DANG",
+    "FOREVER"
+   ],
+   "house_numbers": [
+    "6051"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(773) 836-1000"
+     ],
+     "location_ids": [
+      "4de0861898d105e5",
+      "52a357689cfe885a"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1,
+   "ao_or_tier_overlap_flag": "already has ownership_tier set: ['undetermined', 'single_loc_group']"
+  },
+  {
+   "location_ids": [
+    "2ff3e82d93b0cba6",
+    "dee8891f2693b4be"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "Difranco Dental",
+    "Connolly Dental"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(773) 286-9700"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "CONNOLLY",
+    "DIFRANCO"
+   ],
+   "house_numbers": [
+    "6200"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(773) 286-9700"
+     ],
+     "location_ids": [
+      "2ff3e82d93b0cba6",
+      "dee8891f2693b4be"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "7fd34b5d164a7773",
+    "9e31721171338454"
+   ],
+   "sources": [
+    "pressure"
+   ],
+   "names": [
+    "Discipio Dental",
+    "J.V. DISCIPIO, D.D.S. & ASSOC., LTD."
+   ],
+   "classes": [
+    "solo_established",
+    "large_group"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(708) 749-0133"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "DISCIPIO"
+   ],
+   "house_numbers": [
+    "6737"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(708) 749-0133"
+     ],
+     "location_ids": [
+      "7fd34b5d164a7773",
+      "9e31721171338454"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "0e2c60f1d5bcdcd3",
+    "105287030f397cc0"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "Dong Dental",
+    "HEALTHCARE FOR DENTAL SYSTEMS"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(773) 279-0304"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "DONG",
+    "HEALTHCARE"
+   ],
+   "house_numbers": [
+    "3550"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(773) 279-0304"
+     ],
+     "location_ids": [
+      "0e2c60f1d5bcdcd3",
+      "105287030f397cc0"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "3d19bf082c0cb2a3",
+    "6e97d5c01cc9b828"
+   ],
+   "sources": [
+    "audit",
+    "pressure",
+    "recon"
+   ],
+   "names": [
+    "ERIC W BOHL DDS LTD",
+    "Bohl Dental"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(630) 837-7775"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "BOHL",
+    "ERIC"
+   ],
+   "house_numbers": [
+    "1024"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(630) 837-7775"
+     ],
+     "location_ids": [
+      "3d19bf082c0cb2a3",
+      "6e97d5c01cc9b828"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "b62e1423824fc6fa",
+    "c76feca7c33d6006"
+   ],
+   "sources": [
+    "pressure"
+   ],
+   "names": [
+    "Esposito Dental",
+    "Zaim Sheema DMD"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_high_volume"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(708) 524-0555"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "ESPOSITO",
+    "ZAIM"
+   ],
+   "house_numbers": [
+    "7120"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(708) 524-0555"
+     ],
+     "location_ids": [
+      "b62e1423824fc6fa",
+      "c76feca7c33d6006"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "8f706d83e1aa4a82",
+    "b48ae5cb321e110a"
+   ],
+   "sources": [
+    "pressure"
+   ],
+   "names": [
+    "Franklin Dental",
+    "Rubis Dental"
+   ],
+   "classes": [
+    "solo_established",
+    "family_practice"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(815) 741-1700"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "FRANKLIN",
+    "RUBIS"
+   ],
+   "house_numbers": [
+    "2241"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(815) 741-1700"
+     ],
+     "location_ids": [
+      "8f706d83e1aa4a82",
+      "b48ae5cb321e110a"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "45ced31807d5f694",
+    "c8257a409936d67d"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "Gentle Family Dentisty-nprvll",
+    "Defilippis Dental"
+   ],
+   "classes": [
+    "small_group",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    "single_loc_group",
+    "true_independent"
+   ],
+   "phones": [
+    "(630) 355-0100"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "DEFILIPPIS",
+    "GENTLE"
+   ],
+   "house_numbers": [
+    "10"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(630) 355-0100"
+     ],
+     "location_ids": [
+      "45ced31807d5f694",
+      "c8257a409936d67d"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1,
+   "ao_or_tier_overlap_flag": "already has ownership_tier set: ['single_loc_group', 'true_independent']"
+  },
+  {
+   "location_ids": [
+    "32399095d00b3786",
+    "db33ff6cf7c176a0"
+   ],
+   "sources": [
+    "audit",
+    "pressure",
+    "recon"
+   ],
+   "names": [
+    "Gupta Dental",
+    "KAVITA GUPTA PC"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(630) 782-6999"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "GUPTA",
+    "KAVITA"
+   ],
+   "house_numbers": [
+    "1200"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(630) 782-6999"
+     ],
+     "location_ids": [
+      "32399095d00b3786",
+      "db33ff6cf7c176a0"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "18e3357f1daf99a8",
+    "749bf15d6b8517e5"
+   ],
+   "sources": [
+    "pressure"
+   ],
+   "names": [
+    "HARLEM DENTAL LTD.",
+    "Leonard Dental"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(708) 749-1643"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "HARLEM",
+    "LEONARD"
+   ],
+   "house_numbers": [
+    "2911"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(708) 749-1643"
+     ],
+     "location_ids": [
+      "18e3357f1daf99a8",
+      "749bf15d6b8517e5"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "2349c2b380472fb1",
+    "9bbed9ef6597e7a6"
+   ],
+   "sources": [
+    "pressure"
+   ],
+   "names": [
+    "Habbal Dental",
+    "WALID HABBAL DDS PC"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_high_volume"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(708) 361-8117"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "HABBAL",
+    "WALID"
+   ],
+   "house_numbers": [
+    "12612"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(708) 361-8117"
+     ],
+     "location_ids": [
+      "2349c2b380472fb1",
+      "9bbed9ef6597e7a6"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "56c2178c3f738cd3",
+    "d8ba87390ab50be3"
+   ],
+   "sources": [
+    "pressure"
+   ],
+   "names": [
+    "Homb, Kurt M DDS",
+    "KURT M. HOMB, D.D.S., P.C."
+   ],
+   "classes": [
+    "solo_high_volume",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(815) 467-4414"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "HOMB",
+    "KURT"
+   ],
+   "house_numbers": [
+    "123"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(815) 467-4414"
+     ],
+     "location_ids": [
+      "56c2178c3f738cd3",
+      "d8ba87390ab50be3"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "415ff4857bd586d0",
+    "6a0646383e33d1ce"
+   ],
+   "sources": [
+    "pressure"
+   ],
+   "names": [
+    "ISMILECARE,P.C.",
+    "CELESTE L MEDYNSKYJ, DDS LTD"
+   ],
+   "classes": [
+    "family_practice",
+    "small_group"
+   ],
+   "ownership_tier": [
+    "single_loc_group",
+    "true_independent"
+   ],
+   "phones": [
+    "(847) 699-4000"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "CELESTE",
+    "ISMILECARE"
+   ],
+   "house_numbers": [
+    "1600"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(847) 699-4000"
+     ],
+     "location_ids": [
+      "415ff4857bd586d0",
+      "6a0646383e33d1ce"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1,
+   "ao_or_tier_overlap_flag": "already has ownership_tier set: ['single_loc_group', 'true_independent']"
+  },
+  {
+   "location_ids": [
+    "772fe78f8b2369eb",
+    "997fb9c989f09b76"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "Iqbal Dental",
+    "Shah Dental"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(312) 500-7080"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "IQBAL",
+    "SHAH"
+   ],
+   "house_numbers": [
+    "3901"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(312) 500-7080"
+     ],
+     "location_ids": [
+      "772fe78f8b2369eb",
+      "997fb9c989f09b76"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "ce8b8ff3e6be7862",
+    "d5804fe187ecbb46"
+   ],
+   "sources": [
+    "audit",
+    "pressure",
+    "recon"
+   ],
+   "names": [
+    "JOHN DREW GORRELL DDS LTD",
+    "32 VILLAGE DENTAL LLC"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_high_volume"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(847) 364-5100"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "JOHN",
+    "VILLAGE"
+   ],
+   "house_numbers": [
+    "958"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(847) 364-5100"
+     ],
+     "location_ids": [
+      "ce8b8ff3e6be7862",
+      "d5804fe187ecbb46"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "3c812d6a848fe775",
+    "e89c88377e2b1441"
+   ],
+   "sources": [
+    "pressure"
+   ],
+   "names": [
+    "JOHN G HARTMANN DDS PC",
+    "RIVER FOREST DENTAL STUDIO"
+   ],
+   "classes": [
+    "solo_established",
+    "small_group"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(708) 366-6760"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "JOHN",
+    "RIVER"
+   ],
+   "house_numbers": [
+    "7700"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(708) 366-6760"
+     ],
+     "location_ids": [
+      "3c812d6a848fe775",
+      "e89c88377e2b1441"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "38e2cf6ca3730e38",
+    "80cab1abd729dd22"
+   ],
+   "sources": [
+    "pressure"
+   ],
+   "names": [
+    "Kompanowski Dental",
+    "Kompanowski Dental"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    "true_independent",
+    "single_loc_group"
+   ],
+   "phones": [
+    "(847) 823-9343"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "KOMPANOWSKI"
+   ],
+   "house_numbers": [
+    "412"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(847) 823-9343"
+     ],
+     "location_ids": [
+      "38e2cf6ca3730e38",
+      "80cab1abd729dd22"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1,
+   "ao_or_tier_overlap_flag": "already has ownership_tier set: ['true_independent', 'single_loc_group']"
+  },
+  {
+   "location_ids": [
+    "5b800ca763768406",
+    "b5e3ff82a8613a83"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "LINCOLN DENTAL FAMILY CENTER",
+    "Pascale Christina DMD"
+   ],
+   "classes": [
+    "solo_established",
+    "large_group"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(773) 271-5200"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "LINCOLN",
+    "PASCALE"
+   ],
+   "house_numbers": [
+    "5643"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(773) 271-5200"
+     ],
+     "location_ids": [
+      "5b800ca763768406",
+      "b5e3ff82a8613a83"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "9780242db74f939e",
+    "9aa8e5974e12f480"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "Lech Dental",
+    "DEVON DENTAL CLINIC,LTD"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(773) 631-6607"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "DEVON",
+    "LECH"
+   ],
+   "house_numbers": [
+    "6259"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(773) 631-6607"
+     ],
+     "location_ids": [
+      "9780242db74f939e",
+      "9aa8e5974e12f480"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "5a6589ebbf27badf",
+    "5b3f44c0487d2d45"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "Lund, Peter a DDS",
+    "BLOCKI AND BASHFORD DENTAL, LLC"
+   ],
+   "classes": [
+    "small_group",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(847) 259-7560"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "BLOCKI",
+    "LUND"
+   ],
+   "house_numbers": [
+    "200"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(847) 259-7560"
+     ],
+     "location_ids": [
+      "5a6589ebbf27badf",
+      "5b3f44c0487d2d45"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "04e594d88035c383",
+    "fd489e75b9a8fb2d"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "MACZKO AND ASSOCIATES LTD",
+    "Prospect Dental"
+   ],
+   "classes": [
+    "small_group",
+    "solo_high_volume"
+   ],
+   "ownership_tier": [
+    "true_independent",
+    "single_loc_group"
+   ],
+   "phones": [
+    "(847) 398-1334"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "MACZKO",
+    "PROSPECT"
+   ],
+   "house_numbers": [
+    "1112"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(847) 398-1334"
+     ],
+     "location_ids": [
+      "04e594d88035c383",
+      "fd489e75b9a8fb2d"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1,
+   "ao_or_tier_overlap_flag": "already has ownership_tier set: ['true_independent', 'single_loc_group']"
+  },
+  {
+   "location_ids": [
+    "5b087bad0d0e3e2b",
+    "b76802b33a96ee10"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "MALGORZATA PIENKOWSKI DDS LTD",
+    "Pienkowska Dental"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(847) 470-8822"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "MALGORZATA",
+    "PIENKOWSKA"
+   ],
+   "house_numbers": [
+    "8107"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(847) 470-8822"
+     ],
+     "location_ids": [
+      "5b087bad0d0e3e2b",
+      "b76802b33a96ee10"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "c3c1109b7a83c868",
+    "e2d778d9dd90dc47"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "MODERN DENTAL ON DIVISION",
+    "HALO DENTAL"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    "dentist_multi",
+    "dentist_multi"
+   ],
+   "phones": [
+    "(773) 489-5700"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "HALO",
+    "MODERN"
+   ],
+   "house_numbers": [
+    "2033"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(773) 489-5700"
+     ],
+     "location_ids": [
+      "c3c1109b7a83c868",
+      "e2d778d9dd90dc47"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1,
+   "ao_or_tier_overlap_flag": "already has ownership_tier set: ['dentist_multi', 'dentist_multi']"
+  },
+  {
+   "location_ids": [
+    "535142f00b191b60",
+    "9f75426d8a3511a3"
+   ],
+   "sources": [
+    "audit",
+    "pressure",
+    "recon"
+   ],
+   "names": [
+    "Marietta Bufalina DDS",
+    "MARIETTA A BUFALINO INC"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(847) 397-6060"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "MARIETTA"
+   ],
+   "house_numbers": [
+    "4005"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(847) 397-6060"
+     ],
+     "location_ids": [
+      "535142f00b191b60",
+      "9f75426d8a3511a3"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "69d7f80b09971b16",
+    "8031f125d2413b77"
+   ],
+   "sources": [
+    "audit",
+    "pressure",
+    "recon"
+   ],
+   "names": [
+    "Matusik Dental",
+    "Stanley Joseph Matusik DDS"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(847) 428-5040"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "MATUSIK",
+    "STANLEY"
+   ],
+   "house_numbers": [
+    "200"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(847) 428-5040"
+     ],
+     "location_ids": [
+      "69d7f80b09971b16",
+      "8031f125d2413b77"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "72b44a0858116792",
+    "bc975ef1860f394e"
+   ],
+   "sources": [
+    "pressure"
+   ],
+   "names": [
+    "Napier Dental",
+    "GRAND DENTAL ASSOCIATES P.C."
+   ],
+   "classes": [
+    "small_group",
+    "large_group"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(847) 455-8383"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "GRAND",
+    "NAPIER"
+   ],
+   "house_numbers": [
+    "10020"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(847) 455-8383"
+     ],
+     "location_ids": [
+      "72b44a0858116792",
+      "bc975ef1860f394e"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "02486752639f0214",
+    "0d95fa46ee30ba2a"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "ORA DENTAL STUDIO WEST LOOP LLC",
+    "Kralj Dental"
+   ],
+   "classes": [
+    "small_group",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(312) 491-9494"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "KRALJ",
+    "ORA"
+   ],
+   "house_numbers": [
+    "937"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(312) 491-9494"
+     ],
+     "location_ids": [
+      "02486752639f0214",
+      "0d95fa46ee30ba2a"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "bb129134df9c3009",
+    "d2e4b594fa3fddf0"
+   ],
+   "sources": [
+    "pressure"
+   ],
+   "names": [
+    "PATEL&PATEL D.D.S LTD",
+    "Patel Dental"
+   ],
+   "classes": [
+    "large_group",
+    "family_practice"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(815) 744-7453"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "PATEL"
+   ],
+   "house_numbers": [
+    "1507"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(815) 744-7453"
+     ],
+     "location_ids": [
+      "bb129134df9c3009",
+      "d2e4b594fa3fddf0"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "d9e1cbf0d6b6b005",
+    "efc9ade86574caeb"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "PERFECT SMILE DENTAL SPA PARTNERSHIP",
+    "PERFECT SMILE DENTAL SPA"
+   ],
+   "classes": [
+    "large_group",
+    "small_group"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(773) 528-3384"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "PERFECT"
+   ],
+   "house_numbers": [
+    "2155"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(773) 528-3384"
+     ],
+     "location_ids": [
+      "d9e1cbf0d6b6b005",
+      "efc9ade86574caeb"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "0700232b795654f3",
+    "f629647606309c0a"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "Paik Dental",
+    "Sonrisa Urbana Family Dntstry"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(773) 522-0855"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "PAIK",
+    "SONRISA"
+   ],
+   "house_numbers": [
+    "2859"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(773) 522-0855"
+     ],
+     "location_ids": [
+      "0700232b795654f3",
+      "f629647606309c0a"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "81fa2361967975be",
+    "be32c4f8df293c5d"
+   ],
+   "sources": [
+    "audit",
+    "pressure",
+    "recon"
+   ],
+   "names": [
+    "Patel Dental",
+    "NITA PATEL DDS INC"
+   ],
+   "classes": [
+    "solo_established",
+    "small_group"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(630) 539-9999"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "NITA",
+    "PATEL"
+   ],
+   "house_numbers": [
+    "350"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(630) 539-9999"
+     ],
+     "location_ids": [
+      "81fa2361967975be",
+      "be32c4f8df293c5d"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "a76f0c8ea1e37128",
+    "ace914075d21f844"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "Paunescu Dental",
+    "LEHIGH DENTAL CARE"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(773) 594-9115"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "LEHIGH",
+    "PAUNESCU"
+   ],
+   "house_numbers": [
+    "6420"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(773) 594-9115"
+     ],
+     "location_ids": [
+      "a76f0c8ea1e37128",
+      "ace914075d21f844"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "ba379b6aa4cf3678",
+    "f5f9bcd0e66c0f55"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "RESHMA DHAKE DDS LTD",
+    "Gonzalez Dental"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    "true_independent"
+   ],
+   "phones": [
+    "(773) 685-2135"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "GONZALEZ",
+    "RESHMA"
+   ],
+   "house_numbers": [
+    "5738"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(773) 685-2135"
+     ],
+     "location_ids": [
+      "ba379b6aa4cf3678",
+      "f5f9bcd0e66c0f55"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1,
+   "ao_or_tier_overlap_flag": "already has ownership_tier set: ['true_independent']"
+  },
+  {
+   "location_ids": [
+    "8c957ece2c079f8a",
+    "cec806b53740bcb1"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "RUSSELL J. CECALA, D.D.S., M.S., LTD DBA PERIOCARE",
+    "Wagner-Lelevour Dental"
+   ],
+   "classes": [
+    "large_group",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(773) 763-5353"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "RUSSELL",
+    "WAGNER-LELEVOUR"
+   ],
+   "house_numbers": [
+    "7447"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(773) 763-5353"
+     ],
+     "location_ids": [
+      "8c957ece2c079f8a",
+      "cec806b53740bcb1"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "1c65b849ac086133",
+    "b5845da935111fd3"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "SCOTT OVERHOLSER, DDS P.C.",
+    "Chhabria Akshi DDS"
+   ],
+   "classes": [
+    "solo_established",
+    "small_group"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(773) 270-5000"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "CHHABRIA",
+    "SCOTT"
+   ],
+   "house_numbers": [
+    "3115"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(773) 270-5000"
+     ],
+     "location_ids": [
+      "1c65b849ac086133",
+      "b5845da935111fd3"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "5287843d3b6853ff",
+    "c268f869c71ee79d"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "SONRISA CAPITATION CCHC PROFESSIONAL CORPORATION SONRISA FAMILY DENTAL",
+    "Smith Dental"
+   ],
+   "classes": [
+    "small_group",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(773) 233-4100"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "SMITH",
+    "SONRISA"
+   ],
+   "house_numbers": [
+    "9718"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(773) 233-4100"
+     ],
+     "location_ids": [
+      "5287843d3b6853ff",
+      "c268f869c71ee79d"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "822ec77539aefeca",
+    "cb7c876492fbd595"
+   ],
+   "sources": [
+    "pressure"
+   ],
+   "names": [
+    "SUPERIOR DENTAL, LTD.",
+    "NATALYA NAGORNAYA DDS PC"
+   ],
+   "classes": [
+    "solo_high_volume",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(847) 634-2525"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "NATALYA",
+    "SUPERIOR"
+   ],
+   "house_numbers": [
+    "472"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(847) 634-2525"
+     ],
+     "location_ids": [
+      "822ec77539aefeca",
+      "cb7c876492fbd595"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "32c3017ee54f2212",
+    "f67237fdcff7ef05"
+   ],
+   "sources": [
+    "pressure"
+   ],
+   "names": [
+    "Scapillato James",
+    "JAMES E. SCAPILLATO D.D.S., P.C."
+   ],
+   "classes": [
+    "solo_high_volume",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    "true_independent",
+    "true_independent"
+   ],
+   "phones": [
+    "(708) 848-3727"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "JAMES",
+    "SCAPILLATO"
+   ],
+   "house_numbers": [
+    "6943"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(708) 848-3727"
+     ],
+     "location_ids": [
+      "32c3017ee54f2212",
+      "f67237fdcff7ef05"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1,
+   "ao_or_tier_overlap_flag": "already has ownership_tier set: ['true_independent', 'true_independent']"
+  },
+  {
+   "location_ids": [
+    "6ed893b75daf9df0",
+    "9fc42ed896e3742a"
+   ],
+   "sources": [
+    "pressure"
+   ],
+   "names": [
+    "Soderquist Dental",
+    "River Grove Dental Assoc"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(708) 453-1110"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "RIVER",
+    "SODERQUIST"
+   ],
+   "house_numbers": [
+    "8383"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(708) 453-1110"
+     ],
+     "location_ids": [
+      "6ed893b75daf9df0",
+      "9fc42ed896e3742a"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "2c1671236a9fd872",
+    "b9a649e2efffb13f"
+   ],
+   "sources": [
+    "audit",
+    "pressure",
+    "recon"
+   ],
+   "names": [
+    "Stephens Dental",
+    "STEPHENS DENTISTRY, INC."
+   ],
+   "classes": [
+    "solo_established",
+    "large_group"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(847) 864-8151"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "STEPHENS"
+   ],
+   "house_numbers": [
+    "1560"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(847) 864-8151"
+     ],
+     "location_ids": [
+      "2c1671236a9fd872",
+      "b9a649e2efffb13f"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "66fa01b5ca6161c7",
+    "d44c43930b0f8d3c"
+   ],
+   "sources": [
+    "audit",
+    "pressure",
+    "recon"
+   ],
+   "names": [
+    "Stojanovic Dental",
+    "DR. ZORAN D. STOJANOVIC & ASSOCIATES, LTD"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(847) 426-4431"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "STOJANOVIC",
+    "ZORAN"
+   ],
+   "house_numbers": [
+    "712"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(847) 426-4431"
+     ],
+     "location_ids": [
+      "66fa01b5ca6161c7",
+      "d44c43930b0f8d3c"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "e238dde64274fc92",
+    "fe8ff0d0d9a98e0c"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "THE WRIGLEYVILLE DENTAL GROUP",
+    "Benedetto Dental"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(773) 975-6666"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "BENEDETTO",
+    "WRIGLEYVILLE"
+   ],
+   "house_numbers": [
+    "1353"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(773) 975-6666"
+     ],
+     "location_ids": [
+      "e238dde64274fc92",
+      "fe8ff0d0d9a98e0c"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "1cb279f97b785d5f",
+    "36f2d7b78f905184"
+   ],
+   "sources": [
+    "pressure"
+   ],
+   "names": [
+    "TOTALIDLLC",
+    "ANNA PELAK & ASSOC"
+   ],
+   "classes": [
+    "small_group",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(847) 358-2477"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "ANNA",
+    "TOTALIDLLC"
+   ],
+   "house_numbers": [
+    "647"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(847) 358-2477"
+     ],
+     "location_ids": [
+      "1cb279f97b785d5f",
+      "36f2d7b78f905184"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "770dc428d7fe6dc3",
+    "c091fb525c07faea"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "Truszkowski Dental",
+    "BARBARA TRUSZKOWSKI DDS LTD"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(773) 792-0123"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "BARBARA",
+    "TRUSZKOWSKI"
+   ],
+   "house_numbers": [
+    "5489"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(773) 792-0123"
+     ],
+     "location_ids": [
+      "770dc428d7fe6dc3",
+      "c091fb525c07faea"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "2625c100027ca176",
+    "75f8dc18adfaf020"
+   ],
+   "sources": [
+    "pressure"
+   ],
+   "names": [
+    "Vernon Dental Care",
+    "Bagdade Dental"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(847) 367-4890"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "BAGDADE",
+    "VERNON"
+   ],
+   "house_numbers": [
+    "125"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(847) 367-4890"
+     ],
+     "location_ids": [
+      "2625c100027ca176",
+      "75f8dc18adfaf020"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "6c0af37000e89b19",
+    "98cfdd5c475f12b5"
+   ],
+   "sources": [
+    "pressure"
+   ],
+   "names": [
+    "Vicioso Dental",
+    "SHOREWOOD FAMILY DENTAL CARE LLP"
+   ],
+   "classes": [
+    "small_group",
+    "solo_high_volume"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(815) 725-5991"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "SHOREWOOD",
+    "VICIOSO"
+   ],
+   "house_numbers": [
+    "607"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(815) 725-5991"
+     ],
+     "location_ids": [
+      "6c0af37000e89b19",
+      "98cfdd5c475f12b5"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "67b1c90f3875a7c1",
+    "d9e35a86e7c7b726"
+   ],
+   "sources": [
+    "pressure"
+   ],
+   "names": [
+    "WESTCHESTER FAMILY DENTAL LTD",
+    "SAMEET THAKRAR DDS PC"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_high_volume"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(708) 562-5621"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "SAMEET",
+    "WESTCHESTER"
+   ],
+   "house_numbers": [
+    "4"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(708) 562-5621"
+     ],
+     "location_ids": [
+      "67b1c90f3875a7c1",
+      "d9e35a86e7c7b726"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "a0c2cefa1028f60e",
+    "dce576d253c68d56"
+   ],
+   "sources": [
+    "pressure"
+   ],
+   "names": [
+    "Walsh Dental",
+    "Sun Star Dental"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_high_volume"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(708) 771-8101"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "SUN",
+    "WALSH"
+   ],
+   "house_numbers": [
+    "7765"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(708) 771-8101"
+     ],
+     "location_ids": [
+      "a0c2cefa1028f60e",
+      "dce576d253c68d56"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "503f5abe582e326d",
+    "912d93028de7af3e"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "Weiss Dental",
+    "MODERN DENTAL OF LOGAN SQUARE LLC"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(773) 717-5509"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "MODERN",
+    "WEISS"
+   ],
+   "house_numbers": [
+    "2645"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(773) 717-5509"
+     ],
+     "location_ids": [
+      "503f5abe582e326d",
+      "912d93028de7af3e"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  },
+  {
+   "location_ids": [
+    "44746d18d3eb1725",
+    "8993db31d061a51d"
+   ],
+   "sources": [
+    "audit",
+    "recon"
+   ],
+   "names": [
+    "Zelikow Dental",
+    "SCHWARTZ & ZELIKOW DDS PC"
+   ],
+   "classes": [
+    "solo_established",
+    "solo_established"
+   ],
+   "ownership_tier": [
+    null,
+    null
+   ],
+   "phones": [
+    "(773) 348-3309"
+   ],
+   "distinct_phones": 1,
+   "surnames": [
+    "SCHWARTZ",
+    "ZELIKOW"
+   ],
+   "house_numbers": [
+    "2057"
+   ],
+   "n_physical_doors": 1,
+   "door_subgroups": [
+    {
+     "door_key": [
+      "phone",
+      "(773) 348-3309"
+     ],
+     "location_ids": [
+      "44746d18d3eb1725",
+      "8993db31d061a51d"
+     ]
+    }
+   ],
+   "da_synthetic_present": false,
+   "verdict": "collapse_safe",
+   "verdict_basis": "single_door_all_rows_share_phone_or_owner",
+   "excess_rows_if_collapsed": 1
+  }
+ ],
+ "qa_caveats": {
+  "pressure_test_enumeration_gap": {
+   "claimed_clusters": 79,
+   "enumerated_on_disk": 40,
+   "claimed_excess_rows": 87,
+   "enumerated_excess_rows": 48,
+   "un_enumerated_clusters": 39,
+   "un_enumerated_excess_rows": 39,
+   "verdict": "The pressure-test 87/79 figure is HALF-UNVERIFIABLE: 39 of its 79 claimed clusters were never written to disk (no location_ids), so they cannot be reviewed. Do NOT treat 87 as a confirmed collapse target. Re-run the pressure test with full cluster enumeration before trusting the extra 39."
+  },
+  "coverage": "This review covers the 73 building components reconstructable from the UNION of audit(48)+pressure-enumerated(40)+reconciliation(48). The 39 un-enumerated pressure-test clusters are out of reach.",
+  "flag_only": "FLAG-ONLY. No rows were collapsed and no DB write was performed (out of this lane). The defensible_excess (75, 1.69%) is the recommended ceiling for a future, separately-authorized duplicate_location collapse \u2014 and only after the verify/partial flags below are resolved.",
+  "ao_or_tier_overlaps": [
+   {
+    "names": [
+     "Shafi Dental",
+     "Ashton Dental",
+     "ASHTON DENTAL PC"
+    ],
+    "flag": "SHAFI_AO_network (1137 Eola Aurora) \u2014 denominator collapse here must be coordinated with the AO ownership census so the same physical Ashton office is not double-counted across numerator(AO) and denominator(dup)"
+   },
+   {
+    "names": [
+     "AUSTIN DENTAL CENTER LLC",
+     "Mcdonald Dental"
+    ],
+    "flag": "already has ownership_tier set: ['true_independent', 'true_independent']"
+   },
+   {
+    "names": [
+     "Abbott Dental",
+     "Gramse Dental"
+    ],
+    "flag": "already has ownership_tier set: ['undetermined', 'true_independent']"
+   },
+   {
+    "names": [
+     "Barrett Dental",
+     "PARK RIDGE DENTISTRY PLLC"
+    ],
+    "flag": "already has ownership_tier set: ['stealth_dso', 'dentist_multi']"
+   },
+   {
+    "names": [
+     "CHICAGO DENTAL PROFESSIONALS INC",
+     "Peters, Erika"
+    ],
+    "flag": "already has ownership_tier set: ['true_independent', 'dentist_multi']"
+   },
+   {
+    "names": [
+     "Dang Dental",
+     "Forever Dental"
+    ],
+    "flag": "already has ownership_tier set: ['undetermined', 'single_loc_group']"
+   },
+   {
+    "names": [
+     "Gentle Family Dentisty-nprvll",
+     "Defilippis Dental"
+    ],
+    "flag": "already has ownership_tier set: ['single_loc_group', 'true_independent']"
+   },
+   {
+    "names": [
+     "ISMILECARE,P.C.",
+     "CELESTE L MEDYNSKYJ, DDS LTD"
+    ],
+    "flag": "already has ownership_tier set: ['single_loc_group', 'true_independent']"
+   },
+   {
+    "names": [
+     "Kompanowski Dental",
+     "Kompanowski Dental"
+    ],
+    "flag": "already has ownership_tier set: ['true_independent', 'single_loc_group']"
+   },
+   {
+    "names": [
+     "MACZKO AND ASSOCIATES LTD",
+     "Prospect Dental"
+    ],
+    "flag": "already has ownership_tier set: ['true_independent', 'single_loc_group']"
+   },
+   {
+    "names": [
+     "MODERN DENTAL ON DIVISION",
+     "HALO DENTAL"
+    ],
+    "flag": "already has ownership_tier set: ['dentist_multi', 'dentist_multi']"
+   },
+   {
+    "names": [
+     "RESHMA DHAKE DDS LTD",
+     "Gonzalez Dental"
+    ],
+    "flag": "already has ownership_tier set: ['true_independent']"
+   },
+   {
+    "names": [
+     "Scapillato James",
+     "JAMES E. SCAPILLATO D.D.S., P.C."
+    ],
+    "flag": "already has ownership_tier set: ['true_independent', 'true_independent']"
+   }
+  ],
+  "denominator_is_sound": "Both source analyses and this review agree the IL GP denominator (~4,439) is SOUND \u2014 the duplicate excess is ~1.7%, NOT a material inflation. The ownership-census NUMERATOR (detector coverage), not the denominator, remains the main driver of the corporate %."
+ },
+ "tier_contradictions_at_dup_addresses": {
+  "count": 8,
+  "severity": "HIGH",
+  "finding": "Wave-1 ownership_tier was written per NPI/DA row, not per deduped physical location. At collapse_safe duplicate addresses the two rows of ONE practice received CONFLICTING tiers. This both (a) double-counts those practices in any tier tally and (b) makes the tier ambiguous. Reinforces the standing rule: do NOT trust the existing ownership_tier rows as final, and do NOT use ownership_tier IS NULL as canonical remaining-work. These must be reconciled to one tier per door before any headline census %.",
+  "rows": [
+   {
+    "names": [
+     "Abbott Dental",
+     "Gramse Dental"
+    ],
+    "location_ids": [
+     "222c582c62402c01",
+     "ddf22f3a418c1983"
+    ],
+    "conflicting_tiers": [
+     "undetermined",
+     "true_independent"
+    ],
+    "phones": [
+     "(630) 668-5251"
+    ],
+    "note": "SAME physical door (shared phone/owner) carries DIFFERENT ownership_tier on its duplicate rows \u2014 at least one wave-1 classification is wrong; resolve to ONE tier when the dup is collapsed."
+   },
+   {
+    "names": [
+     "Barrett Dental",
+     "PARK RIDGE DENTISTRY PLLC"
+    ],
+    "location_ids": [
+     "d3a0e2085a1e3776",
+     "fe4e8aece6d7fd2e"
+    ],
+    "conflicting_tiers": [
+     "stealth_dso",
+     "dentist_multi"
+    ],
+    "phones": [
+     "(847) 692-7350"
+    ],
+    "note": "SAME physical door (shared phone/owner) carries DIFFERENT ownership_tier on its duplicate rows \u2014 at least one wave-1 classification is wrong; resolve to ONE tier when the dup is collapsed."
+   },
+   {
+    "names": [
+     "CHICAGO DENTAL PROFESSIONALS INC",
+     "Peters, Erika"
+    ],
+    "location_ids": [
+     "f94fb29cc7d444cd",
+     "ff41419130267bd9"
+    ],
+    "conflicting_tiers": [
+     "true_independent",
+     "dentist_multi"
+    ],
+    "phones": [
+     "(773) 528-2205"
+    ],
+    "note": "SAME physical door (shared phone/owner) carries DIFFERENT ownership_tier on its duplicate rows \u2014 at least one wave-1 classification is wrong; resolve to ONE tier when the dup is collapsed."
+   },
+   {
+    "names": [
+     "Dang Dental",
+     "Forever Dental"
+    ],
+    "location_ids": [
+     "4de0861898d105e5",
+     "52a357689cfe885a"
+    ],
+    "conflicting_tiers": [
+     "undetermined",
+     "single_loc_group"
+    ],
+    "phones": [
+     "(773) 836-1000"
+    ],
+    "note": "SAME physical door (shared phone/owner) carries DIFFERENT ownership_tier on its duplicate rows \u2014 at least one wave-1 classification is wrong; resolve to ONE tier when the dup is collapsed."
+   },
+   {
+    "names": [
+     "Gentle Family Dentisty-nprvll",
+     "Defilippis Dental"
+    ],
+    "location_ids": [
+     "45ced31807d5f694",
+     "c8257a409936d67d"
+    ],
+    "conflicting_tiers": [
+     "single_loc_group",
+     "true_independent"
+    ],
+    "phones": [
+     "(630) 355-0100"
+    ],
+    "note": "SAME physical door (shared phone/owner) carries DIFFERENT ownership_tier on its duplicate rows \u2014 at least one wave-1 classification is wrong; resolve to ONE tier when the dup is collapsed."
+   },
+   {
+    "names": [
+     "ISMILECARE,P.C.",
+     "CELESTE L MEDYNSKYJ, DDS LTD"
+    ],
+    "location_ids": [
+     "415ff4857bd586d0",
+     "6a0646383e33d1ce"
+    ],
+    "conflicting_tiers": [
+     "single_loc_group",
+     "true_independent"
+    ],
+    "phones": [
+     "(847) 699-4000"
+    ],
+    "note": "SAME physical door (shared phone/owner) carries DIFFERENT ownership_tier on its duplicate rows \u2014 at least one wave-1 classification is wrong; resolve to ONE tier when the dup is collapsed."
+   },
+   {
+    "names": [
+     "Kompanowski Dental",
+     "Kompanowski Dental"
+    ],
+    "location_ids": [
+     "38e2cf6ca3730e38",
+     "80cab1abd729dd22"
+    ],
+    "conflicting_tiers": [
+     "true_independent",
+     "single_loc_group"
+    ],
+    "phones": [
+     "(847) 823-9343"
+    ],
+    "note": "SAME physical door (shared phone/owner) carries DIFFERENT ownership_tier on its duplicate rows \u2014 at least one wave-1 classification is wrong; resolve to ONE tier when the dup is collapsed."
+   },
+   {
+    "names": [
+     "MACZKO AND ASSOCIATES LTD",
+     "Prospect Dental"
+    ],
+    "location_ids": [
+     "04e594d88035c383",
+     "fd489e75b9a8fb2d"
+    ],
+    "conflicting_tiers": [
+     "true_independent",
+     "single_loc_group"
+    ],
+    "phones": [
+     "(847) 398-1334"
+    ],
+    "note": "SAME physical door (shared phone/owner) carries DIFFERENT ownership_tier on its duplicate rows \u2014 at least one wave-1 classification is wrong; resolve to ONE tier when the dup is collapsed."
+   }
+  ]
+ }
+}

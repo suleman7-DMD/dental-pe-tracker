@@ -1,0 +1,150 @@
+{
+  "network": "WILLIAM LI",
+  "network_id": "ao:LI_WILLIAM",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "William W. Li, DDS is the OWNER/DENTIST-OWNER of three Chicago-area dental entities per federal NPPES authorized-official records: All Family Dental (60616, solo/org-only NPI, provider_count=0, may be dormant), Damen North Dental Group Ltd (60622, 4 GP/endo providers), and Oral Kare Ltd (60657, 2 GP + 2 pediatric providers). Data Axle officer records for Oral Kare corroborate 'William W Li' as owner. No MSO, management-services entity, DSO platform, or PE-sponsor evidence found across three web searches. This is a dentist-owned private multi-location group.",
+  "owner_operator_identity": "William W. Li, DDS — listed as OWNER (All Family Dental, Oral Kare Ltd) and DENTIST/OWNER (Damen North Dental Group Ltd) on NPPES authorized-official field; corroborated as owner in Data Axle officer records for Oral Kare Ltd",
+  "brand_trade_names": [
+    "All Family Dental",
+    "Damen North Dental Group",
+    "Oral Kare",
+    "Oral Kare Ltd"
+  ],
+  "legal_entities": [
+    "DAMEN NORTH DENTAL GROUP LTD",
+    "ORAL KARE LTD"
+  ],
+  "durable_artifacts": [
+    "NPPES AO WILLIAM LI, DDS (title=OWNER) on NPI 1902924889 (All Family Dental, 60616)",
+    "NPPES AO WILLIAM LI, DDS (title=DENTIST/OWNER) on NPI 1083623201 (Damen North Dental Group Ltd, 60622)",
+    "NPPES AO WILLIAM LI, DDS (title=OWNER) on NPI 1689683344 (Oral Kare Ltd, 60657)",
+    "Data Axle officers for Oral Kare Ltd include 'William W Li' with title=Owner",
+    "AO reach spans 3 distinct ZIPs: 60616, 60622, 60657"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "All Family Dental (location_id 6a1f034a027ef384, 60616): practices table shows entity_classification=org_only_npi with num_providers=1 (org NPI only), provider_count=0 in practice_locations — may be a dormant or billing-shell location. It counts in the 60616 GP denominator (practice_locations.entity_classification=solo_established, is_specialist_only=0) but has no active individual providers currently listed at this address. Downstream gate should verify whether this location is actively operating or should be flagged for stale/dormant review.",
+  "evidence_chain": "AO signal: WILLIAM LI, DDS appears as authorized official (title OWNER or DENTIST/OWNER) on 3 org NPIs across ZIPs 60616, 60622, 60657. Documentary corroboration: (1) Data Axle officer records for Oral Kare Ltd (NPI 1689683344) explicitly list 'William W Li' with title=Owner, confirming the NPPES AO is the actual owner-of-record, not merely a billing/admin contact. (2) NPPES authorized_official_title='DENTIST/OWNER' on Damen North Dental Group NPI makes the dual dentist+owner role explicit. (3) Web searches (oralkaredental.com, damennorthdental.com confirmed as active practice websites) show no MSO/DSO/PE platform association. No franchise_name, no da_legal_name (corporate parent), no PE sponsor in any of the three NPI records. Conclusion: dentist-owned multi-location private group.",
+  "future_app_notes": "1. Verify whether All Family Dental (60616, provider_count=0, org_only_npi in practices) is actively operating — could be a dormant predecessor location or billing shell. 2. Oral Kare Ltd has pediatric specialists (1223P0221X) on 2 of 4 providers — practice is mixed GP+peds, is_specialist_only=0 so it counts in GP denominator, but downstream should note the mixed taxonomy. 3. If the 60616 location is confirmed dormant, consider reclassifying to solo_inactive or org_only_npi at the practice_locations level to remove it from the GP denominator. 4. Da_ein2=363983771 on Oral Kare Ltd — could be investigated for any cross-entity EIN linkage.",
+  "classifications": [
+    {
+      "location_id": "6a1f034a027ef384",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "William W. Li, DDS (OWNER per NPPES AO field)",
+      "network_id": "ao:LI_WILLIAM",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60616/60622/60657",
+          "authorized_official_title=OWNER on NPI 1902924889"
+        ],
+        "evidence": [
+          "Data Axle officer records for co-owned Oral Kare Ltd (NPI 1689683344) list 'William W Li, Owner' — confirms this AO is the actual owner across the network, not a billing contact"
+        ]
+      },
+      "evidence_urls": [
+        "https://npiprofile.com/npi/1912960931"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "WILLIAM LI",
+        "reach": 3,
+        "zips": ["60616", "60622", "60657"],
+        "npi": "1902924889",
+        "authorized_official_title": "OWNER",
+        "authorized_official_credential": "DDS",
+        "entity_classification_practices": "org_only_npi",
+        "entity_classification_locations": "solo_established",
+        "provider_count": 0
+      },
+      "web_searched": true,
+      "gate_status": "candidate",
+      "confidence": "medium",
+      "stale_closed_note": "provider_count=0 in practice_locations; practices table shows org_only_npi — may be a dormant predecessor location or billing-only shell. Verify whether this address is actively operating as a dental clinic before including in a dentist_multi flip.",
+      "reasoning": "NPPES lists WILLIAM LI, DDS as OWNER on this org NPI. However, no individual providers are currently associated with this address (provider_count=0, org_only_npi in the practices table). The location counts in the 60616 GP denominator via practice_locations solo_established classification, but it may be dormant or a legacy billing entity. Corroboration via DA officer records (at Oral Kare) confirms Li is a real owner in this network, so dentist_multi is the correct tier. gate_status=candidate rather than ready_for_validation because this specific location's active-practice status is uncertain and the corroborating documentary evidence (DA officers) is for a different location in the cluster."
+    },
+    {
+      "location_id": "589e5a66560936f7",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "William W. Li, DDS (DENTIST/OWNER per NPPES AO field)",
+      "network_id": "ao:LI_WILLIAM",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60616/60622/60657",
+          "authorized_official_title=DENTIST/OWNER on NPI 1083623201"
+        ],
+        "evidence": [
+          "Data Axle officer records for co-owned Oral Kare Ltd (NPI 1689683344) list 'William W Li, Owner' — confirms AO is an actual owner across the network",
+          "damennorthdental.com confirmed as active practice website for this location"
+        ]
+      },
+      "evidence_urls": [
+        "https://damennorthdental.com/",
+        "https://damennorthdental.com/about/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "WILLIAM LI",
+        "reach": 3,
+        "zips": ["60616", "60622", "60657"],
+        "npi": "1083623201",
+        "authorized_official_title": "DENTIST/OWNER",
+        "authorized_official_credential": "DDS",
+        "entity_classification": "large_group",
+        "provider_count": 4
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "NPPES lists WILLIAM LI, DDS with title DENTIST/OWNER on this org NPI — the dual title explicitly identifies him as both the treating dentist and owner. 4 active providers at 1725 W North Ave (GP + endodontics). Practice has its own website (damennorthdental.com). Web searches and Yelp confirm active operation. Data Axle officer records for the co-owned Oral Kare Ltd corroborate Li's ownership role across the network. No MSO, management-services entity, DSO platform, or PE sponsor found. This is a classic dentist-owned multi-location GP practice. gate_status=ready_for_validation because NPPES AO (DENTIST/OWNER title) + active website + DA officer corroboration constitute documentary evidence of owner identity."
+    },
+    {
+      "location_id": "926aa7def45531a2",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "William W. Li, DDS (OWNER per NPPES AO field and Data Axle officer records)",
+      "network_id": "ao:LI_WILLIAM",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60616/60622/60657",
+          "authorized_official_title=OWNER on NPI 1689683344"
+        ],
+        "evidence": [
+          "Data Axle officer records for this NPI (1689683344) explicitly list 'William W Li' with title=Owner — direct corroboration at this specific location",
+          "oralkaredental.com confirmed as active practice website",
+          "Yelp listing (271 reviews, 4.8 stars) confirms active operation at 3247 N Ashland Ave Chicago IL 60657"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.oralkaredental.com/",
+        "https://www.yelp.com/biz/oral-kare-ltd-chicago",
+        "https://www.carecredit.com/doctor-locator/chicago-il/oral-kare-ltd-597qgn/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "WILLIAM LI",
+        "reach": 3,
+        "zips": ["60616", "60622", "60657"],
+        "npi": "1689683344",
+        "authorized_official_title": "OWNER",
+        "authorized_official_credential": "DDS",
+        "entity_classification": "large_group",
+        "provider_count": 4,
+        "da_officers": [
+          {"first": "Mark A", "last": "Hawkins", "title": null},
+          {"first": "William W", "last": "Li", "title": null},
+          {"first": "William", "last": "Li", "title": "Owner"},
+          {"first": "Barbara", "last": "Arroyo", "title": "Office Manager"}
+        ],
+        "ein": "452044878",
+        "da_ein2": "363983771"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "Oral Kare has 2 of 4 providers with pediatric dentistry taxonomy (1223P0221X: Darryn Weinstein, Maria Javier) and 2 GP providers. is_specialist_only=0, so it counts in the GP denominator. Mixed GP+peds practice — not a specialist exclusion. Note for downstream: Mark A. Hawkins also appears as a named officer alongside Li in DA records; may be a co-owner or senior partner.",
+      "reasoning": "NPPES lists WILLIAM LI, DDS as OWNER on this org NPI, and Data Axle officer records for the same NPI (1689683344) independently list 'William W Li' as Owner — this is the strongest corroboration in the cluster (federal NPPES + commercial DA officers agreeing on the same person at the same location). 4 providers are active (2 GP, 2 pediatric), website oralkaredental.com is live, Yelp shows 271 reviews with 4.8 stars. No DSO/MSO/PE signals anywhere. dentist_multi at ready_for_validation. Mark Hawkins also appears in DA officer list without a title — possibly a co-owner or senior clinician; does not change the Li-as-owner finding."
+    }
+  ]
+}

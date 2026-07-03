@@ -1,0 +1,39 @@
+{
+ "_doc": "ADDENDUM to ownership_manifest_QA_merged_20260621.json. Runs the parts of the user's refined 7-point autonomous-mode criteria that were NOT explicitly tested in the prior merged-manifest QA, against the CURRENT canonical object (consolidation_candidate_manifest_20260621.json, mtime 12:07). New file; no prior QA file, manifest, DB, LEDGER, or PROGRESS mutated. This also pre-stages the exact test harness to re-run on the NEXT merge (reach=4 + Lane1B).",
+ "author_role": "independent QA / validation-gate session (New session #1)",
+ "reviewed_object": "consolidation_candidate_manifest_20260621.json (12:07 merge) — ready_to_validate = 123 rows",
+ "reviewed_at": "2026-06-21",
+ "context": "First-priority task (QA the NEXT merged manifest folding in Main AO reach=4 + Fleet B Lane1B) is gated: as of this writing no reach=4 / Lane1B outputs exist on disk and the manifest mtime is unchanged at 12:07. Rather than idle, ran the not-yet-tested refined-criteria checks on the current canonical object.",
+ "verdict": "PASS — no new defects. 0 brand-substring-only rows in DSO tier; 0 excluded-type tier rows in ready; dentist_multi vs MSO/DSO/PE separation is sound (rows affirmatively document absence of MSO). One new non-blocking validate-time note (GP-vs-ortho scope on the Shafi/Two Rivers rows).",
+
+ "tests": {
+  "criterion_3_brand_substring_only_in_DSO_tier": {
+   "pass": true,
+   "method": "For all 60 DSO-tier ready rows (branded_dso 41 + stealth_dso 19): flag any row whose evidence has NO strong artifact type (shared_ein/shared_parent/shared_website/shared_mailing/shared_tin/locator/web_verified/intel_dossier) AND no evidence_urls — i.e. resting on a bare brand-name substring match alone.",
+   "observed": "0 rows. Also 0 DSO-tier rows whose ONLY artifact is name_chain with no URL. Every DSO-tier ready row is backed by a documentary URL and/or a strong structural artifact (Labinov shared_parent, Nittinger shared_ein, Dental Dreams/UDP locator, etc.). No brand-substring-only row reached a DSO tier."
+  },
+  "criterion_5_specialist_orgonly_da_nonclinical_in_ready": {
+   "pass": true,
+   "method": "Flag any ready row with assigned_tier in {specialist, org_only_npi, da_unverified, non_clinical, solo_inactive}; separately scan every ready row for specialist taxonomy keywords anywhere in the record.",
+   "observed": "0 ready rows carry an excluded tier. 16 rows matched a specialist keyword by TEXT only — 15 are SHAFI_SOHAIL network rows where the matched token is part of the brand name 'Two Rivers Dental Orthodontics' (BetterDoctor URL slug), and 1 is a single_loc_group whose reasoning lists 'Dr. Caroline Jermanus (periodontist)' among multiple dentists at one door. None is a specialist-taxonomy practice misrouted into a GP tier.",
+   "non_blocking_note": "These Shafi/Two Rivers rows carry taxonomy_code=None in the manifest, and the brand string contains 'Orthodontics'. At validate time, confirm each Ashton/Two Rivers door is a GP (general dentistry) location; any ortho-ONLY door must be dropped from the GP consolidation denominator (it would belong to total_specialist, not the GP base). This does not affect tier correctness, only denominator scope."
+  },
+  "criterion_4_dentist_family_separated_from_MSO_DSO_PE": {
+   "pass": true,
+   "method": "For all 55 dentist_multi ready rows, scan for MSO/management-company/platform/PE/DSO language and inspect what triggers it.",
+   "observed": "46/55 matched, but the trigger tokens are NEGATION boilerplate: 'No PE/MSO evidence found', 'no separate DSO/MSO/platform structure', 'No PE/MSO'. The rows are affirmatively DOCUMENTING the absence of an MSO/platform — the correct rationale for the dentist_multi tier (e.g. NOURAHMADI/Shining Smiles: 'drndentist.com identifies Dr. Nourahmadi as the dentist-owner... No PE/MSO evidence found'). 0 dentist_multi rows carry a POSITIVE, un-negated MSO/platform/PE finding. Separation between dentist/family-owned consolidators (T2/T3) and MSO/DSO/PE structures (T4/T5) holds.",
+   "caveat": "Text-negation is necessary but not sufficient at validate: a per-URL check is still owed (a cited owner-bio URL that actually re-routes to an MSO operator would flip the row to T4/T5). Carried forward from the prior QA file; consolidate_census.py --validate-only does NOT re-judge this."
+  }
+ },
+
+ "still_carried_forward_unchanged": [
+  "Lane 3 still not folded in (Modern Smiles Shah 997fb9c989f09b76 + Iqbal 772fe78f8b2369eb = one physical door, phone (312) 500-7080, 3901 N Broadway → add to duplicate_denominator_blocked when Lane 3 enters a manifest; First Dental 81ccc151ecbbd6ff family-vs-true_independent open).",
+  "_meta.validate_only_target parenthetical still names the old _ready_to_validate_normalized_20260621.json (65-row) file; the actual target list is the 123-row _ready_to_validate_merged_20260621.json. Pointer text is stale (cosmetic); the bucket reference resolves correctly.",
+  "Fleet B: 32 needs_verification_remaining rows still unverified.",
+  "Per-URL owner-vs-MSO confirmation owed at validate for the dentist_multi web_verified rows."
+ ],
+
+ "harness_for_next_merge": "When the reach=4 + Lane1B merge lands, re-run all three tests above plus the prior QA file's checks: (a) every NEW ready row has a documentary URL or strong structural artifact; (b) 0 ao-cluster-only / ao-reach-only rows in ready; (c) 0 brand-substring-only rows in any DSO tier; (d) dentist/family consolidators carry an explicit no-MSO finding while T4/T5 carry a POSITIVE MSO/management-co/PE/established-brand artifact; (e) stale/closed/vacated/org-only/specialist held or excluded; (f) conflicts + needs_more_evidence counts not silently shrunk; (g) network intelligence (owner/AO, structure, evidence_chain, URLs, stale/closed notes) preserved for the future app, including HELD networks (Sweis, Ramaha).",
+
+ "recommendation": "No action required on the 12:07 manifest beyond the items already filed. Hold for the reach=4 + Lane1B merge; QA it with the harness above into a fresh QA review file. Freeze remains in force; --allow-db-write NOT authorized."
+}

@@ -1,0 +1,271 @@
+{
+ "_meta": {
+  "generated": "2026-06-21",
+  "lane": "website_clusters",
+  "session": "fleet-b-website-clusters-2026-06-21",
+  "source_queue": "ownership_evidence_queue_fleet_b_website_clusters_20260621.json",
+  "validator": "Validation OK, exit 0 (validate-only)",
+  "purpose": "Held high-value website-domain leads for QA escalation. NOT final truth. No DB writes.",
+  "totals": {
+   "queue_rows": 79,
+   "classified": {
+    "branded_dso": 3,
+    "dentist_multi": 2
+   },
+   "held": 74,
+   "skipped": {
+    "already_claimed": 177,
+    "da_synthetic": 40,
+    "noise_domain_excluded": 26
+   }
+  }
+ },
+ "classify_demotion_flags": [],
+ "friendly_pc_candidates_brand_domain_no_name_cohesion": [
+  {
+   "location_id": "6dc2bceb45b9a4b9",
+   "practice_name": "IVORY DENTAL",
+   "zip": "60585",
+   "shared_domain": "dentalworks.com",
+   "brand": "DentalWorks (Dental Care Partners)",
+   "reasoning": "Office lists brand website 'dentalworks.com' (DentalWorks (Dental Care Partners)) but its OWN name ('IVORY DENTAL') does not carry the brand token \u2014 likely friendly-PC or a listing artifact. HIGH-VALUE lead."
+  },
+  {
+   "location_id": "90e74bec1bd2d947",
+   "practice_name": "Patel Pujan DMD",
+   "zip": "60632",
+   "shared_domain": "dentalandbraces.com",
+   "brand": "All Family Dental & Braces (United Dental Partners)",
+   "reasoning": "Office lists brand website 'dentalandbraces.com' (All Family Dental & Braces (United Dental Partners)) but its OWN name ('Patel Pujan DMD') does not carry the brand token \u2014 likely friendly-PC or a listing artifact. HIGH-VALUE lead."
+  },
+  {
+   "location_id": "e76b9e2c92632174",
+   "practice_name": "THERESE MOUSSA, DDS, PC",
+   "zip": "60639",
+   "shared_domain": "dentalandbraces.com",
+   "brand": "All Family Dental & Braces (United Dental Partners)",
+   "reasoning": "Office lists brand website 'dentalandbraces.com' (All Family Dental & Braces (United Dental Partners)) but its OWN name ('THERESE MOUSSA, DDS, PC') does not carry the brand token \u2014 likely friendly-PC or a listing artifact. HIGH-VALUE lead."
+  },
+  {
+   "location_id": "71224f9d80bc2db3",
+   "practice_name": "DEAN LODDING SMILES, LTD",
+   "zip": "60123",
+   "shared_domain": "dentalandbraces.com",
+   "brand": "All Family Dental & Braces (United Dental Partners)",
+   "reasoning": "Office lists brand website 'dentalandbraces.com' (All Family Dental & Braces (United Dental Partners)) but its OWN name ('DEAN LODDING SMILES, LTD') does not carry the brand token \u2014 likely friendly-PC or a listing artifact. HIGH-VALUE lead."
+  },
+  {
+   "location_id": "ce05edf2b7a8625d",
+   "practice_name": "Family Dental",
+   "zip": "60646",
+   "shared_domain": "familydentalcare.com",
+   "brand": "Family Dental Care",
+   "reasoning": "Office lists brand website 'familydentalcare.com' (Family Dental Care) but its OWN name ('Family Dental') does not carry the brand token \u2014 likely friendly-PC or a listing artifact. HIGH-VALUE lead."
+  }
+ ],
+ "institutional_listing_leads": [
+  {
+   "location_id": "34efe951434467cb",
+   "practice_name": "HOCHSTADTER ISAACSON CHERNY DUMANIS & ASSOC MAXILLO SURGERY LTD",
+   "zip": "60068",
+   "shared_domain": "doctors.advocatehealth.com",
+   "system": "Advocate Health"
+  },
+  {
+   "location_id": "9f3d44e397bbec42",
+   "practice_name": "THE OROFACIAL PAIN CENTER",
+   "zip": "60614",
+   "shared_domain": "doctors.advocatehealth.com",
+   "system": "Advocate Health"
+  },
+  {
+   "location_id": "24a915b10e21c16c",
+   "practice_name": "Rauschert, Fred R DDS",
+   "zip": "60614",
+   "shared_domain": "doctors.advocatehealth.com",
+   "system": "Advocate Health"
+  },
+  {
+   "location_id": "c2c7539541dafe5f",
+   "practice_name": "AMY MARTIN DDS PC",
+   "zip": "60657",
+   "shared_domain": "doctors.advocatehealth.com",
+   "system": "Advocate Health"
+  },
+  {
+   "location_id": "cd8dad947568d6c5",
+   "practice_name": "OAK PARK RIVER FOREST INFANT WELFARE SOCIETY",
+   "zip": "60302",
+   "shared_domain": "doctors.advocatehealth.com",
+   "system": "Advocate Health"
+  },
+  {
+   "location_id": "7a955a5504c45bda",
+   "practice_name": "Jung, Victoria DDS",
+   "zip": "60637",
+   "shared_domain": "uchicagomedicine.org",
+   "system": "University of Chicago Medicine"
+  }
+ ],
+ "novel_group_held_members_worth_verifying": [
+  {
+   "location_id": "b65bf4d999162477",
+   "practice_name": "River Bend Dentistry",
+   "zip": "60124",
+   "shared_domain": "procaredentalgroup.com",
+   "group_cohesion": {
+    "tokens": [
+     "PROCARE",
+     "PROCAREDENTALGROUP"
+    ],
+    "cohere_zips": [
+     "60005",
+     "60120",
+     "60564",
+     "60654"
+    ],
+    "n_cohere": 4
+   }
+  },
+  {
+   "location_id": "1afd74063fb7ec3f",
+   "practice_name": "ARTY.INC",
+   "zip": "60608",
+   "shared_domain": "sonrisafamilydental.com",
+   "group_cohesion": {
+    "tokens": [
+     "SONRISA",
+     "SONRISAFAMILYDENTAL"
+    ],
+    "cohere_zips": [
+     "60185",
+     "60406",
+     "60411",
+     "60622"
+    ],
+    "n_cohere": 4
+   }
+  },
+  {
+   "location_id": "81f0d806c51a0633",
+   "practice_name": "PERLA DENTAL 26TH STREET LLC",
+   "zip": "60623",
+   "shared_domain": "sonrisafamilydental.com",
+   "group_cohesion": {
+    "tokens": [
+     "SONRISA",
+     "SONRISAFAMILYDENTAL"
+    ],
+    "cohere_zips": [
+     "60185",
+     "60406",
+     "60411",
+     "60622"
+    ],
+    "n_cohere": 4
+   }
+  }
+ ],
+ "held_by_domain_top": [
+  [
+   "doctors.advocatehealth.com",
+   5
+  ],
+  [
+   "dentalandbraces.com",
+   3
+  ],
+  [
+   "greatbraces.com",
+   3
+  ],
+  [
+   "cameods.com",
+   3
+  ],
+  [
+   "sonrisafamilydental.com",
+   2
+  ],
+  [
+   "udclinics.com",
+   2
+  ],
+  [
+   "clarkdentalchicago.com",
+   2
+  ],
+  [
+   "stoffeltomazin.com",
+   2
+  ],
+  [
+   "profendoillinois.com",
+   2
+  ],
+  [
+   "hickoryhillsdentist.com",
+   2
+  ],
+  [
+   "smilesbynoetzel.com",
+   2
+  ],
+  [
+   "allaboutkidsdentistry.com",
+   2
+  ],
+  [
+   "suburbanfamilydental.net",
+   2
+  ],
+  [
+   "toprankdental.com",
+   2
+  ],
+  [
+   "carolinescholtzdds.com",
+   2
+  ],
+  [
+   "joshifamilydentistry.com",
+   2
+  ],
+  [
+   "secure-dental.com",
+   2
+  ],
+  [
+   "toothbudschicago.com",
+   2
+  ],
+  [
+   "dentalworks.com",
+   1
+  ],
+  [
+   "familydentalcare.com",
+   1
+  ],
+  [
+   "procaredentalgroup.com",
+   1
+  ],
+  [
+   "evenly.com",
+   1
+  ],
+  [
+   "allstardentalclinic.com",
+   1
+  ],
+  [
+   "kalantoms.com",
+   1
+  ],
+  [
+   "uchicagomedicine.org",
+   1
+  ]
+ ]
+}

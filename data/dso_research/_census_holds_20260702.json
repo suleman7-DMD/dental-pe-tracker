@@ -1,0 +1,102 @@
+{
+ "_meta": {
+  "generated_by": "Fable PM \u2014 _normalize_census_candidates_20260702.py",
+  "date": "2026-07-02",
+  "mode": "FILES-ONLY generator (no DB writes here). Must pass consolidate_census.py --validate-only with 0 errors. --allow-db-write AUTHORIZED 2026-07-02 by user delegation ('make the best answers to the decisions ... then proceed') \u2014 decision record: RESEARCH_HOME/DECISIONS_PM_20260702.md.",
+  "pm_decisions_20260702": {
+   "authority": "user delegated 2026-07-02: 'make the best answers to the decisions. you have answering abilities. then proceed'",
+   "R1": "RATIFIED \u2014 ADI in GP denominator, T5 branded_dso; 3 held Affordable rows reinstated (pe_backed=true, Harvest Partners evidence in-row)",
+   "R2": "RATIFIED \u2014 ClearChoice rows are scope-correction items, never tiered while mis-scoped; 0 found in candidate set",
+   "R3": "RATIFIED \u2014 T6 institutional = coverage only, never consolidated, never DSO/PE",
+   "R4": "RATIFIED procedure; named networks decided: NITTINGER ACCEPT T5 (11), LABINOV ACCEPT T5 (7), SHAFI ACCEPT T3 (18); r4_flag kept on rows for audit",
+   "R5": "RATIFIED \u2014 closure-flagged rows held unless adjudicated; cross-check enforced in this generator; 2 candidates adjudicated ACTIVE (Geneva Dental, MetroSmiles Archer Heights \u2014 closure flags contradicted by direct evidence)"
+  },
+  "sources": {
+   "ready310": "_ready_to_validate_wave3_fixed_20260621.json",
+   "weak68_review": "weak_dso_row_review_20260702.json",
+   "wave4_partition1": "wave4_gate_normalized_partition_20260621.json",
+   "lane2_partition": "wave4_gate_normalized_lane2_partition_20260622.json",
+   "lane3_51_100": "wave4_gate_normalized_lane3_51_100_20260702.json"
+  },
+  "counts": {
+   "310_to_hold_weak68": 4,
+   "310_R1_reinstated": 3,
+   "310_retier_T3": 4,
+   "310_kept": 306,
+   "w4p1_merge": 19,
+   "lane2_merge_eligible_new_corporate": 1,
+   "lane2_corroborates_existing_corporate_no_lift": 12,
+   "lane2_true_independent_confirmation": 2,
+   "lane3_merge": 3,
+   "lane3_to_hold_archer": 1,
+   "lane3_to_hold_da_synthetic": 1,
+   "R5_closure_flag_adjudicated_active": 2
+  },
+  "total_classifications": 343,
+  "total_holds": 6,
+  "floor_lift_split": {
+   "T1_independent_coverage": 32,
+   "T4T5_corroborates_already_corporate": 81,
+   "T4T5_net_new_floor_lift": 42,
+   "T3_consolidated_no_dso_headline": 171,
+   "T6_institutional_coverage": 10,
+   "T2_consolidated": 7
+  },
+  "r4_flagged_rows": 36,
+  "notes": [
+   "R4-flagged rows (NITTINGER/SHAFI/LABINOV) are DECIDED 2026-07-02 under user-delegated PM authority (see pm_decisions_20260702.R4); the r4_flag stays on each row as an audit trail of the protected-network review.",
+   "Converted partition rows get confidence=medium uniformly (conservative); upgrade only with per-row PM review.",
+   "Coverage != floor lift: see floor_lift_split."
+  ]
+ },
+ "holds": [
+  {
+   "location_id": "dc09d390c733b900",
+   "practice_name": null,
+   "hold_reason": "weak68_downgrade_to_hold",
+   "detail": "'ELMHURST DENTAL GROUP LTD' is explicitly listed in il_cluster_ownership_verified_20260530.json independent_groups_DO_NOT_classify_corporate. The May 2026 verified research concluded this entity is not corporate. The 310 file overrides this classification without a documented reconciliation. Cannot promote to branded_dso until the May 2026 independent determination is formally reversed with new evidence.",
+   "original_tier": "branded_dso",
+   "source": "ready310 + weak_dso_row_review_20260702"
+  },
+  {
+   "location_id": "b839d55b755fc4cb",
+   "practice_name": null,
+   "hold_reason": "weak68_downgrade_to_hold",
+   "detail": "'ELMHURST DENTAL GROUP LTD' is explicitly listed in il_cluster_ownership_verified_20260530.json independent_groups_DO_NOT_classify_corporate. The May 2026 verified research concluded this entity is not corporate. The 310 file overrides this classification without a documented reconciliation. Cannot promote to branded_dso until the May 2026 independent determination is formally reversed with new evidence.",
+   "original_tier": "branded_dso",
+   "source": "ready310 + weak_dso_row_review_20260702"
+  },
+  {
+   "location_id": "bc975ef1860f394e",
+   "practice_name": null,
+   "hold_reason": "weak68_downgrade_to_hold",
+   "detail": "'GRAND DENTAL ASSOCIATES, P.C.' is explicitly in il_cluster_ownership_verified_20260530.json independent_groups_DO_NOT_classify_corporate. Critically, the gate owner's own reasoning says verdict=dentist_owned_multi \u2014 the assigned_tier branded_dso (T5) is a coding error relative to the gate owner's own finding. Remove from the 310 DSO tranche; re-add as T3 dentist_multi when T3 policy is confirmed.",
+   "original_tier": "branded_dso",
+   "source": "ready310 + weak_dso_row_review_20260702"
+  },
+  {
+   "location_id": "1a478dc49e0d3c7f",
+   "practice_name": null,
+   "hold_reason": "weak68_downgrade_to_hold",
+   "detail": "Medium confidence, gate owner's own reasoning labeled 'verdict=unresolved'. Evidence is an indirect phone-number coincidence linking North Ave. Dental Partners to a former Tru Family Dental address (Tru acquired by Heartland 2020) \u2014 no direct NPPES parent_company, no direct locator match, no documented platform-level structure. Should not be in the ready-to-validate file at medium confidence / unresolved gate-owner verdict.",
+   "original_tier": "branded_dso",
+   "source": "ready310 + weak_dso_row_review_20260702"
+  },
+  {
+   "location_id": "8d81d4516f493d1e",
+   "practice_name": "CHICAGO DENTISTRY LLC (DBA ARCHER DENTISTRY CHICAGO)",
+   "hold_reason": "lane3_pending_ownership_confirmation",
+   "detail": "QA verdict PASS_WITH_HOLDS (2026-07-02): 'dentist-owned' claim for Archer Dentistry not confirmed by independent evidence; do not count toward coverage/floor until ownership resolved.",
+   "original_tier": "dentist_multi",
+   "source": "wave4_gate_normalized_lane3_51_100_20260702 + VERDICT_QA_WAVE4_LANE3_51_100_20260702"
+  },
+  {
+   "location_id": "6c31d482e9a63431",
+   "practice_name": "Advanced Family Dental",
+   "hold_reason": "da_synthetic_npi_scope_correction_queue",
+   "detail": "PM catch 2026-07-02 via fail-closed validator: row carries DA_ synthetic NPI DA_c396391041ac (Data-Axle remnant, no phone). Real practice row 0d376204167d44a6 (ADVANCED FAMILY DENTAL OF SHOREWOOD, P.C., NPI 1932386810, same house number/ZIP) is ALREADY dso_regional. GLDP/Shore evidence = corroboration of an already-counted corporate practice; NOT net-new floor lift. Route: scope-correction queue (da_unverified reclass + possible duplicate_location merge).",
+   "original_tier": "branded_dso",
+   "source": "wave4_gate_normalized_lane3_51_100_20260702 + PM validator run 2026-07-02"
+  }
+ ]
+}

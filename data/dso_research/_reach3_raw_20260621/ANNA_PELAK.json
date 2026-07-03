@@ -1,0 +1,160 @@
+{
+  "network": "ANNA PELAK",
+  "network_id": "ao:PELAK_ANNA",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Dr. Anna M. Pelak DDS (Loyola 1987, 35+ years experience) owns and operates two GP dental offices in the northwest suburbs of Chicago under the consumer brand 'Total Dentistry': (1) 647 N. 1st Bank Dr, Palatine IL 60067 (TOTALIDLLC entity) and (2) 1296 S Sutton Rd, Streamwood IL 60107 (ARTOFASMILE entity, now branded Total Dentistry Streamwood). Both locations are listed on totaldentistry.org. The Palatine address also has a third NPI record 'ANNA PELAK & ASSOC' (org_only_npi, same phone/address as TOTALIDLLC) — that is an administrative org shell, not a separate physical clinic. No DSO/MSO/PE/management-company involvement found. The website explicitly describes the practice as 'local, family-owned' and notes it absorbed Sutton Lake Dental, Streamwood Family Dental, and Dr. Mark Pusateri's practice into the Total Dentistry family — organic consolidation by the founding dentist.",
+  "owner_operator_identity": "Dr. Anna M. Pelak DDS, CEO/Owner — Loyola University School of Dentistry 1987, 35+ years in practice, founder of Total Dentistry",
+  "brand_trade_names": [
+    "Total Dentistry",
+    "Anna Pelak & Assoc",
+    "Art of a Smile",
+    "Total Dentistry Streamwood"
+  ],
+  "legal_entities": [
+    "TOTALIDLLC (NPI 1629941299 — operating Palatine entity, AO Anna Pelak OWNER)",
+    "ARTOFASMILE (NPI 1235004334 — Streamwood entity, EIN 363271260, AO Anna Pelak OWNER, mailing 647 N 1st Bank Dr Palatine)"
+  ],
+  "durable_artifacts": [
+    "Shared AO: Anna Pelak listed as OWNER on NPI 1629941299 (TOTALIDLLC, Palatine) and NPI 1235004334 (ARTOFASMILE, Streamwood)",
+    "Shared mailing address: ARTOFASMILE NPI 1235004334 mails to 647 N 1st Bank Dr, Palatine IL 60067 — same as Palatine operating office",
+    "Consumer brand totaldentistry.org lists both 647 N. 1st Bank Dr Palatine and 1296 S Sutton Rd Streamwood as Total Dentistry locations",
+    "ARTOFASMILE website field: 'Totaldentistry-Streamwood.Business.Site' — confirms brand unification under Total Dentistry",
+    "EIN 363271260 on ARTOFASMILE NPI 1235004334 (Streamwood only)"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": "Location 36f2d7b78f905184 (ANNA PELAK & ASSOC, 647 1st bank dr, Palatine) shares the same phone (847-358-2477) and effectively the same address as location 1cb279f97b785d5f (TOTALIDLLC, 647 N 1st Bank Dr, Palatine) — these are the same physical clinic represented by two NPI records (one org-only NPI for the association entity, one for the LLC operating entity). The deduplication pipeline kept both because the normalized address strings differ slightly ('647 1st bank dr' vs '647 n 1st bank dr'). The org_only_npi record (ANNA PELAK & ASSOC, provider_count=0) should be flagged as a potential duplicate_location of the TOTALIDLLC record. It is currently classified 'solo_established' in practice_locations but the underlying NPI in practices is 'org_only_npi' — that discrepancy warrants review.",
+  "evidence_chain": "AO signal: Anna Pelak appears as authorized official (OWNER/CEO) on 3 NPPES organization NPIs across 2 ZIPs (60067 Palatine, 60107 Streamwood). Documentary corroboration: (1) totaldentistry.org/about and totaldentistry.org/ both list Palatine (647 N. 1st Bank Dr) and Streamwood (1296 S Sutton Rd) as the two Total Dentistry locations under Dr. Pelak's ownership; (2) the Streamwood NPI (ARTOFASMILE) has website field 'Totaldentistry-Streamwood.Business.Site' confirming brand unity; (3) ARTOFASMILE mailing address points to the Palatine office (centralized admin); (4) Vitals, WebMD, DentalPlans, Healthgrades, LocalMed, Barrington Chamber all confirm Dr. Anna M. Pelak DDS as the sole owner/dentist at both locations; (5) No MSO, management company, PE sponsor, or DSO platform found in any source.",
+  "future_app_notes": "Flag location 36f2d7b78f905184 (ANNA PELAK & ASSOC) as likely duplicate_location of 1cb279f97b785d5f (TOTALIDLLC) — same physical address and phone, org_only_npi in practices but solo_established in practice_locations. If resolved as duplicate, this network has exactly 2 distinct GP locations: Palatine (TOTALIDLLC) and Streamwood (ARTOFASMILE). Dr. Pelak has absorbed at least 3 previously independent practices (Sutton Lake Dental, Streamwood Family Dental, Dr. Mark Pusateri's practice) into Total Dentistry — worth monitoring for further organic growth. No web evidence of any pending sale or DSO affiliation.",
+  "classifications": [
+    {
+      "location_id": "36f2d7b78f905184",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Anna M. Pelak DDS",
+      "network_id": "ao:PELAK_ANNA",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60067 and 60107",
+          "AO title: CEO on NPI 1457574568 (ANNA PELAK & ASSOC)"
+        ],
+        "evidence": [
+          "totaldentistry.org lists Palatine (647 N. 1st Bank Dr) as one of two Total Dentistry locations owned by Dr. Anna Pelak DDS",
+          "Barrington Chamber of Commerce listing: 'Total Dentistry Dr. Anna M. Pelak' at Palatine address",
+          "BBB profile: 'Anna M. Pelak, D.D.S. & Assoc.' at 647 N 1st Bank Dr Palatine"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.totaldentistry.org/about",
+        "https://www.totaldentistry.org/",
+        "https://business.barringtonchamber.com/list/member/total-dentistry-dr-anna-m-pelak-palatine-1812",
+        "https://www.bbb.org/us/il/palatine/profile/cosmetic-dentistry/anna-m-pelak-dds-assoc-0654-88017232"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "ANNA PELAK",
+        "reach": 3,
+        "zips": ["60067", "60107"],
+        "npi": "1457574568",
+        "ao_title": "CEO",
+        "practice_name": "ANNA PELAK & ASSOC",
+        "entity_classification_npi": "org_only_npi",
+        "entity_classification_location": "solo_established",
+        "provider_count_location": 0,
+        "note": "org_only_npi shell at same address/phone as TOTALIDLLC (1cb279f97b785d5f) — likely duplicate_location candidate"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "POTENTIAL DUPLICATE: This location (647 1st bank dr, phone 847-358-2477, provider_count=0) shares the same physical address and phone as location 1cb279f97b785d5f (TOTALIDLLC, 647 N 1st Bank Dr, same phone). The NPI in practices is classified org_only_npi but practice_locations shows solo_established. This is likely an administrative org-NPI shell for the same clinic, not a separate physical GP location. Recommend review for duplicate_location reclassification.",
+      "reasoning": "This NPI record (ANNA PELAK & ASSOC) is an org-only NPI (provider_count=0) at the same address and phone as the TOTALIDLLC operating entity. totaldentistry.org confirms Dr. Pelak owns a two-location private dental group (Palatine + Streamwood) with no DSO/MSO/PE involvement. The practice is described as 'local, family-owned.' AO title CEO on this NPI plus OWNER on TOTALIDLLC and ARTOFASMILE confirms Dr. Pelak as sole owner. Candidate tier dentist_multi is corroborated by the official group website. gate_status ready_for_validation because documentary website evidence ties the owner to multiple practices. Stale/duplicate flag: this may be a phantom location — the same physical Palatine clinic registered under two org NPIs."
+    },
+    {
+      "location_id": "1cb279f97b785d5f",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Anna M. Pelak DDS",
+      "network_id": "ao:PELAK_ANNA",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60067 and 60107",
+          "AO title: OWNER on NPI 1629941299 (TOTALIDLLC)"
+        ],
+        "evidence": [
+          "totaldentistry.org lists Palatine (647 N. 1st Bank Dr, phone 847-358-2477) as one of two Total Dentistry locations owned by Dr. Anna Pelak DDS",
+          "Dr. Pelak bio on website: over 35 years experience, Loyola 1987, sole lead dentist at both locations",
+          "Multiple third-party profiles (Vitals, WebMD, Healthgrades, DentalPlans, LocalMed) confirm Dr. Pelak at this Palatine address",
+          "No MSO/PE/DSO-management evidence found in any source"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.totaldentistry.org/about",
+        "https://www.totaldentistry.org/",
+        "https://www.vitals.com/dentists/Dr_Anna_Pelak",
+        "https://doctor.webmd.com/doctor/anna-pelak-bb0bf80f-b066-4e80-a081-5ddc3ad2c245-overview",
+        "https://www.healthgrades.com/dentist/dr-anna-pelak-sr1ewe3233"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "ANNA PELAK",
+        "reach": 3,
+        "zips": ["60067", "60107"],
+        "npi": "1629941299",
+        "ao_title": "OWNER",
+        "practice_name": "TOTALIDLLC",
+        "entity_classification": "small_group",
+        "provider_count": 2
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "TOTALIDLLC at 647 N 1st Bank Dr, Palatine is the primary operating entity for Dr. Anna Pelak's Palatine GP clinic. AO Anna Pelak (OWNER) confirmed as sole owner-operator by totaldentistry.org. The website explicitly brands both locations as 'Total Dentistry' and describes the practice as 'local, family-owned' with no DSO/MSO/PE affiliation. The site notes absorption of multiple formerly independent practices (Sutton Lake Dental, Streamwood Family, Dr. Pusateri) into the group — consistent with dentist_multi organic consolidation. gate_status ready_for_validation because the official group website is documentary evidence tying the owner to 2+ practices."
+    },
+    {
+      "location_id": "1fdb47efedda3307",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Anna M. Pelak DDS",
+      "network_id": "ao:PELAK_ANNA",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60067 and 60107",
+          "AO title: OWNER on NPI 1235004334 (ARTOFASMILE)",
+          "Mailing address 647 N 1st Bank Dr Palatine — same as primary Palatine office",
+          "EIN 363271260 on ARTOFASMILE NPI"
+        ],
+        "evidence": [
+          "totaldentistry.org lists Streamwood (1296 S Sutton Rd, phone 847-697-3300) as one of two Total Dentistry locations under Dr. Pelak",
+          "totaldentistry.org/streamwood-il-dentists is a dedicated Streamwood location page",
+          "Website field in practice_locations: 'Totaldentistry-Streamwood.Business.Site' confirms brand unification",
+          "DentalPlans.com lists Dr. Anna M Pelak DDS at 1296 S Sutton Rd, Streamwood IL 60107",
+          "Yelp entry 'TOTAL DENTISTRY-STREAMWOOD' at 1296 S Sutton Rd, Streamwood (updated March 2026)"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.totaldentistry.org/",
+        "https://www.totaldentistry.org/streamwood-il-dentists",
+        "https://www.dentalplans.com/dentists/illinois/streamwood/60107/dr-anna-pelak-134828/",
+        "https://www.yelp.com/biz/sutton-lake-dental-care-streamwood"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "ANNA PELAK",
+        "reach": 3,
+        "zips": ["60067", "60107"],
+        "npi": "1235004334",
+        "ao_title": "OWNER",
+        "practice_name": "ARTOFASMILE",
+        "entity_classification": "small_group",
+        "provider_count": 0,
+        "ein": "363271260",
+        "mailing_address": "647 N 1ST BANK DR, PALATINE IL 60067"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": "The trade name 'Art of a Smile' appears to have been retired in favor of 'Total Dentistry Streamwood'. The Yelp listing was formerly 'Sutton Lake Dental Care' — consistent with the totaldentistry.org statement that Dr. Pelak absorbed Sutton Lake Dental into her practice. The federal NPI ARTOFASMILE likely reflects a prior DBA. The practice is confirmed actively operating at 1296 S Sutton Rd Streamwood as of March 2026 per Yelp.",
+      "reasoning": "ARTOFASMILE NPI 1235004334 at 1296 Sutton Rd, Streamwood is Dr. Pelak's second GP location, now consumer-branded as 'Total Dentistry Streamwood' (totaldentistry.org). The NPI organization name 'ARTOFASMILE' is a prior or legacy DBA — the practice website field already shows 'Totaldentistry-Streamwood.Business.Site'. Anna Pelak is listed as OWNER on this NPI with mailing routed to her Palatine office, confirming centralized admin. totaldentistry.org/streamwood-il-dentists dedicates a page to this location under the Total Dentistry brand. Dentist_multi classification is fully corroborated. No DSO/MSO/PE evidence found."
+    }
+  ]
+}

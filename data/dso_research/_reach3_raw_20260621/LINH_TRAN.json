@@ -1,0 +1,136 @@
+{
+  "network": "LINH TRAN",
+  "network_id": "ao:TRAN_LINH",
+  "owner_type_verdict": "dentist_owned_multi",
+  "network_summary": "Dr. Linh Thuy Tran, DMD/DDS is the documented owner-dentist of three TranDai Dental Care locations across Chicagoland (Des Plaines ZIP 60018, Chicago Edgewater ZIP 60640, Chicago West Rogers Park ZIP 60659). Each location operates under a different DBA (Oakton White Dental, Broadway Dental Associates, Peterson FOREVER SMILES). NPPES explicitly records her title as 'DENTIST / OWNER' at the Peterson Ave location. No MSO, management company, DSO platform, or PE sponsor was found. This is a private multi-office dental group owned and operated by a single dentist.",
+  "owner_operator_identity": "Dr. Linh Thuy Tran, DMD/DDS — dentist and documented owner (NPPES title 'DENTIST / OWNER' on NPI 1275204208)",
+  "brand_trade_names": [
+    "TranDai Dental Care",
+    "TranDai Dental Care PC",
+    "Oakton White Dental",
+    "Broadway Dental Associates",
+    "Peterson FOREVER SMILES"
+  ],
+  "legal_entities": [
+    "TRANDAI DENTAL CARE (legal business name, NPI 1659542330)",
+    "TRANDAI DENTAL CARE (org name, NPI 1902063043)",
+    "TRANDAI DENTAL CARE (org name, NPI 1275204208)"
+  ],
+  "durable_artifacts": [
+    "NPI 1659542330 (Des Plaines 60018): AO = DR. LINH THUY TRAN, title DENTIST, DBA = Oakton White Dental",
+    "NPI 1902063043 (Chicago 60640): AO = DR. LINH THUY TRAN, title DENTIST, DBA = Broadway Dental Associates",
+    "NPI 1275204208 (Chicago 60659): AO = Mrs. Linh Thuy Tran, title DENTIST / OWNER, DBA = Peterson FOREVER SMILES",
+    "Shared authorized official (LINH THUY TRAN) across all three NPIs, confirmed by opennpi.com",
+    "All three organizations share the legal/trade name TRANDAI DENTAL CARE"
+  ],
+  "mso_platform_pe_evidence": null,
+  "stale_closed_false_positive_notes": null,
+  "evidence_chain": "AO signal: LINH TRAN appears as authorized official on 3 org NPIs across ZIPs 60018, 60640, 60659, all under the TRANDAI DENTAL CARE brand. Documentary corroboration: opennpi.com confirms AO = DR. LINH THUY TRAN (NPI 1902063043, 5449 N Broadway); opennpi.com confirms AO = Mrs. Linh Thuy Tran with title 'DENTIST / OWNER' (NPI 1275204208, 3044 W Peterson); opennpi.com confirms AO = DR. LINH THUY TRAN (NPI 1659542330, 1625 E Oakton). Healthgrades independently lists Dr. Linh Tran DMD practicing at the Des Plaines TranDai location. No MSO/DSO/PE layer found after searching 'Linh Tran TranDai Dental owner Chicago multiple locations'. Verdict: dentist-owned private multi-location group.",
+  "future_app_notes": "Three distinct consumer-facing DBAs (Oakton White Dental, Broadway Dental Associates, Peterson FOREVER SMILES) make this network appear as three independent practices on Google Maps and Yelp — a stealth-like presentation without any corporate/MSO layer. If the network grows to 4+ locations or a management company is registered, re-evaluate as branded_dso. The NPI at 5449 N Broadway also co-locates with Broadway Medical Office SC (OB/GYN, NPI 1427271790) and an Internal Medicine physician, suggesting a multi-specialty medical building — the dental NPI is distinct. Dr. Anhminh Trandai (possibly a relative) also practices at the Broadway and Des Plaines locations but has separate individual NPIs.",
+  "classifications": [
+    {
+      "location_id": "f94e36541d97c545",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Linh Thuy Tran, DMD/DDS — NPPES AO title DENTIST",
+      "network_id": "ao:TRAN_LINH",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60018, 60640, 60659",
+          "shared brand name TRANDAI DENTAL CARE across all three org NPIs"
+        ],
+        "evidence": [
+          "opennpi.com NPI 1659542330: AO = DR. LINH THUY TRAN, title DENTIST, DBA = Oakton White Dental (https://opennpi.com/provider/1659542330)",
+          "WebMD practice page lists Dr. Linh Thuy Tran and Dr. Anhminh Trandai as practitioners at TranDai Dental Care PC, 1625 E Oakton St Des Plaines (https://doctor.webmd.com/practice/trandai-dental-care-pc-dc1e0f3e-c165-466e-b501-213454b76421)",
+          "Healthgrades lists Dr. Linh Tran DMD with TranDai Dental Care at 1625 E Oakton St Des Plaines as one of her practice locations (https://www.healthgrades.com/dentist/dr-linh-tran-yv9cy)"
+        ]
+      },
+      "evidence_urls": [
+        "https://opennpi.com/provider/1659542330",
+        "https://doctor.webmd.com/practice/trandai-dental-care-pc-dc1e0f3e-c165-466e-b501-213454b76421",
+        "https://www.healthgrades.com/dentist/dr-linh-tran-yv9cy"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "LINH TRAN",
+        "reach": 3,
+        "zips": ["60018", "60640", "60659"],
+        "npi": "1659542330",
+        "dba": "Oakton White Dental"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Dr. Linh Thuy Tran is the documented AO and dentist at this Des Plaines TranDai Dental Care location. WebMD and Healthgrades independently confirm her practice here. DBA is Oakton White Dental. No MSO/DSO/PE layer found. Corroborated by multiple third-party clinical directories listing her as practitioner-owner. Meets ready_for_validation bar: owner identity confirmed across NPPES + clinical directories."
+    },
+    {
+      "location_id": "e09e821b9be822e8",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Linh Thuy Tran, DMD/DDS — NPPES AO title DENTIST",
+      "network_id": "ao:TRAN_LINH",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60018, 60640, 60659",
+          "shared brand name TRANDAI DENTAL CARE"
+        ],
+        "evidence": [
+          "opennpi.com NPI 1902063043: AO = DR. LINH THUY TRAN, title DENTIST, DBA = Broadway Dental Associates (https://opennpi.com/provider/1902063043)",
+          "Dr. Anhminh Trandai (individual NPI 1902897119) also practices at 5449 N Broadway confirming this is an active multi-provider dental office under TranDai brand"
+        ]
+      },
+      "evidence_urls": [
+        "https://opennpi.com/provider/1902063043",
+        "https://opennpi.com/provider/1902897119"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "LINH TRAN",
+        "reach": 3,
+        "zips": ["60018", "60640", "60659"],
+        "npi": "1902063043",
+        "dba": "Broadway Dental Associates"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "opennpi.com confirms AO = DR. LINH THUY TRAN for NPI 1902063043 at 5449 N Broadway, Chicago 60640, DBA Broadway Dental Associates. This consumer-facing DBA differs from the Des Plaines location, masking the common ownership. Dr. Anhminh Trandai (NPI 1902897119) also practices here, consistent with a family-run multi-location group. No DSO/MSO/PE evidence. Meets ready_for_validation bar: NPPES AO + third-party NPI registry confirmation."
+    },
+    {
+      "location_id": "579f7df9b11fb8bb",
+      "candidate_tier": "dentist_multi",
+      "pe_backed": false,
+      "owner_identity": "Dr. Linh Thuy Tran, DMD/DDS — NPPES AO title 'DENTIST / OWNER'",
+      "network_id": "ao:TRAN_LINH",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3 across ZIPs 60018, 60640, 60659",
+          "shared brand name TRANDAI DENTAL CARE"
+        ],
+        "evidence": [
+          "opennpi.com NPI 1275204208: AO = Mrs. Linh Thuy Tran, title explicitly 'DENTIST / OWNER', DBA = Peterson FOREVER SMILES (https://opennpi.com/provider/1275204208)",
+          "BBB profile for Peterson Smiles Forever Dental at 3044 W Peterson Ave Chicago corroborates this address as an active dental practice"
+        ]
+      },
+      "evidence_urls": [
+        "https://opennpi.com/provider/1275204208",
+        "https://www.bbb.org/us/il/chicago/profile/dental-services/peterson-smiles-forever-dental-0654-1000103670"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "LINH TRAN",
+        "reach": 3,
+        "zips": ["60018", "60640", "60659"],
+        "npi": "1275204208",
+        "dba": "Peterson FOREVER SMILES"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Strongest individual corroborator in the cluster: NPPES explicitly records Linh Thuy Tran's title as 'DENTIST / OWNER' (not merely AO/admin contact) for NPI 1275204208 at 3044 W Peterson Ave, Chicago 60659, DBA Peterson FOREVER SMILES. BBB listing at the same address corroborates the practice is active. This is the clearest ownership proof in the cluster and anchors the dentist_multi verdict for all three locations."
+    }
+  ]
+}

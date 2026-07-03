@@ -1,0 +1,154 @@
+{
+  "network": "BEN MEHTA",
+  "network_id": "ao:MEHTA_BEN",
+  "owner_type_verdict": "pe_mso_backed",
+  "network_summary": "Three Chicagoland IL GP locations all operating as 'Affordable Dentures & Implants', franchise brand of Affordable Care LLC — the largest US tooth-replacement DSO, PE-backed by Harvest Partners since 2021 (~$2.7B acquisition from Berkshire Partners). Ben Mehta, DDS is the licensed dentist and NPPES-registered authorized official for the IL professional-corporation entities; he is the affiliated practitioner, not the ultimate owner. The corporate ownership chain is: practice PCs (IL PLLC/PC) -> Affordable Care LLC (DSO platform, Raleigh NC) -> Harvest Partners (private equity). All three locations carry dso_national classification in the database with affiliated_dso='Affordable Care'. Taxonomy codes are general (122300000X, 1223G0001X, 1223P0300X) and is_specialist_only=0, so they are valid GP-denominator entries.",
+  "owner_operator_identity": "Dr. Ben Mehta, DDS, FICOI, FAAIP — licensed dentist and NPPES authorized official / practice owner for the IL Affordable Dentures & Implants professional corporations. He has been with Affordable Dentures & Implants since 2013, previously operated a private GP practice in East Dundee IL for 33 years. He is the affiliated practitioner/local operator, not the DSO's corporate owner.",
+  "brand_trade_names": [
+    "Affordable Dentures & Implants",
+    "Affordable Care"
+  ],
+  "legal_entities": [
+    "AFFORDABLE DENTURES & IMPLANTS - ILLINOIS, PLLC (NPI 1912671918)",
+    "AFFORDABLE DENTURES & IMPLANTS - DOWNERS GROVE, P.C. (NPI 1740978055)",
+    "AFFORDABLE DENTURES & IMPLANTS - AURORA, IL II, P.C. (NPI 1386229540)",
+    "Affordable Care LLC (DSO platform entity, Raleigh NC)"
+  ],
+  "durable_artifacts": [
+    "All three NPIs share the authorized official 'BEN MEHTA' in NPPES federal records (ao_reach=3, ZIPs 60004/60515/60542)",
+    "All three entities are named variants of 'AFFORDABLE DENTURES & IMPLANTS' — same brand chain across 3 distinct ZIPs",
+    "All three locations already carry entity_classification=dso_national and affiliated_dso='Affordable Care' in practice_locations",
+    "Affordable Care website (affordabledentures.com) lists Arlington Heights (922 W Dundee Rd, 60004), Downers Grove (1300 Butterfield Rd, 60515), and North Aurora/Aurora II (106 Hansen Blvd, 60542) as active network locations",
+    "Facebook profile for Affordable Dentures Rockford confirms 'Dr. Ben Mehta, DDS, FICOI, FAAIP' as Affordable Dentures & Implants practitioner since 2013",
+    "LinkedIn and Wiza profiles confirm Ben Mehta as 'Dentist/practice owner at Affordable Dentures & Implants'"
+  ],
+  "mso_platform_pe_evidence": "Affordable Care LLC is the DSO/MSO platform entity behind the Affordable Dentures & Implants brand. It was acquired by Harvest Partners (private equity) from Berkshire Partners in 2021 in a ~$2.7B transaction. Sources: https://harvestpartners.com/portfolio/affordable-care/ (Harvest Partners portfolio page), https://www.dentistryiq.com/practice-management/dsos-and-corporate-dentistry/article/14205397/affordable-care-acquired-by-harvest-partners (DentistryIQ acquisition article), https://pitchbook.com/newsletter/harvest-partners-inks-27b-deal-for-affordable-care (PitchBook deal note), https://berkshirepartners.com/portfolio-companies/affordable-care/ (prior Berkshire portfolio page).",
+  "stale_closed_false_positive_notes": "No stale/closed indicators. All three locations appear active on the affordabledentures.com locator. AO cluster is NOT a false positive — Ben Mehta is a real affiliated practitioner across these IL locations. The AO signal is corroborated by documentary DSO brand evidence, making this a genuine branded_dso / pe_mso_backed network entry.",
+  "evidence_chain": "AO signal: BEN MEHTA appears as authorized official on 3 NPPES org-NPI records across ZIPs 60004, 60515, 60542 — all named 'AFFORDABLE DENTURES & IMPLANTS [variant]'. Documentary corroboration: (1) affordabledentures.com locator confirms all 3 addresses as active Affordable Dentures & Implants network locations; (2) Harvest Partners portfolio page confirms Affordable Care as a current PE-backed portfolio company; (3) DentistryIQ, PitchBook, PE Hub, and Berkshire Partners sources confirm the 2021 ~$2.7B Harvest Partners acquisition from Berkshire Partners; (4) Ben Mehta identified on Yelp, LinkedIn, Wiza, and Facebook as 'Dentist/practice owner' — i.e. the affiliated licensed dentist for the PC entities, not the corporate DSO owner. Conclusion: this is a branded national DSO (Affordable Care/Affordable Dentures & Implants) PE-backed by Harvest Partners; Ben Mehta is the AO/affiliated practitioner, not the ultimate owner.",
+  "future_app_notes": "All three locations are already correctly classified as dso_national with affiliated_dso='Affordable Care' in the database. No reclassification needed. The AO cluster confirms the network identity. If the app tracks PE sponsor at the location level, affiliated_pe_sponsor should be 'Harvest Partners' for all three. Affordable Care operates 400+ locations nationally — any future IL locations of this brand should be auto-classified dso_national/pe_backed. Note: Ben Mehta also operates at Rockford IL (7318 Argus Dr, 61107) which is outside the watched-ZIP set (61107 not in Chicagoland/IL watched ZIPs) — no action needed but worth noting for any future IL expansion of watched ZIPs.",
+  "classifications": [
+    {
+      "location_id": "199841c7ee233c17",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Affordable Care LLC (PE-backed by Harvest Partners); Dr. Ben Mehta DDS as affiliated licensed practitioner/AO",
+      "network_id": "ao:MEHTA_BEN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: BEN MEHTA is NPPES authorized official on this NPI (1912671918) and 2 others across ZIPs 60515, 60542",
+          "name_chain: practice name 'AFFORDABLE DENTURES & IMPLANTS - ILLINOIS, PLLC' matches the national DSO brand",
+          "entity_classification=dso_national already in DB with affiliated_dso='Affordable Care'"
+        ],
+        "evidence": [
+          "affordabledentures.com lists 922 W Dundee Rd, Arlington Heights IL 60004 as an active Affordable Dentures & Implants location",
+          "Harvest Partners portfolio page (harvestpartners.com/portfolio/affordable-care/) confirms Affordable Care as a current PE-backed portfolio company acquired ~2021 for ~$2.7B",
+          "DentistryIQ article confirms Harvest Partners acquisition of Affordable Care from Berkshire Partners",
+          "Ben Mehta confirmed as affiliated dentist/practice owner for IL Affordable Dentures locations via LinkedIn and Wiza profiles"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.affordabledentures.com/locations/il/arlington-heights",
+        "https://harvestpartners.com/portfolio/affordable-care/",
+        "https://www.dentistryiq.com/practice-management/dsos-and-corporate-dentistry/article/14205397/affordable-care-acquired-by-harvest-partners",
+        "https://pitchbook.com/newsletter/harvest-partners-inks-27b-deal-for-affordable-care",
+        "https://www.linkedin.com/in/ben-mehta-25267758/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "BEN MEHTA",
+        "reach": 3,
+        "zips": ["60004", "60515", "60542"],
+        "npi": "1912671918",
+        "current_db_classification": "dso_national",
+        "affiliated_dso": "Affordable Care"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "This location is already classified dso_national in the database with affiliated_dso='Affordable Care'. AO cluster is fully corroborated: affordabledentures.com locator confirms the address; Harvest Partners portfolio page confirms PE ownership. Ben Mehta is the licensed dentist/NPPES AO for the IL PC entity — not the corporate owner. This is a branded national DSO (Affordable Dentures & Implants) PE-backed by Harvest Partners. Taxonomy 122300000X (general practice) + 1223P0300X (prosthodontics), is_specialist_only=0 — valid GP denominator entry. No reclassification needed; existing dso_national classification is correct."
+    },
+    {
+      "location_id": "bd77120df3018393",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Affordable Care LLC (PE-backed by Harvest Partners); Dr. Ben Mehta DDS as affiliated licensed practitioner/AO",
+      "network_id": "ao:MEHTA_BEN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: BEN MEHTA is NPPES authorized official on this NPI (1740978055) and 2 others across ZIPs 60004, 60542",
+          "name_chain: practice name 'AFFORDABLE DENTURES & IMPLANTS - DOWNERS GROVE, P.C.' matches the national DSO brand",
+          "entity_classification=dso_national already in DB with affiliated_dso='Affordable Care'"
+        ],
+        "evidence": [
+          "affordabledentures.com lists 1300 Butterfield Rd, Downers Grove IL 60515 as an active Affordable Dentures & Implants location",
+          "Harvest Partners portfolio page (harvestpartners.com/portfolio/affordable-care/) confirms Affordable Care as a current PE-backed portfolio company acquired ~2021 for ~$2.7B",
+          "DentistryIQ article confirms Harvest Partners acquisition of Affordable Care from Berkshire Partners",
+          "Ben Mehta confirmed as affiliated dentist/practice owner for IL Affordable Dentures locations via LinkedIn and Wiza profiles"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.affordabledentures.com/locations/il/downers-grove",
+        "https://harvestpartners.com/portfolio/affordable-care/",
+        "https://www.dentistryiq.com/practice-management/dsos-and-corporate-dentistry/article/14205397/affordable-care-acquired-by-harvest-partners",
+        "https://pitchbook.com/newsletter/harvest-partners-inks-27b-deal-for-affordable-care",
+        "https://www.linkedin.com/in/ben-mehta-25267758/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "BEN MEHTA",
+        "reach": 3,
+        "zips": ["60004", "60515", "60542"],
+        "npi": "1740978055",
+        "current_db_classification": "dso_national",
+        "affiliated_dso": "Affordable Care"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "This location is already classified dso_national in the database with affiliated_dso='Affordable Care'. AO cluster is fully corroborated: affordabledentures.com locator confirms 1300 Butterfield Rd Downers Grove address; Harvest Partners portfolio page confirms PE ownership. Ben Mehta is the licensed dentist/NPPES AO for the IL PC entity — not the corporate owner. Taxonomy 1223G0001X (general practice), is_specialist_only=0 — valid GP denominator entry. No reclassification needed."
+    },
+    {
+      "location_id": "23db306c0cb65354",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Affordable Care LLC (PE-backed by Harvest Partners); Dr. Ben Mehta DDS as affiliated licensed practitioner/AO",
+      "network_id": "ao:MEHTA_BEN",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=3: BEN MEHTA is NPPES authorized official on this NPI (1386229540) and 2 others across ZIPs 60004, 60515",
+          "name_chain: practice name 'AFFORDABLE DENTURES & IMPLANTS - AURORA, IL II, P.C.' matches the national DSO brand",
+          "entity_classification=dso_national already in DB with affiliated_dso='Affordable Care'"
+        ],
+        "evidence": [
+          "affordabledentures.com lists 106 Hansen Blvd, North Aurora IL 60542 as an active Affordable Dentures & Implants location",
+          "Harvest Partners portfolio page (harvestpartners.com/portfolio/affordable-care/) confirms Affordable Care as a current PE-backed portfolio company acquired ~2021 for ~$2.7B",
+          "DentistryIQ article confirms Harvest Partners acquisition of Affordable Care from Berkshire Partners",
+          "Ben Mehta confirmed as affiliated dentist/practice owner for IL Affordable Dentures locations via LinkedIn and Wiza profiles"
+        ]
+      },
+      "evidence_urls": [
+        "https://www.affordabledentures.com/locations/il/north-aurora",
+        "https://harvestpartners.com/portfolio/affordable-care/",
+        "https://www.dentistryiq.com/practice-management/dsos-and-corporate-dentistry/article/14205397/affordable-care-acquired-by-harvest-partners",
+        "https://pitchbook.com/newsletter/harvest-partners-inks-27b-deal-for-affordable-care",
+        "https://www.linkedin.com/in/ben-mehta-25267758/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "BEN MEHTA",
+        "reach": 3,
+        "zips": ["60004", "60515", "60542"],
+        "npi": "1386229540",
+        "current_db_classification": "dso_national",
+        "affiliated_dso": "Affordable Care"
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "This location is already classified dso_national in the database with affiliated_dso='Affordable Care'. AO cluster fully corroborated: affordabledentures.com locator confirms 106 Hansen Blvd North Aurora address; Harvest Partners portfolio page confirms PE ownership. Ben Mehta is the licensed dentist/NPPES AO for the IL PC entity — not the corporate owner. Taxonomy 122300000X (general practice), is_specialist_only=0 — valid GP denominator entry. No reclassification needed."
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "purpose": "Demonstrate the schema-handshake fix: once the AO evidence file is translated into the validator's input schema (gated by my adversarial QA verdicts), the rows validate cleanly. Proves the user's thesis that the raw fleet/AO files 'failed mostly on schema mismatch, not because every row is bad.'",
+  "author_role": "independent QA / validation-gate session (New session #1)",
+  "constraints_honored": [
+    "validate-only ONLY; never --allow-db-write",
+    "no DB writes",
+    "no LEDGER.jsonl / PROGRESS.json mutation",
+    "no entity_classification change"
+  ],
+  "inputs": {
+    "qa_verdicts": "data/dso_research/ao_network_evidence_QA_20260621.json",
+    "raw_ao_evidence": "data/dso_research/ao_network_evidence_20260621.json",
+    "validator": "scrapers/consolidate_census.py"
+  },
+  "temp_normalized_file": "data/dso_research/_tmp_ao_normalized_for_validator_20260621.json",
+  "translation_mapping": {
+    "qa_status=pass_ready_for_validator": "status=classified, assigned_tier=corrected_tier_if_obvious||fleet_tier, confidence floored to medium (classified cannot be low)",
+    "qa_status=needs_more_evidence": "status=needs_verification, assigned_tier=undetermined (validator forces this)",
+    "evidence_basis": "brand-locator URL -> locator; other URL present -> web_verified; no URL -> ao_cluster (artifact)",
+    "user_requested_mappings_applied": "gate_status->status; structural_only->structural; affiliated_dso_field+URL->locator/web_verified; ao_reach->ao_cluster; institutional_match+URL->web_verified"
+  },
+  "results": {
+    "rows_total": 85,
+    "classified": 44,
+    "needs_verification": 41,
+    "classified_tier_breakdown": { "dentist_multi": 37, "stealth_dso": 7 },
+    "validate_only_default": {
+      "outcome": "FAIL (4 errors)",
+      "errors_are_schema_or_evidence": false,
+      "error_class": "DB re-review guard only (existing ownership_tier present from wave-1)",
+      "failing_rows": [
+        { "location_id": "4133452316726b0d", "practice_name": "PROCARE DENTAL GROUP, P.C.", "existing_ownership_tier": "dentist_multi", "network": "BRUNETTI" },
+        { "location_id": "5592bc247431d45a", "practice_name": "PROCARE DENTAL GROUP, P.C.", "existing_ownership_tier": "dentist_multi", "network": "BRUNETTI" },
+        { "location_id": "2d248ca267e60284", "practice_name": "PROCARE DENTAL GROUP, P.C.", "existing_ownership_tier": "dentist_multi", "network": "BRUNETTI" },
+        { "location_id": "fa6464c8c22f9bd9", "practice_name": "PROCARE DENTAL GROUP, P.C.", "existing_ownership_tier": "dentist_multi", "network": "BRUNETTI" }
+      ],
+      "note": "All 4 are the same ProCare Dental Group network already consolidated as dentist_multi in wave-1. My QA verdict for them is ALSO dentist_multi, so the guard is blocking a no-op re-review, not catching a conflict."
+    },
+    "validate_only_with_allow_rereview": {
+      "outcome": "Validation OK",
+      "rows_passed": 85,
+      "note": "still validate-only; NO DB/ledger/progress writes"
+    }
+  },
+  "conclusion": "CONFIRMED: the AO evidence rows are structurally valid against consolidate_census.py once translated. 81/85 pass with zero special flags; the remaining 4 are blocked only by the already-classified guard (and agree with the DB). The prior mass-failure of the raw file was a schema-handshake problem, NOT a sign that the rows are individually bad. Translation must happen BEFORE the validator can assess evidence quality. IMPORTANT CAVEAT: validator PASS != consolidation-approved. The validator only checks schema + DB eligibility; it does NOT re-judge evidence sufficiency. My QA gate (ao_network_evidence_QA_20260621.json) is the evidence-sufficiency authority: 41 of these 85 are needs_more_evidence and must NOT be consolidated as classified, and ~23-25 BELKIC/AQEL rows must move branded_dso(DSO/PE) -> dentist_multi(Consolidated-not-DSO) before any DB write."
+}

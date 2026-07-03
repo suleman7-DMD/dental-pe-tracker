@@ -1,0 +1,40 @@
+{
+ "_doc": "Independent QA re-verification of the Gate Owner's REVISED consolidation candidate manifest (post MUST-FIX). READ-ONLY. New file; no prior QA file or manifest mutated. No DB/LEDGER/PROGRESS writes.",
+ "author_role": "independent QA / validation-gate session (New session #1)",
+ "reviewed_files": [
+  "data/dso_research/consolidation_candidate_manifest_20260621.json (revised in place, mtime 11:25)",
+  "data/dso_research/_ready_to_validate_normalized_20260621.json (revised in place, mtime 11:24)"
+ ],
+ "reviewed_at": "2026-06-21",
+ "verdict": "PASS — revision is correct and complete. All 6 requested checks pass; cross-bucket integrity intact. Consolidation remains FROZEN.",
+
+ "requested_checks": {
+  "1_ready_to_validate_is_exactly_65": {"pass": true, "observed": 65},
+  "2_no_protected_AO_rows_remain_in_ready": {"pass": true, "observed": "0 protected-network rows, 0 ao-cluster-only (empty evidence_urls) rows in ready. Tier dist dentist_multi 24 / branded_dso 21 / stealth_dso 19 / true_independent 1; evidence_basis web_verified 45 / locator 17 / intel_dossier 2 / structural 1 — exactly the clean-65 set."},
+  "3_evidence_gap_backfill_queue_is_114": {"pass": true, "observed": 114, "lanes": {"locator_exact": 22, "practice_intel": 21, "AO_network": 71}},
+  "4_AO_network_is_71": {"pass": true, "observed": "71 = 58 protected-hold + 13 original no-hold"},
+  "5_protected_network_hold_flag": {
+   "pass": true,
+   "observed": "protected_network_hold=true on exactly 58; false/absent on 56. All 58 hold rows are in the AO_network lane (0 leaked into locator_exact/practice_intel). The 58 match the 6 protected networks exactly: SHAFI 17, NITTINGER 12, BRUNETTI 9, SWEIS 7, LABINOV 7, RAMAHA 6. Hold tiers: dentist_multi 39, branded_dso 12, stealth_dso 7 (DSO-tier = Nittinger 12 branded + Labinov 7 stealth = 19). The 13 no-hold AO rows contain 0 protected-network rows (12 dentist_multi + 1 single_loc_group)."
+  },
+  "6_validate_only_targets_only_the_65": {
+   "pass": true,
+   "observed": "_meta.validate_only_target = buckets.ready_to_validate (normalized in _ready_to_validate_normalized_20260621.json). That normalized file holds exactly 65 classifications, location_id set == ready set (symdiff 0), 0 protected. _meta.consolidation_status still FROZEN — --allow-db-write NOT authorized until the user says 'consolidate approved manifest'."
+  }
+ },
+
+ "additional_integrity_checks": {
+  "partition_clean": "ready ∩ backfill = 0, ready ∩ needs_more_evidence = 0, ready ∩ conflicts = 0, ready ∩ rejected = 0. backfill ⊂ needs_more_evidence (114/114). taxonomy_revised ⊂ ready (14/14, the Dental Dreams/UDP restorations preserved).",
+  "count_reconciliation": "ready 65 + needs_more_evidence 227 (113 gate_disposition + 114 from_ready_demotion) + rejected 7 + conflicts 73 = consistent; backfill 114 == from_ready_demotion subset; no double-count.",
+  "demoted_set_correctness": "The 58 demoted rows match my Q1 by_network_and_tier finding cell-for-cell (Shafi 17 / Nittinger 12 / Brunetti 9 / Sweis 7 / Labinov 7 / Ramaha 6). Confirms exactly the AO-reach-only protected rows moved — no clean row was swept and no protected row was left behind.",
+  "new_canonical_rule_added": "_meta.canonical_rules.consequence was added, operationalizing the locator-vs-MSO / AO-vs-owner boundary: 'Where the ONLY DSO evidence is a locator/brand name and a separate signed pass identifies a named dentist-owner with no MSO, the network is CONTESTED (route to conflicts). Where a real MSO/management-company/PE-platform/established-DSO-brand is documented, DSO tier holds even if pe_backed=false.' This is a correct codification of the taxonomy correction."
+ },
+
+ "residual_non_blocking_notes": [
+  "DEFINITION TEXT NOT REWORDED (minor, non-blocking): the literal bucket_definitions.ready_to_validate string still reads 'Documentary URL or durable artifact on disk' — the same phrasing whose 'durable artifact' clause originally admitted ao_cluster-only rows. The CURRENT ready bucket is clean (0 such rows), so this is closed in practice, but a FUTURE wave could re-introduce ao-cluster-only rows into ready under the unchanged wording. Recommend tightening the definition text to: 'a Data-Axle/locator/MSO/registry/web documentary URL, OR a non-AO durable artifact; an ao_cluster artifact alone does NOT qualify for any tier.' Not required for this approval.",
+  "Lane 3 still not an input: the revised manifest's inputs[] still excludes the Fleet B Lane 3 file, so the 9 true_independent + 2 single_loc_group Lane-3 rows and the Modern Smiles Shah/Iqbal duplicate-door (one physical door, same phone (312) 500-7080, 3901 N Broadway) remain absent. When Lane 3 is folded into a future manifest, add Shah/Iqbal to duplicate_denominator_blocked. Out of scope for THIS revision.",
+  "Per-URL verification still owed at validate time for the 24 dentist_multi web_verified ready rows: each cited URL must confirm same-dentist-owner control (a URL showing an MSO operator re-routes to T4/T5). consolidate_census.py --validate-only is a schema/DB gate and does NOT re-judge this; it is an evidence item for whoever runs validation, per standing rule."
+ ],
+
+ "recommendation": "APPROVE the revised manifest for the validate-only step on the 65 clean rows when the user lifts the freeze. The MUST-FIX was applied exactly as specified. Keep the 58 protected rows held in AO_network backfill (double gate: documentary evidence AND main-session network release). Optionally reword the ready_to_validate definition text to prevent future ao-cluster-only readmission."
+}

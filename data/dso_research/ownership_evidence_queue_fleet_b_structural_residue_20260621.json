@@ -1,0 +1,126 @@
+{
+ "classifications": [
+  {
+   "location_id": "2349c2b380472fb1",
+   "assigned_tier": "dentist_multi",
+   "evidence_basis": "name_chain",
+   "confidence": "medium",
+   "status": "classified",
+   "reasoning": "'Habbal Dental' (60441) and 'WALID HABBAL DDS PC' (60463) share the distinctive HABBAL surname and the same central phone 708-361-8117 across two Palos Heights offices \u2014 one dentist (Walid Habbal) operating multiple locations, no DSO/MSO/platform or PE signal.",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "name_chain=HABBAL",
+    "shared_phone=7083618117",
+    "zips=60441,60463"
+   ],
+   "pe_backed": false,
+   "practice_name": "Habbal Dental",
+   "city": "PALOS HEIGHTS",
+   "zip": "60441",
+   "current_entity_classification": "solo_established",
+   "brands": [
+    "Habbal Dental"
+   ],
+   "owner_identity": "Walid Habbal DDS",
+   "missing_evidence": [],
+   "lane": "structural_residue",
+   "session": "fleet-b-structural-residue-2026-06-21",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "9bbed9ef6597e7a6",
+   "assigned_tier": "dentist_multi",
+   "evidence_basis": "name_chain",
+   "confidence": "medium",
+   "status": "classified",
+   "reasoning": "'WALID HABBAL DDS PC' (60463, EIN 471340456) shares the HABBAL surname and central phone 708-361-8117 with 'Habbal Dental' (60441) \u2014 same dentist-owner, two Palos Heights offices, no DSO/MSO/platform structure.",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "name_chain=HABBAL",
+    "shared_phone=7083618117",
+    "ein=471340456",
+    "zips=60441,60463"
+   ],
+   "pe_backed": false,
+   "practice_name": "WALID HABBAL DDS PC",
+   "city": "PALOS HEIGHTS",
+   "zip": "60463",
+   "current_entity_classification": "solo_high_volume",
+   "brands": [
+    "Walid Habbal DDS"
+   ],
+   "owner_identity": "Walid Habbal DDS",
+   "missing_evidence": [],
+   "lane": "structural_residue",
+   "session": "fleet-b-structural-residue-2026-06-21",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "3c75529f5e12ce38",
+   "assigned_tier": "undetermined",
+   "evidence_basis": "none",
+   "confidence": "low",
+   "status": "needs_verification",
+   "reasoning": "'Riverwest Smile Center' (60622) shares central phone 312-455-9800 with 'Dental Practice Development' (60642, EIN 205905519), a management-company-named entity whose OWN website is riverwestsmilecenter.com. This is a documented management-LLC structure behind the Riverwest brand \u2014 potential stealth_dso/MSO, but evidence cannot yet distinguish a true multi-practice MSO from Riverwest's own back-office. HELD for verification.",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "shared_phone=3124559800",
+    "mgmt_entity=Dental Practice Development",
+    "mgmt_uses_brand_site=riverwestsmilecenter.com"
+   ],
+   "pe_backed": false,
+   "practice_name": "RIVERWEST SMILE CENTER",
+   "city": "CHICAGO",
+   "zip": "60622",
+   "current_entity_classification": "large_group",
+   "brands": [
+    "Riverwest Smile Center"
+   ],
+   "missing_evidence": [
+    "confirm whether Dental Practice Development manages OTHER practices (MSO/stealth_dso) vs. is Riverwest's own back-office (single operator)"
+   ],
+   "lane": "structural_residue",
+   "session": "fleet-b-structural-residue-2026-06-21",
+   "reviewed_at": "2026-06-21"
+  },
+  {
+   "location_id": "5af9933c87c51a93",
+   "assigned_tier": "undetermined",
+   "evidence_basis": "none",
+   "confidence": "low",
+   "status": "needs_verification",
+   "reasoning": "'Dental Practice Development' (60642, EIN 205905519) is a management-company-named entity that lists riverwestsmilecenter.com as its website and shares phone 312-455-9800 with 'Riverwest Smile Center' (60622) \u2014 a management-LLC structure. Potential MSO/stealth_dso operator; HELD pending verification of whether it manages multiple distinct practices.",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "shared_phone=3124559800",
+    "website=riverwestsmilecenter.com",
+    "ein=205905519",
+    "name_signal=Dental Practice Development(mgmt)"
+   ],
+   "pe_backed": false,
+   "practice_name": "Dental Practice Development",
+   "city": "CHICAGO",
+   "zip": "60642",
+   "current_entity_classification": "solo_high_volume",
+   "brands": [
+    "Riverwest Smile Center"
+   ],
+   "missing_evidence": [
+    "confirm MSO scope: does Dental Practice Development operate practices beyond Riverwest?"
+   ],
+   "lane": "structural_residue",
+   "session": "fleet-b-structural-residue-2026-06-21",
+   "reviewed_at": "2026-06-21"
+  }
+ ],
+ "_meta": {
+  "lane": "structural_residue",
+  "session": "fleet-b-structural-residue-2026-06-21",
+  "generated": "2026-06-21",
+  "db_mode": "read_only",
+  "total_rows": 4,
+  "classified": 2,
+  "needs_verification": 2,
+  "note": "Final residue of the deterministic structural sweep (phone clustering). All other structural veins (da_officers >=3-office spans, doing_business_as chains) returned ZERO yield and are EXHAUSTED. Evidence-only, ready_for_validation, never final. No DB writes."
+ }
+}

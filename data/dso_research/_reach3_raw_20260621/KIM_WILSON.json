@@ -1,0 +1,119 @@
+{
+  "network": "KIM WILSON",
+  "network_id": "ao:WILSON_KIM",
+  "owner_type_verdict": "pe_mso_backed",
+  "network_summary": "Both locations operate under the Heartland Dental DSO platform as the Heartland-Illinois friendly-PC 'Dental Professionals of Illinois, P.C.' Consumer trade names are Mokena Crossings Family Dental (Mokena, 60448) and Prairie Place Family Dental (Morris, 60450). KIM WILSON is a Heartland Dental corporate officer/AO appearing on many 'Dental Professionals of Illinois, P.C.' NPIs statewide — not the local dentist-owner. Heartland Dental is backed by KKR (PE). Both locations are already classified dso_national in the database. AO-cluster reach of 2 is a Heartland corporate-officer footprint, not a local dentist multi-office group.",
+  "owner_operator_identity": "Heartland Dental LLC (corporate DSO platform); KIM WILSON is a Heartland Dental corporate officer/authorized official, not the practicing dentist-owner",
+  "brand_trade_names": [
+    "Mokena Crossings Family Dental",
+    "Prairie Place Family Dental",
+    "Dental Professionals of Illinois, P.C.",
+    "Heartland Dental"
+  ],
+  "legal_entities": [
+    "Dental Professionals of Illinois, P.C. (Heartland friendly-PC, Illinois)",
+    "Heartland Dental LLC"
+  ],
+  "durable_artifacts": [
+    "Both NPIs (1043609167, 1306240437) share authorized_official=KIM WILSON and legal name 'Dental Professionals of Illinois, P.C.' — Heartland Dental's Illinois-wide friendly-PC",
+    "Consumer brand at 9990 W 190th St Ste D, Mokena IL 60448 confirmed as Mokena Crossings Family Dental (phone 708-479-9797 matches NPPES)",
+    "Consumer brand at 1010 W US Route 6, Morris IL 60450 confirmed as Prairie Place Family Dental — Heartland Dental jobs listing at exact address corroborates DSO",
+    "WhoOwnsMydentists.com entry for Prairie Place Family Dental links to Heartland Dental affiliation",
+    "Wilson, Kim listed as Heartland Dental Care contact at Effingham HQ (217-540-5100 — Heartland corporate HQ phone)"
+  ],
+  "mso_platform_pe_evidence": "Heartland Dental LLC is a national DSO platform backed by KKR (PE). Confirmed via Heartland Dental jobs listing at 1010 W US Route 6 Morris IL (https://jobs.heartland.com/job/22342/general-dentist-morris-il-general-dentist-us-il-morris-1010-w-us-route-6-724/) and WhoOwnsMydentists.com for Prairie Place Family Dental (https://whoownsmydentists.com/location/prairie-place-family-dental-morris-il). 'Dental Professionals of Illinois, P.C.' is the well-documented Heartland friendly-PC in CLAUDE.md evidence corpus.",
+  "stale_closed_false_positive_notes": "No stale or closed indicators. Both offices confirmed active: Mokena Crossings updated Feb 2026 on Yelp; Prairie Place active on Nextdoor and Facebook. AO-cluster false-positive note: KIM WILSON is a Heartland Dental corporate officer, not an independent dentist-owner — the 'reach=2' signal reflects Heartland's use of a single AO across many IL friendly-PC NPIs, not a local dentist multi-practice network.",
+  "evidence_chain": "AO signal: KIM WILSON appears as authorized_official on NPI 1043609167 (Mokena) and NPI 1306240437 (Morris), both registered under 'Dental Professionals of Illinois, P.C.' — Heartland Dental's Illinois-wide friendly-PC. Documentary corroboration: (1) Heartland Dental jobs posting at exact Morris address 1010 W US Route 6 confirms DSO support relationship; (2) WhoOwnsMydentists.com confirms Prairie Place Family Dental is Heartland-affiliated; (3) Mokena Crossings Family Dental website/Yelp/Healthgrades confirm 9990 W 190th St Ste D with matching phone; (4) search result places Wilson, Kim as Heartland Dental Care contact at HQ (Effingham). KIM WILSON is a Heartland corporate officer, not a local dentist. Both locations already dso_national in DB.",
+  "future_app_notes": "No validation gap — both locations are already correctly classified as dso_national/Heartland Dental. AO-cluster KIM WILSON is a Heartland corporate officer footprint; no independent dentist-multi or stealth-DSO scenario applies. If Heartland PE status changes (KKR exit), update pe_backed accordingly. Monitor mokenacrossingsfamilydental.com and prairieplacefamilydental.com for any rebranding or closure.",
+  "classifications": [
+    {
+      "location_id": "093fbea9e8c840df",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Heartland Dental LLC (KKR-backed DSO); KIM WILSON is a Heartland corporate authorized official",
+      "network_id": "ao:WILSON_KIM",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2: KIM WILSON is AO on NPI 1043609167 (Mokena 60448) and NPI 1306240437 (Morris 60450)",
+          "legal_name='Dental Professionals of Illinois, P.C.' on both NPIs — known Heartland IL friendly-PC",
+          "entity_classification=dso_national, affiliated_dso=Heartland Dental already in DB"
+        ],
+        "evidence": [
+          "Mokena Crossings Family Dental confirmed at 9990 W 190th St Ste D, Mokena IL 60448 (phone 708-479-9797 matches NPPES) — Yelp updated Feb 2026, Healthgrades, patientconnect365, and practice website mokenacrossingsfamilydental.com all corroborate",
+          "Wilson, Kim listed as Heartland Dental Care contact at Effingham HQ (217-540-5100) — corporate officer, not local owner",
+          "Heartland Dental is KKR-backed DSO (established market knowledge, supported by heartland.com DSO platform site)"
+        ]
+      },
+      "evidence_urls": [
+        "https://mokenacrossingsfamilydental.com/",
+        "https://www.yelp.com/biz/mokena-crossings-family-dental-mokena",
+        "https://www.healthgrades.com/group-directory/il-illinois/mokena/mokena-crossings-family-dental-x9qmrc01",
+        "https://www.patientconnect365.com/Dentists/Illinois/Mokena/60448/Mokena_Crossings_Family_Dental",
+        "https://heartland.com/"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "KIM WILSON",
+        "reach": 2,
+        "zips": ["60448", "60450"],
+        "npi": "1043609167",
+        "legal_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+        "address": "9990 w 190th st, MOKENA IL 60448",
+        "entity_classification": "dso_national",
+        "affiliated_dso": "Heartland Dental",
+        "provider_count": 1
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Location already classified dso_national/Heartland Dental in DB. Consumer brand Mokena Crossings Family Dental confirmed active at exact NPPES address (Yelp Feb 2026 update). KIM WILSON is a Heartland Dental corporate officer, not a local dentist-owner — this is a branded DSO (Heartland) backed by PE (KKR). branded_dso + pe_backed=true is the correct tier. AO-cluster reach reflects Heartland's use of a single corporate AO across many 'Dental Professionals of Illinois, P.C.' NPIs statewide."
+    },
+    {
+      "location_id": "6dba925c21c398ce",
+      "candidate_tier": "branded_dso",
+      "pe_backed": true,
+      "owner_identity": "Heartland Dental LLC (KKR-backed DSO); KIM WILSON is a Heartland corporate authorized official",
+      "network_id": "ao:WILSON_KIM",
+      "signal_vs_evidence": {
+        "signal": [
+          "ao_reach=2: KIM WILSON is AO on NPI 1043609167 (Mokena 60448) and NPI 1306240437 (Morris 60450)",
+          "legal_name='Dental Professionals of Illinois, P.C.' on both NPIs — known Heartland IL friendly-PC",
+          "entity_classification=dso_national, affiliated_dso=Heartland Dental already in DB",
+          "year_established=1969 (legacy practice acquired by Heartland)"
+        ],
+        "evidence": [
+          "Prairie Place Family Dental confirmed at 1010 W US Route 6, Morris IL 60450 — WhoOwnsMydentists.com links practice to Heartland Dental affiliation",
+          "Heartland Dental jobs posting at exact address '1010 W US Route 6, Morris IL' confirms DSO support (https://jobs.heartland.com/job/22342/general-dentist-morris-il-general-dentist-us-il-morris-1010-w-us-route-6-724/)",
+          "Wilson, Kim listed as Heartland Dental Care contact at Effingham HQ (217-540-5100) — corporate officer, not local owner",
+          "Heartland Dental is KKR-backed DSO (established market knowledge, supported by heartland.com DSO platform site)"
+        ]
+      },
+      "evidence_urls": [
+        "https://prairieplacefamilydental.com/",
+        "https://whoownsmydentists.com/location/prairie-place-family-dental-morris-il",
+        "https://jobs.heartland.com/job/22342/general-dentist-morris-il-general-dentist-us-il-morris-1010-w-us-route-6-724/",
+        "https://heartland.com/",
+        "https://www.healthgrades.com/group-directory/il-illinois/morris/prairie-place-family-dental-xyjlnd01"
+      ],
+      "db_artifact": {
+        "type": "ao_reach",
+        "authorized_official": "KIM WILSON",
+        "reach": 2,
+        "zips": ["60448", "60450"],
+        "npi": "1306240437",
+        "legal_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+        "address": "1010 w us route 6, MORRIS IL 60450",
+        "entity_classification": "dso_national",
+        "affiliated_dso": "Heartland Dental",
+        "provider_count": 4,
+        "year_established": 1969
+      },
+      "web_searched": true,
+      "gate_status": "ready_for_validation",
+      "confidence": "high",
+      "stale_closed_note": null,
+      "reasoning": "Location already classified dso_national/Heartland Dental in DB. Consumer brand Prairie Place Family Dental confirmed active at exact NPPES address. Heartland Dental jobs posting at exact address is direct DSO corroboration. WhoOwnsMydentists.com confirms Heartland affiliation. year_established=1969 indicates a legacy independent practice later acquired by Heartland. KIM WILSON is a Heartland Dental corporate officer, not a local dentist-owner. branded_dso + pe_backed=true is the correct tier."
+    }
+  ]
+}

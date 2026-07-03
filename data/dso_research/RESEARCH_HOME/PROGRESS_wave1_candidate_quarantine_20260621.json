@@ -1,0 +1,169 @@
+{
+  "_meta": {
+    "schema_version": 1,
+    "purpose": "Cross-session census heartbeat. Single source of truth for 'what is reviewed / what is left' across the ~4,439 IL GP practice census. READ on resume; UPDATE at end of every session.",
+    "last_updated": "2026-06-20",
+    "last_session": "opus-4.8-2026-06-20-research-home-build",
+    "no_anchor_rule": "Consolidated/DSO percentages are computed FROM this census (the LEDGER), shown WITH coverage_pct. No external anchor (ADA 14.6%, metro 30%). The 5.58% detector floor is the starting point being corrected, NOT the answer. Partial-census reviewed rates and whole-universe confirmed floors must be labeled separately."
+  },
+  "universe": {
+    "scope": "Chicagoland watched-ZIP general dental practice LOCATIONS",
+    "il_gp_locations_official": 4439,
+    "il_gp_locations_direct_incl_ca_stray": 4440,
+    "ca_stray_note": "location_id 951701941a7097e5, MIKE MIN W KANG DDS, state=CA in ZIP 60045; excluded by zip_scores state filter (correct).",
+    "il_watched_zips": 269,
+    "ma_parked": {
+      "zips": 21,
+      "gp_locations": 362,
+      "status": "PARKED \u2014 do not census, do not delete, filter from view"
+    },
+    "denominator_source": "SUM(zip_scores.total_gp_locations) WHERE state=IL; LEDGER keyed by practice_locations.location_id"
+  },
+  "census_status": {
+    "reviewed_via_protocol": 349,
+    "remaining": 4090,
+    "coverage_pct": 7.86,
+    "universe_il_gp_locations": 4439,
+    "note": "349 of 4439 IL GP locations have EARNED an ownership_tier through the hand-verified census (7.86%). The remaining 4090 stay undetermined until earned through evidence. Legacy detector 'corporate' counts are NOT assumed \u2014 re-confirmed via this protocol."
+  },
+  "tier_tally": {
+    "branded_dso": 4,
+    "dentist_multi": 35,
+    "institutional": 4,
+    "single_loc_group": 92,
+    "stealth_dso": 6,
+    "true_independent": 177,
+    "undetermined": 31,
+    "undetermined_unreviewed": 4090
+  },
+  "headline_metrics_live": {
+    "consolidated_pct": null,
+    "dso_pe_pct": null,
+    "rule": "reviewed_rate: consolidated_pct = (T2+T3+T4+T5)/reviewed; dso_pe_pct = (T4+T5)/reviewed. whole_universe_floor: same numerators / 4439 with unreviewed held out as unknown. Always paired with coverage_pct + undetermined_pct. NULL until census has coverage."
+  },
+  "legacy_detector_state": {
+    "corporate_locations": 249,
+    "corporate_pct_DO_NOT_PRESENT_AS_TRUTH": 5.61,
+    "corp_npis": 1070,
+    "note": "User ruling 2026-06-20: 5% is definitively false (too low). Starting floor only."
+  },
+  "free_evidence_assets": {
+    "practice_intel_dossiers_on_primary_npi_il_gp_locations": 2069,
+    "practice_intel_primary_npi_coverage_pct": 46.6,
+    "practice_intel_full_bridge_il_gp_locations": 2330,
+    "practice_intel_full_bridge_coverage_pct": 52.5,
+    "practice_signals_stealth_preflags_npi_level": {
+      "rows": 67,
+      "clusters": 13,
+      "status": "TRIAGE ONLY \u2014 not proof"
+    },
+    "practice_signals_stealth_preflags_bridged_locations": {
+      "locations": 40,
+      "clusters": 11,
+      "status": "TRIAGE ONLY \u2014 not proof"
+    },
+    "zero_corp_positive_gp_il_zips": 119,
+    "zero_corp_all_il_watched_zip_rows_including_empty": 143,
+    "zero_corp_gp_locations": 1457
+  },
+  "candidate_pools": {
+    "_note": "Verified counts at NPI level unless stated; must dedup to LOCATIONS + GP-filter before any flip. Ortho brands EXCLUDED from GP.",
+    "D1_brand_tagged_pe_pool_npis_not_yet_corp": {
+      "Great Lakes Dental Partners (Shore)": 84,
+      "Heartland Dental (KKR)": 74,
+      "1st Family Dental": 43,
+      "All Family/UDP": 29,
+      "Western Dental (New Mountain)": 28,
+      "Dental 360": 24,
+      "Webster Dental": 13,
+      "Dental Dreams": 12,
+      "Aspen Dental": 9,
+      "Comfort Dental": 9,
+      "Choice Dental Group": 6,
+      "EXCLUDED_ortho_Orthodontic_Experts": 45,
+      "EXCLUDED_ortho_Smile_Doctors": 19
+    },
+    "D2_authorized_official_clusters": {
+      "_gate": "mailing-address concentration: <=2 addrs across many ZIPs = high confidence; high addr count -> web verify, never auto-reject",
+      "303_org_npis_span_3plus_zips": true,
+      "examples": [
+        {
+          "owner": "SHAFI, SOHAIL",
+          "npis": 18,
+          "zips": 17,
+          "mailing_addrs": 1,
+          "corp_now": 1,
+          "tier_hint": "dentist_multi or stealth_dso"
+        },
+        {
+          "owner": "LABINOV, BORIS",
+          "npis": 12,
+          "zips": 12,
+          "mailing_addrs": 2,
+          "corp_now": 0,
+          "tier_hint": "dentist_multi"
+        },
+        {
+          "owner": "BRUNETTI, ROBERT (Procare)",
+          "npis": 9,
+          "zips": 9,
+          "mailing_addrs": 2,
+          "corp_now": 0,
+          "tier_hint": "dentist_multi"
+        },
+        {
+          "owner": "RAMAHA, AHMED",
+          "npis": 18,
+          "zips": 8,
+          "mailing_addrs": 8,
+          "corp_now": 0,
+          "tier_hint": "verify"
+        },
+        {
+          "owner": "SWEIS, JUBRAIL",
+          "npis": 13,
+          "zips": 10,
+          "mailing_addrs": 12,
+          "corp_now": 0,
+          "tier_hint": "web verify (high addr count)"
+        }
+      ]
+    },
+    "D3_name_chains": {
+      "PROCARE DENTAL": "9 locs / 9 ZIPs (= Brunetti)",
+      "DENTAL TOWN": "10 / 10",
+      "ASHTON DENTAL": "8 / 7 (= Shafi)",
+      "D2 DENTAL": "7 / 7 (all solo \u2014 possible franchise)",
+      "SKIP_PATEL_DENTAL": "19 / 18 \u2014 common surname, false positive"
+    }
+  },
+  "next_batch": {
+    "phase": "Phase 3 \u2014 D1 brand-tagged PE pool",
+    "action": "Dedup the Heartland/KKR + Great Lakes/Shore NPI pools to LOCATIONS, GP-filter, exclude ortho, locator/web-confirm each -> stealth_dso (pe_backed=true). Investigate why dso_classifier Pass-3 escalation didn't fire (gate: ownership_status IN (pe_backed,dso_affiliated) AND confidence>=80).",
+    "do_first": "Research-mode only unless user approves mutations. Local SQLite ownership columns already exist and denominator audit artifacts exist. First reconcile duplicate conflict (87 pressure-test vs 48 exact audit), verify Supabase/frontend schema status if moving to production, and do not run consolidate_census.py until its PROGRESS schema mismatch is fixed and mutation approval is explicit."
+  },
+  "zip_sweep": {
+    "swept": [],
+    "in_progress": [],
+    "not_started_count": 269,
+    "priority_zero_corp_dense_zips": [
+      "60614",
+      "60622",
+      "60068",
+      "60005",
+      "60089",
+      "60062",
+      "60187",
+      "60613",
+      "60440",
+      "60532"
+    ],
+    "note": "119 IL ZIPs read 0% corporate, holding 1,457 GP locations. Sweep dense/affluent first. Log every ZIP swept (no silent caps)."
+  },
+  "last_consolidated": {
+    "session": "2026-06-20-opus48-wave1",
+    "at": "2026-06-20",
+    "this_run_written": 349,
+    "this_run_appended": 0
+  }
+}
