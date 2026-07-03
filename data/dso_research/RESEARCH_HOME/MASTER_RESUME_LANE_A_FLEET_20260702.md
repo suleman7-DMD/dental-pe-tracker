@@ -262,3 +262,22 @@ Journals now live under BOTH session dirs — the resumed runs write to
 `~/.claude/projects/-Users-suleman-dental-pe-tracker/a281c7b1-8c8d-4811-9e1c-efed0be4e197/subagents/workflows/<runId>/journal.jsonl`
 (the old 4d259360… paths hold the pre-restart entries, incl. the first ~11 recovery verdicts for
 units 003 004 006 012 015 018 022 024 025). Check BOTH when recovering verdicts.
+
+### §6b Verdict recovery COMPLETE (2026-07-02 ~22:15) — verdicts file WRITTEN + PM-reviewed
+
+`wf_edc106cc-7cf` finished 25/25 agents, 0 errors: **35/35 first-flight DSO claims adjudicated —
+CONFIRM 27 / DOWNGRADE_T3 7 / REFUTE 1 / INSUFFICIENT 0.** Flat merge-gate file WRITTEN:
+`_lane_a_20260702/_verdicts_wave1.json` (35 entries keyed by location_id, with notes +
+urls_checked + unit_id + verifier tag). PM reviewed all 8 non-CONFIRMs — ACCEPTED:
+- REFUTE laneA_004 `2b12cf9aa3afed8a` (ACDI/1288 Rickert Dr Naperville — dentist-owned group that
+  collapsed 2018; address now independent David Chang DDS Ltd).
+- DOWNGRADE_T3 ×7: Webster Dental Care ×2 (dentist-owned, founder Dr. Rempas — units 032/033),
+  32 Dental Group ×2 (all LLCs dentist-officered — unit 039), Universal Dental Clinics ×2
+  (founder Dr. Ahmed Ramaha — unit 090), Midwest Dental Sleep Center ×1 (founder/pres is
+  Dr. Richard Craig DDS; the "non-dentist CEO Scott Craig" basis refuted — unit 085).
+- MERGE-TIME FLAG: unit 032 row `d4f1bdbda7e997f6` has mislabeled `network_id`
+  "brand:family_dental_care" (should be Webster) — fix/note during merge review.
+
+REMAINING VERDICT WORK: second-flight units (the 3 research runs above) return their own inline
+verdicts in each workflow's return payload — APPEND those to the SAME `_verdicts_wave1.json`
+(the merge gate reads exactly one flat file, WAVE="wave1" hardcode) before running the merge.

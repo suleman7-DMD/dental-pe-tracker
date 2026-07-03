@@ -1,0 +1,287 @@
+{
+ "unit_id": "laneA_071",
+ "classifications": [
+  {
+   "location_id": "25f35a9584fa2a64",
+   "practice_name": "Zahrebelny Dental",
+   "zip": "60712",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-olya-zahrebelny-y9lvl",
+    "https://www.doctorsnetwork.com/doctors/dentists/lincolnwood-il-60712/invite-olya-zahrebelny-dds-14574"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Web search confirms Dr. Olya Zahrebelny, DDS practices solo at 6712 N Keating Ave, Lincolnwood, IL 60712, phone (847) 675-3006, matching the record exactly. No corporate parent, chain, or non-dentist owner found on any directory listing. Single-provider, one location, no DSO signal -> true independent.",
+   "searched": ["Zahrebelny Dental Lincolnwood IL dentist"]
+  },
+  {
+   "location_id": "657eae5a4770a550",
+   "practice_name": "RUBA M. MAATOUK DDS SC",
+   "zip": "60712",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.lincolnwoodildentist.com/meet-the-doctor/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:MAATOUK_RUBA",
+   "reasoning": "Dr. Ruba Maatouk's own practice website (Gentle Touch Dentistry, lincolnwoodildentist.com) confirms she is the dentist-owner and lists two offices she operates: 6835 N Lincoln Ave, Lincolnwood, IL 60712 (this record) and 1541 Market St, Des Plaines, IL. Dentist-owned with 2+ locations on her own site -> dentist_multi, not a DSO.",
+   "searched": ["RUBA MAATOUK DDS Lincolnwood IL dentist"]
+  },
+  {
+   "location_id": "d06143601da78e20",
+   "practice_name": "Hatland Dental",
+   "zip": "60712",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.drhatland.com/",
+    "https://www.drhatland.com/lincolnwood-office/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:HATLAND_RAYMOND",
+   "reasoning": "Dr. Raymond G. Hatland's own website (drhatland.com) confirms address 6453 N Lincoln Ave, Lincolnwood, IL 60712, phone (773) 338-4440, matching the record exactly, and lists a second office in Indianapolis, IN under his own name/brand. Dentist-owned practice with 2+ locations on his own site -> dentist_multi.",
+   "searched": ["Hatland Dental Lincolnwood IL"]
+  },
+  {
+   "location_id": "1f7cdecd246735c3",
+   "practice_name": "Silvers Dental",
+   "zip": "60712",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.thecosmeticandimplantdentalcenter.com/",
+    "http://www.wellness.com/dir/2175909/dentist/il/lincolnwood/silvers-robert-b-dmd/directions/6830-north-lincoln-avenue-lincolnwood-il-60712"
+   ],
+   "evidence_artifacts": ["same phone (847) 675-7010 as location eeb5be499c23ba04 (Cosmetic and Implant Dental Center), same solo owner Dr. Robert Silvers"],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:SILVERS_ROBERT",
+   "reasoning": "This NPI/name resolves to Dr. Robert B. Silvers, DMD, sole owner of The Cosmetic and Implant Dental Center, practicing since 1977 with 'ONE DOCTOR' treating all phases of care per the practice's own site. No corporate parent or non-dentist owner found. Same phone number as the org NPI record (eeb5be499c23ba04) at the same practice -> single solo dentist, true independent.",
+   "searched": ["Silvers Dental Lincolnwood IL 6830 N Lincoln Ave"]
+  },
+  {
+   "location_id": "eeb5be499c23ba04",
+   "practice_name": "COSMETIC AND IMPLANT DENTAL CENTER",
+   "zip": "60712",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.thecosmeticandimplantdentalcenter.com/",
+    "https://www.thecosmeticandimplantdentalcenter.com/staff"
+   ],
+   "evidence_artifacts": ["AO Robert Silvers matches practice owner-dentist per own website"],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:SILVERS_ROBERT",
+   "reasoning": "The practice's own website confirms The Cosmetic and Implant Dental Center at 6921 N Lincoln Ave, Lincolnwood, IL, phone (847) 675-7010, has been owned and run by Dr. Robert Silvers since 1977 ('ONE DOCTOR' treats all phases of dentistry). No parent company or DSO branding found. Solo dentist owner -> true independent.",
+   "searched": ["Silvers Dental Lincolnwood IL 6830 N Lincoln Ave"]
+  },
+  {
+   "location_id": "be19e3d6f4e9abfe",
+   "practice_name": "Women's Aid Clinic Ltd",
+   "zip": "60712",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://doctor.webmd.com/doctor/lawrence-reiner-6646b752-cdfa-4407-b2bf-67377e34ad00-overview",
+    "https://lawrencereiner.dr-leonardo.com/"
+   ],
+   "evidence_artifacts": ["NPI 1013328079 confirmed as Dr. Lawrence Reiner, DDS on his own site, matching address/phone exactly"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:REINER_LAWRENCE",
+   "reasoning": "Despite the corporate name 'Women's Aid Clinic Ltd' (which is actually a separate, unrelated abortion-services tenant at a shared suite address), the dental NPI at 4751 W Touhy Ave, Lincolnwood, phone (847) 674-8200, resolves to Dr. Lawrence Reiner, DDS, a solo general dentist with his own practice website. No dental corporate/DSO ownership signal found -> true independent, confidence medium due to the name confusion requiring cross-verification.",
+   "searched": ["\"Women's Aid Clinic\" Lincolnwood IL dental 4751 Touhy", "\"Lawrence Reiner\" DDS dentist Lincolnwood IL"]
+  },
+  {
+   "location_id": "f3972a1db6559510",
+   "practice_name": "Sorouri Dental",
+   "zip": "60712",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.doctorsnetwork.com/doctors/dentists/lincolwood-il-60712/invite-soghra-sorouri-dds-18369"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Web search confirms Dr. Soghra Sorouri, DDS practices at 6838 N. Kilpatrick Ave, Lincolnwood, IL 60712, phone (847) 329-7719, matching the record. Single directory listing only, but address/phone match is exact and no chain/DSO signal appears -> true independent, medium confidence given thin source diversity.",
+   "searched": ["Sorouri Dental Lincolnwood IL Kilpatrick"]
+  },
+  {
+   "location_id": "cba27bc179e26dbb",
+   "practice_name": "Garcia Dental",
+   "zip": "60712",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://providers.sharecare.com/doctor/dr-andre-e-garcia",
+    "https://www.doctorsnetwork.com/doctors/dentists/lincolnwood-il-60712/invite-andre-garcia-dmd-18578"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Web search confirms Dr. Andre Garcia, DMD practices at 3355 W Pratt Ave, Lincolnwood, IL 60712, phone (224) 522-8484, matching the record. No corporate parent or DSO brand found in directory listings -> true independent, medium confidence given directory-only sourcing.",
+   "searched": ["Garcia Dental Lincolnwood IL 3355 Pratt Ave"]
+  },
+  {
+   "location_id": "e2c809f5b5ba0533",
+   "practice_name": "CHICAGO MALL DENTAL ASSOCIATES, LLC",
+   "zip": "60712",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/lincolnwood-mall-dental-lincolnwood",
+    "https://opennpi.com/provider/1700397031"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "closure_suspect: this NPI (1700397031) matches the dba 'Lincolnwood Mall Dental' at 3333 W Touhy Ave Unit G01, Lincolnwood, which Yelp explicitly lists as 'LINCOLNWOOD MALL DENTAL - CLOSED' (updated June 2026). Cannot responsibly assign an ownership tier to a practice with strong closure evidence; a separate, still-active entity 'Chicago Mall Dental, LLC' (different NPI 1801263090) exists at the same street address but is not this record.",
+   "searched": ["\"Chicago Mall Dental\" Lincolnwood IL Touhy dentist"]
+  },
+  {
+   "location_id": "91c3cc88b43303cc",
+   "practice_name": "Chen Emily DDS",
+   "zip": "60712",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://lincolnwoodfamilydental.com/about-us/",
+    "https://lincolnwoodfamilydental.com/our-doctors/"
+   ],
+   "evidence_artifacts": ["multiple dentists (Chen, Baig, Patel, Shahbandar, Evans, Saini, Sharar, Mukherjee) all at single 4368 W Touhy Ave address"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Emily Chen practices at Lincolnwood Family Dental, 4368 W Touhy Ave, Lincolnwood, IL 60712 (847-610-9272), a self-described 'women-owned' family dental practice with multiple dentists at this one address. No evidence of a national/regional DSO parent or second location -> single-location, dentist-owned group.",
+   "searched": ["\"Emily Chen\" DDS Lincolnwood IL 4368 Touhy dental", "Lincolnwood Family Dental owner dentist practice", "\"Family Dental Care\" Chicago multiple locations Lincolnwood group brand"]
+  },
+  {
+   "location_id": "aa5990de1de9b2ad",
+   "practice_name": "Kim, Sorah",
+   "zip": "60712",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://dentistry4kids.net/about-us/",
+    "https://dentistry4kids.net/about-us/dr-cissy-k-furusho-dds/"
+   ],
+   "evidence_artifacts": ["3 dentists (Furusho, Kim, Kollman) at single 7250 N Cicero Ave Suite 100 address, practice founded/owned by Dr. Cissy Furusho since 1999"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Sorah Kim, DMD is an associate pediatric dentist at Dentistry for Kids, Ltd., 7250 N. Cicero Ave Suite 100, Lincolnwood, a single-location group practice founded and led by Dr. Cissy Furusho with a third dentist (Kollman). No corporate/DSO parent found -> dentist-owned single-location group.",
+   "searched": ["\"Sorah Kim\" DDS Lincolnwood IL 7250 Cicero dentist", "\"Dentistry for Kids\" Lincolnwood owner Cissy Furusho practice"]
+  },
+  {
+   "location_id": "080318c2c0d71ff9",
+   "practice_name": "Trinh Dental",
+   "zip": "60712",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Multiple targeted searches for 'Trinh Dental' at 7017 N Crawford Ave, Lincolnwood, IL 60712 (phone 773-816-3531) returned no matching website, directory listing, or NPI-registry corroboration for a provider named Trinh at this address -- only unrelated Lincolnwood practices surfaced. No usable web evidence to support any tier, so left undetermined rather than guessed.",
+   "searched": ["Trinh Dental Lincolnwood IL Crawford Ave dentist", "\"Trinh\" dentist DDS Lincolnwood IL 60712 NPI"]
+  },
+  {
+   "location_id": "81bef17f185df275",
+   "practice_name": "LYRIC NATIONAL",
+   "zip": "60712",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://lyricnational.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "R4_protected_network:Lyric National. The company's own site describes Lyric National as a national 'concierge ancillary insurance solution' delivering onsite medical/dental benefits to skilled nursing facilities and senior living communities across multiple states -- not a single walk-in dental clinic at 7257 N Lincoln Ave. This reads as a large national ancillary-care network (likely 10+ facility locations), not a standalone Lincolnwood practice, and AO Noah Mishkin does not appear to be a licensed dentist. Per protocol this large/ambiguous network is left undetermined for a dedicated one-network review rather than force-tiered here.",
+   "searched": ["LYRIC NATIONAL dental Lincolnwood IL Noah Mishkin", "\"Lyric National\" dental mobile dentistry Noah Mishkin NPI", "\"Noah Mishkin\" Lyric National dental healthcare"]
+  },
+  {
+   "location_id": "2b8c3f5ec9e4d29e",
+   "practice_name": "LAMANTIA & MAZANEK LTD.",
+   "zip": "60714",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://business.nileschamber.com/list/member/lamantia-mazanek-dds-144",
+    "https://www.healthgrades.com/dentist/dr-richard-mazanek-yqp7k"
+   ],
+   "evidence_artifacts": ["2 named dentist-owners: Dr. Gary M. Lamantia and Dr. Richard C. Mazanek, both at single 7942 W Oakton St, Niles address"],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:MAZANEK_RICHARD",
+   "reasoning": "Multiple independent directory listings confirm LaMantia & Mazanek, Ltd. at 7942 W Oakton St, Niles, IL 60714, phone (847) 823-0260, is a two-dentist practice (Dr. Gary Lamantia and Dr. Richard Mazanek) at one location, matching the record's small_group/3-provider classification and AO Richard Mazanek. No DSO or corporate signal -> single-location dentist-owned group.",
+   "searched": ["\"Lamantia\" \"Mazanek\" dental Niles IL Oakton"]
+  },
+  {
+   "location_id": "d4d3c9b2e9429e9c",
+   "practice_name": "CHRIS KYROS, D.D.S., LTD.",
+   "zip": "60714",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://doctor.webmd.com/doctor/chris-kyros-5a937388-cbe8-43d2-86ee-cb26880201f4-overview",
+    "https://providers.sharecare.com/doctor/dr-chris-kyros"
+   ],
+   "evidence_artifacts": ["record shows AO Chris Kyros and provider_count=2 at single 8957 W Golf Rd, Niles address"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:KYROS_CHRIS",
+   "reasoning": "Web search confirms Dr. Chris Kyros, DDS practicing over 25 years at 8957 W Golf Rd, Niles, IL 60714, phone (847) 827-9850, matching the record and AO exactly; only Kyros is individually named in directory results but the record's own provider_count of 2 combined with no DSO/corporate signal supports a dentist-owned single-location group rather than solo.",
+   "searched": ["\"Chris Kyros\" DDS Niles IL Golf Rd dentist"]
+  },
+  {
+   "location_id": "85f0337696778151",
+   "practice_name": "JAMIE Y. PARK, D.D.S., LTD",
+   "zip": "60714",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://opennpi.com/provider/1437320553",
+    "https://providers.sharecare.com/doctor/dr-jamie-y-park"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Web search confirms Dr. Jamie Y. Park, DDS, general practice dentist with 19+ years experience, solo at 8622 W Golf Rd, Niles, IL 60714, phone (847) 299-5990, matching the record exactly. No corporate parent, chain, or DSO signal found -> true independent.",
+   "searched": ["\"Jamie Park\" DDS Niles IL 8622 Golf Rd dentist"]
+  }
+ ]
+}

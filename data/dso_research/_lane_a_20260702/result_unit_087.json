@@ -1,0 +1,366 @@
+{
+ "unit_id": "laneA_087",
+ "classifications": [
+  {
+   "location_id": "a5ca67a7c3203cd8",
+   "practice_name": "GEORGE JOSEPH DDS MS LTD",
+   "zip": "60612",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dentalplans.com/dentists/illinois/chicago/60612/dr-george-joseph-36577/",
+    "https://www.findatopdoc.com/doctor/3706497-George-Joseph-dentist-Chicago-IL-60612",
+    "https://www.yelp.com/biz/all-care-family-dental-center-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "AO GEORGE JOSEPH matches the practice's legal name exactly. Web listings (DentalPlans, FindATopDoc, Yelp) confirm Dr. George Joseph, DDS, MS operates the office at 3171 W Madison St as 'All Care Family Dental Center' with no group/corporate affiliation mentioned anywhere. Solo owner-operator, one location.",
+   "searched": [
+    "\"George Joseph\" DDS dentist 3171 W Madison Chicago"
+   ]
+  },
+  {
+   "location_id": "99ccab53bb438714",
+   "practice_name": "Fischer Dental",
+   "zip": "60612",
+   "assigned_tier": "institutional",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npiregistry.cms.hhs.gov/api/?number=1669425005&version=2.1",
+    "https://dentistry.uic.edu/patients/faculty-dental-practice/"
+   ],
+   "evidence_artifacts": [
+    "federal_NPI_org_name=University_of_Illinois_at_Chicago"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:uic_college_of_dentistry",
+   "reasoning": "The raw address field itself reads 'university of illinois at chicago' and the federal NPI registry (API lookup) resolves this NPI to Dr. Dena J. Fischer, organization name 'University of Illinois at Chicago', practice address 801 S Paulina MC 838 — the UIC College of Dentistry / UI Health medical district building. This is a university-employed faculty dental practice, not an independent business.",
+   "searched": [
+    "Fischer Dental University of Illinois Chicago UIC college of dentistry",
+    "\"(312) 996-1105\" UIC dental Chicago",
+    "\"Fischer\" dentist NPI 1669425005 Chicago"
+   ]
+  },
+  {
+   "location_id": "9c6dad7efdf7e3db",
+   "practice_name": "Montero-Fayad Dental",
+   "zip": "60612",
+   "assigned_tier": "institutional",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://dentistry.uic.edu/academics/academic-departments/department-of-pediatric-dentistry/",
+    "https://www.healthgrades.com/dentist/dr-marilia-montero-fayad-yfby2",
+    "https://www.practo.com/chicago/doctor/marilia-j-montero-fayad-dentist?practice_id=1622218"
+   ],
+   "evidence_artifacts": [
+    "address_matches_UI_Childrens_Hospital_1740_W_Taylor"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:uic_college_of_dentistry",
+   "reasoning": "Dr. Marilia Montero-Fayad is UIC Department of Pediatric Dentistry faculty (Clinical Associate Professor, former Director of the Infant Clinic) and is affiliated with University of Illinois Hospital and Ann & Robert H. Lurie Children's Hospital. The 15-provider address (1740 W Taylor St) is Children's Hospital University of Illinois, confirming this is a hospital/university pediatric dental clinic, not a private practice.",
+   "searched": [
+    "\"Montero-Fayad\" dental 1740 W Taylor Chicago",
+    "\"1740 W Taylor\" Chicago building UIC pediatric dentistry clinic",
+    "\"Montero-Fayad\" UIC pediatric dentistry chief faculty children's hospital Illinois"
+   ]
+  },
+  {
+   "location_id": "109237992b82c94e",
+   "practice_name": "DENTAL GROUP, LTD.",
+   "zip": "60612",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.vitadox.com/practice/chicago-il-60612/dental-group-ltd/5NLmmDaKnGKFF7iaGr4ogE",
+    "https://www.yelp.com/biz/dental-group-chicago-2"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Vitadox lists five named dentists (Irene R. Skirius DDS, Leon R. Kelleher DDS, Jorelle R. Alexander DMD, Jillian M. Harrison DMD, Peter P. Feimer DDS) practicing together at 1725 W Harrison St Suite 717 in the Rush Professional Building, matching the 6-provider count. No known DSO/PE brand or parent company found — reads as an independent multi-dentist group at a single location.",
+   "searched": [
+    "\"Dental Group Ltd\" 1725 W Harrison Chicago Rush",
+    "\"Dental Group of Chicago\" 1725 W Harrison \"Kathryn Seidel\" OR dentists owner",
+    "\"1725 W Harrison\" \"Suite 717\" dental Chicago"
+   ]
+  },
+  {
+   "location_id": "ce2b9409cd4eef84",
+   "practice_name": "BOARD OF TRUSTEES FO THE UNIVERSITY OF ILLINOIS",
+   "zip": "60612",
+   "assigned_tier": "institutional",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npiprofile.com/npi/1326483991",
+    "https://npidb.org/organizations/dental_health/oral-and-maxillofacial-surgery_1223s0112x/1326483991.aspx"
+   ],
+   "evidence_artifacts": [
+    "org_name_is_state_university_board_of_trustees",
+    "dba=UIC_Craniofacial_Center"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:uic_college_of_dentistry",
+   "reasoning": "NPI profile confirms this organization NPI is registered to 'The Board of Trustees of the University of Illinois,' doing business as the UIC Craniofacial Center, at 811 S Paulina St, the UIC/UI Health medical district. The entity name and DBA are dispositive of a state-university institutional facility, not a private business.",
+   "searched": [
+    "\"Board of Trustees of the University of Illinois\" 811 S Paulina dental NPI"
+   ]
+  },
+  {
+   "location_id": "4f78a49f9bce9700",
+   "practice_name": "Tiffinmascorro Dental",
+   "zip": "60612",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/linda-tiffin-mascorro-dds-chicago",
+    "https://www.bbb.org/us/il/chicago/profile/dentist/mascorro-linda-tiffin-dds-0654-1000098226/addressId/420757",
+    "https://npiregistry.cms.hhs.gov/provider-view/1144374034"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple independent listings (Yelp, BBB, Superpages, NPI registry) consistently show 'Mascorro Linda Tiffin DDS' as a solo general dentist at 2300 W Taylor St with the matching phone number. No corporate, DSO, or multi-location signal found — a long-running solo family practice.",
+   "searched": [
+    "Tiffin Mascorro Dental 2300 W Taylor St Chicago dentist"
+   ]
+  },
+  {
+   "location_id": "41b37ece761480f2",
+   "practice_name": "Ashland Dental",
+   "zip": "60612",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://local.yahoo.com/info-178943094-leonard-john-p-dmd-ashland-dental-chicago/",
+    "https://www.yellowpages.com/chicago-il/mip/ashland-dental-leonard-john-p-dds-464120396",
+    "https://www.facebook.com/p/Leonard-Dental-Group-100057303736451/"
+   ],
+   "evidence_artifacts": [
+    "shared_phone_312_942_0200_with_Leonard_Dental_location_e57fec6040ab5b06"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:leonard_dental_group",
+   "reasoning": "Ashland Dental is listed under 'Leonard John P DMD' and shares the exact phone number (312) 942-0200 with the Leonard Dental location in this same unit. Directory copy states the two offices rebranded/expanded as 'Leonard Dental Group,' a family-owned (Leonard family, since 1969) dentist-operated group with 2+ locations — not a DSO or PE-backed chain.",
+   "searched": [
+    "Ashland Dental 326 S Marshfield Ave Chicago dentist",
+    "\"Leonard Dental Group\" locations Ashland OR Marshfield Chicago"
+   ]
+  },
+  {
+   "location_id": "e57fec6040ab5b06",
+   "practice_name": "Leonard Dental",
+   "zip": "60612",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-christopher-leonard-ymc5l",
+    "https://www.businessyab.com/explore/united_states/illinois/cook_county/chicago/near_west_side/south_paulina_street/325/leonard_dental_group.html",
+    "https://www.patientconnect365.com/Dentists/Illinois/Chicago/60612/Leonard_Dental_Group"
+   ],
+   "evidence_artifacts": [
+    "shared_phone_312_942_0200_with_Ashland_Dental_location_41b37ece761480f2"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:leonard_dental_group",
+   "reasoning": "Directory sources describe the Leonard family (Dr. Eugene T. Leonard Sr. since 1969, now Daniel C. Leonard, Christopher J. Leonard, Eugene Leonard DDS) operating 'Leonard Dental Group' across multiple Near West Side addresses including 1645 W Jackson Blvd and 325 S Paulina St, sharing phone (312) 942-0200 with the Ashland Dental location in this unit. Family/dentist-owned, 2+ locations, no corporate parent found.",
+   "searched": [
+    "Leonard Dental 1645 W Jackson Blvd Chicago dentist"
+   ]
+  },
+  {
+   "location_id": "29104a54fd6614a8",
+   "practice_name": "Cabay Dental",
+   "zip": "60612",
+   "assigned_tier": "institutional",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.providerrankings.com/robert-j-cabay-md-dds-1427270602",
+    "https://hospital.uillinois.edu/primary-and-specialty-care/pathology"
+   ],
+   "evidence_artifacts": [
+    "NPI_1427270602_resolves_to_pathologist_not_general_dentist",
+    "address_840_S_Wood_St_is_UI_Health_Clinical_Sciences_Building"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:ui_health",
+   "reasoning": "NPI 1427270602 at 840 S Wood St #130 actually resolves to Dr. Robert J. Cabay, MD, DDS, an anatomic/clinical pathologist, not a practicing general dentist. 840 S Wood St is confirmed as the UI Health Clinical Sciences Building housing the pathology laboratories — this is a university hospital department NPI, not an independent dental practice, despite the misleading 'Cabay Dental' label.",
+   "searched": [
+    "Cabay Dental 840 S Wood St Chicago dentist",
+    "NPI 1427270602 dentist Chicago 840 S Wood",
+    "\"840 S Wood\" Chicago UI Health hospital medical center pathology"
+   ]
+  },
+  {
+   "location_id": "b3e6f4f931feb050",
+   "practice_name": "Wu Zheng DDS",
+   "zip": "60612",
+   "assigned_tier": "institutional",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npiregistry.cms.hhs.gov/api/?number=1679783088&version=2.1"
+   ],
+   "evidence_artifacts": [
+    "address_1969_W_Ogden_Ave_is_Stroger_Hospital_Cook_County",
+    "NPI_provider_name_mismatch_Mohammed_K_Qaisi_not_Wu_Zheng"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:cook_county_health",
+   "reasoning": "1969 W Ogden Ave is confirmed as John H. Stroger, Jr. Hospital of Cook County, which operates an Oral & Maxillofacial Surgery department at that address. A direct NPI registry API lookup for this record's NPI returns a different provider name (Mohammed K Qaisi) than the label 'Wu Zheng DDS,' and the phone number in the source record is malformed (invalid area code 128) -- both consistent with a noisy hospital-department record rather than a private practice. Classified institutional on the strength of the address match; confidence held at medium given the name discrepancy.",
+   "searched": [
+    "\"Wu Zheng\" DDS dentist 1969 W Ogden Ave Chicago",
+    "\"1969 W Ogden\" Chicago clinic oral surgery OR dental OR UI Health"
+   ]
+  },
+  {
+   "location_id": "f062d3a4ed2bf64a",
+   "practice_name": "Hodges Dental",
+   "zip": "60612",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60612/invite-cassandra-hodges-dds-14958",
+    "https://doctor.webmd.com/doctor/cassandra-hodges-1fa6cec2-b781-41a3-a57f-0b8c9d87b024-overview",
+    "https://cassandrahodgesbc2.dr-leonardo.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Cassandra Hodges, DDS is confirmed as the named general dentist at 1645 W Ogden Ave, matching the 'Hodges Dental' business name exactly and the address in the record. Provider count of 2 with no evidence of additional locations or corporate affiliation supports a small dentist-owned group at a single location.",
+   "searched": [
+    "Hodges Dental 1645 W Ogden Ave Chicago dentist"
+   ]
+  },
+  {
+   "location_id": "faf2420df9ab72c7",
+   "practice_name": "Ruth E Rothstein Core Ctr",
+   "zip": "60612",
+   "assigned_tier": "institutional",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://cookcountyhealth.org/locations/ruth-m-rothstein-core-center/",
+    "https://www.cookcountyil.gov/agency/ruth-m-rothstein-core-center",
+    "https://en.wikipedia.org/wiki/Ruth_M._Rothstein_CORE_Center"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:cook_county_health",
+   "reasoning": "The Ruth M. Rothstein CORE Center at 2020 W Harrison St is a Cook County Health public-health facility for HIV/AIDS and infectious disease care, which explicitly offers dental care as one of its services per Cook County's own site. This is a county government/public-health institution, not a private practice.",
+   "searched": [
+    "\"Ruth M. Rothstein CORE Center\" dental clinic 2020 W Harrison Chicago Cook County"
+   ]
+  },
+  {
+   "location_id": "689a90afeef11334",
+   "practice_name": "Union Dental Ctr",
+   "zip": "60612",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/union-dental-center-chicago",
+    "https://www.denteldoc.com/location/?id=54161",
+    "https://www.yellowpages.com/chicago-il/mip/union-dental-center-455727243"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Union Dental Center at 1657 W Adams St is confirmed by multiple business listings as a distinct general dentistry office (co-located with, but described as operating independently from, 'Union Medical Center' at the same building). Single provider, no DSO/PE signal found in any listing.",
+   "searched": [
+    "\"Union Dental\" 1657 W Adams St Chicago dentist"
+   ]
+  },
+  {
+   "location_id": "2f61c2737f5c064b",
+   "practice_name": "Kaushik Dental",
+   "zip": "60612",
+   "assigned_tier": "institutional",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.carecredit.com/doctor-locator/chicago-il/rush-university-medical-center-264rhk/",
+    "https://www.rush.edu/locations/rush-craniofacial-center",
+    "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60612/invite-ashutosh-kaushik-dds-16963"
+   ],
+   "evidence_artifacts": [
+    "address_is_Rush_University_Medical_Center_1653_W_Congress_Pkwy"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:rush_university_medical_center",
+   "reasoning": "Dr. Ashutosh Kaushik, DDS practices endodontics at 'Rush 1653 W Congress Parkway' -- confirmed to be Rush University Medical Center's campus, corroborated by CareCredit's doctor locator and Rush's own Craniofacial Center location page. This is a hospital/academic-medical-center faculty dental practice, not an independently owned office.",
+   "searched": [
+    "Kaushik Dental Rush 1653 W Congress Parkway Chicago dentist"
+   ]
+  },
+  {
+   "location_id": "4f1eb68e0694d696",
+   "practice_name": "TIMOTHY L. STRAKA D.D.S., L.L.C.",
+   "zip": "60612",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-timothy-straka-xk78h",
+    "https://www.bbb.org/us/il/chicago/profile/dentist/straka-timothy-l-dds-0654-88501609",
+    "https://www.dentalinsider.com/chicago/dentist/straka-timothy-l-dds-275712"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:STRAKA_TIMOTHY",
+   "reasoning": "AO TIMOTHY STRAKA matches the practice's own legal name exactly. Directory listings consistently show Dr. Timothy Straka, DDS operating two offices under his own name/LLC: 2409 W Warren Blvd, Chicago (this record, in business since 1989) and 3 S Greenleaf St Ste L, Gurnee IL. A single licensed dentist owning 2+ locations under his own brand, no corporate parent found.",
+   "searched": [
+    "\"Timothy Straka\" DDS dentist Chicago 2409 W Warren Blvd"
+   ]
+  },
+  {
+   "location_id": "a0047aa0658e0f6a",
+   "practice_name": "Family Dental Health Ctr",
+   "zip": "60612",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://doctor.webmd.com/doctor/thomas-shimoda-50c2b876-5d28-48e1-872b-3b7d531ab949-overview",
+    "https://npiprofile.com/npi/1912153479",
+    "https://www.practo.com/chicago/hospital/family-dental-health-center-accudent-associates-llc-douglas-park"
+   ],
+   "evidence_artifacts": [
+    "dba=AccuDent_Associates_LLC"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Family Dental Health Center at 811 S Western Ave is associated with Dr. Thomas Edward Shimoda, DDS and registered under 'AccuDent Associates, LLC.' This is distinct from the national 'Family Dental Care' DSO brand (different name/entity) -- no corporate parent, DSO, or PE signal found; reads as a single solo-owner dental practice.",
+   "searched": [
+    "\"Family Dental Health\" 811 S Western Ave Chicago dentist"
+   ]
+  }
+ ]
+}

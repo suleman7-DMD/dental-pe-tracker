@@ -1,0 +1,299 @@
+{
+ "unit_id": "laneA_021",
+ "classifications": [
+  {
+   "location_id": "8c7a47bf1a6d8590",
+   "practice_name": "PRITI. C. CHOKSHI,D.D.S.,P.C.",
+   "zip": "60440",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://bolingbrookfamilydental.com/",
+    "https://www.healthgrades.com/physician/dr-priti-chokshi-xkx9l"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Priti Chokshi's own practice site (Bolingbrook Family Dental, est. 1996) confirms she is the sole owner-dentist at 595 N Pinecrest Rd; no corporate parent, DSO brand, or additional locations found in web search.",
+   "searched": ["Priti Chokshi DDS Bolingbrook IL dentist"]
+  },
+  {
+   "location_id": "29fa5102fd303ae4",
+   "practice_name": "311 Dental",
+   "zip": "60440",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.cityfamily-dental.com/",
+    "https://www.yelp.com/biz/city-family-dental-bolingbrook"
+   ],
+   "evidence_artifacts": ["NPI legal name '311 Dental' mismatches current signage; matched by exact address 463 N Bolingbrook Dr + legacy phone (630) 759-1644"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The NPI legal name does not match current signage at 463 N Bolingbrook Dr; web evidence (practice site, Yelp, chamber listing) identifies this address as City Family Dental, owned/operated by Dr. Sneha Naik as a single-location woman-owned practice. No DSO/PE signal found. Confidence is medium due to the name/DBA mismatch, but address and long tenure corroborate independence.",
+   "searched": ["\"311 Dental\" Bolingbrook IL 463 N Bolingbrook Dr", "\"City Family Dental\" Bolingbrook IL 463 N Bolingbrook Dr owner dentist", "\"(630) 759-1644\" Bolingbrook dental OR dentist"]
+  },
+  {
+   "location_id": "4fc74283f23039c6",
+   "practice_name": "HIDDEN LAKES DENTAL CARE, P.C.",
+   "zip": "60440",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.hiddenlakesdental.com/",
+    "https://doctor.webmd.com/doctor/charles-crowl-9cc9b551-f1f1-403d-b579-6d9a1b9580f2-overview"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice founded 1989 by Dr. Charles Crowl, confirmed via the practice's own website and WebMD; single location with no corporate parent or DSO brand found, consistent with the solo_high_volume/1-provider record.",
+   "searched": ["Hidden Lakes Dental Care Bolingbrook IL Charles Crowl"]
+  },
+  {
+   "location_id": "a2fac50977f5f680",
+   "practice_name": "RUSSELL J BAK DDS PC",
+   "zip": "60440",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dentistinbolingbrook.com/",
+    "https://www.dentistinbolingbrook.com/meet-the-doctor"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice site (Professional Center of Dental Care) confirms Dr. Russell Bak plus associate Dr. Debra Alavi practice together at this single Bolingbrook location; no group/DSO branding or additional locations found. Matches the 3-provider small_group record.",
+   "searched": ["Russell Bak DDS Bolingbrook IL dentist"]
+  },
+  {
+   "location_id": "82060ef8796f703d",
+   "practice_name": "DR. SIBTAIN KERAI, P.C.",
+   "zip": "60440",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.drkerai.com/",
+    "https://www.drkerai.com/about/",
+    "https://findadentist.ada.org/dentists/dr-sibtain-kerai-bolingbrook-0038V00002yjUqWQAU-a1C8V00000kYh7wUAC"
+   ],
+   "evidence_artifacts": ["ctx.owner_reach_zips includes 60554 (Sugar Grove), corroborating a 2nd office found on drkerai.com"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:KERAI_SIBTAIN",
+   "reasoning": "Dr. Sibtain Kerai's own site (drkerai.com) and directory listings show he practices at multiple offices (Bolingbrook, Shorewood, Sugar Grove, Chicago) under his own name/ownership; no corporate DSO brand or PE sponsor found. Owner-reach context (2nd IL ZIP) corroborates a small dentist-owned multi-location footprint. Classified dentist_multi (T3).",
+   "searched": ["Sibtain Kerai DDS Bolingbrook IL dentist office locations"]
+  },
+  {
+   "location_id": "424e826f072b9279",
+   "practice_name": "Moss Dental",
+   "zip": "60440",
+   "assigned_tier": "undetermined",
+   "pe_backed": true,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.groupdentistrynow.com/dso-group-blog/north-american-dental-group-to-be-acquired-by-jacobs-holding/",
+    "https://pitchbook.com/profiles/company/343099-63",
+    "https://app.mergerlinks.com/transactions/2019-04-03-grove-dental-associates/dealmakers",
+    "https://www.grovedental.com/about-us"
+   ],
+   "evidence_artifacts": ["Phone (630) 759-8940 matches Grove Dental Associates' current Bolingbrook office phone"],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:grove_dental_nadg",
+   "reasoning": "Dr. Timothy Moss's NPI address/phone (630-759-8940) matches Grove Dental Associates' current Bolingbrook office (per WebMD/topDentists, 'Dr. Tim Moss is part of Grove Dental'). Multiple sources (PitchBook, Group Dentistry Now, MergerLinks) confirm Grove Dental Associates (4 IL locations: Downers Grove/Bolingbrook/Lombard/Wheaton) was acquired 2019-04-03 by North American Dental Group (NADG), a PE-backed DSO (Abry Partners/Riverside, later Jacobs Holding) operating 200+ practices across 11 states. Per the protected-network rule this spans well over 10 locations, so NOT classified individually. R4_protected_network:North_American_Dental_Group(NADG)/Grove_Dental_Associates.",
+   "searched": ["Moss Dental 406 W Boughton Rd Bolingbrook IL", "\"Grove Dental Associates\" Bolingbrook Illinois locations DSO", "\"Grove Dental Associates\" private equity acquired OR sold owner history", "\"North American Dental Group\" Grove Dental Bolingbrook Illinois locations", "\"North American Dental Group\" private equity backed DSO NADG"]
+  },
+  {
+   "location_id": "a56a841f0923d8aa",
+   "practice_name": "Smith Dental",
+   "zip": "60440",
+   "assigned_tier": "undetermined",
+   "pe_backed": true,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.linkedin.com/in/dr-david-smith-dmd-mba-8bbbab41/",
+    "https://pitchbook.com/profiles/company/343099-63",
+    "https://app.mergerlinks.com/transactions/2019-04-03-grove-dental-associates/dealmakers"
+   ],
+   "evidence_artifacts": ["Phone (630) 759-8940 shared with Moss Dental / Grove Dental Bolingbrook at same 406B W Boughton building"],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:grove_dental_nadg",
+   "reasoning": "Dr. David H. Smith DMD MBA (oral & maxillofacial surgeon) practices at 406B W Boughton Rd Ste A, sharing the phone number (630-759-8940) with the Grove Dental Bolingbrook office; his LinkedIn profile lists him as affiliated with Grove Dental Associates, which is documented (PitchBook, MergerLinks) as acquired in 2019 by PE-backed North American Dental Group (NADG, 200+ locations/11 states). Per the protected-network rule, deferring rather than tiering individually. R4_protected_network:North_American_Dental_Group(NADG)/Grove_Dental_Associates.",
+   "searched": ["\"Smith Dental\" OR \"Chung Dental\" 406B Boughton Rd Bolingbrook IL"]
+  },
+  {
+   "location_id": "1f6f116f4cfa533c",
+   "practice_name": "Chung Dental",
+   "zip": "60440",
+   "assigned_tier": "undetermined",
+   "pe_backed": true,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npiprofile.com/npi/1912075490",
+    "https://pitchbook.com/profiles/company/343099-63"
+   ],
+   "evidence_artifacts": ["Phone (630) 759-8940 shared with Moss Dental / Grove Dental Bolingbrook at same 406B W Boughton building"],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": "brand:grove_dental_nadg",
+   "reasoning": "Dr. Mina Chung DDS MS practices at 406B W Boughton Rd, sharing the same building and central phone number (630-759-8940) used by the Grove Dental Bolingbrook office, itself documented as PE-backed via North American Dental Group (PitchBook/MergerLinks). No page explicitly names Chung as Grove-affiliated (weaker than the Moss/Smith evidence), but the shared building/phone structural signal is enough to suspect she sits inside the same protected 200+-location NADG network, so deferring rather than guessing a tier. R4_protected_network:North_American_Dental_Group(NADG)/Grove_Dental_Associates.",
+   "searched": ["\"Smith Dental\" OR \"Chung Dental\" 406B Boughton Rd Bolingbrook IL"]
+  },
+  {
+   "location_id": "ce0777b1696d46d4",
+   "practice_name": "DEEPA SRIDHAR P.C",
+   "zip": "60440",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.placidadental.com/",
+    "https://www.placidadental.com/about"
+   ],
+   "evidence_artifacts": ["Third-party aggregator (doctorsnetwork.com) claimed additional Evanston/Chicago offices, not corroborated by the practice's own site"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Deepa Sridhar operates as Placida Dental at 217 S Bolingbrook Dr; the practice's own 'About' page lists only this single physical address (Joliet/Romeoville/Woodridge mentions on the marketing site are service-area SEO pages, not separate offices). No DSO/PE signal found. A conflicting third-party aggregator's claim of Evanston/Chicago offices could not be corroborated on the primary site, so confidence is medium rather than high. Classified true_independent (T1).",
+   "searched": ["Deepa Sridhar DDS Bolingbrook IL 217 S Bolingbrook Dr", "\"Placida Dental\" Bolingbrook Joliet Romeoville locations owner dentist"]
+  },
+  {
+   "location_id": "d70825f173fed496",
+   "practice_name": "SUZY AZLEA DMD LTD",
+   "zip": "60440",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/suzy-azalea-dmd-lily-cache-dental-bolingbrook",
+    "https://www.healthgrades.com/dentist/dr-suzy-azalea-y9skh5z"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Suzy Azalea (DMD) practices as Lily Cache Dental at 761 E Boughton Rd, a single location with no group/DSO branding found. Matches the 2-provider small_group record. Classified single_loc_group (T2).",
+   "searched": ["Suzy Azlea DMD Bolingbrook IL 761 E Boughton Rd"]
+  },
+  {
+   "location_id": "128077e953a8d293",
+   "practice_name": "RANDALL F. SUMMERS, D.D.S.,LTD",
+   "zip": "60440",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.vitals.com/practice/randall-f-summers-dds-ltd-gp-8be9caf7-3ec1-49c5-93c8-990625313dae",
+    "https://www.healthgrades.com/dentist/dr-randall-summers-3ypx5"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Randall Summers practices general dentistry at a single Bolingbrook office (391 Quadrangle Dr); no DSO/PE branding or additional locations found. Matches the 3-provider small_group record. Classified single_loc_group (T2).",
+   "searched": ["Randall Summers DDS Bolingbrook IL 391 Quadrangle Dr"]
+  },
+  {
+   "location_id": "fa9d7bf6753a234e",
+   "practice_name": "DR. K KALMANEK, LTD.",
+   "zip": "60440",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://local.demandforce.com/b/keithkalmanek",
+    "https://www.healthgrades.com/dentist/dr-keith-kalmanek-xkp49"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Drs. Keith and Mary Kalmanek, a married dentist couple, have practiced together for 26+ years at this single Bolingbrook office (913 Lily Cache Ln); no corporate parent found, consistent with the family_practice record. Classified single_loc_group (T2) — owner-dentists at one location.",
+   "searched": ["Keith Kalmanek DDS Bolingbrook IL 913 Lily Cache Ln"]
+  },
+  {
+   "location_id": "90863105df544f89",
+   "practice_name": "Shahabuddin Dental",
+   "zip": "60440",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.311dental.com/dr-syed-shahabuddin/",
+    "https://www.medicalnewstoday.com/provider/dr-syed-shahabuddin-1043737919"
+   ],
+   "evidence_artifacts": ["Exact address (311 N Bolingbrook Dr) + phone (630-914-3505) match between NPI record and 311dental.com"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:311_dental",
+   "reasoning": "The NPI record name 'Shahabuddin Dental' (address/phone match 311 N Bolingbrook Dr, 630-914-3505) corresponds to 311 Dental, founded and owned by Dr. Syed Shahabuddin. His own practice bio confirms additional offices in Anderson, IN and East Peoria, IL — a small dentist-owned multi-location practice (3 total), not a DSO. Classified dentist_multi (T3).",
+   "searched": ["\"311 Dental\" Bolingbrook IL 463 N Bolingbrook Dr", "\"311 Dental\" Bolingbrook Shahabuddin dentist owner"]
+  },
+  {
+   "location_id": "88f95e945cd318b2",
+   "practice_name": "MYNT DENTAL BOLINGBROOK LLC",
+   "zip": "60440",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.myntdental.com/bolingbrook",
+    "https://www.dentalplans.com/dentists/illinois/franklin-park/60131/dr-sasan-molavi-32213/",
+    "https://www.vitadox.com/practice/bolingbrook-il-60440/mynt-dental-bolingbrook-llc/utp8cZu8LH4RQP7UUBnHgh"
+   ],
+   "evidence_artifacts": ["ctx.owner_reach_zips = [60131, 60440], corroborated by a separate Molavi dentist listing in Franklin Park (60131)"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:MOLAVI_SASAN",
+   "reasoning": "Dr. Sasan Molavi is confirmed as President/Sole Member of Mynt Dental Bolingbrook LLC; the AO also reaches a second IL ZIP (60131, Franklin Park), corroborated by a separate Molavi dentist listing there. Small dentist-owned 2-location practice, no DSO signal. Classified dentist_multi (T3).",
+   "searched": ["Mynt Dental Bolingbrook Sasan Molavi 231 N Bolingbrook Dr"]
+  },
+  {
+   "location_id": "40801a263924cb2c",
+   "practice_name": "Kaur Kirandeep DMD",
+   "zip": "60440",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.rainadentalcare.com/",
+    "https://www.yelp.com/biz/raina-dental-care-bolingbrook",
+    "https://www.chamberofcommerce.com/business-directory/illinois/bolingbrook/dentist/2011519370-raina-dental-care-holistic-dentist-bolingbrook"
+   ],
+   "evidence_artifacts": ["Exact address (151 Fernwood Dr) + phone (630-381-4021) match between NPI record and Raina Dental Care"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:raina_dental_care",
+   "reasoning": "NPI name 'Kaur Kirandeep DMD' (151 Fernwood Dr, 630-381-4021) matches Raina Dental Care exactly on address and phone; owner is Dr. Mandeep Kaur Raina. Directory listings show the practice added a second office (2323 Naperville Rd, Naperville, IL) starting Sept 2024 — a small dentist-owned 2-location expansion, no DSO/PE signal. Note: an unrelated 18-location chain 'Smile Obsession' also lists 151 Fernwood Dr but with a different phone (630-914-3599), confirming that is a separate practice sharing the same street/plaza, not this one. Classified dentist_multi (T3).",
+   "searched": ["Kirandeep Kaur DMD Bolingbrook IL 151 Fernwood Dr", "\"Smile Obsession\" dental Bolingbrook 151 Fernwood locations chain owner", "\"Raina Dental Care\" Bolingbrook IL address phone Kaur"]
+  },
+  {
+   "location_id": "c8168a1ff0a03a29",
+   "practice_name": "Mchabcheb Dental",
+   "zip": "60440",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://infinitesmilesbolingbrook.com/",
+    "https://infinitesmilesbolingbrook.com/doctor/"
+   ],
+   "evidence_artifacts": ["NPI record name 'Mchabcheb Dental' mismatches current signage; matched by exact address 263 S Bolingbrook Dr"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "NPI record name 'Mchabcheb Dental' at 263 S Bolingbrook Dr matches the address of Infinite Smiles Dental, staffed by Dr. Adiba/Sameera Jagirdar and Dr. Mohammed Sayeed; no DSO/PE branding found, single location. The name mismatch is likely a legacy/former-provider NPI listing at this address. Classified single_loc_group (T2).",
+   "searched": ["Mchabcheb Dental Bolingbrook IL 263 S Bolingbrook Dr", "\"Infinite Smiles Dental\" Bolingbrook IL owner Jagirdar Sayeed dentist"]
+  }
+ ]
+}

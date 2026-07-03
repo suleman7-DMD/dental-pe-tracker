@@ -1,0 +1,404 @@
+{
+ "unit_id": "laneA_174",
+ "classifications": [
+  {
+   "location_id": "3f2a1feba10ebd5d",
+   "practice_name": "ASHTON DENTAL PC",
+   "zip": "60108",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.ashton-dental.com/",
+    "https://www.ashton-dental.com/reem-shafi-dmd/",
+    "https://doctor.webmd.com/practice/ashton-dental-pc-5b8c46ec-d045-41c7-a036-9b8d8e89b9a6"
+   ],
+   "evidence_artifacts": ["ao_reach=17_locations_across_16_zips"],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "ao:SHAFI_SOHAIL",
+   "reasoning": "Searched the exact address (142 S Gary Ave, Bloomingdale) and the AO name/brand. NPPES AO is Sohail Shafi; web search surfaced 'Ashton Dental' brand in Aurora IL run by Dr. Reem Shafi, DMD, described as CEO of 'Two Rivers Dental' who 'owns several practices...around the Chicago area' -- consistent with the ctx owner_reach_locations=17 across 16 ZIPs. Per protocol, an AO/brand reaching 10+ locations must not be classified by a single-unit reviewer; flagging R4_protected_network:SHAFI (Two Rivers Dental / Ashton Dental multi-location group) for a dedicated one-network-one-decision review. Note: the exact Bloomingdale address in this record surfaced as 'Family Dental Care of Bloomingdale' in one directory, suggesting a possible multi-brand or relocated listing that the network review should also reconcile.",
+   "searched": [
+    "Ashton Dental PC Bloomingdale IL 142 S Gary Ave dentist",
+    "\"Ashton Dental\" Sohail Shafi Illinois locations dentist owner"
+   ]
+  },
+  {
+   "location_id": "32a6165e9eaf9231",
+   "practice_name": "Sharma Dental",
+   "zip": "60108",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Ran three searches (practice name + street address, practice name + city/state, and the specific street address alone). No website, directory listing, or review page could be matched to 144 Ring Neck Ln, Bloomingdale IL 60108 -- results only returned other, unrelated Sharma-named dentists (Lombard, Villa Park) and generic Bloomingdale dental listings. No usable web evidence found; leaving undetermined rather than guessing.",
+   "searched": [
+    "Sharma Dental Bloomingdale IL 144 Ring Neck Lane dentist",
+    "Sharma Dental Bloomingdale IL 60108 dentist",
+    "\"144 Ring Neck\" Bloomingdale IL dentist OR dental"
+   ]
+  },
+  {
+   "location_id": "f5ca0d12172b5010",
+   "practice_name": "DANIEL J FORNATTO D D S P C",
+   "zip": "60126",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.drfornatto.com/",
+    "https://www.drfornatto.com/office",
+    "https://www.yelp.com/biz/daniel-j-fornatto-dds-elmhurst-2"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own branded website (drfornatto.com) at the exact address (917 S York St, Elmhurst) confirms a solo dentist-owned general practice with no corporate parent or DSO affiliation mentioned anywhere. Single location, single named owner-dentist -- textbook true_independent.",
+   "searched": ["Daniel Fornatto DDS Elmhurst IL dentist 917 York Rd"],
+   "intel": {
+    "website_url": "https://www.drfornatto.com/",
+    "website_note": "Modern practice website with dedicated New Patients and Contact pages; positions the office around laser/no-shot dentistry.",
+    "services": ["bonding", "cosmetic contouring", "crowns and bridges", "implants", "veneers", "whitening", "Invisalign/orthodontia", "sealants", "root canal therapy", "extractions", "scaling and root planing", "dentures"],
+    "technology": ["Delight dental laser (no-shot/no-drill dentistry)"],
+    "provider_notes": "Dr. Daniel Fornatto speaks Italian and Spanish.",
+    "distinguishing_notes": "Markets itself on 'no shot, no drill, no numb lip' laser dentistry; multilingual owner-dentist (Italian/Spanish).",
+    "sources": ["https://www.drfornatto.com/", "https://reviews.birdeye.com/daniel-j-fornatto-dds-155344031151432"]
+   }
+  },
+  {
+   "location_id": "d4158d668f7c28ed",
+   "practice_name": "COTTAGE HILL DENTAL CARE, LTD.",
+   "zip": "60126",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.myelmhurstdentist.com/",
+    "https://www.healthgrades.com/group-directory/il-illinois/elmhurst/cottage-hill-dental-care-x8d4h7",
+    "https://www.opencare.com/dentists/elmhurst-il/dr-richard-a-steffens-24631315708d/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own site (myelmhurstdentist.com) and multiple directories confirm Dr. Richard A. Steffens founded this Elmhurst practice in 1980 and remains its dentist-owner (UIC dental grad, multiple 'Top Dentist' awards 2009-2015). NPPES shows 4 providers at the address (family_practice entity code) but no corporate/DSO signal anywhere -- a single-location, dentist-owned multi-provider group. Note: web sources describe the office having 'recently moved to a state-of-the-art office on the south end of Elmhurst' (360 W Butterfield Rd), which may postdate the 135 N Addison Ave address on file; ownership finding unaffected.",
+   "searched": ["Cottage Hill Dental Care Elmhurst IL Richard Steffens dentist"],
+   "intel": {
+    "website_url": "https://www.myelmhurstdentist.com/",
+    "website_note": "Established local-authority site; touts Dr. Steffens' decades of practice and post-graduate training.",
+    "services": ["cosmetic dentistry", "veneers", "whitening", "Invisalign", "crowns and bridges", "dentures and partials", "implant restoration", "root canals", "minor oral surgery", "night guards", "Botox", "nitrous oxide", "digital x-rays"],
+    "distinguishing_notes": "Dr. Steffens named 'America's Top Dentists' (Consumers Research Council, 2009-2015) and 'Top Docs in Chicago' (Chicago Magazine, 2011, 2014); practicing since 1980.",
+    "sources": ["https://www.myelmhurstdentist.com/", "https://www.healthgrades.com/group-directory/il-illinois/elmhurst/cottage-hill-dental-care-x8d4h7"]
+   }
+  },
+  {
+   "location_id": "becb7822817b9cbf",
+   "practice_name": "GURSIMRAN MANAISE, PLLC",
+   "zip": "60126",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://elmhurstdentistil.com/",
+    "https://dentalvitals.com/dentists/il/elmhurst/gursimran-manaise-pllc",
+    "https://www.carecredit.com/doctor-locator/elmhurst-il/gursimran-manaise-pllc-273tqw/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice does business as 'Elmhurst Dental Studio' (elmhurstdentistil.com), same phone number (630-530-0770) as on file, led by Dr. Gursimran Reen/Manaise. No DSO/corporate signal; single location, dentist-owned, 2 providers per NPI -- single_loc_group.",
+   "searched": ["Gursimran Manaise DDS Elmhurst IL dentist 386 N York St"],
+   "intel": {
+    "website_url": "https://elmhurstdentistil.com/",
+    "website_note": "Modern branded site (Elmhurst Dental Studio) with services pages for general dentistry, dentures, cosmetic dentistry, oral exams.",
+    "services": ["general dentistry", "dentures", "cosmetic dentistry", "oral examinations and consultations", "teeth whitening", "veneers"],
+    "sources": ["https://elmhurstdentistil.com/", "https://www.facebook.com/ElmhurstDentalStudio1/"]
+   }
+  },
+  {
+   "location_id": "e2f7c997685ed334",
+   "practice_name": "YUNEZ DENTAL & ASSOCIATES, P.C.",
+   "zip": "60126",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://local.yahoo.com/info-17217196-yunez-dental-associates-pc-elmhurst",
+    "https://www.healthgrades.com/dentist/dr-samira-yunez-xj84f",
+    "https://npiregistry.cms.hhs.gov/provider-view/1730194218"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Confirmed at exact address/phone (237 E Butterfield Rd, 630-833-3330). Sylvia Galindo (the NPPES authorized official, ctx owner_reach=2 ZIPs) is identified in web sources as the Office Manager, not an owner/controller -- so the 2-ZIP AO reach reflects a shared administrative contact, not a corporate network. Practicing dentist is Dr. Samira Yunez, DDS; no DSO/corporate signal found. Single location, dentist-owned, 2 providers -- single_loc_group.",
+   "searched": ["Yunez Dental Associates Elmhurst IL Sylvia Galindo dentist"],
+   "intel": {
+    "website_note": "Directory-listed hours: Mon 8-1, Tue 12-8, Wed 11-6, Thu 9-5, Fri 9-4, Sat 8-3.",
+    "provider_notes": "Dr. Samira Yunez, DDS is the practicing dentist; Sylvia Galindo serves as Office Manager.",
+    "sources": ["https://local.yahoo.com/info-17217196-yunez-dental-associates-pc-elmhurst", "https://www.healthgrades.com/dentist/dr-samira-yunez-xj84f"]
+   }
+  },
+  {
+   "location_id": "ecd67942628306e6",
+   "practice_name": "Gotsch Dental",
+   "zip": "60126",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.elmhurstsmiles.com/",
+    "https://www.yelp.com/biz/philip-w-gotsch-dds-elmhurst-smiles-elmhurst",
+    "https://www.healthgrades.com/dentist/dr-philip-gotsch-y96bv"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own branded site 'Elmhurst Smiles' at exact address (127 E Vallette St) confirms Dr. Philip W. Gotsch, DDS as sole owner-dentist, practicing 25-30+ years, no corporate/DSO signal. Solo, single location -- true_independent.",
+   "searched": ["Gotsch Dental Elmhurst IL 127 E Vallette dentist"],
+   "intel": {
+    "website_url": "https://www.elmhurstsmiles.com/",
+    "website_note": "Established local practice site branded 'Elmhurst Smiles'; general dentistry plus TMJ/root canal focus mentioned in directory listings.",
+    "services": ["general dentistry", "dental cleanings", "exams", "root canal", "TMJ treatment"],
+    "owner_career_stage": "late_career",
+    "provider_notes": "Dr. Philip Gotsch graduated Northwestern University in 1990, 30+ years in practice.",
+    "sources": ["https://www.elmhurstsmiles.com/about/", "https://www.healthgrades.com/dentist/dr-philip-gotsch-y96bv"]
+   }
+  },
+  {
+   "location_id": "f69e0bf5af8ef714",
+   "practice_name": "Kesman, Russell a DDS",
+   "zip": "60126",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/kesman-russell-a-dds-elmhurst",
+    "https://russellkesmanf63.dr-leonardo.com/",
+    "https://www.healthgrades.com/dentist/dr-russell-kesman-2lp6c"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Confirmed at exact address (129 E Vallette St) across multiple directories and a dedicated profile site; no corporate/DSO signal, no parent company. NPI record shows 2 providers/EIN reach limited to this one ZIP -- single-location, dentist-owned group.",
+   "searched": ["Russell Kesman DDS Elmhurst IL dentist 129 Vallette"],
+   "intel": {
+    "website_url": "https://russellkesmanf63.dr-leonardo.com/",
+    "website_note": "Directory-style profile site listing hours (M-F 9-5) and accepted insurance (Delta Dental, MetLife).",
+    "services": ["fillings", "check ups", "cleaning", "crowns and veneers"],
+    "sources": ["https://russellkesmanf63.dr-leonardo.com/", "https://www.healthgrades.com/dentist/dr-russell-kesman-2lp6c"]
+   }
+  },
+  {
+   "location_id": "94536736facaf408",
+   "practice_name": "SANDELL DENTAL CARE, LTD.",
+   "zip": "60126",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://doctor.webmd.com/practice/sandell-dental-care-ltd-1a90f144-ce66-478c-bfb1-94cadfcc518e",
+    "https://www.yelp.com/biz/alpine-creek-dental-elmhurst",
+    "https://www.vitals.com/practice/sandell-dental-care-ltd-1a90f144-ce66-478c-bfb1-94cadfcc518e"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Search results directly flag 'Dr. Donald W. Sandell, DDS is permanently closed' on at least one aggregator, and a Yelp review at the same address (360 N York, now listed as Alpine Creek Dental) states 'I've been going to Sandell, now Alpine Creek since I was a kid,' indicating the practice was closed/rebranded. Per protocol, suspected-closed practices are not classified. closure_suspect.",
+   "searched": ["Sandell Dental Care Elmhurst IL Donald Sandell dentist", "Sandell Dental Care Elmhurst IL permanently closed hours 2026"]
+  },
+  {
+   "location_id": "6456d3133267d244",
+   "practice_name": "ASSOCIATES FOR DENTAL SLEEP MEDICINE, LTD",
+   "zip": "60126",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://associates-dsm.com/",
+    "https://associates-dsm.com/about-us/",
+    "https://www.linkedin.com/in/ivan-valcarenghi-dds-fagd-d-abdsm-associates-for-dental-sleep-medicine-9a918a3b/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own branded website (associates-dsm.com) confirms this is a dental-sleep-medicine practice located at 360 W Butterfield Rd, Elmhurst, run by Dr. Ivan Valcarenghi, DDS, FAGD, D.ABDSM, who is listed as Managing Director -- a licensed dentist controlling the practice, not a corporate parent. Single location, 6 providers per NPI, dentist-controlled -- single_loc_group.",
+   "searched": ["Associates for Dental Sleep Medicine Elmhurst IL Ivan Valcarenghi"],
+   "intel": {
+    "website_url": "https://associates-dsm.com/",
+    "website_note": "Professional specialty site (dental sleep medicine) with a dedicated 'for providers' referral page.",
+    "services": ["oral appliance therapy", "myofunctional training", "combination therapy", "surgical collaborations for OSA/snoring"],
+    "distinguishing_notes": "Managing Director Dr. Ivan Valcarenghi has ~30 years' experience, named a DCA Top 100 Doctor (2019), Board Certified Diplomate ABDSM, and 2024-25 CAGD President -- a specialist (dental sleep medicine) rather than general dentistry office.",
+    "sources": ["https://associates-dsm.com/about-us/", "https://www.linkedin.com/in/ivan-valcarenghi-dds-fagd-d-abdsm-associates-for-dental-sleep-medicine-9a918a3b/"]
+   }
+  },
+  {
+   "location_id": "cb4011e538ad22e4",
+   "practice_name": "Higgins Dental",
+   "zip": "60126",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/michael-t-higgins-dds-elmhurst-3",
+    "https://www.healthgrades.com/dentist/dr-michael-higgins-34mbs",
+    "https://www.doctorsnetwork.com/doctors/dentists/elmhurst-il-60126/invite-michael-higgins-dds-11133"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Confirmed at exact address (183 N Addison Ave) across multiple directories: Dr. Michael T. Higgins, DDS, 37+ years in practice, graduated Loyola 1986. No corporate/DSO signal. NPI shows 2 providers -- single-location, dentist-owned group.",
+   "searched": ["Higgins Dental Elmhurst IL 183 Addison dentist"],
+   "intel": {
+    "website_note": "No dedicated practice website found in search; profile pages across Healthgrades/Sharecare/CareCredit/doctorsnetwork.",
+    "services": ["check-ups", "crowns and veneers", "teeth whitening", "Invisalign"],
+    "owner_career_stage": "late_career",
+    "provider_notes": "Dr. Michael Higgins graduated Loyola University School of Dentistry in 1986.",
+    "sources": ["https://www.doctorsnetwork.com/doctors/dentists/elmhurst-il-60126/invite-michael-higgins-dds-11133", "https://www.healthgrades.com/dentist/dr-michael-higgins-34mbs"]
+   }
+  },
+  {
+   "location_id": "15b5b0c79dbe5dbc",
+   "practice_name": "GALLEGOS DENTAL, PLLC",
+   "zip": "60126",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.elmhurstfamilydentalcare.net/",
+    "https://www.healthgrades.com/dentist/dr-evan-gallegos-xsoalvs289",
+    "https://providers.sharecare.com/doctor/dr-evan-gallegos-xsoalvs289"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own site (elmhurstfamilydentalcare.net) confirms Dr. Evan R. Gallegos, DMD, MS acquired the prior owner's (Dr. Kimberly Weyneth) practice at this exact address (152 N Addison Ave) and now operates it as Elmhurst Family Dental Care -- a dentist-owner, no corporate/DSO signal. Single location, 2 providers -- single_loc_group.",
+   "searched": ["Gallegos Dental Elmhurst IL Evan Gallegos dentist"],
+   "intel": {
+    "website_url": "https://www.elmhurstfamilydentalcare.net/",
+    "website_note": "Branded practice site; accepts new patients and offers telehealth.",
+    "services": ["general dentistry", "cosmetic dentistry", "teeth whitening", "implants", "veneers"],
+    "distinguishing_notes": "Dr. Gallegos has worked with the Will County Community Health Center (an FQHC) to expand underserved-patient access; recently acquired the practice from its prior owner.",
+    "sources": ["https://www.elmhurstfamilydentalcare.net/", "https://providers.sharecare.com/doctor/dr-evan-gallegos-xsoalvs289"]
+   }
+  },
+  {
+   "location_id": "5c0c799730045b66",
+   "practice_name": "REARDON FAMILY DENTAL",
+   "zip": "60126",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://reardonfamilydental.com/about-us/",
+    "https://reardonfamilydental.com/",
+    "https://www.healthgrades.com/dentist/dr-patrick-reardon-o2vhaqx496"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own site (reardonfamilydental.com) confirms this is a father-son dentist-owned practice: Dr. Brian Reardon and his son Dr. Patrick Reardon, DDS, practicing at 'Brian Reardon DDS, PC,' 530 S Cherry St. No corporate/DSO signal. Single location, 2 dentist-owners -- single_loc_group.",
+   "searched": ["Reardon Family Dental Elmhurst IL Patrick Reardon dentist"],
+   "intel": {
+    "website_url": "https://reardonfamilydental.com/",
+    "website_note": "Family-branded practice site with dedicated About Us and Contact pages.",
+    "services": ["veneers", "porcelain crowns", "whitening", "cosmetic bonding", "implant restorations"],
+    "distinguishing_notes": "Father-son dentist team (Brian and Patrick Reardon) continuing a family practice tradition.",
+    "sources": ["https://reardonfamilydental.com/about-us/", "https://reardonfamilydental.com/"]
+   }
+  },
+  {
+   "location_id": "32399095d00b3786",
+   "practice_name": "Gupta Dental",
+   "zip": "60126",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.kavitagupta.com/",
+    "https://elmhurstdentalhealth.net/dr-kavita-gupta/",
+    "https://www.yelp.com/biz/kavita-gupta-dds-elmhurst"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own branded site(s) confirm Dr. Kavita Gupta, DDS started her own family dental practice in Elmhurst in 2000 at this exact address (1200 S York St). No corporate/DSO signal -- solo, single location -- true_independent.",
+   "searched": ["Gupta Dental Elmhurst IL 1200 S York Rd dentist"],
+   "intel": {
+    "website_url": "https://www.kavitagupta.com/",
+    "website_note": "Established solo-practitioner site (also mirrored at elmhurstdentalhealth.net); positions the office as family/cosmetic/reconstructive dentistry for all ages.",
+    "services": ["general dentistry", "cosmetic dentistry", "reconstructive dentistry", "preventive cleanings and exams"],
+    "owner_career_stage": "late_career",
+    "provider_notes": "Dr. Kavita Gupta graduated Northwestern University Dental School in 1992 and opened this practice in 2000; speaks Hindi and Spanish.",
+    "insurance_note": "Accepts in-network insurance, CareCredit, financing, workers comp, cash/check.",
+    "sources": ["https://www.kavitagupta.com/", "https://elmhurstdentalhealth.net/dr-kavita-gupta/"]
+   }
+  },
+  {
+   "location_id": "11e3d7bac409618c",
+   "practice_name": "CHRISTOPHER KLEE DDS PLLC",
+   "zip": "60126",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.newmandds.com/",
+    "https://www.newmandds.com/about-us/meet-the-doctor/",
+    "https://providerwire.com/general-practice-dentistry/illinois/elmhurst/christopher-klee-dds-pllc-1922966589"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own site (newmandds.com, branded 'Klee and Newman Dental') confirms Dr. Christopher Klee became the successor dentist-owner to Dr. Thomas Newman effective Jan 2, 2026, at this exact address (468 S Spring Rd). No corporate/DSO signal -- single location, dentist-owned, 2 providers -- single_loc_group.",
+   "searched": ["Christopher Klee DDS Elmhurst IL 468 S Spring Rd dentist"],
+   "intel": {
+    "website_url": "https://www.newmandds.com/",
+    "website_note": "Practice site recently rebranded 'Klee and Newman Dental' reflecting the ownership transition.",
+    "provider_notes": "Dr. Christopher Klee, DDS -- BA Biology (Le Moyne College), dental degree at University at Buffalo, AEGD residency at A.T. Still University (Mesa, AZ); member of Chicago Dental Society and ADA.",
+    "distinguishing_notes": "Very recent ownership transition -- Dr. Klee became successor owner effective January 2, 2026, taking over from longtime owner Dr. Thomas Newman.",
+    "sources": ["https://www.newmandds.com/", "https://www.newmandds.com/about-us/meet-the-doctor/"]
+   }
+  },
+  {
+   "location_id": "d9d876677ae0e615",
+   "practice_name": "Pahopos Dental",
+   "zip": "60126",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/elmhurst-family-dental-elmhurst",
+    "https://doctor.webmd.com/doctor/louis-pahopos-a933f508-24e1-4dc3-9a3c-e1a8802edd72-overview",
+    "https://reviews.birdeye.com/dr-louis-pahopos-169016561462936"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Confirmed at exact address (314 N York St) as 'Elmhurst Family Dental,' opened by Dr. Louis Pahopos in 1996 and still his practice per multiple current directories. No corporate/DSO signal -- solo, single location -- true_independent.",
+   "searched": ["Pahopos Dental Elmhurst IL 314 N York St dentist"],
+   "intel": {
+    "website_note": "Practice site is elmhurstfamilydental.com (per directory listings); accepts MetLife, Cigna, Humana, United Healthcare, Guardian, Principal, Aetna, BCBS.",
+    "owner_career_stage": "late_career",
+    "provider_notes": "Dr. Louis Pahopos, DMD, University of Louisville Dental School grad, opened Elmhurst Family Dental in 1996; speaks Greek and Spanish.",
+    "distinguishing_notes": "Practicing 25+ years at the same Elmhurst location.",
+    "sources": ["https://doctor.webmd.com/doctor/louis-pahopos-a933f508-24e1-4dc3-9a3c-e1a8802edd72-overview", "https://www.yelp.com/biz/elmhurst-family-dental-elmhurst"]
+   }
+  }
+ ]
+}

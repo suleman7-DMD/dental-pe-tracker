@@ -1,0 +1,355 @@
+{
+ "unit_id": "laneA_004",
+ "classifications": [
+  {
+   "location_id": "2b12cf9aa3afed8a",
+   "practice_name": "ACDI - NAPERVILLE, LLC.",
+   "zip": "60540",
+   "assigned_tier": "stealth_dso",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npiprofile.com/npi/1235305681",
+    "https://npidb.org/organizations/dental_health/general-practice_1223g0001x/1356578140.aspx",
+    "https://abc7chicago.com/dental-implants-care-james-dalise-oak-brook/5656464/",
+    "https://www.cylex.us.com/company/acdi-oak-brook--llc--a-center-for-dental-implants-24986863.html",
+    "https://www.yelp.com/biz/naperville-crossings-dental-naperville-3"
+   ],
+   "evidence_artifacts": [
+    "Zuzana Vitkova is listed as CFO/authorized official for BOTH ACDI Chicago LLC (NPI 1235305681, 625 N Michigan Ave) and ACDI-Naperville LLC (this NPI) -- a shared non-dentist corporate officer across city-named LLC subsidiaries (ACDI-Oak Brook LLC, ACDI Glenview LLC also confirmed to exist)",
+    "Founding ACDI physician Dr. James D'Alise had his dental license and controlled-substance license REVOKED by Illinois in 2018 and was charged with unlicensed practice (ABC7 News); the Oak Brook flagship ACDI location is now closed",
+    "The 1288 Rickert Dr address now operates publicly as 'Naperville Crossings Dental' with a different treating dentist (Dr. David Chang, DDS) rather than under the ACDI/D'Alise name -- consistent with a corporate-owned shell LLC re-staffing/rebranding the clinical front after the founder lost his license"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:acdi",
+   "reasoning": "Checked NPPES/NPI-lookup records, corporate/D&B listings, and news coverage for the 'ACDI' name at 1288 Rickert Dr. Found that ACDI = 'A Center For Dental Implants', a multi-city LLC structure (ACDI-Oak Brook, ACDI Chicago, ACDI Glenview, ACDI-Naperville) sharing a single non-dentist CFO (Zuzana Vitkova, matching ctx AO) as authorized official, whose founding physician lost his dental license in 2018; the storefront now trades under an unrelated name (Naperville Crossings Dental) with a different dentist. This is a corporate/management-company-controlled multi-location network without overt consumer-facing national branding -- textbook stealth_dso, not a dentist-owned multi-location group.",
+   "searched": [
+    "ACDI Naperville dental 1288 Rickert Dr",
+    "\"Naperville Crossings Dental\" about us services dentist team",
+    "\"ACDI Chicago LLC\" dental NPI officers",
+    "\"ACDI\" \"Oak Brook\" OR \"Downers Grove\" OR \"Streeterville\" dental office",
+    "\"A Center for Dental Implants\" James D'Alise locations Chicago Naperville Glenview Oak Brook"
+   ]
+  },
+  {
+   "location_id": "9e9c2f34c4f7fc3d",
+   "practice_name": "HICKORY HILLS DENTAL CTR., LTD",
+   "zip": "60540",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.bbb.org/us/il/hickory-hills/profile/dentist/dr-brian-d-ruby-dds-and-associates-0654-88015676",
+    "https://www.forestreamdentalcare.com/business/brian-d-ruby-dds-il-23029854/",
+    "https://doctor.webmd.com/doctor/brian-ruby-e4277603-5b1f-437b-bb53-e22329994494-overview",
+    "https://www.zocdoc.com/dentist/brian-ruby-dds"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:RUBY_BRIAN",
+   "reasoning": "Searched the practice name and the AO name (Brian Ruby). Confirmed Dr. Brian D. Ruby, DDS is the president/owner of Hickory Hills Dental Center, operating his main office at 8611 W 95th St, Hickory Hills (since 1997) plus this second office at 114 N Washington, Naperville. Matches ctx owner_reach of exactly 2 locations across the two matching ZIPs (60453, 60540). Dentist-owned 2-location practice = dentist_multi.",
+   "searched": [
+    "Hickory Hills Dental Center Naperville 114 N Washington",
+    "\"Brian Ruby\" DDS dentist Hickory Hills Naperville"
+   ]
+  },
+  {
+   "location_id": "6ed8e01dbe2913cb",
+   "practice_name": "Sefcheck Dental",
+   "zip": "60540",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/mark-m-sefcheck-dds-naperville",
+    "https://www.healthgrades.com/dentist/dr-marcia-sefcheck-9regz",
+    "https://www.healthgrades.com/dentist/dr-mark-sefcheck-2bnnf",
+    "https://dentalcenter.com/mark-sefcheck/naperville/illinois/60540"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched the practice name and address. Confirmed two dentists, Dr. Mark Sefcheck DDS (general dentistry) and Dr. Marcia Sefcheck DDS (orthodontics), both practicing at 129 N Washington St, Naperville -- matching the family_practice/2-provider record. No corporate parent or other locations found; a dentist-owned two-provider single-location practice, matching single_loc_group.",
+   "searched": [
+    "Sefcheck Dental Naperville IL"
+   ]
+  },
+  {
+   "location_id": "bc5bdf290e5e1412",
+   "practice_name": "MURMANN DENTAL HEALTH, PC",
+   "zip": "60540",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://napervilleil.dentist/",
+    "https://www.yelp.com/biz/murmann-dental-health-naperville",
+    "https://www.healthgrades.com/dentist/dr-denise-murmann-yp3xx"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched practice name and confirmed via the practice's own website and third-party listings that Dr. Denise Murmann, DDS opened her own solo office at 2531 W 75th St, Naperville in January 2010 (matches year_established 2010 and AO Denise Murmann). No mention of a parent company or other locations -- classic solo owner-operator.",
+   "searched": [
+    "Murmann Dental Health Naperville IL"
+   ]
+  },
+  {
+   "location_id": "264344e3cafce07c",
+   "practice_name": "DENTAL CARE OF NAPERVILLE",
+   "zip": "60540",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.rightchoicedentalcare.com/",
+    "https://www.rightchoicedentalcare.com/our-office/",
+    "https://www.healthgrades.com/group-directory/il-illinois/naperville/right-choice-dental-care-x8j5qc",
+    "https://www.yelp.com/biz/right-choice-dental-care-naperville-3"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:right_choice_dental_care",
+   "reasoning": "Same address (2048 Aurora Ave #108) and phone (630-425-8000) as the NPI record trade as 'Right Choice Dental Care.' Their own site lists 3 Naperville-area offices (2048 Aurora Ave, 1012 95th St, 1060 E Ogden Ave) staffed by Dr. Pinal Patel DDS and Dr. Michael Erhart DDS. No DSO/PE parent found in searches, and the site presents the dentists as the practice's clinical leads across all 3 locations, consistent with a dentist-owned small multi-location group; confidence is medium because no page explicitly used the word 'owner.'",
+   "searched": [
+    "\"Dental Care of Naperville\" 2048 Aurora Ave",
+    "\"Right Choice Dental Care\" Naperville owner dentist doctor"
+   ]
+  },
+  {
+   "location_id": "e26c159dd5300196",
+   "practice_name": "Hudetz Dental",
+   "zip": "60564",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://local.yahoo.com/info-32814134-Hudetz-Patricia-K---English-Rows-Dental-Group/?p=Hudetz+Patricia+K+-+English+Rows+Dental+Group&ei=UTF-8&selectedId=32814134",
+    "https://englishrowsdental.com/meet-the-doctors/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "closure_suspect. Searched the practice name, address, and phone. The exact phone number on file (630) 904-1106 is now associated with 'English Rows Dental Group' at a DIFFERENT address (3027 English Row Ave, Ste 203), where Dr. Patricia Hudetz (founder, 1990) practices with her son Dr. Christopher Hudetz. This strongly suggests the practice relocated/rebranded away from 10334 State Route 59 and that address may no longer be an active clinical location; not classifying pending closure confirmation.",
+   "searched": [
+    "Hudetz Dental Naperville 10334 State Route 59",
+    "\"Hudetz Dental\" Naperville website dentist Patricia Hudetz solo practice"
+   ]
+  },
+  {
+   "location_id": "6f4655a8c594d6b2",
+   "practice_name": "PAUL V. CAPUTO SR., D.D.S., P.C.",
+   "zip": "60564",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://paulcaputodds.com/",
+    "https://www.yelp.com/biz/caputo-dental-naperville-3",
+    "https://www.healthgrades.com/dentist/dr-paul-caputo-xn3dk"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched name and AO (Paul Caputo). Confirmed via the practice's own website (paulcaputodds.com) that Dr. Paul Caputo, DDS (40+ years experience, UIC 1983 grad) runs Caputo Dental at this single Naperville address. Record shows 3 providers/small_group at one location with no other locations or corporate parent found -- dentist-owned single-location group.",
+   "searched": [
+    "\"Paul Caputo\" DDS Naperville dentist 3155 Book Rd"
+   ]
+  },
+  {
+   "location_id": "11429ae0e878dc12",
+   "practice_name": "Moss Dental",
+   "zip": "60564",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.doctorsnetwork.com/doctors/dentists/naperville-il-60564/invite-jamie-moss-dds-11254"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched practice name and address. Confirmed Dr. Jamie Moss, DDS (UIC 2002 grad) operates this solo practice at 1747 Frost Ln, Naperville, matching phone (630) 778-0824. No group, DSO, or other-location signal found -- solo owner-operator.",
+   "searched": [
+    "Moss Dental Naperville 1747 Frost Ln dentist"
+   ]
+  },
+  {
+   "location_id": "03bb2bf2ff66a46b",
+   "practice_name": "Grand Dental-naperville",
+   "zip": "60564",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.granddentalgroup.com/",
+    "https://www.granddentalnaperville.com/"
+   ],
+   "evidence_artifacts": [
+    "Grand Dental Group's own site lists 12 locations across Chicagoland (Aurora, Channahon, Frankfort, Franklin Park, Lake Zurich, Lockport, Naperville, South Elgin, Sycamore, Wilmington, Oz Park/Lincoln Park, Prairie View); founder Dr. Steve Napier DDS states it is dentist-owned with partners Dr. Wells and Dr. Bice"
+   ],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:grand_dental_group",
+   "reasoning": "R4_protected_network:Grand Dental Group. Confirmed this Naperville office (4425 Montgomery Rd) is part of Grand Dental Group, which its own website says spans 12 Chicagoland locations and is dentist-founded/owned (Dr. Steve Napier + partners). Per the 10+-location protection rule this network is held for a single centralized decision rather than being flipped here, despite the group's own dentist-ownership claim.",
+   "searched": [
+    "Grand Dental Naperville 4425 Montgomery Rd DSO group",
+    "Grand Dental Group Illinois owned dentist private equity management company"
+   ]
+  },
+  {
+   "location_id": "58adcc18a4393898",
+   "practice_name": "DON C. KALANT SR., D.D.S. AND ASSOC",
+   "zip": "60564",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.kalantoms.com/contact-us/naperville-il-office/",
+    "https://www.yelp.com/biz/don-c-kalant-dds-and-dr-michael-pink-dds-md-naperville",
+    "https://findadentist.ada.org/il/dupage/naperville/oral-and-maxillofacial-surgery/dr-don-c-kalant-sr-2907243"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:KALANT_DON",
+   "reasoning": "Searched name and AO (Don Kalant). Confirmed Dr. Don C. Kalant Sr., DDS (FACD/FICD, oral & maxillofacial surgeon) co-owns 'Kalant, Pink & Associates' oral surgery practice with Dr. Michael Pink, with four locations (Joliet, Yorkville, Naperville, Plainfield) per the practice's own site. Dentist-owned, multi-location -- dentist_multi.",
+   "searched": [
+    "\"Don Kalant\" DDS Naperville dentist 1303 Macom Dr"
+   ]
+  },
+  {
+   "location_id": "ff62292098becc0d",
+   "practice_name": "HITESH K PATEL DDS P C",
+   "zip": "60564",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.suburbantmjcenter.com/about-us",
+    "https://www.yelp.com/biz/hitesh-k-patel-dds-suburban-tmj-and-sleep-center-naperville"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched name and address. Confirmed Dr. Hitesh K. Patel, DDS established this general practice in 1985 (matches year_established 2003 discrepancy aside, practice itself dates to 1985) and has run it as Suburban TMJ & Sleep Center since 2014 at this single Naperville address. No other locations or corporate affiliation found -- solo owner-operator.",
+   "searched": [
+    "\"Hitesh Patel\" DDS Naperville dentist 1309 Macom Dr"
+   ]
+  },
+  {
+   "location_id": "e00cb657d88c2666",
+   "practice_name": "JOHN F. JIMENEZ, D.D.S., P.C",
+   "zip": "60564",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://nextdoor.com/pages/frontier-place-family-dental-john-f-jimenez-dds-naperville-il/",
+    "https://www.doctorsnetwork.com/doctors/dentists/naperville-il-60564/invite-john-jimenez-dds-12319"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched name and address. Confirmed Dr. John F. Jimenez, DDS runs Frontier Place Family Dental at 3360 Lacrosse Ln, Naperville (patients describe him personally performing exams/cleanings). No corporate parent or other locations found -- solo owner-operator.",
+   "searched": [
+    "\"John Jimenez\" DDS Naperville dentist 3360 Lacrosse Ln"
+   ]
+  },
+  {
+   "location_id": "27721fcab5dba222",
+   "practice_name": "WHITE EAGLE FAMILY DENTISTRY",
+   "zip": "60564",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.whiteeaglefamilydentistry.com/",
+    "https://www.whiteeaglefamilydentistry.com/page/meet-the-doctor/",
+    "https://www.zocdoc.com/dentist/heejoon-sun-dmd-173833"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched name and AO (Heejoon Sun). Confirmed via the practice's own 'Meet the Doctor' page (singular) that Dr. Heejoon (Joon) Sun, DMD has been in private practice at this single address for 24+ years, with no other dentist named on the site. No parent company or other locations found. Confidence is medium because the NPI record shows 4 providers at the address and the extra providers (likely hygienists/associates) are not individually confirmed.",
+   "searched": [
+    "White Eagle Family Dentistry Naperville \"Heejoon Sun\" OR owner dentist",
+    "White Eagle Family Dentistry Naperville meet the doctor"
+   ]
+  },
+  {
+   "location_id": "342055fe7f3a390e",
+   "practice_name": "MAPLE PARK DENTAL CARE, P.C.",
+   "zip": "60564",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://yournapervillefamilydentist.com/",
+    "https://www.opencare.com/dentists/naperville-il/dr-julie-romanelli-24631318578d/",
+    "https://www.superpages.com/bp/naperville-il/maple-park-dental-care-L2222461129.htm"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched name and AO (Julie Romanelli). Confirmed Dr. Julie Romanelli, DDS is the owner of Maple Park Dental Care, serving Naperville since 2001 at this single address, with a 'team approach involving multiple dentists' matching the 2-provider small_group record. Dentist-owned, single-location -- single_loc_group.",
+   "searched": [
+    "Maple Park Dental Care Naperville \"Julie Romanelli\" OR owner dentist 1048 104th St"
+   ]
+  },
+  {
+   "location_id": "9c0a421c0bdaba06",
+   "practice_name": "Tall Grass Dental Assoc",
+   "zip": "60564",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://tallgrassdental.net/about/",
+    "https://www.yelp.com/biz/tall-grass-dental-associates-naperville",
+    "https://doctor.webmd.com/doctor/john-milgram-2cd8510f-0912-4e6b-b8d2-6d0bc2184a7b-overview"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched practice name and address. Confirmed Dr. John W. Milgram, DDS (Northwestern Dental, class of 1999 valedictorian) is the primary/owning dentist at this single Naperville address, matching solo_high_volume/1-provider record. No corporate parent or additional locations found -- solo owner-operator.",
+   "searched": [
+    "Tall Grass Dental Associates Naperville 24111 W 103rd St dentist owner"
+   ]
+  },
+  {
+   "location_id": "ab581d01acb207ca",
+   "practice_name": "AMIT SUD DDS @ ANITA VERMA DDS",
+   "zip": "60564",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://doctor.webmd.com/practice/amit-sud-anita-verma-dds-f32ddae8-468d-4468-82cf-8e59326c4e3c-overview",
+    "https://www.yelp.com/biz/anita-verma-dds-woodlake-family-dental-naperville",
+    "https://npino.com/dental-clinic/1093904435-woodlake-family-dental/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched name and AO (Amit Sud). Confirmed Dr. Amit Sud, DDS and his wife Dr. Anita Verma, DDS (both NYU 2005 grads) founded and own Woodlake Family Dental at this single Naperville address in 2007, matching the 2-provider small_group record. Dentist-owned couple practice, single location -- single_loc_group.",
+   "searched": [
+    "\"Amit Sud\" DDS Naperville dentist \"Anita Verma\" 2879 W 95th St"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,329 @@
+{
+ "unit_id": "laneA_066",
+ "classifications": [
+  {
+   "location_id": "305cef7cb64a0b48",
+   "practice_name": "Dental Cure-wheeling",
+   "zip": "60090",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://dentalcureus.com/wheeling/",
+    "https://www.yelp.com/biz/dental-cure-wheeling-wheeling"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice website (dentalcureus.com/wheeling) confirms a single-location office at 75 S Milwaukee Ave led by Dr. Aditya Obi (NYU-trained periodontology honors) with no mention of additional offices or a parent company. Matches address and provider_count=2 (small_group). No corporate/DSO signal found, so classified single_loc_group with medium confidence since explicit 'owner' language was not stated verbatim.",
+   "searched": [
+    "\"Dental Cure\" Wheeling IL 75 S Milwaukee Ave dentist",
+    "fetch: https://dentalcureus.com/wheeling/"
+   ]
+  },
+  {
+   "location_id": "dddfaf98f6f30572",
+   "practice_name": "Althoff William C DDS",
+   "zip": "60090",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://findadentist.ada.org/dentists/dr-william-c-althoff-wheeling-0038v00002yk5boqaa-a1c8v00000kxosbuac",
+    "https://www.everydentist.com/profiles/56880/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "ADA Find-a-Dentist and aggregator profiles confirm Dr. William C. Althoff as a solo general dentist practicing at 176 E Dundee Rd, Wheeling since the 1980s, with his own site www.wheelingdentistry.com. No corporate parent, brand, or second location found. Matches address exactly; classified true_independent with high confidence.",
+   "searched": [
+    "Althoff William DDS Wheeling IL dentist 176 E Dundee Rd"
+   ]
+  },
+  {
+   "location_id": "3cea212b5736488e",
+   "practice_name": "NEXT GENERATION DENTAL CARE PC",
+   "zip": "60090",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.ngendental.com/meet-dr-nadia",
+    "https://www.ngendental.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice's own website (ngendental.com) states the office at 500 E Jeffery Ave, Wheeling is owned by Dr. Nadia German, who previously owned a separate practice for 19 years before opening this one. Single location, no corporate parent mentioned; matches AO 'Nadia German' and provider_count=2. Classified single_loc_group, high confidence.",
+   "searched": [
+    "\"Next Generation Dental Care\" Wheeling IL Nadia German dentist"
+   ]
+  },
+  {
+   "location_id": "f2ddf69c4373e2f2",
+   "practice_name": "VICTOR GONZALEZ DDS PC",
+   "zip": "60090",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.zocdoc.com/dentist/victor-gonzalez-dds-38612",
+    "https://www.dentalplans.com/dentists/illinois/wheeling/60090/dr-victor-gonzalez-95277/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Aggregator profiles (Zocdoc, DentalPlans) confirm Dr. Victor Gonzalez, DDS practices under the 'Artesa Family Dental' brand at 145 N Milwaukee Ave, Wheeling, matching the NPI legal entity 'Victor Gonzalez DDS PC'. A search suggested 'Artesa Family Dental' branding also appears at 2 other IL addresses, but the practice's own site inconsistently showed only a Des Plaines address and did not confirm common ownership across locations, so multi-location dentist-owner status could not be verified; classified at the single confirmed address as single_loc_group with medium confidence given the entity is his personal PC.",
+   "searched": [
+    "Victor Gonzalez DDS Wheeling IL 145 N Milwaukee Ave dentist",
+    "\"Artesa Family Dental\" Wheeling IL locations Victor Gonzalez",
+    "fetch: https://www.artesafamilydental.com/about",
+    "fetch: https://artesafamilydental.com/"
+   ]
+  },
+  {
+   "location_id": "bf13b9d251ea19ec",
+   "practice_name": "ARISTO DENTAL PC",
+   "zip": "60090",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://aristodental.com/dr-sandra/",
+    "https://aristodental.com/wheeling-dentist/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:ARISTODEMO_SANDRA",
+   "reasoning": "Practice's own website (aristodental.com) confirms Dr. Sandra Aristodemo, DDS owns and practices at two offices: 1205 W Dundee Rd, Wheeling (matches this location) and 2110 W Algonquin Rd, Lake in the Hills. No corporate parent or PE sponsor found; this is a dentist-owned 2-location group. Classified dentist_multi, high confidence.",
+   "searched": [
+    "\"Aristo Dental\" Wheeling IL Sandra Aristodemo dentist"
+   ]
+  },
+  {
+   "location_id": "a57662fbc9f7e5fe",
+   "practice_name": "GENTLE TOUCH FAMILY DENTISTRY",
+   "zip": "60090",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Could not confirm an operating practice at 1450 Ginger Woods Ct, Wheeling under this name. Searches for AO Simona Cheskis instead consistently surface her confirmed practice at 830 W End Ct, Vernon Hills (with Dr. Ira G. Spiro), a different address; no website, listing, or profile ties her to the Wheeling address in this record. Insufficient web evidence to assign a tier.",
+   "searched": [
+    "\"Gentle Touch Family Dentistry\" Wheeling IL Simona Cheskis dentist",
+    "\"1450 Ginger Woods\" Wheeling IL dentist dental",
+    "\"Simona Cheskis\" dentist owner practice Illinois Vernon Hills Gentle Touch multiple locations"
+   ]
+  },
+  {
+   "location_id": "86acaa216085d504",
+   "practice_name": "Jain Dental",
+   "zip": "60090",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.welli.com/care/provider/1962698399"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Provider directory confirms Dr. Sangita Jain, DDS as a solo dentist at 660 McHenry Rd Apt 108, Wheeling, matching this NPI/address exactly, with no corporate signal. No dedicated practice website was found, only aggregator listings, so confidence is medium; classified true_independent.",
+   "searched": [
+    "\"Jain Dental\" Wheeling IL 660 Mchenry Rd dentist"
+   ]
+  },
+  {
+   "location_id": "d34721d5e2103837",
+   "practice_name": "CRESCENT FAMILY DENTAL LLC",
+   "zip": "60090",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.crescentwheelingdentist.com/",
+    "https://www.bbb.org/us/il/wheeling/profile/dentist/crescent-family-dental-llc-0654-1000104877"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "BBB lists Dr. Deeptha Surampudi as Principal of Crescent Family Dental LLC, and the practice's own site (crescentwheelingdentist.com) presents a single-location, personal-care practice at 307 S Milwaukee Ave, Wheeling with no parent company. Matches AO and address exactly; classified true_independent, high confidence.",
+   "searched": [
+    "\"Crescent Family Dental\" Wheeling IL Deeptha Surampudi dentist"
+   ]
+  },
+  {
+   "location_id": "b1acb8ab6e95b1ce",
+   "practice_name": "Kramer Dental",
+   "zip": "60090",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searches for the exact address 1367 Glengary Ln, Wheeling returned no matching business; a 'Kramer Family Dental' website and a 'Dr. Jeffrey Kramer' bio were found but neither confirms this specific address, and the name/first-name (Jeffrey vs. unspecified) could not be tied to this NPI. Insufficient verifiable evidence to assign a tier.",
+   "searched": [
+    "\"Kramer Dental\" Wheeling IL 1367 Glengary Ln dentist",
+    "\"1367 Glengary\" Wheeling IL dentist Kramer"
+   ]
+  },
+  {
+   "location_id": "6c8e447f2cc57f11",
+   "practice_name": "KRAS MEDICAL S.C.",
+   "zip": "60090",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.zocdoc.com/dentist/zhana-krasyuk-dmd",
+    "https://npiprofile.com/npi/1508137464"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:KRASYUK_ZHANA",
+   "reasoning": "NPI aggregator profiles confirm Dr. Zhana Krasyuk, DMD as the owner of Kras Medical S.C. at 1532 W Lale Cook Rd, Wheeling, matching this record's address and AO exactly. No corporate parent or second location found; no dedicated marketing website located, so confidence is medium. Classified true_independent.",
+   "searched": [
+    "Zhana Krasyuk dentist Wheeling IL \"Kras Medical\""
+   ]
+  },
+  {
+   "location_id": "d08b6ba86d29ac52",
+   "practice_name": "DR. JOSEPH FAMILY DENTAL PLLC",
+   "zip": "60090",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://altodentalcare.com/",
+    "https://www.dentalplans.com/dentists/illinois/mount-prospect/60056/dr-hisham-gharib-329136/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:alto_dental",
+   "reasoning": "Practice operates as 'Alto Dental' (altodentalcare.com) at 282 McHenry Rd, Wheeling, owned/practiced by Dr. Hisham Gharib, matching AO exactly. Aggregator listings independently confirm Dr. Gharib also practices at Mount Prospect and Naperville IL offices under his own name (not a distinct DSO brand), consistent with a dentist-owned 3-location group; no parent company or PE sponsor found anywhere. Confidence medium because the Wheeling-specific site itself did not enumerate the other offices.",
+   "searched": [
+    "\"Dr. Joseph Family Dental\" Wheeling IL Hisham Gharib dentist 282 Mchenry",
+    "\"Alto Dental\" Gharib Illinois locations Wheeling Mount Prospect Naperville",
+    "fetch: https://altodentalcare.com/"
+   ]
+  },
+  {
+   "location_id": "1099dd3a7ee857db",
+   "practice_name": "LUCKY SMILE DENTAL LLC",
+   "zip": "60090",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://illinoisdentalcenter.com/",
+    "https://www.linkedin.com/in/dr-lakshmi-uppala-0133b232/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This NPI's address (35 Huntington Ln, Wheeling) matches the office of 'Illinois Dental Center,' whose own website lists Dr. Lakshmi Uppala (LinkedIn: 'Owner Dentist at Illinois Dental Center') and Dr. Jacob S. Lake as its two dentists, with no disclosed parent company or DSO structure. Aggregator noise suggested Dr. Uppala's individual NPI also appears at several distant downstate IL cities, which may reflect credentialing-only listings rather than ownership of those sites; this did not rise to a confirmed 10+ location network, so classified single_loc_group at this address with medium confidence given that ambiguity.",
+   "searched": [
+    "\"Lucky Smile Dental\" Wheeling IL Lakshmi Uppala dentist",
+    "fetch: https://illinoisdentalcenter.com/",
+    "\"Illinois Dental Partners\" OR \"Illinois Dental Center\" Kramer Chung Wheeling locations network"
+   ]
+  },
+  {
+   "location_id": "b10f539a5f1bd935",
+   "practice_name": "Abadia Juan Sebastian DDS",
+   "zip": "60090",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://aurafamilydental.com/",
+    "https://www.dentalplans.com/dentists/illinois/wheeling/60090/dr-juan-abadia-251095/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice's own website (aurafamilydental.com) identifies this as 'Aura Family Dental,' a single-location practice at 750 W Hintz Rd, Wheeling personally owned and operated by Dr. Juan Sebastian Abadia, with no parent company or DSO language. A generic aggregator (dentalplans.com) had listed Dr. Abadia's NPI at 5 scattered IL addresses (DeKalb, Carpentersville, McHenry), but this was not corroborated by his own site and is treated as stale/associate-history aggregator noise rather than active multi-location ownership. Classified true_independent, high confidence.",
+   "searched": [
+    "Juan Sebastian Abadia DDS Wheeling IL dentist 750 W Hintz Rd",
+    "\"Aura Family Dental\" OR Abadia DeKalb Carpentersville McHenry dentist owner brand parent company",
+    "fetch: https://aurafamilydentist.com/"
+   ]
+  },
+  {
+   "location_id": "e1658e4e6245295f",
+   "practice_name": "NORTHWEST IMPLANT DENTAL SPA",
+   "zip": "60090",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.nwimplantdental.com/",
+    "https://www.yelp.com/biz/northwest-implant-dental-spa-wheeling"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice's own website (nwimplantdental.com) confirms a single-location implant/prosthodontic office at 109 N Milwaukee Ave, Wheeling run by Dr. Daniel Kim, DDS, matching the address exactly. No corporate parent, brand affiliation, or additional locations found. Classified true_independent, high confidence.",
+   "searched": [
+    "\"Northwest Implant Dental Spa\" Wheeling IL 109 N Milwaukee Ave"
+   ]
+  },
+  {
+   "location_id": "c154618b89eae594",
+   "practice_name": "Chung Dental",
+   "zip": "60090",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searches for '725 Prestwick Ln, Wheeling' and 'Chung Dental' returned no matching business, website, or provider profile at this address; only generic Wheeling-area dentist directories surfaced, none referencing this practice or a Dr. Chung. Insufficient web evidence to assign a tier.",
+   "searched": [
+    "\"Chung Dental\" Wheeling IL 725 Prestwick Ln dentist",
+    "\"725 Prestwick\" Wheeling IL dentist Chung"
+   ]
+  },
+  {
+   "location_id": "fcae97516a201b4b",
+   "practice_name": "Wilmette Dental",
+   "zip": "60091",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://wilmettedental.com/",
+    "https://wilmettedental.com/best-dentist-wilmette/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice's own website (wilmettedental.com) confirms a single-location, family-owned office at 344 Linden Ave, Wilmette, serving the North Shore since 1937 and currently owned by 4th-generation dentist Dr. Robert Madrigal. Matches address and provider_count=2 (small_group); no corporate parent or PE sponsor found. Classified single_loc_group, high confidence.",
+   "searched": [
+    "\"Wilmette Dental\" 344 Linden Ave Wilmette IL dentist owner"
+   ]
+  }
+ ]
+}

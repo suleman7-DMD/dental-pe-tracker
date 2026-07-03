@@ -1,0 +1,328 @@
+{
+ "unit_id": "laneA_069",
+ "classifications": [
+  {
+   "location_id": "917453ec644f8a6a",
+   "practice_name": "WEBSTER DENTAL CARE EVANSTON, LTD",
+   "zip": "60201",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.webdentalchicago.com/locations/",
+    "https://www.webdentalchicago.com/ourdoctors/",
+    "https://www.groupdentistrynow.com/dso-group-blog/dso-people-new-dso-and-dental-group-hires-promotions-awards-october-2020/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:webster_dental_care",
+   "reasoning": "The group's own locator and doctors pages confirm Dr. Steven Rempas (matches ctx authorized_official) founded Webster Dental Care and it now operates 8 Chicagoland offices (below the 10+ protected-network threshold), including this Evanston address. The footer references a 'Webster Dental Management' leadership team, but no non-dentist controller, PE sponsor, or national brand was found -- this traces to a dentist founder, so it is classified dentist_multi rather than stealth_dso.",
+   "searched": [
+    "Webster Dental Care Evanston IL 500 Davis St",
+    "\"Webster Dental Management\" Evanston Chicago",
+    "websterdentalmanagement.com leadership team private equity",
+    "\"Webster Dental Management\" DSO chicago dental support organization"
+   ]
+  },
+  {
+   "location_id": "d17dfa6d766ca1dd",
+   "practice_name": "Senecal Dental",
+   "zip": "60201",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searched the practice name with its Evanston address and the surname alone; no business listing, website, or directory entry matched '2555 Gross Point Rd' or this name in Evanston. Only an unrelated dentist named Senecal in East Peoria, IL turned up. No usable web evidence -- left undetermined rather than guessing.",
+   "searched": [
+    "Senecal Dental Evanston IL 2555 Gross Point Rd dentist",
+    "Senecal DDS dentist Illinois",
+    "\"Senecal\" dental practice Evanston 2555 Gross Point Road"
+   ]
+  },
+  {
+   "location_id": "6959cb2d84f3a547",
+   "practice_name": "DR CARL L CHEEKS DDS PC",
+   "zip": "60201",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/cheeks-carl-l-dds-evanston",
+    "https://www.healthgrades.com/dentist/dr-carl-cheeks-x85q7"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Multiple reviews and directory notes indicate the 1626 Darrow Ave office is closed and Dr. Cheeks relocated to 1029 Howard St, Evanston. Per protocol, a closure_suspect location is not classified -- status set to undetermined rather than assigning a tier to a defunct address.",
+   "searched": [
+    "Dr Carl Cheeks DDS Evanston IL dentist 1626 Darrow",
+    "\"Carl Cheeks\" DDS Darrow Ave Evanston closed moved Howard St"
+   ]
+  },
+  {
+   "location_id": "86bafa92105d1c9a",
+   "practice_name": "Miller Heather Marie DDS",
+   "zip": "60201",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://evanstonmoderndental.com/meet-heather-miller/",
+    "https://evanstonmoderndental.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The practice's own website, Evanston Modern Dental, has a bio page confirming Dr. Heather Miller as the principal dentist at 2805 Central St. The site presents a single-location family/cosmetic practice with no corporate parent, consistent with the 2-provider small_group NPPES record.",
+   "searched": [
+    "Heather Miller DDS Evanston IL 2805 Central St dentist"
+   ]
+  },
+  {
+   "location_id": "1517d2c519b0c7c7",
+   "practice_name": "Favale Dental",
+   "zip": "60201",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://findadentist.ada.org/il/cook/evanston/general-practice/dr-john-k-favale-2726227",
+    "https://www.healthgrades.com/dentist/dr-john-favale-yhv6y"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:FAVALE_JOHN",
+   "reasoning": "The ADA 'Find a Dentist' directory confirms Dr. John K. Favale practices at 1604 Chicago Ave, Evanston. Other listings show he has also been a principal dentist at Lindenhurst Dental Health Group since 1987, giving him 2 dentist-owned locations rather than a single site, so this fits dentist_multi.",
+   "searched": [
+    "Favale Dental Evanston IL 1604 Chicago Ave dentist",
+    "\"Favale\" \"Lindenhurst Dental Health Group\" ownership dentist owner",
+    "\"Favale\" dentist Evanston 1604 Chicago Ave current active office hours"
+   ]
+  },
+  {
+   "location_id": "00ee56807ac7b230",
+   "practice_name": "HEATHER YOON DDS, PC",
+   "zip": "60201",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.vitadox.com/practice/evanston-il-60201/heather-yoon-dds-pc/iJiTvjRuBJqz49Ca6zY3Ng",
+    "https://www.healthgrades.com/dentist/dr-hae-yoon-xjqly"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The practice is legally named 'Heather Yoon DDS, PC' (also DBA 'Premier Dental Care Illinois, Inc.') at 1819 Church St; directory listings confirm Dr. Hae Y. Yoon as the sole dentist at this single address with no group or corporate affiliation mentioned, matching the solo_high_volume NPPES record.",
+   "searched": [
+    "Heather Yoon DDS Evanston IL 1819 Church St dentist"
+   ]
+  },
+  {
+   "location_id": "cb98df7b42905627",
+   "practice_name": "THE RADIANT SMILE, PC",
+   "zip": "60201",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "http://www.theradiantsmile.com/",
+    "http://www.theradiantsmile.com/team"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The practice's own website confirms Dr. Charles H. Chen (matches ctx authorized_official) started this private practice in 2003 and now practices alongside Dr. Xheni Basko, DMD at the single Maple Ave location -- a dentist-owned, single-site group practice.",
+   "searched": [
+    "\"Radiant Smile\" Evanston IL 1632 Maple Ave dentist Charles Chen"
+   ]
+  },
+  {
+   "location_id": "e1408814c01875e3",
+   "practice_name": "Lemee Dental",
+   "zip": "60201",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.lamarrlemeedental.com/about/",
+    "https://www.lamarrlemeedental.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The practice's own website, LaMarr LeMee Dental, confirms Dr. Herbert Lemee Jr, DDS operating a single-location family dental office at 708 Church St; no corporate parent or DSO branding found, consistent with a dentist-owned group practice (3 registered providers).",
+   "searched": [
+    "Lemee Dental Evanston IL 708 Church St dentist"
+   ]
+  },
+  {
+   "location_id": "091ad502687ffc0e",
+   "practice_name": "Paul Sheldon Chaitkin DDS",
+   "zip": "60201",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.businessyab.com/explore/united_states/illinois/cook_county/evanston_township/evanston/bryant_avenue/2700/dr_paul_s_chaitkin_dds.html",
+    "https://www.doctorsnetwork.com/doctors/dentists/evanston-il-60201/invite-paul-chaitkin-dds-12728"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directory listings confirm a solo practice under Dr. Paul Sheldon Chaitkin's own name at 2700 Bryant Ave with an Illinois dental license number; no group name, DSO brand, or additional locations found.",
+   "searched": [
+    "Paul Chaitkin DDS Evanston IL 2700 Bryant Ave dentist"
+   ]
+  },
+  {
+   "location_id": "949cf19a58ba5001",
+   "practice_name": "GREEN BAY TRAIL DENTISTRY",
+   "zip": "60201",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/green-bay-trail-dentistry-evanston",
+    "https://www.healthgrades.com/dentist/dr-eric-estes-xymm3vv"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Business listings confirm Dr. Eric Estes (matches ctx authorized_official) founded this single-location practice in 1997, operating out of a converted Victorian house at 2632 Green Bay Rd; no corporate affiliation found.",
+   "searched": [
+    "Green Bay Trail Dentistry Evanston IL 2632 Green Bay Rd"
+   ]
+  },
+  {
+   "location_id": "d4759b3c9107b6b7",
+   "practice_name": "Marinic Dental",
+   "zip": "60201",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.vitadox.com/doctor/evanston-il-60201/daniel-k-marinic-dds/EYgV6Y74GTyM2iNmkTUS2X"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:MARINIC_DANIEL",
+   "reasoning": "Directory confirms Dr. Daniel K. Marinic, DDS operates as 'Dental Health Care Ltd' at 2611 Broadway Ave, Evanston (same address/phone as the co-registered org NPI in this unit); a single dentist-owned location with 2 registered providers and no corporate parent.",
+   "searched": [
+    "Marinic Dental Evanston IL 2611 Broadway dentist \"Dental Health Care\""
+   ]
+  },
+  {
+   "location_id": "a4d370f7dd01997a",
+   "practice_name": "SHERMAN DENTAL ASSOCIATES OF EVANSTON, LTD",
+   "zip": "60201",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "http://www.shermandental.org/",
+    "https://www.healthgrades.com/group-directory/il-illinois/evanston/sherman-dental-associates-of-evanston-xb5746"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The practice's own website (shermandental.org) and a group directory confirm Dr. Lien Le, DDS (matches ctx authorized_official) and Dr. Peter Monaghan, DDS practicing together at the single 909 Davis St location; no DSO or corporate branding found.",
+   "searched": [
+    "Sherman Dental Associates Evanston IL 909 Davis St dentist"
+   ]
+  },
+  {
+   "location_id": "3ea276463bb3a8b6",
+   "practice_name": "DAN J NYKAZA DDS LTD",
+   "zip": "60201",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.northshoredentalpartners.com/our-practice/meet-the-team/",
+    "https://www.yelp.com/biz/dan-j-nykaza-dds-evanston"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The 2200 Central St office is now branded 'Northshore Dental Partners PLLC,' with a team page listing Dr. Marcos Montoya, DDS and Dr. Rares Raibulet, DMD as the practicing dentists at this single location. The page shows no additional locations, management company, or corporate parent -- a dentist-owned group practice (ownership appears to have transitioned from the original registrant, Dan Nykaza).",
+   "searched": [
+    "Dan Nykaza DDS Evanston IL 2200 Central St dentist"
+   ]
+  },
+  {
+   "location_id": "0e97d172e5d62331",
+   "practice_name": "Farkas Dental",
+   "zip": "60201",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "http://www.farkasdental.com/",
+    "http://www.farkasdental.com/about-us.html"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The practice's own website, Farkas Dental, confirms Dr. Marius Farkas, DMD is the owner-practitioner, having founded the single-location practice in 2007 at 1813 Dempster St; no corporate or DSO affiliation found.",
+   "searched": [
+    "Farkas Dental Evanston IL 1813 Dempster St dentist"
+   ]
+  },
+  {
+   "location_id": "b949cf38e58e33a1",
+   "practice_name": "Marmor Dental",
+   "zip": "60201",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.vitadox.com/doctor/evanston-il-60201/deborah-s-marmor-dmd/eJxiWKcj2pkis3kMs3PBc9"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directory listing confirms Dr. Deborah S. Marmor, DMD operates her own single-provider practice at 2550 Crawford Ave, Evanston; no group, brand, or corporate affiliation found.",
+   "searched": [
+    "Marmor Dental Evanston IL 2550 Crawford Ave dentist"
+   ]
+  },
+  {
+   "location_id": "24a93d43bec1d7b5",
+   "practice_name": "DENTAL HEALTH CARE LTD",
+   "zip": "60201",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.vitadox.com/doctor/evanston-il-60201/daniel-k-marinic-dds/EYgV6Y74GTyM2iNmkTUS2X"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:MARINIC_DANIEL",
+   "reasoning": "This org NPI is the entity name 'Dental Health Care Ltd' for Dr. Daniel K. Marinic's practice at 2611 Broadway Ave (same address/phone as the co-registered individual NPI 'Marinic Dental' in this unit); confirmed single-location, dentist-owned practice with 2 registered providers, no corporate parent.",
+   "searched": [
+    "Marinic Dental Evanston IL 2611 Broadway dentist \"Dental Health Care\""
+   ]
+  }
+ ]
+}

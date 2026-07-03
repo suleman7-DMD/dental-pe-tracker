@@ -1,0 +1,285 @@
+{
+  "unit_id": "laneA_080",
+  "classifications": [
+    {
+      "location_id": "29ded9c384c4e2e3",
+      "practice_name": "Reifer, Alana H DDS",
+      "zip": "60607",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "none",
+      "evidence_urls": [],
+      "evidence_artifacts": [],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "Web search for Alana Reifer DDS at 910 W Van Buren St returns a different NPI (1861947202) with offices at 345 E Ohio St, Chicago and Dallas, TX; the West Loop building at this address (Suite 600) houses Cameo Dental Specialists, whose own doctor roster does not list a Reifer. Could not tie any verifiable dentist-owner or corporate entity to this specific NPI/address, so no tier is earned.",
+      "searched": ["Alana Reifer DDS 910 W Van Buren Chicago dentist", "Cameo Dental Specialists West Loop Reifer doctors ownership"]
+    },
+    {
+      "location_id": "02212088eb3f3cf9",
+      "practice_name": "Rizkalla Dental",
+      "zip": "60607",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "none",
+      "evidence_urls": [],
+      "evidence_artifacts": [],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "George Rizkalla DMD (NPI matches) is registered at 1111 S Laflin St Apt 1316, which reads as a residential/apartment address rather than a storefront clinic; his verifiable clinical practice is Hassan & Rizkalla Dental PLLC / All in One Dentistry at a different address (4434 W Fullerton Ave, zip 60639). No evidence a 'Rizkalla Dental' clinic actually operates at the Laflin St address, so tier cannot be earned for this location.",
+      "searched": ["Rizkalla Dental 1111 S Laflin Chicago", "George Rizkalla dentist Chicago own practice website", "\"All in One Dentistry\" Chicago Fullerton owner dentist Rizkalla Hassan"]
+    },
+    {
+      "location_id": "73ed5ab9fbd02254",
+      "practice_name": "Bednarski Justine Maria DDS",
+      "zip": "60607",
+      "assigned_tier": "branded_dso",
+      "pe_backed": true,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.globest.com/2020/01/30/aspen-dental-management-commits-to-205000-sf-at-800-w-fulton-market/",
+        "https://www.aspendental.com/800wfulton/",
+        "https://www.aspendental.com/dentist/il/chicago/806-w-fulton-market/",
+        "https://www.linkedin.com/in/justine-bednarski-4a22932b4/",
+        "https://www.leonardgreen.com/ares-management-leonard-green-increase-ownership-in-aspen-dental-management-inc/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "brand:aspen_dental",
+      "reasoning": "The NPI address 800 W Fulton St is the confirmed street address of Aspen Dental Management's (ADMI/The Aspen Group) national headquarters tower per a commercial real-estate article; her LinkedIn lists her role as 'General Dentist - Aspen Dental' and a patient review at the adjacent Aspen Dental Fulton Market clinic (806 W Fulton Market) names her by name as the treating dentist. Aspen Dental/ADMI is documented as majority-owned by PE firms Leonard Green & Partners and Ares Management, so pe_backed=true.",
+      "searched": ["Justine Bednarski DDS 800 W Fulton Chicago dentist", "\"800 W Fulton\" Chicago dental office building", "Aspen Dental American Securities private equity owner ADMI Corp"]
+    },
+    {
+      "location_id": "7fd33e225d5773c3",
+      "practice_name": "Abbas Dental",
+      "zip": "60607",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://dentalaround.com/practices/hicago-marwan-abbas-1619672/",
+        "https://www.wheresmydentist.com/dentist-1912490749-dr.-marwan-abbas--dmd-chicago",
+        "https://www.dentist70.com/dentist/1912490749/marwan-abbas/20667"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Multiple independent directory listings (dentalaround, wheresmydentist, dentist70) consistently place Dr. Marwan Abbas, DMD, solo, at exactly 1011 S Ashland Ave Apt 6, Chicago 60607 with no group, brand, or corporate parent named. No dedicated practice website was found (an 'AB Dental Center' hit turned out to be an unrelated practice on Archer Ave), so confidence is medium rather than high, but no DSO/group signal appeared across several sources.",
+      "searched": ["Abbas Dental 1011 S Ashland Ave Chicago", "\"AB Dental Center\" Marwan Abbas Ashland Ave Chicago address"]
+    },
+    {
+      "location_id": "490a95a9ff78416e",
+      "practice_name": "Prompton Dental",
+      "zip": "60607",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "none",
+      "evidence_urls": [],
+      "evidence_artifacts": [],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "Dr. Joshua Prompton DDS is a verifiable prosthodontist, but his practice 'Lux Smiles' is located at 2400 N Ashland Ave, Chicago 60614, not at the 1224 W Van Buren St, 60607 address on this NPI record; no business was found actually operating at the Van Buren address. Cannot confirm ownership tier for this specific location.",
+      "searched": ["Prompton Dental Chicago Van Buren", "Joshua Prompton DDS dentist Chicago address prosthodontist", "Lux Smiles Chicago address Van Buren Prompton prosthodontist"]
+    },
+    {
+      "location_id": "e984722653a24ed9",
+      "practice_name": "SHACHAT DENTAL GROUP PLLC",
+      "zip": "60607",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.carecredit.com/doctor-locator/chicago-il/shachat-dental-group-388xtr/",
+        "https://www.dentalplans.com/dentists/illinois/chicago/60609/dr-matthew-shachat-46939/",
+        "https://www.healthgrades.com/dentist/dr-matthew-shachat-1hqydn1741"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:SHACHAT_MATTHEW",
+      "reasoning": "Multiple independent sources (CareCredit locator, dentalplans, Healthgrades/Sharecare) confirm Shachat Dental Group PLLC at 212 W Van Buren St Fl 6, Chicago 60607 is Dr. Matthew Shachat's own single-location practice; his personal bio (Tufts DMD, prior work in underserved MA/Chicago communities) appears directly, with no corporate parent or brand named. Matches the NPPES authorized official (Matthew Shachat) exactly, single provider.",
+      "searched": ["Shachat Dental Group Chicago Van Buren dentist"]
+    },
+    {
+      "location_id": "3ea1ab3ebe2ff655",
+      "practice_name": "Rizvi, Farwa",
+      "zip": "60607",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/dentologie-west-loop-chicago-3",
+        "https://dentologie.com/our-locations/chicago/west-loop",
+        "https://www.capitolhillseattle.com/2024/04/chicago-based-dental-startup-dentologie-puts-teeth-in-expansion-with-planned-capitol-hill-location/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "undetermined",
+      "network_id": "brand:dentologie",
+      "reasoning": "Dr. Farwa Rizvi practices at Dentologie - West Loop, 217 N Green St, Chicago 60607, confirmed via Yelp and the brand's own locations page. A 2024 news article states Dentologie had expanded to about ten Chicago locations (plus Seattle expansion), which meets the 10+ location protected-network threshold, so per protocol this is left undetermined for a dedicated one-network-one-decision review rather than tiered here.",
+      "searched": ["Farwa Rizvi dentist 217 N Green St Chicago", "Dentologie locations how many Chicago Seattle dental"]
+    },
+    {
+      "location_id": "3ffd9138fb6c0c44",
+      "practice_name": "Aspen Dental",
+      "zip": "60607",
+      "assigned_tier": "branded_dso",
+      "pe_backed": true,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "https://www.aspendental.com/dentist/il/chicago/1114-s-clinton-st/",
+        "https://www.prnewswire.com/news-releases/american-securities-leads-recapitalization-of-aspen-dental-300054682.html",
+        "https://www.leonardgreen.com/ares-management-leonard-green-increase-ownership-in-aspen-dental-management-inc/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "brand:aspen_dental",
+      "reasoning": "Aspen Dental's own locator page confirms this exact address (1114 S Clinton St, Chicago, IL 60607) with named providers (Dr. Abigail Brier, Dr. Ryan Bales, Dr. Kabila Ramkumar). Aspen Dental Management Inc (parent ADMI/The Aspen Group) is documented as majority PE-owned by Leonard Green & Partners and Ares Management, so pe_backed=true.",
+      "searched": ["Aspen Dental American Securities private equity owner ADMI Corp"]
+    },
+    {
+      "location_id": "77d5f9f15e9955d2",
+      "practice_name": "Kalia, Tanya",
+      "zip": "60607",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "none",
+      "evidence_urls": [],
+      "evidence_artifacts": [],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "Web results tie Dr. Tanya Kalia to 'Dental Experts LLC' practices but the only specific address found for her is 2254 S Cicero Ave, Cicero, IL, not 1400 W Randolph St, Chicago; a follow-up search for a Dental Experts/Dental Dreams location on Randolph St found no match. Insufficient evidence to confirm any operating entity or ownership tier at this specific address.",
+      "searched": ["Tanya Kalia dentist 1400 W Randolph Chicago", "Dental Dreams \"1400 W Randolph\" OR \"Randolph St\" Chicago location"]
+    },
+    {
+      "location_id": "d96990a5dd18e5de",
+      "practice_name": "Kim Dental",
+      "zip": "60607",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "none",
+      "evidence_urls": [],
+      "evidence_artifacts": [],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "No search results returned any business or dentist named 'Kim Dental' at 1035 W Van Buren St, Chicago; several unrelated Dr. Kim listings elsewhere in Chicago and nearby West Loop practices (Cameo, Dentologie, Chicago Dental Studio) were found but none at this address. Web evidence is insufficient to assign a tier.",
+      "searched": ["Kim Dental 1035 W Van Buren Chicago dentist", "\"Kim Dental\" 1035 Van Buren West Loop Chicago dentist NPI"]
+    },
+    {
+      "location_id": "9fe62bf8816a28c1",
+      "practice_name": "Aspen Dental",
+      "zip": "60607",
+      "assigned_tier": "branded_dso",
+      "pe_backed": true,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "https://www.aspendental.com/dentist/il/chicago/806-w-fulton-market/",
+        "https://www.prnewswire.com/news-releases/american-securities-leads-recapitalization-of-aspen-dental-300054682.html"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "brand:aspen_dental",
+      "reasoning": "Aspen Dental's own locator page for 806 W Fulton Market, Chicago, IL 60607 confirms this exact address with a named provider (Dr. Kim Rooprai). Same nationally-branded, PE-backed (Leonard Green/Ares Management) operator as confirmed elsewhere in this unit, so pe_backed=true.",
+      "searched": ["Justine Bednarski DDS 800 W Fulton Chicago dentist (surfaced this location's locator page)"]
+    },
+    {
+      "location_id": "d2e5c43e4975ddb4",
+      "practice_name": "MIDWEST DENTAL GROUP",
+      "zip": "60608",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.vitadox.com/doctor/chicago-il-60608/david-horberg-dds/ckWgRfJ8HqZs4VZkeNXKeQ",
+        "https://midwest-dental.com/dentist-near-me/find-office/state/il/"
+      ],
+      "evidence_artifacts": ["absent_from_national_chain_locator"],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "ao:HORBERG_DAVID",
+      "reasoning": "Despite the name similarity that likely triggered the 'Midwest Dental' brand flag, the actual national Gryphon-backed 'Midwest Dental' chain's own Illinois location finder does not list 2720 W 15th St, Chicago; instead this address is independently confirmed (Vitadox) as Dr. David Horberg's practice, matching the NPPES authorized official exactly. No corporate parent, PE sponsor, or franchise signal was found, so this reads as a locally-named, dentist-owned single-location group (2 providers) rather than a branded DSO.",
+      "searched": ["Midwest Dental Group 2720 W 15th St Chicago Gryphon Capital dental locator", "midwest-dental.com locations Illinois Chicago", "\"Midwest Dental Group\" Horberg Chicago independent practice website"]
+    },
+    {
+      "location_id": "46736b187ceba600",
+      "practice_name": "NANDINI SUBBARAJU",
+      "zip": "60608",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/cermak-dental-associates-chicago",
+        "https://www.bbb.org/us/il/chicago/profile/dentist/subbaraju-nandini-dds-0654-88021540",
+        "https://www.practo.com/chicago/hospital/cermak-dental-associates-llc-lower-west-side"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:SUBBARAJU_NANDINI",
+      "reasoning": "Dr. Nandini Subbaraju founded this practice (operating as Cermak Dental Associates LLC) at 1950 W Cermak Rd, Chicago in the early 1980s per BBB records, and it is confirmed as a single location seeing multiple family dentists (Dr. Darshana Subbaraju Novick also practices there). No brand, franchise, or corporate-parent signal appeared anywhere; matches NPPES authorized official (Nandini Subbaraju) exactly. Classified as a dentist-owned multi-provider single-location group.",
+      "searched": ["Nandini Subbaraju dentist 1950 W Cermak Rd Chicago dental group", "Cermak Dental Subbaraju Chicago locations website"]
+    },
+    {
+      "location_id": "1afd74063fb7ec3f",
+      "practice_name": "ARTY.INC",
+      "zip": "60608",
+      "assigned_tier": "institutional",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/esperanza-health-centers-chicago",
+        "https://www.esperanzachicago.org/location/esperanza-california",
+        "https://www.sharecare.com/doctor/dr-arpitha-marri"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "brand:esperanza_health_centers",
+      "reasoning": "2001 S California Ave, Chicago 60608 is the confirmed address of Esperanza Health Centers' 'Esperanza California' site, a nonprofit FQHC-model community health center (grew out of Saint Anthony Hospital's outreach in Pilsen/Little Village). Dr. Arpitha Marri (the NPI's authorized official) is independently confirmed as currently practicing at 'Centro/Central De Salud Esperanza,' i.e. as a staff dentist rather than an owner. Classified institutional.",
+      "searched": ["ARTY INC Arpitha Marri dentist 2001 S California Ave Chicago", "Esperanza Health Center \"2001 S California\" Chicago location"]
+    },
+    {
+      "location_id": "4535451bd15d0b2c",
+      "practice_name": "John Dental",
+      "zip": "60608",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "none",
+      "evidence_urls": [],
+      "evidence_artifacts": [],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "The dental practice at 1803 S Throop St, Chicago ('Sunshine Dental', associated with Dr. Gloria John and later Dr. Nasrin Azim) is marked CLOSED in a recently-updated Yelp listing; closure_suspect, so per protocol this is left undetermined rather than tiered.",
+      "searched": ["John Dental 1803 S Throop St Chicago dentist"]
+    },
+    {
+      "location_id": "8679f636edb27bbf",
+      "practice_name": "STEVEN E ARNSTEIN, D.D.S., P.C.",
+      "zip": "60608",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/arnstein-steven-e-chicago",
+        "https://www.superpages.com/chicago-il/bpp/arnstein-steven-dds-pc-8474411",
+        "https://www.healthgrades.com/dentist/dr-steven-arnstein-3jyrj"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:ARNSTEIN_STEVEN",
+      "reasoning": "Multiple independent directories (Yelp, Superpages, Healthgrades) consistently confirm Steven E. Arnstein, D.D.S., P.C. as a solo dentist's own professional corporation at 3303 S Halsted St Ste 207, Chicago 60608, matching the NPPES authorized official (Steven Arnstein) exactly. No franchise, brand, or corporate-parent signal found across any source.",
+      "searched": ["Steven Arnstein DDS 3303 S Halsted St Chicago dentist practice"]
+    }
+  ]
+}

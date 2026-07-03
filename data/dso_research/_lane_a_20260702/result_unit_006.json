@@ -1,0 +1,329 @@
+{
+ "unit_id": "laneA_006",
+ "classifications": [
+  {
+   "location_id": "ec5a719be1defa5a",
+   "practice_name": "Cravens Dental",
+   "zip": "60564",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-stephanie-cravens-ybqdf2z"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Stephanie Cravens, DDS is a solo general-practice dentist at 2776 Forgue Dr Ste 106, Naperville IL 60564, matching the practice's phone (630) 305-0312 exactly. No corporate parent, management company, or DSO brand appears in any result. Single-provider owner-operator with no other location found.",
+   "searched": [
+    "Cravens Dental Naperville IL 2776 Forgue Dr"
+   ]
+  },
+  {
+   "location_id": "0afd3cbdbde8c1a5",
+   "practice_name": "HY LINE DENTAL",
+   "zip": "60564",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Hylinedental.com's own 'our-locations' page shows this practice is one of 5 offices (Naperville, West Chicago, Bolingbrook, Joliet, Aurora) sharing overlapping brand names ('Hyline Dental', 'Dental Smiles of X', 'Tranquil Dental'). Fetched the about-us/our-office page directly and it names multiple staff dentists (Numera, Khan, Hydari, Ilardo, Shareef) but never identifies a single dentist-owner or any management company/DSO/PE backer. Cannot confirm dentist ownership (T3) or corporate control (T4/T5) from available evidence, so left undetermined rather than guessing.",
+   "searched": [
+    "Hy Line Dental Naperville IL Route 59 dentist",
+    "fetch: hylinedental.com/our-locations/",
+    "fetch: hylinedental.com/about-us/our-office/",
+    "\"Hyline Dental\" OR \"Dental Smiles\" Naperville West Chicago Bolingbrook Joliet management company owner"
+   ]
+  },
+  {
+   "location_id": "de57a1974d75de1d",
+   "practice_name": "Parikh Dental",
+   "zip": "60564",
+   "assigned_tier": "branded_dso",
+   "pe_backed": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://smiledoctors.com/locations/naperville-south-route-59/",
+    "https://www.pashaorthodontics.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:smile_doctors",
+   "reasoning": "The NPI's address (4827 S Route 59 Ste 115, Naperville IL 60564) matches exactly with Smile Doctors' own locator page for 'Pasha Orthodontics - Naperville - South Route 59'. Smile Doctors is a national orthodontic DSO confirmed PE-backed by Thomas H. Lee Partners and Linden Capital Partners (2022 investment, per THL/PRNewswire/Lincoln International). Dr. Chirag Parikh, DMD (the NPI holder) practices as an orthodontist under this Smile Doctors-owned local brand, not as an independent owner.",
+   "searched": [
+    "Parikh Dental Naperville IL 4827 Route 59",
+    "\"1184159550\" NPI Parikh dentist Naperville",
+    "fetch: smiledoctors.com/locations/naperville-south-route-59/",
+    "Pasha Orthodontics Naperville owner founder Dr Pasha",
+    "Smile Doctors orthodontic private equity backed investor"
+   ]
+  },
+  {
+   "location_id": "5d8caf7fea99b08c",
+   "practice_name": "DENTAL GROUP OF NAPERVILLE, P.C.",
+   "zip": "60564",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "No web presence found under the name 'Dental Group of Naperville, P.C.' at 1012 95th St. A different practice, Right Choice Dental Care, operates at the matching street number/ZIP (1012 95th St #5, Naperville IL 60564) but cannot be confirmed as the same legal/billing entity. Record has provider_count=0, consistent with an org-only NPI with no individual dentist currently mapped to it in this dataset. Insufficient evidence to assign an ownership tier or confirm entity identity.",
+   "searched": [
+    "Dental Group of Naperville 1012 95th St",
+    "\"Dental Group of Naperville\" P.C. NPI 1447892047",
+    "fetch: npiregistry.cms.hhs.gov/provider-view/1447892047",
+    "\"1012 95th\" Naperville dental closed OR \"Dental Group of Naperville\""
+   ]
+  },
+  {
+   "location_id": "fd39ac4bdc9cffc1",
+   "practice_name": "Miller Dental",
+   "zip": "60564",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-stephanie-miller-1zu5xxns97"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Stephanie Miller, DDS practices solo at 2220 Sisters Ave, Naperville IL 60564, matching the practice's phone (630) 303-6599 exactly. No corporate/DSO signal found; single-provider owner-operator practice distinct from a separate Dr. Miloslava Miller office elsewhere in Naperville (address collision avoided by matching street address).",
+   "searched": [
+    "Miller Dental Naperville IL Sisters Ave dentist"
+   ]
+  },
+  {
+   "location_id": "0df7ea1162107e0c",
+   "practice_name": "Shams Dental",
+   "zip": "60564",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://mohammedshams1ce.dr-leonardo.com/",
+    "https://www.vitadox.com/practice/naperville-il-60564/sunny-smiles-llc/QcNUMu9rb7sgPqNX9kCnFo"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "NPI 1093465007 (exact match) belongs to Mohammed Shams, a solo dentist operating as 'Sunny Smiles, LLC' at 2414 Flambeau Dr, Naperville IL 60564, phone (630) 696-0716 matching exactly. The LLC name is his own single-office entity, not a recognized DSO brand; no corporate parent found.",
+   "searched": [
+    "Shams Dental Naperville IL dentist"
+   ]
+  },
+  {
+   "location_id": "dd95d42cf0e6ed9c",
+   "practice_name": "CAP DENTAL CARE P.C.",
+   "zip": "60563",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.capdentalcare.com/our-office/meet-the-doctors/",
+    "https://www.yelp.com/biz/cap-dental-care-naperville"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "CAP Dental Care's own website (capdentalcare.com) identifies Dr. Kaiyun/Kaiyan Chen, DDS as the practicing dentist at 555 N Washington St, Naperville IL 60563, matching the AO name (Kaiyan Chen) and phone exactly. Single location, no corporate/management-company language found.",
+   "searched": [
+    "CAP Dental Care Naperville IL Washington St Kaiyan Chen"
+   ]
+  },
+  {
+   "location_id": "b2aa7e2d9a243bfd",
+   "practice_name": "Give Me a Smile Dental",
+   "zip": "60563",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/sam-zurich-dds-give-me-a-smile-dental-naperville",
+    "https://www.yelp.com/biz/give-me-a-smile-dental-naperville"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice at 535 Fairway Dr Ste 135, Naperville IL 60563 (phone matches exactly) is run by Dr. Sam Zurich, DDS per Yelp listing; DB record shows 2 providers at this single address with EIN reach confined to itself (1 location). No DSO/corporate signal found in any source; treated as a dentist-owned multi-dentist single-location group. Confidence medium because the second provider's identity was not independently confirmed.",
+   "searched": [
+    "Give Me a Smile Dental Naperville IL Fairway Dr"
+   ]
+  },
+  {
+   "location_id": "5573c01f5369909a",
+   "practice_name": "Esposito Kelsey DMD",
+   "zip": "60563",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/west-suburban-oral-healthcare-naperville",
+    "https://www.carecredit.com/doctor-locator/naperville-il/west-suburban-oral-health-care-pc-769phf/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Kelsey Esposito, DMD practices at West Suburban Oral Health Care PC, 380 W Diehl Rd, Naperville IL 60563 (phone matches exactly), alongside Dr. Marco Fajardo, DDS and Dr. Susan Mazzei, DDS -- 3 dentists matching the DB provider_count of 3, all at one address. No multi-location footprint or corporate/DSO signal found; classified as a dentist-owned single-location group practice.",
+   "searched": [
+    "Esposito Kelsey DMD Naperville IL 380 W Diehl Rd dentist"
+   ]
+  },
+  {
+   "location_id": "f03f7dc18a233efb",
+   "practice_name": "TIMOTHY NUGENT DDS PC",
+   "zip": "60563",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dentalplans.com/dentists/illinois/naperville/60563/dr-timothy-nugent-56877/",
+    "https://www.opencare.com/dentists/naperville-il/dupage-dental-pc-24630104537c/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Timothy J. Nugent, DDS practices as 'DuPage Dental PC' at 636 Raymond Dr Ste 102, Naperville IL 60563, matching both the AO name (Timothy Nugent) and phone (630) 579-1600 exactly. 25+ year solo owner-operator; no corporate/DSO signal found.",
+   "searched": [
+    "Timothy Nugent DDS Naperville IL Raymond Dr dentist"
+   ]
+  },
+  {
+   "location_id": "7309ea95df5ec673",
+   "practice_name": "John Dental",
+   "zip": "60563",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npino.com/dentists/1223g0001x-d?page=2119"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "NPI 1245329291 (exact match) belongs to Robert B John, a general-practice dentist at 518 Springhill Cir Suite 717, Naperville IL 60563, phone (630) 961-5732 matching exactly. No practice website or group/corporate affiliation was found beyond the NPI directory listing, consistent with a small solo owner-operator office; confidence set to medium given the thin source base.",
+   "searched": [
+    "John Dental Naperville IL Springhill Cir dentist",
+    "\"518 Springhill\" Naperville IL 60563 dentist",
+    "Naperville dentist \"Springhill\" NPI 1245329291"
+   ]
+  },
+  {
+   "location_id": "31aff7c4dfdcb911",
+   "practice_name": "Han Cynthia B DDS",
+   "zip": "60563",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/cynthia-b-han-dds-naperville",
+    "https://www.toprankdental.com/han-cynthia-b-dds-general-dentistry-640-n-river-rdste-100-1"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Cynthia B. Han, DDS practices solo at 640 N River Rd Ste 100, Naperville IL 60563, matching the practice's phone (630) 355-3355 exactly. EIN reach confined to this single location. No corporate/DSO signal found anywhere in the results.",
+   "searched": [
+    "Han Cynthia DDS Naperville IL River Rd dentist"
+   ]
+  },
+  {
+   "location_id": "ce48e24c77a578c4",
+   "practice_name": "RAINA DENTAL CARE PC",
+   "zip": "60563",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.rainadentalcare.com/contact/",
+    "https://www.facebook.com/RainaDentalCareBolingbrook/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:RAINA_MANDEEP",
+   "reasoning": "Dr. Mandeep (Kaur) Raina, DDS operates 'Raina Dental Care' at 2323 Naperville Rd Ste 110, Naperville IL 60563 (address and AO name match) and the same brand also has a distinct Bolingbrook, IL office (per the practice's own rainadentalcare.com site and its linked Facebook page), consistent with the DB's owner_reach_locations=2 for this AO across IL. No corporate/PE signal found -- classified as a dentist-owned 2-location network.",
+   "searched": [
+    "Raina Dental Care Naperville IL Mandeep Raina dentist locations",
+    "fetch: rainadentalcare.com/contact/"
+   ]
+  },
+  {
+   "location_id": "c17ac913f9db9eeb",
+   "practice_name": "KAVEH N. ADEL, D.D.S., P.C.",
+   "zip": "60563",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-kaveh-adel-yjt6l",
+    "http://kavehadel.com/dentist/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Kaveh Adel, DDS practices solo at 612 E Ogden Ave, Naperville IL 60563, matching the AO name (Kaveh Adel) and phone (630) 369-8950 exactly; has run his own private practice site (kavehadel.com) since relocating to Naperville in 2000. No corporate/DSO signal found.",
+   "searched": [
+    "Kaveh Adel DDS Naperville IL Ogden Ave dentist"
+   ]
+  },
+  {
+   "location_id": "2c66e694b440c3bc",
+   "practice_name": "Primiano Dental",
+   "zip": "60563",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-nicholas-primiano-2hw64",
+    "https://www.facebook.com/NPPrimianoDDS/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Nicholas Primiano, DDS practices at 231 E Ogden Ave, Naperville IL 60563, matching phone exactly; DB shows 2 providers at this single address (small_group). No second dentist's identity was independently confirmed in search results and no corporate/DSO signal appeared anywhere, so classified conservatively as a dentist-owned single-location group; confidence medium due to the unconfirmed second provider.",
+   "searched": [
+    "Primiano Dental Naperville IL Ogden Ave dentist"
+   ]
+  },
+  {
+   "location_id": "058834e5a94b8de0",
+   "practice_name": "Zomorrodi Dental",
+   "zip": "60563",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-pirooz-zomorrodi-yctbv",
+    "https://www.dentalplans.com/dentists/illinois/naperville/60563/dr-pirooz-zomorrodi-15992/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Pirooz Zomorrodi, DDS practices solo at 1567 N Aurora Rd, Naperville IL 60563 (DB address had a typo, 'aurura'), matching phone (630) 357-2332 exactly. No corporate/DSO signal found; long-standing solo owner-operator since 1996.",
+   "searched": [
+    "Zomorrodi Dental Naperville IL Aurora Rd dentist"
+   ]
+  }
+ ]
+}

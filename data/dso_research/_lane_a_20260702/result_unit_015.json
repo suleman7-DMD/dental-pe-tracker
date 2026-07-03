@@ -1,0 +1,337 @@
+{
+ "unit_id": "laneA_015",
+ "classifications": [
+  {
+   "location_id": "549f97d1ccc6814b",
+   "practice_name": "UNFORGETTABLE SMILES LTD",
+   "zip": "60559",
+   "assigned_tier": "branded_dso",
+   "pe_backed": true,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://blog.heartland.com/heartland-dental-announces-launch-of-the-orahh-care-dental-community",
+    "https://orahhcare.com/locator",
+    "https://unforgettablesmiles.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:heartland_dental_orahh_care",
+   "reasoning": "Unforgettable Smiles (416 E Ogden Ave, Westmont) is confirmed a member of the Orahh Care Dental Community, a brand Heartland Dental LLC launched to represent DSO-supported practices under their legacy names (per Heartland's own blog post and its official locator at orahhcare.com/locator, which lists this practice). Heartland Dental is majority-owned by KKR since 2018 (58% stake, $2.8B valuation) -- a documented PE sponsor. Classified branded_dso with pe_backed=true.",
+   "searched": [
+    "\"Unforgettable Smiles\" dental Westmont IL Ogden",
+    "\"Orahh Care Dental Community\" Unforgettable Smiles Westmont",
+    "orahhcare.com locator Westmont Unforgettable Smiles Heartland Dental",
+    "Heartland Dental KKR private equity ownership"
+   ]
+  },
+  {
+   "location_id": "ffda7fb246960e0d",
+   "practice_name": "KAKUMA DENTAL P C",
+   "zip": "60559",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.downersdental.com/dr-priyanka-pandya/",
+    "https://www.healthgrades.com/dentist/dr-priyanka-pandya-xymvcyt"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:PANDYA_PRIYANKA",
+   "reasoning": "Kakuma Dental P.C. (407 W Ogden Ave, Westmont), also doing business as Downers Dental, is owned and operated by Dr. Priyanka Pandya, DMD (President/Owner per her own practice site and corroborating directories). Single address, 2 providers, no corporate/DSO signal found -- dentist-owned multi-provider single location.",
+   "searched": [
+    "\"Kakuma Dental\" Westmont IL",
+    "\"Kakuma Dental\" Priyanka Pandya BBB owner Westmont"
+   ]
+  },
+  {
+   "location_id": "c49995373f766089",
+   "practice_name": "Mashnouk Dental",
+   "zip": "60559",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://reviews.birdeye.com/cass-family-dental-mashnouk-bana-dds-155341934992119",
+    "https://www.healthgrades.com/dentist/dr-bana-mashnouk-x9sg9",
+    "https://www.zocdoc.com/dentist/bana-mashnouk-dds"
+   ],
+   "evidence_artifacts": [
+    "co-located with location 4dd0cf70924b3541 (Cass Family Dental) at the same address, 210 N Cass Ave Ste D -- same physical practice"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:MASHNOUK_BANA",
+   "reasoning": "This NPI is Dr. Bana Mashnouk, DDS (UIC grad), owner/dentist of Cass Family Dental at 210 N Cass Ave Ste D, Westmont -- confirmed by Birdeye, Healthgrades, and Zocdoc all naming Mashnouk as the practicing dentist at this address. Same building/suite as the co-listed 'Cass Family Dental' org NPI, so this and location 4dd0cf70924b3541 are the same dentist-owned single-location practice.",
+   "searched": [
+    "Mashnouk Dental Westmont IL Cass Ave"
+   ]
+  },
+  {
+   "location_id": "473d8c9bb2e54411",
+   "practice_name": "IMPLANT SOLUTIONS",
+   "zip": "60559",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/eon-clinics-dental-implants-westmont-westmont-5",
+    "https://www.eonclinics.com/find-your-closest-eon-clinic"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:eon_clinics",
+   "reasoning": "This address (6319 Fairview Ave Ste 103, Westmont) was EON Clinics Dental Implants, a dentist-founded/owned (Dr. Rajan Sharma) implant-center network matching ctx owner_reach across 5 IL ZIPs. However, web evidence (Yelp, updated Feb 2026) confirms the Westmont location is CLOSED -- it was replaced by an Oakbrook Terrace location back in 2019, and multiple other EON Clinics IL locations (Oakbrook Terrace, Schaumburg) are also now listed closed. closure_suspect: do not classify an inactive address; status set to undetermined per protocol.",
+   "searched": [
+    "\"Implant Solutions\" dental Westmont IL Rajan Sharma DDS",
+    "EON Clinics dental implants locations Illinois Rajan Sharma owner",
+    "EON Clinics Westmont closed 2026 Hoffman Estates locations still open"
+   ]
+  },
+  {
+   "location_id": "d68fe26745047a97",
+   "practice_name": "Smile Dental Ctr",
+   "zip": "60559",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://thewestmontdentist.com/",
+    "https://www.yelp.com/biz/dental-excellence-of-westmont-westmont-2"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "The NPI's registered address, 19 N Cass Ave, Westmont, is currently occupied by a different, unrelated practice -- Dental Excellence of Westmont (Dr. Stephen Esposito, DDS), confirmed via its own website and Yelp. No evidence of a currently operating business named 'Smile Dental Ctr' at this specific address was found (a same-named but different-address 'Smile Dental Center' exists at 411 N Cass Ave under different ownership). closure_suspect / likely relocated or rebranded -- insufficient current evidence to assign an ownership tier for this address.",
+   "searched": [
+    "\"Smile Dental\" Westmont IL \"19 N Cass\"",
+    "\"19 N Cass Ave\" Westmont IL dentist"
+   ]
+  },
+  {
+   "location_id": "395a83c3c41d4177",
+   "practice_name": "A1 Dental",
+   "zip": "60559",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/a-1-dental-clinic-westmont",
+    "https://www.healthgrades.com/dentist/dr-stephen-lee-29gcq"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "A-1 Dental Clinic (6550 S Cass Ave, Westmont) is confirmed via multiple independent directories at this exact address/phone; Dr. Stephen Lee, DDS is listed as the dentist at this address. No corporate parent, brand, or DSO signal found. Provider_count=2 with no ownership disclosure found beyond the practicing dentist(s) -- treated as a dentist-run single-location group; medium confidence since an explicit 'owner' statement was not located.",
+   "searched": [
+    "\"A1 Dental\" Westmont IL \"Cass Ave\"",
+    "A1 Dental Clinic Westmont IL owner dentist \"6550 S Cass\""
+   ]
+  },
+  {
+   "location_id": "4dd0cf70924b3541",
+   "practice_name": "Cass Family Dental",
+   "zip": "60559",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://reviews.birdeye.com/cass-family-dental-mashnouk-bana-dds-155341934992119",
+    "https://local.yahoo.com/info-32743734-cass-family-dental-westmont/"
+   ],
+   "evidence_artifacts": [
+    "co-located with location c49995373f766089 (Mashnouk Dental) at the same address, 210 N Cass Ave Ste D -- same physical practice"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:MASHNOUK_BANA",
+   "reasoning": "Cass Family Dental, 210 N Cass Ave, Westmont, is Dr. Bana Mashnouk's own dental practice per Birdeye ('Cass Family Dental: Mashnouk Bana DDS') and Yahoo Local, corroborated by Healthgrades/Zocdoc/WebMD. Dentist-owned, single location, no corporate signal.",
+   "searched": [
+    "Mashnouk Dental Westmont IL Cass Ave"
+   ]
+  },
+  {
+   "location_id": "8b74b15b761a0b17",
+   "practice_name": "William J Heniades Ltd",
+   "zip": "60559",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.heniadesdds.com/",
+    "https://www.heniadesdds.com/office"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:HENIADES_WILLIAM",
+   "reasoning": "William J. Heniades, DDS, LTD (38 W Burlington Ave, Westmont) has its own practice website naming Dr. Heniades as the sole practicing dentist since he graduated Loyola University School of Dentistry in 1987. Single location, no corporate parent, textbook owner-operator solo practice.",
+   "searched": [
+    "\"William J Heniades\" DDS Westmont IL dentist"
+   ]
+  },
+  {
+   "location_id": "621009b0ea1dcaad",
+   "practice_name": "Baker Dental",
+   "zip": "60559",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npiprofile.com/npi/1770758336",
+    "https://www.doctorsnetwork.com/doctors/dentists/westmont-il-60559/invite-kevin-baker-dds-15676"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:BAKER_KEVIN",
+   "reasoning": "NPI 1770758336 confirmed as Dr. Kevin M. Baker, D.D.S. at 100 S Cass Ave, Westmont, matching our record exactly. Directories consistently list him as the solo general dentist at this address (a historical 'Alberti Cole & Baker' grouping also appears for the same suite, but current listings name Baker individually with provider_count=1). Treated as solo owner-operator; medium confidence due to the historical multi-name building reference.",
+   "searched": [
+    "\"Baker Dental\" Westmont IL \"100 S Cass\""
+   ]
+  },
+  {
+   "location_id": "6de32df895022dd4",
+   "practice_name": "DIPAK S. SHAH D.D.S. , LTD.",
+   "zip": "60559",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/dipak-s-shah-dds-westmont-2",
+    "https://www.bbb.org/us/il/westmont/profile/dentist/dipak-s-shah-ltd-0654-88247191"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:SHAH_DIPAK",
+   "reasoning": "Dipak S Shah, DDS, LTD at 4118 N Cass Ave, Westmont is confirmed across Yelp/BBB/Vitals as a single-location family dental practice run by Dr. Dipak Shah since 2002 (AO on file: Dipak Shah). No corporate/DSO signal; classic solo owner-operator.",
+   "searched": [
+    "\"Dipak Shah\" DDS Westmont IL dentist \"Cass Ave\""
+   ]
+  },
+  {
+   "location_id": "4168f1be58dc66f1",
+   "practice_name": "Chen Dental",
+   "zip": "60559",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searched for a practice named 'Chen Dental' at 221 Carlisle Ave, Westmont; no business, website, or directory listing under this name/address combination could be located (only a same-surname dentist, Dr. Emily Chen, was found practicing in unrelated Lincolnwood, IL). Insufficient web evidence to assign any ownership tier -- left undetermined rather than guessed.",
+   "searched": [
+    "\"Chen Dental\" Westmont IL \"Carlisle Ave\" dentist",
+    "\"Chen Dental\" Westmont IL 60559 dentist"
+   ]
+  },
+  {
+   "location_id": "b6add6f8267c27d4",
+   "practice_name": "Alramli Dental",
+   "zip": "60559",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.doctorsnetwork.com/doctors/dentists/westmont-il-60559/invite-omar-alramli-dds-18190",
+    "https://1stfamilydental.com/team/dr-omar-alramli/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Dr. Omar Alramli, DDS (this NPI) is confirmed via directory listing at 740 Fairfield Ct, Westmont, but his current team-bio page shows him now affiliated with 1st Family Dental, a 14-location Chicago-area group -- and none of that group's 14 listed offices is at 740 Fairfield Ct/Westmont. It is unclear whether this address is still an active independent office, a stale registration, or a residential mailing address; no owned-business website for 'Alramli Dental' at this address was found. Left undetermined given the ambiguity (not R4 protected -- the specific location is not confirmed part of the 14-location network).",
+   "searched": [
+    "\"Alramli\" dentist Westmont IL",
+    "1stfamilydental.com team Dr. Omar Alramli (fetch)"
+   ]
+  },
+  {
+   "location_id": "28ce3da966b80b21",
+   "practice_name": "Zinzalet Dental",
+   "zip": "60559",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npino.com/dentist/1104356096-dr.-rachel-zinzalet/",
+    "https://dentistsok.com/dentist/dr-rachel-zinzalet-dmd-westmont/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Dr. Rachel Zinzalet, DMD is listed at '514 Brookside Dr Apt A, Westmont' -- an apartment address, not a commercial storefront -- with only aggregator/directory profiles found (no owned practice website, no evidence of a business named 'Zinzalet Dental'). Cannot confirm this is an operating, ownership-classifiable clinic location; left undetermined rather than guessed.",
+   "searched": [
+    "\"Zinzalet\" dentist Westmont IL OR Illinois"
+   ]
+  },
+  {
+   "location_id": "1aa1a048a3a565a6",
+   "practice_name": "Hedroug Dental",
+   "zip": "60559",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://zaynabhedroug.dr-leonardo.com/",
+    "https://www.healthgrades.com/dentist/dr-zaynab-hedroug-v4ldijt876"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Dr. Zaynab Hedroug, DMD is listed at 1037 Oakwood Dr, Westmont (matching this NPI) but is also listed practicing at a second address, 3600 W Belmont Ave, Chicago, with no clarity on which (if either) she owns versus works as an associate. Only directory-aggregator profiles found, no owned business website for 'Hedroug Dental'. Left undetermined given low confidence on ownership/operating status at this specific address.",
+   "searched": [
+    "\"Hedroug\" dentist Westmont IL Illinois"
+   ]
+  },
+  {
+   "location_id": "b5a4542347652aed",
+   "practice_name": "Mohammed Dental",
+   "zip": "60559",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://evolvefamilydentistry.com/",
+    "https://www.yelp.com/biz/evolve-dentistry-westmont"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:MOHAMMED_JUNED",
+   "reasoning": "This NPI (6160 S Cass Ave Ste E, Westmont, phone matches exactly) is Dr. Juned Mohammed, who owns and operates 'Evolve Dentistry' at this address together with his wife, Dr. Sana Ahmed -- confirmed via the practice's own website. Single-location, two-dentist, husband-and-wife-owned practice; no corporate/DSO signal.",
+   "searched": [
+    "\"Mohammed\" dentist Westmont IL \"Cass Ave\" 60559"
+   ]
+  },
+  {
+   "location_id": "fa3d5ee17ac5d5cd",
+   "practice_name": "Travieso Dental",
+   "zip": "60559",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.vitals.com/doctors/deborah-osendi-travieso-773w6l"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Dr. Deborah Osendi Travieso is listed at '1120 S Williams St Apt C9, Westmont' -- an apartment address -- with only a thin physician-directory profile found (no owned practice website, not accepting new patients per the listing, no business name 'Travieso Dental' confirmed). Insufficient evidence to determine an operating, classifiable clinic; left undetermined.",
+   "searched": [
+    "\"Travieso\" dentist Westmont IL Illinois"
+   ]
+  }
+ ]
+}

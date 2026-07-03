@@ -1,0 +1,297 @@
+{
+ "unit_id": "laneA_095",
+ "classifications": [
+  {
+   "location_id": "83338fa3c433ba4a",
+   "practice_name": "Chhay Dental",
+   "zip": "60618",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.northchicagodental.com/",
+    "https://www.healthgrades.com/dentist/dr-hieng-chhay-ycd2g"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Web search confirms this address is North Chicago Dental Center, Ltd., a family/cosmetic practice operated by Dr. Hieng Chhay, DDS since 2001 (matches phone 773-227-0621). No corporate parent, management company, or DSO brand found. Single dentist owner-operator at one location.",
+   "searched": ["Chhay Dental 2879 N Milwaukee Ave Chicago IL 60618"]
+  },
+  {
+   "location_id": "8c6cbd8b8b3e4877",
+   "practice_name": "DENTAL 360 & ASSOCIATES LLC",
+   "zip": "60618",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://dental360grp.com/locations/irving-park-family-dentist/",
+    "https://dental360grp.com/illinois-locations/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": "brand:dental_360",
+   "reasoning": "Confirmed via Dental 360's own locator that 3435 W Irving Park Rd is their branded 'Irving Park Family Dentist' office (matches phone 773-588-8200). However the brand's Illinois-locations page shows ~16 offices across Chicago neighborhoods, Berwyn, and Mundelein, exceeding the 10-location protected-network threshold. Per protocol this requires a single network-level review rather than per-unit classification, so this row is held as R4_protected_network:Dental 360 rather than flipped to branded_dso here.",
+   "searched": ["Dental 360 Associates 3435 W Irving Park Rd Chicago locator", "Dental 360 illinois-locations"]
+  },
+  {
+   "location_id": "0e1d5307fdce90aa",
+   "practice_name": "Kaplan Dental",
+   "zip": "60618",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/morris-i-kaplan-dds-chicago-2",
+    "https://www.healthgrades.com/dentist/dr-morris-kaplan-xd8yw"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple directory listings (Yelp, Healthgrades, WebMD) consistently show Dr. Morris I. Kaplan, DDS practicing solo at 2835 N Kimball Ave, Chicago, IL 60618, phone (773) 227-0221 matches exactly. No corporate/DSO signal anywhere. Solo owner-operator.",
+   "searched": ["Kaplan Dental 2835 N Kimball Chicago IL dentist"]
+  },
+  {
+   "location_id": "0d9a52ec2dfe6628",
+   "practice_name": "Najem Dental",
+   "zip": "60618",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://licensefiles.com/licenses/david-a-najem/1t5d57",
+    "https://www.yelp.com/biz/abbey-dental-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address 2056 W Irving Park Rd, phone (773) 472-8295 matches Dr. David A. Najem, DDS, who operates the practice under the DBA 'Abbey Dental' (theabbeydental.com) — a single small corner office. No corporate parent or DSO branding found; solo dentist owner-operator.",
+   "searched": ["Najem Dental 2056 W Irving Park Rd Chicago IL"]
+  },
+  {
+   "location_id": "8993db31d061a51d",
+   "practice_name": "SCHWARTZ & ZELIKOW DDS PC",
+   "zip": "60618",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://ronaldzelikowdds.com/",
+    "https://ronaldzelikowdds.com/about-us/",
+    "https://www.yelp.com/biz/ronald-zelikow-dds-chicago-2"
+   ],
+   "evidence_artifacts": ["legal name 'Schwartz & Zelikow' suggests a legacy 2-dentist partnership, but all current web presence (own site, Yelp, ADA Find-a-Dentist) names only Dr. Ronald Zelikow"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "2057 W Belmont Ave / (773) 348-3309 matches Dr. Ronald Zelikow's own practice site (ronaldzelikowdds.com), a single-location family dentistry practice with no corporate or DSO signals. The PC's legal name references a prior partner (Schwartz) not visible on any current listing, so this reads as a solo/family practice under Zelikow's ownership; medium confidence because the original 2-dentist partnership structure can't be fully ruled out.",
+   "searched": ["Zelikow Dental Schwartz Zelikow 2057 W Belmont Ave Chicago"]
+  },
+  {
+   "location_id": "44746d18d3eb1725",
+   "practice_name": "Zelikow Dental",
+   "zip": "60618",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://ronaldzelikowdds.com/",
+    "https://findadentist.ada.org/dentists/dr-ronald-zelikow-chicago-0038V00002yk5GDQAY-a1C8V00000lWDB4UAO"
+   ],
+   "evidence_artifacts": ["Same address/phone as location 8993db31d061a51d (Schwartz & Zelikow DDS PC) — same physical practice, second NPI record"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Identical address (2057 W Belmont) and phone (773-348-3309) to the Schwartz & Zelikow DDS PC record above — this is the same single-location practice under a second NPI. Dr. Ronald Zelikow's own site and the ADA directory confirm a solo/family dental practice, no corporate ownership found.",
+   "searched": ["Zelikow Dental Schwartz Zelikow 2057 W Belmont Ave Chicago"]
+  },
+  {
+   "location_id": "c8efbf563e17e5bb",
+   "practice_name": "MOHAMMAD R EKHTERA, DDS. PC",
+   "zip": "60618",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-mohammad-ekhtera-2hkj4",
+    "https://npino.com/dental-clinic/1922407667-mohammad-reza-ekhtera,-dds,-pc/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "3190 E Elston Ave / (773) 564-9916 matches Dr. Mohammad Reza Ekhtera, DDS, who operates the location as 'Enamel Dental Salon.' No parent company, DSO, or chain affiliation found in any directory. Solo dentist owner-operator.",
+   "searched": ["Mohammad Ekhtera DDS 3190 E Elston Ave Chicago dentist"]
+  },
+  {
+   "location_id": "d9e1cbf0d6b6b005",
+   "practice_name": "PERFECT SMILE DENTAL SPA PARTNERSHIP",
+   "zip": "60618",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://perfectsmiledentalspa.com/about/",
+    "https://www.yelp.com/biz/perfect-smile-dental-spa-chicago-2"
+   ],
+   "evidence_artifacts": ["EIN 061741286 reach is 1 location / 1 ZIP only (no cross-ZIP EIN chain)", "AO Timothy Dotson confirmed as a treating dentist at this address (LinkedIn) but ownership not explicitly stated"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Single location at 2155 W Roscoe St, serving 'North Shore Chicago residents for more than 20 years,' with a multi-dentist 'Our Doctors' roster and AO/treating dentist Timothy Dotson. No management company, DSO brand, or PE sponsor found anywhere, and the EIN does not reach any other watched ZIP. Classified as a single-location, dentist-staffed group rather than solo given the multi-doctor branding.",
+   "searched": ["\"Perfect Smile Dental Spa\" Roscoe Village Chicago 2155 W Roscoe", "\"Perfect Smile Dental Spa\" owner dentist Timothy Dotson OR founder", "Perfect Smile Dental Spa Roscoe large group EIN 061741286 corporate parent"]
+  },
+  {
+   "location_id": "3af1e2ccc1b5eb23",
+   "practice_name": "WESTERN DENTAL GROUP PC",
+   "zip": "60618",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/western-dental-group-chicago-2",
+    "https://www.opencare.com/dentists/chicago-il/western-dental-group-24630729765c/",
+    "https://www.westerndental.com/en-us/find-a-location/",
+    "https://www.sonrava.com/brands"
+   ],
+   "evidence_artifacts": ["Name collision, not a brand match: this is a periodontics/general practice at 3935 N Western Ave (named for Western Ave) staffed by locally-named dentists Simona Katona, Fadi Masoud, Sonia Shweiki, website westerndentalprofessionals.com", "Sonrava Health's actual national 'Western Dental' brand (westerndental.com) operates only in CA/AZ/NV plus Brident in TX — no Illinois footprint per its own locator and corporate brands page"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The database's 'Western Dental (Sonrava)' brand_hint is a same-name false positive: this Chicago address is an independently-run periodontal/general group ('Western Dental Group', named for Western Ave) with locally identified dentists and its own domain (westerndentalprofessionals.com), while Sonrava's actual Western Dental & Orthodontics chain has no Illinois locations per westerndental.com/find-a-location and sonrava.com/brands. Reclassified from presumed branded_dso to a dentist-staffed single-location group; no PE/DSO evidence found for the actual address.",
+   "searched": ["Western Dental 3935 N Western Ave Chicago IL 60618", "Western Dental Sonrava Health locations states California Texas Nevada Arizona list", "westerndentalprofessionals.com Chicago Katona Masoud Shweiki", "atooth.com Chicago dental \"Western Dental Group\" about us owner"]
+  },
+  {
+   "location_id": "d89d030497fcaa1f",
+   "practice_name": "RASHMI KAKAR PLLC",
+   "zip": "60618",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://dentistsok.com/dental-clinic/rashmi-kakar-pllc-chicago-il/"
+   ],
+   "evidence_artifacts": ["EIN 450683976 reach is 1 location / 1 ZIP only"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "3927 W Belmont Ave listing confirms Dr. Rashmi Kakar, DDS as the 'Owner Dentist' of the PLLC (UM dental school, licensed 2014); provider_count of 3 and no cross-ZIP EIN reach indicates a single-location, dentist-owned small group rather than a chain. No DSO/PE signal found.",
+   "searched": ["Rashmi Kakar DDS 3927 W Belmont Ave Chicago dentist"]
+  },
+  {
+   "location_id": "66a084f7af99db39",
+   "practice_name": "MONTROSE DENTAL CLINIC PC",
+   "zip": "60618",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.advancedfamilydental.com/dentists/david-j-rubis/",
+    "https://www.healthgrades.com/dentist/dr-joseph-rubis-2wtty",
+    "https://www.yelp.com/biz/montrose-dental-clinic-pc-chicago-2"
+   ],
+   "evidence_artifacts": ["AO 'DAVID RUBIS' matches Dr. David J. Rubis, DDS (practicing since 1978) and son Dr. Joseph Rubis, DDS, listed as co-principals of the 'Advanced Family Dental & Orthodontics' network", "owner_reach zips (60404 Shorewood, 60435 Joliet, 60441 Lockport, 60564 Naperville, 60618 Chicago) match the network's own listed office cities"],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:RUBIS_DAVID",
+   "reasoning": "AO David Rubis and his son Dr. Joseph Rubis, both licensed dentists, are named co-principals of 'Advanced Family Dental & Orthodontics,' which its own site describes as having 'eight multidisciplinary practices' across Lockport, Frankfort, Shorewood and other IL suburbs — matching the owner_reach ZIP footprint (5 IL locations) for this AO. This is a dentist-owned multi-location network, well under the 10-location protected-network threshold, so it is classified directly as dentist_multi rather than deferred.",
+   "searched": ["\"Montrose Dental Clinic\" David Rubis Chicago 3541 W Montrose", "Rubis dental Joliet Naperville Lockport Illinois family dentistry group", "\"Montrose Dental Clinic\" 3541 W Montrose Ave Chicago Rubis affiliates locations"]
+  },
+  {
+   "location_id": "140eaea5ed8f3723",
+   "practice_name": "JC DENTAL CARE",
+   "zip": "60618",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://midwestfamilydental.com/our-locations/",
+    "https://midwestfamilydental.com/"
+   ],
+   "evidence_artifacts": ["Own site lists exactly 2 offices (Chicago Irving Park + Waukegan, IL) staffed by 6 named dentists (Choi, Chang, Abu Sabaa, Satam, Boatemaa, Chen); no owner explicitly named but no DSO/PE/management-company language found anywhere"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:midwest_family_dental",
+   "reasoning": "2843 W Irving Park Rd / (773) 267-8600 matches 'Midwest Family Dental,' the DBA under which Dr. Jennifer Choi practices; the group's own locations page confirms a small 2-office footprint (Chicago + Waukegan) staffed only by dentists with no corporate, DSO, or PE branding. This is unrelated to the much larger, Smile-Brands-owned 'Midwest Dental' national brand (confirmed distinct via search). Classified dentist_multi at medium confidence since a specific owner-dentist isn't named on the site.",
+   "searched": ["\"JC Dental Care\" Jennifer Choi 2843 W Irving Park Rd Chicago", "\"Midwest Family Dental\" Chicago Waukegan owner dentist private equity"]
+  },
+  {
+   "location_id": "a172cd23dffcff89",
+   "practice_name": "CHER THE TOOTHFAIRY",
+   "zip": "60618",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "http://www.chicagotoothfairy.com/dr-chernara-baker/",
+    "https://www.healthgrades.com/dentist/dr-chernara-baker-3fv4x"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Phone (773) 754-8610 and address match 'The Chicago Tooth Fairy,' Dr. Chernara Baker's own family/cosmetic dentistry practice (UIC College of Dentistry grad). No corporate or DSO signal found. Solo owner-operator.",
+   "searched": ["\"Cher the Toothfairy\" Chernara Baker 2525 W Montrose Ave Chicago dentist"]
+  },
+  {
+   "location_id": "dda5c8fff363ab3d",
+   "practice_name": "Arauz Dental",
+   "zip": "60618",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.welli.com/care/provider/1649682782",
+    "https://www.dentalplans.com/dentists/illinois/chicago/60625/dr-silvio-arauz-72017/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The Welli provider profile is keyed directly to this practice's NPI (1649682782) and confirms Dr. Silvio Arauz, DDS (UIC grad, 14+ years) at 2475 W Pensacola Ave. No corporate/DSO affiliation found. Solo dentist owner-operator.",
+   "searched": ["\"Arauz Dental\" 2475 W Pensacola Ave Chicago IL dentist"]
+  },
+  {
+   "location_id": "d29d674fbf090f8e",
+   "practice_name": "LAUREN E KOCH DDS PC",
+   "zip": "60618",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npiprofile.com/npi/1245643063",
+    "https://findadentist.ada.org/dentists/dr-lauren-koch-mac-donald-chicago-0038V00002ykA6pQAE-a1C8V00000lYscFUAS"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "2896 N Milwaukee Ave / (773) 295-6439 matches Dr. Lauren Emily Koch MacDonald, DDS, who practices under the name 'Avondale Dental Studio.' No parent company or DSO branding found. Solo dentist owner-operator.",
+   "searched": ["Lauren Koch MacDonald DDS 2896 N Milwaukee Ave Chicago dentist"]
+  },
+  {
+   "location_id": "750c730e65831053",
+   "practice_name": "SKYLINE SMILES OF ROSCOE VILLAGE LLC",
+   "zip": "60618",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://skylinesmiles.com/locations/roscoe-village/",
+    "https://skylinesmiles.com/",
+    "https://skylinesmiles.com/locations/bucktown/"
+   ],
+   "evidence_artifacts": ["AO Deepak Neduvelil confirmed practicing at this location per skylinesmiles.com staff page", "Brand's own site lists 4 offices total: West Loop, Roscoe Village, Bucktown, Elmhurst — well under the 10-location threshold"],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:skyline_smiles",
+   "reasoning": "2125 W Roscoe St matches Skyline Smiles of Roscoe Village, opened in 2016 under 'Dr. Ned and Dr. Rosh,' described as a sibling (brother-sister) dentist duo running a 'family run practice.' The brand's own site confirms a small 4-office footprint with no PE/DSO/management-company language anywhere. Dentist-owned multi-location group, classified dentist_multi.",
+   "searched": ["\"Skyline Smiles\" Roscoe Village Deepak Neduvelil Chicago dentist", "\"Skyline Smiles\" dental Chicago locations list West Loop Roscoe Village how many offices"]
+  }
+ ]
+}

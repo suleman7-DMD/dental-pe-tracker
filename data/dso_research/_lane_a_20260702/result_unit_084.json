@@ -1,0 +1,280 @@
+{
+ "unit_id": "laneA_084",
+ "classifications": [
+  {
+   "location_id": "c719b2a7e68a53ee",
+   "practice_name": "IMPLANT SOLUTIONS",
+   "zip": "60610",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/implant-solutions-chicago-2"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Yelp lists 'IMPLANT SOLUTIONS - CLOSED - Updated March 2026' at this exact address (1 E Scott St, Chicago) with a 1-star rating and no active successor site found. Per closure-suspect rule, not classified even though AO Rajan Sharma (has_intel_dossier=true, owner_reach 5 locations) could otherwise be checked.",
+   "searched": ["\"Implant Solutions\" 1 E Scott St Chicago dentist"]
+  },
+  {
+   "location_id": "0de79b98f75b7128",
+   "practice_name": "1ST FAMILY DENTAL OF CHICAGO INC",
+   "zip": "60610",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/",
+    "https://1stfamilydental.com/locations/chicago/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "undetermined",
+   "network_id": "brand:1st_family_dental",
+   "reasoning": "Confirmed via the brand's own locations page and ctx brand_hint that this is '1st Family Dental,' a Chicagoland dental group operating since 1996 with offices spanning Chicago (Old Town/this address, Andersonville, Little Village, Logan Square) plus multiple suburbs (Addison, Arlington Heights, Aurora, Burr Ridge, Elgin, La Grange Park, Mount Prospect, Roselle). Ctx shows AO Vesna Belkic reaching 15 location rows across 14 watched zips, exceeding the 10-location protected-network threshold, so per rule this is left undetermined for a single network-level review rather than flipped here.",
+   "searched": ["\"1st Family Dental\" 206 W Division St Chicago", "\"1st Family Dental\" locations Chicago Illinois how many offices"]
+  },
+  {
+   "location_id": "59db097da17ad94a",
+   "practice_name": "BRIGHTER DENTAL OF OLD TOWN",
+   "zip": "60610",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://brighterdentalchicago.com/",
+    "https://www.yelp.com/biz/brighter-dental-of-old-town-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:NOUNEH_ROGER",
+   "reasoning": "Brighterdentalchicago.com confirms Dr. Roger Nouneh, DMD, MS as founder/lead dentist operating exactly 3 offices (Old Town/this address, South Loop, Park Ridge) described as a locally-owned, dentist-led group, not a corporate chain. Well under the 10-location protected-network threshold and matches ctx owner_reach (60068 Park Ridge + 60610 Old Town). Classified dentist-owned multi-location.",
+   "searched": ["\"Brighter Dental\" Old Town Chicago 1254 N Wells", "brighterdentalchicago.com locations owner (WebFetch)"]
+  },
+  {
+   "location_id": "1e19d6d04a8cb0af",
+   "practice_name": "DALIA MAROUF DMD PC",
+   "zip": "60610",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.buzzfile.com/business/Dalia-Marouf-DMD-P.C.-847-345-1999",
+    "https://www.healthgrades.com/dentist/dr-dalia-marouf-y9v4hgz"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:MAROUF_DALIA",
+   "reasoning": "Buzzfile confirms 'Dalia Marouf DMD P.C.' at 1309 N Wells St (address/phone match exactly) as a women owned/operated single-location business founded 2016 employing ~3 people; Dr. Marouf is a Tufts-trained dentist who left a prior associate role to open her own practice. Solo owner-operator, no corporate parent found.",
+   "searched": ["Dalia Marouf DMD Chicago dentist 1309 N Wells"]
+  },
+  {
+   "location_id": "41c5c6a34b7b2c1d",
+   "practice_name": "ISABELLA TERRASSA REYES DMD PC",
+   "zip": "60610",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Web search finds Dr. Isabella Terrassa Reyes, DMD practicing at Strobel Dentistry, 25 E Washington St Ste 1917, Chicago 60602 - a materially different address/zip than the registered 100 W Chestnut St, 60610 location. A separate search for a dental office at '100 W Chestnut' Chicago returned no matching business. Per address-match rule, could not confirm ownership structure at this specific location - marked undetermined rather than guess based on the name match alone.",
+   "searched": ["Isabella Terrassa Reyes DMD Chicago dentist", "\"100 W Chestnut\" Chicago dentist office"]
+  },
+  {
+   "location_id": "54479fe1c50bc482",
+   "practice_name": "Kim Dental",
+   "zip": "60610",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "1444 N Orleans St is the Royalton Towers residential condo building (55 units, built 2002) per real-estate listings; no dental office, business listing, or 'Kim Dental' web presence was found at this address. Likely an individual NPI registered at a home address rather than an operating clinic - insufficient evidence to classify, no fabrication.",
+   "searched": ["Kim Dental 1444 N Orleans St Chicago", "\"1444 N Orleans\" Chicago dentist OR condo building"]
+  },
+  {
+   "location_id": "1235b8bbd036a88e",
+   "practice_name": "Bakir Dental",
+   "zip": "60610",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "NPI resolves to Dr. Yasmin Obaidi Bakir, DMD at 1317 N Larrabee St Unit 301 - a unit inside The Stanton, a 14-unit boutique residential condo building (plus 2 commercial spaces), not a standalone dental storefront. Other sources (1stfamilydental.com/team, LocalMed) show Dr. Bakir practicing as an associate dentist at 1st Family Dental's Logan Square office, a different address/employer. No independent 'Bakir Dental' business verified at this registered address - marked undetermined.",
+   "searched": ["Bakir Dental 1317 N Larrabee Chicago", "\"1317 N Larrabee\" Chicago condo building"]
+  },
+  {
+   "location_id": "4e98d05b655006f1",
+   "practice_name": "Park Chris DDS",
+   "zip": "60610",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://rivervillagedental.com/about/",
+    "https://findadentist.ada.org/dentists/dr-chris-t-park-chicago-0038V00002yiRaPQAU-a1C8V00000lZ9lKUAS"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:PARK_CHRIS",
+   "reasoning": "River Village Dental's own about page and the ADA Find-a-Dentist directory confirm Dr. Chris Park, DDS as founder of a solo practice at 901 N Larrabee St, Chicago 60610 (address/phone match exactly). Marquette-trained, described as founder of a single-location practice; provider_count=1 corroborates. Solo owner-operator, no corporate signal.",
+   "searched": ["\"Chris Park\" DDS 901 N Larrabee Chicago dentist"]
+  },
+  {
+   "location_id": "ad813403f092a662",
+   "practice_name": "Rhee Dental",
+   "zip": "60610",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "NPI resolves to 'Julie Rhee, Dentist' at 347 W Chestnut St Unit 1807 - which is 'NEXT Apartments,' an 18-unit residential rental high-rise, not a commercial dental office. No practice website, directory profile, or business listing for 'Rhee Dental' was found. Likely a home-address NPI registration rather than an operating clinic - insufficient evidence to classify.",
+   "searched": ["Rhee Dental 347 W Chestnut St Chicago dentist", "\"347 W Chestnut\" Chicago condo building"]
+  },
+  {
+   "location_id": "dd51cb95b974f2ad",
+   "practice_name": "Gandhi, Lisa",
+   "zip": "60610",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://dentologie.com/our-locations/chicago/gold-coast",
+    "https://www.yelp.com/biz/dentologie-gold-coast-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "undetermined",
+   "network_id": "brand:dentologie",
+   "reasoning": "Dr. Lisa Gandhi, DDS practices at Dentologie - Gold Coast, 1201 N Dearborn St (address/phone match exactly). Dentologie is confirmed to operate roughly 10 Chicagoland locations (South Loop, Streeterville, Bucktown, West Loop, Clark & Diversey, Gold Coast, River North, Southport Corridor, Lincoln Park, Oak Park) with stated plans for further expansion, exceeding the 10-location protected-network threshold; ownership structure (dentist-owned vs. PE-backed) could not be confirmed from available sources. Left undetermined for network-level review rather than classified here.",
+   "searched": ["Lisa Gandhi dentist 1201 N Dearborn Chicago", "Dentologie dental chicago locations owner private equity DSO"]
+  },
+  {
+   "location_id": "c5deba8b6cc68d1c",
+   "practice_name": "GREGORY P THOMAS, DDS, MD,P.C.",
+   "zip": "60611",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.oralsurgerychicago.com/",
+    "https://www.healthgrades.com/physician/dr-gregory-thomas-y4mn5"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:THOMAS_GREGORY",
+   "reasoning": "Chicago Oral and Maxillofacial Surgery's own site and directory profiles confirm Dr. Gregory P. Thomas, DDS, MD as the founding oral surgeon of a single-location practice at 676 N Saint Clair St Ste 2280 (address/phone match), in private practice 22+ years. Provider_count=4 reflects associate surgeons/staff under his ownership; EIN reach=1 (self only). Single-location, dentist-owned group.",
+   "searched": ["Gregory Thomas DDS MD 676 N Saint Clair Chicago dentist"]
+  },
+  {
+   "location_id": "376b7ea3947d487a",
+   "practice_name": "American Board of Oral",
+   "zip": "60611",
+   "assigned_tier": "institutional",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.aboi.org/about/contact-us",
+    "https://www.guidestar.org/profile/23-7017438"
+   ],
+   "evidence_artifacts": ["EIN 237017438 in source data matches GuideStar EIN 23-7017438 for American Board of Oral Implantology/Implant Dentistry exactly"],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This NPI is the American Board of Oral Implantology/Implant Dentistry (ABOI/ID), a nonprofit dental specialty certifying board chartered 1969 by the American Academy of Implant Dentistry, headquartered at 211 E Chicago Ave (address matches, shared suite building with other specialty boards e.g. Amer Board of Endodontics). Not a patient-care practice or corporate entity - a nonprofit professional/certification body, classified institutional. EIN match to GuideStar confirms exact entity identity.",
+   "searched": ["\"American Board of Oral\" 211 E Chicago Ave Chicago"]
+  },
+  {
+   "location_id": "e6282d9941e2ae28",
+   "practice_name": "DENNIS J. MILLER, D.D.S., P.C.",
+   "zip": "60611",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "http://dentistry500.com/",
+    "https://www.yelp.com/biz/dennis-j-miller-dds-chicago-2"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:MILLER_DENNIS",
+   "reasoning": "Dentistry500.com and Yelp confirm Dennis J. Miller, DDS, PC at 500 N Michigan Ave Ste 830 (address/phone match), sharing the suite with two other separately-incorporated dentist PCs (Floro, Schwab) rather than being centrally corporate-owned. Classified as a dentist-owned single-location group (his own PC with associates); medium confidence given the shared-suite structure makes the exact provider roster under Miller's own PC somewhat ambiguous.",
+   "searched": ["Dennis J Miller DDS 500 N Michigan Ave Chicago dentist"]
+  },
+  {
+   "location_id": "f85f1d65e2a03bbe",
+   "practice_name": "GRAND MICHIGAN DENTISTRY, PC",
+   "zip": "60611",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/grand-michigan-dentistry-pc-chicago",
+    "https://www.bbb.org/us/il/chicago/profile/dentist/grand-michigan-dentistry-0654-88119419"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:CARPOGARZA_CHRISTINE",
+   "reasoning": "BBB and Yelp confirm Grand Michigan Dentistry, PC at 535 N Michigan Ave Ste 202 (address/phone match), in business since 2003, managed by Dr. Christine Carpo Garza (matches ctx AO 'Christine Carpo Garza') and Melissa Daza. Single-location, dentist-owned group practice, no corporate/DSO signal.",
+   "searched": ["\"Grand Michigan Dentistry\" 535 N Michigan Ave Chicago"]
+  },
+  {
+   "location_id": "86121110f2b8a940",
+   "practice_name": "MARIA ZALDUENDO",
+   "zip": "60611",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.zocdoc.com/dentist/maria-zalduendo-dds-15825",
+    "https://www.linkedin.com/in/maria-zalduendo-d-d-s-3a300361/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:ZALDUENDO_MARIA",
+   "reasoning": "Zocdoc and LinkedIn confirm Dr. Maria E. Zalduendo, DDS operates 'Oak Street Dental / Maria E. Zalduendo DDS and Associates' at 46 E Oak St Ste 350 (address/phone match exactly). Single-location, dentist-owned group (provider_count=2 = Zalduendo plus an associate), no corporate parent found.",
+   "searched": ["Maria Zalduendo dentist 46 E Oak St Chicago"]
+  },
+  {
+   "location_id": "dd291f40c15cf483",
+   "practice_name": "MAGNIFICENT MILE FAMILY DENTAL",
+   "zip": "60611",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.magmiledds.com/",
+    "https://www.yelp.com/biz/magnificent-mile-family-dental-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:OKEDIJI_OLAITAN",
+   "reasoning": "The practice's own site (magmiledds.com) and Yelp confirm Magnificent Mile Family Dental at 233 E Erie St Ste 210 (address/phone match) is led by Dr. Olaitan Registe (matches ctx AO 'Olaitan Okediji'), a single-location family dental practice with an experienced team. Provider_count=3 reflects associates under her ownership. Dentist-owned single-location group, no DSO signal.",
+   "searched": ["\"Magnificent Mile Family Dental\" 233 E Erie St Chicago"]
+  }
+ ]
+}

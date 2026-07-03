@@ -1,0 +1,347 @@
+{
+ "unit_id": "laneA_039",
+ "classifications": [
+  {
+   "location_id": "516970825965504c",
+   "practice_name": "Schumer Dental Care",
+   "zip": "60007",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.elkgrovevillagedentist.com/",
+    "https://www.elkgrovevillagedentist.com/contact-us/",
+    "https://www.elkgrovevillagedentist.com/meet-the-doctors/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Schumer Family Dental Care's own website confirms 901 Biesterfield Rd Suite 111, phone 847-439-1371, a third-generation family-run practice since 1959 staffed by Dr. Stefan Schumer and Dr. David Schumer (Meet the Doctors page). No corporate parent or DSO signal found. Multi-dentist, single-location, dentist-owned.",
+   "searched": [
+    "Schumer Dental Care 901 Biesterfield Rd Elk Grove Village IL",
+    "elkgrovevillagedentist.com/contact-us/ (fetch)"
+   ]
+  },
+  {
+   "location_id": "d5804fe187ecbb46",
+   "practice_name": "32 VILLAGE DENTAL LLC",
+   "zip": "60007",
+   "assigned_tier": "stealth_dso",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://32dentalgroup.com/our-locations/",
+    "https://32dentalgroup.com/",
+    "https://32villagedental.com/about-us/"
+   ],
+   "evidence_artifacts": [
+    "5-location multi-brand network across IL+IA (Cottage Dental Care/Bloomington IL, 32 Gentle Dental/Cedar Rapids IA, Western Springs Dentistry/IL, 32 Village Dental/Elk Grove Village IL, Downers Grove Dental Spa/IL) under parent '32 Dental Group', HQ Wheaton IL"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:32_dental_group",
+   "reasoning": "32dentalgroup.com/our-locations/ confirms this address (958 Elk Grove Town Center) is one of 5 differently-branded locations spanning two states run by '32 Dental Group', which self-describes as 'Your Dental Partnership Organization' / 'Your Partners in Dentistry' -- a DPO/DSO support-org model. Distinct local brand per location (rather than one consistent name a single owner-dentist would typically use) plus the multi-state partnership-organization structure indicates non-dentist administrative control, not a dentist personally owning multiple offices. On-site dentist (Dr. Jacob Philip) is named on the location's own page, but overall network control sits with the DPO. Only 5 locations total, well below the 10+ protected-network threshold.",
+   "searched": [
+    "\"32 Village Dental\" Elk Grove Village IL dentist",
+    "32dentalgroup.com/our-locations/ (fetch)",
+    "32villagedental.com (fetch)",
+    "\"32 Dental Group\" Wheaton IL owner founder CEO dental support organization",
+    "\"32 Dental Group\" management company dentists Illinois Iowa",
+    "\"32 Village Dental\" about us dentist name Elk Grove Village doctor"
+   ]
+  },
+  {
+   "location_id": "75de415cf6b376d8",
+   "practice_name": "SMILE CREATIONS",
+   "zip": "60007",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-marvin-amayun-x632q",
+    "https://www.carecredit.com/doctor-locator/elk-grove-village-il/smile-creations-pc-376ntq/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Smile Creations (Smile Creations PC), 1100 Nerge Rd Ste 209, is confirmed as Dr. Marvin Amayun DMD's solo practice (Harvard Dental Medicine 2002, 20+ years). No other locations or corporate branding found across multiple directory sources.",
+   "searched": [
+    "Smile Creations Elk Grove Village IL dentist Nerge Rd"
+   ]
+  },
+  {
+   "location_id": "844db8db4ce609e5",
+   "practice_name": "BRIAN HOMANN DDS, P.C.",
+   "zip": "60007",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://elkgrovevillageildentist.com/",
+    "https://elkgrovevillageildentist.com/about/",
+    "https://voyagechicago.com/interview/meet-brian-homann-brian-homann-dds-elk-grove-village-il/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Brian Homann founded and has run this single-location practice at 8 E Devon Ave since 1997 (own site + Voyage Chicago profile); UIC adjunct professor, ADA award winner. No DSO or multi-location signal. Record shows 2 providers at the address (small_group) -- classified as a dentist-owned single-location group.",
+   "searched": [
+    "\"Brian Homann\" DDS Elk Grove Village dentist"
+   ]
+  },
+  {
+   "location_id": "7ffbef0b525fe8e0",
+   "practice_name": "MEDICAL CENTER DENTAL ASSOC",
+   "zip": "60007",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.mcdadental.com/",
+    "https://www.healthgrades.com/group-directory/il-illinois/elk-grove-village/medical-center-dental-associates-xb37lc"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Medical Center Dental Associates (901 Biesterfield Rd Ste 104 -- a different suite than the Schumer practice in the same building) is a private multi-dentist group (Dr. Mark Curcio since 1988, plus Drs. James McShane and Scott Szatkowski) with its own site mcdadental.com. Despite the 'Medical Center' name triggering an institutional_hint flag, there is no hospital/FQHC/public-health affiliation found -- an ordinary dentist-owned group practice at one location.",
+   "searched": [
+    "\"Medical Center Dental\" 901 Biesterfield Elk Grove IL Mark Curcio"
+   ]
+  },
+  {
+   "location_id": "219412b1e90e55a1",
+   "practice_name": "Luzzo Dental",
+   "zip": "60007",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.findatopdoc.com/doctor/2061175-Ronald-Luzzo-dentist-Elk-Grove-Village-IL-60007",
+    "https://www.carecredit.com/doctor-locator/elk-grove-village-il/ronald-f-luzzo-dds-dfz858/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Luzzo Dental at 1119 Nerge Rd is Dr. Ronald F. Luzzo DDS's solo general practice; no other locations or corporate affiliation found across multiple directory sources.",
+   "searched": [
+    "Luzzo Dental 1119 Nerge Rd Elk Grove Village IL"
+   ]
+  },
+  {
+   "location_id": "035326fadc731101",
+   "practice_name": "HIGHWAY DENTAL INC",
+   "zip": "60007",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.ildentalshops.com/about",
+    "https://www.ildentalshops.com/"
+   ],
+   "evidence_artifacts": [
+    "Record phone (847) 524-3054 matches 'Dental Shop of Elk Grove' (ildentalshops.com), not the differently-phoned 'Highway Dental Inc' (224-578-1300) also found listed at 1055 Rohlwing Rd"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This record's phone (847) 524-3054 matches 'Dental Shop of Elk Grove' at 1055 Rohlwing Rd, operated under entity 'Neh Dental Incorporated' and led by Dr. Hoepfner -- a single dentist-owned practice with no stated franchise/DSO affiliation. Note: 1055 Rohlwing Rd hosts multiple separately-named/phoned dental businesses (also a distinctly-phoned 'Highway Dental Inc' and 'McKenna Dental Care'), suggesting a shared/multi-tenant medical office building; classification follows the phone-matched entity only. Medium confidence due to that address/name ambiguity.",
+   "searched": [
+    "Highway Dental 1055 Rohlwing Rd Elk Grove Village IL dentist",
+    "ildentalshops.com/about (fetch)"
+   ]
+  },
+  {
+   "location_id": "0d12aece1c2ad5ee",
+   "practice_name": "Patterson Dental",
+   "zip": "60007",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "closure_suspect: Elk Grove Village government RFP records and Daily Herald (Dec 2021 / Mar 2022) confirm the single-story medical office building at this EXACT address, 750 S. Arlington Heights Rd, sat vacant for years, underwent asbestos abatement, and was demolished by the Village as an abandoned property. Directory sites still list a 'Dr. William G. Patterson, DDS' at this address, but that appears to be stale data predating the demolition. Not classified per closure protocol.",
+   "searched": [
+    "\"750 S Arlington Heights Rd\" Elk Grove Village dentist Patterson",
+    "dailyherald.com Elk Grove Village to tear down abandoned dentist's office (fetch)",
+    "\"William Patterson\" DDS Elk Grove Village dentist current location OR closed",
+    "Elk Grove Village 750 S Arlington Heights Road demolish vacant lot 2021 2022"
+   ]
+  },
+  {
+   "location_id": "ba42c8579402001e",
+   "practice_name": "Schumer Dental",
+   "zip": "60007",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.elkgrovevillagedentist.com/contact-us/",
+    "https://www.elkgrovevillagedentist.com/"
+   ],
+   "evidence_artifacts": [
+    "NPPES phone (847) 439-1371 is an exact match to Schumer Family Dental Care's published contact number; the NPPES address on this record (756 S Arlington Heights Rd) appears to be a stale/legacy registration for the same practice now operating at 901 Biesterfield Rd Suite 111"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This NPI's phone (847-439-1371) exactly matches Schumer Family Dental Care's current official number (per their own site), the same third-generation family practice as location 516970825965504c. The 756 S Arlington Heights Rd address on file looks like an outdated NPPES registration for the same physical practice, not an independently operating second office. Classified identically as single_loc_group on the same evidence.",
+   "searched": [
+    "Schumer Dental Care 901 Biesterfield Rd Elk Grove Village IL",
+    "elkgrovevillagedentist.com/contact-us/ (fetch)"
+   ]
+  },
+  {
+   "location_id": "1f899968fb0f95bc",
+   "practice_name": "ELK GROVE DENTAL CARE",
+   "zip": "60007",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.elkgrovedentalil.com/about-us",
+    "https://www.healthgrades.com/dentist/dr-ajesh-parikh-33qcp"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Elk Grove Dental Care (146 Biesterfield Rd) is a two-dentist practice (Dr. Ajesh Parikh, 30+ years, and Dr. Antreas Mesrobian) per its own About Us page; single location, no corporate parent disclosed beyond a third-party website-builder credit (Officite) in the footer.",
+   "searched": [
+    "\"Elk Grove Dental Care\" 146 Biesterfield Rd Ajesh Parikh dentist",
+    "elkgrovedentalil.com/about-us (fetch)"
+   ]
+  },
+  {
+   "location_id": "a27c4b32392455c8",
+   "practice_name": "DR CESAR OTERO DDS PC",
+   "zip": "60007",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.carecredit.com/doctor-locator/elk-grove-village-il/cesar-otero-dds-pc-884qfp/",
+    "https://www.healthgrades.com/dentist/dr-cesar-otero-yjthg"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Cesar Otero DDS PC (60 Turner Ave) is confirmed as Dr. Cesar Otero's single-location general practice ('1 location, 1 physician' per CareCredit locator); no other addresses or DSO signal found.",
+   "searched": [
+    "\"Cesar Otero\" DDS 60 Turner Ave Elk Grove Village dentist"
+   ]
+  },
+  {
+   "location_id": "7d342302b9e82666",
+   "practice_name": "DENTISTRY FOR ALL AGES INC.",
+   "zip": "60007",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/group-directory/il-illinois/elk-grove-village/dentistry-for-all-ages-xbkw89",
+    "https://www.bbb.org/us/il/elk-grove-village/profile/dentist/dentistry-for-all-ages-0654-88324780"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dentistry for All Ages (800 Biesterfield Rd Ste 660) is staffed by Dr. Thomas Leischner Sr. (practicing since 1970) and Dr. Gregory Jacob per the Healthgrades group directory; single location, no DSO/corporate branding found.",
+   "searched": [
+    "\"Dentistry for All Ages\" 800 Biesterfield Rd Elk Grove Village Thomas Leischner"
+   ]
+  },
+  {
+   "location_id": "5fd010c99f656c09",
+   "practice_name": "STRAWBERRY DENTAL PARTNERSHIP",
+   "zip": "60007",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "No dedicated practice website, reviews, or news found for 'Strawberry Dental Partnership' at 621 Meacham Rd beyond generic NPI-registry mirror listings (npino, medicarelist, yellowpages). A dentist named Dr. Inas Mohammed Rahima practices at 'Dental Aesthetics' in Palos Hills IL 60465 (matching this record's ctx second owner-reach ZIP) and per one aggregator 'works... and 1 other location,' but no source directly ties her or that practice name to this specific Elk Grove Village business. Insufficient documentary evidence to classify with confidence.",
+   "searched": [
+    "\"Strawberry Dental\" Elk Grove Village 621 Meacham Rd Mohammed Rahima",
+    "\"Strawberry Dental\" Elk Grove Village OR Bridgeview OR \"60465\" dentist Rahima",
+    "\"Mohammed Rahima\" dentist DDS Illinois",
+    "\"Inas Rahima\" DDS Palos Hills dentist practice name",
+    "\"Strawberry Dental Partnership\" Elk Grove Village Yelp reviews"
+   ]
+  },
+  {
+   "location_id": "ce8b8ff3e6be7862",
+   "practice_name": "JOHN DREW GORRELL DDS LTD",
+   "zip": "60007",
+   "assigned_tier": "stealth_dso",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://32dentalgroup.com/our-locations/",
+    "https://32villagedental.com/about-us/"
+   ],
+   "evidence_artifacts": [
+    "Identical address (958 Elk Grove Village Town Center) and identical phone (847-364-5100) as location d5804fe187ecbb46 (32 Village Dental LLC), documented on the 32 Dental Group locator as a current network location"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:32_dental_group",
+   "reasoning": "This NPI's address and phone are identical to location d5804fe187ecbb46, which the 32 Dental Group locator confirms is now operated as '32 Village Dental,' one of 5 differently-branded locations under the 'Dental Partnership Organization' 32 Dental Group (Wheaton, IL; spans IL and IA). Dr. Gorrell practiced independently here for 25+ years per his own bio, but this legacy solo NPI/PC registration now sits at an address documented as part of the DPO network -- classified by current physical-address control, matching location d5804fe187ecbb46's tier.",
+   "searched": [
+    "\"John Drew Gorrell\" DDS Elk Grove Village dentist",
+    "32dentalgroup.com/our-locations/ (cross-reference)"
+   ]
+  },
+  {
+   "location_id": "c0aa198058c4eba5",
+   "practice_name": "LAKE COOK SLEEP CENTER,LTD",
+   "zip": "60007",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "No practice website found for 'Lake Cook Sleep Center, Ltd' at 1121 Nerge Rd; NPI-mirror sites (medicarelist) confirm address/phone only, not ownership or current operations. A Yelp listing shows a generically-named 'Elk Grove Dental' business at the same address (page blocked from fetch), and a similarly-named dentist ('Rose Miranda-Lesniak, DMD -- Lake Cook Dental') surfaced but at a different city (Buffalo Grove), so the ctx AO 'Rosanna Lesniak' could not be corroborated by an independent source tied to this specific location. Insufficient documentary evidence to classify.",
+   "searched": [
+    "\"Lake Cook Sleep Center\" 1121 Nerge Rd Elk Grove Village dentist sleep apnea",
+    "\"Rosanna Lesniak\" dentist OR DDS Elk Grove Village Illinois",
+    "\"Lake Cook Sleep Center\" Rosanna Lesniak dental sleep medicine owner",
+    "yelp.com/biz/elk-grove-dental-elk-grove-village (fetch blocked, 403)"
+   ]
+  },
+  {
+   "location_id": "edccaab21b7ee277",
+   "practice_name": "ELK GROVE SMILE CENTER, LLC",
+   "zip": "60007",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://elkgrovesmilecenter.com/about-us/dr-vishal-advani/13806.html",
+    "https://elkgrovesmilecenter.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Elk Grove Smile Center (70 Turner Ave) was founded and is run by Dr. Vishal Advani, DDS, who 'opened up Elk Grove Smile Center in 2012'; single location, own website, no DSO/corporate signal. Record shows 2 providers at the address -- a dentist-owned single-location group.",
+   "searched": [
+    "\"Elk Grove Smile Center\" 70 Turner Ave Vishal Advani dentist"
+   ]
+  }
+ ]
+}

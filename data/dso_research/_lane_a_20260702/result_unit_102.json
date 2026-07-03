@@ -1,0 +1,335 @@
+{
+ "unit_id": "laneA_102",
+ "classifications": [
+  {
+   "location_id": "46d26d6b8fcd851e",
+   "practice_name": "JULIA SOLOV DDS LTD",
+   "zip": "60626",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npino.com/dental-clinic/1588837587-julia-solov-dds-ltd/",
+    "https://www.dentalplans.com/dentists/illinois/chicago/60613/dr-julia-solov-246956/",
+    "https://www.healthgrades.com/dentist/dr-julia-solov-2pv7v"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Web search confirms Julia Solov DDS Ltd (NPI 1588837587, matching primary_npi exactly) is Dr. Julia Solov's solo practice at 1138 W Pratt Blvd, Chicago. Directory listings (npino, Healthgrades, dentalplans) describe her individually, practicing since 2004, with no group name, brand, or corporate parent mentioned. Single owner-dentist, single location -> true_independent.",
+   "searched": [
+    "Julia Solov DDS 1138 W Pratt Blvd Chicago dentist"
+   ]
+  },
+  {
+   "location_id": "401b88a09170a38e",
+   "practice_name": "BRITE DENTAL CLARK, P.C.",
+   "zip": "60626",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.britedental.org/our-offices",
+    "https://www.britedental.org/brite-dental-clark"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:brite_dental",
+   "reasoning": "Brite Dental's own locator page (britedental.org/our-offices) lists 12 Chicago-area offices plus 1 Minnesota office under this brand (legacy name 'Dental 360' at this specific address per Yelp/SEO pages), operated by 'Absolute Dentistry Ltd' with Dr. Fadi Aqel DDS as President -- matching ctx AO/owner_reach of 12 IL locations exactly. Network size (13 total, 12 IL) exceeds the 10-location protected-network threshold, so it is held for centralized one-network review rather than unit-level tiering. R4_protected_network:Brite Dental / Absolute Dentistry Ltd (AO Fadi Aqel).",
+   "searched": [
+    "Brite Dental Clark 6720 N Clark St Chicago \"Dental 360\"",
+    "britedental.org/our-offices (fetched)"
+   ]
+  },
+  {
+   "location_id": "462802f113ba0061",
+   "practice_name": "Aspen Dental",
+   "zip": "60626",
+   "assigned_tier": "branded_dso",
+   "pe_backed": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.aspendental.com/dentist/il/chicago/7537-n-clark-st/",
+    "https://www.leonardgreen.com/ares-management-leonard-green-increase-ownership-in-aspen-dental-management-inc/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:aspen_dental",
+   "reasoning": "Aspen Dental's own corporate locator page confirms this exact address (7537 N Clark St, Chicago, IL) as a live Aspen Dental office, consistent with parent_company ADMI CORP in the record. Aspen Dental Management Inc. is documented as majority owned by private-equity firms Leonard Green & Partners and Ares Management (with American Securities). Known national branded DSO with a documented PE sponsor -> branded_dso, pe_backed=true.",
+   "searched": [
+    "Aspen Dental 7537 N Clark St Chicago IL",
+    "Aspen Dental ADMI Corp Leonard Green Partners private equity owner"
+   ]
+  },
+  {
+   "location_id": "57f43b2b4923beb3",
+   "practice_name": "1ST FAMILY DENTAL OF WEST ROSELAND PC",
+   "zip": "60628",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/",
+    "https://1stfamilydental.com/locations/west-roseland/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:1st_family_dental",
+   "reasoning": "1stfamilydental.com's own locations page lists 15 offices (7 Chicago neighborhoods + 8 IL suburbs), matching ctx owner_reach_locations=15 for AO Vesna Belkic exactly. Network spans well over the 10-location protected-network threshold, so this goes to centralized one-network review rather than unit-level tiering. R4_protected_network:1st Family Dental (AO Vesna Belkic), 15 IL locations.",
+   "searched": [
+    "\"1st Family Dental\" West Roseland 701 W 111th St Chicago locations",
+    "1stfamilydental.com/locations/ (fetched)"
+   ]
+  },
+  {
+   "location_id": "e2803ea116e53d51",
+   "practice_name": "ESSENTIAL DENTAL,P.C.",
+   "zip": "60628",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.opencare.com/dentists/chicago-il/dr-ophelia-k-carlton-24630473830d/",
+    "https://www.yelp.com/biz/essential-dental-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Ophelia K. Carlton, DDS operates Essential Dental PC solo at 255 E 103rd St, Chicago, matching phone (773) 468-4554 across multiple directory listings. No group name, brand, or corporate parent found. Single dentist, single location -> true_independent.",
+   "searched": [
+    "Essential Dental 255 E 103rd St Chicago Ophelia Carlton dentist"
+   ]
+  },
+  {
+   "location_id": "e756592b63660d51",
+   "practice_name": "C G RAMMOHAN DMD PC",
+   "zip": "60628",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/southtown-dental-center-chicago",
+    "https://www.healthgrades.com/dentist/dr-chennapur-rammohan-xxqr8"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Chennapur G. Rammohan, DMD operates Southtown Dental Center at 11004 S Halsted St, Chicago, matching phone (773) 785-0606. A follow-up targeted search explicitly confirmed this is a single-location practice with no other offices found under the Southtown/Rammohan name and no corporate/DSO affiliation. -> true_independent.",
+   "searched": [
+    "\"C G Rammohan\" DDS 11004 S Halsted St Chicago dentist",
+    "\"Southtown Dental Center\" Rammohan Chicago Halsted \"locations\""
+   ]
+  },
+  {
+   "location_id": "2a6397b94494d4f6",
+   "practice_name": "Perman Dental",
+   "zip": "60628",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npiprofile.com/npi/1356474696",
+    "https://www.vitadox.com/doctor/chicago-il-60628/jeffrey-a-perman-dds/MpMjunXbLSvpNRMpuEUDEn"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:PERMAN_JEFFREY",
+   "reasoning": "NPI 1356474696 (listed here as 'Perman Dental') resolves to Dr. Jeffrey A. Perman, D.D.S., an individual solo-dentist NPI on the 10800 block of S Halsted St, Chicago, sharing phone (773) 660-0083 with the separate org-NPI record 'Jeffrey A. Perman D.D.S. P.C.' one block away in this same unit. No group/DSO signal found; appears to be one solo practice represented by an individual NPI plus an organizational NPI. -> true_independent.",
+   "searched": [
+    "\"Perman Dental\" 10830 S Halsted Chicago Jeffrey Perman dentist"
+   ]
+  },
+  {
+   "location_id": "a3f8fcbaede278c1",
+   "practice_name": "JEFFREY A. PERMAN,D.D.S.,P.C.",
+   "zip": "60628",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60628/invite-jeffrey-perman-dds-13773",
+    "https://www.vitadox.com/doctor/chicago-il-60628/jeffrey-a-perman-dds/MpMjunXbLSvpNRMpuEUDEn"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:PERMAN_JEFFREY",
+   "reasoning": "Dr. Jeffrey A. Perman, DDS operates a solo general-dentistry practice near 10800 S Halsted St, Chicago (773-660-0083), consistent across multiple directory listings (19 years in practice, since ~2007). This org-NPI record and the individual NPI record at the same phone/block in this unit appear to be the same one-dentist practice. No corporate or DSO signal found. -> true_independent.",
+   "searched": [
+    "\"Perman Dental\" 10830 S Halsted Chicago Jeffrey Perman dentist"
+   ]
+  },
+  {
+   "location_id": "a7283a3e5e453a93",
+   "practice_name": "ROSELAND DENTAL CLINIC",
+   "zip": "60628",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.carecredit.com/doctor-locator/chicago-il/roseland-dental-clinic-llc-739fvp/",
+    "https://www.yelp.com/biz/roseland-dental-clinic-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Roseland Dental Clinic LLC at 134 W 111th St (2nd Floor), Chicago is confirmed as a single-location general/family dentistry office associated with Dr. Amit Saparia, DDS. No DSO brand or corporate parent surfaced in any directory, and the record shows 2 providers at this one address, matching the multi-dentist/single-location/dentist-owned profile. -> single_loc_group.",
+   "searched": [
+    "Roseland Dental Clinic 134 W 111th St Chicago Amit Saparia"
+   ]
+  },
+  {
+   "location_id": "75fe9c8dade9c904",
+   "practice_name": "DR ROY B GUSTER DDS PC",
+   "zip": "60628",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://rbgdental.com/",
+    "https://www.healthgrades.com/dentist/dr-roy-guster-xnmpx"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Roy B. Guster, DDS has personally operated this single-location practice at 9524 S Halsted St, Chicago since founding it circa 1976 (per his own site rbgdental.com and bio detail of ~50 years serving Washington Heights). No group name, DSO brand, or corporate parent found. -> true_independent.",
+   "searched": [
+    "\"Roy Guster\" DDS 9524 S Halsted Chicago dentist"
+   ]
+  },
+  {
+   "location_id": "cf97442510aff1da",
+   "practice_name": "Stewart G Willoughby PC",
+   "zip": "60628",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.chamberofcommerce.com/united-states/illinois/chicago/dentist/2386555-stewart-g-willoughby-pc",
+    "https://www.dentalplans.com/dentists/illinois/chicago/60628/dr-stewart-willoughby-5725/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "A directory listing (Chamber of Commerce) places 'Stewart G Willoughby PC' at 11246 S Michigan Ave, Chicago, IL 60628 -- matching this record's zip and street (minor house-number/phone variance likely a data-source snapshot difference) -- distinct from Dr. Willoughby's other office at 8301 S Brandon Ave (60617) found under a different NPI. No group, brand, or corporate signal found anywhere; solo dentist. -> true_independent, medium confidence due to the address/phone variance across sources.",
+   "searched": [
+    "\"Stewart Willoughby\" DDS 11240 S Michigan Ave Chicago dentist",
+    "\"Stewart G Willoughby\" 11240 S Michigan Chicago dentist NPI",
+    "\"11240 S Michigan\" Chicago dentist",
+    "dentalplans.com \"Stewart Willoughby\" 60628 address"
+   ]
+  },
+  {
+   "location_id": "aea18f90408a4527",
+   "practice_name": "Jaramillo Mikyaila Marie",
+   "zip": "60628",
+   "assigned_tier": "institutional",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://chicagofamilyhealth.org/find-clinic/pullman-health-center/",
+    "https://www.healthgrades.com/group-directory/il-illinois/chicago/chicago-family-health-center-xxhv2l"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:chicago_family_health_center",
+   "reasoning": "The address 570 E 115th St, Chicago 60628 with phone (773) 768-5000 matches Chicago Family Health Center's Pullman Health Center location exactly -- a community health center offering sliding-scale dental care. The NPPES-listed individual (Jaramillo Mikyaila Marie) is a provider working at this institutional clinic, not an independent owner. -> institutional.",
+   "searched": [
+    "dental office 570 E 115th St Chicago 60628"
+   ]
+  },
+  {
+   "location_id": "faf5e434d3e85c17",
+   "practice_name": "Dickson Dental",
+   "zip": "60628",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-charles-dickson-ydqql",
+    "https://www.yelp.com/biz/london-grove-dental-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Charles Dickson Jr, DDS practices at 9761 S Cottage Grove Ave, Chicago (773-721-7799), also listed under the name 'London Grove Dental Clinic' at the identical address/phone -- a single-location solo practice with no group or corporate brand found.",
+   "searched": [
+    "\"Dickson Dental\" 9761 S Cottage Grove Ave Chicago dentist"
+   ]
+  },
+  {
+   "location_id": "5287843d3b6853ff",
+   "practice_name": "SONRISA CAPITATION CCHC PROFESSIONAL CORPORATION SONRISA FAMILY DENTAL",
+   "zip": "60628",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://sonrisafamilydental.com/staff",
+    "https://sonrisafamilydental.com/sonrisa-group/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:sonrisa_group",
+   "reasoning": "Sonrisa Family Dental's own team page shows 9 dentists under 'Sonrisa Group,' founded by Dr. Jason Korkus (matching ctx AO exactly), operating across 12 locations in Chicago and suburbs, several embedded inside community health centers via capitation-style partnerships -- consistent with this entity's 'CAPITATION CCHC' naming. Network size (12) exceeds the 10-location protected-network threshold, so this goes to centralized one-network review rather than unit-level tiering. R4_protected_network:Sonrisa Group (AO Jason Korkus), 12 locations.",
+   "searched": [
+    "\"Sonrisa Family Dental\" 9718 S Halsted Chicago Jason Korkus CDCA capitation",
+    "\"Sonrisa Family Dental\" Jason Korkus DSO management company OR \"private equity\" OR \"CDCA\"",
+    "sonrisafamilydental.com/staff (fetched)"
+   ]
+  },
+  {
+   "location_id": "cc99693069cc7969",
+   "practice_name": "LOVE DENTAL, INC",
+   "zip": "60628",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.thelovedental.com/",
+    "https://findadentist.ada.org/dentists/dr-brenda-j-taylor-chicago-0038V00002yjIqYQAU-a1C8V00000lWU2SUAW"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Love Dental, Inc at 11139 S Halsted St, Chicago (773-568-1600) is Dr. Brenda J. Taylor, DMD's own single-location practice per her own site (thelovedental.com, 'Meet The Doctor') and the ADA Find-a-Dentist listing; established 2010, no group or DSO signal found. -> true_independent.",
+   "searched": [
+    "\"Love Dental\" 11139 S Halsted St Chicago Brenda Taylor dentist"
+   ]
+  },
+  {
+   "location_id": "6755f2682fd50e31",
+   "practice_name": "ROSELAND COMMUNITY HOSPITAL ASSOCIATION",
+   "zip": "60628",
+   "assigned_tier": "institutional",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.roselandhospital.org/dental/",
+    "https://www.roselandhospital.org/contact-us/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:roseland_community_hospital",
+   "reasoning": "45 W 111th St, Chicago 60628, phone (773) 995-3000, is the address/phone of Roseland Community Hospital itself; the hospital's own website confirms a hospital-run dental program partnered with the Washington Square Foundation. Hospital-affiliated clinic -> institutional, consistent with ctx institutional_hint=true.",
+   "searched": [
+    "Roseland Community Hospital dental clinic 45 W 111th St Chicago"
+   ]
+  }
+ ]
+}

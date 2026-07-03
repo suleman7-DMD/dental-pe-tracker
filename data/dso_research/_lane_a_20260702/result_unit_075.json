@@ -1,0 +1,345 @@
+{
+  "unit_id": "laneA_075",
+  "classifications": [
+    {
+      "location_id": "b52b9264787887df",
+      "practice_name": "Asghar Dental",
+      "zip": "60601",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.healthgrades.com/dentist/dr-shehla-asghar-upfsq5",
+        "https://www.zocdoc.com/dentist/shehla-asghar-dds-639359",
+        "https://www.dentalplans.com/dentists/illinois/chicago/60614/dr-shehla-asghar-26605/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "ao:ASGHAR_SHEHLA",
+      "reasoning": "Multiple independent directory listings (Healthgrades, Zocdoc, DentalPlans) all identify Dr. Shehla Asghar, DDS as the solo dentist at 345 E Wacker Dr, Chicago (matching the record's address). No corporate parent, management company, or DSO brand appears anywhere; this reads as a single-dentist owner-operator practice at one location.",
+      "searched": [
+        "Asghar Dental 345 E Wacker Dr Chicago dentist"
+      ]
+    },
+    {
+      "location_id": "00581876abe5dac2",
+      "practice_name": "Semenza, Linda",
+      "zip": "60601",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "none",
+      "evidence_urls": [],
+      "evidence_artifacts": [],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "Searched the practitioner's name plus the exact address (60 E Randolph St, Chicago) and the address alone; no dentist named Linda Semenza and no practice at that address surfaced in any result (only unrelated Chicago Loop dental offices at nearby addresses). Could not earn any tier from web evidence.",
+      "searched": [
+        "Linda Semenza DDS 60 E Randolph Chicago dentist",
+        "\"Linda Semenza\" dentist DDS",
+        "\"60 E Randolph\" dentist Chicago office suite"
+      ]
+    },
+    {
+      "location_id": "c6f89aa90a0d4d58",
+      "practice_name": "Hobbs, Simon",
+      "zip": "60601",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "none",
+      "evidence_urls": [],
+      "evidence_artifacts": [],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "Searched the name, name+state, the exact address (203 N LaSalle St, Chicago), and the practice phone number; no dentist named Simon Hobbs appears anywhere. The address itself hosts a different named practice (Smiles by Design, Drs. Perlin/Jonynas) and is also marketed as a shared/virtual-office building, suggesting this NPI's listed address may be stale or a mailing address rather than an active clinic. Insufficient evidence for any tier; not marking closure_suspect since no direct closure evidence was found either, just an inability to verify.",
+      "searched": [
+        "Simon Hobbs DDS 203 N LaSalle Chicago dentist",
+        "\"Simon Hobbs\" DDS dentist Illinois",
+        "\"203 N LaSalle\" dentist Chicago office suite 60601",
+        "\"312-642-3700\" OR \"(312) 642-3700\" dentist Chicago"
+      ]
+    },
+    {
+      "location_id": "02617ab9ed30155b",
+      "practice_name": "EVER DENTAL STUDIO",
+      "zip": "60602",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://everdentalstudio.com/",
+        "https://everdentalstudio.com/about-us/",
+        "https://www.zocdoc.com/dentist/raneem-alhakim-dmd-661583"
+      ],
+      "evidence_artifacts": [
+        "provider_count=51 in source data appears to be an NPPES street-address aggregation artifact (30 N Michigan Ave is a large office tower with many unrelated dental suites), not evidence of this specific practice's size or ownership"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:ALHAKIM_RANEEM",
+      "reasoning": "The practice's own website (everdentalstudio.com) and Zocdoc profile identify Dr. Raneem Alhakim, DMD (branded 'Dr. Renee') as the practicing dentist at this exact address/suite. No mention of a DSO, parent company, or management group; the site markets a single boutique cosmetic-dentistry office. Classified as a solo dentist-owned single-location practice.",
+      "searched": [
+        "\"Ever Dental Studio\" 30 N Michigan Ave Chicago",
+        "\"Raneem Alhakim\" dentist Chicago"
+      ]
+    },
+    {
+      "location_id": "63cececf92b07387",
+      "practice_name": "MARGIE L. MANNERING, D.D.S.",
+      "zip": "60602",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://doctor.webmd.com/doctor/margie-mannering-a7e8285d-7036-43fd-86d1-2964dfb30733-overview",
+        "https://www.yelp.com/biz/margie-mannering-dds-mannering-dental-chicago",
+        "https://www.patientconnect365.com/Dentists/Illinois/Chicago/60601/Margie_Mannering_DDS"
+      ],
+      "evidence_artifacts": [
+        "provider_count=22 in source data appears to be an NPPES street-address aggregation artifact (55 E Washington St is a highrise housing dozens of independent dental suites, confirmed by multiple unrelated solo practices at the same street number in this same unit), not evidence of a large group practice"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:MANNERING_MARGIE",
+      "reasoning": "WebMD, Yelp, and patient-directory listings consistently describe Dr. Margie Mannering as a solo dentist in private practice at 55 E Washington St Suite 3005 for over 30 years, with no corporate/DSO affiliation mentioned. Classified true_independent despite the source data's inflated provider_count, which reflects building-level address matching rather than this practice's actual size.",
+      "searched": [
+        "Margie Mannering DDS 55 E Washington Chicago dentist"
+      ]
+    },
+    {
+      "location_id": "63ddd7c779dcbfaf",
+      "practice_name": "DONNA M. BARBER D.D.S. DANIEL A. GREENBERG D.D.S. P.C.",
+      "zip": "60602",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://loopperio.com/dr-donna-m-barber/",
+        "https://loopperio.com/contact/",
+        "https://providers.sharecare.com/doctor/dr-donna-m-barber"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "The practice operates its own branded site (Loop Perio) naming Dr. Donna M. Barber (a periodontist, UIC-trained, 20+ years) as the practicing owner-dentist at 25 E Washington St Ste 2033, matching the record's address/phone exactly. Two named dentist owners (Barber and Greenberg) at one location with no DSO signal -> dentist-owned multi-provider single-location group.",
+      "searched": [
+        "Donna Barber Daniel Greenberg DDS 25 E Washington Chicago dentist"
+      ]
+    },
+    {
+      "location_id": "13bc94bfecb2432d",
+      "practice_name": "THOMAS M JOYCE DDS LTD",
+      "zip": "60602",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60602/invite-thomas-joyce-dds-12155",
+        "https://reviews.birdeye.com/thomas-m-joyce-dds-ltd-146450024993993"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:JOYCE_THOMAS",
+      "reasoning": "Directory listings confirm Dr. Thomas Joyce, DDS, general dentist, at 55 E Washington Suite 2403, phone (312) 726-0979, matching the record exactly. No corporate affiliation found; a solo-named PC (Ltd) practice. Classified true_independent.",
+      "searched": [
+        "Thomas Joyce DDS 55 E Washington Chicago dentist"
+      ]
+    },
+    {
+      "location_id": "3291c673cf3ad6ee",
+      "practice_name": "Scott Dental",
+      "zip": "60602",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.healthgrades.com/dentist/dr-karen-scott-yk3mk",
+        "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60602/invite-karen-scott-dds-12160",
+        "https://www.yelp.com/biz/karen-a-scott-dds-chicago-2"
+      ],
+      "evidence_artifacts": [
+        "phone (312) 332-2702 in the source record matches Dr. Karen A. Scott, DDS listings exactly, confirming identity despite the address being listed as 111 N Wabash Ave in some directories vs 55 E Washington in the record (same Loop block/corner)"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:SCOTT_KAREN",
+      "reasoning": "The phone number (312) 332-2702 uniquely matches Dr. Karen A. Scott, DDS, a solo general dentist practicing near the Washington/Wabash corner of the Loop. No DSO or corporate signal found across three independent directory sources. Classified true_independent.",
+      "searched": [
+        "\"Scott Dental\" 55 E Washington Chicago dentist",
+        "\"Scott Dental\" Chicago Loop dentist 60602 Michael Scott OR Karen Scott"
+      ]
+    },
+    {
+      "location_id": "fe748329683ea4e9",
+      "practice_name": "INNOVATIVE DENTAL GROUP, LLC",
+      "zip": "60602",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "none",
+      "evidence_urls": [],
+      "evidence_artifacts": [],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "Evidence is conflicting and stale. One source says Innovative Dental Group was co-founded/owned by dentists Dimple Tejani and Meenal Goel (who have since 'separately set up their own practices' elsewhere), matching the record's AO Dimple Tejani. But a 2012 Crain's Chicago Business article describes a same-named 'Lindenhurst-based Innovative Dental Group LLC' that bought a different Loop dentist's practice for $875,000, employed him, then fired him -- i.e., a corporate practice-acquisition structure, not dentist ownership. Cannot confirm whether these are the same entity or which structure currently controls the 20 E Washington St address (provider_count=0 in source data suggests no active individual providers are currently registered here). Given the conflict and 14-year-old primary evidence, honestly marking undetermined rather than guessing.",
+      "searched": [
+        "\"Innovative Dental Group\" Dimple Tejani 20 E Washington Chicago",
+        "\"Innovative Dental Group\" Chicago 20 E Washington current status open",
+        "Crain's Chicago \"Innovative Dental Group\" lawsuit private equity bought practice",
+        "\"Innovative Dental Group\" Illinois locations how many offices dentists",
+        "\"Innovative Dental Group\" Lindenhurst dental practice management company"
+      ]
+    },
+    {
+      "location_id": "bfafa50c768aef97",
+      "practice_name": "CRYSTAL R. PATEL, D.D.S, PC",
+      "zip": "60602",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.dentalplans.com/dentists/il/wheaton/60187/dr-crystal-patel-85884",
+        "https://www.americasmiles.com/dentist/crystal-patel-dds-40789/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:PATEL_CRYSTAL",
+      "reasoning": "Directory listings confirm Dr. Crystal Patel, DDS (NYU-trained general dentist) personally operates two offices: 33 N Dearborn St Ste 2400, Chicago (matching this record) and 531 E Roosevelt Rd Ste 100, Wheaton. Only two locations, both under her own name, no DSO/management-company signal. Classified dentist_multi.",
+      "searched": [
+        "Crystal Patel DDS 33 N Dearborn Chicago dentist"
+      ]
+    },
+    {
+      "location_id": "4b3840cac1872356",
+      "practice_name": "DENTAL LOFT - THE LOOP",
+      "zip": "60602",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://thedentalloft.com/",
+        "http://www.thedentalloft.com/kiley",
+        "https://www.healthgrades.com/dentist/dr-kiley-hirons-2vbpd"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:HIRONS_KILEY",
+      "reasoning": "The practice's own website describes The Dental Loft as 'a proudly independent, woman-owned small business' with Dr. Kiley Hirons (UIC-trained) practicing across two locations: 111 W Washington St Ste 1350, Chicago (matching this record) and 1 W Harris Ave, La Grange. Matches the record's AO (Kiley Hirons) and its owner_reach_locations=2. No DSO signal. Classified dentist_multi.",
+      "searched": [
+        "\"Dental Loft\" Kiley Hirons Chicago Loop Countryside"
+      ]
+    },
+    {
+      "location_id": "9158d722e9bf48de",
+      "practice_name": "105 W MADISON DENTAL PC",
+      "zip": "60602",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "none",
+      "evidence_urls": [],
+      "evidence_artifacts": [],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "Could not confirm current ownership. NPI profile sites list the entity at 105 W Madison St Ste 300, but the record's AO (Timothy Skidmore) is only findable as the owner of an unrelated practice (Mill Creek Dental Care, Geneva IL), not this Chicago address. A different-named tenant at the same street address ('212 Dental Care', 105 W Madison St Fl 3) is confirmed CLOSED/out-of-business on Yelp/BBB as of 2026, raising a closure_suspect concern for this building, though it is unclear if that closed business is the same as this NPI record. Insufficient reliable evidence to assign a tier; flagging closure_suspect.",
+      "searched": [
+        "\"105 W Madison\" dental Timothy Skidmore Chicago",
+        "\"212 Dental Care\" 105 W Madison Chicago closed permanently"
+      ]
+    },
+    {
+      "location_id": "71f043cbb3fe4819",
+      "practice_name": "GRAND DENTISTRY LOOP, LLC",
+      "zip": "60602",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.granddentistrychicago.com/our-team-1",
+        "https://www.yelp.com/biz/grand-dentistry-loop-chicago",
+        "https://www.granddentistrychicago.com/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:MCLEAN_ERIC",
+      "reasoning": "The practice's own website confirms Grand Dentistry is co-owned/led by Dr. Eric McLean and Dr. Deepan Patel (both Tufts DMD), operating two locations under the 'Grand Dentistry' / 'Grand Dentistry Loop LLC' names: 509 N LaSalle Dr (River North) and 105/120 W Madison St Lower Level (the Loop, matching this record). Matches the record's AO (Eric McLean) and owner_reach_locations=2. No DSO signal -- dentist co-owned. Classified dentist_multi.",
+      "searched": [
+        "\"Grand Dentistry\" Eric McLean Chicago Alsip dentist",
+        "\"Grand Dentistry Loop\" 120 W Madison Chicago"
+      ]
+    },
+    {
+      "location_id": "efef2448cb4d36ce",
+      "practice_name": "Michigan Avenue Dental Assoc",
+      "zip": "60603",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.madachicago.com/",
+        "https://www.yelp.com/biz/michigan-avenue-dental-associates-chicago-2"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "The practice's own site describes an unbroken dentist partnership history at this single address since 1911 (Dr. Williams founding, joined by Drs. Grimson, Washburn, and James over subsequent decades), currently multiple named partner-dentists (Douglas, James, Washburn, Feldman). One location, dentist-owned, no DSO/corporate signal. Classified single_loc_group.",
+      "searched": [
+        "\"Michigan Avenue Dental\" 122 S Michigan Ave Chicago dentist since 1911"
+      ]
+    },
+    {
+      "location_id": "76adb0e63e4b6d66",
+      "practice_name": "REM DDS INC",
+      "zip": "60603",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://datmp.com/",
+        "https://www.yelp.com/biz/dentistry-at-millennium-park-chicago-5"
+      ],
+      "evidence_artifacts": [
+        "Identity confirmed via exact phone-number match: (312) 750-9000 and address 8 S Michigan Ave Ste 1800 both match 'Dentistry at Millennium Park' exactly; record AO Rikki Lieberth appears to be an office administrator/content contributor rather than the owning dentist"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "REM DDS INC's registered address and phone exactly match 'Dentistry at Millennium Park,' whose own website names Dr. Nanditha Ranganathan as the practice-defining dentist with no DSO or corporate-parent language anywhere on the site. Single location, dentist-led. Classified single_loc_group.",
+      "searched": [
+        "\"REM DDS\" Rikki Lieberth 8 S Michigan Ave Chicago dentist",
+        "\"8 S Michigan\" dentist Chicago dental office",
+        "\"REM DDS INC\" NPI Chicago",
+        "\"Dentistry at Millennium Park\" owner dentist Chicago"
+      ]
+    },
+    {
+      "location_id": "a837f4330910e4ab",
+      "practice_name": "Obucina Dental",
+      "zip": "60603",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.healthgrades.com/dentist/dr-lillian-obucina-39dlt",
+        "https://www.bbb.org/us/il/chicago/profile/dentist/lillian-obucina-dds-pc-0654-88501480",
+        "https://dentalcenter.com/lillian-obucina/chicago/illinois/60603"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:OBUCINA_LILLIAN",
+      "reasoning": "Multiple independent sources (Healthgrades, BBB, dentalcenter.com) confirm Dr. Lillian Obucina, DDS, PC, as a solo general dentist at 104 S Michigan Ave, matching this record's address and phone exactly. No corporate/DSO affiliation found. Classified true_independent.",
+      "searched": [
+        "Obucina Dental 104 S Michigan Ave Chicago dentist"
+      ]
+    }
+  ]
+}

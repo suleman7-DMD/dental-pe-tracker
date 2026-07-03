@@ -1,0 +1,294 @@
+{
+ "unit_id": "laneA_033",
+ "classifications": [
+  {
+   "location_id": "0b6c6dca71f139b6",
+   "practice_name": "Omerza Dental",
+   "zip": "60526",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-william-omerza-xpgbx",
+    "https://doctor.webmd.com/doctor/william-omerza-b312755e-6943-4549-bf6c-c8f602c7a4bd-overview"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched Dr. William Omerza's name plus city; Healthgrades and WebMD both confirm a solo general dentistry practice at 432 Sherwood Rd, La Grange Park, matching the record exactly. No corporate signals, no other associates named. Classified as owner-operator solo practice.",
+   "searched": ["Omerza Dental La Grange Park IL dentist"]
+  },
+  {
+   "location_id": "cf3e7a676c124ab0",
+   "practice_name": "Sladek Dental",
+   "zip": "60526",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.vitals.com/dentists/Dr_Brian_Sladek",
+    "https://doctor.webmd.com/doctor/brian-sladek-d806d578-5a76-44a4-94c5-94a6e0ef85bc-overview"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple directory listings confirm Dr. Brian Sladek, DDS has practiced solo at 410 Sherwood Rd, La Grange Park since 1992, address and phone match the record exactly. No corporate or group signals found.",
+   "searched": ["Sladek Dental La Grange Park IL dentist"]
+  },
+  {
+   "location_id": "d9ccaff988d160c6",
+   "practice_name": "DEVAL J SHAH DDS LTD",
+   "zip": "60526",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://gfdentist.com/meet-the-doctor.html",
+    "https://www.zocdoc.com/dentist/deval-shah-dds-67594"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice operates as Generations Family Dentistry at 1012 E 31st St, La Grange Park (matches record). Own practice website names only Dr. Deval Shah, practicing there since 2013, with no DSO, corporate parent, or management company mentioned. Treated as solo owner-operator; medium confidence since staff roster page was not fully accessible.",
+   "searched": ["Deval Shah DDS La Grange Park IL dentist"]
+  },
+  {
+   "location_id": "0784f18eb36d5056",
+   "practice_name": "Kelliher Dental",
+   "zip": "60526",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searched Dr. Colin Kelliher plus the record's address (1212 Blanchan Ave). No current dental-practice listing uses that address; it resolves on Zillow as a residential property, and Dr. Kelliher is instead listed as an associate dentist at Webster Dental Care of La Grange Park (539 N La Grange Rd, a different location_id in this dataset). closure_suspect: the 1212 Blanchan Ave address appears to no longer host an active dental office under this NPI, so left undetermined rather than guessing.",
+   "searched": ["Kelliher Dental La Grange Park IL", "1212 Blanchan La Grange Park dental"]
+  },
+  {
+   "location_id": "2548a3c05ae9e453",
+   "practice_name": "Misleh Morad Kamal DMD",
+   "zip": "60526",
+   "assigned_tier": "stealth_dso",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.webdentalchicago.com/locations/la-grange-park/",
+    "https://www.webdentalchicago.com/ourdoctors/",
+    "https://www.prnewswire.com/news-releases/aptus-exchange-llc-announces-webster-dental-care-as-a-strategic-buyer-for-dental-practices-in-the-chicagoland-market-300985971.html",
+    "https://www.bbb.org/us/il/la-grange-pk/profile/dentist/webster-dental-care-of-la-grange-park-ltd-0654-90019371"
+   ],
+   "evidence_artifacts": ["network_span=8_locations(<10, not R4-protected)"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:webster_dental_care",
+   "reasoning": "The record's exact address and phone (539 N La Grange Rd, 708-354-1070) match Webster Dental Care of La Grange Park precisely. Webster Dental Care operates 8 Chicagoland locations under an overseeing 'Webster Dental Management' leadership structure and has actively acquired other practices (e.g. Chicago Dental Professionals) via a capital/growth partnership with broker Aptus Exchange. No overt national consumer brand, so classified stealth_dso rather than branded_dso; network spans 8 (<10) locations so not R4-protected. Founder Dr. Steven Rempas is a dentist but the group functions as a corporate multi-site roll-up, not a single-location dentist practice, so it does not qualify as dentist_multi either. No confirmed PE-fund sponsor found (Aptus Exchange presents as an advisory/brokerage firm), so pe_backed left false.",
+   "searched": ["Misleh Morad Kamal DMD La Grange IL dentist", "Webster Dental Care La Grange Park address", "Webster Dental private equity OR investor OR dental partners Chicago", "Aptus Exchange dental private equity Chicago"]
+  },
+  {
+   "location_id": "1a33d5b3e44832ff",
+   "practice_name": "Matuszewski, Randall DDS",
+   "zip": "60451",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.randallmatuszewskidentist.com/",
+    "https://www.healthgrades.com/dentist/dr-randall-matuszewski-yy6wy"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Randall Matuszewski runs his own named practice website at 210 N Pine St, New Lenox (matches record exactly); patients report ~20 years of continuous solo care. No corporate or group affiliation found.",
+   "searched": ["Randall Matuszewski DDS New Lenox IL dentist"]
+  },
+  {
+   "location_id": "51405050da9e3f86",
+   "practice_name": "Dana Dental",
+   "zip": "60451",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-steven-dana-ywlpx",
+    "https://npiprofile.com/npi/1194766410"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Steven Dana, DDS practices solo at 18906 Spring Creek St, New Lenox, address and phone match record exactly. No corporate or group signals found.",
+   "searched": ["\"Dana Dental\" New Lenox IL dentist"]
+  },
+  {
+   "location_id": "00b3e3fb7e2346a0",
+   "practice_name": "Glen Kulig DDS",
+   "zip": "60451",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.opencare.com/dentists/new-lenox-il/dr-glen-j-kulig-24630612873d/",
+    "https://www.vitals.com/practice/glen-kulig-dds-6873a492-22b5-4b14-83fa-20c1d8136fa7/doctors"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Glen J. Kulig practices solo at 500 W Maple St, New Lenox, matching the record's address and phone. Directory listings show no other dentists at the address and no corporate affiliation.",
+   "searched": ["Glen Kulig DDS New Lenox IL dentist"]
+  },
+  {
+   "location_id": "803ed4d9a8906829",
+   "practice_name": "WILLIAM C. GUINTA D.D.S. LTD.",
+   "zip": "60451",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-william-guinta-y6yhw",
+    "https://npino.com/dental-clinic/1881791069-william-c.-guinta-d.d.s.-ltd./"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. William Guinta operates his own solo practice (William C. Guinta D.D.S. Ltd.) at 600 E Lincoln Hwy, New Lenox, matching the record's address and phone exactly. No corporate or group signals found.",
+   "searched": ["William Guinta DDS New Lenox IL dentist"]
+  },
+  {
+   "location_id": "7b8f48e5d803001f",
+   "practice_name": "CANDICE L. GIBBONS, D.D.S., P.C.",
+   "zip": "60451",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "http://www.doctorgibbons.com/",
+    "https://www.healthgrades.com/dentist/dr-candice-gibbons-2hj9f"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Candice Gibbons runs her own named practice (doctorgibbons.com) at 2449 E Joliet Hwy, New Lenox, matching the record's address and phone exactly. No corporate signals or additional dentists found.",
+   "searched": ["Candice Gibbons DDS New Lenox IL dentist"]
+  },
+  {
+   "location_id": "2bb6d08eb1b6da83",
+   "practice_name": "New Lenox Dental",
+   "zip": "60451",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.newlenoxdental.com/",
+    "https://www.newlenoxdental.com/about-us/meet-dr-ciaglia/",
+    "https://www.yelp.com/biz/new-lenox-dental-group-new-lenox"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This record (1600 Lincoln Hwy W) is the practice-level NPI for 'New Lenox Dental Group,' operating at 1600 W Lincoln Hwy since 1999, owned/run by two dentists, Dr. Caesar Ciaglia and Dr. Jean/Therese Murphy, at a single location. No corporate or DSO affiliation found; classified as a dentist-owned single-location group (same physical practice as location records 542410cbe2da94e4 and 4e264901579e08e9 in this unit).",
+   "searched": ["\"New Lenox Dental\" 1600 Lincoln Highway New Lenox IL"]
+  },
+  {
+   "location_id": "bb2c7b85186d62da",
+   "practice_name": "Atrium Family Dental",
+   "zip": "60451",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.carlstromdental.com/",
+    "https://www.carlstromdental.com/contact-us/",
+    "https://www.carlstromdental.com/our-practice"
+   ],
+   "evidence_artifacts": ["address_phone_exact_match_current_dba_differs_from_NPI_name"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The record's exact address and phone (1049 E Lincoln Hwy, 815-485-7200) currently belong to Michael D. Carlstrom, DDS, PC, a solo sedation-dentistry practice -- not the separate, unrelated 'Atrium Family Dental' brand at 1938 E Lincoln Hwy (different phone, 3-dentist group, a same-name collision ruled out by address matching). This NPI's business name appears to be a stale NPPES legal/DBA name; the current occupant is a solo dentist owner-operator, so classified true_independent at medium confidence given the name mismatch.",
+   "searched": ["Atrium Family Dental New Lenox IL dentist", "\"1049\" \"Lincoln\" New Lenox IL dental OR dentist (815) 485-7200", "\"815-485-7200\" dentist New Lenox"]
+  },
+  {
+   "location_id": "c1c7ea6ee0465dce",
+   "practice_name": "HUTTON FAMILY DENTAL LTD",
+   "zip": "60451",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.newlenoxdentist.com/",
+    "https://www.newlenoxdentist.com/meet-dr-hutton"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Frank Hutton owns and runs his own named practice (newlenoxdentist.com) at 1240 N Cedar Rd, New Lenox, matching the record's address and phone exactly; he has been a New Lenox Township resident/practitioner since 1985. No corporate or group signals found.",
+   "searched": ["Hutton Family Dental New Lenox IL Frank Hutton dentist"]
+  },
+  {
+   "location_id": "542410cbe2da94e4",
+   "practice_name": "CAESAR E. CIAGLIA, D.D.S., P.C.",
+   "zip": "60451",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.newlenoxdental.com/about-us/meet-dr-ciaglia/",
+    "https://www.healthgrades.com/dentist/dr-caesar-ciaglia-ydk83"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Caesar Ciaglia (33+ years practicing, Northwestern-trained) practices at New Lenox Dental Group, 1600 W Lincoln Hwy, alongside co-owner Dr. Jean/Therese Murphy -- matching the record's address and phone exactly. Two-dentist owned, single-location group, no corporate affiliation; same physical practice as location records 2bb6d08eb1b6da83 and 4e264901579e08e9 in this unit.",
+   "searched": ["Caesar Ciaglia DDS New Lenox IL dentist"]
+  },
+  {
+   "location_id": "4e264901579e08e9",
+   "practice_name": "Murphy Dental",
+   "zip": "60451",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.newlenoxdental.com/",
+    "https://www.yelp.com/biz/new-lenox-dental-group-new-lenox"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This NPI's address/phone (1600 US Route 30, 815-485-2345) match New Lenox Dental Group at 1600 W Lincoln Hwy exactly (Route 30 is Lincoln Highway at this location), where Dr. Jean/Therese Murphy co-practices with Dr. Caesar Ciaglia. Two-dentist owned, single-location group, no corporate affiliation; same physical practice as location records 2bb6d08eb1b6da83 and 542410cbe2da94e4 in this unit.",
+   "searched": ["\"New Lenox Dental\" 1600 Lincoln Highway New Lenox IL"]
+  },
+  {
+   "location_id": "4e965db220219de3",
+   "practice_name": "ZALE FAMILY DENTISTRY, P.C.",
+   "zip": "60451",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-brian-zale-xwgt4",
+    "https://www.carecredit.com/doctor-locator/new-lenox-il/zale-family-dentistry-836tdh/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Brian Zale opened his own practice at 2081 Calistoga Dr, New Lenox in August 2008 after nine years of prior private practice; address and phone match the record exactly. No corporate or group signals found.",
+   "searched": ["Zale Family Dentistry New Lenox IL Brian Zale dentist"]
+  }
+ ]
+}

@@ -1,0 +1,336 @@
+{
+  "unit_id": "laneA_083",
+  "classifications": [
+    {
+      "location_id": "eb7656f0233067ec",
+      "practice_name": "Vahdatian Dental",
+      "zip": "60609",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "none",
+      "evidence_urls": [],
+      "evidence_artifacts": [],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "Searched for 'Vahdatian Dental' at 3756 S Parnell Ave (60609) directly, by address, and by NPI. Only found Dr. Mahsa Vahdatian practicing in Brookfield and Woodridge, IL (Brookfield Smiles Inc., New Avenue Dental) - never this Chicago address or business name. No documentary source confirms an active practice at this address, suggesting a stale NPPES address or possible closure/relocation.",
+      "searched": [
+        "Vahdatian Dental Chicago 3756 S Parnell Ave dentist",
+        "\"3756 S Parnell\" Chicago dentist Vahdatian",
+        "NPI 1629817358 Vahdatian dentist Chicago"
+      ]
+    },
+    {
+      "location_id": "1354bc2b8dff1d69",
+      "practice_name": "SONRISA ROGERS PARK INC",
+      "zip": "60609",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://sonrisafamilydental.com/sonrisa-group/",
+        "https://sonrisafamilydental.com/meet-our-team/jason-korkus/"
+      ],
+      "evidence_artifacts": [
+        "sonrisa_group_11_IL_locations_confirmed_on_own_site"
+      ],
+      "confidence": "medium",
+      "status": "undetermined",
+      "network_id": "ao:KORKUS_JASON",
+      "reasoning": "Entity name and AO (Jason Korkus, matching ctx owner_reach=5) tie this location to the Sonrisa Group, founded and led by Dr. Jason Korkus, DDS. The group's own 'Sonrisa Group' page lists 8 Chicago-proper addresses plus 3 suburb locations (Chicago Heights, Blue Island, Oak Lawn) - 11 confirmed IL locations, exceeding the 10-location threshold for a protected-network review. Flagging R4_protected_network:Sonrisa Group (Jason Korkus) rather than assigning a tier in this single-unit lane; this specific Morgan St/Rogers Park address was not itself listed on the group page, reinforcing the need for a one-network-one-decision review rather than a per-location guess.",
+      "searched": [
+        "\"Sonrisa Rogers Park\" dental Chicago Jason Korkus",
+        "[fetch] sonrisafamilydental.com/sonrisa-group/"
+      ]
+    },
+    {
+      "location_id": "ca08c64d28b049bc",
+      "practice_name": "UNIVERSITY ASSOCIATES IN DENTISTRY, LTD.",
+      "zip": "60610",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.uadchicago.com/",
+        "https://www.uadchicago.com/meet-the-team/martin-j-marcus-dds/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "ao:MARCUS_MARTIN",
+      "reasoning": "The practice's own site confirms it privatized in 2005 from a University of Chicago-affiliated group practice and is led by dentist-owner Martin J. Marcus, DDS, alongside several other dentists (Meet the Team page) at one office - currently 222 N LaSalle St Ste 230, a short distance from the NPI-listed 680 N LaSalle (same corridor, plausible suite/address drift). Multi-dentist, single-location, dentist-led; this directly rebuts the institutional_hint that 'University' in the name implies an academic/hospital affiliation. Confidence held at medium due to the address discrepancy.",
+      "searched": [
+        "\"University Associates in Dentistry\" 680 N LaSalle Chicago",
+        "\"University Associates in Dentistry\" Martin Marcus owner DDS"
+      ]
+    },
+    {
+      "location_id": "51ba7f5b0f3dad48",
+      "practice_name": "Bharti M Tejani DDS",
+      "zip": "60610",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60610/invite-bharti-tejani-dds-9921",
+        "https://www.healthgrades.com/dentist/dr-bharti-tejani-3x66b"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Multiple independent directories (Doctors Network, Healthgrades, Zocdoc, npidb) confirm solo dentist Bharti Tejani, DDS practicing at 1401 N Clybourn Ave, Chicago 60610 with matching phone. No corporate parent, brand, or second location found in any result.",
+      "searched": [
+        "Bharti Tejani DDS Chicago 1401 N Clybourn dentist"
+      ]
+    },
+    {
+      "location_id": "df05cb6816c0d28f",
+      "practice_name": "MARSHALL S. OLECH, DDS,PC",
+      "zip": "60610",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/chicago-bright-smiles-chicago-4",
+        "https://thechicagoildentist.com/meet-our-team/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "ao:OLECH_MARSHALL",
+      "reasoning": "Dr. Marshall Olech, DDS operates 'Chicago Bright Smiles' (formerly Seton Dental) at 711 W North Ave, matching address/phone exactly. Provider_count=2 matches a small multi-dentist team at this single office; no brand, chain, or corporate signal found.",
+      "searched": [
+        "Marshall Olech DDS Chicago dentist 711 W North Ave"
+      ]
+    },
+    {
+      "location_id": "27188e35af98a0af",
+      "practice_name": "Perlman Dental",
+      "zip": "60610",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60610/invite-sharon-perlman-dds-mph-11080",
+        "https://www.healthgrades.com/dentist/dr-sharon-perlman-2bv5w"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Dr. Sharon Perlman, DDS, MPH is confirmed as a solo dentist at 127 W Oak St Apt C, Chicago 60610 (exact address/phone match across Doctors Network, Healthgrades, Vitals, WebMD). No group, brand, or corporate affiliation found.",
+      "searched": [
+        "Perlman Dental 127 W Oak St Chicago dentist"
+      ]
+    },
+    {
+      "location_id": "7788725abbc43b97",
+      "practice_name": "Sandburg Village Dental",
+      "zip": "60610",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.sandburgvillagedental.com/",
+        "https://www.sandburgvillagedental.com/about-sandburg-village-dental"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "ao:SHAH_REENA",
+      "reasoning": "Sandburg Village Dental, led by Dr. Reena Shah, DDS (President), has operated in this Sandburg Terrace complex since 1964, matching provider_count=3/small_group at a single practice. The practice's own site notes a short relocation within the same complex (1360 to 1455 N Sandburg Ter) effective Dec 2023, so the NPI's 1360 address may be superseded by a few doors down, but ownership and single-location status are unchanged - no chain or DSO signal.",
+      "searched": [
+        "Sandburg Village Dental 1360 N Sandburg Ter Chicago"
+      ]
+    },
+    {
+      "location_id": "a7b9b04f3c82cd30",
+      "practice_name": "JEFFREY A. WELLER, DDS, PC",
+      "zip": "60610",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://wellerdental.com/",
+        "https://www.yelp.com/biz/weller-dental-chicago-chicago"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:WELLER_JEFFREY",
+      "reasoning": "Weller Dental Group's own site and search results confirm Dr. Jeffrey A. Weller, DDS owns and practices at offices in Chicago's Gold Coast (1050 N State St - this location) and in Hinsdale, IL. Dentist-owned, 2-location group with no corporate/PE signal, matching the dentist_multi definition.",
+      "searched": [
+        "\"Jeffrey Weller\" DDS Chicago dentist 1050 N State St"
+      ]
+    },
+    {
+      "location_id": "a1174242981fd0bf",
+      "practice_name": "IMPLANT DENTAL ARTS",
+      "zip": "60610",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.chicagosmiledesign.com/",
+        "https://www.healthgrades.com/dentist/dr-peter-tomaselli-34bbn"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Dr. Peter Tomaselli, DDS practices solo at 437 W North Ave, Chicago (branded 'Chicago Smile Design'), confirmed via his own practice site and multiple directories at the exact address/phone. Single location, dentist owner-operator; high patient volume (solo_high_volume) does not change ownership structure - no chain or DSO signal.",
+      "searched": [
+        "\"Implant Dental Arts\" Chicago Peter Tomaselli 437 W North Ave"
+      ]
+    },
+    {
+      "location_id": "07a370c020a4a59e",
+      "practice_name": "Collins Dental",
+      "zip": "60610",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.collinsdentalchicago.com/",
+        "https://www.yelp.com/biz/reuben-collins-dds-chicago"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Dr. Reuben D. Collins, DDS's own practice site confirms a solo general/cosmetic dentistry practice at 220-222 W Huron St, Chicago (address/phone match). No second location, brand, or corporate signal found.",
+      "searched": [
+        "Collins Dental Chicago 222 W Huron St dentist"
+      ]
+    },
+    {
+      "location_id": "7e152c0dec7ba5bc",
+      "practice_name": "Le Dental",
+      "zip": "60610",
+      "assigned_tier": "institutional",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/winfield-moody-health-center-near-north-health-chicago",
+        "https://www.freementalhealthservices.org/clinic/il_60610_winfield-moody-health-center"
+      ],
+      "evidence_artifacts": [
+        "phone_exact_match_312-337-1073"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "brand:near_north_health",
+      "reasoning": "The registered address (1276 N Clybourn Ave) and phone number ((312) 337-1073) exactly match Near North Health's Winfield Moody Health Center, a federally-qualified community health center (FQHC), not a private dental office. Dr. Lauren Le (matching primary NPI 1366637902) practices dentistry at this institutional public-health clinic; the NPPES 'Le Dental' entity name is a provider-registration artifact, not an independent business.",
+      "searched": [
+        "Le Dental Chicago 1276 N Clybourn Ave dentist",
+        "[fetch] laurenlec7e.dr-leonardo.com",
+        "\"Winfield Moody\" health center address Chicago Clybourn"
+      ]
+    },
+    {
+      "location_id": "c086b31775dede34",
+      "practice_name": "Marri Dental",
+      "zip": "60610",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "none",
+      "evidence_urls": [],
+      "evidence_artifacts": [
+        "address_is_residential_condo_gold_coast_galleria"
+      ],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "NPI 1740478049 belongs to Dr. Arpitha Marri, DDS, but every confirmed source places her practicing at Alta Dental (5892 S Archer Ave) and Skyline Smiles (1017 W Madison St) or So-Well Dental Associates (1122 N Clark St) - never at 111 W Maple St. That address is in fact the Gold Coast Galleria, a residential condo tower, not a commercial dental office. No evidence this location is an operating clinic under the 'Marri Dental' name; treated as closure_suspect/stale-address rather than fabricated a tier.",
+      "searched": [
+        "Marri Dental Chicago 111 W Maple St dentist",
+        "\"111 W Maple\" Chicago dentist",
+        "NPI 1740478049 Marri Dental Chicago",
+        "[fetch] tebra.com/care/provider/arpitha-marri-dds-1740478049",
+        "\"111 W Maple\" Chicago building address"
+      ]
+    },
+    {
+      "location_id": "68c9e0fd8b50aa12",
+      "practice_name": "TOOTH FAIRY DENTAL PC",
+      "zip": "60610",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "none",
+      "evidence_urls": [],
+      "evidence_artifacts": [
+        "prior_tenant_old_town_dental_center_closed",
+        "current_phone_match_ties_to_different_owner_perla_dental"
+      ],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "The address (333 W North Ave) and phone ((312) 751-1113) match a business currently called 'Perla Dental,' reportedly owned by Dr. Vicken Ishkhanian - not Sasa Stojanovic, the AO on this NPI. A prior tenant at the same address, 'Old Town Dental Center,' is confirmed CLOSED on Yelp. Dr. Stojanovic's confirmed practice base is 1st Family Dental (Addison/Arlington Heights/Chicago), which does not list this address. Given the conflicting ownership signals and a documented closure at this exact address, marking closure_suspect/undetermined rather than guessing a tier.",
+      "searched": [
+        "\"Tooth Fairy Dental\" Chicago 333 W North Ave Sasa Stojanovic",
+        "NPI 1194998401 Sasa Stojanovic Tooth Fairy Dental Chicago",
+        "\"333 W North Ave\" Chicago dentist dental office",
+        "\"Perla Dental\" Chicago dentist owner North Ave"
+      ]
+    },
+    {
+      "location_id": "d7cddb19b1df0908",
+      "practice_name": "So-well Dental Assoc",
+      "zip": "60610",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://sowelldentalassociates.com/",
+        "https://www.zocdoc.com/dentist/arpitha-marri-dds-8004"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:SOWELL_ZENOBIA",
+      "reasoning": "So-Well Dental Associates, founded and led by Dr. Zenobia Sowell, DDS at 1122 N Clark St, has served the River North area for 27+ years (exact address/phone match across Yelp, own site, CareCredit). A second dentist (Arpitha Marri, DDS) is also listed practicing here per Zocdoc, making this a dentist-owned multi-provider single-location group; no brand, chain, or corporate signal found.",
+      "searched": [
+        "\"So-well Dental\" Chicago 1122 N Clark St dentist"
+      ]
+    },
+    {
+      "location_id": "ff057f6a817e9125",
+      "practice_name": "STAR SMILE",
+      "zip": "60610",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "none",
+      "evidence_urls": [],
+      "evidence_artifacts": [],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "Searched for 'Star Smile' at 1130 N Dearborn St and for AO Yana Lyushkova; all confirmed sources (Healthgrades, WebMD, McHenry Family Dental) place Dr. Lyushkova's practice in McHenry, IL, not this Chicago address. A directory page appearing to list her at Chicago 60610 returned HTTP 403 and could not be verified. No documentary evidence ties Star Smile to this address; left undetermined rather than guessed.",
+      "searched": [
+        "\"Star Smile\" dental Chicago 1130 N Dearborn Yana Lyushkova",
+        "[fetch attempt, 403] dentalcenter.com/yana-lyushkova/chicago/illinois/60610"
+      ]
+    },
+    {
+      "location_id": "500218c98f488420",
+      "practice_name": "OLD TOWN DENTAL CARE, P.C.",
+      "zip": "60610",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.oldtowndentalcare.com/",
+        "https://www.yelp.com/biz/sam-tahbaz-dds-old-town-dental-care-chicago"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Dr. Sam Tahbaz, DDS operates Old Town Dental Care, described as 'a small neighborhood practice' at 1504 N Wells St (formerly Lakeview Dental Care, at this location since 2010) with exact address/phone match across the practice's own site, Yelp, and Healthgrades. Solo dentist owner-operator, single location, no chain or corporate signal.",
+      "searched": [
+        "\"Old Town Dental Care\" Chicago Sam Tahbaz 1504 N Wells"
+      ]
+    }
+  ]
+}

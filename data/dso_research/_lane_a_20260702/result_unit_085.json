@@ -1,0 +1,337 @@
+{
+ "unit_id": "laneA_085",
+ "classifications": [
+  {
+   "location_id": "6f43af650c0b840d",
+   "practice_name": "CHARLES LOCKHART DDS",
+   "zip": "60611",
+   "assigned_tier": "stealth_dso",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.midwestdentalsleepcenter.com/meet-the-doctors/",
+    "https://npiregistry.cms.hhs.gov/api/?number=1053602227&version=2.1",
+    "https://www.linkedin.com/in/scottcraig-midwestdental/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:midwest_dental_sleep_center",
+   "reasoning": "NPI 1053602227's own registry record lists 150 E Huron St Ste 1103 with Authorized Official 'Scott D. Craig, CEO' (matches ctx AO exactly). Midwest Dental Sleep Center's own site (midwestdentalsleepcenter.com/meet-the-doctors) lists Dr. Lockhart among its doctors and states '5 Convenient Chicagoland Locations' (Chicago, Barrington, Homer Glen, Lombard, Skokie), i.e. a real multi-location network with a non-dentist CEO as legal controller, not an overtly national brand. Ruled out: the DB's 'GRYPHON INVESTORS' parent_company tag is a false lead -- web search found no link between Scott Craig/Midwest Dental Sleep Center and Gryphon Investors' portfolio company 'Midwest Dental' (a same-name but unrelated 230-office DSO acquired by Smile Brands); pe_backed left false accordingly. 5 locations, below the 10+ R4 threshold, so classified rather than protected.",
+   "searched": [
+    "\"Charles Lockhart\" DDS 150 E Huron Chicago dentist",
+    "\"Charles Lockhart\" DDS Gryphon Investors OR \"Midwest Dental\" Jefferson Park",
+    "\"Scott Craig\" CEO dental Illinois Gryphon Investors OR \"Midwest Dental\"",
+    "npiregistry.cms.hhs.gov NPI 1053602227",
+    "midwestdentalsleepcenter.com meet-the-doctors"
+   ]
+  },
+  {
+   "location_id": "9029fca97bb1e725",
+   "practice_name": "Block Dental",
+   "zip": "60611",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://drnancyblock.com/about/dr-nancy-block/",
+    "https://drnancyblock.com/contact/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own practice website (drnancyblock.com) at 100 E Walton St Ste 400E, Chicago matches address/phone exactly. Site narrates Dr. Nancy Block's own career: opened her own practice in 1991, moved to this Walton St location in 2000. No corporate parent, no DSO brand -- solo dentist owner-operator, one location.",
+   "searched": [
+    "Block Dental 100 E Walton Chicago Nancy Block DDS"
+   ]
+  },
+  {
+   "location_id": "64c58950913fb0de",
+   "practice_name": "SMILECHICAGO",
+   "zip": "60611",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://smilechicago.com/meet-dr-sheldon-seidman/",
+    "https://smilechicago.com/about/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own practice website (smilechicago.com) confirms address (400 N Michigan Ave Ste 1014) and phone match exactly. 'Meet Dr. Seidman' page frames the practice around the solo cosmetic dentist with 45+ years experience; no corporate parent or DSO signal found anywhere in search results.",
+   "searched": [
+    "SmileChicago Sheldon Seidman 400 N Michigan Ave dentist"
+   ]
+  },
+  {
+   "location_id": "144d1f836b55f489",
+   "practice_name": "Block, Nancy O DDS",
+   "zip": "60611",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://drnancyblock.com/about/dr-nancy-block/",
+    "https://drnancyblock.com/contact/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Same address/phone/practice as location 9029fca97bb1e725 ('Block Dental') -- both are NPI records for Dr. Nancy Block's own solo practice at 100 E Walton St, confirmed via her own site (drnancyblock.com) narrating her 1991 practice founding and 2000 move to this location. No DSO/corporate signal.",
+   "searched": [
+    "Block Dental 100 E Walton Chicago Nancy Block DDS"
+   ]
+  },
+  {
+   "location_id": "598cc9dae498795b",
+   "practice_name": "NORTHWESTERN DENTAL CENTER",
+   "zip": "60611",
+   "assigned_tier": "institutional",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://northwesterndental.com/",
+    "https://www.nm.org/locations/northwestern-medicine-dental-care"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:northwestern_medicine",
+   "reasoning": "Address (201 E Huron St 2nd Fl) and phone match exactly to 'Northwestern Medicine Dental Center' / 'Northwestern Medicine Oral Health Center', which is part of the Northwestern Medicine hospital system (nm.org) -- an academic-hospital-affiliated dental clinic, i.e. institutional. The ctx brand_hint 'Western Dental (Sonrava)' is a false substring match ('North-WESTERN' vs 'WESTERN Dental') refuted directly by the web evidence; no Sonrava/Western Dental branding found anywhere.",
+   "searched": [
+    "\"Northwestern Dental Center\" 201 E Huron Chicago"
+   ]
+  },
+  {
+   "location_id": "a222bf847c88b638",
+   "practice_name": "Halsted Street Dental",
+   "zip": "60611",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "The real, findable 'Halsted Street Dental' operates at 2210 N Halsted St, Lincoln Park (60614) with phone (773) 935-4444 -- neither the address (850 N Lake Shore Dr, 60611) nor the phone ((318) 737-9724, a Louisiana area code) on this NPI record match. Could not verify any operating practice at 850 N Lake Shore Dr matching this name; leaving undetermined rather than guessing whether this is a mis-registered NPI, a home-address registration, or an unrelated/defunct entity.",
+   "searched": [
+    "\"Halsted Street Dental\" Chicago 850 N Lake Shore Drive",
+    "\"850 N Lake Shore\" Chicago dentist dental office"
+   ]
+  },
+  {
+   "location_id": "0027df15102522a3",
+   "practice_name": "DR. JORDAN TILDEN & ASSOCIATES",
+   "zip": "60611",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.drtilden.com/",
+    "https://www.yelp.com/biz/jordan-j-tilden-dds-pc-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address/phone match to 'Jordan J Tilden, DDS PC' (331/333 E Ontario St, (312) 664-6616), operating as Tilden Dental Group per its own site (drtilden.com). Multiple dentists (Jordan and Zachary Tilden, historically) practice at this one Streeterville location under dentist ownership; no DSO/corporate parent found. Fits multi-dentist, single-location, dentist-owned.",
+   "searched": [
+    "\"Jordan Tilden\" DDS 333 E Ontario Chicago dentist",
+    "\"401 E Ontario\" Chicago dental Tilden"
+   ]
+  },
+  {
+   "location_id": "856543fd45726f24",
+   "practice_name": "Couvelis Dental",
+   "zip": "60611",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.northpierdental.com/about-us/meet-our-team/william-couvelis",
+    "https://www.northpierdental.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address/phone match exactly to Dr. William Couvelis, DDS, who owns 'North Pier Dental Associates, P.C.' at 401 E Illinois St -- his own professional corporation, Northwestern dental school grad practicing 20+ years. No corporate parent or DSO signal found.",
+   "searched": [
+    "Couvelis Dental 401 E Illinois Chicago"
+   ]
+  },
+  {
+   "location_id": "4460256bd7d20775",
+   "practice_name": "MANUS NORTHWESTERN ORAL HEALTH CENTER",
+   "zip": "60611",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/manus-dental-northwestern-chicago-2",
+    "https://www.greatlakesdentalpartners.com/company/locations/",
+    "https://www.greatlakesdentalpartners.com/news/2017/05/08/chicagoland-smile-group-announces-partnership-manus-dental/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:great_lakes_dental_partners",
+   "reasoning": "closure_suspect: Yelp explicitly flags 'MANUS DENTAL NORTHWESTERN - CLOSED' (updated June 2026) at 676 N Michigan Ave #3500, and Great Lakes Dental Partners' own current locations page no longer lists this address as an active practice (only Hyde Park, Lake Zurich, Yorkville are listed; 676 N Michigan Ave now appears only as GLDP's corporate HQ suite 3535). This location was genuinely a Shore Capital-backed GLDP/Manus Dental network member (2017 partnership announcement confirms the historical relationship, matching ctx brand_hint) but per the hard rule, a suspected-closed location is left undetermined rather than tiered.",
+   "searched": [
+    "\"Manus\" dental 676 N Michigan Ave Chicago \"Great Lakes Dental Partners\"",
+    "greatlakesdentalpartners.com/company/locations (fetched)"
+   ]
+  },
+  {
+   "location_id": "c088f2d83fe13d65",
+   "practice_name": "Manus Dental",
+   "zip": "60611",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/manus-dental-northwestern-chicago-2",
+    "https://www.greatlakesdentalpartners.com/company/locations/",
+    "https://www.greatlakesdentalpartners.com/news/2017/05/08/chicagoland-smile-group-announces-partnership-manus-dental/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:great_lakes_dental_partners",
+   "reasoning": "closure_suspect: same 676 N Michigan Ave address as location 4460256bd7d20775; Yelp shows the Manus Dental Northwestern office at this address as CLOSED, and GLDP's current public locator no longer lists it as an active clinic (only lists 3 other IL locations + its own HQ suite at this same street address). Historically a genuine Shore Capital/GLDP partnership (2017 announcement, and parent_company field 'SHORE CAPITAL PARTNERS LLC' checks out against that history), but left undetermined per the closed-location rule rather than tiered as active.",
+   "searched": [
+    "\"Manus\" dental 676 N Michigan Ave Chicago \"Great Lakes Dental Partners\"",
+    "greatlakesdentalpartners.com/company/locations (fetched)"
+   ]
+  },
+  {
+   "location_id": "9c6bc6cc0a19da76",
+   "practice_name": "BOCA DENTAL STUDIO",
+   "zip": "60611",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.bocadentalstudio.com/",
+    "https://www.bocadentalstudio.com/contact"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address/phone match to Boca Dental Studio's own site (1 E Delaware Pl Ste M110). Practice is led by Dr. RJ (Robert) Villa with an associate, Dr. Luke Aiura, both at this single Gold Coast location -- matches ctx provider_count=2 and AO 'Robert Villa'. Dentist-owned, no DSO signal.",
+   "searched": [
+    "Boca Dental Studio Chicago Robert Villa 1 E Delaware"
+   ]
+  },
+  {
+   "location_id": "febfbd0947c16124",
+   "practice_name": "Chen, Gloria C DDS",
+   "zip": "60611",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.chicagoholisticdentistry.com/about-us/",
+    "https://www.chicagoholisticdentistry.com/contact/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address/phone match to Dr. Gloria Chen's own practice, 'Chicago Holistic Dentistry', 233 E Erie Ste 816. Northwestern dental school grad practicing 30+ years under her own name/brand; no corporate parent or DSO signal found.",
+   "searched": [
+    "Gloria Chen DDS 233 E Erie Chicago dentist"
+   ]
+  },
+  {
+   "location_id": "7fe3749ab0caa85d",
+   "practice_name": "Tilden Dental Group",
+   "zip": "60611",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.drtilden.com/",
+    "https://www.zocdoc.com/practice/tilden-dental-group-79508"
+   ],
+   "evidence_artifacts": [
+    "name matches drtilden.com's own DBA 'Tilden Dental Group' exactly, but this NPI record's street number (401 E Ontario) and phone ((630) 290-6428) do not match the confirmed real-world address (331 E Ontario St) or phone ((312) 664-6616) found for that business"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The practice name is a distinctive, exact match to 'Tilden Dental Group' (drtilden.com), the same dentist-owned Streeterville group covered under location 0027df15102522a3. Address and phone on this specific NPI record do not reconcile to the confirmed real address, which is common NPPES data staleness for small practices rather than evidence of a separate entity; no DSO/corporate signal found under either address. Classified single_loc_group at medium confidence given the unresolved address/phone discrepancy.",
+   "searched": [
+    "\"401 E Ontario\" Chicago dental Tilden"
+   ]
+  },
+  {
+   "location_id": "9fdb12c7802887be",
+   "practice_name": "Chen Dental",
+   "zip": "60611",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.chicagoholisticdentistry.com/about-us/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address (233 E Eric[sic]/Erie St) and phone are the same practice as location febfbd0947c16124 -- Dr. Gloria Chen's solo 'Chicago Holistic Dentistry'. No corporate parent or DSO signal.",
+   "searched": [
+    "Gloria Chen DDS 233 E Erie Chicago dentist"
+   ]
+  },
+  {
+   "location_id": "2be82e5630b65144",
+   "practice_name": "Manov Nikol DMD",
+   "zip": "60611",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.chicagodentalarts.com/",
+    "https://www.yelp.com/biz/chicago-dental-arts-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address/phone match to 'Chicago Dental Arts', 919 N Michigan Ave Fl 3. The practice's own site states it is dentist-owned/led by Dr. Vladimir Fedin and Dr. Daniel Smulson, describing itself as an independent 'Boutique Reconstructive & Cosmetic Dental Artistry' with no DSO/management-company affiliation, operating two locations (this Chicago office plus a Skokie office). Matches dentist-owned, 2+ locations -- dentist_multi, not a protected 10+ network.",
+   "searched": [
+    "\"Manov\" dentist 919 N Michigan Ave Chicago DMD",
+    "chicagodentalarts.com (fetched)"
+   ]
+  },
+  {
+   "location_id": "e758f336b599e54e",
+   "practice_name": "Isabella Terrassa Reyes DMD",
+   "zip": "60611",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://doctor.webmd.com/doctor/isabella-terrassa-reyes-5f0080e7-5517-476a-a301-9f05730f4788-overview",
+    "https://www.healthgrades.com/dentist/dr-isabella-terrassa-reyes-ybr4yrz"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address/phone (445 E Ohio St Ste 450) match provider directory listings under the practice's own name 'Isabella Terrassa Reyes DMD', consistent with ctx (solo, provider_count 1). No DSO/corporate signal found at this address. Medium confidence because the same dentist also appears associated with Strobel Dentistry at a separate downtown address (25 E Washington St) as an associate -- could not fully resolve whether 445 E Ohio is her own independent registration or a secondary listing, but no corporate/DSO control signal exists either way.",
+   "searched": [
+    "\"Isabella Terrassa Reyes\" DMD dentist Chicago 445 E Ohio",
+    "\"Isabella Terrassa\" 445 E Ohio dentist practice name",
+    "\"445 E Ohio St\" Chicago dental practice Suite 450"
+   ]
+  }
+ ]
+}

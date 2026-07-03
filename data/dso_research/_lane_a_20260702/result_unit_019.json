@@ -1,0 +1,347 @@
+{
+ "unit_id": "laneA_019",
+ "classifications": [
+  {
+   "location_id": "d8777221b95e2db4",
+   "practice_name": "A DENTAL PLACE LTD",
+   "zip": "60148",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.adentalplace.com/",
+    "https://www.yelp.com/biz/a-dental-place-lombard",
+    "https://www.yelp.com/biz/daniel-fong-dds-lombard"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched the practice name and address; found A Dental Place's own site and Yelp/directory listings confirming a single office at 845 S Main St Ste 202, Lombard, led by Dr. Robin Castro and Dr. Dan Fong. The NPPES authorized official (Dan Fong) matches one of the two named owner-dentists, and no corporate parent or DSO reference appears anywhere. Two dentists, one location, dentist-owned -> single_loc_group.",
+   "searched": [
+    "\"A Dental Place\" 845 S Main St Lombard IL dentist"
+   ]
+  },
+  {
+   "location_id": "c3d4ef0cce1aecad",
+   "practice_name": "Jahedi Dental",
+   "zip": "60148",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://dentalcenter.com/maliheh-jahedi/lombard/illinois/60148",
+    "https://www.dentalinsider.com/lombard/dentist/dr-maliheh-jahedi-dmd-53569"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address (121 E Roosevelt Rd) and phone (630-495-1800) exactly match multiple directory listings for Dr. Maliheh Jahedi, DMD, a prosthodontist who appears to be the sole named owner-dentist at this location; no corporate parent, DSO brand, or second dentist name surfaced. Provider_count=7 in our data is unexplained by web evidence (likely hygienists/staff on the org NPI) so confidence is medium rather than high, but nothing suggests a multi-dentist ownership group or corporate control.",
+   "searched": [
+    "Jahedi Dental Lombard IL 121 E Roosevelt Rd",
+    "\"Jahedi Dental\" Lombard IL dentists group practice"
+   ]
+  },
+  {
+   "location_id": "d2f6bfaace7765eb",
+   "practice_name": "Grove Dental",
+   "zip": "60148",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.brettblacher.com/",
+    "https://www.yelp.com/biz/brett-blacher-dds-lombard"
+   ],
+   "evidence_artifacts": [
+    "address_phone_match:450_e_22nd_st_ste_201_lombard=Brett_Blacher_DDS_not_Grove_Dental"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The record's address (450 E 22nd St) and phone (630-916-0701) exactly match Brett Blacher DDS, a solo independent dentist with his own site (brettblacher.com) and no corporate affiliation -- NOT the actual Grove Dental Associates location, which is confirmed to be at 2 E 22nd St (a different address/suite). Per the address-match rule this location is Blacher's solo practice; classified true_independent despite the 'Grove Dental' name in our record.",
+   "searched": [
+    "Grove Dental Lombard IL 450 E 22nd St dentist",
+    "\"Grove Dental\" Lombard \"450\" 22nd",
+    "Brett Blacher DDS Lombard IL 450 E 22nd St"
+   ]
+  },
+  {
+   "location_id": "69005d71459d982a",
+   "practice_name": "SHARON SZESZYCKI DDS & MICHAEL A CERONE DDS LTD",
+   "zip": "60148",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://b3-assets.dandb.com/businessdirectory/szeszyckisharonddsmichaelaceroneddsltd-lombard-il-24385071.html",
+    "https://www.healthgrades.com/dentist/dr-michael-cerone-3hg6d"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "D&B business directory confirms this entity (founded 2001) at 845 S Main St Ste 303, Lombard, matching two named practicing dentists, Dr. Sharon Szeszycki and Dr. Michael Cerone. NPPES authorized official (Michael Cerone) matches. Two-dentist, single-location, dentist-owned practice sharing a building with (but distinct from) A Dental Place in a different suite.",
+   "searched": [
+    "Szeszycki Cerone DDS Lombard IL dentist 845 Main"
+   ]
+  },
+  {
+   "location_id": "dc7c7d09838299a3",
+   "practice_name": "Markett Dental",
+   "zip": "60148",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dentistryoflombard.com/",
+    "https://www.yelp.com/biz/jeffrey-markett-dds-lombard"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own website (dentistryoflombard.com) and directory listings confirm Dr. Jeffrey Markett, DDS has practiced solo at 426 W 22nd St, Lombard since 1985, with no corporate parent or DSO reference found. Classic solo owner-operator.",
+   "searched": [
+    "Markett Dental Lombard IL 426 W 22nd St dentist"
+   ]
+  },
+  {
+   "location_id": "10dccf210be5a4af",
+   "practice_name": "Rinando Dental",
+   "zip": "60148",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://careers.nadentalgroup.com/search/jobdetails/endodontist---grove-dental/23d037b1-4061-4061-a989-46e8498bb340",
+    "https://www.nadentalgroup.com/",
+    "https://www.grovedental.com/about-us"
+   ],
+   "evidence_artifacts": [
+    "R4_protected_network:north_american_dental_group(NADG)_operating_as_Grove_Dental_Associates"
+   ],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:north_american_dental_group",
+   "reasoning": "This address (2 E 22nd St Ste 201) is the Lombard office of Grove Dental Associates (4 IL locations: Downers Grove, Bolingbrook, Lombard, Wheaton), which NADG's own careers page documents as an NADG-affiliated practice (a DSO founded 2008 with 240+ affiliated locations across 15 states, PE-backed per PitchBook). Dr. Victoria Rinando practices at this Grove Dental Associates address. Because this network spans well over 10 locations, per protocol this is flagged R4_protected_network for centralized one-network-one-decision review rather than unilaterally tiered here.",
+   "searched": [
+    "Rinando Dental Lombard IL \"2 E 22nd\"",
+    "\"Victoria Rinando\" Grove Dental Associates Lombard",
+    "\"Grove Dental Associates\" investor OR \"private equity\" OR acquired OR \"portfolio company\"",
+    "\"North American Dental Group\" \"Grove Dental\" locations Lombard"
+   ]
+  },
+  {
+   "location_id": "3caa83a9bb417659",
+   "practice_name": "Moccio Dental",
+   "zip": "60148",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-raymond-moccio-37lf2"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directory listings confirm Dr. Raymond M. Moccio, DDS practices solo at 2801 S Fairfield Ave Ste I, Lombard, with long patient tenure referenced in reviews (fillings from 20 years ago). No corporate or DSO signal found.",
+   "searched": [
+    "Moccio Dental Lombard IL 2801 S Fairfield Ave dentist"
+   ]
+  },
+  {
+   "location_id": "979a18327d3c4595",
+   "practice_name": "Kolb Dental",
+   "zip": "60148",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.grovedental.com/dentist-lombard",
+    "https://careers.nadentalgroup.com/search/jobdetails/endodontist---grove-dental/23d037b1-4061-4061-a989-46e8498bb340",
+    "https://www.yelp.com/biz/kolb-jay-g-dds-lombard"
+   ],
+   "evidence_artifacts": [
+    "R4_protected_network:north_american_dental_group(NADG)_operating_as_Grove_Dental_Associates"
+   ],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:north_american_dental_group",
+   "reasoning": "Dr. Jay G. Kolb, DDS practices at 2 E 22nd St Ste 201, the same suite documented as Grove Dental Associates' Lombard office, and search results explicitly list him as 'Partner at Grove Dental Associates.' Same NADG-affiliated multi-location DSO network as the Rinando Dental record in this unit (>10 locations nationally). Flagged R4_protected_network rather than tiered unilaterally.",
+   "searched": [
+    "Kolb Dental Lombard IL dentist",
+    "\"Jay Kolb\" \"Grove Dental\" Lombard"
+   ]
+  },
+  {
+   "location_id": "ca9131ddd826f285",
+   "practice_name": "Cullinan Dental",
+   "zip": "60148",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-patrick-cullinan-xxd2m",
+    "https://www.yelp.com/biz/cullinan-patrick-dds-lombard"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directory listings consistently show Dr. Patrick Cullinan, DDS as a solo general dentist at 129 E Roosevelt Rd, Lombard. No corporate parent, DSO, or second owner-dentist found.",
+   "searched": [
+    "Cullinan Dental Lombard IL 129 E Roosevelt Rd dentist"
+   ]
+  },
+  {
+   "location_id": "3a0dddc56693665a",
+   "practice_name": "CATER DENTAL, PLLC",
+   "zip": "60148",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://lombarddentistry.com/",
+    "https://lombarddentistry.com/meet-dr-cater/",
+    "https://lombarddentistry.com/team/rhett/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice's own site (lombarddentistry.com) confirms a father-son dentist team, Dr. Mathew Cater and Dr. Rhett Cater, both practicing at the single 894 E Roosevelt Rd office. NPPES authorized official (Rhett Cater) matches a named owner-dentist. Multi-dentist, single-location, family/dentist-owned -> single_loc_group.",
+   "searched": [
+    "Cater Dental Lombard IL 894 E Roosevelt Rd Rhett Cater"
+   ]
+  },
+  {
+   "location_id": "0827d234c81dc065",
+   "practice_name": "DUPAGE SLEEP CENTER LLC",
+   "zip": "60148",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/group-directory/il-illinois/lombard/dupage-sleep-center-llc-xq7pq8",
+    "https://providers.sharecare.com/doctor/dr-sheela-b-gandhi"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directory listings confirm Dr. Sheela Gandhi, DDS is the sole named dentist at DuPage Sleep Center LLC (2500 S Highland Ave Ste 325), a solo dental sleep-medicine practice. NPPES authorized official (Sheela Gandhi) matches. No corporate parent or DSO reference found.",
+   "searched": [
+    "DuPage Sleep Center Lombard IL 2500 Highland Ave Sheela Gandhi dentist"
+   ]
+  },
+  {
+   "location_id": "06eeb46078c06322",
+   "practice_name": "CHRISTINE MICHAELS DDS PC",
+   "zip": "60148",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.cmorthodontics.com/",
+    "https://www.cmorthodontics.com/meet-dr-christine-michaels",
+    "https://www.cmorthodontics.com/naperville-office"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:MICHAELS_CHRISTINE",
+   "reasoning": "Christine Michaels Orthodontics' own website confirms Dr. Christine Michaels (established practice 1990) personally owns and operates offices in Naperville and Lombard IL (also serving Plainfield), with no corporate or DSO involvement. NPPES authorized official matches. Dentist-owned, 2+ locations -> dentist_multi.",
+   "searched": [
+    "Christine Michaels DDS Lombard IL 2500 Highland Ave",
+    "\"Christine Michaels\" orthodontics Naperville Lombard owner practice"
+   ]
+  },
+  {
+   "location_id": "dae4043f4847e4f3",
+   "practice_name": "Carney James D DDS",
+   "zip": "60148",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/carney-james-d-dds-lombard",
+    "https://doctor.webmd.com/doctor/james-carney-93b5cde7-d11e-406c-8dd3-385c130180af-overview"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple directories (Yelp last updated May 2026) show Dr. James Carney, DDS as an active general dentist at 14 Lilac Ln, Lombard, with no second dentist name or corporate signal found; the practice's own domain (carneydental.com) is currently a parked/for-sale page, which is a mild concern but directory listings show no closure indication, so this was not treated as closure_suspect. Confidence medium due to the lapsed website and an unresolved provider_count=2 vs. only one named dentist.",
+   "searched": [
+    "Carney James D DDS Lombard IL 14 Lilac Ln dentist",
+    "\"James Carney\" DDS Lombard dentist closed retired 2025 2026"
+   ]
+  },
+  {
+   "location_id": "3282c87164d79e21",
+   "practice_name": "PICCHETTI DENTAL CARE",
+   "zip": "60148",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://doctor.webmd.com/practice/picchetti-dental-care-6d4ca70a-1701-414e-9fff-179e2ce16640",
+    "http://www.picchettidentalcare.com/hours_location.html"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directory listing shows Picchetti Dental Care (660 E Roosevelt Rd, Lombard) has 2 physicians on staff, consistent with the Picchetti family practice (Dr. James Picchetti, matching the NPPES authorized official, plus a second Picchetti dentist). Own-domain site confirms single location. No corporate/DSO signal found.",
+   "searched": [
+    "Picchetti Dental Care Lombard IL 660 E Roosevelt Rd"
+   ]
+  },
+  {
+   "location_id": "b96354c425aa02ba",
+   "practice_name": "DEAN P NICHOLAS DDS & ASSOC LTD",
+   "zip": "60148",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.zocdoc.com/dentist/dean-dino-nicholas-dds-321801",
+    "https://www.carecredit.com/doctor-locator/lombard-il/dr-dinos-dental-oasis-dean-nicholas-dds-fvw348/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple directories confirm Dr. Dean (Dino) P. Nicholas, DDS ('Dr. Dino's Dental Oasis') is the solo owner-dentist at 510 E 22nd St, Lombard, a high-volume family practice. No corporate parent or DSO reference found; NPPES authorized official (Celeste Nicholas) is consistent with a spouse/office-manager role rather than a competing owner.",
+   "searched": [
+    "\"Dean P Nicholas\" DDS Lombard IL 510 E 22nd St dentist"
+   ]
+  },
+  {
+   "location_id": "93d551e7aa890ce4",
+   "practice_name": "Dentistry With Sedation",
+   "zip": "60148",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.sandersfamilydental.com/",
+    "https://www.sedation-dentistry.com/"
+   ],
+   "evidence_artifacts": [
+    "address_phone_match:929_s_main_st=Sanders_Family_Dental_sedation_brand"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "'Dentistry With Sedation' at 929 S Main St Ste 100 (phone 630-620-0929) is the sedation-focused marketing brand of Sanders Family Dental, confirmed on sandersfamilydental.com/sedation-dentistry.com to be run by a brother-sister dentist pair, Dr. Leslie Sanders and Dr. David Sanders, at a single Lombard location (established 1971, family-owned). No corporate or DSO signal found.",
+   "searched": [
+    "\"Dentistry With Sedation\" Lombard IL 929 S Main St dentist",
+    "Sanders Family Dental Lombard IL locations Leslie Sanders"
+   ]
+  }
+ ]
+}

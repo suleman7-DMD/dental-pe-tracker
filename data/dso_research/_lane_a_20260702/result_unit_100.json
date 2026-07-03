@@ -1,0 +1,361 @@
+{
+ "unit_id": "laneA_100",
+ "classifications": [
+  {
+   "location_id": "b1f77f978fc615fb",
+   "practice_name": "SMILE SENSE",
+   "zip": "60625",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "NPI registry API confirms org name 'SMILE SENSE' at exactly 4941 N Kedzie Ave, Chicago 60625 (npiregistry.cms.hhs.gov), but the phone digits differ from the unit record and the address is independently Yelp-listed as 'Dental Edge' (est. 2012) with no owner name given. No dentist name, website, or DSO brand could be tied specifically to 'Smile Sense' at this suite, and a nearby 1st Family Dental URL slug referencing 'Dental Edge' actually resolves to a different address (4901 N Kedzie) with no merger language. Insufficient to assign a tier.",
+   "searched": [
+    "Smile Sense dental 4941 N Kedzie Ave Chicago",
+    "\"Smile Sense\" dental Chicago 60625 dentist",
+    "\"Smile Sense\" NPI 1932465804 Chicago dentist Islam Naem",
+    "\"Dental Edge\" 4941 N Kedzie Ave Chicago dentist owner"
+   ]
+  },
+  {
+   "location_id": "dddb5ba57c531064",
+   "practice_name": "OBEID DENTAL INC",
+   "zip": "60625",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://1stfamilydental.com/",
+    "https://npino.com/dental-clinic/1740464874-1st-family-dental-of-lincoln/",
+    "https://www.familydentaloflincoln.com/locations/family-dental-of-lincoln/"
+   ],
+   "evidence_artifacts": [
+    "owner_reach_locations=15 across 14 IL ZIPs for AO Vesna Belkic",
+    "1stfamilydental.com self-reports 16 locations (7 Chicago + 9 suburban)"
+   ],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:1st_family_dental",
+   "reasoning": "Confirmed: this address (5206 N Lincoln Ave) operates as 'Family Dental of Lincoln,' one of 1st Family Dental's own listed locations (npino + familydentaloflincoln.com), consistent with the existing dso_regional/affiliated_dso tag. The AO (Vesna Belkic) reaches 15 locations and the brand's own site claims 16 total locations, both well past the 10-location protected-network threshold, and no ownership/PE details were disclosed on the brand site. Per protocol this is deferred to a one-network-one-decision review rather than classified here. R4_protected_network:1st Family Dental.",
+   "searched": [
+    "\"1st Family Dental\" 5206 N Lincoln Ave Chicago locator",
+    "1stfamilydental.com site fetch (ownership check)"
+   ]
+  },
+  {
+   "location_id": "b0788c427d522d6c",
+   "practice_name": "LINCOLN SQUARE DENTAL ASSOCIATES, LTD.",
+   "zip": "60625",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npino.com/dental-clinic/1881768711-lincoln-square-dental-associates,-ltd./",
+    "https://www.medicarelist.com/dental-clinic/lincoln-square-dental-associates-ltd-chicago-il/",
+    "https://www.healthgrades.com/dentist/dr-natalija-simovic-bwmjyhp078"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple independent directories (npino, medicarelist, Healthgrades/Sharecare) confirm NPI 1881768711 / this exact address is Dr. Natalija (Natalie) Simovic's single-office general dental practice, with no other locations or DSO affiliation found. Solo dentist owner-operator at one address.",
+   "searched": [
+    "Lincoln Square Dental Associates 4770 N Lincoln Ave Chicago Simovic"
+   ]
+  },
+  {
+   "location_id": "933e211acee0a2d0",
+   "practice_name": "SMILEDENTIST, P.C.",
+   "zip": "60625",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.smiledentist.net/",
+    "https://www.yelp.com/biz/smiledentist-chicago",
+    "https://findadentist.ada.org/dentists/dr-sang-u-woo-chicago-0038V00002yk59UQAQ-a1C8V00000lWeyLUAS"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:WOO_SANG",
+   "reasoning": "SmileDentist P.C.'s own site (smiledentist.net) and directory listings confirm Dr. Sang (Sam) Woo operates this Chicago office plus a second office at 303 Andrews Drive, Belvidere, IL under the same practice/site, i.e. a small dentist-owned 2-location group, not a branded or stealth DSO. No corporate parent or PE sponsor found.",
+   "searched": [
+    "SmileDentist P.C. 3403 W Lawrence Ave Chicago dentist",
+    "smiledentist.net site fetch (ownership check)"
+   ]
+  },
+  {
+   "location_id": "b8f021d3b51cfe3f",
+   "practice_name": "Kearney Dental",
+   "zip": "60625",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60625/invite-lisa-kearney-dds-10683",
+    "https://www.healthgrades.com/dentist/dr-lisa-kearney-xwkvd",
+    "https://providers.sharecare.com/doctor/dr-lisa-k-kearney"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directory listings (Doctors Network, Healthgrades, Sharecare) confirm Dr. Lisa Kearney, DDS practices solo at 4751 N Kedzie Ave, 2nd Floor (same building houses other unrelated tenants like Metro Smiles and Erie Dental, distinguished by suite/phone). No multi-location or DSO signal found for this NPI.",
+   "searched": [
+    "Kearney Dental 4751 N Kedzie Ave Chicago"
+   ]
+  },
+  {
+   "location_id": "1cd19b778661bf18",
+   "practice_name": "Molar City",
+   "zip": "60625",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npiregistry.cms.hhs.gov/api/?number=1669568978&version=2.1",
+    "https://www.yelp.com/biz/enriquez-jose-l-dmd-chicago",
+    "https://www.medicarelist.com/dentist/dr-jose-limiac-enriquez-dmd-chicago-il/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The unit's on-file name 'Molar City' does not match this NPI (the real Molar City is Dr. Kevin Ng's practice a few doors down at 4620 N Western Ave with a different phone). The NPI registry API confirms NPI 1669568978 is Dr. Jose Limiac Enriquez, DMD at exactly 4611 N Western Ave / (773) 878-8840, which matches Yelp's 'Enriquez Jose L DMD' listing at the same address and phone -- a solo general dentist, no DSO signal.",
+   "searched": [
+    "Molar City dental 4611 N Western Ave Chicago",
+    "\"Molar City\" Chicago dental (773) 878-8840",
+    "NPI 1669568978 Molar City OR dental 4611 Western Chicago",
+    "npiregistry.cms.hhs.gov API fetch for NPI 1669568978",
+    "\"Jose Limiac\" dentist Chicago 4611 Western"
+   ]
+  },
+  {
+   "location_id": "01e91acacc748597",
+   "practice_name": "LAWRENCE DENTAL GROUP P.C.",
+   "zip": "60625",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "http://www.lawrencedentalgroup.com/",
+    "https://www.linkedin.com/in/george-korovilas-4991159",
+    "https://www.healthgrades.com/dentist/dr-george-korovilas-3xffk"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "LinkedIn explicitly lists George Korovilas as 'Owner, Lawrence Dental Group, P.C.'; the practice's own site and directory listings show a single Chicago office (3607 W Lawrence Ave) since 1997/1994 with no other locations or corporate branding found.",
+   "searched": [
+    "Lawrence Dental Group Korovilas 3607 W Lawrence Ave Chicago"
+   ]
+  },
+  {
+   "location_id": "1893859fc022bc66",
+   "practice_name": "Yam Dental",
+   "zip": "60625",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/yam-wai-sang-dds-chicago",
+    "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60625/invite-wai-yam-dds-12303",
+    "https://www.welli.com/care/provider/1386702199"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple directories confirm Dr. Wai (Sang) Yam, DDS operates a solo general practice founded 2007 at 2254 W Foster Ave with ~4 employees; no other locations or corporate affiliation found for this NPI.",
+   "searched": [
+    "Yam Dental 2254 W Foster Ave Chicago dentist"
+   ]
+  },
+  {
+   "location_id": "313832024f4e087c",
+   "practice_name": "Heiderman Dental",
+   "zip": "60625",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/heiderman-ronald-a-dds-chicago",
+    "https://npiprofile.com/npi/1720148059",
+    "https://www.healthgrades.com/dentist/dr-ronald-heiderman-22x6j"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directory listings (Yelp, npiprofile, Healthgrades, WebMD) uniformly show Dr. Ronald A. Heiderman, DDS as a solo general dentist at 4806 N Hamilton Ave with no other locations or DSO signals.",
+   "searched": [
+    "Heiderman Dental 4806 N Hamilton Ave Chicago dentist"
+   ]
+  },
+  {
+   "location_id": "e4dbabe89b306cf4",
+   "practice_name": "Zaffarkhan Dental",
+   "zip": "60625",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/physician/dr-mohammad-zaffarkhan-xs4nb",
+    "https://www.yelp.com/biz/zaffarkhan-mohammad-dds-chicago",
+    "https://www.sharecare.com/doctor/dr-mohammad-zaffarkhan"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directory listings confirm Dr. Mohammad Zaffarkhan, DDS/MD practices solo at 3211 W Lawrence Ave (operating name 'Family Dental Clinic PC'), no other locations or DSO branding found. Practice appears open (current Yelp/Sharecare listings, low review volume) with no closure indication, so not treated as closure_suspect despite low ratings.",
+   "searched": [
+    "Zaffarkhan Dental 3211 W Lawrence Ave Chicago dentist"
+   ]
+  },
+  {
+   "location_id": "101ce16fed6cc8d5",
+   "practice_name": "SUBURBAN FAMILY DENTAL CENTER, INC.",
+   "zip": "60625",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.superpages.com/bp/chicago-il/suburban-family-dental-center-loida-t-preza-dds-L2640375321.htm",
+    "https://doctor.webmd.com/practice/suburban-family-dental-center-8f38cf8e-39f1-4107-9959-a0ff29fac9a1",
+    "https://www.yelp.com/biz/preza-loida-ticzon-dmd-schaumburg"
+   ],
+   "evidence_artifacts": [
+    "Same dentist (Loida Ticzon Preza) listed at Chicago 5214 N Western Ave, Skokie 9631 Gross Point Rd, and Schaumburg 999 N Plaza Dr"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:PREZA_LOIDA",
+   "reasoning": "Directory listings and patient reviews confirm Dr. Loida Ticzon Preza, DMD personally owns/runs Suburban Family Dental Center plus offices in Skokie and Schaumburg (patients describe it as 'her own dental practice with a staff'), a 3-location dentist-owned group. No PE/DSO branding found.",
+   "searched": [
+    "Suburban Family Dental Center 5214 N Western Ave Chicago Loida Preza",
+    "\"Loida Preza\" dentist Skokie Schaumburg Chicago own practice"
+   ]
+  },
+  {
+   "location_id": "eddb5b0dad820479",
+   "practice_name": "DENTAL IMAGE",
+   "zip": "60625",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.chicagodentalimage.com/our-locations",
+    "https://www.facebook.com/DentalImageAbdulMajzoubDDS/",
+    "https://www.yelp.com/biz/majzoub-abdul-dds-dental-image-chicago"
+   ],
+   "evidence_artifacts": [
+    "Facebook page name 'Dental Image - Abdul Majzoub, DDS' ties both locations to the same dentist"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:MAJZOUB_ABDUL",
+   "reasoning": "The practice's own site lists two locations (4724 N Kedzie Ave and 1466 S Michigan Ave, Chicago), and directory/Facebook listings confirm Dr. Abdul Majzoub, DDS as the named dentist-owner across both under the same 'Dental Image' brand. No corporate parent or management company disclosed anywhere.",
+   "searched": [
+    "\"Dental Image\" 4724 N Kedzie Ave Chicago dentist Terri Cruz",
+    "chicagodentalimage.com/our-locations site fetch",
+    "\"Dental Image\" Chicago Kedzie Michigan Ave owner dentist Majzoub"
+   ]
+  },
+  {
+   "location_id": "d861e13363499161",
+   "practice_name": "Block Dental",
+   "zip": "60625",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.zocdoc.com/dentist/sanford-block-dds"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Zocdoc and NPI-linked search results confirm Dr. Sanford Block, DDS practices at 5145 N California Ave, matching this NPI (1174660872); no evidence of additional locations or DSO/PE affiliation was found.",
+   "searched": [
+    "Block Dental 5145 N California Ave Chicago dentist",
+    "Block Dental 5145 N California Chicago DDS NPI 1174660872"
+   ]
+  },
+  {
+   "location_id": "06c08fd7734fa91c",
+   "practice_name": "Foster Avenue Dental Svc",
+   "zip": "60625",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.drtietzer.com/chicago-office/",
+    "https://www.yelp.com/biz/foster-avenue-dental-chicago",
+    "https://www.opencare.com/dentists/chicago-il/dr-gregory-tietzer-dds-24630210378c/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:TIETZER_GREGORY",
+   "reasoning": "Dr. Gregory Tietzer's own site (drtietzer.com) lists two offices under his single-dentist practice: 3318 W Foster Ave, Chicago and 1400 E Golf Rd, Des Plaines, IL. The site frames both as 'our locations' under one practice name with no separate ownership or corporate parent, matching the dentist_multi definition.",
+   "searched": [
+    "\"Foster Avenue Dental\" 3318 W Foster Ave Chicago dentist",
+    "drtietzer.com/chicago-office site fetch"
+   ]
+  },
+  {
+   "location_id": "7a8b4204dd0849f0",
+   "practice_name": "ROBERT I. WIER DDS, LTD",
+   "zip": "60625",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/robert-s-wier-dds-chicago",
+    "https://www.bbb.org/us/il/chicago/profile/dentist/robert-wier-dr-inc-0654-88135141"
+   ],
+   "evidence_artifacts": [
+    "Aggregator profiles attach 'additional locations' in Arlington Heights/Warrenville, but bios there (1991 Loyola grad, young child) conflict with the 30+-year, 1965 UIC-grad Robert I. Wier at this address -- likely a different, similarly-named dentist, not confirmed same owner"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Yelp/BBB confirm Robert I. Wier, DDS has practiced 30+ years at 4720 N Lincoln Ave with a second family provider (matches family_practice/provider_count=2 in source data). A same-name 'Robert Wier' also appears in Arlington Heights/Warrenville listings, but conflicting bio details (different dental school/year, personal facts) suggest a distinct dentist, so this is scored as a single-location, dentist-owned multi-provider practice rather than escalated to dentist_multi.",
+   "searched": [
+    "\"Robert Wier\" DDS dental 4720 N Lincoln Ave Chicago",
+    "\"Robert Wier\" dental Arlington Heights Warrenville Illinois"
+   ]
+  },
+  {
+   "location_id": "358f255157adb8f6",
+   "practice_name": "Farkas Dental",
+   "zip": "60625",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.moskindentalassociates.com/",
+    "https://www.moskindentalassociates.com/location/il/chicago/lincoln-square"
+   ],
+   "evidence_artifacts": [
+    "Exact address (5131 N Lincoln Ave) and exact phone (773-271-5596) match Moskin Dental Associates / Dr. Kimberly Chan, not the original 'Farkas Dental' name on file"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The on-file name 'Farkas Dental' (Dr. Marius Farkas) appears superseded -- the current occupant at the exact address and phone is Moskin Dental Associates, a single-location boutique practice co-owned by two dentists (Dr. Kimberly Chan and Dr. Jeannie Moskin, practicing there 25 years), explicitly described as independently owned with no corporate/management-company affiliation. Matches source data's small_group/2-provider classification at one location.",
+   "searched": [
+    "Farkas Dental 5131 N Lincoln Ave Chicago dentist",
+    "\"(773) 271-5596\" dental Chicago",
+    "moskindentalassociates.com site fetch (ownership + locations)"
+   ]
+  }
+ ]
+}

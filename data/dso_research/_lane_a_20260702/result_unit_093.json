@@ -1,0 +1,334 @@
+{
+ "unit_id": "laneA_093",
+ "classifications": [
+  {
+   "location_id": "68a150e93f227100",
+   "practice_name": "CHATHAM DENTALWORKS PC",
+   "zip": "60617",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/baker-reginald-t-dds-chicago-2",
+    "https://www.localmed.com/providers/dr-reginald-baker-dds-42b2664/",
+    "https://www.healthgrades.com/dentist/dr-reginald-baker-ylh9b"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:BAKER_REGINALD",
+   "reasoning": "Yelp confirms Dr. Reginald T. Baker DDS operates the practice at 8803 S Stony Island Ave (this address), and LocalMed/Healthgrades show Dr. Baker also practices as 'Team Dental Family Dentistry' with a South Shore office at 2235 E 71st St (zip 60649), matching the ctx owner_reach of 2 IL locations (60617/60649). No corporate parent or DSO signal found; this is a dentist-owned 2-location operation, so dentist_multi rather than a headline DSO tier. Naming across listings (Chatham Dentalworks/Stony Island Dentalworks/Team Dental) is inconsistent, hence medium not high confidence.",
+   "searched": [
+    "Chatham Dentalworks 8803 S Stony Island Chicago dentist",
+    "Reginald Baker DDS dentist Chicago 60649 locations"
+   ]
+  },
+  {
+   "location_id": "04d2c6018cf16dd6",
+   "practice_name": "FAMILY DENTAL CARE",
+   "zip": "60617",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.familydentalcare.com/",
+    "https://www.familydentalcare.com/south-chicago-office/",
+    "https://www.yelp.com/biz/family-dental-care-chicago-2"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:family_dental_care",
+   "reasoning": "The practice's own site (familydentalcare.com) confirms this South Chicago office (3009 E 92nd St) is one of Family Dental Care, PC's Chicago-Southland locations; independent web results describe Family Dental Care as 'the largest, privately owned dental group in Chicago' with ~7-8 offices, founded by Dr. Alexander G. Alemis in 1986 -- i.e. dentist-owned, not a PE/corporate DSO. Multiple named dentists (Alemis, Boyle, Vasdekis, etc.) staff the group across locations. Classified dentist_multi per the rule that a dentist-owned multi-location group is never a DSO headline tier; the internal 'dso_regional' entity_classification does not match documentary evidence of dentist ownership.",
+   "searched": [
+    "Family Dental Care 3009 E 92nd St Chicago IL dentist",
+    "\"Family Dental Care\" Chicago Illinois founder owner \"Dr.\" dentist owned since"
+   ]
+  },
+  {
+   "location_id": "641bc89abd72395b",
+   "practice_name": "Sukovic Dental",
+   "zip": "60617",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-maja-sukovic-x4ygs",
+    "https://npiprofile.com/npi/1316160922"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Healthgrades and the NPI profile confirm Dr. Maja Sukovic, DDS practices solo General Dentistry at 10656 S Ewing Ave, matching this location exactly. No other locations, brand, or corporate parent appear anywhere in results. Single-provider, single-location, dentist owner-operator -> true_independent, high confidence.",
+   "searched": [
+    "Sukovic Dental 10656 S Ewing Ave Chicago IL"
+   ]
+  },
+  {
+   "location_id": "d79463b4e3511c5d",
+   "practice_name": "FAMILY DENTAL CARE",
+   "zip": "60617",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.familydentalcare.com/eastside-chicago-office/",
+    "https://www.familydentalcare.com/",
+    "https://www.yelp.com/biz/family-dental-care-chicago-5"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:family_dental_care",
+   "reasoning": "familydentalcare.com's own East Side Chicago office page confirms 10601 S Ave E as one of Family Dental Care, PC's locations, the same dentist-owned Chicago-area group covered for the 3009 E 92nd St row (founded 1986 by Dr. Alexander Alemis, ~7-8 locations, described as the largest privately-owned dental group in Chicago). Dr. Spyro Vallianatos and other named dentists staff the group. Same reasoning applies: dentist-owned multi-location practice, not a PE/corporate DSO, so dentist_multi.",
+   "searched": [
+    "Family Dental Care 10601 S Avenue E Chicago IL dentist",
+    "\"Family Dental Care\" Chicago Illinois founder owner \"Dr.\" dentist owned since"
+   ]
+  },
+  {
+   "location_id": "a05bebb920cab943",
+   "practice_name": "C.E.WATSON D.D.S. LTD.",
+   "zip": "60617",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-cheryl-watson-3dplx",
+    "https://opennpi.com/provider/1255541884"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Healthgrades and the NPI record confirm Dr. Cheryl Watson, DDS operates C.E. Watson D.D.S. Ltd. as a solo general dentistry practice at 8325 S Stony Island Ave, matching this location. No other locations or corporate affiliation found. Single-provider owner-operator -> true_independent, high confidence.",
+   "searched": [
+    "C.E. Watson DDS 8325 S Stony Island Chicago dentist"
+   ]
+  },
+  {
+   "location_id": "804c6f3586b12a17",
+   "practice_name": "SHETH DENTAL ASSOC. P.C.",
+   "zip": "60617",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.vitals.com/practice/sheth-dental-associates-pc-ef332e5d-05f7-4842-ab33-2ca8216f6c75",
+    "https://doctor.webmd.com/doctor/pramila-sheth-e2864fc2-6591-4578-9785-cacd8089a65b-overview"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Vitals lists Sheth Dental Associates PC (3705 E 106th St) as having 3 providers covering dentistry, and WebMD confirms Dr. Pramila Sheth practices there; only this one address appears in results, no other locations or corporate brand. This reads as a dentist-owned multi-provider practice at a single location -> single_loc_group. Medium confidence since the exact ownership split among the 3 providers isn't independently documented.",
+   "searched": [
+    "Sheth Dental Associates 3705 E 106th St Chicago IL"
+   ]
+  },
+  {
+   "location_id": "ac63573a531a023a",
+   "practice_name": "Attalla Dental",
+   "zip": "60617",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dentistsouthsidechicago.com/meet-our-doctor.php",
+    "https://findadentist.ada.org/dentists/dr-mamdouh-m-attalla-chicago-0038V00002yk1EyQAI-a1C8V00000lYPEbUAO",
+    "https://www.healthgrades.com/dentist/dr-mamdouh-attalla-ym24f"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Attalla's own practice site (dentistsouthsidechicago.com) and the ADA Find-a-Dentist listing confirm Dr. Mamdouh Attalla, DDS has run this solo general-dentistry practice at 8541 S Stony Island Ave since 1990, with an on-site denture lab. No corporate parent or additional locations found. Single-provider owner-operator -> true_independent, high confidence.",
+   "searched": [
+    "Attalla Dental 8541 S Stony Island Ave Chicago IL"
+   ]
+  },
+  {
+   "location_id": "d12e1ac0c6245d18",
+   "practice_name": "Wiese Dental",
+   "zip": "60617",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-thomas-wiese-2yj9d",
+    "https://us.centralindex.com/company/500637467435008/ewing-dental-office/chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Healthgrades and Central Index confirm Dr. Thomas Wiese, DDS runs the 'Ewing Dental Office' solo at 10712 S Ewing Ave, matching this location and phone number exactly. No brand, parent company, or additional locations found. Single-provider owner-operator -> true_independent, high confidence.",
+   "searched": [
+    "Wiese Dental 10712 S Ewing Ave Chicago IL dentist"
+   ]
+  },
+  {
+   "location_id": "81ca5cc5fa7b30b1",
+   "practice_name": "Delk Dental",
+   "zip": "60617",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dentalplans.com/dentists/illinois/chicago/60617/dr-alvin-delk-18699/",
+    "https://www.vitals.com/dentists/Dr_Alvin_Delk"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "DentalPlans and Vitals confirm Dr. Alvin L. Delk Jr, DDS practices at 1725 E 87th St, Chicago IL 60617, matching phone number and address exactly. No other locations, brand, or corporate affiliation found. Single-provider owner-operator -> true_independent, high confidence.",
+   "searched": [
+    "Delk Dental 1725 E 87th St Chicago IL dentist"
+   ]
+  },
+  {
+   "location_id": "3f039b6234b47b02",
+   "practice_name": "ESS DENTAL",
+   "zip": "60617",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npiprofile.com/npi/1558632604",
+    "https://www.dentalplans.com/dentists/il/chicago/60623/dr-funmi-adeleke-229865"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "NPI Profile confirms ESS Dental at 10554 S Ewing Ave #2 is operated by Dr. Funmi Adeleke, DDS (matches the ctx authorized official), with IL license number listed; no DSO brand or additional corporate signal found. Solo dentist owner-operator -> true_independent. Medium confidence because the internal record's provider_count=0 is an anomaly relative to web evidence of an active solo practice.",
+   "searched": [
+    "ESS Dental 10554 S Ewing Ave Chicago IL Funmi Adeleke"
+   ]
+  },
+  {
+   "location_id": "cb3568f129c1864a",
+   "practice_name": "Garuba Dental",
+   "zip": "60617",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://lawalgaruba.dr-leonardo.com/",
+    "https://lawalgaruba.dr-leonardo.com/locations.html"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Lawal Garuba's own practice site confirms a single office location at 3528 E 118th St, Chicago IL 60617-7314 (phone 877-692-8686 matches), with no second address listed on his locations page. He is separately affiliated with Aunt Martha's community health center as staff, but that is a distinct employment relationship, not a second owned location. Solo dentist owner-operator -> true_independent, high confidence.",
+   "searched": [
+    "Garuba Dental 3528 E 118th St Chicago IL dentist"
+   ]
+  },
+  {
+   "location_id": "00336cbe03e4f9dc",
+   "practice_name": "CHICAGO STAR DENTAL PC",
+   "zip": "60617",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "closure_suspect: no web presence found for a dental practice at 3641 E 108th St under any name; Dr. Yaqin Dawoud's documented practice is 'Stony Island Dental' at a different address (1600 E 93rd St), and one Yelp/LoopNet result places 'Mohana Medical Center' (a non-dental family practice) at 3641 E 108th St. Could not confirm this NPI's registered address currently houses an operating dental office, so no tier can be earned from web evidence. Ctx owner_reach (3 locations under Dawoud) is noted but is context, not evidence.",
+   "searched": [
+    "Chicago Star Dental 3641 E 108th St Chicago IL Yaqin Dawoud",
+    "\"Chicago Star Dental\" PC Chicago IL dentist",
+    "\"3641 E 108th\" Chicago dental OR dentist"
+   ]
+  },
+  {
+   "location_id": "1d82ee7ff7152bb0",
+   "practice_name": "Anonuevo Dental",
+   "zip": "60618",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-lourdes-anonuevo-xd6qd",
+    "https://findadentist.ada.org/dentists/dr-lourdes-t-anonuevo-chicago-0038V00002yk1KwQAI-a1C8V00000lVt3AUAS"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Healthgrades and the ADA Find-a-Dentist listing confirm Dr. Lourdes T. Anonuevo, DDS practices General Dentistry at 3549 W Irving Park Rd, Chicago IL 60618, matching this location exactly. No brand, parent company, or other locations found. Single-provider owner-operator -> true_independent, high confidence.",
+   "searched": [
+    "Anonuevo Dental 3549 W Irving Park Rd Chicago IL dentist"
+   ]
+  },
+  {
+   "location_id": "679c399ed54b59b4",
+   "practice_name": "ARBELA BITHYOU DMD, P.C.",
+   "zip": "60618",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/belmont-and-western-dental-clinic-chicago",
+    "https://www.uptowndentistry.com/drarbelabithyou",
+    "https://www.carecredit.com/doctor-locator/chicago-il/dr-ali-ektera-assoc-dba-belmont-western-rgg666/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This address (2308 W Belmont Ave) operates as 'Belmont & Western Dental Clinic,' founded in 1995 by a UIC dental graduate (per CareCredit listed as 'Dr. Ali Ektera Assoc dba Belmont & Western'), with multiple dentists (~7-9 providers) practicing there, matching provider_count=7 and the entity's P.C. structure. Dr. Bithyou is confirmed as one of the practicing dentists there. No DSO brand, management company, or non-dentist controller surfaced. Multi-dentist, single-location, dentist-owned -> single_loc_group. Medium confidence given some ambiguity reconciling the NPI's registered name (Bithyou) with the CareCredit listing naming Ektera.",
+   "searched": [
+    "Arbela Bithyou DMD 2308 W Belmont Ave Chicago IL dentist",
+    "Belmont and Western Dental Clinic Chicago owner providers Bithyou"
+   ]
+  },
+  {
+   "location_id": "2296fce1732d5ce8",
+   "practice_name": "MOHAMMAD R EKHTERA DDS PC",
+   "zip": "60618",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.enameldentalsalon.com/",
+    "https://npino.com/dental-clinic/1922407667-mohammad-reza-ekhtera,-dds,-pc/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This is 'Enamel Dental Salon,' branded and operating at 3190 N Elston Ave under NPI entity Mohammad R Ekhtera DDS PC, matching address/phone. A separately-branded and separately-owned 'Enamel Dental Studio' exists at a different West Loop address (1061 W Jackson Blvd) with no connection found to Ekhtera, so this remains a single-location practice. With 4 providers under one dentist's PC and no DSO/corporate signal, this is a dentist-owned multi-provider single location -> single_loc_group. Medium confidence since the exact staffing/ownership of the 4 providers wasn't independently itemized.",
+   "searched": [
+    "Mohammad Ekhtera DDS 3190 N Elston Ave Chicago IL dentist",
+    "\"Enamel Dental Salon\" Chicago Elston Ekhtera locations"
+   ]
+  },
+  {
+   "location_id": "b1322bd193defe1d",
+   "practice_name": "Paulos Dental",
+   "zip": "60618",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/neighborhood-dental-chicago",
+    "https://neighborhooddental.net/contact-and-location/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This address (2040 W Irving Park Rd) operates as 'Neighborhood Dental,' where Dr. Daniel Paulos (DDS 1989, matches ctx AO) and Dr. Adam Unterbrunner both practice, consistent with the ctx provider_count=2. No DSO brand or corporate parent found; described as an independent neighborhood practice in a converted three-flat building. Two-dentist, single-location, dentist-owned practice -> single_loc_group, medium confidence (exact ownership split between the two named dentists not independently documented).",
+   "searched": [
+    "Paulos Dental 2040 W Irving Park Rd Chicago IL dentist"
+   ]
+  }
+ ]
+}

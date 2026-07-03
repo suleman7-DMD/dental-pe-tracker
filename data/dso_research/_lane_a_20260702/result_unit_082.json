@@ -1,0 +1,343 @@
+{
+ "unit_id": "laneA_082",
+ "classifications": [
+  {
+   "location_id": "4f95e6d5f0037303",
+   "practice_name": "BRIDGEPORT SMILES",
+   "zip": "60608",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://dentistbridgeportchicago.com/",
+    "https://app.nexhealth.com/appt/smile_partners_usa?lid=72003",
+    "https://smilepartnersusa.com/",
+    "https://smilepartnersusa.com/locations/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:smile_partners_usa",
+   "reasoning": "Website dentistbridgeportchicago.com and its own booking widget route through app.nexhealth.com/appt/smile_partners_usa, and Smile Partners USA self-describes as operating over 129 practices across 6 states (incl. Illinois) under retained local names. This is a stealth-DSO signature but the network spans 10+ locations, so per protocol this is not individually classified.",
+   "searched": [
+    "Bridgeport Smiles dentist 3014 S Halsted Chicago",
+    "\"Smile Partners USA\" Bridgeport Smiles Chicago dentist"
+   ]
+  },
+  {
+   "location_id": "75761a56fffcc74b",
+   "practice_name": "Salazar Roger DMD",
+   "zip": "60608",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Only a bare WebMD directory listing confirms a Dr. Roger Salazar practicing at 966 W 21st St; no owned website, ownership statement, or corporate signal was found. A same-named 'Salazar Family Dental' site found in search is a separate Indianapolis practice, not this one. Insufficient evidence to assign a tier with medium/high confidence.",
+   "searched": [
+    "Dr. Roger Salazar DMD dentist Chicago 966 W 21st St",
+    "Salazar dental 966 W 21st St Chicago Pilsen",
+    "\"Salazar Family Dental\" Chicago address 21st Street"
+   ]
+  },
+  {
+   "location_id": "a8464775598ce6d5",
+   "practice_name": "Kamal, Saba S DDS",
+   "zip": "60608",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://sonrisafamilydental.com/locations/",
+    "https://sonrisafamilydental.com/sonrisa-group/",
+    "https://www.yelp.com/biz/sonrisa-family-dental-chicago-5"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:sonrisa_family_dental",
+   "reasoning": "Confirmed this address (3450 S Archer Ave) is a Sonrisa Family Dental office, matching the ctx affiliated_dso hint; Sonrisa's own site states it operates 11 offices throughout Chicago and suburbs (founded by Jason Korkus, DDS, branded as 'the Sonrisa Group'). Because the network spans 10+ locations, this is flagged R4_protected_network:Sonrisa Family Dental/Sonrisa Group rather than individually classified.",
+   "searched": [
+    "Sonrisa Family Dental Community Dental Centers of America 3450 S Archer Chicago",
+    "Sonrisa Family Dental Community Dental Centers of America owner parent company"
+   ]
+  },
+  {
+   "location_id": "df05041b5e6be9e7",
+   "practice_name": "Yokana Dental",
+   "zip": "60608",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.adventdental.net/about-us.html",
+    "https://www.adventdental.net/index.html",
+    "https://www.facebook.com/adventdentalsmiles/",
+    "https://www.yelp.com/biz/advent-dental-chicago-2"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:advent_dental",
+   "reasoning": "This address (3443 S Halsted) now operates as Advent Dental, whose own About Us page names Dr. Victor Ramirez (a licensed dentist, UIC DDS 1999) as the practicing dentist with no corporate parent mentioned. Cross-referenced aggregator listings (Facebook 'Advent Dental Victor Ramirez DDS', dentalplans/opencare) tie the same dentist and phone number (773-247-0404) to a second office at 4553 S Ashland Ave (this unit's Ramirez Dental record), indicating a dentist-owned 2-location group.",
+   "searched": [
+    "Yokana Dental Chicago 3443 S Halsted St",
+    "\"Advent Dental\" Chicago Halsted locations chain"
+   ]
+  },
+  {
+   "location_id": "fc525ac322192a6d",
+   "practice_name": "ELISA OCHOA DDS LTD",
+   "zip": "60608",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.pilsensmiles.com/dr-elisa-ochoa",
+    "https://www.zocdoc.com/dentist/elisa-ochoa-dds-188439",
+    "https://voyagechicago.com/interview/meet-elisa-ochoa-pilsen-smiles-pilsen/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple independent sources (practice's own site, ZocDoc, a Voyage Chicago feature interview) confirm Dr. Elisa Ochoa is the Head Dentist and Owner of Pilsen Smiles at 971 W 18th St, a single Chicago location with a multi-dentist team. Matches ctx AO 'ELISA OCHOA' and provider_count 3, single location, dentist-owned.",
+   "searched": [
+    "Dr. Elisa Ochoa DDS dentist Chicago 971 W 18th St"
+   ]
+  },
+  {
+   "location_id": "ac8d6d744c3e2e71",
+   "practice_name": "Ghazala, Alhusain DMD",
+   "zip": "60608",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "The registered address (2249 S California Ave Apt 2r) is an apartment unit, not a storefront; web results instead tie Dr. Alhusain Ghazala to active practice as an Aspen Dental provider in O'Fallon, IL and to Saint Louis, MO, with no Chicago clinic found. Cannot verify an actual operating practice at this Chicago address, so no tier is assigned.",
+   "searched": [
+    "Dr. Alhusain Ghazala DMD dentist Chicago 2249 S California Ave"
+   ]
+  },
+  {
+   "location_id": "901f30c4ac4372ba",
+   "practice_name": "Ashland Dental Ctr",
+   "zip": "60609",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/new-ashland-dental-center-chicago",
+    "https://www.carecredit.com/doctor-locator/chicago-il/mohammad-zaffar-dds-998wnt/",
+    "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60609/invite-mohammad-zaffar-dds-9661"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Yelp and CareCredit/DoctorsNetwork listings for '(New) Ashland Dental Center' at 4829 S Ashland Ave, Chicago, IL 60609, phone (773) 927-6644, name Dr. Mohammad Zaffar, DDS as the practicing dentist with no corporate/DSO signal and no other locations found. Single-location solo dentist practice.",
+   "searched": [
+    "Ashland Dental Center Chicago 4829 S Ashland Ave dentist owner",
+    "\"New Ashland Dental Center\" 4829 S Ashland Ave Chicago dentist owner"
+   ]
+  },
+  {
+   "location_id": "81a7fa76e92bef50",
+   "practice_name": "DYNAMIC DENTAL SERVICES, P.C.",
+   "zip": "60609",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dynamicdentalservices.com/",
+    "https://www.healthgrades.com/dentist/dr-william-williams-g839x",
+    "https://www.yelp.com/biz/dynamic-dental-services-chicago-2"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The practice's own site (dynamicdentalservices.com) and Healthgrades confirm Dr. William J. Williams, DDS (practicing since 1983, office established 1991) as the dentist at this single 5401 S Wentworth Ave location, matching ctx AO 'WILLIAM WILLIAMS' exactly. No corporate parent or additional locations found; provider_count 2 supports a single-location dentist-owned group.",
+   "searched": [
+    "Dynamic Dental Services Chicago 5401 S Wentworth Ave William Williams"
+   ]
+  },
+  {
+   "location_id": "f73a742cd6fa2a89",
+   "practice_name": "Ramirez Dental",
+   "zip": "60609",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.adventdental.net/about-us.html",
+    "https://www.facebook.com/adventdentalsmiles/",
+    "https://www.sharecare.com/doctor/dr-victor-h-ramirez"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:advent_dental",
+   "reasoning": "Aggregator listings (Facebook 'Advent Dental Victor Ramirez DDS', Sharecare, opencare) and matching phone number (773) 247-0404 tie this 4553 S Ashland Ave address to the same dentist-owned Advent Dental operation confirmed at 3443 S Halsted (this unit's Yokana Dental record), whose own About Us page names Dr. Victor Ramirez, a licensed dentist, as owner with no corporate parent. Two-location dentist-owned group, well under the 10-location R4 threshold.",
+   "searched": [
+    "Ramirez Dental 4553 S Ashland Ave Chicago dentist"
+   ]
+  },
+  {
+   "location_id": "563fb56f6f4f84d7",
+   "practice_name": "ALL BRITE DENTAL S.C.",
+   "zip": "60609",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/all-brite-dental-sc-chicago",
+    "https://npiprofile.com/npi/1093025223",
+    "https://www.gangerfamilydentistry.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Yelp explicitly lists 'ALL BRITE DENTAL SC - CLOSED' (updated April 2026) at 1858 W 35th St; the same address and phone (773-247-5554) now operate as Ganger Family Dentistry, a family-owned practice whose team includes Dr. Urvi Ganger, who npiprofile shows was previously associated with All Brite Dental. This location_id/NPI appears to be a superseded, permanently closed registration, so per protocol it is marked closure_suspect/undetermined rather than classified.",
+   "searched": [
+    "All Brite Dental Chicago 1858 W 35th St Bharat Sheth",
+    "Ganger Family Dentistry Chicago"
+   ]
+  },
+  {
+   "location_id": "10f81b1377794d76",
+   "practice_name": "Patel Dental",
+   "zip": "60609",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://providers.sharecare.com/doctor/dr-hetal-b-patel-2",
+    "https://www.healthgrades.com/dentist/dr-hetal-patel-2f9tg",
+    "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60609/invite-hetal-patel-dds-15072"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:PATEL_HETAL",
+   "reasoning": "Multiple aggregator profiles (Sharecare, Healthgrades, DoctorsNetwork) consistently identify Dr. Hetal Patel, DDS (UIC DDS 2007) as the dentist at 4642 S Damen Ave, and state he operates additional offices in West Chicago, IL and at 430 W Erie St, Chicago -- a small dentist-owned multi-location practice, not a branded DSO. No corporate parent or franchise signal found.",
+   "searched": [
+    "Patel Dental 4642 S Damen Ave Chicago dentist"
+   ]
+  },
+  {
+   "location_id": "bd6393c0eb335dfd",
+   "practice_name": "Beard Dental",
+   "zip": "60609",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searches for 'Beard Dental' at 5050 S State St and by NPI turned up only an unrelated periodontist (Dr. James Beard, practicing in Hoffman Estates/Lakeview, different addresses) and no matching practice or provider profile for this specific address. No usable web evidence could be found to support any tier.",
+   "searched": [
+    "Beard Dental Chicago 5050 S State St dentist",
+    "\"5050 S State\" Chicago dentist NPI 1164691630"
+   ]
+  },
+  {
+   "location_id": "25378515fe82c843",
+   "practice_name": "BATTLE BRACES, LTD.",
+   "zip": "60609",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.bbb.org/us/il/chicago/profile/orthodontist/bronzeville-orthodontics-0654-1000037970",
+    "https://www.vitadox.com/doctor/chicago-il-60609/yvette-n-battle-dds-ms/WggFEosBNvsRz6SYf5gv3P",
+    "https://npino.com/dental-clinic/1790384394-battle-braces,-ltd./"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "BBB, Vitadox, and npino consistently identify Battle Braces, Ltd. (d/b/a Bronzeville Orthodontics) at 3506 S State St as a single-location practice founded 2015 and run by Dr. Yvette Battle, DDS, MS as President/owner, matching ctx AO 'YVETTE BATTLE' exactly. Solo dentist owner-operator, one location.",
+   "searched": [
+    "Battle Braces Chicago orthodontist Yvette Battle 3506 S State"
+   ]
+  },
+  {
+   "location_id": "f7efeeafd766bf57",
+   "practice_name": "Bara Dental",
+   "zip": "60609",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/bara-robert-m-dr-dds-chicago",
+    "https://findadentist.ada.org/dentists/dr-robert-m-bara-chicago-0038V00002yk1DSQAY-a1C8V00000kY6L7UAK",
+    "https://doctor.webmd.com/doctor/robert-bara-f67fab16-aa2b-402b-87da-3cbc2264bc0f-overview"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Yelp, ADA Find-a-Dentist, and WebMD all confirm Dr. Robert M. Bara, DDS (Loyola University education) as the sole practicing dentist at this single 1928 W 35th St address, offering general dentistry with no corporate signal or additional locations found. Solo dentist owner-operator, one location.",
+   "searched": [
+    "Bara Dental Chicago 1928 W 35th St dentist"
+   ]
+  },
+  {
+   "location_id": "05126f9fe2f10564",
+   "practice_name": "Patel Dental",
+   "zip": "60609",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.gangerfamilydentistry.com/",
+    "https://www.yelp.com/biz/ganger-family-dentistry-chicago",
+    "https://www.facebook.com/GangerFamilyDentistry/"
+   ],
+   "evidence_artifacts": [
+    "record's own address field literally reads 'ganger family dentistry of chicago' instead of a street address",
+    "phone (773) 247-5554 exact match to Ganger Family Dentistry's published number"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This record's address field contains the string 'ganger family dentistry of chicago' rather than a street number, and its phone (773) 247-5554 is an exact match to Ganger Family Dentistry's published number at 1858 W 35th St, Chicago, IL 60609. Ganger Family Dentistry's own site describes it as a family-owned practice (serving since 2018) with a 4-dentist team at one location -- a single-location, dentist-owned group practice.",
+   "searched": [
+    "Ganger Family Dentistry Chicago"
+   ]
+  },
+  {
+   "location_id": "bff5a552d4e197c0",
+   "practice_name": "Ali Mustafa Siddiq DMD",
+   "zip": "60609",
+   "assigned_tier": "institutional",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://hospital.uillinois.edu/mile-square-health-center/locations/back-of-the-yards",
+    "https://hospital.uillinois.edu/find-a-doctor/mustafa-ali",
+    "https://www.healthcenterclinics.org/center/university-of-illinois-medical-center-mile-square-health-center-at-back-of-the-yards/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:mile_square_health_center",
+   "reasoning": "The exact address (4630 S Bishop St, Chicago, IL 60609) and phone number (773-523-2615, plus main line 312-996-2000) match UI Health's Mile Square Health Center -- Back of the Yards location precisely, where Dr. Mustafa Ali is listed as the dentist. Mile Square is a federally qualified health center (FQHC) network operated by the University of Illinois Hospital, so this is institutional, not a private ownership tier.",
+   "searched": [
+    "Dr. Ali Mustafa Siddiq DMD dentist Chicago 4630 S Bishop St",
+    "Mile Square Health Center Back of the Yards 4630 S Bishop address"
+   ]
+  }
+ ]
+}

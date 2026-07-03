@@ -1,0 +1,336 @@
+{
+ "unit_id": "laneA_022",
+ "classifications": [
+  {
+   "location_id": "c66f58a953a1df3a",
+   "practice_name": "ALL SMILES FAMILY DENTAL CARE, INC.",
+   "zip": "60490",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.serenedds.com/",
+    "https://www.yelp.com/biz/serene-dental-bolingbrook"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address 1705 W Boughton Rd, Bolingbrook resolves to Serene Dental, founded 2010 by Dr. Poonam Wadhwani (matches NPPES authorized official exactly), single location, no corporate parent mentioned. The ctx brand_hint 'Family Dental Care' is a generic string match, not a DSO brand claim, and is contradicted by the web evidence of a named solo-dentist owner-operator.",
+   "searched": [
+    "\"All Smiles Family Dental\" Bolingbrook IL 1705 Boughton"
+   ]
+  },
+  {
+   "location_id": "a3a50800139d2904",
+   "practice_name": "BANSRI SHROFF, DMD PC",
+   "zip": "60490",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.radiantdentalclinic.com/web/contact.html",
+    "https://www.zoominfo.com/p/Bansri-Shroff/1809683393"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice operates as Radiant Dental Clinic at 899 S Weber Rd, Bolingbrook; Dr. Bansri Shroff is listed as the Dentist and President (owner-operator) of the single-location clinic. No corporate parent or additional locations found.",
+   "searched": [
+    "\"Bansri Shroff\" DMD Bolingbrook dentist"
+   ]
+  },
+  {
+   "location_id": "9900db1db6f46fef",
+   "practice_name": "KANDIMALLA DENTAL PLLC",
+   "zip": "60490",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.innovafamilydental.com/",
+    "https://www.opencare.com/dentists/bolingbrook-il/dr-kalpana-kandimalla-dds-24631317531d/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice operates as Innova Family Dental at 772 S Weber Rd, Bolingbrook, owned/operated by Dr. Kalpana Kandimalla (matches NPPES authorized official). Single location, own branded website, no corporate signal found.",
+   "searched": [
+    "Kandimalla Dental Bolingbrook IL dentist"
+   ]
+  },
+  {
+   "location_id": "1adac605c6abd972",
+   "practice_name": "EMAD ZAIDI, DMD PC",
+   "zip": "60490",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.solacedentalgroup.com/our-practice/",
+    "https://www.solacedentalgroup.com/about-us/staff/dentists/dr-emad-zaidi"
+   ],
+   "evidence_artifacts": [
+    "ctx parent_company='EVENLY ORTHODONTICS DUPONT' rejected as data artifact: shares the known Evenly Technologies placeholder EIN (273894131) with the neighboring Aspen Dental NPI at the same street, no such parent appears anywhere on the practice's own site"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice operates as Solace Dental Group at 287 N Weber Rd, Bolingbrook, led by brothers Dr. Emad Zaidi and Dr. Kumail Zaidi at one location -- matches the family_practice signal and 2-provider count. The ctx parent_company field is a known Evenly Technologies placeholder/EIN-sharing artifact (also seen on the co-located Aspen Dental row) and is not corroborated by any web evidence of corporate ownership.",
+   "searched": [
+    "\"Emad Zaidi\" dentist Bolingbrook IL",
+    "\"Zaidi Dental\" Bolingbrook \"Vincent Dr\""
+   ]
+  },
+  {
+   "location_id": "fd34b7bf24bba2ee",
+   "practice_name": "AMANPREET SINGH DDS PC",
+   "zip": "60490",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://providerwire.com/dentist/illinois/bolingbrook/amanpreet-singh-dds-pc-1952575177",
+    "https://www.buzzfile.com/business/Warrenville-Dental-Group-630-853-5661"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "NPI address 235 Sparrow Ln, Bolingbrook and phone (630) 853-5661 match a single-dentist practice (also doing business as 'Warrenville Dental Group', an older/carried-over trade name) owned by Dr. Amanpreet Singh, in practice ~16 years. No second location or corporate signal found; medium confidence owing to the DBA-name mismatch versus the registered legal name.",
+   "searched": [
+    "\"Amanpreet Singh\" DDS Bolingbrook IL dentist"
+   ]
+  },
+  {
+   "location_id": "8d83e68d31e3bae5",
+   "practice_name": "INTEGRITY DENTAL ASSOCIATES LLC",
+   "zip": "60490",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.integritydental.org/",
+    "https://www.integritydental.org/about-us.html"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Integrity Dental Associates at 276 S Weber Rd, Bolingbrook is a single-location group practice founded in 2010 and led by Dr. Yingchun Zhu (matches NPPES authorized official), consistent with the 3-provider small_group signal. No DSO/corporate branding found.",
+   "searched": [
+    "\"Integrity Dental Associates\" Bolingbrook IL"
+   ]
+  },
+  {
+   "location_id": "7c35f21dd61a5091",
+   "practice_name": "Zaidi Dental",
+   "zip": "60490",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.findatopdoc.com/doctor/867287-Tabassum-Zaidi-dentist-Bolingbrook-IL-60490",
+    "https://npiprofile.com/npi/1093122327"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address 100 N Vincent Dr, Bolingbrook and phone (630) 456-8105 match Dr. Tabassum Zaidi's own practice, distinct from Dr. Emad Zaidi's Solace Dental Group at a different address (shared surname only, not the same practice or network). Medium confidence because some directory bios also list her at other clinics as a staff dentist, but the address-specific evidence supports a standalone solo practice at this location.",
+   "searched": [
+    "\"Zaidi Dental\" Bolingbrook \"Vincent Dr\"",
+    "\"Tabassum Zaidi\" dentist Bolingbrook practice"
+   ]
+  },
+  {
+   "location_id": "9547fa276406987c",
+   "practice_name": "DHCCLTD",
+   "zip": "60490",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "closure_suspect: no operating website, reviews, or business listing found for '319 N Weber Rd, Bolingbrook' beyond bare NPI-registry mirrors (provider_count=0 in source data). ctx AO 'Mohamed Waheed' resolves to a real dentist/network (Grand Smiles PLLC, sites in Bensenville/Chicago/Palos Heights/Rockford), but that network's own staff page does not list a Bolingbrook location, so the AO-cluster link cannot be corroborated as evidence for this specific address. Insufficient web evidence to assign a tier.",
+   "searched": [
+    "\"319 N Weber\" Bolingbrook dentist OR dental",
+    "\"DHCCLTD\" OR \"DHC LTD\" dental Bolingbrook Waheed",
+    "NPI 1174916233 DHCCLTD dental Bolingbrook"
+   ]
+  },
+  {
+   "location_id": "45ab58a401772b06",
+   "practice_name": "Aspen Dental",
+   "zip": "60490",
+   "assigned_tier": "branded_dso",
+   "pe_backed": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.aspendental.com/dentist/il/bolingbrook/221-n-weber-rd/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:aspen_dental",
+   "reasoning": "Aspen Dental's own official locator page confirms an operating office at 221 N Weber Rd, Bolingbrook, IL. Aspen Dental (ADMI) is a documented PE-backed national DSO brand (Leonard Green & Partners), so pe_backed=true.",
+   "searched": [
+    "Aspen Dental Bolingbrook IL 221 Weber Rd"
+   ]
+  },
+  {
+   "location_id": "e785695ebba312ed",
+   "practice_name": "PETER A LO DESTRO DDS PC",
+   "zip": "60504",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://peterlodestrodds.com/",
+    "https://peterlodestrodds.com/contact/aurora-office/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:LO_DESTRO_PETER",
+   "reasoning": "Dr. Peter Lo Destro (Northwestern Dental School 1985, practicing 30+ years) owns and operates two offices, in Yorkville and Aurora IL (4230 Westbrook Dr matches this record), under his own name/site with no corporate parent -- a small dentist-owned 2-location network, well under the 10+ protected-network threshold.",
+   "searched": [
+    "\"Peter Lo Destro\" DDS Aurora IL dentist"
+   ]
+  },
+  {
+   "location_id": "926fa17dda8916ca",
+   "practice_name": "DOVER DENTAL CENTER",
+   "zip": "60504",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://doverdentalcenter.com/",
+    "https://www.yelp.com/biz/dover-dental-center-aurora"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dover Dental Center at 95 Trade St, Aurora is led by Dr. Maryam Hafezi (matches NPPES authorized official), a single-location branded practice with its own website and no corporate/DSO signal.",
+   "searched": [
+    "\"Dover Dental Center\" Aurora IL 95 Trade St"
+   ]
+  },
+  {
+   "location_id": "ff004bf52c62478e",
+   "practice_name": "SLEEP BETTER INC",
+   "zip": "60504",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://aurorasmilesreviews.com/",
+    "https://www.yelp.com/biz/aurora-smiles-aurora"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Phone (630) 851-0450 matches 'Aurora Smiles', a single-location general/esthetic dentistry practice at 4260 Westbrook Dr Ste 105, Aurora (established 2019), consistent with the 3-provider small_group signal. No named individual owner or corporate/DSO branding was found; medium confidence because ownership could not be pinned to a specific dentist.",
+   "searched": [
+    "\"Sleep Better\" dental Aurora IL 4260 Westbrook",
+    "\"Aurora Smiles\" Aurora IL dentist owner 4260 Westbrook",
+    "\"Aurora Smiles\" dentist owner dds Aurora IL 60504"
+   ]
+  },
+  {
+   "location_id": "e376d9e0f528d39a",
+   "practice_name": "Prairie Point Dental",
+   "zip": "60504",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.prairiepointdental.com/",
+    "https://www.prairiepointdental.com/dental-office-doctor-team"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Prairie Point Dental at 3015 E New York St, Aurora is a single-location practice run by a father-daughter dentist duo, Dr. James Janda and Dr. Kat Janda, established 1998 -- matches the 2-provider family_practice signal. No corporate/DSO branding found.",
+   "searched": [
+    "\"Prairie Point Dental\" Aurora IL"
+   ]
+  },
+  {
+   "location_id": "10815a00a3b408b6",
+   "practice_name": "ELITE DENTAL SPECIALISTS",
+   "zip": "60504",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.edscare.com/",
+    "https://www.edscare.com/our-specialists",
+    "https://www.edscare.com/aurora-office"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:elite_dental_specialists",
+   "reasoning": "Elite Dental Specialists (edscare.com) is an endodontics/periodontics specialist group practice with offices in Aurora (2124 Ogden Ave, matches this record), St. Charles, Plainfield, Naperville, Glen Ellyn, and Burr Ridge -- 6-7 locations, staffed and apparently led by specialist-dentists including Dr. Aneel Belani and Dr. Sonia Belani, DDS/DMD specialists (not a recognized PE/DSO brand). Well under the 10+ protected-network threshold, so classified dentist_multi; medium confidence because the exact ownership/equity structure behind the multi-office group was not explicitly stated on the site.",
+   "searched": [
+    "\"Elite Dental Specialists\" Aurora IL Ogden Ave",
+    "\"Elite Dental Specialists\" edscare.com owner periodontist founder Belani"
+   ]
+  },
+  {
+   "location_id": "1df260dc64a9a060",
+   "practice_name": "Shafi Dental",
+   "zip": "60504",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.ashton-dental.com/reem-shafi-dmd/",
+    "https://www.ashton-dental.com/about/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": "ao:SHAFI_REEM",
+   "reasoning": "R4_protected_network:Shafi/Ashton_Dental_network -- Dr. Reem Shafi operates Ashton Dental at 1137 N Eola Rd, Aurora, but web sources indicate she owns a much larger multi-office network across the Chicago suburbs (estimates from different directories range 12-27 locations, e.g. Mundelein, Addison, Bloomingdale, Elgin, Hanover Park, West Chicago, Carol Stream, Shorewood, Bolingbrook, Glen Ellyn, Homer Glen, Yorkville, Naperville). This exceeds the 10+ location threshold, so per protocol this is deferred to a one-network-one-decision review rather than classified here.",
+   "searched": [
+    "\"Shafi Dental\" Aurora IL Eola Rd",
+    "Ashton Dental Reem Shafi locations list Chicago how many offices"
+   ]
+  },
+  {
+   "location_id": "80a9511a2175146c",
+   "practice_name": "Midwest Dental",
+   "zip": "60504",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://midwest-dental.com/dentist-near-me/find-office/state/il/",
+    "https://www.midwestdentalassociates.net/contact"
+   ],
+   "evidence_artifacts": [
+    "midwest-dental.com's official IL locator (the real Smile Brands/Gryphon-backed 'Midwest Dental' national DSO, 145 locations) lists 19 IL cities (Belvidere, Canton, Danville, Decatur, Elgin, Freeport, Jacksonville, Kewanee, Lake in the Hills, Lincoln, Pekin, Pontiac, Rochelle, Rockford Northeast, Sandwich, Sterling, Vernon Hills, Watseka, West Dundee) -- Aurora is NOT among them"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This is a brand-name collision, not the branded DSO: the address 1677 Montgomery Rd, Aurora is 'Midwest Dental Associates', an independently-branded, independently-websited (midwestdentalassociates.net) group practice with its own dentists (Fadi Akhras, Mohammed Salamah, Samy Samaan), and it does NOT appear on the actual national 'Midwest Dental' (Smile Brands/Gryphon) locator page for Illinois. The ctx brand_hint pointing to Midwest Dental/Gryphon is a false positive from name matching; classified single_loc_group on the multi-dentist, single-location structural evidence instead.",
+   "searched": [
+    "Midwest Dental Aurora IL 1677 Montgomery Rd",
+    "midwest-dental.com Aurora IL location Montgomery Rd",
+    "\"Midwest Dental\" Gryphon locations Illinois list official"
+   ]
+  }
+ ]
+}

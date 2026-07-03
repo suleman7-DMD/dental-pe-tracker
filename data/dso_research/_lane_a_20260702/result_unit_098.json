@@ -1,0 +1,351 @@
+{
+ "unit_id": "laneA_098",
+ "classifications": [
+  {
+   "location_id": "78682289a9ad0b63",
+   "practice_name": "ST. BERNARD HOSPITAL",
+   "zip": "60621",
+   "assigned_tier": "institutional",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.stbh.org/services/dental-center/",
+    "https://www.stbh.org/patients/request-an-appointment-dental-care/",
+    "https://www.yelp.com/biz/dental-center-at-st-bernard-hospital-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched the address and confirmed this is the Dental Center operated directly by St. Bernard Hospital (a Chicago hospital) at its own campus, offering general dentistry, oral surgery, and special-needs sedation dentistry. It is a hospital department, not a privately owned practice, matching the ctx institutional_hint.",
+   "searched": [
+    "St. Bernard Hospital dental clinic 326 W 64th St Chicago"
+   ]
+  },
+  {
+   "location_id": "9116648c8ae28f44",
+   "practice_name": "Stern, Abigail L DMD",
+   "zip": "60621",
+   "assigned_tier": "institutional",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/st-bernard-hospital-and-health-care-center-chicago-3",
+    "https://www.patientconnect365.com/Dentists/Illinois/CHICAGO/60621/St_Bernard_Hospital_Dental_Center"
+   ],
+   "evidence_artifacts": [
+    "exact phone (773) 962-3976 and address 6307 S Stewart Ave match St. Bernard Hospital's Ambulatory Care Center dental clinic listing"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The NPI address (6307 S Ave = 6307 S Stewart Ave) and phone number (773) 962-3976 are an exact match to St. Bernard Hospital and Health Care Center's Ambulatory Care Center, where the hospital runs a dental clinic. Dr. Stern is an employed dentist at this hospital satellite clinic, not an independent owner-operator, so this is institutional rather than the small_group tag suggests.",
+   "searched": [
+    "\"Abigail Stern\" DMD dentist Chicago 60621",
+    "\"6307 S Stewart\" dental Chicago clinic"
+   ]
+  },
+  {
+   "location_id": "0177ca10ef87bc34",
+   "practice_name": "SNAP DENTAL INC",
+   "zip": "60621",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://nsfamilydental.com/",
+    "https://nsfamilydental.com/our-doctor/"
+   ],
+   "evidence_artifacts": [
+    "AO name NASER ABDELSALAM matches Dr. Naser Abdelsalam, sole dentist at NS Family Dental, same address 850 W 63rd St"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "850 W 63rd St, Chicago is operated as \"NS Family Dental\" by Dr. Naser Abdelsalam (matching the NPPES authorized official exactly); \"Snap Dental Inc\" is almost certainly the underlying corporate/legal name for this single-dentist storefront. No corporate parent, DSO brand, or multi-location network was found.",
+   "searched": [
+    "\"Snap Dental\" 850 W 63rd St Chicago dentist",
+    "\"Naser Abdelsalam\" dentist Chicago Englewood"
+   ]
+  },
+  {
+   "location_id": "7fe8d6802d2fd769",
+   "practice_name": "LAWN DENTAL CENTER",
+   "zip": "60623",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://lawndentalcenter.com/",
+    "https://lawndentalcenter.com/meet-the-doctors/",
+    "https://lawndentalcenter.com/doctor/charley-olono/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Lawn Dental Center's own site lists a single office at 3113 S Pulaski Rd (matching year_established ~1984-85) run by two dentist-owners, Dr. Charley Olono and Dr. Rita Bagdasarian-Olono, with no other locations, corporate parent, or DSO branding mentioned. Multi-dentist practice at one address, dentist-owned.",
+   "searched": [
+    "\"Lawn Dental Center\" 3113 S Pulaski Chicago dentist Olono"
+   ]
+  },
+  {
+   "location_id": "81f0d806c51a0633",
+   "practice_name": "PERLA DENTAL 26TH STREET LLC",
+   "zip": "60623",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://sonrisafamilydental.com/locations/perla/",
+    "https://sonrisafamilydental.com/locations/"
+   ],
+   "evidence_artifacts": [
+    "Sonrisa Family Dental's own locations page lists this exact address (3948 West 26th Street) as its \"Little Village \u2013 Pulaski\" office, one of 12 total locations founded by Jason Korkus, DDS"
+   ],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Older sources (Healthgrades, BBB) list Perla Dental as owned by Dr. Vicken Ichkhanian, but Sonrisa Family Dental's own current locations page shows this exact street address as one of its 12 offices (founder Jason Korkus, DDS), suggesting the site has since been absorbed into a larger network. Per R4, a confirmed 10+ location network is out of scope for per-unit classification. R4_protected_network:Sonrisa Family Dental.",
+   "searched": [
+    "\"Perla Dental\" 3948 W 26th St Chicago Ichkhan",
+    "sonrisafamilydental.com locations fetch"
+   ]
+  },
+  {
+   "location_id": "0700232b795654f3",
+   "practice_name": "Paik Dental",
+   "zip": "60623",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dentalinsider.com/chicago/dentist/dr-naree-paik-dds-1-86268"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This NPI corresponds to Dr. Naree Paik, DDS, a solo general dentist at 2859 S Pulaski Rd Ste 2. No corporate parent or DSO signal was found. Note the same suite/phone (773) 522-0855 is now also associated with a differently-named practice (\"Sonrisa Urbana\") suggesting a possible ownership transition at this address, but no closure or corporate takeover evidence was found.",
+   "searched": [
+    "\"Paik Dental\" 2859 S Pulaski Chicago",
+    "\"Naree Paik\" DDS 2859 Pulaski Chicago dentist"
+   ]
+  },
+  {
+   "location_id": "69956deb852614e8",
+   "practice_name": "Hwang, Mina DMD",
+   "zip": "60623",
+   "assigned_tier": "institutional",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://lawndale.org/main-clinic-3860-ogden",
+    "https://www.yelp.com/biz/lawndale-christian-health-center-chicago-5"
+   ],
+   "evidence_artifacts": [
+    "3860 W Ogden Ave is the Lawndale Christian Health Center Main Clinic, a Federally Qualified Health Center offering dental care"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "3860 W Ogden Ave is confirmed as the Main Clinic of Lawndale Christian Health Center, an FQHC providing primary care, dental, and vision services. Dr. Mina Hwang is an employed dentist there (consistent with the unusually high provider_count of 8 for a single practice), not an independent owner.",
+   "searched": [
+    "\"Mina Hwang\" DMD Ogden Ave Chicago dental",
+    "\"3860 W Ogden Ave\" Chicago dental clinic name group"
+   ]
+  },
+  {
+   "location_id": "98db2cb259ca26a1",
+   "practice_name": "PABLO O TORRES DDS MS LTD",
+   "zip": "60623",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.groupon.com/biz/chicago/torres-pablo-o-dds-ms",
+    "https://www.vitals.com/dentists/Dr_Pablo_Torres-Vazquez"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Pablo Osvaldo Torres-Vazquez, DDS/prosthodontist, practices under his own PLLC/LTD name at 3354 W 26th St. No corporate parent, DSO brand, or additional locations were found in search results; the \"LTD\" suffix is a standard Illinois solo professional-corporation structure, not evidence of a chain.",
+   "searched": [
+    "\"Pablo Torres\" DDS 3354 W 26th St Chicago dentist"
+   ]
+  },
+  {
+   "location_id": "8baa96d77cd8f55a",
+   "practice_name": "Jimenez Dental",
+   "zip": "60623",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dentalplans.com/dentists/illinois/chicago/60623/dr-rosita-jimenez-31173/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Rosita C. Jimenez, DDS (periodontist) practices at 2621 S Lawndale Ave and, per WebMD/DentalPlans listings, at a second office in Hinsdale, IL. Both offices are under her own name with no corporate/DSO parent identified, fitting a small dentist-owned 2-location practice.",
+   "searched": [
+    "\"Jimenez Dental\" 2621 S Lawndale Chicago"
+   ]
+  },
+  {
+   "location_id": "1ed14bea10885c07",
+   "practice_name": "BIG WAVE DENTAL PC",
+   "zip": "60623",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/jit-chan-dds-and-associates-chicago",
+    "https://findadentist.ada.org/dentists/dr-jit-chan-chicago-0038V00002yk1nRQAQ-a1C8V00000lWLz7UAG"
+   ],
+   "evidence_artifacts": [
+    "practice operates publicly as \"Jit Chan DDS & Associates\" with 4 dentists (Chan, Garcia, Li, Mendez) at the single 3739 W 26th St address"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This NPI's legal name (Big Wave Dental PC) operates publicly as \"Jit Chan DDS & Associates,\" a multi-dentist general practice at one address led by Dr. Jit Chan. No corporate parent or DSO brand appears anywhere in search results.",
+   "searched": [
+    "\"Big Wave Dental\" 3739 W 26th St Chicago Jit Chan"
+   ]
+  },
+  {
+   "location_id": "f629647606309c0a",
+   "practice_name": "Sonrisa Urbana Family Dntstry",
+   "zip": "60623",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "http://www.sonrisaurbana.com/about-us.html",
+    "https://dental.page/o/sonrisa-urbana-chicago-il/"
+   ],
+   "evidence_artifacts": [
+    "recently changed ownership (\"under new ownership\") but no corporate/DSO parent identified; distinct from the unrelated 12-location \"Sonrisa Family Dental\" brand"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Sonrisa Urbana is a single-location family dental clinic at 2859 S Pulaski Rd serving the La Villita community since 1987, currently listed as \"under new ownership.\" It is a distinctly-named entity from the separate 12-location \"Sonrisa Family Dental\" chain (different founder, different addresses) so R4 does not apply here; no corporate/DSO signal was found for this specific clinic.",
+   "searched": [
+    "\"Sonrisa Urbana\" family dentistry Chicago 2859 Pulaski",
+    "\"Sonrisa Urbana\" \"under new ownership\" Chicago Pulaski dental"
+   ]
+  },
+  {
+   "location_id": "2da8cd4141903c11",
+   "practice_name": "GUI DENTAL CENTER LLC",
+   "zip": "60623",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-jianxun-gui-yg6xf",
+    "https://doctor.webmd.com/practice/gui-dental-center-llc-a41e88b4-ae92-4246-ba95-53ec010ed2a4"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Gui Dental Center LLC at 3845 W 26th St is a solo practice run by Dr. Jianxun Gui, DDS, with no other locations, corporate parent, or DSO affiliation found in search results, matching the AO name JUINXUN GUI.",
+   "searched": [
+    "\"Gui Dental\" 3845 W 26th St Chicago"
+   ]
+  },
+  {
+   "location_id": "a70a25210b852cc9",
+   "practice_name": "ZAID DENTAL LLC",
+   "zip": "60623",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-leticia-martinez-xhwky",
+    "https://www.healthgrades.com/dentist/dr-gandy-garcia-ym3v2"
+   ],
+   "evidence_artifacts": [
+    "Zaid Dental LLC shows offices at both 3915 W 26th St and 4308 W 26th St under the same phone (773) 522-2929, staffed by DDS-credentialed associate dentists (Martinez, Garcia); no corporate/DSO brand found"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Search results show Zaid Dental LLC operating a second office nearby (4308 W 26th St) under the same phone number, staffed by individually-licensed dentists, with no corporate parent, management company, or national/regional DSO brand identified. This fits a small dentist-owned 2-location practice rather than a DSO.",
+   "searched": [
+    "\"Zaid Dental\" 3915 W 26th St Chicago Ramaha",
+    "\"Zaid Dental LLC\" Chicago owner dentist"
+   ]
+  },
+  {
+   "location_id": "864ebc32582ade2a",
+   "practice_name": "HASSAN AZARPIRA DDS LTD",
+   "zip": "60623",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-hassan-azarpira-ybr3hnz",
+    "https://www.dentalplans.com/dentists/illinois/chicago/60623/dr-hassan-azarpira-264417/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Hassan Azarpira, DDS, operates a solo general dentistry practice at 2709 S Pulaski Rd under his own PC/LTD name, matching the AO exactly. No additional locations, corporate parent, or DSO signal were found.",
+   "searched": [
+    "\"Hassan Azarpira\" DDS 2709 S Pulaski Chicago dentist"
+   ]
+  },
+  {
+   "location_id": "f62241c4286271dd",
+   "practice_name": "DENTAL WISH LTD",
+   "zip": "60623",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://doctor.webmd.com/doctor/sunita-sahu-f4b5e462-2002-4164-b82c-fe5397a5ffcd-overview",
+    "https://www.carecredit.com/doctor-locator/chicago-il/dental-wish-ltd-psf943/"
+   ],
+   "evidence_artifacts": [
+    "Dr. Sunita Sahu, DDS listed with 2 confirmed offices (4101 W 26th St 60623 and 3205 W Irving Park Rd 60618), matching ctx's 3-location AO reach (60101/60618/60623)"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:SAHU_SUNITA",
+   "reasoning": "Dental Wish Ltd at 4101 W 26th St is one of at least two (ctx suggests three) offices operated under general dentist Dr. Sunita Sahu's own name, with no corporate parent, management company, or DSO brand found anywhere in search results. This is a small dentist-owned multi-location practice, well under the 10-location R4 threshold.",
+   "searched": [
+    "\"Dental Wish\" 4101 W 26th St Chicago Sunita Sahu"
+   ]
+  },
+  {
+   "location_id": "6f685dcd203ff3d2",
+   "practice_name": "AMERIDENT ASSOCIATES",
+   "zip": "60623",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/",
+    "https://1stfamilydental.com/"
+   ],
+   "evidence_artifacts": [
+    "1st Family Dental's own locations page lists 16 total offices (7 Chicago + 9 suburban, incl. \"Little Village\" matching this ZIP), plus a separate \"Corporate Partnerships\" page"
+   ],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "This NPI's own affiliated_dso/parent_company data plus web research confirm 1st Family Dental is a real, currently-operating Chicago-area brand with a Little Village office in this ZIP, and the brand's own site has a \"Corporate Partnerships\" page suggesting external investment, though no specific PE sponsor name was confirmed. Because 1st Family Dental spans 16 locations (well over 10), per R4 this network is out of scope for per-unit classification. R4_protected_network:1st Family Dental.",
+   "searched": [
+    "\"1st Family Dental\" Illinois DSO locations Kamal Vibhakar",
+    "\"1st Family Dental\" PE private equity backed OR \"dental service organization\""
+   ]
+  }
+ ]
+}

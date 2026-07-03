@@ -1,0 +1,280 @@
+{
+ "unit_id": "laneA_003",
+ "classifications": [
+  {
+   "location_id": "ff55a686f6cbd088",
+   "practice_name": "Ross Dental",
+   "zip": "60441",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-tom-ross-xkcfs",
+    "https://www.dentalinsider.com/lockport/office/ross-family-dentistry-64826",
+    "https://ross-family-dentistry-il.hub.biz/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched Ross Dental Lockport IL dentist. Multiple directories (Healthgrades, DentalInsider, BBB) confirm Ross Family Dentistry at 1002 S State St is a second-generation solo practice: Dr. G. David Ross founded it in 1960 and his son Dr. Tom M. Ross took over in 1997. Single location, no corporate parent or DSO signal found. Classified true_independent.",
+   "searched": ["Ross Dental 1002 S State St Lockport IL dentist"]
+  },
+  {
+   "location_id": "b77c247e6be90e1e",
+   "practice_name": "ADVANCED FAMILY DENTAL & CHIROPRACTIC OF LOCKPORT PC",
+   "zip": "60441",
+   "assigned_tier": "undetermined",
+   "pe_backed": true,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.greatlakesdentalpartners.com/news/2018/06/11/chicagoland-smile-group-doubles-in-size-with-advanced-family-dental-partnership/",
+    "https://www.advancedfamilydental.com/locations/lockport/"
+   ],
+   "evidence_artifacts": ["network_size_14+_offices_2018_merger_to_28_total_locations"],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:great_lakes_dental_partners",
+   "reasoning": "Searched Advanced Family Dental Lockport / David Rubis, then the group's DSO affiliation. Found a documented 2018 partnership: Advanced Family Dental & Orthodontics (14 IL offices, flagship Crest Hill, President David Rubis) merged with Great Lakes Dental Partners, a Shore Capital Partners (PE) portfolio DSO, forming a combined 28-location network with 100+ dentists/specialists. This network spans 10+ locations, so per protocol this is R4_protected_network:Great Lakes Dental Partners/Advanced Family Dental & Orthodontics -- deferred to a one-network-one-decision review rather than classified here despite strong documented PE-backing evidence.",
+   "searched": ["\"Advanced Family Dental\" Lockport IL \"David Rubis\" dentist locations", "\"Advanced Family Dental & Orthodontics\" Illinois owner management company DSO"]
+  },
+  {
+   "location_id": "2990d3b52d394795",
+   "practice_name": "Aspen Dental",
+   "zip": "60441",
+   "assigned_tier": "branded_dso",
+   "pe_backed": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.aspendental.com/dentist/il/lockport/16473-w-159th-st/",
+    "https://www.aspendental.com/dentist/il/lockport/16473-w-159th-st/dental-services/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:aspen_dental",
+   "reasoning": "Searched Aspen Dental's own site for this exact address. aspendental.com's locator confirms 16473 W 159th St, Lockport as an active Aspen Dental office with a named provider. Aspen Dental is a nationally branded DSO whose management entity (ADMI Corp) is PE-backed by Leonard Green & Partners, matching the ctx brand_hint and corroborated independently in public search results. Classified branded_dso.",
+   "searched": ["Aspen Dental Lockport IL 16473 W 159th St"]
+  },
+  {
+   "location_id": "830d84cba0c06520",
+   "practice_name": "Mcgrath Melanie DMD",
+   "zip": "60441",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.granddentallockport.com/dr-melanie-mcgrath.html",
+    "https://www.granddentalgroup.com/talent.html",
+    "https://www.granddentalfranklinpark.com/dr-steve-napier.html"
+   ],
+   "evidence_artifacts": ["network_size_~8_offices_below_R4_10+_threshold"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:grand_dental_group",
+   "reasoning": "Searched Melanie McGrath Lockport, then Grand Dental Group's ownership structure. Dr. McGrath's Lockport office (916 E 7th St) operates under the Grand Dental Group brand (granddentallockport.com). The group's own site states it was founded in 1987 by Dr. Steve Napier and is '100% dentist owned and operated with no outside affiliations,' spanning roughly 8 IL offices (Aurora, Franklin Park, Channahon, Lake Zurich, Wilmington, Naperville, Sycamore, Lockport) -- below the 10+ R4 threshold. No PE/corporate parent found in search. Classified dentist_multi; medium confidence because the dentist-ownership claim is self-reported by the group rather than independently audited.",
+   "searched": ["Melanie McGrath DMD Lockport IL dentist 916 E 7th St", "\"Grand Dental Group\" Illinois DSO management company private equity", "\"Grand Dental Group\" Illinois founder ownership dentist owned locations Sycamore Lockport"]
+  },
+  {
+   "location_id": "1e29c16e3cebbdd0",
+   "practice_name": "DJORDJEVIC DENTAL PLLC",
+   "zip": "60441",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": ["https://www.peakdentistrylockport.com/"],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched Djordjevic Dental Lockport. Dr. Stevan Djordjevic operates 'Peak Dentistry' as a solo practice at 16347 W 159th St, Lockport, with its own dedicated website; no other locations or corporate affiliation found. Classified true_independent.",
+   "searched": ["Djordjevic Dental Lockport IL dentist Stevan Djordjevic"]
+  },
+  {
+   "location_id": "5953cf4003793c14",
+   "practice_name": "VAN DYKE PASINSKI DDS",
+   "zip": "60540",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.riverwalkfamilydental.com/about-us/",
+    "https://www.riverwalkfamilydental.com/about-us/meet-dr-angelica-van-dyke/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched Van Dyke Pasinski DDS Naperville. This NPI corresponds to RiverWalk Family Dental at 127 Aurora Ave, a single-location practice with four dentists (Pasinski, Van Dyke, Worthley, Durante) per the practice's own 'Meet the Dentists' page. No DSO/corporate signal found. Classified single_loc_group.",
+   "searched": ["Van Dyke Pasinski DDS Naperville IL 127 Aurora Ave dentist"]
+  },
+  {
+   "location_id": "ec3adabbc59b029f",
+   "practice_name": "Pope Family Dental",
+   "zip": "60540",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": ["https://www.popefamilydental.com/"],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched Pope Family Dental Naperville. The practice's own site confirms Dr. Daniel J. Pope operates a single office at 1891 Bay Scott Cir Ste 113, established 2003. File shows 2 providers at this one address; no other locations or corporate parent found. Classified single_loc_group.",
+   "searched": ["Pope Family Dental Naperville IL 1891 Bay Scott Cir dentist"]
+  },
+  {
+   "location_id": "c00d7b8ffc0db29f",
+   "practice_name": "Deangelis Dental",
+   "zip": "60540",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-arnold-deangelis-xf4hs",
+    "https://www.yelp.com/biz/deangelis-arnold-r-dds-naperville"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched Deangelis Dental Naperville. Multiple directories confirm Dr. Arnold Deangelis, DDS operates solo at 445 W Jackson Ave Ste 104, Naperville; no DSO brand, parent company, or multi-location group site found. Medium confidence because no dedicated practice website was located, only third-party directories.",
+   "searched": ["Deangelis Dental Naperville IL 445 W Jackson Ave dentist"]
+  },
+  {
+   "location_id": "e14eec2daeaaeb9c",
+   "practice_name": "FIRST DENTAL P.C.",
+   "zip": "60540",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://weence.com/dentists/first-dental/",
+    "https://www.dentistry.com/dentist/dr-todd-pusateri-naperville"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched First Dental Naperville / Todd Pusateri, then the office's staff. Confirmed a single-location, multi-provider practice at 8 W Gartner Rd Ste 120/124 (Naperville Plaza); directory listings show current dentists Dr. Tamer Moukaied and Dr. Jose Rosalez (older sources cite Dr. Todd Pusateri, the NPPES authorized official, as a long-time practicing dentist there). No DSO/corporate brand or additional locations found under 'First Dental.' Medium confidence due to conflicting dentist-name sources, but no evidence of corporate control.",
+   "searched": ["\"First Dental\" Naperville IL \"Todd Pusateri\" 8 W Gartner Rd dentist", "\"First Dental\" Naperville IL \"8 W Gartner\" dentists staff team"]
+  },
+  {
+   "location_id": "deb50ec4d4d6d477",
+   "practice_name": "Pugliese Dental",
+   "zip": "60540",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": ["https://www.healthgrades.com/dentist/dr-richard-pugliese-ykk8x"],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched Pugliese Dental Naperville. Dr. Richard W. Pugliese, DDS is listed as a solo general dentist at 1276 E Chicago Ave; Healthgrades shows him accepting new patients (a Yelp 'closed' badge appears to reflect current hours-of-operation status rather than permanent closure, similar to other clearly-active practices in this unit showing the same badge). No corporate/DSO signal found. Classified true_independent; medium confidence given the ambiguous closure signal.",
+   "searched": ["Pugliese Dental Naperville IL 1276 E Chicago Ave dentist"]
+  },
+  {
+   "location_id": "cc47c40443f52698",
+   "practice_name": "ZIEBA DENTISTRY NAPERVILLE, LTD",
+   "zip": "60540",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "ao_cluster",
+   "evidence_urls": [
+    "https://opennpi.com/provider/1376050245",
+    "https://opennpi.com/provider/1982060547"
+   ],
+   "evidence_artifacts": ["AO_Mark_Zieba_owner_of_record_Naperville_and_Highland_Park_PCs"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:ZIEBA_MARK",
+   "reasoning": "Searched Zieba Dentistry Naperville / Mark Zieba locations. Public NPI registry (opennpi) independently confirms Mark Zieba as authorized official/owner of both 'Zieba Dentistry Naperville, Ltd' (this location) and 'Zieba Dentistry Highland Park, Ltd' -- two dentist-owned PCs under the same family name, no corporate parent found. A loose 'North Suburban Dental' connection via a relative (Dr. Cinqui-Zieba) surfaced but was not confirmed as under Mark Zieba's ownership, so it was not counted toward network size. Classified dentist_multi with medium confidence (2 confirmed locations, well short of a 10+ protected network).",
+   "searched": ["\"Zieba Dentistry\" Naperville IL \"Mark Zieba\" Highland Park locations", "\"Zieba Dentistry\" OR \"North Suburban Dental\" management company locations network Illinois"]
+  },
+  {
+   "location_id": "497eab7df3d74290",
+   "practice_name": "WILLOW RIDGE DENTAL GROUP LLC",
+   "zip": "60540",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://willowridgedental.com/about-us/",
+    "https://willowridgedental.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched Willow Ridge Dental Group Naperville / Jeffrey Onik. The practice's own site confirms a single office at 720 Brom Ct/Dr, Naperville, with Dr. Jeffrey Onik as a long-tenured dentist there; no additional locations, DSO brand, or corporate parent found. Classified single_loc_group (4 providers per file, one address).",
+   "searched": ["\"Willow Ridge Dental\" Naperville IL \"Jeffrey Onik\" 720 Brom Ct dentist"]
+  },
+  {
+   "location_id": "fe05aa23580b56d4",
+   "practice_name": "General & Implant Dentistry",
+   "zip": "60540",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/kevin-ryan-dds-naperville-4",
+    "https://www.healthgrades.com/dentist/dr-kevin-ryan-xlxmc"
+   ],
+   "evidence_artifacts": ["exact_phone_and_address_match_630-355-1940_1852_Bay_Scott_Cir_Ste_108"],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched the business name directly (no results), then the exact address. Found Dr. Kevin Ryan, DDS practicing at 1852 Bay Scott Cir Ste 108 with the identical phone number (630) 355-1940 as the file record, confirming 'General & Implant Dentistry' is Dr. Ryan's practice/DBA. Single location, no DSO or corporate parent found. Classified single_loc_group (2 providers per file).",
+   "searched": ["\"General & Implant Dentistry\" Naperville IL 1852 Bay Scott Cir dentist", "\"1852 Bay Scott\" Naperville dentist", "\"General & Implant Dentistry\" Naperville dentist owner"]
+  },
+  {
+   "location_id": "c49bb3902d793de7",
+   "practice_name": "PAUL G CHAMPER DDS PC",
+   "zip": "60540",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": ["https://www.doctor.com/Paul-Champer"],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searched Paul Champer DDS Naperville. Doctor.com explicitly states 'Dr. Paul G. Champer, DDS is permanently closed.' Per protocol, closure-suspect practices are not classified. Marking undetermined: closure_suspect.",
+   "searched": ["\"Paul Champer\" DDS Naperville IL dentist 1259 S Naper Blvd"]
+  },
+  {
+   "location_id": "7392668ccd0bb9a9",
+   "practice_name": "Codo Dental",
+   "zip": "60540",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": ["https://www.yelp.com/biz/codo-a-edward-dds-naperville"],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searched Codo Dental Naperville. Yelp lists 'CODO A EDWARD, DDS - CLOSED' and a secondary source notes the practice 'may be closed,' recommending patients call ahead to verify current availability. Per protocol, closure-suspect practices are not classified. Marking undetermined: closure_suspect.",
+   "searched": ["Codo Dental Naperville IL 24w500 Maple Ave dentist"]
+  },
+  {
+   "location_id": "c986bfc1f199a74b",
+   "practice_name": "JEFFREY M. GRIMLEY, DDS, PC",
+   "zip": "60540",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-jeffrey-grimley-2kk4g",
+    "https://npiprofile.com/npi/1073786406"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched Jeffrey Grimley DDS Naperville. Multiple directories consistently show Dr. Jeffrey M. Grimley as a solo general dentist at 1980 Three Farms Ave Ste 112, practicing since approximately 1998, with no DSO/corporate signal or additional locations found. Medium confidence since only third-party directories (no dedicated practice website) corroborate.",
+   "searched": ["\"Jeffrey Grimley\" DDS Naperville IL 1980 Three Farms Ave dentist"]
+  }
+ ]
+}

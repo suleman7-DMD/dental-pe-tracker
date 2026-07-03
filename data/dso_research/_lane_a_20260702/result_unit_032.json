@@ -1,0 +1,302 @@
+{
+ "unit_id": "laneA_032",
+ "classifications": [
+  {
+   "location_id": "cca6e042a0253d6b",
+   "practice_name": "Demkovich Dental",
+   "zip": "60465",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.opencare.com/dentists/palos-hills-il/robert-demkovichs-practice-24630248936c/",
+    "https://robertdemkovich.dr-leonardo.com/",
+    "https://www.healthgrades.com/dentist/dr-robert-demkovich-x5hxs"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple independent directories (Opencare, dr-leonardo NPI profile, Healthgrades, CareCredit) confirm Dr. Robert Demkovich, DDS, is the sole named provider at 10706 S Roberts Rd, Palos Hills, matching the NPI and address on file exactly. No corporate parent, DSO brand, or multi-location network appears anywhere. Single solo owner-operator office fits true_independent.",
+   "searched": ["Demkovich Dental Palos Hills IL dentist"]
+  },
+  {
+   "location_id": "fd55201281023c5d",
+   "practice_name": "GENTLE TOUCH DENTISTRY, S.C.",
+   "zip": "60465",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://lemontdentalclinic.com/our-office/",
+    "https://lemontdentalclinic.com/webnew/",
+    "https://www.sharecare.com/doctor/dr-beata-dederowski"
+   ],
+   "evidence_artifacts": ["ao_reach:BEATA_DEDEROWSKI:2_locations(60439,60465)"],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:DEDEROWSKI_BEATA",
+   "reasoning": "The practice's own shared site (lemontdentalclinic.com) confirms Dr. Beata Dederowski owns and operates two offices under one banner: Lemont Dental Clinic (Lemont, 60439) and Gentle Touch Dentistry (Palos Hills, 60465), matching the AO's 2-location owner_reach exactly. No non-dentist controller or corporate parent found -- this is a dentist-owned 2-location group, fitting dentist_multi not a DSO.",
+   "searched": ["Gentle Touch Dentistry Palos Hills IL Beata Dederowski dentist"]
+  },
+  {
+   "location_id": "5ef0972a71cff332",
+   "practice_name": "Daniel J Mackey DDS",
+   "zip": "60465",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npiprofile.com/npi/1275972986"
+   ],
+   "evidence_artifacts": ["name_on_file_stale: NPI 1275972986 registered to Munther Z Salem DDS, not Daniel J Mackey"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searching the exact address (10735 E Doric Cir, Palos Hills) and the NPI on file both resolve to Dr. Munther Z Salem, DDS, general practice, not a 'Daniel J Mackey' -- the practice name on our record appears stale/mismatched. The current occupant is confirmed as a single-provider general dentist office with no corporate or multi-location signal, so true_independent still fits; confidence held to medium because of the name discrepancy.",
+   "searched": ["Daniel J Mackey DDS Palos Hills IL dentist", "\"10735\" \"Doric\" Palos Hills IL dentist", "NPI 1275972986 Mackey dentist"]
+  },
+  {
+   "location_id": "66785f69abd1a93b",
+   "practice_name": "AVICENNA DENTAL LLC",
+   "zip": "60465",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npiprofile.com/npi/1194431916",
+    "https://providerwire.com/dentist/illinois/palos-hills/avicenna-dental-llc-1194431916"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "NPI profile directories confirm Avicenna Dental LLC at 10415 S Roberts Rd, Palos Hills, with Dr. Adham Badwan, DMD as the authorized official/owner. No second location, no corporate parent or DSO brand found anywhere -- single solo-owner office.",
+   "searched": ["Avicenna Dental LLC Palos Hills IL Adham Badwan dentist"]
+  },
+  {
+   "location_id": "285c59e69fdf85c3",
+   "practice_name": "Wolff Dental",
+   "zip": "60448",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.facebook.com/WOLFFDENTAL",
+    "https://www.yelp.com/biz/ashland-dental-and-wellness-center-chicago-heights-2",
+    "https://smilesbynoetzel.com/about/",
+    "https://smilesbynoetzel.com/contact-us/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:NOETZEL_JOSEPH",
+   "reasoning": "Follow-up search shows Dr. Duane Wolff's Mokena office (19160 88th Ave) has joined Ashland Dental and Wellness, led by dentist-owners Dr. Joseph and Ilenne Noetzel; the Mokena address is explicitly listed as their satellite office (open 3x/week) alongside their Chicago Heights main office. Search results state the practice is independently owned/operated, not part of a larger DSO. Two-location dentist-owned group fits dentist_multi, not a DSO tier.",
+   "searched": ["Wolff Dental Mokena IL dentist", "\"Wolff Dental\" Mokena \"Dr. Palazon\" OR \"Duane Wolff\" current dentists office staff", "Ashland Dental and Wellness Chicago Heights ownership DSO corporate locations"]
+  },
+  {
+   "location_id": "af4cf80be2f604c3",
+   "practice_name": "Homerding Dental",
+   "zip": "60448",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.vcdental.com/",
+    "https://www.vcdental.com/about-us/",
+    "https://www.facebook.com/vcdentalmokena/"
+   ],
+   "evidence_artifacts": ["ownership_transition: Dr. Paul Homerding -> Dr. Patrick Mitsos (2017), now branded Valley Creek Family Dental"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The 11244 La Porte Rd address is confirmed still operating, but under new ownership: Dr. Patrick Mitsos took over from Dr. Paul Homerding in 2017 and rebranded the office as Valley Creek Family Dental, moving his own Tinley Park practice there in 2019. No corporate parent, franchise, or multi-location DSO signal found -- single dentist-owner office, still independent, just under a stale name on file (not a closure).",
+   "searched": ["Homerding Dental Mokena IL dentist", "Valley Creek Dental Mokena IL Patrick Mitsos dentist"]
+  },
+  {
+   "location_id": "f51841bcca1847ad",
+   "practice_name": "LEON J WITKOWSKI JR DDS LTD",
+   "zip": "60448",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/group-directory/il-illinois/mokena/witkowski-dental-x44cw3",
+    "https://findadentist.ada.org/dentists/dr-leon-j-witkowski-mokena-0038V00002yjP63QAE-a1C8V00000lW8eNUAS",
+    "https://witkowskidental.com/",
+    "https://www.facebook.com/witkowskidental/"
+   ],
+   "evidence_artifacts": ["ein_reach:363370611:1_location(60448)"],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "ADA Find-a-Dentist, Healthgrades group directory, and the practice's own site confirm Witkowski Dental at 19665 S La Grange Rd, Mokena is a single-office father/son team (Leon Jr and Leon III), matching provider_count=3 and the single-ZIP EIN reach. No DSO or corporate branding -- dentist-owned multi-provider single location.",
+   "searched": ["Witkowski Dental Mokena IL Leon Witkowski DDS"]
+  },
+  {
+   "location_id": "6399268006b0f24a",
+   "practice_name": "Witkowski Dental",
+   "zip": "60448",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/group-directory/il-illinois/mokena/witkowski-dental-x44cw3",
+    "https://witkowskidental.com/",
+    "https://www.facebook.com/witkowskidental/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Same physical office as location f51841bcca1847ad (19665 S La Grange Rd, Mokena, same phone 708-479-9888) -- this NPI record is the individual provider component of the same father/son Witkowski Dental practice. Confirmed dentist-owned single-location multi-provider group, no corporate signal.",
+   "searched": ["Witkowski Dental Mokena IL Leon Witkowski DDS"]
+  },
+  {
+   "location_id": "35a8e14b57357783",
+   "practice_name": "Adams Dental",
+   "zip": "60448",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.businessyab.com/explore/united_states/illinois/will_county/frankfort_township/mokena/marlene_adams_dds.html",
+    "https://www.sharecare.com/doctor/dr-marlene-adams-y6wpy",
+    "https://www.bbb.org/us/il/mokena/profile/dentist/dr-marlene-adams-0654-88078636"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple directories confirm Dr. Marlene Adams, DDS, solo practitioner at 18700 Wolf Rd Ste 200/204, Mokena, matching the address and phone on file. No other locations, corporate parent, or brand affiliation found -- single solo owner-operator office.",
+   "searched": ["Adams Dental Mokena IL dentist 18700 wolf rd"]
+  },
+  {
+   "location_id": "00b698e2169e42d5",
+   "practice_name": "LINCOLN WAY FAMILY DENTAL, P.C.",
+   "zip": "60448",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.lincolnwayfamilydental.com/",
+    "https://www.24hrdental.net/mokena/dentist/lincoln-way-family-dental-pc-robert-davis-dds",
+    "https://www.healthgrades.com/dentist/dr-robert-davis-x9m9j"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice's own site and directories confirm Dr. Robert Davis, DDS/DMD, is the sole practicing dentist and owner at 11238 Lincoln Hwy, Mokena, matching the AO name, EIN reach (1 location), and 2011 founding year on file. No corporate parent or franchise found -- single-location solo owner practice.",
+   "searched": ["Lincoln Way Family Dental Mokena IL Robert Davis"]
+  },
+  {
+   "location_id": "c609246663fbee4b",
+   "practice_name": "SAMANTHA L HOLDER DENTAL SERVICES LLC",
+   "zip": "60448",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npiprofile.com/npi/1063800894",
+    "https://dentistoffices.com/dentist-office/1239657/mokena-il/samantha-l-holder-dental/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "NPI profile and directory listings confirm Dr. Samantha Holder, DDS is the authorized official/owner-dentist at 19848 S La Grange Rd, Mokena (also doing business as Autumn Dental of Mokena at the same address). Single location, no corporate or franchise signal -- solo owner-operator.",
+   "searched": ["Samantha Holder Dental Services Mokena IL dentist"]
+  },
+  {
+   "location_id": "d4f1bdbda7e997f6",
+   "practice_name": "WEBSTER DENTAL CARE",
+   "zip": "60526",
+   "assigned_tier": "branded_dso",
+   "pe_backed": false,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.webdentalchicago.com/locations/la-grange-park/",
+    "https://www.webdentalchicago.com/",
+    "https://www.patientconnect365.com/Dentists/Illinois/LaGrangePark/60526/Webster_Dental_Care_of_LaGrange_Park"
+   ],
+   "evidence_artifacts": ["locator_confirmed:8_locations(Berwyn,Edison Park,Evanston,Hoffman Estates,La Grange Park,Lakeview,Portage Park,Skokie)", "ein_reach:362765522:1_location(60526)"],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:family_dental_care",
+   "reasoning": "Fetched the brand's own locator page (webdentalchicago.com/locations/la-grange-park/), which lists this exact address as one of 8 Chicago-area offices operating under the shared 'Webster Dental Care' brand, co-branded on-site as 'Family Dental Care', administered by a named management entity 'Webster Dental Management'. Matches the parent_company and dso_national classification already on file. This is a documented regional branded DSO, network size well under the 10+ protected-network threshold so eligible to classify directly.",
+   "searched": ["Webster Dental Care La Grange Park IL Webster Dental Management"]
+  },
+  {
+   "location_id": "1952491627254e58",
+   "practice_name": "JAMES M FIELDHOUSE DDS LTD",
+   "zip": "60526",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://jamesfieldhousedds.com/",
+    "https://www.healthgrades.com/dentist/dr-james-fieldhouse-37yhv",
+    "https://findadentist.ada.org/dentists/dr-james-m-fieldhouse-la-grange-park-0038V00002yk54PQAQ-a1C8V00000lZ6FsUAK"
+   ],
+   "evidence_artifacts": ["ein_reach:363068754:1_location(60526)"],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice's own site and directories confirm Dr. James Fieldhouse and Dr. Peterson practice together at 360 Sherwood Rd, La Grange Park, matching provider_count=2 and single-ZIP EIN reach. No second office, corporate parent, or DSO brand found -- dentist-owned, single-location, multi-provider group.",
+   "searched": ["James Fieldhouse DDS La Grange Park IL dentist"]
+  },
+  {
+   "location_id": "d279144b48e706d4",
+   "practice_name": "Quadri Fatima DDS",
+   "zip": "60526",
+   "assigned_tier": "institutional",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://pillarscommunityhealth.org/about-us/locations/integrated-health-center/",
+    "https://www.dentalplans.com/dentists/illinois/chicago/60645/dr-fatima-quadri-236170/"
+   ],
+   "evidence_artifacts": ["phone_match:(708)745-5277 -> 321 N La Grange Rd = Pillars Community Health Integrated Health Center (HHS-funded FQHC)"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:pillars_community_health",
+   "reasoning": "Searching the exact phone number (708) 745-5277 resolves to Dr. Fatima Quadri at 321 N La Grange Rd, La Grange Park -- and that address is confirmed via direct fetch to be Pillars Community Health's Integrated Health Center, an HHS-funded, PHS-deemed-status nonprofit FQHC offering dental services. Dr. Quadri's own bio independently states she has worked at federally qualified health centers in the Chicago suburbs, corroborating the FQHC match. This is an institutional clinic, not a private practice or DSO.",
+   "searched": ["Quadri Fatima DDS La Grange Park IL dentist", "\"(708) 745-5277\" dentist La Grange Park", "\"321\" La Grange Road La Grange Park IL 60526 dental office"]
+  },
+  {
+   "location_id": "b119f80fc3d12c61",
+   "practice_name": "THOMAS K MANOLIS DDS LTD",
+   "zip": "60526",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.manolisfamilydental.com/",
+    "https://www.manolisfamilydental.com/meet-the-doctor",
+    "https://www.bbb.org/us/il/la-grange-park/profile/dentist/thomas-k-manolis-dds-ltd-0654-88190265"
+   ],
+   "evidence_artifacts": ["ein_reach:362481336:1_location(60526)"],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Founding dentist Dr. Thomas Manolis (practice since 1961) is deceased; the practice, now branded Manolis Family Dental, continues under his son Dr. Todd Manolis as sole practicing dentist at the same 48 E 31st St address, with daughter Alyse working as hygienist (not a second dentist). Single-location, single-dentist family succession with no corporate signal -- true_independent.",
+   "searched": ["Thomas Manolis DDS La Grange Park IL dentist"]
+  },
+  {
+   "location_id": "6a7337dc1388e15d",
+   "practice_name": "1ST FAMILY DENTAL OF LA GRANGE PARK, PC",
+   "zip": "60526",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": ["network_size_confirmed: owner_reach_locations=15 across 14 IL ZIPs; web locator independently confirms additional suburbs (Aurora, Addison, Algonquin, Arlington Heights, Burr Ridge, Elgin, Mount Prospect) beyond the 15 already on file"],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:1st_family_dental",
+   "reasoning": "1st Family Dental's own site (1stfamilydental.com) and directory listings confirm this is a large branded network with well over 10 Chicago-area locations (AO owner_reach already shows 15 IL locations; web search surfaces additional suburbs not even in that count). Per protocol this exceeds the 10+ location protected-network threshold and is held for a single one-network-one-decision review rather than classified here. R4_protected_network:1st Family Dental.",
+   "searched": ["1st Family Dental La Grange Park IL locations"]
+  }
+ ]
+}

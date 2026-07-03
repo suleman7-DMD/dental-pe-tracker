@@ -1,0 +1,343 @@
+{
+  "unit_id": "laneA_025",
+  "classifications": [
+    {
+      "location_id": "b48ae5cb321e110a",
+      "practice_name": "Rubis Dental",
+      "zip": "60435",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": true,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "https://www.greatlakesdentalpartners.com/locations/",
+        "https://www.greatlakesdentalpartners.com/news/2018/06/11/chicagoland-smile-group-doubles-in-size-with-advanced-family-dental-partnership/",
+        "https://www.shorecp.com/news/shore-capital-partners-announced-an-investment-in-great-lakes-dental-partners",
+        "https://www.advancedfamilydental.com/dentists/david-j-rubis/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "brand:great_lakes_dental_partners",
+      "reasoning": "2241 Theodore St, Crest Hill matches phone (815) 741-1700 exactly to the 'Crest Hill' office listed on Advanced Family Dental & Orthodontics' own site, and Great Lakes Dental Partners' (GLDP) own locations page lists 'Advanced Family Dental & Orthodontics (Crest Hill, Frankfort, Lockport, Shorewood)' as an affiliated group. A 2018 GLDP news release confirms Advanced Family Dental brought 14 offices into a management-services partnership with GLDP, and Shore Capital Partners' own press release confirms it created GLDP as a PE-backed dental support organization. This is a textbook management-company DSO relationship without overt patient-facing national branding, so stealth_dso with pe_backed=true.",
+      "searched": [
+        "Rubis Dental 2241 Theodore St Crest Hill IL dentist",
+        "AVID Dental 115 Republic Ave Joliet IL David Rubis",
+        "\"Family Dental Care\" Illinois DSO private equity chain brand",
+        "Great Lakes Dental Partners locations fetch",
+        "Advanced Family Dental David Rubis locations fetch",
+        "Shore Capital Partners \"Great Lakes Dental Partners\" platform investment"
+      ]
+    },
+    {
+      "location_id": "f03a140775671da3",
+      "practice_name": "ALEXANDER E. RITCHEY DMD, MS LTD",
+      "zip": "60435",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://findadentist.ada.org/il/will/joliet/general-practice/dr-anthony-r-lombardi-1661503",
+        "https://rrcorthodontics.com/minooka/dr-alexander-ritchey/",
+        "https://www.healthgrades.com/dentist/dr-alexander-ritchey-337jq"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:RITCHEY_ALEXANDER",
+      "reasoning": "Dr. Alexander Ritchey is an orthodontist practicing as 'Red & Ritchey Orthodontics,' which multiple directory sources confirm has five treatment locations (Joliet, Wilmington, Minooka, Morris, New Lenox). No DSO/management-company or PE signal appears anywhere; this is a dentist-owned multi-location specialty group, well under the 10-location protected-network threshold, so dentist_multi.",
+      "searched": [
+        "Alexander Ritchey DMD Joliet IL dentist",
+        "Dr. Ruhan Ozgen dentist Joliet IL Essington Rd (context cross-check)"
+      ]
+    },
+    {
+      "location_id": "20649bbd2860aba1",
+      "practice_name": "SCM DENTAL PC",
+      "zip": "60435",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.healthgrades.com/dentist/dr-sonal-mehta-yskm4",
+        "https://providerwire.com/general-practice-dentistry/illinois/joliet/scm-dental-pc-1609136373"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Dr. Sonal Mehta, DDS practices general dentistry at a single Glenwood Ave address in Joliet; no other locations, no corporate/DSO parent, or brand affiliation found. Two providers at one address matches single_loc_group.",
+      "searched": [
+        "SCM Dental Sonal Mehta Joliet IL dentist"
+      ]
+    },
+    {
+      "location_id": "7aab7ab154179ba4",
+      "practice_name": "Ruhan Ozgen",
+      "zip": "60435",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/ozgen-ruhan-dds-joliet",
+        "https://www.healthgrades.com/dentist/dr-ruhan-ozgen-3dbd4"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Dr. Ruhan Ozgen, DDS is a single-provider general dentist at 2295 Essington Rd Ste 104, Joliet, with no other locations or corporate affiliation found across multiple directory listings. Fits true_independent.",
+      "searched": [
+        "Ruhan Ozgen dentist Joliet IL Essington Rd"
+      ]
+    },
+    {
+      "location_id": "d6e824e1fd7e002d",
+      "practice_name": "Maali Dental",
+      "zip": "60435",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.carecredit.com/doctor-locator/joliet-il/nasser-maali-dds-445djb/",
+        "https://npiprofile.com/npi/1659434975"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "ao:MAALI_NASSER",
+      "reasoning": "Dr. Nasser Maali, DDS is an endodontist whose Joliet office (2 Uno Cir Ste C) directory listing states the practice also has a second office at 2323 Naperville Rd Suite 137. No corporate/DSO signal found; this reads as a dentist-owned 2-location endodontic practice, so dentist_multi. A direct fetch of the practice's own site (maaliendodontics.com) failed to load, hence medium not high confidence.",
+      "searched": [
+        "Maali Dental Joliet IL Uno Circle",
+        "maaliendodontics.com contact-us fetch (failed)"
+      ]
+    },
+    {
+      "location_id": "98e6b6bcb7291948",
+      "practice_name": "R A LOMBARDI DDS PC",
+      "zip": "60435",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://findadentist.ada.org/il/will/joliet/general-practice/dr-anthony-r-lombardi-1661503",
+        "https://npiprofile.com/npi/1639649288"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Dr. Anthony R. Lombardi is confirmed as the authorized official and owner of this single-address general practice at 3011 Theodore St, Joliet. Two providers, one location, no DSO/PE signal. single_loc_group.",
+      "searched": [
+        "R A Lombardi DDS PC Joliet IL Anthony Lombardi dentist"
+      ]
+    },
+    {
+      "location_id": "996738adba46646b",
+      "practice_name": "Cavitt Dental",
+      "zip": "60435",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.bbb.org/us/il/joliet/profile/dentist/best-image-dental-inc-0654-88009899",
+        "https://www.yelp.com/biz/best-image-dental-joliet"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "undetermined",
+      "network_id": "brand:best_image_dental",
+      "reasoning": "This location (address listed as 'best image dental' in source data, actual address 625 Plainfield Rd per BBB/Yelp) is one office of Best Image Dental, Inc., where Dr. Mary Cavitt is president; BBB/Yelp confirm the practice has 19 other locations across Illinois (20 total). Per protocol this exceeds the 10-location threshold for a single-session classification decision, so this is held for one-network-one-decision review rather than classified here. R4_protected_network:Best Image Dental Inc.",
+      "searched": [
+        "Cavitt Dental Joliet IL dentist \"Best Image Dental\""
+      ]
+    },
+    {
+      "location_id": "51a377e175a720e2",
+      "practice_name": "Bebar Dental",
+      "zip": "60435",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/heinzel-and-bebar-dental-care-joliet",
+        "https://www.opencare.com/dentists/joliet-il/dr-philip-g-bebar-dds-24630214258c/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Dr. Philip G. Bebar, DDS practices at a single Plainfield Rd address described as an 'employee-owned dental clinic'; our record shows a single current provider. The 'Heinzel & Bebar' name suggests a historical two-dentist partnership, but no current second dentist or corporate/DSO parent was confirmed, so treated as a solo owner-operator today (medium confidence given the naming ambiguity).",
+      "searched": [
+        "Bebar Dental Joliet IL 1523 Plainfield Rd dentist",
+        "Heinzel Bebar Dental Care Joliet dentists owners"
+      ]
+    },
+    {
+      "location_id": "4b2a7f1665a61562",
+      "practice_name": "DRS TALBOT AND SMITH FAMILY DENTAL CARE",
+      "zip": "60435",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/talbot-and-smith-family-dental-care-joliet",
+        "https://www.zoominfo.com/c/drs-talbot--smith-family-dental-care-ltd/1171548129"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "The system flagged a 'Family Dental Care' brand_hint, but a targeted search for a national/regional DSO literally named 'Family Dental Care' returned no such chain (only a generic DSO list); this practice is a 30+-year, doctor-named ('Talbot & Smith') single-address Ltd. general practice with no corporate parent or locator evidence found. 'Family Dental Care' here reads as a generic descriptor, not a brand. single_loc_group given the two-name partnership at one address.",
+      "searched": [
+        "\"Talbot and Smith Family Dental Care\" Joliet IL 330 Madison",
+        "\"Family Dental Care\" Illinois DSO private equity chain brand"
+      ]
+    },
+    {
+      "location_id": "2072063c3e6aeed0",
+      "practice_name": "Gabriella M Paolucci DDS",
+      "zip": "60435",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.gabriellapaolucci.com/",
+        "https://www.healthgrades.com/dentist/dr-gabriella-paolucci-xn5c6"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Dr. Gabriella Paolucci runs a personal-branded single-office practice (own domain gabriellapaolucci.com) at 1960 Essington Rd, Joliet, with 35 years experience and no other locations or corporate signal found. Two providers at one address fits single_loc_group.",
+      "searched": [
+        "Gabriella Paolucci DDS Joliet IL dentist"
+      ]
+    },
+    {
+      "location_id": "f97fe1ea83f20c3e",
+      "practice_name": "Zupancic Dental",
+      "zip": "60435",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.jolietdds.com/",
+        "https://www.healthgrades.com/dentist/dr-thomas-zupancic-38px6"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Thomas C. Zupancic, DDS has served Joliet from a single office (jolietdds.com uses exclusively singular 'our office'/'our practice' language) since 1980; no other locations or corporate affiliation found. true_independent.",
+      "searched": [
+        "Zupancic Dental Joliet IL 600 Theodore St dentist",
+        "jolietdds.com fetch"
+      ]
+    },
+    {
+      "location_id": "bb97d5c4988b2b40",
+      "practice_name": "Grabavoy Dental",
+      "zip": "60435",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.healthgrades.com/dentist/dr-george-grabavoy-2b6gf",
+        "https://reviews.birdeye.com/dr-george-n-grabavoy-dds-169120698032333"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "Multiple sources (Healthgrades, patient reviews) indicate Dr. George Grabavoy's office at 1106 N Larkin Ave is closed/not accepting patients, with a patient report that he closed without notifying patients. closure_suspect — not classified per protocol.",
+      "searched": [
+        "Grabavoy Dental Joliet IL 1106 N Larkin Ave dentist",
+        "Dr George Grabavoy Joliet dentist closed office retired"
+      ]
+    },
+    {
+      "location_id": "d2e4b594fa3fddf0",
+      "practice_name": "Patel Dental",
+      "zip": "60435",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://connectthedoc.com/at-dental-joliet-il",
+        "https://www.yelp.com/biz/patel-m-trushar-dds-joliet"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "1507 1/2 W Jefferson St, Joliet hosts 'AT Dental,' associated with both Dr. Alpa Patel and Dr. Trushar Patel (family practice, matching the family_practice classification/2-provider count); one address, two same-surname dentists, no corporate/DSO signal. single_loc_group.",
+      "searched": [
+        "Patel Dental Joliet IL 1507 W Jefferson St dentist",
+        "Patel Dental 1507 Jefferson Joliet second dentist family practice"
+      ]
+    },
+    {
+      "location_id": "1469c6dcde0459a7",
+      "practice_name": "AVID DENTAL",
+      "zip": "60435",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/avid-dental-pc-joliet-2",
+        "https://www.bbb.org/us/il/joliet/profile/dentist/advanced-family-dental-orthodontics-pc-0654-90011578"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "Yelp lists 'AVID DENTAL, PC - CLOSED' (updated June 2026) at 115 Republic Ave, and our record shows provider_count=0, consistent with closure. The entity is legally the same registration as 'Advanced Family Dental & Orthodontics, PC' (the GLDP-affiliated David Rubis network), but this specific address does not appear on GLDP's current locator or AFD's own site location list, and the closure signal is the controlling fact. closure_suspect — not classified.",
+      "searched": [
+        "AVID Dental 115 Republic Ave Joliet IL David Rubis",
+        "\"Avid Dental\" 115 Republic Ave Joliet closed"
+      ]
+    },
+    {
+      "location_id": "e105f89caec5ecde",
+      "practice_name": "Gallo Dental",
+      "zip": "60435",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/gallo-dds-limited-joliet",
+        "https://www.familydentaldirectory.com/illinois/joliet/dentist/dr-paul-v-gallo-dds"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Gallo DDS Limited, led by Dr. Paul Gallo (Loyola 1977 grad), operates from a single Ste 208 office at 3077 W Jefferson St, Joliet, with no corporate/DSO signal found; our record's 2-provider count is consistent with a small owner-operated group at one address. single_loc_group.",
+      "searched": [
+        "Gallo Dental Joliet IL 3077 W Jefferson St dentist"
+      ]
+    },
+    {
+      "location_id": "d3c91780bb40f84e",
+      "practice_name": "ROYAL DENTAL",
+      "zip": "60435",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://npiprofile.com/npi/1235302910",
+        "https://www.yellowpages.com/joliet-il/trakakis-george-dds-hammes-family-dental-pc"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "Royal Dental's authorized official George Trakakis is also associated in directories with a different Joliet address ('Hammes Family Dental,' 181 N Hammes Ave), and our record shows provider_count=0 at the 2713 Black Rd address — signals consistent with a relocation/closure at this specific address, though no source explicitly states 'closed.' Evidence is conflicting rather than clean, so left undetermined (closure_suspect) rather than guessing true_independent or dentist_multi.",
+      "searched": [
+        "Royal Dental Joliet IL 2713 Black Rd George Trakakis dentist",
+        "George Trakakis Hammes Family Dental Joliet dentist locations",
+        "\"Royal Dental\" 2713 Black Rd Joliet closed OR moved Trakakis"
+      ]
+    }
+  ]
+}
