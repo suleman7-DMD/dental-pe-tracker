@@ -1170,8 +1170,9 @@ def _acquire_sync_lock():
     _sync_lock_handle.flush()
 
 
-def run():
+def run(tables=None):
     """Run the full incremental sync from SQLite to Supabase Postgres."""
+    selected_tables = set(tables or [])
     _acquire_sync_lock()
     start_time = log_scrape_start("sync_to_supabase")
     log.info("=" * 60)
@@ -1201,6 +1202,10 @@ def run():
         for config in SYNC_CONFIG:
             table_name = config["table"]
             strategy = config["strategy"]
+
+            if selected_tables and table_name not in selected_tables:
+                log.info("[%s] Skipping; not in requested table set", table_name)
+                continue
 
             # Fix 3: stop dispatching new tables if shutdown was requested
             if _shutdown_requested:
@@ -1350,9 +1355,16 @@ if __name__ == "__main__":
         action="store_true",
         help="With --reconcile-deals: show what would be deleted without doing it.",
     )
+    parser.add_argument(
+        "--tables",
+        type=str,
+        default=None,
+        help="Comma-separated table list to sync, e.g. --tables deals. Default syncs all configured tables.",
+    )
     args = parser.parse_args()
 
     if args.reconcile_deals:
         _reconcile_only(dry_run=args.dry_run)
     else:
-        run()
+        tables = [t.strip() for t in args.tables.split(",") if t.strip()] if args.tables else None
+        run(tables=tables)

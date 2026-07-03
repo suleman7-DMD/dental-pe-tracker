@@ -165,7 +165,18 @@ KNOWN_PLATFORMS = [
     "Operation Dental", "Passion Dental",
     "Premier Care Dental Management", "Specialty1 Partners",
     "Today's Dental Network",
+    "Vitana Pediatric Orthodontic Partners",
     "Vitana Pediatric & Orthodontic Partners",
+    "Gen4 Dental Partners",
+    "Seva Dental",
+    "Lone Peak Dental Group",
+    "Lone Peak Dental",
+    "Park Dental Partners",
+    "LADD Dental Group",
+    "North Pittsburgh Oral Surgery",
+    "MODIS Dental Partners",
+    "SGA Dental Partners",
+    "Cal Dental USA",
 ]
 
 KNOWN_PE_SPONSORS = [
@@ -227,6 +238,34 @@ CREDIT_KEYWORDS = [
     "term loan", "revolver", "capital structure",
 ]
 
+# GDN posts are prose-heavy roundups. The parser's heuristic fallback is useful
+# for newly-named platforms, but it can also capture editorial boilerplate as a
+# fake company. These rejects keep the deal table from accumulating rows like
+# "Group Dentistry Now" or "When Group Dentistry Now" as platforms.
+BAD_ENTITY_NAMES = {
+    "group dentistry now",
+    "when group dentistry now",
+    "group dentistry",
+    "dso deal roundup",
+    "dso deals",
+    "unknown",
+}
+
+BAD_ENTITY_PATTERNS = [
+    r'\bsubscribe\b',
+    r'\bnewsletter\b',
+    r'\badvertis',
+    r'\bwebinar\b',
+    r'\bpodcast\b',
+    r'\broundup\b',
+    r'\bgroup dentistry now\b',
+    r'\bdso industry\b',
+    r'\bthis month\b',
+    r'\btop \d+\b',
+]
+
+TARGET_REQUIRED_TYPES = {"add-on", "partnership", "buyout"}
+
 
 # ── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -235,6 +274,64 @@ def _normalize_text(el):
     """Extract text with spaces between tags, then collapse whitespace."""
     raw = el.get_text(separator=" ")
     return re.sub(r'\s+', ' ', raw).strip()
+
+
+def _entity_quality_issue(value):
+    """Return a reason string when an extracted company/practice name is junk."""
+    if not value:
+        return "missing"
+    normalized = re.sub(r'\s+', ' ', value).strip().lower()
+    if normalized in BAD_ENTITY_NAMES:
+        return "known_bad_entity"
+    if len(normalized) < 3:
+        return "too_short"
+    if len(value) > 90:
+        return "too_long"
+    for pattern in BAD_ENTITY_PATTERNS:
+        if re.search(pattern, normalized):
+            return "bad_entity_pattern"
+    return None
+
+
+def _deal_quality_issue(deal):
+    """Fail closed on scraper output that is structurally too weak to insert."""
+    platform_issue = _entity_quality_issue(deal.get("platform_company"))
+    if platform_issue:
+        return f"platform_{platform_issue}"
+
+    target = deal.get("target_name")
+    if target:
+        target_issue = _entity_quality_issue(target)
+        if target_issue:
+            return f"target_{target_issue}"
+    elif deal.get("deal_type") in TARGET_REQUIRED_TYPES:
+        # If the block says this was an acquisition/partnership/buyout but the
+        # target was not parsed, do not create a vague platform-only row.
+        return "missing_target"
+
+    return None
+
+
+def _filter_quality_deals(deals, source_url):
+    """Remove low-confidence parsed rows before dry-run display or DB insert."""
+    kept = []
+    dropped = 0
+    for deal in deals:
+        issue = _deal_quality_issue(deal)
+        if issue:
+            dropped += 1
+            log.warning(
+                "QUALITY DROP %s platform=%r target=%r url=%s",
+                issue,
+                deal.get("platform_company"),
+                deal.get("target_name"),
+                source_url,
+            )
+            continue
+        kept.append(deal)
+    if dropped:
+        log.info("Quality gate dropped %d/%d parsed rows from %s", dropped, len(deals), source_url)
+    return kept
 
 
 # ── URL Discovery ───────────────────────────────────────────────────────────
@@ -435,6 +532,33 @@ def extract_post_date_range(title):
         return (date(year, 1, 1), date(year, 12, 31))
 
     return None
+
+
+def _roundup_end_date(title):
+    """Best-effort end date for a roundup title, used by incremental runs."""
+    date_range = extract_post_date_range(title or "")
+    if date_range:
+        return date_range[1]
+    single = extract_deal_date_from_title(title or "")
+    if single:
+        if single.month == 12:
+            return date(single.year, 12, 31)
+        return date(single.year, single.month + 1, 1) - timedelta(days=1)
+    return None
+
+
+def _filter_roundup_posts(roundup_posts, since_date=None, limit_posts=None):
+    """Apply incremental-run controls after discovery."""
+    filtered = []
+    for url, title in roundup_posts:
+        end_date = _roundup_end_date(title)
+        if since_date and end_date and end_date < since_date:
+            log.debug("Skipping %s (%s) before since=%s", url, end_date, since_date)
+            continue
+        filtered.append((url, title))
+        if limit_posts and len(filtered) >= limit_posts:
+            break
+    return filtered
 
 
 def infer_deal_date_from_block(block, date_range):
@@ -709,6 +833,8 @@ def extract_platform(text):
         candidate = " ".join(entity_words).strip()
         # Must be multi-word; reject single generic words
         if len(entity_words) >= 2 and len(candidate) <= 60:
+            if _entity_quality_issue(candidate):
+                return None
             log.debug("Fallback platform extracted: %s", candidate)
             return candidate
 
@@ -906,7 +1032,7 @@ def detect_deal_type(text, platform):
     t = text.lower()
     if re.search(r'\brecapital|\brecap\b', t):
         return "recapitalization"
-    if re.search(r'\bde novo\b|\bgrand opening\b|\bnew office\b|\bnew location\b|\bopened\b', t):
+    if re.search(r'\bde novo\b|\bgrand opening\b|\bnew office\b|\bnew location\b|\bopened\b|\bopens?\b|\bto open\b', t):
         return "de_novo"
     if re.search(r'\bnew platform\b|\bbuyout\b', t):
         return "buyout"
@@ -1109,17 +1235,19 @@ def scrape_post(url, title, fallback_date):
             log.warning("PARSE ERROR: %.200s — %s", block, e)
             parse_failures += 1
 
+    deals = _filter_quality_deals(deals, url)
     total_drops = parse_failures + no_entity_drops
     log.info("Parsed %d deals from %s (parse failures: %d, no-entity drops: %d, total dropped: %d, date-inferred: %d)",
              len(deals), url, parse_failures, no_entity_drops, total_drops, inferred_deals)
     return deals
 
 
-def run(dry_run=False):
+def run(dry_run=False, since_date=None, limit_posts=None):
     """Main entry point."""
     _t0 = log_scrape_start("gdn_scraper")
     log.info("=" * 60)
-    log.info("GDN Scraper starting (dry_run=%s)", dry_run)
+    log.info("GDN Scraper starting (dry_run=%s, since=%s, limit_posts=%s)",
+             dry_run, since_date, limit_posts)
     log.info("=" * 60)
 
     # Step 1: Discover roundup URLs
@@ -1127,6 +1255,12 @@ def run(dry_run=False):
     if not roundup_posts:
         log.warning("No roundup posts found. Exiting.")
         log_scrape_complete("gdn_scraper", _t0, new_records=0, summary="GDN: No roundup posts found")
+        return
+
+    roundup_posts = _filter_roundup_posts(roundup_posts, since_date=since_date, limit_posts=limit_posts)
+    if not roundup_posts:
+        log.warning("No roundup posts matched since/limit controls. Exiting.")
+        log_scrape_complete("gdn_scraper", _t0, new_records=0, summary="GDN: No roundup posts in requested window")
         return
 
     # Step 2: Scrape each post
@@ -1240,5 +1374,18 @@ def _print_dry_run_table(deals):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Scrape GDN for dental PE deals")
     parser.add_argument("--dry-run", action="store_true", help="Parse only, don't insert into DB")
+    parser.add_argument("--since", type=str, default=None,
+                        help="Only process roundup posts whose covered window reaches YYYY-MM-DD")
+    parser.add_argument("--limit-posts", type=int, default=None,
+                        help="Cap the number of roundup posts to process after since filtering")
     args = parser.parse_args()
-    run(dry_run=args.dry_run)
+
+    since = None
+    if args.since:
+        try:
+            since = date.fromisoformat(args.since)
+        except ValueError:
+            print(f"ERROR: --since must be YYYY-MM-DD, got: {args.since}")
+            sys.exit(1)
+
+    run(dry_run=args.dry_run, since_date=since, limit_posts=args.limit_posts)

@@ -1,0 +1,162 @@
+name: Deal Flow Refresh
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Refresh scope
+        required: true
+        default: recent
+        type: choice
+        options:
+          - recent
+          - backfill_2020
+          - backfill_2018
+      since:
+        description: Optional YYYY-MM-DD override
+        required: false
+        type: string
+      dry_run:
+        description: Parse only, do not write/sync
+        required: true
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+
+jobs:
+  refresh-deals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    env:
+      SUPABASE_DATABASE_URL: ${{ secrets.SUPABASE_DATABASE_URL }}
+      SUPABASE_POOLER_URL:   ${{ secrets.SUPABASE_POOLER_URL }}
+      PYTHONPATH:            ${{ github.workspace }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt 2>/dev/null || pip install \
+            requests beautifulsoup4 lxml sqlalchemy psycopg2-binary \
+            python-dateutil tqdm openpyxl rapidfuzz fuzzywuzzy python-Levenshtein \
+            python-dotenv 2>/dev/null || true
+
+      - name: Decompress SQLite DB
+        run: |
+          if [ -f data/dental_pe_tracker.db.gz ] && [ ! -f data/dental_pe_tracker.db ]; then
+            python3 - <<'PY'
+          import gzip, shutil, os
+          with gzip.open('data/dental_pe_tracker.db.gz','rb') as f, open('data/dental_pe_tracker.db','wb') as out:
+              shutil.copyfileobj(f, out)
+          print('DB decompressed:', os.path.getsize('data/dental_pe_tracker.db'), 'bytes')
+          PY
+          fi
+          test -f data/dental_pe_tracker.db
+
+      - name: Choose backfill window
+        id: window
+        shell: bash
+        run: |
+          if [ -n "${{ inputs.since }}" ]; then
+            SINCE="${{ inputs.since }}"
+          elif [ "${{ inputs.mode }}" = "backfill_2018" ]; then
+            SINCE="2018-01-01"
+          elif [ "${{ inputs.mode }}" = "backfill_2020" ]; then
+            SINCE="2020-01-01"
+          else
+            SINCE="$(date -u -d '90 days ago' +%Y-%m-%d)"
+          fi
+          echo "since=$SINCE" >> "$GITHUB_OUTPUT"
+          echo "Deal refresh mode=${{ inputs.mode }} since=$SINCE dry_run=${{ inputs.dry_run }}"
+
+      - name: Compile scraper modules
+        run: python3 -m py_compile scrapers/gdn_scraper.py scrapers/beckers_scraper.py scrapers/pesp_scraper.py scrapers/sync_to_supabase.py
+
+      - name: Pre-run deal summary
+        run: |
+          python3 - <<'PY'
+          import sqlite3
+          con=sqlite3.connect('data/dental_pe_tracker.db')
+          print('deals_before', con.execute('SELECT COUNT(*) FROM deals').fetchone()[0])
+          print('latest_before', con.execute('SELECT MAX(deal_date) FROM deals').fetchone()[0])
+          PY
+
+      - name: Scrape GDN roundups
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python3 scrapers/gdn_scraper.py --dry-run --since "${{ steps.window.outputs.since }}"
+          else
+            python3 scrapers/gdn_scraper.py --since "${{ steps.window.outputs.since }}"
+          fi
+
+      - name: Scrape Becker's sitemap fallback
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python3 scrapers/beckers_scraper.py --dry-run --sitemap-only --since "${{ steps.window.outputs.since }}"
+          else
+            python3 scrapers/beckers_scraper.py --sitemap-only --since "${{ steps.window.outputs.since }}"
+          fi
+
+      - name: Scrape PESP public pages
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python3 scrapers/pesp_scraper.py --dry-run
+          else
+            python3 scrapers/pesp_scraper.py
+          fi
+        continue-on-error: true
+
+      - name: Import PitchBook CSVs
+        if: inputs.dry_run == 'false'
+        run: python3 scrapers/pitchbook_importer.py --auto
+        continue-on-error: true
+
+      - name: Deal quality audit
+        run: |
+          python3 - <<'PY'
+          import sqlite3, collections
+          con=sqlite3.connect('data/dental_pe_tracker.db')
+          cur=con.cursor()
+          print('deals_after', cur.execute('SELECT COUNT(*) FROM deals').fetchone()[0])
+          print('latest_after', cur.execute('SELECT MAX(deal_date) FROM deals').fetchone()[0])
+          print('recent_by_source')
+          for row in cur.execute("SELECT source, COUNT(*), MAX(deal_date) FROM deals GROUP BY source ORDER BY source"):
+              print(row)
+          bad=cur.execute("""
+            SELECT COUNT(*) FROM deals
+            WHERE deal_date >= ? AND (platform_company IS NULL OR TRIM(platform_company)='' OR LOWER(platform_company) IN ('unknown','group dentistry now'))
+          """, ('${{ steps.window.outputs.since }}',)).fetchone()[0]
+          blank_target=cur.execute("""
+            SELECT COUNT(*) FROM deals
+            WHERE deal_date >= ? AND (target_name IS NULL OR TRIM(target_name)='')
+          """, ('${{ steps.window.outputs.since }}',)).fetchone()[0]
+          print('recent_bad_platform_rows', bad)
+          print('recent_blank_target_rows', blank_target)
+          if bad:
+              raise SystemExit('Bad platform rows detected in refreshed window')
+          PY
+
+      - name: Sync deals to Supabase
+        if: inputs.dry_run == 'false' && (env.SUPABASE_POOLER_URL != '' || env.SUPABASE_DATABASE_URL != '')
+        run: python3 scrapers/sync_to_supabase.py --tables deals
+
+      - name: Upload pipeline logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: deal-flow-refresh-logs
+          path: |
+            logs/*.jsonl
+            logs/*.log
+          if-no-files-found: ignore

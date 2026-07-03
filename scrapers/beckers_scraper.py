@@ -18,6 +18,7 @@ import re
 import sys
 import os
 import time
+import xml.etree.ElementTree as ET
 from datetime import date, datetime
 
 import requests
@@ -49,6 +50,14 @@ CATEGORY_URLS = [
     "https://www.beckersdental.com/dentists/",
 ]
 
+# Becker's category/article HTML intermittently blocks scripted clients with
+# 403, but the WordPress sitemap remains available. Use it as a discovery
+# fallback so the feed does not silently go stale when category crawl fails.
+SITEMAP_URLS = [
+    "https://www.beckersdental.com/post-sitemap.xml",
+]
+SITEMAP_INDEX_URL = "https://www.beckersdental.com/sitemap_index.xml"
+
 MAX_PAGES_PER_CATEGORY = 15   # safety cap per category
 MAX_RETRIES = 3
 RETRY_BACKOFF = [3, 8, 20]    # seconds between retry attempts
@@ -75,9 +84,35 @@ DEAL_TITLE_KEYWORDS = [
     "adds location",
     "adds practice",
     "adds office",
+    "opened",
+    "opens",
+    "de novo",
+    "new office",
+    "new offices",
     "grows ",
     "growth",
     "platform",
+]
+
+DEAL_TITLE_PATTERNS = [
+    r'\bacquir(?:e|es|ed|ing|s|ition)\b',
+    r'\baffiliat(?:e|es|ed|ing|ion)\b',
+    r'\bpartners?\s+(?:with|to|and)\b',
+    r'\bpartnership\b',
+    r'\bmerg(?:e|es|ed|ing|er)\b',
+    r'\bjoins?\b',
+    r'\bwelcomes?\b',
+    r'\badds?\s+(?:[a-z0-9&.\'’\- ]{1,45}\s+)?(?:practice|office|location|affiliate|partner)\b',
+    r'\badded\s+\d+\s+(?:practice|office|location|affiliate|partner)s?\b',
+    r'\bopens?\s+(?:[a-z0-9&.\'’\- ]{1,45}\s+)?(?:practice|office|location)\b',
+    r'\bopened\s+\d+\s+(?:de novo\s+)?(?:practice|office|location)s?\b',
+    r'\bde novo\s+(?:practice|office|location)\b',
+    r'\blaunch(?:es|ed)?\s+(?:[a-z0-9&.\'’\- ]{1,45}\s+)?de novo\b',
+    r'\bgrowth investment\b',
+    r'\blands growth investment\b',
+    r'\brecapital(?:ization|ized|izes?)\b',
+    r'\bbuyout\b',
+    r'\bprivate equity\b',
 ]
 
 # Title keywords that definitively mean this is NOT a named deal article
@@ -90,6 +125,7 @@ SKIP_TITLE_KEYWORDS = [
     " acquisitions in 20",
     " things to know",
     "what to know",
+    " notes on ",
     " reasons ",
     " tips ",
     " trends ",
@@ -211,8 +247,18 @@ KNOWN_PLATFORMS = [
     "Operation Dental", "Passion Dental",
     "Premier Care Dental Management", "Specialty1 Partners",
     "Today's Dental Network",
+    "Vitana Pediatric Orthodontic Partners",
     "Vitana Pediatric & Orthodontic Partners",
     "Gen4 Dental Partners",
+    "Seva Dental",
+    "Lone Peak Dental Group",
+    "Lone Peak Dental",
+    "Park Dental Partners",
+    "LADD Dental Group",
+    "North Pittsburgh Oral Surgery",
+    "MODIS Dental Partners",
+    "SGA Dental Partners",
+    "Cal Dental USA",
     "Dental Whale", "Shore Dental",
     "Image Specialty Partners", "Mosaic Dental", "Dental Haus",
     "DCA", "Enable Dental", "Great Orthodontics", "Pinnacle Dental Partners",
@@ -341,9 +387,10 @@ def _is_deal_title(title):
         if kw in t:
             return False
 
-    # Require at least one deal-signal keyword
-    for kw in DEAL_TITLE_KEYWORDS:
-        if kw in t:
+    # Require at least one transaction/opening/growth pattern. Avoid raw
+    # substring checks like "add", which match "advances" and "updates".
+    for pattern in DEAL_TITLE_PATTERNS:
+        if re.search(pattern, t, re.IGNORECASE):
             return True
 
     return False
@@ -415,10 +462,94 @@ def fetch_page(url):
     return None
 
 
+def _title_from_url(url):
+    """Create a readable title from a Becker's post URL when HTML is blocked."""
+    slug = url.rstrip("/").split("/")[-1]
+    slug = re.sub(r'-\d{4,}$', '', slug)
+    words = [w for w in slug.split("-") if w]
+    return " ".join(words)
+
+
+def _load_post_sitemap_urls():
+    """Return all Becker's post sitemap URLs from the sitemap index."""
+    try:
+        resp = _request_with_retry("get", SITEMAP_INDEX_URL, headers=HEADERS, timeout=(10, 30))
+        resp.raise_for_status()
+        root = ET.fromstring(resp.text)
+    except (requests.RequestException, ET.ParseError) as e:
+        log.warning("Sitemap index fetch/parse failed, using configured fallback list: %s", e)
+        return SITEMAP_URLS
+
+    ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+    urls = []
+    for node in root.findall("sm:sitemap", ns) or root.findall("sitemap"):
+        loc_node = node.find("sm:loc", ns)
+        if loc_node is None:
+            loc_node = node.find("loc")
+        if loc_node is None or not loc_node.text:
+            continue
+        loc = loc_node.text.strip()
+        if re.search(r'/post-sitemap\d*\.xml$', loc):
+            urls.append(loc)
+
+    return urls or SITEMAP_URLS
+
+
+def _discover_article_urls_from_sitemap(since_date=None):
+    """Fallback discovery using Becker's WordPress sitemap."""
+    discovered = []
+    seen = set()
+
+    for sitemap_url in _load_post_sitemap_urls():
+        log.info("Crawling sitemap fallback: %s", sitemap_url)
+        try:
+            resp = _request_with_retry("get", sitemap_url, headers=HEADERS, timeout=(10, 30))
+            resp.raise_for_status()
+        except requests.RequestException as e:
+            log.warning("Sitemap fetch failed for %s: %s", sitemap_url, e)
+            continue
+
+        try:
+            root = ET.fromstring(resp.text)
+        except ET.ParseError as e:
+            log.warning("Sitemap XML parse failed for %s: %s", sitemap_url, e)
+            continue
+
+        ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+        url_nodes = root.findall("sm:url", ns) or root.findall("url")
+        for node in url_nodes:
+            loc_node = node.find("sm:loc", ns)
+            if loc_node is None:
+                loc_node = node.find("loc")
+            if loc_node is None or not loc_node.text:
+                continue
+            url = loc_node.text.strip()
+            if url in seen:
+                continue
+
+            lastmod_node = node.find("sm:lastmod", ns)
+            if lastmod_node is None:
+                lastmod_node = node.find("lastmod")
+            pub_date = _parse_date_string(lastmod_node.text) if lastmod_node is not None and lastmod_node.text else None
+            if since_date and pub_date and pub_date < since_date:
+                continue
+
+            title = _title_from_url(url)
+            if not _is_deal_title(title):
+                continue
+
+            seen.add(url)
+            discovered.append((url, title, pub_date))
+
+    discovered.sort(key=lambda row: row[2] or date.min, reverse=True)
+    log.info("Sitemap fallback discovered %d deal-candidate articles", len(discovered))
+    return discovered
+
+
 # ── Category Crawl ───────────────────────────────────────────────────────────
 
 
-def discover_article_urls(since_date=None):
+def discover_article_urls(since_date=None, sitemap_only=False):
     """Crawl Becker's category pages and return deal-relevant article URLs.
 
     Returns a list of (url, title, article_date) tuples. ``article_date`` is
@@ -428,6 +559,9 @@ def discover_article_urls(since_date=None):
     """
     discovered = []   # list of (url, title, pub_date)
     seen_urls = set()
+
+    if sitemap_only:
+        return _discover_article_urls_from_sitemap(since_date=since_date)
 
     for cat_url in CATEGORY_URLS:
         log.info("Crawling category: %s", cat_url)
@@ -480,6 +614,10 @@ def discover_article_urls(since_date=None):
 
             page_num += 1
             time.sleep(RATE_LIMIT_SECS)
+
+    if not discovered:
+        log.warning("Category crawl found no candidates; falling back to sitemap discovery")
+        discovered = _discover_article_urls_from_sitemap(since_date=since_date)
 
     log.info("Total deal-candidate articles discovered: %d", len(discovered))
     return discovered
@@ -941,7 +1079,7 @@ def detect_deal_type(text):
     t = text.lower()
     if re.search(r'\brecapital|\brecap\b', t):
         return "recapitalization"
-    if re.search(r'\bde novo\b|\bgrand opening\b|\bnew office\b|\bnew location\b|\bopened\b', t):
+    if re.search(r'\bde novo\b|\bgrand opening\b|\bnew office\b|\bnew location\b|\bopened\b|\bopens?\b|\bto open\b', t):
         return "de_novo"
     if re.search(r'\bnew platform\b|\bbuyout\b', t):
         return "buyout"
@@ -1085,6 +1223,60 @@ def parse_article(url, soup, pub_date):
     }
 
 
+def parse_title_fallback_article(url, title, pub_date):
+    """Parse a sitemap-discovered title when Becker's blocks article HTML.
+
+    This intentionally extracts only conservative fields that are visible in
+    the sitemap URL/title/date. It keeps the deal feed fresh without pretending
+    we read article-body details that were 403-blocked.
+    """
+    if not title or not _is_deal_title(title):
+        return None
+
+    article_date = pub_date
+    if not article_date:
+        log.warning("No sitemap date for %s — skipping title fallback", url)
+        return None
+
+    normalized_title = normalize_punctuation(title)
+    if is_international(normalized_title) or is_credit_news(normalized_title):
+        return None
+
+    platform = normalize_punctuation(extract_platform(normalized_title))
+    pe_sponsor = normalize_punctuation(extract_pe_sponsor(normalized_title))
+    target = normalize_punctuation(extract_target(normalized_title, platform))
+    state = extract_state(normalized_title)
+    deal_type = detect_deal_type(normalized_title)
+    num_locations = extract_num_locations(normalized_title)
+    specialty = detect_specialty(normalized_title)
+
+    if not platform and not pe_sponsor:
+        log.warning("TITLE FALLBACK DROP — no platform/sponsor: %s", title)
+        return None
+
+    # For add-on/partnership articles, a missing target is acceptable only when
+    # the title names a state/practice count. The row is then explicitly marked
+    # as a title-only source-check candidate in notes.
+    if not target and deal_type in {"add-on", "partnership", "buyout"} and not (state or num_locations):
+        log.warning("TITLE FALLBACK DROP — missing target/state/count: %s", title)
+        return None
+
+    return {
+        "deal_date": article_date,
+        "platform_company": platform or "Unknown",
+        "pe_sponsor": pe_sponsor,
+        "target_name": target,
+        "target_state": state,
+        "deal_type": deal_type,
+        "specialty": specialty,
+        "num_locations": num_locations,
+        "source": "beckers",
+        "source_url": url,
+        "raw_text": normalized_title,
+        "notes": "sitemap_title_fallback_html_blocked",
+    }
+
+
 # ── Dedup Check ──────────────────────────────────────────────────────────────
 
 
@@ -1125,18 +1317,19 @@ def already_in_db(session, deal):
 # ── Scraper Orchestration ─────────────────────────────────────────────────────
 
 
-def run(dry_run=False, limit=None, since_date=None):
+def run(dry_run=False, limit=None, since_date=None, sitemap_only=False):
     """Main entry point.
 
     Args:
-        dry_run:    If True, parse only and print — don't insert into DB.
-        limit:      Max number of articles to fetch (None = no cap).
-        since_date: Only process articles on or after this date (date object).
+        dry_run:      If True, parse only and print — don't insert into DB.
+        limit:        Max number of articles to fetch (None = no cap).
+        since_date:   Only process articles on or after this date (date object).
+        sitemap_only: Skip HTML fetches and parse from sitemap URL/title/date.
     """
     _t0 = log_scrape_start("beckers_scraper")
     log.info("=" * 60)
-    log.info("Becker's Dental Scraper starting (dry_run=%s, limit=%s, since=%s)",
-             dry_run, limit, since_date)
+    log.info("Becker's Dental Scraper starting (dry_run=%s, limit=%s, since=%s, sitemap_only=%s)",
+             dry_run, limit, since_date, sitemap_only)
     log.info("=" * 60)
 
     if not dry_run:
@@ -1153,7 +1346,7 @@ def run(dry_run=False, limit=None, since_date=None):
 
     try:
         # Step 1: Discover article URLs
-        candidates = discover_article_urls(since_date=since_date)
+        candidates = discover_article_urls(since_date=since_date, sitemap_only=sitemap_only)
         if not candidates:
             log.warning("No deal-candidate articles found.")
             log_scrape_complete(
@@ -1169,13 +1362,38 @@ def run(dry_run=False, limit=None, since_date=None):
 
         # Step 2: Fetch and parse each article
         for url, title, pub_date in candidates:
+            if sitemap_only:
+                deal = parse_title_fallback_article(url, title, pub_date)
+                if deal is None:
+                    parse_failures += 1
+                    continue
+                articles_parsed += 1
+                all_deals.append(deal)
+                log.info("PARSED FALLBACK: platform=%s target=%s date=%s state=%s",
+                         deal.get("platform_company"),
+                         deal.get("target_name") or "—",
+                         deal.get("deal_date"),
+                         deal.get("target_state") or "—")
+                continue
+
             log.info("Fetching: %s", url)
             soup = fetch_page(url)
             articles_fetched += 1
 
             if not soup:
-                log.warning("Failed to fetch article: %s", url)
-                parse_failures += 1
+                log.warning("Failed to fetch article HTML, trying sitemap-title fallback: %s", url)
+                deal = parse_title_fallback_article(url, title, pub_date)
+                if deal is None:
+                    parse_failures += 1
+                    time.sleep(RATE_LIMIT_SECS)
+                    continue
+                articles_parsed += 1
+                all_deals.append(deal)
+                log.info("PARSED FALLBACK: platform=%s target=%s date=%s state=%s",
+                         deal.get("platform_company"),
+                         deal.get("target_name") or "—",
+                         deal.get("deal_date"),
+                         deal.get("target_state") or "—")
                 time.sleep(RATE_LIMIT_SECS)
                 continue
 
@@ -1228,6 +1446,7 @@ def run(dry_run=False, limit=None, since_date=None):
                         num_locations=deal.get("num_locations"),
                         source=deal["source"],
                         source_url=deal["source_url"],
+                        notes=deal.get("notes"),
                         raw_text=deal.get("raw_text"),
                     )
                     if result:
@@ -1319,6 +1538,8 @@ if __name__ == "__main__":
                         help="Cap the number of articles to fetch")
     parser.add_argument("--since", type=str, default=None,
                         help="Only process articles on or after YYYY-MM-DD")
+    parser.add_argument("--sitemap-only", action="store_true",
+                        help="Use sitemap URL/title/date fallback only; avoids slow article HTML retries when Becker blocks scraping")
     args = parser.parse_args()
 
     since = None
@@ -1329,4 +1550,4 @@ if __name__ == "__main__":
             print(f"ERROR: --since must be YYYY-MM-DD, got: {args.since}")
             sys.exit(1)
 
-    run(dry_run=args.dry_run, limit=args.limit, since_date=since)
+    run(dry_run=args.dry_run, limit=args.limit, since_date=since, sitemap_only=args.sitemap_only)

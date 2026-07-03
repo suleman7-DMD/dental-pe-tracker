@@ -65,6 +65,7 @@ import argparse
 import json
 import math
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -693,6 +694,7 @@ EXAMPLES:
   %(prog)s --metro boston --resume 5   Resume Boston from batch 5
   %(prog)s --combine                  Just combine existing CSVs
   %(prog)s --zips 33901,33907 --label fortmyers   Custom ZIPs
+  %(prog)s --zips-file data/dso_research/wave5_zips.txt --label wave5
         """,
     )
     parser.add_argument(
@@ -706,6 +708,10 @@ EXAMPLES:
     parser.add_argument(
         "--zips", type=str, default=None,
         help="Comma-separated ZIP codes (overrides --metro)"
+    )
+    parser.add_argument(
+        "--zips-file", type=str, default=None,
+        help="Path to newline/comma/JSON-list ZIP file (overrides --metro; useful for Fable/Wave-5 exact gaps)"
     )
     parser.add_argument(
         "--label", type=str, default="custom",
@@ -753,7 +759,21 @@ EXAMPLES:
         "chi-all": ("chi_all", CHI_ALL_EXPANDED),
     }
 
-    if args.zips:
+    if args.zips_file:
+        if not os.path.exists(args.zips_file):
+            err(f"ZIP file not found: {args.zips_file}")
+            return
+        raw = open(args.zips_file).read().strip()
+        try:
+            parsed = json.loads(raw)
+            if isinstance(parsed, dict):
+                parsed = parsed.get("zips") or parsed.get("zip_codes") or []
+            all_zips = [str(z).strip() for z in parsed if str(z).strip()]
+        except json.JSONDecodeError:
+            all_zips = [z for z in re.split(r"[\s,]+", raw) if z]
+        metro_label = args.label
+        info(f"Loaded {len(all_zips)} ZIPs from {args.zips_file}")
+    elif args.zips:
         all_zips = [z.strip() for z in args.zips.split(",") if z.strip()]
         metro_label = args.label
     elif args.metro in METRO_MAP:
