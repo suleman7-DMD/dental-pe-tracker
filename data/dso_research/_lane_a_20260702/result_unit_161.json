@@ -16,23 +16,20 @@
    "confidence": "high",
    "status": "classified",
    "network_id": "brand:aspen_dental",
-   "reasoning": "Aspen Dental's own locator page confirms this exact address (15894 S LaGrange Rd, Orland Park, IL 60467) as an active Aspen Dental branded office. Aspen Dental Management Inc (ADMI) is documented as majority-owned by private equity firms Leonard Green & Partners and Ares Management. National branded DSO with confirmed PE sponsorship.",
+   "reasoning": "Aspen Dental's own locator page confirms an active office at this exact address (15894 S LaGrange Rd, Orland Park, IL 60467). Aspen Dental Management Inc (ADMI, the ctx parent_company) is documented per Leonard Green & Partners' own press release as majority-owned by Leonard Green & Partners and Ares Management (private equity). National branded DSO with confirmed PE sponsorship.",
    "searched": [
-    "Aspen Dental 15894 S La Grange Rd Orland Park IL",
-    "Aspen Dental Management Inc ADMI Leonard Green Partners private equity owner"
+    "Aspen Dental Orland Park IL 15894 S La Grange Rd",
+    "Aspen Dental Management ADMI Corp Leonard Green Partners private equity owner"
    ],
    "intel": {
     "website_url": "https://www.aspendental.com/dentist/il/orland-park/15894-s-lagrange-road/",
-    "website_note": "Standard national-chain locator page with online scheduling; services page structure identical across Aspen Dental locations.",
-    "services": ["dentures", "dental implants", "dental bridges", "crowns", "veneers", "emergency dental care"],
+    "website_note": "Standard national-chain locator page with online scheduling; identical template across Aspen Dental locations.",
+    "services": ["dentures", "dental implants", "routine exams/cleanings", "bridges", "crowns", "veneers", "emergency dental care"],
     "google_rating": 4.3,
     "google_review_count": 900,
     "google_source_url": "https://birdeye.com/aspen-dental-orland-park-il-148127285066554",
-    "distinguishing_notes": "Located at intersection of S La Grange Rd and 159th St near Buffalo Wild Wings/AT&T Store; accepts most insurance plans.",
-    "sources": [
-     "https://www.aspendental.com/dentist/il/orland-park/15894-s-lagrange-road/",
-     "https://birdeye.com/aspen-dental-orland-park-il-148127285066554"
-    ]
+    "distinguishing_notes": "$29 new-patient exam/X-ray offer for uninsured patients; located near retail anchors (Buffalo Wild Wings, AT&T Store) at S La Grange Rd & 159th St.",
+    "sources": ["https://www.aspendental.com/dentist/il/orland-park/15894-s-lagrange-road/", "https://birdeye.com/aspen-dental-orland-park-il-148127285066554"]
    }
   },
   {
@@ -47,16 +44,16 @@
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "The practice's own website (gorskidental.com) confirms Dr. Michael Gorski has practiced at this single Orland Park location since 1984, joined by his son Dr. Christopher Gorski (2016) and Dr. Ryan Cassidy (2025). No corporate parent, management company, or DSO affiliation found anywhere. Multi-dentist, single-location, dentist-owned.",
+   "reasoning": "The practice's own website (gorskidental.com) confirms a father-son dentist team (Dr. Michael Gorski practicing since 1984, Dr. Christopher Gorski joined 2016, Dr. Ryan Cassidy added 2025) practicing together at this single Orland Park address, with no corporate parent or management-company mention.",
    "searched": ["Gorski Michael DDS Orland Park IL dentist 165th st"],
    "intel": {
     "website_url": "https://www.gorskidental.com/",
-    "website_note": "Modern practice website with online presence; positions the practice as a father-son family dental team with a state-of-the-art facility.",
-    "services": ["orthodontics", "All-on-4 implant restorations", "cavity treatment", "smile makeovers", "teeth cleaning"],
+    "website_note": "Modern practice website; positions the practice as a father-son family dental team with a state-of-the-art facility.",
+    "services": ["All-on-4 implant restorations", "orthodontics", "comprehensive smile makeovers", "general/emergency dentistry"],
     "provider_count_web": 3,
-    "provider_notes": "Dr. Michael E. Gorski (practicing since 1984, UIC grad) founded the practice; son Dr. Christopher Gorski joined 2016; Dr. Ryan Cassidy joined 2025.",
+    "provider_notes": "Dr. Michael E. Gorski (practicing in Orland Park since 1984), Dr. Christopher Gorski (son, joined 2016), Dr. Ryan Cassidy (joined 2025).",
     "owner_career_stage": "late_career",
-    "distinguishing_notes": "Multi-generation family practice that moved into a new state-of-the-art facility when the son joined in 2016.",
+    "distinguishing_notes": "Multi-generation family practice; recently added a third associate (2025).",
     "sources": ["https://www.gorskidental.com/"]
    }
   },
@@ -64,20 +61,29 @@
    "location_id": "3f9587963c34f55d",
    "practice_name": "JAMES MITSOS DMD PLLC",
    "zip": "60467",
-   "assigned_tier": "single_loc_group",
+   "assigned_tier": "dentist_multi",
    "pe_backed": false,
    "evidence_basis": "web_verified",
-   "evidence_urls": ["https://opennpi.com/provider/1912588930"],
+   "evidence_urls": ["https://www.swpdental.com/clinical-staff"],
    "evidence_artifacts": [],
-   "confidence": "medium",
+   "confidence": "high",
    "status": "classified",
-   "network_id": null,
-   "reasoning": "Business records confirm 'James Mitsos DMD PLLC' is a pediatric dental practice at 10759 Winterset Dr, Orland Park, organized as the dentist's own professional entity (PLLC bears his own name) -- no corporate or DSO signal appears in any listing. Provider count of 2 likely reflects the dentist plus an associate or hygienist; treated as a dentist-owned single-location group given no second dentist name could be confirmed.",
-   "searched": ["James Mitsos DMD Orland Park dentist Winterset"],
+   "network_id": "brand:southwest_pediatric_dentistry",
+   "reasoning": "This NPI operates as Southwest Pediatric Dentistry (swpdental.com), whose own clinical-staff page confirms two offices (Orland Park, IL at this address, and St. John, IN) staffed by pediatric dentists Dr. Mitsos and Dr. McGuire plus an in-house anesthesiologist. No corporate/DSO affiliation is mentioned anywhere; ownership reads as dentist-controlled across the two-office group.",
+   "searched": [
+    "James Mitsos DMD Orland Park dentist Winterset",
+    "\"James Mitsos\" DMD pediatric dentist website Orland Park"
+   ],
    "intel": {
-    "website_note": "No dedicated practice website surfaced in search; listings show a pediatric-leaning general dentistry practice with 5.0/5 patient rating (2 reviews) on Healthgrades.",
-    "services": ["pediatric dentistry", "general dentistry"],
-    "sources": ["https://opennpi.com/provider/1912588930", "https://www.healthgrades.com/dentist/dr-james-mitsos-xynff2t"]
+    "website_url": "https://www.swpdental.com/",
+    "website_note": "Pediatric-dentistry-focused site with clinical staff bios; two-office network across two states.",
+    "services": ["pediatric dentistry", "sedation/general anesthesia for kids"],
+    "provider_count_web": 3,
+    "provider_notes": "Dr. James Mitsos and Dr. Sean McGuire (board-certified pediatric dentists); Dr. Sally Seraphin (dual board-certified anesthesiologist) supports in-office sedation.",
+    "accepts_medicaid": true,
+    "insurance_note": "Site lists in-network PPO/HMO/Medicaid.",
+    "distinguishing_notes": "Rare staffing model for a small pediatric group: an in-house physician anesthesiologist for sedation cases, across two states/offices.",
+    "sources": ["https://www.swpdental.com/clinical-staff", "https://www.healthgrades.com/dentist/dr-james-mitsos-xynff2t"]
    }
   },
   {
@@ -92,7 +98,7 @@
    "confidence": "low",
    "status": "undetermined",
    "network_id": null,
-   "reasoning": "Searched the practice name, address, and phone number combination; no search result returned a verifiable page (own website, directory profile, or news) specifically confirming this practice at 17121 Ashwood Ln, Orland Park. Results returned only unrelated Orland Park dental offices. Insufficient web evidence to assign a tier -- left undetermined rather than guessing from a solo/small-practice prior.",
+   "reasoning": "Searched the practice name plus address/phone combinations; found only an NPI-registry hit (Wasan F Abdullah, dentist) and generic Orland Park dentist directory noise with no address or ownership match to 17121 Ashwood Ln. No website, locator, or news reference could be tied to this specific location, so no tier can be earned from web evidence.",
    "searched": [
     "\"Abdullah Dental\" Orland Park IL 17121 Ashwood",
     "\"(619) 201-0945\" Abdullah dentist Orland Park",
@@ -114,15 +120,18 @@
    "confidence": "high",
    "status": "classified",
    "network_id": "ao:AGARWAL_ANIL",
-   "reasoning": "Dr. Goswami's profile page identifies this address (10727 W 159th St, Orland Park) as one of two 'Winterset Dental Care' locations (the other in Chicago at 8559 S Pulaski Rd). The practice is owned/founded by Dr. Anil Agarwal, a board-certified prosthodontist practicing since 1980 -- a licensed-dentist owner operating 2 locations, no non-dentist corporate parent found. Qualifies as dentist-owned multi-location group, not a branded/stealth DSO.",
-   "searched": ["Antara Goswami DDS Orland Park dentist", "\"Winterset Dental Care\" owner founder prosthodontist Orland Park Chicago"],
+   "reasoning": "Dr. Goswami's profile page identifies this address (10727 W 159th St, Orland Park) as one of two 'Winterset Dental Care' locations (the other in Chicago at 8559 S Pulaski Rd), owned/founded by Dr. Anil Agarwal, a board-certified prosthodontist practicing since 1980. Licensed-dentist owner operating 2 locations, no non-dentist corporate parent found.",
+   "searched": [
+    "Antara Goswami DDS Orland Park dentist",
+    "\"Winterset Dental Care\" owner founder prosthodontist Orland Park Chicago"
+   ],
    "intel": {
     "website_url": "https://www.wintersetdental.com/",
     "website_note": "Implant/prosthodontics-focused site covering both locations; professional, modern design.",
-    "services": ["dental implants (incl. full-mouth and zygomatic)", "full-mouth restoration", "dentures", "sedation dentistry", "new patient exams"],
-    "technology": ["3D X-ray", "Digital X-rays"],
+    "services": ["dental implants", "full-mouth restoration", "zygomatic implants", "implant-supported dentures", "sedation dentistry"],
+    "technology": ["3D X-ray", "digital X-ray"],
     "provider_count_web": 4,
-    "provider_notes": "Dr. Anil Agarwal (owner, board-certified prosthodontist, practicing since 1980), Dr. Rasoul Arbabi (prosthodontist), Dr. Hector E. Cummings Jr. (periodontist), Dr. Matthew S. Hamedani (oral surgeon); Dr. Antara Goswami (this NPI) trained in prosthodontics at NYU, completed 2021.",
+    "provider_notes": "Dr. Anil Agarwal (owner, board-certified prosthodontist, practicing since 1980), Dr. Rasoul Arbabi (prosthodontist), Dr. Hector Cummings Jr. (periodontist), Dr. Matthew Hamedani (oral surgeon); Dr. Antara Goswami (this NPI) trained in prosthodontics at NYU, completed 2021.",
     "owner_career_stage": "early_career",
     "distinguishing_notes": "Specialist-heavy implant/restorative center spanning two locations (Orland Park + Chicago) under one prosthodontist-owner.",
     "sources": ["https://www.wintersetdental.com/staff-profiles/dr-antara-goswami/", "https://wintersetdental.com/dr-anil-agarwal/"]
@@ -135,20 +144,22 @@
    "assigned_tier": "single_loc_group",
    "pe_backed": false,
    "evidence_basis": "web_verified",
-   "evidence_urls": ["https://www.drmarch.net/", "https://www.drmarch.net/about-us/meet-dr-peter-march/"],
+   "evidence_urls": ["https://www.drmarch.net/about-us/meet-dr-peter-march/"],
    "evidence_artifacts": [],
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Practice's own website (drmarch.net) confirms 'March Family Dental Care' at 517 S Governors Hwy, Peotone -- Dr. Peter March took over the practice in 1984, continuing one his father Dr. James J. March established in 1954. No corporate parent or DSO affiliation found. Dentist-owned family practice, single location, matches DB provider_count of 2 (multi-generation).",
-   "searched": ["\"Peter March\" DDS dentist Peotone IL 517 Governors Hwy"],
+   "reasoning": "March Family Dental Care's own site confirms Dr. Peter March (took over the family practice in 1984, continuing one his father established in 1954) and his son Dr. Edmund March both practice together at this single Peotone address. No corporate affiliation; matches ctx family_practice classification.",
+   "searched": ["\"Peter March\" DDS Peotone IL dentist family practice"],
    "intel": {
     "website_url": "https://www.drmarch.net/",
-    "website_note": "Established local family-practice site; separate phone lines for new vs. current patients.",
-    "provider_notes": "Dr. Peter J. March, DDS (UIC College of Dentistry), practicing in Peotone since 1984; continues practice founded by father Dr. James J. March in 1954. Fellowship (1992) and Mastership (2003) in the Academy of General Dentistry.",
+    "website_note": "Established multi-generation family practice site.",
+    "services": ["dental implants", "one-visit crowns", "root canals", "extractions", "dentures"],
+    "provider_count_web": 2,
+    "provider_notes": "Dr. Peter March (DDS, University of Illinois College of Dentistry, took over the practice in 1984) and his son Dr. Edmund March.",
     "owner_career_stage": "late_career",
-    "distinguishing_notes": "Multi-generation (70+ year) family dental practice in a small town (Peotone).",
-    "sources": ["https://www.drmarch.net/", "https://www.drmarch.net/about-us/meet-dr-peter-march/"]
+    "distinguishing_notes": "Practice traces to 1954/1955; a true multi-generation (70+ year) family dental office in a small town.",
+    "sources": ["https://www.drmarch.net/about-us/meet-dr-peter-march/", "https://www.drmarch.net/"]
    }
   },
   {
@@ -158,12 +169,15 @@
    "assigned_tier": "true_independent",
    "pe_backed": false,
    "evidence_basis": "web_verified",
-   "evidence_urls": ["https://npino.com/dentist/1346391976-dr.-keith-peter-wilson/", "https://www.yelp.com/biz/wilson-keith-p-dds-peotone"],
+   "evidence_urls": [
+    "https://www.yelp.com/biz/wilson-keith-p-dds-peotone",
+    "https://npino.com/dentist/1346391976-dr.-keith-peter-wilson/"
+   ],
    "evidence_artifacts": [],
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Directory records (NPI registry mirror + Yelp) confirm Dr. Keith P. Wilson, a solo general-practice dentist, at 211 N Second St, Peotone since his NPI registration in 2007; no group name, corporate parent, or DSO affiliation found anywhere. 5.0/5 patient rating on RateMDs. Solo owner-operator, single location.",
+   "reasoning": "Directory records (NPI registry mirror + Yelp) consistently show Dr. Keith P. Wilson, DDS as a solo general-practice dentist at this address with no group name, corporate parent, or DSO affiliation found anywhere.",
    "searched": ["Wilson Dental Peotone IL 211 N Second St dentist"]
   },
   {
@@ -173,21 +187,21 @@
    "assigned_tier": "true_independent",
    "pe_backed": false,
    "evidence_basis": "web_verified",
-   "evidence_urls": ["https://www.yeungfamilydentistry.com/about-us/dr-omar-yeung/25362", "https://www.yeungfamilydentistry.com/"],
+   "evidence_urls": ["https://www.yeungfamilydentistry.com/about-us/dr-omar-yeung/25362"],
    "evidence_artifacts": [],
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Practice's own website (yeungfamilydentistry.com) confirms Dr. Omar Yeung bought this practice in 1992 and moved to its present 22117 Governors Hwy location in 1995; no corporate parent or DSO signal found. Solo owner-operator, single location, long tenure.",
+   "reasoning": "Dr. Omar Yeung's own practice site (yeungfamilydentistry.com) confirms he personally bought this practice in 1992 and has operated it as a solo owner-dentist at this single Richton Park location since 1995, with no corporate or DSO mention.",
    "searched": ["Omar Yeung DDS Richton Park IL dentist Governors Hwy"],
    "intel": {
     "website_url": "https://www.yeungfamilydentistry.com/",
-    "website_note": "Long-standing local family/cosmetic dentistry site; evening appointments and emergency/new patients advertised.",
-    "services": ["orthodontics", "dentures & partials", "crowns & bridges", "root canals", "teeth whitening", "porcelain veneers", "Invisalign", "pediatric dentistry"],
+    "website_note": "Long-standing solo-owner cosmetic/general practice site.",
+    "services": ["orthodontics", "dentures & partials", "crowns & bridges", "root canals", "tooth whitening", "porcelain veneers", "Invisalign", "Zoom! Whitening"],
     "provider_count_web": 1,
-    "provider_notes": "Dr. Omar Yeung, DDS -- Georgetown University Dental School class of 1989; bought the practice in 1992.",
+    "provider_notes": "Dr. Omar Yeung, DDS, Georgetown University Dental School class of 1989; bought the practice in 1992, moved to current location in 1995.",
     "owner_career_stage": "late_career",
-    "distinguishing_notes": "Member of ADA, Illinois Dental Society, and Chicago Dental Society; ~35 years at this location.",
+    "distinguishing_notes": "Long-tenured (30+ year) solo owner-operator cosmetic/general practice.",
     "sources": ["https://www.yeungfamilydentistry.com/about-us/dr-omar-yeung/25362"]
    }
   },
@@ -195,66 +209,85 @@
    "location_id": "cb299b83eff0c859",
    "practice_name": "SAUK TRAIL DENTAL CARE",
    "zip": "60471",
-   "assigned_tier": "single_loc_group",
+   "assigned_tier": "true_independent",
    "pe_backed": false,
    "evidence_basis": "web_verified",
-   "evidence_urls": ["https://www.sauktraildentalcare.com/", "https://www.sauktraildentalcare.com/lawal-garuba-dmd/"],
+   "evidence_urls": ["https://www.sauktraildentalcare.com/lawal-garuba-dmd/"],
    "evidence_artifacts": [],
-   "confidence": "high",
+   "confidence": "medium",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Practice's own website confirms 'Sauk Trail Dental Care' at 4343 Sauk Trl, Richton Park is Dr. Lawal Garuba's ('Dr. G') practice, matching the AO on file (Lawal Garuba). No corporate parent or DSO signal found; described on-site as a small independent practice. Provider_count of 2 in DB likely reflects an associate/hygienist alongside Dr. Garuba.",
-   "searched": ["\"Sauk Trail Dental\" Richton Park IL Lawal Garuba dentist"],
+   "reasoning": "Practice's own site names only one treating dentist, Dr. Lawal Garuba (\"Dr. G\"), and states patients see him personally every visit, consistent with a solo owner-operator model and matching ctx AO=LAWAL GARUBA. Confidence is medium because NPPES shows provider_count=2 at this address (likely a hygienist/associate not named on the site) rather than a confirmed second dentist.",
+   "searched": ["\"Sauk Trail Dental Care\" Richton Park IL \"Lawal Garuba\" OR Garuba dentist"],
    "intel": {
     "website_url": "https://www.sauktraildentalcare.com/",
-    "website_note": "Community-focused family/general dentistry site emphasizing personal continuity of care with Dr. Garuba.",
-    "services": ["cosmetic dentistry", "emergency dental care (24/7 team availability)", "general/family dentistry"],
-    "provider_notes": "Dr. Lawal Garuba, DMD (\"Dr. G\") -- trained at University of Illinois at Chicago (Rice Scholarship), MPH from Missouri State University.",
-    "distinguishing_notes": "Marketed as a small practice where patients see Dr. Garuba personally at every visit.",
-    "sources": ["https://www.sauktraildentalcare.com/lawal-garuba-dmd/"]
+    "website_note": "Small solo-dentist practice site emphasizing continuity of care.",
+    "provider_count_web": 1,
+    "provider_notes": "Dr. Lawal Garuba, DMD, trained at University of Illinois Chicago (Rice Scholarship), MPH from Missouri State University; career focus on underserved South Chicagoland communities.",
+    "google_rating": 4.9,
+    "google_review_count": 207,
+    "google_source_url": "https://reviews.birdeye.com/sauk-trail-dental-care-of-richton-park-168912897536518",
+    "distinguishing_notes": "Solo owner-operator with a public-health/preventive-care orientation serving an underserved area.",
+    "sources": ["https://www.sauktraildentalcare.com/lawal-garuba-dmd/", "https://reviews.birdeye.com/sauk-trail-dental-care-of-richton-park-168912897536518"]
    }
   },
   {
    "location_id": "2e37c5a76462031b",
    "practice_name": "THE SMILE IN YOU",
    "zip": "60471",
-   "assigned_tier": "undetermined",
+   "assigned_tier": "dentist_multi",
    "pe_backed": false,
-   "evidence_basis": "none",
-   "evidence_urls": [],
+   "evidence_basis": "web_verified",
+   "evidence_urls": ["https://atozmagicdental.com/"],
    "evidence_artifacts": [],
-   "confidence": "low",
-   "status": "undetermined",
-   "network_id": null,
-   "reasoning": "Search confirms the address (3677 Sauk Trl, Richton Park) and phone match 'The Smile In You' in directory listings tied to AO Tina Champion-Harris, but the most recent indexed results show the same suite now operating as 'A to Z Dental / Magic Smiles' under a different dentist (Dr. Ridab Alnabhan). This is consistent with a practice ownership change or closure/rebrand rather than a stable practice -- flagging closure_suspect and leaving undetermined rather than guessing which entity currently controls the location.",
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:a_to_z_dental",
+   "reasoning": "This NPI's address and phone number (3677 Sauk Trl, 708-481-2288) exactly match the current operating practice \"A to Z Magic Dental,\" whose own about-us page confirms Dr. Liqing Zhang, DDS founded it in 2008 and \"remains the sole treating doctor at both locations\" (Richton Park + Flossmoor). Active 2026 reviews rule out the closure suspected by a prior pass. Confidence is medium rather than high because the NPPES-listed authorized official (Tina Champion-Harris) does not appear as an owner anywhere on the current site -- likely a stale registration name rather than the current operator -- but the address/phone match is exact and no DSO/corporate signal was found.",
    "searched": [
-    "\"The Smile In You\" Richton Park IL Tina Champion-Harris dentist",
-    "\"Smile In You\" dental Richton Park Sauk Trail Tina Champion Harris DDS",
-    "thesmileinyou.com OR \"smile in you dental\" Richton Park Illinois"
-   ]
+    "\"The Smile In You\" Richton Park IL \"Tina Champion-Harris\" dentist",
+    "\"The Smile In You\" dental Richton Park IL 3677 Sauk Trail",
+    "\"A to Z Dental\" Richton Park IL dentist owner \"Ridab Alnabhan\" OR \"Liqing Zhang\""
+   ],
+   "intel": {
+    "website_url": "https://atozmagicdental.com/",
+    "website_note": "Full-service general/cosmetic practice site with patient testimonials.",
+    "services": ["general dentistry", "emergency care", "dental implants", "full mouth reconstruction", "orthodontics (Fastbraces, Invisalign)", "root canals", "oral surgery", "periodontics", "cosmetic dentistry", "extractions", "pediatric dentistry"],
+    "provider_count_web": 2,
+    "provider_notes": "Dr. Liqing Zhang, DDS (sole owner, founded 2008, DDS from Dalhousie University, MS in Periodontology, 20+ years across China/Canada/US); Dr. Ridab Alnabhan also appears on the site with no bio/role given.",
+    "distinguishing_notes": "Comprehensive in-house model (patient testimonial: doctor rarely refers cases out); operates two locations (Richton Park + Flossmoor) under Dr. Zhang.",
+    "sources": ["https://atozmagicdental.com/"]
+   }
   },
   {
    "location_id": "1a2f603080ab5c38",
    "practice_name": "ELITE CARE DENTAL, P.C.",
    "zip": "60473",
-   "assigned_tier": "true_independent",
+   "assigned_tier": "dentist_multi",
    "pe_backed": false,
    "evidence_basis": "web_verified",
-   "evidence_urls": ["https://www.elitecaredental.com/", "https://www.zocdoc.com/dentist/shafaq-mustafa-dds-114355"],
+   "evidence_urls": [
+    "https://www.elitecaredental.com/",
+    "https://www.opencare.com/dentists/hanover-park-il/dr-shafaq-raafat-mustafa-24630672138d/"
+   ],
    "evidence_artifacts": [],
    "confidence": "high",
    "status": "classified",
-   "network_id": null,
-   "reasoning": "Practice's own website (elitecaredental.com) and directory listings confirm Dr. Shafaq Mustafa, DDS (UIC grad) operates this practice at 16111 La Salle St, South Holland -- matching the AO on file (Shafaq Mustafa). No corporate parent or DSO signal found; consistent with the DB's solo_new (est. 2024) classification.",
-   "searched": ["\"Elite Care Dental\" South Holland IL Shafaq Mustafa dentist"],
+   "network_id": "brand:elite_care_dental",
+   "reasoning": "Elite Care Dental's own site explicitly lists two offices under Dr. Shafaq R. Mustafa, DDS (matches ctx AO): South Holland (16111 La Salle St, this location) and Hanover Park (7420 Barrington Rd). Independent directory sources corroborate the same dentist across both locations with no corporate/DSO signal.",
+   "searched": [
+    "\"Elite Care Dental\" South Holland IL \"Shafaq Mustafa\" dentist",
+    "\"Shafaq Mustafa\" dentist Hanover Park IL office address"
+   ],
    "intel": {
     "website_url": "https://www.elitecaredental.com/",
-    "website_note": "New practice (2024) with modern booking site.",
+    "website_note": "Solo-dentist two-location practice site with patient reviews.",
     "services": ["cleanings & exams", "orthodontics", "porcelain veneers", "root canal treatment", "dentures & partials", "teeth whitening", "porcelain crowns"],
-    "provider_notes": "Dr. Shafaq Mustafa, DDS -- University of Illinois Chicago dental degree; speaks English, Spanish, and Arabic.",
+    "provider_count_web": 1,
+    "provider_notes": "Dr. Shafaq Mustafa, DDS, University of Illinois Chicago dental degree; speaks English, Spanish, and Arabic. Practice established 2024 (matches ctx solo_new).",
     "owner_career_stage": "early_career",
-    "distinguishing_notes": "Newly opened (2024) solo practice; multilingual provider (English/Spanish/Arabic).",
-    "sources": ["https://www.elitecaredental.com/", "https://www.zocdoc.com/dentist/shafaq-mustafa-dds-114355"]
+    "distinguishing_notes": "Multilingual solo dentist operating two offices (South Holland + Hanover Park) under one brand; newly opened South Holland location (2024).",
+    "sources": ["https://www.elitecaredental.com/", "https://www.opencare.com/dentists/hanover-park-il/dr-shafaq-raafat-mustafa-24630672138d/"]
    }
   },
   {
@@ -264,19 +297,21 @@
    "assigned_tier": "single_loc_group",
    "pe_backed": false,
    "evidence_basis": "web_verified",
-   "evidence_urls": ["http://www.thesmileboutique.com/our-practice/", "https://www.yelp.com/biz/the-smile-boutique-south-holland-3"],
+   "evidence_urls": ["http://www.thesmileboutique.com/our-practice/"],
    "evidence_artifacts": [],
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "The practice's own site (thesmileboutique.com) describes 'The Smile Boutique' at 605 E 170th St, South Holland as a husband/wife dentist team serving the community for many years; no corporate parent or DSO signal found. Matches DB provider_count of 2, single location, dentist-owned.",
+   "reasoning": "Business listings and the practice's own \"Our Practice\" page describe The Smile Boutique as a husband-and-wife team of dentists operating at this single South Holland address, matching ctx small_group (2 providers), with no corporate affiliation found.",
    "searched": ["\"Smile Boutique\" South Holland IL 605 e 170th st dentist"],
    "intel": {
-    "website_url": "http://www.thesmileboutique.com/our-practice/",
-    "website_note": "Small-practice site describing a husband-and-wife dentist duo.",
-    "services": ["general dentistry", "periodontics", "endodontics", "orthodontia", "family and cosmetic dentistry", "dentures", "root canal treatment"],
-    "distinguishing_notes": "4.4-star patient rating across ~45 reviews on aggregator sites; husband/wife dentist team.",
-    "sources": ["https://www.yelp.com/biz/the-smile-boutique-south-holland-3", "http://www.thesmileboutique.com/our-practice/"]
+    "website_url": "http://www.thesmileboutique.com/",
+    "website_note": "Small boutique practice site; BBB-accredited since 2021 with an A+ rating.",
+    "services": ["general dentistry", "periodontics", "endodontics", "orthodontia", "family/cosmetic dentistry", "dentures", "root canal treatment"],
+    "provider_count_web": 2,
+    "provider_notes": "Husband-and-wife team of dentists (individual names not disclosed on the fetched pages).",
+    "distinguishing_notes": "Husband/wife-owned single-location boutique dental practice, BBB A+ rated; 4.4-star patient rating across ~45 reviews.",
+    "sources": ["http://www.thesmileboutique.com/our-practice/", "https://www.yelp.com/biz/the-smile-boutique-south-holland-3"]
    }
   },
   {
@@ -286,18 +321,20 @@
    "assigned_tier": "true_independent",
    "pe_backed": false,
    "evidence_basis": "web_verified",
-   "evidence_urls": ["https://southholland.dental/contact-us", "https://southholland.dental/laser-dentistry"],
+   "evidence_urls": ["https://southholland.dental/contact-us"],
    "evidence_artifacts": [],
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Practice's own website (southholland.dental, 'South Holland Dentistry') confirms Dr. Rosa Galvan-Silva operates this solo practice at 705 E 162nd St, South Holland; no corporate parent, DSO brand, or management company found. Solo owner-operator, single location.",
+   "reasoning": "South Holland Dentistry's own site is built around a single treating dentist, Dr. Rosa Galvan-Silva, at this one address, with no other dentists or corporate affiliation mentioned. Matches ctx solo_established.",
    "searched": ["\"Rosa Galvan\" DDS South Holland IL dentist 162nd st"],
    "intel": {
     "website_url": "https://southholland.dental",
-    "website_note": "Full-service local practice site (southhollanddentistry.com / southholland.dental) with services and hours listed.",
+    "website_note": "Full-service local practice site with services and hours listed.",
     "services": ["braces & retainers", "bridges & dentures", "fillings", "Invisalign", "root canals", "teeth whitening", "veneers", "wisdom teeth removal", "laser dentistry"],
-    "distinguishing_notes": "Accepts cash, check, and all major cards; broad general + cosmetic service menu for a solo practice.",
+    "provider_count_web": 1,
+    "insurance_note": "Accepts cash, check, major cards, and most dental insurance plans.",
+    "distinguishing_notes": "Bilingual (Spanish-speaking staff) solo-owner practice; broad general + cosmetic service menu.",
     "sources": ["https://southholland.dental/contact-us", "https://southholland.dental/laser-dentistry"]
    }
   },
@@ -305,21 +342,30 @@
    "location_id": "147abf2d4d43d72c",
    "practice_name": "Nidea Dental",
    "zip": "60473",
-   "assigned_tier": "single_loc_group",
+   "assigned_tier": "true_independent",
    "pe_backed": false,
    "evidence_basis": "web_verified",
-   "evidence_urls": ["https://www.yelp.com/biz/infinity-smile-south-holland", "https://www.healthgrades.com/dentist/dr-robert-nidea-ywmp3"],
+   "evidence_urls": [
+    "https://www.yelp.com/biz/infinity-smile-south-holland",
+    "https://www.healthgrades.com/dentist/dr-robert-nidea-ywmp3"
+   ],
    "evidence_artifacts": [],
    "confidence": "medium",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Directory listings confirm Dr. Robert Nidea, DDS operates this practice at 16280 Prince Dr, South Holland (branded 'Infinity Smile Dental Center'/'Infinity Smile Ltd' -- likely the operating DBA behind the NPI's 'Nidea Dental' label), serving the community since 1996. No corporate or DSO signal found. Provider_count of 2 in DB kept as single-location dentist-owned group; medium confidence because a second named provider could not be confirmed.",
-   "searched": ["\"Nidea Dental\" South Holland IL Prince Dr dentist"],
+   "reasoning": "Dr. Robert Nidea, DDS operates this South Holland office (16280 Prince Dr, branded 'Infinity Smile Dental Center', serving the community since 1996) as a solo dentist. A possible second office under his name ('Bloomingdale Dental Care,' 290 Springfield Dr) appears in older aggregator listings, but a follow-up check shows that same Bloomingdale suite now branded 'Flex Dental' under different dentists (Anthony LaPorte DDS / Atish Shah DMD) who explicitly state they are not DSO-affiliated -- indicating a likely ownership change/rebrand at that address rather than a confirmed live second Nidea location. Given that ambiguity, this location is treated as a solo dentist practice rather than asserting a confirmed dentist-owned multi-location network.",
+   "searched": [
+    "\"Nidea Dental\" South Holland IL Prince Dr dentist",
+    "\"Infinity Smile\" dental \"Robert Nidea\" Bloomingdale South Holland locations",
+    "\"Bloomingdale Dental Care\" \"Robert Nidea\" 290 Springfield Dr website",
+    "\"Flex Dental\" Illinois dental support organization OR DSO Bloomingdale"
+   ],
    "intel": {
-    "website_note": "No independent official site surfaced; Yelp lists it as 'Infinity Smile Dental Center', operating since 1996, general + cosmetic dentistry.",
-    "services": ["general dentistry", "cosmetic dentistry"],
-    "distinguishing_notes": "Long-tenured practice (serving South Holland since 1996) under Dr. Robert Nidea.",
-    "sources": ["https://www.yelp.com/biz/infinity-smile-south-holland"]
+    "website_note": "No dedicated practice website was directly fetched; facts drawn from Yelp/Healthgrades directory listings.",
+    "provider_count_web": 1,
+    "provider_notes": "Dr. Robert A. Nidea, DDS, general dentist.",
+    "distinguishing_notes": "Long-tenured practice (serving South Holland since 1996) under Dr. Robert Nidea, branded 'Infinity Smile Dental Center'; a rumored second Bloomingdale office is unconfirmed/likely stale (that suite now appears branded 'Flex Dental' under other, unrelated dentists).",
+    "sources": ["https://www.yelp.com/biz/infinity-smile-south-holland", "https://www.healthgrades.com/dentist/dr-robert-nidea-ywmp3"]
    }
   },
   {
@@ -329,17 +375,19 @@
    "assigned_tier": "true_independent",
    "pe_backed": false,
    "evidence_basis": "web_verified",
-   "evidence_urls": ["https://dentalcare4upc.com/our-office/", "https://dentalcare4upc.com/about/"],
+   "evidence_urls": ["https://dentalcare4upc.com/our-office/"],
    "evidence_artifacts": [],
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Practice's own website (dentalcare4upc.com, 'Dental Care 4U') confirms this is a South Holland practice at 16270 Prince Dr with '20+ Years of Experience', explicitly noting patients see the same dentist each visit -- no corporate parent, management company, or DSO signal found. Solo owner-operator, single location.",
+   "reasoning": "Practice's own website (dentalcare4upc.com, 'Dental Care 4U') confirms a South Holland practice at 16270 Prince Dr with '20+ Years of Experience', explicitly noting patients see the same dentist each visit -- no corporate parent, management company, or DSO signal found. Matches ctx solo_established.",
    "searched": ["\"Dental Care 4u\" South Holland IL 16270 Prince Dr dentist"],
    "intel": {
     "website_url": "https://dentalcare4upc.com/",
-    "website_note": "Modern local-practice site branded 'Dental Care 4U', emphasizing 20+ years of experience.",
-    "services": ["sleep apnea treatment", "Invisalign", "cosmetic dentistry", "dentures", "emergency dental care"],
+    "website_note": "Modern local-practice site emphasizing 20+ years of experience.",
+    "services": ["general dentistry", "sleep apnea treatment", "Invisalign", "cosmetic dentistry", "coronal polishing"],
+    "provider_count_web": 1,
+    "provider_notes": "Dr. Raj Khurana, owner/treating dentist.",
     "owner_career_stage": "late_career",
     "distinguishing_notes": "Same-dentist continuity of care each visit; convenient expressway-adjacent location with free parking; same-day emergency appointments.",
     "sources": ["https://dentalcare4upc.com/our-office/", "https://dentalcare4upc.com/about/"]
@@ -352,13 +400,19 @@
    "assigned_tier": "true_independent",
    "pe_backed": false,
    "evidence_basis": "web_verified",
-   "evidence_urls": ["https://www.healthgrades.com/dentist/dr-john-lazzarotto-2r8rl", "https://reviews.birdeye.com/dr-john-r-lazzarotto-dds-146493669725762"],
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-john-lazzarotto-2r8rl",
+    "https://reviews.birdeye.com/dr-john-r-lazzarotto-dds-146493669725762"
+   ],
    "evidence_artifacts": [],
-   "confidence": "high",
+   "confidence": "medium",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Directory listings confirm Dr. John R. Lazzarotto, DDS operates this solo general-dentistry practice at 900 E 162nd St, South Holland; no corporate parent or DSO signal found. He is also listed practicing part-time at a second small office in Homer Glen, IL, but no evidence of a corporate/DSO structure tying the two together -- consistent with an independent dentist covering two of his own small offices.",
-   "searched": ["\"Lazzarotto Dental\" South Holland IL 900 e 162nd st dentist"],
+   "reasoning": "Directory listings consistently identify Dr. John R. Lazzarotto, DDS as a general dentist at this South Holland address with no group name or corporate affiliation. He is also listed practicing part-time at a second small office in Homer Glen, IL, but no evidence ties the two together under any corporate/DSO structure -- treated as an independent dentist covering two of his own small offices, medium confidence given no dedicated website confirms the relationship.",
+   "searched": [
+    "\"Lazzarotto Dental\" South Holland IL 900 E 162nd St dentist",
+    "\"John Lazzarotto\" DDS dentist second location website South Holland"
+   ],
    "intel": {
     "website_note": "No independent official website surfaced; profile pages show a 5-star patient rating (5 reviews) on Birdeye/Healthgrades.",
     "services": ["general dentistry", "family dental services"],

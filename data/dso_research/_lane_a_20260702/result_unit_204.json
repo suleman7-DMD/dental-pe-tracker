@@ -5,29 +5,32 @@
    "location_id": "ad0a62d2220ea5dd",
    "practice_name": "Elgin Dental Care",
    "zip": "60120",
-   "assigned_tier": "single_loc_group",
-   "pe_backed": false,
+   "assigned_tier": "branded_dso",
+   "pe_backed": true,
    "evidence_basis": "web_verified",
    "evidence_urls": [
     "https://www.elgindentalcare.com/",
-    "https://www.yelp.com/biz/elgin-dental-care-elgin",
-    "https://doctor.webmd.com/doctor/kevin-breen-ac0eab1c-dca9-4295-aadc-30ed27545807-overview"
+    "https://smilebrands.com/smile-brands-locations/",
+    "https://www.gryphon-inv.com/news/gryphon-investors-acquires-smile-brands/",
+    "https://www.opencare.com/dentists/elgin-il/dr-kevin-f-breen-24631320161d/"
    ],
-   "evidence_artifacts": [],
-   "confidence": "medium",
+   "evidence_artifacts": ["site infra tag 'smilebrandscms'", "footer link to smilebrands.com/careers", "independent-contractor disclaimer for 'Dental Specialty Providers' typical of the Smile Brands model"],
+   "confidence": "high",
    "status": "classified",
-   "network_id": null,
-   "reasoning": "Own website (elgindentalcare.com) and directory listings show a single location at 431 Summit St Ste 105 with Dr. Kevin F. Breen (UIC 2004) as the named practicing dentist; ctx confirms 5 providers, one location, no other ZIP reach. No corporate parent, management company, or DSO brand language found anywhere. Multi-dentist single-location practice with no corporate signal fits single_loc_group.",
+   "network_id": "brand:smile_brands",
+   "reasoning": "The practice site (elgindentalcare.com) runs on Smile Brands' own CMS infrastructure and footer-links to smilebrands.com/careers, and a web search independently confirms Elgin Dental Care is listed among Smile Brands' affiliated locations. Smile Brands itself is currently owned by Gryphon Investors (PE, 2024 acquisition), so despite the locally-flavored name and named dentist (Kevin F. Breen, UIC 2004) this is a branded, PE-backed DSO location, not an independent single-location group.",
    "searched": [
     "Elgin Dental Care 431 Summit St Elgin IL dentist",
-    "Elgin Dental Care 431 Summit St Kevin Breen owner dentist"
+    "\"Elgin Dental Care\" \"Smile Brands\" OR \"Bright Now\" Kevin Breen",
+    "Smile Brands private equity owner 2026"
    ],
    "intel": {
     "website_url": "https://www.elgindentalcare.com/",
-    "website_note": "Modern, well-maintained marketing site with contact/appointment pages; positions itself as a full-service family/cosmetic practice.",
+    "website_note": "Modern, professionally templated site (shared Smile Brands CMS) with online appointment booking throughout.",
     "services": ["family dentistry", "crowns", "bridges", "dentures", "teeth whitening", "dental implants", "veneers", "emergency dentistry"],
     "provider_notes": "Dr. Kevin F. Breen, DDS, University of Illinois at Chicago College of Dentistry, class of 2004.",
-    "sources": ["https://www.elgindentalcare.com/", "https://www.dentalplans.com/dentists/illinois/elgin/60120/dr-kevin-breen-156522/"]
+    "distinguishing_notes": "Corporate independent-contractor disclaimer for 'Dental Specialty Providers' on the site is characteristic Smile Brands boilerplate language, distinguishing it from a true single-location independent group.",
+    "sources": ["https://www.elgindentalcare.com/", "https://www.opencare.com/dentists/elgin-il/dr-kevin-f-breen-24631320161d/", "https://www.dentalplans.com/dentists/illinois/elgin/60120/dr-kevin-breen-156522/"]
    }
   },
   {
@@ -142,19 +145,305 @@
    }
   },
   {
-   "location_id": "4482f8d920a63066_UNUSED",
-   "practice_name": "PLACEHOLDER_DO_NOT_USE",
+   "location_id": "36c78045acc3c586",
+   "practice_name": "CINDY R RAUSCHENBERGER DDS MS LTD",
+   "zip": "60120",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-cindy-rauschenberger-37j3d",
+    "https://www.fvendo.com/meet-us/meet-dr-cindy-r-rauschenberger/",
+    "https://www.aae.org/patients/directory/people/cindy-r-rauschenberger/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Cindy Rauschenberger operates a single-location endodontic specialty practice ('Fox Valley Endodontics', fvendo.com) at 1209 Dundee Ave; no corporate parent or multi-location claim found anywhere. Unit data shows 3 providers at this one address (small group), consistent with a dentist-owned specialty group practice at a single site.",
+   "searched": [
+    "\"Cindy Rauschenberger\" DDS Elgin IL dentist"
+   ],
+   "intel": {
+    "website_url": "https://www.fvendo.com/",
+    "website_note": "Practice site (Fox Valley Endodontics) includes detailed physician bio pages.",
+    "provider_notes": "DDS Univ. of Iowa 1987; MS/endodontic certificate Northwestern 1989; ABE Diplomate 1993; taught at Univ. of Maryland Dental School 1987-95.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Specialist (endodontics) practice, not general dentistry; 35+ years clinical experience per Healthgrades.",
+    "sources": ["https://www.healthgrades.com/dentist/dr-cindy-rauschenberger-37j3d", "https://www.fvendo.com/meet-us/meet-dr-cindy-r-rauschenberger/"]
+   }
+  },
+  {
+   "location_id": "9fe03f20431179ac",
+   "practice_name": "Ruggio Dental",
+   "zip": "60120",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.opencare.com/dentists/elgin-il/dr-david-a-ruggio-24630709229d/",
+    "https://www.dentalplans.com/dentists/il/elgin/60123/dr-nicholas-ruggio-189892",
+    "https://www.healthgrades.com/dentist/dr-david-ruggio-yt2dm"
+   ],
+   "evidence_artifacts": ["two_same_surname_dentists_at_948_N_Liberty_St"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. David A. Ruggio's office at 948 N Liberty St also shows Dr. Nicholas F. Ruggio, DDS practicing at the same address -- a family (same-surname) multi-dentist group at one location, no corporate/DSO signal found. No other location for this practice appeared in results.",
+   "searched": [
+    "\"Ruggio Dental\" Elgin IL dentist"
+   ],
+   "intel": {
+    "services": ["braces and retainers", "bridges and dentures", "fillings"],
+    "distinguishing_notes": "Appears to be a father/son or family dental partnership (shared surname, one address).",
+    "sources": ["https://www.opencare.com/dentists/elgin-il/dr-david-a-ruggio-24630709229d/", "https://www.healthgrades.com/dentist/dr-david-ruggio-yt2dm"]
+   }
+  },
+  {
+   "location_id": "93fdf916866dfce4",
+   "practice_name": "Dawn L Silfies DMD",
+   "zip": "60120",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthsoul.com/best-doctor-ratings/dentist/usa/il/elgin/dr-dawn-l-silfies",
+    "https://www.medicarelist.com/dentist/dr-dawn-leanne-silfies-dmd-elgin-il/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple directory listings (Healthsoul, Medicarelist, ADA finder) show a solo practitioner at 370 Summit St Ste 7 with 40 years of experience and no group, corporate, or DSO affiliation mentioned. Single location, solo dentist owner-operator.",
+   "searched": [
+    "\"Dawn Silfies\" DMD Elgin IL dentist"
+   ],
+   "intel": {
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "40 years of experience per Healthsoul; limited Mon-Fri 8am-2pm hours suggest a wind-down/mature solo schedule.",
+    "sources": ["https://www.healthsoul.com/best-doctor-ratings/dentist/usa/il/elgin/dr-dawn-l-silfies"]
+   }
+  },
+  {
+   "location_id": "27f57c1d4c9497e6",
+   "practice_name": "Raul Neumann & Assoc",
+   "zip": "60120",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/raul-neumann-dds-and-associates-elgin",
+    "https://www.bbb.org/us/il/elgin/profile/dentist/dr-raul-neumann-dds-and-associates-0654-90019295",
+    "https://www.healthsoul.com/best-doctor-ratings/cosmetic-dentist/usa/il/elgin/dr-raul-neumann-4"
+   ],
+   "evidence_artifacts": ["named_associate_Ross_A_Fraser_DDS_at_372_Summit_St"],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Business is formally named/registered as 'Raul Neumann DDS and Associates' (BBB, Yelp), and a second dentist (Ross A. Fraser, DDS) is confirmed practicing at this address. No corporate parent found. Multi-dentist group at one location, dentist-owned.",
+   "searched": [
+    "\"Raul Neumann\" dentist Elgin IL",
+    "\"Raul Neumann\" DDS associates dentist names Elgin"
+   ],
+   "intel": {
+    "website_note": "No standalone practice website surfaced; presence limited to directory/review aggregators.",
+    "provider_notes": "Dr. Raul Neumann, DDS with associate Dr. Ross A. Fraser, DDS.",
+    "distinguishing_notes": "Bilingual practice (English and Spanish) per WebMD listing; offers Saturday hours.",
+    "sources": ["https://www.yelp.com/biz/raul-neumann-dds-and-associates-elgin", "https://www.healthsoul.com/best-doctor-ratings/cosmetic-dentist/usa/il/elgin/dr-raul-neumann-4"]
+   }
+  },
+  {
+   "location_id": "984fa27b09095a50",
+   "practice_name": "D.C. DENTAL, LTD",
+   "zip": "60120",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.practo.com/elgin-il/clinic/d-c-dental-ltd-elgin",
+    "https://www.doctorsnetwork.com/doctors/dentists/elgin-il-60120/invite-pritam-dang-dds-15896"
+   ],
+   "evidence_artifacts": ["shares_phone_847-289-9900_and_address_840_Summit_St_Ste_K_with_Summit_Dental_Care_Ltd"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "D.C. Dental LTD (AO Sham Chandok) shares its exact address and phone number with Summit Dental Care Ltd (AO Pritam Dang) per Practo/NPI records, and an independent search snippet describes 'Dr. Dang and Dr. Chandok' practicing together there. This is a two-dentist partnership operating one physical office under two legal entities -- classified as a single-location, dentist-owned group.",
+   "searched": [
+    "\"Summit Dental Care\" Elgin IL 840 Summit St Pritam Dang dentist",
+    "\"D.C. Dental\" Chandok Elgin IL Summit"
+   ]
+  },
+  {
+   "location_id": "00283d0319728697",
+   "practice_name": "1ST FAMILY DENTAL OF ELGIN",
    "zip": "60120",
    "assigned_tier": "undetermined",
    "pe_backed": false,
-   "evidence_basis": "none",
-   "evidence_urls": [],
-   "evidence_artifacts": [],
-   "confidence": "low",
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/",
+    "https://1stfamilydental.com/",
+    "https://www.yelp.com/biz/1st-family-dental-of-elgin-elgin-2"
+   ],
+   "evidence_artifacts": ["company_locations_page_lists_9_plus_chicagoland_offices", "unit_ctx_shows_sibling_AO_reaching_15_locations_14_zips"],
+   "confidence": "medium",
    "status": "undetermined",
+   "network_id": "brand:1st_family_dental",
+   "reasoning": "1st Family Dental is a Chicago-founded (1996) chain with ~9-15 confirmed Chicagoland offices and ~80 employees; this unit's context data independently corroborates a 15-location/14-ZIP reach for the authorized official tied to this address (see Kim Dental, same building). Per protocol, 10+-location networks are deferred to a single network-level ownership decision rather than being classified piecemeal here. R4_protected_network:1st_family_dental.",
+   "searched": [
+    "Kim Dental 504 Waverly Dr Elgin IL dentist",
+    "1st Family Dental Illinois locations owner corporate"
+   ],
+   "intel": {
+    "website_url": "https://1stfamilydental.com/",
+    "website_note": "Full corporate marketing site with a dedicated /locations/ page for all offices and dental-services pages.",
+    "services": ["general dentistry", "pediatric dentistry", "oral surgery/implants", "orthodontics"],
+    "distinguishing_notes": "Founded 1996, flagship in Andersonville (Chicago); ~80 employees company-wide per LeadIQ.",
+    "sources": ["https://1stfamilydental.com/locations/", "https://1stfamilydental.com/"]
+   }
+  },
+  {
+   "location_id": "df4211df0d23a29b",
+   "practice_name": "Tolia Dental",
+   "zip": "60120",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-mahendra-tolia-2wtc2",
+    "https://www.yelp.com/biz/mahendra-tolia-dds-elgin",
+    "https://npiregistry.cms.hhs.gov/provider-view/1578733564"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
    "network_id": null,
-   "reasoning": "placeholder",
-   "searched": []
+   "reasoning": "Dr. Mahendra Tolia, DDS operates a solo practice at 417 Dundee Ave with no group, corporate, or DSO signal in any directory listing. Single location, solo owner-operator. Practice appears active (not closed) though currently reported as not accepting new patients by one source.",
+   "searched": [
+    "\"Tolia Dental\" Elgin IL 417 Dundee"
+   ],
+   "intel": {
+    "distinguishing_notes": "Directory listing (Yelp) categorizes practice under 'Oral Surgeons'; currently not accepting new patients per one source.",
+    "sources": ["https://www.healthgrades.com/dentist/dr-mahendra-tolia-2wtc2", "https://www.yelp.com/biz/mahendra-tolia-dds-elgin"]
+   }
+  },
+  {
+   "location_id": "92610afa95d3bc8f",
+   "practice_name": "FORTRESS DENTAL CORPORATION",
+   "zip": "60120",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/physician/dr-vu-kong-x7pf9",
+    "https://even28.com/carlsbad-shores-family-dentistry-sean-hariri-dds-practice-profile-page/",
+    "https://www.carecredit.com/doctor-locator/elgin-il/fortress-dental-zbp246/"
+   ],
+   "evidence_artifacts": ["co-founder_bio_confirms_2008_founding_by_two_dentists_no_corporate_parent"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Fortress Dental Corporation at 1350 E Chicago St was co-founded in 2008 by Dr. Sean Hariri and a dental-school classmate; Dr. Vu Kong, DDS is the current on-site dentist (also this unit's AO). No corporate/PE parent found in any source. Multi-provider (5), single-location, dentist-owned group.",
+   "searched": [
+    "\"Fortress Dental\" Elgin IL 1350 Chicago St dentist owner",
+    "\"Sean Hariri\" dentist Fortress Dental Elgin"
+   ],
+   "intel": {
+    "provider_notes": "Dr. Vu Kong, DDS is the current lead dentist; co-founder Dr. Sean Hariri (Detroit Mercy '08) relocated to San Diego in 2013 and no longer practices here.",
+    "distinguishing_notes": "Practice also opened a sibling office in Roselle, IL around the same 2008 founding, per co-founder's bio.",
+    "sources": ["https://even28.com/carlsbad-shores-family-dentistry-sean-hariri-dds-practice-profile-page/", "https://www.healthgrades.com/physician/dr-vu-kong-x7pf9"]
+   }
+  },
+  {
+   "location_id": "4144f39d7be2611c",
+   "practice_name": "DEXTER DENTAL LLC",
+   "zip": "60120",
+   "assigned_tier": "branded_dso",
+   "pe_backed": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.familiadental.com/locations/illinois/elgin/",
+    "https://www.yelp.com/biz/familia-dental-elgin",
+    "https://thehalifaxgroup.com/halifax-partners-with-management-to-recapitalize-familia-dental/",
+    "https://www.groupdentistrynow.com/dso-group-blog/famila-dental-management-halifax-group-partner-for-recapitalization/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:familia_dental",
+   "reasoning": "Familia Dental's own locator page lists 47 Clock Tower Plaza, Elgin as an active office, matching this unit's ctx affiliated_dso hint exactly. Familia Dental Group Holdings, LLC is a documented PE-backed DSO (The Halifax Group, recapitalized 2016 with a $63M Monroe Capital credit facility), founded 2008 by Dr. Koushan Azad, operating 31 clinics across 5 states.",
+   "searched": [
+    "\"Familia Dental\" 47 Clock Tower Plaza Elgin IL",
+    "\"Familia Dental\" owner private equity dental support organization"
+   ],
+   "intel": {
+    "website_url": "https://www.familiadental.com/locations/illinois/elgin/",
+    "website_note": "Corporate DSO locator/marketing site; consistent branding across all 31 clinics.",
+    "services": ["preventive dentistry", "general dentistry", "emergency dentistry", "restorative dentistry", "cosmetic dentistry"],
+    "accepts_medicaid": true,
+    "insurance_note": "Accepts Medicaid and most insurances; offers cash specials for uninsured patients.",
+    "distinguishing_notes": "Serves 250,000+ patients/year system-wide per Halifax Group release.",
+    "sources": ["https://www.familiadental.com/locations/illinois/elgin/", "https://thehalifaxgroup.com/halifax-partners-with-management-to-recapitalize-familia-dental/"]
+   }
+  },
+  {
+   "location_id": "cf9ae77bdebb8c1e",
+   "practice_name": "Greater Elgin Family Care Ctr",
+   "zip": "60120",
+   "assigned_tier": "institutional",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://greaterfamilyhealth.org/clinics/greater-elgin-family-health-elgin-450-dundee-ave/",
+    "https://greaterfamilyhealth.org/services/dental-services/",
+    "https://www.dentalclinics.org/lis/greater_elgin_family_care_center_dental_clinic_60123"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This is a dental clinic operated by Greater Family Health, a community health center network offering sliding-scale fees (<200% federal poverty level) and accepting Medicaid/uninsured patients -- the profile of a Federally Qualified Health Center (FQHC) rather than a private practice. Classified institutional, not applicable to independent/DSO ownership tiers.",
+   "searched": [
+    "\"Greater Elgin Family Care Center\" dental 450 Dundee"
+   ],
+   "intel": {
+    "website_url": "https://greaterfamilyhealth.org/",
+    "website_note": "Nonprofit community health center network site; dedicated dental services page.",
+    "services": ["oral exams", "fillings", "space maintainers", "stainless-steel crowns", "resin crowns", "pulpotomies", "cleanings", "sealants", "fluoride treatments"],
+    "accepts_medicaid": true,
+    "insurance_note": "Sliding-scale discount program for patients under 200% of federal poverty level; accepts uninsured patients.",
+    "distinguishing_notes": "Community health center serving pediatric and adult populations; extended weekday hours (to 7:30pm) and Saturday availability.",
+    "sources": ["https://greaterfamilyhealth.org/clinics/greater-elgin-family-health-elgin-450-dundee-ave/", "https://greaterfamilyhealth.org/services/dental-services/"]
+   }
+  },
+  {
+   "location_id": "019f06d7def19049",
+   "practice_name": "ELGIN AMAZING DENTAL LLC",
+   "zip": "60120",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dentalplans.com/dentists/illinois/elgin/60120/dr-ahmed-ramaha-166717/",
+    "https://udclinics.com/",
+    "https://www.allbiz.com/business/universal-dental_54B-847-457-1010",
+    "https://www.groupon.com/biz/orland-park-il/universal-dental-a-ramaha-dds"
+   ],
+   "evidence_artifacts": ["own_network_site_udclinics.com_lists_under_10_confirmed_active_offices"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:universal_dental",
+   "reasoning": "Dr. Ahmed Ramaha, DDS operates this address (229 National St) as 'Universal Dental of Elgin,' part of his personally-branded 'Universal Dental Clinics' network (udclinics.com), business-named 'Universal Dental - A Ramaha DDS' at other locations. Confirmed active offices found (Elgin, Orland Park, South Holland, Burbank, Hyde Park, Albany Park, Chicago-Pulaski) number under 10 and no corporate/PE parent surfaced -- fits dentist-owned multi-location rather than a stealth/branded DSO.",
+   "searched": [
+    "\"Elgin Amazing Dental\" Ahmed Ramaha",
+    "\"Universal Dental\" Ramaha Chicago locations list"
+   ],
+   "intel": {
+    "website_url": "https://udclinics.com/",
+    "website_note": "Multi-location network site with a locations finder; branding consistent as 'Universal Dental Clinics' across offices.",
+    "distinguishing_notes": "Elgin location generates an estimated $500k-999k revenue/year with ~4 employees per business-data aggregator (AllBiz).",
+    "sources": ["https://udclinics.com/", "https://www.allbiz.com/business/universal-dental_54B-847-457-1010"]
+   }
   }
  ]
 }

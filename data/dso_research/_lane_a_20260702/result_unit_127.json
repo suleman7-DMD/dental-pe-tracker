@@ -1,0 +1,363 @@
+{
+ "unit_id": "laneA_127",
+ "classifications": [
+  {
+   "location_id": "e50dfc828412c437",
+   "practice_name": "SANEI CENTER PC",
+   "zip": "60647",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://northwesterndental.com/contact/",
+    "https://northwesterndental.com/services/",
+    "https://www.opencare.com/dentists/chicago-il/northwestern-dental-clinc-ltd-24630615445c/",
+    "https://www.healthgrades.com/dentist/dr-behzad-sanei-3mfdt"
+   ],
+   "evidence_artifacts": ["false_brand_match:Western Dental name-collision with Northwestern Dental"],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The address is Northwestern Dental Clinic/Center, a privately-run multi-dentist office (Dr. Behzad Sanei plus 5 other named DDS providers) operating since 2009 -- NOT the national Western Dental (Sonrava) chain. The file's 'affiliated_dso: Western Dental' / 'dso_national' tag appears to be a fuzzy name-collision (Northwestern vs. Western Dental); a follow-up search on a possible 2nd location tied to the AO in Skokie confirmed 'Northwestern Dental Group' Skokie is explicitly a separate, unrelated practice. No corporate parent, EIN, or PE signal found anywhere. Classified single_loc_group (multi-dentist, one address, no DSO evidence).",
+   "searched": ["Western Dental 2604 W North Ave Chicago IL 60647", "Northwestern Dental Center Skokie Behzad Sanei"]
+  },
+  {
+   "location_id": "c469658e9024307c",
+   "practice_name": "Bock Dental",
+   "zip": "60647",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/cityview-dental-arts-jerry-bock-dds-chicago",
+    "https://www.healthgrades.com/dentist/dr-jerome-bock-323r3"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This is Cityview Dental Arts, Dr. Jerome (Jerry) Bock DDS, a solo owner-operator practice at this exact address since 2003 (Marquette 1988 grad). Own branded site (cityviewdental.com), no group or corporate signal. Clear true_independent, high confidence.",
+   "searched": ["Bock Dental Chicago 2232 W Armitage Ave"],
+   "intel": {
+    "website_url": "https://cityviewdental.com",
+    "website_note": "Established solo practice site, positions itself as personalized/experienced care in Bucktown/Wicker Park since 2003.",
+    "services": ["preventive dentistry", "restorative dentistry", "cosmetic dentistry", "children's dentistry"],
+    "provider_count_web": 1,
+    "provider_notes": "Dr. Jerome Bock, DDS -- Marquette University School of Dentistry, 1988 grad; ADA and Chicago Dental Society member.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Solo owner-operator running the same office continuously since 2003 (36+ years in practice).",
+    "sources": ["https://www.yelp.com/biz/cityview-dental-arts-jerry-bock-dds-chicago", "https://www.healthgrades.com/dentist/dr-jerome-bock-323r3"]
+   }
+  },
+  {
+   "location_id": "4513d817c5fd1ed4",
+   "practice_name": "ADVANCED DENTAL",
+   "zip": "60647",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://nkfamilydental.com/",
+    "https://www.zocdoc.com/dentist/nilofer-khan-dds-247863"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Operates under the DBA 'NK Family Dental' at 2335 W Fullerton Ave; the practice's own site states 'Dr. Khan opened the office' -- she is the owner-dentist. Provider_count=2, one location, no corporate/DSO signal. Classified single_loc_group.",
+   "searched": ["Advanced Dental 2335 W Fullerton Ave Chicago Nilofer Khan", "\"NK Family Dental\" 2335 W Fullerton Chicago"],
+   "intel": {
+    "website_url": "https://nkfamilydental.com/",
+    "website_note": "Modern, spa-like, mercury-free branded site under the DBA 'NK Family Dental'; online scheduling via Zocdoc.",
+    "services": ["cosmetic dentistry", "restorative dentistry", "orthodontics", "Invisalign", "implants", "pediatric dentistry"],
+    "provider_notes": "Dr. Nilofer Khan, DDS (NYU dental school); speaks English, Hindi, and Urdu.",
+    "distinguishing_notes": "Multilingual owner-dentist (English/Hindi/Urdu); spa-like mercury-free positioning serving Bucktown/Logan Square/Roscoe Village.",
+    "sources": ["https://nkfamilydental.com/", "https://www.zocdoc.com/dentist/nilofer-khan-dds-247863"]
+   }
+  },
+  {
+   "location_id": "cae7c2f43cc91e2a",
+   "practice_name": "OLIVIA LARES DDS PC",
+   "zip": "60647",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-olivia-lares-265lk",
+    "https://www.linkedin.com/in/olivia-lares-4a5b5a128/",
+    "https://berwyndentalconnection.com/about/dr-olivia-lares/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Olivia A. Lares, DDS is confirmed as an 'Owner and General Dentist' (LinkedIn) -- UIC 2010 grad, GPR residency at Advocate Illinois Masonic. Our census shows this AO/EIN tied to only this one IL location (60647). No corporate signal. Classified true_independent, dentist owner-operator.",
+   "searched": ["Olivia Lares DDS Chicago 2539 N Kedzie"],
+   "intel": {
+    "provider_notes": "Dr. Olivia A. Lares, DDS -- University of Illinois College of Dentistry, 2010; general practice residency at Advocate Illinois Masonic Medical Center (endodontics, periodontics, oral surgery, pediatric).",
+    "owner_career_stage": "mid_career",
+    "sources": ["https://www.healthgrades.com/dentist/dr-olivia-lares-265lk", "https://berwyndentalconnection.com/about/dr-olivia-lares/"]
+   }
+  },
+  {
+   "location_id": "9974718d9adbc00f",
+   "practice_name": "BRITE DENTAL MILWAUKEE, P.C.",
+   "zip": "60647",
+   "assigned_tier": "branded_dso",
+   "pe_backed": false,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://dental360grp.com/locations/",
+    "https://www.waze.com/live-map/directions/us/il/chicago/dental-360-logan-square?to=place.ChIJWXOccWLND4gR4Ry9W33fJhg"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:dental360",
+   "reasoning": "Dental 360's own locations page lists a Logan Square office at 2314 N. Milwaukee Ave Suite B, Chicago, IL 60647, phone (773) 697-3164 -- an exact address and phone match to this record. Dental 360 is a known branded multi-location DSO; no documented PE sponsor found so pe_backed=false. Classified branded_dso.",
+   "searched": ["Dental 360 Chicago locations 2314 N Milwaukee Ave"]
+  },
+  {
+   "location_id": "c1526a81500dbd53",
+   "practice_name": "ARMITAGE PROFESSIONAL SERVICES",
+   "zip": "60647",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [
+    "https://www.zoominfo.com/p/Vesna-Belkic/-2043120402",
+    "https://local.yahoo.com/info-237376208-belkic-vesna-1st-family-dentalwest-roseland-chicago",
+    "https://1stfamilydental.com/locations/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": "ao:BELKIC_VESNA",
+   "reasoning": "The census context flags this AO (Vesna Belkic) as reaching 15 IL locations across 14 ZIPs -- a large network. Web search ties a Vesna Belkic to a General Manager role at '1st Family Dental' (a real multi-location Chicagoland dental chain, Old Town/Andersonville/Logan Square/Roseland/suburban offices), suggesting a non-dentist administrative controller behind a multi-site network, but I could not confirm this specific address (3650 W Armitage Ave) appears on 1st Family Dental's own locations page. R4_protected_network:Vesna Belkic / possible 1st Family Dental AO-cluster (15 locations) -- withholding classification for one-network review rather than guessing stealth_dso vs. independent.",
+   "searched": ["Vesna Belkic dentist Chicago Armitage", "\"1st Family Dental\" Chicago Armitage locations"]
+  },
+  {
+   "location_id": "06271566fac35420",
+   "practice_name": "Casado Dental",
+   "zip": "60647",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-adria-casado-ybr3v3z",
+    "https://providers.sharecare.com/doctor/dr-adria-m-casado"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Solo practitioner Dr. Adria Casado, DDS at this exact address (3230 W North Ave, Humboldt Park). No group, brand, or corporate signal in any directory result. Classified true_independent.",
+   "searched": ["Casado Dental Chicago 3230 W North Ave"],
+   "intel": {
+    "provider_notes": "Dr. Adria Casado, DDS -- speaks Spanish.",
+    "services": ["routine exams", "cleanings", "digital X-rays", "composite fillings", "crowns", "sealants"],
+    "distinguishing_notes": "Bilingual (Spanish) solo dentist; offers telehealth consultation option.",
+    "sources": ["https://providers.sharecare.com/doctor/dr-adria-m-casado"]
+   }
+  },
+  {
+   "location_id": "826ff5b11537f2cb",
+   "practice_name": "DENTAL MAGIC NORTH AVE, INC",
+   "zip": "60647",
+   "assigned_tier": "branded_dso",
+   "pe_backed": false,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://dental360grp.com/locations/",
+    "https://www.patientconnect365.com/MicrositeContact/Illinois/Chicago/60647/Dental_360_Bucktown"
+   ],
+   "evidence_artifacts": ["phone_match:773-360-1281 shared between legacy 'Dental Magic' listing and current 'Dental 360 Bucktown' listing at 2500 W North Ave"],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:dental360",
+   "reasoning": "The legacy 'Dental Magic' business at 2500 W North Ave, Chicago is now operating as 'Dental 360 Bucktown' -- exact address and exact phone match ((773) 360-1281). Dental 360 is a known branded multi-location DSO already confirmed elsewhere in this unit (Brite Dental Milwaukee). No documented PE sponsor. Classified branded_dso.",
+   "searched": ["Dental Magic 2500 W North Ave Chicago dental 360"]
+  },
+  {
+   "location_id": "00a4b7312edf86cd",
+   "practice_name": "GREEN TREE DENTAL LLC",
+   "zip": "60647",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://greentreedentalchicago.com/",
+    "https://greentreedentalchicago.com/meet-our-doctors/",
+    "https://greentreedentalchicago.com/north-avenue-chicago/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:green_tree_dental",
+   "reasoning": "Green Tree Dental's own site lists exactly two offices: 3309 W. North Ave. (this record) and 2704 N. Halsted St. (Lincoln Park), staffed by named DDS providers Dr. Jahnavi Bhagat and Dr. Rutu Patel. No corporate parent, PE, or non-dentist controller language found on the site. Classified dentist_multi (2-location group run by named dentists); confidence medium because the site does not use explicit 'owned by' language.",
+   "searched": ["\"Green Tree Dental\" Chicago 3309 W North Ave"],
+   "intel": {
+    "website_url": "https://greentreedentalchicago.com/",
+    "website_note": "Modern branded 2-location site with online contact/booking; bilingual staff.",
+    "services": ["dental implants", "teeth whitening", "Invisalign", "dental crowns", "extractions", "orthodontic treatment"],
+    "provider_notes": "Dr. Jahnavi Bhagat and Dr. Rutu Patel named on 'Meet Our Doctors' page.",
+    "distinguishing_notes": "English/Spanish-speaking staff, free parking, same-day appointments; accepts most major PPO insurance plans.",
+    "insurance_note": "Accepts cash, major credit cards, and most major PPO dental insurance.",
+    "sources": ["https://greentreedentalchicago.com/", "https://greentreedentalchicago.com/meet-our-doctors/"]
+   }
+  },
+  {
+   "location_id": "503f5abe582e326d",
+   "practice_name": "Weiss Dental",
+   "zip": "60647",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.moderndentalchicago.com/locations/",
+    "https://www.moderndentalchicago.com/about/"
+   ],
+   "evidence_artifacts": ["phone_match:773-717-5509 matches Modern Dental of Logan Square exactly"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:modern_dental_chicago",
+   "reasoning": "Phone number (773) 717-5509 is an exact match to 'Modern Dental of Logan Square', one of Modern Dental Chicago's 3 offices (Division/Logan Square/Clark). Modern Dental's own materials state it is 'privately owned...free from corporate or private equity influence' and 'individually owned and operated by Dr. Phillip Palella' (a dentist), with Dr. Richard Weiss practicing there. Classified dentist_multi (3-location dentist-owned group); confidence medium because the street number on file (2645 N Milwaukee) differs slightly from the official site's listed Logan Square address (2837 N Milwaukee) even though phone matches exactly.",
+   "searched": ["Weiss Dental Chicago 2645 N Milwaukee Ave", "\"Modern Dental\" Chicago Richard Weiss locations network"],
+   "intel": {
+    "website_url": "https://www.moderndentalchicago.com/",
+    "website_note": "Polished 3-location branded group site; explicitly markets itself as free of corporate/PE ownership.",
+    "provider_notes": "Dr. Richard Weiss, DDS practices at Modern Dental of Logan Square; practice founder/owner is Dr. Phillip Palella (started Modern Dental on Division 15+ years ago).",
+    "distinguishing_notes": "Multi-location dentist-owned group explicitly positioned against corporate/PE dental chains.",
+    "sources": ["https://www.moderndentalchicago.com/locations/", "https://www.moderndentalchicago.com/about/"]
+   }
+  },
+  {
+   "location_id": "f77fae35cf79b7e8",
+   "practice_name": "DR SAM DENTAL PC",
+   "zip": "60647",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [
+    "https://www.carecredit.com/doctor-locator/chicago-il/gentle-dental-care-pc-848fjq/",
+    "https://www.b2byellowpages.com/company-information/286052614-gentle-dental-care-pc.html"
+   ],
+   "evidence_artifacts": ["phone_match:773-342-8493 shared with 'Gentle Dental Care PC' listing at 3111 W Armitage Ave and with sibling record Kinka Dental at 3109 W Armitage Ave"],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": "brand:gentle_dental_care_armitage_cluster",
+   "reasoning": "Current directory listings for 3111 W Armitage Ave / phone (773) 342-8493 show the operating name as 'Gentle Dental Care PC', not 'Dr Sam Dental PC' or the AO Samuel Osobu (who appears instead to practice in South Holland, IL per other listings). Provider_count is 0 in the source file. Could not confirm current ownership or whether this NPI registration is a stale/superseded record for the same suite as the adjacent Kinka Dental NPI (identical phone). Insufficient evidence to assign a tier; not claiming closure, just unresolved identity -- flagging for cluster review alongside e4899053118dd95a.",
+   "searched": ["\"Dr Sam Dental\" OR \"Samuel Osobu\" dentist Chicago Armitage", "\"3111 W Armitage\" Chicago dental current", "\"Gentle Dental Care\" Chicago Armitage Ave PC owner"]
+  },
+  {
+   "location_id": "5f85f76407d177c8",
+   "practice_name": "Ramalingam Dental",
+   "zip": "60647",
+   "assigned_tier": "branded_dso",
+   "pe_backed": true,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://dentologie.com/locations/chicago",
+    "https://www.zocdoc.com/dentist/sailesh-ramalingam-dds-457564",
+    "https://www.chicagobusiness.com/health-care/dental-startup-dentologie-raises-25-million",
+    "https://www.beringea.com/news/investments/beringea-u-s-invests-in-chicago-based-dentologie-as-part-of-a-usd25-million-series-b-funding-round"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:dentologie",
+   "reasoning": "Dr. Sailesh Ramalingam practices at Dentologie's Bucktown office, 1625 N Milwaukee Ave, Chicago, IL 60647 (exact address/phone match). Dentologie is a VC/PE-backed multi-location dental brand (13 Chicago-area offices) that raised a $25M Series B including New York private-equity firm Warburg Pincus, and is led by non-dentist CEO Gregg Kaplan (former Redbox CEO), not by a practicing dentist-owner. This documentary evidence (own brand locator page + funding press) supports branded_dso with pe_backed=true; confidence medium because the address match came via a secondary source (Zocdoc) rather than a direct fetch of Dentologie's own address list for this specific unit.",
+   "searched": ["Ramalingam Dental Chicago 1625 N Milwaukee Ave", "Dentologie ownership founder private equity Chicago dental group"]
+  },
+  {
+   "location_id": "e4899053118dd95a",
+   "practice_name": "Kinka Dental",
+   "zip": "60647",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [
+    "https://thedentalmasters.org/lincoln-park-office/dr-jeffrey-kinka-dmd/",
+    "https://www.carecredit.com/doctor-locator/chicago-il/gentle-dental-care-pc-848fjq/"
+   ],
+   "evidence_artifacts": ["phone_match:773-342-8493 shared with 'Gentle Dental Care PC' listing at 3109/3111 W Armitage Ave and with sibling record DR SAM DENTAL PC"],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": "brand:gentle_dental_care_armitage_cluster",
+   "reasoning": "Dr. Jeffrey Kinka, DMD is a real, licensed UIC-grad dentist, but his current bio page is hosted under 'The Dental Masters' Lincoln Park office (2704 N Halsted), not this Armitage address, while directory listings for this exact phone/address now show the operating name 'Gentle Dental Care PC'. This suggests the NPI record on file may be stale (Dr. Kinka may have relocated to The Dental Masters) and current occupancy/ownership at 3109 W Armitage Ave is unclear. Flagging for cluster review alongside f77fae35cf79b7e8 rather than guessing tier.",
+   "searched": ["Kinka Dental Chicago 3109 W Armitage Ave", "\"3109 W Armitage\" Chicago dental office", "\"The Dental Masters\" Chicago Jeffrey Kinka Armitage practice"]
+  },
+  {
+   "location_id": "dfc145e9c4fb8cee",
+   "practice_name": "MAYA SEDATION LLC",
+   "zip": "60647",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npiprofile.com/npi/1811887334"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Amy Maya, DDS is confirmed as the authorized official and a dentist anesthesiologist for this practice -- a specialty IV-sedation service, not a corporate/DSO entity. No parent company, brand, or PE signal found. Classified single_loc_group at this address; confidence medium since the high provider_count (8) in the source file is not explained by available web evidence (plausibly credentialed staff supporting mobile/in-office sedation cases) and I could not independently verify it.",
+   "searched": ["Maya Sedation Dentistry Chicago Amy Maya 2062 N Milwaukee Ave"],
+   "intel": {
+    "provider_notes": "Amy Maya, DDS -- dentist anesthesiologist / authorized official.",
+    "services": ["IV sedation", "dental anesthesiology"],
+    "distinguishing_notes": "Specialty sedation-focused practice rather than a general family dental office.",
+    "sources": ["https://npiprofile.com/npi/1811887334"]
+   }
+  },
+  {
+   "location_id": "837b6b5272890c0c",
+   "practice_name": "Souza Dental",
+   "zip": "60647",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.bloomingsmileschicago.com/",
+    "https://www.healthgrades.com/dentist/dr-kesia-asami-de-souza-9bm8u4m060"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This address operates as 'Blooming Smiles Chicago', with Dr. Kesia Asami De Souza, DDS listed at the identical address/suite and phone. No corporate or DSO signal; single office, dentist-run. Classified single_loc_group (provider_count=2 per source file).",
+   "searched": ["Souza Dental Chicago 2340 N California Ave"],
+   "intel": {
+    "website_url": "https://www.bloomingsmileschicago.com/",
+    "provider_notes": "Dr. Kesia Asami De Souza, DDS.",
+    "distinguishing_notes": "Services offered in Portuguese and Spanish.",
+    "sources": ["https://www.bloomingsmileschicago.com/", "https://www.healthgrades.com/dentist/dr-kesia-asami-de-souza-9bm8u4m060"]
+   }
+  },
+  {
+   "location_id": "c943dfe0bf3be1f8",
+   "practice_name": "STEVE MOON DDS AND JAI CHUL CHO DDS PLLC",
+   "zip": "60647",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/dental-minds-chicago",
+    "https://npiregistry.cms.hhs.gov/provider-view/1982277612"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Operates as 'Dental Minds' at this address, co-run by two named DDS partners (Steve Moon and Jai Chul Cho), no brand/locator network beyond this single office and no corporate signal. Classified single_loc_group.",
+   "searched": ["Steve Moon DDS Jai Chul Cho 2530 N Milwaukee Ave Chicago dental"],
+   "intel": {
+    "website_url": "https://www.mydentalchicago.com/about",
+    "website_note": "DBA'd as 'Dental Minds' at this address.",
+    "provider_notes": "Dr. Steve Moon, DDS -- 20+ years in practice, including 10+ years practicing dentistry in his own clinic in South Korea before relocating to the US.",
+    "owner_career_stage": "late_career",
+    "sources": ["https://www.yelp.com/biz/dental-minds-chicago", "https://www.zocdoc.com/dentist/steve-moon-dds-757100"]
+   }
+  }
+ ]
+}

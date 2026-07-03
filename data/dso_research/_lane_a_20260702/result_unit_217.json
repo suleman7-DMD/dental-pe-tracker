@@ -1,0 +1,452 @@
+{
+ "unit_id": "laneA_217",
+ "classifications": [
+  {
+   "location_id": "5e2932fde184fe15",
+   "practice_name": "Park Inah DDS",
+   "zip": "60544",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [
+    "https://www.lksdds.com/about-us/location/plainfield/798"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searched 'Park Inah DDS Plainfield IL dentist' and '(815) 577-0700 Plainfield IL dentist'. The NPI record's address (24402 W Lockport St) and phone (815) 577-0700 actually belong to an unrelated dentist, Dr. Lance K. Skinkys, DDS (lksdds.com, Suite 200 at that building) -- not to Dr. Inah Park. Dr. Park's verified current practice is Park Family Dental at a different address (24047 W Lockport St, separately captured in this unit as location 128d9be8c74a61c1); this specific location/NPI record appears to carry a stale or incorrect NPPES address, so no ownership claim can be made for THIS address under her name.",
+   "searched": [
+    "\"Park Inah\" DDS Plainfield IL dentist",
+    "\"(815) 577-0700\" Plainfield IL dentist"
+   ]
+  },
+  {
+   "location_id": "128d9be8c74a61c1",
+   "practice_name": "PARK DENTAL GROUP, INC",
+   "zip": "60544",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://theparkfamilydental.com/about-us",
+    "https://doctor.webmd.com/doctor/inah-park-80bc15c8-f2c9-4b01-a13b-33d84d1d60b8-overview"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:park_family_dental",
+   "reasoning": "Searched the practice name and fetched the practice's own About Us page. Park Dental Group, Inc. operates as 'Park Family Dental' with two dentist-owners, Dr. Inah Park DDS and Dr. Jae Roh DDS (both University of Michigan grads), and runs two locations: this Plainfield office (24047 W Lockport St) plus a second office at 2303 W Roscoe St, Chicago. No DSO/corporate-parent language anywhere on the site -- classic dentist-owned small multi-location group.",
+   "searched": [
+    "\"Park Inah\" DDS Plainfield IL dentist",
+    "\"Park Dental Group\" Plainfield IL Lockport Street dentist",
+    "\"Park Family Dental\" locations Chicago Plainfield how many offices"
+   ],
+   "intel": {
+    "website_url": "https://theparkfamilydental.com/",
+    "website_note": "Modern multi-page practice site with clear doctor bios, two-location nav, and cosmetic-dentistry focus.",
+    "services": ["veneers", "lumineers", "invisalign", "orthodontics", "oral surgery", "endodontics", "periodontics", "dental implants", "cosmetic dentistry"],
+    "technology": [],
+    "provider_count_web": 2,
+    "provider_notes": "Dr. Inah Park, DDS and Dr. Jae Roh, DDS, both University of Michigan Dental School graduates.",
+    "distinguishing_notes": "Two-location small group (Plainfield IL + Chicago IL); hours include Saturday 9am-3pm; telehealth offered per WebMD.",
+    "sources": ["https://theparkfamilydental.com/about-us", "https://doctor.webmd.com/doctor/inah-park-80bc15c8-f2c9-4b01-a13b-33d84d1d60b8-overview"]
+   }
+  },
+  {
+   "location_id": "80c0863657bcc561",
+   "practice_name": "Kevin D Gallagher DDS",
+   "zip": "60544",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://dentistofplainfield.com/dr-kevin-d-gallagher/",
+    "https://www.bbb.org/us/il/plainfield/profile/dentist/kevin-d-gallagher-dds-pc-0654-90016204"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched 'Kevin Gallagher DDS Plainfield IL dentist'. Dr. Gallagher (Loyola Dental School, 1985) has practiced solo in the Joliet/Plainfield area for 35 years under his own name (BBB lists 'Kevin D. Gallagher, D.D.S., P.C.'), single office at 15515 S Rte 59. No group name, no DSO/corporate signal anywhere.",
+   "searched": [
+    "\"Kevin Gallagher\" DDS Plainfield IL dentist"
+   ],
+   "intel": {
+    "website_url": "https://dentistofplainfield.com/dr-kevin-d-gallagher/",
+    "website_note": "Solo-practitioner site branded 'Magical Smiles'; emphasizes long community tenure.",
+    "services": ["checkups", "cleanings", "fillings", "crowns", "root canals", "dental implants", "restorative"],
+    "technology": [],
+    "provider_count_web": 1,
+    "provider_notes": "Dr. Kevin D. Gallagher, DDS -- Loyola University School of Dentistry, 1985; ~35 years in the Joliet/Plainfield area; ADA, Chicago Dental Society, Illinois State Dental Society member.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Volunteers at the Will-Grundy Medical Dental Clinic in Joliet.",
+    "sources": ["https://dentistofplainfield.com/dr-kevin-d-gallagher/", "https://www.healthgrades.com/dentist/dr-kevin-gallagher-237d5"]
+   }
+  },
+  {
+   "location_id": "a658318c263d6f89",
+   "practice_name": "Hohl Dental",
+   "zip": "60544",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-ronald-hohl-2prt6",
+    "https://doctor.webmd.com/doctor/ronald-hohl-199f4ca7-e675-49a3-8dd5-2611902e1fd4-overview"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched 'Hohl Dental Plainfield IL'. Multiple independent aggregator/directory listings consistently show a single solo practitioner, Dr. Ronald Hohl DDS, at 1108 N Mill St with no group name, no additional providers, and no DSO/corporate signal. No dedicated practice website was found to raise confidence to high.",
+   "searched": [
+    "\"Hohl Dental\" Plainfield IL"
+   ],
+   "intel": {
+    "website_url": "https://www.healthgrades.com/dentist/dr-ronald-hohl-2prt6",
+    "website_note": "No standalone practice website surfaced; presence limited to directory/aggregator listings.",
+    "services": [],
+    "technology": [],
+    "provider_count_web": 1,
+    "provider_notes": "Dr. Ronald F. Hohl, DDS -- solo general dentist.",
+    "distinguishing_notes": "New patients welcome per directory listings; family-oriented general dentistry.",
+    "sources": ["https://www.healthgrades.com/dentist/dr-ronald-hohl-2prt6", "https://doctor.webmd.com/doctor/ronald-hohl-199f4ca7-e675-49a3-8dd5-2611902e1fd4-overview"]
+   }
+  },
+  {
+   "location_id": "72ee876e181d9e87",
+   "practice_name": "DENTAL ASSOCIATES OF PLAINFIELD P.C.",
+   "zip": "60544",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://local.yahoo.com/info-153218452-hodoval-randy-dental-associates-of-plainfield-plainfield/",
+    "https://www.dentalplans.com/dentists/illinois/naperville/60540/dr-randall-hodoval-137933/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched 'Dental Associates of Plainfield Hodoval IL' then verified Randall Hodoval's credentials directly. Randall J. Hodoval is a licensed DDS (18+ years general practice, NPI-registered since 2006) who runs this single-location practice at 14955 S Van Dyke Rd (est. business 1983, PC incorporated 1995); a business-directory listing calling him 'CEO' is loose title language, not evidence of non-dentist corporate control. Dentist-owned, one location, 2 providers.",
+   "searched": [
+    "\"Dental Associates of Plainfield\" Hodoval IL",
+    "\"Randall Hodoval\" DDS dentist Illinois"
+   ]
+  },
+  {
+   "location_id": "b383954c6167b3c8",
+   "practice_name": "PLAINFIELD DENTAL, LTD.",
+   "zip": "60544",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.plainfielddental.com/meet-the-doctors/",
+    "https://www.plainfielddental.com/plainfield-il-dentist/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:plainfield_dental_muraglia_peck",
+   "reasoning": "Searched 'Plainfield Dental Route 59 Muraglia Peck Illinois'. Plainfield Dental at 15210 S Route 59 (serving the area since 1968) is co-run by two dentists, Dr. Peter Muraglia (Loyola, 1987) and Dr. William T. Peck (U. Tennessee, 2006) -- a single-location, dentist-owned two-provider group with no DSO/corporate branding.",
+   "searched": [
+    "\"Plainfield Dental\" Route 59 Muraglia Peck Illinois"
+   ],
+   "intel": {
+    "website_url": "https://www.plainfielddental.com/",
+    "website_note": "Established practice site with 'Meet the Doctors' bios; positions itself as serving Plainfield since 1968.",
+    "provider_count_web": 2,
+    "provider_notes": "Dr. Peter Muraglia, DDS (Loyola grad 1987); Dr. William T. Peck, DDS (Univ. of Tennessee cum laude grad 2006).",
+    "distinguishing_notes": "4.5-star / ~14-review reputation per aggregator roundup; hours run Mon 9-7pm through Sat 8-12pm.",
+    "sources": ["https://www.plainfielddental.com/meet-the-doctors/", "https://bippermedia.com/health/united-states/illinois/plainfield-3/plainfield-dental-dr-peck-and-dr-muraglia-reviews-plainfield-dental-dr-peck-and-dr-muraglia-at-15210-illinois-rte-59-plainfield-il-60544"]
+   }
+  },
+  {
+   "location_id": "4d6ecf57b261e109",
+   "practice_name": "AHOYT FAMILY DENTAL",
+   "zip": "60544",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://ahoyt.dental/",
+    "https://ahoyt.dental/meet-the-doctors"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:ahoyt_family_dental",
+   "reasoning": "Searched and fetched the practice's own site (ahoyt.dental). Single location at 13717 S US 30 Ste 129, 'Serving Plainfield Families Since 2007' (19 years). Dr. Justin Ahoyt appears first/founder-like among five listed dentists (Ahoyt, Gordon Jr, Hassan, Morrin, Saad). Dentist-owned single-location multi-provider group, no DSO/corporate signal.",
+   "searched": [
+    "\"Ahoyt Family Dental\" Plainfield IL Brammeier"
+   ],
+   "intel": {
+    "website_url": "https://ahoyt.dental/",
+    "website_note": "Full modern practice site with online presence, 'Meet the Doctors' page, 19-year local tenure messaging.",
+    "services": ["cleanings", "fillings", "root canal therapy", "crowns and bridges", "dentures", "veneers", "teeth whitening", "implants", "invisalign"],
+    "technology": [],
+    "provider_count_web": 5,
+    "provider_notes": "Dr. Justin Ahoyt DDS, Dr. John Gordon Jr DMD, Dr. Syeda Hassan DMD, Dr. Dennis Morrin DDS, Dr. Mustafa Saad DDS.",
+    "distinguishing_notes": "Established 2007, markets itself as 'Serving Plainfield Families Since 2007'; single Suite 129 location.",
+    "sources": ["https://ahoyt.dental/", "https://ahoyt.dental/meet-the-doctors"]
+   }
+  },
+  {
+   "location_id": "73fe67285d88f436",
+   "practice_name": "PRAIRIE DENTAL LTD.",
+   "zip": "60544",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://prairie-dental.com/",
+    "https://prairie-dental.com/?page_id=42"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched 'Prairie Dental Plainfield IL Renwick Lukawski'. Dr. Paul Lukawski (DePaul BS 1985, Loyola DDS 1989) opened Prairie Dental, Ltd. in 2001 and has practiced exclusively at this single Plainfield location (23909/23959 W Renwick Rd) since 2003. Solo owner-operator, no additional providers or DSO/corporate signal found.",
+   "searched": [
+    "\"Prairie Dental\" Plainfield IL Renwick Lukawski"
+   ],
+   "intel": {
+    "website_url": "https://prairie-dental.com/",
+    "website_note": "Family-dental practice site branded 'Family Dental Care Services'; single-doctor bio page.",
+    "provider_count_web": 1,
+    "provider_notes": "Dr. Paul Lukawski, DDS -- DePaul University BS 1985, Loyola University of Chicago DDS 1989; opened practice 2001.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Serves Plainfield/Shorewood/Joliet for 20+ years; ~15 Yelp reviews.",
+    "sources": ["https://prairie-dental.com/", "https://prairie-dental.com/?page_id=42"]
+   }
+  },
+  {
+   "location_id": "36610bdcbea1d28d",
+   "practice_name": "Ahoyt Dental",
+   "zip": "60544",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://ahoyt.dental/",
+    "https://ahoyt.dental/meet-the-doctors"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:ahoyt_family_dental",
+   "reasoning": "Same physical address/phone as location 4d6ecf57b261e109 (13717 S US 30/Hwy 30, (815) 436-3377) -- this is the individual NPI record for the same Ahoyt Family Dental clinic verified via ahoyt.dental. Dentist-owned single-location multi-provider group.",
+   "searched": [
+    "\"Ahoyt Family Dental\" Plainfield IL Brammeier"
+   ],
+   "intel": {
+    "website_url": "https://ahoyt.dental/",
+    "website_note": "See Ahoyt Family Dental (same clinic, same address).",
+    "services": ["cleanings", "fillings", "root canal therapy", "crowns and bridges", "dentures", "veneers", "teeth whitening", "implants", "invisalign"],
+    "provider_count_web": 5,
+    "provider_notes": "Dr. Justin Ahoyt DDS et al. -- see location 4d6ecf57b261e109.",
+    "sources": ["https://ahoyt.dental/"]
+   }
+  },
+  {
+   "location_id": "51413bc19a45eded",
+   "practice_name": "Muraglia Dental",
+   "zip": "60544",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.plainfielddental.com/meet-the-doctors/",
+    "https://doctor.webmd.com/doctor/peter-muraglia-00bc04ec-5ac9-4dbf-b0f7-9df40e68cee7-overview"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:plainfield_dental_muraglia_peck",
+   "reasoning": "Same address/phone as location b383954c6167b3c8 (15210 S Route 59, (815) 436-3399) -- individual NPI record for Dr. Peter Muraglia, co-owner of Plainfield Dental with Dr. William Peck. Dentist-owned single-location group.",
+   "searched": [
+    "\"Plainfield Dental\" Route 59 Muraglia Peck Illinois"
+   ],
+   "intel": {
+    "website_url": "https://www.plainfielddental.com/",
+    "provider_notes": "Dr. Peter Muraglia, DDS -- Loyola grad 1987; co-owner alongside Dr. William Peck.",
+    "distinguishing_notes": "See Plainfield Dental Ltd (same clinic, same address, est. 1968).",
+    "sources": ["https://www.plainfielddental.com/meet-the-doctors/"]
+   }
+  },
+  {
+   "location_id": "de842844a72a2d14",
+   "practice_name": "Brammeier Dental",
+   "zip": "60544",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://ahoyt.dental/",
+    "https://ahoyt.dental/meet-the-doctors"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:ahoyt_family_dental",
+   "reasoning": "Same address/phone as the Ahoyt Family Dental cluster (13717 S US Route 30, (815) 436-3377). A patient review references a 'Dr. Brammeier' as a past dentist at this address, but he does not appear among the practice's current listed dentists on ahoyt.dental -- this NPI record appears to be a legacy name for what now operates as Ahoyt Family Dental, a dentist-owned single-location group. Confidence set to medium given the name/roster discrepancy.",
+   "searched": [
+    "\"Ahoyt Family Dental\" Plainfield IL Brammeier"
+   ],
+   "intel": {
+    "website_url": "https://ahoyt.dental/",
+    "website_note": "Clinic now operates under the Ahoyt Family Dental brand; 'Brammeier' surfaces only in legacy patient reviews.",
+    "sources": ["https://ahoyt.dental/"]
+   }
+  },
+  {
+   "location_id": "cb58aa203e32d50b",
+   "practice_name": "Villa, Rosemary DDS",
+   "zip": "60544",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://plainfielddentalcare.com/",
+    "https://www.yelp.com/biz/plainfield-dental-care-plainfield"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:plainfield_dental_care",
+   "reasoning": "Searched 'Rosemary Villa DDS Plainfield IL' then confirmed the NPI record's phone (815) 673-7842 and address (13621 S Route 59) resolve to Plainfield Dental Care, Unit 103. Fetching plainfielddentalcare.com shows the practice led by Dr. Vlad Ferdkoff and Dr. Iriny Tadros (both dentists) with associates Grechko, Khatlan, and Sethi -- no DSO/corporate parent mentioned. Dr. Villa herself is not named on the current site (she may be a former or part-time associate), so this is dentist-owned single-location group, medium confidence given that roster gap.",
+   "searched": [
+    "\"Rosemary Villa\" DDS Plainfield IL dentist Route 59",
+    "\"(815) 673-7842\" Plainfield IL"
+   ],
+   "intel": {
+    "website_url": "https://plainfielddentalcare.com/",
+    "website_note": "Active multi-dentist practice site with named leadership and associate roster.",
+    "provider_count_web": 5,
+    "provider_notes": "Dr. Vlad Ferdkoff and Dr. Iriny Tadros (leadership); Dr. Oleksandr Grechko DDS, Dr. Gaith Khatlan DMD, Dr. Jasveen Sethi DDS (associates).",
+    "distinguishing_notes": "Rosemary Villa DDS's own NPI/EIN traces to this address by phone match, but she is unlisted on the current site -- possible past or part-time association.",
+    "sources": ["https://plainfielddentalcare.com/"]
+   }
+  },
+  {
+   "location_id": "0ee7f71369a334c3",
+   "practice_name": "Mockunas, Justina",
+   "zip": "60544",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.pinnacledentalgroup.com/plainfield",
+    "https://www.linkedin.com/in/justina-mockunas-dds/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:pinnacle_dental_group",
+   "reasoning": "Searched 'Justina Mockunas dentist Plainfield IL' and fetched the practice's own Plainfield page. Dr. Justina Mockunas (DDS, Kaunas Univ. of Medicine 2008; NYU AEGD certificate) is the owner of Pinnacle Dental Group, which operates three locations (Plainfield, Clarendon Hills, New Lenox IL); Giedrius Mockunas (likely family) runs business operations, but no DSO/PE/corporate-parent language appears anywhere. Dentist-owned multi-location group.",
+   "searched": [
+    "\"Justina Mockunas\" dentist Plainfield IL",
+    "\"Pinnacle Dental Group\" Plainfield IL owner Mockunas locations"
+   ],
+   "intel": {
+    "website_url": "https://www.pinnacledentalgroup.com/plainfield",
+    "website_note": "Professional multi-location group site; owner bio emphasizes implantology/digital dentistry credentials.",
+    "services": ["dental implants", "all-on-x", "IV sedation", "oral surgery", "preventive", "cosmetic"],
+    "technology": [],
+    "provider_notes": "Dr. Justina Mockunas, DDS -- Kaunas University of Medicine (Lithuania) DDS 2008; NYU Langone AEGD certificate; ambassador of the Zero Bone Loss Concept Group.",
+    "owner_career_stage": "mid_career",
+    "distinguishing_notes": "3-location group (Plainfield, Clarendon Hills, New Lenox); internationally trained owner-dentist specializing in full-arch implant rehabilitation.",
+    "sources": ["https://www.pinnacledentalgroup.com/plainfield", "https://www.linkedin.com/in/justina-mockunas-dds/"]
+   }
+  },
+  {
+   "location_id": "569aabc3cbb62970",
+   "practice_name": "PLANO SMILES DENTAL CENTER, LTD",
+   "zip": "60545",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.facebook.com/p/Plano-Smiles-Dental-Center-Dr-Julie-Conlin-100063557801028/",
+    "https://www.healthgrades.com/dentist/dr-julie-conlin-7f7xz"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched 'Plano Smiles Dental Center Julie Conlin IL'. Consistently described across directories as a small solo practice run by Dr. Julie Conlin at 9 E Main St, downtown Plano. No group name, no DSO/corporate signal.",
+   "searched": [
+    "\"Plano Smiles Dental Center\" Julie Conlin IL"
+   ],
+   "intel": {
+    "website_url": "https://www.facebook.com/p/Plano-Smiles-Dental-Center-Dr-Julie-Conlin-100063557801028/",
+    "website_note": "Small solo-practitioner presence via Facebook/directory pages rather than a dedicated practice website.",
+    "provider_count_web": 1,
+    "provider_notes": "Dr. Julie Conlin, DDS -- sole practitioner.",
+    "distinguishing_notes": "Small downtown-Plano practice serving patients of all ages; accepts CareCredit.",
+    "sources": ["https://www.facebook.com/p/Plano-Smiles-Dental-Center-Dr-Julie-Conlin-100063557801028/", "https://www.healthgrades.com/dentist/dr-julie-conlin-7f7xz"]
+   }
+  },
+  {
+   "location_id": "88e38cf519e54abd",
+   "practice_name": "Gordon Dental",
+   "zip": "60545",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://doctor.webmd.com/practice/plano-family-dental-drs-shah-and-gordon-62cba312-097a-420b-a1c8-bcc0a698ca03",
+    "https://www.vitadox.com/doctor/plano-il-60545/john-a-gordon-jr-dmd/5L72FJv3fqeda8PZh4bcM3"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:plano_family_dental",
+   "reasoning": "Searched 'Gordon Dental Plano IL Route 34 dentist'. This NPI (Dr. John A. Gordon Jr, DMD, 901 W Route 34) practices as 'Plano Family Dental Drs Shah and Gordon' -- a two-dentist, single-location practice. No DSO/corporate signal; Dr. Gordon also appears as an associate at Ahoyt Family Dental in Plainfield (a separate location in this unit), consistent with a dentist working across independent offices rather than any chain ownership.",
+   "searched": [
+    "\"Gordon Dental\" Plano IL Route 34 dentist"
+   ],
+   "intel": {
+    "website_url": "https://doctor.webmd.com/practice/plano-family-dental-drs-shah-and-gordon-62cba312-097a-420b-a1c8-bcc0a698ca03",
+    "services": ["braces and retainers", "bridges and dentures", "fillings"],
+    "provider_count_web": 2,
+    "provider_notes": "Dr. John A. Gordon Jr, DMD and Dr. Shah (co-practitioners at Plano Family Dental).",
+    "sources": ["https://doctor.webmd.com/practice/plano-family-dental-drs-shah-and-gordon-62cba312-097a-420b-a1c8-bcc0a698ca03"]
+   }
+  },
+  {
+   "location_id": "541ae39cadc867b6",
+   "practice_name": "MA BOULE DMD PC",
+   "zip": "60545",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://bouledental.com/",
+    "https://www.yelp.com/biz/boule-dental-melvin-boule-dmd-plano"
+   ],
+   "evidence_artifacts": [
+    "parent_company field 'EVENLY ORTHODONTICS DUPONT' investigated and rejected as ownership evidence: 'Evenly' is an outsourced orthodontics SaaS platform for dental offices (HQ Washington DC/Dupont Circle), not a corporate owner/DSO of this practice -- consistent with the known Evenly Technologies placeholder-parent artifact documented elsewhere in this census"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched 'Melvin Boule DMD Plano IL dentist' and separately investigated the 'EVENLY ORTHODONTICS DUPONT' parent_company field. Dr. Melvin Boule, DMD runs his own solo practice, Boulé Dental, at 3910 Turner Ave -- own-name branding, no group, no real DSO/corporate parent. The Evenly reference is a Data-Axle artifact (Evenly is a third-party ortho-outsourcing vendor, not an owner) and was rejected as evidence.",
+   "searched": [
+    "\"Melvin Boule\" DMD Plano IL dentist",
+    "\"Evenly Orthodontics\" OR \"Evenly Technologies\" Dupont dental parent company"
+   ],
+   "intel": {
+    "website_url": "https://bouledental.com/",
+    "website_note": "Solo-practitioner site emphasizing a conservative, budget-conscious treatment philosophy.",
+    "services": ["cleanings", "teeth whitening", "fillings", "crowns", "bridges", "root canals"],
+    "provider_count_web": 1,
+    "provider_notes": "Dr. Melvin Boule, DMD -- solo owner-operator.",
+    "distinguishing_notes": "5.0-star rating reported by Healthgrades; currently accepting new patients.",
+    "sources": ["https://bouledental.com/", "https://www.healthgrades.com/dentist/dr-melvin-boule-xmhh6"]
+   }
+  }
+ ]
+}

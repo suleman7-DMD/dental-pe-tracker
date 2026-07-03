@@ -1,0 +1,406 @@
+{
+ "unit_id": "laneA_123",
+ "classifications": [
+  {
+   "location_id": "b9650a249ffc43a8",
+   "practice_name": "IRENE GULA DDS, PC",
+   "zip": "60646",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.cityedgedental.com/",
+    "https://www.cityedgedental.com/dr-irene-gula/",
+    "https://www.linkedin.com/in/irenegula/",
+    "https://www.yelp.com/biz/city-edge-dental-associates-chicago-3"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice's own site (cityedgedental.com) and LinkedIn confirm Dr. Irene Gula is the dentist-owner of City Edge Dental at 6304 N Nagle Ave, operating since 1993; the team page lists a second dentist, Dr. Vi Quan, at the same single site, matching provider_count=2. No corporate parent or DSO signal found.",
+   "searched": [
+    "Irene Gula DDS 6304 N Nagle Ave Chicago dentist",
+    "\"City Edge Dental\" Chicago dentists team owner"
+   ],
+   "intel": {
+    "website_url": "https://www.cityedgedental.com/",
+    "website_note": "Established practice site with team/doctor bio pages; serves Norwood Park/Jefferson Park/Niles/Norridge/Edison Park/Skokie since 1993.",
+    "services": ["bridges", "cleanings", "root canals", "pediatric consultation", "cosmetic dentistry"],
+    "provider_count_web": 2,
+    "provider_notes": "Dr. Irene Gula (owner, Northwestern Univ. grad 2000) and Dr. Vi Quan practice at this single location.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Dr. Gula speaks English, Spanish, Hindi, and Polish; practice cited a 4.68/5 rating (225 reviews, dentalplans.com aggregate, not confirmed as Google).",
+    "sources": [
+     "https://www.cityedgedental.com/dr-irene-gula/",
+     "https://www.linkedin.com/in/irenegula/",
+     "https://www.dentalplans.com/dentists/illinois/chicago/60634/dr-irene-gula-53090"
+    ]
+   }
+  },
+  {
+   "location_id": "68ff6b6d749ba177",
+   "practice_name": "Big City Techs",
+   "zip": "60646",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npiprofile.com/npi/1386650125",
+    "https://npiregistry.cms.hhs.gov/provider-view/1386650125",
+    "https://www.yelp.com/biz/busby-terrence-dds-chicago"
+   ],
+   "evidence_artifacts": [
+    "record_name_mismatch: source name 'Big City Techs' vs. federal NPI registry name 'Terrence Allen Busby DDS' for NPI 1386650125 (address+phone match exactly)"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The unit's name field ('Big City Techs') does not match the NPI: the CMS federal NPI registry and npiprofile both resolve NPI 1386650125 to Dr. Terrence Allen Busby DDS at this exact address and phone (773-774-9244). Aggregator listings show a single-location solo general dentist; a secondary search hinting at multiple suburban offices could not be corroborated with a specific address and is treated as unverified noise. Classified true_independent given the direct exact-match evidence, confidence held at medium pending the name discrepancy.",
+   "searched": [
+    "\"Big City Techs\" 6314 N Milwaukee Ave Chicago dental",
+    "NPI 1386650125 dentist",
+    "Terrence Busby DDS dentist Chicago 6314 Milwaukee",
+    "Terrence Busby DDS Chicago single practice or multiple offices"
+   ]
+  },
+  {
+   "location_id": "b17218b37046b4da",
+   "practice_name": "Sekowska Dental",
+   "zip": "60646",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.opencare.com/dentists/chicago-il/ks-dental-dr-katarzyna-sekowska-dds-24630093387c/",
+    "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60646/invite-katarzyna-sekowska-dds-10585"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Katarzyna Sekowska, DDS (branded KS Dental) confirmed solo at 5946 N Milwaukee Ave, Chicago 60646, exact phone match (773-763-7060). No group practice or corporate signal found.",
+   "searched": ["Sekowska Dental 5946 N Milwaukee Ave Chicago"],
+   "intel": {
+    "website_note": "Aggregator listing describes comprehensive general dentistry (no independent domain located in search).",
+    "services": ["bonding", "bridges/dentures", "cleaning", "crowns", "fillings", "implants", "nitrous sedation", "root canals", "sleep apnea treatment", "TMJ treatment", "extractions", "veneers", "whitening", "wisdom teeth removal"],
+    "distinguishing_notes": "Services offered in English and Polish.",
+    "sources": ["https://www.opencare.com/dentists/chicago-il/ks-dental-dr-katarzyna-sekowska-dds-24630093387c/"]
+   }
+  },
+  {
+   "location_id": "3a197d99538749ab",
+   "practice_name": "Poskozim Dental",
+   "zip": "60646",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://joyfuldentalcare.com/",
+    "https://www.opencare.com/dentists/chicago-il/dr-joy-poskozim-dds-pc-24630688242d/",
+    "https://www.yelp.com/biz/joyful-dental-care-chicago"
+   ],
+   "evidence_artifacts": [
+    "address_field_garbled: source 'address' value is literal text 'joyful dental care' rather than a street address; phone (773) 736-7767 matches the practice's own site exactly"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own-brand website (joyfuldentalcare.com) names Dr. Joy Poskozim, DDS, PC as founder/lead dentist of Joyful Dental Care (4116 W Peterson Ave, Chicago 60646) since 2006; phone matches this record exactly. Single location, no franchise or DSO affiliation found. Classified true_independent, confidence high despite the corrupted address field in source data.",
+   "searched": ["Poskozim Dental \"Joyful Dental Care\" Chicago"],
+   "intel": {
+    "website_url": "https://joyfuldentalcare.com/",
+    "website_note": "Full-service practice site established 2006; markets itself as the only fully ADA-compliant office space on Chicago's North Side.",
+    "services": ["cosmetic dentistry", "preventative dentistry", "oral appliances for sleep apnea", "dental laser therapy", "house calls for homebound patients"],
+    "provider_notes": "Dr. Joy V. Poskozim (owner) with staff Julienne Hong and Christian Caicedo (roles not specified as dentists in source material).",
+    "distinguishing_notes": "Only fully ADA-compliant office space on Chicago's North Side per own marketing; offers at-home visits for house-bound patients.",
+    "sources": ["https://joyfuldentalcare.com/", "https://www.yelp.com/biz/joyful-dental-care-chicago"]
+   }
+  },
+  {
+   "location_id": "bd8bfe78d74b8483",
+   "practice_name": "Skurie Dental",
+   "zip": "60646",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.toprankdental.com/samuel-skurie-general-dentistry-5834-n-milwaukee-ave-1",
+    "https://www.carecredit.com/doctor-locator/chicago-il/sam-skurie-dds-362cgj/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Samuel (Sam) Skurie, DDS confirmed solo general/family dentist at 5834 N Milwaukee Ave, exact phone match (773-763-5290). No group or DSO signal found.",
+   "searched": ["Skurie Dental 5834 N Milwaukee Ave Chicago dentist"],
+   "intel": {
+    "services": ["general/family/cosmetic dentistry", "veneers", "whitening", "Invisalign", "pediatric dentistry", "periodontics", "endodontics", "oral surgery", "dental implants", "sleep apnea treatment"],
+    "distinguishing_notes": "Dr. Skurie speaks Czech; practice offers telehealth and accepts most major health plans; 257 patient reviews cited by an aggregator (no explicit star average found).",
+    "sources": ["https://www.toprankdental.com/samuel-skurie-general-dentistry-5834-n-milwaukee-ave-1"]
+   }
+  },
+  {
+   "location_id": "93125a12fb40ae67",
+   "practice_name": "Kim Dental",
+   "zip": "60646",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-kim-ung-2jvn6"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Healthgrades lists Dr. Kim Ung, DDS at 4200 W Peterson Ave Ste 108, Chicago IL 60646, phone (773) 202-8222 -- exact address and phone match. Single-provider general practice, no corporate/DSO signal found.",
+   "searched": ["Kim Dental 4200 W Peterson Chicago dentist"]
+  },
+  {
+   "location_id": "895a5d0b4c3207ed",
+   "practice_name": "Rodriguez Dental",
+   "zip": "60646",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60646/invite-jose-rodriguez-dds-12443",
+    "https://www.healthgrades.com/dentist/dr-jose-rodriguez-y7fx7"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Jose Rodriguez, DDS confirmed solo general dentist at 6246 N Pulaski Rd Ste 2C, Chicago 60646, exact phone match (773-775-1500), accepting new patients. Distinguished from an unrelated same-surname 'Jose R. Rodriguez / Plaza St. Luke's' listing at a different address -- matched on this address, not name alone. No corporate/DSO signal found.",
+   "searched": ["Rodriguez Dental 6246 N Pulaski Rd Chicago dentist"]
+  },
+  {
+   "location_id": "9aa8e5974e12f480",
+   "practice_name": "DEVON DENTAL CLINIC,LTD",
+   "zip": "60646",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-halina-lech-2wk67",
+    "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60646/invite-halina-lech-dds-12913",
+    "https://www.yelp.com/biz/devon-dental-clinic-chicago"
+   ],
+   "evidence_artifacts": [
+    "closure_signal_conflict: Yelp tags the 'Devon Dental Clinic' business name CLOSED, but Healthgrades/DoctorsNetwork/DentalInsider/FindATopDoc all currently list the same address+phone as active/accepting new patients"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:LECH_HALINA",
+   "reasoning": "Devon Dental Clinic, Ltd is solo dentist Dr. Halina Lech's practice at 6259 N Milwaukee Ave (phone 773-631-6607). One Yelp listing tags the corporate name as CLOSED, but the majority of current aggregator listings (Healthgrades, DoctorsNetwork, DentalInsider, FindATopDoc) show the identical address/phone as active and accepting new patients. Weighing the majority signal, classified true_independent rather than closure_suspect; confidence held at medium given the conflicting Yelp tag.",
+   "searched": [
+    "\"Devon Dental Clinic\" 6259 N Milwaukee Ave Chicago Halina Lech",
+    "\"Devon Dental Clinic\" Chicago closed Halina Lech retired",
+    "Halina Lech dentist Chicago Google reviews 2026 open"
+   ],
+   "intel": {
+    "distinguishing_notes": "Healthgrades shows a 4.6/5 rating from 10 reviews (most recent dated 2021); not confirmed as a Google rating.",
+    "sources": ["https://www.healthgrades.com/dentist/dr-halina-lech-2wk67"]
+   }
+  },
+  {
+   "location_id": "e4343b92a05db6d7",
+   "practice_name": "ROMAN D MYCYK DDS & JAMES CIESCO DDS A PARTNERSHIP",
+   "zip": "60646",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://reviews.birdeye.com/mycyk-ciesco-146446469124135",
+    "https://www.practo.com/chicago/clinic/roman-d-mycyk-dds-james-ciesco-dds-a-partnership-chicago",
+    "https://npidb.org/organizations/dental_health/general-practice_1223g0001x/1013068980.aspx"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Confirmed as a two-dentist partnership (Dr. Roman Mycyk and Dr. James Ciesco) operating together at a single location, 6315 N Milwaukee Ave # 2, established 1989, phone matches exactly. No DSO/corporate parent found. Classified single_loc_group, confidence high.",
+   "searched": ["Mycyk Ciesco Dental 6315 N Milwaukee Ave Chicago dentist"],
+   "intel": {
+    "website_note": "Practice established 1989 per aggregator listing; no independent practice domain located in search.",
+    "services": ["cleanings", "crowns", "CAD/CAM restorations"],
+    "provider_count_web": 2,
+    "provider_notes": "Dr. Roman Mycyk and Dr. James Ciesco, general dentistry partnership.",
+    "distinguishing_notes": "Office hours Mon-Fri 9am-5pm; 6 patient reviews cited by Birdeye.",
+    "sources": ["https://reviews.birdeye.com/mycyk-ciesco-146446469124135"]
+   }
+  },
+  {
+   "location_id": "9780242db74f939e",
+   "practice_name": "Lech Dental",
+   "zip": "60646",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-halina-lech-2wk67",
+    "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60646/invite-halina-lech-dds-12913"
+   ],
+   "evidence_artifacts": [
+    "same_location_as_9aa8e5974e12f480: identical address (6259 N Milwaukee) and phone (773-631-6607) as 'DEVON DENTAL CLINIC,LTD' -- individual-NPI vs. org-NPI dual emission for one clinic"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:LECH_HALINA",
+   "reasoning": "Same physical practice, address, and phone as the 'DEVON DENTAL CLINIC,LTD' row -- this NPI is Dr. Halina Lech's individual billing record for the identical single-location solo practice (classic NPPES org+individual dual emission for one clinic). Same conflicting-Yelp-closed-tag caveat applies; majority of current listings show active/accepting patients. Classified true_independent, confidence medium.",
+   "searched": ["Halina Lech DDS Chicago dentist current practice 2026"]
+  },
+  {
+   "location_id": "3d0bc2a27efc3551",
+   "practice_name": "Kedzior Dental",
+   "zip": "60646",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-malgorzata-kedzior-3f4pl",
+    "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60646/invite-malgorzata-kedzior-dds-13020"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Malgorzata Kedzior, DDS confirmed solo general dentist at 6324 N Milwaukee Ave, exact phone match (773-774-4411). No group/DSO signal found.",
+   "searched": ["Kedzior Dental 6324 N Milwaukee Ave Chicago dentist"],
+   "intel": {
+    "services": ["cavity treatment", "teeth cleaning", "dental exams", "filling replacement/repair"],
+    "distinguishing_notes": "Offers telehealth services; described by patients as kid-friendly with prompt appointments; 4.0/5 rating on Sharecare (not confirmed as Google).",
+    "sources": ["https://www.healthgrades.com/dentist/dr-malgorzata-kedzior-3f4pl"]
+   }
+  },
+  {
+   "location_id": "2ff3e82d93b0cba6",
+   "practice_name": "Difranco Dental",
+   "zip": "60646",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60646/invite-linda-difranco-dmd-13160",
+    "https://www.dentalinsider.com/chicago/office/linda-a-difranco-481378"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Linda Difranco, DMD confirmed solo general/family dentist at 6200 N Hiawatha Ave Suite 650, Chicago, exact phone match (773-286-9700). Distinguished from the unrelated 'DiFranco Dental Specialists' periodontal practice in Park Ridge (different DiFranco, different city and specialty) by matching on this specific address. No corporate/DSO signal found.",
+   "searched": ["Difranco Dental 6200 N Hiawatha Ave Chicago dentist"],
+   "intel": {
+    "services": ["general dentistry", "family dentistry"],
+    "sources": ["https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60646/invite-linda-difranco-dmd-13160"]
+   }
+  },
+  {
+   "location_id": "6bb154cde3a7d4c0",
+   "practice_name": "MEDHAT DENTAL EXCELLENCE AND ASSOCIATES",
+   "zip": "60646",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://medhatdentalexcellence.com/",
+    "https://www.yelp.com/biz/medhat-dental-excellence-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own-domain site (medhatdentalexcellence.com) confirms Dr. Ramin A. Medhat, DDS as the practicing dentist at 6011 N Milwaukee Ave, exact phone match (773-774-4611). Despite 'and Associates' in the legal name and a registered EIN, no additional dentist or corporate parent was found on the site -- appears to be a single-dentist-owned high-volume practice. Classified true_independent, confidence high.",
+   "searched": ["Medhat Dental Excellence Ramin Medhat 6011 N Milwaukee Ave Chicago"],
+   "intel": {
+    "website_url": "https://medhatdentalexcellence.com/",
+    "website_note": "Full-service own-domain practice site with services, doctor bio, testimonials pages.",
+    "services": ["preventive dentistry", "restorative dentistry", "cosmetic dentistry", "reconstructive dentistry", "dental implants", "sedation dentistry", "Botox/cosmetic Botox", "TMJ treatment", "dermal fillers"],
+    "distinguishing_notes": "11 Yelp reviews; WebMD patient rating cited as 5/5 (not confirmed as Google).",
+    "sources": ["https://medhatdentalexcellence.com/", "https://www.yelp.com/biz/medhat-dental-excellence-chicago"]
+   }
+  },
+  {
+   "location_id": "726df85562c008b2",
+   "practice_name": "Piro Dental",
+   "zip": "60646",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://findadentist.ada.org/il/cook/chicago/general-practice/dr-ronnie-piro-1658339",
+    "https://opennpi.com/provider/1679010318"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Ronnie Piro confirmed solo general dentist (practicing as 'Smile Design Dental') at 6278 N Cicero Ave, exact phone match (773-202-9955). No corporate/DSO affiliation found. Classified true_independent, confidence high.",
+   "searched": ["Piro Dental 6278 N Cicero Ave Chicago dentist"],
+   "intel": {
+    "services": ["dental implants", "general dentistry"],
+    "distinguishing_notes": "Dr. Piro speaks Arabic and other languages; office offers Saturday hours; accepts Delta Dental PPO and Premier.",
+    "sources": ["https://opennpi.com/provider/1679010318", "https://www.carecredit.com/doctor-locator/chicago-il/smile-design-dental-prm552/"]
+   }
+  },
+  {
+   "location_id": "28c838f1ae9b56f3",
+   "practice_name": "BRAAM-HACKNEY P.C.",
+   "zip": "60646",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://mindfuldentalil.com/about-us/",
+    "https://mindfuldentalil.com/",
+    "https://braamdental.com/office-details",
+    "https://www.dentalplans.com/dentists/illinois/chicago/60659/dr-lee-braam-38180/"
+   ],
+   "evidence_artifacts": [
+    "owner_reach corroborated: same dentist (Lee Braam) confirmed practicing at two ZIPs (60646 this address, 60659 'Braam Dental'), matching ctx.owner_reach_zips exactly"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:BRAAM_LEE",
+   "reasoning": "Dr. Lee Braam, DMD owns and practices at two Chicago locations under his own name/brands: this address (6437 N Central Ave, now branded 'Mindful Dental,' formerly Braam-Hackney P.C.) and a second office, 'Braam Dental,' at 3334 W Peterson Ave (zip 60659) -- matching ctx.owner_reach_locations=2 across those exact two ZIPs. Both sites are dentist-owned with no corporate parent or DSO brand found. Classified dentist_multi (T3), confidence high.",
+   "searched": [
+    "\"Braam-Hackney\" dental 6437 N Central Ave Chicago Lee Braam",
+    "\"Braam Dental\" 3334 W Peterson Ave Chicago dentist owner"
+   ],
+   "intel": {
+    "website_url": "https://mindfuldentalil.com/",
+    "website_note": "Modern single-location practice site (rebranded from Braam-Hackney to Mindful Dental) with staff bios and patient-centered philosophy.",
+    "provider_notes": "Dr. Lee Braam, DMD, UIC College of Dentistry graduate and former adjunct faculty; directed a nonprofit dental program for marginalized Chicago communities for 7 years prior to private practice.",
+    "distinguishing_notes": "Staff of 2 dental assistants + 1 front administrator listed on site; owner also operates a second office ('Braam Dental') in zip 60659.",
+    "sources": ["https://mindfuldentalil.com/about-us/", "https://braamdental.com/office-details"]
+   }
+  },
+  {
+   "location_id": "ce05edf2b7a8625d",
+   "practice_name": "Family Dental",
+   "zip": "60646",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.checkbook.org/chicago-area/dentists/ratings/general-dentist/grandinetti-vickie-julie-1952526741"
+   ],
+   "evidence_artifacts": [
+    "npi_name_resolution: primary_npi 1952526741 resolves to Dr. Vickie Julie Grandinetti (generic 'Family Dental' is a DBA, not a chain brand)"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This record's primary_npi (1952526741) resolves via Chicago Consumers' Checkbook's NPI-keyed ratings page to Dr. Vickie Julie Grandinetti, a solo general dentist; no separate corporate registration or DSO signal was found beyond the generic 'Family Dental' DBA. Classified true_independent; confidence held at medium since only a single corroborating source was found for this specific NPI.",
+   "searched": [
+    "\"Family Dental\" 6322 N Cicero Ave Chicago dentist",
+    "NPI 1952526741 dentist Chicago"
+   ],
+   "intel": {
+    "distinguishing_notes": "Checkbook.org patient ratings (16 respondents, 81% 'superior overall') describe attentiveness to patient pain threshold and gentle hygienists.",
+    "sources": ["https://www.checkbook.org/chicago-area/dentists/ratings/general-dentist/grandinetti-vickie-julie-1952526741"]
+   }
+  }
+ ]
+}

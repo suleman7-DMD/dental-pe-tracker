@@ -1,0 +1,458 @@
+{
+ "unit_id": "laneA_117",
+ "classifications": [
+  {
+   "location_id": "c769b00959fcdaf7",
+   "practice_name": "PATRICIA CRISOSTOMO DMD PC",
+   "zip": "60640",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.opencare.com/dentists/chicago-il/dr-patricia-b-crisostomo-dmd-24630636745d/",
+    "https://www.yelp.com/biz/patricia-b-crisostomo-dmd-pc-chicago",
+    "https://www.healthgrades.com/dentist/dr-patricia-crisostomo-2lpdv"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched practice name + address; found her listed across CareCredit/OpenCare/Healthgrades/Yelp/Doctor's Network as a solo general dentist operating under the DBA 'Lawrence-Ashland Dental Care' at this exact address, with 20+ years in practice and a Philippines dental degree. No corporate parent, brand, or additional locations surfaced anywhere. Classified true_independent (T1) on strong, consistent solo-owner-operator evidence.",
+   "searched": [
+    "Patricia Crisostomo DMD dentist 1732 W Lawrence Ave Chicago"
+   ],
+   "intel": {
+    "website_note": "Directory listings (CareCredit, Yelp, OpenCare, Healthgrades) show a small solo general practice branded 'Lawrence-Ashland Dental Care', open Wed/Fri/Sat, with bilingual staff.",
+    "provider_notes": "Dr. Patricia Crisostomo, DMD, University of the East (Philippines) dental school grad, 20+ years practicing in Chicago & NW suburbs.",
+    "distinguishing_notes": "Bilingual staff; limited part-time schedule (Wed, Fri, Sat only).",
+    "sources": [
+     "https://www.opencare.com/dentists/chicago-il/dr-patricia-b-crisostomo-dmd-24630636745d/",
+     "https://www.yelp.com/biz/patricia-b-crisostomo-dmd-pc-chicago"
+    ]
+   }
+  },
+  {
+   "location_id": "3cee5bbb3560fda2",
+   "practice_name": "Feldman, Lawrence E DDS",
+   "zip": "60640",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-lawrence-feldman-3csml",
+    "https://www.denteldoc.com/location/?id=55537",
+    "https://www.yellowpages.com/chicago-il/mip/dr-lawrence-feldman-dds-11338409"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched name + address; multiple directories (Healthgrades, denTEL, YellowPages, WebMD) confirm Dr. Lawrence Feldman as a solo general dentist at 5549 N Broadway, in practice ~42 years (matches NPPES year_established 1974), no corporate affiliation or other locations found. Classified true_independent (T1).",
+   "searched": [
+    "Lawrence Feldman DDS dentist 5549 N Broadway Chicago"
+   ],
+   "intel": {
+    "website_note": "No independent practice website surfaced; directory listings show M-F 9-5 hours, one-hour teeth whitening service, 4.2/5 rating (5 reviews) on Healthgrades.",
+    "services": ["teeth whitening"],
+    "sources": [
+     "https://www.healthgrades.com/dentist/dr-lawrence-feldman-3csml",
+     "https://www.denteldoc.com/location/?id=55537"
+    ]
+   }
+  },
+  {
+   "location_id": "2498bbc43d47198a",
+   "practice_name": "Levy Dental",
+   "zip": "60640",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npiprofile.com/npi/1942517487/record",
+    "https://npidb.org/doctors/dental_health/dentist_122300000x/1942517487.aspx"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searched name+address and NPI 1942517487 directly. The NPI resolves to Dr. Shira Levy, DMD, but the registered address (5320 N Sheridan Rd Apt 2211) is a residential apartment unit, not a signed clinical storefront -- other results tie her actual clinical practice to Elements Dental Studio (Evanston) and a separate personal site. Insufficient evidence this ZIP 60640 address is an operating dental office distinct from a billing/mailing registration, so declined to guess an ownership tier.",
+   "searched": [
+    "Levy Dental 5320 N Sheridan Rd Chicago",
+    "\"Levy Dental\" NPI 1942517487 Chicago Sheridan"
+   ]
+  },
+  {
+   "location_id": "68ee57cb85d0f037",
+   "practice_name": "KAPIL KELLA DDS PC",
+   "zip": "60640",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.lakeshoredentalstudio.com/about-us/",
+    "https://www.healthgrades.com/dentist/dr-kapil-kella-85eez",
+    "https://www.yelp.com/biz/lakeshore-dental-studio-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched name + address; confirmed Dr. Kapil Kella owns/operates 'Lakeshore Dental Studio' at 5505 N Clark St (exact address match), a single-location practice with a second associate dentist (2 providers per NPPES small_group). A same-named 'Printers Row Dental Studio' surfaced but a follow-up search confirmed it is a separate practice owned by Dr. Kaori Ema -- ruled out as a name collision. No DSO/corporate signal found. Classified single_loc_group (T2).",
+   "searched": [
+    "Kapil Kella DDS dentist Clark St Chicago 60640",
+    "\"Kapil Kella\" \"Printers Row Dental Studio\" owner"
+   ],
+   "intel": {
+    "website_url": "https://www.lakeshoredentalstudio.com/about-us/",
+    "website_note": "Lakeshore Dental Studio's own about page profiles Dr. Kella; site also markets pediatric dentistry services.",
+    "provider_notes": "Dr. Kapil Kella, DDS -- Univ. of Detroit Mercy dental school, GPR residency at Advocate Illinois Masonic Medical Center, Chicago.",
+    "distinguishing_notes": "Practice markets itself as a 'studio' concept offering preventive/restorative/cosmetic care plus financing options.",
+    "sources": [
+     "https://www.lakeshoredentalstudio.com/about-us/",
+     "https://www.healthgrades.com/dentist/dr-kapil-kella-85eez"
+    ]
+   }
+  },
+  {
+   "location_id": "d97911df002def64",
+   "practice_name": "MITAL SPATZ DDS PC",
+   "zip": "60640",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://toothbudschicago.com/dr-mital-spatz/",
+    "https://findadentist.ada.org/dentists/dr-mital-spatz-chicago-0038V00002yk7XIQAY-a1C8V00000kYhnKUAS"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:tooth_buds_pediatric_dentistry",
+   "reasoning": "Searched name+address, then fetched the practice's own site (toothbudschicago.com). Confirmed Dr. Mital Spatz, a board-certified pediatric dentist, owns/leads 'Tooth Buds Pediatric Dentistry,' a two-location practice (this Foster Ave/Lakeview address plus a Forest Park office) staffing several named pediatric dentists. Dentist-owned, multi-location, no corporate parent or PE signal found -- classified dentist_multi (T3).",
+   "searched": [
+    "Mital Spatz DDS dentist Foster Ave Chicago"
+   ],
+   "intel": {
+    "website_url": "https://toothbudschicago.com/dr-mital-spatz/",
+    "website_note": "Modern pediatric-focused site; two offices (Lakeview/Uptown Chicago + Forest Park) staffed by multiple named pediatric dentists (Dhwani Patel, Justin Escobar, Saloni Patel).",
+    "services": ["pediatric dentistry"],
+    "provider_notes": "Dr. Mital Spatz is board-certified in pediatric dentistry; consulting pediatric dentist for the cleft/craniofacial and plastic surgery teams at Shriners Children's Chicago; affiliated with Advocate Illinois Masonic Medical Center.",
+    "distinguishing_notes": "Positions visits as 'fun and positive' for kids; multi-provider team model rather than solo.",
+    "sources": ["https://toothbudschicago.com/dr-mital-spatz/"]
+   }
+  },
+  {
+   "location_id": "bb6d4fb9d7b95ca4",
+   "practice_name": "COMPASS DENTAL, P.C.",
+   "zip": "60640",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.compassdentalcare.com/meet-our-team",
+    "https://www.compassdentalcare.com/",
+    "https://www.yelp.com/biz/compass-dental-at-lakeview-chicago"
+   ],
+   "evidence_artifacts": [
+    "ein_reach_locations=2 for EIN 311827050 per NPPES ctx"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:PRUSA_BRANDON",
+   "reasoning": "Searched name+AO, fetched the practice's own 'meet our team' page, and searched practice history. Confirmed 'Compass Dental' operates at least 3 Chicago-area locations (this address plus Lakeview and Rogers Park offices) staffed by named DMD dentists (Fairbanks, Magee); no corporate-parent, PE, or non-dentist-controller language found anywhere on the practice's own pages. The NPI's authorized official is Brandon Prusa DDS (an earlier team dentist here), consistent with a small dentist-run multi-office group rather than a DSO. Classified dentist_multi (T3) at medium confidence since explicit ownership language (vs. simple multi-site employment) was not found and a fourth 'Deerfield' location mentioned in one snippet was not independently corroborated.",
+   "searched": [
+    "Compass Dental Brandon Prusa dentist 4413 N Clark St Chicago",
+    "\"Compass Dental\" Chicago Lakeview Lincoln Square Rogers Park Deerfield owner founder history"
+   ],
+   "intel": {
+    "website_url": "https://www.compassdentalcare.com/",
+    "website_note": "Group practice site lists general teeth cleanings/fillings/whitening, cosmetic dentistry, orthodontic treatment, and dental implants across its Chicago-area locations.",
+    "services": ["general dentistry", "teeth whitening", "cosmetic dentistry", "orthodontics", "dental implants"],
+    "sources": [
+     "https://www.compassdentalcare.com/",
+     "https://www.compassdentalcare.com/meet-our-team"
+    ]
+   }
+  },
+  {
+   "location_id": "bd13f919ca53afbc",
+   "practice_name": "WELLNESS DENTAL CARE",
+   "zip": "60640",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://wellnessdentalchi.com/",
+    "https://wellnessdentalchi.com/about/",
+    "https://www.yelp.com/biz/wellness-dental-care-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched name+address; found the practice's own site (wellnessdentalchi.com) branding it a single-location 'Family Dentist in Ravenswood' at this exact address, with Dr. Jongnok J. Lee as the treating dentist. No other locations, corporate parent, or DSO brand found anywhere. Classified true_independent (T1).",
+   "searched": [
+    "Wellness Dental Care 4759 N Ashland Ave Chicago dentist"
+   ],
+   "intel": {
+    "website_url": "https://wellnessdentalchi.com/",
+    "website_note": "Own-brand family-dentistry site (wellnessdentalchi.com) with hours, services, and contact pages; positions itself as a full-service family practice in Ravenswood/Uptown.",
+    "services": ["general dentistry", "restorative", "cosmetic", "pediatric dentistry"],
+    "provider_notes": "Dr. Jongnok J. Lee is the treating dentist.",
+    "sources": [
+     "https://wellnessdentalchi.com/",
+     "https://wellnessdentalchi.com/about/"
+    ]
+   }
+  },
+  {
+   "location_id": "56e77b1a53f5ef7b",
+   "practice_name": "Juniper Dentistry",
+   "zip": "60640",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.juniperdentistry.com/",
+    "https://www.juniperdentistry.com/about-us/meet-our-team/",
+    "https://ravenswoodchicago.org/juniper-dentistry/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched name+address; the practice's own site (juniperdentistry.com) and a Greater Ravenswood Chamber spotlight confirm a single-location, women-owned general/cosmetic practice led by Dr. Jessica Rhodes at this exact suite. No other offices, corporate parent, or DSO brand found. Classified true_independent (T1).",
+   "searched": [
+    "Juniper Dentistry 4555 N Ravenswood Ave Chicago dentist"
+   ],
+   "intel": {
+    "website_url": "https://www.juniperdentistry.com/",
+    "website_note": "Own site markets a calm, low-anxiety patient experience; noted as women-owned by a local chamber-of-commerce profile.",
+    "provider_notes": "Dr. Jessica Rhodes is the practice's dentist.",
+    "distinguishing_notes": "Women-owned; on-street parking with free parking passes; accepts credit cards/insurance/Wi-Fi.",
+    "sources": [
+     "https://www.juniperdentistry.com/",
+     "https://ravenswoodchicago.org/juniper-dentistry/"
+    ]
+   }
+  },
+  {
+   "location_id": "06b1a8eaf2654e4d",
+   "practice_name": "Solomon Dental",
+   "zip": "60640",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npino.com/dentist/1275962300-dr.-richard-solomon/",
+    "https://www.healthgrades.com/dentist/dr-richard-solomon-ybppjhz"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched name+address; multiple provider directories (NPI lookup, Healthgrades, WebMD, Vitals) confirm Dr. Richard Solomon, DDS, as a solo general dentist at this exact apartment-suite address (908 W Margate Ter Apt 1E), Illinois license 019024523. An unrelated same-surname company 'Solomon Dental Management' also surfaced but shows no address/name overlap with this NPI and was excluded as noise. No corporate/DSO signal found. Classified true_independent (T1) at medium confidence -- no dedicated practice website was located to corroborate beyond directories.",
+   "searched": [
+    "Solomon Dental 908 W Margate Ter Chicago dentist"
+   ]
+  },
+  {
+   "location_id": "0884ff9f2ce7934f",
+   "practice_name": "Braam Dental",
+   "zip": "60640",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://braamdental.com/office-details",
+    "https://www.healthgrades.com/dentist/dr-lee-braam-xym8nv5",
+    "https://findadentist.ada.org/dentists/dr-lee-s-braam-chicago-0038V00002yjo2ZQAQ-a1C8V00000kYXy8UAG"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched name+address; the practice's own site (braamdental.com) plus ADA Find-a-Dentist and Healthgrades confirm Dr. Lee S. Braam, DMD (Univ. of Illinois at Chicago dental grad), as the solo dentist at this single Lawrence Ave address. No other locations or corporate affiliation found. Classified true_independent (T1).",
+   "searched": [
+    "Braam Dental 1015 W Lawrence Ave Chicago dentist"
+   ],
+   "intel": {
+    "website_url": "https://braamdental.com/office-details",
+    "website_note": "Own-brand site with an office-details page; notes free on-site parking lot and by-request/same-day scheduling.",
+    "provider_notes": "Dr. Lee S. Braam, DMD, University of Illinois at Chicago dental school grad.",
+    "insurance_note": "Works with any PPO plan and offers CareCredit financing.",
+    "sources": ["https://braamdental.com/office-details"]
+   }
+  },
+  {
+   "location_id": "9df9c9dcb4c5f555",
+   "practice_name": "GARY L. MONSON, D.D.S., P.C.",
+   "zip": "60640",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.balmoraldds.com/meet-us/",
+    "https://business.andersonville.org/list/member/gary-l-monson-dds-pc-balmoral-dental-6109",
+    "https://www.bbb.org/us/il/chicago/profile/dental-services/gary-l-monson-dds-pc-balmoral-dental-0654-1000138660"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched name+address; the practice's own site (balmoraldds.com), an Andersonville Chamber listing, and a BBB profile confirm Dr. Gary L. Monson as the solo dentist/owner of 'Balmoral Dental' at this exact Broadway address, practicing 30+ years. No other locations or corporate signal found. Classified true_independent (T1).",
+   "searched": [
+    "Gary Monson DDS 5358 N Broadway Chicago dentist"
+   ],
+   "intel": {
+    "website_url": "https://www.balmoraldds.com/meet-us/",
+    "website_note": "Own site 'Meet Us' page gives a personal bio; practice branded 'Balmoral Dental' in Andersonville/Edgewater.",
+    "provider_notes": "Dr. Gary Monson -- Univ. of Nebraska-Lincoln (BS), Univ. of Nebraska Medical Center (DDS); Chicago resident since 1983; member ADA/Illinois State Dental Society/Chicago Dental Society.",
+    "distinguishing_notes": "30+ years serving the neighborhood; day-varying part-time-style hours, Saturday by appointment only.",
+    "sources": [
+     "https://www.balmoraldds.com/meet-us/",
+     "https://business.andersonville.org/list/member/gary-l-monson-dds-pc-balmoral-dental-6109"
+    ]
+   }
+  },
+  {
+   "location_id": "49d9c36c9fe9abb8",
+   "practice_name": "SECURE DENTAL X PLLC",
+   "zip": "60640",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://secure-dental.com/locations/foster-ave/",
+    "https://secure-dental.com/meet-our-doctors/",
+    "https://securedentalgroup.com/leadership/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:secure_dental_group",
+   "reasoning": "Searched name+AO+address, then searched the network's footprint. Confirmed via the group's own site that Secure Dental is owned/led by Dr. Nazish Jafri (CEO/owner) and Dr. Noel Liu, but the brand spans roughly 11 offices across Illinois, Indiana, and Iowa -- a network reach far above the 10-location threshold. Per protocol, withholding a single-location tier for one-network review rather than deciding this address in isolation. R4_protected_network:Secure Dental Group (Jafri/Liu, ~11 IL/IN/IA offices).",
+   "searched": [
+    "Secure Dental X PLLC Nazish Jafri Foster Ave Chicago dentist",
+    "Secure Dental Jafri Liu Chicago how many locations Illinois Indiana"
+   ],
+   "intel": {
+    "website_url": "https://secure-dental.com/locations/foster-ave/",
+    "website_note": "Multi-location dental implant/cosmetic brand's own location page for this Foster Ave office.",
+    "services": ["dental implants (Single, All-On-X)", "veneers", "clear aligners", "emergency dentistry"],
+    "sources": [
+     "https://secure-dental.com/locations/foster-ave/",
+     "https://secure-dental.com/meet-our-doctors/"
+    ]
+   }
+  },
+  {
+   "location_id": "e91aa173076b6cad",
+   "practice_name": "Appleby Dental",
+   "zip": "60640",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://dentologie.com/our-locations/chicago/andersonville",
+    "https://dentologie.com/locations/chicago",
+    "https://www.chicagobusiness.com/health-care/dentologie-dentist-office-expands-chicago-seattle/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:dentologie",
+   "reasoning": "Searched name+address; found this exact address (5255 N Clark St) now operates as 'Dentologie - Andersonville,' one of Dentologie's Chicago offices per Dentologie's own locator (the NPI name 'Appleby Dental'/Dr. Reid Appleby appears to be a prior occupant or associate at this address, superseded by the Dentologie rebrand). A follow-up search confirmed Dentologie is a VC-backed, non-dentist-fronted (former Redbox CEO Gregg Kaplan) urban dental brand with roughly 10-13 Chicago offices plus a new Seattle expansion -- well above the 10-location protected-network threshold. Withholding a per-location tier per protocol. R4_protected_network:Dentologie (Kaplan-backed, 10+ Chicago offices + Seattle expansion).",
+   "searched": [
+    "Appleby Dental 5255 N Clark St Chicago dentist",
+    "Dentologie dental Chicago Seattle founder owner private equity DSO"
+   ],
+   "intel": {
+    "website_url": "https://dentologie.com/our-locations/chicago/andersonville",
+    "website_note": "Modern urban dental brand's own locator page for this Andersonville office; company markets itself around convenient online booking and a redesigned patient experience.",
+    "sources": [
+     "https://dentologie.com/our-locations/chicago/andersonville",
+     "https://dentologie.com/locations/chicago"
+    ]
+   }
+  },
+  {
+   "location_id": "35405927a86cb70d",
+   "practice_name": "SAMULIO CVETKOVIC PLLC",
+   "zip": "60640",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://nexadentalclinic.com/samuilo-cvetkovic-dds/",
+    "https://www.yelp.com/biz/nexa-dental-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched name+address; the practice's own site (nexadentalclinic.com) confirms 'Nexa Dental' is a single boutique office led by Dr. Samuilo (Sam) Cvetkovic at this exact Lawrence Ave address, with implant-focused Loma Linda training. A different, unrelated 'Stevan/Steven Cvetkovic DDS' practice at a separate Lincoln Ave address surfaced but was ruled out as a family-name collision, not this address. No corporate/DSO signal found. Classified true_independent (T1).",
+   "searched": [
+    "Samulio Cvetkovic dentist 1821 W Lawrence Ave Chicago"
+   ],
+   "intel": {
+    "website_url": "https://nexadentalclinic.com/samuilo-cvetkovic-dds/",
+    "website_note": "Own-brand boutique-practice site ('Nexa Dental') emphasizing implant dentistry and aesthetic smile design.",
+    "services": ["dental implants", "fully guided implant surgery", "cosmetic/aesthetic smile design", "restorative dentistry"],
+    "provider_notes": "Dr. Sam Cvetkovic -- Loma Linda University School of Dentistry grad, completed Loma Linda Implant Continuum.",
+    "sources": ["https://nexadentalclinic.com/samuilo-cvetkovic-dds/"]
+   }
+  },
+  {
+   "location_id": "1185bdfc23801413",
+   "practice_name": "YUNEZ DENTAL & ASSOCIATES, P.C.",
+   "zip": "60641",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/yunez-dental-chicago",
+    "https://www.doctible.com/locations/yunez-dental",
+    "https://www.carecredit.com/doctor-locator/oakbrook-terrace-il/yunez-dental-and-associates-pc-nwh979/"
+   ],
+   "evidence_artifacts": [
+    "owner_reach_locations=2 (zips 60126 Elmhurst + 60641 Chicago) per NPPES ctx, matching web-found 2-office history"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:yunez_dental",
+   "reasoning": "Searched name+AO+address; directory listings show 'Yunez Dental' led by Dr. Samira Yunez, established 2003 with a first office in Elmhurst, IL, expanding to this Chicago (Pulaski Rd) location in 2013 -- a two-location, dentist-founded group matching NPPES' owner_reach_locations=2 (zips 60126 Elmhurst + 60641 Chicago). No corporate parent, PE, or DSO brand found. Classified dentist_multi (T3) at medium confidence -- the NPI's listed authorized official (Sylvia Galindo) doesn't obviously match the eponymous owner-dentist name, though this is common for practice-manager AOs and doesn't contradict the dentist-ownership finding.",
+   "searched": [
+    "Yunez Dental Associates Sylvia Galindo 3204 N Pulaski Rd Chicago"
+   ],
+   "intel": {
+    "website_note": "Directory pages (Yelp, Doctible, CareCredit) show hours M-Th 10-6, Fri/Sat 9-4; practice positions itself with 'state of the art technology' since the 2013 Chicago expansion.",
+    "provider_notes": "Founded 2003 by Dr. Samira Yunez, first office in Elmhurst, IL.",
+    "sources": [
+     "https://www.yelp.com/biz/yunez-dental-chicago",
+     "https://www.doctible.com/locations/yunez-dental"
+    ]
+   }
+  },
+  {
+   "location_id": "897b160169b31134",
+   "practice_name": "EAST DENTAL LTD",
+   "zip": "60641",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-ashraf-ahmad-xkvd2",
+    "https://www.dentalplans.com/dentists/illinois/chicago/60641/dr-ashraf-ahmad-42104/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched name+address; provider directories (Healthgrades, DentalPlans, WebMD, npino) confirm Dr. Ashraf Ahmad, DDS, as the solo general dentist operating 'East Dental Ltd' at this exact Cicero Ave address since 1995 (matches NPPES year_established), IL license 019026287. No other locations, corporate parent, or DSO brand found. Classified true_independent (T1) at medium confidence -- no dedicated practice website located to corroborate beyond directories.",
+   "searched": [
+    "East Dental Ltd Ashraf Ahmad 3916 N Cicero Ave Chicago dentist"
+   ]
+  }
+ ]
+}

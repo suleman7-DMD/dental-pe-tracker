@@ -123,7 +123,7 @@
    "confidence": "medium",
    "status": "classified",
    "network_id": "ao:NGUYEN_THU",
-   "reasoning": "Web sources confirm Dr. Thu Nguyen, DDS is the President/authorized official of Rapha Dental Care (2913 N Narragansett, 60634) and also operates a second practice at 5324 N Elston Ave, 60630 -- a dentist personally owning two general-dentistry offices, with no corporate brand or non-dentist controller found. Fits dentist_multi rather than a DSO tier.",
+   "reasoning": "Web sources confirm Dr. Thu Nguyen, DDS is the President/authorized official of Rapha Dental Care (2913 N Narragansett, 60634) and also operates a second practice at 5324 N Elston Ave, 60630 -- a dentist personally owning two general-dentistry offices, with no corporate brand or non-dentist controller found. Fits dentist_multi rather than a DSO tier, consistent with our internal owner-reach data spanning multiple ZIPs under this AO.",
    "searched": ["\"Rapha Dental Care\" Chicago Narragansett \"Thu Nguyen\""],
    "intel": {
     "website_note": "No standalone practice website found; presence via directories (denTEL, CareCredit, Practo).",
@@ -196,44 +196,44 @@
    "confidence": "medium",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Directory listings confirm Dr. Alan D. Quirarte, DMD (UIC College of Dentistry grad) practices at 5621 W Montrose Ave under the trade name 'EZ Dental,' matching the unit's 2-provider small_group classification at one location. No corporate signal or brand affiliation found.",
+   "reasoning": "Directory listings confirm Dr. Alan D. Quirarte, DMD (UIC College of Dentistry grad) practices at 5621 W Montrose Ave under the trade name 'EZ Dental,' matching the unit's 2-provider small_group classification at one location. Business signage varies across aggregators (Z Dental Care/EZ Dental/Secure Dental) but the same dentist and phone number persist throughout, indicating stale directory data rather than a DSO takeover. No corporate signal or brand affiliation found.",
    "searched": ["\"Quirarte Dental\" Chicago Montrose"],
    "intel": {
     "provider_notes": "Dr. Alan Quirarte, DMD, grew up in Chicago, BS in Biology from UIC, DMD from UIC College of Dentistry.",
-    "distinguishing_notes": "Practice appears to trade under the name 'EZ Dental' rather than 'Quirarte Dental'.",
+    "distinguishing_notes": "Practice appears to trade under the name 'EZ Dental' rather than 'Quirarte Dental'; business signage inconsistent across directories.",
     "sources": ["https://www.dentalplans.com/dentists/illinois/chicago/60634/dr-alan-quirarte-110642/"]
    }
   },
   {
    "location_id": "549f761ca8929ce5",
-   "practice_name": "MICHAEL A. LUCKETT, DMD & ASSOCIATES (WESTERN",
+   "practice_name": "MICHAEL A. LUCKETT, DMD & ASSOCIATES (WESTERN)",
    "zip": "60636",
    "assigned_tier": "branded_dso",
    "pe_backed": true,
-   "evidence_basis": "locator",
+   "evidence_basis": "web_verified",
    "evidence_urls": [
-    "https://www.dentalworks.com/offices/illinois/",
+    "https://doctor.webmd.com/practice/dentalworks-4fe4a94e-0303-4f51-bc05-2ef116e5ce81",
     "https://www.yelp.com/biz/dentalworks-chicago-2",
     "https://www.newmountaincapital.com/portfolio/sonrava-health/",
     "https://www.sonrava.com/brands"
    ],
-   "evidence_artifacts": ["brand: DentalWorks (Sonrava Health family) at exact address 6153 S Western Ave"],
-   "confidence": "high",
+   "evidence_artifacts": ["brand: DentalWorks (Sonrava Health family) at exact address 6153 S Western Ave, phone (773) 863-0129"],
+   "confidence": "medium",
    "status": "classified",
    "network_id": "brand:dentalworks_sonrava",
-   "reasoning": "6153 S Western Ave currently operates as a 'DentalWorks' branded office (Yelp listing, denTEL location page, and DentalWorks' own Illinois offices locator all show this exact address). DentalWorks is a Sonrava Health brand (sonrava.com/brands), and Sonrava Health is a documented New Mountain Capital private-equity portfolio company -- so this is a branded, PE-backed DSO location, not the independent solo/associates practice its NPI name implies.",
+   "reasoning": "Independent directories (WebMD, Yelp) confirm 6153 S Western Ave / (773) 863-0129 currently operates under the 'DentalWorks' brand name, not the NPI record's registered solo/associates name. DentalWorks is confirmed a Sonrava Health brand (sonrava.com/brands), and Sonrava Health is a documented New Mountain Capital private-equity portfolio company (sole PE investor since 2012) -- so this is a branded, PE-backed DSO location. Note: DentalWorks' own current Illinois offices locator page did not list this exact address when checked (possible pagination gap, JS-rendered listing not captured, or recent change), so confidence is medium rather than high despite two independent third-party confirmations.",
    "searched": ["\"Michael Luckett\" DMD dentist Chicago Western Ave", "DentalWorks Heartland Dental \"6153 S Western\" Chicago locations", "\"DentalWorks\" \"parent company\" dental support organization", "Sonrava Health private equity owner New Mountain Capital"],
    "intel": {
-    "provider_notes": "Dr. Michael Luckett, DMD earned his degree at Southern Illinois University (1985); listed team member on dentalworks.com; specialties include root canals and oral surgery; primary office referenced in Crestwood, IL.",
-    "distinguishing_notes": "DentalWorks brand spans roughly 110+ offices across 13 states per Sonrava's own materials; this Western Ave office is one of at least 15 locations Dr. Luckett is associated with under the brand.",
-    "sources": ["https://www.dentalworks.com/team-member/michael-luckett/", "https://www.dentalworks.com/offices/illinois/"]
+    "provider_notes": "Dr. Michael Luckett, DMD earned his degree at Southern Illinois University (1985); listed team member on dentalworks.com; specialties include root canals and oral surgery.",
+    "distinguishing_notes": "Practice operates under the DentalWorks brand (Sonrava Health) though the federal NPI legal name retains the founding dentist's name.",
+    "sources": ["https://www.dentalworks.com/team-member/michael-luckett/", "https://doctor.webmd.com/practice/dentalworks-4fe4a94e-0303-4f51-bc05-2ef116e5ce81"]
    }
   },
   {
    "location_id": "0cde6f6893dc16c8",
    "practice_name": "Abdullah Dental",
    "zip": "60636",
-   "assigned_tier": "dentist_multi",
+   "assigned_tier": "true_independent",
    "pe_backed": false,
    "evidence_basis": "web_verified",
    "evidence_urls": [
@@ -243,12 +243,13 @@
    "evidence_artifacts": [],
    "confidence": "medium",
    "status": "classified",
-   "network_id": "ao:ABDULLAH_LARRY",
-   "reasoning": "Dr. Larry R. Abdullah, DDS is confirmed operating the 7013 S Western Ave practice as well as a second Chicago office at 8036 S Western Ave (60620) and a third in Lawrenceville, IL -- a dentist personally owning multiple general-dentistry offices with no corporate brand or non-dentist controller found, fitting dentist_multi.",
-   "searched": ["\"Abdullah Dental\" 7013 S Western Chicago"],
+   "network_id": null,
+   "reasoning": "Dr. Larry R. Abdullah, DDS practices under his own name at this exact address/phone (773-476-0600). A businessyab.com listing cites an '8036 S Western Ave' address but carries the identical phone number, which reads as an aggregator geocoding artifact for this same office rather than a genuine second location. Aggregators also show him associated with numerous out-of-state/out-of-area listings (including as an associate at an Aspen Dental office in Danville, IL), which looks like an itinerant multi-employer NPI credentialing footprint rather than ownership of a chain. No confirmed distinct second address under his own ownership and no DSO/corporate branding at this address -- classified true_independent.",
+   "searched": ["\"Abdullah Dental\" 7013 S Western Chicago", "\"Larry Abdullah\" DDS dentist multiple offices owner Chicago"],
    "intel": {
     "insurance_note": "Accepts Medicare and Medicaid plus Aetna, Dental Network of America, and Total Dental Administrators per dentalplans.com.",
     "accepts_medicaid": true,
+    "distinguishing_notes": "Spanish-speaking office per directory listing.",
     "sources": ["https://www.dentalplans.com/dentists/illinois/chicago/60636/dr-larry-abdullah-59640/"]
    }
   },
@@ -326,10 +327,11 @@
    "confidence": "medium",
    "status": "classified",
    "network_id": "ao:SHETH_NIKET",
-   "reasoning": "Dr. Niket Sheth, DDS practices at 6230 S Ashland Ave Ste C (60636) and a second office at 7702 Cass Ave, Darien, IL 60561, per dentalplans.com and zocdoc -- a dentist personally owning two general-dentistry locations with no corporate brand found. A same-surname practice ('Sheth Shamkant DDS' at the same Ashland address and 'Sheth Dental & Associates' elsewhere) appears related but was not folded into this determination since it could not be confirmed as the same owner.",
+   "reasoning": "Dr. Niket Sheth, DDS (matches our AO and EIN cluster) practices at 6230 S Ashland Ave Ste C (60636) and a second office at 7702 Cass Ave, Darien, IL 60561, per dentalplans.com and zocdoc -- a dentist personally owning two general-dentistry locations with no corporate brand found. A same-surname practice ('Sheth Shamkant DDS' at the same Ashland address and 'Sheth Dental & Associates' elsewhere) appears related but was not folded into this determination since it could not be confirmed as the same owner.",
    "searched": ["\"Niket Sheth\" DDS dentist Chicago Ashland"],
    "intel": {
-    "provider_notes": "DDS from NYU College of Dentistry; General Practice Residency at Our Lady of Mercy Hospital, Bronx NY; undergrad UIUC 1997; Masters in Diagnostic Radiology, Chicago Medical School; speaks English and French.",
+    "provider_notes": "DDS from NYU College of Dentistry; General Practice Residency at Our Lady of Mercy Hospital, Bronx NY; undergrad UIUC 1997; Masters in Diagnostic Radiology, Chicago Medical School; member ICOI, Dawson Academy alumni, ADA; speaks English and French.",
+    "distinguishing_notes": "Advanced implant-related professional affiliations (ICOI, Dawson Academy) beyond typical GP credentials.",
     "sources": ["https://www.dentalplans.com/dentists/illinois/darien/60561/dr-niket-sheth-282265", "https://www.zocdoc.com/dentist/niket-sheth-dds-66012"]
    }
   },
@@ -345,8 +347,8 @@
    "confidence": "low",
    "status": "undetermined",
    "network_id": null,
-   "reasoning": "Only a basic directory listing (Vitadox) confirms the practice exists at 5500 S Damen Ave with no ownership detail or website found. A federal court document referencing a 'Faizan Mir' in an Illinois Medicaid fraud matter surfaced in search but could not be confirmed as the same individual as this NPI's authorized official, so it was not used as evidence either way.",
-   "searched": ["\"Dentum Dental\" Chicago Damen \"Faizan Mir\""]
+   "reasoning": "Only a basic directory listing (Vitadox) confirms the practice exists at 5500 S Damen Ave with no ownership detail or website found, and a different phone number than our record appears on some aggregators alongside a second business name ('Dental Health Care Center') at the same address, suggesting possible address turnover/aggregator staleness. No search result reliably ties the AO name 'Faizan Mir' to this practice. Insufficient reliable web evidence to assign an ownership tier.",
+   "searched": ["\"Dentum Dental\" Chicago Damen \"Faizan Mir\"", "\"Faizan Mir\" DDS OR DMD dentist Chicago"]
   }
  ]
 }

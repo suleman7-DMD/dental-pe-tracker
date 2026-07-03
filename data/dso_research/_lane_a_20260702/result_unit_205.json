@@ -13,11 +13,13 @@
     "https://1stfamilydental.com/team/dr-michael-fakhouri/",
     "https://1stfamilydental.com/locations/"
    ],
-   "evidence_artifacts": ["network_size_15_locations_chicagoland"],
+   "evidence_artifacts": [
+    "network_size_15_locations_chicagoland"
+   ],
    "confidence": "medium",
    "status": "undetermined",
    "network_id": "brand:1st_family_dental",
-   "reasoning": "1st Family Dental's own site confirms Dr. Michael Fakhouri practices at 504-506 Waverly Dr, Elgin — this is '1st Family Dental of Elgin', part of a 15-location Chicagoland chain (7 Chicago + 8 suburban offices) founded in 1996 by Loyola-trained prosthodontist Dr. Ghassan Abboud, a licensed dentist. Because the network spans 10+ locations, per protocol this is held for a single one-network-one-decision review rather than classified here (R4_protected_network:1st_Family_Dental).",
+   "reasoning": "1st Family Dental's own site confirms Dr. Michael Fakhouri practices at 504-506 Waverly Dr, Elgin \u2014 this is '1st Family Dental of Elgin', part of a 15-location Chicagoland chain (7 Chicago + 8 suburban offices) founded in 1996 by Loyola-trained prosthodontist Dr. Ghassan Abboud, a licensed dentist. Because the network spans 10+ locations, per protocol this is held for a single one-network-one-decision review rather than classified here (R4_protected_network:1st_Family_Dental).",
    "searched": [
     "1st Family Dental Elgin IL Waverly Dr Fakhouri",
     "\"1st Family Dental\" chain owner DSO private equity Illinois",
@@ -28,7 +30,10 @@
     "website_note": "Multi-location chain site with dedicated per-office pages; professionally built, lists provider bios and full service menu.",
     "provider_notes": "Dr. Michael Fakhouri, DMD (Midwestern University College of Dental Medicine); network founder Dr. Ghassan Abboud is a Loyola-trained prosthodontist/implant specialist.",
     "distinguishing_notes": "Office has operated in Elgin since 2006 as part of a 15-office Chicagoland network.",
-    "sources": ["https://1stfamilydental.com/locations/elgin/", "https://1stfamilydental.com/locations/"]
+    "sources": [
+     "https://1stfamilydental.com/locations/elgin/",
+     "https://1stfamilydental.com/locations/"
+    ]
    }
   },
   {
@@ -65,11 +70,13 @@
     "https://www.randallmeadowsdental.com/meet-our-team/",
     "https://midwest-dental.com/dental-office/elgin/"
    ],
-   "evidence_artifacts": ["address_occupant_changed_from_brand_hint"],
+   "evidence_artifacts": [
+    "address_occupant_changed_from_brand_hint"
+   ],
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "ctx flagged this as Midwest Dental (dso_national), but the current occupant at 1750 N Randall Rd / (847) 888-0011 is Randall Meadows Dental Center, founded and solely owned by Dr. Thomas Yun in January 2022 — the practice's own team page lists only Dr. Yun. Midwest Dental's real current Elgin office is confirmed at a different address (1530 N Randall Rd #100, phone 847-697-8844), so the brand hint is stale/mismatched to this specific location. Classified true_independent on current documentary evidence.",
+   "reasoning": "ctx flagged this as Midwest Dental (dso_national), but the current occupant at 1750 N Randall Rd / (847) 888-0011 is Randall Meadows Dental Center, founded and solely owned by Dr. Thomas Yun in January 2022 \u2014 the practice's own team page lists only Dr. Yun. Midwest Dental's real current Elgin office is confirmed at a different address (1530 N Randall Rd #100, phone 847-697-8844), so the brand hint is stale/mismatched to this specific location. Classified true_independent on current documentary evidence.",
    "searched": [
     "Midwest Dental Elgin IL 1750 N Randall Rd",
     "Randall Meadows Dental Center Elgin Thomas Yun owner independent",
@@ -94,7 +101,9 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Confirmed single-location oral & maxillofacial surgery practice at 1425 N McLean Blvd, owned/operated by Dr. Michael Finger and Dr. Anthony Bennett, who have practiced together in Elgin since 1977. No corporate parent, management company, or DSO branding found; matches the 6-provider large-group NPPES count as one dentist-owned office.",
-   "searched": ["Drs. Finger & Bennett Ltd dentist Elgin IL 1425 N McLean Blvd"]
+   "searched": [
+    "Drs. Finger & Bennett Ltd dentist Elgin IL 1425 N McLean Blvd"
+   ]
   },
   {
    "location_id": "6cbda89842e392d7",
@@ -105,17 +114,22 @@
    "evidence_basis": "locator",
    "evidence_urls": [
     "https://www.dentalworks.com/offices/illinois/elgin/",
-    "https://www.dentalworks.com/offices/illinois/"
+    "https://www.dentalworks.com/offices/illinois/",
+    "https://www.newmountaincapital.com/portfolio/sonrava-health/",
+    "https://www.sonrava.com/brands"
    ],
-   "evidence_artifacts": ["friendly_PC_JV_footer:Illinois Dental Providers (Elgin), P.C. (JV)"],
+   "evidence_artifacts": [
+    "friendly_PC_JV_footer:Illinois Dental Providers (Elgin), P.C. (JV)"
+   ],
    "confidence": "high",
    "status": "classified",
    "network_id": "brand:dentalworks_sonrava",
-   "reasoning": "DentalWorks' own locator page confirms this exact address (1190 S Randall Rd #102, Elgin) as a DentalWorks office; the page footer credits a friendly-PC/JV entity ('Illinois Dental Providers (Elgin), P.C. (JV)'), a classic DSO management-company structure. DentalWorks is a branded network of Sonrava Health (also parent of Western Dental & Orthodontics), which is PE-backed (New Mountain Capital) per ctx brand_hint and public reporting — matches ctx affiliated_dso/parent_company.",
+   "reasoning": "DentalWorks' own locator page confirms this exact address (1190 S Randall Rd #102, Elgin) as a DentalWorks office; the page footer credits a friendly-PC/JV entity ('Illinois Dental Providers (Elgin), P.C. (JV)'), a classic DSO management-company structure. Sonrava Health's own brand page confirms DentalWorks is one of its national brands (alongside Western Dental & Orthodontics, Brident, Perfect Teeth, Vital Smiles), and New Mountain Capital's own portfolio page confirms it has majority-owned Sonrava Health since 2012 - independently web-verified PE-backing, not inferred from ctx.",
    "searched": [
     "Western Dental Elgin IL 1190 S Randall Rd",
     "DentalWorks brand owned by Heartland Dental Care",
-    "fetch dentalworks.com/offices/illinois/elgin/"
+    "fetch dentalworks.com/offices/illinois/elgin/",
+    "Sonrava Health New Mountain Capital private equity DentalWorks Western Dental parent company"
    ]
   },
   {
@@ -134,14 +148,18 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Dr. Paul L. Engen's own practice website confirms he is the sole owner-dentist at 16 N Airlite St, practicing in Elgin since graduating University of Illinois College of Dentistry in 1982 (40+ years, single location). No corporate or DSO signal found.",
-   "searched": ["Paul Engen DDS Elgin IL dentist 16 N Airlite St"],
+   "searched": [
+    "Paul Engen DDS Elgin IL dentist 16 N Airlite St"
+   ],
    "intel": {
     "website_url": "https://www.engendental.com/",
     "website_note": "Practice-owned informational site with doctor bio page; presents as an established solo family practice.",
     "provider_notes": "Dr. Paul L. Engen, DDS, University of Illinois College of Dentistry 1982.",
     "owner_career_stage": "late_career",
     "distinguishing_notes": "Member of Christian Dental Society, Academy of General Dentistry, ADA, Illinois Dental Society, Fox River Valley Dental Society.",
-    "sources": ["https://www.engendental.com/about_us/Dr_Engen.htm"]
+    "sources": [
+     "https://www.engendental.com/about_us/Dr_Engen.htm"
+    ]
    }
   },
   {
@@ -156,11 +174,13 @@
     "https://www.yelp.com/biz/polse-alan-m-dds-elgin",
     "https://doctor.webmd.com/practice/dr-alan-m-polse-dds-and-associates-ltd-3babb5d5-d6e7-4662-9059-971ba964cfa7"
    ],
-   "evidence_artifacts": ["phone_address_match_to_different_operating_name:Alan M Polse DDS & Associates Ltd"],
+   "evidence_artifacts": [
+    "phone_address_match_to_different_operating_name:Alan M Polse DDS & Associates Ltd"
+   ],
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "The exact phone (847) 888-8108 and suite (2000 Larkin Ave Ste 102) in our record match 'Dr. Alan M. Polse, DDS and Associates, Ltd.' — not the different David Doyle/orthodontist found at Ste 204 with a different phone number. This appears to be the same office operating today under Dr. Alan Polse (45 years experience) with associate dentists, while the NPI organization retains the legacy legal name 'David A. Doyle, D.D.S., P.C.' No DSO/corporate signal found; classified as a dentist-owned multi-provider single-location group, matching the 5-provider large_group count.",
+   "reasoning": "The exact phone (847) 888-8108 and suite (2000 Larkin Ave Ste 102) in our record match 'Dr. Alan M. Polse, DDS and Associates, Ltd.' \u2014 not the different David Doyle/orthodontist found at Ste 204 with a different phone number. This appears to be the same office operating today under Dr. Alan Polse (45 years experience) with associate dentists, while the NPI organization retains the legacy legal name 'David A. Doyle, D.D.S., P.C.' No DSO/corporate signal found; classified as a dentist-owned multi-provider single-location group, matching the 5-provider large_group count.",
    "searched": [
     "David Doyle DDS Elgin IL dentist 2000 Larkin Ave",
     "\"David A. Doyle\" DDS PC Elgin \"888-8108\"",
@@ -184,15 +204,24 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Dr. David A. Rice's own practice website confirms sole ownership at 1972 Larkin Ave since relocating to Elgin in 1986, with a sedation/implant/cosmetic focus. No group or DSO affiliation found; matches solo_high_volume classification and 1985 year_established.",
-   "searched": ["David Rice DDS Elgin IL 1972 Larkin Ave dentist"],
+   "searched": [
+    "David Rice DDS Elgin IL 1972 Larkin Ave dentist"
+   ],
    "intel": {
     "website_url": "https://www.ricedds.com/",
     "website_note": "Established solo practice site emphasizing sedation dentistry, implants, and cosmetic work; includes a team page.",
-    "services": ["sedation dentistry", "dental implants", "cosmetic dentistry", "general dentistry"],
+    "services": [
+     "sedation dentistry",
+     "dental implants",
+     "cosmetic dentistry",
+     "general dentistry"
+    ],
     "provider_notes": "Dr. David A. Rice, DDS, University of Illinois School of Dentistry grad; Kois Center mentor; inducted American Academy of Restorative Dentistry 2013.",
     "owner_career_stage": "late_career",
     "distinguishing_notes": "Recognized Center for Advanced Dental Learning mentor (one of fewer than 120 dentists worldwide) and Kois Center mentor.",
-    "sources": ["https://www.ricedds.com/meet-dr-david-rice/"]
+    "sources": [
+     "https://www.ricedds.com/meet-dr-david-rice/"
+    ]
    }
   },
   {
@@ -211,7 +240,9 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Multiple directories confirm Dr. David M. Lefelstein, DDS as the general-practice dentist at 450 Shepard Dr under his own name, accepting new patients, with no corporate/DSO signal. Consistent with solo_established classification.",
-   "searched": ["Lefelstein Dental Elgin IL 450 Shepard Dr dentist"]
+   "searched": [
+    "Lefelstein Dental Elgin IL 450 Shepard Dr dentist"
+   ]
   },
   {
    "location_id": "c6a988df2e629b99",
@@ -229,11 +260,21 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Confirmed Dr. Mumtaz Siddique, DDS practices under his own name at 552 N McLean Blvd (co-located in a building shared with an unrelated podiatric foot clinic, not a corporate structure). No DSO or chain signal found; cosmetic/general solo practice.",
-   "searched": ["Siddique Dental Elgin IL 552 N McLean Blvd dentist"],
+   "searched": [
+    "Siddique Dental Elgin IL 552 N McLean Blvd dentist"
+   ],
    "intel": {
-    "services": ["cosmetic dentistry", "dental implants", "dentures", "porcelain veneers", "laser teeth whitening"],
+    "services": [
+     "cosmetic dentistry",
+     "dental implants",
+     "dentures",
+     "porcelain veneers",
+     "laser teeth whitening"
+    ],
     "distinguishing_notes": "Dr. Siddique offers telehealth and speaks Spanish; office shares a building with a podiatric foot clinic (McLean Dental and Foot Clinic).",
-    "sources": ["https://www.healthgrades.com/dentist/dr-mumtaz-siddique-x49hp"]
+    "sources": [
+     "https://www.healthgrades.com/dentist/dr-mumtaz-siddique-x49hp"
+    ]
    }
   },
   {
@@ -251,7 +292,7 @@
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Own website (Smile For Life Dental) confirms a single office at 2001 Larkin Ave Ste 120, founded by Dr. Dean Lodding in 2004, with two associate dentists (Dr. Michael Schuiling, Dr. Richard Dryer) — one location, dentist-owned, matching the large_group 4-provider count. No corporate/DSO signal.",
+   "reasoning": "Own website (Smile For Life Dental) confirms a single office at 2001 Larkin Ave Ste 120, founded by Dr. Dean Lodding in 2004, with two associate dentists (Dr. Michael Schuiling, Dr. Richard Dryer) \u2014 one location, dentist-owned, matching the large_group 4-provider count. No corporate/DSO signal.",
    "searched": [
     "Dean Lodding Smiles Ltd Elgin IL 2001 Larkin Ave dentist",
     "fetch drdeanlodding.com/team/"
@@ -259,10 +300,21 @@
    "intel": {
     "website_url": "https://www.drdeanlodding.com/",
     "website_note": "Modern practice-owned cosmetic-dentistry site with team bios; branded 'Smile For Life Dental'.",
-    "services": ["porcelain veneers", "smile design", "TMJ treatment", "crowns and bridges", "Zoom! teeth whitening", "snore guards", "sedation dentistry"],
+    "services": [
+     "porcelain veneers",
+     "smile design",
+     "TMJ treatment",
+     "crowns and bridges",
+     "Zoom! teeth whitening",
+     "snore guards",
+     "sedation dentistry"
+    ],
     "provider_notes": "Dr. Dean W. Lodding (founder, accredited in cosmetic dentistry since 1988), Dr. Michael Schuiling, Dr. Richard Dryer (restorative/implants).",
     "distinguishing_notes": "Founded 2004; positions itself around cosmetic/restorative specialization with 3 dentists under one roof.",
-    "sources": ["https://www.drdeanlodding.com/", "https://www.drdeanlodding.com/team/"]
+    "sources": [
+     "https://www.drdeanlodding.com/",
+     "https://www.drdeanlodding.com/team/"
+    ]
    }
   },
   {
@@ -280,12 +332,24 @@
    "confidence": "medium",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Directories confirm Peacock Dental at 320 N McLean Blvd is led by owner-dentist Dr. John Peacock (practicing since 1999) with a second general dentist, Dr. Angela Landrowski, listed at the same office — a single-location, dentist-owned multi-provider practice. No DSO/corporate signal found; confidence held at medium because our provider_count field (1) doesn't match the two dentists found online.",
-   "searched": ["Peacock Dental Associates Elgin IL John Peacock 320 N McLean"],
+   "reasoning": "Directories confirm Peacock Dental at 320 N McLean Blvd is led by owner-dentist Dr. John Peacock (practicing since 1999) with a second general dentist, Dr. Angela Landrowski, listed at the same office \u2014 a single-location, dentist-owned multi-provider practice. No DSO/corporate signal found; confidence held at medium because our provider_count field (1) doesn't match the two dentists found online.",
+   "searched": [
+    "Peacock Dental Associates Elgin IL John Peacock 320 N McLean"
+   ],
    "intel": {
-    "services": ["general dentistry", "family dental care", "pediatric checkups", "geriatric dentistry", "Invisalign", "root canals", "teeth whitening"],
+    "services": [
+     "general dentistry",
+     "family dental care",
+     "pediatric checkups",
+     "geriatric dentistry",
+     "Invisalign",
+     "root canals",
+     "teeth whitening"
+    ],
     "distinguishing_notes": "Multi-lingual office; has served Elgin since 1999.",
-    "sources": ["https://www.opencare.com/dentists/elgin-il/peacock-dental-24629961389c/"]
+    "sources": [
+     "https://www.opencare.com/dentists/elgin-il/peacock-dental-24629961389c/"
+    ]
    }
   },
   {
@@ -304,13 +368,17 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Confirmed Dr. Santhi Yenna operates her own practice ('Bowes Dental Care') at 2375 Bowes Rd under her own name; no group/DSO signal found. Matches solo_established classification.",
-   "searched": ["Yenna Dental Elgin IL 2375 Bowes Rd dentist"],
+   "searched": [
+    "Yenna Dental Elgin IL 2375 Bowes Rd dentist"
+   ],
    "intel": {
     "website_url": "https://www.bowesdentalcare.com",
     "provider_notes": "Dr. Santhi Yenna, dental degrees from Ragas Dental College (Chennai, 1995) and UIC College of Dentistry (1999); 16+ years experience.",
     "owner_career_stage": "mid_career",
     "distinguishing_notes": "Serves Elgin, South Elgin, and Bartlett; markets itself as a BPA-free office.",
-    "sources": ["https://doctor.webmd.com/doctor/santhi-yenna-a3de5895-7b2a-4110-a759-063669c4d8ff-overview"]
+    "sources": [
+     "https://doctor.webmd.com/doctor/santhi-yenna-a3de5895-7b2a-4110-a759-063669c4d8ff-overview"
+    ]
    }
   },
   {
@@ -329,14 +397,26 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Own practice site confirms Dr. Douglas P. Bork owns and operates this single-location practice at 1795 Grandstand Pl, a family succession from his father Dr. Kenneth Bork who founded the Elgin practice in 1958. No corporate/DSO signal found.",
-   "searched": ["Bork Douglas DDS Elgin IL 1795 Grandstand Pl dentist"],
+   "searched": [
+    "Bork Douglas DDS Elgin IL 1795 Grandstand Pl dentist"
+   ],
    "intel": {
     "website_url": "https://www.douglasborkddsltd.com/",
     "provider_notes": "Dr. Douglas P. Bork, DDS, University of Illinois College of Dentistry 1981 (Honors); succeeded father Dr. Kenneth Bork.",
     "owner_career_stage": "late_career",
     "distinguishing_notes": "Family-run practice continuously operating in Elgin since 1958.",
-    "services": ["general dentistry", "cosmetic dentistry", "Opalescence whitening", "dental implants", "oral cancer screening", "TMJ therapy", "periodontal care"],
-    "sources": ["https://www.douglasborkddsltd.com/"]
+    "services": [
+     "general dentistry",
+     "cosmetic dentistry",
+     "Opalescence whitening",
+     "dental implants",
+     "oral cancer screening",
+     "TMJ therapy",
+     "periodontal care"
+    ],
+    "sources": [
+     "https://www.douglasborkddsltd.com/"
+    ]
    }
   },
   {
@@ -346,8 +426,12 @@
    "assigned_tier": "undetermined",
    "pe_backed": false,
    "evidence_basis": "web_verified",
-   "evidence_urls": ["https://www.yelp.com/biz/barry-burren-dds-elgin"],
-   "evidence_artifacts": ["yelp_marked_closed_feb_2026"],
+   "evidence_urls": [
+    "https://www.yelp.com/biz/barry-burren-dds-elgin"
+   ],
+   "evidence_artifacts": [
+    "yelp_marked_closed_feb_2026"
+   ],
    "confidence": "low",
    "status": "undetermined",
    "network_id": null,
@@ -373,7 +457,9 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Confirmed Dr. Michael D. Johnson, D.D.S., P.C. operates his own single-location general dentistry practice at 2090 Larkin Ave Ste 1; no group NPI, corporate parent, or DSO signal found.",
-   "searched": ["Johnson Michael D DDS Elgin IL 2090 Larkin Ave dentist"]
+   "searched": [
+    "Johnson Michael D DDS Elgin IL 2090 Larkin Ave dentist"
+   ]
   }
  ]
 }

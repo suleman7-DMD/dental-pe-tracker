@@ -9,15 +9,24 @@
    "pe_backed": false,
    "evidence_basis": "web_verified",
    "evidence_urls": [
-    "https://doctor.webmd.com/doctor/gary-gunkel-b658afe5-02f3-4b31-bc6e-fe270ecca3b5-overview",
-    "https://www.healthgrades.com/dentist/dr-gary-gunkel-2pd7c"
+    "https://www.wheresmydentist.com/dentist-1306916465-dr.-khalil-takla--dds-orland-park",
+    "https://www.usa-dentist.com/6848/orland-dental-care-kyle-takla"
    ],
    "evidence_artifacts": [],
    "confidence": "medium",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Searched Dr. Gary Gunkel DDS Orland Park; WebMD/Healthgrades consistently place his practice at 14475 John Humphrey Dr (708-460-1109) rather than the 14430 address on file, a likely stale NPPES address in the same small office corridor. No DSO/PE signal found anywhere; a 'Caring Hands Group Home of IL' hit at the same building is a separate unrelated behavioral-health tenant, not a dental parent. Classified as a small dentist-owned group (provider_count 3) given the clean independent name-match despite the address drift.",
-   "searched": ["Gary Gunkel DDS Orland Park IL dentist", "\"(708) 364-8900\" Orland Park dentist", "\"Caring Hands Group Home\" Gunkel dental Orland Park"]
+   "reasoning": "Searched Dr. Gary Gunkel DDS Orland Park, then the exact address+phone (14430 John Humphrey Dr, (708) 364-8900). A third-party aggregator (wheresmydentist.com) ties this practice's own primary NPI, 1306916465, directly to Dr. Khalil Takla, DDS (Loyola DDS 1999), operating as 'Orland Dental Care' at this exact address/phone -- not to a 'Gary Gunkel.' No corporate parent, management company, or DSO brand found anywhere; Takla is a licensed practicing dentist. Classified single_loc_group (provider_count 3) at medium confidence because the NPPES registrant name is stale relative to the dentist actually confirmed operating there (a practice-transfer/name-lag artifact, not a DSO signal).",
+   "searched": ["Gary Gunkel DDS Orland Park IL dentist", "\"14430 John Humphrey\" Orland Park dentist \"364-8900\"", "Khalil Takla DDS Orland Park IL dentist", "\"Orland Dental Care\" \"14430 John Humphrey\" OR \"John Humphrey Dr\" Takla"],
+   "intel": {
+    "website_url": "https://www.orlanddentalcare.com/",
+    "website_note": "Operates as 'Orland Dental Care'; site emphasizes same-day/next-day appointments and walk-ins for families.",
+    "services": ["fillings (amalgam/composite)", "crowns", "dentures", "implants", "whitening"],
+    "provider_notes": "Dr. Khalil Takla, DDS, Loyola University Chicago Dental School 1999, prosthodontics-concentration training.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Multilingual staff (Arabic, Polish); advertises a $99 new-patient cleaning/exam/x-ray special for uninsured patients.",
+    "sources": ["https://www.usa-dentist.com/6848/orland-dental-care-kyle-takla"]
+   }
   },
   {
    "location_id": "998161f7bb1fa642",
@@ -92,16 +101,25 @@
    "location_id": "4facd48edcbadd27",
    "practice_name": "Rk Dental",
    "zip": "60462",
-   "assigned_tier": "undetermined",
+   "assigned_tier": "true_independent",
    "pe_backed": false,
-   "evidence_basis": "none",
-   "evidence_urls": [],
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://issadentistry.com/contact-us/",
+    "https://www.dentalplans.com/dentists/illinois/orland-park/60462/dr-bassam-issa-91529/"
+   ],
    "evidence_artifacts": [],
-   "confidence": "low",
-   "status": "undetermined",
+   "confidence": "medium",
+   "status": "classified",
    "network_id": null,
-   "reasoning": "Searched the listed address (14520 John Humphrey Dr) and phone (708-460-1750); every live source ties that exact address/phone to a different, unrelated practice (Issa Dentistry / Center for Oral Health), not 'RK Dental.' The RK-branded practice actually documented (RK Dental Care / RK Smiles, Dr. Rita Kapmarski) sits at a different address (14430) with a different phone (460-6400). closure_suspect: this NPI's original practice appears to have vacated/turned over at this address; leaving undetermined rather than guessing.",
-   "searched": ["RK Dental Orland Park IL dentist 14520 John Humphrey", "\"(708) 460-1750\" Orland Park dentist RK Dental", "\"(708) 460-1750\" OR \"14520 John Humphrey\" RK Dental dentist Orland Park"]
+   "reasoning": "Searched the practice name (returned mismatched aggregator noise for an unrelated 'RK Dental Care'/'RK Smiles' brand at a different address), then searched the exact address+phone on file (14520 John Humphrey Dr, (708) 460-1750). That exact address/phone resolves to 'Issa Dentistry,' a solo practice run by Dr. Bassam A. Issa, DDS. No corporate parent, management company, or DSO brand found anywhere. Classified true_independent at medium confidence -- consistent with how this unit treats other name/registrant mismatches (e.g. Gunkel/Takla, Bandy/Kirsch): a currently-operating, verifiable dentist at the exact address on file is a name-lag/rebrand artifact, not evidence the location is closed, so this is classified rather than left undetermined.",
+   "searched": ["RK Dental Orland Park IL dentist 14520 John Humphrey", "\"(708) 460-1750\" Orland Park dentist RK Dental", "\"14520 John Humphrey\" Issa Dentistry Orland Park"],
+   "intel": {
+    "website_url": "https://issadentistry.com/",
+    "website_note": "Small owner-operator practice site for Issa Dentistry.",
+    "provider_notes": "Dr. Bassam A. Issa, DDS.",
+    "sources": ["https://issadentistry.com/contact-us/", "https://www.dentalplans.com/dentists/illinois/orland-park/60462/dr-bassam-issa-91529/"]
+   }
   },
   {
    "location_id": "859f618851c50316",
@@ -136,7 +154,7 @@
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Address (14475 John Humphrey Dr) and phone (708-460-1109) match exactly to Dr. Gary Gunkel's practice on both Healthgrades and WebMD. Single-location dentist-owned office (this appears to be the same underlying clinic as the 'Gary Gunkel DDS' row in this unit, likely a duplicate NPI/address artifact); no DSO/PE signal found.",
+   "reasoning": "Address (14475 John Humphrey Dr) and phone (708-460-1109) match exactly to Dr. Gary Gunkel's practice on both Healthgrades and WebMD. Single-location dentist-owned office (this appears to be the real, active Gary Gunkel DDS practice -- distinct from the 'Gary Gunkel DDS' row in this unit, whose NPI actually resolves to Dr. Khalil Takla at a different address); no DSO/PE signal found.",
    "searched": ["Gary Gunkel DDS Orland Park IL dentist"]
   },
   {
@@ -171,12 +189,12 @@
    "confidence": "medium",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Searched the specific address/phone (9763 W 143rd St Ste A, 708-349-3443) - it currently maps exactly to 'Germino Dental,' a family-owned independent practice (38 years serving Orland Park), not a page under the Grider name; Dr. Grider likely practices there as an associate. No DSO or PE signal found; classified independent multi-provider at one location, medium confidence due to the name/DBA mismatch.",
-   "searched": ["Stephanie Grider DMD Orland Park IL dentist", "\"(708) 349-3443\" Orland Park dentist Grider"],
+   "reasoning": "Searched the specific address/phone (9763 W 143rd St Ste A, 708-349-3443) - it currently maps exactly to 'Germino Dental,' a family-owned independent practice (father-son team, founded 1979, son Gregory Germino joined 2010 after Marquette dental school), not a page under the Grider name; Dr. Grider likely practices there as an associate. No DSO or PE signal found; classified independent multi-provider at one location, medium confidence due to the name/DBA mismatch.",
+   "searched": ["Stephanie Grider DMD Orland Park IL dentist", "\"(708) 349-3443\" Orland Park dentist Grider", "Germino Dental Orland Park 143rd st family owned"],
    "intel": {
     "website_url": "http://www.germinodental1.com/",
-    "website_note": "Long-tenured family-owned practice site emphasizing 38 years serving Orland Park.",
-    "distinguishing_notes": "Family owned and operated dental office, in continuous operation for over three decades at this address.",
+    "website_note": "Long-tenured family-owned practice site emphasizing decades serving Orland Park.",
+    "distinguishing_notes": "Family owned and operated dental office, father-son team (founded 1979, son joined 2010), in continuous operation for decades at this address.",
     "sources": ["http://www.germinodental1.com/"]
    }
   },
@@ -188,14 +206,15 @@
    "pe_backed": false,
    "evidence_basis": "web_verified",
    "evidence_urls": [
-    "https://npiprofile.com/npi/1134631906"
+    "https://npiprofile.com/npi/1134631906",
+    "https://patelorlanddental.com/meet-the-doctors/"
    ],
    "evidence_artifacts": [],
-   "confidence": "medium",
+   "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Address (9017 W 151st St) matches exactly; NPI profile lists the authorized official as Parth Patel, DMD (a dentist), not a corporate officer. Checked whether '32 Pearls' is a multi-location chain (a similarly-named 'My 32 Pearls' in Harwood Heights and a separate '32 Pearls Family Dentistry' brand in IN/GA) but found no evidence this Orland Park entity is affiliated with either - appears to be an independently-chosen name coincidence. Classified single-location dentist-owned group; medium confidence due to a phone-number mismatch against the file (unit lists 403-0071, web shows 226-6700).",
-   "searched": ["\"32 Pearls Dental\" Orland Park IL dentist", "\"32 Pearls Family Dentistry\" locations Illinois how many offices"]
+   "reasoning": "Address (9017 W 151st St) matches exactly; NPI profile lists the authorized official as Parth Patel, DMD (a dentist), not a corporate officer, and the practice's own site 'Patel Family Dental' independently confirms Dr. Parth Patel, DMD and Dr. Palak Patel, DMD as the practicing dentist-owners at this address. Checked whether '32 Pearls' is a multi-location chain (a similarly-named 'My 32 Pearls' in Harwood Heights and a separate '32 Pearls Family Dentistry' brand in IN/GA) but found no evidence this Orland Park entity is affiliated with either - appears to be an independently-chosen name coincidence. Classified single-location dentist-owned group; bumped to high confidence now that the practice's own site corroborates the AO-dentist link (phone-number mismatch against the file remains: unit lists 403-0071, web shows 226-6700).",
+   "searched": ["\"32 Pearls Dental\" Orland Park IL dentist", "\"32 Pearls Family Dentistry\" locations Illinois how many offices", "Parth Patel DMD Orland Park 151st st dentist"]
   },
   {
    "location_id": "d00e3db6b46395df",

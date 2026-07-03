@@ -1,0 +1,363 @@
+{
+ "unit_id": "laneA_170",
+ "classifications": [
+  {
+   "location_id": "4142d31c71b4b8b0",
+   "practice_name": "Ryan, James P DDS",
+   "zip": "60103",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-james-ryan-xnycr",
+    "https://www.chamberofcommerce.com/business-directory/illinois/bartlett/dentist/3332661-ryan-james-p-dds"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched Dr. James P. Ryan's practice at 840 W Bartlett Rd; multiple independent aggregator listings (Healthgrades, Chamber of Commerce) confirm a solo general dentistry office at this exact address/phone with 30+ years in practice. No group, brand, or corporate-parent signal anywhere.",
+   "searched": ["\"Ryan\" DDS 840 W Bartlett Rd Bartlett IL dentist"]
+  },
+  {
+   "location_id": "7630932a80ab5da1",
+   "practice_name": "Nakfoor Dental",
+   "zip": "60103",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://bartlettdentaloffice.com/our-practice/dr-cheryl-nakfoor",
+    "https://bartlettdentaloffice.com/our-practice/our-office"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Cheryl Nakfoor practices at Bartlett Dental Office (988 S Bartlett Rd, Orchard Professional Center) alongside Dr. Angela Bogacki Skidmore -- a 2-dentist single-location group, no DSO/corporate signal on the practice site. The NPI's registered address (1130 Preserve Trl) differs from the operating clinic address, a common registration artifact; classified on the identified operating office.",
+   "searched": ["Nakfoor Dental Bartlett IL", "fetch bartlettdentaloffice.com/our-practice/our-office"],
+   "intel": {
+    "website_url": "https://bartlettdentaloffice.com/our-practice/our-office",
+    "website_note": "Multi-page practice site describing two dentists and general family services; professional, informational tone, no online booking observed.",
+    "services": ["family dentistry", "general dentistry"],
+    "provider_count_web": 2,
+    "provider_notes": "Dr. Cheryl Nakfoor (Michigan State/Univ. of Michigan Dental School, former UIC College of Dentistry faculty) and Dr. Angela Bogacki Skidmore.",
+    "distinguishing_notes": "Office located in the Orchard Professional Center on S. Bartlett Rd, about 2 blocks south of Stearns Rd.",
+    "sources": ["https://bartlettdentaloffice.com/our-practice/dr-cheryl-nakfoor", "https://bartlettdentaloffice.com/our-practice/our-office"]
+   }
+  },
+  {
+   "location_id": "ad627fe0bc2671b8",
+   "practice_name": "VISHAL GANDHI DDS LLC",
+   "zip": "60103",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-vishal-gandhi-xk6yg",
+    "https://doctor.webmd.com/doctor/vishal-gandhi-36d0e0ef-85ff-4673-8018-861479bd4e0a-overview"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Vishal Gandhi's own-named LLC is registered and practices at 836 W Bartlett Rd, matching the NPI address and phone exactly. Hospital affiliation (Northwestern Medicine Central DuPage) is a clinical-privileges relationship, not ownership. No DSO/corporate signal found.",
+   "searched": ["Vishal Gandhi DDS Bartlett IL dentist"]
+  },
+  {
+   "location_id": "d027da6419b302cd",
+   "practice_name": "John Katsis DDS",
+   "zip": "60103",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-john-katsis-xdtx3",
+    "https://www.yelp.com/biz/john-katsis-dds-m-s-bartlett",
+    "https://www.dentalplans.com/dentists/illinois/bartlett/60103/dr-john-katsis-4627/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:katsis_orthodontics",
+   "reasoning": "This NPI maps to Katsis Orthodontics (110 S Oak Ave, essentially the same address block as the registered 104 S Oak Ave), a father-and-son orthodontic team with two offices (Bartlett and Bloomingdale) serving the area 30+ years. Dentist-owned, only 2 locations, no corporate branding -- fits dentist_multi, not a protected network.",
+   "searched": ["John Katsis DDS Bartlett IL dentist"]
+  },
+  {
+   "location_id": "1cb7ec6e7f656835",
+   "practice_name": "Bartlett Smiles",
+   "zip": "60103",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://bartlettdentalcareil.com/",
+    "https://www.yelp.com/biz/bartlett-dental-care-bartlett"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address (323 Railroad Ave) and phone (630-830-6010) match exactly to 'Bartlett Dental Care,' led by Dr. Sandra Song, with no corporate/DSO signal on the practice's own site (40+ years in business, single location). Practice name in our record ('Bartlett Smiles') doesn't match the site's current branding, hence medium rather than high confidence, but the address+phone match is unambiguous.",
+   "searched": ["\"Bartlett Smiles\" dental 323 Railroad Ave Bartlett IL"],
+   "intel": {
+    "website_url": "https://bartlettdentalcareil.com/",
+    "website_note": "Established practice site emphasizing 40+ years in business; simple, service-page-oriented template.",
+    "services": ["preventive dentistry", "restorative dentistry", "cosmetic dentistry", "children's dentistry"],
+    "provider_notes": "Dr. Sandra Song leads the practice team.",
+    "distinguishing_notes": "Office located directly across from the Bartlett Metra train station; hours include weekday evening and Saturday blocks.",
+    "sources": ["https://bartlettdentalcareil.com/", "https://www.yelp.com/biz/bartlett-dental-care-bartlett"]
+   }
+  },
+  {
+   "location_id": "a6d39b64648573b4",
+   "practice_name": "Bartlett Dental Assoc",
+   "zip": "60103",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/bartlett-dental-associates-bartlett",
+    "https://www.wellness.com/dir/2167256/dentist/il/bartlett/bartlett-dental-associates/directions/164-bartlett-plaza-bartlett-il-60103"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Bartlett Dental Associates at 164 Bartlett Plz matches the NPI address and phone exactly. Albert Mategrano, Jr., DDS is the named general practice dentist, serving the area 25+ years from the Bartlett Plaza Shopping Center. No group/DSO signal found.",
+   "searched": ["\"Bartlett Dental Assoc\" OR \"Bartlett Dental Associates\" 164 Bartlett Plaza IL"],
+   "intel": {
+    "provider_notes": "Albert Mategrano, Jr., DDS is the general practice dentist.",
+    "distinguishing_notes": "Located in the Bartlett Plaza Shopping Center; has served Bartlett, Streamwood, Elgin, Hanover Park and Carol Stream for 25+ years.",
+    "sources": ["https://www.yelp.com/biz/bartlett-dental-associates-bartlett", "https://www.wellness.com/dir/2167256/dentist/il/bartlett/bartlett-dental-associates/directions/164-bartlett-plaza-bartlett-il-60103"]
+   }
+  },
+  {
+   "location_id": "439261adc4b947bd",
+   "practice_name": "RAJIV PURI PC",
+   "zip": "60103",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.smiles-office.com/about-us/meet-our-team/",
+    "https://www.smiles-office.com/",
+    "https://www.yelp.com/biz/smiles-dental-center-bartlett-6"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:smiles_dental_center",
+   "reasoning": "This is Dr. Rajiv (Raj) Puri's own PC. His site confirms he is founder/owner of Smiles Dental Center, a 3-location dentist-owned network (Bartlett, Mt Prospect, Wood Dale, IL) opened progressively since founding; no parent company, DSO brand, or management-company language anywhere on the site.",
+   "searched": ["Rajiv Puri DDS dentist Bartlett IL Route 59", "fetch smiles-office.com/about-us/", "fetch smiles-office.com/about-us/meet-our-team/", "\"Smiles Dental Center\" Puri Bartlett Mt Prospect Wood Dale owner dentist"],
+   "intel": {
+    "website_url": "https://www.smiles-office.com/",
+    "website_note": "Multi-location practice site with per-office pages; modern, appointment-oriented, no obvious corporate branding.",
+    "services": ["general dentistry", "orthodontics", "cosmetic dentistry", "oral surgery", "facial pain treatment", "dental implants", "same-day emergency appointments"],
+    "provider_count_web": 2,
+    "provider_notes": "Dr. Raj (Rajiv) Puri, DDS -- founder/owner, UIC College of Dentistry grad, speaks Gujarati/Polish/Spanish; Dr. Priyanshi Zalavadiya, DMD -- associate.",
+    "distinguishing_notes": "Bartlett location opened in 2013 as the practice's second office; network now spans Bartlett, Mt Prospect, and Wood Dale, IL.",
+    "sources": ["https://www.smiles-office.com/about-us/meet-our-team/", "https://www.smiles-office.com/", "https://www.yelp.com/biz/smiles-dental-center-bartlett-6"]
+   }
+  },
+  {
+   "location_id": "7f2e91b21a35a250",
+   "practice_name": "Kalota Dental",
+   "zip": "60103",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.smiles-office.com/dr-orusa-kalota/",
+    "https://providers.sharecare.com/doctor/dr-orusa-kalota-xyntll4"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:smiles_dental_center",
+   "reasoning": "Dr. Orusa Kalota practices at Smiles Dental Center's Bartlett office (849 S Route 59 / S Sutton Rd corner), the same dentist-owned 3-location network as Dr. Rajiv Puri's PC. No corporate/DSO signal found.",
+   "searched": ["Kalota Dental Bartlett IL Sutton Rd"],
+   "intel": {
+    "provider_notes": "Dr. Orusa Kalota, DMD, practices at the Smiles Dental Center Bartlett office alongside Dr. Puri.",
+    "sources": ["https://www.smiles-office.com/dr-orusa-kalota/"]
+   }
+  },
+  {
+   "location_id": "258e684c841b8312",
+   "practice_name": "BARTLETT DENTISTRY",
+   "zip": "60103",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://bartlettdentalcareil.com/",
+    "https://www.lincolnparkdentalclinic.com/kirsten-galayda-d_d_s/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This org-NPI's phone (630-830-6010) is identical to the confirmed independent solo practice 'Bartlett Dental Care' one block away (323 vs 333 Railroad Ave), and no separate operating practice called 'Bartlett Dentistry' was found. The AO on file, Kristen Galayda, now appears associated with practices well outside Bartlett (Lincoln Park/Lake Zurich area), suggesting a stale ownership record for what is functionally the same small independent office. No DSO/corporate signal found for either name; classified independent on the strength of the phone match, medium confidence given the name/AO mismatch.",
+   "searched": ["\"Bartlett Dental Assoc\" OR \"Bartlett Dental Associates\" 164 Bartlett Plaza IL", "Kristen Galayda dentist Bartlett IL", "fetch bartlettdentalcareil.com", "\"Village Square Dentistry\" Illinois locations Galayda owner"],
+   "intel": {
+    "website_url": "https://bartlettdentalcareil.com/",
+    "website_note": "Same phone/near-identical address as location 1cb7ec6e7f656835 (Bartlett Dental Care); likely the same operating office recorded under a legacy NPI name.",
+    "sources": ["https://bartlettdentalcareil.com/"]
+   }
+  },
+  {
+   "location_id": "d5264baf572f4315",
+   "practice_name": "Parikh Dental",
+   "zip": "60103",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searched Dr. Nishi Parikh at the registered NPI address (435 Knoll Crest Dr, Bartlett) and found no operating dental clinic there -- the address reads as residential/registration-only. Web evidence instead shows Dr. Parikh practicing as an associate at Eagle Falls Dentistry (76 Stratford Dr, Bloomingdale, IL), a separate practice not part of this unit. Cannot assign an ownership tier to a non-operating registered address, so left undetermined rather than guessed.",
+   "searched": ["Parikh Dental Bartlett IL Knoll Crest Dr dentist", "\"Nishi Parikh\" dentist Eagle Falls Dentistry Bartlett"]
+  },
+  {
+   "location_id": "98200b9aa5d539fa",
+   "practice_name": "Chalaveetil Dental",
+   "zip": "60103",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dentalplans.com/dentists/illinois/bartlett/60103/dr-mary-chalaveetil-70007/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Mary Diya Chalaveetil is a solo general dentist (DMD 2023, Midwestern University Chicago College of Dental Medicine) at 369 Persimmon Ct, matching the NPI address and phone exactly. No group affiliation or corporate signal found; medium confidence because only an aggregator profile (no independent practice website) was located.",
+   "searched": ["Chalaveetil Dental Bartlett IL Persimmon Ct dentist"]
+  },
+  {
+   "location_id": "333a2d0b0b5325b3",
+   "practice_name": "BARTLETT DENTAL STUDIO PC",
+   "zip": "60103",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.bartlettdentalstudio.com/",
+    "https://www.instagram.com/p/DAV_3nJp9w-/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Amarah Ahmed personally opened Bartlett Dental Studio at 1685 S Route 59 (per her own Instagram announcement), matching the NPI address/phone exactly. Sole owner-operator with no corporate or DSO affiliation found.",
+   "searched": ["\"Bartlett Dental Studio\" Amarah Ahmed dentist owner Route 59"],
+   "intel": {
+    "website_url": "https://www.bartlettdentalstudio.com/",
+    "website_note": "New-build practice site with an active Instagram presence documenting the office opening.",
+    "services": ["general dentistry", "cosmetic dentistry", "restorative dentistry", "dental implants"],
+    "provider_count_web": 1,
+    "provider_notes": "Dr. Amarah Ahmed, DMD (LECOM School of Dental Medicine, Bradenton FL); previously practiced in Lady Lake, FL before returning to IL in 2020.",
+    "distinguishing_notes": "Practice accepts patients age 1 and up (family-inclusive); recently opened per Instagram announcement post.",
+    "sources": ["https://www.bartlettdentalstudio.com/", "https://www.instagram.com/p/DAV_3nJp9w-/"]
+   }
+  },
+  {
+   "location_id": "e0bb50dea6f9af66",
+   "practice_name": "Zalavadiya Priyanshi",
+   "zip": "60103",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.smiles-office.com/about-us/meet-our-team/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:smiles_dental_center",
+   "reasoning": "Dr. Priyanshi Zalavadiya is listed as an associate dentist at Smiles Dental Center's Bartlett office (849 Illinois Route 59, matching the NPI address exactly), Dr. Rajiv Puri's dentist-owned 3-location network. No DSO/corporate signal found.",
+   "searched": ["Zalavadiya Priyanshi dentist Bartlett IL Route 59"],
+   "intel": {
+    "provider_notes": "Dr. Priyanshi Zalavadiya, DMD -- associate dentist at Smiles Dental Center Bartlett; trained at UIC College of Dentistry.",
+    "sources": ["https://www.smiles-office.com/about-us/meet-our-team/"]
+   }
+  },
+  {
+   "location_id": "7d101ad445757db1",
+   "practice_name": "STEARNS DENTAL PC",
+   "zip": "60103",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.stearnsdental.com/",
+    "https://www.villazdental.com/our-practice/meet-the-doctors/",
+    "https://findadentist.ada.org/dentists/dr-nishu-sharma-villa-park-0038V00002yjitIQAQ-a1C8V00000lWzEGUA0"
+   ],
+   "evidence_artifacts": ["AO Nishu Sharma spans 2 IL locations in census scope: 60103 (Stearns Dental, Bartlett) and 60181 (Villaz Dental, Villa Park)"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:SHARMA_NISHU",
+   "reasoning": "Stearns Dental (910 S Route 59, Bartlett) matches the NPI address/phone exactly. NPPES authorized official Nishu Sharma also appears as one of four dentists at Villaz Dental in Villa Park (60181), confirming a 2-location footprint consistent with the census AO-reach signal. Both sites use a similar small-practice template but no management company, corporate parent, or DSO brand language was found on either -- classified dentist_multi rather than stealth_dso, medium confidence given the templated-site similarity is a soft (not documentary) signal.",
+   "searched": ["\"Stearns Dental\" Bartlett IL Nishu Sharma dentist owner", "Nishu Sharma DDS dentist Villa Park OR \"60181\" second office", "\"Villaz Dental\" Villa Park IL owner dentist", "fetch stearnsdental.com/our-practice/"],
+   "intel": {
+    "website_url": "https://www.stearnsdental.com/",
+    "website_note": "Standard small-practice template site (Our Practice/Meet the Team/Patient Info/Contact), structurally similar to the Villaz Dental site.",
+    "services": ["emergency dental treatment", "restorative dentistry", "preventive dentistry", "cosmetic dentistry"],
+    "distinguishing_notes": "Staff described as bilingual (English/Spanish); patient reviews cite Dr. Sharma as thorough and detail-oriented.",
+    "sources": ["https://www.stearnsdental.com/our-practice/", "https://www.stearnsdental.com/"]
+   }
+  },
+  {
+   "location_id": "0dcc04c8a1189321",
+   "practice_name": "Muthuramaswami Dental",
+   "zip": "60104",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npidb.org/doctors/dental_health/dentist_122300000x/1750450128.aspx",
+    "https://www.dentalplans.com/dentists/illinois/bellwood/60104/dr-sethurama-muthuramaswami-44855/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Sethurama Muthuramaswami operates as 'American Family Dental Care, P.C.' at 4209 St Charles Rd, Bellwood, matching the NPI address/phone exactly, in business since November 2006. No group affiliation or corporate/DSO signal found.",
+   "searched": ["Muthuramaswami Dental Bellwood IL dentist"],
+   "intel": {
+    "services": ["dental implants", "dentures", "emergency care", "full restoration", "general dentistry", "Invisalign", "root canal", "teeth cleaning", "teeth whitening", "tooth extraction", "veneers", "wisdom teeth removal"],
+    "distinguishing_notes": "Operates as American Family Dental Care, P.C.; in business at this address since November 2006.",
+    "sources": ["https://npidb.org/doctors/dental_health/dentist_122300000x/1750450128.aspx", "https://www.dentalplans.com/dentists/illinois/bellwood/60104/dr-sethurama-muthuramaswami-44855/"]
+   }
+  },
+  {
+   "location_id": "67b1c90f3875a7c1",
+   "practice_name": "WESTCHESTER FAMILY DENTAL LTD",
+   "zip": "60104",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.westchesterfamilydental.net/",
+    "https://www.westchesterfamilydental.net/our-office/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Westchester Family Dental at 4 Westbrook Corporate Center matches the NPI address/phone exactly; Dr. Raffaele (Ralph) Ambrosino is the named practicing dentist and sole after-hours contact. No DSO/management-company language found. Medium confidence because the site's 'Our Doctors' nav link implies possibly more than one dentist without confirming a headcount.",
+   "searched": ["\"Westchester Family Dental\" Ambrosino Bellwood IL dentist", "fetch westchesterfamilydental.net/our-office/"],
+   "intel": {
+    "website_url": "https://www.westchesterfamilydental.net/",
+    "website_note": "Practice site with an 'Our Doctors' section and after-hours emergency contact routed directly to Dr. Ambrosino.",
+    "services": ["general dentistry"],
+    "distinguishing_notes": "Serves children and adults; hours include a Thursday evening block (10am-7pm) and Saturday appointments.",
+    "sources": ["https://www.westchesterfamilydental.net/", "https://www.westchesterfamilydental.net/our-office/"]
+   }
+  }
+ ]
+}

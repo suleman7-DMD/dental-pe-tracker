@@ -1,0 +1,427 @@
+{
+  "unit_id": "laneA_164",
+  "classifications": [
+    {
+      "location_id": "b632173e632be3c1",
+      "practice_name": "Darling & O Brien",
+      "zip": "60477",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.obrien-dental.com/",
+        "https://www.yelp.com/biz/o-brien-and-darling-dental-tinley-park"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Fetched the practice's own site obrien-dental.com, which confirms the address 16345 Harlem Ave Ste 160, Tinley Park (matches unit record) under 'John R. O'Brien, D.D.S., P.C.' with the footer identifying it as 'O'Brien & Darling Dental' (2 dentists at this single office, matching provider_count=2). No corporate parent, DSO, or management-company language anywhere on the site.",
+      "searched": [
+        "Darling & O'Brien dental Tinley Park Harlem Ave",
+        "fetch https://www.obrien-dental.com/"
+      ],
+      "intel": {
+        "website_url": "https://www.obrien-dental.com/",
+        "website_note": "Modern practice site with dedicated procedure pages, smile gallery, and online appointment-request form; positions itself around cosmetic dentistry.",
+        "services": ["cosmetic dentistry", "veneers", "Zoom whitening", "composite fillings", "periodontal treatment", "dentures/bridges", "root canal", "Invisalign/orthodontics", "implant restorations", "crowns"],
+        "provider_notes": "John R. O'Brien, D.D.S. is the named principal; a second dentist surnamed Darling is referenced in the practice name/footer but not identified by full name on the pages crawled.",
+        "distinguishing_notes": "Full-service family + cosmetic practice branded 'O'Brien & Darling Dental' operating from a single suite.",
+        "sources": ["https://www.obrien-dental.com/", "https://www.obrien-dental.com/meet-the-doctor/"]
+      }
+    },
+    {
+      "location_id": "a5133c0ee7c91760",
+      "practice_name": "O'Brien Dental",
+      "zip": "60477",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.medicarelist.com/dentist/dr-john-obrien-dds-tinley-park-il/",
+        "https://www.obrien-dental.com/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "NPI-scrape directories (medicarelist, azcare.ai, dentistsok) still list 7602 Claremont Dr / (708) 601-1345 for Dr. John O'Brien, but the dentist's own current website (obrien-dental.com) shows only one active office today -- 16345 Harlem Ave Ste 160 as 'O'Brien & Darling Dental' -- and never mentions Claremont Dr. This looks like a stale NPPES/directory address from before a move/merger rather than a currently operating second office; closure_suspect (likely consolidated into the Harlem Ave location) -- insufficient to confidently classify this specific address as an active independent practice today.",
+      "searched": [
+        "O'Brien Dental Tinley Park Claremont Dr dentist",
+        "\"7602 Claremont\" Tinley Park dentist",
+        "NPI 1568639854 O'Brien dentist"
+      ]
+    },
+    {
+      "location_id": "459b9c29463f9780",
+      "practice_name": "Strauman Dental",
+      "zip": "60477",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.opencare.com/dentists/tinley-park-il/th-avenue-dental-associates-24630276240c/",
+        "https://www.yelp.com/biz/strauman-richard-a-dds-tinley-park"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Multiple concordant directory listings (Yelp, Healthgrades, OpenCare, WebMD) identify this address as '80th Avenue Dental Associates Inc' with two dentist-owners, Dr. Richard A. Strauman and Dr. Dawn B. Swenson, matching the unit's provider_count=2. No dedicated primary website was found, but no corporate/DSO signal appears anywhere either.",
+      "searched": [
+        "Strauman Dental Tinley Park 80th Ave"
+      ],
+      "intel": {
+        "website_note": "No dedicated practice website found; presence is via third-party directory profiles only.",
+        "services": ["bonding", "Invisalign/braces", "bridges/dentures", "cleanings", "crowns", "fillings", "gum surgery", "implants", "nitrous sedation", "root canal", "sleep apnea appliances", "TMJ treatment", "extractions", "veneers", "whitening"],
+        "provider_notes": "Two dentist-owners: Dr. Richard A. Strauman and Dr. Dawn B. Swenson (described as having built the practice together).",
+        "distinguishing_notes": "Hours include Saturday 9:30am-1pm; practice name '80th Avenue Dental Associates Inc'.",
+        "sources": ["https://www.opencare.com/dentists/tinley-park-il/th-avenue-dental-associates-24630276240c/", "https://local.yahoo.com/info-136682173-strauman-richard-a-dds-80th-avenue-dental-associates-inc-tinley-park/"]
+      }
+    },
+    {
+      "location_id": "8a376c8433dddc6e",
+      "practice_name": "RALPH W. GINN, D.D.S., P.C.",
+      "zip": "60477",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.dentalinsider.com/tinley-park/dentist/dr-ralph-w-ginn-dds-55834",
+        "https://www.yelp.com/biz/ralph-w-ginn-dds-my-care-dental-tinley-park"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Concordant directory profiles (Yelp, DentalInsider, WebMD, Vitals) all attribute this address/phone to 'My Care Dental' operated solely by Dr. Ralph W. Ginn, DDS (Loyola Chicago 1983 grad, ADA/ISDS/Chicago Dental Society member). No dedicated primary site was located but no corporate signal appears anywhere; treated as a solo dentist-owner practice.",
+      "searched": [
+        "Ralph W Ginn DDS Tinley Park dentist"
+      ],
+      "intel": {
+        "services": ["general dentistry", "pediatric dentistry"],
+        "provider_notes": "Dr. Ralph W. Ginn, DDS -- Loyola University Chicago (BS biology 1979, DDS 1983); member of Chicago Dental Society, Illinois State Dental Society, ADA.",
+        "owner_career_stage": "late_career",
+        "distinguishing_notes": "Practice named 'My Care Dental'; office hours span 10am-8pm Mon/Tue.",
+        "sources": ["https://www.dentalinsider.com/tinley-park/dentist/dr-ralph-w-ginn-dds-55834"]
+      }
+    },
+    {
+      "location_id": "953ce5d86830277a",
+      "practice_name": "Harden Dental",
+      "zip": "60477",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.healthgrades.com/physician/dr-shellie-harden-xfkwh",
+        "https://dentistry.uic.edu/shellie-harden/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Multiple concordant directories (Healthgrades, Doctor.com, WebMD, UIC alumni page) confirm 7600 W 183rd St / (708) 614-3719 belongs to solo dentist Dr. Shellie M. Harden (UIC College of Dentistry, 1994). No dedicated practice website found and no corporate/DSO signal anywhere.",
+      "searched": [
+        "Harden Dental Tinley Park 183rd St dentist",
+        "Shellie Harden DDS dentist website Tinley Park"
+      ],
+      "intel": {
+        "website_note": "No dedicated practice website found; presence via directory profiles and a UIC dental-alumni bio page.",
+        "provider_notes": "Dr. Shellie M. Harden, DDS -- University of Illinois at Chicago College of Dentistry, 1994 graduate; UIC Dental Alumni Association board member since 2000.",
+        "owner_career_stage": "late_career",
+        "services": ["general dentistry", "fillings", "gum disease treatment", "root canal treatment", "cleanings", "diagnostic X-rays"],
+        "sources": ["https://dentistry.uic.edu/shellie-harden/", "https://www.healthgrades.com/physician/dr-shellie-harden-xfkwh"]
+      }
+    },
+    {
+      "location_id": "62be857518f16ec9",
+      "practice_name": "ZAK O ZAIBAK DDS LLC",
+      "zip": "60477",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.drzaibak.com/",
+        "https://www.yelp.com/biz/zaibak-center-for-dentistry-tinley-park-4"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Own-domain site drzaibak.com confirms 'Zaibak Center for Dentistry' at 6828 W 171st St, Tinley Park, run by solo dentist Dr. Zack Zaibak, DDS (University of Illinois College of Dentistry, with honors). No corporate parent, DSO, or franchise language found.",
+      "searched": [
+        "Zak Zaibak DDS Tinley Park dentist 171st St"
+      ],
+      "intel": {
+        "website_url": "https://www.drzaibak.com/",
+        "website_note": "Cosmetic-forward practice site with dedicated service pages; walk-ins welcome.",
+        "services": ["Invisalign", "Lumineers", "full mouth reconstruction", "smile makeovers", "teeth whitening", "porcelain veneers", "composite fillings", "dental implants", "TMJ treatment", "dentures", "sleep apnea appliances"],
+        "provider_notes": "Dr. Zack Zaibak, DDS -- University of Illinois College of Dentistry, with honors; described as a top Illinois practitioner of advanced cosmetic dentistry.",
+        "distinguishing_notes": "Extended hours Mon-Thu 9am-7pm; branded 'Zaibak Center for Dentistry'.",
+        "sources": ["https://www.drzaibak.com/", "https://www.yelp.com/biz/zaibak-center-for-dentistry-tinley-park-4"]
+      }
+    },
+    {
+      "location_id": "75783048c2726950",
+      "practice_name": "YAA N. OWUSU DMD, MDS, PC",
+      "zip": "60477",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.kidsdds.net/",
+        "https://findadentist.ada.org/il/cook/tinley-park/pediatric-dentistry/dr-yaa-n-mcdonald-3413570"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Own-domain site kidsdds.net (Joyful Smiles Pediatric Dentistry) confirms 7020 Centennial Dr, Tinley Park is a solo pediatric practice owned by Dr. Yaa N. Owusu/McDonald, DMD. No corporate/DSO affiliation found; this is a specialist (pediatric) practice but ownership is a single dentist.",
+      "searched": [
+        "Yaa Owusu DMD Tinley Park Centennial Dr dentist"
+      ],
+      "intel": {
+        "website_url": "https://www.kidsdds.net/",
+        "website_note": "Dedicated pediatric-dentistry practice site branded 'Joyful Smiles Pediatric Dentistry'.",
+        "provider_notes": "Dr. Yaa N. Owusu/McDonald, DMD -- BS Biological Sciences, University of Illinois Urbana-Champaign; DMD Southern Illinois University; 2-year pediatric dentistry residency, University of Tennessee Health Science Center.",
+        "distinguishing_notes": "Treats infants, toddlers, and adolescents; dedicated pediatric focus (not general family dentistry).",
+        "sources": ["https://www.kidsdds.net/", "https://www.dentalinsider.com/tinley-park/dentist/dr-yaa-owusu-dmd-53115"]
+      }
+    },
+    {
+      "location_id": "104164e8aa15f369",
+      "practice_name": "Cook Dental",
+      "zip": "60478",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://npiprofile.com/npi/1861965998",
+        "https://www.linkedin.com/in/shanel-cook-7697b2293/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "Only NPI-scrape directories (npiprofile, npino, dentistsok, medicalnewstoday) were found for 4633 175th Pl -- no dedicated operating practice website. A LinkedIn profile for Shanel Cook references 'Affordable Dentures & Implants' (a national DSO brand), but the nearest confirmed Illinois Affordable Dentures & Implants location is Orland Park, not this address, so it is unclear whether this specific address is currently an active independent office or the dentist has since relocated to a DSO-affiliated site elsewhere. Too ambiguous to assign a confident tier.",
+      "searched": [
+        "Cook Dental Country Club Hills IL 175th Pl dentist",
+        "\"Shanel Cook\" dentist Country Club Hills IL website"
+      ]
+    },
+    {
+      "location_id": "fe4befcf2aa9c88e",
+      "practice_name": "Krupa Dental Care",
+      "zip": "60480",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.krupadentalcare.com/our-locations",
+        "https://www.krupadentalcare.com/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Fetched the practice's own 'Our Locations' page, which lists exactly one office (8240 Wolf Rd, Willow Springs -- matches unit record) owned by Dr. Thomas E. Krupa, DDS. No corporate parent or management company found beyond the site's own web-hosting vendor (Officite) in the footer.",
+      "searched": [
+        "Krupa Dental Care Willow Springs IL Wolf Rd",
+        "fetch https://www.krupadentalcare.com/our-locations"
+      ],
+      "intel": {
+        "website_url": "https://www.krupadentalcare.com/",
+        "website_note": "Own-domain site with dedicated 'Our Locations' and doctor-bio pages confirming single-office, dentist-owned operation.",
+        "services": ["general dentistry", "cosmetic dentistry", "teeth whitening", "implants", "veneers"],
+        "provider_notes": "Dr. Thomas E. Krupa, DDS -- BS Northern Illinois University 1998; DDS University of Illinois 2002; 5 years as an associate in Wauconda, IL before taking over the Willow Springs office.",
+        "owner_career_stage": "mid_career",
+        "sources": ["https://www.krupadentalcare.com/", "https://www.krupadentalcare.com/dr-thomas-e-krupa"]
+      }
+    },
+    {
+      "location_id": "a20bc5a211c96f28",
+      "practice_name": "Neumann, Manfred W DDS",
+      "zip": "60480",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.bbb.org/us/il/willow-springs/profile/dentist/manfred-w-neumann-dds-0654-33003536",
+        "https://www.yelp.com/biz/manfred-w-neumann-dds-willow-springs"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Concordant directories (BBB, Yelp, Healthgrades, DentalPlans) confirm 8265 Archer Ave is a solo practice under Dr. Manfred W. Neumann, DDS, with a BBB-listed business start date of 10/1/1990. No dedicated website or corporate signal found.",
+      "searched": [
+        "Manfred Neumann DDS Willow Springs IL dentist Archer Ave"
+      ],
+      "intel": {
+        "website_note": "No dedicated practice website found; BBB profile lists a long-standing single-dentist business.",
+        "owner_career_stage": "late_career",
+        "distinguishing_notes": "BBB-listed business start date 10/1/1990 (~35 years in continuous operation at this address).",
+        "sources": ["https://www.bbb.org/us/il/willow-springs/profile/dentist/manfred-w-neumann-dds-0654-33003536"]
+      }
+    },
+    {
+      "location_id": "cbd9838e2828b116",
+      "practice_name": "Arce, John DDS",
+      "zip": "60480",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yellowpages.com/willow-springs-il/mip/arce-john-dds-503591961",
+        "https://www.vitals.com/dentists/Dr_John_Arce"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Concordant directory listings (Yellow Pages, Vitals, Manta, Willow Springs village business directory) confirm 8336 Archer Ave as a solo practice run by Dr. John A. Arce, DDS. No dedicated website or corporate/DSO signal found.",
+      "searched": [
+        "John Arce DDS Willow Springs IL Archer Ave dentist"
+      ],
+      "intel": {
+        "insurance_note": "Accepts Delta Dental Premier.",
+        "distinguishing_notes": "Offers weekend hours; listed in the Village of Willow Springs official business directory.",
+        "sources": ["https://www.willowsprings-il.gov/resources/business-directory/name/dr-john-arce/", "https://www.vitals.com/dentists/Dr_John_Arce"]
+      }
+    },
+    {
+      "location_id": "a617045e6ce4d3d4",
+      "practice_name": "Yerkes, Patrick J DDS",
+      "zip": "60481",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.healthgrades.com/dentist/dr-patrick-yerkes-y7gvc",
+        "https://www.yelp.com/biz/yerkes-family-dental-wilmington"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Concordant directories (Healthgrades, Yelp, Vitals, Wellness.com) all identify 688 W Baltimore St as 'Yerkes Family Dental', a solo practice under Dr. Patrick J. Yerkes, DDS (UIC-trained, 25+ years experience). No dedicated site or corporate signal found.",
+      "searched": [
+        "Patrick Yerkes DDS Wilmington IL dentist Baltimore St"
+      ],
+      "intel": {
+        "website_note": "No dedicated practice website found; branded 'Yerkes Family Dental' across directory listings.",
+        "services": ["preventive care", "general dentistry", "cosmetic dentistry", "restorative dentistry"],
+        "provider_notes": "Dr. Patrick J. Yerkes, DDS -- University of Illinois at Chicago; 25+ years in family dental care.",
+        "owner_career_stage": "late_career",
+        "distinguishing_notes": "Offers evening appointments; most insurance accepted.",
+        "sources": ["https://www.healthgrades.com/dentist/dr-patrick-yerkes-y7gvc", "https://www.yelp.com/biz/yerkes-family-dental-wilmington"]
+      }
+    },
+    {
+      "location_id": "f33451b583217632",
+      "practice_name": "Smith, Garrett B DDS",
+      "zip": "60481",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.facebook.com/GarrettBSmithDDS/",
+        "https://wilmingtonilchamber.org/directory/dr-garrett-b-smith/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Concordant sources (own Facebook page, Wilmington Chamber of Commerce directory, Healthgrades) confirm 220 S Main St is a solo family-dental practice run by Dr. Garrett B. Smith, DDS. No corporate/DSO signal found.",
+      "searched": [
+        "Garrett Smith DDS Wilmington IL dentist Main St"
+      ],
+      "intel": {
+        "website_note": "No standalone practice website found; practice maintains an active Facebook page and Chamber of Commerce listing.",
+        "services": ["fillings/sealants", "cosmetic dentistry", "implant restoration", "Zoom whitening", "crowns", "bridges", "exams/cleanings"],
+        "distinguishing_notes": "Limited weekday hours (Tue/Thu 9am-2pm, Wed 9am-4pm, Mon 9am-6pm, Sat 8am-12pm); listed with a 5.0-star Chamber of Commerce rating (10 reviewers) and strong Facebook recommendation rate -- ratings are from Chamber/Facebook, not verified Google listings.",
+        "sources": ["https://www.facebook.com/GarrettBSmithDDS/", "https://wilmingtonilchamber.org/directory/dr-garrett-b-smith/"]
+      }
+    },
+    {
+      "location_id": "22528f54a3b78a7d",
+      "practice_name": "DR LAYER DDS PC",
+      "zip": "60482",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.allsmilesworth.com/",
+        "https://www.yelp.com/biz/all-smiles-worth-2"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Fetched the practice's own site allsmilesworth.com ('All Smiles', legally 'Dr. Layer DDS, PC'), which explicitly describes a single office at 11104 S Natoma Ave, Worth, owned by Dr. Theron Layer, DDS, with no DSO/PE/management-company language. Third-party aggregator (dentalplans.com) attributes Dr. Layer's name to several other IL cities (Frankfort, DeKalb, Franklin Park, Palos Heights) consistent with the ctx owner_reach_locations=2 signal, but the practice's own primary source treats Worth as an independent single-location office, so that is what this location is classified on.",
+      "searched": [
+        "Theron Layer DDS Worth IL Natoma Ave dentist locations",
+        "fetch https://www.allsmilesworth.com/"
+      ],
+      "intel": {
+        "website_url": "https://www.allsmilesworth.com/",
+        "website_note": "Own-domain site describing itself as an affordable, family-oriented independent practice serving Worth and nearby Palos-area suburbs.",
+        "services": ["emergency dentistry", "crowns", "dentures", "root canals", "extractions"],
+        "distinguishing_notes": "Site markets itself as a single-location practice ('2 Easy Routes to Our Practice' for Worth-area patients); other IL cities associated with Dr. Layer on third-party plan directories are not mentioned on this site.",
+        "sources": ["https://www.allsmilesworth.com/", "https://www.allsmilesworth.com/about/areas-we-serve/worth-il/"]
+      }
+    },
+    {
+      "location_id": "deac124375b221c9",
+      "practice_name": "DANIEL T BODINE DDS PC",
+      "zip": "60482",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.worthysmiles.com/",
+        "https://www.yelp.com/biz/bodine-daniel-t-dds-pc-worth"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Fetched worthysmiles.com, which confirms 11130 S Harlem Ave / (708) 448-6760 is currently 'Worthy Smiles Dentistry', owned by Dr. Lubna Kadir, DDS, with no DSO or corporate-parent language. This suggests the practice has changed hands from the original NPI registrant (Daniel Bodine, provider_count=0 in the source record) to Dr. Kadir, but ownership remains a single dentist at one location either way, so the address classifies as dentist-owned independent.",
+      "searched": [
+        "Daniel Bodine DDS Worth IL Harlem Ave dentist",
+        "fetch https://www.worthysmiles.com/",
+        "\"Daniel Bodine\" dentist Worth IL retired OR sold OR closed"
+      ],
+      "intel": {
+        "website_url": "https://www.worthysmiles.com/",
+        "website_note": "Current practice website for this address; branded 'Worthy Smiles Dentistry'.",
+        "provider_notes": "Current listed dentist is Dr. Lubna Kadir, DDS -- practice appears to have transitioned from the original NPI registrant Daniel T. Bodine, DDS (whose unit record shows provider_count=0, consistent with a succession).",
+        "distinguishing_notes": "Name/ownership succession at this address (Bodine -> Kadir); no corporate/DSO affiliation found on the current site.",
+        "sources": ["https://www.worthysmiles.com/"]
+      }
+    },
+    {
+      "location_id": "dcc7433e32a119da",
+      "practice_name": "Lichtenstein Dental",
+      "zip": "60482",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://doctor.webmd.com/practice/accurate-dental-center-b68d4b01-f83d-4759-866e-79f47943504f",
+        "https://www.denteldoc.com/location/?id=55115"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "Search for 'Lichtenstein Dental' at this address returned no matching entity; instead, 11312 S Harlem Ave / (708) 448-7878 is associated with 'Accurate Dental Center' and separately 'Dr. Robert J. Murphy, DDS', plus a denture lab at the same building. No corporate/DSO signal appears for any of these, but the name mismatch (no current business actually named 'Lichtenstein') makes it unclear whether this NPI record reflects a stale/superseded registration or a genuinely distinct current tenant -- insufficient to confidently classify.",
+      "searched": [
+        "Lichtenstein Dental Worth IL Harlem Ave dentist",
+        "\"11312\" Harlem Ave Worth IL dentist",
+        "\"(708) 448-7878\" dentist Worth IL"
+      ]
+    }
+  ]
+}

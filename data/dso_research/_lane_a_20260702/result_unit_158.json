@@ -17,32 +17,56 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Web search confirms 'James R Schulte DDS & Associates' at this exact address, a UIC-grad dentist practicing with associate dentists at a single Palos Heights office. No corporate parent, management company, or DSO brand appeared anywhere. Multi-dentist, single-location, dentist-owned matches single_loc_group.",
-   "searched": ["James R Schulte DDS Palos Heights IL dentist"],
+   "searched": [
+    "James R Schulte DDS Palos Heights IL dentist"
+   ],
    "intel": {
-    "services": ["dental implants", "teeth whitening", "fillings", "veneers", "crowns and bridges", "bonding", "full restorations"],
+    "services": [
+     "dental implants",
+     "teeth whitening",
+     "fillings",
+     "veneers",
+     "crowns and bridges",
+     "bonding",
+     "full restorations"
+    ],
     "distinguishing_notes": "Practices as 'James R Schulte DDS & Associates'; Dr. Schulte is a University of Illinois at Chicago dental school graduate serving Palos Heights and surrounding Chicagoland suburbs.",
-    "sources": ["https://www.healthgrades.com/dentist/dr-james-schulte-2b9gm", "https://doctor.webmd.com/doctor/james-schulte-7814a9ed-b35d-432d-8091-67e4acb23414-overview"]
+    "sources": [
+     "https://www.healthgrades.com/dentist/dr-james-schulte-2b9gm",
+     "https://doctor.webmd.com/doctor/james-schulte-7814a9ed-b35d-432d-8091-67e4acb23414-overview"
+    ]
    }
   },
   {
    "location_id": "bf29ca4df2747108",
    "practice_name": "Heights Dental",
    "zip": "60463",
-   "assigned_tier": "single_loc_group",
+   "assigned_tier": "undetermined",
    "pe_backed": false,
    "evidence_basis": "web_verified",
    "evidence_urls": [
+    "https://www.yelp.com/biz/siefferman-stephen-dds-palos-heights",
+    "https://ridgelanddentalpalos.com/",
     "https://doctor.webmd.com/practice/heights-dental-54b0f4e4-3aab-47ee-8849-4925c3ae88ff"
    ],
    "evidence_artifacts": [],
    "confidence": "medium",
-   "status": "classified",
+   "status": "undetermined",
    "network_id": null,
-   "reasoning": "WebMD confirms 'Heights Dental' at 12500 S Harlem Ave with Dr. Stephen Siefferman and several associated dentistry providers at this single address; no DSO brand or corporate parent found. A separately-branded 'Ridgeland Dental' shares the same street address (different suite/phone) but is a distinct independent practice, not evidence of a network. Medium confidence because the multi-tenant building made disambiguation slightly less clean.",
-   "searched": ["Heights Dental Palos Heights IL 12500 harlem", "\"Heights Dental\" Palos Heights IL dentist owner 12500 S Harlem"],
+   "reasoning": "closure_suspect: Yelp's listing for Dr. Stephen Siefferman, the dentist tied to 'Heights Dental' at this exact 12500 S Harlem Ave address, is explicitly tagged CLOSED with a note 'Retired January 2024.' The building is now associated with 'Ridgeland Dental' (formerly Bartz & Bartz Dental, founded 1947, renamed 2020), a distinct, older-lineage practice with no stated connection to Heights Dental/Siefferman. Given the confirmed retirement/closure signal on the entity tied to this NPI, withholding a tier rather than guessing whether 'Heights Dental' still operates as an active, distinctly-owned business today.",
+   "searched": [
+    "Heights Dental Palos Heights IL 12500 harlem",
+    "\"Heights Dental\" Palos Heights IL dentist owner 12500 S Harlem",
+    "\"Stephen Siefferman\" dentist Palos Heights owner",
+    "Ridgeland Dental Palos Heights \"formerly\" OR \"welcome\" Siefferman Heights Dental",
+    "\"Heights Dental\" Siefferman Palos Heights address change moved 12500 Harlem"
+   ],
    "intel": {
-    "distinguishing_notes": "Established 1992; practice shares the 12500 S Harlem Ave building with the separately-operated Ridgeland Dental practice.",
-    "sources": ["https://doctor.webmd.com/practice/heights-dental-54b0f4e4-3aab-47ee-8849-4925c3ae88ff"]
+    "distinguishing_notes": "Established 1992 per NPI record. The dentist historically tied to this address (Dr. Stephen Siefferman) retired January 2024 per Yelp; the building now appears associated with the separately-lineaged Ridgeland Dental (formerly Bartz & Bartz Dental, founded 1947, renamed 2020), which shows no stated connection to Heights Dental/Siefferman.",
+    "sources": [
+     "https://www.yelp.com/biz/siefferman-stephen-dds-palos-heights",
+     "https://ridgelanddentalpalos.com/"
+    ]
    }
   },
   {
@@ -61,12 +85,17 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Multiple directories confirm Dr. Michael Patricoski, DDS, a solo owner-operator dentist local to the Palos area (Marist HS grad), practicing alone at 6400 W College Dr. No group, corporate parent, or brand affiliation appears anywhere. Solo owner-operator single location matches true_independent.",
-   "searched": ["Patricoski Dental Palos Heights IL"],
+   "searched": [
+    "Patricoski Dental Palos Heights IL"
+   ],
    "intel": {
     "accepts_medicaid": true,
     "insurance_note": "Accepts Medicaid and most dental insurance plans.",
     "distinguishing_notes": "Long-tenured local dentist (1974 Marist HS grad); member of ADA, Illinois State Dental Society, Illinois AGD, and Chicago Dental Society; patients note short wait times and attentive staff.",
-    "sources": ["https://doctor.webmd.com/doctor/michael-patricoski-79e1cc60-957f-4bf6-9612-b941434bb4bc-overview", "https://www.healthgrades.com/dentist/dr-michael-patricoski-17vrcytf63"]
+    "sources": [
+     "https://doctor.webmd.com/doctor/michael-patricoski-79e1cc60-957f-4bf6-9612-b941434bb4bc-overview",
+     "https://www.healthgrades.com/dentist/dr-michael-patricoski-17vrcytf63"
+    ]
    }
   },
   {
@@ -85,11 +114,22 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Directory listings confirm Dr. Anthony Ilardo, DDS practicing solo at 7440 W College Dr since founding the practice in 1974 (Temple Dental School 1972 grad, prior Navy service); provider_count=1 matches. No corporate parent or DSO signal found anywhere.",
-   "searched": ["Ilardo Dental Palos Heights IL"],
+   "searched": [
+    "Ilardo Dental Palos Heights IL"
+   ],
    "intel": {
-    "services": ["preventive care", "fillings", "crowns", "teeth whitening", "veneers"],
+    "services": [
+     "preventive care",
+     "fillings",
+     "crowns",
+     "teeth whitening",
+     "veneers"
+    ],
     "distinguishing_notes": "Dr. Ilardo has practiced 30+ years since founding in 1974; office uses digital imaging and modern equipment.",
-    "sources": ["https://doctor.webmd.com/doctor/anthony-ilardo-a789d1ea-9db9-424e-8a8d-3e4d37928871-overview", "https://www.healthgrades.com/dentist/dr-antonio-ilardo-2m35f"]
+    "sources": [
+     "https://doctor.webmd.com/doctor/anthony-ilardo-a789d1ea-9db9-424e-8a8d-3e4d37928871-overview",
+     "https://www.healthgrades.com/dentist/dr-antonio-ilardo-2m35f"
+    ]
    }
   },
   {
@@ -108,11 +148,20 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Confirmed as Dr. Ned (Neophytos) Savide's pediatric dental practice at 12001 S Harlem Ave, practicing since 1981 and a Diplomate of the American Board of Pediatric Dentistry / past AAPD board president. The higher provider_count reflects associate dentists at this one location; no corporate parent or brand found, so it stays dentist-owned single_loc_group rather than a chain.",
-   "searched": ["Savide Dental Palos Heights IL 12001 harlem"],
+   "searched": [
+    "Savide Dental Palos Heights IL 12001 harlem"
+   ],
    "intel": {
-    "services": ["pediatric dentistry", "special-needs dental care", "sedation dentistry (off-site surgery center)"],
+    "services": [
+     "pediatric dentistry",
+     "special-needs dental care",
+     "sedation dentistry (off-site surgery center)"
+    ],
     "distinguishing_notes": "Dr. Savide is a Diplomate of the American Board of Pediatric Dentistry and past president of the AAPD board; sedation for special-needs patients is coordinated off-site at Tinley Woods Surgery Center.",
-    "sources": ["https://www.denteldoc.com/location/?id=55107", "https://www.healthgrades.com/dentist/dr-neophytos-savide-yf5c5"]
+    "sources": [
+     "https://www.denteldoc.com/location/?id=55107",
+     "https://www.healthgrades.com/dentist/dr-neophytos-savide-yf5c5"
+    ]
    }
   },
   {
@@ -132,13 +181,28 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "This NPI/address (7350 W College Dr Ste 105) is the legal entity behind the locally-branded 'Gambla Dental,' led by Dr. Brian Gambla with associate dentists including AO James Swanson, serving the southwest suburbs 40+ years. Confirmed a single-location multi-dentist practice; ruled out confusion with the separately-addressed 'College Drive Dental Associates, Ltd' (7550 W College Dr, different NPI/owners) after cross-checking the NPI. No corporate parent or DSO brand found.",
-   "searched": ["\"Dental Associates\" Palos Heights IL 7350 college dr Swanson", "\"College Drive Dental Associates\" Palos Heights James Swanson NPI dentist owned", "NPI 1215146741 \"Dental Associates\" Palos Heights", "\"Gambla Dental\" James Swanson owner Palos Heights \"Dental Associates\""],
+   "searched": [
+    "\"Dental Associates\" Palos Heights IL 7350 college dr Swanson",
+    "\"College Drive Dental Associates\" Palos Heights James Swanson NPI dentist owned",
+    "NPI 1215146741 \"Dental Associates\" Palos Heights",
+    "\"Gambla Dental\" James Swanson owner Palos Heights \"Dental Associates\""
+   ],
    "intel": {
     "website_url": "https://www.gambladental.com/",
     "website_note": "Established local practice site with doctor bios and services pages.",
-    "services": ["cosmetic dentistry", "general dentistry", "TMJ therapy", "professional teeth whitening", "Invisalign"],
+    "services": [
+     "cosmetic dentistry",
+     "general dentistry",
+     "TMJ therapy",
+     "professional teeth whitening",
+     "Invisalign"
+    ],
     "distinguishing_notes": "Trades locally as 'Gambla Dental'; Dr. Brian Gambla is the lead/founding dentist with several associates practicing at the same suite, including Dr. James Swanson (NPPES authorized official).",
-    "sources": ["https://www.gambladental.com/our-office/meet-the-doctor/", "https://www.healthgrades.com/dentist/dr-james-swanson-x7ysv", "https://www.gambladental.com/"]
+    "sources": [
+     "https://www.gambladental.com/our-office/meet-the-doctor/",
+     "https://www.healthgrades.com/dentist/dr-james-swanson-x7ysv",
+     "https://www.gambladental.com/"
+    ]
    }
   },
   {
@@ -157,11 +221,16 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Confirmed as a pediatric-dentistry partnership (Sarlas & Savas) at 7001 W 127th St, with Dr. Peter/Christopher Savas listed as Partner/dentist and licensed in Illinois. Own practice site (patsavasdentistry.com) exists with no mention of a corporate parent or management company. Multi-dentist partnership at one location matches single_loc_group.",
-   "searched": ["Sarlas Savas DDS Palos Heights IL dentist"],
+   "searched": [
+    "Sarlas Savas DDS Palos Heights IL dentist"
+   ],
    "intel": {
     "website_url": "https://www.patsavasdentistry.com/",
     "distinguishing_notes": "Pediatric dentistry partnership; accepts most insurance plans plus cash/check/Discover/MasterCard/Visa; welcomes new patients.",
-    "sources": ["https://www.medicarelist.com/dental-clinic/sarlas-and-savas-dds-ltd-palos-heights-il/", "https://www.patsavasdentistry.com/"]
+    "sources": [
+     "https://www.medicarelist.com/dental-clinic/sarlas-and-savas-dds-ltd-palos-heights-il/",
+     "https://www.patsavasdentistry.com/"
+    ]
    }
   },
   {
@@ -180,7 +249,9 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Directory listings confirm Dr. Clifford Randall Sr, DDS practicing solo at 12219 S Harlem Ave, matching the exact address and phone number. No group, corporate parent, or DSO signal found. Solo, single-location, provider_count=1 matches true_independent.",
-   "searched": ["Randall Dental Palos Heights IL 12219 harlem"]
+   "searched": [
+    "Randall Dental Palos Heights IL 12219 harlem"
+   ]
   },
   {
    "location_id": "130c5e1ff74bd243",
@@ -198,11 +269,18 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Confirmed as Dr. Kenneth Kehl, DDS, solo dentist at 12760 S Harlem Ave, matching address and phone exactly. No corporate parent, group brand, or DSO signal found; single provider matches true_independent.",
-   "searched": ["Kehl Dental Palos Heights IL 12760 harlem"],
+   "searched": [
+    "Kehl Dental Palos Heights IL 12760 harlem"
+   ],
    "intel": {
-    "services": ["family dental care"],
+    "services": [
+     "family dental care"
+    ],
     "distinguishing_notes": "Listed as an oral surgeon in one directory; sources give mixed signals on new-patient acceptance.",
-    "sources": ["https://www.healthgrades.com/dentist/dr-kenneth-kehl-xmkpd", "https://providers.sharecare.com/doctor/dr-kenneth-a-kehl"]
+    "sources": [
+     "https://www.healthgrades.com/dentist/dr-kenneth-kehl-xmkpd",
+     "https://providers.sharecare.com/doctor/dr-kenneth-a-kehl"
+    ]
    }
   },
   {
@@ -221,10 +299,15 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Confirmed Dr. Steven J. Nicorata, DDS practicing at 6741 W 127th St since 1986 (Loyola grad), matching address and phone exactly; own practice site drnicorata.com referenced in results. No corporate parent or DSO signal found. Medium confidence because searches surfaced only Dr. Nicorata individually, not the additional dentist(s) implied by the provider_count/family_practice classification.",
-   "searched": ["Steven Nicorata DDS Palos Heights IL dentist"],
+   "searched": [
+    "Steven Nicorata DDS Palos Heights IL dentist"
+   ],
    "intel": {
     "distinguishing_notes": "Practicing since 1986; extended weekday evening hours (open until 7pm most weekdays).",
-    "sources": ["https://findadentist.ada.org/dentists/dr-steven-j-nicorata-palos-heights-0038V00002yk0qhQAA-a1C8V00000lYRa4UAG", "https://www.healthgrades.com/dentist/dr-steven-nicorata-x63t7"]
+    "sources": [
+     "https://findadentist.ada.org/dentists/dr-steven-j-nicorata-palos-heights-0038V00002yk0qhQAA-a1C8V00000lYRa4UAG",
+     "https://www.healthgrades.com/dentist/dr-steven-nicorata-x63t7"
+    ]
    }
   },
   {
@@ -243,13 +326,26 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "The practice's own website confirms Dr. Zachary (Zac) Young, DDS personally founded and named 'Revival Dentistry' at 7132 W 127th St, matching AO Zachary Young in ctx. No mention of a corporate parent, management company, or additional locations. Solo owner-operator matches true_independent.",
-   "searched": ["Revival Dentistry Palos Heights IL Zachary Young"],
+   "searched": [
+    "Revival Dentistry Palos Heights IL Zachary Young"
+   ],
    "intel": {
     "website_url": "https://www.revivaldentistrypalos.com/",
     "website_note": "Modern, dedicated local-practice site with dentist bio, services, and smile-makeover pages.",
-    "services": ["Invisalign", "dental laser treatment", "sedation dentistry", "cosmetic dentistry", "veneers", "smile makeover"],
+    "services": [
+     "Invisalign",
+     "dental laser treatment",
+     "sedation dentistry",
+     "cosmetic dentistry",
+     "veneers",
+     "smile makeover"
+    ],
     "distinguishing_notes": "Dr. Young is a Fellow of the Academy of General Dentistry, certified Invisalign provider, laser-certified, and sedation-certified via USC's Ostrow School of Dentistry; practice emphasizes handling most care in-house without referring out.",
-    "sources": ["https://www.revivaldentistrypalos.com/meet-the-dentist.html", "https://www.revivaldentistrypalos.com/about-us.html", "https://www.revivaldentistrypalos.com/"]
+    "sources": [
+     "https://www.revivaldentistrypalos.com/meet-the-dentist.html",
+     "https://www.revivaldentistrypalos.com/about-us.html",
+     "https://www.revivaldentistrypalos.com/"
+    ]
    }
   },
   {
@@ -268,10 +364,15 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Confirmed Dr. Lawrence J. Meekma, DDS as a solo general-practice dentist at 7400 W College Dr, matching address and phone exactly. No group, corporate parent, or DSO signal found. Solo owner at one location matches true_independent.",
-   "searched": ["Lawrence Meekma DDS Palos Heights IL dentist"],
+   "searched": [
+    "Lawrence Meekma DDS Palos Heights IL dentist"
+   ],
    "intel": {
     "distinguishing_notes": "Currently not accepting new patients; 4.9-star rating across 8 reviews on Birdeye.",
-    "sources": ["https://lawrencemeekma.dr-leonardo.com/", "https://www.healthgrades.com/dentist/dr-lawrence-meekma-y9p8ybz"]
+    "sources": [
+     "https://lawrencemeekma.dr-leonardo.com/",
+     "https://www.healthgrades.com/dentist/dr-lawrence-meekma-y9p8ybz"
+    ]
    }
   },
   {
@@ -290,11 +391,16 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Confirmed at 7600 W College Dr matching AO Christopher Pavletic; the entity now trades as 'Trine Dental Group,' described as 'formerly Pavletic Pavletic and Vorderer DDS Ltd,' with Dr. Victoria Pavletic-Vorderer among the practicing dentists. No corporate parent or DSO brand found; multi-dentist family partnership at one location matches single_loc_group.",
-   "searched": ["Pavletic Vorderer DDS Palos Heights IL dentist"],
+   "searched": [
+    "Pavletic Vorderer DDS Palos Heights IL dentist"
+   ],
    "intel": {
     "distinguishing_notes": "Rebranded locally as 'Trine Dental Group'; does not accept Medicare or Medicaid per directory listing.",
     "accepts_medicaid": false,
-    "sources": ["https://doctor.webmd.com/practice/pavletic-pavletic-and-vorderer-dds-ltd-817771e5-3870-41a4-9dca-d456aab8c3d7", "https://www.researchgiant.com/dentists-palos-heights-il-60463-26"]
+    "sources": [
+     "https://doctor.webmd.com/practice/pavletic-pavletic-and-vorderer-dds-ltd-817771e5-3870-41a4-9dca-d456aab8c3d7",
+     "https://www.researchgiant.com/dentists-palos-heights-il-60463-26"
+    ]
    }
   },
   {
@@ -313,10 +419,15 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Confirmed Dr. Christian Kubilius, DDS practicing solo at 11950 S Harlem Ave Ste 102, matching address and phone. No group, corporate parent, or DSO signal found; single provider matches true_independent.",
-   "searched": ["Kubilius Dental Palos Heights IL 11950 harlem"],
+   "searched": [
+    "Kubilius Dental Palos Heights IL 11950 harlem"
+   ],
    "intel": {
     "distinguishing_notes": "Offers telehealth services; office is not currently accepting new patients per directory listing.",
-    "sources": ["https://providers.sharecare.com/doctor/dr-christian-d-kubilius", "https://www.healthgrades.com/dentist/dr-christian-kubilius-3xpks"]
+    "sources": [
+     "https://providers.sharecare.com/doctor/dr-christian-d-kubilius",
+     "https://www.healthgrades.com/dentist/dr-christian-kubilius-3xpks"
+    ]
    }
   },
   {
@@ -335,11 +446,20 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Confirmed Dr. Karen Lynn Opferman as President of her own PC at 13305 S Ridgeland Ave, matching AO Karen Opferman exactly. No corporate parent or DSO brand found. Multi-provider (2), single-location, dentist-owned matches single_loc_group.",
-   "searched": ["Karen Opferman DDS Palos Heights IL dentist"],
+   "searched": [
+    "Karen Opferman DDS Palos Heights IL dentist"
+   ],
    "intel": {
-    "services": ["teeth whitening", "clear braces", "bruxism/teeth-grinding treatment"],
+    "services": [
+     "teeth whitening",
+     "clear braces",
+     "bruxism/teeth-grinding treatment"
+    ],
     "distinguishing_notes": "Dr. Opferman is listed as President of the practice's professional corporation; welcomes new patients.",
-    "sources": ["https://www.doctorsnetwork.com/doctors/dentists/palos-heights-il-60463/invite-karen-opferman-dds-16032", "https://npino.com/dental-clinic/1588721971-karen-l.-opferman,-d.d.s.,-p.c./"]
+    "sources": [
+     "https://www.doctorsnetwork.com/doctors/dentists/palos-heights-il-60463/invite-karen-opferman-dds-16032",
+     "https://npino.com/dental-clinic/1588721971-karen-l.-opferman,-d.d.s.,-p.c./"
+    ]
    }
   },
   {
@@ -358,11 +478,21 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Confirmed Dr. Nils F. Sandstrom, DDS, MS practicing at 6400 W College Dr Ste 500 since 1974, matching AO Nils Sandstrom and address exactly. No corporate parent, group brand, or DSO signal found. Solo owner-operator at one location matches true_independent.",
-   "searched": ["Nils Sandstrom DDS Palos Heights IL dentist"],
+   "searched": [
+    "Nils Sandstrom DDS Palos Heights IL dentist"
+   ],
    "intel": {
-    "services": ["dental implants", "orthodontics", "special-care dentistry", "aesthetic dentistry"],
+    "services": [
+     "dental implants",
+     "orthodontics",
+     "special-care dentistry",
+     "aesthetic dentistry"
+    ],
     "distinguishing_notes": "Practice has served Palos Heights, Palos Park, and Palos Hills since 1974.",
-    "sources": ["https://www.yelp.com/biz/nils-f-sandstrom-dds-palos-heights", "https://doctor.webmd.com/doctor/nils-sandstrom-ac3b4f33-4ed7-44af-aeeb-a28608c8eff4-overview"]
+    "sources": [
+     "https://www.yelp.com/biz/nils-f-sandstrom-dds-palos-heights",
+     "https://doctor.webmd.com/doctor/nils-sandstrom-ac3b4f33-4ed7-44af-aeeb-a28608c8eff4-overview"
+    ]
    }
   }
  ]

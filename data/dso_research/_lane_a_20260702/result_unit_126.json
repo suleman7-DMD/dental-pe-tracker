@@ -1,0 +1,423 @@
+{
+ "unit_id": "laneA_126",
+ "classifications": [
+  {
+   "location_id": "52b7922c821e6cb2",
+   "practice_name": "Binder Dental",
+   "zip": "60647",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-stephen-binder-xxnp7",
+    "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60647/invite-stephen-binder-dds-12874"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple directories (Healthgrades, Yelp, DentalPlans, Doctors Network) confirm Dr. Stephen R. Binder, DDS practices solo under his own name at this exact 3900 W Fullerton Ave address/phone. No group or corporate signal found; single provider matches ctx provider_count.",
+   "searched": ["Binder Dental 3900 W Fullerton Ave Chicago"],
+   "intel": {
+    "website_note": "Directory listings show family dentistry, Spanish-language service, and telehealth availability; office hours vary Mon/Wed/Tue/Sat/Thu.",
+    "services": ["family dentistry", "telehealth consults"],
+    "insurance_note": "Accepts Delta Dental, Aetna, Assurant Health, Guardian, MetLife, Humana and others.",
+    "distinguishing_notes": "Dr. Binder speaks Spanish; 5-star Yelp rating, 8.5/10 Healthgrades DI rating from 12 patient ratings.",
+    "sources": [
+     "https://www.healthgrades.com/dentist/dr-stephen-binder-xxnp7",
+     "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60647/invite-stephen-binder-dds-12874"
+    ]
+   }
+  },
+  {
+   "location_id": "a5714245bc2fae33",
+   "practice_name": "DENTAL SURGERY SERVICES, P.C.",
+   "zip": "60647",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.fullsmilefamilydentist.com/meet-the-team",
+    "https://www.fullsmilefamilydentist.com/"
+   ],
+   "evidence_artifacts": ["ein_shared_with_sibling_unit_dental360_entity_unresolved"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This NPI operates publicly as 'Full Smile Family Dentist' at 3939 W Fullerton Ave (phone matches exactly). The practice's own 'Meet the Team' page names Dr. Edison Ishaya as President plus associate dentists Dr. Massad and Dr. Omar - a dentist-owned, multi-provider single-location group with no Dental 360/corporate branding anywhere on-site. Context data shows this NPI's EIN is shared with a same-unit Dental 360 (Family Dental Group) entity, which I could not corroborate with any documentary evidence tying Full Smile itself to that brand, so I did not escalate to stealth_dso; confidence held at medium pending that unresolved signal.",
+   "searched": [
+    "\"Dental Surgery Services\" Chicago Fullerton Steven Fischman dentist",
+    "\"Dental Surgery Services\" 3939 Fullerton Chicago dentist",
+    "\"Full Smile Family Dentist\" Chicago owner dentist \"Dental 360\" OR \"Family Dental Group\"",
+    "\"Full Smile Family Dentist\" Ishaya OR Fischman team doctors"
+   ],
+   "intel": {
+    "website_url": "https://www.fullsmilefamilydentist.com/",
+    "website_note": "Practice site (in business since 2004/1994 per listings) presents as a standard family-dental small-group site; no online-booking widget observed.",
+    "services": ["cleanings", "crowns/bridges/veneers", "dentures", "extractions", "fillings", "implants", "clear aligners", "night/snore guards", "whitening", "periodontal maintenance"],
+    "provider_count_web": 3,
+    "provider_notes": "Dr. Edison Ishaya (President, UIC grad, speaks Assyrian/Russian); Dr. Massad (DMD, UIC); Dr. Omar (DMD, UIC, trilingual English/Spanish/Arabic).",
+    "sources": [
+     "https://www.fullsmilefamilydentist.com/meet-the-team",
+     "https://www.fullsmilefamilydentist.com/"
+    ]
+   }
+  },
+  {
+   "location_id": "c4b5b35fa16e44e5",
+   "practice_name": "FAMILY DENTAL GROUP, INC.",
+   "zip": "60647",
+   "assigned_tier": "branded_dso",
+   "pe_backed": false,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://dental360grp.com/locations/dental-360-north-ave/",
+    "https://dental360grp.com/illinois-locations/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:dental360",
+   "reasoning": "Dental 360's own locator page lists a 'Dental 360 - North Ave' office at 3855 W North Ave, Chicago with phone (773) 782-8900, exactly matching this location's address and phone. This is the branded DSO's own locations page, the strongest available evidence. No PE sponsor for Dental 360 turned up in search, so pe_backed is left false.",
+   "searched": [
+    "\"Family Dental Group\" 3855 North Ave Chicago \"Dental 360\"",
+    "\"Dental 360\" Chicago private equity backed DSO parent company"
+   ],
+   "intel": {
+    "website_url": "https://dental360grp.com/locations/dental-360-north-ave/",
+    "services": ["family dentistry", "implants", "pediatric/kids dentistry", "braces", "emergency dentistry"],
+    "provider_notes": "Healthgrades group listing names Dr. Georgia Kalkanis, Dr. Elianora Lutin, Dr. Sharon Sorensen, Dr. Gabriel Vida, Dr. Paula Zafra Acosta as practicing at this address.",
+    "distinguishing_notes": "Part of the Dental 360 multi-office Illinois network (dental360grp.com/illinois-locations/).",
+    "sources": [
+     "https://dental360grp.com/locations/dental-360-north-ave/",
+     "https://www.healthgrades.com/group-directory/il-illinois/chicago/family-dental-group-x23tlg"
+    ]
+   }
+  },
+  {
+   "location_id": "144d631a4c4dce2b",
+   "practice_name": "INFANT WELFARE SOCIETY OF CHICAGO",
+   "zip": "60647",
+   "assigned_tier": "institutional",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://iwsfamilyhealth.org/services/dental-3/",
+    "https://iwsfamilyhealth.org/locations/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "IWS Family Health (Infant Welfare Society of Chicago) is a nonprofit community health organization; its own site describes the dental program at the Angel Harvey Family Health Center, 3600 W Fullerton Ave (matches address/phone exactly), serving medically underserved families since 1970. Clear institutional/nonprofit clinic, not a private practice.",
+   "searched": ["\"Infant Welfare Society of Chicago\" dental clinic 3600 Fullerton"],
+   "intel": {
+    "website_url": "https://iwsfamilyhealth.org/services/dental-3/",
+    "website_note": "Nonprofit community health center site describing prevention/treatment dental services and oral health education for children and adults.",
+    "distinguishing_notes": "Extended hours (Mon/Wed/Thu 8am-8pm; 2nd/4th Saturday 8am-2pm); part of the Angel Harvey Family Health Center; incorporated pediatric dentistry services since 1970.",
+    "sources": ["https://iwsfamilyhealth.org/services/dental-3/", "https://iwsfamilyhealth.org/locations/"]
+   }
+  },
+  {
+   "location_id": "7e94b892a5388c62",
+   "practice_name": "Daza Dental",
+   "zip": "60647",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://paccgc.co/member-directory/bucktown-wicker-park-dental/",
+    "https://www.zocdoc.com/dentist/melissa-daza-mondero-dds-109895"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Melissa Daza, DDS operates 'Bucktown Wicker Park Dental' at 2303 W North Ave (matches address), an all-women office serving the area 30+ years, consistent with ctx provider_count=2. A separate 'Modern Smiles' site lists a Dr. Daza among 4 associates at two different Chicago addresses (Broadway/Old Town) that I could not reconcile as the same brand/location, so I kept this classification scoped to the confirmed address and held confidence at medium rather than extending to a multi-location tier.",
+   "searched": [
+    "Daza Dental 2303 W North Ave Chicago dentist",
+    "modernsmileschicago.com meet-dr-daza (fetch)"
+   ],
+   "intel": {
+    "website_note": "Bucktown Wicker Park Dental: cosmetic, implant, and integrative dentistry, all-women office.",
+    "provider_notes": "Dr. Melissa Daza, 1995 Northwestern University Dental School graduate; GPR and TMJ/oral medicine postgraduate training at UCSF; speaks Spanish.",
+    "owner_career_stage": "late_career",
+    "sources": [
+     "https://paccgc.co/member-directory/bucktown-wicker-park-dental/",
+     "https://www.zocdoc.com/dentist/melissa-daza-mondero-dds-109895"
+    ]
+   }
+  },
+  {
+   "location_id": "fc010516c3e5b18d",
+   "practice_name": "DENTAL PROFILE",
+   "zip": "60647",
+   "assigned_tier": "stealth_dso",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.linkedin.com/in/milan-roncevic-303a3810/",
+    "https://www.zoominfo.com/p/Milan-Roncevic/-1532607631"
+   ],
+   "evidence_artifacts": ["ao_cluster:Milan_Roncevic_5_IL_zips(60101,60120,60630,60634,60647)"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:RONCEVIC_MILAN",
+   "reasoning": "NPPES lists this location's authorized official as Milan Roncevic, reaching 5 IL locations. LinkedIn/ZoomInfo confirm Roncevic holds 'CEO' titles across several separately-branded Chicago dental entities (Chicago Tooth Fairy, Milan Dental Associates, Chicago All Care Dental Group, Major Dental Clinics of Chicago, iDENTical Smiles) rather than practicing as a dentist himself, while the clinical dentist seeing patients here is Dr. Husam Aldairi - a non-dentist controller running a multi-location, multi-brand network without overt single national branding, matching stealth_dso.",
+   "searched": [
+    "\"Dental Profile\" 2556 W North Ave Chicago Milan Roncevic dentist",
+    "\"Milan Roncevic\" dental CEO Chicago LinkedIn management company",
+    "\"Dental Profile\" Chicago dentist 2556 North Ave website",
+    "\"Milan Roncevic\" DDS dentist license Illinois OR \"not a dentist\"",
+    "\"Chicago All Care Dental\" OR \"Major Dental Clinics of Chicago\" Roncevic locations"
+   ]
+  },
+  {
+   "location_id": "be46a645a5533cf3",
+   "practice_name": "NEW ENGLAND DENTAL GROUP, P.C.",
+   "zip": "60647",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.logansquaresmiles.com/contact-us.html",
+    "https://www.zocdoc.com/dentist/kenneth-dong-chae-dds-26305"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:CHAE_KENNETH",
+   "reasoning": "Practice operates as 'Bright Dental of Logan Square' under the professional entity 'Kenneth Chae DDS and Associates'; its own contact page confirms Dr. Kenneth Chae as practice leader and also names a sister office, New England Dental Group of Elmwood Park, so this is a dentist-owned network of 2+ locations, not a corporate DSO.",
+   "searched": ["\"New England Dental Group\" 3300 Armitage Chicago Kenneth Chae"],
+   "intel": {
+    "website_url": "https://www.logansquaresmiles.com/contact-us.html",
+    "provider_notes": "Dr. Kenneth (Dong) Chae, DDS, University of Illinois Urbana-Champaign Bioengineering graduate with Distinction; speaks English, Spanish, Korean.",
+    "distinguishing_notes": "Second office operates as New England Dental Group of Elmwood Park.",
+    "sources": [
+     "https://www.logansquaresmiles.com/contact-us.html",
+     "https://www.zocdoc.com/dentist/kenneth-dong-chae-dds-26305"
+    ]
+   }
+  },
+  {
+   "location_id": "7eaffe2b99d33968",
+   "practice_name": "Lee Dental",
+   "zip": "60647",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/orland-oaks-dental-orland-park",
+    "https://www.vitadox.com/doctor/orland-park-il-60467/jay-lee-dmd/brmQP6ZQ9RgzhhX3sKCCq"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This NPI's address/phone (10730 165th St, (708) 460-3040) operates publicly as 'Orland Oaks Dental,' explicitly described as family owned and operated for nearly 40 years, with multiple dentists (Jay Lee, Philip Cole, Robert Stanford, Brian Walczak) at the one location. No corporate/DSO signal found.",
+   "searched": ["\"Lee Dental\" 10730 165th St Orland Park IL dentist"],
+   "intel": {
+    "website_note": "Orland Oaks Dental: open late/weekends, same-day appointments, staff speak Spanish and Polish.",
+    "provider_notes": "Dr. Jay Lee, DMD; Dr. Philip Cole, DDS; Dr. Robert Stanford, DDS; Dr. Brian Walczak, DDS.",
+    "distinguishing_notes": "Serves Orland Park, Homer Glen, Mokena, Tinley Park and surrounding areas for nearly 40 years.",
+    "sources": ["https://www.yelp.com/biz/orland-oaks-dental-orland-park"]
+   }
+  },
+  {
+   "location_id": "48395fa30fb6bf6b",
+   "practice_name": "Cajiao Dental",
+   "zip": "60647",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/flavio-a-cajiao-dds-chicago",
+    "https://www.healthgrades.com/dentist/dr-flavio-cajiao-2ch4f"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple directories confirm Dr. Flavio A. Cajiao, DDS practices under his own name at 2605 N Milwaukee Ave (phone matches). One directory aggregation also surfaced a 6033 W Belmont Ave listing for the same name, but ctx NPPES owner_reach for this AO shows only 1 IL location and I found no documentary link confirming active co-ownership of both addresses as one network, so I did not escalate to a multi-location tier; confidence held at medium.",
+   "searched": [
+    "Cajiao Dental 2605 N Milwaukee Ave Chicago dentist",
+    "\"Flavio Cajiao\" DDS \"6033 W Belmont\" Chicago dentist owner"
+   ],
+   "intel": {
+    "provider_notes": "Dr. Flavio A. Cajiao, DDS, University of Illinois at Chicago graduate; speaks Spanish.",
+    "sources": ["https://www.healthgrades.com/dentist/dr-flavio-cajiao-2ch4f"]
+   }
+  },
+  {
+   "location_id": "33bc890d9aed9341",
+   "practice_name": "CHICAGOLAND DENTAL ASSOCIATES PC",
+   "zip": "60647",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-yasser-elseweifi-xdrx4",
+    "https://www.zocdoc.com/dentist/yasser-elseweifi-dds-fagd-67122"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Operates publicly as 'Bucktown Dental Associates' at 2002 N Damen Ave (phone matches). Dr. Yasser Elseweifi, DDS, FAGD (35+ years experience) is the sole named dentist across multiple independent directories; no group or corporate branding found, consistent with ctx provider_count=1.",
+   "searched": ["\"Chicagoland Dental Associates\" 2002 N Damen Ave Chicago Yasser Elseweifi"],
+   "intel": {
+    "provider_notes": "Dr. Yasser Elseweifi, DDS, FAGD, University of Alexandria Faculty of Dentistry 1985 graduate; Fellow of the Academy of General Dentistry; speaks Arabic and Spanish.",
+    "services": ["general dentistry", "cosmetic dentistry", "implant dentistry", "sedation dentistry (children and adults)", "special needs dentistry"],
+    "owner_career_stage": "late_career",
+    "sources": [
+     "https://www.healthgrades.com/dentist/dr-yasser-elseweifi-xdrx4",
+     "https://www.zocdoc.com/dentist/yasser-elseweifi-dds-fagd-67122"
+    ]
+   }
+  },
+  {
+   "location_id": "4d5aa903a1f34565",
+   "practice_name": "METRO DENTAL LLC",
+   "zip": "60647",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.opencare.com/dentists/chicago-il/metro-dental-24630067656c/",
+    "https://www.dentalplans.com/dentists/illinois/chicago-heights/60411/dr-inchun-yang-95440"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:YANG_INCHUN",
+   "reasoning": "Dr. Inchun (Scott) Yang, DDS is named CEO of Metro Dental LLC at this exact address/phone, and web sources describe him operating additional offices including Calumet City and South Chicago Heights - matching ctx NPPES owner_reach across 3 IL zips (60016, 60411, 60647). Dentist-owned multi-location group, no corporate/PE signal.",
+   "searched": ["\"Metro Dental\" 2746 W Fullerton Ave Chicago \"Inchun Yang\""],
+   "intel": {
+    "provider_notes": "Dr. Inchun (Scott) Yang, DDS, CEO; speaks English, Spanish, Korean.",
+    "distinguishing_notes": "Family dental office in Logan Square near the CTA Blue Line; part of a small multi-office group (Chicago, Calumet City, South Chicago Heights).",
+    "sources": ["https://www.opencare.com/dentists/chicago-il/metro-dental-24630067656c/"]
+   }
+  },
+  {
+   "location_id": "c42bbfd07106f9f2",
+   "practice_name": "1ST FAMILY DENTAL OF LOGAN SQUARE",
+   "zip": "60647",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "structural",
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/logan-square/",
+    "https://1stfamilydental.com/locations/"
+   ],
+   "evidence_artifacts": ["ao_cluster:Vesna_Belkic_15_IL_zips", "network_scale_exceeds_10_locations"],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": "brand:1stfamilydental",
+   "reasoning": "R4_protected_network:1stFamilyDental - NPPES AO Vesna Belkic reaches 15 IL locations under the '1st Family Dental' brand, and web search confirms this is a genuine multi-office Chicagoland chain (locations page lists many offices; general manager title for Belkic). The brand's own site lists its Logan Square office at 2511 N Milwaukee Ave, while this record's address is 2551 N Milwaukee Ave - an address discrepancy I could not resolve. Given the network exceeds the 10-location protected-network threshold, deferring to a one-network-one-decision review rather than classifying here.",
+   "searched": ["\"1st Family Dental\" Logan Square 2551 N Milwaukee Ave Chicago Vesna Belkic"]
+  },
+  {
+   "location_id": "c50218cf868c55f8",
+   "practice_name": "IAN W. HOFFMAN D.D.S. LTD.",
+   "zip": "60647",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/ian-w-hoffman-dds-chicago",
+    "https://findadentist.ada.org/dentists/dr-ian-william-hoffman-chicago-0038V00002yjb78QAA-a1C8V00000lXx76UAC"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:HOFFMAN_IAN",
+   "reasoning": "'Ian W. Hoffman D.D.S. Ltd.' is the dentist's own professional corporation. NPPES shows this AO reaching 2 IL locations (60622 and 60647), and web listings confirm a second Hoffman office at 2649 W Division St (60622) alongside this Milwaukee Ave/60647 location - a dentist-owned 2-location practice, not a corporate network.",
+   "searched": ["\"Ian W. Hoffman\" DDS 2603 N Milwaukee Ave Chicago dentist"]
+  },
+  {
+   "location_id": "c01fc292b2a4aed8",
+   "practice_name": "YJK DENTAL LLC",
+   "zip": "60647",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/delight-dental-studio-chicago",
+    "https://www.delightdentalstudio.com/contact-us/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This NPI operates as 'Delight Dental Studio' at 1651 N Western Ave (phone matches exactly), presided over by Dr. Yoonju Kim, DDS. No other locations or corporate/DSO affiliation found, consistent with ctx provider_count=1 and owner_reach=1.",
+   "searched": ["\"YJK Dental\" 1651 N Western Ave Chicago dentist"],
+   "intel": {
+    "website_url": "https://www.delightdentalstudio.com/contact-us/",
+    "provider_notes": "Dr. Yoonju Kim, DDS, President.",
+    "services": ["general and cosmetic dentistry", "Invisalign", "Zoom whitening", "dental implants", "root canal treatment", "crowns/bridges/veneers", "dentures", "tooth extraction (incl. wisdom teeth)"],
+    "distinguishing_notes": "Welcomes walk-ins and emergency cases; serves Bucktown, Wicker Park, Logan Square.",
+    "sources": [
+     "https://www.yelp.com/biz/delight-dental-studio-chicago",
+     "https://www.delightdentalstudio.com/contact-us/"
+    ]
+   }
+  },
+  {
+   "location_id": "b18493944a3e66c9",
+   "practice_name": "Impress",
+   "zip": "60647",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/the-art-of-dental-care-chicago-3",
+    "https://www.artofdentalcare.com/about-us/our-team/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This address/phone (2101 N Damen Ave, (773) 227-8005) operates publicly as 'The Art of Dental Care,' owned by Dr. Mary Ann Kim, DDS (took ownership in 2012; practice founded 1998). Despite the NPI's legal name 'Impress,' there is no connection to the international Impress orthodontic chain, whose actual Chicago (Wicker Park) location is a separate address at 1620 N Damen Ave. Solo dentist-owned, single location.",
+   "searched": [
+    "Impress dental clinic 2101 N Damen Ave Chicago",
+    "\"The Art of Dental Care\" 2101 Damen Chicago dentist owner"
+   ],
+   "intel": {
+    "website_note": "Practice operating since 1998 under current ownership since 2012; general, cosmetic, and orthodontic services.",
+    "provider_notes": "Dr. Mary Ann Kim, DDS, owner/operator.",
+    "distinguishing_notes": "Located in Bucktown; NPI legal/org name 'Impress' does not match its public DBA 'The Art of Dental Care' and is unrelated to the international Impress ortho/aligner brand.",
+    "sources": [
+     "https://www.yelp.com/biz/the-art-of-dental-care-chicago-3",
+     "https://www.artofdentalcare.com/about-us/our-team/"
+    ]
+   }
+  },
+  {
+   "location_id": "6bce9a480d76c1f6",
+   "practice_name": "Fatah, Maria DDS",
+   "zip": "60647",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/blue-line-dental-chicago",
+    "https://bluelinedental.com/our-practice/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Phone (773) 227-2110 matches 'Blue Line Dental' at 2009 W North Ave, a family-owned practice run by Dr. Robert Marrero, DDS, established 1970. Dr. Maria Fatah (the NPI's individual name) appears to be an associate dentist there rather than the practice's public face; provider_count=1 in ctx is at odds with the dual-dentist naming, so confidence is held at medium. No DSO/corporate signal found either way.",
+   "searched": ["\"(773) 227-2110\" dentist Chicago"],
+   "intel": {
+    "website_note": "Blue Line Dental: family-owned and operated general dentistry practice since 1970.",
+    "provider_notes": "Dr. Robert Marrero, DDS (practice lead per own site); Dr. Maria Fatah is the NPI-registered individual at this address.",
+    "insurance_note": "Accepts most HMO and PPO insurance plans.",
+    "sources": [
+     "https://www.yelp.com/biz/blue-line-dental-chicago",
+     "https://bluelinedental.com/our-practice/"
+    ]
+   }
+  }
+ ]
+}

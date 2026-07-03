@@ -1,0 +1,430 @@
+{
+ "unit_id": "laneA_168",
+ "classifications": [
+  {
+   "location_id": "6e3b3152c6fdc3cb",
+   "practice_name": "CALUMET PARK DENTAL INC.",
+   "zip": "60827",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/essof-shameema-dds-cal-pk-dental-center-calumet-park"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searched the practice (Cal Park Dental Center, Dr. Shameema Essof) and its closure status. Multiple stale directories still list it active, but the Yelp business listing (most recently updated, Jan 2026) explicitly flags it CLOSED. closure_suspect: treating as undetermined per hard rule rather than guessing a tier for a possibly-shuttered office.",
+   "searched": [
+    "Calumet Park Dental 1328 W 127th St Calumet Park IL dentist",
+    "\"Cal Park Dental Center\" Calumet Park IL closed permanently"
+   ]
+  },
+  {
+   "location_id": "92c2cb500a9269b7",
+   "practice_name": "IVANHOE DENTAL GROUP, LTD.",
+   "zip": "60827",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.ivanhoedental.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Fetched the practice's own website (ivanhoedental.com). It describes a single-location, multi-dentist office (Dr. Salem, Dr. Shah, Dr. Reddy, Dr. Arrietta) open since 1958, calling itself 'family operated' with no corporate parent, management company, or DSO branding mentioned. Matches the 10-provider large_group classification at one address with no non-dentist control signal, so single_loc_group (T2) rather than a DSO tier. Medium confidence because no single named owner-dentist was identified on the page.",
+   "searched": [
+    "Ivanhoe Dental Group Riverdale IL 144th St",
+    "fetch https://www.ivanhoedental.com/"
+   ],
+   "intel": {
+    "website_url": "https://www.ivanhoedental.com/",
+    "website_note": "Established multi-provider practice site with services/hours pages; positions itself as family-operated, serving the community since 1958.",
+    "services": ["general dentistry", "cosmetic dentistry", "root canals", "tooth extraction", "cleanings", "periodontal cleaning", "whitening", "sealants", "fillings", "dentures", "bonding", "crowns", "bridges", "scaling and root planing", "gum treatment", "implants"],
+    "provider_count_web": 4,
+    "provider_notes": "Site lists Dr. Salem, Dr. Shah, Dr. Reddy, and Dr. Arrietta as providers; no individual bios or grad years shown.",
+    "distinguishing_notes": "In continuous operation since 1958 (68 years); runs a $49 new-patient exam+x-ray special and up to $1500 off implants.",
+    "sources": ["https://www.ivanhoedental.com/"]
+   }
+  },
+  {
+   "location_id": "744795064f298abe",
+   "practice_name": "Cable Dental",
+   "zip": "60827",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-bruce-cable-3h8bv",
+    "https://birdeye.com/riverdale-dental-center-pc-155095988778322"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple independent directories (Healthgrades, Birdeye, Sharecare, WebMD) consistently identify Dr. Bruce M. Cable, DDS as the sole/named dentist of this single-location office ('Riverdale Dental Center PC'), family-operated for over 30 years with no corporate or DSO signal. Matches solo_established classification cleanly.",
+   "searched": [
+    "Cable Dental Riverdale IL 144th St dentist"
+   ],
+   "intel": {
+    "website_note": "No dedicated branded website found; presence is via directory/review aggregators.",
+    "google_rating": 4.9,
+    "google_review_count": 194,
+    "google_source_url": "https://birdeye.com/riverdale-dental-center-pc-155095988778322",
+    "distinguishing_notes": "Family-operated over 30 years; bilingual Spanish-speaking staff.",
+    "sources": ["https://birdeye.com/riverdale-dental-center-pc-155095988778322", "https://www.healthgrades.com/dentist/dr-bruce-cable-3h8bv"]
+   }
+  },
+  {
+   "location_id": "b57d867e22fe6bb0",
+   "practice_name": "MALLARD DENTAL INC",
+   "zip": "60101",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/mallard-dental-addison"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searched Mallard Dental Inc (Dr. Konstadina Aralles) at 33 S Addison Rd. The Yelp business listing (updated June 2026, the most recent status signal found) reads 'MALLARD DENTAL - CLOSED.' closure_suspect: not classifying a tier for a practice that current evidence suggests has shut down.",
+   "searched": [
+    "Mallard Dental Addison IL Addison Rd dentist",
+    "\"Mallard Dental\" Addison IL Konstadina Aralles closed OR \"no longer\""
+   ]
+  },
+  {
+   "location_id": "2f05217c087fc412",
+   "practice_name": "STEVEN C. OLTEAN DDS AND ASSOCIATES, PC",
+   "zip": "60101",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://dentistoffices.com/dentist-office/347892/addison-il/steven-c-oltean-dds-and-associates-pc/",
+    "https://findadentist.ada.org/il/lake/grayslake/oral-and-maxillofacial-surgery/dr-steven-c-oltean-3505351"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Steven C. Oltean, DDS is a licensed oral & maxillofacial surgeon whose primary named practice is 'Northern Lakes Oral Surgery' in Grayslake, IL; this Addison PC appears to be a separately-named satellite/associates practice bearing his own name, with the AO matching the dentist exactly. No documentary evidence (a single site listing both offices as one multi-location group) was found to support dentist_multi, so treated as a solo dentist-owned single location per the source classification.",
+   "searched": [
+    "Steven Oltean DDS Addison IL Lake St dentist",
+    "\"Steven C. Oltean\" \"715 W Lake\" Addison OR \"DDS and Associates\" Addison IL"
+   ],
+   "intel": {
+    "provider_notes": "Dr. Steven C. Oltean - oral & maxillofacial surgeon, residency at Loyola University Medical Center, DDS from Case Western Reserve University; primary listed practice is Northern Lakes Oral Surgery and Dental Implant Center in Grayslake, IL.",
+    "distinguishing_notes": "Oral-surgery specialist background; the Addison PC listing may function as a satellite/associates office distinct from his main Grayslake surgical practice.",
+    "sources": ["https://northernlakesoralsurgery.com/doctor.php", "https://findadentist.ada.org/il/lake/grayslake/oral-and-maxillofacial-surgery/dr-steven-c-oltean-3505351"]
+   }
+  },
+  {
+   "location_id": "50eb4e2c8c67c139",
+   "practice_name": "DENTAL ESSENCE, LTD",
+   "zip": "60101",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dentalessence.com/about/our-doctors/",
+    "https://www.yelp.com/biz/dental-essence-addison"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice's own website confirms Dr. Paul N. Greico (Loyola dental school, 1989) opened Dental Essence in 2005; a second Greico (Nicholas) is also listed, consistent with the family_practice classification (2 providers, shared surname) at one Addison location. No corporate/DSO signal found. Dentist-owned single-location group practice.",
+   "searched": [
+    "Dental Essence Addison IL Lake St dentist Greico"
+   ],
+   "intel": {
+    "website_url": "https://www.dentalessence.com/",
+    "website_note": "Polished branded site with doctor bios, technology, and team pages; markets a 'European setting' family atmosphere.",
+    "provider_notes": "Dr. Paul N. Greico - BS Biology, Loyola University Chicago; DDS Cum Laude, Loyola University School of Dentistry, 1989; opened Dental Essence in 2005. Nicholas Greico also listed as a provider (likely family member).",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Positioned as family-owned with a warm, relaxed 'dinner table' patient experience.",
+    "sources": ["https://www.dentalessence.com/about/our-doctors/", "https://www.yelp.com/biz/dental-essence-addison"]
+   }
+  },
+  {
+   "location_id": "86df7d2ce7507196",
+   "practice_name": "Jain Family Dental Ctr",
+   "zip": "60101",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.doctor.com/Dr-Jain-Manohar",
+    "https://www.healthgrades.com/dentist/dr-manohar-jain-3hjtp"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:jain_dental",
+   "reasoning": "Directory bio confirms Dr. Manohar Jain, DDS personally opened this Addison practice and later a second 'Jain Dental' location in Lombard, IL, and is described as the owner of both operating under the same practice name. This is dentist-owned, 2 locations, own-name brand - textbook dentist_multi (T3), not a corporate DSO.",
+   "searched": [
+    "Jain Family Dental Addison IL",
+    "Manohar Jain DDS Addison Lombard dental locations owner"
+   ],
+   "intel": {
+    "website_url": "https://www.doctor.com/Dr-Jain-Manohar",
+    "provider_notes": "Dr. Manohar Jain, DDS - graduate of the State University of New York at Buffalo; practiced in Chicago before opening this Addison office, then a second Lombard office.",
+    "distinguishing_notes": "Owner-operated two-location 'Jain Dental' group (Addison + Lombard); Dr. Jain performs most treatments himself, including implants, dentures, extractions, root canals, crowns & bridges.",
+    "sources": ["https://www.doctor.com/Dr-Jain-Manohar", "https://www.healthgrades.com/dentist/dr-manohar-jain-3hjtp"]
+   }
+  },
+  {
+   "location_id": "10a8d75e091e7a98",
+   "practice_name": "Leischner Dental",
+   "zip": "60101",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.manta.com/c/mry7kgm/thomas-r-leischner-sr",
+    "http://www.dentist-network.com/Thomas_R_Leischner_General_Dentistry_in_Addison_Illinois_34485"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Business/directory listings confirm Thomas Robert Leischner Sr, DDS operates this single-location general dentistry practice, established 2010, ~4 staff, no other locations or corporate affiliation found. Matches solo_established -> true_independent (T1).",
+   "searched": [
+    "Leischner Dental Addison IL Stone Ave dentist"
+   ],
+   "intel": {
+    "provider_notes": "Thomas R. Leischner Sr, DDS; General Dentistry; practice established 2010 with approximately 4 staff members.",
+    "sources": ["https://www.manta.com/c/mry7kgm/thomas-r-leischner-sr"]
+   }
+  },
+  {
+   "location_id": "7374050e4b7d7ded",
+   "practice_name": "Escalante Dental",
+   "zip": "60101",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-josephine-escalante-y4ykf"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directory listing confirms Dr. Josephine Escalante, DMD as the named practitioner at this single Addison address, consistent with the solo_established source classification; no other providers, DSO, or corporate signal found. Evidence is thin (one directory hit) hence medium rather than high confidence.",
+   "searched": [
+    "Escalante Dental Addison IL Lake St dentist"
+   ]
+  },
+  {
+   "location_id": "13b38618b4b921be",
+   "practice_name": "FIRST DENTAL IMAGE INC.",
+   "zip": "60101",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://firstdentalimage.com/"
+   ],
+   "evidence_artifacts": [
+    "authorized official Vesna Belkic independently confirmed practicing/listed as manager across multiple 1st Family Dental branches (Fox Valley/Aurora, West Roseland) and as AO for a separate Advanced Dental Group Inc entity in Chicago",
+    "on-site provider Dr. Albert (Abdullah) Abboud shares a surname with 1st Family Dental founder Dr. Ghassan Abboud",
+    "1st Family Dental chain independently confirmed to span 13+ IL locations (Addison, Albany Park, Andersonville, Arlington Heights, Burr Ridge, Chicago, Elgin, Fox Valley, La Grange Park, Little Village, Logan Square, Mount Prospect, Pulaski)"
+   ],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:1st_family_dental",
+   "reasoning": "R4_protected_network:1st Family Dental / Abboud-Belkic network. Web research did not prove First Dental Image is formally the same legal brand as 1st Family Dental, but independently found personnel overlap (its AO Vesna Belkic tied to multiple 1st Family Dental branches; an on-site provider surnamed Abboud, same as the 1st Family Dental founder) pointing at a network exceeding 10 locations. Per protocol, not classifying a network-scale signal at the single-unit level - deferring to one-network-one-decision review.",
+   "searched": [
+    "\"First Dental Image\" Addison IL Vesna Belkic dentist",
+    "fetch https://firstdentalimage.com/about-us/ (403)",
+    "fetch https://firstdentalimage.com/first-dental-image (403)",
+    "\"Vesna Belkic\" dentist OR dental Illinois",
+    "\"First Dental Image\" Addison \"1st Family Dental\" OR network OR \"affiliated\""
+   ],
+   "intel": {
+    "provider_notes": "Search snippets cite Dr. Albert (Abdullah) Abboud, a Loma Linda University graduate with advanced prosthodontics/implant training, as a provider at this address.",
+    "services": ["preventive cleanings", "tooth-colored fillings", "dental implants", "veneers", "orthodontics", "tooth extractions", "oral surgery"],
+    "sources": ["https://firstdentalimage.com/"]
+   }
+  },
+  {
+   "location_id": "d70b6f43b5198a72",
+   "practice_name": "Diamantakos Dental",
+   "zip": "60101",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.doctorsnetwork.com/doctors/dentists/addison-il-60101/invite-demetrios-diamantakos-dds-pc-12285",
+    "https://npiprofile.com/npi/1053479972"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Demetrios Diamantakos, DDS PC is the named owner-entity at this single Addison address; the practice offers a broad general-dentistry menu under his own PC name with no corporate parent, franchise, or DSO brand found. Consistent with the large_group (multi-provider, single location, dentist-named PC) source classification - single_loc_group (T2).",
+   "searched": [
+    "Diamantakos Dental Addison IL Moreland Ave dentist"
+   ],
+   "intel": {
+    "website_note": "Presence via directory profiles with a published fee schedule rather than a dedicated branded website.",
+    "services": ["sedation dentistry", "adult braces", "reconstructions", "oral infection treatment", "veneers", "fillings", "crowns", "root canals", "implants", "dentures", "extractions", "Invisalign", "teeth whitening"],
+    "google_rating": 4.1,
+    "google_review_count": 14,
+    "google_source_url": "https://providers.sharecare.com/doctor/dr-demetrios-diamantakos",
+    "sources": ["https://www.doctorsnetwork.com/doctors/dentists/addison-il-60101/invite-demetrios-diamantakos-dds-pc-12285", "https://providers.sharecare.com/doctor/dr-demetrios-diamantakos"]
+   }
+  },
+  {
+   "location_id": "c210c1c3ded750e3",
+   "practice_name": "LUCY SHAH DDS PC",
+   "zip": "60101",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://addisondentalstudio.com/staff/lucy-shah-dds/",
+    "https://addisondentalstudio.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice's own branded website ('Addison Dental Studio') names Dr. Lucy Shah, DDS as the leader of this single-location practice with 15+ years experience, matching the solo_high_volume classification. No corporate, franchise, or DSO signal found. True_independent (T1).",
+   "searched": [
+    "\"Lucy Shah\" DDS Addison IL dentist"
+   ],
+   "intel": {
+    "website_url": "https://addisondentalstudio.com/",
+    "website_note": "Branded site 'Addison Dental Studio' with staff bio, reviews, and services pages.",
+    "services": ["preventive care", "crowns", "implants", "dentures", "root canals", "extractions", "Invisalign"],
+    "provider_notes": "Dr. Lucy Shah, DDS - over 15 years of experience, 600+ hours of continuing education; serves Addison, Wood Dale, Bloomingdale, Itasca and surrounding communities.",
+    "owner_career_stage": "mid_career",
+    "sources": ["https://addisondentalstudio.com/staff/lucy-shah-dds/", "https://addisondentalstudio.com/"]
+   }
+  },
+  {
+   "location_id": "749eed72f0e57a93",
+   "practice_name": "ACCESS DENTAL CENTER",
+   "zip": "60101",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.accessdentalcenter.org/meet-the-doctors"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:access_dental_center",
+   "reasoning": "The practice's own 'Meet the Doctors' page names Dr. Imaad Shaikh, DDS as Founder/Owner of Access Dental Center, operating across two IL locations (Addison + Naperville) with Dr. Zoya Shaikh also on staff. This overturns the source data's dso_national/affiliated_dso tag - documentary evidence shows single dentist-owner control across 2 locations, matching dentist_multi (T3), not a branded DSO. Per hard rules, AO/EIN reach alone would not support T5, and here the practice's own site confirms a dentist-owner network instead.",
+   "searched": [
+    "Access Dental Center Addison IL 276 W Fullerton locator",
+    "fetch https://www.accessdentalcenter.org/meet-the-doctors"
+   ],
+   "intel": {
+    "website_url": "https://www.accessdentalcenter.org/",
+    "website_note": "Professional branded site with doctor bios, services, and locations info (Addison + Naperville).",
+    "services": ["Endodontics", "Oral Surgery", "Restorative", "Prosthodontics", "Implants", "Cosmetic Dentistry", "Root canals", "Extractions", "Crowns & Bridges", "Porcelain Veneers", "Deep Cleanings"],
+    "provider_notes": "Dr. Imaad Shaikh, DDS (Founder/Owner, 25+ years, Case Western Reserve grad); Dr. Zoya Shaikh, DMD (also Case Western Reserve grad).",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Two-location group (Addison + Naperville) founded and personally owned by Dr. Imaad Shaikh.",
+    "sources": ["https://www.accessdentalcenter.org/meet-the-doctors", "https://www.accessdentalcenter.org/"]
+   }
+  },
+  {
+   "location_id": "86f0b24aac6e0fff",
+   "practice_name": "DENTAL PROFILE 2",
+   "zip": "60101",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/addison/",
+    "https://1stfamilydental.com/team/dr-ghassan-abboud/"
+   ],
+   "evidence_artifacts": [
+    "1st Family Dental founded 1996 by Dr. Ghassan Abboud, grown to more than a dozen IL locations",
+    "named IL locations found: Addison, Albany Park, Andersonville, Arlington Heights, Burr Ridge, Chicago, Elgin, Fox Valley, La Grange Park, Little Village, Logan Square, Mount Prospect, Pulaski (13+)"
+   ],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:1st_family_dental",
+   "reasoning": "R4_protected_network:1st Family Dental (Dr. Ghassan Abboud). Confirmed via the brand's own site that this Addison address (120 E Lake St, opened 2016) is a branch of 1st Family Dental, a chain independently verified to span 13+ IL locations - well over the 10-location threshold. Per protocol, deferring to one-network-one-decision review rather than classifying this single unit.",
+   "searched": [
+    "\"1st Family Dental\" Illinois owner OR founder OR CEO dental chain",
+    "fetch https://1stfamilydental.com/locations/addison/"
+   ],
+   "intel": {
+    "website_url": "https://1stfamilydental.com/locations/addison/",
+    "website_note": "Multi-location chain site (1st Family Dental) with a dedicated Addison location page.",
+    "distinguishing_notes": "Part of the 13+ location 1st Family Dental chain founded 1996 by Dr. Ghassan Abboud; this Addison branch opened Spring 2016.",
+    "sources": ["https://1stfamilydental.com/locations/addison/", "https://1stfamilydental.com/team/dr-ghassan-abboud/"]
+   }
+  },
+  {
+   "location_id": "cbd45aceeec52e53",
+   "practice_name": "SRI WELLNESS CENTER",
+   "zip": "60101",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-sreelekha-sama-xynd3",
+    "https://www.vitals.com/doctors/Dr_Sama_Sreelekha.html"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directory listings confirm Dr. Sreelekha Sama, DMD/DDS practices at this 190 N Swift Rd address, matching the AO and small_group (3-provider) source classification. Some listings loosely associate her with an 'Addison Dental Care' group name/other cities, but a direct fetch of that group's own locations page (9 sites across IL/WI) did not mention this address or Dr. Sama, and this EIN shows no cross-ZIP reach, so treated as an independently dentist-owned single-location group rather than confirming a chain link.",
+   "searched": [
+    "\"Sri Wellness Center\" Addison IL dental Sreelekha Sama",
+    "\"Sri Wellness Center\" dental 190 N Swift Rd Addison",
+    "fetch https://addisondentalil.com/about-us/locations/"
+   ],
+   "intel": {
+    "provider_notes": "Dr. Sreelekha Sama, DMD - Boston University Henry M. Goldman School of Dental Medicine, 2004; speaks Hindi, Spanish, and Telugu.",
+    "google_rating": 5.0,
+    "google_source_url": "https://www.vitals.com/doctors/Dr_Sama_Sreelekha.html",
+    "distinguishing_notes": "Multilingual provider; some directories loosely tie her to an 'Addison Dental Care' group name, though this address/EIN appears independently registered as Sri Wellness Center.",
+    "sources": ["https://www.healthgrades.com/dentist/dr-sreelekha-sama-xynd3", "https://www.vitals.com/doctors/Dr_Sama_Sreelekha.html"]
+   }
+  },
+  {
+   "location_id": "df5f1ecea9862dc4",
+   "practice_name": "SMILES LLC",
+   "zip": "60101",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.smilesdental-addison.com/",
+    "https://dentistoffices.com/dentist-office/347879/addison-il/smiles-dental/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice's own branded website ('Smiles Dental') and directory listings confirm it is operated by Dr. Ahsan Ahmed (matching AO) and Dr. Nitin Patel at this single Addison address, with no corporate parent or DSO brand found. Single_loc_group (T2), dentist-owned, 2 dentists, one location.",
+   "searched": [
+    "\"Smiles LLC\" Addison IL \"Army Trail\" dentist Ahsan Ahmed"
+   ],
+   "intel": {
+    "website_url": "https://www.smilesdental-addison.com/",
+    "website_note": "Dedicated branded site 'Smiles Dental' with sitemap and contact pages.",
+    "services": ["general dentistry", "cosmetic dentistry", "teeth whitening", "implants", "veneers"],
+    "provider_notes": "Operated by Dr. Ahsan Ahmed and Dr. Nitin Patel.",
+    "distinguishing_notes": "Multilingual office: English, Spanish, Hindi, Gujarati, Urdu.",
+    "sources": ["https://www.smilesdental-addison.com/", "https://dentistoffices.com/dentist-office/347879/addison-il/smiles-dental/"]
+   }
+  }
+ ]
+}

@@ -238,25 +238,29 @@
    "location_id": "14a15d38fb5c7e3c",
    "practice_name": "Lamond Dental",
    "zip": "60453",
-   "assigned_tier": "true_independent",
+   "assigned_tier": "undetermined",
    "pe_backed": false,
    "evidence_basis": "web_verified",
    "evidence_urls": [
-    "https://smileobsession.com/dental-services/dentures-partial-dentures-in-oak-lawn/",
-    "https://www.healthgrades.com/dentist/dr-austin-lamond-u3xr79b",
-    "https://www.zocdoc.com/dentist/austin-lamond-dds-685321"
+    "https://smileobsession.com/about-smile-obsession/",
+    "https://www.transparentdentalgroup.com/",
+    "https://smileobsession.com/dentist-near-me/oaklawn/",
+    "https://smileobsession.com/dental-services/dentures-partial-dentures-in-oak-lawn/"
    ],
    "evidence_artifacts": [],
    "confidence": "high",
-   "status": "classified",
-   "network_id": null,
-   "reasoning": "Own-brand website (Smile Obsession, smileobsession.com) names Dr. Austin Lamond, DDS as the practicing dentist at this address with a personal bio, contact email, and posted hours. No corporate parent or DSO signal found. Matches solo_established.",
+   "status": "undetermined",
+   "network_id": "brand:transparent_dental_group",
+   "reasoning": "CORRECTED on deeper verification: the prior pass under-searched this entry, citing only a narrow dentures service subpage and physician directories. Smile Obsession's own 'About' page (smileobsession.com/about-smile-obsession/) states the brand is 'Powered by Transparent Dental Group' (TDG), a self-described dentist-owned DSO founded 2020 (transparentdentalgroup.com), and lists 18 Chicagoland locations operating under the Smile Obsession name -- Bolingbrook, Burr Ridge, Carol Stream, Chicago (Beverly, Hyde Park, Lakeview, Loop, West Rogers Park coming soon), Elmhurst, Frankfort, Glenview, Montgomery, Naperville (Downtown + South), Oak Lawn, Streamwood, Tinley Park, Wheaton, and Woodridge, plus a Smile Obsession Orthodontics location. This Oak Lawn address (5867 W 95th St) is explicitly one of them (smileobsession.com/dentist-near-me/oaklawn/, exact address + phone match). This exceeds the 10+-location R4_protected_network threshold, so per the hard rule this location must NOT be classified unit-by-unit -- deferring to a separate one-network-one-decision review rather than assigning true_independent (Dr. Austin Lamond's bio page, while real, describes the on-site treating dentist, not the controlling ownership structure, which is the multi-location TDG entity).",
    "searched": [
-    "Lamond Dental Oak Lawn IL 5867 W 95th St"
+    "Lamond Dental Oak Lawn IL 5867 W 95th St",
+    "smileobsession.com about Transparent Dental Group",
+    "transparentdentalgroup.com Smile Obsession locations",
+    "smileobsession.com Oak Lawn Transparent Dental Group locations list"
    ],
    "intel": {
     "website_url": "https://smileobsession.com/",
-    "website_note": "Branded, actively maintained single-practice website with services pages and direct contact email.",
+    "website_note": "Branded, actively maintained multi-location practice website (18 Chicagoland locations); this Oak Lawn office lists Dr. Austin Lamond, DDS as the on-site treating dentist with a personal bio, contact email, and posted hours.",
     "services": [
      "dentures",
      "partial dentures",
@@ -264,11 +268,13 @@
     ],
     "technology": [],
     "provider_count_web": 1,
-    "provider_notes": "Dr. Austin Lamond, DDS - University of Detroit Mercy dental school grad, raised in Michigan.",
+    "provider_notes": "Dr. Austin Lamond, DDS - University of Detroit Mercy dental school grad, raised in Michigan; on-site dentist at the Oak Lawn location of the Smile Obsession / Transparent Dental Group network.",
     "owner_career_stage": null,
-    "distinguishing_notes": "Extended hours (Mon-Thu 9am-8pm); email info@smileobsession.com; branded 'stress-free' patient experience positioning.",
+    "distinguishing_notes": "R4_protected_network:Smile Obsession/Transparent Dental Group (18+ Chicagoland locations, self-described DSO-H per Group Dentistry Now). Extended hours (Mon-Thu 9am-8pm); email info@smileobsession.com; branded stress-free patient experience positioning.",
     "sources": [
-     "https://smileobsession.com/dental-services/dentures-partial-dentures-in-oak-lawn/"
+     "https://smileobsession.com/about-smile-obsession/",
+     "https://smileobsession.com/dentist-near-me/oaklawn/",
+     "https://www.transparentdentalgroup.com/"
     ]
    }
   },

@@ -1,0 +1,436 @@
+{
+  "unit_id": "laneA_171",
+  "classifications": [
+    {
+      "location_id": "9aa9a03d21cd96bd",
+      "practice_name": "Pane Dental",
+      "zip": "60104",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/pane-larry-m-dds-bellwood",
+        "https://www.doctorsnetwork.com/doctors/dentists/bellwood-il-60104/invite-lary-pane-dds-12528"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "Searched the practice (Dr. Lary Pane, DDS at 4420 St Charles Rd, Bellwood) and found Yelp explicitly labels the listing 'PANE LARRY M DDS - CLOSED' at this exact address; other directories show only stale info with no current hours/booking. closure_suspect per rules, so withholding a tier despite otherwise-independent-looking signals.",
+      "searched": [
+        "Pane Dental Bellwood IL dentist 4420 St Charles Rd",
+        "\"Lary Pane\" DDS Bellwood dentist retired closed"
+      ]
+    },
+    {
+      "location_id": "0dd714913c0d76f5",
+      "practice_name": "RMORRIS LLC",
+      "zip": "60104",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.smilesuccess.com/bellwood-office",
+        "https://www.smilesuccess.com/meet-dr-richard-morris",
+        "https://www.yelp.com/biz/richard-morris-dds-smile-success-dental-centre-bellwood-2"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:MORRIS_RICHARD",
+      "reasoning": "RMORRIS LLC at 235 Mannheim Rd is Dr. Richard Morris's own practice, branded 'Smile Success Dental Centre,' with the dentist's own site listing this Bellwood office plus two additional Morris-owned offices (Calumet City, Oak Lawn IL) -- a small dentist-owned network under 10 locations, so dentist_multi applies rather than any DSO tier.",
+      "searched": [
+        "RMORRIS LLC dentist Bellwood IL 235 Mannheim Rd"
+      ]
+    },
+    {
+      "location_id": "e97bcd0671e44046",
+      "practice_name": "LARY M. PANE, D.D.S.,P.C.",
+      "zip": "60104",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/pane-larry-m-dds-bellwood",
+        "https://www.doctorsnetwork.com/doctors/dentists/bellwood-il-60104/invite-lary-pane-dds-12528"
+      ],
+      "evidence_artifacts": [
+        "same address/phone as location 9aa9a03d21cd96bd (Pane Dental) -- org-NPI/individual-NPI dual record for the same closed practice"
+      ],
+      "confidence": "medium",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "Same address (4420 Saint Charles Rd) and phone as Pane Dental above; this is the org/PC-level NPI for the same practice, which Yelp lists as CLOSED. closure_suspect, so undetermined rather than assigning a tier.",
+      "searched": [
+        "Pane Dental Bellwood IL dentist 4420 St Charles Rd",
+        "\"Lary Pane\" DDS Bellwood dentist retired closed"
+      ]
+    },
+    {
+      "location_id": "f9891ace8eab230b",
+      "practice_name": "Stasiulis Dental",
+      "zip": "60106",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.markstasiulisdds.net/our-locations",
+        "https://www.markstasiulisdds.net/",
+        "https://www.yelp.com/biz/mark-l-stasiulis-dds-elmhurst"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "Dr. Mark Stasiulis's own current website (markstasiulisdds.net) states the practice opened in Bensenville in 1981, operated at 17 Lincoln St for 26 years until airport-expansion forced a move, and has been practicing from Elmhurst (452 N York St) for the last 11+ years. The Bensenville address in this record is a stale/relocated location -- closure_suspect, undetermined rather than tiered.",
+      "searched": [
+        "Stasiulis Dental Bensenville IL",
+        "Mark Stasiulis 17 Lincoln St Bensenville closed relocated Elmhurst"
+      ]
+    },
+    {
+      "location_id": "9d1d12555e66464f",
+      "practice_name": "Bensenville Dental Care",
+      "zip": "60106",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.bbb.org/us/il/bensenville/profile/dentist/bensenville-dental-care-0654-88090949",
+        "https://www.healthgrades.com/dentist/dr-david-wold-2s7tm",
+        "https://www.yelp.com/biz/bensenville-dental-care-dds-bensenville"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "BBB and Healthgrades both attribute Bensenville Dental Care at 535 S York Rd to solo owner Dr. David Wold, DDS, operating since 1985 with no corporate parent or brand signal. Solo owner-operator, single location -> true_independent.",
+      "searched": [
+        "Bensenville Dental Care 535 S York Rd Bensenville IL"
+      ],
+      "intel": {
+        "website_note": "Directory-listed practice (BBB, Healthgrades, Yelp) rather than a dedicated modern site found in search; long operating history and mixed hours (incl. Saturday) suggest an established community office.",
+        "provider_notes": "Owner Dr. David Wold, DDS; office manager Diane Good.",
+        "insurance_note": "Accepts Delta Dental, Dental PPO, Ameritas PPO, Delta Dental Premier, Humana PPO.",
+        "distinguishing_notes": "In business since 1985 (41 years); open Saturday mornings.",
+        "sources": [
+          "https://www.bbb.org/us/il/bensenville/profile/dentist/bensenville-dental-care-0654-88090949",
+          "https://www.healthgrades.com/dentist/dr-david-wold-2s7tm"
+        ]
+      }
+    },
+    {
+      "location_id": "1e3c93c578627f0b",
+      "practice_name": "BRENTWOOD FAMILY DENTAL",
+      "zip": "60106",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.carecredit.com/doctor-locator/bensenville-il/brentwood-family-dental-jwt975/",
+        "https://www.injuredcare.com/provider-profile/IL/Bensenville/Brentwood-Family-Dental-Ramadorai-T-L-DDS-217853",
+        "https://www.healthgrades.com/dentist/dr-thirunindravur-ramadorai-y5x2l"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Multiple independent directories (CareCredit, InjuredCare, Healthgrades) tie Brentwood Family Dental at 1145 S York Rd to solo dentist Dr. Thirunindravur (T.L.) Ramadorai, DDS -- matches the NPPES AO name -- with no chain/DSO signal found. Solo owner-operator, single location -> true_independent.",
+      "searched": [
+        "Brentwood Family Dental Bensenville IL Ramadorai dentist"
+      ],
+      "intel": {
+        "website_note": "No dedicated practice website surfaced; presence is via directory/booking aggregators (CareCredit, BBB).",
+        "insurance_note": "Accepts American Express, Discover, MasterCard, Visa, personal checks, and offers financing.",
+        "distinguishing_notes": "Open six days a week (closed Thursday and Sunday), including Saturday hours.",
+        "sources": [
+          "https://www.carecredit.com/doctor-locator/bensenville-il/brentwood-family-dental-jwt975/"
+        ]
+      }
+    },
+    {
+      "location_id": "d39daa3200e78290",
+      "practice_name": "Scigala, Monica",
+      "zip": "60106",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://npidb.org/doctors/dental_health/general-practice_1223g0001x/1871313874.aspx",
+        "https://www.healthgrades.com/dentist/dr-monica-scigala-u3y6gn6"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Dr. Monica Scigala is confirmed as a general-practice dentist in Bensenville, IL via NPI directory listing; the NPPES record shows a 2-provider small_group at 18 N York Rd with no corporate/franchise/DSO indicators found in search. A phone-number discrepancy in one listing kept confidence at medium rather than high. Multi-dentist, single location, no corporate signal -> single_loc_group.",
+      "searched": [
+        "\"Monica Scigala\" dentist Bensenville IL"
+      ]
+    },
+    {
+      "location_id": "bced33d59308e782",
+      "practice_name": "Pienkowski Dental",
+      "zip": "60106",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.healthgrades.com/dentist/dr-alma-pienkowski-x667n",
+        "https://www.yelp.com/biz/pienkowski-a-gloria-dds-bensenville",
+        "https://www.boardofdentistry.net/pienkowski-a-gloria-dds-do44923"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "number_id": null,
+      "network_id": null,
+      "reasoning": "Multiple directories (Healthgrades, Yelp, board-of-dentistry listing) consistently attribute this office at 1101 W Irving Park Rd Ste 301 to solo dentist Dr. Alma (Gloria) Pienkowski, DDS, with no corporate or brand affiliation found. Solo owner-operator, single location -> true_independent.",
+      "searched": [
+        "Pienkowski Dental Bensenville IL 1101 W Irving Park"
+      ],
+      "intel": {
+        "services": ["cavity treatment", "cleaning", "crowns", "emergency dental care", "teeth whitening", "veneers", "smile makeovers"],
+        "distinguishing_notes": "Yelp rating of 3.5 stars (not a Google-verified figure, so not recorded as google_rating).",
+        "sources": [
+          "https://www.yelp.com/biz/pienkowski-a-gloria-dds-bensenville",
+          "https://www.healthgrades.com/dentist/dr-alma-pienkowski-x667n"
+        ]
+      }
+    },
+    {
+      "location_id": "2628dc0be58e263c",
+      "practice_name": "PROSPERRITTA DENTAL, PLLC",
+      "zip": "60106",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.midwestoralcare.com/",
+        "https://www.midwestoralcare.com/about/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Prosperritta Dental, PLLC operates its 545 S York Rd Ste 200 office under the trade name 'Midwest Center for Dentistry and Implants' (same phone, established 2021). Fetched the practice's own About page directly: it discloses no corporate parent or DSO affiliation and lists only this single Bensenville location. NOTE: this is unrelated to the national 'Midwest Dental' DSO brand (name collision only). NPPES shows 3 providers at this address -> single_loc_group.",
+      "searched": [
+        "Prosperritta Dental Bensenville IL 545 S York Rd",
+        "\"Midwest Center for Dentistry and Implants\" locations owner dentist"
+      ],
+      "intel": {
+        "website_url": "https://www.midwestoralcare.com/",
+        "website_note": "Modern, actively maintained practice site with dedicated service and contact pages; established 2021.",
+        "services": ["emergency dental care", "cosmetic dentistry", "general dentistry", "implants", "orthodontics"],
+        "technology": ["CT scans", "digital x-rays", "intraoral cameras", "intraoral scanning", "3D printing"],
+        "distinguishing_notes": "Branded as 'Midwest Center for Dentistry and Implants' though the legal NPI entity is Prosperritta Dental, PLLC; single location only, per its own About page.",
+        "sources": [
+          "https://www.midwestoralcare.com/",
+          "https://www.midwestoralcare.com/about/"
+        ]
+      }
+    },
+    {
+      "location_id": "5fe89c776c5dbe02",
+      "practice_name": "Skinkys Dental",
+      "zip": "60106",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.doctorsnetwork.com/doctors/dentists/bensenville-il-60106/invite-lance-skinkys-dds-16920"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Only one usable directory hit found (Doctors Network), but it confirms name, exact address (280 S Addison St), and phone number matching this NPI record for solo dentist Dr. Lance Skinkys, DDS, with no corporate signal. Kept at medium confidence given the thin source base.",
+      "searched": [
+        "Skinkys Dental Bensenville IL 280 S Addison",
+        "\"280 S Addison\" Bensenville dentist OR dental"
+      ]
+    },
+    {
+      "location_id": "bd5b25e85f4896fc",
+      "practice_name": "JILL C. MCMAHON DMD, PC",
+      "zip": "60106",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.linkedin.com/in/jill-mcmahon-1689a934/",
+        "https://www.yelp.com/biz/mint-dental-river-forest",
+        "https://www.healthgrades.com/dentist/dr-jill-mcmahon-ymwd3"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "Searched the NPI name/address combination; current listings for a Dr. Jill McMahon, DMD consistently place her as owner of 'Mint Dental' at two River Forest addresses (7767 Lake St / 7329 W North Ave), with no current source confirming active operation at 241 S Church Rd, Bensenville. This pattern (practice apparently relocated/rebranded away from the NPI address) matches closure_suspect, so withholding a tier rather than guessing whether 241 S Church Rd is still active.",
+      "searched": [
+        "\"Jill McMahon\" DMD dentist Bensenville IL",
+        "\"Jill McMahon\" dentist \"241 S Church\" Bensenville OR \"River Forest\" Mint Dental same person",
+        "\"241 S Church\" Bensenville dental office current OR \"Jill McMahon\" Bensenville practice sold"
+      ]
+    },
+    {
+      "location_id": "6f2e042d3b9ebfb1",
+      "practice_name": "Family Choice Dental Inc",
+      "zip": "60106",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.midwestoralcare.com/bensenville-il/family-dentist/",
+        "https://www.chamberofcommerce.com/business-directory/illinois/bensenville/dental-clinic/2000961434-family-choice-dental-inc",
+        "https://www.groupdentistrynow.com/dso-group-blog/dso-deal-roundup-july-2022/"
+      ],
+      "evidence_artifacts": [
+        "ctx affiliated_dso label 'Choice Dental Group' investigated and found to be an unrelated Texas-based DSO name (name-collision false positive); no ownership/franchise link found to this Bensenville address"
+      ],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "The NPPES record flags 'Choice Dental Group' as an affiliated DSO, but that appears to be a Texas-based entity (per DSO news coverage) with no documented tie to this address; instead, directory sources identify the owner as Dr. Anna Wos-Kolodziejczyk, DDS, operating a single office at 1332 W Irving Park Rd for 22 years. Treating the ctx brand flag as context only (per instructions) and going with the web evidence -> true_independent.",
+      "searched": [
+        "Prosperritta Dental Bensenville IL 545 S York Rd",
+        "\"Choice Dental Group\" DSO Illinois",
+        "\"Family Choice Dental\" Bensenville owner dentist DDS name"
+      ],
+      "intel": {
+        "provider_notes": "Owner Dr. Anna Wos-Kolodziejczyk, DDS.",
+        "distinguishing_notes": "In business 22 years; wheelchair accessible.",
+        "sources": [
+          "https://www.chamberofcommerce.com/business-directory/illinois/bensenville/dental-clinic/2000961434-family-choice-dental-inc"
+        ]
+      }
+    },
+    {
+      "location_id": "5d56ff37f9f35d2c",
+      "practice_name": "Blumberg Family Dental Care",
+      "zip": "60106",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/blumberg-family-dental-care-bensenville",
+        "https://www.bbb.org/us/il/bensenville/profile/dentist/blumberg-family-dental-care-0654-88098703",
+        "https://www.yelp.com/biz/blumberg-g-cary-dds-bensenville"
+      ],
+      "evidence_artifacts": [
+        "ctx brand_hint 'Family Dental Care' investigated and found to be a generic name-match, not the branded regional DSO of the same name -- no DSO evidence found for this address"
+      ],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Yelp and BBB both attribute this office at 229 W Grand Ave to solo owner Dr. Cary G. Blumberg, DDS (Northwestern Dental School grad 1979), in business since 1988 with no corporate parent. The ctx brand_hint referencing 'Family Dental Care' is a generic-name collision, not evidence of the actual regional DSO of that name -- true_independent.",
+      "searched": [
+        "Blumberg Family Dental Care 229 W Grand Ave Bensenville IL"
+      ],
+      "intel": {
+        "services": ["teeth cleaning", "dental implants", "braces", "denture repair", "tooth extraction"],
+        "provider_notes": "Dr. Cary G. Blumberg, DDS, graduated Northwestern University Dental School in 1979.",
+        "owner_career_stage": "late_career",
+        "distinguishing_notes": "Practice founded 1988 (38 years in business).",
+        "sources": [
+          "https://www.yelp.com/biz/blumberg-family-dental-care-bensenville",
+          "https://www.bbb.org/us/il/bensenville/profile/dentist/blumberg-family-dental-care-0654-88098703"
+        ]
+      }
+    },
+    {
+      "location_id": "016ef838c905ae3f",
+      "practice_name": "Prestige Dental",
+      "zip": "60107",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.prestigedentalsmiles.org/",
+        "https://www.prestigedentalsmiles.org/staff",
+        "https://www.healthgrades.com/group-directory/il-illinois/streamwood/prestige-dental-pc-x6hn27"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "The practice's own website (prestigedentalsmiles.org) lists two dentists, Dr. Moeen Ikram, DDS and Dr. Sara Sarrafee, DDS, at this single 125 E Irving Park Rd location with no corporate/DSO branding -- matches NPPES's 2-provider small_group. Multi-dentist, one location -> single_loc_group.",
+      "searched": [
+        "Prestige Dental Streamwood IL 125 E Irving Park Rd"
+      ],
+      "intel": {
+        "website_url": "https://www.prestigedentalsmiles.org/",
+        "website_note": "Active dedicated practice website with staff and contact pages.",
+        "services": ["bonding", "cosmetic contouring", "crowns and bridges", "cosmetic fillings", "whitening", "sealants", "root canal therapy", "extractions", "scaling and root planing", "dentures", "cosmetic dentistry", "Invisalign"],
+        "provider_notes": "Dr. Moeen Ikram, DDS and Dr. Sara Sarrafee, DDS.",
+        "accepts_medicaid": true,
+        "insurance_note": "Accepts all PPO insurance plans, Medicaid/Public Aid for all ages, and all Kids insurance plans.",
+        "sources": [
+          "https://www.prestigedentalsmiles.org/",
+          "https://www.patientconnect365.com/Dentists/Illinois/Streamwood/60107/Prestige_Dental"
+        ]
+      }
+    },
+    {
+      "location_id": "d54703675925ac2c",
+      "practice_name": "NEW IMAGE DENTAL LTD",
+      "zip": "60107",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://newimagedentalltd.com/",
+        "https://newimagedentalltd.com/services/",
+        "https://www.yellowpages.com/streamwood-il/new-image-dental-ltd-drs-joseph-arnold-and-brian-fitz"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "The practice's own site (newimagedentalltd.com) and directory listings confirm New Image Dental Ltd at 945 S Bartlett Rd has operated for 30+ years, historically under Dr. Joseph Arnold (the NPPES authorized official) and currently led by Dr. Brian J. Fitz, with no corporate/DSO signal. Single-location dentist-owned practice -> true_independent.",
+      "searched": [
+        "\"New Image Dental\" Streamwood IL Joseph Arnold dentist"
+      ],
+      "intel": {
+        "website_url": "https://newimagedentalltd.com/",
+        "website_note": "Active dedicated practice website with a services page.",
+        "services": ["cosmetic dentistry", "preventative dentistry", "implant dentistry"],
+        "provider_notes": "Currently led by Dr. Brian J. Fitz; historically associated with Dr. Joseph Arnold, DDS.",
+        "distinguishing_notes": "In continuous operation 30+ years at this Streamwood location.",
+        "sources": [
+          "https://newimagedentalltd.com/",
+          "https://www.yellowpages.com/streamwood-il/new-image-dental-ltd-drs-joseph-arnold-and-brian-fitz"
+        ]
+      }
+    },
+    {
+      "location_id": "9e3b55d23a2ff26f",
+      "practice_name": "Grover Dental Care",
+      "zip": "60107",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.healthgrades.com/dentist/dr-sanjeev-grover-2k9rv",
+        "https://www.zocdoc.com/dentist/sanjeev-grover-dds",
+        "https://www.yelp.com/biz/grover-dental-care-streamwood"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Multiple directories (Healthgrades, ZocDoc, Yelp) consistently attribute Grover Dental Care at 305 S Bartlett Rd to solo dentist Dr. Sanjeev Grover, DDS, with no corporate affiliation found. Solo owner-operator, single location -> true_independent.",
+      "searched": [
+        "Grover Dental Care Streamwood IL 305 S Bartlett Rd"
+      ],
+      "intel": {
+        "website_note": "Presence via directory/booking aggregators (Healthgrades, ZocDoc); telehealth offered per ZocDoc listing.",
+        "distinguishing_notes": "Languages offered: Hindi, Punjabi, and Spanish; telehealth available (eligibility varies).",
+        "sources": [
+          "https://www.zocdoc.com/dentist/sanjeev-grover-dds",
+          "https://www.healthgrades.com/dentist/dr-sanjeev-grover-2k9rv"
+        ]
+      }
+    }
+  ]
+}

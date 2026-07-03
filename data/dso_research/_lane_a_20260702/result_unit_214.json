@@ -1,0 +1,442 @@
+{
+ "unit_id": "laneA_214",
+ "classifications": [
+  {
+   "location_id": "e793e23034817dea",
+   "practice_name": "KRISHAN DENTAL LIMITED",
+   "zip": "60506",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.downerplacedental.org/dr-shweta-kamal/",
+    "https://www.jolietfamilydental.org/dr-shweta-kamal/",
+    "https://reviews.birdeye.com/krishan-dental-limited-dba-downer-place-dental-168787100946399"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:KAMAL_SHWETA",
+   "reasoning": "Searched the practice address and the AO name (Shweta Kamal). She is DDS owner of Downer Place Dental (this address, DBA of Krishan Dental Limited) AND Joliet Family Dental at 825 Plainfield Rd, Joliet IL 60435 -- matching ctx owner_reach_locations=2 across zips 60435/60506 exactly. Both are her own branded practice sites, no corporate parent or DSO brand found, so this is a dentist-owned 2-location group, not a stealth DSO.",
+   "searched": [
+    "Krishan Dental Limited Aurora IL 11 W Downer Pl dentist",
+    "Downer Place Dental Aurora IL owner dentist Krishan",
+    "\"Shweta Kamal\" dentist Joliet Aurora Illinois practice"
+   ],
+   "intel": {
+    "website_url": "https://www.downerplacedental.org/",
+    "website_note": "Branded practice site (Downer Place Dental) with dedicated bio pages per dentist; modern multi-provider small practice presentation.",
+    "services": ["cosmetic dentistry", "family dentistry"],
+    "provider_count_web": 3,
+    "provider_notes": "Dr. Lama Kabir DMD, Dr. Shweta Kamal DDS (owner, practicing since 1999, UIC College of Dentistry), Dr. Soha Patel DMD.",
+    "owner_career_stage": "mid_career",
+    "distinguishing_notes": "Established 2006; operates as a 2-location dentist-owned group (Aurora + Joliet) under different DBA names.",
+    "sources": [
+     "https://www.downerplacedental.org/dr-shweta-kamal/",
+     "https://www.jolietfamilydental.org/dr-shweta-kamal/"
+    ]
+   }
+  },
+  {
+   "location_id": "1fcdc693a1f8088e",
+   "practice_name": "DENTAL THEORY LTD",
+   "zip": "60506",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://yourvalleydental.com/",
+    "https://yourvalleydental.com/locations/aurora/",
+    "https://yourvalleydental.com/dentists/satish-gottumukkula-dmd/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:GOTTUMUKKULA_SATISH",
+   "reasoning": "Searched the practice address and AO name (Satish Gottumukkula). He owns Valley Dental Care, a branded practice with 2 offices: Aurora (this address, 1940 W Galena Blvd Ste 8) and Oswego (3405 Orchard Rd). Own-brand website names him as founder/dentist with no corporate parent, so this is a dentist-owned multi-location group.",
+   "searched": [
+    "Dental Theory Aurora IL 1940 W Galena Blvd dentist Gottumukkula",
+    "Valley Dental Care Aurora IL Gottumukkula locations how many offices"
+   ],
+   "intel": {
+    "website_url": "https://yourvalleydental.com/",
+    "website_note": "Modern multi-location branded website with online booking and per-doctor bio pages.",
+    "owner_career_stage": "mid_career",
+    "provider_notes": "Dr. Satish Gottumukkula DMD (Boston University), practicing ~19 years per Zocdoc bio.",
+    "distinguishing_notes": "2-location dentist-owned chain (Aurora + Oswego); practice name on NPPES (Dental Theory Ltd) differs from consumer brand (Valley Dental Care).",
+    "sources": [
+     "https://yourvalleydental.com/dentists/satish-gottumukkula-dmd/",
+     "https://www.zocdoc.com/dentist/satish-gottumukkula-dmd-587493"
+    ]
+   }
+  },
+  {
+   "location_id": "57bfb8a87043d71c",
+   "practice_name": "WANG FAMILY DENTAL, LLC",
+   "zip": "60506",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.prairiedentists.com/",
+    "https://www.healthgrades.com/dentist/dr-christine-wang-3synk"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched the exact address (2424 W Indian Trail). Found Prairie Dental Care, a husband-and-wife dentist team (Dr. Christine Wang DMD and Dr. Xiaoyu Ma) operating at this single location only. No other locations or corporate/DSO signal found -- dentist-owned single-location multi-provider group, matching entity_classification small_group.",
+   "searched": [
+    "Wang Family Dental Aurora IL 2424 W Indian Trail"
+   ],
+   "intel": {
+    "website_url": "https://www.prairiedentists.com/",
+    "website_note": "Modern branded single-location site, trilingual positioning.",
+    "services": ["cleanings & exams", "cosmetic dentistry", "Invisalign", "root canal therapy", "sleep apnea/snoring treatment", "dental implants", "teeth whitening", "periodontal treatment"],
+    "provider_count_web": 2,
+    "provider_notes": "Dr. Christine Wang and Dr. Xiaoyu Ma, husband-and-wife dentist team.",
+    "distinguishing_notes": "Office speaks English, Spanish, Mandarin, and Cantonese; family-run practice marketed as 'Prairie Dental Care'.",
+    "sources": ["https://www.prairiedentists.com/", "https://www.prairiedentists.com/about-us/location/aurora/1479"]
+   }
+  },
+  {
+   "location_id": "e3dee80f3a2bb4e2",
+   "practice_name": "Marzo Dental",
+   "zip": "60506",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/marzo-david-j-dds-aurora",
+    "https://www.healthgrades.com/dentist/dr-david-marzo-ys9fc",
+    "https://www.doctorsnetwork.com/doctors/dentists/aurora-il-60506/invite-david-marzo-dds-10387"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched the exact address (1024 N Lake St). Confirmed solo dentist Dr. David Marzo DDS practices at this address, matching entity name and provider_count=1/solo_established. Only directory listings found (no dedicated practice website), no corporate/DSO signal of any kind, so treated as true independent with medium confidence.",
+   "searched": [
+    "Marzo Dental Aurora IL 1024 N Lake St"
+   ],
+   "intel": {
+    "website_url": "https://www.doctorsnetwork.com/doctors/dentists/aurora-il-60506/invite-david-marzo-dds-10387",
+    "website_note": "No dedicated practice website found; presence limited to directory listings.",
+    "services": ["cosmetic dentistry", "dentin hypersensitivity treatment", "dentures", "Invisalign", "laser treatments", "teeth grinding solutions"],
+    "sources": ["https://www.doctorsnetwork.com/doctors/dentists/aurora-il-60506/invite-david-marzo-dds-10387"]
+   }
+  },
+  {
+   "location_id": "086254cc26d74f7c",
+   "practice_name": "Starkus Dental",
+   "zip": "60506",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searched the exact address (400 N Highland Ave) and the dentist name (Aldona Starkus). Directory listings confirm Dr. Aldona R Starkus DDS practices at this address with the same phone number as in ctx, but this exact address is also the site of VNA Health Care (a nonprofit community health center offering its own dental clinic, main line 630-892-4355). No source clarifies whether Dr. Starkus is an independent private-practice tenant in the same building or affiliated with VNA's clinic. Insufficient/conflicting evidence to assign a tier -- left undetermined rather than guessed.",
+   "searched": [
+    "Starkus Dental Aurora IL 400 N Highland Ave",
+    "\"Aldona Starkus\" dentist Aurora IL practice owner",
+    "\"400 N Highland\" Aurora IL Starkus dentist suite phone 978-2532"
+   ]
+  },
+  {
+   "location_id": "ca1a749d1b1bcc5a",
+   "practice_name": "SMILES OF AURORA.",
+   "zip": "60506",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.linkedin.com/in/dustin-goetz-414a9331",
+    "https://smilesofaurora.com/meet-dr-dustin-goetz-dds-aurora-il/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched the exact address (201 N Constitution Dr) and AO name (Dustin Goetz). LinkedIn explicitly lists Dr. Dustin Goetz DDS as 'Owner' of Smiles of Aurora; the practice was purchased by him in 2015. Single location with 2 dentists (Goetz + Gifford), no other offices found, no corporate/DSO signal -- dentist-owned single-location group.",
+   "searched": [
+    "Smiles of Aurora dental 201 N Constitution Dr Aurora IL Dustin Goetz",
+    "Smiles of Aurora Dustin Goetz second location multiple offices"
+   ],
+   "intel": {
+    "website_url": "https://smilesofaurora.com/",
+    "website_note": "Modern branded single-location site with online scheduling and same-day emergency messaging.",
+    "provider_count_web": 2,
+    "provider_notes": "Dr. Dustin Goetz DDS (UIC College of Dentistry, DDS 2014) and Dr. Jonathan Gifford.",
+    "owner_career_stage": "mid_career",
+    "distinguishing_notes": "Practice purchased by Dr. Goetz in 2015; offers implant, esthetic-injection and facial-filler services beyond general dentistry.",
+    "sources": ["https://smilesofaurora.com/meet-dr-dustin-goetz-dds-aurora-il/", "https://www.linkedin.com/in/dustin-goetz-414a9331"]
+   }
+  },
+  {
+   "location_id": "5c51dbc591769bb2",
+   "practice_name": "Northgate Dental Ctr",
+   "zip": "60506",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.northgatedentalcenter.com/about-us/",
+    "https://findadentist.ada.org/dentists/dr-surekha-sakala-aurora-0038V00002ykE6eQAE-a1C8V00000lXpRlUAK"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched the exact address (330 N Lake St) and confirmed via the practice's own 'About Us' page and ADA directory that Dr. Surekha Sakala DDS is the practice's dentist/founder (established 1999). Single location with 3 dentists (Sakala, Patel, Srinivasan), no corporate/DSO brand or parent found -- dentist-owned single-location group.",
+   "searched": [
+    "Northgate Dental Center Aurora IL 330 N Lake St",
+    "Northgate Dental Center Aurora IL Sakala owner founded"
+   ],
+   "intel": {
+    "website_url": "https://www.northgatedentalcenter.com/",
+    "website_note": "Branded single-location site with reviews page and Spanish-language messaging.",
+    "services": ["porcelain veneers", "dental implants", "crowns and bridges", "root canals", "orthodontics", "extractions", "deep cleanings"],
+    "provider_count_web": 3,
+    "provider_notes": "Dr. Surekha Sakala DDS (Government Dental College Hyderabad 1994; UIC DDS 1998), Dr. Vilpa Patel DDS, Dr. Meghna Srinivasan DDS.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "\"Se Habla Espanol\" bilingual office; established 1999.",
+    "sources": ["https://www.northgatedentalcenter.com/about-us/"]
+   }
+  },
+  {
+   "location_id": "cd5fd120a8232009",
+   "practice_name": "Palacios Dental",
+   "zip": "60506",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.galenadental.com/",
+    "https://doctor.webmd.com/doctor/miguel-palacios-1dcbfc51-92cc-4b75-8272-0d5ecb448a1b-overview"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched the exact address (5 W Galena Blvd). The practice's own website (Galena Dental) states Dr. Miguel Palacios DDS established the practice in 1992 in the historic Aurora Hotel building and has run it since; single location, no corporate parent or DSO signal, matching solo_established/provider_count=1.",
+   "searched": [
+    "Palacios Dental Aurora IL 5 W Galena Blvd"
+   ],
+   "intel": {
+    "website_url": "https://www.galenadental.com/",
+    "website_note": "Branded solo-practice site with practice history and services pages.",
+    "services": ["general dentistry", "orthodontic care (braces)", "cosmetic dentistry"],
+    "provider_count_web": 1,
+    "provider_notes": "Dr. Miguel Palacios DDS, University of Illinois Dental School 1988; bilingual English/Spanish.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Located in the restored historic 1917 Aurora Hotel building along the Fox River.",
+    "sources": ["https://www.galenadental.com/", "https://galenadental.com/wrappers/pages.php?ID=3&lang=1"]
+   }
+  },
+  {
+   "location_id": "21d0fcc1b06ce2c4",
+   "practice_name": "Chroust Dental",
+   "zip": "60506",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/chroust-richard-j-dds-aurora"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searched the exact address (1240 N Highland Ave Ste 7). Yelp lists 'CHROUST RICHARD J DDS - CLOSED' at this address as of 2026; other sources show Dr. Chroust's practice now operating from 1217 Oak St, North Aurora, IL 60542 instead. closure_suspect: this location appears to have relocated/closed, so not classified per protocol.",
+   "searched": [
+    "Chroust Dental Aurora IL 1240 N Highland Ave",
+    "Chroust Family Dental North Aurora Highland Ave closed moved"
+   ]
+  },
+  {
+   "location_id": "c24b5e5646f89648",
+   "practice_name": "Giron Dental",
+   "zip": "60506",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.zocdoc.com/dentist/betsy-giron-dds-394786",
+    "https://www.yelp.com/biz/giron-betsy-d-d-s-aurora"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched the exact address (909 N Lake St). Confirmed solo dentist Dr. Betsy Giron DDS (practicing as All-Brite Family Dental) at this address, matching provider_count=1/solo_established. No corporate/DSO signal or other locations found -- true independent solo owner-operator.",
+   "searched": [
+    "Giron Dental Aurora IL 909 N Lake St"
+   ],
+   "intel": {
+    "website_url": "https://www.zocdoc.com/dentist/betsy-giron-dds-394786",
+    "website_note": "No dedicated practice website found; presence via Zocdoc/Yelp listings under the name 'All-Brite Family Dental'.",
+    "services": ["bridge", "dental cleaning", "dental consultation", "pediatric dentist consultation", "root canal"],
+    "insurance_note": "Accepts Delta Dental Premier and Delta Dental PPO.",
+    "distinguishing_notes": "In operation 12+ years; office closed Wednesdays; currently accepting new patients.",
+    "sources": ["https://www.zocdoc.com/dentist/betsy-giron-dds-394786", "https://www.yelp.com/biz/giron-betsy-d-d-s-aurora"]
+   }
+  },
+  {
+   "location_id": "a0599f27f993db30",
+   "practice_name": "Fairview Dental",
+   "zip": "60506",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.linkedin.com/in/brian-tonner-736a8b7/",
+    "https://www.fairviewdental.net/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched the exact address (541 Sullivan Rd) and ownership. LinkedIn lists Dr. Brian Tonner DDS as 'Owner, Fairview Dental'. The practice has 5 dentists (Bruno, Cardenas, Gorenz, Dominguez, Rogers) at a single location established in 2000, matching large_group/provider_count=7. No corporate parent or DSO brand found -- dentist-owned single-location group.",
+   "searched": [
+    "Fairview Dental Aurora IL 541 Sullivan Rd",
+    "Fairview Dental Aurora IL owner founded history practice"
+   ],
+   "intel": {
+    "website_url": "https://www.fairviewdental.net/",
+    "website_note": "Modern branded single-location site with office-tour page and membership-plan marketing.",
+    "services": ["teeth cleanings & exams", "restorative procedures", "cosmetic dentistry"],
+    "provider_count_web": 5,
+    "provider_notes": "Drs. Michele Bruno, Salvador Cardenas, David Gorenz, David Dominguez, Annette Rogers; owner Dr. Brian Tonner DDS.",
+    "distinguishing_notes": "In-house membership plan for uninsured patients; extended hours (Mon 8am-8pm).",
+    "sources": ["https://www.fairviewdental.net/", "https://www.linkedin.com/in/brian-tonner-736a8b7/"]
+   }
+  },
+  {
+   "location_id": "7fb5ea91ba659437",
+   "practice_name": "RICHARD A GREEN DDS LTD",
+   "zip": "60506",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-richard-green-ytyrh",
+    "https://www.yelp.com/biz/aurora-dental-group-aurora"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched the exact address (1352 W Galena Blvd) and AO name (Richard Green). Dr. Richard Green DDS practices under the 'Aurora Dental Group' name at this address, consistent with ctx AO and year_established=1985. Provider_count=1/solo_high_volume in the source data indicates his is a single-dentist NPI entity (the building also hosts other independently-NPI'd dentists like Dr. Glorioso). No corporate/DSO parent signal found.",
+   "searched": [
+    "\"Richard A Green\" DDS Aurora IL 1352 W Galena Blvd dentist"
+   ]
+  },
+  {
+   "location_id": "7edab47d37ee4cc0",
+   "practice_name": "YOUNG DENTAL CARE, LTD.",
+   "zip": "60506",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.youngdentalcare.com/",
+    "https://www.healthgrades.com/group-directory/il-illinois/aurora/young-dental-care-xytnjc"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched the exact address (1132 Prairie St) and AO name (Kimberley Young). Practice founded in 1957 by Dr. Keith W. Young and continued by Dr. Kimberley Young, matching ctx AO and year_established=1956. Single location, no corporate/DSO signal -- multi-generational family solo/small independent practice.",
+   "searched": [
+    "Young Dental Care Aurora IL Kimberley Young 1132 Prairie St"
+   ],
+   "intel": {
+    "website_url": "https://www.youngdentalcare.com/",
+    "website_note": "Branded single-location site emphasizing multi-generational family history.",
+    "services": ["general & family dentistry", "cosmetic dentistry", "emergency dental care", "dental implants", "teeth whitening", "dental extractions", "root canal", "orthodontics"],
+    "provider_notes": "Founded 1957 by Dr. Keith W. Young; continued by Dr. Kimberley Young; currently also Dr. Amy Newkirk.",
+    "distinguishing_notes": "In continuous operation since 1957; moved to current Prairie St location in the 1960s.",
+    "sources": ["https://www.youngdentalcare.com/", "https://www.healthgrades.com/group-directory/il-illinois/aurora/young-dental-care-xytnjc"]
+   }
+  },
+  {
+   "location_id": "a9a98db9602cbbe8",
+   "practice_name": "Coronado, Narda J DDS",
+   "zip": "60506",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-narda-coronado-y8p83",
+    "https://www.vitals.com/dentists/Dr_Narda_Coronado"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched the exact address (454 N Lake St). Confirmed solo general dentist Dr. Narda Coronado DDS at this address, matching provider_count=1/solo_established. Only directory listings found (no dedicated practice website), no corporate/DSO signal.",
+   "searched": [
+    "\"Narda Coronado\" DDS Aurora IL 454 N Lake St dentist"
+   ],
+   "intel": {
+    "website_url": "https://www.healthgrades.com/dentist/dr-narda-coronado-y8p83",
+    "website_note": "No dedicated practice website found; presence via Healthgrades/Vitals directory listings.",
+    "services": ["routine examinations", "professional cleanings", "digital X-rays", "composite fillings", "crowns", "preventative sealants", "telehealth (by inquiry)"],
+    "insurance_note": "Accepts cash, credit card, or debit card.",
+    "sources": ["https://www.healthgrades.com/dentist/dr-narda-coronado-y8p83"]
+   }
+  },
+  {
+   "location_id": "c2cd72abefc2ac9d",
+   "practice_name": "Mathew Dental",
+   "zip": "60506",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.vitadox.com/practice/aurora-il-60506/premier-dental-clinic-llc/CUE4JgEJu3ETTAraHq5dmP",
+    "https://www.yelp.com/biz/premier-dental-clinic-aurora"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched the exact address (1264 N Lake St / suite variants). Confirmed Dr. George K. Mathew DDS operates Premier Dental Clinic, LLC solo at this address (registered NPPES since 2008), matching provider_count=1/solo_established. No corporate/DSO parent or multi-location signal found.",
+   "searched": [
+    "Mathew Dental Aurora IL 1264 N Lake St"
+   ]
+  },
+  {
+   "location_id": "9474a975b32caca0",
+   "practice_name": "Adatia Dental",
+   "zip": "60506",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://aonedentalcare.com/",
+    "https://aedit.com/provider/mayank-adatia-15407"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:a-one-dental-care",
+   "reasoning": "Searched the exact address (853 N Highland Ave) and provider name (Mayank Adatia). Found A-One Dental Care, a husband-and-wife dentist-owned practice with 2 IL locations: Hanover Park (Dr. Mayank Adatia) and Aurora, this address (Dr. Shakuntala Adatia), run together for 35+ years. Dentist-owned multi-location practice, no corporate/DSO signal.",
+   "searched": [
+    "Adatia Dental Aurora IL 853 N Highland Ave",
+    "\"Mayank Adatia\" DDS dentist second location Illinois"
+   ],
+   "intel": {
+    "website_url": "https://aonedentalcare.com/",
+    "website_note": "Branded 2-location dentist-owned site with provider portal pages.",
+    "services": ["complete smile makeovers", "cosmetic dentistry", "root canals", "crowns and bridges", "periodontal surgical procedures"],
+    "provider_notes": "Dr. Mayank (Mike) Adatia DDS and Dr. Shakuntala Adatia DDS, husband-and-wife dentist team.",
+    "distinguishing_notes": "Family-run practice spanning Hanover Park and Aurora locations for over 35 years.",
+    "sources": ["https://aonedentalcare.com/", "https://aedit.com/provider/mayank-adatia-15407"]
+   }
+  }
+ ]
+}

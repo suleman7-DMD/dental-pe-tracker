@@ -1,0 +1,404 @@
+{
+ "unit_id": "laneA_119",
+ "classifications": [
+  {
+   "location_id": "fa2a7af4d263eb84",
+   "practice_name": "Langowski Dental",
+   "zip": "60641",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yellowpages.com/chicago-il/dr-brian-langowski-dds",
+    "https://www.findatopdoc.com/doctor/626470-Brian-Langowski-dentist-Chicago-IL-60641",
+    "https://findadentist.ada.org/dentists/dr-brian-r-langowski-chicago-0038V00002yjzscQAA-a1C8V00000kYVDcUAO"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched practice name + address; multiple independent directories (Yellow Pages, FindATopDoc, ADA Find-a-Dentist) confirm Dr. Brian Langowski, DDS practices solo at 4344 N Keystone Ave with the practice noted as 46 years in business. No corporate parent, brand, or second location found; single-provider owner-operator fits true_independent.",
+   "searched": [
+    "Langowski Dental 4344 N Keystone Ave Chicago"
+   ]
+  },
+  {
+   "location_id": "48fbda09c9350970",
+   "practice_name": "Abdala Dental",
+   "zip": "60641",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.sharecare.com/doctor/dr-nancy-abdala-ygqjm",
+    "https://www.healthgrades.com/dentist/dr-nancy-abdala-ygqjm"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Confirmed Dr. Nancy Abdala, DDS at 3321 N Pulaski Rd via Sharecare/Healthgrades, matching name+address+phone. No corporate affiliation found. Note: shares its exact phone number (773) 282-2077 with neighboring Candelaria Dental at 3325 N Pulaski Rd, but Candelaria's own site does not mention Abdala and no closure notice was found for Abdala, so treated as a separate solo listing rather than closure_suspect; medium confidence due to that ambiguity and 'not accepting new patients' status.",
+   "searched": [
+    "Abdala Dental 3321 N Pulaski Rd Chicago",
+    "Dr. Nancy Abdala dentist Chicago current practice 2026",
+    "Abdala Dental Pulaski Chicago closed permanently"
+   ]
+  },
+  {
+   "location_id": "5a8ff67ae8c53e46",
+   "practice_name": "DENTAL CARE ASSOCIATES",
+   "zip": "60641",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.zocdoc.com/dentist/saeed-azam-dmd-153252",
+    "https://acedentalcenter.com/team-member/azam-saeed-dmd-ma/",
+    "https://www.yelp.com/biz/ace-dental-center-hoffman-estates",
+    "https://www.yelp.com/biz/ace-dental-center-lombard"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:ace_dental_center",
+   "reasoning": "Searched address + NPPES AO 'Mirza Baig'; found no dentist by that name at this address, but converging sources (Zocdoc, Ace Dental Center's own team page, Yelp) place 4332 N Elston Ave as an operating 'Ace Dental Center' location run by owner-dentist Dr. Azam Saeed (DMD, aka Dr. Akber), who also owns Ace Dental Center locations in Lombard and Hoffman Estates (a small dentist-owned multi-location group, not a branded national DSO). Classified dentist_multi on the current operating brand rather than the stale NPPES org name; medium confidence because the NPPES authorized official name does not match the web-confirmed owner.",
+   "searched": [
+    "\"Dental Care Associates\" 4332 N Elston Ave Chicago Mirza Baig",
+    "\"Ace Dental Center\" 4332 N Elston Ave Chicago owner dentist",
+    "\"Mirza Baig\" dentist Chicago DDS",
+    "\"Ace Dental Center\" Chicago Saeed Azam OR Akber owner independent group"
+   ]
+  },
+  {
+   "location_id": "5baab33356b6c212",
+   "practice_name": "Candelaria Dental",
+   "zip": "60641",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://chicagodentistpc.com/",
+    "https://www.yelp.com/biz/adelina-candelaria-dds-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Fetched the practice's own site chicagodentistpc.com, which names only Dr. Adelina Candelaria (25+ years experience) as the sole provider at 3325 N Pulaski Rd, with no mention of any corporate parent or other dentist. Clear solo owner-operator, single location.",
+   "searched": [
+    "Candelaria Dental 3325 N Pulaski Rd Chicago"
+   ],
+   "intel": {
+    "website_url": "https://chicagodentistpc.com/",
+    "website_note": "Practice-branded site (chicagodentistpc.com) with bio, testimonials, and services pages; bilingual office with on-site lab for same-day service.",
+    "services": ["whitening", "crowns", "extractions", "implant restorations", "root canal therapy", "partial/full dentures"],
+    "technology": [],
+    "provider_count_web": 1,
+    "provider_notes": "Dr. Adelina Candelaria, DDS, 25+ years experience",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Bilingual, on-site dental lab for same-day prosthetic/emergency service; serves Old Irving Park and surrounding suburbs; accepting new patients.",
+    "sources": ["https://chicagodentistpc.com/", "https://www.yelp.com/biz/adelina-candelaria-dds-chicago"]
+   }
+  },
+  {
+   "location_id": "2fda3ee325f2839e",
+   "practice_name": "JAIME R MARQUEZ D.D.S. P.A.",
+   "zip": "60641",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.labdraw.com/reviews/1245624139",
+    "https://npiregistry.cms.hhs.gov/provider-view/1245624139"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched name + address; NPI/registry aggregators confirm Jaime R Marquez D.D.S. P.A. at 5227 W Belmont Ave, with the practice's own registered authorized official (Jaime Marquez) matching the practice name -- a personal service corporation, single location, no corporate branding found. Medium confidence because listed phone numbers vary slightly across directories, but no other operator/brand was found at this address.",
+   "searched": [
+    "Jaime Marquez DDS 5227 W Belmont Ave Chicago dentist"
+   ]
+  },
+  {
+   "location_id": "88ef34deb23c8a00",
+   "practice_name": "BRITE DENTAL BELMONT, P.C.",
+   "zip": "60641",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.britedental.org/our-offices",
+    "https://www.britedental.org/brite-dental-belmont",
+    "https://dental360grp.com/",
+    "https://www.bbb.org/us/il/chicago/profile/dental-services/brite-dental-pc-0654-90024834"
+   ],
+   "evidence_artifacts": ["AO Fadi Aqel owner_reach_locations=12 across 9 ZIPs (ctx)", "EIN 363861821 shared with 1 already-corporate member (ctx)"],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": "brand:dental_360",
+   "reasoning": "R4_protected_network:Brite_Dental/Dental_360 (Fadi Aqel). Brite Dental's own site (britedental.org) lists 7+ P.C. locations (Belmont, Marquette Pulaski, Cermak, Berwyn, Armitage, Kimball, Clark) and one of those addresses (6720 N Clark St) is separately reviewed under the 'Dental 360' name, indicating the two brands are the same operator; ctx shows AO Fadi Aqel reaching 12 locations across 9 ZIPs. Whether Dr. Aqel is a practicing dentist-owner (T3) or the entity has a non-dentist corporate controller behind the P.C. shell (T4/T5) could not be resolved with 1-3 searches, and the network clearly exceeds the 10-location protected threshold, so this is deferred to one-network-one-decision review rather than guessed.",
+   "searched": [
+    "\"Brite Dental\" Belmont Chicago Dental 360 locations",
+    "\"Dental 360\" Fadi Aqel Brite Dental Chicago group"
+   ]
+  },
+  {
+   "location_id": "d60fc57b17abbde1",
+   "practice_name": "OS DENTAL LOUNGE",
+   "zip": "60641",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.vipdentallounge.com/",
+    "https://www.zocdoc.com/dentist/lyudmila-tavolzhanskaya-dds-629588"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Operates publicly as 'VIP Dental Lounge' at 5120 W Irving Park Rd. Own site and Zocdoc/LinkedIn confirm Dr. Lyudmila Tavolzhanskaya founded and owns the practice in 2015 as lead/sole dentist; no mention of other owner-dentists, corporate parent, or additional locations. Matches ctx AO exactly.",
+   "searched": [
+    "OS Dental Lounge 5120 W Irving Park Rd Chicago",
+    "VIP Dental Lounge Lyudmila Tavolzhanskaya number of dentists"
+   ],
+   "intel": {
+    "website_url": "https://www.vipdentallounge.com/",
+    "website_note": "Modern practice-branded site with online contact/booking; boutique positioning ('VIP Dental Lounge').",
+    "services": ["crowns", "bridges", "dental implants", "invisalign", "same-day emergency dental", "teeth whitening", "cleanings", "periodontal therapy", "extractions"],
+    "technology": [],
+    "provider_count_web": 1,
+    "provider_notes": "Dr. Lyudmila Tavolzhanskaya (\"Dr. Lyuda\"), founder/owner since 2015",
+    "distinguishing_notes": "Family-focused boutique practice in Portage Park; started 2015; accepting new patients and emergencies.",
+    "sources": ["https://www.vipdentallounge.com/", "https://www.zocdoc.com/dentist/lyudmila-tavolzhanskaya-dds-629588"]
+   }
+  },
+  {
+   "location_id": "4ba4c5b9ae5f3cc4",
+   "practice_name": "Adefeso Adekunbi Bakiat",
+   "zip": "60641",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.monarchdentalstudio.com/",
+    "https://www.monarchdentalstudio.com/dr-kunbi-adefeso"
+   ],
+   "evidence_artifacts": ["Same phone (312) 300-7386 and adjacent address 4012 N Cicero as sibling location_id 7ccf5f3431fbcac0 (KUNBI ADEFESO PLLC) -- same owner, same practice"],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:ADEFESO_ADEKUNBI",
+   "reasoning": "Own site monarchdentalstudio.com confirms Dr. Kunbi (Adekunbi) Adefeso is the founder/owner-dentist of Monarch Dental Studio at 4008 N Cicero Ave, a single-location solo practice. This individual NPI and the neighboring 'Kunbi Adefeso PLLC' org NPI at 4012 N Cicero Ave (same phone) are the same practice/owner registered under two NPIs; tagged with a shared network_id for linkage, not because it is a multi-location chain.",
+   "searched": [
+    "Adekunbi Adefeso dentist Chicago Cicero Ave"
+   ]
+  },
+  {
+   "location_id": "4a6d009ce2ac0bd1",
+   "practice_name": "Ordonez Dental",
+   "zip": "60641",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.sharecare.com/doctor/dr-vicente-ordonez-u3xqghd",
+    "https://www.healthgrades.com/dentist/dr-vicente-ordonez-u3xqghd"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Confirmed Dr. Vicente Ordonez, DMD at 5035 W Cornelia Ave via Sharecare/Healthgrades matching name and address. No corporate brand or second location found; solo practitioner. Medium confidence given only aggregator-level detail and a 'not accepting new patients' flag (no closure evidence found).",
+   "searched": [
+    "Ordonez Dental 5035 W Cornelia Ave Chicago"
+   ]
+  },
+  {
+   "location_id": "7ccf5f3431fbcac0",
+   "practice_name": "KUNBI ADEFESO PLLC",
+   "zip": "60641",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.monarchdentalstudio.com/",
+    "https://www.monarchdentalstudio.com/dr-kunbi-adefeso"
+   ],
+   "evidence_artifacts": ["EIN 362928195, AO Adekunbi Adefeso matches sibling individual NPI location_id 4ba4c5b9ae5f3cc4 one door down on Cicero Ave"],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:ADEFESO_ADEKUNBI",
+   "reasoning": "Same underlying practice as location_id 4ba4c5b9ae5f3cc4: Dr. Kunbi Adefeso's PLLC entity for Monarch Dental Studio, a solo owner-operator dental practice at 4008-4012 N Cicero Ave. No corporate parent or second physical office found.",
+   "searched": [
+    "Adekunbi Adefeso dentist Chicago Cicero Ave"
+   ]
+  },
+  {
+   "location_id": "213d8285856873eb",
+   "practice_name": "Dental Salon",
+   "zip": "60642",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://dentalsalon.com/",
+    "https://www.dentalsalon.com/our-providers"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:dental_salon",
+   "reasoning": "Own site (dentalsalon.com, fetched) states the practice is 'family-owned' and lists 8 dentists (Arora, Gajendrareddy, Mody, Saad, Sethi, Chaudhari, Pasupuleti, Gong) across two locations (Lincoln Park and Schaumburg), founded 2003 by Dr. Mark Morris and continued by Drs. Arora and Mody after his 2024 passing. No DSO/PE mention anywhere; this corrects the pre-existing dso_national tag -- it is a dentist-owned 2-location multi-specialty group, i.e. dentist_multi, not a national DSO.",
+   "searched": [
+    "\"Dental Salon\" 939 W North Ave Chicago dentist",
+    "Dental Salon Chicago Lincoln Park Schaumburg owner DSO private equity"
+   ],
+   "intel": {
+    "website_url": "https://dentalsalon.com/",
+    "website_note": "Polished multi-provider practice site with online booking; positions itself as one-stop multi-specialty care to avoid outside referrals.",
+    "services": ["general dentistry", "cosmetic", "implants", "periodontal", "oral surgery", "endodontics", "Invisalign", "whitening"],
+    "technology": [],
+    "provider_count_web": 8,
+    "provider_notes": "Drs. Rashi Arora (DDS), Praveen Gajendrareddy (DDS, periodontist), Pooja Mody (DDS), Mustafa Saad (DDS, oral surgery/implants), Jasveen Sethi (DDS, endo), Puja Chaudhari (DMD), Samhitha Pasupuleti (DMD), Margaret Gong (DMD); plus 2 RDH hygienists",
+    "distinguishing_notes": "Founded 2003 by Dr. Mark Morris; continued by Arora/Mody after his 2024 passing; two locations (Lincoln Park + Schaumburg); Chicago Reader 'best dentist' 5 years running.",
+    "sources": ["https://dentalsalon.com/", "https://www.dentalsalon.com/our-providers"]
+   }
+  },
+  {
+   "location_id": "5e83406f7a0c4edf",
+   "practice_name": "Tofovic Petar DMD",
+   "zip": "60642",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-petar-tofovic-yfhhn",
+    "https://www.patientconnect365.com/Dentists/Illinois/Chicago/60642/White_Dental_Studio"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Confirmed Dr. Petar Tofovic, DMD operates his own solo practice branded 'White Dental Studio' at 1414 W Chicago Ave; graduated University of Pittsburgh School of Dentistry 2007, no corporate parent or second location found. Solo owner-operator.",
+   "searched": [
+    "Tofovic Petar DMD 1414 W Chicago Ave dentist"
+   ],
+   "intel": {
+    "website_note": "Practice operates under the branded name 'White Dental Studio'; aggregator listings note telehealth availability and multiple insurance plans accepted.",
+    "provider_count_web": 1,
+    "provider_notes": "Dr. Petar Tofovic, DMD, MPH -- University of Pittsburgh School of Dentistry, DMD 2007; completed GPR at Illinois Masonic Medical Center",
+    "owner_career_stage": "mid_career",
+    "google_rating": 4.0,
+    "google_source_url": "https://www.healthgrades.com/dentist/dr-petar-tofovic-yfhhn",
+    "distinguishing_notes": "Also founder/CEO of a dental technology venture (Dentite) per LinkedIn; accepting new patients.",
+    "sources": ["https://www.healthgrades.com/dentist/dr-petar-tofovic-yfhhn", "https://www.patientconnect365.com/Dentists/Illinois/Chicago/60642/White_Dental_Studio"]
+   }
+  },
+  {
+   "location_id": "5ef584331aee550f",
+   "practice_name": "Gleam Dental Studio",
+   "zip": "60642",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://gleamdentalstudio.com/",
+    "https://www.yelp.com/biz/gleam-dental-studio-chicago-2"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched name + address; gleamdentalstudio.com and Yelp confirm Dr. Jeffery Korkus operates a single-location general dentistry practice at 669 N Milwaukee Ave (River West), founded/led by him personally with no mention of other owners or a corporate parent.",
+   "searched": [
+    "Gleam Dental Studio 669 N Milwaukee Ave Chicago"
+   ],
+   "intel": {
+    "website_url": "https://gleamdentalstudio.com/",
+    "website_note": "Practice-branded site for a River West-focused general dentistry office.",
+    "services": ["preventive dentistry", "restorative dentistry", "cosmetic dentistry", "children's dentistry"],
+    "technology": [],
+    "provider_count_web": 1,
+    "provider_notes": "Dr. Jeffery Korkus",
+    "distinguishing_notes": "Positioned as personalized-care neighborhood practice serving River West Chicago; welcoming new patients.",
+    "sources": ["https://gleamdentalstudio.com/", "https://www.yelp.com/biz/gleam-dental-studio-chicago-2"]
+   }
+  },
+  {
+   "location_id": "9de0aa70133c8027",
+   "practice_name": "Dental Standard",
+   "zip": "60642",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://thedentalstandard.com/",
+    "https://thedentalstandard.com/meet-us/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice's own site (thedentalstandard.com) shows a single location at 1545 W North Ave led by two dentists, Dr. Vladik Crutcher DMD and Dr. Marisa Rugino DMD, with no other locations or corporate affiliation mentioned. Matches ctx entity_classification small_group -- multi-dentist, one location, dentist-owned.",
+   "searched": [
+    "Dental Standard 1545 W North Ave Chicago dentist"
+   ],
+   "intel": {
+    "website_url": "https://thedentalstandard.com/",
+    "website_note": "Modern, design-forward practice site emphasizing patient experience.",
+    "services": ["teeth whitening", "veneers", "bonding", "same-day crowns", "clear braces (Invisalign-style)", "3-D dentistry/imaging"],
+    "technology": ["3-D imaging"],
+    "provider_count_web": 2,
+    "provider_notes": "Dr. Vladik Crutcher, DMD and Dr. Marisa Rugino, DMD",
+    "distinguishing_notes": "Amenities include massage chairs and 43\" TVs at treatment areas, garage and private lot parking, wheelchair accessible.",
+    "sources": ["https://thedentalstandard.com/", "https://thedentalstandard.com/meet-us/"]
+   }
+  },
+  {
+   "location_id": "d220f31ef6738c88",
+   "practice_name": "Brady Dental",
+   "zip": "60642",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60642/invite-d-jamieson-brady-dds-18992",
+    "https://www.nelsonridge.com/jamieson-brady/",
+    "https://polishedchicago.com/personnel/dr-jamieson-brady/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Confirmed NPI 1053867317 belongs to Dr. D. Jamieson Brady, DDS, registered at '1249 N Greenview Ave, Apt 1' -- but his actual clinical work appears to be as a traveling oral/maxillofacial sedation specialist performing extractions at multiple unrelated partner offices (Nelson Ridge Family Dental in New Lenox, Polished Dental Lakeview, Palatine Dental Associates), not as an independent fixed-location GP practice at the Greenview address. Could not confirm a standalone operating dental office exists at this address, so no ownership tier could be responsibly assigned; not flagged closure_suspect since he is clearly an active practicing dentist elsewhere, just not verifiably 'at' this location as a clinic.",
+   "searched": [
+    "Brady Dental 1249 N Greenview Ave Chicago dentist",
+    "NPI 1053867317 Brady Dental Chicago",
+    "\"Jamieson Brady\" dentist Chicago Greenview practice"
+   ]
+  },
+  {
+   "location_id": "5af9933c87c51a93",
+   "practice_name": "Dental Practice Development",
+   "zip": "60642",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/river-west-smile-center-chicago",
+    "https://www.bbb.org/us/il/chicago/profile/dentist/river-west-smile-center-0654-88024372",
+    "https://www.carecredit.com/doctor-locator/chicago-il/river-west-smile-center-ltd-fpb222/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address resolves to 'River West Smile Center Ltd', operating at 875 N Milwaukee Ave since 2006 with multiple dentists on staff (Dr. Mia Toy listed as management/owner contact, plus Drs. Ameri and Webb mentioned in reviews). Single physical location, no DSO/PE brand or additional offices found -- fits single_loc_group. Medium confidence: the official riverwestsmilecenter.com site returned a 403 and could not be directly verified, so this relies on third-party aggregator listings.",
+   "searched": [
+    "\"Dental Practice Development\" 875 N Milwaukee Ave Chicago dentist",
+    "River West Smile Center Chicago dentist owner reviews"
+   ]
+  }
+ ]
+}

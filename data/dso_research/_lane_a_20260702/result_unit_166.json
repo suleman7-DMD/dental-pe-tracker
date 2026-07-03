@@ -1,0 +1,428 @@
+{
+  "unit_id": "laneA_166",
+  "classifications": [
+    {
+      "location_id": "00f209bd764640b7",
+      "practice_name": "CRAIG KOSTRUBALA DDS LLC",
+      "zip": "60803",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.adentalhome.com/",
+        "https://www.healthgrades.com/dentist/dr-craig-kostrubala-xwtdh"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Own site (adentalhome.com) explicitly describes the practice as 'a non-corporate family business' run by Dr. Craig Kostrubala, DDS (Loyola Univ. School of Dentistry, 1993), at this single Alsip address. No corporate parent, brand, or second location found anywhere. Classic solo owner-operator.",
+      "searched": [
+        "Craig Kostrubala DDS Alsip IL dentist"
+      ],
+      "intel": {
+        "website_url": "https://www.adentalhome.com/",
+        "website_note": "Own-brand site positioned as family/cosmetic dentistry; explicitly markets itself as non-corporate.",
+        "services": ["family dentistry", "cosmetic dentistry", "root canals", "extractions", "dentures", "crowns", "veneers", "implants"],
+        "provider_count_web": 1,
+        "provider_notes": "Dr. Craig Kostrubala, DDS, graduated Loyola University School of Dentistry 1993 (~30+ years in practice); accepting new patients.",
+        "owner_career_stage": "late_career",
+        "distinguishing_notes": "Owner-founder still practicing solo after ~30 years; site emphasizes family-run, non-corporate positioning.",
+        "sources": ["https://www.adentalhome.com/", "https://www.healthgrades.com/dentist/dr-craig-kostrubala-xwtdh"]
+      }
+    },
+    {
+      "location_id": "52b68c520b5385df",
+      "practice_name": "DENTAL ASSOCIATES OF ALSIP, LLC",
+      "zip": "60803",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.alsipdentist.com/about-us/meet-our-team",
+        "https://www.alsipdentist.com/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Fetched the practice's own team page: three dentists (Dr. Walter Wren, Dr. Richard Eber, Dr. Meg Eber) practicing together at one clinic (new building opened April 2017), a multi-decade partnership. No mention of a DSO, management company, or additional locations. NPPES AO 'Katherine Grueneberg' did not surface on the practice's own materials but no conflicting address was found either.",
+      "searched": [
+        "Dental Associates of Alsip Katherine Grueneberg dentist"
+      ],
+      "intel": {
+        "website_url": "https://www.alsipdentist.com/",
+        "website_note": "Modern, well-maintained practice site with team/about pages.",
+        "provider_count_web": 3,
+        "provider_notes": "Dr. Walter Wren & Dr. Richard Eber (30+ year partnership); Dr. Meg Eber (Richard's daughter) joined in 2020.",
+        "distinguishing_notes": "Multi-generational family partnership; new clinic building opened April 2017.",
+        "sources": ["https://www.alsipdentist.com/about-us/meet-our-team"]
+      }
+    },
+    {
+      "location_id": "47b29ee7e72213bb",
+      "practice_name": "ORAL KARE NETWORK, LOCATION II",
+      "zip": "60804",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.bbb.org/us/il/cicero/profile/dentist/oral-kare-network-loc-2-ltd-0654-88136503",
+        "https://www.yelp.com/biz/oral-kare-network-loc-2-cicero"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "BBB profile names the owner as George Zehak, business started 1993, single active address (5907 W 35th St) across every directory found; no active 'Location I' or additional site turned up despite the 'Location II' name. No corporate/DSO signal. Treated as a longstanding single-location solo practice; medium confidence because the NPPES AO (Marleen Severino) does not match the BBB-listed owner (Zehak) and could not be reconciled.",
+      "searched": [
+        "\"Oral Kare Network\" Cicero IL dental",
+        "\"Oral Kare Network\" Marleen Severino owner Cicero locations",
+        "\"Oral Kare Network\" Loc 1 Cicero address dentist owner"
+      ],
+      "intel": {
+        "services": ["dental implants", "dentures", "emergency care", "full restoration", "general dentistry", "Invisalign", "root canal", "teeth cleaning", "teeth whitening", "tooth extraction", "veneers", "wisdom teeth removal"],
+        "insurance_note": "Delta Dental Premier, Delta Dental PPO, DeltaCare USA accepted.",
+        "sources": ["https://www.opencare.com/dentists/cicero-il/oral-kare-network-ii-24630116523c/", "https://www.yellowpages.com/cicero-il/mip/oral-kare-network-ii-ltd-9268434"]
+      }
+    },
+    {
+      "location_id": "719b01502f151a50",
+      "practice_name": "PROCARE DENTAL GROUP P.C.",
+      "zip": "60804",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.procaredentalgroup.com/locations/",
+        "https://www.procaredentalgroup.com/"
+      ],
+      "evidence_artifacts": ["network spans 10 locations per own site/BBB (Crystal Lake, McHenry, Arlington Heights, Chicago, Cicero, etc.)"],
+      "confidence": "medium",
+      "status": "undetermined",
+      "network_id": "brand:procare_dental_group",
+      "reasoning": "ProCare Dental Group's own materials and BBB listings show it has grown from a single 1979 practice to 10 locations across the Chicago metro (Crystal Lake, McHenry, Arlington Heights, Chicago, Cicero, etc.), led by Dr. Robert G. Brunetti, DDS. This meets the 10+-location protected-network threshold, so per protocol this is NOT classified here. R4_protected_network:ProCare Dental Group Robert Brunetti DDS.",
+      "searched": [
+        "\"Procare Dental Group\" Cicero IL Robert Brunetti"
+      ],
+      "intel": {
+        "website_url": "https://www.procaredentalgroup.com/",
+        "website_note": "Corporate-style multi-location site with a dedicated /locations/ page.",
+        "services": ["general dentistry", "cosmetic dentistry", "orthodontics", "periodontics"],
+        "distinguishing_notes": "10-location network founded 1979 by Dr. Robert Brunetti, DDS (President/CEO); family-owned per own materials.",
+        "sources": ["https://www.procaredentalgroup.com/locations/"]
+      }
+    },
+    {
+      "location_id": "3bc304a7819a234f",
+      "practice_name": "WEBSTER DENTAL CARE OF CICERO",
+      "zip": "60804",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/webster-dental-care-of-cicero-cicero"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "undetermined",
+      "network_id": "brand:webster_dental",
+      "reasoning": "Yelp's own listing title reads 'WEBSTER DENTAL CARE OF CICERO - CLOSED' (updated May 2026), indicating the business is no longer operating at 6130 W Cermak Rd. closure_suspect — not classified. Prior leadership was Dr. Steven Rempas (President) and Dr. Mark Zieba (VP); Webster Dental Care also has/had a La Grange Park location per BBB.",
+      "searched": [
+        "\"Webster Dental\" Cicero IL 6130 W Cermak"
+      ]
+    },
+    {
+      "location_id": "f3959b4a9ac8e139",
+      "practice_name": "SILVA DENTAL CENTER LTD",
+      "zip": "60804",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.silvadentalcenterltd.com/",
+        "https://www.healthgrades.com/group-directory/il-illinois/cicero/silva-dental-center-x2ws8x"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Own site + Healthgrades confirm Dr. Berta M. Silva, DDS founded and runs this single-location multi-specialty practice (30+ years, Univ. of Illinois Dental School), with in-house ortho/perio/pedo specialists — matching the DB's provider_count=4. No connection to 'Precision Dental Care' was found (that brand operates from a separate address, 5315 W Cermak, ~6 blocks away, under different dentists) — the DB's affiliated_dso tag for this address appears to be a false match, not corroborated by any web evidence.",
+      "searched": [
+        "\"Silva Dental Center\" Cicero \"Precision Dental Care\" IL",
+        "\"Silva Dental Center\" 5919 Cermak Cicero Berta Silva"
+      ],
+      "intel": {
+        "website_url": "https://www.silvadentalcenterltd.com/",
+        "provider_notes": "Dr. Berta M. Silva, DDS (founder), 30+ years in practice, Univ. of Illinois Dental School grad, bilingual English/Spanish; team includes pedodontists, orthodontists, and periodontists.",
+        "owner_career_stage": "late_career",
+        "distinguishing_notes": "Multi-specialty single-location family dental center serving the whole family under one roof.",
+        "sources": ["https://www.silvadentalcenterltd.com/", "https://www.healthgrades.com/group-directory/il-illinois/cicero/silva-dental-center-x2ws8x"]
+      }
+    },
+    {
+      "location_id": "28fab093c7a6a0d9",
+      "practice_name": "MONIL P SHAH DMD PC",
+      "zip": "60804",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.centraldentalassociates.com/",
+        "https://www.healthgrades.com/dentist/dr-monil-shah-y4xdh"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Dr. Monil Shah, DMD (Boston University School of Dentistry) owns Central Dental Associates at 5539 W Cermak Rd, described as 'Dr. Shah and his associates,' matching the DB's small_group/provider_count=3. Only one operating address for this practice name was found (a second Bloomingdale/60188 location referenced only in NPPES-side context could not be corroborated on the web), so classified as a single-location dentist-owned group.",
+      "searched": [
+        "\"Monil Shah\" DMD Cicero dentist",
+        "\"Central Dental Associates\" Cicero OR Bloomingdale Monil Shah locations"
+      ],
+      "intel": {
+        "website_url": "https://www.centraldentalassociates.com/",
+        "provider_notes": "Dr. Monil Shah, DMD, practicing since 1999, owner since 2012; speaks English, Spanish, Hindi, Urdu.",
+        "distinguishing_notes": "Open six days a week including most Saturdays.",
+        "sources": ["https://www.centraldentalassociates.com/", "https://www.healthgrades.com/dentist/dr-monil-shah-y4xdh"]
+      }
+    },
+    {
+      "location_id": "5cd49db66c4ee020",
+      "practice_name": "MAGIC SMILES, INC.",
+      "zip": "60804",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://atozmagicdental.com/about",
+        "https://www.linkedin.com/in/magicsmilesatozdental/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "ao:ZHANG_LIQING",
+      "reasoning": "Dr. Liqing Zhang, DDS (treasurer/owner per NPI, sole treating doctor per her own site) operates this Cicero location (Magic Smiles, Inc.) plus 'A to Z Magic Dental'/'A to Z Dental' offices in Richton Park, Flossmoor, and Chicago Heights — a dentist-owned multi-location practice under 10 sites, so not protected-network. Under 10 locations across brand variants owned by one dentist, so classifies as dentist_multi rather than a branded chain.",
+      "searched": [
+        "\"Magic Smiles\" Cicero IL dentist Liqing Zhang",
+        "\"A to Z Magic Dental\" Liqing Zhang Cicero Richton Park locations"
+      ],
+      "intel": {
+        "website_url": "https://atozmagicdental.com/",
+        "provider_notes": "Dr. Liqing Zhang, DDS, founded A to Z Magic Dental in 2008; trained in oral surgery, periodontics, orthodontics, implants, and endodontics.",
+        "distinguishing_notes": "Same-day emergency appointments offered at Richton Park & Flossmoor locations.",
+        "sources": ["https://atozmagicdental.com/about", "https://www.linkedin.com/in/magicsmilesatozdental/"]
+      }
+    },
+    {
+      "location_id": "6eeaf4643d34c9a4",
+      "practice_name": "Salazar Dental",
+      "zip": "60804",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "http://www.salazardentalcenter.com/",
+        "https://www.yelp.com/biz/salazar-dental-cicero"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Own site (salazardentalcenter.com) and multiple directories confirm Dr. Blanca L. Salazar, DDS as founder, with three additional associate dentists (Jesse Zavala, Ben Chunprapaph, Elysia An) practicing at this one Cermak Rd address. No corporate parent or additional locations found for the Salazar Dental Center brand itself.",
+      "searched": [
+        "\"Salazar Dental\" 5008 W Cermak Cicero IL dentist"
+      ],
+      "intel": {
+        "website_url": "http://www.salazardentalcenter.com/",
+        "provider_count_web": 4,
+        "provider_notes": "Dr. Blanca L. Salazar, DDS (founder), plus associates Jesse Zavala, Ben Chunprapaph, and Elysia An.",
+        "services": ["braces and retainers", "bridges and dentures", "fillings", "Invisalign", "root canals", "teeth bonding", "teeth cleaning", "teeth whitening", "tooth crown and cap", "tooth extraction", "veneers", "wisdom teeth removal"],
+        "distinguishing_notes": "Multi-dentist family/general practice; one of its associates (Jesse Zavala) separately owns his own solo practice, Zavala Dental, at a different Cicero address.",
+        "sources": ["http://www.salazardentalcenter.com/", "https://www.yelp.com/biz/salazar-dental-cicero"]
+      }
+    },
+    {
+      "location_id": "921961e587c8ee15",
+      "practice_name": "Hussain Dental",
+      "zip": "60804",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.doctorsnetwork.com/doctors/dentists/cicero-il-60804/invite-uzma-hussain-dds-13348"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Dr. Uzma Hussain, DDS runs general dentistry at 5533 W Cermak Rd (also listed as 'Cermak Dental Center' in some directories); no corporate/DSO signal found. Classified as a small dentist-owned group given DB's provider_count=2, though web sources described 'Dr. Hussain and the team' without independently naming a second dentist, so confidence is medium rather than high.",
+      "searched": [
+        "\"Hussain Dental\" 5533 W Cermak Cicero IL dentist"
+      ],
+      "intel": {
+        "provider_notes": "Dr. Uzma Hussain, DDS.",
+        "services": ["check-ups and x-rays", "cleanings", "fillings", "crowns", "root canals", "dental implants", "dentures", "extractions", "Invisalign", "veneers", "teeth whitening"],
+        "sources": ["https://www.doctorsnetwork.com/doctors/dentists/cicero-il-60804/invite-uzma-hussain-dds-13348"]
+      }
+    },
+    {
+      "location_id": "fbb43bb2a136f734",
+      "practice_name": "Zavala Dental",
+      "zip": "60804",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/zavala-dental-cicero",
+        "https://www.healthgrades.com/dentist/dr-jesse-zavala-33p98"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Dr. Jesse Zavala, DDS runs this single-location family/general practice at 5805 W 35th St under his own name/brand (zavaladental.com). Note: the same Dr. Zavala also appears as an associate dentist at nearby Salazar Dental Center, but this location is his own independent practice, not a multi-location chain.",
+      "searched": [
+        "\"Zavala Dental\" 5805 W 35th Cicero IL dentist"
+      ],
+      "intel": {
+        "website_url": "https://Zavaladental.com",
+        "provider_notes": "Dr. Jesse Zavala, DDS.",
+        "services": ["family and general dentistry", "dental implants and crowns", "bridges, partials and dentures", "checkups and x-rays", "cosmetic dentistry", "scaling and root planing"],
+        "sources": ["https://www.yelp.com/biz/zavala-dental-cicero", "https://www.healthgrades.com/dentist/dr-jesse-zavala-33p98"]
+      }
+    },
+    {
+      "location_id": "99b7b4ad619fddf4",
+      "practice_name": "DENTAL EXPERTS, LLC",
+      "zip": "60804",
+      "assigned_tier": "branded_dso",
+      "pe_backed": false,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "https://www.dentaldreams.com/location/dental-dreams-south-cicero-ave-cicero/",
+        "https://www.dentaldreams.com/location_group/illinois/"
+      ],
+      "evidence_artifacts": ["phone match: record phone (706) 656-2222 vs Dental Dreams' own locator phone (708) 656-2222 (area-code typo in source record); same street (S Cicero Ave) and zip 60804"],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "brand:dental_dreams",
+      "reasoning": "Dental Dreams' own locator page lists a South Cicero Ave, Cicero, IL 60804 location with phone (708) 656-2222 — matching this record's phone almost exactly (area code differs by a likely data-entry typo, 706 vs 708) and its street/zip. 'Dental Experts, LLC' is Dental Dreams' known friendly-PC entity name for this market. No PE sponsor was identified in web results, so pe_backed left false pending documentary confirmation.",
+      "searched": [
+        "\"Dental Experts\" \"Dental Dreams\" 2240 S Cicero Ave Chicago"
+      ],
+      "intel": {
+        "website_url": "https://www.dentaldreams.com/location/dental-dreams-south-cicero-ave-cicero/",
+        "website_note": "Corporate DSO locator page with hours: Mon-Fri 10am-6pm, Sat 9am-1pm, closed Sunday.",
+        "sources": ["https://www.dentaldreams.com/location/dental-dreams-south-cicero-ave-cicero/"]
+      }
+    },
+    {
+      "location_id": "3d6d77fc02cdd7f6",
+      "practice_name": "CICERO DENTAL CENTER LLC",
+      "zip": "60804",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.businessyab.com/explore/united_states/illinois/cook_county/cicero_township/cicero/south_cicero_avenue/1639/cicero_dental_center.html",
+        "https://www.dentalplans.com/dentists/illinois/cicero/60804/dr-mohammed-parvez-17302/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Cicero Dental Center LLC at 1639 S Cicero Ave has multiple treating dentists (Nishtha Viniak, Univ. of Illinois grad; Mohammed Parvez, DDS), consistent with a single-location group practice. No corporate parent or DSO brand found; NPPES AO is Hamza Mohammed, whose specific role (owner vs. administrator) could not be confirmed on the web, hence medium confidence.",
+      "searched": [
+        "\"Cicero Dental Center\" Hamza Mohammed 1639 Cicero Ave"
+      ],
+      "intel": {
+        "website_url": "https://cicero.dental/",
+        "provider_notes": "Multiple dentists including Nishtha Viniak (University of Illinois) and Dr. Mohammed Parvez, DDS.",
+        "services": ["gum surgery", "tooth extractions", "cavities", "root canal treatment", "wisdom teeth"],
+        "distinguishing_notes": "Hours Mon-Fri 10am-6pm, Sat 10am-2pm; appointments via website or mobile app.",
+        "sources": ["https://www.businessyab.com/explore/united_states/illinois/cook_county/cicero_township/cicero/south_cicero_avenue/1639/cicero_dental_center.html", "https://www.dentalplans.com/dentists/illinois/cicero/60804/dr-mohammed-parvez-17302/"]
+      }
+    },
+    {
+      "location_id": "dc3d6faeeb510821",
+      "practice_name": "SBY DDS PC",
+      "zip": "60804",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "https://precisiondentalchicago.com/our-locations/",
+        "https://www.yelp.com/biz/precision-dental-care-cicero"
+      ],
+      "evidence_artifacts": ["exact phone match: record (708) 222-8505 vs Precision Dental Care's Cicero location phone (708) 222-8505; exact address match 5315 W Cermak Rd, Cicero"],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "brand:precision_dental_care",
+      "reasoning": "This NPI's registered address (5315 W Cermak Rd) and phone number exactly match Precision Dental Care's own Cicero location listing. Precision Dental Care's own site and press describe it as a 7-8 location Chicagoland chain founded in 2007 and owned/operated by two licensed dentists, Dr. Kevin Nguyen, DDS and Dr. Randall Chang, DDS (Chang now owns/operates 8 clinics) — dentist ownership, under the 10-location protected-network threshold, so classified dentist_multi rather than branded_dso.",
+      "searched": [
+        "\"5315 W Cermak\" Cicero dentist OR dental",
+        "\"Precision Dental Care\" Cicero Illinois locations chain corporate owner"
+      ],
+      "intel": {
+        "website_url": "https://precisiondentalchicago.com/",
+        "provider_notes": "Dr. Randall Chang, DDS; Dr. Kevin Nguyen, DDS; Dr. Tarek Abourass, DMD practice at this location.",
+        "services": ["cavity treatment", "orthodontics", "tooth filling replacement/repair", "dental exams", "teeth cleaning"],
+        "distinguishing_notes": "Hours Mon 10-7, Tue-Thu 9-7, Fri 9-6, Sat 9-2; part of a 7-8 location Chicagoland dentist-owned chain.",
+        "sources": ["https://www.yelp.com/biz/precision-dental-care-cicero", "https://precisiondentalchicago.com/our-locations/"]
+      }
+    },
+    {
+      "location_id": "243ebd1c6e7a3938",
+      "practice_name": "VDC CICERO CORP",
+      "zip": "60804",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.dentalplans.com/dentists/illinois/cicero/60804/dr-esam-jumani-164356/",
+        "https://valuedentalcentercicero.com/about/"
+      ],
+      "evidence_artifacts": ["separate 'Value Dental Licensing' corporate entity name found but its relationship/control over this specific location could not be documented"],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "This 'Value Dental Center' location inside the Walmart at 3320 S Cicero Ave is staffed by a husband-wife dentist team, Dr. Esam Jumani, DDS and Dr. Gloria Figuera Jumani, DDS. 'Value Dental Centers' is a small (~4-location) IL/IN chain and a related 'Value Dental Licensing' entity exists, which raises a stealth-DSO possibility, but no documentary evidence of non-dentist corporate control was found (attempts to fetch valuedentalcenters.com and search for a management/PE relationship came back empty) — so classified on the strongest concrete evidence (on-site dentist ownership) rather than escalated to stealth_dso.",
+      "searched": [
+        "\"VDC Cicero\" dental 3320 S Cicero Ave Esam Jumani",
+        "\"Value Dental Centers\" Illinois Walmart locations chain how many",
+        "\"Value Dental Licensing\" OR \"Value Dental Centers\" corporate management company franchise dentist owned",
+        "\"Value Dental Centers\" \"private equity\" OR \"management company\" OR \"DSO\" dental service organization"
+      ],
+      "intel": {
+        "website_url": "https://valuedentalcentercicero.com/",
+        "provider_notes": "Dr. Esam Jumani, DDS and Dr. Gloria Figuera Jumani, DDS treat at this Walmart in-store clinic.",
+        "accepts_medicaid": true,
+        "insurance_note": "Accepts all major PPO insurance plans, Medicaid, and Medicare.",
+        "distinguishing_notes": "In-store clinic located inside a Walmart; part of a small (~4-location) 'Value Dental Centers' brand spanning IL and IN.",
+        "sources": ["https://www.dentalplans.com/dentists/illinois/cicero/60804/dr-esam-jumani-164356/", "https://valuedentalcentercicero.com/about/"]
+      }
+    },
+    {
+      "location_id": "e878afb317d16dca",
+      "practice_name": "S&P DENTAL LLC",
+      "zip": "60804",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://cicerosmiledental.com/",
+        "https://www.yelp.com/biz/cicero-smile-dental-cicero"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "Searched for 'S&P Dental' at 2319 S Cicero Ave and directly by name/NPI; every current result for that exact address instead returns a different business, 'Cicero Smile Dental' (Dr. Parth Patel, DDS), with no trace of 'S&P Dental LLC' anywhere on the web. closure_suspect — the original entity appears to no longer operate at this address (name change or closure); not classified.",
+      "searched": [
+        "\"S&P Dental\" 2319 S Cicero Ave Cicero IL",
+        "\"S&P Dental\" LLC Cicero IL npi"
+      ]
+    }
+  ]
+}
