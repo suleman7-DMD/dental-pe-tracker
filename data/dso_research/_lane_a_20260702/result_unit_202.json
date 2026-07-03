@@ -1,0 +1,512 @@
+{
+ "unit_id": "laneA_202",
+ "classifications": [
+  {
+   "location_id": "f2cb5a442fa1168c",
+   "practice_name": "KATHY MEYER DDS PC",
+   "zip": "60707",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-kathy-meyer-ylgfn",
+    "https://www.zocdoc.com/dentist/kathy-meyer-dds-rn-33005",
+    "https://www.northavenuedentalcare.com/services/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched the practice name and address; multiple health directories confirm Dr. Kathy Meyer, DDS (UIC dental grad, former RN) as the identified owner-dentist operating 'North Avenue Dental Care' at this single address. No DSO, parent company, or corporate signal found anywhere; provider_count=3 in source data with no other named associates found on the web, so classified single-location dentist-owned group rather than solo.",
+   "searched": [
+    "Kathy Meyer DDS Elmwood Park IL dentist 7544 W North Ave"
+   ],
+   "intel": {
+    "website_url": "https://www.northavenuedentalcare.com/",
+    "website_note": "Practice operates under the name 'North Avenue Dental Care'; hours M 8-12, T 9-5, W 2-8, F 9-5, closed Th/Sa/Su.",
+    "services": ["Bridge", "Dental Cleaning", "Dental Consultation", "New Patient Dental Exam (Adult)", "Root Canal"],
+    "provider_notes": "Dr. Kathy Meyer, DDS - University of Illinois at Chicago School of Dentistry graduate; began career as a Registered Nurse.",
+    "sources": [
+     "https://www.healthgrades.com/dentist/dr-kathy-meyer-ylgfn",
+     "https://www.zocdoc.com/dentist/kathy-meyer-dds-rn-33005",
+     "https://www.northavenuedentalcare.com/services/"
+    ]
+   }
+  },
+  {
+   "location_id": "10350cbe9ba08042",
+   "practice_name": "DRS. DELMONICO & TROCCHIO LTD",
+   "zip": "60707",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/delmonico-and-trocchio-dds-elmwood-park",
+    "https://www.grandchamber.org/directory/health-human-services/dental-services/del-monico-trocchio-ltd/",
+    "https://aedit.com/practice/drs-delmonico-and-trocchio-ltd-13671"
+   ],
+   "evidence_artifacts": [
+    "parent_company field 'EVENLY ORTHODONTICS DUPONT' matches the documented Evenly Technologies parent_iusa=000000000 placeholder false-positive pattern (see CLAUDE.md 2026-06-12 demotions note) - disregarded, not treated as a real corporate parent"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Web sources describe a long-established (practicing since at least 1963/1990) multi-dentist family/partner practice at a single Elmwood Park address, historically Dr. Ralph Del Monico Sr., Dr. Frank A. Trocchio, and Dr. Ralph Del Monico Jr. The source-data parent_company string is a known Evenly Technologies data artifact, not a real corporate parent, so this is classified dentist-owned single-location group.",
+   "searched": [
+    "Drs. Delmonico & Trocchio Elmwood Park IL dentist 7310 North Ave"
+   ],
+   "intel": {
+    "services": ["cosmetic dentistry", "veneers", "implants", "crowns", "root canals", "dental cleanings"],
+    "insurance_note": "Accepts Aetna, Blue Cross Blue Shield of Illinois, and Medicare",
+    "distinguishing_notes": "Multi-generation family/partner practice; three dentists on staff by 1990 (Ralph Del Monico Sr., Frank A. Trocchio, Ralph Del Monico Jr.); 9 providers per source data at one location.",
+    "sources": [
+     "https://www.grandchamber.org/directory/health-human-services/dental-services/del-monico-trocchio-ltd/",
+     "https://www.yelp.com/biz/delmonico-and-trocchio-dds-elmwood-park"
+    ]
+   }
+  },
+  {
+   "location_id": "987b79c12e4d407f",
+   "practice_name": "Pullos Dental",
+   "zip": "60707",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-spencer-pullos-yptwl",
+    "https://www.opencare.com/dentists/elmwood-park-il/spencer-pulloss-practice-24630245173c/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple independent directories (Healthgrades, Opencare, Vitals, Sharecare) confirm Dr. Spencer Pullos, DDS as a solo owner-operator dentist at this single Elmwood Park address, UIC College of Dentistry graduate. No group name, parent company, or DSO signal found.",
+   "searched": [
+    "Pullos Dental Elmwood Park IL 7740 W North Ave"
+   ],
+   "intel": {
+    "provider_notes": "Dr. Spencer Pullos, DDS - University of Illinois College of Dentistry graduate.",
+    "distinguishing_notes": "Offers telehealth services; 5.0/5 rating over 7 reviews on Healthgrades; hours M/T/Th 9-6, F 8-2, Sat 8-2:30.",
+    "sources": [
+     "https://www.healthgrades.com/dentist/dr-spencer-pullos-yptwl",
+     "https://www.opencare.com/dentists/elmwood-park-il/spencer-pulloss-practice-24630245173c/"
+    ]
+   }
+  },
+  {
+   "location_id": "da7611eb9ff8f4b5",
+   "practice_name": "Rainone Dental",
+   "zip": "60707",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-angelo-rainone-3jg42",
+    "https://www.checkbook.org/chicago-area/dentists/ratings/general-dentist/rainone-angelo-d-1023167756",
+    "https://angelorainone.dr-leonardo.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple directories and the practice's own site (angelorainone.dr-leonardo.com) confirm Dr. Angelo Rainone, DDS as solo owner-operator at this single address. No group name or corporate/DSO signal found.",
+   "searched": [
+    "Rainone Dental Elmwood Park IL 7644 W North Ave"
+   ],
+   "intel": {
+    "website_url": "https://angelorainone.dr-leonardo.com/",
+    "services": ["exams", "cleanings", "digital X-rays", "composite fillings", "crowns", "sealants"],
+    "distinguishing_notes": "Dr. Rainone speaks Italian; 19 ratings on Chicago Consumers' Checkbook with 100% giving 'superior' rating; hours M 11-8, T 10-3, W 9-8, Th 9-5, Sat 8-1.",
+    "sources": [
+     "https://www.healthgrades.com/dentist/dr-angelo-rainone-3jg42",
+     "https://www.checkbook.org/chicago-area/dentists/ratings/general-dentist/rainone-angelo-d-1023167756"
+    ]
+   }
+  },
+  {
+   "location_id": "30feff5d8115de2d",
+   "practice_name": "NEW ENGLAND DENTAL GROUP P.C.",
+   "zip": "60707",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.onebeautifulsmile.com/",
+    "https://www.yelp.com/biz/new-england-dental-group-chicago",
+    "https://www.carecredit.com/doctor-locator/chicago-il/new-england-dental-group-pc-sqf654/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The practice's own dedicated website (onebeautifulsmile.com) names Dr. Kenneth (Dong) Chae as the provider matching the AO, alongside associate dentists Dr. Eunhee Choi and Dr. Wan Ruan, all at this single Chicago/Elmwood Park address. No corporate parent, management company, or DSO branding found, so classified as a dentist-owned single-location group despite source-data provider_count of 1.",
+   "searched": [
+    "\"New England Dental Group\" Chicago IL 1600 N New England Ave dentist Chae"
+   ],
+   "intel": {
+    "website_url": "https://www.onebeautifulsmile.com/",
+    "website_note": "Dedicated practice site branded 'New England Dental | Elmwood Park IL Dentist'; practice established ~2004-2005.",
+    "technology": ["digital radiographs", "dental laser"],
+    "services": ["general dentistry", "cosmetic dentistry", "Invisalign", "dental implants"],
+    "provider_count_web": 3,
+    "provider_notes": "Dr. Kenneth (Dong) Chae; Dr. Eunhee Choi, DDS; Dr. Wan Ruan.",
+    "sources": [
+     "https://www.onebeautifulsmile.com/",
+     "https://www.yelp.com/biz/new-england-dental-group-chicago",
+     "https://www.carecredit.com/doctor-locator/chicago-il/new-england-dental-group-pc-sqf654/"
+    ]
+   }
+  },
+  {
+   "location_id": "8d1fb1f1056b7f1b",
+   "practice_name": "HENRY J. HAGOPIAN D.D.S. P.C.",
+   "zip": "60707",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-henry-hagopian-x2wbh",
+    "https://www.sharecare.com/doctor/dr-henry-j-hagopian",
+    "https://dentalcenter.com/henry-hagopian/elmwood-park/illinois/60707"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directories confirm Dr. Henry Hagopian, DDS as the identified dentist practicing under his own name PC at this address; no DSO, parent company or management-company signal found. No associate dentist names were surfaced on the web despite source-data provider_count=3, so classified as a dentist-owned single-location group with medium confidence.",
+   "searched": [
+    "Henry Hagopian DDS Elmwood Park IL dentist 7518 W North Ave"
+   ],
+   "intel": {
+    "distinguishing_notes": "Dr. Hagopian speaks Italian; provides telehealth services; office is currently NOT accepting new patients.",
+    "sources": [
+     "https://www.healthgrades.com/dentist/dr-henry-hagopian-x2wbh",
+     "https://dentalcenter.com/henry-hagopian/elmwood-park/illinois/60707"
+    ]
+   }
+  },
+  {
+   "location_id": "280722975dff06aa",
+   "practice_name": "OAK PARK DENTAL GROUP",
+   "zip": "60707",
+   "assigned_tier": "branded_dso",
+   "pe_backed": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.greatlakesdentalpartners.com/company/locations/",
+    "https://m.yelp.com/biz/oak-park-dental-group-chicago",
+    "https://www.shorecp.com/companies/great-lakes-dental-partners",
+    "https://www.shorecp.com/news/shore-capital-partners-announced-an-investment-in-great-lakes-dental-partners"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:great_lakes_dental_partners",
+   "reasoning": "Great Lakes Dental Partners' own official locations page explicitly lists '7034 W North Ave Chicago, IL 60707' (this exact address/phone) as one of its locations - direct locator-page documentary evidence. Separately confirmed via shorecp.com and PitchBook that Great Lakes Dental Partners is a Shore Capital Partners portfolio DSO (35+ partner locations), so pe_backed=true is web-documented, not just from source-data brand_hint.",
+   "searched": [
+    "\"Oak Park Dental Group\" \"Great Lakes Dental Partners\" Chicago 7034 W North Ave",
+    "fetch: greatlakesdentalpartners.com/company/locations/",
+    "\"Great Lakes Dental Partners\" Shore Capital Partners investment dental support organization"
+   ],
+   "intel": {
+    "services": ["General Dentistry", "Cosmetic Dentistry", "Dental Implants", "Invisalign", "Oral Surgery & Extractions", "Teeth Whitening"],
+    "provider_notes": "Dr. Isaac Yue, DMD; Dr. Zenobia Sowell, DDS; Dr. Iwei Huang, DMD; Dr. Rene Tanquilut, DDS; and others.",
+    "distinguishing_notes": "Multi-dentist branded DSO office under Great Lakes Dental Partners (Shore Capital Partners-backed, 35+ Midwest locations).",
+    "sources": [
+     "https://m.yelp.com/biz/oak-park-dental-group-chicago",
+     "https://www.greatlakesdentalpartners.com/company/locations/"
+    ]
+   }
+  },
+  {
+   "location_id": "02a3dd48fb03f9ff",
+   "practice_name": "BRIAN M CARABA DDS PC",
+   "zip": "60707",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.wesmiledental.com/",
+    "https://briancaraba.dr-leonardo.com/",
+    "https://www.yelp.com/biz/we-smile-dental-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice operates under the brand 'We Smile Dental' at this address (wesmiledental.com); Dr. Brian Caraba (UIC 1995 grad, past ISDS Trustee/ADA Delegate/current Chicago Dental Society Director) is the identified dentist. No corporate parent, management company, or PE backer found in multiple searches; the practice's own site confirms only this one active location, so classified dentist-owned single-location group with medium confidence (some bios reference other Caraba-affiliated addresses not confirmed as currently co-owned).",
+   "searched": [
+    "Brian Caraba DDS Chicago IL 7124 W Diversey Ave dentist",
+    "\"We Smile Dental\" Chicago Arlington Heights Mount Prospect owner DSO",
+    "\"We Smile Dental\" Caraba website locations",
+    "fetch: briancaraba.dr-leonardo.com",
+    "fetch: wesmiledental.com"
+   ],
+   "intel": {
+    "website_url": "https://www.wesmiledental.com/",
+    "provider_notes": "Dr. Brian Caraba, DDS - UIC dental school 1995 graduate; past Illinois State Dental Society Trustee, past ADA Delegate, current Chicago Dental Society Director.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Dr. Caraba transitioned from direct patient care to training/leadership/management within the practice after a 2017 back injury.",
+    "sources": [
+     "https://www.wesmiledental.com/",
+     "https://briancaraba.dr-leonardo.com/"
+    ]
+   }
+  },
+  {
+   "location_id": "6ceb156544ebac5b",
+   "practice_name": "KUDOS DENTAL CARE INC",
+   "zip": "60707",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "http://kudosdentalcare.com/",
+    "https://kudos.dental/",
+    "https://www.facebook.com/kudosDental/",
+    "http://dromar.co/"
+   ],
+   "evidence_artifacts": [
+    "A separate NPI (1376044305, 'Confidental Group LLC', AO Mustafa Obaidi) is registered at this same 7710 W North Ave address, and a same-named 'Confidental Group' also has Morton Grove/Glenview IL Yelp listings - relationship to Kudos Dental Care is unresolved (a NYC prosthetics lab 'ConfiDental Inc.' fetched during research is an unrelated same-named entity)"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple directories and dedicated domains (kudosdentalcare.com, kudos.dental, dromar.co) identify Dr. Omar Aldoori, DMD as the owner-dentist of this practice, established 2016, matching the AO. Confidence is medium rather than high because an unrelated-AO NPI ('Confidental Group LLC') is registered at the identical address with apparent sister addresses elsewhere in Chicagoland, but no documentary page ties that entity to controlling this practice, so it was not used to justify a stealth_dso call.",
+   "searched": [
+    "Kudos Dental Care Elmwood Park IL Omar Aldoori 7710 W North Ave",
+    "\"Confidental Group\" LLC Elmwood Park dental",
+    "fetch: dromar.co/ (connection refused)"
+   ],
+   "intel": {
+    "website_url": "http://kudosdentalcare.com/",
+    "website_note": "Own dedicated domains (kudosdentalcare.com, kudos.dental); practice established 2016.",
+    "services": ["exam & cleaning", "fillings", "root canal treatment", "crowns & bridges", "porcelain veneers", "extraction", "implant", "dentures"],
+    "sources": [
+     "https://www.yelp.com/biz/kudos-dental-care-elmwood-park",
+     "http://kudosdentalcare.com/"
+    ]
+   }
+  },
+  {
+   "location_id": "bea95e6f7396b49d",
+   "practice_name": "Singh Dental",
+   "zip": "60707",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.vitadox.com/doctor/austin-elmwood-park-il-60707/neil-singh/ook9MDNCsc22KjMRkaSc3V",
+    "https://npiprofile.com/npi/1831592195",
+    "https://www.yelp.com/biz/endodontic-associates-elmwood-park"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directories identify Dr. Neil Singh (IL license 021002605) as a solo endodontist practicing at this address (also listed as 'Endodontic Associates'); no group name, parent company, or DSO signal found. Confidence is medium because web evidence shows this is actually an endodontic specialty practice rather than a general practice, which is noted for downstream review though it does not change the ownership tier call.",
+   "searched": [
+    "Singh Dental Elmwood Park IL 7712 W North Ave"
+   ],
+   "intel": {
+    "provider_notes": "Neil Singh, endodontist, IL license 021002605, ~8 years experience per Vitadox; also listed under the name 'Endodontic Associates' at this same address.",
+    "distinguishing_notes": "Practice appears to be an endodontic (root canal) specialty office rather than general dentistry, despite solo_established GP classification in source data.",
+    "sources": [
+     "https://www.vitadox.com/doctor/austin-elmwood-park-il-60707/neil-singh/ook9MDNCsc22KjMRkaSc3V",
+     "https://www.yelp.com/biz/endodontic-associates-elmwood-park"
+    ]
+   }
+  },
+  {
+   "location_id": "253b0504f979f34b",
+   "practice_name": "Craig Dental",
+   "zip": "60707",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.craigdentalcenter.com/",
+    "https://www.yelp.com/biz/joseph-g-craig-dds-elmwood-park",
+    "https://www.zocdoc.com/dentist/joseph-craig-dds-elmwood-park"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The practice's own dedicated website (craigdentalcenter.com) and multiple directories confirm Dr. Joseph G. Craig, DDS as the solo owner-dentist at this single address. No group name, parent company, or DSO signal found.",
+   "searched": [
+    "Craig Dental Elmwood Park IL 17 W Conti Pkwy dentist"
+   ],
+   "intel": {
+    "website_url": "https://www.craigdentalcenter.com/",
+    "services": ["oral surgery", "orthodontics", "pediatric dentistry", "prosthodontics", "dental implants", "dentures", "braces/Invisalign"],
+    "distinguishing_notes": "Site states every dental hygienist and clinical assistant is state certified.",
+    "sources": [
+     "https://www.craigdentalcenter.com/",
+     "https://www.yelp.com/biz/joseph-g-craig-dds-elmwood-park"
+    ]
+   }
+  },
+  {
+   "location_id": "f748db6ba47d76c2",
+   "practice_name": "CARPENTERSVILLE DENTAL CARE, LTD.",
+   "zip": "60110",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "structural",
+   "evidence_urls": [
+    "https://everisdental.com/dental-clinic/carpentersville-dental-care",
+    "https://everisdental.com/dental-clinic/ladner-and-jain-orthodontics-llp-908",
+    "https://everisdental.com/dental-clinic/valley-view-dental-441",
+    "https://everisdental.com/dental-clinic/archer-dental-specialists-inc",
+    "https://everisdental.com/dental-clinic/sindelar-family-dental",
+    "https://everisdental.com/dental-clinic/dental-starz"
+   ],
+   "evidence_artifacts": [
+    "This practice has a page on everisdental.com, a platform that also hosts distinctly-named pages for 10+ other Illinois dental/orthodontic practices spanning Macomb, Galesburg, Kewanee, Montgomery, Sandwich, Canton, Peoria, Mundelein, Romeoville, Naperville, Bolingbrook, Downers Grove, Lombard, Wheaton, Northlake, Dixon, and Chicago - consistent with either a large multi-location DSO/management platform or a marketing directory; ownership control was not confirmed either way"
+   ],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": "brand:everis_dental",
+   "reasoning": "Searches confirm Dr. Songchin Yu as the identified dentist (practice also styled 'Prairie Meadows Dental'), but this location has its own page on everisdental.com, a network whose directory pages span well over 10 distinctly-branded Illinois dental/orthodontic practices. Could not confirm within budget whether Everis Dental is a real common-ownership management platform or a neutral marketing directory, and R4_protected_network:Everis Dental applies given the 10+ location span, so this is left undetermined for centralized network review rather than guessed.",
+   "searched": [
+    "Carpentersville Dental Care Ltd Songchin Yu 150 S Kennedy Dr IL",
+    "fetch: everisdental.com/dental-clinic/carpentersville-dental-care (empty/JS-rendered)",
+    "\"Everis Dental\" Illinois DSO locations corporate",
+    "\"Everis Dental\" about company management support organization who owns",
+    "site:everisdental.com locations Illinois",
+    "\"Everis Dental\" \"dental support organization\" OR \"DSO\" OR \"acquire\" OR \"partners with\""
+   ],
+   "intel": {
+    "distinguishing_notes": "Also operates/listed under the name 'Prairie Meadows Dental'; Suite 23A; hours M 10-8, T 9-6, W 10:30-7, Th 10-7, F 10-6, Sat 9-2; has a page on the everisdental.com multi-practice network alongside 10+ other IL practices.",
+    "sources": [
+     "https://www.yelp.com/biz/songchin-yu-carpentersville-dental-care-carpentersville",
+     "https://everisdental.com/dental-clinic/carpentersville-dental-care"
+    ]
+   }
+  },
+  {
+   "location_id": "69d7f80b09971b16",
+   "practice_name": "Matusik Dental",
+   "zip": "60110",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "http://www.dentist-network.com/Stanley_J_Matusik_General_Dentistry_in_Carpentersville_Illinois_35095",
+    "https://npiprofile.com/npi/1386746345",
+    "https://www.whereorg.com/stanley-matusik-dds-5795075"
+   ],
+   "evidence_artifacts": [
+    "Same address (200 W Main / 200 W Main St) and same phone (847-428-5040) as sibling location_id 8031f125d2413b77 (Stanley Joseph Matusik DDS) - same physical practice"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:MATUSIK_STANLEY",
+   "reasoning": "Directories confirm Dr. Stanley J. Matusik, DDS as a solo general dentist at this address; identical address and phone number to the sibling NPI record for 'Stanley Joseph Matusik DDS' in this same unit confirm it is one physical solo practice. No group name, parent company, or DSO signal found.",
+   "searched": [
+    "Matusik Dental Carpentersville IL 200 W Main dentist"
+   ],
+   "intel": {
+    "distinguishing_notes": "Solo general dentistry practice; hours M-F 9am-5pm, closed weekends.",
+    "sources": [
+     "http://www.dentist-network.com/Stanley_J_Matusik_General_Dentistry_in_Carpentersville_Illinois_35095",
+     "https://www.whereorg.com/stanley-matusik-dds-5795075"
+    ]
+   }
+  },
+  {
+   "location_id": "4d36377ea9746cef",
+   "practice_name": "Hirsch Dental",
+   "zip": "60110",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-gerald-hirsch-yt3r9",
+    "https://www.toprankdental.com/gerald-l-hirsch-dds-general-dentistry-96-n-kennedy-dr-ste-205-1",
+    "https://www.carecredit.com/doctor-locator/carpentersville-il/gerald-l-hirsch-dds-czq324/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple directories confirm Dr. Gerald L. Hirsch, DDS as a solo owner-dentist at this Carpentersville address. No group name, parent company, or DSO signal found.",
+   "searched": [
+    "Hirsch Dental Carpentersville IL 96 N Kennedy Dr dentist"
+   ],
+   "intel": {
+    "services": ["exams", "x-rays", "cleanings", "fillings", "crowns", "root canals", "dental implants", "dentures", "extractions", "Invisalign", "veneers", "teeth whitening"],
+    "distinguishing_notes": "Accepts Blue Cross Blue Shield of Illinois; hours M-F 8am-5pm; currently accepting new patients.",
+    "sources": [
+     "https://www.toprankdental.com/gerald-l-hirsch-dds-general-dentistry-96-n-kennedy-dr-ste-205-1",
+     "https://www.carecredit.com/doctor-locator/carpentersville-il/gerald-l-hirsch-dds-czq324/"
+    ]
+   }
+  },
+  {
+   "location_id": "5f7584446cb12606",
+   "practice_name": "J.R. PATEL DMD PC",
+   "zip": "60110",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://smilesonrandall.com/",
+    "https://www.zocdoc.com/dentist/kory-waid-dds-83492",
+    "https://www.yelp.com/biz/smiles-on-randall-carpentersville"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The practice operates its own dedicated site (smilesonrandall.com) naming Dr. Jabal R. Patel, DMD and Dr. Kory Waid, DDS as the two dentists at this single Carpentersville address. No parent company, management company, or DSO signal found, so classified as a dentist-owned single-location group.",
+   "searched": [
+    "J.R. Patel DMD PC Carpentersville IL 2158 Randall Rd dentist",
+    "\"Smiles on Randall\" Carpentersville Jabal Patel Kory Waid dentist owner"
+   ],
+   "intel": {
+    "website_url": "https://smilesonrandall.com/",
+    "provider_count_web": 2,
+    "provider_notes": "Dr. Jabal R. Patel, DMD (Temple University, Philadelphia); Dr. Kory Waid, DDS (Marquette University School of Dentistry, class of 2010).",
+    "accepts_medicaid": true,
+    "insurance_note": "Accepts in-network insurance, Medicaid, CareCredit, financing, cash/check; files out-of-network claims.",
+    "google_source_url": null,
+    "sources": [
+     "https://smilesonrandall.com/",
+     "https://www.healthgrades.com/group-directory/il-illinois/carpentersville/smiles-on-randall-x2xybd"
+    ]
+   }
+  },
+  {
+   "location_id": "8031f125d2413b77",
+   "practice_name": "Stanley Joseph Matusik DDS",
+   "zip": "60110",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "http://www.dentist-network.com/Stanley_J_Matusik_General_Dentistry_in_Carpentersville_Illinois_35095",
+    "https://npiprofile.com/npi/1386746345",
+    "https://www.whereorg.com/stanley-matusik-dds-5795075"
+   ],
+   "evidence_artifacts": [
+    "Same address (200 W Main St) and same phone (847-428-5040) as sibling location_id 69d7f80b09971b16 (Matusik Dental) - same physical practice, two NPI records"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:MATUSIK_STANLEY",
+   "reasoning": "Same evidence as the sibling 'Matusik Dental' record: directories confirm Dr. Stanley J. Matusik, DDS as a solo general dentist at 200 W Main St, Carpentersville, sharing the identical address and phone number with location_id 69d7f80b09971b16 - this is the same physical solo practice recorded under two NPIs. No group name, parent company, or DSO signal found.",
+   "searched": [
+    "Matusik Dental Carpentersville IL 200 W Main dentist"
+   ],
+   "intel": {
+    "distinguishing_notes": "Solo general dentistry practice; hours M-F 9am-5pm, closed weekends; same physical office as the 'Matusik Dental' NPI record in this unit.",
+    "sources": [
+     "http://www.dentist-network.com/Stanley_J_Matusik_General_Dentistry_in_Carpentersville_Illinois_35095",
+     "https://www.whereorg.com/stanley-matusik-dds-5795075"
+    ]
+   }
+  }
+ ]
+}

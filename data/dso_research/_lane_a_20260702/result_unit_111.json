@@ -1,0 +1,352 @@
+{
+ "unit_id": "laneA_111",
+ "classifications": [
+  {
+   "location_id": "1a024da805db489b",
+   "practice_name": "AGNIESZKA OSIKA DMD, LTD",
+   "zip": "60634",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.vitadox.com/practice/dunning-chicago-il-60634/agnieszka-osika-dmd-ltd/cfDbmPrCoX9aGBwc28omZj",
+    "https://npiprofile.com/npi/1437486446"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple independent directory listings (Vitadox, NPI Profile) confirm a solo general-dentistry practice at 6101 W Dakin St under Dr. Agnieszka Osika, a DMD from Southern Illinois School of Dental Medicine and ADA/Chicago Dental Society member. No corporate parent, management company, or brand affiliation appears in any listing, consistent with a single-location owner-operator.",
+   "searched": ["\"Agnieszka Osika\" DMD dentist Chicago 6101 Dakin"]
+  },
+  {
+   "location_id": "37aa82c287600218",
+   "practice_name": "PORTAGE PARK DENTAL ASSOCIATES, LTD",
+   "zip": "60634",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://portageparkdental.com/",
+    "https://www.yelp.com/biz/portage-park-dental-associates-chicago-2"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The practice's own website (portageparkdental.com) names Dr. Aneta Choma-Dlouchy and Dr. Renata Kosiek as the practicing dentists at this single Irving Park Rd location, in business over 20 years with no mention of a parent company or DSO. Two dentists at one dentist-owned address fits single_loc_group.",
+   "searched": ["Portage Park Dental Associates 5613 Irving Park Chicago"],
+   "intel": {
+    "website_url": "https://portageparkdental.com/",
+    "website_note": "Established practice site (20+ years in business per copy) with service pages and a directions/media section; presents as a full-service general/family practice.",
+    "services": ["exams", "digital x-rays", "intraoral camera", "cleanings", "sealants", "fluoride", "root canals", "periodontics", "oral surgery", "implants", "laser treatments"],
+    "provider_count_web": 2,
+    "provider_notes": "Dr. Aneta Choma-Dlouchy and Dr. Renata Kosiek listed as the practicing dentists.",
+    "distinguishing_notes": "Keeps several specialty procedures (oral surgery, root canals, perio, implants, laser) in-house at one location rather than referring out; open Mon/Wed/Thu/Fri/Sat.",
+    "sources": ["https://portageparkdental.com/", "https://www.yelp.com/biz/portage-park-dental-associates-chicago-2"]
+   }
+  },
+  {
+   "location_id": "68d687b590a16079",
+   "practice_name": "Lee Dental",
+   "zip": "60634",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/belmont-austin-dental-center-chicago",
+    "https://www.carecredit.com/doctor-locator/chicago-il/belmont-austin-dental-center-895jnj/",
+    "https://doctor.webmd.com/practice/belmont-austin-dental-3ab33d86-aef2-43f5-bf99-a3c6a9c73965"
+   ],
+   "evidence_artifacts": ["name_mismatch: NPI record 'Lee Dental' vs current signage 'Belmont Austin Dental Center' at same exact address/phone"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The address 6019 W Belmont Ave currently operates as 'Belmont Austin Dental Center' (Yelp, CareCredit, WebMD all confirm this name/phone/address, with recent 2025 reviews indicating active operation), not the NPI record's registered name 'Lee Dental' -- an apparent rebrand, not a closure. Directories list 3 on-staff dentists including Liana Kanija with no corporate parent or DSO brand found, fitting a dentist-owned multi-provider single location.",
+   "searched": ["\"Lee Dental\" 6019 W Belmont Chicago", "\"Belmont Austin Dental Center\" Chicago owner OR dentist"],
+   "intel": {
+    "website_note": "No dedicated practice website found; presence is limited to aggregator/directory listings (Yelp, CareCredit, WebMD, Vitals, Groupon).",
+    "provider_count_web": 3,
+    "provider_notes": "Liana Kanija listed as a dentist at this practice per CareCredit locator; two other physicians referenced but not named in search snippets.",
+    "distinguishing_notes": "Practice currently trades as Belmont Austin Dental Center rather than the federally-registered name Lee Dental -- useful to flag for directory/job-search accuracy.",
+    "sources": ["https://www.yelp.com/biz/belmont-austin-dental-center-chicago", "https://www.carecredit.com/doctor-locator/chicago-il/belmont-austin-dental-center-895jnj/"]
+   }
+  },
+  {
+   "location_id": "27a4808a5732c399",
+   "practice_name": "Fred Eugene Burkhardt DDS",
+   "zip": "60634",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/burkhardt-fred-e-dds-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "closure_suspect: Yelp lists 'BURKHARDT FRED E DDS - CLOSED' (updated May 2026) at the 6027 W Addison St address, while other directories (WebMD, ADA finder mirrors) still show older listing data. Given credible signal the location has shut down, withholding an ownership tier rather than classifying a possibly-defunct practice.",
+   "searched": ["\"Fred Burkhardt\" DDS dentist Chicago Addison"]
+  },
+  {
+   "location_id": "8562bd1864c4d8b9",
+   "practice_name": "Rivera Dental",
+   "zip": "60634",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yellowpages.com/chicago-il/mip/dr-candido-rivera-dds-506719048",
+    "https://www.opencare.com/dentists/chicago-il/dr-candido-rivera-24630636982d/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directory listings confirm Dr. Candido Rivera, DDS operates a single-provider general dentistry practice ('Smile Studio Dental PC') at 2936 N Neenah Ave, matching the unit's address/zip/phone exactly. No corporate parent or brand affiliation surfaced, consistent with a solo owner-operator.",
+   "searched": ["\"Rivera Dental\" 2936 N Neenah Chicago"]
+  },
+  {
+   "location_id": "e7c5fffaa8a461d0",
+   "practice_name": "RAPHA DENTAL CARE",
+   "zip": "60634",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npiprofile.com/npi/1467989038",
+    "https://www.dentalplans.com/dentists/illinois/chicago/60634/dr-thu-nguyen-126721/",
+    "https://www.docbios.com/doc/dentist-122300000x/rapha-dental-care-chicago-il-1467989038"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:NGUYEN_THU",
+   "reasoning": "Web sources confirm Dr. Thu Nguyen, DDS is the President/authorized official of Rapha Dental Care (2913 N Narragansett, 60634) and also operates a second practice at 5324 N Elston Ave, 60630 -- a dentist personally owning two general-dentistry offices, with no corporate brand or non-dentist controller found. Fits dentist_multi rather than a DSO tier.",
+   "searched": ["\"Rapha Dental Care\" Chicago Narragansett \"Thu Nguyen\""],
+   "intel": {
+    "website_note": "No standalone practice website found; presence via directories (denTEL, CareCredit, Practo).",
+    "services": ["routine cleanings", "check-ups", "fillings", "preventive care"],
+    "sources": ["https://www.denteldoc.com/location/?id=55407", "https://www.carecredit.com/doctor-locator/chicago-il/rapha-dental-care-227qpg/"]
+   }
+  },
+  {
+   "location_id": "13f8194421eb7c28",
+   "practice_name": "TEETH MATTER INC.",
+   "zip": "60634",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.practo.com/chicago/clinic/teeth-matter-inc-chicago/about",
+    "https://www.yelp.com/biz/eva-bloda-md-dds-chicago",
+    "https://www.bbb.org/us/il/chicago/profile/dentist/eva-bloda-dr-0654-88135436"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:BLODA_EVA",
+   "reasoning": "Dr. Eva Bloda, MD DDS is confirmed as the dentist behind Teeth Matter Inc at 6418 W Belmont Ave, and Practo indicates she also runs an office in Bolingbrook, IL (60440) -- a dentist-owned two-location practice in business since 1992, with no corporate parent or DSO signal found.",
+   "searched": ["\"Teeth Matter\" dentist Chicago Belmont \"Eva Bloda\""],
+   "intel": {
+    "website_note": "Presence via directories only (Yelp, Practo, BBB, WebMD); described as a cosmetic/general dentistry practice open daily 9am-9pm.",
+    "services": ["emergency repairs", "chipped tooth repair", "teeth whitening", "veneers", "crowns", "fillings", "root canals", "exam and cleaning"],
+    "distinguishing_notes": "Practice established in 1992; Dr. Bloda is a member of the International Society of Oral Oncology / MASCC in addition to ADA and Chicago Dental Society.",
+    "sources": ["https://www.practo.com/chicago/clinic/teeth-matter-inc-chicago/about", "https://www.yelp.com/biz/eva-bloda-md-dds-chicago"]
+   }
+  },
+  {
+   "location_id": "3180c8b1bccb13cf",
+   "practice_name": "Primecare Portage Park",
+   "zip": "60634",
+   "assigned_tier": "institutional",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.primecarehealth.org/belmont-cragin-health-center",
+    "https://www.primecarehealth.org/dental-care",
+    "https://www.primecarehealth.org/all-locations"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:primecare_health",
+   "reasoning": "PrimeCare Health's own website confirms 5635 W Belmont Ave, Chicago IL 60634 as its 'Belmont Cragin Health Center', an FQHC-style community health center offering dental services alongside primary/medical care -- exact address and phone match. This is an institutional (FQHC) clinic, not an independent or DSO practice.",
+   "searched": ["\"Primecare Portage Park\" dental Chicago Belmont"],
+   "intel": {
+    "website_url": "https://www.primecarehealth.org/dental-care",
+    "website_note": "Nonprofit FQHC network site listing 6 primary care sites and 2 dental clinics; dental services limited to adults 21+ who have established care with the medical clinic.",
+    "distinguishing_notes": "Community health center model (sliding-scale/FQHC), not a private fee-for-service general dentistry practice.",
+    "sources": ["https://www.primecarehealth.org/belmont-cragin-health-center", "https://www.primecarehealth.org/dental-care"]
+   }
+  },
+  {
+   "location_id": "59b585ab4419e1cd",
+   "practice_name": "Quirarte Dental",
+   "zip": "60634",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dentalplans.com/dentists/illinois/chicago/60634/dr-alan-quirarte-110642/",
+    "https://npino.com/dentist/1538844071-dr.-alan-daniel-quirarte/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directory listings confirm Dr. Alan D. Quirarte, DMD (UIC College of Dentistry grad) practices at 5621 W Montrose Ave under the trade name 'EZ Dental,' matching the unit's 2-provider small_group classification at one location. No corporate signal or brand affiliation found.",
+   "searched": ["\"Quirarte Dental\" Chicago Montrose"],
+   "intel": {
+    "provider_notes": "Dr. Alan Quirarte, DMD, grew up in Chicago, BS in Biology from UIC, DMD from UIC College of Dentistry.",
+    "distinguishing_notes": "Practice appears to trade under the name 'EZ Dental' rather than 'Quirarte Dental'.",
+    "sources": ["https://www.dentalplans.com/dentists/illinois/chicago/60634/dr-alan-quirarte-110642/"]
+   }
+  },
+  {
+   "location_id": "549f761ca8929ce5",
+   "practice_name": "MICHAEL A. LUCKETT, DMD & ASSOCIATES (WESTERN",
+   "zip": "60636",
+   "assigned_tier": "branded_dso",
+   "pe_backed": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.dentalworks.com/offices/illinois/",
+    "https://www.yelp.com/biz/dentalworks-chicago-2",
+    "https://www.newmountaincapital.com/portfolio/sonrava-health/",
+    "https://www.sonrava.com/brands"
+   ],
+   "evidence_artifacts": ["brand: DentalWorks (Sonrava Health family) at exact address 6153 S Western Ave"],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:dentalworks_sonrava",
+   "reasoning": "6153 S Western Ave currently operates as a 'DentalWorks' branded office (Yelp listing, denTEL location page, and DentalWorks' own Illinois offices locator all show this exact address). DentalWorks is a Sonrava Health brand (sonrava.com/brands), and Sonrava Health is a documented New Mountain Capital private-equity portfolio company -- so this is a branded, PE-backed DSO location, not the independent solo/associates practice its NPI name implies.",
+   "searched": ["\"Michael Luckett\" DMD dentist Chicago Western Ave", "DentalWorks Heartland Dental \"6153 S Western\" Chicago locations", "\"DentalWorks\" \"parent company\" dental support organization", "Sonrava Health private equity owner New Mountain Capital"],
+   "intel": {
+    "provider_notes": "Dr. Michael Luckett, DMD earned his degree at Southern Illinois University (1985); listed team member on dentalworks.com; specialties include root canals and oral surgery; primary office referenced in Crestwood, IL.",
+    "distinguishing_notes": "DentalWorks brand spans roughly 110+ offices across 13 states per Sonrava's own materials; this Western Ave office is one of at least 15 locations Dr. Luckett is associated with under the brand.",
+    "sources": ["https://www.dentalworks.com/team-member/michael-luckett/", "https://www.dentalworks.com/offices/illinois/"]
+   }
+  },
+  {
+   "location_id": "0cde6f6893dc16c8",
+   "practice_name": "Abdullah Dental",
+   "zip": "60636",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dentalplans.com/dentists/illinois/chicago/60636/dr-larry-abdullah-59640/",
+    "https://www.businessyab.com/explore/united_states/illinois/cook_county/chicago/ashburn/south_western_avenue/8036/dr-larry-abdullah-773-476-0600.html"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:ABDULLAH_LARRY",
+   "reasoning": "Dr. Larry R. Abdullah, DDS is confirmed operating the 7013 S Western Ave practice as well as a second Chicago office at 8036 S Western Ave (60620) and a third in Lawrenceville, IL -- a dentist personally owning multiple general-dentistry offices with no corporate brand or non-dentist controller found, fitting dentist_multi.",
+   "searched": ["\"Abdullah Dental\" 7013 S Western Chicago"],
+   "intel": {
+    "insurance_note": "Accepts Medicare and Medicaid plus Aetna, Dental Network of America, and Total Dental Administrators per dentalplans.com.",
+    "accepts_medicaid": true,
+    "sources": ["https://www.dentalplans.com/dentists/illinois/chicago/60636/dr-larry-abdullah-59640/"]
+   }
+  },
+  {
+   "location_id": "c3d3b80e7c83e643",
+   "practice_name": "Patel Dental",
+   "zip": "60636",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-jigisha-patel-2nv8y"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Search confirms 'Jigisha Patel DDS Inc' operates the practice at 1608 W 69th St, matching the NPI record's solo_established/1-provider classification; no corporate parent or brand found. A separate directory snippet referenced a 'Dr. Kunal N. Patel' at the same address but could not be corroborated as a second active provider, so the tier follows the better-supported solo reading.",
+   "searched": ["\"Patel Dental\" Chicago 69th St 60636"]
+  },
+  {
+   "location_id": "12608f6705ce917c",
+   "practice_name": "Frydman Dental",
+   "zip": "60636",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-louis-frydman-2ljnt",
+    "https://doctor.webmd.com/doctor/louis-frydman-58a81867-34a6-4c56-9d3c-9a92cd03b562-overview"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Louis Frydman, DDS is listed as the dentist at 6326 S Ashland Ave with no corporate parent or brand affiliation found. WebMD vaguely notes he 'works in Chicago, IL and 1 other location' but no address for that second location could be found in two searches, so it does not change the tier; treated as a solo owner-operator practice.",
+   "searched": ["\"Frydman Dental\" Chicago Ashland 60636", "\"Louis Frydman\" DDS dentist Chicago other location"]
+  },
+  {
+   "location_id": "4b2b2547749df9b1",
+   "practice_name": "HERRON FAMILY DENTAL INC",
+   "zip": "60636",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.bbb.org/us/il/chicago/profile/dentist/herron-family-dental-service-0654-88139325",
+    "https://www.yelp.com/biz/herron-family-dental-service-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "BBB's business profile explicitly lists Devere Herron as Owner/Business Management of Herron Family Dental Service at 7203 S Western Ave, in operation since 2007, with no franchise, parent company, or DSO affiliation found -- a clear single-location, dentist-owned practice.",
+   "searched": ["\"Herron Family Dental\" Chicago Western Ave \"Devere Herron\""],
+   "intel": {
+    "services": ["exams", "fillings/repairs", "pediatric dentistry"],
+    "distinguishing_notes": "General dentistry for all ages, positioned as accessible/affordable family care; in business since 2007.",
+    "sources": ["https://www.bbb.org/us/il/chicago/profile/dentist/herron-family-dental-service-0654-88139325"]
+   }
+  },
+  {
+   "location_id": "da27f44f6fe4ded3",
+   "practice_name": "NIKET SHETH DDS PC",
+   "zip": "60636",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dentalplans.com/dentists/illinois/darien/60561/dr-niket-sheth-282265",
+    "https://www.zocdoc.com/dentist/niket-sheth-dds-66012",
+    "https://npidb.org/organizations/dental_health/general-practice_1223g0001x/1740502863.aspx"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:SHETH_NIKET",
+   "reasoning": "Dr. Niket Sheth, DDS practices at 6230 S Ashland Ave Ste C (60636) and a second office at 7702 Cass Ave, Darien, IL 60561, per dentalplans.com and zocdoc -- a dentist personally owning two general-dentistry locations with no corporate brand found. A same-surname practice ('Sheth Shamkant DDS' at the same Ashland address and 'Sheth Dental & Associates' elsewhere) appears related but was not folded into this determination since it could not be confirmed as the same owner.",
+   "searched": ["\"Niket Sheth\" DDS dentist Chicago Ashland"],
+   "intel": {
+    "provider_notes": "DDS from NYU College of Dentistry; General Practice Residency at Our Lady of Mercy Hospital, Bronx NY; undergrad UIUC 1997; Masters in Diagnostic Radiology, Chicago Medical School; speaks English and French.",
+    "sources": ["https://www.dentalplans.com/dentists/illinois/darien/60561/dr-niket-sheth-282265", "https://www.zocdoc.com/dentist/niket-sheth-dds-66012"]
+   }
+  },
+  {
+   "location_id": "50fe6f9e798c9aa3",
+   "practice_name": "DENTUM DENTAL LTD",
+   "zip": "60636",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Only a basic directory listing (Vitadox) confirms the practice exists at 5500 S Damen Ave with no ownership detail or website found. A federal court document referencing a 'Faizan Mir' in an Illinois Medicaid fraud matter surfaced in search but could not be confirmed as the same individual as this NPI's authorized official, so it was not used as evidence either way.",
+   "searched": ["\"Dentum Dental\" Chicago Damen \"Faizan Mir\""]
+  }
+ ]
+}

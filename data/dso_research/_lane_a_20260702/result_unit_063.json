@@ -1,0 +1,443 @@
+{
+ "unit_id": "laneA_063",
+ "classifications": [
+  {
+   "location_id": "f9eb2799ba993759",
+   "practice_name": "THE DENTAL SPECIALISTS",
+   "zip": "60077",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://dentistsok.com/dental-clinic/the-dental-specialists-skokie-il/",
+    "https://tdschicago.com/our-team/",
+    "https://tdschicago.com/convenient-locations/",
+    "https://www.vitals.com/dentists/1p3h25/rajan-sharma"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:tdschicago",
+   "reasoning": "Dentistsok.com confirms 'The Dental Specialists' at this exact address (5215 Old Orchard Rd Ste 200, Skokie) is a periodontology clinic with Dr. Rajan Sharma as President/authorized person. Sharma's own bio (Vitals) states he practices at 5 Chicagoland offices (Hoffman Estates primary + Homewood, Westmont + 2 others), matching ctx owner_reach_locations=5; TDS Chicago's own site (tdschicago.com/convenient-locations) lists Homewood, Hoffman Estates, Westmont, Hyde Park as a dentist/periodontist-owned specialist network (Sharma + Dr. Robert Baima). No PE/DSO management-company signal found; network is under 10 locations so R4 does not apply. Classified dentist_multi.",
+   "searched": [
+    "\"The Dental Specialists\" Skokie Old Orchard Rd dentist",
+    "\"Rajan Sharma\" dentist Skokie \"Old Orchard\" OR \"Dental Specialists\"",
+    "\"5215\" \"Old Orchard\" Skokie dental",
+    "\"The Dental Specialists\" Illinois locations network website",
+    "\"1548640485\" OR \"The Dental Specialists\" NPI Skokie \"Old Orchard\" endodontics",
+    "\"The Dental Specialists\" Rajan Sharma multiple offices locations Chicago periodontist",
+    "tdschicago.com \"The Dental Specialist\" locations Skokie Hoffman Estates Homewood Westmont",
+    "\"The Dental Specialist\" TDS Chicago periodontics endodontics partners owners founded"
+   ],
+   "intel": {
+    "website_url": "https://tdschicago.com/",
+    "website_note": "Established specialist-group site (30 years in business per search snippet) covering periodontics, endodontics, oral surgery, and dental implants across multiple Chicagoland offices.",
+    "services": ["periodontics", "endodontics", "oral surgery", "dental implants"],
+    "provider_notes": "Dr. Rajan Sharma, Endodontics, MSD Case Western Reserve 1991; Dr. Robert F. Baima, Periodontics, Marquette DDS 1975 / advanced Periodontics degree Medical College of Virginia 1979.",
+    "distinguishing_notes": "Multi-location specialist (perio/endo) network with 4-5 Chicagoland offices; this Skokie address is one of the network's locations per Sharma's own bio, though not listed on the current tdschicago.com locations page snapshot found.",
+    "sources": [
+     "https://dentistsok.com/dental-clinic/the-dental-specialists-skokie-il/",
+     "https://tdschicago.com/convenient-locations/",
+     "https://www.vitals.com/dentists/1p3h25/rajan-sharma"
+    ]
+   }
+  },
+  {
+   "location_id": "ff40d8a5e72a0a19",
+   "practice_name": "Khaden Maha DMD",
+   "zip": "60077",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://dental-matters.com/",
+    "https://dental-matters.com/meet-the-team/",
+    "https://www.yelp.com/biz/dental-matters-skokie"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:SYED_MAZHER",
+   "reasoning": "This NPI/address is 'Dental Matters' at 9327 Skokie Blvd, founded and led by Dr. Mazher Syed, DDS, a practicing dentist, per the practice's own website. Dr. Maha Khaden (the name on this row) is one of several dentists (Syed, Khaden, Tariq) at this single location. No corporate parent, management company, or DSO brand found; classified as a dentist-owned, single-location multi-dentist group.",
+   "searched": [
+    "Khaden Maha DMD Skokie dentist 9327 Skokie Blvd",
+    "\"Dental Matters\" Skokie owner dentist Mazher Syed"
+   ],
+   "intel": {
+    "website_url": "https://dental-matters.com/",
+    "website_note": "Active practice site with dedicated IV sedation dentistry page; 35 Yelp reviews.",
+    "services": ["IV sedation dentistry", "general dentistry"],
+    "provider_notes": "Dr. Mazher Syed DDS (founder, University of the Pacific, Nobel Biocare All-on-4 trained), Dr. Maha Khaden DMD (UIC College of Dentistry), Dr. Irum Tariq, Jing Luan.",
+    "sources": [
+     "https://dental-matters.com/",
+     "https://dental-matters.com/meet-the-team/"
+    ]
+   }
+  },
+  {
+   "location_id": "df37beac7e8a315c",
+   "practice_name": "VILLAGE CROSSING DENTISTRY LTD",
+   "zip": "60077",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.shimmeringteeth.com/meet-the-doctor",
+    "https://www.yelp.com/biz/steven-krauss-dds-skokie"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:KRAUSS_STEVEN",
+   "reasoning": "Dr. Steven Krauss, DDS founded Village Crossing Dentistry Ltd in 1995 at this exact address (7133 Central Ave, Skokie); the practice's own website (shimmeringteeth.com) frames it as his personal solo practice with no mention of associates or a corporate parent. Classified as true_independent, solo dentist owner-operator.",
+   "searched": [
+    "Village Crossing Dentistry Skokie Steven Krauss"
+   ],
+   "intel": {
+    "website_url": "https://www.shimmeringteeth.com/",
+    "website_note": "Long-running solo-branded practice site (founded 1995) with dedicated 'Meet the Doctor' and 'Our Locations' pages.",
+    "services": ["general dentistry", "cosmetic dentistry", "teeth whitening", "implants", "veneers"],
+    "provider_notes": "Dr. Steven Krauss, DDS, Northwestern University 1985 grad; formerly staff attending at Mt. Sinai Hospital Chicago.",
+    "sources": [
+     "https://www.yelp.com/biz/steven-krauss-dds-skokie"
+    ]
+   }
+  },
+  {
+   "location_id": "1d0baa4544ee1c70",
+   "practice_name": "BRIGHTER SMILE DENTISTRY, P.C.",
+   "zip": "60077",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.brightersmiledentistry.com/about",
+    "https://www.brightersmiledentistry.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Brighter Smile Dentistry, P.C., established 2018 at 4836 Main St, Skokie, has its own dedicated website listing four practitioners (Yao Qi DMD, Abrar Mohiuddin DMD, Rekha Modur DDS, Jasmine Kaur) at this single location, with no named owner or corporate/DSO signal disclosed on the site. Classified single_loc_group (dentist-staffed, single address, no corporate parent found) at medium confidence since exact ownership (vs. the NPPES-listed manager Najmus Saqib Omar) could not be confirmed.",
+   "searched": [
+    "Brighter Smile Dentistry Skokie Main St dentist",
+    "\"Najmus Saqib Omar\" dentist Brighter Smile Dentistry owner",
+    "\"Najmus Saqib\" dentist DDS Skokie Illinois dental license"
+   ],
+   "intel": {
+    "website_url": "https://www.brightersmiledentistry.com/",
+    "website_note": "Modern practice site; describes newly designed treatment rooms with advanced imaging, spa-like ambiance, online booking.",
+    "services": ["cosmetic dentistry", "restorative dentistry", "general dentistry"],
+    "provider_notes": "Yao Qi, DMD; Abrar Mohiuddin, DMD; Rekha Modur, DDS; Jasmine Kaur, CAGS.",
+    "distinguishing_notes": "Hours Mon-Fri 9am-6pm, Sat 10am-3pm; established 2018.",
+    "sources": [
+     "https://www.brightersmiledentistry.com/about",
+     "https://www.brightersmiledentistry.com/"
+    ]
+   }
+  },
+  {
+   "location_id": "1e94f3062316a574",
+   "practice_name": "Hilo Kristen Marie Ongos",
+   "zip": "60077",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/mylene-ongos-hilo-dmd-skokie"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The address (5139 Dempster St, Skokie) matches Dr. Mylene Ongos-Hilo, DMD, a solo dentist practitioner per Yelp/directory listings; no corporate parent or additional locations found. Name variance between the NPI record ('Hilo Kristen Marie Ongos') and the public-facing name (Mylene Ongos-Hilo) plus a differing phone number could not be fully resolved, so confidence is medium, but no evidence points away from solo independent ownership.",
+   "searched": [
+    "Hilo Kristen Marie Ongos dentist Skokie Dempster"
+   ]
+  },
+  {
+   "location_id": "77eaf2c4385ec879",
+   "practice_name": "MEER DENTAL INC",
+   "zip": "60077",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-sumreen-meer-ur2xbm"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:MEER_SUMREEN",
+   "reasoning": "Dr. Sumreen Meer, DDS is the solo practitioner named for Meer Dental Inc at 9533 Le Claire Ave, Skokie, matching the NPPES authorized official. No associates, corporate parent, or additional locations were found. Classified true_independent.",
+   "searched": [
+    "\"Meer Dental\" Skokie Le Claire Sumreen Meer dentist"
+   ]
+  },
+  {
+   "location_id": "a9807c620c7ad775",
+   "practice_name": "Kampfer Dental",
+   "zip": "60077",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.kampferdds.com/our-locations",
+    "https://www.kampferdds.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:KAMPFER_IGOR",
+   "reasoning": "Dr. Igor Kampfer, DDS (University of Belgrade Stomatology, UIC DDS) owns and operates Kampfer Dental, PC at 5301 W Dempster St, Skokie. The practice's own 'Our Locations' page lists only this single Skokie office; no corporate parent or DSO signal found. Classified true_independent.",
+   "searched": [
+    "Kampfer Dental Skokie Dempster St dentist",
+    "Kampfer Dental \"our locations\" Igor Kampfer multiple offices Illinois"
+   ],
+   "intel": {
+    "website_url": "https://www.kampferdds.com/",
+    "website_note": "Established family-dentistry practice site with full hours, staff, and new-patient pages.",
+    "services": ["general dentistry", "cosmetic dentistry", "teeth whitening", "implants", "veneers"],
+    "technology": ["Fotona laser"],
+    "provider_notes": "Dr. Igor Kampfer, Doctor of Stomatology (University of Belgrade), DDS (UIC), 10+ years experience.",
+    "sources": [
+     "https://www.kampferdds.com/",
+     "https://www.fotona.com/en/clinic-finder/,/en/find-a-doctor/?clinic=2816-kampfer-dental&lang=en"
+    ]
+   }
+  },
+  {
+   "location_id": "fdfa8b53c3fb9f94",
+   "practice_name": "Joffe Dental",
+   "zip": "60089",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.helenjoffedds.com/",
+    "https://www.healthgrades.com/dentist/dr-helen-joffe-y93pb"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:JOFFE_HELEN",
+   "reasoning": "Dr. Helen Joffe, DDS has run this solo practice in Buffalo Grove (978 S Buffalo Grove Rd) for 15+ years per her own website (helenjoffedds.com); no corporate parent, additional locations, or DSO branding found. Classified true_independent.",
+   "searched": [
+    "Joffe Dental Buffalo Grove dentist"
+   ],
+   "intel": {
+    "website_url": "https://www.helenjoffedds.com/",
+    "website_note": "Personal-brand solo practice site emphasizing minimally-invasive philosophy.",
+    "provider_notes": "Dr. Helen Joffe, DDS, NYU Dental School grad, 30+ years practicing (career began in Russia); also works part-time at the Great Lakes Navy Dental facility.",
+    "sources": [
+     "https://www.helenjoffedds.com/"
+    ]
+   }
+  },
+  {
+   "location_id": "fe34e1595dd95899",
+   "practice_name": "Ha Dental",
+   "zip": "60089",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/buffalo-grove-family-dentist-buffalo-grove",
+    "https://findadentist.ada.org/dentists/dr-chung-yoon-ha-buffalo-grove-0038V00002yjMvGQAU-a1C8V00000lVzHaUAK"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Chung Yoon Ha, DDS practices at 117 N Arlington Heights Rd, Buffalo Grove, now branded 'Buffalo Grove Family Dentist' after a prior owner (Dr. Guttman) sold the practice per a patient review. No corporate/DSO signal was found; Dr. Ha appears to be the current practicing dentist at this single address. Classified true_independent at medium confidence since the specific succession/ownership mechanics were not independently documented.",
+   "searched": [
+    "Ha Dental Buffalo Grove Arlington Heights Rd dentist owner",
+    "\"Buffalo Grove Family Dentist\" 117 Arlington Heights Rd \"Dr. Ha\" owner sold Guttman",
+    "\"Buffalo Grove Family Dentist\" \"Dr. Ha\" website owner practice history"
+   ]
+  },
+  {
+   "location_id": "b0df8d6123904513",
+   "practice_name": "ELLIOT M RAZDOLSKY DDS INC",
+   "zip": "60089",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://razdental.com/",
+    "https://www.yelp.com/biz/elliot-m-razdolsky-dds-buffalo-grove"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:RAZDOLSKY_ELLIOT",
+   "reasoning": "Dr. Elliot Razdolsky, DDS operates his eponymous practice at 307 W Dundee Rd, Buffalo Grove, with his own site (razdental.com) explicitly stating 'no corporate chains or upselling.' Only Dr. Razdolsky is named as the practicing dentist despite a 2-provider NPPES count; classified true_independent at medium confidence.",
+   "searched": [
+    "\"Elliot Razdolsky\" DDS Buffalo Grove dentist"
+   ],
+   "intel": {
+    "website_url": "https://razdental.com/",
+    "website_note": "Personal-brand solo/family-dentistry site explicitly positioning against corporate dental chains.",
+    "services": ["general dentistry", "cosmetic dentistry", "implants", "restorative dentistry"],
+    "provider_notes": "Dr. Elliot M. Razdolsky, DDS, University of Illinois at Chicago grad, 35+ years experience, fluent in Russian.",
+    "distinguishing_notes": "Site explicitly markets 'no corporate chains or upselling' as a differentiator.",
+    "sources": [
+     "https://razdental.com/"
+    ]
+   }
+  },
+  {
+   "location_id": "4ec51b1b725a84ed",
+   "practice_name": "PRIMEHEALTH OF ILLINOIS INC",
+   "zip": "60089",
+   "assigned_tier": "undetermined",
+   "pe_backed": true,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://eyedoctor.io/optician/primehealth-of-illinois-inc-d-b-a-seniorwell-buffalo-grove-il/",
+    "https://ariacarepartners.com/about-us/about-aria",
+    "https://serentcapital.com/portfolio/aria-care-partners/",
+    "https://www.cbinsights.com/company/aria-care-partners"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:ariacarepartners",
+   "reasoning": "PrimeHealth of Illinois Inc at 2100 E Lake Cook Rd, Buffalo Grove operates d/b/a 'SeniorWell,' an onsite senior-living healthcare provider (dentistry/optometry/audiology/podiatry) founded 1982 and acquired by Aria Care Partners in 2021; Aria Care Partners is itself PE-backed (Serent Capital) and serves 3,000+ skilled nursing facilities nationally -- clearly a network well beyond 10 locations. Per R4, this is a protected multi-location network requiring one centralized decision rather than a per-unit flip: R4_protected_network:Aria Care Partners / SeniorWell. Not classified at this location; pe_backed=true is documented (Serent Capital sponsor of Aria Care Partners, which acquired SeniorWell/this entity).",
+   "searched": [
+    "\"PrimeHealth of Illinois\" dental Buffalo Grove \"Lake Cook\"",
+    "\"PrimeHealth of Illinois\" SeniorWell dental clinic company owner",
+    "\"SeniorWell\" dental clinics onsite senior living company Illinois",
+    "Aria Care Partners private equity sponsor investor onsite senior healthcare"
+   ]
+  },
+  {
+   "location_id": "854ead31c488e88a",
+   "practice_name": "CENTER FOR ORAL & FACIAL SURGERY",
+   "zip": "60089",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.smilesurgery.com/",
+    "https://www.smilesurgery.com/meet-the-doctor"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:FRANK_SCOTT",
+   "reasoning": "This NPI/address (1411 McHenry Rd, Buffalo Grove) operates as 'North Shore Smile Surgery,' an oral & maxillofacial surgery practice founded and run by Dr. Scott Frank, DDS (Northwestern DDS 1987), per the practice's own website. Single location, no corporate/DSO signal found; classified single_loc_group (specialist, dentist-owned).",
+   "searched": [
+    "\"Center for Oral & Facial Surgery\" Buffalo Grove Scott Frank"
+   ]
+  },
+  {
+   "location_id": "7e5db6698cf55fa6",
+   "practice_name": "Dental Design Buffalo Grove",
+   "zip": "60089",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dentaldesignbg.com/",
+    "https://www.dentaldesignbg.com/our-practice/meet-our-doctors/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dental Design at 1151 N Arlington Heights Rd, Buffalo Grove, established 1978, is staffed by multiple dentists (Asher Gelman, Glenn Shulkin, Laren Garfield) per its own website; a Yelp-listed 'Manager' (Marlene G.) appears to be office administration, not a corporate parent. No DSO/PE signal found; classified single_loc_group at medium confidence given the specific ownership entity among the named dentists was not confirmed.",
+   "searched": [
+    "Dental Design Buffalo Grove Arlington Heights Rd dentist owner"
+   ],
+   "intel": {
+    "website_url": "https://www.dentaldesignbg.com/",
+    "website_note": "Long-established (1978, 40+ years) multi-dentist cosmetic/general practice site.",
+    "provider_notes": "Dr. Asher Gelman, DMD; Dr. Glenn Shulkin; Dr. Laren Garfield, DDS.",
+    "sources": [
+     "https://www.dentaldesignbg.com/our-practice/meet-our-doctors/"
+    ]
+   }
+  },
+  {
+   "location_id": "91d77eb286aaa5f0",
+   "practice_name": "DRS PAPWORTH VARGAS & ASSOCIATESLTD,PC",
+   "zip": "60089",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.pvdental.net/",
+    "https://www.pvdental.net/our-practice/meet-dr_s-papworth-and-vargas/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:PAPWORTH_DAVID",
+   "reasoning": "Drs. Papworth, Vargas & Associates at 125 E Lake Cook Rd, Buffalo Grove is a partner-owned practice: David Papworth, DDS (functional jaw orthopedics) and Al Vargas, DDS (endodontic/cosmetic) per the practice's own site, with 30+ years combined experience. Single location, no corporate parent found. Classified single_loc_group.",
+   "searched": [
+    "\"Papworth\" \"Vargas\" dental Buffalo Grove Lake Cook Rd dentist"
+   ],
+   "intel": {
+    "website_url": "https://www.pvdental.net/",
+    "website_note": "Established multi-dentist family practice site with online appointment request.",
+    "services": ["general dentistry", "functional jaw orthopedics", "endodontics", "cosmetic dentistry", "prosthodontics"],
+    "provider_notes": "David Papworth, DDS; Al Vargas, DDS. Practice has 30+ years experience.",
+    "distinguishing_notes": "Bilingual staff (Polish, Spanish spoken); open Saturdays.",
+    "sources": [
+     "https://www.pvdental.net/our-practice/meet-dr_s-papworth-and-vargas/"
+    ]
+   }
+  },
+  {
+   "location_id": "ad1f5751c55cfde9",
+   "practice_name": "Schwartz Dental",
+   "zip": "60089",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-michael-schwartz-y33kk"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:SCHWARTZ_MICHAEL",
+   "reasoning": "Dr. Michael Schwartz, DDS practices at 1401 W Dundee Rd Ste 203, Buffalo Grove; directory listings consistently identify him as the sole named practitioner at this address with no other dentist, corporate parent, or additional locations found. Classified true_independent at medium confidence (limited to directory-level sourcing, no dedicated practice website located).",
+   "searched": [
+    "Schwartz Dental Buffalo Grove Dundee Rd dentist owner"
+   ]
+  },
+  {
+   "location_id": "6dcd29eaca2c72a7",
+   "practice_name": "FRESH DENTAL CARE LTD",
+   "zip": "60089",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.freshdental.care/",
+    "https://www.healthgrades.com/group-directory/il-illinois/buffalo-grove/fresh-dental-care-x9wtsv"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:HUANG_LIJUAN",
+   "reasoning": "Fresh Dental Care at 150 W Half Day Rd, Buffalo Grove is led by Dr. Lijuan Huang, DDS (Boston University Goldman School of Dental Medicine, DMD 2002), who has served the community 20+ years per her own website; the NPPES provider count (4) suggests associate dentists/hygienists at this single location. No corporate/DSO signal found. Classified single_loc_group.",
+   "searched": [
+    "Fresh Dental Care Buffalo Grove Half Day Rd Lijuan Huang dentist"
+   ],
+   "intel": {
+    "website_url": "https://www.freshdental.care/",
+    "website_note": "Established single-location practice site.",
+    "services": ["general dentistry", "traditional braces", "implant placement"],
+    "provider_notes": "Dr. Lijuan Huang, DMD, Boston University Goldman School of Dental Medicine, class of 2002; certified for LUMINEERS, Six Month Smiles, LumiBrite whitening.",
+    "owner_career_stage": "mid_career",
+    "distinguishing_notes": "Practicing 20+ years since 2002 DMD graduation.",
+    "sources": [
+     "https://www.healthgrades.com/group-directory/il-illinois/buffalo-grove/fresh-dental-care-x9wtsv"
+    ]
+   }
+  }
+ ]
+}

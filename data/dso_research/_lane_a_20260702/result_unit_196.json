@@ -1,0 +1,398 @@
+{
+  "unit_id": "laneA_196",
+  "classifications": [
+    {
+      "location_id": "cdbb73c7b9a40c73",
+      "practice_name": "TODD MARTIN, DDS",
+      "zip": "60513",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.healthgrades.com/dentist/dr-todd-martin-x43jt",
+        "https://www.bbb.org/us/il/la-grange-park/profile/dentist/ogden-family-dentistry-0654-88099436"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Searched Dr. Martin's name plus address; multiple directories (Healthgrades, BBB as 'Ogden Family Dentistry') describe a solo owner-dentist with 20 years in private practice, no corporate parent or brand mentioned. Structural provider_count=2 is noted but no second dentist's name surfaced in any source, so classified as owner-operator single-location practice.",
+      "searched": ["Todd Martin DDS 9435 Ogden Ave Brookfield IL dentist"],
+      "intel": {
+        "website_url": "https://todd-m-martin-dds.hub.biz/",
+        "website_note": "Practice also markets as 'Ogden Family Dentistry'; directory-heavy footprint (Healthgrades, BBB, Wellness.com) rather than a strong dedicated site.",
+        "provider_notes": "Dr. Todd Martin, DDS, graduated University of Missouri-Kansas City School of Dentistry; ~20 years in private practice; attended Mayo Clinic Dental Review CE.",
+        "owner_career_stage": "mid_career",
+        "insurance_note": "Accepts multiple insurance plans; offers telehealth.",
+        "distinguishing_notes": "3.7/5 aggregate rating on Healthgrades (6 reviews).",
+        "sources": [
+          "https://www.healthgrades.com/dentist/dr-todd-martin-x43jt",
+          "https://www.bbb.org/us/il/la-grange-park/profile/dentist/ogden-family-dentistry-0654-88099436"
+        ]
+      }
+    },
+    {
+      "location_id": "aae80a7bcfb6a430",
+      "practice_name": "A ADVANCEMENTS IN DENTAL CARE",
+      "zip": "60513",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.advdocs.net/",
+        "https://www.yellowpages.com/brookfield-il/mip/advancements-in-dental-care-479015570"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "The practice's own site (advdocs.net) and Yellow Pages profile identify Dr. Daniel Lehenbauer as the dentist who has run this office since 1987 (30+ years), family/cosmetic focus, no corporate branding or management-company language found. No second dentist named despite provider_count=2 in structural data, so classified as an owner-operator single-location practice.",
+      "searched": ["\"Advancements in Dental Care\" Brookfield IL Lehenbauer dentist"],
+      "intel": {
+        "website_url": "https://www.advdocs.net/",
+        "website_note": "Own branded site with service subpages (family dentistry, cosmetic dentistry); dated but functional design.",
+        "services": ["Invisalign", "cosmetic dentistry", "family dentistry"],
+        "provider_notes": "Dr. Dan Lehenbauer, DDS, practicing since 1987 (27+ years experience at time of source), preferred Invisalign provider.",
+        "owner_career_stage": "late_career",
+        "distinguishing_notes": "Serves Brookfield, Hinsdale, La Grange Park, La Grange, Lyons, North Riverside, Oak Brook, Riverside, Westchester, Western Springs.",
+        "sources": ["https://www.advdocs.net/", "https://www.yellowpages.com/brookfield-il/mip/advancements-in-dental-care-479015570"]
+      }
+    },
+    {
+      "location_id": "c761b821046ed157",
+      "practice_name": "Gentle Dental Care Brookfield",
+      "zip": "60513",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://everisdental.com/dental-clinic/forte-dentistry",
+        "https://forte-dentistry.com/",
+        "https://everisdental.com/dental-clinic/chicago-smile-specialists",
+        "https://everisdental.com/dental-clinic/spring-grove-dental"
+      ],
+      "evidence_artifacts": ["everis_dental_network_observed_15plus_IL_locations"],
+      "confidence": "medium",
+      "status": "undetermined",
+      "network_id": "brand:everis_dental",
+      "reasoning": "The NPI/ctx label 'Gentle Dental Care' and dso_national/EIN tag appear stale: this address (9026 31st St) currently operates as 'Forte Dentistry' under Dr. Natalija Aust and Dr. Mike Aust, with no Gentle Dental branding found. However, everisdental.com lists Forte Dentistry as one of its managed clinics alongside 15+ other distinctly-named IL practices (Spring Grove Dental, Chicago Smile Specialists, Dental Dynamics, Valley View Dental, Salud Dental, Dental Town Chicago, etc.), indicating a stealth multi-location management network well above the 10-location threshold. Per protocol this is held undetermined pending one-network-one-decision review rather than individually flipped to stealth_dso. R4_protected_network:Everis Dental.",
+      "searched": [
+        "Gentle Dental Care Brookfield IL 9026 31st St locations",
+        "Forte Dentistry Brookfield Natalija Aust Mike Aust dentist owner",
+        "\"Everis Dental\" management company dental practices Illinois",
+        "everisdental.com about us number of locations Illinois"
+      ]
+    },
+    {
+      "location_id": "0cbad2573dc4b55d",
+      "practice_name": "Isaac Dental",
+      "zip": "60513",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.healthgrades.com/dentist/dr-alan-isaac-yxprc",
+        "https://npiprofile.com/npi/1669515557"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Multiple directories confirm Dr. Alan Howard Isaac, DDS, a solo dentist who has practiced 35 years at this address (8921 Fairview Ave), also listed as 'Isaac Alan DDS PC'. No corporate parent, brand, or additional locations found.",
+      "searched": ["Isaac Dental Brookfield IL 8921 Fairview Ave"]
+    },
+    {
+      "location_id": "bf5a1d80f62a57a2",
+      "practice_name": "Blackwell Dental",
+      "zip": "60513",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "none",
+      "evidence_urls": [],
+      "evidence_artifacts": [],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "Three searches on the address, phone, and name returned only thin aggregator listings (0 reviews, no dedicated website) for '3631 Forest Ave, Brookfield IL' with phone (217) 621-3232 -- a downstate/central-IL area code inconsistent with this Chicago-suburb address. A distinct, well-documented 'Robert L. Blackwell, DDS' practices in Decatur/Alton IL (different phone, different address; SIU School of Dental Medicine faculty) -- likely a same-name collision, not this location. Insufficient reliable web evidence to assign any tier.",
+      "searched": [
+        "Blackwell Dental Brookfield IL 3631 Forest Ave dentist",
+        "\"Blackwell\" dentist Brookfield IL 60513",
+        "\"Robert Blackwell\" DDS dentist Illinois NPI"
+      ]
+    },
+    {
+      "location_id": "99742598c1542ede",
+      "practice_name": "BROOKFIELD SMILES INC.",
+      "zip": "60513",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://dentistbrookfield-il.com/staff/payal-shah-dds/",
+        "https://www.zocdoc.com/dentist/payal-shah-dds-35323"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "ao:SHAH_PAYAL",
+      "reasoning": "Practice's own site (dentistbrookfield-il.com, dba 'Brookfield Smiles') and directory profiles describe Dr. Payal Shah, DDS as the treating dentist with her own practice, digital-tech-forward office, no corporate parent named. Structural AO-reach flags a possible second IL address under the same name (owner_reach_locations=2) which I did not independently confirm on the web -- noted for downstream AO-cluster review via network_id, but classification here rests solely on confirmed evidence at THIS address.",
+      "searched": ["\"Brookfield Smiles\" Payal Shah dentist Ogden Ave Brookfield IL"],
+      "intel": {
+        "website_url": "https://dentistbrookfield-il.com/",
+        "website_note": "Modern practice-branded site with staff bio pages and online scheduling references.",
+        "services": ["root canals", "braces/orthodontic treatment", "crowns", "veneers", "dentures"],
+        "technology": ["digital X-rays", "intraoral cameras", "STA (painless injection) system"],
+        "provider_notes": "Dr. Payal Shah, DDS, dental degree from University of Illinois School of Dentistry (initial training in India), completed orthodontic-treatment training.",
+        "distinguishing_notes": "Hours: Mon-Thu 10-6, Fri 9-5, Sat 9-2, closed Sun.",
+        "sources": ["https://dentistbrookfield-il.com/staff/payal-shah-dds/", "https://www.zocdoc.com/dentist/payal-shah-dds-35323"]
+      }
+    },
+    {
+      "location_id": "aab0e8cc12722751",
+      "practice_name": "JOURDAN AND GIANNINI DENTAL",
+      "zip": "60513",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.vitadox.com/practice/brookfield-il-60513/jourdan-and-giannini-dental/6wd4N6cftcbKaT8CU78JgU",
+        "https://reviews.birdeye.com/jourdan-giannini-dental-168939627561040"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Directory listings confirm two named dentists -- Cynthia L. Jourdan, DDS and Anthony F. Giannini, DDS -- practicing together at this single Broadway Ave address, no corporate brand or parent company found. Fits a dentist-owned, single-location multi-dentist group.",
+      "searched": ["\"Jourdan\" \"Giannini\" Dental Brookfield IL Broadway Ave"],
+      "intel": {
+        "website_note": "No standalone practice website surfaced; presence is directory-based (Vitadox, Birdeye, Yelp).",
+        "services": ["dental implants", "emergency dental care", "full restoration", "general dentistry"],
+        "distinguishing_notes": "5-star rating (5 reviews on Birdeye); hours Mon 9-8, Wed 9-7, Thu 9-3, Fri 9-5, Sat 9-2, closed Tue.",
+        "sources": ["https://reviews.birdeye.com/jourdan-giannini-dental-168939627561040"]
+      }
+    },
+    {
+      "location_id": "fb523a6cebd04db0",
+      "practice_name": "SMILE CENTER OF BROOKFIELD",
+      "zip": "60513",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": ["https://www.yelp.com/biz/smile-center-of-brookfield-brookfield"],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "ao:PAUNESCU_TATIANA",
+      "reasoning": "Yelp and related listings describe Dr. Paunescu as a long-serving, well-reviewed solo dentist at this Broadway Ave address with no corporate parent or brand referenced. Structural AO-reach flags a second possible IL address (60646) under the same owner name that I did not independently verify on the web; recorded via network_id for downstream cluster review but not used to inflate this location's tier.",
+      "searched": ["\"Smile Center of Brookfield\" Paunescu dentist"]
+    },
+    {
+      "location_id": "366e743cd8e28aeb",
+      "practice_name": "PETER A DRAHOS DDS PC",
+      "zip": "60513",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.dentalplans.com/dentists/illinois/brookfield/60513/dr-peter-drahos-91368/",
+        "https://www.healthgrades.com/dentist/dr-peter-drahos-2kxgv"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Directories consistently describe Dr. Peter A. Drahos, DDS as a solo general dentist at 9118 Ogden Ave (Unit B), Brookfield, accepting insurance and dental-savings plans, no corporate or DSO affiliation found. ctx flagged has_intel_dossier=true but that flag was treated as context only, not evidence; classification rests on the web sources above.",
+      "searched": ["Peter Drahos DDS Brookfield IL 9118 Ogden Ave dentist"],
+      "intel": {
+        "provider_notes": "Dr. Peter Drahos speaks Korean.",
+        "insurance_note": "Accepts dental savings plans and insurance plans; accepting new patients.",
+        "distinguishing_notes": "5/5 average patient rating across multiple platforms; hours Mon 8-5, Tue 9-6, Wed 8-5, Thu 9-6, Fri 8-5, Sat 8-2:30.",
+        "sources": ["https://www.dentalplans.com/dentists/illinois/brookfield/60513/dr-peter-drahos-91368/", "https://www.healthgrades.com/dentist/dr-peter-drahos-2kxgv"]
+      }
+    },
+    {
+      "location_id": "79b996a8f184028c",
+      "practice_name": "BROOKFIELD DENTAL STUDIO PC",
+      "zip": "60513",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.brookfielddentalstudio.com/about",
+        "https://findadentist.ada.org/dentists/dr-shikha-kapoor-brookfield-0038V00002yjirZQAQ-a1C8V00000lYBwGUAW"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "The practice's own 'About Us' page states Dr. Shikha Kapoor personally purchased this practice at 9201 Broadway Ave in April 2023; ADA Find-a-Dentist and Zocdoc corroborate her as sole treating dentist with no corporate parent or brand named.",
+      "searched": ["Brookfield Dental Studio Shikha Kapoor 9201 Broadway Ave"],
+      "intel": {
+        "website_url": "https://www.brookfielddentalstudio.com/",
+        "website_note": "Own branded, modern practice site with an About page detailing the 2023 ownership purchase.",
+        "services": ["bridges", "dental cleanings", "pediatric consultations", "root canals"],
+        "provider_notes": "Dr. Shikha (Sara) Kapoor, 2011 graduate of NYU College of Dentistry; ADA member; Spear Education member.",
+        "owner_career_stage": "mid_career",
+        "distinguishing_notes": "Hours Mon-Fri 10-6, Sat 8-2, closed Sun.",
+        "sources": ["https://www.brookfielddentalstudio.com/about"]
+      }
+    },
+    {
+      "location_id": "1bdda158662b6dc1",
+      "practice_name": "Rada Dental",
+      "zip": "60525",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.healthgrades.com/dentist/dr-robert-rada-xs3pk",
+        "https://www.adventhealth.com/doctors/robert-rada-dds-1770574576"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Directories confirm Dr. Robert E. Rada, DDS as a general-practice dentist at 1415 W 47th St, La Grange, with a private-practice presentation; an AdventHealth doctor-directory profile likely reflects hospital-privileges/referral affiliation rather than corporate ownership (no DSO/parent language found). Classified as independent on the strength of the practice-level listings, with the AdventHealth link noted for transparency.",
+      "searched": ["Rada Dental La Grange IL 1415 W 47th St dentist"],
+      "intel": {
+        "services": ["cosmetic dentistry", "special-needs dentistry", "sedation/anesthesia for anxious patients"],
+        "insurance_note": "Accepts Aetna PPO, IL-Adventist Health Network, IL-Medicaid.",
+        "distinguishing_notes": "5.0/5 Healthgrades rating (5 reviews); telehealth offered.",
+        "sources": ["https://www.healthgrades.com/dentist/dr-robert-rada-xs3pk"]
+      }
+    },
+    {
+      "location_id": "147994f2e1f67f4c",
+      "practice_name": "La Grange Comm Nurses Svc",
+      "zip": "60525",
+      "assigned_tier": "institutional",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/la-grange-community-nurse-and-serv-assn-la-grange",
+        "https://nhchc.org/grantee-directory/pillars-community-health/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "brand:pillars_community_health",
+      "reasoning": "This address (27 W Calendar Ave) is Community Nurse Health Association / Community Nurse Health Center, one of Illinois's oldest community health centers (founded 1919), listed in the National Health Care for the Homeless Council grantee directory as part of Pillars Community Health -- a Federally Qualified Health Center providing primary medical and dental care. Classified institutional (FQHC), not a private dental practice.",
+      "searched": ["\"La Grange Comm Nurses\" 27 W Calendar Ave La Grange IL"]
+    },
+    {
+      "location_id": "4bad777c35bd002e",
+      "practice_name": "NANCY DONNA COZZI, D.D.S.",
+      "zip": "60525",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/beautiful-smiles-of-la-grange-la-grange",
+        "https://www.healthgrades.com/dentist/dr-nancy-cozzi-xpkvp"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Multiple sources describe 'Beautiful Smiles of La Grange' at 1400 W 47th St as Dr. Nancy D. Cozzi's practice, a 1988 Loyola dental-school graduate, with no other dentist or corporate parent named. Structural data lists provider_count=6 (large_group), which was not corroborated by any web source naming additional dentists; classified per the web evidence found.",
+      "searched": [
+        "Nancy Cozzi DDS La Grange IL dentist 1400 W 47th St",
+        "\"Beautiful Smiles of La Grange\" dentists staff associates"
+      ],
+      "intel": {
+        "provider_notes": "Dr. Nancy D. Cozzi, DDS, graduated with honors from Loyola University School of Dentistry in 1988; taught at Loyola Dental School after graduation; volunteers with Catholic Charities Dominican Republic and St. Basil's Clinic Chicago.",
+        "owner_career_stage": "late_career",
+        "distinguishing_notes": "5.0-star rating (5 reviews); hours Mon/Wed/Fri/Sat 9-2, Tue/Thu 9-6:30, closed Sun; telehealth offered.",
+        "sources": ["https://www.yelp.com/biz/beautiful-smiles-of-la-grange-la-grange", "https://www.healthgrades.com/dentist/dr-nancy-cozzi-xpkvp"]
+      }
+    },
+    {
+      "location_id": "4f6e6eb0a2552f7a",
+      "practice_name": "ROBERT J. SHANAHAN D.D.S., LTD.",
+      "zip": "60525",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.mthreedental.com/",
+        "https://www.mthreedental.com/meet-the-doctor.html"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "This address (6686 Joliet Rd) now operates as 'M3 Dental,' owned by D. Mike Cvetkovic, DDS, PC together with Dr. Heidi Novack, DDS -- the original NPI name Robert Shanahan appears superseded by a subsequent dentist-to-dentist practice transfer, not a closure. No corporate/DSO signal found; classified as a dentist-owned single-location group given two named dentists there.",
+      "searched": [
+        "Robert Shanahan DDS Indian Head Park IL 6686 Joliet Rd dentist",
+        "M3 Dental Indian Head Park IL owner dentist Cvetkovic"
+      ],
+      "intel": {
+        "website_url": "https://www.mthreedental.com/",
+        "website_note": "Own branded site ('M3 Dental') with doctor and staff pages; practice name changed from the original NPI registrant.",
+        "services": ["full and partial dentures", "family dentistry"],
+        "provider_notes": "D. Mike Cvetkovic, DDS, 30+ years practicing in the western suburbs; co-practiced with Dr. Heidi Novack, DDS.",
+        "distinguishing_notes": "Located in a Walgreens/7-Eleven strip mall at Joliet Rd & Willow Springs Rd, across from Tony's Finer Foods.",
+        "sources": ["https://www.mthreedental.com/meet-the-doctor.html"]
+      }
+    },
+    {
+      "location_id": "a09e9abb956dba36",
+      "practice_name": "DHAVAL V SHAH DMD PC",
+      "zip": "60525",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.lagrangefamilydental.com/dr-dhaval-shah/",
+        "https://www.yelp.com/biz/north-avenue-dental-associates-west-chicago"
+      ],
+      "evidence_artifacts": ["dhaval_shah_name_associated_with_15plus_IL_addresses"],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": "ao:SHAH_DHAVAL",
+      "reasoning": "The La Grange address (310 W Burlington Ave) is confirmed as 'La Grange Family Dental,' Dr. Dhaval Shah's practice (matches ctx's second flagged ZIP 60185 via a West Chicago 'North Avenue Dental Associates' location also naming him). However, aggregator results tie the same name to as many as 15 differently-branded IL addresses statewide (Chicago, Niles, Vernon Hills, Bloomingdale, Downers Grove, Naperville, Romeoville, Aurora, Crystal Lake, Montgomery, Springfield), which could reflect either a large dentist-owned/credentialing multi-brand network (exceeding the 10-location protected-network threshold) or directory conflation of multiple same-named providers -- I could not resolve which within budget. R4_protected_network:Dhaval_Shah_multi_location -- held undetermined rather than guessed as dentist_multi or stealth_dso.",
+      "searched": [
+        "Dhaval Shah DMD La Grange IL 310 W Burlington Ave dentist",
+        "\"Dhaval Shah\" dentist Wheaton IL OR \"60185\" dental"
+      ],
+      "intel": {
+        "website_url": "https://www.lagrangefamilydental.com/",
+        "website_note": "Own branded site for the La Grange location specifically, with a bio page for Dr. Shah.",
+        "services": ["family dentistry", "general dentistry", "cosmetic dentistry"],
+        "provider_notes": "Dr. Dhaval Shah, DMD, BS Univ. of Illinois Urbana-Champaign 2008 (biochemistry/economics), DMD Tufts University 2012.",
+        "owner_career_stage": "mid_career",
+        "distinguishing_notes": "Hours Mon 10-6, Tue 9-6, Wed 11-7, Thu 9-6, closed Fri-Sun; accepting new patients.",
+        "sources": ["https://www.lagrangefamilydental.com/dr-dhaval-shah/"]
+      }
+    },
+    {
+      "location_id": "c2be2aaf55a09dce",
+      "practice_name": "MEERA MAHAJAN DDS LTD",
+      "zip": "60525",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.mylagrangedentist.com/",
+        "https://www.linkedin.com/in/joe-balice-baaa978"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "This address (4711 Willow Springs Rd) operates as 'La Grange Dental Associates,' with Dr. Joseph Balice explicitly listed as 'Owner/Dentist' on LinkedIn alongside Dr. Meera Mahajan, DDS, MS and Dr. Ronald Smith, DDS. No corporate or DSO signal found; classified as a dentist-owned, single-location multi-dentist group.",
+      "searched": [
+        "Meera Mahajan DDS La Grange IL 4711 Willow Springs Rd dentist",
+        "Meera Mahajan \"La Grange Dental Associates\" owner Balice Smith DSO management"
+      ],
+      "intel": {
+        "website_url": "https://www.mylagrangedentist.com/",
+        "website_note": "Own branded multi-dentist practice site ('La Grange Dental Associates') with a Meet the Doctors page.",
+        "services": ["family and cosmetic dentistry"],
+        "provider_count_web": 3,
+        "provider_notes": "Dr. Joseph Balice, DDS (owner), Dr. Meera Mahajan, DDS, MS, and Dr. Ronald Smith, DDS practice together.",
+        "sources": ["https://www.mylagrangedentist.com/meet-the-doctors.html", "https://www.linkedin.com/in/joe-balice-baaa978"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,402 @@
+{
+ "unit_id": "laneA_147",
+ "classifications": [
+  {
+   "location_id": "5292735bc2bc5f96",
+   "practice_name": "THE HEART THAT SMILES MOBILE DENTISTS",
+   "zip": "60430",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.linkedin.com/in/latoi-thomas-6a815288",
+    "https://www.theheartthatsmiles.com/mobile-dentistry-about-us",
+    "https://www.theheartthatsmiles.com/"
+   ],
+   "evidence_artifacts": ["AO Latoi Thomas confirmed as licensed dentist (DDS, Meharry Medical College) and Owner/CEO of the entity, matching ctx owner_reach across 60411+60430"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:THOMAS_LATOI",
+   "reasoning": "Searched the practice name and fetched its About Us page, then confirmed via LinkedIn that Dr. Latoi Thomas, DDS is Owner/CEO of this mobile dental services company serving Head Start/school settings across Chicago Heights and Homewood. She is a licensed dentist who owns/controls the multi-location mobile operation (matches ctx owner_reach=2), so it is a dentist-owned multi-location practice rather than a corporate DSO or single-location shop.",
+   "searched": ["\"The Heart That Smiles\" mobile dentist Homewood IL", "theheartthatsmiles.com about-us page fetch", "\"The Heart That Smiles\" CEO founder dentist Latoi Thomas"],
+   "intel": {
+    "website_url": "https://www.theheartthatsmiles.com/",
+    "website_note": "Modern incorporated-business site (\"The Heart That Smiles Mobile Dentists, Inc.\") describing a mobile dental van model that visits schools/Head Start programs to remove access barriers (transportation, childcare, Medicaid shortage, hours).",
+    "services": ["mobile school-based dental care", "pediatric dental services"],
+    "technology": [],
+    "provider_notes": "Owner/CEO Dr. Latoi Thomas, DDS, Meharry Medical College (DDS 2005-2009).",
+    "owner_career_stage": "mid_career",
+    "accepts_medicaid": true,
+    "insurance_note": "Explicitly positions itself as filling the gap left by a shortage of local Medicaid-accepting dentists.",
+    "distinguishing_notes": "Mobile (not fixed-office) dental service model covering IL and IN, targeting underserved children via schools/Head Start rather than a walk-in storefront.",
+    "sources": ["https://www.theheartthatsmiles.com/mobile-dentistry-about-us", "https://www.linkedin.com/in/latoi-thomas-6a815288"]
+   }
+  },
+  {
+   "location_id": "40a5a5b583d4ae40",
+   "practice_name": "SMS DENTAL LLC",
+   "zip": "60430",
+   "assigned_tier": "branded_dso",
+   "pe_backed": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.aspendental.com/dentist/il/homewood/17727-halsted-street/",
+    "https://www.leonardgreen.com/ares-management-leonard-green-increase-ownership-in-aspen-dental-management-inc/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:aspen_dental",
+   "reasoning": "Aspen Dental's own locator page lists a Homewood, IL office at 17727 Halsted Street, an exact match to this NPI's address, confirming this is a branded Aspen Dental location (parent ADMI Corp). Aspen Dental/ADMI is documented as majority private-equity owned (Leonard Green & Partners and Ares Management, ~80% combined) per Leonard Green's own press release, so pe_backed=true.",
+   "searched": ["Aspen Dental Homewood IL 17727 Halsted", "Aspen Dental ADMI Corp Leonard Green Partners private equity owner"],
+   "intel": {
+    "website_url": "https://www.aspendental.com/dentist/il/homewood/17727-halsted-street/",
+    "website_note": "Standard corporate DSO template site with online booking and 3rd-party financing (\"99% of patients approved\").",
+    "services": ["exams and cleanings", "crowns and fillings", "bridges", "dentures", "dental implants", "teeth whitening", "extractions", "emergency dental care"],
+    "technology": [],
+    "accepts_medicaid": false,
+    "insurance_note": "Site states it accepts most major insurance plans, excluding Medicaid.",
+    "distinguishing_notes": "Located at the Halsted St/177th St intersection near Target; hours M-Th 7am-5pm, F 7am-12pm, closed weekends.",
+    "sources": ["https://www.aspendental.com/dentist/il/homewood/17727-halsted-street/", "https://birdeye.com/aspen-dental-homewood-il-160174955596497"]
+   }
+  },
+  {
+   "location_id": "a2e369f5e26fb8f9",
+   "practice_name": "DR MARIA OSAN TOPALA AND ASSOC",
+   "zip": "60438",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://mariaosantopala.com/staff/maria-osan-topala-dmd/",
+    "https://www.yelp.com/biz/osan-topala-maria-dds-lansing"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The practice's own website (Apple Dentistry, mariaosantopala.com) names Dr. Maria Osan-Topala as the practicing/owning dentist at this single 2457 Ridge Rd address, with a small associated team (matches ctx provider_count=2). No corporate parent or brand is mentioned anywhere; this is a single-location, dentist-owned group practice.",
+   "searched": ["\"Maria Osan Topala\" DDS Lansing IL dentist"],
+   "intel": {
+    "website_url": "https://mariaosantopala.com/staff/maria-osan-topala-dmd/",
+    "website_note": "Personal practice site (branded \"Apple Dentistry\") with a staff bio page; Dr. Osan-Topala was born in Romania, raised in Munster, IN.",
+    "services": ["general dentistry", "periodontics", "prosthodontics", "routine cleanings", "fillings", "preventive care"],
+    "technology": [],
+    "provider_count_web": 2,
+    "provider_notes": "Dr. Maria Osan-Topala, DMD - general dentistry/periodontics/prosthodontics; won the 2017 Best of Lansing Award (Dentists category).",
+    "distinguishing_notes": "Award-winning (2017 Best of Lansing) single-location practice branded \"Apple Dentistry.\"",
+    "sources": ["https://mariaosantopala.com/staff/maria-osan-topala-dmd/", "https://www.yelp.com/biz/osan-topala-maria-dds-lansing"]
+   }
+  },
+  {
+   "location_id": "e0863566acda02c1",
+   "practice_name": "Sarbieski Dental",
+   "zip": "60438",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.doctorsnetwork.com/doctors/dentists/lansing-il-60438/invite-jeffery-sarbieski-dds-10719",
+    "https://www.caredash.com/doctors/jeffery-sarbieski-dds-lansing-il"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple independent directory listings (Doctors Network, CareDash, NPI registries) consistently describe Dr. Jeffery Sarbieski, DDS as a solo general dentist at 19277 Burnham Ave with no corporate brand or second location mentioned. No dedicated practice website was found, so confidence is medium rather than high.",
+   "searched": ["Sarbieski Dental Lansing IL"]
+  },
+  {
+   "location_id": "3a80ae711ca6fec7",
+   "practice_name": "PALLOTTO DENTAL CARE",
+   "zip": "60438",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.opencare.com/dentists/lansing-il/pallotto-dental-care-24630245324c/",
+    "https://www.bbb.org/us/il/lansing/profile/dentist/pallotto-dental-care-0654-88327515"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:PALLOTTO",
+   "reasoning": "Bio pages describe Pallotto Dental Care as a third-generation family dental practice (founded by Dr. Romeo Pallotto in 1946, now Drs. Nicholas, Anthony, Josephine and Janis Pallotto) operating out of one Lansing office at 18610 Burnham Ave. This matches ctx entity_classification=family_practice with 5 providers at a single address, so it is dentist-owned single_loc_group, not corporate.",
+   "searched": ["Pallotto Dental Care Lansing IL Jan Pallotto"],
+   "intel": {
+    "website_note": "Third-generation family practice (since 1946); offers on-site 3-D imaging and same-office implant placement/restoration, evening/weekend hours, emergency appointments, transparent billing.",
+    "services": ["implants", "3-D imaging/CBCT", "general dentistry"],
+    "technology": ["on-site 3-D imaging"],
+    "provider_notes": "Drs. Romeo (founder, 1946), Nicholas J., Anthony M., Josephine C., and Janis Pallotto - multi-generation family of dentists.",
+    "distinguishing_notes": "Three generations of the Pallotto family practicing together at one office since 1946; same-day/evening/weekend availability.",
+    "sources": ["https://www.opencare.com/dentists/lansing-il/pallotto-dental-care-24630245324c/", "https://www.bbb.org/us/il/lansing/profile/dentist/pallotto-dental-care-0654-88327515"]
+   }
+  },
+  {
+   "location_id": "9fd8cb82461a6925",
+   "practice_name": "Honsa Dental",
+   "zip": "60438",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.forestreamdentalcare.com/business/honsa-patrick-dds-il-22868393/",
+    "https://www.opencare.com/dentists/lansing-il/dr-patrick-j-honsa-dds-24630245325c/"
+   ],
+   "evidence_artifacts": ["Same street address (3330 181st Pl / 3330 - 181st Pl) as location b89e1a40ce396217 (PATRICK J HONSA DDS) - NPPES org-NPI + individual-NPI dual emission for the same single-dentist office"],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:HONSA_PATRICK",
+   "reasoning": "Directory listings uniformly describe this as the solo general-dentistry office of Dr. Patrick J. Honsa, DDS at 3330 181st Pl, Suite 201, with no corporate affiliation. The org-level \"Honsa Dental\" NPI and the individual \"Patrick J Honsa DDS\" NPI in this same unit share the identical address/phone family, confirming it is one single-location independent practice, not two practices.",
+   "searched": ["\"Honsa Dental\" Lansing IL Patrick Honsa DDS"],
+   "intel": {
+    "website_note": "No independent practice website found; aggregator listings describe a small general-dentistry office.",
+    "services": ["bonding", "Invisalign/braces", "bridges/dentures", "cleaning", "crowns", "fillings", "gum surgery", "implants", "nitrous sedation", "root canals", "sleep apnea treatment", "TMJ treatment", "extractions", "veneers", "whitening"],
+    "technology": [],
+    "provider_notes": "Dr. Patrick Honsa speaks Italian in addition to English; offers telehealth.",
+    "sources": ["https://www.forestreamdentalcare.com/business/honsa-patrick-dds-il-22868393/"]
+   }
+  },
+  {
+   "location_id": "b389d8b626a2792d",
+   "practice_name": "WAYNE M MRJENOVICH DDS PC",
+   "zip": "60438",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.groupon.com/biz/lansing-il/mrjenovich-wayne-dds",
+    "https://www.ratemds.com/doctor-ratings/3169071/Dr-WAYNE-MRJENOVICH-Lansing-IL.html/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Consistent aggregator listings show Dr. Wayne Mrjenovich, DDS as a solo general dentist at 19111 Burnham Ave with no brand affiliation or second location. Confidence is medium because reviews are mixed (1.0/5 on RateMDs vs. more favorable descriptions elsewhere) and no owned website was located, but ownership structure (solo PC) is clear.",
+   "searched": ["Wayne Mrjenovich DDS Lansing IL dentist"],
+   "intel": {
+    "website_note": "No dedicated website found; listed on Groupon/aggregator sites for general dentistry.",
+    "services": ["fillings", "checkups/cleaning", "crowns and veneers"],
+    "distinguishing_notes": "Patient sentiment is mixed - very low RateMDs score (1.0/5) alongside more positive descriptions on other directories.",
+    "sources": ["https://www.ratemds.com/doctor-ratings/3169071/Dr-WAYNE-MRJENOVICH-Lansing-IL.html/", "https://www.groupon.com/biz/lansing-il/mrjenovich-wayne-dds"]
+   }
+  },
+  {
+   "location_id": "4ea8d562d4ae7275",
+   "practice_name": "Dr Richard a Bona Jr DDS",
+   "zip": "60438",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://local.yahoo.com/info-17292055-dr-richard-a-bona-jr-dds-lansing/",
+    "https://www.dentalplans.com/dentists/illinois/lansing/60438/dr-richard-bona-234236/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:BONA_RICHARD",
+   "reasoning": "Directory bios for Dr. Richard A. Bona Jr., DDS (practice established 1978 at 17801 Burnham Ave) also list a second office at 328 Park Lane Dr, Grant Park, IL, under the same dentist's name, with no corporate/DSO brand involved. This matches dentist_multi (2+ locations, dentist-owned) rather than a single-location practice; confidence is medium since the second-location detail comes from an aggregator bio rather than his own practice website.",
+   "searched": ["\"Richard Bona\" DDS Lansing IL dentist"],
+   "intel": {
+    "website_note": "No standalone practice website found; described via aggregator bios.",
+    "services": ["cleaning", "whitening", "crowns", "bridges", "fillings", "implants"],
+    "distinguishing_notes": "Practice established 1978; emphasis on adult dental rehabilitation; a second office location in Grant Park, IL.",
+    "sources": ["https://local.yahoo.com/info-17292055-dr-richard-a-bona-jr-dds-lansing/"]
+   }
+  },
+  {
+   "location_id": "fb919ddb089f25d3",
+   "practice_name": "Hason, Agatha E DDS",
+   "zip": "60438",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://healthgrades.com/dentist/dr-agatha-hason-x9dtm",
+    "https://findadentist.ada.org/il/cook/lansing/general-practice/dr-agatha-e-hason-1658118"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directory and ADA \"Find a Dentist\" listings consistently show Dr. Agatha E. Hason, DDS as a solo general dentist at 3341 Ridge Rd with no brand affiliation or additional locations. This is a single-location, dentist-owned practice.",
+   "searched": ["\"Agatha Hason\" DDS Lansing IL dentist"],
+   "intel": {
+    "website_note": "No independent practice website found; listed on Healthgrades/ADA/WebMD aggregators.",
+    "provider_notes": "Dr. Agatha E. Hason, DDS - general practice, dental degree from Loyola University Chicago; active IL license through 2027.",
+    "distinguishing_notes": "General practice dentist, Loyola University Chicago dental school graduate.",
+    "sources": ["https://www.healthgrades.com/dentist/dr-agatha-hason-y2mbf", "https://findadentist.ada.org/il/cook/lansing/general-practice/dr-agatha-e-hason-1658118"]
+   }
+  },
+  {
+   "location_id": "9ab2b7c597383be6",
+   "practice_name": "BECKER DENTAL COMPANY",
+   "zip": "60438",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-brandon-becker-xq9j9",
+    "https://www.dentalplans.com/dentists/illinois/lansing/60438/dr-brandon-becker-37314"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Listings confirm Dr. Brandon (Farley) Becker, DDS operates \"Becker Dental Company\" at 3243 Ridge Rd, Lansing under his own name, matching ctx entity_classification=solo_established with no brand hint. Directories note Dr. Becker also appears at other IL locations (Elgin, Wheeling), suggesting he may work as an associate elsewhere, but there is no evidence those are commonly-owned by him or part of a chain, so this specific Lansing address is classified as his own single-location independent practice.",
+   "searched": ["Becker Dental Company Lansing IL Brandon Becker", "\"Brandon Becker\" DDS dentist locations Illinois Indiana"],
+   "intel": {
+    "website_note": "No independent practice website found; described via Healthgrades/Vitals/DentalPlans aggregators.",
+    "distinguishing_notes": "Dr. Becker also appears in listings for Elgin, IL and Wheeling, IL dental offices, suggesting he may practice as an associate at additional locations beyond this one.",
+    "sources": ["https://www.healthgrades.com/dentist/dr-brandon-becker-xq9j9", "https://www.dentalplans.com/dentists/illinois/wheeling/60090/dr-brandon-becker-93695/"]
+   }
+  },
+  {
+   "location_id": "40c56b6b12162db4",
+   "practice_name": "Lesner Dental",
+   "zip": "60438",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dentalcaregenie.com/dentist/dr-loren-lesner-118782.html",
+    "https://www.caredash.com/doctors/loren-lesner-dds-lansing-il"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple aggregator listings describe Dr. Loren Lesner, DDS as a solo general dentist practicing at 3232 Ridge Road, Suite 6, with no corporate brand or second office mentioned. Classified as a single-location, dentist-owned independent practice.",
+   "searched": ["Lesner Dental Lansing IL dentist"],
+   "intel": {
+    "website_note": "No independent practice website found; listed on DentalCareGenie/CareDash/Zocdoc.",
+    "services": ["diagnosis/treatment of cavities and gum disease", "root canal", "dental implants", "palatal expansion", "diagnostic X-rays", "cleaning"],
+    "insurance_note": "Accepts various health insurance plans; cash/credit/debit accepted.",
+    "sources": ["https://www.dentalcaregenie.com/dentist/dr-loren-lesner-118782.html"]
+   }
+  },
+  {
+   "location_id": "5cb6cdc13970be29",
+   "practice_name": "ODED GARGIR DDS PC",
+   "zip": "60438",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npidb.org/organizations/dental_health/dentist_122300000x/1184859852.aspx",
+    "https://www.findatopdoc.com/doctor/870805-Oded-Gargir-dentist-Lansing-IL-60438"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Listings (branded \"All Dental Care - Oded Gargir DDS\") confirm a solo general dentist at 3442 Ridge Rd, in business since 2008, with no DSO brand or additional locations found. Classified as a single-location, dentist-owned independent practice.",
+   "searched": ["\"Oded Gargir\" DDS Lansing IL dentist"],
+   "intel": {
+    "website_note": "No independent practice website found; listed via NPI registries and Yelp as \"All Dental Care - Oded Gargir DDS.\"",
+    "provider_notes": "Dr. Oded Gargir speaks Hebrew; practice operating since 2008; offers telehealth.",
+    "sources": ["https://npidb.org/organizations/dental_health/dentist_122300000x/1184859852.aspx", "https://www.yelp.com/biz/all-dental-care-oded-gargir-dds-lansing"]
+   }
+  },
+  {
+   "location_id": "96894394ac4bff01",
+   "practice_name": "UNITED DENTAL CENTERS",
+   "zip": "60438",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.udcchicago.com/about-us.html",
+    "https://www.udcchicago.com/dr-kenneth-m-fried.html",
+    "https://www.udchammond.com/dr-kenneth-m-fried.html",
+    "https://opennpi.com/provider/1629379680"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:FRIED_KENNETH",
+   "reasoning": "United Dental Centers' own about-us page states it is \"family-owned and locally operated, not corporate or PE-backed,\" founded in 1989 by Dr. Kenneth Fried in Whiting, IN and now co-led by his son Dr. David Fried, with sibling offices in Whiting IN, Hammond IN, Merrillville IN, Chicago IL, and this Lansing IL location - each site's own page names a Fried as the practicing dentist. This is a dentist-owned multi-location group (5 confirmed locations, below the 10+ protected-network threshold), fitting dentist_multi rather than a corporate DSO.",
+   "searched": ["\"United Dental Centers\" Lansing IL Kenneth Fried", "udcchicago.com about-us page fetch"],
+   "intel": {
+    "website_url": "https://www.udcchicago.com/about-us.html",
+    "website_note": "Polished multi-site network of near-identical branded pages (udcchicago.com, udcmerrillville.com, udchammond.com, udcwhiting.com), each naming a Dr. Fried as the practicing dentist; explicitly markets itself as \"not driven by profits or quotas\" in contrast to corporate dentistry.",
+    "provider_notes": "Founded 1989 by Dr. Kenneth M. Fried (Illinois State undergrad, University of Illinois dental school); now co-led by son Dr. David Fried.",
+    "distinguishing_notes": "Five-location, two-generation family dental group explicitly positioned against corporate/PE-owned dentistry.",
+    "sources": ["https://www.udcchicago.com/about-us.html", "https://www.udcchicago.com/dr-kenneth-m-fried.html"]
+   }
+  },
+  {
+   "location_id": "08d34f2671858cfd",
+   "practice_name": "PRO DENTAL IL - CHAD WISE PC",
+   "zip": "60438",
+   "assigned_tier": "branded_dso",
+   "pe_backed": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://destinydentalcare.com/lansing-square/",
+    "https://www.prosmile.com/prosmile-completes-acquisition-of-destiny-dental-practices-located-in-midwest/",
+    "https://www.groupdentistrynow.com/dso-group-blog/prosmile-acquisition/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:destiny_dental_prosmile",
+   "reasoning": "Destiny Dental Care's own \"Lansing Square\" locator page gives the exact address \"17653 S. Torrence Ave, Lansing, IL 60438\" and names the operating entity as \"Pro Dental IL - Chad Wise P.C.\" - an exact match to this NPI. ProSmile's own press release confirms it completed acquisition of the Destiny Dental network (5 IL, 2 IN, 13 MI, 1 WI locations) in 2024, and ProSmile is PE-backed with Chad Wise serving as chairman of ProSmile's board and an operational partner at Trispan (PE firm), so pe_backed=true.",
+   "searched": ["\"Pro Dental\" \"Chad Wise\" Lansing IL Destiny Dental ProSmile", "destinydentalcare.com/lansing-square/ page fetch"],
+   "intel": {
+    "website_url": "https://destinydentalcare.com/lansing-square/",
+    "website_note": "Branded DSO locator page (Destiny Dental Care network) for the Lansing Square office.",
+    "services": ["general dentistry", "family dentistry"],
+    "distinguishing_notes": "Operates under the legal PC name of Dr. Chad Wise, but is part of the Destiny Dental network acquired by ProSmile (PE-backed, Trispan) in 2024; Chad Wise separately co-founded North American Dental Group and chairs ProSmile's board.",
+    "sources": ["https://destinydentalcare.com/lansing-square/", "https://www.prosmile.com/prosmile-completes-acquisition-of-destiny-dental-practices-located-in-midwest/"]
+   }
+  },
+  {
+   "location_id": "5f19704e3fe38fca",
+   "practice_name": "Keessen Dental",
+   "zip": "60438",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.doctorsnetwork.com/doctors/dentists/lansing-il-60438/invite-gene-keessen-dds-17380",
+    "https://thelansingjournal.com/2017/12/05/new-hope-dental-clinic/"
+   ],
+   "evidence_artifacts": ["NPI record address (3642 Lake St) differs from the address found in current web listings (18221 Torrence Ave #2d), but the phone number (708) 474-7717 matches exactly across sources, confirming the same solo practice/dentist"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Listings for Dr. Gene Keessen, DDS (phone (708) 474-7717, matching this NPI's phone) show a solo general dentistry practice with no brand affiliation; a Lansing Journal article additionally describes him volunteering at a separate charitable clinic (New Hope Dental Clinic), which is not this practice but confirms his identity as an independent long-tenured local dentist. The street address on file differs slightly from current directory listings (possible office move), so confidence is medium.",
+   "searched": ["Keessen Dental Lansing IL dentist"],
+   "intel": {
+    "provider_notes": "Dr. Gene Keessen has practiced dentistry for more than 50 years.",
+    "distinguishing_notes": "Long-tenured (50+ year) solo dentist who also volunteers free dental care through New Hope Church's New Hope Dental Clinic in Lansing.",
+    "sources": ["https://thelansingjournal.com/2017/12/05/new-hope-dental-clinic/", "https://www.doctorsnetwork.com/doctors/dentists/lansing-il-60438/invite-gene-keessen-dds-17380"]
+   }
+  },
+  {
+   "location_id": "b89e1a40ce396217",
+   "practice_name": "PATRICK J HONSA DDS",
+   "zip": "60438",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.opencare.com/dentists/lansing-il/dr-patrick-j-honsa-dds-24630245325c/",
+    "https://www.healthgrades.com/dentist/dr-patrick-honsa-y28gm"
+   ],
+   "evidence_artifacts": ["Same street address (3330 181st Pl) as location 9fd8cb82461a6925 (\"Honsa Dental\") - this is the individual-NPI counterpart of the same NPPES org+individual dual emission for one single-dentist office"],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:HONSA_PATRICK",
+   "reasoning": "Directory listings describe Dr. Patrick J. Honsa, DDS as a solo general dentist at 3330 181st Pl, Suite 201, Lansing, with no corporate affiliation - the same physical office as the co-located \"Honsa Dental\" org NPI in this unit. Classified as a single-location, dentist-owned independent practice.",
+   "searched": ["\"Honsa Dental\" Lansing IL Patrick Honsa DDS"],
+   "intel": {
+    "services": ["bonding", "Invisalign/braces", "bridges/dentures", "cleaning", "crowns", "fillings", "gum surgery", "implants", "nitrous sedation", "root canals", "sleep apnea treatment", "TMJ treatment", "extractions", "veneers", "whitening"],
+    "provider_notes": "Dr. Patrick Honsa speaks Italian in addition to English; offers telehealth services.",
+    "sources": ["https://www.forestreamdentalcare.com/business/honsa-patrick-dds-il-22868393/"]
+   }
+  }
+ ]
+}

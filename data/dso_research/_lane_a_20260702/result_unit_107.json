@@ -1,0 +1,416 @@
+{
+ "unit_id": "laneA_107",
+ "classifications": [
+  {
+   "location_id": "42d1dfe2d92fb435",
+   "practice_name": "VETERANS SQUARE DIAGNOSTICS, INC.",
+   "zip": "60630",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "building_coincidence: United Dental Partners (a Calera Capital portfolio DSO) HQ is Suite 403 at same 4849 N Milwaukee Ave building; this practice is Suite 505 -- no confirmed corporate link found"
+   ],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Confirmed via npino/Yelp/Healthgrades that this is a real 2-provider dental office (incl. Dr. Jolanta Zakrzewska, 47 yrs experience) at 4849 N Milwaukee Ave Ste 505; AO is David Kodner (non-dentist name). United Dental Partners, a Calera Capital-backed DSO, is headquartered in the SAME building at Suite 403, matching the DB's parent_company flag, but no locator page, news article, or filing was found tying Suite 505 specifically to UDP/Calera Capital -- could be building coincidence only. Per hard rule, AO/address proximity alone is not sufficient evidence for T4/T5, so leaving undetermined rather than guessing.",
+   "searched": [
+    "\"Veterans Square Diagnostics\" Chicago Milwaukee Ave dental",
+    "\"Calera Capital\" dental Chicago",
+    "\"United Dental Partners\" Chicago locations 4849 Milwaukee Ave",
+    "\"David Kodner\" Chicago dental United Dental Partners"
+   ],
+   "intel": {
+    "website_url": null,
+    "website_note": "No dedicated practice website found; presence limited to directory/aggregator profiles (Healthgrades, npino, Yelp).",
+    "services": ["check-ups", "x-rays", "cleanings", "crowns", "teeth whitening", "dentures", "dental implants"],
+    "provider_notes": "Dr. Jolanta Zakrzewska, DDS -- 47 years in practice, accepting new patients.",
+    "sources": [
+     "https://www.findatopdoc.com/doctor/2124187-Jolanta-Zakrzewska-dentist-Chicago-IL-60630",
+     "https://www.yelp.com/biz/zakrzewska-jolanta-dds-chicago"
+    ]
+   }
+  },
+  {
+   "location_id": "1cd40aac8627fec1",
+   "practice_name": "Grzeskowiak Dental",
+   "zip": "60630",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/krystyna-grzeskowiak-dds-chicago",
+    "https://www.healthgrades.com/dentist/dr-krystyna-grzeskowiak-y6gtc"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple independent directories (Yelp, Healthgrades, WebMD, Vitals) consistently show Dr. Krystyna M. Grzeskowiak, DDS as the sole general-practice dentist at 5370 N Milwaukee Ave; no corporate parent, brand, or DSO signal found anywhere. No dedicated own-domain site was found (only third-party directory profiles), so confidence is medium, but the pattern (single named dentist, single address, long directory history) is classic solo owner-operator.",
+   "searched": [
+    "Grzeskowiak Dental Chicago Milwaukee Ave",
+    "Krystyna Grzeskowiak DDS website official"
+   ]
+  },
+  {
+   "location_id": "f84ddcb53246f65d",
+   "practice_name": "HASE ZAHN INC.",
+   "zip": "60630",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npiprofile.com/npi/1245671676"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "npiprofile confirms Dr. Simona Bareket, DDS as President of Hase Zahn Inc. (a registered 3-provider dental group) at 4830 N Pulaski Rd Ste 108. Bareket is an independently verified practicing dentist (also runs HP Smiles Dental in Highland Park under her own name), so this Chicago location is dentist-owned. Her Highland Park site does not cross-list this Pulaski Rd address as part of a combined multi-location brand, so this is treated as a standalone dentist-owned group practice (T2) rather than T3.",
+   "searched": [
+    "\"Hase Zahn\" dental Chicago Pulaski",
+    "\"Simona Bareket\" dentist Chicago Hase Zahn",
+    "\"Hase Zahn Inc\" Chicago dentists providers Pulaski Rd"
+   ]
+  },
+  {
+   "location_id": "63fb827368738619",
+   "practice_name": "BRIGHTER SMILE LLC",
+   "zip": "60630",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.thedentalsuitechicago.com/about-us/",
+    "https://www.zocdoc.com/dentist/michelle-beckerly-dmd-610639",
+    "https://www.yelp.com/biz/brighter-smile-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:BECKERLY_MICHELLE",
+   "reasoning": "Brighter Smile at 4845 N Milwaukee Ave is confirmed as Dr. Michelle Beckerly, DMD's office (Yelp/thedentalsuitechicago.com). Independent search also confirms Dr. Beckerly practices/owns a second dental-sleep-medicine-focused office in Naperville, IL (60563), matching this location's 2-ZIP owner reach in ctx. Both offices verified independently as tied to the same named dentist (not a single combined corporate website), supporting dentist-owned 2-location status (T3) rather than a corporate chain -- no DSO/parent signal found at either address.",
+   "searched": [
+    "\"Brighter Smile\" dental Chicago 60630 Milwaukee Ave Beckerly",
+    "\"Michelle Beckerly\" dentist Naperville OR 60563"
+   ],
+   "intel": {
+    "website_url": "https://www.thedentalsuitechicago.com/about-us/",
+    "website_note": "Directory/profile-style page describing Brighter Smile as a general/cosmetic/family/sleep dentistry office with modern facility and positive patient reviews.",
+    "services": ["general dentistry", "cosmetic dentistry", "family dentistry", "sleep dentistry"],
+    "provider_notes": "Dr. Michelle Beckerly, DMD (Boston University Goldman School of Dental Medicine; GPR at Rush University Medical Center); now also focuses on dental sleep medicine/oral appliance therapy for sleep apnea at a second, Naperville office.",
+    "sources": [
+     "https://www.thedentalsuitechicago.com/about-us/",
+     "https://www.zocdoc.com/dentist/michelle-beckerly-dmd-610639",
+     "https://www.yelp.com/biz/brighter-smile-chicago"
+    ]
+   }
+  },
+  {
+   "location_id": "9c28721340679749",
+   "practice_name": "OASIS FAMILY DENTAL INC",
+   "zip": "60630",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.jeffersonparkdentaloffice.com/",
+    "https://www.yelp.com/biz/oasis-family-dental-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The practice's own website (jeffersonparkdentaloffice.com) names Dr. Paula Skowronski-Adamiak, DDS as the practicing/owning dentist at this single Jefferson Park address, directly matching the ctx AO name, with no mention of any parent company, DSO, or additional locations. Clear solo owner-operator evidence.",
+   "searched": [
+    "\"Oasis Family Dental\" Chicago Milwaukee Ave Skowronski"
+   ],
+   "intel": {
+    "website_url": "https://www.jeffersonparkdentaloffice.com/",
+    "website_note": "Modern, patient-experience-focused own-domain site emphasizing comfort amenities and cosmetic services.",
+    "services": ["family dentistry", "veneers", "crowns", "bridges", "gum disease treatment", "teeth whitening", "Invisalign", "fillings", "Botox/fillers"],
+    "technology": ["digital X-rays"],
+    "provider_notes": "Dr. Paula Skowronski-Adamiak, DDS -- speaks English and Polish.",
+    "distinguishing_notes": "Heated massage dental chairs with Netflix during procedures; children's play area with Nintendo/toys; accepts CareCredit.",
+    "sources": [
+     "https://www.jeffersonparkdentaloffice.com/",
+     "https://www.yelp.com/biz/oasis-family-dental-chicago"
+    ]
+   }
+  },
+  {
+   "location_id": "770dc428d7fe6dc3",
+   "practice_name": "Truszkowski Dental",
+   "zip": "60630",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/barbara-truszkowski-dds-chicago",
+    "https://findadentist.ada.org/dentists/dr-barbara-truszkowski-chicago-0038V00002yk4wOQAQ-a1C8V00000lZ4LNUA0"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Confirmed Dr. Barbara Truszkowski, DDS (40+ years practicing, University of Illinois College of Dentistry) operates at 5489 N Milwaukee Ave, rebranded as \"Nova Dental.\" ADA/Yelp listings note she merged her practice with Dr. Margareta Qirko in 2025, making this now a 2-dentist single-location practice with no corporate or DSO signal found -- dentist-owned single-location group (T2).",
+   "searched": [
+    "Truszkowski Dental Chicago Milwaukee Ave"
+   ],
+   "intel": {
+    "website_note": "Practice rebranded as \"Nova Dental\" (novadentalchicago.com); 2025 merger with Dr. Margareta Qirko.",
+    "services": ["TMJ specialist care", "minimally invasive/preventive dentistry", "family dentistry", "general dentistry"],
+    "provider_notes": "Dr. Barbara Truszkowski, DDS -- practicing 40+ years, dental degrees including University of Illinois College of Dentistry; recently added Dr. Margareta Qirko as co-practitioner (2025).",
+    "sources": [
+     "https://www.yelp.com/biz/barbara-truszkowski-dds-chicago",
+     "https://findadentist.ada.org/dentists/dr-barbara-truszkowski-chicago-0038V00002yk4wOQAQ-a1C8V00000lZ4LNUA0"
+    ]
+   }
+  },
+  {
+   "location_id": "7f20eb7eeac9dae7",
+   "practice_name": "Raoof Dental",
+   "zip": "60630",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "The NPI-registered address (5539 N Monitor Ave) for Dr. Shohreh Raoof is confirmed in directories, but independent web search shows her currently, actively practicing at two OTHER named studios -- The Chicago Dental Studio and Lakeview Smiles -- with no standalone 'Raoof Dental' website or confirmation this Monitor Ave address is still an operating clinic. Cannot confirm current active/ownership status at THIS address with confidence, so leaving undetermined rather than assuming independent operation or closure.",
+   "searched": [
+    "Raoof Dental Chicago Monitor Ave",
+    "\"Shohreh Raoof\" \"5539\" OR \"Monitor Ave\" Chicago dental office current"
+   ]
+  },
+  {
+   "location_id": "173a37daf787f2c3",
+   "practice_name": "AZAL DENTAL CONSULTING INC.",
+   "zip": "60630",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://vistadentalchicago.com/",
+    "https://vistadentalchicago.com/dr-shahvar-hussain-dmd/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:vista_dental",
+   "reasoning": "Vista Dental's own website (vistadentalchicago.com) explicitly lists two locations -- Chicago (4641 W Foster Ave, this address) and Skokie (3602 W Touhy Ave) -- under Dr. Shahvar Hussain, DMD as Dental Director/leader of the practice's team of five dentists. Directly meets T3 criteria: dentist-owned, own site lists multiple offices.",
+   "searched": [
+    "\"Azal Dental\" Hussain Chicago Foster Ave Skokie"
+   ],
+   "intel": {
+    "website_url": "https://vistadentalchicago.com/",
+    "website_note": "Modern multi-location practice site with dedicated bio pages per dentist.",
+    "provider_notes": "Dr. Shahvar Hussain, DMD -- Midwestern University College of Dental Medicine grad, Dental Director; speaks English, Spanish, Hindi, Urdu.",
+    "distinguishing_notes": "Two-location group (Chicago-Foster Ave + Skokie-Touhy Ave) under one dentist-led brand, team of five dentists.",
+    "sources": [
+     "https://vistadentalchicago.com/",
+     "https://vistadentalchicago.com/dr-shahvar-hussain-dmd/"
+    ]
+   }
+  },
+  {
+   "location_id": "f84c9949d78fa8f2",
+   "practice_name": "Shah Dental",
+   "zip": "60630",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "NPI 1790462760 confirms Dr. Suhrud Jitendra Shah, DMD registered at 5249 N Mobile Ave, and a Zocdoc listing describes him as 'a dentist at Dentologie' (a dentist-founded, VC-backed 7+ studio Chicago/Seattle group). However, Dentologie's public location list (South Loop, Streeterville, Bucktown, West Loop, Clark & Diversey, Gold Coast, River North) does not include a Jefferson Park/Norwood Park-area studio matching this address, so it is unclear whether this specific address is still an active independent office, a stale registration, or unrelated to his current Dentologie affiliation. Leaving undetermined rather than guessing which.",
+   "searched": [
+    "\"Shah Dental\" Chicago Mobile Ave 60630",
+    "Shah dentist \"Mobile Ave\" Chicago 60630 NPI 1790462760",
+    "Dentologie Chicago locations owner"
+   ],
+   "intel": {
+    "distinguishing_notes": "Provider (Dr. Suhrud Shah, DMD) is described in his Zocdoc profile as affiliated with Dentologie, a Chicago-founded, dentist-owned, VC-backed (~$60M raised incl. Beringea) multi-studio dental group with 7+ Chicago locations plus Seattle -- relevant if this location currently trades under a different banner.",
+    "sources": [
+     "https://www.zocdoc.com/dentist/suhrud-shah-dmd-533294",
+     "https://www.beringea.com/news/investments/beringea-u-s-invests-in-chicago-based-dentologie-as-part-of-a-usd25-million-series-b-funding-round"
+    ]
+   }
+  },
+  {
+   "location_id": "b57ad8a6a5af150b",
+   "practice_name": "Dvoracek Dental",
+   "zip": "60631",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.doctor.com/Jerry-Dvoracek"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "doctor.com confirms Jerry Dvoracek, DDS practices general/primary dental care at 6169 N Northwest Hwy, matching this location exactly. No search results indicate any corporate parent, brand, or DSO; a small (3-provider) group bearing his name, presumed dentist-owned single-location group (T2) at medium confidence given modest source depth.",
+   "searched": [
+    "Dvoracek Dental Chicago Northwest Hwy 60631"
+   ]
+  },
+  {
+   "location_id": "5a195c1eb06b40b4",
+   "practice_name": "SMILE ILLINOIS LLC",
+   "zip": "60631",
+   "assigned_tier": "undetermined",
+   "pe_backed": true,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://link.sd54.org/news/smile-illinois-mobile-dentist/",
+    "https://mobiledentists.com/about-us/a-message-from-our-founders/",
+    "https://smileamericapartners.com/about/"
+   ],
+   "evidence_artifacts": [
+    "national_network_19_states_500k_children_per_year"
+   ],
+   "confidence": "high",
+   "status": "undetermined",
+   "network_id": "brand:smile_america_partners",
+   "reasoning": "Strong documentary trail: ctx AO Margo Woll is confirmed (mobiledentists.com) as co-founder of 'Smile Programs...the mobile dentists,' whose Illinois branch operates as 'Smile Illinois Mobile Dentist' visiting schools (confirmed via a school-district news post, link.sd54.org). That founding brand is now organized under Smile America Partners, a national mobile-dentistry DSO (19 states, 500k+ children/yr) acquired by Morgan Stanley Capital Partners in 2023 (PE-backed). This is a clear branded/PE-backed network, but it spans far more than 10 locations nationally (and multiple within Illinois) -- per protocol this is R4_protected_network:Smile America Partners (Mobile Dentists/Smile Illinois), deferred to one-network-one-decision review rather than unilaterally flipped here despite strong evidence for T5.",
+   "searched": [
+    "\"Smile Illinois\" dental DSO OR \"dental partners\" OR acquisition Chicago",
+    "\"Margo Woll\" dental OR dentist OR \"practice manager\"",
+    "\"Smile Illinois\" \"Mobile Dentists\" OR \"Smile Programs\" school dental Illinois",
+    "\"Smile Programs\" mobile dentists private equity investor OR acquired OR \"portfolio company\"",
+    "\"Smile America Partners\" \"Mobile Dentists\" Woll same company"
+   ]
+  },
+  {
+   "location_id": "8c957ece2c079f8a",
+   "practice_name": "RUSSELL J. CECALA, D.D.S., M.S., LTD DBA PERIOCARE",
+   "zip": "60631",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.periocare.com/our-practice/meet-the-doctor/",
+    "https://www.periocare.com/our-practice/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The practice's own website (periocare.com) confirms Dr. Russell J. Cecala, DDS, MS founded/has run this periodontics and dental implant surgery practice at 7447 W Talcott Ave since 1997; he is a past president of the Illinois Society of Periodontists and the Chicago Dental Society Northwest Side Branch. Single location, multi-provider group, dentist-owned with no corporate/DSO signal -- clean T2.",
+   "searched": [
+    "\"Russell Cecala\" Periocare periodontist Chicago Talcott Ave"
+   ],
+   "intel": {
+    "website_url": "https://www.periocare.com/our-practice/meet-the-doctor/",
+    "website_note": "Established, content-rich own-domain specialist practice site.",
+    "services": ["periodontics", "dental implant surgery", "bone grafting/regeneration therapy"],
+    "provider_notes": "Dr. Russell J. Cecala, DDS, MS -- U.S. Army veteran (Desert Storm), MS Oral Biology + periodontology certificate from University of Iowa; with the practice since 1997; past president, Illinois Society of Periodontists and Chicago Dental Society Northwest Side Branch.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Specialist periodontics practice, founded 1997, multi-provider single-location group.",
+    "sources": [
+     "https://www.periocare.com/our-practice/meet-the-doctor/",
+     "https://www.periocare.com/our-practice/"
+    ]
+   }
+  },
+  {
+   "location_id": "5341bee3458afb6d",
+   "practice_name": "Camp Dental",
+   "zip": "60631",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-lloyd-camp-35lhf",
+    "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60631/invite-lloyd-camp-dds-10931"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directory listings (Healthgrades, Doctors Network) consistently show Dr. Lloyd Camp, DDS as the general dentist at 8725 W Higgins Rd Ste 485; no corporate parent, brand, or DSO signal found. Solo-name practice, single address -- consistent with owner-operator.",
+   "searched": [
+    "Camp Dental Chicago Higgins Rd 60631"
+   ]
+  },
+  {
+   "location_id": "9c108d65e2f04fa8",
+   "practice_name": "Dentistry",
+   "zip": "60631",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "http://www.cmdentalcenter.com/dr_mlynski.html",
+    "https://www.yelp.com/biz/mark-mlynski-dds-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Mark Mlynski, DDS's own practice page (cmdentalcenter.com) confirms he practices at 6063 N Northwest Hwy as 'CM Dental Center' / Norwood Park Dental Office; no corporate parent or DSO branding found. Solo dentist, single location.",
+   "searched": [
+    "\"Dentistry\" \"6063 N Northwest Hwy\" Chicago Mlynski Kusz"
+   ],
+   "intel": {
+    "website_url": "http://www.cmdentalcenter.com/dr_mlynski.html",
+    "distinguishing_notes": "Extended office hours (Mon-Fri 8am-8pm, Sat 9am-2pm).",
+    "sources": [
+     "http://www.cmdentalcenter.com/dr_mlynski.html",
+     "https://www.yelp.com/biz/mark-mlynski-dds-chicago"
+    ]
+   }
+  },
+  {
+   "location_id": "71531dc82faf156c",
+   "practice_name": "VICTOR J. GRANDINETTI, DDS, PC",
+   "zip": "60631",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/grandinetti-samuel-dds-samuel-grandinetti-and-associates-chicago"
+   ],
+   "evidence_artifacts": [
+    "family_succession: legal PC name is Victor J. Grandinetti; currently practicing/branded as Samuel Grandinetti & Associates at the same address -- apparent intra-family transition, not corporate"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "7215 W Touhy Ave is confirmed as 'Grandinetti Samuel, DDS -- Samuel Grandinetti & Associates' on Yelp, while the legal NPI/PC name on record is Victor J. Grandinetti, DDS, PC with AO Tina Grandinetti -- consistent with a family-run practice transitioning between generations of the same family, not a corporate acquisition. No DSO/PE signal found anywhere.",
+   "searched": [
+    "Victor Grandinetti dentist Chicago Touhy Ave"
+   ]
+  },
+  {
+   "location_id": "0776fc56ef8a8a64",
+   "practice_name": "KACZYNSKI DDS, P.C.",
+   "zip": "60631",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.drkusz.com/"
+   ],
+   "evidence_artifacts": [
+    "legacy_PC_name: NPI entity is 'Kaczynski DDS PC' but the current operating site/brand at the same address is 'Dr. Kusz Dental Center' with no mention of Kaczynski -- likely a dentist succession keeping the old legal PC name"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "drkusz.com (fetched directly) confirms the practice at 6075 N Northwest Hwy is 'Dr. Kusz Dental Center' with no DSO/corporate affiliation mentioned. The registered NPI legal entity name (Kaczynski DDS PC) differs from the current operating dentist (Kusz), consistent with an independent dentist succession rather than a corporate acquisition -- no franchise, brand, or parent-company language found.",
+   "searched": [
+    "Kaczynski dentist Chicago Northwest Hwy 60631",
+    "\"Thomas Kaczynski\" DDS Chicago dentist retired"
+   ]
+  }
+ ]
+}

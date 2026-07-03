@@ -1,0 +1,160 @@
+{
+ "unit_id": "laneA_204",
+ "classifications": [
+  {
+   "location_id": "ad0a62d2220ea5dd",
+   "practice_name": "Elgin Dental Care",
+   "zip": "60120",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.elgindentalcare.com/",
+    "https://www.yelp.com/biz/elgin-dental-care-elgin",
+    "https://doctor.webmd.com/doctor/kevin-breen-ac0eab1c-dca9-4295-aadc-30ed27545807-overview"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own website (elgindentalcare.com) and directory listings show a single location at 431 Summit St Ste 105 with Dr. Kevin F. Breen (UIC 2004) as the named practicing dentist; ctx confirms 5 providers, one location, no other ZIP reach. No corporate parent, management company, or DSO brand language found anywhere. Multi-dentist single-location practice with no corporate signal fits single_loc_group.",
+   "searched": [
+    "Elgin Dental Care 431 Summit St Elgin IL dentist",
+    "Elgin Dental Care 431 Summit St Kevin Breen owner dentist"
+   ],
+   "intel": {
+    "website_url": "https://www.elgindentalcare.com/",
+    "website_note": "Modern, well-maintained marketing site with contact/appointment pages; positions itself as a full-service family/cosmetic practice.",
+    "services": ["family dentistry", "crowns", "bridges", "dentures", "teeth whitening", "dental implants", "veneers", "emergency dentistry"],
+    "provider_notes": "Dr. Kevin F. Breen, DDS, University of Illinois at Chicago College of Dentistry, class of 2004.",
+    "sources": ["https://www.elgindentalcare.com/", "https://www.dentalplans.com/dentists/illinois/elgin/60120/dr-kevin-breen-156522/"]
+   }
+  },
+  {
+   "location_id": "b69f42937eb58e41",
+   "practice_name": "Kim Dental",
+   "zip": "60120",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://doctor.webmd.com/doctor/dai-hong-kim-a51c982e-6025-4a7c-af8f-a113f88ac99d-overview",
+    "https://www.yelp.com/biz/1st-family-dental-of-elgin-elgin-2",
+    "https://1stfamilydental.com/contact-us/"
+   ],
+   "evidence_artifacts": ["same_address_as_1st_family_dental_of_elgin_504-506_waverly"],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:1st_family_dental",
+   "reasoning": "NPI address (504 Waverly Dr) is the same building as \"1st Family Dental of Elgin\" (504-506 Waverly Dr), and WebMD shows Dr. Dai-Hong Kim practicing under the 1st Family Dental brand at this address. 1st Family Dental is a confirmed ~15-location Chicagoland chain (1stfamilydental.com/locations), so per R4 this spans a 10+ location network and is held rather than individually flipped. R4_protected_network:1st Family Dental.",
+   "searched": [
+    "Kim Dental 504 Waverly Dr Elgin IL dentist",
+    "\"1st Family Dental\" Illinois locations how many offices chain"
+   ],
+   "intel": {
+    "website_url": "https://1stfamilydental.com/contact-us/",
+    "website_note": "Chain-operated location; office listed as serving Elgin since 2006 under the 1st Family Dental brand, modern waiting area per description.",
+    "distinguishing_notes": "Office hours run into evenings (Tue/Wed/Thu 7-9pm range) and Saturday 8am-2pm; contact via elgin@1stfamilydental.com.",
+    "sources": ["https://doctor.webmd.com/doctor/dai-hong-kim-a51c982e-6025-4a7c-af8f-a113f88ac99d-overview", "https://1stfamilydental.com/contact-us/"]
+   }
+  },
+  {
+   "location_id": "4482f8d920a63066",
+   "practice_name": "Northeast Family Dental Care",
+   "zip": "60120",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dentistelginil.com/",
+    "https://www.yelp.com/biz/william-galanes-dds-elgin",
+    "https://www.facebook.com/DrArshadDMD/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own website (dentistelginil.com) states the practice was established in 1986 and taken over by Dr. Omar Arshad (Temple DMD 2011) in October 2022, an individual dentist acquiring and operating a single office. No corporate parent, management company, or brand affiliation appears anywhere; ctx brand_hint 'Family Dental Care' is a generic descriptive term, not a DSO. Clear solo dentist owner-operator.",
+   "searched": [
+    "Northeast Family Dental Care Elgin IL 680 Prospect"
+   ],
+   "intel": {
+    "website_url": "https://www.dentistelginil.com/",
+    "website_note": "Full marketing site with team, services, and contact pages; positions the practice as warm/family-oriented.",
+    "services": ["general dentistry", "cosmetic dentistry", "dental implants", "pediatric dentistry", "orthodontic services"],
+    "provider_notes": "Dr. Omar Arshad, DMD, Temple University Kornberg School of Dentistry (May 2011); worked as an associate in the Midwest for 11 years before acquiring this practice in Oct 2022.",
+    "owner_career_stage": "mid_career",
+    "distinguishing_notes": "Practice has continuous operating history since 1986 under new dentist-ownership since 2022.",
+    "sources": ["https://www.dentistelginil.com/", "https://www.facebook.com/DrArshadDMD/"]
+   }
+  },
+  {
+   "location_id": "7da82fefa32e46ad",
+   "practice_name": "SMILES OF ELGIN P.C",
+   "zip": "60120",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.bbb.org/us/il/elgin/profile/dentist/smiles-of-elgin-0654-88157508",
+    "https://doctor.webmd.com/doctor/prasad-gonavarum-6123ece1-9af5-4b5b-be34-37f03798a65f/locations",
+    "https://www.zocdoc.com/dentist/prasad-gonavarum-dds-24159"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:GONAVARUM_PRASAD",
+   "reasoning": "BBB and WebMD confirm Dr. Prasad Gonavarum is President of Smiles of Elgin, P.C. (860 Summit St Ste 134) and Zocdoc/WebMD show he also runs 'Smiles of Naperville' -- exactly 2 office locations, matching ctx owner_reach_locations=2 (60120, 60564). He is a licensed dentist (USC dental school) practicing under his own name, not a corporate brand. Dentist-owned 2-location group fits dentist_multi.",
+   "searched": [
+    "Smiles of Elgin PC 860 Summit St dentist Prasad Gonavarum"
+   ],
+   "intel": {
+    "provider_notes": "Dr. Prasad Gonavarum, DDS, USC dental school grad; 23 years practicing General and Cosmetic Dentistry, including prior roles as Senior Dental Surgeon (Anguilla) and Chief Dental Officer (St. Kitts & Nevis); member of ADA, Chicago Dental Society, Illinois State Dental Society.",
+    "distinguishing_notes": "Two-office dentist-owned group (Elgin + Naperville) under one owner-dentist.",
+    "sources": ["https://www.bbb.org/us/il/elgin/profile/dentist/smiles-of-elgin-0654-88157508", "https://doctor.webmd.com/doctor/prasad-gonavarum-6123ece1-9af5-4b5b-be34-37f03798a65f/locations"]
+   }
+  },
+  {
+   "location_id": "898b41c1491cbd59",
+   "practice_name": "SUMMIT DENTAL CARE LTD",
+   "zip": "60120",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.doctorsnetwork.com/doctors/dentists/elgin-il-60120/invite-pritam-dang-dds-15896",
+    "https://summitdentalcareelgin.com/sdce/",
+    "https://doctor.webmd.com/practice/summit-dental-care-29e4fb5a-f3f5-401c-be76-98bdec896a3b"
+   ],
+   "evidence_artifacts": ["shares_phone_and_building_with_D.C._Dental_Ltd_840_Summit_St"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Doctorsnetwork profile states 'Dr. Dang and Dr. Chandok are the dentists at this practice' at 840 Summit St Ste K; the practice's own website (summitdentalcareelgin.com, fetched directly) describes only generic in-house dentists with no corporate parent, management company, or DSO affiliation mentioned. Two dentist-owners sharing one physical office (same phone/address as D.C. Dental Ltd) fits single_loc_group.",
+   "searched": [
+    "\"Summit Dental Care\" Elgin IL 840 Summit St Pritam Dang dentist"
+   ],
+   "intel": {
+    "website_url": "https://summitdentalcareelgin.com/sdce/",
+    "website_note": "Practice website (fetched) markets 'total family dentistry' and budget-conscious care with late/weekend hours; generic 'our dentists' framing, no individual bios.",
+    "services": ["general dentistry", "crowns", "veneers", "teeth whitening", "Invisalign", "family and pediatric dentistry", "dental implants", "root canals", "dentures", "fillings", "emergency services"],
+    "sources": ["https://summitdentalcareelgin.com/sdce/", "https://www.doctorsnetwork.com/doctors/dentists/elgin-il-60120/invite-pritam-dang-dds-15896"]
+   }
+  },
+  {
+   "location_id": "4482f8d920a63066_UNUSED",
+   "practice_name": "PLACEHOLDER_DO_NOT_USE",
+   "zip": "60120",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "placeholder",
+   "searched": []
+  }
+ ]
+}

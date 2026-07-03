@@ -1,0 +1,407 @@
+{
+ "unit_id": "laneA_058",
+ "classifications": [
+  {
+   "location_id": "6d6c1be5d0e03f93",
+   "practice_name": "Nelson Dental",
+   "zip": "60067",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-carleton-nelson-yqw45",
+    "https://www.vitadox.com/doctor/palatine-il-60067/carleton-a-nelson-jr-dds/7G6qBU8xuz7tyvkNSjYXQE"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched the practice name and address; multiple independent directories (Healthgrades, Vitadox, Doctors Network) confirm Dr. Carleton A. Nelson Jr., DDS practices solo at 37 N Greeley St with the phone number matching exactly. No corporate parent, brand, or second location found, so classified as a solo owner-operator practice.",
+   "searched": [
+    "Nelson Dental Palatine IL 37 N Greeley dentist"
+   ]
+  },
+  {
+   "location_id": "f3e70bedb5e89c61",
+   "practice_name": "Vigne Dental",
+   "zip": "60067",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.bbb.org/us/il/palatine/profile/dentist/palatine-choice-dental-center-0654-12147",
+    "https://www.palatinedentistrel.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "BBB lists Dr. Raymond E. La Vigne as the named Owner of Palatine Choice Dental Center at this exact address (637 N 1st Bank Dr), and the practice's own website confirms he opened it in 1983 after graduating Northwestern Dental School. BBB's '2 addresses' are just formatting variants of the same street address, not a second location. No DSO or corporate signal found.",
+   "searched": [
+    "Vigne Dental Palatine IL dentist 637 1st Bank Dr"
+   ],
+   "intel": {
+    "website_url": "https://www.palatinedentistrel.com/",
+    "website_note": "Established, content-rich single-practice site (Raymond E. LaVigne, D.D.S.) with detailed office hours and history; standard practice-marketing design, not obviously modern/rebuilt recently.",
+    "services": ["Invisalign", "braces/retainers", "bridges/dentures", "root canals", "veneers", "teeth whitening", "crowns"],
+    "provider_notes": "Dr. Raymond E. La Vigne, DDS, graduated Northwestern University Dental School 1977, opened this practice in 1983.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Alternating Monday/Saturday hours; operating continuously at this location since 1983 (43 years).",
+    "sources": ["https://www.palatinedentistrel.com/", "https://www.bbb.org/us/il/palatine/profile/dentist/palatine-choice-dental-center-0654-12147"]
+   }
+  },
+  {
+   "location_id": "aa398bf3a67c5229",
+   "practice_name": "DR PAUL RUSSELL A NICOTRA DDS LTD",
+   "zip": "60067",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-paul-nicotra-xdx3g",
+    "https://dentalcenter.com/paul-nicotra/palatine/illinois/60067"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple directories confirm Dr. Paul Nicotra Sr, DDS practices at 135 W Johnson St, matching this address; the LTD entity is named directly for him and the NPPES record shows 3 providers at one address, consistent with a single-location dentist-owned group practice. No corporate parent or brand found.",
+   "searched": [
+    "Paul Nicotra DDS Palatine IL dentist"
+   ]
+  },
+  {
+   "location_id": "b3192c5a7c263cb2",
+   "practice_name": "ANGERAME DENTAL ASSOCIATES, PLLC",
+   "zip": "60067",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://angeramedental.com/",
+    "https://angeramedental.com/member/dr-thomas-angerame/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice has its own dedicated website (angeramedental.com) naming Dr. Thomas Angerame as the practicing dentist at this single address, serving the area since 1953 with no mention of a corporate parent, management company, or second location. NPPES shows 3 providers under one PLLC, consistent with a dentist-owned single-location group.",
+   "searched": [
+    "Angerame Dental Associates Palatine IL"
+   ]
+  },
+  {
+   "location_id": "aed5721544edc5ed",
+   "practice_name": "Chen Emily DDS",
+   "zip": "60067",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.palatinefamilydentist.com/",
+    "https://www.palatinefamilydentist.com/our-office/",
+    "https://www.yelp.com/biz/nancy-a-bagel-dds-palatine"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The address (632 N 1st Bank Dr) and phone number ((847) 934-1177) match exactly to Nancy A. Bagel, D.D.S., PC, an independent solo/family practice established since her 1988 graduation -- no 'Emily Chen' or 'Choice Dental Group' presence was found on the web at this address; the census ctx's affiliated_dso label appears to be a stale/mismatched NPPES name/brand tag, likely confused with the nearby but distinct 'Palatine Choice Dental Center' five doors down. Classified per actual web-verified occupant as true independent, not a DSO.",
+   "searched": [
+    "\"Choice Dental Group\" Emily Chen Palatine IL dentist",
+    "\"Emily Chen\" DDS Palatine IL \"632\" OR \"1st Bank\" dentist",
+    "\"Nancy A. Bagel\" DDS Palatine IL 632 1st Bank Dr dentist"
+   ],
+   "intel": {
+    "website_url": "https://www.palatinefamilydentist.com/",
+    "website_note": "Practice's own site, family-dentistry oriented, describes doctor background and service area.",
+    "services": ["cosmetic dentistry", "orthodontics", "implants", "Invisalign", "family dentistry"],
+    "provider_notes": "Dr. Nancy A. Bagel, DDS, earned Doctorate of Dental Science from University of Illinois in 1988; Invisalign certified.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Serves Palatine, Barrington, Deer Park, Rolling Meadows, and Lake Zurich per own site.",
+    "sources": ["https://www.palatinefamilydentist.com/", "https://www.palatinefamilydentist.com/our-office/"]
+   }
+  },
+  {
+   "location_id": "d37009fe92b97289",
+   "practice_name": "Ohnesorg Dental",
+   "zip": "60067",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.vitals.com/doctors/cecelia-ohnesorg-s1ndyl",
+    "https://www.bbb.org/us/il/palatine/profile/dentist/froggatt-ohnesorg-drs-0654-13148"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Cecelia L. Ohnesorg, DDS is confirmed practicing at 4880 Euclid Ave (Ste 105) via multiple current directory listings (Vitals, WebMD, CareCredit), and a BBB profile for 'Froggatt & Ohnesorg-Drs.' at this practice is consistent with the 2-provider small_group classification -- a dentist-owned, single-location two-dentist office. One stale Yelp tag reads 'CLOSED' but is outweighed by several other sources showing the practice as currently operating, so this was not treated as closure_suspect.",
+   "searched": [
+    "Ohnesorg Dental Palatine IL 4880 Euclid Ave",
+    "\"Ohnesorg\" DDS Palatine IL closed retired dental practice"
+   ],
+   "intel": {
+    "website_url": null,
+    "website_note": "No dedicated practice website found; presence limited to aggregator/directory listings.",
+    "provider_notes": "Dr. Cecelia L. Ohnesorg, DDS, University of Illinois dental degree, certified Invisalign specialist, ADA/ISDA/Chicago Dental Society member.",
+    "sources": ["https://www.carecredit.com/doctor-locator/palatine-il/dr-cecelia-l-ohnesorg-563btv/"]
+   }
+  },
+  {
+   "location_id": "d42f446eff52b63f",
+   "practice_name": "PALATINE NEW AGE DENTAL",
+   "zip": "60067",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/palatine-new-age-dental-palatine"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "closure_suspect: Yelp explicitly marks this practice 'CLOSED' (updated May 2026) at 2201 Plum Grove Rd, and no current/active web presence for the practice or 'Krikor Papaian' at this address could be found; only a possibly-unrelated dentist name (Sean Martin) surfaced in an old dental-discounts directory. Per protocol, a suspected-closed location is left undetermined rather than classified.",
+   "searched": [
+    "Palatine New Age Dental Krikor Papaian 2201 Plum Grove Rd",
+    "\"Palatine New Age Dental\" closed OR \"no longer\" Sean Martin dentist"
+   ]
+  },
+  {
+   "location_id": "4889221d3c0fecf4",
+   "practice_name": "John Thomas Lynch DDS",
+   "zip": "60067",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.vitals.com/dentists/Dr_John_T_Lynch",
+    "https://www.dnb.com/business-directory/company-profiles.lynch_john_t_dds.8cde33588d832f3e5bb460c8deeee5d0.html"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple directories (Vitals, D&B, WebMD) confirm Dr. John Thomas Lynch, DDS practicing at 600 N Court St Ste 260 with the phone number matching exactly, and D&B lists it as a standalone company profile with no parent organization. No brand, DSO, or second location was found, consistent with solo ownership.",
+   "searched": [
+    "John Thomas Lynch DDS Palatine IL 600 N Court St dentist",
+    "\"John T. Lynch\" DDS dentist address Palatine IL office"
+   ]
+  },
+  {
+   "location_id": "7009a65a0612fef5",
+   "practice_name": "Callea Dental",
+   "zip": "60067",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "http://www.drcalleadental.com/",
+    "https://www.healthgrades.com/dentist/dr-charles-callea-xb6dp"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The practice's own website (drcalleadental.com) and multiple directories confirm Dr. Charles Callea, DDS, operating solo at 502 N Plum Grove Rd Ste C with the phone matching exactly. No corporate parent, brand, or additional location found.",
+   "searched": [
+    "Callea Dental Palatine IL 502 N Plum Grove Rd dentist"
+   ],
+   "intel": {
+    "website_url": "http://www.drcalleadental.com/",
+    "website_note": "Dedicated single-practice marketing site under the dentist's own name.",
+    "distinguishing_notes": "Healthgrades shows a 5-star average across 23 patient ratings, praising quality of care and professionalism.",
+    "sources": ["http://www.drcalleadental.com/", "https://www.healthgrades.com/dentist/dr-charles-callea-xb6dp"]
+   }
+  },
+  {
+   "location_id": "d43f27567c03bcbc",
+   "practice_name": "Chammae, Wajih",
+   "zip": "60067",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.regencydentalcare.com/",
+    "https://www.yelp.com/biz/regency-dental-care-liana-tremmel-dds-palatine-3"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The address (1332 W Northwest Hwy), phone ((847) 776-8700), and founding year (2000) all match exactly to Regency Dental Care, a two-dentist practice (Dr. Liana Tremmel and Dr. Angelika Golemo) at this single location -- NOT Dr. Wajih Chammae, whose own practice is confirmed at a different address (381 W NW Hwy, see separate location). The NPI record's 'Chammae, Wajih' name appears to be a stale/mismatched NPPES tag; classified per the actual current occupant as a dentist-owned single-location group.",
+   "searched": [
+    "Wajih Chammae DDS Palatine IL dentist 1332 NW Hwy",
+    "\"Regency Dental Care\" Palatine IL 1332 Northwest Hwy dentist owner"
+   ],
+   "intel": {
+    "website_url": "https://www.regencydentalcare.com/",
+    "website_note": "Modern practice site with active marketing (Yahoo Finance PR piece on reaching 100 Google reviews).",
+    "provider_notes": "Dr. Liana Tremmel, DDS, completed dental school 2005 plus a 2-year residency at University of Colorado Denver; also Dr. Angelika Golemo, DDS.",
+    "owner_career_stage": "mid_career",
+    "services": ["cosmetic dentistry", "implants", "extractions", "veneers", "crowns", "bridges", "whitening"],
+    "sources": ["https://www.regencydentalcare.com/", "https://finance.yahoo.com/news/dentist-palatine-il-attains-100-024700227.html"]
+   }
+  },
+  {
+   "location_id": "feb60bbfc71c47e7",
+   "practice_name": "Hoffner Dental",
+   "zip": "60067",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.linkedin.com/in/slaton-hoffner/",
+    "https://www.asda.org/members_directory/slaton-hoffner/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Slaton Hoffner, DDS is confirmed as a board-certified dental anesthesiologist listing 356 W Wood St, Palatine as a practice address (phone matches), per Doctors Network/ASDA/LinkedIn. He appears to be a solo dental-anesthesia provider who also has listings in Wisconsin (Kenosha/Milwaukee) rather than part of any DSO or corporate chain; no branding or parent entity was found, so classified as independent, though the multi-state anesthesia-service model is unusual and confidence is not high.",
+   "searched": [
+    "Hoffner Dental Palatine IL 356 W Wood St dentist",
+    "\"Hoffner\" dentist Palatine IL 356 Wood St elite dentistry",
+    "\"Slaton Hoffner\" dentist Illinois DDS current practice"
+   ]
+  },
+  {
+   "location_id": "48d29355122e1dd6",
+   "practice_name": "Chammae Dental",
+   "zip": "60067",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.familydentalofpalatine.com/about-us/meet-dr-chammae/",
+    "https://www.aviddental.net/about-us/dr-wajih-chammae/"
+   ],
+   "evidence_artifacts": ["owns_2nd_location:Avid Dental, Mount Prospect IL"],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:CHAMMAE_WAJIH",
+   "reasoning": "Dr. Wajih Chammae's own practice websites confirm he is 'the proud owner and lead provider' at both Family Dental of Palatine (this address, 381 W NW Hwy) and Avid Dental in Mount Prospect, IL -- two locations under his personal ownership, a licensed dentist, not a corporate entity. This matches the dentist_multi tier rather than true_independent.",
+   "searched": [
+    "Wajih Chammae DDS Palatine IL dentist 1332 NW Hwy",
+    "Avid Dental Mount Prospect Wajih Chammae owner"
+   ],
+   "intel": {
+    "website_url": "https://www.familydentalofpalatine.com/",
+    "website_note": "Modern dedicated practice site with doctor bio, active Zocdoc booking listing.",
+    "services": ["dental implants", "All-on-4 full-arch", "Invisalign"],
+    "provider_notes": "Dr. Wajih Chammae, DDS, NYU College of Dentistry 2014 grad, residency at Jamaica Hospital NY, implant training 2017.",
+    "owner_career_stage": "mid_career",
+    "distinguishing_notes": "91 reviews at 4.79/5 average per Zocdoc; owns a second office (Avid Dental) in Mount Prospect.",
+    "sources": ["https://www.familydentalofpalatine.com/about-us/meet-dr-chammae/", "https://www.aviddental.net/about-us/dr-wajih-chammae/"]
+   }
+  },
+  {
+   "location_id": "bb49f2052f464b9a",
+   "practice_name": "SEVA HEALTH PLLC",
+   "zip": "60067",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.sevaoralhealth.com/",
+    "https://www.yelp.com/biz/seva-oral-health-palatine-3"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The practice's own website explicitly states it is 'a boutique, privately owned dental and wellness center,' led by Dr. Satyam Patel and Dr. Shivani Patel -- a dentist-owned, single-location, multi-provider practice established 2025. No corporate parent or brand found.",
+   "searched": [
+    "SEVA Health PLLC Palatine IL dentist 790 NW Hwy"
+   ],
+   "intel": {
+    "website_url": "https://www.sevaoralhealth.com/",
+    "website_note": "New (2025), modern boutique wellness-branded dental site with online presence across Instagram/Facebook.",
+    "services": ["dental implants", "sleep apnea treatment", "veneers", "crowns", "oral surgery", "Invisalign", "restorative dentistry", "periodontal treatment", "sedation dentistry", "orthodontics", "dentures", "teeth whitening", "cosmetic dentistry"],
+    "provider_notes": "Dr. Satyam Patel and Dr. Shivani Patel lead the practice; biomimetic/wellness-focused positioning.",
+    "distinguishing_notes": "Self-described as 'boutique, privately owned,' opened 2025.",
+    "sources": ["https://www.sevaoralhealth.com/", "https://www.yelp.com/biz/seva-oral-health-palatine-3"]
+   }
+  },
+  {
+   "location_id": "b6a94ee5a4fbd9fc",
+   "practice_name": "DMITRY D. SOKOL, D.D.S., L.T.D.",
+   "zip": "60069",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://villagegreendentistry.com/about/",
+    "https://www.imagendentalpartners.com/location/illinois/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "undetermined",
+   "network_id": "brand:imagen_dental_partners",
+   "reasoning": "R4_protected_network:Imagen Dental Partners. This NPI/EIN is Dr. Dmitry Sokol's practice, Village Green Dentistry, whose own 'about' page states it is 'An Imagen Partner Practice' (copyright Imagen Dental Partners LLC), and Imagen's own Illinois locator page lists Village Green Dentistry among its partners. Becker's Dental Review reports Imagen has grown to 100 total practices nationally (a network spanning far more than 10 locations), so per protocol this is left undetermined for a one-network-one-decision review rather than individually tiered here.",
+   "searched": [
+    "Dmitry Sokol DDS Lincolnshire IL 185 Milwaukee Ave dentist",
+    "Imagen Dental Partners DSO private equity Chicago Illinois"
+   ]
+  },
+  {
+   "location_id": "05b991e55884d858",
+   "practice_name": "Sokol Dmitry D DDS",
+   "zip": "60069",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://villagegreendentistry.com/about/",
+    "https://www.imagendentalpartners.com/location/illinois/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "undetermined",
+   "network_id": "brand:imagen_dental_partners",
+   "reasoning": "R4_protected_network:Imagen Dental Partners. This is the exact address (300 Village Grn, Ste 150) of Village Green Dentistry, whose own 'about' page confirms it is 'An Imagen Partner Practice' (Imagen Dental Partners LLC), corroborated by Imagen's own Illinois locator page. Imagen reports 100 total practices nationally, exceeding the 10-location protected-network threshold, so this is left undetermined for centralized one-network-one-decision review rather than tiered individually here.",
+   "searched": [
+    "Sokol Dmitry DDS Lincolnshire IL 300 Village Green dentist",
+    "Imagen Dental Partners DSO private equity Chicago Illinois"
+   ],
+   "intel": {
+    "website_url": "https://villagegreendentistry.com/about/",
+    "website_note": "Practice's own site; modern, describes 'Imagen Partner Practice' status directly.",
+    "services": ["general dentistry", "cosmetic dentistry", "implants", "dentures", "clear aligners"],
+    "provider_notes": "Dr. Dmitry Sokol, DDS, University of Illinois College of Dentistry 1996, Northwestern GPR residency 1997, practicing in Lincolnshire since 2001; bilingual Russian/English.",
+    "owner_career_stage": "late_career",
+    "sources": ["https://villagegreendentistry.com/about/", "https://www.imagendentalpartners.com/location/illinois/"]
+   }
+  },
+  {
+   "location_id": "8ad38c1fe65865b3",
+   "practice_name": "O SEMENY DDS LTD",
+   "zip": "60070",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.mydentalgroup.com/about-us.php",
+    "https://reviews.birdeye.com/michael-gelb-dds-oksana-semeny-dds-chicago-dental-group-prospect-heights-165672583293388"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The practice's own website states Dr. Michael Gelb founded and owns this practice ('Chicago Dental Group') as his own solo practice built from the ground up, now joined by Dr. Daniel Chavin and Dr. Oksana Semeny -- explicitly a single-location, dentist-owned group practice with no corporate parent or management company.",
+   "searched": [
+    "O Semeny DDS Ltd Prospect Heights IL 5 E Camp McDonald Rd dentist Oksana Semeny"
+   ],
+   "intel": {
+    "website_url": "https://www.mydentalgroup.com/about-us.php",
+    "website_note": "Own practice site describing founder history and current 3-dentist team.",
+    "provider_notes": "Dr. Oksana Semeny, DDS, University of Illinois at Chicago dental school, 20+ years experience, fluent Russian/English; also Dr. Michael Gelb (founder) and Dr. Daniel Chavin.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Birdeye shows 4.9/5 across 207 reviews for the practice.",
+    "sources": ["https://www.mydentalgroup.com/about-us.php", "https://reviews.birdeye.com/michael-gelb-dds-oksana-semeny-dds-chicago-dental-group-prospect-heights-165672583293388"]
+   }
+  }
+ ]
+}

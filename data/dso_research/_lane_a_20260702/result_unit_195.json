@@ -1,0 +1,421 @@
+{
+ "unit_id": "laneA_195",
+ "classifications": [
+  {
+   "location_id": "0accb735dab57ca0",
+   "practice_name": "Family Dentistry",
+   "zip": "60402",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/kulhanek-and-romanek-dds-berwyn",
+    "https://www.facebook.com/Kulhanek-Romanek-DDS-843401485840520/",
+    "https://www.berwyn.net/list/member/kulhanek-romanek-621"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Phone (708) 749-3222 exactly matches the NPI record and resolves to Kulhanek & Romanek DDS at 6642 Cermak Rd, Berwyn (a two-provider practice, matching the 2-provider count), serving the community 25+ years per Yelp/BBB/Facebook with no corporate parent or DSO brand mentioned. Two same-address dentists, no shared brand -> single-location dentist-owned group.",
+   "searched": [
+    "\"Family Dentistry\" 6642 Cermak Berwyn IL dentist"
+   ]
+  },
+  {
+   "location_id": "fdadc941d3a84cc1",
+   "practice_name": "Balaney Dental",
+   "zip": "60402",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.britedental.org/our-offices",
+    "https://www.britedental.org/brite-dental-berwyn",
+    "https://www.yelp.com/biz/brite-dental-pc-berwyn"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:brite_dental",
+   "reasoning": "Address 6301 W Cermak Rd resolves to Brite Dental Berwyn P.C. (Dr. Samir Balaney), NOT the 'Dental 360' brand suggested by ctx. Brite Dental's own 'Our Offices' page lists 13 locations across Chicago, Berwyn, and Minnesota -- a network spanning 10+ locations. R4_protected_network:Brite Dental -- withholding tier assignment for centralized one-network-one-decision review rather than guessing dentist-owned vs stealth-DSO.",
+   "searched": [
+    "Balaney Dental Berwyn IL Dental 360",
+    "\"Brite Dental\" Balaney Berwyn 6301 Cermak Dental 360"
+   ]
+  },
+  {
+   "location_id": "860ee3dd63c4e10a",
+   "practice_name": "BERWYN DENTAL INC.",
+   "zip": "60402",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npino.com/dental-clinic/1225518921-berwyn-dental-inc./",
+    "https://www.chamberofcommerce.com/business-directory/illinois/berwyn/dentist/2658288-berwyn-dental-group",
+    "https://www.yelp.com/biz/berwyn-dental-group-berwyn-2"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "NPI registry (npino) confirms active status with authorized official Ngoc Bich Nguyen, DDS, President -- a dentist-owner, single location at 6218 Cermak Rd, no other addresses found. One Yelp listing tags it 'CLOSED' while Chamber of Commerce shows posted hours; net evidence favors an operating solo/dentist-owned office rather than confirmed closure, so kept at medium (not low) confidence rather than flagging closure_suspect.",
+   "searched": [
+    "Berwyn Dental Inc 6218 Cermak Rd Berwyn IL Nguyen",
+    "Berwyn Dental Group 6218 Cermak Rd closed OR open Nguyen dentist"
+   ]
+  },
+  {
+   "location_id": "2e57e9401c7bbe1d",
+   "practice_name": "Babka Dental",
+   "zip": "60402",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-marsha-babka-y9q4dfz",
+    "https://doctor.webmd.com/doctor/marsha-babka-91cf5959-88e0-4b17-96f1-e2ee9c6f565a-overview",
+    "https://npiprofile.com/npi/1043653553"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "NPI holder Dr. Marsha A. Babka, DDS is the individual solo dentist at 2841 Home Ave, Berwyn, corroborated across multiple independent directory profiles (Healthgrades, WebMD, npiprofile) with no other locations, no corporate parent, no DSO brand.",
+   "searched": [
+    "Babka Dental Berwyn IL 2841 Home Ave"
+   ],
+   "intel": {
+    "website_note": "No dedicated practice website found; presence limited to directory aggregator profiles (Healthgrades, WebMD, npiprofile).",
+    "insurance_note": "Accepts Blue Cross Blue Shield; telehealth offered per Healthgrades listing.",
+    "sources": [
+     "https://www.healthgrades.com/dentist/dr-marsha-babka-y9q4dfz",
+     "https://doctor.webmd.com/doctor/marsha-babka-91cf5959-88e0-4b17-96f1-e2ee9c6f565a-overview"
+    ]
+   }
+  },
+  {
+   "location_id": "3e7a3d11d88cb223",
+   "practice_name": "DENTAL 360 BERWYN LLC",
+   "zip": "60402",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://dental360grp.com/locations/dental-360-berwyn/",
+    "https://dental360grp.com/illinois-locations/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:dental_360",
+   "reasoning": "7039 W Roosevelt Rd is confirmed on Dental 360's own official locator page. Their Illinois-locations page lists 17 IL offices (plus more elsewhere) -- well beyond the 10-location protected-network threshold. R4_protected_network:Dental 360 -- withholding tier (would otherwise be branded_dso) pending centralized network review.",
+   "searched": [
+    "Dental 360 Berwyn 7039 Roosevelt Rd locations",
+    "Dental 360 Illinois locations (fetched dental360grp.com/illinois-locations/)"
+   ],
+   "intel": {
+    "website_url": "https://dental360grp.com/locations/dental-360-berwyn/",
+    "website_note": "Modern multi-location DSO brand site with online scheduling; Berwyn office page lists hours and services.",
+    "services": ["family dentistry", "dental implants", "pediatric care", "braces/Invisalign", "oral surgery", "emergency treatment"],
+    "sources": [
+     "https://dental360grp.com/locations/dental-360-berwyn/"
+    ]
+   }
+  },
+  {
+   "location_id": "749bf15d6b8517e5",
+   "practice_name": "Leonard Dental",
+   "zip": "60402",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-patrick-leonard-ybqdf3z",
+    "https://www.healthgrades.com/group-directory/il-illinois/berwyn/patrick-leonard-dds-x5qv4y",
+    "https://www.denteldoc.com/location/?id=54496"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Patrick F. Leonard, DDS (practicing as Harlem Dental LTD) is the individual NPI holder at 2911 Harlem Ave, Berwyn, with 45+ years experience since a 1978 Loyola graduation, single location, no corporate/DSO signal.",
+   "searched": [
+    "Leonard Dental Berwyn IL 2911 Harlem Ave dentist"
+   ],
+   "intel": {
+    "website_note": "Presence via directory aggregators (Healthgrades, WebMD, denTEL) rather than a dedicated modern site; telehealth offered.",
+    "provider_notes": "Dr. Patrick F. Leonard, DDS, graduated Loyola University School of Dentistry 1978; over 45 years in practice.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "5.0 star rating on Healthgrades; long-tenured solo neighborhood practice.",
+    "sources": [
+     "https://www.healthgrades.com/dentist/dr-patrick-leonard-ybqdf3z",
+     "https://doctor.webmd.com/doctor/patrick-leonard-f9ceb915-bb31-445e-ba60-aacc438dd57d-overview/"
+    ]
+   }
+  },
+  {
+   "location_id": "fb24b7752fee2207",
+   "practice_name": "METROPOLITAN DENTAL",
+   "zip": "60402",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.metropolitandental.us/",
+    "https://www.metropolitandental.us/office",
+    "https://www.metropolitandental.us/meet-the-doctors"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Metropolitan Dental, SC's own site names lead dentists Dr. Attila Juhasz, DDS and Dr. Michael Auriemma, DMD as the practice founders, both practicing at the single 7034 W. Cermak Rd. #3 office; the site's 'Office' page shows only this one address with no other locations or corporate/DSO affiliation.",
+   "searched": [
+    "Metropolitan Dental Berwyn IL 7034 Cermak Auriemma"
+   ],
+   "intel": {
+    "website_url": "https://www.metropolitandental.us/",
+    "website_note": "Dedicated modern practice website with team/office pages; business started 1/1/1991.",
+    "services": ["Invisalign/braces (orthodontics)", "general dentistry", "cosmetic dentistry"],
+    "technology": ["CEREC", "I-Cat (CBCT)"],
+    "provider_count_web": 2,
+    "provider_notes": "Dr. Attila Juhasz, DDS and Dr. Michael Auriemma, DMD (Midwestern University, May 2015) co-lead the practice.",
+    "sources": [
+     "https://www.metropolitandental.us/meet-the-doctors",
+     "https://www.metropolitandental.us/office"
+    ]
+   }
+  },
+  {
+   "location_id": "0dae5d536009cdad",
+   "practice_name": "MARIO SERRANO DDS & SARA VAFA DMD P.C.",
+   "zip": "60402",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/morton-family-dental-of-berwyn-berwyn",
+    "https://www.dentistinberwyn.com/mario-serrano-dds/",
+    "https://findadentist.ada.org/dentists/dr-mario-serrano-berwyn-0038V00002yjdHJQAY-a1C8V00000lXKVrUAO"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Operating as 'Morton Family Dental of Berwyn' at 6931 Cermak Rd, jointly named for its two dentist-owners Mario Serrano, DDS (UIC dental school) and Sara Vafa, DMD; single location, no corporate parent or DSO brand found across Yelp/ADA/practice listings.",
+   "searched": [
+    "Mario Serrano Sara Vafa dentist Berwyn IL 6931 Cermak"
+   ],
+   "intel": {
+    "website_url": "https://www.dentistinberwyn.com/mario-serrano-dds/",
+    "website_note": "Practice-branded pages plus a strong Yelp presence (28 photos, 15 reviews).",
+    "services": ["implant dentistry", "orthodontics", "cosmetic dentistry"],
+    "distinguishing_notes": "DBA 'Morton Family Dental of Berwyn'; two-dentist co-ownership model.",
+    "sources": [
+     "https://www.yelp.com/biz/morton-family-dental-of-berwyn-berwyn",
+     "https://www.dentistinberwyn.com/mario-serrano-dds/"
+    ]
+   }
+  },
+  {
+   "location_id": "25230a4041cc0404",
+   "practice_name": "KENNY A ROBLES GONZALEZ DDS PC",
+   "zip": "60402",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.roblesfamilydental.com/",
+    "https://www.roblesfamilydental.com/about-us/meet-dr-robles/",
+    "https://www.zocdoc.com/dentist/kenny-robles-gonzalez-dds-641459"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Kenny Robles Gonzalez, DDS owns and operates Robles Family Dental at 3253 S Harlem Ave under his own name/PC, single location, no corporate or DSO signal on his own branded site.",
+   "searched": [
+    "Kenny Robles Gonzalez DDS PC Berwyn IL 3253 S Harlem Ave"
+   ],
+   "intel": {
+    "website_url": "https://www.roblesfamilydental.com/",
+    "website_note": "Dedicated modern practice site with online booking and a 'Meet Dr. Robles' bio page.",
+    "provider_notes": "Dr. Kenny Alejandro Robles Gonzalez, DDS; graduated Herman Ostrow School of Dentistry, USC, May 2017.",
+    "services": ["bridges", "dental cleaning", "pediatric consultation", "root canal"],
+    "distinguishing_notes": "Bilingual practice (Cuban-born dentist); strong patient review volume across Birdeye/Zocdoc listings.",
+    "sources": [
+     "https://www.roblesfamilydental.com/about-us/meet-dr-robles/",
+     "https://www.zocdoc.com/dentist/kenny-robles-gonzalez-dds-641459"
+    ]
+   }
+  },
+  {
+   "location_id": "cf95fb71d7a12d7c",
+   "practice_name": "Toledo Yoselin DMD",
+   "zip": "60402",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://berwyndentalconnection.com/about/meet-the-team/",
+    "https://berwyndentalconnection.com/",
+    "https://business.berwyn.net/list/member/berwyn-dental-connection-138"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "6735 Stanley Ave is Berwyn Dental Connection, owned/founded by Dr. Olivia A. Lares, DDS (a dentist); Dr. Yoselin Toledo, DMD (UIC grad, bilingual English/Spanish) is a second dentist there, matching the 2-provider small_group signal. Single location, Latinx/woman-owned per local business listing, no DSO/corporate affiliation found.",
+   "searched": [
+    "Toledo Yoselin DMD Berwyn IL 6735 Stanley Ave dentist"
+   ],
+   "intel": {
+    "website_url": "https://berwyndentalconnection.com/",
+    "website_note": "Dedicated practice site with team bios and admin/hygiene staff listed.",
+    "provider_count_web": 2,
+    "provider_notes": "Dr. Olivia A. Lares, DDS (owner/founder); Dr. Yoselin Toledo, DMD, bilingual English/Spanish, UIC grad.",
+    "distinguishing_notes": "Listed as Latinx-owned and woman-owned business by Berwyn Development Corporation.",
+    "sources": [
+     "https://berwyndentalconnection.com/about/meet-the-team/",
+     "https://business.berwyn.net/list/member/berwyn-dental-connection-138"
+    ]
+   }
+  },
+  {
+   "location_id": "4b8e8b42ec2927e1",
+   "practice_name": "Koirala Dental",
+   "zip": "60402",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npino.com/dentist/1245709047-dr.-saraswati-koirala/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Individual NPI holder Dr. Saraswati Koirala, DMD at 1227 S Harlem Ave, single provider, no corporate/DSO name or chain found. Evidence is thin (directory-aggregator only, no dedicated practice website located), so confidence kept at medium.",
+   "searched": [
+    "Koirala Dental Berwyn IL 1227 S Harlem Ave"
+   ]
+  },
+  {
+   "location_id": "49dd7ff7fcfd635b",
+   "practice_name": "WESTWYN DENTAL LLC",
+   "zip": "60402",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "The NPPES-listed address for this entity, 6901 Stanley Ave, Berwyn, resolves via multiple sources (Yelp, Birdeye, practice site) to an unrelated periodontal specialty practice (Walsh Periodontics, Dr. Timothy Walsh, since 1981) -- a name/identity mismatch with 'Westwyn Dental LLC' and AO 'Gary Clemens' that could not be reconciled. The genuine Westwyn Dental LLC practice (Drs. Oh & Schroyer) appears instead to operate from 3218 Kenilworth Ave (see location Sigdel, Muna in this same unit). Insufficient reliable evidence to classify this specific location_id.",
+   "searched": [
+    "\"6901 Stanley\" Berwyn IL dentist"
+   ]
+  },
+  {
+   "location_id": "cb2e88b86969920e",
+   "practice_name": "Davila Dental",
+   "zip": "60402",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.vitals.com/doctors/andres-davila-1l803j"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Individual NPI holder Dr. Andres Davila practices in Berwyn, IL per Vitals directory listing at 1514 Elmwood Ave, matching the solo_established classification with no corporate/DSO name. Note: a similarly-named 'Davila & Associates' website (daviladentistry.com) was checked but belongs to an unrelated Davila practice in Gainesville, FL -- not used as evidence here. Confidence kept medium given thin, directory-only corroboration.",
+   "searched": [
+    "Davila Dental Berwyn IL 1514 Elmwood Ave dentist",
+    "\"Andres Davila\" DDS dentist Berwyn Illinois"
+   ]
+  },
+  {
+   "location_id": "d643a39d483f994c",
+   "practice_name": "Shin, Young DDS",
+   "zip": "60402",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.sharecare.com/doctor/dr-young-shin-2"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Individual NPI holder Dr. Young Shin, DDS at 6201 Roosevelt Rd, Berwyn (phone (708) 386-0845 matches). One aggregator search surfaced a same-named dentist with offices in Chicago/Calumet City/Lansing, but that appears to be a common-name directory collision, not tied to this specific address/phone -- no owned website confirming a multi-location chain was found, so kept as solo/single-location with medium confidence.",
+   "searched": [
+    "\"Young Shin\" DDS Berwyn IL 6201 Roosevelt Rd dentist",
+    "\"Young Shin\" dentist \"6201 Roosevelt\" Berwyn IL 60402"
+   ]
+  },
+  {
+   "location_id": "778b814bfeab200c",
+   "practice_name": "Sigdel, Muna",
+   "zip": "60402",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dentistberwyn.com/",
+    "https://www.dentistberwyn.com/about-our-doctors/",
+    "https://www.yelp.com/biz/westwyn-dental-berwyn-3"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "3218 Kenilworth Ave is the genuine Westwyn Dental LLC office (its own site, dentistberwyn.com, lists this exact address), run by Drs. Jonathan Oh and Connor Schroyer -- both dentists, single location, no corporate/DSO affiliation mentioned; matches the 2-provider small_group signal. Dr. Muna Sigdel appears to be a dentist practicing at this office under the NPI.",
+   "searched": [
+    "Muna Sigdel dentist Berwyn IL 3218 Kenilworth Ave"
+   ],
+   "intel": {
+    "website_url": "https://www.dentistberwyn.com/",
+    "website_note": "Dedicated modern practice site ('Westwyn Dental LLC') naming Drs. Oh and Schroyer, describing service area across Berwyn, Cicero, North Riverside, Forest Park, Stickney, Oak Park, and Riverside.",
+    "provider_notes": "Dr. Jonathan Oh and Dr. Connor Schroyer named as practice dentists.",
+    "sources": [
+     "https://www.dentistberwyn.com/about-our-doctors/"
+    ]
+   }
+  },
+  {
+   "location_id": "33ee2cb2c4c1d520",
+   "practice_name": "Kennedy, James P DDS",
+   "zip": "60513",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-james-kennedy-xgv9b",
+    "https://www.yelp.com/biz/kennedy-james-p-dds-brookfield",
+    "https://www.vitals.com/dentists/Dr_James_P_Kennedy_2"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Individual NPI holder Dr. James P. Kennedy, DDS practices under his own name at 9408 47th St, Brookfield; single location across Healthgrades/Yelp/Vitals listings, no corporate/DSO signal, EIN reach limited to this one ZIP per ctx.",
+   "searched": [
+    "James Kennedy DDS Brookfield IL 9408 47th St dentist"
+   ],
+   "intel": {
+    "website_note": "Presence via directory aggregators only (Healthgrades, Yelp, Vitals); no dedicated practice website located.",
+    "services": ["general dentistry", "endodontics", "pediatric dentistry", "orthodontics", "periodontics"],
+    "sources": [
+     "https://www.healthgrades.com/dentist/dr-james-kennedy-xgv9b",
+     "https://www.yelp.com/biz/kennedy-james-p-dds-brookfield"
+    ]
+   }
+  }
+ ]
+}

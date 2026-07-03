@@ -1,0 +1,420 @@
+{
+ "unit_id": "laneA_104",
+ "classifications": [
+  {
+   "location_id": "2061979d9dc56775",
+   "practice_name": "Gasior Dental",
+   "zip": "60629",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/gasior-frank-s-dds-chicago",
+    "https://www.yelp.com/biz/annette-l-gasior-d-d-s-chicago",
+    "https://justinegasior.dr-leonardo.com/",
+    "https://www.healthgrades.com/dentist/dr-frank-gasior-ywrqv",
+    "https://www.healthgrades.com/dentist/dr-justine-gasior-xj9dj"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple directories confirm three same-surname dentists (Dr. Frank Gasior, Dr. Annette Gasior, Dr. Justine Gasior) practicing together at 6820 S Pulaski Rd, matching the NPI's family_practice classification. No corporate parent, DSO brand, or PE sponsor appears anywhere in the listings; this reads as a genuine family-owned single-location group.",
+   "searched": [
+    "Gasior Dental 6820 S Pulaski Rd Chicago dentist"
+   ],
+   "intel": {
+    "website_url": "https://justinegasior.dr-leonardo.com/",
+    "website_note": "Provider-directory-hosted profile page (not a custom domain); lists hours and core services.",
+    "services": ["cavity treatment", "teeth cleaning", "dental exams", "filling replacement/repair"],
+    "provider_notes": "Dr. Frank Gasior, Dr. Annette Gasior, Dr. Justine Gasior -- shared surname suggests a family-run practice.",
+    "distinguishing_notes": "Dr. Gasior speaks Polish; serves the West Lawn neighborhood; open weekdays only (closed weekends).",
+    "sources": [
+     "https://justinegasior.dr-leonardo.com/",
+     "https://www.healthgrades.com/dentist/dr-frank-gasior-ywrqv",
+     "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60629/invite-frank-gasior-dds-15950"
+    ]
+   }
+  },
+  {
+   "location_id": "a2039d2a95c65318",
+   "practice_name": "Hudson Dental",
+   "zip": "60629",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60629/invite-james-hudson-dds-14309"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Doctor's Network confirms a Dr. James Hudson, DDS general dentistry practice using the exact phone number (773) 434-0201 on file for this location. No website, second location, or corporate/DSO signal was found; evidence is thin (single directory listing) so confidence is medium rather than high.",
+   "searched": [
+    "Hudson Dental 2750 W 71st St Chicago IL dentist",
+    "\"Hudson Dental\" Chicago 60629 dentist 773-434-0201"
+   ]
+  },
+  {
+   "location_id": "b8f4172a363d99c0",
+   "practice_name": "Lee, Kenneth",
+   "zip": "60629",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/gentle-dental-center-chicago",
+    "https://www.healthgrades.com/group-directory/il-illinois/chicago/gentle-dental-care-xx5s6x",
+    "https://www.wellness.com/dir/2170043/dentist/il/chicago/gentle-dental-center-limited/directions/2917-west-63rd-street-chicago-il-60629",
+    "https://gentledental.interdent.com/locations"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This address operates as 'Gentle Dental Center Limited', a single-location multi-dentist group (roster includes Drs. Ewa, Ewa, Patel, Arora, Al-Sabek, Ibrahim, Iqbal, Kennedy per Healthgrades). Checked the actual national 'Gentle Dental' (InterDent) locator -- its IL offices are Yorkville, Des Plaines, and Hoffman Estates only, none matching this address -- so the ctx affiliated_dso match to the branded DSO is a generic-name false positive, not a real corporate link. No parent company or PE sponsor found.",
+   "searched": [
+    "\"Kenneth Lee\" dentist 2917 W 63rd St Chicago Gentle Dental",
+    "Gentle Dental Illinois locations InterDent locator"
+   ],
+   "intel": {
+    "website_note": "No dedicated practice website found; presence is via Yelp/Healthgrades/WebMD/Groupon/Wellness.com only.",
+    "provider_notes": "Group roster per Healthgrades: Drs. Marilys Ewa, Melissa Ewa, Monal Patel, Pinky Arora, Fuwad Al-Sabek, Manal Ibrahim, Qasim Iqbal, April Kennedy -- likely reflects associates across time rather than all concurrent.",
+    "sources": [
+     "https://www.yelp.com/biz/gentle-dental-center-chicago",
+     "https://www.healthgrades.com/group-directory/il-illinois/chicago/gentle-dental-care-xx5s6x"
+    ]
+   }
+  },
+  {
+   "location_id": "86ff0a247a9b9d0b",
+   "practice_name": "Unger Dental",
+   "zip": "60629",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.ungerdental.net/office",
+    "https://www.ungerdental.net/contact-us",
+    "https://www.yelp.com/biz/unger-joseph-dds-chicago",
+    "https://www.healthgrades.com/dentist/dr-joseph-unger-yvs33"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Joseph Unger's own practice website (ungerdental.net) plus Yelp and Healthgrades all confirm a solo, single-location practice established in 1985 at this exact address and phone. No corporate parent, franchise, or DSO signal anywhere.",
+   "searched": [
+    "Unger Dental 4424 W 63rd St Chicago IL"
+   ],
+   "intel": {
+    "website_url": "https://www.ungerdental.net/",
+    "website_note": "Small custom practice site with an office/contact page; positioned as a longtime family dentist.",
+    "services": ["general dentistry", "cosmetic dentistry", "tooth-colored fillings", "cosmetic bonding", "veneers", "crowns and bridges", "in-office bleaching", "emergency care"],
+    "distinguishing_notes": "Established 1985; long-tenured solo owner-operator.",
+    "insurance_note": "Accepts most traditional insurance plans; also cash/check/credit and a flexible payment plan.",
+    "sources": ["https://www.ungerdental.net/office", "https://www.ungerdental.net/contact-us"]
+   }
+  },
+  {
+   "location_id": "8b60a469c5538ac4",
+   "practice_name": "MINT DENTAL CARE LTD",
+   "zip": "60629",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.huijparkdds.com/",
+    "https://www.yelp.com/biz/mint-dental-care-chicago",
+    "https://npino.com/dental-clinic/1306379185-mint-dental-care-ltd/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:PARK_HUIJUN",
+   "reasoning": "The practice's own site (huijparkdds.com, branded 'All Smiles Dental Center and Mint Dental Care') is owned/founded by Dr. Hui Jun Park, DDS and explicitly lists two offices under her: 4635 W 63rd St Ste D (this location, 'Mint Dental Care') and 5240 N Pulaski Rd Ste I ('All Smiles Dental Center'). This is a dentist-owned 2-location practice, not a DSO -- fits dentist_multi.",
+   "searched": [
+    "Mint Dental Care Ltd 4635 W 63rd St Chicago IL dentist",
+    "Mint Dental Care Ltd Chicago 4635 W 63rd owner dentist name"
+   ],
+   "intel": {
+    "website_url": "https://www.huijparkdds.com/",
+    "website_note": "Owner-dentist site covering both office locations under two DBAs.",
+    "provider_notes": "Dr. Hui Jun Park, DDS; hygienists Irma Mariaca and Gina Tran; assistant Monica Corona.",
+    "distinguishing_notes": "Same owner-dentist runs a second office at 5240 N Pulaski Rd Ste I, Chicago under the 'All Smiles Dental Center' brand name.",
+    "sources": ["https://www.huijparkdds.com/"]
+   }
+  },
+  {
+   "location_id": "869b1fda3147678d",
+   "practice_name": "Harris Dental",
+   "zip": "60629",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60629/invite-aminah-harris-dds-17072",
+    "https://www.denteldoc.com/location/?id=54177"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directory listings confirm Dr. Aminah Harris, DDS practicing at 3223 W 63rd St with the exact phone number (773) 768-5000 on file. Single-provider general dentistry office; no corporate parent or DSO brand found.",
+   "searched": [
+    "Harris Dental 3223 W 63rd St Chicago IL dentist"
+   ],
+   "intel": {
+    "accepts_medicaid": true,
+    "insurance_note": "Accepts most insurance and Medicaid; offers discounted care supervised by faculty for dental-student treatment.",
+    "sources": ["https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60629/invite-aminah-harris-dds-17072"]
+   }
+  },
+  {
+   "location_id": "a2fc3deda0b02a10",
+   "practice_name": "BRITE DENTAL MARQUETTE PULASKI, P.C",
+   "zip": "60629",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.britedental.org/our-offices",
+    "https://www.yelp.com/biz/brite-dental-chicago-2",
+    "https://www.healthgrades.com/dentist/dr-fadi-aqel-2hrvh"
+   ],
+   "evidence_artifacts": ["ao_reach:12_locations"],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:brite_dental",
+   "reasoning": "Confirmed 'Brite Dental' is a real multi-location network owned by Dr. Fadi Aqel (his own site britedental.org lists at least 8 Chicago offices: Marquette Pulaski, 55, 26 Drake, Lincoln and Preston, Belmont, Cermak, Armitage, Kimball), consistent with ctx owner_reach_locations=12. Per protocol, networks spanning 10+ locations are not classified unit-by-unit -- R4_protected_network:Brite Dental (Fadi Aqel), deferred to a one-network-one-decision review even though it currently appears dentist-owned rather than DSO-controlled.",
+   "searched": [
+    "\"Brite Dental\" Chicago locations \"Fadi Aqel\" OR \"Marquette\" dentist network"
+   ]
+  },
+  {
+   "location_id": "ca10556a8d79d0eb",
+   "practice_name": "Kapelanski Dental",
+   "zip": "60629",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-stanley-kapelanski-zcko9",
+    "https://www.dentalinsider.com/chicago/office/stanley-j-kapelanski-ltd-26348"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple directories confirm Dr. Stanley J. Kapelanski, DDS as a solo general dentist at 5736 S Pulaski Rd with the exact phone on file. Legal entity name 'Stanley J Kapelanski Ltd' matches -- clearly a personal solo corporation, no DSO or franchise signal.",
+   "searched": [
+    "Kapelanski Dental 5736 S Pulaski Rd Chicago dentist"
+   ],
+   "intel": {
+    "distinguishing_notes": "Long-established solo practice; per Healthgrades listing the office is currently not accepting new patients and shows a 3.0/5 patient rating (Healthgrades rating, not Google).",
+    "sources": ["https://www.healthgrades.com/dentist/dr-stanley-kapelanski-zcko9"]
+   }
+  },
+  {
+   "location_id": "389ee6fba42d25a3",
+   "practice_name": "L MARTINEZ P C",
+   "zip": "60629",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/avila-dental-chicago",
+    "https://www.opencare.com/dentists/chicago-il/dr-leticia-martinez-dds-24631205581d/",
+    "https://aviladentalclinic.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The NPI legal entity is 'L Martinez PC' (AO Leticia Martinez), but current listings at 6144 S Pulaski Rd (same phone 773-585-8000) show the office now operating as 'Avila Dental' under Dr. Gelsy Calvo. This looks like a solo-to-solo practice sale/rebrand rather than a DSO acquisition -- no corporate parent, franchise, or multi-location signal found for either name.",
+   "searched": [
+    "\"Leticia Martinez\" dentist 6144 S Pulaski Rd Chicago"
+   ],
+   "intel": {
+    "distinguishing_notes": "NPI legal name 'L Martinez PC' (Dr. Leticia Martinez) but current signage/reviews at this exact address and phone are for 'Avila Dental', led by Dr. Gelsy Calvo -- suggests an ownership transition between two solo dentists.",
+    "sources": ["https://www.yelp.com/biz/avila-dental-chicago", "https://aviladentalclinic.com/"]
+   }
+  },
+  {
+   "location_id": "16eae19692079c1b",
+   "practice_name": "Ilyas Dental",
+   "zip": "60629",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/group-directory/il-illinois/chicago/kidzee-dental-braces-xb7dxy",
+    "https://www.kidzeedental.com/our-locations",
+    "https://doctor.webmd.com/doctor/irfana-ilyas-c8ff2a33-435a-497b-ba97-e2dc45e44735-overview"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This NPI's address (5521 S Kedzie Ave) matches 'Kidzee Dental & Braces', a single-location multi-dentist group practice where Dr. Irfana Ilyas is one of several dentists. Directly fetched the practice's 'our locations' page, which confirms only ONE office (this address) -- not a chain. No corporate/DSO signal found.",
+   "searched": [
+    "Ilyas Dental 5521 S Kedzie Ave Chicago IL dentist"
+   ],
+   "intel": {
+    "website_url": "https://www.kidzeedental.com/our-locations",
+    "provider_notes": "Multi-dentist single-location group; Healthgrades group roster also lists Drs. Manisha Desai, Ahsan Owais, Jenny Li (likely reflecting associates across time, not necessarily all concurrent).",
+    "sources": ["https://www.kidzeedental.com/our-locations", "https://www.healthgrades.com/group-directory/il-illinois/chicago/kidzee-dental-braces-xb7dxy"]
+   }
+  },
+  {
+   "location_id": "a1a7a20f92a45408",
+   "practice_name": "SIDDHI VINAYAK DENTAL",
+   "zip": "60629",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://dentistoffices.com/dentist-office/690043/Chicago-IL/Siddhi-Vinayak-Dental-PC/",
+    "https://www.kidzeedental.com/our-locations",
+    "https://www.healthgrades.com/group-directory/il-illinois/chicago/kidzee-dental-braces-xb7dxy"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Same physical address (5521 S Kedzie Ave, phone 773-434-1600) as 'Ilyas Dental' in this unit -- this is the org-NPI side of the same single-location multi-dentist group ('Kidzee Dental & Braces' / 'Siddhi Vinayak Dental Clinic'). Confirmed single-location via the practice's own 'our locations' page. No corporate/DSO signal found.",
+   "searched": [
+    "Siddhi Vinayak Dental \"Vidhi Kakadia\" 5521 S Kedzie Chicago owner"
+   ],
+   "intel": {
+    "provider_notes": "Group roster (per Healthgrades/dentalplans) includes Drs. Irfana Ilyas, Manisha Desai, Ahsan Owais, Jenny Li at this one address.",
+    "sources": ["https://dentistoffices.com/dentist-office/690043/Chicago-IL/Siddhi-Vinayak-Dental-PC/", "https://www.healthgrades.com/group-directory/il-illinois/chicago/kidzee-dental-braces-xb7dxy"]
+   }
+  },
+  {
+   "location_id": "6e3a11a850c2b8e4",
+   "practice_name": "NILESH PATEL PC",
+   "zip": "60629",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.opencare.com/dentists/chicago-il/dr-nilesh-p-patel-24631315556d/",
+    "https://www.healthgrades.com/dentist/dr-nilesh-patel-254k3",
+    "https://www.dentalplans.com/dentists/illinois/chicago/60629/dr-nilesh-patel-98697/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple directories confirm Dr. Nilesh Patel, DDS practicing solo at 3806 W 63rd St since roughly 1987 (~38 years). No website, second location, or other associates were found. This NPI shares an EIN with the 'Gentle Dental Center' location two blocks away, but no shared website lists both as one operation, so per protocol the EIN link alone does not justify dentist_multi.",
+   "searched": [
+    "\"Nilesh Patel\" dentist owner \"Gentle Dental Center\" OR \"63rd Street\" Chicago"
+   ],
+   "intel": {
+    "provider_notes": "Dr. Nilesh Patel, DDS -- graduated ~1987, roughly 38 years in practice.",
+    "services": ["bridges and dentures", "fillings", "root canals"],
+    "sources": ["https://www.opencare.com/dentists/chicago-il/dr-nilesh-p-patel-24631315556d/"]
+   }
+  },
+  {
+   "location_id": "5b02e0ff8c4cfbbe",
+   "practice_name": "PULASKI ROAD DENTISTRY PLLC",
+   "zip": "60629",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/63-family-dental-chicago",
+    "https://63familydental.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This exact address and phone (6258 S Pulaski Rd, 773-777-6363) now operate under the brand '63 Family Dental', a general family dental office. AO on file (Paul Anast) separately owns an unrelated practice ('Kimberly Smiles') in Wicker Park/Niles with no mention of this address, so the AO appears to be a registered-agent/legacy signer rather than the current operator. Matches the small_group (2-provider) NPI classification; no DSO or corporate parent found.",
+   "searched": [
+    "\"Paul Anast\" dentist Pulaski Road Dentistry Chicago 6258 S Pulaski",
+    "\"Pulaski Road Dentistry\" 6258 S Pulaski Chicago dentist"
+   ],
+   "intel": {
+    "website_url": "https://63familydental.com/",
+    "services": ["braces", "implants", "cosmetic care", "root canal", "extractions", "dentures", "gum disease treatment", "pediatric dentistry", "teeth whitening", "crowns", "fillings"],
+    "distinguishing_notes": "NPI legal entity 'Pulaski Road Dentistry PLLC' but current branding at this address is '63 Family Dental.'",
+    "sources": ["https://63familydental.com/", "https://www.yelp.com/biz/63-family-dental-chicago"]
+   }
+  },
+  {
+   "location_id": "4b36bd94d52e5aa4",
+   "practice_name": "BREDAU DENTAL LTD",
+   "zip": "60630",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://bredaudental.com/who-we-are/",
+    "https://www.healthgrades.com/dentist/dr-laviniu-bredau-xrn6n"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directly fetched the practice's own 'who we are' page: it presents Dr. Laviniu Bredau, DDS as the sole founding dentist at 5400 N Milwaukee Ave, with no parent company, management company, or other associate dentist named, and only this one location listed. Note the NPI's provider_count field (9) is higher than what the website shows, and a ZoomInfo snippet separately links Dr. Bredau to 'Family Dental Care' -- but that appears to reference his personal history/another role, not this address's ownership, so confidence is medium rather than high.",
+   "searched": [
+    "Bredau Dental 5400 N Milwaukee Ave Chicago Laviniu Bredau dentist"
+   ],
+   "intel": {
+    "website_url": "https://bredaudental.com/who-we-are/",
+    "provider_notes": "Dr. Laviniu Bredau, DDS -- first dental degree in Cluj-Napoca, Romania; second DDS from University of Illinois at Chicago in 2007; ADA/ISD/CDS member since 2007.",
+    "owner_career_stage": "mid_career",
+    "sources": ["https://bredaudental.com/who-we-are/"]
+   }
+  },
+  {
+   "location_id": "db8b03ca2f83aef9",
+   "practice_name": "BLUE STAR DENTAL INC",
+   "zip": "60630",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/blue-star-dental-chicago",
+    "http://bluestarsmiles.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Yelp lists this practice as 'CLOSED' (updated February 2026) and the practice's own domain (bluestarsmiles.com) now displays only 'We have closed.' Several older directory listings (WebMD, ADA, CareCredit) still show it as active, but the two most direct signals both indicate closure -- closure_suspect, not classified per protocol.",
+   "searched": [
+    "Blue Star Dental Inc 4703 W Lawrence Ave Chicago Dorina Nastase dentist",
+    "\"Blue Star Dental\" Chicago 4703 W Lawrence closed permanently"
+   ],
+   "intel": {
+    "distinguishing_notes": "Dr. Dorina Nastase, DMD -- trained in Romania (dentist since 2006), completed UIC Advanced Dentist Program in 2017; fluent in Romanian and Spanish. Practice appears to have closed by early 2026.",
+    "sources": ["https://www.yelp.com/biz/blue-star-dental-chicago", "http://bluestarsmiles.com/"]
+   }
+  },
+  {
+   "location_id": "f4d9376d568f7c43",
+   "practice_name": "1ST FAMILY DENTAL OF PULASKI PC",
+   "zip": "60630",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/pulaski/",
+    "https://www.yelp.com/biz/1st-family-dental-of-pulaski-chicago"
+   ],
+   "evidence_artifacts": ["ao_reach:15_locations"],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:1st_family_dental",
+   "reasoning": "Confirmed via the brand's own locator page (1stfamilydental.com/locations/pulaski/) that this address is a genuine '1st Family Dental' branded office, part of a network spanning at least 10 other Chicagoland/suburban locations (Mount Prospect, Algonquin, West Roseland, W 26th St, Elgin, Aurora, La Grange Park, Addison, Burr Ridge, etc.), consistent with ctx owner_reach_locations=15. Per protocol, networks spanning 10+ locations are not classified unit-by-unit -- R4_protected_network:1st Family Dental, deferred to a one-network-one-decision review.",
+   "searched": [
+    "\"1st Family Dental\" 4707 N Pulaski Rd Chicago locations"
+   ]
+  }
+ ]
+}

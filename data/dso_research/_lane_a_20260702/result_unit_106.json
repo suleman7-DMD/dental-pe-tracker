@@ -1,0 +1,409 @@
+{
+  "unit_id": "laneA_106",
+  "classifications": [
+    {
+      "location_id": "3a1fb3f4223c5cd9",
+      "practice_name": "PARKER AND ASSOCIATES, D.D.S, P.C.",
+      "zip": "60630",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.healthgrades.com/dentist/dr-anthony-parker-3dfln",
+        "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60630/invite-anthony-parker-dds-13787",
+        "https://www.yellowpages.com/chicago-il/mip/lawrence-plaza-dental-28123943"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Searched the practice name and address; multiple independent directory listings (Healthgrades, Doctors Network, Yellow Pages) consistently show Dr. Anthony J. Parker, DDS as the sole practicing dentist at this address ('Lawrence Plaza Dental'), with staff who have been with him 20+ years. No corporate parent, management company, or multi-location signal found. The pre-existing ctx tag linking this to 'Park Place Dental Group' does not hold up: that brand (verified separately) operates exclusively in Shiloh/Glen Carbon/Belleville/Godfrey/Swansea, IL (downstate, part of Smile Brands) with no Chicago presence — treating that as a false-positive name match, not evidence.",
+      "searched": [
+        "Parker and Associates DDS 5912 W Lawrence Ave Chicago dentist",
+        "\"Park Place Dental Group\" Chicago multi-brand locations",
+        "lawrenceplazadental.com (fetch attempt, redirected off-topic)"
+      ],
+      "intel": {
+        "distinguishing_notes": "Long-tenured staff (20+ years with the practice); noted for working well with anxious patients per patient reviews.",
+        "sources": [
+          "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60630/invite-anthony-parker-dds-13787",
+          "https://www.businessyab.com/explore/united_states/illinois/cook_county/chicago/portage_park/west_lawrence_avenue/5912/lawrence_plaza_dental_dr_parker_dds_associates.html"
+        ]
+      }
+    },
+    {
+      "location_id": "b5ab71c7d6296152",
+      "practice_name": "NISSI DENTAL CARE INC",
+      "zip": "60630",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://wp.cornerstonedentals.com/",
+        "https://www.dentalplans.com/dentists/illinois/chicago/60630/dr-thu-nguyen-92317/",
+        "https://www.dentalplans.com/dentists/illinois/chicago/60634/dr-thu-nguyen-126721/"
+      ],
+      "evidence_artifacts": ["ao_cluster:THU_NGUYEN reach=3 locations (60630 x2, 60634)"],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "ao:NGUYEN_THU",
+      "reasoning": "The shared 'Cornerstone Dental' website (wp.cornerstonedentals.com) lists this practice (Nissi Dental Care, 5918 W Higgins) alongside three sibling offices (Cornerstone Dental Care at 5324 N Elston — same address/phone as the THU NGUYEN, DDS, INC record in this same unit — plus Rapha Dental Care and Shaddai Dental Care). Independent directory listings (dentalplans.com) confirm Dr. Thu H. Nguyen, DDS (UIC 2005 grad) practices at both this address and the Elston Ave address. This matches the AO cluster (THU NGUYEN, reach=3) with corroborating shared-website evidence, satisfying dentist-owned multi-location criteria; no corporate/non-dentist controller found.",
+      "searched": [
+        "\"Nissi Dental Care\" Chicago dentist 5918 Higgins",
+        "\"Thu Nguyen\" DDS dentist Chicago 5324 Elston OR 5918 Higgins",
+        "cdc-chicago.com / wp.cornerstonedentals.com fetch"
+      ],
+      "intel": {
+        "website_url": "https://wp.cornerstonedentals.com/",
+        "website_note": "Small multi-office network site (Cornerstone Dental) covering 4 Northwest-side Chicago locations under different consumer-facing names; modern template, shared contact info across offices.",
+        "provider_notes": "Dr. Thu H. Nguyen, DDS, DDS from University of Illinois Chicago College of Dentistry (2005); treats ages 1 through elderly; Spanish-speaking; general/preventive focus.",
+        "sources": [
+          "https://wp.cornerstonedentals.com/",
+          "https://www.dentalplans.com/dentists/illinois/chicago/60630/dr-thu-nguyen-92317/"
+        ]
+      }
+    },
+    {
+      "location_id": "5b35604de085df05",
+      "practice_name": "Jefferson Park Smile Corner",
+      "zip": "60630",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.jeffersonparksmilecorner.com/",
+        "https://www.healthgrades.com/group-directory/il-illinois/chicago/jefferson-park-smile-corner-xb2q3j"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "The practice's own website (jeffersonparksmilecorner.com) names Dr. Charles F. Lockhart, DDS, MAGD as the practicing dentist with 40+ years of experience serving the community; no corporate parent, multi-location, or management company found. Single-location solo/owner-operated general practice.",
+      "searched": ["\"Jefferson Park Smile Corner\" dentist Chicago"],
+      "intel": {
+        "website_url": "https://www.jeffersonparksmilecorner.com/",
+        "website_note": "Dedicated practice site naming the owner-dentist directly; positions practice around long tenure (40+ years) in the neighborhood.",
+        "services": ["bonding", "braces/Invisalign", "bridges/dentures", "crowns", "fillings", "gum surgery", "implants", "nitrous sedation", "root canal", "sleep apnea treatment", "TMJ treatment", "extractions", "veneers", "whitening", "wisdom teeth removal"],
+        "provider_notes": "Charles F. Lockhart, DDS, MAGD — 40+ years in practice.",
+        "owner_career_stage": "late_career",
+        "sources": ["https://www.jeffersonparksmilecorner.com/"]
+      }
+    },
+    {
+      "location_id": "25c03b67324fba46",
+      "practice_name": "Rogus Dental",
+      "zip": "60630",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/lawrence-e-rogus-dds-chicago",
+        "https://findadentist.ada.org/il/cook/chicago/general-practice/dr-lawrence-e-rogus-1654184"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Multiple independent listings (Yelp, ADA Find-a-Dentist, Healthgrades) consistently identify Dr. Lawrence E. Rogus, DDS as the sole dentist operating this single-location office; no corporate signals found.",
+      "searched": ["\"Rogus Dental\" Chicago 5364 Milwaukee Ave"],
+      "intel": {
+        "provider_notes": "Lawrence E. Rogus, DDS — University of Illinois at Chicago dental grad.",
+        "services": ["general dentistry", "dental implants", "family dentistry", "emergency dental care", "pediatric dentistry"],
+        "insurance_note": "Accepts Blue Cross Blue Shield of Illinois.",
+        "sources": ["https://www.yelp.com/biz/lawrence-e-rogus-dds-chicago"]
+      }
+    },
+    {
+      "location_id": "47a6d5a6231e6d0b",
+      "practice_name": "FAMILY SMILES P.C.",
+      "zip": "60630",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.familysmilesattheglen.com/meet-the-doctors/",
+        "https://doctor.webmd.com/practice/family-smiles-dental-fb592b4b-3855-4f6c-87e6-6c51c67a10dc"
+      ],
+      "evidence_artifacts": ["ao_cluster:ALI_NEMATOLLAHI reach=2 locations (60026 Glenview, 60630 Chicago)"],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "ao:NEMATOLLAHI_ALI",
+      "reasoning": "Cross-source evidence (Family Smiles at the Glen's own 'Meet the Doctors' page plus independent directory summaries) confirms Dr. Ali Nematollahi, DDS (Northwestern 1991) and his wife Dr. Katayoun Attari, DDS (Marquette 1993) jointly own and practice at two locations: this Chicago office (5240 N Pulaski, est. 2006) and Family Smiles at the Glen in Glenview (est. 2007), with both doctors dividing time between them. This matches the AO cluster (reach=2) with corroborating web evidence of dentist ownership across both sites — no corporate/non-dentist controller.",
+      "searched": [
+        "\"Family Smiles\" dentist Chicago 5240 Pulaski Nematollahi",
+        "familysmilesattheglen.com/meet-the-doctors (fetch)",
+        "\"Family Smiles\" Chicago Pulaski Nematollahi Attari two locations dentist"
+      ],
+      "intel": {
+        "website_url": "https://www.familysmilesattheglen.com/",
+        "provider_notes": "Dr. Ali Nematollahi, DDS (Northwestern Univ Dental School, 1991; dental implant surgery certified, holds a US implantology patent); Dr. Katayoun Attari, DDS (Marquette Univ, 1993; pediatric-focused).",
+        "services": ["cosmetic dentistry", "tooth-colored fillings", "children's dentistry", "crowns", "bridges", "dentures", "implants", "root canal therapy", "extractions", "whitening"],
+        "sources": [
+          "https://www.familysmilesattheglen.com/meet-the-doctors/",
+          "https://doctor.webmd.com/practice/family-smiles-dental-fb592b4b-3855-4f6c-87e6-6c51c67a10dc"
+        ]
+      }
+    },
+    {
+      "location_id": "2e2b266c3465ec2d",
+      "practice_name": "Salih",
+      "zip": "60630",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "none",
+      "evidence_urls": [],
+      "evidence_artifacts": [],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "Searched for a 'Salih' dental practice at 5718 W Lawrence Ave (a newly-established NPI, year_established 2025). All web results for 'Salih Dental Center' point to a different address (4408 W Lawrence Ave, Dr. Mohammed Khalid Salih) and one result attributes 5718 W Lawrence Ave to a different dentist entirely (Dr. Vincent Gianfortune). Per address-matching rule, could not confirm this is the same practice/dentist. No usable web evidence found at the exact address; practice is too new (2025) to have indexed web presence yet.",
+      "searched": [
+        "\"Salih\" dentist 5718 W Lawrence Ave Chicago",
+        "\"5718 W Lawrence\" Chicago dentist Salih"
+      ]
+    },
+    {
+      "location_id": "2fe0b15996423f00",
+      "practice_name": "THU NGUYEN, DDS, INC",
+      "zip": "60630",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://wp.cornerstonedentals.com/",
+        "https://www.dentalplans.com/dentists/illinois/chicago/60630/dr-thu-nguyen-92317/"
+      ],
+      "evidence_artifacts": ["ao_cluster:THU_NGUYEN reach=3 locations (60630 x2, 60634)"],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "ao:NGUYEN_THU",
+      "reasoning": "This address (5324 N Elston Ave, phone 773-584-1622) matches 'Cornerstone Dental Care' exactly on the shared Cornerstone Dental network site (wp.cornerstonedentals.com), which also lists Nissi Dental Care (5918 W Higgins — same AO Thu Nguyen, same unit) plus Rapha Dental Care and Shaddai Dental Care. Combined with the AO cluster and independent directory confirmation of Dr. Thu H. Nguyen, DDS practicing here, this is a dentist-owned small multi-location group, not a corporate DSO.",
+      "searched": [
+        "\"Thu Nguyen\" DDS dentist Chicago 5324 Elston OR 5918 Higgins",
+        "cdc-chicago.com / wp.cornerstonedentals.com fetch"
+      ],
+      "intel": {
+        "website_url": "https://wp.cornerstonedentals.com/",
+        "website_note": "Listed as 'Cornerstone Dental Care' on the shared multi-location Cornerstone Dental site; same phone number as this NPI record.",
+        "sources": ["https://wp.cornerstonedentals.com/"]
+      }
+    },
+    {
+      "location_id": "9bc4b8f092796631",
+      "practice_name": "Rog Dental",
+      "zip": "60630",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/marius-rog-dds-northwest-chicago-dental-chicago-3",
+        "https://www.denteldoc.com/location/?id=55439"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Searched the address; confirmed this is 'Northwest Chicago Dental Associates, LLC' operated by two dentists, Dr. Magdalena Stanek and Dr. Marius Rog, at this single location. No corporate parent or additional locations found — dentist-owned multi-provider single-location group.",
+      "searched": ["\"Rog Dental\" 5408 N Milwaukee Ave Chicago dentist"],
+      "intel": {
+        "provider_count_web": 2,
+        "provider_notes": "Dr. Magdalena Stanek and Dr. Marius Rog, co-practicing dentists.",
+        "services": ["cleanings", "check-ups", "fillings", "preventive care", "braces/retainers", "bridges/dentures", "Invisalign", "root canals", "teeth bonding", "whitening", "crowns", "extractions", "veneers", "wisdom teeth removal"],
+        "sources": ["https://www.denteldoc.com/location/?id=55439"]
+      }
+    },
+    {
+      "location_id": "02dbd30b861d8784",
+      "practice_name": "Ejsbrenner Dental",
+      "zip": "60630",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60630/invite-maria-ejsbrenner-dds-15536",
+        "https://www.vitals.com/dentists/Dr_Maria_Ejsbrenner"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Multiple independent directory listings identify Dr. Maria Ejsbrenner, DDS as the sole dentist at this address with no corporate affiliation, management company, or additional locations mentioned.",
+      "searched": ["\"Ejsbrenner Dental\" Chicago dentist"]
+    },
+    {
+      "location_id": "4326d78b280875a3",
+      "practice_name": "A K A DENTAL",
+      "zip": "60630",
+      "assigned_tier": "stealth_dso",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://udclinics.com/our-location/",
+        "https://udclinics.com/our-doctors/",
+        "https://www.linkedin.com/in/milan-roncevic-303a3810/"
+      ],
+      "evidence_artifacts": ["network_size=7_locations", "non_dentist_controller:Milan_Roncevic_CEO"],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "brand:universal_dental_clinics",
+      "reasoning": "This address (4445 N Pulaski Rd) is a location of 'Universal Dental Clinics' (udclinics.com), a 7-office Chicagoland network (Oak Lawn, Elgin, Hyde Park, N. Pulaski, 2x Orland Park, South Holland) that references a 'Corporate Office' at its Oak Lawn location. The NPI's authorized official, Milan Roncevic, is identified on LinkedIn as 'CEO' (with additional experience at 'Dental Profile', a related entity) and does NOT appear on the network's own 'Our Doctors' page — i.e., a non-dentist executive controls a multi-location network without overt national branding. This is a below-10-location network, so not R4-protected; classified directly as stealth DSO.",
+      "searched": [
+        "\"A K A Dental\" OR \"AKA Dental\" 4445 N Pulaski Chicago Roncevic",
+        "\"Universal Dental\" Roncevic Chicago locations udclinics",
+        "\"Milan Roncevic\" dentist DDS Chicago Universal Dental",
+        "udclinics.com/our-location fetch"
+      ],
+      "intel": {
+        "website_url": "https://udclinics.com/",
+        "website_note": "Multi-location network site with a 'Corporate Office' and centralized customer service email; branded 'Universal Dental Clinics' rather than the NPI legal name A K A Dental.",
+        "distinguishing_notes": "Part of a 7-location Chicagoland network (Oak Lawn, Elgin, Hyde Park, N. Pulaski, 2x Orland Park, South Holland) run by a non-dentist CEO.",
+        "sources": ["https://udclinics.com/our-location/", "https://www.linkedin.com/in/milan-roncevic-303a3810/"]
+      }
+    },
+    {
+      "location_id": "d3c2b7f7449b0cab",
+      "practice_name": "JULIAN RAMIREZ DDS AND ASSOCIATES PC",
+      "zip": "60630",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.portageadvanceddental.com/our-practice.html",
+        "https://www.yelp.com/biz/portage-advanced-dental-chicago-2"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "This address (4421 N Central Ave) operates as 'Portage Advanced Dental', founded and owned by Dr. Victor Ramirez, DDS (UIC 1999 grad, opened the practice in 2009); the practice's own page describes a single location with no mention of a management company or corporate parent (only 'Legwork', a website/marketing vendor). The AO also appears at a second, unrelated address (3443 S Halsted, branded 'Advent Dental') but neither site cross-references the other, so per the hard rule (AO reach alone insufficient for dentist_multi without a shared website listing both), this location is classified on its own merits as a dentist-owned, multi-provider ('AND ASSOCIATES'; large_group provider count) single-location practice.",
+      "searched": [
+        "\"Julian Ramirez\" DDS dentist Chicago 4421 N Central Ave",
+        "portageadvanceddental.com/our-practice.html (fetch)",
+        "adventdental.net/about-us.html + /contact.html (fetch, to check for shared multi-location listing)"
+      ],
+      "intel": {
+        "website_url": "https://www.portageadvanceddental.com/",
+        "website_note": "Practice site founded 2009 by Dr. Victor Ramirez; positions itself as an independent single-location office.",
+        "provider_notes": "Victor Ramirez, DDS — UIC 1999, board-certified general dentist, certified Invisalign provider, AACD member.",
+        "sources": ["https://www.portageadvanceddental.com/our-practice.html"]
+      }
+    },
+    {
+      "location_id": "1d3bc7e08dbb8419",
+      "practice_name": "DRS COSTIS P.C.",
+      "zip": "60630",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.healthgrades.com/dentist/dr-james-costis-y9wdhcz",
+        "https://www.yelp.com/biz/costis-pc-dds-chicago"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Searched the address and legal entity name; all directory listings point to a single practicing dentist, Dr. James Costis, DDS, at this address with no other dentist, corporate parent, or additional location found. The plural 'Drs' in the legal PC name is a historical/legal naming artifact rather than evidence of current multi-dentist ownership.",
+      "searched": ["\"Drs Costis\" OR \"James Costis\" dentist Chicago 5456 Milwaukee"],
+      "intel": {
+        "provider_notes": "James Costis, DDS — speaks Greek in addition to English; offers telehealth.",
+        "sources": ["https://www.healthgrades.com/dentist/dr-james-costis-y9wdhcz"]
+      }
+    },
+    {
+      "location_id": "800f28423549157d",
+      "practice_name": "Advent Dental",
+      "zip": "60630",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.drnicksvarnias.com/",
+        "https://www.yelp.com/biz/nicholas-j-svarnias-dds-chicago"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "This address (5265 N Central Ave) and phone (773-282-9696) match 'Nicholas J. Svarnias, DDS, PC', with its own branded site (drnicksvarnias.com) — not the unrelated 'Advent Dental' brand at 4421 N Central Ave (Dr. Victor Ramirez, a different practice entirely; addresses do not match). Provider count of 2 (small_group) and a personally-branded dentist website indicate a dentist-owned, single-location practice with possibly one associate; no corporate signal found.",
+      "searched": ["\"282-9696\" dentist Chicago Central Ave", "\"Nicholas Svarnias\" dentist Chicago practice name 5265 Central"],
+      "intel": {
+        "website_url": "https://www.drnicksvarnias.com/",
+        "provider_notes": "Nicholas J. Svarnias, DDS — general and cosmetic dentistry.",
+        "services": ["general dentistry", "cosmetic dentistry", "laser periodontal gum therapy", "whitening", "crowns", "composites", "implants", "prosthetics"],
+        "sources": ["https://www.drnicksvarnias.com/"]
+      }
+    },
+    {
+      "location_id": "49fe0b35562818bc",
+      "practice_name": "Zakrzewska Dental",
+      "zip": "60630",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/zakrzewska-jolanta-dds-chicago",
+        "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60630/invite-jolanta-zakrzewska-dds-16290"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Multiple independent directory listings confirm Dr. Jolanta Zakrzewska, DDS as the sole dentist at this address, with her own site (twojimplantolog.com — Polish-language implant-focused branding); no corporate parent or multi-location signal found.",
+      "searched": ["\"Zakrzewska Dental\" Chicago dentist Milwaukee Ave"],
+      "intel": {
+        "website_url": "https://www.twojimplantolog.com",
+        "website_note": "Polish-language branded site ('Twoj Implantolog' = 'Your Implantologist'), suggesting a Polish-speaking patient base typical of this Chicago neighborhood.",
+        "services": ["dental implants", "general dentistry"],
+        "sources": ["https://www.yelp.com/biz/zakrzewska-jolanta-dds-chicago"]
+      }
+    },
+    {
+      "location_id": "a610e74a42b059ea",
+      "practice_name": "Joseph Dental",
+      "zip": "60630",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.dentalinsider.com/chicago/dentist/dr-mathew-joseph-dds-52887",
+        "https://www.sharecare.com/doctor/dr-mathew-joseph-3j58l"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Independent directory listings identify Dr. Mathew Joseph, DDS as the sole dentist at this address; no corporate parent, management company, or additional locations found. No dedicated practice website located.",
+      "searched": ["\"Joseph Dental\" 4955 N Milwaukee Ave Chicago dentist"],
+      "intel": {
+        "provider_notes": "Mathew Joseph, DDS.",
+        "hiring": null,
+        "distinguishing_notes": "Listed as not currently accepting new patients.",
+        "sources": ["https://www.dentalinsider.com/chicago/dentist/dr-mathew-joseph-dds-52887"]
+      }
+    },
+    {
+      "location_id": "0f54d3a260b01656",
+      "practice_name": "Kryzak Dental",
+      "zip": "60630",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.healthgrades.com/dentist/dr-bozena-kryzak-xnd8f",
+        "https://gpslistings.com/listing/4810-n-central-ave-chicago-il-60630-usa-dr-bozena-a-kryzak-dds/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Multiple independent directory listings and the practice's own branded site (kryzakdds.com) confirm Dr. Bozena A. Kryzak, DDS as the sole dentist at this address; no corporate affiliation or additional locations found.",
+      "searched": ["\"Kryzak Dental\" 4810 N Central Ave Chicago dentist"],
+      "intel": {
+        "website_url": "http://www.kryzakdds.com",
+        "distinguishing_notes": "Not currently accepting new patients; offers telehealth.",
+        "sources": ["https://www.healthgrades.com/dentist/dr-bozena-kryzak-xnd8f"]
+      }
+    }
+  ]
+}

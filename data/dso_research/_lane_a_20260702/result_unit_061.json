@@ -1,0 +1,463 @@
+{
+  "unit_id": "laneA_061",
+  "classifications": [
+    {
+      "location_id": "d6532dcb4d9fbcf2",
+      "practice_name": "Pearl Dental Group",
+      "zip": "60076",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/douglas-hasegawa-d-d-s-skokie",
+        "https://www.carecredit.com/doctor-locator/skokie-il/pearl-dental-group-pc-dxx222/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Phone (847) 674-0577 and address 3347 Dempster St exactly match a Yelp/Healthgrades listing for Dr. Douglas Hasegawa, DDS (with Dr. Roy Hamamoto, DDS) at this same address, consistent with the DB's 2-provider count. No DSO brand, parent company, or PE signal appeared in any listing; this reads as a small dentist-owned two-provider office (the org NPI name 'Pearl Dental Group' vs directory doctor names is a common NPI-vs-DBA naming quirk, not evidence of a chain).",
+      "searched": [
+        "Pearl Dental Group Skokie IL dentist",
+        "\"674-0577\" Pearl Dental Skokie",
+        "\"3347\" Dempster Skokie dentist"
+      ]
+    },
+    {
+      "location_id": "869a8f9f260139db",
+      "practice_name": "Gelman Dental",
+      "zip": "60076",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.redfin.com/IL/Skokie/9138-Four-Winds-Way-60076/home/13625915",
+        "https://www.dentalstorenorthshore.com/our-practice/meet-the-doctors/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "The registered address, 9138 Four Winds Way, is a single-family residential home in the Timber Ridge subdivision (Redfin/Trulia/Homes.com listings), not a dental office - this NPI location does not represent an operating independent practice. Web evidence shows Dr. Asher Gelman actually practices at 'Dental Store North Shore'/'Old Orchard Smiles' (a separate location entity in this unit) as co-leader, so no honest ownership tier can be assigned to THIS address; leaving undetermined rather than guessing.",
+      "searched": [
+        "Gelman Dental Skokie IL dentist",
+        "\"9138 Four Winds\" Skokie"
+      ],
+      "intel": {
+        "website_url": "https://www.dentalstorenorthshore.com/",
+        "website_note": "Dr. Asher Gelman's actual clinical home is the Old Orchard Smiles / Dental Store North Shore group practice, not this NPI address.",
+        "services": ["cosmetic dentistry", "implant dentistry", "Invisalign", "veneers", "crowns", "root canal therapy", "sleep apnea appliances", "prosthodontics"],
+        "technology": [],
+        "provider_notes": "Dr. Asher Gelman, DMD - University of Pennsylvania School of Dental Medicine; GPR at James J. Peters VA Medical Center (Mount Sinai affiliate), NYC; 15+ year career; specializes in cosmetic and implant dentistry.",
+        "owner_career_stage": "mid_career",
+        "distinguishing_notes": "Co-leads the multi-dentist Old Orchard Smiles group alongside Dr. Jason Brenner.",
+        "sources": [
+          "https://aedit.com/provider/asher-gelman-15867",
+          "https://www.doctorsnetwork.com/doctors/dentists/skokie-il-60076/invite-asher-gelman-dmd-16509",
+          "https://www.dentalstorenorthshore.com/our-practice/meet-the-doctors/"
+        ]
+      }
+    },
+    {
+      "location_id": "29af9344614eda5f",
+      "practice_name": "MENGYU TSAI DDS LTD",
+      "zip": "60076",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.redfin.com/IL/Skokie/9530-N-Lowell-Ave-60076/home/13625490"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "9530 Lowell Ave is a single-family residential home per real-estate listings, not a business address - the same pattern as Gelman Dental in this unit. Directory results show Dr. Mengyu Tsai, DDS practicing/associating at several other named practices (Arlington Heights Dental Care, a Libertyville office, Mount Prospect) under those practices' own brands, not a verifiable independent office of her own at this address, so no ownership tier can be honestly assigned here.",
+      "searched": [
+        "Mengyu Tsai DDS Skokie dentist",
+        "\"9530 Lowell\" Skokie"
+      ],
+      "intel": {
+        "website_url": null,
+        "provider_notes": "Dr. Mengyu Tsai, DDS - Northwestern University undergrad, DDS from SUNY Buffalo (minor in pediatric dentistry), practicing since 2006; fluent in English and Mandarin; treats adults and children.",
+        "owner_career_stage": "mid_career",
+        "distinguishing_notes": "Appears to work across multiple North Shore/NW-suburb offices (Arlington Heights, Highland Park, Libertyville, Mount Prospect) rather than a single owned location.",
+        "sources": [
+          "https://www.healthgrades.com/dentist/dr-mengyu-tsai-yryg7",
+          "https://providerwire.com/general-practice-dentistry/illinois/skokie/mengyu-tsai-dds-ltd-1629203302"
+        ]
+      }
+    },
+    {
+      "location_id": "2292e39949e40482",
+      "practice_name": "Hussain Dental",
+      "zip": "60076",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "none",
+      "evidence_urls": [],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "Searched the practice name plus city/street and the office phone number; no results tied any web listing to 7455 Kenneth Ave, Skokie. Found only a different, unrelated 'Vista Dental' led by a different Dr. Shahvar Hussain at a separate Skokie address (already a distinct entity in this unit) and a Schaumburg 'Husain Dental' with no IL address overlap. No usable web evidence for this specific location - honest undetermined.",
+      "searched": [
+        "Hussain Dental Skokie IL Kenneth Ave dentist",
+        "\"7455 Kenneth\" Skokie dentist",
+        "\"(872) 210-7881\" Hussain dentist"
+      ]
+    },
+    {
+      "location_id": "251eec8b280d1213",
+      "practice_name": "VISTA DENTAL OF SKOKIE PC",
+      "zip": "60076",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://vistadentalchicago.com/locations/",
+        "https://vistadentalchicago.com/dr-shahvar-hussain-dmd/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:HUSSAIN_SHAHVAR",
+      "reasoning": "Vista Dental's own site (vistadentalchicago.com) lists exactly two offices - Foster Ave Chicago (60630) and 3602 W Touhy Ave Skokie (60076, matching this record's address and consistent with the DB's owner_reach_locations=2 for AO Shahvar Hussain) - both led by Dr. Shahvar Hussain, DMD, a licensed Illinois dentist. No corporate parent, PE sponsor, or third-party branding found; this is a small dentist-owned two-location group, squarely T3.",
+      "searched": [
+        "Vista Dental Chicago Skokie Dr Shahvar Hussain dentist owner",
+        "Vista Dental Skokie \"3602 Touhy\" location"
+      ],
+      "intel": {
+        "website_url": "https://vistadentalchicago.com/",
+        "website_note": "Modern, well-maintained multi-page practice site with online scheduling references and financing options listed.",
+        "services": ["dental implants", "Invisalign", "cosmetic dentistry", "veneers", "general/family dentistry", "emergency dental"],
+        "insurance_note": "Accepts most PPO plans, Illinois Medicaid, and Medicare; offers CareCredit, Sunbit, Lending Club, Cherry Financing, in-house plans.",
+        "accepts_medicaid": true,
+        "provider_notes": "Dr. Shahvar Hussain, DMD - BS University of Illinois Urbana-Champaign, DMD Midwestern University College of Dental Medicine (top of class); advanced training in implants, full-mouth rehab, cosmetic, oral surgery, endodontics.",
+        "distinguishing_notes": "Serves Skokie, Lincolnwood, Evanston, Morton Grove, Niles, Wilmette, and Park Ridge from the Touhy Ave location.",
+        "sources": [
+          "https://vistadentalchicago.com/",
+          "https://vistadentalchicago.com/dr-shahvar-hussain-dmd/",
+          "https://vistadentalchicago.com/locations/"
+        ]
+      }
+    },
+    {
+      "location_id": "c581824a9c6110f3",
+      "practice_name": "Khan Dental",
+      "zip": "60076",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "none",
+      "evidence_urls": [],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "Searched the practice name with city/street, the specific address, and the office phone number; results only surfaced two unrelated Khan dentists at different Skokie addresses (4815 Main St and 4836 Main St) and no match at all for 8712 Crawford Ave or (312) 678-2010. No usable web evidence for this specific location - honest undetermined rather than a guess.",
+      "searched": [
+        "Khan Dental Skokie IL Crawford Ave dentist",
+        "\"8712 Crawford\" Skokie dentist",
+        "\"(312) 678-2010\" dentist Skokie"
+      ]
+    },
+    {
+      "location_id": "0f6daaaeb4e374e0",
+      "practice_name": "Robbins Dental",
+      "zip": "60077",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.pandedental.com/lance-robbins-dentistry/",
+        "https://www.lancerobbinsdentistry.com/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Phone (847) 675-3311 exactly matches P&E Dental at 4905 Old Orchard Center Suite 528. After nearly 46 years, founder Dr. Lance Robbins handed the practice to Dr. Nathan Pinsky and Dr. Jesus Echezarreta, both licensed dentists, who now co-own it as 'P&E Dental' at the same single location - no corporate/DSO or PE signal found.",
+      "searched": [
+        "Robbins Dental Skokie IL Old Orchard dentist"
+      ],
+      "intel": {
+        "website_url": "https://www.pandedental.com/",
+        "website_note": "Modern rebrand site (P&E Dental) documenting the ownership transition from Dr. Robbins to the current dentist-owners.",
+        "services": ["routine check-ups", "cosmetic dentistry", "veneers", "dental implants", "full smile makeovers"],
+        "provider_notes": "Founder Dr. R. Lance Robbins practiced since 1978; current owners Dr. Nathan Pinsky and Dr. Jesus Echezarreta.",
+        "distinguishing_notes": "Located inside the Old Orchard Shopping Center professional building; long-standing patient base inherited through the ownership transition.",
+        "sources": [
+          "https://www.pandedental.com/lance-robbins-dentistry/",
+          "https://www.pandedental.com/about-us/"
+        ]
+      }
+    },
+    {
+      "location_id": "fdc785d1406566cd",
+      "practice_name": "Mikos Dental",
+      "zip": "60077",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.lancerobbinsdentistry.com/",
+        "https://www.yelp.com/biz/lincoln-court-dental-skokie",
+        "https://www.healthgrades.com/dentist/dr-richard-mikos-y7yyx"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Address (8037 Lincoln Ave) and phone (847) 679-5558 match 'Lincoln Court Dental,' a single-dentist practice of Dr. Richard 'Randy' Mikos, DDS. Multiple independent directories (Yelp, Healthgrades, Yellowpages) confirm a solo-owner general/oral-surgery office with a long-tenured local patient base and no corporate or DSO branding.",
+      "searched": [
+        "Mikos Dental Skokie IL Lincoln Ave dentist"
+      ],
+      "intel": {
+        "website_url": "http://lincolncourtdental.com/",
+        "provider_notes": "Dr. Richard 'Randy' Mikos, DDS - general dentistry and oral & maxillofacial surgery; wheelchair accessible; accepting new patients.",
+        "distinguishing_notes": "Reviews cite multi-generation family patients (16+ year patient relationships).",
+        "sources": [
+          "https://www.yelp.com/biz/lincoln-court-dental-skokie",
+          "https://www.healthgrades.com/dentist/dr-richard-mikos-y7yyx"
+        ]
+      }
+    },
+    {
+      "location_id": "274e9dccdb14c893",
+      "practice_name": "Finkel Dental",
+      "zip": "60077",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.facebook.com/calvinfinkeldds/",
+        "https://www.healthgrades.com/dentist/dr-calvin-finkel-35f23"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Address (8310 Lincoln Ave) and phone (847) 673-9114 match 'Skokie Family Dental,' Dr. Calvin Finkel, DDS's solo practice since 1982 (University of Illinois undergrad, Northwestern dental school). No group, corporate, or DSO affiliation found in any listing.",
+      "searched": [
+        "Finkel Dental Skokie IL Lincoln Ave dentist"
+      ],
+      "intel": {
+        "website_url": "http://calvinfinkeldds.com",
+        "provider_notes": "Dr. Calvin Finkel, DDS - practicing since 1982; speaks Russian.",
+        "services": ["cleanings", "preventative treatments", "root canals", "implant restoration", "crowns"],
+        "distinguishing_notes": "5-star Yelp rating; long-tenured single-owner family practice.",
+        "sources": [
+          "https://www.facebook.com/calvinfinkeldds/",
+          "https://www.yelp.com/biz/skokie-family-dental-skokie"
+        ]
+      }
+    },
+    {
+      "location_id": "6bfec1d7548e775d",
+      "practice_name": "Conen Dental",
+      "zip": "60077",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.oldorchardsmiles.com/meet-the-doctors/",
+        "https://www.richardsconendds.com/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "brand:old_orchard_smiles",
+      "reasoning": "Phone (847) 676-3388 matches Dr. Richard S. Conen, DDS at 4905 Old Orchard Center. Search results explicitly state the practice 'is now part of Old Orchard Dental group, led by Dr. Asher Gelman & Dr. Jason Brenner' - a dentist-led multi-provider group whose own site lists a single Skokie location (9235 Skokie Blvd). No PE/corporate branding found; treated as a single-location dentist-owned group practice.",
+      "searched": [
+        "Conen Dental Skokie IL Old Orchard dentist"
+      ],
+      "intel": {
+        "website_url": "https://www.richardsconendds.com/",
+        "services": ["veneers", "lumineers", "teeth whitening", "dental implants", "crowns", "sedation dentistry"],
+        "technology": ["Diagnodent laser cavity detection", "The Wand computer-controlled anesthesia"],
+        "distinguishing_notes": "Part of the multi-dentist Old Orchard Dental Group/Old Orchard Smiles led by Drs. Gelman and Brenner.",
+        "sources": [
+          "https://www.richardsconendds.com/",
+          "https://www.oldorchardsmiles.com/meet-the-doctors/"
+        ]
+      }
+    },
+    {
+      "location_id": "c56bb01bb667a203",
+      "practice_name": "Lin Dental",
+      "zip": "60077",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/dr-samuel-lin-d-d-s-skokie"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Phone (847) 674-0446 matches Dr. Samuel L.Y. Lin, D.D.S. at 64 Old Orchard Shopping Ctr, Suite 624. No affiliation with the Old Orchard Smiles/Gelman-Brenner group or any other DSO/corporate entity was found - appears to be an independent solo tenant in the same building complex as several other unaffiliated solo dentists.",
+      "searched": [
+        "Lin Dental Skokie IL Old Orchard dentist"
+      ],
+      "intel": {
+        "services": ["cavity treatment", "teeth cleaning", "dental exams", "fillings", "dentures", "root canal"],
+        "sources": [
+          "https://www.yelp.com/biz/dr-samuel-lin-d-d-s-skokie"
+        ]
+      }
+    },
+    {
+      "location_id": "d71c94611b9c9137",
+      "practice_name": "AFFINITY SMILES INC.",
+      "zip": "60077",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/affinity-smiles-skokie",
+        "https://www.affinitysmilesdental.com/about"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Address (5550 W Touhy Ave, Suite 303) matches Affinity Smiles, led by Dr. Joann Kochikaran, DDS (UIC College of Dentistry 2005). DB shows a single EIN-reach location and 2 providers, consistent with a single-office dentist-owned cosmetic practice with no group/DSO branding found (the 1976 year_established likely reflects a legacy practice she took over).",
+      "searched": [
+        "Affinity Smiles Skokie IL Touhy Ave Joann Kochikaran dentist"
+      ],
+      "intel": {
+        "website_url": "https://www.affinitysmilesdental.com/",
+        "website_note": "Polished, cosmetic-forward marketing site emphasizing a boutique/spa patient experience.",
+        "services": ["clear aligners", "cosmetic dentistry", "veneers", "Bioclear bonding", "dental implants", "extractions"],
+        "provider_notes": "Dr. Joann Kochikaran, DDS - UIC College of Dentistry, class of 2005; certified in implants, veneers, bonding, Bioclear.",
+        "distinguishing_notes": "Positions itself with a 'spa-like' amenities experience (TVs, blankets, noise-canceling headphones).",
+        "sources": [
+          "https://www.yelp.com/biz/affinity-smiles-skokie",
+          "https://www.affinitysmilesdental.com/about"
+        ]
+      }
+    },
+    {
+      "location_id": "1e33f9e533b2814a",
+      "practice_name": "Annex Dental",
+      "zip": "60077",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/annex-terry-j-dds-skokie"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Phone (847) 675-2090 matches Dr. Terry J. Annex, DDS (periodontics/implant placement) at 4905 Old Orchard Ctr, Suite 616. No explicit tie to the Old Orchard Smiles/Gelman-Brenner group was found - appears to be a separately owned periodontal specialty practice co-located in the same professional building, consistent with the DB's 3-provider small-group classification.",
+      "searched": [
+        "Annex Dental Skokie IL Old Orchard dentist"
+      ],
+      "intel": {
+        "services": ["periodontal treatment", "implant placement"],
+        "distinguishing_notes": "Saturday hours (8am-1pm) in addition to weekday hours.",
+        "sources": [
+          "https://www.yelp.com/biz/annex-terry-j-dds-skokie"
+        ]
+      }
+    },
+    {
+      "location_id": "d6bff6d5db824c2c",
+      "practice_name": "Krauss Dental",
+      "zip": "60077",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.shimmeringteeth.com/meet-the-doctor",
+        "https://www.facebook.com/villagecrossingdentistry/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Phone (847) 675-3368 matches Village Crossing Dentistry, Ltd, founded in 1995 by Dr. Steven Krauss, DDS (Northwestern University Dental School, 1985) and still operated by him. No corporate or DSO signal found - a clear solo owner-operator practice.",
+      "searched": [
+        "Krauss Dental Skokie IL Village Crossing Dentistry"
+      ],
+      "intel": {
+        "website_url": "https://www.shimmeringteeth.com/",
+        "provider_notes": "Dr. Steven Krauss, DDS - Northwestern University Dental School, 1985; founded the practice in 1995.",
+        "services": ["teeth whitening", "bonding/white fillings", "crowns", "bridges", "veneers", "Invisalign", "root canals"],
+        "distinguishing_notes": "Markets itself as an affordable, high-standards solo practice ('your comfort comes first').",
+        "sources": [
+          "https://www.shimmeringteeth.com/meet-the-doctor",
+          "https://www.shimmeringteeth.com/practice-information"
+        ]
+      }
+    },
+    {
+      "location_id": "53e77e1916d9bfcf",
+      "practice_name": "DENTAL STORE NORTH SHORE, LTD",
+      "zip": "60077",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.dentalstorenorthshore.com/",
+        "https://www.oldorchardsmiles.com/meet-the-doctors/",
+        "https://www.linkedin.com/in/joel-cohn-853a6211/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "brand:old_orchard_smiles",
+      "reasoning": "Address (9933 Lawler Ave) matches Dental Store North Shore, Ltd, which search results confirm has since rebranded to 'Old Orchard Smiles,' a single-location group of 8 dentists co-led by Dr. Asher Gelman and Dr. Jason Brenner (matching the DB's 11-provider large_group count when including specialists/hygiene staff). Joel Cohn holds Corporate Secretary/COO titles (LinkedIn) but no evidence of PE ownership, franchise agreement, or non-dentist controlling ownership was found - classified as a large dentist-led single-location group rather than a stealth DSO, though the business-operator title is a soft flag worth another look if new evidence emerges.",
+      "searched": [
+        "Joel Cohn Dental Store North Shore Skokie dentist owner",
+        "\"Dental Store\" Skokie Illinois locations chain Joel Cohn",
+        "\"Dental Store North Shore\" history founded Skokie"
+      ],
+      "intel": {
+        "website_url": "https://www.dentalstorenorthshore.com/",
+        "website_note": "Practice has rebranded from 'Dental Store North Shore' to 'Old Orchard Smiles' per search snippets.",
+        "provider_notes": "Doctors include Asher Gelman, Louis I. Freeman, Jason Brenner, Dwayne Karateew, Richard Conen, Brian Currie, Joshua Mayer (perio), Patrick Carroll (OMS), Sheetal Kalokhe, Morgan McCall (endo).",
+        "insurance_note": "Accepts CareCredit and standard financing options.",
+        "distinguishing_notes": "Large multi-specialty single-location group (GP + perio + OMS + endo under one roof).",
+        "sources": [
+          "https://www.dentalstorenorthshore.com/our-practice/meet-the-doctors/",
+          "https://www.oldorchardsmiles.com/meet-the-doctors/",
+          "https://www.linkedin.com/in/joel-cohn-853a6211/"
+        ]
+      }
+    },
+    {
+      "location_id": "9dae16bea3e38748",
+      "practice_name": "TONI ELLIS WOLF, DDS, PC",
+      "zip": "60077",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/toni-ellis-wolf-dds-old-orchard-smiles-skokie",
+        "https://www.bbb.org/us/il/skokie/profile/dentist/old-orchard-smiles-toni-ellis-wolf-dds-pc-0654-90018586"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "brand:old_orchard_smiles",
+      "reasoning": "Phone (847) 673-2052 matches 'Old Orchard Smiles / Toni Ellis Wolf, DDS PC' at 4905 Old Orchard Ctr Ste 232, in business since 1999 with Dr. Wolf as President and Dr. Jules Hazelkorn also on staff. This is the same Old Orchard Smiles dentist-led brand as Conen Dental and Dental Store North Shore in this unit - no PE/corporate ownership evidence found.",
+      "searched": [
+        "Toni Ellis Wolf DDS Skokie IL dentist Old Orchard"
+      ],
+      "intel": {
+        "website_url": "http://www.oldorchardsmiles.com/",
+        "services": ["dental exams and cleanings", "teeth whitening", "fillings", "extractions", "sealants", "crowns and bridges", "root canal therapy", "implants", "dentures"],
+        "provider_notes": "Dr. Toni Ellis Wolf, DDS, President; also Dr. Jules Hazelkorn, DDS on staff.",
+        "distinguishing_notes": "In business since 1999 (27 years).",
+        "sources": [
+          "https://www.yelp.com/biz/toni-ellis-wolf-dds-old-orchard-smiles-skokie",
+          "https://www.bbb.org/us/il/skokie/profile/dentist/old-orchard-smiles-toni-ellis-wolf-dds-pc-0654-90018586"
+        ]
+      }
+    }
+  ]
+}

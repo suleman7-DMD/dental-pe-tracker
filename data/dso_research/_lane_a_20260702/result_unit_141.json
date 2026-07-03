@@ -1,0 +1,384 @@
+{
+ "unit_id": "laneA_141",
+ "classifications": [
+  {
+   "location_id": "2c431d78dd522d71",
+   "practice_name": "MY DENTIST, INC., P.C.",
+   "zip": "60409",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-david-yu-xjhbv",
+    "https://www.yelp.com/biz/my-dentist-calumet-city",
+    "http://www.mydentistinc.com"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Web search confirms Dr. David Yu, DDS is President/owner of My Dentist, Inc., P.C. at 97 Paxton Ave, with the practice's own site (mydentistinc.com) and a Healthgrades profile both naming him as the sole treating dentist. No group partners, corporate parent, or DSO brand found; owner_reach is 1 location. Classified true_independent on direct web evidence of solo dentist ownership.",
+   "searched": ["\"My Dentist\" Calumet City IL 97 Paxton Ave dentist"],
+   "intel": {
+    "website_url": "http://www.mydentistinc.com",
+    "website_note": "Practice has its own branded website naming Dr. Yu as owner/president; described as actively accepting new patients.",
+    "services": ["dental crowns", "dentures", "tooth extraction", "implant dentistry"],
+    "distinguishing_notes": "Healthgrades lists a 4.5-star rating from 11 patient ratings for Dr. Yu.",
+    "sources": ["https://www.healthgrades.com/dentist/dr-david-yu-xjhbv", "http://www.mydentistinc.com"]
+   }
+  },
+  {
+   "location_id": "d3da36466a80761f",
+   "practice_name": "DILLONS DENTAL SERVICES LLC",
+   "zip": "60409",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.bbb.org/us/il/calumet-city/profile/dentist/dillons-dental-services-inc-0654-5000774",
+    "https://www.healthgrades.com/dentist/dr-jerry-dillon-3xscc",
+    "https://dillondentalservices.com/contact"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:DILLON_JERRY",
+   "reasoning": "BBB and Healthgrades confirm this is Dr. Jerry Dillon's own practice (DDS, MS, PhD) sharing phone (708) 862-1800; BBB lists the address as 2000 River Oaks Dr (same corner building as this record's 2000 E 159th St). Reviews describe Dillon personally performing all clinical work himself. No corporate parent or additional-location signal found; classified solo dentist-owner true_independent.",
+   "searched": ["Dillon Dental Calumet City IL dentist"],
+   "intel": {
+    "website_url": "https://dillondentalservices.com",
+    "website_note": "Own branded website/contact page; office hours M,T,Th,F,Sat 9am-3pm, closed Wed.",
+    "services": ["general dentistry", "endodontic care"],
+    "provider_notes": "Dr. Jerry Dillon, DDS, MS, PhD — practice emphasizes endodontic treatment; patient reviews note he performs cleanings himself.",
+    "distinguishing_notes": "5.0 average patient rating on Healthgrades; reviews highlight personalized single-dentist care.",
+    "sources": ["https://www.healthgrades.com/dentist/dr-jerry-dillon-3xscc", "https://www.bbb.org/us/il/calumet-city/profile/dentist/dillons-dental-services-inc-0654-5000774"]
+   }
+  },
+  {
+   "location_id": "77b28a39cb951124",
+   "practice_name": "FAMILY DENTAL CARE OF CALUMET CITY",
+   "zip": "60409",
+   "assigned_tier": "branded_dso",
+   "pe_backed": false,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.familydentalcare.com/calumet-city-office/",
+    "https://www.familydentalcare.com/our-locations/",
+    "https://www.familydentalcare.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:family_dental_care",
+   "reasoning": "Family Dental Care, PC's own corporate site has a dedicated Calumet City office page and an 8-office locations directory spanning Chicago, Calumet City, Evergreen Park, Oak Lawn, Crestwood, and Munster IN — a shared-brand multi-location network, not a single dentist-owned office. AO Harry Varvaressos shows reach into a second ZIP (60805), consistent with regional-chain control. No documented PE sponsor was found (a Shore Capital-backed 'Great Lakes Dental Partners/Advanced Family Dental' is a distinct, unrelated brand), so pe_backed=false, but the branded multi-office locator page is sufficient documentary evidence for branded_dso.",
+   "searched": ["\"Family Dental Care\" Calumet City IL 313 River Oaks Dr", "\"Family Dental Care\" PC Illinois private equity owner Varvaressos"],
+   "intel": {
+    "website_url": "https://www.familydentalcare.com/calumet-city-office/",
+    "website_note": "Modern chain website with per-office landing pages and a central locations directory; in business since 1986, BBB accredited since 2006.",
+    "services": ["cleanings", "extractions", "implant surgery"],
+    "distinguishing_notes": "One of 8 offices across south Chicagoland/NW Indiana under the shared 'Family Dental Care, PC' brand; hours M-Th 8-7, Fri 8-5, Sat 8-2.",
+    "sources": ["https://www.familydentalcare.com/calumet-city-office/", "https://m.yelp.com/biz/family-dental-care-calumet-city", "https://www.bbb.org/us/il/calumet-city/profile/dentist/family-dental-care-of-calumet-city-0654-75001648"]
+   }
+  },
+  {
+   "location_id": "9c7f2796a5434a02",
+   "practice_name": "MANTIS DENTISTRY",
+   "zip": "60409",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://opennpi.com/provider/1669688875",
+    "http://voyagechicago.com/interview/meet-dr-dino-mantis-mantis-dentistry-implant-center-wilmette/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "OpenNPI lists Dr. Christina Mantis as the current Owner/authorized official at 796 State Line Rd. A 2011 interview confirms founder Dr. Dino Mantis sold this Calumet City practice and relocated to open an unrelated 'Mantis Dentistry & Implant Center' in Wilmette — confirming this is now an independently owned single-location practice under Christina Mantis. No DSO or corporate signal found.",
+   "searched": ["Mantis Dentistry Calumet City IL"],
+   "intel": {
+    "distinguishing_notes": "Practice changed hands in 2011 when founder Dr. Dino Mantis sold it and relocated to Wilmette; the Calumet City office has operated under new ownership (Dr. Christina Mantis) since.",
+    "sources": ["http://voyagechicago.com/interview/meet-dr-dino-mantis-mantis-dentistry-implant-center-wilmette/", "https://opennpi.com/provider/1669688875"]
+   }
+  },
+  {
+   "location_id": "cd89dae179ea05d7",
+   "practice_name": "Dillon Dental",
+   "zip": "60409",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.bbb.org/us/il/calumet-city/profile/dentist/dillons-dental-services-inc-0654-5000774",
+    "https://www.healthgrades.com/dentist/dr-jerry-dillon-3xscc",
+    "https://dillondentalservices.com/contact"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:DILLON_JERRY",
+   "reasoning": "This individual NPI (Jerry Dillon) shares the identical phone number (708) 862-1800 as location d3da36466a80761f (Dillons Dental Services LLC) — the same solo practice recorded under two NPPES address strings for the same building. Same web evidence (BBB, Healthgrades) confirms Dr. Jerry Dillon as sole dentist-owner; classified true_independent.",
+   "searched": ["Dillon Dental Calumet City IL dentist"],
+   "intel": {
+    "website_url": "https://dillondentalservices.com",
+    "website_note": "Same underlying office as Dillons Dental Services LLC; own contact page lists limited weekly hours (closed Wednesdays).",
+    "provider_notes": "Dr. Jerry Dillon, DDS, MS, PhD.",
+    "sources": ["https://www.healthgrades.com/dentist/dr-jerry-dillon-3xscc", "https://dillondentalservices.com/contact"]
+   }
+  },
+  {
+   "location_id": "88b4b8c73d44ccee",
+   "practice_name": "Universal Smiles",
+   "zip": "60409",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "http://www.universalsmiles.biz/",
+    "http://www.universalsmiles.biz/about",
+    "https://www.vitadox.com/practice/calumet-city-il-60409/universal-smiles/KjfkFpjygAci5BJB4n4qPa"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Universal Smiles' own site identifies it as a mobile, school-based dental service founded in 2008, led by Dr. Shelley Young, DDS (University of Michigan), as Executive Director. No corporate parent, DSO brand, or additional locations found. Classified true_independent (single dentist-led organization), though its mobile/school-service model differs from a typical walk-in storefront practice.",
+   "searched": ["Universal Smiles Calumet City IL dentist 1583 Huntington Dr"],
+   "intel": {
+    "website_url": "http://www.universalsmiles.biz/",
+    "website_note": "Mission-driven site describing a mobile dental team serving underserved school-age children (ages 1-18) rather than a traditional walk-in office.",
+    "services": ["dental examinations", "cleanings", "fluoride treatments", "dental sealants", "oral health education"],
+    "provider_notes": "Dr. Shelley A. Young, DDS, Executive Director; dental degree from University of Michigan.",
+    "distinguishing_notes": "Founded 2008; focuses on preventive care for underserved communities/students rather than a general adult patient base.",
+    "sources": ["http://www.universalsmiles.biz/about", "https://www.vitadox.com/practice/calumet-city-il-60409/universal-smiles/KjfkFpjygAci5BJB4n4qPa"]
+   }
+  },
+  {
+   "location_id": "6831c65dc7623f42",
+   "practice_name": "DR CHAIKEN & ASSOC. DENTIST, LTD",
+   "zip": "60409",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/irwin-i-chaiken-dds-calumet-city",
+    "https://www.yelp.com/biz/calumet-dental-calumet-city",
+    "https://www.facebook.com/calumetdental/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "closure_suspect: Yelp lists 'Irwin I Chaiken, DDS' (matching this NPI record's name) as CLOSED, while the same 500 River Oaks Dr address also carries an active 'Calumet Dental' Yelp/Facebook listing. Unclear whether this is a rebrand/continuation under the same ownership or the original Chaiken practice closed and a different tenant took the suite. Marking undetermined rather than guessing at continuity of ownership.",
+   "searched": ["Chaiken Dentist Calumet City IL 500 River Oaks Dr", "\"Calumet Dental\" OR \"Sonrisa Family Dental\" \"River Oaks\" Calumet City IL Chaiken closed"],
+   "intel": {
+    "distinguishing_notes": "Yelp shows the original 'Irwin I Chaiken, DDS' listing as closed; the address now also carries an active 'Calumet Dental' listing (Pediatric + General Dentistry) — ownership/continuity unclear.",
+    "sources": ["https://www.yelp.com/biz/irwin-i-chaiken-dds-calumet-city", "https://www.yelp.com/biz/calumet-dental-calumet-city"]
+   }
+  },
+  {
+   "location_id": "36988cc7a653e998",
+   "practice_name": "Sand Ridge Dental",
+   "zip": "60409",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.sandridgedental.com/",
+    "https://www.yelp.com/biz/sand-ridge-dental-calumet-city",
+    "https://www.carecredit.com/doctor-locator/calumet-city-il/sand-ridge-dental-associates-jhq264/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The practice's own site (sandridgedental.com) frames Dr. Jeffrey Hynek, DDS as the dentist running full-scope general/cosmetic/implant dentistry at this single Ring Rd address. No DSO or corporate signal found; the staff page could not be fetched (403) to fully confirm associate headcount, so confidence is medium. Classified true_independent based on the dentist-led own-branded site.",
+   "searched": ["Sand Ridge Dental Calumet City IL"],
+   "intel": {
+    "website_url": "https://www.sandridgedental.com/",
+    "website_note": "Own-branded modern practice site covering cosmetic/general/oral surgery services.",
+    "services": ["preventive care", "restorative treatment", "endodontics", "implants", "orthodontics", "teeth whitening", "oral surgery"],
+    "provider_notes": "Dr. Jeffrey Hynek, DDS.",
+    "distinguishing_notes": "Hours extend into evenings Tue/Wed (9am-7pm); offers CareCredit financing.",
+    "sources": ["https://www.sandridgedental.com/", "https://www.carecredit.com/doctor-locator/calumet-city-il/sand-ridge-dental-associates-jhq264/"]
+   }
+  },
+  {
+   "location_id": "aa2c71bec407be23",
+   "practice_name": "DR MARILYN D JACKSON & ASSOCIATES LTD",
+   "zip": "60411",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searched for the practice name/owner and its phone number (708) 757-3100; no matching website, directory profile, or news mentioning 'Marilyn D Jackson' or this practice at 1705 E Sauk Trail was found — results returned only unrelated Sauk Trail-named practices in different towns (Richton Park, Saukville WI). Insufficient web evidence to assign a tier; marking undetermined rather than guessing.",
+   "searched": ["Marilyn Jackson dentist Sauk Village IL", "\"Marilyn D Jackson\" dentist Chicago Heights OR \"Sauk Trail\" Illinois DDS", "\"(708) 757-3100\" dentist Illinois"]
+  },
+  {
+   "location_id": "b47b707472629d6f",
+   "practice_name": "VINCENT R. CRESCENZO, D.D.S., LTD.",
+   "zip": "60411",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://providerwire.com/general-practice-dentistry/illinois/chicago-heights/vincent-r-crescenzo-dds-ltd-1407290208",
+    "https://www.ratemds.com/doctor-ratings/954466/Dr-Vincent+R.-Crescenzo-Chicago+Heights-IL.html/",
+    "https://www.vitals.com/practice/crescenzo-dental-61688371-1440-4725-bbe2-4c4d8c5474ca"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directory listings confirm 'Crescenzo Dental Associates' at 171 W 10th St is Dr. Vincent R. Crescenzo's own general-practice group (AO = Vincent Crescenzo). No corporate parent, DSO brand, or additional locations surfaced. Classified single_loc_group given the multi-provider 'Associates' structure at one address with no chain signal.",
+   "searched": ["Vincent Crescenzo DDS Chicago Heights IL dentist"],
+   "intel": {
+    "distinguishing_notes": "RateMDs shows a notably low 1.4/5 patient rating with negative treatment/business-practice feedback — a reputational red flag worth noting.",
+    "sources": ["https://www.ratemds.com/doctor-ratings/954466/Dr-Vincent+R.-Crescenzo-Chicago+Heights-IL.html/"]
+   }
+  },
+  {
+   "location_id": "85bf005a4e8a2b76",
+   "practice_name": "M. AL ASADI DDS PC",
+   "zip": "60411",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.linkedin.com/in/mohammadasadi",
+    "https://www.doctorsnetwork.com/doctors/dentists/chicago-heights-il-60411/invite-mohammad-al-asadi-dds-fagd-10231",
+    "https://www.healthgrades.com/dentist/dr-mohammad-al-asadi-yhhnj"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:AL-ASADI_MOHAMMAD",
+   "reasoning": "LinkedIn identifies Dr. Mohammad Al-Asadi, DDS, FAGD as 'Dentist & Owner' of Cottage Hill Dental Care (Elmhurst), while other listings confirm he is also the named dentist at 'The Smile Group' at this Chicago Heights address (2400 Chicago Rd) — matching ctx's owner_reach across two ZIPs. A licensed dentist personally owns and operates multiple offices; classified dentist_multi (T3), never a DSO tier.",
+   "searched": ["\"Al Asadi\" DDS dentist Chicago Heights IL 2400 Chicago Rd"],
+   "intel": {
+    "provider_notes": "Dr. Mohammad Al-Asadi, DDS, FAGD — Northwestern University dental degree (1999), AEGD residency at UCSF (2000), Fellow of the Academy of General Dentistry.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Practices under multiple names (The Smile Group in Chicago Heights, Cottage Hill Dental Care in Elmhurst) as owner-dentist across a small personal group, not a DSO.",
+    "sources": ["https://www.linkedin.com/in/mohammadasadi", "https://www.healthgrades.com/dentist/dr-mohammad-al-asadi-yhhnj"]
+   }
+  },
+  {
+   "location_id": "ed176acf1f59e814",
+   "practice_name": "Dorsch, Bradley DDS",
+   "zip": "60411",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searched for 'Bradley Dorsch DDS' and the practice address/phone (333 Dixie Hwy); results only surfaced generic Chicago Heights dentist directories and an unrelated medical practice (Wellgroup Health Partners) at the same building — no site, profile, or listing specifically named Dorsch was found. The building appears to be a multi-tenant medical/dental complex; could not verify this specific practice's ownership. Marking undetermined rather than guessing.",
+   "searched": ["Bradley Dorsch DDS Chicago Heights IL dentist 333 Dixie Hwy", "\"Dorsch\" dentist Chicago Heights IL \"333 Dixie\" OR \"Wellgroup Health Partners\"", "\"Dorsch\" DDS dentist Chicago Heights Illinois NPI"]
+  },
+  {
+   "location_id": "0213cf1fb06e6c72",
+   "practice_name": "MARSHALL SHIKAMI DDS PC",
+   "zip": "60411",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-marshall-shikami-yp9jj",
+    "https://www.dandb.com/businessdirectory/marshallshikamiddspc-chicagoheights-il-5767835.html",
+    "https://npiprofile.com/npi/1801060421"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple directories confirm Dr. Marshall J. Shikami, DDS as the general dentist and owner of this PC, founded 1996, at 1526 S Halsted St. No second Shikami dentist, corporate parent, or DSO brand surfaced despite the record's 'family_practice' structural flag (which may reflect a same-surname associate not visible in these listings). Classified true_independent on the evidence found; no group/chain signal.",
+   "searched": ["Marshall Shikami DDS Chicago Heights IL dentist"],
+   "intel": {
+    "provider_notes": "Dr. Marshall J. Shikami, DDS — general dentist, practice founded 1996, bilingual (Spanish/English).",
+    "distinguishing_notes": "Long-tenured single-name practice (nearly 30 years by 2026); welcomes new patients.",
+    "sources": ["https://www.vitadox.com/practice/chicago-heights-il-60411/marshall-shikami-dds-pc/u6gjXYR6yQxZBoFt8n4vFW", "https://www.dandb.com/businessdirectory/marshallshikamiddspc-chicagoheights-il-5767835.html"]
+   }
+  },
+  {
+   "location_id": "dc97cfd285efc714",
+   "practice_name": "JOSEPSH W. NOETZEL D.D.S. AND ILENNE NOETZEL D.D.S.,LTD.",
+   "zip": "60411",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://smilesbynoetzel.com/",
+    "https://www.yelp.com/biz/drs-joseph-and-ilenne-noetzel-chicago-heights",
+    "https://findadentist.ada.org/dentists/dr-joseph-william-noetzel-chicago-heights-0038V00002ykCUyQAM-a1C8V00000kY9LUUA0"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own website smilesbynoetzel.com and multiple directories confirm Drs. Joseph & Ilenne Noetzel (both Marquette University-trained, Invisalign-certified) jointly run this single-location general practice at 500 Ashland Ave, serving Chicago Heights for nearly 40 years — consistent with the record's 1976 year_established. No DSO or corporate signal found. Classified single_loc_group: two dentist-owners, one location.",
+   "searched": ["Noetzel dentist Chicago Heights IL 500 Ashland Ave"],
+   "intel": {
+    "website_url": "https://smilesbynoetzel.com/",
+    "website_note": "Modern branded site ('Smiles by Noetzel' / Ashland Dental & Wellness), positions the practice as serving the community for ~40 years.",
+    "services": ["preventive dentistry", "cosmetic dentistry", "restorative dentistry", "Invisalign", "emergency dental care"],
+    "provider_notes": "Dr. Joseph W. Noetzel, DDS and Dr. Ilenne Noetzel, DDS — both Marquette University School of Dentistry; Invisalign Premiere Providers.",
+    "distinguishing_notes": "Extended hours M-Th 7:30am-7pm; open Saturdays.",
+    "sources": ["https://smilesbynoetzel.com/", "https://smilesbynoetzel.com/contact-us/"]
+   }
+  },
+  {
+   "location_id": "bca53dc782e74ba4",
+   "practice_name": "WILLIAM W. MISISCHIA D.D.S. LTD. JOSEPH W. NOETZEL D.D.S. LTD.",
+   "zip": "60411",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://providerwire.com/general-practice-dentistry/illinois/chicago-heights/william-w-misischia-dds-ltd-joseph-w-noetzel-dds-ltd-1992927271",
+    "https://www.doctorsnetwork.com/doctors/dentists/chicago-heights-il-60411/invite-william-misischia-dds-14560"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "ProviderWire confirms this legacy NPI (Misischia + Noetzel, Ltd partnership) as a dentist-owned general practice; search results for this address return the same 'Ashland Dental and Wellness Center'/'Smiles by Noetzel' material as the 500 Ashland Ave record above, suggesting 20200 Ashland Ave may be a legacy/alternate NPPES address string for the same Noetzel-affiliated office lineage rather than a confirmed separate physical site. No DSO or corporate signal found either way. Classified single_loc_group (dentist-owned partnership) on the evidence available; the address overlap with the other Noetzel record is noted, not resolved.",
+   "searched": ["Misischia Noetzel dentist Chicago Heights IL 20200 Ashland Ave"],
+   "intel": {
+    "distinguishing_notes": "Search results for this address surface the same Noetzel-affiliated 'Smiles by Noetzel'/Ashland Dental material as the 500 Ashland Ave record — likely the same underlying office lineage (Misischia was an earlier partner).",
+    "sources": ["https://providerwire.com/general-practice-dentistry/illinois/chicago-heights/william-w-misischia-dds-ltd-joseph-w-noetzel-dds-ltd-1992927271"]
+   }
+  },
+  {
+   "location_id": "f13c1033ea815174",
+   "practice_name": "Carbone, D DDS",
+   "zip": "60411",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.carecredit.com/doctor-locator/chicago-heights-il/midtown-dental-zzs432/",
+    "https://dentistoffices.com/dentist-office/1535484/chicago-heights-il/carbones-dental-clinic/",
+    "https://fixmytooth.com/emergency-dentist-in/chicago-heights/midtown-dental-clinic-carbone-mimi-dds/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This address (174 W Sauk Trail) now operates as 'Midtown Dental Clinic,' with directories listing Drs. Demetrios Carbone, Tammy Giannetta, and David Storm as the practicing dentists, plus an in-house Carbone Dental Lab. No corporate parent, PE sponsor, or DSO brand found — appears to be an independently branded multi-dentist local practice descended from the original 'Carbone's Dental Clinic.' Classified single_loc_group.",
+   "searched": ["Carbone DDS 174 W Sauk Trail Chicago Heights IL dentist"],
+   "intel": {
+    "provider_notes": "Drs. Demetrios Carbone, Tammy Giannetta, and David Storm practice at this location under the 'Midtown Dental Clinic' name.",
+    "services": ["pediatric dentistry", "prosthodontics", "general dentistry", "dentures", "crowns", "bridges", "implants"],
+    "distinguishing_notes": "Has an in-house dental lab (Carbone Dental Lab) offering implant/denture fabrication; hours M-W 8:30-6, Th 9-5, F-Sat 9-1.",
+    "sources": ["https://www.carecredit.com/doctor-locator/chicago-heights-il/midtown-dental-zzs432/", "https://www.midtowndent.com/dental-lab"]
+   }
+  }
+ ]
+}

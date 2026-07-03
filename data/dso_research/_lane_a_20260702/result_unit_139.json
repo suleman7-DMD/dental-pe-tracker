@@ -1,0 +1,388 @@
+{
+ "unit_id": "laneA_139",
+ "classifications": [
+  {
+   "location_id": "f66e53c5eb7bbc75",
+   "practice_name": "Dukanwala Dental",
+   "zip": "60659",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://apexdentalchicago.com/team-member/suhel-r-dukanwala/",
+    "https://www.yelp.com/biz/apex-dental-clinic-chicago",
+    "https://www.zocdoc.com/dentist/suhel-dukanwala-dmd-554731"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Web search confirms Dr. Suhel Dukanwala, DMD is a dentist-owner who operates two Apex-branded dental offices: this Chicago location (3334 W Peterson Ave, Apex Dental Clinic per Yelp, phone/email tied specifically to this address) and a second office in Cicero, IL (Apex Dental Care / apexdentalchicago.com). No corporate parent or national DSO brand signal appears anywhere; this is a small dentist-owned 2-location network, so dentist_multi rather than a single-site independent.",
+   "searched": [
+    "Dukanwala Dental Chicago 3334 W Peterson Ave",
+    "Apex Dental Care Chicago Cicero locations Dukanwala owner"
+   ],
+   "intel": {
+    "website_url": "https://apexdentalchicago.com/",
+    "website_note": "Small clinic website styled as a modern 'spa-like' dental office; lists Dr. Dukanwala as a team dentist across the Cicero and Chicago Apex-branded locations.",
+    "services": ["bridge", "dental cleaning", "root canal", "pediatric dentist consultation"],
+    "provider_notes": "Dr. Suhel Dukanwala, DMD — BDS Bangalore (2010), UIC International Dental Degree Program, DMD 2017; fluent English/Urdu/Hindi",
+    "sources": [
+     "https://apexdentalchicago.com/team-member/suhel-r-dukanwala/",
+     "https://www.zocdoc.com/dentist/suhel-dukanwala-dmd-593886"
+    ]
+   }
+  },
+  {
+   "location_id": "ea65a2d2272eb8fd",
+   "practice_name": "DENTAL 360 PULASKI 67 LLC",
+   "zip": "60659",
+   "assigned_tier": "branded_dso",
+   "pe_backed": false,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://dental360grp.com/chicago-locations/",
+    "https://dental360usa.com/illinois-locations/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:dental_360",
+   "reasoning": "Dental 360's own Chicago locations page lists a 'Lincoln and Preston' office at '5961 N. Lincoln Ave Suite #103 Chicago, IL 60659' — an exact address match confirmed via direct page fetch. NPI org name 'Dental 360 Pulaski 67 LLC' matches the per-location LLC naming pattern this DSO uses at its other offices. Documented branded-DSO location.",
+   "searched": [
+    "Dental 360 Pulaski Chicago 5961 N Lincoln Ave locations",
+    "fetch: https://dental360grp.com/chicago-locations/"
+   ]
+  },
+  {
+   "location_id": "e57a05202f51deeb",
+   "practice_name": "Zubedi Dental",
+   "zip": "60659",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-turfa-zubedi-ur2y7f",
+    "https://npidb.org/doctors/dental_health/dentist_122300000x/1295419885.aspx"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directory listings (Healthgrades, NPI DB) confirm Dr. Turfa Zubedi, DMD as the sole provider at 6137 N Fairfield Ave with matching phone. No dedicated practice website was found, but no group, chain, or corporate signal appears in any listing either, consistent with a small solo practice.",
+   "searched": ["Zubedi Dental Chicago 6137 N Fairfield Ave"]
+  },
+  {
+   "location_id": "e193073a4954650d",
+   "practice_name": "DEVON DENTAL SURGERY, LTD.",
+   "zip": "60660",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://devondentalchicago.com/",
+    "https://devondentalchicago.com/doctor-post/dr-nina-sanai/",
+    "https://www.yelp.com/biz/nima-sanai-dds-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The practice's own website confirms Devon Dental has operated at 1514 W Devon Ave since 1994 under owner-dentist Dr. Nina Sanai. A related Yelp listing for 'Nima Sanai DDS' at the same address indicates a second family-member dentist practicing there, consistent with the DB's family_practice/4-provider classification at ONE location, not a multi-site chain.",
+   "searched": ["Devon Dental Surgery Chicago 1514 W Devon Ave Nina Sanai"],
+   "intel": {
+    "website_url": "https://devondentalchicago.com/",
+    "website_note": "Established practice website with individual doctor bio pages; emphasizes 30+ years serving Rogers Park/Evanston.",
+    "provider_notes": "Dr. Nina Sanai, DDS — Northwestern University Dental School (top of class), UIC General Practice Residency (2 yrs hospital dentistry training)",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Family-run practice (Nina and apparently Nima Sanai) operating continuously at the same Devon Ave address since 1994.",
+    "sources": [
+     "https://devondentalchicago.com/doctor-post/dr-nina-sanai/",
+     "https://devondentalchicago.com/"
+    ]
+   }
+  },
+  {
+   "location_id": "e97275926bf6a31d",
+   "practice_name": "ASSOCIATES FOR DENTAL HEALTH, P.C.",
+   "zip": "60660",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-alicia-rubinstein-2drqm",
+    "https://npiregistry.cms.hhs.gov/provider-view/1205013877"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Web directories confirm Dr. Alicia Rubinstein, DDS practices at 5850 N Clark St with a matching phone number, (773) 561-2237. The DB shows 2 providers at this single address with no corporate/DSO signal, consistent with a small dentist-owned group practice at one location. Note: a similarly-named but distinct 'Associates for Dental Care LLC' operates at a different Chicago address (4801 W Peterson Ave) and is NOT the same practice — matched on address, not name.",
+   "searched": [
+    "Associates for Dental Health P.C. Chicago 5850 N Clark St Rubinstein",
+    "\"Associates for Dental Health\" Chicago 5850 Clark dentist",
+    "\"Alicia Rubinstein\" dentist Chicago 5850 Clark"
+   ]
+  },
+  {
+   "location_id": "7710d92c2a129b47",
+   "practice_name": "Edgewater Smile",
+   "zip": "60660",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.edgewatersmile.com/",
+    "https://www.edgewatersmile.com/our-practice"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The practice's own website confirms Dr. Kerstin Horbal, a third-generation dentist, has run this single-location family practice at 6033 N Sheridan Rd since 1972 (50+ years family-owned at the same address). Matches the DB's family_practice/2-provider classification with no corporate signal.",
+   "searched": ["Edgewater Smile Dental Chicago 6033 N Sheridan Rd"],
+   "intel": {
+    "website_url": "https://www.edgewatersmile.com/",
+    "website_note": "Modern, well-maintained practice site; positions itself as third-generation family dentistry with free validated parking at Malibu East Garage.",
+    "provider_notes": "Dr. Kerstin Horbal, DDS — honors graduate Univ. of Illinois Urbana-Champaign, DDS with distinction in Implantology from UIC College of Dentistry, 2009",
+    "distinguishing_notes": "Same location has hosted family dentistry continuously since 1972 (50+ years, three generations).",
+    "sources": [
+     "https://www.edgewatersmile.com/our-practice",
+     "https://www.edgewatersmile.com/"
+    ]
+   }
+  },
+  {
+   "location_id": "07a7c780ac4b9b37",
+   "practice_name": "RICK VACCARELLO",
+   "zip": "60660",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": ["https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60660/invite-rick-vaccarello-dds-9704"],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directory listing confirms Dr. Rick Vaccarello, DDS as sole general dentist at 1504 W Norwood St with matching phone. No website, group, or corporate signal found anywhere, consistent with a small solo independent practice.",
+   "searched": ["Rick Vaccarello dentist Chicago 1504 W Norwood St"]
+  },
+  {
+   "location_id": "8f9da6f71ac807ec",
+   "practice_name": "NORTH BROADWAY DENTAL LTD",
+   "zip": "60660",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.northbroadwaydental.com/",
+    "https://www.healthgrades.com/dentist/dr-john-tran-2dcgn"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The practice's own website confirms it is led by Dr. John Tran, DDS with a second dentist, Dr. Anu Ojas Wadivkar, both practicing at 5852 N Broadway St. Single location, dentist-owned, no DSO/corporate signal found (the DB's provider_count=1 appears to undercount vs. the website's two listed dentists, but does not change the tier).",
+   "searched": ["North Broadway Dental Ltd Chicago 5852 N Broadway Joanna Tran"],
+   "intel": {
+    "website_url": "https://www.northbroadwaydental.com/",
+    "website_note": "Established cosmetic-dentistry-focused practice site with staff bios.",
+    "provider_notes": "Dr. John Tran, DDS (lead) and Dr. Anu Ojas Wadivkar",
+    "services": ["dental implants", "crowns", "bridges", "teeth whitening"],
+    "sources": [
+     "https://www.northbroadwaydental.com/",
+     "https://www.northbroadwaydental.com/meet-us/meet-our-staff/"
+    ]
+   }
+  },
+  {
+   "location_id": "72fec851ffa9e7a6",
+   "practice_name": "TODAY'S DENTISTRY",
+   "zip": "60660",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.markgamalindadds.com/",
+    "https://www.zocdoc.com/dentist/mark-gamalinda-dds-8001"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own website confirms Dr. Mark Gamalinda, DDS has run this single-location private practice in Andersonville since graduating UIC Dental School in 1987. No group or corporate signal found, matching the DB's solo_established classification.",
+   "searched": ["Today's Dentistry Chicago 5667 N Clark St Mark Gamalinda"],
+   "intel": {
+    "website_url": "https://www.markgamalindadds.com/",
+    "website_note": "Long-established solo-practice website emphasizing cosmetic dentistry and gentle care for anxious patients.",
+    "provider_notes": "Dr. Mark Gamalinda, DDS — UIC Dental School graduate 1987; recognized by Consumer Research Council as a top dentist",
+    "owner_career_stage": "late_career",
+    "services": ["cosmetic dentistry", "dental implants", "teeth whitening", "veneers", "sleep apnea treatment"],
+    "sources": [
+     "https://www.markgamalindadds.com/",
+     "https://www.zocdoc.com/dentist/mark-gamalinda-dds-8001"
+    ]
+   }
+  },
+  {
+   "location_id": "7cb132e39ee57369",
+   "practice_name": "O'Meara Dental",
+   "zip": "60660",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-frank-omeara-ycyty",
+    "https://www.ehealthscores.com/care-lfctxwsqfc-frank-o'meara-chicago.html"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple directory listings confirm Dr. Frank O'Meara, D.D.S. as sole general-practice dentist at 6351 N Broadway St with matching phone. No website or chain/corporate affiliation found, consistent with a small solo independent practice.",
+   "searched": ["O'Meara Dental Chicago 6351 N Broadway"]
+  },
+  {
+   "location_id": "573e50dc75bec581",
+   "practice_name": "Broadway Dental Care",
+   "zip": "60660",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.broadwaydentalcarechicago.com/",
+    "https://www.healthgrades.com/dentist/dr-minh-nguyen-xwx46"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice's own website confirms Dr. Minh Nguyen, DDS established and has run this single-location practice at 5860 N Broadway St since 1994. No corporate or chain signal found.",
+   "searched": ["Broadway Dental Care Chicago 5860 N Broadway St"],
+   "intel": {
+    "website_url": "https://www.broadwaydentalcarechicago.com/",
+    "website_note": "Simple owner-operator practice site; established 1994.",
+    "provider_notes": "Dr. Minh Nguyen, DDS, founding dentist",
+    "distinguishing_notes": "Practice has continuously operated at the same address in Edgewater for over 30 years.",
+    "sources": ["https://www.broadwaydentalcarechicago.com/"]
+   }
+  },
+  {
+   "location_id": "8e9da6a44edecc36",
+   "practice_name": "North Clark Dental Ctr",
+   "zip": "60660",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://northclarkdental.com/",
+    "https://www.yelp.com/biz/north-clark-dental-center-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own website confirms this is a single-location practice at 6339 N Clark St established 1987, managed by Dr. Victor Tomasian. No chain/corporate or DSO signal found.",
+   "searched": ["North Clark Dental Ctr Chicago 6339 N Clark St"],
+   "intel": {
+    "website_url": "https://northclarkdental.com/",
+    "website_note": "Established practice site listing a full general/cosmetic service menu; open weekdays only (Mon-Thu).",
+    "provider_notes": "Managed by Dr. Victor Tomasian",
+    "services": ["braces/retainers", "bridges/dentures", "fillings", "Invisalign", "root canals", "teeth whitening", "veneers"],
+    "sources": [
+     "https://northclarkdental.com/",
+     "https://www.yelp.com/biz/north-clark-dental-center-chicago"
+    ]
+   }
+  },
+  {
+   "location_id": "b1a572fef236dd3a",
+   "practice_name": "DAVID S BEHM DDS PC",
+   "zip": "60660",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.zocdoc.com/dentist/david-behm-dds-125809",
+    "https://www.yelp.com/biz/david-s-behm-dds-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. David Behm, DDS practiced solo at 5600 N Sheridan Rd and announced retirement effective April 2021. The office is still listed/bookable under the continuing name 'Lake Tower Dental' at the same address/phone and is NOT flagged 'CLOSED' on Yelp (unlike a comparable nearby listing that explicitly is). No DSO/corporate signal found in any listing; treated as a continuing small independent practice, though the exact current owner-dentist post-retirement could not be independently confirmed.",
+   "searched": [
+    "David S Behm DDS Chicago 5600 N Sheridan Rd",
+    "\"Lake Tower Dental\" 5600 N Sheridan Chicago dentist"
+   ]
+  },
+  {
+   "location_id": "31fce23a7edcdcc1",
+   "practice_name": "CLARK DENTAL OFFICE LTD",
+   "zip": "60660",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-reza-khoshnood-xhprb",
+    "https://www.yelp.com/biz/khoshnood-reza-dds-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple consistent directory listings confirm Dr. Reza Khoshnood, DMD as sole dentist at 6210 N Clark St (matching phone), actively accepting new patients. No chain or corporate signal found, consistent with the DB's solo_high_volume classification.",
+   "searched": ["Clark Dental Office Ltd Chicago 6210 N Clark St Reza Khoshnood"],
+   "intel": {
+    "website_url": "https://www.clarkdentalchicago.com/",
+    "website_note": "Practice markets itself as 'Clark Dental Care'; multi-language office (Arabic + English) offering telehealth.",
+    "distinguishing_notes": "Dr. Khoshnood speaks Arabic; office offers telehealth services and accepts multiple insurance plans.",
+    "sources": [
+     "https://providers.sharecare.com/doctor/dr-reza-j-khoshnood",
+     "https://doctor.webmd.com/doctor/reza-khoshnood-86383d2c-a202-4ab3-8676-fe6d8e9a7bea-overview"
+    ]
+   }
+  },
+  {
+   "location_id": "044c1e3466bacc8f",
+   "practice_name": "Tadin Dental",
+   "zip": "60660",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": ["https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60660/invite-michael-tadin-do-13356"],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "A directory listing at the exact matching phone number (773) 973-6380 identifies the general dentist at this address as Michael Tadin (the 'D.O.' credential shown appears to be a directory data error, not evidence of a different specialty or ownership entity). No dedicated website, group, or corporate signal was found across four searches, consistent with a small solo practice.",
+   "searched": [
+    "Tadin Dental Chicago 6230 N Clark St",
+    "Tadin Dental Andersonville Chicago dentist 60660 reviews",
+    "NPI 1578605119 Tadin Dental Chicago dentist name",
+    "\"Tadin Dental\" 6230 Clark Chicago"
+   ]
+  },
+  {
+   "location_id": "1a7188cd1c1cc279",
+   "practice_name": "Kennedy Dental",
+   "zip": "60660",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/kathleen-b-kennedy-dds-chicago",
+    "https://www.loopnet.com/Listing/5700-N-Sheridan-Rd-Chicago-IL/27291648/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "closure_suspect: Yelp explicitly flags 'Kathleen B Kennedy, DDS - CLOSED' (updated July 2025) at 5700 N Sheridan Rd, and a commercial real-estate listing for the same address describes the space as a 'former dental/medical office' now available for lease. Strong signal of permanent closure — per protocol, not classified.",
+   "searched": [
+    "Kennedy Dental Chicago 5700 N Sheridan Rd",
+    "Kathleen Kennedy DDS 5700 N Sheridan Chicago closed permanently"
+   ]
+  }
+ ]
+}

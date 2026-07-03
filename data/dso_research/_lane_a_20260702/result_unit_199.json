@@ -1,0 +1,422 @@
+{
+ "unit_id": "laneA_199",
+ "classifications": [
+  {
+   "location_id": "192e712ab8a73cfe",
+   "practice_name": "Smigielski James DDS",
+   "zip": "60546",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [
+    "https://www.drlafemina.com/",
+    "https://www.yelp.com/biz/smigielski-james-dds-riverside"
+   ],
+   "evidence_artifacts": [
+    "Address 345 E Burlington St / phone (708) 447-6670 currently resolves to a DIFFERENT dentist (Gilbert J. Lafemina, DDS, FAGD, LTD, Ste B1) per reverse-phone web search",
+    "The real James Smigielski practice (own site smigielskidds.com, since 1996) is confirmed at 105 E Burlington St -- the SAME unit's other record 509179903280a573"
+   ],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searched the practice name and the specific phone number (708) 447-6670; the phone/address combination on this NPI record now belongs to an unrelated dentist (Lafemina), while the actual operating James Smigielski practice sits two doors down at 105 E Burlington under a different NPI in this same unit. This looks like a stale/superseded NPI address rather than a live independent location, so tier cannot be assigned honestly -- closure_suspect (stale address, occupant changed).",
+   "searched": [
+    "Smigielski Dental Riverside IL dentist",
+    "\"708-447-6670\" OR \"447-6670\" dentist Riverside IL",
+    "Smigielski James DDS 345 Burlington Riverside NPI 1457479065"
+   ]
+  },
+  {
+   "location_id": "509179903280a573",
+   "practice_name": "Smigielski Dental",
+   "zip": "60546",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "http://www.smigielskidds.com/",
+    "https://findadentist.ada.org/il/cook/riverside/general-practice/dr-james-m-smigielski-1654965",
+    "https://www.facebook.com/SmigielskiDDS/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own website smigielskidds.com and ADA Find-a-Dentist listing confirm Dr. James M. Smigielski, a UIC-1992 grad, has practiced solo at this 105 E Burlington St office since 1996 with no corporate parent or brand affiliation mentioned anywhere. Phone (708) 442-7727 matches exactly across all sources. Classic solo owner-operator profile.",
+   "searched": [
+    "Smigielski Dental Riverside IL dentist"
+   ],
+   "intel": {
+    "website_url": "http://www.smigielskidds.com/",
+    "website_note": "Simple single-dentist practice site; ADA member in good standing, accepting new patients.",
+    "services": ["preventative dentistry", "aesthetic dentistry", "restorative dentistry"],
+    "provider_count_web": 1,
+    "provider_notes": "Dr. James M. Smigielski, DDS, UIC College of Dentistry grad 1992; practicing at this office since 1996.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Dr. Smigielski has traveled to Gualan, Guatemala (2004, 2005) to provide free dentistry to underserved populations.",
+    "sources": ["http://www.smigielskidds.com/", "https://findadentist.ada.org/il/cook/riverside/general-practice/dr-james-m-smigielski-1654965"]
+   }
+  },
+  {
+   "location_id": "5149056b1461ac3d",
+   "practice_name": "Potamianos Dental",
+   "zip": "60546",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "http://www.drgarey.com/patients.html",
+    "http://www.drgarey.com/garey-potamianos-ltd.html",
+    "https://www.healthgrades.com/dentist/dr-garey-potamianos-xfvry"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own website drgarey.com confirms Dr. Garey Potamianos, DDS (Loyola 1988) has run this private practice at 16 E Burlington St for over 32 years; address and phone (708) 777-1800 match exactly. No group, DSO, or corporate signals -- solo owner-operator, now also teaching part-time at Midwestern University.",
+   "searched": [
+    "Potamianos Dental Riverside IL"
+   ],
+   "intel": {
+    "website_url": "http://www.drgarey.com/",
+    "website_note": "Established solo-practice site listing full general-dentistry service menu and staff page.",
+    "services": ["exams", "digital radiographs", "cleanings", "gum treatment", "fillings", "bonding", "cosmetic", "crowns", "root canal therapy", "extractions", "dentures", "implants"],
+    "provider_count_web": 1,
+    "provider_notes": "Dr. Garey Potamianos, DDS, Loyola University 1988; now also clinical assistant professor at Midwestern University.",
+    "owner_career_stage": "late_career",
+    "insurance_note": "Accepts most traditional PPO plans, CareCredit, cash/checks/credit cards.",
+    "sources": ["http://www.drgarey.com/patients.html", "http://www.drgarey.com/garey-potamianos-ltd.html"]
+   }
+  },
+  {
+   "location_id": "260ffcb32c756c1f",
+   "practice_name": "VILLASENOR DENTAL CARE, P. C.",
+   "zip": "60546",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npiregistry.cms.hhs.gov/provider-view/1043465743",
+    "https://www.everydentist.com/profiles/67425/",
+    "https://www.yelp.com/biz/villasenor-dental-care-pc-north-riverside"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Federal NPI registry (matching primary NPI 1043465743) plus multiple independent directories confirm a single office at 8711 W Cermak Rd staffed by two dentists, Martha C. Villasenor DDS and Devang Thakkar DDS MS, with Villasenor named as the practice's authorized official/owner. One location, 2 dentists, no DSO/brand signal -- dentist-owned small group.",
+   "searched": [
+    "Villasenor Dental Care North Riverside IL"
+   ]
+  },
+  {
+   "location_id": "6441fcd7beda066a",
+   "practice_name": "Licari Dental",
+   "zip": "60546",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-frank-licari-g8wlc"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Web search confirms Dr. Frank William Licari, DDS practices solo at 26 Northgate Rd, Riverside IL 60546, phone (708) 447-8437, matching this record exactly. No personal practice website was found, only aggregator directories, but all consistently show a single solo dentist with no group/DSO signal.",
+   "searched": [
+    "Licari Dental Riverside IL",
+    "\"26 Northgate\" Riverside IL dentist Licari"
+   ]
+  },
+  {
+   "location_id": "37b5507927f9500a",
+   "practice_name": "Ciebien Dental",
+   "zip": "60546",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.doctorsnetwork.com/doctors/dentists/riverside-il-60546/invite-gerald-ciebien-dds-17839",
+    "https://www.healthgrades.com/dentist/dr-gerald-ciebien-y9pkptz"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple independent directories confirm Dr. Gerald Ciebien, DDS practices at this exact phone number (708) 442-5740 in Riverside, IL, described as a family general-dentistry office. No dedicated website surfaced, but no group/DSO signal either -- consistent single-provider profile.",
+   "searched": [
+    "Ciebien Dental Riverside IL"
+   ]
+  },
+  {
+   "location_id": "7edec4151f858c23",
+   "practice_name": "CHICAGO MALL DENTAL ASSOCIATES, LLC",
+   "zip": "60546",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "ao_cluster",
+   "evidence_urls": [
+    "https://npiprofile.com/npi/1245741578",
+    "https://opennpi.com/provider/1235507583",
+    "https://opennpi.com/provider/1700397031",
+    "https://north-riverside-mall-dental.business.site/",
+    "https://www.yelp.com/biz/lincolnwood-mall-dental-lincolnwood"
+   ],
+   "evidence_artifacts": [
+    "Rostislav Krasnov, DDS is confirmed via independent NPI-registry mirrors (npiprofile, opennpi) as President/owner of BOTH 'Chicago Mall Dental Associates, LLC' (7501 W Cermak Rd, North Riverside, this location) AND 'Chicago Mall Dental, LLC' (3333 W Touhy Ave, Lincolnwood, 60712) -- same brand 'Mall Dental' at both, matching the 2-location owner reach"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:KRASNOV_ROSTISLAV",
+   "reasoning": "Rostislav Krasnov, a licensed DDS (confirmed via his own NY-based provider profile), is independently cross-referenced across two federal-NPI mirror sites as owner of a small 'Mall Dental' branded operation with only 2 IL locations -- this one (North Riverside, active per its own Google Business Profile/business.site page and current hours) and a sister Lincolnwood store that Yelp shows as CLOSED. Because the network tops out at 2 locations (well under the 10+ protected-network threshold) and the controller is himself a dentist rather than a non-dentist corporate entity, this fits dentist-owned multi-location rather than stealth/branded DSO.",
+   "searched": [
+    "Chicago Mall Dental Associates North Riverside IL Rostislav Krasnov dentist",
+    "\"North Riverside Mall Dental\" 7501 Cermak reviews open",
+    "\"Mall Dental\" Krasnov locations Chicago Lincolnwood Skokie dental"
+   ]
+  },
+  {
+   "location_id": "96cd529163d96a6c",
+   "practice_name": "AMANPREET SINGH DDS PC",
+   "zip": "60555",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "http://www.warrenvilledentalgroup.com/",
+    "https://findadentist.ada.org/dentists/dr-amanpreet-singh-warrenville-0038V00002yjWuKQAU-a1C8V00000lWQ3VUAW",
+    "https://www.healthgrades.com/dentist/dr-amanpreet-singh-y52pf"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own website warrenvilledentalgroup.com and ADA listing confirm Dr. Amanpreet (Preet) Singh, DDS owns and practices general/family/cosmetic dentistry at this single 28W530 Batavia Rd office; address and phone (630) 393-4600 match exactly. No DSO or multi-location signal.",
+   "searched": [
+    "Amanpreet Singh DDS Warrenville IL dentist"
+   ],
+   "intel": {
+    "website_url": "http://www.warrenvilledentalgroup.com/",
+    "website_note": "Practice site branded 'Warrenville Dental Group', run by Dr. Preet Singh; markets general/family/cosmetic services.",
+    "services": ["dental exams", "smile makeovers", "teeth whitening", "veneers", "crowns", "x-rays", "cleanings"],
+    "provider_notes": "Dr. Amanpreet Singh, DDS, University of Illinois at Chicago grad.",
+    "sources": ["http://www.warrenvilledentalgroup.com/", "https://www.healthgrades.com/dentist/dr-amanpreet-singh-y52pf"]
+   }
+  },
+  {
+   "location_id": "7e353f7bb9da5bb6",
+   "practice_name": "FAMILY FIRST DENTAL LLC",
+   "zip": "60555",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.myfamilyfirstdental.com/about-us/meet-the-doctors/",
+    "https://www.bbb.org/us/il/warrenville/profile/dentist/family-first-dental-llc-0654-33004155",
+    "https://www.healthgrades.com/dentist/dr-steven-theodosis-2dsrl"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own website myfamilyfirstdental.com ('Meet the Doctors') and BBB profile confirm Family First Dental is a single-location office at 28365 Davis Pkwy Ste 206 led by Dr. Steven Theodosis, DDS; address and phone (630) 836-8995 match exactly. No parent company, franchise, or DSO brand mentioned.",
+   "searched": [
+    "Family First Dental Warrenville IL Steven Theodosis"
+   ],
+   "intel": {
+    "website_url": "https://www.myfamilyfirstdental.com/",
+    "website_note": "Multi-dentist family-dental site with a 'Meet the Doctors' team page; Healthgrades shows a 4.2/5 patient-recommend score.",
+    "provider_notes": "Dr. Steven Paul Theodosis, DDS -- Academy of General Dentistry Fellow, Invisalign certified.",
+    "provider_count_web": 3,
+    "sources": ["https://www.myfamilyfirstdental.com/about-us/meet-the-doctors/", "https://www.healthgrades.com/dentist/dr-steven-theodosis-2dsrl"]
+   }
+  },
+  {
+   "location_id": "c5a08787666cb3da",
+   "practice_name": "Ryan Dental",
+   "zip": "60555",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.facebook.com/Ryanfamilydental/",
+    "https://www.yelp.com/biz/richard-ryan-dds-pc-ryan-family-dental-warrenville",
+    "https://www.healthgrades.com/dentist/dr-richard-ryan-2pwdq"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "'Ryan Family Dental' has served this exact address (2 S 631 Route 59, Warrenville) since 1977 under Dr. Richard J. Ryan, DDS (University of Illinois 1977 grad); phone (630) 393-2733 matches exactly. Solo owner-operator with decades of continuous ownership, no group/DSO signal.",
+   "searched": [
+    "Ryan Dental Warrenville IL dentist route 59"
+   ],
+   "intel": {
+    "website_url": "https://ryanfamilydental.com",
+    "website_note": "Long-running family-owned practice branded 'Ryan Family Dental'.",
+    "provider_notes": "Dr. Richard J. Ryan, DDS, University of Illinois 1977; member ADA, Illinois Dental Society, Fox River Valley Dental Society, Chicago Dental Society.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Same address has served Warrenville families since 1977 (nearly 50 years continuous operation).",
+    "sources": ["https://www.facebook.com/Ryanfamilydental/", "https://www.healthgrades.com/dentist/dr-richard-ryan-2pwdq"]
+   }
+  },
+  {
+   "location_id": "e631aae442c8712a",
+   "practice_name": "Potempa Dental",
+   "zip": "60555",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.drgregpotempa.com/",
+    "https://www.drgregpotempa.com/dr-gregory-potempa/",
+    "https://www.healthgrades.com/dentist/dr-gregory-potempa-y27v5"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own website drgregpotempa.com confirms Dr. Gregory Potempa, DDS FAGD started this practice in January 1979 at 2 S 676 Route 59 and still owns/runs it as 'Gregory Potempa DDS, Ltd.'; address and phone (630) 393-9300 match exactly. No corporate or brand affiliation.",
+   "searched": [
+    "Potempa Dental Warrenville IL dentist"
+   ],
+   "intel": {
+    "website_url": "https://www.drgregpotempa.com/",
+    "website_note": "Solo-practice site with services/blog pages; markets general, family and cosmetic dentistry.",
+    "services": ["general dentistry", "cosmetic dentistry", "exam and cleaning", "emergency dentistry", "dental implants", "fillings", "crowns", "teeth whitening", "Invisalign", "root canal", "sleep apnea appliance"],
+    "provider_notes": "Dr. Gregory Potempa, DDS, University of Illinois Urbana-Champaign + Loyola University School of Dentistry; founding member, Quad Cities Association for the Study of Orthodontics.",
+    "owner_career_stage": "late_career",
+    "insurance_note": "Accepts most major insurance carriers; CareCredit financing offered.",
+    "sources": ["https://www.drgregpotempa.com/", "https://www.drgregpotempa.com/dr-gregory-potempa/"]
+   }
+  },
+  {
+   "location_id": "d0be19a3086472ef",
+   "practice_name": "THOMAS J. DELACEY, D.D.S.",
+   "zip": "60555",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.delaceydental.com/",
+    "https://www.delaceydental.com/meet-the-docs/",
+    "https://www.healthgrades.com/dentist/dr-thomas-delacey-y6r35"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own site delaceydental.com ('Meet the Docs') confirms a single office at 28377 Davis Pkwy Ste 609, Warrenville, run by Dr. Thomas J. DeLacey, DDS (UIC 1986 grad) alongside associate Dr. Bryce A. Larson, DMD; phone (630) 836-8880 matches exactly. Dentist-owned single-location group, no DSO/parent signal.",
+   "searched": [
+    "Thomas Delacey DDS Warrenville IL dentist"
+   ],
+   "intel": {
+    "website_url": "https://www.delaceydental.com/",
+    "website_note": "Established practice site (30+ years serving Naperville/Warrenville) with team and services pages.",
+    "technology": ["CEREC (same-visit restorations)", "Nobel implants", "Invisalign"],
+    "provider_count_web": 2,
+    "provider_notes": "Dr. Thomas J. DeLacey, DDS, UIC 1986 grad; Dr. Bryce A. Larson, DMD, associate.",
+    "owner_career_stage": "late_career",
+    "sources": ["https://www.delaceydental.com/meet-the-docs/", "https://www.delaceydental.com/"]
+   }
+  },
+  {
+   "location_id": "803b17d64715c9f2",
+   "practice_name": "ELIZABETH NINAN DDS PC",
+   "zip": "60555",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.irisfamilydental.com/",
+    "https://www.irisfamilydental.com/about-us/",
+    "https://findadentist.ada.org/il/dupage/warrenville/general-practice/dr-elizabeth-ninan-3438114"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own website irisfamilydental.com confirms Dr. Elizabeth Ninan runs 'Iris Family Dental' at 29W150 Butterfield Rd Ste 101 (phone (630) 393-2120 matches exactly); the site is built entirely around her as sole named dentist with no second doctor surfaced despite the NPI record's provider_count of 2 (likely a hygienist/associate not featured). No group or DSO signal found.",
+   "searched": [
+    "Elizabeth Ninan DDS Warrenville IL dentist"
+   ]
+  },
+  {
+   "location_id": "e576bb36cd68838a",
+   "practice_name": "MARJORIE MILLER, D.D.S., P.C.",
+   "zip": "60558",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/marjorie-miller-dds-magd-western-springs-2",
+    "https://www.yelp.com/biz/modern-endodontics-western-springs",
+    "https://www.yelp.com/biz/western-springs-dentistry-western-springs"
+   ],
+   "evidence_artifacts": [
+    "Yelp explicitly lists 'Marjorie Miller, DDS, MAGD' (Oral Surgeons category) at 518 Hillgrove Ave as CLOSED",
+    "This record's own phone number (708) 784-9930 currently belongs to a DIFFERENT tenant in the same building -- Modern Endodontics (Dr. Edward Kasper, DMD), Ste 150 -- not a general/large-group dental practice",
+    "A third, unrelated practice ('Western Springs Dentistry', Ste 200, phone 246-3635) also occupies this same address"
+   ],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Web evidence points to closure/turnover, not an operating large-group practice: Yelp flags the original Marjorie Miller solo practice as CLOSED, and the phone number tied to this specific NPI record now rings a different specialist practice (Modern Endodontics) at the same multi-tenant building. The 'large_group, 6 providers, established 2024' data does not match any occupant found on the web -- closure_suspect / address reused by unrelated tenant(s), cannot honestly assign a tier.",
+   "searched": [
+    "Marjorie Miller DDS Western Springs IL dentist",
+    "\"518 Hillgrove\" Western Springs dental group 2024",
+    "\"708-784-9930\" OR \"784-9930\" dental Western Springs"
+   ]
+  },
+  {
+   "location_id": "478c7b04e4eb4cd7",
+   "practice_name": "Versaci Vincent",
+   "zip": "60558",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "http://www.versacidental.com/",
+    "http://www.versacidental.com/about.html",
+    "https://www.healthgrades.com/dentist/dr-vincent-versaci-3cg9j"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own website versacidental.com confirms Vincent T. Versaci, D.D.S., P.C. has run this solo general/cosmetic practice at 4471 Lawn Ave since 1989 (35 years as of the site's own copy); phone (708) 246-6006 matches exactly. No corporate or DSO affiliation.",
+   "searched": [
+    "Versaci Vincent dentist Western Springs IL"
+   ],
+   "intel": {
+    "website_url": "http://www.versacidental.com/",
+    "website_note": "Long-established solo-practice site with about/hours/location pages.",
+    "provider_notes": "Dr. Vincent T. Versaci, DDS, University of Illinois Chicago College of Dentistry 1987 (Omicron Kappa Upsilon honor society); BS Biology, UIUC 1983.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Office located directly above Vie restaurant in downtown Western Springs, with free parking out front.",
+    "sources": ["http://www.versacidental.com/about.html", "http://www.versacidental.com/"]
+   }
+  },
+  {
+   "location_id": "b9e435cd157ee720",
+   "practice_name": "Krepps Dental",
+   "zip": "60558",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npino.com/dentist/1760573224-dr.-michael-j-krepps/",
+    "https://www.doctorsnetwork.com/doctors/dentists/western-springs-il-60558/invite-michael-krepps-dds-11020"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple independent directories confirm Dr. Michael J. Krepps, DDS practices general/family dentistry at 308 Rugeley Rd, Western Springs, phone (773) 767-3465 matching this record. No personal website was found, but no group/DSO signal appeared either -- consistent solo-provider profile.",
+   "searched": [
+    "Krepps Dental Western Springs IL dentist"
+   ]
+  }
+ ]
+}

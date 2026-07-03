@@ -281,3 +281,26 @@ urls_checked + unit_id + verifier tag). PM reviewed all 8 non-CONFIRMs — ACCEP
 REMAINING VERDICT WORK: second-flight units (the 3 research runs above) return their own inline
 verdicts in each workflow's return payload — APPEND those to the SAME `_verdicts_wave1.json`
 (the merge gate reads exactly one flat file, WAVE="wave1" hardcode) before running the merge.
+
+### §6c External analyst review (2026-07-02 ~93% window) — HARD GATES ADOPTED
+
+An independent analyst review + randomized audit (n=12, seed 20260703) found NO hallucination
+pattern (9/12 strong pass, 0 fabricated practices/URLs; all sampled DSO claims held). Adopted
+as BINDING pre-merge gates:
+1. **HARD GATE: no merge/consolidation until `landed T4/T5 claims == verdict-covered claims`**
+   (assert in the merge step), or uncovered claims are DELIBERATELY triaged with a note. At
+   §6c authoring: 77 landed claims, 35 covered, 42 awaiting inline v2 verdicts (verify agents
+   hadn't completed yet — journals showed research-stage results only).
+2. **PM HOLD: row `b4ae96a81c4e81fb` DISTINCTIVE DENTAL CARE (626 N Addison Rd, Villa Park,
+   assigned dentist_multi)** — analyst found cited site now centers on Oswego/Dr. Zaidi; Villa
+   Park Bhojani evidence looks historical; possible ownership transition (Serenity Dental).
+   Route to hold `operating_status_or_ownership_transition` at merge — do NOT write as clean T3.
+3. Post-wave randomized audit becomes standing practice: fixed-seed n=20, forced inclusion of
+   T4/T5 + T1/T2/T3 strata, independent URL verification.
+4. Merge-review rule for T1/T2/T3: a directory listing alone proves existence/address, NOT
+   ownership tier — require official site / provider bio / state record / multi-source corrob.
+   Weak-evidence examples flagged: JACK S. LITZ DDS LTD, Paulos/Neighborhood Dental.
+5. Stale-page rule: cited page showing old doctor/network evidence while the current site
+   suggests a different operator → fail closed to hold.
+6. Opportunistic intel stays labeled `lane_a_census_opportunistic` and is NEVER ownership
+   evidence unless independently source-backed.

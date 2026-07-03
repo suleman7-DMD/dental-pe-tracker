@@ -1,0 +1,398 @@
+{
+ "unit_id": "laneA_184",
+ "classifications": [
+  {
+   "location_id": "788e64817c0c68d9",
+   "practice_name": "Kay Dental",
+   "zip": "60181",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.neisdental.com/meet-the-team",
+    "https://www.neisdental.com/dr-douglas-kay/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched Dr. Douglas Kay / Kay Dental at 17W535 Butterfield Rd; the neisdental.com site (same suite 201, same street address) lists Dr. Kay as a co-practicing dentist alongside Dr. John Neis with no DSO/corporate mention. This is a dentist-owned two-provider practice at one location, so single_loc_group rather than solo.",
+   "searched": [
+    "Kay Dental Oakbrook Terrace IL 630-834-7446",
+    "neisdental.com practice overview"
+   ],
+   "intel": {
+    "website_url": "https://www.neisdental.com/",
+    "website_note": "Modern, well-maintained site branded as a family/cosmetic practice; presents as independent, no DSO language.",
+    "services": ["family dentistry", "cosmetic dentistry", "Invisalign"],
+    "provider_count_web": 2,
+    "provider_notes": "Dr. John Neis, DMD (Midwestern University, 2017 grad); Dr. Douglas Kay, DDS (35+ years experience).",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Two-dentist office sharing one suite; Kay appears to be the longer-tenured/senior dentist, Neis the newer associate.",
+    "sources": ["https://www.neisdental.com/", "https://www.neisdental.com/meet-the-team"]
+   }
+  },
+  {
+   "location_id": "1f7da1cafae16ea0",
+   "practice_name": "Westbrook Dental Ctr",
+   "zip": "60181",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.westbrookdentalpc.com/",
+    "https://www.yelp.com/biz/westbrook-dental-center-oakbrook-terrace"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice's own site (westbrookdentalpc.com, a 'PC' single-owner professional corporation) names Dr. Stephen J. Slomski as the practicing dentist, established 1984, one location, no DSO/parent-company language found anywhere.",
+   "searched": ["Westbrook Dental Center Oakbrook Terrace IL Transam Plaza"],
+   "intel": {
+    "website_url": "https://www.westbrookdentalpc.com/",
+    "website_note": "Long-established (1984) single-location family practice site; touts '4 generations of families' as patients.",
+    "services": ["general dentistry", "cosmetic dentistry", "teeth whitening", "implants", "veneers"],
+    "provider_notes": "Dr. Stephen J. Slomski.",
+    "insurance_note": "Accepts most traditional insurance plans.",
+    "sources": ["https://www.westbrookdentalpc.com/", "https://www.yelp.com/biz/westbrook-dental-center-oakbrook-terrace"]
+   }
+  },
+  {
+   "location_id": "271dbc75ba29942f",
+   "practice_name": "A. GARRETT BERLEY D.D.S.",
+   "zip": "60181",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/a-garrett-berley-jr-dds-and-associates-oakbrook-terrace"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "closure_suspect: Yelp (updated June 2026) marks 'A. Garrett Berley Jr., DDS & Associates' at 1S132 Summit Ave as CLOSED; practice website agberleydds.com failed to resolve (DNS error). Older directory listings (Healthgrades, Sharecare, Facebook) still show it as active but are not dated recently enough to override the closure signal, so status held as undetermined rather than guessed active/inactive.",
+   "searched": [
+    "Dr. Garrett Berley DDS Oakbrook Terrace dentist Summit Ave",
+    "A Garrett Berley DDS Oakbrook Terrace open 2026 dentist office",
+    "agberleydds.com (fetch failed - DNS)"
+   ]
+  },
+  {
+   "location_id": "282dd28ae810bb5d",
+   "practice_name": "GALLERY DENTAL LTD.",
+   "zip": "60181",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.gallerydentalofoakbrook.com/",
+    "https://hinsdalemag.com/gallery-dental-of-oak-brook/",
+    "https://m.yelp.com/biz/gallery-dental-of-naperville-naperville"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:NOTO_PETER",
+   "reasoning": "Dr. Peter Noto's own practice site (gallerydentalofoakbrook.com) plus a matching Naperville listing (629 S Washington St, 60540) confirm he owns/practices at two locations under the Gallery Dental brand, matching the ctx owner_reach of 2 (60181, 60540). No corporate/DSO signal at either address; consistent dentist-owned small network.",
+   "searched": [
+    "Gallery Dental Oakbrook Terrace IL Peter Noto dentist",
+    "Gallery Dental of Oakbrook Peter Noto locations Naperville OR Oakbrook"
+   ],
+   "intel": {
+    "website_url": "https://www.gallerydentalofoakbrook.com/",
+    "website_note": "Polished cosmetic-dentistry-focused site; positions Dr. Noto as an LVI Global-trained cosmetic/TMJ specialist.",
+    "services": ["cosmetic dentistry", "TMJ/full mouth rehabilitation", "dental implants", "endodontics", "Invisalign"],
+    "technology": ["digital impressions", "3D CBCT", "computerized bite measurement"],
+    "provider_notes": "Dr. Peter Noto, Fellow of the Academy of General Dentistry, LVI Global graduate.",
+    "distinguishing_notes": "Positions itself as a high-end complex-cosmetic/TMJ practice rather than routine GP care; two-location owner-operator group (Oakbrook Terrace + Naperville).",
+    "sources": ["https://www.gallerydentalofoakbrook.com/", "https://hinsdalemag.com/gallery-dental-of-oak-brook/"]
+   }
+  },
+  {
+   "location_id": "8c9ca3ea473dd3bc",
+   "practice_name": "JAWAD G GHANAYEM DDS LTD",
+   "zip": "60181",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://yelp.com/biz/jawad-g-ghanayem-dds-oakbrook-terrace",
+    "https://www.bbb.org/us/il/oakbrook-terrace/profile/dentist/jawad-g-ghanayem-dds-0654-88244036"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple independent directories (Yelp, BBB, Healthgrades, WebMD) consistently show a single-location solo practice at 1S132 Summit Ave Ste 302, '37 years in business,' no other addresses or corporate signals found.",
+   "searched": ["Jawad Ghanayem DDS Oakbrook Terrace dentist"]
+  },
+  {
+   "location_id": "b4ae96a81c4e81fb",
+   "practice_name": "DISTINCTIVE DENTAL CARE",
+   "zip": "60181",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.distinctivedental.com/dr-javed-bhojani/",
+    "https://www.facebook.com/DistinctiveDentalCareOswego/",
+    "https://www.patientconnect365.com/Dentists/Illinois/Bloomingdale/60108/Distinctive_Dental_of_Bloomingdale"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:BHOJANI_JAVED",
+   "reasoning": "Dr. Javed Bhojani, DDS (practicing since 1988) founded Distinctive Dental Care in 2002 at this DuPage County location (matches ctx AO owner_reach zips 60108/60181) and later added an Oswego location in 2014. A former Bloomingdale location has since split off under a different owner (now 'Serenity Dental'), so the active Bhojani-controlled footprint is a small dentist-owned multi-location group, not a 10+-location network -- no corporate/DSO/management-company language found on any of the group's sites.",
+   "searched": [
+    "Distinctive Dental Care Javed Bhojani Villa Park IL dentist",
+    "Distinctive Dental Care Villa Park Oswego dental support OR management OR DSO",
+    "Distinctive Dental Care Bhojani founder history locations list Illinois"
+   ],
+   "intel": {
+    "website_url": "https://www.distinctivedental.com/dr-javed-bhojani/",
+    "website_note": "Group site with per-dentist bio pages across its Villa Park/Oswego locations; positions itself on training/technology rather than corporate branding.",
+    "services": ["dental implants", "cosmetic dentistry", "endodontics (root canals)", "orthodontics/Invisalign"],
+    "provider_notes": "Dr. Javed Bhojani, DDS, Case Western Reserve University School of Dentistry (1988 grad), Masters training in Implant Dentistry.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Founder-led small group practicing since 1988/founded 2002; former Bloomingdale office has since been sold off to an unrelated owner (rebranded Serenity Dental), so brand footprint is smaller than name recognition suggests.",
+    "sources": ["https://www.distinctivedental.com/dr-javed-bhojani/", "https://www.patientconnect365.com/Dentists/Illinois/Bloomingdale/60108/Distinctive_Dental_of_Bloomingdale"]
+   }
+  },
+  {
+   "location_id": "bc6226e42200a20f",
+   "practice_name": "EZ DENTAL CARE",
+   "zip": "60181",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dentalplans.com/dentists/illinois/oakbrook-terrace/60181/dr-sayed-shah-74986/",
+    "https://www.dentalplans.com/dentists/illinois/saint-charles/60174/dr-sayed-shah-55836/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:SHAH_SAYED",
+   "reasoning": "NPI/directory records show Dr. Sayed Haroon Shah, DMD is the authorized official/dentist operating EZ Dental Care Inc at this Oakbrook Terrace address plus two more offices (Hoffman Estates, Saint Charles IL) under the same owner-dentist -- a small dentist-owned multi-location practice, not a branded/corporate DSO.",
+   "searched": [
+    "EZ Dental Care Oakbrook Terrace IL Sayed Haroon Shah dentist",
+    "EZ Dental Sayed Shah Oakbrook Terrace Hoffman Estates Saint Charles owner locations"
+   ]
+  },
+  {
+   "location_id": "4c06a6884d4cd2f8",
+   "practice_name": "Hawkins Dental",
+   "zip": "60181",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.doctorsnetwork.com/doctors/dentists/oakbrook-terrace-il-60181/invite-robert-hawkins-dds-11710",
+    "https://www.healthgrades.com/dentist/dr-robert-hawkins-2865q"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directory listings consistently show Dr. Robert I. Hawkins, DDS as a solo general-practice dentist at 17W682 Butterfield Rd Ste 304, single address, no other locations or corporate signals found.",
+   "searched": ["Hawkins Dental Oakbrook Terrace IL 17w682 Butterfield"],
+   "intel": {
+    "website_note": "No dedicated practice website surfaced; profile drawn from aggregator/directory listings only.",
+    "provider_notes": "Dr. Robert I. Hawkins, DDS, 17+ years of general-practice experience.",
+    "sources": ["https://www.doctorsnetwork.com/doctors/dentists/oakbrook-terrace-il-60181/invite-robert-hawkins-dds-11710"]
+   }
+  },
+  {
+   "location_id": "c4e37ebb9c7673a0",
+   "practice_name": "Handcrafted Smiles",
+   "zip": "60181",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://villaparkdentalil.com/",
+    "https://www.yelp.com/biz/handcrafted-smiles-villa-park-3"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "413 W Saint Charles Rd is now operating as 'Villa Park Dentistry, formerly known as Handcrafted Smiles,' owned by Dr. Sameera Jagirdar and described on its own site as an independent, family-owned practice with no corporate/DSO affiliation. A separately-branded 'Handcrafted Smiles' entity (different doctors: Gomolplitinant/Bae/Baldare) now operates only from an Arlington Heights address, confirming the Villa Park office split off under new independent ownership rather than remaining part of that group.",
+   "searched": [
+    "Handcrafted Smiles Villa Park IL dentist Saint Charles Rd",
+    "villaparkdentalil.com fetch"
+   ],
+   "intel": {
+    "website_url": "https://villaparkdentalil.com/",
+    "website_note": "Rebrand site (formerly Handcrafted Smiles, now Villa Park Dentistry) presenting as an independent family practice under Dr. Sameera Jagirdar.",
+    "distinguishing_notes": "Practice recently changed both name and ownership branding at the same physical address; treat older 'Handcrafted Smiles' multi-provider references as historical, not current.",
+    "sources": ["https://villaparkdentalil.com/"]
+   }
+  },
+  {
+   "location_id": "d1d405e4c4daed57",
+   "practice_name": "Tzou Dental",
+   "zip": "60181",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.wellness.com/dir/2177844/dentist/il/oakbrook-terrace/dr-james-j-tzou-dds",
+    "https://www.zocdoc.com/dentist/james-tzou-dds"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directory listings (Wellness.com, ZocDoc) show Dr. James J. Tzou, DDS as a solo dentist at 17W662 Butterfield Rd; no dedicated practice site, other locations, or corporate signals found, consistent with the NPPES solo_established classification.",
+   "searched": ["Tzou Dental Oakbrook Terrace IL dentist"]
+  },
+  {
+   "location_id": "5a68da12bc93d64f",
+   "practice_name": "SPARKLING DENTAL CARE P.C.",
+   "zip": "60181",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.vitals.com/dentists/Dr_Michael_Lebiecki",
+    "https://www.healthgrades.com/dentist/dr-michael-lebiecki-ybqndwz"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directory listings show Dr. Michael J. Lebiecki, DDS as the sole dentist at 401 E North Ave Ste 9 (name matches the P.C. professional corporation name), single location, no group/DSO signal.",
+   "searched": ["Sparkling Dental Care Villa Park IL Michael Lebiecki dentist"],
+   "intel": {
+    "insurance_note": "Accepts Aetna DPPO, Ameritas PPO, and BCBS Dental Blue 100/200/300 among other major plans.",
+    "sources": ["https://www.vitals.com/dentists/Dr_Michael_Lebiecki"]
+   }
+  },
+  {
+   "location_id": "2a890cc775ce26a6",
+   "practice_name": "DENTAL CARE OF OAKBROOK, P.C",
+   "zip": "60181",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.zocdoc.com/dentist/kimet-abdullai-dds-56267",
+    "https://www.yelp.com/biz/dental-care-of-oak-brook-oakbrook-terrace"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "ZocDoc bio states Dr. Kimet Abdullai, DDS (UIC College of Dentistry, 2002 grad) personally 'opened Dental Care of Oak Brook' in 2004 at this address; single location, no corporate/DSO affiliation found.",
+   "searched": ["Dental Care of Oakbrook Kimet Abdullai IL 17w300 22nd st"],
+   "intel": {
+    "website_note": "Bio-level profile via ZocDoc; no separate branded site surfaced.",
+    "provider_notes": "Dr. Kimet Abdullai, DDS, UIC College of Dentistry class of 2002; opened this practice in 2004.",
+    "owner_career_stage": "mid_career",
+    "distinguishing_notes": "Dentist is multilingual: speaks English, Spanish, Greek, and Albanian.",
+    "sources": ["https://www.zocdoc.com/dentist/kimet-abdullai-dds-56267"]
+   }
+  },
+  {
+   "location_id": "6923dfdb01639d50",
+   "practice_name": "SARADKUMAR M LAKHANI P.C",
+   "zip": "60181",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.vitals.com/dentists/Dr_Saradkumar_Lakhani",
+    "https://www.sharecare.com/doctor/dr-saradkumar-m-lakhani"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:LAKHANI_SARADKUMAR",
+   "reasoning": "Vitals bio states Dr. Saradkumar M. Lakhani, DDS is 'primarily located in Oak Park, IL, with another office in Villa Park, IL,' matching the ctx owner_reach of 2 locations (60181, 60302). No corporate/DSO signal at either address; small dentist-owned two-location practice.",
+   "searched": ["Saradkumar Lakhani DDS Villa Park IL dentist"],
+   "intel": {
+    "distinguishing_notes": "Practices across two towns (Oak Park primary, Villa Park secondary office); offers telehealth per Sharecare listing.",
+    "sources": ["https://www.vitals.com/dentists/Dr_Saradkumar_Lakhani", "https://www.sharecare.com/doctor/dr-saradkumar-m-lakhani"]
+   }
+  },
+  {
+   "location_id": "1799d3db75c07c03",
+   "practice_name": "Francis Carla",
+   "zip": "60181",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.carlasfrancisdds.com",
+    "https://www.toprankdental.com/carla-s-francis-dds-general-dentistry-740-n-westmore-ave-1"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice's own site (carlasfrancisdds.com) and directory listings show Dr. Carla S. Francis, DDS (Loyola University, 1987 grad) as sole dentist at 740 N Westmore Ave, single location, no group/corporate signal.",
+   "searched": ["Francis Carla dentist Villa Park IL 740 Westmore"],
+   "intel": {
+    "website_url": "https://www.carlasfrancisdds.com",
+    "provider_notes": "Dr. Carla S. Francis, DDS, Loyola University School of Dentistry, 1987 grad; 35+ years experience.",
+    "owner_career_stage": "late_career",
+    "sources": ["https://www.carlasfrancisdds.com", "https://www.toprankdental.com/carla-s-francis-dds-general-dentistry-740-n-westmore-ave-1"]
+   }
+  },
+  {
+   "location_id": "5002f173f6233624",
+   "practice_name": "Neis Dental",
+   "zip": "60181",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.neisdental.com/",
+    "https://www.neisdental.com/meet-the-team"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Fetched neisdental.com directly: two dentists (Dr. John Neis, DMD 2017 grad, and Dr. Douglas Kay, DDS 35+ years) practice together at 17W535 Butterfield Rd Ste 201; site explicitly presents as an independent family/cosmetic practice with no DSO or management-company mention.",
+   "searched": ["Neis Dental / neisdental.com direct fetch"],
+   "intel": {
+    "website_url": "https://www.neisdental.com/",
+    "website_note": "Modern site; family/cosmetic dentistry focus, Invisalign offered, strong patient-review emphasis.",
+    "services": ["family dentistry", "cosmetic dentistry", "Invisalign"],
+    "provider_count_web": 2,
+    "provider_notes": "Dr. John Neis, DMD (Midwestern University, 2017); Dr. Douglas Kay, DDS (35+ years experience).",
+    "sources": ["https://www.neisdental.com/", "https://www.neisdental.com/meet-the-team"]
+   }
+  },
+  {
+   "location_id": "6749644c6cb3d2f4",
+   "practice_name": "JASPREET DHINGRA-BAJAJ, LTD",
+   "zip": "60181",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.brightdentalsmiles.com/appointment/",
+    "https://www.yelp.com/biz/bright-dental-smiles-villa-park"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Jaspreet Dhingra-Bajaj is described as the founder of 'Bright Dental Smiles' at 100 E Roosevelt Rd Ste 14, a brand-new practice (year_established 2024 in our data matches a recently opened office); single location, no corporate/DSO signal.",
+   "searched": ["Jaspreet Dhingra-Bajaj DDS Villa Park IL dentist Roosevelt Rd"],
+   "intel": {
+    "website_url": "https://www.brightdentalsmiles.com/",
+    "website_note": "New-practice site (matches 2024 establishment year); founder-branded.",
+    "services": ["general dentistry", "cosmetic dentistry", "root canals", "implant restoration", "veneers", "Invisalign"],
+    "provider_notes": "Dr. Jaspreet Dhingra-Bajaj, member of ADA / Illinois State Dental Society / Chicago Dental Society.",
+    "owner_career_stage": "early_career",
+    "sources": ["https://www.brightdentalsmiles.com/appointment/", "https://www.yelp.com/biz/bright-dental-smiles-villa-park"]
+   }
+  }
+ ]
+}

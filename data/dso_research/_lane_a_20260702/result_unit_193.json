@@ -1,0 +1,464 @@
+{
+ "unit_id": "laneA_193",
+ "classifications": [
+  {
+   "location_id": "a0c2cefa1028f60e",
+   "practice_name": "Walsh Dental",
+   "zip": "60305",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/walsh-marie-t-dds-river-forest",
+    "https://www.healthgrades.com/dentist/dr-marie-walsh-2fr74"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched for the practice and owner. Yelp and Healthgrades consistently show Dr. Marie T. Walsh, DDS as sole provider of general dentistry at 7765 North Ave with no corporate parent, management company, or DSO brand found in any listing.",
+   "searched": [
+    "Walsh Dental River Forest IL dentist 7765 North Ave",
+    "Walsh Dental River Forest Marie Walsh dentist owner website"
+   ]
+  },
+  {
+   "location_id": "3d9dc85a25807ae5",
+   "practice_name": "JOHN J BRESCIA DDS, PC",
+   "zip": "60305",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/john-j-brescia-dds-river-forest",
+    "https://findadentist.ada.org/dentists/dr-john-j-brescia-river-forest-0038V00002yjxv2QAA-a1C8V00000kXsNZUA0",
+    "https://www.carecredit.com/doctor-locator/river-forest-il/john-j-brescia-dds-pc-469qsk/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched 'John Brescia DDS River Forest'. Multiple independent directories (Yelp, ADA Find-a-Dentist, CareCredit, Healthgrades) confirm Dr. John J Brescia DDS PC at 7411 Lake St as a single-address, dentist-named professional corporation matching AO John Brescia; NPPES shows 2 providers there and no corporate/DSO signal appears anywhere.",
+   "searched": [
+    "John Brescia DDS River Forest IL dentist"
+   ]
+  },
+  {
+   "location_id": "b6a6b9bb65fa36c1",
+   "practice_name": "Darley Dental",
+   "zip": "60305",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.lynchdentalcenter.com/",
+    "https://doctor.webmd.com/doctor/karen-darley-7e7ef03f-3c87-48e5-b6cc-cc0412097743-overview"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:lynch_dental_center",
+   "reasoning": "Searched 'Darley Dental River Forest', then fetched lynchdentalcenter.com. Dr. Karen Darley's River Forest office at 340 Lathrop Ave is one of exactly two offices (River Forest + Chicago Loop) of Lynch Dental Center, which the site shows is owned/staffed by the Lynch family of dentists (Drs. John, Sheila, Frances Lynch) with no management company, DSO, or PE mentioned anywhere. This is a dentist-owned 2-location practice, i.e. dentist_multi.",
+   "searched": [
+    "Darley Dental River Forest IL dentist"
+   ],
+   "intel": {
+    "website_url": "https://www.lynchdentalcenter.com/",
+    "website_note": "Small professional multi-location family practice site naming all treating dentists; no online booking observed in the fetch.",
+    "distinguishing_notes": "Operates as Lynch Dental Center with a second office at 30 N. Michigan Ave, Chicago Loop, run by the same Lynch family of dentists plus one associate (Dr. Shea Jamieson).",
+    "sources": [
+     "https://www.lynchdentalcenter.com/"
+    ]
+   }
+  },
+  {
+   "location_id": "d8629d455f8a1dc0",
+   "practice_name": "Mcmahon Dental",
+   "zip": "60305",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-jill-mcmahon-ymwd3",
+    "https://freshmintdental.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched 'Mcmahon Dental River Forest 7329 North Ave'. Dr. Jill McMahon, DMD operates a solo general practice at that address under the DBA 'Mint Dental' / freshmintdental.com, described as an independent eco-friendly full-service office; no corporate parent or DSO branding found.",
+   "searched": [
+    "Mcmahon Dental River Forest IL dentist 7329 North Ave"
+   ],
+   "intel": {
+    "website_url": "https://freshmintdental.com/",
+    "website_note": "Positions itself as an eco-friendly, full-service family dental practice.",
+    "provider_notes": "Dr. Jill McMahon, DMD, general practice.",
+    "sources": [
+     "https://freshmintdental.com/",
+     "https://doctor.webmd.com/doctor/jill-mcmahon-17fdea1e-62b9-4672-83fc-bb1c219c1a0a-overview"
+    ]
+   }
+  },
+  {
+   "location_id": "9dfb98b28ff65af9",
+   "practice_name": "Kraus Dental",
+   "zip": "60305",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/kraus-richard-f-dds-river-forest",
+    "https://www.healthgrades.com/dentist/dr-richard-kraus-yf7g8"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched 'Kraus Dental River Forest 7427 North Ave'. Directories consistently show Dr. Richard F. Kraus, DDS as the sole provider at this address offering general dentistry (cavities, cleanings, crowns); no corporate parent, management company, or DSO brand found.",
+   "searched": [
+    "Kraus Dental River Forest IL dentist 7427 North Ave"
+   ]
+  },
+  {
+   "location_id": "727e698fcd543f6a",
+   "practice_name": "BERWYN OAK PARK FAMILY DENTISTRY",
+   "zip": "60402",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-payal-shah-2943j",
+    "https://www.doctorsnetwork.com/doctors/dentists/berwyn-il-60402/invite-payal-shah-dds-9657"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:SHAH_PAYAL",
+   "reasoning": "Searched 'Payal Shah dentist Berwyn Oak Park Family Dentistry' and confirmed with a second query. Healthgrades explicitly states Dr. Payal Shah 'works in Brookfield, IL and 1 other location,' naming this Berwyn office (3240 Oak Park Ave) and a Brookfield office (3-D Dental Services, 8908 Ogden Ave) under different DBA names but the same dentist-owner, matching the NPPES AO 'PAYAL SHAH' shared across both IL locations. Dentist-owned, 2 locations -> dentist_multi.",
+   "searched": [
+    "Payal Shah dentist Berwyn Oak Park Family Dentistry",
+    "Berwyn Oak Park Family Dentistry Brookfield IL Payal Shah two locations"
+   ],
+   "intel": {
+    "provider_notes": "Dr. Payal Shah, DDS, dental degree completed in India, DDS from University of Illinois College of Dentistry, ~19 years experience; speaks Gujarati, Hindi and Spanish.",
+    "sources": [
+     "https://www.healthgrades.com/dentist/dr-payal-shah-2943j"
+    ]
+   }
+  },
+  {
+   "location_id": "d4792359292ad8b4",
+   "practice_name": "Matias Robert L DDS",
+   "zip": "60402",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searched 'Robert Matias DDS Berwyn IL' and a follow-up closure check. Most directories (Healthgrades, AEDIT, opencare) describe an active solo general practice at 6534 Cermak Rd with 34 years' experience, but the Yelp listing explicitly reads 'ROBERT L MATIAS, DDS - CLOSED - Updated May 2026'. closure_suspect: conflicting operational status, so withholding a tier per protocol rather than guessing.",
+   "searched": [
+    "Robert Matias DDS Berwyn IL dentist Cermak",
+    "\"Robert L Matias\" DDS Berwyn IL closed retired 2026"
+   ],
+   "intel": {
+    "provider_notes": "Robert L. Matias, DDS, University of Illinois College of Dentistry graduate (honors), Omicron Kappa Upsilon member; practice history dating to the 1980s-2009 per directories.",
+    "services": [
+     "fillings",
+     "bonding",
+     "teeth whitening",
+     "extractions",
+     "cleanings",
+     "exams",
+     "crowns",
+     "bridges",
+     "dentures",
+     "partials",
+     "night guards",
+     "root canals",
+     "implant restoration"
+    ],
+    "sources": [
+     "https://www.berwyn.net/list/member/dr-robert-matias-jr-dds-359",
+     "https://www.yelp.com/biz/robert-l-matias-dds-berwyn-2"
+    ]
+   }
+  },
+  {
+   "location_id": "f63ae93c1c7477e9",
+   "practice_name": "PRECISION DENTAL, LTD.",
+   "zip": "60402",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.mypdltd.com/meet-the-doctors",
+    "https://www.mypdltd.com/"
+   ],
+   "evidence_artifacts": [
+    "brand_hint 'Precision Dental Care' appears to be a coincidental name-collision false positive; the practice's own site names it 'Precision Dental Ltd', not the DSO-affiliated 'Precision Dental Care' brand"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched 'Precision Dental Berwyn IL Thomas Rysz'. The practice's own website (mypdltd.com) shows a single office at 6725 Stanley Ave run by Dr. Thomas J. Rysz and Dr. Scott M. Rysz (Rysz family), serving Berwyn for 40+ years, with no management company or corporate parent mentioned. The ctx brand_hint 'Precision Dental Care' does not match this site's actual name/branding and looks like a name collision with the unrelated national brand, not evidence of DSO affiliation.",
+   "searched": [
+    "\"Precision Dental\" Berwyn IL Thomas Rysz dentist"
+   ],
+   "intel": {
+    "website_url": "https://www.mypdltd.com/",
+    "website_note": "Small dentist-family practice site with a 'Meet the Doctors' and 'Meet the Staff' page; positions itself on 38+ years serving Berwyn.",
+    "provider_notes": "Dr. Thomas J. Rysz, DDS (Loyola University 1981, Endodontics certificate UIC 1983) and Dr. Scott M. Rysz, DDS.",
+    "sources": [
+     "https://www.mypdltd.com/meet-the-doctors",
+     "https://reviews.birdeye.com/precision-dental-ltd-rysz-thomas-j-dds-168900114729508"
+    ]
+   }
+  },
+  {
+   "location_id": "422cf9511989c4de",
+   "practice_name": "CLAUDIA OSORIO DDS PC",
+   "zip": "60402",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.zocdoc.com/dentist/claudia-osorio-dds-322385",
+    "https://www.berwyn.net/list/member/lumident-claudia-osorio-dds-6333"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched 'Claudia Osorio DDS Berwyn IL Cermak'. Directories consistently show Dr. Claudia Osorio, DDS as sole owner/provider at 6721 Cermak Rd, operating under the DBA 'Lumident'/'All Dental', listed as woman-owned/Latinx-owned on the local business directory; no corporate parent or DSO signal found.",
+   "searched": [
+    "Claudia Osorio DDS Berwyn IL dentist Cermak"
+   ],
+   "intel": {
+    "website_url": "https://www.alldentalberwyn.com",
+    "provider_notes": "Dr. Claudia Osorio, DDS, graduated University of Cartagena Division of Health Science 1992; speaks Spanish.",
+    "services": [
+     "preventive",
+     "restorative",
+     "implants",
+     "braces/smile design",
+     "Botox",
+     "dermal fillers"
+    ],
+    "owner_career_stage": "late_career",
+    "sources": [
+     "https://www.zocdoc.com/dentist/claudia-osorio-dds-322385"
+    ]
+   }
+  },
+  {
+   "location_id": "e7de38ae64ec3875",
+   "practice_name": "METROPOLITAN DENTAL",
+   "zip": "60402",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.metropolitandental.us/",
+    "https://www.metropolitandental.us/meet-the-doctors"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched 'Metropolitan Dental Berwyn IL Attila Juhasz'. The practice's own site (metropolitandental.us, entity 'Metropolitan Dental, SC') states it was founded by Dr. Attila Juhasz, DDS, joined by Dr. Michael Auriemma, DMD, at a single Cermak Rd address, with no management company or DSO affiliation mentioned.",
+   "searched": [
+    "Metropolitan Dental Berwyn IL Attila Juhasz dentist Cermak"
+   ],
+   "intel": {
+    "website_url": "https://www.metropolitandental.us/",
+    "provider_notes": "Founded by Dr. Attila Juhasz, DDS (speaks Czech, English, Hungarian, Polish, Slovak) with Dr. Michael Auriemma, DMD.",
+    "technology": [
+     "CEREC",
+     "I-Cat"
+    ],
+    "services": [
+     "Invisalign/braces",
+     "implants",
+     "crowns",
+     "same-day root canals"
+    ],
+    "sources": [
+     "https://www.metropolitandental.us/",
+     "https://www.metropolitandental.us/meet-the-doctors"
+    ]
+   }
+  },
+  {
+   "location_id": "7c3996d8fabb7f69",
+   "practice_name": "G.R. CLEMENS, D.D.S., P.C.",
+   "zip": "60402",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-gary-clemens-ym9v3",
+    "https://www.dentalplans.com/dentists/illinois/berwyn/60402/dr-gary-clemens-190660/"
+   ],
+   "evidence_artifacts": [
+    "Same building/address as location_id 0e3e33fd2c9e4ba5 (Clemens Dental) - '3340 Oak Park Ave' vs '3340 S Oak Park Ave' Berwyn"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched 'G.R. Clemens DDS Berwyn IL Oak Park Ave'. Directories show Dr. Gary R. Clemens, DDS as the named dentist of this professional corporation at 3340 Oak Park Ave Ste 301, Spanish-speaking, no corporate parent or DSO signal found. Practice appears to house 2 providers per NPPES/Yelp, consistent with a dentist-owned family/small group at one address.",
+   "searched": [
+    "G.R. Clemens DDS Berwyn IL dentist Oak Park Ave"
+   ]
+  },
+  {
+   "location_id": "0e3e33fd2c9e4ba5",
+   "practice_name": "Clemens Dental",
+   "zip": "60402",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-gary-clemens-ym9v3"
+   ],
+   "evidence_artifacts": [
+    "Same building/address as location_id 7c3996d8fabb7f69 (G.R. Clemens DDS PC) - '3340 s oak park ave' vs '3340 oak park ave' Berwyn"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This NPI/location record shares the exact street address with G.R. Clemens D.D.S. P.C. (location 7c3996d8fabb7f69), just formatted with an 's' street prefix; it is the same physical Clemens family dental office, not a second location. Treated as the same single-location, dentist-owned small group given the corroborating directory evidence for Dr. Gary Clemens found under the sibling record.",
+   "searched": [
+    "G.R. Clemens DDS Berwyn IL dentist Oak Park Ave"
+   ]
+  },
+  {
+   "location_id": "18e3357f1daf99a8",
+   "practice_name": "HARLEM DENTAL LTD.",
+   "zip": "60402",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.denteldoc.com/location/?id=54496",
+    "https://www.healthgrades.com/group-directory/il-illinois/berwyn/patrick-leonard-dds-x5qv4y"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched 'Harlem Dental Berwyn IL Patrick Leonard'. Multiple directories consistently name Dr. Patrick F. Leonard, DDS as sole provider at 2911 S Harlem Ave, matching the NPPES AO 'PATRICK LEONARD'; no corporate parent, management company, or DSO brand found.",
+   "searched": [
+    "Harlem Dental Berwyn IL Patrick Leonard dentist"
+   ],
+   "intel": {
+    "services": [
+     "cleanings",
+     "exams",
+     "fluoride treatments",
+     "sealants",
+     "tooth-colored fillings",
+     "crowns"
+    ],
+    "sources": [
+     "https://www.businessyab.com/explore/united_states/illinois/cook_county/berwyn_township/berwyn/south_harlem_avenue/2911/harlem_dental_ltd_patrick_f_leonard_dds.html"
+    ]
+   }
+  },
+  {
+   "location_id": "3c41e9f7f44640fa",
+   "practice_name": "Klyber Dental",
+   "zip": "60402",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.drklyberdentist.com/",
+    "https://www.webdentalchicago.com/locations/"
+   ],
+   "evidence_artifacts": [
+    "R4_protected_network:Webster Dental Care - corporate locations page + secondary search snippet corroborate 10 Chicagoland offices (Berwyn, Edison Park, Evanston, Hoffman Estates, La Grange Park, Lakeview, Portage Park, Sauganash, Schaumburg, Skokie)"
+   ],
+   "confidence": "high",
+   "status": "undetermined",
+   "network_id": "brand:webster_dental_care",
+   "reasoning": "Searched 'Klyber Dental Berwyn Webster Dental Care' then confirmed via the brand's own locations page. Dr. Susan Klyber's office at 7001 W Ogden Ave merged (Sept 2019) into 'Webster Dental Care', a management-company-run ('Webster Dental Management') regional consumer brand spanning 10 Chicagoland offices. Per the 10+-location protection rule this is withheld from a per-unit tier assignment and flagged for the dedicated one-network-one-decision review rather than classified here as branded_dso.",
+   "searched": [
+    "Klyber Dental Berwyn IL Webster Dental Care 7001 Ogden Ave",
+    "Webster Dental Care Chicago dental group locations"
+   ],
+   "intel": {
+    "website_url": "https://www.webdentalchicago.com/",
+    "website_note": "Corporate regional-brand website with a dedicated /locations/ page and management-company leadership team page.",
+    "distinguishing_notes": "Berwyn office formerly Dr. Klyber's independent practice; merged into the Webster Dental Care network effective September 2019, which also acquired the former 'Chicago Dental Professionals'.",
+    "sources": [
+     "https://www.drklyberdentist.com/",
+     "https://www.webdentalchicago.com/locations/"
+    ]
+   }
+  },
+  {
+   "location_id": "9e31721171338454",
+   "practice_name": "J.V. DISCIPIO, D.D.S. & ASSOC., LTD.",
+   "zip": "60402",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.discipiodds.com/our-locations",
+    "https://www.discipiodds.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched 'J.V. Discipio DDS Associates Berwyn IL' then fetched the practice's own 'Our Locations' page, which despite its name lists only a single office at 6737 Stanley Ave. The practice was founded by Joseph Discipio in 1954 and is currently run by Dr. James L. Discipio (DDS Loyola 1984), a dentist-owned single-location family practice with associates, no corporate/DSO signal.",
+   "searched": [
+    "J.V. Discipio DDS Associates Berwyn IL dentist"
+   ],
+   "intel": {
+    "website_url": "https://www.discipiodds.com/",
+    "provider_notes": "Dr. James L. Discipio, DDS, Loyola University School of Dentistry 1984, MS 1985; practice founded 1954 by Joseph Discipio, reopened at current address 1956.",
+    "services": [
+     "oral cancer screenings",
+     "implants",
+     "Lumineer veneers",
+     "Invisalign",
+     "teeth whitening",
+     "Cerec one-visit crowns",
+     "crown and bridgework",
+     "root canal",
+     "oral surgery"
+    ],
+    "sources": [
+     "https://www.discipiodds.com/our-locations",
+     "https://www.discipiodds.com/"
+    ]
+   }
+  },
+  {
+   "location_id": "da5807f46453b423",
+   "practice_name": "ROBERT A OAK DDS LTD",
+   "zip": "60402",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.findadoc.com/view-dentist/robert-oak-79473",
+    "https://npiprofile.com/npi/1912073263/similar"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched 'Robert Oak DDS Berwyn IL Cermak' and a follow-up on the practice name. Directory listings consistently show Robert A. Oak, DDS Ltd as a general dentistry practice at 6903 Cermak Rd, active since 2006, matching NPPES AO 'ROBERT OAK'; no dedicated corporate website, management company, or DSO signal found in any source.",
+   "searched": [
+    "Robert Oak DDS Berwyn IL dentist Cermak",
+    "\"Robert A Oak\" DDS dentist Berwyn website"
+   ]
+  }
+ ]
+}

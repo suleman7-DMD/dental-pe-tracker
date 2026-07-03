@@ -1,0 +1,173 @@
+{
+ "unit_id": "laneA_211",
+ "classifications": [
+  {
+   "location_id": "3a6c8f4c0f2a150c",
+   "practice_name": "ROBERT W OVERDORF DDS, LTD",
+   "zip": "60174",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Confirmed as a long-running solo practice (Dr. Robert Overdorf, DDS, Loyola-trained, practicing since 1972) at 11 S 2nd Ave, St Charles, matching address/phone. However multiple aggregator listings (Yelp/WebMD-linked sources) flag the location as permanently closed. Per closure protocol, not classified pending confirmation.",
+   "searched": ["Robert Overdorf DDS St Charles IL dentist", "Robert Overdorf DDS St Charles IL closed retired"]
+  },
+  {
+   "location_id": "06103ae3a6ed4ab0",
+   "practice_name": "ADVOCATE DENTAL ST CHARLES, LLC",
+   "zip": "60174",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.advocatedentalpalatine.com/about-us/meet-the-team/",
+    "https://www.zocdoc.com/dentist/jubrail-jay-sweis-dds-463559",
+    "https://www.dentalplans.com/dentists/illinois/crystal-lake/60014/dr-jubrail-sweis-260872/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:SWEIS_JUBRAIL",
+   "reasoning": "Dr. Jubrail (Jay) Sweis, DDS (UIC-trained) is independently confirmed via separate professional profiles as the practicing dentist at Advocate Dental locations in Palatine, Crystal Lake, and McHenry, IL, in addition to this St Charles address (1400 Lincoln Hwy) -- a dentist-owned small regional group, not an overtly-branded DSO. No corporate parent or management company found.",
+   "searched": ["Advocate Dental St Charles Jubrail Sweis"]
+  },
+  {
+   "location_id": "c88855231e72cced",
+   "practice_name": "BLISS DENTAL LLC",
+   "zip": "60174",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://blissdentalcenter.com/",
+    "https://www.blissdentalstcharles.com/about-us"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own branded website confirms Dr. Aqil Valika (Chief Dental Officer, UIC College of Dentistry grad) practicing alongside Dr. Subhan Manzoor at a single St Charles office, 1400 Lincoln Hwy -- a dentist-owned multi-provider single-location practice with no corporate parent signal.",
+   "searched": ["Bliss Dental St Charles IL Aqil Valika dentist"],
+   "intel": {
+    "website_url": "https://blissdentalcenter.com/",
+    "website_note": "Modern, actively-maintained practice site with online booking (Setmore) and same-day emergency scheduling messaging.",
+    "services": ["cosmetic dentistry", "full-arch dental implants", "smile makeovers", "emergency dentistry"],
+    "provider_count_web": 2,
+    "provider_notes": "Dr. Aqil Valika (Chief Dental Officer, UIC College of Dentistry) and Dr. Subhan Manzoor.",
+    "insurance_note": "Accepts Delta Dental, Aetna, Cigna, BCBS, MetLife, Guardian, Humana.",
+    "distinguishing_notes": "Serves St. Charles, Geneva, Batavia, and the Fox Valley area; same-day emergency appointments offered.",
+    "sources": ["https://blissdentalcenter.com/", "https://www.blissdentalstcharles.com/about-us"]
+   }
+  },
+  {
+   "location_id": "f5a7ad23598f31ca",
+   "practice_name": "TIMOTHY W. SHEEHAN,LTD.",
+   "zip": "60174",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.coredentalstcharles.com/",
+    "https://timothysheehandds.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:SHEEHAN_TIMOTHY",
+   "reasoning": "Now operating as CORE Dental (family-owned and operated by Drs. Sheehan and Doran) at 525 Tyler Rd Ste K -- explicitly described on the practice's own site as family owned/operated for 30+ years, serving St. Charles/Geneva/Batavia. The source record's 'parent_company: Gryphon Investors' tag is not corroborated by any web evidence and is treated as a spurious signal; not marked pe_backed.",
+   "searched": ["Timothy Sheehan DDS St Charles IL dentist", "CORE Dental St Charles IL Savani dentist"],
+   "intel": {
+    "website_url": "https://www.coredentalstcharles.com/",
+    "website_note": "Practice rebranded from solo Sheehan listing to 'CORE Dental,' site describes a multi-dentist family practice.",
+    "services": ["Invisalign", "dental implants", "sedation dentistry", "crowns/bridges", "Botox"],
+    "provider_notes": "Drs. Sheehan and Doran (and associate Dr. Gina Savani, see co-located NPI).",
+    "sources": ["https://www.coredentalstcharles.com/"]
+   }
+  },
+  {
+   "location_id": "c601a38aca132f41",
+   "practice_name": "AFFORDABLE DENTISTRY TODAY, PC",
+   "zip": "60174",
+   "assigned_tier": "branded_dso",
+   "pe_backed": true,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.wellness.com/dir/2180502/dentist/il/saint-charles/heartland-dental-care"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:heartland_dental",
+   "reasoning": "Independent directory listing confirms 'Heartland Dental Care' at 615 S Randall Road, Saint Charles, IL, with the exact same phone number (630-443-6635) as this record's address/phone, corroborating the source data's Heartland Dental affiliation. Heartland Dental is a documented KKR-backed national DSO.",
+   "searched": ["Affordable Dentistry Today St Charles IL Heartland Dental", "Heartland Dental \"615\" Randall Road St Charles IL locations"]
+  },
+  {
+   "location_id": "954a736b8093d260",
+   "practice_name": "Dpd Smiles",
+   "zip": "60174",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://prodentalconcepts.com/",
+    "https://www.yelp.com/biz/pro-dental-concepts-st-charles"
+   ],
+   "evidence_artifacts": ["name_mismatch: NPI org registered as 'Dpd Smiles' but the operating practice at this exact address+phone today is 'Pro Dental Concepts'"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address (2020 E Main St) and phone (630-513-7884) match 'Pro Dental Concepts,' owned/operated by Dr. Rajan Verma, DDS -- not the 'DPD Smiles' pediatric chain (a different, unrelated brand headquartered at 1203 E Main St with a different phone). Matched on address/phone per protocol rather than name. No corporate signals found.",
+   "searched": ["\"Dpd Smiles\" St Charles IL dentist", "\"(630) 513-7884\" dental St Charles", "Pro Dental Concepts St Charles IL owner dentist 2020 Main St"],
+   "intel": {
+    "website_url": "https://prodentalconcepts.com/",
+    "website_note": "Small independent practice site; office manager and single dentist listed.",
+    "provider_notes": "Dr. Rajan Verma, DDS; office manager Lupe Andrade.",
+    "distinguishing_notes": "A local directory profile references '2 locations' but no second address was independently confirmed.",
+    "sources": ["https://prodentalconcepts.com/", "https://www.yelp.com/biz/pro-dental-concepts-st-charles"]
+   }
+  },
+  {
+   "location_id": "2a92d40672a3ecc4",
+   "practice_name": "HANSON & SEVANDAL DENTISTRY, LLC",
+   "zip": "60174",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dayspringpediatricdentistry.com/",
+    "https://www.dayspringpediatricdentistry.com/meet-dr-maureen-sevandal"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Operates as Dayspring Pediatric Dentistry at 2570 Foxfield Rd, co-led by Dr. Lisa Hanson and Dr. Maureen Sevandal (both DDS) -- a dentist-owned, single-location pediatric group practice with no corporate parent signal.",
+   "searched": ["Hanson Sevandal Dentistry St Charles IL Maureen Sevandal"],
+   "intel": {
+    "website_url": "https://www.dayspringpediatricdentistry.com/",
+    "website_note": "Pediatric specialty practice site with team bios.",
+    "provider_notes": "Dr. Maureen Sevandal (UIC College of Dentistry, board-certified pediatric dentist, joined 2007) and Dr. Lisa Hanson.",
+    "sources": ["https://www.dayspringpediatricdentistry.com/meet-dr-maureen-sevandal"]
+   }
+  },
+  {
+   "location_id": "c88855231e72cced_unused",
+   "practice_name": "placeholder",
+   "zip": "60174",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "placeholder - to be removed",
+   "searched": []
+  }
+ ]
+}

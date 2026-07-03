@@ -1,0 +1,445 @@
+{
+ "unit_id": "laneA_191",
+ "classifications": [
+  {
+   "location_id": "2bd652bcbd662c85",
+   "practice_name": "Eun Sung Hyun DMD",
+   "zip": "60195",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://royaldentalcare.com/sung-eun-dmd/",
+    "https://royaldentalcare.com/",
+    "https://royaldentalcare.com/schaumburg-office/",
+    "https://royaldentalcare.com/norridge-office/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:royal_dental_care_il",
+   "reasoning": "The address (1224 N Roselle Rd Ste A, Schaumburg) is Royal Dental Care, S.C., where Dr. Sung Eun (this record's 'Eun Sung Hyun') practices per royaldentalcare.com. Royal Dental Care's own site states it was founded in 2006 by husband-and-wife dentists Peter Troyan, DMD and Agnes Kucharska, DMD, who now operate exactly two IL offices (Schaumburg + Norridge) -- a dentist-owned small network, not a corporate chain. This directly contradicts the pre-existing record label 'affiliated_dso: Brident / parent_company: BRIDENT OF CALIFORNIA LLC' -- a separate, unrelated 'Royal Dental' chain in Houston, TX joined Sonrava/Brident, but no evidence ties the IL entity to Sonrava/Brident. Reclassified dentist_multi (2 dentist-owned locations) based on documentary web evidence overriding the stale detector label.",
+   "searched": [
+    "Brident Dental Roselle Rd Schaumburg IL",
+    "\"Eun Sung Hyun\" DMD Schaumburg dentist",
+    "Royal Dental Care Schaumburg Norridge owner",
+    "Royal Dental Care Brident Schaumburg history rebrand"
+   ],
+   "intel": {
+    "website_url": "https://royaldentalcare.com/",
+    "website_note": "Modern multi-provider practice website with dentist bio pages, two-office locator, and online scheduling; polished small-DSO-style presentation despite being dentist-owned.",
+    "services": [],
+    "technology": [],
+    "provider_notes": "Dr. Sung Eun, DMD (UNE College of Dental Medicine); co-owners Dr. Peter Troyan, DMD and Dr. Agnes Kucharska, DMD; also lists Dr. Piotr (Peter) Troyan and other associate dentists across the two offices.",
+    "distinguishing_notes": "Husband-and-wife dentist ownership since 2006, two offices (Schaumburg + Norridge), several associate dentists under one dentist-owned brand.",
+    "sources": [
+     "https://royaldentalcare.com/sung-eun-dmd/",
+     "https://royaldentalcare.com/",
+     "https://royaldentalcare.com/schaumburg-office/"
+    ]
+   }
+  },
+  {
+   "location_id": "3f60f7c2162caf3f",
+   "practice_name": "DISTINCTIVE DENTAL SERVICES",
+   "zip": "60301",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searched the practice name and address; Yelp explicitly lists '185 N Marion St, Oak Park' Distinctive Dental Services as 'CLOSED' (updated May 2026), founded 1984 under owner Lawrence P. Smith. closure_suspect -- per hard rule, a suspected-closed location is not classified regardless of any historical ownership signal.",
+   "searched": [
+    "\"Distinctive Dental Services\" Oak Park IL 185 Marion",
+    "\"Distinctive Dental Services\" 185 Marion Oak Park closed permanently"
+   ]
+  },
+  {
+   "location_id": "64122a20bae70147",
+   "practice_name": "DR. GENE A. REISINGER DDS, LLC.",
+   "zip": "60301",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://dentistoakparkil.com/about-us/",
+    "https://www.oprfchamber.org/list/member/dr-gene-reisinger-dds-3310"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice website (R Family Dental, rfamilydental.net) and dentistoakparkil.com 'About Us' confirm Dr. Gene Reisinger practices at 1122 Westgate St Ste 200, Oak Park, now joined by his son Dr. David Reisinger and hygienist Genefir Reisinger -- a two-dentist, single-location, dentist-owned family practice. No corporate or DSO signal found; matches single_loc_group.",
+   "searched": [
+    "\"Gene Reisinger\" DDS Oak Park IL dentist"
+   ],
+   "intel": {
+    "website_url": "http://www.rfamilydental.net",
+    "website_note": "R Family Dental site presents a father-son dentist team with an established, long-tenured local family-practice identity.",
+    "services": ["family dentistry", "cosmetic dentistry", "braces", "implants", "digital X-rays"],
+    "provider_count_web": 2,
+    "provider_notes": "Dr. Gene Reisinger (UIC Dental School grad, 40+ years practicing, pioneer in digital X-rays) joined recently by son Dr. David Reisinger; Genefir Reisinger, RDH on staff.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Multi-generational family dental practice with 40+ years of continuous operation at the same Oak Park location.",
+    "sources": [
+     "https://dentistoakparkil.com/about-us/",
+     "https://www.oprfchamber.org/list/member/dr-gene-reisinger-dds-3310"
+    ]
+   }
+  },
+  {
+   "location_id": "bcae04016db042c4",
+   "practice_name": "TOM L. BARANOWSKI, D.D.S.",
+   "zip": "60301",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-thomas-baranowski-3yqjp",
+    "https://npiprofile.com/npi/1184038358"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple directory listings (Healthgrades, NPI profile, DentalPlans) all show Dr. Thomas L. Baranowski as a solo dentistry practitioner at 1011 Lake St Ste 410, Oak Park, accepting new patients, with no second dentist, DSO, or corporate parent mentioned anywhere. No evidence of other locations. Classified true_independent; medium confidence because the record's provider_count=2 (small_group) is unexplained by any named associate in web sources.",
+   "searched": [
+    "\"Tom Baranowski\" DDS Oak Park IL dentist"
+   ]
+  },
+  {
+   "location_id": "3fe1dc587b8a9fb3",
+   "practice_name": "Minaghan Dental",
+   "zip": "60301",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/kathleen-r-minaghan-dds-oak-park",
+    "https://www.vitals.com/dentists/Dr_Kathleen_Minaghan"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directory listings identify Dr. Kathleen R. Minaghan, DDS, a solo holistic/mercury-safe dentistry practitioner, at phone (708) 848-4488 -- an exact match to this record's phone. No DSO or multi-location signal found. Confidence medium because listings show her suite at 715 Lake St (vs. this record's 1133 Westgate St address), likely an aggregator/NPPES address discrepancy rather than a different entity given the exact phone match.",
+   "searched": [
+    "Minaghan Dental Oak Park IL"
+   ],
+   "intel": {
+    "website_note": "Practice is positioned around holistic dentistry: mercury-safe amalgam removal and mercury-free fillings.",
+    "distinguishing_notes": "Holistic/mercury-safe dentistry focus differentiates this solo practice from standard general dentistry offices nearby.",
+    "sources": [
+     "https://www.yelp.com/biz/kathleen-r-minaghan-dds-oak-park",
+     "https://www.vitals.com/dentists/Dr_Kathleen_Minaghan"
+    ]
+   }
+  },
+  {
+   "location_id": "2a0b7e6b5c4557e8",
+   "practice_name": "Vittori Dental",
+   "zip": "60301",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npiprofile.com/npi/1861507469"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "NPI-specific lookup (npiprofile.com, NPI 1861507469) confirms Dr. Mark Richard Vittori, DDS practices at 1145 Westgate St Ste 205, Oak Park, phone (708) 383-2120 -- an exact match to this record. General web search also surfaced a same-surname 'Mark Vittori' practicing in River Forest/Lisle, but that appears to be aggregator noise/a distinct listing rather than this NPI's registered location; the NPI-specific source is the most reliable single-location confirmation, so classified true_independent at medium confidence.",
+   "searched": [
+    "Vittori Dental Oak Park IL 1145 Westgate",
+    "\"Mark Vittori\" dentist Oak Park River Forest multiple offices",
+    "Vittori Dental Oak Park NPI 1861507469"
+   ]
+  },
+  {
+   "location_id": "3f9fe065e11f0dc8",
+   "practice_name": "SARITA L WOODSON DDS",
+   "zip": "60301",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.gentledentistry.online/locations",
+    "https://www.gentledentistry.online/about-us"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:WOODSON_SARITA",
+   "reasoning": "Dr. Sarita Woodson's practice operates under the brand 'Gentle Dentistry,' whose own 'Our Locations' page confirms two offices -- Oak Park (715 Lake St, this record's practice, matching phone (708) 848-8237/660-9113) and Lombard -- run by Dr. Woodson and her team for 30+ years. Dentist-owned, 2 locations: dentist_multi.",
+   "searched": [
+    "\"Sarita Woodson\" DDS Oak Park IL dentist",
+    "Gentle Dentistry Oak Park Lombard Woodson locations"
+   ],
+   "intel": {
+    "website_url": "https://www.gentledentistry.online/",
+    "website_note": "Gentle Dentistry brand site covers both offices with a shared About/Locations structure; positioned around family and pediatric-friendly comprehensive care.",
+    "services": ["pediatric dentistry", "general dentistry"],
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "30+ years serving the community across two dentist-owned offices (Oak Park + Lombard) under a shared 'Gentle Dentistry' brand.",
+    "sources": [
+     "https://www.gentledentistry.online/locations",
+     "https://www.gentledentistry.online/about-us",
+     "https://www.yelp.com/biz/woodson-sarita-l-dr-oak-park"
+    ]
+   }
+  },
+  {
+   "location_id": "8bf73126e79a8366",
+   "practice_name": "DR. LAWRENCE R. FINE D.D.S. AND ASSOICATES, LTD.",
+   "zip": "60301",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://onefinesmile.com/meet-dr-lawrence-fine/",
+    "https://onefinesmile.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice operates as 'One Fine Smile' at 1100 Lake St Ste 140, Oak Park (matches this record's phone (708) 383-1234). Dr. Lawrence Fine, a Loyola dental school graduate practicing 40+ years, is the named owner; no DSO, corporate parent, or second location found. The practice's own name ('...AND ASSOCIATES') plus the record's provider_count=5 imply an associate-staffed single office, so classified single_loc_group at medium confidence (associate dentist names not individually confirmed on the public site).",
+   "searched": [
+    "\"Lawrence Fine\" DDS Oak Park IL dentist 1100 Lake St"
+   ],
+   "intel": {
+    "website_url": "https://onefinesmile.com/",
+    "website_note": "Established practice site branded 'One Fine Smile,' emphasizing decades of tenure and a broad service menu including cosmetic/aesthetic add-ons.",
+    "services": ["general dentistry", "cosmetic dentistry", "restorative dentistry", "family dentistry", "emergency dentistry", "botox", "dermal fillers", "sleep apnea treatment"],
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "40+ years in Oak Park; offers botox/dermal fillers and sleep apnea therapy alongside standard dentistry, a broader-than-typical service menu for an independent GP office.",
+    "sources": [
+     "https://onefinesmile.com/meet-dr-lawrence-fine/",
+     "https://onefinesmile.com/"
+    ]
+   }
+  },
+  {
+   "location_id": "064a9e30118c1feb",
+   "practice_name": "MARION STREET DENTAL LTD",
+   "zip": "60301",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-linda-oster-354c8",
+    "https://www.vitadox.com/doctor/oak-park-il-60301/linda-a-oster-dds/yuPNbhNPxKPKaEvGDt9vkD"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directory listings confirm Dr. Linda A. Oster, DDS runs Marion Street Dental solo at 127 N Marion St Ste 2, Oak Park (matches record's phone (708) 386-4222), an 18+ year general practice dentist. No associates, DSO, or corporate signal found -- true_independent.",
+   "searched": [
+    "\"Marion Street Dental\" Oak Park IL Linda Oster"
+   ],
+   "intel": {
+    "provider_notes": "Linda Ann Oster, DDS -- general practice dentist and acupuncturist, 18+ years experience, NPI registered since Dec 2006.",
+    "distinguishing_notes": "Combines general dentistry with acupuncture, an unusual dual-modality offering for an independent solo office.",
+    "sources": [
+     "https://www.healthgrades.com/dentist/dr-linda-oster-354c8",
+     "https://www.vitadox.com/doctor/oak-park-il-60301/linda-a-oster-dds/yuPNbhNPxKPKaEvGDt9vkD"
+    ]
+   }
+  },
+  {
+   "location_id": "5e5375ee82017047",
+   "practice_name": "ORAL HEALTH CARE",
+   "zip": "60301",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://oakparkoralhealthcare.com/",
+    "https://www.healthgrades.com/dentist/dr-marcel-krawczyk-ycnh9"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Oak Park Oral Health Care LLC, 110 N Oak Park Ave (matches record's phone (708) 386-8070), is led by Dr. Marcel Krawczyk, DDS. No DSO/corporate signal or other locations found. Record's provider_count=3 (small_group) plus the practice's own LLC structure support single_loc_group; medium confidence since additional dentist names beyond Krawczyk were not individually confirmed.",
+   "searched": [
+    "\"Oral Health Care\" Oak Park IL \"Oak Park Ave\" Krawczyk dentist"
+   ],
+   "intel": {
+    "website_url": "https://oakparkoralhealthcare.com/",
+    "services": ["preventative care", "cosmetic dentistry", "oral surgery"],
+    "distinguishing_notes": "Located in downtown Oak Park directly off the CTA Green Line; 5.0-star patient reviews on multiple directories.",
+    "sources": [
+     "https://oakparkoralhealthcare.com/",
+     "https://www.healthgrades.com/dentist/dr-marcel-krawczyk-ycnh9"
+    ]
+   }
+  },
+  {
+   "location_id": "be68e9139783c1da",
+   "practice_name": "Michael Salerno DDS",
+   "zip": "60301",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://michaelsalernodds.com/",
+    "https://michaelsalernodds.com/meet-dr--salerno.html"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Michael F. Salerno's own practice site and directory listings confirm a solo practice (30+ years, Loyola 1985 grad), phone (708) 848-8828 matching this record exactly. No DSO or second location found. Medium confidence because the web-listed suite address (1107 Westgate St) differs from this record's address (1140 Lake St), likely an aggregator/NPPES discrepancy given the exact phone match.",
+   "searched": [
+    "\"Michael Salerno\" DDS Oak Park IL dentist"
+   ],
+   "intel": {
+    "website_url": "https://michaelsalernodds.com/",
+    "website_note": "Personal single-dentist practice site emphasizing minimally invasive technique.",
+    "provider_notes": "Dr. Michael F. Salerno, Loyola University School of Dentistry 1985 graduate.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Practices single-tooth anesthesia (no traditional 'shot') and minimally invasive, preventative-first dentistry.",
+    "sources": [
+     "https://michaelsalernodds.com/",
+     "https://michaelsalernodds.com/meet-dr--salerno.html"
+    ]
+   }
+  },
+  {
+   "location_id": "0f5e07435267d44a",
+   "practice_name": "SIGNATURE SMILES DENTAL CARE LTD",
+   "zip": "60301",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.signaturesmilesdental.com/our-practice.html",
+    "https://www.signaturesmilesdental.com/index.html"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Rosemarie Buen, DMD opened Signature Smiles Dental Care in 1998 at 1128 Lake St Ste 1, Oak Park (phone (708) 386-6190 matches this record exactly). Own-brand website, no DSO or corporate parent signal, no other locations found. Record's provider_count=3 with a named dentist-owner supports single_loc_group.",
+   "searched": [
+    "\"Signature Smiles Dental\" Oak Park IL Rosemarie Buen"
+   ],
+   "intel": {
+    "website_url": "https://www.signaturesmilesdental.com/",
+    "website_note": "Established (opened 1998) dentist-branded family/cosmetic practice site.",
+    "services": ["family dentistry", "cosmetic dentistry", "braces", "Invisalign", "sleep apnea therapy"],
+    "provider_notes": "Dr. Rosemarie Buen, DMD, founder and lead dentist since 1998.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "27 years of continuous single-location operation under founding dentist-owner.",
+    "sources": [
+     "https://www.signaturesmilesdental.com/our-practice.html",
+     "https://www.yelp.com/biz/signature-smiles-dental-care-oak-park"
+    ]
+   }
+  },
+  {
+   "location_id": "8e43f333b5547375",
+   "practice_name": "MURPHY DENTAL GROUP, PLLC",
+   "zip": "60301",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://murphydentaloakpark.com/our-doctors/",
+    "https://murphydentaloakpark.com/our-doctors/dr-brandon-murphy/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Murphy Dental Group's own site confirms Dr. Brandon Murphy (UIC DDS, GPR at Advocate Illinois Masonic, AGD Fellow) leads the practice, with an 'Our Doctors' page listing multiple providers -- consistent with the record's provider_count=6 (large_group) at one Oak Park location tracing to 1898. No DSO/corporate signal found. Medium confidence: the web-listed address (100 S Kenilworth Ave) differs from this record's address (137 N Oak Park Ave), but the phone (708) 524-0330 matches exactly, so treated as the same practice.",
+   "searched": [
+    "\"Murphy Dental Group\" Oak Park IL Brandon Murphy"
+   ],
+   "intel": {
+    "website_url": "https://murphydentaloakpark.com/",
+    "website_note": "Modern multi-provider practice site with individual doctor bio pages and an 'Our Doctors' team roster.",
+    "provider_notes": "Dr. Brandon Murphy -- UIC DDS, General Practice Residency at Advocate Illinois Masonic Medical Center, Academy of General Dentistry Fellow (top ~6% of U.S./Canada GPs), Invisalign Diamond provider; practice traces continuous operation on this Oak Park site back to 1898.",
+    "distinguishing_notes": "Long-tenured Oak Park institution (site in continuous dental use since 1898) now under Dr. Brandon Murphy with a multi-doctor team.",
+    "sources": [
+     "https://murphydentaloakpark.com/our-doctors/",
+     "https://murphydentaloakpark.com/our-doctors/dr-brandon-murphy/"
+    ]
+   }
+  },
+  {
+   "location_id": "7df4c4b1bfd96b96",
+   "practice_name": "Oser, David G DDS",
+   "zip": "60301",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searched the name and address (1002 N Blvd, Oak Park). Web results show every findable Dr. David G. Oser practicing endodontics in Chicago and Columbus, OH -- none tie him to 1002 N Blvd. That address currently maps to a different, unrelated practice ('A Brilliant Smile'), suggesting this record may be closed, relocated, or a stale NPPES address. closure_suspect / insufficient evidence -- left undetermined rather than guessed.",
+   "searched": [
+    "\"David Oser\" DDS Oak Park IL dentist 1002 North Blvd",
+    "\"David Oser\" DDS dentist Oak Park closed OR retired OR \"1002\""
+   ]
+  },
+  {
+   "location_id": "cf8f54b166a44a75",
+   "practice_name": "HEALTHY TOOTH DENTAL, LLC",
+   "zip": "60301",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthytoothdental.com/",
+    "https://www.healthytoothdental.com/our-practice/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Healthy Tooth Dental's own site confirms Dr. Esther Lopez, DDS is the practicing dentist-owner at 719 Lake St, Oak Park (phone (708) 386-3200 matches this record exactly). Edward D. Lopez (this record's authorized_official) appears as the LLC's business-side President/spouse, not a competing clinical owner or corporate parent. Single location, dentist-led -- true_independent.",
+   "searched": [
+    "\"Healthy Tooth Dental\" Oak Park IL Edward Lopez"
+   ],
+   "intel": {
+    "website_url": "https://www.healthytoothdental.com/",
+    "website_note": "Dentist-branded single-office site centered on Dr. Esther Lopez, with cosmetic-dentistry focus.",
+    "services": ["cosmetic dentistry", "teeth whitening", "veneers"],
+    "provider_notes": "Dr. Esther Lopez, DDS is the treating dentist; Edward D. Lopez listed as LLC President (business/admin side).",
+    "insurance_note": "Site emphasizes transparency about costs and working with insurance coverage.",
+    "sources": [
+     "https://www.healthytoothdental.com/",
+     "https://www.healthytoothdental.com/our-practice/",
+     "https://www.npino.org/npi/healthy-tooth-dental-llc-1669706800.html"
+    ]
+   }
+  },
+  {
+   "location_id": "555311c8824fdecc",
+   "practice_name": "Shah, Jahanvi",
+   "zip": "60301",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searched the name and address (150 Forest Ave, Oak Park). Web results confirm a Dr. Jahanvi Shah, DDS practicing general dentistry, but tie her to Anew Dental & Orthodontics locations in Plainfield, IL and other listings in Cicero/Chicago/Riverside/Melrose Park -- none confirm the 150 Forest Ave, Oak Park address specifically as her practice or clarify its ownership. Insufficient evidence to assign a tier; left undetermined rather than guessed.",
+   "searched": [
+    "\"Jahanvi Shah\" dentist Oak Park IL 150 Forest Ave",
+    "Anew Dental Orthodontics Oak Park locations owner"
+   ]
+  }
+ ]
+}

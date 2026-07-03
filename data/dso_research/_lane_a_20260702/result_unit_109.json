@@ -1,0 +1,416 @@
+{
+  "unit_id": "laneA_109",
+  "classifications": [
+    {
+      "location_id": "941b2b6372611d41",
+      "practice_name": "Balquiedra Dental",
+      "zip": "60632",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://doctor.webmd.com/doctor/lourdes-balquiedra-4b3a8658-8413-4609-b6eb-b70fd6dcb263-overview",
+        "https://www.healthgrades.com/dentist/dr-lourdes-balquiedra-2m3rf"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Searched practice name and address; found Dr. Lourdes Balquiedra, DDS operating a solo practice under her own name at 3339 W 55th St since 1977, with no corporate parent, DSO brand, or management company referenced in any directory. Single-provider, own-name office fits true independent.",
+      "searched": ["Balquiedra Dental 3339 W 55th St Chicago"]
+    },
+    {
+      "location_id": "7841835a836cd53e",
+      "practice_name": "AMERICAN DENTAL ASSOCIATES LTD",
+      "zip": "60632",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://atooth.com/",
+        "https://www.linkedin.com/company/americandentalassociates",
+        "https://atooth.com/meet-our-doctors/dr-dhiraj-sharma-dds/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "brand:american_dental_atooth",
+      "reasoning": "This location (Midway/Archer, 5342 S Archer Ave) is one of 7 offices under the 'American Dental'/atooth.com brand serving Chicagoland since 1996; LinkedIn lists the company type as 'Self-Owned' with no parent company or DSO named. Dr. Dhiraj Sharma practices at this address. A targeted search for DSO/PE affiliation returned nothing, so this is treated as a dentist-owned multi-location group rather than a stealth DSO; exact ownership split across all 7 sites isn't fully documented, hence medium confidence.",
+      "searched": [
+        "American Dental Associates Ltd 5342 S Archer Ave Chicago Dhiraj Sharma",
+        "\"American Dental\" Chicago atooth.com owner founder DSO management company"
+      ],
+      "intel": {
+        "website_url": "https://atooth.com/",
+        "website_note": "Modern multi-location practice site listing 7 Chicago-area offices with in-house specialist referral (ortho, oral surgery, perio, endo) under one brand.",
+        "services": ["general dentistry", "orthodontics", "oral surgery", "periodontics", "endodontics", "dental implants"],
+        "technology": [],
+        "provider_notes": "Dr. Dhiraj Sharma, DDS - 1993 graduate of Case Western Reserve University; Dean's List honors; 20+ years of implant experience.",
+        "owner_career_stage": "late_career",
+        "distinguishing_notes": "Part of a 7-location Chicago-area group ('American Dental') offering an in-house specialist referral network rather than a single general practice.",
+        "sources": [
+          "https://atooth.com/",
+          "https://atooth.com/meet-our-doctors/dr-dhiraj-sharma-dds/",
+          "https://www.zocdoc.com/dentist/dhiraj-sharma-dds-357439"
+        ]
+      }
+    },
+    {
+      "location_id": "402558cd9290b243",
+      "practice_name": "Iskandar Dental",
+      "zip": "60632",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/dental-comfort-chicago",
+        "https://www.yelp.com/biz/smile-dental-care-archer-heights-chicago-2"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "undetermined",
+      "network_id": "brand:dental_comfort_ltd",
+      "reasoning": "This address (4239 S Archer Ave) was operated as 'Dental Comfort LTD' with Dr. Mira Iskandar; multiple sources state Dental Comfort LTD has relocated and rebranded as 'Smile Dental Care' at 4889 S Archer Ave with a new phone number, raising closure_suspect for the original site even though some directories still list the old address as active. Cannot confidently assign an ownership tier given this conflict.",
+      "searched": [
+        "Iskandar Dental 4239 S Archer Ave Chicago",
+        "\"Dental Comfort\" 4239 S Archer Ave Chicago Iskandar Bawa closed moved",
+        "\"Smile Dental Care\" 4889 S Archer Ave Chicago Bawa Iskandar"
+      ]
+    },
+    {
+      "location_id": "3a6e0a282b1fbc64",
+      "practice_name": "Bawa Dental",
+      "zip": "60632",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/dental-comfort-chicago",
+        "https://www.yelp.com/biz/smile-dental-care-archer-heights-chicago-2"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "undetermined",
+      "network_id": "brand:dental_comfort_ltd",
+      "reasoning": "Shares the 4239 S Archer Ave address with Iskandar Dental under the shared business name 'Dental Comfort LTD' (Dr. Inderjit Bawa); several sources confirm Dental Comfort LTD relocated to 4889 S Archer Ave and rebranded as 'Smile Dental Care' with a new phone number, indicating the original address may be closed. Cannot confidently classify given this closure signal.",
+      "searched": [
+        "Bawa Dental 4239 S Archer Ave Chicago",
+        "\"Dental Comfort\" 4239 S Archer Ave Chicago Iskandar Bawa closed moved"
+      ]
+    },
+    {
+      "location_id": "c1d87d86e93f7056",
+      "practice_name": "Venkus Dental",
+      "zip": "60632",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60632/invite-carl-venkus-dds-12301",
+        "https://www.wellness.com/dir/2170141/dentist/il/chicago/venkus-carl-dds/directions/2920-west-pope-john-paul-ii-drive-chicago-il-60632"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Searched practice name and address; found Dr. Carl S. Venkus, DDS operating a single-location, own-name general dentistry office at 2920 W 43rd St (also listed as W Pope John Paul II Dr). No DSO brand, management company, or multi-location signal appeared in any directory result.",
+      "searched": ["Venkus Dental 2920 W 43rd St Chicago"]
+    },
+    {
+      "location_id": "c942b9b29d433040",
+      "practice_name": "ANTON DDS",
+      "zip": "60632",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.archerdental.org/",
+        "https://www.archerdental.org/team-members/dr-anton-zhadovich/",
+        "https://www.healthgrades.com/dentist/dr-anton-zhadovich-ybq7r2z"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "This is 'Archer Dental,' founded in 2017 by Dr. Anton Zhadovich (UIC DDS 2013); the practice's own site confirms a single location at 5200 S Archer Ave Ste 3 with no other offices or corporate/management-company language. With 3 providers under one dentist-founder at one address, this is a dentist-owned single-location group.",
+      "searched": ["Anton DDS 5200 S Archer Ave Chicago Anton Zhadovich"],
+      "intel": {
+        "website_url": "https://www.archerdental.org/",
+        "website_note": "Modern branded single-location practice site ('Archer Dental') with a team page and service list; positions itself as a family/cosmetic/implant practice.",
+        "services": ["dental implants", "sinus lift surgery", "all-on-4 implants", "Invisalign", "braces/orthodontics"],
+        "technology": [],
+        "provider_count_web": 3,
+        "provider_notes": "Dr. Anton Zhadovich, DDS - Belarusian State Medical University 2010, DDS from UIC College of Dentistry 2013; founded the practice in 2017.",
+        "owner_career_stage": "mid_career",
+        "distinguishing_notes": "Grew from founding in 2017 to serving 1,500+ patients; single-location, multi-provider cosmetic/implant-focused practice.",
+        "sources": [
+          "https://www.archerdental.org/team-members/dr-anton-zhadovich/",
+          "https://www.opencare.com/dentists/chicago-il/dr-anton-zhadovich-24630425183d/",
+          "https://www.archerdental.org/"
+        ]
+      }
+    },
+    {
+      "location_id": "8462f06114fe8c8e",
+      "practice_name": "Parkview Dental Ctr",
+      "zip": "60632",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://parkviewdentalcare.net/",
+        "https://www.yelp.com/biz/parkview-dental-center-chicago"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Found the practice's own site (parkviewdentalcare.net) confirming a single-location general dentistry office at 4109 W 47th St, established 2014, associated with Dr. Reginald Odom, DDS. No DSO brand or management-company signal in any directory.",
+      "searched": ["Parkview Dental Ctr 4109 W 47th St Chicago"],
+      "intel": {
+        "website_url": "https://parkviewdentalcare.net/",
+        "website_note": "Small single-location practice site with basic service listing; established 2014.",
+        "services": ["dental exams", "fillings"],
+        "technology": [],
+        "provider_notes": "Dr. Reginald Odom, DDS.",
+        "insurance_note": "Accepts Delta Dental PPO and Delta Dental Premier.",
+        "distinguishing_notes": "Single-dentist neighborhood office in Archer Heights, established 2014.",
+        "sources": ["https://parkviewdentalcare.net/", "https://www.yelp.com/biz/parkview-dental-center-chicago"]
+      }
+    },
+    {
+      "location_id": "f662187221555280",
+      "practice_name": "Mascorro Dental",
+      "zip": "60632",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/mascorro-edward-dds-chicago",
+        "https://www.dentalinsider.com/chicago/dentist/dr-edward-mascorro-dds-85546"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Confirmed Dr. Edward Mascorro, DDS as a solo own-name general dentist at 4444 S Archer Ave (Brighton Park); directories show no additional locations, corporate parent, or DSO affiliation.",
+      "searched": ["Mascorro Dental 4444 S Archer Chicago"]
+    },
+    {
+      "location_id": "5fa37daddddbe6f7",
+      "practice_name": "Murillo Dental",
+      "zip": "60632",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://blancamurillo.com/",
+        "https://blancamurillo.com/chicago-office/",
+        "https://www.yelp.com/biz/blanca-murillo-dds-chicago"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "brand:blanca_murillo_dds",
+      "reasoning": "Dr. Blanca Murillo, DDS's own site (blancamurillo.com) states 'two convenient locations' under her name: 1504 N Western Ave and this address, 5036 S Archer Ave. No corporate parent or DSO brand appears anywhere; this is a dentist-owned two-location practice.",
+      "searched": [
+        "Murillo Dental 5036 S Archer Ave Chicago",
+        "\"Blanca Murillo\" DDS second location address Chicago"
+      ],
+      "intel": {
+        "website_url": "https://blancamurillo.com/",
+        "website_note": "Own-name practice site listing two Chicago locations with an online appointment request form.",
+        "services": [],
+        "technology": [],
+        "provider_notes": "Dr. Blanca Murillo, DDS.",
+        "accepts_medicaid": true,
+        "insurance_note": "Most insurances accepted, including Medicaid.",
+        "distinguishing_notes": "Two-location practice; staff speak Ukrainian and Spanish.",
+        "sources": ["https://blancamurillo.com/", "https://www.healthgrades.com/dentist/dr-blanca-murillo-yfhww"]
+      }
+    },
+    {
+      "location_id": "a9f083121a51215b",
+      "practice_name": "ARAS DENTAL INCORPORATION",
+      "zip": "60632",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/chicago-dental-solutions-chicago-2",
+        "https://www.chicagodentalimplantsolutions.com/about-us/meet-dr-nihal-bicakci/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Confirmed Dr. Nihal Ozdemir Bicakci, DDS (UIC prosthodontics 2004, advanced prosthodontics/implantology specialty) operates this single-location office at 5109B S Pulaski Rd, also marketed as 'Chicago Dental Solutions'; no DSO, management company, or multi-location signal found.",
+      "searched": ["Aras Dental 5109 S Pulaski Rd Chicago Nihal Bicakci"],
+      "intel": {
+        "website_url": "https://www.chicagodentalimplantsolutions.com/",
+        "website_note": "Site markets advanced prosthodontic/implant services built around Dr. Bicakci's specialty training.",
+        "services": ["implants", "prosthodontics"],
+        "provider_notes": "Dr. Nihal Ozdemir Bicakci, DDS - UIC College of Dentistry 2004; completed a 3-year Advanced Prosthodontics and Implantology specialty program at UIC.",
+        "owner_career_stage": "mid_career",
+        "distinguishing_notes": "Also operates under the name 'Chicago Dental Solutions' at the same address; specialist prosthodontic/implant focus within a general practice.",
+        "sources": [
+          "https://www.chicagodentalimplantsolutions.com/about-us/meet-dr-nihal-bicakci/",
+          "https://www.yelp.com/biz/chicago-dental-solutions-chicago-2"
+        ]
+      }
+    },
+    {
+      "location_id": "f9f257b93fcfb2bf",
+      "practice_name": "Tillner Dental",
+      "zip": "60632",
+      "assigned_tier": "branded_dso",
+      "pe_backed": false,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "https://www.dentaldreams.com/location/studio-dental-south-pulaski-rd-chicago/",
+        "https://www.yelp.com/biz/studio-dental-chicago-2"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "brand:dental_dreams",
+      "reasoning": "The NPI is registered under 'Tillner Dental' (Dr. Melisa Tillner) but the office at 4410 S Pulaski Rd operates publicly as 'Studio Dental,' which appears on Dental Dreams' own locator page with the exact matching phone number (773) 254-3300 (the locator page's street-number typo of 4310 vs 4410 is corroborated by the same phone number on independent Yelp/Facebook listings for '4410 S Pulaski'). This is a known national DSO brand confirmed via the brand's own locator page. No PE sponsor for Dental Dreams was documented in a follow-up search, so pe_backed is left false.",
+      "searched": [
+        "Tillner Dental 4410 S Pulaski Rd Chicago",
+        "\"Studio Dental\" \"4410 S Pulaski\" Chicago phone",
+        "Dental Dreams private equity owner parent company DSO"
+      ],
+      "intel": {
+        "website_url": "https://www.dentaldreams.com/location/studio-dental-south-pulaski-rd-chicago/",
+        "website_note": "DSO-branded locator page for this office under the local name 'Studio Dental' within the Dental Dreams network.",
+        "services": [],
+        "technology": [],
+        "provider_notes": "Dr. Melisa Tillner, DDS listed as provider of record; directory notes the practice is not currently accepting new patients.",
+        "distinguishing_notes": "Operates under the local brand 'Studio Dental' rather than a national DSO name, discoverable only via the Dental Dreams corporate locator.",
+        "sources": ["https://www.dentaldreams.com/location/studio-dental-south-pulaski-rd-chicago/"]
+      }
+    },
+    {
+      "location_id": "e24bd9e2dcfa6932",
+      "practice_name": "BRITE DENTAL 55, P.C",
+      "zip": "60632",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "https://dental360grp.com/locations/",
+        "https://www.britedental.org/brite-dental-55"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "undetermined",
+      "network_id": "brand:dental_360",
+      "reasoning": "Confirmed via Dental 360's own locations page that 'Dental 360 California/55th' operates at this exact address and phone (773) 776-5277, run by Dr. Fadi Aqel (President) since 2012 - strong branded-DSO evidence. However, ctx shows AO Fadi Aqel reaching 12 IL locations across 9 ZIPs, exceeding the 10-location protected-network threshold, so per protocol this is NOT classified at the unit level. R4_protected_network:Dental 360 (Fadi Aqel, 12 IL locations) - deferring to a one-network-one-decision review.",
+      "searched": ["\"Brite Dental 55\" 2759 W 55th St Chicago Dental 360"],
+      "intel": {
+        "website_url": "https://www.britedental.org/brite-dental-55",
+        "website_note": "Branded 'Brite Dental'/'Dental 360' clinic page offering general and cosmetic dentistry plus orthodontics.",
+        "services": ["general dentistry", "orthodontics/braces", "cosmetic dentistry"],
+        "technology": [],
+        "provider_notes": "Managed by Dr. Fadi Aqel, DDS (President) and Ms. Cinthia Villa (Office Manager); business started 6/21/2012.",
+        "distinguishing_notes": "One of 12 Chicagoland locations tied to the same authorized official/brand network (Dental 360/Brite Dental).",
+        "sources": ["https://dental360grp.com/locations/", "https://www.britedental.org/brite-dental-55"]
+      }
+    },
+    {
+      "location_id": "becda92a3f79b1b1",
+      "practice_name": "Valasek Dental",
+      "zip": "60632",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/valasek-paul-s-dds-chicago",
+        "https://npidb.org/doctors/dental_health/general-practice_1223g0001x/1760521264.aspx"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Confirmed Dr. Paul S. Valasek, DDS operates this own-name office at 2643 W 51st St. Directories also list him practicing at several other addresses (Bensenville, another Chicago site, Pekin IL), consistent with an associate/multi-site dentist pattern rather than a documented DSO or shared brand; no corporate signal or management company was found for this specific location, so it is treated as independent, though the multi-site pattern lowers confidence slightly.",
+      "searched": [
+        "Valasek Dental 2643 W 51st St Chicago",
+        "\"Paul Valasek\" DDS Chicago Bensenville Pekin dental practice owner locations"
+      ]
+    },
+    {
+      "location_id": "22d607e4f9833349",
+      "practice_name": "WILLIAM R. BJORK, D.D.S.,LTD.",
+      "zip": "60632",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/william-bjork-dds-chicago",
+        "https://www.healthgrades.com/dentist/dr-william-bjork-3j324"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Confirmed Dr. William R. Bjork, DDS owns this single-location practice at 5452 S Kedzie Ave; long-tenured patient reviews (25+ years) and no DSO/management-company signal anywhere. Two providers at one dentist-owned address fits single-location group.",
+      "searched": ["William R Bjork DDS Ltd 5452 S Kedzie Ave Chicago"],
+      "intel": {
+        "services": ["general dentistry", "prosthodontics", "cosmetic dentistry", "pediatric dentistry", "emergency dentistry", "oral & maxillofacial surgery"],
+        "technology": [],
+        "provider_notes": "Dr. William Bjork, DDS speaks Spanish; patient reviews cite 25+ year relationships with the practice.",
+        "distinguishing_notes": "Long-standing (25+ years) neighborhood practice with a loyal patient base per reviews.",
+        "sources": ["https://www.yelp.com/biz/william-bjork-dds-chicago", "https://www.healthgrades.com/dentist/dr-william-bjork-3j324"]
+      }
+    },
+    {
+      "location_id": "ff011159770a1920",
+      "practice_name": "ROMO DENTAL, PC",
+      "zip": "60632",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.romodentalchicago.com/",
+        "https://www.yelp.com/biz/romo-dental-chicago"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Confirmed via the practice's own site (romodentalchicago.com) that Romo Dental is a single-location office at 4148 S Archer Ave led by Dr. Genaro Romo Jr. with a small in-house team including an orthodontist; no other locations, DSO brand, or corporate parent found.",
+      "searched": ["Romo Dental PC 4148 S Archer Ave Chicago Genaro Romo"],
+      "intel": {
+        "website_url": "https://www.romodentalchicago.com/",
+        "website_note": "Own-name single-location practice site listing a full general/cosmetic/restorative service menu.",
+        "services": ["bonding", "crowns and bridges", "fillings", "extractions", "gum treatment", "root canals", "sealants", "wisdom teeth", "implant restoration", "dentures", "nightguards", "TMJ treatment", "veneers", "whitening"],
+        "technology": [],
+        "provider_count_web": 3,
+        "provider_notes": "Dr. Genaro Romo Jr. (lead), Dr. Marcela Escobar, Dr. Kevin Wiseman (orthodontist).",
+        "distinguishing_notes": "Bilingual English/Spanish staff; hours Mon-Fri 8:30am-6pm, Sat 8am-3pm.",
+        "sources": ["https://www.romodentalchicago.com/", "https://www.yelp.com/biz/romo-dental-chicago"]
+      }
+    },
+    {
+      "location_id": "13337eb1328f3611",
+      "practice_name": "Rodriguez Dental",
+      "zip": "60632",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.vitadox.com/doctor/chicago-il-60632/ramon-j-rodriguez-dmd/H2ahYZk8ueTnwnMauh2yW7",
+        "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60632/invite-ramon-rodriguez-dmd-15458"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Confirmed Dr. Ramon J. Rodriguez, DMD practices at 'Greater Chicago Dental Associates, Inc.' at 4600 S Pulaski Rd; no additional locations, DSO brand, or corporate parent surfaced in directory searches. Two-provider single-location group, treated as dentist-owned given the lack of any corporate signal, though ownership isn't explicitly documented (medium confidence).",
+      "searched": [
+        "Rodriguez Dental 4600 S Pulaski Rd Chicago",
+        "\"Greater Chicago Dental Associates\" 4600 S Pulaski Rodriguez locations"
+      ]
+    }
+  ]
+}

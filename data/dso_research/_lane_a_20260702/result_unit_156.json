@@ -1,0 +1,343 @@
+{
+ "unit_id": "laneA_156",
+ "classifications": [
+  {
+   "location_id": "db708daf91e51c4b",
+   "practice_name": "Gary Gunkel DDS",
+   "zip": "60462",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://doctor.webmd.com/doctor/gary-gunkel-b658afe5-02f3-4b31-bc6e-fe270ecca3b5-overview",
+    "https://www.healthgrades.com/dentist/dr-gary-gunkel-2pd7c"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched Dr. Gary Gunkel DDS Orland Park; WebMD/Healthgrades consistently place his practice at 14475 John Humphrey Dr (708-460-1109) rather than the 14430 address on file, a likely stale NPPES address in the same small office corridor. No DSO/PE signal found anywhere; a 'Caring Hands Group Home of IL' hit at the same building is a separate unrelated behavioral-health tenant, not a dental parent. Classified as a small dentist-owned group (provider_count 3) given the clean independent name-match despite the address drift.",
+   "searched": ["Gary Gunkel DDS Orland Park IL dentist", "\"(708) 364-8900\" Orland Park dentist", "\"Caring Hands Group Home\" Gunkel dental Orland Park"]
+  },
+  {
+   "location_id": "998161f7bb1fa642",
+   "practice_name": "DR. TREFIL AND DR. LAROCCA PC",
+   "zip": "60462",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.opencare.com/dentists/orland-park-il/dr-trefil-and-dr-larocca-pc-24630245067c/",
+    "https://www.healthgrades.com/dentist/dr-wayne-trefil-2kshr"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address (14600 John Humphrey Dr) and provider names (Dr. Wayne Trefil, Dr. Josephine LaRocca) match exactly across multiple aggregator listings. Practice has operated since 1976 under the two dentists' own names with no corporate parent, management company, or brand mentioned anywhere.",
+   "searched": ["\"Trefil\" \"LaRocca\" dentist Orland Park IL"]
+  },
+  {
+   "location_id": "459f40b22e0ac453",
+   "practice_name": "NATHANIEL STEPHEN ROOD D.D.S., LTD.",
+   "zip": "60462",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.orlandsmiles.com/",
+    "https://findadentist.ada.org/il/cook/orland-park/general-practice/dr-nathaniel-s-rood-1532860"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Rood's own site 'Orland Smiles' confirms the 62 Orland Square Dr address and phone exactly, and the ADA Find-a-Dentist profile independently corroborates. The practice is presented entirely as his personal single-location practice (grad UIC Dentistry 2003), with no corporate branding or parent mentioned anywhere.",
+   "searched": ["Nathaniel Rood DDS Orland Park IL dentist"],
+   "intel": {
+    "website_url": "https://www.orlandsmiles.com/",
+    "website_note": "Modern owner-branded single-practice site; positions Dr. Rood as the sole named dentist offering general/cosmetic care.",
+    "services": ["general dentistry", "cosmetic dentistry", "teeth whitening", "implants", "veneers"],
+    "provider_notes": "Dr. Nathaniel S. Rood, DDS, University of Illinois College of Dentistry, 2003; ADA and Chicago Dental Society member.",
+    "owner_career_stage": "mid_career",
+    "sources": ["https://www.orlandsmiles.com/", "https://findadentist.ada.org/il/cook/orland-park/general-practice/dr-nathaniel-s-rood-1532860"]
+   }
+  },
+  {
+   "location_id": "35877e91184607fd",
+   "practice_name": "Accurate Dentistry",
+   "zip": "60462",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://gabriel-uta.squarespace.com/contact",
+    "https://www.myczekdentistry.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address (15127 S 73rd Ave Ste D2) confirmed via the practice's own squarespace site run by Dr. Gabriel Uta (successor branding of the prior Myczek Dentistry office). Single-location dentist-run practice, 15+ years operating, CareCredit financing, no DSO or PE signal found.",
+   "searched": ["Accurate Dentistry Orland Park IL 73rd ave"],
+   "intel": {
+    "website_url": "https://gabriel-uta.squarespace.com/contact",
+    "website_note": "Small owner-operator site; emphasizes patient comfort and cosmetic/restorative focus, in-house CareCredit financing.",
+    "services": ["preventive checkups", "cosmetic dentistry", "restorative treatments", "implants"],
+    "provider_notes": "Dr. Gabriel Uta, current lead dentist; practice previously associated with Dr. Ronald Myczek.",
+    "sources": ["https://gabriel-uta.squarespace.com/contact", "https://www.myczekdentistry.com/"]
+   }
+  },
+  {
+   "location_id": "4facd48edcbadd27",
+   "practice_name": "Rk Dental",
+   "zip": "60462",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searched the listed address (14520 John Humphrey Dr) and phone (708-460-1750); every live source ties that exact address/phone to a different, unrelated practice (Issa Dentistry / Center for Oral Health), not 'RK Dental.' The RK-branded practice actually documented (RK Dental Care / RK Smiles, Dr. Rita Kapmarski) sits at a different address (14430) with a different phone (460-6400). closure_suspect: this NPI's original practice appears to have vacated/turned over at this address; leaving undetermined rather than guessing.",
+   "searched": ["RK Dental Orland Park IL dentist 14520 John Humphrey", "\"(708) 460-1750\" Orland Park dentist RK Dental", "\"(708) 460-1750\" OR \"14520 John Humphrey\" RK Dental dentist Orland Park"]
+  },
+  {
+   "location_id": "859f618851c50316",
+   "practice_name": "WHAL RAN RHIM-LAVIN DDS PC",
+   "zip": "60462",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.vitals.com/dentists/Dr_Whal_Ran_Rhim_Lavin",
+    "https://www.denteldoc.com/location/?id=55897"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address (9631 W 153rd St Ste 31) and phone (708-460-7114) match exactly across multiple directory listings. Solo dentist practice, accepting new patients, no corporate parent or DSO branding mentioned anywhere.",
+   "searched": ["Whal Ran Rhim-Lavin DDS Orland Park IL dentist"]
+  },
+  {
+   "location_id": "b3e4d618d4018f09",
+   "practice_name": "Gunkel Dental",
+   "zip": "60462",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-gary-gunkel-2pd7c",
+    "https://doctor.webmd.com/doctor/gary-gunkel-b658afe5-02f3-4b31-bc6e-fe270ecca3b5-overview"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address (14475 John Humphrey Dr) and phone (708-460-1109) match exactly to Dr. Gary Gunkel's practice on both Healthgrades and WebMD. Single-location dentist-owned office (this appears to be the same underlying clinic as the 'Gary Gunkel DDS' row in this unit, likely a duplicate NPI/address artifact); no DSO/PE signal found.",
+   "searched": ["Gary Gunkel DDS Orland Park IL dentist"]
+  },
+  {
+   "location_id": "d9d657b4d75c8dbd",
+   "practice_name": "Ondoy Dental",
+   "zip": "60462",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.vitals.com/doctors/eric-ondoy-jthpen",
+    "https://doctor.webmd.com/doctor/eric-ondoy-7a8db67e-aaff-4510-8166-35b8ad258749-overview"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address (8120 Katy Ln) and phone (708-226-0091) confirmed exactly across Vitals and WebMD. Solo dentist practice under Dr. Eric Ondoy's own name, no DSO/corporate signal found.",
+   "searched": ["Ondoy Dental Orland Park IL katy lane dentist"]
+  },
+  {
+   "location_id": "0056679d68d2e255",
+   "practice_name": "Grider Stephanie L DMD",
+   "zip": "60462",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "http://www.germinodental1.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched the specific address/phone (9763 W 143rd St Ste A, 708-349-3443) - it currently maps exactly to 'Germino Dental,' a family-owned independent practice (38 years serving Orland Park), not a page under the Grider name; Dr. Grider likely practices there as an associate. No DSO or PE signal found; classified independent multi-provider at one location, medium confidence due to the name/DBA mismatch.",
+   "searched": ["Stephanie Grider DMD Orland Park IL dentist", "\"(708) 349-3443\" Orland Park dentist Grider"],
+   "intel": {
+    "website_url": "http://www.germinodental1.com/",
+    "website_note": "Long-tenured family-owned practice site emphasizing 38 years serving Orland Park.",
+    "distinguishing_notes": "Family owned and operated dental office, in continuous operation for over three decades at this address.",
+    "sources": ["http://www.germinodental1.com/"]
+   }
+  },
+  {
+   "location_id": "c40539b9a0a538ea",
+   "practice_name": "32 PEARLS DENTAL INC",
+   "zip": "60462",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npiprofile.com/npi/1134631906"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address (9017 W 151st St) matches exactly; NPI profile lists the authorized official as Parth Patel, DMD (a dentist), not a corporate officer. Checked whether '32 Pearls' is a multi-location chain (a similarly-named 'My 32 Pearls' in Harwood Heights and a separate '32 Pearls Family Dentistry' brand in IN/GA) but found no evidence this Orland Park entity is affiliated with either - appears to be an independently-chosen name coincidence. Classified single-location dentist-owned group; medium confidence due to a phone-number mismatch against the file (unit lists 403-0071, web shows 226-6700).",
+   "searched": ["\"32 Pearls Dental\" Orland Park IL dentist", "\"32 Pearls Family Dentistry\" locations Illinois how many offices"]
+  },
+  {
+   "location_id": "d00e3db6b46395df",
+   "practice_name": "DENTISTRY AND IMPLANTOLOGY GROUP OF ORLAND PARK, PC",
+   "zip": "60462",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.carecredit.com/doctor-locator/orland-park-il/the-dentistry-and-implantology-group-rmm445/",
+    "https://www.yelp.com/biz/the-dentistry-and-implantology-group-of-orland-park-orland-park"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Phone (708-429-5575) matches exactly and CareCredit/Yelp confirm the practice (15750 S Harlem Ave), founded 1980, run by Dr. Philip Cole and Dr. Stanford. No parent company, management group, or DSO branding found anywhere - classic two-dentist owned single-location group.",
+   "searched": ["\"Dentistry and Implantology Group of Orland Park\" Philip Cole DDS"],
+   "intel": {
+    "website_url": "https://www.carecredit.com/doctor-locator/orland-park-il/the-dentistry-and-implantology-group-rmm445/",
+    "website_note": "Long-running (since 1980) implant/cosmetic-focused group practice, two named dentist-owners with 20+ years experience each.",
+    "services": ["bonding", "crowns and bridgework", "dental implants", "fillings", "oral cancer screenings", "orthodontic treatment", "periodontal therapy", "porcelain veneers", "teeth cleanings", "dentures", "root canal", "sealants", "teeth whitening", "TMJ/TMD treatment", "extractions"],
+    "provider_notes": "Dr. Philip Louis Cole, DDS and Dr. Robert Stanford, both 20+ years experience.",
+    "sources": ["https://www.carecredit.com/doctor-locator/orland-park-il/the-dentistry-and-implantology-group-rmm445/"]
+   }
+  },
+  {
+   "location_id": "685d7698a5b5f154",
+   "practice_name": "DENTAL ASSOCIATES OF ORLAND PARK, PLLC",
+   "zip": "60462",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dentalassociatesorlandpark.com/",
+    "https://www.yelp.com/biz/dental-associates-orland-park-orland-park"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address (9443 W 144th Pl) and phone (708-403-9848) match exactly on the practice's own site, which names Dr. Richard Pape as lead dentist with 25+ years at this single location. No DSO/PE parent or management company mentioned.",
+   "searched": ["\"Dental Associates of Orland Park\" PLLC 144th pl dentist"],
+   "intel": {
+    "website_url": "https://www.dentalassociatesorlandpark.com/",
+    "website_note": "Established owner-branded site (25+ years), highlights local 'Top Dentist' recognitions.",
+    "services": ["general dentistry", "cosmetic dentistry", "implant services", "Invisalign"],
+    "provider_notes": "Dr. Richard Pape, DDS, University of Illinois School of Dentistry grad; named Chicago Magazine Top Dentist 2019/2021/2023.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Practice has been recognized multiple years as a Chicago Magazine 'Top Dentist.'",
+    "sources": ["https://www.dentalassociatesorlandpark.com/about-us/richard-pape-dds", "https://www.yelp.com/biz/dental-associates-orland-park-orland-park"]
+   }
+  },
+  {
+   "location_id": "2229f79b5fe594bc",
+   "practice_name": "Domina Dental",
+   "zip": "60462",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-edward-domina-2hpnc",
+    "https://providers.sharecare.com/doctor/dr-edward-domina-2hpnc"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address (8651 W 159th St Ste 1) and phone (708-429-0900) match exactly. Dr. Edward Domina, solo dentist, Loyola grad 1975, practice established 1984, no DSO/PE affiliation mentioned anywhere.",
+   "searched": ["\"Domina Dental\" Orland Park IL 159th st dentist", "Donald Cleland DDS Orland Park closed retired practice"],
+   "intel": {
+    "website_note": "Aggregator listings only (Healthgrades/Sharecare); no dedicated practice site found.",
+    "provider_notes": "Dr. Edward Domina, DDS, Loyola University grad 1975.",
+    "owner_career_stage": "late_career",
+    "sources": ["https://www.healthgrades.com/dentist/dr-edward-domina-2hpnc"]
+   }
+  },
+  {
+   "location_id": "4e4b4093d7d8a16e",
+   "practice_name": "Bandy, Jamie",
+   "zip": "60462",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.kirschdentalonline.com/about-us",
+    "https://www.yelp.com/biz/kirsch-family-dentistry-orland-park"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address (8650 W 159th St) and phone (708-460-1702) match exactly to 'Kirsch Family Dentistry,' a locally-owned father-son practice (Michael Kirsch Sr. since 1980, Michael Kirsch Jr. since 2009); no mention of 'Jamie Bandy' found, likely an associate/former provider registered under this NPI. No DSO/PE signal found anywhere - classified as an independent dentist-owned multi-provider single location, medium confidence due to the name mismatch.",
+   "searched": ["\"Bandy\" dentist Orland Park IL 159th st family practice", "Kirsch Family Dentistry Orland Park owner Dr Kirsch Jamie Bandy"],
+   "intel": {
+    "website_url": "https://www.kirschdentalonline.com/",
+    "website_note": "Owner-branded father-son family dentistry site, locally operated since 1980.",
+    "provider_notes": "Michael Kirsch, DDS (Loyola 1980) and Michael Kirsch Jr., DDS (UIC 2009), father-son team.",
+    "distinguishing_notes": "Two-generation family practice at the same location since 1980.",
+    "sources": ["https://www.kirschdentalonline.com/about-us"]
+   }
+  },
+  {
+   "location_id": "51ac18289e1ae93b",
+   "practice_name": "DONALD E CLELAND JR DDS PC",
+   "zip": "60462",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "closure_suspect: Yelp's listing for this exact address/phone (14600 S La Grange Rd, 708-349-3990) is explicitly tagged 'CLOSED' (updated Nov 2025). No current operating website or reopening evidence found, so leaving undetermined rather than assigning an ownership tier to what appears to be a shuttered practice.",
+   "searched": ["\"Donald Cleland\" DDS Orland Park IL la grange rd dentist", "Donald Cleland DDS Orland Park closed retired practice"]
+  },
+  {
+   "location_id": "d108193bf5000b53",
+   "practice_name": "Orland Park Family Dental",
+   "zip": "60462",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.drshurilla.com/",
+    "https://www.yelp.com/biz/gregory-shurilla-orland-park-family-dental-orland-park-4"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address (8108 W 143rd St) and phone (708-460-8827) match exactly to Dr. Gregory Shurilla's own site. Solo owner-dentist, UIC grad 1991, practiced in CA then established this Orland Park office in 2002; no DSO/PE affiliation found.",
+   "searched": ["\"Orland Park Family Dental\" 8108 143rd st dentist"],
+   "intel": {
+    "website_url": "https://www.drshurilla.com/",
+    "website_note": "Owner-branded single-practice site; positions Dr. Shurilla as sole dentist treating all ages since 2002.",
+    "services": ["general dentistry", "cosmetic dentistry"],
+    "provider_notes": "Dr. Gregory Shurilla, DDS, University of Illinois Dental School 1991; practiced in California 10 years before returning to establish this office in 2002.",
+    "owner_career_stage": "late_career",
+    "sources": ["https://www.drshurilla.com/meet-the-doctor", "https://www.yelp.com/biz/gregory-shurilla-orland-park-family-dental-orland-park-4"]
+   }
+  }
+ ]
+}

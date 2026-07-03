@@ -1,0 +1,456 @@
+{
+ "unit_id": "laneA_112",
+ "classifications": [
+  {
+   "location_id": "fc8771f9c946c8bd",
+   "practice_name": "Parikh, Neil P DDS",
+   "zip": "60636",
+   "assigned_tier": "institutional",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://friendfhc.org/",
+    "https://www.dentalplans.com/dentists/illinois/chicago/60608/dr-neil-parikh-22837/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Web search confirms Dr. Neil Parikh practices dentistry at 5843 S Western Ave as part of Friend Family Health Center (friendfhc.org), a federally qualified health center (FQHC) serving 30,000+ patients/year across 19 physicians and 8 specialty areas. This is a public-health institutional delivery site, not a privately owned dental practice, so it is classified institutional (T6) rather than solo/independent.",
+   "searched": [
+    "Neil Parikh DDS 5843 S Western Ave Chicago dentist",
+    "Friend Family Health Center 5843 S Western Ave Chicago FQHC"
+   ],
+   "intel": {
+    "website_url": "https://friendfhc.org/",
+    "website_note": "Multi-service FQHC website (not a standalone dental marketing site); dental is one of several service lines at the Western Ave delivery site.",
+    "distinguishing_notes": "Federally qualified health center founded via the Friend Family Foundation (1930s lineage), serving medically underserved South Side Chicago; Dr. Parikh speaks Gujarati.",
+    "sources": [
+     "https://friendfhc.org/",
+     "https://www.dentalplans.com/dentists/illinois/chicago/60608/dr-neil-parikh-22837/"
+    ]
+   }
+  },
+  {
+   "location_id": "04faa39b050ecd52",
+   "practice_name": "KORLE BU MEDICAL GROUP",
+   "zip": "60637",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [
+    "https://npino.com/dental-clinic/1649203092-korle-bu-medical-group/",
+    "https://www.vitals.com/doctors/Dr_John_Acquaye-Awah.html",
+    "https://www.yelp.com/biz/korle-bu-medical-group-sc-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "The NPPES authorized official John Acquaye-Awah is documented across multiple directories as an MD internal medicine physician (Mount Sinai/Advocate Illinois Masonic affiliations), not a dentist, which conflicts with this org NPI's dental taxonomy and creates real doubt about who actually controls dental operations at this address. A similarly-named 'Korle Bu Medical Group SC' also shows as CLOSED on Yelp (different address, S Michigan Ave, so not a certain match). Could not verify ownership/tier with confidence; noting closure_suspect as a caution for reviewers.",
+   "searched": [
+    "Korle Bu Medical Group 5517 S Ellis Ave Chicago dental",
+    "John Acquaye-Awah dentist Chicago Korle Bu practice locations"
+   ]
+  },
+  {
+   "location_id": "c0600f7c51a1ff79",
+   "practice_name": "Parkway Dental Clinic",
+   "zip": "60637",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.carecredit.com/doctor-locator/General-Dentist-in-Chicago-IL-60637/Parkway-Dental/",
+    "https://www.yelp.com/biz/curtis-r-robinson-dds-parkway-dental-clinic-chicago-3",
+    "https://m.facebook.com/parkwaydentalclinic/about/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple independent directories (CareCredit, Yelp, Facebook) consistently identify Dr. Curtis R. Robinson, DDS as the sole general dentist operating Parkway Dental Clinic at this single 6858 S ML King Dr address, with no corporate parent or brand affiliation found. Matches solo owner-operator profile at one location.",
+   "searched": [
+    "Parkway Dental Clinic 6858 S ML King Dr Chicago"
+   ],
+   "intel": {
+    "website_note": "Directory listings (CareCredit, DentalInsider, Yelp) show general/endodontic/reconstructive/emergency dentistry services.",
+    "services": [
+     "general dentistry",
+     "endodontics",
+     "reconstructive dentistry",
+     "emergency dentistry"
+    ],
+    "insurance_note": "Accepts Delta Dental, Aetna, Assurant Health, Cigna, BCBS, Guardian, MetLife per Yelp listing.",
+    "sources": [
+     "https://www.carecredit.com/doctor-locator/General-Dentist-in-Chicago-IL-60637/Parkway-Dental/",
+     "https://www.yelp.com/biz/curtis-r-robinson-dds-parkway-dental-clinic-chicago-3"
+    ]
+   }
+  },
+  {
+   "location_id": "c6f85681fc1f90f7",
+   "practice_name": "UNIVERSITY DENTAL PROFESSIONALS",
+   "zip": "60637",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://udpdentistry.com/",
+    "https://www.yelp.com/biz/university-dental-professionals-chicago",
+    "https://udpdentistry.com/locations/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "udpdentistry.com and Yelp describe a single Chicago office established in 1984 serving families for over three decades, offering general/cosmetic/endodontic/orthodontic/periodontic/restorative services; the NPI record shows 2 providers at this one address. Despite the ctx institutional_hint flag, no evidence ties this to a university, hospital, or the unrelated 22-office 'United Dental Partners' DSO — searched explicitly and found no ownership link. Classified as a single-location, dentist-run group practice.",
+   "searched": [
+    "University Dental Professionals 5549 S Cornell Ave Chicago",
+    "\"University Dental Professionals\" Chicago DSO \"All Family Dental\" OR \"UDP\" ownership corporate"
+   ],
+   "intel": {
+    "website_url": "https://udpdentistry.com/",
+    "website_note": "Established, modern practice site with services/team/patient-center pages; positions itself as a longstanding Chicago family dental office (est. 1984).",
+    "services": [
+     "cosmetic dentistry",
+     "endodontics",
+     "general and family dentistry",
+     "orthodontics",
+     "periodontics",
+     "restorative dentistry"
+    ],
+    "distinguishing_notes": "In continuous operation since 1984; online booking via udpdentistry.com.",
+    "sources": [
+     "https://udpdentistry.com/",
+     "https://www.yelp.com/biz/university-dental-professionals-chicago"
+    ]
+   }
+  },
+  {
+   "location_id": "de84ab8dcefc13a5",
+   "practice_name": "Office-dr Christopher J Morin",
+   "zip": "60637",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [
+    "https://doctors.advocatehealth.com/i-christopher-morin-chicago-pediatric-dentistry",
+    "https://doctor.webmd.com/doctor/christopher-morin-c94ad4a2-9bfb-463d-a50c-349b09206be7-overview"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Search results show Dr. Christopher Morin's pediatric dental office is transitioning younger patients to another practice (Tooth Buds Pediatric Dentistry), and directories list him at a different current address (811 W Wellington Ave, 60657) with an Advocate Medical Group affiliation, rather than the NPI record's 1642 E 56th St, 60637 address. This pattern indicates the specific location may be winding down/relocated. Flagged closure_suspect; not classified.",
+   "searched": [
+    "\"Office of Dr. Christopher Morin\" 1642 E 56th St Chicago dentist",
+    "Christopher Morin DDS pediatric dentist Advocate Health Hyde Park office owner"
+   ]
+  },
+  {
+   "location_id": "c33f7c03e9fc3c71",
+   "practice_name": "WOODLAWN DENTAL GALLERY",
+   "zip": "60637",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://voyagechicago.com/interview/meet-dr-ogbonna-bowden-smiles-tomorrow-woodlawn-hyde-park/",
+    "https://cdgsmiles.com/",
+    "https://mydentalgallery.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:BOWDEN_OGBONNA",
+   "reasoning": "A Voyage Chicago profile and both practice websites confirm Dr. Ogbonna Bowden, DDS (Univ. of Michigan dental school grad) personally opened Woodlawn Dental Gallery in 2013 and a second office, Chatham Dental Gallery, in 2015 — matching the ctx owner_reach_locations=2 (zips 60617/60637). Both are his own dentist-owned offices, not a corporate/branded chain, so this is dentist-owned multi-location (T3), not stealth/branded DSO.",
+   "searched": [
+    "Woodlawn Dental Gallery Ogbonna Bowden Chicago dentist",
+    "Ogbonna Bowden dentist second location \"Smiles of Tomorrow\" OR Chatham Chicago"
+   ],
+   "intel": {
+    "website_url": "https://mydentalgallery.com/",
+    "website_note": "Modern practice site with doctor bios, services, and photo gallery; strong review presence (53 Yelp reviews).",
+    "services": [
+     "preventive dentistry",
+     "restorative dentistry",
+     "cosmetic dentistry",
+     "children's dentistry",
+     "implants",
+     "orthodontics/functional appliances"
+    ],
+    "provider_notes": "Dr. Ogbonna Bowden, DDS, University of Michigan School of Dentistry graduate; completed postgraduate esthetic dentistry program at University of Minnesota.",
+    "distinguishing_notes": "Opened in 2013 specifically to bring advanced dental technology to the underserved Woodlawn/Hyde Park community; Dr. Bowden also runs a free mobile dentistry program (Smiles of Tomorrow) visiting daycares.",
+    "sources": [
+     "https://voyagechicago.com/interview/meet-dr-ogbonna-bowden-smiles-tomorrow-woodlawn-hyde-park/",
+     "https://mydentalgallery.com/",
+     "https://cdgsmiles.com/"
+    ]
+   }
+  },
+  {
+   "location_id": "7a955a5504c45bda",
+   "practice_name": "Jung, Victoria DDS",
+   "zip": "60637",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Ran three searches for 'Victoria Jung DDS/dentist' at or near 5841 S Maryland Ave / Hyde Park, Chicago and could not find any practice website, directory bio, or news source that confirms this person or names a practice at this specific address. The address itself maps to the University of Chicago Medical Center campus, but no source ties 'Victoria Jung' to a UCM dental clinic. Insufficient evidence to assign any tier.",
+   "searched": [
+    "Victoria Jung DDS 5841 S Maryland Ave Chicago dentist",
+    "\"5841 S Maryland\" Chicago dental office",
+    "\"Victoria Jung\" dentist Hyde Park Chicago dental school graduate"
+   ]
+  },
+  {
+   "location_id": "92771ebd52945ff5",
+   "practice_name": "Resnick Dental",
+   "zip": "60637",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://doctor.webmd.com/doctor/raiselle-resnick-d3d3d6d1-b5cf-4d14-8ce6-8c30e5ca381c-overview",
+    "https://www.healthgrades.com/dentist/dr-raiselle-resnick-mlhdbrv239"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "WebMD and Healthgrades directories confirm Dr. Raiselle Resnick, DDS practices dentistry at 5649 S Woodlawn Ave, Chicago (matches NPI record, solo_established, 1 provider). No second location, brand, or corporate parent found in two searches. Evidence quality is directory-only (no dedicated practice website located), so confidence is medium rather than high.",
+   "searched": [
+    "Resnick Dental 5649 S Woodlawn Ave Chicago dentist",
+    "\"Raiselle Resnick\" dentist Chicago Hyde Park office locations"
+   ]
+  },
+  {
+   "location_id": "61faddcf67f830ad",
+   "practice_name": "Hanson Dansby, Amber",
+   "zip": "60637",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [
+    "https://dentistry.uic.edu/profiles/hanson-dansby-amber/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "The only clear bio found for Amber Hanson-Dansby, DMD identifies her as a PGY2 pediatric dentistry resident at UIC College of Dentistry, not as an owner or associate at a named private practice. 6507 S Kimbark Ave is listed generically as a pediatric dentistry address in multiple directories, but no source connects her name to that specific office as owner or employee. Insufficient evidence to classify ownership.",
+   "searched": [
+    "Amber Hanson Dansby dentist 6507 S Kimbark Ave Chicago",
+    "\"6507 S Kimbark Ave\" Chicago dentist office name",
+    "Amber Hanson-Dansby DMD pediatric dentist Chicago associate practice 2026"
+   ]
+  },
+  {
+   "location_id": "ae46e2417fc0a4f9",
+   "practice_name": "A TOPACIO DENTAL INC",
+   "zip": "60638",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [
+    "https://www.bbb.org/us/il/chicago/profile/dentist/a-topacio-dental-inc-0654-90011736",
+    "https://www.sixcornersfamilydental.com/blog/welcoming-dr-alberto-topacio-dental-implant-specialist",
+    "https://www.linkedin.com/in/alberto-topacio-8442b7350/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "BBB lists 'A Topacio Dental Inc' as out of business, and current 2026 sources (Six Corners Family Dental blog, LinkedIn) show Dr. Alberto Topacio now working as an associate/implant specialist at Six Corners Family Dental and 'AMT Dental Care' rather than running his own 6508 W Archer Ave office. This is a strong closure signal for the original solo practice; per protocol not classified, flagged closure_suspect.",
+   "searched": [
+    "A Topacio Dental Inc 6508 W Archer Ave Chicago dentist",
+    "\"Alberto Topacio\" dentist Chicago \"out of business\" OR closed OR retired 2026"
+   ]
+  },
+  {
+   "location_id": "b01cfff92e715e73",
+   "practice_name": "LEE C DRAHOS, DDS, PC",
+   "zip": "60638",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/lee-drahos-dds-chicago",
+    "https://www.healthgrades.com/dentist/dr-lee-drahos-y46s4",
+    "https://www.healthgrades.com/group-directory/il-illinois/chicago/drahos-dental-care-x4l28p"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directories consistently identify Dr. Lee C. Drahos, DDS (UIC dental school grad) as the practitioner running 'Drahos Dental Care' at 6800 W Archer Ave, matching the NPI's family_practice classification with 3 providers at one address; no chain/brand affiliation found. Single-location, dentist-owned multi-provider office.",
+   "searched": [
+    "Lee Drahos DDS 6800 W Archer Ave Chicago dentist"
+   ],
+   "intel": {
+    "website_note": "Directory listings show treatments: check-ups, crowns/veneers, teeth whitening, Invisalign; Dr. Drahos speaks Korean and offers telehealth.",
+    "services": [
+     "crowns and veneers",
+     "teeth whitening",
+     "Invisalign",
+     "general check-ups"
+    ],
+    "google_rating": 5.0,
+    "google_review_count": 13,
+    "google_source_url": "https://www.healthgrades.com/dentist/dr-lee-drahos-y46s4",
+    "sources": [
+     "https://www.healthgrades.com/dentist/dr-lee-drahos-y46s4",
+     "https://www.yelp.com/biz/lee-drahos-dds-chicago"
+    ]
+   }
+  },
+  {
+   "location_id": "52575cbd5f73e5f8",
+   "practice_name": "ARCHER FAMILY DENTAL LTD",
+   "zip": "60638",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://archerfamilydental.com/about-us/",
+    "https://www.linkedin.com/in/aneta-m-lacek-dds-9aba5b35/",
+    "https://www.yelp.com/biz/archer-family-dental-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "archerfamilydental.com and LinkedIn confirm Dr. Aneta Lacek, DDS (UIC grad) personally purchased this practice (est. 1979) from Dr. Bryniarski in March 2014 and lists herself as 'Owner' at this single 6615 W Archer Ave address; NPI record shows 3 providers there, no brand/corporate parent found. Single-location, dentist-owned.",
+   "searched": [
+    "Archer Family Dental Ltd 6615 W Archer Ave Chicago Aneta Lacek"
+   ],
+   "intel": {
+    "website_url": "https://archerfamilydental.com/about-us/",
+    "website_note": "Practice history page details ownership transition and technology investments.",
+    "technology": [
+     "CEREC same-day crowns",
+     "digital x-rays"
+    ],
+    "provider_notes": "Dr. Aneta Lacek, DDS, UIC College of Dentistry graduate; completed general dentistry residency at Illinois Masonic Hospital; fluent in English and Polish.",
+    "distinguishing_notes": "Practice established 1979, under continuous operation; owner purchased it from the founding dentist in 2014.",
+    "sources": [
+     "https://archerfamilydental.com/about-us/",
+     "https://www.linkedin.com/in/aneta-m-lacek-dds-9aba5b35/"
+    ]
+   }
+  },
+  {
+   "location_id": "89760c18801ea92e",
+   "practice_name": "JOHN J MROZEK DDS, PC",
+   "zip": "60638",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.drmrozek.com/our-locations",
+    "https://www.healthgrades.com/group-directory/il-illinois/chicago/the-smilesavers-dr-john-j-mrozek-associates-x5yk4b",
+    "https://www.yelp.com/biz/mrozek-john-dds-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "drmrozek.com's own locations page confirms a single office at 7017 W Archer Ave, Chicago (\"our practice\" used throughout, no other addresses listed). Healthgrades groups this under 'The Smilesavers, Dr John J Mrozek & Associates', consistent with the NPI record's 2-provider small_group classification at one address. No DSO/brand affiliation found.",
+   "searched": [
+    "John Mrozek DDS 7017 W Archer Ave Chicago dentist"
+   ],
+   "intel": {
+    "website_note": "Practice site (drmrozek.com) branded 'Mrozek General Dentistry'; positions itself as a longstanding local, trusted practice.",
+    "services": [
+     "general dentistry",
+     "cosmetic dentistry",
+     "teeth whitening",
+     "implants",
+     "veneers"
+    ],
+    "provider_notes": "Dr. John Mrozek, Northwestern University Dental School graduate; residency at Michael Reese Hospital and Medical Center.",
+    "sources": [
+     "https://www.drmrozek.com/our-locations",
+     "https://www.healthgrades.com/group-directory/il-illinois/chicago/the-smilesavers-dr-john-j-mrozek-associates-x5yk4b"
+    ]
+   }
+  },
+  {
+   "location_id": "ccd624028a523e09",
+   "practice_name": "Dudek Dental",
+   "zip": "60638",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-walter-dudek-2j392",
+    "https://www.yelp.com/biz/dudek-walter-j-jr-dds-chicago-2"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directories (Healthgrades, Yelp, Sharecare) identify Dr. Walter J. Dudek Jr., DDS as practicing at 6521 W Archer Ave, matching the NPI record's small_group classification with 2 providers at this single address. No second location or corporate/brand affiliation found; evidence is directory-only so confidence is medium.",
+   "searched": [
+    "Dudek Dental 6521 W Archer Ave Chicago dentist"
+   ],
+   "intel": {
+    "services": [
+     "dental exam and cleaning",
+     "dental implants",
+     "laser dentistry",
+     "teeth whitening",
+     "veneers"
+    ],
+    "sources": [
+     "https://www.healthgrades.com/dentist/dr-walter-dudek-2j392"
+    ]
+   }
+  },
+  {
+   "location_id": "3a5a3e2ddac6ac3b",
+   "practice_name": "Michalik Dental",
+   "zip": "60638",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npidb.org/doctors/dental_health/dentist_122300000x/1255413878.aspx"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "NPI directory confirms Dr. Cynthia Michalik, DDS practices solo at 6302 S Archer Ave, Chicago, matching the NPI record's solo_established classification (1 provider). No dedicated practice website, second location, or brand affiliation was found in two searches, consistent with a small solo office; confidence medium due to thin (directory-only) source depth.",
+   "searched": [
+    "Michalik Dental 6302 S Archer Ave Chicago dentist",
+    "\"Michalik\" dentist Chicago Archer Ave 60638"
+   ]
+  },
+  {
+   "location_id": "2831388f07c37a82",
+   "practice_name": "Chouinard Dental",
+   "zip": "60638",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npino.com/dentist/1215009642-dr.-joanne-d.-chouinard/",
+    "https://www.vitadox.com/doctor/garfield-ridge-chicago-il-60638/joanne-d-chouinard-dmd-mph/tZpk7Nu8zqDdiCxHPnNSyY"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple directories (ehealthscores, npino, Vitadox, Medicarelist) consistently show Dr. Joanne D. Chouinard, DMD, MPH as the sole general practice dentist (17+ years experience, IL license 019018775) at 6384 S Archer Ave, matching the NPI record's solo_established classification. No corporate parent, brand, or second location found.",
+   "searched": [
+    "Chouinard Dental 6384 S Archer Ave Chicago dentist"
+   ]
+  }
+ ]
+}

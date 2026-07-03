@@ -1,0 +1,413 @@
+{
+ "unit_id": "laneA_206",
+ "classifications": [
+  {
+   "location_id": "b05c90eb350982ec",
+   "practice_name": "Tiner, Kirk E DDS",
+   "zip": "60123",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/tiner-family-dental-elgin",
+    "https://www.healthgrades.com/dentist/dr-kirk-tiner-y297g"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched the name+address and confirmed 'Tiner Family Dental' at 75 Market St, Elgin IL, phone (847) 742-8211 matching NPI exactly, in business since 1986 (owner-named practice). A separate directory query surfaced Dr. Tiner also seeing patients at differently-branded offices in Naperville ('White Eagle Family Dentistry') and Chicago, suggesting per-diem/associate work rather than a self-owned chain (no shared branding or single website listing all sites), so this stays true_independent for this location rather than dentist_multi. Confidence medium given that multi-site ambiguity.",
+   "searched": [
+    "Tiner Kirk DDS Elgin IL dentist 75 Market St",
+    "\"Kirk Tiner\" dentist Aurora Naperville Chicago locations group"
+   ],
+   "intel": {
+    "services": ["implants", "oral surgery", "Invisalign", "whitening", "emergency care"],
+    "distinguishing_notes": "Family dentistry practice at this address since 1986; Dr. Tiner also seen part-time at other-branded offices in Naperville and Chicago per directory listings.",
+    "sources": [
+     "https://www.yelp.com/biz/tiner-family-dental-elgin",
+     "https://www.healthgrades.com/dentist/dr-kirk-tiner-y297g"
+    ]
+   }
+  },
+  {
+   "location_id": "1bc51db12b76e122",
+   "practice_name": "Peacock Dental",
+   "zip": "60123",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.nickelsendental.com/",
+    "https://local.demandforce.com/b/nickelsendental",
+    "https://www.doctorsnetwork.com/doctors/dentists/elgin-il-60123/invite-jon-nickelsen-dds-13016"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The NPI address+phone (523 N McLean Blvd, (847) 742-8811) matches 'Nickelsen Family Dental', a solo practice directed by Dr. Jon Nickelsen (13+ years), NOT a business currently called 'Peacock Dental' -- a real 'Peacock Dental' (Dr. Angela Landrowski) exists nearby at a different address (320 N McLean Blvd) with a different phone, a same-name collision per the address-matching rule. This location appears to be an NPPES-stale DBA name for what is now Nickelsen Family Dental, a solo dentist-owned practice with no corporate signal.",
+   "searched": [
+    "Peacock Dental Elgin IL 523 N McLean Blvd",
+    "\"742-8811\" Elgin IL dentist",
+    "Peacock Dental Elgin IL \"523\" OR \"525\" N McLean Blvd"
+   ],
+   "intel": {
+    "website_url": "https://www.nickelsendental.com/",
+    "website_note": "Practice currently operates and markets as Nickelsen Family Dental at this address, not the 'Peacock Dental' name on file in NPPES.",
+    "sources": [
+     "https://www.nickelsendental.com/",
+     "https://local.demandforce.com/b/nickelsendental"
+    ]
+   }
+  },
+  {
+   "location_id": "acc2e183d8aa0f5d",
+   "practice_name": "Carlson Marvin Office",
+   "zip": "60123",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/carlson-matthew-c-dds-elgin",
+    "https://www.dentalinsider.com/elgin-2/dentist/dr-marvin-carlson-dds-55679"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address (1558 Weatherstone Ln) and phone ((847) 742-7886) match exactly across multiple sources for Dr. Marvin/Matthew Carlson, DDS, in business since 1996. No corporate parent, brand, or management company appears anywhere in the listings -- a solo owner-operator single-location practice.",
+   "searched": [
+    "Carlson Marvin dentist Elgin IL Weatherstone Lane"
+   ],
+   "intel": {
+    "distinguishing_notes": "Solo family dental practice at this Weatherstone Ln address since 1996.",
+    "sources": ["https://www.yelp.com/biz/carlson-matthew-c-dds-elgin"]
+   }
+  },
+  {
+   "location_id": "d6f091296933a3bf",
+   "practice_name": "Airlite Dental of Elgin PC",
+   "zip": "60123",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://dentalcareelgin.com/about-us/",
+    "https://www.bbb.org/us/il/elgin/profile/dentist/airlite-dental-of-elgin-pc-0654-90020454"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Loaded the practice's own About Us page: address/phone match the NPI record exactly, business started 2012, and the site names Dr. Charles Martinez, DMD as the practicing dentist with no mention of a management company or corporate parent (the 'Websites For Doctors' footer is only a web-design vendor). Treated as a solo dentist-run practice.",
+   "searched": [
+    "Airlite Dental of Elgin PC 40 N Airlite St",
+    "WebFetch https://dentalcareelgin.com/about-us/"
+   ],
+   "intel": {
+    "website_url": "https://dentalcareelgin.com/",
+    "website_note": "Modern marketing site for a solo general practice; Dr. Charles Martinez, DMD is the featured dentist.",
+    "services": ["extractions", "cosmetic fillings", "whitening", "wisdom teeth removal", "veneers", "root canal", "Invisalign", "dentures", "braces"],
+    "sources": ["https://dentalcareelgin.com/about-us/", "https://dentalcareelgin.com/"]
+   }
+  },
+  {
+   "location_id": "cc6bed86d304a309",
+   "practice_name": "Fox Valley Dental Group",
+   "zip": "60123",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://fvdc.com/",
+    "https://www.yelp.com/biz/fox-valley-dental-care-elgin",
+    "https://www.healthgrades.com/group-directory/il-illinois/elgin/fox-valley-dental-care-x4m8xh"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Confirmed a single-location multi-dentist practice at 74 N Alfred Ave (matches NPI address; phone found as 847-695-1300 vs NPI 847-931-1300, likely a data-entry variant of the same office) branded 'Fox Valley Dental Care', with 9 dentists on staff and its own website/socials. No PE sponsor, management company, or national DSO brand appears anywhere; the NPI's listed authorized official (Robert Riggs) was not found among current staff, suggesting past ownership/administration rather than a current corporate controller. Classified as a dentist-run group practice at one location.",
+   "searched": [
+    "Fox Valley Dental Group Elgin IL Robert Riggs dentist",
+    "\"Robert Riggs\" DDS dentist Fox Valley Dental Elgin",
+    "\"Fox Valley Dental Care\" Elgin IL owner dentist doctors network"
+   ],
+   "intel": {
+    "website_url": "https://fvdc.com/",
+    "website_note": "Larger single-location general practice with its own branded website and 9 dentists on staff.",
+    "provider_count_web": 9,
+    "insurance_note": "Accepts Blue Cross Blue Shield of Illinois, Cigna, UnitedHealthcare.",
+    "sources": ["https://fvdc.com/", "https://www.healthgrades.com/group-directory/il-illinois/elgin/fox-valley-dental-care-x4m8xh"]
+   }
+  },
+  {
+   "location_id": "b9e995cf85a64d91",
+   "practice_name": "Midwest Dental - Elgin",
+   "zip": "60123",
+   "assigned_tier": "branded_dso",
+   "pe_backed": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://midwest-dental.com/dental-office/elgin/",
+    "https://www.yelp.com/biz/midwest-dental-elgin-elgin"
+   ],
+   "evidence_artifacts": ["brand_hint:Midwest Dental / Gryphon Investors matches ctx"],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:midwest_dental",
+   "reasoning": "Confirmed this exact address (1530 N Randall Rd, Ste 100) on Midwest Dental's own corporate locator page (midwest-dental.com/dental-office/elgin/), matching phone (847) 697-8844. Midwest Dental is a known national DSO brand (Smile Brands family, PE-sponsored by Gryphon Investors per ctx and public reporting), so this is branded_dso with documented PE backing.",
+   "searched": [
+    "Midwest Dental Elgin IL 1530 N Randall Rd locator"
+   ],
+   "intel": {
+    "website_url": "https://midwest-dental.com/dental-office/elgin/",
+    "website_note": "Corporate DSO locator page for the Elgin office; describes general, cosmetic, and restorative dentistry for adults and children.",
+    "sources": ["https://midwest-dental.com/dental-office/elgin/"]
+   }
+  },
+  {
+   "location_id": "4cdf3ef029ab464c",
+   "practice_name": "Bender Dental Care",
+   "zip": "60123",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.benderdentalcare.com/",
+    "https://www.healthgrades.com/dentist/dr-michael-bender-39vt7"
+   ],
+   "evidence_artifacts": ["evenly_placeholder_ignored"],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Confirmed a solo, owner-named practice (Dr. Michael Bender, DDS) at 217 N McLean Blvd, matching NPI address and phone (847-888-4333) exactly; the practice's own site and Healthgrades both describe Dr. Bender as the long-tenured Elgin dentist there, in business since the early 1990s. The ctx parent_company field 'EVENLY ORTHODONTICS DUPONT' is disregarded per known project history -- Evenly is a patient-engagement/financing platform vendor (its locations page just lists client practices), not a corporate owner; this matches the previously-documented Evenly placeholder false-positive pattern.",
+   "searched": [
+    "Bender Dental Care Elgin IL 217 N McLean Blvd"
+   ],
+   "intel": {
+    "website_url": "https://www.benderdentalcare.com/",
+    "website_note": "Long-running solo practice site; positions Dr. Bender as a deeply-rooted community dentist.",
+    "services": ["preventive care", "cosmetic dentistry", "dental implants", "family dentistry"],
+    "sources": ["https://www.benderdentalcare.com/"]
+   }
+  },
+  {
+   "location_id": "35cbbce74d2ff7c5",
+   "practice_name": "PRO DENTAL CARE LTD",
+   "zip": "60123",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "closure_suspect: search results show an active 'Pro Dental Care' / Brar Dentistry at 300 Randall Rd, South Elgin IL 60177 (Dr. Rick Brar, matching the AO name and phone 630-883-0200), but ALSO a separately-listed 'Pro Dental Care' at 228 S Randall Rd, Elgin IL 60123 explicitly marked CLOSED on Yelp. The NPI record's zip (60123) matches the closed listing's zip while its street number (300) matches the active South Elgin listing, so I cannot confidently confirm this specific location is still operating rather than the closed Elgin address; left undetermined rather than guess.",
+   "searched": [
+    "Pro Dental Care Elgin IL Rick Brar 300 S Randall Rd",
+    "\"Pro Dental Care\" Elgin IL 60123 \"300\" Randall Rd closed OR permanently closed"
+   ]
+  },
+  {
+   "location_id": "cc32a510278a204e",
+   "practice_name": "AMBE DENTAL WORKS, INC",
+   "zip": "60123",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.advancedentalcareofelgin.com/",
+    "https://npino.com/dental-clinic/1194253567-ambe-dental-works,-inc/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Confirmed address (300 S McLean Blvd Ste M) matches NPI record exactly; NPPES authorized official Pooja Sharma is the dentist-owner ('President'), operating the office under the DBA 'Advanced Family Dental Care' with a 2-provider small group at this single location. No corporate or DSO signal found.",
+   "searched": [
+    "Ambe Dental Works Elgin IL Pooja Sharma 300 S McLean Blvd"
+   ],
+   "intel": {
+    "website_url": "https://www.advancedentalcareofelgin.com/",
+    "website_note": "Own branded site for 'Advanced Family Dental Care', led by Dr. Pooja Sharma; offers orthodontic and implant services.",
+    "services": ["orthodontics", "implants", "general family dentistry"],
+    "sources": ["https://www.advancedentalcareofelgin.com/"]
+   }
+  },
+  {
+   "location_id": "b9d8cf08dacd9364",
+   "practice_name": "Gandhi Dental",
+   "zip": "60123",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.doctorsnetwork.com/doctors/dentists/elgin-il-60123/invite-sonal-gandhi-dmd-15548",
+    "https://www.healthgrades.com/dentist/dr-sonal-gandhi-ybqpvgz"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address (620 Wing St) and phone ((847) 741-7370) match the NPI record exactly across multiple directories for Dr. Sonal Gandhi, DMD -- a 2-provider single-location family practice with no corporate/DSO signal found.",
+   "searched": [
+    "Gandhi Dental Elgin IL 620 Wing St dentist"
+   ],
+   "intel": {
+    "distinguishing_notes": "English and Gujarati spoken at the office; family dental services.",
+    "sources": ["https://www.doctorsnetwork.com/doctors/dentists/elgin-il-60123/invite-sonal-gandhi-dmd-15548"]
+   }
+  },
+  {
+   "location_id": "20cee02b761c1277",
+   "practice_name": "Ford Dental",
+   "zip": "60123",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-john-ford-24534",
+    "https://doctor.webmd.com/doctor/john-ford-e79f54e8-7abd-4fc0-8d4e-2dcbd095f39f-overview"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Confirmed Dr. John Ford, DDS practicing solo at 1590 Weatherstone Ln Ste 4, matching the NPI address and phone ((847) 695-7783) exactly. No corporate signal found; solo owner-operator.",
+   "searched": [
+    "Ford Dental Elgin IL 1590 Weatherstone Ln dentist"
+   ],
+   "intel": {
+    "accepts_medicaid": true,
+    "distinguishing_notes": "Solo general dentistry practice; WebMD listing notes Medicaid accepted.",
+    "sources": ["https://doctor.webmd.com/doctor/john-ford-e79f54e8-7abd-4fc0-8d4e-2dcbd095f39f-overview"]
+   }
+  },
+  {
+   "location_id": "12f893a1f4075074",
+   "practice_name": "Kalsbeek Dental",
+   "zip": "60123",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/kalsbeek-ed-dds-elgin",
+    "https://www.doctorsnetwork.com/doctors/dentists/elgin-il-60123/invite-edward-kalsbeek-dds-16296"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Confirmed Dr. Edward Kalsbeek, DDS as a solo dentist at 595 N Weston Ave, matching NPI address and phone ((847) 888-2558) exactly across multiple directories. No corporate signal found.",
+   "searched": [
+    "Kalsbeek Dental Elgin IL 595 N Weston Ave"
+   ],
+   "intel": {
+    "insurance_note": "Accepts Delta Dental PPO and Delta Dental Premier.",
+    "distinguishing_notes": "Published fee schedule visible in directory listing (e.g., cleanings ~$25, crowns ~$800).",
+    "sources": ["https://www.yelp.com/biz/kalsbeek-ed-dds-elgin"]
+   }
+  },
+  {
+   "location_id": "bfcb82a16e563ece",
+   "practice_name": "Shah Purav DMD",
+   "zip": "60123",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://puravshah3ad.dr-leonardo.com/",
+    "https://www.zocdoc.com/dentist/purav-shah-dmd-592275"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Address (615 S Randall Rd) and phone ((847) 697-5100) match the NPI record exactly for Dr. Purav Shah, DMD's general practice; entity_classification (family_practice, 2 providers) is consistent with a shared-surname multi-provider single-location practice, treated as single_loc_group. Confidence medium because search results also surfaced an NPI-number discrepancy for the same name (likely a separate individual NPI vs. this org/location NPI), which did not affect the location match.",
+   "searched": [
+    "Shah Purav DMD Elgin IL 615 S Randall Rd dentist"
+   ],
+   "intel": {
+    "provider_notes": "Dr. Purav Shah graduated University of Illinois-Chicago dental program, class of 2024; published peer-reviewed work on e-cigarette use and oral health.",
+    "owner_career_stage": "early_career",
+    "sources": ["https://puravshah3ad.dr-leonardo.com/"]
+   }
+  },
+  {
+   "location_id": "026efd09a349b088",
+   "practice_name": "Lazazzera Dental",
+   "zip": "60123",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://dentistsok.com/dentist/dr-paul-dean-lazazzera-dds-elgin/",
+    "https://www.dentalinsider.com/elgin-2/dentist/paul-dean-lazazzera-ddm-230987"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Confirmed Dr. Paul Dean Lazazzera, DDS as a solo dentist at 750 S State St, matching NPI address and phone ((847) 742-1040) exactly; listed as primary/sole provider responsible for all patient care. No corporate signal found.",
+   "searched": [
+    "Lazazzera Dental Elgin IL 750 S State St"
+   ]
+  },
+  {
+   "location_id": "71d6a6281cfdc09b",
+   "practice_name": "BOWES DENTAL CARE",
+   "zip": "60123",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://bowesdentalcare.com/",
+    "https://www.yelp.com/biz/bowes-dental-care-elgin"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Confirmed Bowes Dental Care at 2375 Bowes Rd Ste 200, matching NPI address and phone ((847) 697-9900) exactly, run by Dr. Santhi Yenna, DDS -- matching the NPPES authorized official name exactly. Own branded website with no corporate/DSO signal; solo owner-operator.",
+   "searched": [
+    "Bowes Dental Care Elgin IL Santhi Yenna 2415 Bowes Rd"
+   ],
+   "intel": {
+    "website_url": "https://bowesdentalcare.com/",
+    "website_note": "Own branded site describing a BPA-free office with modern cosmetic and restorative offerings.",
+    "services": ["porcelain veneers", "implants", "dentures", "oral surgery", "cosmetic dentistry"],
+    "sources": ["https://bowesdentalcare.com/"]
+   }
+  },
+  {
+   "location_id": "1186464f53042d89",
+   "practice_name": "YOUSAF AHMAD DDS LLC",
+   "zip": "60123",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://violetcreekdentistry.com/about-us/",
+    "https://www.healthgrades.com/dentist/dr-yousaf-ahmad-zexky"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Confirmed 'Yousaf Ahmad DDS LLC' operates as 'Violet Creek Family Dentistry' at 2415 Bowes Rd Ste 110, matching NPI address and phone ((847) 386-4300) exactly; the NPPES authorized official (Yousaf Ahmad) is the practicing dentist-owner. 3-provider single-location group practice bearing the owner's own legal name, no corporate/DSO signal.",
+   "searched": [
+    "Yousaf Ahmad DDS LLC Elgin IL 2415 Bowes Rd dentist"
+   ],
+   "intel": {
+    "website_url": "https://violetcreekdentistry.com/",
+    "website_note": "Own branded site as Violet Creek Family Dentistry; Dr. Ahmad DDS from University of Missouri-Kansas City.",
+    "provider_notes": "Dr. Yousaf Ahmad, DDS, University of Missouri-Kansas City School of Dentistry.",
+    "distinguishing_notes": "Practice has operated roughly 11 years under this LLC per business records.",
+    "sources": ["https://violetcreekdentistry.com/about-us/", "https://www.healthgrades.com/dentist/dr-yousaf-ahmad-zexky"]
+   }
+  }
+ ]
+}
