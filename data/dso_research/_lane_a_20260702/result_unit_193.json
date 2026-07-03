@@ -124,24 +124,25 @@
    "location_id": "727e698fcd543f6a",
    "practice_name": "BERWYN OAK PARK FAMILY DENTISTRY",
    "zip": "60402",
-   "assigned_tier": "dentist_multi",
+   "assigned_tier": "undetermined",
    "pe_backed": false,
    "evidence_basis": "web_verified",
    "evidence_urls": [
     "https://www.healthgrades.com/dentist/dr-payal-shah-2943j",
-    "https://www.doctorsnetwork.com/doctors/dentists/berwyn-il-60402/invite-payal-shah-dds-9657"
+    "https://www.yelp.com/biz/berwyn-oak-park-family-dental-berwyn"
    ],
    "evidence_artifacts": [],
-   "confidence": "medium",
-   "status": "classified",
-   "network_id": "ao:SHAH_PAYAL",
-   "reasoning": "Searched 'Payal Shah dentist Berwyn Oak Park Family Dentistry' and confirmed with a second query. Healthgrades explicitly states Dr. Payal Shah 'works in Brookfield, IL and 1 other location,' naming this Berwyn office (3240 Oak Park Ave) and a Brookfield office (3-D Dental Services, 8908 Ogden Ave) under different DBA names but the same dentist-owner, matching the NPPES AO 'PAYAL SHAH' shared across both IL locations. Dentist-owned, 2 locations -> dentist_multi.",
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "closure_suspect: Healthgrades states Dr. Payal Shah 'works in Brookfield, IL and 1 other location,' naming this Berwyn office (3240 Oak Park Ave) alongside a Brookfield office (3-D Dental Services, 8908 Ogden Ave) under the same AO 'PAYAL SHAH' -- ownership continuity looks real. However, a targeted follow-up search on this specific address's operating status found Yelp's listing explicitly titled 'BERWYN OAK PARK FAMILY DENTAL - CLOSED - Updated June 2026,' with no source confirming continued concurrent operation at the Berwyn address (only that Dr. Shah now appears to practice from Brookfield). Given a direct, recent closure signal specific to this location, withholding a tier per protocol rather than classifying it dentist_multi on ownership evidence alone.",
    "searched": [
     "Payal Shah dentist Berwyn Oak Park Family Dentistry",
-    "Berwyn Oak Park Family Dentistry Brookfield IL Payal Shah two locations"
+    "Berwyn Oak Park Family Dentistry Brookfield IL Payal Shah two locations",
+    "\"Berwyn Oak Park Family Dental\" Yelp closed reviews recent 2026 moved"
    ],
    "intel": {
-    "provider_notes": "Dr. Payal Shah, DDS, dental degree completed in India, DDS from University of Illinois College of Dentistry, ~19 years experience; speaks Gujarati, Hindi and Spanish.",
+    "provider_notes": "Dr. Payal Shah, DDS, dental degree completed in India, DDS from University of Illinois College of Dentistry, ~19 years experience; speaks Gujarati, Hindi and Spanish. Now appears to practice primarily from a Brookfield, IL office (3-D Dental Services).",
     "sources": [
      "https://www.healthgrades.com/dentist/dr-payal-shah-2943j"
     ]

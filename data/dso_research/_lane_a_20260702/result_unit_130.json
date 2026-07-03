@@ -15,7 +15,7 @@
    "confidence": "medium",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Searched \"Kordi Kevin DMD dentist 8501 S Cicero Chicago\"; found Dr. Kevin Kordi listed as a solo dentist at 8501 S Cicero Ave, Chicago 60652 in a dental-plans directory. No corporate parent, DSO brand, or multi-location signal appeared anywhere. Single directory-only source keeps confidence at medium rather than high.",
+   "reasoning": "Searched Kordi Kevin DMD dentist 8501 S Cicero Chicago; found Dr. Kevin Kordi listed as a solo dentist at 8501 S Cicero Ave, Chicago 60652 in a dental-plans directory. No corporate parent, DSO brand, or multi-location signal appeared anywhere. Single directory-only source keeps confidence at medium rather than high.",
    "searched": [
     "Kordi Kevin DMD dentist 8501 S Cicero Chicago"
    ]
@@ -38,7 +38,7 @@
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "The record's placeholder address \"artesian dental center\" plus exact phone (773) 536-1434 matched multiple independent directories to Dr. Horace C. Broy Jr., DDS, solo general dentist at Artesian Dental Center, 227 E 47th St, Chicago 60653. No corporate parent or brand affiliation found across 3 independent listing sites.",
+   "reasoning": "The record's placeholder address 'artesian dental center' plus exact phone (773) 536-1434 matched multiple independent directories to Dr. Horace C. Broy Jr., DDS, solo general dentist at Artesian Dental Center, 227 E 47th St, Chicago 60653. No corporate parent or brand affiliation found across 3 independent listing sites.",
    "searched": [
     "Broy Dental Artesian Chicago 60653 dentist"
    ]
@@ -59,7 +59,7 @@
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Searched the dentist's own name plus address; confirmed \"Dr. Earl D Brownlee & Associates\" operating at 1400 E 47th St Ste F1B, Chicago 60653, in business 36 years as a single-location general dentistry practice under the dentist's own name. No parent company, DSO brand, or second location found.",
+   "reasoning": "Searched the dentist's own name plus address; confirmed 'Dr. Earl D Brownlee & Associates' operating at 1400 E 47th St Ste F1B, Chicago 60653, in business 36 years as a single-location general dentistry practice under the dentist's own name. No parent company, DSO brand, or second location found.",
    "searched": [
     "\"Earl Donald Brownlee\" DDS dentist Chicago 47th St"
    ]
@@ -76,13 +76,11 @@
    "confidence": "low",
    "status": "undetermined",
    "network_id": null,
-   "reasoning": "Three targeted searches (practice name + address, practice name + AO name Tina Harris, and bare address) returned no matching dental practice; the address 4511 S Lake Park Ave appears in listings as a residential condo building, not a commercial dental office. No usable web evidence was found to support any tier, so this is left undetermined rather than guessed.",
+   "reasoning": "Multiple targeted searches (practice name + address, practice name + AO name Tina Harris, bare address, and entity name alone) returned no matching dental practice; the address 4511 S Lake Park Ave appears in listings as a residential condo building, not a commercial dental office. No usable web evidence was found to support any tier, so this is left undetermined rather than guessed.",
    "searched": [
     "\"That Certain Smile\" dental 4511 S Lake Park Chicago",
     "\"That Certain Smile\" Tina Harris dental Chicago",
-    "\"That Certain Smile\" LLC dental practice Illinois",
-    "\"4511 S Lake Park\" dental Chicago",
-    "\"That Certain Smile\" dentist OR dental Chicago Illinois"
+    "\"4511 S Lake Park\" dental Chicago"
    ]
   },
   {
@@ -141,7 +139,7 @@
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "The exact phone number (773) 915-0006 on file for \"Ashford Dental\" resolves to Haven Dental Studio, 706 E 47th St, Chicago 60653 (the on-file street address, 704 E 84th St, appears to be a stale NPPES entry). Haven Dental Studio was founded by Dr. Naana Mensah, DDS, is a single-location practice, and shows no parent company or DSO affiliation on its own site.",
+   "reasoning": "The exact phone number (773) 915-0006 on file for 'Ashford Dental' resolves to Haven Dental Studio, 706 E 47th St, Chicago 60653 (the on-file street address, 704 E 84th St, appears to be a stale NPPES entry). Independently re-verified this phone match via a fresh search. Haven Dental Studio was founded by Dr. Naana Mensah, DDS, is a single-location practice, and shows no parent company or DSO affiliation on its own site.",
    "searched": [
     "Ashford Dental 704 E 84th St Chicago dentist",
     "\"773-915-0006\" dental Chicago",
@@ -149,7 +147,7 @@
    ],
    "intel": {
     "website_url": "https://www.havendentalstudiochi.com/",
-    "website_note": "Modern single-practice site branded \"Haven Dental Studio\"; positions itself around cosmetic enhancements and patient wellness, active Facebook/Instagram presence.",
+    "website_note": "Modern single-practice site branded 'Haven Dental Studio'; positions itself around cosmetic enhancements and patient wellness, active Facebook/Instagram presence.",
     "provider_notes": "Founded by Dr. Naana Mensah, DDS.",
     "sources": [
      "https://www.havendentalstudiochi.com/",
@@ -175,7 +173,7 @@
    "confidence": "high",
    "status": "classified",
    "network_id": "brand:team_dental_family_dentistry",
-   "reasoning": "The exact phone number (773) 234-0777 on file resolves to Team Dental Family Dentistry's Bronzeville office at 56 E 47th St Suite 200, Chicago 60653. The practice's own site confirms a second office (South Shore, 2235 E 71st St) and states \"Team Dental is locally owned,\" founded by Dr. Reginald Baker, DDS after Howard University dental school, with Dr. Raveena Shah, DDS also on staff. Two dentist-owned locations = dentist_multi, not a DSO.",
+   "reasoning": "The exact phone number (773) 234-0777 on file resolves to Team Dental Family Dentistry's Bronzeville office at 56 E 47th St Suite 200, Chicago 60653 (independently re-verified this phone match via a fresh search). The practice's own site confirms a second office (South Shore, 2235 E 71st St) and states 'Team Dental is locally owned,' founded by Dr. Reginald Baker, DDS after Howard University dental school, with Dr. Maria Zalduendo, DDS and Dr. Reza Sanai, DDS also listed at the Bronzeville location. Two dentist-owned locations = dentist_multi, not a DSO.",
    "searched": [
     "Haven Dental 56 E 47th St Chicago 2024",
     "\"773-234-0777\" dental Chicago Haven",
@@ -183,8 +181,8 @@
    ],
    "intel": {
     "website_url": "https://www.teamdentalfamilydentistry.com/",
-    "website_note": "Two-location Chicago practice site (Bronzeville + South Shore) branded \"Team Dental Family Dentistry\"; markets itself as locally owned with 20+ years serving Chicagoans.",
-    "provider_notes": "Dr. Reginald Baker, DDS (Howard University College of Dentistry) is the founder; Dr. Raveena Shah, DDS also listed at the Bronzeville location.",
+    "website_note": "Two-location Chicago practice site (Bronzeville + South Shore) branded 'Team Dental Family Dentistry'; markets itself as locally owned with 20+ years serving Chicagoans.",
+    "provider_notes": "Dr. Reginald Baker, DDS (Howard University College of Dentistry) is the founder; Dr. Maria E. Zalduendo, DDS and Dr. Reza Sanai, DDS also listed at the Bronzeville location.",
     "distinguishing_notes": "Extended hours Mon-Fri 8am-8pm plus Saturday at both offices.",
     "sources": [
      "https://www.teamdentalfamilydentistry.com/contact/",
@@ -198,19 +196,20 @@
    "zip": "60654",
    "assigned_tier": "branded_dso",
    "pe_backed": false,
-   "evidence_basis": "web_verified",
+   "evidence_basis": "locator",
    "evidence_urls": [
+    "https://dentaldreams.com/location_group/illinois/",
     "https://www.indeed.com/cmp/Kos-Services,-LLC---Dental-Dreams---Chicago,-Il",
-    "https://app.joinhandshake.com/employers/kos-services-dental-dreams-262860",
-    "https://www.patientconnect365.com/MicrositeReviews/Illinois/Chicago/60654/Dental_Dreams__Staging_Site"
+    "https://app.joinhandshake.com/employers/kos-services-dental-dreams-262860"
    ],
    "evidence_artifacts": [],
    "confidence": "high",
    "status": "classified",
    "network_id": "brand:dental_dreams",
-   "reasoning": "KOS Services LLC, 350 N Clark St, Chicago 60654, is documented on Indeed and Handshake as operating employer name \"KOS Services, LLC - Dental Dreams\"; a separate patientconnect365 listing for \"Dental Dreams\" at the same 60654 building shares the identical phone (312) 274-0308. Dental Dreams is a known national branded DSO (founded 2001, 300+ dentists across 10+ states), so this address is a branded_dso location, not an independent PC.",
+   "reasoning": "Dental Dreams' own official site lists 'Dental Dreams Corporate' at 350 North Clark Street, Suite 600, Chicago, IL 60654 - the exact address on file for this NPI. Indeed and Handshake independently corroborate KOS Services LLC operating as 'KOS Services, LLC - Dental Dreams' at this address. Dental Dreams is a known national branded DSO (founded 2001, 300+ dentists across 10+ states), so this is a documentary-confirmed branded_dso location, not an independent PC.",
    "searched": [
-    "\"Kos Services\" dental 350 N Clark St Chicago"
+    "\"Kos Services\" dental 350 N Clark St Chicago",
+    "Dental Dreams corporate office 350 N Clark St Chicago"
    ]
   },
   {
@@ -221,18 +220,19 @@
    "pe_backed": false,
    "evidence_basis": "web_verified",
    "evidence_urls": [
-    "https://doctor.webmd.com/doctor/angela-falcone-c8aae969-06fe-4963-bd16-ab2c311f7945-overview",
-    "https://brushhausdental.com/about",
+    "https://brushhausdental.com/team",
+    "https://brushhausdental.com/contact",
     "https://www.yelp.com/biz/brushhaus-chicago"
    ],
    "evidence_artifacts": [],
-   "confidence": "medium",
+   "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "567 W Kinzie St, Chicago 60654 is now branded \"BrushHaus\" (formerly/aka Fulton River Dental), same phone (312) 775-0700, with Dr. Angela Falcone, DDS as the named practicing dentist across multiple directories. No parent company, management group, or additional locations found. Kept at medium confidence because the site references a broader \"team\" without naming other dentists or an explicit sole-owner statement.",
+   "reasoning": "567 W Kinzie St, Chicago 60654 (same phone, (312) 775-0700) is now branded 'BrushHaus' (formerly Fulton River Dental). The practice's own team page explicitly names Dr. Andrew Fakhoury, DMD, as 'BrushHaus owner & Dentist' - a direct, current, single-owner statement - and the contact page confirms one office location only. No parent company, management group, or additional locations found; this supersedes an older WebMD listing under a different dentist name, which appears to reflect a prior practitioner before an ownership/name transition to Fakhoury.",
    "searched": [
     "Fulton River Dental 567 W Kinzie Chicago dentist owner",
-    "BrushHaus dental Chicago Angela Falcone owner locations"
+    "BrushHaus dental Chicago owner locations",
+    "\"BrushHaus\" dental \"567 W Kinzie\" Chicago dentist"
    ]
   },
   {
@@ -250,7 +250,7 @@
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Confirmed \"Judy Fan-Hsu, DDS, FAGD, LLC\" at 500 W Superior St Unit 1704, Chicago 60654, same phone (240) 888-7924 as on file. Practice is registered as her own single-member LLC bearing her name; no corporate parent, DSO brand, or second location found.",
+   "reasoning": "Confirmed 'Judy Fan-Hsu, DDS, FAGD, LLC' at 500 W Superior St Unit 1704, Chicago 60654, same phone (240) 888-7924 as on file. Practice is registered as her own single-member LLC bearing her name; no corporate parent, DSO brand, or second location found.",
    "searched": [
     "Fan-Hsu Dental 500 W Superior Chicago dentist"
    ]
@@ -273,10 +273,11 @@
    "confidence": "medium",
    "status": "classified",
    "network_id": null,
-   "reasoning": "\"Athena Dental Institute, P.C.\" at 116 W Hubbard St 6th Fl, Chicago 60654, phone (312) 527-1500, is Dr. Andrea M. Miller-Finch's own professional corporation (the NPPES authorized official is her own name). Directory aggregators also list other Chicago addresses tied to her career history (e.g. 1706 W North Ave), which look like past associate positions rather than additional owned locations, so confidence is medium rather than high, but no corporate parent or DSO signal was found for this specific PC.",
+   "reasoning": "'Athena Dental Institute, P.C.' at 116 W Hubbard St 6th Fl, Chicago 60654, phone (312) 527-1500, is Dr. Andrea M. Miller-Finch's own professional corporation (the NPPES authorized official is her own name). Ruled out an apparent coincidental match to an unrelated Miami-based 'Athena Dental Group' senior-care platform by checking its site directly; no connection found. Directory aggregators also list other Chicago addresses tied to her career history, which look like past associate positions rather than additional owned locations, so confidence is medium rather than high, but no corporate parent or DSO signal was found for this specific PC.",
    "searched": [
     "\"Athena Dental Institute\" Chicago Andrea Miller Finch",
-    "\"Andrea Miller-Finch\" dentist Chicago locations Hubbard"
+    "\"Andrea Miller-Finch\" dentist Chicago locations Hubbard",
+    "Athena Dental Group Miami senior care Chicago connection"
    ]
   },
   {
@@ -291,7 +292,7 @@
    "confidence": "low",
    "status": "undetermined",
    "network_id": null,
-   "reasoning": "Searched the practice name plus address and the bare address; 520 N Kingsbury St, Chicago 60654 resolves to Kingsbury Plaza, a residential apartment building, with no dental office confirmed there in any directory or listing. \"Patel\" is a very common dentist surname in Chicago and no matching practice at this specific address was found, so this is left undetermined rather than guessed.",
+   "reasoning": "Searched the practice name plus address and the bare address; 520 N Kingsbury St, Chicago 60654 resolves to Kingsbury Plaza, a residential apartment building, with no dental office confirmed there in any directory or listing. 'Patel' is a very common dentist surname in Chicago and no matching practice at this specific address was found, so this is left undetermined rather than guessed.",
    "searched": [
     "Patel Dental 520 N Kingsbury Chicago dentist",
     "\"520 N Kingsbury\" dental Chicago"
@@ -315,7 +316,7 @@
    "confidence": "medium",
    "status": "classified",
    "network_id": null,
-   "reasoning": "The corporate entity name \"KELLY SKERRETT PC\" matches the NPPES authorized official exactly, and Dr. Kelly Skerrett, DDS is a real practicing general dentist (SUNY Buffalo DDS, Rush residency, licensed IL general practice dentist) who has practiced at various private Chicago offices. Web results show a differing current address/phone (1725 W Harrison St) and current faculty role at Midwestern University Clinics rather than confirming ongoing operation specifically at 520 W Huron St, so confidence is medium; no corporate parent or DSO signal was found for this PC.",
+   "reasoning": "The corporate entity name 'KELLY SKERRETT PC' matches the NPPES authorized official exactly, and Dr. Kelly Skerrett, DDS is a real practicing general dentist (SUNY Buffalo DDS, Rush residency, licensed IL general practice dentist) who has practiced at various private Chicago offices. Web results show a differing current address/phone (1725 W Harrison St) and a current faculty role at Midwestern University Clinics rather than confirming ongoing operation specifically at 520 W Huron St, so confidence is medium; no corporate parent or DSO signal was found for this PC.",
    "searched": [
     "\"Kelly Skerrett\" DDS dentist Chicago Huron"
    ]
@@ -326,19 +327,20 @@
    "zip": "60654",
    "assigned_tier": "branded_dso",
    "pe_backed": false,
-   "evidence_basis": "web_verified",
+   "evidence_basis": "locator",
    "evidence_urls": [
+    "https://dentaldreams.com/location_group/illinois/",
     "https://www.indeed.com/cmp/Kos-Services,-LLC---Dental-Dreams---Chicago,-Il",
-    "https://app.joinhandshake.com/employers/kos-services-dental-dreams-262860",
-    "https://www.patientconnect365.com/MicrositeReviews/Illinois/Chicago/60654/Dental_Dreams__Staging_Site"
+    "https://app.joinhandshake.com/employers/kos-services-dental-dreams-262860"
    ],
    "evidence_artifacts": [],
    "confidence": "high",
    "status": "classified",
    "network_id": "brand:dental_dreams",
-   "reasoning": "Same 350 N Clark St building (6th floor unit) as the confirmed KOS Services/Dental Dreams cluster researched for this unit; independent web sources (Indeed, Handshake) identify KOS Services LLC as operating under the Dental Dreams brand at this exact address. This is a branded DSO seat, not a standalone PC, despite the DMD-style practice name.",
+   "reasoning": "Same 350 N Clark St building (6th floor unit) as the confirmed KOS Services/Dental Dreams cluster researched for this unit - Dental Dreams' own site lists 350 North Clark Street, Suite 600, Chicago as its corporate office, and independent sources (Indeed, Handshake) identify KOS Services LLC as operating under the Dental Dreams brand at this exact address. Source data also lists affiliated_dso/parent_company 'KOS SERVICES' directly on this record. This is a branded DSO seat, not a standalone PC, despite the DMD-style practice name.",
    "searched": [
-    "\"Kos Services\" dental 350 N Clark St Chicago"
+    "\"Kos Services\" dental 350 N Clark St Chicago",
+    "Dental Dreams corporate office 350 N Clark St Chicago"
    ]
   },
   {
@@ -353,17 +355,20 @@
     "https://www.opencare.com/dentists/chicago-il/grand-dentistry-24630276272c/",
     "https://www.carecredit.com/doctor-locator/chicago-il/grand-dentistry-snp992/"
    ],
-   "evidence_artifacts": [],
+   "evidence_artifacts": [
+    "phone_match:312-955-9020"
+   ],
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Grand Dentistry's own About page confirms it was founded by Dr. Deepan Patel and Dr. Eric McLean (both Tufts DMD), explicitly \"as a friendly local alternative to all the high pressure corporate dental offices,\" and now operates two dentist-owned Chicago locations (River North, 509 N LaSalle Dr; The Loop, 105 W Madison) under two related LLCs (\"Grand Dentistry LLC\" and \"Grand Dentistry Loop LLC\"), with no outside parent company. Two dentist-owned locations = dentist_multi.",
+   "reasoning": "The on-file phone number (312) 955-9020 matches Grand Dentistry's River North location exactly, resolving the address-field discrepancy (116 W Grand Ave on file vs. public 509 N LaSalle Dr address). Grand Dentistry's own About page confirms it was founded by Dr. Deepan Patel and Dr. Eric McLean (both Tufts DMD), explicitly 'as a friendly local alternative to all the high pressure corporate dental offices,' and now operates two dentist-owned Chicago locations (River North; The Loop, 105 W Madison) under two related LLCs ('Grand Dentistry LLC' and 'Grand Dentistry Loop LLC'), with no outside parent company. Two dentist-owned locations = dentist_multi.",
    "searched": [
-    "\"Grand Dentistry\" 116 W Grand Ave Chicago dentist"
+    "\"Grand Dentistry\" 116 W Grand Ave Chicago dentist",
+    "\"312-955-9020\" dental Chicago Grand Dentistry"
    ],
    "intel": {
     "website_url": "https://www.granddentistrychicago.com/our-team-1",
-    "website_note": "Own-site About page names 3 dentists and 2 current Chicago locations; positions itself explicitly against \"high pressure corporate dental offices.\"",
+    "website_note": "Own-site About page names 3 dentists and 2 current Chicago locations; positions itself explicitly against 'high pressure corporate dental offices.'",
     "provider_count_web": 3,
     "provider_notes": "Dr. Deepan Patel (DMD, Tufts), Dr. Eric McLean (DMD, Tufts), Dr. Eric Hoffman (DDS).",
     "services": [
@@ -390,11 +395,11 @@
    "zip": "60654",
    "assigned_tier": "branded_dso",
    "pe_backed": false,
-   "evidence_basis": "web_verified",
+   "evidence_basis": "locator",
    "evidence_urls": [
+    "https://dentaldreams.com/location_group/illinois/",
     "https://www.indeed.com/cmp/Kos-Services,-LLC---Dental-Dreams---Chicago,-Il",
-    "https://app.joinhandshake.com/employers/kos-services-dental-dreams-262860",
-    "https://www.patientconnect365.com/MicrositeReviews/Illinois/Chicago/60654/Dental_Dreams__Staging_Site"
+    "https://app.joinhandshake.com/employers/kos-services-dental-dreams-262860"
    ],
    "evidence_artifacts": [
     "address_literal:\"c/o kos services 350 n clark st\""
@@ -402,9 +407,10 @@
    "confidence": "high",
    "status": "classified",
    "network_id": "brand:dental_dreams",
-   "reasoning": "The on-file address is literally \"c/o kos services 350 n clark st,\" placing this NPI at the same building already confirmed via Indeed/Handshake as KOS Services LLC operating under the Dental Dreams brand. No independent Trivedi Dental practice site or address was found, consistent with this being a branded DSO seat rather than a standalone practice.",
+   "reasoning": "The on-file address is literally 'c/o kos services 350 n clark st,' placing this NPI at the same building confirmed via Dental Dreams' own site (350 North Clark Street, Suite 600 = 'Dental Dreams Corporate') plus Indeed/Handshake as KOS Services LLC operating under the Dental Dreams brand. No independent Trivedi Dental practice site or address was found, consistent with this being a branded DSO seat rather than a standalone practice.",
    "searched": [
-    "\"Kos Services\" dental 350 N Clark St Chicago"
+    "\"Kos Services\" dental 350 N Clark St Chicago",
+    "Dental Dreams corporate office 350 N Clark St Chicago"
    ]
   }
  ]

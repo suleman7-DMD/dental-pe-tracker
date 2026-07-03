@@ -5,30 +5,36 @@
    "location_id": "8c22295696b634cf",
    "practice_name": "GLEN ELLYN FAMILY DENTAL CARE",
    "zip": "60137",
-   "assigned_tier": "undetermined",
-   "pe_backed": false,
+   "assigned_tier": "stealth_dso",
+   "pe_backed": true,
    "evidence_basis": "web_verified",
    "evidence_urls": [
-    "https://www.changingsmiles.net/",
-    "https://www.changingsmiles.net/about-us/",
+    "https://www.changingsmiles.net/contact-us/glen-ellyn/",
+    "https://www.indeed.com/m/jobs?q=Elite+Dental+Partners&l=Glen+Ellyn%2C+IL&limit=20&filter=0",
+    "https://www.elitedentalpartners.com/practice-directory/illinois/",
+    "https://hl.com/about-us/transactions/houlihan-lokey-advises-elite-dental-partners/",
+    "https://www.cresseyco.com/partnerships/elite-dental-partners",
     "https://www.yelp.com/biz/family-dental-care-glen-ellyn-3"
    ],
    "evidence_artifacts": [],
-   "confidence": "low",
-   "status": "undetermined",
-   "network_id": "brand:family_dental_care_changingsmiles",
-   "reasoning": "Confirmed 658 Roosevelt Rd is one of at least 2-3 IL offices (Glen Ellyn + St. Charles, plus a Bloomingdale mention) operating under the generic trade name 'Family Dental Care' (site changingsmiles.net), established 1980s. Could not find any owner-dentist name or founder bio on the site, and could not find any corporate parent, management company, or PE sponsor either -- 'Family Dental Care' is also used generically by several unrelated small IL practices, so brand-name alone is not evidence of DSO control. Insufficient evidence to place confidently in either a dentist-owned (T3) or corporate (T4/T5) tier -- left undetermined rather than guessed.",
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:elite_dental_partners",
+   "reasoning": "658 Roosevelt Rd operates under the locally-sounding trade name 'Family Dental Care' (site changingsmiles.net, 2 IL offices: Glen Ellyn + Campton Hills/St. Charles) with no DSO/corporate disclosure on its own site -- but independent corroborating sources (ADA Find-a-Dentist profile for the practice's Dr. Steven Biagini explicitly listing 'affiliated with Elite Dental Partners'; an Indeed jobs search returning live Elite Dental Partners postings specifically for Glen Ellyn, IL; and Elite Dental Partners' own IL practice directory + PitchBook/Houlihan Lokey/Cressey & Co. deal coverage confirming EDP is a PE-backed (Cressey & Company recapitalization, advised by Houlihan Lokey) national DSO with 80+ 'uniquely branded, independently run' offices) establish this address as an Elite Dental Partners-owned location operating under its legacy local name. Classic stealth_dso pattern: locally-branded storefront, PE-backed DSO ownership confirmed only via third-party sources, not the practice's own marketing.",
    "searched": [
     "Glen Ellyn Family Dental Care 658 Roosevelt Rd Glen Ellyn IL",
     "\"Family Dental Care\" Glen Ellyn \"St. Charles\" doctors owner dentist name",
-    "\"Family Dental Care\" Illinois locations list Naperville Bloomingdale Elgin DSO corporate"
+    "\"Steve Biagini\" dentist Glen Ellyn owner",
+    "\"Elite Dental Partners\" DSO dental service organization Illinois",
+    "\"Elite Dental Partners\" \"Family Dental Care\" Glen Ellyn OR Bloomingdale acquisition"
    ],
    "intel": {
     "website_url": "https://www.changingsmiles.net/",
-    "website_note": "Multi-location small group site (LocaliQ-built) branded 'Family Dental Care,' established 1986; markets itself as one-stop for general + specialty care.",
+    "website_note": "Multi-location small group site (LocaliQ-built) branded 'Family Dental Care,' established 1986; markets itself as one-stop for general + specialty care. Site itself does not disclose Elite Dental Partners affiliation.",
     "services": ["general dentistry", "cosmetic dentistry", "oral surgery", "orthodontics", "pediatric dentistry", "periodontics", "prosthodontics", "endodontics"],
-    "distinguishing_notes": "At least 2 confirmed IL offices (Glen Ellyn 658 Roosevelt Rd + St. Charles/Campton Hills) under one brand; evening and Saturday hours; near Trader Joe's in Pickwick Place per directory listings.",
-    "sources": ["https://www.changingsmiles.net/", "https://www.changingsmiles.net/about-us/", "https://www.yelp.com/biz/family-dental-care-glen-ellyn-3"]
+    "provider_notes": "Dentists at this location per ADA/directory sources: Dr. Steven F. Biagini, DDS; Dr. Mark Beck, DDS; Dr. Theresa Jansky, DDS; Dr. Bruce Abdullah, DDS.",
+    "distinguishing_notes": "2 confirmed IL offices (Glen Ellyn 658 Roosevelt Rd + Campton Hills/St. Charles) under the 'Family Dental Care'/changingsmiles.net brand. Elite Dental Partners is a Chicago-based, Cressey & Company-backed DSO with 80+ affiliated offices in 10 states.",
+    "sources": ["https://www.changingsmiles.net/contact-us/glen-ellyn/", "https://www.elitedentalpartners.com/practice-directory/illinois/", "https://hl.com/about-us/transactions/houlihan-lokey-advises-elite-dental-partners/"]
    }
   },
   {
@@ -73,15 +79,16 @@
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Address matches 'Always Great Smiles,' a family/cosmetic dental office serving Glen Ellyn for 30+ years at this single Duane St location; a second dentist (Zaremba) is also listed at the same address, consistent with the NPI record's 6-provider count. No corporate brand, management company, or PE sponsor found anywhere -- reads as a locally-branded, dentist-run multi-provider single-location group.",
-   "searched": ["Robert M. Jourdan DDS Glen Ellyn IL dentist", "\"Always Great Smiles\" Glen Ellyn dental Duane St"],
+   "reasoning": "Address matches 'Always Great Smiles,' a family/cosmetic dental office serving Glen Ellyn for 30+ years at this single Duane St location (Ste 301). Dr. Robert Jourdan is the retired founder; the practice today is an active multi-dentist group including Dr. David Zaremba, Dr. Patrick Pecora, Dr. Jennifer Langner (Jourdan's daughter), and several other associates, consistent with the NPI record's 6-provider count. Yelp's 'CLOSED' tag applies only to the old 'Robert M Jourdan DDS PC' registered business name, not the physical practice, which continues operating under the Always Great Smiles brand. No corporate brand, management company, or PE sponsor found anywhere -- reads as a locally-branded, dentist-run multi-provider single-location group, not a closure.",
+   "searched": ["Robert M. Jourdan DDS Glen Ellyn IL dentist", "\"Always Great Smiles\" Glen Ellyn dental Duane St", "\"Always Great Smiles\" Glen Ellyn dentist Zaremba OR Pecora OR Jourdan doctor"],
    "intel": {
     "website_url": "https://www.alwaysgreatsmiles.com/",
     "website_note": "Branded 'Always Great Smiles' -- full-service family/cosmetic office serving Glen Ellyn 30+ years; multiple dentists at one location.",
     "services": ["family dentistry", "cosmetic dentistry", "whitening", "veneers", "crowns", "dental implants", "Invisalign", "conscious sedation", "sleep apnea/snoring appliances"],
     "technology": ["CEREC same-day restorations (since 2000)"],
-    "distinguishing_notes": "17 Yelp reviews; also home to Dr. David Zaremba, general dentistry, at the same suite.",
-    "sources": ["https://www.alwaysgreatsmiles.com/", "https://www.yelp.com/biz/always-great-smiles-glen-ellyn"]
+    "provider_notes": "Dr. David Zaremba, DDS (practicing since 2001); Dr. Patrick Pecora, DDS (40+ years); Dr. Jennifer Langner, DDS (Jourdan's daughter); additional associates including Dr. Al-Sabek, Dr. Patel, Dr. Rossi, Dr. Shahbandar, Dr. Jain, Dr. Goyal.",
+    "distinguishing_notes": "17 Yelp reviews for the current 'Always Great Smiles' listing; the legacy 'Robert M Jourdan DDS PC' business name shows as closed on Yelp even though the physical office continues operating under the new brand.",
+    "sources": ["https://www.alwaysgreatsmiles.com/", "https://www.yelp.com/biz/always-great-smiles-glen-ellyn", "https://www.alwaysgreatsmiles.com/our-practice/meet-the-doctors/"]
    }
   },
   {
@@ -93,15 +100,14 @@
    "evidence_basis": "web_verified",
    "evidence_urls": [
     "https://npiprofile.com/npi/1992890529",
-    "https://www.drralphmcdonald.com/about-us/meet-the-doctor/",
     "https://www.dentalplans.com/dentists/illinois/glen-ellyn/60137/dr-ralph-mcdonald-46371/"
    ],
    "evidence_artifacts": [],
    "confidence": "medium",
    "status": "classified",
    "network_id": null,
-   "reasoning": "NPI and multiple independent directories consistently show Dr. Ralph Edmund McDonald, DDS as a solo practitioner at 443 Duane St, Glen Ellyn. His personal site (drralphmcdonald.com) markets a Winfield, IL office rather than this exact address, suggesting a possible additional/former office, but no group, DSO, or corporate signal appears anywhere for either address -- solo owner-operator.",
-   "searched": ["Mcdonald Dental 443 Duane St Glen Ellyn IL"],
+   "reasoning": "NPI and multiple independent directories consistently show Dr. Ralph Edmund McDonald, DDS as a solo practitioner at 443 Duane St, Glen Ellyn. His personal site markets a Winfield, IL office (site returned a 403 on direct fetch; confirmed via search-result snippets instead) rather than this exact address, suggesting a possible additional/former office, but no group, DSO, or corporate signal appears anywhere for either address -- solo owner-operator.",
+   "searched": ["Mcdonald Dental 443 Duane St Glen Ellyn IL", "Ralph McDonald DDS Winfield Glen Ellyn locations address dentist"],
    "intel": {
     "website_url": "https://www.drralphmcdonald.com/",
     "website_note": "Dr. McDonald's own site markets a Winfield, IL location; the Glen Ellyn/Duane St. address in our record is confirmed via NPI registry and directories but is not the site's featured office -- possible secondary/older location.",
@@ -175,7 +181,7 @@
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Own site franklindentalcare.net identifies Dr. John P. Giannopoulos, DDS (1990 Loyola grad) as the solo dentist at this Franklin Ave address since 1994. No group, corporate, or DSO signal found -- solo owner-operator (note: unit record's zip 60137 appears to be a data anomaly since this Franklin Park address is actually zip 60131; classified per the address given).",
+   "reasoning": "Own site franklindentalcare.net identifies Dr. John P. Giannopoulos, DDS (1990 Loyola grad) as the solo dentist at this Franklin Ave address since 1994. No group, corporate, or DSO signal found -- solo owner-operator. Data quality note: this unit record's zip is listed as 60137, but the Franklin Park street address is actually in zip 60131 -- classified per the address given; scope/denominator unaffected since this is a note, not a reclassification.",
    "searched": ["Giannopoulos Dental Franklin Park IL Franklin Ave dentist"],
    "intel": {
     "website_url": "https://franklindentalcare.net/about-us/",
@@ -201,7 +207,7 @@
    "confidence": "medium",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Practice's own site says the office is 'led by Dr. Scheive' (a Glen Ellyn native), open since 2014, with no DSO/corporate parent mentioned anywhere. Provider_count of 2 at one address plus dentist-led framing fits a dentist-owned single-location group; confidence is medium since the site does not use the explicit word 'owner.'",
+   "reasoning": "Practice's own site says the office is 'led by Dr. Scheive' (a Glen Ellyn native), open since 2014, with no DSO/corporate parent mentioned anywhere. Provider_count of 2 at one address plus dentist-led framing fits a dentist-owned single-location group; confidence is medium since the site does not use the explicit word 'owner.' Note: shares the generic 'Family Dental Care' brand_hint with an unrelated practice elsewhere in this unit (Glen Ellyn Family Dental Care / Elite Dental Partners, 658 Roosevelt Rd) -- verified independently via its own site/reviews and found to be a distinct, unrelated single-location practice named after Dr. Colleen Scheive, not part of that DSO.",
    "searched": ["Scheive Family Dental Care Glen Ellyn IL Roosevelt Rd dentist"],
    "intel": {
     "website_url": "https://www.scheivefamilydentalcare.com/our-practice",
@@ -251,8 +257,8 @@
    "confidence": "medium",
    "status": "classified",
    "network_id": null,
-   "reasoning": "This NPI record is branded 'Glen Ellyn Dentistry,' explicitly described in search results as 'a small, privately owned practice' with two dentists (Dr. Charise Petrelli, there since 2006, and Dr. Cathy Nguyen) at one office. No DSO/corporate signal found. Confidence is medium because the practice's current site lists 462 Prospect Ave rather than the NPI's 577 Pennsylvania Ave (phone number 630-942-0727 and 'gedentistry' email match confirm it is the same practice, likely an address move).",
-   "searched": ["Petrelli Dental Glen Ellyn IL 577 Pennsylvania Ave", "\"Glen Ellyn Dentistry\" Petrelli Nguyen 577 Pennsylvania owner"],
+   "reasoning": "This NPI record is branded 'Glen Ellyn Dentistry,' explicitly described in search results as 'a small, privately owned practice' with two dentists (Dr. Charise Petrelli, there since 2006, and Dr. Cathy Nguyen) at one office. No DSO/corporate signal found. Confidence is medium because the practice's current site lists 462 Prospect Ave rather than the NPI's 577 Pennsylvania Ave (phone number 630-942-0727 match confirms it is the same practice, likely an address move).",
+   "searched": ["Petrelli Dental Glen Ellyn IL 577 Pennsylvania Ave", "\"Glen Ellyn Dentistry\" Petrelli Nguyen 577 Pennsylvania owner", "Petrelli dentist Glen Ellyn \"Cathy Nguyen\" OR \"Glen Ellyn Dentistry\" owner"],
    "intel": {
     "website_url": "https://www.glenellyndentistry.com/about-us/meet-dr-petrelli/",
     "website_note": "Two-dentist small privately-owned practice branded 'Glen Ellyn Dentistry'; site describes a modern, relaxing office design.",
@@ -274,9 +280,8 @@
    "confidence": "low",
    "status": "undetermined",
    "network_id": null,
-   "reasoning": "Yelp lists 'Krusack Leo P DDS - CLOSED' (updated June 2026) at 444 N Main St Ste 202 -- this oral surgery office appears to no longer be operating. Per protocol, suspected-closed practices are left undetermined rather than assigned an ownership tier.",
-   "searched": ["Leo Paul Krusack DDS Glen Ellyn IL 444 N Main St dentist", "Krusack oral surgery Glen Ellyn retired closed practice"],
-   "reasoning_note": "closure_suspect"
+   "reasoning": "Yelp lists 'Krusack Leo P DDS - CLOSED' (updated June 2026) at 444 N Main St Ste 202 -- this office appears to no longer be operating. closure_suspect: per protocol, suspected-closed practices are left undetermined rather than assigned an ownership tier.",
+   "searched": ["Leo Paul Krusack DDS Glen Ellyn IL 444 N Main St dentist", "Krusack oral surgery Glen Ellyn retired closed practice"]
   },
   {
    "location_id": "9c7f6cc1fb4d41b6",
@@ -293,9 +298,8 @@
    "confidence": "low",
    "status": "undetermined",
    "network_id": null,
-   "reasoning": "This NPI record lists 550 Pennsylvania Ave, but current web evidence shows that address (Ste 1W) is now occupied by 'Wardell Dentistry' / Dr. Kelsey Esposito, DMD, not Dr. Tyron Hill (whose confirmed current office is a different NPI record at 585 Pennsylvania Ave). This looks like a stale/former NPI address rather than an active Hill location -- closure_suspect, left undetermined rather than guessed.",
-   "searched": ["Tyron Hill DDS Glen Ellyn IL Pennsylvania Ave dentist", "\"550 Pennsylvania Ave\" Glen Ellyn dentist Hill"],
-   "reasoning_note": "closure_suspect"
+   "reasoning": "This NPI record lists 550 Pennsylvania Ave, but current web evidence shows that address (Ste 1W) is now occupied by 'Wardell Dentistry' / Dr. Kelsey Esposito, DMD, not Dr. Tyron Hill (whose confirmed current office is a different NPI record/location_id at 585 Pennsylvania Ave). This looks like a stale/former NPI address, superseded by a different practice -- closure_suspect: left undetermined rather than guessed, and distinguished by address from the still-active Hill location at 585 Pennsylvania Ave.",
+   "searched": ["Tyron Hill DDS Glen Ellyn IL Pennsylvania Ave dentist", "\"550 Pennsylvania Ave\" Glen Ellyn dentist Hill"]
   },
   {
    "location_id": "193e04bb0473d6bf",

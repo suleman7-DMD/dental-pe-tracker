@@ -16,17 +16,18 @@
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Own practice website (creeksidedental.com) names two owner-dentists, Dr. William McCune and Dr. John Micaletti, at this single Buffalo Grove address matching the unit's phone (847) 634-4773. No corporate parent, management company, or DSO brand language found anywhere in search results.",
+   "reasoning": "Own practice website (creeksidedental.com, fetched directly) names two dentist owners at this single Buffalo Grove address matching the unit's phone (847-634-4773): Dr. William McCune (general dentist) and Dr. John Micaletti (periodontist). No parent company, DSO, or management group mentioned anywhere on the site. Single location, dentist-owned, 2 dentists -> single_loc_group.",
    "searched": [
-    "Creekside Dental Buffalo Grove IL 1149 Weiland Rd dentist"
+    "Creekside Dental Buffalo Grove IL 1149 Weiland Rd dentist",
+    "WebFetch https://creeksidedental.com/"
    ],
    "intel": {
     "website_url": "https://creeksidedental.com/",
-    "website_note": "Modern family-practice site with detailed hours and a patient-facing contact page; no online booking widget observed in snippets.",
-    "services": ["cosmetic dentistry", "restorative dentistry", "family dentistry"],
+    "website_note": "Modern family-dentistry site with clear provider bios and stated hours; no online-booking widget observed.",
+    "services": ["Invisalign", "cosmetic dentistry", "restorative dentistry", "family dentistry"],
     "provider_count_web": 2,
-    "provider_notes": "Dr. William McCune and Dr. John Micaletti co-lead the practice per site title.",
-    "distinguishing_notes": "Rotating Wednesday hours (7am-4pm or 9am-7pm) and Tuesday admin-only hours suggest a two-dentist alternating schedule.",
+    "provider_notes": "Dr. William McCune (general dentist) and Dr. John Micaletti (periodontist) co-lead the practice.",
+    "distinguishing_notes": "Rotating Wednesday hours and Tuesday admin-only hours suggest a two-dentist alternating schedule.",
     "sources": ["https://creeksidedental.com/", "https://www.healthgrades.com/group-directory/il-illinois/buffalo-grove/creekside-dental-x45kfl"]
    }
   },
@@ -45,20 +46,17 @@
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Multiple independent listings confirm a four-dentist group (Shiffman, Morris, Rosebaum, Pischek) practicing together at this single 195 N Arlington Heights Rd address, consistent with the NPI record's large_group/5-provider signal. No corporate parent, franchise, or DSO brand language found.",
+   "reasoning": "Multiple independent listings confirm a four-dentist group (Dr. Robert Shiffman, Dr. Gary Morris, Dr. David Rosebaum, Dr. Susanna Pischek) practicing together at this single 195 N Arlington Heights Rd address, consistent with the record's large_group/5-provider signal. No corporate parent, franchise, or DSO brand language found in any source -> single_loc_group.",
    "searched": [
     "Shiffman Morris Dental Associates Buffalo Grove IL 195 N Arlington Heights Rd"
    ],
    "intel": {
-    "website_url": "https://shiffmanmorrisdentalassociatesltd.newswire.com/",
-    "website_note": "Practice maintains its own newswire/press presence in addition to a patient site; positions itself on modern cosmetic technology.",
+    "website_url": "https://birdeye.com/shiffman-morris-dental-149744715842435",
+    "website_note": "Group practice with prosthodontist, endodontist, and general dentist offering restorative/prosthetic and cosmetic services.",
     "services": ["restorative dentistry", "prosthetic dentistry", "teeth whitening", "smile makeovers"],
     "provider_count_web": 4,
     "provider_notes": "Dr. Robert Shiffman, Dr. Gary Morris, Dr. David Rosebaum, Dr. Susanna Pischek.",
-    "google_rating": 5.0,
-    "google_review_count": 151,
-    "google_source_url": "https://birdeye.com/shiffman-morris-dental-149744715842435",
-    "distinguishing_notes": "Four-dentist group practice serving patients of all ages with a long-standing local reputation (151 reviews).",
+    "distinguishing_notes": "Long-standing local reputation; Birdeye-listed rating of 5.0/5 across 151 reviews.",
     "sources": ["https://birdeye.com/shiffman-morris-dental-149744715842435", "https://aedit.com/practice/shiffmanmorris-dental-associates-14408"]
    }
   },
@@ -66,7 +64,7 @@
    "location_id": "859a947faa29c7c0",
    "practice_name": "Capezio Nicholas Eugene DMD",
    "zip": "60089",
-   "assigned_tier": "single_loc_group",
+   "assigned_tier": "true_independent",
    "pe_backed": false,
    "evidence_basis": "web_verified",
    "evidence_urls": [
@@ -77,7 +75,7 @@
    "confidence": "medium",
    "status": "classified",
    "network_id": null,
-   "reasoning": "ADA Find-a-Dentist and NPI directories confirm Dr. Nicholas Capezio (Boston University DMD, UIC pediatric cert) practicing pediatric/general dentistry at 123 McHenry Rd, established 2020, with no corporate or DSO signal. Unit record shows provider_count=2 (small_group) but web evidence only surfaces Dr. Capezio by name, so medium rather than high confidence on the exact single-location-group tier.",
+   "reasoning": "ADA Find-a-Dentist and NPI directories confirm only Dr. Nicholas Capezio, DMD (Boston University dental degree, UIC pediatric certificate) as the practicing/owner dentist at 123 McHenry Rd, established 2020. No second dentist was independently corroborated by any web source and no DSO/corporate signal appeared anywhere; the record's own provider-count signal is context only (not usable as evidence) and could not be verified against a named second provider, so classified true_independent at medium confidence.",
    "searched": [
     "Capezio Nicholas Eugene DMD Buffalo Grove IL dentist 123 McHenry Rd"
    ],
@@ -85,6 +83,7 @@
     "website_url": null,
     "website_note": "No independent practice website surfaced; presence is via aggregator/directory profiles (ADA, NPI, Yelp as Capezio Pediatric Dentistry).",
     "services": ["pediatric dentistry", "general dentistry"],
+    "provider_count_web": 1,
     "provider_notes": "Dr. Nicholas Eugene Capezio, DMD (Boston University); Advanced Certificate in Pediatric Dentistry + MS Oral Health Sciences, University of Illinois at Chicago; bilingual Spanish.",
     "owner_career_stage": "early_career",
     "distinguishing_notes": "Practice established 2020; billed as 'Capezio Pediatric Dentistry' on Yelp, treating infants through teens.",
@@ -107,17 +106,19 @@
    "confidence": "high",
    "status": "classified",
    "network_id": "brand:heartland_dental",
-   "reasoning": "The practice operates publicly as 'Modern Dentistry' (choosemoderndentistry.com), whose own site lists the exact address 1431 McHenry Rd Ste 108, Buffalo Grove, IL 60089 (fetched directly, matching the unit record precisely) and states verbatim: 'Orahh Care Dental Community is a brand owned by Heartland Dental LLC, which is a dental support organization.' Heartland Dental is majority-owned by KKR since 2018 (Group Dentistry Now / GlobeNewswire), confirming PE backing. Classified branded_dso.",
+   "reasoning": "The practice operates publicly as 'Modern Dentistry' (choosemoderndentistry.com, fetched directly), whose own site lists the exact address 1431 McHenry Rd Ste 108, Buffalo Grove, IL 60089 - matching this record precisely - and states verbatim that Orahh Care Dental Community is a brand owned by Heartland Dental LLC, a dental support organization. Heartland Dental has been majority-owned by KKR since 2018 (GlobeNewswire / Group Dentistry Now), documenting PE sponsorship -> branded_dso, pe_backed=true.",
    "searched": [
     "\"Dental Health Professionals of Illinois\" Buffalo Grove 1431 McHenry Rd",
     "\"Orahh Care Dental Community\" Modern Dentistry Buffalo Grove",
     "Heartland Dental private equity KKR owner support organization",
-    "[fetched] https://choosemoderndentistry.com/"
+    "WebFetch https://choosemoderndentistry.com/"
    ],
    "intel": {
     "website_url": "https://choosemoderndentistry.com/",
     "website_note": "Polished multi-location-network site branded as 'Modern Dentistry' under the Orahh Care Dental Community umbrella; AARP-selected provider.",
-    "distinguishing_notes": "AARP member-benefit dental network; corporate support organization is Heartland Dental LLC (KKR majority owner since 2018).",
+    "provider_count_web": 2,
+    "provider_notes": "Dr. Ashley Tsiao, DMD and Dr. Syed H. Ali, DDS provide clinical services under the Heartland Dental support model.",
+    "distinguishing_notes": "AARP member-benefit dental network; corporate support organization is Heartland Dental LLC (KKR majority owner since 2018). Useful DSO-Associate-track employer for job-market surfaces.",
     "sources": ["https://choosemoderndentistry.com/", "https://orahhcare.com/", "https://www.aarp.org/membership/benefits/health/orahh-care-dental-community-selected-by-aarp/"]
    }
   },
@@ -136,7 +137,7 @@
    "confidence": "medium",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Multiple aggregator profiles (Healthgrades, WebMD, Vitals, NPI) confirm Dr. Boris Peck, DDS as a solo general dentist at 1004 Weiland Rd matching the unit's phone. No independent practice website was found and no corporate/DSO signal appeared anywhere, supporting a solo owner-operator classification at medium confidence.",
+   "reasoning": "Multiple aggregator profiles (Healthgrades, WebMD, Vitals, NPI) confirm Dr. Boris Peck, DDS as a solo general dentist at 1004 Weiland Rd matching the unit's phone. No independent practice website was found and no corporate/DSO signal appeared anywhere; classified true_independent at medium confidence given the directory-only evidence base.",
    "searched": [
     "Boris Peck DDS Buffalo Grove IL 1004 Weiland Rd dentist"
    ],
@@ -144,7 +145,7 @@
     "website_url": null,
     "website_note": "No dedicated practice website found; presence limited to aggregator directories.",
     "services": ["general dentistry", "cavity treatment", "crowns", "cleanings"],
-    "distinguishing_notes": "Ratings vary by aggregator (Healthgrades 3.5/10 reviews, Vitals 3.3/8, CareDash 5.0/3); telehealth offered per WebMD.",
+    "distinguishing_notes": "Ratings vary by aggregator (Healthgrades 3.5/10 reviews, Vitals 3.3/8, CareDash 5.0/3); telehealth offered per WebMD listing.",
     "sources": ["https://www.healthgrades.com/dentist/dr-boris-peck-2qy78", "https://doctor.webmd.com/doctor/boris-peck-6712456c-5e9b-4742-8e9c-5265c68f367f-overview"]
    }
   },
@@ -163,10 +164,10 @@
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Practice's own website (fetched directly) explicitly states this is a 'single-location, independently-owned practice' led by owner Dr. Joseph M. Fye, DDS, who opened it in 1988 after graduating Loyola University Chicago in 1987. No corporate signal found. Note: the current site lists the office at 150 W Half Day Rd rather than the NPI's 701 Deerfield Pkwy, likely a subsequent relocation of the same solo practice, not a second location.",
+   "reasoning": "Practice's own website (fetched directly) describes a single-location, independently-owned practice led by owner Dr. Joseph M. Fye, DDS, who opened it in September 1988 after graduating Loyola University Chicago in 1987, with one part-time associate. No parent company, DSO, or corporate-group language anywhere. Note: the current site lists the office at 150 W Half Day Rd rather than the NPI's 701 Deerfield Pkwy, most likely a relocation of the same solo practice over time rather than a second, separately owned office. Classified true_independent at high confidence.",
    "searched": [
     "Joseph Fye DDS Buffalo Grove IL 701 Deerfield Pkwy dentist",
-    "[fetched] https://www.fyedental.com/our-locations"
+    "WebFetch https://www.fyedental.com/our-locations"
    ],
    "intel": {
     "website_url": "https://www.fyedental.com/",
@@ -175,7 +176,7 @@
     "provider_count_web": 1,
     "provider_notes": "Dr. Joseph M. Fye, DDS, Loyola University Chicago 1987; opened practice September 1988.",
     "owner_career_stage": "late_career",
-    "distinguishing_notes": "Practice self-describes as not participating in HMO insurance plans.",
+    "distinguishing_notes": "Practice self-describes as not participating in HMO insurance plans; open continuously since 1988 (~38 years).",
     "sources": ["https://www.fyedental.com/our-locations", "https://www.fyedental.com/"]
    }
   },
@@ -194,13 +195,13 @@
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Own website kldentistry.com names two dentist-owners, Dr. Catharine Kennedy and Dr. Kate Limardi, matching the unit's AO 'Katie Limardi' and 3-provider small_group signal, at a single Buffalo Grove suite. No corporate or franchise language found.",
+   "reasoning": "Own website kldentistry.com names two dentist-owners, Dr. Catharine Kennedy and Dr. Kate Limardi, matching the unit's AO 'Katie Limardi,' at a single Buffalo Grove suite. No corporate or franchise language found -> single_loc_group.",
    "searched": [
     "Kennedy Limardi Dentistry Buffalo Grove IL 1425 McHenry Rd"
    ],
    "intel": {
     "website_url": "https://kldentistry.com/",
-    "website_note": "Modern branded family-dental site with clear owner bios and social presence (Instagram, Facebook).",
+    "website_note": "Modern branded family-dental site with clear owner bios and social presence.",
     "services": ["cosmetic dentistry", "dental implants", "Invisalign", "same-day crowns", "digital X-rays", "teeth whitening", "emergency care"],
     "provider_count_web": 2,
     "provider_notes": "Dr. Catharine Kennedy, DDS and Dr. Kate Limardi, DDS.",
@@ -217,26 +218,27 @@
    "evidence_basis": "web_verified",
    "evidence_urls": [
     "https://www.lucasortho.com/",
-    "https://www.yelp.com/biz/lucas-orthodontics-buffalo-grove",
+    "https://orthodonticproductsonline.com/practice-management/practice-profiles/lucas-orthodontics-balancing-tradition-with-innovation-when-treating-complex-cases/",
     "https://aaoinfo.org/locator/dr-kevin-p-lucas/"
    ],
    "evidence_artifacts": [],
-   "confidence": "medium",
+   "confidence": "high",
    "status": "classified",
    "network_id": "ao:LUCAS_KEVIN",
-   "reasoning": "Own website (lucasortho.com) and AAO locator confirm the practice is owned by board-certified orthodontist Dr. Kevin Lucas (UIC dental, UPenn ortho), operating from two offices — Buffalo Grove and Lake in the Hills, IL — since 1992, with a second orthodontist (Dr. Durbin) as associate. No corporate parent or DSO brand found; classified dentist_multi (2+ dentist-owned locations). A direct fetch of the site failed on a TLS error, so confidence is medium rather than high.",
+   "reasoning": "Own website, an orthodontic-industry trade profile, and the AAO locator all confirm Dr. Kevin P. Lucas, DDS (owner since 1992, UIC dental degree, U. Penn ortho residency, UPenn associate professor) personally operates two offices under one brand - the Buffalo Grove main office (this location) and a satellite office in Lake in the Hills, IL - with Dr. Durbin as an associate orthodontist. No corporate parent, management company, or PE mention anywhere. Dentist-owned, 2+ locations, own site lists both offices -> dentist_multi (never a DSO tier).",
    "searched": [
-    "Lucas Orthodontics Buffalo Grove IL 1401 McHenry Rd Kevin Lucas"
+    "Lucas Orthodontics Buffalo Grove IL 1401 McHenry Rd Kevin Lucas",
+    "Lucas Orthodontics Kevin Lucas Lake in the Hills owner single doctor"
    ],
    "intel": {
     "website_url": "https://www.lucasortho.com/",
-    "website_note": "Specialty orthodontic practice site covering both office locations.",
-    "services": ["orthodontics", "Invisalign", "braces"],
+    "website_note": "Specialty orthodontic practice site covering both office locations; positions Dr. Lucas as a long-tenured local specialist and Penn faculty member.",
+    "services": ["orthodontics", "Invisalign", "braces", "early interceptive treatment", "adult orthodontics"],
     "provider_count_web": 2,
-    "provider_notes": "Dr. Kevin Lucas, DDS (UIC dental, UPenn orthodontics, ABO board-certified) and Dr. Durbin.",
+    "provider_notes": "Dr. Kevin P. Lucas, DDS (owner; UIC dental degree, U. Penn orthodontics residency, ABO board-certified, UPenn associate professor) and Dr. Durbin (associate).",
     "owner_career_stage": "late_career",
-    "distinguishing_notes": "Two-office group (Buffalo Grove & Lake in the Hills), operating since 1992.",
-    "sources": ["https://www.lucasortho.com/", "https://aaoinfo.org/locator/dr-kevin-p-lucas/"]
+    "distinguishing_notes": "Two-office network (Buffalo Grove & Lake in the Hills), operating since 1992.",
+    "sources": ["https://www.lucasortho.com/", "https://orthodonticproductsonline.com/practice-management/practice-profiles/lucas-orthodontics-balancing-tradition-with-innovation-when-treating-complex-cases/"]
    }
   },
   {
@@ -254,7 +256,7 @@
    "confidence": "medium",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Aggregator listings (Zocdoc, Healthgrades, WebMD) uniformly show a solo pediatric-focused general dentist, Dr. Michael Perper, DDS, at 400 W Dundee Rd matching the unit's AO and phone, with no corporate or DSO signal. The unit's small_group/2-provider classification isn't independently corroborated by any named second dentist in search results, hence medium confidence.",
+   "reasoning": "Aggregator listings (Zocdoc, Healthgrades, WebMD) uniformly show a solo pediatric-focused general dentist, Dr. Michael Perper, DDS, at 400 W Dundee Rd matching the unit's AO and phone, with no corporate or DSO signal. No independent practice website or named second dentist was found, so classified true_independent at medium confidence.",
    "searched": [
     "Michael Perper DDS Buffalo Grove IL 400 W Dundee Rd dentist"
    ],
@@ -282,7 +284,7 @@
    "confidence": "medium",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Practice operates as 'Lind Dental Care' at 1501 W Dundee Rd matching the unit's address and phone (847-394-4333), described as family-oriented and patient-focused with no corporate or DSO signal. The practice's own site names the lead dentist as 'Dr. Mark Lind' rather than 'Dennis A. Lind' per the NPI record — likely a data variance or practice succession within the same PC — so medium confidence rather than high.",
+   "reasoning": "Practice operates as 'Lind Dental Care' at 1501 W Dundee Rd matching the unit's address and phone (847-394-4333), described as family-oriented with no corporate or DSO signal. The practice's own site names the lead dentist as 'Dr. Mark Lind' rather than 'Dennis A. Lind' per the NPI record - most other sources (Facebook, Yelp, WebMD, Vitals) consistently use 'Dennis Lind,' so this is treated as a likely directory/data variance rather than a distinct second owner. Classified true_independent at medium confidence given that name discrepancy.",
    "searched": [
     "Dennis Lind DDS Buffalo Grove IL 1501 W Dundee dentist"
    ],
@@ -290,7 +292,7 @@
     "website_url": "https://www.buffalogrovesmiles.com/",
     "website_note": "Small practice site (Lind Dental Care) with services and contact pages.",
     "services": ["cosmetic dentistry", "general dentistry"],
-    "distinguishing_notes": "Site names the lead dentist as 'Dr. Mark Lind,' differing from the NPI record's 'Dennis A. Lind' — possible name variant or ownership succession.",
+    "distinguishing_notes": "Site names the lead dentist as 'Dr. Mark Lind,' differing from the NPI record's 'Dennis A. Lind' — possible name variant or data-entry error (most other directories say 'Dennis Lind').",
     "sources": ["https://www.buffalogrovesmiles.com/", "https://www.yelp.com/biz/lind-dental-care-buffalo-grove"]
    }
   },
@@ -298,29 +300,24 @@
    "location_id": "48c053d606219409",
    "practice_name": "BUFFALO GROVE DENTAL CARE",
    "zip": "60089",
-   "assigned_tier": "single_loc_group",
+   "assigned_tier": "undetermined",
    "pe_backed": false,
    "evidence_basis": "web_verified",
    "evidence_urls": [
-    "https://www.healthgrades.com/dentist/dr-john-kazanowski-xhfkb",
+    "https://findadentist.ada.org/il/dupage/bloomingdale/general-practice/dr-john-d-kazanowski-4335504",
+    "http://www.bloomingdaledentists.com/",
     "https://www.yelp.com/biz/cobe-and-kazanowski-dds-buffalo-grove"
    ],
    "evidence_artifacts": [],
-   "confidence": "medium",
-   "status": "classified",
+   "confidence": "low",
+   "status": "undetermined",
    "network_id": null,
-   "reasoning": "Dr. John D. Kazanowski, DDS operates at 1161 McHenry Rd matching the unit's address/phone; a separate Yelp listing at the same address ('Cobe & Kazanowski DDS') suggests a two-dentist partnership rather than a strict solo practice. No corporate or DSO signal found in any source. Classified as a single-location, dentist-owned group at medium confidence given the partnership ambiguity.",
+   "reasoning": "closure_suspect. Dr. John D. Kazanowski, DDS matches this unit's address/phone (1161 McHenry Rd, 847-634-6575) via a Yelp listing for 'Cobe & Kazanowski DDS' at the same suite, but multiple current sources (ADA Find-a-Dentist, a Bloomingdale-area dentist directory) indicate Dr. Kazanowski has since relocated his practice to Bloomingdale, IL, now operating as 'Addison Bloomingdale Dental Care.' This suggests the Buffalo Grove location may no longer be active. Per protocol, not classified; flagged for closure verification rather than tiered.",
    "searched": [
-    "Buffalo Grove Dental Care 1161 McHenry Rd John Kazanowski dentist"
-   ],
-   "intel": {
-    "website_url": null,
-    "website_note": "No independent practice website surfaced; presence via aggregator profiles.",
-    "services": ["general dentistry", "digital X-rays", "composite fillings", "crowns", "sealants"],
-    "provider_notes": "Dr. John D. Kazanowski, DDS; possible partner practice listed as 'Cobe & Kazanowski DDS' at the same suite.",
-    "distinguishing_notes": "Overall patient experience rating cited at 4.9/5 by an aggregator (ProviderWire), not verified as a Google listing.",
-    "sources": ["https://www.healthgrades.com/dentist/dr-john-kazanowski-xhfkb", "https://www.yelp.com/biz/cobe-and-kazanowski-dds-buffalo-grove"]
-   }
+    "Buffalo Grove Dental Care 1161 McHenry Rd John Kazanowski dentist",
+    "\"Cobe\" \"Kazanowski\" DDS Buffalo Grove dentist 1161 McHenry",
+    "John Kazanowski DDS Bloomingdale IL moved practice dentist"
+   ]
   },
   {
    "location_id": "c7ffea727c312211",
@@ -337,7 +334,7 @@
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Own practice website (Dental Esthetics of Buffalo Grove) names Dr. Alexander Osovsky, DDS as the sole owner-dentist, serving the area since 1999, matching the unit's address and AO. No corporate parent or DSO brand signal found anywhere.",
+   "reasoning": "Own practice website (Dental Esthetics of Buffalo Grove) names Dr. Alexander Osovsky, DDS as the sole owner-dentist, serving the area since 1999, matching the unit's address and AO. No corporate parent or DSO brand signal found anywhere -> true_independent.",
    "searched": [
     "Alexander Osovsky DDS Buffalo Grove IL 180 Milwaukee Ave dentist"
    ],
@@ -361,24 +358,27 @@
    "pe_backed": false,
    "evidence_basis": "web_verified",
    "evidence_urls": [
-    "https://www.jrosenortho.com/",
+    "https://www.jrosenortho.com/meet-the-doctors",
     "https://www.rankmydentist.com/top-dentists-buffalo-grove/rosen-orthodontics"
    ],
    "evidence_artifacts": [],
-   "confidence": "medium",
+   "confidence": "high",
    "status": "classified",
    "network_id": "ao:ROSEN_JACQUELINE",
-   "reasoning": "Rosen Orthodontics' own web presence (jrosenortho.com) and aggregator profiles describe Dr. Jacqueline G. Rosen, DDS, MS as 'the leading orthodontist on Chicago's North Shore, with offices in Buffalo Grove and Deerfield, Illinois' — a dentist-owned two-location specialty practice, matching the unit's AO and large_group/4-provider signal. No corporate or DSO signal found.",
+   "reasoning": "Own website (jrosenortho.com, fetched directly, operating as 'Rosen Orthodontics') confirms 2 office locations - Buffalo Grove at 355 W Dundee Rd (this location) and Deerfield, IL - founded and long led by Dr. Jacqueline G. Rosen, DDS, MS, who has since handed day-to-day operation to her daughter Dr. Kristina Sakas Katz and an associate, Dr. Benjamin Belavsky. No corporate parent, DSO, or PE mention anywhere. Dentist/family-owned, 2+ locations, own site lists both offices -> dentist_multi.",
    "searched": [
-    "Jacqueline Rosen DDS Buffalo Grove IL 355 W Dundee Rd dentist"
+    "Jacqueline Rosen DDS Buffalo Grove IL 355 W Dundee Rd dentist",
+    "WebFetch https://www.jrosenortho.com/meet-the-doctors"
    ],
    "intel": {
     "website_url": "https://www.jrosenortho.com/",
-    "website_note": "Specialty orthodontic practice site covering both Buffalo Grove and Deerfield offices.",
-    "services": ["orthodontics", "Invisalign", "braces treatment"],
-    "provider_notes": "Dr. Jacqueline G. Rosen, DDS, MS; speaks Romanian, Russian, and Spanish.",
-    "distinguishing_notes": "Two-office group (Buffalo Grove & Deerfield); offers telehealth.",
-    "sources": ["https://www.jrosenortho.com/", "https://www.yelp.com/biz/jacqueline-g-rosen-dds-ms-buffalo-grove"]
+    "website_note": "Long-established orthodontic specialty practice; positions Dr. Rosen as a multi-decade community fixture now teaching at UIC.",
+    "services": ["orthodontics", "Invisalign", "braces treatment", "general oral-health management (gum care, root canals, fillings, crowns, veneers, bridges)"],
+    "provider_count_web": 3,
+    "provider_notes": "Founder Dr. Jacqueline G. Rosen, DDS, MS (now UIC orthodontic residency faculty); current operators Dr. Kristina Sakas Katz (her daughter) and associate Dr. Benjamin Belavsky. Speaks Romanian, Russian, and Spanish.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Two-location family-run orthodontic practice (Buffalo Grove + Deerfield); offers telehealth.",
+    "sources": ["https://www.jrosenortho.com/meet-the-doctors", "https://www.yelp.com/biz/jacqueline-g-rosen-dds-ms-buffalo-grove"]
    }
   },
   {
@@ -387,18 +387,20 @@
    "zip": "60089",
    "assigned_tier": "undetermined",
    "pe_backed": false,
-   "evidence_basis": "none",
-   "evidence_urls": [],
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.massgeneral.org/doctors/20035/rooz-kashefi"
+   ],
    "evidence_artifacts": [],
    "confidence": "low",
    "status": "undetermined",
    "network_id": null,
-   "reasoning": "closure_suspect: NPI/registry listings for 'Kashefi Dental, P.C.' show a different phone number ((847) 541-0432) than the unit's (847) 279-1440 for the same suite/building; a direct search on the unit's own phone number resolves instead to a different, unrelated current practice ('Moats Dental') at that suite. The named dentist, Dr. Roozbeh Kashefi, now appears to practice oral & maxillofacial surgery in the Boston, MA area (Mass General Brigham), suggesting the Buffalo Grove PC may be inactive or the address has turned over. No documentary evidence of an active, currently-operating Kashefi Dental practice at this address was found.",
+   "reasoning": "closure_suspect. NPI/registry listings for 'Kashefi Dental, P.C.' show a different phone number ((847) 541-0432) than this unit's (847) 279-1440 for the same suite/building; a direct search on the unit's own phone number resolves instead to a different, unrelated current practice at that suite. The named dentist, Dr. Roozbeh Kashefi, now appears to practice oral health/dentistry at Mass General Brigham in the Boston, MA area, suggesting the Buffalo Grove PC may be inactive or the address has turned over. No documentary evidence of an active, currently-operating Kashefi Dental practice at this address was found. Not classified; flagged for closure/relocation verification.",
    "searched": [
     "Kashefi Dental Buffalo Grove IL 135 N Arlington Heights Rd Roozbeh Kashefi",
     "\"(847) 279-1440\" Buffalo Grove dentist",
     "\"135 N Arlington Heights Rd\" Buffalo Grove dentist Kashefi",
-    "\"Kashefi Dental\" P.C. Buffalo Grove website roozbeh kashefi dentist Illinois"
+    "\"Kashefi Dental\" P.C. Buffalo Grove website Roozbeh Kashefi dentist Illinois"
    ]
   },
   {
@@ -416,7 +418,7 @@
    "confidence": "medium",
    "status": "classified",
    "network_id": null,
-   "reasoning": "The unit's exact address (317 W Dundee Rd) and phone ((847) 520-3020) match a separately-registered dentist-owned practice, Sam Mudrik DDS Ltd, publicly known as 'Buffalo Grove Dental Clinic' — a small independent office, not a branded DSO. No independent website was found specifically for Dr. Leonard Kaplan, but nothing in any source indicates corporate/PE ownership; classified as a single-location, dentist-owned group (Kaplan practicing alongside Mudrik) at medium confidence given the name/entity ambiguity.",
+   "reasoning": "This unit's exact address (317 W Dundee Rd) and phone ((847) 520-3020) match a separately-registered dentist-owned practice, Sam Mudrik DDS Ltd, publicly known as 'Buffalo Grove Dental Clinic' - a small independent office, not a branded DSO. A generic name search for 'Leonard Kaplan DDS' repeatedly surfaced a different address (400 W Dundee Rd) that does not match this record's address/phone and is treated as a likely same-name collision per protocol (match on address, not name, per city). No source for either the address-matched location or the name-matched alternate indicates corporate/DSO/PE ownership; classified single_loc_group (dentist-owned, single Buffalo Grove address) at medium confidence given the entity-identity ambiguity.",
    "searched": [
     "Leonard Kaplan DDS Buffalo Grove IL 317 W Dundee Rd dentist",
     "\"317 W Dundee\" Buffalo Grove dentist Kaplan",
@@ -427,7 +429,7 @@
    "location_id": "822ec77539aefeca",
    "practice_name": "SUPERIOR DENTAL, LTD.",
    "zip": "60089",
-   "assigned_tier": "single_loc_group",
+   "assigned_tier": "true_independent",
    "pe_backed": false,
    "evidence_basis": "web_verified",
    "evidence_urls": [
@@ -438,7 +440,7 @@
    "confidence": "medium",
    "status": "classified",
    "network_id": null,
-   "reasoning": "The practice publicly operates as 'Countryside Dental' at 472 W Half Day Rd, matching the unit's address/phone and AO Barry Schatzman, open since 1992 (matching the unit's year_established=1991). Dr. Natalya Nagornaya is described as taking the lead in 2014, indicating a dentist-to-dentist ownership succession, not a corporate acquisition. No DSO/PE signal found.",
+   "reasoning": "The 472 W Half Day Rd address (matching this record) now operates as 'Countryside Dental,' open continuously since 1992 (consistent with the record's 1991 year_established), currently led solely by Dr. Natalya Nagornaya, DDS, who is stated to have taken the lead in 2014. No concurrent second dentist (including this record's AO, Barry Schatzman) appears anywhere on the current site, and no parent company, DSO, or corporate-group language is present - consistent with a full dentist-to-dentist ownership succession rather than a multi-dentist group or corporate acquisition. Classified true_independent at medium confidence given the AO/current-operator name discrepancy versus this record.",
    "searched": [
     "Superior Dental Buffalo Grove IL 472 W Half Day Rd Barry Schatzman",
     "Countryside Dental Buffalo Grove IL dentists Schatzman website"
@@ -447,8 +449,10 @@
     "website_url": "https://www.countrysidedentist.com/",
     "website_note": "Independent practice site with team page and multilingual staff messaging.",
     "services": ["dental cleanings and exams", "digital X-rays", "fillings", "cosmetic crowns", "teeth whitening", "dentures", "emergency dentistry"],
-    "provider_notes": "Dr. Barry Schatzman, DDS; Dr. Natalya Nagornaya took over practice leadership in 2014.",
-    "distinguishing_notes": "Multilingual office (Russian, Bulgarian, Polish, English); open since 1992.",
+    "provider_count_web": 1,
+    "provider_notes": "Dr. Natalya Nagornaya, DDS - took over as lead dentist in 2014, succeeding founder Dr. Barry Schatzman.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Multilingual office (Russian, Bulgarian, Polish, English); office continuously open since 1992 under different lead dentists over time.",
     "sources": ["https://www.countrysidedentist.com/", "https://www.healthgrades.com/group-directory/il-illinois/buffalo-grove/countryside-dental-x595s9"]
    }
   }

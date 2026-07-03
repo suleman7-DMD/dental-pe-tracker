@@ -135,24 +135,25 @@
    "location_id": "c64f930641331bdf",
    "practice_name": "IBBI DENTAL CLINIC PC",
    "zip": "60053",
-   "assigned_tier": "single_loc_group",
+   "assigned_tier": "dentist_multi",
    "pe_backed": false,
    "evidence_basis": "web_verified",
    "evidence_urls": [
     "https://opennpi.com/provider/1902941263",
-    "https://www.dentistsranked.com/dental-clinic/Morton_Grove-IL/IBBI+Dental+-+Dr.+Igor+Botvinnik,+DDS+&+Dr.+Irina+Bolotnikova,+DDS"
+    "https://dentistryexcellence.org/dentist-near-me/ibbi-dental-dr-igor-botvinnik-dds-dr-irina-bolotnikova-dds/",
+    "https://www.dentalplans.com/dentists/illinois/chicago/60641/dr-igor-botvinnik-44906/"
    ],
    "evidence_artifacts": [],
    "confidence": "high",
    "status": "classified",
-   "network_id": null,
-   "reasoning": "IBBI Dental Clinic PC at 7963 Golf Rd is run by Dr. Igor Botvinnik, DDS (owner/president per NPI) together with Dr. Irina Bolotnikova, DDS — a 2-dentist single-location practice with no DSO brand or corporate parent found across multiple directory listings.",
-   "searched": ["\"IBBI Dental\" OR \"Igor Botvinnik\" Morton Grove IL dentist"],
+   "network_id": "brand:ibbi_dental",
+   "reasoning": "Follow-up search confirmed IBBI Dental is a genuine 2-location practice, not a single site: dentistryexcellence.org and DentalPlans both describe 'two conveniently located offices, one in Chicago [4211 N Cicero Ave Ste 214] and another in Morton Grove [7963 Golf Rd]', run jointly by Dr. Igor Botvinnik, DDS (owner/president per NPI) and Dr. Irina Bolotnikova, DDS. No DSO brand or corporate parent found at either site; reclassified from single_loc_group to dentist_multi (2-location dentist-owned network, well below the 10+ protected-network threshold).",
+   "searched": ["\"IBBI Dental\" OR \"Igor Botvinnik\" Morton Grove IL dentist", "\"IBBI Dental\" Chicago \"N Cicero\" OR \"Cicero Ave\" Botvinnik Bolotnikova location"],
    "intel": {
     "website_url": null,
     "services": ["sedation dentistry", "emergency care", "routine cleanings"],
-    "distinguishing_notes": "Two co-practicing dentists (Botvinnik & Bolotnikova) at one office; mixed patient reviews (~3.4 rating on directory sites).",
-    "sources": ["https://www.dentistsranked.com/dental-clinic/Morton_Grove-IL/IBBI+Dental+-+Dr.+Igor+Botvinnik,+DDS+&+Dr.+Irina+Bolotnikova,+DDS"]
+    "distinguishing_notes": "Two co-practicing dentists (Botvinnik & Bolotnikova) operating across two offices (Chicago + Morton Grove); mixed patient reviews (~3.4 rating on directory sites).",
+    "sources": ["https://dentistryexcellence.org/dentist-near-me/ibbi-dental-dr-igor-botvinnik-dds-dr-irina-bolotnikova-dds/"]
    }
   },
   {
@@ -251,19 +252,20 @@
    "location_id": "07633ece5c66e5c5",
    "practice_name": "IRINA BOLOTNIKOV DDS PC",
    "zip": "60053",
-   "assigned_tier": "single_loc_group",
+   "assigned_tier": "dentist_multi",
    "pe_backed": false,
    "evidence_basis": "web_verified",
    "evidence_urls": [
-    "https://www.dentistsranked.com/dental-clinic/Morton_Grove-IL/IBBI+Dental+-+Dr.+Igor+Botvinnik,+DDS+&+Dr.+Irina+Bolotnikova,+DDS",
-    "https://opennpi.com/provider/1902941263"
+    "https://dentistryexcellence.org/dentist-near-me/ibbi-dental-dr-igor-botvinnik-dds-dr-irina-bolotnikova-dds/",
+    "https://opennpi.com/provider/1902941263",
+    "https://www.dentalplans.com/dentists/illinois/chicago/60641/dr-igor-botvinnik-44906/"
    ],
    "evidence_artifacts": ["same_phone_as_location_c64f930641331bdf: 847-583-0033", "address_variant_of_7963_golf_rd"],
-   "confidence": "medium",
+   "confidence": "high",
    "status": "classified",
-   "network_id": null,
-   "reasoning": "This PC's listed address (7963 Gold Rd) and phone (847) 583-0033 are effectively identical to IBBI Dental Clinic PC (7963 Golf Rd, same phone, location_id c64f930641331bdf in this same unit), and multiple directories describe IBBI Dental as jointly run by Dr. Igor Botvinnik and Dr. Irina Bolotnikova at one office. Treated as the same dentist-owned single-location practice (Bolotnikova's own professional corporation co-located with her practice partner), not a separate site.",
-   "searched": ["\"IBBI Dental\" OR \"Igor Botvinnik\" Morton Grove IL dentist"]
+   "network_id": "brand:ibbi_dental",
+   "reasoning": "This PC's listed address (7963 Gold Rd) and phone (847) 583-0033 are effectively identical to IBBI Dental Clinic PC (7963 Golf Rd, same phone, location_id c64f930641331bdf in this same unit). Follow-up search confirmed Dr. Irina Bolotnikova, DDS co-practices with Dr. Igor Botvinnik across a genuine 2-location IBBI Dental network (Morton Grove 7963 Golf Rd + Chicago 4211 N Cicero Ave Ste 214), per dentistryexcellence.org and DentalPlans. No corporate parent, management company, or DSO brand found. Reclassified from single_loc_group to dentist_multi to match the sibling IBBI Dental Clinic PC row -- her own PC co-located with, and part of, the same 2-location dentist-owned network.",
+   "searched": ["\"IBBI Dental\" OR \"Igor Botvinnik\" Morton Grove IL dentist", "\"IBBI Dental\" Chicago \"N Cicero\" OR \"Cicero Ave\" Botvinnik Bolotnikova location"]
   },
   {
    "location_id": "5a59c43f4b6b5cd7",

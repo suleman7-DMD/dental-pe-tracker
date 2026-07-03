@@ -1,0 +1,446 @@
+{
+ "unit_id": "laneA_115",
+ "classifications": [
+  {
+   "location_id": "aee85a072102dce1",
+   "practice_name": "Fisher Dental",
+   "zip": "60639",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "shares_phone_773-276-3360_with_neighbor_PrimeCare_Dental_LLC_a9cf22985a2e1558",
+    "address_4235_w_north_ave_tagged_on_Yelp_as_PrimeCare_Community_Health_but_absent_from_official_primecarehealth.org_all-locations_page"
+   ],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "No dedicated 'Fisher Dental' website or bio was found; all search hits were either unrelated Dr. Fisher practices at other addresses or a Yelp listing tagging this exact address as 'PrimeCare Community Health.' PrimeCare Health's own current all-locations page (8 sites) does not include 4235/4239 W North Ave, so I cannot confirm current FQHC affiliation, and the shared phone number with the neighboring PrimeCare Dental LLC record adds ambiguity rather than resolving it. Insufficient reliable evidence to assign a tier.",
+   "searched": [
+    "Fisher Dental 4235 W North Ave Chicago IL 60639 dentist",
+    "PrimeCare Health Chicago FQHC nonprofit community health center dental",
+    "PrimeCare Health all-locations"
+   ]
+  },
+  {
+   "location_id": "e76b9e2c92632174",
+   "practice_name": "THERESE MOUSSA, DDS, PC",
+   "zip": "60639",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.clarkdentalchicago.com/about-us/",
+    "https://findadentist.ada.org/dentists/dr-therese-moussa-chicago-0038V00002ykCNOQA2-a1C8V00000kXuRkUAK"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The practice now operates publicly as 'Clark Dental Care' at the same address/phone, with its own website naming Dr. Therese Moussa as the practice's dentist since 1999/over 15 years; NPI shows 2 providers at one address matching the small_group entity type. No DSO, parent company, or multi-location signal appeared on the practice's own site or in search results.",
+   "searched": [
+    "\"Therese Moussa\" DDS dentist Chicago 5301 Fullerton",
+    "clarkdentalchicago.com/about-us fetch"
+   ],
+   "intel": {
+    "website_url": "https://www.clarkdentalchicago.com/",
+    "website_note": "Modern small-practice site branded 'Clark Dental Care'; presents Dr. Moussa as the long-tenured treating dentist (practice operating since 1999).",
+    "services": ["Botox and dermal fillers", "in-office whitening", "implants", "crowns", "veneers", "bridges", "dentures/partials", "fillings", "extractions", "periodontal treatment"],
+    "technology": [],
+    "provider_notes": "Dr. Therese Moussa, DDS — BS Biological Sciences UIC, DDS from UIC College of Dentistry; implant-placement trained; certified in Botox/dermal fillers and TMJ treatment; speaks Arabic.",
+    "distinguishing_notes": "Accepting new patients as of search; bilingual (Arabic) practice.",
+    "sources": [
+     "https://www.clarkdentalchicago.com/about-us/",
+     "https://findadentist.ada.org/dentists/dr-therese-moussa-chicago-0038V00002ykCNOQA2-a1C8V00000kXuRkUAK"
+    ]
+   }
+  },
+  {
+   "location_id": "359f3f622e280f27",
+   "practice_name": "ISMILE DENTAL",
+   "zip": "60639",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "http://ismilechicago.com/",
+    "https://www.yelp.com/biz/ismile-dental-chicago-2"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "iSmile Dental is a standalone practice with its own dedicated website and multiple independent directory listings, all pointing to a single Fullerton Ave location; patient reviews reference a treating 'Dr. Safi' rather than a chain brand. No corporate, DSO, or multi-location signal was found across two searches.",
+   "searched": [
+    "iSmile Dental 4953 W Fullerton Ave Chicago Yesenia Delgado",
+    "ismilechicago.com owner dentist Yesenia Delgado about us",
+    "iSmile Dental Chicago 60639 Yelp owner dentist name reviews"
+   ],
+   "intel": {
+    "website_url": "http://ismilechicago.com/",
+    "website_note": "Dedicated general & cosmetic dentistry site with a services page and online contact form; single-location small practice presentation.",
+    "google_rating": null,
+    "distinguishing_notes": "Patient reviews (~4.5-4.6 star aggregate across directories) commonly reference the treating dentist as 'Dr. Safi.'",
+    "sources": [
+     "http://ismilechicago.com/",
+     "https://www.yelp.com/biz/ismile-dental-chicago-2"
+    ]
+   }
+  },
+  {
+   "location_id": "57d1141d853072c0",
+   "practice_name": "SONRISA FAMILY DENTAL AT THE HALL, P.C.",
+   "zip": "60639",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://sonrisafamilydental.com/locations/",
+    "https://sonrisafamilydental.com/"
+   ],
+   "evidence_artifacts": [
+    "AO_Mark_Mendiola_second_reach_zip_60632_matches_live_Sonrisa_Gage_Park_location",
+    "this_Diversey_Ave_address_not_present_on_current_official_locations_page_possible_closed_or_delisted_satellite"
+   ],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:sonrisa_family_dental",
+   "reasoning": "Sonrisa Family Dental is a Jason Korkus, DDS-founded network spanning roughly 9-12 Chicago-area locations per its own locations page and third-party company profiles, exceeding the 10-location protected-network threshold. This specific Diversey Ave / 'Hall Plaza' address does not appear on the network's current locator, so status/ownership at this exact site is unclear, but the network scale itself requires routing to a one-network-one-decision review rather than a per-location call. R4_protected_network:Sonrisa Family Dental.",
+   "searched": [
+    "Sonrisa Family Dental \"at the Hall\" Chicago Diversey Mendiola",
+    "\"Sonrisa Family Dental\" locations Chicago Illinois network CDCA",
+    "\"Sonrisa Family Dental\" CDCA parent company OR dental service organization OR private equity"
+   ],
+   "intel": {
+    "website_url": "https://sonrisafamilydental.com/",
+    "website_note": "Established multi-location network site with a dedicated locations page; positions itself as family dentistry across Chicago and south suburbs.",
+    "distinguishing_notes": "Founded by Jason Korkus, DDS; several locations partner with community health centers (e.g., Access Community Health, Esperanza Health Center, Christian Community Health Center).",
+    "sources": ["https://sonrisafamilydental.com/locations/", "https://sonrisafamilydental.com/"]
+   }
+  },
+  {
+   "location_id": "a9cf22985a2e1558",
+   "practice_name": "PRIMECARE DENTAL LLC",
+   "zip": "60639",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "shares_phone_773-276-3360_with_neighbor_Fisher_Dental_aee85a072102dce1",
+    "address_4239_w_north_ave_near_Yelp-tagged_PrimeCare_Community_Health_but_absent_from_official_primecarehealth.org_all-locations_page"
+   ],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Search results are limited to aggregator/directory listings (opennpi, myhygienist, npinumberlookup) with no independent practice website. The address sits near a Yelp listing tagged 'PrimeCare Community Health' (a real Chicago FQHC), but that FQHC's own current locations page lists 8 sites and none at 4235/4239 W North Ave, and the practice shares its phone number with the neighboring 'Fisher Dental' NPI record, muddying whether this is the same office under two registrations or a genuinely separate practice. Insufficient reliable evidence to assign a tier.",
+   "searched": [
+    "\"PrimeCare Dental\" 4239 North Ave Chicago Kathleen Hansen dentist",
+    "\"PrimeCare\" dental clinic \"4239\" OR \"4235\" North Ave Chicago West Town",
+    "PrimeCare Health all-locations"
+   ]
+  },
+  {
+   "location_id": "a4f9068791f4d493",
+   "practice_name": "DENTAL STARZ, LLC",
+   "zip": "60639",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dentalstarz.com/about-us/meet-the-team/ilyas-ahmed-dds/",
+    "https://www.dentalstarz.com/locations/northlake-il/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:AHMED_ILYAS",
+   "reasoning": "Dr. Ilyas Ahmed, DDS (UIC grad 2005) founded Dental Starz LLC in Northlake, IL in 2008 and operates a second office at this Chicago Fullerton Ave address; the practice's own website lists both locations under his ownership with no corporate parent or DSO branding. Two dentist-owned locations qualifies as dentist_multi, not a protected 10+ network.",
+   "searched": [
+    "Dental Starz LLC 4434 Fullerton Chicago Ilyas Ahmed dentist",
+    "\"Dental Starz\" Chicago Northlake locations Ilyas Ahmed how many offices"
+   ],
+   "intel": {
+    "website_url": "https://www.dentalstarz.com/",
+    "website_note": "Professional multi-page site ('Implants Orthodontics & Cosmetic Dentistry') with a team bio page and per-location pages for both offices.",
+    "services": ["implants", "orthodontics", "cosmetic dentistry", "pedodontics"],
+    "provider_notes": "Dr. Ilyas Ahmed, DDS — UIC College of Dentistry grad 2005; associate at Dental Associates Ltd (Kenosha, WI) ~3 yrs before opening Dental Starz in 2008.",
+    "distinguishing_notes": "Hours: M-F 10:00am-6:30pm (Tue/Thu close 6:00pm), Sat 9:00am-2:00pm, closed Sunday.",
+    "sources": [
+     "https://www.dentalstarz.com/about-us/meet-the-team/ilyas-ahmed-dds/",
+     "https://www.dentalstarz.com/locations/northlake-il/"
+    ]
+   }
+  },
+  {
+   "location_id": "2a0f79dfea3eab7e",
+   "practice_name": "Adebayo Dental",
+   "zip": "60639",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.toprankdental.com/loni-nicol-adebayo-general-dentistry-5637-w-fullerton-ave-1",
+    "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60639/invite-loni-adebayo-dds-17164"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Loni Nicol Adebayo, DDS is the treating dentist at this single Fullerton Ave address (also listed under the name 'We Smile Dental' at the same address), consistent with the NPI's provider_count of 1. No chain branding, DSO signal, or additional locations were found across directory listings.",
+   "searched": [
+    "Adebayo Dental 5637 Fullerton Chicago dentist owner"
+   ],
+   "intel": {
+    "distinguishing_notes": "Practice also lists as 'We Smile Dental' at the same address; hours M-F 8am-5pm; not accepting new patients as of search.",
+    "sources": [
+     "https://www.toprankdental.com/loni-nicol-adebayo-general-dentistry-5637-w-fullerton-ave-1"
+    ]
+   }
+  },
+  {
+   "location_id": "173ffa7cc8c3e198",
+   "practice_name": "AL MUFTI INC",
+   "zip": "60639",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-fahad-al-mufti-xyn7fst",
+    "https://www.irvingparkdental.com/fahad-al-mufti-dmd/"
+   ],
+   "evidence_artifacts": [
+    "healthgrades_bio_states_Dr_Fahad_Al_Mufti_operates_11_locations_across_Chicago_area_vs_ctx_ein_reach_of_only_3_zips"
+   ],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "ao:ALMUFTI_FAHAD",
+   "reasoning": "A Healthgrades bio for Dr. Fahad Al Mufti, DMD (the AO on this NPI record) states he operates 11 locations across the Chicago area, well past the 10-location protected-network threshold, even though our structural EIN-reach signal only surfaces 3 ZIPs. Given the network scale, this is routed for one-network-one-decision review rather than classified per-location. R4_protected_network:Al Mufti Inc / Dr. Fahad Al Mufti dental network.",
+   "searched": [
+    "Al Mufti Inc dental Chicago Fahad Al Mufti dentist 4343 Armitage"
+   ],
+   "intel": {
+    "provider_notes": "Dr. Fahad Al Mufti, DMD — completed fellowship training at UIC College of Dentistry in 2017; recognized as a top dentist by the International Association of HealthCare Professionals.",
+    "distinguishing_notes": "Services offered in English and Arabic.",
+    "sources": [
+     "https://www.healthgrades.com/dentist/dr-fahad-al-mufti-xyn7fst",
+     "https://www.irvingparkdental.com/fahad-al-mufti-dmd/"
+    ]
+   }
+  },
+  {
+   "location_id": "5e92660ad5b32980",
+   "practice_name": "JAY SWEIS D.D.S P.C",
+   "zip": "60639",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-jubrail-sweis-4xdjf",
+    "https://dentalcenter.com/jubrail-sweis/mchenry/illinois/60050"
+   ],
+   "evidence_artifacts": [
+    "network_brand_Everyones_Family_Dental_spans_10plus_IL_towns_McHenry_Utica_St_Charles_Danville_Dixon_Palatine_Crystal_Lake_Manhattan_Normal_Chicago"
+   ],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:everyones_family_dental",
+   "reasoning": "Dr. Jubrail (Jay) Sweis, DDS operates under the brand 'Everyone's Family Dental' with confirmed offices in McHenry, Utica, St. Charles, Danville, Dixon, Palatine, Crystal Lake, Manhattan, Normal, and two Chicago addresses — well past the 10-location protected-network threshold (matches our ctx owner_reach of 7 IL ZIPs plus additional towns found on the web). Routed for one-network-one-decision review rather than classified per-location. R4_protected_network:Everyone's Family Dental (Jubrail Sweis DDS).",
+   "searched": [
+    "\"Jay Sweis\" OR \"Jubrail Sweis\" DDS dental offices Illinois locations network"
+   ],
+   "intel": {
+    "provider_notes": "Dr. Jubrail (Jay) Sweis, DDS — UIC College of Dentistry grad; opened first office in McHenry, IL after working as an associate.",
+    "distinguishing_notes": "Brand 'Everyone's Family Dental'; practice answers phones and handles emergencies even on Sundays.",
+    "sources": ["https://www.healthgrades.com/dentist/dr-jubrail-sweis-4xdjf"]
+   }
+  },
+  {
+   "location_id": "3c22451629d69649",
+   "practice_name": "AFFORDABLE DENTURES - OAK PARK, P.C.",
+   "zip": "60639",
+   "assigned_tier": "branded_dso",
+   "pe_backed": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.affordabledentures.com/locations/il/chicago",
+    "https://www.dentistryiq.com/practice-management/dsos-and-corporate-dentistry/article/14205397/affordable-care-acquired-by-harvest-partners"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:affordable_care",
+   "reasoning": "This exact address (2700 N Narragansett Ave, Suite F-3, Chicago) appears on Affordable Care's own national locator/site (affordabledentures.com), confirming branded-DSO membership. Affordable Care is documented as PE-owned: DentistryIQ reports Harvest Partners acquired Affordable Care from Berkshire Partners (~$2.7B deal), so pe_backed is set true on documented sponsor evidence.",
+   "searched": [
+    "\"Affordable Care\" \"Affordable Dentures\" locator 2700 Narragansett Chicago",
+    "\"Affordable Care\" dental American Securities private equity owner 2026"
+   ],
+   "intel": {
+    "website_url": "https://www.affordabledentures.com/locations/il/chicago",
+    "website_note": "National brand locator page for the Chicago (Oak Park-area) Affordable Dentures & Implants office.",
+    "services": ["dentures", "dental implants", "tooth extractions", "on-site denture lab (repairs, relines, adjustments)"],
+    "provider_notes": "Location owner-of-record: Ravi K.V. Patel, DDS, MICOI, FAAIP (Indiana University School of Dentistry grad); specializes in full-arch implant solutions.",
+    "distinguishing_notes": "Hours M-F 7:30am-4:30pm, closed weekends; warranty program on dentures post-delivery.",
+    "sources": ["https://www.affordabledentures.com/locations/il/chicago"]
+   }
+  },
+  {
+   "location_id": "497f809e0f165176",
+   "practice_name": "Todorova Dental",
+   "zip": "60639",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-irena-todorova-xynx8sp",
+    "https://www.abcdentalchicago.com/dentist-60639/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Irena Todorova, DMD practices at this exact address/phone (773-481-2200), publicly operating as 'ABC Dental PC' inside Hall Plaza at 4608 W Diversey; single-provider, single-location, no corporate or chain signal found.",
+   "searched": [
+    "Todorova Dental 4608 Diversey Chicago dentist"
+   ],
+   "intel": {
+    "website_url": "https://www.abcdentalchicago.com/dentist-60639/",
+    "website_note": "Small practice site describing walk-in/same-day/emergency availability.",
+    "distinguishing_notes": "Located inside Hall Plaza with free parking; currently not accepting new patients; accepts multiple insurance plans.",
+    "sources": ["https://www.abcdentalchicago.com/dentist-60639/", "https://www.healthgrades.com/dentist/dr-irena-todorova-xynx8sp"]
+   }
+  },
+  {
+   "location_id": "ef8da66f81ab8ec1",
+   "practice_name": "KIRPAL CORPORATION",
+   "zip": "60639",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://northavebraces.com/about-us/",
+    "https://npidb.org/organizations/dental_health/dentist_122300000x/1205308764.aspx"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The NPI org 'Kirpal Corporation' corresponds to 'North Ave Braces,' a board-certified orthodontic practice owned by Dr. Amitoj Singh Mehta (UIC ortho residency) at this single Chicago address; the practice's own site presents one location. Some directory aggregation noise suggested other 'affiliated' listings but none confirmed an additional North Ave Braces-branded office, so confidence is medium rather than high.",
+   "searched": [
+    "Kirpal Corporation dental Chicago Amitoj Mehta 5455 North Ave",
+    "\"North Ave Braces\" Amitoj Mehta locations Chicago how many offices"
+   ],
+   "intel": {
+    "website_url": "https://northavebraces.com/",
+    "website_note": "Dedicated orthodontic practice site; 'about us' page presents Dr. Mehta as the sole owner/orthodontist.",
+    "provider_notes": "Dr. Amitoj Singh Mehta, DDS — dental degree from UIC, completed orthodontic residency at UIC.",
+    "sources": ["https://northavebraces.com/about-us/"]
+   }
+  },
+  {
+   "location_id": "8c3855d8ce54344a",
+   "practice_name": "WH IL DENTAL PLLC",
+   "zip": "60639",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://news.wttw.com/2024/04/30/walmart-will-close-all-health-care-clinics-including-chicago",
+    "https://www.yelp.com/biz/walmart-health-center-chicago-2"
+   ],
+   "evidence_artifacts": [
+    "npino.com_slug_for_this_NPI_literally_reads_walmart-health"
+   ],
+   "confidence": "high",
+   "status": "undetermined",
+   "network_id": "brand:walmart_health",
+   "reasoning": "This NPI/address (1715 N Kilpatrick Ave) corresponds to a Walmart Health Center that included dental services under the 'WH IL Dental PLLC' friendly-PC registration (AO Shefali Shah). Walmart permanently closed all Walmart Health Centers nationwide, including this Chicago site, by June 29, 2024 (WTTW/NBC Chicago reporting; Yelp listing explicitly marked 'CLOSED'). closure_suspect — not classified.",
+   "searched": [
+    "\"WH IL Dental\" OR \"Shefali Shah\" dentist Chicago 1715 Kilpatrick",
+    "\"Walmart Health\" dental Chicago 1715 Kilpatrick closed 2024"
+   ]
+  },
+  {
+   "location_id": "69baec05eb7f3a0c",
+   "practice_name": "FULLERTON DENTAL ISLAND LLC",
+   "zip": "60639",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.fullertonislanddental.com/",
+    "https://local.yahoo.com/info-236757815-musa-wisam-fullerton-dental-island-llc-chicago/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:MUSA_WISAM",
+   "reasoning": "Dr. Wisam Musa, DDS is the founder/owner of 'Fullerton Island Dental Clinic' at this address; search results indicate he also operates a small number of additional Chicago-area locations (e.g., 1600 E 93rd St), consistent with a dentist-owned multi-location practice rather than a corporate DSO structure. Location count (2-3) is well below the 10-location protected-network threshold.",
+   "searched": [
+    "\"Fullerton Dental Island\" Chicago Wisam Musa dentist 5205"
+   ],
+   "intel": {
+    "website_url": "https://www.fullertonislanddental.com/",
+    "distinguishing_notes": "Also operates as 'Fullerton Island Dental Clinic'; founder positions the practice around compassionate, patient-centered care.",
+    "sources": ["https://www.fullertonislanddental.com/"]
+   }
+  },
+  {
+   "location_id": "e0ee6d4ff57ad085",
+   "practice_name": "DENTAL CORPORATE USA",
+   "zip": "60640",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/",
+    "https://1stfamilydental.com/"
+   ],
+   "evidence_artifacts": [
+    "org_npi_registered_legal_name_is_DENTAL_CORPORATE_USA_while_operating_publicly_as_1st_Family_Dental"
+   ],
+   "confidence": "medium",
+   "status": "undetermined",
+   "network_id": "brand:1st_family_dental",
+   "reasoning": "'1st Family Dental' is a Chicago-area chain operating since 1996 with 7+ confirmed locations on its own locator page (Old Town, Andersonville, Kedzie, Milwaukee Ave, 26th St, Pulaski, West Roseland), and our ctx AO reach shows 15 IL ZIPs — well past the 10-location protected-network threshold. Notably the underlying NPI org is legally registered as 'DENTAL CORPORATE USA,' a naming pattern consistent with a management-company structure behind the friendly 'family dental' brand, but this alone does not resolve the ownership tier. Routed for one-network-one-decision review rather than classified per-location. R4_protected_network:1st Family Dental / Dental Corporate USA.",
+   "searched": [
+    "\"1st Family Dental\" Chicago locations locator DSO parent company"
+   ],
+   "intel": {
+    "website_url": "https://1stfamilydental.com/",
+    "website_note": "Established multi-location chain site with per-neighborhood location pages; positions itself as a family dentist brand since 1996.",
+    "distinguishing_notes": "Underlying NPI legal name 'Dental Corporate USA' differs from the public-facing '1st Family Dental' brand.",
+    "sources": ["https://1stfamilydental.com/locations/", "https://1stfamilydental.com/"]
+   }
+  },
+  {
+   "location_id": "ba858690c8a54e29",
+   "practice_name": "Renieris Irene",
+   "zip": "60640",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.pulpanddentin.com/",
+    "https://www.healthgrades.com/dentist/dr-irene-renieris-35ljq"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Irene Renieris, DDS leads 'pulp&dentin,' her own single-location practice at 1945 W Wilson Ave, Ravenswood; her bio (Indiana University School of Dentistry 2004, GPR at University of Michigan) shows over 20 years of clinical experience with no chain, DSO, or corporate affiliation.",
+   "searched": [
+    "\"Renieris\" dentist Chicago 1945 Wilson"
+   ],
+   "intel": {
+    "website_url": "https://www.pulpanddentin.com/",
+    "website_note": "Modern boutique-style single-practice site for 'pulp&dentin.'",
+    "provider_notes": "Dr. Irene Renieris, DDS — Indiana University School of Dentistry grad 2004; one-year general practice residency at University of Michigan Hospital, Ann Arbor.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "20+ years of clinical experience as stated in her bio.",
+    "sources": ["https://www.pulpanddentin.com/", "https://www.healthgrades.com/dentist/dr-irene-renieris-35ljq"]
+   }
+  }
+ ]
+}

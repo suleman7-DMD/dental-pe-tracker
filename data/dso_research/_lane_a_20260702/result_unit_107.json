@@ -25,7 +25,15 @@
    "intel": {
     "website_url": null,
     "website_note": "No dedicated practice website found; presence limited to directory/aggregator profiles (Healthgrades, npino, Yelp).",
-    "services": ["check-ups", "x-rays", "cleanings", "crowns", "teeth whitening", "dentures", "dental implants"],
+    "services": [
+     "check-ups",
+     "x-rays",
+     "cleanings",
+     "crowns",
+     "teeth whitening",
+     "dentures",
+     "dental implants"
+    ],
     "provider_notes": "Dr. Jolanta Zakrzewska, DDS -- 47 years in practice, accepting new patients.",
     "sources": [
      "https://www.findatopdoc.com/doctor/2124187-Jolanta-Zakrzewska-dentist-Chicago-IL-60630",
@@ -58,21 +66,26 @@
    "location_id": "f84ddcb53246f65d",
    "practice_name": "HASE ZAHN INC.",
    "zip": "60630",
-   "assigned_tier": "single_loc_group",
+   "assigned_tier": "branded_dso",
    "pe_backed": false,
-   "evidence_basis": "web_verified",
+   "evidence_basis": "locator",
    "evidence_urls": [
+    "https://precisiondentalchicago.com/our-locations/",
     "https://npiprofile.com/npi/1245671676"
    ],
-   "evidence_artifacts": [],
-   "confidence": "medium",
+   "evidence_artifacts": [
+    "Exact address+phone match confirmed via direct fetch of the DSO's own locator page: \"4830 N. Pulaski #108, Chicago, IL 60630\", phone 773-283-2100, listed verbatim as their 'N Pulaski' office",
+    "Precision Dental Care operates only 7 total locations (Kedzie, Diversey, Cermak/Cicero, Pulaski N, Ashland, Pulaski S, Belmont) -- well under the 10-location R4 protected-network threshold"
+   ],
+   "confidence": "high",
    "status": "classified",
-   "network_id": null,
-   "reasoning": "npiprofile confirms Dr. Simona Bareket, DDS as President of Hase Zahn Inc. (a registered 3-provider dental group) at 4830 N Pulaski Rd Ste 108. Bareket is an independently verified practicing dentist (also runs HP Smiles Dental in Highland Park under her own name), so this Chicago location is dentist-owned. Her Highland Park site does not cross-list this Pulaski Rd address as part of a combined multi-location brand, so this is treated as a standalone dentist-owned group practice (T2) rather than T3.",
+   "network_id": "brand:precision_dental_care",
+   "reasoning": "npiprofile confirms Dr. Simona Bareket, DDS as President of the legal NPI entity Hase Zahn Inc. at 4830 N Pulaski Rd Ste 108. A direct fetch of Precision Dental Care's own locator page shows this exact address and exact phone number (773-283-2100) listed verbatim as their 'N Pulaski' office -- documentary proof this location trades under the Precision Dental Care brand rather than as a standalone dentist-owned practice. Precision Dental Care has only 7 total locations, well under the 10-location R4 deferral threshold, so it can be classified directly as branded_dso rather than deferred.",
    "searched": [
     "\"Hase Zahn\" dental Chicago Pulaski",
     "\"Simona Bareket\" dentist Chicago Hase Zahn",
-    "\"Hase Zahn Inc\" Chicago dentists providers Pulaski Rd"
+    "\"Hase Zahn Inc\" Chicago dentists providers Pulaski Rd",
+    "WebFetch precisiondentalchicago.com/our-locations/ to check for 4830 N Pulaski address match"
    ]
   },
   {
@@ -99,7 +112,12 @@
    "intel": {
     "website_url": "https://www.thedentalsuitechicago.com/about-us/",
     "website_note": "Directory/profile-style page describing Brighter Smile as a general/cosmetic/family/sleep dentistry office with modern facility and positive patient reviews.",
-    "services": ["general dentistry", "cosmetic dentistry", "family dentistry", "sleep dentistry"],
+    "services": [
+     "general dentistry",
+     "cosmetic dentistry",
+     "family dentistry",
+     "sleep dentistry"
+    ],
     "provider_notes": "Dr. Michelle Beckerly, DMD (Boston University Goldman School of Dental Medicine; GPR at Rush University Medical Center); now also focuses on dental sleep medicine/oral appliance therapy for sleep apnea at a second, Naperville office.",
     "sources": [
      "https://www.thedentalsuitechicago.com/about-us/",
@@ -130,8 +148,20 @@
    "intel": {
     "website_url": "https://www.jeffersonparkdentaloffice.com/",
     "website_note": "Modern, patient-experience-focused own-domain site emphasizing comfort amenities and cosmetic services.",
-    "services": ["family dentistry", "veneers", "crowns", "bridges", "gum disease treatment", "teeth whitening", "Invisalign", "fillings", "Botox/fillers"],
-    "technology": ["digital X-rays"],
+    "services": [
+     "family dentistry",
+     "veneers",
+     "crowns",
+     "bridges",
+     "gum disease treatment",
+     "teeth whitening",
+     "Invisalign",
+     "fillings",
+     "Botox/fillers"
+    ],
+    "technology": [
+     "digital X-rays"
+    ],
     "provider_notes": "Dr. Paula Skowronski-Adamiak, DDS -- speaks English and Polish.",
     "distinguishing_notes": "Heated massage dental chairs with Netflix during procedures; children's play area with Nintendo/toys; accepts CareCredit.",
     "sources": [
@@ -161,7 +191,12 @@
    ],
    "intel": {
     "website_note": "Practice rebranded as \"Nova Dental\" (novadentalchicago.com); 2025 merger with Dr. Margareta Qirko.",
-    "services": ["TMJ specialist care", "minimally invasive/preventive dentistry", "family dentistry", "general dentistry"],
+    "services": [
+     "TMJ specialist care",
+     "minimally invasive/preventive dentistry",
+     "family dentistry",
+     "general dentistry"
+    ],
     "provider_notes": "Dr. Barbara Truszkowski, DDS -- practicing 40+ years, dental degrees including University of Illinois College of Dentistry; recently added Dr. Margareta Qirko as co-practitioner (2025).",
     "sources": [
      "https://www.yelp.com/biz/barbara-truszkowski-dds-chicago",
@@ -311,7 +346,11 @@
    "intel": {
     "website_url": "https://www.periocare.com/our-practice/meet-the-doctor/",
     "website_note": "Established, content-rich own-domain specialist practice site.",
-    "services": ["periodontics", "dental implant surgery", "bone grafting/regeneration therapy"],
+    "services": [
+     "periodontics",
+     "dental implant surgery",
+     "bone grafting/regeneration therapy"
+    ],
     "provider_notes": "Dr. Russell J. Cecala, DDS, MS -- U.S. Army veteran (Desert Storm), MS Oral Biology + periodontology certificate from University of Iowa; with the practice since 1997; past president, Illinois Society of Periodontists and Chicago Dental Society Northwest Side Branch.",
     "owner_career_stage": "late_career",
     "distinguishing_notes": "Specialist periodontics practice, founded 1997, multi-provider single-location group.",

@@ -5,23 +5,16 @@
    "location_id": "a2670f744861cc86",
    "practice_name": "PHALGUNI PATEL DDS PC",
    "zip": "60657",
-   "assigned_tier": "true_independent",
+   "assigned_tier": "undetermined",
    "pe_backed": false,
-   "evidence_basis": "web_verified",
-   "evidence_urls": [
-    "https://www.clearlycaresdental.com/meet-the-doctors",
-    "https://npidb.org/organizations/dental_health/dentist_122300000x/1659668119.aspx",
-    "https://www.healthgrades.com/dentist/dr-phalguni-patel-yk7q4"
-   ],
+   "evidence_basis": "none",
+   "evidence_urls": [],
    "evidence_artifacts": [],
-   "confidence": "medium",
-   "status": "classified",
+   "confidence": "low",
+   "status": "undetermined",
    "network_id": null,
-   "reasoning": "Searched name+address and a direct address query; could not independently confirm 856 W Nelson St on an owned practice site, but confirmed Dr. Phalguni Patel is a licensed, practicing general dentist (associate at Clearly Cares Dental at a separate Elston Ave address, plus her own PC entity) with no corporate/DSO signal anywhere in results. Directory listings (Healthgrades, npidb) consistently tie the NPI/PC to a solo owner-dentist structure, so true_independent fits best despite the address not being independently corroborated.",
-   "searched": [
-    "Phalguni Patel DDS 856 W Nelson St Chicago dentist",
-    "856 W Nelson Chicago dentist"
-   ]
+   "reasoning": "Ran multiple targeted searches (name+address, address alone, and the exact address string with her name) across two research passes. Dr. Phalguni Patel DDS is a real, findable Chicago general dentist (associate at Clearly Cares Dental at a separate Elston Ave address; also has her own PC entity), but no source ties her practice specifically to 856 W Nelson St -- her confirmed/referenced addresses and phone numbers point elsewhere. Per the rule to distinguish same-name collisions by address rather than name, this location cannot be confirmed as the address of an active private practice and is left undetermined.",
+   "searched": ["Phalguni Patel DDS 856 W Nelson St Chicago dentist", "856 W Nelson Chicago dentist", "\"856 W Nelson\" Chicago 60657", "\"856 W Nelson\" Chicago Phalguni Patel dentist"]
   },
   {
    "location_id": "719c770f9d5f8344",
@@ -30,18 +23,17 @@
    "assigned_tier": "true_independent",
    "pe_backed": false,
    "evidence_basis": "web_verified",
-   "evidence_urls": [
-    "https://www.healthgrades.com/dentist/dr-april-baier-4yqjz",
-    "https://npiprofile.com/npi/1558632190"
-   ],
+   "evidence_urls": ["https://www.healthgrades.com/dentist/dr-april-baier-4yqjz", "https://npiprofile.com/npi/1558632190"],
    "evidence_artifacts": [],
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Searched practice name plus address; confirmed Dr. April Susan Baier, DMD operates a solo general dentistry office at 639 W Briar Pl (phone matches exactly). No corporate parent, brand, or additional locations found anywhere in results.",
-   "searched": [
-    "Baier Dental 639 W Briar Pl Chicago"
-   ]
+   "reasoning": "Confirmed Dr. April Susan Baier, DMD operates a solo general dentistry office at 639 W Briar Pl (exact address and phone match). No corporate parent, brand, or additional locations found anywhere in results.",
+   "searched": ["Baier Dental 639 W Briar Pl Chicago"],
+   "intel": {
+    "insurance_note": "Does not participate in Medicare assignments, per provider record.",
+    "sources": ["https://www.healthgrades.com/dentist/dr-april-baier-4yqjz", "https://npiprofile.com/npi/1558632190"]
+   }
   },
   {
    "location_id": "bb925c602eb1ffb6",
@@ -50,19 +42,13 @@
    "assigned_tier": "single_loc_group",
    "pe_backed": false,
    "evidence_basis": "web_verified",
-   "evidence_urls": [
-    "https://www.freshdentalclinic.com/",
-    "https://www.yelp.com/biz/fresh-dental-chicago",
-    "https://www.zocdoc.com/practice/fresh-dental-58460"
-   ],
+   "evidence_urls": ["https://www.freshdentalclinic.com/", "https://www.yelp.com/biz/fresh-dental-chicago", "https://www.zocdoc.com/practice/fresh-dental-58460"],
    "evidence_artifacts": [],
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Practice's own website (freshdentalclinic.com) confirms one location at 3030 N Broadway with three dentists (Dr. Michelle Lee, Dr. Jin Nam, Dr. Sylvia Kim) offering cosmetic/restorative care -- a single-location multi-dentist group with no corporate parent named anywhere on site. The ctx parent_company string 'EVENLY ORTHODONTICS DUPONT' is a known Data-Axle placeholder artifact (per project history) and is not corroborated by any web evidence, so it was disregarded per instructions that ctx is not evidence.",
-   "searched": [
-    "Fresh Dental 3030 N Broadway Chicago dentist"
-   ],
+   "reasoning": "Practice's own website confirms a single location at 3030 N Broadway with three dentists (Dr. Michelle Lee, Dr. Jin Nam, Dr. Sylvia Kim) offering cosmetic/restorative care -- a single-location multi-dentist group with no corporate parent named anywhere on site. The ctx parent_company string 'EVENLY ORTHODONTICS DUPONT' is a known Data-Axle placeholder artifact (per project history) and is not corroborated by any web evidence, so it was disregarded per instructions that ctx is not evidence.",
+   "searched": ["Fresh Dental 3030 N Broadway Chicago dentist"],
    "intel": {
     "website_url": "https://www.freshdentalclinic.com/",
     "website_note": "Modern, well-maintained clinic site with online scheduling/contact forms; positions itself as comprehensive cosmetic and restorative dentistry.",
@@ -71,11 +57,7 @@
     "provider_count_web": 3,
     "provider_notes": "Dr. Michelle Lee, Dr. Jin Nam, and Dr. Sylvia Kim listed as practicing dentists.",
     "distinguishing_notes": "Established 2018 per site copy; located on ground level behind Starbucks next to Mariano's with free parking in the Mariano's garage; strong review volume (565 reviews, 4.92 rating) on Zocdoc.",
-    "sources": [
-     "https://www.freshdentalclinic.com/",
-     "https://www.yelp.com/biz/fresh-dental-chicago",
-     "https://www.zocdoc.com/practice/fresh-dental-58460"
-    ]
+    "sources": ["https://www.freshdentalclinic.com/", "https://www.yelp.com/biz/fresh-dental-chicago", "https://www.zocdoc.com/practice/fresh-dental-58460"]
    }
   },
   {
@@ -85,18 +67,17 @@
    "assigned_tier": "true_independent",
    "pe_backed": false,
    "evidence_basis": "web_verified",
-   "evidence_urls": [
-    "https://www.ehealthscores.com/care-lxcwzszzcc-alia-ahmed-chicago.html",
-    "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60657/invite-alia-ahmed-dds-17568"
-   ],
+   "evidence_urls": ["https://www.ehealthscores.com/care-lxcwzszzcc-alia-ahmed-chicago.html", "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60657/invite-alia-ahmed-dds-17568"],
    "evidence_artifacts": [],
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Searched name plus address; confirmed Dr. Alia Ahmed, DDS operates a solo general dentistry practice at 1037 W Wellington Ave (address and phone match exactly). No corporate signal found.",
-   "searched": [
-    "Ahmed Dental 1037 W Wellington Ave Chicago"
-   ]
+   "reasoning": "Confirmed Dr. Alia Ahmed, DDS operates a solo general dentistry practice at 1037 W Wellington Ave (address and phone match exactly). No corporate signal found.",
+   "searched": ["Ahmed Dental 1037 W Wellington Ave Chicago"],
+   "intel": {
+    "provider_notes": "Dr. Alia M. Ahmed, DDS, graduated with honors from University of Illinois at Chicago College of Dentistry; member of ADA, CDS, ISDS.",
+    "sources": ["https://www.ehealthscores.com/care-lxcwzszzcc-alia-ahmed-chicago.html", "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60657/invite-alia-ahmed-dds-17568"]
+   }
   },
   {
    "location_id": "d5bc28878405a18c",
@@ -105,28 +86,19 @@
    "assigned_tier": "dentist_multi",
    "pe_backed": false,
    "evidence_basis": "web_verified",
-   "evidence_urls": [
-    "https://www.moderndentalchicago.com/",
-    "https://www.moderndentalchicago.com/about/",
-    "https://www.healthgrades.com/group-directory/il-illinois/chicago/modern-dental-on-sheffield-xyk97j"
-   ],
+   "evidence_urls": ["https://www.moderndentalchicago.com/", "https://www.moderndentalchicago.com/about/", "https://www.healthgrades.com/group-directory/il-illinois/chicago/modern-dental-on-sheffield-xyk97j"],
    "evidence_artifacts": [],
    "confidence": "high",
    "status": "classified",
    "network_id": "ao:PALELLA_PHILLIP",
-   "reasoning": "The practice's own website (moderndentalchicago.com) states Dr. Phillip Palella, DDS founded Modern Dental over 15 years ago and 'is independently owned and led by Dr. Phillip Palella... built on genuine relationships rather than corporate policies,' now spanning locations on Division, Sheffield, Wicker Park, Logan Square, and Clark Street (matches ctx owner_reach_locations=5 across 60622/60647/60654/60657). This is a dentist-owned multi-location group, not a branded DSO -- classified dentist_multi.",
-   "searched": [
-    "Modern Dental on Sheffield Chicago Phillip Palella"
-   ],
+   "reasoning": "The practice's own website states Dr. Phillip Palella, DDS founded Modern Dental over 15 years ago and 'is independently owned and led by Dr. Phillip Palella... built on genuine relationships rather than corporate policies,' spanning locations on Division, Sheffield, Wicker Park, Logan Square, and Clark Street (matches ctx owner_reach_locations=5 across ZIPs 60622/60647/60654/60657). Dentist-owned multi-location group, well under the 10-location protected-network threshold -- classified dentist_multi.",
+   "searched": ["Modern Dental on Sheffield Chicago Phillip Palella"],
    "intel": {
     "website_url": "https://www.moderndentalchicago.com/",
-    "website_note": "Polished multi-location practice site with clear owner-dentist branding and a 'why choose us' independent-practice pitch.",
+    "website_note": "Polished multi-location practice site with clear owner-dentist branding and an independent-practice pitch.",
     "insurance_note": "In-network with most PPO plans incl. MetLife, Aetna, GEHA, Cigna, BCBS; Delta Dental Premier provider.",
     "distinguishing_notes": "Multi-location group (5 Chicago offices) owned and led by a single practicing dentist, marketed explicitly as independent/non-corporate.",
-    "sources": [
-     "https://www.moderndentalchicago.com/",
-     "https://www.moderndentalchicago.com/about/"
-    ]
+    "sources": ["https://www.moderndentalchicago.com/", "https://www.moderndentalchicago.com/about/"]
    }
   },
   {
@@ -136,31 +108,19 @@
    "assigned_tier": "dentist_multi",
    "pe_backed": false,
    "evidence_basis": "web_verified",
-   "evidence_urls": [
-    "https://chicagodentalsolutions.com/",
-    "https://chicagodentalsolutions.com/meet-the-doctors/",
-    "https://www.chicagodentalimplantsolutions.com/about-us/meet-dr-nihal-bicakci/",
-    "https://www.yelp.com/biz/chicago-dental-solutions-lincoln-dental-care-chicago-5"
-   ],
+   "evidence_urls": ["https://chicagodentalsolutions.com/", "https://chicagodentalsolutions.com/meet-the-doctors/", "https://www.chicagodentalimplantsolutions.com/about-us/meet-dr-nihal-bicakci/", "https://www.yelp.com/biz/chicago-dental-solutions-lincoln-dental-care-chicago-5"],
    "evidence_artifacts": [],
    "confidence": "high",
    "status": "classified",
-   "network_id": "brand:chicago-dental-solutions",
-   "reasoning": "Confirmed via chicagodentalsolutions.com and chicagodentalimplantsolutions.com that Lincoln Dental Care (3138 N Lincoln Ave) is one of three Chicago clinics operated by Chicago Dental Solutions, owned by married prosthodontist/implant-dentist couple Dr. Hirant and Dr. Nihal Bicakci (also branded Chicago Dental Implant Solutions). Dentist-owned, 3 locations -- dentist_multi, well under the 10+ location protected-network threshold.",
-   "searched": [
-    "Lincoln Dental Care 3138 N Lincoln Ave Chicago dentist",
-    "Chicago Dental Solutions Bicakci owner three locations"
-   ],
+   "network_id": "brand:chicago_dental_solutions",
+   "reasoning": "Confirmed via chicagodentalsolutions.com and chicagodentalimplantsolutions.com that Lincoln Dental Care (3138 N Lincoln Ave) is one of three Chicago clinics operated by Chicago Dental Solutions, owned by married prosthodontist/implant-dentist couple Dr. Hirant and Dr. Nihal Bicakci. Dentist-owned, 3 locations -- dentist_multi, well under the 10-location protected-network threshold.",
+   "searched": ["Lincoln Dental Care 3138 N Lincoln Ave Chicago dentist", "Chicago Dental Solutions Bicakci owner three locations"],
    "intel": {
     "website_url": "https://chicagodentalsolutions.com/",
-    "website_note": "Practice-group site with clear owner-dentist bios and multi-location marketing (implant/prosthodontic specialty focus).",
     "services": ["full mouth rehabilitation", "dentures", "implants", "prosthodontics", "cosmetic dentistry", "restorative dentistry", "root canals"],
-    "provider_notes": "Dr. Nihal Bicakci: 18 years practicing, 3-year Advanced Prosthodontics/Implantology specialty program at UIC College of Dentistry.",
+    "provider_notes": "Dr. Nihal Bicakci: 18 years practicing, Advanced Prosthodontics/Implantology specialty program at UIC College of Dentistry.",
     "distinguishing_notes": "ADA-accessible office (accessible parking, no-step entrance); part of a 3-location dentist-owned implant/prosthodontics group.",
-    "sources": [
-     "https://chicagodentalsolutions.com/meet-the-doctors/",
-     "https://www.chicagodentalimplantsolutions.com/about-us/meet-dr-nihal-bicakci/"
-    ]
+    "sources": ["https://chicagodentalsolutions.com/meet-the-doctors/", "https://www.chicagodentalimplantsolutions.com/about-us/meet-dr-nihal-bicakci/"]
    }
   },
   {
@@ -169,18 +129,20 @@
    "zip": "60657",
    "assigned_tier": "undetermined",
    "pe_backed": false,
-   "evidence_basis": "none",
-   "evidence_urls": [],
+   "evidence_basis": "web_verified",
+   "evidence_urls": ["https://howardbrown.org/service/dental-services/", "https://parkdentalspecialists.com/about-us/meet-our-team/harrison-mackler", "https://www.manusdental.com/dentists/harrison-mackler/"],
    "evidence_artifacts": [],
    "confidence": "low",
    "status": "undetermined",
    "network_id": null,
-   "reasoning": "Searched name+address plus a direct address query and a follow-up on a Howard Brown Health connection. Found conflicting signals: aggregator listings (CareDash, Zocdoc) tie Dr. Harrison Mackler DMD to 617 W Cornelia Ave, but a Howard Brown Health page describes a 'Harrison Mackler Dental Center' housed inside the Howard Brown Health building at 3501 N Halsted St, and another site lists him as a periodontist within Park Dental Specialists' referral network. Could not determine whether this NPI's Cornelia Ave address is still an independent solo office, has relocated into the FQHC building, or is something else -- insufficient to classify with medium/high confidence.",
-   "searched": [
-    "Mackler Dental 617 W Cornelia Ave Chicago",
-    "\"617 W Cornelia\" dentist Chicago",
-    "Mackler Dental Center Cornelia Howard Brown Health Chicago"
-   ]
+   "reasoning": "Ran four searches across two passes. Dr. Harrison Mackler, DMD, MS is a periodontist confirmed to practice at several different host locations -- the 'Dr. Harrison Mackler Dental Center' inside Howard Brown Health at 3501 N Halsted St, as a team member of Park Dental Specialists, and at Manus Dental -- none matching 617 W Cornelia Ave. No source confirms what currently operates at 617 W Cornelia Ave itself (an independent office he also owns, a legacy address, or something else), so ownership of this specific location cannot be classified with confidence.",
+   "searched": ["Mackler Dental 617 W Cornelia Ave Chicago", "\"617 W Cornelia\" dentist Chicago", "Mackler Dental Center Cornelia Howard Brown Health Chicago", "Harrison Mackler Dental Center Howard Brown Health Chicago"],
+   "intel": {
+    "provider_notes": "Dr. Harrison Mackler, DMD, MS, periodontist; cum laude graduate of Harvard School of Dental Medicine; practices across multiple affiliated locations including Howard Brown Health's Lakeview dental center, Park Dental Specialists, and Manus Dental.",
+    "services": ["dental implants", "All-on-4", "bone grafting", "gum grafting", "dental Botox", "periodontics"],
+    "distinguishing_notes": "Howard Brown Health's dental center accepts Medicaid and offers a sliding-scale fee program.",
+    "sources": ["https://howardbrown.org/service/dental-services/", "https://parkdentalspecialists.com/about-us/meet-our-team/harrison-mackler", "https://www.manusdental.com/dentists/harrison-mackler/"]
+   }
   },
   {
    "location_id": "10f8841d9093644b",
@@ -188,18 +150,18 @@
    "zip": "60657",
    "assigned_tier": "undetermined",
    "pe_backed": false,
-   "evidence_basis": "none",
-   "evidence_urls": [],
+   "evidence_basis": "web_verified",
+   "evidence_urls": ["https://www.vitadox.com/practice/uptown-chicago-il-60657/david-w-tapani-dds-pc/fDA429wDBJAbqK6h8cq9Ck", "https://www.mibeautifulsmile.com/david-tapani-dds/"],
    "evidence_artifacts": [],
    "confidence": "low",
    "status": "undetermined",
    "network_id": null,
-   "reasoning": "closure_suspect. Searched name+address, a direct current-status query, and a general reviews query. No web presence confirms an active practice at 740 W Oakdale Ave today; bios/aggregators (CareDash, US News, AAID, Healthgrades) place Dr. David Tapani currently practicing in Davisburg/Rochester/Troy, Michigan, and the NPI address itself is an apartment unit (Apt 3), suggesting this Chicago PC entity may no longer be an operating clinic location.",
-   "searched": [
-    "David Tapani DDS 740 W Oakdale Ave Chicago dentist",
-    "\"740 W Oakdale\" Chicago dentist current 2026",
-    "David Tapani dentist Chicago reviews"
-   ]
+   "reasoning": "closure_suspect: no web presence confirms an active practice at 740 W Oakdale Ave today; bios/aggregators (CareDash, US News, AAID, Healthgrades) place Dr. David Tapani currently practicing in the Davisburg/Rochester/Troy, Michigan area, and the NPI address itself is an apartment unit (Apt 3), suggesting this Chicago PC entity may no longer be an operating clinic location.",
+   "searched": ["David Tapani DDS 740 W Oakdale Ave Chicago dentist", "\"740 W Oakdale\" Chicago dentist current 2026", "David Tapani dentist Chicago reviews"],
+   "intel": {
+    "provider_notes": "Dr. David Tapani, DDS, University of Michigan grad 2011; Associate Fellow, American Academy of Implant Dentistry; now practicing in Michigan.",
+    "sources": ["https://www.vitadox.com/practice/uptown-chicago-il-60657/david-w-tapani-dds-pc/fDA429wDBJAbqK6h8cq9Ck", "https://www.mibeautifulsmile.com/david-tapani-dds/"]
+   }
   },
   {
    "location_id": "3b6b69260c955c3c",
@@ -207,17 +169,18 @@
    "zip": "60657",
    "assigned_tier": "undetermined",
    "pe_backed": false,
-   "evidence_basis": "none",
-   "evidence_urls": [],
+   "evidence_basis": "web_verified",
+   "evidence_urls": ["https://npiprofile.com/npi/1801286869/record", "https://www.oaklandcountydentist.com/staff"],
    "evidence_artifacts": [],
    "confidence": "low",
    "status": "undetermined",
    "network_id": null,
-   "reasoning": "closure_suspect. Searched name+address plus a current-occupant query for 2951 N Clark St. Multiple sources (NPI Profile, Doctor.com, AEDIT, LinkedIn) confirm Dr. Kyle Grindling 'practiced dentistry in Chicago, IL until 2015' and has since relocated to and currently practices in Auburn Hills, Michigan. No current web presence for this practice in Chicago; the address itself is an apartment unit (Apt 2). Strong evidence the Chicago PC ceased operating over a decade ago.",
-   "searched": [
-    "Kyle Grindling DDS 2951 N Clark St Chicago dentist",
-    "\"2951 N Clark\" Chicago dentist current"
-   ]
+   "reasoning": "closure_suspect: multiple sources (NPI Profile, Doctor.com, AEDIT, LinkedIn) confirm Dr. Kyle Grindling 'practiced dentistry in Chicago, IL until 2015' and has since relocated to and currently practices in Auburn Hills, Michigan. No current web presence for this practice in Chicago; the address itself is an apartment unit (Apt 2). Strong evidence the Chicago PC ceased operating over a decade ago.",
+   "searched": ["Kyle Grindling DDS 2951 N Clark St Chicago dentist", "\"2951 N Clark\" Chicago dentist current"],
+   "intel": {
+    "provider_notes": "Dr. Kyle Grindling practiced in Chicago until 2015; now practices at Oakland County Dentist in Auburn Hills, MI.",
+    "sources": ["https://npiprofile.com/npi/1801286869/record", "https://www.oaklandcountydentist.com/staff"]
+   }
   },
   {
    "location_id": "1c65b849ac086133",
@@ -226,79 +189,64 @@
    "assigned_tier": "true_independent",
    "pe_backed": false,
    "evidence_basis": "web_verified",
-   "evidence_urls": [
-    "https://www.yelp.com/biz/lakeview-dental-arts-chicago-7",
-    "https://www.linkedin.com/in/scottoverholser/",
-    "https://findadentist.ada.org/dentists/dr-scott-w-overholser-chicago-0038V00002yk5pGQAQ-a1C8V00000lW2arUAC"
-   ],
+   "evidence_urls": ["https://www.yelp.com/biz/lakeview-dental-arts-chicago-7", "https://www.linkedin.com/in/scottoverholser/", "https://findadentist.ada.org/dentists/dr-scott-w-overholser-chicago-0038V00002yk5pGQAQ-a1C8V00000lW2arUAC"],
    "evidence_artifacts": [],
    "confidence": "high",
    "status": "classified",
    "network_id": null,
    "reasoning": "Confirmed Dr. Scott Overholser is owner/dentist of Lakeview Dental Arts at 3115 N Broadway (LinkedIn explicitly lists him as 'owner/dentist'), established 2013, actively accepting new patients, single location, no corporate signal in any listing.",
-   "searched": [
-    "Scott Overholser DDS 3115 N Broadway Chicago dentist"
-   ],
+   "searched": ["Scott Overholser DDS 3115 N Broadway Chicago dentist"],
    "intel": {
     "website_note": "Established general practice (Lakeview Dental Arts, founded 2013) with active ADA/Healthgrades profiles; accepting new patients.",
     "services": ["preventive dentistry", "restorative dentistry", "cosmetic dentistry", "children's dentistry"],
-    "distinguishing_notes": "Owner-dentist has 25+ years of experience (Indiana University School of Dentistry, 1996); strong review ratings (~4.4/5).",
-    "sources": [
-     "https://www.yelp.com/biz/lakeview-dental-arts-chicago-7",
-     "https://www.linkedin.com/in/scottoverholser/"
-    ]
+    "provider_notes": "Dr. Scott Overholser, DDS, Indiana University School of Dentistry, graduated 1996.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Owner-dentist has 25+ years of experience; strong review ratings (~4.4/5).",
+    "sources": ["https://www.yelp.com/biz/lakeview-dental-arts-chicago-7", "https://www.linkedin.com/in/scottoverholser/"]
    }
   },
   {
    "location_id": "74416954fc3b4d1e",
    "practice_name": "Singh Dental",
    "zip": "60657",
-   "assigned_tier": "true_independent",
+   "assigned_tier": "institutional",
    "pe_backed": false,
    "evidence_basis": "web_verified",
-   "evidence_urls": [
-    "https://local.yahoo.com/info-237090669-singh-prabhjot-k-dds-singh-prabhjot-kaur-dds-chicago",
-    "https://www.healthgrades.com/dentist/dr-prabhjot-singh-xynbdrg"
-   ],
-   "evidence_artifacts": ["shared_office_building_913_w_wellington_multiple_unrelated_practices"],
-   "confidence": "medium",
+   "evidence_urls": ["https://www.advocatehealth.com/locations/advocate-medical-group-dentistry-chicago-60657", "https://powersandsons.com/2025/01/21/advocate-illinois-masonic-medical-center-dental-clinic-now-open/", "https://opennpi.com/provider/1588109151", "https://npino.com/dental-clinic/1588109151-advocate-dental-center/"],
+   "evidence_artifacts": [],
+   "confidence": "high",
    "status": "classified",
-   "network_id": null,
-   "reasoning": "Searched name+address plus a name-specific follow-up. Confirmed Dr. Prabhjot Singh, DDS operates as an individual general dentist at 913 W Wellington Ave (exact phone match). The address also houses unrelated practices (Advocate Medical Group Dentistry, 'The Gaertner Building Dental Care'), which explains the raw 13-provider/large_group data point as a shared-building artifact rather than evidence of a single 13-dentist corporate group; no DSO/brand or multi-location evidence found for 'Singh Dental' itself.",
-   "searched": [
-    "Singh Dental 913 W Wellington Ave Chicago",
-    "Modern Smiles Chicago Dr Singh dentist Wellington",
-    "\"Singh Dental\" Chicago Wellington Prabhjot Singh dentist"
-   ]
+   "network_id": "brand:advocate_health_dentistry",
+   "reasoning": "Fresh searches confirm 913 W Wellington Ave (exact address match) is 'Advocate Dental Center' / 'Advocate Medical Group Dentistry,' a 7,500 sq ft hospital-based dental clinic on the Advocate Illinois Masonic Medical Center campus (ribbon-cutting Dec 2024), treating ~2,500 patients/year including homeless, low-income, and special-needs populations, and serving as a teaching facility for GP, pediatric, and anesthesiology dental residents. This reconciles the raw large_group/13-provider data point (a hospital teaching clinic staffs many named individual-dentist billing NPIs, one of which likely carries a 'Singh' name found in aggregator listings). Classified institutional -- hospital/health-system clinic, not private or DSO ownership; overrides an earlier read of this address as an independent solo dentist office.",
+   "searched": ["Singh Dental 913 W Wellington Ave Chicago", "Modern Smiles Chicago Dr Singh dentist Wellington", "\"Singh Dental\" Chicago Wellington Prabhjot Singh dentist", "\"913 W Wellington\" Chicago Advocate dental clinic"],
+   "intel": {
+    "website_url": "https://www.advocatehealth.com/locations/advocate-medical-group-dentistry-chicago-60657",
+    "distinguishing_notes": "Hospital-based dental clinic on the Advocate Illinois Masonic Medical Center campus; treats roughly 2,500 patients/year including homeless, low-income, and special-needs populations; teaching site for general practice, pediatric, and dental anesthesiology residents.",
+    "sources": ["https://www.advocatehealth.com/locations/advocate-medical-group-dentistry-chicago-60657", "https://powersandsons.com/2025/01/21/advocate-illinois-masonic-medical-center-dental-clinic-now-open/"]
+   }
   },
   {
    "location_id": "ee5b120922acae0c",
    "practice_name": "Van, Mindy M DDS",
    "zip": "60657",
-   "assigned_tier": "true_independent",
+   "assigned_tier": "dentist_multi",
    "pe_backed": false,
    "evidence_basis": "web_verified",
-   "evidence_urls": [
-    "https://www.womply.com/biz/lakeview-endodontics-dr-mindy-van-dds-chicago-IL/",
-    "https://findadentist.ada.org/dentists/dr-mindy-m-van-chicago-0038V00002yjTN9QAM-a1C8V00000lWmJoUAK"
-   ],
+   "evidence_urls": ["https://www.womply.com/biz/lakeview-endodontics-dr-mindy-van-dds-chicago-IL/", "https://www.yelp.com/biz/lakeview-endodontics-chicago", "https://www.linkedin.com/company/lakeview-endodontics"],
    "evidence_artifacts": [],
-   "confidence": "high",
+   "confidence": "medium",
    "status": "classified",
-   "network_id": null,
-   "reasoning": "Confirmed Dr. Mindy Van, DDS is the founder/owner of Lakeview Endodontics at 3555 N Ashland Ave (address and phone match). Solo specialist (endodontics) practice, no corporate ownership or brand found.",
-   "searched": [
-    "Mindy Van DDS 3555 N Ashland Ave Chicago dentist"
-   ],
+   "network_id": "brand:lakeview_endodontics",
+   "reasoning": "Dr. Mindy Van, DDS, MSD is the founder of Lakeview Endodontics, whose LinkedIn lists headquarters at 3555 N Ashland Ave Ste 1 (exact address/phone match to this NPI), with a second actively-reviewed Chicago office at 3753 N Clark St. A follow-up search retracted an earlier claim of a third 'Chinatown' location -- that address belongs to an unrelated practice (Chinatown Dental, Dr. Sevila Yee). With 2 confirmed dentist-owned Chicago locations and no DSO/management-company signal, classified dentist_multi, well under the protected-network threshold.",
+   "searched": ["Mindy Van DDS 3555 N Ashland Ave Chicago dentist", "Lakeview Endodontics Mindy Van locations Ashland Clark Chinatown"],
    "intel": {
-    "website_note": "Specialist endodontic practice with strong credentials messaging (founder, faculty background).",
+    "website_url": "https://www.lakeview-endo.com/",
+    "website_note": "Specialist endodontic practice with strong credentials messaging (founder, faculty background); site now lists additional associate endodontists.",
     "services": ["root canal therapy", "endodontics"],
     "technology": ["GentleWave procedure"],
-    "provider_notes": "Dr. Mindy Van, DDS, MSD - Indiana University (DDS and MS in Endodontics), taught endodontics 2008-2012, 18 years in practice.",
-    "distinguishing_notes": "One of only two practices in Chicago (one of eight within 50 miles) offering the GentleWave disinfection procedure.",
-    "sources": [
-     "https://www.womply.com/biz/lakeview-endodontics-dr-mindy-van-dds-chicago-IL/"
-    ]
+    "provider_notes": "Dr. Mindy Van, DDS, MSD - Indiana University (DDS and MS in Endodontics), taught endodontics 2008-2012.",
+    "distinguishing_notes": "One of only two practices in Chicago offering the GentleWave disinfection procedure; two confirmed Chicago locations (Ashland headquarters, Clark St).",
+    "sources": ["https://www.womply.com/biz/lakeview-endodontics-dr-mindy-van-dds-chicago-IL/", "https://www.yelp.com/biz/lakeview-endodontics-chicago", "https://www.linkedin.com/company/lakeview-endodontics"]
    }
   },
   {
@@ -308,19 +256,13 @@
    "assigned_tier": "true_independent",
    "pe_backed": false,
    "evidence_basis": "web_verified",
-   "evidence_urls": [
-    "https://dentistsok.com/dentist/dr-inderjit-k-dhaliwal-chicago/",
-    "https://npino.com/dentist/1871069773-dr.-inderjit-k-dhaliwal/"
-   ],
+   "evidence_urls": ["https://npino.com/dentist/1871069773-dr.-inderjit-k-dhaliwal/", "https://dentistsok.com/dentist/dr-inderjit-k-dhaliwal-chicago/"],
    "evidence_artifacts": [],
    "confidence": "medium",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Searched name+address plus a follow-up query. Confirmed Dr. Inderjit K. Dhaliwal, DDS is a solo general-practice dentist registered at 2800 N Lake Shore Dr (exact phone match). No practice website or corporate signal found beyond aggregator directory listings; the NPI address is a residential high-rise apartment, so confidence is medium.",
-   "searched": [
-    "Dhaliwal Dental 2800 N Lake Shore Dr Chicago dentist",
-    "Dhaliwal DDS dentist Chicago Lake Shore Drive"
-   ]
+   "reasoning": "Confirmed Dr. Inderjit K. Dhaliwal, DDS is registered as a solo general-practice dentist at 2800 N Lake Shore Dr Apt 2415 (exact address and phone match: 773-967-8242). No practice website or corporate signal found beyond aggregator directory listings; the NPI address is a residential high-rise apartment, so confidence is medium rather than high, but no evidence of DSO/PE affiliation exists.",
+   "searched": ["Dhaliwal Dental 2800 N Lake Shore Dr Chicago dentist", "Dhaliwal DDS dentist Chicago Lake Shore Drive", "\"2800 N Lake Shore\" Dhaliwal DDS dentist Chicago"]
   },
   {
    "location_id": "3a832f8d48c2b340",
@@ -329,92 +271,61 @@
    "assigned_tier": "single_loc_group",
    "pe_backed": false,
    "evidence_basis": "web_verified",
-   "evidence_urls": [
-    "https://www.zocdoc.com/dentist/al-yazeed-yousef-dmd-524756",
-    "https://polishedchicago.com/",
-    "https://www.yelp.com/biz/polished-a-dental-studio-chicago",
-    "https://www.linkedin.com/in/trupti-desai-79b0b958"
-   ],
+   "evidence_urls": ["https://www.zocdoc.com/dentist/al-yazeed-yousef-dmd-524756", "https://polishedchicago.com/", "https://www.yelp.com/biz/polished-a-dental-studio-chicago", "https://www.linkedin.com/in/trupti-desai-79b0b958"],
    "evidence_artifacts": [],
    "confidence": "high",
    "status": "classified",
-   "network_id": null,
+   "network_id": "brand:polished_a_dental_studio",
    "reasoning": "Confirmed Dr. Al-Yazeed Yousef practices at 'Polished - A Dental Studio,' 1442 W Belmont Ave (exact phone match, established 2013). LinkedIn confirms the practice is owned by Dr. Trupti Desai ('Dentist/Owner'), with a 'Meet the Doctors' team page showing multiple dentists at this single location -- dentist-owned single-location group, not a branded DSO.",
-   "searched": [
-    "Yousef Dental 1442 W Belmont Ave Chicago dentist",
-    "Polished A Dental Studio Chicago address Belmont",
-    "Polished Dental Studio Chicago owner founder dentist-owned"
-   ],
+   "searched": ["Yousef Dental 1442 W Belmont Ave Chicago dentist", "Polished A Dental Studio Chicago address Belmont", "Polished Dental Studio Chicago owner founder dentist-owned"],
    "intel": {
     "website_url": "https://polishedchicago.com/",
     "website_note": "Boutique-branded 'studio' practice site with team page, active booking, strong review presence.",
     "services": ["general dentistry", "orthodontics", "extractions", "implants", "sedation dentistry"],
     "provider_notes": "Dr. Trupti Desai (Owner, NYU College of Dentistry 2005); Dr. Al-Yazeed Yousef focuses on extractions/implants/sedation, residency at Advocate Illinois Masonic Medical Center, implant fellowship at UNLV.",
     "distinguishing_notes": "Established 2013; branded 'Polished - A Dental Studio'; multi-dentist single-location team.",
-    "sources": [
-     "https://polishedchicago.com/",
-     "https://www.linkedin.com/in/trupti-desai-79b0b958",
-     "https://www.yelp.com/biz/polished-a-dental-studio-chicago"
-    ]
+    "sources": ["https://polishedchicago.com/", "https://www.linkedin.com/in/trupti-desai-79b0b958", "https://www.yelp.com/biz/polished-a-dental-studio-chicago"]
    }
   },
   {
    "location_id": "ef66b532aff030ca",
    "practice_name": "David Drake DDS",
    "zip": "60657",
-   "assigned_tier": "true_independent",
-   "pe_backed": false,
-   "evidence_basis": "web_verified",
-   "evidence_urls": [
-    "https://www.carecredit.com/doctor-locator/chicago-il/david-d-drake-dds-ltd-vrd267/",
-    "https://chicago.lakevieweast.com/list/member/david-b-drake-general-dentistry-dds-ltd-112"
-   ],
+   "assigned_tier": "undetermined",
+   "pe_backed": true,
+   "evidence_basis": "locator",
+   "evidence_urls": ["https://dentologie.com/our-locations/chicago/belmont", "https://www.yelp.com/biz/dentologie-belmont-chicago", "https://dentologie.com/locations/chicago", "https://dentologie.com/about"],
    "evidence_artifacts": [],
-   "confidence": "medium",
-   "status": "classified",
-   "network_id": null,
-   "reasoning": "Searched name+address; confirmed 'David D Drake DDS LTD' / 'David B. Drake, General Dentistry, DDS LTD' is a solo family-dentistry practice near Belmont Ave in Lakeview (phone (312) 846-6752 matches ctx exactly), though the street number on some directories reads 739 vs. the ctx 963 -- treated as the same practice given the exact phone match and neighborhood consistency, hence medium confidence. No corporate/DSO signal found.",
-   "searched": [
-    "David Drake DDS 963 W Belmont Ave Chicago dentist"
-   ],
+   "confidence": "high",
+   "status": "undetermined",
+   "network_id": "brand:dentologie",
+   "reasoning": "R4_protected_network:Dentologie - the exact address (963 W Belmont Ave, Chicago, IL 60657) and exact phone number ((312) 846-6752) on this NPI record match 'Dentologie - Belmont' precisely, per Dentologie's own locator page, Yelp, and Healthgrades. Dentologie is a VC-backed dental startup (founded 2013 by three dentists, fronted as CEO by former Redbox CEO Gregg Kaplan, ~$25M Series B) confirmed via a fresh search to operate 13 modern dental offices across Chicago neighborhoods -- well past the 10-location protected-network threshold. Per the hard rule this is left undetermined rather than assigned a tier, reserved for a dedicated one-network review. (An older 'David Drake DDS Ltd' solo listing sharing the same phone number appears at a different legacy street number in some stale directories, consistent with the office name persisting online after being absorbed into/rebranded as Dentologie.)",
+   "searched": ["David Drake DDS 963 W Belmont Ave Chicago dentist", "\"David Drake\" DDS dentist Chicago Belmont Ave", "\"963 W Belmont\" Chicago dentist Drake", "Dentologie dental Chicago founder owner locations DSO management", "\"963 W Belmont\" Chicago Dentologie"],
    "intel": {
-    "website_note": "Long-running solo family dentistry practice; directory listings show consistent branding as 'David B. Drake, DDS LTD, General Dentistry.'",
-    "distinguishing_notes": "Accepting new patients; ~4.3/5 rating from 6 reviews on Healthgrades.",
-    "sources": [
-     "https://chicago.lakevieweast.com/list/member/david-b-drake-general-dentistry-dds-ltd-112",
-     "https://www.carecredit.com/doctor-locator/chicago-il/david-d-drake-dds-ltd-vrd267/"
-    ]
+    "website_url": "https://dentologie.com/",
+    "distinguishing_notes": "Location operates under the Dentologie brand: a VC-backed dental startup founded 2013, fronted by former Redbox CEO Gregg Kaplan as CEO, with a ~$25M Series B round; confirmed 13 Chicago offices, ~60,000 patients, ~200 employees.",
+    "sources": ["https://dentologie.com/about", "https://dentologie.com/locations/chicago", "https://dentologie.com/our-locations/chicago/belmont"]
    }
   },
   {
    "location_id": "fdc795fb30d9cfe8",
    "practice_name": "Grace Lee Ltd",
    "zip": "60657",
-   "assigned_tier": "true_independent",
+   "assigned_tier": "dentist_multi",
    "pe_backed": false,
    "evidence_basis": "web_verified",
-   "evidence_urls": [
-    "https://www.lakeviewsmileschicago.net/team/dr-grace-lee",
-    "https://www.localmed.com/providers/dr-grace-lee-dds-chicago-60657/"
-   ],
+   "evidence_urls": ["https://www.lakeviewsmileschicago.net/", "https://www.lakeviewsmileschicago.net/team/dr-grace-lee", "https://www.lakeviewsmileschicago.com/lakeview-location", "https://www.yelp.com/biz/lakeview-smiles-bucktown-chicago"],
    "evidence_artifacts": [],
    "confidence": "high",
    "status": "classified",
-   "network_id": null,
-   "reasoning": "Confirmed Dr. Grace Lee, DDS operates 'Lakeview Smiles' at 851 W Belmont Ave (address and phone match exactly). Solo owner-dentist, no corporate parent or additional locations found.",
-   "searched": [
-    "Grace Lee Ltd dentist 851 W Belmont Ave Chicago"
-   ],
+   "network_id": "brand:lakeview_smiles",
+   "reasoning": "Dr. Grace Lee, DDS took ownership of this Belmont Ave practice (851 W Belmont Ave, exact address/phone match) in February 2008. Lakeview Smiles' own site confirms 'four convenient locations' (Lakeview, Bucktown/Logan Square, Edgewater, Midway) with Dr. Lee practicing across Lakeview, Edgewater, and Bucktown, and no evidence of DSO/PE affiliation anywhere. Dentist-owned multi-location group, well under the 10-location threshold -- classified dentist_multi (revised from an earlier single-location read).",
+   "searched": ["Grace Lee Ltd dentist 851 W Belmont Ave Chicago", "Lakeview Smiles Chicago Grace Lee locations single office", "Lakeview Smiles Chicago dental group owner founder DSO management company", "Lakeview Smiles Chicago locations Grace Lee Bucktown Edgewater Logan Square"],
    "intel": {
     "website_url": "https://www.lakeviewsmileschicago.net/",
-    "website_note": "Established solo practice site with team bio and testimonials.",
-    "services": ["dental implants (place and restore in one office)", "sleep dentistry", "cosmetic dentistry", "implantology"],
-    "provider_notes": "Dr. Grace Lee, DDS - The Ohio State University College of Dentistry; member ADA, Illinois State Dental Society, Chicago Dental Society, AACD.",
-    "distinguishing_notes": "Currently not accepting new patients per site, though continues to accept existing-patient insurance plans.",
-    "sources": [
-     "https://www.lakeviewsmileschicago.net/team/dr-grace-lee",
-     "https://www.localmed.com/providers/dr-grace-lee-dds-chicago-60657/"
-    ]
+    "provider_notes": "Dr. Grace Lee, DDS, Ohio State University (BS nutrition and chemistry, DDS); took over this practice in February 2008 from Dr. Louis Sommerfeld, who had run it since 1972.",
+    "distinguishing_notes": "Part of a 4-location Chicago group (Lakeview, Bucktown/Logan Square, Edgewater, Midway) under Dr. Lee's ownership; Belmont location currently not accepting new patients per site.",
+    "sources": ["https://www.lakeviewsmileschicago.net/team/dr-grace-lee", "https://www.lakeviewsmileschicago.com/lakeview-location", "https://www.yelp.com/biz/lakeview-smiles-bucktown-chicago"]
    }
   }
  ]

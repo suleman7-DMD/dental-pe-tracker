@@ -218,27 +218,31 @@
    "location_id": "267962cf9189c5a2",
    "practice_name": "DENT-SURE DENTAL SERVICES, P.C.",
    "zip": "60655",
-   "assigned_tier": "true_independent",
+   "assigned_tier": "undetermined",
    "pe_backed": false,
    "evidence_basis": "web_verified",
    "evidence_urls": [
     "https://www.buzzfile.com/business/Dent-Sure-Dental-Services-PC-773-779-4499",
-    "https://www.dentalplans.com/dentists/illinois/chicago/60655/dr-jeffrey-zeller-42301"
+    "https://www.yelp.com/biz/dent-sure-dental-services-chicago-7",
+    "https://www.yelp.com/biz/dent-sure-dental-services-chicago"
    ],
    "evidence_artifacts": [],
-   "confidence": "high",
-   "status": "classified",
+   "confidence": "low",
+   "status": "undetermined",
    "network_id": null,
-   "reasoning": "Jeffrey Zeller is listed as the Owner of Dent-Sure Dental Services, P.C., a general dentistry practice established 1988 at this single 3942 W 111th St address. No corporate/DSO signal -- solo owner-operator practice, ~37 years at the same location.",
+   "reasoning": "closure_suspect: re-verification found that Jeffrey Zeller's 'Dent-Sure Dental Services' name spans multiple IL addresses (this 3942 W 111th St location plus others including 7518 N Harlem Ave and suburban Elmhurst/Melrose Park listings), which would point toward dentist_multi rather than the single-location true_independent originally assumed. Separately, a February 2025 Yelp review states the business is 'closed for good,' and a sibling Dent-Sure listing (1725 W Chicago Ave) is explicitly Yelp-tagged CLOSED, though the 3942 W 111th St listing itself is not tagged closed and shows activity as recent as 2026. Given the conflicting location-count and closure signals for this specific address, declining to classify rather than guess -- would need a direct phone confirmation before including in any downstream count.",
    "searched": [
-    "Dent-Sure Dental Services Jeffrey Zeller 3942 W 111th St Chicago"
+    "Dent-Sure Dental Services Jeffrey Zeller 3942 W 111th St Chicago",
+    "\"Dent-Sure Dental\" Zeller \"7518 N Harlem\" Chicago second location",
+    "\"Dent-Sure Dental Services\" owner Zeller chain locations Illinois",
+    "\"Dent-Sure Dental\" \"3942 W 111th\" closed OR \"permanently closed\" Yelp",
+    "\"Dent-Sure Dental Services\" \"3942 W 111th\" hours open 2026"
    ],
    "intel": {
-    "provider_notes": "Dr. Jeffrey Zeller, DDS -- owner, practicing since 1988; speaks Polish; offers telehealth.",
-    "insurance_note": "May accept Aetna CVS Health per directory listing.",
+    "provider_notes": "Dr. Jeffrey Zeller, DDS -- practicing since 1988; speaks Polish; offers telehealth.",
+    "distinguishing_notes": "Zeller's name is attached to a small multi-address 'Dent-Sure Dental Services' network across Chicago and western suburbs; operating status of this specific address is unclear as of 2026 (conflicting closure signals across sibling listings).",
     "sources": [
-     "https://www.buzzfile.com/business/Dent-Sure-Dental-Services-PC-773-779-4499",
-     "https://www.dentalplans.com/dentists/illinois/chicago/60655/dr-jeffrey-zeller-42301"
+     "https://www.buzzfile.com/business/Dent-Sure-Dental-Services-PC-773-779-4499"
     ]
    }
   },
@@ -278,24 +282,24 @@
    "pe_backed": false,
    "evidence_basis": "web_verified",
    "evidence_urls": [
-    "https://www.timelesssmilesdental.com/",
-    "https://www.yelp.com/biz/timeless-smiles-dental-chicago-3"
+    "https://www.yelp.com/biz/mcnicholas-dental-chicago",
+    "https://www.timelesssmilesdental.com/"
    ],
    "evidence_artifacts": [],
-   "confidence": "medium",
+   "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Timeless Smiles Dental, established 2003, is run by owner-dentist Dr. Kellie Rhodes Gayles in the Beverly/Mt. Greenwood neighborhood; own website shows a single location, no corporate signal. Medium confidence because directory sources give the street number as 10412 S Kedzie Ave vs. the record's 10342 (same block/zip/phone-area, likely a data-entry variance rather than a different site).",
+   "reasoning": "Re-verification found that this exact address+phone (10342 S Kedzie Ave, (773) 779-1983) is McNicholas Dental, a family-run general practice currently led by Dr. Robert McNicholas, not the separate 'Timeless Smiles Dental' office run by Dr. Kellie Rhodes Gayles (which sits at a different address, 10412 S Kedzie Ave, with a different phone number, ~1 block away). The NPPES record's practice name here appears to be a stale/incorrect DBA label rather than a true address match. Either way, both practices read as single-location, dentist-owned, non-DSO operations, so the true_independent tier call is unaffected, but the evidence/identity has been corrected to reflect the actual business at this address.",
    "searched": [
-    "Timeless Smiles Dental 10342 S Kedzie Ave Chicago dentist"
+    "Timeless Smiles Dental 10342 S Kedzie Ave Chicago dentist",
+    "\"10342 S Kedzie\" Chicago dentist",
+    "McNicholas Dental 10342 S Kedzie Chicago"
    ],
    "intel": {
-    "website_url": "https://www.timelesssmilesdental.com/",
-    "website_note": "Practice site for a family dental office serving Beverly and Mt. Greenwood, IL.",
-    "provider_notes": "Dr. Kellie Rhodes Gayles -- founded practice 2003.",
+    "website_note": "McNicholas Dental is a multi-generation family dental practice long established in the Mt. Greenwood/Beverly area; Dr. Robert McNicholas currently practices there.",
+    "distinguishing_notes": "The NPPES record's 'Timeless Smiles Dental' label does not match the confirmed occupant at this exact address+phone; treat as a likely stale DBA name on the federal record rather than a second business at the same site.",
     "sources": [
-     "https://www.timelesssmilesdental.com/",
-     "https://www.yelp.com/biz/timeless-smiles-dental-chicago-3"
+     "https://www.yelp.com/biz/mcnicholas-dental-chicago"
     ]
    }
   },

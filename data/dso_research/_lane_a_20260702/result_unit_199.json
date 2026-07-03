@@ -49,12 +49,19 @@
    "intel": {
     "website_url": "http://www.smigielskidds.com/",
     "website_note": "Simple single-dentist practice site; ADA member in good standing, accepting new patients.",
-    "services": ["preventative dentistry", "aesthetic dentistry", "restorative dentistry"],
+    "services": [
+     "preventative dentistry",
+     "aesthetic dentistry",
+     "restorative dentistry"
+    ],
     "provider_count_web": 1,
     "provider_notes": "Dr. James M. Smigielski, DDS, UIC College of Dentistry grad 1992; practicing at this office since 1996.",
     "owner_career_stage": "late_career",
     "distinguishing_notes": "Dr. Smigielski has traveled to Gualan, Guatemala (2004, 2005) to provide free dentistry to underserved populations.",
-    "sources": ["http://www.smigielskidds.com/", "https://findadentist.ada.org/il/cook/riverside/general-practice/dr-james-m-smigielski-1654965"]
+    "sources": [
+     "http://www.smigielskidds.com/",
+     "https://findadentist.ada.org/il/cook/riverside/general-practice/dr-james-m-smigielski-1654965"
+    ]
    }
   },
   {
@@ -80,12 +87,28 @@
    "intel": {
     "website_url": "http://www.drgarey.com/",
     "website_note": "Established solo-practice site listing full general-dentistry service menu and staff page.",
-    "services": ["exams", "digital radiographs", "cleanings", "gum treatment", "fillings", "bonding", "cosmetic", "crowns", "root canal therapy", "extractions", "dentures", "implants"],
+    "services": [
+     "exams",
+     "digital radiographs",
+     "cleanings",
+     "gum treatment",
+     "fillings",
+     "bonding",
+     "cosmetic",
+     "crowns",
+     "root canal therapy",
+     "extractions",
+     "dentures",
+     "implants"
+    ],
     "provider_count_web": 1,
     "provider_notes": "Dr. Garey Potamianos, DDS, Loyola University 1988; now also clinical assistant professor at Midwestern University.",
     "owner_career_stage": "late_career",
     "insurance_note": "Accepts most traditional PPO plans, CareCredit, cash/checks/credit cards.",
-    "sources": ["http://www.drgarey.com/patients.html", "http://www.drgarey.com/garey-potamianos-ltd.html"]
+    "sources": [
+     "http://www.drgarey.com/patients.html",
+     "http://www.drgarey.com/garey-potamianos-ltd.html"
+    ]
    }
   },
   {
@@ -107,7 +130,16 @@
    "reasoning": "Federal NPI registry (matching primary NPI 1043465743) plus multiple independent directories confirm a single office at 8711 W Cermak Rd staffed by two dentists, Martha C. Villasenor DDS and Devang Thakkar DDS MS, with Villasenor named as the practice's authorized official/owner. One location, 2 dentists, no DSO/brand signal -- dentist-owned small group.",
    "searched": [
     "Villasenor Dental Care North Riverside IL"
-   ]
+   ],
+   "intel": {
+    "website_note": "No dedicated practice website found; profile aggregated from federal NPI registry and directory listings only.",
+    "provider_count_web": 2,
+    "provider_notes": "Martha C. Villasenor, DDS (authorized official/owner) and Devang Thakkar, DDS, MS practice together at this single North Riverside office.",
+    "sources": [
+     "https://npiregistry.cms.hhs.gov/provider-view/1043465743",
+     "https://www.everydentist.com/profiles/67425/"
+    ]
+   }
   },
   {
    "location_id": "6441fcd7beda066a",
@@ -147,16 +179,26 @@
    "reasoning": "Multiple independent directories confirm Dr. Gerald Ciebien, DDS practices at this exact phone number (708) 442-5740 in Riverside, IL, described as a family general-dentistry office. No dedicated website surfaced, but no group/DSO signal either -- consistent single-provider profile.",
    "searched": [
     "Ciebien Dental Riverside IL"
-   ]
+   ],
+   "intel": {
+    "website_note": "No dedicated practice website found; described across directories as a family general-dentistry office.",
+    "provider_count_web": 1,
+    "provider_notes": "Dr. Gerald Ciebien, DDS, solo general/family dentist in Riverside, IL.",
+    "sources": [
+     "https://www.doctorsnetwork.com/doctors/dentists/riverside-il-60546/invite-gerald-ciebien-dds-17839",
+     "https://www.healthgrades.com/dentist/dr-gerald-ciebien-y9pkptz"
+    ]
+   }
   },
   {
    "location_id": "7edec4151f858c23",
    "practice_name": "CHICAGO MALL DENTAL ASSOCIATES, LLC",
    "zip": "60546",
-   "assigned_tier": "dentist_multi",
+   "assigned_tier": "undetermined",
    "pe_backed": false,
-   "evidence_basis": "ao_cluster",
+   "evidence_basis": "web_verified",
    "evidence_urls": [
+    "https://www.stomatcare.com/",
     "https://npiprofile.com/npi/1245741578",
     "https://opennpi.com/provider/1235507583",
     "https://opennpi.com/provider/1700397031",
@@ -164,17 +206,37 @@
     "https://www.yelp.com/biz/lincolnwood-mall-dental-lincolnwood"
    ],
    "evidence_artifacts": [
-    "Rostislav Krasnov, DDS is confirmed via independent NPI-registry mirrors (npiprofile, opennpi) as President/owner of BOTH 'Chicago Mall Dental Associates, LLC' (7501 W Cermak Rd, North Riverside, this location) AND 'Chicago Mall Dental, LLC' (3333 W Touhy Ave, Lincolnwood, 60712) -- same brand 'Mall Dental' at both, matching the 2-location owner reach"
+    "R4_protected_network: StomatCare DSO, LLC (Miami, FL) -- stomatcare.com describes itself as a dental support organization providing finance, real estate, HR, billing, credentialing, marketing and insurance-contracting services to more than 40 affiliated practices across 8 states; its signature model is branded '___ Mall Dental' storefronts inside enclosed malls, matching this exact location's name/format",
+    "Rostislav Krasnov, DDS is confirmed via independent NPI-registry mirrors (npiprofile, opennpi) as President/owner of BOTH 'Chicago Mall Dental Associates, LLC' (7501 W Cermak Rd, North Riverside, this location) AND 'Chicago Mall Dental, LLC' (3333 W Touhy Ave, Lincolnwood, 60712) -- the same 'Mall Dental' brand family that StomatCare operates nationally"
    ],
-   "confidence": "medium",
-   "status": "classified",
-   "network_id": "ao:KRASNOV_ROSTISLAV",
-   "reasoning": "Rostislav Krasnov, a licensed DDS (confirmed via his own NY-based provider profile), is independently cross-referenced across two federal-NPI mirror sites as owner of a small 'Mall Dental' branded operation with only 2 IL locations -- this one (North Riverside, active per its own Google Business Profile/business.site page and current hours) and a sister Lincolnwood store that Yelp shows as CLOSED. Because the network tops out at 2 locations (well under the 10+ protected-network threshold) and the controller is himself a dentist rather than a non-dentist corporate entity, this fits dentist-owned multi-location rather than stealth/branded DSO.",
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": "brand:mall_dental_stomatcare_dso",
+   "reasoning": "Follow-up research beyond the initial 2-location NPI-mirror cross-reference surfaced StomatCare DSO, LLC, a documented dental support organization (Miami HQ) that centrally administers more than 40 'Mall Dental'-branded locations across 8 states -- matching this exact address's business model and naming convention. Even though the local storefront's NPPES authorized official (Krasnov) is himself a licensed dentist, the true network he sits within clearly exceeds the 10+ location protected-network threshold, so per protocol this cannot be classified at the unit level -- R4_protected_network:StomatCare DSO, LLC, flagged for a dedicated network-level review weighing the centralized DSO admin/finance/marketing/insurance-contracting structure against the local dentist-of-record framing.",
    "searched": [
     "Chicago Mall Dental Associates North Riverside IL Rostislav Krasnov dentist",
     "\"North Riverside Mall Dental\" 7501 Cermak reviews open",
-    "\"Mall Dental\" Krasnov locations Chicago Lincolnwood Skokie dental"
-   ]
+    "\"Mall Dental\" Krasnov locations Chicago Lincolnwood Skokie dental",
+    "\"StomatCare DSO\" dental"
+   ],
+   "intel": {
+    "website_note": "No independent practice website; multiple directory/Google Business listings describe a general practice inside North Riverside Park Mall, consistent with the StomatCare 'mall dental' operating model (enclosed-mall storefront, extended hours).",
+    "services": [
+     "routine check-ups",
+     "cleanings",
+     "fillings",
+     "preventive care for all ages",
+     "teeth whitening",
+     "veneers",
+     "bonding",
+     "smile makeovers"
+    ],
+    "distinguishing_notes": "Part of a national 'Mall Dental' storefront brand family operated under StomatCare DSO, LLC (Miami, FL), with sister locations across FL/NY/CT/TX/IL.",
+    "sources": [
+     "https://www.stomatcare.com/",
+     "https://npiprofile.com/npi/1245741578"
+    ]
+   }
   },
   {
    "location_id": "96cd529163d96a6c",
@@ -199,9 +261,20 @@
    "intel": {
     "website_url": "http://www.warrenvilledentalgroup.com/",
     "website_note": "Practice site branded 'Warrenville Dental Group', run by Dr. Preet Singh; markets general/family/cosmetic services.",
-    "services": ["dental exams", "smile makeovers", "teeth whitening", "veneers", "crowns", "x-rays", "cleanings"],
+    "services": [
+     "dental exams",
+     "smile makeovers",
+     "teeth whitening",
+     "veneers",
+     "crowns",
+     "x-rays",
+     "cleanings"
+    ],
     "provider_notes": "Dr. Amanpreet Singh, DDS, University of Illinois at Chicago grad.",
-    "sources": ["http://www.warrenvilledentalgroup.com/", "https://www.healthgrades.com/dentist/dr-amanpreet-singh-y52pf"]
+    "sources": [
+     "http://www.warrenvilledentalgroup.com/",
+     "https://www.healthgrades.com/dentist/dr-amanpreet-singh-y52pf"
+    ]
    }
   },
   {
@@ -220,7 +293,7 @@
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Own website myfamilyfirstdental.com ('Meet the Doctors') and BBB profile confirm Family First Dental is a single-location office at 28365 Davis Pkwy Ste 206 led by Dr. Steven Theodosis, DDS; address and phone (630) 836-8995 match exactly. No parent company, franchise, or DSO brand mentioned.",
+   "reasoning": "Own website myfamilyfirstdental.com ('Meet the Doctors') and BBB profile confirm Family First Dental is a single-location office at 28365 Davis Pkwy Ste 206 led by Dr. Steven Theodosis, DDS; address and phone (630) 836-8995 match exactly. The practice's own site explicitly markets itself as \"locally owned and operated,\" and no parent company, franchise, or DSO brand is mentioned anywhere.",
    "searched": [
     "Family First Dental Warrenville IL Steven Theodosis"
    ],
@@ -229,7 +302,10 @@
     "website_note": "Multi-dentist family-dental site with a 'Meet the Doctors' team page; Healthgrades shows a 4.2/5 patient-recommend score.",
     "provider_notes": "Dr. Steven Paul Theodosis, DDS -- Academy of General Dentistry Fellow, Invisalign certified.",
     "provider_count_web": 3,
-    "sources": ["https://www.myfamilyfirstdental.com/about-us/meet-the-doctors/", "https://www.healthgrades.com/dentist/dr-steven-theodosis-2dsrl"]
+    "sources": [
+     "https://www.myfamilyfirstdental.com/about-us/meet-the-doctors/",
+     "https://www.healthgrades.com/dentist/dr-steven-theodosis-2dsrl"
+    ]
    }
   },
   {
@@ -242,13 +318,14 @@
    "evidence_urls": [
     "https://www.facebook.com/Ryanfamilydental/",
     "https://www.yelp.com/biz/richard-ryan-dds-pc-ryan-family-dental-warrenville",
-    "https://www.healthgrades.com/dentist/dr-richard-ryan-2pwdq"
+    "https://www.healthgrades.com/dentist/dr-richard-ryan-2pwdq",
+    "https://www.linkedin.com/in/rick-ryan-80066b14/"
    ],
    "evidence_artifacts": [],
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "'Ryan Family Dental' has served this exact address (2 S 631 Route 59, Warrenville) since 1977 under Dr. Richard J. Ryan, DDS (University of Illinois 1977 grad); phone (630) 393-2733 matches exactly. Solo owner-operator with decades of continuous ownership, no group/DSO signal.",
+   "reasoning": "'Ryan Family Dental' has served this exact address (2 S 631 Route 59, Warrenville) since 1977 under Dr. Richard J. Ryan, DDS (University of Illinois 1977 grad); phone (630) 393-2733 matches exactly. Dr. Ryan's own LinkedIn profile lists his title as \"Owner, Warrenville Family Dental,\" corroborating solo owner-operator status with decades of continuous ownership and no group/DSO signal.",
    "searched": [
     "Ryan Dental Warrenville IL dentist route 59"
    ],
@@ -258,7 +335,11 @@
     "provider_notes": "Dr. Richard J. Ryan, DDS, University of Illinois 1977; member ADA, Illinois Dental Society, Fox River Valley Dental Society, Chicago Dental Society.",
     "owner_career_stage": "late_career",
     "distinguishing_notes": "Same address has served Warrenville families since 1977 (nearly 50 years continuous operation).",
-    "sources": ["https://www.facebook.com/Ryanfamilydental/", "https://www.healthgrades.com/dentist/dr-richard-ryan-2pwdq"]
+    "sources": [
+     "https://www.facebook.com/Ryanfamilydental/",
+     "https://www.healthgrades.com/dentist/dr-richard-ryan-2pwdq",
+     "https://www.linkedin.com/in/rick-ryan-80066b14/"
+    ]
    }
   },
   {
@@ -284,11 +365,26 @@
    "intel": {
     "website_url": "https://www.drgregpotempa.com/",
     "website_note": "Solo-practice site with services/blog pages; markets general, family and cosmetic dentistry.",
-    "services": ["general dentistry", "cosmetic dentistry", "exam and cleaning", "emergency dentistry", "dental implants", "fillings", "crowns", "teeth whitening", "Invisalign", "root canal", "sleep apnea appliance"],
+    "services": [
+     "general dentistry",
+     "cosmetic dentistry",
+     "exam and cleaning",
+     "emergency dentistry",
+     "dental implants",
+     "fillings",
+     "crowns",
+     "teeth whitening",
+     "Invisalign",
+     "root canal",
+     "sleep apnea appliance"
+    ],
     "provider_notes": "Dr. Gregory Potempa, DDS, University of Illinois Urbana-Champaign + Loyola University School of Dentistry; founding member, Quad Cities Association for the Study of Orthodontics.",
     "owner_career_stage": "late_career",
     "insurance_note": "Accepts most major insurance carriers; CareCredit financing offered.",
-    "sources": ["https://www.drgregpotempa.com/", "https://www.drgregpotempa.com/dr-gregory-potempa/"]
+    "sources": [
+     "https://www.drgregpotempa.com/",
+     "https://www.drgregpotempa.com/dr-gregory-potempa/"
+    ]
    }
   },
   {
@@ -314,11 +410,18 @@
    "intel": {
     "website_url": "https://www.delaceydental.com/",
     "website_note": "Established practice site (30+ years serving Naperville/Warrenville) with team and services pages.",
-    "technology": ["CEREC (same-visit restorations)", "Nobel implants", "Invisalign"],
+    "technology": [
+     "CEREC (same-visit restorations)",
+     "Nobel implants",
+     "Invisalign"
+    ],
     "provider_count_web": 2,
     "provider_notes": "Dr. Thomas J. DeLacey, DDS, UIC 1986 grad; Dr. Bryce A. Larson, DMD, associate.",
     "owner_career_stage": "late_career",
-    "sources": ["https://www.delaceydental.com/meet-the-docs/", "https://www.delaceydental.com/"]
+    "sources": [
+     "https://www.delaceydental.com/meet-the-docs/",
+     "https://www.delaceydental.com/"
+    ]
    }
   },
   {
@@ -395,7 +498,10 @@
     "provider_notes": "Dr. Vincent T. Versaci, DDS, University of Illinois Chicago College of Dentistry 1987 (Omicron Kappa Upsilon honor society); BS Biology, UIUC 1983.",
     "owner_career_stage": "late_career",
     "distinguishing_notes": "Office located directly above Vie restaurant in downtown Western Springs, with free parking out front.",
-    "sources": ["http://www.versacidental.com/about.html", "http://www.versacidental.com/"]
+    "sources": [
+     "http://www.versacidental.com/about.html",
+     "http://www.versacidental.com/"
+    ]
    }
   },
   {

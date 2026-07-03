@@ -95,7 +95,8 @@
       "network_id": null,
       "reasoning": "NPI lookup profiles list Dr. Isabel C. Noy, D.D.S. as President/authorized official of this PC, matching ctx AO exactly, with a single Oak Brook Terrace address. No dedicated marketing website or corporate/DSO signal was found, so treating as a solo-dentist-owned PC at medium confidence rather than high.",
       "searched": [
-        "\"Smile Bright Dental Center\" Oak Brook Terrace IL Butterfield Road"
+        "\"Smile Bright Dental Center\" Oak Brook Terrace IL Butterfield Road",
+        "\"Isabel Noy\" DDS dentist Oakbrook Terrace Illinois"
       ]
     },
     {
@@ -114,8 +115,8 @@
       "confidence": "medium",
       "status": "classified",
       "network_id": null,
-      "reasoning": "Multiple independent directory listings consistently show Dr. Somayeh Jahedi as a solo general dentist at 1S045 Summit Ave, 60181, matching the ctx AO and address exactly; no group, brand, or corporate parent appears in any listing. No dedicated practice website was located, so confidence is medium rather than high.",
-      "searched": ["Somayeh Jahedi DMD Oakbrook Terrace IL dentist"],
+      "reasoning": "Multiple independent directory listings (Healthgrades, dentalcenter.com, doctorsnetwork.com, ADA Find-a-Dentist) consistently show Dr. Somayeh Jahedi as a general dentist at 1S045 Summit Ave, 60181, matching the ctx AO and address exactly; no group, brand, or corporate parent appears in the majority of listings. A single Zocdoc/Yelp cross-reference to an Orland Park practice ('Fresh Smiles Dental') could not be corroborated as a genuine relocation - the exact registered address is still the consistent, majority signal - so no override; confidence stays medium given no dedicated practice website was located.",
+      "searched": ["Somayeh Jahedi DMD Oakbrook Terrace IL dentist", "\"Somayeh Jahedi\" DMD dentist Oakbrook Terrace Illinois"],
       "intel": {
         "website_note": "No dedicated practice website found; profile pulled from aggregator directory listings.",
         "services": ["routine exams", "cleanings", "digital X-rays", "composite fillings", "crowns", "preventive sealants"],
@@ -191,50 +192,53 @@
       "location_id": "23cc28d50a90a435",
       "practice_name": "Yousef Jardin DMD",
       "zip": "60181",
-      "assigned_tier": "undetermined",
+      "assigned_tier": "true_independent",
       "pe_backed": false,
-      "evidence_basis": "none",
+      "evidence_basis": "web_verified",
       "evidence_urls": [
-        "https://www.yelp.com/biz/paul-petrungaro-dds-oakbrook-terrace"
+        "https://www.healthgrades.com/physician/dr-jardin-yousef-jejaed2059"
       ],
       "evidence_artifacts": [],
-      "confidence": "low",
-      "status": "undetermined",
+      "confidence": "high",
+      "status": "classified",
       "network_id": null,
-      "reasoning": "The NPI's registered phone number and address (1S660 Midwest Rd, Oakbrook Terrace) both resolve on the open web to a different, unrelated dentist - Paul Petrungaro, DDS, an implant/periodontal specialist - with no mention of Dr. Jardin anywhere at that suite. This looks like a stale NPPES registration where the address has since turned over to another practice; marking closure/turnover suspect rather than guessing an owner.",
+      "reasoning": "Direct fetch of Dr. Jardin Yousef's Healthgrades profile confirms his practice address as 1S660 Midwest Rd Ste 205, Oakbrook Terrace, IL 60181, phone (630) 473-4550 - an exact match to this NPI's registered address and phone (currently accepting new patients). A separate directory hit for an unrelated nearby dentist (Paul Petrungaro, DDS) at a different suite in the same small office corridor was a false lead in an earlier pass; the direct profile fetch resolves the ambiguity in Dr. Jardin's favor. No group or DSO signal found.",
       "searched": [
         "Yousef Jardin DMD Oakbrook Terrace IL Midwest Road dentist",
         "\"630-473-4550\" OR \"(630) 473-4550\" dentist Oakbrook Terrace",
-        "\"Midwest Rd\" Oakbrook Terrace IL dentist Jardin"
+        "healthgrades.com/physician/dr-jardin-yousef-jejaed2059 (direct fetch)"
       ]
     },
     {
       "location_id": "b639d912fbb3b38c",
       "practice_name": "Dental Care Ctr",
       "zip": "60181",
-      "assigned_tier": "single_loc_group",
+      "assigned_tier": "stealth_dso",
       "pe_backed": false,
       "evidence_basis": "web_verified",
       "evidence_urls": [
-        "https://www.yelp.com/biz/dental-care-center-villa-park-2",
+        "https://www.mirzadental.com/dental-management-investments",
         "https://www.mirzadental.com/villa-park",
-        "https://www.facebook.com/Mirzadentalcenter/",
+        "https://www.mirzadental.com/sitemap",
+        "https://www.yelp.com/biz/dental-care-center-villa-park-2",
         "https://www.bbb.org/us/il/villa-park/profile/dentist/dental-care-center-muzaffar-mirza-dds-associates-0654-88500611"
       ],
       "evidence_artifacts": [],
       "confidence": "high",
       "status": "classified",
-      "network_id": null,
-      "reasoning": "Consistently documented (Yelp, Facebook, BBB, Groupon, mirzadental.com) as 'Dental Care Center - Muzaffar Mirza DDS & Associates,' a single-address group practice at 140/144 W Roosevelt Rd, Villa Park, operating since 1995 under Dr. Mirza. No DSO/corporate parent found; the '17 physicians' figure on one low-quality aggregator is not corroborated elsewhere and is treated as directory noise, not a real multi-location signal.",
+      "network_id": "brand:mirza_dental_dmi",
+      "reasoning": "The practice's own website names a distinct corporate entity, 'Dental Management & Investments' (dedicated page at mirzadental.com/dental-management-investments), as the manager overseeing the 'Muzaffar Mirza DDS & Associates' brand. The sitemap confirms a 5-location network under this management company - Dental Care Center (Villa Park, this location), Taylor Dental Center (Chicago), Cicero Dental Center (Cicero), Kedzie 47 Dental (Chicago), Summit Dental Smiles (Summit) - well under the 10-location protected-network threshold. A management company controlling a multi-location group under a non-national, locally-branded name (not a household DSO brand) is the defining signature of a stealth DSO rather than a simple dentist-owned single-location group; no PE sponsor was identified, so pe_backed stays false.",
       "searched": [
-        "\"Dental Care Ctr\" OR \"Dental Care Center\" Villa Park IL Roosevelt Road dentist"
+        "\"Dental Care Ctr\" OR \"Dental Care Center\" Villa Park IL Roosevelt Road dentist",
+        "\"Dental Management & Investments\" Mirza Dental villa park",
+        "mirzadental.com/sitemap (direct fetch, location count)"
       ],
       "intel": {
         "website_url": "https://www.mirzadental.com/villa-park",
-        "website_note": "Branded 'Mirza Dental' with Villa Park-specific location page.",
-        "provider_notes": "Dr. Muzaffar Mirza, DDS, and associates; in operation since 1995.",
+        "website_note": "Branded 'Mirza Dental' with Villa Park-specific location page; managed by 'Dental Management & Investments' per the practice's own site.",
+        "provider_notes": "Dr. Muzaffar Mirza, DDS, and associates; in operation since 1995. Practice management is handled by a separate company, Dental Management & Investments, across a 5-location Chicagoland network.",
         "distinguishing_notes": "Hours Mon-Thu 9am-8pm; mixed patient reviews on wait times but praised professionalism.",
-        "sources": ["https://www.mirzadental.com/villa-park", "https://www.yelp.com/biz/dental-care-center-villa-park-2"]
+        "sources": ["https://www.mirzadental.com/villa-park", "https://www.mirzadental.com/dental-management-investments", "https://www.yelp.com/biz/dental-care-center-villa-park-2"]
       }
     },
     {
@@ -288,24 +292,25 @@
       "location_id": "c6ca51e140c01c23",
       "practice_name": "Starvel Dental",
       "zip": "60181",
-      "assigned_tier": "true_independent",
+      "assigned_tier": "single_loc_group",
       "pe_backed": false,
       "evidence_basis": "web_verified",
       "evidence_urls": [
         "http://www.starveldentistry.com/",
         "https://www.yelp.com/biz/starvel-family-dentistry-oakbrook-terrace",
-        "https://findadentist.ada.org/dentists/dr-robert-v-starvel-oakbrook-terrace-0038V00002yk59SQAQ-a1C8V00000lWSxRUAW"
+        "https://findadentist.ada.org/dentists/dr-robert-v-starvel-oakbrook-terrace-0038V00002yk59SQAQ-a1C8V00000lWSxRUAW",
+        "https://doctor.webmd.com/doctor/colin-starvel-4e583bf9-7c87-4795-a6ee-75a652f6bd0b-overview"
       ],
       "evidence_artifacts": [],
       "confidence": "high",
       "status": "classified",
       "network_id": null,
-      "reasoning": "Practice's own site (starveldentistry.com), ADA Find-a-Dentist, and Yelp all confirm 'Starvel Family Dentistry' at 17W695 Butterfield Rd is Dr. Robert V. Starvel's solo practice (30+ years, UIC grad), matching the NPI address and name exactly. No group or corporate signal.",
-      "searched": ["\"Starvel Dental\" Oakbrook Terrace IL dentist"],
+      "reasoning": "Practice's own site (starveldentistry.com), ADA Find-a-Dentist, and Yelp confirm 'Starvel Family Dentistry' at 17W695 Butterfield Rd is Dr. Robert V. Starvel's practice (30+ years, UIC grad), matching the NPI address and name exactly. WebMD separately lists a second dentist, Dr. Colin Starvel, practicing at this same Oakbrook Terrace address - a family-owned multi-dentist single-location group rather than a strict solo. No corporate/DSO signal.",
+      "searched": ["\"Starvel Dental\" Oakbrook Terrace IL dentist", "\"Colin Starvel\" OR \"Colin R Starvel\" DDS dentist"],
       "intel": {
         "website_url": "http://www.starveldentistry.com/",
         "website_note": "Family-practice marketing site emphasizing decades of community service.",
-        "provider_notes": "Dr. Robert V. Starvel, DDS - University of Illinois at Chicago.",
+        "provider_notes": "Dr. Robert V. Starvel, DDS - University of Illinois at Chicago; second dentist Dr. Colin Starvel also practices at this address per WebMD.",
         "distinguishing_notes": "Serving the area 30+ years; evening and Saturday hours; accepts most in-network insurance and offers financing.",
         "sources": ["http://www.starveldentistry.com/", "https://www.yelp.com/biz/starvel-family-dentistry-oakbrook-terrace"]
       }

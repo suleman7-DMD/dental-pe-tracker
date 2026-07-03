@@ -38,32 +38,29 @@
    "location_id": "7a3d6539dcbe00bf",
    "practice_name": "MYNT DENTAL FRANNKLIN PARK LLC",
    "zip": "60131",
-   "assigned_tier": "undetermined",
+   "assigned_tier": "dentist_multi",
    "pe_backed": false,
    "evidence_basis": "web_verified",
    "evidence_urls": [
     "https://www.myntdental.com/",
-    "https://www.myntdental.com/franklin-park",
-    "https://www.vitadox.com/practice/bolingbrook-il-60440/mynt-dental-bolingbrook-llc/utp8cZu8LH4RQP7UUBnHgh"
+    "https://www.dentalplans.com/dentists/illinois/bolingbrook/60440/dr-sasan-molavi-267783/",
+    "https://www.yelp.com/biz/mynt-dental-mount-pleasant"
    ],
-   "evidence_artifacts": ["ao_cluster:SASAN_MOLAVI multi-state"],
-   "confidence": "medium",
-   "status": "undetermined",
-   "network_id": "brand:mynt_dental",
-   "reasoning": "Mynt Dental is a multi-location network (Franklin Park, Wheeling, Addison, Bolingbrook, Decatur, East St. Louis in IL plus IN/WI sites) with Dr. Sasan Molavi named as NPI authorized official/manager across sites. Network appears to span 10+ locations, so per R4 this is held for one-network-one-decision review rather than classified here. R4_protected_network:Mynt Dental.",
+   "evidence_artifacts": ["ao_cluster:SASAN_MOLAVI President/Sole Member across Mynt Dental Franklin Park (IL), Mynt Dental Bolingbrook LLC (IL), Mynt Dental Mount Pleasant/Racine (WI)"],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "ao:MOLAVI_SASAN",
+   "reasoning": "Re-verified via the practice's own site (myntdental.com, whose footer/social links reference only Franklin Park and Mount Pleasant) plus directory listings confirming Dr. Sasan Molavi DDS is President/Sole Member of Mynt Dental Bolingbrook LLC and is also linked to a Mynt Dental office in Mount Pleasant/Racine, WI -- a small dentist-owned mini-chain of roughly 3 offices (Franklin Park + Bolingbrook, IL; Mount Pleasant/Racine, WI). A targeted follow-up search for additional cities (Wheeling, Addison, Decatur, East St. Louis) found no supporting evidence of such locations, so this does not meet the 10+ location bar for an R4 protected-network hold. Classified dentist_multi: dentist-owned, 2+ verified locations, not a corporate/non-dentist controller.",
    "searched": [
-    "Mynt Dental Franklin Park IL 2731 Mannheim Road",
-    "Mynt Dental locations Illinois how many offices owner Molavi",
-    "\"Mynt Dental\" management company owner private equity OR \"Molavi Dental\""
+    "Mynt Dental Franklin Park IL Sasan Molavi dentist",
+    "\"Sasan Molavi\" dentist Bolingbrook OR \"60440\" IL",
+    "Mynt Dental locations list Illinois Indiana Wisconsin how many offices"
    ],
    "intel": {
-    "website_url": "https://www.myntdental.com/franklin-park",
-    "website_note": "Polished multi-location DSO-style website (myntdental.com) with per-city landing pages.",
-    "provider_notes": "Dentists named on site/directories: Dr. Heinery Arevalo, Dr. Ashley McIntosh, Dr. Anna Molavi, Dr. Sasan Molavi, Dr. Keith Patel.",
-    "google_rating": 4.9,
-    "google_source_url": "https://www.yelp.com/biz/mynt-dental-franklin-park",
-    "distinguishing_notes": "19 Yelp reviews at this location; part of a growing multi-city Mynt Dental footprint.",
-    "sources": ["https://www.myntdental.com/franklin-park", "https://www.yelp.com/biz/mynt-dental-franklin-park"]
+    "website_url": "https://www.myntdental.com/",
+    "website_note": "Brand site for the small Mynt Dental group; footer/social links confirm Franklin Park and Mount Pleasant, WI as its locations.",
+    "distinguishing_notes": "Dentist-owned ~3-location mini-chain (Franklin Park + Bolingbrook, IL; Mount Pleasant/Racine, WI area) under Dr. Sasan Molavi.",
+    "sources": ["https://www.myntdental.com/", "https://www.yelp.com/biz/mynt-dental-mount-pleasant"]
    }
   },
   {
@@ -264,7 +261,7 @@
    "confidence": "medium",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Existing entity_classification flagged this as dso_national under brand 'Gentle Dental,' but this is a name-only collision: the practice runs its own independent site (gentledentalsmile.com) at a single address, and the real national 'Gentle Dental' (InterDent) locator page lists no Illinois office at this address (nearest IL InterDent-branded sites are Yorkville/Mundelein/Hoffman Estates/Chicago, none matching). No documentary link to InterDent found, so reclassified independent per address-level evidence rather than name match.",
+   "reasoning": "Existing entity_classification flagged this as dso_national under brand 'Gentle Dental,' but this is a name-only collision: the practice runs its own independent site (gentledentalsmile.com) at a single address, and the real national 'Gentle Dental' (InterDent) locator page lists no Illinois office at this address (nearest IL InterDent-branded sites are Yorkville/Mundelein/Hoffman Estates/Chicago, none matching, and a direct fetch of interdent.com's own locator confirms IL is entirely absent from its footprint: only HI, CA, OR, WA, AZ, NV, OK, KS). No documentary link to InterDent found, so reclassified independent per address-level evidence rather than name match.",
    "searched": [
     "Gentle Dental Hanover Park IL 5537 County Farm Rd locations",
     "\"Gentle Dental\" InterDent Illinois locations",
@@ -366,16 +363,18 @@
     "https://www.linkedin.com/in/mayank-adatia-3327769/"
    ],
    "evidence_artifacts": [],
-   "confidence": "medium",
+   "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "A-One Dental Care's own site names Dr. Mayank Adatia, DDS as President alongside his wife Dr. Shaku (Sarah) Adatia, DDS — a husband-and-wife dentist-owned team at this Irving Park Rd address. Bio text references decades of career history in Aurora and Schaumburg, but no site lists concurrent multiple offices, so this is treated as a single-location dentist-owned group rather than a confirmed multi-site network.",
+   "reasoning": "A-One Dental Care's own site, directly re-fetched and confirmed, names exactly two dentists: Dr. Mayank Adatia, DDS as President, and Dr. Shaku Adatia, DDS -- a husband-and-wife dentist-owned team at this Irving Park Rd address, with no corporate parent, management company, or DSO mention anywhere on the site. Bio text references decades of career history in Aurora and Schaumburg, but no site lists concurrent multiple offices, so this is a single-location dentist-owned 2-provider group.",
    "searched": [
-    "Schaumburg Dental Care A-One Dental Hanover Park IL Mayank Adatia"
+    "Schaumburg Dental Care A-One Dental Hanover Park IL Mayank Adatia",
+    "aonedentalcare.com dentists team corporate DSO"
    ],
    "intel": {
     "website_url": "https://www.aonedentalcare.com/",
-    "provider_notes": "Dr. Mayank Adatia, DDS (NYU College of Dentistry, 1980 grad), President; Dr. Shaku (Sarah) Adatia, DDS.",
+    "website_note": "Own-brand site confirmed via direct fetch to name exactly two dentists (husband-wife team), no corporate/DSO/PE mention.",
+    "provider_notes": "Dr. Mayank Adatia, DDS (NYU College of Dentistry, 1980 grad), President; Dr. Shaku Adatia, DDS.",
     "owner_career_stage": "late_career",
     "services": ["Smile makeovers", "Cosmetic dentistry", "Root canals", "Crowns and bridges", "Periodontal surgery"],
     "distinguishing_notes": "Career spans since 1981 (Aurora) and 16+ years serving the Schaumburg/Hanover Park area.",
@@ -386,54 +385,60 @@
    "location_id": "990bbf9bd4c11856",
    "practice_name": "Primary Dental",
    "zip": "60133",
-   "assigned_tier": "undetermined",
+   "assigned_tier": "true_independent",
    "pe_backed": false,
    "evidence_basis": "web_verified",
    "evidence_urls": [
     "https://www.epicdentalspa.com/",
-    "https://www.yelp.com/biz/epic-dental-spa-hanover-park"
+    "https://www.yelp.com/biz/epic-dental-spa-hanover-park",
+    "https://findadentist.ada.org/dentists/dr-kamlesh-g-amin-hanover-park-0038V00002yk07OQAQ-a1C8V00000lYKsmUAG"
    ],
    "evidence_artifacts": [],
-   "confidence": "low",
-   "status": "undetermined",
+   "confidence": "high",
+   "status": "classified",
    "network_id": null,
-   "reasoning": "Our record's address (1824 Irving Park Rd) currently hosts 'Epic Dental Spa' (Dr. Kamlesh G. Amin / Dr. Kaylan Patel, DMD) per multiple independent sources, not a practice named 'Primary Dental' — the true 'Primary Dental' (Dr. Kavita Shah) is confirmed at the nearby but distinct 1814 Irving Park Rd address. This looks like a stale/renamed NPI record for a location that has since turned over to a different named business. closure_suspect — could not verify current ownership of the entity as recorded, so left undetermined rather than guessing.",
+   "reasoning": "This NPI's registered name 'Primary Dental' is stale: the address 1824 Irving Park Rd is confirmed active and operating as Epic Dental Spa under Dr. Kamlesh G. Amin (37 years of family dental care, UIC dental grad), verified by an exact phone-number match (630-389-1002) to our unit record plus a current ADA Find-a-Dentist listing, Yelp (updated July 2026), Facebook and Instagram. This is not a closure -- it is a real, thriving, independent practice operating under new branding at the same address/phone, with no corporate/DSO signal found. The nearby, distinctly-addressed 'Primary Dental Ltd' (1814 Irving Park Rd, Dr. Kavita Shah) is a separate practice, correctly disambiguated by address rather than name.",
    "searched": [
-    "Primary Dental 1824 Irving Park Rd Hanover Park IL dentist",
-    "Epic Dental Spa 1824 Irving Park Rd Hanover Park IL owner dentist"
+    "\"Primary Dental\" \"1824\" Irving Park Rd Hanover Park IL dentist",
+    "\"1824\" \"Irving Park Rd\" Hanover Park dental Epic Dental Spa OR \"Primary Dental\"",
+    "Epic Dental Spa Hanover Park IL 1824 Irving Park Rd Kamlesh Amin"
    ],
    "intel": {
     "website_url": "https://www.epicdentalspa.com/",
-    "provider_notes": "Current address occupant is Epic Dental Spa (Dr. Kamlesh G. Amin; Dr. Kaylan Patel, DMD also appears in reviews), not 'Primary Dental'.",
-    "sources": ["https://www.epicdentalspa.com/", "https://www.yelp.com/biz/epic-dental-spa-hanover-park"]
+    "website_note": "Practice at this address now operates as Epic Dental Spa (Dr. Kamlesh G. Amin), a rebrand from the NPI's registered 'Primary Dental' name; combines dental care with spa-style services.",
+    "services": ["regular cleanings", "root canals", "extractions", "implants", "dentures", "cosmetic dentistry", "laser dentistry"],
+    "provider_notes": "Dr. Kamlesh G. Amin, UIC dental grad, 37 years providing family dental care.",
+    "owner_career_stage": "late_career",
+    "insurance_note": "Multilingual practice: Gujarati, Hindi, Spanish.",
+    "sources": ["https://www.epicdentalspa.com/", "https://www.yelp.com/biz/epic-dental-spa-hanover-park", "https://findadentist.ada.org/dentists/dr-kamlesh-g-amin-hanover-park-0038V00002yk07OQAQ-a1C8V00000lYKsmUAG"]
    }
   },
   {
    "location_id": "bbdcf63c1d812b73",
    "practice_name": "PARK BLVD DENTISTRY",
    "zip": "60137",
-   "assigned_tier": "single_loc_group",
+   "assigned_tier": "true_independent",
    "pe_backed": false,
    "evidence_basis": "web_verified",
    "evidence_urls": [
     "https://parkblvddentistry.com/about-us/",
-    "https://www.healthgrades.com/group-directory/il-illinois/glen-ellyn/practice-xt5hq4"
+    "https://www.opencare.com/dentists/glen-ellyn-il/sharon-szeszycki-dds-24631238159d/"
    ],
    "evidence_artifacts": [],
    "confidence": "high",
    "status": "classified",
    "network_id": null,
-   "reasoning": "Practice's own about-us page lists a 7-dentist team (led by Dr. Paul Doodes, DDS) all practicing at this single 45 S Park Blvd address, established 1987. No corporate parent, management company, or DSO brand found — a large but single-location dentist-run group practice.",
+   "reasoning": "Practice's own about-us page, directly re-fetched, names a single dentist, Dr. Paul Doodes DDS PhD ('you'll always see Dr. Paul Doodes'), at this single 45 S Park Blvd address, and explicitly states the practice is privately owned with no corporate parent, management company, or DSO brand mentioned. Founder Dr. Sharon Szeszycki's history (own practice since 1982, relocated under this name in 2014) supports a long-standing independently-owned single-office practice; the unit's provider_count of 13 likely reflects hygienists/staff NPIs rather than additional dentists, since the site names only one treating dentist.",
    "searched": [
-    "Park Blvd Dentistry Glen Ellyn IL owner Szeszycki",
-    "Park Blvd Dentistry Glen Ellyn IL dentists team providers how many"
+    "\"Park Blvd Dentistry\" Glen Ellyn IL Sharon Szeszycki dentist owner",
+    "Park Blvd Dentistry Glen Ellyn IL about us dentists team"
    ],
    "intel": {
     "website_url": "https://parkblvddentistry.com/",
-    "provider_notes": "Dr. Paul Doodes, DDS (lead); Dr. Yangbasai Dong, DMD; Dr. Eric Townsend, DDS; Dr. Manal Ibrahim, DDS; Dr. Preshika Saini, DMD; Dr. Tasneem Azeem, DMD; Dr. Daniel Campolieto, DDS; also historically Dr. Sharon Szeszycki, DDS (40+ yrs experience, Loyola 1982 grad).",
-    "services": ["General & family dentistry", "Sealants", "Cosmetic dentistry"],
-    "distinguishing_notes": "One of the larger independent group practices in the ZIP — established 1987, 13-provider NPI roster (dentists + hygienists/staff).",
-    "sources": ["https://parkblvddentistry.com/about-us/", "https://www.healthgrades.com/group-directory/il-illinois/glen-ellyn/practice-xt5hq4"]
+    "website_note": "Own-brand site with explicit privately-owned/independent messaging; single treating dentist named.",
+    "provider_notes": "Dr. Paul Doodes, DDS PhD (current lead dentist); founder Dr. Sharon Szeszycki DDS (Loyola Dental School 1982) built the practice via a 1982 founding, a 1987 acquisition, and a 1990 partnership before relocating to this address in 2014.",
+    "distinguishing_notes": "40+ year practice legacy; explicit anti-chain/anti-corporate positioning on its own site.",
+    "sources": ["https://parkblvddentistry.com/about-us/", "https://www.opencare.com/dentists/glen-ellyn-il/sharon-szeszycki-dds-24631238159d/"]
    }
   }
  ]
