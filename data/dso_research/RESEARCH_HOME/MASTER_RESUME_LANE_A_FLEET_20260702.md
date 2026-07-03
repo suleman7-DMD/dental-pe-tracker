@@ -455,3 +455,31 @@ adjudication only for the missing queue; until then, the conservative merge cand
 those 147 rows.
 
 No DB, Supabase, LEDGER, or PROGRESS writes occurred during this recovery.
+
+## §6k — Codex completed the missing adjudication queue (2026-07-03)
+
+User asked Codex to finish the 147 rows Fable's session-limit crash left unadjudicated. Codex did
+**not** label these as Opus outputs. Provenance is separate and explicit:
+
+- Script: `scrapers/adjudicate_missing_lane_a_codex.py`
+- Input: `_lane_a_20260702/_adjudication_missing_20260703.json` (147 bundles)
+- Codex output: `_lane_a_20260702/adjudication_codex_missing_20260703.json`
+- Complete rollup: `_lane_a_20260702/_adjudication_rollup_complete_20260703.json`
+
+Policy used: conservative §6h adjudication from persisted bundles only, no live web re-check. DB
+corporate conflicts and parent/control signals stay held; T1 is accepted only with own/current
+owner-operator + single-location proof; T2/T3 are accepted only when already outside the true-solo
+bucket and not contradicted by corporate/control signals.
+
+Complete 277-blocker rollup now reads:
+- Source split: Opus batch dispositions 130 / Codex missing-row dispositions 147.
+- Merge-original accepts: 99.
+- Merge-corrected tier: 65 (57 T1→T2 from Opus, 4 T1→T3 from Opus, 4 T2→T3 from Codex).
+- Held out of merge: 113.
+- Hold split: hold_dso_verify 51 / hold_network_review 24 / hold_unresolved 26 /
+  hold_control_review 12.
+
+Use `_adjudication_rollup_complete_20260703.json` for the next merge gate, not the older §6j
+recovery-only rollup. If Fable wants higher coverage, review the 113 holds, especially the 72
+Codex holds, but they must remain excluded unless explicitly accepted/corrected. Still no DB,
+Supabase, LEDGER, or PROGRESS writes occurred.
