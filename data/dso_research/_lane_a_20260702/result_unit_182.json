@@ -1,0 +1,406 @@
+{
+  "unit_id": "laneA_182",
+  "classifications": [
+    {
+      "location_id": "2d8d27ee8d76c212",
+      "practice_name": "JUST SMILES LTD",
+      "zip": "60155",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.justsmilesbroadview.com/",
+        "https://www.justsmilesbroadview.com/office"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Own practice website (justsmilesbroadview.com) confirms a single Broadview office at the exact address, run by Dr. Monique C. Tucker DDS (UIC 1994 grad), with no parent company, franchise, or DSO branding mentioned. Solo GP, single location, dentist-operated.",
+      "searched": [
+        "Just Smiles Ltd dental Broadview IL Kimika Wesley",
+        "Just Smiles Ltd Broadview IL dentist owner Kimika Wesley DDS"
+      ],
+      "intel": {
+        "website_url": "https://www.justsmilesbroadview.com/",
+        "website_note": "Modern single-practice marketing site with online new-patient forms; positions itself as general/cosmetic family dentistry.",
+        "services": ["general dentistry", "cosmetic dentistry", "teeth whitening", "implants", "veneers"],
+        "provider_count_web": 1,
+        "provider_notes": "Dr. Monique C. Tucker, DDS — University of Illinois at Chicago College of Dentistry, 1994.",
+        "owner_career_stage": "late_career",
+        "distinguishing_notes": "Open Sat, closed Wed/Sun; NPPES authorized official (Kimika Wesley) differs from the treating dentist shown on the practice's own site (Tucker) — likely office-manager AO, not a change of clinical ownership.",
+        "sources": ["https://www.justsmilesbroadview.com/", "https://www.justsmilesbroadview.com/office"]
+      }
+    },
+    {
+      "location_id": "8666690bbd17581d",
+      "practice_name": "PRAKASH K. UPADHYAYA DDS LTD.",
+      "zip": "60155",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.dentalplans.com/dentists/illinois/broadview/60155/dr-prakash-upadhyaya-26122/",
+        "https://www.dentalplans.com/dentists/illinois/chicago/60651/dr-prakash-upadhyaya-50362/",
+        "https://doctor.webmd.com/practice/prakash-k-upadhyaya-dds-1461b52c-f761-454d-ae0a-056c52701a65"
+      ],
+      "evidence_artifacts": ["ao_cluster_match: owner_reach_locations=2 (60155,60651) confirmed by independent directory listings under Dr. Upadhyaya's own name at both zips"],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "ao:UPADHYAYA_PRAKASH",
+      "reasoning": "Directory listings independently confirm Dr. Prakash Upadhyaya practices under his own name at both the Broadview address (matches this record) and a second office in Chicago 60651, matching the NPPES AO cluster (owner_reach 2 locations, same two ZIPs). No corporate parent or brand found — dentist-owned two-office practice.",
+      "searched": ["Prakash Upadhyaya DDS Broadview IL dentist"],
+      "intel": {
+        "website_url": null,
+        "website_note": "No official practice website found in search results; presence confirmed via aggregator/directory listings only.",
+        "services": ["general dentistry"],
+        "distinguishing_notes": "Telehealth offered; accepts multiple insurance plans; practices across two IL locations (Broadview + Chicago 60651).",
+        "sources": ["https://www.dentalplans.com/dentists/illinois/broadview/60155/dr-prakash-upadhyaya-26122/", "https://doctor.webmd.com/practice/prakash-k-upadhyaya-dds-1461b52c-f761-454d-ae0a-056c52701a65"]
+      }
+    },
+    {
+      "location_id": "68e714ceee56399d",
+      "practice_name": "GEORGE D DI TOLA DDS LTD",
+      "zip": "60160",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.ditolafamilydental.com/",
+        "https://www.ditolafamilydental.com/george-ditola-dds/",
+        "https://www.healthgrades.com/dentist/dr-george-ditola-ygc7h"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Own website 'DiTola Family Dental' confirms a single Melrose Park office at this exact address run by Dr. George DiTola (UIC grad), matching the record's 2-provider small_group classification. No DSO, parent company, or additional locations mentioned anywhere in search results.",
+      "searched": ["George Di Tola DDS Melrose Park IL dentist"],
+      "intel": {
+        "website_url": "https://www.ditolafamilydental.com/",
+        "website_note": "Dedicated single-office marketing site branded 'DiTola Family Dental.'",
+        "services": ["general/family dentistry", "oral surgery", "molar root canals", "periodontal scaling", "bleaching", "porcelain veneers"],
+        "provider_notes": "Dr. George DiTola, DDS — UIC College of Dentistry grad.",
+        "distinguishing_notes": "Accepting new patients; 4.2-star average rating on Healthgrades (not a Google rating, so not recorded as such).",
+        "sources": ["https://www.ditolafamilydental.com/", "https://www.healthgrades.com/dentist/dr-george-ditola-ygc7h"]
+      }
+    },
+    {
+      "location_id": "32826a704c502f7f",
+      "practice_name": "DR ISABEL C. SUASTEGUI-MURSULI DDS LTD",
+      "zip": "60160",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://findadentist.ada.org/dentists/dr-isabel-c-suastegui-mursuli-melrose-park-0038V00002yk20hQAA-a1C8V00000lXTHuUAO",
+        "https://www.patientconnect365.com/Dentists/Illinois/MelrosePark/60160/Isabel_SuasteguiMursuli_DDS",
+        "https://www.healthgrades.com/dentist/dr-isabel-suastegui-mursuli-xhh82"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Multiple independent directories (ADA Find-a-Dentist, patient portals, Healthgrades) consistently show a single Melrose Park office at this address under Dr. Suastegui-Mursuli's own name with no corporate or DSO signal. No official practice website was located, hence medium rather than high confidence.",
+      "searched": ["Isabel Suastegui-Mursuli DDS Melrose Park IL dentist"],
+      "intel": {
+        "distinguishing_notes": "Bilingual practice (Spanish spoken); accepts new patients and multiple insurance plans.",
+        "sources": ["https://www.patientconnect365.com/Dentists/Illinois/MelrosePark/60160/Isabel_SuasteguiMursuli_DDS", "https://findadentist.ada.org/dentists/dr-isabel-c-suastegui-mursuli-melrose-park-0038V00002yk20hQAA-a1C8V00000lXTHuUAO"]
+      }
+    },
+    {
+      "location_id": "6eb29fb2dae449c1",
+      "practice_name": "Loya-Costabile Dental",
+      "zip": "60160",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://doctor.webmd.com/doctor/flor-loya-costabile-dcb19778-77dd-4e9a-8a82-640f5af00ba2-overview",
+        "https://loyadental.com/team.htm",
+        "https://findadentist.ada.org/dentists/dr-flor-d-loya-costabile-elmhurst-0038V00002yk0Z8QAI-a1C8V00000lX9msUAC"
+      ],
+      "evidence_artifacts": ["Same phone (708) 344-5437 as sibling record 'FLOR D. LOYA, D.D.S., LTD' at 154 N 19th Ave — corner-address duplicate of the same office"],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": "ao:LOYA-COSTABILE_FLOR",
+      "reasoning": "Web search confirms Dr. Flor Loya-Costabile, a pediatric dentist (Univ. of Michigan DDS 1990, ABPD diplomate), practices at this Melrose Park address (per WebMD's Melrose Park doctor overview) in addition to her main pediatric practice/team page in Elmhurst (60126, loyadental.com). This matches the sister NPI record's NPPES AO cluster (owner_reach 60126+60160). Dentist-owned, no corporate parent.",
+      "searched": ["Loya-Costabile Dental Melrose Park IL"],
+      "intel": {
+        "website_url": "https://loyadental.com/",
+        "website_note": "Pediatric-dentistry-focused practice site (Elmhurst-based) with a team/bio page.",
+        "provider_notes": "Dr. Flor Loya-Costabile, DDS — Univ. of Michigan Dental School 1990, ABPD Diplomate, AAPD/ISPD member.",
+        "owner_career_stage": "late_career",
+        "distinguishing_notes": "Bilingual (Spanish); minimal-sedation pediatric practice offering nitrous oxide for anxious patients and minor oral surgery.",
+        "sources": ["https://loyadental.com/team.htm", "https://doctor.webmd.com/doctor/flor-loya-costabile-dcb19778-77dd-4e9a-8a82-640f5af00ba2-overview"]
+      }
+    },
+    {
+      "location_id": "5fb892309fd022bf",
+      "practice_name": "Marchese Dental",
+      "zip": "60160",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.healthgrades.com/dentist/dr-fred-marchese-yklrq",
+        "https://www.doctorsnetwork.com/doctors/dentists/melrose-park-il-60160/invite-fred-marchese-dds-10136"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Directory listings consistently show Dr. Fred Marchese, DDS (Northwestern Dental School 1984) as a solo practitioner at this single Melrose Park suite address with no other locations, parent company, or DSO branding referenced anywhere.",
+      "searched": ["Marchese Dental Melrose Park IL 1440 W North Ave"],
+      "intel": {
+        "services": ["cosmetic bonding/bleaching", "dentures", "implants", "laser gum treatment", "general/preventive dentistry", "extractions", "whitening", "urgent/24-hour emergency care"],
+        "provider_notes": "Dr. Fred Marchese, DDS — Northwestern University Dental School, 1984.",
+        "owner_career_stage": "late_career",
+        "distinguishing_notes": "40+ years in practice; Saturday/evening appointments; senior-citizen discounts; telehealth offered.",
+        "sources": ["https://www.healthgrades.com/dentist/dr-fred-marchese-yklrq", "https://www.doctorsnetwork.com/doctors/dentists/melrose-park-il-60160/invite-fred-marchese-dds-10136"]
+      }
+    },
+    {
+      "location_id": "22339e62a416ed22",
+      "practice_name": "Walton Dental",
+      "zip": "60160",
+      "assigned_tier": "branded_dso",
+      "pe_backed": false,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "https://www.dentalandbraces.com/location/melrose-park/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "brand:all_family_dental_braces",
+      "reasoning": "All Family Dental & Braces' own locator page lists a Melrose Park office at this exact phone number (708) 498-4410, with the DSO's site showing many locations across IL (Archer Heights, Arlington Heights, Aurora, Berwyn, Elgin, Grayslake, Little Village, Rockford, Oak Lawn, etc.). 'Dr. Elizabeth Walton' is a corporate-employed associate dentist (directories show her working across '9 other locations'), not the practice owner — this is a known, previously-documented branded DSO, not an ambiguous discovered network.",
+      "searched": ["Walton Dental Melrose Park IL 1812 Broadway"],
+      "intel": {
+        "website_url": "https://www.dentalandbraces.com/location/melrose-park/",
+        "website_note": "Corporate multi-location DSO site (All Family Dental & Braces) with a dedicated Melrose Park location page.",
+        "distinguishing_notes": "DSO combines general dentistry + orthodontics ('& Braces') under one brand; associate dentist listed works across many of the chain's locations.",
+        "sources": ["https://www.dentalandbraces.com/location/melrose-park/"]
+      }
+    },
+    {
+      "location_id": "df816f9629da7a88",
+      "practice_name": "MELROSE DENTAL CENTER SERVICE P.C",
+      "zip": "60160",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.healthgrades.com/dentist/dr-carlos-alberttis-xm8xg",
+        "https://www.dentalinsider.com/melrose-park/dentist/dr-carlos-alberttis-dds-1-86019",
+        "https://www.yelp.com/biz/alberttis-carlos-j-dds-melrose-park"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Consistent directory confirmation (Healthgrades, DentalInsider, Yelp, WebMD) shows Dr. Carlos J. Alberttis, DDS as solo owner-practitioner at this single 1908 W Lake St address, matching the record's solo_established classification. A follow-up search for a claimed second office turned up no corroborating source, so only the single confirmed location is used.",
+      "searched": ["\"Melrose Dental Center\" Melrose Park IL Carlos Alberttis", "\"Carlos Alberttis\" \"147 N 15th\" OR \"second location\" Melrose Park dentist"],
+      "intel": {
+        "distinguishing_notes": "Offers family dental services; single-provider general practice.",
+        "sources": ["https://www.dentalinsider.com/melrose-park/dentist/dr-carlos-alberttis-dds-1-86019", "https://www.healthgrades.com/dentist/dr-carlos-alberttis-xm8xg"]
+      }
+    },
+    {
+      "location_id": "4b18f462d39f207a",
+      "practice_name": "Patel Apurva DMD",
+      "zip": "60160",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://stevenbobbe.dr-leonardo.com/",
+        "https://www.welli.com/care/provider/1073684189"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Searching the exact address/phone (1509 W North Ave, 708-343-0200) resolves to NPI 1073684189 now publicly listed under 'Steven A. Bobbe, DDS,' a solo general-practice dentist at that address — the record's registered name (Patel) appears to be a stale NPPES entry vs. the currently-operating solo dentist. Either way, no corporate/DSO signal was found; this is an independent solo GP office. Flagged medium confidence due to the name mismatch.",
+      "searched": ["Apurva Patel DMD Melrose Park IL dentist", "\"1509 W North Ave\" Melrose Park dentist Patel", "\"708-343-0200\" OR \"(708) 343-0200\" dentist Melrose Park", "NPI 1073684189 Patel dentist Melrose Park"]
+    },
+    {
+      "location_id": "c91b7125e3c4b20f",
+      "practice_name": "Sheikh Medical Partnership",
+      "zip": "60160",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.bbb.org/us/il/melrose-park/profile/dentist/sheikh-dental-0654-1000104605",
+        "https://www.zocdoc.com/dentist/dilmubarak-sheikh-dds-72717",
+        "https://www.manta.com/c/mmqh0fr/sheikh-medical-partnership"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "BBB profile explicitly names Dr. Dilmubarak Sheikh as owner of this single-location practice ('Sheikh Dental'), in business 19 years, with no franchise, parent company, or DSO affiliation mentioned.",
+      "searched": ["Sheikh Medical Partnership dental Melrose Park IL"],
+      "intel": {
+        "services": ["general dentistry", "checkups", "cleanings", "fillings", "Invisalign", "dental implants", "teeth whitening"],
+        "provider_notes": "Owner Dr. Dilmubarak Sheikh, DDS; office managed by Lilliana Hernandez; in business ~19 years (BBB accredited 2025).",
+        "owner_career_stage": "mid_career",
+        "distinguishing_notes": "Dr. Sheikh speaks English, Spanish, Hindi, Urdu, and Kashmiri.",
+        "sources": ["https://www.bbb.org/us/il/melrose-park/profile/dentist/sheikh-dental-0654-1000104605", "https://www.zocdoc.com/dentist/dilmubarak-sheikh-dds-72717"]
+      }
+    },
+    {
+      "location_id": "9db251c22c76a67e",
+      "practice_name": "DIMOULIS DENTAL P.C.",
+      "zip": "60160",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.thedentalofficeatmelrosepark.com/meet-the-doctors",
+        "https://www.healthgrades.com/dentist/dr-theodore-dimoulis-xymc8rp"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "The practice's own site ('The Dental Office at Melrose Park') confirms it is owned and operated by married dentist couple Dr. Ted Dimoulis and Dr. Katerine Dimoulis, matching the record's 4-provider large_group classification at one address. The only 'management' reference found is Officite, a website-hosting vendor, not a DSO parent — no other locations mentioned.",
+      "searched": ["Dimoulis Dental Melrose Park IL Theodore Dimoulis", "(fetch) thedentalofficeatmelrosepark.com/meet-the-doctors"],
+      "intel": {
+        "website_url": "https://www.thedentalofficeatmelrosepark.com/",
+        "website_note": "Practice-branded site ('The Dental Office at Melrose Park') with a 'Meet the Doctors' bio page.",
+        "provider_count_web": 2,
+        "provider_notes": "Dr. Ted Dimoulis, DMD (UIC BS, Rush MS, UIC DMD) and Dr. Katerine Dimoulis, DMD (fluent in Spanish) — married couple co-owners.",
+        "distinguishing_notes": "Positioned as a family-run, husband-and-wife practice.",
+        "sources": ["https://www.thedentalofficeatmelrosepark.com/meet-the-doctors"]
+      }
+    },
+    {
+      "location_id": "d633814983458c77",
+      "practice_name": "Dado Dental",
+      "zip": "60160",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.dentalinsider.com/melrose-park/dentist/dr-claudia-dado-dds-52349",
+        "https://www.doctorsnetwork.com/doctors/dentists/melrose-park-il-60160/invite-claudia-dado-dds-13332",
+        "https://www.healthgrades.com/dentist/dr-claudia-dado-37lkf"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Multiple independent directories consistently show Dr. Claudia Dado, DDS as a solo practitioner at this single Winston Plaza address, matching the record's solo_established classification, with no corporate or DSO signal anywhere.",
+      "searched": ["Dado Dental Melrose Park IL Winston Plaza"],
+      "intel": {
+        "services": ["checkups", "x-rays", "cleanings", "fillings", "crowns", "root canals", "dental implants", "dentures", "extractions", "Invisalign", "veneers", "teeth whitening"],
+        "provider_notes": "Dr. Claudia Dado, DDS — solo owner-practitioner.",
+        "sources": ["https://www.dentalinsider.com/melrose-park/dentist/dr-claudia-dado-dds-52349", "https://www.doctorsnetwork.com/doctors/dentists/melrose-park-il-60160/invite-claudia-dado-dds-13332"]
+      }
+    },
+    {
+      "location_id": "67f5e99a8d0e6407",
+      "practice_name": "FLOR D. LOYA, D.D.S., LTD",
+      "zip": "60160",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://loyadental.com/team.htm",
+        "https://doctor.webmd.com/doctor/flor-loya-costabile-dcb19778-77dd-4e9a-8a82-640f5af00ba2-overview",
+        "https://findadentist.ada.org/dentists/dr-flor-d-loya-costabile-elmhurst-0038V00002yk0Z8QAI-a1C8V00000lX9msUAC"
+      ],
+      "evidence_artifacts": ["NPPES AO cluster: owner_reach_locations=2, zips 60126 (Elmhurst) + 60160 (Melrose Park), matching web-confirmed practice footprint"],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:LOYA-COSTABILE_FLOR",
+      "reasoning": "This is the org-NPI record for Dr. Flor Loya-Costabile's pediatric practice; her AO cluster (60126+60160) matches web evidence of a Univ. of Michigan-trained (1990) pediatric dentist practicing at both an Elmhurst main office (loyadental.com) and this Melrose Park address. Dentist-owned, two-location network — no corporate parent found.",
+      "searched": ["Loya-Costabile Dental Melrose Park IL"],
+      "intel": {
+        "website_url": "https://loyadental.com/",
+        "provider_notes": "Dr. Flor Loya-Costabile, DDS — Univ. of Michigan Dental School 1990, ABPD Diplomate.",
+        "owner_career_stage": "late_career",
+        "distinguishing_notes": "Pediatric specialty practice; bilingual (Spanish); minimal-sedation/nitrous-oxide approach for anxious pediatric patients.",
+        "sources": ["https://loyadental.com/team.htm", "https://doctor.webmd.com/doctor/flor-loya-costabile-dcb19778-77dd-4e9a-8a82-640f5af00ba2-overview"]
+      }
+    },
+    {
+      "location_id": "a6fbc5ac28cd06ac",
+      "practice_name": "TERRENCE P. LOOBY, D.D.S.",
+      "zip": "60160",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/looby-terrence-p-dds-melrose-park",
+        "https://www.yelp.com/biz/terrence-p-looby-dds-chicago",
+        "https://www.dentalplans.com/dentists/illinois/melrose-park/60160/dr-terrence-looby-19737/"
+      ],
+      "evidence_artifacts": ["NPPES AO cluster: owner_reach_locations=2, zips 60160 + 60634, matching the two web-confirmed office addresses"],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:LOOBY_TERRENCE",
+      "reasoning": "Confirmed via directory listings that Dr. Terrence P. Looby, DDS (a solo dentist, 'Terrence P Looby DDS PC,' Univ. of Michigan grad) operates two offices under his own name/PC: this Melrose Park address (1800 W Lake St) and a second office at 7310 W Belmont Ave, Chicago 60634 — matching the record's AO cluster exactly. Dentist-owned, no corporate parent.",
+      "searched": ["Terrence Looby DDS Melrose Park IL dentist", "\"Terrence Looby\" DDS Chicago 60634 dentist office"],
+      "intel": {
+        "services": ["dental cleanings", "root canals", "bridges", "teeth whitening", "veneers", "fillings", "partial/full dentures", "implants"],
+        "provider_notes": "Dr. Terrence Looby, DDS — Univ. of Michigan grad; practice ('Terrence P Looby DDS PC') founded 2009.",
+        "owner_career_stage": "mid_career",
+        "distinguishing_notes": "Bilingual (English/Spanish); operates two offices (Melrose Park + Chicago Dunning neighborhood).",
+        "sources": ["https://www.yelp.com/biz/looby-terrence-p-dds-melrose-park", "https://www.yelp.com/biz/terrence-p-looby-dds-chicago"]
+      }
+    },
+    {
+      "location_id": "920069c119492ddc",
+      "practice_name": "Medical Center Dental Assoc",
+      "zip": "60160",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.mcdadental.com/",
+        "https://www.loyolamedicine.org/location/medical-center-dental-assoc-0",
+        "https://www.bbb.org/us/il/melrose-park/profile/dentist/medical-center-dental-associates-ltd-0654-88200495"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "The practice's own site (mcdadental.com) explicitly states it is independently owned by partner-dentists Drs. McShane, Szatkowski, and Erce, established 1984, with two offices: this Melrose Park address (which happens to sit inside the Gottlieb Memorial Hospital professional building, explaining the ctx institutional_hint) and Elk Grove Village. Loyola Medicine's listing is a referral-directory page, not evidence of hospital ownership — the institutional_hint is a false positive from the building location, not a health-system-owned clinic.",
+      "searched": ["\"Medical Center Dental\" Melrose Park IL 675 W North Ave", "(fetch) mcdadental.com"],
+      "intel": {
+        "website_url": "https://www.mcdadental.com/",
+        "website_note": "Independent multi-partner practice site emphasizing ~40-year family/cosmetic dentistry history.",
+        "provider_count_web": 3,
+        "provider_notes": "Partner dentists: Dr. James B. McShane, Dr. Szatkowski, Dr. Erce.",
+        "distinguishing_notes": "Two offices (Melrose Park + Elk Grove Village); Melrose Park office located within the Gottlieb Memorial Hospital Professional Building but not hospital-owned.",
+        "sources": ["https://www.mcdadental.com/", "https://www.loyolamedicine.org/location/medical-center-dental-assoc-0"]
+      }
+    },
+    {
+      "location_id": "4864be0b1d4d3366",
+      "practice_name": "Aspen Dental",
+      "zip": "60160",
+      "assigned_tier": "branded_dso",
+      "pe_backed": true,
+      "evidence_basis": "locator",
+      "evidence_urls": [
+        "https://www.aspendental.com/dentist/il/melrose-park/620-w-north-ave/",
+        "https://www.aspendental.com/dentist/il/melrose-park/620-w-north-ave/oral-surgery/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "brand:aspen_dental",
+      "reasoning": "Aspen Dental's own locator page confirms an office at this exact address (620 W North Ave, Melrose Park, IL). Aspen Dental Management Inc. (ADMI Corp) is a well-documented PE-backed national DSO (Leonard Green & Partners), consistent with the record's existing parent_company and brand_hint fields.",
+      "searched": ["Dado Dental Melrose Park IL Winston Plaza (incidental locator hit)"],
+      "intel": {
+        "website_url": "https://www.aspendental.com/dentist/il/melrose-park/620-w-north-ave/",
+        "distinguishing_notes": "This location's page also advertises oral surgery services alongside general dentistry.",
+        "sources": ["https://www.aspendental.com/dentist/il/melrose-park/620-w-north-ave/oral-surgery/"]
+      }
+    }
+  ]
+}

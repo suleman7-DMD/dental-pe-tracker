@@ -1,0 +1,393 @@
+{
+ "unit_id": "laneA_181",
+ "classifications": [
+  {
+   "location_id": "fa07754a86c25f9a",
+   "practice_name": "Carefirst",
+   "zip": "60154",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searched the practice name/address, attempted to load the practice's own site (carefirstdmd.com — DNS failure), and searched the primary NPI number. Only generic listing aggregators (Yelp 'Carefirst General & I.V. Sedation Dentistry', yellow-pages, Birdeye) confirm the address/phone but name no dentist owner and show no corporate/DSO signal either way. Insufficient evidence to assign any tier.",
+   "searched": [
+    "Carefirst dental Westchester IL 927 Mannheim",
+    "Carefirst Dental Westchester IL sedation dentistry owner dentist name doctor",
+    "NPI 1104863893 Carefirst dentist Westchester"
+   ]
+  },
+  {
+   "location_id": "78ed9776d81fc92d",
+   "practice_name": "Midwest Dental Ctr",
+   "zip": "60154",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://midwest-dental.com/dentist-near-me/find-office/state/il/",
+    "https://www.ajsalernodds.com/about/",
+    "https://www.ajsalernodds.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Despite the DB's existing dso_national / 'Midwest Dental (Smile Brands)' flag, the OFFICIAL Midwest Dental corporate locator (midwest-dental.com IL page, 19 IL offices listed) does NOT include a Westchester address — this office is not part of the Smile Brands/Gryphon chain. The practice's own site (ajsalernodds.com) shows Dr. AJ Salerno as sole dentist/owner, personal contact email, ~31 years in business as a small solo office (~$500k revenue, ~3 employees), with no corporate or DSO language anywhere. This is a name coincidence with the national brand, not chain affiliation. Reclassifying as true independent with high confidence given the corporate-locator negative check plus corroborating independent-site evidence.",
+   "searched": [
+    "Midwest Dental Westchester IL 10550 Cermak",
+    "Midwest Dental Smile Brands locator Westchester Illinois",
+    "\"Midwest Dental Center\" Westchester IL \"AJ Salerno\" owner independent"
+   ],
+   "intel": {
+    "website_url": "https://www.ajsalernodds.com/",
+    "website_note": "Small solo-practice marketing site with service pages and a blog; no online-booking widget observed.",
+    "services": ["preventive dentistry", "restorative dentistry (crowns, fillings, dentures, implants)", "cosmetic dentistry", "oral surgery"],
+    "provider_count_web": 1,
+    "provider_notes": "Dr. Anthony J. (AJ) Salerno, DDS, graduated June 1993; on staff at Meadowbrook Manor Geriatric Home 1996-1999.",
+    "owner_career_stage": "late_career",
+    "sources": ["https://www.ajsalernodds.com/about/", "https://www.ajsalernodds.com/"]
+   }
+  },
+  {
+   "location_id": "e3a7f2b2baaf0656",
+   "practice_name": "Dental Concepts",
+   "zip": "60154",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/dental-concepts-of-westchester-westchester",
+    "https://doctor.webmd.com/doctor/jeffrey-bernier-2ffea365-bcbd-4d06-b178-a30f900cff7c-overview",
+    "https://www.bbb.org/us/il/westchester/profile/dentist/dental-concepts-of-westchester-0654-88247276"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Yelp, WebMD, BBB, and Birdeye all confirm Dental Concepts at 3068 Wolf Rd is run by Dr. Jeffrey Bernier; no corporate or DSO signal in any listing. Consistent with a single-provider, solo owner-operator practice.",
+   "searched": ["\"Dental Concepts\" Westchester IL 3068 Wolf Rd dentist"],
+   "intel": {
+    "website_url": "https://www.drjeffbernier.com/",
+    "website_note": "Dentist-branded personal site with dedicated pages for crowns & implants.",
+    "services": ["crowns", "implants", "dentures/partial dentures", "cosmetic dentistry", "preventive dentistry"],
+    "provider_notes": "Dr. Jeffrey Bernier; a 'Jennifer Bernier' is also associated with the office per one directory listing, suggesting a family-run practice.",
+    "sources": ["https://www.drjeffbernier.com/", "https://reviews.birdeye.com/dental-concepts-165577789275592"],
+    "distinguishing_notes": "225 reviews / 5-star aggregate rating on Birdeye."
+   }
+  },
+  {
+   "location_id": "97c9aef69883ba6c",
+   "practice_name": "Becker Dental",
+   "zip": "60154",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-alan-becker-yty4l",
+    "http://www.becker-dental.com/",
+    "https://npidb.org/doctors/dental_health/general-practice_1223g0001x/1366526931.aspx"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Healthgrades, Sharecare, DentalPlans, and NPI-lookup sites all identify this address as the solo office of Dr. Alan L. Becker, DDS; a patient review cites a 30-year relationship with the practice. No corporate signal found anywhere.",
+   "searched": ["\"Becker Dental\" Westchester IL 9909 Roosevelt"],
+   "intel": {
+    "website_url": "http://www.becker-dental.com/",
+    "provider_notes": "Dr. Alan L. Becker, DDS; a patient review cites a 30+ year patient relationship with the practice.",
+    "owner_career_stage": "late_career",
+    "sources": ["https://www.healthgrades.com/dentist/dr-alan-becker-yty4l", "http://www.becker-dental.com/"],
+    "distinguishing_notes": "5.0/5 rating across 4 Healthgrades reviews; long-tenured, family-practice reputation."
+   }
+  },
+  {
+   "location_id": "f7620063ac7b6d50",
+   "practice_name": "FLOSS DENTAL STUDIOS",
+   "zip": "60154",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.flossdentalstudios.com/",
+    "https://doctor.webmd.com/practice/floss-dental-studios-gp-0f115a11-f6d3-4a3f-ac36-5488fed73f3a",
+    "https://www.yelp.com/biz/floss-dental-studios-westchester"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Confirmed via the practice's own website plus WebMD/Yelp/CareCredit listings that this is a single-location practice at 957 S Mannheim Rd Unit 1N — despite the brand-sounding name, it is NOT the unrelated national 'FLOSS Dental'/'Floss & Co.' franchise chains that surfaced in the same searches (those operate distinct TX/FL/Chicagoland footprints with no listing for this address). Two dentists (Dr. Eric McLean, Dr. Deepan Patel) practice here per public listings; no corporate parent or management-company language on the practice's own site. Fits single-location, dentist-staffed group.",
+   "searched": [
+    "Floss Dental Studios Westchester IL dentist",
+    "\"Floss Dental Studios\" locations chain multiple offices"
+   ],
+   "intel": {
+    "website_url": "https://www.flossdentalstudios.com/",
+    "website_note": "Modern single-practice site; online scheduling via Dentrix Ascend; emphasizes PPO acceptance, in-house financing, free second opinions.",
+    "services": ["cleanings", "extractions", "crowns", "bridges", "veneers", "fillings", "dentures", "dental implants", "Invisalign", "teeth whitening", "wisdom teeth removal", "root canals"],
+    "provider_count_web": 2,
+    "provider_notes": "Dr. Eric McLean and Dr. Deepan Patel listed as the practicing dentists (per WebMD).",
+    "sources": ["https://www.flossdentalstudios.com/", "https://doctor.webmd.com/practice/floss-dental-studios-gp-0f115a11-f6d3-4a3f-ac36-5488fed73f3a"],
+    "distinguishing_notes": "4.7-star aggregate rating across 143 reviews per business-listing aggregators."
+   }
+  },
+  {
+   "location_id": "639be6bb4a731c53",
+   "practice_name": "HOPE DENTAL P.C.",
+   "zip": "60154",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dentalplans.com/dentists/illinois/westchester/60154/dr-vesna-sutter-94626/",
+    "https://hopedentalcare.wixsite.com/onemagnificentsmile/dr-vesna-sutter",
+    "https://npino.com/dental-clinic/1588123079-hope-dental-p.c./"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:SUTTER_VESNA",
+   "reasoning": "Dr. Vesna Sutter, DDS (1986 Loyola grad) is named as the practicing dentist at 10215 W Roosevelt Rd (Hope Dental P.C.), and business listings independently show her also practicing at a second Hope Dental P.C. location in Aurora, IL and at 7728 W North Ave, Elmwood Park (branded 'Tru Family Dental'). This is dentist ownership across 2-3 IL locations, matching dentist_multi, not a corporate DSO. Confidence medium because the linkage across addresses rests on directory/aggregator listings rather than one unified corporate website.",
+   "searched": ["\"Hope Dental\" Vesna Sutter Westchester Aurora IL dentist locations"],
+   "intel": {
+    "provider_notes": "Dr. Vesna Sutter, DDS, 1986 graduate of Loyola University Dental School; 500+ hours of CE in implants, sedation, orthodontics, TMJ, cosmetic, and sleep dentistry.",
+    "owner_career_stage": "late_career",
+    "sources": ["https://www.dentalplans.com/dentists/illinois/westchester/60154/dr-vesna-sutter-94626/", "https://hopedentalcare.wixsite.com/onemagnificentsmile/dr-vesna-sutter"],
+    "distinguishing_notes": "Owner also operates related offices in Aurora and Elmwood Park, IL under different DBA names (Hope Dental, Tru Family Dental)."
+   }
+  },
+  {
+   "location_id": "c65aad1eabe4f9ce",
+   "practice_name": "DRS SULLIVAN & SUCHY LTD",
+   "zip": "60154",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/sullivan-and-suchy-dds-westchester",
+    "https://www.facebook.com/SullivanSuchyDental/",
+    "https://doctor.webmd.com/practice/drs-sullivan-and-suchy-ltd-2936c1f8-4cec-41ca-b156-21adb14f9df8"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Yelp, WebMD, and the practice's own Facebook page confirm Drs. Sullivan and Suchy as the dentists at 1200 Highridge Pkwy; a 5-star, 12-review general/family practice. No corporate or DSO signal; matches a dentist-owned 2-provider single-location group.",
+   "searched": ["\"Sullivan\" \"Suchy\" Westchester IL dentist 1200 Highridge"],
+   "intel": {
+    "website_note": "Facebook page 'Sullivan Suchy Dental' serves as the primary web presence; general family dentistry, patients report multi-generational family relationships with the practice.",
+    "sources": ["https://www.facebook.com/SullivanSuchyDental/", "https://reviews.birdeye.com/sullivan-suchy-146446823586351"],
+    "distinguishing_notes": "5-star rating across 12 Birdeye reviews; long-tenured family patient base."
+   }
+  },
+  {
+   "location_id": "fd93dc3b061f857c",
+   "practice_name": "Sullivan Dental",
+   "zip": "60154",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/sullivan-and-suchy-dds-westchester",
+    "https://www.healthgrades.com/dentist/dr-thomas-sullivan-272n3"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Same address and phone number as DRS Sullivan & Suchy Ltd (1200 High Ridge Pkwy, (708) 562-4474) — this NPI row appears to be Dr. Thomas Sullivan's individual billing entity for the same physical dentist-owned office rather than a distinct practice. Classified single_loc_group on the same evidence; medium confidence because it may be a duplicate-location entry of the co-listed practice rather than a truly separate office.",
+   "searched": ["\"Sullivan\" \"Suchy\" Westchester IL dentist 1200 Highridge"]
+  },
+  {
+   "location_id": "569f61345a88d60b",
+   "practice_name": "LAURA LAITA,DDS & KEITH E PETRANEK,DDS",
+   "zip": "60154",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/laita-and-petranek-dds-westchester?adjust_creative=mapquest",
+    "http://laitapetranekdental.com/contact.html"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Yelp explicitly lists 'LAITA & PETRANEK DDS' at 937 S Mannheim Rd as CLOSED; multiple corroborating sources confirm Drs. Laita and Petranek relocated their practice to 17W662 Butterfield Rd, Oakbrook Terrace, IL in 2011. This Westchester address is no longer an active dental office. closure_suspect — not classified.",
+   "searched": [
+    "\"Laura Laita\" \"Keith Petranek\" Westchester IL dentist",
+    "\"Petranek\" \"Laita\" dentist Oakbrook Terrace Westchester current office"
+   ]
+  },
+  {
+   "location_id": "5cad6c8a2661b9b6",
+   "practice_name": "JAMES F SHELDON DDS LTD",
+   "zip": "60154",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/james-f-sheldon-dds-westchester",
+    "https://findadentist.ada.org/dentists/dr-james-f-sheldon-westchester-0038V00002yjx7KQAQ-a1C8V00000kYFzUUAW",
+    "https://doctor.webmd.com/doctor/james-sheldon-ec9abf47-9dec-4275-9cae-24c0742b77ad-overview"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "ADA Find-a-Dentist, Yelp, and WebMD confirm Dr. James F. Sheldon, DDS (1989 Loyola grad, Westchester native) as sole dentist/owner at 10540 W Cermak Rd, with a dedicated practice site (sheldondentistry.com). No corporate or DSO signal — solo owner-operator.",
+   "searched": ["\"James Sheldon\" DDS Westchester IL 10540 Cermak dentist"],
+   "intel": {
+    "website_url": "https://sheldondentistry.com/",
+    "provider_notes": "Dr. James F. Sheldon, DDS; raised in Westchester, IL; Loyola University Chicago undergrad; Loyola University School of Dentistry DDS 1989.",
+    "owner_career_stage": "late_career",
+    "services": ["cavity treatment", "teeth cleaning", "dental exams", "fillings/repairs"],
+    "sources": ["https://findadentist.ada.org/dentists/dr-james-f-sheldon-westchester-0038V00002yjx7KQAQ-a1C8V00000kYFzUUAW", "https://www.yelp.com/biz/james-f-sheldon-dds-westchester"]
+   }
+  },
+  {
+   "location_id": "dbae6ca819f64f61",
+   "practice_name": "RALPH E. RANSFORD, D.D.S., LTD.",
+   "zip": "60154",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.vitals.com/doctors/Dr_Ralph_E_Ransford.html",
+    "https://npiprofile.com/npi/1750591103",
+    "https://reviews.birdeye.com/ralph-e-ransford-dds-ltd-169098353173459"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Vitals, NPI lookup, and Birdeye confirm Dr. Ralph E. Ransford, DDS, Ltd at 10060 W Roosevelt Rd, variously described as general dentistry and orthodontics/dentofacial orthopedics, corroborating the 2-provider small_group classification at a single address. No corporate signal found. Medium confidence due to some conflicting specialty labeling across directories.",
+   "searched": ["\"Ralph Ransford\" DDS Westchester IL dentist 10060 Roosevelt"],
+   "intel": {
+    "distinguishing_notes": "Directory listings variously describe the practice as offering orthodontics/dentofacial orthopedics alongside general dentistry.",
+    "sources": ["https://www.vitals.com/doctors/Dr_Ralph_E_Ransford.html", "https://reviews.birdeye.com/ralph-e-ransford-dds-ltd-169098353173459"]
+   }
+  },
+  {
+   "location_id": "61670973545bedb5",
+   "practice_name": "Oslak Dental",
+   "zip": "60154",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-robert-oslak-m2opttu426",
+    "https://www.vitals.com/doctors/robert-oslak-qnyuyd",
+    "https://www.westchester-il.org/community/business-directory/health-medicine/robert-r-oslak,-dds-pc"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Healthgrades, Vitals, Yellow Pages, and the Westchester Chamber directory all confirm Dr. Robert R. Oslak, DDS PC as sole dentist at 9999 W Roosevelt Rd, a 'full service dental clinic' with ~20 years in operation. No corporate/DSO signal.",
+   "searched": ["\"Oslak Dental\" Westchester IL 9999 Roosevelt dentist"],
+   "intel": {
+    "services": ["fillings", "cleaning", "routine exams", "crowns/bridges", "dentures", "school checkups", "cosmetic dentistry"],
+    "provider_notes": "Dr. Robert R. Oslak, DDS; practice described as having ~20 years of experience.",
+    "sources": ["https://www.healthgrades.com/dentist/dr-robert-oslak-m2opttu426", "https://www.westchester-il.org/community/business-directory/health-medicine/robert-r-oslak,-dds-pc"]
+   }
+  },
+  {
+   "location_id": "ff939fbe5a638c14",
+   "practice_name": "Kevin E Konstant DMD Ltd",
+   "zip": "60154",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.konstantdentalwestchester.com/",
+    "https://www.konstantdentalwestchester.com/meet-our-doctors/",
+    "https://local.yahoo.com/info-238276683-kevin-e-konstant-dmd-ltd-westchester/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The practice's own site (konstantdentalwestchester.com) now operates as 'Konstant Dental' with a 'Meet Our Doctors' (plural) page listing Dr. John F. Houlihan, DDS as a current dentist at 2450 Wolf Rd — suggesting an ownership transition or associate addition from the original NPI-registered Dr. Kevin Konstant. No corporate or DSO/management-company language found; still reads as an independent, dentist-run single-location office. Medium confidence given the apparent provider turnover not fully resolved by public sources.",
+   "searched": ["\"Kevin Konstant\" DMD Westchester IL 2450 Wolf Rd dentist"],
+   "intel": {
+    "website_url": "https://www.konstantdentalwestchester.com/",
+    "website_note": "Practice rebranded as 'Konstant Dental'; site includes patient-information and doctors pages; hours Mon-Wed 9-6, Thu 9-5, Fri 9-2.",
+    "provider_notes": "Dr. John F. Houlihan, DDS listed on the 'Meet Our Doctors' page at this address.",
+    "sources": ["https://www.konstantdentalwestchester.com/meet-our-doctors/", "https://www.konstantdentalwestchester.com/contact/"]
+   }
+  },
+  {
+   "location_id": "d9e35a86e7c7b726",
+   "practice_name": "SAMEET THAKRAR DDS PC",
+   "zip": "60154",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-sameet-thakrar-b7l9z",
+    "https://www.westchesterfamilydental.net/our-doctors/",
+    "https://doctor.webmd.com/doctor/sameet-thakrar-9d6f6d61-16cf-4a00-a758-5a00721394bb-overview"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Healthgrades, WebMD, and the practice's own site (westchesterfamilydental.net) confirm Dr. Sameet Thakrar, DDS (2012 Marquette grad) as the dentist at 4 Westbrook Corporate Ctr, practicing as 'Westchester Family Dental,' matching the DB's year_established=2012. No corporate/DSO signal — solo owner.",
+   "searched": ["\"Sameet Thakrar\" DDS Westchester IL dentist Westbrook Corporate Center"],
+   "intel": {
+    "website_url": "https://www.westchesterfamilydental.net/",
+    "provider_notes": "Dr. Sameet Thakrar, DDS; New Trier HS, Loyola University Chicago undergrad, Marquette University School of Dentistry DDS 2012.",
+    "owner_career_stage": "mid_career",
+    "sources": ["https://www.westchesterfamilydental.net/our-doctors/", "https://www.healthgrades.com/dentist/dr-sameet-thakrar-b7l9z"]
+   }
+  },
+  {
+   "location_id": "87b5098c86086384",
+   "practice_name": "Lawley Dental",
+   "zip": "60154",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/lawley-william-m-dds-westchester",
+    "https://www.healthgrades.com/dentist/dr-william-lawley-y55c96z",
+    "https://www.npidashboard.com/npi/1912243585-dr-william-m-lawley-dds"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Yelp, Healthgrades, and NPI Dashboard confirm Dr. William M. Lawley, DDS as sole dentist at 10704 31st St, practice established 1982 (44 years), 1980 UIC dental grad. No corporate/DSO signal — long-tenured solo owner.",
+   "searched": ["\"Lawley Dental\" Westchester IL 10704 31st St dentist"],
+   "intel": {
+    "provider_notes": "Dr. William M. Lawley, DDS; 1980 graduate of University of Illinois at Chicago College of Dentistry; practice established 1982.",
+    "owner_career_stage": "late_career",
+    "sources": ["https://www.healthgrades.com/dentist/dr-william-lawley-y55c96z", "https://www.yelp.com/biz/lawley-william-m-dds-westchester"]
+   }
+  },
+  {
+   "location_id": "0bc0553dad657b5b",
+   "practice_name": "AMI DENTAL,N.NATHWANI.D.D.S.LTD.",
+   "zip": "60155",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/ami-dental-n-nathwani-dds-broadview",
+    "https://www.healthgrades.com/dentist/dr-navnit-nathwani-2t542"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Yelp lists 'AMI DENTAL N NATHWANI, DDS' at 1410 W Roosevelt Rd, Broadview as CLOSED, while other aggregators (USA Dental Finder) describe Dr. Navnit Nathwani as having served Broadview for almost 35 years without a closure flag — conflicting signals on current operating status. Per protocol, treating as closure_suspect and not classifying.",
+   "searched": ["\"Ami Dental\" Nathwani Broadview IL 1410 Roosevelt dentist"]
+  }
+ ]
+}

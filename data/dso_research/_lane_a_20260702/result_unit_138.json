@@ -1,0 +1,443 @@
+{
+ "unit_id": "laneA_138",
+ "classifications": [
+  {
+   "location_id": "130395305f31a800",
+   "practice_name": "KO DENTAL CARE P.C.",
+   "zip": "60659",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-jae-ko-xc8w7",
+    "https://npiprofile.com/npi/1013106830",
+    "https://providers.sharecare.com/doctor/dr-jae-ko-xc8w7"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched 'KO Dental Care 3434 W Peterson Ave dentist'. Healthgrades, NPI Profile, and Sharecare consistently list Dr. Jae Ko, DDS as the sole practitioner at this Peterson Ave (Fl 1D) address; no other dentist or corporate/DSO signal appears anywhere. AO 'JAE KO' matches the practice name exactly and owner_reach is 1 location, consistent with a solo owner-operator.",
+   "searched": [
+    "KO Dental Care P.C. Chicago 3434 W Peterson Ave dentist"
+   ]
+  },
+  {
+   "location_id": "f3aaf95cf4f1513b",
+   "practice_name": "LINCOLN COSMETIC DENTISTRY LLC",
+   "zip": "60659",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.lincolncosmeticdental.com/",
+    "https://www.lincolncosmeticdental.com/offices",
+    "https://www.healthgrades.com/dentist/dr-katherine-gerginis-2jc27"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Loaded the practice's own site (lincolncosmeticdental.com) and its /offices page, which confirms a single Chicago location (5962 N Lincoln Ave Ste 10) under Dr. Katherine Gerginis, DDS, a Northwestern-trained dentist described as practicing over 30 years. No branch offices, management company, or DSO affiliation appears anywhere on the site.",
+   "searched": [
+    "Lincoln Cosmetic Dentistry Chicago Katherine Gerginis 5962 N Lincoln Ave"
+   ],
+   "intel": {
+    "website_url": "https://www.lincolncosmeticdental.com/",
+    "website_note": "Clean, modern single-practice marketing site with staff and offices pages; positions Dr. Gerginis as a longtime cosmetic-dentistry specialist in the neighborhood.",
+    "services": ["cosmetic dentistry", "teeth whitening", "crowns", "veneers", "implants", "preventive care", "periodontal exams"],
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Solo cosmetic-focused practice; Dr. Gerginis has practiced 30+ years and is described as a pioneer of cosmetic dentistry in Chicagoland.",
+    "sources": [
+     "https://www.lincolncosmeticdental.com/",
+     "https://www.lincolncosmeticdental.com/offices",
+     "https://www.healthgrades.com/dentist/dr-katherine-gerginis-2jc27"
+    ]
+   }
+  },
+  {
+   "location_id": "647bd437d43d0cb4",
+   "practice_name": "STEPHEN A. ALMELEH, D.D.S., S.C.",
+   "zip": "60659",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.udcwhiting.com/dr-stephen-almeleh.html",
+    "https://www.yelp.com/biz/almeleh-stephen-a-dds-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searched 'Stephen Almeleh DDS Chicago dentist 3300 W Peterson'. Sources confirm Dr. Almeleh ran a solo practice at 3300 W Peterson Ave for 30+ years but describe him, in past tense, as having since joined United Dental Centers of Whiting, Indiana. This is closure_suspect: cannot confirm the Chicago Peterson Ave location is still an active, independently owned practice under him, so it is not classified.",
+   "searched": [
+    "Stephen Almeleh DDS Chicago dentist 3300 W Peterson"
+   ],
+   "intel": {
+    "website_note": "No current standalone website found for the Peterson Ave office; bio appears on the Whiting, Indiana practice he reportedly joined.",
+    "distinguishing_notes": "Practice history suggests the Chicago solo practice may have closed/transitioned when Dr. Almeleh joined United Dental Centers of Whiting (IN) after 30+ years at this address.",
+    "sources": [
+     "https://www.udcwhiting.com/dr-stephen-almeleh.html"
+    ]
+   }
+  },
+  {
+   "location_id": "7701bbec3c3d9d69",
+   "practice_name": "DEVON DENTAL CARE",
+   "zip": "60659",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://devondentalchicago.com/about-us/",
+    "https://devondentalchicago.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Fetched devondentalchicago.com/about-us directly. Devon Dental, Inc. is owned/operated by Dr. Nina Sanai, DDS and Dr. Rachel Cohn, DDS, in continuous operation since 1994 at this single Devon Ave address. No corporate parent, management company, or DSO affiliation is mentioned; two dentist-owners at one location fits single_loc_group.",
+   "searched": [
+    "Devon Dental Care Chicago 2820 W Devon Ave dentist Manoj Kumar"
+   ],
+   "intel": {
+    "website_url": "https://devondentalchicago.com/",
+    "website_note": "Standard small-practice site with about-us, services, and patient-info pages; emphasizes patient education.",
+    "services": ["dental X-rays", "cosmetic fillings", "complex periodontal surgery", "routine check-ups"],
+    "provider_notes": "Dr. Nina Sanai, DDS and Dr. Rachel Cohn, DDS; practice operating since 1994.",
+    "distinguishing_notes": "Two-dentist practice with 30+ year operating history at this address; no corporate signal.",
+    "sources": [
+     "https://devondentalchicago.com/about-us/",
+     "https://devondentalchicago.com/"
+    ]
+   }
+  },
+  {
+   "location_id": "5b800ca763768406",
+   "practice_name": "LINCOLN DENTAL FAMILY CENTER",
+   "zip": "60659",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.patientconnect365.com/Dentists/Illinois/Chicago/60659/Lincoln_Dental_Family_Center",
+    "https://doctor.webmd.com/doctor/mary-hanley-80369173-edce-4143-8caf-32f04fa25931-overview",
+    "https://www.healthgrades.com/dentist/dr-mary-hanley-ax3yz",
+    "https://findadentist.ada.org/il/cook/chicago/general-practice/dr-mary-m-hanley-1657940"
+   ],
+   "evidence_artifacts": ["shared address+phone with Pascale Christina DMD (location b5e3ff82a8613a83), corroborating a co-located multi-dentist office"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:HANLEY_MARY",
+   "reasoning": "Searched Lincoln Dental Family Center 5643 N Fairfield. WebMD, Healthgrades, and ADA Find-a-Dentist confirm Dr. Mary Hanley, DDS (Loyola-trained) practices with 'associates,' including an in-house periodontist, at this single Fairfield Ave address. A second dentist NPI (Pascale Christina DMD, unit location b5e3ff82a8613a83) shares this exact address and phone number, corroborating a co-located multi-dentist, dentist-owned group. No DSO/corporate signal found.",
+   "searched": [
+    "\"Lincoln Dental Family Center\" Chicago 5643 N Fairfield Mary Hanley dentist",
+    "\"Lincoln Dental Family Center\" lincolndentalfamilycenter.com locations Skokie OR Glenview OR Niles"
+   ],
+   "intel": {
+    "website_note": "Aggregator profiles (WebMD/Healthgrades/PatientConnect365) describe 'Dr. Hanley and associates' offering comprehensive family and cosmetic dentistry with an in-house periodontist.",
+    "services": ["general/family dentistry", "cosmetic dentistry", "orthodontics", "implants", "periodontal therapy"],
+    "provider_notes": "Dr. Mary Hanley, DDS, Loyola University Chicago grad, and associates.",
+    "sources": [
+     "https://www.patientconnect365.com/Dentists/Illinois/Chicago/60659/Lincoln_Dental_Family_Center",
+     "https://doctor.webmd.com/doctor/mary-hanley-80369173-edce-4143-8caf-32f04fa25931-overview"
+    ]
+   }
+  },
+  {
+   "location_id": "bb9a6f5879ea79d2",
+   "practice_name": "BRAAM DENTAL",
+   "zip": "60659",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/braam-dental-chicago",
+    "https://www.healthgrades.com/dentist/dr-lee-braam-xym8nv5",
+    "https://findadentist.ada.org/il/cook/chicago/general-practice/dr-lee-braam-3308607",
+    "https://www.carecredit.com/doctor-locator/chicago-il/braam-dental-423smp/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched Braam Dental 3334 W Peterson. Yelp, Healthgrades, ADA Find-a-Dentist, and CareCredit all list Dr. Lee Braam, DMD as the sole dentist at this single Peterson Ave suite. No second location or additional dentist was corroborated despite the ctx AO-reach flag (which is context only); no DSO/corporate signal found.",
+   "searched": [
+    "Braam Dental Chicago Lee Braam 3334 W Peterson Ave dentist"
+   ],
+   "intel": {
+    "services": ["cosmetic dentistry (veneers, bonding)", "crowns and bridges", "dentures", "clear aligners", "implants", "teeth whitening"],
+    "distinguishing_notes": "Weekend and evening hours, on-site free parking, works with PPO insurance and CareCredit financing.",
+    "sources": [
+     "https://www.yelp.com/biz/braam-dental-chicago",
+     "https://www.carecredit.com/doctor-locator/chicago-il/braam-dental-423smp/"
+    ]
+   }
+  },
+  {
+   "location_id": "79a5f32623e8a36a",
+   "practice_name": "M K Dental",
+   "zip": "60659",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "none",
+   "evidence_urls": [
+    "https://www.vitadox.com/doctor/west-ridge-chicago-il-60659/efi-andrianopoulos-dds/VdXUCh3boP7bbbUnkYrYDV",
+    "https://www.yelp.com/biz/m-k-dental-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Searched the exact address+phone (5811 N Lincoln Ave, 773-275-4707) and NPI 1285894550 listed for 'M K Dental.' A third-party NPI aggregator resolves this exact NPI/address/phone to Dr. Efi Andrianopoulos, DDS, an orthodontist -- not 'M K Dental.' A separately-operating 'M K Dental' (Dr. Michael Kyin) exists at a different Lincoln Ave address (6218 N) with a different phone number. Cannot reconcile the unit's practice name with the NPI's actual current registrant; insufficient confidence to classify.",
+   "searched": [
+    "\"M K Dental\" Chicago 5811 N Lincoln Ave dentist",
+    "\"M K Dental\" OR \"MK Dental\" 5811 N Lincoln Ave Chicago \"275-4707\"",
+    "NPI 1285894550 M K Dental Chicago"
+   ]
+  },
+  {
+   "location_id": "16b6f0e53f02b41e",
+   "practice_name": "BIC NGUYEN D.D.S. P.C.",
+   "zip": "60659",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-ngoc-bich-nguyen-ysw4r",
+    "https://www.yellowpages.com/chicago-il/mip/bic-nguyen-dds-pc-513057224",
+    "https://www.dentalplans.com/dentists/illinois/chicago/60659/dr-bic-nguyen-30155/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched Bic Nguyen DDS 2516 W Peterson. Healthgrades, YellowPages, and DentalPlans consistently list Dr. Ngoc-Bich (Bic) Nguyen, DDS as the sole practitioner at this address. No other dentist or corporate/DSO signal found; matches solo owner-operator pattern.",
+   "searched": [
+    "\"Bic Nguyen\" DDS Chicago 2516 W Peterson Ave dentist Peterson Dental Clinic"
+   ]
+  },
+  {
+   "location_id": "160a9235fe3dccf9",
+   "practice_name": "Theodoropoulos Dental",
+   "zip": "60659",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/theodoropoulos-constantine-dds-chicago",
+    "https://www.healthgrades.com/dentist/dr-constantine-theodoropoulos-2bds2",
+    "https://findadentist.ada.org/il/cook/chicago/general-practice/dr-constantine-theodoropoulos-1654536"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched Theodoropoulos Dental 5866 N Lincoln Ave. Yelp, Healthgrades, and ADA Find-a-Dentist confirm Dr. Constantine Theodoropoulos, DDS (UIC-trained) as the sole dentist at this Ste 101 address, with a patient review noting he has been their family dentist for over 32 years. No corporate/DSO signal found.",
+   "searched": [
+    "Theodoropoulos Dental Chicago 5866 N Lincoln Ave dentist"
+   ],
+   "intel": {
+    "services": ["cavity treatment", "dental exams", "fillings", "teeth cleaning", "dentures", "dental implants"],
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Longtime family dentist (32+ years per patient review), UIC-trained, 5-star rating on Healthgrades.",
+    "sources": [
+     "https://www.yelp.com/biz/theodoropoulos-constantine-dds-chicago",
+     "https://www.healthgrades.com/dentist/dr-constantine-theodoropoulos-2bds2"
+    ]
+   }
+  },
+  {
+   "location_id": "bbd9741d03a382ba",
+   "practice_name": "Shapiro Dental",
+   "zip": "60659",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-morton-shapiro-y93pr",
+    "https://www.findadoc.com/view-dentist/morton-shapiro-50031",
+    "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60659/invite-morton-shapiro-dds-16506"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched Shapiro Dental 3434 W Peterson. Healthgrades, FindADoc, and DoctorsNetwork confirm Dr. Morton Shapiro, DDS as the sole dentist at Suite 203 of this Peterson Ave building -- a different suite from KO Dental Care (Fl 1D) at the same street number, i.e. separate independent tenants in a multi-suite building, not a shared practice. No corporate/DSO signal.",
+   "searched": [
+    "Shapiro Dental Chicago 3434 W Peterson dentist"
+   ]
+  },
+  {
+   "location_id": "c2be6e0f17dae07d",
+   "practice_name": "FLOS, LLC",
+   "zip": "60659",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://flosdental.com/",
+    "https://www.yelp.com/biz/flos-dental-chicago"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Fetched flosdental.com directly. FLOS Dental Center operates from a single Peterson Ave suite with a roster of eight named dentists (Ghani, Sheikh, Frazier, Nematollahi, Muscott, Fedin, J. Nguyen, Kutinsky), plus others referenced in testimonials. No management company, corporate parent, or DSO partnership is disclosed anywhere on the site. Classified as a large single-location dentist group; medium confidence because no single named owner-dentist could be identified, only a roster of associates.",
+   "searched": [
+    "\"FLOS\" dental Chicago 3425 W Peterson Ave LLC dentist"
+   ],
+   "intel": {
+    "website_url": "https://flosdental.com/",
+    "website_note": "Modern multi-provider practice site with Zocdoc booking widget and patient testimonials naming several doctors.",
+    "services": ["general dentistry", "cosmetic dentistry", "dental implants", "preventative care"],
+    "provider_notes": "Dr. Xavier Ghani DMD, Dr. Saima Sheikh DDS, Dr. Kala Frazier DDS, Dr. Ali Nematollahi DDS, Dr. Nataleigh Muscott DDS, Dr. Nikol Fedin DMD, Dr. Jackson Nguyen DMD, Dr. Aaron Kutinsky DDS.",
+    "distinguishing_notes": "Large multi-dentist group practice at a single suite; no corporate/DSO ownership disclosed.",
+    "sources": [
+     "https://flosdental.com/",
+     "https://www.yelp.com/biz/flos-dental-chicago"
+    ]
+   }
+  },
+  {
+   "location_id": "e02409eec421de2d",
+   "practice_name": "TEJAS JOSHI P.C",
+   "zip": "60659",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.zocdoc.com/dentist/tejas-joshi-dmd-81353",
+    "https://www.joshifamilydentistry.com/",
+    "https://www.healthgrades.com/dentist/dr-tejas-joshi-37rck",
+    "https://findadentist.ada.org/il/cook/chicago/general-practice/dr-tejas-n-joshi-1554662"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched Tejas Joshi DDS 2958 W Devon. Zocdoc, the practice's own site (joshifamilydentistry.com), Healthgrades, and ADA Find-a-Dentist all confirm Dr. Tejas Joshi, DMD (Southern Illinois University-trained) as sole dentist/founder of 'Joshi Family Dentistry' at this single Devon Ave address. No corporate/DSO signal found; the unit's 'large_group' label and provider_count=0 appear to be a stale/inaccurate classification -- web evidence uniformly shows solo ownership.",
+   "searched": [
+    "Tejas Joshi DDS Chicago 2958 W Devon Ave dentist"
+   ],
+   "intel": {
+    "website_url": "https://www.joshifamilydentistry.com/",
+    "services": ["implants", "root canals", "cosmetic dentistry", "periodontal care", "endodontic care", "teeth whitening", "extractions", "fillings", "dentures"],
+    "provider_notes": "Dr. Tejas Joshi, DMD, trained at Southern Illinois University School of Dental Medicine; speaks English, Spanish, Hindi, and Gujarati.",
+    "distinguishing_notes": "Multilingual solo family dentist with a strong online review presence.",
+    "sources": [
+     "https://www.zocdoc.com/dentist/tejas-joshi-dmd-81353",
+     "https://www.healthgrades.com/dentist/dr-tejas-joshi-37rck"
+    ]
+   }
+  },
+  {
+   "location_id": "b5e3ff82a8613a83",
+   "practice_name": "Pascale Christina DMD",
+   "zip": "60659",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dentalplans.com/dentists/illinois/chicago/60659/dr-christina-pascale-53211/",
+    "https://npiprofile.com/npi/1619660297",
+    "https://www.yelp.com/biz/lincoln-smiles-family-dentistry-chicago-5"
+   ],
+   "evidence_artifacts": ["shares exact address and phone (773-271-5200) with Lincoln Dental Family Center, location 5b800ca763768406"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched Pascale Christina DMD 5643 N Fairfield. This NPI's address/phone exactly match Lincoln Dental Family Center (unit location 5b800ca763768406, AO Mary Hanley). A Yelp listing shows this same address also marketed as 'Lincoln Smiles Family Dentistry.' Dr. Christina Pascale, DDS appears to be an individually-licensed dentist co-located with (or a rebrand/associate of) Dr. Hanley's practice at the same single office. No DSO/PE signal found; classified as part of the same dentist-owned single-location group as practice 5b800ca763768406.",
+   "searched": [
+    "\"Pascale Christina\" DMD dentist Chicago 5643 N Fairfield"
+   ],
+   "intel": {
+    "distinguishing_notes": "This address appears under at least three trade names over time (Lincoln Dental Family Center, Lincoln Smiles Family Dentistry) with two co-located dentists (Hanley, Pascale) -- likely a name transition/associate arrangement rather than a chain.",
+    "sources": [
+     "https://www.yelp.com/biz/lincoln-smiles-family-dentistry-chicago-5",
+     "https://www.dentalplans.com/dentists/illinois/chicago/60659/dr-christina-pascale-53211/"
+    ]
+   }
+  },
+  {
+   "location_id": "d087692bbbdf7574",
+   "practice_name": "Habeeb Dental",
+   "zip": "60659",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-saad-habeeb-y9w52nz",
+    "https://www.dentistreg.com/general_practice/625328ef/",
+    "https://dentalcenter.com/saad-habeeb/chicago/illinois/60659"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched Habeeb Dental 2836 W Devon. Healthgrades, DentistReg, and DentalCenter confirm Dr. Saad Habeeb as the practicing dentist at this address, operating under the corporate name 'M-L Dental Clinic Inc.' (also marketed as 'Lena Dental'). No DSO/PE signal -- this is a single dentist's own professional corporation using an alternate DBA, not a chain.",
+   "searched": [
+    "Habeeb Dental Chicago 2836 W Devon Ave dentist"
+   ],
+   "intel": {
+    "distinguishing_notes": "Practice uses multiple public-facing names (Habeeb Dental, M-L Dental Clinic Inc., Lena Dental) for the same single office/dentist.",
+    "sources": [
+     "https://www.healthgrades.com/dentist/dr-saad-habeeb-y9w52nz",
+     "https://www.dentistreg.com/general_practice/625328ef/"
+    ]
+   }
+  },
+  {
+   "location_id": "15abcfee7e816c0a",
+   "practice_name": "Khan Dental",
+   "zip": "60659",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60659/invite-farhana-khan-dmd-18633",
+    "https://www.dentalinsider.com/chicago/dentist/dr-farhana-khan-dmd-188709"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched Khan Dental 6326 N Campbell Ave. DoctorsNetwork and DentalInsider confirm Dr. Farhana Khan, DMD as the solo general dentist at this address, with no other providers or corporate/DSO signal found.",
+   "searched": [
+    "Khan Dental Chicago 6326 N Campbell Ave dentist"
+   ]
+  },
+  {
+   "location_id": "c9ce78d0fb4650e5",
+   "practice_name": "KEDZIE DENTAL CLINIC",
+   "zip": "60659",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.zocdoc.com/dentist/khairunnisa-shaikh-dds-128320",
+    "https://kedziedentalchicago.com/meet-the-doctors/",
+    "https://www.yelp.com/biz/kedzie-dental-clinic-chicago"
+   ],
+   "evidence_artifacts": ["practice's own site has a 'Meet the Doctors' (plural) page, suggesting more than one dentist"],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Searched Kedzie Dental Clinic 6035 N Kedzie Ave. Zocdoc and the practice's own site (kedziedentalchicago.com) show Dr. Khairunnisa Shaikh, DDS (UIC-trained) established this single-location clinic in 2010. The site's plural 'Meet the Doctors' page (found in search results; direct fetch was blocked with a 403) suggests more than one dentist practices there, so classified as a dentist-owned single-location group rather than pure solo, with medium confidence given the unconfirmed exact provider count. No DSO/corporate signal found.",
+   "searched": [
+    "Kedzie Dental Clinic Chicago 6035 N Kedzie Ave Khairunnisa Shaikh dentist"
+   ],
+   "intel": {
+    "website_url": "https://kedziedentalchicago.com/",
+    "services": ["bridges", "dental cleaning", "consultations", "new patient exams", "root canal", "oral surgery", "Invisalign", "full mouth rehab"],
+    "provider_notes": "Dr. Khairunnisa Shaikh, DDS, UIC-trained, founded/established the clinic in 2010 with a minimally-invasive-dentistry philosophy.",
+    "distinguishing_notes": "Positions itself around minimally invasive dentistry and modern technology; 5/5 rating across reviewer platforms.",
+    "sources": [
+     "https://www.zocdoc.com/dentist/khairunnisa-shaikh-dds-128320",
+     "https://www.yelp.com/biz/kedzie-dental-clinic-chicago"
+    ]
+   }
+  }
+ ]
+}

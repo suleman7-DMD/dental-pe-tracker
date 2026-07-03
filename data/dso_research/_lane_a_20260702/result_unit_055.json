@@ -1,0 +1,424 @@
+{
+ "unit_id": "laneA_055",
+ "classifications": [
+  {
+   "location_id": "aca0e2823cc9b55e",
+   "practice_name": "JOSEPH SCHWARTZ D.D.S PC",
+   "zip": "60056",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://findadentist.ada.org/il/cook/mount-prospect/general-practice/dr-joseph-m-schwartz-1657931",
+    "https://www.healthgrades.com/dentist/dr-joseph-schwartz-2gq8w",
+    "https://mtprospectdentists.com/about-us/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "ADA Find-a-Dentist, Healthgrades, and the practice's own site (mtprospectdentists.com) all confirm Dr. Joseph Schwartz as sole owner-dentist at 111 W Central Rd. No corporate parent, brand, or multi-location signal found; matches DB provider_count=1. Classified true_independent.",
+   "searched": ["Joseph Schwartz DDS PC 111 W Central Rd Mount Prospect IL dentist"],
+   "intel": {
+    "website_url": "https://mtprospectdentists.com/about-us/",
+    "website_note": "Own-domain practice site presenting Dr. Schwartz as the long-standing owner-dentist; lists telehealth availability and multiple payment/insurance options.",
+    "provider_count_web": 1,
+    "provider_notes": "Dr. Joseph Schwartz, DDS/DMD, sole practitioner.",
+    "distinguishing_notes": "Long-tenured solo general practice (search snippets cite roughly late-1990s founding), accepting new patients, telehealth offered.",
+    "sources": [
+     "https://findadentist.ada.org/il/cook/mount-prospect/general-practice/dr-joseph-m-schwartz-1657931",
+     "https://www.healthgrades.com/dentist/dr-joseph-schwartz-2gq8w",
+     "https://mtprospectdentists.com/about-us/"
+    ]
+   }
+  },
+  {
+   "location_id": "5a6589ebbf27badf",
+   "practice_name": "Lund, Peter a DDS",
+   "zip": "60056",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/lund-peter-mount-prospect",
+    "https://peterlunddds.wixsite.com/dentist",
+    "https://findadentist.ada.org/dentists/dr-peter-a-lund-mount-prospect-0038V00002yk1nbQAA-a1C8V00000kY3jXUAS"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Peter Lund runs a named solo practice (own Wix site, ADA/Yelp/chamber listings) at 200 E Evergreen Ave Suite 124; no second named dentist or corporate signal appears anywhere. DB provider_count=2 likely reflects a hygienist rather than a co-owner dentist. Confidence medium because the DB phone doesn't match every directory's listed number (older listings vary).",
+   "searched": ["Peter Lund DDS 200 E Evergreen Mount Prospect IL dentist"],
+   "intel": {
+    "website_url": "https://peterlunddds.wixsite.com/dentist",
+    "website_note": "Simple Wix-built single-dentist site; practice has operated since roughly 1991 per BBB profile.",
+    "google_rating": 5.0,
+    "google_source_url": "https://www.yelp.com/biz/lund-peter-mount-prospect",
+    "distinguishing_notes": "Long-tenured solo general dentist in a multi-suite medical/dental building at 200 E Evergreen Ave.",
+    "sources": [
+     "https://www.yelp.com/biz/lund-peter-mount-prospect",
+     "https://peterlunddds.wixsite.com/dentist",
+     "https://findadentist.ada.org/dentists/dr-peter-a-lund-mount-prospect-0038V00002yk1nbQAA-a1C8V00000kY3jXUAS"
+    ]
+   }
+  },
+  {
+   "location_id": "c7e161d8f56e9dbe",
+   "practice_name": "EMERY DENTAL CENTER, P.C.",
+   "zip": "60056",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.doctorsnetwork.com/doctors/dentists/mount-prospect-il-60056/invite-fawad-shah-dmd-16073",
+    "https://www.healthgrades.com/dentist/dr-fawad-shah-x4hqx"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "The DB's authorized official, Fawad Shah, is confirmed by Doctors Network and Healthgrades as a solo dentist practicing at 2380 S Elmhurst Rd with the exact phone (847) 493-7392 in the DB record, distinguishing this dental NPI from the co-located, differently-phoned 'Emery Medical Center' (a separate medical/occupational-health business at the same building). No corporate or DSO signal found. Confidence medium: no dedicated practice website was located beyond aggregator profiles.",
+   "searched": [
+    "Emery Dental Center 2380 S Elmhurst Rd Mount Prospect IL",
+    "\"Fawad Shah\" dentist Mount Prospect IL Emery Dental Center"
+   ]
+  },
+  {
+   "location_id": "85e747f62443ddfe",
+   "practice_name": "LIFE CLINIC, LLC",
+   "zip": "60056",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npiregistry.cms.hhs.gov/api/?number=1043598501&version=2.1"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": null,
+   "reasoning": "Direct NPPES lookup of NPI 1043598501 shows 'LIFE CLINIC, LLC' with primary taxonomy 'Psychiatry & Neurology, Neurology' (other aggregators tag it chiropractic) at 20 E Northwest Hwy -- this is not a dental practice at all, so no dental ownership tier can be earned. Likely an org NPI swept into the GP dataset erroneously. Left undetermined rather than fabricating a dental-ownership classification.",
+   "searched": [
+    "\"Life Clinic\" dental 20 E Northwest Hwy Mount Prospect IL",
+    "\"Life Clinic LLC\" Mount Prospect IL dental NPI 1043598501",
+    "NPPES API lookup NPI 1043598501"
+   ]
+  },
+  {
+   "location_id": "b20b7c1fdeda18a0",
+   "practice_name": "DENTAL ART CLINIC",
+   "zip": "60056",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://mydentalart.com/",
+    "https://mydentalart.com/dr-joanna-tylman-dmd-dds/",
+    "https://www.zocdoc.com/dentist/joanna-tylman-dmd-38361"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own-domain site mydentalart.com confirms Dr. Joanna Tylman as the owner-dentist, who brings in-house specialists (endodontist, periodontist) to the same single location at 1512 N Elmhurst Rd -- a dentist-owned multi-provider office, not a chain or corporate signal. Classified single_loc_group.",
+   "searched": ["Dental Art Clinic 1512 N Elmhurst Rd Mount Prospect IL Joanna Tylman"],
+   "intel": {
+    "website_url": "https://mydentalart.com/",
+    "website_note": "Polished own-domain marketing site (mydentalart.com) for cosmetic/family dentistry, positions Dr. Tylman as lead owner-dentist with visiting specialists.",
+    "services": ["cosmetic dentistry", "family dentistry", "endodontics (in-house specialist)", "periodontics (in-house specialist)"],
+    "provider_notes": "Dr. Joanna Tylman, DMD (Medical University of Gdansk, 2000) / DDS (UIC, 2005); speaks English, Spanish, Italian, Russian, Polish, Bulgarian.",
+    "google_rating": 4.8,
+    "google_source_url": "https://www.zocdoc.com/dentist/joanna-tylman-dmd-38361",
+    "distinguishing_notes": "Multilingual owner-dentist office offering in-house specialist referrals rather than sending patients out.",
+    "sources": [
+     "https://mydentalart.com/",
+     "https://mydentalart.com/dr-joanna-tylman-dmd-dds/",
+     "https://www.zocdoc.com/dentist/joanna-tylman-dmd-38361"
+    ]
+   }
+  },
+  {
+   "location_id": "ace77f97ecb1d09f",
+   "practice_name": "Lies Dental",
+   "zip": "60056",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.doctorsnetwork.com/doctors/dentists/mount-prospect-il-60056/invite-amy-lies-dds-17955",
+    "https://dentistsok.com/dentist/dr-amy-sliwa-lies-dds-mount-prospect/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Directory listings (Doctors Network, DentistsOK) confirm Dr. Amy Sliwa Lies as a licensed general-practice dentist at 403 S Hi Lusi Ave with the DB's phone number; no other dentist, brand, or corporate parent surfaced. Confidence medium: no dedicated practice website was located, only aggregator profiles.",
+   "searched": ["\"Lies Dental\" 403 S Hi Lusi Ave Mount Prospect IL"]
+  },
+  {
+   "location_id": "7e1ae3773b7f761c",
+   "practice_name": "AUGUST J. DURSO, JR. DDS, LTD.",
+   "zip": "60056",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/august-j-durso-dds-mount-prospect",
+    "https://www.toprankdental.com/august-james-durso-general-dentistry-1661-feehanville-dr-1",
+    "https://www.healthgrades.com/dentist/dr-august-durso-349lg"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple sources (Yelp, TopRank Dental, Healthgrades) confirm Dr. August Durso as a single dentist serving Mount Prospect since 1989 at 1661 Feehanville Dr Ste 420, matching the DB address and phone exactly. Trade name 'Durso & Associates' is used, but only one dentist is named across all sources -- no evidence of a second owner or corporate signal. Classified true_independent.",
+   "searched": ["\"August Durso\" DDS dentist Mount Prospect IL Feehanville"],
+   "intel": {
+    "provider_notes": "Dr. August J. Durso Jr., DDS; Miami University BA 1980, Loyola University School of Dentistry DDS 1984; practicing in Mount Prospect since 1989.",
+    "owner_career_stage": "late_career",
+    "services": ["bonding/cosmetic procedures", "teeth whitening", "preventative/maintenance therapy", "endodontics", "same-day crowns and veneers"],
+    "distinguishing_notes": "Over 40 years in practice under the 'Durso & Associates' trade name; accepting new patients.",
+    "sources": [
+     "https://www.yelp.com/biz/august-j-durso-dds-mount-prospect",
+     "https://www.toprankdental.com/august-james-durso-general-dentistry-1661-feehanville-dr-1",
+     "https://www.healthgrades.com/dentist/dr-august-durso-349lg"
+    ]
+   }
+  },
+  {
+   "location_id": "9813881c1121d7ac",
+   "practice_name": "ANGEL SMILE DENTAL CARE, PC",
+   "zip": "60056",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.angelsmiledentalcare.com/",
+    "https://www.angelsmiledentalcare.com/meet-dr-baranovsky.html",
+    "https://www.zocdoc.com/dentist/vasyl-baranovsky-dds-135796"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own-domain site angelsmiledentalcare.com confirms Dr. Vasyl Baranovsky (matching the DB's authorized official exactly) as an owner-dentist practicing alongside other doctors at a single Elmhurst Rd location -- dentist-owned multi-provider office, no corporate/DSO signal. Confidence medium because the address (2364 vs DB's 2352 S Elmhurst Rd) and phone found differ slightly from the DB record, though the unique AO name and practice name match exactly.",
+   "searched": ["\"Angel Smile Dental\" Vasyl Baranovsky Mount Prospect IL"],
+   "intel": {
+    "website_url": "https://www.angelsmiledentalcare.com/",
+    "website_note": "Own-domain marketing site with a 'Meet the Dentists' page listing multiple providers working collaboratively for extended appointment availability.",
+    "provider_notes": "Dr. Vasyl Baranovsky, DDS (UIC), ~30 years in practice; prosthodontics residency in Ukraine; speaks English, Ukrainian, Russian, Polish.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Multi-doctor single-location office marketed around extended availability and multilingual staff.",
+    "sources": [
+     "https://www.angelsmiledentalcare.com/",
+     "https://www.angelsmiledentalcare.com/meet-dr-baranovsky.html",
+     "https://www.zocdoc.com/dentist/vasyl-baranovsky-dds-135796"
+    ]
+   }
+  },
+  {
+   "location_id": "11742fd565351076",
+   "practice_name": "Tan Dental",
+   "zip": "60056",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yellowpages.com/mount-prospect-il/mip/tina-s-tan-dmd-458772889"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Yellow Pages confirms Dr. Tina S. Tan, DMD, practicing solo at 214 S Emerson St with the DB's exact phone number. A co-listed 'Prospect Periodontal & Implant Center' appears to be a separate specialist referral tenant in the same building rather than a shared owner. Confidence medium: only a single directory source was found, no dedicated practice website.",
+   "searched": ["\"Tan Dental\" 214 S Emerson St Mount Prospect IL dentist"],
+   "intel": {
+    "distinguishing_notes": "Co-located in the same building as Prospect Periodontal & Implant Center, suggesting an in-building specialist referral relationship rather than shared ownership.",
+    "sources": ["https://www.yellowpages.com/mount-prospect-il/mip/tina-s-tan-dmd-458772889"]
+   }
+  },
+  {
+   "location_id": "cdc72fba9ce69fe2",
+   "practice_name": "Rehman Dental",
+   "zip": "60056",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npiprofile.com/npi/1316321722",
+    "https://www.welli.com/care/provider/1316321722"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "NPI directory profiles confirm Dr. Syed Rehman, DMD, as a solo dentist at 1300 S Elmhurst Rd matching the DB's exact phone number, enrolled in PECOS. No corporate parent, second dentist, or brand signal found anywhere. Confidence medium: evidence is limited to NPI aggregator profiles, no dedicated practice website located.",
+   "searched": ["\"Rehman Dental\" 1300 S Elmhurst Rd Mount Prospect IL"]
+  },
+  {
+   "location_id": "cdcba6572af40049",
+   "practice_name": "DBA SIMPLY TEETH",
+   "zip": "60056",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://simplyteethmountprospect.com/",
+    "https://simplyteethmountprospect.com/our-staff/",
+    "https://www.yelp.com/biz/simply-teeth-mount-prospect"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own-domain site simplyteethmountprospect.com and Yelp both confirm Dr. Dhaval Patel as owner-dentist at 905 E Rand Rd Ste 200, matching the DB's exact phone number; office established 2013. No corporate or multi-location signal found. Classified true_independent.",
+   "searched": ["\"Simply Teeth\" Mount Prospect IL 905 E Rand Rd dentist"],
+   "intel": {
+    "website_url": "https://simplyteethmountprospect.com/",
+    "website_note": "Modern own-domain practice site branded 'Simply Teeth'; established 2013, positions itself as a state-of-the-art family clinic.",
+    "provider_notes": "Dr. Dhaval Patel, lead dentist.",
+    "services": ["dentures/partials", "root canals", "extractions", "digital x-rays", "veneers", "cosmetic braces", "crowns", "composite fillings", "periodontal treatment", "wisdom teeth extraction", "endodontics", "teeth whitening"],
+    "distinguishing_notes": "Offers same-day and Saturday emergency appointments; accepts CareCredit financing.",
+    "sources": [
+     "https://simplyteethmountprospect.com/",
+     "https://simplyteethmountprospect.com/our-staff/",
+     "https://www.yelp.com/biz/simply-teeth-mount-prospect"
+    ]
+   }
+  },
+  {
+   "location_id": "64ed2e3e5794d0de",
+   "practice_name": "MI DENTAL PC",
+   "zip": "60056",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.midentalclinic.com/",
+    "https://www.midentalclinic.com/contact-info/",
+    "https://www.yelp.com/biz/mi-dental-mount-prospect-2"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own-domain site midentalclinic.com confirms Dr. Hyun Kim as the dentist at 1006 S Elmhurst Rd (address matches DB exactly), practice established 2018, no corporate or brand signal. Confidence medium because the phone number on the site/Yelp ((847) 258-5190) does not match the DB record's (646) 761-5224, a discrepancy likely from a stale NPPES contact field rather than a different entity.",
+   "searched": ["\"MI Dental\" 1006 S Elmhurst Rd Mount Prospect IL dentist"],
+   "intel": {
+    "website_url": "https://www.midentalclinic.com/",
+    "website_note": "Own-domain family-dentistry site; established 2018, markets itself as child-friendly with state-of-the-art equipment.",
+    "provider_notes": "Dr. Hyun Kim, DDS, lead dentist.",
+    "services": ["general dentistry", "emergency dentistry", "pediatric dentistry", "cleanings", "whitening", "extractions", "dentures", "root canals"],
+    "accepts_medicaid": true,
+    "insurance_note": "Accepts PPOs and public aid (Medicaid); Spanish spoken at the office.",
+    "distinguishing_notes": "Positioned as a bilingual (Spanish), Medicaid-accepting family practice.",
+    "sources": [
+     "https://www.midentalclinic.com/",
+     "https://www.midentalclinic.com/contact-info/",
+     "https://www.yelp.com/biz/mi-dental-mount-prospect-2"
+    ]
+   }
+  },
+  {
+   "location_id": "5b3f44c0487d2d45",
+   "practice_name": "BLOCKI AND BASHFORD DENTAL, LLC",
+   "zip": "60056",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://aedit.com/practice/blocki-and-bashford-dental-13292",
+    "https://aedit.com/provider/william-blocki-15462",
+    "https://aedit.com/provider/timothy-bashford-17534",
+    "https://dentistoffices.com/dentist-office/383678/mount-prospect-il/blocki-and-bashford-dental/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "AEDIT and dentistoffices.com confirm two named owner-dentists, Dr. William Blocki and Dr. Timothy Bashford, practicing together at 200 E Evergreen Ave with the DB's exact phone number and address, matching the DB's authorized official (William Blocki). A dentist-owned two-doctor single-location group with no corporate/DSO signal. Classified single_loc_group.",
+   "searched": ["\"Blocki\" \"Bashford\" dental Mount Prospect IL dentist"],
+   "intel": {
+    "provider_notes": "Dr. William Blocki, DDS (Northwestern University Dental School, 1981); Dr. Timothy Bashford, DDS (Northwestern), clinical focus on implants, sleep medicine, TMJ.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Two-dentist patient-centered/prevention-focused practice; both trained at Northwestern and have taught as clinical instructors.",
+    "sources": [
+     "https://aedit.com/practice/blocki-and-bashford-dental-13292",
+     "https://aedit.com/provider/william-blocki-15462",
+     "https://aedit.com/provider/timothy-bashford-17534"
+    ]
+   }
+  },
+  {
+   "location_id": "c574aefe94148b85",
+   "practice_name": "Aspen Dental",
+   "zip": "60056",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/aspen-dental-mount-prospect",
+    "https://birdeye.com/aspen-dental-mount-prospect-il-157420474608681"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": "brand:aspen_dental",
+   "reasoning": "This address is a branded Aspen Dental office (ADMI Corp) per the DB and would ordinarily be branded_dso, but Yelp explicitly lists the listing as 'CLOSED,' Birdeye shows 'temporarily closed,' and fetching Aspen's own location URL for this exact address redirected to a different nearby office (Palatine) rather than confirming this location. closure_suspect -- left undetermined rather than classifying a possibly-defunct location.",
+   "searched": [
+    "Aspen Dental 920 N Elmhurst Rd Mount Prospect IL locator",
+    "WebFetch https://www.aspendental.com/dentist/il/mount-prospect/920-n-elmhurst-road/",
+    "Aspen Dental Mount Prospect IL closed 2026"
+   ]
+  },
+  {
+   "location_id": "2500b0243825e21c",
+   "practice_name": "Ahmed Dental",
+   "zip": "60056",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npiprofile.com/npi/1295353571"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "NPI directory profile confirms Dr. Amina Ahmed as a licensed dentist registered at 16 N Elm St, matching the DB's exact address and phone number. No dedicated practice website, second dentist, or corporate signal was found. Confidence medium given the thin evidence depth (aggregator profile only).",
+   "searched": ["\"Ahmed Dental\" 16 N Elm St Mount Prospect IL dentist"]
+  },
+  {
+   "location_id": "f580c52ec7a9dac3",
+   "practice_name": "MEYER DENTAL GROUP PC",
+   "zip": "60056",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.meyerdentalgroup.net/",
+    "https://www.yelp.com/biz/meyer-dental-group-mount-prospect",
+    "https://www.meyerdentalgroup.net/dental-team-mount-prospect/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Own-domain site meyerdentalgroup.net and Yelp confirm this as a family-owned single-location practice founded by Dr. Gerald Meyer, now led by his son Dr. Thomas Meyer (matching DB's authorized official) with a third generation, Dr. Ellie Meyer, joining -- a dentist-owned multi-dentist group at one address, no corporate/DSO signal. Classified single_loc_group.",
+   "searched": ["\"Meyer Dental Group\" Thomas Meyer Mount Prospect IL 770 Northwest Hwy"],
+   "intel": {
+    "website_url": "https://www.meyerdentalgroup.net/",
+    "website_note": "Own-domain site emphasizing 50+ years of family-owned history and a 'Whole Body/Integrative Dentistry' philosophy.",
+    "provider_notes": "Three generations: founder Dr. Gerald Meyer (now retired), his son Dr. Thomas (Tom) Meyer, and Dr. Ellie Meyer (newest generation).",
+    "owner_career_stage": "mid_career",
+    "distinguishing_notes": "Multi-generational family dental practice (50+ years) marketed around integrative/whole-body dentistry.",
+    "sources": [
+     "https://www.meyerdentalgroup.net/",
+     "https://www.yelp.com/biz/meyer-dental-group-mount-prospect",
+     "https://www.meyerdentalgroup.net/dental-team-mount-prospect/"
+    ]
+   }
+  }
+ ]
+}
