@@ -16,7 +16,7 @@ mailing divergence, officer/contact roles, branch/HQ status, and web presence.
 import argparse
 import os
 import sys
-from glob import glob
+from pathlib import Path
 
 import pandas as pd
 from rapidfuzz import process as rfprocess
@@ -26,6 +26,20 @@ sys.path.insert(0, os.path.expanduser("~/dental-pe-tracker"))
 from scrapers.data_axle_importer import FIELD_CANDIDATES  # noqa: E402
 
 RAW_DIR = os.path.expanduser("~/dental-pe-tracker/data/data-axle")
+EMPTY_SENTINELS = {
+    "",
+    "nan",
+    "none",
+    "null",
+    "n/a",
+    "na",
+    "0",
+    "0.0",
+    "000000",
+    "000000000",
+    "$0",
+    "$0.00",
+}
 
 HIGH_VALUE_TERMS = (
     "iusa", "parent", "subsidiary", "ein", "executive", "contact", "title",
@@ -49,12 +63,41 @@ def _is_high_value(column: str) -> bool:
     return any(term in lower for term in HIGH_VALUE_TERMS)
 
 
+def _filled_count(series: pd.Series) -> int:
+    """Count meaningful non-empty values, treating common Data Axle zero sentinels as empty."""
+    normalized = series.fillna("").astype(str).str.strip().str.lower()
+    return int((~normalized.isin(EMPTY_SENTINELS)).sum())
+
+
+def _default_paths() -> list[str]:
+    """Find the Data Axle exports a human is likely to care about.
+
+    The original default only scanned top-level non-combined files, which missed
+    the actual March 2026 processed Chicagoland exports. Include top-level CSVs
+    and processed combined CSVs, excluding obvious report/debug artifacts.
+    """
+    root = Path(RAW_DIR)
+    paths = list(root.glob("*.csv")) + list((root / "processed").glob("*combined*.csv"))
+    cleaned = []
+    seen = set()
+    for path in sorted(paths):
+        name = path.name.lower()
+        if name.startswith("detail"):
+            continue
+        resolved = str(path)
+        if resolved in seen:
+            continue
+        seen.add(resolved)
+        cleaned.append(resolved)
+    return cleaned
+
+
 def audit_csv(path: str, min_fill_pct: float):
     df = pd.read_csv(path, dtype=str, low_memory=False)
     rows = len(df)
     out = []
     for col in df.columns:
-        filled = int(df[col].notna().sum())
+        filled = _filled_count(df[col])
         fill_pct = (100.0 * filled / rows) if rows else 0.0
         mapped, score = _guess_mapping(col)
         out.append({
@@ -101,10 +144,7 @@ def main():
     parser.add_argument("--min-fill-pct", type=float, default=5.0, help="Minimum fill percent for high-value unmapped report")
     args = parser.parse_args()
 
-    paths = args.csvs or sorted(
-        p for p in glob(os.path.join(RAW_DIR, "*.csv"))
-        if "combined" not in os.path.basename(p).lower()
-    )
+    paths = args.csvs or _default_paths()
     if not paths:
         print(f"No Data Axle CSVs found in {RAW_DIR}")
         return
