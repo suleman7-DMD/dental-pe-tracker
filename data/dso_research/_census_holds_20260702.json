@@ -9,7 +9,8 @@
    "R2": "RATIFIED \u2014 ClearChoice rows are scope-correction items, never tiered while mis-scoped; 0 found in candidate set",
    "R3": "RATIFIED \u2014 T6 institutional = coverage only, never consolidated, never DSO/PE",
    "R4": "RATIFIED procedure; named networks decided: NITTINGER ACCEPT T5 (11), LABINOV ACCEPT T5 (7), SHAFI ACCEPT T3 (18); r4_flag kept on rows for audit",
-   "R5": "RATIFIED \u2014 closure-flagged rows held unless adjudicated; cross-check enforced in this generator; 2 candidates adjudicated ACTIVE (Geneva Dental, MetroSmiles Archer Heights \u2014 closure flags contradicted by direct evidence)"
+   "R5": "RATIFIED \u2014 closure-flagged rows held unless adjudicated; cross-check enforced in this generator; 2 candidates adjudicated ACTIVE (Geneva Dental, MetroSmiles Archer Heights \u2014 closure flags contradicted by direct evidence)",
+   "R6": "Archer T4 proposal REJECTED fail-closed (AO/'Administrator' = structure, not control; no ownership documentation either way); 8d81d4516f493d1e stays held with a concrete 3-route resolution path; sibling 0fc205300f29c725 added as network_consistency hold; _merge_lane_a_results_20260702.py now rejects held location_ids mechanically (pm_hold_active)."
   },
   "sources": {
    "ready310": "_ready_to_validate_wave3_fixed_20260621.json",
@@ -33,7 +34,7 @@
    "R5_closure_flag_adjudicated_active": 2
   },
   "total_classifications": 343,
-  "total_holds": 6,
+  "total_holds": 7,
   "floor_lift_split": {
    "T1_independent_coverage": 32,
    "T4T5_corroborates_already_corporate": 81,
@@ -86,9 +87,10 @@
    "location_id": "8d81d4516f493d1e",
    "practice_name": "CHICAGO DENTISTRY LLC (DBA ARCHER DENTISTRY CHICAGO)",
    "hold_reason": "lane3_pending_ownership_confirmation",
-   "detail": "QA verdict PASS_WITH_HOLDS (2026-07-02): 'dentist-owned' claim for Archer Dentistry not confirmed by independent evidence; do not count toward coverage/floor until ownership resolved.",
+   "detail": "PM RULING R6 (Fable, 2026-07-02): gate-lane3's T4 stealth_dso proposal (ARCHER_OWNERSHIP_RESOLUTION_20260702.json) REJECTED fail-closed. A non-dentist NPPES AO titled 'Administrator' (Hamza Mohammed) + dentist PCs co-registered at 654 E 47th is STRUCTURE, not CONTROL \u2014 AO reach alone never meets the T4/T5 documentary bar. Two independent PM adversarial searches found NO documentary evidence Mohammed owns/controls Chicago Dentistry LLC; contra-signals (Practo lists Dr. Zishan Bader DDS at Archer Dentistry 47th St; SHAFEEQ H. BADER DDS SC at 5430 S Kedzie ties to 'Archer Dentistry Kedzie'; Bader-family PCs co-registered) make dentist-owned T3 at least equally plausible. T3 is NOT awarded either: dentist OWNERSHIP is equally undocumented (archerdentistry.com proves the 5-location network, not the owner). Resolution path, any ONE suffices: (1) IL SOS LLC file detail for CHICAGO DENTISTRY LLC / ARCHER DENTISTRY LLC naming members/managers (web portal 403s \u2014 manual pull); (2) IDFPR dental office license holder; (3) documentary ownership statement (owner-naming about/team page, news, or the owner's own professional profile).",
    "original_tier": "dentist_multi",
-   "source": "wave4_gate_normalized_lane3_51_100_20260702 + VERDICT_QA_WAVE4_LANE3_51_100_20260702"
+   "source": "wave4_gate_normalized_lane3_51_100_20260702 + VERDICT_QA_WAVE4_LANE3_51_100_20260702",
+   "pm_ruling": "R6_reject_t4_keep_hold"
   },
   {
    "location_id": "6c31d482e9a63431",
@@ -97,6 +99,14 @@
    "detail": "PM catch 2026-07-02 via fail-closed validator: row carries DA_ synthetic NPI DA_c396391041ac (Data-Axle remnant, no phone). Real practice row 0d376204167d44a6 (ADVANCED FAMILY DENTAL OF SHOREWOOD, P.C., NPI 1932386810, same house number/ZIP) is ALREADY dso_regional. GLDP/Shore evidence = corroboration of an already-counted corporate practice; NOT net-new floor lift. Route: scope-correction queue (da_unverified reclass + possible duplicate_location merge).",
    "original_tier": "branded_dso",
    "source": "wave4_gate_normalized_lane3_51_100_20260702 + PM validator run 2026-07-02"
+  },
+  {
+   "location_id": "0fc205300f29c725",
+   "practice_name": "ARCHER DENTISTRY LLC (3924 S ARCHER AVE, CHICAGO 60632)",
+   "hold_reason": "network_consistency_archer",
+   "detail": "PM RULING R6 (Fable, 2026-07-02): untiered GP sibling of held row 8d81d4516f493d1e in the same Archer Dentistry network (5 locations, 4 IL \u2014 below the R4 threshold but one-network-one-decision still applies to HELD networks). Sits in the Lane A queue; held so a wave agent cannot classify one Archer location while its sibling's ownership is unresolved. Resolves together with 8d81d4516f493d1e under the same evidence bar. (Archer Orthodontics Naperville 8f1ad6c3aafdeac6 = specialist, out of GP census scope; BROWN ARCHER DENTAL PC = unrelated name-collision, already tiered dentist_multi.)",
+   "original_tier": null,
+   "source": "PM ruling R6 2026-07-02 (network consistency)"
   }
  ]
 }

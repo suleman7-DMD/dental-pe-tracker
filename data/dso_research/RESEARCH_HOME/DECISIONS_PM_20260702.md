@@ -85,3 +85,48 @@ holds file; Archer resolution research is in flight and folds in later via
 No `entity_classification` flips from census work; no denominator mutations
 (closure/duplicate/scope queues stay review-only pending their own lanes);
 Boston/MA parked; no Fleet B 101+ fan-out; never print `.env` values.
+
+## R6 — Archer Dentistry / Chicago Dentistry LLC: **T4 proposal REJECTED, hold KEPT (fail-closed)**
+Ruled 2026-07-02 (later same day) after PM adversarial review of gate-lane3's
+`_wave4_20260621/autonomous/ARCHER_OWNERSHIP_RESOLUTION_20260702.json`.
+- **The T4 stealth_dso (MODERATE) proposal for `8d81d4516f493d1e` is rejected.**
+  Its load-bearing fact — a non-dentist NPPES Authorized Official titled
+  "Administrator" (Hamza Mohammed) with 3 dentist PCs co-registered at 654 E
+  47th — establishes STRUCTURE, not CONTROL. Under the census evidence bar,
+  AO/EIN reach alone is never sufficient for T4/T5; an administrator title is
+  equally consistent with a dentist-owned group that employs an administrator.
+- **Two independent PM verification searches found no documentary evidence**
+  that Mohammed owns or controls the LLC, and surfaced contra-signals pointing
+  at dentist (Bader-family) involvement at the network's addresses: Practo
+  associates Dr. Zishan Bader DDS with Archer Dentistry 47th St; SHAFEEQ H.
+  BADER DDS SC (5430 S Kedzie) ties to "Archer Dentistry Kedzie".
+- **T3 dentist_multi is NOT awarded either** — dentist OWNERSHIP is exactly as
+  undocumented as non-dentist control. archerdentistry.com documents the
+  5-location network (4 IL), not the owner. Honest state = HOLD.
+- **Resolution path (any one suffices):** (1) IL SOS LLC file detail naming
+  members/managers for CHICAGO DENTISTRY LLC / ARCHER DENTISTRY LLC (portal
+  403-blocks scripted access — manual pull); (2) IDFPR dental office license
+  holder; (3) a documentary ownership statement (owner-naming team page, news
+  coverage, or the owner's professional profile).
+- **Network consistency:** untiered GP sibling `0fc205300f29c725` (ARCHER
+  DENTISTRY LLC, 3924 S Archer Ave 60632) added to the holds file
+  (`network_consistency_archer`) so a Lane A wave agent cannot classify one
+  Archer location while the network's ownership is unresolved. Archer
+  Orthodontics Naperville (`8f1ad6c3aafdeac6`) is specialist scope (out of GP
+  census); BROWN ARCHER DENTAL PC is an unrelated name-collision, already
+  tiered. Holds file total: 6 → 7.
+- **Mechanical enforcement:** `_merge_lane_a_results_20260702.py` now loads
+  `_census_holds_20260702.json` and rejects any held location_id
+  (`pm_hold_active`) — holds can no longer be bypassed by wave output.
+
+## Lane A model incident (2026-07-02 evening) — for the record
+The first Lane A launch ran research agents on claude-sonnet-4-6: user-level
+`~/.claude/settings.json` pinned `CLAUDE_CODE_SUBAGENT_MODEL=claude-sonnet-4-6`
+and remapped the sonnet/opus aliases to 4.6/4.7, silently clamping EVERY
+subagent regardless of requested model (verified by 10 probe agents across 3
+probe workflows — even `opus`, `fable`, and full IDs clamped). Fleet stopped
+with ZERO result files written (no 4.6 output entered the census). Fix applied
+to settings.json (sonnet→claude-sonnet-5, opus→claude-opus-4-8, subagent pin
+removed); env is snapshotted at CLI startup, so the fix requires a session
+restart. Wave 1 relaunches on Sonnet 5 research + Opus 4.8 verify after
+restart.
