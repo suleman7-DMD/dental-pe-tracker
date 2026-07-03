@@ -316,3 +316,34 @@ as BINDING pre-merge gates:
   journals (BOTH session dirs) into `_verdicts_wave1.json`; §6c gate 1 assert before merge.
 - Verdicts file at pause: 35 entries; landed T4/T5 claims ~77+ → coverage assert WILL fail
   until inline verdicts harvested post-resume. That is the fail-closed design, not a bug.
+
+## §6e — DEEP-DIVE + ANALYST RECONCILIATION (2026-07-02, paused state; PM-verified numbers)
+
+Analyst's independent audit CONFIRMED against disk/DB — adopt their framing everywhere:
+- Lane A input universe = **3,486 rows across 218 units** (unit files carry `{unit_id, practices}`).
+  Say "2,918 rows banked (184/218 units)", never "3,700 banked". 3,700+ is only the post-completion
+  projection (3,486 + 343 consolidated = 3,829 max Lane-A-era coverage; zero overlap verified).
+- Banked: 2,918 rows / 2,533 classified (86.8%) / 385 undetermined. Conf: 1,592 high, 941 medium.
+  Basis: web_verified 2,471, locator 57, ao_cluster 4, structural 1. 2,727 rows carry ≥1 URL;
+  4,626 searches logged. Raw tier tally: T1 1,327 / T2 815 / T3 272 / T4 17 / T5 60 / T6 44.
+- **Merge gate unchanged & fail-closed: 77 T4/T5 claims vs 35 verdicts** — harvest inline verdicts
+  on resume before merge (§6c gate 1). Raw files still show pre-verdict DSO assignments by design.
+
+**THE 610-LOCATION GAP DECOMPOSED (new — answers analyst's open question).** DB untiered IL-watched
+GP pool = 4,096; units cover 3,486; uncovered 610 = **242 synthetic DA_/DIR_-NPI rows** (merge gate
+rejects these anyway; they are the existing NPI-bridging queue) **+ 6 PM holds + ~362 real-NPI
+locations never assigned to any unit** (heavy Naperville 60540 cluster in sample). ⇒ **WAVE 5
+(~23 units, ~362 rows) needed after wave-4 completion** to close the researchable universe.
+Unit-input lids not in current pool: 0 (no drift).
+
+Detector-vs-human matrix (classified rows): 33 DSO claims at detector-independent locations;
+31 reverse rows (detector dso_* → hand-verified dentist-owned/independent). PM review items at
+merge: (a) reverse row "Aspen Dental, Morton Grove → true_independent conf=high" — suspicious,
+eyeball; (b) 12 placeholder rows (§ prior note); (c) network-slug dedupe map grew:
+1st_family_dental/1st-family-dental, dentalworks/dentalworks_sonrava/dentalworks-sonrava,
+nadg/north_american_dental_group/grove_dental_nadg, destiny_dental/destiny_dental_prosmile
+(midwest_dental vs midwest_dental_sleep_center are legitimately DISTINCT — do not merge).
+R4 rule observed working (Dentologie 13-loc, CSG/GLDP 35-loc, Grove/NADG, Klyber/Webster all
+deferred undetermined with R4 notes). Succession radar: 61 hand-verified T1/T2 est ≤1990
+(oldest 1911). Intel: 1,117 rows populated (owner_career_stage 267, services 669, hiring 3).
+Closure discipline: 8 "permanently closed" + 3 obituary cases correctly held undetermined.
