@@ -347,3 +347,13 @@ R4 rule observed working (Dentologie 13-loc, CSG/GLDP 35-loc, Grove/NADG, Klyber
 deferred undetermined with R4 notes). Succession radar: 61 hand-verified T1/T2 est ≤1990
 (oldest 1911). Intel: 1,117 rows populated (owner_career_stage 267, services 669, hiring 3).
 Closure discipline: 8 "permanently closed" + 3 obituary cases correctly held undetermined.
+
+### §6f UNPAUSE (2026-07-03) — second resume, same §6d recipe
+
+User signal "gracefully unpause". Pre-resume checks: 184/218 files on disk; verdicts file 35
+entries; landed T4/T5 claims recounted = 77 (gate gap 42, closes via inline verdicts). All three
+research runs resumed with resumeFromRunId + identical args (cached agents replay; only the 34
+missing units run live). New task IDs: relaunch wnx7tcqw0 / wave3 wme4f2x05 / wave4 wmwhcpbu1
+(run IDs unchanged: wf_a79097d5-2c2 / wf_facf67a9-304 / wf_a8ac7ebd-e28). Journals for THIS
+resume are under session dir 4d259360… again. On completion: harvest inline verdicts →
+_verdicts_wave1.json, §6c gates, merge, PM review (§6e items), n=20 audit, consolidate, sync.
