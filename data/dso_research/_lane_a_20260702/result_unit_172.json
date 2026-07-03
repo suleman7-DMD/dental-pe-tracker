@@ -1,0 +1,390 @@
+{
+ "unit_id": "laneA_172",
+ "classifications": [
+  {
+   "location_id": "bc8195158e7cadc5",
+   "practice_name": "Irvington Dental",
+   "zip": "60107",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.irvington-dental.com/",
+    "https://www.irvington-dental.com/contact-us/",
+    "https://www.irvington-dental.com/meet-the-doctors/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice has its own website (irvington-dental.com) with a 'Meet The Doctors' page (plural) featuring Dr. Joon Han, a board-certified prosthodontist, and no mention of a corporate parent or DSO (site is only 'powered by' a web-marketing vendor). This fits the record's small_group/2-provider classification, single Streamwood location. Confidence is medium rather than high because the site's listed address (945 W Irving Park Rd) and new-patient phone differ from the NPPES record (403 W Irving Park Rd / (630) 830-1954) -- most likely a practice relocation/phone update after the NPPES snapshot, since the unique practice name, city, and ZIP all match exactly.",
+   "searched": [
+    "Irvington Dental Streamwood IL dentist",
+    "WebFetch https://www.irvington-dental.com/contact-us/"
+   ],
+   "intel": {
+    "website_url": "https://www.irvington-dental.com/",
+    "website_note": "Modern, actively maintained practice website with online booking and dedicated service pages.",
+    "services": ["general dentistry", "smile makeovers", "full mouth reconstruction", "prosthodontics"],
+    "provider_notes": "Dr. Joon Han, DDS from University of Illinois College of Dentistry, board-certified prosthodontist (one of 31 in Illinois).",
+    "distinguishing_notes": "Serves Bartlett, Hanover Park, Schaumburg, Elgin, Hoffman Estates; open some Saturdays.",
+    "sources": ["https://www.irvington-dental.com/contact-us/", "https://www.irvington-dental.com/meet-the-doctors/"]
+   }
+  },
+  {
+   "location_id": "fd5392f11356a3ea",
+   "practice_name": "Sari, Nila",
+   "zip": "60107",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://streamwoodsmiles.com/",
+    "https://streamwoodsmiles.com/doctor/dr-nila-sari/",
+    "https://streamwoodsmiles.com/locations/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This NPI (Dr. Nila Sari) practices at 'Streamwood Smiles Dental Care', 103 S Sutton Rd, Streamwood -- address and phone (630-289-7111) match exactly. The practice's own /locations/ page confirms a SINGLE office (this address) with a 'Doctors' page listing multiple dentists, consistent with the record's small_group/3-provider classification. No corporate parent, DSO, or management company is mentioned anywhere on the site.",
+   "searched": [
+    "Nila Sari DDS Streamwood IL dentist 103 Sutton Rd",
+    "WebFetch https://streamwoodsmiles.com/locations/"
+   ],
+   "intel": {
+    "website_url": "https://streamwoodsmiles.com/",
+    "website_note": "Dedicated multi-doctor practice site with online scheduling.",
+    "services": ["esthetic dentistry", "implant dentistry", "sinus lift/full-arch rehabilitation"],
+    "provider_notes": "Dr. Nila Sari, dental degree from Universitas Airlangga (Indonesia); advanced esthetic/implant training at NYU.",
+    "sources": ["https://streamwoodsmiles.com/doctor/dr-nila-sari/", "https://streamwoodsmiles.com/locations/"]
+   }
+  },
+  {
+   "location_id": "38ea278afd42b326",
+   "practice_name": "Patari Dental",
+   "zip": "60107",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthgrades.com/dentist/dr-kiran-patari-xv658",
+    "https://www.vitadox.com/practice/streamwood-il-60107/health-care-associates-of-streamwood/LcF8L2GqeQvmXE4ZmUpboD",
+    "https://www.carecredit.com/doctor-locator/streamwood-il/kiran-k-patari-dds-jhk269/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Kiran Patari, DDS is the sole dentist listed at 77 E Irving Park Rd (address/phone match exactly). She practices under 'Health Care Associates of Streamwood', which multiple directories describe as a family-medicine-branded multi-specialty building rather than a dental DSO -- no dental corporate parent, DSO, or PE sponsor is named anywhere. Evidence is directory-only (no dedicated dental website found), so confidence is medium rather than high, but nothing suggests corporate ownership.",
+   "searched": [
+    "Patari Dental Streamwood IL 77 Irving Park Rd",
+    "Kiran Patari DDS Streamwood \"Health Care Associates\""
+   ]
+  },
+  {
+   "location_id": "1bb1311838d0321f",
+   "practice_name": "Szymanska Dental",
+   "zip": "60107",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.doctorsnetwork.com/doctors/dentists/streamwood-il-60107/invite-hanna-szymanska-dds-15335",
+    "https://www.healthgrades.com/dentist/dr-hanna-szymanska-xv2d2",
+    "https://www.bbb.org/us/il/streamwood/profile/dentist/szymanska-hanna-dds-0654-88500327"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Hanna Szymanska, DDS is a solo general dentist at 527 S Bartlett Rd (address/phone match exactly). Multiple independent directories (Healthgrades, Sharecare, BBB) describe a single-dentist office, currently not accepting new patients, with no corporate or DSO affiliation mentioned. No dedicated practice website was found, so confidence is medium.",
+   "searched": ["Szymanska Dental Streamwood IL 527 Bartlett Rd"],
+   "intel": {
+    "website_url": null,
+    "services": ["general dentistry", "root canals", "implants", "dentures", "Invisalign", "veneers", "whitening"],
+    "distinguishing_notes": "Services offered in English and Polish; office not currently accepting new patients.",
+    "sources": ["https://www.doctorsnetwork.com/doctors/dentists/streamwood-il-60107/invite-hanna-szymanska-dds-15335", "https://www.bbb.org/us/il/streamwood/profile/dentist/szymanska-hanna-dds-0654-88500327"]
+   }
+  },
+  {
+   "location_id": "6e97d5c01cc9b828",
+   "practice_name": "Bohl Dental",
+   "zip": "60107",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://bohlstreamwooddentist.com/services/",
+    "https://www.facebook.com/EricWBohlDds/",
+    "https://www.yelp.com/biz/eric-w-bohl-dds-streamwood"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Eric W. Bohl, DDS operates his own dedicated practice website (bohlstreamwooddentist.com) at 1024 E Schaumburg Rd (address/phone match exactly), offering general, cosmetic, and orthodontic ('braces') services. No corporate parent or DSO signal anywhere; clearly a solo owner-operator.",
+   "searched": ["Bohl Dental Streamwood IL Eric Bohl DDS 1024 Schaumburg Rd"],
+   "intel": {
+    "website_url": "https://bohlstreamwooddentist.com/",
+    "website_note": "Dedicated single-dentist practice website with services page.",
+    "services": ["general dentistry", "cosmetic dentistry", "braces"],
+    "distinguishing_notes": "Limited weekly hours (part-time schedule across the week per listed office hours).",
+    "sources": ["https://bohlstreamwooddentist.com/services/"]
+   }
+  },
+  {
+   "location_id": "3d19bf082c0cb2a3",
+   "practice_name": "ERIC W BOHL DDS LTD",
+   "zip": "60107",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://bohlstreamwooddentist.com/services/",
+    "https://www.yelp.com/biz/eric-w-bohl-dds-streamwood"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This is the organizational-NPI shell (AO=ERIC BOHL, matching the dentist name exactly) for the same solo practice at 1024 E Schaumburg Rd covered above (Bohl Dental) -- same address, same phone. Not a separate operator; same evidence and tier apply: solo dentist-owned, no corporate signal.",
+   "searched": ["Bohl Dental Streamwood IL Eric Bohl DDS 1024 Schaumburg Rd"]
+  },
+  {
+   "location_id": "1e16b6c98b5a029c",
+   "practice_name": "Cameo Dentistry",
+   "zip": "60107",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/cameo-dentistry-streamwood",
+    "https://cameodentistry.com/",
+    "https://doctor.webmd.com/practice/cameo-dentistry-3a9a2f25-3f96-4c68-8435-4a9b52db30e9"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Cameo Dentistry at 293 N Barrington Rd (address/phone match exactly) is described across multiple directories (Yelp, WebMD, BBB, Groupon) as a single-location group practice with 'over 20 years of experience', consistent with the record's small_group/2-provider classification. No DSO or corporate-parent signal found; attempts to fetch the practice's own site for named owner/ownership detail were blocked (truncated/404), so confidence is medium.",
+   "searched": [
+    "Cameo Dentistry Streamwood IL 293 Barrington Rd",
+    "WebFetch https://cameodentistry.com/",
+    "WebFetch https://cameodentistry.com/about"
+   ]
+  },
+  {
+   "location_id": "fb552eba0be61a0a",
+   "practice_name": "BARRINGTON ROAD DENTAL CARE INC",
+   "zip": "60107",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.barringtonroaddentalcare.com/",
+    "https://www.barringtonroaddentalcare.com/about",
+    "https://www.barringtonroaddentalcare.com/contact"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice's own website confirms it is 'Dr. Sulaiman Shaltoni's Dental Office' at 1576 Buttitta Dr, Streamwood -- exact address/phone match, and the dentist name matches the NPPES authorized official (SULAIMAN SHALTONI) exactly. Single location, dentist-owned, no corporate/DSO signal; consistent with the record's small_group/2-provider classification.",
+   "searched": ["\"Barrington Road Dental Care\" Streamwood IL Shaltoni"],
+   "intel": {
+    "website_url": "https://www.barringtonroaddentalcare.com/",
+    "website_note": "Dedicated, cosmetic-forward practice website with multiple service pages.",
+    "services": ["dental implants", "orthodontic braces", "clear braces", "veneers", "Lumineers", "whitening", "bridges", "crowns", "dentures", "Snap-On Smile"],
+    "distinguishing_notes": "Serves Schaumburg, Hoffman Estates, and Bartlett; heavy cosmetic-services menu.",
+    "sources": ["https://www.barringtonroaddentalcare.com/about", "https://www.barringtonroaddentalcare.com/contact"]
+   }
+  },
+  {
+   "location_id": "611a74f422d7e06d",
+   "practice_name": "Romano Dental",
+   "zip": "60107",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://healthysmilesdentalcare.org/",
+    "https://healthysmilesdentalcare.org/team/",
+    "https://www.healthgrades.com/dentist/dr-giusto-romano-3vpry"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "This NPI operates as 'Healthy Smiles Dental Care' at 906 E Irving Park Rd (address/phone match exactly). Dr. Giusto Romano, DDS (University of Illinois, 1994) is the practicing dentist; dedicated practice website with no corporate/DSO mention. Consistent with solo owner-operator record classification.",
+   "searched": ["Romano Dental Streamwood IL 906 Irving Park Rd dentist"],
+   "intel": {
+    "website_url": "https://healthysmilesdentalcare.org/",
+    "website_note": "Dedicated single-practice website with team bio page.",
+    "services": ["preventive dentistry", "cosmetic dentistry", "restorative dentistry", "implant dentistry"],
+    "provider_notes": "Dr. Giusto Romano, DDS, University of Illinois dental degree 1994.",
+    "owner_career_stage": "late_career",
+    "distinguishing_notes": "Over 20 years serving the Streamwood community.",
+    "sources": ["https://healthysmilesdentalcare.org/team/"]
+   }
+  },
+  {
+   "location_id": "ecbb3eec9c6955f5",
+   "practice_name": "Desai Dental",
+   "zip": "60107",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npiprofile.com/npi/1912369794",
+    "https://www.vitadox.com/doctor/streamwood-il-60107/prutha-desai-dmd/qDx5LJbdfsvLJJcirkbRMd"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Prutha Desai, DMD is a solo general-practice dentist at 3 Warwick Ct (address/phone match exactly), IL license 019.030690, NPI registered since 2016. No corporate/DSO signal in any directory; no dedicated practice website found, so confidence is medium.",
+   "searched": ["Desai Dental Streamwood IL 3 Warwick Ct dentist"],
+   "intel": {
+    "provider_notes": "Dr. Prutha Desai, DMD; ~7 years of general-practice dentistry experience per directory bio; IL license 019.030690.",
+    "owner_career_stage": "early_career",
+    "sources": ["https://www.vitadox.com/doctor/streamwood-il-60107/prutha-desai-dmd/qDx5LJbdfsvLJJcirkbRMd"]
+   }
+  },
+  {
+   "location_id": "17b515f739d57bfe",
+   "practice_name": "POLDEK FAMILY DENTAL",
+   "zip": "60107",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://poldekfamilydental.com/",
+    "https://www.poldekfamilydental.com/meet-dr-poldek.html",
+    "https://www.bbb.org/us/il/streamwood/profile/dentist/poldek-family-dental-0654-88401255"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Practice's own website confirms Dr. Kirk Poldek, DDS has operated this family dental office at 642 S Sutton Rd (address/phone match exactly) since 2007. No corporate/DSO signal; the NPPES-listed authorized official (Marzena/Marci Pawlak) appears to be office manager, not owner-dentist, per BBB listing -- ownership rests with Dr. Poldek.",
+   "searched": ["\"Poldek Family Dental\" OR \"Marzena Pawlak\" Streamwood IL dentist"],
+   "intel": {
+    "website_url": "https://poldekfamilydental.com/",
+    "website_note": "Dedicated family-practice website with doctor bio page.",
+    "owner_career_stage": "mid_career",
+    "distinguishing_notes": "Family dental office serving Streamwood since 2007.",
+    "sources": ["https://www.poldekfamilydental.com/meet-dr-poldek.html"]
+   }
+  },
+  {
+   "location_id": "dafed24beb7ecc74",
+   "practice_name": "UNITED DENTAL GROUP PLLC",
+   "zip": "60107",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.linkedin.com/in/munirgomaa",
+    "https://npiregistry.cms.hhs.gov/provider-view/1205365079"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Munir Gomaa, DMD (NPPES authorized official for this org NPI, matching exactly) is a solo dentist at 50 Marion Ln (address/phone match exactly). His LinkedIn profile self-describes as 'Dentist at Private Practice'. No DSO or corporate-parent signal found anywhere; evidence is directory/LinkedIn-only, so confidence is medium.",
+   "searched": ["\"United Dental Group\" Streamwood IL Munir Gomaa 50 Marion Ln"]
+  },
+  {
+   "location_id": "14fe42cbed28fc85",
+   "practice_name": "Mosoof Dental",
+   "zip": "60107",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://npino.com/dentist/1477160331-samer-mosoof/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Samer Mosoof is listed as a solo dentist at 9 Monroe Ct (address/phone match exactly), IL license 019032923. No dedicated practice website found and no corporate/DSO signal in any directory; multiple independent directories agree on solo-practitioner status, but evidence is thin, so confidence is medium rather than high.",
+   "searched": ["Mosoof Dental Streamwood IL 9 Monroe Ct dentist"]
+  },
+  {
+   "location_id": "244c65d0ee4f57a2",
+   "practice_name": "Shah Dental",
+   "zip": "60107",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.dentistreg.com/general_practice/59eab228/",
+    "https://www.topnpi.com/il1508553256/dr-shirali-shah"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Shirali Shah, general-practice dentist, confirmed at 1004 Tuscany Dr (address/phone match exactly) with NPI 1508553256 matching this record's primary_npi exactly per topnpi.com. No dedicated website or corporate/DSO signal found in directories; solo-provider evidence only, so confidence is medium. Note: other 'Shah' dentists in Streamwood (Lucy/Kalpit Shah at Streamwood Family Dentistry, 63 S Sutton Rd) are a DIFFERENT, unrelated practice at a different address.",
+   "searched": ["Shah Dental Streamwood IL 1004 Tuscany Dr dentist"]
+  },
+  {
+   "location_id": "97d1ac5a56d45ac1",
+   "practice_name": "MCELROY PEDIATRIC DENISTRY, LTD.",
+   "zip": "60108",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.mcelroydds.com/contact-us/",
+    "https://www.yelp.com/biz/owl-pediatric-dentistry-bloomingdale",
+    "https://www.linkedin.com/company/mcelroy-pediatric-dentistry-ltd-"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. William McElroy, DDS (matches NPPES authorized official exactly) founded this pediatric practice at 231 S Gary Ave, Bloomingdale (address/phone match exactly) around 1982; it has recently been rebranded 'OWL Pediatric Dentistry' but remains the same single-location, dentist-owned office (no sale/acquisition mentioned anywhere -- just a name refresh). Consistent with the record's small_group/3-provider classification.",
+   "searched": ["McElroy Pediatric Dentistry Bloomingdale IL 231 Gary Ave"],
+   "intel": {
+    "website_url": "https://www.mcelroydds.com/",
+    "website_note": "Long-running pediatric practice site, recently rebranded as 'OWL Pediatric Dentistry' (Oral Wellness for Life).",
+    "services": ["pediatric dentistry", "special needs dental care"],
+    "distinguishing_notes": "In operation since ~1982; treats special-needs children; recent name change to OWL Pediatric Dentistry, same ownership.",
+    "sources": ["https://www.mcelroydds.com/contact-us/", "https://www.mcelroydds.com/services-for-special-needs-patients/", "https://www.yelp.com/biz/owl-pediatric-dentistry-bloomingdale"]
+   }
+  },
+  {
+   "location_id": "d4d827860b4132cb",
+   "practice_name": "DENTAL PROFESSIONALS OF ILLINOIS, P.C.",
+   "zip": "60108",
+   "assigned_tier": "undetermined",
+   "pe_backed": false,
+   "evidence_basis": "structural",
+   "evidence_urls": [
+    "https://npino.com/dental-clinic/1811663776-dental-professionals-of-illinois,-p.c./",
+    "https://www.npinumberlookup.org/dental-professionals-of-illinois-pc-bloomington-il-1093937369",
+    "https://www.npinumberlookup.org/dental-professionals-of-illinois-pc-oglesby-il-1144623273",
+    "https://npino.com/dental-clinic/1093399107-dental-professionals-of-illinois,-p.c/",
+    "https://npiprofile.com/npi/1609053206"
+   ],
+   "evidence_artifacts": [
+    "Entity name 'Dental Professionals of Illinois, P.C.' (this record's EIN 362736573) found under distinct org-NPIs in at least 6 separate IL cities: Effingham, Bloomington, Oglesby, Darien, North Aurora, plus this Bloomingdale address",
+    "Consistent with ctx owner_reach_locations=3 / ein_reach_locations=3 within this research pool alone (a partial view of a larger statewide footprint)"
+   ],
+   "confidence": "low",
+   "status": "undetermined",
+   "network_id": "brand:dental_professionals_of_illinois_pc",
+   "reasoning": "The physical suite at 290 Springfield Dr, Bloomingdale is occupied by 'Flex Dental' per public listings/Nextdoor, with no page bearing the 'Dental Professionals of Illinois, P.C.' name found directly; that entity/EIN instead resolves to a multi-city NPI footprint (Effingham, Bloomington, Oglesby, Darien, North Aurora, and this Bloomingdale address -- 6+ distinct locations found in a quick search alone, very likely 10+ statewide). This exceeds the single-network review threshold. Per protocol, NOT classifying here -- R4_protected_network:dental_professionals_of_illinois_pc. A dedicated Heartland/DSO-vs-friendly-PC corporate-linkage check (e.g. Heartland Dental's own IL locator) should resolve this network in one pass rather than per-unit.",
+   "searched": [
+    "\"Dental Professionals of Illinois\" Bloomingdale 290 Springfield Dr Heartland",
+    "(630) 924-8284 Bloomingdale dental",
+    "\"Flex Dental\" Bloomingdale Heartland Dental \"supported\"",
+    "NPI 1346997020 \"Dental Professionals of Illinois\"",
+    "WebFetch https://www.flexdental.net/ (403 blocked)"
+   ]
+  }
+ ]
+}
