@@ -428,3 +428,30 @@ correct / hold) — files-only artifacts; (2) apply verifier verdicts (DOWNGRADE
 merge script; (3) n=20+ T1/T2 audit incl. directory-only + structural-signal rows; (4) only then
 merge→consolidate(validate-only→allow-db-write)→dual-leg sync with read-back. No DB writes before
 (1)–(3) complete.
+
+## §6j — Fable session-limit recovery by Codex (2026-07-03)
+
+The adjudication workflow `wf_723bfaaf-f92` reported completion just before the Fable session hit
+the usage limit, but only **13 batch files** landed in
+`_lane_a_20260702/adjudication/` (`batch_00.json` … `batch_12.json`). Those files cover
+**130 of 277** `block_before_merge` rows, not the full queue.
+
+Codex recovery actions:
+- Preserved the 130 real adjudicator dispositions exactly as written.
+- Wrote `_lane_a_20260702/_adjudication_missing_20260703.json` for the **147 rows with no
+  landed disposition**.
+- Wrote `_lane_a_20260702/_adjudication_rollup_20260703.json` with all 277 blockers represented:
+  - real adjudicated: 130
+  - explicit fail-closed recovery holds: 147
+  - accepted original tier: 28
+  - corrected tier: 61
+  - real adjudicator holds: 41
+  - recovery holds: 147
+
+Important policy: the 147 recovery rows are **not adjudicated accepts/corrections**. They are
+`hold_unadjudicated_session_limit` and `merge_action=hold_do_not_merge`. This keeps §6h safe:
+no row lacking an adjudicator disposition can silently merge as T1/T2/T3. Fable may later rerun
+adjudication only for the missing queue; until then, the conservative merge candidate must exclude
+those 147 rows.
+
+No DB, Supabase, LEDGER, or PROGRESS writes occurred during this recovery.

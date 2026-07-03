@@ -1,0 +1,106 @@
+{
+  "batch": 3,
+  "indices": [30, 39],
+  "dispositions": [
+    {
+      "location_id": "60d758743da86854",
+      "practice_name": "Lysinska Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Hard signals fire on a genuine second dentist-plausible surname: DB has two distinct-surname NPIs (LYSINSKA 1942357660 + HAIDO 1598910218), entity_classification small_group. The researcher's T1 rests only on absence ('only one dentist named' in a single Yelp listing) — not affirmative proof HAIDO is a hygienist/predecessor. Per rule 1 that mandates correct T1->T2, not accept. No DSO brand, network_id, or corporate db label, so it stays independent single-location group; directory-only support caps confidence at medium (rule 5).",
+      "web_searched": false
+    },
+    {
+      "location_id": "67df5b133a4589aa",
+      "practice_name": "Ziols Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "The 'Gordon J. Ziols, D.D.S., P.C.' professional corp supports dentist ownership, but a distinct second surname DROZDZ (NPI 1487814992) is bridged to the location (small_group) and left unexplained — the researcher cites only its absence from Yelp/Healthgrades, not evidence it is a hygienist or departed. Rule 1 default is correct T1->T2. No corporate/DSO signal, so independent single-location group; directory-only evidence caps confidence at medium (rule 5).",
+      "web_searched": false
+    },
+    {
+      "location_id": "4f94df8098f1cb38",
+      "practice_name": "Dental Touch",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Web search refutes the researcher's 'solo Gallai / Nowak departed' succession theory: Manta lists the practice at 3344 W Peterson as 'Dr Nowak & Gallai' and both Dr. Andrew Nowak DDS and Dr. Sandor Gallai DDS are currently listed there — two current dentists at one address, dentist-named, no corporate signal. Correct T1->T2 (single_loc_group). The chicagodentaltouch.com brand mentions multiple neighborhoods (possible T3) but no owned second office is evidenced, so T2 is the supported minimum; medium.",
+      "web_searched": true
+    },
+    {
+      "location_id": "a83a4dfffd965d02",
+      "practice_name": "Dentist Arlington Heights",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Three distinct dentist surnames (LALLAS 1427275973, SOCHER 1659318491, ZATTERA 1356566152) are bridged to 120 W Eastman St Ste 203 (small_group), yet the researcher verified only Socher and over-claimed 'solo' at high confidence. Provider_count=3 with three surnames refutes a clean T1; per rule 1 correct to single_loc_group. No DSO brand/large_group label so it stays independent; the shared-phone-across-2-locations is a same-building/multi-suite artifact (rule 6b), not an MSO. Downgrade the researcher's high to medium.",
+      "web_searched": false
+    },
+    {
+      "location_id": "07f4e7a44183cdf5",
+      "practice_name": "Schnitzer Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Three distinct surnames (LERMAN 1821199829, SALINGER 1881856011, SCHNITZER 1285615609) bridged to the Sheridan Rd address (small_group); the researcher verified only Dr. Schnitzer via directory-only sources (Healthgrades/ADA Find-a-Dentist) and over-claimed solo. Rule 1 mandates correct T1->T2 given multiple genuine dentist surnames with no hygienist/departed evidence. No corporate signal, so independent single-location group; directory-only support caps confidence at medium (rule 5).",
+      "web_searched": false
+    },
+    {
+      "location_id": "5a6589ebbf27badf",
+      "practice_name": "Lund, Peter a DDS",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Accept: the practice's OWN site (peterlunddds.wixsite.com) names only Dr. Peter Lund as solo dentist, and a web search found NO 'Skyles' dentist anywhere in Mount Prospect directories, so the second NPI (SKYLES 1871757807) is a non-practicing/hygienist bridge, not a co-owner dentist — the affirmative stale/non-practicing evidence rule 1 requires to accept. The shared phone (847) 259-7560 to a second location is a duplicate address-variant of the same single office (Lund's current directory phone differs), a building/duplicate artifact per rule 6b, not an MSO. No corporate/DSO signal. T1 stands.",
+      "web_searched": true
+    },
+    {
+      "location_id": "20c2ed45dd8cf50a",
+      "practice_name": "Inverness Dental Care",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Accept: the practice's OWN website + Facebook name Dr. Payal Trivedi as owner-operator since 2011 (own-site evidence — no directory_only signal fired). The fired stale_founder_history signal plus the second surname RITTER identify Ritter as the departed founder/predecessor (Trivedi purchased/took over in 2011), so provider_count=2 reflects the historical founder NPI, not a current second dentist — the affirmative stale evidence rule 1 requires to accept. No DSO brand, network, or corporate label. T1 stands.",
+      "web_searched": false
+    },
+    {
+      "location_id": "ee5851b289e0676e",
+      "practice_name": "MICHAEL S PERPER DDS LTD",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "The 'Michael S Perper DDS LTD' professional corp supports dentist ownership, but a distinct second surname KAPLAN is bridged to the location (small_group) and left unexplained — support is directory-only (Zocdoc/Healthgrades/WebMD) with no evidence Kaplan is a hygienist or departed. Rule 1 default is correct T1->T2. No corporate/DSO signal, so independent single-location group; directory-only evidence caps confidence at medium (rule 5).",
+      "web_searched": false
+    },
+    {
+      "location_id": "ec65d9fd7af925cb",
+      "practice_name": "ROBERT B DAVIDSON DDS PC",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Own site confirms Dr. Robert Davidson bought the Elburn practice in 1992 (dentist ownership solid), but a distinct second surname SCHUILING (NPI) is bridged to the location (small_group) with no evidence it is a hygienist or departed — after 30+ years an associate/successor dentist is plausible. Rule 1 requires affirmative stale/hygienist proof to accept; absent that, correct T1->T2. No corporate/DSO signal, so it stays independent single-location group; medium.",
+      "web_searched": false
+    },
+    {
+      "location_id": "86a77037ed794876",
+      "practice_name": "Rao Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Support is directory-only (Healthgrades/Opencare) and the researcher claimed high-confidence solo, but a distinct second surname KARCH (NPI 1326164682) is bridged to the Tanglewood Ave address (small_group) with no hygienist/departed evidence. Rule 5 bars high-confidence directory-only T1 and rule 1 mandates correct T1->T2 absent affirmative stale/hygienist proof. No corporate/DSO signal, so independent single-location group; downgrade to medium.",
+      "web_searched": false
+    }
+  ]
+}

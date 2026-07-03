@@ -1,0 +1,106 @@
+{
+  "batch": 8,
+  "indices": [80, 89],
+  "dispositions": [
+    {
+      "location_id": "4b36bd94d52e5aa4",
+      "practice_name": "BREDAU DENTAL LTD",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Two hard signals (provider_count=9, entity_classification=large_group) with 9 distinct dentist surnames flatly contradict the researcher's 'sole founding dentist, one location' own-site read, which triggers Rule 1's provider_count>=8/large_group HOLD. A web search shows Dr. Bredau also carries a Cicero listing and one roster surname (PASTIKA) is a separate Gladstone Park dentist, and the researcher's own reasoning notes a ZoomInfo link to the multi-location 'Family Dental Care' group. The network/corporate affiliation plus 9-provider large_group roster needs the adversarial verifier to determine dentist-multi vs network/MSO control before merge.",
+      "web_searched": true
+    },
+    {
+      "location_id": "bf4851bf8ba93b45",
+      "practice_name": "DR. KLEMPKA FAMILY PRACTICE",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Own-site verifies Dr. Klempka as a 20+ year owner-operator (independent, one location), but DB shows provider_count=2 with a second surname DEMSKI (small_group) and the researcher supplied no evidence that DEMSKI is a hygienist/stale/non-practicing NPI. Per Rule 1, a T1 with a second unexplained dentist surname corrects to single_loc_group (still dentist-owned, one location), not accept.",
+      "web_searched": false
+    },
+    {
+      "location_id": "ccf37462ab55da26",
+      "practice_name": "DR. LULJETA JUSUFI D.D.S.,LTD",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "provider_count=4 with 4 distinct surnames (JUSUFI, KHALIL, KULKARNI, REDDY) and entity_classification=large_group directly contradicts the own-site 'her office' solo claim; the researcher's assertion that the extra 3 are 'almost certainly hygienists/assistants' is speculation, not evidence. Rule 1 forces a HOLD on a large_group roster; with no DSO brand, shared EIN, or shared-domain signal to chase, this is a contradictory/unverifiable case, so hold_unresolved rather than hold_dso_verify.",
+      "web_searched": false
+    },
+    {
+      "location_id": "137a09473489ea53",
+      "practice_name": "Cotera Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Own-site confirms Dr. de la Cotera as an independent single-location oral surgeon (no corporate parent), but DB shows provider_count=2 with a second surname CRESS (small_group) whose role the researcher never verified (unlike the Shinozaki bundle, there is no explicit 'only surgeon' statement). Fail-closed under Rule 1: correct to single_loc_group (still dentist-owned, one location) rather than accept, at medium confidence.",
+      "web_searched": false
+    },
+    {
+      "location_id": "1df959f4bc3a6c65",
+      "practice_name": "Dzakovich Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Own-site names Dr. Dzakovich as the sole owner-dentist (network_id ao:DZAKOVICH_JOHN corroborates dentist ownership => independent), but DB shows provider_count=2 with a second surname ATICI (small_group) with no evidence ATICI is a hygienist/non-practicing. The ownership is solid, but the unexplained second dentist means Rule 1 corrects T1 to single_loc_group at medium confidence.",
+      "web_searched": false
+    },
+    {
+      "location_id": "d8b58f45f195e841",
+      "practice_name": "KENT SHINOZAKI, DDS, P.C.",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The practice's own site (Northpoint Oral Surgery) explicitly states Dr. Shinozaki is 'the only oral surgeon in the practice' at one location, which is affirmative evidence that the second NPI (surname DOUGLAS) is not a co-owning/co-practicing surgeon but a support provider (anesthesia/hygiene). Per Rule 1 this qualifies as 'accept with that stated' despite provider_count=2; single-location solo owner-operator T1 stands.",
+      "web_searched": false
+    },
+    {
+      "location_id": "0a230b951c5329f3",
+      "practice_name": "Healy, Daniel J DDS",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Personal site shows a solo-branded single-location GP with no corporate parent, but DB provider_count=2 adds a second surname FAMILARO (small_group) and the researcher only inferred 'likely a hygienist' from absence, which is not the affirmative non-practicing evidence Rule 1 requires. Fail-closed: correct T1 to single_loc_group (still independent, dentist-owned) at medium confidence.",
+      "web_searched": false
+    },
+    {
+      "location_id": "6e3a11a850c2b8e4",
+      "practice_name": "NILESH PATEL PC",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The DB record for this address is a Dental Dreams location: website Dentaldreams.Com, entity_classification large_group, and shared_website_domain dentaldreams.com spanning 12 locations (a confirmed sibling, Lee/Kenneth b8f4172a363d99c0, is classified dso_regional), plus a shared EIN (363911039) with a nearby Gentle Dental Center. Dental Dreams (KOS/Dental Experts LLC) is a named DSO brand, so Rule 3 forbids accepting this as T1 and Rule 6(c) treats the shared domain/EIN as MSO infrastructure => hold_dso_verify. The researcher only verified the individual Dr. Patel, not the corporate address.",
+      "web_searched": false
+    },
+    {
+      "location_id": "434a0c5f27486fd6",
+      "practice_name": "Lemery Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Support is directory-only (Yelp/Healthgrades/YellowPages/etc., no own-site), which Rule 5 caps at medium confidence, and DB shows provider_count=2 with a second surname CIENIAWA (small_group) with no evidence it is a hygienist/stale NPI. Rule 1 corrects the T1 to single_loc_group (still independent) at medium confidence.",
+      "web_searched": false
+    },
+    {
+      "location_id": "dd8d6627f7fae9c7",
+      "practice_name": "ALIN ALKASS, DDS, PC",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Own-site (Smiles on Elston) verifies Dr. Alkass as owner-dentist at a single location (independent, no DSO branding), but DB provider_count=2 adds a second surname MALITZ (small_group) and the researcher cited a 'meet-our-team' page without excluding a second dentist. Per Rule 1, correct the T1 to single_loc_group (dentist-owned, one location) at medium confidence.",
+      "web_searched": false
+    }
+  ]
+}

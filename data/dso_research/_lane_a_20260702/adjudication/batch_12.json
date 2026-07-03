@@ -1,0 +1,106 @@
+{
+  "batch": 12,
+  "indices": [120, 129],
+  "dispositions": [
+    {
+      "location_id": "b718f6bfd8d08fc4",
+      "practice_name": "EVASKUS AND HERZOG, LTD",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": "medium",
+      "rationale": "The two named partners Evaskus and Herzog both appear in the 4-provider roster (EVASKUS, HALKIAS, HERZOG, PAPADIMITRIOU) and in the practice name, confirming a genuine dentist-owned oral-surgery partnership at one location (T2), and the ao_nonclinical_exec_title (Jennifer Pietri, INSURANCE COORDINATOR) is benign admin staff on the org NPI, not a corporate officer. The shared EIN (203701939, reach 2) is most consistent with a satellite/duplicate row of the same partnership rather than corporate control, and no DSO brand or PE parent appears. Confidence is lowered high->medium because ownership support is directory-only (yelp/healthgrades) per Rule 5.",
+      "web_searched": false
+    },
+    {
+      "location_id": "3d6d77fc02cdd7f6",
+      "practice_name": "CICERO DENTAL CENTER LLC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The authorized official Hamza Mohammed carries a non-clinical ADMINISTRATOR title (no clinical credential), does not match any provider surname (Kansara) or the generic geographic brand 'Cicero Dental Center', and reaches 2 locations — the classic MSO back-office pattern under Rule 6c. The researcher explicitly could not confirm whether Mohammed is owner vs. administrator, evidence is directory-only, and DB provider_count (1) conflicts with the claimed multi-dentist roster, so this cannot merge as dentist-owned without the adversarial verifier checking for management-company/corporate control.",
+      "web_searched": false
+    },
+    {
+      "location_id": "dd7210ef320babbe",
+      "practice_name": "FAMILY DENTAL CENTER",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The AO is a general dentist (Sean Cullinan, DMD, GENERAL DENTIST) and the practice's OWN site glenviewfamilydental.com states he 'assumed ownership of the Family Dental Center in 2008,' oversaw the building's construction, and has practiced there since 2006 — positive current single-owner-operator proof satisfying T1 (Rule 2). The parent_or_legal_entity value is self-referential ('FAMILY DENTAL CENTER' = the practice name, benign), and the shared EIN (364362306) + shared phone (8479981281) both reach only 2 with the identical front-desk number, indicating a duplicate/suite address row of the same office rather than a network (Rule 6b). DB label is solo_established (non-corporate), no DSO brand present.",
+      "web_searched": false
+    },
+    {
+      "location_id": "fc1ced472ab11e85",
+      "practice_name": "FLOR D. LOYA DDS LTD",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The AO is the dentist herself (Flor Loya-Costabile, DDS, PRESIDENT), whose surname matches the practice name, and the practice's OWN site loyadental.com plus the ADA Find-a-Dentist registry confirm a single-location Elmhurst pediatric practice she has owned/operated for 34 years — positive current-ownership proof for T1 (Rule 2, non-directory registry evidence). The shared phone (708-344-5437, reach 3) and shared EIN (363914870, reach 2) resolve to the same front-desk number across duplicate address variants of the one office (Rule 6b), not a corporate network; no DSO brand or MSO parent appears.",
+      "web_searched": false
+    },
+    {
+      "location_id": "75ad0350a6b906b2",
+      "practice_name": "KIANSH DENTAL LLC",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "dentist_multi",
+      "corrected_confidence": "medium",
+      "rationale": "The authorized official Parth Patel, DMD (PRESIDENT) reaches 3 locations and this office shares phone 708-226-6700 with 32 Pearls Dental (index 125), so 'Frankfort Family Dental' is one office of a dentist-owned Patel multi-office group with Dr. Malhotra as the treating associate — Rule 6a/Rule 1 correct T1 to dentist_multi (the shared-phone/AO network is the practice's OWN group, not a single independent). Patel is a dentist (DMD acting as president of the LLCs), and no PE sponsor or DSO brand appears, so it is dentist-owned multi-location, not corporate. Confidence medium because the multi-office ownership is inferred from AO reach + shared phone rather than a single own-site roster.",
+      "web_searched": false
+    },
+    {
+      "location_id": "c40539b9a0a538ea",
+      "practice_name": "32 PEARLS DENTAL INC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "correct",
+      "corrected_tier": "dentist_multi",
+      "corrected_confidence": "medium",
+      "rationale": "The practice's own site (patelorlanddental.com, 'Patel Family Dental') confirms Dr. Parth Patel, DMD and Dr. Palak Patel, DMD as dentist-owners, but the AO Parth Patel reaches 3 locations and this office shares phone 708-226-6700 with Kiansh Dental (index 124), making it part of the same dentist-owned Patel multi-office group — correct T2 single_loc_group to dentist_multi under Rule 6a. The researcher checked and rejected affiliation with unrelated '32 Pearls' brands, and there is no PE/DSO signal, so it is dentist-owned multi-location. Confidence medium because the network scope is inferred from AO reach + shared phone.",
+      "web_searched": false
+    },
+    {
+      "location_id": "1adac605c6abd972",
+      "practice_name": "EMAD ZAIDI, DMD PC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The parent_company 'EVENLY ORTHODONTICS DUPONT', the evenly.com domain (reach 8), and the Data-Axle officer Daniel Brashear (reach 4) are the documented Evenly Technologies placeholder/web-platform artifact that CLAUDE.md's 2026-06-12 audit demoted as false-corporate — a benign cross-contamination signal (also present on the co-located Aspen row), not real MSO control. The practice's OWN site solacedentalgroup.com confirms it operates as Solace Dental Group run by dentist brothers Dr. Emad Zaidi and Dr. Kumail Zaidi at one location, matching the 2-provider family-practice roster; DB label family_practice is independent. T2 dentist-owned single-location stands with own-site high confidence.",
+      "web_searched": false
+    },
+    {
+      "location_id": "80a9511a2175146c",
+      "practice_name": "Midwest Dental",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Midwest Dental (Smile Brands/Gryphon) is an explicitly listed known DSO brand, so per Rule 3 a T1/T2 assignment can never be accepted and must go to the adversarial verifier. The signal is hard: the DB record name is literally 'Midwest Dental', its website is the national brand domain midwest-dental.com (shared across 4 locations), and entity_classification is dso_national with affiliated_dso 'Midwest Dental'. The researcher's brand-collision theory (a distinct 'Midwest Dental Associates' at midwestdentalassociates.net) may be right, but that reconciliation is exactly the verifier's job — fail-closed, hold_dso_verify.",
+      "web_searched": false
+    },
+    {
+      "location_id": "59db097da17ad94a",
+      "practice_name": "BRIGHTER DENTAL OF OLD TOWN",
+      "assigned_tier": "dentist_multi",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The practice's OWN site brighterdentalchicago.com (shared across the group's 3 offices) documents Dr. Roger Nouneh, DMD, MS as founder/lead dentist operating exactly 3 locally-owned, dentist-led offices — precisely what dentist_multi (T3) describes, and well under the corporate/protected-network scale. The ao_nonclinical_exec_title (MANAGING MEMBER) is benign: Nouneh is the dentist-owner who is also the LLC's managing member, and his AO reach (2) plus the shared domain (3) reflect his OWN group (Rule 6a). No PE sponsor or known DSO brand appears; DB large_group is non-corporate. T3 stands at high confidence on own-site evidence.",
+      "web_searched": false
+    },
+    {
+      "location_id": "9ff39651d697af30",
+      "practice_name": "Corie R Rowe DDS",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The hard db_corporate_conflict names Great Lakes Dental Partners (a listed known DSO brand) plus PE sponsor Shore Capital Partners with entity_classification dso_regional, so per Rules 2 and 3 this can never be accepted at T1 and must go to the adversarial verifier. The researcher's finding that the current occupant 'Beverly Smiles Family Dental Care' (Dr. Denise Nixon) shows no DSO branding on its own team page is exactly the DSO-keeps-the-local-name scenario the census warns about — an associate-staffed, locally-branded office is fully consistent with Great Lakes/Shore ownership. Fail-closed: hold_dso_verify.",
+      "web_searched": false
+    }
+  ]
+}

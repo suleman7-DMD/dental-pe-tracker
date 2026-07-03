@@ -1,0 +1,96 @@
+{
+  "batch": 1,
+  "indices": [10, 19],
+  "dispositions": [
+    {
+      "location_id": "6c28cf8547d05ba0",
+      "practice_name": "MAGDALINA NIKOLOV DDS",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Three provider surnames (NIKOLOV, PINKSTON, TKACHUK) bridged to one address and a small_group entity_classification (both hard signals). The researcher only speculates provider_count=3 'likely includes hygienists/auxiliary staff' with no evidence, so rule 1 forces T2 rather than accept; roster is not corporate-scale (3, not >=8, no dso label). The reasoning also cites phone (847) 657-8818 while db phone is (847) 657-8858, a mismatch that further undercuts a solo claim. Shared EIN reach_count 2 is too thin to assert T3 or MSO."
+    },
+    {
+      "location_id": "c56bb01bb667a203",
+      "practice_name": "Lin Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "db_context entity_classification is large_group with four distinct provider surnames (CRISCIONE, HARALAMPOPOULOS, KASE, LIN) plus a shared phone (676-1432) bridging to a second location — rule 1 mandates hold, not accept, when the roster reads large_group. The researcher's 'independent solo tenant in the Old Orchard Shopping Center' explanation is plausible for a multi-tenant mall but rests on a single Yelp page for Dr. Lin and does not establish that the other three surnames are separate practices. Contradictory large-group roster vs. single-tenant claim must be resolved before merge; no DSO brand surfaced, so this is unresolved rather than dso_verify."
+    },
+    {
+      "location_id": "859a947faa29c7c0",
+      "practice_name": "Capezio Nicholas Eugene DMD",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Two surnames (CAPEZIO, LOIBEN) and a small_group label; the Data-Axle legal name 'TED LOIBEN DDS PEDIATRIC DENTIST LTD' independently corroborates LOIBEN as a genuine practicing dentist, not a hygienist, so rule 1 pushes to T2. The shared_website domain dentistry.uic.edu (reach 3) is a benign NPPES/UIC-alumni placeholder, not a real shared corporate domain, so it does not signal a network. Two dentists at one owner-operated office = single_loc_group."
+    },
+    {
+      "location_id": "dae4043f4847e4f3",
+      "practice_name": "Carney James D DDS",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Two surnames (CARNEY, FORCIOLI) at one address and small_group; the Data-Axle legal name 'FORCIOLI FAMILY DENTISTRY PLLC' confirms FORCIOLI is a real independent dental PLLC operating at the location, so rule 1 forbids treating this as a solo T1. Whether a genuine 2-dentist office or a Carney->Forcioli succession, it is dentist-owned, single-location, multi-provider = T2. The parked carneydental.com is a mild concern but Yelp (updated May 2026) shows an active practice, so not closure/duplicate; no corporate or DSO signal."
+    },
+    {
+      "location_id": "30921c892b8db4f4",
+      "practice_name": "ILLINOIS DENTAL ARTS, P.C.",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Web search confirms Illinois Dental Arts PC at 5600 Wolf Rd #130 is staffed by both Dr. Vladimir Fedin, DDS and Dr. Kenneth J. Szafranski, DDS — two genuine dentists at one office, so the solo T1 fails and rule 1 gives T2. The two distinct shared-phone bridges (medium signals) trace to Szafranski's own separate oral-surgery listing at 1100 Hillgrove Ave, not an MSO back office or a Fedin multi-location group, so rule 6 resolves to a benign artifact rather than T3 or dso_verify. Independent dentist-owned P.C., single primary location."
+    },
+    {
+      "location_id": "0a23508f68c93bca",
+      "practice_name": "Ospelt Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Two provider surnames (NOWAK, OSPELT) at one address with a small_group label (hard signals); the researcher's 'likely a hygienist/associate' for the second provider is speculation with no supporting evidence, so rule 1 requires correction to T2 rather than acceptance. No corporate parent, DSO brand, or multi-location signal present, so this remains independent dentist-owned; directory-only support (Healthgrades/YellowPages) caps confidence at medium."
+    },
+    {
+      "location_id": "eea6cbc254d4340b",
+      "practice_name": "DR. HUGO F. BERTAGNI DDS",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Three surnames (BERTAGNI, HAYWARD, SEIDMAN) bridged to the address, small_group label, plus a shared phone (reach 2) and a location website (palatinepediatricdentist.com) that does not match Bertagni's general-practice description — a multi-provider/co-located picture the researcher did not resolve. Rule 1 forbids a solo T1 without evidence the extra NPIs are hygienists/suite-mates, and none is supplied, so correct to T2. No DSO brand or corporate parent appears, so it stays independent (not dso_verify)."
+    },
+    {
+      "location_id": "ad1f5751c55cfde9",
+      "practice_name": "Schwartz Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Two surnames (MINCER, SCHWARTZ) at one address with a small_group classification; the researcher named only Schwartz and offered no evidence that MINCER is a hygienist/non-practicing, so rule 1 forces T2. Support is a single Healthgrades directory page (rule 5 caps at medium), and no corporate/DSO or multi-location signal is present, so it remains independent dentist-owned."
+    },
+    {
+      "location_id": "f293f436850d344f",
+      "practice_name": "Erickson, Thomas W DDS",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Two surnames (ERICKSON, SALAHUDDIN) bridged to one address with a small_group label; the researcher confirmed only Erickson and expressly could not resolve the second provider, so rule 1 forbids acceptance as solo and requires T2. No corporate parent, DSO brand, EIN cluster, or shared-phone network signal, so it stays independent dentist-owned; directory-only (Yelp/WebMD) support keeps confidence at medium."
+    },
+    {
+      "location_id": "be6e3a0642562fab",
+      "practice_name": "JOHN G MARCHESE DDS LTD",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "provider_count=5 across four surnames (BRENNAN, CALLAHAN, KEENAN, MARCHESE) and a family_practice classification; the location's own registered website is drsbrennan.business.site ('Drs. Brennan', plural) — clearly a multi-dentist family practice, not a solo Marchese office, so rule 1 rules out T1. Count is 5 (not >=8) and label is family_practice (not large_group/dso), so this is a corrected T2 rather than a hold; no corporate/DSO or multi-location network signal, keeping it independent dentist-owned at medium confidence given the db-name vs. website (Marchese vs. Brennan) succession ambiguity."
+    }
+  ]
+}

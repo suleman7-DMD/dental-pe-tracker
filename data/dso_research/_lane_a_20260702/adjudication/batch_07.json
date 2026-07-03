@@ -1,0 +1,106 @@
+{
+  "batch": 7,
+  "indices": [70, 79],
+  "dispositions": [
+    {
+      "location_id": "d087692bbbdf7574",
+      "practice_name": "Habeeb Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Three hard signals fired (provider_count=2, small_group, surnames HABEEB+SALAM). NPPES confirms both NPIs are practicing general dentists at 2836 W Devon (Saad Habeeb 1223G0001X, Mustafa Salam 1223G0001X) — the second NPI is NOT a hygienist or stale, so Rule 1's exception does not apply. Researcher proved dentist ownership (own PC 'M-L Dental Clinic Inc.', no DSO/PE signal) but wrongly called it solo; it is a two-dentist, single-location, dentist-owned office → single_loc_group.",
+      "web_searched": false
+    },
+    {
+      "location_id": "6856b3f16ec2c5b5",
+      "practice_name": "Vinokur Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Hard signals: provider_count=2, small_group, surnames KONZEN+VINOKUR. NPPES shows both are practicing general dentists at 3421 N Arlington Heights Rd (Elizabeth Vinokur 1223G0001X, Lynn Konzen 1223G0001X) — the second dentist is genuine, not a stale/hygienist NPI, so Rule 1 requires correction to T2. No corporate/DSO signal; dentist-owned single location with two dentists → single_loc_group.",
+      "web_searched": false
+    },
+    {
+      "location_id": "d2f6bfaace7765eb",
+      "practice_name": "Grove Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Hard signals: provider_count=2, small_group, surnames BLACHER+BROSNAN. NPPES confirms two practicing GP dentists at 450 E 22nd St Ste 201 (Brett Blacher, Pamela Brosnan, both 1223G0001X); researcher correctly separated this from the real Grove Dental Associates (2 E 22nd St) but overlooked the second dentist. Not a duplicate — a distinct dentist-owned two-dentist office → single_loc_group.",
+      "web_searched": false
+    },
+    {
+      "location_id": "917453ec644f8a6a",
+      "practice_name": "WEBSTER DENTAL CARE EVANSTON, LTD",
+      "assigned_tier": "dentist_multi",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Fired db_corporate_conflict (entity_classification dso_national), parent_company='WEBSTER DENTAL MANAGEMENT' (MSO), AO Steven Rempas OWNER reaching 4 locations, shared phones across locations, provider_count=11. Web search confirms Webster Dental Care is a branded 12-location Chicagoland consolidator and self-described 'strategic buyer' operating through the Webster Dental Management MSO (appears in Crain's DSO-consolidation coverage). Although dentist-owned with no PE, the branded multi-location MSO/consolidator structure plus the dso_national label make T3-vs-T5 an adversarial-verifier call — never promote to DSO myself, so hold.",
+      "web_searched": true
+    },
+    {
+      "location_id": "ad9c8c49a1c9d0f6",
+      "practice_name": "Anderson Mark W DDS",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Hard signals: provider_count=2, small_group, surnames ANDERSON+YURCHAK. NPPES confirms two practicing GP dentists at 2320 Walnut St (Mark Anderson, Matt Yurchak 1223G0001X) — second NPI is a genuine dentist, not stale/hygienist. Researcher verified dentist ownership (South Suburban Dental, no DSO/parent) but called it solo; it is a two-dentist dentist-owned single office → single_loc_group.",
+      "web_searched": false
+    },
+    {
+      "location_id": "2d7e6bde5b4d8a5d",
+      "practice_name": "Alphonse Gerard Fiore DDS",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Hard signals: provider_count=2, small_group, surnames FIORE+PROZOROVSKY. NPPES confirms two practicing GP dentists at 14810 Cicero Ave (Alphonse Fiore, Thomas Prozorovsky, both 1223G0001X); the second dentist is genuine, so Rule 1 requires T2. No corporate signal — dentist-owned single-location two-dentist office → single_loc_group.",
+      "web_searched": false
+    },
+    {
+      "location_id": "32cca6e4084542b6",
+      "practice_name": "Smith Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Assigned T1 at high confidence but three hard signals fired (provider_count=2, small_group, SMITH+THOMETZ). NPPES confirms two practicing GP dentists at 5669 W 95th St (Michael Smith 122300000X, Timothy Thometz 1223G0001X). Second NPI is a genuine dentist, not stale/hygienist, so the high-confidence T1 fails Rule 1 → single_loc_group, dentist-owned ('Inside The Smile'), no corporate signal.",
+      "web_searched": false
+    },
+    {
+      "location_id": "aae80a7bcfb6a430",
+      "practice_name": "A ADVANCEMENTS IN DENTAL CARE",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Hard signals: provider_count=2, small_group, surnames GARDNER+LEHENBAUER. NPPES confirms two practicing GP dentists at 9224 Broadway (Daniel Lehenbauer, Gerald Gardner, both 122300000X) plus the practice's own org NPI — dentist-owned own PC, no MSO/parent. Researcher found only Lehenbauer but a genuine second dentist is present → single_loc_group.",
+      "web_searched": false
+    },
+    {
+      "location_id": "13bc94bfecb2432d",
+      "practice_name": "THOMAS M JOYCE DDS LTD",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Assigned T1 at high confidence but provider_count=3 with three surnames (JOYCE+GOLDSTEIN+RAY), all confirmed practicing GP dentists at 55 E Washington in NPPES; org NPI is Joyce's own Ltd (dentist-owned). No corporate/DSO signal and provider_count<8, so Rule 1 mandates T2 rather than hold. Dentist-owned single-location multi-dentist office → single_loc_group (medium; possible downtown-building suite-share but the conservative dentist-owned floor is T2).",
+      "web_searched": false
+    },
+    {
+      "location_id": "971f07a45079c122",
+      "practice_name": "AFFINITY DENTAL",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Hard signals: provider_count=2, small_group, surnames KAVETSIS+TRAN. NPPES confirms two practicing GP dentists at 2015 W Irving Park Rd (Lana Kavetsis 1223G0001X, Cecilia Hung Tran 1223G0001X) plus the practice's own Affinity Dental org NPI (Kavetsis PC, established 1997). Second NPI is genuine, not stale/hygienist; no corporate/DSO signal → dentist-owned single-location two-dentist office → single_loc_group.",
+      "web_searched": false
+    }
+  ]
+}

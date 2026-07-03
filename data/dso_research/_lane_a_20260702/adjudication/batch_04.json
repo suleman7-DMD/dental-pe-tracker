@@ -1,0 +1,96 @@
+{
+  "batch": 4,
+  "indices": [40, 49],
+  "dispositions": [
+    {
+      "location_id": "5d7b7b625c96de89",
+      "practice_name": "Kallstrom Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Hard signals show provider_count=2 with a distinct second surname (SKOUMAL) and a small_group classification, yet the researcher's solo claim rests only on directory URLs (Yelp, ProviderWire) with no own-site owner corroboration, so Rule 5 caps this at medium and the second dentist is unexplained. Per Rule 1 the T1 defaults to single_loc_group because no evidence shows SKOUMAL is a stale/hygienist NPI. Still clearly dentist-owned and independent (his own DDS PC, no corporate signal), just not a confirmed single-owner-operator."
+    },
+    {
+      "location_id": "bbdcf63c1d812b73",
+      "practice_name": "PARK BLVD DENTISTRY",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "provider_count=13 with a dozen distinct surnames and a domain (belkeborellodds.com) naming other partner dentists flatly contradicts the researcher's own-site claim that a single dentist (Dr. Paul Doodes) practices here solo. Rule 1 mandates a hold rather than a T2 correction once provider_count>=8, and the contradiction between a solo claim and a 13-provider partnership roster is unresolved. No affirmative DSO/PE/MSO signal points specifically to corporate control, so this is hold_unresolved rather than hold_dso_verify; it must not merge as T1."
+    },
+    {
+      "location_id": "c3d4ef0cce1aecad",
+      "practice_name": "Jahedi Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Beyond provider_count=7 across 5 surnames, a shared Data-Axle officer (KHAN,HIDAYATHULL) reaches 3+ locations, which under Rule 6 is a multi-location back-office/network signal that could be either the practice's own group or MSO infrastructure and cannot be resolved from the bundle. The researcher's sole-owner (Jahedi) claim is contradicted by the Khan-officer network and the multi-surname roster. Because I cannot confirm dentist ownership of that network, I route it to the adversarial verifier rather than promote to dentist_multi myself."
+    },
+    {
+      "location_id": "4f0c0a145ebf5884",
+      "practice_name": "Burger-Zellinger Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "provider_count=3 with two additional surnames (PRICE, ROGERS) and a small_group classification, supported only by directory URLs (Healthgrades, npiprofile) that name a single dentist without clearing the extra NPIs. Rule 1 defaults the T1 to single_loc_group since there is no evidence the additional providers are hygienist/stale, and Rule 5 caps directory-only support at medium. No corporate parent, EIN cluster, or DSO brand appears, so it remains an independent multi-dentist office."
+    },
+    {
+      "location_id": "2194bba2c38c33c7",
+      "practice_name": "OTTO J. TOR, D.D.S., LTD.",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "The location's own website field is drcynthiawong.com — direct evidence that a second dentist (WONG) practices at this address alongside Dr. Tor, and the roster carries a third surname (ETAYEM), so the solo T1 is contradicted. Per Rule 1 this corrects to single_loc_group (one location, multiple dentists, dentist-owned) with medium confidence given the directory-only support. No corporate/DSO signal is present; Tor's own D.D.S., LTD. PC keeps it independent."
+    },
+    {
+      "location_id": "5cc84a59561f1d02",
+      "practice_name": "Riechman Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The practice's OWN website (markriechman.com, phone-matched) names Dr. Mark Riechman as the sole dentist in practice since 1989 with no corporate/DSO affiliation — positive current owner-operator proof that satisfies Rule 2's own-site carve-out and overrides the stale small_group label. With provider_count=2 and only one unexplained surname (SCHUMACHER), that single additional NPI is most consistent with a hygienist/associate rather than a co-owner dentist, so the hard count/surname signals are benign. T1 stands."
+    },
+    {
+      "location_id": "6a4113a58e676aca",
+      "practice_name": "Felgenhauer Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "provider_count=2 with a distinct second surname (NASER) and a small_group classification, but the solo claim is supported only by directory URLs (Healthgrades, Opencare) with no own-site owner corroboration, so Rule 5 caps confidence at medium and the second provider is unexplained. Per Rule 1 the T1 defaults to single_loc_group absent evidence NASER is a hygienist/stale NPI. No corporate or DSO signal appears, so it stays independent."
+    },
+    {
+      "location_id": "df6dffafb340a816",
+      "practice_name": "HARE KRISHNA DENTAL PLLC",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The researcher's own reasoning surfaces an affirmative source (The Org) linking Dr. Agarwal to Chicagoland Smile Group / Great Lakes Dental Partners — a Shore Capital-backed DSO explicitly on the never-accept brand list (Rule 3). Their rebuttal (the GLDP locator omits this Maple Ave address) is not dispositive because DSO locators are frequently incomplete/stale. A known-DSO-brand association on a T1 mandates hold_dso_verify for the adversarial pass; I do not promote to branded_dso myself."
+    },
+    {
+      "location_id": "803b17d64715c9f2",
+      "practice_name": "ELIZABETH NINAN DDS PC",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The practice's own website (irisfamilydental.com, phone-matched) is built entirely around Dr. Elizabeth Ninan as sole named dentist, and the entity is her eponymous PC — positive current ownership proof satisfying Rule 2's own-site carve-out over the stale small_group label. With provider_count=2, the researcher explicitly stated the single extra surname (DAVIDSEN) is most likely a hygienist/associate, which is the exact benign case Rule 1's parenthetical allows an accept on. No group or DSO signal present. T1 stands at its original medium confidence."
+    },
+    {
+      "location_id": "52aad5182c988318",
+      "practice_name": "Choi Wooyoung DMD",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The practice's own site (smilefamilydentalcareil.com) names Dr. Wooyoung Choi as the practicing dentist and titles its location page 'Our Location' (singular), and our record entity is his eponymous 'Choi Wooyoung DMD' — own-site evidence of a single-dentist single-location practice with no DSO brand, org NPI, network_id, or shared officer. With provider_count=2, the lone extra surname (GEE) is most consistent with an associate/hygienist rather than a co-owner; the out-of-state (248) phone is a registration artifact, not a corporate signal. T1 stands at medium."
+    }
+  ]
+}

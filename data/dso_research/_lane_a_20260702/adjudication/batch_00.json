@@ -1,0 +1,106 @@
+{
+  "batch": 0,
+  "indices": [0, 9],
+  "dispositions": [
+    {
+      "location_id": "c2c7539541dafe5f",
+      "practice_name": "AMY MARTIN DDS PC",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Hard signals: provider_count=43, entity_classification=large_group, and parent_company=ADVOCATE HEALTH with da_subsidiary_iusa 440344185 repeated across the roster, plus a shared institutional domain doctors.advocatehealth.com reaching 11 locations. Rule 1 (provider_count>=8 / large_group) forbids any T1 accept, and the Advocate Health corporate/institutional parent + 11-location shared domain is exactly the corporate-control signal that must go to the adversarial verifier rather than merge as solo. The researcher's own-branded-domain solo story may reflect a genuine practice inside an Advocate address cluster, but that (or a T6 institutional call) is the verifier's job, not a merge-as-T1.",
+      "web_searched": false
+    },
+    {
+      "location_id": "29a2612ebcdb963c",
+      "practice_name": "HAPPY SMILES FAMILY DENTISTRY",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Hard signals: provider_count=3 (HOEPFNER, JACOBSON, TURNWALD) and entity_classification=small_group; notably none of the three bridged surnames matches the AO/owner Aristodemo-Paul. The researcher asserts from the About-Us page that only Dr. Aristodemo-Paul is a dentist and the rest are hygienists/front-desk, but that was not verified per-NPI, so under Rule 1 the fail-closed outcome is to correct the pristine-solo T1 down to a single-location dentist-owned group rather than accept. Shared phone across the AO's own locations is consistent with one practice, so no corporate escalation is warranted.",
+      "web_searched": false
+    },
+    {
+      "location_id": "02617ab9ed30155b",
+      "practice_name": "EVER DENTAL STUDIO",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "provider_count=51 with 48 distinct surnames at a downtown Loop address (60602) and a DB website of 'Waxlawgroup.com' — clearly a shared office-building / address-collision artifact that cannot merge as a solo T1 (Rule 1 provider_count>=8 -> hold). The researcher's high-confidence boutique-solo claim for Dr. Alhakim directly contradicts the 51-provider location bundle, and there is no corporate/DSO/EIN signal to route to the DSO verifier, so this is contradictory/unverifiable at the location grain and must not merge as-is.",
+      "web_searched": false
+    },
+    {
+      "location_id": "3a1fb3f4223c5cd9",
+      "practice_name": "PARKER AND ASSOCIATES, D.D.S, P.C.",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "db_corporate_conflict (hard) with entity_classification=dso_regional and affiliated_dso='Park Place Dental Group (multi-brand)', PLUS shared EIN 471741822 across 5 distinct locations. Even if the researcher is right that the 'Park Place' name-match is a false positive (that brand is downstate Smile Brands), Rules 2/3/6 require hold_dso_verify whenever a shared corporate EIN cluster is present — the 5-location shared TIN is an unexplained corporate-cluster signal, and provider_count=2 shows this is not a pristine solo. Never promote to a DSO tier here; route to the adversarial pass.",
+      "web_searched": false
+    },
+    {
+      "location_id": "bb9a6f5879ea79d2",
+      "practice_name": "BRAAM DENTAL",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Multiple unresolved threads: provider_count=3 (ANJUM, LEYBA, OBAISI — none matching owner Braam), AO Lee Braam reaches 2 locations, da_legal_name is a different corp 'E C CARE DENTAL CTR INC', and a shared phone reaches 3 locations. The 'high' rating rests on directory-only sources (Yelp/Healthgrades/ADA/CareCredit), which Rule 5 caps below high. The AO-reaches-2 and the foreign legal entity make it impossible to safely land this as solo, single-loc-group, or dentist-multi without resolution, so fail-closed to hold_unresolved; no known-DSO signal warrants the corporate pass.",
+      "web_searched": false
+    },
+    {
+      "location_id": "8a18dc337a0069b1",
+      "practice_name": "BEATA CZECHURA D.M.D., P.C.",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "dentist_multi",
+      "corrected_confidence": "medium",
+      "rationale": "Shared EIN 260380122 AND shared domain arlington-endodontics.com both reach a second location (ff35bac3ac380431) — a single tax/legal entity operating two offices, i.e. the practice's OWN multi-location group under Rule 6(a). The owner Dr. Beata Czechura is confirmed as the practicing owner via her own site with no corporate/DSO/MSO signal (provider_count=2 = Czechura + one endodontics associate). Correct the pristine-solo T1 to dentist_multi at medium confidence, since common ownership of the second (endo) location is strongly implied by the shared EIN but not independently confirmed.",
+      "web_searched": false
+    },
+    {
+      "location_id": "df1522f2c652d40b",
+      "practice_name": "TERRENCE L. GRAFF DDS PC",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The researcher's story (an org/individual NPI pair for solo Dr. Graff) is contradicted by the location's own data: the two bridged providers are ELMOSA and HAMOUD (not Graff), the da_legal_name is 'ORLAND PREMIER DENTAL INC', and a second phone (708-952-0000) reaches 3 locations. This looks like Graff's former office may now operate under a different entity/group, but that cannot be reconciled from the bundle — the solo-duplicate theory fails because the current providers are not Graff. Fail-closed to hold_unresolved; 'Orland Premier Dental' is not a known DSO so no corporate pass is triggered.",
+      "web_searched": false
+    },
+    {
+      "location_id": "efc9ade86574caeb",
+      "practice_name": "PERFECT SMILE DENTAL SPA",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "dentist_multi",
+      "corrected_confidence": "medium",
+      "rationale": "Shared EIN 061741286 and shared phone both reach a second location (d9e1cbf0d6b6b005), and the DB website is a second brand ('theparkfamilydental.com') distinct from this office — one tax entity spanning two dental brands/offices is the practice's OWN multi-location group under Rule 6(a). Owner/AO Dr. Christen Dinkha (President) is dentist-owned with no corporate/DSO signal (provider_count=2 = associate dentists across the two sites). Correct the solo T1 to dentist_multi at medium confidence, hedged because cross-ownership is inferred from the shared EIN rather than directly confirmed.",
+      "web_searched": false
+    },
+    {
+      "location_id": "83a3a0d294fe97a6",
+      "practice_name": "Goglin Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "provider_count=6 (DAVIS, DOBKIN, GOGLIN, KAMPA, SMYRNIOTISHALKIAS, UJIIYE) with entity_classification=large_group, while the ownership claim rests only on directory_only_support (npiregistry + Yelp). Rule 1 mandates a hold when db_context says large_group, and Rule 5 bars high-confidence T1 on directory-only evidence. The researcher surfaced only Dr. Goglin and could not confirm or rule out the other five dentists, so the solo claim vs. a 6-dentist large_group is contradictory/unverifiable. No corporate/EIN/parent signal is present, so hold_unresolved rather than the DSO pass.",
+      "web_searched": false
+    },
+    {
+      "location_id": "2faa51a8ef02fcc1",
+      "practice_name": "Kenny Edward J DDS",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The 'solo Dr. Kenny since 1987' claim carries a stale_founder_history flag and is contradicted by current signals: da_legal_name is a DIFFERENT dentist 'DR VICTOR GRANDINETTI DDS PC', the DB website 'myfirstclasssmile.com' is branded to that other name and reaches a second location, and provider_count=2 adds Ziegenhorn. Unlike the EIN-linked own-network cases, this is a domain-only linkage to a differently-named entity, so it may be that Kenny's office was absorbed into Grandinetti's 'First Class Smile' group — current ownership is genuinely unresolved. Dentist-owned either way (no corporate/DSO/MSO signal), so hold_unresolved rather than the DSO pass or a confident T3 correction.",
+      "web_searched": false
+    }
+  ]
+}

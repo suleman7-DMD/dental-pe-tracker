@@ -1,0 +1,106 @@
+{
+  "batch": 2,
+  "indices": [20, 29],
+  "dispositions": [
+    {
+      "location_id": "4bad777c35bd002e",
+      "practice_name": "NANCY DONNA COZZI, D.D.S.",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Fired hard signals t1_provider_count_gt1=6, large_group, and 6 distinct surnames (COZZI/DANIELSON/LEBESSIS/PACELLI/QURESHI/SERNA); evidence is directory-only (yelp/healthgrades). Her own site (beautifulsmilesoflagrange.com) confirms only 2 hygienists + 1 technician on staff, which cannot account for the 5 non-Cozzi surnames, and the DB website is a DIFFERENT dentist (Denniskentdds.com) — indicating 1400 W 47th St over-aggregates multiple practices. Rule 1's large_group override plus the unreconciled roster make T1 unverifiable as-is; not a known DSO brand so not a DSO-verify case.",
+      "web_searched": true
+    },
+    {
+      "location_id": "63cececf92b07387",
+      "practice_name": "MARGIE L. MANNERING, D.D.S.",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "provider_count=22 with 22 distinct surnames at 55 E Washington St Ste 3005 (a downtown Loop office tower) plus two shared_phone-across-locations signals is classic building-level over-matching, as the researcher concedes. Per Rule 1 provider_count>=8 forces a hold, and Rule 5 bars high-confidence T1 on directory-only sources (webmd/yelp/patientconnect365). The solo claim is plausible but unverifiable at this aggregation, and the roster is a building artifact rather than a corporate/DSO signal, so hold_unresolved.",
+      "web_searched": false
+    },
+    {
+      "location_id": "cbf957f571da0d7a",
+      "practice_name": "Herrmann, David J DDS",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "provider_count=2 with two surnames (CHOLEWA + HERRMANN) at one address, small_group; the researcher named only Herrmann and left the second provider uncorroborated (no evidence it is a hygienist or stale NPI). Per Rule 1 the default is correct to T2 — a dentist-owned single-location practice with a second provider, no corporate/DSO signal. Directory-only evidence (yelp/healthgrades) caps confidence at medium per Rule 5.",
+      "web_searched": false
+    },
+    {
+      "location_id": "460774793c975fbf",
+      "practice_name": "Dr Stevan Orser DDS",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The second surname CZAPEK is tied to the DB website allaboutkidsdentistry.com, which the shared_website_domain signal shows spans 2 locations — i.e. All About Kids Dentistry is its own co-located pediatric practice, not Orser's associate. Orser cited his OWN separate site (arlingtonadvanceddentistry.com) with his own bio/credentials proving he solely owns/practices at his GP office, so the provider_count=2/small_group is a suite-mate/building artifact (Rule 6b + Rule 2). T1 stands.",
+      "web_searched": false
+    },
+    {
+      "location_id": "8ba89f468029d822",
+      "practice_name": "Jensen Jeanette",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Web search confirms this address (1500 Waukegan Rd Ste 225) is Dyme Dental, owned by Dr. Michael Dyme (own site dymedental.com + ADA findadentist registry); Jensen is one of 4 dentists (DYME/HARADA/JENSEN/MARCHIORI), not a solo owner. It is a dentist-owned single-location multi-dentist practice, not corporate/DSO, so correct T1->T2 single_loc_group rather than hold. Confidence medium since the full active roster is inferred from directory listings.",
+      "web_searched": true
+    },
+    {
+      "location_id": "4142d31c71b4b8b0",
+      "practice_name": "Ryan, James P DDS",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "provider_count=3 across surnames PATEL + RYAN at one address (family_practice); the researcher corroborated only Ryan and left PATEL unexplained (no hygienist/stale evidence). Rule 1 default is correct to T2 — a dentist-owned single-location practice with additional provider(s), no corporate/DSO brand or EIN cluster. Directory-only sources (healthgrades/chamberofcommerce) cap confidence at medium (Rule 5).",
+      "web_searched": false
+    },
+    {
+      "location_id": "75ceb4a346099edb",
+      "practice_name": "Lavrisa Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "The practice's own site (allaboutyoudentalcare.net) confirms Dr. Stephen Lavrisa owns/operates All About You Dental Care since 1989, so ownership is dentist-held — but the record shows 3 distinct surnames (JENTZCOTE/LAVRISA/WINCKLER) and the researcher only ASSUMES the extras are hygienists without proof. Fail-closed default per Rule 1 is correct to T2 single_loc_group (still dentist-owned, single location); shared_phone is a within-practice line, not an MSO signal. Medium confidence.",
+      "web_searched": false
+    },
+    {
+      "location_id": "006804864f346244",
+      "practice_name": "TIMOTHY J. KICZENSKI, D.D.S., LTD.",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "provider_count=2 with surnames KALTCHEV + KICZENSKI at one address (small_group), and the DB website bkdental.com points to a shared two-doctor brand rather than a solo shingle; the researcher corroborated only Kiczenski and left the second provider unexplained. Rule 1 default is correct to T2 single_loc_group — dentist-owned, single location, no corporate/DSO signal. Directory-only evidence (opencare/yelp) caps confidence at medium.",
+      "web_searched": false
+    },
+    {
+      "location_id": "bcae04016db042c4",
+      "practice_name": "TOM L. BARANOWSKI, D.D.S.",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "provider_count=2 across surnames BARANOWSKI + FUNG at 1011 Lake St Ste 410 Oak Park (small_group); the researcher corroborated only Baranowski and left FUNG unexplained (no evidence it is a hygienist, a stale NPI, or a distinct co-located practice). Rule 1 default is correct to T2 single_loc_group — dentist-owned, single location, no corporate/DSO brand. Directory/registry-only sources (healthgrades/npiprofile) cap confidence at medium.",
+      "web_searched": false
+    },
+    {
+      "location_id": "147abf2d4d43d72c",
+      "practice_name": "Nidea Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "provider_count=2 with surnames NIDEA + SYLVESTER at the South Holland office (small_group). The researcher already resolved the multi-location question (the Bloomingdale address rebranded to 'Flex Dental' under different owners, so no live T3 network) but left the second same-office provider SYLVESTER unexplained. Rule 1 default is correct to T2 single_loc_group — dentist-owned (Dr. Robert Nidea, since 1996), single location, no corporate/DSO signal. Directory-only evidence caps confidence at medium.",
+      "web_searched": false
+    }
+  ]
+}

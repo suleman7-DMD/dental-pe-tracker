@@ -1,0 +1,96 @@
+{
+  "batch": 5,
+  "indices": [50, 59],
+  "dispositions": [
+    {
+      "location_id": "027f29cbb02058c6",
+      "practice_name": "Lincoln Square Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Three hard signals fired (provider_count=2, small_group, surnames ATLAGIC+FORT). The researcher's reverse-phone lookup only corroborated Dr. Zeljko Atlagic and never addressed the second NPI (FORT), so there is no evidence it is stale/non-practicing/hygienist. Per rule 1 a T1 with an unexplained second surname at one small_group office corrects to single_loc_group. Evidence is directory-only (healthgrades/dentalplans), so rule 5 caps confidence at medium."
+    },
+    {
+      "location_id": "f8d59f858ac063fd",
+      "practice_name": "Long Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "provider_count=2 (LONG+TUCKER) and small_group fired hard; the sole evidence is one dentalplans.com listing for Dr. Nathan Long and the TUCKER NPI is completely unaddressed, with no showing it is stale/hygienist. Rule 1 corrects the unexplained-second-dentist T1 to single_loc_group. Directory-only support (rule 5) holds confidence at medium."
+    },
+    {
+      "location_id": "130395305f31a800",
+      "practice_name": "KO DENTAL CARE P.C.",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "provider_count=3 with three distinct surnames (HAMILTON/KIM/KO) and small_group fired hard; the eponymous name and directory hits support Dr. Jae Ko as owner but the researcher provides no evidence the two other bridged NPIs are stale/hygienist, so this is a one-location dentist-owned group, not a solo. Not a known DSO (Ko != KOS/Dental Dreams), and count<8 so rule 1 corrects to single_loc_group rather than holding. Evidence is directory-only (healthgrades/npiprofile/sharecare) so confidence is medium."
+    },
+    {
+      "location_id": "d0613a08643a883b",
+      "practice_name": "RANDHURST DENTAL P.C.",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "provider_count=2 (AWRAHAM+OZTEKIN) and small_group fired hard; the researcher only verified Dr. Errol Oztekin and left the AWRAHAM NPI unexplained (no stale/hygienist showing), so this reads as a dentist-owned single-location group. Per rule 1 correct to single_loc_group. Support is directory-only (healthgrades/yelp/businessyab), capping confidence at medium under rule 5."
+    },
+    {
+      "location_id": "ffecc368bcc90a36",
+      "practice_name": "HERMAN J SALZBERG DMD PC",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Own site (palatinedental.com) confirms Dr. Herman Salzberg as owner since 1985, but provider_count=2 with a second surname HILLESHEIM that the researcher never characterizes (only says the site 'names only Salzberg' — absence, not proof it is a hygienist/stale). With a 41-year founder a second bridged dentist most likely is an associate/successor, i.e. a dentist-owned single-location group; rule 1 corrects to single_loc_group at medium confidence."
+    },
+    {
+      "location_id": "b0df8d6123904513",
+      "practice_name": "ELLIOT M RAZDOLSKY DDS INC",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Own site (razdental.com) explicitly disclaims corporate chains, so there is no DSO signal, but provider_count=2 with an unexplained second surname FELDMAN — the researcher only notes Razdolsky is 'the named dentist' without showing FELDMAN is stale/non-practicing/hygienist. Under rule 1 the unexplained second dentist at one small_group office corrects to single_loc_group; confidence medium given the second provider is unverified."
+    },
+    {
+      "location_id": "a36a3043313937a4",
+      "practice_name": "Spilotro Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The researcher claimed a solo practice, but DB shows provider_count=4 with four distinct surnames (BIRG/KIRILESCU/NAGPAL/SPILOTRO) and entity_classification=large_group. Rule 1 mandates a hold (not a correct) whenever db_context says large_group. There is no DSO brand, EIN cluster, or locator match to justify hold_dso_verify, so this is a contradictory/unverifiable roster (solo claim vs 4-provider large_group on directory-only evidence) that must not merge as-is."
+    },
+    {
+      "location_id": "6dbeae090c3b29b7",
+      "practice_name": "JAMES STREET DENTAL, P.C.",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The hard signals (provider_count=2, small_group, SLAVIK+WIFF) are benign: the researcher reviewed the practice's OWN team page (jamesstreetdental.com/meet-our-team), which names exactly one dentist — Dr. Laurie Slavik, matching the AO name and exact address/phone — plus a hygienist ('Dee'), so the second bridged NPI is a hygienist, not a co-owner dentist (rule 1 accept pathway / spouse-hygienist-NPI case). This is strong own-site evidence, not directory-only, so rule 5 does not force a downgrade; the record's own confidence is already medium."
+    },
+    {
+      "location_id": "179416aaeea5acef",
+      "practice_name": "JOHN A. GUERRIERI D.D.S. LTD",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Own site (itascadental.com) centers Dr. John Guerrieri, but provider_count=3 with two additional surnames (RAGAS, SPERLAZZO) that the researcher only speculatively dismissed as 'likely hygienists/staff... could not be corroborated' — a guess, not affirmative evidence the extra NPIs are non-practicing. Fail-closed under rule 1: an unexplained multi-provider small_group corrects to single_loc_group rather than accept, at medium confidence."
+    },
+    {
+      "location_id": "528945ee1e7425f3",
+      "practice_name": "NORTH SHORE DENTAL ASSOCIATES",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "provider_count=18 (>=8) with 16 surnames triggers rule 1's mandatory hold, and the record is internally contradictory: the DB website is mydesignersmiles.com while the researcher cites a different site (blanasdds.com) for a solo Dr. Blanas, arguing the 18 NPIs are unrelated co-tenants of the multi-suite Carlson Building. That multi-tenant-address theory is plausible but unverified and the location record cannot be cleanly resolved to one independent practice; with no DSO brand/EIN/locator signal it is hold_unresolved (not hold_dso_verify) and must not merge as-is."
+    }
+  ]
+}

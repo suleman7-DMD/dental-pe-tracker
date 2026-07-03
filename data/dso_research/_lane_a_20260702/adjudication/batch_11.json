@@ -1,0 +1,106 @@
+{
+  "batch": 11,
+  "indices": [110, 119],
+  "dispositions": [
+    {
+      "location_id": "04d2c6018cf16dd6",
+      "practice_name": "FAMILY DENTAL CARE",
+      "assigned_tier": "dentist_multi",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The shared EIN (363554595, reach 6) and shared domain familydentalcare.com (reach 9) are Family Dental Care PC's OWN multi-office network, which is exactly what dentist_multi (T3) describes (Rule 6a). Independent web results plus the group's own site document it as the largest privately-owned dental group in Chicago, founded 1986 by Dr. Alexander G. Alemis with named dentist staff (Alemis, Boyle, Vasdekis) and no PE sponsor. The db_corporate_conflict dso_regional / affiliated_dso 'Family Dental Care' is the old detector labeling a large dentist-owned group as corporate; it is not a known DSO brand, so per Rule 2 the own-site dentist-ownership evidence prevails and the T3 tier (already not claiming independence) stands.",
+      "web_searched": false
+    },
+    {
+      "location_id": "a6c8d1b4552ac7c7",
+      "practice_name": "MY SMILE INC",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The db_corporate_conflict names 'All Family Dental & Braces (United Dental Partners)' with affiliated_pe_sponsor Calera Capital and dso_regional. United Dental Partners is an explicitly enumerated known DSO brand and Calera Capital is a live PE-sponsor tag, so Rule 3 forbids any T1 accept and Rule 2 sends a known-DSO-brand conflict to the adversarial verifier. The researcher's UDP-locator negative check is reasonable but not dispositive against a known-brand + PE structural signal (and the DB website 'newbranchre.com' is anomalous); this must be verified, not merged as independent.",
+      "web_searched": false
+    },
+    {
+      "location_id": "aed5721544edc5ed",
+      "practice_name": "Chen Emily DDS",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Web search confirms the researcher's read: 'Palatine Choice Dental Center' sits at 637 1st Bank Dr, five doors from this 632 N 1st Bank Dr record, so the dso_national 'Choice Dental Group' tag is a stale name-match with a distinct nearby practice, not this address. The location's own DB website palatinefamilydentist.com is an independent solo/family office (not directory-only, so Rule 5 is satisfied) and 'Choice Dental Group' is not a known DSO brand, so per Rule 2 the weak stale conflict is overridden. shared_ein reach 2 is a solo org+individual NPI pair; confidence held at medium given the record-name (Chen) vs. occupant identity wrinkle, but the location is independent either way.",
+      "web_searched": true
+    },
+    {
+      "location_id": "160bb1d601ce2d59",
+      "practice_name": "ELMHURST DENTAL GROUP LTD",
+      "assigned_tier": "dentist_multi",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "This is the West Dundee office of the 'Partners in Care' network (9 IL/WI offices launched 1990 from 1974-founded Elmhurst Dental), whose own site names dentist-owners Dr. Groh and Dr. Smith and lists 9 practicing dentists with no PE/corporate parent (corroborated incidentally by chicagolanddentists.com 'Partners in Care'). The hard ao_nonclinical_exec_title (Mary Walter, CFO), shared back-office mailing (333 W 1st St, reach 9) and shared EIN are the group's OWN centralized back office for a dentist-owned multi-office group (Rule 6a), consistent with the assigned dentist_multi tier. Not a known DSO; medium confidence stands.",
+      "web_searched": false
+    },
+    {
+      "location_id": "26b527ba4641a4bb",
+      "practice_name": "QUINTESSENTIAL DENTAL",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Web search resolves the shared_website signal: cameods.com is 'Cameo Dental Specialists', a separate endo/perio/oral-surgery group at 148 N Addison Ave, so the cameods.com reach-4 attached to this NPI is a wrong-website DB artifact, NOT evidence of a chain. Dr. Maggie Augustyn's Quintessential Dental / Happy Tooth (myhappytooth.com) is at the distinct 130 N Addison Ave as a dentist-owned single location; the AO-reach-2 and shared_phone-reach-2 are the org+individual NPI pair at that one address, and 'Powered by Productive Dentist Academy' is only a coaching credit. single_loc_group with high confidence stands.",
+      "web_searched": true
+    },
+    {
+      "location_id": "78ed9776d81fc92d",
+      "practice_name": "Midwest Dental Ctr",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "db_corporate_conflict flags 'Midwest Dental (Smile Brands)' with affiliated_pe_sponsor Gryphon Investors, plus parent_company GRYPHON INVESTORS and parent_iusa 969643626 as a structural Data-Axle corporate-linkage signal (not merely a name match). Midwest Dental is an enumerated known DSO brand, so Rule 3 forbids any T1 accept and Rule 2 routes the known-brand + PE-parent conflict to the adversarial verifier. The researcher's corporate-locator negative check and ajsalernodds.com solo evidence are plausible but cannot self-clear a known-DSO-brand + IUSA-parent structural signal; must be verified, not merged as independent.",
+      "web_searched": false
+    },
+    {
+      "location_id": "2bd652bcbd662c85",
+      "practice_name": "Eun Sung Hyun DMD",
+      "assigned_tier": "dentist_multi",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "db_corporate_conflict names 'Brident' (dso_national) with parent_company BRIDENT OF CALIFORNIA LLC; Brident is part of Western Dental/Sonrava, an enumerated known DSO brand, so Rule 3 forbids accepting it at a dentist-owned tier and Rule 2 routes the known-brand + parent-company structural signal to the adversarial verifier. The researcher's Houston-vs-IL 'Royal Dental Care' distinction (Troyan/Kucharska, 2 IL offices) is a reasonable disambiguation, but a known-DSO parent_company on the record cannot be self-cleared; the shared royaldentalcare.com reach-2 and the Brident linkage must be verified before any merge.",
+      "web_searched": false
+    },
+    {
+      "location_id": "6de32df895022dd4",
+      "practice_name": "DIPAK S. SHAH D.D.S. , LTD.",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Web search confirms dentist ownership (Dr. Dipak Shah, Smiles of Westmont / smilesofwestmont.com, 4118 N Cass Ave) so this is not corporate. But the hard t1_group_entity_classification (small_group) plus a distinct second NPI 'DR. DIPAK S SHAH II D.D.S.' (1891859542) at the practice and shared_ein reach 2 indicate 2+ dentists at one office, so Rule 1 requires correcting T1 to single_loc_group. The original high confidence rested on directory-only Yelp/BBB URLs (Rule 5 violation); downgraded to medium since the group composition is inferred from the second-Shah NPI plus the small_group label rather than a full verified roster.",
+      "web_searched": true
+    },
+    {
+      "location_id": "1518ac8ad8df5e0c",
+      "practice_name": "DENTAL ASSOCIATES OF NORTH PIER",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Web search confirms Dr. William Couvelis is the OWNER (BBB) of North Pier Dental Associates PC, an independent single Streeterville location (419 E Illinois St) since 1991 with no group/DSO/MSO parent. The hard ao_nonclinical_exec_title (Manmeet Arora, Director of Revenue Operations) is an internal admin role for an owner-operated cosmetic practice, not MSO back-office control (owner verified as Couvelis), and the shared_phone / shared northpierdental.com reach-2 are the org+variant NPI pair at that single address (Rule 6b artifact). single_loc_group (dentist-owned, multi-dentist, one location) with medium confidence stands.",
+      "web_searched": true
+    },
+    {
+      "location_id": "b1e3b67adc113238",
+      "practice_name": "JEFFERSON PARK FAMILY DENTAL LLC",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Web search shows the AO 'Robert Stites, INSURANCE COORDINATOR-DECISION ONE' (reaching 3 locations) points to DecisionOne Dental Partners, a Smile Brands-backed DSO (since 2018) that explicitly lists a Jefferson Park Chicago office among its locations. A shared insurance-coordination back office keyed to 'Decision One' across 3 offices is an MSO/DSO back-office fingerprint (Rule 6c), directly contradicting the true_independent call. The researcher's single dentistinjeffersonpark.com page did not rule out DSO control; per Rule 3 / fail-closed I do not self-promote to branded_dso and route to the adversarial verifier.",
+      "web_searched": true
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "batch": 6,
+  "indices": [60, 69],
+  "dispositions": [
+    {
+      "location_id": "a697a41b1497a4f9",
+      "practice_name": "DANIEL J BROWN DDS PC",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": "medium",
+      "rationale": "small_group, provider_count=2 (BROWN + one extra GRUND). The roster's primary/individual NPI is Dr. Daniel Brown himself and this is a solo-named PC on its own domain (danielbrown.net); the researcher searched multiple directories and no second dentist surfaced, so GRUND is best read as a hygienist/staff NPI bridged to the address, not a co-owning dentist (Rule 1 stale/hygienist accept path). No DSO brand, EIN cluster, or corporate parent signal. Confidence held at medium because evidence is directory-only (denteldoc/healthgrades, Rule 5) and the second NPI is inferred rather than confirmed.",
+      "web_searched": false
+    },
+    {
+      "location_id": "96d15763300700b6",
+      "practice_name": "Sasic Lalich Laura DDS",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": "medium",
+      "rationale": "small_group, provider_count=2 where the primary NPI (1811076722) is Dr. Laura Sasic-Lalich (owner) plus one extra surname JAROSIK. Practice is presented across sources as her individual solo practice on her own name/domain; only she surfaced, so the single extra NPI reads as a hygienist/staff bridge, not a second dentist-owner. No corporate/DSO signal. Capped at medium confidence per Rule 5 (evidence is directory-only: patientconnect365/webmd) and because JAROSIK is inferred non-dentist rather than verified.",
+      "web_searched": false
+    },
+    {
+      "location_id": "459f40b22e0ac453",
+      "practice_name": "NATHANIEL STEPHEN ROOD D.D.S., LTD.",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "provider_count=3 with three distinct surnames CORREA, DOEBLER, ROOD at one address — too many to dismiss as staff, so this is a dentist-owned single-location group, not a solo owner-operator. The own site (orlandsmiles.com) plus the ADA Find-a-Dentist registry corroborate the exact address and confirm it is Dr. Rood's dentist-owned single location with no corporate parent, so correcting T1->T2 rather than holding. Confidence medium because whether Correa/Doebler are associate dentists vs staff is inferred from the roster.",
+      "web_searched": false
+    },
+    {
+      "location_id": "cb299b83eff0c859",
+      "practice_name": "SAUK TRAIL DENTAL CARE",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "The own site (sauktraildentalcare.com) confirms an individual dentist-owner, Dr. Lawal Garuba (matches ctx AO=GARUBA), single location, no corporate/DSO signal — so this is dentist-owned, not corporate. But the two bridged individual-provider NPIs are entirely different surnames (GERTSCH, SMITH), i.e. the address carries multiple dentist NPIs beyond the owner; the marketing 'seen personally every visit' claim cannot override that roster. Correcting T1->T2 (single-location dentist-owned group) at medium confidence rather than accepting solo.",
+      "web_searched": false
+    },
+    {
+      "location_id": "cdbb73c7b9a40c73",
+      "practice_name": "TODD MARTIN, DDS",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The practice identity is internally contradictory and unverifiable as filed: the record is 'Todd Martin DDS' but neither bridged provider surname is MARTIN (they are MALICHIN and SEVERINO), the BBB listing brands the office 'Ogden Family Dentistry', and there is no practice website (website=null). Evidence is directory-only (healthgrades/BBB, Rule 5 + the directory_only_support signal), so neither the solo-Martin claim nor a clean T2 read (Malichin/Severino group) can be confirmed. No DSO signal, but the row must not merge as-is.",
+      "web_searched": false
+    },
+    {
+      "location_id": "0c7b65c48f4108c7",
+      "practice_name": "SONG DENTAL PLLC",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": "medium",
+      "rationale": "provider_count=2 where the primary NPI is Dr. Brian Song (owner) plus one extra surname MUNAR. The practice's OWN site (songdental.com) profiles Dr. Song as the practicing dentist at the exact address with no parent/MSO/DSO brand, so the single extra NPI reads as a hygienist/associate. The ctx website field 'mccartyfamilydental.com' is a stale prior-tenant artifact (Song took over the address), not a corporate link. Accept as solo T1; confidence set to medium because the second NPI is inferred non-owner rather than confirmed.",
+      "web_searched": false
+    },
+    {
+      "location_id": "27721fcab5dba222",
+      "practice_name": "WHITE EAGLE FAMILY DENTISTRY",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Roster is large_group with provider_count=4 and four distinct surnames (ELLIOTT, ESKAN, FRANCIS, SUN); per Rule 1 a large_group/4-provider roster cannot be accepted as solo T1. The own site's singular 'Meet the Doctor' page claims Dr. Sun in solo private practice for 24+ years, which directly contradicts the 4-provider roster, and the ctx domain (naperville-periodontist.com) is unexplained. Dentist-owned with no DSO brand, but the headcount contradiction is unresolved — cannot confirm solo, single associate, or a genuine 4-dentist group without further verification.",
+      "web_searched": false
+    },
+    {
+      "location_id": "0884ff9f2ce7934f",
+      "practice_name": "Braam Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": "medium",
+      "rationale": "provider_count=2 where the primary NPI is Dr. Lee S. Braam (owner) plus one extra surname CUN. The practice's own site (braamdental.com) plus the ADA Find-a-Dentist registry (not directory-only) confirm Braam as the solo dentist at the single Lawrence Ave address with no other location or corporate affiliation, so the one extra NPI reads as a hygienist/associate. Accept as solo T1; confidence set to medium because the second provider (CUN) is inferred non-owner rather than explicitly confirmed.",
+      "web_searched": false
+    },
+    {
+      "location_id": "52b7922c821e6cb2",
+      "practice_name": "Binder Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": "medium",
+      "rationale": "provider_count=2 where the primary NPI is Dr. Stephen R. Binder (owner) plus one extra surname LAZO. Multiple sources confirm Binder practicing solo under his own name at the exact 3900 W Fullerton address/phone with no group or corporate signal, so the single extra NPI reads as a hygienist/staff bridge (the researcher's 'single provider' note misreads the count but the substance is solo+staff). Evidence is directory-only (healthgrades/doctorsnetwork), so per Rule 5 confidence is capped at medium.",
+      "web_searched": false
+    },
+    {
+      "location_id": "c16a63a89715b5d7",
+      "practice_name": "HENRY C SCHUPPERT DDS, MS. PC.",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Web search confirms this location now operates as 'Diamond Plus Orthodontics' (diamondplusortho.com, the ctx website), a multi-doctor group with a plural 'Meet the Doctors' page and a multi-location '/locations/' footprint (Lakeview + others) at the same 2835 N Sheffield Ave suite. The large_group roster of four non-Schuppert surnames (GOODMAN, PERRIE, RUBIN, TOKOWITZ) matches that group, so the solo-Schuppert T1 is wrong; Schuppert appears to be one absorbed doctor. This is a branded multi-location/multi-doctor group of unknown ownership (dentist-owned T3 vs corporate/MSO) — routing to the adversarial verifier per Rules 1 and 6; never self-promoting to a DSO tier.",
+      "web_searched": true
+    }
+  ]
+}

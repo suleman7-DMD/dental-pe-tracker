@@ -1,0 +1,106 @@
+{
+  "batch": 9,
+  "indices": [90, 99],
+  "dispositions": [
+    {
+      "location_id": "c6078e6641ef7f48",
+      "practice_name": "CHICAGO DENTAL COSMETICS",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Hard db_corporate_conflict names a KNOWN DSO brand — 'All Family Dental & Braces (United Dental Partners)' backed by Calera Capital (entity_classification dso_regional) — which binding rule 3 forbids accepting at T1/T2. Rule 2 also directs hold when the DB signal is a known DSO brand/PE cluster. The researcher's name-collision argument (address now 'Advanced Family Dental' / Dr. Hotait; UDP's real locator is 5160 S Pulaski #102) is plausible but the AO Hotait reaches 2 locations, so the adversarial verifier must confirm the collision before any independent classification.",
+      "web_searched": false
+    },
+    {
+      "location_id": "f91cac2553a6afe3",
+      "practice_name": "Aspen Dental",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Hard db_corporate_conflict labels this Aspen Dental / dso_national (parent ADMI CORP, PE Leonard Green), with shared_website_domain aspendental.com across 20 locations and a shared EIN — Aspen is an explicitly listed known DSO brand that binding rule 3 says never to accept at T1/T2. The researcher argues an address/phone collision (this door is 'Dental Care Professionals' dcpdental.com; real Aspen is 4450 N Harlem) but the DB still ties this row to the aspendental.com domain cluster, so the adversarial pass must adjudicate.",
+      "web_searched": false
+    },
+    {
+      "location_id": "52b68c520b5385df",
+      "practice_name": "DENTAL ASSOCIATES OF ALSIP, LLC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The hard ao_nonclinical_exec_title (Katherine Grueneberg, 'Chief Administrative Officer') resolves via web search to a C-suite executive of Dental Associates — a Wisconsin-based multi-location corporate dental group with its own Care Plus Dental Plans insurance arm — indicating this 'Dental Associates of Alsip LLC' org NPI is corporate-affiliated, not the independent Wren/Eber partnership the researcher described from alsipdentist.com. This is compounded by a shared EIN and shared phone/domain (danosdentistry.com) each spanning 2 locations, and the DB website field points at yet a third practice (Dr. George Danos). Per rule 6(c) an MSO/corporate back-office signal at T2 requires the adversarial verifier — never a self-promotion.",
+      "web_searched": true
+    },
+    {
+      "location_id": "719094a274f626fe",
+      "practice_name": "Aspen Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Hard db_corporate_conflict tags this Aspen Dental / ADMI CORP / dso_national (PE Leonard Green) with a shared EIN across 2 locations — Aspen/ADMI is a listed known DSO brand that rule 3 bars from acceptance at T1. The researcher's collision case (real door is 'Morton Grove Dentistry' / Dr. Rashmika Patel at 7140 Dempster; Aspen's real site is 6821 Dempster) is credible and the DB website is even 'drkarras.com', but a fail-closed hold is mandatory so the verifier can confirm before flipping a national-DSO tag to independent.",
+      "web_searched": false
+    },
+    {
+      "location_id": "bfef1a9a2bc4a412",
+      "practice_name": "THOMAS R GIBBS DDS PC",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "T1 conflicts with hard t1_provider_count_gt1 (provider_count 2) and t1_group_entity_classification (family_practice); the second provider shares the owner's surname (GIBBS), and rule 1 requires correction to T2 unless the extra NPI is shown stale/non-practicing/hygienist, which the researcher explicitly could not confirm. Ownership is clearly dentist-held and non-corporate ('Smile Glen Ellyn', Dr. Thomas Gibbs, founded 1978, BBB + own site smileglenellyn.com, no DSO signal), so no corporate hold is warranted — only the sub-tier is wrong. Confidence held medium given the unconfirmed second dentist and a shared EIN reaching a second location.",
+      "web_searched": false
+    },
+    {
+      "location_id": "0213cf1fb06e6c72",
+      "practice_name": "MARSHALL SHIKAMI DDS PC",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Hard t1_provider_count_gt1 (provider_count 2, both surname SHIKAMI) and t1_group_entity_classification (family_practice) contradict a true-solo tier; rule 1 mandates correction to T2 because there is no evidence the second same-surname NPI is stale/non-practicing/hygienist. The evidence is dentist-owned and non-corporate (Dr. Marshall Shikami DDS, owner since 1996, no parent/DSO surfaced), so this is a benign sub-tier fix, not a corporate hold. Confidence medium because support is directory-only (Healthgrades/D&B/npiprofile) and the second Shikami provider was not independently confirmed.",
+      "web_searched": false
+    },
+    {
+      "location_id": "f62621ec4f7225d2",
+      "practice_name": "Aspen Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Hard db_corporate_conflict labels this Aspen Dental / dso_national (PE Leonard Green) with shared_website_domain aspendental.com (20 locations) and a shared phone — Aspen is a listed known DSO brand that rule 3 forbids accepting at T1. The researcher's collision argument (real door is 'Crestwood Dental & TMJ Care' / Dr. Bargamian at 13549 S Cicero; Aspen's real site is 13442 S Cicero) is plausible, but the aspendental.com domain-cluster tie means the adversarial verifier, not this pass, must clear it.",
+      "web_searched": false
+    },
+    {
+      "location_id": "940de41ceda33ad2",
+      "practice_name": "MIDWEST DENTAL CENTER",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Hard db_corporate_conflict names Midwest Dental / dso_national with parent_company GRYPHON INVESTORS and shared_website_domain midwest-dental.com across 4 locations — Midwest Dental is a listed known DSO brand (Gryphon/Smile Brands) that rule 3 bars from acceptance at T1. The researcher's generic-name-collision case is genuinely strong (the chain's own IL locator lists 19 offices and excludes Bridgeview; this door uses midwestdentalcntr.com with a single dentist, Dr. Al-Rayyan) but the researcher self-flagged residual doubt (a CareCredit 'Midwest Dental Ltd' entry it could not load, 403) and confidence is only medium, so a fail-closed verifier hold is required.",
+      "web_searched": false
+    },
+    {
+      "location_id": "ef75d82c6a282a3d",
+      "practice_name": "EDWARD M. CHO D.D.S. LTD.",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "Hard t1_provider_count_gt1 (provider_count 2, both surname CHO) and t1_group_entity_classification (family_practice) contradict true-solo; rule 1 requires correction to T2 since the second same-surname NPI was not shown to be stale/non-practicing/hygienist (the researcher could not confirm it either way). No corporate signal is present, so this is a sub-tier fix rather than a hold. Rule 5 also caps confidence at medium here because ownership support is directory-only (Birdeye/Healthgrades, the fired directory_only_support signal).",
+      "web_searched": false
+    },
+    {
+      "location_id": "336b69ba6a3ac455",
+      "practice_name": "YONG CHANG DDS PC.",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Hard db_corporate_conflict tags this ADMI CORP / dso_national with website aspendental.com (20-location cluster) AND a shared Data-Axle officer (BRASHEAR, DANIEL) spanning 4 locations — an Aspen/ADMI corporate-cluster fingerprint that rule 3 forbids accepting at T1. The researcher's own-site evidence (roscoevillagedentist.com / 'Zephyr Dental' / Dr. Yong Chang, founded 2020) is strong and the DB roster is empty (provider_count 0), but the ADMI label plus the shared corporate officer require the adversarial verifier before overriding a national-DSO tag.",
+      "web_searched": false
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "batch": 10,
+  "indices": [100, 109],
+  "dispositions": [
+    {
+      "location_id": "b8f4172a363d99c0",
+      "practice_name": "Lee, Kenneth",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The DB website is dentaldreams.com shared across 12 locations plus a shared EIN (363911039) and entity_classification=dso_regional. Dental Dreams (KOS Services) is a known DSO brand (Rule 3), yet the researcher's reasoning only debunked the 'Gentle Dental' name-match and never addressed the dentaldreams.com cluster; supporting URLs are directory-only (Yelp/Healthgrades/Wellness). Fail-closed: known DSO brand + shared-domain/EIN cluster on a T2 requires the adversarial verifier.",
+      "web_searched": false
+    },
+    {
+      "location_id": "979777a4db94b853",
+      "practice_name": "Jacek Wolniak",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Record carries affiliated_dso=Western Dental, affiliated_pe_sponsor='formerly New Mountain Capital', and entity_classification=dso_national. Western Dental/Sonrava is a known DSO brand (Rule 3) with a real PE sponsor field, and the researcher's counter-evidence for 'Niles Medical Associates' is directory-only (healthgrades, npiprofile) — insufficient to overturn a branded-DSO + PE signal (Rules 2, 3, 5). Hold for verifier.",
+      "web_searched": false
+    },
+    {
+      "location_id": "b36aff3306c8901a",
+      "practice_name": "BRAINARD G. LLANES DDS, LTD.",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Practice's own website and my web check confirm 818 E Nerge Rd operates as independently branded 'Modern Essence Dentistry', owner Dr. Brainard Llanes plus Dr. Paul Litvin (two dentists, one location = valid T2). The parent_company '1ST FAMILY DENTAL' and 1fdimplants.com domain (reach 2, medium) are a street-proximity Data-Axle artifact — 1st Family Dental's actual offices are 801/803 E Nerge, a different address; 1st Family Dental is not in the known-DSO list. Rule 2 accept branch: own site cited, DB label is a weak name-match, and the t2_provider_count_lte1 flag is contradicted by the confirmed 2-dentist roster.",
+      "web_searched": true
+    },
+    {
+      "location_id": "d79463b4e3511c5d",
+      "practice_name": "FAMILY DENTAL CARE",
+      "assigned_tier": "dentist_multi",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Assigned tier is already dentist_multi (T3), the correct classification for a dentist-owned network. familydentalcare.com confirms 10601 S Ave E as one office of Family Dental Care PC — founded 1986 by Dr. Alexander Alemis, described as the largest privately-owned dental group in Chicago, staffed by named dentists (Dr. Vallianatos et al.). The shared EIN (6 locs) and domain (9 locs) ARE the practice's own multi-office network (Rule 6a), so they support rather than contradict T3; the dso_regional detector label is a stale name-match rebutted by the group's own current website.",
+      "web_searched": false
+    },
+    {
+      "location_id": "5ead583d8354e6e4",
+      "practice_name": "FAVIA FAMILY DENTAL LLC",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Own site faviadental.com confirms Dr. Joseph Favia as sole owner-dentist since 1993 (address/phone match), and the DB already classifies it solo_established. The parent_company 'EVENLY ORTHODONTICS DUPONT', evenly.com domain (reach 8), shared officer 'BRASHEAR,DANIEL', and shared phone are the documented Evenly Technologies Data-Axle artifact (the exact false-corporate cause purged in the 2026-06-12 audit), not real MSO control. The two low-severity T1-wording flags are boilerplate. T1 stands.",
+      "web_searched": false
+    },
+    {
+      "location_id": "ef7718d320aa5539",
+      "practice_name": "WEBSTER DENTAL CARE NORTH SUBURBAN LTD",
+      "assigned_tier": "dentist_multi",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Assigned tier is dentist_multi (T3), correct for a dentist-owned network. The AO is Dr. Steve Rempas DDS listed as OWNER, matching the founder who started Webster Dental Care in 1976; the group's own site describes it as one of the largest dentist-owned dental groups in Chicagoland. 'Webster Dental Management' is the group's own self-management entity (Rule 6a), not third-party MSO control, and the DB record has affiliated_dso=None/pe_sponsor=None — the dso_national label is purely name-based. The PE name-collision (Webster Equity Partners) was checked and ruled out. Accept.",
+      "web_searched": false
+    },
+    {
+      "location_id": "543f3230f070c5d3",
+      "practice_name": "SMILE PRO STUDIO",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "DB website is clearchoice.com shared across 4 locations, with provider_count=12 (>=8, Rule 1 hold), entity_classification=dso_national, and affiliated_dso='Choice Dental Group'. ClearChoice is a national implant-center DSO and Dr. Zomorrodian is a prosthodontist (its model); the researcher self-flagged the affiliated_dso as unresolved and used only medium confidence off a single own-site URL. Strong corporate infrastructure signal requires the adversarial verifier (Rules 1, 2, 6c).",
+      "web_searched": false
+    },
+    {
+      "location_id": "2c431d78dd522d71",
+      "practice_name": "MY DENTIST, INC., P.C.",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The provider_count=2 that fired t1_provider_count_gt1 and the small_group label are inflated by a Data-Axle synthetic 'NPI' (DA_2b5d27886bb4) — the only real NPI is 1316000532 and the sole surname is YU. Own site (mydentistinc.com) plus Healthgrades confirm Dr. David Yu as President/owner and sole treating dentist, owner_reach 1 location. Rule 1 accept branch: the extra NPI is a non-genuine synthetic record, so T1 true_independent stands.",
+      "web_searched": false
+    },
+    {
+      "location_id": "03ab5b0e4d6ae940",
+      "practice_name": "Robert M Lee DDS",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Record carries affiliated_dso='Smile Doctors' (known DSO, Rule 3) with affiliated_pe_sponsor='Thomas H. Lee / Linden Capital' and entity_classification=dso_national, and the researcher's own evidence URL (smiledoctors.com/locations/batavia-n-island) confirms a Smile Doctors office AT this same address (34 N Island Ave). The 'separate ortho tenant' theory is supported only by npiprofile + the Smile Doctors locator, not an independently cited own site. Rule 3 forbids accepting a known DSO brand at T1/T2 — hold for verifier to disentangle the shared-building/EIN structure.",
+      "web_searched": false
+    },
+    {
+      "location_id": "b6f0158e932b879c",
+      "practice_name": "Midwest Dental Specialists",
+      "assigned_tier": "dentist_multi",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Record explicitly carries parent_company='GRYPHON INVESTORS', affiliated_pe_sponsor='Gryphon Investors', affiliated_dso='Midwest Dental (Smile Brands)' (known DSO, Rule 3), and a non-placeholder parent_iusa=969643626 — a substantive PE/corporate-linkage set, not a bare name field. The researcher's name-collision argument (Dr. Anil Bouri periodontics on midwestdentalspecialists.com vs the Smile Brands midwest-dental.com chain) is plausible but does not explain the explicit Gryphon parent + IUSA linkage; fail-closed on an explicit PE-sponsor + DSO-brand record requires the adversarial verifier (Rules 2, 3).",
+      "web_searched": false
+    }
+  ]
+}
