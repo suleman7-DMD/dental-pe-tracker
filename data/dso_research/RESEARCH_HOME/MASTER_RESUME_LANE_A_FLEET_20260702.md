@@ -238,3 +238,27 @@ After the reset the PM relaunched everything in one shot (all four run concurren
 - Recovery-of-the-recovery: if any of these four runs dies, the §4 procedures apply unchanged
   (result files on disk = ground truth; relaunch only missing units with the v2 script; recover
   verdicts from journals; fresh verify agents for any unit with T4/T5 rows and no verdict).
+
+### §6a Session-restart resume (2026-07-02, later the same night) — PROVEN RECOVERY
+
+The PM session restarted (context compaction → background continuation). The three RESEARCH
+workflows were checkpointed but failed auto-adoption ("adopt scriptPath rejected") — the
+**verdict-recovery workflow survived the restart and kept running** (task w7zwnx52v, unchanged).
+Disk still read 85 result files (no second-flight research had landed yet), so nothing was lost.
+
+Recovery that WORKED (use this exact pattern for any future session restart):
+`Workflow({scriptPath: <repo v2 script>, resumeFromRunId: "<run id>", args: <same units>})` —
+cross-session resume on the SAME run IDs succeeded; cached agent() calls (incl. ~10 banked Opus
+verdicts in the recovery journal) replay instantly. New task IDs after resume:
+
+| What | Run ID (unchanged) | New Task ID |
+|---|---|---|
+| Relaunch missing w1+w2 units (43) | `wf_a79097d5-2c2` | wmi4a38vs |
+| Wave 3 (45) | `wf_facf67a9-304` | wrk5dujmd |
+| Wave 4 (45) | `wf_a8ac7ebd-e28` | w87b116uy |
+| Verdict recovery | `wf_edc106cc-7cf` | w7zwnx52v (never died) |
+
+Journals now live under BOTH session dirs — the resumed runs write to
+`~/.claude/projects/-Users-suleman-dental-pe-tracker/a281c7b1-8c8d-4811-9e1c-efed0be4e197/subagents/workflows/<runId>/journal.jsonl`
+(the old 4d259360… paths hold the pre-restart entries, incl. the first ~11 recovery verdicts for
+units 003 004 006 012 015 018 022 024 025). Check BOTH when recovering verdicts.
