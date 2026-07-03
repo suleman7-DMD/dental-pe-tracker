@@ -1,8 +1,8 @@
 """Merge + PM-gate Lane A wave results into a census candidate file (2026-07-02).
 
-Reads _lane_a_20260702/result_unit_*.json (research agents) and
-_lane_a_20260702/_verdicts_wave1.json (Opus adversarial verdicts on every
-stealth/branded DSO claim, dumped from the workflow return), applies the
+Reads _lane_a_20260702/result_unit_*.json (research agents), all durable
+_verdicts*.json files (Opus adversarial verdicts on every stealth/branded DSO
+claim), and the complete §6h blocker adjudication rollup. Applies the
 fail-closed PM gate, and emits:
   _census_candidate_lane_a_wave1_20260702.json  (classified rows only)
   _lane_a_triage_wave1_20260702.json            (undetermined + rejected, with reasons)
@@ -15,6 +15,8 @@ Gate rules (mirrors consolidate_census.py validator + census policy):
     verdict from the adversarial verifier. DOWNGRADE_T3 retiers to
     dentist_multi (kept only if web evidence still present). REFUTE /
     INSUFFICIENT / missing verdict -> triage. Fail-closed.
+  - Any §6h adjudication hold is excluded; accepted/corrected adjudications are
+    applied before writing.
   - pe_backed forced false outside T4/T5.
   - R4 sweep: any network_id reaching >=10 locations across (this wave +
     already-tiered DB rows) is NOT auto-written -> triage as R4 candidate.
@@ -40,6 +42,11 @@ URL_BASES = {"locator", "web_verified", "intel_dossier"}
 ARTIFACT_BASES = {"ein_cluster", "ao_cluster", "name_chain", "structural"}
 VALID_BASES = URL_BASES | ARTIFACT_BASES | {"none"}
 DSO_TIERS = {"stealth_dso", "branded_dso"}
+VERDICT_FILES = [
+    "_verdicts_wave1.json",
+    "_verdicts_final_flights_20260703.json",
+]
+ADJUDICATION_ROLLUP = "_adjudication_rollup_complete_20260703.json"
 
 
 def is_http_url(v):
@@ -55,6 +62,49 @@ def is_http_url(v):
     return parts.scheme in ("http", "https") and "." in (parts.netloc or "")
 
 
+def load_verdicts():
+    verdicts = {}
+    stats = Counter()
+    for name in VERDICT_FILES:
+        path = os.path.join(LANE, name)
+        if not os.path.exists(path):
+            print(f"WARNING: no verdict file at {path}")
+            stats[f"missing_{name}"] += 1
+            continue
+        data = json.load(open(path))
+        for v in data:
+            lid = v.get("location_id")
+            if not lid:
+                stats["verdict_blank_location_id"] += 1
+                continue
+            if lid in verdicts and verdicts[lid].get("verdict") != v.get("verdict"):
+                raise SystemExit(f"Conflicting verifier verdicts for {lid}: {verdicts[lid]} vs {v}")
+            verdicts[lid] = v
+            stats[f"verdict_{v.get('verdict')}"] += 1
+    return verdicts, stats
+
+
+def load_adjudications():
+    path = os.path.join(LANE, ADJUDICATION_ROLLUP)
+    if not os.path.exists(path):
+        raise SystemExit(
+            f"Missing required §6h adjudication rollup at {path}; refusing to merge Lane A"
+        )
+    data = json.load(open(path))
+    dispositions = data.get("dispositions") or []
+    if data.get("summary", {}).get("total_dispositions") != 277 or len(dispositions) != 277:
+        raise SystemExit(f"Adjudication rollup is incomplete at {path}")
+    out = {}
+    for d in dispositions:
+        lid = d.get("location_id")
+        if not lid:
+            raise SystemExit(f"Adjudication disposition without location_id in {path}")
+        if lid in out:
+            raise SystemExit(f"Duplicate adjudication disposition for {lid} in {path}")
+        out[lid] = d
+    return out, data.get("summary", {})
+
+
 def main():
     c = sqlite3.connect(DB)
     c.row_factory = sqlite3.Row
@@ -64,13 +114,8 @@ def main():
     if os.path.exists(holds_file):
         held_ids = {h["location_id"] for h in json.load(open(holds_file)).get("holds", [])}
 
-    verdicts = {}
-    vfile = os.path.join(LANE, f"_verdicts_{WAVE}.json")
-    if os.path.exists(vfile):
-        for v in json.load(open(vfile)):
-            verdicts[v["location_id"]] = v
-    else:
-        print(f"WARNING: no verdict file at {vfile} — ALL DSO claims will triage")
+    verdicts, verdict_stats = load_verdicts()
+    adjudications, adjudication_summary = load_adjudications()
 
     rows_by_lid = {}
     triage = []
@@ -132,6 +177,38 @@ def main():
             if tier not in VALID_TIERS:
                 reject(r, "invalid_tier"); continue
             conf = r.get("confidence")
+
+            adjudication = adjudications.get(lid)
+            adjudication_note = ""
+            if adjudication:
+                action = adjudication.get("merge_action")
+                disposition = adjudication.get("disposition") or "unknown"
+                if action == "hold_do_not_merge":
+                    stats["adjudication_hold"] += 1
+                    reject({**r, "_adjudication": adjudication}, f"adjudication_{disposition}")
+                    continue
+                if action == "merge_corrected_tier":
+                    corrected = adjudication.get("corrected_tier")
+                    if corrected not in VALID_TIERS or corrected == "undetermined":
+                        reject({**r, "_adjudication": adjudication}, "adjudication_invalid_corrected_tier")
+                        continue
+                    tier = corrected
+                    conf = adjudication.get("corrected_confidence") or conf or "medium"
+                    stats["adjudication_corrected"] += 1
+                    adjudication_note = (
+                        f" | [§6h adjudication {adjudication.get('adjudication_source')}: "
+                        f"corrected to {tier}; {str(adjudication.get('rationale') or '')[:300]}]"
+                    )
+                elif action == "merge_original":
+                    stats["adjudication_accepted"] += 1
+                    adjudication_note = (
+                        f" | [§6h adjudication {adjudication.get('adjudication_source')}: "
+                        f"accepted; {str(adjudication.get('rationale') or '')[:300]}]"
+                    )
+                else:
+                    reject({**r, "_adjudication": adjudication}, f"adjudication_bad_action_{action}")
+                    continue
+
             if conf not in ("high", "medium"):
                 reject(r, "low_or_bad_confidence"); continue
             basis = r.get("evidence_basis")
@@ -161,16 +238,16 @@ def main():
                 v = verdicts.get(lid)
                 if not v:
                     reject(r, "dso_claim_unverified"); continue
-                if v["verdict"] == "CONFIRM":
+                if v.get("verdict") == "CONFIRM":
                     reasoning += f" | [Opus adversarial verify CONFIRM: {v.get('notes','')[:300]}]"
-                elif v["verdict"] == "DOWNGRADE_T3":
+                elif v.get("verdict") == "DOWNGRADE_T3":
                     if not urls:
                         reject(r, "downgrade_t3_without_url"); continue
                     tier = "dentist_multi"
                     conf = "medium"
                     reasoning += f" | [Opus adversarial verify DOWNGRADE_T3: {v.get('notes','')[:300]}]"
                 else:
-                    reject(r, f"dso_claim_{v['verdict'].lower()}"); continue
+                    reject(r, f"dso_claim_{str(v.get('verdict')).lower()}"); continue
 
             pe = bool(r.get("pe_backed")) if tier in DSO_TIERS else False
 
@@ -185,6 +262,7 @@ def main():
                 "status": "classified",
                 "network_id": r.get("network_id") or None,
                 "reasoning": reasoning,
+                "adjudication_note": adjudication_note or None,
                 "searched": r.get("searched") or [],
                 "source_partition": f"lane_a_{WAVE}_20260702",
                 "source_unit": r["_unit"],
@@ -216,6 +294,10 @@ def main():
             "wave": WAVE,
             "policy": "T4/T5 require Opus CONFIRM (fail-closed); pe_backed only on T4/T5; "
                       "R4 networks >=10 routed to triage for one-network-one-decision",
+            "verdict_files": VERDICT_FILES,
+            "verdict_stats": dict(verdict_stats),
+            "adjudication_rollup": ADJUDICATION_ROLLUP,
+            "adjudication_summary": adjudication_summary,
             "stats": dict(stats),
             "tier_tally": dict(tally),
         },
