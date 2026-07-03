@@ -357,3 +357,74 @@ missing units run live). New task IDs: relaunch wnx7tcqw0 / wave3 wme4f2x05 / wa
 (run IDs unchanged: wf_a79097d5-2c2 / wf_facf67a9-304 / wf_a8ac7ebd-e28). Journals for THIS
 resume are under session dir 4d259360… again. On completion: harvest inline verdicts →
 _verdicts_wave1.json, §6c gates, merge, PM review (§6e items), n=20 audit, consolidate, sync.
+
+### §6g PAUSE 2 + UNPAUSE 2 (2026-07-03) — third launch, same recipe
+
+PAUSE 2 (user at ~2% usage): TaskStop'd wnx7tcqw0/wme4f2x05/wmwhcpbu1; everything banked in
+commit `fe18e64` (185/218 on disk — unit 115 landed during the §6f window). Escalation-ladder
+plan committed `454c9e5` (`PLAN_HIDDEN_CORPORATE_ESCALATION_20260703.md`). During the pause the
+ANALYST committed independently: `003b878` (deal-flow scraper hardening), `d2777ec` (deal
+cleanup + sync_to_supabase changes — PM review required), `4e344c6` (true-independent hardening
+screen = Rung 1 artifacts: `scrapers/screen_true_independent_hardening.py`,
+`hidden_control_screen_20260703.json`, REVIEW + HANDOFF docs), `3c76c73` (DA audit defaults).
+None touch `_lane_a_20260702/` unit/result files, the merge gate, or consolidate_census.
+
+UNPAUSE 2 (user signal "please gracefully un-pause and continue"): pre-resume checks — 185/218
+files on disk; missing 33 units: 117–128, 162–173, 209, 210, 212–218; model env unclamped
+(opus-4-8/sonnet-5, no subagent pin). All three runs resumed with resumeFromRunId + identical
+args. New task IDs: relaunch **w04zw4vq6** / wave3 **wohhaw4ea** / wave4 **wtnzpeec6**
+(run IDs unchanged: wf_a79097d5-2c2 / wf_facf67a9-304 / wf_a8ac7ebd-e28). Journals under
+session dir 4d259360…. On completion: same §6f chain (harvest inline verdicts → gates → merge →
+PM review → n=20 audit → consolidate → sync), PLUS wave 5 build (~23 units, ~362 rows, §6e).
+
+### §6h TRUE-INDEPENDENT HARDENING GATES ADOPTED (2026-07-03, PM ruling)
+
+PM reviewed the analyst's pause-window work and ADOPTS it as BINDING, layered on the §6c gates
+(evidence: `RESEARCH_HOME/REVIEW_TRUE_INDEPENDENT_HARDENING_20260703.md` +
+`RESEARCH_HOME/HANDOFF_TRUE_INDEPENDENT_HARDENING_RUN_20260703.md`, commits 003b878/d2777ec/
+4e344c6/3c76c73; deals leg verified — Supabase = SQLite 2,827 by id, 0 ghosts, dry-run read-back
+2026-07-03):
+1. **Core rule: T1 is a POSITIVE, current, corroborated ownership claim — not the absence of
+   DSO evidence.** Directory-only T1/T2 rows are never high-confidence.
+2. **New pre-merge gate:** after the fleet drains, RE-RUN
+   `python3 scrapers/screen_true_independent_hardening.py` over all 218 units; NO consolidation
+   until every `block_before_merge` row (236 at the 185-unit snapshot) is accepted, corrected,
+   or moved to a hold bucket. Review order: db_corporate_conflict → t1_provider_count_gt1 /
+   t1_group_entity_classification → ao_nonclinical_exec_title → stacked network signals.
+3. **Separate T1/T2 audit** (in addition to the §6c n=20 DSO-stratified audit): include all
+   hard-signal blockers + sample ≥20 from review_high + ≥20 directory-only review_medium.
+4. T1 rows with provider_count > 1 default to correction→T2 or hold unless the extra NPIs are
+   proven stale/non-practicing.
+5. Persist the (reduced) signal vector at consolidation so the UI can show WHY a row is T1
+   (feeds UI redesign Phase 0 data contract).
+6. A `db_corporate_conflict` is a blocker because the evidence is CONTRADICTORY, not because
+   the detector label wins — adjudicate row-by-row; fail-closed to hold.
+Doc drift noted for next docs pass: CLAUDE.md deals counts are stale (now 2,827: gdn 2,472 /
+pesp 329 / beckers 23 / beckers+gdn 3; pitchbook source deleted entirely — all 10 rows were
+source-less+target-less; cleanup evidence `data/dso_research/deal_quality_cleanup_20260703.json`,
+pre-write backup `data/backups/dental_pe_tracker_pre_deal_quality_cleanup_20260703.db`).
+
+## §6i — FLEET FULLY DRAINED (2026-07-03, third flight complete)
+All 3 final workflows completed with 0 unit failures (w04zw4vq6: 43u; wtnzpeec6: 45u; wohhaw4ea: 45u).
+**218/218 result files on disk = 3,486 rows, 0 duplicate location_ids.** Final fleet-wide totals:
+- Tiers: T1 true_independent 1,588 / T2 single_loc_group 938 / T3 dentist_multi 336 /
+  T4 stealth_dso 24 / T5 branded_dso 74 / T6 institutional 49 / undetermined 477
+  (classified 3,009; not-T1 among classified = 1,421 = 47.2%; T4+T5 = 98 = 3.3%; pe_backed 72).
+- Confidence: high 1,937 / medium 1,204 / low 345.
+- Inline verdict coverage on the three final flights: 64/64 DSO claims verified
+  (45 CONFIRM, 18 DOWNGRADE_T3/refute, 1 INSUFFICIENT — the "Kang Dental" row in unit_131,
+  lid 5404b210ff43f176: address is genuinely Dental Dreams HQ but the provider linkage was
+  fabricated (cited NPI belongs to an Indiana provider); MUST go to hold/undetermined, not T5).
+- Verdict downgrades cluster on dentist-owned networks misfiled as stealth_dso: Webster Dental
+  Care (x2), Family Dental Care/Alemis, Dental 360/Brite, Mirza DDS, Umbrella, Dental Store/Old
+  Orchard (x3), Blue Coral (specialist, excluded from GP floor anyway), Glen Ellyn FDC (Elite
+  attribution contradicted). These become T3 at merge — the two-concept split (DECISION_TRUE_
+  INDEPENDENT_HEADLINE_20260703.md) keeps them out of the DSO bucket without calling them T1.
+- §6h screen re-run over FULL set (was 185 units, now 218): 2,862 screened → block_before_merge
+  277 / review_high 325 / review_medium 860 / sample_low 975 / clean 425. Output:
+  `_lane_a_20260702/hidden_control_screen_20260703.json` (regenerated).
+**Next (in order, per §6h gates):** (1) adjudicate all 277 block_before_merge rows (accept /
+correct / hold) — files-only artifacts; (2) apply verifier verdicts (DOWNGRADE_T3 etc.) in the
+merge script; (3) n=20+ T1/T2 audit incl. directory-only + structural-signal rows; (4) only then
+merge→consolidate(validate-only→allow-db-write)→dual-leg sync with read-back. No DB writes before
+(1)–(3) complete.

@@ -1,0 +1,333 @@
+{
+  "unit_id": "laneA_173",
+  "classifications": [
+    {
+      "location_id": "b6022d945f9a2aa9",
+      "practice_name": "DRS BOYER & SCHEIVE D D S P C",
+      "zip": "60108",
+      "assigned_tier": "dentist_multi",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.boyerscheivedds.com/",
+        "https://www.boyerscheivedds.com/about"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "brand:boyer_scheive_dds",
+      "reasoning": "Practice's own website confirms Drs. Boyer and Scheive (oral/maxillofacial surgery + general dentistry) have operated since 1978 with a 3-office dentist-owned group spanning Bloomingdale, Wheaton, and Glendale Heights, IL. No corporate parent or management-company language found. The 11-provider count reflects this multi-office group total, not a single-site buildout. AO 'Donna Ryan' is consistent with an office administrator, not an ownership signal.",
+      "searched": ["\"Boyer\" \"Scheive\" dental Bloomingdale IL dentist"],
+      "intel": {
+        "website_url": "https://www.boyerscheivedds.com/",
+        "website_note": "Multi-office oral & maxillofacial surgery / general dental group (Bloomingdale, Wheaton, Glendale Heights), practicing since 1978.",
+        "services": ["dental implants", "wisdom teeth removal", "tooth extractions", "TMJ treatment", "bone grafting", "sedation dentistry"],
+        "sources": ["https://www.boyerscheivedds.com/services", "https://www.boyerscheivedds.com/about"]
+      }
+    },
+    {
+      "location_id": "2a1a165494a1b8b1",
+      "practice_name": "WILLIAM D HANCOCK JR DDS SC",
+      "zip": "60108",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.healthgrades.com/dentist/dr-william-hancock-245j4",
+        "https://www.bbb.org/us/il/bloomingdale/profile/dentist/hancock-jr-william-dds-0654-88500334"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Dr. William Hancock Jr, DDS practices general dentistry at 109 Fairfield Way Ste 204, Bloomingdale (BBB shows business started 1985). AO name exactly matches the practicing dentist; no DSO or corporate signals across multiple independent directory listings. Entity classification (small_group, 2 providers) plus single address indicates a small dentist-owned group at one location.",
+      "searched": ["William Hancock DDS Bloomingdale IL dentist 109 Fairfield"],
+      "intel": {
+        "website_note": "General dentistry: cleanings, fillings, crowns, root canals, implants. Ratings 4.3-5.0 stars across Healthgrades/WebMD/Birdeye/BBB.",
+        "sources": ["https://www.healthgrades.com/dentist/dr-william-hancock-245j4"]
+      }
+    },
+    {
+      "location_id": "105664f32027f691",
+      "practice_name": "BLOOMINGDALE FAMILY DENTAL LTD",
+      "zip": "60108",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/bloomingdale-family-dental-bloomingdale"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "closure_suspect: Yelp explicitly lists 'BLOOMINGDALE FAMILY DENTAL - CLOSED' at 135 1st St, Bloomingdale (listing updated April 2026). No current active website or independent confirmation of operation found. Declining to assign a tier per the no-classify-on-suspected-closure rule.",
+      "searched": ["\"Bloomingdale Family Dental\" 135 First St Illinois closed Yelp"]
+    },
+    {
+      "location_id": "faa4a979653a24f1",
+      "practice_name": "MY DENTIST FAMILY, LTD.",
+      "zip": "60108",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.healthgrades.com/dentist/dr-adam-szatkowski-2n8rn",
+        "https://www.sharecare.com/doctor/dr-adam-c-szatkowski"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:SZATKOWSKI_ADAM",
+      "reasoning": "MY Dentist Family LTD at 76 Stratford Dr is a two-generation family dental practice (Dr. Frank Szatkowski and son Dr. Adam Szatkowski) serving Bloomingdale since 1972, one location. AO 'Adam Szatkowski' matches the practicing dentist. No DSO/corporate signal found; the large_group provider count (5) reflects a sizeable single-site family-owned practice, not a chain.",
+      "searched": ["\"My Dentist Family\" Bloomingdale IL Szatkowski dentist 76 Stratford"],
+      "intel": {
+        "website_note": "Multi-generation family practice serving Bloomingdale since 1972; 4.7/5 rating from 99 Healthgrades reviews.",
+        "google_rating": 4.7,
+        "sources": ["https://www.healthgrades.com/dentist/dr-adam-szatkowski-2n8rn"]
+      }
+    },
+    {
+      "location_id": "14e5f2152e36cdd6",
+      "practice_name": "Cincione Dental",
+      "zip": "60108",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.doctorsnetwork.com/doctors/dentists/bloomingdale-il-60108/invite-frank-cincione-dds-12153",
+        "https://www.yelp.com/biz/frank-a-cincione-dds-ms-bloomingdale-3"
+      ],
+      "evidence_artifacts": ["phone_match: (630) 924-0800 confirmed across sources though listed street address (125 S Bloomingdale Rd Ste 9) differs from NPI address (109 Franklin St) — likely NPPES address staleness, not ownership change"],
+      "confidence": "medium",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Solo-owner practice of Dr. Frank A. Cincione, DDS (family-owned orthodontics/general dentistry). Phone (630) 924-0800 matches the NPI record exactly across multiple sources, though those sources list a slightly different suite address than NPPES, suggesting stale address data rather than a change of ownership. No DSO signal found.",
+      "searched": ["Cincione Dental Bloomingdale IL dentist"]
+    },
+    {
+      "location_id": "6661bf73e19bc9e9",
+      "practice_name": "Khalid, Carl M DDS",
+      "zip": "60108",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.boardofdentistry.net/khalid-c-m-dds-associates-do65533",
+        "https://www.yelp.com/biz/carl-m-khalid-dds-bloomingdale"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Khalid C M DDS & Associates confirmed at 201 East Army Trail Road Suite 302, Bloomingdale (exact address + phone 630-980-5388 match). Solo general/family dental practice, no corporate or DSO branding found in any directory listing.",
+      "searched": ["Carl Khalid DDS Bloomingdale IL 201 E Army Trail dentist"]
+    },
+    {
+      "location_id": "06559964fbcc65b8",
+      "practice_name": "176 DENTAL ASSOCIATES LTD",
+      "zip": "60108",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.176dental.com/"
+      ],
+      "evidence_artifacts": ["ctx.parent_company value 'EVENLY ORTHODONTICS DUPONT' disregarded as a known Evenly Technologies parent_iusa=000000000 placeholder artifact (per prior CLAUDE.md-documented false-corporate-demotion pattern), not corroborated by any web evidence"],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "ao:MATUSTIK_JOSEPH",
+      "reasoning": "176dental.com identifies the practice as owned/run by Drs. Dominic Colletti and Joseph Matustik, matching AO Joseph Matustik, with no mention of any corporate parent. The ctx parent_company field ('Evenly Orthodontics Dupont') is a documented Evenly Technologies data-placeholder artifact and is disregarded per the ctx-is-not-evidence rule. Two-dentist group, single location.",
+      "searched": ["Leonidas Ragas DDS Bloomingdale IL 360 Schick Rd dentist (176dental.com surfaced as a corroborating result)"]
+    },
+    {
+      "location_id": "62b2122498f6f69f",
+      "practice_name": "CHIC DENTAL PC",
+      "zip": "60108",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.patientconnect365.com/Dentists/Illinois/Bloomingdale/60108/Chic_Dental",
+        "https://www.healthgrades.com/dentist/dr-sandra-chic-2g3cv"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Dr. Sandra M. Chic, DDS (Loyola 1993 grad) owns and practices at 120 Ridge Ave Ste 20, Bloomingdale, matching AO 'Sandra Chic' and the practice name exactly. Described as a solo neighborhood practice built on referrals; no DSO/corporate signal found.",
+      "searched": ["Chic Dental PC Bloomingdale IL \"Sandra Chic\" dentist 120 Ridge"],
+      "intel": {
+        "website_note": "General dentistry, orthodontics/Invisalign, implants; solo practice since 1993, referral-based neighborhood practice.",
+        "sources": ["https://www.patientconnect365.com/Dentists/Illinois/Bloomingdale/60108/Chic_Dental"]
+      }
+    },
+    {
+      "location_id": "038af74da5a2998d",
+      "practice_name": "Leonidas Joseph Ragas DDS",
+      "zip": "60108",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://leonidasragas.dr-leonardo.com/",
+        "https://dentalcenter.com/jody-weller/bloomingdale/illinois/60108"
+      ],
+      "evidence_artifacts": ["identity_mismatch: current directory listings for the exact suite (360 W Schick Rd Ste 17, Bloomingdale) show Dr. Jody Weller and Dr. Usamah Khan practicing there under a different phone number (630-873-9058) than the NPI record (708-805-6565); Dr. Ragas's confirmed practice locations are Itasca, IL + one other, not clearly this suite"],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "closure_suspect: web evidence conflicts on who currently practices at this exact suite. Dr. Ragas's primary confirmed location is Itasca, IL; the Bloomingdale suite at this address now appears associated with different dentists (Weller/Khan) under a different phone number, suggesting the NPI registration is stale or the location changed hands. Declining to guess ownership given the identity conflict.",
+      "searched": [
+        "Leonidas Ragas DDS Bloomingdale IL 360 Schick Rd dentist",
+        "\"360\" \"Schick\" Bloomingdale IL dentist dental office"
+      ]
+    },
+    {
+      "location_id": "008a1ea5f61d59e5",
+      "practice_name": "Sinopoli Dental",
+      "zip": "60108",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.healthgrades.com/dentist/dr-michael-sinopoli-x5y8x",
+        "https://www.yelp.com/biz/sinopoli-michael-j-dds-bloomingdale"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Dr. Michael J. Sinopoli, DDS practices solo general dentistry at 109 Fairfield Way Ste 203, Bloomingdale (exact address + phone 630-894-0016 match across multiple independent directories). No DSO/corporate signal found.",
+      "searched": ["Sinopoli Dental Bloomingdale IL dentist 109 Fairfield"]
+    },
+    {
+      "location_id": "3d0e7f3e036f5842",
+      "practice_name": "DENTIST IN BLOOMINGDALE LLC",
+      "zip": "60108",
+      "assigned_tier": "branded_dso",
+      "pe_backed": true,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.bbb.org/us/il/bloomingdale/profile/dentist/dentalworks-0654-88365714",
+        "https://www.toprankdental.com/dentalworks-21-general-dentistry-366-w-army-trail-rd-ste-310a-1",
+        "https://www.sonrava.com/brands",
+        "https://www.sonrava.com/news/sonrava-health-completesacquisition-of-mid-atlantic-dental-partners"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": "brand:sonrava_health",
+      "reasoning": "This exact suite (366 W Army Trail Rd #310A, Bloomingdale, phone 630-295-8203) operated for years as 'DentalWorks Bloomingdale' per BBB and multiple dental directories. DentalWorks is a confirmed Sonrava Health brand (Sonrava's 2022 acquisition of Mid-Atlantic Dental Partners brought the DentalWorks network under Sonrava, per sonrava.com). The storefront has since quietly rebranded to the generic name 'Dentist in Bloomingdale' at the same address/suite/phone — the practice's own site shows no dentist names or DSO disclosure, consistent with a DSO-owned location operating under a de-branded local name. Sonrava Health is PE-backed (New Mountain Capital, corroborated by ctx.brand_hint.pe_sponsor).",
+      "searched": [
+        "\"Western Dental\" Bloomingdale IL \"366\" Army Trail",
+        "\"Dentist In Bloomingdale\" LLC Sonrava OR \"Western Dental\" 630-295-8203",
+        "DentalWorks brand parent company dental service organization"
+      ]
+    },
+    {
+      "location_id": "58392c12babdfc6e",
+      "practice_name": "Cameo Dentistry",
+      "zip": "60108",
+      "assigned_tier": "single_loc_group",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://cameodentistry.com/",
+        "https://www.yelp.com/biz/cameo-dentistry-bloomingdale-2"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Cameo Dentistry at 70 Stratford Dr is a dentist-owned practice (Dr. David Ho) with 3 providers at one location, serving Bloomingdale/Streamwood. No DSO or corporate parent found; EIN present but with no cross-ZIP corroboration of a chain.",
+      "searched": ["Cameo Dentistry Bloomingdale IL dentist 70 Stratford owner"],
+      "intel": {
+        "website_url": "https://cameodentistry.com/",
+        "website_note": "Family dental office, restorations/whitening/cleaning/prevention/implants, 20+ years experience.",
+        "sources": ["https://cameodentistry.com/", "https://www.yelp.com/biz/cameo-dentistry-bloomingdale-2"]
+      }
+    },
+    {
+      "location_id": "96c9c8a18c7f8ad2",
+      "practice_name": "RAJUL PATEL PC",
+      "zip": "60108",
+      "assigned_tier": "true_independent",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.tebra.com/care/provider/rajul-patel-dds-1912163106",
+        "https://www.healthgrades.com/dentist/dr-rajul-patel-2tyjp"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "high",
+      "status": "classified",
+      "network_id": null,
+      "reasoning": "Dr. Rajul Patel, DDS operates solo as 'Pure Dental Spa' at 107 W Lake St Ste 101, Bloomingdale (exact address + phone 630-307-3133 match). NYU dental grad, no DSO/corporate signal found across directories.",
+      "searched": ["Rajul Patel DDS Bloomingdale IL 107 W Lake St dentist"],
+      "intel": {
+        "website_note": "Branded 'Pure Dental Spa'; preventative-dentistry focus; 206 reviews at 4.75/5; multilingual (English/Spanish/Hindi/Gujarati); telehealth offered.",
+        "google_rating": 4.75,
+        "review_count": 206,
+        "sources": ["https://www.tebra.com/care/provider/rajul-patel-dds-1912163106"]
+      }
+    },
+    {
+      "location_id": "0f917daa7d21b189",
+      "practice_name": "BLOOMINGDALE DENTAL, PLLC",
+      "zip": "60108",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "ao_cluster",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/blooming-smiles-dental-studio-bloomingdale",
+        "https://www.zocdoc.com/dentist/jubrail-jay-sweis-dds-75443"
+      ],
+      "evidence_artifacts": ["ao_cluster: AO Jubrail Sweis is Administrator of 'Everyone's Family Dental' and associated with 'Advocate Dental of Palatine', with confirmed practice locations spanning McHenry, Utica, St. Charles, Danville, Dixon, Palatine, Crystal Lake, Manhattan, multiple Chicago sites, and Normal, IL — 10+ distinct towns", "storefront_mismatch: the actual current signage at 156 E Lake St is 'Blooming Smiles Dental Studio' under Dr. Gabriela Duraes, not a Sweis-named brand"],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "R4_protected_network:Sweis_dental_group. AO Jubrail Sweis's confirmed multi-location footprint spans well over 10 IL towns/cities under multiple different trade names (Everyone's Family Dental, Advocate Dental of Palatine, and likely others), a classic non-dentist-controller / management-company pattern, but per the 10+-location protected-network rule this must not be classified here. The storefront itself operates as 'Blooming Smiles Dental Studio' under a different named dentist, with no documentary URL tying that address specifically to a DSO brand.",
+      "searched": [
+        "\"Bloomingdale Dental\" 156 E Lake St Sweis dentist Illinois locations",
+        "Jubrail Sweis dentist Illinois dental group locations DSO"
+      ]
+    },
+    {
+      "location_id": "9379ac3a7cffc3ff",
+      "practice_name": "DA VINCI DENTAL LTD",
+      "zip": "60108",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://www.yelp.com/biz/da-vinci-dental-bloomingdale",
+        "https://drojjeh.com/"
+      ],
+      "evidence_artifacts": [],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "closure_suspect: Yelp explicitly marks 'DA VINCI DENTAL - CLOSED' at 1 Tiffany Pointe, Bloomingdale. Dr. Omar Ojjeh (matching AO) now presents 'Da Vinci Dental' as a Naperville, IL practice on his own site, suggesting the Bloomingdale location relocated/closed. Declining to assign a tier given the closure signal, despite provider_count=3 in the source record.",
+      "searched": ["Da Vinci Dental Ltd Bloomingdale IL \"1 Tiffany\" Ojjeh"]
+    },
+    {
+      "location_id": "35defb5fc99e0117",
+      "practice_name": "DISTINCTIVE DENTAL PC",
+      "zip": "60108",
+      "assigned_tier": "undetermined",
+      "pe_backed": false,
+      "evidence_basis": "web_verified",
+      "evidence_urls": [
+        "https://distinctivedentalbloomingdale.com/",
+        "https://www.yelp.com/biz/distinctive-dental-care-bloomingdale-2"
+      ],
+      "evidence_artifacts": ["provider_count=0 in source record corroborates no active provider currently at 322 Erie Cir"],
+      "confidence": "low",
+      "status": "undetermined",
+      "network_id": null,
+      "reasoning": "closure_suspect: provider_count is 0 at 322 Erie Cir. Web evidence shows 'Distinctive Dental Care of Bloomingdale' (Dr. Javed Bhojani, matching AO) has transitioned to new ownership under Dr. Husna Khan and rebranded as 'Serenity Dental of Bloomingdale,' operating instead at 1 Tiffany Pointe #205 (same phone, 630-359-0105). The 322 Erie Cir address itself is not corroborated as a current active location. Declining to classify given the ownership transition and zero active providers at the record's address.",
+      "searched": ["Distinctive Dental \"322 Erie\" Bloomingdale IL closed OR moved OR \"for lease\""]
+    }
+  ]
+}
