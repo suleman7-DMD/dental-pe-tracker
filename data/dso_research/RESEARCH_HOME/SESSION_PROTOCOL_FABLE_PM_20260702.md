@@ -162,3 +162,27 @@ memory; chat summaries are secondary.
 - Still open (user-gated, review-only): scope-correction queue (19 DA_/DIR_ + Shorewood),
   duplicate adjudication (125 explicit row actions), closure-queue NPI-bridging improvement,
   Archer rank-83 resolution (research in flight → folds via `--allow-rereview`).
+
+### 2026-07-02 (later) — Fable PM sprint 2: Lane A waves + intel capture
+- **Lane A wave fleet running** (post-consolidation, next ~3,488 practices in 218 unit files at
+  `_lane_a_20260702/unit_*.json`): Wave 1 = units 001–064 (run `wf_429ac485-f85`), Wave 2 =
+  units 065–128 (run `wf_9245198a-80a`), both on the v1 census-only script; Sonnet 5 research
+  agents + Opus 4.8 adversarial verify on every T4/T5 claim (models transcript-verified after
+  the `~/.claude/settings.json` subagent-pin fix + restart). Results land as
+  `result_unit_*.json`; merge gate = `_merge_lane_a_results_20260702.py` (fail-closed; NOTE
+  `WAVE="wave1"` hardcode — combine ALL waves' verdicts into `_verdicts_wave1.json` or
+  parameterize before merging multi-wave).
+- **Intel capture worked in (user directive)**: waves 3+4 (units 129–173 / 174–218, launch as
+  waves 1/2 complete) use the v2 script `_wf_lane_a_census_v2_intel_20260702.js` — census
+  contract unchanged + optional per-practice `intel` object (opportunistic, no extra searches,
+  per-field source URLs). Converter `_merge_lane_a_intel_20260702.py` lands validated blocks in
+  `practice_intel` (primary_npi key, verification_quality=partial,
+  research_method=lane_a_census_opportunistic, never clobbers existing rows; Supabase leg =
+  `dossier_batch/upsert_practice_intel.py`). Committed `a95656f`. Unlocks Launchpad
+  SIGNALS_REQUIRING_INTEL coverage.
+- **PLANNED (user-approved, deferred): intel backfill for waves 1+2 (~2,048 practices) on an
+  upgraded dedicated search** → full plan in
+  `RESEARCH_HOME/PLAN_INTEL_BACKFILL_WAVES_1_2_20260702.md` (Option A: v3 intel-only workflow
+  wave reusing the v2 intel contract + existing converter, no API credits; Option B:
+  dossier-batch pipeline ~$16 for dossier-grade rows; decide using waves 3+4 `n_intel` yield).
+  Do NOT re-run census research on units 001–128 for this.
