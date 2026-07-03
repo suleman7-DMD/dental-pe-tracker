@@ -304,3 +304,15 @@ as BINDING pre-merge gates:
    suggests a different operator → fail closed to hold.
 6. Opportunistic intel stays labeled `lane_a_census_opportunistic` and is NEVER ownership
    evidence unless independently source-backed.
+
+### §6d PAUSE SNAPSHOT (2026-07-02, user at ~93% usage — graceful pause executed)
+
+- TaskStop'd all 3 research workflows (wmi4a38vs / wrk5dujmd / w87b116uy). Verdict recovery
+  already complete. **184/218 units on disk, all committed.**
+- Missing 34 units: 115 117-128 162-173 209 210 212-218.
+- RESUME: `Workflow({scriptPath: <repo v2 script>, resumeFromRunId, args: same units})` for
+  `wf_a79097d5-2c2` (relaunch), `wf_facf67a9-304` (w3), `wf_a8ac7ebd-e28` (w4) — args in §6
+  table; completed agents replay cached. Then harvest inline verdicts from return payloads +
+  journals (BOTH session dirs) into `_verdicts_wave1.json`; §6c gate 1 assert before merge.
+- Verdicts file at pause: 35 entries; landed T4/T5 claims ~77+ → coverage assert WILL fail
+  until inline verdicts harvested post-resume. That is the fail-closed design, not a bug.
