@@ -29,6 +29,14 @@
 > `data/backups/dental_pe_tracker_pre_census_write_20260702.db` (pre-write md5 `e2a8...422`).
 > The freeze-check lines in the older notes below are historical.
 
+> 🛟 **2026-07-02 (late) — LANE A CENSUS FLEET IN FLIGHT (waves 1–4, Sonnet 5 research + Opus 4.8
+> verify, ~3,488 practices) + OPPORTUNISTIC INTEL CAPTURE.** If a session died/crashed/rate-limited
+> mid-fleet, the complete resume runbook (fleet map, run IDs, verdict-recovery from session
+> journals, relaunch-missing-units procedure, merge→consolidate→sync chain, model-unclamp check)
+> is **`data/dso_research/RESEARCH_HOME/MASTER_RESUME_LANE_A_FLEET_20260702.md`** — read it before
+> touching any Lane A artifact. Result files on disk are ground truth; never re-research a unit
+> that has one.
+
 > **2026-07-02 PM REVIEW HANDOFF - READ FIRST FOR THE OWNERSHIP CENSUS.** Current cleaned handoff:
 > `data/dso_research/RESEARCH_HOME/PROJECT_MANAGER_HANDOFF_20260702.md`. It supersedes the older
 > 4-session START_HERE docs where status or hashes conflict. ~~Current local census freeze check:

@@ -180,6 +180,12 @@ memory; chat summaries are secondary.
   research_method=lane_a_census_opportunistic, never clobbers existing rows; Supabase leg =
   `dossier_batch/upsert_practice_intel.py`). Committed `a95656f`. Unlocks Launchpad
   SIGNALS_REQUIRING_INTEL coverage.
+- **🛟 DISASTER-RECOVERY RUNBOOK SHIPPED (user-directed full backup under rate-limit pressure):**
+  `RESEARCH_HOME/MASTER_RESUME_LANE_A_FLEET_20260702.md` — fleet map + run IDs, journal paths for
+  verdict recovery, relaunch-missing-units procedure (v2 script for all relaunches), normal
+  merge→consolidate→sync chain, rate-limit protocol, model-unclamp check, reference index. v1
+  script archived into repo as `_wf_lane_a_census_v1_20260702.js`. Fleet at authoring: 37/128
+  result files (wave 1: 001–023; wave 2: 065–078).
 - **PLANNED (user-approved, deferred): intel backfill for waves 1+2 (~2,048 practices) on an
   upgraded dedicated search** → full plan in
   `RESEARCH_HOME/PLAN_INTEL_BACKFILL_WAVES_1_2_20260702.md` (Option A: v3 intel-only workflow
