@@ -264,9 +264,6 @@ BAD_ENTITY_PATTERNS = [
     r'\btop \d+\b',
 ]
 
-TARGET_REQUIRED_TYPES = {"add-on", "partnership", "buyout"}
-
-
 # ── Helpers ─────────────────────────────────────────────────────────────────
 
 
@@ -304,9 +301,8 @@ def _deal_quality_issue(deal):
         target_issue = _entity_quality_issue(target)
         if target_issue:
             return f"target_{target_issue}"
-    elif deal.get("deal_type") in TARGET_REQUIRED_TYPES:
-        # If the block says this was an acquisition/partnership/buyout but the
-        # target was not parsed, do not create a vague platform-only row.
+    else:
+        # Do not create vague platform-only rows in the primary deal feed.
         return "missing_target"
 
     return None

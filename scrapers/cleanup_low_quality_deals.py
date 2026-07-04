@@ -3,10 +3,12 @@
 
 This is intentionally conservative. It deletes rows that should not be user
 visible because the app cannot verify them from a source URL, or because the
-parser produced a placeholder platform such as "Unknown". It does not delete
-source-backed sparse rows just because target_name is blank; those are lower
-fidelity archive rows and should be replaced by better extraction, not wiped
-blindly.
+parser produced a placeholder platform such as "Unknown".
+
+By default it preserves source-backed sparse rows whose target_name is blank.
+Use --strict-targets for the live deal-feed policy: primary deal-flow rows must
+identify the target practice/platform being acquired, recapitalized, partnered,
+or opened. Targetless source-backed paragraphs are research leads, not deals.
 """
 
 from __future__ import annotations
@@ -45,7 +47,7 @@ def _blank(value) -> bool:
     return value is None or str(value).strip() == ""
 
 
-def _row_reasons(row: sqlite3.Row) -> list[str]:
+def _row_reasons(row: sqlite3.Row, *, strict_targets: bool = False) -> list[str]:
     reasons: list[str] = []
     platform = (row["platform_company"] or "").strip().lower()
     source = (row["source"] or "").strip().lower()
@@ -58,6 +60,9 @@ def _row_reasons(row: sqlite3.Row) -> list[str]:
 
     if source == "pitchbook" and _blank(row["source_url"]) and _blank(row["target_name"]):
         reasons.append("pitchbook_no_source_no_target")
+
+    if strict_targets and _blank(row["target_name"]):
+        reasons.append("missing_target_name")
 
     return reasons
 
@@ -84,7 +89,11 @@ def _summarize(conn: sqlite3.Connection) -> dict:
     }
 
 
-def collect_candidates(conn: sqlite3.Connection) -> tuple[list[dict], collections.Counter]:
+def collect_candidates(
+    conn: sqlite3.Connection,
+    *,
+    strict_targets: bool = False,
+) -> tuple[list[dict], collections.Counter]:
     candidates: list[dict] = []
     reason_counts: collections.Counter = collections.Counter()
 
@@ -97,7 +106,7 @@ def collect_candidates(conn: sqlite3.Connection) -> tuple[list[dict], collection
         ORDER BY deal_date DESC, id ASC
         """
     ):
-        reasons = _row_reasons(row)
+        reasons = _row_reasons(row, strict_targets=strict_targets)
         if not reasons:
             continue
         reason_counts.update(reasons)
@@ -114,6 +123,11 @@ def main() -> int:
     parser.add_argument("--evidence", default=str(EVIDENCE_PATH), help="JSON evidence output path")
     parser.add_argument("--apply", action="store_true", help="Actually delete rows. Omit for dry-run.")
     parser.add_argument("--no-backup", action="store_true", help="Skip DB backup before --apply")
+    parser.add_argument(
+        "--strict-targets",
+        action="store_true",
+        help="Also delete rows whose target_name is blank. Use for the primary live deal feed.",
+    )
     args = parser.parse_args()
 
     db_path = Path(args.db)
@@ -123,16 +137,19 @@ def main() -> int:
 
     start_time = log_scrape_start("cleanup_low_quality_deals")
     before = _summarize(conn)
-    candidates, reason_counts = collect_candidates(conn)
+    candidates, reason_counts = collect_candidates(conn, strict_targets=args.strict_targets)
 
     report = {
         "_meta": {
             "generated_at": datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z"),
             "script": "scrapers/cleanup_low_quality_deals.py",
             "mode": "apply" if args.apply else "dry_run",
+            "strict_targets": args.strict_targets,
             "policy": (
                 "Delete structurally unverifiable deal-flow rows only: rows with no "
-                "source_url, placeholder platforms, or source-less/target-less PitchBook imports."
+                "source_url, placeholder platforms, or source-less/target-less PitchBook imports. "
+                "When strict_targets=true, targetless source-backed rows are also deleted from "
+                "the primary deal feed."
             ),
         },
         "before": before,

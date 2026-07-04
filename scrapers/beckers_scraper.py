@@ -1204,8 +1204,8 @@ def parse_article(url, soup, pub_date):
         log.warning("PARSE FAIL — no platform/sponsor extracted from: %s", url)
         return None
 
-    # Skip if we only have a platform but it's "Unknown" from heuristic
-    if not platform and not pe_sponsor:
+    if not target:
+        log.warning("PARSE FAIL — no named target extracted from: %s", url)
         return None
 
     return {
@@ -1254,11 +1254,8 @@ def parse_title_fallback_article(url, title, pub_date):
         log.warning("TITLE FALLBACK DROP — no platform/sponsor: %s", title)
         return None
 
-    # For add-on/partnership articles, a missing target is acceptable only when
-    # the title names a state/practice count. The row is then explicitly marked
-    # as a title-only source-check candidate in notes.
-    if not target and deal_type in {"add-on", "partnership", "buyout"} and not (state or num_locations):
-        log.warning("TITLE FALLBACK DROP — missing target/state/count: %s", title)
+    if not target:
+        log.warning("TITLE FALLBACK DROP — missing named target: %s", title)
         return None
 
     return {

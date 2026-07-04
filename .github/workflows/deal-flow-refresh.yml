@@ -81,7 +81,7 @@ jobs:
           echo "Deal refresh mode=${{ inputs.mode }} since=$SINCE dry_run=${{ inputs.dry_run }}"
 
       - name: Compile scraper modules
-        run: python3 -m py_compile scrapers/gdn_scraper.py scrapers/beckers_scraper.py scrapers/pesp_scraper.py scrapers/sync_to_supabase.py
+        run: python3 -m py_compile scrapers/gdn_scraper.py scrapers/beckers_scraper.py scrapers/pesp_scraper.py scrapers/cleanup_low_quality_deals.py scrapers/reconcile_live_deal_quality.py scrapers/sync_to_supabase.py
 
       - name: Pre-run deal summary
         run: |
@@ -124,7 +124,7 @@ jobs:
 
       - name: Clean structurally unverifiable deal rows
         if: inputs.dry_run == 'false'
-        run: python3 scrapers/cleanup_low_quality_deals.py --apply --no-backup
+        run: python3 scrapers/cleanup_low_quality_deals.py --apply --no-backup --strict-targets
 
       - name: Deal quality audit
         run: |
@@ -149,11 +149,17 @@ jobs:
           print('recent_blank_target_rows', blank_target)
           if bad:
               raise SystemExit('Bad platform rows detected in refreshed window')
+          if blank_target:
+              raise SystemExit('Blank target rows detected in refreshed window')
           PY
 
       - name: Sync deals to Supabase
         if: inputs.dry_run == 'false' && (env.SUPABASE_POOLER_URL != '' || env.SUPABASE_DATABASE_URL != '')
         run: python3 scrapers/sync_to_supabase.py --tables deals
+
+      - name: Reconcile live deal quality
+        if: inputs.dry_run == 'false' && (env.SUPABASE_POOLER_URL != '' || env.SUPABASE_DATABASE_URL != '')
+        run: python3 scrapers/reconcile_live_deal_quality.py --apply --strict-targets --max-delete 3000
 
       - name: Upload pipeline logs
         if: always()
@@ -163,4 +169,5 @@ jobs:
           path: |
             logs/*.jsonl
             logs/*.log
+            data/dso_research/deal_quality*.json
           if-no-files-found: ignore

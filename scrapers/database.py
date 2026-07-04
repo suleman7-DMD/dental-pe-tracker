@@ -820,6 +820,14 @@ def insert_deal(session: Session, **kwargs) -> bool:
     source = kwargs.get("source")
     target_name = kwargs.get("target_name")
     target_state = kwargs.get("target_state")
+    if target_name is None or str(target_name).strip() == "":
+        log.warning(
+            "Targetless deal rejected: platform=%s source=%s date=%s",
+            platform,
+            source,
+            deal_date,
+        )
+        return False
     if platform and deal_date:
         filters = [
             Deal.platform_company == platform,
