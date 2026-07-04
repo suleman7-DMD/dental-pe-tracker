@@ -29,6 +29,22 @@
 > `data/backups/dental_pe_tracker_pre_census_write_20260702.db` (pre-write md5 `e2a8...422`).
 > The freeze-check lines in the older notes below are historical.
 
+> 🏁 **2026-07-04 — LANE A WAVE 1 LANDED IN LOCAL SQLITE; CENSUS COVERAGE 71.64%; SUPABASE SYNC
+> PENDING USER AUTH.** All 277 §6h blockers carry researched pure-Opus adjudications (28/28
+> batches); merge gate + T1/T2 positive-proof audit re-run; validate-only OK; pre-write backup
+> `data/backups/dental_pe_tracker_pre_census_write_20260704.db` (md5 `ba6f...9bd`); then
+> `consolidate_census.py --session fable_lane_a_wave1_final_20260704 --allow-db-write` updated
+> **2,837 locations** → local totals **3,180/4,439 = 71.64% reviewed** (T1 1,471 / T2 934 /
+> T3 537 / T4 28 / T5 151 / T6 59; pe_backed 118; NPI mirror 6,754). Detector floor UNTOUCHED
+> (268/1,152/4,801). **Live Supabase still has only the 343-row 2026-07-02 write** until the user
+> authorizes both sync legs — exact commands + read-back targets in runbook **§6m**
+> (`RESEARCH_HOME/MASTER_RESUME_LANE_A_FLEET_20260702.md`). Remaining census queue: 91 holds,
+> 649 triage, ~477 undetermined, ~950 never-researched. **Next mission (truth-safe app redesign)
+> is chartered in `RESEARCH_HOME/SESSION_CHARTER_FABLE_TRUTH_APP_20260704.md`** — read it before
+> any frontend work; its §2 hard truth rules are binding (ownership_tier = only ownership truth
+> layer; five headline buckets; "Not Solo Owner-Operated %" labeling law; no hardcoded census
+> numbers; undetermined/holds always visible).
+
 > 🛟 **2026-07-02 (late) — LANE A CENSUS FLEET IN FLIGHT (waves 1–4, Sonnet 5 research + Opus 4.8
 > verify, ~3,488 practices) + OPPORTUNISTIC INTEL CAPTURE.** If a session died/crashed/rate-limited
 > mid-fleet, the complete resume runbook (fleet map, run IDs, verdict-recovery from session
