@@ -84,10 +84,12 @@ flips didn't bump `updated_at`, so the incremental path skipped them — every s
 
 ## 5. Known gaps + coordination rules
 
-- Supabase has NO review-status column: held / undetermined / never-researched are all
-  NULL-tier in Postgres. The frontend contract (`ownership-truth.ts::deriveSourceClass`)
-  already accepts a future `census_review_status` — known gap, not a bug. Don't "fix" it by
-  writing pseudo-tiers.
+- `practice_locations.census_review_status` (`'held'|'undetermined'|NULL`) shipped 2026-07-04
+  (commit `6b029d2`, runbook §6n): Review Desk metadata, NOT a tier — `ownership_tier` always
+  wins; location-level only (no NPI mirror); written ONLY by
+  `scrapers/backfill_census_review_status.py`, never by `consolidate_census.py`; ORM-mapped so
+  full_replace syncs carry it; deliberately NO CI floor (count drops as rows earn tiers).
+  Never write pseudo-tiers to represent review status.
 - Supabase `practices` holds ONLY watched-ZIP rows (13,818). Local-vs-live NPI comparisons
   must scope SQLite to watched ZIPs or they'll be off by out-of-scope rows (1,153 vs 1,152).
 - **Concurrency rule:** never run the weekly full sync, `refresh.sh`, or any practices-table

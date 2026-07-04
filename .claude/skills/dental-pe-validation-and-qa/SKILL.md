@@ -16,7 +16,7 @@ running it; a surprise result is a finding, not noise.
 | Frontend code (`dental-pe-nextjs/`) | `npm run build` then `npx vitest run` | Build completes with 0 type errors; all tests pass — including `classification-primary.test.ts` (F27) and the ownership-truth-law tests |
 | Python pipeline / data | The relevant script with `--validate-only`/`--dry-run` first, then SQL reconciliation (§2) | Predicted counts match actual |
 | Anything touching Supabase | Read-back per the `dental-pe-supabase-sync-and-orm` skill | Live = local, exactly |
-| CI invariants / floors | `python3 scripts/check_data_invariants.py` (needs `SUPABASE_URL` + `SUPABASE_ANON_KEY` env) | FLOOR ≥268, FLOOR_NPI ≥1152, F02=0, F01=0; summary "0 failure(s)" |
+| CI invariants / floors | `python3 scripts/check_data_invariants.py` (needs `SUPABASE_URL` + `SUPABASE_ANON_KEY` env) | FLOOR ≥268, FLOOR_NPI ≥1152, CENSUS ≥3180, CENSUS_NPI ≥6754, F02=0, F01=0; summary "0 failure(s)" |
 | Census artifacts | `consolidate_census.py … --validate-only` | "Validation OK", 0 errors |
 
 `npm run build` after EVERY frontend change is non-negotiable — TypeScript strictness is a

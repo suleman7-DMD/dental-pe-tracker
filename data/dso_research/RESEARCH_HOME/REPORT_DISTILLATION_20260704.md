@@ -77,12 +77,15 @@ the PM/truth-app session, not one of my agents) executed: a **deal-quality clean
 (deals 2,827 → 527; backup `data/backups/dental_pe_tracker_pre_deal_quality_cleanup_20260703.db`),
 a `pre_sunday_refresh_20260704` backup, a **`census_review_status` migration + backfill**
 (new `scrapers/migrate_census_review_status.py`, `backfill_census_review_status.py`,
-`census_review_status_backfill_20260704.json`; uncommitted edits to `database.py` +
+`census_review_status_backfill_20260704.json`; edits to `database.py` +
 `check_data_invariants.py` adding CENSUS/CENSUS_NPI floor guards 3,180/6,754), and a
-`_sync_floor_tables_only` run (in flight at 12:46). This is coherent, backed-up, authorized-
-looking work — I did not interfere. Census/floor counts stayed exact throughout (3,180/268/6,754).
-It validates the concurrency rule the skills encode, and it means two skill lines will need a
-touch-up once that work lands (see §7).
+`_sync_floor_tables_only` run (in flight at 12:46). **That work COMMITTED at 12:55 as
+`6b029d2`** ("Pre-Sunday durability lockdown + census_review_status feed", runbook §6n):
+655 rows backfilled (477 undetermined + 178 held), synced, independent read-back MATCH, CI
+guards verified PASS live, Sunday 2026-07-05 launchd refreshes audited census-safe. I did not
+interfere; census/floor counts stayed exact throughout (3,180/268/6,754). I patched my sync +
+validation skills the same day to reflect the shipped column and new CI guards, so the skills
+are current as of `6b029d2`.
 
 ## 6. Stale CLAUDE.md / doc numbers — for the PM session to apply (I did not edit CLAUDE.md)
 
@@ -105,16 +108,14 @@ touch-up once that work lands (see §7).
 
 - **After wave 5 lands:** refresh §4 state numbers in the flagship skill, the unit-discipline
   cheat-sheet, and the P1′ queue table (all are date-stamped with recheck commands).
-- **When `census_review_status` ships:** update sync skill §5 first bullet ("no review-status
-  column" known-gap) and unit-discipline §5 source-class note; the new CENSUS/CENSUS_NPI CI
-  guards (3,180/6,754) should be mentioned in validation skill §1 once committed.
+- ~~When `census_review_status` ships~~ — shipped as `6b029d2` before I finished this report;
+  sync skill §5 and validation skill §1 (CENSUS/CENSUS_NPI guards) already updated.
 - **When deals stabilize post-cleanup:** replace the VOLATILE note with the ratified count.
 - **If MA unparks:** universe/denominator language across unit-discipline and the flagship.
 
 ## 8. Uncertainties
 
 - Final intended deals count (concurrent cleanup may not be finished).
-- Whether the concurrent session's uncommitted `database.py`/invariants edits land as-is.
 - P2's Rung 1 has NOT run (`_hidden_corp_suspects_rung1.json` absent) — P2 Phase 0 handles it.
 - Budget: distillation consumed well under the 8% ceiling; no cut-ladder rungs taken except
   the optional 6th skill (evidence-based skip, §1).
@@ -127,9 +128,9 @@ touch-up once that work lands (see §7).
 2. **Synthetic-NPI policy (Track H):** 242 never-researched `DA_`/`DIR_` rows can never pass
    the merge gates as-is. Decide: attempt real-NPI resolution, or accept them as permanently
    unresolved in the coverage denominator.
-3. **Ratify the concurrent session's work:** confirm the deal-quality cleanup's final count,
-   the `census_review_status` migration/backfill + new CI guards (currently uncommitted), and
-   then have the PM session apply the §6 CLAUDE.md number fixes.
+3. **Ratify the deal-quality cleanup's final count** (2,827 → 527; the review-status work is
+   already committed as `6b029d2`), and have the PM session apply the §6 CLAUDE.md number
+   fixes — `6b029d2` added a banner but left the stale tables untouched.
 
 ## 10. EXACT kickoff prompt for any future Opus/Sonnet session in this repo
 
