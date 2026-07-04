@@ -33,7 +33,7 @@ SELECT COUNT(*) FROM practice_locations WHERE ownership_tier IS NOT NULL;   -- c
 SELECT COUNT(*) FROM practice_locations
   WHERE entity_classification IN ('dso_regional','dso_national');           -- floor (268)
 SELECT SUM(total_gp_locations) FROM zip_scores;                             -- universe (4801)
-SELECT COUNT(*) FROM deals;                                                 -- deals (2827)
+SELECT COUNT(*) FROM deals;                                                 -- deals (volatile; 527 @2026-07-04 post deal-quality cleanup)
 "
 ```
 

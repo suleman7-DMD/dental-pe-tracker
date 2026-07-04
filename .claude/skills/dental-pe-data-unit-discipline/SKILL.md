@@ -86,8 +86,10 @@ The ONLY legal presentation of census ownership (code gate:
 - No fake precision: a 71.64%-coverage census yields ranges and floors, not point estimates of
   the universe.
 - Date-stamp volatile numbers and attach a one-line recheck command (as done here).
-- Deals count (2,827 in SQLite as of 2026-07-04: gdn 2,472 / pesp 329 / beckers 23 /
-  beckers+gdn 3) is DEAL-ANNOUNCEMENT context — never a location-level ownership fact.
+- Deals count is VOLATILE — a 2026-07-04 deal-quality cleanup cut it 2,827 → 527 (gdn 357 /
+  pesp 153 / beckers 14 / beckers+gdn 3; backup `pre_deal_quality_cleanup_20260703.db`).
+  Always query fresh. Deals are DEAL-ANNOUNCEMENT context — never a location-level ownership
+  fact.
 
 ## 6. Common hasty-model failures
 

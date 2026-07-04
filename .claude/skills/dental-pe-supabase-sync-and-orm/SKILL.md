@@ -61,7 +61,11 @@ python3 -m scrapers._sync_census_columns_practices
 ```
 
 **`_sync_practices_changed_rows.py` does NOT carry census columns** — it pushes only the
-entity_classification set. Using it for census sync leaves Supabase silently stale.
+entity_classification set. Using it for census sync leaves Supabase silently stale. The
+inverse is also true: for DETECTOR-axis staleness (live corporate-NPI count behind SQLite),
+`_sync_practices_changed_rows.py --since <date>` IS the correct surgical heal (idempotent
+per-row UPDATE, proven in the 2026-06-12 incident) — never the census-column script, never a
+full sync.
 
 ## 4. Read-back is mandatory (both legs, independent queries)
 

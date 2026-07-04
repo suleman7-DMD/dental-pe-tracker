@@ -47,7 +47,7 @@ SELECT COUNT(*) FROM practice_locations
   WHERE entity_classification IN ('dso_regional','dso_national');           -- expect 268
 "
 python3 -c "import json; d=json.load(open('data/dso_research/_lane_a_triage_wave1_20260702.json')); print(len(d))"   # expect 649
-ls data/dso_research/result_unit_*.json | wc -l              # expect 218 (result files = ground truth)
+ls data/dso_research/_lane_a_20260702/result_unit_*.json | wc -l   # expect 218 (result files = ground truth)
 env | grep -c CLAUDE_CODE_SUBAGENT_MODEL                     # expect 0 (model-clamp check)
 ```
 
@@ -59,8 +59,9 @@ already landed. Any mismatch → STOP, report.
 - Reuse the proven workflow scripts as TEMPLATES: `_wf_lane_a_census_v2_intel_20260702.js`
   (research+intel) and `_wf_lane_a_verdict_recovery_20260702.js` (crash recovery). Make new
   dated copies (e.g. `_wf_lane_a_census_v3_wave5_<date>.js`) — never edit the originals.
-- Unit numbering: continue AFTER the existing units (check `ls result_unit_*.json | sort | tail`)
-  so new result files never collide with the 218 ground-truth files.
+- Unit numbering: continue AFTER the existing units (check
+  `ls data/dso_research/_lane_a_20260702/result_unit_*.json | sort | tail`) so new result
+  files never collide with the 218 ground-truth files.
 - Skip list = every location_id already in a result file OR already tiered.
 - Track C units must be prompted for POSITIVE PROOF (owner named + operates on-site), not
   re-classification from vibes.
