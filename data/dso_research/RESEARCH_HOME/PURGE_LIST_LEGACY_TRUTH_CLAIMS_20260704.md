@@ -38,11 +38,11 @@ Status legend: ✅ done · Phase N = scheduled in that phase of the charter.
 ## `/market-intel` — Ownership (priority 3)
 | Claim / component | Verdict | Status |
 |---|---|---|
-| Headline corporate-share KPIs off `zip_scores.corporate_location_count` | REMOVE → five-bucket stacked truth bar from `summarizeBuckets` | Phase 3 |
-| `consolidation-map.tsx` ZIP colors by detector corporate share | REPLACE with census bucket share per ZIP; unresolved rendered explicitly | Phase 3 |
-| `CorporateBandBar` as page headline | DEMOTE to `/data-breakdown` only | Phase 3 |
-| `city-practice-tree.tsx` / `zip-score-table.tsx` corporate columns/chips | REPLACE with census bucket columns | Phase 3 |
-| ADA 14.6% anywhere near a non-T4+T5 number | RELABEL: only `dsoPePct*` may anchor to ADA, with `ADA_ANCHOR_UNIT_CAVEAT` | Phase 3 |
+| Headline corporate-share KPIs off `zip_scores.corporate_location_count` | REMOVE → five-bucket stacked truth bar from `summarizeBuckets` | ✅ 9cba9ff |
+| `consolidation-map.tsx` ZIP colors by detector corporate share | REPLACE with census bucket share per ZIP; unresolved rendered explicitly | ✅ 50e91b2 |
+| `CorporateBandBar` as page headline | DEMOTE to `/data-breakdown` only | ✅ f2bb159 |
+| `city-practice-tree.tsx` / `zip-score-table.tsx` corporate columns/chips | REPLACE with census bucket columns | ✅ 7cf58c0 |
+| ADA 14.6% anywhere near a non-T4+T5 number | RELABEL: only `dsoPePct*` may anchor to ADA, with `ADA_ANCHOR_UNIT_CAVEAT` | ✅ 9cba9ff |
 
 ## `/buyability` — Acquisition Scout (priority 4)
 | Claim / component | Verdict | Status |
