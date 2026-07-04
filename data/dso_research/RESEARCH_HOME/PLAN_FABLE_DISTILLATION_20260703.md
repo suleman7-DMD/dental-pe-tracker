@@ -1,5 +1,9 @@
 # PLAN — Fable→Opus/Sonnet Distillation (skill library + plan artifacts)
-**Author:** Fable (PM) · 2026-07-03 · Status: PARKED — do not execute until trigger conditions met
+**Author:** Fable (PM) · 2026-07-03 · Status: ~~PARKED~~ → **TRIGGERED 2026-07-04** — trigger
+condition 1 (merge→consolidate→sync chain complete) is MET (runbook §6m). Execute via
+**`KICKOFF_FABLE_DISTILLATION_20260704.md`**, which updates this plan's read list, scope (P1 is
+obsolete → P1′ census continuation), session rules, and pre-answers the user questions. §§1–5
+below remain binding where the kickoff doesn't override.
 **Context:** User loses Fable-class access when weekly usage hits 100% (currently ~60%); Opus/Sonnet
 carry the repo afterward. Goal: convert Fable's repo-specific judgment into artifacts that stop
 weaker models from introducing the failure modes the user has repeatedly seen (plan drift, invented
