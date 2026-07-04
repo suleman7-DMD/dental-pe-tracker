@@ -1,0 +1,106 @@
+{
+  "batch": 14,
+  "indices": [140, 149],
+  "dispositions": [
+    {
+      "location_id": "98cfdd5c475f12b5",
+      "practice_name": "SHOREWOOD FAMILY DENTAL CARE LLP",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "medium",
+      "rationale": "The AO title 'MAJORITY PARTNER' (LLP), the provider surname BRUCK differing from owner FUNK, and web confirmation (own site 'meet-the-doctors' + Yelp) that the single Shorewood office is staffed by 3 dentists (Bruck, Funk, Vicioso) make this a multi-dentist single-location group, not a solo T1. It is clearly dentist-owned (Funk documented owner since 1974, provider_count 3 < 8, no DSO brand), so correct to single_loc_group. The shared_ein and shared_phone each reach only one other location_id and the practice is verified single-site, so those are duplicate/variant rows rather than a real multi-office network.",
+      "web_searched": true
+    },
+    {
+      "location_id": "011e4b0da1b7524b",
+      "practice_name": "CAROLYN BRONKE WIND DDS SC",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "dentist_multi",
+      "corrected_confidence": "medium",
+      "rationale": "Both the shared_ein (362701991) and the shared_website_domain (awesomebraces.com) point to the SAME second location_id (71ca73b0ba4aa992), and the researcher's own reasoning lists two addresses (507 S La Grange Rd and 47 S 6th Ave Ste F). A shared tax EIN is dispositive of common ownership, and the owner/provider is the same person (Bronke Wind), so this is her own dentist-owned two-office group (rule 6a), not a solo T1. Correct to dentist_multi at medium confidence since the second office is corroborated by the EIN/domain match rather than independently deep-verified.",
+      "web_searched": false
+    },
+    {
+      "location_id": "6ada7fbc9cf79816",
+      "practice_name": "John Lenz DDS",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The db_corporate_conflict (hard) tags this as dso_national / 'Midwest Dental' (pe_sponsor Gryphon), and Midwest Dental is on the protected known-DSO brand list. Per binding rules 2 and 3, a known DSO brand appearing as T1 can never be accepted on the strength of an own-site 'privately owned' statement (DSOs routinely keep the acquired local name); it must go to the adversarial verifier. Holding for DSO verification rather than promoting or accepting.",
+      "web_searched": false
+    },
+    {
+      "location_id": "b342564015ef538e",
+      "practice_name": "LAWRENCE R FINE DDS PLLC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Web search refutes the researcher's premise that this is 'led by Dr. Scott Vlk': Vlk was FORCED TO SELL the practice, and the current NPPES AO is Molly Walsh, a non-clinical 'Director of Operations' (hard signal) who reaches 2 location_ids. An undisclosed post-sale acquirer plus a non-clinical operations executive spanning multiple offices is a classic group/MSO back-office pattern (rule 6c) that cannot be cleared as an independent single-location group. Holding for adversarial DSO/group verification.",
+      "web_searched": true
+    },
+    {
+      "location_id": "3af1e2ccc1b5eb23",
+      "practice_name": "WESTERN DENTAL GROUP PC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The db_corporate_conflict (hard) is 'Western Dental' (Sonrava), which is on the protected known-DSO brand list. Even though the researcher's collision argument (named for Western Ave, own domain, Sonrava has no IL locations) is plausible, binding rule 3 forbids accepting a known-DSO-brand name collision at T1/T2 and rule 2 routes a known-brand corporate conflict to the verifier. Holding for adversarial verification rather than accepting.",
+      "web_searched": false
+    },
+    {
+      "location_id": "31abbd4a8d8300c9",
+      "practice_name": "COMFORT DENTAL LLC",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The db_corporate_conflict brand 'Comfort Dental' is NOT on the protected known-DSO list, and the researcher documented that the national Comfort Dental franchise operates in ~10 states with no IL locations and no locator entry for this Armitage Ave address, so the label is a debunked geographic-impossibility name collision (rule 2, accept branch). The AO is Dr. Angelo Stamos DMD titled PRESIDENT of the LLC (owner-dentist positive signal) and opencare confirms him practicing there. The db 'comfortdental.com' website is a name-match artifact of the national chain, not this office. Evidence leans directory-based, so confidence correctly stays medium (rule 5).",
+      "web_searched": false
+    },
+    {
+      "location_id": "213d8285856873eb",
+      "practice_name": "Dental Salon",
+      "assigned_tier": "dentist_multi",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The db_corporate_conflict is dso_national with NO brand (affiliated_dso null), and the researcher's own-site fetch shows a specific independent-ownership narrative: family-owned, founded 2003 by Dr. Mark Morris, continued by Drs. Arora and Mody after his 2024 passing, 8 named dentists across 2 owned locations. The shared_phone reaching one other location is the group's own second office, and provider_count 11 is consistent with a 2-location multi-specialty group (rule 1's high-count hold applies to T1/T2, not this correctly-assigned T3). Own-site family ownership rebuts the brand-less stale detector label; accept dentist_multi.",
+      "web_searched": false
+    },
+    {
+      "location_id": "345fa66e8329648d",
+      "practice_name": "BEVERLY SHORES SMILE CENTER",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Web search plus BBB/Yelp/CareCredit/WebMD consistently show the single 10142 S Western Ave office is dentist-led by Dr. Laila Salman DDS and Dr. Daniel Smulson DDS (a known independent Chicago periodontist), a multi-provider single-location group with no corporate/DSO brand anywhere. The AO Kristine Kowalski is explicitly an OFFICE MANAGER (benign non-owner covering related offices, rule 6b), and the shared_ein reaching one other location_id shows no DSO brand or MSO signal. Evidence is directory-weighted so confidence stays at medium (rule 5); the assigned single_loc_group is the correct conservative independent tier.",
+      "web_searched": true
+    },
+    {
+      "location_id": "a5714245bc2fae33",
+      "practice_name": "DENTAL SURGERY SERVICES, P.C.",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The researcher themselves flagged the unresolved signal: this NPI's EIN (201771535) is shared with a same-unit Dental 360 / Family Dental Group entity, and Dental 360/Brite is on the protected known-DSO list. Compounding it, a shared Data-Axle officer (RIZKALLA, GEORGE) reaches 3 location_ids and the shared domain abrushabove.net reaches another location. A shared corporate EIN cluster tied to a known DSO brand plus a common officer across 3 offices is MSO back-office infrastructure (rules 3 and 6c) that must not merge as an independent group. Holding for adversarial DSO verification.",
+      "web_searched": false
+    },
+    {
+      "location_id": "1e3f91e292ba9aec",
+      "practice_name": "ARLINGTON COMFORT DENTAL PARTNERSHIP",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "As with the other Comfort Dental collision this batch, the brand is NOT on the protected known-DSO list and the national franchise has no IL presence; the own website carries a positive independent-ownership statement (the dentist 'fulfilled her lifelong dream of owning her own dental practice') and search notes it 'appears to be a separate entity from the larger Comfort Dental franchise network' (rule 2, accept branch). The 'Partnership' name plus Yelp's 2 physicians at one address support the single_loc_group tier; the Relias-to-Rhie ownership change is between two independent dentists with no corporate signal. Evidence is directory/own-site so confidence correctly held at medium (rule 5).",
+      "web_searched": false
+    }
+  ]
+}

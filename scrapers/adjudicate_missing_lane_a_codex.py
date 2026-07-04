@@ -10,6 +10,7 @@ conservative: contradictory corporate/control signals stay held.
 from __future__ import annotations
 
 import collections
+import glob
 import json
 from datetime import datetime, timezone
 from pathlib import Path
@@ -18,6 +19,7 @@ from typing import Any
 
 BASE = Path("data/dso_research/_lane_a_20260702")
 MISSING = BASE / "_adjudication_missing_20260703.json"
+ADJUDICATION_DIR = BASE / "adjudication"
 ROLLUP_RECOVERY = BASE / "_adjudication_rollup_20260703.json"
 CODEX_OUT = BASE / "adjudication_codex_missing_20260703.json"
 ROLLUP_COMPLETE = BASE / "_adjudication_rollup_complete_20260703.json"
@@ -339,14 +341,22 @@ def adjudicate(bundle: dict[str, Any]) -> dict[str, Any]:
 def main() -> None:
     missing_doc = json.loads(MISSING.read_text())
     missing = missing_doc["bundles"]
-    codex_dispositions = [adjudicate(bundle) for bundle in missing]
+    all_input = json.loads((BASE / "_adjudication_input_20260703.json").read_text())["bundles"]
+    all_by_id = {b["location_id"]: b for b in all_input}
+
+    opus_dispositions = load_opus_batches()
+    opus_ids = {d["location_id"] for d in opus_dispositions}
+    codex_source = [bundle for bundle in all_input if bundle["location_id"] not in opus_ids]
+    codex_dispositions = [adjudicate(bundle) for bundle in codex_source]
 
     CODEX_OUT.write_text(
         json.dumps(
             {
                 "_meta": {
                     "generated_at": now_iso(),
-                    "input_file": str(MISSING),
+                    "input_file": str(BASE / "_adjudication_input_20260703.json"),
+                    "original_missing_file": str(MISSING),
+                    "landed_opus_count": len(opus_dispositions),
                     "count": len(codex_dispositions),
                     "policy": "Conservative Codex recovery adjudication. Not Opus; all provenance is labeled codex_missing_adjudication.",
                     "no_db_writes": True,
@@ -360,21 +370,16 @@ def main() -> None:
         + "\n"
     )
 
-    recovery = json.loads(ROLLUP_RECOVERY.read_text())
-    real = [
-        row
-        for row in recovery.get("dispositions", [])
-        if row.get("adjudication_source") == "opus_batch"
-    ]
-    combined = real + codex_dispositions
+    combined = opus_dispositions + codex_dispositions
     ROLLUP_COMPLETE.write_text(
         json.dumps(
             {
                 "_meta": {
                     "generated_at": now_iso(),
                     "base_recovery_rollup": str(ROLLUP_RECOVERY),
+                    "adjudication_dir": str(ADJUDICATION_DIR),
                     "codex_missing_file": str(CODEX_OUT),
-                    "policy": "Complete representation of all 277 blockers: 130 Opus batch dispositions plus 147 conservative Codex missing-row dispositions.",
+                    "policy": "Complete representation of all 277 blockers: every landed Opus batch disposition plus conservative Codex dispositions only for rows still missing Opus output.",
                     "no_db_writes": True,
                 },
                 "dispositions": combined,
@@ -389,6 +394,34 @@ def main() -> None:
     print("wrote", CODEX_OUT, len(codex_dispositions))
     print("wrote", ROLLUP_COMPLETE, len(combined))
     print(json.dumps(summarize(combined), indent=2, sort_keys=True))
+
+
+def load_opus_batches() -> list[dict[str, Any]]:
+    out: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for path in sorted(glob.glob(str(ADJUDICATION_DIR / "batch_*.json"))):
+        data = json.loads(Path(path).read_text())
+        for row in data.get("dispositions", []):
+            lid = row.get("location_id")
+            if not lid:
+                raise SystemExit(f"Opus adjudication without location_id in {path}")
+            if lid in seen:
+                raise SystemExit(f"Duplicate Opus adjudication for {lid} in {path}")
+            seen.add(lid)
+            disposition = row.get("disposition")
+            if disposition == "accept":
+                merge_action = "merge_original"
+            elif disposition == "correct":
+                merge_action = "merge_corrected_tier"
+            else:
+                merge_action = "hold_do_not_merge"
+            out.append({
+                **row,
+                "merge_action": merge_action,
+                "adjudication_source": "opus_batch",
+                "batch_file": Path(path).name,
+            })
+    return out
 
 
 def summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:

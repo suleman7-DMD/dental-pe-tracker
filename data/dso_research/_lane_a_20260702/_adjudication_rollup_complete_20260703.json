@@ -1,10 +1,11 @@
 {
   "_meta": {
+    "adjudication_dir": "data/dso_research/_lane_a_20260702/adjudication",
     "base_recovery_rollup": "data/dso_research/_lane_a_20260702/_adjudication_rollup_20260703.json",
     "codex_missing_file": "data/dso_research/_lane_a_20260702/adjudication_codex_missing_20260703.json",
-    "generated_at": "2026-07-03T23:21:15Z",
+    "generated_at": "2026-07-04T15:16:42Z",
     "no_db_writes": true,
-    "policy": "Complete representation of all 277 blockers: 130 Opus batch dispositions plus 147 conservative Codex missing-row dispositions."
+    "policy": "Complete representation of all 277 blockers: every landed Opus batch disposition plus conservative Codex dispositions only for rows still missing Opus output."
   },
   "dispositions": [
     {
@@ -1668,582 +1669,524 @@
       "web_searched": false
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "single_loc_group",
+      "batch_file": "batch_13.json",
       "corrected_confidence": null,
       "corrected_tier": null,
       "disposition": "hold_dso_verify",
       "location_id": "e50dfc828412c437",
       "merge_action": "hold_do_not_merge",
       "practice_name": "SANEI CENTER PC",
-      "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "ao_reaches_multiple_locations",
-        "db_corporate_conflict",
-        "stale_founder_history"
-      ],
-      "web_searched": false,
-      "zip": "60647"
+      "rationale": "Hard db_corporate_conflict names Western Dental (a Rule-3 known DSO brand / Sonrava) with entity_classification dso_national. The researcher argues a fuzzy 'Northwestern Dental' vs 'Western Dental' substring collision (plausible), but Rule 3 is fail-closed: a named DSO brand on a T1/T2 row is never accepted. The ao_reaches_multiple_locations signal (Sanei across 2 sites) also needs owner/network review. Routing to the adversarial verifier to confirm the collision rather than self-clearing.",
+      "web_searched": false
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "single_loc_group",
+      "batch_file": "batch_13.json",
       "corrected_confidence": null,
       "corrected_tier": null,
       "disposition": "hold_dso_verify",
       "location_id": "f3959b4a9ac8e139",
       "merge_action": "hold_do_not_merge",
       "practice_name": "SILVA DENTAL CENTER LTD",
-      "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "db_corporate_conflict",
-        "shared_ein_or_parent_tin"
-      ],
-      "web_searched": false,
-      "zip": "60804"
+      "rationale": "Hard db_corporate_conflict (dso_regional, Precision Dental Care) plus a shared EIN 465833863 spanning 4 distinct location_ids and a DB website 'Central Dental Associates' that matches neither Silva nor Precision. The researcher only rebutted the Precision name collision and did not reconcile the 4-location EIN cluster or the third brand name, while asserting single-location. Rule 2/Rule 6c: a shared corporate EIN cluster with a dso_regional label is unresolved corporate/network signal, so hold for the verifier rather than accept T2.",
+      "web_searched": false
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "dentist_multi",
+      "batch_file": "batch_13.json",
       "corrected_confidence": null,
       "corrected_tier": null,
       "disposition": "hold_dso_verify",
       "location_id": "827b2ed9490623cd",
       "merge_action": "hold_do_not_merge",
       "practice_name": "Glow Dental",
-      "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "db_corporate_conflict",
-        "shared_ein_or_parent_tin"
-      ],
-      "web_searched": false,
-      "zip": "60805"
+      "rationale": "Hard db_corporate_conflict (dso_regional, Family Dental Care) plus shared EIN 363554595 across 6 location_ids and a DB website 'Evergreen Park Dental' \u2014 none of which match the researcher's 'Glow Dental 4-location dentist merger' story. Family Dental Care is a Chicago regional group the DB treats as corporate (dso_regional), so this address may actually be a Family Dental Care unit rather than dentist-owned Glow. The EIN-6 cluster vs the claimed 4-office network is unreconciled; per fail-closed I hold for the verifier and never self-promote to corporate.",
+      "web_searched": false
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "single_loc_group",
+      "batch_file": "batch_13.json",
       "corrected_confidence": null,
       "corrected_tier": null,
       "disposition": "hold_dso_verify",
       "location_id": "1feacfd70c3cc8aa",
       "merge_action": "hold_do_not_merge",
       "practice_name": "ARBOR HILLS DENTAL CARE",
-      "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict, parent_or_legal_entity_signal). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "db_corporate_conflict",
-        "parent_or_legal_entity_signal"
-      ],
-      "web_searched": false,
-      "zip": "60061"
+      "rationale": "Hard db_corporate_conflict names Western Dental (Rule-3 brand) with entity_classification dso_national and affiliated_pe_sponsor 'formerly New Mountain Capital' (Western Dental/Sonrava's actual PE owner), so the DB genuinely believes this is a Western Dental unit. The researcher's own-site evidence (Drs. Theodore and Samantha Cho, no DSO mention) is a credible false-match rebuttal, but Rule 3 forbids accepting a named DSO brand on a T2 row. Hold for the adversarial verifier.",
+      "web_searched": false
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "dentist_multi",
+      "batch_file": "batch_13.json",
       "corrected_confidence": null,
       "corrected_tier": null,
       "disposition": "hold_dso_verify",
       "location_id": "b32d6f1dfb116fe4",
       "merge_action": "hold_do_not_merge",
       "practice_name": "Tidy Smiles",
-      "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict, parent_or_legal_entity_signal). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "db_corporate_conflict",
-        "parent_or_legal_entity_signal"
-      ],
-      "web_searched": false,
-      "zip": "60074"
+      "rationale": "Hard db_corporate_conflict names Aspen Dental (Rule-3 brand) with affiliated_pe_sponsor Leonard Green & Partners (Aspen's PE owner), entity_classification dso_national. The researcher's evidence that the NPI address is Dr. Sandhya Pallam's own 'All Smiles Family Dental' (2 owned offices) and that the real Aspen Palatine is a different address (968 vs 537 E Dundee) is plausible, but Rule 2 is not tier-limited and a marquee DSO brand in the DB signal routes to the verifier regardless of the T3 assignment.",
+      "web_searched": false
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "single_loc_group",
+      "batch_file": "batch_13.json",
       "corrected_confidence": null,
       "corrected_tier": null,
       "disposition": "accept",
       "location_id": "d4e18c5fbe25e529",
       "merge_action": "merge_original",
       "practice_name": "SCHARFENBERG HARMON DENTAL PARTNERSHIP",
-      "rationale": "Accepted T2: row is already outside the true-solo bucket; persisted reasoning/URLs support a dentist-owned single-location group, and remaining signals do not justify DSO/T3 promotion without new web review.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "shared_ein_or_parent_tin",
-        "shared_phone_multiple_locations",
-        "shared_website_domain",
-        "t2_provider_count_lte1"
-      ],
-      "web_searched": false,
-      "zip": "60126"
+      "rationale": "No DSO/PE/MSO signal \u2014 DB entity_classification is solo_high_volume (independent) and there is no corporate-brand or PE tag. Own domain elmhurstdentists.com names Drs. Jerry and Carly Scharfenberg plus Dr. Kyle Harmon as the practicing dentists at one Elmhurst address, matching the 2-NPI EIN reach. The shared phone/EIN/domain across 2-3 location_ids (under the legacy 'DeWitt Dentistry' name/domain) are consistent with duplicate address/suite variants of the same single dentist-owned partnership (Rule 6b building/practice artifact), not a chain or MSO. T2 stands.",
+      "web_searched": false
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "true_independent",
-      "corrected_confidence": null,
+      "batch_file": "batch_13.json",
+      "corrected_confidence": "medium",
       "corrected_tier": null,
-      "disposition": "hold_dso_verify",
+      "disposition": "accept",
       "location_id": "dff2693b4fb03dd6",
-      "merge_action": "hold_do_not_merge",
+      "merge_action": "merge_original",
       "practice_name": "Gentle Dental Smile",
-      "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "db_corporate_conflict",
-        "t1_reasoning_lacks_negative_control_word",
-        "t1_reasoning_lacks_owner_word",
-        "t1_reasoning_lacks_single_location_word"
-      ],
-      "web_searched": false,
-      "zip": "60133"
+      "rationale": "The hard db_corporate_conflict (Gentle Dental, dso_national) is defeated by a strong address-level negative control: the researcher fetched interdent.com's own locator and the national Gentle Dental (InterDent) has zero Illinois footprint (only HI/CA/OR/WA/AZ/NV/OK/KS), so an IL Hanover Park office cannot be that brand \u2014 a generic-name collision. Gentle Dental is not on the Rule-3 never-accept list, evidence is the practice's own site, and provider_count=1 supports solo independent. Confidence held at the assigned medium since positive owner-name proof is thin.",
+      "web_searched": false
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "single_loc_group",
+      "batch_file": "batch_13.json",
       "corrected_confidence": null,
       "corrected_tier": null,
       "disposition": "accept",
       "location_id": "cdcdf30342969078",
       "merge_action": "merge_original",
       "practice_name": "DENTAL HEIGHTS DDS PC",
-      "rationale": "Accepted T2: row is already outside the true-solo bucket; persisted reasoning/URLs support a dentist-owned single-location group, and remaining signals do not justify DSO/T3 promotion without new web review.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "parent_or_legal_entity_signal",
-        "shared_data_axle_officer",
-        "shared_website_domain"
-      ],
-      "web_searched": false,
-      "zip": "60139"
+      "rationale": "The parent_company 'EVENLY ORTHODONTICS DUPONT' and shared evenly.com domain are the documented Evenly Technologies placeholder false-signal (CLAUDE.md 2026-06-12 audit root-caused this exact leak and purged it); the Data-Axle officer hits are corroboration-only (low). DB entity_classification is family_practice (independent), and the practice's own site proves Dental Heights was founded 2013 by the Bader-family dentists (Alamdar, Shafeeq, Zishan Bader) at one Glendale Heights address with provider_count=4 matching. Dentist-owned single-location family group \u2014 T2 stands.",
+      "web_searched": false
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "true_independent",
+      "batch_file": "batch_13.json",
       "corrected_confidence": null,
       "corrected_tier": null,
-      "disposition": "hold_unresolved",
+      "disposition": "accept",
       "location_id": "be32c4f8df293c5d",
-      "merge_action": "hold_do_not_merge",
+      "merge_action": "merge_original",
       "practice_name": "NITA PATEL DDS INC",
-      "rationale": "Held: T1 conflicts with roster/group signals that are too large or too contradictory to correct mechanically. This cannot merge as true solo owner-operated without row-level review.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "shared_phone_multiple_locations",
-        "stale_founder_history",
-        "t1_group_entity_classification",
-        "t1_reasoning_lacks_owner_word"
-      ],
-      "web_searched": false,
-      "zip": "60172"
+      "rationale": "Rule 1 trigger is not met: db_context provider_count is 0 and there is a single surname (Patel), so no forced T2 correction. Own site nitapateldds.com proves Dr. Nita Patel owns and operates her eponymous PC (practicing since 1992) \u2014 positive current ownership at one Roselle address. The small_group label and shared-phone-across-2-locations are artifacts of a duplicate 'Patel Dental' NPI record for the same physical office (the other location_id is the duplicate); no second dentist is evidenced. T1 stands.",
+      "web_searched": false
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "true_independent",
-      "corrected_confidence": null,
+      "batch_file": "batch_13.json",
+      "corrected_confidence": "medium",
       "corrected_tier": null,
-      "disposition": "hold_dso_verify",
+      "disposition": "accept",
       "location_id": "43027f74b4b8e0d6",
-      "merge_action": "hold_do_not_merge",
+      "merge_action": "merge_original",
       "practice_name": "Gentle Dental Care",
-      "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "db_corporate_conflict",
-        "stale_founder_history",
-        "t1_reasoning_lacks_negative_control_word",
-        "t1_reasoning_lacks_single_location_word"
-      ],
-      "web_searched": false,
-      "zip": "60402"
+      "rationale": "Another generic 'Gentle Dental' name collision \u2014 BBB, Yelp, and the Berwyn business directory all identify 6731 26th St as 'G.R. Zehak DDS & Associates' (Dr. George Zehak, since 1984), and the national Gentle Dental/InterDent has no IL footprint, so the dso_national tag is a false brand match (Gentle Dental is not on the Rule-3 list). However all evidence is directory-only with no own website, so per Rule 5 I cap confidence at medium rather than the assigned high; tier true_independent stands (single provider, manager Maria Zehak is non-clinical).",
+      "web_searched": false
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "true_independent",
-      "corrected_confidence": null,
-      "corrected_tier": null,
-      "disposition": "hold_network_review",
+      "batch_file": "batch_14.json",
+      "corrected_confidence": "medium",
+      "corrected_tier": "single_loc_group",
+      "disposition": "correct",
       "location_id": "98cfdd5c475f12b5",
-      "merge_action": "hold_do_not_merge",
+      "merge_action": "merge_corrected_tier",
       "practice_name": "SHOREWOOD FAMILY DENTAL CARE LLP",
-      "rationale": "Held: T1 has multiple independent network/control signals and the persisted reasoning does not fully rebut them with current owner + single-location proof.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "ao_not_provider_or_practice_name",
-        "shared_ein_or_parent_tin",
-        "shared_phone_multiple_locations",
-        "stale_founder_history",
-        "t1_reasoning_lacks_negative_control_word",
-        "t1_reasoning_lacks_single_location_word"
-      ],
-      "web_searched": false,
-      "zip": "60404"
+      "rationale": "The AO title 'MAJORITY PARTNER' (LLP), the provider surname BRUCK differing from owner FUNK, and web confirmation (own site 'meet-the-doctors' + Yelp) that the single Shorewood office is staffed by 3 dentists (Bruck, Funk, Vicioso) make this a multi-dentist single-location group, not a solo T1. It is clearly dentist-owned (Funk documented owner since 1974, provider_count 3 < 8, no DSO brand), so correct to single_loc_group. The shared_ein and shared_phone each reach only one other location_id and the practice is verified single-site, so those are duplicate/variant rows rather than a real multi-office network.",
+      "web_searched": true
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "true_independent",
-      "corrected_confidence": null,
-      "corrected_tier": null,
-      "disposition": "hold_unresolved",
+      "batch_file": "batch_14.json",
+      "corrected_confidence": "medium",
+      "corrected_tier": "dentist_multi",
+      "disposition": "correct",
       "location_id": "011e4b0da1b7524b",
-      "merge_action": "hold_do_not_merge",
+      "merge_action": "merge_corrected_tier",
       "practice_name": "CAROLYN BRONKE WIND DDS SC",
-      "rationale": "Held: T1 lacks enough current owner-operator and single-location proof to satisfy \u00a76h after screening.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "ao_not_provider_or_practice_name",
-        "shared_ein_or_parent_tin",
-        "shared_phone_multiple_locations",
-        "shared_website_domain",
-        "stale_founder_history"
-      ],
-      "web_searched": false,
-      "zip": "60525"
+      "rationale": "Both the shared_ein (362701991) and the shared_website_domain (awesomebraces.com) point to the SAME second location_id (71ca73b0ba4aa992), and the researcher's own reasoning lists two addresses (507 S La Grange Rd and 47 S 6th Ave Ste F). A shared tax EIN is dispositive of common ownership, and the owner/provider is the same person (Bronke Wind), so this is her own dentist-owned two-office group (rule 6a), not a solo T1. Correct to dentist_multi at medium confidence since the second office is corroborated by the EIN/domain match rather than independently deep-verified.",
+      "web_searched": false
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "true_independent",
+      "batch_file": "batch_14.json",
       "corrected_confidence": null,
       "corrected_tier": null,
       "disposition": "hold_dso_verify",
       "location_id": "6ada7fbc9cf79816",
       "merge_action": "hold_do_not_merge",
       "practice_name": "John Lenz DDS",
-      "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "db_corporate_conflict",
-        "stale_founder_history",
-        "t1_reasoning_lacks_negative_control_word",
-        "t1_reasoning_lacks_single_location_word"
-      ],
-      "web_searched": false,
-      "zip": "60546"
+      "rationale": "The db_corporate_conflict (hard) tags this as dso_national / 'Midwest Dental' (pe_sponsor Gryphon), and Midwest Dental is on the protected known-DSO brand list. Per binding rules 2 and 3, a known DSO brand appearing as T1 can never be accepted on the strength of an own-site 'privately owned' statement (DSOs routinely keep the acquired local name); it must go to the adversarial verifier. Holding for DSO verification rather than promoting or accepting.",
+      "web_searched": false
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "single_loc_group",
+      "batch_file": "batch_14.json",
       "corrected_confidence": null,
       "corrected_tier": null,
-      "disposition": "hold_control_review",
+      "disposition": "hold_dso_verify",
       "location_id": "b342564015ef538e",
       "merge_action": "hold_do_not_merge",
       "practice_name": "LAWRENCE R FINE DDS PLLC",
-      "rationale": "Held: authorized official has a non-clinical/executive title and the Lane A evidence does not cleanly prove a dentist-owned multi-location structure. This is a hidden-control risk, not a safe T1/T2 accept.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "ao_nonclinical_exec_title",
-        "ao_not_provider_or_practice_name",
-        "ao_reaches_multiple_locations"
-      ],
-      "web_searched": false,
-      "zip": "60560"
+      "rationale": "Web search refutes the researcher's premise that this is 'led by Dr. Scott Vlk': Vlk was FORCED TO SELL the practice, and the current NPPES AO is Molly Walsh, a non-clinical 'Director of Operations' (hard signal) who reaches 2 location_ids. An undisclosed post-sale acquirer plus a non-clinical operations executive spanning multiple offices is a classic group/MSO back-office pattern (rule 6c) that cannot be cleared as an independent single-location group. Holding for adversarial DSO/group verification.",
+      "web_searched": true
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "single_loc_group",
+      "batch_file": "batch_14.json",
       "corrected_confidence": null,
       "corrected_tier": null,
       "disposition": "hold_dso_verify",
       "location_id": "3af1e2ccc1b5eb23",
       "merge_action": "hold_do_not_merge",
       "practice_name": "WESTERN DENTAL GROUP PC",
-      "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict, parent_or_legal_entity_signal). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "db_corporate_conflict",
-        "parent_or_legal_entity_signal"
-      ],
-      "web_searched": false,
-      "zip": "60618"
+      "rationale": "The db_corporate_conflict (hard) is 'Western Dental' (Sonrava), which is on the protected known-DSO brand list. Even though the researcher's collision argument (named for Western Ave, own domain, Sonrava has no IL locations) is plausible, binding rule 3 forbids accepting a known-DSO-brand name collision at T1/T2 and rule 2 routes a known-brand corporate conflict to the verifier. Holding for adversarial verification rather than accepting.",
+      "web_searched": false
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "true_independent",
+      "batch_file": "batch_14.json",
       "corrected_confidence": null,
       "corrected_tier": null,
-      "disposition": "hold_dso_verify",
+      "disposition": "accept",
       "location_id": "31abbd4a8d8300c9",
-      "merge_action": "hold_do_not_merge",
+      "merge_action": "merge_original",
       "practice_name": "COMFORT DENTAL LLC",
-      "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "ao_not_provider_or_practice_name",
-        "db_corporate_conflict",
-        "t1_reasoning_lacks_negative_control_word",
-        "t1_reasoning_lacks_owner_word"
-      ],
-      "web_searched": false,
-      "zip": "60639"
+      "rationale": "The db_corporate_conflict brand 'Comfort Dental' is NOT on the protected known-DSO list, and the researcher documented that the national Comfort Dental franchise operates in ~10 states with no IL locations and no locator entry for this Armitage Ave address, so the label is a debunked geographic-impossibility name collision (rule 2, accept branch). The AO is Dr. Angelo Stamos DMD titled PRESIDENT of the LLC (owner-dentist positive signal) and opencare confirms him practicing there. The db 'comfortdental.com' website is a name-match artifact of the national chain, not this office. Evidence leans directory-based, so confidence correctly stays medium (rule 5).",
+      "web_searched": false
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "dentist_multi",
+      "batch_file": "batch_14.json",
       "corrected_confidence": null,
       "corrected_tier": null,
-      "disposition": "hold_dso_verify",
+      "disposition": "accept",
       "location_id": "213d8285856873eb",
-      "merge_action": "hold_do_not_merge",
+      "merge_action": "merge_original",
       "practice_name": "Dental Salon",
-      "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "db_corporate_conflict",
-        "shared_phone_multiple_locations",
-        "stale_founder_history"
-      ],
-      "web_searched": false,
-      "zip": "60642"
+      "rationale": "The db_corporate_conflict is dso_national with NO brand (affiliated_dso null), and the researcher's own-site fetch shows a specific independent-ownership narrative: family-owned, founded 2003 by Dr. Mark Morris, continued by Drs. Arora and Mody after his 2024 passing, 8 named dentists across 2 owned locations. The shared_phone reaching one other location is the group's own second office, and provider_count 11 is consistent with a 2-location multi-specialty group (rule 1's high-count hold applies to T1/T2, not this correctly-assigned T3). Own-site family ownership rebuts the brand-less stale detector label; accept dentist_multi.",
+      "web_searched": false
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "single_loc_group",
+      "batch_file": "batch_14.json",
       "corrected_confidence": null,
       "corrected_tier": null,
       "disposition": "accept",
       "location_id": "345fa66e8329648d",
       "merge_action": "merge_original",
       "practice_name": "BEVERLY SHORES SMILE CENTER",
-      "rationale": "Accepted T2: row is already outside the true-solo bucket; persisted reasoning/URLs support a dentist-owned single-location group, and remaining signals do not justify DSO/T3 promotion without new web review.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "ao_not_provider_or_practice_name",
-        "ao_reaches_multiple_locations",
-        "shared_ein_or_parent_tin",
-        "t2_provider_count_lte1"
-      ],
-      "web_searched": false,
-      "zip": "60643"
+      "rationale": "Web search plus BBB/Yelp/CareCredit/WebMD consistently show the single 10142 S Western Ave office is dentist-led by Dr. Laila Salman DDS and Dr. Daniel Smulson DDS (a known independent Chicago periodontist), a multi-provider single-location group with no corporate/DSO brand anywhere. The AO Kristine Kowalski is explicitly an OFFICE MANAGER (benign non-owner covering related offices, rule 6b), and the shared_ein reaching one other location_id shows no DSO brand or MSO signal. Evidence is directory-weighted so confidence stays at medium (rule 5); the assigned single_loc_group is the correct conservative independent tier.",
+      "web_searched": true
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "single_loc_group",
-      "corrected_confidence": null,
-      "corrected_tier": null,
-      "disposition": "accept",
-      "location_id": "a5714245bc2fae33",
-      "merge_action": "merge_original",
-      "practice_name": "DENTAL SURGERY SERVICES, P.C.",
-      "rationale": "Accepted T2: row is already outside the true-solo bucket; persisted reasoning/URLs support a dentist-owned single-location group, and remaining signals do not justify DSO/T3 promotion without new web review.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "ao_not_provider_or_practice_name",
-        "da_legal_name_mismatch",
-        "shared_data_axle_officer",
-        "shared_ein_or_parent_tin",
-        "shared_website_domain"
-      ],
-      "web_searched": false,
-      "zip": "60647"
-    },
-    {
-      "adjudication_source": "codex_missing_adjudication",
-      "assigned_tier": "single_loc_group",
+      "batch_file": "batch_14.json",
       "corrected_confidence": null,
       "corrected_tier": null,
       "disposition": "hold_dso_verify",
-      "location_id": "1e3f91e292ba9aec",
+      "location_id": "a5714245bc2fae33",
       "merge_action": "hold_do_not_merge",
-      "practice_name": "ARLINGTON COMFORT DENTAL PARTNERSHIP",
-      "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "db_corporate_conflict",
-        "t2_provider_count_lte1"
-      ],
-      "web_searched": false,
-      "zip": "60004"
+      "practice_name": "DENTAL SURGERY SERVICES, P.C.",
+      "rationale": "The researcher themselves flagged the unresolved signal: this NPI's EIN (201771535) is shared with a same-unit Dental 360 / Family Dental Group entity, and Dental 360/Brite is on the protected known-DSO list. Compounding it, a shared Data-Axle officer (RIZKALLA, GEORGE) reaches 3 location_ids and the shared domain abrushabove.net reaches another location. A shared corporate EIN cluster tied to a known DSO brand plus a common officer across 3 offices is MSO back-office infrastructure (rules 3 and 6c) that must not merge as an independent group. Holding for adversarial DSO verification.",
+      "web_searched": false
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "single_loc_group",
+      "batch_file": "batch_14.json",
       "corrected_confidence": null,
       "corrected_tier": null,
-      "disposition": "hold_control_review",
-      "location_id": "008d4f50cb1392c5",
-      "merge_action": "hold_do_not_merge",
-      "practice_name": "GARY P. BALAS, D.D.S.",
-      "rationale": "Held: authorized official has a non-clinical/executive title and the Lane A evidence does not cleanly prove a dentist-owned multi-location structure. This is a hidden-control risk, not a safe T1/T2 accept.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "ao_nonclinical_exec_title",
-        "ao_not_provider_or_practice_name",
-        "shared_phone_multiple_locations"
-      ],
-      "web_searched": false,
-      "zip": "60004"
+      "disposition": "accept",
+      "location_id": "1e3f91e292ba9aec",
+      "merge_action": "merge_original",
+      "practice_name": "ARLINGTON COMFORT DENTAL PARTNERSHIP",
+      "rationale": "As with the other Comfort Dental collision this batch, the brand is NOT on the protected known-DSO list and the national franchise has no IL presence; the own website carries a positive independent-ownership statement (the dentist 'fulfilled her lifelong dream of owning her own dental practice') and search notes it 'appears to be a separate entity from the larger Comfort Dental franchise network' (rule 2, accept branch). The 'Partnership' name plus Yelp's 2 physicians at one address support the single_loc_group tier; the Relias-to-Rhie ownership change is between two independent dentists with no corporate signal. Evidence is directory/own-site so confidence correctly held at medium (rule 5).",
+      "web_searched": false
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
+      "assigned_tier": "single_loc_group",
+      "batch_file": "batch_15.json",
+      "corrected_confidence": null,
+      "corrected_tier": null,
+      "disposition": "accept",
+      "location_id": "008d4f50cb1392c5",
+      "merge_action": "merge_original",
+      "practice_name": "GARY P. BALAS, D.D.S.",
+      "rationale": "The hard ao_nonclinical_exec_title fires only because the AO is the office's business coordinator (Patricia Spannagel) named as NPPES authorized official, a benign small-practice office-manager-as-AO pattern, not corporate control. The practice's OWN website (drbalas.com) confirms Dr. Gary P. Balas as owner-dentist at 1430 N Arlington Heights Rd with matching phone, and the 7 associate surnames at one address are an associate-staffed GP consistent with single_loc_group; the db 'large_group' label is just the detector counting those associates. shared_phone reach_count 2 is a low-reach second line with no additional location found, so T2 stands at high confidence on own-site evidence.",
+      "web_searched": false
+    },
+    {
+      "adjudication_source": "opus_batch",
       "assigned_tier": "dentist_multi",
+      "batch_file": "batch_15.json",
       "corrected_confidence": null,
       "corrected_tier": null,
       "disposition": "hold_dso_verify",
       "location_id": "ebe25e498a1c96fc",
       "merge_action": "hold_do_not_merge",
       "practice_name": "Barrington Smiles",
-      "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "db_corporate_conflict",
-        "shared_phone_multiple_locations"
-      ],
-      "web_searched": false,
-      "zip": "60010"
+      "rationale": "Hard db_corporate_conflict flags affiliated_dso 'Midwest Dental' (a known DSO brand) with entity_classification dso_national. The researcher argues this is the unrelated dentist-led Midwest Dental Sleep Center (Dr. Craig, 5 locations, shared_phone reach 3 consistent with that network), but a 'CEO' title (Scott Craig) is present, confidence is only medium, and Rules 2/3 forbid accepting a known-DSO-brand conflict. Sending to the adversarial verifier to confirm dentist control vs corporate/MSO before any dentist_multi merge; not promoting to a DSO tier myself.",
+      "web_searched": false
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "single_loc_group",
+      "batch_file": "batch_15.json",
       "corrected_confidence": null,
       "corrected_tier": null,
-      "disposition": "accept",
+      "disposition": "hold_unresolved",
       "location_id": "10b07c234864d8d5",
-      "merge_action": "merge_original",
-      "practice_name": "META ENDO PLLC",
-      "rationale": "Accepted T2: row is already outside the true-solo bucket; persisted reasoning/URLs support a dentist-owned single-location group, and remaining signals do not justify DSO/T3 promotion without new web review.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "ao_not_provider_or_practice_name",
-        "da_legal_name_mismatch",
-        "shared_phone_multiple_locations",
-        "shared_website_domain"
-      ],
-      "web_searched": false,
-      "zip": "60015"
-    },
-    {
-      "adjudication_source": "codex_missing_adjudication",
-      "assigned_tier": "single_loc_group",
-      "corrected_confidence": null,
-      "corrected_tier": null,
-      "disposition": "hold_dso_verify",
-      "location_id": "2bc6f5c2918433f0",
       "merge_action": "hold_do_not_merge",
-      "practice_name": "ARTISAN DENTAL GROUP - RICHARD MADDALOZZO DDS MS LLC",
-      "rationale": "Held: persisted bundle has a contradictory corporate/control signal (parent_or_legal_entity_signal). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "parent_or_legal_entity_signal",
-        "shared_ein_or_parent_tin",
-        "shared_phone_multiple_locations"
-      ],
-      "web_searched": false,
-      "zip": "60067"
+      "practice_name": "META ENDO PLLC",
+      "rationale": "The location record is internally contradictory: the org NPI is Dr. Tam Trinh's (MeTa Endo per the researcher's metaendo.com evidence), but the bridged provider roster is four unrelated surnames (Dalloul/Oleari/Schichtel/Treiber), the db website is northbrooksmiles.com (shared_website_domain signal), the DA legal name is 'Zen Dental', and two different phones each reach other locations. Three distinct practice identities collapsed onto one record cannot be cleanly merged as a single_loc_group, and the shared domain/phones across differently-named offices leave ownership unverifiable. Holding as unresolved rather than accepting.",
+      "web_searched": false
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "single_loc_group",
-      "corrected_confidence": null,
+      "batch_file": "batch_15.json",
+      "corrected_confidence": "medium",
       "corrected_tier": null,
       "disposition": "accept",
-      "location_id": "da6f355f4c4017d9",
+      "location_id": "2bc6f5c2918433f0",
       "merge_action": "merge_original",
-      "practice_name": "P&E DENTAL P.C.",
-      "rationale": "Accepted T2: row is already outside the true-solo bucket; persisted reasoning/URLs support a dentist-owned single-location group, and remaining signals do not justify DSO/T3 promotion without new web review.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "shared_phone_multiple_locations"
-      ],
-      "web_searched": false,
-      "zip": "60077"
+      "practice_name": "ARTISAN DENTAL GROUP - RICHARD MADDALOZZO DDS MS LLC",
+      "rationale": "parent_or_legal_entity_signal is the practice's OWN entity name ('Artisan Dental Group of Illinois LLC'), and shared_ein (reach 2) plus shared_phone (reach 2) are consistent with the family perio/GP practice's own same-address sibling entities rather than a corporate MSO; the db label is family_practice (two Maddalozzos). The researcher confirms four dentists at one location, family-run 25+ years, no management company. Because evidence is directory-only (CareCredit locator + Healthgrades), Rule 5 caps confidence at medium; tier single_loc_group stands.",
+      "web_searched": false
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
+      "assigned_tier": "single_loc_group",
+      "batch_file": "batch_15.json",
+      "corrected_confidence": null,
+      "corrected_tier": null,
+      "disposition": "hold_unresolved",
+      "location_id": "da6f355f4c4017d9",
+      "merge_action": "hold_do_not_merge",
+      "practice_name": "P&E DENTAL P.C.",
+      "rationale": "The record shows provider_count 8 with a db 'large_group' label and a db website for a different practice (Weisbartendodontics.com), while the researcher verified only a 2-dentist P&E Dental (Pinsky/Echezarreta) via pandedental.com. Four different shared phones each reach different locations inside the Old Orchard shopping center, indicating address-based conflation of multiple suites into one record. The 8-provider roster and mismatched website contradict the clean 2-dentist single_loc_group claim, so it cannot merge as-is.",
+      "web_searched": false
+    },
+    {
+      "adjudication_source": "opus_batch",
       "assigned_tier": "true_independent",
+      "batch_file": "batch_15.json",
       "corrected_confidence": null,
       "corrected_tier": null,
       "disposition": "hold_dso_verify",
       "location_id": "6f2e042d3b9ebfb1",
       "merge_action": "hold_do_not_merge",
       "practice_name": "Family Choice Dental Inc",
-      "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "db_corporate_conflict",
-        "t1_reasoning_lacks_negative_control_word",
-        "t1_reasoning_lacks_single_location_word"
-      ],
-      "web_searched": false,
-      "zip": "60106"
+      "rationale": "T1 with a hard db_corporate_conflict: affiliated_dso 'Choice Dental Group' and entity_classification dso_national. The researcher's rebuttal (a Texas entity, no tie here) rests on directory-only sources (chamberofcommerce plus a groupdentistrynow DSO deal-roundup) and is hedged ('appears to be'), which cannot supply the positive current-ownership proof T1 requires under Rules 2 and 5. The DSO-affiliation flag plus a DSO deal-roundup URL in the evidence warrant the adversarial verifier pass rather than acceptance.",
+      "web_searched": false
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "true_independent",
+      "batch_file": "batch_15.json",
       "corrected_confidence": null,
       "corrected_tier": null,
       "disposition": "hold_dso_verify",
       "location_id": "8f876a7b6a8b48b0",
       "merge_action": "hold_do_not_merge",
       "practice_name": "Midwest Dental",
-      "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "db_corporate_conflict",
-        "t1_reasoning_lacks_negative_control_word",
-        "t1_reasoning_lacks_single_location_word"
-      ],
-      "web_searched": false,
-      "zip": "60123"
+      "rationale": "The location name IS a known DSO brand ('Midwest Dental') and the db is dso_national with a hard db_corporate_conflict, so Rule 3 forbids accepting it as true_independent regardless of the researcher's evidence. The claim that 1750 N Randall Rd is now Dr. Thomas Yun's independent Randall Meadows Dental (with Midwest Dental's real Elgin office at a different address, 1530 N Randall Rd) is plausible and checkable, but must be confirmed by the adversarial verifier before merge. Holding for DSO verification.",
+      "web_searched": false
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "single_loc_group",
+      "batch_file": "batch_15.json",
       "corrected_confidence": null,
       "corrected_tier": null,
       "disposition": "accept",
       "location_id": "9a7339f9ff5c8997",
       "merge_action": "merge_original",
       "practice_name": "KEITH L GUZAITIS DDS INC",
-      "rationale": "Accepted T2: row is already outside the true-solo bucket; persisted reasoning/URLs support a dentist-owned single-location group, and remaining signals do not justify DSO/T3 promotion without new web review.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "shared_ein_or_parent_tin",
-        "shared_phone_multiple_locations",
-        "t2_provider_count_lte1"
-      ],
-      "web_searched": false,
-      "zip": "60126"
+      "rationale": "Web search confirms Guzaitis Dental Group operates a single location at 188 N York St, Elmhurst (formerly Kopp Dental), listing general/perio/prostho providers \u2014 so shared_ein reach 3 and shared_phone reach 2 are same-address sibling NPI/entity records of one owner-dentist (Keith Guzaitis) practice, not a multi-office network (ruling out a dentist_multi correction). The t2_provider_count_lte1 signal fires only because the group's providers are split across those same-address NPI records; own site gdgdental.com confirms dentist ownership. single_loc_group stands at high confidence.",
+      "web_searched": true
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "single_loc_group",
+      "batch_file": "batch_15.json",
       "corrected_confidence": "medium",
-      "corrected_tier": "dentist_multi",
-      "disposition": "correct",
+      "corrected_tier": null,
+      "disposition": "accept",
       "location_id": "e2f7c997685ed334",
-      "merge_action": "merge_corrected_tier",
+      "merge_action": "merge_original",
       "practice_name": "YUNEZ DENTAL & ASSOCIATES, P.C.",
-      "rationale": "Corrected T2 -> T3: Lane A reasoning itself describes a dentist-owned multi-location/network structure. No hard corporate-control signal remains after screening.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "ao_not_provider_or_practice_name",
-        "ao_reaches_multiple_locations",
-        "directory_only_support",
-        "shared_phone_multiple_locations"
-      ],
-      "web_searched": false,
-      "zip": "60126"
+      "rationale": "The AO reaching 2 locations is Sylvia Galindo, titled OFFICE MANAGER \u2014 a shared administrative contact (Rule 6b artifact), not an owner or corporate controller, and there is no DSO brand, corporate EIN cluster, or parent-org signal. The researcher confirms Dr. Samira Yunez owns the single office at 237 E Butterfield Rd with two practicing dentists (Yunez/Starvel), fitting single_loc_group. Because support is directory/registry-only (Yahoo Local, Healthgrades, NPI registry), Rule 5 caps confidence at medium; tier stands.",
+      "web_searched": false
     },
     {
-      "adjudication_source": "codex_missing_adjudication",
+      "adjudication_source": "opus_batch",
       "assigned_tier": "single_loc_group",
+      "batch_file": "batch_15.json",
+      "corrected_confidence": null,
+      "corrected_tier": null,
+      "disposition": "hold_dso_verify",
+      "location_id": "06103ae3a6ed4ab0",
+      "merge_action": "hold_do_not_merge",
+      "practice_name": "ADVOCATE DENTAL ST CHARLES, LLC",
+      "rationale": "The AO of record, Jubrail Sweis DDS titled 'OWNER', reaches 7 locations (ao_reaches_multiple_locations) while this record's actual practicing-dentist roster is the Bespoke Dental team (Wolski/Baginski), not Sweis \u2014 a classic owner-of-record-vs-practicing-dentist pattern suggesting a stealth multi-location control structure spanning several local brands. The researcher's single_loc_group 'Bespoke Dental, independent' read (medium confidence, acknowledged registration-name discrepancy and stale_founder_history) does not resolve whether Sweis's 7-location ownership is a dentist_multi group or MSO/stealth-DSO control. Sending to the adversarial verifier; not merging as-is.",
+      "web_searched": false
+    },
+    {
+      "adjudication_source": "opus_batch",
+      "assigned_tier": "single_loc_group",
+      "batch_file": "batch_18.json",
       "corrected_confidence": null,
       "corrected_tier": null,
       "disposition": "accept",
-      "location_id": "06103ae3a6ed4ab0",
+      "location_id": "24350c49bb51dcc4",
       "merge_action": "merge_original",
-      "practice_name": "ADVOCATE DENTAL ST CHARLES, LLC",
-      "rationale": "Accepted T2: row is already outside the true-solo bucket; persisted reasoning/URLs support a dentist-owned single-location group, and remaining signals do not justify DSO/T3 promotion without new web review.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "ao_not_provider_or_practice_name",
-        "ao_reaches_multiple_locations",
-        "shared_phone_multiple_locations",
-        "stale_founder_history"
-      ],
-      "web_searched": false,
-      "zip": "60174"
+      "practice_name": "JOHN A. MARSALA D.D.S. ; LTD",
+      "rationale": "Own site rivergrove.dental confirms this address (8225 Grand Ave) operates as dentist-owned 'River Grove Dental Associates' (Bertagna/Siracusa/Soderquist), no DSO. The da_legal_name_mismatch signal is actually corroborating, not conflicting ('RIVER GROVE DENTAL ASSOC LLC' = the current brand), and stale_founder_history is the legacy 1960 PC name predating the partnership. The shared EIN (reach 2) and phone (reach 3) are the same single office's org+provider NPI entities, not an MSO cluster.",
+      "web_searched": false
+    },
+    {
+      "adjudication_source": "opus_batch",
+      "assigned_tier": "dentist_multi",
+      "batch_file": "batch_18.json",
+      "corrected_confidence": null,
+      "corrected_tier": null,
+      "disposition": "accept",
+      "location_id": "aecb6ba204fa7de7",
+      "merge_action": "merge_original",
+      "practice_name": "JWWDENTAL LLC",
+      "rationale": "JWWDENTAL LLC / 'Renovo Endodontic Studio' is a dentist-founded/led endodontic specialty group (Dr. Jonathan W. Wong + partner endodontists) across 4 IL offices, well under the 10+ protected-network threshold; its own site markets it as 'local, independent' with no corporate parent. The hard ao_nonclinical_exec_title fires only because the org-NPI authorized official is an 'Insurance Coordinator' (a clerical back-office role), not a PE/MSO executive title, so it does not indicate corporate control.",
+      "web_searched": false
+    },
+    {
+      "adjudication_source": "opus_batch",
+      "assigned_tier": "single_loc_group",
+      "batch_file": "batch_18.json",
+      "corrected_confidence": null,
+      "corrected_tier": null,
+      "disposition": "accept",
+      "location_id": "39cb0ae981055831",
+      "merge_action": "merge_original",
+      "practice_name": "DR. MICHELE S. HORTON, D.D.S.,P.C.",
+      "rationale": "Own site hortonvranasdds.com confirms a two-dentist-owner single office ('Horton & Vranas, DDS,' families since 1986) with associates \u2014 a genuine single-location group, no DSO brand or shared corporate EIN. The hard ao_nonclinical_exec_title fires because the AO is the office 'Business Administrator' (Sheila Moriarty), a common small-practice clerical role, not MSO control; ao_not_provider_or_practice_name is the same benign fact.",
+      "web_searched": false
+    },
+    {
+      "adjudication_source": "opus_batch",
+      "assigned_tier": "single_loc_group",
+      "batch_file": "batch_18.json",
+      "corrected_confidence": null,
+      "corrected_tier": null,
+      "disposition": "accept",
+      "location_id": "778b814bfeab200c",
+      "merge_action": "merge_original",
+      "practice_name": "Sigdel, Muna",
+      "rationale": "Web-verified: 3216/3218 Kenilworth Ave is Westwyn Dental LLC (own site dentistberwyn.com), a dentist-owned single Berwyn office (Drs. Oh & Schroyer now; Dr. Timothy Walsh historically). The shared officer 'WALSH,TIMOTHY P' (reach 3) is the founding dentist and da_legal_name 'SMILES OF HOPE INC' is the LLC's corporate registration \u2014 not a DSO. The shared phone (reach 4)/domain (reach 2) across location_ids are the same single office under multiple provider NPIs (Sigdel is an associate under this NPI); no MSO/PE signal.",
+      "web_searched": true
+    },
+    {
+      "adjudication_source": "opus_batch",
+      "assigned_tier": "true_independent",
+      "batch_file": "batch_18.json",
+      "corrected_confidence": "medium",
+      "corrected_tier": "dentist_multi",
+      "disposition": "correct",
+      "location_id": "7a9a35b5df9ec246",
+      "merge_action": "merge_corrected_tier",
+      "practice_name": "Laurie Gordon DDS",
+      "rationale": "Not a solo true_independent: 'Today's Dental' (todaysdentalofil.com) is a multi-dentist practice \u2014 Dr. Laurie Gordon PLUS Drs. Rhodes-Gayles, Saini, Bowden, and Pope \u2014 branded 'Laurie Gordon DDS & Associates,' and the shared domain (reach 2) plus the separate 'Today's Dental of Beverly' Chicago office show a dentist-owned two-location group. The T1 rested on directory-only URLs (rule 5); corrected to dentist_multi at medium confidence since the multi-location Gordon ownership is well-supported but the exact brand-ownership structure across both offices is inferred.",
+      "web_searched": true
+    },
+    {
+      "adjudication_source": "opus_batch",
+      "assigned_tier": "single_loc_group",
+      "batch_file": "batch_18.json",
+      "corrected_confidence": null,
+      "corrected_tier": null,
+      "disposition": "hold_dso_verify",
+      "location_id": "e58701e63aa2be9d",
+      "merge_action": "hold_do_not_merge",
+      "practice_name": "OAK VIEW DENTAL GROUP, LTD.",
+      "rationale": "Not single-location: 5950 159th St now operates as 'All Perfect Smiles of Oak Forest,' part of the multi-office 'Perfect Smiles / All Perfect Smiles' group (Roscoe, Beverly, Peterson, Oak Forest \u2014 5+ locations on allperfectsmiles.com), with the shared DA officer Oscar Gonzalez a non-clinical 'Director of Operations' spanning 5 locations and a single owner (Dr. Lena Halikias per BBB). The formerly independent 'Oak View Dental Group (since 1972)' appears absorbed into this brand \u2014 a centralized-ops, acquired-brand consolidation pattern that fail-closed rules require sending to the adversarial verifier rather than accepting or self-promoting.",
+      "web_searched": true
+    },
+    {
+      "adjudication_source": "opus_batch",
+      "assigned_tier": "single_loc_group",
+      "batch_file": "batch_18.json",
+      "corrected_confidence": null,
+      "corrected_tier": null,
+      "disposition": "accept",
+      "location_id": "ee70085725c1b07e",
+      "merge_action": "merge_original",
+      "practice_name": "PROGRESSIVE IMAGING PARTNERS, LLC",
+      "rationale": "Own site pettyandbielikorthodontics.com confirms 'Petty & Bielik Orthodontics' (4233 W 95th St) is owned by three orthodontists (Drs. Petty, Bielik, Karras) with no parent company. 'Progressive Imaging Partners, LLC' is the practice's own imaging/billing entity \u2014 which is why t2_provider_count_lte1 fires (NPPES bridges only 1 provider to the imaging LLC) \u2014 and the shared EIN/phone (reach 2) are simply the clinical PC and imaging LLC at the same address. Dentist-owned single-location specialist group.",
+      "web_searched": false
+    },
+    {
+      "adjudication_source": "opus_batch",
+      "assigned_tier": "single_loc_group",
+      "batch_file": "batch_18.json",
+      "corrected_confidence": "medium",
+      "corrected_tier": "dentist_multi",
+      "disposition": "correct",
+      "location_id": "93a707b4f1ce35c2",
+      "merge_action": "merge_corrected_tier",
+      "practice_name": "DENTAL CARE CENTER JUSTICE LLC",
+      "rationale": "The authorized official is Dr. Syed Rehman, DMD, titled 'OWNER,' and both ao_reaches_multiple_locations (reach 3) and the shared DA officer 'REHMAN,SYED' (reach 4) show he owns/controls a multi-office network. Per rule 6(a) a shared officer that is the practice's OWN dentist-owner across 2+ locations is dentist_multi (T3, still independent) \u2014 no external MSO/PE/DSO brand exists. Corrected to dentist_multi at medium confidence because the multi-location ownership is registry-inferred (the Justice site alone shows one address).",
+      "web_searched": false
+    },
+    {
+      "adjudication_source": "opus_batch",
+      "assigned_tier": "single_loc_group",
+      "batch_file": "batch_18.json",
+      "corrected_confidence": null,
+      "corrected_tier": null,
+      "disposition": "accept",
+      "location_id": "4e4b4093d7d8a16e",
+      "merge_action": "merge_original",
+      "practice_name": "Bandy, Jamie",
+      "rationale": "Own site kirschdentalonline.com confirms 'Kirsch Family Dentistry' (8650 W 159th St), a father-son dentist-owned single office (Michael Kirsch Sr. since 1980, Jr. since 2009). The da_legal_name 'KIRSCH DENTAL LLC' corroborates rather than conflicts, and the shared EIN/domain (reach 2) are the practice's own two provider NPIs at one address; 'Jamie Bandy' is a stale associate registrant under this NPI. No DSO/PE signal.",
+      "web_searched": false
+    },
+    {
+      "adjudication_source": "opus_batch",
+      "assigned_tier": "single_loc_group",
+      "batch_file": "batch_18.json",
+      "corrected_confidence": null,
+      "corrected_tier": null,
+      "disposition": "accept",
+      "location_id": "db708daf91e51c4b",
+      "merge_action": "merge_original",
+      "practice_name": "Gary Gunkel DDS",
+      "rationale": "The assigned single_loc_group tier stands, though the researcher's identity was wrong: the practice at 14430 John Humphrey Dr (website inspiredentalwellness.com, matching db_context) is 'Inspire Dental Wellness' (Dr. Erica Zolnierczyk & team), NOT 'Orland Dental Care/Dr. Khalil Takla' \u2014 Takla's office is a separate practice at 14360 S La Grange Rd. Inspire is a dentist-owned single Orland Park office (provider_count 3); the shared EIN/phone/domain (reach 2) are the same John Humphrey Dr office under multiple provider NPIs, with 'Gary Gunkel' a stale registrant. No DSO/MSO signal found.",
+      "web_searched": true
     },
     {
       "adjudication_source": "codex_missing_adjudication",
@@ -2638,200 +2581,6 @@
       ],
       "web_searched": false,
       "zip": "60126"
-    },
-    {
-      "adjudication_source": "codex_missing_adjudication",
-      "assigned_tier": "single_loc_group",
-      "corrected_confidence": null,
-      "corrected_tier": null,
-      "disposition": "hold_network_review",
-      "location_id": "24350c49bb51dcc4",
-      "merge_action": "hold_do_not_merge",
-      "practice_name": "JOHN A. MARSALA D.D.S. ; LTD",
-      "rationale": "Held: T2 has multiple network signals and lacks a clean own-source single-location rebuttal. It may be T3 or controlled; do not merge as T2 mechanically.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "da_legal_name_mismatch",
-        "shared_ein_or_parent_tin",
-        "shared_phone_multiple_locations",
-        "stale_founder_history"
-      ],
-      "web_searched": false,
-      "zip": "60171"
-    },
-    {
-      "adjudication_source": "codex_missing_adjudication",
-      "assigned_tier": "dentist_multi",
-      "corrected_confidence": null,
-      "corrected_tier": null,
-      "disposition": "accept",
-      "location_id": "aecb6ba204fa7de7",
-      "merge_action": "merge_original",
-      "practice_name": "JWWDENTAL LLC",
-      "rationale": "Accepted T3: assigned tier already represents not-solo, multi-location dentist-owned status. No unresolved corporate-conflict signal remains after screening.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "ao_nonclinical_exec_title",
-        "shared_phone_multiple_locations"
-      ],
-      "web_searched": false,
-      "zip": "60173"
-    },
-    {
-      "adjudication_source": "codex_missing_adjudication",
-      "assigned_tier": "single_loc_group",
-      "corrected_confidence": null,
-      "corrected_tier": null,
-      "disposition": "hold_control_review",
-      "location_id": "39cb0ae981055831",
-      "merge_action": "hold_do_not_merge",
-      "practice_name": "DR. MICHELE S. HORTON, D.D.S.,P.C.",
-      "rationale": "Held: authorized official has a non-clinical/executive title and the Lane A evidence does not cleanly prove a dentist-owned multi-location structure. This is a hidden-control risk, not a safe T1/T2 accept.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "ao_nonclinical_exec_title",
-        "ao_not_provider_or_practice_name",
-        "stale_founder_history"
-      ],
-      "web_searched": false,
-      "zip": "60175"
-    },
-    {
-      "adjudication_source": "codex_missing_adjudication",
-      "assigned_tier": "single_loc_group",
-      "corrected_confidence": null,
-      "corrected_tier": null,
-      "disposition": "accept",
-      "location_id": "778b814bfeab200c",
-      "merge_action": "merge_original",
-      "practice_name": "Sigdel, Muna",
-      "rationale": "Accepted T2: row is already outside the true-solo bucket; persisted reasoning/URLs support a dentist-owned single-location group, and remaining signals do not justify DSO/T3 promotion without new web review.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "da_legal_name_mismatch",
-        "shared_data_axle_officer",
-        "shared_phone_multiple_locations",
-        "shared_website_domain"
-      ],
-      "web_searched": false,
-      "zip": "60402"
-    },
-    {
-      "adjudication_source": "codex_missing_adjudication",
-      "assigned_tier": "true_independent",
-      "corrected_confidence": null,
-      "corrected_tier": null,
-      "disposition": "hold_unresolved",
-      "location_id": "7a9a35b5df9ec246",
-      "merge_action": "hold_do_not_merge",
-      "practice_name": "Laurie Gordon DDS",
-      "rationale": "Held: T1 is supported by directory-style evidence only, which fails the positive-proof standard for true solo ownership.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "directory_only_support",
-        "shared_phone_multiple_locations",
-        "shared_website_domain",
-        "stale_founder_history"
-      ],
-      "web_searched": false,
-      "zip": "60406"
-    },
-    {
-      "adjudication_source": "codex_missing_adjudication",
-      "assigned_tier": "single_loc_group",
-      "corrected_confidence": null,
-      "corrected_tier": null,
-      "disposition": "accept",
-      "location_id": "e58701e63aa2be9d",
-      "merge_action": "merge_original",
-      "practice_name": "OAK VIEW DENTAL GROUP, LTD.",
-      "rationale": "Accepted T2: row is already outside the true-solo bucket; persisted reasoning/URLs support a dentist-owned single-location group, and remaining signals do not justify DSO/T3 promotion without new web review.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "shared_data_axle_officer",
-        "shared_phone_multiple_locations",
-        "shared_website_domain",
-        "stale_founder_history"
-      ],
-      "web_searched": false,
-      "zip": "60452"
-    },
-    {
-      "adjudication_source": "codex_missing_adjudication",
-      "assigned_tier": "single_loc_group",
-      "corrected_confidence": null,
-      "corrected_tier": null,
-      "disposition": "hold_network_review",
-      "location_id": "ee70085725c1b07e",
-      "merge_action": "hold_do_not_merge",
-      "practice_name": "PROGRESSIVE IMAGING PARTNERS, LLC",
-      "rationale": "Held: T2 has multiple network signals and lacks a clean own-source single-location rebuttal. It may be T3 or controlled; do not merge as T2 mechanically.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "shared_ein_or_parent_tin",
-        "shared_phone_multiple_locations",
-        "t2_provider_count_lte1"
-      ],
-      "web_searched": false,
-      "zip": "60453"
-    },
-    {
-      "adjudication_source": "codex_missing_adjudication",
-      "assigned_tier": "single_loc_group",
-      "corrected_confidence": null,
-      "corrected_tier": null,
-      "disposition": "accept",
-      "location_id": "93a707b4f1ce35c2",
-      "merge_action": "merge_original",
-      "practice_name": "DENTAL CARE CENTER JUSTICE LLC",
-      "rationale": "Accepted T2: row is already outside the true-solo bucket; persisted reasoning/URLs support a dentist-owned single-location group, and remaining signals do not justify DSO/T3 promotion without new web review.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "ao_not_provider_or_practice_name",
-        "ao_reaches_multiple_locations",
-        "shared_data_axle_officer"
-      ],
-      "web_searched": false,
-      "zip": "60458"
-    },
-    {
-      "adjudication_source": "codex_missing_adjudication",
-      "assigned_tier": "single_loc_group",
-      "corrected_confidence": null,
-      "corrected_tier": null,
-      "disposition": "accept",
-      "location_id": "4e4b4093d7d8a16e",
-      "merge_action": "merge_original",
-      "practice_name": "Bandy, Jamie",
-      "rationale": "Accepted T2: row is already outside the true-solo bucket; persisted reasoning/URLs support a dentist-owned single-location group, and remaining signals do not justify DSO/T3 promotion without new web review.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "da_legal_name_mismatch",
-        "shared_ein_or_parent_tin",
-        "shared_website_domain",
-        "stale_founder_history"
-      ],
-      "web_searched": false,
-      "zip": "60462"
-    },
-    {
-      "adjudication_source": "codex_missing_adjudication",
-      "assigned_tier": "single_loc_group",
-      "corrected_confidence": null,
-      "corrected_tier": null,
-      "disposition": "hold_network_review",
-      "location_id": "db708daf91e51c4b",
-      "merge_action": "hold_do_not_merge",
-      "practice_name": "Gary Gunkel DDS",
-      "rationale": "Held: T2 has multiple network signals and lacks a clean own-source single-location rebuttal. It may be T3 or controlled; do not merge as T2 mechanically.",
-      "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-      "screen_signal_codes": [
-        "shared_ein_or_parent_tin",
-        "shared_phone_multiple_locations",
-        "shared_website_domain"
-      ],
-      "web_searched": false,
-      "zip": "60462"
     },
     {
       "adjudication_source": "codex_missing_adjudication",
@@ -4424,26 +4173,26 @@
       "true_independent": 143
     },
     "corrected_tier_counts": {
-      "None": 212,
-      "dentist_multi": 8,
-      "single_loc_group": 57
+      "None": 209,
+      "dentist_multi": 10,
+      "single_loc_group": 58
     },
     "disposition_counts": {
-      "accept": 99,
-      "correct": 65,
-      "hold_control_review": 12,
-      "hold_dso_verify": 51,
-      "hold_network_review": 24,
-      "hold_unresolved": 26
+      "accept": 106,
+      "correct": 68,
+      "hold_control_review": 9,
+      "hold_dso_verify": 49,
+      "hold_network_review": 20,
+      "hold_unresolved": 25
     },
     "merge_action_counts": {
-      "hold_do_not_merge": 113,
-      "merge_corrected_tier": 65,
-      "merge_original": 99
+      "hold_do_not_merge": 103,
+      "merge_corrected_tier": 68,
+      "merge_original": 106
     },
     "source_counts": {
-      "codex_missing_adjudication": 147,
-      "opus_batch": 130
+      "codex_missing_adjudication": 107,
+      "opus_batch": 170
     },
     "total_dispositions": 277,
     "unique_location_ids": 277

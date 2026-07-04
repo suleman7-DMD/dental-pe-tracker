@@ -483,3 +483,35 @@ Use `_adjudication_rollup_complete_20260703.json` for the next merge gate, not t
 recovery-only rollup. If Fable wants higher coverage, review the 113 holds, especially the 72
 Codex holds, but they must remain excluded unless explicitly accepted/corrected. Still no DB,
 Supabase, LEDGER, or PROGRESS writes occurred.
+
+## §6l — T1/T2 positive-proof audit completed (2026-07-04)
+
+User asked Codex to run the required T1/T2 audit gate before any Lane A write. Codex ran a
+files-only audit/remediation pass:
+
+- Script: `scrapers/audit_lane_a_t1_t2.py`
+- Audit artifact: `_lane_a_20260702/audit_t1_t2_positive_proof_20260704.json`
+- Source-check artifact: `_lane_a_20260702/audit_t1_t2_source_check_20260704.json`
+- Source-check manual notes: `_lane_a_20260702/audit_t1_t2_source_check_notes_20260704.md`
+
+Policy applied:
+- Hold T1/T2 rows that still carry `db_corporate_conflict` or `parent_or_legal_entity_signal`.
+- Hold T1 rows that still carry hard roster/group contradictions (`t1_provider_count_gt1`,
+  `t1_group_entity_classification`, `t1_multiple_provider_surnames`).
+- Downgrade high-confidence directory-supported T1/T2 rows to medium; do not let directory-only
+  evidence publish as high-confidence true-independent proof.
+
+Result after late Opus batches (`batch_13`, `batch_14`, `batch_15`, `batch_18`) were incorporated:
+- Scanned 2,415 candidate T1/T2 rows.
+- Held 50 rows into triage as `t1_t2_positive_proof_audit_hold`.
+- Downgraded confidence on 480 overconfident T1/T2 rows.
+- Candidate now has **2,827 rows** and validates cleanly with `consolidate_census.py --validate-only`.
+- Tally after audit: T1 1,433 / T2 932 / T3 357 / T4 7 / T5 49 / T6 49.
+- Triage now has 659 rows.
+
+Bounded source check over the 103-row fixed-seed audit sample: 84/103 sampled rows had at least
+one resolving citation. Four corporate-language regex hits were manually reviewed; three were
+already held, and one was generic `supported by` practice-language rather than DSO/MSO language.
+No additional source-check holds were added.
+
+Still no DB, Supabase, LEDGER, or PROGRESS writes occurred.

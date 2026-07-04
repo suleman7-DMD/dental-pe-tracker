@@ -2224,25 +2224,19 @@
   ],
   "_unit": "laneA_029",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "single_loc_group",
+   "batch_file": "batch_14.json",
    "corrected_confidence": null,
    "corrected_tier": null,
-   "disposition": "hold_control_review",
+   "disposition": "hold_dso_verify",
    "location_id": "b342564015ef538e",
    "merge_action": "hold_do_not_merge",
    "practice_name": "LAWRENCE R FINE DDS PLLC",
-   "rationale": "Held: authorized official has a non-clinical/executive title and the Lane A evidence does not cleanly prove a dentist-owned multi-location structure. This is a hidden-control risk, not a safe T1/T2 accept.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_nonclinical_exec_title",
-    "ao_not_provider_or_practice_name",
-    "ao_reaches_multiple_locations"
-   ],
-   "web_searched": false,
-   "zip": "60560"
+   "rationale": "Web search refutes the researcher's premise that this is 'led by Dr. Scott Vlk': Vlk was FORCED TO SELL the practice, and the current NPPES AO is Molly Walsh, a non-clinical 'Director of Operations' (hard signal) who reaches 2 location_ids. An undisclosed post-sale acquirer plus a non-clinical operations executive spanning multiple offices is a classic group/MSO back-office pattern (rule 6c) that cannot be cleared as an independent single-location group. Holding for adversarial DSO/group verification.",
+   "web_searched": true
   },
-  "_triage_reason": "adjudication_hold_control_review"
+  "_triage_reason": "adjudication_hold_dso_verify"
  },
  {
   "location_id": "4e53fa60dcbec4bf",
@@ -2421,50 +2415,6 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
-  "location_id": "98cfdd5c475f12b5",
-  "practice_name": "SHOREWOOD FAMILY DENTAL CARE LLP",
-  "zip": "60404",
-  "assigned_tier": "true_independent",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://shorewoodfamilydentalcare.com/",
-   "https://findadentist.ada.org/dentists/dr-robert-s-funk-shorewood-0038V00002yk4wZQAQ-a1C8V00000lWvvsUAC"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Dr. Robert Funk is documented as owner and managing partner of this practice (serving the community since 1974) at 607 W Jefferson St. The dataset's 'Family Dental Care' brand_hint is a generic-name collision, not the real regional 'Family Dental Care' DSO chain -- no such affiliation appears in any source. Classified true_independent.",
-  "searched": [
-   "Shorewood Family Dental Care IL Robert Funk dentist"
-  ],
-  "_unit": "laneA_035",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "true_independent",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_network_review",
-   "location_id": "98cfdd5c475f12b5",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "SHOREWOOD FAMILY DENTAL CARE LLP",
-   "rationale": "Held: T1 has multiple independent network/control signals and the persisted reasoning does not fully rebut them with current owner + single-location proof.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_not_provider_or_practice_name",
-    "shared_ein_or_parent_tin",
-    "shared_phone_multiple_locations",
-    "stale_founder_history",
-    "t1_reasoning_lacks_negative_control_word",
-    "t1_reasoning_lacks_single_location_word"
-   ],
-   "web_searched": false,
-   "zip": "60404"
-  },
-  "_triage_reason": "adjudication_hold_network_review"
- },
- {
   "location_id": "aa8443060e413966",
   "practice_name": "Engle Dental",
   "zip": "60450",
@@ -2576,50 +2526,6 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
-  "location_id": "1e3f91e292ba9aec",
-  "practice_name": "ARLINGTON COMFORT DENTAL PARTNERSHIP",
-  "zip": "60004",
-  "assigned_tier": "single_loc_group",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.arlingtoncomfortdental.com/",
-   "https://www.yelp.com/biz/gary-c-relias-dmd-arlington-comfort-dental-arlington-heights",
-   "https://www.yelp.com/biz/arlington-comfort-dental-arlington-heights"
-  ],
-  "evidence_artifacts": [
-   "Yelp lists 1 location, 2 physicians for this practice"
-  ],
-  "confidence": "medium",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Despite the 'Comfort Dental' name matching a known national franchise brand, the practice's own website frames it as independently owned (dentist 'fulfilled her lifelong dream of owning her own dental practice') with no reference to Comfort Dental Group corporate, and search results explicitly note it 'appears to be a separate entity from the larger Comfort Dental franchise network.' Yelp shows 2 physicians at 1 location. Medium confidence because the current site names Dr. Debbie Rhie while the NPPES authorized official on file is Gary Relias, suggesting a since-unrecorded ownership change at the same address -- but no source found any evidence of corporate/DSO control either name.",
-  "searched": [
-   "Comfort Dental Arlington Heights IL 271 N Dunton Ave",
-   "Comfort Dental locator \"Arlington Heights\" IL franchise comfortdental.com"
-  ],
-  "_unit": "laneA_037",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "single_loc_group",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_dso_verify",
-   "location_id": "1e3f91e292ba9aec",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "ARLINGTON COMFORT DENTAL PARTNERSHIP",
-   "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "db_corporate_conflict",
-    "t2_provider_count_lte1"
-   ],
-   "web_searched": false,
-   "zip": "60004"
-  },
-  "_triage_reason": "adjudication_hold_dso_verify"
- },
- {
   "location_id": "8bb56d655fd949a6",
   "practice_name": "PEDIATRIC AND FAMILY DENTISTRY PC",
   "zip": "60004",
@@ -2667,47 +2573,6 @@
   ],
   "_unit": "laneA_038",
   "_triage_reason": "undetermined_by_agent"
- },
- {
-  "location_id": "008d4f50cb1392c5",
-  "practice_name": "GARY P. BALAS, D.D.S.",
-  "zip": "60004",
-  "assigned_tier": "single_loc_group",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.drbalas.com/",
-   "https://www.yelp.com/biz/gary-p-balas-dds-arlington-heights"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": "ao:BALAS_GARY",
-  "reasoning": "Own website (drbalas.com) confirms Dr. Gary P. Balas as the dentist-owner at 1430 N Arlington Heights Rd, address and phone matching exactly. No corporate parent or additional locations found; the 7-provider count in our data reflects an associate-staffed single-office practice, fitting single_loc_group rather than a DSO.",
-  "searched": [
-   "Gary P. Balas DDS Arlington Heights IL dentist"
-  ],
-  "_unit": "laneA_038",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "single_loc_group",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_control_review",
-   "location_id": "008d4f50cb1392c5",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "GARY P. BALAS, D.D.S.",
-   "rationale": "Held: authorized official has a non-clinical/executive title and the Lane A evidence does not cleanly prove a dentist-owned multi-location structure. This is a hidden-control risk, not a safe T1/T2 accept.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_nonclinical_exec_title",
-    "ao_not_provider_or_practice_name",
-    "shared_phone_multiple_locations"
-   ],
-   "web_searched": false,
-   "zip": "60004"
-  },
-  "_triage_reason": "adjudication_hold_control_review"
  },
  {
   "location_id": "1483f65b1bcd1a0a",
@@ -2908,22 +2773,17 @@
   ],
   "_unit": "laneA_042",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "dentist_multi",
+   "batch_file": "batch_15.json",
    "corrected_confidence": null,
    "corrected_tier": null,
    "disposition": "hold_dso_verify",
    "location_id": "ebe25e498a1c96fc",
    "merge_action": "hold_do_not_merge",
    "practice_name": "Barrington Smiles",
-   "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "db_corporate_conflict",
-    "shared_phone_multiple_locations"
-   ],
-   "web_searched": false,
-   "zip": "60010"
+   "rationale": "Hard db_corporate_conflict flags affiliated_dso 'Midwest Dental' (a known DSO brand) with entity_classification dso_national. The researcher argues this is the unrelated dentist-led Midwest Dental Sleep Center (Dr. Craig, 5 locations, shared_phone reach 3 consistent with that network), but a 'CEO' title (Scott Craig) is present, confidence is only medium, and Rules 2/3 forbid accepting a known-DSO-brand conflict. Sending to the adversarial verifier to confirm dentist control vs corporate/MSO before any dentist_multi merge; not promoting to a DSO tier myself.",
+   "web_searched": false
   },
   "_triage_reason": "adjudication_hold_dso_verify"
  },
@@ -2947,6 +2807,42 @@
   ],
   "_unit": "laneA_043",
   "_triage_reason": "undetermined_by_agent"
+ },
+ {
+  "location_id": "10b07c234864d8d5",
+  "practice_name": "META ENDO PLLC",
+  "zip": "60015",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.metaendo.com/",
+   "https://www.metaendo.com/meet-dr-trinh.html",
+   "https://www.metaendo.com/meet-our-endodontists.html"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "MeTa Endodontics' own website confirms the single-location practice at 707 Lake Cook Rd #300, Deerfield is co-owned by endodontist Dr. Tam Trinh, with a second endodontist (Dr. Mehta) also practicing there. Dentist-owned, single location, no DSO/corporate parent named.",
+  "searched": [
+   "\"Meta Endo\" Deerfield IL endodontics Tam Trinh"
+  ],
+  "_unit": "laneA_043",
+  "_adjudication": {
+   "adjudication_source": "opus_batch",
+   "assigned_tier": "single_loc_group",
+   "batch_file": "batch_15.json",
+   "corrected_confidence": null,
+   "corrected_tier": null,
+   "disposition": "hold_unresolved",
+   "location_id": "10b07c234864d8d5",
+   "merge_action": "hold_do_not_merge",
+   "practice_name": "META ENDO PLLC",
+   "rationale": "The location record is internally contradictory: the org NPI is Dr. Tam Trinh's (MeTa Endo per the researcher's metaendo.com evidence), but the bridged provider roster is four unrelated surnames (Dalloul/Oleari/Schichtel/Treiber), the db website is northbrooksmiles.com (shared_website_domain signal), the DA legal name is 'Zen Dental', and two different phones each reach other locations. Three distinct practice identities collapsed onto one record cannot be cleanly merged as a single_loc_group, and the shared domain/phones across differently-named offices leave ownership unverifiable. Holding as unresolved rather than accepting.",
+   "web_searched": false
+  },
+  "_triage_reason": "adjudication_hold_unresolved"
  },
  {
   "location_id": "7bb0716140f51ee2",
@@ -3920,22 +3816,17 @@
   },
   "_unit": "laneA_056",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "single_loc_group",
+   "batch_file": "batch_13.json",
    "corrected_confidence": null,
    "corrected_tier": null,
    "disposition": "hold_dso_verify",
    "location_id": "1feacfd70c3cc8aa",
    "merge_action": "hold_do_not_merge",
    "practice_name": "ARBOR HILLS DENTAL CARE",
-   "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict, parent_or_legal_entity_signal). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "db_corporate_conflict",
-    "parent_or_legal_entity_signal"
-   ],
-   "web_searched": false,
-   "zip": "60061"
+   "rationale": "Hard db_corporate_conflict names Western Dental (Rule-3 brand) with entity_classification dso_national and affiliated_pe_sponsor 'formerly New Mountain Capital' (Western Dental/Sonrava's actual PE owner), so the DB genuinely believes this is a Western Dental unit. The researcher's own-site evidence (Drs. Theodore and Samantha Cho, no DSO mention) is a credible false-match rebuttal, but Rule 3 forbids accepting a named DSO brand on a T2 row. Hold for the adversarial verifier.",
+   "web_searched": false
   },
   "_triage_reason": "adjudication_hold_dso_verify"
  },
@@ -4059,60 +3950,6 @@
    "zip": "60067"
   },
   "_triage_reason": "adjudication_hold_network_review"
- },
- {
-  "location_id": "2bc6f5c2918433f0",
-  "practice_name": "ARTISAN DENTAL GROUP - RICHARD MADDALOZZO DDS MS LLC",
-  "zip": "60067",
-  "assigned_tier": "single_loc_group",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.carecredit.com/doctor-locator/palatine-il/artisan-dental-group-of-illinois-llc-892bcb/",
-   "https://www.healthgrades.com/dentist/dr-richard-maddalozzo-ybpwfrz"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Artisan Dental Group of Illinois LLC at 649 N 1st Bank Dr is a periodontics/general practice employing four dentists (Richard Maddalozzo DDS MS, Donna Maddalozzo DDS MS, Paul Delaney DDS MS, Angelo Maltezos DDS) at one location. Patient reviews reference a family-run practice going back 25+ years; no DSO, management company, or corporate parent found.",
-  "searched": [
-   "Artisan Dental Group Richard Maddalozzo Palatine IL"
-  ],
-  "intel": {
-   "website_note": "Periodontics-focused multi-dentist group practice.",
-   "provider_notes": "Dr. Richard (Rick) Maddalozzo DDS MS; Dr. Donna Maddalozzo DDS MS; Dr. Paul Delaney DDS MS; Dr. Angelo Maltezos DDS",
-   "services": [
-    "periodontics",
-    "dental implants",
-    "oral cancer screening",
-    "gum disease treatment"
-   ],
-   "sources": [
-    "https://www.healthgrades.com/dentist/dr-richard-maddalozzo-ybpwfrz"
-   ]
-  },
-  "_unit": "laneA_057",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "single_loc_group",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_dso_verify",
-   "location_id": "2bc6f5c2918433f0",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "ARTISAN DENTAL GROUP - RICHARD MADDALOZZO DDS MS LLC",
-   "rationale": "Held: persisted bundle has a contradictory corporate/control signal (parent_or_legal_entity_signal). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "parent_or_legal_entity_signal",
-    "shared_ein_or_parent_tin",
-    "shared_phone_multiple_locations"
-   ],
-   "web_searched": false,
-   "zip": "60067"
-  },
-  "_triage_reason": "adjudication_hold_dso_verify"
  },
  {
   "location_id": "d37009fe92b97289",
@@ -4254,22 +4091,17 @@
   ],
   "_unit": "laneA_059",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "dentist_multi",
+   "batch_file": "batch_13.json",
    "corrected_confidence": null,
    "corrected_tier": null,
    "disposition": "hold_dso_verify",
    "location_id": "b32d6f1dfb116fe4",
    "merge_action": "hold_do_not_merge",
    "practice_name": "Tidy Smiles",
-   "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict, parent_or_legal_entity_signal). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "db_corporate_conflict",
-    "parent_or_legal_entity_signal"
-   ],
-   "web_searched": false,
-   "zip": "60074"
+   "rationale": "Hard db_corporate_conflict names Aspen Dental (Rule-3 brand) with affiliated_pe_sponsor Leonard Green & Partners (Aspen's PE owner), entity_classification dso_national. The researcher's evidence that the NPI address is Dr. Sandhya Pallam's own 'All Smiles Family Dental' (2 owned offices) and that the real Aspen Palatine is a different address (968 vs 537 E Dundee) is plausible, but Rule 2 is not tier-limited and a marquee DSO brand in the DB signal routes to the verifier regardless of the T3 assignment.",
+   "web_searched": false
   },
   "_triage_reason": "adjudication_hold_dso_verify"
  },
@@ -4530,6 +4362,60 @@
   ],
   "_unit": "laneA_062",
   "_triage_reason": "undetermined_by_agent"
+ },
+ {
+  "location_id": "da6f355f4c4017d9",
+  "practice_name": "P&E DENTAL P.C.",
+  "zip": "60077",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.pandedental.com/about-us/",
+   "https://www.pandedental.com/our-doctors/nathan-pinsky/"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Searched practice name plus AO 'Nathan Pinsky'; pandedental.com confirms Dr. Nathan Pinsky (President) and Dr. Jesus Echezarreta jointly run P&E Dental at 4905 Old Orchard Center Ste 528, a single-suite practice with a long local-ownership lineage (formerly Lance Robbins DDS before that). Dentist-owned, single location, multiple providers = T2.",
+  "searched": [
+   "P&E Dental PC Skokie Old Orchard Nathan Pinsky"
+  ],
+  "intel": {
+   "website_url": "https://www.pandedental.com/",
+   "website_note": "Established practice-history marketing ('Formerly Lance Robbins DDS'); active review presence (224 reviews via Birdeye, star value not confirmed).",
+   "services": [
+    "dentures (full and partial)",
+    "preventative",
+    "corrective",
+    "cosmetic",
+    "surgical",
+    "emergency dentistry"
+   ],
+   "provider_count_web": 2,
+   "provider_notes": "Dr. Nathan Pinsky DDS (President) and Dr. Jesus Echezarreta DDS.",
+   "distinguishing_notes": "Continuous dental office at this suite for ~46+ years through multiple dentist-owner successions (Gustavson/Robbins -> Robbins -> Pinsky/Echezarreta).",
+   "sources": [
+    "https://www.pandedental.com/about-us/",
+    "https://www.pandedental.com/our-doctors/nathan-pinsky/"
+   ]
+  },
+  "_unit": "laneA_062",
+  "_adjudication": {
+   "adjudication_source": "opus_batch",
+   "assigned_tier": "single_loc_group",
+   "batch_file": "batch_15.json",
+   "corrected_confidence": null,
+   "corrected_tier": null,
+   "disposition": "hold_unresolved",
+   "location_id": "da6f355f4c4017d9",
+   "merge_action": "hold_do_not_merge",
+   "practice_name": "P&E DENTAL P.C.",
+   "rationale": "The record shows provider_count 8 with a db 'large_group' label and a db website for a different practice (Weisbartendodontics.com), while the researcher verified only a 2-dentist P&E Dental (Pinsky/Echezarreta) via pandedental.com. Four different shared phones each reach different locations inside the Old Orchard shopping center, indicating address-based conflation of multiple suites into one record. The 8-provider roster and mismatched website contradict the clean 2-dentist single_loc_group claim, so it cannot merge as-is.",
+   "web_searched": false
+  },
+  "_triage_reason": "adjudication_hold_unresolved"
  },
  {
   "location_id": "a3a37f95a0e67f28",
@@ -7060,22 +6946,17 @@
   ],
   "_unit": "laneA_095",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "single_loc_group",
+   "batch_file": "batch_14.json",
    "corrected_confidence": null,
    "corrected_tier": null,
    "disposition": "hold_dso_verify",
    "location_id": "3af1e2ccc1b5eb23",
    "merge_action": "hold_do_not_merge",
    "practice_name": "WESTERN DENTAL GROUP PC",
-   "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict, parent_or_legal_entity_signal). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "db_corporate_conflict",
-    "parent_or_legal_entity_signal"
-   ],
-   "web_searched": false,
-   "zip": "60618"
+   "rationale": "The db_corporate_conflict (hard) is 'Western Dental' (Sonrava), which is on the protected known-DSO brand list. Even though the researcher's collision argument (named for Western Ave, own domain, Sonrava has no IL locations) is plausible, binding rule 3 forbids accepting a known-DSO-brand name collision at T1/T2 and rule 2 routes a known-brand corporate conflict to the verifier. Holding for adversarial verification rather than accepting.",
+   "web_searched": false
   },
   "_triage_reason": "adjudication_hold_dso_verify"
  },
@@ -8649,77 +8530,6 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
-  "location_id": "31abbd4a8d8300c9",
-  "practice_name": "COMFORT DENTAL LLC",
-  "zip": "60639",
-  "assigned_tier": "true_independent",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://en.wikipedia.org/wiki/Comfort_Dental",
-   "https://comfortdentalfranchise.com/about/",
-   "https://www.opencare.com/dentists/chicago-il/dr-angelo-stamos-dmd-24631308108d/"
-  ],
-  "evidence_artifacts": [
-   "brand_hint_false_positive:Comfort Dental (national franchise operates in only ~10 states, none is Illinois)"
-  ],
-  "confidence": "medium",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "The pre-existing affiliated_dso hint pointed to the national 'Comfort Dental' franchise (founded by Dr. Rick Kushner, ~150-180 locations), but that franchise's own about/Wikipedia pages list operations in only ~10 states (CO, AZ, KS, MO, MT, NM, OH, OK, TX, WA) -- Illinois is not among them, and no Comfort Dental corporate locator lists this Armitage Ave address. This appears to be a locally-named, coincidentally-branded solo practice run by Dr. Angelo Stamos, DMD, not the national chain. Kept at medium confidence given the name collision requires inference from absence of corporate evidence rather than a positive independent-ownership statement.",
-  "searched": [
-   "Comfort Dental 4020 W Armitage Ave Chicago locations",
-   "comfortdental.com Chicago Armitage location Angelo Stamos franchise",
-   "\"Comfort Dental\" Illinois location Chicago corporate franchise Kushner",
-   "\"Angelo Stamos\" dentist Comfort Dental Chicago owner"
-  ],
-  "intel": {
-   "website_url": null,
-   "provider_notes": "Dr. Angelo Stamos, DMD; speaks Greek and English.",
-   "services": [
-    "braces and retainers",
-    "bridges and dentures",
-    "fillings",
-    "Invisalign",
-    "root canals",
-    "teeth whitening",
-    "crowns",
-    "extractions",
-    "veneers",
-    "wisdom teeth removal",
-    "same-day dentures"
-   ],
-   "insurance_note": "Accepts credit cards; offers HMO dentistry.",
-   "distinguishing_notes": "Hours Mon-Fri 8am-5pm.",
-   "sources": [
-    "https://www.yelp.com/biz/comfort-dental-center-chicago",
-    "https://www.opencare.com/dentists/chicago-il/comfort-dental-center-24630612232c/"
-   ]
-  },
-  "_unit": "laneA_114",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "true_independent",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_dso_verify",
-   "location_id": "31abbd4a8d8300c9",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "COMFORT DENTAL LLC",
-   "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_not_provider_or_practice_name",
-    "db_corporate_conflict",
-    "t1_reasoning_lacks_negative_control_word",
-    "t1_reasoning_lacks_owner_word"
-   ],
-   "web_searched": false,
-   "zip": "60639"
-  },
-  "_triage_reason": "adjudication_hold_dso_verify"
- },
- {
   "location_id": "9c7f34a525b09172",
   "practice_name": "Roci Elvi DMD",
   "zip": "60639",
@@ -9201,70 +9011,6 @@
   ],
   "_unit": "laneA_119",
   "_triage_reason": "undetermined_by_agent"
- },
- {
-  "location_id": "213d8285856873eb",
-  "practice_name": "Dental Salon",
-  "zip": "60642",
-  "assigned_tier": "dentist_multi",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://dentalsalon.com/",
-   "https://www.dentalsalon.com/our-providers"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": "brand:dental_salon",
-  "reasoning": "Own site (dentalsalon.com, fetched) states the practice is 'family-owned' and lists 8 dentists (Arora, Gajendrareddy, Mody, Saad, Sethi, Chaudhari, Pasupuleti, Gong) across two locations (Lincoln Park and Schaumburg), founded 2003 by Dr. Mark Morris and continued by Drs. Arora and Mody after his 2024 passing. No DSO/PE mention anywhere; this corrects the pre-existing dso_national tag -- it is a dentist-owned 2-location multi-specialty group, i.e. dentist_multi, not a national DSO.",
-  "searched": [
-   "\"Dental Salon\" 939 W North Ave Chicago dentist",
-   "Dental Salon Chicago Lincoln Park Schaumburg owner DSO private equity"
-  ],
-  "intel": {
-   "website_url": "https://dentalsalon.com/",
-   "website_note": "Polished multi-provider practice site with online booking; positions itself as one-stop multi-specialty care to avoid outside referrals.",
-   "services": [
-    "general dentistry",
-    "cosmetic",
-    "implants",
-    "periodontal",
-    "oral surgery",
-    "endodontics",
-    "Invisalign",
-    "whitening"
-   ],
-   "technology": [],
-   "provider_count_web": 8,
-   "provider_notes": "Drs. Rashi Arora (DDS), Praveen Gajendrareddy (DDS, periodontist), Pooja Mody (DDS), Mustafa Saad (DDS, oral surgery/implants), Jasveen Sethi (DDS, endo), Puja Chaudhari (DMD), Samhitha Pasupuleti (DMD), Margaret Gong (DMD); plus 2 RDH hygienists",
-   "distinguishing_notes": "Founded 2003 by Dr. Mark Morris; continued by Arora/Mody after his 2024 passing; two locations (Lincoln Park + Schaumburg); Chicago Reader 'best dentist' 5 years running.",
-   "sources": [
-    "https://dentalsalon.com/",
-    "https://www.dentalsalon.com/our-providers"
-   ]
-  },
-  "_unit": "laneA_119",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "dentist_multi",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_dso_verify",
-   "location_id": "213d8285856873eb",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "Dental Salon",
-   "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "db_corporate_conflict",
-    "shared_phone_multiple_locations",
-    "stale_founder_history"
-   ],
-   "web_searched": false,
-   "zip": "60642"
-  },
-  "_triage_reason": "adjudication_hold_dso_verify"
  },
  {
   "location_id": "d220f31ef6738c88",
@@ -9815,6 +9561,68 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
+  "location_id": "a5714245bc2fae33",
+  "practice_name": "DENTAL SURGERY SERVICES, P.C.",
+  "zip": "60647",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.fullsmilefamilydentist.com/meet-the-team",
+   "https://www.fullsmilefamilydentist.com/"
+  ],
+  "evidence_artifacts": [
+   "ein_shared_with_sibling_unit_dental360_entity_unresolved"
+  ],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "This NPI operates publicly as 'Full Smile Family Dentist' at 3939 W Fullerton Ave (phone matches exactly). The practice's own 'Meet the Team' page names Dr. Edison Ishaya as President plus associate dentists Dr. Massad and Dr. Omar - a dentist-owned, multi-provider single-location group with no Dental 360/corporate branding anywhere on-site. Context data shows this NPI's EIN is shared with a same-unit Dental 360 (Family Dental Group) entity, which I could not corroborate with any documentary evidence tying Full Smile itself to that brand, so I did not escalate to stealth_dso; confidence held at medium pending that unresolved signal.",
+  "searched": [
+   "\"Dental Surgery Services\" Chicago Fullerton Steven Fischman dentist",
+   "\"Dental Surgery Services\" 3939 Fullerton Chicago dentist",
+   "\"Full Smile Family Dentist\" Chicago owner dentist \"Dental 360\" OR \"Family Dental Group\"",
+   "\"Full Smile Family Dentist\" Ishaya OR Fischman team doctors"
+  ],
+  "intel": {
+   "website_url": "https://www.fullsmilefamilydentist.com/",
+   "website_note": "Practice site (in business since 2004/1994 per listings) presents as a standard family-dental small-group site; no online-booking widget observed.",
+   "services": [
+    "cleanings",
+    "crowns/bridges/veneers",
+    "dentures",
+    "extractions",
+    "fillings",
+    "implants",
+    "clear aligners",
+    "night/snore guards",
+    "whitening",
+    "periodontal maintenance"
+   ],
+   "provider_count_web": 3,
+   "provider_notes": "Dr. Edison Ishaya (President, UIC grad, speaks Assyrian/Russian); Dr. Massad (DMD, UIC); Dr. Omar (DMD, UIC, trilingual English/Spanish/Arabic).",
+   "sources": [
+    "https://www.fullsmilefamilydentist.com/meet-the-team",
+    "https://www.fullsmilefamilydentist.com/"
+   ]
+  },
+  "_unit": "laneA_126",
+  "_adjudication": {
+   "adjudication_source": "opus_batch",
+   "assigned_tier": "single_loc_group",
+   "batch_file": "batch_14.json",
+   "corrected_confidence": null,
+   "corrected_tier": null,
+   "disposition": "hold_dso_verify",
+   "location_id": "a5714245bc2fae33",
+   "merge_action": "hold_do_not_merge",
+   "practice_name": "DENTAL SURGERY SERVICES, P.C.",
+   "rationale": "The researcher themselves flagged the unresolved signal: this NPI's EIN (201771535) is shared with a same-unit Dental 360 / Family Dental Group entity, and Dental 360/Brite is on the protected known-DSO list. Compounding it, a shared Data-Axle officer (RIZKALLA, GEORGE) reaches 3 location_ids and the shared domain abrushabove.net reaches another location. A shared corporate EIN cluster tied to a known DSO brand plus a common officer across 3 offices is MSO back-office infrastructure (rules 3 and 6c) that must not merge as an independent group. Holding for adversarial DSO verification.",
+   "web_searched": false
+  },
+  "_triage_reason": "adjudication_hold_dso_verify"
+ },
+ {
   "location_id": "c42bbfd07106f9f2",
   "practice_name": "1ST FAMILY DENTAL OF LOGAN SQUARE",
   "zip": "60647",
@@ -9865,23 +9673,17 @@
   ],
   "_unit": "laneA_127",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "single_loc_group",
+   "batch_file": "batch_13.json",
    "corrected_confidence": null,
    "corrected_tier": null,
    "disposition": "hold_dso_verify",
    "location_id": "e50dfc828412c437",
    "merge_action": "hold_do_not_merge",
    "practice_name": "SANEI CENTER PC",
-   "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_reaches_multiple_locations",
-    "db_corporate_conflict",
-    "stale_founder_history"
-   ],
-   "web_searched": false,
-   "zip": "60647"
+   "rationale": "Hard db_corporate_conflict names Western Dental (a Rule-3 known DSO brand / Sonrava) with entity_classification dso_national. The researcher argues a fuzzy 'Northwestern Dental' vs 'Western Dental' substring collision (plausible), but Rule 3 is fail-closed: a named DSO brand on a T1/T2 row is never accepted. The ao_reaches_multiple_locations signal (Sanei across 2 sites) also needs owner/network review. Routing to the adversarial verifier to confirm the collision rather than self-clearing.",
+   "web_searched": false
   },
   "_triage_reason": "adjudication_hold_dso_verify"
  },
@@ -11241,57 +11043,6 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
-  "location_id": "7a9a35b5df9ec246",
-  "practice_name": "Laurie Gordon DDS",
-  "zip": "60406",
-  "assigned_tier": "true_independent",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.dentalplans.com/dentists/illinois/blue-island/60406/dr-laurie-gordon-27691/",
-   "https://www.sharecare.com/doctor/dr-laurie-s-gordon"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Multiple sources confirm Dr. Laurie Gordon, DDS at 2310 York St, Blue Island (phone (708) 388-0001 matches), practicing continuously since 1988 (38 years) after UIC dental school. No corporate parent, DSO, or PE signal found in any listing; long-tenured solo owner-dentist.",
-  "searched": [
-   "Laurie Gordon DDS Blue Island IL dentist 2310 York"
-  ],
-  "intel": {
-   "owner_career_stage": "late_career",
-   "provider_notes": "BA Psychology, University of Illinois Urbana-Champaign (1983); DDS, University of Illinois College of Dentistry, Chicago (1987); practicing in Blue Island since 1988.",
-   "distinguishing_notes": "Member of ADA, Chicago Dental Society, Illinois State Dental Society, Academy of General Dentistry, and Alpha Omega International Dental Fraternity.",
-   "sources": [
-    "https://www.dentalplans.com/dentists/illinois/blue-island/60406/dr-laurie-gordon-27691/",
-    "https://www.sharecare.com/doctor/dr-laurie-s-gordon"
-   ]
-  },
-  "_unit": "laneA_140",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "true_independent",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_unresolved",
-   "location_id": "7a9a35b5df9ec246",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "Laurie Gordon DDS",
-   "rationale": "Held: T1 is supported by directory-style evidence only, which fails the positive-proof standard for true solo ownership.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "directory_only_support",
-    "shared_phone_multiple_locations",
-    "shared_website_domain",
-    "stale_founder_history"
-   ],
-   "web_searched": false,
-   "zip": "60406"
-  },
-  "_triage_reason": "adjudication_hold_unresolved"
- },
- {
   "location_id": "6831c65dc7623f42",
   "practice_name": "DR CHAIKEN & ASSOC. DENTIST, LTD",
   "zip": "60409",
@@ -11747,6 +11498,59 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
+  "location_id": "e58701e63aa2be9d",
+  "practice_name": "OAK VIEW DENTAL GROUP, LTD.",
+  "zip": "60452",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.yelp.com/biz/oakview-dental-group-oak-forest",
+   "https://citytocitymarket.com/oakview-dental-group-oak-forest",
+   "https://local.yahoo.com/info-199052280-austin-peter-p-oak-view-dental-group-ltd-oak-forest"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": "brand:oak_view_dental_group",
+  "reasoning": "Web listings describe Oak View Dental Group as 'a locally-owned dental office... since 1972' at 5950 159th St, staffed by named dentists Peter Austin, Philip Levoy, Greg Stern, and Basel Hajjar. Multi-dentist, single-location, no corporate/DSO/PE signal found.",
+  "searched": [
+   "Oak View Dental Group Oak Forest IL Peter Austin dentist"
+  ],
+  "intel": {
+   "website_note": "Locally-owned since 1972; presence limited to directory listings, no independent branded site found.",
+   "services": [
+    "fillings",
+    "sealants",
+    "inlays and onlays",
+    "crowns and bridges",
+    "cosmetic dentistry",
+    "dental sleep medicine"
+   ],
+   "provider_notes": "Dentists: Peter Austin (recently retired per a patient review), Philip Levoy, Greg Stern, Basel Hajjar.",
+   "distinguishing_notes": "One of the longest-running dental practices in Oak Forest (53+ years in operation).",
+   "sources": [
+    "https://www.yelp.com/biz/oakview-dental-group-oak-forest",
+    "https://citytocitymarket.com/oakview-dental-group-oak-forest"
+   ]
+  },
+  "_unit": "laneA_149",
+  "_adjudication": {
+   "adjudication_source": "opus_batch",
+   "assigned_tier": "single_loc_group",
+   "batch_file": "batch_18.json",
+   "corrected_confidence": null,
+   "corrected_tier": null,
+   "disposition": "hold_dso_verify",
+   "location_id": "e58701e63aa2be9d",
+   "merge_action": "hold_do_not_merge",
+   "practice_name": "OAK VIEW DENTAL GROUP, LTD.",
+   "rationale": "Not single-location: 5950 159th St now operates as 'All Perfect Smiles of Oak Forest,' part of the multi-office 'Perfect Smiles / All Perfect Smiles' group (Roscoe, Beverly, Peterson, Oak Forest \u2014 5+ locations on allperfectsmiles.com), with the shared DA officer Oscar Gonzalez a non-clinical 'Director of Operations' spanning 5 locations and a single owner (Dr. Lena Halikias per BBB). The formerly independent 'Oak View Dental Group (since 1972)' appears absorbed into this brand \u2014 a centralized-ops, acquired-brand consolidation pattern that fail-closed rules require sending to the adversarial verifier rather than accepting or self-promoting.",
+   "web_searched": true
+  },
+  "_triage_reason": "adjudication_hold_dso_verify"
+ },
+ {
   "location_id": "45c3ff989564e69c",
   "practice_name": "SHEILA M. VACENDAK, DDS, PC",
   "zip": "60452",
@@ -11916,62 +11720,6 @@
   },
   "_unit": "laneA_150",
   "_triage_reason": "closure_suspect"
- },
- {
-  "location_id": "ee70085725c1b07e",
-  "practice_name": "PROGRESSIVE IMAGING PARTNERS, LLC",
-  "zip": "60453",
-  "assigned_tier": "single_loc_group",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.pettyandbielikorthodontics.com/about-us/",
-   "https://www.yelp.com/biz/petty-and-bielik-orthodontics-oak-lawn"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "AO 'Kathryn Bielik' plus exact address (4233 W 95th St) and phone (708-636-2900) match match 'Petty & Bielik Orthodontics'. Own site confirms it is owned by Dr. William Petty, Dr. Kathryn Bielik and Dr. Theresa Karras with no parent company mentioned. 'Progressive Imaging Partners, LLC' appears to be this orthodontic practice's imaging-equipment/billing entity name in NPPES. Multi-dentist, one address = single_loc_group (specialist).",
-  "searched": [
-   "Progressive Imaging Partners Oak Lawn IL 4233 w 95th st dental"
-  ],
-  "intel": {
-   "website_url": "https://www.pettyandbielikorthodontics.com/",
-   "website_note": "Orthodontics practice site.",
-   "services": [
-    "orthodontics"
-   ],
-   "technology": [],
-   "provider_count_web": 3,
-   "provider_notes": "Dr. William Petty, Dr. Kathryn Bielik, Dr. Theresa Karras.",
-   "distinguishing_notes": "Multilingual office - Spanish and Polish translators available.",
-   "sources": [
-    "https://www.pettyandbielikorthodontics.com/about-us/",
-    "https://www.yelp.com/biz/petty-and-bielik-orthodontics-oak-lawn"
-   ]
-  },
-  "_unit": "laneA_151",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "single_loc_group",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_network_review",
-   "location_id": "ee70085725c1b07e",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "PROGRESSIVE IMAGING PARTNERS, LLC",
-   "rationale": "Held: T2 has multiple network signals and lacks a clean own-source single-location rebuttal. It may be T3 or controlled; do not merge as T2 mechanically.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "shared_ein_or_parent_tin",
-    "shared_phone_multiple_locations",
-    "t2_provider_count_lte1"
-   ],
-   "web_searched": false,
-   "zip": "60453"
-  },
-  "_triage_reason": "adjudication_hold_network_review"
  },
  {
   "location_id": "14a15d38fb5c7e3c",
@@ -12292,67 +12040,6 @@
   },
   "_unit": "laneA_155",
   "_triage_reason": "undetermined_by_agent"
- },
- {
-  "location_id": "db708daf91e51c4b",
-  "practice_name": "Gary Gunkel DDS",
-  "zip": "60462",
-  "assigned_tier": "single_loc_group",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.wheresmydentist.com/dentist-1306916465-dr.-khalil-takla--dds-orland-park",
-   "https://www.usa-dentist.com/6848/orland-dental-care-kyle-takla"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "medium",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Searched Dr. Gary Gunkel DDS Orland Park, then the exact address+phone (14430 John Humphrey Dr, (708) 364-8900). A third-party aggregator (wheresmydentist.com) ties this practice's own primary NPI, 1306916465, directly to Dr. Khalil Takla, DDS (Loyola DDS 1999), operating as 'Orland Dental Care' at this exact address/phone -- not to a 'Gary Gunkel.' No corporate parent, management company, or DSO brand found anywhere; Takla is a licensed practicing dentist. Classified single_loc_group (provider_count 3) at medium confidence because the NPPES registrant name is stale relative to the dentist actually confirmed operating there (a practice-transfer/name-lag artifact, not a DSO signal).",
-  "searched": [
-   "Gary Gunkel DDS Orland Park IL dentist",
-   "\"14430 John Humphrey\" Orland Park dentist \"364-8900\"",
-   "Khalil Takla DDS Orland Park IL dentist",
-   "\"Orland Dental Care\" \"14430 John Humphrey\" OR \"John Humphrey Dr\" Takla"
-  ],
-  "intel": {
-   "website_url": "https://www.orlanddentalcare.com/",
-   "website_note": "Operates as 'Orland Dental Care'; site emphasizes same-day/next-day appointments and walk-ins for families.",
-   "services": [
-    "fillings (amalgam/composite)",
-    "crowns",
-    "dentures",
-    "implants",
-    "whitening"
-   ],
-   "provider_notes": "Dr. Khalil Takla, DDS, Loyola University Chicago Dental School 1999, prosthodontics-concentration training.",
-   "owner_career_stage": "late_career",
-   "distinguishing_notes": "Multilingual staff (Arabic, Polish); advertises a $99 new-patient cleaning/exam/x-ray special for uninsured patients.",
-   "sources": [
-    "https://www.usa-dentist.com/6848/orland-dental-care-kyle-takla"
-   ]
-  },
-  "_unit": "laneA_156",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "single_loc_group",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_network_review",
-   "location_id": "db708daf91e51c4b",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "Gary Gunkel DDS",
-   "rationale": "Held: T2 has multiple network signals and lacks a clean own-source single-location rebuttal. It may be T3 or controlled; do not merge as T2 mechanically.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "shared_ein_or_parent_tin",
-    "shared_phone_multiple_locations",
-    "shared_website_domain"
-   ],
-   "web_searched": false,
-   "zip": "60462"
-  },
-  "_triage_reason": "adjudication_hold_network_review"
  },
  {
   "location_id": "51ac18289e1ae93b",
@@ -13128,22 +12815,17 @@
   },
   "_unit": "laneA_166",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "single_loc_group",
+   "batch_file": "batch_13.json",
    "corrected_confidence": null,
    "corrected_tier": null,
    "disposition": "hold_dso_verify",
    "location_id": "f3959b4a9ac8e139",
    "merge_action": "hold_do_not_merge",
    "practice_name": "SILVA DENTAL CENTER LTD",
-   "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "db_corporate_conflict",
-    "shared_ein_or_parent_tin"
-   ],
-   "web_searched": false,
-   "zip": "60804"
+   "rationale": "Hard db_corporate_conflict (dso_regional, Precision Dental Care) plus a shared EIN 465833863 spanning 4 distinct location_ids and a DB website 'Central Dental Associates' that matches neither Silva nor Precision. The researcher only rebutted the Precision name collision and did not reconcile the 4-location EIN cluster or the third brand name, while asserting single-location. Rule 2/Rule 6c: a shared corporate EIN cluster with a dso_regional label is unresolved corporate/network signal, so hold for the verifier rather than accept T2.",
+   "web_searched": false
   },
   "_triage_reason": "adjudication_hold_dso_verify"
  },
@@ -13251,22 +12933,17 @@
   },
   "_unit": "laneA_167",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "dentist_multi",
+   "batch_file": "batch_13.json",
    "corrected_confidence": null,
    "corrected_tier": null,
    "disposition": "hold_dso_verify",
    "location_id": "827b2ed9490623cd",
    "merge_action": "hold_do_not_merge",
    "practice_name": "Glow Dental",
-   "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "db_corporate_conflict",
-    "shared_ein_or_parent_tin"
-   ],
-   "web_searched": false,
-   "zip": "60805"
+   "rationale": "Hard db_corporate_conflict (dso_regional, Family Dental Care) plus shared EIN 363554595 across 6 location_ids and a DB website 'Evergreen Park Dental' \u2014 none of which match the researcher's 'Glow Dental 4-location dentist merger' story. Family Dental Care is a Chicago regional group the DB treats as corporate (dso_regional), so this address may actually be a Family Dental Care unit rather than dentist-owned Glow. The EIN-6 cluster vs the claimed 4-office network is unreconciled; per fail-closed I hold for the verifier and never self-promote to corporate.",
+   "web_searched": false
   },
   "_triage_reason": "adjudication_hold_dso_verify"
  },
@@ -13691,23 +13368,17 @@
   },
   "_unit": "laneA_171",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "true_independent",
+   "batch_file": "batch_15.json",
    "corrected_confidence": null,
    "corrected_tier": null,
    "disposition": "hold_dso_verify",
    "location_id": "6f2e042d3b9ebfb1",
    "merge_action": "hold_do_not_merge",
    "practice_name": "Family Choice Dental Inc",
-   "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "db_corporate_conflict",
-    "t1_reasoning_lacks_negative_control_word",
-    "t1_reasoning_lacks_single_location_word"
-   ],
-   "web_searched": false,
-   "zip": "60106"
+   "rationale": "T1 with a hard db_corporate_conflict: affiliated_dso 'Choice Dental Group' and entity_classification dso_national. The researcher's rebuttal (a Texas entity, no tie here) rests on directory-only sources (chamberofcommerce plus a groupdentistrynow DSO deal-roundup) and is hedged ('appears to be'), which cannot supply the positive current-ownership proof T1 requires under Rules 2 and 5. The DSO-affiliation flag plus a DSO deal-roundup URL in the evidence warrant the adversarial verifier pass rather than acceptance.",
+   "web_searched": false
   },
   "_triage_reason": "adjudication_hold_dso_verify"
  },
@@ -14176,61 +13847,6 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
-  "location_id": "dff2693b4fb03dd6",
-  "practice_name": "Gentle Dental Smile",
-  "zip": "60133",
-  "assigned_tier": "true_independent",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://gentledentalsmile.com/",
-   "https://gentledental.interdent.com/locations"
-  ],
-  "evidence_artifacts": [
-   "name_collision: 'Gentle Dental Smile' vs national 'Gentle Dental' (InterDent) brand"
-  ],
-  "confidence": "medium",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Existing entity_classification flagged this as dso_national under brand 'Gentle Dental,' but this is a name-only collision: the practice runs its own independent site (gentledentalsmile.com) at a single address, and the real national 'Gentle Dental' (InterDent) locator page lists no Illinois office at this address (nearest IL InterDent-branded sites are Yorkville/Mundelein/Hoffman Estates/Chicago, none matching, and a direct fetch of interdent.com's own locator confirms IL is entirely absent from its footprint: only HI, CA, OR, WA, AZ, NV, OK, KS). No documentary link to InterDent found, so reclassified independent per address-level evidence rather than name match.",
-  "searched": [
-   "Gentle Dental Hanover Park IL 5537 County Farm Rd locations",
-   "\"Gentle Dental\" InterDent Illinois locations",
-   "Gentle Dental Smile Hanover Park IL Dr owner dentist name gentledentalsmile.com"
-  ],
-  "intel": {
-   "website_url": "https://gentledentalsmile.com/",
-   "website_note": "Standalone single-location practice site, not part of the InterDent Gentle Dental network despite the similar name.",
-   "distinguishing_notes": "Aggregator listings cite roughly a 4.7-star rating from ~310 patient reviews.",
-   "sources": [
-    "https://gentledentalsmile.com/",
-    "https://www.yelp.com/biz/gentle-dental-smile-hanover-park"
-   ]
-  },
-  "_unit": "laneA_177",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "true_independent",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_dso_verify",
-   "location_id": "dff2693b4fb03dd6",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "Gentle Dental Smile",
-   "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "db_corporate_conflict",
-    "t1_reasoning_lacks_negative_control_word",
-    "t1_reasoning_lacks_owner_word",
-    "t1_reasoning_lacks_single_location_word"
-   ],
-   "web_searched": false,
-   "zip": "60133"
-  },
-  "_triage_reason": "adjudication_hold_dso_verify"
- },
- {
   "location_id": "bbdcf63c1d812b73",
   "practice_name": "PARK BLVD DENTISTRY",
   "zip": "60137",
@@ -14610,51 +14226,6 @@
   ],
   "_unit": "laneA_181",
   "_triage_reason": "undetermined_by_agent"
- },
- {
-  "location_id": "24350c49bb51dcc4",
-  "practice_name": "JOHN A. MARSALA D.D.S. ; LTD",
-  "zip": "60171",
-  "assigned_tier": "single_loc_group",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.rivergrove.dental/our-practice",
-   "https://www.yelp.com/biz/river-grove-dental-clinic-river-grove"
-  ],
-  "evidence_artifacts": [
-   "shares address 8225 Grand Ave and phone (708) 453-1110 with the current River Grove Dental Associates group"
-  ],
-  "confidence": "medium",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "This NPI entity (established 1960) shares the address (8225 Grand Ave) and phone (708) 453-1110 with the current 'River Grove Dental Associates' group practice (Bertagna/Siracusa/Soderquist, dentist-owned, no DSO signal); the legacy PC name likely predates the current partnership branding. Distinguished from an unrelated same-named John Marsala DDS currently associated with Wheatland Dental Care in Naperville, IL (a different address, treated as a name collision and not used as evidence for this location). No corporate/DSO signal found for the River Grove address.",
-  "searched": [
-   "John Marsala DDS River Grove IL dentist Grand Ave",
-   "\"(708) 453-1110\" dentist River Grove IL"
-  ],
-  "_unit": "laneA_183",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "single_loc_group",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_network_review",
-   "location_id": "24350c49bb51dcc4",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "JOHN A. MARSALA D.D.S. ; LTD",
-   "rationale": "Held: T2 has multiple network signals and lacks a clean own-source single-location rebuttal. It may be T3 or controlled; do not merge as T2 mechanically.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "da_legal_name_mismatch",
-    "shared_ein_or_parent_tin",
-    "shared_phone_multiple_locations",
-    "stale_founder_history"
-   ],
-   "web_searched": false,
-   "zip": "60171"
-  },
-  "_triage_reason": "adjudication_hold_network_review"
  },
  {
   "location_id": "18073f0d2f974b62",
@@ -15335,60 +14906,6 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
-  "location_id": "43027f74b4b8e0d6",
-  "practice_name": "Gentle Dental Care",
-  "zip": "60402",
-  "assigned_tier": "true_independent",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.bbb.org/us/il/berwyn/profile/dentist/gentle-dental-care-0654-88091049",
-   "https://www.yelp.com/biz/zehak-george-dds-berwyn",
-   "https://business.berwyn.net/list/member/g-r-zehak-dds-associates-463"
-  ],
-  "evidence_artifacts": [
-   "Raw ctx tagged this record affiliated_dso='Gentle Dental' / dso_national, but web evidence shows a locally-named independent practice unrelated to the national Gentle Dental (Perot/Prospect) brand \u2014 a name collision, not a brand match."
-  ],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "BBB, Yelp, and the Berwyn business directory all identify this address (6731 26th St) as 'G.R. Zehak, DDS & Associates' / Dr. George Zehak's practice, in business since 1984 and manager Maria Zehak \u2014 a locally-owned family dental office that happens to use the generic name 'Gentle Dental Care.' No locator page or corporate site for the actual national 'Gentle Dental' DSO brand lists this address, so this appears to be a false positive on brand-name matching, not a real DSO location.",
-  "searched": [
-   "Gentle Dental Care 6731 26th St Berwyn IL"
-  ],
-  "intel": {
-   "provider_notes": "Dr. George Zehak, DDS; office manager Maria Zehak.",
-   "insurance_note": "Does not accept Medicare or Medicaid per BBB profile.",
-   "accepts_medicaid": false,
-   "distinguishing_notes": "Currently not accepting new patients per BBB profile; in operation since 1984 (41 years). NOT affiliated with the national 'Gentle Dental' DSO chain despite the identical trade name.",
-   "sources": [
-    "https://www.bbb.org/us/il/berwyn/profile/dentist/gentle-dental-care-0654-88091049"
-   ]
-  },
-  "_unit": "laneA_194",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "true_independent",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_dso_verify",
-   "location_id": "43027f74b4b8e0d6",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "Gentle Dental Care",
-   "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "db_corporate_conflict",
-    "stale_founder_history",
-    "t1_reasoning_lacks_negative_control_word",
-    "t1_reasoning_lacks_single_location_word"
-   ],
-   "web_searched": false,
-   "zip": "60402"
-  },
-  "_triage_reason": "adjudication_hold_dso_verify"
- },
- {
   "location_id": "120e9b88cb476518",
   "practice_name": "CLINICA DENTAL",
   "zip": "60402",
@@ -15761,67 +15278,6 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
-  "location_id": "011e4b0da1b7524b",
-  "practice_name": "CAROLYN BRONKE WIND DDS SC",
-  "zip": "60525",
-  "assigned_tier": "true_independent",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.drbronke.com/meet-our-team",
-   "https://www.healthgrades.com/dentist/dr-carolyn-bronke-wind-274jl"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Confirmed via the practice's own site (drbronke.com) and directories: Dr. Carolyn Bronke Wind, DDS, PC, single location at 507 S La Grange Rd (also listed 47 S 6th Ave Ste F), La Grange 60525, phone (708) 354-1335 matches exactly. Practice established 1997 under her own name/PC with no corporate signal -- solo owner.",
-  "searched": [
-   "Carolyn Bronke Wind DDS La Grange IL dentist"
-  ],
-  "intel": {
-   "website_url": "https://www.drbronke.com/meet-our-team",
-   "website_note": "Practice site with team page; positions as long-established (since 1997) cosmetic/general dentist.",
-   "services": [
-    "Invisalign",
-    "veneers",
-    "Lumineers",
-    "teeth whitening",
-    "sleep apnea/TMD treatment",
-    "dental implants"
-   ],
-   "provider_notes": "Dr. Carolyn Bronke Wind, DDS, University of Illinois graduate (1992); certified in laser dentistry, Invisalign, Lumineers, sleep medicine.",
-   "owner_career_stage": "mid_career",
-   "sources": [
-    "https://www.drbronke.com/meet-our-team",
-    "https://www.healthgrades.com/dentist/dr-carolyn-bronke-wind-274jl"
-   ]
-  },
-  "_unit": "laneA_197",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "true_independent",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_unresolved",
-   "location_id": "011e4b0da1b7524b",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "CAROLYN BRONKE WIND DDS SC",
-   "rationale": "Held: T1 lacks enough current owner-operator and single-location proof to satisfy \u00a76h after screening.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_not_provider_or_practice_name",
-    "shared_ein_or_parent_tin",
-    "shared_phone_multiple_locations",
-    "shared_website_domain",
-    "stale_founder_history"
-   ],
-   "web_searched": false,
-   "zip": "60525"
-  },
-  "_triage_reason": "adjudication_hold_unresolved"
- },
- {
   "location_id": "c01a079b720197d5",
   "practice_name": "Grandinetti Dental",
   "zip": "60525",
@@ -15915,24 +15371,17 @@
   },
   "_unit": "laneA_198",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "true_independent",
+   "batch_file": "batch_14.json",
    "corrected_confidence": null,
    "corrected_tier": null,
    "disposition": "hold_dso_verify",
    "location_id": "6ada7fbc9cf79816",
    "merge_action": "hold_do_not_merge",
    "practice_name": "John Lenz DDS",
-   "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "db_corporate_conflict",
-    "stale_founder_history",
-    "t1_reasoning_lacks_negative_control_word",
-    "t1_reasoning_lacks_single_location_word"
-   ],
-   "web_searched": false,
-   "zip": "60546"
+   "rationale": "The db_corporate_conflict (hard) tags this as dso_national / 'Midwest Dental' (pe_sponsor Gryphon), and Midwest Dental is on the protected known-DSO brand list. Per binding rules 2 and 3, a known DSO brand appearing as T1 can never be accepted on the strength of an own-site 'privately owned' statement (DSOs routinely keep the acquired local name); it must go to the adversarial verifier. Holding for DSO verification rather than promoting or accepting.",
+   "web_searched": false
   },
   "_triage_reason": "adjudication_hold_dso_verify"
  },
@@ -16295,23 +15744,17 @@
   ],
   "_unit": "laneA_205",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "true_independent",
+   "batch_file": "batch_15.json",
    "corrected_confidence": null,
    "corrected_tier": null,
    "disposition": "hold_dso_verify",
    "location_id": "8f876a7b6a8b48b0",
    "merge_action": "hold_do_not_merge",
    "practice_name": "Midwest Dental",
-   "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "db_corporate_conflict",
-    "t1_reasoning_lacks_negative_control_word",
-    "t1_reasoning_lacks_single_location_word"
-   ],
-   "web_searched": false,
-   "zip": "60123"
+   "rationale": "The location name IS a known DSO brand ('Midwest Dental') and the db is dso_national with a hard db_corporate_conflict, so Rule 3 forbids accepting it as true_independent regardless of the researcher's evidence. The claim that 1750 N Randall Rd is now Dr. Thomas Yun's independent Randall Meadows Dental (with Midwest Dental's real Elgin office at a different address, 1530 N Randall Rd) is plausible and checkable, but must be confirmed by the adversarial verifier before merge. Holding for DSO verification.",
+   "web_searched": false
   },
   "_triage_reason": "adjudication_hold_dso_verify"
  },
@@ -16481,67 +15924,6 @@
    ],
    "web_searched": false,
    "zip": "60134"
-  },
-  "_triage_reason": "adjudication_hold_unresolved"
- },
- {
-  "location_id": "be32c4f8df293c5d",
-  "practice_name": "NITA PATEL DDS INC",
-  "zip": "60172",
-  "assigned_tier": "true_independent",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.nitapateldds.com/",
-   "https://www.healthgrades.com/dentist/dr-nita-patel-xl8t3"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Searched the dentist's name; own site nitapateldds.com confirms a solo family dental practice led by Dr. Nita Patel (practicing since 1992) at 350 E Irving Park Rd, Roselle. No corporate parent or DSO signal. Note: this same address/phone also carries a second NPI record ('Patel Dental,' location_id 81fa2361967975be) representing the same physical practice.",
-  "searched": [
-   "Nita Patel DDS Roselle IL dentist 350 Irving Park"
-  ],
-  "intel": {
-   "website_url": "https://www.nitapateldds.com/",
-   "website_note": "Solo-practitioner family dental site; practicing since 1992.",
-   "services": [
-    "teeth whitening",
-    "root canals",
-    "fillings",
-    "dentures"
-   ],
-   "provider_count_web": 1,
-   "owner_career_stage": "late_career",
-   "google_rating": 4.3,
-   "google_review_count": 10,
-   "google_source_url": "https://www.healthgrades.com/dentist/dr-nita-patel-xl8t3",
-   "sources": [
-    "https://www.nitapateldds.com/",
-    "https://www.healthgrades.com/dentist/dr-nita-patel-xl8t3"
-   ]
-  },
-  "_unit": "laneA_208",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "true_independent",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_unresolved",
-   "location_id": "be32c4f8df293c5d",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "NITA PATEL DDS INC",
-   "rationale": "Held: T1 conflicts with roster/group signals that are too large or too contradictory to correct mechanically. This cannot merge as true solo owner-operated without row-level review.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "shared_phone_multiple_locations",
-    "stale_founder_history",
-    "t1_group_entity_classification",
-    "t1_reasoning_lacks_owner_word"
-   ],
-   "web_searched": false,
-   "zip": "60172"
   },
   "_triage_reason": "adjudication_hold_unresolved"
  },
@@ -16798,6 +16180,54 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
+  "location_id": "06103ae3a6ed4ab0",
+  "practice_name": "ADVOCATE DENTAL ST CHARLES, LLC",
+  "zip": "60174",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://bespokedentalco.com/",
+   "https://bespokedentalco.com/our-team/",
+   "https://www.advocatedentalpalatine.com/"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "NPI 1376487744 is registered under the legacy name 'Advocate Dental St Charles LLC' with AO Jubrail Sweis, but the practice's own site at this exact address (804 S 3rd St, St. Charles, IL 60174, phone 630-377-1200) identifies the current operators as Dr. Joe Wolski and Dr. Steve Baginski of independently-branded 'Bespoke Dental Co.', established 2016, with no mention of Sweis, Advocate Dental, or any corporate parent. A direct fetch of Sweis's own Advocate Dental Group site (advocatedentalpalatine.com) lists only a Palatine office and does NOT list this St. Charles address or any '1400 Lincoln Hwy' location (that address actually belongs to the unrelated Bliss Dental practice in this same unit) -- a prior search-engine summary claiming a Sweis St. Charles location was a conflation and has been corrected. Classified single_loc_group (multi-provider, single location) at medium confidence given the AO/registration-name discrepancy.",
+  "searched": [
+   "Advocate Dental St Charles IL Jubrail Sweis",
+   "\"Advocate Dental\" \"804\" St Charles IL 3rd St dentist",
+   "site:advocatedentalpalatine.com St Charles"
+  ],
+  "intel": {
+   "website_url": "https://bespokedentalco.com/",
+   "website_note": "Modern branded practice site ('Bespoke Dental Co.'), family-owned, established 2016; no online booking widget observed.",
+   "provider_notes": "Led by Dr. Joe Wolski and Dr. Steve Baginski (first names only given on public site).",
+   "distinguishing_notes": "Current branding and ownership are entirely different from the historical NPI registrant name 'Advocate Dental St Charles LLC'; not affiliated with Dr. Jubrail Sweis's Advocate Dental Group (Palatine/Crystal Lake/McHenry), despite the similar name.",
+   "sources": [
+    "https://bespokedentalco.com/",
+    "https://bespokedentalco.com/our-team/"
+   ]
+  },
+  "_unit": "laneA_211",
+  "_adjudication": {
+   "adjudication_source": "opus_batch",
+   "assigned_tier": "single_loc_group",
+   "batch_file": "batch_15.json",
+   "corrected_confidence": null,
+   "corrected_tier": null,
+   "disposition": "hold_dso_verify",
+   "location_id": "06103ae3a6ed4ab0",
+   "merge_action": "hold_do_not_merge",
+   "practice_name": "ADVOCATE DENTAL ST CHARLES, LLC",
+   "rationale": "The AO of record, Jubrail Sweis DDS titled 'OWNER', reaches 7 locations (ao_reaches_multiple_locations) while this record's actual practicing-dentist roster is the Bespoke Dental team (Wolski/Baginski), not Sweis \u2014 a classic owner-of-record-vs-practicing-dentist pattern suggesting a stealth multi-location control structure spanning several local brands. The researcher's single_loc_group 'Bespoke Dental, independent' read (medium confidence, acknowledged registration-name discrepancy and stale_founder_history) does not resolve whether Sweis's 7-location ownership is a dentist_multi group or MSO/stealth-DSO control. Sending to the adversarial verifier; not merging as-is.",
+   "web_searched": false
+  },
+  "_triage_reason": "adjudication_hold_dso_verify"
+ },
+ {
   "location_id": "f5a7ad23598f31ca",
   "practice_name": "TIMOTHY W. SHEEHAN,LTD.",
   "zip": "60174",
@@ -16946,62 +16376,6 @@
    "zip": "60174"
   },
   "_triage_reason": "adjudication_hold_unresolved"
- },
- {
-  "location_id": "39cb0ae981055831",
-  "practice_name": "DR. MICHELE S. HORTON, D.D.S.,P.C.",
-  "zip": "60175",
-  "assigned_tier": "single_loc_group",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.hortonvranasdds.com/",
-   "https://www.hortonvranasdds.com/meet-us/dr-michele-shely-horton/"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "The NPI address (2210 Dean St, St Charles) is the practice's own site hortonvranasdds.com, which shows the office operating as 'Horton & Vranas, DDS' with two dentist owners, Dr. Michele Horton and Dr. Ellena Kontos Vranas, serving families since 1986. Single location, no corporate/DSO signal on the site. Two-dentist owner-operated single office = single_loc_group.",
-  "searched": [
-   "\"Michele Horton\" DDS dentist St Charles IL 2210 Dean St"
-  ],
-  "intel": {
-   "website_url": "https://www.hortonvranasdds.com/",
-   "website_note": "Modern practice site with dedicated bio pages for both partner dentists; positions itself as a long-standing family/cosmetic practice.",
-   "services": [
-    "dental implants",
-    "braces/orthodontics",
-    "Invisalign"
-   ],
-   "provider_notes": "Dr. Michele Shely Horton (Fellowship, Academy of General Dentistry) and Dr. Ellena Kontos Vranas, co-partners.",
-   "distinguishing_notes": "Two-dentist partnership practicing together since the 1980s; multiple state/local dental society memberships listed for Dr. Horton.",
-   "sources": [
-    "https://www.hortonvranasdds.com/",
-    "https://www.hortonvranasdds.com/meet-us/dr-michele-shely-horton/"
-   ]
-  },
-  "_unit": "laneA_212",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "single_loc_group",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_control_review",
-   "location_id": "39cb0ae981055831",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "DR. MICHELE S. HORTON, D.D.S.,P.C.",
-   "rationale": "Held: authorized official has a non-clinical/executive title and the Lane A evidence does not cleanly prove a dentist-owned multi-location structure. This is a hidden-control risk, not a safe T1/T2 accept.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_nonclinical_exec_title",
-    "ao_not_provider_or_practice_name",
-    "stale_founder_history"
-   ],
-   "web_searched": false,
-   "zip": "60175"
-  },
-  "_triage_reason": "adjudication_hold_control_review"
  },
  {
   "location_id": "1f65887ed956716a",
@@ -17881,5 +17255,2844 @@
   "source_partition": "lane_a_wave1_20260702",
   "source_unit": "laneA_201",
   "_triage_reason": "r4_network_ge10_brand:aspen_dental"
+ },
+ {
+  "location_id": "812b547cc5aa5354",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.yelp.com/biz/stillwater-dental-group-naperville",
+   "https://stillwaterdentalgroup.com/",
+   "https://www.aetnadentaloffers.com/dentists/illinois/naperville/60564/dr-enrico-medina-34021/"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": "brand:stillwater_dental_group",
+  "reasoning": "Phone (630) 922-0600 and address 2959 Artesian Rd match Stillwater Dental Group, led by Dr. Enrico Medina and Dr. Florina Demian plus a pediatric dentist and hygienists -- a multi-dentist group at one location. No corporate parent, management company, or DSO brand was found; the AO on file (Maggie Roeder) reads as an office manager, not an owner, which is context only. Confidence medium because explicit \"owned by\" language was not found.",
+  "adjudication_note": null,
+  "searched": [
+   "AFO Dental Group Naperville IL Artesian Rd dentist",
+   "Stillwater Dental Group Naperville Enrico Medina owner Artesian"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_005",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "812b547cc5aa5354",
+   "practice_name": null,
+   "assigned_tier": "single_loc_group",
+   "confidence": "medium",
+   "screen_priority": "review_high",
+   "signal_codes": [
+    "ao_not_provider_or_practice_name",
+    "parent_or_legal_entity_signal",
+    "t2_provider_count_lte1"
+   ],
+   "url_profile": {
+    "hosts": [
+     "yelp.com",
+     "stillwaterdentalgroup.com",
+     "aetnadentaloffers.com"
+    ],
+    "directory_hosts": [
+     "yelp.com"
+    ],
+    "direct_hosts": [
+     "stillwaterdentalgroup.com",
+     "aetnadentaloffers.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 30,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal"
+   ]
+  }
+ },
+ {
+  "location_id": "feaa63bd7ced2c0e",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.atidentalcare.com/about",
+   "https://www.healthgrades.com/dentist/dr-monika-kak-24t8c"
+  ],
+  "evidence_artifacts": [
+   "ctx.parent_company='EVENLY ORTHODONTICS DUPONT' checked against web evidence and found unsupported/uncorroborated by any source (no DSO/parent mentioned anywhere); treated as likely Data-Axle noise, not used as evidence"
+  ],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Sun Dental Care PC operates as ATI Dental Care at 572 Weston Ridge Dr, Naperville. Search results explicitly identify Dr. Monika Kak, DDS as \"the owner of ATI Dental Care,\" a single-location practice established since 2002, with no corroboration anywhere of the parent_company hint in ctx. Classified true independent on the strength of direct owner-dentist confirmation.",
+  "adjudication_note": null,
+  "searched": [
+   "\"Sun Dental Care\" Naperville IL 572 Weston Ridge Dr dentist",
+   "\"ATI Dental Care\" Naperville IL owner Heejoon Sun ownership",
+   "\"Monika Kak\" DDS Naperville dentist ATI Dental"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_008",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "feaa63bd7ced2c0e",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "high",
+   "screen_priority": "review_high",
+   "signal_codes": [
+    "ao_not_provider_or_practice_name",
+    "parent_or_legal_entity_signal",
+    "stale_founder_history",
+    "t1_reasoning_lacks_negative_control_word",
+    "t1_reasoning_lacks_single_location_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "atidentalcare.com",
+     "healthgrades.com"
+    ],
+    "directory_hosts": [
+     "healthgrades.com"
+    ],
+    "direct_hosts": [
+     "atidentalcare.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 43,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal",
+    "stale_founder_history"
+   ]
+  }
+ },
+ {
+  "location_id": "0c7b65c48f4108c7",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.songdental.com/meet-dr-song",
+   "https://www.songdental.com/"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Practice's own website (songdental.com) profiles Dr. Brian Song, DDS, FAGD, as the practicing dentist at 6717 Kingery Hwy, Willowbrook, matching the address exactly. No corporate parent, management company, or DSO brand appears anywhere on the site or in directory listings.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; provider_count=2 where the primary NPI is Dr. Brian Song (owner) plus one extra surname MUNAR. The practice's OWN site (songdental.com) profiles Dr. Song as the practicing dentist at the exact address with no parent/MSO/DSO brand, so the single extra NPI reads as a hygienist/associate. The ctx websi]",
+  "searched": [
+   "\"Song Dental\" Willowbrook IL dentist Brian Song"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_009",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "0c7b65c48f4108c7",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "high",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "t1_group_entity_classification",
+    "t1_multiple_provider_surnames",
+    "t1_provider_count_gt1",
+    "t1_reasoning_lacks_owner_word",
+    "t1_reasoning_lacks_single_location_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "songdental.com",
+     "songdental.com"
+    ],
+    "directory_hosts": [],
+    "direct_hosts": [
+     "songdental.com",
+     "songdental.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 41,
+   "audit_action": "hold",
+   "audit_reason": "T1 still conflicts with provider roster/group classification; cannot write as solo owner-operated.",
+   "findings": [
+    "t1_roster_conflict"
+   ]
+  }
+ },
+ {
+  "location_id": "4ca83acbcd91a330",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.dentalplans.com/dentists/illinois/oak-brook/60523/dr-oliver-van-115272/",
+   "https://oakdentalpartners.com/who-we-are/"
+  ],
+  "evidence_artifacts": [
+   "parent_company_field_EVENLY_ORTHODONTICS_DUPONT_suspected_data_artifact_not_corroborated"
+  ],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Searched AO name (Oliver Van) + practice/address, then checked whether the on-file parent_company 'EVENLY ORTHODONTICS DUPONT' corresponds to a real DSO. Found Dr. Oliver V. Van, DDS practicing as a dentist at this exact mall address (120 Oakbrook Ctr), consistent with a dentist-run practice; separately, 'Oak Dental Partners' is a real PE-backed DSO but is GA/FL/AL/PA-based with no IL locations claimed, so it does not match and the parent_company field appears to be an unrelated data artifact (similar to the known Evenly Technologies placeholder issue), not documentary DSO evidence. No branded/stealth-DSO evidence found; classified on the confirmed dentist-staffed single location (small_group, 3 providers).",
+  "adjudication_note": null,
+  "searched": [
+   "\"Oak Brook Dental Center\" 120 Oak Brook Center Mall dentist",
+   "\"Oak Brook Dental Center\" Inc Oliver Van dentist owner",
+   "\"Oak Dental Group West\" Oliver Van Oak Brook locations",
+   "\"Oak Dental Group\" owned dentist DSO private equity"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_017",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "4ca83acbcd91a330",
+   "practice_name": null,
+   "assigned_tier": "single_loc_group",
+   "confidence": "medium",
+   "screen_priority": "review_high",
+   "signal_codes": [
+    "ao_reaches_multiple_locations",
+    "parent_or_legal_entity_signal"
+   ],
+   "url_profile": {
+    "hosts": [
+     "dentalplans.com",
+     "oakdentalpartners.com"
+    ],
+    "directory_hosts": [
+     "dentalplans.com"
+    ],
+    "direct_hosts": [
+     "oakdentalpartners.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 34,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal"
+   ]
+  }
+ },
+ {
+  "location_id": "d70825f173fed496",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.yelp.com/biz/suzy-azalea-dmd-lily-cache-dental-bolingbrook",
+   "https://www.healthgrades.com/dentist/dr-suzy-azalea-y9skh5z"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Dr. Suzy Azalea (DMD) practices as Lily Cache Dental at 761 E Boughton Rd, a single location with no group/DSO branding found. Matches the 2-provider small_group record. Classified single_loc_group (T2).",
+  "adjudication_note": null,
+  "searched": [
+   "Suzy Azlea DMD Bolingbrook IL 761 E Boughton Rd"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_021",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "d70825f173fed496",
+   "practice_name": null,
+   "assigned_tier": "single_loc_group",
+   "confidence": "high",
+   "screen_priority": "review_high",
+   "signal_codes": [
+    "ao_not_provider_or_practice_name",
+    "directory_only_support",
+    "parent_or_legal_entity_signal"
+   ],
+   "url_profile": {
+    "hosts": [
+     "yelp.com",
+     "healthgrades.com"
+    ],
+    "directory_hosts": [
+     "yelp.com",
+     "healthgrades.com"
+    ],
+    "direct_hosts": [],
+    "directory_only": true,
+    "has_direct_source": false
+   },
+   "risk_score": 43,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal",
+    "directory_only_urls"
+   ]
+  }
+ },
+ {
+  "location_id": "1adac605c6abd972",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.solacedentalgroup.com/our-practice/",
+   "https://www.solacedentalgroup.com/about-us/staff/dentists/dr-emad-zaidi"
+  ],
+  "evidence_artifacts": [
+   "ctx parent_company='EVENLY ORTHODONTICS DUPONT' rejected as data artifact: shares the known Evenly Technologies placeholder EIN (273894131) with the neighboring Aspen Dental NPI at the same street, no such parent appears anywhere on the practice's own site"
+  ],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Practice operates as Solace Dental Group at 287 N Weber Rd, Bolingbrook, led by brothers Dr. Emad Zaidi and Dr. Kumail Zaidi at one location -- matches the family_practice signal and 2-provider count. The ctx parent_company field is a known Evenly Technologies placeholder/EIN-sharing artifact (also seen on the co-located Aspen Dental row) and is not corroborated by any web evidence of corporate ownership.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; The parent_company 'EVENLY ORTHODONTICS DUPONT', the evenly.com domain (reach 8), and the Data-Axle officer Daniel Brashear (reach 4) are the documented Evenly Technologies placeholder/web-platform artifact that CLAUDE.md's 2026-06-12 audit demoted as false-corporate \u2014 a benign cross-contamination s]",
+  "searched": [
+   "\"Emad Zaidi\" dentist Bolingbrook IL",
+   "\"Zaidi Dental\" Bolingbrook \"Vincent Dr\""
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_022",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "1adac605c6abd972",
+   "practice_name": null,
+   "assigned_tier": "single_loc_group",
+   "confidence": "high",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "parent_or_legal_entity_signal",
+    "shared_data_axle_officer",
+    "shared_ein_or_parent_tin",
+    "shared_website_domain"
+   ],
+   "url_profile": {
+    "hosts": [
+     "solacedentalgroup.com",
+     "solacedentalgroup.com"
+    ],
+    "directory_hosts": [],
+    "direct_hosts": [
+     "solacedentalgroup.com",
+     "solacedentalgroup.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 48,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal"
+   ]
+  }
+ },
+ {
+  "location_id": "6dc2bceb45b9a4b9",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.ivorydentalhealth.com/",
+   "https://www.ivorydentalhealth.com/about/"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Practice's own site (ivorydentalhealth.com) confirms Ivory Dental at 12624 S Route 59, Plainfield, established 2005, with Dr. Shefali Patel among multiple dentists on staff at this single office. No mention of any parent company, DSO brand, or additional locations.",
+  "adjudication_note": null,
+  "searched": [
+   "\"Ivory Dental\" Plainfield IL Route 59 dentist"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_027",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "6dc2bceb45b9a4b9",
+   "practice_name": null,
+   "assigned_tier": "single_loc_group",
+   "confidence": "high",
+   "screen_priority": "review_high",
+   "signal_codes": [
+    "parent_or_legal_entity_signal",
+    "shared_website_domain",
+    "stale_founder_history",
+    "t2_provider_count_lte1"
+   ],
+   "url_profile": {
+    "hosts": [
+     "ivorydentalhealth.com",
+     "ivorydentalhealth.com"
+    ],
+    "directory_hosts": [],
+    "direct_hosts": [
+     "ivorydentalhealth.com",
+     "ivorydentalhealth.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 37,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal",
+    "stale_founder_history"
+   ]
+  }
+ },
+ {
+  "location_id": "52aad5182c988318",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.smilefamilydentalcareil.com/",
+   "https://www.smilefamilydentalcareil.com/our-locations"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "13400 Illinois Rte 59, Plainfield is Smile Family Dental Care, whose own site names Dr. Wooyoung Choi, DMD as the practicing dentist and titles its location page 'Our Location' (singular), with no second dentist, DSO brand, or corporate parent surfaced in any source. Confidence medium because no explicit ownership statement was found beyond the single-dentist naming pattern.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; The practice's own site (smilefamilydentalcareil.com) names Dr. Wooyoung Choi as the practicing dentist and titles its location page 'Our Location' (singular), and our record entity is his eponymous 'Choi Wooyoung DMD' \u2014 own-site evidence of a single-dentist single-location practice with no DSO bran]",
+  "searched": [
+   "\"Choi\" DMD dentist Plainfield IL Illinois Route 59",
+   "\"Smile Family Dental Care\" Plainfield IL Wooyoung Choi dentist owner"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_027",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "52aad5182c988318",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "medium",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "t1_group_entity_classification",
+    "t1_multiple_provider_surnames",
+    "t1_provider_count_gt1",
+    "t1_reasoning_lacks_negative_control_word",
+    "t1_reasoning_lacks_owner_word",
+    "t1_reasoning_lacks_single_location_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "smilefamilydentalcareil.com",
+     "smilefamilydentalcareil.com"
+    ],
+    "directory_hosts": [],
+    "direct_hosts": [
+     "smilefamilydentalcareil.com",
+     "smilefamilydentalcareil.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 38,
+   "audit_action": "hold",
+   "audit_reason": "T1 still conflicts with provider roster/group classification; cannot write as solo owner-operated.",
+   "findings": [
+    "t1_roster_conflict"
+   ]
+  }
+ },
+ {
+  "location_id": "025ddaa40900a963",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.dentalplans.com/dentists/illinois/crest-hill/60403/dr-victoria-muzykansky-16849/",
+   "https://providerwire.com/general-practice-dentistry/illinois/crest-hill/victoria-dental-1699924308"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Multiple directories consistently identify Victoria Dental at 16117 Weber Rd as owned/operated by Dr. Victoria Muzykansky, a solo general dentist, with no corporate or DSO signal. Classified true_independent.",
+  "adjudication_note": null,
+  "searched": [
+   "Victoria Dental Crest Hill IL Muzykansky"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_035",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "025ddaa40900a963",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "high",
+   "screen_priority": "review_high",
+   "signal_codes": [
+    "ao_not_provider_or_practice_name",
+    "directory_only_support",
+    "parent_or_legal_entity_signal"
+   ],
+   "url_profile": {
+    "hosts": [
+     "dentalplans.com",
+     "providerwire.com"
+    ],
+    "directory_hosts": [
+     "dentalplans.com"
+    ],
+    "direct_hosts": [
+     "providerwire.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 53,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal"
+   ]
+  }
+ },
+ {
+  "location_id": "d8b58f45f195e841",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.northpointos.com/meet-us/meet-the-doctor/",
+   "https://www.yelp.com/biz/northpoint-oral-surgery-arlington-heights"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Dr. Kent Shinozaki, DDS operates Northpoint Oral Surgery at 304 E Rand Rd Ste 200 as, per the practice's own site, 'the only oral surgeon in the practice' -- a solo owner-operator single-location practice. No corporate or DSO affiliation found.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; The practice's own site (Northpoint Oral Surgery) explicitly states Dr. Shinozaki is 'the only oral surgeon in the practice' at one location, which is affirmative evidence that the second NPI (surname DOUGLAS) is not a co-owning/co-practicing surgeon but a support provider (anesthesia/hygiene). Per ]",
+  "searched": [
+   "Kent Shinozaki DDS Arlington Heights IL 304 E Rand Rd",
+   "Northpoint Oral Surgery Kent Shinozaki locations Arlington Heights"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_037",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "d8b58f45f195e841",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "high",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "t1_group_entity_classification",
+    "t1_multiple_provider_surnames",
+    "t1_provider_count_gt1"
+   ],
+   "url_profile": {
+    "hosts": [
+     "northpointos.com",
+     "yelp.com"
+    ],
+    "directory_hosts": [
+     "yelp.com"
+    ],
+    "direct_hosts": [
+     "northpointos.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 41,
+   "audit_action": "hold",
+   "audit_reason": "T1 still conflicts with provider roster/group classification; cannot write as solo owner-operated.",
+   "findings": [
+    "t1_roster_conflict"
+   ]
+  }
+ },
+ {
+  "location_id": "460774793c975fbf",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://arlingtonadvanceddentistry.com/dr-stevan-orser/",
+   "https://www.yelp.com/biz/stevan-orser-dds-aacd-arlington-heights-3"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Dr. Stevan Orser, DDS operates his own practice (Arlington Advanced Dentistry / arlingtonadvanceddentistry.com) at 1845 E Rand Rd Ste 200, presented throughout as his personal practice with his own bio/credentials and no corporate or DSO branding.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; The second surname CZAPEK is tied to the DB website allaboutkidsdentistry.com, which the shared_website_domain signal shows spans 2 locations \u2014 i.e. All About Kids Dentistry is its own co-located pediatric practice, not Orser's associate. Orser cited his OWN separate site (arlingtonadvanceddentistry]",
+  "searched": [
+   "Stevan Orser DDS Arlington Heights IL 1845 E Rand Rd dentist"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_037",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "460774793c975fbf",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "high",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "shared_website_domain",
+    "t1_group_entity_classification",
+    "t1_multiple_provider_surnames",
+    "t1_provider_count_gt1",
+    "t1_reasoning_lacks_owner_word",
+    "t1_reasoning_lacks_single_location_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "arlingtonadvanceddentistry.com",
+     "yelp.com"
+    ],
+    "directory_hosts": [
+     "yelp.com"
+    ],
+    "direct_hosts": [
+     "arlingtonadvanceddentistry.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 45,
+   "audit_action": "hold",
+   "audit_reason": "T1 still conflicts with provider roster/group classification; cannot write as solo owner-operated.",
+   "findings": [
+    "t1_roster_conflict"
+   ]
+  }
+ },
+ {
+  "location_id": "1e3f91e292ba9aec",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.arlingtoncomfortdental.com/",
+   "https://www.yelp.com/biz/gary-c-relias-dmd-arlington-comfort-dental-arlington-heights",
+   "https://www.yelp.com/biz/arlington-comfort-dental-arlington-heights"
+  ],
+  "evidence_artifacts": [
+   "Yelp lists 1 location, 2 physicians for this practice"
+  ],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Despite the 'Comfort Dental' name matching a known national franchise brand, the practice's own website frames it as independently owned (dentist 'fulfilled her lifelong dream of owning her own dental practice') with no reference to Comfort Dental Group corporate, and search results explicitly note it 'appears to be a separate entity from the larger Comfort Dental franchise network.' Yelp shows 2 physicians at 1 location. Medium confidence because the current site names Dr. Debbie Rhie while the NPPES authorized official on file is Gary Relias, suggesting a since-unrecorded ownership change at the same address -- but no source found any evidence of corporate/DSO control either name.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; As with the other Comfort Dental collision this batch, the brand is NOT on the protected known-DSO list and the national franchise has no IL presence; the own website carries a positive independent-ownership statement (the dentist 'fulfilled her lifelong dream of owning her own dental practice') and]",
+  "searched": [
+   "Comfort Dental Arlington Heights IL 271 N Dunton Ave",
+   "Comfort Dental locator \"Arlington Heights\" IL franchise comfortdental.com"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_037",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "1e3f91e292ba9aec",
+   "practice_name": null,
+   "assigned_tier": "single_loc_group",
+   "confidence": "medium",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "db_corporate_conflict",
+    "t2_provider_count_lte1"
+   ],
+   "url_profile": {
+    "hosts": [
+     "arlingtoncomfortdental.com",
+     "yelp.com",
+     "yelp.com"
+    ],
+    "directory_hosts": [
+     "yelp.com",
+     "yelp.com"
+    ],
+    "direct_hosts": [
+     "arlingtoncomfortdental.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 33,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal"
+   ]
+  }
+ },
+ {
+  "location_id": "5ead583d8354e6e4",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://faviadental.com/",
+   "https://www.yelp.com/biz/favia-family-dental-arlington-heights-2"
+  ],
+  "evidence_artifacts": [
+   "ctx parent_company 'EVENLY ORTHODONTICS DUPONT' not corroborated by any web evidence; consistent with known Evenly Technologies placeholder/junk parent-company pattern documented in project history -- disregarded as non-evidence"
+  ],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": "ao:FAVIA_JOSEPH",
+  "reasoning": "Own site (faviadental.com) confirms Dr. Joseph Favia as owner-dentist of Favia Family Dental at 300 E Northwest Hwy, address/phone matching exactly, practicing 30+ years since 1993 (matches year_established). No web evidence of any orthodontics corporate parent or DSO affiliation; the ctx parent_company field appears to be a data artifact, not corroborated by search.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; Own site faviadental.com confirms Dr. Joseph Favia as sole owner-dentist since 1993 (address/phone match), and the DB already classifies it solo_established. The parent_company 'EVENLY ORTHODONTICS DUPONT', evenly.com domain (reach 8), shared officer 'BRASHEAR,DANIEL', and shared phone are the docum]",
+  "searched": [
+   "\"Favia Family Dental\" Arlington Heights IL Joseph Favia dentist"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_038",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "5ead583d8354e6e4",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "high",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "parent_or_legal_entity_signal",
+    "shared_data_axle_officer",
+    "shared_phone_multiple_locations",
+    "shared_website_domain",
+    "stale_founder_history",
+    "t1_reasoning_lacks_negative_control_word",
+    "t1_reasoning_lacks_single_location_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "faviadental.com",
+     "yelp.com"
+    ],
+    "directory_hosts": [
+     "yelp.com"
+    ],
+    "direct_hosts": [
+     "faviadental.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 58,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal",
+    "t1_multiple_network_signals",
+    "stale_founder_history"
+   ]
+  }
+ },
+ {
+  "location_id": "4bbaac19c7ef00f9",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.golfriversmiles.com/",
+   "https://www.yelp.com/biz/golf-river-smiles-des-plaines-2"
+  ],
+  "evidence_artifacts": [
+   "Legal NPPES name 'The Dental Store, Ltd.' trades publicly as 'Golf River Smiles' at 1455 E Golf Rd; verified this is NOT the same entity as the identically-named 'The Dental Store' in Schaumburg (dentalstore.com only lists a Roselle Rd, Schaumburg office, different phone) - checked and ruled out as a coincidental name match"
+  ],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "AO Jason Brenner is confirmed as an administering dentist at this address, branded 'Golf River Smiles,' staffed by several dentists (Brenner, Slominski, Mollsen, Gorden) at the single 1455 E Golf Rd office. No corporate/DSO parent found; classified as a dentist-owned single-location group.",
+  "adjudication_note": null,
+  "searched": [
+   "\"The Dental Store\" Des Plaines IL Brenner golf rd",
+   "\"1455\" \"Golf Rd\" Des Plaines dental store Brenner"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_044",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "4bbaac19c7ef00f9",
+   "practice_name": null,
+   "assigned_tier": "single_loc_group",
+   "confidence": "medium",
+   "screen_priority": "review_high",
+   "signal_codes": [
+    "ao_not_provider_or_practice_name",
+    "parent_or_legal_entity_signal",
+    "shared_phone_multiple_locations"
+   ],
+   "url_profile": {
+    "hosts": [
+     "golfriversmiles.com",
+     "yelp.com"
+    ],
+    "directory_hosts": [
+     "yelp.com"
+    ],
+    "direct_hosts": [
+     "golfriversmiles.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 34,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal"
+   ]
+  }
+ },
+ {
+  "location_id": "f549ca1c4e826ddd",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.yelp.com/biz/krueger-chris-everett-dds-glenview",
+   "https://www.healthgrades.com/dentist/dr-chris-krueger-3pywx"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Searched Krueger's name plus address; consistent directory listings (Yelp, Healthgrades, Doctors Network) show a solo dentist practice opened 1993 at this single address with no corporate/DSO signals. T1 solo owner-operator, high confidence.",
+  "adjudication_note": null,
+  "searched": [
+   "Chris Krueger DDS Glenview IL 950 River Dr dentist"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_048",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "f549ca1c4e826ddd",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "high",
+   "screen_priority": "review_medium",
+   "signal_codes": [
+    "directory_only_support",
+    "parent_or_legal_entity_signal"
+   ],
+   "url_profile": {
+    "hosts": [
+     "yelp.com",
+     "healthgrades.com"
+    ],
+    "directory_hosts": [
+     "yelp.com",
+     "healthgrades.com"
+    ],
+    "direct_hosts": [],
+    "directory_only": true,
+    "has_direct_source": false
+   },
+   "risk_score": 50,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal",
+    "directory_only_urls"
+   ]
+  }
+ },
+ {
+  "location_id": "dd7210ef320babbe",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://glenviewfamilydental.com/doctors/meet-dr-cullinan/",
+   "https://glenviewfamilydental.com/"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Searched practice name, address, and the ctx-listed authorized official (Sean Cullinan); glenviewfamilydental.com confirms Dr. Sean Cullinan has practiced there since 2006, oversaw construction of the current building, and 'assumed ownership of the Family Dental Center in 2008.' No corporate parent or DSO brand appears anywhere. T1 solo owner-operator, high confidence.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; The AO is a general dentist (Sean Cullinan, DMD, GENERAL DENTIST) and the practice's OWN site glenviewfamilydental.com states he 'assumed ownership of the Family Dental Center in 2008,' oversaw the building's construction, and has practiced there since 2006 \u2014 positive current single-owner-operator p]",
+  "searched": [
+   "\"Family Dental Center\" Glenview IL 908 Waukegan Rd Sean Cullinan"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_048",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "dd7210ef320babbe",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "high",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "ao_not_provider_or_practice_name",
+    "parent_or_legal_entity_signal",
+    "shared_ein_or_parent_tin",
+    "shared_phone_multiple_locations",
+    "stale_founder_history"
+   ],
+   "url_profile": {
+    "hosts": [
+     "glenviewfamilydental.com",
+     "glenviewfamilydental.com"
+    ],
+    "directory_hosts": [],
+    "direct_hosts": [
+     "glenviewfamilydental.com",
+     "glenviewfamilydental.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 54,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal",
+    "t1_multiple_network_signals",
+    "stale_founder_history"
+   ]
+  }
+ },
+ {
+  "location_id": "fb7f6105ba971dac",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.mynorthshoresmiles.com/",
+   "https://www.mynorthshoresmiles.com/about.html",
+   "https://www.yelp.com/biz/north-shore-smiles-mount-prospect"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Own website (mynorthshoresmiles.com) confirms Dr. Liya Kunnassery founded and operates NorthShore Smiles Family Dental Care at 830 E Rand Rd Suite 11 (matching address), established 2019. No corporate parent or DSO affiliation found; the ctx brand_hint \"Family Dental Care\" is a generic descriptive phrase in this independent practice's name, not the national DSO brand of that name.",
+  "adjudication_note": null,
+  "searched": [
+   "\"Northshore Smiles Family Dental Care\" Mount Prospect IL",
+   "\"830 E Rand\" Mount Prospect dentist Kunnassery"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_054",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "fb7f6105ba971dac",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "high",
+   "screen_priority": "review_high",
+   "signal_codes": [
+    "ao_not_provider_or_practice_name",
+    "parent_or_legal_entity_signal",
+    "t1_reasoning_lacks_owner_word",
+    "t1_reasoning_lacks_single_location_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "mynorthshoresmiles.com",
+     "mynorthshoresmiles.com",
+     "yelp.com"
+    ],
+    "directory_hosts": [
+     "yelp.com"
+    ],
+    "direct_hosts": [
+     "mynorthshoresmiles.com",
+     "mynorthshoresmiles.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 43,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal"
+   ]
+  }
+ },
+ {
+  "location_id": "5a6589ebbf27badf",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.yelp.com/biz/lund-peter-mount-prospect",
+   "https://peterlunddds.wixsite.com/dentist",
+   "https://findadentist.ada.org/dentists/dr-peter-a-lund-mount-prospect-0038V00002yk1nbQAA-a1C8V00000kY3jXUAS"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Dr. Peter Lund runs a named solo practice (own Wix site, ADA/Yelp/chamber listings) at 200 E Evergreen Ave Suite 124; no second named dentist or corporate signal appears anywhere. DB provider_count=2 likely reflects a hygienist rather than a co-owner dentist. Confidence medium because the DB phone doesn't match every directory's listed number (older listings vary).",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; Accept: the practice's OWN site (peterlunddds.wixsite.com) names only Dr. Peter Lund as solo dentist, and a web search found NO 'Skyles' dentist anywhere in Mount Prospect directories, so the second NPI (SKYLES 1871757807) is a non-practicing/hygienist bridge, not a co-owner dentist \u2014 the affirmativ]",
+  "searched": [
+   "Peter Lund DDS 200 E Evergreen Mount Prospect IL dentist"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_055",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "5a6589ebbf27badf",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "medium",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "shared_phone_multiple_locations",
+    "t1_group_entity_classification",
+    "t1_multiple_provider_surnames",
+    "t1_provider_count_gt1",
+    "t1_reasoning_lacks_negative_control_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "yelp.com",
+     "peterlunddds.wixsite.com",
+     "findadentist.ada.org"
+    ],
+    "directory_hosts": [
+     "yelp.com",
+     "findadentist.ada.org"
+    ],
+    "direct_hosts": [
+     "peterlunddds.wixsite.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 42,
+   "audit_action": "hold",
+   "audit_reason": "T1 still conflicts with provider roster/group classification; cannot write as solo owner-operated.",
+   "findings": [
+    "t1_roster_conflict"
+   ]
+  }
+ },
+ {
+  "location_id": "20c2ed45dd8cf50a",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.invernessdentalcare.com/",
+   "https://www.facebook.com/InvernessDentalCare/",
+   "https://www.yelp.com/biz/inverness-dental-care-inverness-2"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Practice's own site and Facebook page identify Dr. Payal Trivedi as the practicing dentist/owner since 2011 at 1644 W Colonial Pkwy, Inverness; no other dentist or corporate affiliation named. DB shows provider_count=2 but web sources name only Trivedi, so true_independent.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; Accept: the practice's OWN website + Facebook name Dr. Payal Trivedi as owner-operator since 2011 (own-site evidence \u2014 no directory_only signal fired). The fired stale_founder_history signal plus the second surname RITTER identify Ritter as the departed founder/predecessor (Trivedi purchased/took ov]",
+  "searched": [
+   "Inverness Dental Care 1644 W Colonial Pkwy Inverness IL"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_057",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "20c2ed45dd8cf50a",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "high",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "stale_founder_history",
+    "t1_group_entity_classification",
+    "t1_multiple_provider_surnames",
+    "t1_provider_count_gt1",
+    "t1_reasoning_lacks_negative_control_word",
+    "t1_reasoning_lacks_single_location_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "invernessdentalcare.com",
+     "facebook.com",
+     "yelp.com"
+    ],
+    "directory_hosts": [
+     "yelp.com"
+    ],
+    "direct_hosts": [
+     "invernessdentalcare.com",
+     "facebook.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 41,
+   "audit_action": "hold",
+   "audit_reason": "T1 still conflicts with provider roster/group classification; cannot write as solo owner-operated.",
+   "findings": [
+    "t1_roster_conflict",
+    "stale_founder_history"
+   ]
+  }
+ },
+ {
+  "location_id": "2bc6f5c2918433f0",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.carecredit.com/doctor-locator/palatine-il/artisan-dental-group-of-illinois-llc-892bcb/",
+   "https://www.healthgrades.com/dentist/dr-richard-maddalozzo-ybpwfrz"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Artisan Dental Group of Illinois LLC at 649 N 1st Bank Dr is a periodontics/general practice employing four dentists (Richard Maddalozzo DDS MS, Donna Maddalozzo DDS MS, Paul Delaney DDS MS, Angelo Maltezos DDS) at one location. Patient reviews reference a family-run practice going back 25+ years; no DSO, management company, or corporate parent found.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; parent_or_legal_entity_signal is the practice's OWN entity name ('Artisan Dental Group of Illinois LLC'), and shared_ein (reach 2) plus shared_phone (reach 2) are consistent with the family perio/GP practice's own same-address sibling entities rather than a corporate MSO; the db label is family_prac]",
+  "searched": [
+   "Artisan Dental Group Richard Maddalozzo Palatine IL"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_057",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "2bc6f5c2918433f0",
+   "practice_name": null,
+   "assigned_tier": "single_loc_group",
+   "confidence": "high",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "parent_or_legal_entity_signal",
+    "shared_ein_or_parent_tin",
+    "shared_phone_multiple_locations"
+   ],
+   "url_profile": {
+    "hosts": [
+     "carecredit.com",
+     "healthgrades.com"
+    ],
+    "directory_hosts": [
+     "carecredit.com",
+     "healthgrades.com"
+    ],
+    "direct_hosts": [],
+    "directory_only": true,
+    "has_direct_source": false
+   },
+   "risk_score": 54,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal",
+    "directory_only_urls"
+   ]
+  }
+ },
+ {
+  "location_id": "aed5721544edc5ed",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.palatinefamilydentist.com/",
+   "https://www.palatinefamilydentist.com/our-office/",
+   "https://www.yelp.com/biz/nancy-a-bagel-dds-palatine"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "The address (632 N 1st Bank Dr) and phone number ((847) 934-1177) match exactly to Nancy A. Bagel, D.D.S., PC, an independent solo/family practice established since her 1988 graduation -- no 'Emily Chen' or 'Choice Dental Group' presence was found on the web at this address; the census ctx's affiliated_dso label appears to be a stale/mismatched NPPES name/brand tag, likely confused with the nearby but distinct 'Palatine Choice Dental Center' five doors down. Classified per actual web-verified occupant as true independent, not a DSO.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; Web search confirms the researcher's read: 'Palatine Choice Dental Center' sits at 637 1st Bank Dr, five doors from this 632 N 1st Bank Dr record, so the dso_national 'Choice Dental Group' tag is a stale name-match with a distinct nearby practice, not this address. The location's own DB website pala]",
+  "searched": [
+   "\"Choice Dental Group\" Emily Chen Palatine IL dentist",
+   "\"Emily Chen\" DDS Palatine IL \"632\" OR \"1st Bank\" dentist",
+   "\"Nancy A. Bagel\" DDS Palatine IL 632 1st Bank Dr dentist"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_058",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "aed5721544edc5ed",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "medium",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "db_corporate_conflict",
+    "shared_ein_or_parent_tin",
+    "t1_reasoning_lacks_negative_control_word",
+    "t1_reasoning_lacks_owner_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "palatinefamilydentist.com",
+     "palatinefamilydentist.com",
+     "yelp.com"
+    ],
+    "directory_hosts": [
+     "yelp.com"
+    ],
+    "direct_hosts": [
+     "palatinefamilydentist.com",
+     "palatinefamilydentist.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 47,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal"
+   ]
+  }
+ },
+ {
+  "location_id": "d4d3c9b2e9429e9c",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://doctor.webmd.com/doctor/chris-kyros-5a937388-cbe8-43d2-86ee-cb26880201f4-overview",
+   "https://providers.sharecare.com/doctor/dr-chris-kyros"
+  ],
+  "evidence_artifacts": [
+   "record shows AO Chris Kyros and provider_count=2 at single 8957 W Golf Rd, Niles address"
+  ],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": "ao:KYROS_CHRIS",
+  "reasoning": "Web search confirms Dr. Chris Kyros, DDS practicing over 25 years at 8957 W Golf Rd, Niles, IL 60714, phone (847) 827-9850, matching the record and AO exactly; only Kyros is individually named in directory results but the record's own provider_count of 2 combined with no DSO/corporate signal supports a dentist-owned single-location group rather than solo.",
+  "adjudication_note": null,
+  "searched": [
+   "\"Chris Kyros\" DDS Niles IL Golf Rd dentist"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_071",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "d4d3c9b2e9429e9c",
+   "practice_name": null,
+   "assigned_tier": "single_loc_group",
+   "confidence": "medium",
+   "screen_priority": "review_high",
+   "signal_codes": [
+    "directory_only_support",
+    "parent_or_legal_entity_signal",
+    "shared_phone_multiple_locations"
+   ],
+   "url_profile": {
+    "hosts": [
+     "doctor.webmd.com",
+     "providers.sharecare.com"
+    ],
+    "directory_hosts": [
+     "doctor.webmd.com",
+     "providers.sharecare.com"
+    ],
+    "direct_hosts": [],
+    "directory_only": true,
+    "has_direct_source": false
+   },
+   "risk_score": 44,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal",
+    "directory_only_urls"
+   ]
+  }
+ },
+ {
+  "location_id": "76adb0e63e4b6d66",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://datmp.com/",
+   "https://www.yelp.com/biz/dentistry-at-millennium-park-chicago-5"
+  ],
+  "evidence_artifacts": [
+   "Identity confirmed via exact phone-number match: (312) 750-9000 and address 8 S Michigan Ave Ste 1800 both match 'Dentistry at Millennium Park' exactly; record AO Rikki Lieberth appears to be an office administrator/content contributor rather than the owning dentist"
+  ],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "REM DDS INC's registered address and phone exactly match 'Dentistry at Millennium Park,' whose own website names Dr. Nanditha Ranganathan as the practice-defining dentist with no DSO or corporate-parent language anywhere on the site. Single location, dentist-led. Classified single_loc_group.",
+  "adjudication_note": null,
+  "searched": [
+   "\"REM DDS\" Rikki Lieberth 8 S Michigan Ave Chicago dentist",
+   "\"8 S Michigan\" dentist Chicago dental office",
+   "\"REM DDS INC\" NPI Chicago",
+   "\"Dentistry at Millennium Park\" owner dentist Chicago"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_075",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "76adb0e63e4b6d66",
+   "practice_name": null,
+   "assigned_tier": "single_loc_group",
+   "confidence": "high",
+   "screen_priority": "review_medium",
+   "signal_codes": [
+    "ao_not_provider_or_practice_name",
+    "parent_or_legal_entity_signal"
+   ],
+   "url_profile": {
+    "hosts": [
+     "datmp.com",
+     "yelp.com"
+    ],
+    "directory_hosts": [
+     "yelp.com"
+    ],
+    "direct_hosts": [
+     "datmp.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 30,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal"
+   ]
+  }
+ },
+ {
+  "location_id": "fd9f68e3322c2a9d",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://doctor.webmd.com/doctor/betsy-enriquez-d7413dcb-9d6f-426b-b0b9-7aec39a1ddf3-overview",
+   "https://www.healthgrades.com/dentist/dr-betsy-enriquez-3jn57"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Multiple independent directories (WebMD, Healthgrades, Sharecare) consistently show Dr. Betsy Enriquez, DDS as the sole practitioner at 736 W 35th St matching the practice's own phone number, with the entity name itself being her personal PC. No chain or corporate affiliation found.",
+  "adjudication_note": null,
+  "searched": [
+   "Betsy Enriquez DDS Chicago dentist 736 W 35th St"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_091",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "fd9f68e3322c2a9d",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "high",
+   "screen_priority": "review_high",
+   "signal_codes": [
+    "directory_only_support",
+    "parent_or_legal_entity_signal",
+    "t1_reasoning_lacks_owner_word",
+    "t1_reasoning_lacks_single_location_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "doctor.webmd.com",
+     "healthgrades.com"
+    ],
+    "directory_hosts": [
+     "doctor.webmd.com",
+     "healthgrades.com"
+    ],
+    "direct_hosts": [],
+    "directory_only": true,
+    "has_direct_source": false
+   },
+   "risk_score": 53,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal",
+    "directory_only_urls"
+   ]
+  }
+ },
+ {
+  "location_id": "5fd89cb5dc74e67c",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://dentalimpressionschicago.com/doctor/shafeeq-h-bader/",
+   "https://www.zocdoc.com/dentist/shafeeq-bader-dds-111500",
+   "https://www.carecredit.com/doctor-locator/chicago-il/shafeeq-h-bader-dds-mxw386/"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Dr. Shafeeq Bader operates his own-name practice 'Dental Impressions' at 5430 S Kedzie Ave with a dedicated practice website naming him as the doctor; no corporate parent or DSO brand appears anywhere. UIC Dental School grad, single location.",
+  "adjudication_note": null,
+  "searched": [
+   "Shafeeq Bader DDS Chicago 5430 S Kedzie"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_110",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "5fd89cb5dc74e67c",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "high",
+   "screen_priority": "review_medium",
+   "signal_codes": [
+    "da_legal_name_mismatch",
+    "parent_or_legal_entity_signal",
+    "t1_reasoning_lacks_owner_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "dentalimpressionschicago.com",
+     "zocdoc.com",
+     "carecredit.com"
+    ],
+    "directory_hosts": [
+     "zocdoc.com",
+     "carecredit.com"
+    ],
+    "direct_hosts": [
+     "dentalimpressionschicago.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 40,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal"
+   ]
+  }
+ },
+ {
+  "location_id": "31abbd4a8d8300c9",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://en.wikipedia.org/wiki/Comfort_Dental",
+   "https://comfortdentalfranchise.com/about/",
+   "https://www.opencare.com/dentists/chicago-il/dr-angelo-stamos-dmd-24631308108d/"
+  ],
+  "evidence_artifacts": [
+   "brand_hint_false_positive:Comfort Dental (national franchise operates in only ~10 states, none is Illinois)"
+  ],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "The pre-existing affiliated_dso hint pointed to the national 'Comfort Dental' franchise (founded by Dr. Rick Kushner, ~150-180 locations), but that franchise's own about/Wikipedia pages list operations in only ~10 states (CO, AZ, KS, MO, MT, NM, OH, OK, TX, WA) -- Illinois is not among them, and no Comfort Dental corporate locator lists this Armitage Ave address. This appears to be a locally-named, coincidentally-branded solo practice run by Dr. Angelo Stamos, DMD, not the national chain. Kept at medium confidence given the name collision requires inference from absence of corporate evidence rather than a positive independent-ownership statement.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; The db_corporate_conflict brand 'Comfort Dental' is NOT on the protected known-DSO list, and the researcher documented that the national Comfort Dental franchise operates in ~10 states with no IL locations and no locator entry for this Armitage Ave address, so the label is a debunked geographic-impo]",
+  "searched": [
+   "Comfort Dental 4020 W Armitage Ave Chicago locations",
+   "comfortdental.com Chicago Armitage location Angelo Stamos franchise",
+   "\"Comfort Dental\" Illinois location Chicago corporate franchise Kushner",
+   "\"Angelo Stamos\" dentist Comfort Dental Chicago owner"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_114",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "31abbd4a8d8300c9",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "medium",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "ao_not_provider_or_practice_name",
+    "db_corporate_conflict",
+    "t1_reasoning_lacks_negative_control_word",
+    "t1_reasoning_lacks_owner_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "en.wikipedia.org",
+     "comfortdentalfranchise.com",
+     "opencare.com"
+    ],
+    "directory_hosts": [
+     "opencare.com"
+    ],
+    "direct_hosts": [
+     "en.wikipedia.org",
+     "comfortdentalfranchise.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 43,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal"
+   ]
+  }
+ },
+ {
+  "location_id": "d3b3b09cc6ed98dd",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.yelp.com/biz/asian-village-dental-clinic-chicago",
+   "https://www.yellowbot.com/nguyen-linh-duy-dds-asian-village-dental-clinic-chicago-il.html"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Multiple directory listings confirm a single-location clinic at 5129 N Broadway St, Chicago, run by Linh Nguyen, DDS (matches NPPES AO Linh Nguyen), serving a Vietnamese-speaking clientele. No corporate parent, brand, or management company found; consistent with a solo owner-operator.",
+  "adjudication_note": null,
+  "searched": [
+   "Asian Village Dental Clinic 5129 N Broadway Chicago"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_116",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "d3b3b09cc6ed98dd",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "high",
+   "screen_priority": "review_medium",
+   "signal_codes": [
+    "parent_or_legal_entity_signal"
+   ],
+   "url_profile": {
+    "hosts": [
+     "yelp.com",
+     "yellowbot.com"
+    ],
+    "directory_hosts": [
+     "yelp.com"
+    ],
+    "direct_hosts": [
+     "yellowbot.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 40,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal"
+   ]
+  }
+ },
+ {
+  "location_id": "0884ff9f2ce7934f",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://braamdental.com/office-details",
+   "https://www.healthgrades.com/dentist/dr-lee-braam-xym8nv5",
+   "https://findadentist.ada.org/dentists/dr-lee-s-braam-chicago-0038V00002yjo2ZQAQ-a1C8V00000kYXy8UAG"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Searched name+address; the practice's own site (braamdental.com) plus ADA Find-a-Dentist and Healthgrades confirm Dr. Lee S. Braam, DMD (Univ. of Illinois at Chicago dental grad), as the solo dentist at this single Lawrence Ave address. No other locations or corporate affiliation found. Classified true_independent (T1).",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; provider_count=2 where the primary NPI is Dr. Lee S. Braam (owner) plus one extra surname CUN. The practice's own site (braamdental.com) plus the ADA Find-a-Dentist registry (not directory-only) confirm Braam as the solo dentist at the single Lawrence Ave address with no other location or corporate ]",
+  "searched": [
+   "Braam Dental 1015 W Lawrence Ave Chicago dentist"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_117",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "0884ff9f2ce7934f",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "high",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "t1_group_entity_classification",
+    "t1_multiple_provider_surnames",
+    "t1_provider_count_gt1",
+    "t1_reasoning_lacks_negative_control_word",
+    "t1_reasoning_lacks_owner_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "braamdental.com",
+     "healthgrades.com",
+     "findadentist.ada.org"
+    ],
+    "directory_hosts": [
+     "healthgrades.com",
+     "findadentist.ada.org"
+    ],
+    "direct_hosts": [
+     "braamdental.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 41,
+   "audit_action": "hold",
+   "audit_reason": "T1 still conflicts with provider roster/group classification; cannot write as solo owner-operated.",
+   "findings": [
+    "t1_roster_conflict"
+   ]
+  }
+ },
+ {
+  "location_id": "52b7922c821e6cb2",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.healthgrades.com/dentist/dr-stephen-binder-xxnp7",
+   "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60647/invite-stephen-binder-dds-12874"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Multiple directories (Healthgrades, Yelp, DentalPlans, Doctors Network) confirm Dr. Stephen R. Binder, DDS practices solo under his own name at this exact 3900 W Fullerton Ave address/phone. No group or corporate signal found; single provider matches ctx provider_count.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; provider_count=2 where the primary NPI is Dr. Stephen R. Binder (owner) plus one extra surname LAZO. Multiple sources confirm Binder practicing solo under his own name at the exact 3900 W Fullerton address/phone with no group or corporate signal, so the single extra NPI reads as a hygienist/staff br]",
+  "searched": [
+   "Binder Dental 3900 W Fullerton Ave Chicago"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_126",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "52b7922c821e6cb2",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "high",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "t1_group_entity_classification",
+    "t1_multiple_provider_surnames",
+    "t1_provider_count_gt1",
+    "t1_reasoning_lacks_negative_control_word",
+    "t1_reasoning_lacks_owner_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "healthgrades.com",
+     "doctorsnetwork.com"
+    ],
+    "directory_hosts": [
+     "healthgrades.com",
+     "doctorsnetwork.com"
+    ],
+    "direct_hosts": [],
+    "directory_only": true,
+    "has_direct_source": false
+   },
+   "risk_score": 51,
+   "audit_action": "hold",
+   "audit_reason": "T1 still conflicts with provider roster/group classification; cannot write as solo owner-operated.",
+   "findings": [
+    "t1_roster_conflict",
+    "directory_only_urls"
+   ]
+  }
+ },
+ {
+  "location_id": "d06a5b2225a88b01",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://bristledentalstudio.com/about/",
+   "https://bristledentalstudio.com/"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "The practice's own website names Dr. Connie J. Woo, DMD, a UIC-trained dentist, as the owner/operator of this single Bucktown address; no corporate parent, DSO, or group affiliation is mentioned anywhere on the site.",
+  "adjudication_note": null,
+  "searched": [
+   "Bristle Dental Studio 1700 N Western Ave Chicago Connie Woo"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_128",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "d06a5b2225a88b01",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "high",
+   "screen_priority": "review_medium",
+   "signal_codes": [
+    "ao_not_provider_or_practice_name",
+    "parent_or_legal_entity_signal",
+    "t1_reasoning_lacks_single_location_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "bristledentalstudio.com",
+     "bristledentalstudio.com"
+    ],
+    "directory_hosts": [],
+    "direct_hosts": [
+     "bristledentalstudio.com",
+     "bristledentalstudio.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 40,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal"
+   ]
+  }
+ },
+ {
+  "location_id": "fb044953bbcd2b6f",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.facebook.com/PreventiveDentistryCenter/",
+   "https://doctor.webmd.com/doctor/jeffrey-gordon-0728f514-25ef-403f-b3c9-d1aab1ddb392-overview"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": "ao:GORDON_JEFFREY",
+  "reasoning": "Dr. Jeffrey G. Gordon, DDS operates 'Preventive Dentistry Center, P.C.' at 8244 S Kedzie Ave, matching NPI AO Jeffrey Gordon exactly. Single-location solo general practice, no corporate affiliation found.",
+  "adjudication_note": null,
+  "searched": [
+   "\"Preventive Dentistry\" Center Chicago 8244 S Kedzie Ave Jeffrey Gordon"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_129",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "fb044953bbcd2b6f",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "high",
+   "screen_priority": "review_high",
+   "signal_codes": [
+    "directory_only_support",
+    "parent_or_legal_entity_signal",
+    "shared_website_domain",
+    "t1_reasoning_lacks_owner_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "facebook.com",
+     "doctor.webmd.com"
+    ],
+    "directory_hosts": [
+     "doctor.webmd.com"
+    ],
+    "direct_hosts": [
+     "facebook.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 57,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal"
+   ]
+  }
+ },
+ {
+  "location_id": "bb925c602eb1ffb6",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.freshdentalclinic.com/",
+   "https://www.yelp.com/biz/fresh-dental-chicago",
+   "https://www.zocdoc.com/practice/fresh-dental-58460"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Practice's own website confirms a single location at 3030 N Broadway with three dentists (Dr. Michelle Lee, Dr. Jin Nam, Dr. Sylvia Kim) offering cosmetic/restorative care -- a single-location multi-dentist group with no corporate parent named anywhere on site. The ctx parent_company string 'EVENLY ORTHODONTICS DUPONT' is a known Data-Axle placeholder artifact (per project history) and is not corroborated by any web evidence, so it was disregarded per instructions that ctx is not evidence.",
+  "adjudication_note": null,
+  "searched": [
+   "Fresh Dental 3030 N Broadway Chicago dentist"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_135",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "bb925c602eb1ffb6",
+   "practice_name": null,
+   "assigned_tier": "single_loc_group",
+   "confidence": "high",
+   "screen_priority": "review_high",
+   "signal_codes": [
+    "parent_or_legal_entity_signal",
+    "shared_website_domain",
+    "t2_provider_count_lte1"
+   ],
+   "url_profile": {
+    "hosts": [
+     "freshdentalclinic.com",
+     "yelp.com",
+     "zocdoc.com"
+    ],
+    "directory_hosts": [
+     "yelp.com",
+     "zocdoc.com"
+    ],
+    "direct_hosts": [
+     "freshdentalclinic.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 37,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal"
+   ]
+  }
+ },
+ {
+  "location_id": "e193073a4954650d",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://devondentalchicago.com/",
+   "https://devondentalchicago.com/doctor-post/dr-nina-sanai/",
+   "https://www.yelp.com/biz/nima-sanai-dds-chicago"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "The practice's own website confirms Devon Dental has operated at 1514 W Devon Ave since 1994 under owner-dentist Dr. Nina Sanai. A related Yelp listing for 'Nima Sanai DDS' at the same address indicates a second family-member dentist practicing there, consistent with the DB's family_practice/4-provider classification at ONE location, not a multi-site chain.",
+  "adjudication_note": null,
+  "searched": [
+   "Devon Dental Surgery Chicago 1514 W Devon Ave Nina Sanai"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_139",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "e193073a4954650d",
+   "practice_name": null,
+   "assigned_tier": "single_loc_group",
+   "confidence": "high",
+   "screen_priority": "review_medium",
+   "signal_codes": [
+    "parent_or_legal_entity_signal",
+    "stale_founder_history"
+   ],
+   "url_profile": {
+    "hosts": [
+     "devondentalchicago.com",
+     "devondentalchicago.com",
+     "yelp.com"
+    ],
+    "directory_hosts": [
+     "yelp.com"
+    ],
+    "direct_hosts": [
+     "devondentalchicago.com",
+     "devondentalchicago.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 30,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal",
+    "stale_founder_history"
+   ]
+  }
+ },
+ {
+  "location_id": "2c431d78dd522d71",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.healthgrades.com/dentist/dr-david-yu-xjhbv",
+   "https://www.yelp.com/biz/my-dentist-calumet-city",
+   "http://www.mydentistinc.com"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Web search confirms Dr. David Yu, DDS is President/owner of My Dentist, Inc., P.C. at 97 Paxton Ave, with the practice's own site (mydentistinc.com) and a Healthgrades profile both naming him as the sole treating dentist. No group partners, corporate parent, or DSO brand found; owner_reach is 1 location. Classified true_independent on direct web evidence of solo dentist ownership.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; The provider_count=2 that fired t1_provider_count_gt1 and the small_group label are inflated by a Data-Axle synthetic 'NPI' (DA_2b5d27886bb4) \u2014 the only real NPI is 1316000532 and the sole surname is YU. Own site (mydentistinc.com) plus Healthgrades confirm Dr. David Yu as President/owner and sole t]",
+  "searched": [
+   "\"My Dentist\" Calumet City IL 97 Paxton Ave dentist"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_141",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "2c431d78dd522d71",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "high",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "t1_group_entity_classification",
+    "t1_provider_count_gt1",
+    "t1_reasoning_lacks_negative_control_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "healthgrades.com",
+     "yelp.com",
+     "mydentistinc.com"
+    ],
+    "directory_hosts": [
+     "healthgrades.com",
+     "yelp.com"
+    ],
+    "direct_hosts": [
+     "mydentistinc.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 41,
+   "audit_action": "hold",
+   "audit_reason": "T1 still conflicts with provider roster/group classification; cannot write as solo owner-operated.",
+   "findings": [
+    "t1_roster_conflict"
+   ]
+  }
+ },
+ {
+  "location_id": "96d15763300700b6",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://patientconnect365.com/Dentists/Illinois/Flossmoor/60422/Laura_Sasic_Lalich_DDS",
+   "https://doctor.webmd.com/doctor/laura-lalich-6acb5770-04e2-4586-93a3-249a3cbbe885-overview"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Directory sources consistently present this as Dr. Laura Sasic-Lalich's individual practice at 2630 Flossmoor Rd Ste 103, with no second dentist named and no corporate signal. Confidence held at medium because the underlying record shows provider_count 2, but web search only surfaced Dr. Lalich by name.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; small_group, provider_count=2 where the primary NPI (1811076722) is Dr. Laura Sasic-Lalich (owner) plus one extra surname JAROSIK. Practice is presented across sources as her individual solo practice on her own name/domain; only she surfaced, so the single extra NPI reads as a hygienist/staff bridge]",
+  "searched": [
+   "Sasic Lalich Laura DDS Flossmoor IL dentist"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_143",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "96d15763300700b6",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "medium",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "t1_group_entity_classification",
+    "t1_multiple_provider_surnames",
+    "t1_provider_count_gt1",
+    "t1_reasoning_lacks_owner_word",
+    "t1_reasoning_lacks_single_location_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "patientconnect365.com",
+     "doctor.webmd.com"
+    ],
+    "directory_hosts": [
+     "doctor.webmd.com"
+    ],
+    "direct_hosts": [
+     "patientconnect365.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 38,
+   "audit_action": "hold",
+   "audit_reason": "T1 still conflicts with provider roster/group classification; cannot write as solo owner-operated.",
+   "findings": [
+    "t1_roster_conflict"
+   ]
+  }
+ },
+ {
+  "location_id": "a697a41b1497a4f9",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.denteldoc.com/location/?id=56367",
+   "https://www.healthgrades.com/dentist/dr-daniel-brown-ypbvw"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Multiple directories consistently name only Dr. Daniel J. Brown (Loyola University Chicago grad, 18+ years experience) at this single Flossmoor address, matching the NPPES authorized official; no corporate signal or second named provider found despite the record's small_group/2-provider designation.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; small_group, provider_count=2 (BROWN + one extra GRUND). The roster's primary/individual NPI is Dr. Daniel Brown himself and this is a solo-named PC on its own domain (danielbrown.net); the researcher searched multiple directories and no second dentist surfaced, so GRUND is best read as a hygienist/]",
+  "searched": [
+   "Daniel J Brown DDS PC Flossmoor IL dentist 3235 Vollmer",
+   "\"Brown Dental Group\" 1020 Park Dr Flossmoor"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_143",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "a697a41b1497a4f9",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "medium",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "t1_group_entity_classification",
+    "t1_multiple_provider_surnames",
+    "t1_provider_count_gt1",
+    "t1_reasoning_lacks_owner_word",
+    "t1_reasoning_lacks_single_location_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "denteldoc.com",
+     "healthgrades.com"
+    ],
+    "directory_hosts": [
+     "healthgrades.com"
+    ],
+    "direct_hosts": [
+     "denteldoc.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 38,
+   "audit_action": "hold",
+   "audit_reason": "T1 still conflicts with provider roster/group classification; cannot write as solo owner-operated.",
+   "findings": [
+    "t1_roster_conflict"
+   ]
+  }
+ },
+ {
+  "location_id": "5cc84a59561f1d02",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.markriechman.com/",
+   "https://www.healthgrades.com/dentist/dr-mark-riechman-39hgm"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Dr. Mark Riechman's own website (markriechman.com) confirms 9449 W 144th Pl, Orland Park, phone (708) 460-3500 matching our record. He is the sole named dentist, in practice since 1989, University of Illinois DDS, member of several professional societies. No corporate or DSO affiliation found anywhere.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; The practice's OWN website (markriechman.com, phone-matched) names Dr. Mark Riechman as the sole dentist in practice since 1989 with no corporate/DSO affiliation \u2014 positive current owner-operator proof that satisfies Rule 2's own-site carve-out and overrides the stale small_group label. With provide]",
+  "searched": [
+   "\"Riechman Dental\" Orland Park IL"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_155",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "5cc84a59561f1d02",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "high",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "stale_founder_history",
+    "t1_group_entity_classification",
+    "t1_multiple_provider_surnames",
+    "t1_provider_count_gt1",
+    "t1_reasoning_lacks_owner_word",
+    "t1_reasoning_lacks_single_location_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "markriechman.com",
+     "healthgrades.com"
+    ],
+    "directory_hosts": [
+     "healthgrades.com"
+    ],
+    "direct_hosts": [
+     "markriechman.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 41,
+   "audit_action": "hold",
+   "audit_reason": "T1 still conflicts with provider roster/group classification; cannot write as solo owner-operated.",
+   "findings": [
+    "t1_roster_conflict",
+    "stale_founder_history"
+   ]
+  }
+ },
+ {
+  "location_id": "258e684c841b8312",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://bartlettdentalcareil.com/",
+   "https://www.lincolnparkdentalclinic.com/kirsten-galayda-d_d_s/"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "This org-NPI's phone (630-830-6010) is identical to the confirmed independent solo practice 'Bartlett Dental Care' one block away (323 vs 333 Railroad Ave), and no separate operating practice called 'Bartlett Dentistry' was found. The AO on file, Kristen Galayda, now appears associated with practices well outside Bartlett (Lincoln Park/Lake Zurich area), suggesting a stale ownership record for what is functionally the same small independent office. No DSO/corporate signal found for either name; classified independent on the strength of the phone match, medium confidence given the name/AO mismatch.",
+  "adjudication_note": null,
+  "searched": [
+   "\"Bartlett Dental Assoc\" OR \"Bartlett Dental Associates\" 164 Bartlett Plaza IL",
+   "Kristen Galayda dentist Bartlett IL",
+   "fetch bartlettdentalcareil.com",
+   "\"Village Square Dentistry\" Illinois locations Galayda owner"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_170",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "258e684c841b8312",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "medium",
+   "screen_priority": "review_high",
+   "signal_codes": [
+    "ao_not_provider_or_practice_name",
+    "parent_or_legal_entity_signal",
+    "shared_phone_multiple_locations",
+    "t1_reasoning_lacks_owner_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "bartlettdentalcareil.com",
+     "lincolnparkdentalclinic.com"
+    ],
+    "directory_hosts": [],
+    "direct_hosts": [
+     "bartlettdentalcareil.com",
+     "lincolnparkdentalclinic.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 44,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal"
+   ]
+  }
+ },
+ {
+  "location_id": "06559964fbcc65b8",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.176dental.com/"
+  ],
+  "evidence_artifacts": [
+   "ctx.parent_company value 'EVENLY ORTHODONTICS DUPONT' disregarded as a known Evenly Technologies parent_iusa=000000000 placeholder artifact (per prior CLAUDE.md-documented false-corporate-demotion pattern), not corroborated by any web evidence"
+  ],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": "ao:MATUSTIK_JOSEPH",
+  "reasoning": "176dental.com identifies the practice as owned/run by Drs. Dominic Colletti and Joseph Matustik, matching AO Joseph Matustik, with no mention of any corporate parent. The ctx parent_company field ('Evenly Orthodontics Dupont') is a documented Evenly Technologies data-placeholder artifact and is disregarded per the ctx-is-not-evidence rule. Two-dentist group, single location.",
+  "adjudication_note": null,
+  "searched": [
+   "Leonidas Ragas DDS Bloomingdale IL 360 Schick Rd dentist (176dental.com surfaced as a corroborating result)"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_173",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "06559964fbcc65b8",
+   "practice_name": null,
+   "assigned_tier": "single_loc_group",
+   "confidence": "high",
+   "screen_priority": "review_medium",
+   "signal_codes": [
+    "parent_or_legal_entity_signal"
+   ],
+   "url_profile": {
+    "hosts": [
+     "176dental.com"
+    ],
+    "directory_hosts": [],
+    "direct_hosts": [
+     "176dental.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 30,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal"
+   ]
+  }
+ },
+ {
+  "location_id": "dff2693b4fb03dd6",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://gentledentalsmile.com/",
+   "https://gentledental.interdent.com/locations"
+  ],
+  "evidence_artifacts": [
+   "name_collision: 'Gentle Dental Smile' vs national 'Gentle Dental' (InterDent) brand"
+  ],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Existing entity_classification flagged this as dso_national under brand 'Gentle Dental,' but this is a name-only collision: the practice runs its own independent site (gentledentalsmile.com) at a single address, and the real national 'Gentle Dental' (InterDent) locator page lists no Illinois office at this address (nearest IL InterDent-branded sites are Yorkville/Mundelein/Hoffman Estates/Chicago, none matching, and a direct fetch of interdent.com's own locator confirms IL is entirely absent from its footprint: only HI, CA, OR, WA, AZ, NV, OK, KS). No documentary link to InterDent found, so reclassified independent per address-level evidence rather than name match.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; The hard db_corporate_conflict (Gentle Dental, dso_national) is defeated by a strong address-level negative control: the researcher fetched interdent.com's own locator and the national Gentle Dental (InterDent) has zero Illinois footprint (only HI/CA/OR/WA/AZ/NV/OK/KS), so an IL Hanover Park office ]",
+  "searched": [
+   "Gentle Dental Hanover Park IL 5537 County Farm Rd locations",
+   "\"Gentle Dental\" InterDent Illinois locations",
+   "Gentle Dental Smile Hanover Park IL Dr owner dentist name gentledentalsmile.com"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_177",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "dff2693b4fb03dd6",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "medium",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "db_corporate_conflict",
+    "t1_reasoning_lacks_negative_control_word",
+    "t1_reasoning_lacks_owner_word",
+    "t1_reasoning_lacks_single_location_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "gentledentalsmile.com",
+     "gentledental.interdent.com"
+    ],
+    "directory_hosts": [],
+    "direct_hosts": [
+     "gentledentalsmile.com",
+     "gentledental.interdent.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 43,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal"
+   ]
+  }
+ },
+ {
+  "location_id": "cdcdf30342969078",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.dentalheights.com/",
+   "https://www.dentalheights.com/about/meet-our-dentists/"
+  ],
+  "evidence_artifacts": [
+   "record's parent_company field 'EVENLY ORTHODONTICS DUPONT' checked and found to be an Evenly Technologies placeholder artifact, not corroborated by any web evidence of corporate ownership"
+  ],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Own website (dentalheights.com) confirms Dental Heights was founded in 2013 by Drs. Alamdar, Shafeeq, and Zishan Bader (a dentist family group) at a single location, 148 E Army Trail Rd, Glendale Heights, with additional dentists on staff. No web evidence of any DSO/corporate parent; the record's 'parent_company: EVENLY ORTHODONTICS DUPONT' field matches the known Evenly Technologies placeholder false-signal pattern (per project history) and is not corroborated by the practice's own site or any independent source, so it is disregarded. Classified as dentist-owned multi-provider single location.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; The parent_company 'EVENLY ORTHODONTICS DUPONT' and shared evenly.com domain are the documented Evenly Technologies placeholder false-signal (CLAUDE.md 2026-06-12 audit root-caused this exact leak and purged it); the Data-Axle officer hits are corroboration-only (low). DB entity_classification is fa]",
+  "searched": [
+   "\"Dental Heights\" Glendale Heights IL 148 E Army Trail Rd dentist"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_179",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "cdcdf30342969078",
+   "practice_name": null,
+   "assigned_tier": "single_loc_group",
+   "confidence": "high",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "parent_or_legal_entity_signal",
+    "shared_data_axle_officer",
+    "shared_website_domain"
+   ],
+   "url_profile": {
+    "hosts": [
+     "dentalheights.com",
+     "dentalheights.com"
+    ],
+    "directory_hosts": [],
+    "direct_hosts": [
+     "dentalheights.com",
+     "dentalheights.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 44,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal"
+   ]
+  }
+ },
+ {
+  "location_id": "3c812d6a848fe775",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.riverforestdental.com/",
+   "https://www.healthgrades.com/group-directory/il-illinois/river-forest/river-forest-dental-studio-x6n5g8"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": "ao:PICCIONI_GINA",
+  "reasoning": "This NPI/PC is Dr. John Hartmann's billing entity, but web evidence (riverforestdental.com, Healthgrades group profile) shows he practices alongside owner-dentist Dr. Gina Piccioni as River Forest Dental Studio at the single 7700 Madison St address. Dentist-owned single-location group practice, no corporate signal.",
+  "adjudication_note": null,
+  "searched": [
+   "John Hartmann DDS PC River Forest IL 7700 Madison St dentist",
+   "\"River Forest Dental Studio\" 7700 Madison River Forest IL"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_192",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "3c812d6a848fe775",
+   "practice_name": null,
+   "assigned_tier": "single_loc_group",
+   "confidence": "high",
+   "screen_priority": "review_high",
+   "signal_codes": [
+    "parent_or_legal_entity_signal",
+    "shared_phone_multiple_locations",
+    "t2_provider_count_lte1"
+   ],
+   "url_profile": {
+    "hosts": [
+     "riverforestdental.com",
+     "healthgrades.com"
+    ],
+    "directory_hosts": [
+     "healthgrades.com"
+    ],
+    "direct_hosts": [
+     "riverforestdental.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 37,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal"
+   ]
+  }
+ },
+ {
+  "location_id": "43027f74b4b8e0d6",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.bbb.org/us/il/berwyn/profile/dentist/gentle-dental-care-0654-88091049",
+   "https://www.yelp.com/biz/zehak-george-dds-berwyn",
+   "https://business.berwyn.net/list/member/g-r-zehak-dds-associates-463"
+  ],
+  "evidence_artifacts": [
+   "Raw ctx tagged this record affiliated_dso='Gentle Dental' / dso_national, but web evidence shows a locally-named independent practice unrelated to the national Gentle Dental (Perot/Prospect) brand \u2014 a name collision, not a brand match."
+  ],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "BBB, Yelp, and the Berwyn business directory all identify this address (6731 26th St) as 'G.R. Zehak, DDS & Associates' / Dr. George Zehak's practice, in business since 1984 and manager Maria Zehak \u2014 a locally-owned family dental office that happens to use the generic name 'Gentle Dental Care.' No locator page or corporate site for the actual national 'Gentle Dental' DSO brand lists this address, so this appears to be a false positive on brand-name matching, not a real DSO location.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; Another generic 'Gentle Dental' name collision \u2014 BBB, Yelp, and the Berwyn business directory all identify 6731 26th St as 'G.R. Zehak DDS & Associates' (Dr. George Zehak, since 1984), and the national Gentle Dental/InterDent has no IL footprint, so the dso_national tag is a false brand match (Gentl]",
+  "searched": [
+   "Gentle Dental Care 6731 26th St Berwyn IL"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_194",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "43027f74b4b8e0d6",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "high",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "db_corporate_conflict",
+    "stale_founder_history",
+    "t1_reasoning_lacks_negative_control_word",
+    "t1_reasoning_lacks_single_location_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "bbb.org",
+     "yelp.com",
+     "business.berwyn.net"
+    ],
+    "directory_hosts": [
+     "bbb.org",
+     "yelp.com"
+    ],
+    "direct_hosts": [
+     "business.berwyn.net"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 46,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal",
+    "stale_founder_history"
+   ]
+  }
+ },
+ {
+  "location_id": "803b17d64715c9f2",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.irisfamilydental.com/",
+   "https://www.irisfamilydental.com/about-us/",
+   "https://findadentist.ada.org/il/dupage/warrenville/general-practice/dr-elizabeth-ninan-3438114"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Own website irisfamilydental.com confirms Dr. Elizabeth Ninan runs 'Iris Family Dental' at 29W150 Butterfield Rd Ste 101 (phone (630) 393-2120 matches exactly); the site is built entirely around her as sole named dentist with no second doctor surfaced despite the NPI record's provider_count of 2 (likely a hygienist/associate not featured). No group or DSO signal found.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; The practice's own website (irisfamilydental.com, phone-matched) is built entirely around Dr. Elizabeth Ninan as sole named dentist, and the entity is her eponymous PC \u2014 positive current ownership proof satisfying Rule 2's own-site carve-out over the stale small_group label. With provider_count=2, t]",
+  "searched": [
+   "Elizabeth Ninan DDS Warrenville IL dentist"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_199",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "803b17d64715c9f2",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "medium",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "t1_group_entity_classification",
+    "t1_multiple_provider_surnames",
+    "t1_provider_count_gt1",
+    "t1_reasoning_lacks_negative_control_word",
+    "t1_reasoning_lacks_owner_word",
+    "t1_reasoning_lacks_single_location_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "irisfamilydental.com",
+     "irisfamilydental.com",
+     "findadentist.ada.org"
+    ],
+    "directory_hosts": [
+     "findadentist.ada.org"
+    ],
+    "direct_hosts": [
+     "irisfamilydental.com",
+     "irisfamilydental.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 38,
+   "audit_action": "hold",
+   "audit_reason": "T1 still conflicts with provider roster/group classification; cannot write as solo owner-operated.",
+   "findings": [
+    "t1_roster_conflict"
+   ]
+  }
+ },
+ {
+  "location_id": "10350cbe9ba08042",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.yelp.com/biz/delmonico-and-trocchio-dds-elmwood-park",
+   "https://www.grandchamber.org/directory/health-human-services/dental-services/del-monico-trocchio-ltd/",
+   "https://aedit.com/practice/drs-delmonico-and-trocchio-ltd-13671"
+  ],
+  "evidence_artifacts": [
+   "parent_company field 'EVENLY ORTHODONTICS DUPONT' matches the documented Evenly Technologies parent_iusa=000000000 placeholder false-positive pattern (see CLAUDE.md 2026-06-12 demotions note) - disregarded, not treated as a real corporate parent"
+  ],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Web sources describe a long-established (practicing since at least 1963/1990) multi-dentist family/partner practice at a single Elmwood Park address, historically Dr. Ralph Del Monico Sr., Dr. Frank A. Trocchio, and Dr. Ralph Del Monico Jr. The source-data parent_company string is a known Evenly Technologies data artifact, not a real corporate parent, so this is classified dentist-owned single-location group.",
+  "adjudication_note": null,
+  "searched": [
+   "Drs. Delmonico & Trocchio Elmwood Park IL dentist 7310 North Ave"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_202",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "10350cbe9ba08042",
+   "practice_name": null,
+   "assigned_tier": "single_loc_group",
+   "confidence": "high",
+   "screen_priority": "review_medium",
+   "signal_codes": [
+    "parent_or_legal_entity_signal"
+   ],
+   "url_profile": {
+    "hosts": [
+     "yelp.com",
+     "grandchamber.org",
+     "aedit.com"
+    ],
+    "directory_hosts": [
+     "yelp.com"
+    ],
+    "direct_hosts": [
+     "grandchamber.org",
+     "aedit.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 30,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal"
+   ]
+  }
+ },
+ {
+  "location_id": "4cdf3ef029ab464c",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.benderdentalcare.com/",
+   "https://www.healthgrades.com/dentist/dr-michael-bender-39vt7"
+  ],
+  "evidence_artifacts": [
+   "evenly_placeholder_ignored"
+  ],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Confirmed a solo, owner-named practice (Dr. Michael Bender, DDS) at 217 N McLean Blvd, matching NPI address and phone (847-888-4333) exactly; the practice's own site and Healthgrades both describe Dr. Bender as the long-tenured Elgin dentist there, in business since the early 1990s. The ctx parent_company field 'EVENLY ORTHODONTICS DUPONT' is disregarded per known project history -- Evenly is a patient-engagement/financing platform vendor (its locations page just lists client practices), not a corporate owner; this matches the previously-documented Evenly placeholder false-positive pattern.",
+  "adjudication_note": null,
+  "searched": [
+   "Bender Dental Care Elgin IL 217 N McLean Blvd"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_206",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "4cdf3ef029ab464c",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "high",
+   "screen_priority": "review_medium",
+   "signal_codes": [
+    "parent_or_legal_entity_signal",
+    "t1_reasoning_lacks_negative_control_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "benderdentalcare.com",
+     "healthgrades.com"
+    ],
+    "directory_hosts": [
+     "healthgrades.com"
+    ],
+    "direct_hosts": [
+     "benderdentalcare.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 40,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal"
+   ]
+  }
+ },
+ {
+  "location_id": "6dbeae090c3b29b7",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.jamesstreetdental.com/",
+   "https://www.jamesstreetdental.com/meet-our-team"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Own website and directories confirm Dr. Laurie Slavik, DDS as the practicing dentist at 22 James St, Geneva (exact address/phone match, and matches the record's AO name). The team page names a hygienist ('Dee') but no second dentist was identified, so classified solo/independent with medium confidence given the record's provider_count of 2.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; The hard signals (provider_count=2, small_group, SLAVIK+WIFF) are benign: the researcher reviewed the practice's OWN team page (jamesstreetdental.com/meet-our-team), which names exactly one dentist \u2014 Dr. Laurie Slavik, matching the AO name and exact address/phone \u2014 plus a hygienist ('Dee'), so the s]",
+  "searched": [
+   "James Street Dental Geneva IL Laurie Slavik",
+   "jamesstreetdental.com Laurie Slavik associate dentist team"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_207",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "6dbeae090c3b29b7",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "medium",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "t1_group_entity_classification",
+    "t1_multiple_provider_surnames",
+    "t1_provider_count_gt1",
+    "t1_reasoning_lacks_negative_control_word",
+    "t1_reasoning_lacks_owner_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "jamesstreetdental.com",
+     "jamesstreetdental.com"
+    ],
+    "directory_hosts": [],
+    "direct_hosts": [
+     "jamesstreetdental.com",
+     "jamesstreetdental.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 38,
+   "audit_action": "hold",
+   "audit_reason": "T1 still conflicts with provider roster/group classification; cannot write as solo owner-operated.",
+   "findings": [
+    "t1_roster_conflict"
+   ]
+  }
+ },
+ {
+  "location_id": "be32c4f8df293c5d",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.nitapateldds.com/",
+   "https://www.healthgrades.com/dentist/dr-nita-patel-xl8t3"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Searched the dentist's name; own site nitapateldds.com confirms a solo family dental practice led by Dr. Nita Patel (practicing since 1992) at 350 E Irving Park Rd, Roselle. No corporate parent or DSO signal. Note: this same address/phone also carries a second NPI record ('Patel Dental,' location_id 81fa2361967975be) representing the same physical practice.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; Rule 1 trigger is not met: db_context provider_count is 0 and there is a single surname (Patel), so no forced T2 correction. Own site nitapateldds.com proves Dr. Nita Patel owns and operates her eponymous PC (practicing since 1992) \u2014 positive current ownership at one Roselle address. The small_group]",
+  "searched": [
+   "Nita Patel DDS Roselle IL dentist 350 Irving Park"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_208",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "be32c4f8df293c5d",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "high",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "shared_phone_multiple_locations",
+    "stale_founder_history",
+    "t1_group_entity_classification",
+    "t1_reasoning_lacks_owner_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "nitapateldds.com",
+     "healthgrades.com"
+    ],
+    "directory_hosts": [
+     "healthgrades.com"
+    ],
+    "direct_hosts": [
+     "nitapateldds.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 45,
+   "audit_action": "hold",
+   "audit_reason": "T1 still conflicts with provider roster/group classification; cannot write as solo owner-operated.",
+   "findings": [
+    "t1_roster_conflict",
+    "stale_founder_history"
+   ]
+  }
+ },
+ {
+  "location_id": "b36aff3306c8901a",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.modernessencedentistry.com/",
+   "https://www.linkedin.com/in/brainard-llanes-2973135a/"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "The 818 E Nerge Rd address operates as 'Modern Essence Dentistry,' led by Dr. Brainard Llanes and Dr. Paul Litvin (two dentists, one location). No connection found to '1st Family Dental' despite the parent_company field in ctx and shared Nerge Rd street name -- 1st Family Dental's own Roselle offices are at 801/803 E Nerge Rd, a different address entirely. Dentist-owned multi-provider single location.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; Practice's own website and my web check confirm 818 E Nerge Rd operates as independently branded 'Modern Essence Dentistry', owner Dr. Brainard Llanes plus Dr. Paul Litvin (two dentists, one location = valid T2). The parent_company '1ST FAMILY DENTAL' and 1fdimplants.com domain (reach 2, medium) are]",
+  "searched": [
+   "\"1st Family Dental\" Roselle IL 818 Nerge Brainard Llanes",
+   "\"Modern Essence Dentistry\" Brainard Llanes Roselle IL"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_209",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "b36aff3306c8901a",
+   "practice_name": null,
+   "assigned_tier": "single_loc_group",
+   "confidence": "high",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "db_corporate_conflict",
+    "parent_or_legal_entity_signal",
+    "shared_website_domain",
+    "t2_provider_count_lte1"
+   ],
+   "url_profile": {
+    "hosts": [
+     "modernessencedentistry.com",
+     "linkedin.com"
+    ],
+    "directory_hosts": [],
+    "direct_hosts": [
+     "modernessencedentistry.com",
+     "linkedin.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 40,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal"
+   ]
+  }
+ },
+ {
+  "location_id": "541ae39cadc867b6",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://bouledental.com/",
+   "https://www.yelp.com/biz/boule-dental-melvin-boule-dmd-plano"
+  ],
+  "evidence_artifacts": [
+   "parent_company field 'EVENLY ORTHODONTICS DUPONT' investigated and rejected as ownership evidence: 'Evenly' is an outsourced orthodontics SaaS platform for dental offices (HQ Washington DC/Dupont Circle), not a corporate owner/DSO of this practice -- consistent with the known Evenly Technologies placeholder-parent artifact documented elsewhere in this census"
+  ],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Searched 'Melvin Boule DMD Plano IL dentist' and separately investigated the 'EVENLY ORTHODONTICS DUPONT' parent_company field. Dr. Melvin Boule, DMD runs his own solo practice, Boul\u00e9 Dental, at 3910 Turner Ave -- own-name branding, no group, no real DSO/corporate parent. The Evenly reference is a Data-Axle artifact (Evenly is a third-party ortho-outsourcing vendor, not an owner) and was rejected as evidence.",
+  "adjudication_note": null,
+  "searched": [
+   "\"Melvin Boule\" DMD Plano IL dentist",
+   "\"Evenly Orthodontics\" OR \"Evenly Technologies\" Dupont dental parent company"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_217",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "541ae39cadc867b6",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "high",
+   "screen_priority": "review_medium",
+   "signal_codes": [
+    "parent_or_legal_entity_signal",
+    "t1_reasoning_lacks_negative_control_word"
+   ],
+   "url_profile": {
+    "hosts": [
+     "bouledental.com",
+     "yelp.com"
+    ],
+    "directory_hosts": [
+     "yelp.com"
+    ],
+    "direct_hosts": [
+     "bouledental.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 40,
+   "audit_action": "hold",
+   "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
+   "findings": [
+    "control_signal"
+   ]
+  }
  }
 ]

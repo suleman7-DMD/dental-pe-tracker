@@ -1,0 +1,106 @@
+{
+  "batch": 18,
+  "indices": [180, 189],
+  "dispositions": [
+    {
+      "location_id": "24350c49bb51dcc4",
+      "practice_name": "JOHN A. MARSALA D.D.S. ; LTD",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Own site rivergrove.dental confirms this address (8225 Grand Ave) operates as dentist-owned 'River Grove Dental Associates' (Bertagna/Siracusa/Soderquist), no DSO. The da_legal_name_mismatch signal is actually corroborating, not conflicting ('RIVER GROVE DENTAL ASSOC LLC' = the current brand), and stale_founder_history is the legacy 1960 PC name predating the partnership. The shared EIN (reach 2) and phone (reach 3) are the same single office's org+provider NPI entities, not an MSO cluster.",
+      "web_searched": false
+    },
+    {
+      "location_id": "aecb6ba204fa7de7",
+      "practice_name": "JWWDENTAL LLC",
+      "assigned_tier": "dentist_multi",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "JWWDENTAL LLC / 'Renovo Endodontic Studio' is a dentist-founded/led endodontic specialty group (Dr. Jonathan W. Wong + partner endodontists) across 4 IL offices, well under the 10+ protected-network threshold; its own site markets it as 'local, independent' with no corporate parent. The hard ao_nonclinical_exec_title fires only because the org-NPI authorized official is an 'Insurance Coordinator' (a clerical back-office role), not a PE/MSO executive title, so it does not indicate corporate control.",
+      "web_searched": false
+    },
+    {
+      "location_id": "39cb0ae981055831",
+      "practice_name": "DR. MICHELE S. HORTON, D.D.S.,P.C.",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Own site hortonvranasdds.com confirms a two-dentist-owner single office ('Horton & Vranas, DDS,' families since 1986) with associates — a genuine single-location group, no DSO brand or shared corporate EIN. The hard ao_nonclinical_exec_title fires because the AO is the office 'Business Administrator' (Sheila Moriarty), a common small-practice clerical role, not MSO control; ao_not_provider_or_practice_name is the same benign fact.",
+      "web_searched": false
+    },
+    {
+      "location_id": "778b814bfeab200c",
+      "practice_name": "Sigdel, Muna",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Web-verified: 3216/3218 Kenilworth Ave is Westwyn Dental LLC (own site dentistberwyn.com), a dentist-owned single Berwyn office (Drs. Oh & Schroyer now; Dr. Timothy Walsh historically). The shared officer 'WALSH,TIMOTHY P' (reach 3) is the founding dentist and da_legal_name 'SMILES OF HOPE INC' is the LLC's corporate registration — not a DSO. The shared phone (reach 4)/domain (reach 2) across location_ids are the same single office under multiple provider NPIs (Sigdel is an associate under this NPI); no MSO/PE signal.",
+      "web_searched": true
+    },
+    {
+      "location_id": "7a9a35b5df9ec246",
+      "practice_name": "Laurie Gordon DDS",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "dentist_multi",
+      "corrected_confidence": "medium",
+      "rationale": "Not a solo true_independent: 'Today's Dental' (todaysdentalofil.com) is a multi-dentist practice — Dr. Laurie Gordon PLUS Drs. Rhodes-Gayles, Saini, Bowden, and Pope — branded 'Laurie Gordon DDS & Associates,' and the shared domain (reach 2) plus the separate 'Today's Dental of Beverly' Chicago office show a dentist-owned two-location group. The T1 rested on directory-only URLs (rule 5); corrected to dentist_multi at medium confidence since the multi-location Gordon ownership is well-supported but the exact brand-ownership structure across both offices is inferred.",
+      "web_searched": true
+    },
+    {
+      "location_id": "e58701e63aa2be9d",
+      "practice_name": "OAK VIEW DENTAL GROUP, LTD.",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Not single-location: 5950 159th St now operates as 'All Perfect Smiles of Oak Forest,' part of the multi-office 'Perfect Smiles / All Perfect Smiles' group (Roscoe, Beverly, Peterson, Oak Forest — 5+ locations on allperfectsmiles.com), with the shared DA officer Oscar Gonzalez a non-clinical 'Director of Operations' spanning 5 locations and a single owner (Dr. Lena Halikias per BBB). The formerly independent 'Oak View Dental Group (since 1972)' appears absorbed into this brand — a centralized-ops, acquired-brand consolidation pattern that fail-closed rules require sending to the adversarial verifier rather than accepting or self-promoting.",
+      "web_searched": true
+    },
+    {
+      "location_id": "ee70085725c1b07e",
+      "practice_name": "PROGRESSIVE IMAGING PARTNERS, LLC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Own site pettyandbielikorthodontics.com confirms 'Petty & Bielik Orthodontics' (4233 W 95th St) is owned by three orthodontists (Drs. Petty, Bielik, Karras) with no parent company. 'Progressive Imaging Partners, LLC' is the practice's own imaging/billing entity — which is why t2_provider_count_lte1 fires (NPPES bridges only 1 provider to the imaging LLC) — and the shared EIN/phone (reach 2) are simply the clinical PC and imaging LLC at the same address. Dentist-owned single-location specialist group.",
+      "web_searched": false
+    },
+    {
+      "location_id": "93a707b4f1ce35c2",
+      "practice_name": "DENTAL CARE CENTER JUSTICE LLC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "correct",
+      "corrected_tier": "dentist_multi",
+      "corrected_confidence": "medium",
+      "rationale": "The authorized official is Dr. Syed Rehman, DMD, titled 'OWNER,' and both ao_reaches_multiple_locations (reach 3) and the shared DA officer 'REHMAN,SYED' (reach 4) show he owns/controls a multi-office network. Per rule 6(a) a shared officer that is the practice's OWN dentist-owner across 2+ locations is dentist_multi (T3, still independent) — no external MSO/PE/DSO brand exists. Corrected to dentist_multi at medium confidence because the multi-location ownership is registry-inferred (the Justice site alone shows one address).",
+      "web_searched": false
+    },
+    {
+      "location_id": "4e4b4093d7d8a16e",
+      "practice_name": "Bandy, Jamie",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Own site kirschdentalonline.com confirms 'Kirsch Family Dentistry' (8650 W 159th St), a father-son dentist-owned single office (Michael Kirsch Sr. since 1980, Jr. since 2009). The da_legal_name 'KIRSCH DENTAL LLC' corroborates rather than conflicts, and the shared EIN/domain (reach 2) are the practice's own two provider NPIs at one address; 'Jamie Bandy' is a stale associate registrant under this NPI. No DSO/PE signal.",
+      "web_searched": false
+    },
+    {
+      "location_id": "db708daf91e51c4b",
+      "practice_name": "Gary Gunkel DDS",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The assigned single_loc_group tier stands, though the researcher's identity was wrong: the practice at 14430 John Humphrey Dr (website inspiredentalwellness.com, matching db_context) is 'Inspire Dental Wellness' (Dr. Erica Zolnierczyk & team), NOT 'Orland Dental Care/Dr. Khalil Takla' — Takla's office is a separate practice at 14360 S La Grange Rd. Inspire is a dentist-owned single Orland Park office (provider_count 3); the shared EIN/phone/domain (reach 2) are the same John Humphrey Dr office under multiple provider NPIs, with 'Gary Gunkel' a stale registrant. No DSO/MSO signal found.",
+      "web_searched": true
+    }
+  ]
+}

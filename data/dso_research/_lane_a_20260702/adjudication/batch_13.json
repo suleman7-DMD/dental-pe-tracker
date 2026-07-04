@@ -1,0 +1,106 @@
+{
+  "batch": 13,
+  "indices": [130, 139],
+  "dispositions": [
+    {
+      "location_id": "e50dfc828412c437",
+      "practice_name": "SANEI CENTER PC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Hard db_corporate_conflict names Western Dental (a Rule-3 known DSO brand / Sonrava) with entity_classification dso_national. The researcher argues a fuzzy 'Northwestern Dental' vs 'Western Dental' substring collision (plausible), but Rule 3 is fail-closed: a named DSO brand on a T1/T2 row is never accepted. The ao_reaches_multiple_locations signal (Sanei across 2 sites) also needs owner/network review. Routing to the adversarial verifier to confirm the collision rather than self-clearing.",
+      "web_searched": false
+    },
+    {
+      "location_id": "f3959b4a9ac8e139",
+      "practice_name": "SILVA DENTAL CENTER LTD",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Hard db_corporate_conflict (dso_regional, Precision Dental Care) plus a shared EIN 465833863 spanning 4 distinct location_ids and a DB website 'Central Dental Associates' that matches neither Silva nor Precision. The researcher only rebutted the Precision name collision and did not reconcile the 4-location EIN cluster or the third brand name, while asserting single-location. Rule 2/Rule 6c: a shared corporate EIN cluster with a dso_regional label is unresolved corporate/network signal, so hold for the verifier rather than accept T2.",
+      "web_searched": false
+    },
+    {
+      "location_id": "827b2ed9490623cd",
+      "practice_name": "Glow Dental",
+      "assigned_tier": "dentist_multi",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Hard db_corporate_conflict (dso_regional, Family Dental Care) plus shared EIN 363554595 across 6 location_ids and a DB website 'Evergreen Park Dental' — none of which match the researcher's 'Glow Dental 4-location dentist merger' story. Family Dental Care is a Chicago regional group the DB treats as corporate (dso_regional), so this address may actually be a Family Dental Care unit rather than dentist-owned Glow. The EIN-6 cluster vs the claimed 4-office network is unreconciled; per fail-closed I hold for the verifier and never self-promote to corporate.",
+      "web_searched": false
+    },
+    {
+      "location_id": "1feacfd70c3cc8aa",
+      "practice_name": "ARBOR HILLS DENTAL CARE",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Hard db_corporate_conflict names Western Dental (Rule-3 brand) with entity_classification dso_national and affiliated_pe_sponsor 'formerly New Mountain Capital' (Western Dental/Sonrava's actual PE owner), so the DB genuinely believes this is a Western Dental unit. The researcher's own-site evidence (Drs. Theodore and Samantha Cho, no DSO mention) is a credible false-match rebuttal, but Rule 3 forbids accepting a named DSO brand on a T2 row. Hold for the adversarial verifier.",
+      "web_searched": false
+    },
+    {
+      "location_id": "b32d6f1dfb116fe4",
+      "practice_name": "Tidy Smiles",
+      "assigned_tier": "dentist_multi",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Hard db_corporate_conflict names Aspen Dental (Rule-3 brand) with affiliated_pe_sponsor Leonard Green & Partners (Aspen's PE owner), entity_classification dso_national. The researcher's evidence that the NPI address is Dr. Sandhya Pallam's own 'All Smiles Family Dental' (2 owned offices) and that the real Aspen Palatine is a different address (968 vs 537 E Dundee) is plausible, but Rule 2 is not tier-limited and a marquee DSO brand in the DB signal routes to the verifier regardless of the T3 assignment.",
+      "web_searched": false
+    },
+    {
+      "location_id": "d4e18c5fbe25e529",
+      "practice_name": "SCHARFENBERG HARMON DENTAL PARTNERSHIP",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "No DSO/PE/MSO signal — DB entity_classification is solo_high_volume (independent) and there is no corporate-brand or PE tag. Own domain elmhurstdentists.com names Drs. Jerry and Carly Scharfenberg plus Dr. Kyle Harmon as the practicing dentists at one Elmhurst address, matching the 2-NPI EIN reach. The shared phone/EIN/domain across 2-3 location_ids (under the legacy 'DeWitt Dentistry' name/domain) are consistent with duplicate address/suite variants of the same single dentist-owned partnership (Rule 6b building/practice artifact), not a chain or MSO. T2 stands.",
+      "web_searched": false
+    },
+    {
+      "location_id": "dff2693b4fb03dd6",
+      "practice_name": "Gentle Dental Smile",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": "medium",
+      "rationale": "The hard db_corporate_conflict (Gentle Dental, dso_national) is defeated by a strong address-level negative control: the researcher fetched interdent.com's own locator and the national Gentle Dental (InterDent) has zero Illinois footprint (only HI/CA/OR/WA/AZ/NV/OK/KS), so an IL Hanover Park office cannot be that brand — a generic-name collision. Gentle Dental is not on the Rule-3 never-accept list, evidence is the practice's own site, and provider_count=1 supports solo independent. Confidence held at the assigned medium since positive owner-name proof is thin.",
+      "web_searched": false
+    },
+    {
+      "location_id": "cdcdf30342969078",
+      "practice_name": "DENTAL HEIGHTS DDS PC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The parent_company 'EVENLY ORTHODONTICS DUPONT' and shared evenly.com domain are the documented Evenly Technologies placeholder false-signal (CLAUDE.md 2026-06-12 audit root-caused this exact leak and purged it); the Data-Axle officer hits are corroboration-only (low). DB entity_classification is family_practice (independent), and the practice's own site proves Dental Heights was founded 2013 by the Bader-family dentists (Alamdar, Shafeeq, Zishan Bader) at one Glendale Heights address with provider_count=4 matching. Dentist-owned single-location family group — T2 stands.",
+      "web_searched": false
+    },
+    {
+      "location_id": "be32c4f8df293c5d",
+      "practice_name": "NITA PATEL DDS INC",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Rule 1 trigger is not met: db_context provider_count is 0 and there is a single surname (Patel), so no forced T2 correction. Own site nitapateldds.com proves Dr. Nita Patel owns and operates her eponymous PC (practicing since 1992) — positive current ownership at one Roselle address. The small_group label and shared-phone-across-2-locations are artifacts of a duplicate 'Patel Dental' NPI record for the same physical office (the other location_id is the duplicate); no second dentist is evidenced. T1 stands.",
+      "web_searched": false
+    },
+    {
+      "location_id": "43027f74b4b8e0d6",
+      "practice_name": "Gentle Dental Care",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": "medium",
+      "rationale": "Another generic 'Gentle Dental' name collision — BBB, Yelp, and the Berwyn business directory all identify 6731 26th St as 'G.R. Zehak DDS & Associates' (Dr. George Zehak, since 1984), and the national Gentle Dental/InterDent has no IL footprint, so the dso_national tag is a false brand match (Gentle Dental is not on the Rule-3 list). However all evidence is directory-only with no own website, so per Rule 5 I cap confidence at medium rather than the assigned high; tier true_independent stands (single provider, manager Maria Zehak is non-clinical).",
+      "web_searched": false
+    }
+  ]
+}

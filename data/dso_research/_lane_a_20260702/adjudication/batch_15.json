@@ -1,0 +1,106 @@
+{
+  "batch": 15,
+  "indices": [150, 159],
+  "dispositions": [
+    {
+      "location_id": "008d4f50cb1392c5",
+      "practice_name": "GARY P. BALAS, D.D.S.",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The hard ao_nonclinical_exec_title fires only because the AO is the office's business coordinator (Patricia Spannagel) named as NPPES authorized official, a benign small-practice office-manager-as-AO pattern, not corporate control. The practice's OWN website (drbalas.com) confirms Dr. Gary P. Balas as owner-dentist at 1430 N Arlington Heights Rd with matching phone, and the 7 associate surnames at one address are an associate-staffed GP consistent with single_loc_group; the db 'large_group' label is just the detector counting those associates. shared_phone reach_count 2 is a low-reach second line with no additional location found, so T2 stands at high confidence on own-site evidence.",
+      "web_searched": false
+    },
+    {
+      "location_id": "ebe25e498a1c96fc",
+      "practice_name": "Barrington Smiles",
+      "assigned_tier": "dentist_multi",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Hard db_corporate_conflict flags affiliated_dso 'Midwest Dental' (a known DSO brand) with entity_classification dso_national. The researcher argues this is the unrelated dentist-led Midwest Dental Sleep Center (Dr. Craig, 5 locations, shared_phone reach 3 consistent with that network), but a 'CEO' title (Scott Craig) is present, confidence is only medium, and Rules 2/3 forbid accepting a known-DSO-brand conflict. Sending to the adversarial verifier to confirm dentist control vs corporate/MSO before any dentist_multi merge; not promoting to a DSO tier myself.",
+      "web_searched": false
+    },
+    {
+      "location_id": "10b07c234864d8d5",
+      "practice_name": "META ENDO PLLC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The location record is internally contradictory: the org NPI is Dr. Tam Trinh's (MeTa Endo per the researcher's metaendo.com evidence), but the bridged provider roster is four unrelated surnames (Dalloul/Oleari/Schichtel/Treiber), the db website is northbrooksmiles.com (shared_website_domain signal), the DA legal name is 'Zen Dental', and two different phones each reach other locations. Three distinct practice identities collapsed onto one record cannot be cleanly merged as a single_loc_group, and the shared domain/phones across differently-named offices leave ownership unverifiable. Holding as unresolved rather than accepting.",
+      "web_searched": false
+    },
+    {
+      "location_id": "2bc6f5c2918433f0",
+      "practice_name": "ARTISAN DENTAL GROUP - RICHARD MADDALOZZO DDS MS LLC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": "medium",
+      "rationale": "parent_or_legal_entity_signal is the practice's OWN entity name ('Artisan Dental Group of Illinois LLC'), and shared_ein (reach 2) plus shared_phone (reach 2) are consistent with the family perio/GP practice's own same-address sibling entities rather than a corporate MSO; the db label is family_practice (two Maddalozzos). The researcher confirms four dentists at one location, family-run 25+ years, no management company. Because evidence is directory-only (CareCredit locator + Healthgrades), Rule 5 caps confidence at medium; tier single_loc_group stands.",
+      "web_searched": false
+    },
+    {
+      "location_id": "da6f355f4c4017d9",
+      "practice_name": "P&E DENTAL P.C.",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The record shows provider_count 8 with a db 'large_group' label and a db website for a different practice (Weisbartendodontics.com), while the researcher verified only a 2-dentist P&E Dental (Pinsky/Echezarreta) via pandedental.com. Four different shared phones each reach different locations inside the Old Orchard shopping center, indicating address-based conflation of multiple suites into one record. The 8-provider roster and mismatched website contradict the clean 2-dentist single_loc_group claim, so it cannot merge as-is.",
+      "web_searched": false
+    },
+    {
+      "location_id": "6f2e042d3b9ebfb1",
+      "practice_name": "Family Choice Dental Inc",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "T1 with a hard db_corporate_conflict: affiliated_dso 'Choice Dental Group' and entity_classification dso_national. The researcher's rebuttal (a Texas entity, no tie here) rests on directory-only sources (chamberofcommerce plus a groupdentistrynow DSO deal-roundup) and is hedged ('appears to be'), which cannot supply the positive current-ownership proof T1 requires under Rules 2 and 5. The DSO-affiliation flag plus a DSO deal-roundup URL in the evidence warrant the adversarial verifier pass rather than acceptance.",
+      "web_searched": false
+    },
+    {
+      "location_id": "8f876a7b6a8b48b0",
+      "practice_name": "Midwest Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The location name IS a known DSO brand ('Midwest Dental') and the db is dso_national with a hard db_corporate_conflict, so Rule 3 forbids accepting it as true_independent regardless of the researcher's evidence. The claim that 1750 N Randall Rd is now Dr. Thomas Yun's independent Randall Meadows Dental (with Midwest Dental's real Elgin office at a different address, 1530 N Randall Rd) is plausible and checkable, but must be confirmed by the adversarial verifier before merge. Holding for DSO verification.",
+      "web_searched": false
+    },
+    {
+      "location_id": "9a7339f9ff5c8997",
+      "practice_name": "KEITH L GUZAITIS DDS INC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Web search confirms Guzaitis Dental Group operates a single location at 188 N York St, Elmhurst (formerly Kopp Dental), listing general/perio/prostho providers — so shared_ein reach 3 and shared_phone reach 2 are same-address sibling NPI/entity records of one owner-dentist (Keith Guzaitis) practice, not a multi-office network (ruling out a dentist_multi correction). The t2_provider_count_lte1 signal fires only because the group's providers are split across those same-address NPI records; own site gdgdental.com confirms dentist ownership. single_loc_group stands at high confidence.",
+      "web_searched": true
+    },
+    {
+      "location_id": "e2f7c997685ed334",
+      "practice_name": "YUNEZ DENTAL & ASSOCIATES, P.C.",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": "medium",
+      "rationale": "The AO reaching 2 locations is Sylvia Galindo, titled OFFICE MANAGER — a shared administrative contact (Rule 6b artifact), not an owner or corporate controller, and there is no DSO brand, corporate EIN cluster, or parent-org signal. The researcher confirms Dr. Samira Yunez owns the single office at 237 E Butterfield Rd with two practicing dentists (Yunez/Starvel), fitting single_loc_group. Because support is directory/registry-only (Yahoo Local, Healthgrades, NPI registry), Rule 5 caps confidence at medium; tier stands.",
+      "web_searched": false
+    },
+    {
+      "location_id": "06103ae3a6ed4ab0",
+      "practice_name": "ADVOCATE DENTAL ST CHARLES, LLC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The AO of record, Jubrail Sweis DDS titled 'OWNER', reaches 7 locations (ao_reaches_multiple_locations) while this record's actual practicing-dentist roster is the Bespoke Dental team (Wolski/Baginski), not Sweis — a classic owner-of-record-vs-practicing-dentist pattern suggesting a stealth multi-location control structure spanning several local brands. The researcher's single_loc_group 'Bespoke Dental, independent' read (medium confidence, acknowledged registration-name discrepancy and stale_founder_history) does not resolve whether Sweis's 7-location ownership is a dentist_multi group or MSO/stealth-DSO control. Sending to the adversarial verifier; not merging as-is.",
+      "web_searched": false
+    }
+  ]
+}
