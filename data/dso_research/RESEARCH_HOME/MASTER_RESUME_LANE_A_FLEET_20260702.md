@@ -564,3 +564,75 @@ per the concurrency rule.
 Remaining census work AFTER sync (not blocking): holds queue 91 (52 dso_verify + 30 unresolved +
 9 duplicate_suspect) + triage 649 rows + 477 undetermined + ~950 never-researched (wave-5 queue).
 Next mission: SESSION_CHARTER_FABLE_TRUTH_APP_20260704.md (truth-safe app redesign).
+
+## §6n — PRE-SUNDAY DURABILITY LOCKDOWN + census_review_status FEED SHIPPED (Fable PM, 2026-07-04)
+
+**Context.** Tomorrow (Sunday 2026-07-05, FIRST Sunday) BOTH launchd jobs fire: monthly NPPES
+refresh 6am (`com.dental-pe.nppes-refresh` → `nppes_refresh.sh`) + weekly refresh 8am
+(`com.dental-pe.weekly-refresh` → `refresh.sh`). The 1-day-old census layer had never survived a
+refresh cycle. NOTE: these are launchd agents, NOT crontab (crontab is empty) — check
+`launchctl list | grep dental-pe` when debugging schedules.
+
+**Authorization record.** All work in this section (including the leg-1 Supabase sync) executed
+under the user's explicit blanket grant this session, given in direct response to a proposal that
+named this exact build + sync: *"go and do whatever you need to do autonomously no need for my
+intervention im stepping away so do measureable step improvements that you deem fit as fable the
+master extremely capable solo dev lead project manager."* The per-run human gates in the skills/
+protocol remain the default for future sessions.
+
+**1. Census durability audit — VERDICT: all three Sunday write paths are census-safe by
+construction.**
+- NPPES raw bulk path (`nppes_downloader.py:839-886`): fixed 11-column UPDATE (AO/mailing/
+  subpart/parent-org) by NPI — cannot touch census cols.
+- `insert_or_update_practice` (`database.py:862-879`): sets only explicitly-passed non-None
+  kwargs — census cols never passed by any scraper.
+- `_sync_watched_zips_only` + all full_replace legs: columns derived from `_get_column_names(model)`
+  = ALL ORM-mapped columns; census cols (+ new `census_review_status`) are ORM-mapped, so
+  TRUNCATE+reinsert CARRIES them. Residual risks (future ORM unmapping; never-empirically-run
+  full sync) are regression-class — exactly what the new CI guards catch.
+
+**2. CI guards added** (`scripts/check_data_invariants.py`): **CENSUS** (expect_min=3180 tiered
+practice_locations) + **CENSUS_NPI** (expect_min=6754 tiered practices), severity=fail, notes
+carry remediation (backup-lineage restore + re-run both sync legs; `_sync_practices_changed_rows`
+does NOT carry census cols). Verified against live Supabase: ALL PASS, exit 0 (only pre-existing
+F05 WARN). Full guard set now: FLOOR 268 / FLOOR_NPI 1152 / CENSUS 3180 / CENSUS_NPI 6754.
+
+**3. Pre-Sunday backup:** `data/backups/dental_pe_tracker_pre_sunday_refresh_20260704.db`
+(md5 `e1f12bb89deb21dc0c4f27251dc57de2`, 246M).
+
+**4. `census_review_status` feed — BUILT, BACKFILLED, SYNCED LIVE, READ-BACK VERIFIED.**
+The truth-app contract (`ownership-truth.ts::deriveSourceClass(tier, reviewStatus?)`) awaited
+exactly this feed; the known gap in the sync skill §5 is now CLOSED.
+- Column: `practice_locations.census_review_status` VARCHAR(20), values exactly
+  `'held' | 'undetermined' | NULL`; location-level ONLY (review status is Review Desk metadata,
+  not a tier — no NPI mirroring). ORM-mapped in `database.py` (PracticeLocation, adjacent to the
+  census block) so every full_replace carries it — same durability mechanism as the census cols.
+- Migration: `scrapers/migrate_census_review_status.py` (additive, idempotent, BOTH DBs; pattern
+  = migrate_ownership_tier_cols.py). Ran clean: column + index PRESENT both sides.
+- Backfill: `scrapers/backfill_census_review_status.py` from the two truth files —
+  `_lane_a_triage_wave1_20260702.json` (477 `undetermined_by_agent` → 'undetermined'; 172 other
+  triage reasons → 'held') + `_census_holds_20260702.json` (7 PM holds → 'held'; 1 overlaps
+  triage, 6 additive). **Result: 477 undetermined + 178 held = 655 rows**, 0 skipped-tiered,
+  0 missing, status∧tier overlap 0, tiered 3,180 + floor 268 UNTOUCHED. Evidence:
+  `data/dso_research/census_review_status_backfill_20260704.json`.
+- Sync: leg-1 `python3 -m scrapers._sync_floor_tables_only` (5,657/290/633 verified; live floor
+  268/4,801 = 5.58%). Independent Postgres read-back: review-status tallies, tier tallies (3,180),
+  overlap 0, floor 268, GP 4,801 — ALL MATCH local; NPI mirror 6,754 + corp NPIs 1,152 intact
+  (leg 2 untouched — this column doesn't live on `practices`). CI re-run post-sync: exit 0.
+- **No CI floor guard on this column BY DESIGN:** its count legitimately DROPS as rows earn tiers
+  (tier wins; the backfill guard-skips tiered rows; stale status is benign under tier-precedence).
+
+**5. Post-Sunday verification recipe (run Sunday afternoon or Monday):**
+```bash
+# 1. CI invariants (all 4 floors + census guards) against live
+set -a; source .env; set +a; SUPABASE_URL="${SUPABASE_URL:-$NEXT_PUBLIC_SUPABASE_URL}" \
+SUPABASE_ANON_KEY="${SUPABASE_ANON_KEY:-$NEXT_PUBLIC_SUPABASE_ANON_KEY}" \
+python3 scripts/check_data_invariants.py   # expect exit 0; CENSUS 3180 / CENSUS_NPI 6754
+# 2. Local SQLite spot-check after NPPES+weekly ran
+sqlite3 data/dental_pe_tracker.db "SELECT COUNT(*) FROM practice_locations WHERE ownership_tier IS NOT NULL;
+SELECT census_review_status, COUNT(*) FROM practice_locations WHERE census_review_status IS NOT NULL GROUP BY 1;"
+# expect 3180 | held 178 / undetermined 477 (or higher tier count if new consolidations landed)
+# 3. Cron logs
+tail -40 logs/cron_nppes.log logs/cron_refresh.log
+# If ANY census number dropped: restore lineage = pre_sunday backup above; re-run both sync legs.
+```

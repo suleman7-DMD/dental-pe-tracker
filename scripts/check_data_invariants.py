@@ -154,6 +154,59 @@ INVARIANTS: list[Invariant] = [
         ),
     ),
     Invariant(
+        id="CENSUS",
+        description=(
+            "Hand-verified ownership-census coverage never regresses below the "
+            "2026-07-04 Lane A wave-1 landing: 3,180 practice_locations rows "
+            "with ownership_tier NOT NULL (T1 1,471 / T2 934 / T3 537 / T4 28 / "
+            "T5 151 / T6 59; pe_backed 118)."
+        ),
+        path="practice_locations?ownership_tier=not.is.null&select=location_id",
+        expect_max=99999,         # growth is expected as the census continues
+        expect_min=3180,          # FAIL if the census layer shrinks
+        severity="fail",
+        note=(
+            "CENSUS GUARD: ownership_tier is a SEPARATE axis from the detector "
+            "floor (entity_classification) — written ONLY by "
+            "scrapers/consolidate_census.py, synced by "
+            "scrapers/_sync_floor_tables_only.py (practice_locations rides the "
+            "ORM full_replace). A DROP below 3,180 means either (a) the census "
+            "columns were un-mapped from the ORM in scrapers/database.py "
+            "(the silent sync-strip bug — restore the Column definitions, see "
+            "PROOF_ORM_SYNC_MIGRATION_20260702.md) or (b) a sync ran from a "
+            "SQLite DB that lost the census write — restore from "
+            "data/backups/dental_pe_tracker_pre_census_write_20260704.db "
+            "lineage and re-run both sync legs. SQLite ground truth: LEDGER + "
+            "result files under data/dso_research/RESEARCH_HOME/. A RISE is "
+            "healthy (census continuation waves landing)."
+        ),
+    ),
+    Invariant(
+        id="CENSUS_NPI",
+        description=(
+            "Census NPI mirror never regresses below the 2026-07-04 landing: "
+            "6,754 practices rows with ownership_tier NOT NULL "
+            "(true_independent 1,810 / single_loc_group 2,624 / dentist_multi "
+            "1,370 / stealth_dso 94 / branded_dso 604 / institutional 252)."
+        ),
+        path="practices?ownership_tier=not.is.null&select=npi",
+        expect_max=99999,
+        expect_min=6754,
+        severity="fail",
+        note=(
+            "CENSUS NPI GUARD: the practices-side census mirror is synced by "
+            "the surgical scrapers/_sync_census_columns_practices.py AND rides "
+            "the weekly full sync's watched_zips_only TRUNCATE+reinsert "
+            "(column list comes from the ORM model — census cols must stay "
+            "mapped in scrapers/database.py). NOTE: "
+            "_sync_practices_changed_rows.py does NOT carry census columns — "
+            "it cannot cause a drop by itself, but it also cannot repair one. "
+            "A DROP below 6,754 after a weekly sync = the ORM strip bug "
+            "re-opened; fix database.py, then re-run "
+            "python3 -m scrapers._sync_census_columns_practices."
+        ),
+    ),
+    Invariant(
         id="FLOOR_NPI",
         description=(
             "Corporate NPI rows in live `practices` never regress below the "

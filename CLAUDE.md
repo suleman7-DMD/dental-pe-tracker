@@ -53,6 +53,23 @@
 > + purge list, main-repo `fec445c`/`2688c66`). That module is the canonical ownership contract —
 > reconcile against it, never rebuild it.
 
+> 🛡️ **2026-07-04 (later) — PRE-SUNDAY DURABILITY LOCKDOWN + `census_review_status` FEED LIVE**
+> (runbook **§6n** = full proof). Sunday 2026-07-05 fires BOTH schedules (launchd agents, NOT
+> crontab: `com.dental-pe.nppes-refresh` 6am + `com.dental-pe.weekly-refresh` 8am). Durability
+> audit verdict: all three Sunday write paths census-safe by construction (NPPES fixed-column
+> UPDATE; `insert_or_update_practice` non-None kwargs only; full_replace carries ALL ORM-mapped
+> cols). New CI guards **CENSUS (expect_min=3180) + CENSUS_NPI (expect_min=6754)** in
+> `scripts/check_data_invariants.py`, verified PASS live. Pre-Sunday backup
+> `data/backups/dental_pe_tracker_pre_sunday_refresh_20260704.db` (md5 `e1f1...de2`). NEW COLUMN:
+> `practice_locations.census_review_status` VARCHAR(20) `'held'|'undetermined'|NULL` (Review Desk
+> metadata, NOT a tier; tier always wins; location-level only, no NPI mirror; ORM-mapped so syncs
+> carry it; NO CI floor on it by design — count drops as rows earn tiers). Backfilled **477
+> undetermined + 178 held = 655 rows** from `_lane_a_triage_wave1_20260702.json` +
+> `_census_holds_20260702.json` (evidence `census_review_status_backfill_20260704.json`); synced
+> live via leg-1 + independent read-back ALL MATCH; census 3,180/6,754 + floor 268/1,152 intact.
+> Truth-app session: see `RESEARCH_HOME/NOTE_REVIEW_STATUS_FEED_LIVE_20260704.md` — pass the
+> column to `deriveSourceClass` and held/undetermined buckets go real.
+
 > 🛟 **2026-07-02 (late) — LANE A CENSUS FLEET IN FLIGHT (waves 1–4, Sonnet 5 research + Opus 4.8
 > verify, ~3,488 practices) + OPPORTUNISTIC INTEL CAPTURE.** If a session died/crashed/rate-limited
 > mid-fleet, the complete resume runbook (fleet map, run IDs, verdict-recovery from session

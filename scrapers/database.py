@@ -1030,5 +1030,11 @@ class PracticeLocation(Base):
     ownership_evidence_urls   = Column(Text, nullable=True)
     ownership_confidence      = Column(String(10), nullable=True)
     network_id                = Column(Text, nullable=True)
+    # Review Desk metadata (2026-07-04): 'held' | 'undetermined' | NULL. Set by
+    # backfill_census_review_status.py from the triage + PM-holds files; NOT a
+    # truth tier — ownership_tier always wins (frontend deriveSourceClass).
+    # Must stay ORM-mapped or full_replace sync strips it (same bug class as
+    # the census columns above).
+    census_review_status      = Column(String(20), nullable=True)
     created_at                = Column(DateTime, default=func.now())
     updated_at                = Column(DateTime, default=func.now(), onupdate=func.now())

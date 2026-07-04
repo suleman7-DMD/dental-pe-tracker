@@ -1,0 +1,3307 @@
+{
+ "_meta": {
+  "script": "scrapers/backfill_census_review_status.py",
+  "run_at": "2026-07-04T16:46:32.479573+00:00",
+  "sources": {
+   "triage": "data/dso_research/_lane_a_triage_wave1_20260702.json",
+   "pm_holds": "data/dso_research/_census_holds_20260702.json"
+  },
+  "value_contract": "held | undetermined | NULL (ownership-truth.ts deriveSourceClass)",
+  "planned": {
+   "undetermined": 477,
+   "held": 178
+  },
+  "applied": {
+   "undetermined": 477,
+   "held": 178
+  },
+  "skipped_already_tiered": [],
+  "missing_from_db": [],
+  "db_final_tallies": {
+   "held": 178,
+   "undetermined": 477
+  },
+  "invariants": {
+   "status_and_tier_overlap": 0,
+   "tiered_locations": 3180,
+   "detector_floor_corp_locations": 268
+  }
+ },
+ "rows": [
+  {
+   "location_id": "00283d0319728697",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "00336cbe03e4f9dc",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "00581876abe5dac2",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "00f209bd764640b7",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "02212088eb3f3cf9",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "025ddaa40900a963",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "02617ab9ed30155b",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "02b3fba85c0c1756",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "038af74da5a2998d",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "03ab5b0e4d6ae940",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "03bb2bf2ff66a46b",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "04831e123d5a2a8f",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "04f0a94bdd63b5a5",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "04faa39b050ecd52",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "051079bf8abdd2a1",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "0580d4ebd075f344",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "05b1e7e96230e111",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "05b991e55884d858",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "06103ae3a6ed4ab0",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "06559964fbcc65b8",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "072dc7c20b5c2575",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "0784f18eb36d5056",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "080318c2c0d71ff9",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "086254cc26d74f7c",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "0884ff9f2ce7934f",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "0890ee6396ca45c2",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "09740f22ff301a38",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "0a54ab2bda7a5e9b",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "0af12386d29b780b",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "0afd3cbdbde8c1a5",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "0b43e734ba9fcaf1",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "0b9debb68c723377",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "0bc0553dad657b5b",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "0be00f7ff614fe0f",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "0c2511c4e6bba757",
+   "census_review_status": "held",
+   "reason": "triage:closure_suspect"
+  },
+  {
+   "location_id": "0c7b65c48f4108c7",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "0d12aece1c2ad5ee",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "0d76d8f9105e394d",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "0de376372a8fc8a1",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "0de79b98f75b7128",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "0f47c935b27a8728",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "0f685e9364a72bcb",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "0f917daa7d21b189",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "0fc205300f29c725",
+   "census_review_status": "held",
+   "reason": "pm_hold:network_consistency_archer"
+  },
+  {
+   "location_id": "10350cbe9ba08042",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "104164e8aa15f369",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "105287030f397cc0",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "105664f32027f691",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "1099dd3a7ee857db",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "10b07c234864d8d5",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "10dccf210be5a4af",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "10f8841d9093644b",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "120e9b88cb476518",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "1235b8bbd036a88e",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "132b3a15e500180a",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "133836c9b338d2e6",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "134b8d7ff14d4d1e",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_duplicate_suspect"
+  },
+  {
+   "location_id": "1354bc2b8dff1d69",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "13b38618b4b921be",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "1469c6dcde0459a7",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "14a15d38fb5c7e3c",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "16564b68153a5c2c",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "173ffa7cc8c3e198",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "17f32d3b4a0767ce",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "18073f0d2f974b62",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "18c5e447c4f1cabc",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "192e712ab8a73cfe",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "19dba07a3ac03a09",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "1a478dc49e0d3c7f",
+   "census_review_status": "held",
+   "reason": "pm_hold:weak68_downgrade_to_hold"
+  },
+  {
+   "location_id": "1a7188cd1c1cc279",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "1aa1a048a3a565a6",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "1adac605c6abd972",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "1af6e48f55d003b6",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "1af753fc5fb6148f",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "1bde0d69c244cfcd",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "1ce540833d8db997",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "1d8cfa323c159af8",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "1df260dc64a9a060",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "1e3f91e292ba9aec",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "1f2702d93abdcf81",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "1f518a85c067770e",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "1f6f116f4cfa533c",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "1feacfd70c3cc8aa",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "20c2ed45dd8cf50a",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "21d0fcc1b06ce2c4",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "21e3c19bc7fb9157",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "227d8d7a41590d84",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "2292e39949e40482",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "2294e04d390e10a3",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "232ef04da1c24f3f",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_duplicate_suspect"
+  },
+  {
+   "location_id": "23bc585758c9558a",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "244f749606ad12b0",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "2498bbc43d47198a",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "258e684c841b8312",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "25df207a778fce67",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "267962cf9189c5a2",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "26d1830e863c29a0",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "26fd231a1546c44c",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "271dbc75ba29942f",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "27721fcab5dba222",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "277a35dd42a65e32",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "27a4808a5732c399",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "27a8481dddeb5059",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "2870e1613ba5f0c2",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "28ce3da966b80b21",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "292541fbf147d530",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "2990d3b52d394795",
+   "census_review_status": "held",
+   "reason": "triage:r4_network_ge10_brand:aspen_dental"
+  },
+  {
+   "location_id": "29af9344614eda5f",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "29ded9c384c4e2e3",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "2a3ab0efee9c3f95",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "2a8e213de1788f9e",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "2ab3d32835cc2cb1",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "2b12cf9aa3afed8a",
+   "census_review_status": "held",
+   "reason": "triage:dso_claim_refute"
+  },
+  {
+   "location_id": "2bc3dd11c6a2e193",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "2bc6f5c2918433f0",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "2bd652bcbd662c85",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "2c431d78dd522d71",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "2c50f73fa45c9fb7",
+   "census_review_status": "held",
+   "reason": "triage:r4_network_ge10_brand:aspen_dental"
+  },
+  {
+   "location_id": "2da2fa405e16df4c",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "2dfbf856864f1dec",
+   "census_review_status": "held",
+   "reason": "triage:r4_network_ge10_brand:aspen_dental"
+  },
+  {
+   "location_id": "2e0889c754b90e0c",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "2e2b266c3465ec2d",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "2e55d739678f2b0b",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "2ea1506e3962f672",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "2eccce6b14d310cd",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "2f2c3b89c49c6169",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "2faa51a8ef02fcc1",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "30321d57a6f0cbc1",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "305919ae458c3c32",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "30ffe0bf981ce460",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "315ae3407ac75822",
+   "census_review_status": "held",
+   "reason": "triage:r4_network_ge10_brand:aspen_dental"
+  },
+  {
+   "location_id": "31abbd4a8d8300c9",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "32a6165e9eaf9231",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "32cff008e0fb4d0f",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "333d2094fc1d15e0",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "336b69ba6a3ac455",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "354be35862b42fa5",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "35cbbce74d2ff7c5",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "35d7239a6e507cba",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "35defb5fc99e0117",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "3753fd053d6eb301",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "37b5b553c5de12a2",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "38d3d0a02dff7b6f",
+   "census_review_status": "held",
+   "reason": "triage:r4_network_ge10_brand:aspen_dental"
+  },
+  {
+   "location_id": "393a79a74b719b48",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "39f2d2b90de5848e",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "39f33af5499160a7",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "3a1fb3f4223c5cd9",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "3a36b5c737906e62",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "3a6c8f4c0f2a150c",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "3a6e0a282b1fbc64",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "3a80a4f3e173e7ac",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "3af1e2ccc1b5eb23",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "3b6b69260c955c3c",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "3bc304a7819a234f",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "3c41e9f7f44640fa",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "3c812d6a848fe775",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "3ca7773a623ff21d",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "3d6d77fc02cdd7f6",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "3d7c80e61cc1b18d",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "3e7a3d11d88cb223",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "3ea1ab3ebe2ff655",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "3f2a1feba10ebd5d",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "3f4fa562387c76d3",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "3f60f7c2162caf3f",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "3fad6182ba54feb4",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "3ffd9138fb6c0c44",
+   "census_review_status": "held",
+   "reason": "triage:r4_network_ge10_brand:aspen_dental"
+  },
+  {
+   "location_id": "4002b8b6e7fbf4ba",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "401b88a09170a38e",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "402558cd9290b243",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "4025c6f290196e5c",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "40a5a5b583d4ae40",
+   "census_review_status": "held",
+   "reason": "triage:r4_network_ge10_brand:aspen_dental"
+  },
+  {
+   "location_id": "4168f1be58dc66f1",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "4175200f5d7f4a8a",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "41c5c6a34b7b2c1d",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "424e826f072b9279",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "42d1dfe2d92fb435",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "43027f74b4b8e0d6",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "439c21e243922d1b",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "444a7e5aef77b98d",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "4460256bd7d20775",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "4535451bd15d0b2c",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "45ab58a401772b06",
+   "census_review_status": "held",
+   "reason": "triage:r4_network_ge10_brand:aspen_dental"
+  },
+  {
+   "location_id": "45c3ff989564e69c",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "460774793c975fbf",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "461291ffcb90a9dc",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "462802f113ba0061",
+   "census_review_status": "held",
+   "reason": "triage:r4_network_ge10_brand:aspen_dental"
+  },
+  {
+   "location_id": "46736b187ceba600",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "467e3c03f033ca0d",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "46e37769a1e1c6dd",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "473d8c9bb2e54411",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "4864be0b1d4d3366",
+   "census_review_status": "held",
+   "reason": "triage:r4_network_ge10_brand:aspen_dental"
+  },
+  {
+   "location_id": "48b5929bcc9c403f",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "48c053d606219409",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "48fbda09c9350970",
+   "census_review_status": "held",
+   "reason": "triage:closure_suspect"
+  },
+  {
+   "location_id": "490a95a9ff78416e",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "49d9c36c9fe9abb8",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "49dd7ff7fcfd635b",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "4b36bd94d52e5aa4",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "4bad777c35bd002e",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "4bbaac19c7ef00f9",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "4c77253121d38b15",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "4ca83acbcd91a330",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "4cdf3ef029ab464c",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "4e1e4b7c53ec95ce",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "4e53fa60dcbec4bf",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "4e653fbddedac81b",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "4ec51b1b725a84ed",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "4f102207d0880e37",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "4f95e6d5f0037303",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "501c41b213c7102f",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "50e74ba3f017442a",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "50fe6f9e798c9aa3",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "512ead3083b0163b",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "51ac18289e1ae93b",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "51e7cceaef85634f",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "5287843d3b6853ff",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "528945ee1e7425f3",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "52aad5182c988318",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "52b68c520b5385df",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "52b7922c821e6cb2",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "5404b210ff43f176",
+   "census_review_status": "held",
+   "reason": "triage:dso_claim_insufficient"
+  },
+  {
+   "location_id": "541ae39cadc867b6",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "543ebd8763c7a4b0",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "543f3230f070c5d3",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "54479fe1c50bc482",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "544fce1bec289d3d",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "54ab1281039449a4",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "555311c8824fdecc",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "563fb56f6f4f84d7",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "569f61345a88d60b",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "56a5f75e23b6bf15",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "56d0d9afb4414c93",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "57d1141d853072c0",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "57f43b2b4923beb3",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "58405e6d2a435c13",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "588363b0f23c2f23",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "58af66ee2bf4b9c6",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "593fdc19d08b9118",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "5a195c1eb06b40b4",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "5a6589ebbf27badf",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "5a8d9fdaadd2a2eb",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "5ad4c24cb592e0e4",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "5b4d367d278a37eb",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "5b6694d3abaf7e26",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "5c6637877b8c8f3b",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "5cc84a59561f1d02",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "5d2c0b1df03a6178",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "5d42ad8234c3b21f",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "5d8caf7fea99b08c",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "5e2932fde184fe15",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "5e36e042bf752440",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "5e92660ad5b32980",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "5eab44b121539094",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "5ead583d8354e6e4",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "5f0c2cdb83dd003b",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "5fd010c99f656c09",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "5fd89cb5dc74e67c",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "60b4da838534e3c1",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "6148162777cc38de",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "6179a9d5365bda56",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "61d7600f79d7f2ef",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_duplicate_suspect"
+  },
+  {
+   "location_id": "61faddcf67f830ad",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "62e7692968032804",
+   "census_review_status": "held",
+   "reason": "triage:r4_network_ge10_brand:aspen_dental"
+  },
+  {
+   "location_id": "63cececf92b07387",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "647bd437d43d0cb4",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "64e57c66fd098eed",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "64ebd796c0ddf14e",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "661a04aecdc2c2de",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "664fe6487b9702d1",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "6760c75ee764c76b",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "67ac36e9263411bf",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "67be5925590763ad",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "6831c65dc7623f42",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "68c9e0fd8b50aa12",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "6959cb2d84f3a547",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "69c44bf78046da60",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "69d2facec710e077",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "69d4e7c9477839b1",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "6a7337dc1388e15d",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "6ada7fbc9cf79816",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "6c31d482e9a63431",
+   "census_review_status": "held",
+   "reason": "pm_hold:da_synthetic_npi_scope_correction_queue"
+  },
+  {
+   "location_id": "6c629fcb565ea0be",
+   "census_review_status": "held",
+   "reason": "triage:r4_network_ge10_brand:aspen_dental"
+  },
+  {
+   "location_id": "6c84fef33e967c6a",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "6d41ac6c624b1e46",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "6dbeae090c3b29b7",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "6dc2bceb45b9a4b9",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "6df757905115436a",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "6e15cd51a8e6ced3",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "6e2b945110c94d8b",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "6e3a11a850c2b8e4",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "6e3b3152c6fdc3cb",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "6e89c29d83479f47",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "6f2e042d3b9ebfb1",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "6f685dcd203ff3d2",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "702c515ddaea461b",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "70527352573c9f62",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "706c0c72846820f4",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "71597587571ef8f7",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "719094a274f626fe",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "719b01502f151a50",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "72033697d42c7699",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "723a187321dc5fda",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "727e698fcd543f6a",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "728b9a15092ec093",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "72b44a0858116792",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "72d0b167e1beb9c9",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "737e34e872608b2b",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "7392668ccd0bb9a9",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "73ed5ab9fbd02254",
+   "census_review_status": "held",
+   "reason": "triage:r4_network_ge10_brand:aspen_dental"
+  },
+  {
+   "location_id": "7542f13e98b7bd0d",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "75761a56fffcc74b",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "75c7965901339cb2",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "76adb0e63e4b6d66",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "76b01c890765d33f",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "776c5f72a94f91a8",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "77d5f9f15e9955d2",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "788b939c70cf8c48",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "78ed9776d81fc92d",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "79699d37d4b4c43b",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "79820eec34c75071",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "79a5f32623e8a36a",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "79e9d8a4c95e4f0d",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "7a955a5504c45bda",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "7abde8f806c731d6",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "7ad9d9896a088272",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "7b3a95467ccbef69",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "7b9450376a14d255",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "7bb0716140f51ee2",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "7bcc10077b57ab74",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "7c3996d8fabb7f69",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "7d1d789828351ecf",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "7df4c4b1bfd96b96",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "7e0439cc8da30e2a",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "7edec4151f858c23",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "7f0ef326401589ca",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "7f20eb7eeac9dae7",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "7f961d23a0fc4a41",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "803b17d64715c9f2",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "8075df2ccd0c7971",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "80a9511a2175146c",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "812b547cc5aa5354",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "816c6e78cbe8b0c0",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "81bef17f185df275",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "81f0d806c51a0633",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "822d3012aedf32b9",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "8256bfff559b0760",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "827b2ed9490623cd",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "828ed870467c4528",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "831836bca7c0af80",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "834f4e5a1825ec3c",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "83a3a0d294fe97a6",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "843dc24460a9f574",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_duplicate_suspect"
+  },
+  {
+   "location_id": "846f31472fc7c11b",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "847e6f1ca9b42fde",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "85512588639c1e32",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "85e747f62443ddfe",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "860ee3dd63c4e10a",
+   "census_review_status": "held",
+   "reason": "triage:closure_suspect"
+  },
+  {
+   "location_id": "86717c7aa6e4c34a",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "869a8f9f260139db",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "869f015b8ebd09d6",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "86f0b24aac6e0fff",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "887ec97162de3481",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "88ae8f6dc942d649",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "88dec5fa468825bc",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "88ef34deb23c8a00",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "895ecae72eb372df",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "89f740688dc5eaf6",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "8a34844491e4a5af",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "8a356e600ac17964",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "8a8d50d1fd1b2515",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "8af6ede25df1e964",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "8b989c612db849fe",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "8bb56d655fd949a6",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "8c2b035cb175277b",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "8c3855d8ce54344a",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "8c6cbd8b8b3e4877",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "8d511f60872d7085",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "8d81d4516f493d1e",
+   "census_review_status": "held",
+   "reason": "pm_hold:lane3_pending_ownership_confirmation"
+  },
+  {
+   "location_id": "8e43f333b5547375",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "8f111700c10a36b7",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "8f706d83e1aa4a82",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "8f876a7b6a8b48b0",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "900b6612b1d9e649",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "9158d722e9bf48de",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "917453ec644f8a6a",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "9279cc777453fb1d",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "93287e7e58ead8af",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "9379ac3a7cffc3ff",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "938a86c8483a08fd",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "93a31301427c6aef",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "93aac5767437ad29",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "940de41ceda33ad2",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "94536736facaf408",
+   "census_review_status": "held",
+   "reason": "triage:closure_suspect"
+  },
+  {
+   "location_id": "9547fa276406987c",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "9550d33a7efdafdd",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "96d15763300700b6",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "979777a4db94b853",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "979a18327d3c4595",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "97ce6e59218e0f7a",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "97dbd0a27b673071",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "97e471fd9a3069c6",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "9839b89e8b31f3ba",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "98459905ed5bf904",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "9874849021fddd6e",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "993998819f40910c",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "996738adba46646b",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "9a5b6013c9a3eb69",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "9a981c5509974601",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "9aa8e5974e12f480",
+   "census_review_status": "held",
+   "reason": "triage:closure_suspect"
+  },
+  {
+   "location_id": "9aa9a03d21cd96bd",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "9ae58e81350be838",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "9c7f34a525b09172",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "9c7f6cc1fb4d41b6",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "9fe62bf8816a28c1",
+   "census_review_status": "held",
+   "reason": "triage:r4_network_ge10_brand:aspen_dental"
+  },
+  {
+   "location_id": "9fef60fec070f114",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "9ff39651d697af30",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "a04031fd6cfcd878",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "a09e9abb956dba36",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "a1bb8993fe7480f4",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "a21cf06432474d78",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "a21f71f70cd3dcc6",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "a222bf847c88b638",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "a2670f744861cc86",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "a2fc3deda0b02a10",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "a34490266101cbd2",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "a36a3043313937a4",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "a3a37f95a0e67f28",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "a423ce7b3cf8eb4d",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "a4c2f6303bec1c06",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "a5133c0ee7c91760",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "a56a841f0923d8aa",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "a5714245bc2fae33",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "a57662fbc9f7e5fe",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "a5bb8d46ac12c26f",
+   "census_review_status": "held",
+   "reason": "triage:r4_network_ge10_brand:aspen_dental"
+  },
+  {
+   "location_id": "a697a41b1497a4f9",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "a6c8d1b4552ac7c7",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "a750653c5897a326",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "a7d32a4b2ccab8d4",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "a82bfb3ce61a8627",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "a8464775598ce6d5",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "a8b41ff99044983e",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "a9cf22985a2e1558",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "a9dd854c0381b93f",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "aa2c71bec407be23",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "aa8443060e413966",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "ac8d6d744c3e2e71",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "ace914075d21f844",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_duplicate_suspect"
+  },
+  {
+   "location_id": "ad3fbbd6ba8e5475",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "ad813403f092a662",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "ad9eef35191fcc40",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "ae46e2417fc0a4f9",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "aed5721544edc5ed",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "aee85a072102dce1",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "b1095e8a0dbc3605",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "b1acb8ab6e95b1ce",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "b1e3b67adc113238",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "b1f77f978fc615fb",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "b32d6f1dfb116fe4",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "b342564015ef538e",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "b36aff3306c8901a",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "b48700e5d6e71b7e",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "b57d867e22fe6bb0",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "b65bf4d999162477",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "b69f42937eb58e41",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "b6a94ee5a4fbd9fc",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "b6add6f8267c27d4",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "b6f0158e932b879c",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "b738049becf9ec10",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "b77c247e6be90e1e",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "b839d55b755fc4cb",
+   "census_review_status": "held",
+   "reason": "pm_hold:weak68_downgrade_to_hold"
+  },
+  {
+   "location_id": "b8658da3b158792d",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "b89c4be8768f251f",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "b8ed9c13ce038fe0",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "b8f4172a363d99c0",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "bac78ba233d2e85d",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "bb01736901759a6a",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "bb925c602eb1ffb6",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "bb97d5c4988b2b40",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "bb9a6f5879ea79d2",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "bbdcf63c1d812b73",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "bc975ef1860f394e",
+   "census_review_status": "held",
+   "reason": "pm_hold:weak68_downgrade_to_hold"
+  },
+  {
+   "location_id": "bd5b25e85f4896fc",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "bd6393c0eb335dfd",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "bdc89e24a2697304",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "be2a1cd5ebe9d302",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "be2edea0a9a2fb86",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "be32c4f8df293c5d",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "befbccf7c7f06e9e",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "bf29ca4df2747108",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "bf5a1d80f62a57a2",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "c01a079b720197d5",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "c086b31775dede34",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "c088f2d83fe13d65",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "c0aa198058c4eba5",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "c1526a81500dbd53",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "c154618b89eae594",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "c163f205f7ce7753",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_duplicate_suspect"
+  },
+  {
+   "location_id": "c16a63a89715b5d7",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "c2a49b9eae5cbd6a",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "c2be6e0f17dae07d",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "c2c7539541dafe5f",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "c3d4ef0cce1aecad",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "c42bbfd07106f9f2",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "c4552136cfc39e5d",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "c49bb3902d793de7",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "c56bb01bb667a203",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "c574aefe94148b85",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "c581824a9c6110f3",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "c601a38aca132f41",
+   "census_review_status": "held",
+   "reason": "triage:dso_claim_refute"
+  },
+  {
+   "location_id": "c6078e6641ef7f48",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "c619d913f837ca9e",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "c6f89aa90a0d4d58",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "c719b2a7e68a53ee",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "c761b821046ed157",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "c8356b1274f05071",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_duplicate_suspect"
+  },
+  {
+   "location_id": "c8f29a5bca7f8b44",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "c965a41730070955",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "ca2e878090461783",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "cc8bc774832b2255",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "ccd94a511fe6d32a",
+   "census_review_status": "held",
+   "reason": "triage:r4_network_ge10_brand:aspen_dental"
+  },
+  {
+   "location_id": "ccdc9e900ec89164",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "ccf37462ab55da26",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "ccff1c8e6e5bc697",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "cd23edab0d244bc3",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "cdbb73c7b9a40c73",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "cdcdf30342969078",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "ce83d553187e39b7",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "cfc5b5e2e6942f8e",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "d054d5672c9305d6",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "d06a5b2225a88b01",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "d085d12550f9f693",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "d17dfa6d766ca1dd",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "d220f31ef6738c88",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "d234d2b0a1e2a657",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "d2e5c43e4975ddb4",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "d37009fe92b97289",
+   "census_review_status": "held",
+   "reason": "triage:closure_suspect"
+  },
+  {
+   "location_id": "d3b3b09cc6ed98dd",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "d3c91780bb40f84e",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "d42f446eff52b63f",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "d46481314c1f830f",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "d4792359292ad8b4",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "d4d3c9b2e9429e9c",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "d4d827860b4132cb",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "d5264baf572f4315",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "d68fe26745047a97",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "d6d0a948f97e9fa2",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "d6eee17d985fd00e",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "d70825f173fed496",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "d7b0bea05d2992b5",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "d8b58f45f195e841",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "d92832b37c918f74",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "d96990a5dd18e5de",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "d96e2b15e57ec2c6",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "d99bc2c4d6d3f44a",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "da6f355f4c4017d9",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "dae4043f4847e4f3",
+   "census_review_status": "held",
+   "reason": "triage:closure_suspect"
+  },
+  {
+   "location_id": "db6006c6bd4f32a3",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_duplicate_suspect"
+  },
+  {
+   "location_id": "db8b03ca2f83aef9",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "dc09d390c733b900",
+   "census_review_status": "held",
+   "reason": "pm_hold:weak68_downgrade_to_hold"
+  },
+  {
+   "location_id": "dcc7433e32a119da",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "dd3ad4eef673ebba",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "dd51cb95b974f2ad",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "dd69e913db973281",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "dd7210ef320babbe",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "dddb5ba57c531064",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "de84ab8dcefc13a5",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "df1522f2c652d40b",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "df6dffafb340a816",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "dfc145e9c4fb8cee",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "dff2693b4fb03dd6",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "e02409eec421de2d",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "e0d5c11b08e3398a",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "e0ee6d4ff57ad085",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "e14eec2daeaaeb9c",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_unresolved"
+  },
+  {
+   "location_id": "e16ff3a9b55a8492",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "e193073a4954650d",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "e1a98af8c66ee443",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "e24bd9e2dcfa6932",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "e26c159dd5300196",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "e286a73df0d2541b",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "e2c809f5b5ba0533",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "e43db6cc2675d3be",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "e481dff27195df58",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_duplicate_suspect"
+  },
+  {
+   "location_id": "e4899053118dd95a",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "e4dbabe89b306cf4",
+   "census_review_status": "held",
+   "reason": "triage:closure_suspect"
+  },
+  {
+   "location_id": "e50dfc828412c437",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "e576bb36cd68838a",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "e58701e63aa2be9d",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "e59a5bca4353314a",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "e5c1a7813bd71d81",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "e7047cd017ae69df",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "e76b9e2c92632174",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "e86d6e38d85a9aef",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "e878afb317d16dca",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "e8b9b8559cdca7d0",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "e8c7b23877da7231",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "e8cb889012ab1fc9",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "e8df1fe62c3f5343",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "e91aa173076b6cad",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "e97bcd0671e44046",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "e97c2fe5465db140",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "e9cc16f6df08e874",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "eac057c7cf0c8fd6",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "eb68bac52463172c",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "eb7656f0233067ec",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "ebdca3e9b46415a5",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "ebe25e498a1c96fc",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "ecbd3ef4f3420954",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "ecc5bbe6dbe66a4d",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "ed176acf1f59e814",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "ed334c8d8ae21cdd",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "ed76f164091c7729",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "eef9af194bbc4e7c",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "ef66b532aff030ca",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "efd529ea8f963629",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "eff4090163823671",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "f0505c0c37029ad3",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "f1a42375270a8a63",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "f2999671201bad86",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "f3959b4a9ac8e139",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "f3ebd80e2f52cab2",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "f4119d08966a5301",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "f467cf2b5affe59d",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "f4d9376d568f7c43",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "f5453961b08a9d83",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "f549ca1c4e826ddd",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "f5a7ad23598f31ca",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "f62621ec4f7225d2",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "f6565f60a97b5708",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "f692349fc70ccd5f",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "f69a18ac792f9ee0",
+   "census_review_status": "held",
+   "reason": "triage:r4_flag_in_reasoning"
+  },
+  {
+   "location_id": "f6b84d4be953e957",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "f748db6ba47d76c2",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "f77fae35cf79b7e8",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "f78135d228b2d6ab",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "f7e6f9f3f43d0ed3",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "f84c9949d78fa8f2",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "f90795046241a32d",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "f91cac2553a6afe3",
+   "census_review_status": "held",
+   "reason": "triage:adjudication_hold_dso_verify"
+  },
+  {
+   "location_id": "f9891ace8eab230b",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "fa07754a86c25f9a",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "fa3d5ee17ac5d5cd",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "fb036860e35f91a2",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "fb044953bbcd2b6f",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "fb7f6105ba971dac",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "fd9f68e3322c2a9d",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "fda85fca9165b187",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "fdadc941d3a84cc1",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "fe0a2dc403ab1234",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "fe19edb1f0014470",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "fe748329683ea4e9",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "fe8ff0d0d9a98e0c",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "feaa63bd7ced2c0e",
+   "census_review_status": "held",
+   "reason": "triage:t1_t2_positive_proof_audit_hold"
+  },
+  {
+   "location_id": "fec14748d3270a63",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  },
+  {
+   "location_id": "ff057f6a817e9125",
+   "census_review_status": "undetermined",
+   "reason": "triage:undetermined_by_agent"
+  }
+ ]
+}
