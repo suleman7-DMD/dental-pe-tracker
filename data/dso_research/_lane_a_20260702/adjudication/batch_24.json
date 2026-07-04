@@ -1,0 +1,106 @@
+{
+  "batch": 24,
+  "indices": [240, 249],
+  "dispositions": [
+    {
+      "location_id": "b96354c425aa02ba",
+      "practice_name": "DEAN P NICHOLAS DDS & ASSOC LTD",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": "medium",
+      "rationale": "The lone hard signal (ao_nonclinical_exec_title) is benign: the org-NPI authorized official is Celeste Nicholas, 'Systems Administrator', i.e. the spouse/office-manager of solo owner-dentist Dr. Dean 'Dino' Nicholas, not a competing owner or corporate exec. provider_count=1, eponymous LTD entity, no DSO/parent signal. Tier stands as T1, but the ownership evidence cited (Zocdoc + CareCredit) is directory-only, so per the high-confidence directory rule I cap confidence at medium.",
+      "web_searched": false
+    },
+    {
+      "location_id": "c8356b1274f05071",
+      "practice_name": "LEMONT FAMILY DENTAL LTD",
+      "assigned_tier": "true_independent",
+      "disposition": "duplicate_suspect",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Both fired signals (ao_reaches_multiple_locations, shared_phone) point to partner location db6006c6bd4f32a3, which is itself 'LEMONT FAMILY DENTAL, LTD' in the same ZIP 60439 with the same owner-AO (Jennifer Splitt-Krull) and phone. The researcher confirms a single solo office via the practice's own site, so this row and its partner are two NPI/address representations of the one Lemont Family Dental office — a duplicate, not a second location.",
+      "web_searched": false
+    },
+    {
+      "location_id": "45e77125cf27a136",
+      "practice_name": "NEIL P. PARIKH D.D.S., P.C",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Web-verified as Olympia Fields Dental Associates (ofsmiles.com, 'Our Office' singular), a Parikh-family P.C. (Neil to Roshan succession), no DSO/PE/corporate brand or parent. The shared EIN (262859787) and local line (708-481-1818) fanning across a few NPI location rows are consistent with a single 4-provider dentist-owned office generating multiple NPPES rows, not a corporate network; the toll-free 888 line is central scheduling. T2 single_loc_group stands at its assigned medium confidence (an address-string discrepancy keeps it below high).",
+      "web_searched": true
+    },
+    {
+      "location_id": "c4552136cfc39e5d",
+      "practice_name": "SMILES OF ORLAND PARK PC.",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The shared EIN (363087534) and shared domain kirschdentalonline.com link this row (Dr. Robert Marshall, Smiles of Orland Park, 7630 W 159th St) to partner 4e4b4093d7d8a16e ('Bandy, Jamie') and to Kirsch Family Dentistry — but web search shows Kirsch (father-son team, 8650 W 159th St) and Smiles of Orland Park (Marshall) are marketed as separate family practices with different owners and addresses. A hard shared-EIN tie across two different-branded practices is unexplained (hidden common ownership vs data-linkage artifact) and cannot merge as a clean single-location group; no known DSO brand is present, so this holds unresolved rather than routing to the DSO verifier.",
+      "web_searched": true
+    },
+    {
+      "location_id": "6df757905115436a",
+      "practice_name": "KRISHNEHA PLLC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Three inconsistent identities collide: the entity name is Krishneha PLLC, the DB website + shared domain (gregorynstevensdmd.com, EIN 363607757, shared with partner fb0322ef2a9f9017) point to Dr. Gregory N. Stevens (GP), yet the researcher identifies it as Hinsdale Oral Surgery / Dr. Rahul Tandon (an OMS specialist). The cited own-site evidence (hinsdaleoralsurgery.com) does not reconcile with the DB domain/EIN signals, so ownership and even GP-vs-specialist scope are unverifiable — must not merge as-is.",
+      "web_searched": false
+    },
+    {
+      "location_id": "61d7600f79d7f2ef",
+      "practice_name": "GOOD DAY DENTAL SLEEP CENTER",
+      "assigned_tier": "single_loc_group",
+      "disposition": "duplicate_suspect",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "This is a dental-sleep-medicine service-line NPI, not a distinct clinic: the shared phone (630-904-1106, reach 3) ties it to partner 31c6b7b8fdd56611 = 'SADDLEWOOD FAMILY DENTISTRY' in the same ZIP 60564, and the researcher confirms it operates out of that same single Hudetz-owned office (now branded English Rows Dental Group). It is an address/service variant of the already-counted Saddlewood/English Rows GP location, so it should be deduped rather than counted as a separate practice.",
+      "web_searched": false
+    },
+    {
+      "location_id": "e481dff27195df58",
+      "practice_name": "ZHENG MA, D.M.D., P.C.",
+      "assigned_tier": "single_loc_group",
+      "disposition": "duplicate_suspect",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Both fired signals (ao_reaches_multiple_locations, shared_phone) resolve to partner location 134b8d7ff14d4d1e, which is itself 'ZHENG MA, DMD, PC' in the same ZIP 60586 (same owner-AO Dr. Zheng Ma, same 815-782-2299 line). The researcher confirms one physical office (Catonfield Dental, Crossroads Plaza) with two dentists, so this row and its same-name/same-ZIP partner are duplicate NPI/address rows of the one office, not a second location.",
+      "web_searched": false
+    },
+    {
+      "location_id": "de5e461599cfeab3",
+      "practice_name": "Antoinette M Pettitt DDS Ltd",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Dr. Antoinette Pettitt (endodontist) owns her dedicated office (rootsatpettittdental.com, own-site evidence, not directory-only) at 155 N Harbor Dr #411; she is separately listed as a visiting specialist at Kenwood Dental Group, which web search confirms is an independent dentist-owned private practice (Drs. Barnes/Maclin/Hutabarat), not a DSO. The shared EIN (363885575) and phone reflect a specialist P.C.'s billing footprint across independent dentist-owned sites, not corporate/MSO control, so no DSO-verify trigger fires. T2 stands at its assigned medium confidence.",
+      "web_searched": true
+    },
+    {
+      "location_id": "b822d3ac3399b199",
+      "practice_name": "SMILES BY DESIGN PC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The org-NPI AO is Dr. Barry Perlin (title OWNER), and the practice's own site smilesbydesignchicago.com confirms his single downtown office at 203 N LaSalle St #230 with a matching phone. The signals are benign: ao_not_provider_or_practice_name is a weak low-severity artifact (this row is the provider_count=0 org NPI, so no individual surnames are bridged), and the shared phone/domain across 2-3 rows are the same one-office practice's own NPI rows under Perlin's 'Smiles by Design' brand — no DSO or multi-owner corporate signal. T2 dentist-owned single-location stands at high confidence on own-site evidence.",
+      "web_searched": false
+    },
+    {
+      "location_id": "46736b187ceba600",
+      "practice_name": "NANDINI SUBBARAJU",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The website domain britedental.org is shared across 6 location rows (plus a shared EIN 272124904) — Brite Dental is a known corporate/DSO brand (Rule 3: Dental 360/Brite), and a single back-office domain spanning six IL clinics is a strong MSO/network signal. This directly contradicts the researcher's 'Cermak Dental Associates, dentist-owned, no brand' read (db_context is large_group, provider_count=6). Suspected corporate/DSO control — routed to the adversarial verifier; not self-promoting to a corporate tier.",
+      "web_searched": false
+    }
+  ]
+}

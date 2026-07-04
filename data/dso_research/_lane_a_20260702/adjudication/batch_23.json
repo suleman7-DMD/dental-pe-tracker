@@ -1,0 +1,106 @@
+{
+  "batch": 23,
+  "indices": [230, 239],
+  "dispositions": [
+    {
+      "location_id": "e76b9e2c92632174",
+      "practice_name": "THERESE MOUSSA, DDS, PC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The DB website dentalandbraces.com (shared across 9 locations) resolves to 'All Family Dental & Braces' (All Family / United Dental Partners), a known DSO on the block-list, which operates a Belmont Central office at 5708 W Fullerton Ave in this exact ZIP 60639. The shared_website_domain (reach 9) + shared_ein signals plus the friendly-PC naming ('Therese Moussa DDS PC') fit All Family/UDP's per-office PC structure; the researcher's 'Clark Dental Care' finding does not override the org NPI's direct DSO-domain tie. Rule 3 forbids accepting a known DSO brand as T2 — route to the adversarial verifier.",
+      "web_searched": true
+    },
+    {
+      "location_id": "dfc145e9c4fb8cee",
+      "practice_name": "MAYA SEDATION LLC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Ownership by Dr. Amy Maya (dentist-anesthesiologist AO) is real, so this is not corporate/DSO, but the T2 single-location claim is unverifiable: evidence is directory-only (npiprofile.com), db_context is large_group with provider_count=8 that the researcher explicitly could not corroborate, and two shared phones each reach 3 locations. The unexplained 8-provider roster plus the multi-office phone network for a mobile IV-sedation service contradict a clean single-location group; fail-closed per Rule 1's provider_count>=8 / large_group hold trigger and Rule 5's directory-only ceiling.",
+      "web_searched": false
+    },
+    {
+      "location_id": "c2be6e0f17dae07d",
+      "practice_name": "FLOS, LLC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Hard signal ao_nonclinical_exec_title: the org NPI's authorized official is Salman Patel, titled 'Managing Member' with no clinical credential and a surname absent from both the provider roster (Ghani/Sheikh/Kukiratirat) and the practice name. A non-dentist managing member controlling a practice that fields ~8 named associate dentists with no identifiable owner-dentist is the classic stealth-MSO / friendly-PC pattern (especially under IL dentist-ownership rules). The researcher found no brand, but this structure must go through the adversarial pass rather than be accepted.",
+      "web_searched": false
+    },
+    {
+      "location_id": "5b800ca763768406",
+      "practice_name": "LINCOLN DENTAL FAMILY CENTER",
+      "assigned_tier": "single_loc_group",
+      "disposition": "correct",
+      "corrected_tier": "dentist_multi",
+      "corrected_confidence": "medium",
+      "rationale": "AO Dr. Mary Hanley is flagged 'OWNER DENTIST' and the ao_reaches_multiple_locations signal ties her to 2 location_ids; web confirms she operates two offices — 5643 N Fairfield (Chicago) and 2200 Waukegan Rd (Glenview) — i.e., her own dentist-owned 2-location group (T3 per Rule 6a). The shared-phone location (Pascale Christina DMD) is a co-located associate at the Chicago office, not corporate. Dentist ownership is confirmed with no DSO signal; corrected to dentist_multi at medium confidence since the second office is directory/AO-reach corroborated.",
+      "web_searched": true
+    },
+    {
+      "location_id": "a7d32a4b2ccab8d4",
+      "practice_name": "O GUTERZON DDS LTD",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The assigned HIGH confidence rests on directory-only sources (vitadox, chamberofcommerce), which Rule 5 disallows, and an unresolved cross-location network sits unaddressed: the DB website is joshifamilydentistry.com (Dr. Tejas Joshi's practice in the same 60659 area) shared across 2 locations, plus a Data-Axle officer 'Jacob Lake' spanning 3 locations. The practice-name (Guterzon) vs domain (Joshi) conflict and floating associate make current ownership/structure unverifiable; none of these are known DSO brands, so this is contradictory rather than corporate — do not merge as a clean single-location group.",
+      "web_searched": true
+    },
+    {
+      "location_id": "232ef04da1c24f3f",
+      "practice_name": "CHICAGO DENTAL SALON, P.C.",
+      "assigned_tier": "dentist_multi",
+      "disposition": "duplicate_suspect",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "provider_count=0 and the researcher states this is the legal PC-name record for the SAME Evergreen Park office (10004 S Kedzie, Dr. Wesley Campin's 'Glow Dental') already carried on the unit's separate 'Glow Dental' row (827b2ed9490623cd) — an address/geocoding split off the active clinical NPI. Merging it as a distinct location would double-count the office. The db_corporate_conflict (dso_national with null affiliated_dso/PE) is a brandless heuristic label and is moot once the row is treated as a duplicate variant.",
+      "web_searched": false
+    },
+    {
+      "location_id": "516970825965504c",
+      "practice_name": "Schumer Dental Care",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The practice's own site (elkgrovevillagedentist.com 'Meet the Doctors') verifies a third-generation family-run office since 1959 with Drs. Stefan and David Schumer at the single 901 Biesterfield Rd Suite 111 location; DB label is family_practice (independent). The stale_founder_history flag is merely the 1959 heritage language, and the two shared phone lines reaching co-located records are multi-line / multi-NPI artifacts of a long-established family office (provider_count=9). No DSO/MSO/PE signal — T2 stands.",
+      "web_searched": false
+    },
+    {
+      "location_id": "30632127f2023ec2",
+      "practice_name": "Sean Cullinan",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The practice's own site (glenviewfamilydental.com 'Meet Dr. Cullinan') gives positive current proof Dr. Sean Cullinan has owned Glenview Family Dental since 2008. The shared_ein (364362306) and shared_phone both reach only one other location (dd7210ef320babbe) — the practice's own co-located second NPI record at the same office, a same-practice artifact (Rule 6b), not a multi-office network. DB family_practice (independent), no corporate/DSO signal; T2 dentist-owned stands.",
+      "web_searched": false
+    },
+    {
+      "location_id": "ff35bac3ac380431",
+      "practice_name": "PLUM GROVE DENTAL ASSOCIATES",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The practice's own site (plumgrovedental.com 'Meet Our Doctors') confirms an independent 55-year-old single-location office at 222 N Plum Grove Rd staffed by 6+ named dentists (Luke, M. Luke, Topalo, Trunnell, Adeoti, Zingher), matching db provider_count~10 — a large single-location dentist group. Web checks show the shared_ein (260380122) / arlington-endodontics.com link points to Arlington Endodontics at a DIFFERENT address (504 N Plum Grove Rd) separately led by Dr. Bryan Eslinger, so the signal is a DB mis-attribution / at most a co-owned specialist billing arm, not corporate control. Dentist-owned independent — T2 stands.",
+      "web_searched": true
+    },
+    {
+      "location_id": "5e3fc751b9f17f2c",
+      "practice_name": "KAVITA NANA PC",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "single_loc_group",
+      "corrected_confidence": "high",
+      "rationale": "Hard signal t1_group_entity_classification (DB small_group) is corroborated: the practice's own site and directories describe Randall Pointe Dental at 1000 S Randall Rd Suite 200, Geneva (phone (630) 984-9832 matches) as led by Dr. Kavita Nana with 'a skilled team' / associates who 'provide services together' — a multi-dentist group, not a solo owner-operator, so T1 is wrong per Rule 1. Ownership is confirmed dentist (Kavita Nana PC leads her own branded office), single location, no DSO signal — correct to single_loc_group at high confidence.",
+      "web_searched": true
+    }
+  ]
+}

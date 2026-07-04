@@ -1,0 +1,106 @@
+{
+  "batch": 25,
+  "indices": [250, 259],
+  "dispositions": [
+    {
+      "location_id": "dd291f40c15cf483",
+      "practice_name": "MAGNIFICENT MILE FAMILY DENTAL",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The only material signal is shared_phone (reach 2 and 3) at 233 E Erie St Ste 210, a large Streeterville medical office tower where building/answering-line phones are routinely cross-listed across NPPES rows; no shared EIN or domain. The ao_not_provider signal is benign: owner Dr. Olaitan (AO first-name match; owns/practices under the org NPI) with three differently-surnamed associate providers is a normal multi-dentist single office. Own site magmiledds.com confirms one independent family practice; db small_group is non-DSO. T2 single_loc_group stands.",
+      "web_searched": false
+    },
+    {
+      "location_id": "cfb50c3724457388",
+      "practice_name": "ASHLAND DENTAL INC.",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Web search confirms 'Ashland Dental Inc' is the corporate legal name behind Leonard Dental Group at a single office, 325 S Paulina St Ste 150 (phone 312-942-0200), run by the Leonard family (Daniel C, Christopher J, and Eugene Leonard, DDS). The shared_website_domain (leonard-dental-group.business.site) and shared_phone are the practice's OWN identifiers appearing on duplicate NPPES rows at that one address; provider_count=0 is a bridge gap (3 Leonard dentists confirmed live). AO Boutcher is the non-dentist office manager (benign). Dentist-owned family group, single location, no DSO -> T2 holds.",
+      "web_searched": true
+    },
+    {
+      "location_id": "2296fce1732d5ce8",
+      "practice_name": "MOHAMMAD R EKHTERA DDS PC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Web search confirms Dr. Ekhtera operates ONE office, Enamel Dental Salon at 3190 N Elston Ave; the similarly-named 'Enamel Dental Studio' (West Loop) is a distinct, separately-owned practice. The ao_reaches_multiple_locations and shared_phone (7735649916) signals both point to the same single extra location_id, which shares Ekhtera's own AO NPI and Salon phone -> a duplicate NPPES address/suite row of the same Elston office, not a second practice. Four providers, one dentist-owned PC, no DSO. T2 single_loc_group stands at the researcher's medium confidence.",
+      "web_searched": true
+    },
+    {
+      "location_id": "62ddee9ac0a0fabf",
+      "practice_name": "BANKS DENTAL GROUP INC",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Own site banksdentalgroup.com plus an independent web search both confirm a single-location solo owner-operator, Dr. Christopher Banks, DMD (SIU 1997, ~20 yrs) at 8244 S Ashland Ave; the practice name IS his name = positive current ownership proof, and db is solo_established with provider_count 0. No second 'Happy Smiles' office exists (that db website field is a prior/stale brand). The shared_ein and shared_phone reach-2 signals are duplicate/related NPPES rows at the same solo office, not a network. T1 true_independent holds.",
+      "web_searched": true
+    },
+    {
+      "location_id": "ff011159770a1920",
+      "practice_name": "ROMO DENTAL, PC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "correct",
+      "corrected_tier": "dentist_multi",
+      "corrected_confidence": "high",
+      "rationale": "Web search directly contradicts the researcher's 'no other locations' claim: Romo Dental operates THREE offices under Dr. Genaro Romo Jr -- Brighton Park (4148 S Archer, this row), West Lawn (6857 S Pulaski), and Cicero (5934 W 35th). The shared_ein (202499462) and shared_phone (7732473345) signals are exactly this owner's own multi-office network (rule 6a). Single named dentist-owner, no PE/MSO/DSO brand, so this is dentist_multi, not corporate. Correct T2 -> dentist_multi, high.",
+      "web_searched": true
+    },
+    {
+      "location_id": "27d2656a3607e0d8",
+      "practice_name": "HASSAN & RIZKALLA DENTAL PLLC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": "medium",
+      "rationale": "Strong internal consistency supports a dentist-owned two-partner single office: the practice name = the two dentist surnames (Hassan + Rizkalla) and AO Dr. George Rizkalla (President) matches, at 4434 W Fullerton Ave. But the cited evidence is directory-only (Cortera + dentalplans), so per rule 5 confidence is capped at medium. The da_legal_name 'Dental Starz LLC' is a low-severity alias, not a known DSO brand (benign), and the shared_phone reach-2 signals are duplicate rows. Accept T2 at medium confidence.",
+      "web_searched": false
+    },
+    {
+      "location_id": "c2a49b9eae5cbd6a",
+      "practice_name": "Le, Oanh",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The shared_website_domain allstardentalclinic.com reaches SEVEN location_ids, directly refuting the 'single-location small family practice' read. Web search confirms All Star Dental Clinic is a 5+ office chain (Aurora, Joliet, Blue Island, United Center, Austin) operating as 'ASH Dental PC DBA All Star Dental Clinic' -- a generic-brand, DBA-structured multi-location entity of uncertain ownership (dentist-owned multi vs MSO/DSO). This is well beyond single_loc_group; per fail-closed rules I do not self-promote to a DSO tier and route it to the adversarial verifier. hold_dso_verify.",
+      "web_searched": true
+    },
+    {
+      "location_id": "a7cf17e5819d78f2",
+      "practice_name": "ASSOCIATES FOR GENERAL DENTISTRY, LTD",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Web search shows the apparent 'two locations' (1307 E Rand Rd vs 1307 N Rand Rd, both 60004) are the SAME address with an E/N directional typo -- a single Arlington Heights office. Own site arlingtonheightsdentist.co confirms Dr. Henry Vallely as President of a four-dentist group at 1307 E Rand Rd. The shared_phone signals (including a cross-listed 630 number) are duplicate/cross-listed NPPES rows, not a second office; no shared EIN or domain. Dentist-owned, one location, no DSO -> T2 holds, high.",
+      "web_searched": true
+    },
+    {
+      "location_id": "934c60c3b3bb4695",
+      "practice_name": "BRIAN ZULAWINSKI, DDS, LLC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Own site dentistarlingtonheights.com confirms Dr. Brian Zulawinski as dentist-owner of Arlington Dental Associates at a single office, 15 N Arlington Heights Rd (est. 1952), with address/phone matching and the LLC name = the owner. Only signal is shared_phone reach-2 on two 847-local numbers (main + second line / duplicate NPPES rows); no shared EIN or domain across other locations. Two-provider, dentist-owned single office, db small_group non-DSO. T2 single_loc_group holds, high.",
+      "web_searched": false
+    },
+    {
+      "location_id": "d8777221b95e2db4",
+      "practice_name": "A DENTAL PLACE LTD",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Own site adentalplace.com plus Yelp confirm a single Lombard office at 845 S Main St Ste 202 led by two owner-dentists, Dr. Robin Castro and Dr. Dan Fong (AO Fong matches). provider_count=6 is 2 owners plus associates/hygienists (<8, and db large_group just reflects multi-provider, not a DSO); no DSO brand and no shared EIN/domain to other sites. Both shared_phone signals are 630-local duplicate/second-line rows for the one office. Dentist-owned single-location group -> T2 holds, high.",
+      "web_searched": false
+    }
+  ]
+}

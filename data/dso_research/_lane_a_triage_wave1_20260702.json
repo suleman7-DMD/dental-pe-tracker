@@ -63,24 +63,19 @@
   ],
   "_unit": "laneA_001",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "true_independent",
+   "batch_file": "batch_24.json",
    "corrected_confidence": null,
    "corrected_tier": null,
-   "disposition": "hold_network_review",
+   "disposition": "duplicate_suspect",
    "location_id": "c8356b1274f05071",
    "merge_action": "hold_do_not_merge",
    "practice_name": "LEMONT FAMILY DENTAL LTD",
-   "rationale": "Held: T1 has multiple independent network/control signals and the persisted reasoning does not fully rebut them with current owner + single-location proof.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_reaches_multiple_locations",
-    "shared_phone_multiple_locations"
-   ],
-   "web_searched": false,
-   "zip": "60439"
+   "rationale": "Both fired signals (ao_reaches_multiple_locations, shared_phone) point to partner location db6006c6bd4f32a3, which is itself 'LEMONT FAMILY DENTAL, LTD' in the same ZIP 60439 with the same owner-AO (Jennifer Splitt-Krull) and phone. The researcher confirms a single solo office via the practice's own site, so this row and its partner are two NPI/address representations of the one Lemont Family Dental office \u2014 a duplicate, not a second location.",
+   "web_searched": false
   },
-  "_triage_reason": "adjudication_hold_network_review"
+  "_triage_reason": "adjudication_duplicate_suspect"
  },
  {
   "location_id": "788b939c70cf8c48",
@@ -118,6 +113,41 @@
   "_triage_reason": "adjudication_hold_unresolved"
  },
  {
+  "location_id": "db6006c6bd4f32a3",
+  "practice_name": "LEMONT FAMILY DENTAL, LTD",
+  "zip": "60439",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.lemontfamilydental.com/",
+   "https://www.lemontfamilydental.com/lemont-office"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Official website and directory listings confirm Dr. Jennifer L. Splitt-Krull DDS is President/owner-dentist of Lemont Family Dental, Ltd at 160 E Wend St Ste B, Lemont, a single-location solo-owned practice for over 30 years. No corporate parent found. Fits true_independent.",
+  "searched": [
+   "Lemont Family Dental Ltd Jennifer Splitt-Krull 160 Wend St"
+  ],
+  "_unit": "laneA_002",
+  "_adjudication": {
+   "adjudication_source": "opus_batch",
+   "assigned_tier": "true_independent",
+   "batch_file": "batch_21.json",
+   "corrected_confidence": null,
+   "corrected_tier": null,
+   "disposition": "duplicate_suspect",
+   "location_id": "db6006c6bd4f32a3",
+   "merge_action": "hold_do_not_merge",
+   "practice_name": "LEMONT FAMILY DENTAL, LTD",
+   "rationale": "The ao_reaches_multiple_locations and shared_phone signals point to exactly one sibling (c8356b1274f05071), which is itself 'LEMONT FAMILY DENTAL LTD' at the same ZIP 60439, same phone (630) 257-8669, same website lemontfamilydental.com, same AO Dr. Jennifer Splitt-Krull. This is the identical single Lemont office appearing as two location rows (an address/suite variant), not two offices; it must not merge as a separate T1 unit.",
+   "web_searched": false
+  },
+  "_triage_reason": "adjudication_duplicate_suspect"
+ },
+ {
   "location_id": "b77c247e6be90e1e",
   "practice_name": "ADVANCED FAMILY DENTAL & CHIROPRACTIC OF LOCKPORT PC",
   "zip": "60441",
@@ -141,6 +171,42 @@
   ],
   "_unit": "laneA_003",
   "_triage_reason": "undetermined_by_agent"
+ },
+ {
+  "location_id": "e14eec2daeaaeb9c",
+  "practice_name": "FIRST DENTAL P.C.",
+  "zip": "60540",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://weence.com/dentists/first-dental/",
+   "https://www.dentistry.com/dentist/dr-todd-pusateri-naperville"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Searched First Dental Naperville / Todd Pusateri, then the office's staff. Confirmed a single-location, multi-provider practice at 8 W Gartner Rd Ste 120/124 (Naperville Plaza); directory listings show current dentists Dr. Tamer Moukaied and Dr. Jose Rosalez (older sources cite Dr. Todd Pusateri, the NPPES authorized official, as a long-time practicing dentist there). No DSO/corporate brand or additional locations found under 'First Dental.' Medium confidence due to conflicting dentist-name sources, but no evidence of corporate control.",
+  "searched": [
+   "\"First Dental\" Naperville IL \"Todd Pusateri\" 8 W Gartner Rd dentist",
+   "\"First Dental\" Naperville IL \"8 W Gartner\" dentists staff team"
+  ],
+  "_unit": "laneA_003",
+  "_adjudication": {
+   "adjudication_source": "opus_batch",
+   "assigned_tier": "single_loc_group",
+   "batch_file": "batch_26.json",
+   "corrected_confidence": null,
+   "corrected_tier": null,
+   "disposition": "hold_unresolved",
+   "location_id": "e14eec2daeaaeb9c",
+   "merge_action": "hold_do_not_merge",
+   "practice_name": "FIRST DENTAL P.C.",
+   "rationale": "The practice's identity is contradictory and unverifiable: the record is 'First Dental P.C.' at 8 W Gartner Rd (per the researcher via directory-only weence.com/dentistry.com, which themselves conflict on dentists \u2014 Moukaied vs Rosalez vs Pusateri), while the db website and shared_website signal are gantosdentalgroup.com and the shared_phone (6304209090) both tie it to Gantos Dental Group. Web search confirmed Gantos is a distinct single-location practice at 720 N Washington St with no First Dental connection, so this is NOT a Gantos second office, yet First Dental's own ownership stays unverified (db large_group / provider_count=6, medium confidence, directory-only). Must not merge as-is.",
+   "web_searched": true
+  },
+  "_triage_reason": "adjudication_hold_unresolved"
  },
  {
   "location_id": "c49bb3902d793de7",
@@ -303,6 +369,43 @@
   "_triage_reason": "adjudication_hold_unresolved"
  },
  {
+  "location_id": "61d7600f79d7f2ef",
+  "practice_name": "GOOD DAY DENTAL SLEEP CENTER",
+  "zip": "60564",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://englishrowsdental.com/meet-the-doctors/",
+   "https://englishrowsdental.com/about-us/",
+   "https://www.yelp.com/biz/english-rows-dental-group-naperville"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": "ao:HUDETZ_CHRISTOPHER",
+  "reasoning": "Same phone (630-904-1106) and address (3027 English Row/Rows Ave) as Saddlewood Family Dentistry below; this is a service-line NPI (dental sleep medicine) operating out of the same single office, now branded English Rows Dental Group. Dr. Christopher Hudetz is a third-generation dentist who joined this practice in 2005 and continues a multi-generational family-owned career -- clear dentist ownership, no corporate signals found.",
+  "searched": [
+   "Good Day Dental Sleep Center Naperville IL",
+   "Saddlewood Family Dentistry Naperville IL Christopher Hudetz"
+  ],
+  "_unit": "laneA_005",
+  "_adjudication": {
+   "adjudication_source": "opus_batch",
+   "assigned_tier": "single_loc_group",
+   "batch_file": "batch_24.json",
+   "corrected_confidence": null,
+   "corrected_tier": null,
+   "disposition": "duplicate_suspect",
+   "location_id": "61d7600f79d7f2ef",
+   "merge_action": "hold_do_not_merge",
+   "practice_name": "GOOD DAY DENTAL SLEEP CENTER",
+   "rationale": "This is a dental-sleep-medicine service-line NPI, not a distinct clinic: the shared phone (630-904-1106, reach 3) ties it to partner 31c6b7b8fdd56611 = 'SADDLEWOOD FAMILY DENTISTRY' in the same ZIP 60564, and the researcher confirms it operates out of that same single Hudetz-owned office (now branded English Rows Dental Group). It is an address/service variant of the already-counted Saddlewood/English Rows GP location, so it should be deduped rather than counted as a separate practice.",
+   "web_searched": false
+  },
+  "_triage_reason": "adjudication_duplicate_suspect"
+ },
+ {
   "location_id": "588363b0f23c2f23",
   "practice_name": "Pallotto Dental",
   "zip": "60564",
@@ -459,48 +562,6 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
-  "location_id": "2c4477b4d9ae3bc0",
-  "practice_name": "RAINADENTALCARE",
-  "zip": "60563",
-  "assigned_tier": "true_independent",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.rainadentalcare.com/",
-   "https://www.rainadentalcare.com/about-us/"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Raina Dental Care's own website confirms the practice, 2323 Naperville Rd Suite 110, is run by Dr. Mandeep Raina, DDS, a holistic-dentistry solo practice established 2019 that relocated to this Naperville address in September 2024. No corporate parent or DSO found.",
-  "searched": [
-   "\"Raina Dental Care\" OR \"RAINADENTALCARE\" Naperville IL 2323 Naperville Rd Mandeep Raina"
-  ],
-  "_unit": "laneA_008",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "true_independent",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_network_review",
-   "location_id": "2c4477b4d9ae3bc0",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "RAINADENTALCARE",
-   "rationale": "Held: T1 has multiple independent network/control signals and the persisted reasoning does not fully rebut them with current owner + single-location proof.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_not_provider_or_practice_name",
-    "ao_reaches_multiple_locations",
-    "shared_phone_multiple_locations",
-    "t1_reasoning_lacks_owner_word"
-   ],
-   "web_searched": false,
-   "zip": "60563"
-  },
-  "_triage_reason": "adjudication_hold_network_review"
- },
- {
   "location_id": "ca2e878090461783",
   "practice_name": "Hale, Denise D DDS",
   "zip": "60527",
@@ -567,46 +628,6 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
-  "location_id": "3febc87dfe573f19",
-  "practice_name": "SARA BANUELOS D.D.S SC",
-  "zip": "60515",
-  "assigned_tier": "single_loc_group",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.sarabanuelosdental.com/about",
-   "https://www.healthgrades.com/dentist/dr-sara-banuelos-xr5yk"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "medium",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Dr. Sara Banuelos (prosthodontist, Loyola-trained) runs her own-name practice at 3800 Highland Ave Suite 108, over 20 years in operation, with no franchise/parent signal. Provider_count of 2 in source data and no confirmation of a second named dentist online, so classified as a single-location dentist-owned group at medium confidence.",
-  "searched": [
-   "Sara Banuelos DDS Downers Grove IL dentist 3800 Highland"
-  ],
-  "_unit": "laneA_011",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "single_loc_group",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_control_review",
-   "location_id": "3febc87dfe573f19",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "SARA BANUELOS D.D.S SC",
-   "rationale": "Held: authorized official has a non-clinical/executive title and the Lane A evidence does not cleanly prove a dentist-owned multi-location structure. This is a hidden-control risk, not a safe T1/T2 accept.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_nonclinical_exec_title",
-    "ao_not_provider_or_practice_name"
-   ],
-   "web_searched": false,
-   "zip": "60515"
-  },
-  "_triage_reason": "adjudication_hold_control_review"
- },
- {
   "location_id": "eff4090163823671",
   "practice_name": "DOWNERSGROVECTD LLC",
   "zip": "60515",
@@ -631,24 +652,19 @@
   ],
   "_unit": "laneA_011",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "single_loc_group",
+   "batch_file": "batch_21.json",
    "corrected_confidence": null,
    "corrected_tier": null,
-   "disposition": "hold_control_review",
+   "disposition": "hold_dso_verify",
    "location_id": "eff4090163823671",
    "merge_action": "hold_do_not_merge",
    "practice_name": "DOWNERSGROVECTD LLC",
-   "rationale": "Held: authorized official has a non-clinical/executive title and the Lane A evidence does not cleanly prove a dentist-owned multi-location structure. This is a hidden-control risk, not a safe T1/T2 accept.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_nonclinical_exec_title",
-    "ao_not_provider_or_practice_name"
-   ],
-   "web_searched": false,
-   "zip": "60515"
+   "rationale": "Two stealth-DSO indicators combine: an opaque location-LLC name ('DownersGroveCTD LLC', not the dentist's name) and a hard ao_nonclinical_exec_title where the authorized official Mitch Weiland is titled 'ASSISTANT CONTROLLER' \u2014 a multi-entity corporate-finance role that a solo/small practice does not have and that implies centralized MSO back-office filing. The researcher could not corroborate Weiland and only inferred a single-location Patelski practice from a bio page; the controller-title + generic-LLC pattern warrants the adversarial verifier rather than acceptance.",
+   "web_searched": false
   },
-  "_triage_reason": "adjudication_hold_control_review"
+  "_triage_reason": "adjudication_hold_dso_verify"
  },
  {
   "location_id": "b6f0158e932b879c",
@@ -713,25 +729,19 @@
   ],
   "_unit": "laneA_011",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "true_independent",
+   "batch_file": "batch_21.json",
    "corrected_confidence": null,
    "corrected_tier": null,
-   "disposition": "hold_network_review",
+   "disposition": "hold_unresolved",
    "location_id": "1f518a85c067770e",
    "merge_action": "hold_do_not_merge",
    "practice_name": "M2 DENTAL",
-   "rationale": "Held: T1 has multiple independent network/control signals and the persisted reasoning does not fully rebut them with current owner + single-location proof.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_not_provider_or_practice_name",
-    "ao_reaches_multiple_locations",
-    "shared_phone_multiple_locations"
-   ],
-   "web_searched": false,
-   "zip": "60515"
+   "rationale": "Clean T1 fails: the org-NPI OWNER (Dr. Miranda Albert, DDS) reaches 2 locations and is not the dentist who practices here (Dr. Sherif Albert per the researcher), and the shared phone spans 2 locations. The evidence is contradictory \u2014 either a husband/wife pair running two separate solo offices (a spouse-filer artifact) or a family-owned 2-location dentist group (T3) \u2014 and confidence is only medium with a name mismatch (M2 Dental vs Esplanade Dental Care). No corporate/DSO signal, so hold_unresolved rather than dso_verify; it cannot merge as clean true_independent.",
+   "web_searched": false
   },
-  "_triage_reason": "adjudication_hold_network_review"
+  "_triage_reason": "adjudication_hold_unresolved"
  },
  {
   "location_id": "0890ee6396ca45c2",
@@ -1168,6 +1178,41 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
+  "location_id": "6df757905115436a",
+  "practice_name": "KRISHNEHA PLLC",
+  "zip": "60521",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.hinsdaleoralsurgery.com/",
+   "https://www.hinsdaleoralsurgery.com/contact-us/contact-information-office-map/"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Krishneha PLLC operates as Hinsdale Oral Surgery at 930 N York Rd Ste 140, owned by Dr. Rahul Tandon (oral & maxillofacial surgeon), confirmed via the practice's own website with matching address. Single location, dentist-owned, no corporate parent or DSO signal.",
+  "searched": [
+   "Krishneha PLLC Hinsdale IL dental Rahul Tandon"
+  ],
+  "_unit": "laneA_016",
+  "_adjudication": {
+   "adjudication_source": "opus_batch",
+   "assigned_tier": "single_loc_group",
+   "batch_file": "batch_24.json",
+   "corrected_confidence": null,
+   "corrected_tier": null,
+   "disposition": "hold_unresolved",
+   "location_id": "6df757905115436a",
+   "merge_action": "hold_do_not_merge",
+   "practice_name": "KRISHNEHA PLLC",
+   "rationale": "Three inconsistent identities collide: the entity name is Krishneha PLLC, the DB website + shared domain (gregorynstevensdmd.com, EIN 363607757, shared with partner fb0322ef2a9f9017) point to Dr. Gregory N. Stevens (GP), yet the researcher identifies it as Hinsdale Oral Surgery / Dr. Rahul Tandon (an OMS specialist). The cited own-site evidence (hinsdaleoralsurgery.com) does not reconcile with the DB domain/EIN signals, so ownership and even GP-vs-specialist scope are unverifiable \u2014 must not merge as-is.",
+   "web_searched": false
+  },
+  "_triage_reason": "adjudication_hold_unresolved"
+ },
+ {
   "location_id": "7b3a95467ccbef69",
   "practice_name": "Maya Dental",
   "zip": "60521",
@@ -1340,45 +1385,6 @@
   ],
   "_unit": "laneA_019",
   "_triage_reason": "closure_suspect"
- },
- {
-  "location_id": "b96354c425aa02ba",
-  "practice_name": "DEAN P NICHOLAS DDS & ASSOC LTD",
-  "zip": "60148",
-  "assigned_tier": "true_independent",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.zocdoc.com/dentist/dean-dino-nicholas-dds-321801",
-   "https://www.carecredit.com/doctor-locator/lombard-il/dr-dinos-dental-oasis-dean-nicholas-dds-fvw348/"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Multiple directories confirm Dr. Dean (Dino) P. Nicholas, DDS ('Dr. Dino's Dental Oasis') is the solo owner-dentist at 510 E 22nd St, Lombard, a high-volume family practice. No corporate parent or DSO reference found; NPPES authorized official (Celeste Nicholas) is consistent with a spouse/office-manager role rather than a competing owner.",
-  "searched": [
-   "\"Dean P Nicholas\" DDS Lombard IL 510 E 22nd St dentist"
-  ],
-  "_unit": "laneA_019",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "true_independent",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_control_review",
-   "location_id": "b96354c425aa02ba",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "DEAN P NICHOLAS DDS & ASSOC LTD",
-   "rationale": "Held: authorized official has a non-clinical/executive title and the Lane A evidence does not cleanly prove a dentist-owned multi-location structure. This is a hidden-control risk, not a safe T1/T2 accept.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_nonclinical_exec_title"
-   ],
-   "web_searched": false,
-   "zip": "60148"
-  },
-  "_triage_reason": "adjudication_hold_control_review"
  },
  {
   "location_id": "0de376372a8fc8a1",
@@ -1776,46 +1782,6 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
-  "location_id": "bd7e887a4b9bade1",
-  "practice_name": "JAMES MALINOWSKI DDS. DAVID SEFCIK DDS. LTD",
-  "zip": "60435",
-  "assigned_tier": "single_loc_group",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.malinowskisefcik.com/",
-   "https://www.malinowskisefcik.com/office"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Practice website confirms Dr. James Malinowski (matches NPPES AO) and Dr. David Sefcik as co-owning dentists at a single location, 903 129th Infantry Dr Ste 100, Joliet IL, established 1983, phone (815) 725-1605 matching. No DSO or corporate parent found.",
-  "searched": [
-   "\"Malinowski\" \"Sefcik\" dental Joliet IL 903 129th Infantry Dr"
-  ],
-  "_unit": "laneA_024",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "single_loc_group",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_control_review",
-   "location_id": "bd7e887a4b9bade1",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "JAMES MALINOWSKI DDS. DAVID SEFCIK DDS. LTD",
-   "rationale": "Held: authorized official has a non-clinical/executive title and the Lane A evidence does not cleanly prove a dentist-owned multi-location structure. This is a hidden-control risk, not a safe T1/T2 accept.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_nonclinical_exec_title",
-    "stale_founder_history"
-   ],
-   "web_searched": false,
-   "zip": "60435"
-  },
-  "_triage_reason": "adjudication_hold_control_review"
- },
- {
   "location_id": "996738adba46646b",
   "practice_name": "Cavitt Dental",
   "zip": "60435",
@@ -1908,6 +1874,43 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
+  "location_id": "26fd231a1546c44c",
+  "practice_name": "KRISHAN DENTAL LIMITED",
+  "zip": "60435",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.dentalinsider.com/joliet/office/krishan-dental-limited-63826",
+   "https://www.jolietfamilydental.org/meet-our-team/"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "DentalInsider lists Dr. Shweta Kamal as the authorized official/President of Krishan Dental Limited, d/b/a Joliet Family Dental. The practice's own team page lists 6 dentists at this single 825 Plainfield Rd address, matching entity_classification large_group. Dr. Kamal also practices part-time at a separately-branded Aurora office (Downer Place Dental), but her own bio page describes that as her splitting time working there, not stated ownership of that second entity, so this location is scored as a dentist-owned single-location group rather than a confirmed 2-location ownership (T3).",
+  "searched": [
+   "Krishan Dental Limited 825 Plainfield Rd Joliet IL",
+   "Shweta Kamal dentist Illinois locations Joliet Aurora",
+   "\"Joliet Family Dental\" owner \"Krishan\" OR founder about us team dentists"
+  ],
+  "_unit": "laneA_026",
+  "_adjudication": {
+   "adjudication_source": "opus_batch",
+   "assigned_tier": "single_loc_group",
+   "batch_file": "batch_21.json",
+   "corrected_confidence": null,
+   "corrected_tier": null,
+   "disposition": "hold_unresolved",
+   "location_id": "26fd231a1546c44c",
+   "merge_action": "hold_do_not_merge",
+   "practice_name": "KRISHAN DENTAL LIMITED",
+   "rationale": "db_context is large_group with provider_count=7 (6 dentists on the team page), which per rule 1 forbids a clean T2. AO Dr. Shweta Kamal (President) reaches 2 locations and the shared phone reaches a third location, contradicting the single-location claim; the researcher himself notes she also works at a separate Aurora office (Downer Place Dental). Web search confirms Dr. Kamal is a practicing dentist and that the db-attached 'Best Image Dental' is a distinct nearby practice (625 vs 825 Plainfield Rd), so there is no corporate/DSO signal \u2014 but T2 (large single office) vs T3 (dentist multi-location) is genuinely unresolved. Not corporate, so hold_unresolved rather than dso_verify.",
+   "web_searched": true
+  },
+  "_triage_reason": "adjudication_hold_unresolved"
+ },
+ {
   "location_id": "2da2fa405e16df4c",
   "practice_name": "MOBILE DENTAL CARE OF IOWA",
   "zip": "60435",
@@ -1968,6 +1971,42 @@
   ],
   "_unit": "laneA_026",
   "_triage_reason": "undetermined_by_agent"
+ },
+ {
+  "location_id": "e481dff27195df58",
+  "practice_name": "ZHENG MA, D.M.D., P.C.",
+  "zip": "60586",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.catonfielddental.com/our-story",
+   "https://local.demandforce.com/b/catonfielddental"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": "ao:MA_ZHENG",
+  "reasoning": "Practice's own site (catonfielddental.com) and directory listings confirm this is Catonfield Dental at 7170 Caton Farm Rd Ste P, Plainfield, owned/operated by Dr. Zheng Ma alongside associate Dr. Elena Zakharian. Two dentists, one physical office (Crossroads Plaza), no corporate/DSO signal anywhere -> dentist-owned single-location group.",
+  "searched": [
+   "Zheng Ma DMD dentist Plainfield IL Caton Farm Rd",
+   "\"Catonfield Dental\" Plainfield IL website Zheng Ma Elena Zakharian"
+  ],
+  "_unit": "laneA_027",
+  "_adjudication": {
+   "adjudication_source": "opus_batch",
+   "assigned_tier": "single_loc_group",
+   "batch_file": "batch_24.json",
+   "corrected_confidence": null,
+   "corrected_tier": null,
+   "disposition": "duplicate_suspect",
+   "location_id": "e481dff27195df58",
+   "merge_action": "hold_do_not_merge",
+   "practice_name": "ZHENG MA, D.M.D., P.C.",
+   "rationale": "Both fired signals (ao_reaches_multiple_locations, shared_phone) resolve to partner location 134b8d7ff14d4d1e, which is itself 'ZHENG MA, DMD, PC' in the same ZIP 60586 (same owner-AO Dr. Zheng Ma, same 815-782-2299 line). The researcher confirms one physical office (Catonfield Dental, Crossroads Plaza) with two dentists, so this row and its same-name/same-ZIP partner are duplicate NPI/address rows of the one office, not a second location.",
+   "web_searched": false
+  },
+  "_triage_reason": "adjudication_duplicate_suspect"
  },
  {
   "location_id": "134b8d7ff14d4d1e",
@@ -2470,45 +2509,6 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
-  "location_id": "1483f65b1bcd1a0a",
-  "practice_name": "Goldberg Dental",
-  "zip": "60004",
-  "assigned_tier": "single_loc_group",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.healthgrades.com/dentist/dr-joel-goldberg-2xq68"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "medium",
-  "status": "classified",
-  "network_id": "ao:GOLDBERG_FAMILY",
-  "reasoning": "Confirmed Dr. Joel Goldberg's dental office at 1420 N Arlington Heights Rd, address and phone (847-392-6610) matching exactly. Search snippet references 'Drs. Goldberg' (plural), consistent with a family/associate dentist-owned group at one location and our provider_count=2; no corporate or DSO signal found. Medium confidence because only Dr. Joel Goldberg was individually profiled in results.",
-  "searched": [
-   "Goldberg Dental Arlington Heights IL 1420 Arlington Heights Rd"
-  ],
-  "_unit": "laneA_038",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "single_loc_group",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_unresolved",
-   "location_id": "1483f65b1bcd1a0a",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "Goldberg Dental",
-   "rationale": "Held: T2 relies on directory-style support without enough current practice-owned evidence.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "directory_only_support",
-    "shared_phone_multiple_locations"
-   ],
-   "web_searched": false,
-   "zip": "60004"
-  },
-  "_triage_reason": "adjudication_hold_unresolved"
- },
- {
   "location_id": "0d12aece1c2ad5ee",
   "practice_name": "Patterson Dental",
   "zip": "60007",
@@ -2954,54 +2954,6 @@
   "_triage_reason": "adjudication_hold_dso_verify"
  },
  {
-  "location_id": "30632127f2023ec2",
-  "practice_name": "Sean Cullinan",
-  "zip": "60025",
-  "assigned_tier": "single_loc_group",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://glenviewfamilydental.com/doctors/meet-dr-cullinan/",
-   "https://www.healthgrades.com/physician/dr-sean-cullinan-y6c32"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "medium",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Dr. Sean Cullinan is confirmed as the owner-dentist of Glenview Family Dental (formerly Family Dental Center at this Golf Rd address), having assumed ownership in 2008; the practice's own site describes him overseeing construction of a newer facility, consistent with an independent dentist-owned single practice rather than any DSO/corporate structure. NPI record's 2-provider family_practice tag is consistent with a small dentist-owned office.",
-  "searched": [
-   "\"Sean Cullinan\" dentist Glenview IL 2640 Golf Rd"
-  ],
-  "intel": {
-   "website_url": "https://glenviewfamilydental.com/",
-   "provider_notes": "Dr. Sean Cullinan, DMD \u2014 Nova Southeastern Univ. College of Dental Medicine 2006, assumed ownership of the practice in 2008, Invisalign certified.",
-   "distinguishing_notes": "Practice site references a newer facility built at 908 Waukegan Rd, Glenview, suggesting a possible subsequent office move from the NPI's recorded Golf Rd address.",
-   "sources": [
-    "https://glenviewfamilydental.com/doctors/meet-dr-cullinan/"
-   ]
-  },
-  "_unit": "laneA_047",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "single_loc_group",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_network_review",
-   "location_id": "30632127f2023ec2",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "Sean Cullinan",
-   "rationale": "Held: T2 has multiple network signals and lacks a clean own-source single-location rebuttal. It may be T3 or controlled; do not merge as T2 mechanically.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "shared_ein_or_parent_tin",
-    "shared_phone_multiple_locations"
-   ],
-   "web_searched": false,
-   "zip": "60025"
-  },
-  "_triage_reason": "adjudication_hold_network_review"
- },
- {
   "location_id": "ed334c8d8ae21cdd",
   "practice_name": "HAUFF DENTAL GROUP LTD.",
   "zip": "60025",
@@ -3046,46 +2998,6 @@
   ],
   "_unit": "laneA_048",
   "_triage_reason": "undetermined_by_agent"
- },
- {
-  "location_id": "415f49055459d2d8",
-  "practice_name": "GLEN PERIO",
-  "zip": "60026",
-  "assigned_tier": "single_loc_group",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://glenperio.com/",
-   "https://www.yelp.com/biz/glen-perio-and-implant-dentistry-glenview"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "medium",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Confirmed 'Glen Perio & Implant Dentistry' is a single-location periodontics/implant specialty group at 2640 Patriot Blvd Ste 140, Glenview (phone matches), staffed by multiple dentists (Dr. Jennifer Adhami, Dr. Joshua Hassan, Dr. Robert Goldberg, Dr. Tundi Frank). NPPES authorized official 'Josephina Curio' could not be found in any web source, likely a practice manager/filer rather than a treating dentist. No DSO or management-company signal found. Classified single_loc_group, medium confidence given the AO name could not be corroborated.",
-  "searched": [
-   "\"Glen Perio\" Glenview IL Josephina Curio periodontics Patriot Blvd"
-  ],
-  "_unit": "laneA_049",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "single_loc_group",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_control_review",
-   "location_id": "415f49055459d2d8",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "GLEN PERIO",
-   "rationale": "Held: authorized official has a non-clinical/executive title and the Lane A evidence does not cleanly prove a dentist-owned multi-location structure. This is a hidden-control risk, not a safe T1/T2 accept.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_nonclinical_exec_title",
-    "ao_not_provider_or_practice_name"
-   ],
-   "web_searched": false,
-   "zip": "60026"
-  },
-  "_triage_reason": "adjudication_hold_control_review"
  },
  {
   "location_id": "2eccce6b14d310cd",
@@ -3725,67 +3637,6 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
-  "location_id": "ff35bac3ac380431",
-  "practice_name": "PLUM GROVE DENTAL ASSOCIATES",
-  "zip": "60067",
-  "assigned_tier": "single_loc_group",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://plumgrovedental.com/about-us/meet-our-doctors/",
-   "https://plumgrovedental.com/"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Practice's own site (plumgrovedental.com) lists multiple dentists (Dr. Luke, Dr. Michelle Luke, Dr. Topalo, Dr. Trunnell, Dr. Stephen Adeoti, Dr. Zingher) all at the single 222 N Plum Grove Rd, Palatine location, consistent with DB provider_count=10. No DSO, management company, or corporate parent found across any source; the practice markets itself as an independent, 55+-year-old freestanding office in downtown Palatine.",
-  "searched": [
-   "Plum Grove Dental Associates Palatine IL Thomas Harris dentist",
-   "\"Plum Grove Dental\" Palatine IL locations how many dentists associates"
-  ],
-  "intel": {
-   "website_url": "https://plumgrovedental.com/",
-   "website_note": "Large multi-dentist general/cosmetic practice, 55+ years in operation, freestanding building at Colfax & Plum Grove.",
-   "provider_notes": "Dr. Thomas A. Harris DDS (Emory 1976) plus associates Dr. Luke, Dr. Michelle Luke, Dr. Topalo, Dr. Trunnell, Dr. Stephen Adeoti, Dr. Zingher",
-   "services": [
-    "children's dental care",
-    "cosmetic dentistry",
-    "crown and bridgework",
-    "dentures and partials",
-    "digital x-rays",
-    "implants",
-    "orthodontics",
-    "root canal therapy",
-    "sports dentistry"
-   ],
-   "distinguishing_notes": "5-star rating with 211 reviews on one platform.",
-   "sources": [
-    "https://plumgrovedental.com/about-us/meet-our-doctors/"
-   ]
-  },
-  "_unit": "laneA_057",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "single_loc_group",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_network_review",
-   "location_id": "ff35bac3ac380431",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "PLUM GROVE DENTAL ASSOCIATES",
-   "rationale": "Held: T2 has multiple network signals and lacks a clean own-source single-location rebuttal. It may be T3 or controlled; do not merge as T2 mechanically.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "shared_ein_or_parent_tin",
-    "shared_website_domain"
-   ],
-   "web_searched": false,
-   "zip": "60067"
-  },
-  "_triage_reason": "adjudication_hold_network_review"
- },
- {
   "location_id": "d37009fe92b97289",
   "practice_name": "Ohnesorg Dental",
   "zip": "60067",
@@ -4275,6 +4126,48 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
+  "location_id": "305919ae458c3c32",
+  "practice_name": "Larkin Rivera Leah M DDS",
+  "zip": "60077",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://opennpi.com/provider/1922254960",
+   "https://www.vitadox.com/doctor/skokie-il-60077/leah-m-larkin-rivera-dds/VGKXmnFQt6tmfKZhSapLgg"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Searched dentist name plus street; only directory/aggregator listings surfaced (no dedicated practice website), consistently showing a single office at 8800 Lockwood Ave, Skokie under Dr. Leah M. Larkin Rivera's individual NPI (17 years' experience, accepting new patients, offers telehealth). No brand or DSO signal; provider_count of 3 at a single address with no chain evidence best fits a small dentist-owned group at one location = T2, medium confidence given the absence of a primary-source website.",
+  "searched": [
+   "Leah Larkin Rivera DDS Skokie Lockwood dentist"
+  ],
+  "intel": {
+   "provider_notes": "Dr. Leah M. Larkin Rivera DDS, IL license since ~2008, 17 years of general-practice experience.",
+   "distinguishing_notes": "Offers telehealth consultations (patients advised to call to confirm eligibility).",
+   "sources": [
+    "https://opennpi.com/provider/1922254960"
+   ]
+  },
+  "_unit": "laneA_062",
+  "_adjudication": {
+   "adjudication_source": "opus_batch",
+   "assigned_tier": "single_loc_group",
+   "batch_file": "batch_20.json",
+   "corrected_confidence": null,
+   "corrected_tier": null,
+   "disposition": "hold_unresolved",
+   "location_id": "305919ae458c3c32",
+   "merge_action": "hold_do_not_merge",
+   "practice_name": "Larkin Rivera Leah M DDS",
+   "rationale": "Support is directory-only (opennpi, vitadox \u2014 pure aggregators, no practice website), which under the directory rule cannot corroborate current ownership. Two separate shared_phone signals link this row to two different other locations (7737610300 to da6180afc3a71b7f and 8479658780 to a9807c620c7ad775) with no resolution of whether these are her own second office, duplicates, or associate-credentialing addresses. With no primary source and an unreconciled dual-phone network, it is unverifiable as-is; fail-closed \u2192 hold_unresolved (a dentist's individual NPI, so not a DSO hold).",
+   "web_searched": false
+  },
+  "_triage_reason": "adjudication_hold_unresolved"
+ },
+ {
   "location_id": "4ec51b1b725a84ed",
   "practice_name": "PRIMEHEALTH OF ILLINOIS INC",
   "zip": "60089",
@@ -4432,6 +4325,43 @@
   ],
   "_unit": "laneA_066",
   "_triage_reason": "undetermined_by_agent"
+ },
+ {
+  "location_id": "1099dd3a7ee857db",
+  "practice_name": "LUCKY SMILE DENTAL LLC",
+  "zip": "60090",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://illinoisdentalcenter.com/",
+   "https://www.linkedin.com/in/dr-lakshmi-uppala-0133b232/"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "This NPI's address (35 Huntington Ln, Wheeling) matches the office of 'Illinois Dental Center,' whose own website lists Dr. Lakshmi Uppala (LinkedIn: 'Owner Dentist at Illinois Dental Center') and Dr. Jacob S. Lake as its two dentists, with no disclosed parent company or DSO structure. Aggregator noise suggested Dr. Uppala's individual NPI also appears at several distant downstate IL cities, which may reflect credentialing-only listings rather than ownership of those sites; this did not rise to a confirmed 10+ location network, so classified single_loc_group at this address with medium confidence given that ambiguity.",
+  "searched": [
+   "\"Lucky Smile Dental\" Wheeling IL Lakshmi Uppala dentist",
+   "fetch: https://illinoisdentalcenter.com/",
+   "\"Illinois Dental Partners\" OR \"Illinois Dental Center\" Kramer Chung Wheeling locations network"
+  ],
+  "_unit": "laneA_066",
+  "_adjudication": {
+   "adjudication_source": "opus_batch",
+   "assigned_tier": "single_loc_group",
+   "batch_file": "batch_20.json",
+   "corrected_confidence": null,
+   "corrected_tier": null,
+   "disposition": "hold_unresolved",
+   "location_id": "1099dd3a7ee857db",
+   "merge_action": "hold_do_not_merge",
+   "practice_name": "LUCKY SMILE DENTAL LLC",
+   "rationale": "The roster contradicts the evidence: provider_count=1 (t2_provider_count_lte1 fired) and the legal name 'Lucky Smile Dental LLC' differs from the DBA 'Illinois Dental Center' (illinoisdentalcenter.com), which the researcher says lists two dentists. The shared phone (reach 3) and shared Data-Axle officer LAKE,JACOB S (reach 3), plus owner Dr. Uppala's NPI surfacing at distant downstate cities, leave ownership-vs-credentialing and single-vs-multi ambiguous. Contradictory roster/name plus an unresolved 3-location network make it unmergeable as-is \u2192 hold_unresolved (owner is a dentist, so not a DSO hold).",
+   "web_searched": false
+  },
+  "_triage_reason": "adjudication_hold_unresolved"
  },
  {
   "location_id": "c154618b89eae594",
@@ -5553,6 +5483,43 @@
   "_triage_reason": "adjudication_hold_dso_verify"
  },
  {
+  "location_id": "46736b187ceba600",
+  "practice_name": "NANDINI SUBBARAJU",
+  "zip": "60608",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.yelp.com/biz/cermak-dental-associates-chicago",
+   "https://www.bbb.org/us/il/chicago/profile/dentist/subbaraju-nandini-dds-0654-88021540",
+   "https://www.practo.com/chicago/hospital/cermak-dental-associates-llc-lower-west-side"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": "ao:SUBBARAJU_NANDINI",
+  "reasoning": "Dr. Nandini Subbaraju founded this practice (operating as Cermak Dental Associates LLC) at 1950 W Cermak Rd, Chicago in the early 1980s per BBB records, and it is confirmed as a single location seeing multiple family dentists (Dr. Darshana Subbaraju Novick also practices there). No brand, franchise, or corporate-parent signal appeared anywhere; matches NPPES authorized official (Nandini Subbaraju) exactly. Classified as a dentist-owned multi-provider single-location group.",
+  "searched": [
+   "Nandini Subbaraju dentist 1950 W Cermak Rd Chicago dental group",
+   "Cermak Dental Subbaraju Chicago locations website"
+  ],
+  "_unit": "laneA_080",
+  "_adjudication": {
+   "adjudication_source": "opus_batch",
+   "assigned_tier": "single_loc_group",
+   "batch_file": "batch_24.json",
+   "corrected_confidence": null,
+   "corrected_tier": null,
+   "disposition": "hold_dso_verify",
+   "location_id": "46736b187ceba600",
+   "merge_action": "hold_do_not_merge",
+   "practice_name": "NANDINI SUBBARAJU",
+   "rationale": "The website domain britedental.org is shared across 6 location rows (plus a shared EIN 272124904) \u2014 Brite Dental is a known corporate/DSO brand (Rule 3: Dental 360/Brite), and a single back-office domain spanning six IL clinics is a strong MSO/network signal. This directly contradicts the researcher's 'Cermak Dental Associates, dentist-owned, no brand' read (db_context is large_group, provider_count=6). Suspected corporate/DSO control \u2014 routed to the adversarial verifier; not self-promoting to a corporate tier.",
+   "web_searched": false
+  },
+  "_triage_reason": "adjudication_hold_dso_verify"
+ },
+ {
   "location_id": "4535451bd15d0b2c",
   "practice_name": "John Dental",
   "zip": "60608",
@@ -6622,47 +6589,6 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
-  "location_id": "c8efbf563e17e5bb",
-  "practice_name": "MOHAMMAD R EKHTERA, DDS. PC",
-  "zip": "60618",
-  "assigned_tier": "true_independent",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.healthgrades.com/dentist/dr-mohammad-ekhtera-2hkj4",
-   "https://npino.com/dental-clinic/1922407667-mohammad-reza-ekhtera,-dds,-pc/"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "3190 E Elston Ave / (773) 564-9916 matches Dr. Mohammad Reza Ekhtera, DDS, who operates the location as 'Enamel Dental Salon.' No parent company, DSO, or chain affiliation found in any directory. Solo dentist owner-operator.",
-  "searched": [
-   "Mohammad Ekhtera DDS 3190 E Elston Ave Chicago dentist"
-  ],
-  "_unit": "laneA_095",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "true_independent",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_unresolved",
-   "location_id": "c8efbf563e17e5bb",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "MOHAMMAD R EKHTERA, DDS. PC",
-   "rationale": "Held: T1 is supported by directory-style evidence only, which fails the positive-proof standard for true solo ownership.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_reaches_multiple_locations",
-    "directory_only_support",
-    "shared_phone_multiple_locations"
-   ],
-   "web_searched": false,
-   "zip": "60618"
-  },
-  "_triage_reason": "adjudication_hold_unresolved"
- },
- {
   "location_id": "3af1e2ccc1b5eb23",
   "practice_name": "WESTERN DENTAL GROUP PC",
   "zip": "60618",
@@ -6763,46 +6689,6 @@
   ],
   "_unit": "laneA_096",
   "_triage_reason": "undetermined_by_agent"
- },
- {
-  "location_id": "62ddee9ac0a0fabf",
-  "practice_name": "BANKS DENTAL GROUP INC",
-  "zip": "60620",
-  "assigned_tier": "true_independent",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.banksdentalgroup.com/",
-   "https://www.yelp.com/biz/banks-dental-group-christopher-banks-dmd-chicago-3"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "8244 S Ashland Ave (phone (773) 651-8700) is the solo owner-operator practice of Dr. Christopher Banks, DMD (SIU Dental School 1997, ~20 years in practice per his own site banksdentalgroup.com). Matches the NPPES authorized official 'Christopher Banks' exactly. No corporate parent found -- true_independent, high confidence.",
-  "searched": [
-   "Banks Dental Group Christopher Banks DMD 8244 S Ashland Chicago"
-  ],
-  "_unit": "laneA_097",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "true_independent",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_network_review",
-   "location_id": "62ddee9ac0a0fabf",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "BANKS DENTAL GROUP INC",
-   "rationale": "Held: T1 has multiple independent network/control signals and the persisted reasoning does not fully rebut them with current owner + single-location proof.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "shared_ein_or_parent_tin",
-    "shared_phone_multiple_locations"
-   ],
-   "web_searched": false,
-   "zip": "60620"
-  },
-  "_triage_reason": "adjudication_hold_network_review"
  },
  {
   "location_id": "b89c4be8768f251f",
@@ -8291,6 +8177,65 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
+  "location_id": "e76b9e2c92632174",
+  "practice_name": "THERESE MOUSSA, DDS, PC",
+  "zip": "60639",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.clarkdentalchicago.com/about-us/",
+   "https://findadentist.ada.org/dentists/dr-therese-moussa-chicago-0038V00002ykCNOQA2-a1C8V00000kXuRkUAK"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "The practice now operates publicly as 'Clark Dental Care' at the same address/phone, with its own website naming Dr. Therese Moussa as the practice's dentist since 1999/over 15 years; NPI shows 2 providers at one address matching the small_group entity type. No DSO, parent company, or multi-location signal appeared on the practice's own site or in search results.",
+  "searched": [
+   "\"Therese Moussa\" DDS dentist Chicago 5301 Fullerton",
+   "clarkdentalchicago.com/about-us fetch"
+  ],
+  "intel": {
+   "website_url": "https://www.clarkdentalchicago.com/",
+   "website_note": "Modern small-practice site branded 'Clark Dental Care'; presents Dr. Moussa as the long-tenured treating dentist (practice operating since 1999).",
+   "services": [
+    "Botox and dermal fillers",
+    "in-office whitening",
+    "implants",
+    "crowns",
+    "veneers",
+    "bridges",
+    "dentures/partials",
+    "fillings",
+    "extractions",
+    "periodontal treatment"
+   ],
+   "technology": [],
+   "provider_notes": "Dr. Therese Moussa, DDS \u2014 BS Biological Sciences UIC, DDS from UIC College of Dentistry; implant-placement trained; certified in Botox/dermal fillers and TMJ treatment; speaks Arabic.",
+   "distinguishing_notes": "Accepting new patients as of search; bilingual (Arabic) practice.",
+   "sources": [
+    "https://www.clarkdentalchicago.com/about-us/",
+    "https://findadentist.ada.org/dentists/dr-therese-moussa-chicago-0038V00002ykCNOQA2-a1C8V00000kXuRkUAK"
+   ]
+  },
+  "_unit": "laneA_115",
+  "_adjudication": {
+   "adjudication_source": "opus_batch",
+   "assigned_tier": "single_loc_group",
+   "batch_file": "batch_23.json",
+   "corrected_confidence": null,
+   "corrected_tier": null,
+   "disposition": "hold_dso_verify",
+   "location_id": "e76b9e2c92632174",
+   "merge_action": "hold_do_not_merge",
+   "practice_name": "THERESE MOUSSA, DDS, PC",
+   "rationale": "The DB website dentalandbraces.com (shared across 9 locations) resolves to 'All Family Dental & Braces' (All Family / United Dental Partners), a known DSO on the block-list, which operates a Belmont Central office at 5708 W Fullerton Ave in this exact ZIP 60639. The shared_website_domain (reach 9) + shared_ein signals plus the friendly-PC naming ('Therese Moussa DDS PC') fit All Family/UDP's per-office PC structure; the researcher's 'Clark Dental Care' finding does not override the org NPI's direct DSO-domain tie. Rule 3 forbids accepting a known DSO brand as T2 \u2014 route to the adversarial verifier.",
+   "web_searched": true
+  },
+  "_triage_reason": "adjudication_hold_dso_verify"
+ },
+ {
   "location_id": "57d1141d853072c0",
   "practice_name": "SONRISA FAMILY DENTAL AT THE HALL, P.C.",
   "zip": "60639",
@@ -8982,25 +8927,19 @@
   },
   "_unit": "laneA_121",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "single_loc_group",
+   "batch_file": "batch_25.json",
    "corrected_confidence": null,
    "corrected_tier": null,
-   "disposition": "hold_network_review",
+   "disposition": "hold_dso_verify",
    "location_id": "c2a49b9eae5cbd6a",
    "merge_action": "hold_do_not_merge",
    "practice_name": "Le, Oanh",
-   "rationale": "Held: T2 has multiple network signals and lacks a clean own-source single-location rebuttal. It may be T3 or controlled; do not merge as T2 mechanically.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "shared_phone_multiple_locations",
-    "shared_website_domain",
-    "stale_founder_history"
-   ],
-   "web_searched": false,
-   "zip": "60644"
+   "rationale": "The shared_website_domain allstardentalclinic.com reaches SEVEN location_ids, directly refuting the 'single-location small family practice' read. Web search confirms All Star Dental Clinic is a 5+ office chain (Aurora, Joliet, Blue Island, United Center, Austin) operating as 'ASH Dental PC DBA All Star Dental Clinic' -- a generic-brand, DBA-structured multi-location entity of uncertain ownership (dentist-owned multi vs MSO/DSO). This is well beyond single_loc_group; per fail-closed rules I do not self-promote to a DSO tier and route it to the adversarial verifier. hold_dso_verify.",
+   "web_searched": true
   },
-  "_triage_reason": "adjudication_hold_network_review"
+  "_triage_reason": "adjudication_hold_dso_verify"
  },
  {
   "location_id": "cc8bc774832b2255",
@@ -9168,6 +9107,60 @@
   ],
   "_unit": "laneA_124",
   "_triage_reason": "undetermined_by_agent"
+ },
+ {
+  "location_id": "ace914075d21f844",
+  "practice_name": "LEHIGH DENTAL CARE",
+  "zip": "60646",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.yelp.com/biz/lehigh-dental-care-chicago",
+   "https://doctor.webmd.com/practice/lehigh-dental-care-f769d883-b265-4c6b-836b-134792d4ae59",
+   "https://dentistsok.com/dental-clinic/lehigh-dental-care-chicago-il/"
+  ],
+  "evidence_artifacts": [
+   "same_address_as_a76f0c8ea1e37128:6420_n_lehigh_ave"
+  ],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": "ao:PAUNESCU_TATIANA",
+  "reasoning": "'Lehigh Dental Care' shares the identical address (6420 N Lehigh Ave) and phone ((773) 594-9115) as location a76f0c8ea1e37128 ('Paunescu Dental') in this unit, and is the org-NPI registration for Dr. Tatiana Paunescu's single-location solo practice \u2014 not a separate office. All directory listings show one location; no corporate/DSO signal found despite ctx owner_reach_locations=2, which searches could not corroborate with a real second office. Classified true independent (single physical location).",
+  "searched": [
+   "Paunescu Dental 6420 N Lehigh Chicago dentist Tatiana Paunescu",
+   "Lehigh Dental Care Chicago Paunescu second office location"
+  ],
+  "intel": {
+   "website_url": null,
+   "website_note": "No standalone owner-branded site found; listed under 'Lehigh Dental Care' name across aggregators.",
+   "services": [
+    "general dentistry"
+   ],
+   "technology": [],
+   "provider_count_web": 1,
+   "provider_notes": "Dr. Tatiana Paunescu, DDS (same provider as location a76f0c8ea1e37128).",
+   "owner_career_stage": null,
+   "distinguishing_notes": "12 reviews listed on Yelp for this office name.",
+   "sources": [
+    "https://www.yelp.com/biz/lehigh-dental-care-chicago"
+   ]
+  },
+  "_unit": "laneA_124",
+  "_adjudication": {
+   "adjudication_source": "opus_batch",
+   "assigned_tier": "true_independent",
+   "batch_file": "batch_19.json",
+   "corrected_confidence": null,
+   "corrected_tier": null,
+   "disposition": "duplicate_suspect",
+   "location_id": "ace914075d21f844",
+   "merge_action": "hold_do_not_merge",
+   "practice_name": "LEHIGH DENTAL CARE",
+   "rationale": "The researcher's own reasoning states this row shares the IDENTICAL address (6420 N Lehigh Ave) and phone (773-594-9115) with location a76f0c8ea1e37128 ('Paunescu Dental') and is the org-NPI registration of Dr. Tatiana Paunescu's single office, 'not a separate office.' That makes it an address/registration variant of an already-represented practice, so it must not merge as a net-new independent - flagged duplicate to prevent double-counting.",
+   "web_searched": false
+  },
+  "_triage_reason": "adjudication_duplicate_suspect"
  },
  {
   "location_id": "a82bfb3ce61a8627",
@@ -9392,6 +9385,51 @@
   ],
   "_unit": "laneA_127",
   "_triage_reason": "undetermined_by_agent"
+ },
+ {
+  "location_id": "dfc145e9c4fb8cee",
+  "practice_name": "MAYA SEDATION LLC",
+  "zip": "60647",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://npiprofile.com/npi/1811887334"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Amy Maya, DDS is confirmed as the authorized official and a dentist anesthesiologist for this practice -- a specialty IV-sedation service, not a corporate/DSO entity. No parent company, brand, or PE signal found. Classified single_loc_group at this address; confidence medium since the high provider_count (8) in the source file is not explained by available web evidence (plausibly credentialed staff supporting mobile/in-office sedation cases) and I could not independently verify it.",
+  "searched": [
+   "Maya Sedation Dentistry Chicago Amy Maya 2062 N Milwaukee Ave"
+  ],
+  "intel": {
+   "provider_notes": "Amy Maya, DDS -- dentist anesthesiologist / authorized official.",
+   "services": [
+    "IV sedation",
+    "dental anesthesiology"
+   ],
+   "distinguishing_notes": "Specialty sedation-focused practice rather than a general family dental office.",
+   "sources": [
+    "https://npiprofile.com/npi/1811887334"
+   ]
+  },
+  "_unit": "laneA_127",
+  "_adjudication": {
+   "adjudication_source": "opus_batch",
+   "assigned_tier": "single_loc_group",
+   "batch_file": "batch_23.json",
+   "corrected_confidence": null,
+   "corrected_tier": null,
+   "disposition": "hold_unresolved",
+   "location_id": "dfc145e9c4fb8cee",
+   "merge_action": "hold_do_not_merge",
+   "practice_name": "MAYA SEDATION LLC",
+   "rationale": "Ownership by Dr. Amy Maya (dentist-anesthesiologist AO) is real, so this is not corporate/DSO, but the T2 single-location claim is unverifiable: evidence is directory-only (npiprofile.com), db_context is large_group with provider_count=8 that the researcher explicitly could not corroborate, and two shared phones each reach 3 locations. The unexplained 8-provider roster plus the multi-office phone network for a mobile IV-sedation service contradict a clean single-location group; fail-closed per Rule 1's provider_count>=8 / large_group hold trigger and Rule 5's directory-only ceiling.",
+   "web_searched": false
+  },
+  "_triage_reason": "adjudication_hold_unresolved"
  },
  {
   "location_id": "be2a1cd5ebe9d302",
@@ -10263,6 +10301,41 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
+  "location_id": "a7d32a4b2ccab8d4",
+  "practice_name": "O GUTERZON DDS LTD",
+  "zip": "60659",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.vitadox.com/practice/west-ridge-chicago-il-60659/o-guterzon-dds-ltd/WJeNryDDbGUzH7PTwB9zjB",
+   "https://www.chamberofcommerce.com/business-directory/illinois/chicago/dentist/2028512313-guterzon-oksana-t-dds"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Directory listings show Dr. Oksana Guterzon's practice at this single address staffed by her plus associate dentists (Erla Calderon, Erika Franco, Jacob Lake), with no second location, brand, or corporate signal found. Multi-dentist, single-location, dentist-owned group.",
+  "searched": [
+   "Oksana Guterzon DDS 2806 W Devon Ave Chicago dentist"
+  ],
+  "_unit": "laneA_136",
+  "_adjudication": {
+   "adjudication_source": "opus_batch",
+   "assigned_tier": "single_loc_group",
+   "batch_file": "batch_23.json",
+   "corrected_confidence": null,
+   "corrected_tier": null,
+   "disposition": "hold_unresolved",
+   "location_id": "a7d32a4b2ccab8d4",
+   "merge_action": "hold_do_not_merge",
+   "practice_name": "O GUTERZON DDS LTD",
+   "rationale": "The assigned HIGH confidence rests on directory-only sources (vitadox, chamberofcommerce), which Rule 5 disallows, and an unresolved cross-location network sits unaddressed: the DB website is joshifamilydentistry.com (Dr. Tejas Joshi's practice in the same 60659 area) shared across 2 locations, plus a Data-Axle officer 'Jacob Lake' spanning 3 locations. The practice-name (Guterzon) vs domain (Joshi) conflict and floating associate make current ownership/structure unverifiable; none of these are known DSO brands, so this is contradictory rather than corporate \u2014 do not merge as a clean single-location group.",
+   "web_searched": true
+  },
+  "_triage_reason": "adjudication_hold_unresolved"
+ },
+ {
   "location_id": "461291ffcb90a9dc",
   "practice_name": "Brite Dental",
   "zip": "60659",
@@ -10466,86 +10539,19 @@
   },
   "_unit": "laneA_138",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "single_loc_group",
+   "batch_file": "batch_23.json",
    "corrected_confidence": null,
    "corrected_tier": null,
-   "disposition": "hold_control_review",
+   "disposition": "hold_dso_verify",
    "location_id": "c2be6e0f17dae07d",
    "merge_action": "hold_do_not_merge",
    "practice_name": "FLOS, LLC",
-   "rationale": "Held: authorized official has a non-clinical/executive title and the Lane A evidence does not cleanly prove a dentist-owned multi-location structure. This is a hidden-control risk, not a safe T1/T2 accept.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_nonclinical_exec_title",
-    "ao_not_provider_or_practice_name"
-   ],
-   "web_searched": false,
-   "zip": "60659"
+   "rationale": "Hard signal ao_nonclinical_exec_title: the org NPI's authorized official is Salman Patel, titled 'Managing Member' with no clinical credential and a surname absent from both the provider roster (Ghani/Sheikh/Kukiratirat) and the practice name. A non-dentist managing member controlling a practice that fields ~8 named associate dentists with no identifiable owner-dentist is the classic stealth-MSO / friendly-PC pattern (especially under IL dentist-ownership rules). The researcher found no brand, but this structure must go through the adversarial pass rather than be accepted.",
+   "web_searched": false
   },
-  "_triage_reason": "adjudication_hold_control_review"
- },
- {
-  "location_id": "e02409eec421de2d",
-  "practice_name": "TEJAS JOSHI P.C",
-  "zip": "60659",
-  "assigned_tier": "true_independent",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.zocdoc.com/dentist/tejas-joshi-dmd-81353",
-   "https://www.joshifamilydentistry.com/",
-   "https://www.healthgrades.com/dentist/dr-tejas-joshi-37rck",
-   "https://findadentist.ada.org/il/cook/chicago/general-practice/dr-tejas-n-joshi-1554662"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Searched Tejas Joshi DDS 2958 W Devon. Zocdoc, the practice's own site (joshifamilydentistry.com), Healthgrades, and ADA Find-a-Dentist all confirm Dr. Tejas Joshi, DMD (Southern Illinois University-trained) as sole dentist/founder of 'Joshi Family Dentistry' at this single Devon Ave address. No corporate/DSO signal found; the unit's 'large_group' label and provider_count=0 appear to be a stale/inaccurate classification -- web evidence uniformly shows solo ownership.",
-  "searched": [
-   "Tejas Joshi DDS Chicago 2958 W Devon Ave dentist"
-  ],
-  "intel": {
-   "website_url": "https://www.joshifamilydentistry.com/",
-   "services": [
-    "implants",
-    "root canals",
-    "cosmetic dentistry",
-    "periodontal care",
-    "endodontic care",
-    "teeth whitening",
-    "extractions",
-    "fillings",
-    "dentures"
-   ],
-   "provider_notes": "Dr. Tejas Joshi, DMD, trained at Southern Illinois University School of Dental Medicine; speaks English, Spanish, Hindi, and Gujarati.",
-   "distinguishing_notes": "Multilingual solo family dentist with a strong online review presence.",
-   "sources": [
-    "https://www.zocdoc.com/dentist/tejas-joshi-dmd-81353",
-    "https://www.healthgrades.com/dentist/dr-tejas-joshi-37rck"
-   ]
-  },
-  "_unit": "laneA_138",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "true_independent",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_unresolved",
-   "location_id": "e02409eec421de2d",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "TEJAS JOSHI P.C",
-   "rationale": "Held: T1 conflicts with roster/group signals that are too large or too contradictory to correct mechanically. This cannot merge as true solo owner-operated without row-level review.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "shared_phone_multiple_locations",
-    "t1_group_entity_classification"
-   ],
-   "web_searched": false,
-   "zip": "60659"
-  },
-  "_triage_reason": "adjudication_hold_unresolved"
+  "_triage_reason": "adjudication_hold_dso_verify"
  },
  {
   "location_id": "1a7188cd1c1cc279",
@@ -10905,66 +10911,6 @@
   ],
   "_unit": "laneA_146",
   "_triage_reason": "undetermined_by_agent"
- },
- {
-  "location_id": "a2e369f5e26fb8f9",
-  "practice_name": "DR MARIA OSAN TOPALA AND ASSOC",
-  "zip": "60438",
-  "assigned_tier": "single_loc_group",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://mariaosantopala.com/staff/maria-osan-topala-dmd/",
-   "https://www.yelp.com/biz/osan-topala-maria-dds-lansing"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "The practice's own website (Apple Dentistry, mariaosantopala.com) names Dr. Maria Osan-Topala as the practicing/owning dentist at this single 2457 Ridge Rd address, with a small associated team (matches ctx provider_count=2). No corporate parent or brand is mentioned anywhere; this is a single-location, dentist-owned group practice.",
-  "searched": [
-   "\"Maria Osan Topala\" DDS Lansing IL dentist"
-  ],
-  "intel": {
-   "website_url": "https://mariaosantopala.com/staff/maria-osan-topala-dmd/",
-   "website_note": "Personal practice site (branded \"Apple Dentistry\") with a staff bio page; Dr. Osan-Topala was born in Romania, raised in Munster, IN.",
-   "services": [
-    "general dentistry",
-    "periodontics",
-    "prosthodontics",
-    "routine cleanings",
-    "fillings",
-    "preventive care"
-   ],
-   "technology": [],
-   "provider_count_web": 2,
-   "provider_notes": "Dr. Maria Osan-Topala, DMD - general dentistry/periodontics/prosthodontics; won the 2017 Best of Lansing Award (Dentists category).",
-   "distinguishing_notes": "Award-winning (2017 Best of Lansing) single-location practice branded \"Apple Dentistry.\"",
-   "sources": [
-    "https://mariaosantopala.com/staff/maria-osan-topala-dmd/",
-    "https://www.yelp.com/biz/osan-topala-maria-dds-lansing"
-   ]
-  },
-  "_unit": "laneA_147",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "single_loc_group",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_control_review",
-   "location_id": "a2e369f5e26fb8f9",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "DR MARIA OSAN TOPALA AND ASSOC",
-   "rationale": "Held: authorized official has a non-clinical/executive title and the Lane A evidence does not cleanly prove a dentist-owned multi-location structure. This is a hidden-control risk, not a safe T1/T2 accept.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_nonclinical_exec_title",
-    "ao_not_provider_or_practice_name"
-   ],
-   "web_searched": false,
-   "zip": "60438"
-  },
-  "_triage_reason": "adjudication_hold_control_review"
  },
  {
   "location_id": "e16ff3a9b55a8492",
@@ -11517,64 +11463,6 @@
   "_triage_reason": "r4_flag_in_reasoning"
  },
  {
-  "location_id": "2991ce479c805e15",
-  "practice_name": "ADAMS FAMILY DENTAL",
-  "zip": "60459",
-  "assigned_tier": "single_loc_group",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.burbanksmiles.com/",
-   "https://www.carecredit.com/doctor-locator/burbank-il/adams-family-dentistry-ltd-978zqw/"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": "ao:ELMOSA_SAMMY",
-  "reasoning": "Own branded website (burbanksmiles.com) and CareCredit locator confirm Dr. Sammy Elmosa, DDS, as the owner of Adams Family Dental/Dentistry at 5600 W 87th St, Burbank -- single address, family/cosmetic general practice, no corporate or DSO affiliation found.",
-  "searched": [
-   "Adams Family Dental Burbank IL Sammy Elmosa dentist"
-  ],
-  "intel": {
-   "website_url": "https://www.burbanksmiles.com/",
-   "website_note": "Branded practice site (burbanksmiles.com) presenting Dr. Sammy Elmosa as owner.",
-   "services": [
-    "Invisalign",
-    "dental implants",
-    "orthodontics",
-    "cosmetic dentistry",
-    "restorations",
-    "periodontal care",
-    "cleanings and prevention"
-   ],
-   "insurance_note": "Accepts Blue Cross Blue Shield.",
-   "sources": [
-    "https://www.burbanksmiles.com/",
-    "https://www.caredash.com/doctors/sammy-elmosa-dds-burbank-il"
-   ]
-  },
-  "_unit": "laneA_154",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "single_loc_group",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_network_review",
-   "location_id": "2991ce479c805e15",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "ADAMS FAMILY DENTAL",
-   "rationale": "Held: T2 has multiple network signals and lacks a clean own-source single-location rebuttal. It may be T3 or controlled; do not merge as T2 mechanically.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "shared_data_axle_officer",
-    "shared_phone_multiple_locations"
-   ],
-   "web_searched": false,
-   "zip": "60459"
-  },
-  "_triage_reason": "adjudication_hold_network_review"
- },
- {
   "location_id": "9a5b6013c9a3eb69",
   "practice_name": "3D DENTAL SERVICES - LTD",
   "zip": "60461",
@@ -11618,6 +11506,50 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
+  "location_id": "04f0a94bdd63b5a5",
+  "practice_name": "JOSEPH SOLEK DDS, PC",
+  "zip": "60462",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.doctorsnetwork.com/doctors/dentists/orland-park-il-60462/invite-joseph-solek-dds-10272",
+   "https://www.linkedin.com/in/joe-solek-a9759025/"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Directory listings confirm Dr. Joseph Solek, DDS, at 14512 John Humphrey Dr, Orland Park, phone (708) 460-6699 matching our record, in business since 1987, accepting Medicaid. Dr. Solek's own LinkedIn lists him as 'Retired,' which introduces some uncertainty about current active ownership, but active directory listings and the practice's continued NPI/PC registration indicate the office is still operating under his name with no corporate signal. Classified as a dentist-owned single-location practice (medium confidence given the retirement note).",
+  "searched": [
+   "\"Joseph Solek\" DDS Orland Park dentist"
+  ],
+  "intel": {
+   "accepts_medicaid": true,
+   "insurance_note": "Accepts Medicaid; new patients welcome per Doctors Network listing.",
+   "distinguishing_notes": "In practice since 1987 (39 years per listing); LinkedIn profile lists Dr. Solek as retired, which may indicate a transition in day-to-day ownership not yet reflected in directories.",
+   "sources": [
+    "https://www.doctorsnetwork.com/doctors/dentists/orland-park-il-60462/invite-joseph-solek-dds-10272",
+    "https://www.linkedin.com/in/joe-solek-a9759025/"
+   ]
+  },
+  "_unit": "laneA_155",
+  "_adjudication": {
+   "adjudication_source": "opus_batch",
+   "assigned_tier": "single_loc_group",
+   "batch_file": "batch_21.json",
+   "corrected_confidence": null,
+   "corrected_tier": null,
+   "disposition": "hold_dso_verify",
+   "location_id": "04f0a94bdd63b5a5",
+   "merge_action": "hold_do_not_merge",
+   "practice_name": "JOSEPH SOLEK DDS, PC",
+   "rationale": "shared_ein (363350286) and shared_website_domain (inspiredentalwellness.com) tie this address to a differently-named sibling practice (Gary Gunkel DDS), and web search confirms 14512 John Humphrey Dr (Solek's exact address, phone 708-460-6699) is now 'Inspire Dental Wellness' under Dr. Erica Zolnierczyk, with the original owner Solek retired (per his LinkedIn). Two acquired-and-rebranded practices sharing one EIN and brand is a consolidation pattern that could be a dentist T3 group or an MSO; ownership cannot be confirmed from directory-only evidence, so route to the adversarial verifier \u2014 never a clean single_loc_group under the retired Solek.",
+   "web_searched": true
+  },
+  "_triage_reason": "adjudication_hold_dso_verify"
+ },
+ {
   "location_id": "e5c1a7813bd71d81",
   "practice_name": "DRS.BRASKY,FELDNER & ASSOCIATES LTD.",
   "zip": "60462",
@@ -11638,6 +11570,61 @@
   ],
   "_unit": "laneA_155",
   "_triage_reason": "undetermined_by_agent"
+ },
+ {
+  "location_id": "c4552136cfc39e5d",
+  "practice_name": "SMILES OF ORLAND PARK PC.",
+  "zip": "60462",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.smilesoforlandpark.com/",
+   "https://www.bbb.org/us/il/orland-park/profile/dentist/smiles-of-orland-park-0654-88725090",
+   "https://www.carecredit.com/doctor-locator/General-Dentist-in-ORLAND-PARK-IL-60462/Smiles-of-Orland-Park/"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "BBB confirms 7630 W 159th St, Orland Park matching our record, with Dr. Robert Q. Marshall as President/owner (30+ years practicing, Diplomate of the International Dental Implant Association). A CareCredit locator page lists the practice under multiple specialty categories (Endodontist, General-Dentist, Orthodontist, Pediatric-Dentist, Periodontist) at this one address, consistent with a dentist-owned multi-provider single-location group rather than a strict solo office. No corporate/DSO/PE signal found.",
+  "searched": [
+   "\"Smiles of Orland Park\" dentist Robert Marshall"
+  ],
+  "intel": {
+   "website_url": "https://www.smilesoforlandpark.com/",
+   "provider_notes": "Dr. Robert Q. Marshall, DDS, President; International Dental Implant Association Diplomate (350+ CE hours, 150+ implants placed).",
+   "services": [
+    "orthodontics",
+    "cosmetic dentistry",
+    "restorative dentistry",
+    "endodontics",
+    "implant dentistry",
+    "Invisalign",
+    "veneers"
+   ],
+   "owner_career_stage": "late_career",
+   "distinguishing_notes": "CareCredit locator lists the address under Endodontist, General-Dentist, Orthodontist, Pediatric-Dentist and Periodontist categories, suggesting several specialty associates practice on-site alongside Dr. Marshall.",
+   "sources": [
+    "https://www.smilesoforlandpark.com/",
+    "https://www.carecredit.com/doctor-locator/General-Dentist-in-ORLAND-PARK-IL-60462/Smiles-of-Orland-Park/"
+   ]
+  },
+  "_unit": "laneA_155",
+  "_adjudication": {
+   "adjudication_source": "opus_batch",
+   "assigned_tier": "single_loc_group",
+   "batch_file": "batch_24.json",
+   "corrected_confidence": null,
+   "corrected_tier": null,
+   "disposition": "hold_unresolved",
+   "location_id": "c4552136cfc39e5d",
+   "merge_action": "hold_do_not_merge",
+   "practice_name": "SMILES OF ORLAND PARK PC.",
+   "rationale": "The shared EIN (363087534) and shared domain kirschdentalonline.com link this row (Dr. Robert Marshall, Smiles of Orland Park, 7630 W 159th St) to partner 4e4b4093d7d8a16e ('Bandy, Jamie') and to Kirsch Family Dentistry \u2014 but web search shows Kirsch (father-son team, 8650 W 159th St) and Smiles of Orland Park (Marshall) are marketed as separate family practices with different owners and addresses. A hard shared-EIN tie across two different-branded practices is unexplained (hidden common ownership vs data-linkage artifact) and cannot merge as a clean single-location group; no known DSO brand is present, so this holds unresolved rather than routing to the DSO verifier.",
+   "web_searched": true
+  },
+  "_triage_reason": "adjudication_hold_unresolved"
  },
  {
   "location_id": "1af6e48f55d003b6",
@@ -11806,6 +11793,50 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
+  "location_id": "664fe6487b9702d1",
+  "practice_name": "JAMES E. MCCORMICK, D.M.D., M.S., LTD.",
+  "zip": "60463",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.healthgrades.com/dentist/dr-james-mccormick-x525d",
+   "https://www.aae.org/patients/directory/people/james-e-mccormick/"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Address/phone confirmed for Dr. James McCormick's own endodontic practice (Contemporary Endodontics) at 7600 W College Dr; AAE directory and Healthgrades show only Dr. McCormick as owner-provider with no DSO/corporate affiliation. Census provider_count=7 likely reflects staff/associate NPIs at one office rather than a chain, so classified as a dentist-owned single-location group rather than solo.",
+  "searched": [
+   "James McCormick DMD Palos Heights IL dentist"
+  ],
+  "intel": {
+   "provider_notes": "Dr. James McCormick, DMD, University of British Columbia dental degree 1971, Endodontic residency Loyola University Chicago 1979, Board Certified.",
+   "owner_career_stage": "late_career",
+   "distinguishing_notes": "Endodontic specialist practice, not currently accepting new patients (per Healthgrades) -- possible succession/retirement-risk candidate given 1971 graduation year.",
+   "sources": [
+    "https://www.healthgrades.com/dentist/dr-james-mccormick-x525d",
+    "https://www.aae.org/patients/directory/people/james-e-mccormick/"
+   ]
+  },
+  "_unit": "laneA_159",
+  "_adjudication": {
+   "adjudication_source": "opus_batch",
+   "assigned_tier": "single_loc_group",
+   "batch_file": "batch_26.json",
+   "corrected_confidence": null,
+   "corrected_tier": null,
+   "disposition": "hold_unresolved",
+   "location_id": "664fe6487b9702d1",
+   "merge_action": "hold_do_not_merge",
+   "practice_name": "JAMES E. MCCORMICK, D.M.D., M.S., LTD.",
+   "rationale": "The bundle's rationale (Dr. James McCormick as the current owner-provider) is factually stale: the practice's own history page shows McCormick RETIRED in December 2014 and Dr. Richard J. Pasiewicz has OWNED Contemporary Endodontics since 2018 (with associate Dr. Aksel), so the assigned tier rests on a wrong owner. The record also carries db large_group / provider_count=7 and two separate shared_phone links to two different other locations, and the AAE directory lists both Palos Heights and a Lockport office \u2014 leaving single-vs-multi-location and current ownership unresolved on directory-only evidence. It is dentist-owned (not corporate), but must not merge as-is with the McCormick single-loc basis.",
+   "web_searched": true
+  },
+  "_triage_reason": "adjudication_hold_unresolved"
+ },
+ {
   "location_id": "18c5e447c4f1cabc",
   "practice_name": "Hart Dental",
   "zip": "60463",
@@ -11828,64 +11859,6 @@
   ],
   "_unit": "laneA_159",
   "_triage_reason": "undetermined_by_agent"
- },
- {
-  "location_id": "d02103f21f19abb1",
-  "practice_name": "USP CLINICAL GPS PLLC",
-  "zip": "60463",
-  "assigned_tier": "single_loc_group",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.palospediatricdentistry.com/",
-   "https://www.palospediatricdentistry.com/contact",
-   "https://www.palospediatricdentistry.com/about-us",
-   "https://www.yelp.com/biz/palos-pediatric-dentistry-richard-facko-dds-ms-palos-heights-5"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Phone (708) 263-6708 is an EXACT match to Palos Pediatric Dentistry's own listed contact number (6446 W 127th St, 2nd Floor, Palos Heights) per the practice's own website and Yelp listing. This corrects a plausible mix-up with 'Palos Heights Family Dental,' an unrelated practice at Suite #1 in the same building with a different phone number -- the two practices share a building but not an owner. Dr. Richard Facko, DDS, MS founded this pediatric dental practice in 2013; no DSO/corporate management-company signal found, single dentist-owner.",
-  "searched": [
-   "\"708-263-6708\" OR \"(708) 263-6708\" dentist Palos Heights",
-   "USP Clinical GPS PLLC Palos Heights dentist"
-  ],
-  "intel": {
-   "website_url": "https://www.palospediatricdentistry.com/",
-   "website_note": "Dedicated pediatric-dentistry practice site with online contact/scheduling; also active on Yelp (2nd Floor suite noted).",
-   "services": [
-    "pediatric dentistry",
-    "special needs dentistry"
-   ],
-   "provider_notes": "Dr. Richard Facko, DDS, MS -- practice founded 2013.",
-   "distinguishing_notes": "Pediatric specialty practice (not general dentistry); office hours Mon-Fri, closed weekends.",
-   "sources": [
-    "https://www.palospediatricdentistry.com/",
-    "https://www.palospediatricdentistry.com/about-us"
-   ]
-  },
-  "_unit": "laneA_159",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "single_loc_group",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_network_review",
-   "location_id": "d02103f21f19abb1",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "USP CLINICAL GPS PLLC",
-   "rationale": "Held: T2 has multiple network signals and lacks a clean own-source single-location rebuttal. It may be T3 or controlled; do not merge as T2 mechanically.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_not_provider_or_practice_name",
-    "ao_reaches_multiple_locations",
-    "shared_phone_multiple_locations"
-   ],
-   "web_searched": false,
-   "zip": "60463"
-  },
-  "_triage_reason": "adjudication_hold_network_review"
  },
  {
   "location_id": "4f102207d0880e37",
@@ -12288,26 +12261,76 @@
   },
   "_unit": "laneA_165",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "true_independent",
+   "batch_file": "batch_19.json",
    "corrected_confidence": null,
    "corrected_tier": null,
-   "disposition": "hold_network_review",
+   "disposition": "duplicate_suspect",
    "location_id": "c163f205f7ce7753",
    "merge_action": "hold_do_not_merge",
    "practice_name": "GEORGE P. DANOS INC",
-   "rationale": "Held: T1 has multiple independent network/control signals and the persisted reasoning does not fully rebut them with current owner + single-location proof.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "shared_ein_or_parent_tin",
-    "shared_website_domain",
-    "t1_reasoning_lacks_owner_word",
-    "t1_reasoning_lacks_single_location_word"
-   ],
-   "web_searched": false,
-   "zip": "60803"
+   "rationale": "This org-entity row ('George P. Danos Inc') shares EIN 363694936 and the practice's OWN eponymous domain danosdentistry.com with a second location_id (52b68c520b5385df), and both rows are 'Danos.' The researcher web-verified via the own website a SINGLE-location solo Danos practice (5101 W 111th St, Alsip) with explicitly no second office found, so the two location rows are org-NPI/individual-NPI variants of the same single office - flagged duplicate to avoid double-counting rather than accepting as a standalone or misreading it as a 2-office group.",
+   "web_searched": false
   },
-  "_triage_reason": "adjudication_hold_network_review"
+  "_triage_reason": "adjudication_duplicate_suspect"
+ },
+ {
+  "location_id": "00f209bd764640b7",
+  "practice_name": "CRAIG KOSTRUBALA DDS LLC",
+  "zip": "60803",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.adentalhome.com/",
+   "https://www.healthgrades.com/dentist/dr-craig-kostrubala-xwtdh"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Own site (adentalhome.com) explicitly describes the practice as 'a non-corporate family business' run by Dr. Craig Kostrubala, DDS (Loyola Univ. School of Dentistry, 1993), at this single Alsip address. No corporate parent, brand, or second location found anywhere. Classic solo owner-operator.",
+  "searched": [
+   "Craig Kostrubala DDS Alsip IL dentist"
+  ],
+  "intel": {
+   "website_url": "https://www.adentalhome.com/",
+   "website_note": "Own-brand site positioned as family/cosmetic dentistry; explicitly markets itself as non-corporate.",
+   "services": [
+    "family dentistry",
+    "cosmetic dentistry",
+    "root canals",
+    "extractions",
+    "dentures",
+    "crowns",
+    "veneers",
+    "implants"
+   ],
+   "provider_count_web": 1,
+   "provider_notes": "Dr. Craig Kostrubala, DDS, graduated Loyola University School of Dentistry 1993 (~30+ years in practice); accepting new patients.",
+   "owner_career_stage": "late_career",
+   "distinguishing_notes": "Owner-founder still practicing solo after ~30 years; site emphasizes family-run, non-corporate positioning.",
+   "sources": [
+    "https://www.adentalhome.com/",
+    "https://www.healthgrades.com/dentist/dr-craig-kostrubala-xwtdh"
+   ]
+  },
+  "_unit": "laneA_166",
+  "_adjudication": {
+   "adjudication_source": "opus_batch",
+   "assigned_tier": "true_independent",
+   "batch_file": "batch_27.json",
+   "corrected_confidence": null,
+   "corrected_tier": null,
+   "disposition": "hold_unresolved",
+   "location_id": "00f209bd764640b7",
+   "merge_action": "hold_do_not_merge",
+   "practice_name": "CRAIG KOSTRUBALA DDS LLC",
+   "rationale": "The T1 single-solo claim is contradicted: the DB website oakdentalassociates.com and phone 708-346-9600 each reach a second distinct location, and a web search surfaces both an Alsip (11107 S Lawler) and an Oak Lawn (9501 Central Ave) address plus 'Kostrubala & Associates'/'Oak Dental Associates' group naming -- while the researcher verified a single Alsip 'non-corporate family business' on a DIFFERENT domain (adentalhome.com). Evidence points to dentist ownership (not corporate, so not a DSO hold), but the single-location true_independent tier cannot be reconciled with the multi-location domain/phone/address signals, so it must not merge as-is.",
+   "web_searched": true
+  },
+  "_triage_reason": "adjudication_hold_unresolved"
  },
  {
   "location_id": "52b68c520b5385df",
@@ -12598,23 +12621,19 @@
   ],
   "_unit": "laneA_167",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "dentist_multi",
+   "batch_file": "batch_23.json",
    "corrected_confidence": null,
    "corrected_tier": null,
-   "disposition": "hold_dso_verify",
+   "disposition": "duplicate_suspect",
    "location_id": "232ef04da1c24f3f",
    "merge_action": "hold_do_not_merge",
    "practice_name": "CHICAGO DENTAL SALON, P.C.",
-   "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "db_corporate_conflict"
-   ],
-   "web_searched": false,
-   "zip": "60805"
+   "rationale": "provider_count=0 and the researcher states this is the legal PC-name record for the SAME Evergreen Park office (10004 S Kedzie, Dr. Wesley Campin's 'Glow Dental') already carried on the unit's separate 'Glow Dental' row (827b2ed9490623cd) \u2014 an address/geocoding split off the active clinical NPI. Merging it as a distinct location would double-count the office. The db_corporate_conflict (dso_national with null affiliated_dso/PE) is a brandless heuristic label and is moot once the row is treated as a duplicate variant.",
+   "web_searched": false
   },
-  "_triage_reason": "adjudication_hold_dso_verify"
+  "_triage_reason": "adjudication_duplicate_suspect"
  },
  {
   "location_id": "132b3a15e500180a",
@@ -12725,69 +12744,6 @@
   },
   "_unit": "laneA_168",
   "_triage_reason": "undetermined_by_agent"
- },
- {
-  "location_id": "749eed72f0e57a93",
-  "practice_name": "ACCESS DENTAL CENTER",
-  "zip": "60101",
-  "assigned_tier": "dentist_multi",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.accessdentalcenter.org/meet-the-doctors"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": "brand:access_dental_center",
-  "reasoning": "The practice's own 'Meet the Doctors' page names Dr. Imaad Shaikh, DDS as Founder/Owner of Access Dental Center, operating across two IL locations (Addison + Naperville) with Dr. Zoya Shaikh also on staff. This overturns the source data's dso_national/affiliated_dso tag - documentary evidence shows single dentist-owner control across 2 locations, matching dentist_multi (T3), not a branded DSO. Per hard rules, AO/EIN reach alone would not support T5, and here the practice's own site confirms a dentist-owner network instead.",
-  "searched": [
-   "Access Dental Center Addison IL 276 W Fullerton locator",
-   "fetch https://www.accessdentalcenter.org/meet-the-doctors"
-  ],
-  "intel": {
-   "website_url": "https://www.accessdentalcenter.org/",
-   "website_note": "Professional branded site with doctor bios, services, and locations info (Addison + Naperville).",
-   "services": [
-    "Endodontics",
-    "Oral Surgery",
-    "Restorative",
-    "Prosthodontics",
-    "Implants",
-    "Cosmetic Dentistry",
-    "Root canals",
-    "Extractions",
-    "Crowns & Bridges",
-    "Porcelain Veneers",
-    "Deep Cleanings"
-   ],
-   "provider_notes": "Dr. Imaad Shaikh, DDS (Founder/Owner, 25+ years, Case Western Reserve grad); Dr. Zoya Shaikh, DMD (also Case Western Reserve grad).",
-   "owner_career_stage": "late_career",
-   "distinguishing_notes": "Two-location group (Addison + Naperville) founded and personally owned by Dr. Imaad Shaikh.",
-   "sources": [
-    "https://www.accessdentalcenter.org/meet-the-doctors",
-    "https://www.accessdentalcenter.org/"
-   ]
-  },
-  "_unit": "laneA_168",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "dentist_multi",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_dso_verify",
-   "location_id": "749eed72f0e57a93",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "ACCESS DENTAL CENTER",
-   "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "db_corporate_conflict"
-   ],
-   "web_searched": false,
-   "zip": "60101"
-  },
-  "_triage_reason": "adjudication_hold_dso_verify"
  },
  {
   "location_id": "86f0b24aac6e0fff",
@@ -13675,56 +13631,6 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
-  "location_id": "d9e35a86e7c7b726",
-  "practice_name": "SAMEET THAKRAR DDS PC",
-  "zip": "60154",
-  "assigned_tier": "true_independent",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.healthgrades.com/dentist/dr-sameet-thakrar-b7l9z",
-   "https://www.westchesterfamilydental.net/our-doctors/",
-   "https://doctor.webmd.com/doctor/sameet-thakrar-9d6f6d61-16cf-4a00-a758-5a00721394bb-overview"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Healthgrades, WebMD, and the practice's own site (westchesterfamilydental.net) confirm Dr. Sameet Thakrar, DDS (2012 Marquette grad) as the dentist at 4 Westbrook Corporate Ctr, practicing as 'Westchester Family Dental,' matching the DB's year_established=2012. No corporate/DSO signal \u2014 solo owner.",
-  "searched": [
-   "\"Sameet Thakrar\" DDS Westchester IL dentist Westbrook Corporate Center"
-  ],
-  "intel": {
-   "website_url": "https://www.westchesterfamilydental.net/",
-   "provider_notes": "Dr. Sameet Thakrar, DDS; New Trier HS, Loyola University Chicago undergrad, Marquette University School of Dentistry DDS 2012.",
-   "owner_career_stage": "mid_career",
-   "sources": [
-    "https://www.westchesterfamilydental.net/our-doctors/",
-    "https://www.healthgrades.com/dentist/dr-sameet-thakrar-b7l9z"
-   ]
-  },
-  "_unit": "laneA_181",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "true_independent",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_network_review",
-   "location_id": "d9e35a86e7c7b726",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "SAMEET THAKRAR DDS PC",
-   "rationale": "Held: T1 has multiple independent network/control signals and the persisted reasoning does not fully rebut them with current owner + single-location proof.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "shared_phone_multiple_locations",
-    "shared_website_domain"
-   ],
-   "web_searched": false,
-   "zip": "60154"
-  },
-  "_triage_reason": "adjudication_hold_network_review"
- },
- {
   "location_id": "0bc0553dad657b5b",
   "practice_name": "AMI DENTAL,N.NATHWANI.D.D.S.LTD.",
   "zip": "60155",
@@ -14005,66 +13911,6 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
-  "location_id": "5d101dfe50e1cdd4",
-  "practice_name": "Dental Salon",
-  "zip": "60195",
-  "assigned_tier": "dentist_multi",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://dentalsalon.com/",
-   "https://www.yelp.com/biz/dental-salon-schaumburg-schaumburg"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": "brand:dental_salon",
-  "reasoning": "Dental Salon's own site (dentalsalon.com) describes it as a family-owned, multi-specialty practice founded in 2003 by Dr. Mark Morris, operating two locations (Lincoln Park and Schaumburg). No PE sponsor, corporate parent, or national DSO brand was found -- this is a small dentist-owned 2-location group, so dentist_multi is the correct tier, overriding the pipeline's prior dso_national placeholder (likely a false-positive from the generic brand name plus high on-site provider count).",
-  "searched": [
-   "\"Dental Salon\" Schaumburg IL 501 W Golf Rd dentist"
-  ],
-  "intel": {
-   "website_url": "https://dentalsalon.com/",
-   "website_note": "Practice site for a 2-location (Lincoln Park + Schaumburg) family-owned multi-specialty practice.",
-   "services": [
-    "Invisalign",
-    "dental implants",
-    "crowns",
-    "bridges",
-    "fillings",
-    "cleanings",
-    "laser whitening",
-    "periodontal treatment",
-    "oral surgery",
-    "endodontics"
-   ],
-   "distinguishing_notes": "Family-owned multi-specialty practice founded 2003 by Dr. Mark Morris; 2 locations (Lincoln Park, Schaumburg) offering comprehensive care under one roof.",
-   "sources": [
-    "https://dentalsalon.com/",
-    "https://www.yelp.com/biz/dental-salon-schaumburg-schaumburg"
-   ]
-  },
-  "_unit": "laneA_190",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "dentist_multi",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_dso_verify",
-   "location_id": "5d101dfe50e1cdd4",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "Dental Salon",
-   "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "db_corporate_conflict"
-   ],
-   "web_searched": false,
-   "zip": "60195"
-  },
-  "_triage_reason": "adjudication_hold_dso_verify"
- },
- {
   "location_id": "2bd652bcbd662c85",
   "practice_name": "Eun Sung Hyun DMD",
   "zip": "60195",
@@ -14168,24 +14014,19 @@
   },
   "_unit": "laneA_191",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "single_loc_group",
+   "batch_file": "batch_26.json",
    "corrected_confidence": null,
    "corrected_tier": null,
-   "disposition": "hold_network_review",
+   "disposition": "hold_dso_verify",
    "location_id": "8e43f333b5547375",
    "merge_action": "hold_do_not_merge",
    "practice_name": "MURPHY DENTAL GROUP, PLLC",
-   "rationale": "Held: T2 has multiple network signals and lacks a clean own-source single-location rebuttal. It may be T3 or controlled; do not merge as T2 mechanically.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "shared_phone_multiple_locations",
-    "shared_website_domain"
-   ],
-   "web_searched": false,
-   "zip": "60301"
+   "rationale": "The db website and shared_website signal for this location are destinydentalcare.com shared across 3 locations \u2014 Destiny Dental Care is a known PE-backed/corporate cluster in this project (Phase-4 promoted 'Destiny/ProSmile x5'), a DSO-cluster domain signal, combined with db entity_classification=large_group and provider_count=6. The researcher matched murphydentaloakpark.com only by phone but flagged an address mismatch (100 S Kenilworth per Murphy's own site vs 137 N Oak Park Ave for this record), so it is unresolved whether THIS address is independent Murphy or a Destiny location. Per rule 2/3, a db_corporate_conflict involving a known DSO brand across 3 locations must go to the adversarial verifier, never accept.",
+   "web_searched": false
   },
-  "_triage_reason": "adjudication_hold_network_review"
+  "_triage_reason": "adjudication_hold_dso_verify"
  },
  {
   "location_id": "7df4c4b1bfd96b96",
@@ -15386,61 +15227,6 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
-  "location_id": "5e3fc751b9f17f2c",
-  "practice_name": "KAVITA NANA PC",
-  "zip": "60134",
-  "assigned_tier": "true_independent",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.randallpointedentalgeneva.com/",
-   "https://www.randallpointedentalgeneva.com/diabetes-management-with-dr-kavita-nana/"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Searched the dentist's name; own site randallpointedentalgeneva.com confirms 'Randall Pointe Dental' at 1000 S Randall Rd, Geneva, led by Dr. Kavita Nana. Single location, no corporate/DSO signal found; owner-branded practice.",
-  "searched": [
-   "Kavita Nana dentist Geneva IL randall rd"
-  ],
-  "intel": {
-   "website_url": "https://www.randallpointedentalgeneva.com/",
-   "website_note": "Newer practice site (established ~2023 per registration date) with blog content authored around Dr. Nana's expertise (e.g., diabetes/oral health connection).",
-   "services": [
-    "general",
-    "preventive",
-    "restorative",
-    "orthodontics",
-    "emergency"
-   ],
-   "provider_notes": "Dr. Kavita Nana is the lead/owner dentist.",
-   "sources": [
-    "https://www.randallpointedentalgeneva.com/",
-    "https://www.randallpointedentalgeneva.com/diabetes-management-with-dr-kavita-nana/"
-   ]
-  },
-  "_unit": "laneA_208",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "true_independent",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_unresolved",
-   "location_id": "5e3fc751b9f17f2c",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "KAVITA NANA PC",
-   "rationale": "Held: T1 conflicts with roster/group signals that are too large or too contradictory to correct mechanically. This cannot merge as true solo owner-operated without row-level review.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "t1_group_entity_classification"
-   ],
-   "web_searched": false,
-   "zip": "60134"
-  },
-  "_triage_reason": "adjudication_hold_unresolved"
- },
- {
   "location_id": "d46481314c1f830f",
   "practice_name": "1ST FAMILY DENTAL OF ROSELLE INC.",
   "zip": "60172",
@@ -15822,124 +15608,6 @@
   ],
   "_unit": "laneA_211",
   "_triage_reason": "dso_claim_refute"
- },
- {
-  "location_id": "3f4fa562387c76d3",
-  "practice_name": "BON DDS DENTAL STUDIO PC",
-  "zip": "60174",
-  "assigned_tier": "true_independent",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://bondds.com/",
-   "https://www.linkedin.com/in/irena-hyvel-dds-a7985b31/"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Dr. Irena Hyvel, DDS is confirmed as Owner/Dentist (per her own LinkedIn profile) of BON DDS Dental Studio at 202 Kirk Rd, St. Charles, IL -- a solo cosmetic/family practice with no DSO or corporate signal on the practice's own site. Classified true_independent at high confidence.",
-  "searched": [
-   "\"BON DDS Dental Studio\" St Charles IL Irena Hyvel Kirk Road"
-  ],
-  "intel": {
-   "website_url": "https://bondds.com/",
-   "services": [
-    "teeth whitening",
-    "porcelain veneers",
-    "TMJ treatment",
-    "comprehensive oral exam",
-    "CEREC same-visit crowns",
-    "dental implants",
-    "orthodontics for kids and adults",
-    "Invisalign",
-    "smile design",
-    "full mouth reconstruction"
-   ],
-   "provider_notes": "Dr. Irena Hyvel, DDS, Owner, member of the American Academy of Cosmetic Dentistry.",
-   "distinguishing_notes": "Dr. Hyvel speaks English, Russian, Polish, and Ukrainian.",
-   "sources": [
-    "https://bondds.com/",
-    "https://www.linkedin.com/in/irena-hyvel-dds-a7985b31/"
-   ]
-  },
-  "_unit": "laneA_211",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "true_independent",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_unresolved",
-   "location_id": "3f4fa562387c76d3",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "BON DDS DENTAL STUDIO PC",
-   "rationale": "Held: T1 conflicts with roster/group signals that are too large or too contradictory to correct mechanically. This cannot merge as true solo owner-operated without row-level review.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_not_provider_or_practice_name",
-    "t1_group_entity_classification"
-   ],
-   "web_searched": false,
-   "zip": "60174"
-  },
-  "_triage_reason": "adjudication_hold_unresolved"
- },
- {
-  "location_id": "1f65887ed956716a",
-  "practice_name": "DENTAL CLUB HOFFMAN ESTATES P.C.",
-  "zip": "60175",
-  "assigned_tier": "single_loc_group",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://westgatefamilydentistry.com/",
-   "https://westgatefamilydentistry.com/meet-the-doctors/"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Address (3381 W Main St) and phone ((630) 513-2121) exactly match the current DBA 'West Gate Family Dentistry,' a two-dentist practice (Dr. Abdulah Jabri, DMD and Dr. Douglas Kay, DDS) at a single office. The 'Dental Club Hoffman Estates' NPI legal name is a legacy corporate-registration name; no DSO/corporate parent evidence found anywhere. Two-dentist single location = single_loc_group.",
-  "searched": [
-   "\"Dental Club\" Hoffman Estates St Charles IL 3381 W Main St dentist",
-   "\"West Gate Family Dentistry\" St Charles IL owner dentist"
-  ],
-  "intel": {
-   "website_url": "https://westgatefamilydentistry.com/",
-   "website_note": "Current, well-maintained site branded 'West Gate Family Dentistry' (the legal entity's NPI name, 'Dental Club Hoffman Estates P.C.,' does not appear on the public-facing site).",
-   "services": [
-    "general dentistry",
-    "cosmetic dentistry",
-    "emergency dentistry",
-    "implants"
-   ],
-   "provider_notes": "Dr. Abdulah Jabri, DMD and Dr. Douglas Kay, DDS.",
-   "distinguishing_notes": "Practice's operating DBA differs entirely from its NPI/EIN legal name -- a naming legacy artifact, not evidence of a chain.",
-   "sources": [
-    "https://westgatefamilydentistry.com/",
-    "https://westgatefamilydentistry.com/meet-the-doctors/"
-   ]
-  },
-  "_unit": "laneA_212",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "single_loc_group",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_control_review",
-   "location_id": "1f65887ed956716a",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "DENTAL CLUB HOFFMAN ESTATES P.C.",
-   "rationale": "Held: authorized official has a non-clinical/executive title and the Lane A evidence does not cleanly prove a dentist-owned multi-location structure. This is a hidden-control risk, not a safe T1/T2 accept.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_nonclinical_exec_title",
-    "ao_not_provider_or_practice_name"
-   ],
-   "web_searched": false,
-   "zip": "60175"
-  },
-  "_triage_reason": "adjudication_hold_control_review"
  },
  {
   "location_id": "fe19edb1f0014470",
@@ -18587,6 +18255,65 @@
   }
  },
  {
+  "location_id": "e02409eec421de2d",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.zocdoc.com/dentist/tejas-joshi-dmd-81353",
+   "https://www.joshifamilydentistry.com/",
+   "https://www.healthgrades.com/dentist/dr-tejas-joshi-37rck",
+   "https://findadentist.ada.org/il/cook/chicago/general-practice/dr-tejas-n-joshi-1554662"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Searched Tejas Joshi DDS 2958 W Devon. Zocdoc, the practice's own site (joshifamilydentistry.com), Healthgrades, and ADA Find-a-Dentist all confirm Dr. Tejas Joshi, DMD (Southern Illinois University-trained) as sole dentist/founder of 'Joshi Family Dentistry' at this single Devon Ave address. No corporate/DSO signal found; the unit's 'large_group' label and provider_count=0 appear to be a stale/inaccurate classification -- web evidence uniformly shows solo ownership.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; Per the db-conflict rule, accept: the researcher cited the practice's OWN website (joshifamilydentistry.com) plus ADA Find-a-Dentist, Zocdoc, and Healthgrades all uniformly confirming Dr. Tejas Joshi as sole dentist/founder at one Devon Ave address. The HARD t1_group_entity_classification (db large_]",
+  "searched": [
+   "Tejas Joshi DDS Chicago 2958 W Devon Ave dentist"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_138",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "e02409eec421de2d",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "high",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "shared_phone_multiple_locations",
+    "t1_group_entity_classification"
+   ],
+   "url_profile": {
+    "hosts": [
+     "zocdoc.com",
+     "joshifamilydentistry.com",
+     "healthgrades.com",
+     "findadentist.ada.org"
+    ],
+    "directory_hosts": [
+     "zocdoc.com",
+     "healthgrades.com",
+     "findadentist.ada.org"
+    ],
+    "direct_hosts": [
+     "joshifamilydentistry.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 45,
+   "audit_action": "hold",
+   "audit_reason": "T1 still conflicts with provider roster/group classification; cannot write as solo owner-operated.",
+   "findings": [
+    "t1_roster_conflict"
+   ]
+  }
+ },
+ {
   "location_id": "e193073a4954650d",
   "assigned_tier": "single_loc_group",
   "pe_backed": false,
@@ -19543,6 +19270,58 @@
    "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
    "findings": [
     "control_signal"
+   ]
+  }
+ },
+ {
+  "location_id": "3f4fa562387c76d3",
+  "assigned_tier": "true_independent",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://bondds.com/",
+   "https://www.linkedin.com/in/irena-hyvel-dds-a7985b31/"
+  ],
+  "evidence_artifacts": [],
+  "confidence": "high",
+  "status": "classified",
+  "network_id": null,
+  "reasoning": "Dr. Irena Hyvel, DDS is confirmed as Owner/Dentist (per her own LinkedIn profile) of BON DDS Dental Studio at 202 Kirk Rd, St. Charles, IL -- a solo cosmetic/family practice with no DSO or corporate signal on the practice's own site. Classified true_independent at high confidence.",
+  "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; The t1_group_entity_classification hard signal rests on the DB 'small_group' label, but provider_count=0 (empty roster) shows that label is an unbacked detector guess with no actual second provider. Dr. Irena Hyvel is the sole owner-dentist \u2014 the NPPES AO title is literally 'OWNER' and her LinkedIn ]",
+  "searched": [
+   "\"BON DDS Dental Studio\" St Charles IL Irena Hyvel Kirk Road"
+  ],
+  "source_partition": "lane_a_wave1_20260702",
+  "source_unit": "laneA_211",
+  "_triage_reason": "t1_t2_positive_proof_audit_hold",
+  "_audit": {
+   "location_id": "3f4fa562387c76d3",
+   "practice_name": null,
+   "assigned_tier": "true_independent",
+   "confidence": "high",
+   "screen_priority": "block_before_merge",
+   "signal_codes": [
+    "ao_not_provider_or_practice_name",
+    "t1_group_entity_classification"
+   ],
+   "url_profile": {
+    "hosts": [
+     "bondds.com",
+     "linkedin.com"
+    ],
+    "directory_hosts": [],
+    "direct_hosts": [
+     "bondds.com",
+     "linkedin.com"
+    ],
+    "directory_only": false,
+    "has_direct_source": true
+   },
+   "risk_score": 41,
+   "audit_action": "hold",
+   "audit_reason": "T1 still conflicts with provider roster/group classification; cannot write as solo owner-operated.",
+   "findings": [
+    "t1_roster_conflict"
    ]
   }
  },

@@ -1,0 +1,106 @@
+{
+  "batch": 21,
+  "indices": [210, 219],
+  "dispositions": [
+    {
+      "location_id": "bd7e887a4b9bade1",
+      "practice_name": "JAMES MALINOWSKI DDS. DAVID SEFCIK DDS. LTD",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The hard ao_nonclinical_exec_title signal is benign: the authorized official JAMES MALINOWSKI (title TREASURER) is himself a named owner-dentist in the practice name, serving as officer of his own PC. Own website (malinowskisefcik.com) confirms Drs. Malinowski and Sefcik as two co-owning dentists at a single location (903 129th Infantry Dr, Joliet), phone (815) 725-1605 matching, est. 1983, no DSO/corporate parent. provider_count=2 with two surnames is consistent with T2. Tier stands, high.",
+      "web_searched": false
+    },
+    {
+      "location_id": "26fd231a1546c44c",
+      "practice_name": "KRISHAN DENTAL LIMITED",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "db_context is large_group with provider_count=7 (6 dentists on the team page), which per rule 1 forbids a clean T2. AO Dr. Shweta Kamal (President) reaches 2 locations and the shared phone reaches a third location, contradicting the single-location claim; the researcher himself notes she also works at a separate Aurora office (Downer Place Dental). Web search confirms Dr. Kamal is a practicing dentist and that the db-attached 'Best Image Dental' is a distinct nearby practice (625 vs 825 Plainfield Rd), so there is no corporate/DSO signal — but T2 (large single office) vs T3 (dentist multi-location) is genuinely unresolved. Not corporate, so hold_unresolved rather than dso_verify.",
+      "web_searched": true
+    },
+    {
+      "location_id": "a2e369f5e26fb8f9",
+      "practice_name": "DR MARIA OSAN TOPALA AND ASSOC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The hard ao_nonclinical_exec_title signal is benign: KATHY KASPER (INSURANCE COORDINATOR) is an office-staff filer of the org NPI for a dentist-eponymous practice. The practice's own website (mariaosantopala.com / Apple Dentistry) names Dr. Maria Osan-Topala as the practicing/owning dentist at a single 2457 Ridge Rd address with a small team matching provider_count=2; no corporate parent or brand appears anywhere. T2 single-location dentist-owned group stands, high.",
+      "web_searched": false
+    },
+    {
+      "location_id": "db6006c6bd4f32a3",
+      "practice_name": "LEMONT FAMILY DENTAL, LTD",
+      "assigned_tier": "true_independent",
+      "disposition": "duplicate_suspect",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The ao_reaches_multiple_locations and shared_phone signals point to exactly one sibling (c8356b1274f05071), which is itself 'LEMONT FAMILY DENTAL LTD' at the same ZIP 60439, same phone (630) 257-8669, same website lemontfamilydental.com, same AO Dr. Jennifer Splitt-Krull. This is the identical single Lemont office appearing as two location rows (an address/suite variant), not two offices; it must not merge as a separate T1 unit.",
+      "web_searched": false
+    },
+    {
+      "location_id": "04f0a94bdd63b5a5",
+      "practice_name": "JOSEPH SOLEK DDS, PC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "shared_ein (363350286) and shared_website_domain (inspiredentalwellness.com) tie this address to a differently-named sibling practice (Gary Gunkel DDS), and web search confirms 14512 John Humphrey Dr (Solek's exact address, phone 708-460-6699) is now 'Inspire Dental Wellness' under Dr. Erica Zolnierczyk, with the original owner Solek retired (per his LinkedIn). Two acquired-and-rebranded practices sharing one EIN and brand is a consolidation pattern that could be a dentist T3 group or an MSO; ownership cannot be confirmed from directory-only evidence, so route to the adversarial verifier — never a clean single_loc_group under the retired Solek.",
+      "web_searched": true
+    },
+    {
+      "location_id": "d02103f21f19abb1",
+      "practice_name": "USP CLINICAL GPS PLLC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "correct",
+      "corrected_tier": "dentist_multi",
+      "corrected_confidence": "medium",
+      "rationale": "The org NPI's AO is Dr. Umang Patel (title OWNER) reaching 2 locations, with a shared phone across 2 locations; 'USP Clinical GPs PLLC' (USP = Umang S Patel) is his own professional entity. Web search confirms Patel is a practicing dentist (Northwestern DDS) who owns multiple offices — Palos Heights Family Dental and Romeoville Dental Center. This is a dentist-owned multi-location network (rule 6a), not a single location and not corporate/MSO; corrected to dentist_multi at medium confidence given branding confusion in the source evidence.",
+      "web_searched": true
+    },
+    {
+      "location_id": "22528f54a3b78a7d",
+      "practice_name": "DR LAYER DDS PC",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The practice's own site allsmilesworth.com is positive current proof that Dr. Theron Layer, DDS owns the single 'All Smiles' office at 11104 S Natoma Ave, Worth, with no DSO/PE/management language (provider_count=1). The ao_reaches_multiple_locations signal is explained as third-party aggregator (dentalplans.com) name-listing noise, and the shared phone is a stale 319 (Iowa) registration number, not an operational network line — both benign against the primary-source single-location ownership proof. T1 stands, high.",
+      "web_searched": false
+    },
+    {
+      "location_id": "eff4090163823671",
+      "practice_name": "DOWNERSGROVECTD LLC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Two stealth-DSO indicators combine: an opaque location-LLC name ('DownersGroveCTD LLC', not the dentist's name) and a hard ao_nonclinical_exec_title where the authorized official Mitch Weiland is titled 'ASSISTANT CONTROLLER' — a multi-entity corporate-finance role that a solo/small practice does not have and that implies centralized MSO back-office filing. The researcher could not corroborate Weiland and only inferred a single-location Patelski practice from a bio page; the controller-title + generic-LLC pattern warrants the adversarial verifier rather than acceptance.",
+      "web_searched": false
+    },
+    {
+      "location_id": "1f518a85c067770e",
+      "practice_name": "M2 DENTAL",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Clean T1 fails: the org-NPI OWNER (Dr. Miranda Albert, DDS) reaches 2 locations and is not the dentist who practices here (Dr. Sherif Albert per the researcher), and the shared phone spans 2 locations. The evidence is contradictory — either a husband/wife pair running two separate solo offices (a spouse-filer artifact) or a family-owned 2-location dentist group (T3) — and confidence is only medium with a name mismatch (M2 Dental vs Esplanade Dental Care). No corporate/DSO signal, so hold_unresolved rather than dso_verify; it cannot merge as clean true_independent.",
+      "web_searched": false
+    },
+    {
+      "location_id": "3febc87dfe573f19",
+      "practice_name": "SARA BANUELOS D.D.S SC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The hard ao_nonclinical_exec_title signal is benign: CLAUDIA IBARRA (ADMINISTRATOR) is a non-clinical office-admin filer of the org NPI for a dentist-eponymous SC. The practice's own website (sarabanuelosdental.com) confirms Dr. Sara Banuelos runs the single 3800 Highland Ave, Suite 108 office for 20+ years with no franchise/parent; provider_count=2 supports single_loc_group and no shared-domain/multi-location signal fired. Tier stands, medium.",
+      "web_searched": false
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+ "batch": 19,
+ "indices": [190, 199],
+ "dispositions": [
+  {
+   "location_id": "3e72c314d6776832",
+   "practice_name": "Universal Smiles",
+   "assigned_tier": "single_loc_group",
+   "disposition": "accept",
+   "corrected_tier": null,
+   "corrected_confidence": null,
+   "rationale": "Web-confirmed that 438 E 162nd St / (708) 333-0699 is South Park Dental Care with two dentist-owners (Drs. Hirsh and Johnson) at one location, matching the researcher. The shared_website_domain (udclinics.com, reach 5) is a data misattribution, not a real network membership: Universal Dental Clinics' South Holland office is a DIFFERENT address (304 E 162nd St, phone 708-566-5188) on the same street. The t2_provider_count_lte1 and shared_ein (reach 2) signals trace to the stale 'Universal Smiles'/udclinics NPPES org name that does not match the on-the-ground South Park practice. Dentist-owned single-location group stands; confidence stays medium given the record-name mismatch.",
+   "web_searched": true
+  },
+  {
+   "location_id": "4b0d0cdf498cea9a",
+   "practice_name": "THOMAS L. CRATIN, D.D.S., LTD.",
+   "assigned_tier": "single_loc_group",
+   "disposition": "accept",
+   "corrected_tier": null,
+   "corrected_confidence": null,
+   "rationale": "Eponymous dentist PC (Thomas L. Cratin DDS Ltd) at one Hinsdale address (522 Chestnut St) with 7 provider NPIs and no DSO brand or corporate parent signal - a classic multi-dentist single-location group. The db label large_group is an INDEPENDENT class (4+ providers, no corporate signal), not a corporate conflict. Directory-only support (Manta/Healthgrades) is acceptable at medium confidence per the directory rule; the two shared phones (each reach 2) are additional practice lines / duplicate address rows, not a chain.",
+   "web_searched": false
+  },
+  {
+   "location_id": "fad98737da516f70",
+   "practice_name": "PLANO FAMILY DENTAL,PC",
+   "assigned_tier": "single_loc_group",
+   "disposition": "accept",
+   "corrected_tier": null,
+   "corrected_confidence": null,
+   "rationale": "Own website (planofamilydental.com) plus independent WebMD listing ('Plano Family Dental Drs Shah and Gordon') confirm two dentist co-owners at a single Route 34 address - textbook single_loc_group. The AO Kalpana Shah (President) reaching 2 locations and the shared phone (reach 2) are a stale second registration for the owner-dentist, not a DSO; db label small_group is independent and there is no corporate/PE brand.",
+   "web_searched": false
+  },
+  {
+   "location_id": "8144a7dfceedc631",
+   "practice_name": "YORKVILLE DENTAL",
+   "assigned_tier": "dentist_multi",
+   "disposition": "accept",
+   "corrected_tier": null,
+   "corrected_confidence": null,
+   "rationale": "Web-confirmed that this address operates as Total Dentistry, a self-described 'local, family-owned' dentist-owned group under Dr. Anna Pelak (est. 1992) with 3 IL offices (Palatine/Streamwood/Yorkville) - under 10 locations and no PE/MSO/DSO signal, so dentist_multi (T3) is correct. The HARD ao_nonclinical_exec_title (Amy Smith, VP of Operations) is a small-group practice-operations role, not evidence of corporate control; the shared domain (reach 3) is the group's own multi-office site, consistent with a dentist-owned network.",
+   "web_searched": true
+  },
+  {
+   "location_id": "2c4477b4d9ae3bc0",
+   "practice_name": "RAINADENTALCARE",
+   "assigned_tier": "true_independent",
+   "disposition": "accept",
+   "corrected_tier": null,
+   "corrected_confidence": null,
+   "rationale": "Own website confirms Dr. Mandeep Raina, DDS as sole owner-operator (AO title 'PRACTISE OWNER') of a holistic solo practice at 2323 Naperville Rd Ste 110 - positive current-ownership proof for T1. The AO reaching 2 locations and the phone reaching 3 are relocation/old-address artifacts of the same solo practice (the site states it relocated to this Naperville address in Sept 2024); no corporate parent or DSO found.",
+   "web_searched": false
+  },
+  {
+   "location_id": "c8efbf563e17e5bb",
+   "practice_name": "MOHAMMAD R EKHTERA, DDS. PC",
+   "assigned_tier": "true_independent",
+   "disposition": "accept",
+   "corrected_tier": null,
+   "corrected_confidence": "medium",
+   "rationale": "Eponymous PC with AO title PRESIDENT (Dr. Mohammad Reza Ekhtera) operating solo as 'Enamel Dental Salon' at 3190 E Elston Ave; no chain or corporate parent in any directory, so T1 tier stands. However, evidence is directory-only (Healthgrades + npino) with no owner-authored website, so per the directory-only rule the confidence is downgraded high->medium. AO reach 2 and shared phone reach 2 are a stale duplicate registration.",
+   "web_searched": false
+  },
+  {
+   "location_id": "ace914075d21f844",
+   "practice_name": "LEHIGH DENTAL CARE",
+   "assigned_tier": "true_independent",
+   "disposition": "duplicate_suspect",
+   "corrected_tier": null,
+   "corrected_confidence": null,
+   "rationale": "The researcher's own reasoning states this row shares the IDENTICAL address (6420 N Lehigh Ave) and phone (773-594-9115) with location a76f0c8ea1e37128 ('Paunescu Dental') and is the org-NPI registration of Dr. Tatiana Paunescu's single office, 'not a separate office.' That makes it an address/registration variant of an already-represented practice, so it must not merge as a net-new independent - flagged duplicate to prevent double-counting.",
+   "web_searched": false
+  },
+  {
+   "location_id": "e02409eec421de2d",
+   "practice_name": "TEJAS JOSHI P.C",
+   "assigned_tier": "true_independent",
+   "disposition": "accept",
+   "corrected_tier": null,
+   "corrected_confidence": null,
+   "rationale": "Per the db-conflict rule, accept: the researcher cited the practice's OWN website (joshifamilydentistry.com) plus ADA Find-a-Dentist, Zocdoc, and Healthgrades all uniformly confirming Dr. Tejas Joshi as sole dentist/founder at one Devon Ave address. The HARD t1_group_entity_classification (db large_group) is a stale/broken label - the db row is internally inconsistent (provider_count=0) and involves no DSO brand, EIN cluster, or locator match. Shared phone (reach 2) is a stale duplicate registration, not a second office.",
+   "web_searched": false
+  },
+  {
+   "location_id": "8d1fb1f1056b7f1b",
+   "practice_name": "HENRY J. HAGOPIAN D.D.S. P.C.",
+   "assigned_tier": "single_loc_group",
+   "disposition": "correct",
+   "corrected_tier": "dentist_multi",
+   "corrected_confidence": "medium",
+   "rationale": "The shared EIN (363501942) and shared eponymous domain (drtimperio.com) BOTH reach the same two locations (this Hagopian office + 965f76719d0f4320) - and the domain surname (Timperio) differs from this location's name (Hagopian), signaling two distinct offices under one dentist-owned business rather than a single-office duplicate. That is the practice's OWN multi-office group, so correct T2->dentist_multi (T3). No DSO/MSO/PE brand (eponymous dentist domain); directory-only support keeps confidence at medium.",
+   "web_searched": false
+  },
+  {
+   "location_id": "c163f205f7ce7753",
+   "practice_name": "GEORGE P. DANOS INC",
+   "assigned_tier": "true_independent",
+   "disposition": "duplicate_suspect",
+   "corrected_tier": null,
+   "corrected_confidence": null,
+   "rationale": "This org-entity row ('George P. Danos Inc') shares EIN 363694936 and the practice's OWN eponymous domain danosdentistry.com with a second location_id (52b68c520b5385df), and both rows are 'Danos.' The researcher web-verified via the own website a SINGLE-location solo Danos practice (5101 W 111th St, Alsip) with explicitly no second office found, so the two location rows are org-NPI/individual-NPI variants of the same single office - flagged duplicate to avoid double-counting rather than accepting as a standalone or misreading it as a 2-office group.",
+   "web_searched": false
+  }
+ ]
+}

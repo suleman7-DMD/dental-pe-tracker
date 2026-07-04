@@ -1,0 +1,106 @@
+{
+  "batch": 26,
+  "indices": [260, 269],
+  "dispositions": [
+    {
+      "location_id": "d9e35a86e7c7b726",
+      "practice_name": "SAMEET THAKRAR DDS PC",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "provider_count=1 and the org is a PC in the dentist's own name (SAMEET THAKRAR DDS PC), with the practice's own website (westchesterfamilydental.net) plus Healthgrades/WebMD confirming Dr. Thakrar as the sole practicing owner-dentist at 4 Westbrook Corporate Ctr — positive current ownership proof, not mere absence of corporate signal. The shared_phone (reach 3) is a Westbrook Corporate Center multi-tenant building/answering-line artifact, and the shared_website reach-2 is the practice's OWN domain on a duplicate suite/address row of the same single office, not a second location. No DSO/corporate signal.",
+      "web_searched": false
+    },
+    {
+      "location_id": "6a841eaeef7470c9",
+      "practice_name": "Happy Smiles",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The practice's own website (happysmilesfamilydentistry.com/about-us) plus Zocdoc confirm Dr. Amelia Aristodemo-Paul, DDS as the named dentist-owner of Happy Smiles Family Dentistry at one address (21 N Roselle Rd), with db provider_count=2 (small_group) = multiple dentists at one office — a clean T2 single_loc_group. The two shared_phone signals are building/answering-line artifacts across nearby offices; no corporate parent, DSO brand, or shared-domain network beyond the practice's own site.",
+      "web_searched": false
+    },
+    {
+      "location_id": "8e43f333b5547375",
+      "practice_name": "MURPHY DENTAL GROUP, PLLC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The db website and shared_website signal for this location are destinydentalcare.com shared across 3 locations — Destiny Dental Care is a known PE-backed/corporate cluster in this project (Phase-4 promoted 'Destiny/ProSmile x5'), a DSO-cluster domain signal, combined with db entity_classification=large_group and provider_count=6. The researcher matched murphydentaloakpark.com only by phone but flagged an address mismatch (100 S Kenilworth per Murphy's own site vs 137 N Oak Park Ave for this record), so it is unresolved whether THIS address is independent Murphy or a Destiny location. Per rule 2/3, a db_corporate_conflict involving a known DSO brand across 3 locations must go to the adversarial verifier, never accept.",
+      "web_searched": false
+    },
+    {
+      "location_id": "dc97cfd285efc714",
+      "practice_name": "JOSEPSH W. NOETZEL D.D.S. AND ILENNE NOETZEL D.D.S.,LTD.",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The Ltd is named for both dentist-owners (Joseph & Ilenne Noetzel), and their own website (smilesbynoetzel.com), the ADA findadentist registry, and Yelp confirm the married-couple owner-dentists jointly running one location at 500 Ashland Ave for ~40 years (matches year_established 1976) — two dentist-owners, one office = clean T2. The shared_phone (reach 2) and shared_website (reach 2, the practice's own smilesbynoetzel.com) are the practice's own brand plus a duplicate suite/address row, not a corporate or MSO network.",
+      "web_searched": false
+    },
+    {
+      "location_id": "2991ce479c805e15",
+      "practice_name": "ADAMS FAMILY DENTAL",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "NPI registry and search confirm Dr. Sammy A. Elmosa as the authorized official/owner of Adams Family Dental at 5600 W 87th St, Burbank, practicing with a second GP dentist (Tesneim Awadallah, DMD) at one location — dentist-owned single-location group (T2). The web search found NO link between this practice and Data-Axle officer 'ISSA,BASSAM' (a low-severity corroboration-only signal that is Data-Axle noise), and the db website 'othmanorthodontics.com' is a stale mis-scrape contradicted by the practice's own site (burbanksmiles.com) and CareCredit locator. The shared_phone (reach 3) is a Burbank building/answering artifact.",
+      "web_searched": true
+    },
+    {
+      "location_id": "664fe6487b9702d1",
+      "practice_name": "JAMES E. MCCORMICK, D.M.D., M.S., LTD.",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The bundle's rationale (Dr. James McCormick as the current owner-provider) is factually stale: the practice's own history page shows McCormick RETIRED in December 2014 and Dr. Richard J. Pasiewicz has OWNED Contemporary Endodontics since 2018 (with associate Dr. Aksel), so the assigned tier rests on a wrong owner. The record also carries db large_group / provider_count=7 and two separate shared_phone links to two different other locations, and the AAE directory lists both Palos Heights and a Lockport office — leaving single-vs-multi-location and current ownership unresolved on directory-only evidence. It is dentist-owned (not corporate), but must not merge as-is with the McCormick single-loc basis.",
+      "web_searched": true
+    },
+    {
+      "location_id": "350bf8c2805ba6eb",
+      "practice_name": "Golshani Maryam DDS",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "provider_count=1 and the entity is 'Maryam Golshani DDS PLLC' (org in her own name), with her own practice site (hinsdaledentalcare.com), Yelp, and vitadox confirming Dr. Golshani as the sole practicing owner-dentist of Hinsdale Dental Care at 522 W Chestnut St — positive current ownership proof. The shared_website signal (premierendoassociates.com, reach 2) is a stale/erroneous DB scrape unrelated to her actual practice (web search found no Golshani-Premier-Endo connection), and the shared_phone (reach 2) is a suite-mate artifact in the 522 W Chestnut Ste 1c building — neither a known DSO brand nor a real network.",
+      "web_searched": true
+    },
+    {
+      "location_id": "0a87ce5f9a9c7a2f",
+      "practice_name": "MICHAEL J GONDA DDS LTD",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The Ltd is in the owner's own name (Michael J Gonda DDS Ltd) and the practice's own website (prairiewalkdental.com) confirms Dr. Gonda as President/owner practicing with associate Dr. Tooba Ajmal at one Lisle location (record 4745 vs site 4746 Main St = same office) — two dentists, dentist-owned, one location = clean T2. The shared_phone and shared_website (reach 2) are the practice's OWN prairiewalkdental.com brand on a duplicate address row (the third provider_npi is a DA_ synthetic, not a real extra dentist); no corporate/DSO signal.",
+      "web_searched": false
+    },
+    {
+      "location_id": "e14eec2daeaaeb9c",
+      "practice_name": "FIRST DENTAL P.C.",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The practice's identity is contradictory and unverifiable: the record is 'First Dental P.C.' at 8 W Gartner Rd (per the researcher via directory-only weence.com/dentistry.com, which themselves conflict on dentists — Moukaied vs Rosalez vs Pusateri), while the db website and shared_website signal are gantosdentalgroup.com and the shared_phone (6304209090) both tie it to Gantos Dental Group. Web search confirmed Gantos is a distinct single-location practice at 720 N Washington St with no First Dental connection, so this is NOT a Gantos second office, yet First Dental's own ownership stays unverified (db large_group / provider_count=6, medium confidence, directory-only). Must not merge as-is.",
+      "web_searched": true
+    },
+    {
+      "location_id": "5cc7b274009be930",
+      "practice_name": "Yousef Paldin DMD",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The practice's own website (gantosdentalgroup.com/meet-dr-yousef) plus web search confirm Gantos Dental Group is a small, female-owned private practice owned by Dr. Meredith Gantos, DDS, with Dr. Yousef also practicing there at one location (720 N Washington St Ste 106) — dentist-owned, multiple dentists, single office = clean T2. Web search found only this one Gantos location, so the shared_phone/shared_website links to First Dental (e14eec2daeaaeb9c) are an artifact on the First Dental side, not evidence that Gantos operates multiple offices; no DSO/corporate signal.",
+      "web_searched": true
+    }
+  ]
+}

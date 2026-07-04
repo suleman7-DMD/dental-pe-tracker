@@ -1,0 +1,106 @@
+{
+  "batch": 20,
+  "indices": [200, 209],
+  "dispositions": [
+    {
+      "location_id": "1483f65b1bcd1a0a",
+      "practice_name": "Goldberg Dental",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "directory_only_support (healthgrades) is consistent with the assigned medium confidence per the directory rule, and network_id ao:GOLDBERG_FAMILY plus provider_count=2 sharing the Goldberg surname support a family-owned single-location group (T2). The two shared_phone signals — the office's own line (847) 392-6610 reaching one sibling row and a second number reaching another — read as duplicate/suite listings within the Goldberg family footprint, with no DSO brand, parent company, or corporate EIN present. db_context small_group corroborates a dentist-owned group rather than corporate control.",
+      "web_searched": false
+    },
+    {
+      "location_id": "45b388adf3b5f6aa",
+      "practice_name": "ALI NEMATOLLAHI D.D.S., P.C.",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The practice's own website (familysmilesattheglen.com) confirms a single Glenview office co-run by owner-dentists Dr. Ali Nematollahi and Dr. Katayoun Attari — primary-source ownership proof, so the directory rule does not bite and high confidence stands. The ao_reaches_multiple_locations and shared_ein_or_parent_tin signals trace to Dr. Nematollahi's OWN P.C. (EIN 205521982, AO = the owner himself); a web search found no second operating Family Smiles/Nematollahi office, so the reach reflects his own prior/billing footprint, not an MSO. Even at worst this would be a dentist-owned network (T3), never corporate — no merge-blocking risk.",
+      "web_searched": true
+    },
+    {
+      "location_id": "415f49055459d2d8",
+      "practice_name": "GLEN PERIO",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The ao_nonclinical_exec_title hard signal fired only because the org NPI's authorized official is Josephina Curio, 'Office Manager/Operations Manager' — a routine, benign filer for a dentist-owned practice, not a corporate-control indicator. glenperio.com (the practice's own site) confirms a single-location periodontics/implant specialty group with multiple treating dentists and no parent company or management-company language. No DSO brand or shared corporate EIN; medium confidence is appropriate given the AO name could not be independently corroborated but no corporate signal exists.",
+      "web_searched": false
+    },
+    {
+      "location_id": "305919ae458c3c32",
+      "practice_name": "Larkin Rivera Leah M DDS",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Support is directory-only (opennpi, vitadox — pure aggregators, no practice website), which under the directory rule cannot corroborate current ownership. Two separate shared_phone signals link this row to two different other locations (7737610300 to da6180afc3a71b7f and 8479658780 to a9807c620c7ad775) with no resolution of whether these are her own second office, duplicates, or associate-credentialing addresses. With no primary source and an unreconciled dual-phone network, it is unverifiable as-is; fail-closed → hold_unresolved (a dentist's individual NPI, so not a DSO hold).",
+      "web_searched": false
+    },
+    {
+      "location_id": "1099dd3a7ee857db",
+      "practice_name": "LUCKY SMILE DENTAL LLC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The roster contradicts the evidence: provider_count=1 (t2_provider_count_lte1 fired) and the legal name 'Lucky Smile Dental LLC' differs from the DBA 'Illinois Dental Center' (illinoisdentalcenter.com), which the researcher says lists two dentists. The shared phone (reach 3) and shared Data-Axle officer LAKE,JACOB S (reach 3), plus owner Dr. Uppala's NPI surfacing at distant downstate cities, leave ownership-vs-credentialing and single-vs-multi ambiguous. Contradictory roster/name plus an unresolved 3-location network make it unmergeable as-is → hold_unresolved (owner is a dentist, so not a DSO hold).",
+      "web_searched": false
+    },
+    {
+      "location_id": "749eed72f0e57a93",
+      "practice_name": "ACCESS DENTAL CENTER",
+      "assigned_tier": "dentist_multi",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "db_corporate_conflict (dso_national / affiliated_dso 'Access Dental') is a false name-collision with the unrelated Sonrava/California 'Access Dental' chain — this IL entity (accessdentalcenter.org, Addison + Naperville) is Dr. Imaad Shaikh's own practice, confirmed by the site's Meet-the-Doctors page naming him Founder/Owner, his LinkedIn ('Imaad Shaikh - Access Dental /Med Center'), and directories ('Dr Imaad Shaikh & Associates,' 25+ yrs). Per the db_corporate_conflict rule, own-website ownership proof outweighs a weak stale name-match → accept; one dentist-owner across two IL offices is dentist_multi (T3), not a branded DSO, and provider_count 3 with no PE sponsor confirms no corporate control.",
+      "web_searched": true
+    },
+    {
+      "location_id": "c06f2e42879e58cb",
+      "practice_name": "QUINTESSENTIAL DENTAL",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The ao_reaches_multiple_locations and shared_phone signals both link only the two location_ids 26b527ba4641a4bb and c06f2e42879e58cb, which the practice's own about-us page resolves as the SAME single office (130 vs 132 N Addison Ave) — a suite/address duplicate, not a network. Dr. Maggie Augustyn is President/Dentist owner of Quintessential Dental P.C. (DBA Happy Tooth), and the 'Powered by Productive Dentist Academy' footer is a coaching affiliation, not a corporate parent. Primary-source ownership evidence supports T2 at high confidence; the sibling row is a likely duplicate of this office.",
+      "web_searched": false
+    },
+    {
+      "location_id": "3f4fa562387c76d3",
+      "practice_name": "BON DDS DENTAL STUDIO PC",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The t1_group_entity_classification hard signal rests on the DB 'small_group' label, but provider_count=0 (empty roster) shows that label is an unbacked detector guess with no actual second provider. Dr. Irena Hyvel is the sole owner-dentist — the NPPES AO title is literally 'OWNER' and her LinkedIn plus the practice's own site (bondds.com) confirm a solo cosmetic/family practice with no corporate signal. One dentist who owns and practices at one location with positive current ownership proof = true_independent (T1); high confidence is justified by the primary-source website (not directory-only).",
+      "web_searched": false
+    },
+    {
+      "location_id": "1f65887ed956716a",
+      "practice_name": "DENTAL CLUB HOFFMAN ESTATES P.C.",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The ao_nonclinical_exec_title hard signal (John Sellers, 'Chief Operations Officer') resolves as benign: a web search identifies John Sellers with Fortune Management Midwest, a dental-practice COACHING firm that helps the 'owning dentist' — not a DSO/MSO owner, parallel to a Productive Dentist Academy affiliation. The site and St. Charles chamber confirm an independent two-dentist single-location family practice (Dr. Jabri, Dr. Kay) with no DSO branding, no multi-location AO reach, and no shared EIN. The legacy legal name 'Dental Club Hoffman Estates P.C.' and roster churn (Arora/Disimoni to Jabri/Kay) reflect a practice that changed hands, not corporate control → accept T2.",
+      "web_searched": true
+    },
+    {
+      "location_id": "5d101dfe50e1cdd4",
+      "practice_name": "Dental Salon",
+      "assigned_tier": "dentist_multi",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "db_corporate_conflict is weak here: entity_classification is dso_national but affiliated_dso and affiliated_pe_sponsor are both null — a pure detector guess triggered by the generic brand name plus provider_count=6, with no known DSO brand, PE sponsor, or EIN cluster. The practice's own site (dentalsalon.com) documents a family-owned multi-specialty group founded in 2003 by Dr. Mark Morris across two locations (Lincoln Park + Schaumburg). Own-website dentist-ownership outweighs a stale name-match → accept; a dentist-owned 2-office group is dentist_multi (T3), and 6 providers is below the corporate-roster threshold.",
+      "web_searched": false
+    }
+  ]
+}

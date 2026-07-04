@@ -515,3 +515,40 @@ one resolving citation. Three corporate-language regex hits were manually review
 already held. No additional source-check holds were added.
 
 Still no DB, Supabase, LEDGER, or PROGRESS writes occurred.
+
+## §6m — ADJUDICATION COMPLETE AT FULL OPUS COVERAGE + LOCAL DB WRITE EXECUTED (Fable, 2026-07-04)
+
+Workflow `wf_723bfaaf-f92` resumed after the session-limit reset and finished **28/28 batches,
+0 errors**: all **277 blockers now carry researched Opus dispositions** (accept 111 / correct 75
+/ hold_dso_verify 52 / hold_unresolved 30 / duplicate_suspect 9). This SUPERSEDES the Codex
+fail-closed stopgap (§6j/§6k) — `adjudicate_missing_lane_a_codex.py` re-run converged the rollup
+to source_counts `{opus_batch: 277}` (codex_missing file now has 0 rows; kept for provenance).
+
+Chain re-run in order, all gates green:
+1. `_merge_lane_a_results_20260702.py` → 2,889 kept / triage 597 (holds 91, dup-suspects 9 excluded).
+2. `audit_lane_a_t1_t2.py` (seed 20260704) → 52 held, 483 confidence-downgraded → candidate **2,837**.
+3. `consolidate_census.py … --validate-only` → Validation OK.
+4. Pre-write backup `data/backups/dental_pe_tracker_pre_census_write_20260704.db`
+   (md5 `ba6f869e0509552d19942c2cb89b79bd`, = pre-write live DB md5).
+5. `consolidate_census.py … --session fable_lane_a_wave1_final_20260704 --allow-db-write` →
+   **2,837 locations updated, skipped_bad=0; LEDGER +2,837**.
+
+LOCAL SQLite state (verified by direct query):
+- `practice_locations.ownership_tier` notnull **3,180** = census coverage **3,180/4,439 = 71.64%**.
+- Full tally: T1 1,471 / T2 934 / T3 537 / T4 28 / T5 151 / T6 59; `pe_backed` 118 locations.
+- NPI mirror: 6,754 `practices` rows carry ownership_tier.
+- Detector floor UNTOUCHED: corp locations 268 / corp NPIs 1,152 (two-axis separation intact).
+
+🔴 **SUPABASE SYNC PENDING — the ONLY remaining step of the merge chain.** Leg 1 was denied by
+the session permission classifier (production write). To finish (order matters, then read-back):
+```bash
+python3 -m scrapers._sync_floor_tables_only          # leg 1: practice_locations (+floor tables) carries census cols
+python3 -m scrapers._sync_census_columns_practices   # leg 2: surgical 6-col UPDATE on practices
+```
+Read-back verify: Supabase `practice_locations` ownership_tier notnull = 3,180; tally matches
+above; `practices` mirror = 6,754; corp floor still 268/1,152. Until this runs, the live app has
+only the 343-row 2026-07-02 census write — /system should say so.
+
+Remaining census work AFTER sync (not blocking): holds queue 91 (52 dso_verify + 30 unresolved +
+9 duplicate_suspect) + triage 649 rows + 477 undetermined + ~950 never-researched (wave-5 queue).
+Next mission: SESSION_CHARTER_FABLE_TRUTH_APP_20260704.md (truth-safe app redesign).

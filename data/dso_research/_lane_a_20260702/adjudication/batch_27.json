@@ -1,0 +1,76 @@
+{
+  "batch": 27,
+  "indices": [270, 276],
+  "dispositions": [
+    {
+      "location_id": "32bf346450ee77c9",
+      "practice_name": "Sud Amit DDS",
+      "assigned_tier": "single_loc_group",
+      "disposition": "correct",
+      "corrected_tier": "dentist_multi",
+      "corrected_confidence": "high",
+      "rationale": "The shared_website_domain (woodlakefamilydental.com) and shared_phone signals each reach a second, distinct location, and a web search confirms Woodlake Family Dental operates as a multi-office group (Naperville main + Naperview + Berwyn), founded and owned by Drs. Anita Verma and Amit Sud with no corporate parent or DSO brand. This is the practice's OWN dentist-owned network of 2+ locations (rule 6a), so single_loc_group is too small; correct to dentist_multi. Ownership is founder-confirmed and no corporate signal exists, so confidence high.",
+      "web_searched": true
+    },
+    {
+      "location_id": "cd50f89169d71073",
+      "practice_name": "Zalay Dental",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Own-site (uadchicago.com) and BBB confirm Dr. Lauren Zalay is a partner in University Associates in Dentistry, a private, dentist-owned multi-partner partnership (owner Dr. Martin Marcus; partners Baer/Marcus/Schelkopf/Zalay) at the single 222 N LaSalle St #230 office -- textbook single_loc_group, no DSO/PE. The two shared_phone signals are benign: a large multi-partner private practice emits several NPPES address rows for the same downtown office, so the phones reaching other location_ids are internal duplicate/partner rows, not a corporate network.",
+      "web_searched": false
+    },
+    {
+      "location_id": "c5deba8b6cc68d1c",
+      "practice_name": "GREGORY P THOMAS, DDS, MD,P.C.",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Own site (oralsurgerychicago.com) confirms Dr. Gregory P. Thomas as founding oral surgeon of a single-location OMS practice at 676 N Saint Clair St Ste 2280, in private practice 22+ years with associate surgeons under his ownership -- dentist(surgeon)-owned single_loc_group, no DSO/PE or OMS-rollup signal. The shared_phone signals (esp. 312-926-2929) are Northwestern medical-building/institutional numbers at the 676 N St Clair complex, a shared-building artifact rather than corporate control.",
+      "web_searched": false
+    },
+    {
+      "location_id": "4e4444e086bb7891",
+      "practice_name": "Aleck-furlan",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": "medium",
+      "rationale": "Dr. Thomas Aleck and Dr. Lawrence Furlan (Furlan a family dentist 30 years) practice together at one office at 10900 S Kedzie Ave -- a genuine two-dentist single-location group, no corporate/DSO signal. The shared_website_domain (toprankdental.com) and denteldoc.com evidence are directory aggregators, not a DSO brand or the practice's own site, so the shared-domain signal is a directory artifact; but per rule 5, directory-only evidence caps confidence, so single_loc_group stands with confidence downgraded high->medium.",
+      "web_searched": false
+    },
+    {
+      "location_id": "3768feec953bf182",
+      "practice_name": "NOAH H ROSEN DMD, LLC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Own site (rosendentalchicago.com) confirms Rosen Dental as a single-location dentist-owned practice built around Dr. Noah Rosen at 2845 N Sheridan Rd Ste 706, matching the 2-provider small_group -- single_loc_group, no DSO/PE. Both shared_phone signals are only with location 531d6464c506828c (Stone Dental Group, index 275), a distinct dentist-owned practice co-located in the same 2845 N Sheridan Rd building; distinct names/websites/org NPIs make this a suite-mate/building-phone artifact, not a network.",
+      "web_searched": false
+    },
+    {
+      "location_id": "531d6464c506828c",
+      "practice_name": "STONE DENTAL FROUP",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Own site (stonedentalgroup.com) confirms Stone Dental Group as a single-suite Sheridan Rd practice led by Dr. Nasrin Azimzadeh with a plural 'Meet The Doctors' roster (3 providers) -- dentist-owned single_loc_group, no corporate/franchise/PE signal. The two shared_phone signals are only with location 3768feec953bf182 (Rosen Dental, index 274), a separate dentist-owned practice in the same 2845 N Sheridan Rd building; the shared numbers are a suite-mate/building-phone artifact, not corporate infrastructure.",
+      "web_searched": false
+    },
+    {
+      "location_id": "00f209bd764640b7",
+      "practice_name": "CRAIG KOSTRUBALA DDS LLC",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The T1 single-solo claim is contradicted: the DB website oakdentalassociates.com and phone 708-346-9600 each reach a second distinct location, and a web search surfaces both an Alsip (11107 S Lawler) and an Oak Lawn (9501 Central Ave) address plus 'Kostrubala & Associates'/'Oak Dental Associates' group naming -- while the researcher verified a single Alsip 'non-corporate family business' on a DIFFERENT domain (adentalhome.com). Evidence points to dentist ownership (not corporate, so not a DSO hold), but the single-location true_independent tier cannot be reconciled with the multi-location domain/phone/address signals, so it must not merge as-is.",
+      "web_searched": true
+    }
+  ]
+}
