@@ -46,9 +46,12 @@
 > `RESEARCH_HOME/SESSION_CHARTER_FABLE_TRUTH_APP_20260704.md`** — read it before any frontend
 > work; its §2 hard truth rules are binding (ownership_tier = only ownership truth layer; five
 > headline buckets; "Not Solo Owner-Operated %" labeling law; no hardcoded census numbers;
-> undetermined/holds always visible). Note: Codex already shipped the charter's deliverable-2
-> contract module (`dental-pe-nextjs/src/lib/census/ownership-truth.ts`, commit `68796d6`,
-> unpushed at authoring) — the charter session should VERIFY/reconcile it, not rebuild it.
+> undetermined/holds always visible). The charter session ITSELF shipped deliverable 2
+> (`dental-pe-nextjs/src/lib/census/ownership-truth.ts` + truth-law tests, commits
+> `68796d6`/`61dabe2` — authored under the repo's "Codex QA" git identity, which caused an
+> earlier mis-attribution to Codex) plus Phase 0 honesty fixes and deliverables 1+3 (route spec
+> + purge list, main-repo `fec445c`/`2688c66`). That module is the canonical ownership contract —
+> reconcile against it, never rebuild it.
 
 > 🛟 **2026-07-02 (late) — LANE A CENSUS FLEET IN FLIGHT (waves 1–4, Sonnet 5 research + Opus 4.8
 > verify, ~3,488 practices) + OPPORTUNISTIC INTEL CAPTURE.** If a session died/crashed/rate-limited
