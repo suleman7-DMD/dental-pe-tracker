@@ -22,42 +22,44 @@
     "true_independent": 143
    },
    "corrected_tier_counts": {
-    "None": 209,
-    "dentist_multi": 10,
+    "None": 205,
+    "dentist_multi": 14,
     "single_loc_group": 58
    },
    "disposition_counts": {
-    "accept": 106,
-    "correct": 68,
-    "hold_control_review": 9,
-    "hold_dso_verify": 49,
-    "hold_network_review": 20,
-    "hold_unresolved": 25
+    "accept": 111,
+    "correct": 72,
+    "duplicate_suspect": 2,
+    "hold_control_review": 8,
+    "hold_dso_verify": 48,
+    "hold_network_review": 12,
+    "hold_unresolved": 24
    },
    "merge_action_counts": {
-    "hold_do_not_merge": 103,
-    "merge_corrected_tier": 68,
-    "merge_original": 106
+    "hold_do_not_merge": 94,
+    "merge_corrected_tier": 72,
+    "merge_original": 111
    },
    "source_counts": {
-    "codex_missing_adjudication": 107,
-    "opus_batch": 170
+    "codex_missing_adjudication": 77,
+    "opus_batch": 200
    },
    "total_dispositions": 277,
    "unique_location_ids": 277
   },
   "stats": {
    "rows_in": 3486,
-   "classified_kept": 2877,
+   "classified_kept": 2886,
    "undetermined": 477,
-   "adjudication_hold": 103,
-   "triage_adjudication_hold_network_review": 20,
-   "triage_adjudication_hold_control_review": 9,
-   "triage_adjudication_hold_unresolved": 25,
-   "adjudication_accepted": 106,
+   "adjudication_hold": 94,
+   "triage_adjudication_hold_network_review": 12,
+   "adjudication_accepted": 111,
+   "triage_adjudication_hold_unresolved": 24,
    "triage_dso_claim_refute": 2,
-   "adjudication_corrected": 68,
-   "triage_adjudication_hold_dso_verify": 49,
+   "adjudication_corrected": 72,
+   "triage_adjudication_hold_control_review": 8,
+   "triage_adjudication_hold_dso_verify": 48,
+   "triage_adjudication_duplicate_suspect": 2,
    "triage_closure_suspect": 8,
    "triage_pm_hold_active": 1,
    "triage_dso_claim_insufficient": 1,
@@ -65,19 +67,19 @@
    "triage_r4_network_ge10_brand:aspen_dental": 16
   },
   "tier_tally": {
-   "true_independent": 1433,
+   "true_independent": 1437,
    "single_loc_group": 932,
-   "dentist_multi": 357,
+   "dentist_multi": 362,
    "branded_dso": 49,
    "stealth_dso": 7,
    "institutional": 49
   },
   "t1_t2_positive_proof_audit": {
-   "generated_at": "2026-07-04T15:16:43Z",
+   "generated_at": "2026-07-04T15:21:51Z",
    "script": "scrapers/audit_lane_a_t1_t2.py",
-   "input_rows_t1_t2": 2415,
+   "input_rows_t1_t2": 2419,
    "held_rows": 50,
-   "confidence_downgraded_rows": 480,
+   "confidence_downgraded_rows": 482,
    "policy": "Hold T1/T2 control signals and T1 roster conflicts; downgrade directory-only high-confidence T1/T2 to medium."
   }
  },
@@ -368,6 +370,27 @@
    ],
    "source_partition": "lane_a_wave1_20260702",
    "source_unit": "laneA_001"
+  },
+  {
+   "location_id": "b0f98c9bc9dd6da7",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.stoffeltomazin.com/",
+    "https://www.stoffeltomazin.com/about-us/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Official practice website confirms the practice at 12371 Derby Rd, Lemont (founded 1953 by Dr. William Stoffel Sr) is currently led by two dentists, Kenneth M. Stoffel DDS and Lawrence A. Tomazin Jr DDS, at this single address. No corporate parent, brand, or additional locations found. Multi-dentist, one-location, dentist-owned fits single_loc_group.",
+   "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; The practice's own website (stoffeltomazin.com/about-us) confirms two owner-dentists \u2014 Kenneth M. Stoffel DDS and Lawrence A. Tomazin Jr DDS \u2014 at one address (12371 Derby Rd, Lemont), a textbook dentist-owned single_loc_group. The HARD ao_nonclinical_exec_title is benign: the AO 'VICE PRESIDENT' Law]",
+   "searched": [
+    "Stoffel and Tomazin Dental Associates Lemont IL"
+   ],
+   "source_partition": "lane_a_wave1_20260702",
+   "source_unit": "laneA_002"
   },
   {
    "location_id": "7d3eadfdeda6a076",
@@ -1431,7 +1454,7 @@
    "status": "classified",
    "network_id": "ao:HUDETZ_CHRISTOPHER",
    "reasoning": "3027 English Row Ave / phone (630) 904-1106 is the original name of what is now English Rows Dental Group, a single-location, multi-dentist family practice continued across three generations by Dr. Christopher Hudetz. Same office and ownership as the Good Day Dental Sleep Center NPI above; no corporate/DSO signals found.",
-   "adjudication_note": " | [\u00a76h adjudication codex_missing_adjudication: accepted; Accepted T2: row is already outside the true-solo bucket; persisted reasoning/URLs support a dentist-owned single-location group, and remaining signals do not justify DSO/T3 promotion without new web review.]",
+   "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; 3027 English Row Ave / (630) 904-1106 is one physical office (now English Rows Dental Group) owned across three generations by Dr. Christopher Hudetz, verified on the practice's own site. The ao_reaches_multiple_locations and shared_phone (3 reaches) are the same office registered under multiple NPP]",
    "searched": [
     "Saddlewood Family Dentistry Naperville IL Christopher Hudetz"
    ],
@@ -2200,7 +2223,7 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Dental Pointe Family Dentistry and Orthodontics at 760 N Route 59 Ste 100 is led by Dr. Rani Seeth and Dr. Poornima Gangaji per the practice's own website; no DSO brand, corporate parent, or additional office locations found (references to Naperville/Aurora/Warrenville read as service area, not separate offices). Single-location, multi-dentist, dentist-led group.",
-   "adjudication_note": " | [\u00a76h adjudication codex_missing_adjudication: accepted; Accepted T2: row is already outside the true-solo bucket; persisted reasoning/URLs support a dentist-owned single-location group, and remaining signals do not justify DSO/T3 promotion without new web review.]",
+   "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; Dr. Rani Seeth (owner AO) and Dr. Poornima Gangaji are confirmed on the practice's own website at one Naperville office; the researcher explicitly resolved Naperville/Aurora/Warrenville references as service-area language, not separate offices. The AO/shared_phone multi-reach reflects the owner's ow]",
    "searched": [
     "\"Dental Pointe\" Naperville IL 760 Route 59 Rani Seeth dentist",
     "\"Dental Pointe\" Naperville \"Dr. Seeth\" owner history practice founded"
@@ -3796,6 +3819,28 @@
    "source_unit": "laneA_014"
   },
   {
+   "location_id": "ab7f0dea9951c4c3",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://chawlaortho.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "brand:chawla_orthodontics",
+   "reasoning": "The address (519 N Cass Ave Ste 401, Westmont) now hosts Chawla Orthodontics & Pediatric Dentistry, whose own website lists two dentist-owned locations (this Westmont address plus Villa Park), owned by Dr. Sumit Chawla \u2014 a dentist-owned 2-location group, not a DSO. Old 'Westgrove Dental Center' NPI record appears superseded by this rebrand; no PE/DSO or management-company mention found. The DB's 'Dental Salon' affiliated-DSO hint could not be corroborated by any web source and is disregarded as unverified per protocol (ctx is not evidence).",
+   "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; The HARD db_corporate_conflict (entity_classification dso_regional, affiliated_dso 'Dental Salon') is cleared by evidence: the address (519 N Cass Ave Ste 401, Westmont) now hosts Chawla Orthodontics & Pediatric Dentistry, and both the practice's own site and a web search confirm it is dentist-owned]",
+   "searched": [
+    "Westgrove Dental Center Westmont IL Dental Salon",
+    "\"Dental Salon\" Westgrove Westmont Illinois owner",
+    "\"Dental Salon\" dental service organization DSO Illinois"
+   ],
+   "source_partition": "lane_a_wave1_20260702",
+   "source_unit": "laneA_014"
+  },
+  {
    "location_id": "5b46ab3e144bb164",
    "assigned_tier": "single_loc_group",
    "pe_backed": false,
@@ -4910,6 +4955,27 @@
    "searched": [
     "\"Smile Bright Dental\" Oak Brook IL 2021 Midwest Road",
     "\"Smile Bright Dental Corp\" Sonia Ferran President dentist license"
+   ],
+   "source_partition": "lane_a_wave1_20260702",
+   "source_unit": "laneA_018"
+  },
+  {
+   "location_id": "adf8398b542a00e9",
+   "assigned_tier": "single_loc_group",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/oak-brook-dental-affiliates-oak-brook-4",
+    "https://www.bbb.org/us/il/oak-brook/profile/dentist/oakbrook-dental-affiliates-pc-0654-88020565"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Single-location practice at 120 Oak Brook Ctr Ste 510 since 1999, led by Dr. James Chidester DDS per Yelp/BBB listings and patient reviews naming him directly. Multi-dentist office at one address, dentist-owned, no corporate signal. | [T1/T2 positive-proof audit: confidence lowered from high because support is directory-style / not enough for high-confidence ownership proof.]",
+   "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; AO James Chidester is listed as 'OWNER' and db shows provider_count 2, consistent with a dentist-owned multi-dentist office at one address (120 Oak Brook Ctr Ste 510) with no corporate parent, EIN cluster, or DSO brand. However ownership rests on directory_only_support (bbb.org, yelp.com) with no fi]",
+   "searched": [
+    "\"Oak Brook Dental Affiliates\" 120 Oakbrook Center Mall dentist Chidester"
    ],
    "source_partition": "lane_a_wave1_20260702",
    "source_unit": "laneA_018"
@@ -7199,30 +7265,6 @@
    "source_unit": "laneA_027"
   },
   {
-   "location_id": "134b8d7ff14d4d1e",
-   "assigned_tier": "single_loc_group",
-   "pe_backed": false,
-   "evidence_basis": "web_verified",
-   "evidence_urls": [
-    "https://www.catonfielddental.com/our-story",
-    "https://local.demandforce.com/b/catonfielddental"
-   ],
-   "evidence_artifacts": [
-    "Same phone (815)782-2299 and owner (Zheng Ma) as location e481dff27195df58 at 7170 Caton Farm Rd; all web evidence for the practice (Catonfield Dental) resolves to the 7170 address, none found specifically for 7156"
-   ],
-   "confidence": "medium",
-   "status": "classified",
-   "network_id": "ao:MA_ZHENG",
-   "reasoning": "This NPI shares the identical AO (Zheng Ma), phone number, city and ZIP with the adjacent-address Catonfield Dental record; no separate web presence exists for '7156 Caton Farm Rd', strongly indicating this is a duplicate/near-duplicate NPPES registration for the same single dentist-owned office (Catonfield Dental: Zheng Ma + Elena Zakharian) rather than a distinct second location. Classified the same as its sibling row: dentist-owned single-location group.",
-   "adjudication_note": " | [\u00a76h adjudication codex_missing_adjudication: accepted; Accepted T2: row is already outside the true-solo bucket; persisted reasoning/URLs support a dentist-owned single-location group, and remaining signals do not justify DSO/T3 promotion without new web review.]",
-   "searched": [
-    "Zheng Ma DMD dentist Plainfield IL Caton Farm Rd",
-    "\"Catonfield Dental\" Plainfield IL website Zheng Ma Elena Zakharian"
-   ],
-   "source_partition": "lane_a_wave1_20260702",
-   "source_unit": "laneA_027"
-  },
-  {
    "location_id": "043473cdf729e2a2",
    "assigned_tier": "single_loc_group",
    "pe_backed": false,
@@ -7877,7 +7919,7 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Downtown Dental & Implants of Oswego, Inc. at 60 Main St is a single-location practice led by Dr. Shalini Mohan (Tufts DMD 2004) with a second dentist, Dr. Caroline Cwiek. No mention of any other location, parent company, or DSO affiliation.",
-   "adjudication_note": " | [\u00a76h adjudication codex_missing_adjudication: accepted; Accepted T2: row is already outside the true-solo bucket; persisted reasoning/URLs support a dentist-owned single-location group, and remaining signals do not justify DSO/T3 promotion without new web review.]",
+   "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; Dr. Shalini Mohan is the owner-dentist AO of her own PC (Downtown Dental & Implants of Oswego Inc.) with a second treating dentist (Dr. Cwiek) at one confirmed office per the practice's own site and LinkedIn. The ao_reaches_multiple_locations and shared_phone signals reflect same-owner NPPES address]",
    "searched": [
     "Downtown Dental Implants Oswego IL \"Main St\" dentist Shalini Mohan"
    ],
@@ -15494,6 +15536,28 @@
    "source_unit": "laneA_055"
   },
   {
+   "location_id": "7e1ae3773b7f761c",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/august-j-durso-dds-mount-prospect",
+    "https://www.toprankdental.com/august-james-durso-general-dentistry-1661-feehanville-dr-1",
+    "https://www.healthgrades.com/dentist/dr-august-durso-349lg"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Multiple sources (Yelp, TopRank Dental, Healthgrades) confirm Dr. August Durso as a single dentist serving Mount Prospect since 1989 at 1661 Feehanville Dr Ste 420, matching the DB address and phone exactly. Trade name 'Durso & Associates' is used, but only one dentist is named across all sources -- no evidence of a second owner or corporate signal. Classified true_independent.",
+   "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; Yelp/TopRank/Healthgrades corroborate a single GP, Dr. August Durso, in Mount Prospect since 1989 at 1661 Feehanville Dr Ste 420 (matches DB address/phone); provider_count 0 and only one dentist named. The shared 'profendoillinois.com' domain (reach 3, a Professional Endodontics of Illinois multi-of]",
+   "searched": [
+    "\"August Durso\" DDS dentist Mount Prospect IL Feehanville"
+   ],
+   "source_partition": "lane_a_wave1_20260702",
+   "source_unit": "laneA_055"
+  },
+  {
    "location_id": "9813881c1121d7ac",
    "assigned_tier": "single_loc_group",
    "pe_backed": false,
@@ -17976,7 +18040,7 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Multiple independent listings confirm a four-dentist group (Dr. Robert Shiffman, Dr. Gary Morris, Dr. David Rosebaum, Dr. Susanna Pischek) practicing together at this single 195 N Arlington Heights Rd address, consistent with the record's large_group/5-provider signal. No corporate parent, franchise, or DSO brand language found in any source -> single_loc_group. | [T1/T2 positive-proof audit: confidence lowered from high because support is directory-style / not enough for high-confidence ownership proof.]",
-   "adjudication_note": " | [\u00a76h adjudication codex_missing_adjudication: accepted; Accepted T2: row is already outside the true-solo bucket; persisted reasoning/URLs support a dentist-owned single-location group, and remaining signals do not justify DSO/T3 promotion without new web review.]",
+   "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; The NPPES roster of 5 providers with surnames matching the practice name (SHIFFMAN, MORRIS) at one address (195 N Arlington Heights Rd), plus directory listings, confirms a multi-dentist dentist-owned group at a single location = single_loc_group (T2); the AO (Jamie Schoessling, RDH, OFFICE MANAGER)]",
    "searched": [
     "Shiffman Morris Dental Associates Buffalo Grove IL 195 N Arlington Heights Rd"
    ],
@@ -22374,6 +22438,28 @@
    "source_unit": "laneA_079"
   },
   {
+   "location_id": "83d8a695fc4822e1",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://puredentalspa.com/locations/west-loop/",
+    "https://voyagechicago.com/interview/meet-dr-rajul-patel-pure-dental-spa-west-loop/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Rajul Patel founded Pure Dental Spa in 2010 (per his own Voyage Chicago interview) at 1222 W Madison St Suite 300 (matches address exactly). Only a single Chicago (West Loop) location was found for Pure Dental Spa; dentist-owned, no other locations or corporate/DSO signal found.",
+   "adjudication_note": " | [\u00a76h adjudication opus_batch: corrected to dentist_multi; Web search confirms Dr. Rajul Patel founded and operates Pure Dental Spa at THREE offices under his own brand \u2014 West Loop, Lincoln Park, and Bloomingdale IL \u2014 directly contradicting the researcher's single-location claim. The shared_website_domain (puredentalspa.com, 3 reaches) and ao_reaches_multip]",
+   "searched": [
+    "Rajul Patel dentist West Loop Chicago 1222 W Madison St",
+    "Pure Dental Spa Chicago locations West Loop only"
+   ],
+   "source_partition": "lane_a_wave1_20260702",
+   "source_unit": "laneA_079"
+  },
+  {
    "location_id": "d741055d0fbd54a1",
    "assigned_tier": "true_independent",
    "pe_backed": false,
@@ -26129,6 +26215,28 @@
    "source_unit": "laneA_094"
   },
   {
+   "location_id": "bb3f79d399b5fcd4",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.healthysmilesinc.com/about-us/",
+    "https://www.healthgrades.com/group-directory/il-illinois/chicago/healthy-smilesinc-x4c79h"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:PLATT_RITA",
+   "reasoning": "Practice's own About Us page (fetched directly) explicitly names Dr. Rita Salvi Platt, DDS as the owner of Healthy Smiles at 2005 W Addison St, practicing there since 2000. No mention of 'Jennifer Steinert' (the ctx-listed NPPES authorized official) on the practice's own site, and no corporate parent or DSO signal found anywhere.",
+   "adjudication_note": " | [\u00a76h adjudication opus_batch: corrected to dentist_multi; Assigned T1 (one owner-operator at one location) is contradicted by a shared EIN (273059355) AND a shared website domain (brightsmilespediatricdentistry.com) spanning the same two distinct location records \u2014 i.e., the same tax entity and same web brand operate at two location_ids. The practice's own]",
+   "searched": [
+    "\"Healthy Smiles\" dentist Chicago 2005 W Addison Jennifer Steinert",
+    "healthysmilesinc.com about-us (fetched)"
+   ],
+   "source_partition": "lane_a_wave1_20260702",
+   "source_unit": "laneA_094"
+  },
+  {
    "location_id": "b8fbf1629c7acd2e",
    "assigned_tier": "dentist_multi",
    "pe_backed": false,
@@ -26517,7 +26625,7 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Single location at 2155 W Roscoe St, serving 'North Shore Chicago residents for more than 20 years,' with a multi-dentist 'Our Doctors' roster and AO/treating dentist Timothy Dotson. No management company, DSO brand, or PE sponsor found anywhere, and the EIN does not reach any other watched ZIP. Classified as a single-location, dentist-staffed group rather than solo given the multi-doctor branding.",
-   "adjudication_note": " | [\u00a76h adjudication codex_missing_adjudication: accepted; Accepted T2: row is already outside the true-solo bucket; persisted reasoning/URLs support a dentist-owned single-location group, and remaining signals do not justify DSO/T3 promotion without new web review.]",
+   "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; Dr. Timothy Dotson (partner/treating dentist) leads a multi-doctor roster at one office (2155 W Roscoe St) on the practice's own site, with no management company, DSO brand, or PE sponsor found. The shared_ein and shared_phone signals each reach only one additional location_id \u2014 the same partnership]",
    "searched": [
     "\"Perfect Smile Dental Spa\" Roscoe Village Chicago 2155 W Roscoe",
     "\"Perfect Smile Dental Spa\" owner dentist Timothy Dotson OR founder",
@@ -27911,6 +28019,28 @@
     "NPI 1669568978 Molar City OR dental 4611 Western Chicago",
     "npiregistry.cms.hhs.gov API fetch for NPI 1669568978",
     "\"Jose Limiac\" dentist Chicago 4611 Western"
+   ],
+   "source_partition": "lane_a_wave1_20260702",
+   "source_unit": "laneA_100"
+  },
+  {
+   "location_id": "01e91acacc748597",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "http://www.lawrencedentalgroup.com/",
+    "https://www.linkedin.com/in/george-korovilas-4991159",
+    "https://www.healthgrades.com/dentist/dr-george-korovilas-3xffk"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "LinkedIn explicitly lists George Korovilas as 'Owner, Lawrence Dental Group, P.C.'; the practice's own site and directory listings show a single Chicago office (3607 W Lawrence Ave) since 1997/1994 with no other locations or corporate branding found.",
+   "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; Web search confirms Dr. George Korovilas owns a single independent Chicago office at 3607 W Lawrence Ave ('serving Chicagoland since 1997', LinkedIn 'Owner, Lawrence Dental Group P.C.', own site + Yelp/WebMD); no link to Joshi Family Dentistry found. The shared_ein (reach 2) and the DB website field]",
+   "searched": [
+    "Lawrence Dental Group Korovilas 3607 W Lawrence Ave Chicago"
    ],
    "source_partition": "lane_a_wave1_20260702",
    "source_unit": "laneA_100"
@@ -33129,7 +33259,7 @@
    "status": "classified",
    "network_id": "brand:ace_dental_center",
    "reasoning": "Searched address + NPPES AO 'Mirza Baig'; found no dentist by that name at this address, but converging sources (Zocdoc, Ace Dental Center's own team page, Yelp) place 4332 N Elston Ave as an operating 'Ace Dental Center' location run by owner-dentist Dr. Azam Saeed (DMD, aka Dr. Akber), who also owns Ace Dental Center locations in Lombard and Hoffman Estates (a small dentist-owned multi-location group, not a branded national DSO). Classified dentist_multi on the current operating brand rather than the stale NPPES org name; medium confidence because the NPPES authorized official name does not match the web-confirmed owner.",
-   "adjudication_note": " | [\u00a76h adjudication codex_missing_adjudication: accepted; Accepted T3: assigned tier already represents not-solo, multi-location dentist-owned status. No unresolved corporate-conflict signal remains after screening.]",
+   "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; Web search confirms Dr. Azam Saeed OWNS 'Ace Dental Center', a dentist-owned group with branches in Chicago (60641, this Elston address), Lombard, and Hoffman Estates -- a small dentist-owned multi-location group, not a national/PE DSO (not on the known-brand list). The hard 'ao_nonclinical_exec_tit]",
    "searched": [
     "\"Dental Care Associates\" 4332 N Elston Ave Chicago Mirza Baig",
     "\"Ace Dental Center\" 4332 N Elston Ave Chicago owner dentist",
@@ -35024,6 +35154,27 @@
    "adjudication_note": null,
    "searched": [
     "Govind Patel Associates Dental Chicago 2957 W Armitage"
+   ],
+   "source_partition": "lane_a_wave1_20260702",
+   "source_unit": "laneA_125"
+  },
+  {
+   "location_id": "6140e924f8088627",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/adria-casado-dds-chicago",
+    "https://www.vitals.com/dentists/Dr_Adria_Casado"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Yelp and Vitals confirm Dr. Adria M. Casado, DDS practices solo at 3230 W North Ave, matching NPPES AO 'Adria Casado' and address/phone exactly. No corporate/franchise signal found; classified true_independent. | [T1/T2 positive-proof audit: confidence lowered from high because support is directory-style / not enough for high-confidence ownership proof.]",
+   "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; Yelp + Vitals confirm Dr. Adria M. Casado practices solo at 3230 W North Ave, matching the NPPES AO and phone exactly; single provider, no DSO/PE/corporate brand. Support is directory-only, so confidence is capped at medium per rule 5. The shared_phone (reach 2) and shared_ein (reach 2) point to dif]",
+   "searched": [
+    "Adria Casado DDS Chicago dentist 3230 W North Ave"
    ],
    "source_partition": "lane_a_wave1_20260702",
    "source_unit": "laneA_125"
@@ -37537,7 +37688,7 @@
    "status": "classified",
    "network_id": "brand:wrigleyville_dental",
    "reasoning": "Address (3256 N Ashland Ave) and phone (773-975-6666) exactly match Wrigleyville Dental's current listing. Dr. Isabel Llamozas Otamendi (UIC 2019) is a named dentist there alongside Dr. John Benedetto -- a single-location, dentist-owned holistic/biological dental practice with no corporate parent.",
-   "adjudication_note": " | [\u00a76h adjudication codex_missing_adjudication: accepted; Accepted T2: row is already outside the true-solo bucket; persisted reasoning/URLs support a dentist-owned single-location group, and remaining signals do not justify DSO/T3 promotion without new web review.]",
+   "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; Web search confirms 3256 N Ashland / 773-975-6666 is Wrigleyville Dental, an independent holistic practice owned by Dr. Bernice Teplitsky (Becker's: 'Owner of Wrigleyville Dental Group'; roster surname TEPLITSKY matches), with Dr. Isabel Llamozas and others practicing there -- one location, multiple]",
    "searched": [
     "\"Isabel Llamozas\" DMD Wrigleyville Dental 3256 N Ashland Chicago"
    ],
@@ -42422,7 +42573,7 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "Phone (708) 422-2224 on oakridgefamilydental.com's contact page exactly matches this record, and the site's team page names 'Victoria Pavletic-Vorderer, D.D.S.' matching our AO exactly, alongside owners Dr. Colleen Gaffney and Dr. Meghan Gaffney. Single location, dentist-owned = single_loc_group. Confidence medium because the site currently lists its street address as 3615 W 95th St, Evergreen Park (vs. NPPES's 4445 W 95th St, Oak Lawn) - likely a relocation a few blocks down the same street with phone number retained, but the address string itself doesn't match.",
-   "adjudication_note": " | [\u00a76h adjudication codex_missing_adjudication: accepted; Accepted T2: row is already outside the true-solo bucket; persisted reasoning/URLs support a dentist-owned single-location group, and remaining signals do not justify DSO/T3 promotion without new web review.]",
+   "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; The practice's own website (oakridgefamilydental.com) matches the record's phone (708-422-2224) and names owner-dentists Dr. Colleen Gaffney and Dr. Meghan Gaffney plus associate Victoria Pavletic-Vorderer DDS (the exact AO), confirming a dentist-owned multi-dentist single office. The t2_provider_co]",
    "searched": [
     "Oak Ridge Family Dental Oak Lawn IL 4445 w 95th st Victoria Pavletic-Vorderer",
     "\"4445 W 95th\" Oak Lawn dental Pavletic-Vorderer"
@@ -48607,7 +48758,7 @@
    "status": "classified",
    "network_id": "ao:SZATKOWSKI_ADAM",
    "reasoning": "MY Dentist Family LTD at 76 Stratford Dr is a two-generation family dental practice (Dr. Frank Szatkowski and son Dr. Adam Szatkowski) serving Bloomingdale since 1972, one location. AO 'Adam Szatkowski' matches the practicing dentist. No DSO/corporate signal found; the large_group provider count (5) reflects a sizeable single-site family-owned practice, not a chain. | [T1/T2 positive-proof audit: confidence lowered from high because support is directory-style / not enough for high-confidence ownership proof.]",
-   "adjudication_note": " | [\u00a76h adjudication codex_missing_adjudication: accepted; Accepted T2: row is already outside the true-solo bucket; persisted reasoning/URLs support a dentist-owned single-location group, and remaining signals do not justify DSO/T3 promotion without new web review.]",
+   "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; AO Adam Szatkowski matches the practicing dentist; the practice is a two-generation family group (Dr. Frank + Dr. Adam Szatkowski) at one Bloomingdale location (76 Stratford Dr) since 1972 -- multiple dentists, one location, dentist-owned = single_loc_group (T2). Directory-only cited support (Health]",
    "searched": [
     "\"My Dentist Family\" Bloomingdale IL Szatkowski dentist 76 Stratford"
    ],
@@ -48742,6 +48893,27 @@
    "adjudication_note": null,
    "searched": [
     "Cameo Dentistry Bloomingdale IL dentist 70 Stratford owner"
+   ],
+   "source_partition": "lane_a_wave1_20260702",
+   "source_unit": "laneA_173"
+  },
+  {
+   "location_id": "96c9c8a18c7f8ad2",
+   "assigned_tier": "dentist_multi",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.tebra.com/care/provider/rajul-patel-dds-1912163106",
+    "https://www.healthgrades.com/dentist/dr-rajul-patel-2tyjp"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": null,
+   "reasoning": "Dr. Rajul Patel, DDS operates solo as 'Pure Dental Spa' at 107 W Lake St Ste 101, Bloomingdale (exact address + phone 630-307-3133 match). NYU dental grad, no DSO/corporate signal found across directories.",
+   "adjudication_note": " | [\u00a76h adjudication opus_batch: corrected to dentist_multi; AO Dr. Rajul Patel (DENTIST/OWNER) reaches 3 location_ids and the practice domain puredentalspa.com reaches 3 location_ids -- two converging signals that Dr. Patel owns a 3-location 'Pure Dental Spa' group, contradicting the T1 single-location claim (the researcher web-verified only the Bloomingdale]",
+   "searched": [
+    "Rajul Patel DDS Bloomingdale IL 107 W Lake St dentist"
    ],
    "source_partition": "lane_a_wave1_20260702",
    "source_unit": "laneA_173"
@@ -49136,6 +49308,27 @@
    "adjudication_note": " | [\u00a76h adjudication codex_missing_adjudication: accepted; Accepted T2: row is already outside the true-solo bucket; persisted reasoning/URLs support a dentist-owned single-location group, and remaining signals do not justify DSO/T3 promotion without new web review.]",
    "searched": [
     "Quintessential Dental Elmhurst Maggie Augustyn 132 Addison"
+   ],
+   "source_partition": "lane_a_wave1_20260702",
+   "source_unit": "laneA_175"
+  },
+  {
+   "location_id": "20de6a9f1f6068a3",
+   "assigned_tier": "true_independent",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://dewittdentistry.com/",
+    "https://www.yelp.com/biz/dewitt-dentistry-elmhurst"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:DEWITT_WILLIAM",
+   "reasoning": "Own practice website (dewittdentistry.com) confirms 'DeWitt Dentistry' at 118 E Vallette St, Elmhurst, owner-dentist Dr. William Dewitt, no franchise or DSO branding. Note: the NPPES EIN on this record shows a 2-location reach, but no second office was found on the practice's own site (which lists only this Elmhurst address), so confidence is medium pending resolution of that EIN signal.",
+   "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; The practice's OWN website (dewittdentistry.com) confirms DeWitt Dentistry is a single-office, dentist-owned independent practice (Dr. William DeWitt) at 118 E Vallette St, Elmhurst, listing only that office. The shared_ein (363096791) and shared_website_domain both reach exactly ONE other location ]",
+   "searched": [
+    "William E Dewitt DDS PC 118 Vallette Elmhurst dentist"
    ],
    "source_partition": "lane_a_wave1_20260702",
    "source_unit": "laneA_175"
@@ -55413,7 +55606,7 @@
    "status": "classified",
    "network_id": "ao:GIERING_ROBERT",
    "reasoning": "Web listings confirm Dr. Robert R. Giering, DDS practicing at 475 W 55th St (zip 60525, city recorded as both Countryside and La Grange in directories) matching the unit address and phone. The practice is a single-location, 6-provider group operating under the founding dentist's own name and PC/LTD entity with no corporate parent, franchise, or brand signal found -- a dentist-owned multi-provider single-site group.",
-   "adjudication_note": " | [\u00a76h adjudication codex_missing_adjudication: accepted; Accepted T2: row is already outside the true-solo bucket; persisted reasoning/URLs support a dentist-owned single-location group, and remaining signals do not justify DSO/T3 promotion without new web review.]",
+   "adjudication_note": " | [\u00a76h adjudication opus_batch: accepted; Web search confirms cameods.com is Cameo Dental Specialists, a perio/endo/oral-surgery specialist group with 5 offices that occupies suites 208A/208B at 475 W 55th St \u2014 the same building where Dr. Giering runs his own GP practice under his ROBERT R GIERING DDS LTD entity. The shared_website_domain (]",
    "searched": [
     "Robert Giering DDS La Grange IL dentist"
    ],
@@ -60185,7 +60378,7 @@
   },
   {
    "location_id": "bcc295ef115b06f6",
-   "assigned_tier": "single_loc_group",
+   "assigned_tier": "dentist_multi",
    "pe_backed": false,
    "evidence_basis": "web_verified",
    "evidence_urls": [
@@ -60198,7 +60391,7 @@
    "status": "classified",
    "network_id": null,
    "reasoning": "DST Dental LLC operates as 'North Avenue Dental Associates / Dental Smiles of West Chicago' at 1933 Franciscan Way, matching address and phone exactly. Yelp/patientconnect365 show several associate dentists (Harris, Javed, Majeed, and others) rotating through one single office; no corporate parent, management company, or DSO brand identified. Classified as a dentist-affiliated multi-dentist single-location group.",
-   "adjudication_note": " | [\u00a76h adjudication codex_missing_adjudication: accepted; Accepted T2: row is already outside the true-solo bucket; persisted reasoning/URLs support a dentist-owned single-location group, and remaining signals do not justify DSO/T3 promotion without new web review.]",
+   "adjudication_note": " | [\u00a76h adjudication opus_batch: corrected to dentist_multi; The ao_reaches_multiple_locations signal shows AO 'OWNER DENTIST' Dhaval Shah D.M.D. spanning two distinct location_ids, and a web search confirms Dr. Shah operates both North Avenue Dental Associates (West Chicago) and La Grange Family Dental (La Grange) \u2014 his own dentist-owned multi-office network]",
    "searched": [
     "DST Dental West Chicago IL Dhaval Shah dentist",
     "\"North Avenue Dental Associates\" West Chicago Franciscan Way owner dentist"

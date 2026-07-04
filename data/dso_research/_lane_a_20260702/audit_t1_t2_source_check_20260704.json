@@ -1,27 +1,25 @@
 {
   "_meta": {
     "audit_actions": {
-      "downgrade_confidence": 45,
+      "downgrade_confidence": 49,
       "hold": 30,
-      "pass": 28
+      "pass": 25
     },
     "fetch_status_counts": {
       "200": 124,
-      "202": 1,
-      "403": 66,
-      "404": 2,
-      "999": 2,
-      "ConnectTimeout": 5,
-      "ConnectionError": 2,
-      "ReadTimeout": 1
+      "202": 2,
+      "403": 70,
+      "404": 1,
+      "999": 3,
+      "ConnectionError": 4
     },
-    "generated_at": "2026-07-04T15:17:04Z",
+    "generated_at": "2026-07-04T15:22:03Z",
     "max_urls_per_row": 2,
     "max_workers": 16,
     "note": "Corporate-language hits are review flags only; many directory or article pages mention DSO terms generically.",
-    "rows_with_any_url_ok": 84,
-    "rows_with_corporate_language_hits": 4,
-    "sample_rows": 103
+    "rows_with_any_url_ok": 85,
+    "rows_with_corporate_language_hits": 3,
+    "sample_rows": 104
   },
   "rows": [
     {
@@ -80,7 +78,7 @@
           "url": "https://doctor.webmd.com/doctor/jeffrey-gordon-0728f514-25ef-403f-b3c9-d1aab1ddb392-overview"
         },
         {
-          "bytes": 476673,
+          "bytes": 476889,
           "content_type": "text/html; charset=\"utf-8\"",
           "corporate_language_hits": [],
           "final_url": "https://www.facebook.com/PreventiveDentistryCenter/",
@@ -113,7 +111,7 @@
           "url": "https://www.carecredit.com/doctor-locator/palatine-il/artisan-dental-group-of-illinois-llc-892bcb/"
         },
         {
-          "bytes": 1677054,
+          "bytes": 1717575,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-richard-maddalozzo-ybpwfrz",
@@ -214,7 +212,7 @@
           "url": "https://doctor.webmd.com/doctor/betsy-enriquez-d7413dcb-9d6f-426b-b0b9-7aec39a1ddf3-overview"
         },
         {
-          "bytes": 1595211,
+          "bytes": 1640323,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-betsy-enriquez-3jn57",
@@ -237,7 +235,7 @@
       ],
       "urls_checked": [
         {
-          "bytes": 36567,
+          "bytes": 36511,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60647/invite-stephen-binder-dds-12874",
@@ -247,7 +245,7 @@
           "url": "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60647/invite-stephen-binder-dds-12874"
         },
         {
-          "bytes": 1721249,
+          "bytes": 1727547,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-stephen-binder-xxnp7",
@@ -271,7 +269,7 @@
       ],
       "urls_checked": [
         {
-          "bytes": 1688633,
+          "bytes": 1691038,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-chris-krueger-3pywx",
@@ -436,7 +434,7 @@
       ],
       "urls_checked": [
         {
-          "bytes": 1740669,
+          "bytes": 1782197,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-nita-patel-xl8t3",
@@ -470,7 +468,7 @@
       ],
       "urls_checked": [
         {
-          "bytes": 152353,
+          "bytes": 152352,
           "content_type": "text/html; charset=UTF-8",
           "corporate_language_hits": [],
           "final_url": "https://bartlettdentalcareil.com/",
@@ -480,9 +478,13 @@
           "url": "https://bartlettdentalcareil.com/"
         },
         {
-          "detail": "HTTPSConnectionPool(host='www.lincolnparkdentalclinic.com', port=443): Max retries exceeded with url: /kirsten-galayda-d_d_s/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.lincolnparkdentalclinic.com', port=443) at 0x1047ef110>,",
-          "error": "ConnectTimeout",
-          "ok": false,
+          "bytes": 48786,
+          "content_type": "text/html; charset=utf-8",
+          "corporate_language_hits": [],
+          "final_url": "https://www.lincolnparkdentalclinic.com/kirsten-galayda-d_d_s/",
+          "host": "lincolnparkdentalclinic.com",
+          "ok": true,
+          "status_code": 200,
           "url": "https://www.lincolnparkdentalclinic.com/kirsten-galayda-d_d_s/"
         }
       ]
@@ -533,7 +535,7 @@
       ],
       "urls_checked": [
         {
-          "bytes": 566060,
+          "bytes": 566059,
           "content_type": "text/html",
           "corporate_language_hits": [],
           "final_url": "https://doctor.webmd.com/doctor/chris-kyros-5a937388-cbe8-43d2-86ee-cb26880201f4-overview",
@@ -543,7 +545,7 @@
           "url": "https://doctor.webmd.com/doctor/chris-kyros-5a937388-cbe8-43d2-86ee-cb26880201f4-overview"
         },
         {
-          "bytes": 353813,
+          "bytes": 353820,
           "content_type": "text/html;charset=UTF-8",
           "corporate_language_hits": [],
           "final_url": "https://providers.sharecare.com/doctor/dr-chris-kyros",
@@ -604,7 +606,7 @@
       ],
       "urls_checked": [
         {
-          "bytes": 1697869,
+          "bytes": 1695906,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-suzy-azalea-y9skh5z",
@@ -715,7 +717,7 @@
           "url": "https://www.atidentalcare.com/about"
         },
         {
-          "bytes": 1805169,
+          "bytes": 1809937,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-monika-kak-24t8c",
@@ -777,7 +779,7 @@
           "url": "https://braamdental.com/office-details"
         },
         {
-          "bytes": 1687609,
+          "bytes": 1687651,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-lee-braam-xym8nv5",
@@ -835,7 +837,7 @@
       ],
       "urls_checked": [
         {
-          "bytes": 476669,
+          "bytes": 476756,
           "content_type": "text/html; charset=\"utf-8\"",
           "corporate_language_hits": [],
           "final_url": "https://www.facebook.com/InvernessDentalCare/",
@@ -860,6 +862,39 @@
     },
     {
       "any_url_ok": true,
+      "assigned_tier": "true_independent",
+      "audit_action": "downgrade_confidence",
+      "corporate_language_hits": [],
+      "location_id": "6140e924f8088627",
+      "practice_name": null,
+      "sample_strata": [
+        "confidence_downgrade"
+      ],
+      "urls_checked": [
+        {
+          "bytes": 410550,
+          "content_type": "text/html",
+          "corporate_language_hits": [],
+          "final_url": "https://www.vitals.com/doctors/adria-casado-1yhmtp",
+          "host": "vitals.com",
+          "ok": true,
+          "status_code": 200,
+          "url": "https://www.vitals.com/dentists/Dr_Adria_Casado"
+        },
+        {
+          "bytes": 776,
+          "content_type": "text/html;charset=utf-8",
+          "corporate_language_hits": [],
+          "final_url": "https://www.yelp.com/biz/adria-casado-dds-chicago",
+          "host": "yelp.com",
+          "ok": false,
+          "status_code": 403,
+          "url": "https://www.yelp.com/biz/adria-casado-dds-chicago"
+        }
+      ]
+    },
+    {
+      "any_url_ok": true,
       "assigned_tier": "single_loc_group",
       "audit_action": "hold",
       "corporate_language_hits": [],
@@ -870,7 +905,7 @@
       ],
       "urls_checked": [
         {
-          "bytes": 2197883,
+          "bytes": 2223644,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/group-directory/il-illinois/river-forest/river-forest-dental-studio-x6n5g8",
@@ -958,7 +993,7 @@
       ]
     },
     {
-      "any_url_ok": false,
+      "any_url_ok": true,
       "assigned_tier": "single_loc_group",
       "audit_action": "hold",
       "corporate_language_hits": [],
@@ -969,9 +1004,13 @@
       ],
       "urls_checked": [
         {
-          "detail": "HTTPSConnectionPool(host='www.golfriversmiles.com', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.golfriversmiles.com', port=443) at 0x1047ef4d0>, 'Connection to www.golfriversmiles.co",
-          "error": "ConnectTimeout",
-          "ok": false,
+          "bytes": 90448,
+          "content_type": "text/html; charset=utf-8",
+          "corporate_language_hits": [],
+          "final_url": "https://www.golfriversmiles.com/",
+          "host": "golfriversmiles.com",
+          "ok": true,
+          "status_code": 200,
           "url": "https://www.golfriversmiles.com/"
         },
         {
@@ -1036,7 +1075,7 @@
       ],
       "urls_checked": [
         {
-          "bytes": 1709745,
+          "bytes": 1709479,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-john-bova-y8sch",
@@ -1138,7 +1177,7 @@
       ],
       "urls_checked": [
         {
-          "bytes": 343273,
+          "bytes": 343645,
           "content_type": "text/html;charset=UTF-8",
           "corporate_language_hits": [],
           "final_url": "https://providers.sharecare.com/doctor/dr-adria-m-casado",
@@ -1148,7 +1187,7 @@
           "url": "https://providers.sharecare.com/doctor/dr-adria-m-casado"
         },
         {
-          "bytes": 1639956,
+          "bytes": 1679874,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-adria-casado-ybr3v3z",
@@ -1240,7 +1279,7 @@
       ],
       "urls_checked": [
         {
-          "bytes": 1680088,
+          "bytes": 1683082,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-gary-dong-x22cy",
@@ -1339,7 +1378,7 @@
       ],
       "urls_checked": [
         {
-          "bytes": 1636119,
+          "bytes": 1641345,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-ngoc-bich-nguyen-ysw4r",
@@ -1471,7 +1510,7 @@
       ],
       "urls_checked": [
         {
-          "bytes": 1615765,
+          "bytes": 1658347,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-reza-khoshnood-xhprb",
@@ -1504,7 +1543,7 @@
       ],
       "urls_checked": [
         {
-          "bytes": 1652092,
+          "bytes": 1654901,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-dhiren-mistry-34tnm",
@@ -1580,7 +1619,7 @@
           "url": "https://findadentist.ada.org/il/cook/river-grove/general-practice/dr-lawrence-t-jacobs-4494862"
         },
         {
-          "bytes": 1643269,
+          "bytes": 1643598,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-lawrence-jacobs-3c9kc",
@@ -1712,7 +1751,7 @@
           "url": "https://www.dentalplans.com/dentists/illinois/rolling-meadows/60008/dr-marietta-bufalino-42998/"
         },
         {
-          "bytes": 1644871,
+          "bytes": 1642413,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-marietta-bufalino-ybphdqz",
@@ -1768,7 +1807,7 @@
       ],
       "urls_checked": [
         {
-          "bytes": 589447,
+          "bytes": 589448,
           "content_type": "text/html",
           "corporate_language_hits": [],
           "final_url": "https://doctor.webmd.com/doctor/osama-ismail-e5cfe3af-6eaa-48f5-accb-332ac1fcdc43-overview",
@@ -1801,7 +1840,7 @@
       ],
       "urls_checked": [
         {
-          "bytes": 1660195,
+          "bytes": 1614868,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-peter-kahlhammer-y6sbv",
@@ -1827,31 +1866,64 @@
       "assigned_tier": "true_independent",
       "audit_action": "downgrade_confidence",
       "corporate_language_hits": [],
-      "location_id": "68170b3c9e5361f3",
+      "location_id": "a6d39b64648573b4",
       "practice_name": null,
       "sample_strata": [
-        "confidence_downgrade"
+        "random_t1"
       ],
       "urls_checked": [
         {
-          "bytes": 1737977,
+          "bytes": 48229,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
-          "final_url": "https://www.healthgrades.com/dentist/dr-peter-michalak-ydpjw",
-          "host": "healthgrades.com",
+          "final_url": "https://www.wellness.com/dir/2167256/dentist/il/bartlett/bartlett-dental-associates/directions/164-bartlett-plaza-bartlett-il-60103",
+          "host": "wellness.com",
           "ok": true,
           "status_code": 200,
-          "url": "https://www.healthgrades.com/dentist/dr-peter-michalak-ydpjw"
+          "url": "https://www.wellness.com/dir/2167256/dentist/il/bartlett/bartlett-dental-associates/directions/164-bartlett-plaza-bartlett-il-60103"
         },
         {
           "bytes": 776,
           "content_type": "text/html;charset=utf-8",
           "corporate_language_hits": [],
-          "final_url": "https://www.yelp.com/biz/presidential-dental-associates-chicago",
+          "final_url": "https://www.yelp.com/biz/bartlett-dental-associates-bartlett",
           "host": "yelp.com",
           "ok": false,
           "status_code": 403,
-          "url": "https://www.yelp.com/biz/presidential-dental-associates-chicago"
+          "url": "https://www.yelp.com/biz/bartlett-dental-associates-bartlett"
+        }
+      ]
+    },
+    {
+      "any_url_ok": true,
+      "assigned_tier": "true_independent",
+      "audit_action": "pass",
+      "corporate_language_hits": [],
+      "location_id": "2a6397b94494d4f6",
+      "practice_name": null,
+      "sample_strata": [
+        "random_t1"
+      ],
+      "urls_checked": [
+        {
+          "bytes": 5553,
+          "content_type": "text/html; charset=UTF-8",
+          "corporate_language_hits": [],
+          "final_url": "https://npiprofile.com/npi/1356474696",
+          "host": "npiprofile.com",
+          "ok": false,
+          "status_code": 403,
+          "url": "https://npiprofile.com/npi/1356474696"
+        },
+        {
+          "bytes": 63569,
+          "content_type": "text/html; charset=UTF-8",
+          "corporate_language_hits": [],
+          "final_url": "https://www.vitadox.com/doctor/chicago-il-60628/jeffrey-a-perman-dds/MpMjunXbLSvpNRMpuEUDEn",
+          "host": "vitadox.com",
+          "ok": true,
+          "status_code": 200,
+          "url": "https://www.vitadox.com/doctor/chicago-il-60628/jeffrey-a-perman-dds/MpMjunXbLSvpNRMpuEUDEn"
         }
       ]
     },
@@ -1867,7 +1939,7 @@
       ],
       "urls_checked": [
         {
-          "bytes": 1657173,
+          "bytes": 1655210,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-michael-sinopoli-x5y8x",
@@ -1956,7 +2028,7 @@
       ],
       "urls_checked": [
         {
-          "bytes": 1712658,
+          "bytes": 1667279,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-kenneth-korpan-y8r2s",
@@ -2032,7 +2104,7 @@
           "url": "https://providers.sharecare.com/doctor/dr-sheela-b-gandhi"
         },
         {
-          "bytes": 2230560,
+          "bytes": 2230934,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/group-directory/il-illinois/lombard/dupage-sleep-center-llc-xq7pq8",
@@ -2055,7 +2127,7 @@
       ],
       "urls_checked": [
         {
-          "bytes": 1724988,
+          "bytes": 1724974,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-robin-trevison-yc8js",
@@ -2065,7 +2137,7 @@
           "url": "https://www.healthgrades.com/dentist/dr-robin-trevison-yc8js"
         },
         {
-          "bytes": 2244871,
+          "bytes": 2246554,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/group-directory/il-illinois/coal-city/coal-city-dental-center-x34gcc",
@@ -2131,7 +2203,7 @@
           "url": "https://npiprofile.com/npi/1669515557"
         },
         {
-          "bytes": 1653452,
+          "bytes": 1652362,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-alan-isaac-yxprc",
@@ -2210,7 +2282,7 @@
       ],
       "urls_checked": [
         {
-          "bytes": 561926,
+          "bytes": 561927,
           "content_type": "text/html",
           "corporate_language_hits": [],
           "final_url": "https://doctor.webmd.com/doctor/eugene-goldberg-b40510cf-1731-47ca-8f97-d4f10d2b3e36-overview",
@@ -2243,7 +2315,7 @@
       ],
       "urls_checked": [
         {
-          "bytes": 336420,
+          "bytes": 336554,
           "content_type": "text/html;charset=UTF-8",
           "corporate_language_hits": [],
           "final_url": "https://providers.sharecare.com/doctor/dr-kenneth-a-kehl",
@@ -2253,7 +2325,7 @@
           "url": "https://providers.sharecare.com/doctor/dr-kenneth-a-kehl"
         },
         {
-          "bytes": 1643324,
+          "bytes": 1597107,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-kenneth-kehl-xmkpd",
@@ -2276,9 +2348,13 @@
       ],
       "urls_checked": [
         {
-          "detail": "HTTPSConnectionPool(host='www.yelp.com', port=443): Max retries exceeded with url: /biz/marcus-wright-dds-maywood (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.yelp.com', port=443) at 0x1047ef9d0>, 'Connection to www.yelp.com ti",
-          "error": "ConnectTimeout",
+          "bytes": 776,
+          "content_type": "text/html;charset=utf-8",
+          "corporate_language_hits": [],
+          "final_url": "https://www.yelp.com/biz/marcus-wright-dds-maywood",
+          "host": "yelp.com",
           "ok": false,
+          "status_code": 403,
           "url": "https://www.yelp.com/biz/marcus-wright-dds-maywood"
         }
       ]
@@ -2295,7 +2371,7 @@
       ],
       "urls_checked": [
         {
-          "bytes": 1672400,
+          "bytes": 1677993,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-constantine-theodoropoulos-2bds2",
@@ -2371,7 +2447,7 @@
           "url": "https://findadentist.ada.org/dentists/dr-lourdes-t-anonuevo-chicago-0038V00002yk1KwQAI-a1C8V00000lVt3AUAS"
         },
         {
-          "bytes": 1667062,
+          "bytes": 1614965,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-lourdes-anonuevo-xd6qd",
@@ -2390,12 +2466,11 @@
       "location_id": "1f9ae2fcbb6f121d",
       "practice_name": null,
       "sample_strata": [
-        "directory_only_review_medium",
-        "random_t1"
+        "directory_only_review_medium"
       ],
       "urls_checked": [
         {
-          "bytes": 1678061,
+          "bytes": 1681263,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-victoria-remien-bigg-2kypn",
@@ -2438,7 +2513,7 @@
           "url": "https://doctor.webmd.com/doctor/twana-edwards-8d0dfaa0-cdb7-4683-95ad-0aa30b49c5c0-overview"
         },
         {
-          "bytes": 1638904,
+          "bytes": 1646788,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-twana-edwards-xl7gp",
@@ -2454,97 +2529,145 @@
       "assigned_tier": "true_independent",
       "audit_action": "downgrade_confidence",
       "corporate_language_hits": [],
-      "location_id": "c1d87d86e93f7056",
+      "location_id": "3830df2fadda4b9a",
       "practice_name": null,
       "sample_strata": [
         "random_t1"
       ],
       "urls_checked": [
         {
-          "bytes": 36579,
+          "bytes": 1702196,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
-          "final_url": "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60632/invite-carl-venkus-dds-12301",
-          "host": "doctorsnetwork.com",
-          "ok": true,
-          "status_code": 200,
-          "url": "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60632/invite-carl-venkus-dds-12301"
-        },
-        {
-          "bytes": 48084,
-          "content_type": "text/html; charset=utf-8",
-          "corporate_language_hits": [],
-          "final_url": "https://www.wellness.com/dir/2170141/dentist/il/chicago/venkus-carl-dds/directions/2920-west-pope-john-paul-ii-drive-chicago-il-60632",
-          "host": "wellness.com",
-          "ok": true,
-          "status_code": 200,
-          "url": "https://www.wellness.com/dir/2170141/dentist/il/chicago/venkus-carl-dds/directions/2920-west-pope-john-paul-ii-drive-chicago-il-60632"
-        }
-      ]
-    },
-    {
-      "any_url_ok": true,
-      "assigned_tier": "true_independent",
-      "audit_action": "pass",
-      "corporate_language_hits": [],
-      "location_id": "193e04bb0473d6bf",
-      "practice_name": null,
-      "sample_strata": [
-        "random_t1"
-      ],
-      "urls_checked": [
-        {
-          "bytes": 564281,
-          "content_type": "text/html",
-          "corporate_language_hits": [],
-          "final_url": "https://doctor.webmd.com/doctor/donald-kipper-196ed236-5365-4b14-b980-b0b3a6acb2cf-overview",
-          "host": "doctor.webmd.com",
-          "ok": true,
-          "status_code": 200,
-          "url": "https://doctor.webmd.com/doctor/donald-kipper-196ed236-5365-4b14-b980-b0b3a6acb2cf-overview"
-        },
-        {
-          "bytes": 776,
-          "content_type": "text/html;charset=utf-8",
-          "corporate_language_hits": [],
-          "final_url": "https://www.yelp.com/biz/kipper-donald-g-dds-glen-ellyn",
-          "host": "yelp.com",
-          "ok": false,
-          "status_code": 403,
-          "url": "https://www.yelp.com/biz/kipper-donald-g-dds-glen-ellyn"
-        }
-      ]
-    },
-    {
-      "any_url_ok": true,
-      "assigned_tier": "true_independent",
-      "audit_action": "pass",
-      "corporate_language_hits": [],
-      "location_id": "1cfde3d48999ba20",
-      "practice_name": null,
-      "sample_strata": [
-        "random_t1"
-      ],
-      "urls_checked": [
-        {
-          "bytes": 1644059,
-          "content_type": "text/html; charset=utf-8",
-          "corporate_language_hits": [],
-          "final_url": "https://www.healthgrades.com/dentist/dr-mary-hydes-9q8eqmk590",
+          "final_url": "https://www.healthgrades.com/dentist/dr-david-drake-xfw24",
           "host": "healthgrades.com",
           "ok": true,
           "status_code": 200,
-          "url": "https://www.healthgrades.com/dentist/dr-mary-hydes-9q8eqmk590"
+          "url": "https://www.healthgrades.com/dentist/dr-david-drake-xfw24"
         },
         {
-          "bytes": 778,
+          "bytes": 776,
           "content_type": "text/html;charset=utf-8",
           "corporate_language_hits": [],
-          "final_url": "https://www.zocdoc.com/dentist/mary-hydes-dds-546216",
-          "host": "zocdoc.com",
+          "final_url": "https://www.yelp.com/biz/drake-david-b-chicago",
+          "host": "yelp.com",
           "ok": false,
           "status_code": 403,
-          "url": "https://www.zocdoc.com/dentist/mary-hydes-dds-546216"
+          "url": "https://www.yelp.com/biz/drake-david-b-chicago"
+        }
+      ]
+    },
+    {
+      "any_url_ok": true,
+      "assigned_tier": "true_independent",
+      "audit_action": "downgrade_confidence",
+      "corporate_language_hits": [],
+      "location_id": "66785f69abd1a93b",
+      "practice_name": null,
+      "sample_strata": [
+        "random_t1"
+      ],
+      "urls_checked": [
+        {
+          "bytes": 5553,
+          "content_type": "text/html; charset=UTF-8",
+          "corporate_language_hits": [],
+          "final_url": "https://npiprofile.com/npi/1194431916",
+          "host": "npiprofile.com",
+          "ok": false,
+          "status_code": 403,
+          "url": "https://npiprofile.com/npi/1194431916"
+        },
+        {
+          "bytes": 0,
+          "content_type": "text/html; charset=UTF-8",
+          "corporate_language_hits": [],
+          "final_url": "https://providerwire.com/dentist/illinois/palos-hills/avicenna-dental-llc-1194431916",
+          "host": "providerwire.com",
+          "ok": true,
+          "status_code": 202,
+          "url": "https://providerwire.com/dentist/illinois/palos-hills/avicenna-dental-llc-1194431916"
+        }
+      ]
+    },
+    {
+      "any_url_ok": false,
+      "assigned_tier": "true_independent",
+      "audit_action": "downgrade_confidence",
+      "corporate_language_hits": [],
+      "location_id": "6e108ffce9060e47",
+      "practice_name": null,
+      "sample_strata": [
+        "random_t1"
+      ],
+      "urls_checked": [
+        {
+          "bytes": 5553,
+          "content_type": "text/html; charset=UTF-8",
+          "corporate_language_hits": [],
+          "final_url": "https://npiprofile.com/npi/1659757581",
+          "host": "npiprofile.com",
+          "ok": false,
+          "status_code": 403,
+          "url": "https://npiprofile.com/npi/1659757581"
+        },
+        {
+          "detail": "HTTPSConnectionPool(host='www.caredash.com', port=443): Max retries exceeded with url: /doctors/grzegorz-krupa-dmd-burbank-il (Caused by NameResolutionError(\"HTTPSConnection(host='www.caredash.com', port=443): Failed to resolve 'www.caredas",
+          "error": "ConnectionError",
+          "ok": false,
+          "url": "https://www.caredash.com/doctors/grzegorz-krupa-dmd-burbank-il"
+        }
+      ]
+    },
+    {
+      "any_url_ok": true,
+      "assigned_tier": "single_loc_group",
+      "audit_action": "pass",
+      "corporate_language_hits": [],
+      "location_id": "778b814bfeab200c",
+      "practice_name": null,
+      "sample_strata": [
+        "random_t2"
+      ],
+      "urls_checked": [
+        {
+          "bytes": 435435,
+          "content_type": "text/html; charset=UTF-8",
+          "corporate_language_hits": [],
+          "final_url": "https://www.dentistberwyn.com/",
+          "host": "dentistberwyn.com",
+          "ok": true,
+          "status_code": 200,
+          "url": "https://www.dentistberwyn.com/"
+        },
+        {
+          "bytes": 184389,
+          "content_type": "text/html; charset=UTF-8",
+          "corporate_language_hits": [],
+          "final_url": "https://www.dentistberwyn.com/about-our-doctors/",
+          "host": "dentistberwyn.com",
+          "ok": true,
+          "status_code": 200,
+          "url": "https://www.dentistberwyn.com/about-our-doctors/"
+        }
+      ]
+    },
+    {
+      "any_url_ok": false,
+      "assigned_tier": "true_independent",
+      "audit_action": "pass",
+      "corporate_language_hits": [],
+      "location_id": "18ff565212c21e51",
+      "practice_name": null,
+      "sample_strata": [
+        "random_t1"
+      ],
+      "urls_checked": [
+        {
+          "detail": "HTTPSConnectionPool(host='www.caredash.com', port=443): Max retries exceeded with url: /doctors/harold-shinsky-dds-matteson-il (Caused by NameResolutionError(\"HTTPSConnection(host='www.caredash.com', port=443): Failed to resolve 'www.careda",
+          "error": "ConnectionError",
+          "ok": false,
+          "url": "https://www.caredash.com/doctors/harold-shinsky-dds-matteson-il"
         }
       ]
     },
@@ -2553,31 +2676,97 @@
       "assigned_tier": "true_independent",
       "audit_action": "pass",
       "corporate_language_hits": [],
-      "location_id": "51a377e175a720e2",
+      "location_id": "67b1c90f3875a7c1",
       "practice_name": null,
       "sample_strata": [
         "random_t1"
       ],
       "urls_checked": [
         {
-          "bytes": 92134,
-          "content_type": "text/html; charset=utf-8",
+          "bytes": 82830,
+          "content_type": "text/html; charset=UTF-8",
           "corporate_language_hits": [],
-          "final_url": "https://www.opencare.com/dentists/joliet-il/dr-philip-g-bebar-dds-24630214258c/",
-          "host": "opencare.com",
+          "final_url": "https://www.westchesterfamilydental.net/",
+          "host": "westchesterfamilydental.net",
           "ok": true,
           "status_code": 200,
-          "url": "https://www.opencare.com/dentists/joliet-il/dr-philip-g-bebar-dds-24630214258c/"
+          "url": "https://www.westchesterfamilydental.net/"
         },
         {
-          "bytes": 776,
-          "content_type": "text/html;charset=utf-8",
+          "bytes": 79308,
+          "content_type": "text/html; charset=UTF-8",
           "corporate_language_hits": [],
-          "final_url": "https://www.yelp.com/biz/heinzel-and-bebar-dental-care-joliet",
-          "host": "yelp.com",
+          "final_url": "https://www.westchesterfamilydental.net/our-office/",
+          "host": "westchesterfamilydental.net",
+          "ok": true,
+          "status_code": 200,
+          "url": "https://www.westchesterfamilydental.net/our-office/"
+        }
+      ]
+    },
+    {
+      "any_url_ok": true,
+      "assigned_tier": "single_loc_group",
+      "audit_action": "pass",
+      "corporate_language_hits": [],
+      "location_id": "130395305f31a800",
+      "practice_name": null,
+      "sample_strata": [
+        "random_t2"
+      ],
+      "urls_checked": [
+        {
+          "bytes": 5553,
+          "content_type": "text/html; charset=UTF-8",
+          "corporate_language_hits": [],
+          "final_url": "https://npiprofile.com/npi/1013106830",
+          "host": "npiprofile.com",
           "ok": false,
           "status_code": 403,
-          "url": "https://www.yelp.com/biz/heinzel-and-bebar-dental-care-joliet"
+          "url": "https://npiprofile.com/npi/1013106830"
+        },
+        {
+          "bytes": 1673473,
+          "content_type": "text/html; charset=utf-8",
+          "corporate_language_hits": [],
+          "final_url": "https://www.healthgrades.com/dentist/dr-jae-ko-xc8w7",
+          "host": "healthgrades.com",
+          "ok": true,
+          "status_code": 200,
+          "url": "https://www.healthgrades.com/dentist/dr-jae-ko-xc8w7"
+        }
+      ]
+    },
+    {
+      "any_url_ok": true,
+      "assigned_tier": "true_independent",
+      "audit_action": "pass",
+      "corporate_language_hits": [],
+      "location_id": "9068c4de3bbdb4b4",
+      "practice_name": null,
+      "sample_strata": [
+        "random_t1"
+      ],
+      "urls_checked": [
+        {
+          "bytes": 98328,
+          "content_type": "text/html; charset=UTF-8",
+          "corporate_language_hits": [],
+          "final_url": "https://npino.com/dentist/1770829434-dr.-george-f.-warga/",
+          "host": "npino.com",
+          "ok": true,
+          "status_code": 200,
+          "url": "https://npino.com/dentist/1770829434-dr.-george-f.-warga/"
+        },
+        {
+          "bytes": 86317,
+          "content_type": "text/html; charset=UTF-8",
+          "corporate_language_hits": [],
+          "final_url": "https://www.winnetkadentalarts.com/dentists/george-warga/",
+          "host": "winnetkadentalarts.com",
+          "ok": true,
+          "status_code": 200,
+          "url": "https://www.winnetkadentalarts.com/dentists/george-warga/"
         }
       ]
     },
@@ -2659,7 +2848,7 @@
       ],
       "urls_checked": [
         {
-          "bytes": 1715185,
+          "bytes": 1710107,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-petar-tofovic-yfhhn",
@@ -2669,7 +2858,7 @@
           "url": "https://www.healthgrades.com/dentist/dr-petar-tofovic-yfhhn"
         },
         {
-          "bytes": 54069,
+          "bytes": 54071,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.patientconnect365.com/Dentists/Illinois/Chicago/60642/White_Dental_Studio",
@@ -2685,64 +2874,64 @@
       "assigned_tier": "true_independent",
       "audit_action": "pass",
       "corporate_language_hits": [],
-      "location_id": "61c634db63f6a40a",
+      "location_id": "625d679e2ab05192",
       "practice_name": null,
       "sample_strata": [
         "random_t1"
       ],
       "urls_checked": [
         {
-          "bytes": 48217,
-          "content_type": "text/html; charset=UTF-8",
-          "corporate_language_hits": [],
-          "final_url": "https://www.ganserdentistry.com/",
-          "host": "ganserdentistry.com",
-          "ok": true,
-          "status_code": 200,
-          "url": "https://www.ganserdentistry.com"
-        },
-        {
-          "bytes": 1657939,
+          "bytes": 130547,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
-          "final_url": "https://www.healthgrades.com/dentist/dr-glen-ganser-yqjkg",
-          "host": "healthgrades.com",
+          "final_url": "https://www.winnetkadentalassociates.com/",
+          "host": "winnetkadentalassociates.com",
           "ok": true,
           "status_code": 200,
-          "url": "https://www.healthgrades.com/dentist/dr-glen-ganser-yqjkg"
-        }
-      ]
-    },
-    {
-      "any_url_ok": true,
-      "assigned_tier": "true_independent",
-      "audit_action": "pass",
-      "corporate_language_hits": [],
-      "location_id": "990bbf9bd4c11856",
-      "practice_name": null,
-      "sample_strata": [
-        "random_t1"
-      ],
-      "urls_checked": [
-        {
-          "bytes": 878178,
-          "content_type": "text/html; charset=UTF-8",
-          "corporate_language_hits": [],
-          "final_url": "https://www.epicdentalspa.com/",
-          "host": "epicdentalspa.com",
-          "ok": true,
-          "status_code": 200,
-          "url": "https://www.epicdentalspa.com/"
+          "url": "https://www.winnetkadentalassociates.com/"
         },
         {
           "bytes": 776,
           "content_type": "text/html;charset=utf-8",
           "corporate_language_hits": [],
-          "final_url": "https://www.yelp.com/biz/epic-dental-spa-hanover-park",
+          "final_url": "https://www.yelp.com/biz/winnetka-dental-associates-winnetka-2",
           "host": "yelp.com",
           "ok": false,
           "status_code": 403,
-          "url": "https://www.yelp.com/biz/epic-dental-spa-hanover-park"
+          "url": "https://www.yelp.com/biz/winnetka-dental-associates-winnetka-2"
+        }
+      ]
+    },
+    {
+      "any_url_ok": true,
+      "assigned_tier": "single_loc_group",
+      "audit_action": "downgrade_confidence",
+      "corporate_language_hits": [],
+      "location_id": "7b171b452c7a80ef",
+      "practice_name": null,
+      "sample_strata": [
+        "random_t2"
+      ],
+      "urls_checked": [
+        {
+          "bytes": 1690245,
+          "content_type": "text/html; charset=utf-8",
+          "corporate_language_hits": [],
+          "final_url": "https://www.healthgrades.com/dentist/dr-thomas-koludrovic-yd4wg",
+          "host": "healthgrades.com",
+          "ok": true,
+          "status_code": 200,
+          "url": "https://www.healthgrades.com/dentist/dr-thomas-koludrovic-yd4wg"
+        },
+        {
+          "bytes": 776,
+          "content_type": "text/html;charset=utf-8",
+          "corporate_language_hits": [],
+          "final_url": "https://www.yelp.com/biz/koludrovic-thomas-a-dds-evergreen-park",
+          "host": "yelp.com",
+          "ok": false,
+          "status_code": 403,
+          "url": "https://www.yelp.com/biz/koludrovic-thomas-a-dds-evergreen-park"
         }
       ]
     },
@@ -2768,7 +2957,7 @@
           "url": "https://brightsmilefamily.com/"
         },
         {
-          "bytes": 1670092,
+          "bytes": 1665759,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-ronnie-ata-xynvbqd",
@@ -2791,7 +2980,7 @@
       ],
       "urls_checked": [
         {
-          "bytes": 1654850,
+          "bytes": 1651724,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-mira-andre-2sn8b",
@@ -2801,142 +2990,80 @@
           "url": "https://www.healthgrades.com/dentist/dr-mira-andre-2sn8b"
         },
         {
-          "detail": "HTTPSConnectionPool(host='www.miraandredds.com', port=443): Read timed out. (read timeout=3)",
-          "error": "ReadTimeout",
-          "ok": false,
+          "bytes": 114,
+          "content_type": "text/html",
+          "corporate_language_hits": [],
+          "final_url": "https://www.miraandredds.com/",
+          "host": "miraandredds.com",
+          "ok": true,
+          "status_code": 200,
           "url": "https://www.miraandredds.com/"
         }
       ]
     },
     {
       "any_url_ok": true,
-      "assigned_tier": "true_independent",
+      "assigned_tier": "single_loc_group",
       "audit_action": "pass",
       "corporate_language_hits": [],
-      "location_id": "64ed2e3e5794d0de",
+      "location_id": "a83a4dfffd965d02",
       "practice_name": null,
       "sample_strata": [
-        "random_t1"
+        "random_t2"
       ],
       "urls_checked": [
         {
-          "bytes": 109280,
-          "content_type": "text/html; charset=UTF-8",
-          "corporate_language_hits": [],
-          "final_url": "https://www.midentalclinic.com/",
-          "host": "midentalclinic.com",
-          "ok": true,
-          "status_code": 200,
-          "url": "https://www.midentalclinic.com/"
-        },
-        {
-          "bytes": 75286,
-          "content_type": "text/html; charset=UTF-8",
-          "corporate_language_hits": [],
-          "final_url": "https://www.midentalclinic.com/contact-info/",
-          "host": "midentalclinic.com",
-          "ok": true,
-          "status_code": 200,
-          "url": "https://www.midentalclinic.com/contact-info/"
-        }
-      ]
-    },
-    {
-      "any_url_ok": true,
-      "assigned_tier": "true_independent",
-      "audit_action": "pass",
-      "corporate_language_hits": [],
-      "location_id": "244c65d0ee4f57a2",
-      "practice_name": null,
-      "sample_strata": [
-        "random_t1"
-      ],
-      "urls_checked": [
-        {
-          "bytes": 30071,
+          "bytes": 1644559,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
-          "final_url": "https://www.dentistreg.com/general_practice/59eab228/",
-          "host": "dentistreg.com",
-          "ok": true,
-          "status_code": 200,
-          "url": "https://www.dentistreg.com/general_practice/59eab228/"
-        },
-        {
-          "bytes": 193203,
-          "content_type": "text/html; charset=utf-8",
-          "corporate_language_hits": [],
-          "final_url": "https://www.topnpi.com/il1508553256/dr-shirali-shah",
-          "host": "topnpi.com",
-          "ok": true,
-          "status_code": 200,
-          "url": "https://www.topnpi.com/il1508553256/dr-shirali-shah"
-        }
-      ]
-    },
-    {
-      "any_url_ok": true,
-      "assigned_tier": "true_independent",
-      "audit_action": "pass",
-      "corporate_language_hits": [],
-      "location_id": "954f15ca9326b177",
-      "practice_name": null,
-      "sample_strata": [
-        "random_t1"
-      ],
-      "urls_checked": [
-        {
-          "bytes": 5793,
-          "content_type": "text/html; charset=UTF-8",
-          "corporate_language_hits": [],
-          "final_url": "https://www.dentalplans.com/dentists/illinois/harwood-heights/60706/dr-peter-pontikis-60384/",
-          "host": "dentalplans.com",
-          "ok": false,
-          "status_code": 403,
-          "url": "https://www.dentalplans.com/dentists/illinois/harwood-heights/60706/dr-peter-pontikis-60384/"
-        },
-        {
-          "bytes": 1732060,
-          "content_type": "text/html; charset=utf-8",
-          "corporate_language_hits": [],
-          "final_url": "https://www.healthgrades.com/dentist/dr-peter-pontikis-xsxq5",
+          "final_url": "https://www.healthgrades.com/dentist/dr-jeffrey-socher-yjtx2",
           "host": "healthgrades.com",
           "ok": true,
           "status_code": 200,
-          "url": "https://www.healthgrades.com/dentist/dr-peter-pontikis-xsxq5"
-        }
-      ]
-    },
-    {
-      "any_url_ok": true,
-      "assigned_tier": "single_loc_group",
-      "audit_action": "pass",
-      "corporate_language_hits": [],
-      "location_id": "4d6ecf57b261e109",
-      "practice_name": null,
-      "sample_strata": [
-        "random_t2"
-      ],
-      "urls_checked": [
-        {
-          "bytes": 549907,
-          "content_type": "text/html; charset=UTF-8",
-          "corporate_language_hits": [],
-          "final_url": "https://ahoyt.dental/",
-          "host": "ahoyt.dental",
-          "ok": true,
-          "status_code": 200,
-          "url": "https://ahoyt.dental/"
+          "url": "https://www.healthgrades.com/dentist/dr-jeffrey-socher-yjtx2"
         },
         {
-          "bytes": 148700,
-          "content_type": "text/html; charset=UTF-8",
+          "bytes": 102945,
+          "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
-          "final_url": "https://ahoyt.dental/meet-the-doctors",
-          "host": "ahoyt.dental",
+          "final_url": "https://www.welli.com/care/provider/1659318491",
+          "host": "welli.com",
+          "ok": true,
+          "status_code": 200,
+          "url": "https://www.welli.com/care/provider/1659318491"
+        }
+      ]
+    },
+    {
+      "any_url_ok": true,
+      "assigned_tier": "true_independent",
+      "audit_action": "pass",
+      "corporate_language_hits": [],
+      "location_id": "b55c83f155ca2622",
+      "practice_name": null,
+      "sample_strata": [
+        "random_t1"
+      ],
+      "urls_checked": [
+        {
+          "bytes": 36362,
+          "content_type": "text/html; charset=utf-8",
+          "corporate_language_hits": [],
+          "final_url": "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60654/invite-raymond-wright-dds-10854",
+          "host": "doctorsnetwork.com",
+          "ok": true,
+          "status_code": 200,
+          "url": "https://www.doctorsnetwork.com/doctors/dentists/chicago-il-60654/invite-raymond-wright-dds-10854"
+        },
+        {
+          "bytes": 1530,
+          "content_type": "text/html",
+          "corporate_language_hits": [],
+          "final_url": "https://www.linkedin.com/in/rlwthree",
+          "host": "linkedin.com",
           "ok": false,
-          "status_code": 404,
-          "url": "https://ahoyt.dental/meet-the-doctors"
+          "status_code": 999,
+          "url": "https://www.linkedin.com/in/rlwthree/"
         }
       ]
     },
@@ -2945,31 +3072,64 @@
       "assigned_tier": "single_loc_group",
       "audit_action": "pass",
       "corporate_language_hits": [],
-      "location_id": "d3c2b7f7449b0cab",
+      "location_id": "3bb7214fbc114fb1",
       "practice_name": null,
       "sample_strata": [
         "random_t2"
       ],
       "urls_checked": [
         {
-          "bytes": 68984,
-          "content_type": "text/html;charset=UTF-8",
+          "bytes": 94469,
+          "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
-          "final_url": "https://www.portageadvanceddental.com/our-practice.html",
-          "host": "portageadvanceddental.com",
+          "final_url": "https://www.lvdachicago.com/",
+          "host": "lvdachicago.com",
           "ok": true,
           "status_code": 200,
-          "url": "https://www.portageadvanceddental.com/our-practice.html"
+          "url": "https://www.lvdachicago.com/"
+        },
+        {
+          "bytes": 778,
+          "content_type": "text/html;charset=utf-8",
+          "corporate_language_hits": [],
+          "final_url": "https://www.zocdoc.com/dentist/scott-emalfarb-dds-55583",
+          "host": "zocdoc.com",
+          "ok": false,
+          "status_code": 403,
+          "url": "https://www.zocdoc.com/dentist/scott-emalfarb-dds-55583"
+        }
+      ]
+    },
+    {
+      "any_url_ok": true,
+      "assigned_tier": "single_loc_group",
+      "audit_action": "pass",
+      "corporate_language_hits": [],
+      "location_id": "4e4992e0d3fca24f",
+      "practice_name": null,
+      "sample_strata": [
+        "random_t2"
+      ],
+      "urls_checked": [
+        {
+          "bytes": 718895,
+          "content_type": "text/html; charset=utf-8",
+          "corporate_language_hits": [],
+          "final_url": "https://www.schaumburgdentalstudio.com/about-us/our-doctors",
+          "host": "schaumburgdentalstudio.com",
+          "ok": true,
+          "status_code": 200,
+          "url": "https://www.schaumburgdentalstudio.com/about-us/our-doctors"
         },
         {
           "bytes": 776,
           "content_type": "text/html;charset=utf-8",
           "corporate_language_hits": [],
-          "final_url": "https://www.yelp.com/biz/portage-advanced-dental-chicago-2",
+          "final_url": "https://www.yelp.com/biz/schaumburg-dental-studio-schaumburg",
           "host": "yelp.com",
           "ok": false,
           "status_code": 403,
-          "url": "https://www.yelp.com/biz/portage-advanced-dental-chicago-2"
+          "url": "https://www.yelp.com/biz/schaumburg-dental-studio-schaumburg"
         }
       ]
     },
@@ -2978,89 +3138,31 @@
       "assigned_tier": "single_loc_group",
       "audit_action": "pass",
       "corporate_language_hits": [],
-      "location_id": "fcf40ad38b38a300",
+      "location_id": "c826b4f0ccd7eaba",
       "practice_name": null,
       "sample_strata": [
         "random_t2"
       ],
       "urls_checked": [
         {
-          "bytes": 161120,
+          "bytes": 1184,
           "content_type": "text/html; charset=UTF-8",
           "corporate_language_hits": [],
-          "final_url": "https://galleryparkdental.com/",
-          "host": "galleryparkdental.com",
+          "final_url": "https://wheeling-il.illinois-pages.com/dr-timothy-hang-dds.html",
+          "host": "wheeling-il.illinois-pages.com",
           "ok": true,
           "status_code": 200,
-          "url": "https://galleryparkdental.com/"
+          "url": "https://wheeling-il.illinois-pages.com/dr-timothy-hang-dds.html"
         },
         {
-          "bytes": 254852,
+          "bytes": 5472,
           "content_type": "text/html; charset=UTF-8",
           "corporate_language_hits": [],
-          "final_url": "https://galleryparkdental.com/about-us",
-          "host": "galleryparkdental.com",
-          "ok": true,
-          "status_code": 200,
-          "url": "https://galleryparkdental.com/about-us"
-        }
-      ]
-    },
-    {
-      "any_url_ok": true,
-      "assigned_tier": "single_loc_group",
-      "audit_action": "pass",
-      "corporate_language_hits": [],
-      "location_id": "3076409265d6da91",
-      "practice_name": null,
-      "sample_strata": [
-        "random_t2"
-      ],
-      "urls_checked": [
-        {
-          "bytes": 290992,
-          "content_type": "text/html; charset=UTF-8",
-          "corporate_language_hits": [],
-          "final_url": "https://www.halkyardfamilydental.com/",
-          "host": "halkyardfamilydental.com",
-          "ok": true,
-          "status_code": 200,
-          "url": "https://www.halkyardfamilydental.com/"
-        },
-        {
-          "bytes": 273035,
-          "content_type": "text/html; charset=UTF-8",
-          "corporate_language_hits": [],
-          "final_url": "https://www.halkyardfamilydental.com/about-us/meet-the-staff/",
-          "host": "halkyardfamilydental.com",
-          "ok": true,
-          "status_code": 200,
-          "url": "https://www.halkyardfamilydental.com/about-us/meet-the-staff/"
-        }
-      ]
-    },
-    {
-      "any_url_ok": false,
-      "assigned_tier": "single_loc_group",
-      "audit_action": "pass",
-      "corporate_language_hits": [],
-      "location_id": "5e75df2536b43e42",
-      "practice_name": null,
-      "sample_strata": [
-        "random_t2"
-      ],
-      "urls_checked": [
-        {
-          "detail": "HTTPSConnectionPool(host='www.cvetdds.com', port=443): Max retries exceeded with url: /about/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.cvetdds.com', port=443) at 0x1047efd90>, 'Connection to www.cvetdds.com timed out. (conn",
-          "error": "ConnectTimeout",
+          "final_url": "https://www.yellowpages.com/wheeling-il/geyer-mikhail-dds-raymar-dental",
+          "host": "yellowpages.com",
           "ok": false,
-          "url": "https://www.cvetdds.com/about/"
-        },
-        {
-          "detail": "HTTPSConnectionPool(host='www.cvetdds.com', port=443): Max retries exceeded with url: /dr-sam-cvetkovic/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.cvetdds.com', port=443) at 0x1047ed310>, 'Connection to www.cvetdds.com timed",
-          "error": "ConnectTimeout",
-          "ok": false,
-          "url": "https://www.cvetdds.com/dr-sam-cvetkovic/"
+          "status_code": 403,
+          "url": "https://www.yellowpages.com/wheeling-il/geyer-mikhail-dds-raymar-dental"
         }
       ]
     },
@@ -3069,31 +3171,64 @@
       "assigned_tier": "single_loc_group",
       "audit_action": "pass",
       "corporate_language_hits": [],
-      "location_id": "66f36f878152532c",
+      "location_id": "0a389cd094ce804f",
       "practice_name": null,
       "sample_strata": [
         "random_t2"
       ],
       "urls_checked": [
         {
-          "bytes": 119505,
+          "bytes": 216265,
           "content_type": "text/html; charset=UTF-8",
           "corporate_language_hits": [],
-          "final_url": "https://www.contossmilecenter.com/",
-          "host": "contossmilecenter.com",
+          "final_url": "https://eissensdental.com/",
+          "host": "eissensdental.com",
           "ok": true,
           "status_code": 200,
-          "url": "https://www.contossmilecenter.com/"
+          "url": "https://eissensdental.com/"
         },
         {
-          "bytes": 107715,
+          "bytes": 776,
+          "content_type": "text/html;charset=utf-8",
+          "corporate_language_hits": [],
+          "final_url": "https://www.yelp.com/biz/r-aaron-eissens-dds-pc-north-aurora",
+          "host": "yelp.com",
+          "ok": false,
+          "status_code": 403,
+          "url": "https://www.yelp.com/biz/r-aaron-eissens-dds-pc-north-aurora"
+        }
+      ]
+    },
+    {
+      "any_url_ok": true,
+      "assigned_tier": "single_loc_group",
+      "audit_action": "pass",
+      "corporate_language_hits": [],
+      "location_id": "1186464f53042d89",
+      "practice_name": null,
+      "sample_strata": [
+        "random_t2"
+      ],
+      "urls_checked": [
+        {
+          "bytes": 64119,
           "content_type": "text/html; charset=UTF-8",
           "corporate_language_hits": [],
-          "final_url": "https://www.contossmilecenter.com/contact-us/",
-          "host": "contossmilecenter.com",
+          "final_url": "https://violetcreekdentistry.com/about-us/",
+          "host": "violetcreekdentistry.com",
           "ok": true,
           "status_code": 200,
-          "url": "https://www.contossmilecenter.com/contact-us/"
+          "url": "https://violetcreekdentistry.com/about-us/"
+        },
+        {
+          "bytes": 1686774,
+          "content_type": "text/html; charset=utf-8",
+          "corporate_language_hits": [],
+          "final_url": "https://www.healthgrades.com/dentist/dr-yousaf-ahmad-zexky",
+          "host": "healthgrades.com",
+          "ok": true,
+          "status_code": 200,
+          "url": "https://www.healthgrades.com/dentist/dr-yousaf-ahmad-zexky"
         }
       ]
     },
@@ -3134,36 +3269,32 @@
       "any_url_ok": true,
       "assigned_tier": "single_loc_group",
       "audit_action": "pass",
-      "corporate_language_hits": [
-        "supported by"
-      ],
-      "location_id": "a47a3217e357dbce",
+      "corporate_language_hits": [],
+      "location_id": "9abac696a237b077",
       "practice_name": null,
       "sample_strata": [
         "random_t2"
       ],
       "urls_checked": [
         {
-          "bytes": 440936,
-          "content_type": "text/html; charset=utf-8",
-          "corporate_language_hits": [
-            "supported by"
-          ],
-          "final_url": "https://www.ladonedental.com/",
-          "host": "ladonedental.com",
+          "bytes": 366174,
+          "content_type": "text/html; charset=UTF-8",
+          "corporate_language_hits": [],
+          "final_url": "https://smilepalatine.com/",
+          "host": "smilepalatine.com",
           "ok": true,
           "status_code": 200,
-          "url": "https://www.ladonedental.com/"
+          "url": "https://smilepalatine.com/"
         },
         {
-          "bytes": 403463,
+          "bytes": 1722819,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
-          "final_url": "https://www.ladonedental.com/about-us/dr-paul-ladone/",
-          "host": "ladonedental.com",
+          "final_url": "https://www.healthgrades.com/dentist/dr-christopher-kowalski-37lh8",
+          "host": "healthgrades.com",
           "ok": true,
           "status_code": 200,
-          "url": "https://www.ladonedental.com/about-us/dr-paul-ladone/"
+          "url": "https://www.healthgrades.com/dentist/dr-christopher-kowalski-37lh8"
         }
       ]
     },
@@ -3179,7 +3310,7 @@
       ],
       "urls_checked": [
         {
-          "bytes": 1679574,
+          "bytes": 1677935,
           "content_type": "text/html; charset=utf-8",
           "corporate_language_hits": [],
           "final_url": "https://www.healthgrades.com/dentist/dr-jeffery-saffold-3vq8t",
@@ -3197,72 +3328,6 @@
           "ok": true,
           "status_code": 200,
           "url": "https://www.newavenuedental.com/"
-        }
-      ]
-    },
-    {
-      "any_url_ok": true,
-      "assigned_tier": "single_loc_group",
-      "audit_action": "pass",
-      "corporate_language_hits": [],
-      "location_id": "a7ff2734ab995612",
-      "practice_name": null,
-      "sample_strata": [
-        "random_t2"
-      ],
-      "urls_checked": [
-        {
-          "bytes": 10717,
-          "content_type": "text/html",
-          "corporate_language_hits": [],
-          "final_url": "http://www.benedettihoffman.com/",
-          "host": "benedettihoffman.com",
-          "ok": true,
-          "status_code": 200,
-          "url": "http://www.benedettihoffman.com/"
-        },
-        {
-          "bytes": 14706,
-          "content_type": "text/html; charset=UTF-8",
-          "corporate_language_hits": [],
-          "final_url": "https://www.bbb.org/us/il/frankfort/profile/dental-services/benedetti-hoffman-dental-0654-90027916",
-          "host": "bbb.org",
-          "ok": false,
-          "status_code": 403,
-          "url": "https://www.bbb.org/us/il/frankfort/profile/dental-services/benedetti-hoffman-dental-0654-90027916"
-        }
-      ]
-    },
-    {
-      "any_url_ok": true,
-      "assigned_tier": "single_loc_group",
-      "audit_action": "pass",
-      "corporate_language_hits": [],
-      "location_id": "ea407feaa8cac899",
-      "practice_name": null,
-      "sample_strata": [
-        "random_t2"
-      ],
-      "urls_checked": [
-        {
-          "bytes": 128831,
-          "content_type": "text/html",
-          "corporate_language_hits": [],
-          "final_url": "https://www.dentalclinicofmortongrove.com/",
-          "host": "dentalclinicofmortongrove.com",
-          "ok": true,
-          "status_code": 200,
-          "url": "https://www.dentalclinicofmortongrove.com/"
-        },
-        {
-          "bytes": 776,
-          "content_type": "text/html;charset=utf-8",
-          "corporate_language_hits": [],
-          "final_url": "https://www.yelp.com/biz/dental-clinic-of-morton-grove-morton-grove",
-          "host": "yelp.com",
-          "ok": false,
-          "status_code": 403,
-          "url": "https://www.yelp.com/biz/dental-clinic-of-morton-grove-morton-grove"
         }
       ]
     },
@@ -3358,39 +3423,6 @@
           "ok": false,
           "status_code": 403,
           "url": "https://www.yelp.com/biz/dennis-j-miller-dds-chicago-2"
-        }
-      ]
-    },
-    {
-      "any_url_ok": true,
-      "assigned_tier": "single_loc_group",
-      "audit_action": "pass",
-      "corporate_language_hits": [],
-      "location_id": "f2cb5a442fa1168c",
-      "practice_name": null,
-      "sample_strata": [
-        "random_t2"
-      ],
-      "urls_checked": [
-        {
-          "bytes": 1662788,
-          "content_type": "text/html; charset=utf-8",
-          "corporate_language_hits": [],
-          "final_url": "https://www.healthgrades.com/dentist/dr-kathy-meyer-ylgfn",
-          "host": "healthgrades.com",
-          "ok": true,
-          "status_code": 200,
-          "url": "https://www.healthgrades.com/dentist/dr-kathy-meyer-ylgfn"
-        },
-        {
-          "bytes": 778,
-          "content_type": "text/html;charset=utf-8",
-          "corporate_language_hits": [],
-          "final_url": "https://www.zocdoc.com/dentist/kathy-meyer-dds-rn-33005",
-          "host": "zocdoc.com",
-          "ok": false,
-          "status_code": 403,
-          "url": "https://www.zocdoc.com/dentist/kathy-meyer-dds-rn-33005"
         }
       ]
     }

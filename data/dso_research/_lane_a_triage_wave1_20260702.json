@@ -83,47 +83,6 @@
   "_triage_reason": "adjudication_hold_network_review"
  },
  {
-  "location_id": "b0f98c9bc9dd6da7",
-  "practice_name": "STOFFEL AND TOMAZIN DENTAL ASSOCIATES, LTD",
-  "zip": "60439",
-  "assigned_tier": "single_loc_group",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.stoffeltomazin.com/",
-   "https://www.stoffeltomazin.com/about-us/"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Official practice website confirms the practice at 12371 Derby Rd, Lemont (founded 1953 by Dr. William Stoffel Sr) is currently led by two dentists, Kenneth M. Stoffel DDS and Lawrence A. Tomazin Jr DDS, at this single address. No corporate parent, brand, or additional locations found. Multi-dentist, one-location, dentist-owned fits single_loc_group.",
-  "searched": [
-   "Stoffel and Tomazin Dental Associates Lemont IL"
-  ],
-  "_unit": "laneA_002",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "single_loc_group",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_control_review",
-   "location_id": "b0f98c9bc9dd6da7",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "STOFFEL AND TOMAZIN DENTAL ASSOCIATES, LTD",
-   "rationale": "Held: authorized official has a non-clinical/executive title and the Lane A evidence does not cleanly prove a dentist-owned multi-location structure. This is a hidden-control risk, not a safe T1/T2 accept.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_nonclinical_exec_title",
-    "shared_website_domain",
-    "stale_founder_history"
-   ],
-   "web_searched": false,
-   "zip": "60439"
-  },
-  "_triage_reason": "adjudication_hold_control_review"
- },
- {
   "location_id": "788b939c70cf8c48",
   "practice_name": "Parker Dental",
   "zip": "60439",
@@ -144,24 +103,17 @@
   ],
   "_unit": "laneA_002",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "true_independent",
+   "batch_file": "batch_16.json",
    "corrected_confidence": null,
    "corrected_tier": null,
    "disposition": "hold_unresolved",
    "location_id": "788b939c70cf8c48",
    "merge_action": "hold_do_not_merge",
    "practice_name": "Parker Dental",
-   "rationale": "Held: T1 is supported by directory-style evidence only, which fails the positive-proof standard for true solo ownership.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "directory_only_support",
-    "shared_ein_or_parent_tin",
-    "shared_phone_multiple_locations",
-    "t1_reasoning_lacks_owner_word"
-   ],
-   "web_searched": false,
-   "zip": "60439"
+   "rationale": "A high-confidence T1 that positively proves single-owner ownership cannot rest on directory_only_support (yelp.com, npiprofile.com) while three structural signals contradict a clean solo: shared EIN 363986932 across two locations, shared phone 6302573212 across two locations, and clear NPI/website conflation (db website is 'Hareorthodontics.Com' and the cited evidence NPI 1356361539 differs from primary_npi 1255687562). A genuine true_independent should not carry a two-location shared tax ID; the record is contradictory (possible duplicate or unrelated ortho co-tenant) and unverifiable as clean T1, so hold rather than accept per fail-closed.",
+   "web_searched": false
   },
   "_triage_reason": "adjudication_hold_unresolved"
  },
@@ -908,21 +860,17 @@
   ],
   "_unit": "laneA_012",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "dentist_multi",
+   "batch_file": "batch_22.json",
    "corrected_confidence": null,
    "corrected_tier": null,
    "disposition": "hold_dso_verify",
    "location_id": "72033697d42c7699",
    "merge_action": "hold_do_not_merge",
    "practice_name": "Dental Dreams LLC",
-   "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "db_corporate_conflict"
-   ],
-   "web_searched": false,
-   "zip": "60516"
+   "rationale": "The hard db_corporate_conflict signal ties this record to Dental Dreams (a known DSO brand / KOS Services) with entity_classification dso_national. Per binding rules 2 and 3, a conflict involving a known DSO brand cannot be self-cleared. The researcher's phone-match claim that the address rebranded to dentist-owned 'Alivio Dental' is plausible but is exactly the corporate-transition scenario requiring the adversarial verifier; fail-closed.",
+   "web_searched": false
   },
   "_triage_reason": "adjudication_hold_dso_verify"
  },
@@ -1011,27 +959,19 @@
   ],
   "_unit": "laneA_013",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "single_loc_group",
+   "batch_file": "batch_16.json",
    "corrected_confidence": null,
    "corrected_tier": null,
-   "disposition": "hold_network_review",
+   "disposition": "duplicate_suspect",
    "location_id": "843dc24460a9f574",
    "merge_action": "hold_do_not_merge",
    "practice_name": "LISLE DENTAL SPECIALISTS,INC",
-   "rationale": "Held: T2 has multiple network signals and lacks a clean own-source single-location rebuttal. It may be T3 or controlled; do not merge as T2 mechanically.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_not_provider_or_practice_name",
-    "da_legal_name_mismatch",
-    "shared_phone_multiple_locations",
-    "shared_website_domain",
-    "t2_provider_count_lte1"
-   ],
-   "web_searched": false,
-   "zip": "60532"
+   "rationale": "This row shares the identical address (6070 State Route 53), identical phone (630-963-4306), and website domain (dentistinlisleil.com) with the 'Chang Dental Center' NPI record, and the researcher explicitly concludes 'Both NPI records represent the same single physical practice.' 'Lisle Dental Specialists, Inc' is the org/legal-entity NPI (org_npi = Douglas Chang's) layered on top of the operating brand Chang Dental Center; da_legal_name 'CHANG DENTAL CTR LTD' corroborates it is the same entity. The underlying practice is dentist-owned (Dr. Douglas Chang, AO=OWNER) with no corporate signal, but this row is an address/name variant of an already-represented location and should be deduped, not merged as a distinct clinic.",
+   "web_searched": false
   },
-  "_triage_reason": "adjudication_hold_network_review"
+  "_triage_reason": "adjudication_duplicate_suspect"
  },
  {
   "location_id": "97e471fd9a3069c6",
@@ -1052,47 +992,6 @@
   ],
   "_unit": "laneA_014",
   "_triage_reason": "undetermined_by_agent"
- },
- {
-  "location_id": "ab7f0dea9951c4c3",
-  "practice_name": "WESTGROVE DENTAL CENTER",
-  "zip": "60559",
-  "assigned_tier": "dentist_multi",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://chawlaortho.com/"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "medium",
-  "status": "classified",
-  "network_id": "brand:chawla_orthodontics",
-  "reasoning": "The address (519 N Cass Ave Ste 401, Westmont) now hosts Chawla Orthodontics & Pediatric Dentistry, whose own website lists two dentist-owned locations (this Westmont address plus Villa Park), owned by Dr. Sumit Chawla \u2014 a dentist-owned 2-location group, not a DSO. Old 'Westgrove Dental Center' NPI record appears superseded by this rebrand; no PE/DSO or management-company mention found. The DB's 'Dental Salon' affiliated-DSO hint could not be corroborated by any web source and is disregarded as unverified per protocol (ctx is not evidence).",
-  "searched": [
-   "Westgrove Dental Center Westmont IL Dental Salon",
-   "\"Dental Salon\" Westgrove Westmont Illinois owner",
-   "\"Dental Salon\" dental service organization DSO Illinois"
-  ],
-  "_unit": "laneA_014",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "dentist_multi",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_dso_verify",
-   "location_id": "ab7f0dea9951c4c3",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "WESTGROVE DENTAL CENTER",
-   "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "db_corporate_conflict",
-    "shared_website_domain"
-   ],
-   "web_searched": false,
-   "zip": "60559"
-  },
-  "_triage_reason": "adjudication_hold_dso_verify"
  },
  {
   "location_id": "8af6ede25df1e964",
@@ -1288,48 +1187,6 @@
   ],
   "_unit": "laneA_017",
   "_triage_reason": "undetermined_by_agent"
- },
- {
-  "location_id": "adf8398b542a00e9",
-  "practice_name": "OAK BROOK DENTAL AFFILIATES P.C.",
-  "zip": "60523",
-  "assigned_tier": "single_loc_group",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.yelp.com/biz/oak-brook-dental-affiliates-oak-brook-4",
-   "https://www.bbb.org/us/il/oak-brook/profile/dentist/oakbrook-dental-affiliates-pc-0654-88020565"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Single-location practice at 120 Oak Brook Ctr Ste 510 since 1999, led by Dr. James Chidester DDS per Yelp/BBB listings and patient reviews naming him directly. Multi-dentist office at one address, dentist-owned, no corporate signal.",
-  "searched": [
-   "\"Oak Brook Dental Affiliates\" 120 Oakbrook Center Mall dentist Chidester"
-  ],
-  "_unit": "laneA_018",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "single_loc_group",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_unresolved",
-   "location_id": "adf8398b542a00e9",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "OAK BROOK DENTAL AFFILIATES P.C.",
-   "rationale": "Held: T2 relies on directory-style support without enough current practice-owned evidence.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_not_provider_or_practice_name",
-    "directory_only_support",
-    "shared_phone_multiple_locations",
-    "stale_founder_history"
-   ],
-   "web_searched": false,
-   "zip": "60523"
-  },
-  "_triage_reason": "adjudication_hold_unresolved"
  },
  {
   "location_id": "79820eec34c75071",
@@ -2111,6 +1968,44 @@
   ],
   "_unit": "laneA_026",
   "_triage_reason": "undetermined_by_agent"
+ },
+ {
+  "location_id": "134b8d7ff14d4d1e",
+  "practice_name": "ZHENG MA, DMD, PC",
+  "zip": "60586",
+  "assigned_tier": "single_loc_group",
+  "pe_backed": false,
+  "evidence_basis": "web_verified",
+  "evidence_urls": [
+   "https://www.catonfielddental.com/our-story",
+   "https://local.demandforce.com/b/catonfielddental"
+  ],
+  "evidence_artifacts": [
+   "Same phone (815)782-2299 and owner (Zheng Ma) as location e481dff27195df58 at 7170 Caton Farm Rd; all web evidence for the practice (Catonfield Dental) resolves to the 7170 address, none found specifically for 7156"
+  ],
+  "confidence": "medium",
+  "status": "classified",
+  "network_id": "ao:MA_ZHENG",
+  "reasoning": "This NPI shares the identical AO (Zheng Ma), phone number, city and ZIP with the adjacent-address Catonfield Dental record; no separate web presence exists for '7156 Caton Farm Rd', strongly indicating this is a duplicate/near-duplicate NPPES registration for the same single dentist-owned office (Catonfield Dental: Zheng Ma + Elena Zakharian) rather than a distinct second location. Classified the same as its sibling row: dentist-owned single-location group.",
+  "searched": [
+   "Zheng Ma DMD dentist Plainfield IL Caton Farm Rd",
+   "\"Catonfield Dental\" Plainfield IL website Zheng Ma Elena Zakharian"
+  ],
+  "_unit": "laneA_027",
+  "_adjudication": {
+   "adjudication_source": "opus_batch",
+   "assigned_tier": "single_loc_group",
+   "batch_file": "batch_22.json",
+   "corrected_confidence": null,
+   "corrected_tier": null,
+   "disposition": "duplicate_suspect",
+   "location_id": "134b8d7ff14d4d1e",
+   "merge_action": "hold_do_not_merge",
+   "practice_name": "ZHENG MA, DMD, PC",
+   "rationale": "The researcher's own reasoning states this NPI shares the identical AO (Zheng Ma), phone, city and ZIP with the adjacent-address Catonfield Dental record and has no separate web presence for 7156 Caton Farm Rd \u2014 a duplicate/near-duplicate NPPES registration for the same single dentist-owned office (Catonfield Dental: Zheng Ma + Elena Zakharian). Matches the suite/address-variant pattern of an already-counted sibling location; flag as duplicate rather than count a second door.",
+   "web_searched": false
+  },
+  "_triage_reason": "adjudication_duplicate_suspect"
  },
  {
   "location_id": "7542f13e98b7bd0d",
@@ -3694,67 +3589,6 @@
   ],
   "_unit": "laneA_055",
   "_triage_reason": "undetermined_by_agent"
- },
- {
-  "location_id": "7e1ae3773b7f761c",
-  "practice_name": "AUGUST J. DURSO, JR. DDS, LTD.",
-  "zip": "60056",
-  "assigned_tier": "true_independent",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.yelp.com/biz/august-j-durso-dds-mount-prospect",
-   "https://www.toprankdental.com/august-james-durso-general-dentistry-1661-feehanville-dr-1",
-   "https://www.healthgrades.com/dentist/dr-august-durso-349lg"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Multiple sources (Yelp, TopRank Dental, Healthgrades) confirm Dr. August Durso as a single dentist serving Mount Prospect since 1989 at 1661 Feehanville Dr Ste 420, matching the DB address and phone exactly. Trade name 'Durso & Associates' is used, but only one dentist is named across all sources -- no evidence of a second owner or corporate signal. Classified true_independent.",
-  "searched": [
-   "\"August Durso\" DDS dentist Mount Prospect IL Feehanville"
-  ],
-  "intel": {
-   "provider_notes": "Dr. August J. Durso Jr., DDS; Miami University BA 1980, Loyola University School of Dentistry DDS 1984; practicing in Mount Prospect since 1989.",
-   "owner_career_stage": "late_career",
-   "services": [
-    "bonding/cosmetic procedures",
-    "teeth whitening",
-    "preventative/maintenance therapy",
-    "endodontics",
-    "same-day crowns and veneers"
-   ],
-   "distinguishing_notes": "Over 40 years in practice under the 'Durso & Associates' trade name; accepting new patients.",
-   "sources": [
-    "https://www.yelp.com/biz/august-j-durso-dds-mount-prospect",
-    "https://www.toprankdental.com/august-james-durso-general-dentistry-1661-feehanville-dr-1",
-    "https://www.healthgrades.com/dentist/dr-august-durso-349lg"
-   ]
-  },
-  "_unit": "laneA_055",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "true_independent",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_network_review",
-   "location_id": "7e1ae3773b7f761c",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "AUGUST J. DURSO, JR. DDS, LTD.",
-   "rationale": "Held: T1 has multiple independent network/control signals and the persisted reasoning does not fully rebut them with current owner + single-location proof.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "shared_phone_multiple_locations",
-    "shared_website_domain",
-    "stale_founder_history",
-    "t1_reasoning_lacks_negative_control_word",
-    "t1_reasoning_lacks_single_location_word"
-   ],
-   "web_searched": false,
-   "zip": "60056"
-  },
-  "_triage_reason": "adjudication_hold_network_review"
  },
  {
   "location_id": "c574aefe94148b85",
@@ -5533,47 +5367,6 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
-  "location_id": "83d8a695fc4822e1",
-  "practice_name": "RAJUL PATEL WESTLOOP PC",
-  "zip": "60607",
-  "assigned_tier": "single_loc_group",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://puredentalspa.com/locations/west-loop/",
-   "https://voyagechicago.com/interview/meet-dr-rajul-patel-pure-dental-spa-west-loop/"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Dr. Rajul Patel founded Pure Dental Spa in 2010 (per his own Voyage Chicago interview) at 1222 W Madison St Suite 300 (matches address exactly). Only a single Chicago (West Loop) location was found for Pure Dental Spa; dentist-owned, no other locations or corporate/DSO signal found.",
-  "searched": [
-   "Rajul Patel dentist West Loop Chicago 1222 W Madison St",
-   "Pure Dental Spa Chicago locations West Loop only"
-  ],
-  "_unit": "laneA_079",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "single_loc_group",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_network_review",
-   "location_id": "83d8a695fc4822e1",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "RAJUL PATEL WESTLOOP PC",
-   "rationale": "Held: T2 has multiple network signals and lacks a clean own-source single-location rebuttal. It may be T3 or controlled; do not merge as T2 mechanically.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_reaches_multiple_locations",
-    "shared_website_domain"
-   ],
-   "web_searched": false,
-   "zip": "60607"
-  },
-  "_triage_reason": "adjudication_hold_network_review"
- },
- {
   "location_id": "befbccf7c7f06e9e",
   "practice_name": "Leggett Dental",
   "zip": "60607",
@@ -5745,21 +5538,17 @@
   ],
   "_unit": "laneA_080",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "single_loc_group",
+   "batch_file": "batch_22.json",
    "corrected_confidence": null,
    "corrected_tier": null,
    "disposition": "hold_dso_verify",
    "location_id": "d2e5c43e4975ddb4",
    "merge_action": "hold_do_not_merge",
    "practice_name": "MIDWEST DENTAL GROUP",
-   "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "db_corporate_conflict"
-   ],
-   "web_searched": false,
-   "zip": "60608"
+   "rationale": "The DB carries affiliated_dso 'Midwest Dental' plus entity_classification dso_national (hard db_corporate_conflict). Midwest Dental (Gryphon-backed) is on the known-DSO-brand list, so per binding rule 3 a T2 record bearing that brand can never be self-accepted. The researcher's coincidental-name argument (Horberg's independent practice; not on Midwest Dental's own locator) is plausible but is precisely what the adversarial verifier must confirm; route to hold_dso_verify.",
+   "web_searched": false
   },
   "_triage_reason": "adjudication_hold_dso_verify"
  },
@@ -6810,50 +6599,6 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
-  "location_id": "bb3f79d399b5fcd4",
-  "practice_name": "HEALTHY SMILES, INC.",
-  "zip": "60618",
-  "assigned_tier": "true_independent",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.healthysmilesinc.com/about-us/",
-   "https://www.healthgrades.com/group-directory/il-illinois/chicago/healthy-smilesinc-x4c79h"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": "ao:PLATT_RITA",
-  "reasoning": "Practice's own About Us page (fetched directly) explicitly names Dr. Rita Salvi Platt, DDS as the owner of Healthy Smiles at 2005 W Addison St, practicing there since 2000. No mention of 'Jennifer Steinert' (the ctx-listed NPPES authorized official) on the practice's own site, and no corporate parent or DSO signal found anywhere.",
-  "searched": [
-   "\"Healthy Smiles\" dentist Chicago 2005 W Addison Jennifer Steinert",
-   "healthysmilesinc.com about-us (fetched)"
-  ],
-  "_unit": "laneA_094",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "true_independent",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_network_review",
-   "location_id": "bb3f79d399b5fcd4",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "HEALTHY SMILES, INC.",
-   "rationale": "Held: T1 has multiple independent network/control signals and the persisted reasoning does not fully rebut them with current owner + single-location proof.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_not_provider_or_practice_name",
-    "shared_ein_or_parent_tin",
-    "shared_website_domain",
-    "stale_founder_history",
-    "t1_reasoning_lacks_single_location_word"
-   ],
-   "web_searched": false,
-   "zip": "60618"
-  },
-  "_triage_reason": "adjudication_hold_network_review"
- },
- {
   "location_id": "8c6cbd8b8b3e4877",
   "practice_name": "DENTAL 360 & ASSOCIATES LLC",
   "zip": "60618",
@@ -7293,50 +7038,6 @@
   ],
   "_unit": "laneA_100",
   "_triage_reason": "undetermined_by_agent"
- },
- {
-  "location_id": "01e91acacc748597",
-  "practice_name": "LAWRENCE DENTAL GROUP P.C.",
-  "zip": "60625",
-  "assigned_tier": "true_independent",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "http://www.lawrencedentalgroup.com/",
-   "https://www.linkedin.com/in/george-korovilas-4991159",
-   "https://www.healthgrades.com/dentist/dr-george-korovilas-3xffk"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "LinkedIn explicitly lists George Korovilas as 'Owner, Lawrence Dental Group, P.C.'; the practice's own site and directory listings show a single Chicago office (3607 W Lawrence Ave) since 1997/1994 with no other locations or corporate branding found.",
-  "searched": [
-   "Lawrence Dental Group Korovilas 3607 W Lawrence Ave Chicago"
-  ],
-  "_unit": "laneA_100",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "true_independent",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_network_review",
-   "location_id": "01e91acacc748597",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "LAWRENCE DENTAL GROUP P.C.",
-   "rationale": "Held: T1 has multiple independent network/control signals and the persisted reasoning does not fully rebut them with current owner + single-location proof.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "shared_ein_or_parent_tin",
-    "shared_website_domain",
-    "stale_founder_history",
-    "t1_reasoning_lacks_negative_control_word",
-    "t1_reasoning_lacks_single_location_word"
-   ],
-   "web_searched": false,
-   "zip": "60625"
-  },
-  "_triage_reason": "adjudication_hold_network_review"
  },
  {
   "location_id": "e4dbabe89b306cf4",
@@ -8551,25 +8252,19 @@
   ],
   "_unit": "laneA_114",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "true_independent",
+   "batch_file": "batch_22.json",
    "corrected_confidence": null,
    "corrected_tier": null,
-   "disposition": "hold_network_review",
+   "disposition": "hold_unresolved",
    "location_id": "9c7f34a525b09172",
    "merge_action": "hold_do_not_merge",
    "practice_name": "Roci Elvi DMD",
-   "rationale": "Held: T1 has multiple independent network/control signals and the persisted reasoning does not fully rebut them with current owner + single-location proof.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "shared_ein_or_parent_tin",
-    "shared_phone_multiple_locations",
-    "stale_founder_history"
-   ],
-   "web_searched": false,
-   "zip": "60639"
+   "rationale": "T1 requires positive current proof that this dentist owns and practices here, and the evidence is internally contradictory: the named dentist Roci Elvi surfaces at a DIFFERENT practice (Precision Dental, suggesting relocation), the address/phone/EIN are tied to a different owner (Dr. Ankit Shah / Diversey Family Dental), and the DB website is a third brand (abcdentalchicago.com). With stale_founder_history plus shared EIN/phone and no coherent current-ownership proof, it cannot merge as a true_independent as-is (fail-closed).",
+   "web_searched": false
   },
-  "_triage_reason": "adjudication_hold_network_review"
+  "_triage_reason": "adjudication_hold_unresolved"
  },
  {
   "location_id": "aee85a072102dce1",
@@ -9212,23 +8907,17 @@
   },
   "_unit": "laneA_120",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "true_independent",
+   "batch_file": "batch_17.json",
    "corrected_confidence": null,
    "corrected_tier": null,
    "disposition": "hold_dso_verify",
    "location_id": "0f685e9364a72bcb",
    "merge_action": "hold_do_not_merge",
    "practice_name": "FAMILY CARE GENTLE DENTAL CTR, P.C.",
-   "rationale": "Held: persisted bundle has a contradictory corporate/control signal (db_corporate_conflict). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "db_corporate_conflict",
-    "t1_reasoning_lacks_owner_word",
-    "t1_reasoning_lacks_single_location_word"
-   ],
-   "web_searched": false,
-   "zip": "60643"
+   "rationale": "The hard db_corporate_conflict labels this dso_national via affiliated_dso 'Gentle Dental' -- a known DSO brand name. Rule 2's accept branch requires the practice's OWN website/state registry proving current ownership, which is absent (website null; evidence is directory/BBB only, no owner explicitly named). Strong negative evidence exists (national Gentle Dental/InterDent has zero IL locations per its own locator; this is a standalone single-provider P.C. since 1996 under Dr. Marian Brinker), but with no own-site/registry ownership proof and a DSO-brand-named conflict, fail-closed routes this to the adversarial verifier rather than a self-cleared accept.",
+   "web_searched": true
   },
   "_triage_reason": "adjudication_hold_dso_verify"
  },
@@ -9479,65 +9168,6 @@
   ],
   "_unit": "laneA_124",
   "_triage_reason": "undetermined_by_agent"
- },
- {
-  "location_id": "6140e924f8088627",
-  "practice_name": "ADRIA M CASADO",
-  "zip": "60647",
-  "assigned_tier": "true_independent",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.yelp.com/biz/adria-casado-dds-chicago",
-   "https://www.vitals.com/dentists/Dr_Adria_Casado"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Yelp and Vitals confirm Dr. Adria M. Casado, DDS practices solo at 3230 W North Ave, matching NPPES AO 'Adria Casado' and address/phone exactly. No corporate/franchise signal found; classified true_independent.",
-  "searched": [
-   "Adria Casado DDS Chicago dentist 3230 W North Ave"
-  ],
-  "intel": {
-   "services": [
-    "general dentistry",
-    "cosmetic dentistry",
-    "endodontics",
-    "sedation dentistry",
-    "oral & maxillofacial surgery"
-   ],
-   "google_rating": 3.7,
-   "google_review_count": 9,
-   "google_source_url": "https://www.caredash.com/doctors/adria-casado-chicago-il",
-   "distinguishing_notes": "Dr. Casado speaks Spanish; accepting new patients.",
-   "sources": [
-    "https://www.vitals.com/dentists/Dr_Adria_Casado",
-    "https://www.caredash.com/doctors/adria-casado-chicago-il"
-   ]
-  },
-  "_unit": "laneA_125",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "true_independent",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_unresolved",
-   "location_id": "6140e924f8088627",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "ADRIA M CASADO",
-   "rationale": "Held: T1 is supported by directory-style evidence only, which fails the positive-proof standard for true solo ownership.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "directory_only_support",
-    "shared_ein_or_parent_tin",
-    "shared_phone_multiple_locations",
-    "t1_reasoning_lacks_owner_word"
-   ],
-   "web_searched": false,
-   "zip": "60647"
-  },
-  "_triage_reason": "adjudication_hold_unresolved"
  },
  {
   "location_id": "a82bfb3ce61a8627",
@@ -13461,55 +13091,6 @@
   "_triage_reason": "undetermined_by_agent"
  },
  {
-  "location_id": "96c9c8a18c7f8ad2",
-  "practice_name": "RAJUL PATEL PC",
-  "zip": "60108",
-  "assigned_tier": "true_independent",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://www.tebra.com/care/provider/rajul-patel-dds-1912163106",
-   "https://www.healthgrades.com/dentist/dr-rajul-patel-2tyjp"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "high",
-  "status": "classified",
-  "network_id": null,
-  "reasoning": "Dr. Rajul Patel, DDS operates solo as 'Pure Dental Spa' at 107 W Lake St Ste 101, Bloomingdale (exact address + phone 630-307-3133 match). NYU dental grad, no DSO/corporate signal found across directories.",
-  "searched": [
-   "Rajul Patel DDS Bloomingdale IL 107 W Lake St dentist"
-  ],
-  "intel": {
-   "website_note": "Branded 'Pure Dental Spa'; preventative-dentistry focus; 206 reviews at 4.75/5; multilingual (English/Spanish/Hindi/Gujarati); telehealth offered.",
-   "google_rating": 4.75,
-   "review_count": 206,
-   "sources": [
-    "https://www.tebra.com/care/provider/rajul-patel-dds-1912163106"
-   ]
-  },
-  "_unit": "laneA_173",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "true_independent",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_network_review",
-   "location_id": "96c9c8a18c7f8ad2",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "RAJUL PATEL PC",
-   "rationale": "Held: T1 has multiple independent network/control signals and the persisted reasoning does not fully rebut them with current owner + single-location proof.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "ao_reaches_multiple_locations",
-    "shared_website_domain",
-    "t1_reasoning_lacks_owner_word"
-   ],
-   "web_searched": false,
-   "zip": "60108"
-  },
-  "_triage_reason": "adjudication_hold_network_review"
- },
- {
   "location_id": "0f917daa7d21b189",
   "practice_name": "BLOOMINGDALE DENTAL, PLLC",
   "zip": "60108",
@@ -13682,68 +13263,6 @@
   ],
   "_unit": "laneA_175",
   "_triage_reason": "undetermined_by_agent"
- },
- {
-  "location_id": "20de6a9f1f6068a3",
-  "practice_name": "WILLIAM E. DEWITT,DDS,PC",
-  "zip": "60126",
-  "assigned_tier": "true_independent",
-  "pe_backed": false,
-  "evidence_basis": "web_verified",
-  "evidence_urls": [
-   "https://dewittdentistry.com/",
-   "https://www.yelp.com/biz/dewitt-dentistry-elmhurst"
-  ],
-  "evidence_artifacts": [],
-  "confidence": "medium",
-  "status": "classified",
-  "network_id": "ao:DEWITT_WILLIAM",
-  "reasoning": "Own practice website (dewittdentistry.com) confirms 'DeWitt Dentistry' at 118 E Vallette St, Elmhurst, owner-dentist Dr. William Dewitt, no franchise or DSO branding. Note: the NPPES EIN on this record shows a 2-location reach, but no second office was found on the practice's own site (which lists only this Elmhurst address), so confidence is medium pending resolution of that EIN signal.",
-  "searched": [
-   "William E Dewitt DDS PC 118 Vallette Elmhurst dentist"
-  ],
-  "intel": {
-   "website_url": "https://dewittdentistry.com/",
-   "website_note": "Established solo/small practice site branded 'artistry, science & advanced excellence.'",
-   "services": [
-    "family dentistry",
-    "cleanings",
-    "periodontal care",
-    "sedation dentistry",
-    "root canal therapy",
-    "orthodontics (braces & Invisalign)",
-    "implants",
-    "mini-implant dentures"
-   ],
-   "insurance_note": "Accepts most traditional insurance, P.O.S. plans, and Delta Dental Premier.",
-   "distinguishing_notes": "Multiple-year winner of 'America's Best Cosmetic & General Dentist.'",
-   "sources": [
-    "https://dewittdentistry.com/",
-    "https://www.carecredit.com/doctor-locator/elmhurst-il/dewitt-dentistry-527bmv/"
-   ]
-  },
-  "_unit": "laneA_175",
-  "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
-   "assigned_tier": "true_independent",
-   "corrected_confidence": null,
-   "corrected_tier": null,
-   "disposition": "hold_network_review",
-   "location_id": "20de6a9f1f6068a3",
-   "merge_action": "hold_do_not_merge",
-   "practice_name": "WILLIAM E. DEWITT,DDS,PC",
-   "rationale": "Held: T1 has multiple independent network/control signals and the persisted reasoning does not fully rebut them with current owner + single-location proof.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "shared_ein_or_parent_tin",
-    "shared_website_domain",
-    "t1_reasoning_lacks_negative_control_word",
-    "t1_reasoning_lacks_single_location_word"
-   ],
-   "web_searched": false,
-   "zip": "60126"
-  },
-  "_triage_reason": "adjudication_hold_network_review"
  },
  {
   "location_id": "6e15cd51a8e6ced3",
@@ -14851,23 +14370,17 @@
   ],
   "_unit": "laneA_193",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "single_loc_group",
+   "batch_file": "batch_16.json",
    "corrected_confidence": null,
    "corrected_tier": null,
    "disposition": "hold_unresolved",
    "location_id": "7c3996d8fabb7f69",
    "merge_action": "hold_do_not_merge",
    "practice_name": "G.R. CLEMENS, D.D.S., P.C.",
-   "rationale": "Held: T2 relies on directory-style support without enough current practice-owned evidence.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "directory_only_support",
-    "shared_phone_multiple_locations",
-    "t2_provider_count_lte1"
-   ],
-   "web_searched": false,
-   "zip": "60402"
+   "rationale": "Assigned T2 (single_loc_group) but db provider_count is 1 and entity is solo_established, directly contradicting the 2+ dentist group claim, which itself rests only on directory_only_support (dentalplans.com, healthgrades.com) plus a vague 'appears to house 2 providers' inference. Compounding this, phone 7087951255 is shared across 4 locations (unexplained network/answering-service artifact) and 7084840212 across 2. No corporate/DSO signal exists so this is not hold_dso_verify, but the roster count and phone-sharing are contradictory and unverifiable from directory sources \u2014 it must not merge as a T2 as-is (rule 5 hold path).",
+   "web_searched": false
   },
   "_triage_reason": "adjudication_hold_unresolved"
  },
@@ -16273,23 +15786,17 @@
   },
   "_unit": "laneA_211",
   "_adjudication": {
-   "adjudication_source": "codex_missing_adjudication",
+   "adjudication_source": "opus_batch",
    "assigned_tier": "single_loc_group",
+   "batch_file": "batch_16.json",
    "corrected_confidence": null,
    "corrected_tier": null,
    "disposition": "hold_dso_verify",
    "location_id": "f5a7ad23598f31ca",
    "merge_action": "hold_do_not_merge",
    "practice_name": "TIMOTHY W. SHEEHAN,LTD.",
-   "rationale": "Held: persisted bundle has a contradictory corporate/control signal (parent_or_legal_entity_signal). Codex did not re-web-verify this row, so the old detector/source conflict cannot be overturned safely in the merge.",
-   "rule_basis": "\u00a76h positive-proof gate; deterministic recovery from persisted blocker bundle",
-   "screen_signal_codes": [
-    "parent_or_legal_entity_signal",
-    "shared_phone_multiple_locations",
-    "stale_founder_history"
-   ],
-   "web_searched": false,
-   "zip": "60174"
+   "rationale": "The parent_or_legal_entity_signal fires with parent_company 'GRYPHON INVESTORS' plus da_subsidiary_iusa 354261935 consistently populated across all four provider NPIs (a specific, non-placeholder structural signal). Gryphon Investors is a known PE firm and the platform sponsor behind Midwest Dental in this dataset, so a PE-parent field on the practices table is exactly the corporate-control signal rule 2 routes to hold_dso_verify. The researcher's two 'no Gryphon corroboration' searches and the site's 'family owned' language do not clear a hard structural PE-parent signal, which DSOs routinely mask behind a retained local/family name; the adversarial verifier must resolve whether CORE Dental is Midwest/Gryphon-controlled before merge.",
+   "web_searched": false
   },
   "_triage_reason": "adjudication_hold_dso_verify"
  },

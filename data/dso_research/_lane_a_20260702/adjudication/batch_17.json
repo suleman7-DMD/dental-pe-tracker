@@ -1,0 +1,106 @@
+{
+  "batch": 17,
+  "indices": [170, 179],
+  "dispositions": [
+    {
+      "location_id": "01e91acacc748597",
+      "practice_name": "LAWRENCE DENTAL GROUP P.C.",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": "medium",
+      "rationale": "Web search confirms Dr. George Korovilas owns a single independent Chicago office at 3607 W Lawrence Ave ('serving Chicagoland since 1997', LinkedIn 'Owner, Lawrence Dental Group P.C.', own site + Yelp/WebMD); no link to Joshi Family Dentistry found. The shared_ein (reach 2) and the DB website field 'joshifamilydentistry.com' / shared_website_domain (reach 2) point to two different other location_ids and are DB-side mis-scrape / billing-entity artifacts, not a real second office or DSO -- no corporate/PE/DSO brand present. Tier true_independent stands; confidence set to medium pending explanation of the unresolved EIN crosslink.",
+      "web_searched": true
+    },
+    {
+      "location_id": "5a8ff67ae8c53e46",
+      "practice_name": "DENTAL CARE ASSOCIATES",
+      "assigned_tier": "dentist_multi",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Web search confirms Dr. Azam Saeed OWNS 'Ace Dental Center', a dentist-owned group with branches in Chicago (60641, this Elston address), Lombard, and Hoffman Estates -- a small dentist-owned multi-location group, not a national/PE DSO (not on the known-brand list). The hard 'ao_nonclinical_exec_title' signal (Mirza Baig, ADMINISTRATOR, reaching 2 locations) is the group's office administrator on the org NPI, benign for a dentist-owned multi-office group. dentist_multi (T3) is correct; medium confidence retained given the AO/owner name mismatch.",
+      "web_searched": true
+    },
+    {
+      "location_id": "0f685e9364a72bcb",
+      "practice_name": "FAMILY CARE GENTLE DENTAL CTR, P.C.",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The hard db_corporate_conflict labels this dso_national via affiliated_dso 'Gentle Dental' -- a known DSO brand name. Rule 2's accept branch requires the practice's OWN website/state registry proving current ownership, which is absent (website null; evidence is directory/BBB only, no owner explicitly named). Strong negative evidence exists (national Gentle Dental/InterDent has zero IL locations per its own locator; this is a standalone single-provider P.C. since 1996 under Dr. Marian Brinker), but with no own-site/registry ownership proof and a DSO-brand-named conflict, fail-closed routes this to the adversarial verifier rather than a self-cleared accept.",
+      "web_searched": true
+    },
+    {
+      "location_id": "6140e924f8088627",
+      "practice_name": "ADRIA M CASADO",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": "medium",
+      "rationale": "Yelp + Vitals confirm Dr. Adria M. Casado practices solo at 3230 W North Ave, matching the NPPES AO and phone exactly; single provider, no DSO/PE/corporate brand. Support is directory-only, so confidence is capped at medium per rule 5. The shared_phone (reach 2) and shared_ein (reach 2) point to different partner location_ids and most plausibly reflect co-located/address-variant NPI records or a solo billing entity for this confirmed single-provider practice, not a network.",
+      "web_searched": false
+    },
+    {
+      "location_id": "caee5e1450448840",
+      "practice_name": "ISABEL LLAMOZAS DMD PC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Web search confirms 3256 N Ashland / 773-975-6666 is Wrigleyville Dental, an independent holistic practice owned by Dr. Bernice Teplitsky (Becker's: 'Owner of Wrigleyville Dental Group'; roster surname TEPLITSKY matches), with Dr. Isabel Llamozas and others practicing there -- one location, multiple dentists, dentist-owned = single_loc_group (T2). The DB 'secure-dental.com' domain is a mis-scrape (real site wrigleyvilledental.com) and the shared phone reaching 3 = the co-located dentists' individual PC records at the single Wrigleyville office; no DSO/PE/corporate control. Tier and high confidence stand.",
+      "web_searched": true
+    },
+    {
+      "location_id": "7e1ae3773b7f761c",
+      "practice_name": "AUGUST J. DURSO, JR. DDS, LTD.",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": "medium",
+      "rationale": "Yelp/TopRank/Healthgrades corroborate a single GP, Dr. August Durso, in Mount Prospect since 1989 at 1661 Feehanville Dr Ste 420 (matches DB address/phone); provider_count 0 and only one dentist named. The shared 'profendoillinois.com' domain (reach 3, a Professional Endodontics of Illinois multi-office endo group) and shared phone (reach 2) are a suite/building co-tenancy / mis-scrape artifact -- a GP is not an owner of an endo group, and no DSO/PE brand appears on Durso's record (rule 6b). Directory-only support caps confidence at medium (rule 5).",
+      "web_searched": false
+    },
+    {
+      "location_id": "5127bef546a60532",
+      "practice_name": "SHIFFMAN MORRIS DENTAL ASSOC.",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": "medium",
+      "rationale": "The NPPES roster of 5 providers with surnames matching the practice name (SHIFFMAN, MORRIS) at one address (195 N Arlington Heights Rd), plus directory listings, confirms a multi-dentist dentist-owned group at a single location = single_loc_group (T2); the AO (Jamie Schoessling, RDH, OFFICE MANAGER) is benign. Cited ownership URLs are directory-only (aedit, birdeye) so confidence is capped at medium per rule 5; the two shared phone numbers (reach 2 each) most likely reflect address-variant duplicate records of the same single practice, not multi-location control, and no DSO/PE brand is present.",
+      "web_searched": false
+    },
+    {
+      "location_id": "faa4a979653a24f1",
+      "practice_name": "MY DENTIST FAMILY, LTD.",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": "medium",
+      "rationale": "AO Adam Szatkowski matches the practicing dentist; the practice is a two-generation family group (Dr. Frank + Dr. Adam Szatkowski) at one Bloomingdale location (76 Stratford Dr) since 1972 -- multiple dentists, one location, dentist-owned = single_loc_group (T2). Directory-only cited support (Healthgrades, Sharecare) caps confidence at medium per rule 5. The shared 'eaglefalls.com' domain (reach 2) and shared phone (reach 2) are most consistent with a mis-scraped domain / address-variant duplicate; no DSO/PE/corporate brand appears.",
+      "web_searched": false
+    },
+    {
+      "location_id": "96c9c8a18c7f8ad2",
+      "practice_name": "RAJUL PATEL PC",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "dentist_multi",
+      "corrected_confidence": "medium",
+      "rationale": "AO Dr. Rajul Patel (DENTIST/OWNER) reaches 3 location_ids and the practice domain puredentalspa.com reaches 3 location_ids -- two converging signals that Dr. Patel owns a 3-location 'Pure Dental Spa' group, contradicting the T1 single-location claim (the researcher web-verified only the Bloomingdale office). This is the practice's OWN dentist-owned multi-office group with no PE/DSO brand, so it corrects true_independent -> dentist_multi per rule 6(a). Confidence medium because only one of the three offices was directly web-verified.",
+      "web_searched": false
+    },
+    {
+      "location_id": "20de6a9f1f6068a3",
+      "practice_name": "WILLIAM E. DEWITT,DDS,PC",
+      "assigned_tier": "true_independent",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": "medium",
+      "rationale": "The practice's OWN website (dewittdentistry.com) confirms DeWitt Dentistry is a single-office, dentist-owned independent practice (Dr. William DeWitt) at 118 E Vallette St, Elmhurst, listing only that office. The shared_ein (363096791) and shared_website_domain both reach exactly ONE other location -- the same partner id d4e18c5fbe25e529 -- most consistent with an address-variant / second-NPI record of the same single practice (own site shows one office), a benign NPPES dual-emission artifact, not a multi-office group or DSO. Tier stands; confidence medium (matches researcher) pending the residual EIN duplication.",
+      "web_searched": false
+    }
+  ]
+}

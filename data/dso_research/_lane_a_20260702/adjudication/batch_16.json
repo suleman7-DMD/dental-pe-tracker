@@ -1,0 +1,106 @@
+{
+  "batch": 16,
+  "indices": [160, 169],
+  "dispositions": [
+    {
+      "location_id": "f5a7ad23598f31ca",
+      "practice_name": "TIMOTHY W. SHEEHAN,LTD.",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The parent_or_legal_entity_signal fires with parent_company 'GRYPHON INVESTORS' plus da_subsidiary_iusa 354261935 consistently populated across all four provider NPIs (a specific, non-placeholder structural signal). Gryphon Investors is a known PE firm and the platform sponsor behind Midwest Dental in this dataset, so a PE-parent field on the practices table is exactly the corporate-control signal rule 2 routes to hold_dso_verify. The researcher's two 'no Gryphon corroboration' searches and the site's 'family owned' language do not clear a hard structural PE-parent signal, which DSOs routinely mask behind a retained local/family name; the adversarial verifier must resolve whether CORE Dental is Midwest/Gryphon-controlled before merge.",
+      "web_searched": false
+    },
+    {
+      "location_id": "bcc295ef115b06f6",
+      "practice_name": "DST DENTAL, LLC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "correct",
+      "corrected_tier": "dentist_multi",
+      "corrected_confidence": "medium",
+      "rationale": "The ao_reaches_multiple_locations signal shows AO 'OWNER DENTIST' Dhaval Shah D.M.D. spanning two distinct location_ids, and a web search confirms Dr. Shah operates both North Avenue Dental Associates (West Chicago) and La Grange Family Dental (La Grange) — his own dentist-owned multi-office network, not a single office. No corporate parent, MSO, or DSO brand appears (rule 6a: shared owner across locations is the practice's own group -> correct to T3). Confidence medium because the local roster is muddled (NPPES surname Kendrick, Yelp associates rotating) and per-office ownership share is directory-based, but the tier is clearly dentist_multi, not single_loc_group.",
+      "web_searched": true
+    },
+    {
+      "location_id": "7c3996d8fabb7f69",
+      "practice_name": "G.R. CLEMENS, D.D.S., P.C.",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Assigned T2 (single_loc_group) but db provider_count is 1 and entity is solo_established, directly contradicting the 2+ dentist group claim, which itself rests only on directory_only_support (dentalplans.com, healthgrades.com) plus a vague 'appears to house 2 providers' inference. Compounding this, phone 7087951255 is shared across 4 locations (unexplained network/answering-service artifact) and 7084840212 across 2. No corporate/DSO signal exists so this is not hold_dso_verify, but the roster count and phone-sharing are contradictory and unverifiable from directory sources — it must not merge as a T2 as-is (rule 5 hold path).",
+      "web_searched": false
+    },
+    {
+      "location_id": "788b939c70cf8c48",
+      "practice_name": "Parker Dental",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "A high-confidence T1 that positively proves single-owner ownership cannot rest on directory_only_support (yelp.com, npiprofile.com) while three structural signals contradict a clean solo: shared EIN 363986932 across two locations, shared phone 6302573212 across two locations, and clear NPI/website conflation (db website is 'Hareorthodontics.Com' and the cited evidence NPI 1356361539 differs from primary_npi 1255687562). A genuine true_independent should not carry a two-location shared tax ID; the record is contradictory (possible duplicate or unrelated ortho co-tenant) and unverifiable as clean T1, so hold rather than accept per fail-closed.",
+      "web_searched": false
+    },
+    {
+      "location_id": "b0f98c9bc9dd6da7",
+      "practice_name": "STOFFEL AND TOMAZIN DENTAL ASSOCIATES, LTD",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The practice's own website (stoffeltomazin.com/about-us) confirms two owner-dentists — Kenneth M. Stoffel DDS and Lawrence A. Tomazin Jr DDS — at one address (12371 Derby Rd, Lemont), a textbook dentist-owned single_loc_group. The HARD ao_nonclinical_exec_title is benign: the AO 'VICE PRESIDENT' Lawrence Tomazin is himself one of the two named owner-dentists serving as a corporate officer of his own Ltd (dentists routinely hold President/VP titles in their own P.C./Ltd), not an external MSO executive. The shared_website_domain across two location rows is simply the practice's own site on its own duplicate NPI/address records; no corporate parent, EIN cluster, or DSO brand is present.",
+      "web_searched": false
+    },
+    {
+      "location_id": "f7f523d579771409",
+      "practice_name": "OAK RIDGE FAMILY DENTAL LLC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The practice's own website (oakridgefamilydental.com) matches the record's phone (708-422-2224) and names owner-dentists Dr. Colleen Gaffney and Dr. Meghan Gaffney plus associate Victoria Pavletic-Vorderer DDS (the exact AO), confirming a dentist-owned multi-dentist single office. The t2_provider_count_lte1 is a stale NPPES roster contradicted by the live team page; the shared phone (reach 3) and shared EIN (reach 2) are consistent with the documented Oak Lawn (4445 W 95th) to Evergreen Park (3615 W 95th) relocation generating duplicate address rows on the same line — a building/relocation artifact, not MSO back-office infrastructure (rule 6b). No DSO/PE/parent signal; medium confidence stands.",
+      "web_searched": false
+    },
+    {
+      "location_id": "adf8398b542a00e9",
+      "practice_name": "OAK BROOK DENTAL AFFILIATES P.C.",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": "medium",
+      "rationale": "AO James Chidester is listed as 'OWNER' and db shows provider_count 2, consistent with a dentist-owned multi-dentist office at one address (120 Oak Brook Ctr Ste 510) with no corporate parent, EIN cluster, or DSO brand. However ownership rests on directory_only_support (bbb.org, yelp.com) with no first-party website, so per rule 5 the confidence must be capped: accept with corrected_confidence medium (down from high). The two shared-phone signals (reach 2 and reach 3) most plausibly reflect co-located/duplicate NPI rows within the Oakbrook Center building rather than corporate control, given the absence of any MSO/DSO signal.",
+      "web_searched": false
+    },
+    {
+      "location_id": "843dc24460a9f574",
+      "practice_name": "LISLE DENTAL SPECIALISTS,INC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "duplicate_suspect",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "This row shares the identical address (6070 State Route 53), identical phone (630-963-4306), and website domain (dentistinlisleil.com) with the 'Chang Dental Center' NPI record, and the researcher explicitly concludes 'Both NPI records represent the same single physical practice.' 'Lisle Dental Specialists, Inc' is the org/legal-entity NPI (org_npi = Douglas Chang's) layered on top of the operating brand Chang Dental Center; da_legal_name 'CHANG DENTAL CTR LTD' corroborates it is the same entity. The underlying practice is dentist-owned (Dr. Douglas Chang, AO=OWNER) with no corporate signal, but this row is an address/name variant of an already-represented location and should be deduped, not merged as a distinct clinic.",
+      "web_searched": false
+    },
+    {
+      "location_id": "ab7f0dea9951c4c3",
+      "practice_name": "WESTGROVE DENTAL CENTER",
+      "assigned_tier": "dentist_multi",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The HARD db_corporate_conflict (entity_classification dso_regional, affiliated_dso 'Dental Salon') is cleared by evidence: the address (519 N Cass Ave Ste 401, Westmont) now hosts Chawla Orthodontics & Pediatric Dentistry, and both the practice's own site and a web search confirm it is dentist-owned by Dr. Sumit Chawla (with Dr. Jag Chawla) across two locations (Westmont + Villa Park) with no PE/DSO/management-company. A separate search shows 'Dental Salon' is an unrelated independent family-owned practice in Lincoln Park/Schaumburg — not a DSO — so the affiliated_dso label is a junk name-match and dso_regional is a stale detector inference (rule 2 accept path: own-site proof of dentist ownership vs a weak non-DSO label). The shared chawlaortho.com domain across two locations corroborates the dentist-owned 2-office group; dentist_multi stands.",
+      "web_searched": true
+    },
+    {
+      "location_id": "bb3f79d399b5fcd4",
+      "practice_name": "HEALTHY SMILES, INC.",
+      "assigned_tier": "true_independent",
+      "disposition": "correct",
+      "corrected_tier": "dentist_multi",
+      "corrected_confidence": "medium",
+      "rationale": "Assigned T1 (one owner-operator at one location) is contradicted by a shared EIN (273059355) AND a shared website domain (brightsmilespediatricdentistry.com) spanning the same two distinct location records — i.e., the same tax entity and same web brand operate at two location_ids. The practice's own About Us confirms Dr. Rita Salvi Platt owns Healthy Smiles (2005 W Addison), and the shared EIN/domain shows she also runs Bright Smiles Pediatric Dentistry, making this her own dentist-owned two-office group, not a solo T1 (rule 6a: own shared-EIN/domain network -> correct to T3). No corporate/PE/MSO signal, so it stays independent; confidence medium because the second location's separateness vs co-location is not independently pinned, but it is unambiguously not true_independent.",
+      "web_searched": false
+    }
+  ]
+}

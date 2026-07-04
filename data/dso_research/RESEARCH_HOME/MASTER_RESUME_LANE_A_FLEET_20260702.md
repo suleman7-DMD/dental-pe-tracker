@@ -501,17 +501,17 @@ Policy applied:
 - Downgrade high-confidence directory-supported T1/T2 rows to medium; do not let directory-only
   evidence publish as high-confidence true-independent proof.
 
-Result after late Opus batches (`batch_13`, `batch_14`, `batch_15`, `batch_18`) were incorporated:
-- Scanned 2,415 candidate T1/T2 rows.
+Result after late Opus batches (`batch_13` through `batch_18`, plus `batch_22`) were incorporated:
+- Adjudication rollup source split: Opus 200 / Codex missing-row recovery 77.
+- Scanned 2,419 candidate T1/T2 rows.
 - Held 50 rows into triage as `t1_t2_positive_proof_audit_hold`.
-- Downgraded confidence on 480 overconfident T1/T2 rows.
-- Candidate now has **2,827 rows** and validates cleanly with `consolidate_census.py --validate-only`.
-- Tally after audit: T1 1,433 / T2 932 / T3 357 / T4 7 / T5 49 / T6 49.
-- Triage now has 659 rows.
+- Downgraded confidence on 482 overconfident T1/T2 rows.
+- Candidate now has **2,836 rows** and validates cleanly with `consolidate_census.py --validate-only`.
+- Tally after audit: T1 1,437 / T2 932 / T3 362 / T4 7 / T5 49 / T6 49.
+- Triage now has 650 rows.
 
-Bounded source check over the 103-row fixed-seed audit sample: 84/103 sampled rows had at least
-one resolving citation. Four corporate-language regex hits were manually reviewed; three were
-already held, and one was generic `supported by` practice-language rather than DSO/MSO language.
-No additional source-check holds were added.
+Bounded source check over the 104-row fixed-seed audit sample: 85/104 sampled rows had at least
+one resolving citation. Three corporate-language regex hits were manually reviewed; all three were
+already held. No additional source-check holds were added.
 
 Still no DB, Supabase, LEDGER, or PROGRESS writes occurred.

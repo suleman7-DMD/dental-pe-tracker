@@ -1,26 +1,26 @@
 {
   "_meta": {
-    "candidate_rows_after": 2827,
-    "candidate_rows_before": 2877,
-    "confidence_downgraded_rows": 480,
+    "candidate_rows_after": 2836,
+    "candidate_rows_before": 2886,
+    "confidence_downgraded_rows": 482,
     "finding_counts": {
-      "downgrade_confidence": 480,
+      "downgrade_confidence": 482,
       "hold": 50,
-      "pass": 1885
+      "pass": 1887
     },
-    "generated_at": "2026-07-04T15:16:43Z",
+    "generated_at": "2026-07-04T15:21:51Z",
     "held_rows": 50,
     "seed": 20260704,
-    "t1_t2_rows_scanned": 2415,
+    "t1_t2_rows_scanned": 2419,
     "tier_tally_after": {
       "branded_dso": 49,
-      "dentist_multi": 357,
+      "dentist_multi": 362,
       "institutional": 49,
       "single_loc_group": 932,
       "stealth_dso": 7,
-      "true_independent": 1433
+      "true_independent": 1437
     },
-    "triage_rows_after": 659
+    "triage_rows_after": 650
   },
   "findings": [
     {
@@ -314,6 +314,37 @@
         "hosts": [
           "healthgrades.com",
           "doctorsnetwork.com"
+        ]
+      }
+    },
+    {
+      "assigned_tier": "single_loc_group",
+      "audit_action": "pass",
+      "audit_reason": "No hard T1/T2 audit issue found.",
+      "confidence": "high",
+      "findings": [
+        "stale_founder_history"
+      ],
+      "location_id": "b0f98c9bc9dd6da7",
+      "practice_name": null,
+      "risk_score": 15,
+      "screen_priority": "block_before_merge",
+      "signal_codes": [
+        "ao_nonclinical_exec_title",
+        "shared_website_domain",
+        "stale_founder_history"
+      ],
+      "url_profile": {
+        "direct_hosts": [
+          "stoffeltomazin.com",
+          "stoffeltomazin.com"
+        ],
+        "directory_hosts": [],
+        "directory_only": false,
+        "has_direct_source": true,
+        "hosts": [
+          "stoffeltomazin.com",
+          "stoffeltomazin.com"
         ]
       }
     },
@@ -5570,6 +5601,40 @@
       }
     },
     {
+      "assigned_tier": "single_loc_group",
+      "audit_action": "downgrade_confidence",
+      "audit_reason": "High-confidence T2 relies on directory-style support; lower to medium under source-quality rule.",
+      "confidence": "high",
+      "findings": [
+        "high_conf_t2_directory_only",
+        "directory_only_urls",
+        "stale_founder_history"
+      ],
+      "location_id": "adf8398b542a00e9",
+      "practice_name": null,
+      "risk_score": 25,
+      "screen_priority": "block_before_merge",
+      "signal_codes": [
+        "ao_not_provider_or_practice_name",
+        "directory_only_support",
+        "shared_phone_multiple_locations",
+        "stale_founder_history"
+      ],
+      "url_profile": {
+        "direct_hosts": [],
+        "directory_hosts": [
+          "yelp.com",
+          "bbb.org"
+        ],
+        "directory_only": true,
+        "has_direct_source": false,
+        "hosts": [
+          "yelp.com",
+          "bbb.org"
+        ]
+      }
+    },
+    {
       "assigned_tier": "true_independent",
       "audit_action": "downgrade_confidence",
       "audit_reason": "High-confidence T1 relies on directory-style support; lower to medium under positive-proof rule.",
@@ -8036,35 +8101,6 @@
       "risk_score": 19,
       "screen_priority": "block_before_merge",
       "signal_codes": [
-        "ao_reaches_multiple_locations",
-        "shared_phone_multiple_locations"
-      ],
-      "url_profile": {
-        "direct_hosts": [
-          "catonfielddental.com",
-          "local.demandforce.com"
-        ],
-        "directory_hosts": [],
-        "directory_only": false,
-        "has_direct_source": true,
-        "hosts": [
-          "catonfielddental.com",
-          "local.demandforce.com"
-        ]
-      }
-    },
-    {
-      "assigned_tier": "single_loc_group",
-      "audit_action": "pass",
-      "audit_reason": "No hard T1/T2 audit issue found.",
-      "confidence": "medium",
-      "findings": [],
-      "location_id": "134b8d7ff14d4d1e",
-      "practice_name": null,
-      "risk_score": 16,
-      "screen_priority": "block_before_merge",
-      "signal_codes": [
-        "ao_not_provider_or_practice_name",
         "ao_reaches_multiple_locations",
         "shared_phone_multiple_locations"
       ],
@@ -18368,6 +18404,43 @@
         "hosts": [
           "doctorsnetwork.com",
           "dentistsok.com"
+        ]
+      }
+    },
+    {
+      "assigned_tier": "true_independent",
+      "audit_action": "pass",
+      "audit_reason": "No hard T1/T2 audit issue found.",
+      "confidence": "high",
+      "findings": [
+        "t1_multiple_network_signals",
+        "stale_founder_history"
+      ],
+      "location_id": "7e1ae3773b7f761c",
+      "practice_name": null,
+      "risk_score": 29,
+      "screen_priority": "block_before_merge",
+      "signal_codes": [
+        "shared_phone_multiple_locations",
+        "shared_website_domain",
+        "stale_founder_history",
+        "t1_reasoning_lacks_negative_control_word",
+        "t1_reasoning_lacks_single_location_word"
+      ],
+      "url_profile": {
+        "direct_hosts": [
+          "toprankdental.com"
+        ],
+        "directory_hosts": [
+          "yelp.com",
+          "healthgrades.com"
+        ],
+        "directory_only": false,
+        "has_direct_source": true,
+        "hosts": [
+          "yelp.com",
+          "toprankdental.com",
+          "healthgrades.com"
         ]
       }
     },
@@ -31848,6 +31921,43 @@
       "audit_reason": "No hard T1/T2 audit issue found.",
       "confidence": "high",
       "findings": [
+        "t1_multiple_network_signals",
+        "stale_founder_history"
+      ],
+      "location_id": "01e91acacc748597",
+      "practice_name": null,
+      "risk_score": 29,
+      "screen_priority": "block_before_merge",
+      "signal_codes": [
+        "shared_ein_or_parent_tin",
+        "shared_website_domain",
+        "stale_founder_history",
+        "t1_reasoning_lacks_negative_control_word",
+        "t1_reasoning_lacks_single_location_word"
+      ],
+      "url_profile": {
+        "direct_hosts": [
+          "lawrencedentalgroup.com",
+          "linkedin.com"
+        ],
+        "directory_hosts": [
+          "healthgrades.com"
+        ],
+        "directory_only": false,
+        "has_direct_source": true,
+        "hosts": [
+          "lawrencedentalgroup.com",
+          "linkedin.com",
+          "healthgrades.com"
+        ]
+      }
+    },
+    {
+      "assigned_tier": "true_independent",
+      "audit_action": "pass",
+      "audit_reason": "No hard T1/T2 audit issue found.",
+      "confidence": "high",
+      "findings": [
         "stale_founder_history"
       ],
       "location_id": "1893859fc022bc66",
@@ -40041,6 +40151,40 @@
         "hosts": [
           "yelp.com",
           "doctor.webmd.com"
+        ]
+      }
+    },
+    {
+      "assigned_tier": "true_independent",
+      "audit_action": "downgrade_confidence",
+      "audit_reason": "High-confidence T1 relies on directory-style support; lower to medium under positive-proof rule.",
+      "confidence": "high",
+      "findings": [
+        "high_conf_t1_directory_only",
+        "t1_multiple_network_signals"
+      ],
+      "location_id": "6140e924f8088627",
+      "practice_name": null,
+      "risk_score": 39,
+      "screen_priority": "block_before_merge",
+      "signal_codes": [
+        "directory_only_support",
+        "shared_ein_or_parent_tin",
+        "shared_phone_multiple_locations",
+        "t1_reasoning_lacks_owner_word"
+      ],
+      "url_profile": {
+        "direct_hosts": [
+          "vitals.com"
+        ],
+        "directory_hosts": [
+          "yelp.com"
+        ],
+        "directory_only": false,
+        "has_direct_source": true,
+        "hosts": [
+          "yelp.com",
+          "vitals.com"
         ]
       }
     },
@@ -56040,6 +56184,39 @@
       }
     },
     {
+      "assigned_tier": "true_independent",
+      "audit_action": "pass",
+      "audit_reason": "No hard T1/T2 audit issue found.",
+      "confidence": "medium",
+      "findings": [
+        "t1_multiple_network_signals"
+      ],
+      "location_id": "20de6a9f1f6068a3",
+      "practice_name": null,
+      "risk_score": 26,
+      "screen_priority": "block_before_merge",
+      "signal_codes": [
+        "shared_ein_or_parent_tin",
+        "shared_website_domain",
+        "t1_reasoning_lacks_negative_control_word",
+        "t1_reasoning_lacks_single_location_word"
+      ],
+      "url_profile": {
+        "direct_hosts": [
+          "dewittdentistry.com"
+        ],
+        "directory_hosts": [
+          "yelp.com"
+        ],
+        "directory_only": false,
+        "has_direct_source": true,
+        "hosts": [
+          "dewittdentistry.com",
+          "yelp.com"
+        ]
+      }
+    },
+    {
       "assigned_tier": "single_loc_group",
       "audit_action": "pass",
       "audit_reason": "No hard T1/T2 audit issue found.",
@@ -69370,39 +69547,6 @@
       }
     },
     {
-      "assigned_tier": "single_loc_group",
-      "audit_action": "pass",
-      "audit_reason": "No hard T1/T2 audit issue found.",
-      "confidence": "medium",
-      "findings": [],
-      "location_id": "bcc295ef115b06f6",
-      "practice_name": null,
-      "risk_score": 16,
-      "screen_priority": "block_before_merge",
-      "signal_codes": [
-        "ao_not_provider_or_practice_name",
-        "ao_reaches_multiple_locations",
-        "shared_data_axle_officer",
-        "t2_provider_count_lte1"
-      ],
-      "url_profile": {
-        "direct_hosts": [
-          "patientconnect365.com"
-        ],
-        "directory_hosts": [
-          "doctor.webmd.com",
-          "yelp.com"
-        ],
-        "directory_only": false,
-        "has_direct_source": true,
-        "hosts": [
-          "doctor.webmd.com",
-          "yelp.com",
-          "patientconnect365.com"
-        ]
-      }
-    },
-    {
       "assigned_tier": "true_independent",
       "audit_action": "downgrade_confidence",
       "audit_reason": "High-confidence T1 relies on directory-style support; lower to medium under positive-proof rule.",
@@ -72194,6 +72338,43 @@
       }
     },
     {
+      "assigned_tier": "true_independent",
+      "audit_action": "downgrade_confidence",
+      "audit_reason": "High-confidence T1 relies on directory-style support; lower to medium under positive-proof rule.",
+      "confidence": "high",
+      "findings": [
+        "high_conf_t1_directory_only",
+        "t1_multiple_network_signals"
+      ],
+      "location_id": "6140e924f8088627",
+      "practice_name": null,
+      "risk_score": 39,
+      "sample_strata": [
+        "confidence_downgrade"
+      ],
+      "screen_priority": "block_before_merge",
+      "signal_codes": [
+        "directory_only_support",
+        "shared_ein_or_parent_tin",
+        "shared_phone_multiple_locations",
+        "t1_reasoning_lacks_owner_word"
+      ],
+      "url_profile": {
+        "direct_hosts": [
+          "vitals.com"
+        ],
+        "directory_hosts": [
+          "yelp.com"
+        ],
+        "directory_only": false,
+        "has_direct_source": true,
+        "hosts": [
+          "yelp.com",
+          "vitals.com"
+        ]
+      }
+    },
+    {
       "assigned_tier": "single_loc_group",
       "audit_action": "hold",
       "audit_reason": "Control/corporate signal remains on a T1/T2 candidate; fail closed to review.",
@@ -73246,29 +73427,65 @@
         "high_conf_t1_directory_only",
         "directory_only_urls"
       ],
-      "location_id": "68170b3c9e5361f3",
+      "location_id": "a6d39b64648573b4",
       "practice_name": null,
       "risk_score": 32,
       "sample_strata": [
-        "confidence_downgrade"
+        "random_t1"
       ],
       "screen_priority": "review_high",
       "signal_codes": [
         "directory_only_support",
-        "shared_website_domain",
+        "shared_phone_multiple_locations",
+        "t1_reasoning_lacks_negative_control_word",
+        "t1_reasoning_lacks_owner_word",
         "t1_reasoning_lacks_single_location_word"
       ],
       "url_profile": {
         "direct_hosts": [],
         "directory_hosts": [
           "yelp.com",
-          "healthgrades.com"
+          "wellness.com"
         ],
         "directory_only": true,
         "has_direct_source": false,
         "hosts": [
           "yelp.com",
-          "healthgrades.com"
+          "wellness.com"
+        ]
+      }
+    },
+    {
+      "assigned_tier": "true_independent",
+      "audit_action": "pass",
+      "audit_reason": "No hard T1/T2 audit issue found.",
+      "confidence": "medium",
+      "findings": [],
+      "location_id": "2a6397b94494d4f6",
+      "practice_name": null,
+      "risk_score": 29,
+      "sample_strata": [
+        "random_t1"
+      ],
+      "screen_priority": "review_high",
+      "signal_codes": [
+        "directory_only_support",
+        "shared_phone_multiple_locations",
+        "t1_reasoning_lacks_negative_control_word",
+        "t1_reasoning_lacks_owner_word"
+      ],
+      "url_profile": {
+        "direct_hosts": [
+          "vitadox.com"
+        ],
+        "directory_hosts": [
+          "npiprofile.com"
+        ],
+        "directory_only": false,
+        "has_direct_source": true,
+        "hosts": [
+          "npiprofile.com",
+          "vitadox.com"
         ]
       }
     },
@@ -73871,8 +74088,7 @@
       "practice_name": null,
       "risk_score": 25,
       "sample_strata": [
-        "directory_only_review_medium",
-        "random_t1"
+        "directory_only_review_medium"
       ],
       "screen_priority": "review_medium",
       "signal_codes": [
@@ -73937,62 +74153,132 @@
         "high_conf_t1_directory_only",
         "directory_only_urls"
       ],
-      "location_id": "c1d87d86e93f7056",
+      "location_id": "3830df2fadda4b9a",
       "practice_name": null,
-      "risk_score": 23,
-      "sample_strata": [
-        "random_t1"
-      ],
-      "screen_priority": "sample_low",
-      "signal_codes": [
-        "t1_reasoning_lacks_owner_word",
-        "t1_reasoning_lacks_single_location_word"
-      ],
-      "url_profile": {
-        "direct_hosts": [],
-        "directory_hosts": [
-          "doctorsnetwork.com",
-          "wellness.com"
-        ],
-        "directory_only": true,
-        "has_direct_source": false,
-        "hosts": [
-          "doctorsnetwork.com",
-          "wellness.com"
-        ]
-      }
-    },
-    {
-      "assigned_tier": "true_independent",
-      "audit_action": "pass",
-      "audit_reason": "No hard T1/T2 audit issue found.",
-      "confidence": "medium",
-      "findings": [
-        "directory_only_urls"
-      ],
-      "location_id": "193e04bb0473d6bf",
-      "practice_name": null,
-      "risk_score": 22,
+      "risk_score": 25,
       "sample_strata": [
         "random_t1"
       ],
       "screen_priority": "review_medium",
       "signal_codes": [
         "directory_only_support",
-        "t1_reasoning_lacks_negative_control_word",
+        "t1_reasoning_lacks_single_location_word"
+      ],
+      "url_profile": {
+        "direct_hosts": [],
+        "directory_hosts": [
+          "yelp.com",
+          "healthgrades.com"
+        ],
+        "directory_only": true,
+        "has_direct_source": false,
+        "hosts": [
+          "yelp.com",
+          "healthgrades.com"
+        ]
+      }
+    },
+    {
+      "assigned_tier": "true_independent",
+      "audit_action": "downgrade_confidence",
+      "audit_reason": "High-confidence T1 relies on directory-style support; lower to medium under positive-proof rule.",
+      "confidence": "high",
+      "findings": [
+        "high_conf_t1_directory_only"
+      ],
+      "location_id": "66785f69abd1a93b",
+      "practice_name": null,
+      "risk_score": 25,
+      "sample_strata": [
+        "random_t1"
+      ],
+      "screen_priority": "review_medium",
+      "signal_codes": [
+        "ao_not_provider_or_practice_name",
+        "directory_only_support"
+      ],
+      "url_profile": {
+        "direct_hosts": [
+          "providerwire.com"
+        ],
+        "directory_hosts": [
+          "npiprofile.com"
+        ],
+        "directory_only": false,
+        "has_direct_source": true,
+        "hosts": [
+          "npiprofile.com",
+          "providerwire.com"
+        ]
+      }
+    },
+    {
+      "assigned_tier": "true_independent",
+      "audit_action": "downgrade_confidence",
+      "audit_reason": "High-confidence T1 relies on directory-style support; lower to medium under positive-proof rule.",
+      "confidence": "high",
+      "findings": [
+        "high_conf_t1_directory_only"
+      ],
+      "location_id": "6e108ffce9060e47",
+      "practice_name": null,
+      "risk_score": 25,
+      "sample_strata": [
+        "random_t1"
+      ],
+      "screen_priority": "review_medium",
+      "signal_codes": [
+        "directory_only_support",
         "t1_reasoning_lacks_owner_word"
       ],
       "url_profile": {
-        "direct_hosts": [],
-        "directory_hosts": [
-          "yelp.com",
-          "doctor.webmd.com"
+        "direct_hosts": [
+          "caredash.com"
         ],
-        "directory_only": true,
-        "has_direct_source": false,
+        "directory_hosts": [
+          "npiprofile.com"
+        ],
+        "directory_only": false,
+        "has_direct_source": true,
         "hosts": [
-          "yelp.com",
-          "doctor.webmd.com"
+          "npiprofile.com",
+          "caredash.com"
+        ]
+      }
+    },
+    {
+      "assigned_tier": "single_loc_group",
+      "audit_action": "pass",
+      "audit_reason": "No hard T1/T2 audit issue found.",
+      "confidence": "high",
+      "findings": [],
+      "location_id": "778b814bfeab200c",
+      "practice_name": null,
+      "risk_score": 23,
+      "sample_strata": [
+        "random_t2"
+      ],
+      "screen_priority": "block_before_merge",
+      "signal_codes": [
+        "da_legal_name_mismatch",
+        "shared_data_axle_officer",
+        "shared_phone_multiple_locations",
+        "shared_website_domain"
+      ],
+      "url_profile": {
+        "direct_hosts": [
+          "dentistberwyn.com",
+          "dentistberwyn.com"
+        ],
+        "directory_hosts": [
+          "yelp.com"
+        ],
+        "directory_only": false,
+        "has_direct_source": true,
+        "hosts": [
+          "dentistberwyn.com",
+          "dentistberwyn.com",
+          "yelp.com"
         ]
       }
     },
@@ -74001,10 +74287,8 @@
       "audit_action": "pass",
       "audit_reason": "No hard T1/T2 audit issue found.",
       "confidence": "medium",
-      "findings": [
-        "directory_only_urls"
-      ],
-      "location_id": "1cfde3d48999ba20",
+      "findings": [],
+      "location_id": "18ff565212c21e51",
       "practice_name": null,
       "risk_score": 22,
       "sample_strata": [
@@ -74018,16 +74302,14 @@
         "t1_reasoning_lacks_single_location_word"
       ],
       "url_profile": {
-        "direct_hosts": [],
-        "directory_hosts": [
-          "healthgrades.com",
-          "zocdoc.com"
+        "direct_hosts": [
+          "caredash.com"
         ],
-        "directory_only": true,
-        "has_direct_source": false,
+        "directory_hosts": [],
+        "directory_only": false,
+        "has_direct_source": true,
         "hosts": [
-          "healthgrades.com",
-          "zocdoc.com"
+          "caredash.com"
         ]
       }
     },
@@ -74036,31 +74318,100 @@
       "audit_action": "pass",
       "audit_reason": "No hard T1/T2 audit issue found.",
       "confidence": "medium",
-      "findings": [
-        "directory_only_urls"
-      ],
-      "location_id": "51a377e175a720e2",
+      "findings": [],
+      "location_id": "67b1c90f3875a7c1",
       "practice_name": null,
-      "risk_score": 22,
+      "risk_score": 19,
       "sample_strata": [
         "random_t1"
       ],
-      "screen_priority": "review_medium",
+      "screen_priority": "review_high",
+      "signal_codes": [
+        "ao_not_provider_or_practice_name",
+        "shared_phone_multiple_locations",
+        "t1_reasoning_lacks_owner_word",
+        "t1_reasoning_lacks_single_location_word"
+      ],
+      "url_profile": {
+        "direct_hosts": [
+          "westchesterfamilydental.net",
+          "westchesterfamilydental.net"
+        ],
+        "directory_hosts": [],
+        "directory_only": false,
+        "has_direct_source": true,
+        "hosts": [
+          "westchesterfamilydental.net",
+          "westchesterfamilydental.net"
+        ]
+      }
+    },
+    {
+      "assigned_tier": "single_loc_group",
+      "audit_action": "pass",
+      "audit_reason": "No hard T1/T2 audit issue found.",
+      "confidence": "medium",
+      "findings": [
+        "directory_only_urls"
+      ],
+      "location_id": "130395305f31a800",
+      "practice_name": null,
+      "risk_score": 18,
+      "sample_strata": [
+        "random_t2"
+      ],
+      "screen_priority": "block_before_merge",
       "signal_codes": [
         "directory_only_support",
+        "t1_group_entity_classification",
+        "t1_multiple_provider_surnames",
+        "t1_provider_count_gt1",
         "t1_reasoning_lacks_negative_control_word"
       ],
       "url_profile": {
         "direct_hosts": [],
         "directory_hosts": [
-          "yelp.com",
-          "opencare.com"
+          "healthgrades.com",
+          "npiprofile.com",
+          "providers.sharecare.com"
         ],
         "directory_only": true,
         "has_direct_source": false,
         "hosts": [
-          "yelp.com",
-          "opencare.com"
+          "healthgrades.com",
+          "npiprofile.com",
+          "providers.sharecare.com"
+        ]
+      }
+    },
+    {
+      "assigned_tier": "true_independent",
+      "audit_action": "pass",
+      "audit_reason": "No hard T1/T2 audit issue found.",
+      "confidence": "high",
+      "findings": [],
+      "location_id": "9068c4de3bbdb4b4",
+      "practice_name": null,
+      "risk_score": 17,
+      "sample_strata": [
+        "random_t1"
+      ],
+      "screen_priority": "sample_low",
+      "signal_codes": [
+        "shared_phone_multiple_locations"
+      ],
+      "url_profile": {
+        "direct_hosts": [
+          "winnetkadentalarts.com"
+        ],
+        "directory_hosts": [
+          "npino.com"
+        ],
+        "directory_only": false,
+        "has_direct_source": true,
+        "hosts": [
+          "winnetkadentalarts.com",
+          "npino.com"
         ]
       }
     },
@@ -74155,62 +74506,59 @@
       "audit_reason": "No hard T1/T2 audit issue found.",
       "confidence": "high",
       "findings": [],
-      "location_id": "61c634db63f6a40a",
+      "location_id": "625d679e2ab05192",
       "practice_name": null,
       "risk_score": 13,
       "sample_strata": [
         "random_t1"
       ],
-      "screen_priority": "sample_low",
-      "signal_codes": [
-        "t1_reasoning_lacks_owner_word"
-      ],
+      "screen_priority": "clean_or_unscreened",
+      "signal_codes": [],
       "url_profile": {
         "direct_hosts": [
-          "ganserdentistry.com"
+          "winnetkadentalassociates.com"
         ],
         "directory_hosts": [
-          "healthgrades.com"
+          "yelp.com"
         ],
         "directory_only": false,
         "has_direct_source": true,
         "hosts": [
-          "ganserdentistry.com",
-          "healthgrades.com"
+          "winnetkadentalassociates.com",
+          "yelp.com"
         ]
       }
     },
     {
-      "assigned_tier": "true_independent",
-      "audit_action": "pass",
-      "audit_reason": "No hard T1/T2 audit issue found.",
+      "assigned_tier": "single_loc_group",
+      "audit_action": "downgrade_confidence",
+      "audit_reason": "High-confidence T2 relies on directory-style support; lower to medium under source-quality rule.",
       "confidence": "high",
-      "findings": [],
-      "location_id": "990bbf9bd4c11856",
+      "findings": [
+        "high_conf_t2_directory_only",
+        "directory_only_urls"
+      ],
+      "location_id": "7b171b452c7a80ef",
       "practice_name": null,
       "risk_score": 13,
       "sample_strata": [
-        "random_t1"
+        "random_t2"
       ],
       "screen_priority": "sample_low",
       "signal_codes": [
-        "t1_reasoning_lacks_owner_word",
-        "t1_reasoning_lacks_single_location_word"
+        "directory_only_support"
       ],
       "url_profile": {
-        "direct_hosts": [
-          "epicdentalspa.com"
-        ],
+        "direct_hosts": [],
         "directory_hosts": [
-          "yelp.com",
-          "findadentist.ada.org"
+          "healthgrades.com",
+          "yelp.com"
         ],
-        "directory_only": false,
-        "has_direct_source": true,
+        "directory_only": true,
+        "has_direct_source": false,
         "hosts": [
-          "epicdentalspa.com",
-          "yelp.com",
-          "findadentist.ada.org"
+          "healthgrades.com",
+          "yelp.com"
         ]
       }
     },
@@ -74273,68 +74621,39 @@
       }
     },
     {
-      "assigned_tier": "true_independent",
+      "assigned_tier": "single_loc_group",
       "audit_action": "pass",
       "audit_reason": "No hard T1/T2 audit issue found.",
       "confidence": "medium",
       "findings": [],
-      "location_id": "64ed2e3e5794d0de",
+      "location_id": "a83a4dfffd965d02",
       "practice_name": null,
       "risk_score": 12,
       "sample_strata": [
-        "random_t1"
+        "random_t2"
       ],
-      "screen_priority": "review_medium",
+      "screen_priority": "block_before_merge",
       "signal_codes": [
-        "ao_not_provider_or_practice_name",
-        "t1_reasoning_lacks_owner_word",
-        "t1_reasoning_lacks_single_location_word"
-      ],
-      "url_profile": {
-        "direct_hosts": [
-          "midentalclinic.com",
-          "midentalclinic.com"
-        ],
-        "directory_hosts": [
-          "yelp.com"
-        ],
-        "directory_only": false,
-        "has_direct_source": true,
-        "hosts": [
-          "midentalclinic.com",
-          "midentalclinic.com",
-          "yelp.com"
-        ]
-      }
-    },
-    {
-      "assigned_tier": "true_independent",
-      "audit_action": "pass",
-      "audit_reason": "No hard T1/T2 audit issue found.",
-      "confidence": "medium",
-      "findings": [],
-      "location_id": "244c65d0ee4f57a2",
-      "practice_name": null,
-      "risk_score": 10,
-      "sample_strata": [
-        "random_t1"
-      ],
-      "screen_priority": "sample_low",
-      "signal_codes": [
-        "t1_reasoning_lacks_negative_control_word",
+        "shared_phone_multiple_locations",
+        "t1_group_entity_classification",
+        "t1_multiple_provider_surnames",
+        "t1_provider_count_gt1",
         "t1_reasoning_lacks_owner_word"
       ],
       "url_profile": {
         "direct_hosts": [
-          "dentistreg.com",
-          "topnpi.com"
+          "welli.com"
         ],
-        "directory_hosts": [],
+        "directory_hosts": [
+          "healthgrades.com",
+          "chamberofcommerce.com"
+        ],
         "directory_only": false,
         "has_direct_source": true,
         "hosts": [
-          "dentistreg.com",
-          "topnpi.com"
+          "healthgrades.com",
+          "welli.com",
+          "chamberofcommerce.com"
         ]
       }
     },
@@ -74344,7 +74663,7 @@
       "audit_reason": "No hard T1/T2 audit issue found.",
       "confidence": "medium",
       "findings": [],
-      "location_id": "954f15ca9326b177",
+      "location_id": "b55c83f155ca2622",
       "practice_name": null,
       "risk_score": 10,
       "sample_strata": [
@@ -74352,23 +74671,20 @@
       ],
       "screen_priority": "sample_low",
       "signal_codes": [
-        "t1_reasoning_lacks_owner_word",
-        "t1_reasoning_lacks_single_location_word"
+        "t1_reasoning_lacks_owner_word"
       ],
       "url_profile": {
         "direct_hosts": [
-          "forestreamdentalcare.com"
+          "linkedin.com"
         ],
         "directory_hosts": [
-          "healthgrades.com",
-          "dentalplans.com"
+          "doctorsnetwork.com"
         ],
         "directory_only": false,
         "has_direct_source": true,
         "hosts": [
-          "healthgrades.com",
-          "dentalplans.com",
-          "forestreamdentalcare.com"
+          "doctorsnetwork.com",
+          "linkedin.com"
         ]
       }
     },
@@ -74377,10 +74693,8 @@
       "audit_action": "pass",
       "audit_reason": "No hard T1/T2 audit issue found.",
       "confidence": "high",
-      "findings": [
-        "stale_founder_history"
-      ],
-      "location_id": "4d6ecf57b261e109",
+      "findings": [],
+      "location_id": "3bb7214fbc114fb1",
       "practice_name": null,
       "risk_score": 9,
       "sample_strata": [
@@ -74388,21 +74702,52 @@
       ],
       "screen_priority": "review_medium",
       "signal_codes": [
-        "ao_not_provider_or_practice_name",
-        "shared_phone_multiple_locations",
-        "stale_founder_history"
+        "shared_ein_or_parent_tin"
       ],
       "url_profile": {
         "direct_hosts": [
-          "ahoyt.dental",
-          "ahoyt.dental"
+          "lvdachicago.com"
         ],
-        "directory_hosts": [],
+        "directory_hosts": [
+          "zocdoc.com"
+        ],
         "directory_only": false,
         "has_direct_source": true,
         "hosts": [
-          "ahoyt.dental",
-          "ahoyt.dental"
+          "lvdachicago.com",
+          "zocdoc.com"
+        ]
+      }
+    },
+    {
+      "assigned_tier": "single_loc_group",
+      "audit_action": "pass",
+      "audit_reason": "No hard T1/T2 audit issue found.",
+      "confidence": "high",
+      "findings": [],
+      "location_id": "4e4992e0d3fca24f",
+      "practice_name": null,
+      "risk_score": 9,
+      "sample_strata": [
+        "random_t2"
+      ],
+      "screen_priority": "review_medium",
+      "signal_codes": [
+        "ao_reaches_multiple_locations",
+        "da_legal_name_mismatch"
+      ],
+      "url_profile": {
+        "direct_hosts": [
+          "schaumburgdentalstudio.com"
+        ],
+        "directory_hosts": [
+          "yelp.com"
+        ],
+        "directory_only": false,
+        "has_direct_source": true,
+        "hosts": [
+          "schaumburgdentalstudio.com",
+          "yelp.com"
         ]
       }
     },
@@ -74412,61 +74757,58 @@
       "audit_reason": "No hard T1/T2 audit issue found.",
       "confidence": "medium",
       "findings": [],
-      "location_id": "d3c2b7f7449b0cab",
+      "location_id": "c826b4f0ccd7eaba",
       "practice_name": null,
-      "risk_score": 6,
+      "risk_score": 4,
       "sample_strata": [
         "random_t2"
       ],
-      "screen_priority": "review_medium",
+      "screen_priority": "sample_low",
       "signal_codes": [
-        "ao_reaches_multiple_locations"
+        "shared_phone_multiple_locations"
       ],
       "url_profile": {
         "direct_hosts": [
-          "portageadvanceddental.com"
+          "yellowpages.com",
+          "wheeling-il.illinois-pages.com"
+        ],
+        "directory_hosts": [],
+        "directory_only": false,
+        "has_direct_source": true,
+        "hosts": [
+          "yellowpages.com",
+          "wheeling-il.illinois-pages.com"
+        ]
+      }
+    },
+    {
+      "assigned_tier": "single_loc_group",
+      "audit_action": "pass",
+      "audit_reason": "No hard T1/T2 audit issue found.",
+      "confidence": "high",
+      "findings": [],
+      "location_id": "0a389cd094ce804f",
+      "practice_name": null,
+      "risk_score": 3,
+      "sample_strata": [
+        "random_t2"
+      ],
+      "screen_priority": "clean_or_unscreened",
+      "signal_codes": [],
+      "url_profile": {
+        "direct_hosts": [
+          "eissensdental.com"
         ],
         "directory_hosts": [
-          "yelp.com"
+          "yelp.com",
+          "findadentist.ada.org"
         ],
         "directory_only": false,
         "has_direct_source": true,
         "hosts": [
-          "portageadvanceddental.com",
-          "yelp.com"
-        ]
-      }
-    },
-    {
-      "assigned_tier": "single_loc_group",
-      "audit_action": "pass",
-      "audit_reason": "No hard T1/T2 audit issue found.",
-      "confidence": "high",
-      "findings": [
-        "stale_founder_history"
-      ],
-      "location_id": "fcf40ad38b38a300",
-      "practice_name": null,
-      "risk_score": 5,
-      "sample_strata": [
-        "random_t2"
-      ],
-      "screen_priority": "review_medium",
-      "signal_codes": [
-        "stale_founder_history",
-        "t2_provider_count_lte1"
-      ],
-      "url_profile": {
-        "direct_hosts": [
-          "galleryparkdental.com",
-          "galleryparkdental.com"
-        ],
-        "directory_hosts": [],
-        "directory_only": false,
-        "has_direct_source": true,
-        "hosts": [
-          "galleryparkdental.com",
-          "galleryparkdental.com"
+          "eissensdental.com",
+          "yelp.com",
+          "findadentist.ada.org"
         ]
       }
     },
@@ -74476,7 +74818,7 @@
       "audit_reason": "No hard T1/T2 audit issue found.",
       "confidence": "high",
       "findings": [],
-      "location_id": "3076409265d6da91",
+      "location_id": "1186464f53042d89",
       "practice_name": null,
       "risk_score": 3,
       "sample_strata": [
@@ -74486,76 +74828,16 @@
       "signal_codes": [],
       "url_profile": {
         "direct_hosts": [
-          "halkyardfamilydental.com",
-          "halkyardfamilydental.com"
-        ],
-        "directory_hosts": [],
-        "directory_only": false,
-        "has_direct_source": true,
-        "hosts": [
-          "halkyardfamilydental.com",
-          "halkyardfamilydental.com"
-        ]
-      }
-    },
-    {
-      "assigned_tier": "single_loc_group",
-      "audit_action": "pass",
-      "audit_reason": "No hard T1/T2 audit issue found.",
-      "confidence": "high",
-      "findings": [],
-      "location_id": "5e75df2536b43e42",
-      "practice_name": null,
-      "risk_score": 3,
-      "sample_strata": [
-        "random_t2"
-      ],
-      "screen_priority": "clean_or_unscreened",
-      "signal_codes": [],
-      "url_profile": {
-        "direct_hosts": [
-          "cvetdds.com",
-          "cvetdds.com",
-          "cvetdds.com"
-        ],
-        "directory_hosts": [],
-        "directory_only": false,
-        "has_direct_source": true,
-        "hosts": [
-          "cvetdds.com",
-          "cvetdds.com",
-          "cvetdds.com"
-        ]
-      }
-    },
-    {
-      "assigned_tier": "single_loc_group",
-      "audit_action": "pass",
-      "audit_reason": "No hard T1/T2 audit issue found.",
-      "confidence": "high",
-      "findings": [],
-      "location_id": "66f36f878152532c",
-      "practice_name": null,
-      "risk_score": 3,
-      "sample_strata": [
-        "random_t2"
-      ],
-      "screen_priority": "clean_or_unscreened",
-      "signal_codes": [],
-      "url_profile": {
-        "direct_hosts": [
-          "contossmilecenter.com",
-          "contossmilecenter.com"
+          "violetcreekdentistry.com"
         ],
         "directory_hosts": [
-          "yelp.com"
+          "healthgrades.com"
         ],
         "directory_only": false,
         "has_direct_source": true,
         "hosts": [
-          "contossmilecenter.com",
-          "contossmilecenter.com",
-          "yelp.com"
+          "violetcreekdentistry.com",
+          "healthgrades.com"
         ]
       }
     },
@@ -74595,7 +74877,7 @@
       "findings": [
         "stale_founder_history"
       ],
-      "location_id": "a47a3217e357dbce",
+      "location_id": "9abac696a237b077",
       "practice_name": null,
       "risk_score": 3,
       "sample_strata": [
@@ -74607,15 +74889,16 @@
       ],
       "url_profile": {
         "direct_hosts": [
-          "ladonedental.com",
-          "ladonedental.com"
+          "smilepalatine.com"
         ],
-        "directory_hosts": [],
+        "directory_hosts": [
+          "healthgrades.com"
+        ],
         "directory_only": false,
         "has_direct_source": true,
         "hosts": [
-          "ladonedental.com",
-          "ladonedental.com"
+          "smilepalatine.com",
+          "healthgrades.com"
         ]
       }
     },
@@ -74645,66 +74928,6 @@
         "hosts": [
           "newavenuedental.com",
           "healthgrades.com"
-        ]
-      }
-    },
-    {
-      "assigned_tier": "single_loc_group",
-      "audit_action": "pass",
-      "audit_reason": "No hard T1/T2 audit issue found.",
-      "confidence": "high",
-      "findings": [],
-      "location_id": "a7ff2734ab995612",
-      "practice_name": null,
-      "risk_score": 3,
-      "sample_strata": [
-        "random_t2"
-      ],
-      "screen_priority": "clean_or_unscreened",
-      "signal_codes": [],
-      "url_profile": {
-        "direct_hosts": [
-          "benedettihoffman.com",
-          "vitals.com"
-        ],
-        "directory_hosts": [
-          "bbb.org"
-        ],
-        "directory_only": false,
-        "has_direct_source": true,
-        "hosts": [
-          "benedettihoffman.com",
-          "bbb.org",
-          "vitals.com"
-        ]
-      }
-    },
-    {
-      "assigned_tier": "single_loc_group",
-      "audit_action": "pass",
-      "audit_reason": "No hard T1/T2 audit issue found.",
-      "confidence": "high",
-      "findings": [],
-      "location_id": "ea407feaa8cac899",
-      "practice_name": null,
-      "risk_score": 3,
-      "sample_strata": [
-        "random_t2"
-      ],
-      "screen_priority": "clean_or_unscreened",
-      "signal_codes": [],
-      "url_profile": {
-        "direct_hosts": [
-          "dentalclinicofmortongrove.com"
-        ],
-        "directory_hosts": [
-          "yelp.com"
-        ],
-        "directory_only": false,
-        "has_direct_source": true,
-        "hosts": [
-          "dentalclinicofmortongrove.com",
-          "yelp.com"
         ]
       }
     },
@@ -74794,37 +75017,6 @@
         "hosts": [
           "dentistry500.com",
           "yelp.com"
-        ]
-      }
-    },
-    {
-      "assigned_tier": "single_loc_group",
-      "audit_action": "pass",
-      "audit_reason": "No hard T1/T2 audit issue found.",
-      "confidence": "medium",
-      "findings": [],
-      "location_id": "f2cb5a442fa1168c",
-      "practice_name": null,
-      "risk_score": 0,
-      "sample_strata": [
-        "random_t2"
-      ],
-      "screen_priority": "clean_or_unscreened",
-      "signal_codes": [],
-      "url_profile": {
-        "direct_hosts": [
-          "northavenuedentalcare.com"
-        ],
-        "directory_hosts": [
-          "healthgrades.com",
-          "zocdoc.com"
-        ],
-        "directory_only": false,
-        "has_direct_source": true,
-        "hosts": [
-          "healthgrades.com",
-          "zocdoc.com",
-          "northavenuedentalcare.com"
         ]
       }
     }

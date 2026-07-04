@@ -1,0 +1,106 @@
+{
+  "batch": 22,
+  "indices": [220, 229],
+  "dispositions": [
+    {
+      "location_id": "72033697d42c7699",
+      "practice_name": "Dental Dreams LLC",
+      "assigned_tier": "dentist_multi",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The hard db_corporate_conflict signal ties this record to Dental Dreams (a known DSO brand / KOS Services) with entity_classification dso_national. Per binding rules 2 and 3, a conflict involving a known DSO brand cannot be self-cleared. The researcher's phone-match claim that the address rebranded to dentist-owned 'Alivio Dental' is plausible but is exactly the corporate-transition scenario requiring the adversarial verifier; fail-closed.",
+      "web_searched": false
+    },
+    {
+      "location_id": "7a9478e84afbc1ed",
+      "practice_name": "ROBERT R GIERING, D.D.S. LTD",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": "medium",
+      "rationale": "Web search confirms cameods.com is Cameo Dental Specialists, a perio/endo/oral-surgery specialist group with 5 offices that occupies suites 208A/208B at 475 W 55th St — the same building where Dr. Giering runs his own GP practice under his ROBERT R GIERING DDS LTD entity. The shared_website_domain (4 reaches) and shared_phone are co-tenant/building artifacts belonging to Cameo, not Giering's network (rule 6b). Directory_only_support caps confidence at medium (rule 5), which the tier already carries; independent dentist-owned single-location GP stands.",
+      "web_searched": true
+    },
+    {
+      "location_id": "2d00531f28dc2373",
+      "practice_name": "DOWNTOWN DENTAL & IMPLANTS OF OSWEGO INC.",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Dr. Shalini Mohan is the owner-dentist AO of her own PC (Downtown Dental & Implants of Oswego Inc.) with a second treating dentist (Dr. Cwiek) at one confirmed office per the practice's own site and LinkedIn. The ao_reaches_multiple_locations and shared_phone signals reflect same-owner NPPES address/suite-variant registrations of her single practice, not a corporate parent; ao_not_provider_or_practice_name is a low-severity artifact (she IS the owner). No DSO/MSO signal — dentist-owned single-location group stands.",
+      "web_searched": false
+    },
+    {
+      "location_id": "e6d9dad88b51029a",
+      "practice_name": "DENTAL POINTE",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "Dr. Rani Seeth (owner AO) and Dr. Poornima Gangaji are confirmed on the practice's own website at one Naperville office; the researcher explicitly resolved Naperville/Aurora/Warrenville references as service-area language, not separate offices. The AO/shared_phone multi-reach reflects the owner's own duplicate NPPES registrations, and ao_not_provider_or_practice_name is a benign low signal. No corporate/DSO parent found — dentist-led single-location group holds.",
+      "web_searched": false
+    },
+    {
+      "location_id": "31c6b7b8fdd56611",
+      "practice_name": "SADDLEWOOD FAMILY DENTISTRY",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "3027 English Row Ave / (630) 904-1106 is one physical office (now English Rows Dental Group) owned across three generations by Dr. Christopher Hudetz, verified on the practice's own site. The ao_reaches_multiple_locations and shared_phone (3 reaches) are the same office registered under multiple NPPES names (Saddlewood Family Dentistry, Good Day Dental Sleep Center, English Rows Dental Group), all under the same owner-dentist. No corporate/DSO signal — accept at the high confidence assigned.",
+      "web_searched": false
+    },
+    {
+      "location_id": "134b8d7ff14d4d1e",
+      "practice_name": "ZHENG MA, DMD, PC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "duplicate_suspect",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The researcher's own reasoning states this NPI shares the identical AO (Zheng Ma), phone, city and ZIP with the adjacent-address Catonfield Dental record and has no separate web presence for 7156 Caton Farm Rd — a duplicate/near-duplicate NPPES registration for the same single dentist-owned office (Catonfield Dental: Zheng Ma + Elena Zakharian). Matches the suite/address-variant pattern of an already-counted sibling location; flag as duplicate rather than count a second door.",
+      "web_searched": false
+    },
+    {
+      "location_id": "83d8a695fc4822e1",
+      "practice_name": "RAJUL PATEL WESTLOOP PC",
+      "assigned_tier": "single_loc_group",
+      "disposition": "correct",
+      "corrected_tier": "dentist_multi",
+      "corrected_confidence": "high",
+      "rationale": "Web search confirms Dr. Rajul Patel founded and operates Pure Dental Spa at THREE offices under his own brand — West Loop, Lincoln Park, and Bloomingdale IL — directly contradicting the researcher's single-location claim. The shared_website_domain (puredentalspa.com, 3 reaches) and ao_reaches_multiple_locations (Patel, 3 reaches) are his own multi-office network with no PE/DSO signal, which is dentist_multi (T3), not single_loc_group (rule 6a).",
+      "web_searched": true
+    },
+    {
+      "location_id": "d2e5c43e4975ddb4",
+      "practice_name": "MIDWEST DENTAL GROUP",
+      "assigned_tier": "single_loc_group",
+      "disposition": "hold_dso_verify",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "The DB carries affiliated_dso 'Midwest Dental' plus entity_classification dso_national (hard db_corporate_conflict). Midwest Dental (Gryphon-backed) is on the known-DSO-brand list, so per binding rule 3 a T2 record bearing that brand can never be self-accepted. The researcher's coincidental-name argument (Horberg's independent practice; not on Midwest Dental's own locator) is plausible but is precisely what the adversarial verifier must confirm; route to hold_dso_verify.",
+      "web_searched": false
+    },
+    {
+      "location_id": "d9e1cbf0d6b6b005",
+      "practice_name": "PERFECT SMILE DENTAL SPA PARTNERSHIP",
+      "assigned_tier": "single_loc_group",
+      "disposition": "accept",
+      "corrected_tier": null,
+      "corrected_confidence": "medium",
+      "rationale": "Dr. Timothy Dotson (partner/treating dentist) leads a multi-doctor roster at one office (2155 W Roscoe St) on the practice's own site, with no management company, DSO brand, or PE sponsor found. The shared_ein and shared_phone signals each reach only one additional location_id — the same partnership entity's own second NPPES registration, not an MSO cluster reaching other watched ZIPs (rule 6a/b). Dentist-owned single-location group holds at medium.",
+      "web_searched": false
+    },
+    {
+      "location_id": "9c7f34a525b09172",
+      "practice_name": "Roci Elvi DMD",
+      "assigned_tier": "true_independent",
+      "disposition": "hold_unresolved",
+      "corrected_tier": null,
+      "corrected_confidence": null,
+      "rationale": "T1 requires positive current proof that this dentist owns and practices here, and the evidence is internally contradictory: the named dentist Roci Elvi surfaces at a DIFFERENT practice (Precision Dental, suggesting relocation), the address/phone/EIN are tied to a different owner (Dr. Ankit Shah / Diversey Family Dental), and the DB website is a third brand (abcdentalchicago.com). With stale_founder_history plus shared EIN/phone and no coherent current-ownership proof, it cannot merge as a true_independent as-is (fail-closed).",
+      "web_searched": false
+    }
+  ]
+}
