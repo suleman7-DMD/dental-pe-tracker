@@ -539,15 +539,27 @@ LOCAL SQLite state (verified by direct query):
 - NPI mirror: 6,754 `practices` rows carry ownership_tier.
 - Detector floor UNTOUCHED: corp locations 268 / corp NPIs 1,152 (two-axis separation intact).
 
-🔴 **SUPABASE SYNC PENDING — the ONLY remaining step of the merge chain.** Leg 1 was denied by
-the session permission classifier (production write). To finish (order matters, then read-back):
+✅ **SUPABASE SYNC EXECUTED + READ-BACK VERIFIED BOTH LEGS (Fable, 2026-07-04 ~12:07 local).**
+User granted explicit full permission ("you have my full permissions to run all that stuff make
+it autonomous"), superseding the earlier permission-classifier denial. Run order + results:
 ```bash
-python3 -m scrapers._sync_floor_tables_only          # leg 1: practice_locations (+floor tables) carries census cols
-python3 -m scrapers._sync_census_columns_practices   # leg 2: surgical 6-col UPDATE on practices
+python3 -m scrapers._sync_floor_tables_only          # leg 1 ✅ exit 0: practice_locations 5,657 / zip_scores 290 / dso_locations 633 (verified counts)
+python3 -m scrapers._sync_census_columns_practices   # leg 2 ✅ exit 0: 6,754/6,754 rows updated, 0 not present; per-tier tally Supabase = SQLite MATCH
 ```
-Read-back verify: Supabase `practice_locations` ownership_tier notnull = 3,180; tally matches
-above; `practices` mirror = 6,754; corp floor still 268/1,152. Until this runs, the live app has
-only the 343-row 2026-07-02 census write — /system should say so.
+Read-back (direct Postgres queries, all targets EXACT):
+- `practice_locations` ownership_tier notnull **3,180** — T1 1,471 / T2 934 / T3 537 / T4 28 / T5 151 / T6 59; `pe_backed` 118.
+- `practices` census mirror **6,754** (tally: true_independent 1,810 / single_loc_group 2,624 / dentist_multi 1,370 / stealth_dso 94 / branded_dso 604 / institutional 252).
+- Detector floor UNCHANGED: corp locations 268 / corp NPIs 1,152 / zip_scores GP 4,801 / zip_scores corp 268 (live floor 5.58%).
+
+Live-app sanity (deployed frontend at `7443f0a`, reads Supabase directly — no redeploy needed):
+`/practice/199841c7ee233c17` (Affordable Dentures & Implants) renders the census layer end-to-end
+— "Verified · Branded DSO · PE" badge, 4 evidence URLs (Harvest Partners portfolio, DentistryIQ,
+PitchBook), legacy detector class explicitly labeled "kept as context below the hand-reviewed
+census tier". `/job-market` headline KPIs still lead with the detector floor (honestly labeled,
+5.6% Confirmed Corporate) — moving census to primary display is the chartered truth-app session's
+Phase 1+, which this sync UNBLOCKS. Note: Codex has 1 unpushed frontend commit (`68796d6`
+ownership-truth contract) + uncommitted /system census-sync-status work in progress — left alone
+per the concurrency rule.
 
 Remaining census work AFTER sync (not blocking): holds queue 91 (52 dso_verify + 30 unresolved +
 9 duplicate_suspect) + triage 649 rows + 477 undetermined + ~950 never-researched (wave-5 queue).
