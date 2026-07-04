@@ -122,6 +122,10 @@ jobs:
         run: python3 scrapers/pitchbook_importer.py --auto
         continue-on-error: true
 
+      - name: Clean structurally unverifiable deal rows
+        if: inputs.dry_run == 'false'
+        run: python3 scrapers/cleanup_low_quality_deals.py --apply --no-backup
+
       - name: Deal quality audit
         run: |
           python3 - <<'PY'
