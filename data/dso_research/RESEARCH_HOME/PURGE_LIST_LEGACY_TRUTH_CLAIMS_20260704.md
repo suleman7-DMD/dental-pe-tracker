@@ -21,19 +21,19 @@ Status legend: ✅ done · Phase N = scheduled in that phase of the charter.
 | "Not Confirmed Corp." KPI | REMOVE | ✅ 61dabe2 |
 | Unknown-ownership warning banner (detector unknowns) | REMOVE | ✅ 61dabe2 |
 | Header copy "legacy detector fields remain visible" | REMOVE (rewritten census-first) | ✅ 61dabe2 |
-| `computeZipStats()` per-ZIP dso_affiliated/consolidation_pct (classifyPractice) feeding saturation map/table | REPLACE with per-ZIP census bucket counts (unresolved visible) | Phase 1 |
-| `market-overview-charts.tsx` detector ownership pie | REMOVE → five-bucket census chart | Phase 1 |
-| `ownership-landscape.tsx` (detector corporate/independent breakdown) | REMOVE → census bucket landscape | Phase 1 |
-| `practice-density-map.tsx` marker colors via classifyPractice | REPLACE colors with census tier colors; unreviewed = neutral gray | Phase 1 |
-| `opportunity-signals.tsx` / `market-analytics.tsx` detector-derived signals | REPLACE with census-tier signals; missing census → "needs research" | Phase 1 |
-| `practice-detail-drawer.tsx` entity_classification field | DEMOTE to raw-audit section with legacy label; census record primary | Phase 2 |
+| `computeZipStats()` per-ZIP dso_affiliated/consolidation_pct (classifyPractice) feeding saturation map/table | REPLACE with per-ZIP census bucket counts (unresolved visible) | ✅ aa25ae4 |
+| `market-overview-charts.tsx` detector ownership pie | REMOVE → five-bucket census chart | ✅ 2632a56 |
+| `ownership-landscape.tsx` (detector corporate/independent breakdown) | REMOVE → census bucket landscape | ✅ 2632a56 |
+| `practice-density-map.tsx` marker colors via classifyPractice | REPLACE colors with census tier colors; unreviewed = neutral gray | ✅ aa25ae4 |
+| `opportunity-signals.tsx` / `market-analytics.tsx` detector-derived signals | REPLACE with census-tier signals; missing census → "needs research" | ✅ 2632a56 + aa25ae4 |
+| `practice-detail-drawer.tsx` entity_classification field | DEMOTE to raw-audit section with legacy label; census record primary | ✅ 824c48d (census block first w/ evidence + link to full record; detector fields → "Raw Source Audit" section; multi-ZIP claim softened to name-match signal) |
 
 ## `/launchpad` — Job Hunt (priority 2)
 | Claim / component | Verdict | Status |
 |---|---|---|
-| `lib/launchpad/ranking.ts` + `signals.ts` ownership points from entity_classification | REPLACE with census-tier scoring; unknown → capped score + honest "Needs research" lane (rule §2.9) | Phase 1 |
-| AI routes' PracticeSnapshot passing detector fields as ownership | RELABEL in payload (detector = context field; census record = ownership) so AI copy can't launder detector claims | Phase 1 |
-| Track lists / dossiers showing detector chips | REPLACE with CensusBadge | Phase 1 |
+| `lib/launchpad/ranking.ts` + `signals.ts` ownership points from entity_classification | REPLACE with census-tier scoring; unknown → capped score + honest "Needs research" lane (rule §2.9) | ✅ de4e6bd |
+| AI routes' PracticeSnapshot passing detector fields as ownership | RELABEL in payload (detector = context field; census record = ownership) so AI copy can't launder detector claims | ✅ 724f7bd (went further: detector ownership fields removed from PracticeSnapshot; only peer_class survives as a non-ownership percentile key) |
+| Track lists / dossiers showing detector chips | REPLACE with CensusBadge | ✅ de4e6bd |
 
 ## `/market-intel` — Ownership (priority 3)
 | Claim / component | Verdict | Status |
@@ -68,5 +68,5 @@ Status legend: ✅ done · Phase N = scheduled in that phase of the charter.
 |---|---|---|
 | `census-badge.tsx` duplicate tier labels ("Verified Independent" overclaim) | REPLACED — labels now from ownership-truth contract | ✅ 61dabe2 |
 | `queries/census.ts` `independentReviewed` counting T2 as independent | REMOVED — buckets via `summarizeBuckets` | ✅ 68796d6 |
-| `sql-presets.ts` entity_classification presets | KEEP (raw audit surface), preset descriptions say "legacy detector" | Phase 2 |
+| `sql-presets.ts` entity_classification presets | KEEP (raw audit surface), preset descriptions say "legacy detector" | ✅ 824c48d (3 presets renamed "(legacy detector)" + SQL comment headers stating not census truth) |
 | F27 test + `classifyPractice` helpers | KEEP while any consumer remains; delete helpers only when the last non-Methodology consumer is gone, and replace F27 with a census-era guard (ownership-truth tests already lock the bucket law) | end of Phase 3 |
