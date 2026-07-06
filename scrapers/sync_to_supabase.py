@@ -1299,6 +1299,8 @@ def run(tables=None):
         # total is expected and meaningless, so we skip exact-match checks for
         # those strategies.
         verified_results = {}
+        verification_mismatches = []
+        verification_errors = []
         for tbl, reported in results.items():
             if not isinstance(reported, int):
                 continue
@@ -1318,8 +1320,10 @@ def run(tables=None):
                             "MISMATCH [%s]: sync reported %d rows but Supabase has %d",
                             tbl, reported, actual
                         )
+                        verification_mismatches.append((tbl, reported, actual))
             except Exception as ve:
-                log.warning("[%s] Post-sync verification query failed: %s", tbl, ve)
+                log.error("[%s] Post-sync verification query failed: %s", tbl, ve)
+                verification_errors.append((tbl, str(ve)))
 
         # Print summary
         log.info("")
@@ -1338,7 +1342,12 @@ def run(tables=None):
         # Count errors
         error_count = sum(1 for v in results.values() if isinstance(v, str) and v.startswith("ERROR"))
         if error_count:
-            log.warning("%d table(s) had sync errors", error_count)
+            log.error("%d table(s) had sync errors", error_count)
+        if verification_mismatches:
+            log.error("%d table(s) had post-sync row-count mismatches", len(verification_mismatches))
+        if verification_errors:
+            log.error("%d table(s) could not be verified after sync", len(verification_errors))
+        fatal_count = error_count + len(verification_mismatches) + len(verification_errors)
 
         # Report non-zero exit if shutdown was requested mid-run
         if _shutdown_requested:
@@ -1349,10 +1358,16 @@ def run(tables=None):
             "sync_to_supabase",
             start_time,
             new_records=total_synced,
-            summary=f"Synced {total_synced} total rows to Supabase ({len(results)} tables, {error_count} errors)",
+            summary=(
+                f"Synced {total_synced} total rows to Supabase "
+                f"({len(results)} tables, {fatal_count} fatal errors)"
+            ),
             extra={
                 "table_results": {k: v for k, v in results.items() if isinstance(v, int)},
                 "verified_row_counts": verified_results,
+                "table_errors": {k: v for k, v in results.items() if isinstance(v, str) and v.startswith("ERROR")},
+                "verification_mismatches": verification_mismatches,
+                "verification_errors": verification_errors,
             },
         )
 
@@ -1386,9 +1401,14 @@ def run(tables=None):
         except Exception as e:
             log.warning("[pipeline_events] Could not sync: %s", e)
 
+        if fatal_count:
+            log.error("Supabase sync completed with fatal table/verification errors — exiting nonzero")
+            sys.exit(1)
+
     except Exception as e:
         log.error("Sync failed: %s", e, exc_info=True)
         log_scrape_error("sync_to_supabase", str(e), start_time)
+        sys.exit(1)
     finally:
         sqlite_session.close()
         pg_engine.dispose()

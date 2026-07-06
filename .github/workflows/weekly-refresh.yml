@@ -79,6 +79,49 @@ jobs:
             echo "No DB.gz found; fresh run will create the DB"
           fi
 
+      - name: Verify SQLite census baseline before refresh
+        run: |
+          python3 - <<'PY'
+          import os
+          import sqlite3
+          import sys
+
+          db = "data/dental_pe_tracker.db"
+          if not os.path.exists(db):
+              print("::error::SQLite DB is missing; refusing to run refresh against an empty/stale base.")
+              sys.exit(1)
+
+          conn = sqlite3.connect(db)
+          cols = {row[1] for row in conn.execute("PRAGMA table_info(practice_locations)")}
+          required = {
+              "ownership_tier",
+              "ownership_evidence_basis",
+              "ownership_evidence_urls",
+              "ownership_confidence",
+              "network_id",
+              "census_review_status",
+          }
+          missing = sorted(required - cols)
+          tiered = conn.execute(
+              "SELECT COUNT(*) FROM practice_locations WHERE ownership_tier IS NOT NULL"
+          ).fetchone()[0]
+          statuses = conn.execute(
+              "SELECT COUNT(*) FROM practice_locations WHERE census_review_status IS NOT NULL"
+          ).fetchone()[0] if "census_review_status" in cols else 0
+          conn.close()
+
+          print(f"SQLite census baseline: tiered_locations={tiered} review_status_rows={statuses}")
+          if missing:
+              print(f"::error::SQLite DB is missing census columns: {missing}. Cache/DB.gz is stale.")
+              sys.exit(1)
+          if tiered < 3180:
+              print("::error::SQLite DB is below the 2026-07-04 census baseline (3,180 tiered locations).")
+              sys.exit(1)
+          if statuses < 655:
+              print("::error::SQLite DB is below the 2026-07-04 review-status baseline (655 rows).")
+              sys.exit(1)
+          PY
+
       - name: Scrape PESP deals
         timeout-minutes: 20
         run: python3 scrapers/pesp_scraper.py
