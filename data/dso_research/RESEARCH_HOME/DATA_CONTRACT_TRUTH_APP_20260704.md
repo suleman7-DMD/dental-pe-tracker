@@ -114,3 +114,29 @@ counted T2 as independent) is REMOVED. Legacy detector fields it still exposes
 
 Until both sync legs run (user-authorized, charter §1b), the live app shows the 343-row slice and
 must label coverage honestly — never imply the 3,180 exists live before it does.
+
+## 7. The GP denominator — 4,439 is a documented filter, not a choice (added 2026-07-08)
+
+The census universe "IL GP locations = 4,439" is derived, exactly and reproducibly, as:
+
+```
+4,639   practice_locations in watched IL ZIPs that are NOT specialist-only
+ −179   entity_classification = 'da_unverified'   (Data-Axle synthetics — no federal NPI, unverifiable)
+ − 12   entity_classification = 'non_clinical'    (labs, billing, staffing at GP-flagged addresses)
+ −  5   entity_classification = 'duplicate_location' (suite/unit variants of an already-counted office)
+ −  4   entity_classification = 'specialist'      (specialist rows the GP-location flag missed)
+= 4,439  = SUM(zip_scores.total_gp_locations) for watched IL ZIPs   ← exact match, 0 residual
+```
+
+Rules:
+- **This is an exclusion FILTER with SQL provenance, not a strategic decision.** Nobody gets to
+  "pick" a denominator; anyone recomputing it must reproduce the 200-row exclusion set above.
+- Every headline census percentage (reviewed %, tier shares, Not Solo Owner-Operated %) uses
+  4,439 (or its per-ZIP `zip_scores.total_gp_locations` decomposition) as denominator.
+- The four excluded classes are excluded EVERYWHERE (counts, maps, search, exports) — a row may
+  not be excluded from the denominator yet appear on a map surface.
+- **Pre-sync invariant (recommended, W-item):** add a check to `scripts/check_data_invariants.py`
+  asserting `SUM(zip_scores.total_gp_locations) [IL watched] == COUNT(practice_locations)` under
+  the filter above; a mismatch means `merge_and_score.py` and the exclusion rule have diverged.
+- The number will drift as rows are reclassified (e.g., a da_unverified row earns a federal NPI).
+  That is healthy; re-derive and update this section rather than pinning 4,439 forever.

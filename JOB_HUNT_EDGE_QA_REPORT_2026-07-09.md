@@ -87,3 +87,28 @@ SELECT location_id, field_key, suggested_value, status
 FROM practice_manual_corrections
 WHERE submitted_by = 'jhv-edge-qa-20260709';
 ```
+
+### Amendment 2026-07-09 (verification follow-up): why an anon REST check shows 0 rows
+
+An external verification pass ran the query above through the Supabase REST API
+with the **anon key** and saw 0 rows, flagging the six queued corrections as
+possibly fictitious. Root cause: `practice_manual_corrections` has **row-level
+security enabled with no anon policies** (see
+`scrapers/migrate_practice_manual_corrections.py`), so the anon role reads an
+empty set by design — the moderation queue is not public. The rows exist and
+were re-verified 2026-07-09 through two privileged paths:
+
+1. **Pooler (postgres role):** all 6 rows returned, `status='queued'`.
+2. **REST with the app's `SUPABASE_SECRET_KEY`** (the key
+   `createServerClient()` actually uses, present in Vercel env): all 6 rows
+   returned. The app's insert path (`/api/practice-corrections`) uses this same
+   key, so submissions from the live UI also bypass RLS correctly.
+
+The 6 rows are additionally mirrored into the local SQLite twin table
+(`data/dental_pe_tracker.db :: practice_manual_corrections`) for offline
+inspection. To verify from the repo without any Supabase key:
+
+```bash
+sqlite3 data/dental_pe_tracker.db "SELECT location_id, field_key, status
+  FROM practice_manual_corrections WHERE submitted_by='jhv-edge-qa-20260709';"
+```

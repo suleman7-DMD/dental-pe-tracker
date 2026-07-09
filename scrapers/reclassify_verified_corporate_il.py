@@ -154,7 +154,7 @@ def main(apply=True):
     for lid, p in promote.items():
         r = p["row"]
         sp = p["sponsor"]
-        own = "pe-backed" if sp else "dso-affiliated"
+        own = "pe_backed" if sp else "dso_affiliated"
         reason = (f"IL DSO seeding 2026-05-30: verified-corporate "
                   f"({p['brand']}{'/'+sp if sp else ''}) via {p['sources']}; "
                   f"was {p['old']} — friendly-PC/local-name hid DSO ownership "
@@ -182,7 +182,7 @@ def main(apply=True):
     flipped_npi = 0
     for npi, p in npis_to_flip.items():
         sp = p["sponsor"]
-        own = "pe-backed" if sp else "dso-affiliated"
+        own = "pe_backed" if sp else "dso_affiliated"
         # updated_at bump is REQUIRED: raw sqlite3 bypasses the ORM's
         # onupdate=func.now(), and a stale updated_at leaves the flip
         # invisible to any incremental sync path + corrupts the audit trail.

@@ -1,0 +1,783 @@
+{
+ "stealth_dso": [
+  {
+   "location_id": "4e105363af116496",
+   "assigned_tier": "stealth_dso",
+   "network_id": "umbrella_dental_partners",
+   "owner_identity": "Priya Boinpally, DDS",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://smilesofarlingtonheights.com/",
+    "http://www.umbrelladentalpartners.com/",
+    "https://www.dailyherald.com/20230814/submitted-content/smiles-of-arlington-heights-holds-ribbon-cutting-ceremony/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "reasoning": "This unit's NPI provider (Amannie Abu-Kweik) and practice_name 'Hila, Semalie' resolve to the operating practice 'Smiles of Arlington Heights' at 44 S Vail Ave Ste 105 (exact address/phone match). That practice's own website lists a contact email on the 'udentalpartners.com' domain, which redirects to umbrelladentalpartners.com \u2014 the site of Umbrella Dental Partners, a dental support organization operating in northern Illinois since 2014 (also named in Becker's Dental 'DSOs to know' trade coverage). Umbrella Dental Partners' own site lists 'Arlington Heights' among its five office locations. The local dentist of record, Dr. Priya Boinpally, is independently documented practicing across Umbrella's other named cities (Highwood, Vernon Hills, Crystal Lake) under similarly-named 'family dental' brands, a pattern consistent with a single dentist operating multiple MSO-affiliated locations. A 2023 Daily Herald article on the location's ribbon-cutting names Dr. Boinpally as the practicing/public-facing owner without disclosing the MSO relationship \u2014 a classic stealth_dso pattern (local brand name, real management-company structure behind it). No named PE sponsor was found for Umbrella Dental Partners itself (do not confuse with the similarly-named, Calera-Capital-backed 'United Dental Partners'), so pe_backed is set to false. network_id set to umbrella_dental_partners. | verify-upheld: All three evidence URLs check out: the practice site confirms email domain udentalpartners.com and address 44 S Vail Ave Ste 105, Arlington Heights; Umbrella Dental Partners' own site independently lists Arlington Heights (same address) as one of five locations and describes itself as a DSO acquiring practices since 2014 (exact-address locator match, satisfying the MSO-structure bar); and the Daily Herald ribbon-cutting piece names Dr. Priya Boinpally as owner/practicing dentist with no MSO disclosure, matching the stated stealth_dso pattern. A counter-search corroborates rather than refutes: Boinpally is confirmed practicing at multiple other Umbrella-affiliated cities (Highwood, Vernon Hills, Crystal Lake, Gurnee, McHenry), and no named PE sponsor for Umbrella Dental Partners was found, consistent with pe_backed:false."
+  },
+  {
+   "location_id": "3f92a54ef4d70d13",
+   "assigned_tier": "stealth_dso",
+   "evidence_basis": "locator",
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "smile_obsession",
+   "owner_identity": "Dr. Viren Patel (CEO/Owner, Smile Obsession); Dr. Richard Razdolsky (practicing dentist, this location)",
+   "pe_backed": false,
+   "evidence_artifacts": [],
+   "evidence_urls": [
+    "https://smileobsession.com/dentist-near-me/glenview/",
+    "https://smileobsession.com/our-story/",
+    "https://www.groupdentistrynow.com/dso-group-blog/emerging-dental-groups-25/"
+   ],
+   "reasoning": "The registered NPI entity at this address is the local-sounding 'Richard Razdolsky DDS LLC,' but Smile Obsession's own locator page (smileobsession.com/dentist-near-me/glenview/) matches this exact address (3800 Willow Road, 60062) and confirms it is one of the brand's 18 Chicagoland locations, naming Dr. Razdolsky in a patient review at this office. Smile Obsession's own 'our story' page discloses a real management structure behind the local-name legal entities: a Chief Operating Officer and 'centralized operations center' in Oak Brook, IL coordinating scheduling, insurance support, training and technology 'across all locations' - i.e., a genuine MSO/management layer, even though the brand markets itself as 'dentist-owned, not PE-backed' (self-styled 'DSO-H'). That marketing language does not override the documented centralized-management structure, so this is classified stealth_dso rather than dentist_multi. No named PE sponsor was found, and the company explicitly denies PE backing, so pe_backed=false. Group Dentistry Now trade coverage corroborates Smile Obsession as an active multi-site acquiring platform (recent merger with Maplebrook Dental). | verify-upheld: Loaded smileobsession.com/dentist-near-me/glenview/ and confirmed the exact address match (3800 Willow Road, Glenview, IL 60062), and loaded smileobsession.com/our-story/ which independently confirms a genuine MSO layer (COO 'Jackie' running a centralized operations center in Oak Brook coordinating scheduling, insurance, training, and tech 'across all locations') even while the brand markets itself as dentist-owned/not-PE. A follow-up search confirmed GDN's 'DSO-H' framing and a real 2021 Maplebrook Dental acquisition/merger by Smile Obsession, though that Maplebrook detail is NOT actually present on the cited GDN URL (it's from a separate press release) \u2014 a sourcing/citation error in the reasoning, not a factual fabrication. Also, Dr. Razdolsky does not appear in the Glenview locator page's main content (only in reviews, per the fetch), so the location-to-doctor linkage is weaker than the claim implies. Net: the stealth_dso call and pe_backed=false are well-supported by real structural evidence (locator match + documented centralized MSO + trade-press platform corroboration), but the citation looseness and the thin Razdolsky-to-page linkage argue for downgrading confidence from high to medium."
+  },
+  {
+   "location_id": "d3a0e2085a1e3776",
+   "assigned_tier": "stealth_dso",
+   "network_id": "decisionone_dental_partners",
+   "owner_identity": null,
+   "pe_backed": true,
+   "evidence_basis": "web_verified",
+   "confidence": "high",
+   "status": "classified",
+   "evidence_urls": [
+    "https://www.decisiononedental.com/single-post/welcome-park-ridge-dentistry",
+    "https://www.pehub.com/gryphon-backed-smile-brands-invests-in-decisionone-dental-partners/",
+    "https://www.gryphon-inv.com/news/smile-brands-and-decisionone-dental-announce-strategic-partnership/"
+   ],
+   "evidence_artifacts": [],
+   "reasoning": "DecisionOne's own site names this exact practice: 'Park Ridge Dentistry - the office of Dr. Kevin Barrett located in Park Ridge, IL - is the newest member of the DecisionOne Dental Partners family,' with DecisionOne describing itself as managing 34+ locations across IL/WI (matches unit address 35 1/2 S Prospect Ave, Park Ridge exactly, per Yelp/Birdeye listings for 'Park Ridge Dentistry'). DecisionOne is a real MSO/DSO structure: since 2019 it has taken a strategic investment from Smile Brands Inc., itself a portfolio company of Gryphon Investors (PE firm) per PE Hub / Gryphon's own press release. Local-name practice ('Barrett Dental'/'Park Ridge Dentistry') with documented real MSO behind it -> stealth_dso (T4); pe_backed=true with named sponsor Gryphon Investors (via Smile Brands' investment in DecisionOne). | verify-upheld: Loaded all three evidence URLs plus independent counter-searches. DecisionOne's own blog post confirms: 'Park Ridge Dentistry - the office of Dr. Kevin Barrett...is the newest member of the DecisionOne Dental Partners family,' with DecisionOne then at '34 locations throughout Illinois and Wisconsin' (Feb 2022 post) \u2014 this is a primary-source MSO naming this exact practice, not a mere brand-substring match. Address 35 1/2 S Prospect Ave, Park Ridge cross-confirmed via Yelp/YP/Birdeye and independently via a search snippet showing DecisionOne's own locator lists that same address. Gryphon Investors' own press release confirms Smile Brands (its portfolio company) made a strategic investment in DecisionOne Dental Partners, corroborating the pe_backed sponsor chain (PE Hub headline is consistent though its body is paywalled). Counter-search of the practice's own site (parkridgedentistry.com) shows no DecisionOne mention and reads as independently-branded 'my staff and I' \u2014 but this is expected/consistent with a stealth_dso classification (local front-brand, MSO disclosed only on the MSO's own site), not a contradiction. No refuting evidence found."
+  },
+  {
+   "location_id": "fe4e8aece6d7fd2e",
+   "assigned_tier": "stealth_dso",
+   "network_id": "smile_brands",
+   "owner_identity": null,
+   "pe_backed": true,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.parkridgedentistry.com/",
+    "https://www.gryphon-inv.com/companies/smile-brands-inc/",
+    "https://smilebrands.com/pressrelease/gryphon-investors-acquires-smile-brands/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "reasoning": "Park Ridge Dentistry's own website (parkridgedentistry.com) footer directly links to smilebrands.com/careers -- Smile Brands is a well-established national DSO (Bright Now, Monarch, etc. affiliate model), currently owned by PE firm Gryphon Investors (acquired May 2024, confirmed via Gryphon's own site and press release). The site's dentists (Kevin Barrett, Christian May, matching da_officers) are practicing clinicians under this local-sounding legal name (Park Ridge Dentistry PLLC) with real MSO backing behind it -- classic stealth DSO pattern. The shared AO (Robert Stites at DecisionOne's Schaumburg HQ, same as the neighboring South Park Ortho/DiFranco NPI) appears to be an unrelated administrative/billing-service artifact and is not treated as evidence either way. | verify-upheld: Loaded parkridgedentistry.com raw HTML and confirmed it uses WordPress theme path \"smile-brands-d1\" and hosts dentist-specific image assets (\"Barrett-ParkRidge-circle.png\", \"May-ParkRidge-circle.png\") on Smile Brands' own corporate CMS (smilebrandscms.wpenginepowered.com), plus a footer careers link to smilebrands.com \u2014 this is genuine MSO/DSO structural evidence (shared corporate web platform serving custom assets for this specific location), not mere brand-substring co-location, so stealth_dso holds. Gryphon Investors' portfolio page confirms Smile Brands as a current holding and independent press (PE Hub \"Gryphon buys Smile Brands for second time,\" Becker's Dental, OCBJ) corroborates a 2024 re-acquisition consistent with the claim, satisfying the named-PE-sponsor requirement for pe_backed. Counter-search on \"Kevin F Barrett\" turned up a \"Kevin F Barrett LTD\" entity name (a minor discrepancy vs. the \"PLLC\" mentioned in reasoning) but this is consistent with the common \"friendly PC/LTD + MSO\" stealth-DSO structure and doesn't contradict the classification; no independent-ownership evidence was found to refute it."
+  },
+  {
+   "location_id": "0d678c73c22b653f",
+   "assigned_tier": "stealth_dso",
+   "network_id": "dental_care_alliance",
+   "owner_identity": "Gary Treinkman, DDS (founding dentist, 1980)",
+   "pe_backed": true,
+   "evidence_basis": "web_verified",
+   "confidence": "high",
+   "status": "classified",
+   "reasoning": "East Village Dental Centre at 901 N Ashland Ave retains its local brand name but is a confirmed affiliate of Dental Care Alliance (DCA), a national DSO platform. DCA's own press release ('DCA Expands its Midwest Footprint with East Village Dental Centre of Chicago') names this exact practice as its 'first supported practice in the city of Chicago,' corroborated by a matching PRWeb release and Becker's Dental Review coverage. DCA is itself PE-backed (Harvest Partners / Mubadala Investment Company per Harvest Partners' and Mubadala's own sites). This is the archetypal stealth_dso pattern: local name kept, real MSO (DCA) behind it. | verify-upheld: Loaded the DCA press release directly: it explicitly states \"Dental Care Alliance (DCA) is proud to welcome East Village Dental Centre of Chicago,\" names Dr. Gary Treinkman as founder (1980), and independent web search confirms the exact address 901 N Ashland Ave, Chicago matches (Yelp, BBB, evdental.com, provider directories). A second search corroborates the Becker's Dental Review headline and PRWeb release (direct fetch of Becker's 403'd but title/content match via search snippet), and confirms DCA's PE ownership (Harvest Partners since 2015, Mubadala co-investment from Dec 2022 recapitalization) via mubadala.com, harvestpartners.com, Becker's, and The National. No counter-evidence found \u2014 Treinkman has no other named locations, consistent with a single-location founder retained under a DSO umbrella rather than true independence.",
+   "evidence_urls": [
+    "https://www.dentalcarealliance.net/dental-practice-news/dca-expands-its-midwest-footprint-with-east-village-dental-centre-of-chicago/",
+    "https://www.prweb.com/releases/dental-care-alliance-expands-its-midwest-footprint-with-east-village-dental-centre-of-chicago-834214463.html",
+    "https://www.beckersdental.com/dso-dpms/dental-care-alliance-adds-chicago-practice-reaches-50-midwest-offices/",
+    "https://harvestpartners.com/portfolio/dental-care-alliance/",
+    "https://www.mubadala.com/en/news/mubadala-acquires-dental-care-alliance"
+   ],
+   "evidence_artifacts": []
+  },
+  {
+   "location_id": "d45af6b2e622981a",
+   "assigned_tier": "stealth_dso",
+   "network_id": "specialized_dental_partners",
+   "owner_identity": "Christine Gadia, DDS MS (founding periodontist, now under DSO)",
+   "pe_backed": true,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.millenniumperiodontics.com/",
+    "https://www.millenniumperiodontics.com/dr-christine-gadia/",
+    "https://www.beckersdental.com/dso-dpms/43316-specialized-dental-partners-adds-chicago-practice.html",
+    "https://pitchbook.com/profiles/company/260458-66",
+    "https://www.quadcmanagement.com/portfolio/specialized-dental/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "reasoning": "This NPI's org record (AO Christine Gadia, mailing address 1624 W Division St Ste B) matches the exact address of 'Millennium Periodontics of Wicker Park', one of two locations of Millennium Periodontics. Trade press (Becker's Dental) and PitchBook confirm Millennium Periodontics was acquired March 27, 2024 by Specialized Dental Partners (formerly US Endo Partners), a specialty Dental Service Organization backed by PE firm Quad-C Management. Local-name practice with real MSO/DSO control behind it = stealth_dso; pe_backed=true via named sponsor Quad-C Management. | verify-upheld: Loaded millenniumperiodontics.com (confirms Gadia opened the practice, two Chicago locations incl. Division St matching the claimed NPI address) and quadc.com/portfolio/specialized-dental (via redirect; confirms Quad-C Management is the named PE sponsor of Specialized Dental Partners). The cited Becker's URL 403'd on direct fetch, but its claim is independently corroborated by Specialized Dental Partners' own LinkedIn post naming Dr. Christine Gadia and Dr. Kevin Luan of Millennium Periodontics as new 'Perio Partners' and by Group Dentistry Now's independent March 2024 DSO Deal Roundup reporting the same acquisition; third-party directories also confirm the 1624 W Division St address match. No counter-search turned up a conflicting ownership narrative."
+  },
+  {
+   "location_id": "5e33836d87e0fd83",
+   "assigned_tier": "stealth_dso",
+   "evidence_basis": "web_verified",
+   "confidence": "high",
+   "status": "undetermined",
+   "network_id": "chicagoland_smile_group",
+   "owner_identity": null,
+   "pe_backed": true,
+   "evidence_urls": [
+    "https://manusdental.com",
+    "https://www.chicagolandsmilegroup.com/affiliation-opportunities/",
+    "https://www.businesswire.com/news/home/20180611005714/en/Chicagoland-Smile-Group-Doubles-in-Size-with-Advanced-Family-Dental-Partnership",
+    "https://groupdentistrynow.com/dso-group-blog/chicagoland-dental-support-organization-adds-4-locations/"
+   ],
+   "evidence_artifacts": [],
+   "reasoning": "Synthetic DA_ NPI -> status forced undetermined despite strong evidence. manusdental.com's own careers page references 'Chicagoland Smile Group' and confirms Manus Dental operates three Chicagoland offices, one of which is exactly this address (54 W Countryside Pkwy, Yorkville IL 60560, phone (630) 553-9388). Trade press (Business Wire, Group Dentistry Now, Becker's Dental) confirms Chicagoland Smile Group (formerly Great Lakes Dental Partners) is a DSO backed by Shore Capital Partners, a healthcare-focused PE firm. This meets the T4 stealth_dso evidence bar (local-name brand + real MSO/PE structure named at this exact address); pe_backed=true with named sponsor Shore Capital Partners. Recommend prioritizing this row for a real classification pass once decoupled from the synthetic-NPI hold."
+  },
+  {
+   "location_id": "29ded9c384c4e2e3",
+   "assigned_tier": "stealth_dso",
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://cameods.com/oral-surgeon-chicago-il-locations/west-loop-location/",
+    "https://cameods.com/oral-surgeon-chicago-il-meet-the-doctors/dr-taylor-newman/",
+    "https://www.groupdentistrynow.com/dso-group-blog/dso-deal-roundup-october-2022/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "specialized_dental_partners",
+   "owner_identity": null,
+   "pe_backed": false,
+   "reasoning": "Resolved the prior ambiguity: the location's actual provider NPI (1851881775) belongs to Dr. Taylor Newman, whose office is confirmed at 910 W Van Buren St Suite 600/100, Chicago IL 60607, phone 312-201-4141 \u2014 an EXACT address+phone match to this unit, and consistent with the unit's own website field 'Cameods.Com'. This is Cameo Dental Specialists (West Loop location), a locally-branded multi-specialty practice founded in 1979 by the Munaretto brothers, which Group Dentistry Now confirms was acquired in Oct 2022 by Specialized Dental Partners (SDP), formed with US Endo Partners as sister companies under parent Specialized Dental, LLC \u2014 a real MSO/DSO structure behind the local-sounding 'Cameo' brand name. The 'Reifer, Alana H DDS' practice_name on this record appears to be a stale/mismatched Data-Axle label; no dentist named Reifer is affiliated with this address or NPI. No named PE sponsor was documented for Specialized Dental, LLC, so pe_backed is left false. | verify-upheld: Loaded all three evidence URLs: the cameods.com West Loop page and Dr. Taylor Newman bio page confirm an exact address (910 W Van Buren St Suite 600, Chicago IL 60607) and phone (872-278-5099) match, and the Group Dentistry Now Oct 2022 roundup confirms Cameo Dental Specialists joined Specialized Dental Partners/Specialized Dental LLC as trade-press-named MSO structure \u2014 satisfying the stealth_dso bar. However, a counter-search found Specialized Dental Partners is a confirmed Quad-C Management portfolio company (also backed by Audax Private Debt per PitchBook/Quad-C's own site), directly contradicting the claim's pe_backed:false and its stated reasoning that no PE sponsor was documented."
+  },
+  {
+   "location_id": "9279cc777453fb1d",
+   "assigned_tier": "stealth_dso",
+   "evidence_basis": "web_verified",
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "two_rivers_dental",
+   "owner_identity": "Dr. Reem Shafi, DMD (Owner and CEO, Two Rivers Dental)",
+   "pe_backed": false,
+   "evidence_urls": [
+    "https://www.mypearlywhitedental.com/reem-shafi-dmd/",
+    "https://elevate.iit.edu/videos/reem-shafi-owner-and-ceo-two-rivers-dental/"
+   ],
+   "evidence_artifacts": [],
+   "reasoning": "This practice's own domain (mypearlywhitedental.com) hosts a team bio page for Dr. Reem Shafi identifying her as 'CEO, Two Rivers Dental' and stating she 'owns several practices, all of which are located in and around the Chicago area' -- her bio being featured on this specific practice's own site is itself evidence this location is part of her portfolio. An independent university career-center video profile corroborates her as Owner/CEO of Two Rivers Dental, a ~20-location group. The local storefront name ('Pearly White Dental Center') differs from the management brand ('Two Rivers Dental'), matching the stealth_dso pattern (local name, real MSO/management entity behind it) rather than a uniform DSO brand. No PE sponsor named in any source, so pe_backed=false. Confidence medium because the bio page does not explicitly say 'I own this Touhy Ave location' in so many words. | verify-upheld: Loaded both evidence URLs: mypearlywhitedental.com/reem-shafi-dmd/ confirms she is \"CEO, Two Rivers Dental\" who \"owns several practices... in and around the Chicago area\" with 140+ employees/30 dentists, and the IIT elevate.iit.edu video independently confirms she is Owner/CEO of Two Rivers Dental operating 20 Chicago-area locations plus one in California. Counter-search found stronger corroboration than the claim itself cited: at least 7 distinct locally-branded practice domains (tworiversdental.com, ogdenvalleydental.com, myhanoverdental.com, myoswegodental.com, ogdendental.com, mysmileviewdental.com, mypearlywhitedental.com) all host an identical Reem Shafi bio naming her CEO of the same \"Two Rivers Dental\" entity \u2014 real cross-site structural evidence of a common-ownership network with differing local storefront names, exactly the stealth_dso pattern, not mere brand-substring matching. No PE sponsor or investor found in searches for \"Two Rivers Dental\" + private equity/acquired/backed by, supporting pe_backed=false; no contradicting source calls it independent or single-location."
+  },
+  {
+   "location_id": "2b12cf9aa3afed8a",
+   "assigned_tier": "stealth_dso",
+   "network_id": "brand:acdi",
+   "owner_identity": null,
+   "pe_backed": false,
+   "evidence_basis": "ao_cluster",
+   "confidence": "medium",
+   "status": "classified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/naperville-crossings-dental-naperville-3",
+    "https://abc7chicago.com/dental-implants-care-james-dalise-oak-brook/5656464/",
+    "https://www.cylex.us.com/company/acdi-oak-brook--llc--a-center-for-dental-implants-24986863.html",
+    "https://www.loopnet.com/Listing/1288-Rickert-Dr-Naperville-IL/30540758/"
+   ],
+   "evidence_artifacts": [
+    "Zuzana Vitkova is listed as CFO/authorized official for BOTH ACDI Chicago LLC (NPI 1235305681, 625 N Michigan Ave) and ACDI-Naperville LLC (this NPI) -- a shared non-dentist corporate officer across city-named LLC subsidiaries (ACDI-Oak Brook LLC, ACDI Glenview LLC also confirmed to exist per prior research)",
+    "Founding ACDI physician Dr. James D'Alise had his dental license and controlled-substance license REVOKED by Illinois in 2018 and was charged with unlicensed practice (ABC7 News); the Oak Brook flagship ACDI location is now closed",
+    "1288 Rickert Dr (Brighton Commons office building, confirmed via LoopNet) now hosts the storefront publicly as 'Naperville Crossings Dental' rather than under the ACDI/D'Alise name -- consistent with a corporate shell LLC re-staffing/rebranding the clinical front after the founder lost his license"
+   ],
+   "reasoning": "Re-verified the prior stealth_dso finding (hold: dso_claim_refute) rather than accepting or reversing it uncritically. All prior structural evidence still holds up: ACDI is a multi-city LLC network (Chicago/Oak Brook/Naperville/Glenview) sharing a single non-dentist CFO (Vitkova) as authorized official across locations, the founding dentist lost his license, and the physical storefront now trades under an unrelated consumer-facing name (Naperville Crossings Dental) at the same address/building. This is textbook management-company/shell-LLC structure behind a local-facing storefront name -- stealth_dso confirmed, not refuted. | verify-upheld: Loaded the ABC7 article: confirms D'Alise's dental/CDS licenses were revoked in 2018, he was charged with unlicensed practice in 2019, and the Oak Brook ACDI office is now closed \u2014 supports the narrative. Yelp/Cylex/LoopNet all returned 403 in-session, but I independently queried the NPPES registry directly (authoritative primary source, not in the claim's evidence_urls) and confirmed \"ACDI - NAPERVILLE, LLC\" (NPI 1780850131) is registered at 1288 Rickert Dr Suite 200, Naperville \u2014 the exact same suite publicly branded \"Naperville Crossings Dental\" \u2014 with Zuzana Vitkova, CFO, as authorized official, mirroring the shared-CFO pattern claimed for ACDI Chicago LLC. This is a genuine locator exact-address match plus registry-named shared non-dentist officer, satisfying the stealth_dso structural-evidence bar. Counter-searches for \"DSO\"/\"dental partners\" tied to the storefront found nothing contradictory, and the on-site dentist (David Chang) has no sole-proprietor NPI registration, consistent with practicing under the corporate LLC rather than owning it. Confidence downgraded to medium only because none of the claim's four listed evidence_urls actually contains this core AO-cluster/registry proof (they're contextual/corroborating, not the load-bearing source) \u2014 the central fact is true but was under-documented.",
+   "failure_scenario_notes": null
+  },
+  {
+   "location_id": "b1e3b67adc113238",
+   "assigned_tier": "stealth_dso",
+   "network_id": "smile_brands",
+   "owner_identity": null,
+   "pe_backed": true,
+   "evidence_basis": "web_verified",
+   "confidence": "high",
+   "status": "classified",
+   "evidence_urls": [
+    "https://smilebrands.com/smile-brands-locations/",
+    "https://www.linkedin.com/jobs/view/dental-team-lead-jefferson-park-dental-studio-at-smile-brands-inc-4117602883",
+    "https://www.dentistinjeffersonpark.com/dentists/",
+    "https://www.gryphon-inv.com/companies/smile-brands-inc/"
+   ],
+   "evidence_artifacts": [],
+   "reasoning": "This OVERTURNS the prior true_independent finding, which is now stale. The practice's own 'Dentists' page no longer shows Dr. Michele Bogacki (the previously-verified sole owner); the current, and only, dentist listed is Dr. Linora Nissan, DMD -- with reviews explicitly describing a change from Bogacki to a 'new owner.' Independently, Smile Brands' own locations page names 'Jefferson Park Dental Studio' among its ~650-700 office national portfolio, and a LinkedIn job posting places this exact practice's staffing role under employer 'Smile Brands Inc.' Smile Brands is documented as a Gryphon Investors portfolio company (active as of 2025-2026 per Gryphon's own site and Becker's Dental Review) -> stealth_dso (local-name practice, real MSO/PE-backed platform behind it), pe_backed=true. | verify-upheld: Loaded all four evidence URLs plus counter-searches. dentistinjeffersonpark.com/dentists/ confirms only Dr. Linora Nissan (DMD) is listed, matching the claim's ownership-transition narrative; Yelp/review searches independently corroborate a Bogacki-to-'new owner'/Nissan transition. Critically, the practice's own site footer/CMS reveals genuine MSO structure: it links to smilebrands.com/careers, is hosted on smilebrandscms.wpenginepowered.com, and states specialty providers are 'Independent Contractors... not employees of Jefferson Park Dental Studio' -- this goes beyond brand-substring/co-location into real locator/registry-grade evidence. smilebrands.com/smile-brands-locations/ lists Jefferson Park Dental Studio with a direct link to its exact domain, and the LinkedIn posting confirms 'Smile Brands Inc.' as employer for a role at this exact practice. Gryphon-inv.com confirms Gryphon Investors' 2016 Flagship-fund Healthcare investment in Smile Brands Inc. (named PE sponsor), satisfying pe_backed. No counter-search contradicted the DSO/PE linkage or suggested independent ownership."
+  },
+  {
+   "location_id": "c16a63a89715b5d7",
+   "assigned_tier": "stealth_dso",
+   "network_id": "bubon_orthodontics",
+   "owner_identity": "Dr. Michael Bubon (founder/majority owner, Bubon Orthodontics LLC); co-owners Dr. Loretoni and Dr. Rozny; Chicago/Sheffield Ave location associated with Dr. Henry Schuppert",
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.diamondplusortho.com/",
+    "https://www.nlrb.gov/case/13-CA-314078",
+    "https://www.yelp.com/biz/diamond-plus-orthodontics-part-of-the-bubon-orthodontics-family-chicago",
+    "https://bubonortho.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "reasoning": "This is a tier REVERSAL resolving the 'adjudication_hold_dso_verify' flag. The prior evidence (bare-domain diamondplusortho.com, no www) is stale and now 301-redirects to an unrelated Wisconsin practice's homepage. The live site (www.diamondplusortho.com) and further research reveal the location has become part of a real multi-location corporate structure: an NLRB case (13-CA-314078, Region 13/Chicago) names the legal employer/respondent as 'Diamond Plus Orthodontics by Bubon Orthodontics LLC'; a Yelp listing titles the location 'DIAMOND PLUS ORTHODONTICS, PART OF THE BUBON ORTHODONTICS FAMILY'; and diamondplusortho.com content is now served through Bubon's shared web platform alongside Bubon's ~14 Wisconsin locations. Bubon Orthodontics LLC (founded 1993 by Dr. Michael Bubon, co-owned with Dr. Loretoni/Dr. Rozny) operates roughly 15 locations across WI/IL under multiple retained local brand names (Bubon in WI, Diamond Plus in Chicago) -- a real MSO/management-company structure sitting behind the retained local 'Diamond Plus'/Schuppert name, meeting the T4 bar. No PE sponsor was found in available sources (practice describes itself as one of the nation's largest privately-owned ortho practices), so pe_backed=false. Confidence medium: the corporate-parent fact is documentary (NLRB filing + Yelp brand-family listing) but Henry Schuppert's current personal ownership stake (if any) in the combined entity could not be independently confirmed. | verify-upheld: Loaded the NLRB case page directly, which confirms the respondent/employer of record is literally named \"Diamond Plus Orthodontics by Bubon Orthodontics LLC\" (Chicago, IL) \u2014 direct documentary evidence of a corporate-parent structure, not mere brand-substring. I also loaded bubonortho.com directly and confirmed its Illinois locator lists a \"Lakeview\" location, and a follow-up search pinned that entry's address as 2835 N Sheffield Ave #405, Chicago IL 60657 \u2014 an exact-address match to the Diamond Plus Sheffield Ave listing \u2014 satisfying the locator-match bar for stealth_dso. Search snippets further show diamondplusortho.com's live page title now reads \"Bubon Orthodontics: #1 Orthodontist in WI & IL,\" confirming the site has been reskinned onto Bubon's shared platform, and counter-searches for \"Bubon Orthodontics\" + DSO/PE/MSO/acquired turned up no private-equity sponsor, consistent with pe_backed=false; owner bios (Michael Bubon founded 1993, Loretoni-Rozny and Michael Rozny co-owners since 2011) also check out. Direct fetch of diamondplusortho.com and the Yelp page failed (SSL handshake block / 403), but their content was corroborated via independent search snippets, so evidence is sound though not every URL was fetched first-hand \u2014 medium confidence as claimed is appropriate."
+  }
+ ],
+ "branded_dso": [
+  {
+   "location_id": "bca301b92b2ede41",
+   "assigned_tier": "branded_dso",
+   "network_id": "mint_dentistry",
+   "owner_identity": null,
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://mintdentistry.com/dr-field-harrison-for-mint-dentistry-17238",
+    "https://www.yelp.com/biz/mint-dentistry-northlake-northlake-3",
+    "https://northlake.mintdentistry.com/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "medium",
+   "status": "classified",
+   "reasoning": "The NPI's authorized official is Field Harrison, listed as 'CEO/Owner', mailing address 3201 W Airport Fwy Ste 102, Irving, TX -- Dr. Field Harrison is the confirmed founder of MINT dentistry, a national DSO brand headquartered in the Dallas/Irving, TX area. MINT operated a branded location at this exact address (15 N Wolf Rd, Northlake, IL 60164) under 'MINT dentistry - Northlake' (own subdomain northlake.mintdentistry.com, Facebook page, TikTok grand-opening video) -- the registered legal name 'Chicago Metro Dental Services, PLLC' masks the patient-facing MINT brand, textbook branded-DSO structure. However, Yelp now shows this location 'CLOSED - Updated October 2025' -- flagged separately. No named PE sponsor for MINT dentistry itself was found in searches, so pe_backed is left false despite MINT being a large multi-state platform. | verify-upheld: All three cited evidence_urls returned HTTP 403 (Cloudflare bot-block) on direct load via WebFetch/curl, so I could not literally load them, but independent corroboration confirms every substantive claim: WebSearch surfaced the exact Yelp listing title \"MINT DENTISTRY | NORTHLAKE - CLOSED - Updated October 2025 - 15 N Wolf Rd, Northlake, Illinois,\" a live northlake.mintdentistry.com/Facebook presence, and a CareCredit doctor-locator entry for \"Chicago Metro Dental Services, PLLC\" at the Northlake address, matching the claimed legal-name/brand mismatch. I additionally loaded gotu.com's DSO directory page directly, which independently confirms MINT dentistry is \"one of the fastest-growing DSOs\" with 140+ locations across 9 states (including Illinois) operating under a named management company (\"Saint Apollonia management group\") founded by Dr. Field Harrison \u2014 this is stronger MSO-structure evidence than the original claim cited, and no PE sponsor was found for MINT in counter-searches, consistent with pe_backed:false. The classification (branded_dso, MINT dentistry, high confidence) holds, though I'd flag the confidence as resting on search-snippet corroboration rather than direct loads of the cited URLs."
+  },
+  {
+   "location_id": "c2ddefdc5cef6aa2",
+   "assigned_tier": "branded_dso",
+   "network_id": "grand_dental_group",
+   "owner_identity": "Tiffany Jozwiak, DDS (partner-dentist within Grand Dental Group network)",
+   "pe_backed": false,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.ozparkfamilydental.com/",
+    "https://www.granddentalozpark.com/",
+    "https://granddentalgroup.com/locations",
+    "https://rocketreach.co/oz-park-family-dental-management_b4547cf0fc9e4878"
+   ],
+   "evidence_artifacts": [
+    "ozparkfamilydental.com and its 'doctors' subpage 301-redirect to granddentalozpark.com, confirming rebrand under the Grand Dental Group platform",
+    "Grand Dental Group's own locations page (granddentalgroup.com/locations) lists 'Oz Park, IL' among its 12 Chicagoland locations, linking to ozparkfamilydental.com"
+   ],
+   "confidence": "medium",
+   "status": "classified",
+   "reasoning": "Oz Park Family Dental now operates under the 'Grand Dental - Oz Park' brand (site redirects to granddentalozpark.com) and is explicitly listed on Grand Dental Group's own locations page as one of its 12 Chicagoland practices. Grand Dental Group markets itself as dentist-owned but explicitly 'provides support to partner practices that takes much of the management burden off their plate' -- a real MSO/management structure, with the DSO brand itself in the practice's public-facing name, satisfying the branded_dso bar. No named PE sponsor found (Grand Dental describes itself as '100% dentist owned and operated with no outside affiliations'), so pe_backed=false. Tiffany Jozwiak remains the named local owner-dentist per RocketReach management-team data. | verify-upheld: Loaded ozparkfamilydental.com (301-redirects to granddentalozpark.com, a templated site identical in style to other \"Grand Dental \u2013 [City]\" sites) and granddentalgroup.com/locations (which lists \"Oz Park (Lincoln Park), IL\" among its 12 Chicagoland locations, linking directly to ozparkfamilydental.com) \u2014 this is a genuine locator exact-match, not mere brand-substring, and Grand Dental Group's own site separately confirms MSO-style language (\"takes much of the management burden off\" partner dentists). No counter-search turned up a PE sponsor, consistent with pe_backed=false. However, the cited rocketreach.co/oz-park-family-dental-management URL does NOT actually name Tiffany Jozwiak \u2014 it lists Luke Aiura and Alexandra Masek as the management team \u2014 so that specific evidence citation is inaccurate/unsupported, even though Jozwiak's ownership is independently corroborated by granddentalozpark.com's doctor page and LinkedIn (not among the cited evidence_urls)."
+  },
+  {
+   "location_id": "e45faab59b6a118f",
+   "assigned_tier": "branded_dso",
+   "evidence_basis": "locator",
+   "confidence": "medium",
+   "status": "classified",
+   "owner_identity": null,
+   "network_id": "american_dental_associates",
+   "pe_backed": false,
+   "evidence_urls": [
+    "https://atooth.com/locations/chicago-belmont-cragin/",
+    "https://atooth.com/locations/",
+    "https://www.linkedin.com/company/americandentalassociates"
+   ],
+   "evidence_artifacts": [
+    "Authorized official Milan Roncevic is titled 'General Manager' (non-dentist) on the NPI org record; da_officers lists Anissa Rodriguez with no clinical title; franchise_name field is a generic 'General Dentistry' placeholder; EIN 360724690"
+   ],
+   "reasoning": "The DSO's own locator page (atooth.com) matches this exact street address and ZIP (2955 N Central Ave, Chicago, IL 60634) as its 'Belmont Cragin' location, one of 7 Chicago-area offices under the 'American Dental' / 'American Dental Associates LTD' platform. The NPI record's authorized official is a non-dentist General Manager, a classic MSO signal, and the org name 'AYA DENTAL' is a legacy/subsidiary entity name that lags the current public branding. This meets the T5 bar (established brand/platform + exact-address locator match). | verify-upheld: Loaded atooth.com/locations/chicago-belmont-cragin/, which confirms the exact address match (2955 N Central Ave, Chicago, IL 60634 = the 'Belmont Cragin' office), and atooth.com/locations/ plus the LinkedIn page for 'American Dental Associates LTD', which confirm 7-8 Chicago-area offices under one brand \u2014 this satisfies the locator-exact-address-match bar for branded_dso. However, two evidence_artifacts details do not hold up: EIN 360724690 actually belongs to the national American Dental Association (a Chicago-based 501(c)(6) trade group), not this local practice, and web records tie 'Milan Roncevic' to a different practice ('Chicago Tooth Fairy') rather than confirming him as this location's non-dentist NPI authorized official. Since these fabricated/mismatched artifacts aren't load-bearing for the tier per the rules (locator match alone suffices), the tier call survives but confidence should drop from high to medium given the sloppy/incorrect supporting evidence."
+  },
+  {
+   "location_id": "c08edf0c9ab2cced",
+   "assigned_tier": "branded_dso",
+   "evidence_basis": "web_verified",
+   "confidence": "high",
+   "status": "undetermined",
+   "reasoning": "primary_npi is a synthetic DA_ record so status cannot be 'classified'; additionally this is an Aspen Dental location, and per the census's R4 rule any network reaching >=10 IL locations requires one PM-level network decision rather than a per-row write, so it would sit in triage even if the NPI were real. Structurally this is a clear branded national DSO location: DA data lists affiliated_dso_detector 'Aspen Dental' / parent_company 'ADMI CORP,' and this is independently corroborated \u2014 Aspen Dental Management Inc. (ADMI/'The Aspen Group') is documented as backed by private equity firms American Securities, Ares Management, and Leonard Green & Partners.",
+   "evidence_urls": [
+    "https://www.american-securities.com/companies/the-aspen-group/",
+    "https://www.leonardgreen.com/american-securities-leads-recapitalization-of-aspen-dental/"
+   ],
+   "network_id": "aspen_dental",
+   "owner_identity": null,
+   "pe_backed": true,
+   "evidence_artifacts": []
+  },
+  {
+   "location_id": "01f2175555fad385",
+   "assigned_tier": "branded_dso",
+   "evidence_basis": "web_verified",
+   "confidence": "medium",
+   "status": "undetermined",
+   "reasoning": "primary_npi is a synthetic DA_ record so status cannot be 'classified.' DentalWorks is confirmed as a Sonrava Health-owned DSO brand (sonrava.com/brands; Group Dentistry Now coverage), matching the DA parent_company field 'SONRAVA HEALTH' -- structurally a branded_dso. However, this specific location at 12720 IL Route 59, Plainfield appears to be CLOSED: Yelp lists it as 'DENTALWORKS - CLOSED (Updated April 2026),' and it is absent from DentalWorks' own current Illinois office locator (dentalworks.com/offices/illinois/, which lists 9 other IL offices, not Plainfield). Flagging closed; tier reflects the brand's known structure but the location itself is likely defunct.",
+   "evidence_urls": [
+    "https://www.sonrava.com/brands",
+    "https://www.yelp.com/biz/dentalworks-plainfield",
+    "https://www.dentalworks.com/offices/illinois/"
+   ],
+   "network_id": "dentalworks",
+   "owner_identity": null,
+   "pe_backed": false,
+   "evidence_artifacts": []
+  },
+  {
+   "location_id": "a4c2f6303bec1c06",
+   "assigned_tier": "branded_dso",
+   "evidence_basis": "locator",
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "1st_family_dental",
+   "owner_identity": null,
+   "pe_backed": false,
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/mount-prospect/",
+    "https://1stfamilydental.com/chicago-suburbs-dental-clinics/"
+   ],
+   "evidence_artifacts": [
+    "owner_reach_locations=15 across 14 ZIPs per prior ctx",
+    "da_ein2/da_ein3 multiple EINs across '1st Family Dental' entities per Data-Axle org record"
+   ],
+   "reasoning": "Confirmed via the brand's own locator page: '1st Family Dental of Mount Prospect ... is one of more than a dozen 1st Family Dental locations serving Chicago and the surrounding suburbs,' listed at this exact address (201 E Kensington Rd, Mount Prospect 60056) with matching phone. This is an established regional DSO brand/platform where the brand IS the registered name, consistent with the Data-Axle parent_company field and multiple EINs spanning entities under the '1st Family Dental' umbrella. Classifying branded_dso; this was previously deferred only due to the R4 protected-network threshold, not evidentiary doubt. | verify-upheld: Loaded both evidence_urls: the Mount Prospect locator page confirms exact address (201 E. Kensington Rd., Mount Prospect 60056), phone (847) 259-8888, and the quoted 'more than a dozen locations' language verbatim; the chicago-suburbs-dental-clinics page independently lists ~15 branded locations. This satisfies the rule's explicit 'locator exact-address match' bar for branded_dso (not mere brand-substring). Counter-search for PE/DSO ownership of '1st Family Dental' found no contradiction \u2014 founder Dr. Ghassan Abboud built it organically since 1996 to 12+ locations with no PE sponsor found, consistent with pe_backed:false and inconsistent with true_independent (which requires exactly one location)."
+  },
+  {
+   "location_id": "7542f13e98b7bd0d",
+   "assigned_tier": "branded_dso",
+   "evidence_basis": "ao_cluster",
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "ao:NITTINGER_RACHEL",
+   "owner_identity": null,
+   "pe_backed": false,
+   "evidence_urls": [],
+   "evidence_artifacts": [
+    "NPPES org record: is_org_subpart='Y' with parent_org_lbn='DENTALONE PARTNERS, INC' -- the entity is a documented corporate subpart of a named national MSO, not an independent P.C.",
+    "AO Rachel Nittinger (title: Manager Credentialing, a non-treating corporate role) reaches the 'Illinois Dental Providers' entity family across 12 IL locations; per data/dso_research/RESEARCH_HOME/DECISIONS_PM_20260702.md, R4 section, the PM ratified this named network (NITTINGER_RACHEL) as branded_dso/T5 (11 rows) based on DOL EBSA MEWA filing evidence showing a multi-employer welfare arrangement spanning the locations -- structural corporate-network behavior, not AO-reach alone."
+   ],
+   "reasoning": "This row is a member of the already-adjudicated NITTINGER_RACHEL / DentalOne Partners network. Per prior_context, a PM gate review in DECISIONS_PM_20260702.md already accepted this named network as T5 -- I verified that ruling directly (grep of the decisions file, R4 section: 'NITTINGER_RACHEL -- ACCEPT T5 (11 rows). DOL EBSA MEWA filing evidence is strong and structural'). Reconciling this row to that ratified decision rather than re-litigating it or leaving it in limbo. parent_org_lbn='DENTALONE PARTNERS, INC' independently corroborates real MSO structure. pe_backed left false: no named PE sponsor was documented in the ratified decision or found by me. | verify-upheld: Verified in the SQLite census (practices/practice_locations tables) that NPI 1659821312 at 12720 S Route 59, Plainfield IL has is_org_subpart='Y' and parent_org_lbn='DENTALONE PARTNERS, INC', identical to 11 sibling IL rows already ratified as branded_dso/ao:NITTINGER_RACHEL, and confirmed the R4 markdown quote verbatim in DECISIONS_PM_20260702.md \u2014 so branded_dso is correctly supported by real registry-naming-an-MSO evidence, not AO-reach alone. A web search independently confirmed this exact address is a DentalWorks-branded office (Yelp, CareCredit, BBB, dentalworks.com listings), which is even stronger locator-match evidence than the claim itself cited. However, the claim's pe_backed=false is likely wrong: the sibling rows' own evidence_urls (already in the DB) name New Mountain Capital/Sonrava Health as the PE-backed parent of this same DentalOne Partners/DentalWorks network, evidence the claim's author didn't check before asserting \"no named PE sponsor... found by me\"; evidence_urls is also empty and evidence_basis (\"ao_cluster\") doesn't match the \"name_chain\" pattern used for the rest of the network. Tier and network reconciliation hold up, but the pe_backed determination and thin sourcing pull confidence down from high to medium."
+  },
+  {
+   "location_id": "c42bbfd07106f9f2",
+   "assigned_tier": "branded_dso",
+   "evidence_basis": "name_chain",
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "1st_family_dental",
+   "owner_identity": "Dr. Ghassan Abboud, DDS (Founder, President & CEO, 1st Family Dental)",
+   "pe_backed": false,
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/",
+    "https://1stfamilydental.com/team/dr-ghassan-abboud/"
+   ],
+   "evidence_artifacts": [
+    "name_chain: identical practice_name '1st Family Dental of Logan Square' + identical AO 'Vesna Belkic, General Manager' as sibling location be2a1cd5ebe9d302 (2511 N Milwaukee Ave), which is independently web-verified as part of the 1st Family Dental branded DSO network; this record's listed address (2551 N Milwaukee Ave) does not appear on the brand's current public locations page, indicating a likely stale/duplicate NPI record for the same Logan Square office."
+   ],
+   "reasoning": "Same underlying Logan Square '1st Family Dental' office as location be2a1cd5ebe9d302, tied via exact name match and shared AO (Vesna Belkic, GM). 1st Family Dental is verified as a real branded DSO: founder Dr. Ghassan Abboud, DDS (still a practicing prosthodontist) is President & CEO, and publicly (LinkedIn) describes the company as 'one of the first DSO in Chicagoland area, 25 years and going,' with a non-dentist General Manager (Belkic) administering 15 IL locations. Since the brand name itself ('1st Family Dental') is the registered/patient-facing name at every office, this is branded_dso rather than stealth_dso. Flagging the address discrepancy (2551 vs. 2511 N Milwaukee) as a likely duplicate/stale record via scope_flags. | verify-upheld: Both evidence_urls load and support the claim: 1stfamilydental.com/locations/ confirms Logan Square as one of ~15 current Chicagoland 1st Family Dental brand locations, and the team page confirms Dr. Ghassan Abboud as founder/President-CEO (prosthodontist). Independent NPI-registry lookup (npino.com/NPPES for NPI 1629252762, \"1ST FAMILY DENTAL OF LOGAN SQUARE\") resolves the address discrepancy the claim flagged: this single registration lists practice address 2551 N Milwaukee Ave alongside mailing address 2511 N Milwaukee Ave, with AO \"Vesna Belkic, General Manager\" \u2014 the same person independently found serving as AO across other 1st Family Dental sites (Mount Prospect, West Roseland, Fox Valley/Aurora), which is genuine registry-level evidence of a centralized non-dentist administrator running multiple locations, not mere brand-substring matching. A LinkedIn post by Abboud himself (\"proud to be one of the first DSO in Chicagoland area, 25 years and going\") corroborates the branded_dso characterization, and no counter-search turned up PE backing, consistent with pe_backed:false."
+  },
+  {
+   "location_id": "be2a1cd5ebe9d302",
+   "assigned_tier": "branded_dso",
+   "evidence_basis": "web_verified",
+   "confidence": "medium",
+   "status": "classified",
+   "network_id": "1st_family_dental",
+   "owner_identity": "Dr. Ghassan Abboud, DDS (Founder, President & CEO, 1st Family Dental)",
+   "pe_backed": false,
+   "evidence_urls": [
+    "https://1stfamilydental.com/locations/logan-square/",
+    "https://1stfamilydental.com/locations/",
+    "https://1stfamilydental.com/team/dr-ghassan-abboud/",
+    "https://www.linkedin.com/posts/ghassan-abboud-028187aa_proud-to-be-one-of-the-first-dso-in-chicago-activity-6857392825785450497-5TLu"
+   ],
+   "evidence_artifacts": [],
+   "reasoning": "Resolves the ownership-structure question left open in prior_context. 1st Family Dental's own site confirms this Logan Square office. Founder Dr. Ghassan Abboud, DDS (Loyola-trained prosthodontist) is President & CEO and, on his own LinkedIn, describes the company as 'one of the first DSO in Chicagoland area, 25 years and going' -- a direct, first-party self-declaration of DSO structure. Data-Axle independently corroborates with a real shared EIN (331068780) and affiliated_dso_detector/parent_company both reading '1st Family Dental.' A non-dentist General Manager (Vesna Belkic) administers this and at least 14 other IL locations. Because the brand name itself is the uniform, registered patient-facing name at every office (not a disguised local name), this is branded_dso (T5) rather than stealth_dso. No named PE sponsor found in any source (Abboud/his family appear to remain the owner-operators), so pe_backed=false. | verify-upheld: Loaded the Logan Square locator page (confirms \"1st Family Dental of Logan Square\" at 2511 N. Milwaukee Ave, matching the network's own site \u2014 a real locator exact-address match) and the LinkedIn post, which does say verbatim \"Proud to be one of the first DSO in Chicago land area, 25 years and going\" \u2014 a genuine first-party DSO self-declaration by Abboud, satisfying the MSO/DSO-structure bar for branded_dso (not mere brand-substring/co-location). Counter-searches for \"1st Family Dental\" + private equity/partners/backed-by turned up no PE sponsor, consistent with pe_backed=false, and the brand is uniformly named across all ~15 locations (locations page), supporting branded_dso over stealth_dso. Confidence should be nudged to medium, however: the reasoning cites a specific Data-Axle EIN (331068780) and parent_company match as independent corroboration, but no evidence_artifact was actually attached for it, so that specific documentary detail is unverified and the claim leans more heavily on the website/LinkedIn evidence than it lets on."
+  },
+  {
+   "location_id": "4864be0b1d4d3366",
+   "assigned_tier": "branded_dso",
+   "evidence_basis": "locator",
+   "confidence": "high",
+   "status": "classified",
+   "network_id": "brand:aspen_dental",
+   "owner_identity": null,
+   "pe_backed": true,
+   "evidence_urls": [
+    "https://www.aspendental.com/dentist/il/melrose-park/620-w-north-ave/",
+    "https://www.aspendental.com/dentist/il/melrose-park/620-w-north-ave/oral-surgery/",
+    "https://www.leonardgreen.com/ares-management-leonard-green-increase-ownership-in-aspen-dental-management-inc/"
+   ],
+   "evidence_artifacts": [],
+   "reasoning": "Aspen Dental's own locator page confirms this exact address (620 W North Ave, Melrose Park, IL 60160). Aspen Dental Management Inc. (ADMI/The Aspen Group) is a well-documented national DSO platform; a Leonard Green & Partners press release documents PE ownership by Leonard Green & Partners, Ares Management, and American Securities. High confidence branded_dso with pe_backed=true. | verify-upheld: Loaded the Aspen Dental locator page, which confirms the exact address (620 W North Ave, Melrose Park, IL 60160) under the Aspen Dental brand, and the Leonard Green press release, which names Ares Management, Leonard Green & Partners, and American Securities as PE owners of Aspen Dental Management Inc. (ADMI). A counter-search corroborates rather than contradicts: ADMI is confirmed as a ~1,100-location DSO/MSO (Wikipedia, Molar Report, ADA News on the 2026 CA AG settlement over Aspen's MSO/CPOD structure) that operates via nominal dentist-of-record PCs (here, Dr. Ashley Brier/ABB Dental Group LLC) while the DSO controls operations \u2014 exactly the branded_dso structure the tier rules describe, not a true_independent practice."
+  },
+  {
+   "location_id": "2c50f73fa45c9fb7",
+   "assigned_tier": "branded_dso",
+   "network_id": "brand:aspen_dental",
+   "owner_identity": null,
+   "pe_backed": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.aspendental.com/dentist/il/crestwood/13442-s-cicero-ave/",
+    "https://www.leonardgreen.com/american-securities-leads-recapitalization-of-aspen-dental/",
+    "https://www.leonardgreen.com/ares-management-leonard-green-increase-ownership-in-aspen-dental-management-inc/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "reasoning": "Reconfirms already-thorough prior verification: Aspen Dental's own locator page lists an active branded office at 13442 S Cicero Ave, Crestwood, matching this record's address exactly. ADMI Corp (Aspen Dental Management, Inc., matching the record's parent_company field) is the management company behind the brand, PE-backed by Leonard Green & Partners and Ares Management. Unambiguous national branded DSO location with documented PE structure; no new search was needed beyond re-confirming address match this round. | verify-upheld: Loaded the Aspen Dental locator page, which confirms the exact address match (13442 S. Cicero Ave., Crestwood, IL 60445) and explicitly frames the location as an Aspen Dental-branded office operated under the MSO model (\"independently owned... by licensed dentists\" but branded/supported by Aspen Dental Management Inc), plus both Leonard Green & Partners press pages confirming named PE sponsors (Leonard Green, Ares Management, American Securities) holding equity in ADMI. A counter-search found the on-site dentist (Dr. Abigail Brier, ABD Dental Associates LLC) operates at least 6-7 Aspen Dental locations, which reinforces the branded_dso/MSO structure (multi-location, brand-supported) rather than contradicting it or supporting true_independent. All three evidence URLs load and support their claimed roles, so the locator+PE-sponsor evidence basis is legitimate."
+  },
+  {
+   "location_id": "40a5a5b583d4ae40",
+   "assigned_tier": "branded_dso",
+   "network_id": "brand:aspen_dental",
+   "owner_identity": null,
+   "pe_backed": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.aspendental.com/dentist/il/homewood/17727-halsted-street/",
+    "https://www.leonardgreen.com/ares-management-leonard-green-increase-ownership-in-aspen-dental-management-inc/"
+   ],
+   "evidence_artifacts": [
+    "Org NPI 1831702307: da_legal_name SMS DENTAL LLC, parent_company ADMI CORP, franchise_name 'Aspen Dental' -- exact match to Aspen's standard friendly-PC/management model; address 17727 Halsted St Homewood IL 60430 exactly matches Aspen's own locator listing"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "reasoning": "Exact address match (17727 Halsted St, Homewood, IL 60430) to Aspen Dental's own locator page, plus parent_company ADMI CORP and franchise_name 'Aspen Dental' on the org NPI record. Already adversarially confirmed (CONFIRM) in prior research. Aspen/ADMI is PE-backed via Leonard Green Partners + Ares Management. Carrying forward branded_dso, pe_backed=true. | verify-upheld: Loaded the Aspen locator page (confirms exact address 17727 Halsted St, Homewood, IL 60430, practice operated as \"SMS Dental LLC\" under Aspen Dental brand, with the standard friendly-PC disclosure that the dentist \"owns\" the practice separately from ADMI) and the Leonard Green press release (confirms Leonard Green Partners and Ares Management hold/are increasing equity ownership in Aspen Dental Management Inc). Counter-search corroborates rather than contradicts: NPI 1831702307/SMS Dental LLC matches independently via npiprofile.com, and trade press (Group Dentistry Now) confirms ADMI operates the classic dentist-owned-practice-plus-DSO-service-agreement model, so the named owner-dentist (Sean Schafer) does not defeat branded_dso \u2014 it's the expected friendly-PC front for the MSO structure, not evidence of true independence. Both evidence_urls are real, loaded, and properly paired with the locator/PE-sponsor claims, so the classification holds."
+  },
+  {
+   "location_id": "a5bb8d46ac12c26f",
+   "assigned_tier": "branded_dso",
+   "network_id": "brand:aspen_dental",
+   "owner_identity": null,
+   "pe_backed": true,
+   "evidence_basis": "locator",
+   "evidence_urls": [
+    "https://www.aspendental.com/dentist/il/joliet/2901-plainfield-rd-ste-a/"
+   ],
+   "evidence_artifacts": [
+    "parent_company field = ADMI CORP; franchise brand = Aspen Dental; exact address match to Aspen's own locator (2901 Plainfield Rd Ste A, Joliet, IL 60435)"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "reasoning": "Direct match on Aspen Dental's own locator page for 2901 Plainfield Rd Ste A, Joliet -- exact address, org name pattern, and parent_company (ADMI Corp) confirm a branded Aspen Dental office. Already adversarially confirmed (CONFIRM) in prior research. PE-backed via ADMI Corp/Leonard Green Partners + Ares Management. Carrying forward branded_dso, pe_backed=true. | verify-upheld: Loaded the cited Aspen Dental locator URL and confirmed an exact address match (2901 Plainfield Rd Ste A, Joliet, IL 60435) for an Aspen Dental-branded office, satisfying the locator-based branded_dso evidence bar; the page's own disclosure that the practice is nominally owned by a licensed dentist (Dr. Abigail Brier) 'under' Aspen Dental Management, Inc. is the classic friendly-PC/MSO pattern the branded_dso tier is meant to capture, not a contradiction. A counter-search corroborated pe_backed=true, confirming ADMI Corp is majority-owned by Leonard Green & Partners and Ares Management (with American Securities holding a minority stake), matching the named PE sponsors in the claim."
+  },
+  {
+   "location_id": "2990d3b52d394795",
+   "assigned_tier": "branded_dso",
+   "evidence_basis": "web_verified",
+   "confidence": "high",
+   "evidence_urls": [
+    "https://www.bbb.org/us/il/lockport/profile/dentist/aspen-dental-lockport-0654-90020771",
+    "https://www.yelp.com/biz/aspen-dental-lockport-8",
+    "https://www.beckersdental.com/dso-dpms/aspen-dental-to-close-illinois-office/",
+    "https://www.aspendental.com/dentist/il/lockport/16473-w-159th-st/"
+   ],
+   "evidence_artifacts": [],
+   "network_id": "aspen_dental",
+   "owner_identity": null,
+   "pe_backed": true,
+   "status": "classified",
+   "reasoning": "Structure previously confirmed and reconfirmed: Aspen Dental Management Inc. (ADMI Corp) is a documented PE-backed national branded DSO (Leonard Green & Partners + Ares Management). However, this specific office (16473 W 159th St, Lockport) closed and consolidated into the nearby Joliet, IL office on April 26, 2026 per Becker's Dental Review trade press; corroborated by Yelp/Birdeye now marking the listing CLOSED, and by the aspendental.com URL for this address now serving Joliet, IL location content (different address/providers) rather than Lockport. Tier reflects the confirmed branded_dso structure that operated here through closure. Flagged closed in scope_flags since the location no longer operates as of the closure date, which predates today (2026-07-09). | verify-upheld: Loaded/verified the core evidence: curl -L on the aspendental.com/dentist/il/lockport/16473-w-159th-st/ URL confirms it 301-redirects to aspendental.com/dentist/il/joliet/2901-plainfield-rd-ste-a/ (fetched content confirms Joliet, IL address, not Lockport), exactly as claimed; web search corroborates Becker's Dental Review reporting the Lockport office consolidated into the Joliet office on April 26, 2026, and the Yelp result title itself reads \"ASPEN DENTAL - CLOSED - Updated April 2026 ... 16473 W 159th St, Lockport, Illinois\" matching the claimed address and closure exactly (BBB and Yelp full pages were blocked by bot-protection/403, so only confirmed via snippet/title metadata, not full page load). A separate search independently confirms Aspen Dental Management Inc. (ADMI) is majority-owned by Leonard Green & Partners and Ares Management (Wikipedia, Leonard Green & Partners press release, PR Newswire), satisfying the named-PE-sponsor requirement for pe_backed/branded_dso, and no counter-search evidence contradicts either the DSO structure or the closure/consolidation facts."
+  },
+  {
+   "location_id": "2dfbf856864f1dec",
+   "assigned_tier": "branded_dso",
+   "evidence_basis": "locator",
+   "confidence": "medium",
+   "evidence_urls": [
+    "https://www.aspendental.com/dentist/il/morris/66-green-acres-drive/",
+    "https://www.leonardgreen.com/ares-management-leonard-green-increase-ownership-in-aspen-dental-management-inc/"
+   ],
+   "evidence_artifacts": [],
+   "network_id": "aspen_dental",
+   "owner_identity": null,
+   "pe_backed": true,
+   "status": "classified",
+   "reasoning": "Re-fetched Aspen Dental's own locator page this session: confirms 66 Green Acres Drive, Morris, IL 60450 (phone (815) 318-2012 matches) as an active office with practice owner Dr. Jerome Austriaco, DDS/DMD, plus additional listed providers. No closure signal found (unlike the Lockport sibling office in this same batch). ADMI Corp (Aspen Dental Management Inc.) is documented PE-backed (Leonard Green & Partners + Ares Management). Branded_dso confirmed, pe_backed true. | verify-upheld: Loaded the Aspen Dental locator page, which confirms exact address/phone match (66 Green Acres Drive, Morris, IL 60450; (815) 318-2012) as an active office branded under Aspen Dental, satisfying the locator-based MSO/DSO structure requirement; loaded the Leonard Green press release confirming Leonard Green Partners and Ares Management as named PE sponsors of Aspen Dental Management Inc (ADMI), and an independent counter-search confirms this PE ownership persists into 2025-2026 (now under 'The Aspen Group'). No closure or contradicting-ownership signal was found."
+  },
+  {
+   "location_id": "62e7692968032804",
+   "assigned_tier": "branded_dso",
+   "network_id": "brand:aspen_dental",
+   "owner_identity": null,
+   "pe_backed": true,
+   "evidence_basis": "locator",
+   "confidence": "high",
+   "status": "classified",
+   "evidence_urls": [
+    "https://www.aspendental.com/dentist/il/orland-park/15894-s-lagrange-road/",
+    "https://www.leonardgreen.com/ares-management-leonard-green-increase-ownership-in-aspen-dental-management-inc/"
+   ],
+   "evidence_artifacts": [],
+   "reasoning": "No change needed on re-check: this row was already adversarially verified. Aspen Dental's own locator page confirms an active office at exactly 15894 S LaGrange Rd, Orland Park, IL 60467. Aspen Dental Management Inc (ADMI) is documented as majority PE-owned (Leonard Green & Partners / Ares Management) per the PE firm's own press release. Branded national DSO, PE-backed, confirmed. | verify-upheld: Loaded both evidence URLs: the Aspen Dental locator page confirms an exact-address match (15894 S. LaGrange Road, Orland Park, IL 60467) branded as Aspen Dental, satisfying the locator-based branded_dso structure requirement (page also discloses the standard corporate-practice-of-dentistry MSO setup: clinically 'ABD Dental Associates LLC' operating 'under the Aspen Dental brand'). The Leonard Green press release confirms Ares Management and Leonard Green & Partners increased equity ownership in Aspen Dental Management Inc (ADMI), and a counter-search corroborates majority PE ownership (~80% Leonard Green/Ares, ~20% American Securities) via independent sources (Becker's Dental Review, PE Stakeholder Project), so nothing contradicts the pe_backed claim."
+  },
+  {
+   "location_id": "45ab58a401772b06",
+   "assigned_tier": "branded_dso",
+   "network_id": "brand:aspen_dental",
+   "owner_identity": null,
+   "pe_backed": true,
+   "evidence_basis": "locator",
+   "confidence": "high",
+   "status": "classified",
+   "evidence_urls": [
+    "https://www.aspendental.com/dentist/il/bolingbrook/221-n-weber-rd/"
+   ],
+   "evidence_artifacts": [],
+   "reasoning": "No change needed: already adversarially verified. Aspen Dental's own locator page confirms an operating office at exactly 221 N Weber Rd, Bolingbrook, IL 60490. Aspen Dental (ADMI) is a documented PE-backed national DSO brand (Leonard Green & Partners/Ares Management). Branded DSO, PE-backed, confirmed. The 'EVENLY ORTHODONTICS DUPONT' parent_company/EIN field is the same shared Data-Axle placeholder seen on the neighboring Zaidi/Solace row and is not evidentiary for the Aspen brand determination (Aspen's own locator suffices). | verify-upheld: Loaded https://www.aspendental.com/dentist/il/bolingbrook/221-n-weber-rd/ and confirmed exact address match (221 N. Weber Rd., Bolingbrook, IL 60490) for an active Aspen Dental-branded office, satisfying the locator exact-address-match bar for branded_dso. A follow-up search confirms Aspen Dental Management Inc. is majority PE-owned by Leonard Green & Partners and Ares Management (American Securities minority), supporting pe_backed:true. No counter-evidence found; the page's standard franchise-disclosure language naming a supervising dentist is boilerplate across all Aspen locations and does not indicate true independence."
+  },
+  {
+   "location_id": "9fe62bf8816a28c1",
+   "assigned_tier": "branded_dso",
+   "network_id": "brand:aspen_dental",
+   "owner_identity": "Arwinder Singh Judge, DDS (current owner-dentist of record per Aspen locator)",
+   "pe_backed": true,
+   "evidence_basis": "locator",
+   "confidence": "medium",
+   "status": "classified",
+   "evidence_urls": [
+    "https://www.aspendental.com/dentist/il/chicago/806-w-fulton-market/",
+    "https://www.leonardgreen.com/ares-management-leonard-green-increase-ownership-in-aspen-dental-management-inc/"
+   ],
+   "evidence_artifacts": [],
+   "reasoning": "Re-verified live: Aspen Dental's own corporate locator page still confirms this exact address (806 W Fulton Market, Chicago IL 60607) under the Aspen brand, now naming Arwinder Singh Judge as the owner-dentist of record (dentist-of-record has rotated from the previously-confirmed Kim Rooprai, which is normal for the friendly-PC model and doesn't change the address/brand match). ADMI Corp (Aspen Dental Management Inc) remains documented as majority PE-owned by Leonard Green Partners & Ares Management, so pe_backed=true holds. This location carries hold_reason 'triage:r4_network_ge10_brand:aspen_dental' -- the row-level tier is well-evidenced (locator match), but per the R4 protocol the network-wide Aspen Dental decision belongs to a single PM-level ruling, not a per-row auto-write; this row should be swept alongside other Aspen rows at that decision point. | verify-upheld: Loaded the Aspen locator page for 806 W Fulton Market, Chicago: it confirms the exact address under the Aspen Dental brand (satisfying the locator exact-address-match criterion for branded_dso), and the Leonard Green press release confirms ADMI is majority PE-backed by Leonard Green Partners, Ares Management, and American Securities (satisfying pe_backed's named-sponsor requirement) \u2014 so tier=branded_dso, network_id=brand:aspen_dental, and pe_backed=true all hold. However, a counter-search refutes the owner_identity sub-claim as presented: \"Arwinder Singh Judge\" is Aspen Dental Management's Chief Clinical Officer (a corporate executive, not a Chicago-based dentist), and the exact sentence \"Led by practice owner Arwinder Singh Judge, our office offers preventive, restorative, cosmetic, and emergency dental care\" appears verbatim, unchanged, on unrelated Aspen locator pages in Meridian, ID and Boise, ID \u2014 meaning this is sitewide boilerplate/placeholder text, not location-specific ownership data, so the claim's narrative of a real dentist-of-record \"rotation\" from Rooprai to Judge is not credible evidence (though it doesn't disturb the underlying tier/PE conclusions, which rest on the address-brand match and the independently-sourced PE press release)."
+  },
+  {
+   "location_id": "6c629fcb565ea0be",
+   "assigned_tier": "branded_dso",
+   "network_id": "brand:aspen_dental",
+   "owner_identity": "Roxanna Delgado Rodriguez, DDS",
+   "pe_backed": true,
+   "evidence_basis": "locator",
+   "confidence": "high",
+   "status": "classified",
+   "evidence_urls": [
+    "https://www.aspendental.com/dentist/il/chicago/3201-n-western-ave/",
+    "https://www.aspendental.com/providers/roxanna-delgado-rodriguez/1740639095/",
+    "https://www.leonardgreen.com/ares-management-leonard-green-increase-ownership-in-aspen-dental-management-inc/"
+   ],
+   "evidence_artifacts": [],
+   "reasoning": "Re-verified live: Aspen Dental's own corporate locator page still places 3201 N Western Ave, Chicago IL 60618 under the Aspen brand with 'Roxanna Delgado Rodriguez, Owner' as the friendly-PC dentist of record, matching DELGADO DMD PLLC exactly. ADMI's PE ownership (Leonard Green & Partners / Ares Management) remains documented, so pe_backed=true. Like the other Aspen row in this batch, this sits under hold_reason 'triage:r4_network_ge10_brand:aspen_dental' -- row-level evidence is solid, but the network-wide Aspen decision is reserved for a single PM-level R4 ruling rather than a per-row write. | verify-upheld: Loaded both aspendental.com URLs: the locator page and provider profile both confirm the exact address (3201 N. Western Ave, Chicago, IL 60618) with \"Roxanna Delgado Rodriguez\" listed as practice \"Owner\" under the Aspen Dental brand, satisfying the locator exact-address-match bar for branded_dso. The Leonard Green Partners press release confirms Ares Management and Leonard Green & Partners as named PE sponsors of Aspen Dental Management Inc. (ADMI), supporting pe_backed=true. Counter-search found no contradiction \u2014 it further corroborates Aspen/The Aspen Group as a DSO (gotu.com DSO directory) and turned up no independent-ownership claim for this specific location."
+  },
+  {
+   "location_id": "462802f113ba0061",
+   "assigned_tier": "branded_dso",
+   "network_id": "brand:aspen_dental",
+   "owner_identity": null,
+   "pe_backed": true,
+   "evidence_basis": "locator",
+   "confidence": "medium",
+   "status": "classified",
+   "evidence_urls": [
+    "https://www.aspendental.com/dentist/il/chicago/7537-n-clark-st/",
+    "https://www.leonardgreen.com/ares-management-leonard-green-increase-ownership-in-aspen-dental-management-inc/",
+    "https://www.yelp.com/biz/aspen-dental-chicago-6"
+   ],
+   "evidence_artifacts": [],
+   "reasoning": "Re-confirmed this session: Aspen Dental's own corporate locator still lists this exact address (7537 N Clark St, Chicago, IL 60626) as an Aspen office. Yelp still shows it as 'temporarily closed' (updated March 2026) but that does not change brand/ownership status. ADMI Corp / Leonard Green & Partners + Ares Management PE sponsorship remains documented. Note for consolidation: hold_reason is an R4 network hold (network_id 'brand:aspen_dental' reaching >=10 locations) -- per census protocol this requires ONE PM-level network decision rather than a per-row auto-write; row-level evidence nonetheless fully supports branded_dso/pe_backed=true. | verify-upheld: Loaded leonardgreen.com and confirmed it directly names Leonard Green & Partners + Ares Management (with American Securities) increasing PE equity ownership in Aspen Dental Management Inc (ADMI), the MSO behind the Aspen Dental brand \u2014 solid pe_backed and branded_dso support, and WebSearch independently corroborates 7537 N Clark St, Chicago as an Aspen Dental (Rogers Park) address across Yelp, Birdeye, and emergencydentalservice.com (all noting 'temporarily closed' as of March 2026). However, directly loading the cited locator URL (both the base page and /dental-services/ subpage) twice returned Skokie, IL content, not the claimed Chicago address \u2014 so the claim's 're-confirmed this session' locator assertion did not reproduce on direct fetch, likely because the location is now closed and the page redirects/serves a fallback office. No counter-evidence of independent (non-DSO) ownership was found. Downgrading confidence to medium since the primary locator evidence is thinner/staler than claimed, even though the overall branded_dso/pe_backed conclusion holds via corroborating secondary sources."
+  },
+  {
+   "location_id": "315ae3407ac75822",
+   "assigned_tier": "branded_dso",
+   "network_id": "brand:aspen_dental",
+   "owner_identity": null,
+   "pe_backed": true,
+   "evidence_basis": "locator",
+   "confidence": "high",
+   "status": "classified",
+   "evidence_urls": [
+    "https://www.aspendental.com/dentist/il/norridge/4450-n-harlem-ave/",
+    "https://www.leonardgreen.com/ares-management-leonard-green-increase-ownership-in-aspen-dental-management-inc/"
+   ],
+   "evidence_artifacts": [],
+   "reasoning": "Aspen Dental's own locator page confirms an active office at this exact address (4450 N Harlem Ave, Norridge, IL 60706), satisfying the T5 locator bar. Re-verified pe_backed today: Leonard Green & Partners' own press release names American Securities, Ares Management, and Leonard Green & Partners as equity owners of Aspen Dental Management, Inc. (The Aspen Group/ADMI), a named-sponsor PE structure. Maintained branded_dso, high confidence, network_id brand:aspen_dental. | verify-upheld: Loaded the Aspen Dental locator page, which confirms an active office at the exact address \"4450 N. Harlem Ave, Norridge, IL 60706\" and displays the standard Aspen Dental/ADMI franchise disclosure (\"independently owned and operated... relationship between Aspen Dental Management, Inc. and the branded dental practices\"), satisfying the T5 locator bar for branded_dso. Loaded the Leonard Green press release, which names Ares Management, Leonard Green & Partners, and American Securities as PE equity sponsors of Aspen Dental Management Inc., satisfying the pe_backed named-sponsor requirement. A counter-search corroborates rather than contradicts: this location is documented (Group Dentistry Now/PR Newswire) as the 1000th Aspen Dental office, explicitly part of TAG-The Aspen Group's DSO, owned locally by Dr. Ashley Brier via ABB Dental Group LLC \u2014 consistent with branded_dso (local owner operating under the ADMI-affiliated brand/MSO structure), not true_independent."
+  }
+ ],
+ "institutional": [
+  {
+   "location_id": "372f4477f582b21c",
+   "assigned_tier": "institutional",
+   "evidence_basis": "web_verified",
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "owner_identity": null,
+   "pe_backed": false,
+   "reasoning": "The org NPI (1194497081) and mailing address (416 E Roosevelt Rd Ste 102, Wheaton) match exactly the Chicago Dental Society Foundation Dental Clinic -- a 501(c)3 nonprofit, the philanthropic arm of the Chicago Dental Society, described by CDS itself as 'the only dental foundation that owns and operates a clinic in Illinois run by all volunteer dentists', providing free basic dental care to low-income DuPage/Cook/Lake county residents. This is a charitable/nonprofit clinic, not a for-profit practice -- clean institutional (T6). The Data-Axle 'website' field (ardendentalcenter.com) points to an unrelated for-profit practice at a different suite (531 E Roosevelt Rd Ste 100) and appears to be a data-linkage error, not evidence against institutional status.",
+   "evidence_urls": [
+    "https://www.cds.org/cds-foundation/",
+    "https://www.findhelp.org/provider/chicago-dental-society-foundation--wheaton-il/5205820050636800?postal=60108",
+    "https://search.211dupage.gov/search/a65168c9-d7c1-52a4-b418-94c13447e906"
+   ],
+   "evidence_artifacts": []
+  },
+  {
+   "location_id": "cd8dad947568d6c5",
+   "assigned_tier": "institutional",
+   "evidence_basis": "web_verified",
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "owner_identity": null,
+   "pe_backed": false,
+   "evidence_urls": [
+    "https://oprfiws.org/childrens-clinic",
+    "https://oprfiws.org/",
+    "https://www.guidestar.org/profile/36-9002074"
+   ],
+   "evidence_artifacts": [],
+   "reasoning": "Oak Park River Forest Infant Welfare Society is a 501(c)(3) nonprofit (confirmed via GuideStar) operating the 'IWS Children's Clinic,' a low/no-cost pediatric medical-dental clinic serving underserved children since 1916, at 320 Lake St / 28 Madison St, Oak Park. This is a nonprofit community health clinic -- squarely institutional (T6). The source unit's website field ('doctors.advocatehealth.com') does not match the verified nonprofit's own domain (oprfiws.org), but the institutional classification does not depend on that field."
+  },
+  {
+   "location_id": "3e5198ab49316613",
+   "assigned_tier": "institutional",
+   "evidence_basis": "web_verified",
+   "confidence": "high",
+   "status": "classified",
+   "reasoning": "Address 1431 N Western Ave Ste 401, Chicago 60622 exactly matches PrimeCare Health's 'West Town Oral Health Center,' a federally qualified health center (FQHC) located inside the AMITA Health Saint Elizabeth Medical Office Building. PrimeCare's own site and the HRSA connector confirm this suite houses PrimeCare's dental clinic, whose listed dental providers include 'Sarah Dawes, DDS' -- an exact match to this record's practice_name ('Dawes Sarah DMD'). The record's primary_npi (1396704284) is separately attributed by Data Axle/NPPES to Rekha Modur, DDS, who also has an office in the same suite/building -- likely reflecting two different dentists sharing the same medical office building, or a Data Axle mis-link -- but the location itself is unambiguously a nonprofit FQHC clinic, not an independent private practice.",
+   "network_id": null,
+   "owner_identity": null,
+   "pe_backed": false,
+   "evidence_urls": [
+    "https://www.primecarehealth.org/west-town-oral-health-center",
+    "https://connector.hrsa.gov/connector/site-profile/33286CA7-91BD-4E0F-BE6E-3E0C86AB9A02"
+   ],
+   "evidence_artifacts": []
+  },
+  {
+   "location_id": "8121252a60ae389f",
+   "assigned_tier": "institutional",
+   "evidence_basis": "web_verified",
+   "confidence": "high",
+   "status": "classified",
+   "reasoning": "Address 1701 W Superior St, Chicago 60622 exactly matches Erie Family Health Centers' 'West Town' location, a nonprofit FQHC. Erie's own site lists Ami D. Pandya, DDS -- matching this record's practice_name exactly -- as a dental provider there. This record's primary_npi (1659485225) is oddly attributed by Data Axle/NPPES to a different individual, Odilia Navarrete, DDS, whose own independently-listed practice address (5708 W Fullerton Ave) does not match this location, likely a Data Axle NPI-attribution error -- but the location itself is unambiguously an Erie Family Health Center FQHC clinic, not an independent practice.",
+   "network_id": null,
+   "owner_identity": null,
+   "pe_backed": false,
+   "evidence_urls": [
+    "https://www.eriefamilyhealth.org/medical-provider/ami-pandya/",
+    "https://www.eriefamilyhealth.org/locations/west-town/"
+   ],
+   "evidence_artifacts": []
+  },
+  {
+   "location_id": "e768eef397162f9c",
+   "assigned_tier": "institutional",
+   "network_id": null,
+   "owner_identity": null,
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "confidence": "high",
+   "status": "classified",
+   "reasoning": "Heartland Health Outreach is a nonprofit community health program operating under Heartland Alliance Health, providing sliding-scale/Medicaid dental services to underserved populations at 2418 W Division St. This is a 501(c)(3) nonprofit health-center operation (documented on heartlandalliance.org and the Community Health Center Chronicles), not a private dental practice -- fits institutional (FQHC-like nonprofit).",
+   "evidence_urls": [
+    "https://www.heartlandalliance.org/program/heartland-alliance-health-centers/",
+    "https://www.heartlandalliance.org/heartland-alliance-health/service-areas/dental/",
+    "https://www.chcchronicles.org/explore/heartland-health-outreach-inc"
+   ],
+   "evidence_artifacts": []
+  },
+  {
+   "location_id": "1a308d3fa2de440c",
+   "assigned_tier": "institutional",
+   "network_id": null,
+   "owner_identity": null,
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.eriefamilyhealth.org/locations/west-town/"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "reasoning": "The address (1701 W Superior St, Chicago, IL 60622) and phone number ((312) 666-3494) in this unit exactly match Erie Family Health Centers' 'West Town' location \u2014 a federally qualified health center (FQHC) nonprofit operating dental services alongside medical/behavioral care. Dr. Ami Pandya is an Erie Family Health Centers dental provider per eriefamilyhealth.org. This is an FQHC/nonprofit clinic, not an independent 'Pandya Dental' practice, so institutional (T6) applies despite the Data-Axle-style practice name."
+  },
+  {
+   "location_id": "c268f869c71ee79d",
+   "assigned_tier": "institutional",
+   "evidence_basis": "web_verified",
+   "confidence": "high",
+   "status": "classified",
+   "owner_identity": null,
+   "network_id": null,
+   "pe_backed": false,
+   "evidence_urls": [
+    "https://cchc-online.org/contact/",
+    "https://www.freedentalcare.us/li/christian-community-hc"
+   ],
+   "evidence_artifacts": [],
+   "reasoning": "This address (9718 S Halsted St, Chicago, IL 60628) and phone number ((773) 233-4100) match exactly to Christian Community Health Center's dental clinic, a nonprofit sliding-scale community health center (per cchc-online.org direct fetch and freedentalcare.us). Provider Ozzie Smith's individual NPI is registered at this nonprofit clinic address rather than an independent 'Smith Dental' practice; his own separate private practice (Smith & Smith Smile Studio) operates at different Hyde Park/West Loop addresses. This location is the health center's clinic, not an independent Smith-owned practice. Classified institutional (T6)."
+  },
+  {
+   "location_id": "086254cc26d74f7c",
+   "assigned_tier": "institutional",
+   "evidence_basis": "web_verified",
+   "confidence": "medium",
+   "status": "classified",
+   "reasoning": "Resolves prior ambiguity: Dr. Aldona Starkus's own WebMD profile lists her practice location/name as 'Vna Health Center Aurora' at 400 N Highland Ave -- the exact address in this record -- rather than any independent practice name. VNA Health Care is a nonprofit Federally Qualified Health Center (FQHC) operating a dental clinic at this same address (confirmed via Vitadox listing as FQHC). This indicates Dr. Starkus practices as a dentist employed within VNA Health Care's FQHC clinic at this location rather than owning an independent private practice, so this location classifies as institutional (T6), not true_independent.",
+   "evidence_urls": [
+    "https://doctor.webmd.com/doctor/aldona-starkus-55c9de64-77e1-45b2-a86c-075954d17c8c-overview",
+    "https://www.vitadox.com/practice/aurora-il-60506/vna-health-care/DqCzmShShwmVJsP85z6CAJ"
+   ],
+   "evidence_artifacts": [],
+   "network_id": null,
+   "owner_identity": null,
+   "pe_backed": false
+  },
+  {
+   "location_id": "75761a56fffcc74b",
+   "assigned_tier": "institutional",
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.yelp.com/biz/alivio-medical-center-chicago-4",
+    "https://alivio.org/",
+    "https://taggs.hhs.gov/Detail/RecipDetail?arg_EntityId=Q+Nwbi5oOEsAIKt4OfA9Lw%3D%3D"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "network_id": null,
+   "owner_identity": null,
+   "pe_backed": false,
+   "reasoning": "Resolved the prior ambiguity: 966 W 21st St, Chicago 60608, phone (773) 254-1400, is confirmed (via a Yelp listing search result explicitly quoting that exact address+phone) to be an Alivio Medical Center site. Alivio Medical Center is a Federally Qualified Health Center (FQHC) \u2014 a nonprofit, bilingual/bicultural community health center founded 1989, an HHS grantee under 42 U.S.C. 254b (confirmed via taggs.hhs.gov) offering dentistry among its services. Dr. Fatima Saaduddin (the NPI on file) and 'Salazar Roger DMD' are staff dentists at this FQHC network location, not independent owners; the unit's own website field ('Doctors.Advocatehealth.Com') is likely a Data-Axle directory-aggregator artifact rather than true Advocate Health ownership, but either interpretation (FQHC or hospital-system-affiliated) lands in the institutional tier."
+  },
+  {
+   "location_id": "7a955a5504c45bda",
+   "assigned_tier": "institutional",
+   "evidence_basis": "web_verified",
+   "confidence": "high",
+   "status": "classified",
+   "pe_backed": false,
+   "network_id": null,
+   "owner_identity": null,
+   "evidence_urls": [
+    "https://voices.uchicago.edu/oralhealthstudy/contact-the-clinical-and-research-team/contact-clinic-staff/"
+   ],
+   "evidence_artifacts": [],
+   "reasoning": "Resolves prior undetermined: the exact address '5841 South Maryland Avenue, MC 1005, Room M209, Chicago, IL 60637' is documented on a University of Chicago (uchicago.edu) domain as the 'UCM Dental Research Study Clinic,' under the 'Center for Health and the Social Sciences, University of Chicago Medicine.' This is a hospital/university-affiliated dental clinic operating inside the UChicago Medical Center campus -- not an independent private practice -- meeting the R3 institutional evidence bar (university/hospital's own site). The specific named individuals on our NPI record (Chandni Desai as primary NPI holder; 'Victoria Jung' in the Data-Axle practice name) are not individually named on the clinic page, but the address, MC/room number, and .uchicago.edu domain match are decisive structural evidence of institutional affiliation rather than dentist ownership."
+  },
+  {
+   "location_id": "305919ae458c3c32",
+   "assigned_tier": "institutional",
+   "network_id": null,
+   "owner_identity": null,
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://ahsfhc.org/skokie/",
+    "https://ahsfhc.org/doctors/dentists/",
+    "https://www.vitadox.com/practice/skokie-il-60077/asian-human-services-family-health-center-inc/PTFZhZqeoG4RNprxXzUbfh"
+   ],
+   "evidence_artifacts": [],
+   "confidence": "high",
+   "status": "classified",
+   "reasoning": "Resolved the adjudication hold: 8800 Lockwood Ave, Skokie is NOT a dentist-owned private practice -- it is the Skokie clinic of AHS Family Health Center, Inc. (also DBA Asian Human Services Family Health Center), confirmed via the organization's own site (ahsfhc.org) to be 'a not for profit 501(c)3 organization and Health Center Program grantee under 42 U.S.C. 254b' (i.e., an FQHC). AHS's own dentist roster lists 'Leah Larkin, DDS' among its staff dentists, matching the unit's provider Dr. Leah M. Larkin Rivera. This overturns the prior single_loc_group (T2) call, which relied only on directory aggregators (opennpi/vitadox) that did not surface the FQHC affiliation. Correct tier is institutional (T6); no individual owner-dentist -- it's a federally-funded nonprofit health center."
+  },
+  {
+   "location_id": "c2c7539541dafe5f",
+   "assigned_tier": "institutional",
+   "network_id": null,
+   "owner_identity": null,
+   "pe_backed": false,
+   "evidence_basis": "web_verified",
+   "evidence_urls": [
+    "https://www.advocatehealth.com/doctors/amy-r-martin-1376764795",
+    "https://www.advocatehealth.com/education/residency-opportunities/advocate-illinois-masonic-medical-center/residency/dentistry",
+    "https://www.chicagosmiledesign.com/about/meet-the-doctor/"
+   ],
+   "evidence_artifacts": [
+    "Yelp business listing 'ADVOCATE ILLINOIS MASONIC DENTAL CENTER' surfaced at exact address 811 W Wellington Ave, Chicago, IL (search result, not directly fetchable due to 403)"
+   ],
+   "confidence": "high",
+   "status": "classified",
+   "reasoning": "This is a tier REVERSAL from the prior true_independent hold, resolving the 'adjudication_hold_dso_verify' flag. The unit's own website field (doctors.advocatehealth.com) was the key clue: 811 W Wellington Ave, Chicago IL 60657 (this unit's exact address) is confirmed by multiple sources to be the Advocate Illinois Masonic Medical Center Dental Center -- a hospital-operated dental clinic that has run a nationally-recognized General Practice Dental Residency since 1970 (a new state-of-the-art facility opened for patient care in Dec. 2024). Advocate Health's own doctor directory lists 'Amy R. Martin, DDS' under Advocate Medical Group / Dentistry at this address; independent bio sources confirm she 'remains on staff at Illinois Masonic Medical Center where she teaches the dental residents' and directs 'Advocate's Mobile Dental Program.' Separately, she is also reported to have joined an unrelated private group practice, Chicago Smile Design, at a different address (437 W North Ave) -- confirming 811 W Wellington is NOT her own private-practice brand. The NPPES provider_count of 43 at this address (previously dismissed as a data artifact) is in fact consistent with a hospital-based residency teaching clinic with many residents/staff, not an artifact. Reclassified true_independent -> institutional (hospital/health-system-operated clinic)."
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+{
+  "date": "2026-07-08",
+  "operation": "ownership_status enum normalization: hyphenated variants -> canonical underscore",
+  "why": "Two writer scripts emitted 'dso-affiliated'/'pe-backed' (hyphen) while the canonical enum and every frontend consumer use 'dso_affiliated'/'pe_backed' (underscore). classifyPractice()'s ownership_status fallback (entity-classifications.ts:231) only recognizes the underscore spellings, so all 237 hyphenated rows silently degraded to 'unknown' in any fallback path. warroom.ts scope filters (654/660/721) are underscore-only as well.",
+  "before_counts": {
+    "practices": {"dso-affiliated": 90, "pe-backed": 50, "all_IL": true},
+    "practice_locations": {"dso-affiliated": 47, "pe-backed": 50, "all_IL": true},
+    "note": "An earlier working figure of 115 for practice_locations was a mis-sum that included the underscore variant pe_backed (18); the correct hyphenated-only counts are 97 (locations) and 140 (NPI rows), matching the analyst's re-baseline."
+  },
+  "change": "UPDATE <tbl> SET ownership_status = REPLACE(ownership_status,'-','_'), updated_at = datetime('now') WHERE ownership_status LIKE '%-%'  -- run on practices (140 rows) and practice_locations (97 rows)",
+  "after_counts": {
+    "practices": {"dso_affiliated": 4329, "pe_backed": 1350, "hyphenated_remaining": 0},
+    "practice_locations": {"dso_affiliated": 169, "pe_backed": 68, "hyphenated_remaining": 0},
+    "reconciliation": "4239+90=4329, 1300+50=1350, 122+47=169, 18+50=68 — no rows gained or lost"
+  },
+  "writer_scripts_fixed": [
+    "scrapers/reclassify_verified_corporate_il.py:157,185 (own = 'pe_backed' if sp else 'dso_affiliated')",
+    "scrapers/promote_verified_chicagoland_dso_matches.py:471 (ownership_status = 'pe_backed' if sponsor else 'dso_affiliated')"
+  ],
+  "non_writers_left_alone": [
+    "scrapers/beckers_scraper.py:80 — news-headline keyword matcher, not a DB write",
+    "scrapers/build_data_axle_verified.py:42 — comment only"
+  ],
+  "scope_notes": "entity_classification untouched; census OWN_COLS untouched; detector floor (268/1,152) unaffected by construction (this column feeds only the legacy fallback layer). updated_at bumped on all 237 rows per the raw-SQL flip-script rule.",
+  "supabase_mirror": "surgical REST PATCH on the same predicate (ownership_status=eq.dso-affiliated / eq.pe-backed) on both tables; NO full sync run. Read-back verification recorded in this file's supabase_verification key.",
+  "supabase_verification": {
+    "before_patch": {
+      "practices": {"dso-affiliated": 102, "pe-backed": 57},
+      "practice_locations": {"dso-affiliated": 47, "pe-backed": 50},
+      "note": "practices mirror held 159 hyphenated vs local's 140 — 157 were spelling-only (aligned by normalization) and 2 were genuine value drift: NPIs 1023549078 + 1790819340 read 'pe-backed' in Supabase but 'dso_affiliated' in local SQLite (both All Family Dental & Braces / UDP, updated_at 2026-06-19T15:04:34 — an out-of-sync leg of the June-19 promotions). Local SQLite is source of truth; both PATCHed to dso_affiliated."
+    },
+    "patch_row_counts": {"practices_dso": 102, "practices_pe": 57, "drift_npis": 2, "pl_dso": 47, "pl_pe": 50},
+    "after_patch": {
+      "hyphenated_remaining": {"practices": 0, "practice_locations": 0},
+      "practices_watched_totals": {"dso_affiliated": 1075, "pe_backed": 363},
+      "drift_npis_read_back": "both = dso_affiliated (matches local)"
+    },
+    "method": "REST PATCH with Prefer: count=exact per predicate; updated_at bumped; NO full sync run"
+  }
+}

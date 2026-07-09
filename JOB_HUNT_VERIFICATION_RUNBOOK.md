@@ -47,15 +47,17 @@ git add data/job_hunt_verification_seed.json && git commit
 Connection comes from `SUPABASE_POOLER_URL` (fallback `SUPABASE_DATABASE_URL`)
 in `.env`. The FK requires `practice_locations` to exist first.
 
-## Expected counts — Codex QA baseline, 2026-07-09
+## Expected counts — post edge-bucket QA, 2026-07-09
 
-48 rows total:
+48 rows total (edge-bucket QA moved 2 `no_usable_website` rows: Kulig →
+`ownership_conflict`, Drake → `roster_verified`; see
+`JOB_HUNT_EDGE_QA_REPORT_2026-07-09.md`):
 
 | verification_status | rows |
 |---|---|
-| roster_verified | 28 |
-| no_usable_website | 12 |
-| ownership_conflict | 4 |
+| roster_verified | 29 |
+| no_usable_website | 10 |
+| ownership_conflict | 5 |
 | call_required | 2 |
 | hiring_page_found | 2 |
 

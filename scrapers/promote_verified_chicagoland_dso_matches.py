@@ -468,7 +468,7 @@ def main(apply: bool = True) -> None:
         dso = src["dso_name"]
         sponsor = src.get("pe_sponsor")
         new_ec = "dso_national" if dso in NATIONAL else "dso_regional"
-        ownership_status = "pe-backed" if sponsor else "dso-affiliated"
+        ownership_status = "pe_backed" if sponsor else "dso_affiliated"
         source_summary = "; ".join(
             sorted(
                 {

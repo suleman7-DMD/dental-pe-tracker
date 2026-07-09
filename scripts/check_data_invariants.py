@@ -276,6 +276,55 @@ def fetch_count(path: str) -> tuple[int, Optional[str]]:
         return -1, f"{type(e).__name__}: {e}"
 
 
+def fetch_json(path: str) -> tuple[Optional[list], Optional[str]]:
+    """Fetch row bodies from a PostgREST query (small result sets only)."""
+    url = f"{SUPABASE_URL}/rest/v1/{path}"
+    req = urllib.request.Request(
+        url,
+        headers={
+            "apikey": SUPABASE_KEY,
+            "Authorization": f"Bearer {SUPABASE_KEY}",
+        },
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            return json.loads(resp.read().decode("utf-8")), None
+    except urllib.error.HTTPError as e:
+        body = e.read()[:300].decode("utf-8", errors="replace")
+        return None, f"HTTP {e.code}: {body}"
+    except Exception as e:
+        return None, f"{type(e).__name__}: {e}"
+
+
+def check_denominator() -> tuple[str, str]:
+    """DENOM: the IL GP denominator must reconcile between its two derivations.
+
+    Law (DATA_CONTRACT_TRUTH_APP_20260704.md §7): SUM(zip_scores.total_gp_locations)
+    over IL watched ZIPs == COUNT(practice_locations) in IL that are not
+    specialist/non_clinical/duplicate_location/da_unverified. 2026-07-08 value on
+    both sides: 4,439. The VALUE may drift as rows reclassify; the EQUALITY may not —
+    a mismatch means merge_and_score.py and the documented exclusion rule diverged.
+    """
+    rows, err = fetch_json("zip_scores?select=total_gp_locations&state=eq.IL&limit=1000")
+    if err:
+        return "ERROR", f"zip_scores fetch failed: {err}"
+    zip_sum = sum(int(r.get("total_gp_locations") or 0) for r in rows)
+    direct, err = fetch_count(
+        "practice_locations?state=eq.IL"
+        "&entity_classification=not.in.(specialist,non_clinical,duplicate_location,da_unverified)"
+        "&select=location_id"
+    )
+    if err:
+        return "ERROR", f"practice_locations fetch failed: {err}"
+    if zip_sum == direct:
+        return "PASS", f"zip_scores sum {zip_sum} == direct count {direct}"
+    return "FAIL", (
+        f"zip_scores sum {zip_sum} != direct practice_locations count {direct} — "
+        "merge_and_score.py and the DATA_CONTRACT §7 exclusion rule have diverged; "
+        "re-run merge_and_score.py or update the contract with evidence."
+    )
+
+
 def main() -> int:
     print("# F28 Data Invariant Report")
     print(f"\nSupabase URL: `{SUPABASE_URL}`\n")
@@ -323,6 +372,11 @@ def main() -> int:
             print(f"|    | (error) | | | `{err}` |")
         if inv.note and status != "PASS":
             print(f"|    | (note) | | | {inv.note} |")
+
+    denom_status, denom_detail = check_denominator()
+    if denom_status in ("FAIL", "ERROR"):
+        failures += 1
+    print(f"| DENOM | {denom_status} | fail | — | IL GP denominator reconciles (contract §7): {denom_detail} |")
 
     print()
     print(f"**Summary:** {failures} failure(s), {warnings} warning(s)")
