@@ -1,0 +1,41 @@
+name: Skill Drift Check
+# Verifies the machine-checkable subset of .claude/skills claims on every
+# change to the skills or their evidence files, plus weekly. Runs the same
+# checker agents run locally, in --no-db mode: the SQLite DB and the nested
+# dental-pe-nextjs repo live only on the pipeline Mac and are not in git,
+# so DB-backed and frontend claims SKIP here (honestly, with printed
+# reasons) — this job covers the file/AST/tally claims (~16 of 45).
+# A green run is NOT full coverage; full coverage is the local run:
+#   python3 .claude/skills/dental-pe-skill-drift-check/check_claims.py
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.claude/skills/**'
+      - 'scrapers/database.py'
+      - 'data/dso_research/_lane_a_triage_wave1_20260702.json'
+      - 'data/dso_research/_lane_a_20260702/**'
+      - 'data/dso_research/RESEARCH_HOME/LEDGER.jsonl'
+  schedule:
+    - cron: '0 14 * * 1'   # Every Monday at 14:00 UTC (after weekly-drift)
+  workflow_dispatch:
+
+permissions:
+  contents: read           # read-only — never commits
+
+concurrency:
+  group: skill-drift
+  cancel-in-progress: false
+
+jobs:
+  skill-drift:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Run skill drift checker (--no-db)
+        run: python3 .claude/skills/dental-pe-skill-drift-check/check_claims.py --no-db

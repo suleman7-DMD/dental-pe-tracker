@@ -96,7 +96,11 @@ SELECT COUNT(*) FROM practice_locations
 ```
 
 Coverage: **3,180 / 4,439 IL GP locations = 71.64%**. Remaining **1,259**, decomposed
-(verified 2026-07-04 against `_lane_a_triage_wave1_20260702.json` + DB):
+(verified 2026-07-04; re-verified EXACT by machine reconstruction 2026-07-09 — every number
+below is now a `queue_recon`/`json_tally`/`derived` claim in
+`dental-pe-skill-drift-check/claims.json`, so run that checker instead of trusting this text.
+Predicate note: the reconstruction uses `pl.state='IL'`, NOT a watched_zips join — the join
+overcounts by one location whose zip is IL-watched but whose state isn't IL):
 
 - **649 triage rows** (`data/dso_research/_lane_a_triage_wave1_20260702.json`, key
   `_triage_reason`): 477 `undetermined_by_agent` + **91 adjudication holds** (52

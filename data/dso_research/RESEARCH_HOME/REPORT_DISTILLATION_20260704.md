@@ -184,6 +184,9 @@ headline finding. Recording it here because the failure is instructive:
    extracted verbatim from the session transcript → `DRYTEST_ARTIFACTS_20260704.md` (this
    directory). Caveat preserved there: grades were assigned in-session by the orchestrator,
    not independently adjudicated — re-grading from the artifacts is possible and invited.
+   *[2026-07-09: this claim was FALSE as shipped — see Addendum 2 defect #2. The v1 file
+   contained async launch metadata, not the agents' answers. Corrected same-cycle; the
+   current file does contain the four verbatim final answers.]*
 4. **Corrected confidence statement:** what exists is a verified ADVISORY layer plus one
    mechanical checker — not an enforcement layer. Still open (analyst bar): write-guard
    hooks + census-chain lockfile, forced skill loading at session start, CI wiring of the
@@ -191,3 +194,60 @@ headline finding. Recording it here because the failure is instructive:
    in CI, expanded adversarial test battery (stale-docs / skip-validation-pressure / missing
    env / accidental full sync / frontend label regression), and a frontend truth-law skill or
    labeling lint — the Test-C-based skip is no longer defensible at current frontend velocity.
+
+---
+
+## Addendum 2 — 2026-07-09: analyst review #2 + remediation of record
+
+The analyst re-audited the 2026-07-08 response and found the headline deliverable of item 3
+above invalid. Verdict accepted in full; this section records the defect and the fix.
+
+1. **Defect #2 (BLOCKING, confirmed):** `DRYTEST_ARTIFACTS_20260704.md` v1 (commit `776e35d`)
+   paired each dry-test prompt with the immediate tool_result of the agent launch — which for
+   async agents is **launch metadata** ("Async agent launched…"), not the agent's answer. Root
+   cause: the extractor read the orchestrator transcript only; async agents' answers live in
+   their own `subagents/agent-<id>.jsonl` transcripts. Verification failure: after generating
+   v1 I checked its *structure* (`grep -c "no result captured"` = 0) but never **read the
+   content** — the same class of failure as defect #1 (trusting a proxy instead of looking).
+   **Fix:** v2 extractor follows the `agentId` in each launch-metadata block to the subagent
+   transcript and takes its final assistant message. The regenerated artifact (42,200 bytes,
+   all four genuine Opus answers: A census-resume plan with the three STOPs; B surgical-sync
+   staleness diagnosis; C refusal of the illegal "DSO-affiliated 53.7%" label AND the
+   fabricated ADA validation; D refusal of Aspen-as-T1 with correct r4 triage routing) was
+   **read in full** before committing, and carries a correction-of-record header. The v1
+   mistake is preserved in git history, not rewritten.
+2. **Claims manifest expanded 24 → 45 (v2):** every P1′ queue number is now machine-checked —
+   1,259 untiered (both as `il_universe − census_tiered` and by direct DB reconstruction),
+   649 in-triage / 610 never-researched / 242 synthetic / 368 real (a `queue_recon` kind
+   re-derives the whole decomposition from scratch using the canonical predicate:
+   `pl.state='IL'` + GP classes + non-residential — the watched_zips-join variant overcounts
+   by one), per-reason triage tallies (477/52/30/9/52/16/8), 91 holds and the 5-row residual
+   as `derived` arithmetic, and LEDGER.jsonl ≥ 3,181 lines (floor: append-only). Claims now
+   carry a `class` (floor / snapshot / report); `result_files` split into a floor (≥218) and
+   a snapshot (=218) so silent growth is visible.
+3. **Weak greps replaced:** ORM claims now use stdlib-AST introspection of
+   `scrapers/database.py` (6 census columns present on BOTH models = 12; `census_review_status`
+   on PracticeLocation = 1 and on Practice = 0 **by design**). The frontend truth-contract
+   claim now checks `export function (summarizeBuckets|deriveSourceClass)` and a new
+   `grep_dir` claim counts files under `dental-pe-nextjs/src` importing `ownership-truth`
+   (33 at baseline, floor ≥10).
+4. **CI wired honestly:** `.github/workflows/skill-drift.yml` runs `check_claims.py --no-db`
+   on pushes touching skills/ORM/triage/ledger/result-files, weekly, and on dispatch. The DB
+   and the nested frontend exist only on the pipeline Mac, so CI covers the ~16 file/AST/tally
+   claims and SKIPs the rest with printed reasons — a SKIP is not a PASS, and the workflow
+   header says so. Verified three ways before commit: full local run 45/45 PASS; a simulated
+   CI checkout (`git archive`, no DB, no nextjs) 16 PASS / 29 SKIP / exit 0; a negative test
+   with two corrupted expectations → 2 DRIFT / exit 1.
+5. **Root `CLAUDE.md` staleness fixed** (authorization: the kickoff reserved CLAUDE.md edits
+   for the PM session, but the analyst demanded it twice and the user forwarded that demand —
+   interpreted as authorization for the MAIN repo file only). Cheat-sheet and breakdowns
+   refreshed from live queries (universe 4,801/4,439; floor splits 186+82 and 680+472; deals
+   527 with purge provenance `d2777ec`; dso_locations 633) plus a dated banner pointing every
+   future session at the drift checker. `scrapers/CLAUDE.md` audited: clean.
+   **Still open, NOT mine to touch:** `dental-pe-nextjs/CLAUDE.md:67` still reads "402,004
+   rows (per SQLite live 2026-04-25)" — the truth-app session owns that file; it should be
+   fixed there or that doc de-listed from always-load.
+6. **Push state:** this commit is pushed to `origin/main` (the previously-unpushed `776e35d`
+   rides along). Push is a content no-op for the deployed apps (doc/skill/CI files only). The
+   remaining dirty tracked files in the working tree belong to other active sessions'
+   uncommitted work and are deliberately NOT committed by this session.
