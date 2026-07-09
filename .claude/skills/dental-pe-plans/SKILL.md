@@ -20,6 +20,15 @@ output, and the hasty-model trap it guards against.
 If a plan here conflicts with live code or a newer dated doc, the live code / newer doc wins —
 STOP and report the conflict rather than executing the stale step.
 
+**Precedence law (applies to every doc in this repo, CLAUDE.md included):**
+- **For NUMBERS: no document outranks a fresh query.** CLAUDE.md tables, skill cheat-sheets,
+  and plan preambles are all historical-until-requeried. (Proof this matters: this skill set
+  itself shipped a stale "402k NPI rows" inherited from `dental-pe-nextjs/CLAUDE.md` — caught
+  by external review 2026-07-08. Run `dental-pe-skill-drift-check` to verify all claims.)
+- **For RULES: conflicts are STOP conditions.** Skills encode ratified law with dates and
+  incident links; CLAUDE.md is the always-loaded invariant layer. If they state conflicting
+  RULES, report both texts and ask the user — never silently pick a winner.
+
 ## Non-negotiable execution discipline (all plans)
 
 1. **Load the core skills first:** `dental-pe-census-operating-protocol`,

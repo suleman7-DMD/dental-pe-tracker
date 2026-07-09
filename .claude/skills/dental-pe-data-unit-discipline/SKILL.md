@@ -13,7 +13,7 @@ denominator.
 
 | Unit | What it is | Where | Scale (2026-07-04) |
 |---|---|---|---|
-| **NPI row** | One federal NPI record (NPI-1 provider OR NPI-2 org). ~2.4× the clinic count | `practices` table | 402k total; 13,818 in watched ZIPs |
+| **NPI row** | One federal NPI record (NPI-1 provider OR NPI-2 org). ~2.4× the clinic count | `practices` table | 381,598 total (2026-07-08; `SELECT COUNT(*) FROM practices`); 13,818 in watched ZIPs |
 | **Location** | One physical clinic (deduped by normalized address+ZIP) | `practice_locations` | 5,657 all-class watched; 4,801 GP |
 | **GP universe** | The census denominator: GP locations only, excl. specialist/non_clinical/da_unverified/org_only_npi | `SUM(zip_scores.total_gp_locations)` | 4,801 total = **4,439 IL** + 362 MA (parked) |
 | **Census row** | One reviewed GP location with an earned `ownership_tier` | `practice_locations.ownership_tier` | 3,180 (71.64% of IL universe) |
@@ -98,7 +98,11 @@ The ONLY legal presentation of census ownership (code gate:
 - Labeling Not-Solo % as "DSO share" — violates the ratified labeling law.
 - "Fixing" 1,153 vs 1,152 as if it were sync drift (it's watched-ZIP scoping, §2).
 - Copying a count from CLAUDE.md or an older doc without rerunning the query — several docs
-  carry historical numbers superseded by dated notes.
+  carry historical numbers superseded by dated notes. **This skill itself shipped with "402k
+  total" NPI rows inherited from `dental-pe-nextjs/CLAUDE.md:67` (a 2026-04-25 snapshot; live
+  count was 381,598) — caught by external review 2026-07-08.** No document is exempt,
+  including this one: run the §2 recheck block, or `dental-pe-skill-drift-check` for all
+  claims at once.
 
 ## 7. Minimum proof before continuing
 

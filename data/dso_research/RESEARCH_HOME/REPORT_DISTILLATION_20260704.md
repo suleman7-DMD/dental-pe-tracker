@@ -157,3 +157,37 @@ verifying each step's expected output before the next.
 ```
 
 — Fable, departing principal architect, 2026-07-04
+
+---
+
+## Addendum — 2026-07-08: external analyst review + response of record
+
+An independent analyst audited this report as an engineering claim and was right on the
+headline finding. Recording it here because the failure is instructive:
+
+1. **Confirmed defect:** `dental-pe-data-unit-discipline` §1 shipped "402k total" NPI rows;
+   the live count is 381,598. Provenance: `dental-pe-nextjs/CLAUDE.md:67` — "402,004 rows
+   (per SQLite live **2026-04-25**)". I inherited a 10-week-old snapshot from an always-loaded
+   doc without re-querying — the exact failure mode that skill's own §6 warns against, and
+   live proof of the stale-CLAUDE.md poisoning vector. Accordingly, §3's "every count
+   verified" is RETRACTED as stated; the accurate claim is: every number wired to a recheck
+   command was verified live; contextual scale figures were not all re-queried, and one was
+   wrong.
+2. **Fixes shipped same day:** the number corrected and the incident recorded inside the
+   skill itself; an explicit precedence law added to `dental-pe-plans` (NUMBERS: no document
+   outranks a fresh query, CLAUDE.md included; conflicting RULES: STOP, never silently pick a
+   winner); NEW skill `dental-pe-skill-drift-check` — machine-readable `claims.json` (24
+   claims, each with its recheck and an on_drift policy) + a read-only runner
+   (`check_claims.py`, DB opened `mode=ro`). First run: **24/24 PASS** including the
+   corrected claim.
+3. **Dry-test evidence banked:** raw prompts + final outputs of all four Opus dry-tests
+   extracted verbatim from the session transcript → `DRYTEST_ARTIFACTS_20260704.md` (this
+   directory). Caveat preserved there: grades were assigned in-session by the orchestrator,
+   not independently adjudicated — re-grading from the artifacts is possible and invited.
+4. **Corrected confidence statement:** what exists is a verified ADVISORY layer plus one
+   mechanical checker — not an enforcement layer. Still open (analyst bar): write-guard
+   hooks + census-chain lockfile, forced skill loading at session start, CI wiring of the
+   claims checker, committed replay path for the enum normalization, DENOM invariant landed
+   in CI, expanded adversarial test battery (stale-docs / skip-validation-pressure / missing
+   env / accidental full sync / frontend label regression), and a frontend truth-law skill or
+   labeling lint — the Test-C-based skip is no longer defensible at current frontend velocity.
