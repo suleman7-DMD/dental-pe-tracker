@@ -1,25 +1,37 @@
 [
  {
   "location_id": "00b3e3fb7e2346a0",
-  "public_practice_name": "Kulig Glen J DDS",
-  "website_url": "https://www.facebook.com/105199846214215",
-  "website_status": "social_only",
-  "doctors": [],
-  "provider_count_website": null,
-  "owner_operator_stated": null,
-  "ownership_evidence_status": "no_statement",
+  "public_practice_name": "CZ Family Dentistry",
+  "website_url": "https://czfamilydental.com",
+  "website_status": "live",
+  "doctors": [
+   {
+    "name": "Dr. Christopher Zwiercan",
+    "role": "unknown",
+    "credential": null,
+    "source_url": "https://czfamilydental.com/our-team"
+   }
+  ],
+  "provider_count_website": 1,
+  "owner_operator_stated": "czfamilydental.com and directory listings identify Dr. Christopher Zwiercan as the dentist at this record's phone number (815) 485-8188; the census entity Dr. Glen Kulig retired after 43 years (Village of New Lenox tribute post) and the practice appears sold, rebranded, and relocated to 196 W Illinois Hwy, New Lenox.",
+  "ownership_evidence_status": "conflict",
   "careers_page_url": null,
   "has_hiring_page": false,
   "openings": [],
-  "verification_status": "no_usable_website",
+  "verification_status": "ownership_conflict",
   "evidence_urls": [
-   "https://www.facebook.com/105199846214215"
+   "https://czfamilydental.com",
+   "https://czfamilydental.com/our-team",
+   "https://www.dentalplans.com/dentists/illinois/new-lenox/60451/dr-christopher-zwiercan-265618/",
+   "https://www.dentalplans.com/dentists/illinois/new-lenox/60451/dr-glen-kulig-265618/",
+   "https://www.facebook.com/VillageofNewLenox/photos/a.113468202041182/4146126792108616/",
+   "https://www.healthgrades.com/dentist/dr-glen-kulig-x82ww"
   ],
-  "notes": "No independent practice website exists (known_website was null; extensive search found only directory/aggregator listings - Healthgrades, WebMD, Vitals, Yelp, opencare, dentalplans, ADA finder). A minimal Facebook business page ('Kulig Glen J DDS') is the only owned web presence and confirms just the name/credential, with no team roster, ownership statement, or hiring content. Solo 1-provider practice per census; call (815) 485-8188 directly to inquire about openings. [Fable QA 2026-07-08] Downgraded roster_verified -> no_usable_website: sole source is a minimal Facebook page (website_status=social_only), which per the decision tree cannot count as a website-verified roster. Dr. Glen J. Kulig, DDS confirmed by that page and directories, but not website-verified.",
-  "last_checked_at": "2026-07-08T22:29:11.446656+00:00",
-  "checked_by": "job-hunt-sprint",
+  "notes": "[Recheck 2026-07-09] REFUTED prior no_usable_website call \u2014 succession found. 'Glen Kulig DDS' as a named entity is gone (retired after 43 years), but this record's phone number is live and belongs to CZ Family Dentistry (Dr. Christopher Zwiercan), with a shared DentalPlans internal practice ID (-265618) and a staff bio referencing 'following the lead of Dr. Kulig'. Address changed from 500 W Maple St to 196 W Illinois Hwy. Reclassified ownership_conflict: the public practice at this phone contradicts the census entity \u2014 relabel/merge review queued in practice_manual_corrections.\n[Superseded prior note:] No independent practice website exists (known_website was null; extensive search found only directory/aggregator listings - Healthgrades, WebMD, Vitals, Yelp, opencare, dentalplans, ADA finder). A minimal Facebook business page ('Kulig Glen J DDS') is the only owned web presence and confirms just the name/credential, with no team roster, ownership statement, or hiring content. Solo 1-provider practice per census; call (815) 485-8188 directly to inquire about openings. [Fable QA 2026-07-08] Downgraded roster_verified -> no_usable_website: sole source is a minimal Facebook page (website_status=social_only), which per the decision tree cannot count as a website-verified roster. Dr. Glen J. Kulig, DDS confirmed by that page and directories, but not website-verified.",
+  "last_checked_at": "2026-07-09T05:13:15.073727+00:00",
+  "checked_by": "nuw-recheck-fleet",
   "created_at": "2026-07-08T22:29:11.446656+00:00",
-  "updated_at": "2026-07-08T22:29:11.446656+00:00"
+  "updated_at": "2026-07-09T05:13:15.073727+00:00"
  },
  {
   "location_id": "0fc7f0d3ccc61893",
@@ -208,11 +220,11 @@
    "http://www.curtlangdds.com/",
    "https://www.scottsdaledentalclinic.com"
   ],
-  "notes": "Known website curtlangdds.com no longer resolves (DNS failure). The practice's other historical domain, scottsdaledentalclinic.com, now 302-redirects to a HugeDomains \"domain for sale\" page -- no working official site exists today. Third-party directories (Yelp, BBB, Wellness.com) still list the practice as open at 4651 W 79th St Ste 207/208, Chicago, referencing both founding dentist Curt Lang, DDS and a listing for Dr. David A. Nelson, DDS at the same suite -- this is directionally consistent with the census network_id (ao:NELSON_DAVID) suggesting Nelson may now operate it, but it is unconfirmed since no site content could be loaded. Recommend a phone call to confirm the practice is still operating and who currently owns/leads it.",
-  "last_checked_at": "2026-07-08T22:29:11.446656+00:00",
-  "checked_by": "job-hunt-sprint",
+  "notes": "Known website curtlangdds.com no longer resolves (DNS failure). The practice's other historical domain, scottsdaledentalclinic.com, now 302-redirects to a HugeDomains \"domain for sale\" page -- no working official site exists today. Third-party directories (Yelp, BBB, Wellness.com) still list the practice as open at 4651 W 79th St Ste 207/208, Chicago, referencing both founding dentist Curt Lang, DDS and a listing for Dr. David A. Nelson, DDS at the same suite -- this is directionally consistent with the census network_id (ao:NELSON_DAVID) suggesting Nelson may now operate it, but it is unconfirmed since no site content could be loaded. Recommend a phone call to confirm the practice is still operating and who currently owns/leads it.\n[Recheck 2026-07-09] Adversarial re-verification CONFIRMED this call. scottsdaledentalclinic.com still parked (HugeDomains); phone traces to a different practitioner (Dr. Curt Lang, dead domain).",
+  "last_checked_at": "2026-07-09T05:13:15.073727+00:00",
+  "checked_by": "nuw-recheck-fleet",
   "created_at": "2026-07-08T21:54:10.243729+00:00",
-  "updated_at": "2026-07-08T22:29:11.446656+00:00"
+  "updated_at": "2026-07-09T05:13:15.073727+00:00"
  },
  {
   "location_id": "3a80ae711ca6fec7",
@@ -393,11 +405,11 @@
    "https://ofsmiles.com",
    "https://ofsmiles.com/about-us"
   ],
-  "notes": "known_website (ofsmiles.com) is a mismatch, not Neil P. Parikh D.D.S., P.C. That site is 'Olympia Fields Dental Associates,' actually located at 4515 Lincoln Hwy, Matteson, IL (email domain csgsmiles.com), and appears DSO-affiliated with 'Chicagoland Smile Group' \u2014 it lists Dr. Andrew Wang DDS MPH, Dr. Ann Mazzotti Hood, and Dr. Michael Guthrie DDS MS, with no mention of Neil Parikh, and has a Paylocity-hosted careers page for Chicagoland Smile Group (do not attribute those openings to Parikh's practice). No official website for Neil P. Parikh D.D.S., P.C. in Olympia Fields, IL 60461 could be found; only third-party directory listings exist (Healthgrades, WebMD, ADA, NPI registry), several of which now show Parikh practicing elsewhere (e.g. a Chicago-area FQHC). Recommend a direct call to confirm whether this practice is still active at all.",
-  "last_checked_at": "2026-07-08T22:29:11.446656+00:00",
-  "checked_by": "job-hunt-sprint",
+  "notes": "known_website (ofsmiles.com) is a mismatch, not Neil P. Parikh D.D.S., P.C. That site is 'Olympia Fields Dental Associates,' actually located at 4515 Lincoln Hwy, Matteson, IL (email domain csgsmiles.com), and appears DSO-affiliated with 'Chicagoland Smile Group' \u2014 it lists Dr. Andrew Wang DDS MPH, Dr. Ann Mazzotti Hood, and Dr. Michael Guthrie DDS MS, with no mention of Neil Parikh, and has a Paylocity-hosted careers page for Chicagoland Smile Group (do not attribute those openings to Parikh's practice). No official website for Neil P. Parikh D.D.S., P.C. in Olympia Fields, IL 60461 could be found; only third-party directory listings exist (Healthgrades, WebMD, ADA, NPI registry), several of which now show Parikh practicing elsewhere (e.g. a Chicago-area FQHC). Recommend a direct call to confirm whether this practice is still active at all.\n[Recheck 2026-07-09] Adversarial re-verification CONFIRMED this call. ofsmiles.com belongs to Olympia Fields Dental Associates (different practice); Dr. Parikh now at Friend Family Health Center FQHC.",
+  "last_checked_at": "2026-07-09T05:13:15.073727+00:00",
+  "checked_by": "nuw-recheck-fleet",
   "created_at": "2026-07-08T22:29:11.446656+00:00",
-  "updated_at": "2026-07-08T22:29:11.446656+00:00"
+  "updated_at": "2026-07-09T05:13:15.073727+00:00"
  },
  {
   "location_id": "49e9ec574b150df0",
@@ -461,11 +473,11 @@
    "https://schaumburg-dentistry.com/",
    "https://schaumburg-dentistry.com/about-us/"
   ],
-  "notes": "IMPORTANT: the census known_website (schaumburgtoothdoctor.com) is confirmed to be a DIFFERENT practice \u2014 'Schaumburg Tooth Doctor, Andrew Modi, DDS' at 1375 E Schaumburg Rd #350 \u2014 with no mention of Dr. Nour Issa anywhere. Searched for the correct site; the neighboring 'Schaumburg Dentistry' (schaumburg-dentistry.com, suite #310 in the same building, per third-party listings) is the closest lead, but its own About page names three different doctors (Jonathan Asimakopoulos DDS and Louis Asimakopoulos DMD as owner/co-founders, Matthew Murphy DDS as associate) and never mentions Nour Issa either. Could not locate any live official site that actually shows Dr. Nour Issa's name. This needs a phone call to determine if Dr. Issa still practices under this PC, has been absorbed into Schaumburg Dentistry, or operates elsewhere; do not treat schaumburgtoothdoctor.com as this practice's site.",
-  "last_checked_at": "2026-07-08T22:29:11.446656+00:00",
-  "checked_by": "job-hunt-sprint",
+  "notes": "IMPORTANT: the census known_website (schaumburgtoothdoctor.com) is confirmed to be a DIFFERENT practice \u2014 'Schaumburg Tooth Doctor, Andrew Modi, DDS' at 1375 E Schaumburg Rd #350 \u2014 with no mention of Dr. Nour Issa anywhere. Searched for the correct site; the neighboring 'Schaumburg Dentistry' (schaumburg-dentistry.com, suite #310 in the same building, per third-party listings) is the closest lead, but its own About page names three different doctors (Jonathan Asimakopoulos DDS and Louis Asimakopoulos DMD as owner/co-founders, Matthew Murphy DDS as associate) and never mentions Nour Issa either. Could not locate any live official site that actually shows Dr. Nour Issa's name. This needs a phone call to determine if Dr. Issa still practices under this PC, has been absorbed into Schaumburg Dentistry, or operates elsewhere; do not treat schaumburgtoothdoctor.com as this practice's site.\n[Recheck 2026-07-09] Adversarial re-verification CONFIRMED this call. Only directory listings; Dr. Nour Issa affiliated with Oak Brook Dental Group, no site for the PC itself.",
+  "last_checked_at": "2026-07-09T05:13:15.073727+00:00",
+  "checked_by": "nuw-recheck-fleet",
   "created_at": "2026-07-08T22:29:11.446656+00:00",
-  "updated_at": "2026-07-08T22:29:11.446656+00:00"
+  "updated_at": "2026-07-09T05:13:15.073727+00:00"
  },
  {
   "location_id": "56f575faaf682c79",
@@ -781,23 +793,40 @@
  },
  {
   "location_id": "6e1da5847ac2a0a9",
-  "public_practice_name": null,
-  "website_url": "https://www.drnicorata.com",
-  "website_status": "dead",
-  "doctors": [],
-  "provider_count_website": null,
-  "owner_operator_stated": null,
-  "ownership_evidence_status": "no_statement",
+  "public_practice_name": "Nicorata Dental",
+  "website_url": "https://www.drnicorata.com/",
+  "website_status": "live",
+  "doctors": [
+   {
+    "name": "Dr. Steven J. Nicorata, DDS",
+    "role": "unknown",
+    "credential": "DDS",
+    "source_url": "https://www.drnicorata.com/"
+   },
+   {
+    "name": "Dr. Gregory J. Nicorata, DDS",
+    "role": "unknown",
+    "credential": "DDS",
+    "source_url": "https://www.drnicorata.com/"
+   }
+  ],
+  "provider_count_website": 2,
+  "owner_operator_stated": "Site presents the practice as Dr. Steven J. Nicorata's office (practicing since 1986), now alongside his son Dr. Gregory J. Nicorata \u2014 consistent with the census legal entity 'STEVEN J. NICORATA, D.D.S., P.C.'",
+  "ownership_evidence_status": "consistent",
   "careers_page_url": null,
   "has_hiring_page": false,
   "openings": [],
-  "verification_status": "no_usable_website",
-  "evidence_urls": [],
-  "notes": "Site is technically broken, not just unresponsive to our fetcher: verified at the network level with repeated curl attempts that the canonical https://www.drnicorata.com/ endpoint fails TLS handshake (SSL_ERROR_SYSCALL) consistently, and the bare https://drnicorata.com/ (which does load, WordPress/PHP 8.4) force-redirects to the broken www host, so ordinary visitors hitting this domain hit a dead end. Because the page could never actually be loaded, no on-site facts could be extracted \u2014 third-party search snippets suggest the practice may involve a Dr. Steven Nicorata and a Dr. Greg Nicorata, but that is unverified (not from the practice's own site) and is NOT included in the doctors list per the no-fabrication rule. A phone call is required; do not rely on this domain for outreach until its SSL/hosting is fixed.",
-  "last_checked_at": "2026-07-08T22:29:11.446656+00:00",
-  "checked_by": "job-hunt-sprint",
+  "verification_status": "roster_verified",
+  "evidence_urls": [
+   "https://www.drnicorata.com/",
+   "https://www.nicoratadental.com/",
+   "https://www.yelp.com/biz/nicorata-j-steven-dds-palos-heights"
+  ],
+  "notes": "[Recheck 2026-07-09] REFUTED prior no_usable_website/dead call: drnicorata.com 301s cleanly to https://www.drnicorata.com/ (HTTP 200, WordPress) with full practice content \u2014 name, address 6741 W 127th St Palos Heights, phone (708) 448-1125, and a two-doctor roster (Steven J. Nicorata DDS and son Gregory J. Nicorata DDS, practice since 1986). Companion Wix site nicoratadental.com live with identical branding. The earlier TLS handshake failure on the www host does not reproduce \u2014 transient hosting/SSL issue, not a dead site. Upgraded to roster_verified.\n[Superseded prior note:] Site is technically broken, not just unresponsive to our fetcher: verified at the network level with repeated curl attempts that the canonical https://www.drnicorata.com/ endpoint fails TLS handshake (SSL_ERROR_SYSCALL) consistently, and the bare https://drnicorata.com/ (which does load, WordPress/PHP 8.4) force-redirects to the broken www host, so ordinary visitors hitting this domain hit a dead end. Because the page could never actually be loaded, no on-site facts could be extracted \u2014 third-party search snippets suggest the practice may involve a Dr. Steven Nicorata and a Dr. Greg Nicorata, but that is unverified (not from the practice's own site) and is NOT included in the doctors list per the no-fabrication rule. A phone call is required; do not rely on this domain for outreach until its SSL/hosting is fixed.",
+  "last_checked_at": "2026-07-09T05:13:15.073727+00:00",
+  "checked_by": "nuw-recheck-fleet",
   "created_at": "2026-07-08T22:29:11.446656+00:00",
-  "updated_at": "2026-07-08T22:29:11.446656+00:00"
+  "updated_at": "2026-07-09T05:13:15.073727+00:00"
  },
  {
   "location_id": "705f33f2c6281ab9",
@@ -857,11 +886,11 @@
   "evidence_urls": [
    "https://m.facebook.com/profile.php?id=139251229455874"
   ],
-  "notes": "No official practice website exists. known_website (carecredit.com) is an aggregator, not a real site. A Facebook page for 'Jafri Firdaus DDS & Assoc DBA Dupage Dental Care' was located and loaded, but Facebook blocked all content rendering (mobile interstitial), so nothing usable could be extracted from it. Only aggregator/directory listings (Zocdoc, WebMD, BBB, Yellow Pages, Wellness.com) mention Dr. Firdaus Jafri, DDS at this address, matching the census network_id, but per instructions these cannot be used as roster evidence. A job-seeker would need to call (630) 665-2147 directly.",
-  "last_checked_at": "2026-07-08T22:29:11.446656+00:00",
-  "checked_by": "job-hunt-sprint",
+  "notes": "No official practice website exists. known_website (carecredit.com) is an aggregator, not a real site. A Facebook page for 'Jafri Firdaus DDS & Assoc DBA Dupage Dental Care' was located and loaded, but Facebook blocked all content rendering (mobile interstitial), so nothing usable could be extracted from it. Only aggregator/directory listings (Zocdoc, WebMD, BBB, Yellow Pages, Wellness.com) mention Dr. Firdaus Jafri, DDS at this address, matching the census network_id, but per instructions these cannot be used as roster evidence. A job-seeker would need to call (630) 665-2147 directly.\n[Recheck 2026-07-09] Adversarial re-verification CONFIRMED this call. Directory/aggregator listings only across all search passes.",
+  "last_checked_at": "2026-07-09T05:13:15.073727+00:00",
+  "checked_by": "nuw-recheck-fleet",
   "created_at": "2026-07-08T22:29:11.446656+00:00",
-  "updated_at": "2026-07-08T22:29:11.446656+00:00"
+  "updated_at": "2026-07-09T05:13:15.073727+00:00"
  },
  {
   "location_id": "7ae4e768de750c53",
@@ -1034,11 +1063,11 @@
    "https://www.periocare.com/our-practice/meet-the-doctor/",
    "https://www.periocare.com/contact/"
   ],
-  "notes": "Census known_website (presencehealth.org) is an unrelated hospital-system link, not this practice's real site. Located the practice's actual domain via search (periocare.com, branded 'The PerioCare / PerioCare Periodontics & Dental Implant Surgery,' historically at 7447 W Talcott Ave, Chicago, under Dr. Russell Cecala), but every page fetched now returns a cancelled Prosites hosting notice ('Your website is cancelled... contact our Billing Department'), so no live roster, ownership statement, or hiring info could be verified. Search-engine cache snippets still reference Dr. Cecala's bio and Yelp/LinkedIn suggest the practice may still be operating physically as of 2026, so a call to confirm is warranted rather than assuming closure from the dead website alone.",
-  "last_checked_at": "2026-07-08T22:29:11.446656+00:00",
-  "checked_by": "job-hunt-sprint",
+  "notes": "Census known_website (presencehealth.org) is an unrelated hospital-system link, not this practice's real site. Located the practice's actual domain via search (periocare.com, branded 'The PerioCare / PerioCare Periodontics & Dental Implant Surgery,' historically at 7447 W Talcott Ave, Chicago, under Dr. Russell Cecala), but every page fetched now returns a cancelled Prosites hosting notice ('Your website is cancelled... contact our Billing Department'), so no live roster, ownership statement, or hiring info could be verified. Search-engine cache snippets still reference Dr. Cecala's bio and Yelp/LinkedIn suggest the practice may still be operating physically as of 2026, so a call to confirm is warranted rather than assuming closure from the dead website alone.\n[Recheck 2026-07-09] Adversarial re-verification CONFIRMED this call. periocare.com confirmed dead \u2014 every page redirects to /cancelled.aspx.",
+  "last_checked_at": "2026-07-09T05:13:15.073727+00:00",
+  "checked_by": "nuw-recheck-fleet",
   "created_at": "2026-07-08T22:29:11.446656+00:00",
-  "updated_at": "2026-07-08T22:29:11.446656+00:00"
+  "updated_at": "2026-07-09T05:13:15.073727+00:00"
  },
  {
   "location_id": "92610afa95d3bc8f",
@@ -1206,11 +1235,11 @@
    "https://www.webdentalchicago.com/ourdoctors/",
    "https://www.webdentalchicago.com/"
   ],
-  "notes": "known_website pelcdental.com (Dr. Michelle Pelc's former site) returns DNS resolution failure on both www and root domain - no live official site could be loaded. A third-party listing (Zocdoc) tags this phone/address under 'Webster Dental Care of Evanston,' a 10-location Chicago-area group with its own corporate careers portal (Webster Dental Management via Paylocity), but Webster Dental's own official Evanston roster page does NOT list Dr. Lauren Ming or Dr. Michelle Pelc, so the group affiliation could not be confirmed on a primary source. Call the practice directly to confirm current ownership/operating status before treating this as an independent opening.",
-  "last_checked_at": "2026-07-08T22:29:11.446656+00:00",
-  "checked_by": "job-hunt-sprint",
+  "notes": "known_website pelcdental.com (Dr. Michelle Pelc's former site) returns DNS resolution failure on both www and root domain - no live official site could be loaded. A third-party listing (Zocdoc) tags this phone/address under 'Webster Dental Care of Evanston,' a 10-location Chicago-area group with its own corporate careers portal (Webster Dental Management via Paylocity), but Webster Dental's own official Evanston roster page does NOT list Dr. Lauren Ming or Dr. Michelle Pelc, so the group affiliation could not be confirmed on a primary source. Call the practice directly to confirm current ownership/operating status before treating this as an independent opening.\n[Recheck 2026-07-09] Adversarial re-verification CONFIRMED this call. Directories, LinkedIn, and a Lurie Children's staff bio only; no independent Evanston practice site.",
+  "last_checked_at": "2026-07-09T05:13:15.073727+00:00",
+  "checked_by": "nuw-recheck-fleet",
   "created_at": "2026-07-08T22:29:11.446656+00:00",
-  "updated_at": "2026-07-08T22:29:11.446656+00:00"
+  "updated_at": "2026-07-09T05:13:15.073727+00:00"
  },
  {
   "location_id": "ace31cb7f9d2910c",
@@ -1257,12 +1286,19 @@
   "has_hiring_page": false,
   "openings": [],
   "verification_status": "no_usable_website",
-  "evidence_urls": [],
-  "notes": "No independent practice website could be found despite multiple targeted searches; every result is a third-party directory (Yelp, Healthgrades, WebMD, ADA Find-a-Dentist, Vitals, Nextdoor, Dentistry.com). Solo practitioner (census provider_count=1) with no apparent online presence beyond directories \u2014 a job seeker would need to call (630) 469-0667 directly to inquire about openings.",
-  "last_checked_at": "2026-07-08T22:29:11.446656+00:00",
-  "checked_by": "job-hunt-sprint",
+  "evidence_urls": [
+   "https://www.yelp.com/biz/tyron-j-hill-dds-glen-ellyn",
+   "https://www.vitals.com/dentists/Dr_Tyron_Hill",
+   "https://doctor.webmd.com/doctor/tyron-hill-9c4957a2-1dcd-4fa7-96b0-971f5fd008c9-overview",
+   "https://findadentist.ada.org/dentists/dr-tyron-j-hill-glen-ellyn-0038V00002yk120QAA-a1C8V00000lZ9DpUAK",
+   "https://www.healthgrades.com/dentist/dr-tyron-hill-xr3s6",
+   "https://npiprofile.com/npi/1457419145"
+  ],
+  "notes": "No independent practice website could be found despite multiple targeted searches; every result is a third-party directory (Yelp, Healthgrades, WebMD, ADA Find-a-Dentist, Vitals, Nextdoor, Dentistry.com). Solo practitioner (census provider_count=1) with no apparent online presence beyond directories \u2014 a job seeker would need to call (630) 469-0667 directly to inquire about openings.\n[Recheck 2026-07-09] Adversarial re-verification CONFIRMED this call. Four search passes + two NXDOMAIN domain guesses; practice real and active (Yelp reviews Jan 2026) but directory-only web presence.",
+  "last_checked_at": "2026-07-09T05:13:15.073727+00:00",
+  "checked_by": "nuw-recheck-fleet",
   "created_at": "2026-07-08T22:29:11.446656+00:00",
-  "updated_at": "2026-07-08T22:29:11.446656+00:00"
+  "updated_at": "2026-07-09T05:13:15.073727+00:00"
  },
  {
   "location_id": "bd7bc9d0dec66112",
@@ -1342,11 +1378,11 @@
    "https://drsbrennan.business.site",
    "https://www.johnmarchesedds.com/"
   ],
-  "notes": "known_website (drsbrennan.business.site) 404s / no longer exists. The practice's old domain, johnmarchesedds.com, has been repurposed into a third-party pay-per-call lead-generation page that explicitly disclaims affiliation with 'the previous owner of this domain' \u2014 Dr. Marchese no longer appears to control it. Third-party directories (Yelp, Healthgrades, WebMD, ADA Find-a-Dentist) still list 'Dr. John G. Marchese DDS' at 5133 Washington St Ste 10, Downers Grove, IL, (630) 964-7852, and a stub Facebook business page exists but could not be loaded to confirm it's active. No official practice-owned website could be located; recommend calling directly to verify the practice is still operating and ask about openings.",
-  "last_checked_at": "2026-07-08T22:29:11.446656+00:00",
-  "checked_by": "job-hunt-sprint",
+  "notes": "known_website (drsbrennan.business.site) 404s / no longer exists. The practice's old domain, johnmarchesedds.com, has been repurposed into a third-party pay-per-call lead-generation page that explicitly disclaims affiliation with 'the previous owner of this domain' \u2014 Dr. Marchese no longer appears to control it. Third-party directories (Yelp, Healthgrades, WebMD, ADA Find-a-Dentist) still list 'Dr. John G. Marchese DDS' at 5133 Washington St Ste 10, Downers Grove, IL, (630) 964-7852, and a stub Facebook business page exists but could not be loaded to confirm it's active. No official practice-owned website could be located; recommend calling directly to verify the practice is still operating and ask about openings.\n[Recheck 2026-07-09] Adversarial re-verification CONFIRMED this call. Directory/aggregator listings only for Dr. John Marchese, Downers Grove.",
+  "last_checked_at": "2026-07-09T05:13:15.073727+00:00",
+  "checked_by": "nuw-recheck-fleet",
   "created_at": "2026-07-08T22:29:11.446656+00:00",
-  "updated_at": "2026-07-08T22:29:11.446656+00:00"
+  "updated_at": "2026-07-09T05:13:15.073727+00:00"
  },
  {
   "location_id": "c076ca8e59272343",
@@ -1644,11 +1680,11 @@
    "https://booking.dentologie.com/careers/doctors",
    "https://chicago.lakevieweast.com/list/member/david-b-drake-general-dentistry-dds-ltd-112"
   ],
-  "notes": "IMPORTANT MISMATCH: this location_id is named 'David Drake DDS' but the known_website is Dentologie's corporate page for 963 W Belmont Ave \u2014 a VC-backed multi-location DSO. Third-party listings (Lakeview East Chamber of Commerce, Yelp) place the actual 'David B. Drake, DDS LTD' solo practice at a different address, 739 W Belmont Ave, and explicitly say he has 'no website.' This looks like a census data-matching error rather than Dentologie having acquired Drake's practice. No doctor roster could be confirmed at either address since Dentologie's site content is JS-rendered and didn't return past the title tag. Job-hunters should call ahead to clarify which entity actually occupies which address before assuming Dentologie/DSO employment terms apply. [Fable QA 2026-07-08] Downgraded hiring_page_found -> no_usable_website and cleared website/openings fields: the researcher's own evidence shows dentologie.com belongs to Dentologie (VC-backed DSO at 963 W Belmont), while this location is David B. Drake DDS LTD, a solo practice third-party-listed at 739 W Belmont with no website. Attributing Dentologie's hiring portal to Drake's record would be false. Census website-field correction queued.",
-  "last_checked_at": "2026-07-08T22:29:11.446656+00:00",
-  "checked_by": "job-hunt-sprint",
+  "notes": "IMPORTANT MISMATCH: this location_id is named 'David Drake DDS' but the known_website is Dentologie's corporate page for 963 W Belmont Ave \u2014 a VC-backed multi-location DSO. Third-party listings (Lakeview East Chamber of Commerce, Yelp) place the actual 'David B. Drake, DDS LTD' solo practice at a different address, 739 W Belmont Ave, and explicitly say he has 'no website.' This looks like a census data-matching error rather than Dentologie having acquired Drake's practice. No doctor roster could be confirmed at either address since Dentologie's site content is JS-rendered and didn't return past the title tag. Job-hunters should call ahead to clarify which entity actually occupies which address before assuming Dentologie/DSO employment terms apply. [Fable QA 2026-07-08] Downgraded hiring_page_found -> no_usable_website and cleared website/openings fields: the researcher's own evidence shows dentologie.com belongs to Dentologie (VC-backed DSO at 963 W Belmont), while this location is David B. Drake DDS LTD, a solo practice third-party-listed at 739 W Belmont with no website. Attributing Dentologie's hiring portal to Drake's record would be false. Census website-field correction queued.\n[Recheck 2026-07-09] Adversarial re-verification CONFIRMED this call. No practice-owned site (Facebook page is social-only). ALSO: census phone (312) 846-6752 resolves to Dentologie South Loop, unrelated; real practice is at 739 W Belmont Ave, (773) 248-8813 \u2014 corrections queued.",
+  "last_checked_at": "2026-07-09T05:13:15.073727+00:00",
+  "checked_by": "nuw-recheck-fleet",
   "created_at": "2026-07-08T22:29:11.446656+00:00",
-  "updated_at": "2026-07-08T22:29:11.446656+00:00"
+  "updated_at": "2026-07-09T05:13:15.073727+00:00"
  },
  {
   "location_id": "f20b16c20814cf90",
@@ -1880,10 +1916,10 @@
    "https://www.allbiz.com/business/dr-henry-m-kotlinski-dds-773-736-5525",
    "https://www.facebook.com/people/Kotlinski-Henry-M-DDS/100063707883682/"
   ],
-  "notes": "No official practice website exists for this location/domain -- the known_website field was a directory link (vitals.com) and a guessed domain (jamespottsdds.com) failed to resolve entirely. Every directory listing matching the exact address (5804 W Addison St) and phone (773-736-5525) instead identifies the practitioner as 'Henry M. Kotlinski, DDS,' not 'James K. Potts, DDS' -- the census name for this location may be stale, or ownership/tenancy changed. A separate 'James Potts DDS' record does exist in directories but at a different address (8214 W Addison) and different phone, so it looks unrelated to this specific location. Only a Facebook business page was located (no dedicated site); call required to confirm current provider and any hiring status.",
-  "last_checked_at": "2026-07-08T22:29:11.446656+00:00",
-  "checked_by": "job-hunt-sprint",
+  "notes": "No official practice website exists for this location/domain -- the known_website field was a directory link (vitals.com) and a guessed domain (jamespottsdds.com) failed to resolve entirely. Every directory listing matching the exact address (5804 W Addison St) and phone (773-736-5525) instead identifies the practitioner as 'Henry M. Kotlinski, DDS,' not 'James K. Potts, DDS' -- the census name for this location may be stale, or ownership/tenancy changed. A separate 'James Potts DDS' record does exist in directories but at a different address (8214 W Addison) and different phone, so it looks unrelated to this specific location. Only a Facebook business page was located (no dedicated site); call required to confirm current provider and any hiring status.\n[Recheck 2026-07-09] Adversarial re-verification CONFIRMED this call. All directories consistently show no website field for this practice.",
+  "last_checked_at": "2026-07-09T05:13:15.073727+00:00",
+  "checked_by": "nuw-recheck-fleet",
   "created_at": "2026-07-08T22:29:11.446656+00:00",
-  "updated_at": "2026-07-08T22:29:11.446656+00:00"
+  "updated_at": "2026-07-09T05:13:15.073727+00:00"
  }
 ]
