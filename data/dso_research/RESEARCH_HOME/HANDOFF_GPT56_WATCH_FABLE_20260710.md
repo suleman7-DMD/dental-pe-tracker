@@ -273,12 +273,24 @@ to Fable" instructions that preserve the direction and prevent new drift.
 
 ## Current Codex launch state
 
-`dpetyolo` is updated to request GPT-5.6:
+`dpetyolo` currently requests GPT-5.5, not GPT-5.6, because the user's
+installed Codex binary is still `codex-cli 0.142.5`. Official OpenAI help says
+GPT-5.6 access in Codex requires Codex CLI **0.144.0+** and eligible
+account/workspace availability; trying `-m gpt-5.6` on 0.142.5 with ChatGPT
+auth produced:
 
 ```text
-alias dpetyolo='cd ~/dental-pe-tracker && git pull && codex --dangerously-bypass-approvals-and-sandbox -m gpt-5.6 -c model_reasoning_effort="xhigh"'
+The 'gpt-5.6' model is not supported when using Codex with a ChatGPT account.
 ```
 
-Codex config default model is also `gpt-5.6`. The local binary may still be
-`codex-cli 0.142.5` until the network allows `codex update` to fetch 0.144.1,
-but the model target is GPT-5.6.
+Do not set `dpetyolo` back to GPT-5.6 until `codex --version` reports at least
+0.144.0 and the selector/model availability includes GPT-5.6.
+
+Current working alias:
+
+```text
+alias dpetyolo='cd ~/dental-pe-tracker && git pull && codex --dangerously-bypass-approvals-and-sandbox -m gpt-5.5 -c model_reasoning_effort="xhigh"'
+```
+
+When the network is stable, run `codex update` or `brew upgrade --cask codex`,
+then restart Codex and check `codex doctor`. Only then retry `gpt-5.6`.
