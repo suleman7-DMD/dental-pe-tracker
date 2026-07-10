@@ -1,0 +1,33 @@
+{
+  "_purpose": "Reconciliation of the practice_manual_corrections queue count before the number is quoted anywhere (user directive 2026-07-09: 'reconcile the correction queue count before using 6 anywhere'). This file is the evidence artifact behind the QUEUE_ACCT invariant in scripts/check_data_invariants.py.",
+  "reconciled_at": "2026-07-09",
+  "reconciled_by": "fable_pivot_session_20260709",
+  "system_of_record": "Supabase practice_manual_corrections (live-app writes land there; the SQLite table created by scrapers/migrate_practice_manual_corrections.py is a schema mirror that received only the offline edge-QA rows and is NOT authoritative)",
+  "why_anon_cannot_see_it": "RLS is enabled with no anon policies (scrapers/migrate_practice_manual_corrections.py line 65). PostgREST anon reads return zero rows. Do NOT grant anon/public SELECT/INSERT to work around this — that was denied once on 2026-07-09; do not retry. Counts must come from a direct Postgres connection (SUPABASE_POOLER_URL).",
+  "verdict": {
+    "true_total_live": 7,
+    "by_status": { "queued": 6, "rejected": 1, "applied": 0 },
+    "by_submitter": {
+      "jhv-edge-qa-20260709": { "queued": 6, "note": "edge-bucket QA seeds from commit b282308, ids 5-10, all created 2026-07-09T05:13:15Z" },
+      "health_check": { "rejected": 1, "note": "synthetic health-check row, id 2, created 2026-07-08T05:30:19Z, already adjudicated rejected" }
+    },
+    "the_number_6": "The previously-quoted '6' counts only the QUEUED edge-QA rows. It is correct ONLY with the qualifier 'queued'. The unqualified queue size is 7. Any surface or doc quoting this queue must say either '6 queued' or '7 total (6 queued + 1 rejected)'.",
+    "sqlite_mirror": { "total": 6, "all_status": "queued", "all_submitted_by": "jhv-edge-qa-20260709", "note": "Missing the health_check row because that row was written via the live app path, which does not touch SQLite. Expected asymmetry, not drift." },
+    "id_gaps": "Live ids are 2,5,6,7,8,9,10 — ids 1,3,4 were consumed by IDENTITY on inserts that did not persist (rolled-back health checks). Postgres identity sequences are non-transactional; gaps do NOT indicate deleted rows and do not violate append-only."
+  },
+  "queries_run": [
+    "SELECT status, submitted_by, count(*) FROM practice_manual_corrections GROUP BY 1,2  -- live Supabase via SUPABASE_POOLER_URL",
+    "SELECT id, field_key, status, submitted_by, created_at FROM practice_manual_corrections ORDER BY id  -- live Supabase",
+    "SELECT COUNT(*) FROM practice_manual_corrections  -- local SQLite data/dental_pe_tracker.db"
+  ],
+  "invariant": {
+    "id": "QUEUE_ACCT",
+    "where": "scripts/check_data_invariants.py::check_queue_accounting",
+    "rules": [
+      "statuses only from {queued, applied, rejected}",
+      "total == sum of per-status counts",
+      "total >= 7 (append-only floor as of 2026-07-09; re-base upward only, with a dated successor to this file)"
+    ],
+    "ci_behavior": "SKIPs in anon-only CI (RLS by design); PASS/FAIL when run locally with SUPABASE_POOLER_URL"
+  }
+}

@@ -153,8 +153,15 @@ SYNC_CONFIG = [
     {"table": "practice_intel",   "model": PracticeIntel,  "strategy": "full_replace", "conflict_col": None, "filter_watched_zips_npi": True},
     {"table": "practice_signals", "model": PracticeSignal, "strategy": "full_replace", "conflict_col": None, "filter_watched_zips_npi": True},
     {"table": "zip_signals",      "model": ZipSignal,      "strategy": "full_replace", "conflict_col": None},
-    # practice_locations: additive dedup table (ULTRA-FIX dedup). full_replace is safe —
-    # re-derived from practices on every dedup run. No FK deps on other Supabase tables.
+    # practice_locations: additive dedup table (ULTRA-FIX dedup). full_replace is
+    # NOT dependent-free (stale claim fixed 2026-07-09): job_hunt_verification has
+    # an FK → practice_locations(location_id) — the ONLY FK dependent, verified
+    # live 2026-07-09 — so TRUNCATE ... CASCADE wipes the job-hunt verification
+    # layer on every full_replace. _sync_full_replace snapshots the live table to
+    # data/job_hunt_verification_seed.json BEFORE the truncate and re-imports +
+    # hard-verifies it AFTER (see _snapshot_job_hunt_seed /
+    # _restore_job_hunt_verification). Do not remove those hooks; CI backstop is
+    # the JOB_HUNT expect_min guard in scripts/check_data_invariants.py.
     {"table": "practice_locations", "model": PracticeLocation, "strategy": "full_replace", "conflict_col": None},
 ]
 
@@ -685,6 +692,75 @@ def _sync_incremental_id(sqlite_session, pg_engine, config):
     return inserted
 
 
+# ---------------------------------------------------------------------------
+# job_hunt_verification durability (2026-07-09)
+#
+# job_hunt_verification.location_id has an FK → practice_locations(location_id)
+# (the ONLY FK dependent of practice_locations, verified live 2026-07-09), so
+# the TRUNCATE ... CASCADE below wipes the 48-row job-hunt verification layer
+# on EVERY practice_locations full_replace — both the weekly full sync and
+# scrapers/_sync_floor_tables_only.py (which reuses _sync_full_replace).
+# These hooks make that wipe lossless:
+#   1. BEFORE the truncate: export the live table to
+#      data/job_hunt_verification_seed.json (live is truth; skip if empty).
+#   2. AFTER the verified replace: re-import the seed (idempotent upsert,
+#      recreates the table if missing) and hard-verify live == seed.
+# A restore failure raises, failing the sync step loudly. CI backstop:
+# JOB_HUNT expect_min guard in scripts/check_data_invariants.py.
+# ---------------------------------------------------------------------------
+
+def _snapshot_job_hunt_seed(pg_engine):
+    """Refresh the JHV seed file from live BEFORE practice_locations is truncated.
+
+    Best-effort by design: if the live table is missing/empty (already wiped)
+    or the export fails, the existing repo seed remains the restore source.
+    """
+    try:
+        with pg_engine.connect() as conn:
+            _set_statement_timeout(conn)
+            exists = conn.execute(text(
+                "SELECT 1 FROM information_schema.tables "
+                "WHERE table_name='job_hunt_verification'")).fetchone()
+            live_count = 0
+            if exists:
+                live_count = conn.execute(text(
+                    "SELECT COUNT(*) FROM job_hunt_verification")).scalar() or 0
+        if not live_count:
+            log.warning("[job_hunt_verification] live table missing/empty pre-sync — "
+                        "keeping the existing repo seed as the restore source")
+            return
+        from scrapers import import_job_hunt_verification as jhv
+        jhv.export()
+        log.info("[job_hunt_verification] seed refreshed from live (%d rows) before TRUNCATE",
+                 live_count)
+    except Exception as e:
+        log.warning("[job_hunt_verification] pre-truncate seed export failed (%s) — "
+                    "will restore from the existing repo seed", e)
+
+
+def _restore_job_hunt_verification():
+    """Re-import + hard-verify the JHV seed AFTER a practice_locations full_replace.
+
+    NOT best-effort: a failure here means the CASCADE wipe was not healed, so it
+    raises to fail the sync step loudly (run_step isolates it; CI JOB_HUNT guard
+    catches a silent loss).
+    """
+    from scrapers import import_job_hunt_verification as jhv
+    rows = jhv.load_seed()
+    problems = jhv.validate(rows)
+    if problems:
+        raise RuntimeError(
+            f"[job_hunt_verification] seed failed validation ({len(problems)} problem(s)) — "
+            "table was CASCADE-wiped and NOT restored. Fix the seed, then run "
+            "python3 -m scrapers.import_job_hunt_verification --allow-db-write")
+    jhv.write(rows)
+    if jhv.verify(rows) != 0:
+        raise RuntimeError(
+            "[job_hunt_verification] post-restore verify FAILED: live != seed after re-import")
+    log.info("[job_hunt_verification] restored + verified %d rows after "
+             "practice_locations full_replace", len(rows))
+
+
 def _sync_full_replace(sqlite_session, pg_engine, config):
     """TRUNCATE + INSERT all rows (for small reference tables).
 
@@ -692,6 +768,8 @@ def _sync_full_replace(sqlite_session, pg_engine, config):
     The TRUNCATE + INSERT run in a single connection/transaction so a
     crash or rollback mid-insert leaves the old data intact.
     Post-sync assertion confirms actual Supabase count matches expected.
+    practice_locations additionally snapshots + restores job_hunt_verification
+    around the TRUNCATE CASCADE (see the durability hooks above).
     """
     table_name = config["table"]
     model = config["model"]
@@ -742,6 +820,10 @@ def _sync_full_replace(sqlite_session, pg_engine, config):
         log.warning("[%s] Shutdown requested — skipping full replace", table_name)
         return 0
 
+    if table_name == "practice_locations":
+        # The TRUNCATE CASCADE below wipes job_hunt_verification (FK dependent).
+        _snapshot_job_hunt_seed(pg_engine)
+
     with pg_engine.begin() as conn:
         _set_statement_timeout(conn, local=True)
         conn.execute(text(f"TRUNCATE TABLE {table_name} CASCADE"))
@@ -772,6 +854,11 @@ def _sync_full_replace(sqlite_session, pg_engine, config):
         last_sync_value=None,
         notes=f"Full replace: {actual} rows (verified)",
     )
+
+    if table_name == "practice_locations":
+        # Heal the CASCADE wipe: re-import + hard-verify the JHV layer.
+        _restore_job_hunt_verification()
+
     return actual
 
 

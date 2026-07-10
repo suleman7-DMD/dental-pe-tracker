@@ -31,6 +31,34 @@ from dataclasses import dataclass
 from typing import Optional
 
 
+def _load_env_fallback() -> None:
+    """Local convenience: populate missing SUPABASE_* vars from repo env files.
+
+    CI sets env explicitly (anon key only); locally this lets the script run
+    as-is, and also picks up SUPABASE_POOLER_URL so the RLS-locked
+    QUEUE_ACCT check runs instead of SKIPping. setdefault only — never
+    overrides explicitly-set env.
+    """
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    remap = {
+        "NEXT_PUBLIC_SUPABASE_URL": "SUPABASE_URL",
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY": "SUPABASE_ANON_KEY",
+    }
+    for path in (os.path.join(root, ".env"),
+                 os.path.join(root, "dental-pe-nextjs", ".env.local")):
+        if not os.path.isfile(path):
+            continue
+        for raw in open(path):
+            line = raw.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            k, _, v = line.partition("=")
+            k, v = k.strip(), v.strip()
+            os.environ.setdefault(remap.get(k, k), v)
+
+
+_load_env_fallback()
+
 SUPABASE_URL = os.environ.get("SUPABASE_URL", "").rstrip("/")
 SUPABASE_KEY = os.environ.get("SUPABASE_ANON_KEY", "")
 
@@ -245,7 +273,39 @@ INVARIANTS: list[Invariant] = [
             "hasn't received the latest promotions yet."
         ),
     ),
+    Invariant(
+        id="JOB_HUNT",
+        description=(
+            "job_hunt_verification rows never regress below the 2026-07-09 "
+            "documented 48 (website-verified job-hunt layer; RLS intentionally "
+            "off, so anon can read it)"
+        ),
+        path="job_hunt_verification?select=location_id",
+        expect_max=99999,         # growth is the whole point of the layer
+        expect_min=48,
+        severity="fail",
+        note=(
+            "JHV FLOOR GUARD: job_hunt_verification has an FK → "
+            "practice_locations(location_id), so any practice_locations "
+            "full_replace TRUNCATE ... CASCADE wipes it. Both CASCADE paths "
+            "(weekly sync_to_supabase.py + _sync_floor_tables_only.py) run "
+            "through _sync_full_replace, which since 2026-07-09 snapshots the "
+            "live table to data/job_hunt_verification_seed.json BEFORE the "
+            "truncate and re-imports + hard-verifies it AFTER. A count below "
+            "48 means that restore hook failed or was removed — remediate with "
+            "python3 -m scrapers.import_job_hunt_verification --allow-db-write "
+            "then --verify. Re-base this floor UPWARD only, via --export after "
+            "new verified rows land (seed is the evidence artifact)."
+        ),
+    ),
 ]
+
+# QUEUE_ACCT floor: reconciled live 2026-07-09 — 7 rows total =
+# 6 queued (submitted_by jhv-edge-qa-20260709, ids 5-10) +
+# 1 rejected (submitted_by health_check, id 2). The SQLite mirror holds only
+# the 6 QA rows and is NOT the system of record; Supabase is (app writes land
+# there). Evidence: data/dso_research/correction_queue_reconciliation_20260709.json
+QUEUE_FLOOR_2026_07_09 = 7
 
 
 def fetch_count(path: str) -> tuple[int, Optional[str]]:
@@ -325,6 +385,64 @@ def check_denominator() -> tuple[str, str]:
     )
 
 
+def check_queue_accounting() -> tuple[str, str]:
+    """QUEUE_ACCT: practice_manual_corrections accounting reconciles.
+
+    The correction queue is RLS-locked from anon BY DESIGN (do NOT grant anon
+    SELECT/INSERT to make this check easier — that was denied once on
+    2026-07-09; do not retry). PostgREST with the anon key sees zero rows, so
+    this check needs a direct Postgres URL (SUPABASE_POOLER_URL /
+    SUPABASE_DATABASE_URL) and SKIPs cleanly in the anon-only weekly CI.
+    Run the script locally for full coverage.
+
+    Law (reconciled live 2026-07-09): the queue is append-only —
+      * statuses only from {queued, applied, rejected} (mirrors the CHECK),
+      * total == sum of per-status counts,
+      * total never drops below the documented floor (7 as of 2026-07-09:
+        6 queued jhv-edge-qa + 1 rejected health_check). A drop means rows
+        were DELETED, which is never legal on this table.
+    """
+    pg_url = os.environ.get("SUPABASE_POOLER_URL") or os.environ.get("SUPABASE_DATABASE_URL")
+    if not pg_url:
+        return "SKIP", (
+            "no direct Postgres URL in env — the queue is RLS-locked from anon "
+            "(by design; never grant anon access to work around this). "
+            "Run locally with SUPABASE_POOLER_URL set."
+        )
+    try:
+        from sqlalchemy import create_engine, text as _text
+    except ImportError:
+        return "SKIP", "sqlalchemy not installed — run locally for the queue check"
+    try:
+        engine = create_engine(pg_url, pool_pre_ping=True)
+        with engine.connect() as conn:
+            by_status = {
+                k: int(v) for k, v in conn.execute(_text(
+                    "SELECT status, COUNT(*) FROM practice_manual_corrections GROUP BY 1"
+                )).fetchall()
+            }
+            total = conn.execute(_text(
+                "SELECT COUNT(*) FROM practice_manual_corrections")).scalar() or 0
+        engine.dispose()
+    except Exception as e:
+        return "ERROR", f"queue query failed: {type(e).__name__}: {e}"
+    legal = {"queued", "applied", "rejected"}
+    bad = set(by_status) - legal
+    if bad:
+        return "FAIL", f"illegal status values {sorted(bad)} (allowed: {sorted(legal)})"
+    accounted = sum(by_status.values())
+    if accounted != total:
+        return "FAIL", f"per-status counts sum to {accounted} but total is {total}"
+    if total < QUEUE_FLOOR_2026_07_09:
+        return "FAIL", (
+            f"total {total} < floor {QUEUE_FLOOR_2026_07_09} — the queue is "
+            "append-only; a drop means rows were DELETED (never legal). See "
+            "data/dso_research/correction_queue_reconciliation_20260709.json"
+        )
+    breakdown = ", ".join(f"{k}={v}" for k, v in sorted(by_status.items())) or "empty"
+    return "PASS", f"total {total} = {breakdown} (floor {QUEUE_FLOOR_2026_07_09})"
+
+
 def main() -> int:
     print("# F28 Data Invariant Report")
     print(f"\nSupabase URL: `{SUPABASE_URL}`\n")
@@ -377,6 +495,11 @@ def main() -> int:
     if denom_status in ("FAIL", "ERROR"):
         failures += 1
     print(f"| DENOM | {denom_status} | fail | — | IL GP denominator reconciles (contract §7): {denom_detail} |")
+
+    queue_status, queue_detail = check_queue_accounting()
+    if queue_status in ("FAIL", "ERROR"):
+        failures += 1
+    print(f"| QUEUE_ACCT | {queue_status} | fail | — | correction-queue accounting (append-only; RLS-locked from anon by design): {queue_detail} |")
 
     print()
     print(f"**Summary:** {failures} failure(s), {warnings} warning(s)")
