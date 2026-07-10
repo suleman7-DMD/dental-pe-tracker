@@ -16,7 +16,7 @@ denominator.
 | **NPI row** | One federal NPI record (NPI-1 provider OR NPI-2 org). ~2.4× the clinic count | `practices` table | 381,598 total (2026-07-08; `SELECT COUNT(*) FROM practices`); 13,818 in watched ZIPs |
 | **Location** | One physical clinic (deduped by normalized address+ZIP) | `practice_locations` | 5,657 all-class watched; 4,801 GP |
 | **GP universe** | The census denominator: GP locations only, excl. specialist/non_clinical/da_unverified/org_only_npi | `SUM(zip_scores.total_gp_locations)` | 4,801 total = **4,439 IL** + 362 MA (parked) |
-| **Census row** | One reviewed GP location with an earned `ownership_tier` | `practice_locations.ownership_tier` | 3,180 (71.64% of IL universe) |
+| **Census row** | One reviewed GP location with an earned `ownership_tier` | `practice_locations.ownership_tier` | 3,692 (83.17% of IL universe, 2026-07-09 P5 recovery) |
 
 Rules:
 - **Never say "practices" for NPI counts.** Say "NPI rows". Headline KPIs use location-deduped
@@ -32,7 +32,7 @@ sqlite3 data/dental_pe_tracker.db "
 SELECT SUM(total_gp_locations) FROM zip_scores;                              -- 4801 (IL+MA)
 SELECT SUM(total_gp_locations) FROM zip_scores z
   JOIN watched_zips w ON z.zip_code=w.zip_code WHERE w.state='IL';           -- 4439 (census universe)
-SELECT COUNT(*) FROM practice_locations WHERE ownership_tier IS NOT NULL;    -- 3180 (census reviewed)
+SELECT COUNT(*) FROM practice_locations WHERE ownership_tier IS NOT NULL;    -- 3692 (census reviewed, 2026-07-09)
 SELECT COUNT(*) FROM practice_locations
   WHERE entity_classification IN ('dso_regional','dso_national');            -- 268 (detector floor, locations)
 SELECT COUNT(*) FROM practices
@@ -51,8 +51,8 @@ sits outside the watched set. If you see 1,153 vs 1,152, that is the explanation
    A FLOOR from automated detection + verified promotions. It is the starting point the census
    corrects, NOT the answer.
 2. **Census tiers** (`ownership_tier`): hand-verified per-location conclusions with coverage
-   71.64%. Census percentages are computed FROM reviewed rows and must always be shown WITH
-   coverage.
+   83.17% (2026-07-09). Census percentages are computed FROM reviewed rows and must always be
+   shown WITH coverage.
 
 Floor ≠ true consolidation rate. Census-reviewed rates ≠ whole-universe rates. Present partial-
 census reviewed rates and whole-universe confirmed floors separately, labeled.
@@ -83,8 +83,8 @@ The ONLY legal presentation of census ownership (code gate:
 
 - Every displayed number states its source class (census_reviewed / held / undetermined /
   unreviewed / legacy_detector / pe_deal_context — see `ownership-truth.ts`).
-- No fake precision: a 71.64%-coverage census yields ranges and floors, not point estimates of
-  the universe.
+- No fake precision: a partial-coverage census (83.17% at 2026-07-09) yields ranges and
+  floors, not point estimates of the universe.
 - Date-stamp volatile numbers and attach a one-line recheck command (as done here).
 - Deals count is VOLATILE — a 2026-07-04 deal-quality cleanup cut it 2,827 → 527 (gdn 357 /
   pesp 153 / beckers 14 / beckers+gdn 3; backup `pre_deal_quality_cleanup_20260703.db`).

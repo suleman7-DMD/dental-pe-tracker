@@ -14,6 +14,30 @@
 > `dso_locations` 633. Precedence: if a number here disagrees with a fresh query, the query wins —
 > fix this file (date-stamped), never quote the stale value.
 
+> 🏆 **2026-07-09 (late) — P5 CENSUS RECOVERY LANDED + BOTH SYNC LEGS VERIFIED; COVERAGE 83.17% IS
+> LIVE AND THE IL UNIVERSE IS FULLY DISPOSITIONED.** The banked 1,259-row recovery (`e01c741`,
+> `data/dso_research/_census_recovery_20260709/`) was split-written (decision record in that
+> dir's `split_for_write_20260709.py` docstring): **512 rows earned real tiers** via
+> `consolidate_census.py --session fable_p5_census_recovery_20260709 --allow-db-write` and
+> **747 researched-inconclusive rows** got `census_review_status` (742 undetermined + 5 held)
+> via `scrapers/backfill_census_review_status_20260709.py` (evidence
+> `data/dso_research/census_review_status_backfill_20260709.json`). Totals now:
+> **3,692/4,439 = 83.17% reviewed** (T1 1,612 / T2 1,105 / T3 645 / T4 63 / T5 196 / T6 71;
+> pe_backed 161; NPI mirror 8,133); **zero IL GP rows carry neither tier nor status**. LEDGER
+> 3,693 lines. Detector floor UNTOUCHED (268/1,152/4,801). Pre-write backup
+> `data/backups/dental_pe_tracker_pre_census_write_20260709.db` (md5 `d6cb...a93`). **Supabase:
+> both legs executed + independently read back EXACT** (leg 1 `_sync_floor_tables_only` 5,657 pl
+> rows — during which the JHV durability hook (`e3e45d3`) auto-reimported + re-verified the
+> 48-row job_hunt_verification seed under a REAL full_replace; leg 2
+> `_sync_census_columns_practices` 8,133/8,133 with identical tier tallies; live floor still
+> 268/4,801 = 5.58%). CI guards rebased in the same close-out: **CENSUS expect_min 3180→3692,
+> CENSUS_NPI 6754→8133** (`scripts/check_data_invariants.py`, verified 0 failures live);
+> claims manifest + skills refreshed (45/45 claims PASS). Remaining queue: **747 untiered =
+> 397 in the wave-1 triage file + 350 outside it (213 synthetic DA_/DIR_ + 137 real)** — ALL
+> researched in the recovery wave (re-research pool, not a virgin backlog); PLAN_P1 (2026-07-04)
+> is SUPERSEDED (banner added). The cheat-sheet row "census denominator (3,180/4,439 = 71.64%)"
+> below is historical — 3,692/83.17% is current.
+
 > 🔴 **2026-07-02 PM CHANGEOVER — FABLE IS PM; THE CODEX 4-SESSION COURIER MODEL IS RETIRED.**
 > For ANY ownership-census work, read `data/dso_research/RESEARCH_HOME/SESSION_PROTOCOL_FABLE_PM_20260702.md`
 > FIRST (operating model, hard gates, corrected 346-row coverage accounting, session log), then

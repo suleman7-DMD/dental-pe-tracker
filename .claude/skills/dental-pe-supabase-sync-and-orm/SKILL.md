@@ -56,8 +56,8 @@ python3 -m scrapers._sync_floor_tables_only
 
 python3 -m scrapers._sync_census_columns_practices
 # Surgical per-NPI UPDATE of the 6 census cols on practices. Idempotent.
-# Proven output: "Updated 6754 rows in Supabase (0 not present)" +
-# "VERIFY census NPIs: Supabase=6754  SQLite truth=6754  MATCH" + identical tier tallies
+# Proven output (2026-07-09): "Updated 8133 rows in Supabase (0 not present there)" +
+# "VERIFY census NPIs: Supabase=8133  SQLite truth=8133  MATCH" + identical tier tallies
 ```
 
 **`_sync_practices_changed_rows.py` does NOT carry census columns** — it pushes only the
@@ -72,10 +72,10 @@ full sync.
 A sync is not done when the script exits 0. It is done when you have independently queried
 Postgres and compared against SQLite:
 
-1. Counts: tiered `practice_locations` (3,180), tiered `practices` (6,754) — live vs local.
+1. Counts: tiered `practice_locations` (3,692), tiered `practices` (8,133) — live vs local.
 2. Tier tallies GROUP BY ownership_tier — must match exactly, per table.
 3. Floor: corp locations 268 / corp NPIs 1,152 / `SUM(zip_scores.total_gp_locations)` 4,801,
-   live floor 268/4,801 = 5.58% (values as of 2026-07-04 — recheck locally first).
+   live floor 268/4,801 = 5.58% (values as of 2026-07-09 — recheck locally first).
 4. Paste the read-back output. "MATCH" printed by the script counts as leg-level verification;
    the independent read-back is still required.
 
@@ -87,8 +87,11 @@ flips didn't bump `updated_at`, so the incremental path skipped them — every s
 - `practice_locations.census_review_status` (`'held'|'undetermined'|NULL`) shipped 2026-07-04
   (commit `6b029d2`, runbook §6n): Review Desk metadata, NOT a tier — `ownership_tier` always
   wins; location-level only (no NPI mirror); written ONLY by
-  `scrapers/backfill_census_review_status.py`, never by `consolidate_census.py`; ORM-mapped so
+  `scrapers/backfill_census_review_status*.py` (dated per-wave copies, e.g. `_20260709`),
+  never by `consolidate_census.py`; ORM-mapped so
   full_replace syncs carry it; deliberately NO CI floor (count drops as rows earn tiers).
+  Current tallies (2026-07-09 P5 recovery): 742 undetermined + 5 held — post-P5 the DB counts
+  no longer equal the wave-1 triage file's 477 (recovery added rows outside that file).
   Never write pseudo-tiers to represent review status.
 - Supabase `practices` holds ONLY watched-ZIP rows (13,818). Local-vs-live NPI comparisons
   must scope SQLite to watched ZIPs or they'll be off by out-of-scope rows (1,153 vs 1,152).

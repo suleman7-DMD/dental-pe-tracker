@@ -185,25 +185,25 @@ INVARIANTS: list[Invariant] = [
         id="CENSUS",
         description=(
             "Hand-verified ownership-census coverage never regresses below the "
-            "2026-07-04 Lane A wave-1 landing: 3,180 practice_locations rows "
-            "with ownership_tier NOT NULL (T1 1,471 / T2 934 / T3 537 / T4 28 / "
-            "T5 151 / T6 59; pe_backed 118)."
+            "2026-07-09 P5 recovery landing: 3,692 practice_locations rows "
+            "with ownership_tier NOT NULL (T1 1,612 / T2 1,105 / T3 645 / "
+            "T4 63 / T5 196 / T6 71; pe_backed 161)."
         ),
         path="practice_locations?ownership_tier=not.is.null&select=location_id",
         expect_max=99999,         # growth is expected as the census continues
-        expect_min=3180,          # FAIL if the census layer shrinks
+        expect_min=3692,          # FAIL if the census layer shrinks
         severity="fail",
         note=(
             "CENSUS GUARD: ownership_tier is a SEPARATE axis from the detector "
             "floor (entity_classification) — written ONLY by "
             "scrapers/consolidate_census.py, synced by "
             "scrapers/_sync_floor_tables_only.py (practice_locations rides the "
-            "ORM full_replace). A DROP below 3,180 means either (a) the census "
+            "ORM full_replace). A DROP below 3,692 means either (a) the census "
             "columns were un-mapped from the ORM in scrapers/database.py "
             "(the silent sync-strip bug — restore the Column definitions, see "
             "PROOF_ORM_SYNC_MIGRATION_20260702.md) or (b) a sync ran from a "
             "SQLite DB that lost the census write — restore from "
-            "data/backups/dental_pe_tracker_pre_census_write_20260704.db "
+            "data/backups/dental_pe_tracker_pre_census_write_20260709.db "
             "lineage and re-run both sync legs. SQLite ground truth: LEDGER + "
             "result files under data/dso_research/RESEARCH_HOME/. A RISE is "
             "healthy (census continuation waves landing)."
@@ -212,14 +212,15 @@ INVARIANTS: list[Invariant] = [
     Invariant(
         id="CENSUS_NPI",
         description=(
-            "Census NPI mirror never regresses below the 2026-07-04 landing: "
-            "6,754 practices rows with ownership_tier NOT NULL "
-            "(true_independent 1,810 / single_loc_group 2,624 / dentist_multi "
-            "1,370 / stealth_dso 94 / branded_dso 604 / institutional 252)."
+            "Census NPI mirror never regresses below the 2026-07-09 P5 "
+            "recovery landing: 8,133 practices rows with ownership_tier NOT "
+            "NULL (single_loc_group 3,149 / true_independent 2,137 / "
+            "dentist_multi 1,612 / branded_dso 734 / institutional 323 / "
+            "stealth_dso 178)."
         ),
         path="practices?ownership_tier=not.is.null&select=npi",
         expect_max=99999,
-        expect_min=6754,
+        expect_min=8133,
         severity="fail",
         note=(
             "CENSUS NPI GUARD: the practices-side census mirror is synced by "
@@ -229,7 +230,7 @@ INVARIANTS: list[Invariant] = [
             "mapped in scrapers/database.py). NOTE: "
             "_sync_practices_changed_rows.py does NOT carry census columns — "
             "it cannot cause a drop by itself, but it also cannot repair one. "
-            "A DROP below 6,754 after a weekly sync = the ORM strip bug "
+            "A DROP below 8,133 after a weekly sync = the ORM strip bug "
             "re-opened; fix database.py, then re-run "
             "python3 -m scrapers._sync_census_columns_practices."
         ),

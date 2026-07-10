@@ -77,42 +77,47 @@ ls data/dso_research/_lane_a_20260702/result_unit_*.json | wc -l   # 218 (2026-0
   units burns budget and produces conflicting rows the merge gate then has to reject.
 - Never edit a result file to change a conclusion. Corrections flow through adjudication files
   and the merge gate, leaving an audit trail.
-- The append-only review ledger is `data/dso_research/RESEARCH_HOME/LEDGER.jsonl` (3,181 lines,
-  2026-07-04). `PROGRESS.json` is recomputed from it. Do not hand-edit either.
+- The append-only review ledger is `data/dso_research/RESEARCH_HOME/LEDGER.jsonl` (3,693 lines,
+  2026-07-09). `PROGRESS.json` is recomputed from it. Do not hand-edit either.
 
-## 4. Current state (verified 2026-07-04 — recheck before relying on these)
+## 4. Current state (verified 2026-07-09, post-P5 recovery — recheck before relying on these)
 
 ```bash
 sqlite3 data/dental_pe_tracker.db "
-SELECT COUNT(*) FROM practice_locations WHERE ownership_tier IS NOT NULL;   -- 3180
+SELECT COUNT(*) FROM practice_locations WHERE ownership_tier IS NOT NULL;   -- 3692
 SELECT ownership_tier, COUNT(*) FROM practice_locations
   WHERE ownership_tier IS NOT NULL GROUP BY 1;
--- branded_dso 151 | dentist_multi 537 | institutional 59 | single_loc_group 934
--- stealth_dso 28 | true_independent 1471
-SELECT COUNT(*) FROM practices WHERE ownership_tier IS NOT NULL;            -- 6754 (NPI mirror)
+-- branded_dso 196 | dentist_multi 645 | institutional 71 | single_loc_group 1105
+-- stealth_dso 63 | true_independent 1612
+SELECT COUNT(*) FROM practices WHERE ownership_tier IS NOT NULL;            -- 8133 (NPI mirror)
 SELECT COUNT(*) FROM practice_locations
   WHERE entity_classification IN ('dso_regional','dso_national');           -- 268 (floor, untouched)
 "
 ```
 
-Coverage: **3,180 / 4,439 IL GP locations = 71.64%**. Remaining **1,259**, decomposed
-(verified 2026-07-04; re-verified EXACT by machine reconstruction 2026-07-09 — every number
-below is now a `queue_recon`/`json_tally`/`derived` claim in
+Coverage: **3,692 / 4,439 IL GP locations = 83.17%** (the 2026-07-09 P5 recovery banked
+1,259 researched rows: 512 earned real tiers via `consolidate_census.py --session
+fable_p5_census_recovery_20260709`, 747 were dispositioned via `census_review_status`
+= 742 undetermined + 5 held; evidence `data/dso_research/census_review_status_backfill_20260709.json`
++ `_census_recovery_20260709/`). Remaining **747 untiered**, ALL carrying a review status —
+the IL universe is fully dispositioned (zero rows with neither tier nor status). Every number
+below is a `queue_recon`/`json_tally`/`derived` claim in
 `dental-pe-skill-drift-check/claims.json`, so run that checker instead of trusting this text.
 Predicate note: the reconstruction uses `pl.state='IL'`, NOT a watched_zips join — the join
-overcounts by one location whose zip is IL-watched but whose state isn't IL):
+overcounts by one location whose zip is IL-watched but whose state isn't IL:
 
-- **649 triage rows** (`data/dso_research/_lane_a_triage_wave1_20260702.json`, key
-  `_triage_reason`): 477 `undetermined_by_agent` + **91 adjudication holds** (52
-  `adjudication_hold_dso_verify`, 30 `adjudication_hold_unresolved`, 9
-  `adjudication_duplicate_suspect`) + 52 `t1_t2_positive_proof_audit_hold` + 16
-  `r4_network_ge10_brand:aspen_dental` + 8 `closure_suspect` + 5 other.
-- **610 never-researched** IL GP locations not in the triage file — 242 have synthetic
-  (`DA_`/`DIR_`) NPIs needing decomposition first, 368 are regular rows (the wave-5 queue).
+- **397** of the 747 sit in the wave-1 triage file
+  (`data/dso_research/_lane_a_triage_wave1_20260702.json` — frozen evidence; its own tallies,
+  477 undetermined + 91 holds + 52 audit holds + 16 Aspen R4 + 8 closure + 5 other, describe
+  wave 1 and no longer equal DB review-status counts).
+- **350** sit outside the wave-1 file — 213 have synthetic (`DA_`/`DIR_`) NPIs (merge gates
+  reject these by design; decompose to real NPIs or leave permanently unresolved), 137 are
+  regular rows. Post-P5 "outside wave-1 triage" does NOT mean never-researched: all 747 were
+  researched in the recovery wave and came back inconclusive — they are a RE-research pool
+  needing fresh evidence, not a virgin backlog.
 
-The continuation campaign over this queue is planned in
-`.claude/skills/dental-pe-plans/PLAN_P1_CENSUS_CONTINUATION_20260704.md`. Follow it; don't
-improvise a new pipeline.
+`PLAN_P1_CENSUS_CONTINUATION_20260704.md` (dental-pe-plans) described the pre-P5 queue and is
+SUPERSEDED by the recovery — its Phase 0 preflight will fail against these numbers by design.
 
 ## 5. Merge gates (fail-closed — mirror of `_merge_lane_a_results_20260702.py`)
 
@@ -164,7 +169,7 @@ python3 scrapers/consolidate_census.py <candidate_file.json> \
 
 ## 7. Sync legs + read-back (after any consolidation write)
 
-Two legs, both mandatory, then an independent read-back. Proven outputs 2026-07-04:
+Two legs, both mandatory, then an independent read-back. Proven outputs 2026-07-09:
 
 ```bash
 python3 -m scrapers._sync_floor_tables_only
@@ -174,8 +179,8 @@ python3 -m scrapers._sync_floor_tables_only
 
 python3 -m scrapers._sync_census_columns_practices
 # leg 2 — surgical 6-column UPDATE on practices by NPI
-# Proven: "Updated 6754 rows in Supabase (0 not present)" then
-# "VERIFY census NPIs: Supabase=6754  SQLite truth=6754  MATCH" with identical tier tallies
+# Proven: "Updated 8133 rows in Supabase (0 not present there)" then
+# "VERIFY census NPIs: Supabase=8133  SQLite truth=8133  MATCH" with identical tier tallies
 ```
 
 Then read back BOTH legs with direct Postgres queries (counts + tier tallies + floor) and

@@ -1,5 +1,14 @@
 # P1′ — Census Continuation Campaign (authored 2026-07-04)
 
+> ⚠️ **SUPERSEDED 2026-07-09 by the P5 census recovery.** The 1,259-row queue this plan
+> targets was banked and written that day (session `fable_p5_census_recovery_20260709`):
+> 512 rows earned real tiers (coverage now 3,692/4,439 = 83.17%) and 747 were dispositioned
+> via `census_review_status` (742 undetermined + 5 held). This plan's Phase 0 preflight will
+> FAIL against the live DB by design — do not execute it. Current queue truth lives in
+> `dental-pe-census-operating-protocol` §4 + `dental-pe-skill-drift-check/claims.json`
+> (queue_recon claims: 747 untiered = 397 in wave-1 triage + 350 outside, of which 213
+> synthetic + 137 real). Kept for the machinery description (Phase 1-4 templates) and history.
+
 **Goal:** move IL census coverage from 3,180/4,439 (71.64%) toward 100% by resolving the
 **1,259 remaining merge-eligible untiered IL GP locations**, reusing the proven Lane A
 machinery end-to-end (research → merge gates → audit → consolidate → sync → read-back).

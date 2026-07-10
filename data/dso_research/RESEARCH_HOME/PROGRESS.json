@@ -20,21 +20,21 @@
     "denominator_source": "SUM(zip_scores.total_gp_locations) WHERE state=IL; LEDGER keyed by practice_locations.location_id"
   },
   "census_status": {
-    "reviewed_via_protocol": 3180,
-    "remaining": 1259,
-    "coverage_pct": 71.64,
+    "reviewed_via_protocol": 3692,
+    "remaining": 747,
+    "coverage_pct": 83.17,
     "universe_il_gp_locations": 4439,
-    "note": "3180 of 4439 IL GP locations have EARNED an ownership_tier through the hand-verified census (71.64%). The remaining 1259 stay undetermined until earned through evidence. Legacy detector 'corporate' counts are NOT assumed \u2014 re-confirmed via this protocol."
+    "note": "3692 of 4439 IL GP locations have EARNED an ownership_tier through the hand-verified census (83.17%). The remaining 747 stay undetermined until earned through evidence. Legacy detector 'corporate' counts are NOT assumed \u2014 re-confirmed via this protocol."
   },
   "tier_tally": {
-    "branded_dso": 151,
-    "dentist_multi": 537,
-    "institutional": 59,
-    "single_loc_group": 934,
-    "stealth_dso": 28,
-    "true_independent": 1471,
+    "branded_dso": 196,
+    "dentist_multi": 645,
+    "institutional": 71,
+    "single_loc_group": 1105,
+    "stealth_dso": 63,
+    "true_independent": 1612,
     "undetermined": 0,
-    "undetermined_unreviewed": 1259
+    "undetermined_unreviewed": 747
   },
   "headline_metrics_live": {
     "consolidated_pct": null,
@@ -161,10 +161,10 @@
     "note": "119 IL ZIPs read 0% corporate, holding 1,457 GP locations. Sweep dense/affluent first. Log every ZIP swept (no silent caps)."
   },
   "last_consolidated": {
-    "session": "fable_lane_a_wave1_final_20260704",
-    "at": "2026-07-04",
-    "this_run_written": 2837,
-    "this_run_appended": 2837
+    "session": "fable_p5_census_recovery_20260709",
+    "at": "2026-07-09",
+    "this_run_written": 512,
+    "this_run_appended": 512
   },
   "wave1_quarantine_refs": {
     "_note": "Wave-1 candidate ownership state preserved here before the 2026-06-21 reset. Fully reversible. These are CANDIDATES, not classifications \u2014 do not re-consolidate without re-validating through the canonical manifest + QA + validate-only gate.",
