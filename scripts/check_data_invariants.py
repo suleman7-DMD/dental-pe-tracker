@@ -277,13 +277,15 @@ INVARIANTS: list[Invariant] = [
     Invariant(
         id="JOB_HUNT",
         description=(
-            "job_hunt_verification rows never regress below the 2026-07-09 "
-            "documented 48 (website-verified job-hunt layer; RLS intentionally "
-            "off, so anon can read it)"
+            "job_hunt_verification rows never regress below the 2026-07-10 "
+            "documented 642 (website-verified job-hunt layer; RLS intentionally "
+            "off, so anon can read it). Was 48 (2026-07-09) before the pilot "
+            "(34) + full signal-pool run (560) landed; evidence "
+            "data/dso_research/jhv_full_run_merge_evidence_20260710.json"
         ),
         path="job_hunt_verification?select=location_id",
         expect_max=99999,         # growth is the whole point of the layer
-        expect_min=48,
+        expect_min=642,
         severity="fail",
         note=(
             "JHV FLOOR GUARD: job_hunt_verification has an FK → "

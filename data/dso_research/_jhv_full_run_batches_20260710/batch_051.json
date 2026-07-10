@@ -1,0 +1,150 @@
+[
+ {
+  "location_id": "c40539b9a0a538ea",
+  "public_practice_name": null,
+  "website_url": null,
+  "website_status": "none_found",
+  "doctors": [],
+  "provider_count_website": 0,
+  "owner_operator_stated": null,
+  "ownership_evidence_status": "no_statement",
+  "careers_page_url": null,
+  "has_hiring_page": false,
+  "openings": [],
+  "verification_status": "no_usable_website",
+  "evidence_urls": [
+   "https://151st-street-dental.edan.io/",
+   "https://doctor.webmd.com/practice/st-street-dental-738611d7-a230-4b36-9b16-e640f5021c22",
+   "https://npiprofile.com/npi/1134631906",
+   "https://www.silverlakefamilydental.net/"
+  ],
+  "notes": "Vendor hint site 151st-street-dental.edan.io returned HTTP 403/401 on every fetch attempt (bot-blocked) — could not load the candidate site itself to corroborate per the hard rule. Third-party evidence (WebMD directory, loaded) shows a practice called '151ST STREET DENTAL' at the exact record address (9017 W 151st St, Orland Park, IL 60462) with dentists Delaurentis, Janna/Leesa/William Mitsos, and Palak Patel — but phone (708) 226-6700, NOT the record's (708) 403-0071. A search-result snippet (not loaded) ties '32 Pearls Dental Inc' NPI record to the same address/phone (226-6700) with authorized official 'Parth Patel DMD', suggesting the record's legal entity name may correspond to this DBA, but this is unconfirmed via the practice's own site. Separately, the record's phone (708) 403-0071 resolves in search to 'Silver Lake Family Dental' at a wholly different address (9611 165th St Suite 14, Orland Park, IL 60467) — likely a stale/incorrect phone digit in source data rather than a true successor situation, since the record's actual street address does not match Silver Lake's at all. No corroborated own-website found; recommend a phone call to confirm."
+ },
+ {
+  "location_id": "c4552136cfc39e5d",
+  "public_practice_name": "Smiles of Orland Park",
+  "website_url": "http://www.smilesoforlandpark.com/",
+  "website_status": "live",
+  "doctors": [],
+  "provider_count_website": 0,
+  "owner_operator_stated": "Site describes itself as \"family-owned\" and states it \"has been serving Orland Park for over 30 years\"; no specific owner name given.",
+  "ownership_evidence_status": "no_statement",
+  "careers_page_url": null,
+  "has_hiring_page": false,
+  "openings": [],
+  "verification_status": "call_required",
+  "evidence_urls": [
+   "https://www.patientconnect365.com/MicrositeContact/Illinois/OrlandPark/60462/Smiles_of_Orland_Park",
+   "http://www.smilesoforlandpark.com/"
+  ],
+  "notes": "vendor_website_hint 'Kirschdentalonline.Com' is WRONG for this record — that domain (kirschdentalonline.com / Kirsch Family Dental) is an unrelated practice at a different address (8650 W 159th St, Orland Park), also on 159th St but a different building. The record's actual own website is http://www.smilesoforlandpark.com/, corroborated by exact address match (7630 W 159th St, Orland Park, IL 60462) both on patientconnect365's directory listing and on the practice's own homepage. Site homepage lists phone (708) 395-7295, which differs from the record's phone (708) 532-8889 (patientconnect365 lists 532-8889 for the same practice/address) — likely an updated phone number, not a different entity, since practice name/address are consistent everywhere. A 404 on /about-us and no careers link on the homepage means no doctor roster or hiring info could be confirmed; a /meet-the-doctor or similar page may exist but was not found within budget. No DSO/group branding observed."
+ },
+ {
+  "location_id": "db708daf91e51c4b",
+  "public_practice_name": null,
+  "website_url": null,
+  "website_status": "none_found",
+  "doctors": [],
+  "provider_count_website": 0,
+  "owner_operator_stated": "Record entity 'Gary Gunkel DDS' is listed in record at 14430 John Humphrey Dr, Orland Park, IL 60462, phone (708) 364-8900. Searching that exact phone number resolves to a DIFFERENT, unrelated practice: 'Orland Dental Care' (dentists Dr. Kyle Takla and Dr. Mahmoud Abusaoud) at 14360 Lagrange Rd, Orland Park, IL 60462 — a different street entirely. Third-party directories (Yelp, WebMD, Healthgrades, Sharecare, Vitals, dentist-network.com) consistently list a real 'Gary Gunkel DDS' practice nearby at 14475 John Humphrey Dr Ste 310, Orland Park, IL 60462, phone (708) 460-1109 — close to but not an exact match of the record's street number (14430) or phone.",
+  "ownership_evidence_status": "conflict",
+  "careers_page_url": null,
+  "has_hiring_page": false,
+  "openings": [],
+  "verification_status": "ownership_conflict",
+  "evidence_urls": [
+   "https://www.yelp.com/biz/gunkel-gary-dds-orland-park",
+   "https://doctor.webmd.com/doctor/gary-gunkel-b658afe5-02f3-4b31-bc6e-fe270ecca3b5-overview",
+   "https://www.healthgrades.com/dentist/dr-gary-gunkel-2pd7c",
+   "https://m.yelp.com/biz/orland-dental-care-orland-park-2",
+   "https://www.orlanddentalcare.com/",
+   "https://www.orlanddentalcare.com/contact",
+   "https://www.inspiredentalwellness.com/"
+  ],
+  "notes": "No website could be corroborated for the record's exact address (14430 John Humphrey Dr) or phone ((708) 364-8900) as belonging to 'Gary Gunkel DDS'. The record's phone number now belongs, per search results, to a different practice ('Orland Dental Care', Dr. Kyle Takla / Dr. Mahmoud Abusaoud) at a different street (14360 Lagrange Rd) — flagging a possible successor/data-quality conflict per the phone-search rule. A real Gary Gunkel DDS practice does exist nearby (14475 John Humphrey Dr Ste 310, phone (708) 460-1109) per multiple consistent directories, but its address/phone do not match the record exactly, so it was not used to populate website/doctor fields. Also checked vendor_website_hint's implied neighborhood — 'Inspire Dental Wellness' (inspiredentalwellness.com) sits at 14512 John Humphrey Dr, independently owned by Dr. Erica Zolnierczyk, DMD, unrelated to Gary Gunkel; that address also does not match the record's 14430. Recommend a phone call to Orland Dental Care and/or the 14475 John Humphrey Dr office to clarify what currently occupies 14430."
+ },
+ {
+  "location_id": "0e8f27973c030e2f",
+  "public_practice_name": "The Dentist Tree",
+  "website_url": "https://www.thedentisttree.net/",
+  "website_status": "live",
+  "doctors": [
+   {
+    "name": "Dr. Carmen Nelson",
+    "role": "owner",
+    "credential": "DDS",
+    "source_url": "https://findadentist.ada.org/dentists/dr-carmen-nelson-palos-heights-0038V00002yj7M3QAI-a1C8V00000lVwvSUAS"
+   },
+   {
+    "name": "Dr. Erik Nelson",
+    "role": "owner",
+    "credential": "DDS",
+    "source_url": "https://www.yelp.com/biz/nelson-erik-dds-palos-heights"
+   }
+  ],
+  "provider_count_website": 2,
+  "owner_operator_stated": "ADA Find-a-Dentist profile states the office is operated by Doctors Carmen and Erik Nelson, described as a family practice emphasizing geriatrics and cosmetics.",
+  "ownership_evidence_status": "consistent",
+  "careers_page_url": null,
+  "has_hiring_page": false,
+  "openings": [],
+  "verification_status": "roster_verified",
+  "evidence_urls": [
+   "https://findadentist.ada.org/dentists/dr-carmen-nelson-palos-heights-0038V00002yj7M3QAI-a1C8V00000lVwvSUAS",
+   "https://www.yelp.com/biz/nelson-carmen-dds-palos-heights",
+   "https://www.yelp.com/biz/nelson-erik-dds-palos-heights",
+   "https://www.yelp.com/biz/dentist-tree-palos-heights",
+   "https://www.thedentisttree.net/",
+   "https://www.bbb.org/us/il/palos-heights/profile/dentist/the-dentist-tree-0654-88369745"
+  ],
+  "notes": "Vendor hint 'Thedentisttree.Net' is CONFIRMED correct for this record — exact address match (6420 W 127th St Ste 102, Palos Heights, IL 60463) and exact phone match ((708) 597-3531) across multiple independent directories (ADA official Find-a-Dentist, Yelp x3 listings including 'NELSON ERIK DDS' at the same address, BBB, dentistoffices.com). Direct fetches of thedentisttree.net (homepage and /meet-the-doctors) and the Yelp listing all returned HTTP 403 (bot-blocked), so doctor roster and careers info could not be confirmed directly from the corroborated site; doctors Carmen Nelson and Erik Nelson are sourced instead from the ADA official directory and Yelp search results tied to the identical address, both surnamed 'Nelson' matching the record entity 'A Nelson Professional Corporation'. No careers/hiring page was located. No DSO/group branding observed — appears independently owned family practice."
+ },
+ {
+  "location_id": "2858e3dbccee3870",
+  "public_practice_name": "Peter Savas DDS Ltd (Sarlas and Savas DDS Ltd)",
+  "website_url": "https://www.savasdds.com/",
+  "website_status": "live",
+  "doctors": [
+   {
+    "name": "Dr. Peter P Savas",
+    "role": "owner",
+    "credential": "DDS, Pediatric Dentist",
+    "source_url": "https://www.savasdds.com/about-us"
+   }
+  ],
+  "provider_count_website": 1,
+  "owner_operator_stated": "Website identifies Dr. Peter P. Savas ('Dr. Pete') as the practicing pediatric dentist; no explicit broader ownership statement beyond identifying him as the provider.",
+  "ownership_evidence_status": "consistent",
+  "careers_page_url": null,
+  "has_hiring_page": false,
+  "openings": [],
+  "verification_status": "roster_verified",
+  "evidence_urls": [
+   "https://www.savasdds.com/",
+   "https://www.savasdds.com/about-us",
+   "https://www.patsavasdentistry.com/contact"
+  ],
+  "notes": "vendor_website_hint 'Patsavasdentistry.Com' is WRONG for this record — that domain belongs to a DIFFERENT, unrelated practice at the same building, 'Patsavas Dentistry, Ltd' (Dr. Peter A. Patsavas, DDS, phone (708) 361-1190, Ste 101). The record's actual practice is a pediatric dental office confirmed at savasdds.com, with exact address (7001 W 127th St, Palos Heights, IL 60463) and exact phone ((708) 448-1100) match to the record. Only Dr. Peter P. Savas is named on the current site; 'Sarlas', the other surname in the legal entity name 'Sarlas and Savas DDS Ltd', does not appear on the current site (possibly a retired/former partner) — this is a partial-name discrepancy, not flagged as ownership_conflict since the corroborated address/phone remain consistently tied to a Savas-operated practice, not a wholly different entity. No careers/hiring page found. No DSO/group branding observed."
+ },
+ {
+  "location_id": "b78e8d56a64499cb",
+  "public_practice_name": null,
+  "website_url": null,
+  "website_status": "none_found",
+  "doctors": [],
+  "provider_count_website": 0,
+  "owner_operator_stated": "Record entity 'Karen L. Opferman, D.D.S., P.C.' is listed at 13305 S Ridgeland Ave, Palos Heights, IL 60463, phone (708) 430-4990. Search results show that exact phone number now belongs to a DIFFERENT practice, 'Chionis Dental' (Dr. Chionis), at 13305 S Ridgeland Ave Unit B — a cosmetic dentistry practice in business 36 years, website chionisdental.com. Meanwhile, per Healthgrades, Dr. Karen L. Opferman now practices under the name 'Dr. Karen Murphy' at the SAME building but a different suite, 13305 S Ridgeland Ave Unit D, with a different phone, (708) 239-7700.",
+  "ownership_evidence_status": "conflict",
+  "careers_page_url": null,
+  "has_hiring_page": false,
+  "openings": [],
+  "verification_status": "ownership_conflict",
+  "evidence_urls": [
+   "https://www.healthgrades.com/group-directory/il-illinois/palos-heights/karen-opferman-dds-xb6j24",
+   "https://www.healthgrades.com/dentist/dr-karen-murphy-2545x",
+   "https://www.chionisdental.com/",
+   "https://www.npidashboard.com/npi/1588721971karenlopfermanddspc"
+  ],
+  "notes": "Classic multi-unit successor situation: the record's phone number ((708) 430-4990) is now held by 'Chionis Dental' at Unit B of the same street address, an entirely different dentist/brand (fetch of chionisdental.com returned HTTP 403 so could not directly confirm suite/roster, but the phone match is corroborated via independent search results). The originally named dentist, Karen L. Opferman DDS, appears to now practice under the name 'Karen Murphy' at Unit D of the same building with a new phone number (708) 239-7700 — confirmed directly via Healthgrades (loaded), which explicitly states 'formerly Karen L. Opferman DDS'. Because the record's phone corroborates to a different, unrelated practice while the original named dentist relocated within the building under a new name/number, this is reported as an ownership_conflict per the successor rule rather than attributed to either entity as 'the' website."
+ }
+]
