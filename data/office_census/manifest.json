@@ -1,20 +1,52 @@
 {
-  "build_id": "e1382b7dff2c",
-  "rules_version": "2026-09-24.1",
-  "built_at": "2026-09-24T13:37:31+00:00",
+  "build_id": "a725af21252f",
+  "rules_version": "2026-09-24.2",
+  "built_at": "2026-09-24T14:50:52+00:00",
   "scope": "IL watched ZIPs only (Boston/MA parked)",
   "watched_zips": 269,
   "inputs": {
     "sqlite_sha256": "261074e446d843d2223ca96b8e7ad6e96a25a6f70937a796d94558178e320a86",
-    "candidates_sha256": "a6766504bde550fb51f5bb20fe668cdfbfe9c2fb82d8ee34c6918eb56dad612a",
+    "candidates_sha256": "c51f196a36092599ffde1c9289d4d577ef62a9e1467e7860e16cc99d44ea5308",
+    "coverage_sha256": "ab3b43d3dc00484ced6873ceb0f7dd915091134ab0c7a05979702476c9ede088",
     "ledger_sha256": "9640b6d20909059a293f13bdf7259c75181e356760a3294fe97e769ca0f7368b",
     "job_hunt_seed_rows": 642,
     "data_axle_files": 184,
     "data_axle_unique_records": 10625
   },
+  "source_candidate_breakdown": {
+    "definition": "Street+ZIP groups absent from ALL existing location rows, including excluded rows. Suites do not define these groups; inspect source_refs.records for additional offices at represented buildings. No group is a confirmed missing office.",
+    "raw_groups": 609,
+    "discovery_candidates": 528,
+    "by_source_family": {
+      "data_axle": 492,
+      "nppes": 16,
+      "dso_locator": 14,
+      "data_axle+dso_locator": 5,
+      "data_axle+nppes": 1
+    },
+    "alternate_match": 228,
+    "clean_leads": 144,
+    "flags": {
+      "phone_matches_existing_row": 211,
+      "da_individual_listings_only": 150,
+      "name_suggests_specialty": 64,
+      "da_zip_centroid_only": 58,
+      "possible_address_variant_of_row": 77,
+      "da_record_pre_2024": 94,
+      "source_name_missing": 10,
+      "no_gp_taxonomy": 1
+    }
+  },
   "totals": {
     "candidates": 5798,
     "directory_rows": 4439,
+    "by_priority": {
+      "P1_absent_candidate": 609,
+      "P2_high_risk_row": 1590,
+      "P4_deferred_ordinary": 3599
+    },
+    "historical_evidence_rows": 2830,
+    "historical_observations": 3468,
     "by_origin": {
       "data_axle_unrepresented": 561,
       "directory_row": 4439,
@@ -24,14 +56,15 @@
     },
     "by_state": {
       "CONFIRMED_OPERATING_GP": 0,
-      "NEEDS_CURRENT_VERIFICATION": 3635,
-      "IDENTITY_REVIEW": 633,
+      "NEEDS_CURRENT_VERIFICATION": 0,
+      "EXISTING_EVIDENCE_NO_CURRENT_CONTRADICTION": 3599,
+      "IDENTITY_REVIEW": 669,
       "OPERATING_STATUS_UNRESOLVED": 142,
       "GP_SCOPE_UNRESOLVED": 104,
-      "LOCATION_INCOMPLETE": 73,
+      "LOCATION_INCOMPLETE": 86,
       "PROBABLE_NON_OFFICE": 214,
       "LIKELY_SPECIALIST_ONLY": 456,
-      "SOURCE_CANDIDATE_UNREPRESENTED": 541,
+      "SOURCE_CANDIDATE_UNREPRESENTED": 528,
       "EXTERNAL_DISCOVERY": 0,
       "RESEARCHED_UNRESOLVED": 0,
       "RESOLVED_EXCLUDED": 0,
@@ -39,8 +72,9 @@
     },
     "directory_by_state": {
       "CONFIRMED_OPERATING_GP": 0,
-      "NEEDS_CURRENT_VERIFICATION": 3635,
-      "IDENTITY_REVIEW": 633,
+      "NEEDS_CURRENT_VERIFICATION": 0,
+      "EXISTING_EVIDENCE_NO_CURRENT_CONTRADICTION": 3599,
+      "IDENTITY_REVIEW": 669,
       "OPERATING_STATUS_UNRESOLVED": 142,
       "GP_SCOPE_UNRESOLVED": 7,
       "LOCATION_INCOMPLETE": 22,
@@ -53,8 +87,8 @@
       "RESOLVED_SPLIT": 0
     },
     "directory_by_prior_evidence": {
-      "none": 409,
       "ownership_review_only": 1441,
+      "registry_only": 409,
       "researched": 2211,
       "site_checked_live": 378
     },
@@ -76,9 +110,9 @@
       "no_contact_channel": 22,
       "no_federal_npi": 242,
       "phone_shared_with_other_address": 657,
-      "prior_note_closure": 33,
-      "prior_note_moved": 13,
-      "prior_note_successor": 94,
+      "prior_note_closure": 35,
+      "prior_note_moved": 29,
+      "prior_note_successor": 154,
       "prior_site_dead_or_parked": 26,
       "stale_registry_only": 76
     },
@@ -92,6 +126,7 @@
   "state_definitions": {
     "CONFIRMED_OPERATING_GP": "Ledger decision: operating GP (or mixed GP) office confirmed at this address within the validity window.",
     "NEEDS_CURRENT_VERIFICATION": "Likely an office; no contradiction in existing data, but no current confirmation.",
+    "EXISTING_EVIDENCE_NO_CURRENT_CONTRADICTION": "Existing directory row with no detected material contradiction. Deferred, not confirmed; evidence availability varies.",
     "IDENTITY_REVIEW": "Row may merge several offices (multi-tenant building) or duplicate another row; settle identity first.",
     "OPERATING_STATUS_UNRESOLVED": "Existing data contradicts current operation (closure/move note, dead site, no contact channel).",
     "GP_SCOPE_UNRESOLVED": "Unclear whether general dentistry is offered here (specialist signals on a directory row, or GP signals on an excluded specialist row).",

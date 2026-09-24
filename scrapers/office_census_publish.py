@@ -16,6 +16,7 @@ Input = the committed files under data/office_census/ written by
 import argparse
 import collections
 import csv
+import hashlib
 import json
 import os
 import pathlib
@@ -25,7 +26,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 OUT = ROOT / "data" / "office_census"
 SCHEMA = ROOT / "scrapers" / "office_census_schema.sql"
 
-_env = ROOT / ".env"
+_env = pathlib.Path(os.environ.get("OFFICE_CENSUS_INPUT_ROOT", ROOT)) / ".env"
 try:
     from dotenv import load_dotenv
     load_dotenv(_env)
@@ -44,6 +45,7 @@ CAND_COLS = (
     "phones_at_street", "da_records_at_street", "da_latest_update", "prior_evidence_level",
     "prior_evidence", "source_refs", "latitude", "longitude", "coord_status", "observations",
     "sources_checked", "decision", "batch_rank", "build_id",
+    "research_priority", "lead_quality",
 )
 CAND_JSON = {"suites_seen", "flags", "prior_evidence", "source_refs", "sources_checked", "decision"}
 
@@ -58,6 +60,16 @@ def load():
 
 def validate(manifest, cands, cov):
     problems = []
+    for key, filename in (("candidates_sha256", "candidates.jsonl"), ("coverage_sha256", "zip_coverage.csv"), ("ledger_sha256", "research_ledger.jsonl")):
+        expected = manifest["inputs"].get(key)
+        if expected != hashlib.sha256((OUT / filename).read_bytes()).hexdigest():
+            problems.append(f"{filename}: fingerprint differs; rebuild before publishing")
+    from office_census import check_ledger, read_ledger
+    import datetime
+    ledger_errors, led = check_ledger(read_ledger(), {c["candidate_id"] for c in cands if not c["candidate_id"].startswith("ext:")}, datetime.date.today())
+    problems.extend(ledger_errors)
+    if led["orphans"]:
+        problems.append("orphaned ledger research")
     t = manifest["totals"]
     if len(cands) != t["candidates"]:
         problems.append(f"candidates.jsonl has {len(cands)} rows, manifest says {t['candidates']}")
@@ -100,9 +112,11 @@ def cov_params(r, build_id):
             out[k] = v == "True"
         elif k == "sources_searched":
             out[k] = json.dumps([s for s in v.split(";") if s])
-        elif k in ("zip", "city", "stage"):
+        elif k == "discovery_passes":
+            out[k] = json.dumps(json.loads(v))
+        elif k in ("zip", "city", "stage", "discovery_status"):
             out[k] = v or None
-        elif k == "last_activity":
+        elif k in ("last_activity", "last_discovery_at"):
             out[k] = v or None
         else:
             out[k] = int(v)
@@ -124,6 +138,8 @@ def write(manifest, cands, cov):
     engine = get_engine()
     with engine.begin() as conn:
         raw = conn.connection.dbapi_connection.cursor()
+        raw.execute("SET LOCAL lock_timeout = '10s'")
+        raw.execute("SET LOCAL statement_timeout = '120s'")
         raw.execute(SCHEMA.read_text())  # idempotent: IF NOT EXISTS + guarded policies
         raw.execute("DELETE FROM office_census_candidates")
         rows = [cand_params(c, bid) for c in cands]
@@ -133,7 +149,7 @@ def write(manifest, cands, cov):
         raw.execute("DELETE FROM office_census_zip_coverage")
         crow = [cov_params(r, bid) for r in cov]
         cols = list(crow[0].keys())
-        tmpl = "(" + ", ".join(f"%({k})s::jsonb" if k == "sources_searched" else f"%({k})s" for k in cols) + ")"
+        tmpl = "(" + ", ".join(f"%({k})s::jsonb" if k in ("sources_searched", "discovery_passes") else f"%({k})s" for k in cols) + ")"
         execute_values(raw, f"INSERT INTO office_census_zip_coverage ({', '.join(cols)}) VALUES %s",
                        crow, template=tmpl, page_size=500)
         raw.execute(
@@ -149,6 +165,8 @@ def verify(manifest, cands, cov):
     engine = get_engine()
     fail = 0
     with engine.connect() as conn:
+        live_candidates = {r["candidate_id"]: dict(r) for r in conn.execute(text("SELECT * FROM office_census_candidates")).mappings()}
+        live_coverage = {r["zip"]: dict(r) for r in conn.execute(text("SELECT * FROM office_census_zip_coverage")).mappings()}
         live_bid = {r[0] for r in conn.execute(text("SELECT DISTINCT build_id FROM office_census_candidates"))}
         live_states = dict(conn.execute(text(
             "SELECT queue_state, count(*) FROM office_census_candidates GROUP BY 1")).fetchall())
@@ -161,6 +179,20 @@ def verify(manifest, cands, cov):
         builds = conn.execute(text("SELECT count(*) FROM office_census_builds WHERE build_id=:b"),
                               {"b": manifest["build_id"]}).scalar()
     file_states = collections.Counter(c["queue_state"] for c in cands)
+    def compare(expected, actual, json_keys):
+        for key, value in expected.items():
+            if key in json_keys and value is not None:
+                value = json.loads(value)
+            found = actual.get(key)
+            if key in {"last_activity", "last_discovery_at"} and found is not None:
+                found = str(found)
+            if value != found:
+                return False
+        return True
+    payload_mismatches = sum(not compare(cand_params(c, manifest["build_id"]), live_candidates.get(c["candidate_id"], {}), CAND_JSON) for c in cands)
+    payload_mismatches += sum(not compare(cov_params(r, manifest["build_id"]), live_coverage.get(r["zip"], {}), {"sources_searched", "discovery_passes"}) for r in cov)
+    fail |= bool(payload_mismatches)
+    print(f"Full candidate/coverage payload mismatches: {payload_mismatches}")
     file_zip = collections.Counter(c["zip"] for c in cands)
     print(f"build: file {manifest['build_id']} live {sorted(live_bid)} builds-row {builds}")
     if live_bid != {manifest["build_id"]} or builds != 1:

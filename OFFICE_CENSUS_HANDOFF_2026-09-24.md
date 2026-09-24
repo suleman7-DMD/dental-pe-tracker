@@ -1,5 +1,10 @@
 # Office Census Handoff — 2026-09-24
 
+> Historical checkpoint. The pilot continuation is implemented in rules 2026-09-24.2.
+> Start with `data/office_census/README.md` and the generated manifest. The old task
+> list below is not an execution directive; source-count scoring, table recreation,
+> generalized relinking and promotion-preview were deliberately not adopted.
+
 This is a checkpoint only. The QC and P1–P4 redesign is **not implemented**. Nothing is on `main`, and nothing has been deployed.
 
 ## 1. Checkpoint branches: `office-census-foundation-2026-09-24`

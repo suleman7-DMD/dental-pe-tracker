@@ -32,24 +32,26 @@ import csv
 import datetime
 import hashlib
 import json
+import os
 import pathlib
 import re
 import sqlite3
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-DB_PATH = ROOT / "data" / "dental_pe_tracker.db"
+INPUT_ROOT = pathlib.Path(os.environ.get("OFFICE_CENSUS_INPUT_ROOT", ROOT))
+DB_PATH = INPUT_ROOT / "data" / "dental_pe_tracker.db"
 OUT_DIR = ROOT / "data" / "office_census"
 LEDGER_PATH = OUT_DIR / "research_ledger.jsonl"
 CANDIDATES_PATH = OUT_DIR / "candidates.jsonl"
 COVERAGE_PATH = OUT_DIR / "zip_coverage.csv"
 MANIFEST_PATH = OUT_DIR / "manifest.json"
 WORKLIST_DIR = OUT_DIR / "worklists"
-JHV_SEED = ROOT / "data" / "job_hunt_verification_seed.json"
-OWNERSHIP_LEDGER = ROOT / "data" / "dso_research" / "RESEARCH_HOME" / "LEDGER.jsonl"
-DA_DIR = ROOT / "data" / "data-axle"
+JHV_SEED = INPUT_ROOT / "data" / "job_hunt_verification_seed.json"
+OWNERSHIP_LEDGER = INPUT_ROOT / "data" / "dso_research" / "RESEARCH_HOME" / "LEDGER.jsonl"
+DA_DIR = INPUT_ROOT / "data" / "data-axle"
 
-RULES_VERSION = "2026-09-24.1"
+RULES_VERSION = "2026-09-24.2"
 CONFIRMATION_VALID_DAYS = 365
 
 GP_CLASSES = (
@@ -82,6 +84,7 @@ PILOT_ZIPS = ("60602", "60614", "60622", "60623", "60068", "60201", "60126",
 STATES = {
     "CONFIRMED_OPERATING_GP": "Ledger decision: operating GP (or mixed GP) office confirmed at this address within the validity window.",
     "NEEDS_CURRENT_VERIFICATION": "Likely an office; no contradiction in existing data, but no current confirmation.",
+    "EXISTING_EVIDENCE_NO_CURRENT_CONTRADICTION": "Existing directory row with no detected material contradiction. Deferred, not confirmed; evidence availability varies.",
     "IDENTITY_REVIEW": "Row may merge several offices (multi-tenant building) or duplicate another row; settle identity first.",
     "OPERATING_STATUS_UNRESOLVED": "Existing data contradicts current operation (closure/move note, dead site, no contact channel).",
     "GP_SCOPE_UNRESOLVED": "Unclear whether general dentistry is offered here (specialist signals on a directory row, or GP signals on an excluded specialist row).",
@@ -107,16 +110,12 @@ SOURCE_FAMILIES = {
     "insurer_directory", "hrsa_fqhc", "idfpr_license", "nppes", "data_axle",
     "street_view", "healthgrades_zocdoc_yelp", "other_web",
 }
-# A live website is NOT proof of an office at the address (dead practices keep
-# sites up; sites list sister locations). Only a phone call answered at the
-# office or the operator's own current locator suffices alone; anything else
-# needs operating_at_address from two independent source families.
-SINGLE_SOURCE_SUFFICIENT = {"phone_call", "dso_locator"}
+AXES = {"identity", "exists_at_address", "current_operation", "gp_scope", "address_suite", "contact"}
 CLAIMS = {
     "operating_at_address", "closed", "moved", "not_found", "name", "phone",
     "suite", "gp_services", "specialist_only", "nonclinical", "duplicate_of",
     "hours", "other",
-}
+} | AXES
 TERMINAL = {
     "OPERATING_GP_CONFIRMED": "CONFIRMED_OPERATING_GP",
     "OPERATING_MIXED_GP_CONFIRMED": "CONFIRMED_OPERATING_GP",
@@ -176,6 +175,12 @@ def suite_of(address):
 
 def street_key(address, zip_code):
     return (NORM(str(address or "")), str(zip_code or "")[:5])
+
+
+def usable_street_address(address):
+    normalized = NORM(str(address or ""))
+    return bool(not PO_BOX_RE.search(str(address or "")) and re.match(r"^\d", normalized)
+                and re.search(r"[a-z]", normalized, re.I))
 
 
 DIRECTIONALS = {"n", "s", "e", "w", "north", "south", "east", "west", "ne", "nw", "se", "sw"}
@@ -238,7 +243,7 @@ def load_db():
     intel = {}
     for r in db.execute(
             "SELECT npi, research_date, website_url, google_review_count, google_recent_date, "
-            "verification_quality, red_flags, overall_assessment, provider_notes FROM practice_intel"):
+            "verification_quality, verification_urls, red_flags, overall_assessment, provider_notes FROM practice_intel"):
         intel[str(r["npi"])] = dict(r)
     corrections = collections.defaultdict(list)
     for r in db.execute("SELECT location_id, field_key, suggested_value, notes, status, created_at "
@@ -266,7 +271,7 @@ def load_data_axle(zips):
                 prev = raw.get(ident)
                 # keep the most recently updated copy of each source record
                 if prev is None or (row.get("Last Updated On") or "") > (prev.get("Last Updated On") or ""):
-                    raw[ident] = {**row, "_ident": ident, "_file": str(path.relative_to(ROOT))}
+                    raw[ident] = {**row, "_ident": ident, "_file": str(path.relative_to(INPUT_ROOT))}
     return list(raw.values()), len(files)
 
 
@@ -350,6 +355,8 @@ def check_ledger(entries, known_ids, today):
         for f in ("zip", "name", "address", "discovered_via"):
             if not present(e.get(f)):
                 errors.append(f"{eid}: add_candidate missing {f}")
+        if cid.split(":")[1] != str(e.get("zip")):
+            errors.append(f"{eid}: candidate ID ZIP differs from zip")
         if not str(e.get("source_url", "")).startswith(("http://", "https://")):
             errors.append(f"{eid}: add_candidate needs an http(s) source_url")
         if e.get("split_from") and e["split_from"] not in known_ids:
@@ -381,6 +388,8 @@ def check_ledger(entries, known_ids, today):
             errors.append(f"{eid}: bad confidence {e.get('confidence')!r}")
         if not parse_date(e.get("observed_at")):
             errors.append(f"{eid}: observed_at must be YYYY-MM-DD")
+        elif parse_date(e["observed_at"]) > today:
+            errors.append(f"{eid}: observed_at cannot be in the future")
         url = str(e.get("source_url") or "")
         if not present(e.get("evidence")):
             errors.append(f"{eid}: observation needs evidence (quote or what was seen/said)")
@@ -409,35 +418,57 @@ def check_ledger(entries, known_ids, today):
             errors.append(f"{eid}: bad confidence {e.get('confidence')!r}")
         if not parse_date(e.get("decided_at")):
             errors.append(f"{eid}: decided_at must be YYYY-MM-DD")
+        elif parse_date(e["decided_at"]) > today:
+            errors.append(f"{eid}: decided_at cannot be in the future")
         basis = [live.get(b) for b in e.get("basis_entry_ids", [])]
         if any(b is None for b in basis):
             errors.append(f"{eid}: basis_entry_ids reference missing/retracted entries")
             continue
         basis = [b[1] for b in basis]
+        if status != "UNRESOLVED" and not basis:
+            errors.append(f"{eid}: resolved decision needs basis observations")
         if any(b.get("type") != "observation" or b.get("candidate_id") != cid for b in basis):
             errors.append(f"{eid}: every basis entry must be an observation of the same candidate")
             continue
         claims = {b["claim"] for b in basis}
-        fams = {b["source_family"] for b in basis if b["claim"] == "operating_at_address"}
+        decided = parse_date(e.get("decided_at"))
+        if decided and any(parse_date(b.get("observed_at")) and parse_date(b["observed_at"]) > decided for b in basis):
+            errors.append(f"{eid}: decision cannot predate its observations")
         if status in ("OPERATING_GP_CONFIRMED", "OPERATING_MIXED_GP_CONFIRMED"):
-            if not (fams & SINGLE_SOURCE_SUFFICIENT or len(fams) >= 2):
-                errors.append(f"{eid}: confirmation needs operating_at_address from "
-                              f"{'/'.join(sorted(SINGLE_SOURCE_SUFFICIENT))} or from 2 independent source families")
+            assessment = e.get("assessment") or {}
+            for axis in AXES:
+                a = assessment.get(axis) or {}
+                refs = a.get("basis_entry_ids") or []
+                if a.get("conclusion") not in ({"established", "unresolved", "not_available"}
+                                               if axis == "contact" else {"established"}):
+                    errors.append(f"{eid}: assessment.{axis} needs an explicit conclusion")
+                if not present(a.get("rationale")) or not refs or not set(refs) <= {b["entry_id"] for b in basis}:
+                    errors.append(f"{eid}: assessment.{axis} needs rationale and cited basis observations")
+            if not present(e.get("contradictions_reviewed")):
+                errors.append(f"{eid}: confirmation needs contradictions_reviewed")
             decided = parse_date(e.get("decided_at"))
-            stale = [b["entry_id"] for b in basis if b["claim"] == "operating_at_address" and decided
+            operation_ids = set((assessment.get("current_operation") or {}).get("basis_entry_ids") or [])
+            stale = [b["entry_id"] for b in basis if (b["entry_id"] in operation_ids or b["claim"] == "operating_at_address") and decided
                      and parse_date(b.get("observed_at"))
                      and (decided - parse_date(b["observed_at"])).days > CONFIRMATION_VALID_DAYS]
             if stale:
                 errors.append(f"{eid}: basis observations older than {CONFIRMATION_VALID_DAYS}d: {stale}")
-            if "gp_services" not in claims and status == "OPERATING_MIXED_GP_CONFIRMED":
-                errors.append(f"{eid}: mixed confirmation needs a gp_services observation")
             if not present((e.get("fields") or {}).get("office_name")):
                 errors.append(f"{eid}: confirmation needs fields.office_name")
+            fields = e.get("fields") or {}
+            if not present(fields.get("address")) or not present(fields.get("suite_status")):
+                errors.append(f"{eid}: confirmation needs fields.address and suite_status")
+            if fields.get("latitude") is not None or fields.get("longitude") is not None:
+                lat, lon = float_or_none(fields.get("latitude")), float_or_none(fields.get("longitude"))
+                if not (lat and lon and 40 < lat < 43 and -90 < lon < -86
+                        and fields.get("geocode_precision") in {"rooftop", "entrance", "parcel", "site"}
+                        and present(fields.get("geocode_source")) and parse_date(fields.get("geocode_checked_at"))):
+                    errors.append(f"{eid}: coordinates need checked site/parcel/entrance/rooftop provenance, never a ZIP centroid")
         if status in ("CLOSED", "MOVED") and not claims & {"closed", "moved"}:
             errors.append(f"{eid}: {status} needs a positive closed/moved observation (absence is not closure)")
         if status == "MOVED" and not present(e.get("moved_to")):
             errors.append(f"{eid}: MOVED needs moved_to (candidate id or address)")
-        if status == "DUPLICATE" and e.get("duplicate_of") not in all_ids:
+        if status == "DUPLICATE" and (e.get("duplicate_of") not in all_ids or e.get("duplicate_of") == cid):
             errors.append(f"{eid}: DUPLICATE needs duplicate_of = an existing candidate id")
         if status == "OPERATING_SPECIALIST_ONLY" and "specialist_only" not in claims:
             errors.append(f"{eid}: OPERATING_SPECIALIST_ONLY needs a specialist_only observation")
@@ -451,6 +482,7 @@ def check_ledger(entries, known_ids, today):
     for eid, (n, e) in live.items():
         if e.get("type") != "zip_sweep":
             continue
+        e = {**e, "stage": e.get("pass_type", e.get("stage"))}
         if e.get("stage") not in SWEEP_STAGES:
             errors.append(f"{eid}: bad sweep stage {e.get('stage')!r}")
         if not isinstance(e.get("sources_searched"), list) or not e.get("sources_searched"):
@@ -459,6 +491,9 @@ def check_ledger(entries, known_ids, today):
             errors.append(f"{eid}: unknown source family in sources_searched")
         if not parse_date(e.get("completed_at")):
             errors.append(f"{eid}: completed_at must be YYYY-MM-DD")
+        if e.get("stage") in {"discovery", "recall_audit"}:
+            if not present(e.get("notes")) or not isinstance(e.get("findings"), list):
+                errors.append(f"{eid}: discovery needs notes (queries, limits) and findings list, even if empty")
         sweeps[str(e.get("zip"))].append(e)
     return errors, {"ext": ext, "observations": observations, "decisions": decisions, "sweeps": sweeps,
                     "orphans": orphans}
@@ -486,8 +521,8 @@ def prior_evidence(loc_id, npis, jhv, intel, own_ledger, corrections):
             "website_status": j.get("website_status"), "verification_status": j.get("verification_status"),
             "website_url": j.get("website_url"), "public_name": j.get("public_practice_name"),
             "checked_at": str(j.get("last_checked_at") or "")[:10],
-            "evidence_urls": (j.get("evidence_urls") or [])[:5],
-            "note": (j.get("notes") or "")[:400] or None,
+            "evidence_urls": j.get("evidence_urls") or [],
+            "note": j.get("notes") or None,
         }
     best = None
     for npi in npis:
@@ -504,18 +539,18 @@ def prior_evidence(loc_id, npis, jhv, intel, own_ledger, corrections):
             "npi": str(npi), "quality": r.get("verification_quality"),
             "researched_at": str(r.get("research_date") or "")[:10],
             "website_url": r.get("website_url"), "google_review_count": r.get("google_review_count"),
-            "google_recent_review": clean(r.get("google_recent_date")), "urls": urls[:5],
+            "google_recent_review": clean(r.get("google_recent_date")), "urls": urls,
         }
     o = own_ledger.get(loc_id)
     if o:
         ev["ownership_census"] = {
             "reviewed_at": str(o.get("reviewed_at") or "")[:10], "status": o.get("status"),
-            "evidence_urls": (o.get("evidence_urls") or [])[:5],
+            "evidence_urls": o.get("evidence_urls") or [],
         }
     if corrections.get(loc_id):
         ev["manual_corrections"] = [
-            {"field": c["field_key"], "suggested": c["suggested_value"], "note": (c["notes"] or "")[:300],
-             "status": c["status"]} for c in corrections[loc_id]]
+            {"field": c["field_key"], "suggested": c["suggested_value"], "note": c["notes"],
+             "created_at": c["created_at"], "status": c["status"]} for c in corrections[loc_id]]
     j_live = j and j.get("website_status") == "live" and j.get("verification_status") in (
         "roster_verified", "hiring_page_found")
     if j_live:
@@ -525,7 +560,7 @@ def prior_evidence(loc_id, npis, jhv, intel, own_ledger, corrections):
     elif ev:
         level = "ownership_review_only"      # ownership-census / manual-correction evidence only
     else:
-        level = "none"
+        level = "registry_only"
     return level, ev
 
 
@@ -533,6 +568,74 @@ def evidence_text(ev):
     parts = [ev.get("job_hunt_check", {}).get("note") or ""]
     parts += [c.get("note") or "" for c in ev.get("manual_corrections", [])]
     return " ".join(parts)
+
+
+def source_records(da, fed, dso):
+    """Preserve full patient-address observations within each street-level bundle."""
+    records = []
+    for r in da:
+        records.append({"family": "data_axle", "source_id": r["_ident"], "source_file": r["_file"],
+                        "name": r.get("Company Name"), "address": r.get("Address"),
+                        "phone": r.get("Phone Number Combined"), "website": r.get("Website"),
+                        "source_date": r.get("Last Updated On"), "record_type": r.get("Firm or Individual"),
+                        "scope": r.get("Primary SIC Description"), "latitude": r.get("Latitude"),
+                        "longitude": r.get("Longitude"), "precision": r.get("Location Centerpoint")})
+    for r in fed:
+        records.append({"family": "nppes", "source_id": str(r["npi"]), "name": r.get("practice_name"),
+                        "address": r.get("address"), "phone": r.get("phone"), "website": r.get("website"),
+                        "source_date": r.get("last_updated"), "record_type": r.get("entity_type"),
+                        "scope": r.get("taxonomy_code")})
+    for r in dso:
+        records.append({"family": "dso_locator", "source_id": r.get("source_url"),
+                        "name": r.get("location_name"), "address": r.get("address"),
+                        "phone": r.get("phone"), "source_date": r.get("scraped_at")})
+    return sorted(records, key=lambda r: (r["family"], str(r["source_id"]), str(r.get("address"))))
+
+
+def historical_evidence(c, jhv, intel, corrections):
+    records = []
+    def add(system, source_id, date, axes, payload):
+        digest = hashlib.sha256(json.dumps(payload, sort_keys=True, default=str).encode()).hexdigest()[:16]
+        records.append({"observation_id": f"hist:{system}:{source_id}:{digest}",
+                        "source": system, "source_id": source_id, "observed_at": date,
+                        "claim_scope": axes, "historical": True, "evidence": payload})
+    loc = c.get("location_id")
+    if loc in jhv:
+        r = jhv[loc]
+        keys = ("public_practice_name", "website_url", "website_status", "verification_status", "evidence_urls", "notes")
+        add("job_hunt_site_check", loc, r.get("last_checked_at"), ["identity", "contact", "website_status"],
+            {k: r.get(k) for k in keys})
+    for npi in c["source_refs"].get("npis", []):
+        if npi in intel:
+            r = intel[npi]
+            add("practice_intel", npi, r.get("research_date"), ["contact", "reported_status"],
+                {k: r.get(k) for k in ("website_url", "verification_quality", "verification_urls", "red_flags", "provider_notes")})
+    for r in corrections.get(loc, []):
+        if re.search(r"name|address|suite|phone|website|closed|status|location|special", r["field_key"], re.I):
+            add("manual_correction", loc, r.get("created_at"), [r["field_key"]], r)
+    for r in c["source_refs"].get("records", []):
+        if r["family"] == "dso_locator":
+            add("dso_locator", str(r["source_id"]), r["source_date"], ["listed_location", "contact"], r)
+    return records
+
+
+RESOLVED_STATES = {"CONFIRMED_OPERATING_GP", "RESOLVED_EXCLUDED", "RESOLVED_SPLIT"}
+LEAD_WARNINGS = {"phone_matches_existing_row", "possible_address_variant_of_row", "da_individual_listings_only",
+                 "da_record_pre_2024", "name_suggests_specialty", "da_zip_centroid_only", "no_gp_taxonomy",
+                 "address_not_a_street_location", "da_non_dental_sic", "source_name_missing"}
+
+
+def prioritize(c):
+    if c["origin"] not in {"directory_row", "excluded_row"}:
+        p = 1
+    elif c["queue_state"] == "EXISTING_EVIDENCE_NO_CURRENT_CONTRADICTION":
+        p = 4
+    else:
+        p = 2
+    c["priority"] = p
+    c["research_priority"] = {1: "P1_absent_candidate", 2: "P2_high_risk_row", 4: "P4_deferred_ordinary"}[p]
+    c["lead_quality"] = ("clean" if not set(c["flags"]) & LEAD_WARNINGS else "flagged") if p == 1 else None
+    c["effort"] = "resolved" if c["queue_state"] in RESOLVED_STATES else "deferred" if p == 4 else "research"
 
 
 def build(today=None):
@@ -555,6 +658,9 @@ def build(today=None):
     loc_keys = collections.defaultdict(list)
     for loc in locations:
         loc_keys[street_key(loc["normalized_address"], loc["zip"])].append(loc["location_id"])
+    dso_by_key = collections.defaultdict(list)
+    for r in dso:
+        dso_by_key[street_key(r["address"], r["zip"])].append(r)
 
     def is_directory(loc):
         return (loc["state"] == "IL" and loc["entity_classification"] in GP_CLASSES
@@ -634,7 +740,7 @@ def build(today=None):
         if da_latest >= "202501":
             flags.add("da_listing_2025_plus")
         fed_updates = [str(m.get("last_updated") or "") for m in member_rows if str(m["npi"]).isdigit()]
-        if fed_updates and max(fed_updates) < "2018-01-01" and not da_here and level == "none":
+        if fed_updates and max(fed_updates) < "2018-01-01" and not da_here and level == "registry_only":
             flags.add("stale_registry_only")
         # gp-scope axis
         if in_dir and scope == "specialist_only":
@@ -665,7 +771,8 @@ def build(today=None):
         if in_dir:
             if flags & {"address_not_a_street_location", "state_mismatch"}:
                 state = "LOCATION_INCOMPLETE"
-            elif flags & {"multi_org_multi_phone", "multi_suite_multi_phone", "prior_note_successor"}:
+            elif flags & {"multi_org_multi_phone", "multi_suite_multi_phone", "prior_note_successor",
+                          "street_key_shared_with_other_row", "high_provider_count"}:
                 state = "IDENTITY_REVIEW"
             elif flags & {"prior_note_closure", "prior_note_moved", "prior_site_dead_or_parked",
                           "no_contact_channel", "stale_registry_only"}:
@@ -673,7 +780,7 @@ def build(today=None):
             elif flags & {"no_gp_taxonomy", "name_suggests_specialty"}:
                 state = "GP_SCOPE_UNRESOLVED"
             else:
-                state = "NEEDS_CURRENT_VERIFICATION"
+                state = "EXISTING_EVIDENCE_NO_CURRENT_CONTRADICTION"
             origin = "directory_row"
         else:
             origin = "excluded_row"
@@ -697,7 +804,8 @@ def build(today=None):
             "provider_count": loc["provider_count"], "org_npis_at_street": len(orgs),
             "phones_at_street": len(phones_at_key), "da_records_at_street": len(da_here),
             "da_latest_update": da_latest or None, "prior_evidence_level": level, "prior_evidence": ev,
-            "source_refs": {"npis": member_npis[:60], "iusa": sorted(r["_ident"] for r in da_here)[:40],
+            "source_refs": {"npis": sorted(set(member_npis)), "iusa": sorted(r["_ident"] for r in da_here),
+                            "records": source_records(da_here, members, dso_by_key[key]),
                             "data_sources": clean(loc["data_sources"])},
             "latitude": lat, "longitude": lon, "coord_status": coord_status,
         })
@@ -722,6 +830,8 @@ def build(today=None):
             fed[0]["practice_name"] if fed else None)
         flags = set()
         sics = {r.get("Primary SIC Description") for r in da}
+        if not present(name):
+            flags.add("source_name_missing")
         if da and sics <= NON_DENTAL_SIC:
             flags.add("da_non_dental_sic")
         if any(r.get("Location Centerpoint") == "Zip Centroid" for r in da) and not any(
@@ -747,7 +857,7 @@ def build(today=None):
             flags.add("no_gp_taxonomy")
         addr_sample = next((a for a in [d["address"] for d in dl] + [r["Address"] for r in da] +
                             [r["address"] for r in fed] if present(a)), "")
-        if PO_BOX_RE.search(addr_sample or "") or not re.match(r"^\d", NORM(addr_sample or "")):
+        if not usable_street_address(addr_sample):
             flags.add("address_not_a_street_location")
         state = "SOURCE_CANDIDATE_UNREPRESENTED"
         if "address_not_a_street_location" in flags:
@@ -767,29 +877,33 @@ def build(today=None):
             "candidate_id": f"src:{key[1]}:{key_hash(key)}", "origin": origin, "in_directory": False,
             "location_id": None, "zip": key[1], "city": zips.get(key[1]), "name": clean(name),
             "address": key[0], "suite": suites[0] if len(suites) == 1 else None, "suites_seen": suites,
-            "phone": phones[0] if len(phones) == 1 else (", ".join(phones[:3]) or None),
+            "phone": phones[0] if len(phones) == 1 else (", ".join(phones) or None),
             "website": next((clean(r.get("Website")) for r in da if present(r.get("Website"))), None),
             "entity_classification": None, "queue_state": state, "flags": sorted(flags),
             "gp_scope_taxonomy": fed_scope, "provider_count": None, "org_npis_at_street": sum(
                 r["entity_type"] == "organization" for r in fed),
             "phones_at_street": len(phones), "da_records_at_street": len(da), "da_latest_update": da_latest or None,
-            "prior_evidence_level": "none", "prior_evidence": {},
+            "prior_evidence_level": "registry_only", "prior_evidence": {},
             "source_refs": {
-                "npis": sorted(str(r["npi"]) for r in fed), "iusa": sorted(r["_ident"] for r in da)[:40],
-                "da_names": sorted({r["Company Name"] for r in da})[:10],
+                "npis": sorted(str(r["npi"]) for r in fed), "iusa": sorted(r["_ident"] for r in da),
+                "da_names": sorted({r["Company Name"] for r in da}), "records": source_records(da, fed, dl),
                 "dso": [{"dso": d["dso_name"], "name": d["location_name"], "source": d["source_url"]} for d in dl],
-                "same_phone_rows": ["loc:" + l for l in same_phone][:5],
-                "address_variant_rows": ["loc:" + l for l in variant_of][:5]},
+                "same_phone_rows": ["loc:" + l for l in same_phone],
+                "address_variant_rows": ["loc:" + l for l in variant_of]},
             "latitude": coords[0][0] if coords else None, "longitude": coords[0][1] if coords else None,
             "coord_status": ("recoverable_da_" + ("parcel" if coords[0][2] == "Parcel" else "site")) if coords else "none",
         })
 
     known = {c["candidate_id"] for c in candidates}
     errors, led = check_ledger(read_ledger(), known, today)
+    if led["orphans"]:
+        errors.append("Orphaned research: explicitly reattach observations/decisions and retract old entries before rebuilding.")
     if errors:
         return None, errors
     for cid, e in sorted(led["ext"].items()):
         z = str(e["zip"])
+        if z not in zips:
+            return None, [f"{cid}: external candidate is outside tracked IL ZIPs"]
         candidates.append({
             "candidate_id": cid, "origin": "external_discovery", "in_directory": False, "location_id": None,
             "zip": z, "city": zips.get(z), "name": e["name"], "address": NORM(e["address"]),
@@ -798,14 +912,16 @@ def build(today=None):
             "queue_state": "EXTERNAL_DISCOVERY", "flags": ["split_child"] if e.get("split_from") else [],
             "gp_scope_taxonomy": "unknown", "provider_count": None, "org_npis_at_street": 0,
             "phones_at_street": 0, "da_records_at_street": 0, "da_latest_update": None,
-            "prior_evidence_level": "none", "prior_evidence": {},
+            "prior_evidence_level": "registry_only", "prior_evidence": {},
             "source_refs": {"discovered_via": e["discovered_via"], "source_url": e["source_url"],
+                            "original_address": e["address"],
                             "split_from": e.get("split_from")},
             "latitude": None, "longitude": None, "coord_status": "none",
         })
 
     split_parents = {e.get("split_from") for e in led["ext"].values() if e.get("split_from")}
     for c in candidates:
+        c["prior_evidence"]["historical_observations"] = historical_evidence(c, jhv, intel, corrections)
         obs = led["observations"].get(c["candidate_id"], [])
         c["observations"] = len(obs)
         c["sources_checked"] = sorted({o["source_family"] for o in obs})
@@ -814,7 +930,7 @@ def build(today=None):
         if d:
             c["decision"] = {k: d.get(k) for k in (
                 "entry_id", "terminal_status", "decided_at", "confidence", "researcher", "fields",
-                "duplicate_of", "moved_to", "notes", "basis_entry_ids")}
+                "duplicate_of", "moved_to", "notes", "basis_entry_ids", "assessment", "contradictions_reviewed")}
             state = TERMINAL[d["terminal_status"]]
             if state == "CONFIRMED_OPERATING_GP":
                 age = (today - parse_date(d["decided_at"])).days
@@ -822,21 +938,17 @@ def build(today=None):
                     state = "NEEDS_CURRENT_VERIFICATION"
                     c["flags"] = sorted(set(c["flags"]) | {"confirmation_expired"})
                 fields = d.get("fields") or {}
+                for field, dest in (("office_name", "name"), ("address", "address"), ("suite", "suite"), ("phone", "phone"), ("website", "website")):
+                    if field in fields:
+                        c[dest] = fields[field]
                 if fields.get("latitude") and fields.get("longitude"):
                     c["latitude"], c["longitude"] = fields["latitude"], fields["longitude"]
-                    c["coord_status"] = "verified_" + str(fields.get("geocode_precision") or "rooftop")
+                    c["coord_status"] = "verified_" + fields["geocode_precision"]
             if state == "RESOLVED_SPLIT" and c["candidate_id"] not in split_parents:
                 state = "IDENTITY_REVIEW"
                 c["flags"] = sorted(set(c["flags"]) | {"split_pending_children"})
             c["queue_state"] = state
-        c["priority"] = (1 if c["queue_state"] in ("IDENTITY_REVIEW", "OPERATING_STATUS_UNRESOLVED",
-                                                    "SOURCE_CANDIDATE_UNREPRESENTED", "EXTERNAL_DISCOVERY")
-                         else 3 if c["queue_state"] in ("PROBABLE_NON_OFFICE", "LIKELY_SPECIALIST_ONLY")
-                         else 2)
-        c["effort"] = ("done" if c["queue_state"] in ("CONFIRMED_OPERATING_GP", "RESOLVED_EXCLUDED", "RESOLVED_SPLIT")
-                       else "quick_confirm" if c["queue_state"] == "NEEDS_CURRENT_VERIFICATION"
-                       and c["prior_evidence_level"] == "site_checked_live" and c["phone"]
-                       else "deep" if c["priority"] == 1 else "standard")
+        prioritize(c)
 
     coverage = zip_coverage(zips, candidates, led["sweeps"])
     rank = {r["zip"]: r["batch_rank"] for r in coverage}
@@ -856,17 +968,23 @@ def zip_coverage(zips, candidates, sweeps):
         cs = by_zip.get(z, [])
         st = collections.Counter(c["queue_state"] for c in cs)
         d = [c for c in cs if c["in_directory"]]
-        stages = {s["stage"] for s in sweeps.get(z, [])}
-        stage = ("recall_audited" if "recall_audit" in stages else
-                 "discovery_done" if "discovery" in stages else
-                 "rows_validated" if "current_rows" in stages else
-                 "in_progress" if any(c["observations"] or c["decision"] for c in cs) else "not_started")
-        open_rows = sum(c["queue_state"] in OPEN_STATES - {"PROBABLE_NON_OFFICE", "LIKELY_SPECIALIST_ONLY"}
-                        for c in cs)
+        stage = "in_progress" if any(c["observations"] or c["decision"] for c in cs) else "not_started"
+        open_rows = sum(c["priority"] != 4 and c["queue_state"] not in RESOLVED_STATES for c in cs)
+        discovery = [{k: s.get(k) for k in ("entry_id", "stage", "sources_searched", "completed_at", "notes", "findings")}
+                     for s in sweeps.get(z, []) if s["stage"] in {"discovery", "recall_audit"}]
         sweep_dates = [s.get("completed_at") for s in sweeps.get(z, [])]
         obs_dates = [c["decision"]["decided_at"] for c in cs if c["decision"]]
         rows.append({
             "zip": z, "city": city, "pilot": z in PILOT_ZIPS, "stage": stage,
+            "p1_items": sum(c["priority"] == 1 and c["queue_state"] not in RESOLVED_STATES for c in cs),
+            "p1_clean": sum(c.get("lead_quality") == "clean" and c["queue_state"] not in RESOLVED_STATES for c in cs),
+            "p2_items": sum(c["priority"] == 2 and c["queue_state"] not in RESOLVED_STATES for c in cs),
+            "p4_deferred": sum(c["effort"] == "deferred" for c in cs),
+            "candidate_decisions": sum(bool(c["decision"]) for c in cs),
+            "discovery_passes": discovery,
+            "discovery_status": "pass_recorded" if discovery else "not_searched",
+            "last_discovery_at": max((s["completed_at"] for s in discovery), default=None),
+            "historical_evidence_rows": sum(bool(c["prior_evidence"].get("historical_observations")) for c in cs),
             "directory_rows": len(d),
             "excluded_rows": sum(c["origin"] == "excluded_row" for c in cs),
             "source_candidates": sum(c["origin"] in ("data_axle_unrepresented", "nppes_unrepresented",
@@ -891,7 +1009,7 @@ def zip_coverage(zips, candidates, sweeps):
             "dir_site_checked_live": sum(c["prior_evidence_level"] == "site_checked_live" for c in d),
             "dir_prior_web_research": sum(c["prior_evidence_level"] == "researched" for c in d),
             "dir_ownership_review_only": sum(c["prior_evidence_level"] == "ownership_review_only" for c in d),
-            "dir_no_prior_research": sum(c["prior_evidence_level"] == "none" for c in d),
+            "dir_no_prior_research": sum(c["prior_evidence_level"] == "registry_only" for c in d),
             "dir_identity_flagged": sum(bool(set(c["flags"]) & {"multi_org_multi_phone", "multi_suite_multi_phone",
                                                                 "high_provider_count", "phone_shared_with_other_address"})
                                         for c in d),
@@ -925,27 +1043,42 @@ def write_outputs(res):
             f.write(json.dumps(c, sort_keys=True, separators=(",", ":")) + "\n")
     cov = res["coverage"]
     with COVERAGE_PATH.open("w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=list(cov[0].keys()))
+        w = csv.DictWriter(f, fieldnames=list(cov[0].keys()), lineterminator="\n")
         w.writeheader()
         for r in sorted(cov, key=lambda r: r["batch_rank"]):
-            w.writerow({**r, "sources_searched": ";".join(r["sources_searched"])})
+            w.writerow({**r, "sources_searched": ";".join(r["sources_searched"]),
+                        "discovery_passes": json.dumps(r["discovery_passes"], sort_keys=True)})
     cands = res["candidates"]
     d = [c for c in cands if c["in_directory"]]
     inputs = {
         "sqlite_sha256": file_sha(DB_PATH), "candidates_sha256": file_sha(CANDIDATES_PATH),
+        "coverage_sha256": file_sha(COVERAGE_PATH),
         "ledger_sha256": file_sha(LEDGER_PATH) if LEDGER_PATH.exists() else None,
         "job_hunt_seed_rows": len(load_jhv()), "data_axle_files": res["da_files"],
         "data_axle_unique_records": res["da_records"],
     }
-    build_id = hashlib.sha256(json.dumps([RULES_VERSION, inputs["sqlite_sha256"],
-                                          inputs["candidates_sha256"], inputs["ledger_sha256"]]).encode()).hexdigest()[:12]
+    build_id = hashlib.sha256(json.dumps([RULES_VERSION, inputs], sort_keys=True).encode()).hexdigest()[:12]
+    source_leads = [c for c in cands if c["origin"].endswith("unrepresented")]
+    unrepresented = [c for c in source_leads if c["queue_state"] == "SOURCE_CANDIDATE_UNREPRESENTED"]
+    breakdown = {
+        "definition": "Street+ZIP groups absent from ALL existing location rows, including excluded rows. Suites do not define these groups; inspect source_refs.records for additional offices at represented buildings. No group is a confirmed missing office.",
+        "raw_groups": len(source_leads), "discovery_candidates": len(unrepresented),
+        "by_source_family": dict(collections.Counter("+".join(sorted({r["family"] for r in c["source_refs"]["records"]})) for c in unrepresented)),
+        "alternate_match": sum(bool(c["source_refs"].get("same_phone_rows") or c["source_refs"].get("address_variant_rows")) for c in unrepresented),
+        "clean_leads": sum(c["lead_quality"] == "clean" for c in unrepresented),
+        "flags": dict(collections.Counter(f for c in unrepresented for f in c["flags"])),
+    }
     manifest = {
         "build_id": build_id, "rules_version": RULES_VERSION,
         "built_at": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
         "scope": "IL watched ZIPs only (Boston/MA parked)", "watched_zips": len(res["zips"]),
         "inputs": inputs,
+        "source_candidate_breakdown": breakdown,
         "totals": {
             "candidates": len(cands), "directory_rows": len(d),
+            "by_priority": dict(collections.Counter(c["research_priority"] for c in cands)),
+            "historical_evidence_rows": sum(bool(c["prior_evidence"].get("historical_observations")) for c in cands),
+            "historical_observations": sum(len(c["prior_evidence"].get("historical_observations", [])) for c in cands),
             "by_origin": dict(sorted(collections.Counter(c["origin"] for c in cands).items())),
             "by_state": {s: sum(c["queue_state"] == s for c in cands) for s in STATES},
             "directory_by_state": {s: sum(c["queue_state"] == s for c in d) for s in STATES},
@@ -989,13 +1122,13 @@ def cmd_check_ledger(args):
     errors, led = check_ledger(read_ledger(), known, datetime.date.today())
     for e in errors:
         print("  " + e)
-    print(("FAIL" if errors else "OK") + f": {len(errors)} error(s); decisions={len(led['decisions'])} "
+    print(("FAIL" if errors or led["orphans"] else "OK") + f": {len(errors)} error(s); decisions={len(led['decisions'])} "
           f"observations={sum(len(v) for v in led['observations'].values())} "
           f"external={len(led['ext'])} sweeps={sum(len(v) for v in led['sweeps'].values())} "
           f"orphans={len(led['orphans'])}")
     for o in led["orphans"]:
         print(f"  ORPHAN {o['entry_id']} -> {o['candidate_id']} (candidate no longer generated; re-point it)")
-    return 1 if errors else 0
+    return 1 if errors or led["orphans"] else 0
 
 
 def load_generated():
@@ -1010,7 +1143,7 @@ def load_generated():
 def cmd_next_batch(args):
     cands, cov = load_generated()
     cov.sort(key=lambda r: int(r["batch_rank"]))
-    todo = [r for r in cov if r["stage"] in ("not_started", "in_progress")] if not args.zip else \
+    todo = sorted(cov, key=lambda r: (r.get("last_activity") or "", int(r["batch_rank"]))) if not args.zip else \
         [r for r in cov if r["zip"] in args.zip]
     picked, total = [], 0
     for r in todo:
@@ -1020,19 +1153,26 @@ def cmd_next_batch(args):
         picked.append(r)
         total += n
     if not picked:
-        print("No unswept ZIPs remain.")
+        print("No matching ZIPs. Coverage is refreshable; no ZIP is permanently complete.")
         return 0
     zset = {r["zip"] for r in picked}
-    items = [c for c in cands if c["zip"] in zset and c["queue_state"] in OPEN_STATES]
-    items.sort(key=lambda c: (c["zip"], c["priority"], c["candidate_id"]))
+    items = [c for c in cands if c["zip"] in zset and c["queue_state"] not in RESOLVED_STATES
+             and (c["priority"] != 4 or args.full_reconciliation)]
+    items.sort(key=lambda c: (c["zip"], c["priority"], c.get("lead_quality") != "clean", c["candidate_id"]))
     WORKLIST_DIR.mkdir(parents=True, exist_ok=True)
     path = WORKLIST_DIR / f"batch_{'_'.join(sorted(zset))}.json"
     worklist = {
         "zips": sorted(zset), "generated_from_build": json.loads(MANIFEST_PATH.read_text())["build_id"],
-        "stage": "current_rows", "items": len(items),
+        "mode": "full_reconciliation" if args.full_reconciliation else "risk_prioritized", "items": len(items),
         "by_state": dict(collections.Counter(c["queue_state"] for c in items)),
-        "instructions": "Follow data/office_census/README.md §Batch protocol. Append ledger entries only.",
-        "candidates": items,
+        "instructions": "Read README.md. P1 missing leads, P2 suspicious rows, P3 independent discovery. P4 comparison only unless full reconciliation requested. Candidate bundles may contain multiple offices; inspect source records on demand. Append ledger entries, never edit production locations.",
+        "discovery_tasks": [{"zip": z, "priority": "P3", "task": "Find operating GP offices absent from both directory and source universe; log source families, queries, date, findings and limits.",
+                             "previous_passes": json.loads(next(r["discovery_passes"] for r in cov if r["zip"] == z))} for z in sorted(zset)],
+        "known_roster": [{k: c.get(k) for k in ("candidate_id", "name", "address", "suite", "phone", "website", "queue_state")}
+                         for c in cands if c["zip"] in zset and c["in_directory"]],
+        "candidates": [{k: c.get(k) for k in ("candidate_id", "research_priority", "lead_quality", "name", "address", "suites_seen", "phone", "website", "queue_state", "flags", "prior_evidence_level")}
+                       for c in items],
+        "detail_command": "python3 scrapers/office_census.py inspect CANDIDATE_ID",
     }
     path.write_text(json.dumps(worklist, indent=1) + "\n")
     print(f"next batch: {', '.join(r['zip'] + ' ' + (r['city'] or '') for r in picked)}")
@@ -1061,14 +1201,18 @@ def main():
     sub.add_parser("build")
     sub.add_parser("check-ledger")
     nb = sub.add_parser("next-batch")
-    nb.add_argument("--zip", nargs="*", help="force specific ZIPs instead of the next unswept ones")
+    nb.add_argument("--zip", nargs="*", help="select specific tracked ZIPs")
     nb.add_argument("--target-items", type=int, default=40)
-    nb.add_argument("--max-zips", type=int, default=3)
+    nb.add_argument("--max-zips", type=int, default=1)
+    nb.add_argument("--full-reconciliation", action="store_true")
+    inspect = sub.add_parser("inspect")
+    inspect.add_argument("candidate_id")
     s = sub.add_parser("status")
     s.add_argument("--zip", nargs="*")
     args = ap.parse_args()
     return {"build": cmd_build, "check-ledger": cmd_check_ledger,
-            "next-batch": cmd_next_batch, "status": cmd_status}[args.cmd](args)
+            "next-batch": cmd_next_batch, "status": cmd_status,
+            "inspect": lambda a: print(json.dumps(next(c for c in load_generated()[0] if c["candidate_id"] == a.candidate_id), indent=2))}[args.cmd](args)
 
 
 if __name__ == "__main__":

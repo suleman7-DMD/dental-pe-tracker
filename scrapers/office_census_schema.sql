@@ -66,6 +66,15 @@ CREATE TABLE IF NOT EXISTS office_census_candidates (
 CREATE INDEX IF NOT EXISTS ix_office_census_candidates_zip ON office_census_candidates (zip, priority);
 CREATE INDEX IF NOT EXISTS ix_office_census_candidates_state ON office_census_candidates (queue_state);
 
+ALTER TABLE office_census_candidates ADD COLUMN IF NOT EXISTS research_priority text;
+ALTER TABLE office_census_candidates ADD COLUMN IF NOT EXISTS lead_quality text;
+ALTER TABLE office_census_candidates DROP CONSTRAINT IF EXISTS office_census_candidates_queue_state_check;
+ALTER TABLE office_census_candidates ADD CONSTRAINT office_census_candidates_queue_state_check CHECK (queue_state IN (
+    'CONFIRMED_OPERATING_GP', 'NEEDS_CURRENT_VERIFICATION', 'EXISTING_EVIDENCE_NO_CURRENT_CONTRADICTION',
+    'IDENTITY_REVIEW', 'OPERATING_STATUS_UNRESOLVED', 'GP_SCOPE_UNRESOLVED', 'LOCATION_INCOMPLETE',
+    'PROBABLE_NON_OFFICE', 'LIKELY_SPECIALIST_ONLY', 'SOURCE_CANDIDATE_UNREPRESENTED', 'EXTERNAL_DISCOVERY',
+    'RESEARCHED_UNRESOLVED', 'RESOLVED_EXCLUDED', 'RESOLVED_SPLIT'));
+
 CREATE TABLE IF NOT EXISTS office_census_zip_coverage (
     zip                        text PRIMARY KEY,
     city                       text,
@@ -115,6 +124,17 @@ CREATE TABLE IF NOT EXISTS office_census_builds (
     published_at   timestamptz NOT NULL DEFAULT now(),
     manifest       jsonb NOT NULL
 );
+
+-- Additive migration keeps the checkpoint reader compatible during deployment.
+ALTER TABLE office_census_zip_coverage ADD COLUMN IF NOT EXISTS p1_items integer NOT NULL DEFAULT 0;
+ALTER TABLE office_census_zip_coverage ADD COLUMN IF NOT EXISTS p1_clean integer NOT NULL DEFAULT 0;
+ALTER TABLE office_census_zip_coverage ADD COLUMN IF NOT EXISTS p2_items integer NOT NULL DEFAULT 0;
+ALTER TABLE office_census_zip_coverage ADD COLUMN IF NOT EXISTS p4_deferred integer NOT NULL DEFAULT 0;
+ALTER TABLE office_census_zip_coverage ADD COLUMN IF NOT EXISTS candidate_decisions integer NOT NULL DEFAULT 0;
+ALTER TABLE office_census_zip_coverage ADD COLUMN IF NOT EXISTS historical_evidence_rows integer NOT NULL DEFAULT 0;
+ALTER TABLE office_census_zip_coverage ADD COLUMN IF NOT EXISTS discovery_passes jsonb NOT NULL DEFAULT '[]'::jsonb;
+ALTER TABLE office_census_zip_coverage ADD COLUMN IF NOT EXISTS discovery_status text NOT NULL DEFAULT 'not_searched';
+ALTER TABLE office_census_zip_coverage ADD COLUMN IF NOT EXISTS last_discovery_at date;
 
 ALTER TABLE office_census_candidates ENABLE ROW LEVEL SECURITY;
 ALTER TABLE office_census_zip_coverage ENABLE ROW LEVEL SECURITY;
