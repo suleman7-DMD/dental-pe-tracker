@@ -1,0 +1,107 @@
+{
+  "build_id": "e1382b7dff2c",
+  "rules_version": "2026-09-24.1",
+  "built_at": "2026-09-24T13:37:31+00:00",
+  "scope": "IL watched ZIPs only (Boston/MA parked)",
+  "watched_zips": 269,
+  "inputs": {
+    "sqlite_sha256": "261074e446d843d2223ca96b8e7ad6e96a25a6f70937a796d94558178e320a86",
+    "candidates_sha256": "a6766504bde550fb51f5bb20fe668cdfbfe9c2fb82d8ee34c6918eb56dad612a",
+    "ledger_sha256": "9640b6d20909059a293f13bdf7259c75181e356760a3294fe97e769ca0f7368b",
+    "job_hunt_seed_rows": 642,
+    "data_axle_files": 184,
+    "data_axle_unique_records": 10625
+  },
+  "totals": {
+    "candidates": 5798,
+    "directory_rows": 4439,
+    "by_origin": {
+      "data_axle_unrepresented": 561,
+      "directory_row": 4439,
+      "dso_locator_unrepresented": 32,
+      "excluded_row": 750,
+      "nppes_unrepresented": 16
+    },
+    "by_state": {
+      "CONFIRMED_OPERATING_GP": 0,
+      "NEEDS_CURRENT_VERIFICATION": 3635,
+      "IDENTITY_REVIEW": 633,
+      "OPERATING_STATUS_UNRESOLVED": 142,
+      "GP_SCOPE_UNRESOLVED": 104,
+      "LOCATION_INCOMPLETE": 73,
+      "PROBABLE_NON_OFFICE": 214,
+      "LIKELY_SPECIALIST_ONLY": 456,
+      "SOURCE_CANDIDATE_UNREPRESENTED": 541,
+      "EXTERNAL_DISCOVERY": 0,
+      "RESEARCHED_UNRESOLVED": 0,
+      "RESOLVED_EXCLUDED": 0,
+      "RESOLVED_SPLIT": 0
+    },
+    "directory_by_state": {
+      "CONFIRMED_OPERATING_GP": 0,
+      "NEEDS_CURRENT_VERIFICATION": 3635,
+      "IDENTITY_REVIEW": 633,
+      "OPERATING_STATUS_UNRESOLVED": 142,
+      "GP_SCOPE_UNRESOLVED": 7,
+      "LOCATION_INCOMPLETE": 22,
+      "PROBABLE_NON_OFFICE": 0,
+      "LIKELY_SPECIALIST_ONLY": 0,
+      "SOURCE_CANDIDATE_UNREPRESENTED": 0,
+      "EXTERNAL_DISCOVERY": 0,
+      "RESEARCHED_UNRESOLVED": 0,
+      "RESOLVED_EXCLUDED": 0,
+      "RESOLVED_SPLIT": 0
+    },
+    "directory_by_prior_evidence": {
+      "none": 409,
+      "ownership_review_only": 1441,
+      "researched": 2211,
+      "site_checked_live": 378
+    },
+    "directory_coord_status": {
+      "none": 1454,
+      "recoverable_da_parcel": 607,
+      "recoverable_da_site": 67,
+      "stored_unverified": 2311
+    },
+    "directory_flags": {
+      "address_not_a_street_location": 22,
+      "da_listing_2025_plus": 2353,
+      "high_provider_count": 29,
+      "mixed_gp_specialist_taxonomy": 380,
+      "multi_org_multi_phone": 403,
+      "multi_suite_multi_phone": 321,
+      "name_possibly_generated": 1165,
+      "name_suggests_specialty": 13,
+      "no_contact_channel": 22,
+      "no_federal_npi": 242,
+      "phone_shared_with_other_address": 657,
+      "prior_note_closure": 33,
+      "prior_note_moved": 13,
+      "prior_note_successor": 94,
+      "prior_site_dead_or_parked": 26,
+      "stale_registry_only": 76
+    },
+    "zips_by_stage": {
+      "not_started": 269
+    },
+    "ledger_decisions": 0,
+    "ledger_observations": 0
+  },
+  "ledger_orphans": [],
+  "state_definitions": {
+    "CONFIRMED_OPERATING_GP": "Ledger decision: operating GP (or mixed GP) office confirmed at this address within the validity window.",
+    "NEEDS_CURRENT_VERIFICATION": "Likely an office; no contradiction in existing data, but no current confirmation.",
+    "IDENTITY_REVIEW": "Row may merge several offices (multi-tenant building) or duplicate another row; settle identity first.",
+    "OPERATING_STATUS_UNRESOLVED": "Existing data contradicts current operation (closure/move note, dead site, no contact channel).",
+    "GP_SCOPE_UNRESOLVED": "Unclear whether general dentistry is offered here (specialist signals on a directory row, or GP signals on an excluded specialist row).",
+    "LOCATION_INCOMPLETE": "Address unusable for a physical office (PO box, no street number, state mismatch).",
+    "PROBABLE_NON_OFFICE": "Excluded row or raw record that is probably not a patient-facing GP office; confirm exclusion.",
+    "LIKELY_SPECIALIST_ONLY": "Excluded specialist row with no GP signal; low-priority exclusion check.",
+    "SOURCE_CANDIDATE_UNREPRESENTED": "Raw source record (Data Axle / NPPES / DSO locator) at a street address the office table does not have.",
+    "EXTERNAL_DISCOVERY": "Office added from outside the repo's data by a research session; awaiting a decision.",
+    "RESEARCHED_UNRESOLVED": "Researched; evidence insufficient either way. Needs a call or manual review.",
+    "RESOLVED_EXCLUDED": "Ledger decision: not a current GP office (closed, moved, duplicate, specialist-only, non-clinical).",
+    "RESOLVED_SPLIT": "Ledger decision: record merged several offices; child candidates carry them."
+  }
+}
