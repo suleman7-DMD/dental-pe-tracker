@@ -14,7 +14,7 @@ long staleness and near data loss. All syncs are HUMAN-GATED: get explicit user 
 
 | Table | Strategy | Notes |
 |---|---|---|
-| `practices` | `watched_zips_only` | TRUNCATE CASCADE + reinsert of 13,818 watched rows — **also wipes/repopulates practice_changes and other FK dependents** |
+| `practices` | `watched_zips_only` | TRUNCATE CASCADE + reinsert of 13,860 watched rows (2026-09-25) — **also wipes/repopulates practice_changes and other FK dependents** |
 | `deals` | `incremental_updated_at` | |
 | `practice_changes` | `incremental_id` | filtered to watched ZIPs |
 | `zip_scores`, `watched_zips`, `dso_locations`, `ada_hpi_benchmarks`, `pe_sponsors`, `platforms`, `zip_overviews`, `zip_qualitative_intel`, `zip_signals`, `practice_locations` | `full_replace` | TRUNCATE CASCADE + INSERT in one transaction |
@@ -51,7 +51,8 @@ After a census consolidation, sync EXACTLY two legs (proven 2026-07-04, runbook 
 ```bash
 python3 -m scrapers._sync_floor_tables_only
 # Carries practice_locations census cols via ORM full_replace (+ zip_scores, dso_locations).
-# Proven output: practice_locations 5,657 / zip_scores 290 / dso_locations 633;
+# Proven output: practice_locations 5,657 / zip_scores 290 / dso_locations 632 (2026-09-25;
+# dso_locations churns with the weekly ADSO scrape — 633 at the 2026-07-04 proof);
 # "LIVE Supabase floor: 268/4801 = 5.58%"
 
 python3 -m scrapers._sync_census_columns_practices
@@ -74,8 +75,9 @@ Postgres and compared against SQLite:
 
 1. Counts: tiered `practice_locations` (3,692), tiered `practices` (8,133) — live vs local.
 2. Tier tallies GROUP BY ownership_tier — must match exactly, per table.
-3. Floor: corp locations 268 / corp NPIs 1,152 / `SUM(zip_scores.total_gp_locations)` 4,801,
-   live floor 268/4,801 = 5.58% (values as of 2026-07-09 — recheck locally first).
+3. Floor: corp locations 268 / corp NPIs 1,158 (watched-scoped; CI min 1,152) /
+   `SUM(zip_scores.total_gp_locations)` 4,801, live floor 268/4,801 = 5.58% (values as of
+   2026-09-25 — recheck locally first).
 4. Paste the read-back output. "MATCH" printed by the script counts as leg-level verification;
    the independent read-back is still required.
 
@@ -93,8 +95,9 @@ flips didn't bump `updated_at`, so the incremental path skipped them — every s
   Current tallies (2026-07-09 P5 recovery): 742 undetermined + 5 held — post-P5 the DB counts
   no longer equal the wave-1 triage file's 477 (recovery added rows outside that file).
   Never write pseudo-tiers to represent review status.
-- Supabase `practices` holds ONLY watched-ZIP rows (13,818). Local-vs-live NPI comparisons
-  must scope SQLite to watched ZIPs or they'll be off by out-of-scope rows (1,153 vs 1,152).
+- Supabase `practices` holds ONLY watched-ZIP rows (13,860 at 2026-09-25). Local-vs-live NPI
+  comparisons must scope SQLite to watched ZIPs or they'll be off by out-of-scope rows
+  (1,162 vs 1,158 at 2026-09-25).
 - **Concurrency rule:** never run the weekly full sync, `refresh.sh`, or any practices-table
   sync while a census merge→consolidate→sync chain is in flight anywhere.
 - `.env` holds `SUPABASE_DATABASE_URL` etc. Never print or commit env values.

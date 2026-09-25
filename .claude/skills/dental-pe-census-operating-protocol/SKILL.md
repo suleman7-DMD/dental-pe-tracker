@@ -174,7 +174,8 @@ Two legs, both mandatory, then an independent read-back. Proven outputs 2026-07-
 ```bash
 python3 -m scrapers._sync_floor_tables_only
 # leg 1 — full_replace of dso_locations, zip_scores, practice_locations (ORM carries census cols)
-# Proven: practice_locations 5,657 / zip_scores 290 / dso_locations 633 verified rows;
+# Proven: practice_locations 5,657 / zip_scores 290 / dso_locations 632 verified rows
+# (2026-09-25; dso_locations churns weekly — 633 at the 2026-07-04 proof);
 # final line: "LIVE Supabase floor: 268/4801 = 5.58%"
 
 python3 -m scrapers._sync_census_columns_practices
@@ -223,4 +224,5 @@ Before you claim census work is done or safe, you must have, pasted into your ou
 2. For any merge: the gate script's printed stats (kept / triage / tier tally).
 3. For any write: backup path + md5, "Validation OK", and the updated-row count.
 4. For any sync: both legs' verification lines + independent read-back counts.
-5. Floor check: 268 / 1,152 unchanged (or a user-approved re-base decision record).
+5. Floor check: 268 locations / 1,158 NPIs (2026-09-25) not dropped — CI mins 268 / 1,152
+   (or a user-approved re-base decision record).

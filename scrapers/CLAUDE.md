@@ -1,215 +1,44 @@
-# Dental PE Intelligence Platform — Claude Code Guide
+# scrapers/ — Pipeline Code Guide
 
-## What This Project Is
+> **Keep this file short** — it is re-injected after every auto-compaction once any file in
+> `scrapers/` is read. Project-wide rules, numbers, and routing live in the root `../CLAUDE.md`.
+> Slimmed 2026-09-25 (23k → ~4k chars); the full verbatim prior version is `CLAUDE_ARCHIVE.md` in
+> this directory. Use skill `scraper-dev` when modifying a scraper; `dental-pe-supabase-sync-and-orm`
+> for anything sync/ORM.
 
-A data pipeline + dual frontend (Next.js primary, Streamlit legacy) that tracks private equity consolidation in US dentistry. It scrapes deal announcements, monitors **381,598 federal dental NPI records** (NPPES, post-F32 cleanup), classifies who owns what, and scores markets for acquisition risk. Primary metro: Chicagoland (269 expanded ZIPs across 7 sub-zones). Secondary: Boston Metro (21 ZIPs).
+## Scraper contract
 
-> **UNITS — read before quoting any count.** `381,598` is **NPI rows**, NOT practices. NPPES emits one row per individual provider (NPI-1) *and* one per organization (NPI-2) at the same address (~2.4× fan-out). The real US dental **practice** count is ≈137,000 (BCG 2026 / Census NAICS 621210). Never call the NPI-row count a "practice" count. Headline corporate/consolidation shares use **location-deduped GP denominators** (`zip_scores.total_gp_locations`), never NPI rows. Full reconciliation: root `CLAUDE.md` §"Numbers cheat-sheet".
+- Import `scrapers.pipeline_logger`; call `log_scrape_start()` / `log_scrape_complete()` in `run()`. **Every `return` after `log_scrape_start()` must call `log_scrape_complete()` first** (else phantom "running" status). Put it in `finally` for scrapers with hard timeouts.
+- `log_scrape_error(source, error, start_time)` — that argument order, not `(source, start_time, error)`.
+- Wrap DB work in `try/except/finally`: `except` → `log_scrape_error` + re-raise; `finally` → `session.close()`.
+- Logging via `scrapers.logger_config.get_logger("scraper_name")`.
+- New columns: `Base.metadata.create_all()` does NOT alter existing tables — explicit `ALTER TABLE` on SQLite AND Supabase, and map it in the ORM (`database.py`) or full_replace syncs silently drop it.
 
-**Live app:** suleman7-pe.streamlit.app
-**Repo:** github.com/suleman7-DMD/dental-pe-tracker
+## Data-integrity gotchas
 
-## Architecture
+- Use `insert_or_update_practice()` / `insert_deal()` — never raw INSERT. Never DELETE from `practices`.
+- **`insert_deal()` dedup is asymmetric:** Python checks 5 fields (platform, date, source, target, state); the DB unique index `uix_deal_no_dup` covers 3 (platform, target, date). Multi-state deals hit the constraint — per-row `begin_nested()` savepoints in the sync handle it; don't "fix" by tightening Python dedup.
+- **NPPES taxonomy:** only prefix `1223` is Dentist. Never `1224` (denturist), `124Q` (hygienist), `1268` (assistant) — F32 purged 20k leaked rows.
+- **CASCADE trap:** `TRUNCATE practices CASCADE` wipes `practice_changes` (and intel/signals). The sync resets `practice_changes` sync_metadata afterward; adding a new FK to `practices` requires updating that reset.
+- `database.normalize_punctuation()` maps curly quotes → ASCII at the GDN/PESP boundary (F19) so "Smith’s" and "Smith's" dedupe.
+- `_normalize_address_for_grouping` (STE→SUITE, directionals, street types) drives `deduplicate_practices_in_zip()`.
+- **Classifier ordering:** `non_clinical` runs before DSO matching; ambiguous keywords (`MANAGEMENT GROUP/COMPANY/SERVICES`) skip non_clinical when the name also has dental keywords. Every location match (PE or not) must set `classification_confidence` + `classification_reasoning`. `dso_classifier` Pass 3 only fills `entity_classification IS NULL` — no `--force` in `refresh.sh`.
+- Raw-SQL flip scripts must bump `updated_at`; promotions/demotions need an evidence JSON in `data/dso_research/`.
+- Adding a deal type → also add it to `DEAL_TYPE_COLORS` + the sidebar filter in `dashboard/app.py`.
 
+## Per-scraper invariants (April 2026 audit — do not regress)
+
+- `refresh.sh::run_step()` reaps with `pkill -TERM -P $bgpid` (then `-KILL`) — plain `kill` orphans the python child behind `tee`.
+- `pesp_scraper.py` — DNS/HTTP retry with backoff + 40+ `COMMENTARY_PATTERNS` prefilter.
+- `gdn_scraper.py` — `MAX_RETRIES=3`, `_is_roundup_link()` guard, `_PASS_THROUGH_SET`, `_DEAL_VERB_SET`, `_PARTNERS_VERB_NEXT={"with","to","and"}` (F21).
+- `adso_location_scraper.py` — `HTTP_TIMEOUT=(10,30)`, `MAX_SECONDS_PER_DSO=300`, `MAX_SECONDS_TOTAL=1500`, `log_scrape_complete()` in `finally`; 14/18 DSOs are `needs_browser` (skipped without Playwright); delete-then-reinsert is per `dso_name` and gated on a non-aborted run.
+- `sync_to_supabase.py` — `deals` uses `incremental_updated_at` (not `incremental_id`), so dedup fixes must land in both incremental paths; `MIN_ROWS_THRESHOLD` floors; post-sync `_verify_table_count()`.
+- `ada_hpi_benchmarks` freshness: check which timestamp column is populated before wiring a freshness query (`created_at` is the reliable one).
+- `weekly_research.py` — `validate_dossier()` gate before store; `DRIFT_REMAP` coerces `verification_quality` drift, off-spec values quarantine (F33).
+
+## Tests
+
+```bash
+python3 -m pytest scrapers/test_sync_resilience.py scrapers/test_gdn_parser.py
+python3 -c "import ast,sys; ast.parse(open(sys.argv[1]).read())" scrapers/<file>.py   # quick syntax check
 ```
-scrapers/            Python scrapers + importers + classifiers (the data pipeline)
-dashboard/app.py     Streamlit dashboard (2,583 lines, single file, 6 pages)
-scrapers/database.py SQLAlchemy models + helpers (SQLite)
-data/                SQLite DB (145 MB) + raw data files (CSV, XLSX)
-logs/                Pipeline event log (JSONL) + per-run log files
-pipeline_check.py    Diagnostic health check tool (540 lines)
-```
-
-No build system. Push to `main` → Streamlit Cloud auto-deploys in ~60s.
-
-## Database (SQLite via SQLAlchemy)
-
-Key tables: `deals`, `practices`, `practice_changes`, `watched_zips`, `zip_scores`, `dso_locations`, `ada_hpi_benchmarks`
-
-- **practices**: 381,598 NPI rows (global), 13,818 in watched ZIPs. NOT a practice count — see UNITS note above. Fields: npi (PK), practice_name, doing_business_as, address, city, state, zip, phone, entity_type, taxonomy_code, ownership_status, affiliated_dso, affiliated_pe_sponsor, buyability_score, classification_confidence, classification_reasoning, data_source, latitude, longitude, parent_company, ein, franchise_name, iusa_number, website, year_established, employee_count, estimated_revenue, num_providers, location_type, import_batch_id, data_axle_import_date
-- **deals**: 2,500+ rows. PE dental deals from PESP, GDN, PitchBook
-- **practice_changes**: Change log for name/address/ownership changes (acquisition detection). 5,100+ rows.
-- **zip_scores**: Per-ZIP consolidation stats (290 scored ZIPs), recalculated by merge_and_score.py. One row per ZIP (deduped).
-- **watched_zips**: 290 ZIPs (269 Chicagoland/IL + 21 Boston/MA). Auto-backfilled by ensure_chicagoland_watched(). The "1 other" callout in earlier docs was a stale artifact — see `/Users/suleman/dental-pe-tracker/CLAUDE.md` for canonical breakdown.
-- **dso_locations**: scraped DSO office locations from ADSO/DSO websites (full_replace synced). **596 rows = 202 ADSO + 394 IL seed.** ADSO yields 0 IL (14/18 brands need a browser); the 2026-05-30 IL DSO seeding (`seed_il_dso_locations.py`) added 394 real IL offices from NPPES brand-mining + web-verified friendly-PC clusters + DSO public locators (idempotent `il_seed:%` source rows).
-- **ada_hpi_benchmarks**: 918 rows. State-level DSO-affiliation rates by career stage (2022-2024). Used as the per-dentist UPPER anchor for the corporate confidence band (IL 2024 = 14.6%, MA 2024 = 14.9%).
-
-### Current Data Stats (as of 2026-05-30, post-reclassification)
-- **381,598 NPI records** (global; NOT "practices" — see UNITS note). Watched: 13,818 NPI rows → 5,657 address-deduped locations.
-- **Confirmed corporate floor = 262 / 4,970 GP locations = 5.27%** (CHI 243/4,608 = 5.27%, BOS 19/362 = 5.25%). Raised from 4.02% (200) by the 2026-05-30 IL DSO seeding, which promoted 62 watched-IL GP locations at web-verified friendly-PC corporate addresses (Heartland/Dental Dreams/Smile Doctors hidden under local P.C. names) from independent → corporate (`reclassify_verified_corporate_il.py`). Still an evidence FLOOR, not "the consolidation rate" — DSOs keep more local names than name/EIN matching can see, so the true share is higher. Anchored above by ADA HPI (IL 14.6%, MA 14.9% of dentists DSO-affiliated, 2024). Durable across weekly runs (`merge_and_score.py` recomputes the floor FROM `practice_locations`, which nothing in `refresh.sh` rebuilds).
-- 2,861 deals
-- 2,992 Data Axle enriched practices (lat/lon, revenue, employees, year established)
-- 290 scored ZIPs
-- **Gating + sync:** the 5.27% floor (location-level) is in SQLite and synced to Supabase via the surgical `scrapers/_sync_floor_tables_only.py` (zip_scores + practice_locations + dso_locations) 2026-05-30 — LIVE. The NPI-level `practices` flips (214 rows → 1,089/13,818 = 7.88% SQLite) are NOT yet synced; Supabase NPI-unit numbers stay 875/6.33% until the next weekly full sync. The frontend confirmed-floor + ADA-band presentation lives in the Next.js repo (`consolidation-honesty.ts`); `getCorporateBand(confirmedPct, state)` takes the floor as a runtime parameter, so the live site auto-reflects 5.27%.
-
-## Dashboard Pages (8 total, Next.js primary)
-
-| Page | What It Shows |
-|------|---------------|
-| **Home** | KPI cards, nav cards, recent deals, data freshness |
-| **Deal Flow** | Every PE dental deal — charts by year, state, deal type, recent activity feed |
-| **Market Intel** | Watched ZIPs — consolidation map, ownership breakdown, ZIP-level detail, practice changes |
-| **Buyability** | Individual practice scoring — filters by ZIP, verdict categories, confidence ratings |
-| **Job Market** | Post-graduation job hunting — practice density map, market overview, searchable directory, opportunity signals, ownership landscape, market analytics |
-| **Research** | Deep dives — PE sponsor profiles, platform profiles, state analysis, SQL explorer |
-| **Intelligence** | AI qualitative research — ZIP market intel (10-signal reports), practice dossiers (readiness, confidence, flags), expandable detail panels |
-| **System** | Data freshness, pipeline logs, manual data entry forms |
-
-### Job Market Page Structure
-- Living location selector: West Loop/South Loop (142 ZIPs), Woodridge (129 ZIPs), Bolingbrook (127 ZIPs), All Chicagoland (268 ZIPs)
-- 6 KPI cards computed from practice data (not zip_scores): Total Practices, Independent %, Consolidated %, Avg Buyability, 10+ Staff, Retirement Risk
-- Pydeck dual-density hexagon map: green = independent clusters, red/orange = consolidated clusters, individual practice dots via toggle
-- Market Overview: consolidation by ZIP bar chart, ownership donut, practice age histogram with retirement risk line, top DSOs bar chart
-- Searchable Practice Directory with ownership/source filters, sort options, CSV download
-- Opportunity Signals tabs: Retirement Risk, High Buyability scatter, Recent Changes
-- Ownership Landscape: status bar chart, size distribution, top DSOs table, DSO penetration by ZIP
-- Market Analytics: dentist density by ZIP, consolidation breakdown stacked bar, competitive landscape (DSO market share, PE sponsors active)
-
-## Automated Pipeline
-
-Cron runs every Sunday 8am (`scrapers/refresh.sh`):
-1. Backup DB → 2. PESP scraper → 3. GDN scraper → 4. PitchBook importer → 5. ADSO scraper → 6. ADA HPI downloader → 7. DSO classifier → 8. Merge & score → 9. Weekly research → 10. Supabase sync → Compress DB + git push
-
-Monthly NPPES refresh (first Sunday 6am): downloads federal provider data updates.
-
-Every step logs structured events to `logs/pipeline_events.jsonl` via `scrapers/pipeline_logger.py`. The sync step auto-pushes new events to Supabase's `pipeline_events` table (dashboard System page reads this).
-
-## Critical Rules
-
-### Don't break the pipeline
-- ALL scrapers import from `scrapers.pipeline_logger` — keep `log_scrape_start()` and `log_scrape_complete()` calls in every scraper's `run()` function
-- **`log_scrape_error` signature**: `(source, error, start_time)` — NOT `(source, start_time, error)`. Verify before adding new callers.
-- **Early returns must log**: Every `return` in a scraper's `run()` after `log_scrape_start()` MUST call `log_scrape_complete()` first, or the dashboard shows phantom "running" status.
-- **Session cleanup**: ALL scrapers must wrap DB work in `try/except/finally` — `except` calls `log_scrape_error` + re-raises, `finally` calls `session.close()`.
-- ALL scrapers import from `scrapers.logger_config` — use `get_logger("scraper_name")`
-- `database.py` auto-decompresses `.db.gz` on Streamlit Cloud — never remove that logic
-- `refresh.sh` uses `run_step()` wrapper — errors in one step don't kill the pipeline
-
-### Market Intel transparency
-- Consolidation percentages MUST use total practices as denominator (conservative)
-- Never use `classified_count` as denominator for headline KPIs — that inflates numbers
-- Always show unknown count when >30% of practices are unclassified
-- Labels must say "Known Consolidated" not just "Consolidated"
-
-### Data integrity
-- `insert_or_update_practice()` and `insert_deal()` handle dedup — use them, don't raw INSERT
-- **`insert_deal()` dedup is asymmetric**: Python checks 5 fields (platform, date, source, target, state) but DB unique index only covers 3 (platform, target, date). Multi-state deals silently dropped by DB constraint.
-- NPPES data uses NPI as unique key (10-digit number)
-- **NPPES taxonomy**: Only `1223` prefix = Dentist. `1224` = Denturist (NOT dental). Never include `1224`.
-- **Supabase sync CASCADE trap**: `TRUNCATE practices CASCADE` wipes `practice_changes` (FK dependency). The sync script resets `practice_changes` sync_metadata after CASCADE so incremental sync re-sends all rows. Never add new FK references to `practices` without updating this reset logic.
-- PitchBook dedup uses fuzzy matching on company name + date
-- Data Axle dedup uses address normalization + fuzzy name matching
-- Data Axle importer has Pass 6: Corporate Linkage Detection (parent company fuzzy match, EIN clustering, IUSA parent linkage, franchise field)
-- Never delete from `practices` table — only update ownership_status
-- **`DEAL_TYPE_COLORS` in dashboard**: Must include ALL deal types. When adding new deal types in scrapers, also add to the color map AND sidebar filter list in `dashboard/app.py`.
-- **`_normalize_address_for_grouping`**: Normalizes `STE` → `SUITE`, directionals (N/S/E/W → full), street types (ST/AVE/BLVD → full). Used by `deduplicate_practices_in_zip()`.
-- **Classifier rule ordering**: `non_clinical` check runs before DSO matching. For ambiguous keywords (`MANAGEMENT GROUP/COMPANY/SERVICES`), the check skips if name also contains dental keywords (DENTAL, ORTHODONT, etc.) — lets potential DSOs fall through to matching rules. Non-ambiguous keywords (LAB, SUPPLY, BILLING) always classify as non_clinical.
-- **Location match metadata**: `classification_confidence` and `classification_reasoning` must be set for ALL location matches (PE and non-PE), not just PE-backed ones.
-
-### Streamlit Cloud constraints
-- DB must be gzipped for git push (`data/dental_pe_tracker.db.gz`)
-- App decompresses on first load via `_ensure_db_decompressed()`
-- Keep `dashboard/app.py` imports inside functions where possible (cold start speed)
-
-## File Quick Reference
-
-| File | Lines | What It Does |
-|------|-------|-------------|
-| `dashboard/app.py` | 2,583 | Full Streamlit dashboard — 6 pages |
-| `scrapers/database.py` | 542 | SQLAlchemy models, init_db(), helpers |
-| `scrapers/nppes_downloader.py` | 681 | Downloads + imports federal dental provider data |
-| `scrapers/data_axle_importer.py` | 2,650 | Imports Data Axle CSVs with 7-phase pipeline + Pass 6 corporate linkage |
-| `scrapers/merge_and_score.py` | 1,070 | Dedup deals, score ZIPs, ensure_chicagoland_watched(), saturation metrics |
-| `scrapers/dso_classifier.py` | 1,570 | 4-pass classifier: name pattern (P1), location matching (P2), entity_classification location-deduped (P3, post-`dc18d24`), corporate signal escalation (P4) |
-| `scrapers/pesp_scraper.py` | 1,201 | Scrapes PE deal announcements (DNS retry wrapper + COMMENTARY_PATTERNS prefilter) |
-| `scrapers/gdn_scraper.py` | 1,210 | Scrapes DSO deal roundups (MAX_RETRIES=3, _is_roundup_link guard, expanded _DEAL_VERB_SET) |
-| `scrapers/adso_location_scraper.py` | 968 | Scrapes DSO office locations (HTTP_TIMEOUT=(10,30), MAX_SECONDS_PER_DSO=300) |
-| `scrapers/ada_hpi_downloader.py` | 237 | Auto-downloads ADA benchmark XLSX files |
-| `scrapers/ada_hpi_importer.py` | 351 | Parses ADA HPI XLSX by state/career stage |
-| `scrapers/pitchbook_importer.py` | 616 | CSV/XLSX import from PitchBook deal/company search |
-| `scrapers/data_axle_exporter.py` | 805 | Interactive ZIP-batch export tool (7 Chicagoland zones + Boston) |
-| `scrapers/pipeline_logger.py` | 295 | Structured JSON-Lines event logger |
-| `pipeline_check.py` | 540 | Diagnostic health check tool |
-
-## Entity Classification System
-
-The `entity_classification` field on practices provides granular practice-type labels beyond `ownership_status`. Classifications are assigned by the DSO classifier's Pass 3 (`classify_entity_types()` in `dso_classifier.py`), using provider count at address, last name matching, taxonomy codes, corporate signals, and Data Axle enrichment data.
-
-### All 12 Entity Classification Values
-> Location-level reclassification (`reclassify_locations.py`, 2026-05-30) added `org_only_npi` and recomputed every `practice_locations` row from the shared brand registry (`dso_brands.py`). `org_only_npi` is treated as **unknown** in the frontend and never counts as a deduped location, so it does not affect location-level corporate shares.
-
-| Value | Definition |
-|-------|-----------|
-| `org_only_npi` | Bare organization NPI (NPI-2) with no co-located individual provider and no other signal — a federal registration artifact, not a classifiable practice. Quarantined as unknown so it can't inflate independent counts. |
-| `solo_established` | Single-provider practice, operating 20+ years or default for single providers with limited data |
-| `solo_new` | Single-provider practice, established within last 10 years |
-| `solo_inactive` | Single-provider practice, missing phone and website — likely retired or minimal activity |
-| `solo_high_volume` | Single-provider with 5+ employees or $800k+ revenue — likely needs associate help |
-| `family_practice` | 2+ providers at same address share a last name — internal succession likely |
-| `small_group` | 2-3 providers at same address, different last names, not matching known DSO |
-| `large_group` | 4+ providers at same address, not matching known DSO brand |
-| `dso_regional` | Appears independent but shows corporate signals (parent company, shared EIN, franchise field, branch location type, generic brand + high provider count) |
-| `dso_national` | Known national/regional DSO brand (Aspen, Heartland, etc.) matched with high confidence |
-| `specialist` | Specialist practice (Ortho, Endo, Perio, OMS, Pedo) — identified by taxonomy code or practice name keywords |
-| `non_clinical` | Dental lab, supply company, billing entity, staffing service |
-
-Each classification stores its reasoning in `classification_reasoning` for auditability. First matching rule wins (priority: non_clinical > specialist > dso_national > corporate signals > family_practice > large_group > small_group > solo variants).
-
-### Saturation Metrics (in zip_scores)
-Computed by `merge_and_score.py`'s `compute_saturation_metrics()`:
-
-- **DLD (Dentist Location Density):** `dld_gp_per_10k` = GP dental offices per 10,000 residents. National avg ~6.1. Lower = less competition.
-- **Buyable Practice Ratio:** `buyable_practice_ratio` = % of GP offices classified as solo_established, solo_inactive, or solo_high_volume. Higher = more acquisition targets.
-- **Corporate Share:** `corporate_share_pct` = % of GP offices classified as dso_regional or dso_national. Higher = more consolidated market.
-- **Market Type:** `market_type` = computed classification based on combined metrics. Set to NULL when `metrics_confidence` is 'low' (data insufficient for reliable labeling).
-- **People per GP Door:** `people_per_gp_door` = population / GP locations. Higher = fewer options per resident.
-
-### Specialist Separation Methodology
-A practice is classified as `specialist` if ANY of these conditions are met:
-1. **Taxonomy code match** — NPPES taxonomy starts with specialist prefix (1223D, 1223E, 1223P, 1223S, 1223X). Excludes 1223G (General) and 122300 (General Dentist).
-2. **Practice name keyword** — Name contains: ORTHODONT, PERIODON, ENDODONT, ORAL SURG, MAXILLOFACIAL, PEDIATRIC DENT, PEDODONT, PROSTHODONT, IMPLANT CENT.
-3. A location (unique address) counts as GP if it has at least one non-specialist, non-clinical practice. Specialist-only locations are counted separately in `total_specialist_locations`.
-
-### Confidence System
-- **`metrics_confidence`** on zip_scores: 'high' (classification coverage >80% AND unknown ownership <20%), 'medium' (coverage >50% AND unknown <40%), 'low' (anything else).
-- **`market_type_confidence`**: 'confirmed' (metrics_confidence is high), 'provisional' (medium), 'insufficient_data' (low — market_type set to NULL).
-- **`classification_confidence`** on practices: 0-100 score from DSO name/pattern matching. Higher = more certain the ownership classification is correct.
-
-### Market Type Values
-Priority order (first match wins): `low_resident_commercial`, `high_saturation_corporate`, `corporate_dominant`, `family_concentrated`, `low_density_high_income`, `low_density_independent`, `growing_undersupplied`, `balanced_mixed`, `mixed` (default).
-
-### Buyability Score Modifiers (Phase 5)
-In addition to the base scoring in `compute_buyability()` (data_axle_importer.py), two ADDITIVE penalties are applied after entity classification:
-- **Family practice penalty (-20):** `entity_classification == 'family_practice'` — shared last name at address suggests internal succession.
-- **Multi-ZIP presence penalty (-15):** Same practice name or EIN appears in 3+ watched ZIPs — likely a chain entity.
-
-## April 2026 Audit (Do Not Regress)
-
-A 3-week cron outage was root-caused across every scraper. Fixes validated end-to-end on 2026-04-22 (16,798 rows synced, 6 new deals pushed, zero fatal errors). Full audit board lives at repo root: `SCRAPER_AUDIT_STATUS.md`.
-
-A follow-up multi-agent (A-D) re-audit on 2026-04-25→26 verified all 33 F-numbered fixes individually at the root level — see `CLAUDE.md` "Session Digest — 2026-04-26 Multi-Agent F-Fix Verification (33/33 PASS)" at repo root for the full roll-up table. Headline scraper-side outcomes from that re-audit:
-
-- **F19** — `database.normalize_punctuation()` translates 8 curly Unicode variants (U+2018, U+2019, U+201A, U+201B, U+201C, U+201D, U+201E, U+201F) → ASCII at the GDN/PESP scraper boundary. `_PUNCT_TRANSLATIONS` lives at `database.py:747-756`; called from `gdn_scraper.py:1029-1031` and `pesp_scraper.py:591-593` + `901-905` for platform / pe_sponsor / target. "Smith's Dental" (U+2019) and "Smith's Dental" (U+0027) now dedupe.
-- **F20** — `ada_hpi_importer.py` lines 226 + 229 set `updated_at = now` on both INSERT and UPDATE. Verified live: total=918, updated_at non-null=918 (was NULL on all 918 rows pre-fix).
-- **F21** — `_PARTNERS_VERB_NEXT = {"with", "to", "and"}` lookahead at `gdn_scraper.py:653`. "Zyphos Dental Partners acquired X" (noun, accumulate) and "BrandX partners with Y" (verb, stop) both parse correctly.
-- **F32** — NPPES hygienist-leak cleanup (commit `38bf64e`): removed 20,406 NPPES rows with taxonomy 124Q (hygienist), 1268 (dental assistant), 1224 (denturist) that had been leaking into `practices` despite being non-Dentist. Only the 1223 prefix is Dentist. Defensive filter in `nppes_downloader.py` + sync rejection if non-1223 prefix slips through. Live counts: global=381,598 (was 402,004), watched=13,818, non_dental_leak=0.
-- **F33** — `weekly_research.py` `DRIFT_REMAP` (lines 183-191) coerces 7 known `verification_quality` drift values: `high→partial`, `sufficient/good/complete→verified`, `low/poor/none→insufficient`. Truly off-spec values trigger `evidence_quality_unknown` quarantine. `research_engine.py` system prompts (lines 58 ZIP, 135 practice) state STRICT enum: `"evidence_quality MUST be exactly one of: 'verified', 'partial', 'insufficient'. NEVER use 'high', 'low', 'medium'..."`. JSON schema reinforces "STRICT enum, NO alternatives accepted". Eliminates the pre-fix problem where ~10 dossiers per 200-practice batch returned `"high"` and slipped past the validation gate.
-
-### Scraper-side fixes
-
-- `refresh.sh::run_step()` now uses `pkill -TERM -P $bgpid` (then `-KILL` after grace) to reap all subshell descendants. `kill $bgpid` alone was leaving the python child orphaned and attached to `tee`, so a hung scraper blocked the whole pipeline.
-- `pesp_scraper.py` — DNS/HTTP retry wrapper with exponential backoff for NXDOMAIN and transient failures. 40+ `COMMENTARY_PATTERNS` regex pre-filter before deal extraction to handle prose-heavy posts.
-- `gdn_scraper.py` — `MAX_RETRIES=3` with backoff + `_is_roundup_link()` category guard so the pagination crawler doesn't wander into unrelated posts when GDN restructures category pages.
-- `adso_location_scraper.py` — `HTTP_TIMEOUT=(10,30)` connect/read tuple, `MAX_SECONDS_PER_DSO=300`, `MAX_SECONDS_TOTAL=1500`. Gentle Dental and Tend previously hung indefinitely on slow iframe-loaded location lists. `log_scrape_complete()` moved into `finally` so dashboards no longer show phantom "running" after hard timeouts.
-- `sync_to_supabase.py` — per-row `conn.begin_nested()` savepoints in both `_sync_incremental_updated_at` (deals) and `_sync_incremental_id` (practice_changes). Needed because deals has a secondary partial UNIQUE INDEX `uix_deal_no_dup (platform_company, target_name, deal_date)` that isn't the `ON CONFLICT` target — any duplicate previously aborted the whole batch transaction.
-
-### Audit gotchas
-
-- **`TABLES_TO_SYNC` strategy map is not obvious**: `deals` uses `incremental_updated_at`, NOT `incremental_id`. A fix to dedup behavior must land in BOTH paths.
-- **`insert_deal()` dedup is asymmetric**: Python checks 5 fields; Postgres unique index covers 3. Multi-state deals with shared platform/target/date silently hit the constraint. Savepoints are the right abstraction, not tighter Python-side filtering.
-- **Freshness columns aren't always populated**: `ada_hpi_benchmarks.updated_at` is NULL for all 918 rows — only `created_at` is set by `ada_hpi_importer.py`. Always check which timestamp column is actually populated before wiring a freshness query.
-- **`tee | pipe` hides orphans**: a bash subshell that pipes into `tee` leaves the piped command as a separate PID; `kill $subshell_pid` doesn't reap it. Always use `pkill -P`.
-
-## Skills Available
-
-Use `/scraper-dev` when modifying any scraper. Use `/dashboard-dev` when modifying the Streamlit app. Use `/data-axle-workflow` for Data Axle export/import tasks. Use `/debug-pipeline` when investigating scraper failures or data issues.

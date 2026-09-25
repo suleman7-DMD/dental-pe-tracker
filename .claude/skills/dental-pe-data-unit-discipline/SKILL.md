@@ -13,7 +13,7 @@ denominator.
 
 | Unit | What it is | Where | Scale (2026-07-04) |
 |---|---|---|---|
-| **NPI row** | One federal NPI record (NPI-1 provider OR NPI-2 org). ~2.4× the clinic count | `practices` table | 381,598 total (2026-07-08; `SELECT COUNT(*) FROM practices`); 13,818 in watched ZIPs |
+| **NPI row** | One federal NPI record (NPI-1 provider OR NPI-2 org). ~2.4× the clinic count | `practices` table | 383,321 total (2026-09-25; `SELECT COUNT(*) FROM practices`); 13,860 in watched ZIPs |
 | **Location** | One physical clinic (deduped by normalized address+ZIP) | `practice_locations` | 5,657 all-class watched; 4,801 GP |
 | **GP universe** | The census denominator: GP locations only, excl. specialist/non_clinical/da_unverified/org_only_npi | `SUM(zip_scores.total_gp_locations)` | 4,801 total = **4,439 IL** + 362 MA (parked) |
 | **Census row** | One reviewed GP location with an earned `ownership_tier` | `practice_locations.ownership_tier` | 3,692 (83.17% of IL universe, 2026-07-09 P5 recovery) |
@@ -22,7 +22,7 @@ Rules:
 - **Never say "practices" for NPI counts.** Say "NPI rows". Headline KPIs use location-deduped
   counts; NPI counts belong in subtitles.
 - The census denominator is ALWAYS the IL GP universe (4,439), never 4,801 (includes parked MA),
-  never 5,657 (includes specialists), never 13,818 (NPI rows).
+  never 5,657 (includes specialists), never 13,860 (NPI rows).
 - MA/Boston is PARKED: filter from view, never census, never delete.
 
 ## 2. Numbers cheat-sheet (verified 2026-07-04 — recheck, don't trust)
@@ -37,13 +37,15 @@ SELECT COUNT(*) FROM practice_locations
   WHERE entity_classification IN ('dso_regional','dso_national');            -- 268 (detector floor, locations)
 SELECT COUNT(*) FROM practices
   WHERE entity_classification IN ('dso_regional','dso_national')
-  AND zip IN (SELECT zip_code FROM watched_zips);                            -- 1152 (detector floor, NPIs)
+  AND zip IN (SELECT zip_code FROM watched_zips);                            -- 1158 (detector floor, NPIs; 2026-09-25, CI min 1152)
 "
 ```
 
-**Scoping trap:** the NPI floor is 1,152 only when scoped to watched ZIPs (Supabase `practices`
-holds ONLY the 13,818 watched rows). The unscoped SQLite count is 1,153 — one corporate NPI
-sits outside the watched set. If you see 1,153 vs 1,152, that is the explanation, not drift.
+**Scoping trap:** the NPI floor is 1,158 only when scoped to watched ZIPs (Supabase `practices`
+holds ONLY the 13,860 watched rows). The unscoped SQLite count is 1,162 — four corporate NPIs
+sit outside the watched set (MI 48236, GA 30188, IL 60085 ×2; re-derived 2026-09-25). If you
+see 1,162 vs 1,158, that is the explanation, not drift. (The 1,152 → 1,158 rise was organic:
+9 corp NPIs created by the 2026-08-02 NPPES refresh at known DSO addresses; CI min stays 1,152.)
 
 ## 3. Two ownership numbers that must never be conflated
 
@@ -93,10 +95,10 @@ The ONLY legal presentation of census ownership (code gate:
 
 ## 6. Common hasty-model failures
 
-- Quoting the 13,818 NPI count as "practices in Chicagoland" (it's ~2.9× the GP clinic count).
+- Quoting the 13,860 NPI count as "practices in Chicagoland" (it's ~2.9× the GP clinic count).
 - Computing census % with 4,801 as denominator (includes parked MA — the universe is 4,439).
 - Labeling Not-Solo % as "DSO share" — violates the ratified labeling law.
-- "Fixing" 1,153 vs 1,152 as if it were sync drift (it's watched-ZIP scoping, §2).
+- "Fixing" 1,162 vs 1,158 as if it were sync drift (it's watched-ZIP scoping, §2).
 - Copying a count from CLAUDE.md or an older doc without rerunning the query — several docs
   carry historical numbers superseded by dated notes. **This skill itself shipped with "402k
   total" NPI rows inherited from `dental-pe-nextjs/CLAUDE.md:67` (a 2026-04-25 snapshot; live
