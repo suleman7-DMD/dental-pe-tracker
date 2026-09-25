@@ -222,3 +222,20 @@ def test_next_skips_checked_and_claimed_rows(tmp_path, monkeypatch, capsys):
 def test_multiple_pretty_printed_objects_parse():
     text = '{\n "a": 1\n}\n{\n "b": 2\n}'
     assert rv.parse_objects(text) == [{"a": 1}, {"b": 2}]
+
+
+def test_search_budget_stops_new_claims_and_release_returns_rows(tmp_path, monkeypatch, capsys):
+    setup_dir(tmp_path, monkeypatch)
+    monkeypatch.setattr(rv, "dns_status", lambda urls: {})
+    monkeypatch.setattr(rv, "SEARCH_BUDGET", 3)
+    assert rv.main(["--rapid-dir", str(tmp_path), "next", "--n", "1", "--session", "a"]) == 0
+    assert "loc:aaaaaaaaaaaaaaaa" in capsys.readouterr().out
+    (tmp_path / "checks.jsonl").write_text(json.dumps({"candidate_id": "loc:zzzz", "session": "a", "searches": 3,
+                                                       "recorded_at": "2026-09-25T21:00:00+00:00"}) + "\n")
+    assert rv.main(["--rapid-dir", str(tmp_path), "next", "--n", "2", "--session", "a"]) == 0
+    out = capsys.readouterr().out
+    assert "loc:aaaaaaaaaaaaaaaa" in out and "loc:bbbbbbbbbbbbbbbb" not in out   # finishes its claim only
+    assert rv.main(["--rapid-dir", str(tmp_path), "release", "--session", "a"]) == 0
+    assert "released 1" in capsys.readouterr().out
+    assert rv.main(["--rapid-dir", str(tmp_path), "next", "--n", "1", "--session", "a"]) == 0
+    assert "SEARCH BUDGET REACHED" in capsys.readouterr().out

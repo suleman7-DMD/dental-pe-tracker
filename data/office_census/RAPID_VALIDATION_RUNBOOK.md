@@ -22,12 +22,18 @@ Be exactly as careful as that deserves.
 ```sh
 cd /Users/suleman/dental-pe-census-work
 python3 scrapers/office_census_rapid.py status
+python3 scrapers/directory_web_checks_publish.py --allow-db-write --verify
 ```
 
+The publish catches the live page up with anything an earlier session recorded but didn't
+publish. It is safe to run any time. Handle a `FAIL` as in §1.
+
 1. Load the web tools: ToolSearch `select:WebSearch,WebFetch`.
-2. Choose a session tag, `rv-MMDD-HHMM` (e.g. `rv-0925-1830`), and use it in every
-   `next`/`record` call this session. In the commands below it is shown as `S`.
+2. Choose a session tag, `rv-MMDD-HHMM` in UTC (e.g. `rv-0925-1830`), and use it in every
+   `next`/`record`/`release` call this session. In the commands below it is shown as `S`.
 3. Work inline. Do not spawn subagents.
+4. Other sessions may be running at the same time. That is fine: `next` never hands two
+   sessions the same row.
 
 ## 1. The loop
 
@@ -39,6 +45,14 @@ For each card, in order: **search → decide → record**. Record each row right
 decide it; then take the next card. When the batch is done, call `next` again. Keep going
 until `next` says the queue is empty or the user stops you. Don't write progress reports
 between batches. Everything you record is already saved.
+
+**Search budget.** A session gets about 200 web searches in total.
+- `next` shows how many you have used. After 170, it hands out only rows you already claimed,
+  then prints `SEARCH BUDGET REACHED`.
+- When you see that, or when WebSearch itself refuses (a limit or quota error), stop and go
+  straight to §7.
+- Don't stop just because the conversation is long. Context is compacted automatically, and
+  your work is saved row by row.
 
 **When `next` prints `PUBLISH DUE`,** run the command it shows before continuing:
 
@@ -72,6 +86,8 @@ rows should take one search.
    Otherwise run `q2`, then `q3`.
 4. **Fetch a page only when a decisive fact isn't visible in the results.** Decisive facts are
    the address, suite, phone or a closure. Usually fetch the practice's contact page.
+   - Use WebFetch, or `curl -sL --max-time 15 URL | head -c 20000` via Bash. Fetches don't use
+     up the search budget; searches do.
    - Yelp and Google can't be fetched; use the result titles instead.
    - A fetch that fails on DNS means the site is dead. Tag it `website_dead`.
 5. **When the budget is spent,** choose IDENTITY_ONLY, NO_WEB_EVIDENCE or ESCALATE and move on.
@@ -243,14 +259,23 @@ Don't research ownership, and don't browse beyond the budget for any of this.
 
 ## 7. Ending a session
 
-Stop when `next` reports the queue is empty, when the user stops you, or when your context is
-running long. Unrecorded claimed rows are released automatically after 4 hours.
+End the session when any of these happens:
+- `next` says the queue is empty;
+- `next` prints `SEARCH BUDGET REACHED`;
+- WebSearch refuses with a limit error;
+- the user stops you.
+
+Record any row you have already decided, then run:
 
 ```sh
+python3 scrapers/office_census_rapid.py release --session S
 python3 scrapers/office_census_rapid.py status
 python3 scrapers/directory_web_checks_publish.py --allow-db-write --verify
 git add data/office_census/rapid/checks.jsonl && git commit -q -m "Rapid validation: session S"
 ```
+
+- `release` hands your unrecorded claimed rows back to the queue. Without it they stay
+  locked for 4 hours.
 
 - The publish puts this session's rows on the live page. Handle `FAIL` as in §1.
 - The commit is local only, on this branch, and adds only `checks.jsonl`.

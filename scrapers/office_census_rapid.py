@@ -11,6 +11,7 @@ existing directory rows against the live web, one row at a time.
   python3 scrapers/office_census_rapid.py status
   python3 scrapers/office_census_rapid.py list --decision ESCALATE [--sample 20]
   python3 scrapers/office_census_rapid.py check
+  python3 scrapers/office_census_rapid.py release --session S    # hand back unrecorded claims
 
 Protocol: data/office_census/RAPID_VALIDATION_RUNBOOK.md.
 Live page: scrapers/directory_web_checks_publish.py copies the latest check per row
@@ -49,6 +50,9 @@ RULES = "rapid-2026-09-25.2"
 # .2 added ties_by on NOT_CURRENT_GP; checks recorded under these rules stay valid without it.
 LEGACY_RULES = {"rapid-2026-09-25.1"}
 PUBLISH_EVERY = 50
+# A Claude Code session gets ~200 web searches; stop claiming new rows before that so a
+# session ends cleanly (claimed rows recorded, published, committed) instead of mid-batch.
+SEARCH_BUDGET = int(os.environ.get("RAPID_SEARCH_BUDGET", "170"))
 SEED = 20260925
 CALIBRATION_N = 100
 CLAIM_HOURS = 4
@@ -569,16 +573,27 @@ def render(card, i, n, dns):
     return "\n".join(L)
 
 
+def session_searches(session):
+    return sum(e.get("searches", 0) for e in read_jsonl(path("checks.jsonl")) if e.get("session") == session)
+
+
 def cmd_next(args):
     queue = load_queue()
     decided, swept = load_ledger_state()
     done = set(latest_checks())
+    used = session_searches(args.session)
     with locked():
         claims = load_claims()
         mine = [c for c in queue if claims.get(c["cid"], {}).get("session") == args.session
                 and c["cid"] not in done]
         picked = mine[:args.n]
+        if used >= SEARCH_BUDGET and not picked:
+            print(f"SEARCH BUDGET REACHED: session {args.session} has used {used} web searches "
+                  f"(budget {SEARCH_BUDGET}). Claim nothing more: end the session now (runbook section 7).")
+            return 0
         for c in queue:
+            if used >= SEARCH_BUDGET:
+                break
             if len(picked) >= args.n:
                 break
             cid = c["cid"]
@@ -597,7 +612,8 @@ def cmd_next(args):
         return 0
     dns = dns_status([c["website"] for c in picked])
     remaining = sum(1 for c in queue if c["cid"] not in done)
-    print(f"session {args.session}: {len(picked)} rows claimed · {remaining} rapid rows without a check")
+    print(f"session {args.session}: {len(picked)} rows claimed · {remaining} rapid rows without a check"
+          f" · web searches used this session {used}/{SEARCH_BUDGET}")
     unpublished = len(done) - last_publish().get("rows", 0)
     if unpublished >= PUBLISH_EVERY:
         print(f"PUBLISH DUE ({unpublished} checks not on the live page yet): "
@@ -845,6 +861,17 @@ def cmd_lookup(args):
     return 0
 
 
+def cmd_release(args):
+    with locked():
+        claims = load_claims()
+        mine = [k for k, v in claims.items() if v["session"] == args.session]
+        for k in mine:
+            claims.pop(k)
+        save_claims(claims)
+    print(f"released {len(mine)} unrecorded claimed rows of session {args.session}")
+    return 0
+
+
 def cmd_status(args):
     meta = json.loads(path("queue_meta.json").read_text()) if path("queue_meta.json").exists() else {}
     queue = load_queue()
@@ -884,14 +911,19 @@ def cmd_status(args):
           f"fetches/row: {sum(v.get('fetches', 0) for v in done.values()) / max(n, 1):.1f}")
     sessions = collections.defaultdict(list)
     for v in read_jsonl(path("checks.jsonl")):
-        sessions[v.get("session")].append(v["recorded_at"])
+        sessions[v.get("session")].append((v["recorded_at"], v.get("searches", 0)))
     if sessions:
         print("\nsessions:")
-        for s, ts in sorted(sessions.items(), key=lambda kv: min(kv[1])):
+        for s, rows in sorted(sessions.items(), key=lambda kv: min(kv[1])):
+            ts = [t for t, _ in rows]
             t0, t1 = min(ts), max(ts)
             hrs = (datetime.datetime.fromisoformat(t1) - datetime.datetime.fromisoformat(t0)).total_seconds() / 3600
             rate = f"{len(ts) / hrs:.0f}/h" if hrs > 0.05 else "-"
-            print(f"  {s}: {len(ts)} rows {t0[:16]} → {t1[11:16]} UTC ({rate})")
+            print(f"  {s}: {len(ts)} rows · {sum(n for _, n in rows)} searches · "
+                  f"{t0[:16]} → {t1[11:16]} UTC ({rate})")
+    pub = last_publish()
+    print(f"\nlive Directory page: {pub.get('rows', 0)} checks published "
+          f"({pub.get('published_at', 'never')[:16]}) · unpublished: {len(checks) - pub.get('rows', 0)}")
     later = [c for c in queue if c["cid"] not in checks]
     if later:
         print(f"\nnext up: #{later[0]['position']} {later[0]['lane']} ZIP {later[0]['zip']} {later[0]['city']}")
@@ -973,11 +1005,13 @@ def main(argv=None):
     s.add_argument("--sample", type=int)
     s.add_argument("--seed", type=int, default=1)
     sub.add_parser("check")
+    s = sub.add_parser("release")
+    s.add_argument("--session", required=True)
     args = ap.parse_args(argv)
     if args.rapid_dir:
         P.set(args.rapid_dir)
     return {"init": cmd_init, "next": cmd_next, "record": cmd_record, "lookup": cmd_lookup,
-            "status": cmd_status, "list": cmd_list, "check": cmd_check}[args.cmd](args)
+            "status": cmd_status, "list": cmd_list, "check": cmd_check, "release": cmd_release}[args.cmd](args)
 
 
 if __name__ == "__main__":
