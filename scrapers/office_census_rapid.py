@@ -12,15 +12,20 @@ existing directory rows against the live web, one row at a time.
   python3 scrapers/office_census_rapid.py list --decision ESCALATE [--sample 20]
   python3 scrapers/office_census_rapid.py check
   python3 scrapers/office_census_rapid.py release --session S    # hand back unrecorded claims
+  python3 scrapers/office_census_rapid.py tag                     # a fresh session tag
+  python3 scrapers/office_census_rapid.py pull                    # mirror the shared log locally
 
 Protocol: data/office_census/RAPID_VALIDATION_RUNBOOK.md.
-Live page: scrapers/directory_web_checks_publish.py copies the latest check per row
-to Supabase directory_web_checks, which the Directory page applies as an overlay.
 
-Rapid checks are NOT census adjudications. They are appended to
-data/office_census/rapid/checks.jsonl, separate from research_ledger.jsonl,
-so a rapid run and a ZIP reconciliation session never write the same file.
-Nothing here writes SQLite, Supabase, practice_locations or the ledger.
+Store. With the shared store configured (RAPID_TOKEN + Supabase URL/anon key, see
+rapid_store.py) `next` claims rows and `record` logs each check in Supabase and applies it
+to directory_web_checks at once, the overlay the live Directory page reads. Several sessions,
+local or Claude Code cloud, can work the queue together. data/office_census/rapid/checks.jsonl
+is the local mirror (`pull`). `--store local` (and any --rapid-dir) keeps everything in local
+files, with claims.json and the batch publisher scrapers/directory_web_checks_publish.py.
+
+Rapid checks are NOT census adjudications: they never touch research_ledger.jsonl, SQLite,
+practice_locations or ownership tiers. The only Supabase writes are the rapid_* functions.
 
 Lanes: rows in downtown ZIPs or with building-merge flags go to the building
 lane (suite-level reconciliation, the 60602 protocol), never to rapid review.
@@ -33,6 +38,7 @@ import concurrent.futures
 import contextlib
 import datetime
 import fcntl
+import hashlib
 import json
 import os
 import pathlib
@@ -45,6 +51,7 @@ import urllib.parse
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import office_census as oc  # noqa: E402  (no project imports; AST normalizer only)
+import rapid_store as store  # noqa: E402
 
 RULES = "rapid-2026-09-25.2"
 # .2 added ties_by on NOT_CURRENT_GP; checks recorded under these rules stay valid without it.
@@ -103,8 +110,10 @@ STATUS_RE = re.compile(
 
 # ---- paths -------------------------------------------------------------------
 class P:
-    """Rapid-run files; --rapid-dir moves all of them (tests, smoke runs)."""
+    """Rapid-run files; --rapid-dir moves all of them (tests, smoke runs). `store` is
+    "supabase" (shared queue, live on record) or "local" (files + batch publisher)."""
     dir = RAPID_DIR
+    store = "local"
 
     @classmethod
     def set(cls, d):
@@ -113,6 +122,32 @@ class P:
 
 def path(name):
     return P.dir / name
+
+
+def remote():
+    return P.store == "supabase"
+
+
+# ---- live-page rows ------------------------------------------------------------
+# Each row's latest check becomes one directory_web_checks row; the page applies `effect`.
+EFFECT = {"VALID": "open_verified", "VALID_CORRECTED": "open_corrected", "IDENTITY_ONLY": "listed_only",
+          "NOT_CURRENT_GP": "removed", "IDENTITY_PROBLEM": "needs_review", "ESCALATE": "needs_review",
+          "NO_WEB_EVIDENCE": "no_web_evidence"}
+
+
+def strip_loc(cid):
+    return cid.split(":", 1)[1] if isinstance(cid, str) and cid.startswith("loc:") else cid
+
+
+def web_check_row(cid, e, publish_id):
+    return {"location_id": strip_loc(cid), "candidate_id": cid, "zip": e["zip"],
+            "effect": EFFECT[e["decision"]], "decision": e["decision"], "reason": e.get("reason"),
+            "duplicate_of": strip_loc(e.get("duplicate_of")), "gp_scope": e.get("gp_scope"),
+            "observed": e.get("observed") or {}, "as_seen": e.get("as_seen") or {},
+            "signals": e.get("signals") or [], "ties_by": e.get("ties_by") or [],
+            "evidence": e.get("evidence") or [], "leads": e.get("leads") or [], "note": e.get("note"),
+            "checked_at": e["checked_at"], "recorded_at": e["recorded_at"], "session": e.get("session"),
+            "researcher": e.get("researcher"), "rules": e.get("rules"), "publish_id": publish_id}
 
 
 @contextlib.contextmanager
@@ -484,13 +519,50 @@ def load_queue():
     return read_jsonl(path("queue.jsonl"))
 
 
-def latest_checks():
-    """candidate_id -> latest live check (later lines supersede earlier ones)."""
+def latest_checks(include_held=True):
+    """candidate_id -> latest check (later lines supersede earlier ones). A removal the store's
+    brake held back (outcome "held") never reached the page; include_held=False skips it."""
     out = {}
     for e in read_jsonl(path("checks.jsonl")):
-        if e.get("candidate_id"):
+        if e.get("candidate_id") and (include_held or e.get("outcome") != "held"):
             out[e["candidate_id"]] = e
     return out
+
+
+def pull():
+    """Mirror the shared log into checks.jsonl: add entries other sessions recorded, keep every
+    local line (verbatim where the log has it too), order by recorded_at so the latest wins."""
+    got, off = [], 0
+    while True:
+        page = store.rpc("rapid_pull", p_offset=off, p_limit=500) or []
+        got += page
+        if len(page) < 500:
+            break
+        off += 500
+    server = {}
+    for e in got:
+        if e.get("outcome") in ("live", "backfill"):
+            e.pop("outcome")
+        server[e["entry_id"]] = e
+    with locked():
+        local = read_jsonl(path("checks.jsonl"))
+        have = {e.get("entry_id") for e in local}
+        changed = False
+        for e in local:
+            s = server.get(e.get("entry_id"))
+            if s is not None and s.get("outcome") != e.get("outcome"):
+                changed = True
+                e["outcome"] = s.get("outcome")
+                if e["outcome"] is None:
+                    e.pop("outcome")
+        merged = local + [e for k, e in server.items() if k not in have]
+        merged.sort(key=lambda e: e.get("recorded_at") or "")   # stable: same-second lines keep file order
+        only_local = sum(1 for e in local if e.get("entry_id") not in server)
+        if changed or len(merged) != len(local) or any(a is not b for a, b in zip(merged, local)):
+            tmp = path("checks.jsonl.tmp")
+            tmp.write_text("".join(json.dumps(e, separators=(",", ":")) + "\n" for e in merged))
+            tmp.replace(path("checks.jsonl"))
+    return {"log": len(server), "added": len(merged) - len(local), "only_local": only_local}
 
 
 def last_publish():
@@ -518,9 +590,20 @@ def save_claims(claims):
     tmp.replace(path("claims.json"))
 
 
+def dns_works():
+    # Behind a cloud sandbox proxy the VM may resolve nothing; then every site would look dead.
+    try:
+        socket.getaddrinfo("example.com", 443)
+        return True
+    except OSError:
+        return False
+
+
 def dns_status(urls, timeout=4.0):
     hosts = {u: host_of(u) for u in urls if u}
     out = {}
+    if hosts and not dns_works():
+        return {u: "dns not checked" for u in hosts}
 
     def resolve(h):
         socket.getaddrinfo(h, 443)
@@ -577,24 +660,15 @@ def session_searches(session):
     return sum(e.get("searches", 0) for e in read_jsonl(path("checks.jsonl")) if e.get("session") == session)
 
 
-def cmd_next(args):
-    queue = load_queue()
-    decided, swept = load_ledger_state()
+def claim_local(queue, session, n, decided, swept):
     done = set(latest_checks())
-    used = session_searches(args.session)
+    used = session_searches(session)
     with locked():
         claims = load_claims()
-        mine = [c for c in queue if claims.get(c["cid"], {}).get("session") == args.session
-                and c["cid"] not in done]
-        picked = mine[:args.n]
-        if used >= SEARCH_BUDGET and not picked:
-            print(f"SEARCH BUDGET REACHED: session {args.session} has used {used} web searches "
-                  f"(budget {SEARCH_BUDGET}). Claim nothing more: end the session now (runbook section 7).")
-            return 0
+        picked = [c for c in queue if claims.get(c["cid"], {}).get("session") == session
+                  and c["cid"] not in done][:n]
         for c in queue:
-            if used >= SEARCH_BUDGET:
-                break
-            if len(picked) >= args.n:
+            if used >= SEARCH_BUDGET or len(picked) >= n:
                 break
             cid = c["cid"]
             if cid in done or cid in claims or cid in decided or c["zip"] in swept:
@@ -602,8 +676,36 @@ def cmd_next(args):
             picked.append(c)
         stamp = now_utc().isoformat()
         for c in picked:
-            claims[c["cid"]] = {"session": args.session, "claimed_at": stamp}
+            claims[c["cid"]] = {"session": session, "claimed_at": stamp}
         save_claims(claims)
+    return picked, used, 0, sum(1 for c in queue if c["cid"] not in done)
+
+
+def claim_remote(queue, session, n, decided, swept):
+    eligible = [c["cid"] for c in queue if c["cid"] not in decided and c["zip"] not in swept]
+    res = store.rpc("rapid_next", p_session=session, p_ids=eligible, p_n=n, p_budget=SEARCH_BUDGET)
+    by_cid = {c["cid"]: c for c in queue}
+    return [by_cid[c] for c in res["picked"]], res["searches_used"], res["held"], res["remaining"]
+
+
+def cmd_next(args):
+    queue = load_queue()
+    decided, swept = load_ledger_state()
+    try:
+        picked, used, held, remaining = (claim_remote if remote() else claim_local)(
+            queue, args.session, args.n, decided, swept)
+    except store.StoreError as exc:
+        print(f"STORE ERROR: {exc}\nNothing was claimed. Retry once; if it fails again, end the session "
+              "(runbook section 7) and report this line.")
+        return 1
+    if held and not picked:
+        print(f"REMOVAL BRAKE: {held} of session {args.session}'s NOT_CURRENT_GP checks were held back from the "
+              "live page (too many removals). Claim nothing more: end the session now (runbook section 7).")
+        return 0
+    if used >= SEARCH_BUDGET and not picked:
+        print(f"SEARCH BUDGET REACHED: session {args.session} has used {used} web searches "
+              f"(budget {SEARCH_BUDGET}). Claim nothing more: end the session now (runbook section 7).")
+        return 0
     if not picked:
         print("Queue empty: every rapid row has a check or is claimed by another session.")
         return 0
@@ -611,13 +713,14 @@ def cmd_next(args):
         print(json.dumps(picked, indent=1))
         return 0
     dns = dns_status([c["website"] for c in picked])
-    remaining = sum(1 for c in queue if c["cid"] not in done)
     print(f"session {args.session}: {len(picked)} rows claimed · {remaining} rapid rows without a check"
-          f" · web searches used this session {used}/{SEARCH_BUDGET}")
-    unpublished = len(done) - last_publish().get("rows", 0)
-    if unpublished >= PUBLISH_EVERY:
-        print(f"PUBLISH DUE ({unpublished} checks not on the live page yet): "
-              f"python3 {oc.ROOT}/scrapers/directory_web_checks_publish.py --allow-db-write --verify")
+          f" · web searches used this session {used}/{SEARCH_BUDGET}"
+          + (" · store: shared, each record goes live" if remote() else " · store: local files"))
+    if not remote():
+        unpublished = len(latest_checks()) - last_publish().get("rows", 0)
+        if unpublished >= PUBLISH_EVERY:
+            print(f"PUBLISH DUE ({unpublished} checks not on the live page yet): "
+                  "python3 scrapers/directory_web_checks_publish.py --allow-db-write --verify")
     print()
     for i, c in enumerate(picked, 1):
         print(render(c, i, len(picked), dns))
@@ -788,45 +891,83 @@ def cmd_record(args):
     cards = {c["cid"]: c for c in load_queue()}
     idx = load_index()
     bad = 0
-    with locked():
-        done = latest_checks()
-        claims = load_claims()
-        with path("checks.jsonl").open("a") as out:
-            for obj in objs:
-                cid = obj.get("candidate_id") if isinstance(obj, dict) else None
-                card = cards.get(cid)
-                errs = validate(obj, card, cid in done)
-                if errs:
+    # local store: one lock for the whole batch; shared store: lock only the mirror append,
+    # never across a network call
+    with contextlib.nullcontext() if remote() else locked():
+        done = {} if remote() else latest_checks()
+        claims = {} if remote() else load_claims()
+        for obj in objs:
+            cid = obj.get("candidate_id") if isinstance(obj, dict) else None
+            card = cards.get(cid)
+            # the shared store decides "already checked" itself, across every session
+            errs = validate(obj, card, cid in done and not remote())
+            if errs:
+                bad += 1
+                print(f"REJECTED {cid}:")
+                for e in errs:
+                    print(f"  - {e}")
+                continue
+            entry = make_entry(obj, card, args)
+            col = collisions(obj, card, idx)
+            if col:
+                entry["collisions"] = col
+            note = ""
+            if remote():
+                try:
+                    res = store.rpc("rapid_record", p_entry=entry,
+                                    p_row=web_check_row(cid, entry, entry["entry_id"]))
+                except store.StoreError as exc:
                     bad += 1
-                    print(f"REJECTED {cid}:")
-                    for e in errs:
-                        print(f"  - {e}")
+                    print(f"NOT SAVED {cid}: {exc}\n  Resend the same record command once; the store "
+                          "ignores a record it already has.")
                     continue
-                ts = now_utc()
-                entry = {"entry_id": f"rc-{ts.strftime('%Y%m%dT%H%M%S')}-{cid.split(':')[-1][:10]}"
-                                     f"-{random.randrange(16**4):04x}",
-                         "type": "rapid_check", "rules": RULES, "candidate_id": cid, "zip": card["zip"],
-                         "session": args.session, "researcher": args.researcher,
-                         "recorded_at": ts.isoformat(), "checked_at": ts.date().isoformat(),
-                         "as_seen": card["as_seen"]}
-                for k in ("decision", "reason", "gp_scope", "evidence", "observed", "signals", "note",
-                          "leads", "searches", "fetches", "duplicate_of", "ties_by", "supersede"):
-                    if k in obj and obj[k] not in (None, "", [], {}):
-                        entry[k] = obj[k]
-                col = collisions(obj, card, idx)
-                if col:
-                    entry["collisions"] = col
-                out.write(json.dumps(entry, separators=(",", ":")) + "\n")
-                out.flush()
-                done[cid] = entry
-                claims.pop(cid, None)
-                msg = f"OK {cid} {entry['decision']}"
-                if col:
-                    msg += " · COLLISION: " + "; ".join(
-                        f"{c['via']} matches {c['candidate_id']} {c['name']!r} ste={c['suite']}" for c in col)
-                print(msg)
-        save_claims(claims)
+                outcome = res.get("outcome")
+                if outcome == "rejected":
+                    bad += 1
+                    print(f"REJECTED {cid}:\n  - {res.get('error')}")
+                    continue
+                if outcome in ("held", "stale"):
+                    entry["outcome"] = outcome
+                note = {"live": " · live on the Directory page",
+                        "held": " · HELD by the removal brake: logged, not on the page. Finish this card, "
+                                "then end the session (runbook section 7)",
+                        "stale": " · logged; a newer check of this row is already live"}.get(outcome, "")
+                if res.get("duplicate"):
+                    note += " (already recorded earlier)"
+            with locked() if remote() else contextlib.nullcontext():
+                if not any(e.get("entry_id") == entry["entry_id"] for e in read_jsonl(path("checks.jsonl"))):
+                    with path("checks.jsonl").open("a") as out:
+                        out.write(json.dumps(entry, separators=(",", ":")) + "\n")
+            done[cid] = entry
+            claims.pop(cid, None)
+            msg = f"OK {cid} {obj['decision']}{note}"
+            if col:
+                msg += " · COLLISION: " + "; ".join(
+                    f"{c['via']} matches {c['candidate_id']} {c['name']!r} ste={c['suite']}" for c in col)
+            print(msg)
+        if not remote():
+            save_claims(claims)
     return 1 if bad else 0
+
+
+def make_entry(obj, card, args):
+    ts = now_utc()
+    cid = obj["candidate_id"]
+    if remote():
+        # content-derived id: resending the same record (a lost reply) is a no-op in the store
+        digest = hashlib.sha256(json.dumps([args.session, obj], sort_keys=True).encode()).hexdigest()[:8]
+        entry_id = f"rc-{ts.strftime('%Y%m%d')}-{cid.split(':')[-1][:10]}-{digest}"
+    else:
+        entry_id = (f"rc-{ts.strftime('%Y%m%dT%H%M%S')}-{cid.split(':')[-1][:10]}"
+                    f"-{random.randrange(16**4):04x}")
+    entry = {"entry_id": entry_id, "type": "rapid_check", "rules": RULES, "candidate_id": cid,
+             "zip": card["zip"], "session": args.session, "researcher": args.researcher,
+             "recorded_at": ts.isoformat(), "checked_at": ts.date().isoformat(), "as_seen": card["as_seen"]}
+    for k in ("decision", "reason", "gp_scope", "evidence", "observed", "signals", "note",
+              "leads", "searches", "fetches", "duplicate_of", "ties_by", "supersede"):
+        if k in obj and obj[k] not in (None, "", [], {}):
+            entry[k] = obj[k]
+    return entry
 
 
 # ---- lookup / status / list / check ----------------------------------------------
@@ -862,6 +1003,10 @@ def cmd_lookup(args):
 
 
 def cmd_release(args):
+    if remote():
+        n = store.rpc("rapid_release", p_session=args.session)
+        print(f"released {n} unrecorded claimed rows of session {args.session}")
+        return 0
     with locked():
         claims = load_claims()
         mine = [k for k, v in claims.items() if v["session"] == args.session]
@@ -877,10 +1022,16 @@ def cmd_status(args):
     queue = load_queue()
     qids = {c["cid"] for c in queue}
     calib = {c["cid"] for c in queue if c["lane"] == "calibration"}
+    server = None
+    if remote():
+        pulled = pull()
+        server = store.rpc("rapid_status")
+        claims = {f"{s}#{i}": {"session": s} for s, k in server["claims"].items() for i in range(k)}
+    else:
+        claims = load_claims()
     checks = latest_checks()
     done = {k: v for k, v in checks.items() if k in qids}
     decided, swept = load_ledger_state()
-    claims = load_claims()
     n = len(done)
     print(f"rapid queue (build {meta.get('build_id')}, {meta.get('created_at', '')[:10]}): "
           f"{len(queue)} rows · checked {n} ({n / max(len(queue), 1):.1%}) · remaining {len(queue) - n}")
@@ -921,9 +1072,19 @@ def cmd_status(args):
             rate = f"{len(ts) / hrs:.0f}/h" if hrs > 0.05 else "-"
             print(f"  {s}: {len(ts)} rows · {sum(n for _, n in rows)} searches · "
                   f"{t0[:16]} → {t1[11:16]} UTC ({rate})")
-    pub = last_publish()
-    print(f"\nlive Directory page: {pub.get('rows', 0)} checks published "
-          f"({pub.get('published_at', 'never')[:16]}) · unpublished: {len(checks) - pub.get('rows', 0)}")
+    if server is not None:
+        live = server["live"]
+        print(f"\nshared store: {server['log_rows']} checks logged (mirror: {pulled['added']} new pulled"
+              + (f", {pulled['only_local']} local-only NOT in the store" if pulled["only_local"] else "")
+              + f") · live Directory page: {sum(live.values())} rows ("
+              + ", ".join(f"{k} {v}" for k, v in sorted(live.items())) + ")")
+        if server["held"]:
+            print(f"REMOVAL BRAKE: {server['held']} NOT_CURRENT_GP checks were held back from the page; "
+                  "they need a human review (runbook section 7)")
+    else:
+        pub = last_publish()
+        print(f"\nlive Directory page: {pub.get('rows', 0)} checks published "
+              f"({pub.get('published_at', 'never')[:16]}) · unpublished: {len(checks) - pub.get('rows', 0)}")
     later = [c for c in queue if c["cid"] not in checks]
     if later:
         print(f"\nnext up: #{later[0]['position']} {later[0]['lane']} ZIP {later[0]['zip']} {later[0]['city']}")
@@ -935,6 +1096,8 @@ def cmd_status(args):
 
 
 def cmd_list(args):
+    if remote():
+        pull()
     rows = list(latest_checks().values())
     if args.decision:
         rows = [r for r in rows if r["decision"] == args.decision]
@@ -968,6 +1131,8 @@ def check_errors():
 
 
 def cmd_check(args):
+    if remote():
+        pull()
     errs, rows = check_errors()
     for x in errs:
         print(x)
@@ -978,6 +1143,8 @@ def cmd_check(args):
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--rapid-dir", help="alternate directory for all rapid files (tests / smoke runs)")
+    ap.add_argument("--store", choices=("auto", "supabase", "local"), default=os.environ.get("RAPID_STORE", "auto"),
+                    help="auto (default): the shared Supabase store, or local files with --rapid-dir")
     sub = ap.add_subparsers(dest="cmd", required=True)
     s = sub.add_parser("init")
     s.add_argument("--force", action="store_true")
@@ -1007,11 +1174,46 @@ def main(argv=None):
     sub.add_parser("check")
     s = sub.add_parser("release")
     s.add_argument("--session", required=True)
+    sub.add_parser("pull", help="mirror the shared log into checks.jsonl")
+    sub.add_parser("tag", help="print a fresh session tag")
     args = ap.parse_args(argv)
     if args.rapid_dir:
         P.set(args.rapid_dir)
+    P.store = resolve_store(args)
+    if P.store is None:
+        print(f"STORE NOT CONFIGURED: missing {', '.join(store.missing())}. Sessions work the shared queue, so "
+              "set these (runbook section 0), or pass --store local for an offline run that no other "
+              "session sees.")
+        return 2
     return {"init": cmd_init, "next": cmd_next, "record": cmd_record, "lookup": cmd_lookup,
-            "status": cmd_status, "list": cmd_list, "check": cmd_check, "release": cmd_release}[args.cmd](args)
+            "status": cmd_status, "list": cmd_list, "check": cmd_check, "release": cmd_release,
+            "pull": cmd_pull, "tag": cmd_tag}[args.cmd](args)
+
+
+def resolve_store(args):
+    """The real queue works the shared store; a --rapid-dir run (tests, smoke runs) stays local.
+    None: the shared store is required here but not configured (fail closed: a session must never
+    silently work into files that die with its VM)."""
+    if args.cmd in ("init", "lookup", "tag"):
+        return "local"
+    if args.store == "local" or (args.store == "auto" and args.rapid_dir):
+        return "local"
+    return "supabase" if store.configured() else None
+
+
+def cmd_tag(args):
+    # unique even when parallel sessions start in the same minute; the search budget is per tag
+    print(now_utc().strftime("rv-%m%d-%H%M-") + f"{random.SystemRandom().randrange(16**4):04x}")
+    return 0
+
+
+def cmd_pull(args):
+    if not remote():
+        raise SystemExit("pull needs the shared store")
+    r = pull()
+    print(f"shared log: {r['log']} checks · {r['added']} added to checks.jsonl"
+          + (f" · {r['only_local']} local-only checks are NOT in the store" if r["only_local"] else ""))
+    return 0
 
 
 if __name__ == "__main__":

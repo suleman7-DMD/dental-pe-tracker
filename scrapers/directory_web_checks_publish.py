@@ -7,6 +7,13 @@
       # transaction, log the publish, then read every row back (Postgres) and count it
       # through the anon REST API the page uses
   python3 scrapers/directory_web_checks_publish.py --verify         # read-back only
+  python3 scrapers/directory_web_checks_publish.py --install-store  # shared-store tables + rapid_*
+      # functions (directory_web_checks_store.sql), and backfill its log from checks.jsonl
+  python3 scrapers/directory_web_checks_publish.py --new-token LABEL  # issue a RAPID_TOKEN
+
+With the shared store (RAPID_TOKEN set), sessions publish each check as they record it and this
+script is maintenance only: --allow-db-write first pulls every session's checks from the shared
+log, so a full replace can never drop rows another session recorded.
 
 Each row's latest check becomes one live row whose `effect` the Directory page applies:
   NOT_CURRENT_GP   -> removed          hidden from the directory list and map
@@ -21,7 +28,8 @@ sync_to_supabase.py / refresh.sh). practice_locations, ownership tiers and pipel
 unchanged: the page applies the overlay at read time, so emptying the table restores it.
 
 Safety brake: refuses to publish when removals exceed 35% of checked rows, or 50% of any
-session with >= 20 rows (a runaway session), unless --allow-high-removal.
+session with >= 20 rows (a runaway session), unless --allow-high-removal. Removals the shared
+store's brake held back stay off the page unless --allow-high-removal.
 """
 import argparse
 import collections
@@ -30,19 +38,20 @@ import hashlib
 import json
 import os
 import pathlib
+import secrets
 import sqlite3
 import sys
-import time
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import office_census_rapid as rv  # noqa: E402
+import rapid_store as store  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SCHEMA = ROOT / "scrapers" / "directory_web_checks_schema.sql"
+STORE_SQL = ROOT / "scrapers" / "directory_web_checks_store.sql"
 
-EFFECT = {"VALID": "open_verified", "VALID_CORRECTED": "open_corrected", "IDENTITY_ONLY": "listed_only",
-          "NOT_CURRENT_GP": "removed", "IDENTITY_PROBLEM": "needs_review", "ESCALATE": "needs_review",
-          "NO_WEB_EVIDENCE": "no_web_evidence"}
+EFFECT = rv.EFFECT
+load_env = store.load_env
 COLS = ("location_id", "candidate_id", "zip", "effect", "decision", "reason", "duplicate_of", "gp_scope",
         "observed", "as_seen", "signals", "ties_by", "evidence", "leads", "note", "checked_at",
         "recorded_at", "session", "researcher", "rules", "publish_id")
@@ -52,41 +61,8 @@ MAX_SESSION_REMOVED_SHARE = 0.50
 MIN_SESSION_ROWS = 20
 
 
-def load_env():
-    for base in (os.environ.get("OFFICE_CENSUS_INPUT_ROOT"), ROOT, pathlib.Path.home() / "dental-pe-tracker"):
-        env = pathlib.Path(base) / ".env" if base else None
-        if env and env.is_file():
-            break
-    else:
-        return
-    try:
-        from dotenv import load_dotenv
-        load_dotenv(env)
-    except ImportError:
-        for line in env.read_text().splitlines():
-            line = line.strip()
-            if line and not line.startswith("#") and "=" in line:
-                k, v = line.split("=", 1)
-                os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
-
-
-def strip_loc(cid):
-    return cid.split(":", 1)[1] if isinstance(cid, str) and cid.startswith("loc:") else cid
-
-
 def build_rows(checks, publish_id):
-    rows = []
-    for cid, e in sorted(checks.items()):
-        rows.append({
-            "location_id": strip_loc(cid), "candidate_id": cid, "zip": e["zip"],
-            "effect": EFFECT[e["decision"]], "decision": e["decision"], "reason": e.get("reason"),
-            "duplicate_of": strip_loc(e.get("duplicate_of")), "gp_scope": e.get("gp_scope"),
-            "observed": e.get("observed") or {}, "as_seen": e.get("as_seen") or {},
-            "signals": e.get("signals") or [], "ties_by": e.get("ties_by") or [],
-            "evidence": e.get("evidence") or [], "leads": e.get("leads") or [], "note": e.get("note"),
-            "checked_at": e["checked_at"], "recorded_at": e["recorded_at"], "session": e.get("session"),
-            "researcher": e.get("researcher"), "rules": e.get("rules"), "publish_id": publish_id})
-    return rows
+    return [rv.web_check_row(cid, e, publish_id) for cid, e in sorted(checks.items())]
 
 
 def problems(rows, check_errs, allow_high_removal=False):
@@ -140,15 +116,21 @@ def params(r):
     return {k: json.dumps(r[k]) if k in JSON_COLS else r[k] for k in COLS}
 
 
-def write(rows, publish_id, sha, by_effect):
+def write(rows, publish_id, sha, by_effect, known_entry_ids=None):
     from psycopg2.extras import execute_values
     engine = get_engine()
     with engine.begin() as conn:
         raw = conn.connection.dbapi_connection.cursor()
         raw.execute("SET LOCAL lock_timeout = '10s'")
         raw.execute("SET LOCAL statement_timeout = '120s'")
+        # the same lock rapid_record takes: no session can record between this check and the replace
         raw.execute("SELECT pg_advisory_xact_lock(hashtext('directory_web_checks'))")
         raw.execute(SCHEMA.read_text())  # idempotent: IF NOT EXISTS + guarded policies
+        if known_entry_ids is not None:
+            raw.execute("SELECT entry_id FROM directory_web_check_log")
+            new = {r[0] for r in raw.fetchall()} - known_entry_ids
+            if new:
+                raise SystemExit(f"FAIL: {len(new)} checks were recorded after the pull; rerun. Nothing published.")
         raw.execute("DELETE FROM directory_web_checks")
         tmpl = "(" + ", ".join(f"%({k})s::jsonb" if k in JSON_COLS else f"%({k})s" for k in COLS) + ")"
         if rows:
@@ -182,28 +164,17 @@ def verify(rows, by_effect):
         same(k, r[k], live[r["location_id"]].get(k)) for k in COLS if k != "publish_id")]
     extra = set(live) - {r["location_id"] for r in rows}
     print(f"postgres: file {len(rows)} live {len(live)} · row mismatches {len(mism)} · extra live rows {len(extra)}"
-          f" · latest publish {last[0] if last else None} ({last[1] if last else '-'} rows)")
-    if mism or extra or not last or last[1] != len(live):
+          f" · latest full publish {last[0] if last else None} ({last[1] if last else '-'} rows)")
+    if mism or extra:
         fail = 1
         for m in mism[:10]:
             print(f"  MISMATCH {m}")
     # The page reads through PostgREST as anon: count every effect that way too.
-    import requests
-    base, key = os.environ.get("NEXT_PUBLIC_SUPABASE_URL"), os.environ.get("NEXT_PUBLIC_SUPABASE_ANON_KEY")
-    if not base or not key:
-        print("anon REST: skipped (NEXT_PUBLIC_SUPABASE_URL / ANON_KEY not in .env)")
+    url, key, _ = store.settings()
+    if not url or not key:
+        print("anon REST: skipped (Supabase URL / anon key not set)")
         return fail
-    hdr = {"apikey": key, "Authorization": f"Bearer {key}", "Prefer": "count=exact", "Range": "0-0"}
-    counts = {}
-    for eff in sorted(set(EFFECT.values())):
-        for attempt in range(6):  # a brand-new table 404s until PostgREST reloads its schema cache
-            resp = requests.get(f"{base}/rest/v1/directory_web_checks", params={"select": "location_id",
-                                "effect": f"eq.{eff}"}, headers=hdr, timeout=30)
-            if resp.status_code != 404:
-                break
-            time.sleep(2)
-        rng = resp.headers.get("content-range", "")
-        counts[eff] = int(rng.split("/")[-1]) if resp.ok and "/" in rng else f"HTTP {resp.status_code}"
+    counts = {eff: store.count("directory_web_checks", effect=f"eq.{eff}") for eff in sorted(set(EFFECT.values()))}
     bad = {k: v for k, v in counts.items() if v != by_effect.get(k, 0)}
     print("anon REST by effect: " + ", ".join(f"{k} {v}" for k, v in counts.items()) +
           ("" if not bad else f"  MISMATCH {bad}"))
@@ -212,20 +183,72 @@ def verify(rows, by_effect):
     return fail
 
 
+def install_store():
+    """Create the shared-store tables and rapid_* functions (idempotent), then copy every
+    checks.jsonl line into the log as a 'backfill' entry (already live; existing ids kept)."""
+    lines = rv.read_jsonl(rv.path("checks.jsonl"))
+    engine = get_engine()
+    with engine.begin() as conn:
+        raw = conn.connection.dbapi_connection.cursor()
+        raw.execute("SET LOCAL lock_timeout = '10s'")
+        raw.execute("SELECT pg_advisory_xact_lock(hashtext('directory_web_checks'))")
+        raw.execute(SCHEMA.read_text())
+        raw.execute(STORE_SQL.read_text())
+        added = 0
+        for e in lines:
+            raw.execute(
+                "INSERT INTO directory_web_check_log (entry_id, candidate_id, location_id, session, recorded_at, "
+                "decision, searches, entry, outcome) VALUES (%s, %s, %s, %s, %s, %s, %s, %s::jsonb, 'backfill') "
+                "ON CONFLICT (entry_id) DO NOTHING",
+                (e["entry_id"], e["candidate_id"], rv.strip_loc(e["candidate_id"]), e.get("session"),
+                 e["recorded_at"], e["decision"], e.get("searches", 0), json.dumps(e)))
+            added += raw.rowcount
+        raw.execute("NOTIFY pgrst, 'reload schema'")
+    print(f"store installed · log backfill: {added} of {len(lines)} checks.jsonl lines added")
+
+
+def new_token(label):
+    tok = "rv_" + secrets.token_urlsafe(32)
+    engine = get_engine()
+    with engine.begin() as conn:
+        conn.connection.dbapi_connection.cursor().execute(
+            "INSERT INTO rapid_tokens (token_sha256, label) VALUES (%s, %s)",
+            (hashlib.sha256(tok.encode()).hexdigest(), label))
+    print(f"RAPID_TOKEN={tok}")
+    print(f"(label {label!r}; revoke with: UPDATE rapid_tokens SET revoked_at = now() WHERE label = '{label}')")
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--allow-db-write", action="store_true")
     ap.add_argument("--verify", action="store_true")
     ap.add_argument("--allow-high-removal", action="store_true")
     ap.add_argument("--rapid-dir", help="alternate rapid directory (tests)")
+    ap.add_argument("--install-store", action="store_true", help="create/upgrade the shared store, backfill its log")
+    ap.add_argument("--new-token", metavar="LABEL", help="issue a RAPID_TOKEN for sessions")
     args = ap.parse_args(argv)
     if args.rapid_dir:
         rv.P.set(args.rapid_dir)
     load_env()
+    if args.install_store:
+        install_store()
+    if args.new_token:
+        new_token(args.new_token)
+    if args.install_store or args.new_token:
+        return 0
+
+    if not args.rapid_dir and store.configured():
+        rv.P.store = "supabase"
+        r = rv.pull()   # every session's checks, so a replace never drops another session's rows
+        print(f"pulled the shared log: {r['log']} checks, {r['added']} new to checks.jsonl"
+              + (f", {r['only_local']} local-only" if r["only_local"] else ""))
+    elif args.allow_db_write and not args.rapid_dir:
+        raise SystemExit("FAIL: the shared store is not configured (RAPID_TOKEN); a full replace from this "
+                         "checkout alone could drop checks other sessions recorded. Nothing published.")
 
     with rv.locked():  # a consistent snapshot while sessions keep recording
         raw = rv.path("checks.jsonl").read_bytes() if rv.path("checks.jsonl").exists() else b""
-        checks = rv.latest_checks()
+        checks = rv.latest_checks(include_held=args.allow_high_removal)
         check_errs, _ = rv.check_errors()
     sha = hashlib.sha256(raw).hexdigest()
     stamp = rv.now_utc()
@@ -247,7 +270,9 @@ def main(argv=None):
             print("  " + p)
         raise SystemExit(f"FAIL: {len(errs)} problem(s); nothing published.")
     if args.allow_db_write:
-        write(rows, publish_id, sha, by_effect)
+        known = ({e.get("entry_id") for e in rv.read_jsonl(rv.path("checks.jsonl"))}
+                 if rv.remote() else None)
+        write(rows, publish_id, sha, by_effect, known)
         rv.path("last_publish.json").write_text(json.dumps(
             {"publish_id": publish_id, "published_at": stamp.isoformat(), "rows": len(rows),
              "by_effect": by_effect, "checks_sha256": sha}, indent=1))

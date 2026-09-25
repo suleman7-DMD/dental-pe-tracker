@@ -6,8 +6,9 @@ research items, not "offices" or "practices"; say "rows" in any summary.
 
 This is not ownership research, not discovery, and not building reconciliation. Downtown ZIPs
 and merged-building rows are already routed to a separate building lane and never appear here.
-Everything you record goes to `data/office_census/rapid/checks.jsonl` through the `record`
-command. The publisher (§1, §7) copies it to the live Directory page.
+You record each decision with the `record` command. It is saved in the shared store (Supabase)
+and **goes live on the Directory page the moment you record it**. Several sessions, local or
+Claude Code cloud, can work the queue at once; `next` never hands two sessions the same row.
 
 **Your decisions go live.** On the public Directory page (list and map):
 - `NOT_CURRENT_GP` **removes the row**. It is shown with your evidence under "Show removed".
@@ -19,29 +20,32 @@ Be exactly as careful as that deserves.
 
 ## 0. Session start (once)
 
-Every command below uses absolute paths, because the shell's working directory can reset
-between calls. Run them exactly as written, from any directory.
+Run every command from the repository root (the directory holding `scrapers/`), exactly as
+written. The shell starts each command there. If you ever `cd` elsewhere, put `cd` back to the
+root in front of the next command.
 
 ```sh
-cd /Users/suleman/dental-pe-census-work
-python3 /Users/suleman/dental-pe-census-work/scrapers/office_census_rapid.py status
-python3 /Users/suleman/dental-pe-census-work/scrapers/directory_web_checks_publish.py --allow-db-write --verify
+test -f data/office_census/rapid/queue.jsonl && git branch --show-current
+python3 scrapers/office_census_rapid.py status
+python3 scrapers/office_census_rapid.py tag
 ```
 
-The publish catches the live page up with anything an earlier session recorded but didn't
-publish. It is safe to run any time. Handle a `FAIL` as in §1.
+- The first line must print the branch name (`office-census-pilot-2026-09-24`). If it prints
+  nothing, this checkout doesn't have the rapid queue: stop and tell the user.
+- `status` must end with a `shared store:` line. If it prints `STORE NOT CONFIGURED` or
+  `STORE ERROR`, stop and report it; don't work around it (a local-only run would be lost).
+- `tag` prints your session tag, e.g. `rv-0925-1830-4f2a`. Use it in every `next`/`record`/
+  `release` call this session. In the commands below it is shown as `S`. Your search budget is
+  counted per tag, so keep the same one all session.
 
+Then:
 1. Load the web tools: ToolSearch `select:WebSearch,WebFetch`.
-2. Choose a session tag, `rv-MMDD-HHMM` in UTC (e.g. `rv-0925-1830`), and use it in every
-   `next`/`record`/`release` call this session. In the commands below it is shown as `S`.
-3. Work inline. Do not spawn subagents.
-4. Other sessions may be running at the same time. That is fine: `next` never hands two
-   sessions the same row.
+2. Work inline. Do not spawn subagents.
 
 ## 1. The loop
 
 ```sh
-python3 /Users/suleman/dental-pe-census-work/scrapers/office_census_rapid.py next --n 10 --session S
+python3 scrapers/office_census_rapid.py next --n 10 --session S
 ```
 
 For each card, in order: **search → decide → record**. Record each row right after you
@@ -57,20 +61,13 @@ between batches. Everything you record is already saved.
 - Don't stop just because the conversation is long. Context is compacted automatically, and
   your work is saved row by row.
 
-**When `next` prints `PUBLISH DUE`,** run the command it shows before continuing:
+**Removal brake.** If `record` says `HELD by the removal brake` (or `next` prints
+`REMOVAL BRAKE`), too many of your rows were removals: the check is saved but kept off the page
+for a human to review. Finish the card you are on, then go to §7. Don't try to get around it.
 
-```sh
-python3 /Users/suleman/dental-pe-census-work/scrapers/directory_web_checks_publish.py --allow-db-write --verify
-```
-
-It ends with `OK: live directory_web_checks matches checks.jsonl exactly.`
-
-If it prints `FAIL`:
-- Read the problems it lists.
-- If it is a safety brake (too many removals), re-read your recent `NOT_CURRENT_GP` rows with
-  `list --decision NOT_CURRENT_GP --session S`. Supersede any that are wrong, then publish again.
-- Never add `--allow-high-removal` yourself.
-- If it fails again, keep recording and mention the failure in your final reply.
+**Store errors.** If `record` prints `NOT SAVED`, resend the identical command once (the store
+ignores a record it already has). If `next` or `record` fails twice in a row, go to §7 and
+report the error line.
 
 ## 2. Per-row procedure
 
@@ -96,7 +93,7 @@ rows should take one search.
 5. **When the budget is spent,** choose IDENTITY_ONLY, NO_WEB_EVIDENCE or ESCALATE and move on.
    Unresolved rows get a deeper lane later. Never turn a row into a research project.
 6. **Before recording a new address or phone,** check whether another row already has it:
-   `python3 /Users/suleman/dental-pe-census-work/scrapers/office_census_rapid.py lookup --address "135 N Arlington Heights Rd" --zip 60089`
+   `python3 scrapers/office_census_rapid.py lookup --address "135 N Arlington Heights Rd" --zip 60089`
    (or `--phone`, or `--name "Creekside" --zip 60089`).
    - Same office already listed as another row → `NOT_CURRENT_GP` with reason `duplicate` and
      `duplicate_of`.
@@ -178,7 +175,7 @@ A residential listing plus a dentist who practices elsewhere is `NOT_CURRENT_GP`
 Send one JSON object per call, right after deciding:
 
 ```sh
-python3 /Users/suleman/dental-pe-census-work/scrapers/office_census_rapid.py record --session S <<'EOF'
+python3 scrapers/office_census_rapid.py record --session S <<'EOF'
 {"candidate_id": "loc:2107d40f445f0f18", "decision": "VALID_CORRECTED", "gp_scope": "gp",
  "evidence": [{"kind": "first_party_site", "url": "https://www.krouthdental.com/",
                "quote": "1016 Douglas Rd, Unit A, Oswego, IL 60543 (630) 554-5244"}],
@@ -224,6 +221,7 @@ Field rules:
   - `quote` is at most 240 characters, copied from the page or title that proves the key fact.
   - One quote for the decisive fact is enough.
 - `searches` / `fetches`: honest counts. They feed throughput stats.
+- `record` answers `OK … · live on the Directory page` for each saved row.
 - If `record` prints `REJECTED`, fix exactly what it says and resend. Don't argue with the
   validator.
 - To change an earlier decision, resend it with `"supersede": true`. Only do this when you
@@ -252,11 +250,11 @@ Don't research ownership, and don't browse beyond the budget for any of this.
 
 ## 6. Hard rules
 
-- Your only writes are `record` and the publisher (`directory_web_checks_publish.py`), which
-  touches only its own Supabase tables. Never write SQLite, `practice_locations`, ownership
-  tiers, `research_ledger.jsonl`, or any other Supabase table.
+- Your only write is `record` (plus `next`/`release`, which claim and hand back rows). Never
+  write SQLite, `practice_locations`, ownership tiers, `research_ledger.jsonl`, or Supabase
+  directly, and never run `directory_web_checks_publish.py` (maintenance only).
 - Never delete anything.
-- Never `git push`.
+- Don't commit or push; the shared store is the record.
 - Boston/MA is out of scope (the queue is Illinois-only).
 - If a tool call is denied, adjust; don't retry it verbatim.
 
@@ -271,23 +269,19 @@ End the session when any of these happens:
 Record any row you have already decided, then run:
 
 ```sh
-python3 /Users/suleman/dental-pe-census-work/scrapers/office_census_rapid.py release --session S
-python3 /Users/suleman/dental-pe-census-work/scrapers/office_census_rapid.py status
-python3 /Users/suleman/dental-pe-census-work/scrapers/directory_web_checks_publish.py --allow-db-write --verify
-git -C /Users/suleman/dental-pe-census-work add data/office_census/rapid/checks.jsonl && git -C /Users/suleman/dental-pe-census-work commit -q -m "Rapid validation: session S"
+python3 scrapers/office_census_rapid.py release --session S
+python3 scrapers/office_census_rapid.py status
 ```
 
 - `release` hands your unrecorded claimed rows back to the queue. Without it they stay
   locked for 4 hours.
-
-- The publish puts this session's rows on the live page. Handle `FAIL` as in §1.
-- The commit is local only, on this branch, and adds only `checks.jsonl`.
-- If git reports a lock, retry once, then skip. The file is safe on disk either way.
+- Your rows are already live; there is nothing to publish or commit.
 
 Then reply in at most 5 lines:
 - rows this session;
 - the decision mix;
 - notable signals (sales, deaths, closures);
+- held removals or store errors, if any;
 - anything that slowed you down or broke.
 
 **After an automatic context compaction:** re-read sections 2–5 of this runbook, keep your
