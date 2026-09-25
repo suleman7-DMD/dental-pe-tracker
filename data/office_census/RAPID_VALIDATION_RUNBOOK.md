@@ -7,7 +7,15 @@ research items, not "offices" or "practices"; say "rows" in any summary.
 This is not ownership research, not discovery, and not building reconciliation. Downtown ZIPs
 and merged-building rows are already routed to a separate building lane and never appear here.
 Everything you record goes to `data/office_census/rapid/checks.jsonl` through the `record`
-command, and nowhere else.
+command. The publisher (§1, §7) copies it to the live Directory page.
+
+**Your decisions go live.** On the public Directory page (list and map):
+- `NOT_CURRENT_GP` **removes the row**. It is shown with your evidence under "Show removed".
+- `VALID_CORRECTED` **replaces** the displayed name, phone, website and address with your
+  `observed` values.
+- Every other decision adds a status line and leaves the row in place.
+
+Be exactly as careful as that deserves.
 
 ## 0. Session start (once)
 
@@ -31,6 +39,21 @@ For each card, in order: **search → decide → record**. Record each row right
 decide it; then take the next card. When the batch is done, call `next` again. Keep going
 until `next` says the queue is empty or the user stops you. Don't write progress reports
 between batches. Everything you record is already saved.
+
+**When `next` prints `PUBLISH DUE`,** run the command it shows before continuing:
+
+```sh
+python3 scrapers/directory_web_checks_publish.py --allow-db-write --verify
+```
+
+It ends with `OK: live directory_web_checks matches checks.jsonl exactly.`
+
+If it prints `FAIL`:
+- Read the problems it lists.
+- If it is a safety brake (too many removals), re-read your recent `NOT_CURRENT_GP` rows with
+  `list --decision NOT_CURRENT_GP --session S`. Supersede any that are wrong, then publish again.
+- Never add `--allow-high-removal` yourself.
+- If it fails again, keep recording and mention the failure in your final reply.
 
 ## 2. Per-row procedure
 
@@ -93,7 +116,7 @@ came from, so they prove almost nothing.
 | `VALID` | All four conditions; the app's name, address, phone and website are substantially right | current evidence; `gp_scope` |
 | `VALID_CORRECTED` | All four conditions; at least one field is wrong or missing | current evidence; `gp_scope`; `observed` with **only** the differing fields |
 | `IDENTITY_ONLY` | Listings or registry pages show this dental office at this address, but there is no current signal (typical for solo offices with no website) | ≥1 evidence item |
-| `NOT_CURRENT_GP` | Positive evidence the row is not a current GP office here | `reason`, plus ≥1 evidence item **with a quote** |
+| `NOT_CURRENT_GP` | Positive evidence the row is not a current GP office here | `reason`; `ties_by`; ≥1 evidence item **with a quote** |
 | `IDENTITY_PROBLEM` | The row mixes offices (one business's name, another's phone), or several dental businesses share the suite or phone and you can't tell which one the row is | `note` |
 | `NO_WEB_EVIDENCE` | ≥2 searches found nothing credible about a dental office at this address, name or phone. This never means "closed" | `note` saying what you tried |
 | `ESCALATE` | Real conflict you can't settle within budget | `reason`, `note` |
@@ -108,6 +131,14 @@ came from, so they prove almost nothing.
 
 An office that **moved within the ZIP** to an address that isn't another row's office is
 `VALID_CORRECTED` with `observed.address` (and `suite`).
+
+**`ties_by` (required on `NOT_CURRENT_GP`):** which facts tie the evidence to *this* row. It is
+a list from `name`, `phone`, `dentist`, `website`, `address`.
+- `closed`, `moved` and `duplicate` need at least one tie beyond `address`.
+- A "CLOSED" listing for a *different* business at the same address says nothing about this
+  row. That is `IDENTITY_PROBLEM` or `ESCALATE`, not a closure.
+- Example: the row is `EXCELLENT DENTISTRY LTD`, and its dentist on the card is Victoria Eyber.
+  The listing reads "DENTAL OFFICE OF VICTORIA EYBER - CLOSED". Record `ties_by: ["dentist"]`.
 
 **ESCALATE reasons:** `conflict`, `gp_scope`, `operating_status`, `other`.
 
@@ -147,19 +178,21 @@ More shapes:
  "evidence": [{"kind": "listing", "url": "https://www.yelp.com/biz/…", "quote": "PATEL N P DDS - Updated October 2025 - 3426 W Armitage Ave"}],
  "observed": {"name": "Naran P. Patel, DDS"}, "note": "Listings only; phone matches.", "searches": 1, "fetches": 0}
 
-{"candidate_id": "loc:…", "decision": "NOT_CURRENT_GP", "reason": "closed", "gp_scope": "gp",
+{"candidate_id": "loc:…", "decision": "NOT_CURRENT_GP", "reason": "closed", "gp_scope": "gp", "ties_by": ["name"],
  "evidence": [{"kind": "listing", "url": "https://www.yelp.com/biz/dental-corner-chicago", "quote": "DENTAL CORNER - CLOSED - Updated June 2026 - 4857 N Western Ave"},
               {"kind": "real_estate", "url": "https://www.loopnet.com/Listing/…", "quote": "4857 N Western Ave - Office/Medical for Lease"}],
  "signals": ["real_estate_listing"], "searches": 1, "fetches": 0}
 
-{"candidate_id": "loc:…", "decision": "NOT_CURRENT_GP", "reason": "home_or_registration", "gp_scope": "unknown",
+{"candidate_id": "loc:…", "decision": "NOT_CURRENT_GP", "reason": "home_or_registration", "gp_scope": "unknown", "ties_by": ["dentist", "address"],
  "evidence": [{"kind": "real_estate", "url": "https://www.redfin.com/…", "quote": "1564 Wind Energy Pass, Batavia, IL 60510 - 3 beds/2.5 baths"}],
  "signals": ["home_address"], "note": "Dentist practices elsewhere (Healthgrades).", "searches": 2, "fetches": 0}
 ```
 
 Field rules:
 
-- `observed`: include only fields that differ from the app or are newly found.
+- `observed`: include only fields that differ from the app or are newly found. On
+  `VALID_CORRECTED` these values are shown publicly, so take them from the office's own site or
+  its operator's locator, never from a listing.
   - `name`: the name the office uses publicly.
   - `address`: street only, e.g. `"135 N Arlington Heights Rd"` (no suite, city or ZIP).
   - `suite`: separate, e.g. `"185"`.
@@ -200,8 +233,9 @@ Don't research ownership, and don't browse beyond the budget for any of this.
 
 ## 6. Hard rules
 
-- The only write is `record`. Never write SQLite, Supabase, `practice_locations`, ownership
-  tiers, or `research_ledger.jsonl`.
+- Your only writes are `record` and the publisher (`directory_web_checks_publish.py`), which
+  touches only its own Supabase tables. Never write SQLite, `practice_locations`, ownership
+  tiers, `research_ledger.jsonl`, or any other Supabase table.
 - Never delete anything.
 - Never `git push`.
 - Boston/MA is out of scope (the queue is Illinois-only).
@@ -214,11 +248,13 @@ running long. Unrecorded claimed rows are released automatically after 4 hours.
 
 ```sh
 python3 scrapers/office_census_rapid.py status
+python3 scrapers/directory_web_checks_publish.py --allow-db-write --verify
 git add data/office_census/rapid/checks.jsonl && git commit -q -m "Rapid validation: session S"
 ```
 
-The commit is local only, on this branch, and adds only `checks.jsonl`. If git reports a
-lock, retry once, then skip; the file is safe on disk either way.
+- The publish puts this session's rows on the live page. Handle `FAIL` as in §1.
+- The commit is local only, on this branch, and adds only `checks.jsonl`.
+- If git reports a lock, retry once, then skip. The file is safe on disk either way.
 
 Then reply in at most 5 lines:
 - rows this session;

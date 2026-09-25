@@ -153,7 +153,7 @@ def test_corrected_needs_a_real_difference():
 
 
 def test_closure_needs_quoted_positive_evidence():
-    r = rec(decision="NOT_CURRENT_GP", reason="closed",
+    r = rec(decision="NOT_CURRENT_GP", reason="closed", ties_by=["name"],
             evidence=[{"kind": "listing", "url": "https://www.yelp.com/biz/x"}])
     assert any("positive evidence" in e for e in errs(r))
     r["evidence"][0]["quote"] = "DENTAL CORNER - CLOSED"

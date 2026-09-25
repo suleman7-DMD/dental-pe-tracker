@@ -13,6 +13,8 @@ existing directory rows against the live web, one row at a time.
   python3 scrapers/office_census_rapid.py check
 
 Protocol: data/office_census/RAPID_VALIDATION_RUNBOOK.md.
+Live page: scrapers/directory_web_checks_publish.py copies the latest check per row
+to Supabase directory_web_checks, which the Directory page applies as an overlay.
 
 Rapid checks are NOT census adjudications. They are appended to
 data/office_census/rapid/checks.jsonl, separate from research_ledger.jsonl,
@@ -43,7 +45,10 @@ import urllib.parse
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import office_census as oc  # noqa: E402  (no project imports; AST normalizer only)
 
-RULES = "rapid-2026-09-25.1"
+RULES = "rapid-2026-09-25.2"
+# .2 added ties_by on NOT_CURRENT_GP; checks recorded under these rules stay valid without it.
+LEGACY_RULES = {"rapid-2026-09-25.1"}
+PUBLISH_EVERY = 50
 SEED = 20260925
 CALIBRATION_N = 100
 CLAIM_HOURS = 4
@@ -68,6 +73,10 @@ SIGNALS = {"practice_sold", "owner_deceased", "owner_retired", "successor_practi
            "real_estate_listing", "home_address", "hiring_seen"}
 GP_SCOPES = {"gp", "mixed", "specialist_only", "unknown"}
 OBSERVED_FIELDS = {"name", "address", "suite", "phone", "website", "zip"}
+# How NOT_CURRENT_GP evidence is tied to THIS row. A CLOSED listing for a different business
+# at the same address says nothing about the row, so closed/moved/duplicate need a non-address tie.
+TIES = {"name", "phone", "dentist", "website", "address"}
+IDENTITY_TIE_REASONS = {"closed", "moved", "duplicate"}
 
 IL_AREA_CODES = {"217", "224", "309", "312", "331", "447", "464", "618", "630", "708",
                  "730", "773", "779", "815", "847", "872"}
@@ -480,6 +489,14 @@ def latest_checks():
     return out
 
 
+def last_publish():
+    """What the live Directory page last received (written by directory_web_checks_publish.py)."""
+    try:
+        return json.loads(path("last_publish.json").read_text())
+    except (OSError, ValueError):
+        return {}
+
+
 def load_claims():
     p = path("claims.json")
     try:
@@ -580,7 +597,12 @@ def cmd_next(args):
         return 0
     dns = dns_status([c["website"] for c in picked])
     remaining = sum(1 for c in queue if c["cid"] not in done)
-    print(f"session {args.session}: {len(picked)} rows claimed · {remaining} rapid rows without a check\n")
+    print(f"session {args.session}: {len(picked)} rows claimed · {remaining} rapid rows without a check")
+    unpublished = len(done) - last_publish().get("rows", 0)
+    if unpublished >= PUBLISH_EVERY:
+        print(f"PUBLISH DUE ({unpublished} checks not on the live page yet): "
+              "python3 scrapers/directory_web_checks_publish.py --allow-db-write --verify")
+    print()
     for i, c in enumerate(picked, 1):
         print(render(c, i, len(picked), dns))
         print()
@@ -624,7 +646,7 @@ def http_url(u):
     return isinstance(u, str) and re.match(r"^https?://\S+$", u.strip()) is not None
 
 
-def validate(obj, card, already_done):
+def validate(obj, card, already_done, rules=RULES):
     errs = []
     if not isinstance(obj, dict):
         return ["each record must be a JSON object"]
@@ -693,6 +715,15 @@ def validate(obj, card, already_done):
                         "(absence of results is NO_WEB_EVIDENCE, not closure)")
         if obj.get("reason") == "duplicate" and not oc.present(obj.get("duplicate_of")):
             errs.append("reason duplicate needs duplicate_of (a candidate id from lookup)")
+        ties = obj.get("ties_by")
+        if rules not in LEGACY_RULES:
+            if not isinstance(ties, list) or not ties or set(ties) - TIES:
+                errs.append(f"NOT_CURRENT_GP needs ties_by: which facts tie the evidence to THIS row, "
+                            f"a list within {sorted(TIES)} (e.g. [\"dentist\", \"phone\"])")
+            elif obj.get("reason") in IDENTITY_TIE_REASONS and not set(ties) - {"address"}:
+                errs.append(f"reason {obj.get('reason')} needs a tie beyond the address (name, phone, dentist "
+                            "or website): a closed/moved business at the same address may be a "
+                            "different office -> IDENTITY_PROBLEM or ESCALATE")
     if dec == "ESCALATE" and obj.get("reason") not in ESCALATE_REASONS:
         errs.append(f"ESCALATE needs reason in {sorted(ESCALATE_REASONS)}")
     if dec in ("ESCALATE", "IDENTITY_PROBLEM", "NO_WEB_EVIDENCE") and not oc.present(note):
@@ -763,7 +794,7 @@ def cmd_record(args):
                          "recorded_at": ts.isoformat(), "checked_at": ts.date().isoformat(),
                          "as_seen": card["as_seen"]}
                 for k in ("decision", "reason", "gp_scope", "evidence", "observed", "signals", "note",
-                          "leads", "searches", "fetches", "duplicate_of", "supersede"):
+                          "leads", "searches", "fetches", "duplicate_of", "ties_by", "supersede"):
                     if k in obj and obj[k] not in (None, "", [], {}):
                         entry[k] = obj[k]
                 col = collisions(obj, card, idx)
@@ -892,17 +923,24 @@ def cmd_list(args):
     return 0
 
 
-def cmd_check(args):
+def check_errors():
+    """Re-validate every stored check under the rules it was recorded with."""
     cards = {c["cid"]: c for c in load_queue()}
-    errors, seen = 0, set()
+    out, seen = [], set()
     for n, e in enumerate(read_jsonl(path("checks.jsonl")), 1):
-        errs = validate(e, cards.get(e.get("candidate_id")), e.get("candidate_id") in seen)
+        for x in validate(e, cards.get(e.get("candidate_id")), e.get("candidate_id") in seen,
+                          e.get("rules", RULES)):
+            out.append(f"line {n} {e.get('candidate_id')}: {x}")
         seen.add(e.get("candidate_id"))
-        for x in errs:
-            errors += 1
-            print(f"line {n} {e.get('candidate_id')}: {x}")
-    print(f"{'OK' if not errors else 'FAIL'}: {errors} error(s) across {len(seen)} rows")
-    return 1 if errors else 0
+    return out, len(seen)
+
+
+def cmd_check(args):
+    errs, rows = check_errors()
+    for x in errs:
+        print(x)
+    print(f"{'OK' if not errs else 'FAIL'}: {len(errs)} error(s) across {rows} rows")
+    return 1 if errs else 0
 
 
 def main(argv=None):
