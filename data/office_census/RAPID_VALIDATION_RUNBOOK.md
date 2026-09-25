@@ -30,8 +30,9 @@ python3 scrapers/office_census_rapid.py status
 python3 scrapers/office_census_rapid.py tag
 ```
 
-- The first line must print the branch name (`office-census-pilot-2026-09-24`). If it prints
-  nothing, this checkout doesn't have the rapid queue: stop and tell the user.
+- The first line prints the current branch, and only if the rapid queue is present. If it
+  prints nothing, run `git fetch origin office-census-pilot-2026-09-24 && git checkout
+  office-census-pilot-2026-09-24` and try again; if it still prints nothing, stop and tell the user.
 - `status` must end with a `shared store:` line. If it prints `STORE NOT CONFIGURED` or
   `STORE ERROR`, stop and report it; don't work around it (a local-only run would be lost).
 - `tag` prints your session tag, e.g. `rv-0925-1830-4f2a`. Use it in every `next`/`record`/
