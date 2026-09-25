@@ -617,7 +617,7 @@ def cmd_next(args):
     unpublished = len(done) - last_publish().get("rows", 0)
     if unpublished >= PUBLISH_EVERY:
         print(f"PUBLISH DUE ({unpublished} checks not on the live page yet): "
-              "python3 scrapers/directory_web_checks_publish.py --allow-db-write --verify")
+              f"python3 {oc.ROOT}/scrapers/directory_web_checks_publish.py --allow-db-write --verify")
     print()
     for i, c in enumerate(picked, 1):
         print(render(c, i, len(picked), dns))

@@ -19,10 +19,13 @@ Be exactly as careful as that deserves.
 
 ## 0. Session start (once)
 
+Every command below uses absolute paths, because the shell's working directory can reset
+between calls. Run them exactly as written, from any directory.
+
 ```sh
 cd /Users/suleman/dental-pe-census-work
-python3 scrapers/office_census_rapid.py status
-python3 scrapers/directory_web_checks_publish.py --allow-db-write --verify
+python3 /Users/suleman/dental-pe-census-work/scrapers/office_census_rapid.py status
+python3 /Users/suleman/dental-pe-census-work/scrapers/directory_web_checks_publish.py --allow-db-write --verify
 ```
 
 The publish catches the live page up with anything an earlier session recorded but didn't
@@ -38,7 +41,7 @@ publish. It is safe to run any time. Handle a `FAIL` as in §1.
 ## 1. The loop
 
 ```sh
-python3 scrapers/office_census_rapid.py next --n 10 --session S
+python3 /Users/suleman/dental-pe-census-work/scrapers/office_census_rapid.py next --n 10 --session S
 ```
 
 For each card, in order: **search → decide → record**. Record each row right after you
@@ -57,7 +60,7 @@ between batches. Everything you record is already saved.
 **When `next` prints `PUBLISH DUE`,** run the command it shows before continuing:
 
 ```sh
-python3 scrapers/directory_web_checks_publish.py --allow-db-write --verify
+python3 /Users/suleman/dental-pe-census-work/scrapers/directory_web_checks_publish.py --allow-db-write --verify
 ```
 
 It ends with `OK: live directory_web_checks matches checks.jsonl exactly.`
@@ -93,7 +96,7 @@ rows should take one search.
 5. **When the budget is spent,** choose IDENTITY_ONLY, NO_WEB_EVIDENCE or ESCALATE and move on.
    Unresolved rows get a deeper lane later. Never turn a row into a research project.
 6. **Before recording a new address or phone,** check whether another row already has it:
-   `python3 scrapers/office_census_rapid.py lookup --address "135 N Arlington Heights Rd" --zip 60089`
+   `python3 /Users/suleman/dental-pe-census-work/scrapers/office_census_rapid.py lookup --address "135 N Arlington Heights Rd" --zip 60089`
    (or `--phone`, or `--name "Creekside" --zip 60089`).
    - Same office already listed as another row → `NOT_CURRENT_GP` with reason `duplicate` and
      `duplicate_of`.
@@ -175,7 +178,7 @@ A residential listing plus a dentist who practices elsewhere is `NOT_CURRENT_GP`
 Send one JSON object per call, right after deciding:
 
 ```sh
-python3 scrapers/office_census_rapid.py record --session S <<'EOF'
+python3 /Users/suleman/dental-pe-census-work/scrapers/office_census_rapid.py record --session S <<'EOF'
 {"candidate_id": "loc:2107d40f445f0f18", "decision": "VALID_CORRECTED", "gp_scope": "gp",
  "evidence": [{"kind": "first_party_site", "url": "https://www.krouthdental.com/",
                "quote": "1016 Douglas Rd, Unit A, Oswego, IL 60543 (630) 554-5244"}],
@@ -268,10 +271,10 @@ End the session when any of these happens:
 Record any row you have already decided, then run:
 
 ```sh
-python3 scrapers/office_census_rapid.py release --session S
-python3 scrapers/office_census_rapid.py status
-python3 scrapers/directory_web_checks_publish.py --allow-db-write --verify
-git add data/office_census/rapid/checks.jsonl && git commit -q -m "Rapid validation: session S"
+python3 /Users/suleman/dental-pe-census-work/scrapers/office_census_rapid.py release --session S
+python3 /Users/suleman/dental-pe-census-work/scrapers/office_census_rapid.py status
+python3 /Users/suleman/dental-pe-census-work/scrapers/directory_web_checks_publish.py --allow-db-write --verify
+git -C /Users/suleman/dental-pe-census-work add data/office_census/rapid/checks.jsonl && git -C /Users/suleman/dental-pe-census-work commit -q -m "Rapid validation: session S"
 ```
 
 - `release` hands your unrecorded claimed rows back to the queue. Without it they stay
