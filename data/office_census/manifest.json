@@ -1,14 +1,14 @@
 {
-  "build_id": "a725af21252f",
+  "build_id": "20ab49ef473c",
   "rules_version": "2026-09-24.2",
-  "built_at": "2026-09-24T14:50:52+00:00",
+  "built_at": "2026-09-25T20:35:55+00:00",
   "scope": "IL watched ZIPs only (Boston/MA parked)",
   "watched_zips": 269,
   "inputs": {
     "sqlite_sha256": "261074e446d843d2223ca96b8e7ad6e96a25a6f70937a796d94558178e320a86",
-    "candidates_sha256": "c51f196a36092599ffde1c9289d4d577ef62a9e1467e7860e16cc99d44ea5308",
-    "coverage_sha256": "ab3b43d3dc00484ced6873ceb0f7dd915091134ab0c7a05979702476c9ede088",
-    "ledger_sha256": "9640b6d20909059a293f13bdf7259c75181e356760a3294fe97e769ca0f7368b",
+    "candidates_sha256": "6b5975a39912a6baba71dc89df461658c9f9271a09b0dc237c0f6ad7a0845b54",
+    "coverage_sha256": "fa546ca61e309ea3c2dbd894ffcbc1301eb453edac5119d60e3a377955fda62f",
+    "ledger_sha256": "6b8f027c776190232dd5862624f73b0896cb9deaae91c0f553f5fba80d81a559",
     "job_hunt_seed_rows": 642,
     "data_axle_files": 184,
     "data_axle_unique_records": 10625
@@ -16,9 +16,9 @@
   "source_candidate_breakdown": {
     "definition": "Street+ZIP groups absent from ALL existing location rows, including excluded rows. Suites do not define these groups; inspect source_refs.records for additional offices at represented buildings. No group is a confirmed missing office.",
     "raw_groups": 609,
-    "discovery_candidates": 528,
+    "discovery_candidates": 527,
     "by_source_family": {
-      "data_axle": 492,
+      "data_axle": 491,
       "nppes": 16,
       "dso_locator": 14,
       "data_axle+dso_locator": 5,
@@ -29,8 +29,8 @@
     "flags": {
       "phone_matches_existing_row": 211,
       "da_individual_listings_only": 150,
-      "name_suggests_specialty": 64,
-      "da_zip_centroid_only": 58,
+      "name_suggests_specialty": 63,
+      "da_zip_centroid_only": 57,
       "possible_address_variant_of_row": 77,
       "da_record_pre_2024": 94,
       "source_name_missing": 10,
@@ -38,12 +38,12 @@
     }
   },
   "totals": {
-    "candidates": 5798,
+    "candidates": 5853,
     "directory_rows": 4439,
     "by_priority": {
-      "P1_absent_candidate": 609,
-      "P2_high_risk_row": 1590,
-      "P4_deferred_ordinary": 3599
+      "P1_absent_candidate": 664,
+      "P2_high_risk_row": 1596,
+      "P4_deferred_ordinary": 3593
     },
     "historical_evidence_rows": 2830,
     "historical_observations": 3468,
@@ -52,29 +52,30 @@
       "directory_row": 4439,
       "dso_locator_unrepresented": 32,
       "excluded_row": 750,
+      "external_discovery": 55,
       "nppes_unrepresented": 16
     },
     "by_state": {
-      "CONFIRMED_OPERATING_GP": 0,
+      "CONFIRMED_OPERATING_GP": 33,
       "NEEDS_CURRENT_VERIFICATION": 0,
-      "EXISTING_EVIDENCE_NO_CURRENT_CONTRADICTION": 3599,
-      "IDENTITY_REVIEW": 669,
+      "EXISTING_EVIDENCE_NO_CURRENT_CONTRADICTION": 3593,
+      "IDENTITY_REVIEW": 665,
       "OPERATING_STATUS_UNRESOLVED": 142,
-      "GP_SCOPE_UNRESOLVED": 104,
-      "LOCATION_INCOMPLETE": 86,
-      "PROBABLE_NON_OFFICE": 214,
-      "LIKELY_SPECIALIST_ONLY": 456,
-      "SOURCE_CANDIDATE_UNREPRESENTED": 528,
+      "GP_SCOPE_UNRESOLVED": 102,
+      "LOCATION_INCOMPLETE": 85,
+      "PROBABLE_NON_OFFICE": 213,
+      "LIKELY_SPECIALIST_ONLY": 455,
+      "SOURCE_CANDIDATE_UNREPRESENTED": 527,
       "EXTERNAL_DISCOVERY": 0,
-      "RESEARCHED_UNRESOLVED": 0,
-      "RESOLVED_EXCLUDED": 0,
-      "RESOLVED_SPLIT": 0
+      "RESEARCHED_UNRESOLVED": 30,
+      "RESOLVED_EXCLUDED": 5,
+      "RESOLVED_SPLIT": 3
     },
     "directory_by_state": {
       "CONFIRMED_OPERATING_GP": 0,
       "NEEDS_CURRENT_VERIFICATION": 0,
-      "EXISTING_EVIDENCE_NO_CURRENT_CONTRADICTION": 3599,
-      "IDENTITY_REVIEW": 669,
+      "EXISTING_EVIDENCE_NO_CURRENT_CONTRADICTION": 3593,
+      "IDENTITY_REVIEW": 665,
       "OPERATING_STATUS_UNRESOLVED": 142,
       "GP_SCOPE_UNRESOLVED": 7,
       "LOCATION_INCOMPLETE": 22,
@@ -82,9 +83,9 @@
       "LIKELY_SPECIALIST_ONLY": 0,
       "SOURCE_CANDIDATE_UNREPRESENTED": 0,
       "EXTERNAL_DISCOVERY": 0,
-      "RESEARCHED_UNRESOLVED": 0,
-      "RESOLVED_EXCLUDED": 0,
-      "RESOLVED_SPLIT": 0
+      "RESEARCHED_UNRESOLVED": 7,
+      "RESOLVED_EXCLUDED": 2,
+      "RESOLVED_SPLIT": 1
     },
     "directory_by_prior_evidence": {
       "ownership_review_only": 1441,
@@ -117,10 +118,11 @@
       "stale_registry_only": 76
     },
     "zips_by_stage": {
-      "not_started": 269
+      "in_progress": 1,
+      "not_started": 268
     },
-    "ledger_decisions": 0,
-    "ledger_observations": 0
+    "ledger_decisions": 71,
+    "ledger_observations": 190
   },
   "ledger_orphans": [],
   "state_definitions": {
