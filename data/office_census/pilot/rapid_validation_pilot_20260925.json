@@ -1,0 +1,491 @@
+{
+ "meta": {
+  "purpose": "Rapid-validation feasibility pilot: can ordinary directory rows be decided from one results page? READ-ONLY experiment - nothing was written to SQLite, Supabase, or research_ledger.jsonl.",
+  "run_at": "2026-09-25",
+  "researcher": "claude-opus-5-5 (pilot)",
+  "sample": "22 directory rows from build e1382b7dff2c, stratified purposively (seed 20260925) - risky strata deliberately OVERSAMPLED; not a random precision sample.",
+  "tool_caveat": "Searches used a generic web-search API (titles/URLs/snippets), NOT Google. The Google Business Profile / Maps panel (hours, 'Permanently closed', review recency) was not visible, so no-website rows are harder here than they will be for a human on Google.",
+  "counting": "searches = queries issued; clicks = pages opened beyond results pages (a DNS failure counts as a click spent).",
+  "not_census_decisions": "Decisions below are pilot judgments for workflow design. They are NOT ledger decisions and must not be imported as such."
+ },
+ "rows": [
+  {
+   "n": 1,
+   "candidate_id": "loc:7052bc88019b0319",
+   "stratum": "ordinary_clean_site_phone",
+   "app_name": "Nisbeth Basit G DDS",
+   "address": "2421 183rd St, Homewood 60430",
+   "queries": [
+    "dentist \"2421 183rd St\" Homewood IL",
+    "\"BMC Family Dentistry\" Homewood",
+    "\"2421 183rd\" Homewood dental 2025 OR 2026"
+   ],
+   "searches": 3,
+   "clicks": 3,
+   "serp_looked_like": "VALIDATED (BBB, CareCredit, Yelp, 2 directory sites all at this address)",
+   "decision": "ESCALATE -> likely closed/sold",
+   "tripwires": [
+    "real-estate listing for exact address in top 2 results",
+    "website on file does not resolve (DNS)"
+   ],
+   "evidence": [
+    "https://www.atproperties.com/12073874/2421-183rd-street-homewood-illinois-60430-nei (listed 2024-06-03 as dental office; sale incl. business, fixtures & patient list; status Closed)",
+    "https://www.bbb.org/us/il/homewood/profile/dentist/bmc-family-dentistry-0654-90029020"
+   ],
+   "lesson": "Aggregator agreement is not currency evidence. The address query surfaced the red flag at zero clicks; a tripwire rule would have escalated it in ~30s instead of ~4 min."
+  },
+  {
+   "n": 2,
+   "candidate_id": "loc:2107d40f445f0f18",
+   "stratum": "ordinary_clean_site_phone",
+   "app_name": "ERIKA L KROUTH DDS PC",
+   "address": "1016 Douglas Rd Ste A, Oswego 60543",
+   "queries": [
+    "dentist \"1016 Douglas Rd\" Oswego IL"
+   ],
+   "searches": 1,
+   "clicks": 0,
+   "decision": "VALIDATED_WITH_CORRECTION",
+   "corrections": {
+    "name": "Krouth Dental"
+   },
+   "evidence": [
+    "https://www.krouthdental.com/",
+    "https://www.yelp.com/biz/krouth-dental-oswego-5"
+   ],
+   "current_signal": "first-party site in results; phone matches"
+  },
+  {
+   "n": 3,
+   "candidate_id": "loc:86bafa92105d1c9a",
+   "stratum": "ordinary_clean_site_phone",
+   "app_name": "Miller Heather Marie DDS",
+   "address": "2805 Central St, Evanston 60201",
+   "queries": [
+    "dentist \"2805 Central St\" Evanston IL"
+   ],
+   "searches": 1,
+   "clicks": 0,
+   "decision": "VALIDATED_WITH_CORRECTION",
+   "corrections": {
+    "name": "Evanston Modern Dental",
+    "phone": "(847) 328-8500"
+   },
+   "evidence": [
+    "https://evanstonmoderndental.com/contact-us/"
+   ],
+   "current_signal": "first-party site contact page in results",
+   "note": "Yelp 'Evanston Dental Spa' (periodontists, same address+phone) is a prior name, not a second office."
+  },
+  {
+   "n": 4,
+   "candidate_id": "loc:5ffd5386b51de7fe",
+   "stratum": "ordinary_no_website",
+   "app_name": "AMERICAN FAMILY DENTAL CARE P.C",
+   "address": "4209stcharles rd (malformed), Bellwood 60104",
+   "queries": [
+    "dentist \"4209 St Charles Rd\" Bellwood IL",
+    "\"American Family Dental Care\" Bellwood IL"
+   ],
+   "searches": 2,
+   "clicks": 0,
+   "decision": "IDENTITY_CONFIRMED_CURRENCY_PENDING",
+   "corrections": {
+    "address": "4209 Saint Charles Rd"
+   },
+   "evidence": [
+    "https://www.carecredit.com/doctor-locator/bellwood-il/american-family-dental-care-223jdc/",
+    "https://www.yelp.com/biz/american-family-dental-care-bellwood"
+   ],
+   "note": "Listings only (phone matches). Needs the Google Maps panel (open + recent review) to validate; not visible to the pilot tool. Address query failed because of the stored-address glitch."
+  },
+  {
+   "n": 5,
+   "candidate_id": "loc:00336cbe03e4f9dc",
+   "stratum": "ordinary_no_website",
+   "app_name": "CHICAGO STAR DENTAL PC",
+   "address": "3641 E 108th St, Chicago 60617",
+   "queries": [
+    "dentist \"3641 E 108th St\" Chicago IL",
+    "\"Chicago Star Dental\" Chicago IL",
+    "\"708-351-4562\" OR \"(708) 351-4562\" dental"
+   ],
+   "searches": 3,
+   "clicks": 0,
+   "decision": "NO_CURRENT_WEB_EVIDENCE",
+   "evidence": [
+    "https://www.loopnet.com/Listing/3641-E-108th-St-Chicago-IL/13895500/",
+    "https://www.yelp.com/biz/mohana-medical-center-chicago"
+   ],
+   "note": "Address is a medical building for sale with a family-practice tenant; name and phone return nothing dental."
+  },
+  {
+   "n": 6,
+   "candidate_id": "loc:8e0034b529421f33",
+   "stratum": "no_phone",
+   "app_name": "Potempa Gregory LTD DDS Fagd",
+   "address": "2S676 State Route 59 Ste 2, Warrenville 60555",
+   "queries": [
+    "dentist \"2S676 Route 59\" Warrenville IL"
+   ],
+   "searches": 1,
+   "clicks": 0,
+   "decision": "VALIDATED_WITH_CORRECTION",
+   "corrections": {
+    "name": "Gregory Potempa DDS, Ltd.",
+    "phone": "(630) 393-9300"
+   },
+   "evidence": [
+    "https://www.drgregpotempa.com/contact/"
+   ],
+   "current_signal": "first-party contact page in results"
+  },
+  {
+   "n": 7,
+   "candidate_id": "loc:32a6165e9eaf9231",
+   "stratum": "generated_name",
+   "app_name": "Sharma Dental",
+   "address": "144 Ring Neck Ln, Bloomingdale 60108",
+   "queries": [
+    "dentist \"144 Ring Neck\" Bloomingdale IL",
+    "\"Priyanka Sharma\" dentist Illinois DDS"
+   ],
+   "searches": 2,
+   "clicks": 0,
+   "decision": "NOT_A_CURRENT_OFFICE (home/registration address)",
+   "evidence": [
+    "https://www.redfin.com/IL/Bloomingdale/144-Ring-Neck-Ln-60108/home/18188885",
+    "https://www.healthgrades.com/dentist/dr-priyanka-sharma-3tvvp"
+   ],
+   "note": "Address results are all residential real estate; the dentist practices at other offices (New Lenox etc.). Generated name was useless as a query."
+  },
+  {
+   "n": 8,
+   "candidate_id": "loc:bb3bf33554a77d3a",
+   "stratum": "generated_name",
+   "app_name": "Abromaitis Dental",
+   "address": "801 State St, Lemont 60439",
+   "queries": [
+    "dentist \"801 State St\" Lemont IL",
+    "Abromaitis dentist Lemont IL",
+    "\"Stankaitis\" dentist Lemont IL 801 State St"
+   ],
+   "searches": 3,
+   "clicks": 1,
+   "decision": "ESCALATE (currency unresolved)",
+   "corrections_if_valid": {
+    "name": "Edward W. Abromaitis, DDS"
+   },
+   "evidence": [
+    "https://www.yelp.com/biz/abromaitis-edward-w-dds-lemont",
+    "https://www.yelp.com/biz/phillips-kris-stankaitis-dds-lemont"
+   ],
+   "note": "Listings only (est. 1973, no website); an oral-surgeon listing shares the address and phone. Should have been escalated at the 90s cap; a Maps panel may resolve it for a human."
+  },
+  {
+   "n": 9,
+   "candidate_id": "loc:ff53483bd86236a9",
+   "stratum": "generated_name",
+   "app_name": "Patel Dental",
+   "address": "3426 W Armitage Ave, Chicago 60647",
+   "queries": [
+    "dentist \"3426 W Armitage\" Chicago"
+   ],
+   "searches": 1,
+   "clicks": 0,
+   "decision": "IDENTITY_CONFIRMED_CURRENCY_PENDING",
+   "corrections": {
+    "name": "Naran P. Patel, DDS"
+   },
+   "evidence": [
+    "https://www.yelp.com/biz/patel-n-p-dds-chicago"
+   ],
+   "note": "Listings only; phone matches. Needs Maps panel."
+  },
+  {
+   "n": 10,
+   "candidate_id": "loc:6a4113a58e676aca",
+   "stratum": "dense_building_identity",
+   "app_name": "Felgenhauer Dental",
+   "address": "1999 75th St, Woodridge 60517",
+   "queries": [
+    "dentist \"1999 75th St\" Woodridge IL",
+    "\"630-910-3200\" OR \"(630) 910-3200\" Woodridge"
+   ],
+   "searches": 2,
+   "clicks": 0,
+   "decision": "IDENTITY_PROBLEM",
+   "evidence": [
+    "https://local.demandforce.com/b/apgdentistry"
+   ],
+   "note": "Row phone = oral surgeon (Ste 101); GP in building = APG Dentistry Ste 204. Directory ALSO has '1999 w 75th st' (Paniczko, 3ddb303fb7cff47e) and APG Dentistry at 7125 Janes Ave. Building task."
+  },
+  {
+   "n": 11,
+   "candidate_id": "loc:1f518a85c067770e",
+   "stratum": "dense_building_identity",
+   "app_name": "M2 DENTAL",
+   "address": "2001 Butterfield Rd, Downers Grove 60515",
+   "queries": [
+    "dentist \"2001 Butterfield Rd\" Downers Grove"
+   ],
+   "searches": 1,
+   "clicks": 0,
+   "decision": "VALIDATED_WITH_CORRECTION",
+   "corrections": {
+    "name": "Esplanade Dental Care",
+    "suite": "140"
+   },
+   "evidence": [
+    "https://www.esplanade-dental.com/contact-us.html"
+   ],
+   "current_signal": "first-party contact page title shows phone (630) 493-0914 = record phone",
+   "note": "Phone match picked the right tenant; Brush Pediatric (Ste 240) is a separate specialist office -> Track B lead, not this row."
+  },
+  {
+   "n": 12,
+   "candidate_id": "loc:02617ab9ed30155b",
+   "stratum": "dense_building_identity",
+   "app_name": "EVER DENTAL STUDIO",
+   "address": "30 N Michigan Ave, Chicago 60602",
+   "queries": [
+    "dentist \"30 N Michigan Ave\" Chicago suite"
+   ],
+   "searches": 1,
+   "clicks": 0,
+   "decision": "IDENTITY_PROBLEM (building merge)",
+   "note": "9+ separately listed dental offices in the building; 51 providers merged into one row. Should be pre-routed to a building task, never shown in rapid mode."
+  },
+  {
+   "n": 13,
+   "candidate_id": "loc:1d72f604a2d31ce9",
+   "stratum": "phone_shared_identity",
+   "app_name": "PRO DENTAL IL - CHAD WISE PC",
+   "address": "2101 E 71st St Ste C, Chicago 60649",
+   "queries": [
+    "dentist \"2101 E 71st St\" Chicago"
+   ],
+   "searches": 1,
+   "clicks": 0,
+   "decision": "VALIDATED_WITH_CORRECTION",
+   "corrections": {
+    "name": "Destiny Dental - Jeffery Plaza",
+    "phone": "(773) 241-7000"
+   },
+   "evidence": [
+    "https://destinydentalcare.com/jeffery-plaza/",
+    "https://www.bbb.org/us/il/chicago/profile/dental-hygienist/destiny-dental-jeffery-plaza-0654-90011975"
+   ],
+   "current_signal": "operator locator page (already in prior evidence)"
+  },
+  {
+   "n": 14,
+   "candidate_id": "loc:69008b7026545b45",
+   "stratum": "closure_move_flag",
+   "app_name": "Krafcisin & Assoc",
+   "address": "6216 W 79th St, Burbank 60459",
+   "queries": [
+    "dentist \"6216 W 79th St\" Burbank IL",
+    "Krafcisin dentist Burbank IL",
+    "Petro Krafcisin obituary dentist Burbank"
+   ],
+   "searches": 3,
+   "clicks": 0,
+   "serp_looked_like": "VALIDATED (Vitals/Yahoo/YP: 'accepting new patients')",
+   "decision": "NOT_A_CURRENT_OFFICE (closed)",
+   "tripwires": [
+    "prior dossier 2026-04-26: owner deceased Jan 2026, practice closed 2023"
+   ],
+   "evidence": [
+    "https://fredcdames.com/tribute/details/9861/Dr-Petro-Krafcisin/obituary.html",
+    "https://www.legacy.com/us/obituaries/name/petro-krafcisin-obituary?id=60627048"
+   ],
+   "lesson": "Fresh results alone would have validated a closed office. The prior-evidence note on the card is what caught it."
+  },
+  {
+   "n": 15,
+   "candidate_id": "loc:3968db72d9c20aff",
+   "stratum": "closure_move_flag",
+   "app_name": "Creekside Dental",
+   "address": "1149 Weiland Rd, Buffalo Grove 60089",
+   "queries": [
+    "Creekside Dental Buffalo Grove IL \"847-634-4773\""
+   ],
+   "searches": 1,
+   "clicks": 0,
+   "decision": "VALIDATED_WITH_CORRECTION (moved within ZIP)",
+   "corrections": {
+    "address": "135 N Arlington Heights Rd",
+    "suite": "185"
+   },
+   "evidence": [
+    "https://creeksidedental.com/contact-us/"
+   ],
+   "collision": "Corrected street key already exists as KASHEFI DENTAL (46e37769a1e1c6dd, 135 n arlington heights rd) - suite-stripping dedup would merge them. Code must flag this."
+  },
+  {
+   "n": 16,
+   "candidate_id": "loc:3753fd053d6eb301",
+   "stratum": "stale_registry",
+   "app_name": "East Side Dental Office & Lab",
+   "address": "4857 N Western Ave, Chicago 60625",
+   "queries": [
+    "dentist \"4857 N Western\" Chicago"
+   ],
+   "searches": 1,
+   "clicks": 0,
+   "decision": "NOT_A_CURRENT_OFFICE (closed)",
+   "evidence": [
+    "https://www.yelp.com/biz/dental-corner-chicago",
+    "https://www.yelp.com/biz/smarinsky-and-associates-chicago",
+    "https://www.loopnet.com/Listing/4857-N-Western-Ave-Chicago-IL/37936870/"
+   ],
+   "note": "Two Yelp titles say CLOSED; LoopNet office/medical for lease; BBB out of business. Zero-click positive closure evidence."
+  },
+  {
+   "n": 17,
+   "candidate_id": "loc:e238dde64274fc92",
+   "stratum": "specialist_looking",
+   "app_name": "THE WRIGLEYVILLE DENTAL GROUP",
+   "address": "1353 W Cornelia Ave, Chicago 60657",
+   "queries": [
+    "dentist \"1353 W Cornelia\" Chicago"
+   ],
+   "searches": 1,
+   "clicks": 0,
+   "decision": "VALIDATED",
+   "evidence": [
+    "https://wrigleyvilledental.com/about-us/",
+    "https://www.yelp.com/biz/sorial-david-dds-chicago"
+   ],
+   "note": "Mixed-taxonomy flag explained by a separate orthodontics entity at the address; GP clearly present."
+  },
+  {
+   "n": 18,
+   "candidate_id": "loc:473d8c9bb2e54411",
+   "stratum": "specialist_looking",
+   "app_name": "IMPLANT SOLUTIONS",
+   "address": "6319 Fairview Ave Ste 103, Westmont 60559",
+   "queries": [
+    "dentist \"6319 Fairview Ave\" Westmont IL",
+    "\"630-960-4447\" OR \"(630) 960-4447\""
+   ],
+   "searches": 2,
+   "clicks": 0,
+   "decision": "IDENTITY_PROBLEM",
+   "evidence": [
+    "https://www.artdentistree.com/",
+    "http://www.buzzfile.com/business/Eon-Clinics-PC-630-960-4447"
+   ],
+   "note": "GP at Ste 103 is Art Dentistree (630-793-1195); the row's phone belongs to Eon Clinics PC / an endodontist. Correct-vs-split needs a human deep look."
+  },
+  {
+   "n": 19,
+   "candidate_id": "loc:04831e123d5a2a8f",
+   "stratum": "no_prior_research",
+   "app_name": "Rifai Sarah Amr DDS",
+   "address": "1564 Wind Energy Pass, Batavia 60510",
+   "queries": [
+    "dentist \"1564 Wind Energy\" Batavia IL"
+   ],
+   "searches": 1,
+   "clicks": 0,
+   "decision": "NOT_A_CURRENT_OFFICE (home/registration address)",
+   "evidence": [
+    "https://www.redfin.com/IL/Batavia/1564-Wind-Energy-Pass-60510/home/167584717"
+   ],
+   "note": "Townhome sale/rental listings; phone is a NJ (856) number."
+  },
+  {
+   "n": 20,
+   "candidate_id": "loc:1c8c838c1629626a",
+   "stratum": "no_prior_research",
+   "app_name": "Helping Someone Smile Inc",
+   "address": "508 Fall Cir, Roselle 60172",
+   "queries": [
+    "\"Helping Someone Smile\" Roselle IL",
+    "\"508 Fall Cir\" Roselle IL"
+   ],
+   "searches": 2,
+   "clicks": 0,
+   "decision": "NOT_A_CURRENT_OFFICE (home-based entity)",
+   "evidence": [
+    "https://local.yahoo.com/info-211669620-helping-someone-smile-inc-roselle/"
+   ],
+   "note": "Single-family residence; website on file is volunteermatch.org; no NPI."
+  },
+  {
+   "n": 21,
+   "candidate_id": "loc:1d7f183a8cd41c41",
+   "stratum": "site_checked_live",
+   "app_name": "HAMILTON LAKES DENTISTRY GROUP, PLLC",
+   "address": "500 Park Blvd, Itasca 60143",
+   "queries": [
+    "dentist \"500 Park Blvd\" Itasca IL"
+   ],
+   "searches": 1,
+   "clicks": 0,
+   "decision": "VALIDATED_WITH_CORRECTION",
+   "corrections": {
+    "name": "Hamilton Lakes Dentistry",
+    "suite": "180C",
+    "website": "https://www.hamiltonlakesdentistry.com/"
+   },
+   "evidence": [
+    "https://www.hamiltonlakesdentistry.com/contact.html"
+   ],
+   "current_signal": "first-party contact page title with suite + phone"
+  },
+  {
+   "n": 22,
+   "candidate_id": "loc:408e19a4e07bd589",
+   "stratum": "no_federal_npi",
+   "app_name": "Caring Dental Smiles",
+   "address": "5428 W Addison St, Chicago 60641",
+   "queries": [
+    "dentist \"5428 W Addison\" Chicago"
+   ],
+   "searches": 1,
+   "clicks": 0,
+   "decision": "VALIDATED_WITH_CORRECTION",
+   "corrections": {
+    "phone": "(773) 283-3328"
+   },
+   "evidence": [
+    "https://www.yelp.com/biz/caring-dental-smiles-of-chicago-chicago",
+    "https://www.caringdentalsmiles.com/"
+   ],
+   "current_signal": "first-party site (found by 2026-04 dossier) + active listing"
+  }
+ ],
+ "summary": {
+  "searches_clicks": {
+   "1_search_0_clicks": 13,
+   "2_searches_0_clicks": 5,
+   "3_searches_0_clicks": 2,
+   "3_searches_1plus_clicks": 2
+  },
+  "outcomes": {
+   "VALIDATED": 1,
+   "VALIDATED_WITH_CORRECTION": 8,
+   "IDENTITY_CONFIRMED_CURRENCY_PENDING": 2,
+   "NOT_A_CURRENT_OFFICE": 5,
+   "IDENTITY_PROBLEM": 3,
+   "NO_CURRENT_WEB_EVIDENCE": 1,
+   "ESCALATE": 2
+  },
+  "false_positive_traps": [
+   "#1 sold/closed office with live aggregator listings",
+   "#14 closed office (owner deceased) listed as accepting new patients"
+  ],
+  "address_query": "Used first on 20 rows; carried the decision (alone or plus a phone query) on 16 of those 20. Failed on #4 (malformed stored address), #5 (no dental occupant), #14 (generic results), #8 (ambiguous).",
+  "corrections_among_9_validated": {
+   "rows_needing_any_correction": 8,
+   "name": 6,
+   "phone": 4,
+   "suite": 3,
+   "website": 1,
+   "address": 1
+  }
+ }
+}

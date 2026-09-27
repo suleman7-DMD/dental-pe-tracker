@@ -1,0 +1,73 @@
+You are the v2 builder for the Chicagoland office census, resuming from checkpoint 2. Work in /Users/suleman/dental-pe-census-work, branch office-census-pilot-2026-09-24. Work inline: no subagents, no background jobs, no pollers. Usage limits are a hard constraint, so spend tokens on thinking and doing, not on re-reading.
+
+CONTEXT BUDGET (follow exactly)
+- Read ONE file in full: data/office_census/handoffs/20260927_v2_builder/CHECKPOINT.md. It has the state, the numbers, the code map, the costs, the open buckets and the ordered next steps.
+- Do NOT read V2_PLAN_2026-09-27.md, the handoff HTML, the v1 runbook or whole source files up front. When you need code, grep for the function and read only that range. The key entry points are:
+  - scrapers/office_census_v2_rules.py: facts(), the rule_* functions, evaluate(), publish_tier()
+  - scrapers/office_census_v2_probes.py: cmd_packets, cmd_publish_records, cmd_browser, cmd_iema_profiles
+  - scrapers/office_census_rapid.py: validate(), make_entry(), cmd_record, cmd_next
+- Print compact tables, never whole packets. The spot-check pattern is one line per row: name | address | v1 decision+note | proposal | quote.
+
+MISSION (unchanged)
+- Resolve at least 80% of the 1,358 rows frozen checked-unresolved on 2026-09-27 (at least 1,087) to VALID, VALID_CORRECTED or NOT_CURRENT_GP, with at least 95/100 correct on an independent audit.
+- The unit is rapid-queue ROWS. Give every count with its denominator and date.
+- Status at the wrap: 230 of 1,358 are live, from session v2-auto-20260927; 1,128 remain unresolved; 82 validated removals wait for the removal brake.
+
+FIRST 10 MINUTES: THINK FRESHLY, THEN ACT
+After reading the checkpoint, and before any tool-heavy work, write a short critique (at most 12 bullets) of what the last session did:
+- Is publish_tier too loose or too tight?
+- Which of the 648 no-proposal rows could a new, cheap, precise signal settle? Ideas to weigh:
+  - the IDFPR licence city/ZIP vs the row's ZIP;
+  - IEMA administrator history;
+  - IDFPR name-match repair for the 94 unmatched rows;
+  - using the browser's address_context for in-ZIP moves;
+  - a phone-reverse on the free Places quota left (search_pro 3,001 remaining this month).
+- Where are the numbers or the policy weakest?
+Say plainly where you disagree with the checkpoint, the user's analyst or the plan. Then start the next steps at once. Don't ask questions the checkpoint already answers.
+
+ORDER OF WORK (checkpoint §7; adjust only with a stated reason)
+1. Verify (checkpoint §8, read-only). Pull the store. If the v1 looper moved rows, recount.
+2. Audit the publish.
+   - Take a seeded random 40 of the 230 records in data/office_census/v2/PUBLISH_2026-09-27_records.jsonl, stratified by rule_id.
+   - Check each against its Maps link or registry line, plus at most 1 WebSearch.
+   - Write data/office_census/v2/audit_publish_2026-09-27.csv.
+   - If a rule class has at least 2 errors, supersede that class (record with "supersede": true and the corrected decision, never a delete) and tighten the rule, with a must-abstain test.
+3. Finish the free probes in ~3-minute foreground chunks, running both in parallel:
+   ( python3 scrapers/office_census_v2_probes.py iema-profiles --max-seconds 170 >> data/office_census/staging/v2_probes/iema_profiles.log 2>&1 & python3 scrapers/office_census_v2_probes.py browser --concurrency 6 --max-seconds 165 >> data/office_census/staging/v2_probes/browser.log 2>&1 & wait )
+   Then run packets and recount. Never delete browser.jsonl.
+4. Relabel the controls under P1 (successor at the same suite = open). Then rerun the Gate A table: at most 3% stale positives per publishable rule on the not-open controls.
+5. Build the v2 agent lane.
+   - `next --lane v2` hands out a row plus a compact packet summary: our wording, Maps links, IEMA/IDFPR lines, the engine's proposal and its conflicts.
+   - Records use rule_id "AGENT" and the packet_id; the validator already accepts them.
+   - Add V2_RESOLVE_RUNBOOK.md and tests.
+   - Work order: the 272 review-confidence proposals, then the 43 phone-only moves, the 37 name corrections and the 40 identity/scope rows, then the no-proposal buckets.
+   - At most 2 searches per row.
+6. Publishing.
+   - Before recording, regenerate with `python3 scrapers/office_census_v2_probes.py publish-records`, then dry-validate: validate() on every record, 0 errors.
+   - Record with `python3 scrapers/office_census_rapid.py record --session <one new session> --researcher claude-v2-builder --file <records>`.
+   - Record opens first. Removals may never exceed the session's opens; the 50% session brake is never evaded by splitting sessions.
+   - The 82 waiting removals go live as v2-lane opens make room.
+7. Pilot 100 v2-lane rows (Gate B), then sweep.
+8. On/after Oct 1 (the free allotments reset): run the 106 review-date lookups (the "review dates unknown" bucket) and Places for any still-unchecked rows. Run places-purge on/after 2026-10-27.
+
+HARD RULES
+- Cost:
+  - Stay inside Google's free monthly allotments (--cap 0, the default). As of 2026-09-27, search_ent_atmos and details_ent_atmos are exhausted until Oct 1.
+  - If any step would bill, or a gate fails, stop and tell the user. Do not work around it.
+  - The key is GOOGLE_PLACES_API_KEY in ~/dental-pe-tracker/.env and the probe reads it. Never print it. Never create a .env in this worktree.
+- Data:
+  - No commits or pushes unless the user asks.
+  - No SQLite writes. Never delete data.
+  - Places content never leaves the gitignored staging cache; only place IDs, Maps links and our own wording do.
+- Live Directory writes go only through `office_census_rapid.py record`, only for rules that are calibrated and spot-checked, and never bypass the removal brake (35% global, 50% per session, minimum 20).
+- Names: no Google display name overwrites a row name without an agent's confirmation or a first-party page.
+- Don't loosen rules to chase 80%. If deterministic rules plateau, say so, and size the agent and call lanes honestly.
+- MA/Boston is parked. The building-packet lane and the Directory map task are out of scope.
+
+WHEN YOU FINISH OR PAUSE
+- Update the #v2-builder block of data/office_census/handoffs/20260926_task_c_lite/OFFICE_CENSUS_HANDOFF.html and write a new CHECKPOINT (same folder, numbered). Include:
+  - what changed;
+  - live Directory counts (rows, denominator, date);
+  - exact Places usage by SKU from places-cost, and the $ spent;
+  - the audit results;
+  - the next prompt, written to the same context-budget standard as this one.
