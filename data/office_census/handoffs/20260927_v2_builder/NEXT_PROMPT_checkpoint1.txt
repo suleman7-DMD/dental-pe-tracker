@@ -1,0 +1,77 @@
+You are the v2 builder for the Chicagoland office census, picking up a paused session. Work in /Users/suleman/dental-pe-census-work on branch office-census-pilot-2026-09-24. Work inline; no subagents unless I ask.
+
+READ FIRST, COMPLETELY:
+1. data/office_census/handoffs/20260927_v2_builder/CHECKPOINT.md
+2. data/office_census/V2_PLAN_2026-09-27.md
+3. data/office_census/RAPID_VALIDATION_RUNBOOK.md
+4. The code in scrapers/office_census_v2_probes.py, scrapers/office_census_v2_rules.py and scrapers/office_census_rapid.py (validate(), EFFECT, RULES).
+
+MISSION: finish the v2 pipeline end to end.
+- Move at least 80% of the frozen 1,358 checked-unresolved rapid rows (at least 1,087 rows) to VALID / VALID_CORRECTED / NOT_CURRENT_GP under a v2 validator.
+- At least 95 of 100 must be correct on an independent audit.
+- Units are rapid-queue rows, never offices or practices. State every count with its denominator and date.
+
+LOOK AT IT FRESHLY.
+- The previous session's plan, rules and numbers are a starting point, not a verdict.
+- Re-check the numbers, question each rule, and look for a cheaper or more accurate route. Tell me plainly where you disagree.
+- Known problems to settle before trusting any rule:
+  - FP-SITE (the office's own website) fires on known-not-open controls: 3/62 closed, 4/136 moved, 1/168 home (partial data).
+  - LIC-CLOSED fires on 3/250 known-open controls.
+
+COST: TOP PRIORITY. Use the cheapest route that meets the goal.
+- The Google Places key is already set up. It is GOOGLE_PLACES_API_KEY in ~/dental-pe-tracker/.env (gitignored), and office_census_v2_probes.py reads it automatically.
+  - Do not ask me for it.
+  - Never print it.
+  - Never copy it into this worktree: a worktree .env would also shadow RAPID_TOKEN, and the repo is public.
+- The default is Google's free monthly allotment only.
+  - The places probe's --cap defaults to $0. Every call is logged before it is sent.
+  - A Details lookup that would go past a free allotment is held for next month instead of paid.
+  - Free per calendar month per billing account, separately for each SKU: 5,000 Text Search Pro, 1,000 Place Details Enterprise, 1,000 Place Details Enterprise + Atmosphere. The allotments reset October 1.
+  - `python3 scrapers/office_census_v2_probes.py places-cost` prints usage.
+- Spent so far: $0.00 (41 searches and 6 + 5 detail lookups in September).
+- Everything that costs $0 may run without asking: the IEMA and IDFPR public registries, and local Chrome.
+- You may run Places smoke tests on up to 10 rows before approval. Any other Places use, any paid overflow, and every write to the shared rapid store or Supabase waits for ONE approval from me. I approve once before v2 runs, not at every step.
+- Don't waste tokens. Run long jobs with run_in_background and wait for the completion notification. Never poll logs in loops or with sleeps.
+
+ORDER OF WORK
+1. Verify the state with the commands in CHECKPOINT.md §8. Confirm nothing is running.
+2. Do the fresh review above.
+3. Refresh the local mirror (`python3 scrapers/office_census_rapid.py pull`; read-only against the store) and recount the unresolved set.
+   - If it moved, re-freeze targets, keeping the controls identical so the cached Places rows stay useful.
+   - Report the dated counts.
+4. Finish the free probes, then rebuild `packets` and report per-rule fire rates on the controls.
+   - `iema-profiles` resumes: about 2,400 facilities left, roughly 40 minutes.
+   - `browser` resumes. Do NOT delete browser.jsonl.
+5. Fix what the review found, with tests for each rule, including the cases where a rule must abstain.
+6. STOP and send me ONE approval request containing:
+   a. The exact Places call plan by SKU (controls, unresolved, optional 690 unchecked) vs the free allotments.
+   b. The expected $ (target $0), and the worst case if I allowed paid overflow.
+   c. What should wait for the October 1 reset to stay free.
+   d. The Gate A plan.
+   e. Ratification of policies P1–P5 (plan §4), and D5: pause the v1 loop on the 690 unchecked rows.
+   f. Permission to write v2 checks to the shared rapid store after Gate B.
+   g. Anything you need from me, such as the Gate B Maps spot-check of 20 rows or a call list.
+   Then wait.
+7. After I approve:
+   1. Run Places on the controls, then packets, then Gate A: at most 3% stale positives per rule on the known-not-open controls, and a projected resolution rate of at least 75%.
+   2. Run Places on the unresolved rows with --skip-free-resolved. Rerun browser for the websites Places found, then rebuild packets.
+   3. Build validator v2 in office_census_rapid.py: RULES rapid-2026-09-28.v2, evidence kinds places_listing and license_registry, and v1 checks stay valid.
+   4. Build `next --lane v2`, V2_RESOLVE_RUNBOOK.md and tests.
+   5. Pilot 100 rows → Gate B.
+   6. Sweep.
+   7. Residual call lane only if still short of 80% → Gate C.
+   8. Accuracy audit: 100 random resolutions, at least 95 correct.
+   9. Compare the v2 proposals with my hand-check verdicts in data/office_census/audits/2026-09-27_unresolved/hand_check_sample_100.csv once I fill them in.
+8. If the cost would exceed what I approved, or a gate fails, stop and tell me. Do not work around it.
+
+HARD RULES
+- No commits or pushes unless I ask. No SQLite writes. Never delete data.
+- Places content is never committed. Only place IDs, Maps links and our own wording leave the gitignored staging cache. Purge the cache after 30 days (`places-purge`).
+- Never bypass the removal brake.
+- MA/Boston is parked.
+- The building-packet lane and the Directory map task are separate; they are not in scope.
+
+When you finish or pause, update the #v2-builder section of data/office_census/handoffs/20260926_task_c_lite/OFFICE_CENSUS_HANDOFF.html and the checkpoint with:
+- what changed,
+- the exact costs spent by SKU,
+- the next prompt.
