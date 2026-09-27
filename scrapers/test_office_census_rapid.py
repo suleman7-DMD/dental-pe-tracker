@@ -147,6 +147,55 @@ def test_valid_with_changed_field_must_be_corrected():
     assert errs(rec(decision="VALID_CORRECTED", observed={"phone": "630-555-0199"})) == []
 
 
+# ---- v2 packet records ---------------------------------------------------------------
+PLACES = {"kind": "places_listing", "url": "https://maps.google.com/?cid=1",
+          "quote": "Google business listing at this address (phone/name match) is shown as operating."}
+IEMA = {"kind": "iema_registry", "url": "https://public.iema.state.il.us/RadHealthFacilitySearch/Facility?facilityId=1",
+        "quote": "IEMA X-ray registration: Main Street Dental · Status: Open · 2 active unit(s)"}
+
+
+def v2rec(**kw):
+    return rec(**{"rule_id": "PL-RECENT", "packet_id": "v2p-1", "searches": 0, "evidence": [PLACES], **kw})
+
+
+def test_v2_places_listing_validates_with_rule_and_packet():
+    assert errs(v2rec()) == []
+    assert errs(v2rec(rule_id="IEMA-LIC", evidence=[IEMA])) == []
+
+
+def test_places_listing_without_rule_is_not_current_evidence():
+    r = rec(evidence=[PLACES])
+    assert any("Listings alone" in e for e in errs(r))
+
+
+def test_v1_record_still_needs_a_search_v2_does_not():
+    assert any("at least 1" in e for e in errs(rec(searches=0)))
+    assert not any("at least 1" in e for e in errs(v2rec()))
+
+
+def test_v2_needs_known_rule_and_packet():
+    assert any("rule_id must be" in e for e in errs(v2rec(rule_id="GUESS")))
+    r = v2rec()
+    r.pop("packet_id")
+    assert any("packet_id" in e for e in errs(r))
+
+
+def test_v2_removal_keeps_v1_tie_and_quote_rules():
+    r = v2rec(decision="NOT_CURRENT_GP", reason="closed", rule_id="PL-CLOSED", ties_by=["address"])
+    assert any("tie beyond the address" in e for e in errs(r))
+    r = v2rec(decision="NOT_CURRENT_GP", reason="closed", rule_id="PL-CLOSED", ties_by=["name", "dentist"])
+    assert errs(r) == []
+
+
+def test_v2_entry_is_stamped_with_v2_rules():
+    class A:
+        session, researcher = "s", "r"
+    rv.P.store = "local"
+    e = rv.make_entry(v2rec(), card(), A())
+    assert e["rules"] == rv.V2_RULES and e["rule_id"] == "PL-RECENT" and e["packet_id"] == "v2p-1"
+    assert rv.make_entry(rec(), card(), A())["rules"] == rv.RULES
+
+
 def test_corrected_needs_a_real_difference():
     e = errs(rec(decision="VALID_CORRECTED", observed={"phone": "630.555.0100", "name": "MAIN STREET DENTAL"}))
     assert any("at least one observed field" in x for x in e)

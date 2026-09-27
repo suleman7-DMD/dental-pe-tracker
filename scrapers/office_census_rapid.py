@@ -56,6 +56,13 @@ import rapid_store as store  # noqa: E402
 RULES = "rapid-2026-09-25.2"
 # .2 added ties_by on NOT_CURRENT_GP; checks recorded under these rules stay valid without it.
 LEGACY_RULES = {"rapid-2026-09-25.1"}
+# v2: a record produced from an automated evidence packet (office_census_v2_probes.py packets +
+# office_census_v2_rules.py) cites the rule that decided it and the packet it read. A Google Places
+# listing or an IEMA X-ray registration counts as current evidence only in such a record, and it
+# needs no fresh web search. Checks recorded under RULES / LEGACY_RULES stay valid.
+V2_RULES = "rapid-2026-09-28.v2"
+V2_RULE_IDS = {"FP-SITE", "PL-RECENT", "PL-IEMA", "IEMA-LIC", "PL-CLOSED", "LIC-CLOSED", "SUCCESSOR",
+               "MOVED-PH", "MOVED-D", "HOME-R", "SPEC-L", "AGENT"}
 PUBLISH_EVERY = 50
 # A Claude Code session gets ~200 web searches; stop claiming new rows before that so a
 # session ends cleanly (claimed rows recorded, published, committed) instead of mid-batch.
@@ -76,12 +83,15 @@ NOT_CURRENT_REASONS = {"closed", "moved", "home_or_registration", "specialist_on
                        "nonclinical", "duplicate"}
 ESCALATE_REASONS = {"conflict", "gp_scope", "operating_status", "other"}
 EVIDENCE_KINDS = {"first_party_site", "dso_locator", "maps_panel", "iema_registry", "listing",
-                  "registry", "real_estate", "news_or_obituary", "other"}
+                  "registry", "real_estate", "news_or_obituary", "other", "places_listing",
+                  "license_registry"}
 CURRENT_KINDS = {"first_party_site", "dso_locator", "maps_panel"}
+V2_CURRENT_KINDS = CURRENT_KINDS | {"places_listing", "iema_registry"}
 SIGNALS = {"practice_sold", "owner_deceased", "owner_retired", "successor_practice", "rebranded",
            "dso_or_group_branded", "multi_location_practice", "other_offices_in_building",
            "website_dead", "website_wrong_business", "phone_belongs_elsewhere",
-           "real_estate_listing", "home_address", "hiring_seen"}
+           "real_estate_listing", "home_address", "hiring_seen", "split_from_mixed_row",
+           "license_inactive", "domain_hijacked"}
 GP_SCOPES = {"gp", "mixed", "specialist_only", "unknown"}
 OBSERVED_FIELDS = {"name", "address", "suite", "phone", "website", "zip"}
 # How NOT_CURRENT_GP evidence is tied to THIS row. A CLOSED listing for a different business
@@ -807,16 +817,23 @@ def validate(obj, card, already_done, rules=RULES):
     if not isinstance(leads, list) or len(leads) > 8 or any(
             not isinstance(l, dict) or not oc.present(l.get("name")) for l in leads):
         errs.append("leads must be a list (max 8) of objects with at least a name")
+    v2 = oc.present(obj.get("rule_id"))
+    if v2:
+        if obj.get("rule_id") not in V2_RULE_IDS:
+            errs.append(f"rule_id must be one of {sorted(V2_RULE_IDS)}")
+        if not oc.present(obj.get("packet_id")):
+            errs.append("a v2 record (rule_id) cites the packet_id it was decided from")
     for f in ("searches", "fetches"):
         v = obj.get(f)
         if not isinstance(v, int) or not 0 <= v <= 12:
             errs.append(f"{f} must be an integer 0-12")
-    if isinstance(obj.get("searches"), int) and obj["searches"] < 1:
+    if isinstance(obj.get("searches"), int) and obj["searches"] < 1 and not v2:
         errs.append("searches must be at least 1: every row gets a fresh search")
 
     if dec in ("VALID", "VALID_CORRECTED"):
-        if not kinds & CURRENT_KINDS:
-            errs.append(f"{dec} needs current evidence: kind in {sorted(CURRENT_KINDS)}. "
+        current = V2_CURRENT_KINDS if v2 else CURRENT_KINDS
+        if not kinds & current:
+            errs.append(f"{dec} needs current evidence: kind in {sorted(current)}. "
                         "Listings alone -> IDENTITY_ONLY")
         if obj.get("gp_scope") not in ("gp", "mixed"):
             errs.append(f"{dec} needs gp_scope gp or mixed")
@@ -960,11 +977,13 @@ def make_entry(obj, card, args):
     else:
         entry_id = (f"rc-{ts.strftime('%Y%m%dT%H%M%S')}-{cid.split(':')[-1][:10]}"
                     f"-{random.randrange(16**4):04x}")
-    entry = {"entry_id": entry_id, "type": "rapid_check", "rules": RULES, "candidate_id": cid,
+    entry = {"entry_id": entry_id, "type": "rapid_check", "rules": V2_RULES if obj.get("rule_id") else RULES,
+             "candidate_id": cid,
              "zip": card["zip"], "session": args.session, "researcher": args.researcher,
              "recorded_at": ts.isoformat(), "checked_at": ts.date().isoformat(), "as_seen": card["as_seen"]}
     for k in ("decision", "reason", "gp_scope", "evidence", "observed", "signals", "note",
-              "leads", "searches", "fetches", "duplicate_of", "ties_by", "supersede"):
+              "leads", "searches", "fetches", "duplicate_of", "ties_by", "supersede", "rule_id", "packet_id",
+              "rules_version"):
         if k in obj and obj[k] not in (None, "", [], {}):
             entry[k] = obj[k]
     return entry

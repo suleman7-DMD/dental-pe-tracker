@@ -91,9 +91,19 @@ rows should take one search.
      up the search budget; searches do.
    - Yelp and Google can't be fetched; use the result titles instead.
    - A fetch that fails on DNS means the site is dead. Tag it `website_dead`.
-5. **When the budget is spent,** choose IDENTITY_ONLY, NO_WEB_EVIDENCE or ESCALATE and move on.
+5. **Free license check (a fetch, not a search; added 2026-09-27 from the v2 calibration).** When
+   q1 shows no current first-party evidence, or the card or results hint at a closure or
+   retirement, check each row dentist's Illinois license:
+   `curl -s -G "https://data.illinois.gov/resource/pzzh-kp68.json" --data-urlencode "\$where=license_type='DENTAL' AND business_name like '%LASTNAME%'" --data-urlencode "\$select=business_name,description,license_status,expiration_date,city"`
+   - **Every** row dentist `NOT RENEWED` / `INACTIVE` / `EXPIRED` / `DECEASED` / `CANCELLED`, and
+     nothing current at the address (no own website, no current listing), is `NOT_CURRENT_GP`
+     `closed`: evidence kind `license_registry`, the status line as the quote, `ties_by:
+     ["dentist"]`. v2 found this on 76 unresolved rows; it never fired on an open control.
+   - Match the first name and middle initial too. Common names collide (two Michael Ryans, two
+     Krupa Patels with different degrees). An `ACTIVE` license says nothing about this office.
+6. **When the budget is spent,** choose IDENTITY_ONLY, NO_WEB_EVIDENCE or ESCALATE and move on.
    Unresolved rows get a deeper lane later. Never turn a row into a research project.
-6. **Before recording a new address or phone,** check whether another row already has it:
+7. **Before recording a new address or phone,** check whether another row already has it:
    `python3 scrapers/office_census_rapid.py lookup --address "135 N Arlington Heights Rd" --zip 60089`
    (or `--phone`, or `--name "Creekside" --zip 60089`).
    - Same office already listed as another row → `NOT_CURRENT_GP` with reason `duplicate` and
@@ -171,6 +181,30 @@ a list from `name`, `phone`, `dentist`, `website`, `address`.
 A residential listing plus a dentist who practices elsewhere is `NOT_CURRENT_GP` with reason
 `home_or_registration`.
 
+**The row is the place (policy P1, 2026-09-27).** The directory counts patient-facing offices,
+so a row follows its office, not its owner:
+- A **different GP practice now at the same address and suite** (it kept the phone or website,
+  or listings show a new name at the suite) is `VALID_CORRECTED` with the new `name` (and phone or
+  website) and signal `successor_practice` (new owner) or `rebranded` (same dentist, new name).
+  It is **not** `closed`. v1 removed several of these (Engen→Bright Valley, Bork→Aura,
+  Sandstrom→Magnolia); a later pass will revisit them.
+- If that successor **already has its own row** (`lookup`), the old row is `NOT_CURRENT_GP`
+  `duplicate` with `duplicate_of`.
+- Several dental offices in the building, and nothing ties one of them to the row's suite:
+  `IDENTITY_PROBLEM`. Don't guess the successor.
+
+**What survives an office (v2 calibration traps):**
+- **Phone and website continuity is not identity.** A number or domain stays with the suite, or
+  goes to a buyer. If the row's phone now answers for a practice with a different name at
+  another address, the number likely went with a sale or merger. That is `closed` or `moved` only
+  when that practice's name or dentist also ties to the row; otherwise `IDENTITY_PROBLEM`.
+- **A listing in a dentist's personal name** ("Dr. Jane Smith", "Smith Jane DDS") outlives the
+  office. It doesn't prove the office is open. A *permanently closed* one tied to the row, with
+  nothing current at the address, does support `closed`.
+- **Absence alone is never closure.** "Nothing at the address" needs a positive companion: every
+  license lapsed (`closed`), a residential address (`home_or_registration`), or the practice's
+  own current listing elsewhere (`moved`).
+
 ## 4. Recording
 
 Send one JSON object per call, right after deciding:
@@ -218,7 +252,8 @@ Field rules:
   - `zip`: only if it differs.
   - Legal-to-public name changes count as corrections (`ERIKA L KROUTH DDS PC` → `Krouth Dental`).
 - `evidence`: at most 4 items. Kinds: `first_party_site`, `dso_locator`, `maps_panel`,
-  `iema_registry`, `listing`, `registry`, `real_estate`, `news_or_obituary`, `other`.
+  `iema_registry`, `listing`, `registry`, `real_estate`, `news_or_obituary`, `license_registry`
+  (an IDFPR status line from the free license check), `other`.
   - `quote` is at most 240 characters, copied from the page or title that proves the key fact.
   - One quote for the decisive fact is enough.
 - `searches` / `fetches`: honest counts. They feed throughput stats.
